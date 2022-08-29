@@ -1,0 +1,41 @@
+<div style="height: 100vh main">
+  <div class="login">
+    <div class="image">
+      <!-- <img src="../../../assets/login/login.svg" alt="img" /> -->
+    </div>
+    <div class="form">
+      <form>
+        <h1>Hello,</h1>
+        <h1>Welcome back</h1>
+        <input type="text" placeholder="Enter Your User/Email ID*" name="username" required [(ngModel)]="usernameofuser"
+          pInputText /><br />
+        <input  placeholder="Enter Your Password*"
+          name="password" required [(ngModel)]="passwordofuser" pInputText /> <span style="margin-left:-25px;">
+          <!-- <button (click)="showPassword()"
+            style="border:none; outline: none; position: relative; width:0;background-color: #fff;">
+            <i *ngIf="isPassword" class="pi pi-eye"></i>
+            <i *ngIf="!isPassword" class="pi pi-eye-slash"></i>
+          </button> -->
+        </span>
+        <!-- <p-inputmask
+          type="password"
+          placeholder="Enter Your Password"
+          name="password"
+          [(ngModel)]="login.password"
+          required
+        ></p-inputmask> -->
+        <br />
+        <a routerLink="/forgot-password">Forgot your password?</a><br />
+        <br />
+
+        <button (click)="signIn()" type="button" class="btn btn-primary continuebtn"
+          label="Login" ></button>
+          <br />
+        <p>
+          Not registered yet? <a routerLink="/register">create an account</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
+

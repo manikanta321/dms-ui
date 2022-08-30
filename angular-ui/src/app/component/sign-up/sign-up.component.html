@@ -1,156 +1,36 @@
-<div class="aside-hamburger-menu" (click)="mobBurgerMenuAction()"> 
-    <span></span> 
-    <span></span> 
-    <span></span> 
-</div>
-<div class="UNFAPP-newwdashbrd-lftnav-area" [ngClass]="mobMuenuStatus ? 'expend':''" (click)="closeBurgerMenu()">
-    <span class="m-overlay"></span>
-
-    <div class="UNFAPP-leftsidebarprofile-cont UNFAPP-d-hide" (click)="showMyProfile()">
-       
-        <img src="{{profileImagePath + profilePhoto}}" (error)="setDefaultPic()" alt="" class="UNFAPP-prfimg" *ngIf="!profilePic">
-
-        <div class="UNFAPP-desccont">
-            <h3 class="UNFAPP-desc-tittle">{{userData?.firstName + ' ' + userData?.lastName}}</h3>
-            <p class="UNFAPP-desc-subtitle">Grade {{userData?.grade.name.replace('th' ,'')}}, {{displayExamName}}
-               
-            </p>
-            <div class="UNFAPP-rightarow" (click)="showMyProfile()"></div>
+<!-- Section: Design Block -->
+<section class="reset-ps-page">
+    <!-- Background image -->
+    <div class="bg-image"></div>
+    <!-- Background image -->
+  
+    <div class="card reset-ps shadow-5-strong" style="margin-top: -20%;">
+      <div class="card-body">
+        <div class="reset-ps-head text-center mt-3">
+            <h6>Reset Password</h6>
+            <p>If you want to reset your password, please enter your 
+                new password below.</p>
         </div>
-    </div>
-
-    <ul class="UNFAPP-lftnav UNFAPP-topborder">
-        <li (click)="navigateTo('/dashboard', 'dashboard')">
-            <a href="javascript:void(0)">
-                <ng-container *ngIf="router.url === '/dashboard'; else notDashActive">
-                    <img src="assets/img/dashboard/active-menu-icons/home-active-icon.svg" alt="" /> <span>Home</span>
-                </ng-container>
-                <ng-template #notDashActive>
-                    <img src="assets/img/dashboard/menu-icons/home-normal-icon.svg" alt="" /> <span>Home</span>
-                </ng-template>
-            </a>
-        </li>
-        <li (click)="navigateTo('/dashboard/liveclass', 'liveclass')">
-            <a href="javascript:void(0)">
-                <ng-container *ngIf="router.url.includes('/liveclass') || router.url.includes('/masterclasses') || router.url.includes('/classes') || router.url.includes('/my-courses') || router.url.includes('/all-courses'); else notActiveLivClass">
-                    <img src="assets/img/dashboard/active-menu-icons/liveclass-active-icon.svg" alt="" /> <span>Live Classes</span>
-                </ng-container>
-                <ng-template #notActiveLivClass>
-                    <img src="assets/img/dashboard/menu-icons/liveclass-icon.svg" alt="" /> <span>Live Classes</span>
-                </ng-template>
-            </a>
-        </li>
-        <li (click)="navigateTo('/dashboard/selfLearn', 'selfLearn')">
-            <a href="javascript:void(0)">
-                <ng-container *ngIf="router.url.includes('/dashboard/selfLearn'); else notDashActiveq">
-                    <img src="assets/img/selfLearn/menu-learn-selected.svg" class="bookmark-size" alt="" /> <span>Learn</span>
-                </ng-container>
-                <ng-template #notDashActiveq>
-                    <img src="assets/img/selfLearn/menu-learn.svg" class="bookmark-size" alt="" /> <span>Learn</span>
-                </ng-template>
-            </a>
-        </li>
-        <li (click)="navigateTo('/dashboard/assessment', 'assessment')">
-            <a href="javascript:void(0)">
-                <ng-container *ngIf="router.url.includes('/testlist') || router.url.includes('/assessment'); else notActiveTest">
-                    <img src="assets/img/dashboard/active-menu-icons/test-active-icon.svg" alt="" /> <span>Tests</span>
-                </ng-container>
-                <ng-template #notActiveTest>
-                    <img src="assets/img/dashboard/menu-icons/tests-icon.svg" alt="" /> <span>Tests</span>
-                </ng-template>
-            </a>
-        </li>
-        <li (click)="navigateTo('/dashboard/doubts', 'doubts')" *ngIf="environmentProd.displayDoubtsWeb">
-            <a href="javascript:void(0)">
-                <ng-container>
-                    <img src="assets/img/dashboard/active-menu-icons/test-active-icon.svg" alt="" /> <span>Doubts 24/7</span>
-                </ng-container>
-            </a>
-        </li>
-        </ul>
-        <ul class="UNFAPP-lftnav">
-            <!-- <li (click)="navigateTo('/dashboard/my-activity', 'my-activity')">
-                <a href="javascript:void(0)">
-                    <ng-container *ngIf="router.url.includes('/dashboard/my-activity'); else notActive_MyActivity">
-                        <img src="assets/img/activity.svg" class="bookmark-size" alt="" /> <span>My_Activity</span>
-                    </ng-container>
-                    <ng-template #notActive_MyActivity>
-                        <img src="assets/img/activities-icon.svg" class="bookmark-size" alt="" /> <span>My_Activity</span>
-
-                    </ng-template>
-                </a>
-            </li>     -->
-
-            <li (click)="navigateTo('/dashboard/myactivity', 'myactivity')">
-                <a href="javascript:void(0)">
-                    <ng-container *ngIf="router.url.includes('/dashboard/myactivity'); else notActiveMyActivity">
-                        <img src="assets/img/activity.svg" class="bookmark-size" alt="" /> <span>My Activity</span>
-                    </ng-container>
-                    <ng-template #notActiveMyActivity>
-                        <img src="assets/img/activities-icon.svg" class="bookmark-size" alt="" /> <span>My Activity</span>
-
-                    </ng-template>
-                </a>
-            </li> 
-
-        <li (click)="navigateTo('/dashboard/mybookmarks', 'mybookmarks')">
-            <a href="javascript:void(0)">
-                <ng-container *ngIf="router.url.includes('/dashboard/mybookmarks'); else notDashActiveb">
-                    <img src="assets/img/selfLearn/menu-my-bookmarks-selected.svg" class="bookmark-size" alt="" /> <span>My Bookmarks</span>
-                </ng-container>
-                <ng-template #notDashActiveb>
-                    <img src="assets/img/selfLearn/menu-my-bookmarks.svg" class="bookmark-size" alt="" /> <span>My Bookmarks</span>
-                </ng-template>
-            </a>
-        </li>    
-        <li (click)="navigateToSubscription()">
-            <a href="javascript:void(0)">
-                <ng-container
-                    *ngIf="router.url.includes('/subscribedPackages') || router.url.includes('/subscriptionPackages') || router.url.includes('/proceed-to-payment') || router.url.includes('/subscription/mycart') || router.url.includes('/subscription/wishlist'); else notActiveSubscription">
-                    <img src="assets/img/dashboard/menu-icons/subscription-active-icon.svg" alt="" /> <span>Subscriptions</span>
-                </ng-container>
-                <ng-template #notActiveSubscription>
-                    <img src="assets/img/dashboard/menu-icons/subscription-icon.svg" alt="" /> <span>Subscriptions</span>
-                </ng-template>
-                <!-- <img src= alt="" /> <span>Subscriptions</span> -->
-            </a>
-        </li>
-    </ul>
-    <ul class="UNFAPP-lftnav UNFAPP-noborder">
-        <li (click)="navigateTo('/dashboard/referral/', 'invite_earn')" *ngIf="environmentProd.displayInviteNdEarnL">
-            <a href="javascript:void(0)">
-            
-                <ng-container *ngIf="router.url.includes('/referral'); else notActiveInviteEarn">
-                    <img src="assets/img/dashboard/active-menu-icons/invite-active-icon.svg" alt="" /> <span>Invite & Earn</span>
-                </ng-container>
-                <ng-template #notActiveInviteEarn>
-                    <img src="assets/img/dashboard/menu-icons/invite-icon.svg" alt="" /> <span>Invite & Earn</span>
-                </ng-template>
-            </a>
-        </li>
-        <!-- <li>
-            <a href="javascript:void(0)">
-            <img src="assets/img/dashboard/menu-icons/lft-menu-icon.png" alt="" style="opacity: 0;" /> <span>Help and Support</span>
-            </a>
-        </li> -->
-        <li (click)="navigateTo('/dashboard/contactus', 'contactus')">
-            <a href="javascript:void(0)">
-                <ng-container *ngIf="router.url.includes('/contactus'); else notActiveContactsus">
-                    <img src="assets/img/dashboard/active-menu-icons/phone-yellow-icon.svg" alt="" /> <span>Contact Us</span>
-                </ng-container>
-                <ng-template #notActiveContactsus>
-                    <img src="assets/img/dashboard/menu-icons/contact-icon.svg" alt="" /> <span>Contact Us</span>
-                </ng-template>
-                <!-- <img src="assets/img/dashboard/menu-icons/contact-icon.svg" alt="" /> <span>Contact Us</span> -->
-            </a>
-        </li>
-    </ul>
-
-    <div class="UNFAPP-logoutcont UNFAPP-topborder UNFAPP-d-hide">
-        <button class="dropdown-item" type="button" (click)="logout()">
-            <img src="assets/img/logout-icon-dark.svg" alt="Logout">
-            Logout
-          </button>
-    </div>
-    
+  <form  >
+    <div class="form-outline mb-4">
+        <label >New Password</label>
+        <input type="email" id="form2Example11" class="form-control" name="username" required
+      placeholder="Enter your New Password" />
+      </div>
+      <div class="form-outline mb-4">
+        <label >Confirm Password</label>
+        <input type="email" id="form2Example11" class="form-control" required name="confirmPassward"
+     placeholder="Confirm your New Password" />
+      </div>
+      <div>
+        <button class="btn btn-primary change-ps-btn">Change Password</button>
+      </div>
+  </form>
+  <div class="recovery-msg text-center mt-3">
+    <p>If you didn’t request a password recovery link,
+    please ignore this.</p>
 </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section: Design Block -->

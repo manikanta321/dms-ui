@@ -8,6 +8,8 @@ import { DashbordComponent } from './shared-component/dashbord/dashbord.componen
 
 const routes: Routes = [
   { path: '', pathMatch: 'full',component: LoginComponent },
+  { path: 'login', pathMatch: 'full',component: LoginComponent },
+
   { path: 'SignUpComponent', pathMatch: 'full',component: SignUpComponent },
   { path: 'ForgotPassword', pathMatch: 'full',component: ForgotPasswordComponent },
   { path: 'dashbord', pathMatch: 'full',component: DashbordComponent  }

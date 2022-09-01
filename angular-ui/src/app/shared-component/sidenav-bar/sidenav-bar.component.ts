@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidenav-bar.component.css']
 })
 export class SidenavBarComponent implements OnInit {
+  panelOpenState = false;
   mobMuenuStatus = true;
   constructor() { }
 

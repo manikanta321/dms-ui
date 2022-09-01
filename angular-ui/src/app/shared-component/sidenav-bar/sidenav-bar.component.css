@@ -1,3 +1,11 @@
+ .droplist:hover{
+     color: blue;
+ }
+ ::ng-deep.mat-expansion-panel:not([class*=mat-elevation-z]) {
+     box-shadow: none;
+ }
+
+ 
  .a{
     padding: 6px 8px 6px 16px;
     text-decoration: none;

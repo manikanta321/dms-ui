@@ -15,6 +15,7 @@ import { HeadComponent } from './shared-component/head/head.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon'
 import {MatExpansionModule} from '@angular/material/expansion';
+import {BrowserAnimationsModule} from    '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatInputModule ,
     MatToolbarModule,
     MatIconModule,
-    MatExpansionModule
+    MatExpansionModule,
+    BrowserAnimationsModule
+    
 
   ],
   providers: [],

@@ -18,6 +18,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {BrowserAnimationsModule} from    '@angular/platform-browser/animations';
 import { UsersComponent } from './component/users/users.component';
 import { MaterialsComponent } from './component/materials/materials.component';
+import { MaterialsListComponent } from './component/materials-list/materials-list.component';
+import { MaterialsClassificationComponent } from './component/materials-classification/materials-classification.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { MaterialsComponent } from './component/materials/materials.component';
     HeadComponent,
     UsersComponent,
     MaterialsComponent,
+    MaterialsListComponent,
+    MaterialsClassificationComponent,
 
   ],
   imports: [

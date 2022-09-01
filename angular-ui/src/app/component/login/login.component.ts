@@ -21,12 +21,10 @@ export class LoginComponent implements OnInit {
    
   }
   signIn(){
-    alert('mani')
     if(this.usernameofuser==9448254154 && this.passwordofuser=='mani') {
       this.router.navigate(['../dashbord']);
-      
     }
-    this.router.navigate(['./dashbord']);
+    // this.router.navigate(['./dashbord']);
 
   }
 

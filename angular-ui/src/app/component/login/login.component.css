@@ -7,10 +7,13 @@ form{
     width: 361px;
     margin: auto;
 
-
 }
-.form-label{
-    font-size: 16px;
+.signIn-img{
+  text-align: end;
+}
+.signIn-img img{
+  height: 500px;
+  /* width: 100%; */
 }
 .login-form{
   margin-top: 90px;
@@ -20,17 +23,17 @@ form{
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 background-clip: text;
-text-fill-color: transparent;
-  font-size: 36px;
+ text-fill-color: transparent;
+  font-size: 31px;
   font-weight: 700;
-  height: 40px;
-  /* padding: 10px; */
-  padding-top: 8px;
+  /* height: 40px; */
+  padding: 5px 0;
+  /* padding-top: 8px; */
 }
-.login p {
+.login-head p {
   color: #8392AB;
   font-weight: 400;
-font-size: 20px;
+  font-size: 17px;
 }
 .login-btn{
   padding-left: 2.5rem;
@@ -51,9 +54,17 @@ border-radius: 8px;
   padding: 8px;
 }
 .forgot-ps{
-
   color: black;
-
   text-decoration: underline;
-
+}
+.form-outline input{
+      Width:361px;
+          border: 1.6px solid #E293D3;
+          border-radius: 4px;
+          padding: 5px;
+}
+.form-outline label{
+  font-size: 14px;
+  color: #252F40;
+  font-weight: 600;
 }

@@ -1,42 +1,41 @@
 <section class="vh-100">
-    <div class="container-fluid">
-      <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="container">
+      <div class="row signIn-page" style="    width: 75%;
+      margin: auto;">
         
-        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 login-form">
+        <div class="login-form">
           <form>
             <div class="login-head">
-              <h6 class="sign-head ">Sign In</h6>
-              <p style="font-size: 20px;color: #8392AB;">Enter your email and password to sign in</p>
+              <h6 class="sign-head">Sign In</h6>
+              <p >Enter your email and password to sign in</p>
               
             </div>
   
             <!-- Email input -->
             <div class="form-outline mb-4">
-              <label class="form-label" for="form3Example3">Email*</label>
+              <label class="form-label" for="form3Example3">Email</label>
               <!-- <input type="email" id="form3Example3" class="form-control form-control-lg"
                 placeholder="Enter a valid email address"   [(ngModel)]="usernameofuser"  /> -->
                 <br>
                    <input type="text" placeholder="Email" name="username" required [(ngModel)]="usernameofuser"
-          pInputText required   style=" Width:
-          361px;border: 1.6px solid #E293D3;border-radius: 4px;padding: 2px;" />
+          pInputText required />
             </div>
   
             <!-- Password input -->
             <div class="form-outline mb-3">
-              <label class="form-label" for="form3Example4">Password*</label>
+              <label class="form-label" for="form3Example4">Password</label>
               <!-- <input type="password" id="form3Example4" class="form-control form-control-lg"
                 placeholder="Enter password"  [(ngModel)]="passwordofuser" /> -->
                 <br>
                 <input  placeholder="Password"
-                name="password" required [(ngModel)]="passwordofuser" pInputText required   style=" Width:
-                361px;border: 1.6px solid #E293D3;border-radius: 4px;padding: 2px;" /> 
+                name="password" required [(ngModel)]="passwordofuser" pInputText required/> 
             </div>
   
             <div class="d-flex justify-content-between align-items-center">
               <!-- Checkbox -->
               <div >
                 <mat-slide-toggle color="primary">
-Remember me                  </mat-slide-toggle> <br />
+                 Remember me </mat-slide-toggle> <br />
               </div>
               <a routerLink="/ForgotPassword" class="forgot-ps">Forgot password?</a>
             </div>
@@ -50,9 +49,9 @@ Remember me                  </mat-slide-toggle> <br />
   
           </form>
         </div>
-        <div class="col-md-9 col-lg-6 col-xl-5">
-          <img src="../../../assets/img/login.png"
-            class="img-fluid" alt="Sample image" >
+        <div class="signIn-img">
+          <img src="../../../assets/img/signIn-img.svg"
+            class="signImg" alt="Login Image" >
         </div>
       </div>
     </div>

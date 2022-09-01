@@ -9,6 +9,8 @@ import { ForgotPasswordComponent } from './component/forgot-password/forgot-pass
 import { DashbordComponent } from './shared-component/dashbord/dashbord.component';
 import { SidenavBarComponent } from './shared-component/sidenav-bar/sidenav-bar.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     AppRoutingModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
+    MatInputModule 
 
   ],
   providers: [],

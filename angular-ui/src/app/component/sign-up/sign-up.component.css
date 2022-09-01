@@ -13,20 +13,39 @@ height: 500px;
 .reset-ps{
     width: 409px;
     margin: auto;
+    margin-top: -20%;
 }
 .reset-ps label{
     font-size: 12px;
     letter-spacing: -0.331915px;
     font-weight: 600;
 }
-.reset-ps input{
+/* .reset-ps input{
     width: 361px;
     color: #D9D9D9;
     font-size: 14px;
-}
+} */
 .change-ps-btn{
     width: 361px;
     background: linear-gradient(135deg, #3A416F 0%, #141727 100%);
 box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.12), 0px 2px 4px -1px rgba(0, 0, 0, 0.07);
 border-radius: 8px;
+}
+@media (max-width:767px) {
+    .bg-image{
+        display: none;
+    }
+    /* .reset-ps input{
+        width: 320px;
+        
+    } */
+    .change-ps-btn{
+        width: 325px;
+    }
+    .reset-ps{
+        width: 361px;
+        border: none;
+        margin-top: 0px;
+    }
+   
 }

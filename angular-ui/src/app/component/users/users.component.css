@@ -1,10 +1,7 @@
 *{
     background-color: #F5F5F5;
-<<<<<<< Updated upstream
 }
-=======
   
-}
 ::ng-deep.mat-select-panel:not([class*=mat-elevation-z]){
     margin-top: 45px;
 }
@@ -19,4 +16,3 @@
     border: 1px solid white !important;
   }
   
->>>>>>> Stashed changes

@@ -20,6 +20,8 @@ import { UsersComponent } from './component/users/users.component';
 import { MaterialsComponent } from './component/materials/materials.component';
 import { MaterialsListComponent } from './component/materials-list/materials-list.component';
 import { MaterialsClassificationComponent } from './component/materials-classification/materials-classification.component';
+import { AddUserPopupComponent } from './component/users/userPopups/add-user-popup/add-user-popup.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { MaterialsClassificationComponent } from './component/materials-classifi
     MaterialsComponent,
     MaterialsListComponent,
     MaterialsClassificationComponent,
+    AddUserPopupComponent,
 
   ],
   imports: [
@@ -46,7 +49,8 @@ import { MaterialsClassificationComponent } from './component/materials-classifi
     MatToolbarModule,
     MatIconModule,
     MatExpansionModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule
     
 
   ],

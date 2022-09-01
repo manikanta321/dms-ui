@@ -11,6 +11,10 @@ import { SidenavBarComponent } from './shared-component/sidenav-bar/sidenav-bar.
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { HeadComponent } from './shared-component/head/head.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon'
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,7 @@ import { MatInputModule } from '@angular/material/input';
     ForgotPasswordComponent,
     DashbordComponent,
     SidenavBarComponent,
+    HeadComponent,
 
   ],
   imports: [
@@ -28,7 +33,10 @@ import { MatInputModule } from '@angular/material/input';
     AppRoutingModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
-    MatInputModule 
+    MatInputModule ,
+    MatToolbarModule,
+    MatIconModule,
+    MatExpansionModule
 
   ],
   providers: [],

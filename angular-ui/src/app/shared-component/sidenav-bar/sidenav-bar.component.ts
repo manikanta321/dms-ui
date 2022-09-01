@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidenav-bar.component.css']
 })
 export class SidenavBarComponent implements OnInit {
-
+  mobMuenuStatus = true;
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  mobBurgerMenuAction() {
+    console.log('g');
+    this.mobMuenuStatus = !this.mobMuenuStatus;
+  }
+  closeBurgerMenu() {
+    this.mobMuenuStatus = false;
+  }
+ 
 }

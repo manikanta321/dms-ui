@@ -1,0 +1,6 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  ::ng-deep.mat-toolbar-single-row{
+background-color: white;
+  }

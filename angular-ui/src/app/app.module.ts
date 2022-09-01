@@ -20,8 +20,12 @@ import { UsersComponent } from './component/users/users.component';
 import { MaterialsComponent } from './component/materials/materials.component';
 import { MaterialsListComponent } from './component/materials-list/materials-list.component';
 import { MaterialsClassificationComponent } from './component/materials-classification/materials-classification.component';
+<<<<<<< Updated upstream
 import { AddUserPopupComponent } from './component/users/userPopups/add-user-popup/add-user-popup.component';
 import { MatDialogModule } from '@angular/material/dialog';
+=======
+import {MatSelectModule} from '@angular/material/select';
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -50,8 +54,13 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatIconModule,
     MatExpansionModule,
     BrowserAnimationsModule,
+<<<<<<< Updated upstream
     MatDialogModule
     
+=======
+    MatFormFieldModule,
+    MatSelectModule
+>>>>>>> Stashed changes
 
   ],
   providers: [],

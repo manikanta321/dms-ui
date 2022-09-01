@@ -1,3 +1,22 @@
 *{
     background-color: #F5F5F5;
+<<<<<<< Updated upstream
 }
+=======
+  
+}
+::ng-deep.mat-select-panel:not([class*=mat-elevation-z]){
+    margin-top: 45px;
+}
+::ng-deep.mat-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-form-field-flex {
+    border:solid  #2962FF 2px;
+    border-radius: 5px;
+}
+::ng-deep.mat-form-field-appearance-fill .mat-form-field-flex{
+    background-color:#F5F5F5;
+}
+::ng-deep .read-only-true .mat-form-field-appearance-outline .mat-form-field-outline .mat-form-field-outline-start {
+    border: 1px solid white !important;
+  }
+  
+>>>>>>> Stashed changes

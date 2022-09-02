@@ -85,16 +85,22 @@ ul.UNFAPP-lftnav li img{
 }
 @media (min-width:768px){
     .UNFAPP-dshbrd-lftnav-area{
-        position: sticky; top: 92px;
+        position: fixed; top: 92px;
         height: 600px;
         margin-left: -13px;
     }
     .UNFAPP-newwdashbrd-lftnav-area{
-        position: sticky; top: 92px;
+
+        position: fixed;
+
+        top: 63px;
+
         height: 600px;
+
         margin-left: -13px;
 
     }
+   
 }
 
 

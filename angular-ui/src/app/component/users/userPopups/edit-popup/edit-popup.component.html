@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="EditUser-p">
+        <mat-icon  mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+        <div class="head-t">
+            <h3>Edit User</h3>
+        </div>
+        <div class="row edituser">
+            <div class="EditUserForm col-6">
+              
+                    <label>First Name <span>*</span></label>
+                    <br>
+                    <input type="text" placeholder="Enter your First Name">
+                    <br>
+                    <label>Last Name<span>*</span></label>
+                    <br>
+                    <input type="text" placeholder="Enter your First Name">
+                    <br>
+                    <label>Email Id<span>*</span></label>
+                    <br>
+                    <input type="text" placeholder="Enter your First Name">
+                    <br>
+                    <label>Username<span>*</span></label>
+                    <br>
+                    <input type="text" placeholder="Enter your First Name">
+                    <br>
+                    <label>Email <span>*</span></label>
+                    <br>
+                    <input type="text" placeholder="Enter your First Name">
+            </div>
+            <div class="EditUserForm col-6">
+                <label>Phone No<span>*</span></label>
+                <br>
+                <input type="text" placeholder="Enter your First Name">
+                <br>
+                <label>Role<span>*</span></label>
+                <br>
+                <input type="text" placeholder="Enter your First Name">
+                <mat-accordion>
+                    
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                         (closed)="panelOpenState = false">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          Admin
+                        </mat-panel-title>
+                        <!-- <mat-panel-description>
+                          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                        </mat-panel-description> -->
+                      </mat-expansion-panel-header>
+                      <p>Business Manager</p>
+                      <p>Order Manager</p>
+                      <p>Viewer</p>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                  
+                <button class="btn E-saveBtn">Save</button>
+                <button class="btn E-cancelBtn" >Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

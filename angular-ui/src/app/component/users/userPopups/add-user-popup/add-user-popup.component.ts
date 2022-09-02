@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-user-popup.component.css']
 })
 export class AddUserPopupComponent implements OnInit {
-
+  userType: string[] = ['Admin', 'Business Manager', 'Order Manager', 'Viewer'];
   constructor() { }
 
   ngOnInit(): void {

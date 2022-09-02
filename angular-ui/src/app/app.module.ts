@@ -22,6 +22,12 @@ import { MaterialsListComponent } from './component/materials-list/materials-lis
 import { MaterialsClassificationComponent } from './component/materials-classification/materials-classification.component';
 import { AddUserPopupComponent } from './component/users/userPopups/add-user-popup/add-user-popup.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { EditPopupComponent } from './component/users/userPopups/edit-popup/edit-popup.component';
+import { UomPopupComponent } from './component/users/userPopups/uom-popup/uom-popup.component';
+import { EditUomPopupComponent } from './component/users/userPopups/edit-uom-popup/edit-uom-popup.component';
+import { AddTaxTemplateComponent } from './component/users/userPopups/add-tax-template/add-tax-template.component';
+import { EditTaxTemplateComponent } from './component/users/userPopups/edit-tax-template/edit-tax-template.component';
+import { AddcurrencyComponent } from './component/users/userPopups/addcurrency/addcurrency.component';
 import {MatSelectModule} from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import {MatListModule} from '@angular/material/list';
@@ -41,6 +47,12 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MaterialsListComponent,
     MaterialsClassificationComponent,
     AddUserPopupComponent,
+    EditPopupComponent,
+    UomPopupComponent,
+    EditUomPopupComponent,
+    AddTaxTemplateComponent,
+    EditTaxTemplateComponent,
+    AddcurrencyComponent,
 
   ],
   imports: [

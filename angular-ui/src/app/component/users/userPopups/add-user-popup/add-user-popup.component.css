@@ -1,0 +1,47 @@
+
+.head-t h3{
+    color: #0091EA;
+    text-align: center;
+    margin-top: -18px;
+}
+.addU{
+    position: relative;
+}
+.addU:after{
+    content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: #E5EAF4;
+  right: 0;
+  top: 50%;
+  position: absolute;
+}
+.addU:before{
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: #E5EAF4;
+    left: 0;
+    top: 50%;
+    position: absolute;
+}
+.addUserForm input{
+border-radius: 5px;
+border: 1px solid #D6D6D6;
+padding: 8px 5px;
+width: 250px;
+}
+span{
+    color: red;
+}
+.close-icon{
+    left: 100%;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+}
+label{
+    padding: 2px 0;
+}

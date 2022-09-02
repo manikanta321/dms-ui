@@ -1,1 +1,51 @@
-<p>add-user-popup works!</p>
+
+<div class="container">
+    <div class="addUser">
+        <mat-icon  mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+        <div class="head-t">
+        <h3 class="addU">Add User</h3>
+    </div>
+    <div class="addUserForm">
+     <form>
+        <label>First Name <span>*</span></label>
+        <br>
+        <input type="text" placeholder="Enter your First Name" >
+        <br>
+        <label>Last Name<span>*</span></label>
+        <br>
+        <input type="text" placeholder="Enter your First Name" >
+        <br>
+        <label>Email Id<span>*</span></label>
+        <br>
+        <input type="text" placeholder="Enter your First Name" >
+        <br>
+        <label>Username<span>*</span></label>
+        <br>
+        <input type="text" placeholder="Enter your First Name" >
+        <br>
+        <label>Email <span>*</span></label>
+        <br>
+        <input type="text" placeholder="Enter your First Name" >
+        <br>
+        <label>Phone No<span>*</span></label>
+        <br>
+        <input type="text" placeholder="Enter your First Name" >
+        <br>
+        <label>Role<span>*</span></label>
+        <br>
+        <input type="text" placeholder="Enter your First Name" >
+     </form>
+     <!-- <mat-list role="list">
+        <mat-list-item role="listitem">Admin</mat-list-item>
+        <mat-list-item role="listitem">bhbh</mat-list-item>
+        <mat-list-item role="listitem">Item 3</mat-list-item>
+      </mat-list> -->
+      <mat-selection-list >
+        <mat-list-option *ngFor="let user of userType">
+         {{user}}
+        </mat-list-option>
+      </mat-selection-list>
+      <button class="btn btn-primary btn-block">Add</button>
+    </div>
+    </div>
+</div>

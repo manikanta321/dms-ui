@@ -26,6 +26,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H',emailid:'you@smartgig',phonenum:8762287554, status:'active'},
    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H',emailid:'you@smartgig',phonenum:8762287554, status:'locked'},
 ];
+import { EditPopupComponent } from './userPopups/edit-popup/edit-popup.component';
+import { UomPopupComponent } from './userPopups/uom-popup/uom-popup.component';
+import { EditUomPopupComponent } from './userPopups/edit-uom-popup/edit-uom-popup.component';
+import { AddTaxTemplateComponent } from './userPopups/add-tax-template/add-tax-template.component';
+import { AddcurrencyComponent } from './userPopups/addcurrency/addcurrency.component';
 
 @Component({
   selector: 'app-users',
@@ -45,6 +50,21 @@ export class UsersComponent implements OnInit {
  
   }
   addUser(){
-   this.dialog.open( AddUserPopupComponent );
+   this.dialog.open( AddUserPopupComponent,  { height: '580px', });
+  }
+  editUser(){
+    this.dialog.open( EditPopupComponent,);
+  }
+  AddUomPopup(){
+    this.dialog.open(UomPopupComponent,);
+  }
+  EditUomPopup(){
+    this.dialog.open( EditUomPopupComponent,);
+  }
+  addtaxTempl(){
+    this.dialog.open( AddTaxTemplateComponent,);
+  }
+  addCurrency(){
+    this.dialog.open( AddcurrencyComponent);
   }
 }

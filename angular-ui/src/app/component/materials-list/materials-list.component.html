@@ -1,1 +1,16 @@
-<p>materials-list works!</p>
+<div class="row" style="overflow-x: hidden;">
+    <div class="col-xl-3 col-md-3" >
+        <mat-form-field appearance="fill">
+            <mat-label>Role</mat-label>
+            <option label="Search"></option>
+            <mat-select [(value)]="selected">
+              <mat-option>Name</mat-option>
+              <mat-option value="Description">Description</mat-option>
+              <mat-option value="Product Group">Product Group</mat-option>
+              <mat-option value="Brand Name">Brand Name</mat-option>
+              <mat-option value="SKU Number">SKU Number</mat-option>
+
+            </mat-select>
+          </mat-form-field>
+    </div>
+</div>

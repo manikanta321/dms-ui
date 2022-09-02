@@ -11,5 +11,5 @@ export class MaterialsListComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  selected = 'Search';
 }

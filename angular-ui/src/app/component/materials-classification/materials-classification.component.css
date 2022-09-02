@@ -1,0 +1,104 @@
+*{
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.classification {
+    position: absolute;
+    height: 56px;
+    left: 2px;
+    right: 39px;
+    top: 2px;
+    background: #FFFFFF;
+    z-index: 1000;
+}
+.prnt-btn{
+    box-sizing: border-box;
+    position: relative;
+    left: 1047px;
+    right: 70px;
+    top: 64px;
+    bottom: 985px;
+    border: 1px solid #2962FF;
+    border-radius: 4px;
+    z-index: -1;
+}
+.txt-bttn {
+    font-family: 'Gilroy-Bold';
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    
+    color: #000000;
+}
+.text {
+    position: absolute;
+    left: 1.22%;
+    right: 83.91%;
+    top: 8.93%;
+    bottom: 7.14%;
+    font-family: 'Gilroy-ExtraBold';
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    color: #367BF5;
+}
+.f-row {
+    width: 225px;
+    height: 24px;
+    background: #FFFFFF;
+    border: 1px solid #017EFA;
+    top: 67px;
+    left: 15px;
+    padding-left: 134px;
+    padding-top: 5px;
+}
+.fs-row{
+    position: relative;
+    top:20px; 
+    font-family: 'Gilroy-Light';
+    font-size: 10px;
+    line-height: 12px;
+    display: flex;
+    align-items: center;
+    color: #0A7AA6;
+}
+.s-row{
+    position: relative;
+   top:76px; 
+   font-family: 'Gilroy-Light';
+   font-size: 10px;
+   line-height: 12px;
+   display: flex;
+   align-items: center;
+   color: #0A7AA6;
+}
+.t-row{
+    position: relative;
+   top:178px; 
+   font-family: 'Gilroy-Light';
+   font-size: 10px;
+   line-height: 12px;
+   display: flex;
+   align-items: center;
+   color: #0A7AA6;
+}
+.fr-row{
+    position: relative;
+   top:280px; 
+   font-family: 'Gilroy-Light';
+   font-size: 10px;
+   line-height: 12px;
+   display: flex;
+   align-items: center;
+   color: #0A7AA6;
+}
+.fv-row{
+    position: relative;
+   top:382px; 
+   font-family: 'Gilroy-Light';
+   font-size: 10px;
+   line-height: 12px;
+   display: flex;
+   align-items: center;
+   color: #0A7AA6;
+}

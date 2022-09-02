@@ -1,5 +1,59 @@
 *{
     background-color: #F5F5F5;
     width: 100%;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   
+}
+::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled),
+::ng-deep.mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #000000;
+    border-bottom: 3px solid #1292EE;
+    background-color: transparent;
+}
+
+::ng-deep.mat-tab-label:not(.mat-tab-disabled),
+::ng-deep.mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled) {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+}
+
+mat-select-trigger {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 20px;
+}
+
+mat-option {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 150%;
+}
+
+mat-label {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+    align-items: center;
+    color: #324452;
 }

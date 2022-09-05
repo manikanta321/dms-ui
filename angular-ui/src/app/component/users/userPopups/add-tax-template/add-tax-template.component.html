@@ -1,12 +1,59 @@
 <div class="container">
     <div class="EditUser-p">
-        <!-- <mat-icon>close</mat-icon> -->
+        <mat-icon  mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
         <div class="head-t">
             <h3>Add Tax Template</h3>
             <label>Name</label>
             <br>
             <input type="text" placeholder="Indian GST">
         </div>
+       <div class="cl-tax">
+       <div class="tax-head">
+        <div>
+            
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Tax item Name</th>
+                    <th>Options (in %)</th>
+                    <th>Formula</th>
+                </tr>
+                <tr>
+                    <td>A</td>
+                    <td><input type="text" placeholder="IGST"></td>
+                    <td><input type="text" placeholder="0,5,15,25,"></td>
+                    <td><input type="text" placeholder="0,5,15,25,"></td>
+                    <td><p class="minus-icon">-</p></td>
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                </tr>
+                <tr>
+                    <td>B</td>
+                    <td><input type="text" placeholder="IGST"></td>
+                    <td><input type="text" placeholder="0,5,15,25,"></td>
+                    <td><input type="text" placeholder="0,5,15,25,"></td>
+                    <td><p class="minus-icon">-</p></td>
+                    <mat-icon >keyboard_arrow_up</mat-icon>
+                    <!-- <mat-icon class="k-arrw-dwn">keyboard_arrow_down</mat-icon> -->
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td><input type="text" placeholder="IGST"></td>
+                    <td><input type="text" placeholder="0,5,15,25,"></td>
+                    <td><input type="text" placeholder="0,5,15,25,"></td>
+                    <td><p class="minus-icon">-</p></td>
+                    <!-- <mat-icon>keyboard_arrow_up</mat-icon> -->
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                </tr>
+            </table>
+            <div style="text-align: right; padding:20px">
+            <button class="btn E-saveBtn">Save</button>
+                <button class="btn E-cancelBtn" (click)=" closeDialog()" >Cancel</button>
+            </div>
+
+        </div>
        
+
+       </div>
+       </div>
     </div>
 </div>

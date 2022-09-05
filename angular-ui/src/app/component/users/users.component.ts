@@ -19,18 +19,19 @@ export interface PeriodicElement {
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H',emailid:'you@smartgig',phonenum:8762287554,status:'active'},
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H',emailid:'you@smartgig',phonenum:8762287554,status:'inactive'},
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H',emailid:'you@smartgig',phonenum:8762287554 , status:'active'},
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H',emailid:'you@smartgig',phonenum:8762287554, status:'invited'},
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H',emailid:'you@smartgig',phonenum:8762287554, status:'locked'},
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H',emailid:'you@smartgig',phonenum:8762287554, status:'active'},
-   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H',emailid:'you@smartgig',phonenum:8762287554, status:'locked'},
+  {position: 2, name: 'Hydrogen', weight: 1.0079, symbol: 'H',emailid:'you@smartgig',phonenum:8762287554,status:'inactive'},
+  {position: 3, name: 'Hydrogen', weight: 1.0079, symbol: 'H',emailid:'you@smartgig',phonenum:8762287554 , status:'active'},
+  {position: 4, name: 'Hydrogen', weight: 1.0079, symbol: 'H',emailid:'you@smartgig',phonenum:8762287554, status:'invited'},
+  {position: 5, name: 'Hydrogen', weight: 1.0079, symbol: 'H',emailid:'you@smartgig',phonenum:8762287554, status:'locked'},
+  {position: 6, name: 'Hydrogen', weight: 1.0079, symbol: 'H',emailid:'you@smartgig',phonenum:8762287554, status:'active'},
+   {position: 7, name: 'Hydrogen', weight: 1.0079, symbol: 'H',emailid:'you@smartgig',phonenum:8762287554, status:'locked'},
 ];
 import { EditPopupComponent } from './userPopups/edit-popup/edit-popup.component';
 import { UomPopupComponent } from './userPopups/uom-popup/uom-popup.component';
 import { EditUomPopupComponent } from './userPopups/edit-uom-popup/edit-uom-popup.component';
 import { AddTaxTemplateComponent } from './userPopups/add-tax-template/add-tax-template.component';
 import { AddcurrencyComponent } from './userPopups/addcurrency/addcurrency.component';
+import { EditTaxTemplateComponent } from './userPopups/edit-tax-template/edit-tax-template.component';
 
 @Component({
   selector: 'app-users',
@@ -66,5 +67,8 @@ export class UsersComponent implements OnInit {
   }
   addCurrency(){
     this.dialog.open( AddcurrencyComponent);
+  }
+  edittaxTempl(){
+    this.dialog.open( EditTaxTemplateComponent);
   }
 }

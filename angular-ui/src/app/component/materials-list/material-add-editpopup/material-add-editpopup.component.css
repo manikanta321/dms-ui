@@ -134,8 +134,14 @@
 .add-button-section {
     justify-content: end;
     padding: 0 10px 0 0;
+    margin-top: 10px
 }
 
+.add-button-section .btn{
+    margin-right: 10px;
+    margin-left: 10px;
+
+}
 .geographic-container {
     background: #fff;
     margin: 0px;

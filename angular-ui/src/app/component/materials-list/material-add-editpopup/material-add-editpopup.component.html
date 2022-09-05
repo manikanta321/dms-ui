@@ -44,13 +44,15 @@
                     <span class="primary-color">Expiry Date</span>
 
                     <div class="same-line">
-                        <input type="radio" checked name="expirySelection" id="cb1" class="radio">
+                        <input type="radio" checked name="expirySelection" value="No" id="cb1"
+                            (change)="expiryDateChange($event)" class="radio">
                         <label class="radio" for="cb1">
                             No</label>
                         <div class="clear-form"></div>
                     </div>
                     <div class="same-line">
-                        <input type="radio" name="expirySelection" id="cb2" class="radio">
+                        <input type="radio" name="expirySelection" id="cb2" value="Yes"
+                            (change)="expiryDateChange($event)" class="radio">
                         <label class="radio" for="cb2">Yes</label>
                         <div class="clear-form"></div>
                     </div>
@@ -125,7 +127,7 @@
                 </div>
             </div>
         </div>
-        <div class="product-information-section">
+        <div class="product-information-section" *ngIf="isExpriySelected">
             <h3 class="primary-color">Product Information</h3>
             <div class="row">
                 <div class="col-md-8">
@@ -167,7 +169,7 @@
             </div>
         </div>
 
-        <div class="geographic-section">
+        <div class="geographic-section" *ngIf="isExpriySelected">
             <h3 class="primary-color">Geographic</h3>
             <div class="row geographic-container">
                 <div class="col-md-3">
@@ -227,9 +229,8 @@
                     </div>
                 </div>
             </div>
-
-        </div>       
-        <div class="price-section">
+        </div>
+        <div class="price-section" *ngIf="isExpriySelected">
             <h3 class="primary-color">Price Information</h3>
             <div class="row">
                 <div class="col-md-4">
@@ -245,13 +246,13 @@
                                             <li>North</li>
                                             <li>East</li>
                                             <li>West</li>
-                                          </ul> 
+                                        </ul>
                                     </li>
-                                  </ul> 
+                                </ul>
                             </li>
                             <li>India</li>
                             <li>Philippines</li>
-                          </ul> 
+                        </ul>
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -289,8 +290,11 @@
                     </div>
                 </div>
             </div>
+        </div>
     </div>
+
     <div class="row add-button-section">
-        <button type="button" class="btn btn-primary btn-dms-success" (click)="addEditMaterial()">Add</button>
+        <button type="button" class="btn btn-primary btn-dms-success" [ngClass]="{'btn-block': !isExpriySelected}"
+            (click)="addEditMaterial()">Add</button>
     </div>
 </div>

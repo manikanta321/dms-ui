@@ -9,11 +9,17 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class MaterialAddEditpopupComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<MaterialAddEditpopupComponent>) { }
+  isExpriySelected:boolean = false;
 
   ngOnInit(): void {
   }
 
   addEditMaterial(){
     this.dialogRef.close();
+  }
+
+  expiryDateChange(event:any){
+    console.log(event.target.value);
+    this.isExpriySelected = event.target.value == "Yes" ? true:false;
   }
 }

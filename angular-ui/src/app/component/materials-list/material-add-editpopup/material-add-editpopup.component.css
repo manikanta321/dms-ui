@@ -1,7 +1,10 @@
 .add-edit-material-modal{
     background: #DADADA;
-    padding: 24px;
+    padding: 16px;
     min-width: 540px;
+}
+.modal-title{
+    padding: 0 15px;
 }
 .modal-header {
     color: #0091EA;
@@ -31,11 +34,21 @@
     z-index: -1;
 }
 
-.mat-icon.close-icon{
+.close-icon{
     position: absolute;
-    top: -10px;
-    right: 10px;
+    top:0px;
+    right: 20px;
     color: #5A7184;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-container{
+    padding-right: 10px;
+    height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-left: 15px;
 }
 .file-container{
     text-align: center;
@@ -95,7 +108,7 @@
         border-radius: 50%;
 }
 .measure-icons{
-    text-align: right;
+    float: right;
 }
 .add-measure{
     background-color: #017EFA;
@@ -110,4 +123,9 @@
 
 .p-r-0{
     padding-right: 0;
+}
+
+.add-button-section{
+    justify-content: end;
+    padding: 0 10px 0 0;
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-material-add-editpopup',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MaterialAddEditpopupComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<MaterialAddEditpopupComponent>) { }
 
   ngOnInit(): void {
   }
 
+  addEditMaterial(){
+    this.dialogRef.close();
+  }
 }

@@ -34,6 +34,7 @@ import { MatTableModule } from '@angular/material/table';
 import {MatListModule} from '@angular/material/list';
 import { MatMenuModule} from '@angular/material/menu';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { MaterialAddEditpopupComponent } from './component/materials-list/material-add-editpopup/material-add-editpopup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +55,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     AddTaxTemplateComponent,
     EditTaxTemplateComponent,
     AddcurrencyComponent,
+    MaterialAddEditpopupComponent,
 
   ],
   imports: [

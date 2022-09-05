@@ -1,0 +1,129 @@
+<div class="add-edit-material-modal">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="modal-header"><span>Add Materials</span></div>
+            <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="sel1" class="primary-color">Genric Name</label>
+                <select class="custom-select" id="sel1">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+              </div>
+              
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="usr" class="primary-color">Unit of Measure</label>
+                <input type="text" class="form-control" id="usr">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="Description" class="primary-color">Description</label>
+                <textarea class="form-control" name="description" id="Description" cols="3" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group file-container">
+                <input class="form-control" type="file" id="file">
+                <label for="file">choose a file</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-inline">
+                <span class="primary-color">Expiry Date</span>
+
+                <div class="same-line">
+                    <input type="radio" checked name="expirySelection" id="cb1" class="radio">
+                    <label class="radio" for="cb1">
+                    No</label>
+                    <div class="clear-form"></div>
+                </div>
+                <div class="same-line">
+                    <input type="radio" name="expirySelection" id="cb2" class="radio">
+                    <label class="radio" for="cb2">Yes</label>
+                    <div class="clear-form"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="Description" class="primary-color">Additional Unit of Measure</label>
+                <textarea class="form-control" name="description" id="Description" cols="3" rows="3"></textarea>
+            </div>
+            <div class="measure-icons">
+                <button class="add-measure"> + </button>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-md-2 p-r-0">
+                    <input type="text" class="form-control" id="usr">
+                </div>
+
+                <div class="col-md-6 p-r-0">
+                    <select class="custom-select" id="sel1">
+                        <option>Units</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                </div>
+                <div class="col-md-3 p-r-0">
+                    = 4 BOX
+                </div>
+                <div class="col-md-1 p-0">
+                    <button class="minus-measure"> -</button>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-md-2 p-r-0">
+                    <input type="text" class="form-control" id="usr">
+                </div>
+                <div class="col-md-6 p-r-0">
+                    <select class="custom-select" id="sel1">
+                        <option>Units</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                </div>
+                <div class="col-md-3 p-r-0">
+                    = 2 BOX
+                </div>
+                <div class="col-md-1 p-0">
+                    <button class="minus-measure"> -</button>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-md-2 p-r-0">
+                    <input type="text" class="form-control" id="usr">
+                </div>
+                <div class="col-md-6 p-r-0">
+                    <select class="custom-select" id="sel1">
+                        <option>Units</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                </div>
+                <div class="col-md-3 p-r-0">
+                    = 1 BOX
+                </div>
+                <div class="col-md-1 p-0">
+                    <button class="minus-measure"> -</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

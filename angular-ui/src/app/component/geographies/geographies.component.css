@@ -1,0 +1,34 @@
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: blue !important;
+}
+
+.country-t {
+    background:rgba(217, 217, 217, 1);
+    border: 1px solid black;
+    Height:387px;
+
+}
+.country-name{
+margin: 10px;
+}
+.cname{
+/* background: rgba(46, 136, 212, 1); */
+padding: 5px;
+border: 1px solid  rgba(46, 136, 212, 1);
+}
+.c-span{
+    background: #2E88D4;
+    border-radius: 50%;
+    padding: 1px 2px;
+    color: white;
+    font-weight: 600;
+    margin: 5px;
+}
+.c-head{
+    font-family: 'Gilroy-ExtraBold';
+    font-size: 20px;
+    /* padding: 10px; */
+}
+/* .head-d{
+margin: 2px;
+} */

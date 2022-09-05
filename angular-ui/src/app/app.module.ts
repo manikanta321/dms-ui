@@ -37,7 +37,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { MaterialAddEditpopupComponent } from './component/materials-list/material-add-editpopup/material-add-editpopup.component';
 import { OtherMastersComponent } from './component/other-masters/other-masters.component';
 import { DealerComponent } from './component/dealer/dealer.component';
+import { GeographiesComponent } from './component/geographies/geographies.component';
 // import {MatTabsModule} from '@angular/material/tabs';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,7 @@ import { DealerComponent } from './component/dealer/dealer.component';
     MaterialAddEditpopupComponent,
     OtherMastersComponent,
     DealerComponent,
+    GeographiesComponent,
 
   ],
   imports: [
@@ -83,7 +86,8 @@ import { DealerComponent } from './component/dealer/dealer.component';
     MatListModule,
     MatMenuModule,
     MatPaginatorModule,
-    MatTabsModule
+    MatTabsModule,
+    MatCheckboxModule
     
   ],
   providers: [],

@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidenavBarComponent implements OnInit {
   panelOpenState = false;
   mobMuenuStatus = true;
+  toggle = true;
+  status = "Enable";
   constructor() { }
 
   ngOnInit(): void {
@@ -19,5 +21,8 @@ export class SidenavBarComponent implements OnInit {
   closeBurgerMenu() {
     this.mobMuenuStatus = false;
   }
- 
+  enableDisableRule() {
+    this.toggle = !this.toggle;
+    this.status = this.toggle ? "Enable" : "Disable";
+  }
 }

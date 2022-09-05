@@ -36,6 +36,7 @@ import { MatMenuModule} from '@angular/material/menu';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MaterialAddEditpopupComponent } from './component/materials-list/material-add-editpopup/material-add-editpopup.component';
 import { OtherMastersComponent } from './component/other-masters/other-masters.component';
+import { DealerComponent } from './component/dealer/dealer.component';
 // import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
@@ -60,6 +61,7 @@ import { OtherMastersComponent } from './component/other-masters/other-masters.c
     AddcurrencyComponent,
     MaterialAddEditpopupComponent,
     OtherMastersComponent,
+    DealerComponent,
 
   ],
   imports: [

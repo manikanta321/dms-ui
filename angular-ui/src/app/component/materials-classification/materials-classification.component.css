@@ -17,12 +17,13 @@
 .prnt-btn{
     box-sizing: border-box;
     position: relative;
-    top: 64px;
+    top: 67px;
     bottom: 985px;
     border: 1px solid #2962FF;
     border-radius: 4px;
     z-index: 1000;
     padding: 3px 8px;
+    left: 89%;
 }
 .txt-bttn {
     font-family: 'Gilroy-Bold';

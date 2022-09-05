@@ -45,6 +45,7 @@ import { UomPopupComponent } from '../users/userPopups/uom-popup/uom-popup.compo
 import { EditUomPopupComponent } from '../users/userPopups/edit-uom-popup/edit-uom-popup.component';
 import { AddTaxTemplateComponent } from '../users/userPopups/add-tax-template/add-tax-template.component';
 import { AddcurrencyComponent } from '../users/userPopups/addcurrency/addcurrency.component';
+import { EditTaxTemplateComponent } from '../users/userPopups/edit-tax-template/edit-tax-template.component';
 
 @Component({
   selector: 'app-other-masters',
@@ -80,6 +81,9 @@ export class OtherMastersComponent implements OnInit {
   }
   addtaxTempl(){
     this.dialog.open( AddTaxTemplateComponent,);
+  }
+  editTaxTemp(){
+    this.dialog.open(EditTaxTemplateComponent,);
   }
   addCurrency(){
     this.dialog.open( AddcurrencyComponent);

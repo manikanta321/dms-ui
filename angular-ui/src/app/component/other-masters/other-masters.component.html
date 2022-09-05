@@ -83,7 +83,7 @@
                  <td class="tabeldata" mat-cell *matCellDef="let element">    
                    <button mat-button [matMenuTriggerFor]="menu" style="border:white;" class="btn btn-outline-light"><img src="../../../assets/img/edit.svg"  alt=""  /></button>
            <mat-menu #menu="matMenu" style="border:white;background-color: white;">
-             <button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;" (click)=" editUser()">Edit</button>
+             <button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;" (click)=" EditUomPopup()">Edit</button>
              <button mat-menu-item  class="btn btn-outline-light" style="border:white;background-color: white;">Delete</button>
            </mat-menu></td>
                </ng-container>
@@ -128,7 +128,7 @@
                  </div>
 
             </div>
-            <button (click)="AddUomPopup()" style="float: right;"> + ADD Tax template</button>
+            <button (click)="addtaxTempl()" style="float: right;"> + ADD Tax template</button>
             <br>
             <br>
            <div >
@@ -179,7 +179,7 @@
                  <td class="tabeldata" mat-cell *matCellDef="let element">    
                    <button mat-button [matMenuTriggerFor]="menu" style="border:white;" class="btn btn-outline-light"><img src="../../../assets/img/edit.svg"  alt=""  /></button>
            <mat-menu #menu="matMenu" style="border:white;background-color: white;">
-             <button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;" (click)=" editUser()">Edit</button>
+             <button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;" (click)=" editTaxTemp()">Edit</button>
              <button mat-menu-item  class="btn btn-outline-light" style="border:white;background-color: white;">active</button>
              <button mat-menu-item  class="btn btn-outline-light" style="border:white;background-color: white;">inactive</button>
            </mat-menu></td>
@@ -225,7 +225,7 @@
                  </div>
 
             </div>
-            <button (click)="AddUomPopup()" style="float: right;"> + ADD Currency</button>
+            <button (click)="addCurrency()" style="float: right;"> + ADD Currency</button>
             <br>
             <br>
            <div >

@@ -2,35 +2,35 @@
     <div class="EditUser-p">
         <mat-icon  mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
         <div class="head-t">
-            <h3>Edit User</h3>
+            <h3>Add Currency</h3>
         </div>
         <div class="row edituser">
-            <div class="EditUserForm col-6">
+            <div class="AddUserForm col-6">
               
-                    <label>First Name </label>
+                    <label>Name </label>
+                    <br>
+                    <input type="text" placeholder="">
+                    <br>
+                    <label>Display Units</label>
                     <br>
                     <input type="text" placeholder="Enter your First Name">
                     <br>
-                    <label>Last Name</label>
-                    <br>
-                    <input type="text" placeholder="Enter your First Name">
-                    <br>
-                    <label>Email Id</label>
+                    <label>Conversion Rate</label>
                     <br>
                     <input type="text" placeholder="Enter your First Name">
                    
             </div>
-            <div class="EditUserForm col-6">
-                <label>Phone No</label>
+            <div class="AddUserForm col-6">
+                <label>Default Currency</label>
                 <br>
-                <input type="text" placeholder="Enter your First Name">
+                <input type="number" placeholder="12">
                 <br>
-                <label>Role</label>
+                <label>Conversion</label>
                 <br>
                 <input type="text" placeholder="Enter your First Name">
                   <div style="margin-top: 10px;">
                     <button class="btn E-saveBtn">Save</button>
-                    <button class="btn E-cancelBtn" >Cancel</button>
+                    <button class="btn E-cancelBtn" (click)=" closeDialog()" >Cancel</button>
                   </div>
             </div>
         </div>

@@ -24,11 +24,30 @@
                     <td><input type="text" placeholder="0,5,15,25,"></td>
                     <td><input type="text" placeholder="0,5,15,25,"></td>
                     <td><p class="minus-icon">-</p></td>
+                    <mat-icon>keyboard_arrow_down</mat-icon>
+                </tr>
+                <tr>
+                    <td>B</td>
+                    <td><input type="text" placeholder="IGST"></td>
+                    <td><input type="text" placeholder="0,5,15,25,"></td>
+                    <td><input type="text" placeholder="0,5,15,25,"></td>
+                    <td><p class="minus-icon">-</p></td>
+                    <mat-icon >keyboard_arrow_up</mat-icon>
+                    <!-- <mat-icon class="k-arrw-dwn">keyboard_arrow_down</mat-icon> -->
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td><input type="text" placeholder="IGST"></td>
+                    <td><input type="text" placeholder="0,5,15,25,"></td>
+                    <td><input type="text" placeholder="0,5,15,25,"></td>
+                    <td><p class="minus-icon">-</p></td>
+                    <!-- <mat-icon>keyboard_arrow_up</mat-icon> -->
+                    <mat-icon>keyboard_arrow_down</mat-icon>
                 </tr>
             </table>
             <div style="text-align: right; padding:20px">
             <button class="btn E-saveBtn">Save</button>
-                <button class="btn E-cancelBtn" >Cancel</button>
+                <button class="btn E-cancelBtn" (click)=" closeDialog()" >Cancel</button>
             </div>
 
         </div>

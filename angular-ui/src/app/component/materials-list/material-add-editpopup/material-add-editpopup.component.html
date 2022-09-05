@@ -44,13 +44,15 @@
                     <span class="primary-color">Expiry Date</span>
 
                     <div class="same-line">
-                        <input type="radio" checked name="expirySelection" id="cb1" class="radio">
+                        <input type="radio" checked name="expirySelection" value="No" id="cb1"
+                            (change)="expiryDateChange($event)" class="radio">
                         <label class="radio" for="cb1">
                             No</label>
                         <div class="clear-form"></div>
                     </div>
                     <div class="same-line">
-                        <input type="radio" name="expirySelection" id="cb2" class="radio">
+                        <input type="radio" name="expirySelection" id="cb2" value="Yes"
+                            (change)="expiryDateChange($event)" class="radio">
                         <label class="radio" for="cb2">Yes</label>
                         <div class="clear-form"></div>
                     </div>
@@ -125,8 +127,8 @@
                 </div>
             </div>
         </div>
-        <div class="product-information-section">
-            <h5 class="primary-color">Product Information</h5>
+        <div class="product-information-section" *ngIf="isExpriySelected">
+            <h3 class="primary-color">Product Information</h3>
             <div class="row">
                 <div class="col-md-8">
                     <div class="form-group">
@@ -167,8 +169,132 @@
             </div>
         </div>
 
-        <div class="row add-button-section">
-            <button type="button" class="btn btn-primary btn-dms-success" (click)="addEditMaterial()">Add</button>
+        <div class="geographic-section" *ngIf="isExpriySelected">
+            <h3 class="primary-color">Geographic</h3>
+            <div class="row geographic-container">
+                <div class="col-md-3">
+                    <p class="primary-color">Country</p>
+                    <div class="geographic-grid-content">
+                        <div class="column column-yellow selected">
+                            Malaysia (71/126)
+                        </div>
+                        <div class="column column-green">
+                            India (178/178)
+                        </div>
+                        <div class="column column-red">
+                            Philippines (0/135)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <p class="primary-color">State</p>
+                    <div class="geographic-grid-content">
+                        <div class="column column-red">
+                            Johor (0/126)
+                        </div>
+                        <div class="column column-green">
+                            Kedah (178/178)
+                        </div>
+                        <div class="column column-yellow selected">
+                            Penang (0/135)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <p class="primary-color">Region</p>
+                    <div class="geographic-grid-content">
+                        <div class="column column-green">
+                            North (71/126)
+                        </div>
+                        <div class="column column-green selected">
+                            East (178/178)
+                        </div>
+                        <div class="column column-red">
+                            West (0/135)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <p class="primary-color">City</p>
+                    <div class="geographic-grid-content">
+                        <div class="column column-yellow selected">
+                            GeorgeTown
+                        </div>
+                        <div class="column column-yellow selected">
+                            Balik Pulau
+                        </div>
+                        <div class="column column-yellow selected">
+                            Batu Caves
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div class="price-section" *ngIf="isExpriySelected">
+            <h3 class="primary-color">Price Information</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Geographic</p>
+                    <div class="price-list">
+                        <ul>
+                            <li>Malaysia (71/126)
+                                <ul>
+                                    <li>Kedah(71/126)</li>
+                                    <li>Park (14/26)</li>
+                                    <li>Penang (21/22)
+                                        <ul>
+                                            <li>North</li>
+                                            <li>East</li>
+                                            <li>West</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>India</li>
+                            <li>Philippines</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="price-input">
+                        <div class="row">
+                            <div class="col-md-3">Min. Order Qty</div>
+                            <div class="col-md-3">Margin (%)</div>
+                            <div class="col-md-3">MRP</div>
+                            <div class="col-md-3">Load Time (Days)</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"><input type="text" class="form-control" id="usr"></div>
+                            <div class="col-md-3"><input type="text" class="form-control" id="usr"></div>
+                            <div class="col-md-3"><input type="text" class="form-control" id="usr"></div>
+                            <div class="col-md-3"><input type="text" class="form-control" id="usr"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"><input type="text" class="form-control" id="usr"></div>
+                            <div class="col-md-3"><input type="text" class="form-control" id="usr"></div>
+                            <div class="col-md-3"><input type="text" class="form-control" id="usr"></div>
+                            <div class="col-md-3"><input type="text" class="form-control" id="usr"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"><input type="text" class="form-control" id="usr"></div>
+                            <div class="col-md-3"><input type="text" class="form-control" id="usr"></div>
+                            <div class="col-md-3"><input type="text" class="form-control" id="usr"></div>
+                            <div class="col-md-3"><input type="text" class="form-control" id="usr"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"><input type="text" class="form-control" id="usr"></div>
+                            <div class="col-md-3"><input type="text" class="form-control" id="usr"></div>
+                            <div class="col-md-3"><input type="text" class="form-control" id="usr"></div>
+                            <div class="col-md-3"><input type="text" class="form-control" id="usr"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row add-button-section">
+        <button type="button" class="btn btn-primary btn-dms-success" [ngClass]="{'btn-block': !isExpriySelected}"
+            (click)="addEditMaterial()">Add</button>
     </div>
 </div>

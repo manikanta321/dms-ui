@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 @Component({
-  selector: 'app-edit-tax-template',
-  templateUrl: './edit-tax-template.component.html',
-  styleUrls: ['./edit-tax-template.component.css']
+  selector: 'app-delete-popup',
+  templateUrl: './delete-popup.component.html',
+  styleUrls: ['./delete-popup.component.css']
 })
-export class EditTaxTemplateComponent implements OnInit {
-
+export class DeletePopupComponent implements OnInit {
+  panelOpenState = true;
   constructor(private dialogRef: MatDialogRef<any>) { }
 
   ngOnInit(): void {

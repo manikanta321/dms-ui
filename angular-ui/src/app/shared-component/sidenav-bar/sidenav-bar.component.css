@@ -96,15 +96,10 @@ ul.UNFAPP-lftnav li img{
         margin-left: -13px;
     }
     .UNFAPP-newwdashbrd-lftnav-area{
-
         position: fixed;
-
         top: 63px;
-
         height: 600px;
-
         margin-left: -13px;
-
     }
    
 }
@@ -171,4 +166,8 @@ ul.UNFAPP-lftnav li img{
         color:#000;
         font-weight: 600;
     }
+}
+
+.droplist{
+    cursor: pointer;
 }

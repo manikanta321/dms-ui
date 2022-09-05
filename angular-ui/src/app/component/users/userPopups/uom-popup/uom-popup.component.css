@@ -18,3 +18,9 @@ span{
    margin-top: 20px;
    border-radius: 5px;
 }
+.close-icon{
+    left: 100%;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+}

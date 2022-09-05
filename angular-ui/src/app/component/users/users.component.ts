@@ -31,6 +31,7 @@ import { UomPopupComponent } from './userPopups/uom-popup/uom-popup.component';
 import { EditUomPopupComponent } from './userPopups/edit-uom-popup/edit-uom-popup.component';
 import { AddTaxTemplateComponent } from './userPopups/add-tax-template/add-tax-template.component';
 import { AddcurrencyComponent } from './userPopups/addcurrency/addcurrency.component';
+import { EditTaxTemplateComponent } from './userPopups/edit-tax-template/edit-tax-template.component';
 
 @Component({
   selector: 'app-users',
@@ -66,5 +67,8 @@ export class UsersComponent implements OnInit {
   }
   addCurrency(){
     this.dialog.open( AddcurrencyComponent);
+  }
+  edittaxTempl(){
+    this.dialog.open( EditTaxTemplateComponent);
   }
 }

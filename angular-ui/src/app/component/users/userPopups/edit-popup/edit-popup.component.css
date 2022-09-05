@@ -2,6 +2,7 @@
 .head-t{
     color: #0091EA;
 }
+
 .EditUserForm input{
 border-radius: 5px;
 border: 1px solid #D6D6D6;
@@ -29,7 +30,7 @@ background: #0091EA;
    }
 .E-cancelBtn:hover{
     border: 2px solid rgba(250, 63, 63, 1);
-   }
+   }    
    .close-icon{
     left: 100%;
     position: relative;

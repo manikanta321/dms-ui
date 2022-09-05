@@ -1,0 +1,49 @@
+
+.head-t{
+    color: #0091EA;
+}
+.head-t input{
+    border-radius: 5px;
+    border: 1px solid #D6D6D6;
+    padding: 10px 5px;
+    width: 250px;
+}
+.tax-head input{
+border-radius: 5px;
+border: 1px solid #D6D6D6;
+padding: 8px 5px;
+width: 250px;
+}
+span{
+    color: red;
+}
+label{
+    padding: 2px 0;
+}
+.E-saveBtn{
+background: #0091EA;
+ padding: 2px 30px;
+ margin-right: 10px;
+}
+.E-cancelBtn{
+    background: #fff;
+    padding: 2px 30px;
+    border: 1px solid grey;
+}
+.E-saveBtn:hover{
+    border: 2px solid rgba(250, 63, 63, 1);
+   }
+.E-cancelBtn:hover{
+    border: 2px solid rgba(250, 63, 63, 1);
+   }
+   .close-icon{
+    left: 100%;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+}
+.minus-icon{
+ background: green;
+ padding: 0 5px;
+ border-radius: 50%;
+}

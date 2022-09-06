@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DealerComponent } from './component/dealer/dealer.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
+import { GeographiesComponent } from './component/geographies/geographies.component';
 import { LoginComponent } from './component/login/login.component';
 import { MaterialsClassificationComponent } from './component/materials-classification/materials-classification.component';
 import { MaterialsListComponent } from './component/materials-list/materials-list.component';
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'dashbord/materials/materials-classification', pathMatch: 'full',component: MaterialsClassificationComponent  },
   { path: 'dashbord/other-masters', pathMatch: 'full',component: OtherMastersComponent  },
   { path: 'dashbord/dealer', pathMatch: 'full',component: DealerComponent  }
-
+,
+  { path: 'dashbord/geographies', pathMatch: 'full',component: GeographiesComponent  }
 ];
 
 @NgModule({

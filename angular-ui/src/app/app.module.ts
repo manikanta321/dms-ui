@@ -43,6 +43,7 @@ import { ReportsComponent } from './reports/reports.component';
 import { GeographiesComponent } from './component/geographies/geographies.component';
 // import {MatTabsModule} from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { ImpactedAssociationComponent } from './component/materials-list/impacted-association/impacted-association.component';
 import { AddDealerPopupComponent } from './component/Dealer-Popup/add-dealer-popup/add-dealer-popup.component';
 
 @NgModule({
@@ -72,7 +73,8 @@ import { AddDealerPopupComponent } from './component/Dealer-Popup/add-dealer-pop
     AssociationComponent,
     ReportsComponent,
     GeographiesComponent,
-    AddDealerPopupComponent
+    AddDealerPopupComponent,
+    ImpactedAssociationComponent
 
   ],
   imports: [

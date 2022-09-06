@@ -43,6 +43,7 @@ import { ReportsComponent } from './reports/reports.component';
 import { GeographiesComponent } from './component/geographies/geographies.component';
 // import {MatTabsModule} from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { ImpactedAssociationComponent } from './component/materials-list/impacted-association/impacted-association.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     DealersComponent,
     AssociationComponent,
     ReportsComponent,
-    GeographiesComponent
+    GeographiesComponent,
+    ImpactedAssociationComponent
 
   ],
   imports: [

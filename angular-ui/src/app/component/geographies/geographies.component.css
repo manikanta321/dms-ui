@@ -1,7 +1,10 @@
-.mat-checkbox-checked.mat-accent .mat-checkbox-background {
-    background-color: blue !important;
+*{
+    background-color: #F5F5F5;
+  
 }
-
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: black !important;
+  }
 .country-t {
     background: rgba(217, 217, 217, 1);
     border: 1px solid black;
@@ -11,11 +14,44 @@
 
 .country-name {
     margin: 10px;
+    background: rgba(217, 217, 217, 1);
 }
 .c-span {
     background: #2E88D4;
     border-radius: 50%;
-    padding: 1px 2px;
+    padding: 1px 3px;
+    color: white;
+    font-weight: 600;
+    margin: 5px 10px;
+}
+.S-span {
+    background: #27AE60;
+    border-radius: 50%;
+    padding: 1px 3px;
+    color: white;
+    font-weight: 600;
+    margin: 5px 10px;
+}
+.D-span {
+    background: #FA3F3F;
+    border-radius: 50%;
+    padding: 1px 3px;
+    color: white;
+    font-weight: 600;
+    margin: 5px 10px;
+}
+.city-span{
+    background: #8B25F0;
+    border-radius: 50%;
+    padding: 1px 3px;
+    color: white;
+    font-weight: 600;
+    margin: 5px 10px;
+}
+.R-span {
+    background: #273B4A;
+    border-radius: 50%;
+    padding: 1px 3px;
     color: white;
     font-weight: 600;
     margin: 5px;
@@ -24,6 +60,7 @@
 .c-head {
     font-weight: 600;
     font-size: 15px;
+    margin-right: 20px;
     /* padding: 10px; */
 }
 

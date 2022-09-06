@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ImpactedAssociationComponent } from './impacted-association/impacted-association.component';
 import { MaterialAddEditpopupComponent } from './material-add-editpopup/material-add-editpopup.component';
 
 
@@ -40,6 +41,12 @@ export class MaterialsListComponent implements OnInit {
 
   addEditMaterial(){
     const dialogRef =  this.dialog.open( MaterialAddEditpopupComponent, { panelClass: 'custom-dialog-container' });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  impactedAssociation(){
+    const dialogRef =  this.dialog.open( ImpactedAssociationComponent , { panelClass: 'custom-dialog-container' });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

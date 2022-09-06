@@ -67,6 +67,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MaterialAddEditpopupComponent,
     OtherMastersComponent,
     DealerComponent,
+    DealersComponent,
+    AssociationComponent,
+    ReportsComponent,
+    GeographiesComponent
 
   ],
   imports: [

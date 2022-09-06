@@ -1,34 +1,123 @@
+*{
+    background-color: #F5F5F5;
+  
+}
 .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-    background-color: blue !important;
-}
-
+    background-color: black !important;
+  }
 .country-t {
-    background:rgba(217, 217, 217, 1);
+    background: rgba(217, 217, 217, 1);
     border: 1px solid black;
-    Height:387px;
+    Height: 387px;
 
 }
-.country-name{
-margin: 10px;
+
+.country-name {
+    margin: 10px;
+    background: rgba(217, 217, 217, 1);
 }
-.cname{
-/* background: rgba(46, 136, 212, 1); */
-padding: 5px;
-border: 1px solid  rgba(46, 136, 212, 1);
-}
-.c-span{
+.c-span {
     background: #2E88D4;
     border-radius: 50%;
-    padding: 1px 2px;
+    padding: 1px 3px;
+    color: white;
+    font-weight: 600;
+    margin: 5px 10px;
+}
+.S-span {
+    background: #27AE60;
+    border-radius: 50%;
+    padding: 1px 3px;
+    color: white;
+    font-weight: 600;
+    margin: 5px 10px;
+}
+.D-span {
+    background: #FA3F3F;
+    border-radius: 50%;
+    padding: 1px 3px;
+    color: white;
+    font-weight: 600;
+    margin: 5px 10px;
+}
+.city-span{
+    background: #8B25F0;
+    border-radius: 50%;
+    padding: 1px 3px;
+    color: white;
+    font-weight: 600;
+    margin: 5px 10px;
+}
+.R-span {
+    background: #273B4A;
+    border-radius: 50%;
+    padding: 1px 3px;
     color: white;
     font-weight: 600;
     margin: 5px;
 }
-.c-head{
-    font-family: 'Gilroy-ExtraBold';
-    font-size: 20px;
+
+.c-head {
+    font-weight: 600;
+    font-size: 15px;
+    margin-right: 20px;
     /* padding: 10px; */
 }
+
 /* .head-d{
 margin: 2px;
 } */
+.c-head:hover {
+    color: #2E88D4;
+}
+.cname {
+    /* background: rgba(46, 136, 212, 1); */
+    padding: 5px;
+    border: 1px solid rgba(46, 136, 212, 1);
+    color: #2E88D4;
+}
+.cname:hover {
+    background: #2E88D4;
+    color: white;
+}
+
+.Sname {
+    /* background: rgba(46, 136, 212, 1); */
+    padding: 5px;
+    border: 1px solid #27AE60;
+    color: #27AE60;
+}
+.Sname:hover{
+    background: #27AE60;
+    color: white;
+}
+.Dname {
+    /* background: rgba(46, 136, 212, 1); */
+    padding: 5px;
+    border: 1px solid #FA3F3F;
+    color: #FA3F3F;
+}
+.Dname:hover{
+    background: #FA3F3F;
+    color: white;
+}
+.cityname {
+    /* background: rgba(46, 136, 212, 1); */
+    padding: 5px;
+    border: 1px solid #8B25F0;
+    color: #8B25F0;
+}
+.cityname:hover{
+    background: #8B25F0;
+    color: white;
+}
+.Rname {
+    /* background: rgba(46, 136, 212, 1); */
+    padding: 5px;
+    border: 1px solid #273B4A;
+    color: #273B4A;
+}
+.Rname:hover{
+    background: #273B4A;
+    color: white;
+}

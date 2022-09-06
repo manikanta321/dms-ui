@@ -1,0 +1,27 @@
+
+
+.head-t h3{
+    color: #0091EA;
+    text-align: center;
+}
+.close-icon{
+    /* left: 100%;
+    position: relative; */
+    font-size: 15px;
+    font-weight: 600;
+    float: right;
+}
+.prcdBtn{
+    background: #0091EA;
+border-radius: 5px;
+/* padding: 0 5px; */
+}
+.cancel{
+    float: right;
+    background: #9B9B9B;
+  border-radius: 5px;
+  /* padding: 0 5px; */
+}
+.prcc-btn{
+    margin-bottom: 20px;
+}

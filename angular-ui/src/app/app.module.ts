@@ -37,6 +37,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { MaterialAddEditpopupComponent } from './component/materials-list/material-add-editpopup/material-add-editpopup.component';
 import { OtherMastersComponent } from './component/other-masters/other-masters.component';
 import { DealerComponent } from './component/dealer/dealer.component';
+import { DealersComponent } from './dealers/dealers.component';
+import { AssociationComponent } from './association/association.component';
+import { ReportsComponent } from './reports/reports.component';
 import { GeographiesComponent } from './component/geographies/geographies.component';
 // import {MatTabsModule} from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -64,7 +67,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MaterialAddEditpopupComponent,
     OtherMastersComponent,
     DealerComponent,
-    GeographiesComponent,
 
   ],
   imports: [

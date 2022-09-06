@@ -1,0 +1,64 @@
+<div class="row" style="background-color: white;margin-right: 0.8px;margin-left: 0.8px;padding-top:5px;">
+    <div style="background-color: white;" class="col-xl-10 col-md-3">
+     <h4 style="color: blue;background-color: white;">Dealers</h4>
+    
+    </div>  
+    <div  class="col-xl-2 col-md-3" style="float:right;background-color: white;position: relative;right: 11%;" >
+        <button class="btn btn-outline-light" style="border:solid blue 1px;color: black;background-color: white;">Print <img src="../../../assets/img/print-icon.png/" alt=""/></button>
+        </div>
+        <div  class="col-xl-2 col-md-3" style="float:right;background-color: white;left: 83%;top: -41px;" >
+            <button class="btn btn-outline-light" style="border:solid blue 1px;color: black;background-color: white;">Download <img src="../../../assets/img/cloud.png/" alt=""/></button>
+            </div>
+      </div>
+     
+      <table mat-table [dataSource]="dataSource"  class="mat-elevation-z8 table-container"  >
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td class="tabeldata" mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+        <!-- Code -->
+        <ng-container matColumnDef="code">
+            <th mat-header-cell *matHeaderCellDef>Code</th>
+            <td class="tabeldata" mat-cell *matCellDef="let element"> {{element.code}} </td>
+          </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td class="tabeldata" mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+        <!-- Geography Column -->
+        <ng-container matColumnDef="geography">
+          <th mat-header-cell *matHeaderCellDef> Georgraphy </th>
+          <td class="tabeldata" mat-cell *matCellDef="let element"> {{element.geography}} </td>
+        </ng-container>
+
+      
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td class="tabeldata" mat-cell *matCellDef="let element"> <button *ngIf="element.status=='active'" type="button" class="btn btn-primary" style="background-color:  #17B15C;
+            ;border: solid #17B15C;border-radius: 10px;color: black;font-weight: 500;padding-top: 4px;padding-bottom: 4px;">Active</button>
+           
+           <button *ngIf="element.status=='Delete'" type="button" class="btn btn-primary" style="background-color:  #63e99f;
+           ;border: solid #63e99f;border-radius: 10px;color: black;font-weight: 500;padding-top: 4px;padding-bottom: 4px;">Delete</button>
+           
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef>  </th>
+          <td class="tabeldata" mat-cell *matCellDef="let element">    
+            <button mat-button [matMenuTriggerFor]="menu" style="border:white;" class="btn btn-outline-light"><img src="../../../assets/img/edit.svg"  alt=""  /></button>
+    <mat-menu #menu="matMenu" style="border:white;background-color: white;">
+      <button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;" >Edit</button>
+      <button mat-menu-item  class="btn btn-outline-light" style="border:white;background-color: white;">Deactivate</button>
+      <button mat-menu-item  class="btn btn-outline-light" style="border:white;background-color: white;">Reactivate</button>
+
+    </mat-menu></td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+      </table>

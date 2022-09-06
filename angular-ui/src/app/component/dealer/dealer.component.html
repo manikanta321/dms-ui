@@ -1,1 +1,33 @@
-<p>dealer works!</p>
+<app-head></app-head>
+
+<div class="UNFAPP-asmnt-full-area">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-2 col-md-3">
+                <app-sidenav-bar></app-sidenav-bar>
+            </div>
+            <div class="col-xl-10 col-md-9 ACVTY-no-pad">
+                <div class="UNFAPP-asmnt-rgt-area">
+
+                    <div class="col-xl-10 col-md-9 ACVTY-no-pad">
+                        <div class="UNFAPP-asmnt-rgt-area">
+                            <div class="col-lg-12">
+                                <mat-tab-group>
+                                    <mat-tab label="Dealers ">
+                                        <app-dealers></app-dealers>
+                                    </mat-tab>
+                                    <mat-tab label="Association">
+                                        <app-association></app-association>
+                                    </mat-tab>
+                                    <mat-tab label="Reports">
+                                        <app-reports></app-reports>
+                                    </mat-tab>
+                                </mat-tab-group>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

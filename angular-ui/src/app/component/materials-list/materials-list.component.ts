@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { AddPromotionsComponent } from '../add-promotions/add-promotions.component';
 import { ImpactedAssociationComponent } from './impacted-association/impacted-association.component';
 import { MaterialAddEditpopupComponent } from './material-add-editpopup/material-add-editpopup.component';
 
@@ -47,6 +48,12 @@ export class MaterialsListComponent implements OnInit {
   }
   impactedAssociation(){
     const dialogRef =  this.dialog.open( ImpactedAssociationComponent , { panelClass: 'custom-dialog-container' });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  addpromotion(){
+    const dialogRef =  this.dialog.open( AddPromotionsComponent , {height: '600px', panelClass: 'custom-dialog-container' });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

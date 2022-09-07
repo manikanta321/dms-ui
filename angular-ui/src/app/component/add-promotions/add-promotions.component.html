@@ -1,0 +1,108 @@
+
+<div class="container">
+    <div class="addpromotion">
+        <div class="head-t mt-3">
+          <mat-icon  mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+            <h3 class="addpro-head">Add Promotion</h3>
+        </div>
+       <div class="im-p">
+        <p>Image</p>
+       <div class="pro-img text-center">
+            <img width="120" height="120" src="../../../assets/img/profile-img.svg" alt="">
+       </div>
+       <div class="row">
+        <div class="col-6">
+            <label>Promotion Name</label>
+        <input type="text" placeholder="Name">
+    </div>
+        <div class="col-6">
+        <mat-form-field appearance="fill">
+            <mat-label>Buy (A+B..) get (X+Y..)</mat-label>
+            <mat-select  multiple>
+              <mat-option  >Buy (A+B..) get (X+Y..)</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+    </div>
+        <div class="row">
+        <div class="start-d col-6">
+            <label >Start Date</label><br>
+            <input [matDatepicker]="myDatepicker">
+            <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker></mat-datepicker>
+        </div>
+        <div class="end-d col-6">
+            <label >End Date</label><br>
+            <input [matDatepicker]="myDatepicker">
+            <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker></mat-datepicker>
+        </div>
+    </div>
+   
+        <h3 class="addpro">Add Promotion</h3>
+      
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field appearance="fill">
+                    <mat-label>Buy Group</mat-label>
+                    <mat-select  multiple>
+                      <mat-option *ngFor="let getG of getgroup" >{{getG}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="fill">
+                    <mat-label>Get Group</mat-label>
+                    <mat-select  multiple>
+                      <mat-option *ngFor="let buyG of buygroup" >{{buyG}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+        </div>
+        <!-- geogragphy sect -->
+            <div class="geography d-flex">
+                <h3 class="geo-h">Geographies</h3>
+                <mat-form-field appearance="fill">
+                    <mat-label>Search countries by name</mat-label>
+                    <input matInput  />
+                    <mat-icon matPrefix>search</mat-icon>
+                  </mat-form-field>
+            </div>
+            <div class="inside-text-feild">
+                <textarea name="" id="" cols="70" rows="5" style=" overflow-y: scroll;"></textarea>
+            </div>
+       <!-- dealers sect -->
+       <div class="dealers-part">
+        <h3 class="dealers-h">Dealers</h3>
+        <div class="row">
+            <div class="col-6">
+                <h3>Customer</h3>
+                <mat-selection-list >
+                    <mat-list-option checkboxPosition="before" *ngFor="let customerS of CustomerSelect">
+                      {{customerS}}
+                    </mat-list-option>
+                  </mat-selection-list>
+            </div>
+            <div class="col-6">
+                <h3>Geographies</h3>
+                <mat-list >
+                    <mat-list-item> Pepper </mat-list-item>
+                    <mat-list-item> Salt </mat-list-item>
+                    <mat-list-item> Paprika </mat-list-item>
+                   </mat-list>
+            </div>
+        </div>
+        <!-- addition remark sect -->
+        <div class="remarks">
+            <h3 class="addt-remark">Aditional Remarks</h3>
+            <textarea name="" id="" cols="70" rows="5" style=" overflow-y: scroll;"></textarea>
+        </div>
+        <!-- buttuns -->
+        <div class="addPro-btns text-center m-2">
+            <button class="btn btn-primary saveD">Save as Draft</button>
+            <button class="btn btn-basic submit">Submit</button>
+        </div>
+       </div>
+       </div>
+    </div>
+</div>

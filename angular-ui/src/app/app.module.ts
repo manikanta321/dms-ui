@@ -48,6 +48,10 @@ import { AddDealerPopupComponent } from './component/Dealer-Popup/add-dealer-pop
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AssociationTargetPopupComponent } from './association/association-target-popup/association-target-popup.component';
 import { PromotionsComponent } from './component/promotions/promotions.component';
+import { AddPromotionsComponent } from './component/add-promotions/add-promotions.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -79,7 +83,8 @@ import { PromotionsComponent } from './component/promotions/promotions.component
     AddDealerPopupComponent,
     ImpactedAssociationComponent,
     AssociationTargetPopupComponent,
-    PromotionsComponent
+    PromotionsComponent,
+    AddPromotionsComponent
 
   ],
   imports: [
@@ -103,7 +108,9 @@ import { PromotionsComponent } from './component/promotions/promotions.component
     MatPaginatorModule,
     MatTabsModule,
     MatCheckboxModule,
-    NgSelectModule
+    NgSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
     
   ],
   providers: [],

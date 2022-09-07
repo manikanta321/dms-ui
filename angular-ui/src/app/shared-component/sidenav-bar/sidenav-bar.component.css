@@ -171,3 +171,10 @@ ul.UNFAPP-lftnav li img{
 .droplist{
     cursor: pointer;
 }
+.btn-link.active{
+    background:#D8EDFE !important ; 
+    width: 200px;
+  }
+ ::ng-deep .mat-expansion-panel:not([class*=mat-elevation-z]) {
+    width: 15.5%;
+}

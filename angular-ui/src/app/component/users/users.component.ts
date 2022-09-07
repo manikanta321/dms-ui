@@ -6,7 +6,6 @@ import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {FormControl} from '@angular/forms';
-
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -32,7 +31,7 @@ import { EditUomPopupComponent } from './userPopups/edit-uom-popup/edit-uom-popu
 import { AddTaxTemplateComponent } from './userPopups/add-tax-template/add-tax-template.component';
 import { AddcurrencyComponent } from './userPopups/addcurrency/addcurrency.component';
 import { EditTaxTemplateComponent } from './userPopups/edit-tax-template/edit-tax-template.component';
-
+import { DeletecomponentComponent } from '../deletecomponent/deletecomponent.component';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -70,5 +69,9 @@ export class UsersComponent implements OnInit {
   }
   edittaxTempl(){
     this.dialog.open( EditTaxTemplateComponent);
+  }
+  delete(){
+    this.dialog.open( AddUserPopupComponent,{ height: '580px', });
+
   }
 }

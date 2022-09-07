@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'login', pathMatch: 'full',component: LoginComponent },
   { path: 'SignUpComponent', pathMatch: 'full',component: SignUpComponent },
   { path: 'ForgotPassword', pathMatch: 'full',component: ForgotPasswordComponent },
-  { path: 'dashbord', pathMatch: 'full',component: DashbordComponent  },
+  { path: 'maindashbord', pathMatch: 'full',component: DashbordComponent  },
   { path: 'dashbord/user', pathMatch: 'full',component: UsersComponent  },
   { path: 'dashbord/materials', pathMatch: 'full',component: MaterialsComponent  },
   { path: 'dashbord/materials/materials-list', pathMatch: 'full',component:   MaterialsListComponent  },

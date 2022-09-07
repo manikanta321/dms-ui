@@ -47,6 +47,7 @@ import { ImpactedAssociationComponent } from './component/materials-list/impacte
 import { AddDealerPopupComponent } from './component/Dealer-Popup/add-dealer-popup/add-dealer-popup.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AssociationTargetPopupComponent } from './association/association-target-popup/association-target-popup.component';
+import { PromotionsComponent } from './component/promotions/promotions.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { AssociationTargetPopupComponent } from './association/association-targe
     GeographiesComponent,
     AddDealerPopupComponent,
     ImpactedAssociationComponent,
-    AssociationTargetPopupComponent
+    AssociationTargetPopupComponent,
+    PromotionsComponent
 
   ],
   imports: [

@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidenav-bar.component.css']
 })
 export class SidenavBarComponent implements OnInit {
-  panelOpenState = false;
   mobMuenuStatus = true;
   toggle = true;
   status = "Enable";
+  panelOpenState: boolean = true;
+
+
   constructor() { }
 
   ngOnInit(): void {
@@ -24,5 +26,10 @@ export class SidenavBarComponent implements OnInit {
   enableDisableRule() {
     this.toggle = !this.toggle;
     this.status = this.toggle ? "Enable" : "Disable";
+  }
+
+
+  closePanel() {
+    this.panelOpenState = true;
   }
 }

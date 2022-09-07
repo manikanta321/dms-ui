@@ -1,0 +1,152 @@
+<div class="target-modal">
+    <div class="row modal-title">
+        <div class="col-md-12">
+            <div class="modal-header"><span>SET TARGET</span></div>
+            <div mat-button mat-raised-button matDialogClose class="close-icon">X</div>
+        </div>
+    </div>
+    <div class="modal-container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="sel1">Plan</label>
+                    <select class="custom-select" id="sel1" [(ngModel)]="selctedPlan" (change)="onPlanChange()">
+                        <option>Annual</option>
+                        <option>Quarterly</option>
+                        <option>Monthly</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="usr">Values</label>
+                    <input class="switch" type="checkbox">
+
+                </div>
+            </div>
+
+        </div>
+        <div class="year-section"  *ngIf="selctedPlan == 'Annual'">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="usr">Years</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="quarterly-selection" *ngIf="selctedPlan == 'Quarterly'">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="usr">Mar Quarterly</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="usr">Jun  Quarterly</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="usr">Sept  Quarterly</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="usr">Dec  Quarterly</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="monthly-selection" *ngIf="selctedPlan == 'Monthly'">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="usr">Jan</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="usr">Feb</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="usr">Mar</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="usr">Apr</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="usr">May</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="usr">Jun</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="usr">Jul</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="usr">Aug</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="usr">Sep</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="usr">Oct</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="usr">Nov</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="usr">Dec</label>
+                        <input type="text" class="form-control" id="usr">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row add-button-section"> 
+        <button type="button" class="btn btn-primary btn-dms-success" [disabled]="selctedPlan== ''" (click)="saveData()">Save</button>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-
+/* @import "~@ng-select/ng-select/themes/material.theme.css"; */
+@import "~@ng-select/ng-select/themes/default.theme.css";
 html,
 body {
     height: 100%;
@@ -35,4 +36,15 @@ body {
 
 .mat-expansion-panel:not([class*=mat-elevation-z]) {
     width: 100%;
+}
+
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value{
+    background: #0091EA;
+    padding: 0 5px;
+    color: #fff;
+}
+
+
+.primary-color {
+    color: #017EFA;
 }

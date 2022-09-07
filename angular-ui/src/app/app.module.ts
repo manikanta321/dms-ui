@@ -45,6 +45,8 @@ import { GeographiesComponent } from './component/geographies/geographies.compon
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ImpactedAssociationComponent } from './component/materials-list/impacted-association/impacted-association.component';
 import { AddDealerPopupComponent } from './component/Dealer-Popup/add-dealer-popup/add-dealer-popup.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { AssociationTargetPopupComponent } from './association/association-target-popup/association-target-popup.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,8 @@ import { AddDealerPopupComponent } from './component/Dealer-Popup/add-dealer-pop
     ReportsComponent,
     GeographiesComponent,
     AddDealerPopupComponent,
-    ImpactedAssociationComponent
+    ImpactedAssociationComponent,
+    AssociationTargetPopupComponent
 
   ],
   imports: [
@@ -97,7 +100,8 @@ import { AddDealerPopupComponent } from './component/Dealer-Popup/add-dealer-pop
     MatMenuModule,
     MatPaginatorModule,
     MatTabsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    NgSelectModule
     
   ],
   providers: [],

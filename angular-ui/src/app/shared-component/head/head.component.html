@@ -1,16 +1,29 @@
-<div class="header-nav">
 
-  <mat-toolbar  class="mat-toolbar-example" >
+
+<!-- <mat-toolbar color="primary" class="example-toolbar" style="">
+	<button mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>menu</mat-icon></button>
+	<h1 class="example-app-name">Nested Menus</h1>
+</mat-toolbar>-->
+<div class="header-nav"> 
+
+  <mat-toolbar  class="mat-toolbar-example" style="    height: 50px;  " >
 
  
 
-    <span style="margin-left: 50px;"><img src="../../../assets/img/logo_smile-2.png" style="width: 250px;"/></span>
+    <span style="margin-left: 50px;"><img src="../../../assets/img/logo_smile-2.png" style="width: 250px;height: 25px;margin-left: 10px;    margin-left: -47px;
+"/></span>
 
     <span class="example-spacer"></span>
 
-    <img src="../../../assets/img/profile.png" alt="" class="UNFAPP-prfimg" >
-
- 
+    <img src="../../../assets/img/profile.png" alt="" class="UNFAPP-prfimg" style="margin-left: 10px;">
+    <button mat-button [matMenuTriggerFor]="menu" style="border:white;color: black;" class="btn btn-outline-light">User Name<mat-icon>arrow_drop_down</mat-icon>
+</button>
+    <mat-menu #menu="matMenu" style="border:white;background-color: white;">
+      <button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;" >                <mat-icon mat-list-icon>account_box</mat-icon>
+        Profile</button>
+      <button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;" >                <mat-icon mat-list-icon>logout</mat-icon>
+        Logout</button>
+    </mat-menu>
 
   </mat-toolbar>
 

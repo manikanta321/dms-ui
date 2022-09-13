@@ -1,3 +1,11 @@
+::ng-deep.mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
+    display: block;
+    height: 39px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    width: 100%;
+    padding: 0;
+}
+
 .bg-image{
     background-image: url('../../../assets/img/background1.png');
     width: 1408px;

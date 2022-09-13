@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 /* @import "~@ng-select/ng-select/themes/material.theme.css"; */
 @import "~@ng-select/ng-select/themes/default.theme.css";
+/* Add application styles & imports to this file! */
+
+@import 'ag-grid-community/dist/styles/ag-grid.css';
+@import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+
 html,
 body {
     height: 100%;
@@ -8,8 +13,11 @@ body {
 
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: Montserrat, sans-serif;
 }
+::ng-deep body {
+    font-family: Montserrat, sans-serif;
+    }
 
 .mat-form-field-underline {
 

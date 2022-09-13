@@ -51,7 +51,10 @@ import { PromotionsComponent } from './component/promotions/promotions.component
 import { AddPromotionsComponent } from './component/add-promotions/add-promotions.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatSortModule} from '@angular/material/sort';
+import { GuiGridModule } from '@generic-ui/ngx-grid';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -110,8 +113,12 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatCheckboxModule,
     NgSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
-    
+    MatNativeDateModule,
+    MatSidenavModule,
+    MatSortModule,
+    GuiGridModule,
+    AgGridModule
+        
   ],
   providers: [],
   bootstrap: [AppComponent]

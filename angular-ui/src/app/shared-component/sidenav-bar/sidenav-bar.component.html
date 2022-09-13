@@ -1,9 +1,13 @@
-<div class="aside-hamburger-menu" (click)="mobBurgerMenuAction()">
+
+
+<div class="aside-hamburger-menu" >
     <span></span>
     <span></span>
     <span></span>
 </div>
-<div class="UNFAPP-newwdashbrd-lftnav-area" [ngClass]="mobMuenuStatus ? 'expend':''" (click)="closeBurgerMenu()">
+<div class="UNFAPP-newwdashbrd-lftnav-area "  style="    background-color:  #FFFFFF;
+;
+width:223px" >
     <span class="m-overlay"></span>
 
     <!-- <div class="UNFAPP-leftsidebarprofile-cont UNFAPP-d-hide" >
@@ -18,54 +22,118 @@
             <div class="UNFAPP-rightarow" ></div>
         </div>
     </div> -->
+  
 
-    <ul class="UNFAPP-lftnav UNFAPP-topborder">
-        <li>
-            <a href="javascript:void(0)"   routerLink="/maindashbord" class="btn-link" routerLinkActive="active" >
-                <ng-container>
-                    <img src="../../../assets/img/Chart_fill.svg" alt=""> <span>Dashboard</span>
-                </ng-container>
 
-            </a>
-        </li>
-        <li>
-            <a href="javascript:void(0)" >
-                <ng-container>
-                    <img src="../../../assets/img/User_box.svg" alt="" /> <span>Orders</span>
-                </ng-container>
+<mat-list  style="width:auto">
 
-            </a>
-        </li>
-        <li>
-            <a href="javascript:void(0)">
-                <ng-container>
-                    <img src="../../../assets/img/Calendar.svg" alt="" /> <span>Products</span>
-                </ng-container>
-
-            </a>
-        </li>
-
-        <li >
-            <mat-expansion-panel >
-                <mat-expansion-panel-header>
-                    <img src="../../../assets/img/Search_alt.svg" alt="" /> <span >Settings</span>
-
-                </mat-expansion-panel-header>
-<ul style="margin-left: -25px;">
-    <li class="droplist"  routerLink="/dashbord/user" class="btn-link" routerLinkActive="active" (click)="closePanel()" >Users</li>
-    <li class="droplist"  routerLink="/dashbord/materials" class="btn-link" routerLinkActive="active" (click)="closePanel()" >Materials</li>
-    <li class="droplist"  routerLink="/dashbord/geographies" class="btn-link" routerLinkActive="active" (click)="closePanel()" >Geographies</li>
-    <li class="droplist" routerLink="/dashbord/other-masters" class="btn-link" routerLinkActive="active" (click)="closePanel()" >Other Masters</li>
-</ul>             
+    <mat-list-item>
+   
+    <mat-icon [ngStyle]="{'color':'#334D6E'}">dashboard</mat-icon> <span routerLink="/maindashbord" class="dasb-menu cursor-pointer"
+   
+    routerLinkActive="active" style="color: #334D6E;" >Dashboard</span>
+   
+   </mat-list-item>
+   
+  <mat-divider></mat-divider>
+   
+    <mat-list-item>
+   
+   <mat-icon [ngStyle]="{'color':'#334D6E
+   '}">reorder</mat-icon> <span style="color: #334D6E;">Orders</span>
+   
+  </mat-list-item>
+   
+   <mat-divider></mat-divider>
+   
+    <mat-list-item><mat-icon [ngStyle]="{'color':'#334D6E
+        '}">calendar_today</mat-icon> <span style="color: #334D6E;">Products</span></mat-list-item>
+   
+<mat-divider></mat-divider>
+   
+<mat-list-item>
+   
+<mat-icon [ngStyle]="{'color':'#334D6E
+'}"> bar_chart</mat-icon> <span style="color: #334D6E;">Reports</span>
+</mat-list-item>
+   
+    <mat-divider></mat-divider>
+   
+    <mat-list-item><mat-icon [ngStyle]="{'color':'#334D6E
+        '}">perm_contact_calendar</mat-icon> <span routerLink="/dashbord/dealer"
+   
+    class="dash-menu" routerLinkActive="active" style="color: #334D6E;">Dealer</span></mat-list-item>
+   
+    <mat-divider></mat-divider>
+   
+   
+   
+    <mat-accordion>
+   
+   
+   
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+   
+    <mat-expansion-panel-header>
+   
+   <mat-panel-title>
+   
+  <mat-icon [ngStyle]="{'color':'#334D6E
+  '}">settings</mat-icon><span style="color: #334D6E;">Settings</span>
+   
+   
+   
+  </mat-panel-title>
+   
+</mat-expansion-panel-header>
+<mat-list-item class="droplist" routerLink="/dashbord/user"  class="btn-link " routerLinkActive="active"
+   
+(click)="closePanel()">
+    <mat-icon [ngStyle]="{'color':'#334D6E
+    '}">person icon</mat-icon>    <span >Users</span>
+    </mat-list-item>
+    
+    <mat-list-item class="droplist" routerLink="/dashbord/materials"  class="btn-link " routerLinkActive="active"
+   
+    (click)="closePanel()">
+        <mat-icon [ngStyle]="{'color':'#334D6E
+        '}">store mall directory icon</mat-icon>    <span style="color: #334D6E;">Materials</span>
+        </mat-list-item>
+        <mat-list-item class="droplist"  routerLink="/dashbord/geographies"   class="btn-link " routerLinkActive="active"
+   
+(click)="closePanel()">
+    <mat-icon [ngStyle]="{'color':'#334D6E
+    '}"> map icon</mat-icon>    <span style="color: #334D6E;" >Geographies</span>
+    </mat-list-item>
+    <mat-list-item class="droplist" routerLink="/dashbord/other-masters" class="btn-link " routerLinkActive="active"
+   
+(click)="closePanel()">
+    <mat-icon [ngStyle]="{'color':'#334D6E
+    '}">person_outline</mat-icon>    <span style="color: #334D6E;" >Other Masters</span>
+    </mat-list-item>
+  
+   
+   
  </mat-expansion-panel>
-        </li>
-        <li >
-            <a href="javascript:void(0)"   routerLink="/dashbord/dealer" class="btn-link" routerLinkActive="active" >
-                <ng-container>
-                    <img src="../../../assets/img/User_box.svg" alt="" /> <span >Dealer</span>
-                </ng-container>
-             
-            </a>
-        </li>
-     </ul>    
+   
+</mat-accordion>
+    <mat-divider></mat-divider>
+   
+<mat-list-item>
+   
+<mat-icon [ngStyle]="{'color':'#334D6E
+'}">help</mat-icon> <span style="color: #334D6E;">Help</span>
+   
+</mat-list-item>
+   
+</mat-list>
+
+
+
 </div>
+
+
+
+
+
+

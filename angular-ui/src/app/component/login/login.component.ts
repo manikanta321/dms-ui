@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   }
   signIn(){
     if(this.usernameofuser==9448254154 && this.passwordofuser=='mani') {
-      this.router.navigate(['../maindashbord']);
+      this.router.navigate(['../dashbord/user']);
     }
     // this.router.navigate(['./dashbord']);
 

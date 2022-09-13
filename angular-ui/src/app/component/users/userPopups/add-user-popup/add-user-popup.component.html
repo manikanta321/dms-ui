@@ -13,38 +13,30 @@
         <br>
         <label>Last Name<span>*</span></label>
         <br>
-        <input type="text" placeholder="Enter your First Name" >
+        <input type="text" placeholder="Enter your Last Name" >
         <br>
         <label>Email Id<span>*</span></label>
         <br>
-        <input type="text" placeholder="Enter your First Name" >
+        <input type="text" placeholder="Enter your Email" >
         <br>
         <label>Username<span>*</span></label>
         <br>
-        <input type="text" placeholder="Enter your First Name" >
-        <br>
-        <label>Email <span>*</span></label>
-        <br>
-        <input type="text" placeholder="Enter your First Name" >
+        <input type="text" placeholder="Enter UserName" >
         <br>
         <label>Phone No<span>*</span></label>
         <br>
-        <input type="text" placeholder="Enter your First Name" >
+        <input type="text" placeholder="Enter your phone number" >
         <br>
-        <label>Role<span>*</span></label>
-        <br>
-        <input type="text" placeholder="Enter your First Name" >
+        <mat-form-field>
+          <mat-label>Role</mat-label>
+          <mat-select [formControl]="role" multiple>
+            <mat-option *ngFor="let user of userType" [value]="role">{{user}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        
      </form>
-     <!-- <mat-list role="list">
-        <mat-list-item role="listitem">Admin</mat-list-item>
-        <mat-list-item role="listitem">bhbh</mat-list-item>
-        <mat-list-item role="listitem">Item 3</mat-list-item>
-      </mat-list> -->
-      <mat-selection-list >
-        <mat-list-option *ngFor="let user of userType">
-         {{user}}
-        </mat-list-option>
-      </mat-selection-list>
+   
+     
       <button class="btn btn-primary btn-block">Add</button>
     </div>
     </div>

@@ -29,7 +29,7 @@
         <br>
         <mat-form-field>
           <mat-label>Role</mat-label>
-          <mat-select [formControl]="role" multiple>
+          <mat-select [formControl]="role">
             <mat-option *ngFor="let user of userType" [value]="role">{{user}}</mat-option>
           </mat-select>
         </mat-form-field>

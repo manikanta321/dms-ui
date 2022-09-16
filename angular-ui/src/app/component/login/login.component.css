@@ -25,10 +25,7 @@ form{
 /* .signIn-img{
   text-align: end;
 } */
-.signIn-img img{
-  /* height: 500px; */
-  /* width: 100%; */
-}
+
 /* .login-form{
   margin-top: 90px;
 } */
@@ -37,7 +34,6 @@ form{
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 background-clip: text;
- text-fill-color: transparent;
   font-size: 31px;
   font-weight: 700;
   /* height: 40px; */
@@ -72,7 +68,7 @@ border-radius: 8px;
   text-decoration: underline;
 }
 .form-outline input{
-      Width:361px;
+      width:361px;
           border: 1.6px solid #E293D3;
           border-radius: 4px;
           padding: 5px;

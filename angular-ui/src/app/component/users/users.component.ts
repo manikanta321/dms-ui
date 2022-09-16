@@ -257,7 +257,8 @@ public pivotPanelShow = 'always';
    ) {
       sort:[];
      }
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort)
+  sort: MatSort = new MatSort;
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;

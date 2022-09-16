@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-  userurl = environment.Url;
+  userurl = environment.url;
 
 
   constructor(private http: HttpClient) { }

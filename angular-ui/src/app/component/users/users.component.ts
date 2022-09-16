@@ -272,7 +272,9 @@ public pivotPanelShow = 'always';
   this.statusItems();
   }
   refresh(){
-    this.toppings=new FormControl(this.toppings);
+    this.toppings = new FormControl(this.toppingList);
+    this.toppings1 = new FormControl(this.toppingList1);
+
     // var ageFilterComponent = this.gridApi.getFilterInstance('')!;
     // ageFilterComponent.setModel(null);
     // this.gridApi.onFilterChanged();

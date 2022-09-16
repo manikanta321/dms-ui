@@ -50,3 +50,6 @@ label{
     font-size: 14px;
    margin: 5px;
 }
+mat-form-field{
+    width: 246px;
+}

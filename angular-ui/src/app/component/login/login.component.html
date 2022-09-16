@@ -13,11 +13,12 @@
   
             <!-- Email input -->
             <div class="form-outline mb-4">
-              <label class="form-label" for="form3Example3">Email</label>
+              <p style="color:red;" *ngIf="userExist">User does not exist</p>
+              <label class="form-label" for="form3Example3">Username</label>
               <!-- <input type="email" id="form3Example3" class="form-control form-control-lg"
                 placeholder="Enter a valid email address"   [(ngModel)]="usernameofuser"  /> -->
                 <br>
-                   <input type="text" placeholder="Email" name="username" required [(ngModel)]="usernameofuser"
+                   <input type="text" placeholder="Username" name="username" required [(ngModel)]="usernameofuser"
           pInputText required />
             </div>
   
@@ -29,6 +30,7 @@
                 <br>
                 <input  placeholder="Password"
                 name="password" required [(ngModel)]="passwordofuser" pInputText required/> 
+                <p style="color:red;" *ngIf="PasswordWrong">Password is wrong</p>
             </div>
   
             <div class="d-flex justify-content-between align-items-center">

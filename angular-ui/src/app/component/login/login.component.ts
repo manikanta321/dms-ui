@@ -13,7 +13,8 @@ export class LoginComponent implements OnInit {
     loginData:any;
     PasswordWrong:boolean = false;
     userExist:boolean = false;
-
+    passwordrequired:boolean=false;
+    usernameReqired:boolean=false;
   constructor(
     private router: Router,
     private login:LoginService,
@@ -30,6 +31,14 @@ export class LoginComponent implements OnInit {
     //   this.router.navigate(['../dashbord/user']);
     // }
     // this.router.navigate(['./dashbord']);
+
+    // if(this.usernameofuser==undefined){
+    //   this.usernameReqired=true
+    // }
+    // if(this.passwordofuser==undefined){
+    //   this.passwordrequired = true
+    // }
+  if(this.usernameofuser!=undefined && this.passwordofuser != undefined){
     this.login.getloginDeatils(this.usernameofuser,this.passwordofuser).subscribe ((res: any) => {
       this.loginData = res.response;
       console.log("LoginData",this.loginData);
@@ -49,6 +58,7 @@ if(this.PasswordWrong =false){
   }      }
     });
 
+  }
   }
 
 }

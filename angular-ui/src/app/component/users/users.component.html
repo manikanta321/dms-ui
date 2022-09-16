@@ -19,15 +19,15 @@
         <!-- <mat-label>Role</mat-label>
         <br> -->
         <mat-form-field appearance="outline">
-            <mat-select [formControl]="toppings" multiple placeholder="Role " >
+            <mat-select [formControl]="toppings"  multiple placeholder="Role " >
               <mat-select-trigger>
                 {{toppings.value?.[0] || ''}}
                 <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
                   (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
                 </span>
               </mat-select-trigger>
-                <mat-option   *ngFor="let topping of toppingList" [value]="topping"  (click)="roleFilter()">
-                  {{topping}}</mat-option>
+                <mat-option   *ngFor="let topping of toppingList" [value]="topping.role_name"  (click)="roleFilter()">
+                  {{topping.role_name}}</mat-option>
             </mat-select>
         </mat-form-field>
     </div>
@@ -47,8 +47,8 @@
                 </span>
               </mat-select-trigger>
              
-                <mat-option  *ngFor="let topping of toppingList1" [value]="topping"  >
-                   {{topping}}</mat-option>
+                <mat-option  *ngFor="let topping of toppingList1" [value]="topping.status_name"  >
+                   {{topping.status_name}}</mat-option>
             </mat-select>
         </mat-form-field>
     </div>

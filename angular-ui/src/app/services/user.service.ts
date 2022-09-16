@@ -17,6 +17,22 @@ export class UserService {
     
   }
 
+public getroleDetails(){
+  return this.http.get<any>(this.userurl + 'UserMgmtApi/GetUserTypes');
+
+}
+
+public getstatusDeatils(){
+  return this.http.get<any>(this.userurl + 'UserMgmtApi/GetUserStatusList');
+}
+
+
+
+                            //  http://52.172.24.161:801/api/GetUserTypes
+//   User types dropdown : - http://52.172.24.161:801/api/GetUserTypes
+
+// Status Dropdown : - http://52.172.24.161:801/api/GetUserStatusList
+
   // getPastClassDetails(classId: any) {
   //   return this.http.get(`${this.liveApi}/api/v1/eclasses/${classId}/download`);
   // }

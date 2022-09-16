@@ -78,7 +78,8 @@ status:any;
 
 
 columnDefs: ColDef[] = [
-  { field: 'employeeCode' , sort: 'desc',width: 120},
+  { headerName: "User Id",
+    field: 'employeeCode' , sort: 'desc',width: 120},
 
   {   headerName: "User Name",field: 'employeeName' },
 
@@ -91,7 +92,9 @@ columnDefs: ColDef[] = [
     field: 'mobilePhone',width: 150  },
 
   {   headerName: "Last Login",
-    field: 'lastLogin',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
+    // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
+    field: 'lastLoginDate',type: ['nonEditableColumn'], width: 220  },
+
 
   { headerName: "Status",
      field: 'status', width: 100,
@@ -241,8 +244,10 @@ public pivotPanelShow = 'always';
   toppings = new FormControl('');
   toppings1 = new FormControl('');
 
-  toppingList: string[] = ['Admin', 'Dealer','Customer'];
-  toppingList1: string[] = ['Active', 'Inactive','Invited','Locked'];
+  // toppingList: string[] = ['Admin', 'Dealer','Customer'];
+  toppingList: any= [];
+
+  toppingList1:  any= [];
   filterDictionary: any;
 
   constructor(public dialog: MatDialog,
@@ -262,8 +267,9 @@ public pivotPanelShow = 'always';
 
   ngOnInit(): void {
     
-this.getusertabeldata()
-    
+  this.getusertabeldata();
+  this.roleItems();
+  this.statusItems();
   }
   refresh(){
     this.toppings=new FormControl(this.toppings);
@@ -293,6 +299,83 @@ console.log('element',element['isActive'])
 
   });
 }
+
+roleItems(){
+
+  // if (res != undefined) {
+  //   let localdata = res.data;
+
+  //   this.gradeList = localdata.map((dt) => {
+  //     return { grade_id: dt.gradeId, grade_name: dt.gradeName };
+  //   });
+  //   if (!this.gradesArray?.length) {
+  //     this.gradesArray = localdata.map((grade) => {
+  //       return grade.gradeId;
+  //     });
+  //   }
+  //   this.gradesArray.push(0)
+  //   // this.gradeList.push({ grade_id: 0, grade_name: 'all'})
+
+  //   this.grades = new FormControl(this.gradesArray);
+  // }
+
+  this.user.getroleDetails().subscribe((res: any) => {
+    let localdata=res.response;
+
+
+    this.toppingList = localdata.map((data: { designationId: any; designationName: any; }) => {
+      return { role_id: data.designationId, role_name: data.designationName };
+    });
+
+    if (!this.toppingList?.length) {
+      this.toppingList = localdata.map((role: { designationName: any; }) => {
+        return role.designationName;
+      });
+    }
+    this.toppingList.push()
+    // this.toppingList = res.response;
+    this.toppings = new FormControl(this.toppingList);
+
+    console.log('rolelist',this.toppingList)
+  });
+}
+
+statusItems(){
+  this.user.getstatusDeatils().subscribe((res: any) => {
+      
+    let localdata=res.response;
+
+
+    this.toppingList1 = localdata.map((data: { statusId: any; statusname: any; }) => {
+      return {status_id: data.statusId, status_name: data.statusname };
+    });
+
+    if (!this.toppingList1?.length) {
+      this.toppingList1 = localdata.map((status: { statusname: any; }) => {
+        return status.statusname;
+      });
+    }
+    this.toppingList1.push()
+    // this.toppingList = res.response;
+    this.toppings1 = new FormControl(this.toppingList1);
+
+    console.log('status',this.toppingList1)
+
+
+
+
+
+
+
+
+
+
+  });
+}
+
+
+
+
 
 
 

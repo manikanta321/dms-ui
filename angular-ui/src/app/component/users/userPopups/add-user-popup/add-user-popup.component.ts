@@ -7,6 +7,7 @@ import {FormControl} from '@angular/forms';
   styleUrls: ['./add-user-popup.component.css']
 })
 export class AddUserPopupComponent implements OnInit {
+  firstname:any;
   userType: string[] = ['Admin', 'Business Manager', 'Order Manager', 'Viewer'];
   role = new FormControl('');
   // toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];

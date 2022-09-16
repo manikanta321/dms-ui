@@ -55,6 +55,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatSortModule} from '@angular/material/sort';
 import { GuiGridModule } from '@generic-ui/ngx-grid';
 import { AgGridModule } from 'ag-grid-angular';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -117,7 +118,8 @@ import { AgGridModule } from 'ag-grid-angular';
     MatSidenavModule,
     MatSortModule,
     GuiGridModule,
-    AgGridModule
+    AgGridModule,
+    HttpClientModule
         
   ],
   providers: [],

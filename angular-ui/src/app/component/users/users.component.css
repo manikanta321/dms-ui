@@ -38,6 +38,13 @@
 .ag-header-row ag-header-row-column{
     --ag-background-color: white;
 }
+.ag-theme-alpine {
+    --ag-header-height: 30px;
+    /* --ag-header-foreground-color: blue; */
+    --ag-header-background-color: white;
+    --ag-header-cell-hover-background-color: rgb(80, 40, 140);
+    --ag-header-cell-moving-background-color: rgb(80, 40, 140);
+}
 /* 
 .ag-theme-alpine {
     --ag-background-color: #ddd;

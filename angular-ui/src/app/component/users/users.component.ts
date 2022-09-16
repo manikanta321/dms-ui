@@ -9,7 +9,6 @@ import {MatTableDataSource} from '@angular/material/table';
 import {FormControl} from '@angular/forms';
 import { Sort, MatSort, SortDirection } from '@angular/material/sort';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
-
 export interface PeriodicElement {
   name: any;
   position: string;
@@ -43,10 +42,12 @@ import { AddcurrencyComponent } from './userPopups/addcurrency/addcurrency.compo
 import { EditTaxTemplateComponent } from './userPopups/edit-tax-template/edit-tax-template.component';
 import { DeletecomponentComponent } from '../deletecomponent/deletecomponent.component';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { CellClickedEvent, ColDef, Color, GridReadyEvent, SideBarDef } from 'ag-grid-community';
+import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AgGridAngular } from 'ag-grid-angular';
+import { UserService } from 'src/app/services/user.service';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 
 @Component({
   selector: 'app-users',
@@ -54,7 +55,7 @@ import { AgGridAngular } from 'ag-grid-angular';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-
+status:any;
 
 // // Data that gets displayed in the grid
 // public rowData=[
@@ -76,31 +77,42 @@ export class UsersComponent implements OnInit {
 // For accessing the Grid's API
 
 
-columnDefs: ColDef[] = [ 
-  { field: 'UserId' , sort: 'desc',width: 120},
-  { field: 'User_Name' },
-  { field: 'Role',width: 100 },
-  { field: 'email_id' },
-  { field: 'phonenum',width: 150  },
-  { field: 'Lastlogin',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-  { field: 'Status', width: 100},
+columnDefs: ColDef[] = [
+  { field: 'employeeCode' , sort: 'desc',width: 120},
 
+  {   headerName: "User Name",field: 'employeeName' },
+
+  { field: 'role',width: 100 },
+
+  {  headerName: "Email Id",
+     field: 'emailId' },
+
+  {   headerName: "Phone no",
+    field: 'mobilePhone',width: 150  },
+
+  {   headerName: "Last Login",
+    field: 'lastLogin',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
+
+  { headerName: "Status",
+     field: 'status', width: 100,
+  cellEditor: 'agSelectCellEditor',
+  cellEditorParams: {
+    values: ['Active', 'Inactive', 'Invited', 'Locked',],
+  }
+  
+
+},
+// {
+//   headerName: "Avatar",
+//   field: "avatar",
+//   width: 100,
+//   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
+//  },
 
 ];
 
-rowData = [
-  {UserId: '6004005001',Role:'Admin', User_Name: 'Rajasheka S',email_id:'you@smartgig.com',Lastlogin:'28/8/2022',phonenum:9448282822,Status:'Active',},
-  {UserId: '6004005002',Role:'Customer', User_Name: 'rama S',email_id:'you@smartgig.com',Lastlogin:'22/2/2222',phonenum:9448282833,Status:'Active',},
-  {UserId: '6004005003',Role:'Dealer', User_Name: 'latha mangeshkar S',email_id:'you@smartgig.com',Lastlogin:'22/2/2222',phonenum:9448282822,Status:'Active',},
-  {UserId: '6004005004',Role:'Admin', User_Name: 'revathi S',email_id:'you@smartgig.com',Lastlogin:'29/2/2222',phonenum:9448282822,Status:'Active',},
-  {UserId: '6004005005',Role:'Admin', User_Name: 'kalavara S',email_id:'you@smartgig.com',Lastlogin:'26/2/2222',phonenum:944828282,Status:'Inactive',},
-  {UserId: '6004005006',Role:'Customer', User_Name: 'ewika S',email_id:'you@smartgig.com',Lastlogin:'24/8/2222',phonenum:9448282222,Status:'Active',},
-
-  {UserId: '6004005007',Role:'Admin', User_Name: 'Rajasheka S',email_id:'you@smartgig',Lastlogin:'22/8/2222',phonenum:9448282822,Status:'Invited',},
-  {UserId: '6004005008',Role:'Dealer', User_Name: 'Rajasheka S',email_id:'you@smartgig',Lastlogin:'25/8/2222',phonenum:9448282822,Status:'Active',},
-  {UserId: '6004005009',Role:'Customer', User_Name: 'Rajasheka S',email_id:'you@smartgig',Lastlogin:'26/8/2222',phonenum:9448282822,Status:'Active',},
-
-];
+rowData :any;
+rowData1=[]
   public defaultColDef: ColDef = {
     // set the default column width
     width: 150,
@@ -156,9 +168,9 @@ public columnTypes: {
   },
 };
 
-public sideBar: SideBarDef | string | string[] | boolean | null = {
-  toolPanels: ['columns'],
-};
+// public sideBar: SideBarDef | string | string[] | boolean | null = {
+//   toolPanels: ['columns'],
+// };
 public rowGroupPanelShow = 'always';
 public pivotPanelShow = 'always';
 
@@ -211,7 +223,7 @@ public pivotPanelShow = 'always';
 	searching: GuiSearching = {
 		enabled: true,
 		placeholder: 'Search heroes'
-	};  
+	};
 
   columnMenu: GuiColumnMenu = {
 		enabled: true,
@@ -236,6 +248,7 @@ public pivotPanelShow = 'always';
   constructor(public dialog: MatDialog,
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
+    private user:UserService,
    ) {
       sort:[];
      }
@@ -248,10 +261,48 @@ public pivotPanelShow = 'always';
 
 
   ngOnInit(): void {
- 
+    
+this.getusertabeldata()
+    
   }
+  refresh(){
+    this.toppings=new FormControl(this.toppings);
+    // var ageFilterComponent = this.gridApi.getFilterInstance('')!;
+    // ageFilterComponent.setModel(null);
+    // this.gridApi.onFilterChanged();
+this.getusertabeldata();
+  }
+
+getusertabeldata(){
+  this.user.getuserDeatils().subscribe((res: any) => {
+      
+    this.rowData = res.response;
+    if (this.rowData.length >= 1) {
+    this.rowData.forEach((element: { [x: string]: any; }) => {
+    if (element['status']=='Confirmed'){
+}
+    else{
+      element['isActive']=='Inactive'
+
+    }
+console.log('element',element['isActive'])
+    });
+  }
+
+    console.log('row data',this.rowData1)
+
+  });
+}
+
+
+
+roleFilter(){
+  let roleName=this.toppings.value
+  console.log('rolename',roleName)
+}
+
   applyFilter(event: Event) {
- 
+
 
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -302,36 +353,35 @@ public pivotPanelShow = 'always';
   }
 
 
-  // onGridReady(params: GridReadyEvent) {
-  //   this.rowData= [
-  //     {position: '6004005001', name: 'Rajasheka S', weight: 1.0079, symbol: 'Customer',emailid:'you@smartgig',phonenum:9448282822,status:'Active'},
-  //     {position: '6004005002', name: 'Manoranjan B', weight: 1.0079, symbol: 'Dealer',emailid:'you@smartgig',phonenum:9448282822,status:'Inactive'},
-  //     {position: '6004005003', name: 'Vishnu M', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822 , status:'Active'},
-  //     {position: '6004005004', name: 'Mahendra S', weight: 1.0079, symbol: 'Dealer',emailid:'you@smartgig',phonenum:9448282822, status:'Invited'},
-  //     {position: '6004005005', name: 'Veerendra kr', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked'},
-  //     {position: '6004005006', name: 'mahathi Br', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Active'},
-  //      {position: '6004005007', name: 'chetheshwar T', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked'},
-  //      {position: '6004005008', name: 'Swami swami', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked'},
-    
-  //      {position: '6004005006', name: 'narendra gs', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked'},
-    
-  //      {position: '6004005006', name: 'prajwal vT', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked'},
-    
-  //   ];
-  // }
- 
   // Example of consuming Grid Event
   onCellClicked( e: CellClickedEvent): void {
     console.log('cellClicked', e);
   }
-  // onGridReady(params: GridReadyEvent<>) {
-  //   this.gridColumnApi = params.columnApi;
 
-  //   this.http
-  //     .get<IOlympicData[]>(
-  //       'https://www.ag-grid.com/example-assets/olympic-winners.json'
-  //     )
-  //     .subscribe((data) => (this.rowData = data));
-  // }
+
+  onCellValueChanged(event: CellValueChangedEvent) {
+    alert(event.value)
+    console.log(
+      'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
+    );
+  }
+
+
+  onRowValueChanged(event: RowValueChangedEvent) {
+    var data = event.data;
+    alert(data.status)
+    // console.log(
+    //   'onRowValueChanged: (' +
+    //     data.make +
+    //     ', ' +
+    //     data.model +
+    //     ', ' +
+    //     data.price +
+    //     ', ' +
+    //     data.field5 +
+    //     ')'
+    // );
+  }
+
 
 }

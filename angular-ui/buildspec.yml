@@ -15,4 +15,3 @@ artifacts:
   files:
     - build/**/*
     - scripts/*
-  discard-paths: no

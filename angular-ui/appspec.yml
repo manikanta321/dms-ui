@@ -1,0 +1,20 @@
+version: 0.2
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/
+permissions:
+  - object: /home/ubuntu/
+    pattern: "**"
+    owner: root
+    group: root
+
+hooks:
+  BeforeInstall:
+    - location: scripts/dependencies.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: scripts/start.sh
+      timeout: 300
+      runas: root

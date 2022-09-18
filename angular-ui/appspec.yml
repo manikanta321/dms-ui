@@ -2,9 +2,9 @@ version: 0.2
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/dist/angular-ui
+    destination: /home/ubuntu/CI-CD-Angular
 permissions:
-  - object: /home/ubuntu/dist/angular-ui
+  - object: /home/ubuntu/CI-CD-Angular
     pattern: "**"
     owner: root
     group: root

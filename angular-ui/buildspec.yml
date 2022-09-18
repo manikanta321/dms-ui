@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+  pre_build:
+    commands:
+      - echo Installing dependencies...
+      - npm install
+  build:
+    commands:
+      - npm link @angular/cli
+artifacts:
+  files:
+    - build/**/*
+    - scripts/*
+  discard-paths: no

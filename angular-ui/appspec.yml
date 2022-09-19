@@ -2,9 +2,9 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/
+    destination: /home/ubuntu/angular-ci-cd
 permissions:
-  - object: /home/ubuntu/
+  - object: /home/ubuntu/angular-ci-cd
     pattern: "**"
     owner: root
     group: root

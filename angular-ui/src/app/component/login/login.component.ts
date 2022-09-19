@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
     userExist:boolean = false;
     passwordrequired:boolean=false;
     usernameReqired:boolean=false;
+    showPassword: boolean = false;
   constructor(
     private router: Router,
     private login:LoginService,
@@ -59,6 +60,9 @@ if(this.PasswordWrong =false){
     });
 
   }
+  }
+  public togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
   }
 
 }

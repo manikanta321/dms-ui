@@ -29,11 +29,15 @@
               <p *ngIf="passwordrequired" style="color: red;">Password required</p>
               <!-- <input type="password" id="form3Example4" class="form-control form-control-lg"
                 placeholder="Enter password"  [(ngModel)]="passwordofuser" /> -->
-                <input  placeholder="Password" type="password"
+                <input  placeholder="Password" type="password" [type]="showPassword ? 'text' : 'password'"
                 name="password" required [(ngModel)]="passwordofuser" pInputText required/> 
+                <mat-icon matSuffix (click)="togglePasswordVisibility()">
+                  {{showPassword?'visibility_off':'visibility'}}
+              </mat-icon>
                 <p style="color:red;" *ngIf="PasswordWrong">Password is wrong</p>
             </div>
-  
+            <!-- <mat-icon (click)='showHidePassword()'> {{ showPassword ? 'Hide' : 'Show' }} remove_red_eye</mat-icon> -->
+            
             <div class="d-flex justify-content-between align-items-center">
               <!-- Checkbox -->
               <div >

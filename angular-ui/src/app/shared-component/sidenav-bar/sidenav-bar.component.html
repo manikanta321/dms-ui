@@ -1,12 +1,11 @@
 
-
-<div class="aside-hamburger-menu" >
+<div >
+<div class="aside-hamburger-menu"  (click)="mobBurgerMenuAction()">
     <span></span>
     <span></span>
     <span></span>
 </div>
-<div class="UNFAPP-newwdashbrd-lftnav-area "  style="    background-color:  #FFFFFF;
-;width: 100%;" >
+<div class="UNFAPP-newwdashbrd-lftnav-area " style="background-color:  #FFFFFF;"  [ngClass]="mobMuenuStatus ? 'expend':''" (click)="closeBurgerMenu()" >
     <span class="m-overlay"></span>
 
     <!-- <div class="UNFAPP-leftsidebarprofile-cont UNFAPP-d-hide" >
@@ -129,6 +128,7 @@
 
 
 
+</div>
 </div>
 
 

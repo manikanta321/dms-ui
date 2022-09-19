@@ -1,3 +1,4 @@
 #!/bin/bash
 
-sudo rm -rf /var/www/html
+echo "This script will fail!"
+exit 1

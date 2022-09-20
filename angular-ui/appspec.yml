@@ -6,3 +6,11 @@ files:
 permissions:
   - object: /home/ubuntu/dist/angular-ui/scripts
     pattern: "**"
+    
+hooks:
+  BeforeInstall:
+    - location: angular-ui/scripts/dependencies.sh
+   
+  AfterInstall:
+    - location: angular-ui/scripts/start.sh
+      timeout: 180

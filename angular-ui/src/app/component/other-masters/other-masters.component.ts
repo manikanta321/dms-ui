@@ -108,6 +108,7 @@ export class OtherMastersComponent implements OnInit {
   addCurrency(){
     this.dialog.open( AddcurrencyComponent);
   }
+ 
 }
 
 

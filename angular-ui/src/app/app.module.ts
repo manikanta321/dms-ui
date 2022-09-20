@@ -56,6 +56,9 @@ import {MatSortModule} from '@angular/material/sort';
 import { GuiGridModule } from '@generic-ui/ngx-grid';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
+import { UnitMeasureComponent } from './component/other-masters/unit-measure/unit-measure.component';
+import { TaxTemplateComponent } from './component/other-masters/tax-template/tax-template.component';
+import { CurrencyConversationComponent } from './component/other-masters/currency-conversation/currency-conversation.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +91,10 @@ import { HttpClientModule } from '@angular/common/http';
     ImpactedAssociationComponent,
     AssociationTargetPopupComponent,
     PromotionsComponent,
-    AddPromotionsComponent
+    AddPromotionsComponent,
+    UnitMeasureComponent,
+    TaxTemplateComponent,
+    CurrencyConversationComponent
 
   ],
   imports: [

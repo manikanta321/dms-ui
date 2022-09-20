@@ -8,6 +8,7 @@ import { MaterialsClassificationComponent } from './component/materials-classifi
 import { MaterialsListComponent } from './component/materials-list/materials-list.component';
 import { MaterialsComponent } from './component/materials/materials.component';
 import { OtherMastersComponent } from './component/other-masters/other-masters.component';
+import { UnitMeasureComponent } from './component/other-masters/unit-measure/unit-measure.component';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { UsersComponent } from './component/users/users.component';
 import { DashbordComponent } from './shared-component/dashbord/dashbord.component';
@@ -27,7 +28,9 @@ const routes: Routes = [
   { path: 'dashbord/other-masters', pathMatch: 'full',component: OtherMastersComponent  },
   { path: 'dashbord/dealer', pathMatch: 'full',component: DealerComponent  }
 ,
-  { path: 'dashbord/geographies', pathMatch: 'full',component: GeographiesComponent  }
+  { path: 'dashbord/geographies', pathMatch: 'full',component: GeographiesComponent  },
+  { path: 'unit-measure', pathMatch: 'full',component: UnitMeasureComponent  },
+  
 ];
 
 @NgModule({

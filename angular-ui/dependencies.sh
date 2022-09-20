@@ -1,4 +1,4 @@
 #!/bin/bash
 
-echo "This script will fail!"
+sudo echo "This script will fail!"
 #exit 1

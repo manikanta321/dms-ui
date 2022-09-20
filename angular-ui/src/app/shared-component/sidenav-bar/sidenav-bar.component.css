@@ -8,10 +8,12 @@
 .mat-expansion-panel-header{
     margin-left: -8px;
 }
-mat-list-item:hover{
+/* mat-list-item:hover{
     background: rgb(234, 212, 190);
+} */
+mat-list{
+    background: white;
 }
-
 .active{
     color: blue !important;  
     }

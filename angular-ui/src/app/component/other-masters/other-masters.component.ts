@@ -46,6 +46,8 @@ import { EditUomPopupComponent } from '../users/userPopups/edit-uom-popup/edit-u
 import { AddTaxTemplateComponent } from '../users/userPopups/add-tax-template/add-tax-template.component';
 import { AddcurrencyComponent } from '../users/userPopups/addcurrency/addcurrency.component';
 import { EditTaxTemplateComponent } from '../users/userPopups/edit-tax-template/edit-tax-template.component';
+import { MatSidenav } from '@angular/material/sidenav';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-other-masters',
@@ -60,13 +62,31 @@ export class OtherMastersComponent implements OnInit {
   dataSource1=ELEMENT_DATA1;
   toppings = new FormControl('');
   toppingList: string[] = ['Active', 'Inactive'];
-
+  sideBarOpen = true;
+  @ViewChild(MatSidenav)
+  sidenav!: MatSidenav;
   constructor(public dialog: MatDialog,
+    private observer: BreakpointObserver,
     private router: Router,) { }
 
   ngOnInit(): void {
  
   }
+  ngAfterViewInit() {
+    this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
+      if (res.matches) {
+        this.sidenav.mode = 'over';
+        this.sidenav.close();
+      } else {
+        this.sidenav.mode = 'side';
+        this.sidenav.open();
+      }
+    });
+  }
+  sideBarToggler(){
+    this.sideBarOpen = !this.sideBarOpen;
+  }
+  
   addUser(){
    this.dialog.open( AddUserPopupComponent,  { height: '580px', });
   }

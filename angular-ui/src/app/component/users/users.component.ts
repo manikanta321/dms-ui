@@ -44,10 +44,12 @@ import { DeletecomponentComponent } from '../deletecomponent/deletecomponent.com
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AgGridAngular } from 'ag-grid-angular';
 import { UserService } from 'src/app/services/user.service';
 import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
+import { MatSidenav } from '@angular/material/sidenav';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-users',
@@ -249,11 +251,14 @@ public pivotPanelShow = 'always';
 
   toppingList1:  any= [];
   filterDictionary: any;
-
+  sideBarOpen = true;
+  @ViewChild(MatSidenav)
+  sidenav!: MatSidenav;
   constructor(public dialog: MatDialog,
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
     private user:UserService,
+    private observer: BreakpointObserver
    ) {
       sort:[];
      }
@@ -262,12 +267,20 @@ public pivotPanelShow = 'always';
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+    this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
+      if (res.matches) {
+        this.sidenav.mode = 'over';
+        this.sidenav.close();
+      } else {
+        this.sidenav.mode = 'side';
+        this.sidenav.open();
+      }
+    });
   }
 
 
 
   ngOnInit(): void {
-    
   this.getusertabeldata();
   this.roleItems();
   this.statusItems();
@@ -469,5 +482,8 @@ roleFilter(){
     // );
   }
 
-
+  sideBarToggler(){
+    this.sideBarOpen = !this.sideBarOpen;
+  }
+  
 }

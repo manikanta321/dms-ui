@@ -22,3 +22,13 @@
   ::ng-deep.mat-toolbar-single-row{
 background-color: white;
   }
+  .togglemweb{
+  display: none;
+  }
+  @media (max-width:767px){
+    .togglemweb{
+      display: block;
+      border-radius: 10px;
+      font-size: 20px;
+      }
+  }

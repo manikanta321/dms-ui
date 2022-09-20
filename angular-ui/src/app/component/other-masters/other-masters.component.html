@@ -1,12 +1,13 @@
-<app-head></app-head>
+<app-head (toggleSidebar)="sideBarToggler()"></app-head>
 
-<div class="UNFAPP-asmnt-full-area" >
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xl-2 col-md-3">
-                <app-sidenav-bar></app-sidenav-bar>
-            </div>
-            <div class="col-xl-10 col-md-9 ACVTY-no-pad"  style="background-color: #F5F5F5;padding: 15px;">
+<mat-sidenav-container>
+  <mat-sidenav mode="side" [opened]="sideBarOpen" class="sidenav">
+    
+      <app-sidenav-bar></app-sidenav-bar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+        
+            <div class=" ACVTY-no-pad"  style="background-color: #F5F5F5;padding: 15px;">
                 <div class="UNFAPP-asmnt-rgt-area">
                     
                     <mat-tab-group >
@@ -311,6 +312,7 @@
                       </mat-tab-group>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+          </mat-sidenav-content>
+        </mat-sidenav-container>
+       
+

@@ -10,7 +10,9 @@ permissions:
 hooks:
   BeforeInstall:
     - location: scripts/dependencies.sh
+      runas: root
    
   AfterInstall:
     - location: scripts/start.sh
       timeout: 180
+      runas: root

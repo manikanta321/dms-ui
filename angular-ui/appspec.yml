@@ -2,10 +2,10 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/dist/angular-ui/scripts
-permissions:
-  - object: /home/ubuntu/dist/angular-ui/scripts
-    pattern: "**"
+    destination: /home/ubuntu/dist/angular-ui
+#permissions:
+ # - object: /home/ubuntu/dist/angular-ui
+  #  pattern: "**"
     
 hooks:
   BeforeInstall:

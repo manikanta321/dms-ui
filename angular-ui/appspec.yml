@@ -9,8 +9,8 @@ permissions:
     
 hooks:
   BeforeInstall:
-    - location: angular-ui/scripts/dependencies.sh
+    - location: scripts/dependencies.sh
    
   AfterInstall:
-    - location: angular-ui/scripts/start.sh
+    - location: scripts/start.sh
       timeout: 180

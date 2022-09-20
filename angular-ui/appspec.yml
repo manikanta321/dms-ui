@@ -2,17 +2,17 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /opt/codedeploy-agent/deployment-root/72f6f04a-dafe-436f-a1d2-abc671a02804/d-PE9ABWCWI/deployment-archive
+    destination: /home/ubuntu/dist/angular-ui/scripts
 permissions:
-  - object: /opt/codedeploy-agent/deployment-root/72f6f04a-dafe-436f-a1d2-abc671a02804/d-PE9ABWCWI/deployment-archive
+  - object: /home/ubuntu/dist/angular-ui/scripts
     pattern: "**"
 
 hooks:
   BeforeInstall:
-    - location: /dependencies.sh
+    - location: scripts/dependencies.sh
       timeout: 100
       runas: root
   ApplicationStart:
-    - location: /start.sh
+    - location: scripts/start.sh
       timeout: 100
       runas: root

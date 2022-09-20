@@ -13,5 +13,6 @@ phases:
       - npm link @angular/cli
 artifacts:
   files:
-    - build/**/*
-    - scripts/*
+    #- build/**/*
+    #- scripts/*
+    - **/**

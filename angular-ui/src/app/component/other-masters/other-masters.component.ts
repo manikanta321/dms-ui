@@ -108,7 +108,9 @@ export class OtherMastersComponent implements OnInit {
   addCurrency(){
     this.dialog.open( AddcurrencyComponent);
   }
- 
+  unitMeasure(){
+    this.router.navigate(['unit-measure']);
+  }
 }
 
 

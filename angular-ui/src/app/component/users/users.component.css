@@ -60,6 +60,9 @@ mat-sidenav-container {
 .ag-theme-alpine .ag-filter-toolpanel-header, .ag-theme-alpine .ag-filter-toolpanel-search, .ag-theme-alpine .ag-status-bar, .ag-theme-alpine .ag-header-row, .ag-theme-alpine .ag-panel-title-bar-title, .ag-theme-alpine .ag-multi-filter-group-title-bar {
    
     --ag-background-color: white;
+    --ag-border-radius:25px;
+
+
 }
 .ag-header-row ag-header-row-column{
     --ag-background-color: white;

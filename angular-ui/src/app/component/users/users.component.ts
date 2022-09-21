@@ -81,31 +81,29 @@ status:any;
 
 columnDefs: ColDef[] = [
   { headerName: "User Id",
-    field: 'employeeCode' , sort: 'desc',width: 120},
+    field: 'employeeCode' , sort: 'desc'},
 
   {   headerName: "User Name",field: 'employeeName' },
 
-  { field: 'role',width: 100 },
+  { field: 'role', },
 
   {  headerName: "Email Id",
      field: 'emailId' },
 
   {   headerName: "Phone no",
-    field: 'mobilePhone',width: 150  },
+    field: 'mobilePhone',},
 
   {   headerName: "Last Login",
     // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-    field: 'lastLoginDate',type: ['nonEditableColumn'], width: 220  },
+    field: 'lastLoginDate',type: ['nonEditableColumn']},
 
 
   { headerName: "Status",
-     field: 'status', width: 100,
+     field: 'status', 
   cellEditor: 'agSelectCellEditor',
   cellEditorParams: {
     values: ['Active', 'Inactive', 'Invited', 'Locked',],
   }
-  
-
 },
 // {
 //   headerName: "Avatar",
@@ -254,6 +252,8 @@ public pivotPanelShow = 'always';
   sideBarOpen = true;
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
+  roleName: any;
+  statusname:any;
   constructor(public dialog: MatDialog,
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
@@ -395,9 +395,15 @@ statusItems(){
 
 
 
-roleFilter(){
-  let roleName=this.toppings.value
-  console.log('rolename',roleName)
+roleFilter(data:any){
+  console.log('data',data)
+  this.roleName=this.toppings.value;
+this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=>{
+  this.rowData = res.response;
+
+
+});
+  console.log('rolename',this.rowData)
 }
 
   applyFilter(event: Event) {

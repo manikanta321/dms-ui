@@ -53,8 +53,8 @@ export class TaxTemplateComponent implements OnInit {
     // { headerName: "User Id",
     //   field: 'employeeCode' , sort: 'desc',width: 120},
   
-    {   headerName: "User Name",field: 'name' },
-    {   headerName: "Tax Items",field: 'Taxitem' },
+    {   headerName: "User Name",field: 'name' ,width:300},
+    {   headerName: "Tax Items",field: 'Taxitem' ,width:300},
   
     // { field: 'role',width: 100 },
   
@@ -75,7 +75,7 @@ export class TaxTemplateComponent implements OnInit {
     cellEditorParams: {
       values: ['Active', 'Inactive', 'Invited', 'Locked',],
     }
-    
+    ,width:250
     
   
   },

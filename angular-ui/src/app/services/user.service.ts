@@ -27,6 +27,17 @@ public getstatusDeatils(){
 }
 
 
+public UserFilterServices(roleId:any,statusId:any){
+  if(statusId==undefined){
+    statusId='0'
+  }
+  if(roleId==undefined){
+    roleId='0'
+  }
+  return this.http.get<any>(this.userurl + `UserMgmtApi/GetAllUsers?userTypeId = ${roleId}&statusid = ${statusId}&Search = ""`);
+
+}
+
 
                             //  http://52.172.24.161:801/api/GetUserTypes
 //   User types dropdown : - http://52.172.24.161:801/api/GetUserTypes

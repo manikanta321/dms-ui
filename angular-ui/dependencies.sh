@@ -1,4 +1,4 @@
 #!/bin/bash
 
 sudo echo "This script will fail!"
-#exit 1
+sudo rm -rf /var/www/html/

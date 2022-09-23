@@ -2,9 +2,9 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/test/angular-ui
+    destination: /home/ubuntu
 permissions:
-   - object: /home/ubuntu/test/angular-ui
+   - object: /home/ubuntu
      pattern: "**"
     
 hooks:

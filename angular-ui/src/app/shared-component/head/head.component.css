@@ -29,6 +29,7 @@ background-color: white;
     .togglemweb{
       display: block;
       border-radius: 10px;
-      font-size: 20px;
+      /* font-size: 20px; */
+      background: #59419979
       }
   }

@@ -294,4 +294,10 @@
     .ag-theme-alpine{
       
     }
+    .mat-form-field{
+        width: 160px;
+    }
+    .dropbtn{
+     margin-top: 5px;
+    }
 }

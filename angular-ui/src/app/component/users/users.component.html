@@ -15,38 +15,28 @@
             <!-- </div> -->
             <div class=" ACVTY-no-pad" >
                 <div class="UNFAPP-asmnt-rgt-area" style="background-color: #EAECF2;padding: 15px;height: 92vh;">
-               
-
- <div class="row" >
-    <div class="col-xl-3 col-md-3" style="    max-width: 20%;
-    ">
-
-      <div class="selct_box" >
-        <!-- <mat-label>Role</mat-label>
-        <br> -->
-        <mat-form-field appearance="outline">
-            <mat-select [formControl]="toppings"  multiple placeholder="Role " >
-              <!-- <mat-select-trigger>
-                {{toppings.value?.[0] || ''}}
-                <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
-                  (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
-                </span>
-              </mat-select-trigger> -->
-              <mat-select-trigger>
-                <span *ngIf="(toppings.value?.length || 0) > 0" class="example-additional-selection">
-                  {{(toppings.value?.length || 0) }} {{toppings.value?.length === 2 ? 'Selected' : 'Selected'}}
-                </span>
-              </mat-select-trigger>
-                <mat-option   *ngFor="let topping of toppingList" [value]="topping.role_name"  (click)="roleFilter(topping.role_id)">
-                  {{topping.role_name}}</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-
-     </div>
-
-     <div class="col-xl-3 col-md-3" style="max-width: 20%;
-     ">
+       <div class="row">
+        <div class="selct_box" style="margin-left: 20px;" >
+          <!-- <mat-label>Role</mat-label>
+          <br> -->
+          <mat-form-field appearance="outline">
+              <mat-select [formControl]="toppings"  multiple placeholder="Role " >
+                <!-- <mat-select-trigger>
+                  {{toppings.value?.[0] || ''}}
+                  <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
+                    (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+                  </span>
+                </mat-select-trigger> -->
+                <mat-select-trigger>
+                  <span *ngIf="(toppings.value?.length || 0) > 0" class="example-additional-selection">
+                    {{(toppings.value?.length || 0) }} {{toppings.value?.length === 2 ? 'Selected' : 'Selected'}}
+                  </span>
+                </mat-select-trigger>
+                  <mat-option   *ngFor="let topping of toppingList" [value]="topping.role_name"  (click)="roleFilter(topping.role_id)">
+                    {{topping.role_name}}</mat-option>
+              </mat-select>
+          </mat-form-field>
+      </div>
       <div class="selct_box" style="margin-left: 20px;">
         <!-- <mat-label>Status</mat-label><br> -->
         <mat-form-field appearance="outline">
@@ -62,67 +52,37 @@
                    {{topping.status_name}}</mat-option>
             </mat-select>
         </mat-form-field>
+        <button type="button" class="btn btn-primary1" style="margin-bottom: 9px;" (click)="refresh()">
+          <mat-icon mat-list-icon>refresh</mat-icon>
+        </button>
     </div>
-
-     </div>
-<div class="col-xl-1 col-md-3">
-  <button type="button" class="btn btn-primary1" style="margin-bottom: 1px;" (click)="refresh()">
-    <mat-icon mat-list-icon>refresh</mat-icon>
-  </button>
-</div>
-     <div class="col-xl-6 col-md-3" style="max-width: 50%;padding-top: 5px;
-     ">
-     <div class="row">
-<div style="margin-left: 10px;">
-  <div class="input-group">
-    <div class="form-outline">
+    <div class="form-outline" style="margin-left: 20px;margin-top: 5px;">
       <!-- <label class="form-label" for="form1">Search</label> -->
   
       <input type="search" placeholder="search"  (keyup)="applyFilter($event)"  #input class="form-control" style="border:solid #2962ff 1px;" />
+      
     </div>
     <button type="button" class="btn btn-primary">
       <i class="fas fa-search"></i>
     </button>
-  </div>
-</div>
-<div  style="max-width: 30%;
-">
-   
-  <button class="btn  btnhover createcoursebtn" type="button" id="dropdownMenu2"
-  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 30px;" (click)=" addUser()" >
-   + Add user
-</button>
-</div>
-<div style="    max-width: 14%;
-">
-  <button class="btn btn-primary2" type="button" id="dropdownMenu2"
+    <div class="crt-dwnl">
+      <button class="btn  btnhover createcoursebtn" type="button" id="dropdownMenu2"
+      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 20px;" (click)=" addUser()" >
+       + Add user
+    </button>
+    <button class="btn btn-primary2" type="button" id="dropdownMenu2"
   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  <mat-icon [ngStyle]="{'color':'white'}">download</mat-icon></button></div>
+  <mat-icon [ngStyle]="{'color':'white'}">download</mat-icon></button>
+    </div>
+       </div>   
+       <div class="row">
+        <div class="col-2">
+         <h4 style="color: #017EFA
+         ;font-family: Montserrat, sans-serif;font-size:15px ;font-weight: 550;"><b>All Users</b></h4>
+        </div>
+        </div>
+           
 
-</div>
-  </div>
- </div> 
- 
- <div class="row">
-  <div class="col-2">
-   <h4 style="color: #017EFA
-   ;font-family: Montserrat, sans-serif;font-size:15px ;font-weight: 550;"><b>All Users</b></h4>
-  </div>
-
-
-  <div class="col-4 float-right">
-
-  
-  </div>
-
-  <!-- <div  class="col-6 float-right">
-    <mat-paginator [length]="100"
-    [pageSize]="10"
-    [pageSizeOptions]="[5, 10, 25, 100]"
-    aria-label="Select page">
-   </mat-paginator>
-  </div> -->
- </div>
 
 <!-- AG Grid Angular Component -->
 <!-- <ag-grid-angular

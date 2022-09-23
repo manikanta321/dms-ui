@@ -210,7 +210,7 @@ mat-sidenav-container {
       width: 100%;
   }
   .btn-primary {
-    margin-top: 2px;
+    margin-top: 6px;
     height: 35px;
     color: #fff;
     background-color: #5f4a9979;
@@ -246,7 +246,7 @@ mat-sidenav-container {
 }
   .createcoursebtn {
     background: #59419979;
-    float: right;
+    /* float: right; */
   
     font-style: normal;
     font-weight: 400;
@@ -359,4 +359,18 @@ mat-sidenav-container {
 }
 ::ng-deep.ng-tns-c148-1 ng-trigger ng-trigger-transformPanel mat-select-panel mat-primary{
     width: 100px !important;
+}
+.crt-dwnl{
+ margin-top: 6px;
+}
+@media (max-width: 700px){
+    /* .mat-form-field {
+        width: 140px;
+    } */
+    .crt-dwnl{
+        position: relative;
+        left: 90px;
+        top: 40px;
+    }
+   
 }

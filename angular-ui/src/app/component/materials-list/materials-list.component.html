@@ -1,124 +1,118 @@
-<div class="row" style="background-color: white;">
-  <div class="col-xl-3 col-md-3">
-    <!-- <mat-form-field appearance="fill">
-      <mat-label>Role</mat-label>
-      <option label="Search"></option>
-      <mat-select [(value)]="selected">
-        <mat-option>Name</mat-option>
-        <mat-option value="Description">Description</mat-option>
-        <mat-option value="Product Group">Product Group</mat-option>
-        <mat-option value="Brand Name">Brand Name</mat-option>
-        <mat-option value="SKU Number">SKU Number</mat-option>
-      </mat-select>
-    </mat-form-field> -->
-
-  </div>
-  <div class="col-xl-9 col-md-9" style="text-align: right;">
-    <button (click)="addpromotion()">addpromtion</button>
-    <button type="button" class="btn btn-primary btn-dms-success" (click)="addEditMaterial()">Create</button>
-  </div>
-</div>
-<div>
-  <div class="row" style="background-color: white;margin-right: 0.8px;margin-left: 0.8px;padding-top:5px;">
-    <div style="background-color: white;" class="col-xl-10 col-md-3">
-      <h4 class="sub-header">Users</h4>
+<div class="container-fluid" style="padding-left: 0px;">
+  <div class="row">
+    <div style="margin-left: 17px;margin-top: 25px;width: 150px;">
+      <div class="input-group">
+        <div class="form-outline">
+          <!-- <label class="form-label" for="form1">Search</label> -->
+      
+          <input type="search" placeholder="search"  #input class="form-control" style="border:solid #2962ff 1px;" />
+        </div>
+        <!-- <button type="button" class="btn btn-primary">
+          <i class="fas fa-search"></i>
+        </button> -->
+      </div>
     </div>
+    <div style="    margin-left: 15px;margin-top: 25px;width: 150px;">
+      <div class="input-group">
+        <div class="form-outline">
+          <!-- <label class="form-label" for="form1">Search</label> -->
+      
+          <input type="search" placeholder="Name"  #input class="form-control" style="border:solid #2962ff 1px;" />
+        </div>
+        <!-- <button type="button" class="btn btn-primary">
+          <i class="fas fa-search"></i>
+        </button> -->
+      </div>
+    </div>
+    <div style="margin-left: 15px;margin-top: 25px;width: 150px;">
+      <div class="input-group">
+        <div class="form-outline">
+          <!-- <label class="form-label" for="form1">Search</label> -->
+      
+          <input type="search" placeholder="Description"  #input class="form-control" style="border:solid #2962ff 1px;" />
+        </div>
+        <!-- <button type="button" class="btn btn-primary">
+          <i class="fas fa-search"></i>
+        </button> -->
+      </div>
+    </div>
+    <div style="margin-left: 15px;margin-top: 25px;width: 150px;">
+      <div class="input-group">
+        <div class="form-outline">
+          <!-- <label class="form-label" for="form1">Search</label> -->
+      
+          <input type="search" placeholder="Product Group"  #input class="form-control" style="border:solid #2962ff 1px;" />
+        </div>
+        <!-- <button type="button" class="btn btn-primary">
+          <i class="fas fa-search"></i>
+        </button> -->
+      </div>
+    </div>
+    <div style="margin-left: 15px;margin-top: 25px;width: 150px;">
+      <div class="input-group">
+        <div class="form-outline">
+          <!-- <label class="form-label" for="form1">Search</label> -->
+      
+          <input type="search" placeholder="Brand Name"  #input class="form-control" style="border:solid #2962ff 1px;" />
+        </div>
+        <!-- <button type="button" class="btn btn-primary">
+          <i class="fas fa-search"></i>
+        </button> -->
+      </div>
+    </div>
+    <div style="margin-left: 15px;margin-top: 25px;width: 150px;">
+      <div class="input-group">
+        <div class="form-outline">
+          <!-- <label class="form-label" for="form1">Search</label> -->
+      
+          <input type="search" placeholder="SKU Number"  #input class="form-control" style="border:solid #2962ff 1px;" />
+        </div>
+        <!-- <button type="button" class="btn btn-primary">
+          <i class="fas fa-search"></i>
+        </button> -->
+      </div>
+    </div>
+    <div style="max-width: 30%;">
+     <button  (click)="addMaterial()" class="btn  btnhover createcoursebtn" type="button" id="dropdownMenu2"
+     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 27px;margin-top: 24px;width: 116px;" >
+   + Add Materials
+</button>
+</div>
   </div>
+  <div class="row">
+      <div class="col-xl-12 col-md-12 ACVTY-no-pad" style="width: 100%;">
+          <div class="UNFAPP-asmnt-rgt-area" style="padding: 15px;height: 92vh;">
+        
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table-container w-100">
-    <!--- Note that these columns can be defined in any order.
-    The actual rendered columns are set as a property on the row definition" -->
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td class="tabeldata" mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
+<div class="row">
+<div class="col-2">
+<h4 style="color: #017EFA
+;font-family: Montserrat, sans-serif;font-size:15px ;font-weight: 550;"><b>Users</b></h4>
+</div>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="classification">
-      <th mat-header-cell *matHeaderCellDef> Classification </th>
-      <td class="tabeldata" mat-cell *matCellDef="let element"> {{element.weight}} </td>
-    </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="unitofMeasure">
-      <th mat-header-cell *matHeaderCellDef> Unit of Measure </th>
-      <td class="tabeldata" mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-    </ng-container>
+<div class="col-4 float-right">
 
-    <ng-container matColumnDef="productgroup">
-      <th mat-header-cell *matHeaderCellDef> Product Group </th>
-      <td class="tabeldata" mat-cell *matCellDef="let element"> {{element.emailid}} </td>
-    </ng-container>
-    <ng-container matColumnDef="sku">
-      <th mat-header-cell *matHeaderCellDef> SKU </th>
-      <td class="tabeldata" mat-cell *matCellDef="let element"> {{element.phonenum}} </td>
-    </ng-container>
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef> Status </th>
-      <td class="tabeldata" mat-cell *matCellDef="let element"> <button *ngIf="element.status=='active'" type="button"
-          class="btn btn-primary"
-          style="background-color:  #17B15C;
-  ;border: solid #17B15C;border-radius: 10px;color: black;font-weight: 500;padding-top: 4px;padding-bottom: 4px;">Active</button>
 
-        <button *ngIf="element.status=='inactive'" type="button" class="btn btn-primary"
-          style="background-color:  #63e99f;
- ;border: solid #63e99f;border-radius: 10px;color: black;font-weight: 500;padding-top: 4px;padding-bottom: 4px;">InActiv</button>
-        <button *ngIf="element.status=='locked'" type="button" class="btn btn-primary"
-          style="background-color:  #76817b;
-   ;border: solid #76817b;border-radius: 10px;color: black;font-weight: 500;padding-top: 4px;padding-bottom: 4px;">locked</button>
-        <button *ngIf="element.status=='invited'" type="button" class="btn btn-primary"
-          style="background-color:  #1779b1;
-     ;border: solid #1779b1;border-radius: 10px;color: black;font-weight: 500;padding-top: 4px;padding-bottom: 4px;">Invited</button>
-      </td>
-    </ng-container>
-    <ng-container matColumnDef="edit">
-      <th mat-header-cell *matHeaderCellDef> </th>
-      <td class="tabeldata" mat-cell *matCellDef="let element">
-        <button mat-button style="border:white;" class="btn btn-outline-light" (click)="impactedAssociation()"><img
-            src="../../../assets/img/edit-pencil-icon.svg" alt="" /></button>
-      </td>
-    </ng-container>
+</div>
+<ag-grid-angular
+style="width: 100%; height: 400px;"
+class="ag-theme-alpine"
+[rowHeight]="30"
+[pagination]="true"
+[paginationAutoPageSize]="true"
+[columnDefs]="columnDefs"
+[defaultColDef]="defaultColDef"
+[columnTypes]="columnTypes"
+[rowData]="rowData3"
+(cellValueChanged)="onCellValueChanged($event)"
 
-    <ng-container matColumnDef="activateSection">
-      <th mat-header-cell *matHeaderCellDef> </th>
-      <td class="tabeldata" mat-cell *matCellDef="let element"> {{element.weight}} </td>
-    </ng-container>
+></ag-grid-angular>
+<!-- <ag-grid-angular     style="width: 500px; height: 150px;"     class="ag-theme-alpine"     [rowData]="rowData3"     [columnDefs]="columnDefs"> </ag-grid-angular> -->
+<div >
+</div>
 
-    <ng-container matColumnDef="action">
-      <th mat-header-cell *matHeaderCellDef> </th>
-      <td class="tabeldata" mat-cell *matCellDef="let element">
-        <button mat-button [matMenuTriggerFor]="menu" style="border:white;" class="btn btn-outline-light"><img
-            src="../../../assets/img/edit.svg" alt="" /></button>
-        <mat-menu #menu="matMenu" style="border:white;background-color: white;">
-          <button mat-menu-item class="btn btn-outline-light"
-            style="border:white;background-color: white; border-bottom: 1px solid #ccc;">Edit</button>
-          <button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;"
-            >Activate</button>
-          <button mat-menu-item class="btn btn-outline-light"
-            style="border:white;background-color: white;">Deactivate</button>
-        </mat-menu>
-      </td>
-
-    </ng-container>
-    <!--       
-      <ng-container matColumnDef="edit">
-        <th mat-header-cell *matHeaderCellDef> </th>
-        <td class="tabeldata" mat-cell *matCellDef="let element">
-          <button mat-button [matMenuTriggerFor]="menu" style="border:white;" class="btn btn-outline-light"><img
-              src="../../../assets/img/edit.svg" alt="" /></button>
-          <mat-menu #menu="matMenu" style="border:white;background-color: white;">
-            <button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;"
-              (click)=" editUser()">Edit</button>
-            <button mat-menu-item class="btn btn-outline-light"
-              style="border:white;background-color: white;">Delete</button>
-          </mat-menu>
-        </td>
-      </ng-container> -->
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
-  </mat-paginator>
-
+</div>
+      </div>
+  </div>
 </div>

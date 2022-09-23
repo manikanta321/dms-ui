@@ -1,11 +1,27 @@
 .add-edit-material-modal {
-    background: #DADADA;
+    background: #cbcbf6;
     padding: 16px;
     min-width: 540px;
 }
 
 .modal-title {
     padding: 0 15px;
+}
+.createcoursebtn {
+    background: #59419979;
+    float: right;
+  
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #FFFFFF;
+    width: 80%;
+    padding: 10px;
+    border-radius: 16px;
 }
 
 .modal-header {
@@ -18,7 +34,9 @@
     z-index: 1;
     border-bottom: 0;
 }
-
+.primary-color {
+    color: #000000;
+}
 .modal-header span {
     background: #DADADA;
     padding: 13px;
@@ -88,16 +106,16 @@
 
 .same-line label.radio {
     display: inline-block;
-    background: #fff;
+    background: #59419979;
     padding: 5px 10px;
     margin: 5px;
     border-radius: 10px;
     font-size: 12px;
-    color: #017EFA;
+    color: #fff;
 }
 
 .same-line input[type='radio']:checked+label.radio {
-    background-color: #017EFA;
+    background-color: #59419979;
     color: #fff;
 }
 
@@ -134,7 +152,7 @@
 }
 
 .add-button-section .btn{
-    margin-right: 10px;
+    margin-right: 69px;
     margin-left: 10px;
 
 }

@@ -11,7 +11,36 @@
     background: #FFFFFF;
     z-index: 1000;
 }
-
+.createcoursebtn {
+    background: #59419979;
+    float: right;
+  
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #FFFFFF;
+    width: 100px;
+    padding: 10px;
+    border-radius: 16px;
+}
+.ag-theme-alpine .ag-filter-toolpanel-header, .ag-theme-alpine .ag-filter-toolpanel-search, .ag-theme-alpine .ag-status-bar, .ag-theme-alpine .ag-header-row, .ag-theme-alpine .ag-panel-title-bar-title, .ag-theme-alpine .ag-multi-filter-group-title-bar {
+   
+    --ag-background-color: white;
+}
+.ag-header-row ag-header-row-column{
+    --ag-background-color: white;
+}
+.ag-theme-alpine {
+    --ag-header-height: 30px;
+    /* --ag-header-foreground-color: blue; */
+    --ag-header-background-color: white;
+    --ag-header-cell-hover-background-color: rgb(80, 40, 140);
+    --ag-header-cell-moving-background-color: rgb(80, 40, 140);
+}
 
 .material-list .text {
     position: absolute;

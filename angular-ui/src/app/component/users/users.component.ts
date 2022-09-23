@@ -421,7 +421,7 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
 
 // }
   addUser(){
-   this.dialog.open( AddUserPopupComponent,  { height: '580px',});
+   this.dialog.open( AddUserPopupComponent,);
   }
   editUser(){
     this.dialog.open( EditPopupComponent,);

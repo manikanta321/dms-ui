@@ -1,13 +1,18 @@
-<app-head></app-head>
+<app-head (toggleSidebar)="sideBarToggler()"></app-head>
 
-<div class="UNFAPP-asmnt-full-area">
     <div class="container-fluid" style="padding-left: 0px;">
-        <div class="row">
-            <div class="col-xl-2 col-md-3">
+       
+            <mat-sidenav-container>
+                <mat-sidenav mode="side" [opened]="sideBarOpen" class="sidenav">
+                  
+                    <app-sidenav-bar></app-sidenav-bar>
+                </mat-sidenav>
+                <mat-sidenav-content>
+            <!-- <div class="col-xl-2 col-md-3">
                 <app-sidenav-bar></app-sidenav-bar>
-            </div>
-            <div class="col-xl-10 col-md-9 ACVTY-no-pad" style="width: 100%;">
-                <div class="UNFAPP-asmnt-rgt-area" style="background-color: #EAECF2;padding: 15px;height: 92vh;">
+            </div> -->
+            <div class=" ACVTY-no-pad">
+                <div class="UNFAPP-asmnt-rgt-area" style="background-color: #EAECF2;padding: 15px;height: 100vh;">
                     <div class="col-lg-12">
                         <mat-tab-group>
                             <mat-tab label="Classification "><app-materials-classification></app-materials-classification>                            </mat-tab>
@@ -22,6 +27,7 @@
 <!-- <app-materials-list></app-materials-list> -->
    </div>
             </div>
-        </div>
-    </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 </div>
+

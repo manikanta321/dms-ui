@@ -1,0 +1,19 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/app
+permissions:
+   - object: /home/ubuntu/app
+     pattern: "**"
+    
+hooks:
+  BeforeInstall:
+    - location: dependencies.sh
+      timeout: 180
+      runas: root
+   
+  AfterInstall:
+    - location: start.sh
+      timeout: 180
+      runas: root

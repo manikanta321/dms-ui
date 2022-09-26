@@ -1,124 +1,23 @@
-<div class="classification row">
-    <div class="prnt-btn-section col-md-12">
-        <button class="prnt-btn">Print <img src="../../../assets/img/print-icon.png" alt="print-icon"></button>
-    </div>
-</div>
-
-<div class="row" style="padding: 15px 15px 0px;background: #fff;">
-    <div class="col-md-2">
-        <mat-form-field class="mat-form-field-style">
-            <input type="text" matInput placeholder="Search">
-        </mat-form-field>
-    </div>
-    <div class="col-md-2">
-        <mat-form-field appearance="fill" style="width: 140px;">
-            <mat-label>Geography</mat-label>
-            <mat-select [formControl]="toppings">
-                <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-
-    <div class="col-md-2" style="width: 140px;">
-        <mat-form-field appearance="fill" style="width: 140px;">
-            <mat-label>Product</mat-label>
-            <mat-select [formControl]="toppings">
-                <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-    <div class="col-xl-3 col-md-3" style="width: 140px;">
-        <mat-form-field appearance="fill" style="width: 140px;">
-            <mat-label>Status</mat-label>
-            <mat-select [formControl]="toppings">
-                <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-    <div class="col-md-3" style="text-align: right;">
-        <button class="btn btn-outline-light mr-2" *ngIf="showUploadButton"
-        style="border:solid blue 1px;color: black;background-color: white;">Upload <img
-            src="../../../assets/img/upload-icon.svg" alt="" /></button>
-
-        <button class="btn btn-outline-light"
-            style="border:solid blue 1px;color: black;background-color: white;">Download <img
-                src="../../../assets/img/cloud.png/" alt="" /></button>
-    </div>
-</div>
-<div class="association-action-section">
-    <div class="row">
-        <div class="col-md-8"></div>
-        <div class="col-md-4 d-flex align-items-center  justify-content-between">
-            <div class="bulk-edit m-2 ">
-                <button type="button" class="btn btn-primary btn-dms-success" *ngIf="!bulkBtnClicked" (click)="showUploadButton = true;bulkBtnClicked= true">Edit in Bulk</button>
-            </div>
-            <div class="add-association m-2 ">
-                <button type="button" class="btn btn-outline-secondary" (click)="targetSetModal()"> Add Association</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="association-container">
-    <div class="product-section">
-        <h3 class="primary-color">Selction</h3>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="state">Product</label>
-                    <ng-select [items]="cities" [clearSearchOnAdd]="true" [closeOnSelect]="false" labelForId="state"
-                        placeholder="Select Product" [(ngModel)]="selectedPeople"
-                        [bindLabel]="'text'">
-                        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">                            
-                            {{item['text']}}
-                        </ng-template>
-
-                        <ng-template ng-multi-label-tmp let-items="items" let-item$="item$" let-index="index">
-                            <div class="ng-value" *ngFor="let item of items | slice:0:2">
-                                {{$any(item).text}}
-                            </div>
-                            <div class="ng-value" *ngIf="items.length > 2">
-                                <span class="ng-value-label">{{items.length - 2}} more...</span>
-                            </div>
-
-                            <div class="ng-value" *ngIf="items.length == 0">
-                                <span class="ng-value-label">Select value</span>
-                            </div>
-                        </ng-template>
-                    </ng-select>
+<div class="container">
+    <div class="row d-flex mt-2">
+        <div class="col-lg-6 col-12 srch">
+            <div class="input-group">
+                <div class="form-outline">
+                  <!-- <label class="form-label" for="form1">Search</label> -->
+              
+                  <input type="search" placeholder="search"  #input class="form-control" style="border:solid #2962ff 1px;" />
                 </div>
-            </div>
-            <div class="col-md-12">
-                <div class="form-group">
-                    <textarea class="form-control" name="description"
-                        placeholder="Enter Product information with STDn, UoM, Brand, SKU, e.t.c...." id="Description"
-                        cols="3" rows="5"></textarea>
-                </div>
-            </div>
+                <button type="button" class="btn btn-primary">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
         </div>
+       
+      <div class="col-lg-6 col-12 addtax">
+        <button class="btn  btnhover addtaxbtn" type="button" id="dropdownMenu2"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"   >
+        + Add Tax Template
+      </button>
+    </div>
     </div>
 </div>
-
-
-<!-- <ng-select [items]="cities" [clearSearchOnAdd]="true" [closeOnSelect]="false" labelForId="state"
-[multiple]="true" placeholder="Select Product" [(ngModel)]="selectedPeople"
-[bindLabel]="'text'">
-<ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
-    <input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected" />
-    {{item['text']}}
-</ng-template>
-
-<ng-template ng-multi-label-tmp let-items="items" let-item$="item$" let-index="index">
-    <div class="ng-value" *ngFor="let item of items | slice:0:2">
-        {{$any(item).text}}
-    </div>
-    <div class="ng-value" *ngIf="items.length > 2">
-        <span class="ng-value-label">{{items.length - 2}} more...</span>
-    </div>
-
-    <div class="ng-value" *ngIf="items.length == 0">
-        <span class="ng-value-label">Select value</span>
-    </div>
-</ng-template>
-
-</ng-select> -->

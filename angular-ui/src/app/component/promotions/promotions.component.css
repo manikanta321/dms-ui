@@ -68,11 +68,11 @@ color: black;
 ::ng-deep.mat-select-panel:not([class*=mat-elevation-z]){
     margin-top: 45px;
 }
-::ng-deep.mat-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-form-field-flex {
+/* ::ng-deep.mat-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-form-field-flex {
     border:solid  #2962FF 1.5px;
     border-radius: 5px;
     padding: 2px;
-}
+} */
 ::ng-deep.mat-form-field-appearance-fill .mat-form-field-flex{
     background-color:#F5F5F5;
 }

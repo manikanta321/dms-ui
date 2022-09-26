@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dealer.component.css']
 })
 export class DealerComponent implements OnInit {
-
+  sideBarOpen = true;
   constructor() { }
 
   ngOnInit(): void {

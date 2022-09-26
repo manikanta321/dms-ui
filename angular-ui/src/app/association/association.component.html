@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row d-flex mt-2">
-        <div class="col-lg-6 col-12 srch">
+        <div class="col-lg-4 col-12 srch">
             <div class="input-group">
                 <div class="form-outline">
                   <!-- <label class="form-label" for="form1">Search</label> -->
@@ -12,12 +12,76 @@
                 </button>
               </div>
         </div>
+        <div class="col-lg-5">
+        <div class="d-flex" >
+            <!-- <mat-label>Role</mat-label>
+            <br> -->
+            <mat-form-field appearance="outline">
+                <mat-select [formControl]="toppings1" multiple placeholder="Status " >
+                  <mat-select-trigger>
+                    {{toppings1.value?.[0] || ''}}
+                    <span *ngIf="(toppings1.value?.length || 0) > 1" class="example-additional-selection">
+                      (+{{(toppings1.value?.length || 0) - 1}} {{toppings1.value?.length === 2 ? 'other' : 'others'}})
+                    </span>
+                  </mat-select-trigger>
+                 
+                    <mat-option  *ngFor="let topping of toppingList1" [value]="topping.status_name"  >
+                       {{topping.status_name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-select [formControl]="toppings1" multiple placeholder="Status " >
+                  <mat-select-trigger>
+                    {{toppings1.value?.[0] || ''}}
+                    <span *ngIf="(toppings1.value?.length || 0) > 1" class="example-additional-selection">
+                      (+{{(toppings1.value?.length || 0) - 1}} {{toppings1.value?.length === 2 ? 'other' : 'others'}})
+                    </span>
+                  </mat-select-trigger>
+                 
+                    <mat-option  *ngFor="let topping of toppingList1" [value]="topping.status_name"  >
+                       {{topping.status_name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-select [formControl]="toppings1" multiple placeholder="Status " >
+                  <mat-select-trigger>
+                    {{toppings1.value?.[0] || ''}}
+                    <span *ngIf="(toppings1.value?.length || 0) > 1" class="example-additional-selection">
+                      (+{{(toppings1.value?.length || 0) - 1}} {{toppings1.value?.length === 2 ? 'other' : 'others'}})
+                    </span>
+                  </mat-select-trigger>
+                 
+                    <mat-option  *ngFor="let topping of toppingList1" [value]="topping.status_name"  >
+                       {{topping.status_name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+      </div>
        
-      <div class="col-lg-6 col-12 addtax">
-        <button class="btn  btnhover addtaxbtn" type="button" id="dropdownMenu2"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"   >
-        + Add Tax Template
+      <div class="col-lg-3 col-12 addtax">
+        <button class="btn  btnhover dwnldbtn" type="button" id="dropdownMenu2"   >
+          Print
+          <mat-icon>print</mat-icon>
+        </button>
+        <button class="btn  btnhover dwnldbtn ml-2" type="button" id="dropdownMenu2"   >
+        Download
+        <mat-icon>cloud_download</mat-icon>
       </button>
     </div>
+    </div>
+    <div class="table-sec">
+      <ag-grid-angular
+      style="width: 100%; height: 300px;"
+      class="ag-theme-alpine"
+      [rowHeight]="30"
+      [pagination]="true"
+      [paginationAutoPageSize]="true"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+      [columnTypes]="columnTypes"
+      [rowData]="rowData3"
+      (cellValueChanged)="onCellValueChanged($event)"
+      
+      ></ag-grid-angular>
     </div>
 </div>

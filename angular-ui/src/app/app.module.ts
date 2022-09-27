@@ -60,6 +60,7 @@ import { UnitMeasureComponent } from './component/other-masters/unit-measure/uni
 import { TaxTemplateComponent } from './component/other-masters/tax-template/tax-template.component';
 import { CurrencyConversationComponent } from './component/other-masters/currency-conversation/currency-conversation.component';
 import { OrdersComponent } from './component/orders/orders.component';
+import { OrderTableComponent } from './component/orders/order-table/order-table.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,8 @@ import { OrdersComponent } from './component/orders/orders.component';
     UnitMeasureComponent,
     TaxTemplateComponent,
     CurrencyConversationComponent,
-    OrdersComponent
+    OrdersComponent,
+    OrderTableComponent
 
   ],
   imports: [

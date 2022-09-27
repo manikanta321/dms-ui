@@ -44,6 +44,7 @@ import { UserService } from 'src/app/services/user.service';
 import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { AddPromotionsComponent } from '../add-promotions/add-promotions.component';
 
 @Component({
   selector: 'app-promotions',
@@ -471,6 +472,9 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
 
   sideBarToggler(){
     this.sideBarOpen = !this.sideBarOpen;
+  }
+  addPromotion(){
+    this.dialog.open(AddPromotionsComponent, );
   }
   
 }

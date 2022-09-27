@@ -44,7 +44,7 @@ export class AssociationComponent implements OnInit {
   { headerName: "",
   field: '',  filter: false, sortable: false,
   cellRenderer: function clickNextRendererFunc(){
-    return '<i class="fa fa-ellipsis-v" aria-hidden="true" (click)="editfn()"></i>';
+    return '<i class="fa fa-ellipsis-v"style="color:grey; font-size:12px" aria-hidden="true" (click)="editfn()"></i>';
 }
 },
   // {

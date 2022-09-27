@@ -1,156 +1,254 @@
-<div class="promotion"  style="background-color: #F5F5F5;padding: 15px;">
-    <br>
-    <br>
-   <br>   
-<div class="row">
-<div class="col-xl-2 col-md-2">
-<mat-form-field appearance="fill">
-<mat-label>Proto type</mat-label>
-<mat-select [formControl]="toppings" multiple>
- <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-</mat-select>
-</mat-form-field>
-</div>
 
-<div class="col-xl-2 col-md-3">
-<mat-form-field appearance="fill">
-<mat-label>Product</mat-label>
-<mat-select [formControl]="toppings" multiple>
- <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-</mat-select>
-</mat-form-field>
-</div>
-<div class="col-xl-2 col-md-3">
-    <mat-form-field appearance="fill">
-    <mat-label>Geography</mat-label>
-    <mat-select [formControl]="toppings" multiple>
-     <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-    </mat-select>
-    </mat-form-field>
+       
+            <!-- <div class="bhb" style="width: 10%;" > -->
+              
+                <!-- <app-sidenav-bar></app-sidenav-bar> -->
+            <!-- </div> -->
+            <div class=" ACVTY-no-pad" >
+                <div class="UNFAPP-asmnt-rgt-area" style="background-color: #EAECF2;padding: 15px;height: 92vh;">
+       <div class="row">
+        <div class="selct_box" style="margin-left: 20px;" >
+          <!-- <mat-label>Role</mat-label>
+          <br> -->
+          <mat-form-field appearance="outline" style="width: 126px;
+          ;">
+              <mat-select [formControl]="toppings"  multiple placeholder="Promotion Type" >
+                <!-- <mat-select-trigger>
+                  {{toppings.value?.[0] || ''}}
+                  <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
+                    (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+                  </span>
+                </mat-select-trigger> -->
+                <mat-select-trigger>
+                  <span *ngIf="(toppings.value?.length || 0) > 0" class="example-additional-selection">
+                    {{(toppings.value?.length || 0) }} {{toppings.value?.length === 2 ? 'Selected' : 'Selected'}}
+                  </span>
+                </mat-select-trigger>
+                  <mat-option   *ngFor="let topping of toppingList" [value]="topping.role_name"  (click)="roleFilter(topping.role_id)">
+                    {{topping.role_name}}</mat-option>
+              </mat-select>
+          </mat-form-field>
+      </div>
+
+      <div class="selct_box" style="margin-left: 20px;" >
+        <!-- <mat-label>Role</mat-label>
+        <br> -->
+        <mat-form-field appearance="outline" style="width: 126px;
+        ;">
+            <mat-select [formControl]="toppings"  multiple placeholder="Product" >
+              <!-- <mat-select-trigger>
+                {{toppings.value?.[0] || ''}}
+                <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
+                  (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+                </span>
+              </mat-select-trigger> -->
+              <mat-select-trigger>
+                <span *ngIf="(toppings.value?.length || 0) > 0" class="example-additional-selection">
+                  {{(toppings.value?.length || 0) }} {{toppings.value?.length === 2 ? 'Selected' : 'Selected'}}
+                </span>
+              </mat-select-trigger>
+                <mat-option   *ngFor="let topping of toppingList" [value]="topping.role_name"  (click)="roleFilter(topping.role_id)">
+                  {{topping.role_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
     </div>
 
-    <div class="col-xl-2 col-md-3">
-        <mat-form-field appearance="fill">
-        <mat-label>Dealer</mat-label>
-        <mat-select [formControl]="toppings" multiple>
-         <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-        </mat-select>
+    <div class="selct_box" style="margin-left: 20px;" >
+        <!-- <mat-label>Role</mat-label>
+        <br> -->
+        <mat-form-field appearance="outline" style="width: 126px;
+        ;">
+            <mat-select [formControl]="toppings"  multiple placeholder="Geography " >
+              <!-- <mat-select-trigger>
+                {{toppings.value?.[0] || ''}}
+                <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
+                  (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+                </span>
+              </mat-select-trigger> -->
+              <mat-select-trigger>
+                <span *ngIf="(toppings.value?.length || 0) > 0" class="example-additional-selection">
+                  {{(toppings.value?.length || 0) }} {{toppings.value?.length === 2 ? 'Selected' : 'Selected'}}
+                </span>
+              </mat-select-trigger>
+                <mat-option   *ngFor="let topping of toppingList" [value]="topping.role_name"  (click)="roleFilter(topping.role_id)">
+                  {{topping.role_name}}</mat-option>
+            </mat-select>
         </mat-form-field>
+    </div>
+
+
+    <div class="selct_box" style="margin-left: 20px;" >
+        <!-- <mat-label>Role</mat-label>
+        <br> -->
+        <mat-form-field appearance="outline" style="width: 126px;
+        ;">
+            <mat-select [formControl]="toppings"  multiple placeholder="Role " >
+              <!-- <mat-select-trigger>
+                {{toppings.value?.[0] || ''}}
+                <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
+                  (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+                </span>
+              </mat-select-trigger> -->
+              <mat-select-trigger>
+                <span *ngIf="(toppings.value?.length || 0) > 0" class="example-additional-selection">
+                  {{(toppings.value?.length || 0) }} {{toppings.value?.length === 2 ? 'Selected' : 'Selected'}}
+                </span>
+              </mat-select-trigger>
+                <mat-option   *ngFor="let topping of toppingList" [value]="topping.role_name"  (click)="roleFilter(topping.role_id)">
+                  {{topping.role_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+
+      <div class="selct_box" style="margin-left: 20px;">
+        <!-- <mat-label>Status</mat-label><br> -->
+        <mat-form-field appearance="outline" style="width: 126px;
+        ;">
+            <mat-select [formControl]="toppings1" multiple placeholder="Status " >
+              <mat-select-trigger>
+                {{toppings1.value?.[0] || ''}}
+                <span *ngIf="(toppings1.value?.length || 0) > 1" class="example-additional-selection">
+                  (+{{(toppings1.value?.length || 0) - 1}} {{toppings1.value?.length === 2 ? 'other' : 'others'}})
+                </span>
+              </mat-select-trigger>
+             
+                <mat-option  *ngFor="let topping of toppingList1" [value]="topping.status_name"  >
+                   {{topping.status_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button type="button" class="btn btn-primary1" style="margin-bottom: 9px;" (click)="refresh()">
+          <mat-icon mat-list-icon>refresh</mat-icon>
+        </button>
+    </div>
+    <div class="form-outline" style="margin-left: 20px;margin-top: 5px;">
+      <!-- <label class="form-label" for="form1">Search</label> -->
+  
+      <input type="search" placeholder="search"  (keyup)="applyFilter($event)"  #input class="form-control" style="border:solid #2962ff 1px;" />
+      
+    </div>
+    <!-- <button type="button" class="btn btn-primary">
+      <i class="fas fa-search"></i>
+    </button> -->
+ 
+       </div>   
+       
+       <div class="row">
+        <div class="col-8">
+         <h4 style="color: #017EFA
+         ;font-family: Montserrat, sans-serif;font-size:15px ;font-weight: 550;"><b>Promotion</b></h4>
         </div>
-
-        <div class="col-xl-2 col-md-3">
-            <mat-form-field appearance="fill">
-            <mat-label>Status</mat-label>
-            <mat-select [formControl]="toppings" multiple>
-             <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-            </mat-select>
-            </mat-form-field>
-            </div>
-
-        <div class="col-xl-2 col-md-3">
-            <!-- <mat-form-field appearance="fill">
-            <mat-label>Toppings</mat-label>
-            <mat-select [formControl]="toppings" multiple>
-             <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-            </mat-select>
-            </mat-form-field> -->
-            <mat-form-field   style="border:solid blue 1.5px;border-radius: 8px;padding: 4px;">
-            <input type="text" matInput placeholder="Search">
-            </mat-form-field>
-            </div>
-
-</div>
-<button  style="float: right;"> + ADD Promotion</button>
+        <div class="col-4">
+            <div class="crt-dwnl" style="float: right;">
+                <button class="btn  btnhover createcoursebtn" type="button" id="dropdownMenu2"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 20px;" >
+                 + Add Promotion
+              </button>
+              <button class="btn btn-primary2" type="button" id="dropdownMenu2"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <mat-icon [ngStyle]="{'color':'white'}">download</mat-icon></button>
+              </div>
+        </div>
+        </div>
+           
 <br>
-<br>
-<div >
-<div class="row" style="background-color: white;margin-right: 0.8px;margin-left: 0.8px;padding-top:5px;">
-<div style="background-color: white;" class="col-xl-10 col-md-3">
-<h4 style="color: blue;">promotions</h4>
 
-</div>
-<div  class="col-xl-2 col-md-3" style="float:right;background-color: white;" >
-<button class="btn btn-outline-light" style="border:solid blue 1px;color: black;background-color: white;">Download <img src="../../../assets/img/cloud.png/" alt=""/></button>
-</div>
-</div>
+<!-- AG Grid Angular Component -->
+<!-- <ag-grid-angular
+    style="width: 100%; height: 150px;"
+    class="ag-theme-alpine"
+    [rowData]="rowData"
+    [columnDefs]="columnDefs">
+</ag-grid-angular> -->
+<ag-grid-angular
+style="width: auto; height: 80%;border-radius: 35px;"
+class="ag-theme-alpine"
+[rowHeight]="30"
+[pagination]="true"
+[paginationAutoPageSize]="true"
+[columnDefs]="columnDefs"
+[defaultColDef]="defaultColDef"
+[columnTypes]="columnTypes"
+[rowData]="rowData"
+(cellValueChanged)="onCellValueChanged($event)"
 
-<table mat-table [dataSource]="dataSource"  class="mat-elevation-z8 table-container"  >
-<!--- Note that these columns can be defined in any order.
-The actual rendered columns are set as a property on the row definition" -->
+></ag-grid-angular>
+ <!-- <gui-grid
+ [columns]="columns"
+ [source]="source"
+ [sorting]="sorting"
+ [paging]="paging"
+ [searching]="searching"
+ [columnMenu]="columnMenu"
+ >
 
-<!-- Position Column -->
-<ng-container matColumnDef="position">
-<th mat-header-cell *matHeaderCellDef> No. </th>
-<td class="tabeldata" mat-cell *matCellDef="let element"> {{element.position}} </td>
-</ng-container>
-
-<!-- Name Column -->
-<ng-container matColumnDef="name">
-<th mat-header-cell *matHeaderCellDef> Name </th>
-<td class="tabeldata" mat-cell *matCellDef="let element"> {{element.name}} </td>
-</ng-container>
-
-<!-- Weight Column -->
-<ng-container matColumnDef="weight">
-<th mat-header-cell *matHeaderCellDef> Type </th>
-<td class="tabeldata" mat-cell *matCellDef="let element"> {{element.weight}} </td>
-</ng-container>
-
-<!-- Symbol Column -->
-<ng-container matColumnDef="symbol">
-<th mat-header-cell *matHeaderCellDef> # of Products </th>
-<td class="tabeldata" mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-</ng-container>
-
-<ng-container matColumnDef="email">
-<th mat-header-cell *matHeaderCellDef> # of Dealers </th>
-<td class="tabeldata" mat-cell *matCellDef="let element"> {{element.emailid}} </td>
-</ng-container>
-<ng-container matColumnDef="phonenum">
-<th mat-header-cell *matHeaderCellDef> Start Date </th>
-<td class="tabeldata" mat-cell *matCellDef="let element"> {{element.phonenum}} </td>
-</ng-container>
-<ng-container matColumnDef="login">
-<th mat-header-cell *matHeaderCellDef>End Date</th>
-<td class="tabeldata" mat-cell *matCellDef="let element">2:20</td>
-</ng-container>
-<ng-container matColumnDef="status">
-<th mat-header-cell *matHeaderCellDef> Status </th>
-<td class="tabeldata" mat-cell *matCellDef="let element"> <button *ngIf="element.status=='active'" type="button" class="btn btn-primary" style="background-color:  #17B15C;
-;border: solid #17B15C;border-radius: 10px;color: black;font-weight: 500;padding-top: 4px;padding-bottom: 4px;">Active</button>
-
-<button *ngIf="element.status=='inactive'" type="button" class="btn btn-primary" style="background-color:  #63e99f;
-;border: solid #63e99f;border-radius: 10px;color: black;font-weight: 500;padding-top: 4px;padding-bottom: 4px;">InActiv</button>
-<button *ngIf="element.status=='locked'" type="button" class="btn btn-primary" style="background-color:  #76817b;
-;border: solid #76817b;border-radius: 10px;color: black;font-weight: 500;padding-top: 4px;padding-bottom: 4px;">locked</button>
-<button *ngIf="element.status=='invited'" type="button" class="btn btn-primary" style="background-color:  #1779b1;
-;border: solid #1779b1;border-radius: 10px;color: black;font-weight: 500;padding-top: 4px;padding-bottom: 4px;">Invited</button>
-</td>
-</ng-container>
-<ng-container matColumnDef="edit">
-<th mat-header-cell *matHeaderCellDef>  </th>
-<td class="tabeldata" mat-cell *matCellDef="let element">    
-<button mat-button [matMenuTriggerFor]="menu" style="border:white;" class="btn btn-outline-light"><img src="../../../assets/img/edit.svg"  alt=""  /></button>
-<mat-menu #menu="matMenu" style="border:white;background-color: white;">
-<button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;" >Edit</button>
-<button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;" >Deactivate</button>
-<button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;" >Reactivate</button>
-<button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;" >Reset  password</button>
+ 
+ 
+</gui-grid> -->
 
 
+ 
+ <div >
+    <!-- <table>
+      <tr class="table-header-row">
+          <th style="padding-left:20px;">User ID</th>
+          <th style="width: 15%;">User Name</th>
+          <th style="width: 15%;">Role</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Last log in</th>
+          <th>Status</th>
+          <th style="width: 4%;"></th>
+      </tr>
+      <tr mat-table  *ngFor="let data of dataSource" class="tabledata-row">
 
-<button mat-menu-item  class="btn btn-outline-light" style="border:white;background-color: white;">Delete</button>
-</mat-menu></td>
-</ng-container>
-<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-<tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
-</table>
-<mat-paginator [length]="100"
- [pageSize]="10"
- [pageSizeOptions]="[5, 10, 25, 100]"
- aria-label="Select page">
-</mat-paginator>
+          <td title="{{data.position}}" style="padding-left: 21px;">{{(data.position.substring(0, 8))+'...'}}</td>
+          <td title="{{data?.name}}" class="elipsis-2line" style="padding-right: 10px;" >
+              {{data?.name}}</td>
+          <td>{{data?.weight}}</td>
+          <td title="{{data?.symbol}}">{{data?.symbol }}
+          </td>
+            <td title="{{data.emailid}}">{{(data.position.substring(0, 8))+'...' }}
+          </td>
+          <td>{{data.phonenum}}</td>
+          <td>22/10/2022</td>
+          <td> <button *ngIf="data.status=='active'" type="button" class="btn btn-primary" style="background-color:  #17B15C;
+            ;border: solid #17B15C;border-radius: 10px;color: black;font-weight: 500;padding-top: 4px;padding-bottom: 4px;">Active</button>
+          
+          <button *ngIf="data.status=='inactive'" type="button" class="btn btn-primary" style="background-color:  #63e99f;
+          ;border: solid #63e99f;border-radius: 10px;color: black;font-weight: 500;padding-top: 4px;padding-bottom: 4px;">InActiv</button>
+            <button *ngIf="data.status=='locked'" type="button" class="btn btn-primary" style="background-color:  #76817b;
+            ;border: solid #76817b;border-radius: 10px;color: black;font-weight: 500;padding-top: 4px;padding-bottom: 4px;">locked</button>
+              <button *ngIf="data.status=='invited'" type="button" class="btn btn-primary" style="background-color:  #1779b1;
+              ;border: solid #1779b1;border-radius: 10px;color: black;font-weight: 500;padding-top: 4px;padding-bottom: 4px;">Invited</button></td>
+        
+  <td>
+    <button mat-button [matMenuTriggerFor]="menu" style="border:white;" class="btn btn-outline-light"><img src="../../../assets/img/edit.svg"  alt=""  /></button>
+    <mat-menu #menu="matMenu" style="border:white;background-color: white;">
+      <button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;" (click)=" editUser()">Edit</button>
+      <button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;" (click)=" editUser()">Deactivate</button>
+      <button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;" (click)=" editUser()">Reactivate</button>
+      <button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;" (click)=" editUser()">Reset  password</button>
+    
+    
+    
+      <button mat-menu-item  class="btn btn-outline-light" style="border:white;background-color: white;">Delete</button>
+    </mat-menu>
+  </td>
+      </tr>
+  </table> -->
+
 
 </div>
 
 </div>
+            </div>
+    
+<!-- </div> -->
+
+
+
+
+
+
+

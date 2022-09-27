@@ -7,6 +7,7 @@ import { LoginComponent } from './component/login/login.component';
 import { MaterialsClassificationComponent } from './component/materials-classification/materials-classification.component';
 import { MaterialsListComponent } from './component/materials-list/materials-list.component';
 import { MaterialsComponent } from './component/materials/materials.component';
+import { OrdersComponent } from './component/orders/orders.component';
 import { OtherMastersComponent } from './component/other-masters/other-masters.component';
 import { TaxTemplateComponent } from './component/other-masters/tax-template/tax-template.component';
 import { UnitMeasureComponent } from './component/other-masters/unit-measure/unit-measure.component';
@@ -28,6 +29,8 @@ const routes: Routes = [
   { path: 'dashbord/materials/materials-classification', pathMatch: 'full',component: MaterialsClassificationComponent  },
   { path: 'dashbord/other-masters', pathMatch: 'full',component: OtherMastersComponent  },
   { path: 'dashbord/dealer', pathMatch: 'full',component: DealerComponent  }
+,
+{ path: 'dashbord/oreders', pathMatch: 'full',component: OrdersComponent  }
 ,
   { path: 'dashbord/geographies', pathMatch: 'full',component: GeographiesComponent  },
   

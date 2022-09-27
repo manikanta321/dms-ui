@@ -59,6 +59,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UnitMeasureComponent } from './component/other-masters/unit-measure/unit-measure.component';
 import { TaxTemplateComponent } from './component/other-masters/tax-template/tax-template.component';
 import { CurrencyConversationComponent } from './component/other-masters/currency-conversation/currency-conversation.component';
+import { OrdersComponent } from './component/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { CurrencyConversationComponent } from './component/other-masters/currenc
     AddPromotionsComponent,
     UnitMeasureComponent,
     TaxTemplateComponent,
-    CurrencyConversationComponent
+    CurrencyConversationComponent,
+    OrdersComponent
 
   ],
   imports: [

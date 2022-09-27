@@ -235,7 +235,7 @@ font-style: normal;
 font-weight: 400;
 font-size: 14px;
 width:80px;
-float: right;
+/* float: right; */
 border-radius: 13px;
 height: 37px;
 color: #fff;
@@ -246,7 +246,7 @@ margin-right: 10px;
 }
 .createcoursebtn {
 background: #59419979;
-float: right;
+/* float: right; */
 
 font-style: normal;
 font-weight: 400;
@@ -359,4 +359,31 @@ background: red;
 }
 ::ng-deep.ng-tns-c148-1 ng-trigger ng-trigger-transformPanel mat-select-panel mat-primary{
 width: 100px !important;
+}
+
+@media (max-width: 991px){
+  .form-outline{
+width: 175px;
+
+  }
+   .createcoursebtn{
+     margin-left: 19px;   
+     width: 120px;
+     margin-top: 6px;
+ 
+
+  }  
+  .btn-primary2{
+    margin-right: -100px;
+    width: 106px;
+    margin-left: 105px;
+    margin-top: 6px;
+  
+  } 
+   /* .btn-primary{
+    margin-left: 104px;
+   margin-top: 6px;
+  }   */
+
+  
 }

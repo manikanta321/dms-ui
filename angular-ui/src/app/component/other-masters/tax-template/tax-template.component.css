@@ -91,6 +91,7 @@
 
 ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
     padding: 0em 0 0.7em 0;
+    width: 150px;
 }
 ::ng-deep.mat-select-panel .mat-optgroup-label, .mat-select-panel .mat-option {
     font-size: inherit;
@@ -291,13 +292,19 @@
     width: 100px !important;
 }
 @media (max-width: 991px){
-    .ag-theme-alpine{
+    /* .ag-theme-alpine{
       
-    }
+    } */
     .mat-form-field{
         width: 160px;
     }
     .dropbtn{
      margin-top: 5px;
     }
+    .form-outline{
+        width: 161px;
+    }
+.addtaxbtn{
+    width: 123px;
+}
 }

@@ -1,6 +1,54 @@
 
-.head-t{
+.mat-form-field-flex {
+    padding-top: -10px;
+    display: inline-flex;
+    align-items: baseline;
+    box-sizing: border-box;
+    width: 100%;
+    height: 37px;
+}
+
+
+.head-t h3{
     color: #0091EA;
+    text-align: center;
+    margin-top: -18px;
+    margin-bottom: 2px;
+}
+.addU{
+    position: relative;
+    font-size: 2vw;
+}
+.addU:after{
+    content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: #E5EAF4;
+  right: 0;
+  top: 50%;
+  position: absolute;
+}
+.addU:before{
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: #E5EAF4;
+    left: 0;
+    top: 50%;
+    position: absolute;
+}
+.addUserForm input{
+border-radius: 5px;
+border: 1px solid #D6D6D6;
+padding: 5px 5px;
+width: 250px;
+font-size: 14px;
+outline: none;
+}
+span{
+    color: red;
 }
 .close-icon{
     left: 100%;
@@ -8,24 +56,94 @@
     font-size: 15px;
     font-weight: 600;
 }
-.AddUserForm input{
-border-radius: 5px;
-border: 1px solid #D6D6D6;
-padding: 8px 5px;
-width: 250px;
+label{
+    /* padding: 2px 0; */
+    font-size: 14px;
+   margin: 5px;
 }
+mat-form-field{
+    width: 246px;
+}
+
+
+
+
+.head-t h3{
+    color: #0091EA;
+    text-align: center;
+    margin-top: -18px;
+    margin-bottom: 2px;
+    font-weight: bold;
+}
+.container1{
+    animation-name: animatetop;
+  animation-duration: 0.4s
+}
+.addC{
+    position: relative;
+}
+
+.addU:after{
+    content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: #E5EAF4;
+  right: 0;
+  top: 50%;
+  position: absolute;
+}
+
+.addU:before{
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: #E5EAF4;
+    left: 0;
+    top: 50%;
+    position: absolute;
+}
+
+.close-icon{
+    left: 100%;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+}
+.addCurrencyForm input{
+    border-radius: 5px;
+    border: 1px solid #D6D6D6;
+    padding: 5px 5px;
+    width: 250px;
+    font-size: 14px;
+    outline: none;
+    }
+
+    label{
+        /* padding: 2px 0; */
+        font-size: 14px;
+       margin: 5px;
+    }
+    
 span{
     color: red;
 }
 .E-saveBtn{
+
 background: #0091EA;
  padding: 2px 30px;
  margin-right: 10px;
+ text-align: right;
+ 
+ 
 }
 .E-cancelBtn{
-    background: #fff;
+    background: #0091EA;
     padding: 2px 30px;
-    border: 1px solid grey;
+    margin-right: 10px;
+    text-align: right;
+    float: right;
 }
 .E-saveBtn:hover{
     border: 2px solid rgba(250, 63, 63, 1);
@@ -33,3 +151,12 @@ background: #0091EA;
 .E-cancelBtn:hover{
     border: 2px solid rgba(250, 63, 63, 1);
    }
+.btn{
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    
+}
+

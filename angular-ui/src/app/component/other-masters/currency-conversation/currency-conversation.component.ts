@@ -9,6 +9,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {FormControl} from '@angular/forms';
 import { Sort, MatSort, SortDirection } from '@angular/material/sort';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
+import {AddcurrencyComponent} from '../../users/userPopups/addcurrency/addcurrency.component';
 export interface PeriodicElement {
   name: string;
   displayunit: number;
@@ -323,7 +324,11 @@ console.log('element',element['isActive'])
 
   });
 }
+addCurrency(){
 
+  this.dialog.open( AddcurrencyComponent);
+
+}
 roleItems(){
 
   // if (res != undefined) {

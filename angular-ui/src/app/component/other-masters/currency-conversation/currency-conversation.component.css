@@ -241,10 +241,11 @@ border-color: #007bff;
 margin-left: 10px;
 margin-right: 10px;
 }
-.createcoursebtn {
+.addtaxbtn {
 background: #59419979;
-float: right;
-
+/* float: right; */
+margin-left: 6px;
+margin-top: 6px;
 font-style: normal;
 font-weight: 400;
 font-size: 10px;
@@ -253,7 +254,7 @@ letter-spacing: 0.08em;
 text-transform: uppercase;
 font-feature-settings: 'pnum' on, 'lnum' on;
 color: #FFFFFF;
-width: 100px;
+/* width: 100px; */
 padding: 10px;
 border-radius: 16px;
 }
@@ -356,4 +357,23 @@ background: red;
 }
 ::ng-deep.ng-tns-c148-1 ng-trigger ng-trigger-transformPanel mat-select-panel mat-primary{
 width: 100px !important;
+}
+@media (max-width: 991px){
+ .addtaxbtn{
+margin-left: 10px;
+width: 113px;
+ }
+ .dropbtn{
+ margin-top: 5px;
+
+}
+.form-outline{
+  width: 161px;
+}
+.mat-form-field{
+  width: 161px;
+}
+ .currency{
+margin-left: 1px;
+} 
 }

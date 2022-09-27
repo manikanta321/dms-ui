@@ -6,6 +6,7 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angu
   styleUrls: ['./addcurrency.component.css']
 })
 export class AddcurrencyComponent implements OnInit {
+  name:any;
 
   constructor(private dialogRef: MatDialogRef<any>) { }
 

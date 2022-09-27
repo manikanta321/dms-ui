@@ -23,7 +23,7 @@
                     {{toppings1.value?.[0] || ''}}
                     <span *ngIf="(toppings1.value?.length || 0) > 1" class="example-additional-selection">
                       (+{{(toppings1.value?.length || 0) - 1}} {{toppings1.value?.length === 2 ? 'other' : 'others'}})
-                    </span>
+                    </span> 
                   </mat-select-trigger>
                  
                     <mat-option  *ngFor="let topping of toppingList1" [value]="topping.status_name"  >

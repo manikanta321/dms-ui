@@ -1,38 +1,113 @@
+
 <div class="container">
+    <div class="addUser">
+        <mat-icon  mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+        <div class="head-t">
+        <h3 class="addU">Add Currency</h3>
+    </div>
+    <div class="addUserForm">
+     <form>
+      <div class="row">
+        <div class="col">
+            <label>First Name <span>*</span></label>
+            <br>
+            <input type="text" placeholder="Enter your Name" [(ngModel)]="name" >        </div>
+          <div class="col">
+            <label>Display Units<span>*</span></label>
+            <br>
+          <input type="text" placeholder="Enter display unit" >        </div>
+      </div>
+          <br>
+        <div class="row">
+          <div class="col">
+            <label>Conversion Rate<span>*</span></label>
+            <br>
+            <input type="text" placeholder="Enter Conversion Rate" >
+          
+          </div>
+          <div class="col">
+           
+            <label>Default Currency<span>*</span></label>
+            <br>
+            <input type="text" placeholder="Enter Default Currency" >
+          </div>
+        </div>       
+        <br>
+      <div class="row">
+          <div class="col">
+          
+        <label>Conversion<span>*</span></label>
+        <br>
+        <input type="text" placeholder="Enter Conversion" >
+          
+          </div>
+          <!-- <div class="col">
+            <label>Role</label><span>*</span>
+            <br>
+            <mat-form-field appearance="outline">
+              <mat-select [formControl]="role"  placeholder="Role " >
+               
+                  <mat-option   *ngFor="let user of userType" [value]="role">
+                    {{user}}</mat-option>
+              </mat-select>
+          </mat-form-field>
+          </div> -->
+        </div>    
+        <br>
+        </form>
+         <button class="btn btn-primary btn-block">Save</button>
+    </div>
+    </div>
+</div>
+
+
+
+<!-- <div class="row">   
+     <div class="col">     
+<div class="container1 ">
     <div class="EditUser-p">
         <mat-icon  mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
         <div class="head-t">
-            <h3>Add Currency</h3>
+            <h3 class="addC">Add Currency</h3>
         </div>
-        <div class="row edituser">
-            <div class="AddUserForm col-6">
+        <div class="col">
+        <div class="row edituser" >
+            <div class="addCurrencyForm col-6">
               
-                    <label>Name </label>
+                    <label>Name <span>*</span></label>
                     <br>
-                    <input type="text" placeholder="">
+                    <input type="text" placeholder="Enter your Name" [(ngModel)]="name" >
                     <br>
-                    <label>Display Units</label>
+                    <label>Display Units <span>*</span></label>
                     <br>
-                    <input type="text" placeholder="Enter your First Name">
+                    <input type="text" placeholder="Enter display unit">
                     <br>
-                    <label>Conversion Rate</label>
+                    <label>Conversion Rate<span>*</span></label>
                     <br>
-                    <input type="text" placeholder="Enter your First Name">
+                    <input type="text" placeholder="Enter Conversion Rate">
+                   </div>
                    
-            </div>
-            <div class="AddUserForm col-6">
-                <label>Default Currency</label>
+                   <div class="addCurrencyForm col-6">
+                    <label>Default Currency<span>*</span></label>
                 <br>
                 <input type="number" placeholder="12">
                 <br>
-                <label>Conversion</label>
+                <label>Conversion<span>*</span></label>
                 <br>
-                <input type="text" placeholder="Enter your First Name">
-                  <div style="margin-top: 10px;">
-                    <button class="btn E-saveBtn">Save</button>
-                    <button class="btn E-cancelBtn" (click)=" closeDialog()" >Cancel</button>
-                  </div>
+                <input type="text" placeholder="Enter Conversion">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                </div>
+                  <div style="text-align: right; padding: 20px; margin-top: 10;">
+                    <button class="btn E-saveBtn ">Save</button>
+                   <button class="btn E-cancelBtn" (click)=" closeDialog()" >Cancel</button>
+                  </div> 
             </div>
         </div>
     </div>
 </div>
+</div> -->

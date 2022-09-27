@@ -30,7 +30,7 @@
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="outline">
-                <mat-select [formControl]="toppings1" multiple placeholder="Status " >
+                <mat-select [formControl]="toppings1" multiple placeholder="Geographies " >
                   <mat-select-trigger>
                     {{toppings1.value?.[0] || ''}}
                     <span *ngIf="(toppings1.value?.length || 0) > 1" class="example-additional-selection">
@@ -43,7 +43,7 @@
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="outline">
-                <mat-select [formControl]="toppings1" multiple placeholder="Status " >
+                <mat-select [formControl]="toppings1" multiple placeholder="Dealer " >
                   <mat-select-trigger>
                     {{toppings1.value?.[0] || ''}}
                     <span *ngIf="(toppings1.value?.length || 0) > 1" class="example-additional-selection">

@@ -1,11 +1,5 @@
-<!-- <app-head (toggleSidebar)="sideBarToggler()"></app-head> -->
 <div class="container-fluid" style="padding-left: 0px;">
   <mat-sidenav-container>
-    <!-- <mat-sidenav mode="side" [opened]="sideBarOpen" class="sidenav">
-
-      <app-sidenav-bar></app-sidenav-bar>
-    </mat-sidenav> -->
-    
     <mat-sidenav-content>
       <div class=" ACVTY-no-pad">
         <div class="UNFAPP-asmnt-rgt-area" style="background-color: #EAECF2;padding: 15px;height: 92vh;">
@@ -15,35 +9,35 @@
               
             </div>
             <div class="selct_box" style="margin-left: 20px;" >
-              <mat-form-field appearance="fill">
+              <mat-form-field appearance="outline">
                   <mat-select [formControl]="toppings"  multiple placeholder="Geography">
                     <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
                   </mat-select>
               </mat-form-field>
           </div>
           <div class="selct_box" style="margin-left: 20px;" >
-            <mat-form-field appearance="fill">
-                <mat-select [formControl]="toppings"  multiple placeholder="Product ">
+            <mat-form-field appearance="outline">
+                <mat-select [formControl]="toppings"  multiple placeholder="Product">
                   <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
         <div class="selct_box" style="margin-left: 20px;" >
-          <mat-form-field appearance="fill">
-              <mat-select [formControl]="toppings1"  multiple placeholder="Status ">
+          <mat-form-field appearance="outline">
+              <mat-select [formControl]="toppings1"  multiple placeholder="Status">
                 <mat-option *ngFor="let topping of toppingList1" [value]="topping">{{topping}}</mat-option>
               </mat-select>
           </mat-form-field>
       </div>
         <div class="crt-dwnl">
           <button class="btn  btnhover createcoursebtn" type="button" id="dropdownMenu2"
-          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-           + Add Dealer
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           + Add user
         </button>
-        </div>
         <button class="btn btn-primary2" type="button" id="dropdownMenu2"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <mat-icon [ngStyle]="{'color':'white'}">download</mat-icon></button>
+      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <mat-icon [ngStyle]="{'color':'white'}">download</mat-icon></button>
+        </div>
         <button class="btn  btnhover printbtn">Print <img src="../../../assets/img/print-icon.png" alt="print-icon" ></button>
            </div>   
           <div class="row">

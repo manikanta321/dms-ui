@@ -1,6 +1,4 @@
-/* *{
-        background-color: #F5F5F5;
-    } */
+
     .ag-theme-alpine .ag-filter-toolpanel-header, .ag-theme-alpine .ag-filter-toolpanel-search, .ag-theme-alpine .ag-status-bar, .ag-theme-alpine .ag-header-row, .ag-theme-alpine .ag-panel-title-bar-title, .ag-theme-alpine .ag-multi-filter-group-title-bar {
    
         --ag-background-color: white;
@@ -47,27 +45,6 @@
       th,td,tr{
           background-color: white;
       }
-    /* *{
-        background-color: #F5F5F5;
-    } */
-    /* ::ng-deep.mat-form-field-appearance-fill .mat-form-field-flex{
-        border: solid #2962FF 1.5px;
-        border-radius: 15px;
-        padding: 2px;
-    }
-    ::ng-deep.mat-form-field-appearance-fill .mat-form-field-flex {
-        border-radius: 4px 4px 0 0;
-        padding: 1.5px;
-    }
-      
-    ::ng-deep.mat-select-panel:not([class*=mat-elevation-z]){
-        margin-top: 45px;
-    }
-    /* ::ng-deep.mat-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-form-field-flex {
-        border:solid  #2962FF 1.5px;
-        border-radius: 5px;
-        padding: 2px;
-    } */
     ::ng-deep.mat-form-field-appearance-fill .mat-form-field-flex{
         background-color:#F5F5F5;
     }
@@ -75,23 +52,42 @@
         border: 1px solid white !important;
       } */
       
-      ::ng-deep.mat-select-arrow-wrapper {
+      /* ::ng-deep.mat-select-arrow-wrapper {
         margin-top: 9px !important;
+    } */
+    ::ng-deep.mat-select-arrow-wrapper {
+ 
+        margin-top: -8px;
+      
+    }
+    ::ng-deep.mat-select-trigger {
+        height: 2.125em;
     }
     .btn-primary2{
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        width:80px;
-        float: right;
-        border-radius: 13px;
-        height: 37px;
-        color: #fff;
-        background-color: #59419979;
-        border-color: #007bff;
-        margin-left: 79%;
-        top: -62px;
-        position: relative;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    width:80px;
+    float: right;
+    border-radius: 13px;
+    height: 37px;
+    color: #fff;
+    background-color: #59419979;
+    border-color: #007bff;
+    position: relative;
+    right: 30%;
+    bottom: 50%;
+
+}
+::ng-deep.mat-select-panel {
+    background: #FFFFFF !important;
+    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05) !important;
+    border-radius: 8px !important;
+    position: relative !important;
+    transform: translate(29px, 50px) !important;
+}
+    ::ng-deep.mat-select-panel:not([class*=mat-elevation-z]) {
+        margin-top: 0px !important;
     }
     .createcoursebtn {
         background: #59419979;
@@ -105,11 +101,10 @@
         text-transform: uppercase;
         font-feature-settings: 'pnum' on, 'lnum' on;
         color: #FFFFFF;
-        width: 110px;
+        width: 100px;
         padding: 10px;
         border-radius: 16px;
-        margin-left: 167px;
-       margin-top: 2px;
+        margin-left: 90%;
     }
     .printbtn {
         background: #59419979;
@@ -126,7 +121,7 @@
         width: 110px;
         padding: 10px;
         border-radius: 16px;
-        margin-left: 17px;
+        margin-left: 88%;
         position: relative;
         top:35px;
     }
@@ -136,11 +131,6 @@
         height: 36px !important;
       
     }
-    
-    /* ::ng-deep.mat-select-trigger {
-        height: 2.125em;
-    } */
-    
     ::ng-deep.mat-row:nth-child(even){ background-color: white; }.mat-row:nth-child(odd){ background-color:#FAFAFB
         ; }
     
@@ -155,7 +145,6 @@
     
     ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
         padding: 0em 0 0.7em 0;
-        /* border-top: 0.24375em solid transparent; */
     }
 
     .matCellDef{
@@ -194,6 +183,7 @@
         line-height: -1em;
         height: 2em;
     }
+    
     ::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline {
         color: #2962ff !important;
         border-radius: 5px !important;
@@ -216,10 +206,14 @@
     ::ng-deep.mat-select-arrow {
         color: #263643 !important;
     }
+    ::ng-deep.mat-select-arrow {
+        margin-top: 5px !important;
+    }
+    ::ng-deep .mat-select-value {
+        padding-bottom: 4px !important;
+        color: #263643 !important;
+    }
     .mat-header-cell{
         color:black;
         border-top: 24px;
     }
-    /* .mat-select-panel:not([class*=mat-elevation-z]) {
-        margin-top: 45px;
-    } */

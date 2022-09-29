@@ -1,70 +1,39 @@
 
-<div >
-<div class="aside-hamburger-menu"  (click)="mobBurgerMenuAction()">
-    <span></span>
-    <span></span>
-    <span></span>
-</div>
-<div class="UNFAPP-newwdashbrd-lftnav-area " style="background-color:  #FFFFFF;"  [ngClass]="mobMuenuStatus ? 'expend':''" (click)="closeBurgerMenu()" >
-    <span class="m-overlay"></span>
 
-    <!-- <div class="UNFAPP-leftsidebarprofile-cont UNFAPP-d-hide" >
-       
-        <img src="../../../assets/img/profile.png" alt="" class="UNFAPP-prfimg" >
-
-        <div class="UNFAPP-desccont">
-            <h3 class="UNFAPP-desc-tittle">man</h3>
-            <p class="UNFAPP-desc-subtitle">..
-               
-            </p>
-            <div class="UNFAPP-rightarow" ></div>
-        </div>
-    </div> -->
-  
-
-
-<mat-list  style="width:auto">
+    <div class="sidenavbar" [ngClass]="collapsed ? 'sidenav-collapsed': ''" (mouseover)="toogleCollapsed()">
+<mat-list >
 
     <mat-list-item>
    
-    <mat-icon [ngStyle]="{'color':'#334D6E'}">dashboard</mat-icon> <span routerLink="/maindashbord" class="dasb-menu cursor-pointer"
+    <mat-icon>dashboard</mat-icon> 
+    <!-- <mat-icon (click)="close()" class="btnclose">close</mat-icon> -->
+    <span routerLink="/maindashbord" class="dasb-menu cursor-pointer"
    
-    routerLinkActive="active" style="color: #334D6E;" >Dashboard</span>
+    routerLinkActive="active" *ngIf="collapsed">Dashboard</span>
    
    </mat-list-item>
    
-  <mat-divider></mat-divider>
    
     <mat-list-item  routerLink="/dashbord/oreders" routerLinkActive="active">
    
-   <mat-icon [ngStyle]="{'color':'#334D6E
-   '}"   >reorder</mat-icon> <span style="color: #334D6E;">Orders</span>
+   <mat-icon >shopping_basket</mat-icon> 
+   <span *ngIf="collapsed">Orders</span>
    
   </mat-list-item>
    
-   <mat-divider></mat-divider>
-   
-    <mat-list-item><mat-icon [ngStyle]="{'color':'#334D6E
-        '}">calendar_today</mat-icon> <span style="color: #334D6E;">Products</span></mat-list-item>
-   
-<mat-divider></mat-divider>
+    <mat-list-item><mat-icon>store_mall_directory</mat-icon>
+         <span *ngIf="collapsed">Products</span></mat-list-item>
    
 <mat-list-item>
    
-<mat-icon [ngStyle]="{'color':'#334D6E
-'}"> bar_chart</mat-icon> <span style="color: #334D6E;">Reports</span>
+<mat-icon>bar_chart</mat-icon> 
+<span *ngIf="collapsed">Reports</span>
 </mat-list-item>
    
-    <mat-divider></mat-divider>
+    <mat-list-item><mat-icon>people</mat-icon>
+         <span 
    
-    <mat-list-item><mat-icon [ngStyle]="{'color':'#334D6E
-        '}">perm_contact_calendar</mat-icon> <span 
-   
-    class="dash-menu" routerLink="/dashbord/dealer" routerLinkActive="active" style="color: #334D6E;">Dealer</span></mat-list-item>
-   
-    <mat-divider></mat-divider>
-   
-   
+    class="dash-menu" routerLink="/dashbord/dealer" routerLinkActive="active" *ngIf="collapsed">Dealer</span></mat-list-item>
    
     <mat-accordion>
    
@@ -76,8 +45,7 @@
    
    <mat-panel-title>
    
-  <mat-icon [ngStyle]="{'color':'#334D6E
-  '}">settings</mat-icon><span style="color: #334D6E;">Settings</span>
+  <mat-icon>settings</mat-icon><span *ngIf="collapsed">Settings</span>
    
    
    
@@ -87,27 +55,23 @@
 <mat-list-item class="droplist" routerLink="/dashbord/user"  class="btn-link " routerLinkActive="active"
    
 (click)="closePanel()">
-    <mat-icon [ngStyle]="{'color':'#334D6E
-    '}">person icon</mat-icon>    <span >Users</span>
+    <mat-icon>person icon</mat-icon>    <span >Users</span>
     </mat-list-item>
     
     <mat-list-item class="droplist"  routerLink="/dashbord/materials" class="btn-link " routerLinkActive="active"
    
     (click)="closePanel()">
-        <mat-icon [ngStyle]="{'color':'#334D6E
-        '}">store mall directory icon</mat-icon>    <span style="color: #334D6E;">Materials</span>
+        <mat-icon>store mall directory icon</mat-icon>    <span >Materials</span>
         </mat-list-item>
         <mat-list-item class="droplist"     class="btn-link " routerLinkActive="active"
    
 (click)="closePanel()">
-    <mat-icon [ngStyle]="{'color':'#334D6E
-    '}"> map icon</mat-icon>    <span style="color: #334D6E;" >Geographies</span>
+    <mat-icon> map icon</mat-icon>    <span  >Geographies</span>
     </mat-list-item>
     <mat-list-item class="droplist"  class="btn-link " routerLink="/dashbord/other-masters" routerLinkActive="active"
    
 (click)="closePanel()">
-    <mat-icon [ngStyle]="{'color':'#334D6E
-    '}">person_outline</mat-icon>    <span style="color: #334D6E;" >Other Masters</span>
+    <mat-icon>person_outline</mat-icon>    <span  >Other Masters</span>
     </mat-list-item>
   
    
@@ -115,21 +79,20 @@
  </mat-expansion-panel>
    
 </mat-accordion>
-    <mat-divider></mat-divider>
    
-<mat-list-item>
+<mat-list-item style="position: relative; top:100px">
    
-<mat-icon [ngStyle]="{'color':'#334D6E
-'}">help</mat-icon> <span style="color: #334D6E;">Help</span>
+<mat-icon>help</mat-icon> <span *ngIf="collapsed" >Help</span>
    
 </mat-list-item>
    
 </mat-list>
-
-
-
 </div>
-</div>
+
+
+
+
+
 
 
 

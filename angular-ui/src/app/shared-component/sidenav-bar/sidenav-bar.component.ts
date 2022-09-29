@@ -1,19 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 
+
+interface SideNavToggle {
+  screenWidth: number;
+  collapsed: boolean;
+}
 @Component({
   selector: 'app-sidenav-bar',
   templateUrl: './sidenav-bar.component.html',
   styleUrls: ['./sidenav-bar.component.css']
 })
 export class SidenavBarComponent implements OnInit {
+  @Output() onToggleSideNav : EventEmitter<SideNavToggle> = new EventEmitter()
   mobMuenuStatus = true;
   toggle = true;
   status = "Enable";
   panelOpenState: boolean = true;
+  collapsed = false;
 
+screenWidth = 0;
+sideBarOpen = true;
 
   constructor() { }
 
+  
   ngOnInit(): void {
   }
   mobBurgerMenuAction() {
@@ -31,5 +42,13 @@ export class SidenavBarComponent implements OnInit {
 
   closePanel() {
     this.panelOpenState = true;
+  }
+  toogleCollapsed(): void{
+ this.collapsed =! this.collapsed;
+ this.onToggleSideNav.emit({collapsed:this.collapsed, screenWidth: this.screenWidth});
+  }
+  close(): void{
+ this.collapsed = false;
+ this.onToggleSideNav.emit({collapsed:this.collapsed, screenWidth: this.screenWidth});
   }
 }

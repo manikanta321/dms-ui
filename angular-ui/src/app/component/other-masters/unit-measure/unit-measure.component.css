@@ -30,8 +30,15 @@
 /* ::ng-deep.mat-row{
     height: 10px;
 } */
+/* @font-face {
+  font-family: "Gilroy";
+  src: local("gilroy"), url(./assets/fonts/gilroy/Gilroy-Black.ttf) format("truetype");
+} */
+.font{
+  font-family: 'Gilroy';
+}
 mat-sidenav {
-    /* margin: 16px; */
+    /* margin: 16px; */ 
     /* width: 250px; */
     border-right: none;
     /* background: #002b5c; */

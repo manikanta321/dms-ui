@@ -5,7 +5,9 @@
 
 @import 'ag-grid-community/dist/styles/ag-grid.css';
 @import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+/* @import url('./assets/fonts/gilroy/Gilroy-Black.ttf'); */
 
+  
 html,
 body {
     height: 100%;
@@ -24,12 +26,17 @@ body {
     display: none;
 
 }
-
-.cdk-overlay-container:empty {
-    /* display: none; */
+@font-face {
+    font-family: "Gilroy";
+    src: local("gilroy"), url(./assets/fonts/gilroy/Gilroy-Medium.ttf) format("truetype");
+}
+.cdk-overlay-container:empty { 
+    /* display: none; */ 
     display: '';
 }
-
+/* *{
+    font-family: "Gilroy-Medium";
+} */
 .w-100 {
     width: 100%;
 }

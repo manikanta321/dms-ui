@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
     passwordrequired:boolean=false;
     usernameReqired:boolean=false;
     showPassword: boolean = false;
+  errorMessage: any;
   constructor(
     private router: Router,
     private login:LoginService,
@@ -41,7 +42,13 @@ export class LoginComponent implements OnInit {
     // }
   if(this.usernameofuser!=undefined && this.passwordofuser != undefined){
     this.login.getloginDeatils(this.usernameofuser,this.passwordofuser).subscribe ((res: any) => {
-      this.loginData = res.response;
+    
+    if(res){
+      alert('mani')
+      this.loginData = res;
+      alert(this.loginData.token )
+      localStorage.setItem('token',this.loginData.token )
+
       console.log("LoginData",this.loginData);
       if(this.loginData == -1){
         this.PasswordWrong =true;
@@ -49,7 +56,7 @@ export class LoginComponent implements OnInit {
         this.userExist =false;
         }
       }
-      else if(this.loginData == 1){
+      else if(this.loginData.id == 2){
         this.router.navigate(['../dashbord/user']);
       }
       else {
@@ -57,7 +64,20 @@ this.userExist =true;
 if(this.PasswordWrong =false){
   this.PasswordWrong =false;
   }      }
-    });
+    
+    }
+     
+
+},
+(err: any) => {
+
+console.log(err)
+  this.errorMessage = err.error;
+  alert(this.errorMessage)
+}
+
+
+);
 
   }
   }

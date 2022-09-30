@@ -44,9 +44,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
 // import { EditTaxTemplateComponent } from './userPopups/edit-tax-template/edit-tax-template.component';
 // import { DeletecomponentComponent } from '../deletecomponent/deletecomponent.component';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
+import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, bufferToggle, Observable } from 'rxjs';
 import { AgGridAngular } from 'ag-grid-angular';
 import { UserService } from 'src/app/services/user.service';
 import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
@@ -69,11 +69,11 @@ status:any;
 
 columnDefs: ColDef[] = [
   { headerName: "Name",
-    field: 'Name' , sort: 'desc',width:300},
+    field: 'Name' , sort: 'desc',},
 
-  {   headerName: "Display Name",field: 'employeeName',width:300 },
+  {   headerName: "Display Name",field: 'employeeName', },
 
-  {headerName: "Status", field: 'status',width:250 },
+  {headerName: "Status", field: 'status',},
   { headerName: "",
   field: '',  filter: false, sortable: false,
   cellRenderer: function clickNextRendererFunc(){
@@ -107,13 +107,12 @@ rowData :any;
 rowData1=[]
   public defaultColDef: ColDef = {
     // set the default column width
-    width: 100,
+    // width: 100,
     // make every column editable
     editable: true,
     // make every column use 'text' filter by default
     filter: 'agTextColumnFilter',
     // enable floating filters by default
-    floatingFilter: true,
     // make columns resizable
     resizable: true,
     sortable: true,
@@ -178,56 +177,10 @@ public pivotPanelShow = 'always';
 		},
 		{
 			header: 'Price',
-			field: 'price'			//source {price: '15$'}
+			field: 'price',			//source {price: '15$'}
 		}];
 
-	source: Array<any> = [
-		{
-			name: 'T-shirt',		//columns {header: 'Name', field: 'name'}
-			type: 'clothes',		//columns {header: 'Type', field: 'type'}
-			price: '15$' 			//columns {header: 'Price', field: 'price'}
-		},
-		{
-			name: 'Shoes',
-			type: 'footwear',
-			price: '100$'
-		},
-		{
-			name: 'Ball cap',
-			type: 'headgear',
-			price: '50$'
-		}];
 
-    sorting: GuiSorting = {
-	    enabled: true
-	};
-
-	paging: GuiPaging = {
-		enabled: true,
-		page: 1,
-		pageSize: 10,
-		pageSizes: [10, 25, 50],
-		pagerTop: true,
-		pagerBottom: true,
-		display: GuiPagingDisplay.BASIC
-	};
-
-	searching: GuiSearching = {
-		enabled: true,
-		placeholder: 'Search heroes'
-	};
-
-  columnMenu: GuiColumnMenu = {
-		enabled: true,
-		sort: true,
-		columnsManager: true,
-
-  };
-
-	// sorting: GuiSorting = {
-	// 	enabled: true,
-	// 	multiSorting: true
-	// };
   displayedColumns: string[] = ['position', 'name',  'symbol','email','phonenum','login','status','edit'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   toppings = new FormControl('');
@@ -251,6 +204,9 @@ public pivotPanelShow = 'always';
    ) {
       sort:[];
      }
+     onFirstDataRendered(params: FirstDataRenderedEvent) {
+      params.api.sizeColumnsToFit();
+    }
   @ViewChild(MatSort)
   sort: MatSort = new MatSort;
 

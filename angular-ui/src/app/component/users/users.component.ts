@@ -42,7 +42,8 @@ import { AddcurrencyComponent } from './userPopups/addcurrency/addcurrency.compo
 import { EditTaxTemplateComponent } from './userPopups/edit-tax-template/edit-tax-template.component';
 import { DeletecomponentComponent } from '../deletecomponent/deletecomponent.component';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
+import { CellClassParams,
+  CellClassRules, CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AgGridAngular } from 'ag-grid-angular';
@@ -54,48 +55,104 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+   gridOptions = {
+    // set background colour on every row, this is probably bad, should be using CSS classes
+    rowStyle: { background: 'black' },
+
+    // set background colour on even rows again, this looks bad, should be using CSS classes
+    
+
+    // other grid options ...
+}
+
 status:any;
 
-// // Data that gets displayed in the grid
-// public rowData=[
-//   {position: '6004005001', name: 'Rajasheka S', weight: 1.0079, symbol: 'Customer',emailid:'you@smartgig',phonenum:9448282822,status:'Active'},
-//   {position: '6004005002', name: 'Manoranjan B', weight: 1.0079, symbol: 'Dealer',emailid:'you@smartgig',phonenum:9448282822,status:'Inactive'},
-//   {position: '6004005003', name: 'Vishnu M', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822 , status:'Active'},
-//   {position: '6004005004', name: 'Mahendra S', weight: 1.0079, symbol: 'Dealer',emailid:'you@smartgig',phonenum:9448282822, status:'Invited'},
-//   {position: '6004005005', name: 'Veerendra kr', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked'},
-//   {position: '6004005006', name: 'mahathi Br', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Active'},
-//    {position: '6004005007', name: 'chetheshwar T', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked'},
-//    {position: '6004005008', name: 'Swami swami', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked'},
+// Data that gets displayed in the grid
+public rowData5=[
+  {position: '6004005001', name: 'Rajasheka S', weight: 1.0079, symbol: 'Customer',emailid:'you@smartgig',phonenum:9448282822,status:'Active',Lastlogin:'22/2/2022',role:'admin'},
+  {position: '6004005002', name: 'Manoranjan B', weight: 1.0079, symbol: 'Dealer',emailid:'you@smartgig',phonenum:9448282822,status:'Inactive',Lastlogin:'22/2/2022',role:'manager'},
+  {position: '6004005003', name: 'Vishnu M', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822 , status:'Active',Lastlogin:'22/2/2022',role:'manager'},
+  {position: '6004005004', name: 'Mahendra S', weight: 1.0079, symbol: 'Dealer',emailid:'you@smartgig',phonenum:9448282822, status:'Invited',Lastlogin:'22/2/2022',role:'manager'},
+  {position: '6004005005', name: 'Veerendra kr', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked',Lastlogin:'22/2/2022',role:'user'},
+  {position: '6004005006', name: 'mahathi Br', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Active',Lastlogin:'22/2/2022',role:'manager'},
+   {position: '6004005007', name: 'chetheshwar T', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked',Lastlogin:'22/2/2022',role:'manager'},
+   {position: '6004005008', name: 'Swami swami', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked',Lastlogin:'22/2/2022',role:'manager'},
 
-//    {position: '6004005006', name: 'narendra gs', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked'},
+   {position: '6004005006', name: 'narendra gs', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked',Lastlogin:'22/2/2022',role:'dealer'},
 
-//    {position: '6004005006', name: 'prajwal vT', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked'},
+   {position: '6004005006', name: 'prajwal vT', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked',Lastlogin:'22/2/2022',role:'manager'},
+   {position: '6004005006', name: 'prajwal vT', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked',Lastlogin:'22/2/2022',role:'manager'},
+   {position: '6004005006', name: 'prajwal vT', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked',Lastlogin:'22/2/2022',role:'manager'},
 
-// ];
+];
+
 
 // For accessing the Grid's API
 
 
+// columnDefs: ColDef[] = [
+//   { headerName: "User Id",
+//     field: 'employeeCode' , sort: 'desc'},
+
+//   {   headerName: "User Name",field: 'employeeName' },
+
+//   { field: 'role', },
+
+//   {  headerName: "Email Id",
+//      field: 'emailId' },
+
+//   {   headerName: "Phone no",
+//     field: 'mobilePhone',},
+
+//   {   headerName: "Last Login",
+//     // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
+//     field: 'lastLoginDate',type: ['nonEditableColumn']},
+
+
+//   { headerName: "Status",
+//      field: 'status', 
+//   cellEditor: 'agSelectCellEditor',
+//   cellEditorParams: {
+//     values: ['Active', 'Inactive', 'Invited', 'Locked',],
+//   }
+// },
+// // {
+// //   headerName: "Avatar",
+// //   field: "avatar",
+// //   width: 100,
+// //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
+// //  },
+
+// ];
+
+
+ ragCellClassRules: CellClassRules = {
+  'rag-green-outer': (params) => params.value === 'Active',
+  'rag-amber-outer': (params) => params.value === 'Inactive',
+  'rag-red-outer': (params) => params.value === 2000,
+};
 columnDefs: ColDef[] = [
   { headerName: "User Id",
-    field: 'employeeCode' , sort: 'desc'},
+    field: 'position' , sort: 'desc'},
 
-  {   headerName: "User Name",field: 'employeeName' },
+  {   headerName: "User Name",field: 'name' },
 
-  { field: 'role', },
+  { field: 'role',},
 
   {  headerName: "Email Id",
-     field: 'emailId' },
+     field: 'emailid' },
 
   {   headerName: "Phone no",
-    field: 'mobilePhone',},
+    field: 'phonenum',},
 
   {   headerName: "Last Login",
     // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-    field: 'lastLoginDate',type: ['nonEditableColumn']},
+    field: 'Lastlogin',type: ['nonEditableColumn'],
+   
+  },
 
 
   { headerName: "Status",
@@ -103,8 +160,21 @@ columnDefs: ColDef[] = [
   cellEditor: 'agSelectCellEditor',
   cellEditorParams: {
     values: ['Active', 'Inactive', 'Invited', 'Locked',],
-  }
+  },
+  cellClass: params => {                      
+    return params.value == 'Inactive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
 },
+},
+
+
+
+{ headerName: "",
+field: '',  filter: false, sortable: false,width:20,
+cellRenderer: function clickNextRendererFunc(){
+  return '<i class="fa fa-ellipsis-v" aria-hidden="true" (click)="editfn()"></i>';
+}, 
+},
+
 // {
 //   headerName: "Avatar",
 //   field: "avatar",
@@ -114,30 +184,23 @@ columnDefs: ColDef[] = [
 
 ];
 
+
 rowData :any;
 rowData1=[]
-  public defaultColDef: ColDef = {
-    // set the default column width
-    width: 150,
-    // make every column editable
-    editable: true,
-    // make every column use 'text' filter by default
-    filter: 'agTextColumnFilter',
-    // enable floating filters by default
-    floatingFilter: true,
-    // make columns resizable
-    resizable: true,
-    sortable: true,
-  };
+public defaultColDef: ColDef = {
+  // set the default column width
+  // width: 100,
+  // make every column editable
+  editable: true,
+  // make every column use 'text' filter by default
+  filter: 'agTextColumnFilter',
+  // enable floating filters by default
+  // make columns resizable
+  resizable: true,
+  sortable: true,
+};
 
-// public defaultColDef: ColDef = {
-//   sortable: true,
-//   resizable: true,
-//   width: 100,
-//   enableRowGroup: true,
-//   enablePivot: true,
-//   enableValue: true,
-// };
+
 public columnTypes: {
   [key: string]: ColDef;
 } = {
@@ -251,9 +314,13 @@ public pivotPanelShow = 'always';
   filterDictionary: any;
   sideBarOpen = true;
   @ViewChild(MatSidenav)
+
+
   sidenav!: MatSidenav;
   roleName: any;
   statusname:any;
+  props: any;
+  
   constructor(public dialog: MatDialog,
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
@@ -262,6 +329,18 @@ public pivotPanelShow = 'always';
    ) {
       sort:[];
      }
+
+     onFirstDataRendered(params: FirstDataRenderedEvent) {
+      params.api.sizeColumnsToFit();
+    }
+
+  //   getRowStyle = params => {
+  //     if (params.node.rowIndex % 2 === 0) {
+  //         return { background: 'red' };
+  //     }
+  // };
+
+
   @ViewChild(MatSort)
   sort: MatSort = new MatSort;
 
@@ -281,10 +360,20 @@ public pivotPanelShow = 'always';
 
 
   ngOnInit(): void {
+
+
   this.getusertabeldata();
   this.roleItems();
   this.statusItems();
+
+
+
+
+  
   }
+
+
+  
   refresh(){
     this.toppings = new FormControl(this.toppingList);
     this.toppings1 = new FormControl(this.toppingList1);

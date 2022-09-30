@@ -55,12 +55,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatSortModule} from '@angular/material/sort';
 import { GuiGridModule } from '@generic-ui/ngx-grid';
 import { AgGridModule } from 'ag-grid-angular';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UnitMeasureComponent } from './component/other-masters/unit-measure/unit-measure.component';
 import { TaxTemplateComponent } from './component/other-masters/tax-template/tax-template.component';
 import { CurrencyConversationComponent } from './component/other-masters/currency-conversation/currency-conversation.component';
 import { OrdersComponent } from './component/orders/orders.component';
 import { OrderTableComponent } from './component/orders/order-table/order-table.component';
+import { AuthInterceptor } from './component/AuthInterceptor';
 
 @NgModule({
   declarations: [
@@ -132,7 +133,8 @@ import { OrderTableComponent } from './component/orders/order-table/order-table.
     HttpClientModule
         
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],  bootstrap: [AppComponent]
 })
 export class AppModule { }

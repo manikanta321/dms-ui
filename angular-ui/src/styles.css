@@ -6,6 +6,8 @@
 @import 'ag-grid-community/dist/styles/ag-grid.css';
 @import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 /* @import url('./assets/fonts/gilroy/Gilroy-Black.ttf'); */
+@import 'ag-grid-community/dist/styles/ag-theme-material.css';
+
 
   
 html,

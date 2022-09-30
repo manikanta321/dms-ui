@@ -33,6 +33,7 @@
     "popper.js": "^1.16.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "url-search-params-polyfill": "^8.1.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

@@ -73,7 +73,7 @@
 </ag-grid-angular> -->
 <ag-grid-angular
 style=" height: 300px; font-family: Gilroy;"
-class="ag-theme-alpine"
+class="ag-theme-material"
 [rowHeight]="30"
 [pagination]="true"
 [paginationAutoPageSize]="true"
@@ -82,6 +82,8 @@ class="ag-theme-alpine"
 [columnTypes]="columnTypes"
 [rowData]="rowData3"
 (cellValueChanged)="onCellValueChanged($event)"
+(firstDataRendered)="onFirstDataRendered($event)"
+
 
 ></ag-grid-angular>
  <!-- <gui-grid

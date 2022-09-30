@@ -30,15 +30,47 @@
 /* ::ng-deep.mat-row{
     height: 10px;
 } */
-/* @font-face {
-  font-family: "Gilroy";
-  src: local("gilroy"), url(./assets/fonts/gilroy/Gilroy-Black.ttf) format("truetype");
-} */
-.font{
-  font-family: 'Gilroy';
+.rag-green-outer.rag-element {
+    background-color: #007bff;
+}
+
+::ng-deep.my-class-1{
+    color: red !important ;
+}
+::ng-deep.my-class-2{
+    color: #17B15C !important ;
+}
+::ng-deep.my-class-3{
+    color: #F5B666 !important ;
+}
+::ng-deep.my-class-4{
+    color: #017EFA !important ;
+}
+
+
+
+
+::ng-deep.ag-theme-material ::-webkit-scrollbar-thumb {
+
+    background: red !important; 
+    border-radius: 10px;    
+
+}
+
+  ::ng-deep.ag-sticky-top{
+    border-bottom:  0.5px solid #000000;
+}
+.main{
+    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+}
+
+
+
+.rowEven{
+    background-color: #000000;
 }
 mat-sidenav {
-    /* margin: 16px; */ 
+    /* margin: 16px; */
     /* width: 250px; */
     border-right: none;
     /* background: #002b5c; */
@@ -80,9 +112,9 @@ height: calc(100vh - 65px);
   border-radius: 100px;
 }
 
-::ng-deep.ag-header-container{
-  border-bottom:  0.5px solid #000000;
-}
+// ::ng-deep.ag-header-container{
+//   border-bottom:  0.5px solid #000000;
+// }
 .customHeaderLabel{
   color: #007bff;
 }
@@ -131,6 +163,7 @@ height: calc(100vh - 65px);
 }
 
 .ag-theme-material{
+    
   --ag-card-radius: 100px;
   --ag-border-radius: 20px;
 --ag-header-height: 30px;
@@ -191,9 +224,16 @@ height: 2.125em;
 ::ng-deep.mat-row:nth-child(even){ background-color: white; }.mat-row:nth-child(odd){ background-color:#FAFAFB
 ; }
 
-.mat-header-row{
+
+::ng-deep.ag-row:nth-child(even)
+{
 height: 46px;
-color: white;
+background: rgba(222, 226, 230, 0.2)  !important;
+color: #000000;
+}
+::ng-deep.ag-row{
+    font-size: 13px !important;
+
 }
 .mat-row{
 height: 3px;

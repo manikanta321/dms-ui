@@ -3,12 +3,12 @@ import { AddUserPopupComponent } from './userPopups/add-user-popup/add-user-popu
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import {AfterViewInit, ViewChild} from '@angular/core';
-
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
-import {FormControl} from '@angular/forms';
 import { Sort, MatSort, SortDirection } from '@angular/material/sort';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 export interface PeriodicElement {
   name: any;
   position: string;
@@ -58,6 +58,19 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+  myForm:any= FormGroup;
+  myForms:any= FormGroup;
+  disabled = false;
+  ShowFilter = false;
+  StatusFilter = false;
+  limitSelection = false;
+  statusSelection =false;
+  cities:any = [];
+  status:any = [];
+  selectedItems: any = [];
+  selectedStatus: any = [];
+  dropdownSettings: IDropdownSettings = {};
+  dropdownSettings1: IDropdownSettings = {};
    gridOptions = {
     // set background colour on every row, this is probably bad, should be using CSS classes
     rowStyle: { background: 'black' },
@@ -68,7 +81,7 @@ export class UsersComponent implements OnInit {
     // other grid options ...
 }
 
-status:any;
+// status:any;
 
 // Data that gets displayed in the grid
 public rowData5=[
@@ -325,7 +338,8 @@ public pivotPanelShow = 'always';
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
     private user:UserService,
-    private observer: BreakpointObserver
+    private observer: BreakpointObserver,
+    private fb: FormBuilder
    ) {
       sort:[];
      }
@@ -366,7 +380,84 @@ public pivotPanelShow = 'always';
   this.roleItems();
   this.statusItems();
 
+  this.cities = [
+    { item_id: 1, item_text: 'New Delhi' },
+    { item_id: 2, item_text: 'Sales Person' },
+    { item_id: 3, item_text: 'Sales Executive' },
+    { item_id: 4, item_text: 'Pune' },
+    { item_id: 5, item_text: 'Chennai Express' },
+    { item_id: 6, item_text: 'Navsari' }
+];
+this.status = [
+  { status_id: 1, status_text: 'Active' },
+  { status_id: 2, status_text: 'Inactive' },
+  { status_id: 3, status_text: 'Locked' },
+  { status_id: 4, status_text: 'Away' },
+  { status_id: 5, status_text: 'Be Right Back' },
+  { status_id: 6, status_text: 'Unlocked' }
+];
+this.selectedItems = [];
+this.selectedStatus = [];
+this.dropdownSettings = {
+    singleSelection: false,
+    idField: 'item_id',
+    textField: 'item_text',
+    selectAllText: 'Select All',
+    unSelectAllText: 'UnSelect All',
+    itemsShowLimit: 2,
+    allowSearchFilter: this.ShowFilter
+};
+this.dropdownSettings1 = {
+  singleSelection: false,
+  idField: 'status_id',
+  textField: 'status_text',
+  selectAllText: 'Select All',
+  unSelectAllText: 'UnSelect All',
+  itemsShowLimit: 2,
+  allowSearchFilter: this.StatusFilter
+};
+this.myForm = this.fb.group({
+    city: [this.selectedItems]
+});
+this.myForms = this.fb.group({
+  citys: [this.selectedItems]
+});
+}
+onItemSelect(item: any) {
+  console.log('onItemSelect', item);
+}
+onStatusSelect(item: any) {
+console.log('onStatusSelect', item);
+}
+onSelectAll(items: any) {
+  console.log('onSelectAll', items);
+}
+onStatusAll(items: any) {
+console.log('onSelectAll', items);
+}
+toogleShowFilter() {
+  this.ShowFilter = !this.ShowFilter;
+  this.dropdownSettings = Object.assign({}, this.dropdownSettings, { allowSearchFilter: this.ShowFilter });
+}
 
+handleLimitSelection() {
+  if (this.limitSelection) {
+      this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: 2 });
+  } else {
+      this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: null });
+  }
+}
+toogleStatusFilter() {
+this.StatusFilter = !this.StatusFilter;
+this.dropdownSettings1 = Object.assign({}, this.dropdownSettings1, { allowSearchFilter: this.StatusFilter });
+}
+
+handleStatusSelection() {
+if (this.statusSelection) {
+    this.dropdownSettings1 = Object.assign({}, this.dropdownSettings1, { statusSelection: 2 });
+} else {
+    this.dropdownSettings1 = Object.assign({}, this.dropdownSettings1, { statusSelection: null });
+}
 
 
   

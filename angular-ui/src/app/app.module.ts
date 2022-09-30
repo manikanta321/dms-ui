@@ -62,6 +62,7 @@ import { CurrencyConversationComponent } from './component/other-masters/currenc
 import { OrdersComponent } from './component/orders/orders.component';
 import { OrderTableComponent } from './component/orders/order-table/order-table.component';
 import { AuthInterceptor } from './component/AuthInterceptor';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -130,7 +131,8 @@ import { AuthInterceptor } from './component/AuthInterceptor';
     MatSortModule,
     GuiGridModule,
     AgGridModule,
-    HttpClientModule
+    HttpClientModule,
+    NgMultiSelectDropDownModule
         
   ],
   providers: [

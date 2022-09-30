@@ -15,30 +15,39 @@
             <!-- </div> -->
             <div class=" ACVTY-no-pad" >
                 <div class="UNFAPP-asmnt-rgt-area main" style="padding: 15px;height: 100vh;">
-       <div class="row">
-        <div class="selct_box" style="margin-left: 20px;" >
-          <!-- <mat-label>Role</mat-label>
-          <br> -->
-          <mat-form-field appearance="outline">
-              <mat-select [formControl]="toppings"  multiple placeholder="Role " >
-                <!-- <mat-select-trigger>
-                  {{toppings.value?.[0] || ''}}
-                  <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
-                    (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
-                  </span>
-                </mat-select-trigger> -->
-                <mat-select-trigger>
-                  <span *ngIf="(toppings.value?.length || 0) > 0" class="example-additional-selection">
-                    {{(toppings.value?.length || 0) }} {{toppings.value?.length === 2 ? 'Selected' : 'Selected'}}
-                  </span>
-                </mat-select-trigger>
-                  <mat-option   *ngFor="let topping of toppingList" [value]="topping.role_name"  (click)="roleFilter(topping.role_id)">
-                    {{topping.role_name}}</mat-option>
-              </mat-select>
-          </mat-form-field>
+       <div class="row" style="margin-left: 8%;">
+        <!-- <div class="selct_box" style="margin-left: 40px;" > -->
+          <div class="col-md-3 col-lg-3 col-sm-3">
+            <form [formGroup]="myForm">
+          <ng-multiselect-dropdown
+              name="city"
+              [placeholder]="'Role'"
+              formControlName="city"
+              [disabled]="disabled"
+              [settings]="dropdownSettings"
+              [data]="cities"
+              (onSelect)="onItemSelect($event)">
+          </ng-multiselect-dropdown>
+     </form>
+        </div>
+        <div class="col-md-3 col-lg-3 col-sm-3">
+          <form [formGroup]="myForms">
+        <ng-multiselect-dropdown
+            name="citys"
+            [placeholder]="'Status'"
+            formControlName="citys"
+            [disabled]="disabled"
+            [settings]="dropdownSettings1"
+            [data]="status"
+            (onSelect)="onStatusSelect($event)">
+        </ng-multiselect-dropdown>
+   </form>
       </div>
-      <div class="selct_box" style="margin-left: 20px;">
-        <!-- <mat-label>Status</mat-label><br> -->
+      <div class="icon btnhover">
+        <img src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;" alt="refresh">
+      </div>
+      <!-- </div> -->
+      <!-- <div class="selct_box" style="margin-left: 20px;">
         <mat-form-field appearance="outline">
             <mat-select [formControl]="toppings1" multiple placeholder="Status " >
               <mat-select-trigger>
@@ -55,17 +64,16 @@
         <button type="button" class="btn btn-primary1" style="margin-bottom: 9px;" (click)="refresh()">
           <mat-icon mat-list-icon>refresh</mat-icon>
         </button>
-    </div>
-    <div class="form-outline" style="margin-left: 20px;margin-top: 5px;">
-      <!-- <label class="form-label" for="form1">Search</label> -->
+    </div> -->
+    <!-- <div class="form-outline" style="margin-left: 20px;margin-top: 5px;">
   
       <input type="search" placeholder="search"  (keyup)="applyFilter($event)"  #input class="form-control" style="border:solid #2962ff 1px;" />
       
-    </div>
-    <button type="button" class="btn btn-primary">
+    </div> -->
+    <!-- <button type="button" class="btn btn-primary">
       <i class="fas fa-search"></i>
-    </button>
-    <div class="crt-dwnl">
+    </button> -->
+    <!-- <div class="crt-dwnl">
       <button class="btn  btnhover createcoursebtn" type="button" id="dropdownMenu2"
       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 20px;" (click)=" addUser()" >
        + Add user
@@ -73,7 +81,7 @@
     <button class="btn btn-primary2" type="button" id="dropdownMenu2"
   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   <mat-icon [ngStyle]="{'color':'white'}">download</mat-icon></button>
-    </div>
+    </div> -->
        </div>   
        <div class="row">
         <div class="col-2">
@@ -91,6 +99,22 @@
     [rowData]="rowData"
     [columnDefs]="columnDefs">
 </ag-grid-angular> -->
+<div class="row" style="position:relative;left:71%;">
+<div class="searchBox d-flex justify-center align-center">
+  <input class="searchInput" type="text" name="" placeholder="SEARCH">
+  <button class="searchButton" href="#">
+      <i class="material-icons">
+          search
+      </i>
+  </button>
+</div>
+<div class="add-user">
+<img src="assets/img/add-usr-btn.png" style="position: relative;top: 12px;left: 16px;" alt="add-user-btn">
+</div>
+<div class="download-btn">
+<img src="assets/img/download-btn.png" style="position: relative;top: 12px;left: 18px;" alt="add-user-btn">
+          </div>
+        </div>
 <ag-grid-angular
 
 style="width: 100%; height: 440px;border-radius: 20px;background-color: white;"

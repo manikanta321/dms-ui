@@ -439,6 +439,9 @@ font-size: inherit;
 line-height: -1em;
 height: 2em;
 }
+.font{
+  font-family: 'Gilroy';
+}
 ::ng-deep .mat-select-panel{
 min-width: calc(74% + 64px);    background-color: red;
 font-size: 10px;

@@ -62,6 +62,8 @@ import { CurrencyConversationComponent } from './component/other-masters/currenc
 import { OrdersComponent } from './component/orders/orders.component';
 import { OrderTableComponent } from './component/orders/order-table/order-table.component';
 import { AuthInterceptor } from './component/AuthInterceptor';
+import { ActivateUserpopupComponent } from './component/users/userPopups/activate-userpopup/activate-userpopup.component';
+import { DeactivateUserpopupComponent } from './component/users/userPopups/deactivate-userpopup/deactivate-userpopup.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
@@ -100,7 +102,9 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     TaxTemplateComponent,
     CurrencyConversationComponent,
     OrdersComponent,
-    OrderTableComponent
+    OrderTableComponent,
+    ActivateUserpopupComponent,
+    DeactivateUserpopupComponent
 
   ],
   imports: [

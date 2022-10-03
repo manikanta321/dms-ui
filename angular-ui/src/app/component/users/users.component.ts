@@ -8,7 +8,8 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { Sort, MatSort, SortDirection } from '@angular/material/sort';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';  
+
 export interface PeriodicElement {
   name: any;
   position: string;
@@ -42,8 +43,7 @@ import { AddcurrencyComponent } from './userPopups/addcurrency/addcurrency.compo
 import { EditTaxTemplateComponent } from './userPopups/edit-tax-template/edit-tax-template.component';
 import { DeletecomponentComponent } from '../deletecomponent/deletecomponent.component';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { CellClassParams,
-  CellClassRules, CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
+import { CellClassParams,CellClassRules, CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef ,GridApi} from 'ag-grid-community';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AgGridAngular } from 'ag-grid-angular';
@@ -51,6 +51,7 @@ import { UserService } from 'src/app/services/user.service';
 import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { PopupCellRendererComponent } from '../popup-cell-renderer/popup-cell-renderer.component';
 
 @Component({
   selector: 'app-users',
@@ -58,6 +59,8 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+  private gridApi!: GridApi;
+
   myForm:any= FormGroup;
   myForms:any= FormGroup;
   disabled = false;
@@ -69,6 +72,9 @@ export class UsersComponent implements OnInit {
   status:any = [];
   selectedItems: any = [];
   selectedStatus: any = [];
+  userTypes:any=[];
+  statusTypes:any=[];
+  searchText:any;
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
    gridOptions = {
@@ -84,24 +90,8 @@ export class UsersComponent implements OnInit {
 // status:any;
 
 // Data that gets displayed in the grid
-public rowData5=[
-  {position: '6004005001', name: 'Rajasheka S', weight: 1.0079, symbol: 'Customer',emailid:'you@smartgig',phonenum:9448282822,status:'Active',Lastlogin:'22/2/2022',role:'admin'},
-  {position: '6004005002', name: 'Manoranjan B', weight: 1.0079, symbol: 'Dealer',emailid:'you@smartgig',phonenum:9448282822,status:'Inactive',Lastlogin:'22/2/2022',role:'manager'},
-  {position: '6004005003', name: 'Vishnu M', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822 , status:'Active',Lastlogin:'22/2/2022',role:'manager'},
-  {position: '6004005004', name: 'Mahendra S', weight: 1.0079, symbol: 'Dealer',emailid:'you@smartgig',phonenum:9448282822, status:'Invited',Lastlogin:'22/2/2022',role:'manager'},
-  {position: '6004005005', name: 'Veerendra kr', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked',Lastlogin:'22/2/2022',role:'user'},
-  {position: '6004005006', name: 'mahathi Br', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Active',Lastlogin:'22/2/2022',role:'manager'},
-   {position: '6004005007', name: 'chetheshwar T', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked',Lastlogin:'22/2/2022',role:'manager'},
-   {position: '6004005008', name: 'Swami swami', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked',Lastlogin:'22/2/2022',role:'manager'},
-
-   {position: '6004005006', name: 'narendra gs', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked',Lastlogin:'22/2/2022',role:'dealer'},
-
-   {position: '6004005006', name: 'prajwal vT', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked',Lastlogin:'22/2/2022',role:'manager'},
-   {position: '6004005006', name: 'prajwal vT', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked',Lastlogin:'22/2/2022',role:'manager'},
-   {position: '6004005006', name: 'prajwal vT', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked',Lastlogin:'22/2/2022',role:'manager'},
-
-];
-
+public rowData5=[];
+public popupParent: HTMLElement = document.body;
 
 // For accessing the Grid's API
 
@@ -147,45 +137,43 @@ public rowData5=[
   'rag-amber-outer': (params) => params.value === 'Inactive',
   'rag-red-outer': (params) => params.value === 2000,
 };
-columnDefs: ColDef[] = [
+columnDefs: ColDef[] = [ 
+
   { headerName: "User Id",
-    field: 'position' , sort: 'desc'},
+field: 'employeeCode' , sort: 'desc'},
 
-  {   headerName: "User Name",field: 'name' },
+{   headerName: "User Name",field: 'employeeName' },
 
-  { field: 'role',},
+{headerName: "Role", field: 'roleName', },
 
-  {  headerName: "Email Id",
-     field: 'emailid' },
+{  headerName: "Email Id",
+ field: 'emailId' },
 
-  {   headerName: "Phone no",
-    field: 'phonenum',},
+{   headerName: "Phone no",
+field: 'mobilePhone',},
 
-  {   headerName: "Last Login",
-    // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-    field: 'Lastlogin',type: ['nonEditableColumn'],
-   
-  },
-
-
-  { headerName: "Status",
-     field: 'status', 
-  cellEditor: 'agSelectCellEditor',
-  cellEditorParams: {
-    values: ['Active', 'Inactive', 'Invited', 'Locked',],
-  },
-  cellClass: params => {                      
-    return params.value == 'Inactive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
-},
+{   headerName: "Last Login",
+// field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
+field: 'lastLoginDate',type: ['nonEditableColumn'],
 },
 
 
-
+{ headerName: "Status",
+ field: 'statusName', 
+cellEditor: 'agSelectCellEditor',
+cellEditorParams: {
+values: ['Active', 'Inactive', 'Invited', 'Locked',],
+},
+cellClass: params => {                      
+  return params.value == 'Inactive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
+},
+},
 { headerName: "",
 field: '',  filter: false, sortable: false,width:20,
 cellRenderer: function clickNextRendererFunc(){
-  return '<i class="fa fa-ellipsis-v" aria-hidden="true" (click)="editfn()"></i>';
+  return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
 }, 
+ cellEditorPopup: true,
 },
 
 // {
@@ -380,40 +368,6 @@ public pivotPanelShow = 'always';
   this.roleItems();
   this.statusItems();
 
-  this.cities = [
-    { item_id: 1, item_text: 'New Delhi' },
-    { item_id: 2, item_text: 'Sales Person' },
-    { item_id: 3, item_text: 'Sales Executive' },
-    { item_id: 4, item_text: 'Pune' },
-    { item_id: 5, item_text: 'Chennai Express' },
-    { item_id: 6, item_text: 'Navsari' }
-];
-this.status = [
-  { status_id: 1, status_text: 'Active' },
-  { status_id: 2, status_text: 'Inactive' },
-  { status_id: 3, status_text: 'Invited' },
-  { status_id: 4, status_text: 'Locked' }
-];
-this.selectedItems = [];
-this.selectedStatus = [];
-this.dropdownSettings = {
-    singleSelection: false,
-    idField: 'item_id',
-    textField: 'item_text',
-    selectAllText: 'Select All',
-    unSelectAllText: 'UnSelect All',
-    itemsShowLimit: 2,
-    allowSearchFilter: true
-};
-this.dropdownSettings1 = {
-  singleSelection: false,
-  idField: 'status_id',
-  textField: 'status_text',
-  selectAllText: 'Select All',
-  unSelectAllText: 'UnSelect All',
-  itemsShowLimit: 2,
-  allowSearchFilter: this.StatusFilter
-};
 this.myForm = this.fb.group({
     city: [this.selectedItems]
 });
@@ -421,12 +375,10 @@ this.myForms = this.fb.group({
   citys: [this.selectedItems]
 });
 }
-onItemSelect(item: any) {
-  console.log('onItemSelect', item);
+editfn(){
+  alert('guru')
 }
-onStatusSelect(item: any) {
-console.log('onStatusSelect', item);
-}
+
 onSelectAll(items: any) {
   console.log('onSelectAll', items);
 }
@@ -466,18 +418,40 @@ if (this.statusSelection) {
   refresh(){
     this.toppings = new FormControl(this.toppingList);
     this.toppings1 = new FormControl(this.toppingList1);
-
+    this.myForm = this.fb.group({
+      city: [this.selectedItems]
+  });
+  this.myForms = this.fb.group({
+    citys: [this.selectedItems]
+  });
     // var ageFilterComponent = this.gridApi.getFilterInstance('')!;
     // ageFilterComponent.setModel(null);
     // this.gridApi.onFilterChanged();
+    const data={
+      userTypes:[],
+      statuss:[],
+      search:'',
+  
+    }
+    this.user.getuserDeatilsUser(data).subscribe((res) => {     
+      this.rowData5 = res.response;
+    });
 this.getusertabeldata();
   }
 
 getusertabeldata(){
-  this.user.getuserDeatils().subscribe((res: any) => {
+ let body={
+  name:'mani'
+    }
+    const data={
+      userTypes:[],
+      statuss:[],
+    }
+      this.user.getuserDeatilsUser(data).subscribe((res) => {
       
-    this.rowData = res.response;
-    if (this.rowData.length >= 1) {
+    this.rowData5 = res.response;
+    console.log('tableDaaaata', this.rowData5 )
+    if (this.rowData5.length >= 1) {
     this.rowData.forEach((element: { [x: string]: any; }) => {
     if (element['status']=='Confirmed'){
 }
@@ -495,30 +469,12 @@ console.log('element',element['isActive'])
 }
 
 roleItems(){
-
-  // if (res != undefined) {
-  //   let localdata = res.data;
-
-  //   this.gradeList = localdata.map((dt) => {
-  //     return { grade_id: dt.gradeId, grade_name: dt.gradeName };
-  //   });
-  //   if (!this.gradesArray?.length) {
-  //     this.gradesArray = localdata.map((grade) => {
-  //       return grade.gradeId;
-  //     });
-  //   }
-  //   this.gradesArray.push(0)
-  //   // this.gradeList.push({ grade_id: 0, grade_name: 'all'})
-
-  //   this.grades = new FormControl(this.gradesArray);
-  // }
-
   this.user.getroleDetails().subscribe((res: any) => {
     let localdata=res.response;
+console.log('checkdata',localdata)
 
-
-    this.toppingList = localdata.map((data: { designationId: any; designationName: any; }) => {
-      return { role_id: data.designationId, role_name: data.designationName };
+    this.toppingList = localdata.map((data: { roleId: any; roleName: any; }) => {
+      return { roleId: data.roleId, roleName: data.roleName };
     });
 
     if (!this.toppingList?.length) {
@@ -531,48 +487,48 @@ roleItems(){
     this.toppings = new FormControl(this.toppingList);
 
     console.log('rolelist',this.toppingList)
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'roleId',
+      textField: 'roleName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect Al l',
+      itemsShowLimit: 2,
+      allowSearchFilter: this.ShowFilter
+  };
+  this.selectedItems = [];
   });
 }
 
 statusItems(){
   this.user.getstatusDeatils().subscribe((res: any) => {
-      
-    let localdata=res.response;
+    this.toppingList1=res.response;
+    // this.toppingList1 = localdata.map((data: { status_id: any; status_name: any; }) => {
+    //   return {status_id: data.status_id, status_name: data.status_name };
+    // });
 
-
-    this.toppingList1 = localdata.map((data: { statusId: any; statusname: any; }) => {
-      return {status_id: data.statusId, status_name: data.statusname };
-    });
-
-    if (!this.toppingList1?.length) {
-      this.toppingList1 = localdata.map((status: { statusname: any; }) => {
-        return status.statusname;
-      });
-    }
-    this.toppingList1.push()
+    // if (!this.toppingList1?.length) {
+    //   this.toppingList1 = localdata.map((status: { status_name: any; }) => {
+    //     return status.status_name;
+    //   });
+    // }
+    // this.toppingList1.push()
+    console.log('we have to check here', this.toppingList1)
     // this.toppingList = res.response;
+    this.dropdownSettings1 = {
+      singleSelection: false,
+      idField: 'statusId',
+      textField: 'statusName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 2,
+      allowSearchFilter: this.StatusFilter
+    };
+    this.selectedStatus = [];
     this.toppings1 = new FormControl(this.toppingList1);
-
-    console.log('status',this.toppingList1)
-
-
-
-
-
-
-
-
-
 
   });
 }
-
-
-
-
-
-
-
 roleFilter(data:any){
   console.log('data',data)
   this.roleName=this.toppings.value;
@@ -582,6 +538,75 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
 
 });
   console.log('rolename',this.rowData)
+}
+onItemSelect(item: any) {
+  alert(item.roleId)
+  this.userTypes.push(item.roleId);
+
+  const data={
+    userTypes:this.userTypes,
+    statuss:this.statusTypes,
+    search:this.searchText,
+
+  }
+  this.user.getuserDeatilsUser(data).subscribe((res) => {     
+    this.rowData5 = res.response;
+  });
+  console.log('rolefilter', this.userTypes)
+  console.log('onItemSelect', item);
+}
+
+
+
+
+
+onStatusSelect(item: any) {
+  this.statusTypes.push(item.statusId);
+
+  const data={
+    userTypes:this.userTypes,
+    statuss:this.statusTypes,
+    search:this.searchText,
+  }
+  this.user.getuserDeatilsUser(data).subscribe((res) => {     
+    this.rowData5 = res.response;
+  });
+  
+}
+
+onItemDeSelect(item: any) {
+  this.userTypes.pop(item.roleId);
+console.log(' this.userTypes', this.userTypes)
+  const data={
+    userTypes:this.userTypes,
+    statuss:this.statusTypes,
+    search:this.searchText,
+
+  }
+  this.user.getuserDeatilsUser(data).subscribe((res) => {     
+    this.rowData5 = res.response;
+  });
+  console.log('rolefilter', this.userTypes)
+  console.log('onItemSelect', item);
+}
+
+
+
+
+onStatusDeSelect(item: any) {
+  this.statusTypes.pop(item.statusId);
+console.log(' this.userTypes', this.userTypes)
+  const data={
+    userTypes:this.userTypes,
+    statuss:this.statusTypes,
+    search:this.searchText,
+
+  }
+  this.user.getuserDeatilsUser(data).subscribe((res) => {     
+    this.rowData5 = res.response;
+  });
+  console.log('rolefilter', this.userTypes)
+  console.log('onItemSelect', item);
 }
 
   applyFilter(event: Event) {
@@ -649,7 +674,19 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
     );
   }
 
+  onSearchChange($event:any , anything?:any){
+    const { target } = $event;
+    this.searchText=target.value;
+    const data={
+      userTypes:this.userTypes,
+      statuss:this.statusTypes,
+      search:this.searchText,
+    }
+    this.user.getuserDeatilsUser(data).subscribe((res) => {     
+      this.rowData5 = res.response;
+    });
 
+  }
   onRowValueChanged(event: RowValueChangedEvent) {
     var data = event.data;
     alert(data.status)
@@ -669,5 +706,14 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
   sideBarToggler(){
     this.sideBarOpen = !this.sideBarOpen;
   }
-  
+  openDialog(){
+    alert('mani')
+  }
+  onBtnExport(){
+    this.gridApi.exportDataAsCsv();
+
+  }
+  onGridReady(params: GridReadyEvent) {
+    this.gridApi = params.api;
+  }
 }

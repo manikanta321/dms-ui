@@ -25,7 +25,9 @@
     text-transform: uppercase;
     font-feature-settings: 'pnum' on, 'lnum' on;
 }
-
+.font{
+    font-family: 'Gilroy';
+  }
 mat-select-trigger {
     /* font-family: Montserrat; */
     font-style: normal;

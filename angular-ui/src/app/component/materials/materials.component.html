@@ -1,33 +1,22 @@
-<app-head (toggleSidebar)="sideBarToggler()"></app-head>
-
-    <div class="container-fluid" style="padding-left: 0px;">
-       
-            <mat-sidenav-container>
-                <mat-sidenav mode="side" [opened]="sideBarOpen" class="sidenav">
-                  
-                    <app-sidenav-bar></app-sidenav-bar>
-                </mat-sidenav>
-                <mat-sidenav-content>
-            <!-- <div class="col-xl-2 col-md-3">
-                <app-sidenav-bar></app-sidenav-bar>
-            </div> -->
-            <div class=" ACVTY-no-pad">
-                <div class="UNFAPP-asmnt-rgt-area" style="background-color: #EAECF2;padding: 15px;height: 100vh;">
-                    <div class="col-lg-12">
-                        <mat-tab-group>
-                            <mat-tab label="Classification "><app-materials-classification></app-materials-classification>                            </mat-tab>
-                            <mat-tab label="Material List"><app-materials-list></app-materials-list></mat-tab>
-                          </mat-tab-group>
-                    </div>
-                    <!-- <div *ngIf="tabEvent==1">
-                        <app-materials-classification></app-materials-classification>  <br>
-
-                    </div> -->
-<!-- <app-materials-classification></app-materials-classification>  <br> -->
-<!-- <app-materials-list></app-materials-list> -->
-   </div>
-            </div>
-        </mat-sidenav-content>
-    </mat-sidenav-container>
-</div>
+<app-head></app-head>
+<div class="font">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="sidebar" style="width: 5%;">
+            <app-sidenav-bar></app-sidenav-bar>
+        </div>
+        <div class="dash-content" style="background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%);
+        border-radius: 25px; height:100vh; padding: 10px;width: 95%;">
+                    <div class="UNFAPP-asmnt-rgt-area main" style="padding: 15px;height: 100vh;">
+                        <div class="col-lg-12">
+                            <mat-tab-group>
+                                <mat-tab label="Classification "><app-materials-classification></app-materials-classification>                            </mat-tab>
+                                <mat-tab label="Material List"><app-materials-list></app-materials-list></mat-tab>
+                              </mat-tab-group>
+                        </div>
+       </div>
+        </div>
+        </div>
+    </div>
+     </div> 
 

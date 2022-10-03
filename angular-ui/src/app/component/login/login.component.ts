@@ -44,9 +44,7 @@ export class LoginComponent implements OnInit {
     this.login.getloginDeatils(this.usernameofuser,this.passwordofuser).subscribe ((res: any) => {
     
     if(res){
-      alert('mani')
       this.loginData = res;
-      alert(this.loginData.token )
       localStorage.setItem('token',this.loginData.token )
 
       console.log("LoginData",this.loginData);

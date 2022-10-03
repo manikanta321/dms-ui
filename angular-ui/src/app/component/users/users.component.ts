@@ -440,9 +440,7 @@ this.getusertabeldata();
   }
 
 getusertabeldata(){
- let body={
-  name:'mani'
-    }
+
     const data={
       userTypes:[],
       statuss:[],
@@ -540,7 +538,6 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
   console.log('rolename',this.rowData)
 }
 onItemSelect(item: any) {
-  alert(item.roleId)
   this.userTypes.push(item.roleId);
 
   const data={
@@ -668,7 +665,7 @@ console.log(' this.userTypes', this.userTypes)
 
 
   onCellValueChanged(event: CellValueChangedEvent) {
-    alert(event.value)
+    // alert(event.value)
     console.log(
       'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );
@@ -689,7 +686,7 @@ console.log(' this.userTypes', this.userTypes)
   }
   onRowValueChanged(event: RowValueChangedEvent) {
     var data = event.data;
-    alert(data.status)
+    // alert(data.status)
     // console.log(
     //   'onRowValueChanged: (' +
     //     data.make +

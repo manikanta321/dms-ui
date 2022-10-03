@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpParams, HttpRequest, JsonpClientBackend } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 
 @Injectable({
@@ -13,7 +13,6 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
 
-  
   intercept(req: HttpRequest<any>,
     next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -42,16 +41,48 @@ else {
   //     }));
   // }
   public getuserDeatils() {
-    const idToken = localStorage.getItem('token');
-console.log('idtoken',idToken)
-    const headers = {
-      'accesstoken': localStorage.getItem('token'),
-      //'methodtype': 'RULES'
-    };
-    return this.http.get<any>(this.userurl + 'UserMgmtApi/GetAllUsers', );
+let options = {
+  headers: new HttpHeaders().set('Content-Type', 'application/json')
+};
+    const data={
+      userTypes:[],
+      statuss:[],
+    }//     const idToken = localStorage.getItem('token');
+// console.log('idtoken',idToken)
+//     const headers = {
+//       'accesstoken': localStorage.getItem('token'),
+//       //'methodtype': 'RULES'
+//     };
+JSON.stringify(data)
+    return this.http.post<any>(this.userurl + 'UserMgmtApi/GetAllUsers', data);
     
   }
+//   UserMgmtApi/AddEditUser?FirstName=manik&LastName=kantaa&Email=mani@gmail.com&UserName=manikantaa&
+// MobilePhone=5646555566&RoleId=116
+
+AddUser(data){
+  let firstname
+  return this.http.post<any>(this.userurl + 'UserMgmtApi/AddEditUser?',data);
+
+}
+
+
+public getuserDeatilsUser(data) {
+  let options = {
+    headers: new HttpHeaders().set('Content-Type', 'application/json')
+  };
+      //     const idToken = localStorage.getItem('token');
+  // console.log('idtoken',idToken)
+  //     const headers = {
+  //       'accesstoken': localStorage.getItem('token'),
+  //       //'methodtype': 'RULES'
+  //     };
   
+  
+  JSON.stringify(data)
+      return this.http.post<any>(this.userurl + 'UserMgmtApi/GetAllUsers', data);
+      
+    }
 
 public getroleDetails(){
   return this.http.get<any>(this.userurl + 'UserMgmtApi/GetUserTypes');

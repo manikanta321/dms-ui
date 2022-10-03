@@ -8,7 +8,7 @@
     <!-- content -->
     <div class="dash-content" style="background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%);
     border-radius: 25px; height:100vh; padding: 10px;width: 95%;">
-                       <div class="UNFAPP-asmnt-rgt-area main" style="padding: 15px;height: 100vh;">
+                       <div class="UNFAPP-asmnt-rgt-area main" style="padding: 15px;height: 120vh;">
                         <div class="row">
                           <div class="col-2">
                            <h4 style="
@@ -30,8 +30,9 @@
                                formControlName="city"
                                [disabled]="disabled"
                                [settings]="dropdownSettings"
-                               [data]="cities"
-                               (onSelect)="onItemSelect($event)">
+                               [data]="toppingList"
+                               (onSelect)="onItemSelect($event)"
+                               (onDeSelect)="onItemDeSelect($event)">
                            </ng-multiselect-dropdown>
                       </form>
                          </div>
@@ -43,33 +44,36 @@
                              formControlName="citys"
                              [disabled]="disabled"
                              [settings]="dropdownSettings1"
-                             [data]="status"
-                             (onSelect)="onStatusSelect($event)">
+                             [data]="toppingList1"
+                             (onSelect)="onStatusSelect($event)"
+                             (onDeSelect)="onStatusDeSelect($event)">
                          </ng-multiselect-dropdown>
                     </form>
                        </div>
-                       <div class="icon btnhover">
-                         <img src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;" alt="refresh">
+                       <div class="icon btnhover" (click)="refresh()">
+                         <img src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;" alt="refresh" >
                        </div>
                         </div>   
                  <div class="row" style="position:relative;margin-left: 71%;">
                  <div class="searchBox d-flex justify-center align-center">
-                   <input class="searchInput" type="text" name="" placeholder="SEARCH">
-                   <button class="searchButton" href="#">
+                   <input class="searchInput" type="text" name="" placeholder="SEARCH" 
+                   (keyup)="onSearchChange($event)">
+                   <button class="searchButton" href="#"> 
                        <i class="material-icons">
                            search
                        </i>
                    </button>
                  </div>
-                 <div class="add-user">
+                 <div class="add-user" (click)="addUser()">
                  <img src="assets/img/add-usr-btn.png" style="position: relative;top: 12px;left: 16px;" alt="add-user-btn">
                  </div>
-                 <div class="download-btn">
+                 <div class="download-btn" (click)="onBtnExport()">
                  <img src="assets/img/download-btn.png" style="position: relative;top: 12px;left: 18px;" alt="add-user-btn">
                            </div>
                          </div>
-                 <ag-grid-angular
-                 
+               
+                         <ag-grid-angular
+                 id="gridContainer"
                  style="width: 100%; height: 440px;border-radius: 20px;background-color: white;font-family: Gilroy"
                  class="ag-theme-material"
                  [rowHeight]="32"
@@ -78,8 +82,16 @@
                  [defaultColDef]="defaultColDef"
                  [columnTypes]="columnTypes"
                  [rowData]="rowData5"
+                   [suppressExcelExport]="true"
+            [popupParent]="popupParent"
                  (cellValueChanged)="onCellValueChanged($event)"
                  (firstDataRendered)="onFirstDataRendered($event)" 
+                 (firstDataRendered)="onFirstDataRendered($event)"
+                 (rowClicked)="openDialog()"
+                 
+                 (gridReady)="onGridReady($event)"
+
+                 
                  ></ag-grid-angular>
                   <div >
                  

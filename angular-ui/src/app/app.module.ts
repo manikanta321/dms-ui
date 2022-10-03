@@ -65,6 +65,7 @@ import { AuthInterceptor } from './component/AuthInterceptor';
 import { ActivateUserpopupComponent } from './component/users/userPopups/activate-userpopup/activate-userpopup.component';
 import { DeactivateUserpopupComponent } from './component/users/userPopups/deactivate-userpopup/deactivate-userpopup.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { PopupCellRendererComponent } from './component/popup-cell-renderer/popup-cell-renderer.component';
 
 @NgModule({
   declarations: [
@@ -104,7 +105,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     OrdersComponent,
     OrderTableComponent,
     ActivateUserpopupComponent,
-    DeactivateUserpopupComponent
+    DeactivateUserpopupComponent,
+    PopupCellRendererComponent
 
   ],
   imports: [

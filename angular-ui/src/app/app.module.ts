@@ -106,8 +106,8 @@ import { PopupCellRendererComponent } from './component/popup-cell-renderer/popu
     OrderTableComponent,
     ActivateUserpopupComponent,
     DeactivateUserpopupComponent,
-    PopupCellRendererComponent
-
+    PopupCellRendererComponent,
+    
   ],
   imports: [
     FormsModule,
@@ -139,7 +139,6 @@ import { PopupCellRendererComponent } from './component/popup-cell-renderer/popu
     AgGridModule,
     HttpClientModule,
     NgMultiSelectDropDownModule
-        
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

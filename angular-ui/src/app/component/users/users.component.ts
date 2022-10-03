@@ -391,10 +391,8 @@ public pivotPanelShow = 'always';
 this.status = [
   { status_id: 1, status_text: 'Active' },
   { status_id: 2, status_text: 'Inactive' },
-  { status_id: 3, status_text: 'Locked' },
-  { status_id: 4, status_text: 'Away' },
-  { status_id: 5, status_text: 'Be Right Back' },
-  { status_id: 6, status_text: 'Unlocked' }
+  { status_id: 3, status_text: 'Invited' },
+  { status_id: 4, status_text: 'Locked' }
 ];
 this.selectedItems = [];
 this.selectedStatus = [];
@@ -414,7 +412,7 @@ this.dropdownSettings1 = {
   selectAllText: 'Select All',
   unSelectAllText: 'UnSelect All',
   itemsShowLimit: 2,
-  allowSearchFilter: true
+  allowSearchFilter: this.StatusFilter
 };
 this.myForm = this.fb.group({
     city: [this.selectedItems]

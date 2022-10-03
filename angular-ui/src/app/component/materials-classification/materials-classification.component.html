@@ -1,1 +1,39 @@
-<h1>Helloo From Classification Screen</h1>
+<div class="section">
+    <div class="material-cl">
+<h2>Material classification</h2>
+    </div>
+    <div class="material-card row">
+        <div class="col-12 col-lg-4 col-md-6">
+           <div class="row"><p class="col-10">Sub-Category (3)</p><p class="col-2"><mat-icon>add_circle</mat-icon></p></div> 
+       <mat-card class="mat-card-content">
+        <mat-card-content>
+               <div class=" d-flex " *ngFor="let catg of catgname"><p class="col-10 catg ">{{catg}}</p><mat-icon class="col-2">remove_circle</mat-icon></div>
+        </mat-card-content>
+        <div class="buttn">
+            <button class="btn btn-basic addcat">Add category name</button>
+            <button class="btn btn-basic addcode">Add code</button>
+          </div>
+     </mat-card>
+    </div>
+    <div class="col-12 col-lg-4 col-md-6">
+        <div class="row"><p class="col-10">Sub-Category (3)</p><p class="col-2"><mat-icon>add_circle</mat-icon></p></div> 
+     <mat-card class="mat-card-content">
+      <mat-card-content>
+        <div class="span-subhead"><span>category 3</span><mat-icon>arrow_drop_down</mat-icon></div>
+        <div class=" d-flex" *ngFor="let subc of subname"><p class="col-10 subc">{{subc}}</p><mat-icon class="col-2">remove_circle</mat-icon></div>
+      </mat-card-content>
+   </mat-card>
+   </div>
+   <div class="col-12 col-lg-4 col-md-6">
+    <div class="row"><p class="col-10">Sub-Category (3)</p><p class="col-2"><mat-icon>add_circle</mat-icon></p></div> 
+    <mat-card class="mat-card-content">
+     <mat-card-content>
+        <div class="span-subhead"><span style="padding-bottom: 10px;">category 3</span><mat-icon>keyboard_arrow_right</mat-icon><span>Sub-category</span><mat-icon>arrow_drop_down</mat-icon></div>
+        <!-- <li class="type" *ngFor="let type of typename" >{{type}}<mat-icon>add_circle</mat-icon></li> -->
+        <div class=" d-flex" *ngFor="let type of typename"><p class="col-10 type">{{type}}</p><mat-icon class="col-2">remove_circle</mat-icon></div>
+     </mat-card-content>
+  </mat-card>
+  
+  </div>
+    </div>
+</div>

@@ -321,6 +321,8 @@ public pivotPanelShow = 'always';
   roleName: any;
   statusname:any;
   props: any;
+  msg1: any;
+  msg: any;
   
   constructor(public dialog: MatDialog,
     private router: Router,
@@ -704,7 +706,9 @@ console.log(' this.userTypes', this.userTypes)
     this.sideBarOpen = !this.sideBarOpen;
   }
   openDialog(){
-    alert('mani')
+    // alert('mani')
+    this.dialog.open( EditTaxTemplateComponent);
+    
   }
   onBtnExport(){
     this.gridApi.exportDataAsCsv();

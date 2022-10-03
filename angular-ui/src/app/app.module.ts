@@ -66,7 +66,7 @@ import { ActivateUserpopupComponent } from './component/users/userPopups/activat
 import { DeactivateUserpopupComponent } from './component/users/userPopups/deactivate-userpopup/deactivate-userpopup.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { PopupCellRendererComponent } from './component/popup-cell-renderer/popup-cell-renderer.component';
-
+import {MatCardModule} from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -138,7 +138,8 @@ import { PopupCellRendererComponent } from './component/popup-cell-renderer/popu
     GuiGridModule,
     AgGridModule,
     HttpClientModule,
-    NgMultiSelectDropDownModule
+    NgMultiSelectDropDownModule,
+    MatCardModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

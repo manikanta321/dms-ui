@@ -7,14 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MaterialsClassificationComponent implements OnInit {
 
-  countryname: string[] = ['Eectronics', 'electrical'];
-  Sname: string[] = ['mobile', 'earphone','mouse'];
-  Dname: string[] = ['mi', 'apple','lenavo', 'one+'];
+  catgname: string[] = ['Category 1 (Ct1)', 'Category 1 (Ct2)','Category 3 (Ct3)','Category 4 (Ct4)',];
+  subname: string[] = ['Sub category 1', 'Sub category 2',];
+  typename: string[] = ['Type TP 1', 'Type TP 2', 'Type TP 3','Type TP 4'];
   toprint:boolean=false;
 
   toggle:boolean=true;
-  clData: string[] = ['Type TP 1', 'Type TP 2', 'Type TP 3','Type TP 4'];
-  subcat: string[] = ['sub category', 'sub category 2',];
+  // clData: string[] = ['Type TP 1', 'Type TP 2', 'Type TP 3','Type TP 4'];
+  // subcat: string[] = ['sub category', 'sub category 2',];
   constructor() { }
 
   ngOnInit(): void {
@@ -22,10 +22,10 @@ export class MaterialsClassificationComponent implements OnInit {
   cname1(cname:string,i:any){
     
     if(cname=='Eectronics'){
-      this.Sname= ['mobile', 'earphone','mouse'];
+      // this.Sname= ['mobile', 'earphone','mouse'];
     }
     if(cname!='Eectronics'){
-      this.Sname= ['fan','fridge'];
+      // this.Sname= ['fan','fridge'];
     
 
     }
@@ -33,4 +33,5 @@ export class MaterialsClassificationComponent implements OnInit {
   printvalue(valueofprint:boolean){
     this.toprint=valueofprint;
   }
+  
 }

@@ -405,7 +405,7 @@ this.dropdownSettings = {
     selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All',
     itemsShowLimit: 2,
-    allowSearchFilter: this.ShowFilter
+    allowSearchFilter: true
 };
 this.dropdownSettings1 = {
   singleSelection: false,
@@ -414,7 +414,7 @@ this.dropdownSettings1 = {
   selectAllText: 'Select All',
   unSelectAllText: 'UnSelect All',
   itemsShowLimit: 2,
-  allowSearchFilter: this.StatusFilter
+  allowSearchFilter: true
 };
 this.myForm = this.fb.group({
     city: [this.selectedItems]

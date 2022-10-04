@@ -707,7 +707,7 @@ console.log(' this.userTypes', this.userTypes)
   }
   openDialog(){
     // alert('mani')
-    this.dialog.open( EditTaxTemplateComponent);
+    this.dialog.open( DeletecomponentComponent);
     
   }
   onBtnExport(){

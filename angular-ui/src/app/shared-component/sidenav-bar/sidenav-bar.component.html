@@ -36,26 +36,26 @@
    
     class="dash-menu" routerLink="/dashbord/dealer" routerLinkActive="active" *ngIf="collapsed">Dealer</span></mat-list-item>
    
-    <mat-accordion >
+    <mat-accordion [ngClass]="collapsed ? 'sidenav-collapsed': ''" (click)="toogleCollapsed()">
    
    
    
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel  (opened)="panelOpenState = true" (closed)="panelOpenState = false">
    
     <mat-expansion-panel-header>
    
    <mat-panel-title >
    
-  <mat-icon>settings</mat-icon><span *ngIf="collapsed">Settings</span>
+  <mat-icon>settings</mat-icon><span >Settings</span>
    
    
    
   </mat-panel-title>
    
-</mat-expansion-panel-header>
+</mat-expansion-panel-header >
 <mat-list-item  class="droplist" style="font-size: 14px;" routerLink="/dashbord/user"  class="btn-link " routerLinkActive="active"
    
-(click)="closePanel()">
+(click)="closePanel()" >
     <mat-icon>person icon</mat-icon>    <span *ngIf="collapsed">Users</span>
     </mat-list-item>
     

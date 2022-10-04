@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
+import { ActivateUserpopupComponent } from '../users/userPopups/activate-userpopup/activate-userpopup.component';
+import { DeactivateUserpopupComponent } from '../users/userPopups/deactivate-userpopup/deactivate-userpopup.component';
+import { EditPopupComponent } from '../users/userPopups/edit-popup/edit-popup.component';
 
 @Component({
   selector: 'app-deletecomponent',
@@ -8,7 +11,8 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angu
 })
 export class DeletecomponentComponent implements OnInit {
   panelOpenState = true;
-  constructor(private dialogRef: MatDialogRef<any>) { }
+  constructor(private dialogRef: MatDialogRef<any>,
+    private dialog: MatDialog) { }
    
 
   ngOnInit(): void {
@@ -16,5 +20,14 @@ export class DeletecomponentComponent implements OnInit {
   }
   closeDialog(){
     this.dialogRef.close();
+  }
+  editUser(){
+    // this.dialogRef.open( EditPopupComponent,);
+  }
+  deactive(){
+    this.dialog.open(DeactivateUserpopupComponent);
+  }
+  reactive(){
+    this.dialog.open(ActivateUserpopupComponent );
   }
 }

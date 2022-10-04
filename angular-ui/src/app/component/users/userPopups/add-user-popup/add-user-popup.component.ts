@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -18,8 +19,12 @@ export class AddUserPopupComponent implements OnInit {
   phone:any;
   userType: string[] = ['Admin', 'Business Manager', 'Order Manager', 'Viewer','Business Manager', 'Order Manager', 'Viewer'];
   role = new FormControl('');
+  errorMsg: any;
+  
   // toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
   constructor(
+    private dialogRef: MatDialogRef<AddUserPopupComponent>,
+
     private user:UserService,
 
   ) { }
@@ -39,15 +44,12 @@ export class AddUserPopupComponent implements OnInit {
     }
     
     this.user.AddUser(data).subscribe((res: any) => {
-      if (res.statusCode === 201) {
-        // const config: MatDialogConfig = {
-        //   width: '370px',
-        //   height: '240px',
-        //   panelClass: 'custom-class',
-        //   data: { message: res.message }
-        // };
-        // this.dialog.open(RankDialogComponent, config);
-        // this.createCourseData = res;
+      console.log('response',res.response.result)
+      if (res.response.result === 'Success') {
+        this.dialogRef.close();
+      }
+      else{
+        this.errorMsg=res.response.result;
       }
 
     })

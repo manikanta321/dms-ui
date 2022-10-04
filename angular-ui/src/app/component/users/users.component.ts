@@ -77,7 +77,9 @@ export class UsersComponent implements OnInit {
   searchText:any;
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
+  
    gridOptions = {
+    onCellClicked: (event: CellClickedEvent) => console.log('Cell was clicked'),
     // set background colour on every row, this is probably bad, should be using CSS classes
     rowStyle: { background: 'black' },
 
@@ -93,50 +95,7 @@ export class UsersComponent implements OnInit {
 public rowData5=[];
 public popupParent: HTMLElement = document.body;
 
-// For accessing the Grid's API
 
-
-// columnDefs: ColDef[] = [
-//   { headerName: "User Id",
-//     field: 'employeeCode' , sort: 'desc'},
-
-//   {   headerName: "User Name",field: 'employeeName' },
-
-//   { field: 'role', },
-
-//   {  headerName: "Email Id",
-//      field: 'emailId' },
-
-//   {   headerName: "Phone no",
-//     field: 'mobilePhone',},
-
-//   {   headerName: "Last Login",
-//     // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-//     field: 'lastLoginDate',type: ['nonEditableColumn']},
-
-
-//   { headerName: "Status",
-//      field: 'status', 
-//   cellEditor: 'agSelectCellEditor',
-//   cellEditorParams: {
-//     values: ['Active', 'Inactive', 'Invited', 'Locked',],
-//   }
-// },
-// // {
-// //   headerName: "Avatar",
-// //   field: "avatar",
-// //   width: 100,
-// //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
-// //  },
-
-// ];
-
-
- ragCellClassRules: CellClassRules = {
-  'rag-green-outer': (params) => params.value === 'Active',
-  'rag-amber-outer': (params) => params.value === 'Inactive',
-  'rag-red-outer': (params) => params.value === 2000,
-};
 columnDefs: ColDef[] = [ 
 
   { headerName: "User Id",
@@ -168,12 +127,15 @@ cellClass: params => {
   return params.value == 'Inactive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
 },
 },
-{ headerName: "",
+{ 
+
+   headerName: "",
 field: '',  filter: false, sortable: false,width:20,
 cellRenderer: function clickNextRendererFunc(){
   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
 }, 
  cellEditorPopup: true,
+ onCellClicked: (event: CellClickedEvent) =>``
 },
 
 // {
@@ -323,6 +285,7 @@ public pivotPanelShow = 'always';
   props: any;
   msg1: any;
   msg: any;
+  userId: any;
   
   constructor(public dialog: MatDialog,
     private router: Router,
@@ -380,6 +343,7 @@ this.myForms = this.fb.group({
 editfn(){
   alert('guru')
 }
+// onCellClicked($event){}
 
 onSelectAll(items: any) {
   console.log('onSelectAll', items);
@@ -467,7 +431,9 @@ console.log('element',element['isActive'])
 
   });
 }
-
+makeCellClicked(){
+  alert('ohoh')
+}
 roleItems(){
   this.user.getroleDetails().subscribe((res: any) => {
     let localdata=res.response;
@@ -663,6 +629,8 @@ console.log(' this.userTypes', this.userTypes)
   // Example of consuming Grid Event
   onCellClicked( e: CellClickedEvent): void {
     console.log('cellClicked', e);
+    this.userId=e.data.userId;
+    console.log('userID',this.userId)
   }
 
 
@@ -688,18 +656,7 @@ console.log(' this.userTypes', this.userTypes)
   }
   onRowValueChanged(event: RowValueChangedEvent) {
     var data = event.data;
-    // alert(data.status)
-    // console.log(
-    //   'onRowValueChanged: (' +
-    //     data.make +
-    //     ', ' +
-    //     data.model +
-    //     ', ' +
-    //     data.price +
-    //     ', ' +
-    //     data.field5 +
-    //     ')'
-    // );
+    
   }
 
   sideBarToggler(){

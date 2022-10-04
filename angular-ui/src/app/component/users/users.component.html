@@ -8,7 +8,7 @@
     <!-- content -->
     <div class="dash-content" style="background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%);
     border-radius: 25px; height:100vh; padding: 10px;width: 95%;">
-                       <div class="UNFAPP-asmnt-rgt-area main" style="padding: 15px;height: 120vh;">
+                       <div class="UNFAPP-asmnt-rgt-area main" style="padding: 15px;">
                         <div class="row">
                           <div class="col-2">
                            <h4 style="
@@ -88,7 +88,7 @@
                  (firstDataRendered)="onFirstDataRendered($event)" 
                  (firstDataRendered)="onFirstDataRendered($event)"
                  (rowClicked)="openDialog()"
-                 
+                 (cellClicked)="onCellClicked($event)"
                  (gridReady)="onGridReady($event)"
 
                  

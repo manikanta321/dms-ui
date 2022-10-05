@@ -631,6 +631,7 @@ console.log(' this.userTypes', this.userTypes)
     console.log('cellClicked', e);
     this.userId=e.data.userId;
     console.log('userID',this.userId)
+    localStorage.setItem('userID',this.userId )
   }
 
 

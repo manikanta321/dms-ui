@@ -22,7 +22,7 @@ export class DeletecomponentComponent implements OnInit {
     this.dialogRef.close();
   }
   editUser(){
-    // this.dialogRef.open( EditPopupComponent,);
+    this.dialog.open( EditPopupComponent,);
   }
   deactive(){
     this.dialog.open(DeactivateUserpopupComponent);

@@ -66,7 +66,11 @@ AddUser(data){
 
 }
 
+EditUser(roleId:any){
+  let firstname
+  return this.http.post<any>(this.userurl + 'UserMgmtApi/AddEditUser?',roleId);
 
+}
 public getuserDeatilsUser(data) {
   let options = {
     headers: new HttpHeaders().set('Content-Type', 'application/json')
@@ -103,6 +107,9 @@ public UserFilterServices(roleId:any,statusId:any){
   }
   return this.http.get<any>(this.userurl + `UserMgmtApi/GetAllUsers?userTypeId = ${roleId}&statusid = ${statusId}&Search = ""`);
 
+}
+public activeDeavtive(data){
+  return this.http.post<any>( this.userurl +'UserMgmtApi/ActiveDeactive',data	)
 }
 
 

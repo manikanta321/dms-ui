@@ -36,11 +36,11 @@
    
     class="dash-menu" routerLink="/dashbord/dealer" routerLinkActive="active" *ngIf="collapsed">Dealer</span></mat-list-item>
    
-    <mat-accordion [ngClass]="collapsed ? 'sidenav-collapsed': ''" (click)="toogleCollapsed()">
+    <mat-accordion >
    
    
    
-    <mat-expansion-panel  (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel [ngClass]="collapsed ? 'sidenav-collapsed': ''" (click)="toogleCollapsed()" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
    
     <mat-expansion-panel-header>
    

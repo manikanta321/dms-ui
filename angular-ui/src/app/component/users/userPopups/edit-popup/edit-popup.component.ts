@@ -15,6 +15,7 @@ export class EditPopupComponent implements OnInit {
   phone:any;
   role = new FormControl('');
   toppingList: any= [];
+  
   // userType: string[] = ['Admin', 'Business Manager', 'Order Manager', 'Viewer','Business Manager', 'Order Manager', 'Viewer'];
   toppings = new FormControl(this.toppingList);
   constructor(private dialogRef: MatDialogRef<any>,
@@ -24,6 +25,7 @@ export class EditPopupComponent implements OnInit {
     this.roleItems();
     const user = localStorage.getItem("userID");
     console.log('userID', user)
+    this.editUser();
   }
   closeDialog(){
     this.dialogRef.close();
@@ -53,17 +55,22 @@ console.log('checkdata',localdata)
 
   });
 }
-addUSer(){
-  let data={
-      FirstName:this.fullname,
-      LastName:this.fullname,
-      UserName:this.username,
-      Email:this.email,
-      MobilePhone:this.phone,
-      RoleId:this.role
-    }
+editUser(){
+  let userID = this.user;
+      console.log('userID', this.user);
+      console.log('userData',userID)
+      
+  // {
+  //     FirstName:this.fullname,
+  //     LastName:this.fullname,
+  //     UserName:this.username,
+  //     Email:this.email,
+  //     MobilePhone:this.phone,
+  //     RoleId:this.role
+  //   }
+  
     
-    this.user.AddUser(data).subscribe((res: any) => {
+    this.user.EditUser(userID).subscribe((res: any) => {
       if (res.statusCode === 201) {
         // const config: MatDialogConfig = {
         //   width: '370px',
@@ -73,9 +80,10 @@ addUSer(){
         // };
         // this.dialog.open(RankDialogComponent, config);
         // this.createCourseData = res;
+      
       }
 
     })
-    console.log('userData',data)
+    // console.log('userID',data)
   }
 }

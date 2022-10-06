@@ -66,9 +66,8 @@ AddUser(data){
 
 }
 
-EditUser(roleId:any){
-  let firstname
-  return this.http.post<any>(this.userurl + 'UserMgmtApi/AddEditUser?',roleId);
+EditUser(userID,){
+  return this.http.post<any>(this.userurl + 'UserMgmtApi/AddEditUser?',userID);
 
 }
 public getuserDeatilsUser(data) {

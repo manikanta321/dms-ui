@@ -62,11 +62,12 @@ import { CurrencyConversationComponent } from './component/other-masters/currenc
 import { OrdersComponent } from './component/orders/orders.component';
 import { OrderTableComponent } from './component/orders/order-table/order-table.component';
 import { AuthInterceptor } from './component/AuthInterceptor';
-import { ActivateUserpopupComponent } from './component/users/userPopups/activate-userpopup/activate-userpopup.component';
+
 import { DeactivateUserpopupComponent } from './component/users/userPopups/deactivate-userpopup/deactivate-userpopup.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { PopupCellRendererComponent } from './component/popup-cell-renderer/popup-cell-renderer.component';
 import {MatCardModule} from '@angular/material/card';
+import { RestPwsdUserPopupComponent } from './component/users/userPopups/rest-pwsd-user-popup/rest-pwsd-user-popup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -104,9 +105,10 @@ import {MatCardModule} from '@angular/material/card';
     CurrencyConversationComponent,
     OrdersComponent,
     OrderTableComponent,
-    ActivateUserpopupComponent,
+  
     DeactivateUserpopupComponent,
     PopupCellRendererComponent,
+    RestPwsdUserPopupComponent,
     
   ],
   imports: [

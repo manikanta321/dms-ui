@@ -6,12 +6,15 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./head.component.css']
 })
 export class HeadComponent implements OnInit {
-@Output()toggleSidebar : EventEmitter <any> = new EventEmitter();
+@Output()onToggleSideNav : EventEmitter <any> = new EventEmitter();
+sideBarOpen = true;
   constructor() { }
 
   ngOnInit(): void {
   }
 togglesidebar(){
-  this.toggleSidebar.emit();
+  this.onToggleSideNav.emit();
+ 
+  
 }
 }

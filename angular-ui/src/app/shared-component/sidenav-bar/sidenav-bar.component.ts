@@ -47,8 +47,8 @@ sideBarOpen = true;
  this.collapsed =! this.collapsed;
  this.onToggleSideNav.emit({collapsed:this.collapsed, screenWidth: this.screenWidth});
   }
-  close(): void{
- this.collapsed = false;
- this.onToggleSideNav.emit({collapsed:this.collapsed, screenWidth: this.screenWidth});
-  }
+//   close(): void{
+//  this.collapsed = false;
+//  this.onToggleSideNav.emit({collapsed:this.collapsed, screenWidth: this.screenWidth});
+//   }
 }

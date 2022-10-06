@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
-import { ActivateUserpopupComponent } from '../users/userPopups/activate-userpopup/activate-userpopup.component';
+
 import { DeactivateUserpopupComponent } from '../users/userPopups/deactivate-userpopup/deactivate-userpopup.component';
 import { EditPopupComponent } from '../users/userPopups/edit-popup/edit-popup.component';
+import { RestPwsdUserPopupComponent } from '../users/userPopups/rest-pwsd-user-popup/rest-pwsd-user-popup.component';
 
 @Component({
   selector: 'app-deletecomponent',
@@ -27,7 +28,7 @@ export class DeletecomponentComponent implements OnInit {
   deactive(){
     this.dialog.open(DeactivateUserpopupComponent);
   }
-  reactive(){
-    this.dialog.open(ActivateUserpopupComponent );
+  resetpws(){
+    this.dialog.open(RestPwsdUserPopupComponent);
   }
 }

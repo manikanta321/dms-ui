@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ActivateUserpopupComponent } from 'src/app/component/users/userPopups/activate-userpopup/activate-userpopup.component';
+import { MatSidenav } from '@angular/material/sidenav';
+
 import { DeactivateUserpopupComponent } from 'src/app/component/users/userPopups/deactivate-userpopup/deactivate-userpopup.component';
 @Component({
   selector: 'app-dashbord',
@@ -9,9 +11,12 @@ import { DeactivateUserpopupComponent } from 'src/app/component/users/userPopups
 })
 export class DashbordComponent implements OnInit {
   collapsed = true;
-  sideBarOpen = true;
-  constructor(public dialog: MatDialog,) { }
+  sideBarOpen = false;
+  // @Output()toggleSidebar : EventEmitter <any> = new EventEmitter();
+  constructor(public dialog: MatDialog,
+    ) { }
 
+  
   ngOnInit(): void {
   }
   sideBarToggler(){
@@ -20,7 +25,6 @@ export class DashbordComponent implements OnInit {
   deactive(){
     this.dialog.open( DeactivateUserpopupComponent);
   }
-  active(){
- this.dialog.open(ActivateUserpopupComponent )
-  }
+ 
+
 }

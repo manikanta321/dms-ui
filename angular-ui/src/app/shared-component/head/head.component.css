@@ -30,6 +30,6 @@ background-color: white;
       display: block;
       border-radius: 10px;
       /* font-size: 20px; */
-      background: #59419979
+      background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
       }
   }

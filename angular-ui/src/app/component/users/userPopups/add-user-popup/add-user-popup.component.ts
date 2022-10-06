@@ -17,6 +17,7 @@ export class AddUserPopupComponent implements OnInit {
   username:any;
   email:any;
   phone:any;
+  Lastname:any;
   userType: string[] = ['Admin', 'Business Manager', 'Order Manager', 'Viewer','Business Manager', 'Order Manager', 'Viewer'];
   role = new FormControl('');
   errorMsg: any;
@@ -36,7 +37,7 @@ export class AddUserPopupComponent implements OnInit {
   addUSer(){
   let data={
       FirstName:this.fullname,
-      LastName:this.fullname,
+      LastName:this.Lastname,
       UserName:this.username,
       Email:this.email,
       MobilePhone:this.phone,

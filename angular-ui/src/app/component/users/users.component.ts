@@ -106,10 +106,10 @@ field: 'employeeCode' , sort: 'desc'},
 {headerName: "Role", field: 'roleName', },
 
 {  headerName: "Email Id",
- field: 'emailId' },
+ field: 'email' },
 
 {   headerName: "Phone no",
-field: 'mobilePhone',},
+field: 'mobile',},
 
 {   headerName: "Last Login",
 // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
@@ -135,7 +135,8 @@ cellRenderer: function clickNextRendererFunc(){
   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
 }, 
  cellEditorPopup: true,
- onCellClicked: (event: CellClickedEvent) =>``
+ onCellClicked: (event: CellClickedEvent) => this.dialog.open( DeletecomponentComponent)
+
 },
 
 // {
@@ -632,6 +633,7 @@ console.log(' this.userTypes', this.userTypes)
     this.userId=e.data.userId;
     console.log('userID',this.userId)
     localStorage.setItem('userID',this.userId )
+
   }
 
 
@@ -665,7 +667,6 @@ console.log(' this.userTypes', this.userTypes)
   }
   openDialog(){
     // alert('mani')
-    this.dialog.open( DeletecomponentComponent);
     
   }
   onBtnExport(){

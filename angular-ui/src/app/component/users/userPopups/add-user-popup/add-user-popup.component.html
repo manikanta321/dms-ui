@@ -16,15 +16,23 @@
         <div class="addUserForm">
           <form>
             <div class="row">
+    <div class="col">
+      <label>Username<span>*</span></label>
+      <br>
+      <input type="text" placeholder="Enter your UserName" [(ngModel)]="username" style="width: 530px;">
+    </div>
+            </div>
+            <br>
+            <div class="row">
               <div class="col">
-                <label>Full Name <span>*</span></label>
+                <label>First Name <span>*</span></label>
                 <br>
                 <input type="text" placeholder="Enter your First Name" [(ngModel)]="fullname">
               </div>
               <div class="col">
-                <label>Username<span>*</span></label>
+                <label>Last Name <span>*</span></label>
                 <br>
-                <input type="text" placeholder="Enter your UserName" [(ngModel)]="username">
+                <input type="text" placeholder="Enter your First Name" [(ngModel)]="Lastname">
               </div>
             </div>
             <br>

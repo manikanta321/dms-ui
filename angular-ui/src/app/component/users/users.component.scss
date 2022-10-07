@@ -650,30 +650,42 @@ background: red;
 ::ng-deep.ng-tns-c148-1 ng-trigger ng-trigger-transformPanel mat-select-panel mat-primary{
 width: 100px !important;
 }
-
-@media (max-width: 991px){
-  .form-outline{
-width: 175px;
+  @media (max-width: 991px){
+    .refresh{
+      top: 6px !important;
+      left: 14px;
+      width: 12px;
+  }
+  .refreshbtn{
+    width: 36px;
+    height: 36px;
+    margin-top: 6px;
+    margin-left: 10px;
 
   }
-   .createcoursebtn{
-     margin-left: 19px;   
-     width: 120px;
-     margin-top: 6px;
- 
-
-  }  
-  .btn-primary2{
-    margin-right: -100px;
-    width: 106px;
-    margin-left: 105px;
-    margin-top: 6px;
+    .UNFAPP-asmnt-rgt-area{
+    margin-left: 59px;
+   }
+   .searchButton{
+    margin-left: -108px;
+   }
+   .add-user{
+    margin-left: -56px;
+   }
+   .download-btn{
+    margin-left: 6px;
+   }
+   .icon .btnhover{
+    margin-top: 7px;
+    width: 25px;
+    height: 28px;
+}
+.ng-untouched {
+  margin-top: 6px;
+  }
   
-  } 
-   /* .btn-primary{
-    margin-left: 104px;
-   margin-top: 6px;
-  }   */
-
   
 }
+   
+ 
+

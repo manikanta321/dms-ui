@@ -1,15 +1,15 @@
 <app-head></app-head>
 <div class="font">
 <div class="container-fluid">
-    <div class="row">
+    <div class="row d-flex">
         <div class="sidebar" style="width: 5%;">
-        <app-sidenav-bar></app-sidenav-bar>
+        <app-sidenav-bar></app-sidenav-bar> 
     </div>
     <!-- content -->
     <div class="dash-content" style="background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%);
     border-radius: 25px; height:100vh; padding: 10px;width: 95%;">
                        <div class="UNFAPP-asmnt-rgt-area main" style="padding: 15px;">
-                        <div class="row">
+                        <div class="row d-flex">
                           <div class="col-2">
                            <h4 style="
                            font-size: 25px;
@@ -49,8 +49,8 @@
                          </ng-multiselect-dropdown>
                     </form>
                        </div>
-                       <div class="icon btnhover" (click)="refresh()">
-                         <img src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;" alt="refresh" >
+                       <div class="icon btnhover refreshbtn" (click)="refresh()">
+                         <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;" alt="refresh" >
                        </div>
                         </div>   
                  <div class="row" style="position:relative;margin-left: 71%;">

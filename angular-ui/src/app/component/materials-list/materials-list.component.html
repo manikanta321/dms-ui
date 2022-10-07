@@ -1,117 +1,121 @@
 <div class="container-fluid" style="padding-left: 0px;">
   <div class="row">
-    <div style="margin-left: 17px;margin-top: 25px;width: 150px;">
-      <div class="input-group">
-        <div class="form-outline">
-          <!-- <label class="form-label" for="form1">Search</label> -->
-      
-          <input type="search" placeholder="search"  #input class="form-control" style="border:solid #2962ff 1px;" />
-        </div>
-        <!-- <button type="button" class="btn btn-primary">
-          <i class="fas fa-search"></i>
-        </button> -->
-      </div>
+    <div class="col-2">
+     <h4 class="material-text"><b>Material list</b></h4>
     </div>
-    <div style="    margin-left: 15px;margin-top: 25px;width: 150px;">
-      <div class="input-group">
-        <div class="form-outline">
-          <!-- <label class="form-label" for="form1">Search</label> -->
-      
-          <input type="search" placeholder="Name"  #input class="form-control" style="border:solid #2962ff 1px;" />
-        </div>
-        <!-- <button type="button" class="btn btn-primary">
-          <i class="fas fa-search"></i>
-        </button> -->
-      </div>
     </div>
-    <div style="margin-left: 15px;margin-top: 25px;width: 150px;">
-      <div class="input-group">
-        <div class="form-outline">
-          <!-- <label class="form-label" for="form1">Search</label> -->
-      
-          <input type="search" placeholder="Description"  #input class="form-control" style="border:solid #2962ff 1px;" />
-        </div>
-        <!-- <button type="button" class="btn btn-primary">
-          <i class="fas fa-search"></i>
-        </button> -->
-      </div>
-    </div>
-    <div style="margin-left: 15px;margin-top: 25px;width: 150px;">
-      <div class="input-group">
-        <div class="form-outline">
-          <!-- <label class="form-label" for="form1">Search</label> -->
-      
-          <input type="search" placeholder="Product Group"  #input class="form-control" style="border:solid #2962ff 1px;" />
-        </div>
-        <!-- <button type="button" class="btn btn-primary">
-          <i class="fas fa-search"></i>
-        </button> -->
-      </div>
-    </div>
-    <div style="margin-left: 15px;margin-top: 25px;width: 150px;">
-      <div class="input-group">
-        <div class="form-outline">
-          <!-- <label class="form-label" for="form1">Search</label> -->
-      
-          <input type="search" placeholder="Brand Name"  #input class="form-control" style="border:solid #2962ff 1px;" />
-        </div>
-        <!-- <button type="button" class="btn btn-primary">
-          <i class="fas fa-search"></i>
-        </button> -->
-      </div>
-    </div>
-    <div style="margin-left: 15px;margin-top: 25px;width: 150px;">
-      <div class="input-group">
-        <div class="form-outline">
-          <!-- <label class="form-label" for="form1">Search</label> -->
-      
-          <input type="search" placeholder="SKU Number"  #input class="form-control" style="border:solid #2962ff 1px;" />
-        </div>
-        <!-- <button type="button" class="btn btn-primary">
-          <i class="fas fa-search"></i>
-        </button> -->
-      </div>
-    </div>
-    <div style="max-width: 30%;">
-     <button  (click)="addMaterial()" class="btn  btnhover createcoursebtn" type="button" id="dropdownMenu2"
-     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: 27px;margin-top: 24px;width: 116px;" >
-   + Add Materials
-</button>
-</div>
-  </div>
   <div class="row">
       <div class="col-xl-12 col-md-12 ACVTY-no-pad" style="width: 100%;">
-          <div class="UNFAPP-asmnt-rgt-area" style="padding: 15px;height: 92vh;">
-        
+          <div class="UNFAPP-asmnt-rgt-area" style="height: 92vh;">
+            <div class="row" style="position: relative;top: 3%; width: 118%;">
+              <div class="col-md-2 col-lg-2 col-sm-2">
+                <form [formGroup]="myForm">
+              <ng-multiselect-dropdown
+                  name="city"
+                  [placeholder]="'Category'"
+                  formControlName="city"
+                  [disabled]="disabled"
+                  [settings]="dropdownSettings"
+                  [data]="toppingList"
+                  (onSelect)="onItemSelect($event)"
+                  (onSelectAll)="onSelectAll($event)">
+              </ng-multiselect-dropdown>
+         </form>
+            </div>
+            <div class="col-md-2 col-lg-2 col-sm-2">
+              <form [formGroup]="subCategory">
+            <ng-multiselect-dropdown
+                name="subCategory"
+                [placeholder]="'Sub-Category'"
+                formControlName="subCategory"
+                [disabled]="disabled"
+                [settings]="dropdownSettings2"
+                [data]="toppingList2"
+                (onSelect)="onSubCategorySelect($event)"
+                (onSelectAll)="onSubCategoryAll($event)">
+            </ng-multiselect-dropdown>
+        </form>
+          </div>
+          <div class="col-md-2 col-lg-2 col-sm-2">
+            <form [formGroup]="type">
+          <ng-multiselect-dropdown
+              name="type"
+              [placeholder]="'Type'"
+              formControlName="type"
+              [disabled]="disabled"
+              [settings]="dropdownSettings3"
+              [data]="toppingList3"
+              (onSelect)="onTypeSelect($event)"
+              (onSelectAll)="onTypeAll($event)">
+          </ng-multiselect-dropdown>
+        </form>
+        </div>
+        <div class="col-md-2 col-lg-2 col-sm-2">
+          <form [formGroup]="product">
+        <ng-multiselect-dropdown
+            name="product"
+            [placeholder]="'Product'"
+            formControlName="product"
+            [disabled]="disabled"
+            [settings]="dropdownSettings4"
+            [data]="toppingList4"
+            (onSelect)="onProductSelect($event)"
+            (onSelectAll)="onProductAll($event)">
+        </ng-multiselect-dropdown>
+        </form>
+        </div>
+            <div class="col-md-2 col-lg-2 col-sm-2">
+              <form [formGroup]="myForms">
+            <ng-multiselect-dropdown
+                name="citys"
+                [placeholder]="'Status'"
+                formControlName="citys"
+                [disabled]="disabled"
+                [settings]="dropdownSettings1"
+                [data]="toppingList1"
+                (onSelect)="onStatusSelect($event)"
+                (onSelectAll)="onStatusAll($event)">
+            </ng-multiselect-dropdown>
+        </form>
+          </div>
+          <div class="icon btnhover" (click)="refresh()">
+            <img src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;" alt="refresh" >
+          </div>
+           </div>  
+           <div class="row" style="position:relative;margin-left: 73%;top: 10%;">
+            <!-- <div class="searchBox d-flex justify-center align-center">
+              <input class="searchInput" type="text" name="" placeholder="SEARCH">
+              <button class="searchButton" href="#"> 
+                  <i class="material-icons">
+                      search
+                  </i>
+              </button>
+            </div> -->
+          <div>
+            <img src="assets/img/Add-Materials.png" alt="Add-Materials">
+          </div>
+        </div>
+           <ag-grid-angular
+           id="gridContainer"
+           style="width: 100%; height: 440px;border-radius: 20px;background-color: white;font-family: Gilroy;position: relative;top: 9%;"
+           class="ag-theme-material"
+           [rowHeight]="32"
+           [headerHeight]="52"
+           [columnDefs]="columnDefs"
+           [defaultColDef]="defaultColDef"
+           [columnTypes]="columnTypes"
+           [rowData]="rowData5"
+             [suppressExcelExport]="true"
+      [popupParent]="popupParent"
+           (cellValueChanged)="onCellValueChanged($event)"
+           (firstDataRendered)="onFirstDataRendered($event)" 
+           (firstDataRendered)="onFirstDataRendered($event)"
+           (rowClicked)="openDialog()"
+           
+           (gridReady)="onGridReady($event)"
 
-<div class="row">
-<div class="col-2">
-<h4 style="color: #017EFA
-;font-family: Montserrat, sans-serif;font-size:15px ;font-weight: 550;"><b>Users</b></h4>
-</div>
-
-
-<div class="col-4 float-right">
-
-
-</div>
-<ag-grid-angular
-style="width: 100%; height: 400px;"
-class="ag-theme-alpine"
-[rowHeight]="30"
-[pagination]="true"
-[paginationAutoPageSize]="true"
-[columnDefs]="columnDefs"
-[defaultColDef]="defaultColDef"
-[columnTypes]="columnTypes"
-[rowData]="rowData3"
-(cellValueChanged)="onCellValueChanged($event)"
-
-></ag-grid-angular>
-<!-- <ag-grid-angular     style="width: 500px; height: 150px;"     class="ag-theme-alpine"     [rowData]="rowData3"     [columnDefs]="columnDefs"> </ag-grid-angular> -->
-<div >
-</div>
-
+           
+           ></ag-grid-angular>
 </div>
       </div>
   </div>

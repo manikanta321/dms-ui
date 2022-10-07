@@ -72,3 +72,240 @@
 #cdk-overlay-0 .mat-dialog-container{
     padding: 0;
 }
+::ng-deep.multiselect-dropdown .dropdown-btn {
+    display: inline-block;
+    border: 1px solid #000000 !important;
+    width: 100%;
+    /* height: 62%; */
+    padding: 9px 12px !important;
+    margin-bottom: 0px;
+    font-weight: 400;
+    line-height: 1.52857143;
+    text-align: left;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border-radius: 10px !important;
+    background: white !important;
+  }
+  ::ng-deep.dropdown-multiselect__caret:before {
+    position: relative;
+    right: 0;
+    top: 65%;
+    color: #000000;
+    margin-top: 4px;
+    border-style: solid;
+    border-width: 8px 8px 0 8px;
+    border-color: #000000 transparent !important;
+    content: "";
+  }
+  ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
+    box-sizing: content-box;
+    content: "";
+    color: #000000;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    margin-top: -9px;
+    border: 2px solid #000000;
+    text-align: center;
+    transition: all .4s ease;
+  }
+  
+  ::ng-deep.multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+    animation: borderscale .2s ease-in;
+    background: #00187A !important;
+  }
+  .btnhover{
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
+    border: none;
+    background: #000000;
+    border-radius: 50%;
+    position: relative;
+    width: 43px;
+  }
+  ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
+    border: 1px solid #337ab7;
+    margin-right: 4px;
+    background: #00187A !important;
+    padding: 0 5px;
+    color: #fff;
+    border-radius: 10px !important;
+    float: left;
+    display: flex;
+    max-width: 170px !important;
+    position: relative;
+    top: 39px !important;
+  }
+  ::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #17c017 !important;
+  }
+  
+  ::ng-deep .mat-primary .mat-pseudo-checkbox-checked, 
+  .mat-primary .mat-pseudo-checkbox-indeterminate {
+    background: #17c017 !important;
+  } 
+  .material-text {
+    font-size: 25px;
+    line-height: 29px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    position: relative;
+    top: 23%;
+    left: 2%;
+  }
+  .ag-theme-material .ag-filter-toolpanel-header, .ag-theme-material .ag-filter-toolpanel-search, .ag-theme-material .ag-status-bar, .ag-theme-material .ag-header-row, .ag-theme-alpine .ag-panel-title-bar-title, .ag-theme-alpine .ag-multi-filter-group-title-bar {
+
+    --ag-background-color: rgba(219, 19, 19, 0.863);
+    --ag-border-radius:25px;
+    }
+    .ag-header-row ag-header-row-column{
+    --ag-background-color: rgba(0, 0, 0, 0.815);
+    }
+    .ag-root-wrapper .ag-layout-normal .ag-ltr{
+      border: solid 10px;
+      border-color: var(--ag-border-color, #094db9) !important;
+      border-radius: 100px;
+    }
+    .customHeaderLabel{
+      color: #007bff;
+    }
+    .ag-theme-balham .ag-header-cell{
+      background-color: #b81111 !important;
+    }
+    ::ng-deep.ag-header-cell-text {
+      color: #686E74 !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 14px !important;
+    }
+    
+    ::ng-deep.ag-theme-material .ag-root-wrapper, .ag-theme-material .ag-sticky-top {
+    
+      border: 0.5px solid #000000 !important;
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
+      border-radius: 25px !important;
+    
+    }
+    .ag-root-wrapper {
+      border: solid 10px;
+      border-color: var(--ag-border-color, #094db9) !important;
+      border-radius: 100px;
+    }
+    .ag-layout-norm{
+      --ag-border: solid;
+    
+    }
+     .ag-ltr{
+      --ag-border: solid;
+    
+     }
+     .ag-header-cell-label {
+      color: blue !important;
+      font-weight: bold;
+    }
+    .ag-pivot-off .ag-header-cell-label {
+      color: #8a6d3b;
+    }
+    
+    .ag-theme-material{
+        
+      --ag-card-radius: 100px;
+      --ag-border-radius: 20px;
+    --ag-header-height: 30px;
+    --ag-header-background-color: rgba(0, 0, 0, 0);
+    }
+    ::ng-deep.ag-theme-material ::-webkit-scrollbar-thumb {
+
+        background: red !important; 
+        border-radius: 10px;    
+    
+    }
+    
+      ::ng-deep.ag-sticky-top{
+        border-bottom:  0.5px solid #000000;
+    }
+    .searchBox {
+        background: #2f3640;
+        border-radius: 32px;
+        height: 48px;
+        background: #324452;
+        text-align: center;
+        margin: 5px;
+        cursor: pointer;
+        color: #FFFFFF;
+      }
+      
+      .searchBox:hover {
+        background: #FFFFFF;
+        box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+      }
+      
+      .searchBox:hover>.searchInput {
+        width: 207px;
+        background: #FFFFFF;
+        padding: 0 17px;
+        border-radius: 32px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 17px;
+        letter-spacing: 0.08em;
+        color: #263643;
+        box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+        transition: 0.2s  ease-in-out;
+      
+      }
+      .searchBox:hover>.searchInput::placeholder {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 17px;
+        letter-spacing: 0.08em;
+        color: #263643;
+        opacity: 0.5;
+      }
+      
+      .searchBox:hover>.searchButton {
+        background: white;
+        color: #2f3640;
+      }
+      
+      .searchButton {
+        color: #FFFFFF;
+        float: right;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: #000000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.2s;
+        border: none;
+      }
+      
+      .searchInput {
+        border: none;
+        background: none;
+        outline: none;
+        float: left;
+        padding: 0;
+        color: #FFFFFF;
+        font-size: 16px;
+        transition: 0.2s;
+        line-height: 40px;
+        width: 0px;
+      }
+      
+      @media screen and (max-width: 620px) {
+        .searchBox:hover>.searchInput {
+            width: 150px;
+            padding: 0 6px;
+        }
+      }

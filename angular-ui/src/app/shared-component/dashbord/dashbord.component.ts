@@ -11,15 +11,28 @@ import { DeactivateUserpopupComponent } from 'src/app/component/users/userPopups
 })
 export class DashbordComponent implements OnInit {
   collapsed = true;
-  sideBarOpen = false;
+  sideBarOpen = true;
   // sidebar = true;
   // sidenav : boolean = true;
   // @Output()toggleSidebar : EventEmitter <any> = new EventEmitter();
-  
+  @ViewChild(MatSidenav)
+  sidenav!: MatSidenav;
   constructor(public dialog: MatDialog,
-    ) { }
+    private observer: BreakpointObserver) { }
 
-  
+    ngAfterViewInit() {
+      setTimeout(() => {
+        this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
+          if (res.matches) {
+            this.sidenav.mode = 'over';
+            this.sidenav.close();
+          } else {
+            this.sidenav.mode = 'side';
+            this.sidenav.open();
+          }
+        });
+      }, 1);
+     }
   ngOnInit(): void {
   }
   // sideBarToggler(){

@@ -12,19 +12,25 @@ import { DeactivateUserpopupComponent } from 'src/app/component/users/userPopups
 export class DashbordComponent implements OnInit {
   collapsed = true;
   sideBarOpen = false;
+  // sidebar = true;
+  // sidenav : boolean = true;
   // @Output()toggleSidebar : EventEmitter <any> = new EventEmitter();
+  
   constructor(public dialog: MatDialog,
     ) { }
 
   
   ngOnInit(): void {
   }
-  sideBarToggler(){
-    this.sideBarOpen = !this.sideBarOpen;
-  }
+  // sideBarToggler(){
+  //   this.sideBarOpen = !this.sideBarOpen;
+  // }
   deactive(){
     this.dialog.open( DeactivateUserpopupComponent);
   }
  
-
+  // sidebartoggle(){
+  // this.sidenav = ! this.sidenav;
+  // }
+  
 }

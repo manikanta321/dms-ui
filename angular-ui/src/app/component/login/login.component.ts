@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
         this.userExist =false;
         }
       }
-      else if(this.loginData.id == 2){
+      else if(this.loginData.id > 0){
         this.router.navigate(['../dashbord/user']);
       }
       else {

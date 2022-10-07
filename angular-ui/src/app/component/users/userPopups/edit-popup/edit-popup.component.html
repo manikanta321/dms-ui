@@ -13,17 +13,24 @@
    ;font-size:20px; font-weight: lighter;"><b>Basic Information</b></h6>
         </div>
         <div class="addUserForm">
-          <form>
+            <div class="row">
+    <div class="col">
+      <label>Username<span>*</span></label>
+      <br>
+      <input type="text" placeholder="Enter your UserName" [(ngModel)]="username" style="width: 530px;">
+    </div>
+            </div>
+            <br>
             <div class="row">
               <div class="col">
-                <label>Full Name <span>*</span></label>
+                <label>First Name <span>*</span></label>
                 <br>
                 <input type="text" placeholder="Enter your First Name" [(ngModel)]="fullname">
               </div>
               <div class="col">
-                <label>Username<span>*</span></label>
+                <label>Last Name <span>*</span></label>
                 <br>
-                <input type="text" placeholder="Enter your UserName" [(ngModel)]="username">
+                <input type="text" placeholder="Enter your First Name" [(ngModel)]="Lastname">
               </div>
             </div>
             <br>
@@ -49,10 +56,10 @@
                   <label>Role</label><span>*</span>
                 <br>
                          <mat-form-field appearance="outline" style="width: 525px;">
-                <mat-select [formControl]="toppings" [(ngModel)]="role"  placeholder="Select your Role " (selectionChange)="selectedValue($event.value);">
+                <mat-select class="form1" [(ngModel)]="role" placeholder="Select your Role " (selectionChange)="selectedValue($event.value);" [disabled]="true">
 
-                  <mat-option *ngFor="let topping of toppingList" [value]="topping.roleId">
-                    {{topping.roleName}}</mat-option>
+                  <mat-option *ngFor="let topping of toppingList" [value]="role">
+                    {{role}}</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
@@ -67,7 +74,6 @@
         </mat-form-field> -->
 
 
-          </form>
           <button class="btn btn-primary edituser" (click)="editUser()">Save</button>
           <button class="btn btn-primary cancl" (click)="closeDialog()"> Cancel</button>
         </div>

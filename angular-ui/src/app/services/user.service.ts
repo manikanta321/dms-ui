@@ -66,8 +66,12 @@ AddUser(data){
 
 }
 
-EditUser(userID,){
-  return this.http.post<any>(this.userurl + 'UserMgmtApi/AddEditUser?',userID);
+EditUser(obj){
+  return this.http.post<any>(this.userurl + 'UserMgmtApi/AddEditUser',obj);
+
+}
+GetEditUSer(userID:any){
+  return this.http.get<any>(`${this.userurl}UserMgmtApi/GetUserDetailsToEdit?userId=211`);
 
 }
 public getuserDeatilsUser(data) {

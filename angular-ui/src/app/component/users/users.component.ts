@@ -99,17 +99,17 @@ public popupParent: HTMLElement = document.body;
 columnDefs: ColDef[] = [ 
 
   { headerName: "User Id",
-field: 'employeeCode' , sort: 'desc'},
+field: 'employeeCode' ,type: ['nonEditableColumn'], sort: 'desc'},
 
-{   headerName: "User Name",field: 'employeeName' },
+{   headerName: "User Name",field: 'employeeName',type: ['nonEditableColumn']},
 
-{headerName: "Role", field: 'roleName', },
+{headerName: "Role", field: 'roleName', type: ['nonEditableColumn'],},
 
 {  headerName: "Email Id",
- field: 'email' },
+ field: 'email',type: ['nonEditableColumn'] },
 
 {   headerName: "Phone no",
-field: 'mobile',},
+field: 'mobile',type: ['nonEditableColumn']},
 
 {   headerName: "Last Login",
 // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
@@ -119,6 +119,7 @@ field: 'lastLoginDate',type: ['nonEditableColumn'],
 
 { headerName: "Status",
  field: 'statusName', 
+ type: ['nonEditableColumn'],
 cellEditor: 'agSelectCellEditor',
 cellEditorParams: {
 values: ['Active', 'Inactive', 'Invited', 'Locked',],

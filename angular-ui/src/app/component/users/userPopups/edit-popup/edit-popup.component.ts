@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 import { UserService } from 'src/app/services/user.service';
 @Component({
@@ -9,29 +10,52 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class EditPopupComponent implements OnInit {
   panelOpenState = true;
-  fullname:any;
-  username:any;
-  email:any;
-  phone:any;
-  role = new FormControl('');
+  fullname:any='';
+  username:any='';
+  Lastname:any='';
+  email:any='';
+  phone:any='';
+  role : any;
   toppingList: any= [];
-  
+  data:any;
+  roleId:any;
+  roleName:any;
   // userType: string[] = ['Admin', 'Business Manager', 'Order Manager', 'Viewer','Business Manager', 'Order Manager', 'Viewer'];
   toppings = new FormControl(this.toppingList);
+  UserId: any;
   constructor(private dialogRef: MatDialogRef<any>,
+    private formBuilder: FormBuilder,
     private user:UserService,) { }
 
   ngOnInit(): void {
     this.roleItems();
     const user = localStorage.getItem("userID");
     console.log('userID', user)
-    this.editUser();
+    this.UserId=user
+    this.user.GetEditUSer(user).subscribe((res:any)=>{
+      console.log('respose',res)
+   this.data=res.response;
+
+   this.patchValue()
+
+    })
+  }
+
+  patchValue(){
+    this.username=this.data.userName
+    this.email=this.data.email;
+    this.fullname=this.data.firstName;
+    this.Lastname=this.data.lastName;
+    this.phone=this.data.mobilePhone;
+    this.roleId=this.data.roleId;
+    this.role=this.data.roleName
+    console.log('this.log',this.role)
   }
   closeDialog(){
     this.dialogRef.close();
   }
   selectedValue($event){
-    alert($event)
+    // alert($event)
 this.role=$event  
 }
 roleItems(){
@@ -69,18 +93,19 @@ editUser(){
   //     RoleId:this.role
   //   }
   
-    
-    this.user.EditUser(userID).subscribe((res: any) => {
-      if (res.statusCode === 201) {
-        // const config: MatDialogConfig = {
-        //   width: '370px',
-        //   height: '240px',
-        //   panelClass: 'custom-class',
-        //   data: { message: res.message }
-        // };
-        // this.dialog.open(RankDialogComponent, config);
-        // this.createCourseData = res;
-      
+    let obj={
+      userId:this.UserId,
+      FirstName:this.fullname,
+      LastName:this.Lastname,
+      UserName:this.username,
+      Email:this.email,
+      MobilePhone:this.phone,
+      roleId:this.roleId,
+ }
+    this.user.EditUser(obj).subscribe((res: any) => {
+      if (res.response.result =='successfully updated') {
+       
+      this.dialogRef.close()
       }
 
     })

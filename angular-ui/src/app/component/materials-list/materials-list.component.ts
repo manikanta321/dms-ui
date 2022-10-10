@@ -11,7 +11,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 // import { ButtonRendererComponent } from './renderer/button-renderer.component';
 
 export interface PeriodicElement {
-  name: string;
+  name: string; 
   position: number;
   weight: number;
   symbol: string;
@@ -59,7 +59,7 @@ export class MaterialsListComponent implements OnInit {
   constructor(public dialog: MatDialog,
     private user:UserService,
     private fb: FormBuilder) { }
-
+    
   ngOnInit(): void {
     this.toppingList = [
       { CategoryId: 1, CategoryName: 'Mumbai' },
@@ -258,12 +258,13 @@ this.subCategory = this.fb.group({
     
     }
     addMaterials(){
-      this.dialog.open( MaterialAddEditpopupComponent,);
+      this.dialog.open( MaterialAddEditpopupComponent);
+      
      }
-refresh(){
+refresh(){ 
   this.myForm = this.fb.group({
     city: [this.selectedItems]
-});
+}); 
 this.myForms = this.fb.group({
   citys: [this.selectedItems]
 });

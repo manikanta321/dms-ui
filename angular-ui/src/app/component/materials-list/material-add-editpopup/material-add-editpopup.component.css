@@ -1,218 +1,141 @@
-.add-edit-material-modal {
-    background: #cbcbf6;
-    padding: 16px;
-    min-width: 540px;
+.mat-form-field {
+    width: 678px;
+    font-family: 'Gilroy';
+   background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+     }
+     .mat-form-field::placeholder{
+        bottom:2px;
+     }  
+  .category {
+    margin-top: 18px;
+    font-family: 'Gilroy';
+  }
+  .materialname {
+    margin-top: 16px;  
+    font-family: 'Gilroy';
+  }
+  .description{
+        font-family: 'Gilroy';
+      }
+  .uom{
+    margin-top: 16px;  
+    font-family: 'Gilroy';
+    margin-left: -5px;
+  }
+  .sub-category {
+    margin-top: -28px;
+    margin-left: 217px;
+    font-family: 'Gilroy';
+  }
+  .type {
+    margin-top: -30px;
+    margin-left: 460px;
+    font-family: 'Gilroy';
+  }
+  .font {
+    font-family: 'Gilroy';
+}
+  .heading{
+    margin-top:46px;
+    font-family: 'Gilroy';
+  }
+  ::ng-deep.mat-stepper-vertical, .mat-stepper-horizontal {
+    display: inline;
+    width: 500px;
+}
+.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
+    /* align-items: flex-start; */
+    width: 667px;
+}
+::ng-deep.input.mat-input-text{
+    margin-top: -9px;
+    margin-left: -6px;
 }
 
-.modal-title {
-    padding: 0 15px;
-}
-.createcoursebtn {
-    background: #59419979;
-    float: right;
-  
-    font-style: normal;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 15px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-    color: #FFFFFF;
-    width: 80%;
-    padding: 10px;
-    border-radius: 16px;
-}
+  /*old css*/
 
-.modal-header {
-    color: #0091EA;
-    font-size: 20px;
-    text-align: center;
-    font-weight: 500;
-    display: block;
-    position: relative;
-    z-index: 1;
-    border-bottom: 0;
+  .mat-form-field-flex {
+    padding-top: -10px;
+    display: inline-flex;
+    align-items: baseline;
+    box-sizing: border-box;
+    width: 100%;
+    height: 37px;
+    
+    /* background-color: #CED4DA; */
 }
-.primary-color {
+.main{
+    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+    
+}
+.font{
+    font-family: 'Gilroy';
+  }
+
+.head-t h3{
     color: #000000;
+    text-align: center;
+    margin-top: -18px;
+    margin-bottom: 2px;
 }
-.modal-header span {
-    background: #DADADA;
-    padding: 13px;
+.addU{
+    position: relative;
+     /* font-family: 'Gilroy-Bold';  */
+     font-weight: bold;
+     font-size: 20px;
 }
-
-.modal-header:before {
+.addU:after{
+    content: "";
+  display: block;
+  width: 300px;
+  height: 2px;
+  background: #E5EAF4;
+  right: 0;
+  top: 50%;
+  position: absolute;
+}
+.addU:before{
     content: "";
     display: block;
-    width: 100%;
+    width: 280px;
     height: 2px;
     background: #E5EAF4;
     left: 0;
     top: 50%;
     position: absolute;
-    z-index: -1;
 }
-
-.close-icon {
-    position: absolute;
-    top: 0px;
-    right: 20px;
-    color: #5A7184;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 2;
+.addUserForm input{
+border-radius: 5px;
+border:  linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+padding: 5px 5px;
+width: 250px;
+font-size: 14px;
+outline: none;
 }
-
-.modal-container {
-    padding-right: 10px;
-    height: 70vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    margin-left: 15px;
+span{
+    color: red;
 }
-
-.file-container {
-    text-align: center;
-    height: 100%;
-    transform: translateY(50%);
-}
-
-[type="file"] {
-    height: 0;
-    overflow: hidden;
-    width: 0;
-    display: none;
-}
-
-[type="file"]+label {
-    background: #9b9b9b;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    font-size: inherit;
-    font-weight: 500;
-    outline: none;
-    padding: 1rem 50px;
+.close-icon{
+    left: 100%;
     position: relative;
-    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
 }
-
-.same-line input[type='radio'] {
-    display: none;
+label{
+    /* padding: 2px 0; */
+    font-size: 14px;
+   margin: 5px;
 }
+mat-form-field{
+     width: 246px; 
+    
+} 
 
+::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0em 0 0.7em 0;
+    border:  linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+    }
 
-.same-line label.radio {
-    display: inline-block;
-    background: #59419979;
-    padding: 5px 10px;
-    margin: 5px;
-    border-radius: 10px;
-    font-size: 12px;
-    color: #fff;
-}
-
-.same-line input[type='radio']:checked+label.radio {
-    background-color: #59419979;
-    color: #fff;
-}
-
-.minus-measure {
-    background-color: #36A652;
-    color: #fff;
-    border: 0;
-    border-radius: 50%;
-}
-
-.measure-icons {
-    float: right;
-}
-
-.add-measure {
-    background-color: #017EFA;
-    color: #fff;
-    border: 0;
-    border-radius: 50%;
-}
-
-.p-0 {
-    padding: 0;
-}
-
-.p-r-0 {
-    padding-right: 0;
-}
-
-.add-button-section {
-    justify-content: end;
-    padding: 0 10px 0 0;
-    margin-top: 10px
-}
-
-.add-button-section .btn{
-    margin-right: 69px;
-    margin-left: 10px;
-
-}
-.geographic-container {
-    background: #fff;
-    margin: 0px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    padding: 10px 0;
-}
-
-.geographic-grid-content {
-    padding: 0px;
-    border: 1px solid #017EFA;
-    border-radius: 5px;
-    background: #D9D9D9;
-    height: 120px;
-    overflow-y: auto;
-}
-
-.column {
-    border: 1px solid #ccc;
-    padding: 5px;
-    margin: 5px;
-    font-size: 13px;
-}
-
-
-.column.column-yellow {
-    color: #F2AE30;
-    border: 1px solid #F2AE30;
-}
-
-.column.column-yellow.selected {
-    color: #FFF;
-    background: #F2AE30;
-}
-
-.column.column-green {
-    color: #27AE60;
-    border: 1px solid #27AE60;
-}
-
-.column.column-green.selected {
-    color: #FFF;
-    background: #27AE60;
-}
-
-.column.column-red {
-    color: #D93232;
-    border: 1px solid #D93232;
-}
-
-.column.column-red.selected {
-    color: #FFF;
-    background: #D93232;
-}
-
-.price-list ul {
-    list-style-type: none;
-    padding-left: 20px;
-    color: #979797;
-}
+    ::ng-deep.mat-dialog-container {
+        background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;;
+        }

@@ -11,6 +11,9 @@ font-weight: 600;
 input{
     padding: 5px 12px;
     margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid gray;
+    width: 240px;
 }
 .exit{
 background: black;
@@ -18,6 +21,7 @@ color: white;
 padding: 5px 40px;
 border: #000000;
 border-radius: 5px;
+width: 240px;
 }
 .close-icon{
     left: 100%;

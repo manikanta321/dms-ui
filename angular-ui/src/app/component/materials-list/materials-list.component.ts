@@ -257,6 +257,9 @@ this.subCategory = this.fb.group({
   
     
     }
+    addMaterials(){
+      this.dialog.open( MaterialAddEditpopupComponent,);
+     }
 refresh(){
   this.myForm = this.fb.group({
     city: [this.selectedItems]

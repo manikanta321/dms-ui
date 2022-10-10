@@ -1,13 +1,12 @@
-<app-head></app-head>
-<div class="font">
-<div class="container-fluid">
-    <div class="row d-flex">
-        <div class="sidebar" style="width: 5%;">
-        <app-sidenav-bar></app-sidenav-bar> 
-    </div>
+<app-head (click)="sidenav.toggle()"></app-head>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+      <app-sidenav-bar></app-sidenav-bar>
+  </mat-sidenav>
+  <mat-sidenav-content>
     <!-- content -->
-    <div class="dash-content" style="background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%);
-    border-radius: 25px; height:100vh; padding: 10px;width: 95%;">
+    <div class="dash-content">
                        <div class="UNFAPP-asmnt-rgt-area main" style="padding: 15px;">
                         <div class="row d-flex">
                           <div class="col-2">
@@ -20,8 +19,8 @@
                            color: #000000;"><b>Users</b></h4>
                           </div>
                           </div>
-                        <div class="row" style="position: relative;top: 3%; width: 110%;">
-                           <div class="col-md-3 col-lg-3 col-sm-3">
+                        <div class="row" style="position: relative;top: 3%;">
+                           <div class="col-md-4 col-lg-4 col-sm-4">
                              <form [formGroup]="myForm">
                            <ng-multiselect-dropdown
                                name="city"
@@ -35,7 +34,7 @@
                            </ng-multiselect-dropdown>
                       </form>
                          </div>
-                         <div class="col-md-3 col-lg-3 col-sm-3">
+                         <div class="col-md-4 col-lg-4 col-sm-4">
                            <form [formGroup]="myForms">
                          <ng-multiselect-dropdown
                              name="citys"
@@ -99,6 +98,5 @@
                  
                  </div>
     </div>
-    </div>
-</div>
- </div> 
+  </mat-sidenav-content>
+</mat-sidenav-container>

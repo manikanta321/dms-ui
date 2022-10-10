@@ -14,25 +14,60 @@
    <p style="color: red;">{{errorMsg}}*</p>
         </div>
         <div class="addUserForm">
-          <form>
+          <form #loginForm="ngForm">
             <div class="row">
     <div class="col">
       <label>Username<span>*</span></label>
       <br>
-      <input type="text" placeholder="Enter your UserName" [(ngModel)]="username" style="width: 530px;">
+      <input type="text" id="uname" name="uname" required minlength="5" placeholder="Enter your UserName" [(ngModel)]="username" #uname="ngModel" style="width: 530px;">
+      <div *ngIf="uname.invalid && (uname.dirty || uname.touched)"
+      class="alert">
+  
+    <div style="color:red;position: relative;left: -4%;top: -6px;" *ngIf="uname.errors?.['required']">
+      *Username is required.
+    </div>
+    <div style="color:red;position: relative;left: -4%;top: -4px;" *ngIf="uname.errors?.['minlength']">
+      *Username  must be at least 5 characters long.
+    </div>
+  </div>
     </div>
             </div>
             <br>
             <div class="row">
+
               <div class="col">
                 <label>First Name <span>*</span></label>
                 <br>
-                <input type="text" placeholder="Enter your First Name" [(ngModel)]="fullname">
+                <input type="text" id="fname" name="fname" required minlength="4" appForbiddenName="bob" placeholder="Enter your First Name" [(ngModel)]="fullname" #fname="ngModel">
+                <div *ngIf="fname.invalid && (fname.dirty || fname.touched)"
+                class="alert">
+            
+              <div style="color:red;position: relative;left: -9%;top: -6px;" *ngIf="fname.errors?.['required']">
+                *First Name is required.
+              </div>
+              <div style="color:red;position: relative;left: -7%;top: -4px;" *ngIf="fname.errors?.['minlength']">
+                *First Name must be at least 4 characters long.
+              </div>
+              <!-- <div  style="color:red;"*ngIf="name.errors?.['forbiddenName']">
+                First Name cannot be Bob.
+              </div> -->
+            
+            </div>
               </div>
               <div class="col">
                 <label>Last Name <span>*</span></label>
                 <br>
-                <input type="text" placeholder="Enter your First Name" [(ngModel)]="Lastname">
+                <input type="text" id="lname" name="lname" required minlength="4" appForbiddenName="bob" #lname="ngModel" placeholder="Enter your First Name" [(ngModel)]="Lastname">
+                <div *ngIf="lname.invalid && (lname.dirty || lname.touched)"
+                class="alert">
+            
+              <div style="color:red;position: relative;left: -9%;top: -6px;" *ngIf="lname.errors?.['required']">
+                *Last Name is required.
+              </div>
+              <div style="color:red;position: relative;left: -7%;top: -4px;" *ngIf="lname.errors?.['minlength']">
+                *Last Name must be at least 4 characters long.
+              </div>
+            </div>
               </div>
             </div>
             <br>
@@ -40,13 +75,32 @@
               <div class="col">
                 <label>Email Id<span>*</span></label>
                 <br>
-                <input type="email" placeholder="Enter your Email" [(ngModel)]="email">
+                <input type="email"id="emails" name="emails" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #emails="ngModel" placeholder="Enter your Email" [(ngModel)]="email">
+                <div *ngIf="emails.invalid && (emails.dirty || emails.touched)"
+                class="alert">
+            
+              <div style="color:red;position: relative;left: -9%;top: -6px;" *ngIf="emails.errors?.['required']">
+                *Email is required.
+              </div>
+              <div style="color:red;position: relative;left: -7%;top: -4px;" *ngIf="emails.errors&&emails.errors?.['pattern']">
+                *Email is Invalid.
+              </div>
+            </div>
               </div>
               <div class="col">
 
                 <label>Phone No<span>*</span></label>
                 <br>
-                <input type="number" placeholder="Enter your phone number" [(ngModel)]="phone">
+                <input type="text"id="mobile" name="mobile" required placeholder="Enter your phone number" pattern="^((\\+91-?)|0)?[0-9]{10}$" [(ngModel)]="phone"#mobile="ngModel">
+                <div *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)"
+                class="alert">
+              <div style="color:red;position: relative;left: -9%;top: -6px;" *ngIf="mobile.errors?.['required']">
+                *Phone Number is required.
+              </div>
+              <div style="color:red;position: relative;left: -7%;top: -4px;" *ngIf="mobile.errors&&mobile.errors?.['pattern']">
+                *Phone Number is Invalid.
+              </div>
+            </div>
               </div>
             </div>
             <br>
@@ -58,9 +112,9 @@
                   <label>Role</label><span>*</span>
                 <br>
                          <mat-form-field appearance="outline" style="width: 525px;">
-                <mat-select [formControl]="toppings" [(ngModel)]="role"  placeholder="Select your Role " (selectionChange)="selectedValue($event.value);">
+                <mat-select required [formControl]="toppings"[(ngModel)]="role" placeholder="Select your Role" (selectionChange)="selectedValue($event.value);">
 
-                  <mat-option *ngFor="let topping of toppingList" [value]="topping.roleId">
+                  <mat-option *ngFor="let topping of toppingList" [value]="topping.roleId" >
                     {{topping.roleName}}</mat-option>
                 </mat-select>
               </mat-form-field>
@@ -77,7 +131,7 @@
 
 
           </form>
-          <button class="btn btn-primary btn-block" style="background-color:#000000 ;" (click)="addUSer()">Add</button>
+          <button [disabled]="loginForm.form.invalid" class="btn btn-primary btn-block" style="background-color:#000000 ;" (click)="addUSer()">Add</button>
         </div>
       </div>
     </div>

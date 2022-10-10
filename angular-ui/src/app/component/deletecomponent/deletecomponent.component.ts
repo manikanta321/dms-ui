@@ -3,6 +3,7 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angu
 
 import { DeactivateUserpopupComponent } from '../users/userPopups/deactivate-userpopup/deactivate-userpopup.component';
 import { EditPopupComponent } from '../users/userPopups/edit-popup/edit-popup.component';
+import { PswResetPopupComponent } from '../users/userPopups/psw-reset-popup/psw-reset-popup.component';
 import { RestPwsdUserPopupComponent } from '../users/userPopups/rest-pwsd-user-popup/rest-pwsd-user-popup.component';
 
 @Component({
@@ -29,6 +30,7 @@ export class DeletecomponentComponent implements OnInit {
     this.dialog.open(DeactivateUserpopupComponent);
   }
   resetpws(){
-    this.dialog.open(RestPwsdUserPopupComponent);
+    this.dialog.open(PswResetPopupComponent);
+    this.dialogRef.close();
   }
 }

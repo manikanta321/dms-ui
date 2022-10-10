@@ -68,6 +68,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { PopupCellRendererComponent } from './component/popup-cell-renderer/popup-cell-renderer.component';
 import {MatCardModule} from '@angular/material/card';
 import { RestPwsdUserPopupComponent } from './component/users/userPopups/rest-pwsd-user-popup/rest-pwsd-user-popup.component';
+import { PswResetPopupComponent } from './component/users/userPopups/psw-reset-popup/psw-reset-popup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -109,6 +110,7 @@ import { RestPwsdUserPopupComponent } from './component/users/userPopups/rest-pw
     DeactivateUserpopupComponent,
     PopupCellRendererComponent,
     RestPwsdUserPopupComponent,
+    PswResetPopupComponent,
     
   ],
   imports: [

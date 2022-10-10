@@ -689,3 +689,34 @@ width: 100px !important;
    
  
 
+
+  .btn-primary2{
+    margin-right: -100px;
+    width: 106px;
+    margin-left: 105px;
+    margin-top: 6px;
+  
+  } 
+   /* .btn-primary{
+    margin-left: 104px;
+   margin-top: 6px;
+  }   */
+
+  
+
+mat-sidenav {
+  width: 5rem;
+  border-right: none;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.content {
+  /* height: calc(100vh - 98px); */
+  height: 100vh;
+  border-radius: 10px;
+  padding: 10px;
+  background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);
+}
+

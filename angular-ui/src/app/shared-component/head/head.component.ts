@@ -1,4 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-head',
@@ -6,15 +8,34 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./head.component.css']
 })
 export class HeadComponent implements OnInit {
-@Output()ToggleSideNav : EventEmitter <any> = new EventEmitter();
+// @Output()ToggleSideNav : EventEmitter <any> = new EventEmitter();
+@Output() ToggleSideNav : EventEmitter <any> = new EventEmitter();
 sideBarOpen = true;
-  constructor() { }
+@ViewChild(MatSidenav)
+  sidenav!: MatSidenav;
+ngAfterViewInit() {
+  setTimeout(() => {
+    this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
+      if (res.matches) {
+        this.sidenav.mode = 'over';
+        this.sidenav.close();
+      } else {
+        this.sidenav.mode = 'side';
+        this.sidenav.open();
+      }
+    });
+  }, 1);
+ }
+  constructor(private observer: BreakpointObserver) { }
 
   ngOnInit(): void {
   }
-togglesidebar(){
-  this.ToggleSideNav.emit();
+// togglesidebar(){
+//   this.ToggleSideNav.emit();
  
   
+// }
+sidenavtoggle(){
+  this.ToggleSideNav.emit();
 }
 }

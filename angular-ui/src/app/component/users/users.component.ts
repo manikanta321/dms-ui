@@ -740,4 +740,7 @@ console.log(' this.userTypes', this.userTypes)
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
   }
+  ToggleSideNav(value:any){
+    this.sidenav.toggle()
+  }
 }

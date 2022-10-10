@@ -41,7 +41,7 @@
    
    
    
-    <mat-expansion-panel [ngClass]="collapsed ? 'sidenav-collapsed': ''" (click)="toogleCollapsed()" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel [ngClass]="collapsed ? 'sidenav-collapsed': 'panelOpenState = true'"  (opened)="panelOpenState = true" (closed)="panelOpenState = false">
    
     <mat-expansion-panel-header>
    

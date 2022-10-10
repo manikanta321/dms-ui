@@ -1,3 +1,4 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 
@@ -22,7 +23,7 @@ export class SidenavBarComponent implements OnInit {
 screenWidth = 0;
 sideBarOpen = true;
 
-  constructor() { }
+  constructor( ) { }
 
   
   ngOnInit(): void {

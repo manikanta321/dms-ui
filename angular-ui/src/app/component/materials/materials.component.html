@@ -1,22 +1,21 @@
-<app-head></app-head>
-<div class="font">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="sidebar" style="width: 5%;">
-            <app-sidenav-bar></app-sidenav-bar>
-        </div>
-        <div class="dash-content" style="background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%);
-        border-radius: 25px; height:100vh; padding: 10px;width: 95%;">
-                    <div class="UNFAPP-asmnt-rgt-area main" style="padding: 15px;height: 100vh;">
-                        <div class="col-lg-12">
+<app-head (click)="sidenav.toggle()"></app-head>
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+        <app-sidenav-bar></app-sidenav-bar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <!-- <div class="dash-content" > -->
+                    <div class="UNFAPP-asmnt-rgt-area main" style="padding: 15px;">
+                        <!-- <div class="col-lg-12"> -->
                             <mat-tab-group>
                                 <mat-tab label="Classification "><app-materials-classification></app-materials-classification>                            </mat-tab>
                                 <mat-tab label="Material List"><app-materials-list></app-materials-list></mat-tab>
                               </mat-tab-group>
-                        </div>
+                        <!-- </div> -->
        </div>
-        </div>
-        </div>
-    </div>
-     </div> 
+        <!-- </div> -->
+    </mat-sidenav-content>
+</mat-sidenav-container>
+   
 

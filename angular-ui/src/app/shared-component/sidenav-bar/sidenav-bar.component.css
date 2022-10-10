@@ -13,6 +13,7 @@ mat-list-item:hover{
 color: var(--bar);
 background: linear-gradient(270deg, #CED4DA 35.14%, rgba(206, 212, 218, 0) 84.89%);
 border-radius: 50px 0px 0px 50px;
+color: black;
 }
 mat-list-item :active{
   background: linear-gradient(270deg, #CED4DA 35.14%, rgba(206, 212, 218, 0) 84.89%);

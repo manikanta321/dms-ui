@@ -41,7 +41,9 @@ export class DashbordComponent implements OnInit {
   deactive(){
     this.dialog.open( DeactivateUserpopupComponent);
   }
- 
+  ToggleSideNav(value:any){
+    this.sidenav.toggle()
+  }
   // sidebartoggle(){
   // this.sidenav = ! this.sidenav;
   // }

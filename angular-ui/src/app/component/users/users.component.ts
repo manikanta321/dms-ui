@@ -52,6 +52,7 @@ import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { PopupCellRendererComponent } from '../popup-cell-renderer/popup-cell-renderer.component';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-users',
@@ -151,7 +152,8 @@ cellRenderer: function clickNextRendererFunc(){
 
 
 rowData :any;
-rowData1=[]
+rowData1=[];
+employeeName:any;
 public defaultColDef: ColDef = {
   // set the default column width
   // width: 100,
@@ -329,7 +331,7 @@ public pivotPanelShow = 'always';
 
 
   ngOnInit(): void {
-
+ 
 
   this.getusertabeldata();
   this.roleItems();
@@ -342,6 +344,13 @@ this.myForms = this.fb.group({
   citys: [this.selectedItems]
 });
 }
+
+
+// myFunction(){
+// this. date=new Date();
+// let latest_date =this. datepipe. transform(this. date, ‘yyyy-MM-dd’);
+// }
+
 editfn(){
   alert('guru')
 }
@@ -522,10 +531,60 @@ onItemSelect(item: any) {
   console.log('rolefilter', this.userTypes)
   console.log('onItemSelect', item);
 }
+onItemSelectOrAll(item:any){
+  const data={
+    userTypes:[],
+    statuss:this.statusTypes,
+    search:this.searchText,
+
+  }
+  this.user.getuserDeatilsUser(data).subscribe((res) => {     
+    this.rowData5 = res.response;
+  });
+  console.log('rolefilter', this.userTypes)
+  console.log('onItemSelect', item);}
+onItemDeSelectOrAll(item:any){
+  const data={
+    userTypes:this.userTypes,
+    statuss:[],
+    search:this.searchText,
+
+  }
+  this.user.getuserDeatilsUser(data).subscribe((res) => {     
+    this.rowData5 = res.response;
+  });
+  console.log('rolefilter', this.userTypes)
+  console.log('onItemSelect', item);
+}
 
 
 
+  onItemDeSelectOrAllStatus(item:any){
+    const data={
+      userTypes:this.userTypes,
+      statuss:[],
+      search:this.searchText,
+  
+    }
+    this.user.getuserDeatilsUser(data).subscribe((res) => {     
+      this.rowData5 = res.response;
+    });
+    console.log('rolefilter', this.userTypes)
+  }
 
+
+  onItemSelectOrAllStatus(item:any){
+    const data={
+      userTypes:[],
+      statuss:this.statusTypes,
+      search:this.searchText,
+  
+    }
+    this.user.getuserDeatilsUser(data).subscribe((res) => {     
+      this.rowData5 = res.response;
+    });
+    console.log('rolefilter', this.userTypes)
+  }
 
 onStatusSelect(item: any) {
   this.statusTypes.push(item.statusId);
@@ -556,7 +615,6 @@ console.log(' this.userTypes', this.userTypes)
   console.log('rolefilter', this.userTypes)
   console.log('onItemSelect', item);
 }
-
 
 
 
@@ -632,8 +690,13 @@ console.log(' this.userTypes', this.userTypes)
   onCellClicked( e: CellClickedEvent): void {
     console.log('cellClicked', e);
     this.userId=e.data.userId;
+    this.employeeName=e.data.employeeName
     console.log('userID',this.userId)
     localStorage.setItem('userID',this.userId )
+    localStorage.setItem('employeeName',this.employeeName )
+
+
+    
 
   }
 

@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
-
 @Component({
-  selector: 'app-deactivate-userpopup',
-  templateUrl: './deactivate-userpopup.component.html',
-  styleUrls: ['./deactivate-userpopup.component.css']
+  selector: 'app-activatepop-up',
+  templateUrl: './activatepop-up.component.html',
+  styleUrls: ['./activatepop-up.component.css']
 })
-export class DeactivateUserpopupComponent implements OnInit {
+export class ActivatepopUpComponent implements OnInit {
   employeeId:any;
   employeename:any
   constructor(private dialogRef: MatDialogRef<any>,) { }
@@ -18,5 +17,4 @@ export class DeactivateUserpopupComponent implements OnInit {
   close(){
     this.dialogRef.close()
   }
-
 }

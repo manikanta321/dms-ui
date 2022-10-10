@@ -69,6 +69,7 @@ import { PopupCellRendererComponent } from './component/popup-cell-renderer/popu
 import {MatCardModule} from '@angular/material/card';
 import { RestPwsdUserPopupComponent } from './component/users/userPopups/rest-pwsd-user-popup/rest-pwsd-user-popup.component';
 import { PswResetPopupComponent } from './component/users/userPopups/psw-reset-popup/psw-reset-popup.component';
+import { ActivatepopUpComponent } from './component/users/userPopups/activatepop-up/activatepop-up.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -111,6 +112,7 @@ import { PswResetPopupComponent } from './component/users/userPopups/psw-reset-p
     PopupCellRendererComponent,
     RestPwsdUserPopupComponent,
     PswResetPopupComponent,
+    ActivatepopUpComponent,
     
   ],
   imports: [

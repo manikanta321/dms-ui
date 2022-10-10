@@ -71,7 +71,7 @@ EditUser(obj){
 
 }
 GetEditUSer(userID:any){
-  return this.http.get<any>(`${this.userurl}UserMgmtApi/GetUserDetailsToEdit?userId=211`);
+  return this.http.get<any>(`${this.userurl}UserMgmtApi/GetUserDetailsToEdit?userId=${userID}`);
 
 }
 public getuserDeatilsUser(data) {
@@ -112,7 +112,7 @@ public UserFilterServices(roleId:any,statusId:any){
 
 }
 public activeDeavtive(data){
-  return this.http.post<any>( this.userurl +'UserMgmtApi/ActiveDeactive',data	)
+  return this.http.post<any>(this.userurl + 'UserMgmtApi/ActiveDeactive', data);
 }
 
 

@@ -30,7 +30,9 @@
                                [settings]="dropdownSettings"
                                [data]="toppingList"
                                (onSelect)="onItemSelect($event)"
-                               (onDeSelect)="onItemDeSelect($event)">
+                               (onDeSelect)="onItemDeSelect($event)"
+                               (onDeSelectAll)="onItemDeSelectOrAll($event)"
+                               (onSelectAll)="onItemSelectOrAll($event)">
                            </ng-multiselect-dropdown>
                       </form>
                          </div>
@@ -44,7 +46,9 @@
                              [settings]="dropdownSettings1"
                              [data]="toppingList1"
                              (onSelect)="onStatusSelect($event)"
-                             (onDeSelect)="onStatusDeSelect($event)">
+                             (onDeSelect)="onStatusDeSelect($event)"
+                             (onDeSelectAll)="onItemDeSelectOrAllStatus($event)"
+                             (onSelectAll)="onItemSelectOrAllStatus($event)">
                          </ng-multiselect-dropdown>
                     </form>
                        </div>

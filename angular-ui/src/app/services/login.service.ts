@@ -30,9 +30,9 @@ export class LoginService {
     let body = `emailId=${usernameofuser}&password=${passwordofuser}`;
 
 
-   let params = new HttpParams()
-    .set("emailId",usernameofuser)
-    .set("password", passwordofuser)
+  //  let params = new HttpParams()
+  //   .set("emailId",usernameofuser)
+  //   .set("password", passwordofuser)
   
   
       return this.http.post(this.loginurl + `Account/GetToken`, body1, options)

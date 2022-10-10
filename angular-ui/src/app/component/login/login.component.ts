@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import * as moment from "moment";
 
 @Component({
   selector: 'app-login',
@@ -46,8 +47,10 @@ export class LoginComponent implements OnInit {
     if(res){
       this.loginData = res;
       localStorage.setItem('token',this.loginData.token )
-
+      this.setSession(this.loginData.token)
       console.log("LoginData",this.loginData);
+      localStorage.setItem('logInId',this.loginData.id )
+
       if(this.loginData == -1){
         this.PasswordWrong =true;
         if(this.userExist =false){
@@ -82,5 +85,11 @@ console.log(err)
   public togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
+  private setSession(authResult) {
+  
+    let expiresAt = moment().add(authResult.expiresIn,'second');
+    localStorage.setItem('id_token', authResult.idToken);
+    localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
+}   
 
 }

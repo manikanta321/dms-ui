@@ -15,7 +15,9 @@ export class EditPopupComponent implements OnInit {
   Lastname:any='';
   email:any='';
   phone:any='';
-  role : any;
+  role123 :any='';
+  role :any;
+
   toppingList: any= [];
   data:any;
   roleId:any;
@@ -35,7 +37,7 @@ export class EditPopupComponent implements OnInit {
     this.user.GetEditUSer(user).subscribe((res:any)=>{
       console.log('respose',res)
    this.data=res.response;
-
+console.log('dataofEdit',this.data)
    this.patchValue()
 
     })
@@ -48,7 +50,8 @@ export class EditPopupComponent implements OnInit {
     this.Lastname=this.data.lastName;
     this.phone=this.data.mobilePhone;
     this.roleId=this.data.roleId;
-    this.role=this.data.roleName
+    this.role123=this.data.roleName
+    alert(this)
     console.log('this.log',this.role)
   }
   closeDialog(){
@@ -57,6 +60,7 @@ export class EditPopupComponent implements OnInit {
   selectedValue($event){
     // alert($event)
 this.role=$event  
+alert(this.role)
 }
 roleItems(){
   this.user.getroleDetails().subscribe((res: any) => {
@@ -83,15 +87,7 @@ editUser(){
   let userID = this.user;
       console.log('userID', this.user);
       console.log('userData',userID)
-      
-  // {
-  //     FirstName:this.fullname,
-  //     LastName:this.fullname,
-  //     UserName:this.username,
-  //     Email:this.email,
-  //     MobilePhone:this.phone,
-  //     RoleId:this.role
-  //   }
+
   
     let obj={
       userId:this.UserId,
@@ -100,7 +96,7 @@ editUser(){
       UserName:this.username,
       Email:this.email,
       MobilePhone:this.phone,
-      roleId:this.roleId,
+      roleId:this.role,
  }
     this.user.EditUser(obj).subscribe((res: any) => {
       if (res.response.result =='successfully updated') {

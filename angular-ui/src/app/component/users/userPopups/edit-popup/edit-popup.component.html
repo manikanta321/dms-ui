@@ -114,10 +114,10 @@
                   <label>Role</label><span>*</span>
                 <br>
                          <mat-form-field appearance="outline" style="width: 525px;">
-                <mat-select required class="form1" [(ngModel)]="role" placeholder="Select your Role " (selectionChange)="selectedValue($event.value);" [disabled]="true">
+                <mat-select  [(ngModel)]="role123" placeholder="Select your Role " (selectionChange)="selectedValue($event.value);" [disableRipple]="true">
 
-                  <mat-option *ngFor="let topping of toppingList" [value]="role">
-                    {{role}}</mat-option>
+                  <mat-option *ngFor="let topping of toppingList" [value]="topping.roleId">
+                    {{topping.roleName}}</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>

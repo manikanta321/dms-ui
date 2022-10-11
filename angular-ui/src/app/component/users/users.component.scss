@@ -116,10 +116,10 @@
   float: left;
   padding: 0 0px;
   border-radius: 32px;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-medium';
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 17px;
   letter-spacing: 0.08em;
   color: #263643;
@@ -127,16 +127,16 @@
   transition: 0.2s  ease-in-out;
 
 }
-// .searchBox:hover>.searchInput::placeholder {
-//   font-family: 'Gilroy';
-//   font-style: normal;
-//   font-weight: 600;
-//   font-size: 14px;
-//   line-height: 17px;
-//   letter-spacing: 0.08em;
-//   color: #263643;
-//   opacity: 0.5;
-// }
+.searchBox:hover>.searchInput::placeholder {
+  font-family: 'Gilroy-medium';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 17px;
+  letter-spacing: 0.08em;
+  color: #263643;
+  opacity: 0.5;
+}
 
 .searchBox:hover>.searchButton {
   background: white;
@@ -186,17 +186,21 @@
   float: left;
   padding: 0;
   color: #FFFFFF;
-  font-size: 16px;
+  font-size: 12px;
   transition: 0.2s;
   line-height: 40px;
   width: 0px;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-medium';
 }
 
 @media screen and (max-width: 620px) {
   .searchBox:hover>.searchInput {
       width: 150px;
       padding: 0 6px;
+       left:10%;
+  }
+  .searchBox {
+left: 37%
   }
 }
 .add-user {
@@ -698,7 +702,7 @@ width: 100px !important;
     margin-left: -108px;
    }
    .add-user{
-    margin-left: -56px;
+    margin-left: -184px;
    }
    .download-btn{
     margin-left: 6px;

@@ -63,14 +63,16 @@
                  <div class="download-btn" (click)="onBtnExport()">
                  <img src="assets/img/download-btn.png" style="position: relative;top: 12px;left: 18px;" alt="add-user-btn">
                            </div>
-                                            <div class="searchBox d-flex justify-center align-center">
-                   <input class="searchInput" type="text" name="" placeholder="SEARCH" 
+                                            <div style="direction:rtl !important;" class="searchBox d-flex justify-center align-center">
+                   <input class="searchInput" style="direction:ltr !important;     position: relative;
+                   left: -35px;" type="text" name="" placeholder="Type & search" 
                    (keyup)="onSearchChange($event)">
                    <button class="searchButton" href="#"> 
                        <i class="material-icons">
                            search
                        </i>
                    </button>
+                   <button class="search-btn">Search</button>
                  </div>
                          </div>
                

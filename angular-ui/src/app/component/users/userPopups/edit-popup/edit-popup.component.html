@@ -19,7 +19,7 @@
     <div class="col">
       <label>Username<span>*</span></label>
       <br>
-      <input id="euname" name="euname" required type="text" placeholder="Enter your UserName" [(ngModel)]="username" style="width: 530px;" #euname="ngModel">
+      <input id="euname" name="euname" required type="text" placeholder="Enter your username" [(ngModel)]="username" style="width: 530px;" #euname="ngModel">
       <p style="margin-bottom:-40px;" *ngIf="euname.invalid && (euname.dirty || euname.touched)"
       class="alert">
   
@@ -34,7 +34,7 @@
               <div class="col">
                 <label>First Name <span>*</span></label>
                 <br>
-                <input id="efname" name="efname" required type="text" placeholder="Enter your First Name" [(ngModel)]="fullname"#efname="ngModel">
+                <input id="efname" name="efname" required type="text" placeholder="Enter your first name" [(ngModel)]="fullname"#efname="ngModel">
                 <p style="margin-bottom:-40px;" *ngIf="efname.invalid && (efname.dirty || efname.touched)"
                 class="alert">
             
@@ -46,7 +46,7 @@
               <div class="col">
                 <label>Last Name <span>*</span></label>
                 <br>
-                <input id="elname" name="elname" required type="text" placeholder="Enter your First Name" [(ngModel)]="Lastname"#elname="ngModel">
+                <input id="elname" name="elname" required type="text" placeholder="Enter your last name" [(ngModel)]="Lastname"#elname="ngModel">
                 <p style="margin-bottom:-40px;" *ngIf="elname.invalid && (elname.dirty || elname.touched)"
                 class="alert">
             
@@ -61,7 +61,7 @@
               <div class="col">
                 <label>Email Id<span>*</span></label>
                 <br>
-                <input type="email" id="emails" name="emails" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #emails="ngModel" placeholder="Enter your Email" [(ngModel)]="email">
+                <input type="email" id="emails" name="emails" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #emails="ngModel" placeholder="Enter your email Id" [(ngModel)]="email">
                 <p style="margin-bottom:-40px;" *ngIf="emails.invalid && (emails.dirty || emails.touched)"
                 class="alert">
             
@@ -77,7 +77,7 @@
 
                 <label>Phone No<span>*</span></label>
                 <br>
-                <input type="text" id="mobileno" name="mobileno" required placeholder="Enter your phone number" pattern="^((\\+91-?)|0)?[0-9]{10}$" placeholder="Enter your phone number" [(ngModel)]="phone" #mobileno="ngModel">
+                <input type="text" id="mobileno" name="mobileno" required placeholder="Enter your phone number" pattern="^((\\+91-?)|0)?[0-9]{10}$" placeholder="Enter your phone no." [(ngModel)]="phone" #mobileno="ngModel">
                 <p style="margin-bottom:-40px;" *ngIf="mobileno.invalid && (mobileno.dirty || mobileno.touched)"
                 class="alert">
               <span style="color:red;position: relative;left: -9%;top: -6px;" *ngIf="mobileno.errors?.['required']">

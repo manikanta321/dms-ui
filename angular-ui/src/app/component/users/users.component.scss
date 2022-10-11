@@ -277,6 +277,7 @@ left: 21%;
 }
 .main{
     background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+    border-radius: 30px;
 }
 
 
@@ -746,8 +747,8 @@ mat-sidenav {
 }
 
 .content {
-  /* height: calc(100vh - 98px); */
-  height: 100vh;
+   height: calc(100vh - 98px); 
+  // height: 100vh;
   border-radius: 10px;
   padding: 10px;
   background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);

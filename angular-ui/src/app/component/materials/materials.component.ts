@@ -32,7 +32,10 @@ export class MaterialsComponent implements OnInit{
   //   this.tabEvent = tabChangeEvent.index;
   //   this.p=1;
   // }
-  sideBarToggler(){
-    this.sideBarOpen = !this.sideBarOpen;
+  // sideBarToggler(){
+  //   this.sideBarOpen = !this.sideBarOpen;
+  // }
+  ToggleSideNav(value:any){
+    this.sidenav.toggle()
   }
 }

@@ -11,7 +11,7 @@
                         <div class="row d-flex">
                           <div class="col-2">
                            <h4 style="
-                           font-size: 25px;
+                           font-size: 22px;
                            line-height: 29px;
                            display: flex;
                            align-items: center;
@@ -19,12 +19,12 @@
                            color: #000000;"><b>Users</b></h4>
                           </div>
                           </div>
-                        <div class="row" style="position: relative;top: 3%;">
+                        <div class="row" style="position: relative;top: 3%;color:grey; ">
                            <div class="col-md-4 col-lg-4 col-sm-4">
                              <form [formGroup]="myForm">
-                           <ng-multiselect-dropdown
+                           <ng-multiselect-dropdown style="border: grey;"
                                name="city"
-                               [placeholder]="'Role'"
+                               [placeholder]="'Roles'"
                                formControlName="city"
                                [disabled]="disabled"
                                [settings]="dropdownSettings"
@@ -68,6 +68,7 @@
                     </button>
                     <button class="search-btn">Search</button>
                   </div>
+                 <div class="row" style="position:relative;margin-left: 64%;">
                  <div class="add-user" (click)="addUser()">
                  <img src="assets/img/add-usr-btn.png" style="position: relative;top: 12px;left: 16px;" alt="add-user-btn">
                  </div>

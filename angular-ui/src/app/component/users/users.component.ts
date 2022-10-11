@@ -80,6 +80,8 @@ export class UsersComponent implements OnInit {
   dropdownSettings1: IDropdownSettings = {};
   
    gridOptions = {
+    resizable: true,
+
     onCellClicked: (event: CellClickedEvent) => console.log('Cell was clicked'),
     // set background colour on every row, this is probably bad, should be using CSS classes
     rowStyle: { background: 'black' },
@@ -100,25 +102,25 @@ public popupParent: HTMLElement = document.body;
 columnDefs: ColDef[] = [ 
 
   { headerName: "User Id",
-field: 'employeeCode' ,type: ['nonEditableColumn'], sort: 'desc',  suppressMovable:true,
+field: 'employeeCode' ,type: ['nonEditableColumn'], sort: 'desc',pinned: 'left',
 },
 
-{   headerName: "User Name",field: 'employeeName',type: ['nonEditableColumn'], suppressMovable:true,},
+{   headerName: "User Name",field: 'employeeName',type: ['nonEditableColumn'],pinned: 'left'},
 
-{headerName: "Role", field: 'roleName', type: ['nonEditableColumn'], suppressMovable:true,},
+{headerName: "Role", field: 'roleName', type: ['nonEditableColumn'],pinned: 'left'},
 
 {  headerName: "Email Id",
- field: 'email',type: ['nonEditableColumn'], suppressMovable:true, },
+ field: 'email',type: ['nonEditableColumn'],  pinned: 'left'},
 
 {   headerName: "Phone no",
-field: 'mobile',type: ['nonEditableColumn'], suppressMovable:true,},
+field: 'mobile',type: ['nonEditableColumn'], pinned: 'left'},
 
 {   headerName: "Last Login",
 // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-field: 'lastLoginDate',type: ['nonEditableColumn'], suppressMovable:true,
+field: 'lastLoginDate',type: ['nonEditableColumn'],pinned: 'left'
 },
 
-
+// suppressMovable:true,
 { headerName: "Status",
  field: 'statusName', 
  type: ['nonEditableColumn'],
@@ -129,7 +131,7 @@ values: ['Active', 'Inactive', 'Invited', 'Locked',],
 },
 cellClass: params => {                      
   return params.value == 'Inactive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
-},
+},pinned: 'left'
 },
 { 
 

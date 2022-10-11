@@ -97,6 +97,8 @@ public rowData5=[];
 public popupParent: HTMLElement = document.body;
 
 
+
+
 columnDefs: ColDef[] = [ 
 
   { headerName: "User Id",
@@ -221,6 +223,9 @@ public pivotPanelShow = 'always';
   toppingList1:  any= [];
   filterDictionary: any;
   sideBarOpen = true;
+  scrolledIndex = 0;
+  defaultPageSize = 12;
+
   @ViewChild(MatSidenav)
 
 
@@ -235,6 +240,27 @@ public pivotPanelShow = 'always';
   statusArray:any=[];
 
   
+  start: number = 0;
+  limit: number = 15;
+  end: number = this.limit + this.start;
+
+  gridsOptions = {
+    defaultColDef: {
+      sortable: true,
+      resizable: true,
+      editable: true,
+      suppressMenu: true,
+      filter: true,
+      floatingFilter: true,
+      filterParams: { buttons: ['clear'] }
+    },
+    headerHeight: 60,
+    animateRows: true,
+    pagination: false,
+    paginationAutoPageSize: false,
+}
+
+  
   constructor(public dialog: MatDialog,
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
@@ -244,10 +270,6 @@ public pivotPanelShow = 'always';
    ) {
       sort:[];
      }
-
-     onFirstDataRendered(params: FirstDataRenderedEvent) {
-      params.api.sizeColumnsToFit();
-    }
 
   //   getRowStyle = params => {
   //     if (params.node.rowIndex % 2 === 0) {
@@ -287,6 +309,10 @@ this.myForm = this.fb.group({
 this.myForms = this.fb.group({
   citys: [this.selectedItems]
 });
+}
+
+scrolledIndexChange(i): void {
+  this.scrolledIndex = i;
 }
 
 
@@ -695,8 +721,28 @@ console.log(' this.statusTypes', this.userTypes)
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
+    
   }
+
+
+  
+
+  onFirstDataRendered(params: FirstDataRenderedEvent) {
+    params.api.paginationGoToPage(4);
+  }
+
+  onPageSizeChanged() {
+    var value = (document.getElementById('page-size') as HTMLInputElement)
+      .value;
+    this.gridApi.paginationSetPageSize(Number(value));
+  }
+
+  
+
   ToggleSideNav(value:any){
     this.sidenav.toggle()
   }
+
+
+
 }

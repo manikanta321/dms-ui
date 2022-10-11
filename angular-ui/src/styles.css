@@ -65,3 +65,12 @@ body {
 .primary-color {
     color: #017EFA;
 }
+
+#gridContainer .ag-paging-page-summary-panel {
+    display:none !important;
+  }
+
+#gridContainer .ag-paging-row-summary-panel-number{
+    font-weight: 800;
+    color: #000;
+}

@@ -1,6 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-head',
@@ -26,7 +27,8 @@ ngAfterViewInit() {
     });
   }, 1);
  }
-  constructor(private observer: BreakpointObserver) { }
+  constructor(private observer: BreakpointObserver,
+    private router: Router,) { }
 
   ngOnInit(): void {
   }
@@ -37,5 +39,12 @@ ngAfterViewInit() {
 // }
 sidenavtoggle(){
   this.ToggleSideNav.emit();
+}
+
+logout() {
+  this.router.navigate(['']);
+
+  localStorage.removeItem("token");
+  localStorage.removeItem("expires_at");
 }
 }

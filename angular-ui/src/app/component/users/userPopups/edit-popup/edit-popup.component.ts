@@ -25,6 +25,7 @@ export class EditPopupComponent implements OnInit {
   // userType: string[] = ['Admin', 'Business Manager', 'Order Manager', 'Viewer','Business Manager', 'Order Manager', 'Viewer'];
   toppings = new FormControl(this.toppingList);
   UserId: any;
+  errorMsg: any;
   constructor(private dialogRef: MatDialogRef<any>,
     private formBuilder: FormBuilder,
     private user:UserService,) { }
@@ -51,7 +52,6 @@ console.log('dataofEdit',this.data)
     this.phone=this.data.mobilePhone;
     this.roleId=this.data.roleId;
     this.role123=this.data.roleName
-    alert(this)
     console.log('this.log',this.role)
   }
   closeDialog(){
@@ -60,7 +60,6 @@ console.log('dataofEdit',this.data)
   selectedValue($event){
     // alert($event)
 this.role=$event  
-alert(this.role)
 }
 roleItems(){
   this.user.getroleDetails().subscribe((res: any) => {
@@ -102,6 +101,9 @@ editUser(){
       if (res.response.result =='successfully updated') {
        
       this.dialogRef.close()
+      }
+      else{
+        this.errorMsg=res.response.result;
       }
 
     })

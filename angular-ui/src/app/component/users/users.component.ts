@@ -100,27 +100,29 @@ public popupParent: HTMLElement = document.body;
 columnDefs: ColDef[] = [ 
 
   { headerName: "User Id",
-field: 'employeeCode' ,type: ['nonEditableColumn'], sort: 'desc'},
+field: 'employeeCode' ,type: ['nonEditableColumn'], sort: 'desc',  suppressMovable:true,
+},
 
-{   headerName: "User Name",field: 'employeeName',type: ['nonEditableColumn']},
+{   headerName: "User Name",field: 'employeeName',type: ['nonEditableColumn'], suppressMovable:true,},
 
-{headerName: "Role", field: 'roleName', type: ['nonEditableColumn'],},
+{headerName: "Role", field: 'roleName', type: ['nonEditableColumn'], suppressMovable:true,},
 
 {  headerName: "Email Id",
- field: 'email',type: ['nonEditableColumn'] },
+ field: 'email',type: ['nonEditableColumn'], suppressMovable:true, },
 
 {   headerName: "Phone no",
-field: 'mobile',type: ['nonEditableColumn']},
+field: 'mobile',type: ['nonEditableColumn'], suppressMovable:true,},
 
 {   headerName: "Last Login",
 // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-field: 'lastLoginDate',type: ['nonEditableColumn'],
+field: 'lastLoginDate',type: ['nonEditableColumn'], suppressMovable:true,
 },
 
 
 { headerName: "Status",
  field: 'statusName', 
  type: ['nonEditableColumn'],
+ suppressMovable:true,
 cellEditor: 'agSelectCellEditor',
 cellEditorParams: {
 values: ['Active', 'Inactive', 'Invited', 'Locked',],
@@ -133,6 +135,7 @@ cellClass: params => {
 
    headerName: "",
 field: '',  filter: false, sortable: false,width:20,
+suppressMovable:true,
 cellRenderer: function clickNextRendererFunc(){
   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
 }, 
@@ -207,68 +210,6 @@ public columnTypes: {
 public rowGroupPanelShow = 'always';
 public pivotPanelShow = 'always';
 
-
-  columns: Array<GuiColumn> = [
-		{
-			header: 'Name',
-			field: 'name' 			//source {name: 'T-shirt'}
-		},
-		{
-			header: 'Type',
-			field: 'type' 			//source {type: 'clothes'}
-		},
-		{
-			header: 'Price',
-			field: 'price'			//source {price: '15$'}
-		}];
-
-	source: Array<any> = [
-		{
-			name: 'T-shirt',		//columns {header: 'Name', field: 'name'}
-			type: 'clothes',		//columns {header: 'Type', field: 'type'}
-			price: '15$' 			//columns {header: 'Price', field: 'price'}
-		},
-		{
-			name: 'Shoes',
-			type: 'footwear',
-			price: '100$'
-		},
-		{
-			name: 'Ball cap',
-			type: 'headgear',
-			price: '50$'
-		}];
-
-    sorting: GuiSorting = {
-	    enabled: true
-	};
-
-	paging: GuiPaging = {
-		enabled: true,
-		page: 1,
-		pageSize: 10,
-		pageSizes: [10, 25, 50],
-		pagerTop: true,
-		pagerBottom: true,
-		display: GuiPagingDisplay.BASIC
-	};
-
-	searching: GuiSearching = {
-		enabled: true,
-		placeholder: 'Search heroes'
-	};
-
-  columnMenu: GuiColumnMenu = {
-		enabled: true,
-		sort: true,
-		columnsManager: true,
-
-  };
-
-	// sorting: GuiSorting = {
-	// 	enabled: true,
-	// 	multiSorting: true
-	// };
   displayedColumns: string[] = ['position', 'name',  'symbol','email','phonenum','login','status','edit'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   toppings = new FormControl('');
@@ -290,6 +231,9 @@ public pivotPanelShow = 'always';
   msg1: any;
   msg: any;
   userId: any;
+  roleArray:any[] = [];
+  statusArray:any=[];
+
   
   constructor(public dialog: MatDialog,
     private router: Router,
@@ -386,8 +330,6 @@ if (this.statusSelection) {
     this.dropdownSettings1 = Object.assign({}, this.dropdownSettings1, { statusSelection: null });
 }
 
-
-  
   }
 
 
@@ -443,7 +385,6 @@ console.log('element',element['isActive'])
   });
 }
 makeCellClicked(){
-  alert('ohoh')
 }
 roleItems(){
   this.user.getroleDetails().subscribe((res: any) => {
@@ -460,6 +401,13 @@ console.log('checkdata',localdata)
       });
     }
     this.toppingList.push()
+   this.toppingList.forEach(element=>{
+   return   this.roleArray.push(element.roleId);
+        // console.log('rolecheck',rolecheck)
+
+    })
+    console.log('rolearray',this.roleArray)
+
     // this.toppingList = res.response;
     this.toppings = new FormControl(this.toppingList);
 
@@ -491,6 +439,12 @@ statusItems(){
     // }
     // this.toppingList1.push()
     console.log('we have to check here', this.toppingList1)
+    this.toppingList1.forEach(element=>{
+      return   this.statusArray.push(element.statusId);
+           // console.log('rolecheck',rolecheck)
+   
+       })
+       console.log('statusArray',this.statusArray)
     // this.toppingList = res.response;
     this.dropdownSettings1 = {
       singleSelection: false,
@@ -517,6 +471,8 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
   console.log('rolename',this.rowData)
 }
 onItemSelect(item: any) {
+
+
   this.userTypes.push(item.roleId);
 
   const data={
@@ -532,8 +488,9 @@ onItemSelect(item: any) {
   console.log('onItemSelect', item);
 }
 onItemSelectOrAll(item:any){
+  this.userTypes=this.roleArray;
   const data={
-    userTypes:[],
+    userTypes:this.userTypes,
     statuss:this.statusTypes,
     search:this.searchText,
 
@@ -574,8 +531,9 @@ onItemDeSelectOrAll(item:any){
 
 
   onItemSelectOrAllStatus(item:any){
+    this.statusTypes=this.statusArray;
     const data={
-      userTypes:[],
+      userTypes:this.userTypes,
       statuss:this.statusTypes,
       search:this.searchText,
   
@@ -583,7 +541,7 @@ onItemDeSelectOrAll(item:any){
     this.user.getuserDeatilsUser(data).subscribe((res) => {     
       this.rowData5 = res.response;
     });
-    console.log('rolefilter', this.userTypes)
+    console.log('rolefilter', this.statusTypes)
   }
 
 onStatusSelect(item: any) {
@@ -601,8 +559,13 @@ onStatusSelect(item: any) {
 }
 
 onItemDeSelect(item: any) {
-  this.userTypes.pop(item.roleId);
-console.log(' this.userTypes', this.userTypes)
+
+  this.userTypes.forEach((element,index)=>{
+    if(element==item.roleId)  this.userTypes.splice(index,1);
+ });
+ console.log(' this.userTypes', this.userTypes)
+
+  // this.userTypes.pop(item.roleId);
   const data={
     userTypes:this.userTypes,
     statuss:this.statusTypes,
@@ -612,15 +575,17 @@ console.log(' this.userTypes', this.userTypes)
   this.user.getuserDeatilsUser(data).subscribe((res) => {     
     this.rowData5 = res.response;
   });
-  console.log('rolefilter', this.userTypes)
-  console.log('onItemSelect', item);
+
 }
 
 
 
 onStatusDeSelect(item: any) {
-  this.statusTypes.pop(item.statusId);
-console.log(' this.userTypes', this.userTypes)
+  this.statusTypes.forEach((element,index)=>{
+    if(element==item.statusId)  this.statusTypes.splice(index,1);
+ });
+  // this.statusTypes.pop(item.statusId);
+console.log(' this.statusTypes', this.userTypes)
   const data={
     userTypes:this.userTypes,
     statuss:this.statusTypes,
@@ -641,13 +606,7 @@ console.log(' this.userTypes', this.userTypes)
     this.dataSource.filter = filterValue.trim().toLowerCase();
 }
 
-// applyEmpFilter(ob:MatSelectChange,empfilter:EmpFilter) {
 
-//   this.filterDictionary.set(empfilter.name,ob.value);
-//   var jsonString = JSON.stringify(Array.from(this.filterDictionary.entries()));
-//   this.dataSource.filter = jsonString;
-
-// }
   addUser(){
    this.dialog.open( AddUserPopupComponent,);
   }
@@ -674,10 +633,7 @@ console.log(' this.userTypes', this.userTypes)
 
   }
   announceSortChange(sortState: any) {
-    // This example uses English messages. If your application supports
-    // multiple language, you would internationalize these strings.
-    // Furthermore, you can customize the message to add additional
-    // details about the values being sorted.
+ 
     if (sortState.direction) {
       this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
     } else {

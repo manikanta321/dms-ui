@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { UserService } from 'src/app/services/user.service';
 import { RestPwsdUserPopupComponent } from '../rest-pwsd-user-popup/rest-pwsd-user-popup.component';
 
 @Component({
@@ -8,14 +9,36 @@ import { RestPwsdUserPopupComponent } from '../rest-pwsd-user-popup/rest-pwsd-us
   styleUrls: ['./psw-reset-popup.component.css']
 })
 export class PswResetPopupComponent implements OnInit {
-
+  enterfirst:any;
+  entersecond:any;
+  userId:any;
+  error:any='';
+  LoginId:any
   constructor( private dialog: MatDialog,
-    private dialogRef: MatDialogRef<any>) { }
+    private dialogRef: MatDialogRef<any>,
+    private user:UserService,
+    ) { }
 
   ngOnInit(): void {
+    this.userId = localStorage.getItem("userID");
+    this.LoginId=localStorage.getItem("logInId");
+
+
   }
   confrmPWS(){
-    this.dialog.open(RestPwsdUserPopupComponent);
-    this.dialogRef.close();
+    if(this.enterfirst==this.entersecond){
+      let data={
+        UserId:this.userId,
+        newPassword:this.entersecond,
+        LoginId:this.LoginId
+      }
+      this.user.changepassword(data).subscribe((res: any) => {
+
+
+      })
+      this.dialog.open(RestPwsdUserPopupComponent);
+      this.dialogRef.close();
+    }
+   this.error='both Enter Password and Confirm Password should be same'
   }
 }

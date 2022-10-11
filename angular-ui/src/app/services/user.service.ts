@@ -114,7 +114,9 @@ public UserFilterServices(roleId:any,statusId:any){
 public activeDeavtive(data){
   return this.http.post<any>(this.userurl + 'UserMgmtApi/ActiveDeactive', data);
 }
-
+public changepassword(data){
+  return this.http.post<any>(this.userurl + 'UserMgmtApi/UpdatePassword', data);
+}
 
                             //  http://52.172.24.161:801/api/GetUserTypes
 //   User types dropdown : - http://52.172.24.161:801/api/GetUserTypes

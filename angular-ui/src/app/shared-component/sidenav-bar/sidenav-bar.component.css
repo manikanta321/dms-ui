@@ -9,6 +9,9 @@
   z-index: 1;
   
 }
+mat-list{
+  padding-left: 8px;
+}
 mat-list-item:hover{
 color: var(--bar);
 background: linear-gradient(270deg, #CED4DA 35.14%, rgba(206, 212, 218, 0) 84.89%);
@@ -57,10 +60,13 @@ border-radius: 50%;
 mat-expansion-panel-header {
 margin-left: -8px;
 }
+/* mat-expansion-panel-header :hover{
+  background:  linear-gradient(270deg, #CED4DA 35.14%, rgba(206, 212, 218, 0) 84.89%);
+} */
 .mat-expansion-panel{
  box-shadow: none;
 }
-mat-icon{
+img{
   margin-right: 8px;
 }
 @media (max-width:600px){

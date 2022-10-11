@@ -70,6 +70,8 @@ import {MatCardModule} from '@angular/material/card';
 import { RestPwsdUserPopupComponent } from './component/users/userPopups/rest-pwsd-user-popup/rest-pwsd-user-popup.component';
 import { PswResetPopupComponent } from './component/users/userPopups/psw-reset-popup/psw-reset-popup.component';
 import { ActivatepopUpComponent } from './component/users/userPopups/activatepop-up/activatepop-up.component';
+import { ActiveSuccessPopComponent } from './component/users/userPopups/active-success-pop/active-success-pop.component';
+import { DeactiveSuccessPopComponent } from './component/users/userPopups/deactive-success-pop/deactive-success-pop.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -113,6 +115,8 @@ import { ActivatepopUpComponent } from './component/users/userPopups/activatepop
     RestPwsdUserPopupComponent,
     PswResetPopupComponent,
     ActivatepopUpComponent,
+    ActiveSuccessPopComponent,
+    DeactiveSuccessPopComponent,
     
   ],
   imports: [

@@ -10,14 +10,15 @@ font-weight: 600;
 }
 .undo{
     padding: 5px 40px;
-    background: #fff;
+    background: black;
+    color: #fff;
     margin-right: 20px;
-    border: #000000;
+    /* border: #000000; */
     border-radius: 5px;
     }
 .exit{
-background: black;
-color: white;
+background: #fff;
+color: black;
 padding: 5px 40px;
 border: #000000;
 border-radius: 5px;

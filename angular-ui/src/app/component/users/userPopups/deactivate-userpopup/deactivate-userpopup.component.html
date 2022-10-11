@@ -1,10 +1,10 @@
 <div class="container">
     <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
     <div class="actv-user text-center">
-        <h1 class="head-text" >User Deactivated</h1>
-        <p>The status of user<b> {{employeename}}</b> has been <br>successfully changed to <span *ngIf="false" style="color:red">Inactive</span>
-            <span *ngIf="true" style="color:green">Deactive</span></p>
-        <button class="undo">Undo</button>
+        <h1 class="head-text" >Deactivate User</h1>
+        <p>Are you sure you want to <b style="color:red">Deactive</b><br>
+             user<b> {{employeename}}</b></p>
+        <button class="undo" (click)="deactive()">Yes</button>
         <button class="exit"(click)='close()'>Exit</button>
     </div>
 </div>

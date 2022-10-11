@@ -24,9 +24,9 @@ export class DeletecomponentComponent implements OnInit {
    
 
   ngOnInit(): void {
-    this.employeeId = localStorage.getItem("userID");
-    this.employeename=localStorage.getItem("employeeName");
-    this.LoginId=localStorage.getItem("logInId");
+    // this.employeeId = localStorage.getItem("userID");
+    // this.employeename=localStorage.getItem("employeeName");
+    // this.LoginId=localStorage.getItem("logInId");
 
   }
   closeDialog(){
@@ -36,38 +36,15 @@ export class DeletecomponentComponent implements OnInit {
    
     this.dialog.open( EditPopupComponent,);
     this.dialogRef.close()
-
   }
   deactive(){
-    const data={
-      UserId:this.employeeId,
-     logedUserId:this.LoginId,
-     status:"deactivate"
-   }
-   this.user.activeDeavtive(data).subscribe((res) => {     
-   });
-   
-
     this.dialog.open(DeactivateUserpopupComponent);
     this.dialogRef.close()
-
   }
 
   activate(){
-    
-    const data={
-      UserId:this.employeeId,
-     logedUserId:this.LoginId,
-     status:"activate"
-   }
-   this.user.activeDeavtive(data).subscribe((res) => {     
-   });
-   
-
     this.dialog.open(ActivatepopUpComponent);
     this.dialogRef.close()
-
-
   }
   resetpws(){
     this.dialog.open(PswResetPopupComponent);

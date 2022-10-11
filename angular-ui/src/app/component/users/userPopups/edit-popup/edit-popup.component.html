@@ -64,8 +64,11 @@
                 <p style="margin-bottom:-24px;" *ngIf="emails.invalid && (emails.dirty || emails.touched)"
                 class="alert">
             
-              <span style="color:red;position: relative;left: -4%;top: -6px;" *ngIf="emails.errors?.['required']">
+              <span style="color:red;position: relative;left: -9%;top: -6px;" *ngIf="emails.errors?.['required']">
                 *Email is required.
+              </span>
+              <span style="color:red;position: relative;left: -7%;top: -4px;" *ngIf="emails.errors&&emails.errors?.['pattern']">
+                *Email is Invalid.
               </span>
             </p>
               </div>
@@ -76,9 +79,11 @@
                 <input type="text" id="mobileno" name="mobileno" required placeholder="Enter your phone number" pattern="^((\\+91-?)|0)?[0-9]{10}$" placeholder="Enter your phone number" [(ngModel)]="phone" #mobileno="ngModel">
                 <p style="margin-bottom:-24px;" *ngIf="mobileno.invalid && (mobileno.dirty || mobileno.touched)"
                 class="alert">
-            
-              <span style="color:red;position: relative;left: -4%;top: -6px;" *ngIf="mobileno.errors?.['required']">
+              <span style="color:red;position: relative;left: -9%;top: -6px;" *ngIf="mobileno.errors?.['required']">
                 *Phone Number is required.
+              </span>
+              <span style="color:red;position: relative;left: -7%;top: -4px;" *ngIf="mobileno.errors&&mobileno.errors?.['pattern']">
+                *Phone Number is Invalid.
               </span>
             </p>
               </div>

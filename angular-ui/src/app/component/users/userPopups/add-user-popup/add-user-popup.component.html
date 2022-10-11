@@ -19,17 +19,14 @@
     <div class="col">
       <label>Username<span>*</span></label>
       <br>
-      <input type="text" id="uname" name="uname" required minlength="5" placeholder="Enter your UserName" [(ngModel)]="username" #uname="ngModel" style="width: 530px;">
-      <div *ngIf="uname.invalid && (uname.dirty || uname.touched)"
+      <input type="text" id="uname" name="uname" required  placeholder="Enter your UserName" [(ngModel)]="username" #uname="ngModel" style="width: 530px;">
+      <p style="margin-bottom:-24px;" *ngIf="uname.invalid && (uname.dirty || uname.touched)"
       class="alert">
   
-    <div style="color:red;position: relative;left: -4%;top: -6px;" *ngIf="uname.errors?.['required']">
+    <span style="color:red;position: relative;left: -4%;top: -6px;" *ngIf="uname.errors?.['required']">
       *Username is required.
-    </div>
-    <div style="color:red;position: relative;left: -4%;top: -4px;" *ngIf="uname.errors?.['minlength']">
-      *Username  must be at least 5 characters long.
-    </div>
-  </div>
+    </span>
+  </p>
     </div>
             </div>
             <br>
@@ -39,35 +36,25 @@
                 <label>First Name <span>*</span></label>
                 <br>
                 <input type="text" id="fname" name="fname" required minlength="4" appForbiddenName="bob" placeholder="Enter your First Name" [(ngModel)]="fullname" #fname="ngModel">
-                <div *ngIf="fname.invalid && (fname.dirty || fname.touched)"
+                <p style="margin-bottom:-24px;" *ngIf="fname.invalid && (fname.dirty || fname.touched)"
                 class="alert">
             
-              <div style="color:red;position: relative;left: -9%;top: -6px;" *ngIf="fname.errors?.['required']">
+              <span style="color:red;position: relative;left: -4%;top: -6px;" *ngIf="fname.errors?.['required']">
                 *First Name is required.
-              </div>
-              <div style="color:red;position: relative;left: -7%;top: -4px;" *ngIf="fname.errors?.['minlength']">
-                *First Name must be at least 4 characters long.
-              </div>
-              <!-- <div  style="color:red;"*ngIf="name.errors?.['forbiddenName']">
-                First Name cannot be Bob.
-              </div> -->
-            
-            </div>
+              </span>
+            </p>
               </div>
               <div class="col">
                 <label>Last Name <span>*</span></label>
                 <br>
                 <input type="text" id="lname" name="lname" required minlength="4" appForbiddenName="bob" #lname="ngModel" placeholder="Enter your First Name" [(ngModel)]="Lastname">
-                <div *ngIf="lname.invalid && (lname.dirty || lname.touched)"
+                <p style="margin-bottom:-24px;" *ngIf="lname.invalid && (lname.dirty || lname.touched)"
                 class="alert">
             
-              <div style="color:red;position: relative;left: -9%;top: -6px;" *ngIf="lname.errors?.['required']">
+              <span style="color:red;position: relative;left: -4%;top: -6px;" *ngIf="lname.errors?.['required']">
                 *Last Name is required.
-              </div>
-              <div style="color:red;position: relative;left: -7%;top: -4px;" *ngIf="lname.errors?.['minlength']">
-                *Last Name must be at least 4 characters long.
-              </div>
-            </div>
+              </span>
+            </p>
               </div>
             </div>
             <br>
@@ -76,31 +63,26 @@
                 <label>Email Id<span>*</span></label>
                 <br>
                 <input type="email"id="emails" name="emails" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #emails="ngModel" placeholder="Enter your Email" [(ngModel)]="email">
-                <div *ngIf="emails.invalid && (emails.dirty || emails.touched)"
+                <p style="margin-bottom:-24px;" *ngIf="emails.invalid && (emails.dirty || emails.touched)"
                 class="alert">
             
-              <div style="color:red;position: relative;left: -9%;top: -6px;" *ngIf="emails.errors?.['required']">
+              <span style="color:red;position: relative;left: -4%;top: -6px;" *ngIf="emails.errors?.['required']">
                 *Email is required.
-              </div>
-              <div style="color:red;position: relative;left: -7%;top: -4px;" *ngIf="emails.errors&&emails.errors?.['pattern']">
-                *Email is Invalid.
-              </div>
-            </div>
+              </span>
+            </p>
               </div>
               <div class="col">
 
                 <label>Phone No<span>*</span></label>
                 <br>
                 <input type="text"id="mobile" name="mobile" required placeholder="Enter your phone number" pattern="^((\\+91-?)|0)?[0-9]{10}$" [(ngModel)]="phone"#mobile="ngModel">
-                <div *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)"
+                <p style="margin-bottom:-24px;" *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)"
                 class="alert">
-              <div style="color:red;position: relative;left: -9%;top: -6px;" *ngIf="mobile.errors?.['required']">
-                *Phone Number is required.
-              </div>
-              <div style="color:red;position: relative;left: -7%;top: -4px;" *ngIf="mobile.errors&&mobile.errors?.['pattern']">
-                *Phone Number is Invalid.
-              </div>
-            </div>
+            
+              <span style="color:red;position: relative;left: -4%;top: -6px;" *ngIf="mobile.errors?.['required']">
+                Phone Number is required.
+              </span>
+            </p>
               </div>
             </div>
             <br>

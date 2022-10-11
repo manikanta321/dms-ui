@@ -11,6 +11,7 @@ export class MaterialsClassificationComponent implements OnInit {
   subname: string[] = ['Sub category 1', 'Sub category 2',];
   typename: string[] = ['Type TP 1', 'Type TP 2', 'Type TP 3','Type TP 4'];
   toprint:boolean=false;
+  addButton:boolean =false;
 
   toggle:boolean=true;
   // clData: string[] = ['Type TP 1', 'Type TP 2', 'Type TP 3','Type TP 4'];
@@ -32,6 +33,9 @@ export class MaterialsClassificationComponent implements OnInit {
   }
   printvalue(valueofprint:boolean){
     this.toprint=valueofprint;
+  }
+  addCategory(){
+    this.addButton =true;
   }
   
 }

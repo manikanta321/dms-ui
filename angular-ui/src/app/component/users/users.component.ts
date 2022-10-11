@@ -469,9 +469,9 @@ console.log('checkdata',localdata)
       idField: 'roleId',
       textField: 'roleName',
       selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect Al l',
+      unSelectAllText: 'UnSelect All',
       itemsShowLimit: 2,
-      allowSearchFilter: this.ShowFilter
+      allowSearchFilter: true
   };
   this.selectedItems = [];
   });

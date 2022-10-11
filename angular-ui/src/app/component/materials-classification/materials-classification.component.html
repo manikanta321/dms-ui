@@ -4,12 +4,12 @@
     </div>
     <div class="material-card row">
         <div class="col-12 col-lg-4 col-md-6">
-           <div class="row"><p class="col-10">Sub-Category (3)</p><p class="col-2"><mat-icon>add_circle</mat-icon></p></div> 
+           <div class="row"><p class="col-10">Sub-Category (3)</p><p class="col-2"><mat-icon (click) =addCategory()>add_circle</mat-icon></p></div> 
        <mat-card class="mat-card-content">
         <mat-card-content>
                <div class=" d-flex " *ngFor="let catg of catgname"><p class="col-10 catg ">{{catg}}</p><mat-icon class="col-2">remove_circle</mat-icon></div>
         </mat-card-content>
-        <div class="buttn">
+        <div class="buttn" *ngIf = addButton>
             <button class="btn btn-basic addcat">Add category name</button>
             <button class="btn btn-basic addcode">Add code</button>
           </div>

@@ -73,3 +73,13 @@ mat-sidenav-container {
     height: calc(100vh - 65px);
     /* height: 100vh; */
 }
+mat-tab{
+    display: flex;
+    position: relative;
+    background: grey;
+    box-shadow: #1292EE;
+    padding: 0.75rem;
+    border-radius: 99px;
+    z-index: 2;
+}
+

@@ -4,7 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-active-success-pop',
   templateUrl: './active-success-pop.component.html',
-  styleUrls: ['./active-success-pop.component.css']
+  styleUrls: ['./active-success-pop.component.scss']
 })
 export class ActiveSuccessPopComponent implements OnInit {
   employeeId:any;

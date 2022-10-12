@@ -80,6 +80,8 @@ export class UsersComponent implements OnInit {
   dropdownSettings1: IDropdownSettings = {};
   
    gridOptions = {
+    resizable: true,
+
     onCellClicked: (event: CellClickedEvent) => console.log('Cell was clicked'),
     // set background colour on every row, this is probably bad, should be using CSS classes
     rowStyle: { background: 'black' },
@@ -102,42 +104,40 @@ public popupParent: HTMLElement = document.body;
 columnDefs: ColDef[] = [ 
 
   { headerName: "User Id",
-field: 'employeeCode' ,type: ['nonEditableColumn'], sort: 'desc',  suppressMovable:true,
+field: 'employeeCode' ,type: ['nonEditableColumn'], sort: 'desc',pinned: 'left',
 },
 
-{   headerName: "User Name",field: 'employeeName',type: ['nonEditableColumn'], suppressMovable:true,},
+{   headerName: "User Name",field: 'employeeName',type: ['nonEditableColumn']},
 
-{headerName: "Role", field: 'roleName', type: ['nonEditableColumn'], suppressMovable:true,},
+{headerName: "Role", field: 'roleName', type: ['nonEditableColumn']},
 
 {  headerName: "Email Id",
- field: 'email',type: ['nonEditableColumn'], suppressMovable:true, },
+ field: 'email',type: ['nonEditableColumn']},
 
 {   headerName: "Phone no",
-field: 'mobile',type: ['nonEditableColumn'], suppressMovable:true,},
+field: 'mobile',type: ['nonEditableColumn']},
 
 {   headerName: "Last Login",
 // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-field: 'lastLoginDate',type: ['nonEditableColumn'], suppressMovable:true,
+field: 'lastLoginDate',type: ['nonEditableColumn']
 },
 
-
+// suppressMovable:true,
 { headerName: "Status",
  field: 'statusName', 
  type: ['nonEditableColumn'],
- suppressMovable:true,
 cellEditor: 'agSelectCellEditor',
 cellEditorParams: {
 values: ['Active', 'Inactive', 'Invited', 'Locked',],
 },
 cellClass: params => {                      
   return params.value == 'Inactive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
-},
+}
 },
 { 
 
    headerName: "",
 field: '',  filter: false, sortable: false,width:20,
-suppressMovable:true,
 cellRenderer: function clickNextRendererFunc(){
   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
 }, 
@@ -161,7 +161,7 @@ rowData1=[];
 employeeName:any;
 public defaultColDef: ColDef = {
   // set the default column width
-  // width: 100,
+  width: 100,
   // make every column editable
   editable: true,
   // make every column use 'text' filter by default

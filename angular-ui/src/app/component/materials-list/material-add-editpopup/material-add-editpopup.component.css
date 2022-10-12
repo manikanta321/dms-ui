@@ -24,12 +24,12 @@
   }
   .sub-category {
     margin-top: -28px;
-    margin-left: 217px;
+    margin-left: 255px;
     font-family: 'Gilroy';
   }
   .type {
     margin-top: -30px;
-    margin-left: 460px;
+    margin-left: 496px;
     font-family: 'Gilroy';
   }
   .font {
@@ -138,4 +138,18 @@ mat-form-field{
 
     ::ng-deep.mat-dialog-container {
         background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;;
+        }
+
+        .categorydrp{
+          width: 205px;
+        }
+        .subcategorydrp{
+          width: 205px;
+    margin-left: 250px;
+    margin-top: -40px;
+        }
+        .typedrp{
+          width: 205px;
+    margin-left: 499px;
+    margin-top: -42px;
         }

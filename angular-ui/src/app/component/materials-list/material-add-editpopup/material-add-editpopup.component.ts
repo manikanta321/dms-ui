@@ -32,8 +32,9 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
- import {Component} from '@angular/core';
+ import {Component,OnInit} from '@angular/core';
  import {FormBuilder, FormGroup} from '@angular/forms';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
  
  /**
   * @title Stepper animations
@@ -44,8 +45,30 @@
   styleUrls: ['./material-add-editpopup.component.css']
  })
  export class MaterialAddEditpopupComponent {
-   constructor(private _formBuilder: FormBuilder) {}
+  disabled = false;
+  dropdownSettings2: IDropdownSettings = {};
+  dropdownSettings3: IDropdownSettings = {};
+  toppingList2:  any= []; 
+  toppingList3:  any= [];
+   
+  constructor(private _formBuilder: FormBuilder) {}
    firstFormGroup: FormGroup = this._formBuilder.group({firstCtrl: ['']});
    secondFormGroup: FormGroup = this._formBuilder.group({secondCtrl: ['']});
+   onSubCategoryAll(items: any) {
+    console.log('onSelectAll', items);
+  }
+  onSubCategorySelect(item: any) {
+    console.log(item);
+  }
+  onTypeSelect(item: any) {
+    console.log(item);
+  }
+  onTypeAll(items: any) {
+    console.log('onSelectAll', items);
+  }
+
  }
+
+ 
+  
  

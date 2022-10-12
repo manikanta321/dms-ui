@@ -1,20 +1,38 @@
-<div class="font ">
-    <div class=" main" width="400%">
-      <div class="container">
-        <div class="addUser">
-          <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
-        </div>
-        <div class="head-t">
-          <h3 class="addU font">Add Material</h3>
-          <br>
-          <img src="assets/img/arrow-left-circle-fill.svg" style="width: 24px;margin-left: 645px;" alt="left-arr-btn">
-          <img src="assets/img/arrow-right-circle-fill.svg" style="width: 24px; margin-left: 12px;" alt="right-arr-btn">
-           
-       
-  
-            <div class="addUserForm">
-  
-            </div>
-  
-  
-            <button class="btn btn-primary btn-block" style="background-color:#000000 ;">Add</button>
+<div class="example-input-wrapper">
+  <label for="duration">Animation duration:</label>
+  <input id="duration" value="2000" type="number" min="0" step="100" #duration>
+</div>
+
+<mat-vertical-stepper [linear]="false" #stepper [animationDuration]="duration.value">
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Fill out your name</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Fill out your address</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>

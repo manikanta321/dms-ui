@@ -30,7 +30,7 @@ export class PswResetPopupComponent implements OnInit {
       let data={
         UserId:this.userId,
         newPassword:this.entersecond,
-        LoginId:this.LoginId
+        CurrentUserId:this.LoginId
       }
       this.user.changepassword(data).subscribe((res: any) => {
 

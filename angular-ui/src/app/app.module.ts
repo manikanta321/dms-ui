@@ -62,7 +62,7 @@ import { CurrencyConversationComponent } from './component/other-masters/currenc
 import { OrdersComponent } from './component/orders/orders.component';
 import { OrderTableComponent } from './component/orders/order-table/order-table.component';
 import { AuthInterceptor } from './component/AuthInterceptor';
-// import { MatStepperModule } from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
 import { DeactivateUserpopupComponent } from './component/users/userPopups/deactivate-userpopup/deactivate-userpopup.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { PopupCellRendererComponent } from './component/popup-cell-renderer/popup-cell-renderer.component';
@@ -150,6 +150,7 @@ import { DeactiveSuccessPopComponent } from './component/users/userPopups/deacti
     HttpClientModule,
     NgMultiSelectDropDownModule,
     MatCardModule,
+    MatStepperModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

@@ -161,7 +161,6 @@ rowData1=[];
 employeeName:any;
 public defaultColDef: ColDef = {
   // set the default column width
-  width: 100,
   // make every column editable
   editable: true,
   // make every column use 'text' filter by default

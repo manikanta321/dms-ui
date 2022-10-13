@@ -498,7 +498,7 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
 }
 onItemSelect(item: any) {
 
-
+// alert(item.roleName)
   this.userTypes.push(item.roleId);
 
   const data={

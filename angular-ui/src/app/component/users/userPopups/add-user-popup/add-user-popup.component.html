@@ -19,7 +19,7 @@
     <div class="col">
       <label>Username<span>*</span></label>
       <br>
-      <input type="text" id="uname" name="uname" required placeholder="Enter your username" [(ngModel)]="username" #uname="ngModel" style="width: 530px;">
+      <input type="text" id="uname" name="uname" required placeholder="Enter your username" [(ngModel)]="username" #uname="ngModel" style="width: 100%;">
       <p style="margin-bottom:-40px;" *ngIf="uname.invalid && (uname.dirty || uname.touched)"
       class="alert">
   
@@ -96,6 +96,21 @@
    ;font-size:20px; font-weight: lighter;"><b>Role Selection</b></h6>
             <div class="row">
               <div class="col">
+
+                <select  #teams class="form-select form-select-lg mb-8"     (change)="selectedValue(teams.value);" placeholder="Select your Role" aria-label=".form-select-lg example" style="height: 35px;border-radius: 6px;width: 100%;">
+                  <option value=""  selected hidden>Select your Role</option>
+
+                  <option style="height: 900px;"  *ngFor="let topping of toppingList" [value]="topping.roleId">{{topping.roleName}}</option>
+
+                </select>
+
+                <!-- <select class="form-select" aria-label="Default select example">
+                  <option *ngFor="let topping of toppingList" [value]="topping.roleId" (selectionChange)="selectedValue($event.value);">{{topping.roleName}}</option>
+             
+                </select> -->
+                
+
+<!-- 
                   <label>Role</label><span>*</span>
                 <br>
                          <mat-form-field appearance="outline" style="width: 525px;">
@@ -104,7 +119,7 @@
                   <mat-option *ngFor="let topping of toppingList" [value]="topping.roleId" >
                     {{topping.roleName}}</mat-option>
                 </mat-select>
-              </mat-form-field>
+              </mat-form-field> -->
             </div>
             </div>
 
@@ -118,6 +133,7 @@
 
 
           </form>
+          <br>
           <button [disabled]="loginForm.form.invalid" class="btn btn-primary btn-block" style="background-color:#000000 ;" (click)="addUSer()">Add user</button>
         </div>
       </div>

@@ -97,16 +97,24 @@
               <div class="col">
                   <label>Role</label><span>*</span>
                 <br>
-                         <mat-form-field appearance="outline" style="width: 525px;">
+                <select  #teams class="form-select form-select-lg mb-8"    (change)="selectedValue(teams.value);" placeholder="Select your Role" aria-label=".form-select-lg example" style="height: 35px;border-radius: 6px;width: 100%;">
+                  <option value="" disabled selected hidden>{{role123}}</option>
+
+                  <option style="height: 900px;"  *ngFor="let topping of toppingList" [value]="topping.roleId">{{topping.roleName}}</option>
+
+                </select>
+
+                         <!-- <mat-form-field appearance="outline" style="width: 525px;">
                 <mat-select  [(ngModel)]="role123" placeholder="Select your Role " (selectionChange)="selectedValue($event.value);" [disableRipple]="true">
 
                   <mat-option *ngFor="let topping of toppingList" [value]="topping.roleId">
                     {{topping.roleName}}</mat-option>
                 </mat-select>
-              </mat-form-field>
+              </mat-form-field> -->
             </div>
             </div>
 </form>
+<br>
             
             <!-- <mat-form-field>
           <mat-label>Role</mat-label>

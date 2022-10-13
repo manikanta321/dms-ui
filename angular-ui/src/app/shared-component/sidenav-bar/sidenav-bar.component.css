@@ -38,17 +38,21 @@ bottom: 100%;
 border-bottom-right-radius: 13px;
 box-shadow: 0 17px 0 #CED4DA;
 } */
-/* mat-list-item:hover:after{
+mat-list-item:hover:after{
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+
+
   position: absolute;
   content: '';
   height: 30px;
   width: 30px;
-  background: #CED4DA;
+  /* background: #CED4DA; */
   right: 0;
   top: 100%;
   border-top-right-radius: 13px;
   box-shadow: 0 -17px 0 #CED4DA;
-  }  */
+  } 
 .btnclose{
 margin-left: auto;
 cursor: pointer;

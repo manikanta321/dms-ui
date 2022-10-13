@@ -56,9 +56,9 @@ export class AddUserPopupComponent implements OnInit {
     })
     console.log('userData',data)
   }
-  selectedValue($event){
-      alert($event)
-this.role=$event  }
+  selectedValue(value:any){
+      // alert(value)
+this.role=value  }
 
   roleItems(){
     this.user.getroleDetails().subscribe((res: any) => {

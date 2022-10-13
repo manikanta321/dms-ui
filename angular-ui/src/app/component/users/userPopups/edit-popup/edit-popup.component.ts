@@ -65,7 +65,6 @@ roleItems(){
   this.user.getroleDetails().subscribe((res: any) => {
     let localdata=res.response;
 console.log('checkdata',localdata)
-
     this.toppingList = localdata.map((data: { roleId: any; roleName: any; }) => {
       return { roleId: data.roleId, roleName: data.roleName };
     });

@@ -56,11 +56,12 @@
 
 .addUserForm input {
     border-radius: 5px;
-    border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+    /* border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
+    border: black 1px solid;
     padding: 5px 5px;
     width: 250px;
     font-size: 14px;
-    outline: none;
+    outline: none !important;
 }
 
 span {

@@ -20,7 +20,7 @@
 
 .head-t h3{
     color: #000000;
-    text-align: center;
+    text-align: left;
     margin-top: -18px;
     margin-bottom: 2px;
 }
@@ -33,17 +33,18 @@
 .addU:after{
     content: "";
   display: block;
-  width: 60px;
+  width: 402px;
   height: 2px;
-  background: #E5EAF4;
+  background: #686E74;
   right: 0;
   top: 50%;
   position: absolute;
+  margin-right: 25px;
 }
 .addU:before{
     content: "";
     display: block;
-    width: 60px;
+    /* width: 60px; */
     height: 2px;
     background: #E5EAF4;
     left: 0;

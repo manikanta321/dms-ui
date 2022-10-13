@@ -1,5 +1,5 @@
 <div class="font ">
-  <div class=" main" width="400%">
+  <div class=" main" width="600%">
     <div class="container">
       <div class="addUser">
         <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
@@ -7,113 +7,126 @@
       <div class="head-t">
         <h3 class="addU font">Add Material</h3>
         <br>
-        <img src="assets/img/arrow-left-circle-fill.svg" style="width: 24px;margin-left: 645px;" alt="left-arr-btn">
+        <img src="assets/img/arrow-left-circle-fill.svg" style="width: 24px;margin-left: 684px;" alt="left-arr-btn">
         <img src="assets/img/arrow-right-circle-fill.svg" style="width: 24px; margin-left: 12px;" alt="right-arr-btn">
-<!-- <div class="example-input-wrapper">
+        <!-- <div class="example-input-wrapper">
   <label for="duration">Animation duration:</label>
   <input id="duration" value="2000" type="number" min="0" step="100" #duration>
 </div> -->
 
-<mat-stepper labelPosition="bottom" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Basic Information</ng-template>
-      <div class="heading">
-        <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'"><b>Basic Information</b></h6>
-      </div>
-      <div class="category">
-        <label>Category<span>*</span></label>
-      </div>
-      <div class="sub-category">
-        <label>Sub-Category<span>*</span></label>
-        </div>
-        <div class="type"> 
-          <label>Type<span>*</span></label>
-        </div>
-        <div class = "categorydrp">
-        <ng-multiselect-dropdown
-                           name="Category"
-              [placeholder]="'Category'"
-              formControlName="subCategory"
-              [disabled]="disabled" 
-              [settings]="dropdownSettings2"
-              [data]="toppingList2">
-                         </ng-multiselect-dropdown>
-                        </div>
-                        <div class="subcategorydrp">
-                        <ng-multiselect-dropdown
-                name="subCategory"
-                [placeholder]="'Sub-Category'"
-                formControlName="subCategory"
+        <mat-stepper labelPosition="bottom" #stepper>
+          <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel>Basic Information</ng-template>
+              <div class="heading">
+                <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'"><b>Basic
+                    Information</b></h6>
+              </div>
+              <div class="category">
+                <label>Category<span>*</span></label>
+              </div>
+              <div class="sub-category">
+                <label>Sub-Category<span>*</span></label>
+              </div>
+              <div class="type">
+                <label>Type<span>*</span></label>
+              </div>
+              <div class="categorydrp">
+                <ng-multiselect-dropdown name="Category" [placeholder]="'Category'" formControlName="subCategory"
+                  [disabled]="disabled" [settings]="dropdownSettings2" [data]="toppingList2">
+                </ng-multiselect-dropdown>
+              </div>
+              <div class="subcategorydrp">
+                <ng-multiselect-dropdown name="subCategory" [placeholder]="'Sub-Category'" formControlName="subCategory"
+                  [disabled]="disabled" [settings]="dropdownSettings2" [data]="toppingList2"
+                  (onSelect)="onSubCategorySelect($event)" (onSelectAll)="onSubCategoryAll($event)">
+                </ng-multiselect-dropdown>
+              </div>
+              <div class="typedrp">
+                <ng-multiselect-dropdown name="type" [placeholder]="'Type'" formControlName="type" [disabled]="disabled"
+                  [settings]="dropdownSettings3" [data]="toppingList3" (onSelect)="onTypeSelect($event)"
+                  (onSelectAll)="onTypeAll($event)">
+                </ng-multiselect-dropdown>
+              </div>
+              <br>
+              <div class="materialname">
+                <label>Name <span>*</span></label>
+              </div>
+              <div class="uomp">
+                <label>UOM <span>*</span></label>
+              </div>
+
+              <mat-form-field>
+                <input matInput placeholder="Enter the name of material" #input class="form-control container" style="border:solid lightgrey 1px;width: 461px;
+                           height: 35px;background-color: white;margin-top: -9px; margin-left: -1px;">
+              </mat-form-field>
+              <div class="uomdrp">
+                <ng-multiselect-dropdown name="type" [placeholder]="'UOM'" formControlName="type" [disabled]="disabled"
+                  [settings]="dropdownSettings3" [data]="toppingList3" (onSelect)="onTypeSelect($event)"
+                  (onSelectAll)="onTypeAll($event)">
+                </ng-multiselect-dropdown>
+              </div>
+              <div class="description">
+                <label>Description <span>*</span></label>
+              </div>
+              <div class="imageofm">
+                <label>Image of Material <span>*</span></label>
+              </div>
+              <div class="materialci">
+                <label> Material Custom Identifiers <span>*</span></label>
+              </div>
+              <input matInput placeholder="Describe the material" #input class="form-control container" style="border:solid lightgrey 1px;width: 256px;
+                           height: 126px;background-color: white;margin-top: 6px; margin-left: 3px;">
+              <input matInput placeholder="" #input class="form-control container" style="border:solid lightgrey 1px;width: 146px;
+              height: 129px;background-color: white;margin-top: -132px; margin-left: 314px;">
+              <img src="assets/img/add-image.png" style="width: 48px;margin-left: 367px;margin-top: -158px;" alt="left-arr-btn">
+              <div class="customidentifier">
+                <ng-multiselect-dropdown  
+                name="type" 
+                [placeholder]="'Perishable, Cold Storage'" 
+                formControlName="type" 
                 [disabled]="disabled"
-                [settings]="dropdownSettings2"
-                [data]="toppingList2"
-                (onSelect)="onSubCategorySelect($event)"
-                (onSelectAll)="onSubCategoryAll($event)">
-            </ng-multiselect-dropdown>
-          </div>
-          <div class="typedrp">
-          <ng-multiselect-dropdown
-              name="type"
-              [placeholder]="'Type'"
-              formControlName="type"
-              [disabled]="disabled"
-              [settings]="dropdownSettings3"
-              [data]="toppingList3"
-              (onSelect)="onTypeSelect($event)"
-              (onSelectAll)="onTypeAll($event)">
-          </ng-multiselect-dropdown>
-        </div>
-        <br>
-        <div class="materialname">
-          <label>Name <span>*</span></label> 
-        </div>
-        <div class="uomp">
-          <label>UOM <span>*</span></label>  
-        </div>
-     
-     <mat-form-field>
-        <input matInput placeholder="Enter the name of material" #input class="form-control container" style="border:solid lightgrey 1px;width: 461px;
-                           height: 35px;background-color: white;margin-top: -9px; margin-left: 3px;">
-      </mat-form-field>
-      <div class="uomdrp">
-      <ng-multiselect-dropdown
-              name="type"
-              [placeholder]="'UOM'"
-              formControlName="type"
-              [disabled]="disabled"
-              [settings]="dropdownSettings3"
-              [data]="toppingList3"
-              (onSelect)="onTypeSelect($event)"
-              (onSelectAll)="onTypeAll($event)">
-          </ng-multiselect-dropdown>
-          </div>
-      <!-- <div>
+                  [settings]="dropdownSettings3" 
+                  [data]="toppingList3" 
+                  (onSelect)="onTypeSelect($event)"
+                  (onSelectAll)="onTypeAll($event)">
+                </ng-multiselect-dropdown>
+              </div>
+              <!-- <div class="describem">
+                <input type="text" placeholder="Describe the material" style="width: 256px; margin-top: 14px;height: 110px;">
+              </div> -->
+              
+              <div class="expiryperiod">
+                <label> Expiry Period (in months)<span>*</span></label>
+              </div>
+              <input matInput placeholder="NA" #input class="form-control container" style="border:solid lightgrey 1px;width: 201px;
+              height: 34px;background-color: white;margin-top:4px; margin-left: 503px;">
+              <!-- <div>
         <button mat-button matStepperNext>Next</button>
       </div> -->
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Product Information</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Address" formControlName="secondCtrl" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+              <ng-template matStepLabel>Product Information</ng-template>
+              <mat-form-field>
+                <input matInput placeholder="Address" formControlName="secondCtrl" required>
+              </mat-form-field>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Geographies & Properties</ng-template>
+            You are now done.
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+          </mat-step>
+        </mat-stepper>
       </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Geographies & Properties</ng-template>
-    You are now done.
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
     </div>
-  </mat-step>
-</mat-stepper>
-</div> 
-</div>
   </div>

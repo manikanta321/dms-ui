@@ -22,7 +22,7 @@
                         <div class="row" style="position: relative;top: 3%; font-family: 'Gilroy'; color: grey;">
                            <div class="col-md-4 col-lg-4 col-sm-4">
                              <form [formGroup]="myForm">
-                           <ng-multiselect-dropdown
+                           <ng-multiselect-dropdown class="roless"
                                name="city"
                                [placeholder]="'Roles'"
                                formControlName="city"
@@ -38,7 +38,7 @@
                          </div>
                          <div class="col-md-4 col-lg-4 col-sm-4" style="font-family: 'Gilroy'; color: grey;">
                            <form [formGroup]="myForms">
-                         <ng-multiselect-dropdown
+                         <ng-multiselect-dropdown class="stts"
                              name="citys"
                              [placeholder]="'Status'"
                              formControlName="citys"
@@ -58,7 +58,7 @@
                         </div>   
                  <div class="row" style="margin-bottom:5px;">
                   <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
-                  <div class="col-md-4" style="margin-left: 62%;margin-bottom:4px">
+                  <div class="col-md-4" style="margin-left: 65%;margin-bottom:10px">
                     <div class="row">
                     <div class="col-md-8">
                   <div class="searchBox d-flex">
@@ -74,12 +74,12 @@
                 </div>
                 <div class="col-md-2">
                  <div class="add-user" (click)="addUser()">
-                   <img src="assets/img/add-btn.png" style="position: relative;top: 10px;left: 12px;" alt="add-user-btn">
+                   <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
                  </div>
                 </div>
                 <div class="col-md-0">
                  <div class="download-btn" (click)="onBtnExport()">
-                   <img src="assets/img/download-btn.png" style="position: relative;top: 11px;left: 14px;" alt="add-user-btn">
+                   <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;" alt="add-user-btn">
                  </div>
                 </div>
                 </div>

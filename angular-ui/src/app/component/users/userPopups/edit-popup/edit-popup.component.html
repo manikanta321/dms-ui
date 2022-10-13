@@ -59,7 +59,7 @@
             <br>
             <div class="row">
               <div class="col">
-                <label>Email Id<span>*</span></label>
+                <label>Email ID<span>*</span></label>
                 <br>
                 <input type="email" id="emails" name="emails" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #emails="ngModel" placeholder="Enter your email Id" [(ngModel)]="email">
                 <p style="margin-bottom:-40px;" *ngIf="emails.invalid && (emails.dirty || emails.touched)"
@@ -123,9 +123,9 @@
           </mat-select>
         </mat-form-field> -->
 
-
           <button [disabled]="editForm.form.invalid" class="btn btn-primary edituser" (click)="editUser()">Save</button>
           <button class="btn btn-primary cancl" (click)="closeDialog()"> Cancel</button>
+          <span style="margin-left:7%;">Required fields*</span>
         </div>
       </div>
     </div>

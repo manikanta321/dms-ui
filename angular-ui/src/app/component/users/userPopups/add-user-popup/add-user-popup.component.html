@@ -33,7 +33,7 @@
             <div class="row">
 
               <div class="col">
-                <label>First Name <span>*</span></label>
+                <label>First Name<span>*</span></label>
                 <br>
                 <input type="text" id="fname" name="fname" required appForbiddenName="bob" placeholder="Enter your first name" [(ngModel)]="fullname" #fname="ngModel">
                 <p style="margin-bottom:-40px;" *ngIf="fname.invalid && (fname.dirty || fname.touched)"
@@ -45,7 +45,7 @@
             </p>
               </div>
               <div class="col">
-                <label>Last Name <span>*</span></label>
+                <label>Last Name<span>*</span></label>
                 <br>
                 <input type="text" id="lname" name="lname" required  appForbiddenName="bob" #lname="ngModel" placeholder="Enter your last name" [(ngModel)]="Lastname">
                 <p style="margin-bottom:-40px;" *ngIf="lname.invalid && (lname.dirty || lname.touched)"
@@ -135,6 +135,7 @@
           </form>
           <br>
           <button [disabled]="loginForm.form.invalid" class="btn btn-primary btn-block" style="background-color:#000000 ;" (click)="addUSer()">Add user</button>
+          <span style="margin-left:15%;">Required fields*</span>
         </div>
       </div>
     </div>

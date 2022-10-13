@@ -1,3 +1,9 @@
+::ng-deep.mat-dialog-container {
+    
+    border-radius: 21px;
+}
+
+
 .mat-form-field-flex {
     padding-top: -10px;
     display: inline-flex;
@@ -98,7 +104,7 @@ mat-form-field {
 .btn-primary:disabled {
     border-color: black;
     background-color: black;
-    width: 66%;
-    margin-left: 79px;
+    width: 100%;
+    /* margin-left: 79px; */
     margin-top: -12px;
 }

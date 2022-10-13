@@ -11,7 +11,7 @@
           <br>
           <h6 style="color: #000000
    ;font-size:20px; font-weight: lighter;"><b>Basic Information</b></h6>
-   <!-- <p style="color: red;">{{errorMsg}}*</p> -->
+   <p style="color: red;">{{errorMsg}}</p>
         </div>
         <div class="addUserForm">
           <form #loginForm="ngForm">
@@ -134,7 +134,7 @@
 
           </form>
           <br>
-          <button [disabled]="loginForm.form.invalid" class="btn btn-primary btn-block" style="background-color:#000000 ;" (click)="addUSer()">Add user</button>
+          <button [disabled]="loginForm.form.invalid" class="btn btn-primary btn-block justify-center" style="background-color:#000000 ;" (click)="addUSer()">Add user</button>
           <span style="margin-left:15%;">Required fields*</span>
         </div>
       </div>

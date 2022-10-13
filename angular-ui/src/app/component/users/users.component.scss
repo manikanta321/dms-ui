@@ -60,12 +60,14 @@
 }
 ::ng-deep.stts .multiselect-dropdown .dropdown-btn .selected-item {
   background: #000000 !important;
+  font-size: 12px;
 }
  ::ng-deep .stts .multiselect-item-checkbox input[type=checkbox]:checked + div:before {
 background: #000000 !important;
 }
 ::ng-deep.roless .multiselect-dropdown .dropdown-btn .selected-item {
   background: #D23F00 !important;
+  font-size: 12px;
 }
  ::ng-deep .roless .multiselect-item-checkbox input[type=checkbox]:checked + div:before {
 background: #D23F00 !important;

@@ -99,7 +99,7 @@
                   <label>Role</label><span>*</span>
                 <br>
                          <mat-form-field appearance="outline" style="width: 525px;">
-                <mat-select required [formControl]="toppings"[(ngModel)]="role" placeholder="Select your Role" (selectionChange)="selectedValue($event.value);">
+                <mat-select required [formControl]="toppings"[(ngModel)]="role" style ="font-family: 'Gilroy'" placeholder="Select your role" (selectionChange)="selectedValue($event.value);">
 
                   <mat-option *ngFor="let topping of toppingList" [value]="topping.roleId" >
                     {{topping.roleName}}</mat-option>

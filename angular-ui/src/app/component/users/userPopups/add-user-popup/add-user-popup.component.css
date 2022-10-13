@@ -35,9 +35,9 @@
 .addU:after {
     content: "";
     display: block;
-    width: 60px;
+    width: 205px;
     height: 2px;
-    background: #E5EAF4;
+    background: #686E74;
     right: 0;
     top: 50%;
     position: absolute;
@@ -46,9 +46,9 @@
 .addU:before {
     content: "";
     display: block;
-    width: 60px;
+    width: 201px;
     height: 2px;
-    background: #E5EAF4;
+    background: #686E74;
     left: 0;
     top: 50%;
     position: absolute;

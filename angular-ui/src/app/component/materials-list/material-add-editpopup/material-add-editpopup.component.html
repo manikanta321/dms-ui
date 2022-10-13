@@ -65,12 +65,32 @@
           </ng-multiselect-dropdown>
         </div>
         <br>
-      <mat-form-field>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+        <div class="materialname">
+          <label>Name <span>*</span></label> 
+        </div>
+        <div class="uomp">
+          <label>UOM <span>*</span></label>  
+        </div>
+     
+     <mat-form-field>
+        <input matInput placeholder="Enter the name of material" #input class="form-control container" style="border:solid lightgrey 1px;width: 461px;
+                           height: 35px;background-color: white;margin-top: -9px; margin-left: 3px;">
       </mat-form-field>
-      <div>
+      <div class="uomdrp">
+      <ng-multiselect-dropdown
+              name="type"
+              [placeholder]="'UOM'"
+              formControlName="type"
+              [disabled]="disabled"
+              [settings]="dropdownSettings3"
+              [data]="toppingList3"
+              (onSelect)="onTypeSelect($event)"
+              (onSelectAll)="onTypeAll($event)">
+          </ng-multiselect-dropdown>
+          </div>
+      <!-- <div>
         <button mat-button matStepperNext>Next</button>
-      </div>
+      </div> -->
     </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">

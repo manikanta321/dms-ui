@@ -170,7 +170,12 @@
   position: absolute;
   right: 0px;
 }
-
+.addU:before {
+  width: 201px;
+}
+.addU[_ngcontent-mps-c425]:after {
+  width: 205px;
+}
 
 @media screen and (max-width: 620px) {
   .searchBox:hover>.searchInput {

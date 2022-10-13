@@ -125,7 +125,10 @@
 
           <button [disabled]="editForm.form.invalid" class="btn btn-primary edituser" (click)="editUser()">Save</button>
           <button class="btn btn-primary cancl" (click)="closeDialog()"> Cancel</button>
-          <span style="margin-left:7%;">Required fields*</span>
+          <div>
+           <span style="position: relative;">Required fields*</span>
+          </div>
+          <!-- <label style="margin-left:1%;color: red;">Required Fields</label><span>*</span> -->
         </div>
       </div>
     </div>

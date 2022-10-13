@@ -74,3 +74,29 @@ body {
     font-weight: 800;
     color: #000;
 }
+.mat-dialog-container{
+    background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
+    border: 0.5px solid #000000;
+    border-radius: 15px !important;
+}
+.activeSuccessPop .mat-dialog-container{
+    background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+    border: 0.5px solid #000000;
+    border-radius: 10px !important;
+    border-left: 10px solid green !important;
+    padding: 10px 20px;
+}
+.deactiveSuccessPop .mat-dialog-container{
+    background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+    border: 0.5px solid #000000;
+    border-radius: 10px !important;
+    border-left: 10px solid red!important;
+    padding: 10px 20px;
+}
+.deactiveSuccessPop .mat-dialog-container{
+    background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+    border: 0.5px solid #000000;
+    border-radius: 10px !important;
+    border-left: 10px solid green !important;
+    padding: 10px 20px;
+}

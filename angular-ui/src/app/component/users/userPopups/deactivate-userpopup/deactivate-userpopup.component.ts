@@ -31,7 +31,7 @@ export class DeactivateUserpopupComponent implements OnInit {
    }
     this.user.activeDeavtive(data).subscribe((res) => {     
     });
-    this.dialog.open(DeactiveSuccessPopComponent);
+    this.dialog.open(DeactiveSuccessPopComponent, {panelClass: 'deactiveSuccessPop'});
     this.dialogRef.close()
   }
 

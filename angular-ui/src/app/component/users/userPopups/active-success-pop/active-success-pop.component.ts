@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -9,8 +9,12 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class ActiveSuccessPopComponent implements OnInit {
   employeeId:any;
   employeename:any
-  constructor(private dialogRef: MatDialogRef<any>) { }
-
+  constructor(private dialogRef: MatDialogRef<any>,
+    private elementRef: ElementRef) { }
+//   ngAfterViewInit() {
+//     this.elementRef.nativeElement.ownerDocument
+//         .borderleft = '10px solid green';
+// }
   ngOnInit(): void {
     this.employeeId = localStorage.getItem("userID");
     this.employeename=localStorage.getItem("employeeName");

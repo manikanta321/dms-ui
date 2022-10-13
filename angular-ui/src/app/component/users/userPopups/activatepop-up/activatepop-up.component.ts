@@ -31,7 +31,7 @@ export class ActivatepopUpComponent implements OnInit {
    }
    this.user.activeDeavtive(data).subscribe((res) => {     
    });
-   this.dialog.open(ActiveSuccessPopComponent)
+   this.dialog.open(ActiveSuccessPopComponent, {panelClass: 'activeSuccessPop'})
    this.dialogRef.close();
   }
 }

@@ -45,6 +45,7 @@
   background-image: none;
   border-radius: 10px !important;
   background: white !important;
+  height: 41px;
 }
 ::ng-deep.dropdown-list {
   position: absolute;
@@ -197,7 +198,7 @@ background: #D23F00 !important;
   border-radius: 10px;
   font-family: 'Gilroy-medium';
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 12px;
   line-height: 17px;
   letter-spacing: 0.08em;
@@ -206,6 +207,7 @@ background: #D23F00 !important;
   // transition: 0.2s  ease-in-out;
   position: absolute;
   right: 0px;
+  bottom: -3px;
 }
 .addU:before {
   width: 201px;

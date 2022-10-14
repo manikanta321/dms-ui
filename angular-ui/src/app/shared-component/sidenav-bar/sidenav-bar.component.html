@@ -59,34 +59,32 @@
   </mat-panel-title>
    
 </mat-expansion-panel-header >
-<mat-list-item  class="droplist" style="font-size: 14px;" routerLink="/dashbord/user"  class="btn-link " routerLinkActive="active"
-   
-(click)="closePanel()" >
- <img src="../../../assets/sidebarImages/sidenav-sub-users.svg" alt="">
-    <!-- <mat-icon>person icon</mat-icon>    -->
-     <span *ngIf="collapsed">Users</span>
+    <mat-list-item  class="droplist" style="font-size: 14px;" routerLink="/dashbord/user"  class="btn-link " routerLinkActive="active"
+        (click)="closePanel()" >
+            <img src="../../../assets/sidebarImages/sidenav-sub-users.svg" alt="">
+                <!-- <mat-icon>person icon</mat-icon>    -->
+        <span *ngIf="collapsed">Users</span>
     </mat-list-item>
     
     <mat-list-item class="droplist"  style="font-size: 14px;" routerLink="/dashbord/materials" class="btn-link " routerLinkActive="active"
-   
-    (click)="closePanel()">
-    <img src="../../../assets/sidebarImages/sidenav-sub-materials.svg" alt="">
-        <!-- <mat-icon>store mall directory icon</mat-icon>    -->
-         <span *ngIf="collapsed">Materials</span>
-        </mat-list-item>
-        <mat-list-item class="droplist"   style="font-size: 14px;"   class="btn-link " routerLinkActive="active"
-   
-(click)="closePanel()">
-<img src="../../../assets/sidebarImages/sidenav-sub-geography.svg" alt="">
-    <!-- <mat-icon> map icon</mat-icon>    -->
-     <span  *ngIf="collapsed">Geographies</span>
+        (click)="closePanel()">
+            <img src="../../../assets/sidebarImages/sidenav-sub-materials.svg" alt="">
+            <!-- <mat-icon>store mall directory icon</mat-icon>    -->
+            <span *ngIf="collapsed">Materials</span>
     </mat-list-item>
+           
+    <mat-list-item class="droplist"   style="font-size: 14px;"   class="btn-link " routerLink="/dashbord/geographies" routerLinkActive="active"
+        (click)="closePanel()">
+            <img src="../../../assets/sidebarImages/sidenav-sub-geography.svg" alt="">
+                <!-- <mat-icon> map icon</mat-icon>    -->
+            <span  *ngIf="collapsed">Geographies</span>
+    </mat-list-item>
+
     <mat-list-item class="droplist"  style="font-size: 14px;" class="btn-link " routerLink="/dashbord/other-masters" routerLinkActive="active"
-   
-(click)="closePanel()">
-<img src="../../../assets/sidebarImages/sidenav-sub-othermaterial.svg" alt="">
-    <!-- <mat-icon>person_outline</mat-icon>    -->
-     <span  *ngIf="collapsed">Other Masters</span>
+        (click)="closePanel()">
+            <img src="../../../assets/sidebarImages/sidenav-sub-othermaterial.svg" alt="">
+            <!-- <mat-icon>person_outline</mat-icon>    -->
+        <span  *ngIf="collapsed">Other Masters</span>
     </mat-list-item>
   
    

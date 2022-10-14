@@ -74,6 +74,9 @@ import { ActiveSuccessPopComponent } from './component/users/userPopups/active-s
 import { DeactiveSuccessPopComponent } from './component/users/userPopups/deactive-success-pop/deactive-success-pop.component';
 import { GeographicListComponent } from './component/geographic-list/geographic-list.component';
 import { GeoClassificationComponent } from './component/geo-classification/geo-classification.component';
+import {MatRadioModule} from '@angular/material/radio';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -111,7 +114,6 @@ import { GeoClassificationComponent } from './component/geo-classification/geo-c
     CurrencyConversationComponent,
     OrdersComponent,
     OrderTableComponent,
-  
     DeactivateUserpopupComponent,
     PopupCellRendererComponent,
     RestPwsdUserPopupComponent,
@@ -139,6 +141,7 @@ import { GeoClassificationComponent } from './component/geo-classification/geo-c
     MatFormFieldModule,
     MatSelectModule,
     MatTableModule,
+    MatRadioModule,
     MatListModule,
     MatMenuModule,
     MatPaginatorModule,

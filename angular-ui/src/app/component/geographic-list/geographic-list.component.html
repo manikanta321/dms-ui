@@ -1,1 +1,62 @@
-<p>geographic-list works!</p>
+<div >
+    <section >
+        <div class="row">
+            <div class="col-6">
+        <mat-radio-group class="radioPadding" [(ngModel)]="shipPackCharges">
+          <mat-radio-button class="shipButton" value="Shipping" checked="true" (click)="shipClick('Shipping')">Shipping Charges</mat-radio-button>
+          <mat-radio-button class="shipButton" value="Packing" (click)="shipClick('Packing')">Packing Charges</mat-radio-button>
+        </mat-radio-group>
+    </div>
+        <div class="col-6" style="margin-bottom:5px;">
+            <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
+            <div class="col-md-4" style="margin-left: 65%;margin-bottom:10px">
+              <div class="row">
+              <div class="col-md-4">
+            <div class="searchBox d-flex">
+              <input class="searchInput" style="font-family: 'Gilroy'" type="text" name="" placeholder="Type & search for anything" 
+              (keyup)="onSearchChange($event)">
+              <button class="searchButton" href="#"> 
+                  <i class="material-icons">
+                      search
+                  </i>
+              </button>
+              <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+            </div>  
+          </div>
+          <div class="col-md-4">
+           <div class="add-user" (click)="addUser()">
+             <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+           </div>
+          </div>
+          <div class="col-md-4">
+           <div class="download-btn" (click)="onBtnExport()">
+             <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;" alt="add-user-btn">
+           </div>
+          </div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </section>
+    <ag-grid-angular
+                 id="gridContainer"
+                 style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy"
+                 class="ag-theme-material"
+                 [rowHeight]="25"
+                 [headerHeight]="48"
+                 [columnDefs]="columnDefs"
+                 [defaultColDef]="defaultColDef"
+                 [columnTypes]="columnTypes"
+                 [rowData]="rowData5"
+                 [suppressExcelExport]="true"
+                 [popupParent]="popupParent"
+                  (cellValueChanged)="onCellValueChanged($event)"
+                 (firstDataRendered)="onFirstDataRendered($event)" 
+                 (firstDataRendered)="onFirstDataRendered($event)"
+                 (rowClicked)="openDialog()"
+                 (cellClicked)="onCellClicked($event)"
+                 (gridReady)="onGridReady($event)"
+                 [pagination]="true"
+                 ></ag-grid-angular>
+ 
+ </div>

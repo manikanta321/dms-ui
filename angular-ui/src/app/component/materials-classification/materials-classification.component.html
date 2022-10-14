@@ -15,7 +15,7 @@
         </p>
       </div>
       <mat-card class="mat-card-content">
-        <mat-card-content >
+        <mat-card-content [style.overflow]="'auto'"  [style.height.px]="'360'">
           <div class="scroll d-flex" *ngFor="let catg of catgname">
             <p class="col-10 catg" (click)="onClick(catg)" [ngClass]="{ 'selected': catg == selectedItem }">{{catg}}</p>
             <mat-icon class="col-2" (click)="removecatg(catg)">remove_circle</mat-icon>
@@ -42,7 +42,7 @@
         </p>
       </div>
       <mat-card class="mat-card-content">
-        <mat-card-content>
+        <mat-card-content [style.overflow]="'auto'"  [style.height.px]="'360'">
           <div class="span-subhead"><span>category 3</span>
             <mat-icon>arrow_drop_down</mat-icon>
           </div>
@@ -72,7 +72,7 @@
         </p>
       </div>
       <mat-card class="mat-card-content">
-        <mat-card-content>
+        <mat-card-content [style.overflow]="'auto'"  [style.height.px]="'360'">
           <div class="span-subhead"><span style="padding-bottom: 10px;">category 3</span>
             <mat-icon>keyboard_arrow_right</mat-icon><span>Sub-category</span>
             <mat-icon>arrow_drop_down</mat-icon>

@@ -72,6 +72,8 @@ import { PswResetPopupComponent } from './component/users/userPopups/psw-reset-p
 import { ActivatepopUpComponent } from './component/users/userPopups/activatepop-up/activatepop-up.component';
 import { ActiveSuccessPopComponent } from './component/users/userPopups/active-success-pop/active-success-pop.component';
 import { DeactiveSuccessPopComponent } from './component/users/userPopups/deactive-success-pop/deactive-success-pop.component';
+import { GeographicListComponent } from './component/geographic-list/geographic-list.component';
+import { GeoClassificationComponent } from './component/geo-classification/geo-classification.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -117,6 +119,8 @@ import { DeactiveSuccessPopComponent } from './component/users/userPopups/deacti
     ActivatepopUpComponent,
     ActiveSuccessPopComponent,
     DeactiveSuccessPopComponent,
+    GeographicListComponent,
+    GeoClassificationComponent,
     
   ],
   imports: [

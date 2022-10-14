@@ -9,7 +9,7 @@
     text-transform: uppercase;
     font-feature-settings: 'pnum' on, 'lnum' on;
     color: #000000;
-    border-bottom: 3px solid #1292EE;
+    /* border-bottom: 3px solid #1292EE; */
     background-color: transparent;
 }
 
@@ -81,3 +81,29 @@ mat-tab{
     border-radius: 99px;
     z-index: 2;
 }
+
+::ng-deep .mat-tab-header{
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    width: 378px !important;
+    border-radius: 25px;
+    background: white;
+    left: 30%;
+
+}
+::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+    display: none !important;
+}
+::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
+    background: black;
+    color: white;
+    border-radius: 25px;
+}
+
+ .geo-label .mat-tab-labels:nth-child(1) {
+    width: 50% !important;
+  }
+
+

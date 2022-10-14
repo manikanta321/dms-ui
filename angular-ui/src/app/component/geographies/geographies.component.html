@@ -10,9 +10,13 @@
         <!--<div class="dash-content" > -->
                     <div class="UNFAPP-asmnt-rgt-area main" style="padding: 15px;">
                         <!-- <div class="col-lg-12"> -->
-                            <mat-tab-group>
-                                <mat-tab label="Classfication"><app-geo-classification></app-geo-classification></mat-tab>
-                                <mat-tab label="Settings"><app-geographic-list></app-geographic-list></mat-tab>
+                            <mat-tab-group class="geo-label">
+                                <mat-tab label="Classfication">
+                                    <app-geo-classification></app-geo-classification>
+                                </mat-tab>
+                                <mat-tab label="Settings">
+                                    <app-geographic-list></app-geographic-list>
+                                </mat-tab>
                             </mat-tab-group>
                            
                         <!-- </div> -->
@@ -22,81 +26,3 @@
     
 </mat-sidenav-container>
 
-<!-- <div class="container">
-    <div class="geographies mt-5">
-        <div class="row">
-            <div class="col-2">
-                <div class="d-flex head-d">
-                <div class="c-head">Country (4)</div>
-               <div><mat-checkbox class="mat-checkbox mat-primary"></mat-checkbox>
-                <span class="c-span">+</span></div> 
-            </div>
-            <div class="country-t">
-                <div class="country-name">
-                    <p class="cname" *ngFor="let cname of countryname">{{cname}}</p>
-                    <input type="button" value="search" placeholder="" style="width: 80px;">
-                    <button style="margin: 0 2px;"> coard</button>
-                </div>
-            </div>
-            </div>
-            <div class="col-2">
-                <div class="d-flex">
-                    <div class="c-head">Country (4)</div>
-                   <div><mat-checkbox class="mat-checkbox mat-primary"></mat-checkbox>
-                    <span class="city-span">+</span></div> 
-                </div>
-                <div class="country-t">
-                    <div class="country-name">
-                        <p class="cname" *ngFor="let cname of countryname">{{cname}}</p>
-                        <input type="button" value="search" placeholder="" style="width: 80px;">
-                        <button style="margin: 0 2px;"> coard</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="d-flex">
-                    <div class="c-head">Country (4)</div>
-                   <div><mat-checkbox class="mat-checkbox mat-primary"></mat-checkbox>
-                    <span class="s-span">+</span></div> 
-                </div>
-                <div class="country-t">
-                    <div class="country-name">
-                        <p class="Sname" *ngFor="let state of Sname">{{state}}</p>
-                        <input type="button" value="search" placeholder="" style="width: 80px;">
-                        <button style="margin: 0 2px;"> coard</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="d-flex">
-                    <div class="c-head">Country (4)</div>
-                   <div><mat-checkbox class="mat-checkbox mat-primary"></mat-checkbox>
-                    <span class="D-span">+</span></div> 
-                </div>
-                <div class="country-t">
-                    <div class="country-name">
-                        <p class="Dname" *ngFor="let district of Dname">{{district}}</p>
-                        <input type="button" value="search" placeholder="" style="width: 80px;">
-                        <button style="margin: 0 2px;"> coard</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="d-flex">
-                    <div class="c-head">Country (4)</div>
-                   <div><mat-checkbox class="mat-checkbox mat-primary"></mat-checkbox>
-                    <span class="R-span">+</span></div> 
-                </div>
-                <div class="country-t">
-                    <div class="country-name">
-                        <p class="cityname" *ngFor="let city of Cname">{{city}}</p>
-                        <input type="button" value="search" placeholder="" style="width: 80px;">
-                        <button style="margin: 0 2px;"> coard</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</mat-sidenav-content>
-</mat-sidenav-container> -->

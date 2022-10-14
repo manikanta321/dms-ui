@@ -119,3 +119,12 @@ li{
   .add-country-cls .addcat {
     width: 100% !important;
   }
+
+  .printImg{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .geo-classification-crad .mat-card {
+    height:350px !important;
+  }

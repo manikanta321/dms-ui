@@ -15,14 +15,15 @@
         </p>
       </div>
       <mat-card class="mat-card-content">
-        <mat-card-content>
-          <div class=" d-flex " *ngFor="let catg of catgname">
+        <mat-card-content >
+          <div class="scroll d-flex" *ngFor="let catg of catgname">
             <p class="col-10 catg" (click)="onClick(catg)" [ngClass]="{ 'selected': catg == selectedItem }">{{catg}}</p>
             <mat-icon class="col-2" (click)="removecatg(catg)">remove_circle</mat-icon>
           </div>
           <div class="buttn d-flex" *ngIf=addButton>
             <div class="col-10">
-              <button class="btn btn-basic addcat">Add category name</button>
+              <!-- <button class="btn btn-basic addcat">Add category name</button> -->
+              <input type="text" class="addcatg" placeholder="Add category name">
               <button class="btn btn-basic addcode">Add code</button>
             </div>
             <div class="col-2">
@@ -52,7 +53,8 @@
           </div>
           <div class="buttn d-flex" *ngIf=addButton>
             <div class="col-10">
-              <button class="btn btn-basic addcat">Add category name</button>
+              <!-- <button class="btn btn-basic addcat">Add category name</button> -->
+              <input type="text" class="addcatg" placeholder="Add category name">
               <button class="btn btn-basic addcode">Add code</button>
             </div>
             <div class="col-2">
@@ -83,7 +85,8 @@
           </div>
           <div class="buttn d-flex" *ngIf=addButton>
             <div class="col-10">
-              <button class="btn btn-basic addcat">Add category name</button>
+              <!-- <button class="btn btn-basic addcat">Add category name</button> -->
+              <input type="text" class="addcatg" placeholder="Add category name">
               <button class="btn btn-basic addcode">Add code</button>
             </div>
             <div class="col-2">

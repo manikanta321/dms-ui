@@ -4,16 +4,18 @@ mat-card{
     border: 0.5px solid #000000;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 25px;
-    /* height: 400px; */
-}
-.material-cl h2{
-  font-weight: 600;
-  font-size: 22px;
-  letter-spacing: 1px;
+    height: 400px;
+    overflow-y: scroll;
 }
 .printImg{
   display: flex;
   justify-content: flex-end;
+}
+.addcatg{
+    padding: 5px;
+    border-radius: 8px;
+    margin-right: 10px;
+    border: 1px solid black;
 }
 .catg{
     background: #EAEEFF;
@@ -69,7 +71,7 @@ box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.
 border-radius: 10px;
 font-size: 13px;
 color: rgba(104, 110, 116, 0.75);
-padding: 8px 20px;
+/* padding: 8px 20px; */
 }
 .span-subhead{
     margin-bottom: 10px;

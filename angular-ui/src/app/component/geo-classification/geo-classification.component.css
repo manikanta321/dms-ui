@@ -119,3 +119,8 @@ li{
   .add-country-cls .addcat {
     width: 100% !important;
   }
+
+  .printImg{
+    display: flex;
+    justify-content: flex-end;
+  }

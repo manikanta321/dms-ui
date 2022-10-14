@@ -93,3 +93,15 @@ body {
     border-left: 10px solid #FF0000!important;
     padding: 10px 20px;
 }
+
+.geo-label .mat-tab-labels:nth-child(1) {
+    width: 50% !important;
+  }
+
+  .geo-label .mat-tab-header {
+    width:28% !important;
+  }
+
+  .geo-label .mat-ink-bar {
+   display:none;
+  }

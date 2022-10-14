@@ -104,9 +104,9 @@ li{
     color: white;
   }
 
-  .regions-column {
+  /* .regions-column {
     max-width: 24.5% !important;
-  }
+  } */
 
   .add-country-cls .col-8 {
     max-width : 78% !important;

@@ -107,4 +107,5 @@ mat-form-field {
     width: 100%;
     /* margin-left: 79px; */
     margin-top: -12px;
+    width:66%;justify-content: center;margin-left: 71px;
 }

@@ -1,7 +1,6 @@
 
-::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled),
+/* ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled),
 ::ng-deep.mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    /* font-family: Montserrat; */
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -11,48 +10,39 @@
     font-feature-settings: 'pnum' on, 'lnum' on;
     color: #000000;
     border-bottom: 3px solid #1292EE;
-    background-color: transparent;
-}
+    background-color: transparent; 
+} */
 
-::ng-deep.mat-tab-label:not(.mat-tab-disabled),
+/* ::ng-deep.mat-tab-label:not(.mat-tab-disabled),
 ::ng-deep.mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    /* font-family: Montserrat; */
-    font-style: normal;
+     font-style: normal;
     font-weight: 600;
     font-size: 14px;
     line-height: 17px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-}
+    font-feature-settings: 'pnum' on, 'lnum' on; 
+} */
 .font{
     font-family: 'Gilroy';
   }
-mat-select-trigger {
-    /* font-family: Montserrat; */
+/* mat-select-trigger {
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
     line-height: 17px;
     margin-bottom: 20px;
-}
+} */
 
-mat-option {
-    /* font-family: Montserrat; */
+/* mat-option {
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 150%;
-}
+} */
 
-mat-label {
-    /* font-family: Montserrat; */
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 150%;
-    align-items: center;
-    color: #324452;
+::ng-deep.mat-tab-label {
+    padding: 0 54px !important;
 }
 
 mat-sidenav {
@@ -73,13 +63,25 @@ mat-sidenav-container {
     height: calc(100vh - 65px);
     /* height: 100vh; */
 }
-mat-tab{
+::ng-deep .mat-tab-header{
     display: flex;
+    overflow: hidden;
     position: relative;
-    background: grey;
-    box-shadow: #1292EE;
-    padding: 0.75rem;
-    border-radius: 99px;
-    z-index: 2;
-}
+    flex-shrink: 0;
+    width: 378px !important;
+    border-radius: 25px;
+    background: white;
+    left: 30%;
 
+}
+::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+    display: none !important;
+}
+::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
+    background: black;
+    color: white;
+    border-radius: 25px;
+}
+::ng-deep.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    display: none;
+}

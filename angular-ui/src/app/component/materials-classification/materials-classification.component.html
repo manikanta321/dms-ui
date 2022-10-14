@@ -1,42 +1,98 @@
 <div class="section">
-    <div class="material-cl">
-<h2>Material classification</h2>
+  <div class="material-cl row">
+    <div class="col-6">
+    <h2>Materials</h2></div>
+    <div class="col-6 printImg">
+      <img src="../../../assets/material/print-img.svg" alt="">
     </div>
-    <div class="material-card row">
-        <div class="col-12 col-lg-4 col-md-6">
-           <div class="row"><p class="col-10">Sub-Category (3)</p><p class="col-2"><mat-icon (click) =addCategory()>add_circle</mat-icon></p></div> 
-       <mat-card class="mat-card-content">
-        <mat-card-content >
-               <div class=" d-flex " *ngFor="let catg of catgname"><p class="col-10 catg"  (click)="onClick(catg)"  [ngClass]="{ 'selected': catg == selectedItem }">{{catg}}</p><mat-icon class="col-2" (click)="removecatg(catg)">remove_circle</mat-icon></div>
-               <div class="buttn d-flex" *ngIf = addButton>
-                <div class="col-10">
-                  <button class="btn btn-basic addcat">Add category name</button>
-                  <button class="btn btn-basic addcode">Add code</button></div>
-                  <div class="col-2"><mat-icon>remove_circle</mat-icon></div>
-                </div>
+  </div>
+  <div class="material-card row">
+    <div class="col-12 col-lg-4 col-md-6">
+      <div class="row">
+        <p class="col-10">Category (4)</p>
+        <p class="col-2">
+          <mat-icon (click)=addCategory()>add_circle</mat-icon>
+        </p>
+      </div>
+      <mat-card class="mat-card-content">
+        <mat-card-content>
+          <div class=" d-flex " *ngFor="let catg of catgname">
+            <p class="col-10 catg" (click)="onClick(catg)" [ngClass]="{ 'selected': catg == selectedItem }">{{catg}}</p>
+            <mat-icon class="col-2" (click)="removecatg(catg)">remove_circle</mat-icon>
+          </div>
+          <div class="buttn d-flex" *ngIf=addButton>
+            <div class="col-10">
+              <button class="btn btn-basic addcat">Add category name</button>
+              <button class="btn btn-basic addcode">Add code</button>
+            </div>
+            <div class="col-2">
+              <mat-icon>remove_circle</mat-icon>
+            </div>
+          </div>
         </mat-card-content>
-       
-     </mat-card>
+
+      </mat-card>
     </div>
     <div class="col-12 col-lg-4 col-md-6">
-        <div class="row"><p class="col-10">Sub-Category (3)</p><p class="col-2"><mat-icon >add_circle</mat-icon></p></div> 
-     <mat-card class="mat-card-content">
-      <mat-card-content>
-        <div class="span-subhead"><span>category 3</span><mat-icon>arrow_drop_down</mat-icon></div>
-        <div class=" d-flex" *ngFor="let subc of subname" ><p class="col-10 subc"  (click)="onClick(subc)"  [ngClass]="{ 'subselected': subc == selectedItem }">{{subc}}</p><mat-icon class="col-2" (click)="removesub(subc)">remove_circle</mat-icon></div>
-      </mat-card-content>
-   </mat-card>
-   </div>
-   <div class="col-12 col-lg-4 col-md-6">
-    <div class="row"><p class="col-10">Type (2)</p><p class="col-2"><mat-icon>add_circle</mat-icon></p></div> 
-    <mat-card class="mat-card-content">
-     <mat-card-content>
-        <div class="span-subhead"><span style="padding-bottom: 10px;">category 3</span><mat-icon>keyboard_arrow_right</mat-icon><span>Sub-category</span><mat-icon>arrow_drop_down</mat-icon></div>
-        <!-- <li class="type" *ngFor="let type of typename" >{{type}}<mat-icon>add_circle</mat-icon></li> -->
-        <div class=" d-flex" *ngFor="let type of typename"><p class="col-10 type" (click)="onClick(type)"  [ngClass]="{ 'typeselected': type == selectedItem }">{{type}}</p><mat-icon class="col-2" (click)="removetype(type)">remove_circle</mat-icon></div>
-     </mat-card-content>
-  </mat-card>
-  
-  </div>
+      <div class="row">
+        <p class="col-10">Sub-Category (3)</p>
+        <p class="col-2">
+          <mat-icon (click)=addCategory()>add_circle</mat-icon>
+        </p>
+      </div>
+      <mat-card class="mat-card-content">
+        <mat-card-content>
+          <div class="span-subhead"><span>category 3</span>
+            <mat-icon>arrow_drop_down</mat-icon>
+          </div>
+          <div class=" d-flex" *ngFor="let subc of subname">
+            <p class="col-10 subc" (click)="onClick(subc)" [ngClass]="{ 'subselected': subc == selectedItem }">{{subc}}
+            </p>
+            <mat-icon class="col-2" (click)="removesub(subc)">remove_circle</mat-icon>
+          </div>
+          <div class="buttn d-flex" *ngIf=addButton>
+            <div class="col-10">
+              <button class="btn btn-basic addcat">Add category name</button>
+              <button class="btn btn-basic addcode">Add code</button>
+            </div>
+            <div class="col-2">
+              <mat-icon>remove_circle</mat-icon>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
     </div>
+    <div class="col-12 col-lg-4 col-md-6">
+      <div class="row">
+        <p class="col-10">Type (2)</p>
+        <p class="col-2">
+          <mat-icon (click)=addCategory()>add_circle</mat-icon>
+        </p>
+      </div>
+      <mat-card class="mat-card-content">
+        <mat-card-content>
+          <div class="span-subhead"><span style="padding-bottom: 10px;">category 3</span>
+            <mat-icon>keyboard_arrow_right</mat-icon><span>Sub-category</span>
+            <mat-icon>arrow_drop_down</mat-icon>
+          </div>
+          <!-- <li class="type" *ngFor="let type of typename" >{{type}}<mat-icon>add_circle</mat-icon></li> -->
+          <div class=" d-flex" *ngFor="let type of typename">
+            <p class="col-10 type" (click)="onClick(type)" [ngClass]="{ 'typeselected': type == selectedItem }">{{type}}
+            </p>
+            <mat-icon class="col-2" (click)="removetype(type)">remove_circle</mat-icon>
+          </div>
+          <div class="buttn d-flex" *ngIf=addButton>
+            <div class="col-10">
+              <button class="btn btn-basic addcat">Add category name</button>
+              <button class="btn btn-basic addcode">Add code</button>
+            </div>
+            <div class="col-2">
+              <mat-icon>remove_circle</mat-icon>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+  </div>
 </div>

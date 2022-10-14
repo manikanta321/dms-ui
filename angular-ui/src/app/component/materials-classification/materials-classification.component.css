@@ -4,9 +4,21 @@ mat-card{
     border: 0.5px solid #000000;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 25px;
-    /* height: 400px; */
+    height: 400px;
     /* overflow-y: scroll; */
 }
+.scroll{
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+/* .scroll ::-webkit-scrollbar-thumb{
+  background: rgb(11, 11, 103);
+}
+.scroll ::-webkit-scrollbar-track{
+  background: rgb(7, 7, 118);
+} */
 .printImg{
   display: flex;
   justify-content: flex-end;
@@ -52,26 +64,27 @@ div.catg[data-selected] {
 li{
     list-style: none;
 }
-.addcat{
-    background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    margin-right: 10px;
-    font-size: 13px;
-    color: rgba(104, 110, 116, 0.75);
-    padding: 8px 16px;
-    /* width: 150px; */
-    margin-left: -12px;
+.addcatg{
+  padding: 5px;
+  border-radius: 8px;
+  margin-right: 10px;
+  border: 1px solid black;
+  width: 140px;
+  margin-left: -15px;
 }
-.addcode{
-    background: #FFFFFF;
-border: 0.5px solid #000000;
-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-border-radius: 10px;
-font-size: 13px;
-color: rgba(104, 110, 116, 0.75);
-/* padding: 8px 20px; */
+.addcd{
+    width: 75px;
+    padding: 5px;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+.addbt{
+ background: black;
+ color: white;
+ /* width: 34px; */
+ height: 34px;
+ font-size: 14px;
+ border-radius: 8px;
 }
 .span-subhead{
     margin-bottom: 10px;

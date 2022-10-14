@@ -14,9 +14,9 @@
           <mat-icon (click)=addCategory()>add_circle</mat-icon>
         </p>
       </div>
-      <mat-card class="mat-card-content">
-        <mat-card-content [style.overflow]="'auto'"  [style.height.px]="'360'">
-          <div class="scroll d-flex" *ngFor="let catg of catgname">
+      <mat-card class="scroll">
+        <mat-card-content>
+          <div class=" d-flex" *ngFor="let catg of catgname">
             <p class="col-10 catg" (click)="onClick(catg)" [ngClass]="{ 'selected': catg == selectedItem }">{{catg}}</p>
             <mat-icon class="col-2" (click)="removecatg(catg)">remove_circle</mat-icon>
           </div>
@@ -24,7 +24,9 @@
             <div class="col-10">
               <!-- <button class="btn btn-basic addcat">Add category name</button> -->
               <input type="text" class="addcatg" placeholder="Add category name">
-              <button class="btn btn-basic addcode">Add code</button>
+              <!-- <button class="btn btn-basic addcode">Add code</button> -->
+              <input type="text" class="addcd" placeholder="Add Code">
+              <button class="btn btn-basic addbt">Add</button>
             </div>
             <div class="col-2">
               <mat-icon>remove_circle</mat-icon>
@@ -32,7 +34,7 @@
           </div>
         </mat-card-content>
 
-      </mat-card>
+      </mat-card >
     </div>
     <div class="col-12 col-lg-4 col-md-6">
       <div class="row">
@@ -41,8 +43,9 @@
           <mat-icon (click)=addCategory()>add_circle</mat-icon>
         </p>
       </div>
-      <mat-card class="mat-card-content">
-        <mat-card-content [style.overflow]="'auto'"  [style.height.px]="'360'">
+      <!-- sub category -->
+      <mat-card class="scroll">
+        <mat-card-content>
           <div class="span-subhead"><span>category 3</span>
             <mat-icon>arrow_drop_down</mat-icon>
           </div>
@@ -55,7 +58,8 @@
             <div class="col-10">
               <!-- <button class="btn btn-basic addcat">Add category name</button> -->
               <input type="text" class="addcatg" placeholder="Add category name">
-              <button class="btn btn-basic addcode">Add code</button>
+              <input type="text" class="addcd" placeholder="Add Code">
+              <button class="btn btn-basic addbt">Add</button>
             </div>
             <div class="col-2">
               <mat-icon>remove_circle</mat-icon>
@@ -71,8 +75,9 @@
           <mat-icon (click)=addCategory()>add_circle</mat-icon>
         </p>
       </div>
-      <mat-card class="mat-card-content">
-        <mat-card-content [style.overflow]="'auto'"  [style.height.px]="'360'">
+      <!-- type -->
+      <mat-card class="scroll">
+        <mat-card-content>
           <div class="span-subhead"><span style="padding-bottom: 10px;">category 3</span>
             <mat-icon>keyboard_arrow_right</mat-icon><span>Sub-category</span>
             <mat-icon>arrow_drop_down</mat-icon>
@@ -87,7 +92,8 @@
             <div class="col-10">
               <!-- <button class="btn btn-basic addcat">Add category name</button> -->
               <input type="text" class="addcatg" placeholder="Add category name">
-              <button class="btn btn-basic addcode">Add code</button>
+              <input type="text" class="addcd" placeholder="Add Code">
+              <button class="btn btn-basic addbt">Add</button>
             </div>
             <div class="col-2">
               <mat-icon>remove_circle</mat-icon>

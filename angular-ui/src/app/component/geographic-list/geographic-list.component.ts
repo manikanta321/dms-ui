@@ -39,7 +39,8 @@ export class GeographicListComponent implements OnInit {
   searchText:any;
   userTypes:any=[];
   statusTypes:any=[];
-  // checked:boolean=true;
+  headerName: any;
+  shippingChk:boolean=true;
 
   gridOptions = {
     resizable: true,
@@ -58,6 +59,11 @@ export class GeographicListComponent implements OnInit {
 
 shipPackCharges:any;
   shippingHeader: any;
+  columnDefs:any;
+  secondColumn: any;
+  ThirdColumn: any;
+  packageChk: boolean;
+ 
   // headerName: string;
   // fieldName: string;
   constructor(
@@ -73,23 +79,18 @@ shipPackCharges:any;
     this.shipClick('Shipping')
   }
   public popupParent: HTMLElement = document.body;
-  public rowData5 = [{shippingTo:'Argentina Republic'},{shippingForm:'Argentina Republic'},{shippingTo:'Argentina Republic'},
-  {shippingTo:'Argentina Republic'},{shippingTo:'Argentina Republic'}, {shippingCharges:'Argentina'},{shippingForm:'Argentina Republic'},
-  {shippingTo:'Argentina Republic'}, {shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'}];
+  public rowData5 = [
+    {shippingTo:'Argentina Republic'},
+    {shippingForm:'Argentina Republic'},
+    {shippingTo:'Argentina Republic'},
+    {shippingTo:'Argentina Republic'},
+    {shippingTo:'Argentina Republic'},
+    {shippingCharges:'Argentina'},
+    {shippingForm:'Argentina Republic'},
+    {shippingTo:'Argentina Republic'}, 
+    {shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'}];
  
-  columnDefs: ColDef[] = [
-
-    {
-      headerName: "Shipping From",
-      field: 'shippingForm', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
-    },
-
-    { headerName: "Shipping To", field: 'shippingTo', type: ['nonEditableColumn'] },
-
-    { headerName: "Shipping Charges", field: 'shippingCharges', type: ['nonEditableColumn'] , width: 1250   },
-    { headerName: "Packing Charges", field: 'PackingCharges', type: ['nonEditableColumn'] , width: 1250   },
-
-  ];
+  
   public defaultColDef: ColDef = {
     // set the default column width
     width: 170,
@@ -250,14 +251,34 @@ shipPackCharges:any;
    }
 
    shipClick(event:any){
-      alert(event)
-      // this.headerName ="Shipping From";
+      
       // this.fieldName = "Shipping Form";
       if(event == 'Shipping'){
-        this.shippingHeader = true;
+        this.headerName ="Shipping From";
+        this.secondColumn = "Shipping To"
+        this.ThirdColumn = "Shipping Charges"
+        this.shippingChk = true;
+        this.packageChk = false;
+       
+      }else{
+        this.headerName ="Shipping From";
+        this.secondColumn = "Shipping To"
+        this.ThirdColumn = "Packing Charges"
+        this.shippingChk = false;
+        this.packageChk = true;
       }
-      else{
-        this.shippingHeader = false;
-      }
+      this.shippingAndPackages();
+   }
+
+   shippingAndPackages(){
+    this.columnDefs= [
+      {
+        headerName: this.headerName,field: 'shippingForm', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
+      },
+  
+      { headerName: this.secondColumn, field: 'shippingTo', type: ['nonEditableColumn'] },
+  
+      { headerName: this.ThirdColumn, field: 'shippingCharges', type: ['nonEditableColumn'] , width: 1250   }, 
+    ];
    }
 }

@@ -98,9 +98,6 @@ export class UsersComponent implements OnInit {
 public rowData5=[];
 public popupParent: HTMLElement = document.body;
 
-
-
-
 columnDefs: ColDef[] = [ 
 
   { headerName: "User Id",

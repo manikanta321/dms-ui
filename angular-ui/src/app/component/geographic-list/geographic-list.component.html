@@ -2,9 +2,9 @@
     <section >
         <div class="row">
             <div class="col-6">
-        <mat-radio-group class="radioPadding" [(ngModel)]="shipPackCharges">
-          <mat-radio-button class="shipButton" value="Shipping" checked="true" (click)="shipClick('Shipping')">Shipping Charges</mat-radio-button>
-          <mat-radio-button class="shipButton" value="Packing" (click)="shipClick('Packing')">Packing Charges</mat-radio-button>
+        <mat-radio-group class="radioPadding" >
+          <mat-radio-button class="shipButton" (click)="shipClick('Shipping')" value="Shipping" [checked]="shippingChk">Shipping Charges</mat-radio-button>
+          <mat-radio-button class="shipButton"(click)="shipClick('Packing')" value="Packing"  [checked]="packageChk">Packing Charges</mat-radio-button>
         </mat-radio-group>
     </div>
         <div class="col-6" style="margin-bottom:5px;">

@@ -1,1 +1,136 @@
-<p>geo-classification works!</p>
+<div class="section">
+    <div class="material-cl">
+<!-- <h2>Material classification</h2> -->
+    </div>
+    <div class="material-card row">
+
+         <!--start country column -->
+        <div class="col-12 col-lg-3 col-md-6">
+            <div class="row">
+                <p class="col-10">Country (3)</p>
+                <p class="col-2"><mat-icon (click) =addCountry()>add_circle</mat-icon></p>
+            </div> 
+            <mat-card class="mat-card-content">
+                <mat-card-content >
+                    <div class=" d-flex " *ngFor="let catg of countryName">
+                        <p class="col-10 catg"  (click)="onClick(catg)"  [ngClass]="{ 'selected': catg == selectedItem }">{{catg}}</p>
+                        <mat-icon class="col-2" (click)="removecatg(catg)">remove_circle</mat-icon>
+                    </div>
+                    <div class="buttn d-flex" *ngIf = addCountryButton>
+                        <div class="col-10">
+                            <div class="row add-country-cls">
+                                <div class="col-8">
+                                    <button class="addcat">Country</button>
+                                </div>
+                                <div class="col-2">
+                                    <button class="addcode">Code</button>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <mat-icon>remove_circle</mat-icon>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <!--start country column -->
+
+        <!--start state column -->    
+        <div class="col-12 col-lg-3 col-md-6">
+            <div class="row">
+                <p class="col-10">State (3)</p>
+                <p class="col-2"><mat-icon (click) =addState()>add_circle</mat-icon></p>
+            </div> 
+            <mat-card class="mat-card-content">
+                <mat-card-content>
+                    <div class=" d-flex" *ngFor="let subc of stateName" >
+                        <p class="col-10 subc"  (click)="onClick(subc)"  [ngClass]="{ 'subselected': subc == selectedItem }">{{subc}}</p>
+                        <mat-icon class="col-2" (click)="removesub(subc)">remove_circle</mat-icon>
+                    </div>
+                    <div class="buttn d-flex" *ngIf = addStateButton>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6">
+                                    <button class="btn btn-basic addcat">Add category name</button>
+                                </div>
+                                <div class="col-4">
+                                    <button class="btn btn-basic addcode">Add code</button>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <mat-icon>remove_circle</mat-icon>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <!--end state column -->
+
+        <!--start district column -->
+        <div class="col-12 col-lg-3 col-md-6">
+        <div class="row">
+            <p class="col-10">District (2)</p>
+            <p class="col-2"><mat-icon (click) =addDistrict()>add_circle</mat-icon></p>
+        </div> 
+        <mat-card class="mat-card-content">
+            <mat-card-content>
+                <div class=" d-flex" *ngFor="let type of DistrictName">
+                    <p class="col-10 type" (click)="onClick(type)"  [ngClass]="{ 'typeselected': type == selectedItem }">{{type}}</p>
+                    <mat-icon class="col-2" (click)="removetype(type)">remove_circle</mat-icon>
+                </div>
+                <div class="buttn d-flex" *ngIf = addDistrictButton>
+                    <div class="col-10">
+                        <div class="row">
+                            <div class="col-6">
+                                <button class="btn btn-basic addcat">Add category name</button>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-basic addcode">Add code</button>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <mat-icon>remove_circle</mat-icon>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        </div>
+        <!--start district column -->
+
+        <!--start region column -->
+        <div class="col-12 col-lg-3 col-md-6 regions-column">
+            <div class="row">
+                <p class="col-10">Regions (2)</p>
+                <p class="col-2"><mat-icon (click) =addRegion()>add_circle</mat-icon></p>
+            </div> 
+            <mat-card class="mat-card-content">
+                <mat-card-content>
+                    <div class=" d-flex" *ngFor="let region of regionsName">
+                        <p class="col-10 region" (click)="onClick(region)"  [ngClass]="{ 'regionselected': region == selectedItem }">{{region}}</p>
+                        <mat-icon class="col-2" (click)="removetype(region)">remove_circle</mat-icon>
+                    </div>
+                    <div class="buttn d-flex" *ngIf = addRegionButton>
+                        <div class="col-10">
+                            <div class="row">
+                                <div class="col-6">
+                                    <button class="btn btn-basic addcat">Add category name</button>
+                                </div>
+                                <div class="col-4">
+                                    <button class="btn btn-basic addcode">Add code</button>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <mat-icon>remove_circle</mat-icon>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <!--end region column -->
+
+    </div>
+</div>

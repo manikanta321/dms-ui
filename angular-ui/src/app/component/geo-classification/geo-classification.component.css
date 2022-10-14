@@ -1,0 +1,121 @@
+
+mat-card{
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    height: 400px;
+}
+.catg{
+    background: #EAEEFF;
+    border: 1px solid #00187A;
+    border-radius: 10px;
+  margin-bottom: 10px;
+  color: #00187A;
+  padding: 5px;
+    text-align: center;
+}
+div.catg[data-selected] {
+    border: 2px solid #333;
+  }
+.subc{
+    background: #E6FFF6;
+    border: 1px solid #0C5A3E;
+    border-radius: 10px;
+    color: #0C5A3E;
+    font-size: 14px;
+    margin-bottom: 10px;
+    padding: 5px;
+    text-align: center;
+}
+.type{
+    background: #FFEDEC;
+    border: 1px solid #C32F27;
+    border-radius: 10px;
+    color: #C32F27;
+    font-size: 14px;
+    margin-bottom: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+.region {
+    background: #FFEDEC;
+    border: 1px solid #72411B;
+    border-radius: 10px;
+    color: #72411B;
+    font-size: 14px;
+    margin-bottom: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+li{
+    list-style: none;
+}
+
+.addcat{
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    margin-right: 10px;
+    font-size: 13px;
+    color: rgba(104, 110, 116, 0.75);
+    padding: 8px 16px;
+    /* width: 150px; */
+    margin-left: -12px;
+}
+
+.addcode{
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    font-size: 13px;
+    color: rgba(104, 110, 116, 0.75);
+    padding: 8px 20px;
+}
+
+.span-subhead{
+    margin-bottom: 10px;
+    display: flex;
+    color: rgba(104, 110, 116, 0.75);
+    font-size: 13px;
+}
+
+.selected {
+    background-color: #00187A;
+    color: white;
+  }
+
+  .subselected{
+    background: #0C5A3E;
+    color: white;
+  }
+
+  .typeselected{
+    background:  #C32F27;
+    color: white;
+  }
+
+  .regionselected{
+    background:  #3D1A00;
+    color: white;
+  }
+
+  .regions-column {
+    max-width: 24.5% !important;
+  }
+
+  .add-country-cls .col-8 {
+    max-width : 78% !important;
+  }
+
+  .add-country-cls .col-2 {
+    margin-left : -25px !important;
+  }
+
+  .add-country-cls .addcat {
+    width: 100% !important;
+  }

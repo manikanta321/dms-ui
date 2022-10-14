@@ -7,6 +7,10 @@
 .shipButton{
     padding: 1%;
 }
+.editext{
+    font-family: 'Gilroy-Bold', sans-serif;
+    font-weight: bold;
+}
 .searchButton {
     display:bolck;
     color: #FFFFFF;

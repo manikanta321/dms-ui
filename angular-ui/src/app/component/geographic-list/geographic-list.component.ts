@@ -62,7 +62,7 @@ shipPackCharges:any;
   columnDefs:any;
   secondColumn: any;
   ThirdColumn: any;
-  packageChk: boolean;
+  packageChk: boolean = false;
  
   // headerName: string;
   // fieldName: string;

@@ -55,6 +55,11 @@ addCatagory(data){
   return this.http.post<any>(this.classificationurl + 'MaterialApi/AddCategory', data);
   
 }
+addsubCatagory(data){
+  return this.http.post<any>(this.classificationurl + 'MaterialApi/AddsubCategory', data);
+  
+}
+
 
 
 

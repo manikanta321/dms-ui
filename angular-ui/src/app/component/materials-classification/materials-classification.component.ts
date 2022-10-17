@@ -13,6 +13,10 @@ export class MaterialsClassificationComponent implements OnInit {
   typename:any=[];
   addcat:any=''
   addcatcode:any='';
+  sucatnameCode:any='';
+  sucatname:any=''
+  typeCode:any='';
+  type:any=''
   toprint:boolean=false;
   addButton:boolean =false;
   removelist:boolean =false;
@@ -20,6 +24,8 @@ export class MaterialsClassificationComponent implements OnInit {
   selectedItem = null;
   LoginId:any;
   numberValue:any;
+  itemId:any;
+  subCatId:any=''
   // clData: string[] = ['Type TP 1', 'Type TP 2', 'Type TP 3','Type TP 4'];
   // subcat: string[] = ['sub category', 'sub category 2',];
   constructor(
@@ -44,6 +50,9 @@ this.calssification.getclassification().subscribe((res)=>{
   let char=[]
   this.subname=data.firstCat.subCAts.allOtherSubCAts;
   this.typename=data.firstCat.subCAts.firstSubCat.types;
+  this.itemId=data.firstCat.catId
+  this.subCatId=data.firstCat.subCAts.firstSubCat.subCatId;
+ 
  console.log('typename',this.typename)
   console.log('char',this.subname);
  //  this.subname = char.map((data: { subCatId: any; subCatName: any; }) => {
@@ -92,10 +101,60 @@ this.calssification.getclassification().subscribe((res)=>{
       
     })
   }
+
+addsubCat(){
+  let data={
+    subCategoryName:this.sucatname,
+    subCategoryCode:this.sucatnameCode,
+    categoryid:this.itemId,
+    CreatedById:this.numberValue
+};
+this.calssification.addsubCatagory(data).subscribe((res)=>{
+  this.sucatname='';
+  this.sucatnameCode='';
+  })  
+  alert(this.itemId)
+  this.calssification.onclickcat(this.itemId).subscribe((res)=>{
+    console.log(res)
+    let data=res.response;
+    this.subname=data.allOtherSubCAts;
+    if(data.firstSubCat==null){
+      this.typename=[]
+    }
+    else{
+      this.typename=data.firstSubCat.types;
+    }
+    });
+}
+
+
+addtypes(){
+  let data={
+    typeName:this.type,
+    typeCode:this.typeCode,
+    subcategoryid:this.subCatId,
+    CreatedById:this.numberValue
+};
+this.calssification.addsubCatagory(data).subscribe((res)=>{
+  this.type='';
+  this.typeCode='';
+})  
+this.calssification.onclicksubcat(this.subCatId).subscribe((res)=>{
+  console.log(res)
+  let data=res.response;
+  this.typename=res.response;
+  console.log(this.typename)
+
+
+})
+
+
+}
+
 oclicksub(item){
   console.log('item1',item)
-  let subCatId=item.subCatId;
-  this.calssification.onclicksubcat(subCatId).subscribe((res)=>{
+   this.subCatId=item.subCatId;
+  this.calssification.onclicksubcat(this.subCatId).subscribe((res)=>{
     console.log(res)
     let data=res.response;
     this.typename=res.response;
@@ -110,8 +169,8 @@ oclicksub(item){
     this.selectedItem = item;
 console.log('item',item)
 
-let itemId=item.catId;
-this.calssification.onclickcat(itemId).subscribe((res)=>{
+ this.itemId=item.catId;
+this.calssification.onclickcat(this.itemId).subscribe((res)=>{
 console.log(res)
 let data=res.response;
 this.subname=data.allOtherSubCAts;

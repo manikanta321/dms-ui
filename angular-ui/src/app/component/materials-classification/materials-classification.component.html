@@ -16,8 +16,8 @@
       </div>
       <mat-card class="mat-card-content">
         <mat-card-content >
-          <div class="scroll d-flex" *ngFor="let catg of catgname">
-            <p class="col-10 catg" (click)="onClick(catg)" [ngClass]="{ 'selected': catg == selectedItem }">{{catg.catName}}</p>
+          <div class=" d-flex" *ngFor="let catg of catgname">
+            <p class="col-10 catg cursor-pointer" (click)="onClick(catg)" [ngClass]="{ 'selected': catg == selectedItem }">{{catg.catName}}</p>
             <mat-icon class="col-2" (click)="removecatg(catg)">remove_circle</mat-icon>
           </div>
           <div class="buttn d-flex" *ngIf=addButton>
@@ -57,9 +57,9 @@
           <div class="buttn d-flex" *ngIf=addButton>
             <div class="col-10">
               <!-- <button class="btn btn-basic addcat">Add category name</button> -->
-              <input type="text" class="addcatg" placeholder="Add category name">
-              <input type="text" class="addcd" placeholder="Add Code">
-              <button class="btn btn-basic addbt">Add</button>
+              <input type="text" class="addcatg" [(ngModel)]="sucatname" placeholder="Add category name">
+              <input type="text" class="addcd" [(ngModel)]="sucatnameCode" placeholder="Add Code">
+              <button class="btn btn-basic addbt" (click)="addsubCat()">Add</button>
             </div>
             <div class="col-2">
               <mat-icon>remove_circle</mat-icon>
@@ -92,9 +92,9 @@
           <div class="buttn d-flex" *ngIf=addButton>
             <div class="col-10">
               <!-- <button class="btn btn-basic addcat">Add category name</button> -->
-              <input type="text" class="addcatg" placeholder="Add category name">
-              <input type="text" class="addcd" placeholder="Add Code">
-              <button class="btn btn-basic addbt">Add</button>
+              <input type="text" class="addcatg" [(ngModel)]="typeCode" placeholder="Add category name">
+              <input type="text" class="addcd" [(ngModel)]="type" placeholder="Add Code">
+              <button class="btn btn-basic addbt" (click)="addtypes()">Add</button>
             </div>
             <div class="col-2">
               <mat-icon>remove_circle</mat-icon>

@@ -80,15 +80,19 @@ shipPackCharges:any;
   }
   public popupParent: HTMLElement = document.body;
   public rowData5 = [
-    {shippingTo:'Argentina Republic'},
-    {shippingForm:'Argentina Republic'},
-    {shippingTo:'Argentina Republic'},
-    {shippingTo:'Argentina Republic'},
-    {shippingTo:'Argentina Republic'},
-    {shippingCharges:'Argentina'},
-    {shippingForm:'Argentina Republic'},
-    {shippingTo:'Argentina Republic'}, 
-    {shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'}];
+    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
+    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
+    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
+    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
+    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
+    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
+    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
+    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
+    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
+    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
+    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
+    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
+    ];
  
   
   public defaultColDef: ColDef = {

@@ -98,10 +98,11 @@ body {
     width: 50% !important;
   }
 
+  @media(max-width:569px) {
   .geo-label .mat-tab-header {
-    width:28% !important;
+    width:22% !important;
   }
-
+}
   .geo-label .mat-ink-bar {
    display:none;
   }

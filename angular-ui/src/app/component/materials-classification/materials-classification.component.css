@@ -26,12 +26,12 @@ mat-card{
   display: flex;
   justify-content: flex-end;
 }
-.addcatg{
+/* .addcatg{
     padding: 5px;
     border-radius: 8px;
     margin-right: 10px;
     border: 1px solid black;
-}
+} */
 .catg{
     background: #EAEEFF;
     border: 1px solid #00187A;
@@ -72,14 +72,15 @@ li{
   border-radius: 8px;
   margin-right: 10px;
   border: 1px solid black;
-  width: 140px;
-  margin-left: -15px;
+  width: 116px;
+  font-size: 12px;
 }
 .addcd{
-    width: 75px;
+    width: 67px;
     padding: 5px;
     border-radius: 8px;
     margin-right: 10px;
+    font-size: 12px;
 }
 .addbt{
  background: black;
@@ -115,5 +116,11 @@ li{
     background:  #C32F27;
     color: white;
   }
-
-
+  @media (max-width:760px) {
+    .addcatg{
+      margin-right: 5px;
+    }
+    .addcd{
+       margin-right: 5px;
+    }
+  }

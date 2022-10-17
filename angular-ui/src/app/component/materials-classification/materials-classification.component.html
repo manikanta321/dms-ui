@@ -20,18 +20,19 @@
             <p class="col-10 catg cursor-pointer" (click)="onClick(catg)" [ngClass]="{ 'selected': catg == selectedItem }">{{catg.catName}}</p>
             <mat-icon class="col-2" (click)="removecatg(catg)">remove_circle</mat-icon>
           </div>
-          <div class="buttn d-flex" *ngIf=addButton>
-            <div class="col-10">
+          <!-- <div class="buttn" *ngIf=addButton> -->
+            <div class="inbtn d-flex" *ngIf=addButton>
               <!-- <button class="btn btn-basic addcat">Add category name</button> -->
-              <input type="text" class="addcatg" [(ngModel)]="addcat" placeholder="Add category name">
+              <input type="text col-lg-5" class="addcatg" [(ngModel)]="addcat" placeholder="Add category name">
               <!-- <button class="btn btn-basic addcode">Add code</button> -->
-              <input type="text" class="addcd" [(ngModel)]="addcatcode" placeholder="Add Code">
-              <button class="btn btn-basic addbt"(click)="addcatagory()" [disabled]="!addcat || !addcatcode ">Add</button>
+              <input type="text col-lg-3" class="addcd" [(ngModel)]="addcatcode" placeholder="Add Code">
+              <button class="btn btn-basic addbt col-lg-2"(click)="addcatagory()" [disabled]="!addcat || !addcatcode ">Add</button>
+              <!-- <div class="rmve col-lg-1"> -->
+                <mat-icon class="col-lg-2">remove_circle</mat-icon>
+              <!-- </div> -->
             </div>
-            <div class="col-2">
-              <mat-icon>remove_circle</mat-icon>
-            </div>
-          </div>
+            
+          <!-- </div> -->
         </mat-card-content>
 
       </mat-card >
@@ -54,17 +55,18 @@
             </p>
             <mat-icon class="col-2" (click)="removesub(subc)">remove_circle</mat-icon>
           </div>
-          <div class="buttn d-flex" *ngIf=addButton>
-            <div class="col-10">
+          <!-- <div class="buttn d-flex" *ngIf=addButton> -->
+            <div class="inbtn d-flex" *ngIf=addButton>
               <!-- <button class="btn btn-basic addcat">Add category name</button> -->
-              <input type="text" class="addcatg" [(ngModel)]="sucatname" placeholder="Add category name">
-              <input type="text" class="addcd" [(ngModel)]="sucatnameCode" placeholder="Add Code">
-              <button class="btn btn-basic addbt" [disabled]="!sucatname || !sucatnameCode " (click)="addsubCat()">Add</button>
+              <input type="text col-lg-5" class="addcatg" [(ngModel)]="sucatname" placeholder="Add category name">
+              <input type="text col-lg-3" class="addcd" [(ngModel)]="sucatnameCode" placeholder="Add Code">
+              <button class="btn btn-basic addbt col-lg-2" [disabled]="!sucatname || !sucatnameCode " (click)="addsubCat()">Add</button>
+              <div class="rmve col-lg-2">
+                <mat-icon>remove_circle</mat-icon>
+              </div>
             </div>
-            <div class="col-2">
-              <mat-icon>remove_circle</mat-icon>
-            </div>
-          </div>
+           
+          <!-- </div> -->
         </mat-card-content>
       </mat-card>
     </div>
@@ -89,17 +91,18 @@
             </p>
             <mat-icon class="col-2" (click)="removetype(type)">remove_circle</mat-icon>
           </div>
-          <div class="buttn d-flex" *ngIf=addButton>
-            <div class="col-10">
+          <!-- <div class="buttn d-flex" *ngIf=addButton> -->
+            <div class="inbtn d-flex" *ngIf=addButton>
               <!-- <button class="btn btn-basic addcat">Add category name</button> -->
-              <input type="text" class="addcatg" [(ngModel)]="type" placeholder="Add category name">
-              <input type="text" class="addcd" [(ngModel)]="typeCode" placeholder="Add Code">
-              <button class="btn btn-basic addbt" (click)="addtypes()" [disabled]="!type || !typeCode " >Add</button>
+              <input type="text col-lg-5" class="addcatg" [(ngModel)]="type" placeholder="Add category name">
+              <input type="text col-lg-3" class="addcd" [(ngModel)]="typeCode" placeholder="Add Code">
+              <button class="btn btn-basic addbt col-lg-2" (click)="addtypes()" [disabled]="!type || !typeCode " >Add</button>
+              <div class="rmve col-lg-2">
+                <mat-icon>remove_circle</mat-icon>
+              </div>
             </div>
-            <div class="col-2">
-              <mat-icon>remove_circle</mat-icon>
-            </div>
-          </div>
+            
+          <!-- </div> -->
         </mat-card-content>
       </mat-card>
 

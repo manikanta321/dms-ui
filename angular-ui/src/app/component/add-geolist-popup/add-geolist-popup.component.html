@@ -1,0 +1,49 @@
+<form #addressForm="ngForm" class="container mt-3">
+<div class="font ">
+    <div class=" main" width="400%">
+      <div class="container">
+        <div class="addUser">
+          <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+          <div class="head-t">
+            <h3 class="addU font">Charges</h3>
+          </div>
+  
+  
+          <div class="row bothDown">
+            <div class="col-10">
+              <h6 class="packingText"><b>Packing Charges</b></h6>
+              <p class="colorText">{{errorMsg}}</p>
+            </div>
+            <div class="col-2">
+              <mat-icon class="addAlign" (click) = addFields()>add_circle</mat-icon>
+            </div>
+          </div>
+  
+          <div class="row addUserForm mb-4" *ngFor="let packingCharge of packingCharges; let i = index;">
+            <div class="col-3">
+              <label>Start Value</label>
+            <br>
+                <input  type="text" id="sValue" name="sValue" required placeholder="50" [(ngModel)]="packingCharge.address"
+                name="address_{{i}}">
+            </div>
+            <div class="col-3">
+              <label>End Value</label>
+            <br>
+                <input  type="text" id="eValue" name="eValue" required placeholder="5000" [(ngModel)]="packingCharge.eValue"
+                name="street_{{i}}">
+            </div>
+            <div class="col-4">
+              <label>Packing Cost</label>
+              <br>
+                  <input style="width: 260px;" type="text" id="pValue" name="pValue" required placeholder="1500" [(ngModel)]="packingCharge.pValue"
+                  name="city_{{i}}">
+            </div>
+            <div class="col-2">
+              <mat-icon class="removeCircle" *ngIf="i >=1" (click) =removesub(i)>remove_circle</mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

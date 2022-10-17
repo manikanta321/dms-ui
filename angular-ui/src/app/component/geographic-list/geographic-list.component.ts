@@ -11,6 +11,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatTableDataSource } from '@angular/material/table';
 import { AddUserPopupComponent } from '../users/userPopups/add-user-popup/add-user-popup.component';
+import { AddGeolistPopupComponent } from '../add-geolist-popup/add-geolist-popup.component';
 
 export interface PeriodicElement {
   shippingForm: any;
@@ -251,7 +252,10 @@ shipPackCharges:any;
 
   }
   addUser(){
-    this.dialog.open( AddUserPopupComponent,);
+    this.dialog.open( AddGeolistPopupComponent,{
+      width: '691px', //sets width of dialog
+      height:'370px',
+    });
    }
 
    shipClick(event:any){

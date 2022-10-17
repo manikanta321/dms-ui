@@ -109,11 +109,12 @@
           
           <mat-step [stepControl]="secondFormGroup">
             <form [formGroup]="secondFormGroup">
+             
               <ng-template matStepLabel>Product Information</ng-template>
               <div class="mat-slide">
                               <mat-slide-toggle>Is a product?</mat-slide-toggle>
                             </div>
-
+                            <div class="productcont">
               <div class="heading">
                 <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy';margin-top: -25px;;"><b>Product Information</b></h6>
               </div>
@@ -198,12 +199,15 @@
             </div>
           <br>
           <br>
-              <div>
+        </div>
+              <!-- <div>
                 <button mat-button matStepperPrevious>Back</button>
                 <button mat-button matStepperNext>Next</button>
-              </div>
+              </div> -->
             </form>
-          </mat-step>
+          
+          </mat-step> 
+       
           <mat-step class="geoo">
             <ng-template matStepLabel >Geographies & Properties</ng-template>
             <div class="geography">
@@ -263,9 +267,11 @@
             <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'"><b>Properties</b></h6>
           </div>
           <div class="bar">
+            
             <div class="geo">
               <label>Geography</label>
             </div> 
+            <!-- <div class="headergeo"> -->
                       <div class="minorder">
               <label>Min Order Qty</label>
             </div>
@@ -278,22 +284,107 @@
             <div class="leadt">
               <label>Lead Time (days)</label>
             </div> 
-            <div class="registration">
+            <!-- <div class="registration">
               <label>Registration Number</label>
-            </div> 
-            <div class="tags">
+            </div>  -->
+            <!-- <div class="tags">
               <label>Tags</label>
-            </div> 
-            <label>Malaysia(71/26)</label>
+            </div>  -->
+          <!-- </div> -->
+                        <div class="mala">
+              Malaysia(71/26)</div>
+              <div class="malainput">
+              <input matInput placeholder="-" #input class="form-control container" style="border:solid lightgrey 1px;width: 85px;
+          height: 30px;background-color: white;margin-top: -22px; margin-left: 216px;"> 
+                      <input matInput placeholder="-" #input class="form-control container" style="border:solid lightgrey 1px;width: 80px;
+          height: 30px;background-color: white;margin-top: -33px; margin-left: 320px;"> 
+          <input matInput placeholder="-" #input class="form-control container" style="border:solid lightgrey 1px;width: 69px;
+          height: 30px;background-color: white;margin-top: -33px; margin-left: 417px;"> 
+          <input matInput placeholder="-" #input class="form-control container" style="border:solid lightgrey 1px;width: 98px;
+          height: 30px;background-color: white;margin-top: -33px; margin-left: 508px;"> 
+          <input matInput placeholder="Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 141px;
+          height: 30px;background-color: white;margin-top: -33px; margin-left: 630px;"> 
+          <div  class="addlink">
+            <a href="url">Add</a>
+          </div>
+        </div>
                       <div class="Kedah">
                         Kedah(36/26)
                       </div>
+                      <div class="kedahinput">
+                      <input matInput placeholder="Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 85px;
+                      height: 30px;background-color: white;margin-top: -30px; margin-left: 216px;"> 
+                      <input matInput placeholder="Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 80px;
+                      height: 30px;background-color: white;margin-top: -32px; margin-left: 320px;"> 
+                       <input matInput placeholder="Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 69px;
+                       height: 30px;background-color: white;margin-top: -32px; margin-left: 417px;"> 
+                       <input matInput placeholder="Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 98px;
+                       height: 30px;background-color: white;margin-top: -33px; margin-left: 508px;"> 
+                       <input matInput placeholder="Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 141px;
+                       height: 30px;background-color: white;margin-top: -33px; margin-left: 630px;"> 
+                       <div  class="numberl">
+                       
+                      </div>
+                    </div>
                       <div class="Perak">
             Perak(14/26)
+          </div>
+          <div class="perakinput">
+          <input matInput placeholder="Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 85px;
+           height: 30px;background-color: white;margin-top: -27px; margin-left: 216px;"> 
+           <input matInput placeholder="Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 80px;
+           height: 30px;background-color: white;margin-top: -32px; margin-left: 320px;"> 
+            <input matInput placeholder="Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 69px;
+            height: 30px;background-color: white;margin-top: -32px; margin-left: 417px;"> 
+            <input matInput placeholder="Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 98px;
+            height: 30px;background-color: white;margin-top: -33px; margin-left: 508px;"> 
+            <input matInput placeholder="Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 141px;
+            height: 30px;background-color: white;margin-top: -33px; margin-left: 630px;"> 
+            <div  class="addlink">
+              <a href="url">Add</a>
+            </div>
           </div>
           <div class="Penang">
             Penang(21/22)
           </div>
+          <div class="penanginput">
+          <input matInput placeholder="-" #input class="form-control container" style="border:solid lightgrey 1px;width: 85px;
+          height: 30px;background-color: white;margin-top: -27px; margin-left: 216px;"> 
+          <input matInput placeholder="-" #input class="form-control container" style="border:solid lightgrey 1px;width: 80px;
+          height: 30px;background-color: white;margin-top: -32px; margin-left: 320px;"> 
+           <input matInput placeholder="-" #input class="form-control container" style="border:solid lightgrey 1px;width: 69px;
+           height: 30px;background-color: white;margin-top: -32px; margin-left: 417px;"> 
+           <input matInput placeholder="-" #input class="form-control container" style="border:solid lightgrey 1px;width: 98px;
+           height: 30px;background-color: white;margin-top: -33px; margin-left: 508px;"> 
+           <input matInput placeholder="Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 141px;
+           height: 30px;background-color: white;margin-top: -33px; margin-left: 630px;"> 
+            <div  class="addlink">
+              <a href="url">Add</a>
+            </div>
+            </div>
+          <div class="North">
+            North(4/4)
+          </div>
+          <div class="northinput">
+                       <input matInput placeholder="Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 85px;
+              height: 30px;background-color: white;margin-top: -27px; margin-left: 216px;"> 
+              <input matInput placeholder="Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 80px;
+              height: 30px;background-color: white;margin-top: -32px; margin-left: 320px;"> 
+               <input matInput placeholder="Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 69px;
+               height: 30px;background-color: white;margin-top: -32px; margin-left: 417px;"> 
+               <input matInput placeholder="Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 98px;
+               height: 30px;background-color: white;margin-top: -33px; margin-left: 508px;"> 
+               <input matInput placeholder="Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 141px;
+               height: 30px;background-color: white;margin-top: -33px; margin-left: 630px;"> 
+                <div  class="addlink">
+                  <a href="url">Add</a>
+                </div>
+          </div>
+
+
+
+
+
           </div>
             <!-- You are now done. -->
             <!-- <div>

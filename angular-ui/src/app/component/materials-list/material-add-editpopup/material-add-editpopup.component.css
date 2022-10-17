@@ -18,47 +18,57 @@
   font-family: 'Gilroy';
   margin-left: -4px;
 }
-.geography{
+
+.geography {
   overflow: auto;
   max-height: 500px;
+  /* width: 900px; */
 }
-.scroll{
+
+.scroll {
   overflow-y: auto;
 }
+
 ::-webkit-scrollbar {
   width: 8px;
 }
-::-webkit-scrollbar-thumb{
+
+::-webkit-scrollbar-thumb {
   border-radius: 25px;
   /* background: #b3b3bc; */
 }
-::-webkit-scrollbar-track{
- border-radius: 25px;
+
+::-webkit-scrollbar-track {
+  border-radius: 25px;
   margin-top: 16px;
   margin-bottom: 16px;
   margin-left: 20px;
 }
+
 .description {
   font-family: 'Gilroy';
   margin-top: 15px;
 }
 
-.materialci { 
+.materialci {
   font-family: 'Gilroy';
   margin-top: -29px;
   margin-left: 499px;
 }
-.imageofm{
+
+.imageofm {
   font-family: 'Gilroy';
   margin-top: -31px;
   margin-left: 314px;
 }
+
 .expiryperiod {
   font-family: 'Gilroy';
   margin-top: 10px;
   margin-left: 498px;
 }
-.describem{
+
+.describem {
   width: 250px;
 
 }
@@ -97,13 +107,15 @@
 }
 
 ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
-    width: 649px;
+  width: 649px;
   margin-top: -51px;
 }
-.mat-horizontal-stepper-wrapper{
+
+.mat-horizontal-stepper-wrapper {
   margin-top: -47px;
-  
+
 }
+
 /* .mat-horizontal-stepper-header-container ng-tns-c418-7 {
   margin: top -51px;
 }; */
@@ -153,7 +165,7 @@
   display: block;
   width: 280px;
   height: 2px;
-  background:#686E74;
+  background: #686E74;
   right: 0;
   top: 50%;
   position: absolute;
@@ -226,11 +238,13 @@ mat-form-field {
   margin-left: 499px;
   margin-top: -42px;
 }
+
 .customidentifier {
   width: 205px;
   margin-left: 499px;
   margin-top: -145px;
 }
+
 .uomp {
   margin-left: 499px;
   margin-top: -29px;
@@ -241,89 +255,106 @@ mat-form-field {
   margin-top: -65px;
   width: 207px;
 }
-.brandname{
-margin-top: 1px;
+
+.brandname {
+  margin-top: 1px;
   margin-left: -5px;
   font-family: 'Gilroy';
 }
-.globalcode{
-  margin-top: -35px;
-    margin-left: 388px;
-    font-family: 'Gilroy';
-  }
-  .brandpl{
-    margin-top: 10px;
-  }
-  .sku{
-    margin-top: 10px;
-      margin-left: -5px;
-      font-family: 'Gilroy';
-    }
-    .shortcode{
-      margin-top: -35px;
-        margin-left: 388px;
-        font-family: 'Gilroy';
-      }
-      .productg{
-        margin-top: 10px;
-        margin-left: -5px;
-        font-family: 'Gilroy';
-      }
-      .manualsort{
-        margin-top: -35px;
-        margin-left: 388px;
-        font-family: 'Gilroy';
-      }
-      .productdrp{
-        width: 309px;
-    margin-top: 8px;
-    margin-left: -2px;
-}
-.productsg{
-  margin-top: 10px;
-  margin-left: -5px;
-  font-family: 'Gilroy';
-}
-.productlink{
+
+.globalcode {
   margin-top: -35px;
   margin-left: 388px;
   font-family: 'Gilroy';
 }
-.productsdrp{
-  width: 309px;
-    margin-top: 8px;
-    margin-left: -2px;
+
+.brandpl {
+  margin-top: 10px;
 }
-.productci{
-margin-top: 10px;
+
+.sku {
+  margin-top: 10px;
   margin-left: -5px;
   font-family: 'Gilroy';
 }
-.identiersdrp{
-  width: 735px;
-    margin-top: 8px;
-    margin-left: -2px;
+
+.shortcode {
+  margin-top: -35px;
+  margin-left: 388px;
+  font-family: 'Gilroy';
 }
-.mat-slide{
+
+.productg {
+  margin-top: 10px;
+  margin-left: -5px;
+  font-family: 'Gilroy';
+}
+
+.manualsort {
+  margin-top: -35px;
+  margin-left: 388px;
+  font-family: 'Gilroy';
+}
+
+.productdrp {
+  width: 309px;
+  margin-top: 8px;
+  margin-left: -2px;
+}
+
+.productsg {
+  margin-top: 10px;
+  margin-left: -5px;
+  font-family: 'Gilroy';
+}
+
+.productlink {
+  margin-top: -35px;
+  margin-left: 388px;
+  font-family: 'Gilroy';
+}
+
+.productsdrp {
+  width: 309px;
+  margin-top: 8px;
+  margin-left: -2px;
+}
+
+.productci {
+  margin-top: 10px;
+  margin-left: -5px;
+  font-family: 'Gilroy';
+}
+
+.identiersdrp {
+  width: 735px;
+  margin-top: 8px;
+  margin-left: -2px;
+}
+
+.mat-slide {
   margin-left: 620px;
   color: black;
   font-family: 'Gilroy';
   margin-top: -1px;
 }
-.city{
+
+.city {
   margin-left: 608px;
   margin-top: -30px;
 }
-.state{
+
+.state {
   margin-left: 228px;
-    margin-top: -29px;
-}
-.region{
-  margin-left: 425px;
-    margin-top: -29px;
+  margin-top: -29px;
 }
 
-mat-card{
+.region {
+  margin-left: 425px;
+  margin-top: -29px;
+}
+
+mat-card {
   background: #FFFFFF;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
@@ -333,19 +364,22 @@ mat-card{
 
   /* font-size: 10px; */
 }
-.catg{
+
+.catg {
   background: #EAEEFF;
   border: 1px solid #00187A;
   border-radius: 10px;
-margin-bottom: 10px;
-color: #00187A;
-padding: 5px;
+  margin-bottom: 10px;
+  color: #00187A;
+  padding: 5px;
   text-align: center;
 }
+
 div.catg[data-selected] {
   border: 2px solid #333;
 }
-.subc{
+
+.subc {
   background: #E6FFF6;
   border: 1px solid #0C5A3E;
   border-radius: 10px;
@@ -355,7 +389,8 @@ div.catg[data-selected] {
   padding: 5px;
   text-align: center;
 }
-.typeg{
+
+.typeg {
   background: #FFEDEC;
   border: 1px solid #C32F27;
   border-radius: 10px;
@@ -365,10 +400,12 @@ div.catg[data-selected] {
   padding: 5px;
   text-align: center;
 }
-li{
+
+li {
   list-style: none;
 }
-.addcat{
+
+.addcat {
   background: #FFFFFF;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
@@ -380,89 +417,149 @@ li{
   /* width: 150px; */
   margin-left: -12px;
 }
-.addcode{
+
+.addcode {
   background: #FFFFFF;
-border: 0.5px solid #000000;
-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-border-radius: 10px;
-font-size: 13px;
-color: rgba(104, 110, 116, 0.75);
-padding: 8px 20px;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  font-size: 13px;
+  color: rgba(104, 110, 116, 0.75);
+  padding: 8px 20px;
 }
-.span-subhead{
+
+.span-subhead {
   margin-bottom: 10px;
   display: flex;
   color: rgba(104, 110, 116, 0.75);
   font-size: 13px;
 }
+
 .selected {
   background-color: #00187A;
   color: white;
 }
-.subselected{
+
+.subselected {
   background: #0C5A3E;
   color: white;
 }
-.typeselected{
-  background:  #C32F27;
+
+.typeselected {
+  background: #C32F27;
   color: white;
 }
+
 .row {
   width: 767px
 }
 
-.bar{
-  height:400px; 
+.bar {
+  height: 400px;
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 500px;
+  
 }
-.geo{
-margin-top: 18px;
-font-family: 'Gilroy';
+
+.geo {
+  margin-top: 18px;
+  font-family: 'Gilroy';
 }
-.minorder{
+
+.minorder {
   margin-top: -29px;
   margin-left: 212px;
-font-family: 'Gilroy';
+  font-family: 'Gilroy';
 }
-.margin{
+
+.margin {
   margin-top: -29px;
   margin-left: 328px;
-font-family: 'Gilroy';
+  font-family: 'Gilroy';
 }
-.mrp{
+
+.mrp {
   margin-top: -29px;
   margin-left: 431px;
-font-family: 'Gilroy';
+  font-family: 'Gilroy';
 }
-.leadt{
+
+.leadt {
   margin-top: -31px;
   margin-left: 496px;
-font-family: 'Gilroy';
+  font-family: 'Gilroy';
 }
-.registration{
+
+.registration {
   margin-top: -30px;
-font-family: 'Gilroy';
-margin-left: 626px;
+  font-family: 'Gilroy';
+  margin-left: 626px;
 }
-.tags{
+
+.tags {
   margin-top: -32px;
   margin-left: 793px;
-font-family: 'Gilroy';
+  font-family: 'Gilroy';
 }
-.Kedah{
-  margin-top: 4px;
-  margin-left: 4px;
-}
-.Perak{
-  margin-top: 4px;
-  margin-left: 4px;
-}
-.Penang{
-  margin-top: 4px;
+
+.Kedah {
+  margin-top: 24px;
   margin-left: 4px;
 }
 
+.mala {
+  margin-top: 13px;
+  margin-left: 4px;
+}
 
+.Perak {
+  margin-top: 18px;
+  margin-left: 4px;
+}
 
+.Penang {
+  margin-top: 17px;
+  margin-left: 4px;
+}
+
+.North {
+  margin-top: 17px;
+  margin-left: 4px;
+}
+
+/* .geoo{
+  width: 900px;
+} */
+.addlink {
+  margin-top: -21px;
+  margin-left: 799px;
+
+}
+.numberl{
+  margin-top: -21px;
+  margin-left: 799px;
+}
+.headergeo{
+  position: relative;
+    left: -7%;
+}
+.malainput{
+  position: relative;
+    left: -7%;
+}
+.kedahinput{
+  position: relative;
+    left: -7%;
+}
+.perakinput{
+  position: relative;
+    left: -7%;
+}
+.penanginput{
+  position: relative;
+    left: -7%;
+}
+.northinput{
+  position: relative;
+    left: -7%;
+}

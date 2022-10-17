@@ -59,6 +59,10 @@ addsubCatagory(data){
   return this.http.post<any>(this.classificationurl + 'MaterialApi/AddsubCategory', data);
   
 }
+addtypes(data){
+  return this.http.post<any>(this.classificationurl + 'MaterialApi/Addstocktype', data);
+
+}
 
 
 

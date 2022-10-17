@@ -135,7 +135,7 @@ addtypes(){
     subcategoryid:this.subCatId,
     CreatedById:this.numberValue
 };
-this.calssification.addsubCatagory(data).subscribe((res)=>{
+this.calssification.addtypes(data).subscribe((res)=>{
   this.type='';
   this.typeCode='';
 })  

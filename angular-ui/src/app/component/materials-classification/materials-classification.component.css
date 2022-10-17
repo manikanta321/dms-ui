@@ -89,6 +89,14 @@ li{
  font-size: 14px;
  border-radius: 8px;
 }
+.addbt.disabled{
+  background: grey;
+  color: white;
+  /* width: 34px; */
+  height: 34px;
+  font-size: 14px;
+  border-radius: 8px;
+ }
 .span-subhead{
     margin-bottom: 10px;
     display: flex;

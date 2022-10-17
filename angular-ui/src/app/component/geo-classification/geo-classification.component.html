@@ -115,7 +115,7 @@
                 <mat-card-content>
                     <div class=" d-flex" *ngFor="let region of regionsName">
                         <p class="col-10 region" (click)="onClick(region)"  [ngClass]="{ 'regionselected': region == selectedItem }">{{region}}</p>
-                        <mat-icon class="col-2" (click)="removetype(region)">remove_circle</mat-icon>
+                        <mat-icon class="col-2" (click)="removeregions(region)">remove_circle</mat-icon>
                     </div>
                     <div class="buttn d-flex" *ngIf = addRegionButton>
                         <div class="col-10">

@@ -59,6 +59,11 @@ export class GeoClassificationComponent implements OnInit {
   removetype(index){
     this.DistrictName.splice(index, 1);
   }
+
+  removeregions(index){
+    this.regionsName.splice(index, 1);
+  }
+
   onClick(item) {
     this.selectedItem = item;
   }

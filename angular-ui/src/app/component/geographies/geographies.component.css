@@ -2,8 +2,7 @@
 .font{
     font-family: 'Gilroy';
   }
-mat-select-trigger {
-    /* font-family: Montserrat; */
+/* mat-select-trigger {
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -12,7 +11,6 @@ mat-select-trigger {
 }
 
 mat-option {
-    /* font-family: Montserrat; */
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -20,14 +18,13 @@ mat-option {
 }
 
 mat-label {
-    /* font-family: Montserrat; */
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 150%;
     align-items: center;
     color: #324452;
-}
+} */
 
 mat-sidenav {
     width: 5rem;

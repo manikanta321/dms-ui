@@ -220,4 +220,230 @@ mat-form-field {
 .uomdrp {
   margin-left: 499px;
   margin-top: -65px;
+  width: 207px;
 }
+.brandname{
+margin-top: 1px;
+  margin-left: -5px;
+  font-family: 'Gilroy';
+}
+.globalcode{
+  margin-top: -35px;
+    margin-left: 388px;
+    font-family: 'Gilroy';
+  }
+  .brandpl{
+    margin-top: 10px;
+  }
+  .sku{
+    margin-top: 10px;
+      margin-left: -5px;
+      font-family: 'Gilroy';
+    }
+    .shortcode{
+      margin-top: -35px;
+        margin-left: 388px;
+        font-family: 'Gilroy';
+      }
+      .productg{
+        margin-top: 10px;
+        margin-left: -5px;
+        font-family: 'Gilroy';
+      }
+      .manualsort{
+        margin-top: -35px;
+        margin-left: 388px;
+        font-family: 'Gilroy';
+      }
+      .productdrp{
+        width: 309px;
+    margin-top: 8px;
+    margin-left: -2px;
+}
+.productsg{
+  margin-top: 10px;
+  margin-left: -5px;
+  font-family: 'Gilroy';
+}
+.productlink{
+  margin-top: -35px;
+  margin-left: 388px;
+  font-family: 'Gilroy';
+}
+.productsdrp{
+  width: 309px;
+    margin-top: 8px;
+    margin-left: -2px;
+}
+.productci{
+margin-top: 10px;
+  margin-left: -5px;
+  font-family: 'Gilroy';
+}
+.identiersdrp{
+  width: 735px;
+    margin-top: 8px;
+    margin-left: -2px;
+}
+.mat-slide{
+  margin-left: 620px;
+  color: black;
+  font-family: 'Gilroy';
+  margin-top: -1px;
+}
+.city{
+  margin-left: 608px;
+  margin-top: -30px;
+}
+.state{
+  margin-left: 228px;
+    margin-top: -29px;
+}
+.region{
+  margin-left: 425px;
+    margin-top: -29px;
+}
+
+mat-card{
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  height: 212px;
+  width: 186px;
+
+  /* font-size: 10px; */
+}
+.catg{
+  background: #EAEEFF;
+  border: 1px solid #00187A;
+  border-radius: 10px;
+margin-bottom: 10px;
+color: #00187A;
+padding: 5px;
+  text-align: center;
+}
+div.catg[data-selected] {
+  border: 2px solid #333;
+}
+.subc{
+  background: #E6FFF6;
+  border: 1px solid #0C5A3E;
+  border-radius: 10px;
+  color: #0C5A3E;
+  font-size: 14px;
+  margin-bottom: 10px;
+  padding: 5px;
+  text-align: center;
+}
+.typeg{
+  background: #FFEDEC;
+  border: 1px solid #C32F27;
+  border-radius: 10px;
+  color: #C32F27;
+  font-size: 14px;
+  margin-bottom: 10px;
+  padding: 5px;
+  text-align: center;
+}
+li{
+  list-style: none;
+}
+.addcat{
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin-right: 10px;
+  font-size: 13px;
+  color: rgba(104, 110, 116, 0.75);
+  padding: 8px 16px;
+  /* width: 150px; */
+  margin-left: -12px;
+}
+.addcode{
+  background: #FFFFFF;
+border: 0.5px solid #000000;
+box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+border-radius: 10px;
+font-size: 13px;
+color: rgba(104, 110, 116, 0.75);
+padding: 8px 20px;
+}
+.span-subhead{
+  margin-bottom: 10px;
+  display: flex;
+  color: rgba(104, 110, 116, 0.75);
+  font-size: 13px;
+}
+.selected {
+  background-color: #00187A;
+  color: white;
+}
+.subselected{
+  background: #0C5A3E;
+  color: white;
+}
+.typeselected{
+  background:  #C32F27;
+  color: white;
+}
+.row {
+  width: 767px
+}
+
+.bar{
+  height:400px; 
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 500px;
+}
+.geo{
+margin-top: 18px;
+font-family: 'Gilroy';
+}
+.minorder{
+  margin-top: -29px;
+  margin-left: 212px;
+font-family: 'Gilroy';
+}
+.margin{
+  margin-top: -29px;
+  margin-left: 328px;
+font-family: 'Gilroy';
+}
+.mrp{
+  margin-top: -29px;
+  margin-left: 431px;
+font-family: 'Gilroy';
+}
+.leadt{
+  margin-top: -31px;
+  margin-left: 496px;
+font-family: 'Gilroy';
+}
+.registration{
+  margin-top: -30px;
+font-family: 'Gilroy';
+margin-left: 626px;
+}
+.tags{
+  margin-top: -32px;
+  margin-left: 793px;
+font-family: 'Gilroy';
+}
+.Kedah{
+  margin-top: 4px;
+  margin-left: 4px;
+}
+.Perak{
+  margin-top: 4px;
+  margin-left: 4px;
+}
+.Penang{
+  margin-top: 4px;
+  margin-left: 4px;
+}
+
+
+

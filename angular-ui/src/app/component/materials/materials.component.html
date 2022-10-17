@@ -5,15 +5,14 @@
         <app-sidenav-bar></app-sidenav-bar>
     </mat-sidenav>
     <mat-sidenav-content>
+        <h1 class="material-text">Materials</h1>
         <!-- <div class="dash-content" > -->
-                    <div class="UNFAPP-asmnt-rgt-area main" style="padding: 15px;">
+                    <div class="UNFAPP-asmnt-rgt-area main" style="padding: 15px; z-index: -1;">
                         <!-- <div class="col-lg-12"> -->
-                            <mat-tab-group>
-                                <mat-tab label="Classification">
-                                    <app-materials-classification></app-materials-classification>                            </mat-tab>
-                                <mat-tab label="Material List">
-                                    <app-materials-list></app-materials-list></mat-tab>
-                              </mat-tab-group>
+                            <mat-tab-group class="materialss">
+                                <mat-tab class="classi"  label="Classification"><app-materials-classification></app-materials-classification>                            </mat-tab>
+                                <mat-tab class="mati" label="Material List"><app-materials-list></app-materials-list></mat-tab>
+                            </mat-tab-group>
                         <!-- </div> -->
        </div>
         <!-- </div> -->

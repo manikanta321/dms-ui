@@ -32,7 +32,7 @@
             <br>
             <div class="row">
               <div class="col">
-                <label>First Name <span>*</span></label>
+                <label>First Name<span>*</span></label>
                 <br>
                 <input id="efname" name="efname" required type="text" placeholder="Enter your first name" [(ngModel)]="fullname"#efname="ngModel">
                 <p style="margin-bottom:-40px;" *ngIf="efname.invalid && (efname.dirty || efname.touched)"
@@ -44,7 +44,7 @@
             </p>
               </div>
               <div class="col">
-                <label>Last Name <span>*</span></label>
+                <label>Last Name<span>*</span></label>
                 <br>
                 <input id="elname" name="elname" required type="text" placeholder="Enter your last name" [(ngModel)]="Lastname"#elname="ngModel">
                 <p style="margin-bottom:-40px;" *ngIf="elname.invalid && (elname.dirty || elname.touched)"
@@ -95,7 +95,7 @@
    ;font-size:20px; font-weight: lighter;"><b>Role Selection</b></h6>
             <div class="row">
               <div class="col">
-                  <label>Role</label><span>*</span>
+                  <label>Role<span>*</span></label>
                 <br>
                 <select  #teams class="form-select form-select-lg mb-8"    (change)="selectedValue(teams.value);" placeholder="Select your Role" aria-label=".form-select-lg example" style="height: 35px;border-radius: 6px;width: 100%;">
                   <option value="" disabled selected hidden>{{role123}}</option>

@@ -75,6 +75,10 @@ background: #D23F00 !important;
 ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before{
   border: 2px solid #000000 !important;
 }
+.add-user:hover {
+  background-color: grey !important;
+  color: white !important;
+}
 // ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
 //   border: 1px solid #337ab7;
 //   margin-right: 2px !important;
@@ -130,7 +134,13 @@ background: #D23F00 !important;
   position: relative;
   width: 43px;
 }
-
+// ::ng-deep.btnhover:hover,
+// .btnhover:focus {
+//   box-shadow: inset 0 0 0 2em var(--hover) !important;
+// }
+::ng-deep.btnhover:hover{
+background: #000000 !important;
+}
 .searchButton {
   display:bolck;
   color: #FFFFFF;
@@ -609,15 +619,14 @@ padding: 10px;
 border-radius: 16px;
 }
 .burron:hover{
-border: white   ;
-
+border: white;
 }
 .top-icon mat-form-field:last-child {
 visibility: hidden;
 }
 
 .top-icon:hover mat-form-field:last-child {
-visibility: visible;
+ visibility: visible;
 }
 
 .top-icon:hover mat-form-field:first-child {
@@ -721,6 +730,10 @@ width: 100px !important;
     margin-left: 10px;
 
   }
+//  .add-user:hover {
+//     animation: pulse 1s infinite !important;
+//     transition: .3s !important;
+//   }
   .searchBox{
     top: 6px;
   }

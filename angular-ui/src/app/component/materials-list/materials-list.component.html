@@ -1,8 +1,8 @@
 <div class="container-fluid" style="padding-left: 0px;">
   <div class="row">
-    <div class="col-2">
+    <!-- <div class="col-2">
      <h4 class="material-text"><b>Material list</b></h4>
-    </div>
+    </div> -->
     </div>
   <div class="row">
       <div class="col-xl-12 col-md-12 ACVTY-no-pad" style="width: 100%;">
@@ -10,7 +10,7 @@
             <div class="row" style="position: relative;top: 3%; width: 118%;">
               <div class="col-md-2 col-lg-2 col-sm-2">
                 <form [formGroup]="myForm">
-              <ng-multiselect-dropdown
+              <ng-multiselect-dropdown class="catty"
                   name="city"
                   [placeholder]="'Category'"
                   formControlName="city"
@@ -24,7 +24,7 @@
             </div>
             <div class="col-md-2 col-lg-2 col-sm-2">
               <form [formGroup]="subCategory">
-            <ng-multiselect-dropdown
+            <ng-multiselect-dropdown class="subcatty"
                 name="subCategory"
                 [placeholder]="'Sub-Category'"
                 formControlName="subCategory"
@@ -38,7 +38,7 @@
           </div>
           <div class="col-md-2 col-lg-2 col-sm-2">
             <form [formGroup]="type">
-          <ng-multiselect-dropdown
+          <ng-multiselect-dropdown class="typy"
               name="type"
               [placeholder]="'Type'"
               formControlName="type"
@@ -52,7 +52,7 @@
         </div>
         <div class="col-md-2 col-lg-2 col-sm-2">
           <form [formGroup]="product">
-        <ng-multiselect-dropdown
+        <ng-multiselect-dropdown class="producty"
             name="product"
             [placeholder]="'Product'"
             formControlName="product"
@@ -66,7 +66,7 @@
         </div>
             <div class="col-md-2 col-lg-2 col-sm-2">
               <form [formGroup]="myForms">
-            <ng-multiselect-dropdown
+            <ng-multiselect-dropdown class="sttss"
                 name="citys"
                 [placeholder]="'Status'"
                 formControlName="citys"
@@ -82,19 +82,34 @@
             <img src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;" alt="refresh" >
           </div>
            </div>  
-           <div class="row" style="position:relative;margin-left: 73%;top: 10%;">
-            <div class="searchBox d-flex justify-center align-center">
-              <input class="searchInput" type="text" name="" placeholder="SEARCH">
-              <button class="searchButton" href="#"> 
-                  <i class="material-icons">
-                      search
-                  </i>
-              </button>
-            </div> -->
-          <div class="addm" (click)="addMaterials()">
-            <img src="assets/img/Add-Materials.png" alt="Add-Materials">
+           <div class="printImg">
+            <img src="../../../assets/material/print-img.svg" alt="">
           </div>
-        </div> 
+        <div class="col-md-4" style="margin-left: 88%;position: relative;top: 7%;">
+          <div class="row">
+          <div class="col-md-2">
+        <div class="searchBox d-flex">
+          <input class="searchInput" style="font-family: 'Gilroy'" type="text" name="" placeholder="Type & search for anything" >
+          <button class="searchButton" href="#"> 
+              <i class="material-icons">
+                  search
+              </i>
+          </button>
+          <button class="search-btn" style="font-family: 'Gilroy';position: relative;top: 3px;">Search</button>
+        </div>
+      </div>
+      <div class="col-md-2">
+       <div class="add-user">
+         <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+       </div>
+      </div>
+      <!-- <div class="col-md-0">
+       <div class="download-btn" (click)="onBtnExport()">
+         <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;" alt="add-user-btn">
+       </div>
+      </div> -->
+      </div>
+    </div>
            <ag-grid-angular
            id="gridContainer"
            style="width: 100%; height: 440px;border-radius: 20px;background-color: white;font-family: Gilroy;position: relative;top: 9%;"

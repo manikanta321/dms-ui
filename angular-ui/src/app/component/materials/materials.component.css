@@ -23,6 +23,23 @@
     text-transform: uppercase;
     font-feature-settings: 'pnum' on, 'lnum' on; 
 } */
+.materialss {
+    position: relative;
+    bottom: 20px;
+}
+.material-text{
+font-family: 'Gilroy-Bold';
+font-size: 30px;
+line-height: 41px;
+display: flex;
+align-items: center;
+height: 0px;
+color: #000000;
+position: relative;
+top: 6%;
+font-weight: bold;
+left:20px;
+}
 .font{
     font-family: 'Gilroy';
   }

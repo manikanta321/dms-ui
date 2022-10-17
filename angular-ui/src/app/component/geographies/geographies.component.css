@@ -62,7 +62,7 @@ mat-tab{
     width: 310px !important;
     border-radius: 25px;
     background: white;
-    left: 30%;
+    left: 35%;
 
 }
 ::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
@@ -77,5 +77,28 @@ mat-tab{
  .geo-label .mat-tab-labels:nth-child(1) {
     width: 50% !important;
   }
+
+  .header-text{
+    font-family: 'Gilroy-Bold';
+    font-size: 30px;
+    line-height: 41px;
+    display: flex;
+    align-items: center;
+    height: 0px;
+    color: #000000;
+    position: relative;
+    top: 6%;
+    font-weight: bold;
+    left: 20px; 
+  }
+
+  .print-img{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 2%;
+    right: 20px;
+  }
+
 
 

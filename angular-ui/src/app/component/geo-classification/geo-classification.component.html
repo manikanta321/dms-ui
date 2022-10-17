@@ -1,14 +1,14 @@
 <div class="section">
     <div class="material-cl row">
-        <div class="col-6">
+        <!-- <div class="col-6">
            <h2>Geographies</h2>
         </div>
         <div class="col-6 printImg">
             <img src="../../../assets/material/print-img.svg" alt="">
-        </div>
+        </div> -->
     </div>
     <!-- <div class="container-fluid"> -->
-        <div class="col-lg-12">
+        <div class="col-lg-12 row-padding">
         <div class="row geo-classification-crad">
            
          <!--start country column -->
@@ -26,16 +26,26 @@
                     <div class="buttn d-flex" *ngIf = addCountryButton>
                         <div class="col-10">
                             <div class="row add-country-cls">
-                                <div class="col-8">
-                                    <button class="addcat">Country</button>
+                                <form [formGroup]="countryForm">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-6">
+                                         <input type="text" class="input-country-cls" formControlName="countryFormTag" placeholder="Add category name">
+                                       </div>
+                                       <div class="col-3">
+                                        <input type="text" class="input-countrycode-cls" formControlName="countryFormTag" placeholder="Code">
+                                      </div>
+                                        <div class="col-3">
+                                            <button class="addcode">Add</button>
+                                        </div> 
+                                    </div>
                                 </div>
-                                <div class="col-2">
-                                    <button class="addcode">Code</button>
-                                </div> 
+                               
+                            </form>
                             </div>
                         </div>
                         <div class="col-2">
-                            <mat-icon>remove_circle</mat-icon>
+                            <mat-icon class="col-2" (click)="removemoreFileds()">remove_circle</mat-icon>
                         </div>
                     </div>
                 </mat-card-content>
@@ -57,17 +67,27 @@
                     </div>
                     <div class="buttn d-flex" *ngIf = addStateButton>
                         <div class="col-10">
-                            <div class="row">
-                                <div class="col-6">
-                                    <button class="btn btn-basic addcat">Add category name</button>
+                            <div class="row add-country-cls">
+                                <form [formGroup]="stateForm">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-6">
+                                         <input type="text" class="input-country-cls" formControlName="stateFormTag" placeholder="Add category name">
+                                       </div>
+                                       <div class="col-3">
+                                        <input type="text" class="input-countrycode-cls" formControlName="statecodeFormTag" placeholder="Code">
+                                      </div>
+                                        <div class="col-3">
+                                            <button class="addcode">Add</button>
+                                        </div> 
+                                    </div>
                                 </div>
-                                <div class="col-4">
-                                    <button class="btn btn-basic addcode">Add code</button>
-                                </div> 
+                               
+                            </form>
                             </div>
                         </div>
                         <div class="col-2">
-                            <mat-icon>remove_circle</mat-icon>
+                            <mat-icon class="col-2" (click)="removemoreFileds()">remove_circle</mat-icon>
                         </div>
                     </div>
                 </mat-card-content>
@@ -88,19 +108,27 @@
                     <mat-icon class="col-2" (click)="removetype(type)">remove_circle</mat-icon>
                 </div>
                 <div class="buttn d-flex" *ngIf = addDistrictButton>
-                    <div class="col-10">
-                        <div class="row">
-                            <div class="col-6">
-                                <button class="btn btn-basic addcat">Add category name</button>
+                    <div class="row add-country-cls">
+                        <form [formGroup]="districtForm">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-6">
+                                 <input type="text" class="input-district-cls" formControlName="distirictFormTag" placeholder="Add category name">
+                               </div>
+                               <div class="col-3">
+                                <input type="text" class="input-countrycode-cls" formControlName="districtcode" placeholder="Code">
+                              </div>
+                                <div class="col-3">
+                                    <button class="addcode">Add</button>
+                                </div> 
                             </div>
-                            <div class="col-4">
-                                <button class="btn btn-basic addcode">Add code</button>
-                            </div> 
                         </div>
+                       
+                    </form>
                     </div>
-                    <div class="col-2">
-                        <mat-icon>remove_circle</mat-icon>
-                    </div>
+                    
+                        <mat-icon class="col-2" (click)="removeDistmoreFileds()">remove_circle</mat-icon>
+                    
                 </div>
             </mat-card-content>
         </mat-card>
@@ -120,18 +148,26 @@
                         <mat-icon class="col-2" (click)="removeregions(region)">remove_circle</mat-icon>
                     </div>
                     <div class="buttn d-flex" *ngIf = addRegionButton>
-                        <div class="col-10">
-                            <div class="row">
-                                <div class="col-6">
-                                    <button class="btn btn-basic addcat">Add category name</button>
+                        <div class="row add-country-cls">
+                            <form [formGroup]="regionForm">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                     <input type="text" class="input-region-cls" formControlName="regionFormTag" placeholder="Add category name">
+                                   </div>
+                                   <div class="col-3">
+                                    <input type="text" class="input-countrycode-cls" formControlName="regionCode" placeholder="Code">
+                                  </div>
+                                    <div class="col-3">
+                                        <button class="addcode">Add</button>
+                                    </div> 
                                 </div>
-                                <div class="col-4">
-                                    <button class="btn btn-basic addcode">Add code</button>
-                                </div> 
                             </div>
+                           
+                        </form>
                         </div>
                         <div class="col-2">
-                            <mat-icon>remove_circle</mat-icon>
+                            <mat-icon class="col-2" (click)="removeregionsMore()">remove_circle</mat-icon>
                         </div>
                     </div>
                 </mat-card-content>

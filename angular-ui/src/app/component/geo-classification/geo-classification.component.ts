@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, createPlatform, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-geo-classification',
@@ -11,6 +12,10 @@ export class GeoClassificationComponent implements OnInit {
   DistrictName: string[] = ['Chennai1', 'Chennai2',];
   regionsName: string[] = ['Regions1', 'Regions2',];
 
+  countryForm!: FormGroup;
+  stateForm!: FormGroup;
+  districtForm!: FormGroup;
+  regionForm!: FormGroup;
 
   toprint:boolean=false;
 
@@ -25,9 +30,15 @@ export class GeoClassificationComponent implements OnInit {
   selectedItem = null;
   // clData: string[] = ['Type TP 1', 'Type TP 2', 'Type TP 3','Type TP 4'];
   // subcat: string[] = ['sub category', 'sub category 2',];
-  constructor() { }
+  constructor() {
+    this.createform();
+    this.stateFormValidators();
+    this.districtFormValidator();
+    this.regionFormValidator();
+   }
 
   ngOnInit(): void {
+    
   }
 
   printvalue(valueofprint:boolean){
@@ -68,4 +79,47 @@ export class GeoClassificationComponent implements OnInit {
     this.selectedItem = item;
   }
 
+  createform(){
+    this.countryForm = new FormGroup({
+      countryFormTag: new FormControl(''),
+      countrycode:new FormControl(''),
+    });
+  }
+
+  stateFormValidators(){
+    this.countryForm = new FormGroup({
+      stateFormTag: new FormControl(''),
+      statecodeFormTag:new FormControl(''),
+    });
+  }
+
+  districtFormValidator(){
+    this.countryForm = new FormGroup({
+      distirictFormTag: new FormControl(''),
+      districtcode:new FormControl(''),
+    });
+  }
+
+  regionFormValidator(){
+    this.regionForm = new FormGroup({
+      regionFormTag: new FormControl(''),
+      regionCode:new FormControl(''),
+    });
+  }
+
+  removemoreFileds(){
+    this.addCountryButton =false;
+  }
+
+  removeStatemoreFileds(){
+    this.addStateButton =false;
+  }
+
+  removeDistmoreFileds(){
+    this.addDistrictButton =false;
+  }
+
+  removeregionsMore(){
+    this.addRegionButton = false;
+  }
 }

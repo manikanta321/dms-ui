@@ -54,27 +54,58 @@ li{
     list-style: none;
 }
 
-.addcat{
+.input-country-cls{
     background: #FFFFFF;
     border: 0.5px solid #000000;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     margin-right: 10px;
-    font-size: 13px;
+    font-size: 11px;
     color: rgba(104, 110, 116, 0.75);
     padding: 8px 16px;
     /* width: 150px; */
     margin-left: -12px;
+    width:130px;
 }
 
-.addcode{
-    background: #FFFFFF;
+.input-district-cls,
+.input-region-cls {
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin-right: 10px;
+  font-size: 11px;
+  color: rgba(104, 110, 116, 0.75);
+  padding: 8px 16px;
+  width:130px;
+}
+
+
+.input-countrycode-cls {
+  background: #FFFFFF;
     border: 0.5px solid #000000;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 10px;
-    font-size: 13px;
+    margin-right: 10px;
+    font-size: 11px;
     color: rgba(104, 110, 116, 0.75);
-    padding: 8px 20px;
+    padding: 8px 16px;
+    /* width: 150px; */
+    width:70px;
+}
+
+.addcode{
+  background: #000;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border-radius: 5px;
+  font-size: 11px;
+  color: rgba(104, 110, 116, 0.75);
+  /* padding: 4px 7px; */
+  color: #fff;
+  margin-left: 10px;
+  margin-top: 8px;
 }
 
 .span-subhead{
@@ -108,17 +139,17 @@ li{
     max-width: 24.5% !important;
   } */
 
-  .add-country-cls .col-8 {
+  /* .add-country-cls .col-8 {
     max-width : 78% !important;
-  }
+  } */
 
-  .add-country-cls .col-2 {
+  /* .add-country-cls .col-2 {
     margin-left : -25px !important;
-  }
-
+  } */
+/* 
   .add-country-cls .addcat {
     width: 100% !important;
-  }
+  } */
 
   .printImg {
     display: flex;
@@ -126,11 +157,38 @@ li{
   }
 
   .geo-classification-crad .mat-card {
-    height:350px !important;
+    height:380px !important;
   }
 
   .geo-classification-crad  {
     display: -webkit-box !important;
-    overflow-x: overlay;
+    overflow-x: scroll;
     flex-wrap: nowrap !important;
   }
+
+  .row-padding {
+    top:30px;
+  }
+
+ /* Let's get this party started */
+::-webkit-scrollbar {
+  width: 9px !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 20px;
+  background: #000000;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #000000;
+}

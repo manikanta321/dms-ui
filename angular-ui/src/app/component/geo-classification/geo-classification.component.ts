@@ -1,5 +1,6 @@
 import { Component, createPlatform, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-geo-classification',
@@ -28,9 +29,10 @@ export class GeoClassificationComponent implements OnInit {
   removelist:boolean =false;
   toggle:boolean=true;
   selectedItem = null;
+  //formBuilder: any;
   // clData: string[] = ['Type TP 1', 'Type TP 2', 'Type TP 3','Type TP 4'];
   // subcat: string[] = ['sub category', 'sub category 2',];
-  constructor() {
+  constructor(private fb: FormBuilder) {
     this.createform();
     this.stateFormValidators();
     this.districtFormValidator();
@@ -80,30 +82,30 @@ export class GeoClassificationComponent implements OnInit {
   }
 
   createform(){
-    this.countryForm = new FormGroup({
-      countryFormTag: new FormControl(''),
-      countrycode:new FormControl(''),
+    this.countryForm = this.fb.group({
+      countryFormTag: ["", [Validators.required]],
+      statecodeFormTag:["", [Validators.required]],
     });
   }
 
   stateFormValidators(){
-    this.countryForm = new FormGroup({
-      stateFormTag: new FormControl(''),
-      statecodeFormTag:new FormControl(''),
+    this.stateForm = this.fb.group({
+      stateFormTag: ["", [Validators.required]],
+      statecodeFormTag:["", [Validators.required]],
     });
   }
 
   districtFormValidator(){
-    this.countryForm = new FormGroup({
-      distirictFormTag: new FormControl(''),
-      districtcode:new FormControl(''),
+    this.districtForm = this.fb.group({
+      distirictFormTag: ["", [Validators.required]],
+      districtcode:["", [Validators.required]],
     });
   }
 
   regionFormValidator(){
-    this.regionForm = new FormGroup({
-      regionFormTag: new FormControl(''),
-      regionCode:new FormControl(''),
+    this.regionForm = this.fb.group({
+      regionFormTag: ["", [Validators.required]],
+      regionCode:["", [Validators.required]],
     });
   }
 

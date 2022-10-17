@@ -18,7 +18,26 @@
   font-family: 'Gilroy';
   margin-left: -4px;
 }
-
+.geography{
+  overflow: auto;
+  max-height: 500px;
+}
+.scroll{
+  overflow-y: auto;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 25px;
+  /* background: #b3b3bc; */
+}
+::-webkit-scrollbar-track{
+ border-radius: 25px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  margin-left: 20px;
+}
 .description {
   font-family: 'Gilroy';
   margin-top: 15px;

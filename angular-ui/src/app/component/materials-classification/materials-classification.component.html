@@ -14,8 +14,8 @@
           <mat-icon (click)=addCategory()>add_circle</mat-icon>
         </p>
       </div>
-      <mat-card class="mat-card-content">
-        <mat-card-content >
+      <mat-card  class="scroll">
+        <mat-card-content>
           <div class=" d-flex" *ngFor="let catg of catgname">
             <p class="col-10 catg cursor-pointer" (click)="onClick(catg)" [ngClass]="{ 'selected': catg == selectedItem }">{{catg.catName}}</p>
             <mat-icon class="col-2" (click)="removecatg(catg)">remove_circle</mat-icon>
@@ -76,7 +76,7 @@
         </p>
       </div>
       <!-- type -->
-      <mat-card class="scroll">
+      <mat-card  class="scroll">
         <mat-card-content>
           <div class="span-subhead"><span style="padding-bottom: 10px;">category 3</span>
             <mat-icon>keyboard_arrow_right</mat-icon><span>Sub-category</span>

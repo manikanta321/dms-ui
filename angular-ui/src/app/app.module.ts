@@ -75,6 +75,7 @@ import { DeactiveSuccessPopComponent } from './component/users/userPopups/deacti
 import { GeographicListComponent } from './component/geographic-list/geographic-list.component';
 import { GeoClassificationComponent } from './component/geo-classification/geo-classification.component';
 import {MatRadioModule} from '@angular/material/radio';
+import { AddGeolistPopupComponent } from './component/add-geolist-popup/add-geolist-popup.component';
 
 
 @NgModule({
@@ -123,6 +124,7 @@ import {MatRadioModule} from '@angular/material/radio';
     DeactiveSuccessPopComponent,
     GeographicListComponent,
     GeoClassificationComponent,
+    AddGeolistPopupComponent,
     
   ],
   imports: [

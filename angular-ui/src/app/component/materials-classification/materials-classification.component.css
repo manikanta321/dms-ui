@@ -4,21 +4,24 @@ mat-card{
     border: 0.5px solid #000000;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 25px;
-    height: 400px;
-    overflow-y: scroll;
+    height: 380px;
+    margin-bottom: 30px;
 }
 .scroll{
   overflow-y: scroll;
 }
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
-/* .scroll ::-webkit-scrollbar-thumb{
-  background: rgb(11, 11, 103);
+::-webkit-scrollbar-thumb{
+  border-radius: 25px;
+  /* background: #b3b3bc; */
 }
-.scroll ::-webkit-scrollbar-track{
-  background: rgb(7, 7, 118);
-} */
+::-webkit-scrollbar-track{
+ border-radius: 25px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
 .printImg{
   display: flex;
   justify-content: flex-end;

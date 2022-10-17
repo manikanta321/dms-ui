@@ -102,3 +102,6 @@ mat-sidenav-container {
 ::ng-deep.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
     display: none;
 }
+mat-tab-group{
+    height: 100vh;
+}

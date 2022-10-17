@@ -22,10 +22,15 @@ export class MaterialsClassificationComponent implements OnInit {
   removelist:boolean =false;
   toggle:boolean=true;
   selectedItem = null;
+  selectedsubItem=null;
   LoginId:any;
   numberValue:any;
   itemId:any;
-  subCatId:any=''
+  subCatId:any='';
+  coutCatagory='';
+  catagoryroouting='';
+  subcatRoouting='';
+  selectedtypeItem='';
   // clData: string[] = ['Type TP 1', 'Type TP 2', 'Type TP 3','Type TP 4'];
   // subcat: string[] = ['sub category', 'sub category 2',];
   constructor(
@@ -45,11 +50,17 @@ this.getclassification()
   
 this.calssification.getclassification().subscribe((res)=>{
   let data=res.response;
+  this.coutCatagory=res.totalRecords;
   this.catgname=data.allOtherCats
+  this.catagoryroouting=data.firstCat.catName;
+  this.selectedItem=data.allOtherCats[0];
+  this.subcatRoouting=data.firstCat.subCAts.firstSubCat.subCatName;
   console.log('data',data.firstCat)
   let char=[]
   this.subname=data.firstCat.subCAts.allOtherSubCAts;
+  this.selectedsubItem=data.firstCat.subCAts.allOtherSubCAts[0];
   this.typename=data.firstCat.subCAts.firstSubCat.types;
+  this.selectedtypeItem=data.firstCat.subCAts.firstSubCat.types[0];
   this.itemId=data.firstCat.catId
   this.subCatId=data.firstCat.subCAts.firstSubCat.subCatId;
  
@@ -82,14 +93,106 @@ this.calssification.getclassification().subscribe((res)=>{
   addCategory(){
     this.addButton =true;
   }
-  removecatg(index):void{
-    this.catgname.splice(index, 1);
+  removecatg(item):void{
+    // this.catgname.splice(index, 1);
+  alert(item.catId);
+let data={
+  CategoryId:item.catId,
+}
+this.calssification.deletecatagory(item.catId).subscribe((res)=>{
+  console.log(res)
+})
+
+this.calssification.getclassification().subscribe((res)=>{
+  let data=res.response;
+  this.coutCatagory=res.totalRecords;
+  this.catgname=data.allOtherCats
+  this.catagoryroouting=data.firstCat.catName;
+  this.selectedItem=data.allOtherCats[0];
+  this.subcatRoouting=data.firstCat.subCAts.firstSubCat.subCatName;
+  console.log('data',data.firstCat)
+  let char=[]
+  this.subname=data.firstCat.subCAts.allOtherSubCAts;
+  this.selectedsubItem=data.firstCat.subCAts.allOtherSubCAts[0];
+  this.typename=data.firstCat.subCAts.firstSubCat.types;
+  this.selectedtypeItem=data.firstCat.subCAts.firstSubCat.types[0];
+  this.itemId=data.firstCat.catId
+  this.subCatId=data.firstCat.subCAts.firstSubCat.subCatId;
+ 
+ console.log('typename',this.typename)
+  console.log('char',this.subname);
+ //  this.subname = char.map((data: { subCatId: any; subCatName: any; }) => {
+ //    debugger
+ //   return { subCatId: data.subCatId, subCatName: data.subCatName };
+   
+ //   console.log('subname',this.subname)
+ 
+ // });
+ })
+
+
+// this.calssification.getclassification().subscribe((res)=>{
+//   let data=res.response;
+//   this.catgname=data.allOtherCats
+// //   console.log('data',data.firstCat)
+// //   let char=[]
+// //   this.subname=data.firstCat.subCAts.allOtherSubCAts;
+// //   this.typename=data.firstCat.subCAts.firstSubCat.types;
+// //   this.itemId=data.firstCat.catId
+// //   this.subCatId=data.firstCat.subCAts.firstSubCat.subCatId;
+ 
+// //  console.log('typename',this.typename)
+// //   console.log('char',this.subname);
+//  //  this.subname = char.map((data: { subCatId: any; subCatName: any; }) => {
+//  //    debugger
+//  //   return { subCatId: data.subCatId, subCatName: data.subCatName };
+   
+//  //   console.log('subname',this.subname)
+ 
+//  // });
+//  })
+
   }
-  removesub(index){
-    this.subname.splice(index, 1);
+  removesub(item){
+    // this.subname.splice(index, 1);
+    let data={
+
+      subCategoryId:item.subCatId,
+    }
+    this.calssification.daleteSubcatagory(item.subCatId).subscribe((res)=>{
+      console.log(res)
+    })
+
+
+    this.calssification.onclickcat(this.itemId).subscribe((res)=>{
+      console.log(res)
+      let data=res.response;
+      this.subname=data.allOtherSubCAts;
+      if(data.firstSubCat==null){
+        this.typename=[]
+      }
+      else{
+        this.typename=data.firstSubCat.types;
+      }
+      });
+
+
   }
-  removetype(index){
-    this.typename.splice(index, 1);
+  removetype(item){
+    console.log(item.typeId)
+    this.calssification.deleteType(item.typeId).subscribe((res)=>{
+      console.log(res)
+    })
+    this.calssification.onclicksubcat(this.subCatId).subscribe((res)=>{
+      console.log(res)
+      let data=res.response;
+      this.typename=res.response;
+      console.log(this.typename)
+  
+  
+    })
+    // this.typename.splice(index, 1);
+
   }
   addcatagory(){
     let data={
@@ -98,8 +201,30 @@ this.calssification.getclassification().subscribe((res)=>{
         CreatedById:this.numberValue
     };
     this.calssification.addCatagory(data).subscribe((res)=>{
-      
+      this.addcat='';
+      this.addcatcode='';
     })
+    this.calssification.getclassification().subscribe((res)=>{
+      let data=res.response;
+      this.coutCatagory=res.totalRecords;
+      this.catgname=data.allOtherCats
+    //   console.log('data',data.firstCat)
+    //   let char=[]
+    //   this.subname=data.firstCat.subCAts.allOtherSubCAts;
+    //   this.typename=data.firstCat.subCAts.firstSubCat.types;
+    //   this.itemId=data.firstCat.catId
+    //   this.subCatId=data.firstCat.subCAts.firstSubCat.subCatId;
+     
+    //  console.log('typename',this.typename)
+    //   console.log('char',this.subname);
+    //  //  this.subname = char.map((data: { subCatId: any; subCatName: any; }) => {
+    //  //    debugger
+    //  //   return { subCatId: data.subCatId, subCatName: data.subCatName };
+       
+    //  //   console.log('subname',this.subname)
+     
+    //  // });
+     })
   }
 
 addsubCat(){
@@ -152,12 +277,15 @@ this.calssification.onclicksubcat(this.subCatId).subscribe((res)=>{
 }
 
 oclicksub(item){
+  this.selectedsubItem=item;
   console.log('item1',item)
    this.subCatId=item.subCatId;
+   this.subcatRoouting=item.subCatName;
   this.calssification.onclicksubcat(this.subCatId).subscribe((res)=>{
     console.log(res)
     let data=res.response;
     this.typename=res.response;
+    this.selectedtypeItem=res.response[0];
     console.log(this.typename)
 
 
@@ -170,17 +298,26 @@ oclicksub(item){
 console.log('item',item)
 
  this.itemId=item.catId;
+ this.catagoryroouting=item.catName;
 this.calssification.onclickcat(this.itemId).subscribe((res)=>{
 console.log(res)
 let data=res.response;
 this.subname=data.allOtherSubCAts;
+this.selectedsubItem=data.allOtherSubCAts[0]
 if(data.firstSubCat==null){
   this.typename=[]
+  this.subcatRoouting='No Sub-Category'
+
 }
 else{
+  this.subcatRoouting=data.firstSubCat.subCatName;
   this.typename=data.firstSubCat.types;
+  this.selectedtypeItem=data.firstSubCat.types[0];
 }
 });
 
+  }
+  typeselect(item){
+    this.selectedtypeItem=item;
   }
 }

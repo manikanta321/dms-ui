@@ -9,7 +9,7 @@
   <div class="material-card row">
     <div class="col-12 col-lg-4 col-md-6">
       <div class="row">
-        <p class="col-10">Category (4)</p>
+        <p class="col-10">Category ({{coutCatagory}})</p>
         <p class="col-2">
           <mat-icon (click)=addCategory()>add_circle</mat-icon>
         </p>
@@ -46,11 +46,11 @@
       <!-- sub category -->
       <mat-card class="scroll">
         <mat-card-content>
-          <div class="span-subhead"><span>category 3</span>
+          <div class="span-subhead"><span>{{catagoryroouting}}</span>
             <mat-icon>arrow_drop_down</mat-icon>
           </div>
           <div class=" d-flex" *ngFor="let subc of subname">
-            <p class="col-10 subc" (click)="oclicksub(subc)" [ngClass]="{ 'subselected': subc == selectedItem }">{{subc.subCatName}}
+            <p class="col-10 subc" (click)="oclicksub(subc)" [ngClass]="{ 'subselected': subc == selectedsubItem }">{{subc.subCatName}}
             </p>
             <mat-icon class="col-2" (click)="removesub(subc)">remove_circle</mat-icon>
           </div>
@@ -78,14 +78,14 @@
       <!-- type -->
       <mat-card  class="scroll">
         <mat-card-content>
-          <div class="span-subhead"><span style="padding-bottom: 10px;">category 3</span>
-            <mat-icon>keyboard_arrow_right</mat-icon><span>Sub-category</span>
+          <div class="span-subhead"><span style="padding-bottom: 10px;">{{catagoryroouting}}</span>
+            <mat-icon>keyboard_arrow_right</mat-icon><span>{{subcatRoouting}}</span>
             <mat-icon>arrow_drop_down</mat-icon>
           </div>
           <!-- <li class="type" *ngFor="let type of typename" >{{type}}<mat-icon>add_circle</mat-icon></li> -->
           <div class=" d-flex" *ngFor="let type of typename">
             
-            <p class="col-10 type" (click)="onClick(type)" [ngClass]="{ 'typeselected': type == selectedItem }">{{type.typeName}}
+            <p class="col-10 type" (click)="typeselect(type)" [ngClass]="{ 'typeselected': type == selectedtypeItem }">{{type.typeName}}
             </p>
             <mat-icon class="col-2" (click)="removetype(type)">remove_circle</mat-icon>
           </div>

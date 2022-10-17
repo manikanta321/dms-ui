@@ -63,8 +63,25 @@ addtypes(data){
   return this.http.post<any>(this.classificationurl + 'MaterialApi/Addstocktype', data);
 
 }
+deletecatagory(data){
+  return this.http.get<any>(`${this.classificationurl}MaterialApi/DeleteCategory?CategoryId=${data}`)
+
+}
+
+daleteSubcatagory(data){
+  return this.http.get<any>(`${this.classificationurl}MaterialApi/DeletesubCategory?subCategoryId=${data}`)
+
+  // return this.http.post<any>(this.classificationurl + 'MaterialApi/DeletesubCategory', data);
+
+}
 
 
+deleteType(data){
+  return this.http.get<any>(`${this.classificationurl}MaterialApi/Deletetype?typeId=${data}`)
 
+  // return this.http.post<any>(this.classificationurl + 'MaterialApi/Deletetype', data);
+
+
+}
 
 }

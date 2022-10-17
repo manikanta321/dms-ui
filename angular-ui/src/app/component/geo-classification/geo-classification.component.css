@@ -120,11 +120,17 @@ li{
     width: 100% !important;
   }
 
-  .printImg{
+  .printImg {
     display: flex;
     justify-content: flex-end;
   }
 
   .geo-classification-crad .mat-card {
     height:350px !important;
+  }
+
+  .geo-classification-crad  {
+    display: -webkit-box !important;
+    overflow-x: overlay;
+    flex-wrap: nowrap !important;
   }

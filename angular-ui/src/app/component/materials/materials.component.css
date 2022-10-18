@@ -104,13 +104,24 @@ mat-sidenav-container {
 mat-tab-group{
     height: 100vh;
 }
+.header-text{
+    font-family: 'Gilroy-Bold';
+    font-size: 30px;
+    line-height: 41px;
+    display: flex;
+    align-items: center;
+    height: 0px;
+    color: #000000;
+    position: relative;
+    top: 6%;
+    font-weight: bold;
+    left: 20px; 
+  }
 
-@media (max-width: 991px){
-  .material-text{
-    font-size: 19px;
-    margin-top: 4px;
-}
-::ng-deep.mat-tab-label{
-    max-width: 111px;
-}
-}
+  .print-img{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 2%;
+    right: 20px;
+  }

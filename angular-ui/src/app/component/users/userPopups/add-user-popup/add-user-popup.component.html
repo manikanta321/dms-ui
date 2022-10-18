@@ -134,7 +134,12 @@
 
           </form>
           <br>
-          <button [disabled]="loginForm.form.invalid" class="btn btn-primary btn-block justify-center" style="background-color:#000000;width:66%;justify-content: center;margin-right:45%;" (click)="addUSer()">Add user</button>
+   <diV class="row">
+     <div class="col d-flex justify-content-center">
+      <button [disabled]="loginForm.form.invalid" class="btn btn-primary btn-block justify-center" style="background-color:#000000;width:66%;
+      " (click)="addUSer()">Add user</button>
+     </div>
+   </diV>
           <span style="margin-left:15%;">Required fields*</span>
         </div>
       </div>

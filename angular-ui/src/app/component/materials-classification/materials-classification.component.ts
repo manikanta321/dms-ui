@@ -19,6 +19,8 @@ export class MaterialsClassificationComponent implements OnInit {
   type:any=''
   toprint:boolean=false;
   addButton:boolean =false;
+  addTypeButton:boolean=false;
+  addSubButton:boolean=false;
   removelist:boolean =false;
   toggle:boolean=true;
   selectedItem = null;
@@ -31,6 +33,8 @@ export class MaterialsClassificationComponent implements OnInit {
   catagoryroouting='';
   subcatRoouting='';
   selectedtypeItem='';
+  subcatcount='';
+  typecount='';
   // clData: string[] = ['Type TP 1', 'Type TP 2', 'Type TP 3','Type TP 4'];
   // subcat: string[] = ['sub category', 'sub category 2',];
   constructor(
@@ -55,6 +59,8 @@ this.calssification.getclassification().subscribe((res)=>{
   this.catagoryroouting=data.firstCat.catName;
   this.selectedItem=data.allOtherCats[0];
   this.subcatRoouting=data.firstCat.subCAts.firstSubCat.subCatName;
+  this.subcatcount=data.firstCat.subCatsCount;
+  this.typecount=data.firstCat.subCAts.firstSubCat.typeCount;
   console.log('data',data.firstCat)
   let char=[]
   this.subname=data.firstCat.subCAts.allOtherSubCAts;
@@ -93,6 +99,15 @@ this.calssification.getclassification().subscribe((res)=>{
   addCategory(){
     this.addButton =true;
   }
+  addSubCategory(){
+    this.addSubButton=true;
+  }
+  addTypeCategory(){
+    this.addTypeButton=true;
+
+  }
+
+
   removecatg(item):void{
     // this.catgname.splice(index, 1);
   alert(item.catId);
@@ -110,6 +125,8 @@ this.calssification.getclassification().subscribe((res)=>{
   this.catagoryroouting=data.firstCat.catName;
   this.selectedItem=data.allOtherCats[0];
   this.subcatRoouting=data.firstCat.subCAts.firstSubCat.subCatName;
+  this.subcatcount=data.firstCat.subCatsCount;
+  this.typecount=data.firstCat.subCAts.firstSubCat.typeCount;
   console.log('data',data.firstCat)
   let char=[]
   this.subname=data.firstCat.subCAts.allOtherSubCAts;
@@ -169,10 +186,13 @@ this.calssification.getclassification().subscribe((res)=>{
       let data=res.response;
       this.subname=data.allOtherSubCAts;
       if(data.firstSubCat==null){
-        this.typename=[]
+        this.typename=[];
+        this.typecount='0'
       }
       else{
         this.typename=data.firstSubCat.types;
+        this.subcatcount=res.totalRecords;
+     this.typecount=data.firstSubCat.typeCount;
       }
       });
 
@@ -188,7 +208,8 @@ this.calssification.getclassification().subscribe((res)=>{
       let data=res.response;
       this.typename=res.response;
       console.log(this.typename)
-  
+      this.typecount=res.totalRecords;
+
   
     })
     // this.typename.splice(index, 1);
@@ -207,7 +228,9 @@ this.calssification.getclassification().subscribe((res)=>{
     this.calssification.getclassification().subscribe((res)=>{
       let data=res.response;
       this.coutCatagory=res.totalRecords;
-      this.catgname=data.allOtherCats
+      this.catgname=data.allOtherCats;
+      this.subcatcount=data.firstCat.subCatsCount;
+      this.typecount=data.firstCat.subCAts.firstSubCat.typeCount;
     //   console.log('data',data.firstCat)
     //   let char=[]
     //   this.subname=data.firstCat.subCAts.allOtherSubCAts;
@@ -238,16 +261,21 @@ this.calssification.addsubCatagory(data).subscribe((res)=>{
   this.sucatname='';
   this.sucatnameCode='';
   })  
-  alert(this.itemId)
+  // alert(this.itemId)
   this.calssification.onclickcat(this.itemId).subscribe((res)=>{
     console.log(res)
     let data=res.response;
     this.subname=data.allOtherSubCAts;
     if(data.firstSubCat==null){
       this.typename=[]
+      this.typecount='0'
     }
     else{
       this.typename=data.firstSubCat.types;
+      this.subcatcount=res.totalRecords;
+      this.typecount=data.firstSubCat.typeCount;
+      // this.selectedtypeItem=res.response[0];
+
     }
     });
 }
@@ -269,6 +297,7 @@ this.calssification.onclicksubcat(this.subCatId).subscribe((res)=>{
   let data=res.response;
   this.typename=res.response;
   console.log(this.typename)
+  this.typecount=res.totalRecords;
 
 
 })
@@ -286,6 +315,7 @@ oclicksub(item){
     let data=res.response;
     this.typename=res.response;
     this.selectedtypeItem=res.response[0];
+    this.typecount=res.totalRecords;
     console.log(this.typename)
 
 
@@ -301,7 +331,10 @@ console.log('item',item)
  this.catagoryroouting=item.catName;
 this.calssification.onclickcat(this.itemId).subscribe((res)=>{
 console.log(res)
+
 let data=res.response;
+this.subcatcount=res.totalRecords;
+this.typecount=data.firstSubCat.typeCount;
 this.subname=data.allOtherSubCAts;
 this.selectedsubItem=data.allOtherSubCAts[0]
 if(data.firstSubCat==null){

@@ -39,9 +39,9 @@
     </div>
     <div class="col-12 col-lg-4 col-md-6">
       <div class="row">
-        <p class="col-10">Sub-Category (3)</p>
+        <p class="col-10">Sub-Category ({{subcatcount}})</p>
         <p class="col-2">
-          <mat-icon (click)=addCategory()>add_circle</mat-icon>
+          <mat-icon (click)=addSubCategory()>add_circle</mat-icon>
         </p>
       </div>
       <!-- sub category -->
@@ -56,7 +56,7 @@
             <mat-icon class="col-2" (click)="removesub(subc)">remove_circle</mat-icon>
           </div>
           <!-- <div class="buttn d-flex" *ngIf=addButton> -->
-            <div class="inbtn d-flex" *ngIf=addButton>
+            <div class="inbtn d-flex" *ngIf= addSubButton>
               <!-- <button class="btn btn-basic addcat">Add category name</button> -->
               <input type="text col-lg-5" class="addcatg" [(ngModel)]="sucatname" placeholder="Add category name">
               <input type="text col-lg-3" class="addcd" [(ngModel)]="sucatnameCode" placeholder="Add Code">
@@ -72,9 +72,9 @@
     </div>
     <div class="col-12 col-lg-4 col-md-6">
       <div class="row">
-        <p class="col-10">Type (2)</p>
+        <p class="col-10">Type ({{typecount}})</p>
         <p class="col-2">
-          <mat-icon (click)=addCategory()>add_circle</mat-icon>
+          <mat-icon (click)=addTypeCategory()>add_circle</mat-icon>
         </p>
       </div>
       <!-- type -->
@@ -92,7 +92,7 @@
             <mat-icon class="col-2" (click)="removetype(type)">remove_circle</mat-icon>
           </div>
           <!-- <div class="buttn d-flex" *ngIf=addButton> -->
-            <div class="inbtn d-flex" *ngIf=addButton>
+            <div class="inbtn d-flex" *ngIf=addTypeButton>
               <!-- <button class="btn btn-basic addcat">Add category name</button> -->
               <input type="text col-lg-5" class="addcatg" [(ngModel)]="type" placeholder="Add category name">
               <input type="text col-lg-3" class="addcd" [(ngModel)]="typeCode" placeholder="Add Code">

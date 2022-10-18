@@ -104,3 +104,13 @@ mat-sidenav-container {
 mat-tab-group{
     height: 100vh;
 }
+
+@media (max-width: 991px){
+  .material-text{
+    font-size: 19px;
+    margin-top: 4px;
+}
+::ng-deep.mat-tab-label{
+    max-width: 111px;
+}
+}

@@ -8,7 +8,10 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { Sort, MatSort, SortDirection } from '@angular/material/sort';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';  
+import { IDropdownSettings } from 'ng-multiselect-dropdown'; 
+import {
+  PaginationNumberFormatterParams,
+} from 'ag-grid-community'; 
 
 export interface PeriodicElement {
   name: any;
@@ -61,7 +64,7 @@ import * as moment from 'moment';
 })
 export class UsersComponent implements OnInit {
   private gridApi!: GridApi;
-
+  paginationPageSize = 10;
   myForm:any= FormGroup;
   myForms:any= FormGroup;
   disabled = false;
@@ -222,6 +225,7 @@ public pivotPanelShow = 'always';
   sideBarOpen = true;
   scrolledIndex = 0;
   defaultPageSize = 12;
+  paginationScrollCount:any;
 
   @ViewChild(MatSidenav)
 
@@ -235,7 +239,14 @@ public pivotPanelShow = 'always';
   userId: any;
   roleArray:any[] = [];
   statusArray:any=[];
+  messages:any[]=[];
+  stayScrolledToEnd = true;
 
+ paginationNumberFormatter: (
+    params: PaginationNumberFormatterParams
+  ) => string = (params: PaginationNumberFormatterParams) => {
+    return '[' + params.value.toLocaleString() + ']';
+  };
   
   start: number = 0;
   limit: number = 15;
@@ -447,6 +458,26 @@ console.log('checkdata',localdata)
   this.selectedItems = [];
   });
 }
+
+handleRowDataChanged(event) {
+  const index = this.messages.length - 1;
+  if (this.stayScrolledToEnd) {
+    //this.gridOptions.ensureIndexVisible(index, 'bottom');
+  }
+}
+
+handleScroll(event) {
+  const grid = document.getElementById('gridContainer');
+  if (grid) {
+    const gridBody = grid.querySelector('.ag-body-viewport') as any;
+    const scrollPos = gridBody.offsetHeight + event.top;
+    const scrollDiff = gridBody.scrollHeight - scrollPos;
+    //const api =  this.rowData5;
+    this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
+    this.paginationScrollCount = this.rowData5.length;
+  }
+}
+
 
 statusItems(){
   this.user.getstatusDeatils().subscribe((res: any) => {

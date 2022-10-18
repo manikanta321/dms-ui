@@ -128,3 +128,20 @@ body {
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
   }
+
+  @media only screen and (max-width: 600px) {
+   .header-text {
+     font-size:20px !important;
+   }
+   .geo-label .mat-tab-header {
+     width: 48% !important;
+   }
+   .geo-label .mat-tab-labels:nth-child(1) {
+    width: 80% !important;
+   }
+
+  }
+
+  mat-list-item-content::before {
+    content: "Read this: ";
+  }

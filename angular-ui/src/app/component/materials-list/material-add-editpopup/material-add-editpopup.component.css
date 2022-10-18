@@ -458,6 +458,7 @@ li {
   height: 400px;
   overflow-y: scroll;
   overflow-x: hidden;
+  width: 800px !important;
   
 }
 
@@ -562,4 +563,11 @@ li {
 .northinput{
   position: relative;
     left: -7%;
+}
+.infosize{
+  width: 300px !important;
+}
+::ng-deep.mat-horizontal-content-container {
+  overflow: hidden;
+  padding: 0px 0px 0px 0px;
 }

@@ -41,6 +41,7 @@ import { DealersComponent } from './dealers/dealers.component';
 import { AssociationComponent } from './association/association.component';
 import { ReportsComponent } from './reports/reports.component';
 import { GeographiesComponent } from './component/geographies/geographies.component';
+import {MatChipsModule} from '@angular/material/chips';
 // import {MatTabsModule} from '@angular/material/tabs';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ImpactedAssociationComponent } from './component/materials-list/impacted-association/impacted-association.component';
@@ -159,7 +160,8 @@ import { AddGeolistPopupComponent } from './component/add-geolist-popup/add-geol
     HttpClientModule,
     NgMultiSelectDropDownModule,
     MatCardModule,
-    MatStepperModule
+    MatStepperModule,
+    MatChipsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

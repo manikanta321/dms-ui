@@ -49,7 +49,8 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token',this.loginData.token )
       this.setSession(this.loginData.token)
       console.log("LoginData",this.loginData);
-      localStorage.setItem('logInId',this.loginData.id )
+      localStorage.setItem('logInId',this.loginData.id)
+      localStorage.setItem('userName',this.loginData.userName)
 
       if(this.loginData == -1){
         this.PasswordWrong =true;

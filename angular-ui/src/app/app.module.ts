@@ -77,6 +77,8 @@ import { GeographicListComponent } from './component/geographic-list/geographic-
 import { GeoClassificationComponent } from './component/geo-classification/geo-classification.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { AddGeolistPopupComponent } from './component/add-geolist-popup/add-geolist-popup.component';
+import { AddIdentifierComponent } from './component/materials-list/add-identifier/add-identifier.component';
+import { SelectProductComponent } from './component/materials-list/select-product/select-product.component';
 
 
 @NgModule({
@@ -126,6 +128,8 @@ import { AddGeolistPopupComponent } from './component/add-geolist-popup/add-geol
     GeographicListComponent,
     GeoClassificationComponent,
     AddGeolistPopupComponent,
+    AddIdentifierComponent,
+    SelectProductComponent,
     
   ],
   imports: [

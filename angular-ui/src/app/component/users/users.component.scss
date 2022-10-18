@@ -79,6 +79,14 @@ background: #D23F00 !important;
   background-color: grey !important;
   color: white !important;
 }
+.download-btn:hover {
+  background-color: grey !important;
+  color: white !important;
+}
+.refreshbtn:hover {
+  background-color: grey !important;
+  color: white !important;
+}
 // ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
 //   border: 1px solid #337ab7;
 //   margin-right: 2px !important;
@@ -90,6 +98,11 @@ background: #D23F00 !important;
 //   display: flex;
 //   max-width: 148px !important;
 // }
+::ng-deep.dropdown-btn span .ng-star-inserted {
+  position: absolute !important;
+  right: 20px !important;
+  bottom: 10px;
+}
 ::ng-deep.dropdown-multiselect__caret:before {
   position: relative;
   right: 0;

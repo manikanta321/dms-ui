@@ -18,14 +18,15 @@
   font-family: 'Gilroy';
   margin-left: -4px;
 }
-
-.geography {
-  overflow: auto;
+.geography{
+  overflow-y: auto;
   max-height: 500px;
   /* width: 900px; */
 }
-
-.scroll {
+/* ::ng-deep.steppers .prod.mat-horizontal-content-container {
+  width: 800px !important;
+} */
+.scroll{
   overflow-y: auto;
 }
 
@@ -458,8 +459,7 @@ li {
   height: 400px;
   overflow-y: scroll;
   overflow-x: hidden;
-  width: 800px !important;
-  
+  /* height: 500px; */
 }
 
 .geo {

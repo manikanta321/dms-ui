@@ -61,7 +61,7 @@
               <div class="col">
                 <label>Email ID<span>*</span></label>
                 <br>
-                <input type="email" id="emails" name="emails" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #emails="ngModel" placeholder="Enter your email Id" [(ngModel)]="email">
+                <input type="email" id="emails" name="emails" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$" #emails="ngModel" placeholder="Enter your email Id" [(ngModel)]="email">
                 <p style="margin-bottom:-40px;" *ngIf="emails.invalid && (emails.dirty || emails.touched)"
                 class="alert">
             

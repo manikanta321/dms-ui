@@ -52,7 +52,7 @@
                          </ng-multiselect-dropdown>
                     </form>
                        </div>
-                       <div class="icon btnhover refreshbtn" (click)="refresh()">
+                       <div class="icon btnhover refreshbtn" (click)="refresh()" style=" cursor: pointer">
                          <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;" alt="refresh" >
                        </div>
                         </div>   
@@ -61,7 +61,7 @@
                   <div class="col-md-4" style="margin-left: 65%;margin-bottom:10px">
                     <div class="row">
                     <div class="col-md-8">
-                  <div class="searchBox d-flex">
+                  <div class="searchBox d-flex" style=" cursor: pointer">
                     <input class="searchInput" style="font-family: 'Gilroy'" type="text" name="" placeholder="Type & search for anything" 
                     (keyup)="onSearchChange($event)">
                     <button class="searchButton" href="#"> 
@@ -73,12 +73,12 @@
                   </div>
                 </div>
                 <div class="col-md-2">
-                 <div class="add-user" (click)="addUser()">
+                 <div class="add-user" (click)="addUser()" style=" cursor: pointer">
                    <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
                  </div>
                 </div>
                 <div class="col-md-0">
-                 <div class="download-btn" (click)="onBtnExport()">
+                 <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer">
                    <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;" alt="add-user-btn">
                  </div>
                 </div>

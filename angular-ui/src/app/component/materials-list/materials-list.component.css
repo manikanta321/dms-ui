@@ -175,7 +175,7 @@
       }
   ::ng-deep.multiselect-dropdown .dropdown-btn span span{
     position: relative;
-    bottom: 24px;
+    bottom: 25px !important;
   }
   ::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
     color: #17c017 !important;
@@ -363,6 +363,11 @@
   right: 0px;
   bottom: -3px;
 }
+/* .dropdown-btn span .ng-star-inserted {
+  position: absolute !important;
+  right: 20px !important;
+  bottom: 10px !important;
+} */
       /* .searchButton {
         color: #FFFFFF;
         float: right;

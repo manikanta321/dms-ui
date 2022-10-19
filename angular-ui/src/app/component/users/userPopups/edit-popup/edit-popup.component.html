@@ -20,10 +20,10 @@
       <label>Username<span>*</span></label>
       <br>
       <input id="euname" name="euname" required type="text" placeholder="Enter your username" [(ngModel)]="username" style="width: 530px;" #euname="ngModel">
-      <p style="margin-bottom:-40px;" *ngIf="euname.invalid && (euname.dirty || euname.touched)"
+      <p style="margin-bottom:-22px;padding: 0px;" *ngIf="euname.invalid && (euname.dirty || euname.touched)"
       class="alert">
   
-    <span style="color:red;position: relative;left: -4%;top: -6px;" *ngIf="euname.errors?.['required']">
+    <span style="color:red;position: relative;" *ngIf="euname.errors?.['required']">
       *Username is required.
     </span>
   </p>
@@ -35,10 +35,10 @@
                 <label>First Name<span>*</span></label>
                 <br>
                 <input id="efname" name="efname" required type="text" placeholder="Enter your first name" [(ngModel)]="fullname"#efname="ngModel">
-                <p style="margin-bottom:-40px;" *ngIf="efname.invalid && (efname.dirty || efname.touched)"
+                <p style="margin-bottom:-22px;padding: 0px;" *ngIf="efname.invalid && (efname.dirty || efname.touched)"
                 class="alert">
             
-              <span style="color:red;position: relative;left: -4%;top: -6px;" *ngIf="efname.errors?.['required']">
+              <span style="color:red;position: relative;" *ngIf="efname.errors?.['required']">
                 *First Name is required.
               </span>
             </p>
@@ -47,10 +47,10 @@
                 <label>Last Name<span>*</span></label>
                 <br>
                 <input id="elname" name="elname" required type="text" placeholder="Enter your last name" [(ngModel)]="Lastname"#elname="ngModel">
-                <p style="margin-bottom:-40px;" *ngIf="elname.invalid && (elname.dirty || elname.touched)"
+                <p style="margin-bottom:-22px;padding: 0px;" *ngIf="elname.invalid && (elname.dirty || elname.touched)"
                 class="alert">
             
-              <span style="color:red;position: relative;left: -4%;top: -6px;" *ngIf="elname.errors?.['required']">
+              <span style="color:red;position: relative;" *ngIf="elname.errors?.['required']">
                 *Last Name is required.
               </span>
             </p>
@@ -62,13 +62,13 @@
                 <label>Email ID<span>*</span></label>
                 <br>
                 <input type="email" id="emails" name="emails" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #emails="ngModel" placeholder="Enter your email Id" [(ngModel)]="email">
-                <p style="margin-bottom:-40px;" *ngIf="emails.invalid && (emails.dirty || emails.touched)"
+                <p style="margin-bottom:-22px;padding: 0px;" *ngIf="emails.invalid && (emails.dirty || emails.touched)"
                 class="alert">
             
-              <span style="color:red;position: relative;left: -9%;top: -6px;" *ngIf="emails.errors?.['required']">
+              <span style="color:red;position: relative;" *ngIf="emails.errors?.['required']">
                 *Email is required.
               </span>
-              <span style="color:red;position: relative;left: -7%;top: -4px;" *ngIf="emails.errors&&emails.errors?.['pattern']">
+              <span style="color:red;position: relative;" *ngIf="emails.errors&&emails.errors?.['pattern']">
                 *Email is Invalid.
               </span>
             </p>
@@ -78,12 +78,12 @@
                 <label>Phone No<span>*</span></label>
                 <br>
                 <input type="text" id="mobileno" name="mobileno" required placeholder="Enter your phone number" pattern="^((\\+91-?)|0)?[0-9]{10}$" placeholder="Enter your phone no." [(ngModel)]="phone" #mobileno="ngModel">
-                <p style="margin-bottom:-40px;" *ngIf="mobileno.invalid && (mobileno.dirty || mobileno.touched)"
+                <p style="margin-bottom:-22px;padding: 0px;" *ngIf="mobileno.invalid && (mobileno.dirty || mobileno.touched)"
                 class="alert">
-              <span style="color:red;position: relative;left: -9%;top: -6px;" *ngIf="mobileno.errors?.['required']">
+              <span style="color:red;position: relative;" *ngIf="mobileno.errors?.['required']">
                 *Phone Number is required.
               </span>
-              <span style="color:red;position: relative;left: -7%;top: -4px;" *ngIf="mobileno.errors&&mobileno.errors?.['pattern']">
+              <span style="color:red;position: relative;" *ngIf="mobileno.errors&&mobileno.errors?.['pattern']">
                 *Phone Number is Invalid.
               </span>
             </p>

@@ -36,7 +36,7 @@ export class PswResetPopupComponent implements OnInit {
 
 
       })
-      this.dialog.open(RestPwsdUserPopupComponent, {panelClass: 'deactiveSuccessPop'});
+      this.dialog.open(RestPwsdUserPopupComponent, {panelClass: 'activeSuccessPop'});
       this.dialogRef.close();
     }
    this.error='both Enter Password and Confirm Password should be same'

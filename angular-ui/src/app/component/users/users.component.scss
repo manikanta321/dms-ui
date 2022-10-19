@@ -199,7 +199,15 @@ background: #000000 !important;
     top: 2px;
 
 }
-
+::ng-deep.roless .multiselect-dropdown .dropdown-btn .selected-item {
+  right: 6% !important;
+}
+::ng-deep.stts .multiselect-dropdown .dropdown-btn .selected-item {
+  right: 6% !important;
+}
+.multiselect-dropdown .dropdown-btn .dropdown-multiselect--active .dropdown-multiselect__caret {
+    transform: rotate(180deg) !important;
+}
 .searchBox:hover >.search-btn {
   display:block;
   height: 26px;

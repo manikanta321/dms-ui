@@ -114,10 +114,21 @@
     }
   
     .searchBox:hover >.searchButton{
-      right: 190px !important;
+      /* right: 190px !important; */
+    }
+
+    .searchBox:hover >.searchButton {
+      display:block;
+    }
+    
+    .searchBox:hover >.searchButton .material-icons {
+      position: relative;    
+      right: -47px !important;
+      color:#000;
     }
     
   }
+
 
 
 

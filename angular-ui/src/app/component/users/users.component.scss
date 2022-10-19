@@ -261,12 +261,31 @@ background: #000000 !important;
 
 @media screen and (max-width: 620px) {
   .searchBox:hover>.searchInput {
-      width: 150px;
-      padding: 0 6px;
-       left:10%;
+    width: 228px !important;
+    padding: 0 28px;
+    left: -302% !important;
   }
+
   .searchBox {
-left: 37%
+     left: 37%
+  }
+
+  .searchBox:hover >.search-btn {
+    right: 183px !important;
+  }
+
+  .searchBox:hover >.searchButton{
+    /* right: 190px !important; */
+  }
+
+  .searchBox:hover >.searchButton {
+    display:block;
+  }
+  
+  .searchBox:hover >.searchButton .material-icons {
+    position: relative;    
+    right: -47px !important;
+    color:#000;
   }
 }
 .add-user {

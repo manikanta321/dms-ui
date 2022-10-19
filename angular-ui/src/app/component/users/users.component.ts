@@ -142,8 +142,8 @@ cellRenderer: function clickNextRendererFunc(){
   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
 }, 
  cellEditorPopup: true,
- onCellClicked: (event: CellClickedEvent) => this.dialog.open( DeletecomponentComponent)
-
+ onCellClicked: (event: CellClickedEvent) => this.dialog.open(DeletecomponentComponent, {panelClass: 'editpopup'})
+// onCellClicked: (event: CellClickedEvent) => this.iconDisabled = true
 },
 
 // {

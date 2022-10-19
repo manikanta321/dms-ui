@@ -1,0 +1,32 @@
+
+div:hover{
+    background: rgba(222, 226, 230, 0.65);
+}
+div{
+    padding: 5px 10px;
+    cursor: pointer;
+}
+/* img{
+    display: none;
+}
+img:hover{
+    display: block;
+} */
+img{
+    float: right;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+.hover{
+    display: none;
+}
+/* img:hover{
+    background-color: red;
+} */
+.tickmark{
+display:none;
+}
+/* .tickmark:hover{
+    display: block;
+} */
+.tick:hover .tickmark { display:block;}

@@ -35,7 +35,26 @@
     </div>
   </section>
 
-  
+  <ag-grid-angular
+  id="gridContainer"
+  style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy"
+  class="ag-theme-material"
+  [rowHeight]="25"
+  [headerHeight]="48"
+  [columnDefs]="columnDefs"
+  [defaultColDef]="defaultColDef"
+  [columnTypes]="columnTypes"
+  [rowData]="rowData5"
+  [suppressExcelExport]="true"
+  [popupParent]="popupParent"
+   (cellValueChanged)="onCellValueChanged($event)"
+  (firstDataRendered)="onFirstDataRendered($event)" 
+  (firstDataRendered)="onFirstDataRendered($event)"
+  (rowClicked)="openDialog()"
+  (cellClicked)="onCellClicked($event)"
+
+  [pagination]="true"
+  ></ag-grid-angular>
 
      
 </div>

@@ -27,7 +27,12 @@ mat-tab{
     z-index: 2;
 }
 
-::ng-deep .mat-tab-header{
+::ng-deep.othersmastermenutab .mat-tab-header{
+    width: 481px !important;
+    left: 28%;
+}
+
+::ng-deep.mat-tab-header{
     display: flex;
     overflow: hidden;
     position: relative;
@@ -37,8 +42,7 @@ mat-tab{
     background: white;
     left: 35%;
 
-}
-::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+}::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     display: none !important;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
@@ -46,12 +50,13 @@ mat-tab{
     color: white;
     border-radius: 25px;
 }
-
- .geo-label .mat-tab-labels:nth-child(1) {
-    width: 50% !important;
-  }
-
-  .header-text{
+::ng-deep.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    display: none;
+}
+mat-tab-group{
+    height: 100vh;
+}
+.header-text{
     font-family: 'Gilroy-Bold';
     font-size: 30px;
     line-height: 41px;
@@ -72,3 +77,16 @@ mat-tab{
     top: 2%;
     right: 20px;
   }
+::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+    display: none !important;
+}
+::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
+    background: black;
+    color: white;
+    border-radius: 25px;
+}
+
+ .geo-label .mat-tab-labels:nth-child(1) {
+    width: 50% !important;
+  }
+

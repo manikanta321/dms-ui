@@ -65,58 +65,79 @@ status:any;
 
 
 // For accessing the Grid's API
+public popupParent: HTMLElement = document.body;
 
+columnDefs: ColDef[] = [ 
 
-columnDefs: ColDef[] = [
   { headerName: "Name",
-    field: 'Name' , sort: 'desc',},
-
-  {   headerName: "Display Name",field: 'employeeName', },
-
-  {headerName: "Status", field: 'status',},
-  { headerName: "",
-  field: '',  filter: false, sortable: false,
-  cellRenderer: function clickNextRendererFunc(){
-    return '<i class="fa fa-ellipsis-v" aria-hidden="true" (click)="editfn()"></i>';
-}
+field: 'Name' ,type: ['nonEditableColumn'], sort: 'desc',pinned: 'left',
 },
 
+{   headerName: "Display Code",field: 'DisplayCode',type: ['nonEditableColumn']},
+
+// suppressMovable:true,
+{ headerName: "Status",
+ field: 'status', 
+ type: ['nonEditableColumn'],
+cellEditor: 'agSelectCellEditor',
+cellEditorParams: {
+values: ['Active', 'Inactive', 'Invited', 'Locked',],
+},
+cellClass: params => {                      
+  return params.value == 'Inactive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
+}
+},
+{ 
+
+   headerName: "",
+field: '',  filter: false, sortable: false,
+cellRenderer: function clickNextRendererFunc(){
+  return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
+}, 
+ cellEditorPopup: true,
+//  onCellClicked: (event: CellClickedEvent) => this.dialog.open( DeletecomponentComponent)
+
+},
+
+// {
+//   headerName: "Avatar",
+//   field: "avatar",
+//   width: 100,
+//   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
+//  },
 
 ];
 
-public rowData3=[
-  {Name: 'Name', employeeName: 'Rajasheka S',status:'Active'},
-  {Name: 'Name', employeeName: 'Raj S',status:'InActive'},
+public rowData5=[
+  {Name: 'Name', DisplayCode: 'Rajasheka S',status:'Active'},
+  {Name: 'Name', DisplayCode: 'Raj S',status:'InActive'},
 
-  {Name: 'Name', employeeName: 'kariya S',status:'Active'},
+  {Name: 'Name', DisplayCode: 'kariya S',status:'Active'},
 
-  {Name: 'Name', employeeName: 'ssampath S',status:'InActive'},
+  {Name: 'Name', DisplayCode: 'ssampath S',status:'InActive'},
 
-  {Name: 'Name', employeeName: 'Raj',status:'Active'},
+  {Name: 'Name', DisplayCode: 'Raj',status:'Active'},
 
-  {Name: 'Name', employeeName: 'shekar',status:'InActive'},
+  {Name: 'Name', DisplayCode: 'shekar',status:'InActive'},
 
-  {Name: 'Name', employeeName: 'maruthi S',status:'Active'},
-
-  {Name: 'Name', employeeName: 'sam S',status:'InActive'},
 
  
 ];
 
 rowData :any;
 rowData1=[]
-  public defaultColDef: ColDef = {
-    // set the default column width
-    // width: 100,
-    // make every column editable
-    editable: true,
-    // make every column use 'text' filter by default
-    filter: 'agTextColumnFilter',
-    // enable floating filters by default
-    // make columns resizable
-    resizable: true,
-    sortable: true,
-  };
+public defaultColDef: ColDef = {
+  // set the default column width
+  width: 370,
+  // make every column editable
+  editable: true,
+  // make every column use 'text' filter by default
+  filter: 'agTextColumnFilter',
+  // enable floating filters by default
+  // make columns resizable
+  resizable: true,
+  sortable: true,
+};
 
 // public defaultColDef: ColDef = {
 //   sortable: true,
@@ -159,6 +180,7 @@ public columnTypes: {
   },
 };
 
+
 // public sideBar: SideBarDef | string | string[] | boolean | null = {
 //   toolPanels: ['columns'],
 // };
@@ -196,6 +218,33 @@ public pivotPanelShow = 'always';
   sidenav!: MatSidenav;
   roleName: any;
   statusname:any;
+  props: any;
+  msg1: any;
+  msg: any;
+  userId: any;
+  roleArray:any[] = [];
+  statusArray:any=[];
+
+  
+  start: number = 0;
+  limit: number = 15;
+  end: number = this.limit + this.start;
+
+  gridsOptions = {
+    defaultColDef: {
+      sortable: true,
+      resizable: true,
+      editable: true,
+      suppressMenu: true,
+      filter: true,
+      floatingFilter: true,
+      filterParams: { buttons: ['clear'] }
+    },
+    headerHeight: 60,
+    animateRows: true,
+    pagination: false,
+    paginationAutoPageSize: false,
+}
   constructor(public dialog: MatDialog,
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
@@ -238,6 +287,9 @@ public pivotPanelShow = 'always';
     // ageFilterComponent.setModel(null);
     // this.gridApi.onFilterChanged();
 this.getusertabeldata();
+  }
+  openDialog(){
+
   }
 
 getusertabeldata(){

@@ -1,13 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from 'src/app/services/user.service';
 import { AddTaxTemplateComponent } from '../../users/userPopups/add-tax-template/add-tax-template.component';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
 import { Sort, MatSort, SortDirection } from '@angular/material/sort';
-import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
+import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';  
 export interface PeriodicElement {
   name: any;
   position: string;
@@ -38,7 +39,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./tax-template.component.css']
 })
 export class TaxTemplateComponent implements OnInit {
-  public rowData3 = [
+  public rowData5 = [
     {name: 'revathi', Taxitem: 'IGST', Status: 'Active'},
     {name: 'rani', Taxitem: 'CGST', Status: 'Inactive'},
     {name: 'naveen', Taxitem: 'SGST', Status: 'Inactive'},
@@ -48,43 +49,45 @@ export class TaxTemplateComponent implements OnInit {
   ]
   toppings1 = new FormControl('');
   toppingList1:  any= [];
+  myForm:any= FormGroup;
+  myForms:any= FormGroup;
+  disabled = false;
+  dropdownSettings: IDropdownSettings = {};
+  dropdownSettings1: IDropdownSettings = {};
+  public popupParent: HTMLElement = document.body;
   
-  columnDefs: ColDef[] = [
-    // { headerName: "User Id",
-    //   field: 'employeeCode' , sort: 'desc',width: 120},
-  
-    {   headerName: "User Name",field: 'name' ,width:300},
-    {   headerName: "Tax Items",field: 'Taxitem' ,width:300},
-  
-    // { field: 'role',width: 100 },
-  
-    // {  headerName: "Email Id",
-    //    field: 'emailId' },
-  
-    // {   headerName: "Phone no",
-    //   field: 'mobilePhone',width: 150  },
-  
-    // {   headerName: "Last Login",
-      // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-      // field: 'lastLoginDate',type: ['nonEditableColumn'], width: 220  },
-  
-  
-    { headerName: "Status",
-       field: 'Status', 
-    cellEditor: 'agSelectCellEditor',
-    cellEditorParams: {
-      values: ['Active', 'Inactive', 'Invited', 'Locked',],
-    }
-    ,width:250
-    
-  
+  columnDefs: ColDef[] = [ 
+
+    { headerName: "Name",
+  field: 'name' ,type: ['nonEditableColumn'], sort: 'desc',pinned: 'left',
   },
-  { headerName: "",
+  
+  {   headerName: "Tax Items",field: 'Taxitem',type: ['nonEditableColumn']},
+  
+  // suppressMovable:true,
+  { headerName: "Status",
+   field: 'Status', 
+   type: ['nonEditableColumn'],
+  cellEditor: 'agSelectCellEditor',
+  cellEditorParams: {
+  values: ['Active', 'Inactive', 'Invited', 'Locked',],
+  },
+  cellClass: params => {                      
+    return params.value == 'Inactive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
+  }
+  },
+  { 
+  
+     headerName: "",
   field: '',  filter: false, sortable: false,
   cellRenderer: function clickNextRendererFunc(){
-    return '<i class="fa fa-ellipsis-v" aria-hidden="true" (click)="editfn()"></i>';
-}
-},
+    return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
+  }, 
+   cellEditorPopup: true,
+  //  onCellClicked: (event: CellClickedEvent) => this.dialog.open( DeletecomponentComponent)
+  
+  },
+  
   // {
   //   headerName: "Avatar",
   //   field: "avatar",
@@ -96,21 +99,18 @@ export class TaxTemplateComponent implements OnInit {
   
   rowData :any;
   rowData1=[]
-    public defaultColDef: ColDef = {
-      // set the default column width
-      width: 150,
-      // make every column editable
-      editable: true,
-      // make every column use 'text' filter by default
-      filter: 'agTextColumnFilter',
-      // enable floating filters by default
-      floatingFilter: true,
-      // make columns resizable
-      resizable: true,
-      sortable: true,
-      
-    };
-  
+  public defaultColDef: ColDef = {
+    // set the default column width
+    width: 370,
+    // make every column editable
+    editable: true,
+    // make every column use 'text' filter by default
+    filter: 'agTextColumnFilter',
+    // enable floating filters by default
+    // make columns resizable
+    resizable: true,
+    sortable: true,
+  };
   // public defaultColDef: ColDef = {
   //   sortable: true,
   //   resizable: true,
@@ -158,69 +158,114 @@ export class TaxTemplateComponent implements OnInit {
   public rowGroupPanelShow = 'always';
   public pivotPanelShow = 'always';
   
+  roleName: any;
+  statusname:any;
+  props: any;
+  msg1: any;
+  msg: any;
+  userId: any;
+  roleArray:any[] = [];
+  statusArray:any=[];
+
   
-    columns: Array<GuiColumn> = [
-      {
-        header: 'Name',
-        field: 'name' 			//source {name: 'T-shirt'}
-      },
-      {
-        header: 'Type',
-        field: 'type' 			//source {type: 'clothes'}
-      },
-      {
-        header: 'Price',
-        field: 'price'			//source {price: '15$'}
-      }];
+  start: number = 0;
+  limit: number = 15;
+  end: number = this.limit + this.start;
+
+  gridsOptions = {
+    defaultColDef: {
+      sortable: true,
+      resizable: true,
+      editable: true,
+      suppressMenu: true,
+      filter: true,
+      floatingFilter: true,
+      filterParams: { buttons: ['clear'] }
+    },
+    headerHeight: 60,
+    animateRows: true,
+    pagination: false,
+    paginationAutoPageSize: false,
+}
+
   
-    source: Array<any> = [
-      {
-        name: 'T-shirt',		//columns {header: 'Name', field: 'name'}
-        type: 'clothes',		//columns {header: 'Type', field: 'type'}
-        price: '15$' 			//columns {header: 'Price', field: 'price'}
-      },
-      {
-        name: 'Shoes',
-        type: 'footwear',
-        price: '100$'
-      },
-      {
-        name: 'Ball cap',
-        type: 'headgear',
-        price: '50$'
-      }];
+    // columns: Array<GuiColumn> = [
+    //   {
+    //     header: 'Name',
+    //     field: 'name' 			//source {name: 'T-shirt'}
+    //   },
+    //   {
+    //     header: 'Type',
+    //     field: 'type' 			//source {type: 'clothes'}
+    //   },
+    //   {
+    //     header: 'Price',
+    //     field: 'price'			//source {price: '15$'}
+    //   }];
   
-      sorting: GuiSorting = {
-        enabled: true
-    };
+    // source: Array<any> = [
+    //   {
+    //     name: 'T-shirt',		//columns {header: 'Name', field: 'name'}
+    //     type: 'clothes',		//columns {header: 'Type', field: 'type'}
+    //     price: '15$' 			//columns {header: 'Price', field: 'price'}
+    //   },
+    //   {
+    //     name: 'Shoes',
+    //     type: 'footwear',
+    //     price: '100$'
+    //   },
+    //   {
+    //     name: 'Ball cap',
+    //     type: 'headgear',
+    //     price: '50$'
+    //   }];
   
-    paging: GuiPaging = {
-      enabled: true,
-      page: 1,
-      pageSize: 10,
-      pageSizes: [10, 25, 50],
-      pagerTop: true,
-      pagerBottom: true,
-      display: GuiPagingDisplay.BASIC
-    };
+    //   sorting: GuiSorting = {
+    //     enabled: true
+    // };
   
-    searching: GuiSearching = {
-      enabled: true,
-      placeholder: 'Search heroes'
-    };
+    // paging: GuiPaging = {
+    //   enabled: true,
+    //   page: 1,
+    //   pageSize: 10,
+    //   pageSizes: [10, 25, 50],
+    //   pagerTop: true,
+    //   pagerBottom: true,
+    //   display: GuiPagingDisplay.BASIC
+    // };
   
-    columnMenu: GuiColumnMenu = {
-      enabled: true,
-      sort: true,
-      columnsManager: true,
+    // searching: GuiSearching = {
+    //   enabled: true,
+    //   placeholder: 'Search heroes'
+    // };
   
-    };
+    // columnMenu: GuiColumnMenu = {
+    //   enabled: true,
+    //   sort: true,
+    //   columnsManager: true,
+  
+    // };
     displayedColumns: string[] = ['position', 'name',  'symbol','email','phonenum','login','status','edit'];
     dataSource = new MatTableDataSource(ELEMENT_DATA);
     toppings = new FormControl('');
+  selectedItems: any;
+  userTypes:any=[];
+  statusTypes:any=[];
+  searchText:any;
+  scrolledIndex: any;
+  ShowFilter = false;
+  StatusFilter = false;
+  limitSelection = false;
+  statusSelection =false;
+  toppingList: any= [];
+
   constructor( private user:UserService,
     public dialog: MatDialog,
+    private fb: FormBuilder,
     private _liveAnnouncer: LiveAnnouncer,) { sort:[];}
+    onFirstDataRendered(params: FirstDataRenderedEvent) {
+      params.api.sizeColumnsToFit();
+    }
     @ViewChild(MatSort)
     sort: MatSort = new MatSort;
     ngAfterViewInit() {
@@ -229,8 +274,203 @@ export class TaxTemplateComponent implements OnInit {
     }
   ngOnInit(): void {
     this.statusItems();
-    
+    this.getusertabeldata();
+    // this.roleItems();
+
+    this.myForm = this.fb.group({
+      city: [this.selectedItems]
+  });
+  this.myForms = this.fb.group({
+    citys: [this.selectedItems]
+  });
   }
+  scrolledIndexChange(i): void {
+    this.scrolledIndex = i;
+  }
+  toogleShowFilter() {
+    this.ShowFilter = !this.ShowFilter;
+    this.dropdownSettings = Object.assign({}, this.dropdownSettings, { allowSearchFilter: this.ShowFilter });
+  }
+  
+  handleLimitSelection() {
+    if (this.limitSelection) {
+        this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: 2 });
+    } else {
+        this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: null });
+    }
+  }
+  toogleStatusFilter() {
+  this.StatusFilter = !this.StatusFilter;
+  this.dropdownSettings1 = Object.assign({}, this.dropdownSettings1, { allowSearchFilter: this.StatusFilter });
+  }
+  
+  handleStatusSelection() {
+  if (this.statusSelection) {
+      this.dropdownSettings1 = Object.assign({}, this.dropdownSettings1, { statusSelection: 2 });
+  } else {
+      this.dropdownSettings1 = Object.assign({}, this.dropdownSettings1, { statusSelection: null });
+  }
+  
+    }
+    refresh(){
+      this.toppings = new FormControl(this.toppingList);
+      this.toppings1 = new FormControl(this.toppingList1);
+      this.myForm = this.fb.group({
+        city: [this.selectedItems]
+    });
+    this.myForms = this.fb.group({
+      citys: [this.selectedItems]
+    });
+      // var ageFilterComponent = this.gridApi.getFilterInstance('')!;
+      // ageFilterComponent.setModel(null);
+      // this.gridApi.onFilterChanged();
+      const data={
+        userTypes:[],
+        statuss:[],
+        search:'',
+    
+      }
+      this.user.getuserDeatilsUser(data).subscribe((res) => {     
+        this.rowData5 = res.response;
+      });
+  this.getusertabeldata();
+    }
+  roleFilter(data:any){
+    console.log('data',data)
+    this.roleName=this.toppings.value;
+  this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=>{
+    this.rowData = res.response;
+  
+  
+  });
+    console.log('rolename',this.rowData)
+  }
+  onStatusAll(items: any) {
+    console.log('onSelectAll', items);
+    }
+    onStatusSelect(item: any) {
+      this.statusTypes.push(item.statusId);
+    
+      const data={
+        userTypes:this.userTypes,
+        statuss:this.statusTypes,
+        search:this.searchText,
+      }
+      this.user.getuserDeatilsUser(data).subscribe((res) => {     
+        this.rowData5 = res.response;
+      });
+      
+    }
+    onItemDeSelect(item: any) {
+
+      this.userTypes.forEach((element,index)=>{
+        if(element==item.roleId)  this.userTypes.splice(index,1);
+     });
+     console.log(' this.userTypes', this.userTypes)
+    
+      // this.userTypes.pop(item.roleId);
+      const data={
+        userTypes:this.userTypes,
+        statuss:this.statusTypes,
+        search:this.searchText,
+    
+      }
+      this.user.getuserDeatilsUser(data).subscribe((res) => {     
+        this.rowData5 = res.response;
+      });
+    
+    }
+    onItemSelect(item: any) {
+
+      // alert(item.roleName)
+        this.userTypes.push(item.roleId);
+      
+        const data={
+          userTypes:this.userTypes,
+          statuss:this.statusTypes,
+          search:this.searchText,
+      
+        }
+        this.user.getuserDeatilsUser(data).subscribe((res) => {     
+          this.rowData5 = res.response;
+        });
+        console.log('rolefilter', this.userTypes)
+        console.log('onItemSelect', item);
+      }
+      onItemSelectOrAll(item:any){
+        this.userTypes=this.roleArray;
+        const data={
+          userTypes:this.userTypes,
+          statuss:this.statusTypes,
+          search:this.searchText,
+      
+        }
+        this.user.getuserDeatilsUser(data).subscribe((res) => {     
+          this.rowData5 = res.response;
+        });
+        console.log('rolefilter', this.userTypes)
+        console.log('onItemSelect', item);}
+      onItemDeSelectOrAll(item:any){
+        const data={
+          userTypes:this.userTypes,
+          statuss:[],
+          search:this.searchText,
+      
+        }
+        this.user.getuserDeatilsUser(data).subscribe((res) => {     
+          this.rowData5 = res.response;
+        });
+        console.log('rolefilter', this.userTypes)
+        console.log('onItemSelect', item);
+      }
+      
+        onItemDeSelectOrAllStatus(item:any){
+          const data={
+            userTypes:this.userTypes,
+            statuss:[],
+            search:this.searchText,
+        
+          }
+          this.user.getuserDeatilsUser(data).subscribe((res) => {     
+            this.rowData5 = res.response;
+          });
+          console.log('rolefilter', this.userTypes)
+        }
+      
+      
+        onItemSelectOrAllStatus(item:any){
+          this.statusTypes=this.statusArray;
+          const data={
+            userTypes:this.userTypes,
+            statuss:this.statusTypes,
+            search:this.searchText,
+        
+          }
+          this.user.getuserDeatilsUser(data).subscribe((res) => {     
+            this.rowData5 = res.response;
+          });
+          console.log('rolefilter', this.statusTypes)
+        }
+    
+    
+    onStatusDeSelect(item: any) {
+      this.statusTypes.forEach((element,index)=>{
+        if(element==item.statusId)  this.statusTypes.splice(index,1);
+     });
+      // this.statusTypes.pop(item.statusId);
+    console.log(' this.statusTypes', this.userTypes)
+      const data={
+        userTypes:this.userTypes,
+        statuss:this.statusTypes,
+        search:this.searchText,
+    
+      }
+      this.user.getuserDeatilsUser(data).subscribe((res) => {     
+        this.rowData5 = res.response;
+      });
+      console.log('rolefilter', this.userTypes)
+      console.log('onItemSelect', item);
+    }
   getusertabeldata(){
     this.user.getuserDeatils().subscribe((res: any) => {
         
@@ -274,10 +514,9 @@ statusItems(){
     console.log('status',this.toppingList1)
 
 
-
-
   });
 }
+
 addtaxTempl(){
   this.dialog.open( AddTaxTemplateComponent,);
 }
@@ -305,6 +544,9 @@ onCellClicked( e: CellClickedEvent): void {
   console.log('cellClicked', e);
 }
 
+openDialog(){
+
+}
 
 onCellValueChanged(event: CellValueChangedEvent) {
   alert(event.value)

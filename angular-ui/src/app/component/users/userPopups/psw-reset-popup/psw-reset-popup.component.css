@@ -23,4 +23,13 @@ width: 240px;
     position: relative;
     font-size: 15px;
     font-weight: 600;
+    top: 26px;
+}
+.actv-user{
+position: relative;
+top: -10px;
+}
+.mat-dialog-container {
+    padding: 16px !important;
+    padding-top: 2px !important;
 }

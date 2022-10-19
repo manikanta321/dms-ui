@@ -2,11 +2,11 @@
 <div class="container">
     <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
     <div class="actv-user text-center">
-        <p style="color: red;">{{error}}</p>
         <h1 class="head-text" *ngIf="true">Reset Password</h1>
         
         <input type="text" placeholder="Enter Password" [(ngModel)]="enterfirst"><br>
         <input type="text" placeholder="Confirm Password" [(ngModel)]="entersecond"><br>
         <button class="exit" (click)="confrmPWS()">Update Password</button>
     </div>
+    <p style="color: red;position: relative;position: relative;width: 160px;padding: 0px;height: 0px;top: -6px;">{{error}}</p>
 </div>

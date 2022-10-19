@@ -22,3 +22,10 @@ img{
 /* img:hover{
     background-color: red;
 } */
+.tickmark{
+display:none;
+}
+/* .tickmark:hover{
+    display: block;
+} */
+.tick:hover .tickmark { display:block;}

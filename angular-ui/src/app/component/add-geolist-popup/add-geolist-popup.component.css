@@ -145,3 +145,36 @@ mat-form-field {
     color: red;
 }
 
+
+.searchBox[_ngcontent-hbx-c448]:hover > .searchInput[_ngcontent-hbx-c448] {
+    width: 230px;
+    padding: 0 47px;
+    left: -295%;
+}
+
+@media screen and (max-width: 620px) {
+    .addUserForm input {
+        width: 50px;
+    }
+
+    #pValue {
+        width: 100px !important;
+    }
+
+    .removeCircle{
+        margin-left: 206%;
+        margin-top: 60px;
+        color: red;
+    }
+
+    .addU:before {
+        width: 64px;
+        left: 0px;
+    }
+    
+    .addU:after {
+        width: 69px; 
+        right: -7px;
+    }
+}
+

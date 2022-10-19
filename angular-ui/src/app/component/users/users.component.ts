@@ -479,6 +479,7 @@ handleScroll(event) {
 }
 
 
+
 statusItems(){
   this.user.getstatusDeatils().subscribe((res: any) => {
     this.toppingList1=res.response;

@@ -97,17 +97,30 @@
   .addU[_ngcontent-mps-c425]:after {
     width: 205px;
   }
-  
+
   @media screen and (max-width: 620px) {
     .searchBox:hover>.searchInput {
-        width: 150px;
-        padding: 0 6px;
-         left:10%;
+      width: 228px !important;
+      padding: 0 28px;
+      left: -271% !important;
     }
+  
     .searchBox {
-  left: 37%
+       left: 37%
     }
+  
+    .searchBox:hover >.search-btn {
+      right: 245px !important;
+    }
+  
+    .searchBox:hover >.searchButton{
+      right: 190px !important;
+    }
+    
   }
+
+
+
   .add-user {
     border: none;
     background: #000000;

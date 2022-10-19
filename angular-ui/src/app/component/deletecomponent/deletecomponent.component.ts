@@ -7,7 +7,6 @@ import { DeactivateUserpopupComponent } from '../users/userPopups/deactivate-use
 import { EditPopupComponent } from '../users/userPopups/edit-popup/edit-popup.component';
 import { PswResetPopupComponent } from '../users/userPopups/psw-reset-popup/psw-reset-popup.component';
 import { RestPwsdUserPopupComponent } from '../users/userPopups/rest-pwsd-user-popup/rest-pwsd-user-popup.component';
-
 @Component({
   selector: 'app-deletecomponent',
   templateUrl: './deletecomponent.component.html',
@@ -18,6 +17,7 @@ export class DeletecomponentComponent implements OnInit {
   employeeId:any;
   employeename:any;
   LoginId:any;
+  selected:boolean=false;
   constructor(private dialogRef: MatDialogRef<any>,
     private user:UserService,
     private dialog: MatDialog) { }
@@ -49,5 +49,8 @@ export class DeletecomponentComponent implements OnInit {
   resetpws(){
     this.dialog.open(PswResetPopupComponent);
     this.dialogRef.close();
+  }
+  tickmark(){
+    this.selected = true;
   }
 }

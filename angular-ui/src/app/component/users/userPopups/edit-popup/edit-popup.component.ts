@@ -94,7 +94,7 @@ editUser(){
       UserName:this.username,
       Email:this.email,
       MobilePhone:this.phone,
-      roleId:this.role,
+      roleId:this.roleId,
  }
     this.user.EditUser(obj).subscribe((res: any) => {
       if (res.response.result =='successfully updated') {

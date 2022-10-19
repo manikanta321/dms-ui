@@ -251,14 +251,25 @@ background: #000000 !important;
 
 @media screen and (max-width: 620px) {
   .searchBox:hover>.searchInput {
-      width: 150px;
-      padding: 0 6px;
-       left:10%;
+    width: 228px !important;
+    padding: 0 28px;
+    left: -305% !important;
   }
+
   .searchBox {
-left: 37%
+     left: 37%
   }
+
+  .searchBox:hover >.search-btn {
+    right: 188px !important;
+  }
+
+  .searchBox:hover >.searchButton{
+    right: 202px !important;
+  }
+  
 }
+
 .add-user {
   border: none;
   background: #000000;
@@ -269,6 +280,7 @@ left: 37%
   margin-top: 5px;
   margin-left: 17%;
 }
+
 .download-btn {
   border: none;
   background: #000000;
@@ -279,6 +291,7 @@ left: 37%
   top: 6px;
   left: 21%;
 }
+
 ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
   border: 1px solid #337ab7;
   margin-right: 4px;

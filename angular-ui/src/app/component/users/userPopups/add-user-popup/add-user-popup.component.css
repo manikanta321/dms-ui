@@ -69,6 +69,9 @@
     font-size: 14px;
     outline: none !important;
 }
+::ng-deep.btn-primary[_ngcontent-uke-c437]:disabled {
+    margin-bottom: 0px !important;
+}
 
 span {
     color: red;

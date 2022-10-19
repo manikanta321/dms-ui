@@ -380,10 +380,14 @@
       
       @media (max-width: 991px){
         ::ng-deep.multiselect-dropdown {
-          width: 93% !important;
+          width: 90% !important;
         }
         ::ng-deep.multiselect-dropdown .dropdown-btn {
           margin-bottom: 35px !important;
+        }
+        ::ng-deep.subcatty .multiselect-dropdown .dropdown-btn .selected-item {
+          background: #0C5A3E !important;
+          right: 0% !important;
         }
         .refreshbtn{
           width: 40px;
@@ -415,6 +419,18 @@
         ::ng-deep.multiselect-dropdown .dropdown-btn span span{
           position: relative;
           bottom: 0px;
+        }
+        ::ng-deep.typy .multiselect-dropdown .dropdown-btn .selected-item {
+          background: #C32F27 !important;
+          right: 0% !important;
+        }
+        ::ng-deep.producty .multiselect-dropdown .dropdown-btn .selected-item {
+          background: #44026C !important;
+          right: 0% !important;
+        }
+        ::ng-deep.sttss .multiselect-dropdown .dropdown-btn .selected-item {
+          background: #000000 !important;
+          right: 0% !important;
         }
       
     }

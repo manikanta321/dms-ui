@@ -20,12 +20,16 @@
       <label>Username<span>*</span></label>
       <br>
       <input type="text" id="uname" name="uname" required placeholder="Enter your username" [(ngModel)]="username" #uname="ngModel" style="width: 100%;">
-      <p style="margin-bottom:-40px;" *ngIf="uname.invalid && (uname.dirty || uname.touched)"
+      <p style="margin-bottom:-22px; padding: 0px;" *ngIf="uname.invalid && (uname.dirty || uname.touched)"
       class="alert">
   
-    <span style="color:red;position: relative;left: -4%;top: -6px;" *ngIf="uname.errors?.['required']">
+    <span style="color:red;position: relative;" *ngIf="uname.errors?.['required']">
       *Username is required.
     </span>
+    <!-- <span *ngIf="uname.invalid && (uname.dirty || uname.touched) && uname.errors?.['required']"
+    class="alert" style="color:red;position: relative;left: -4%;margin-bottom:-40px;">
+      *Username is required.
+    </span> -->
   </p>
     </div>
             </div>
@@ -36,10 +40,10 @@
                 <label>First Name<span>*</span></label>
                 <br>
                 <input type="text" id="fname" name="fname" required appForbiddenName="bob" placeholder="Enter your first name" [(ngModel)]="fullname" #fname="ngModel">
-                <p style="margin-bottom:-40px;" *ngIf="fname.invalid && (fname.dirty || fname.touched)"
+                <p style="margin-bottom:-22px;padding: 0px;" *ngIf="fname.invalid && (fname.dirty || fname.touched)"
                 class="alert">
             
-              <span style="color:red;position: relative;left: -4%;top: -6px;" *ngIf="fname.errors?.['required']">
+              <span style="color:red;position: relative;" *ngIf="fname.errors?.['required']">
                 *First Name is required.
               </span>
             </p>
@@ -48,10 +52,10 @@
                 <label>Last Name<span>*</span></label>
                 <br>
                 <input type="text" id="lname" name="lname" required  appForbiddenName="bob" #lname="ngModel" placeholder="Enter your last name" [(ngModel)]="Lastname">
-                <p style="margin-bottom:-40px;" *ngIf="lname.invalid && (lname.dirty || lname.touched)"
+                <p style="margin-bottom:-22px;padding: 0px;" *ngIf="lname.invalid && (lname.dirty || lname.touched)"
                 class="alert">
             
-              <span style="color:red;position: relative;left: -4%;top: -6px;" *ngIf="lname.errors?.['required']">
+              <span style="color:red;position: relative;" *ngIf="lname.errors?.['required']">
                 *Last Name is required.
               </span>
             </p>
@@ -63,13 +67,13 @@
                 <label>Email Id<span>*</span></label>
                 <br>
                 <input type="email"id="emails" name="emails" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #emails="ngModel" placeholder="Enter your email Id" [(ngModel)]="email">
-                <p style="margin-bottom:-40px;" *ngIf="emails.invalid && (emails.dirty || emails.touched)"
+                <p style="margin-bottom:-22px;padding: 0px;" *ngIf="emails.invalid && (emails.dirty || emails.touched)"
                 class="alert">
             
-              <span style="color:red;position: relative;left: -9%;top: -6px;" *ngIf="emails.errors?.['required']">
+              <span style="color:red;position: relative;" *ngIf="emails.errors?.['required']">
                 *Email is required.
               </span>
-              <span style="color:red;position: relative;left: -7%;top: -4px;" *ngIf="emails.errors&&emails.errors?.['pattern']">
+              <span style="color:red;position: relative;" *ngIf="emails.errors&&emails.errors?.['pattern']">
                 *Email is Invalid.
               </span>
             </p>
@@ -79,12 +83,12 @@
                 <label>Phone No<span>*</span></label>
                 <br>
                 <input type="text"id="mobile" name="mobile" required placeholder="Enter your phone no." pattern="^((\\+91-?)|0)?[0-9]{10}$" [(ngModel)]="phone"#mobile="ngModel">
-                <p  style="margin-bottom:-40px;" *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)"
+                <p  style="margin-bottom:-22px;padding: 0px;" *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)"
                 class="alert">
-              <span style="color:red;position: relative;left: -9%;top: -6px;" *ngIf="mobile.errors?.['required']">
+              <span style="color:red;position: relative;" *ngIf="mobile.errors?.['required']">
                 *Phone Number is required.
               </span>
-              <span style="color:red;position: relative;left: -7%;top: -4px;" *ngIf="mobile.errors&&mobile.errors?.['pattern']">
+              <span style="color:red;position: relative;" *ngIf="mobile.errors&&mobile.errors?.['pattern']">
                 *Phone Number is Invalid.
               </span>
             </p>
@@ -97,7 +101,7 @@
             <div class="row">
               <div class="col">
 
-                <select  #teams class="form-select form-select-lg mb-8"     (change)="selectedValue(teams.value);" placeholder="Select your Role" aria-label=".form-select-lg example" style="height: 35px;border-radius: 6px;width: 100%;">
+                <select  #teams class="form-select form-select-lg mb-8" (change)="selectedValue(teams.value);" placeholder="Select your Role" aria-label=".form-select-lg example" style="height: 35px;border-radius: 6px;width: 100%;">
                   <option value=""  selected hidden>Select your Role</option>
 
                   <option style="height: 900px;"  *ngFor="let topping of toppingList" [value]="topping.roleId">{{topping.roleName}}</option>
@@ -136,11 +140,10 @@
           <br>
    <diV class="row">
      <div class="col d-flex justify-content-center">
-      <button [disabled]="loginForm.form.invalid" class="btn btn-primary btn-block justify-center" style="background-color:#000000;width:66%;
-      " (click)="addUSer()">Add user</button>
+      <button [disabled]="loginForm.form.invalid" class="btn btn-primary btn-block justify-center" style="background-color:#000000;width:66%;" (click)="addUSer()">Add user</button>
      </div>
    </diV>
-          <span style="margin-left:17%;">Required fields*</span>
+          <span style="margin-left:17%;position: relative;top: 10px;">Required fields*</span>
         </div>
       </div>
     </div>

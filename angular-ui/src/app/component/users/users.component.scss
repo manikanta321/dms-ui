@@ -182,22 +182,32 @@ background: #000000 !important;
   top: 5px;
 }
 
-.searchBox:hover >.searchButton {
-  display:bolck;
-  color: #000;
-  float: left;
-  width: 42px;
-  height: 42px;
-  background: #ffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.2s;
-  background: none;
-  position: relative;
-    right: 239px;
-    top: 2px;
+// .searchBox:hover >.searchButton {
+//   display:bolck;
+//   color: #000;
+//   float: left;
+//   width: 42px;
+//   height: 42px;
+//   background: #ffff;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   transition: 0.2s;
+//   background: none;
+//   position: relative;
+//     right: 239px;
+//     top: 2px;
 
+// }
+
+.searchBox:hover >.searchButton {
+  display:block;
+}
+
+.searchBox:hover >.searchButton .material-icons {
+  position: relative;    
+  right: 239px;
+  color:#000;
 }
 ::ng-deep.roless .multiselect-dropdown .dropdown-btn .selected-item {
   right: 6% !important;
@@ -217,7 +227,7 @@ background: #000000 !important;
   border-radius: 5px;
   position: absolute;
   right: 10px;
-  top:10px;
+  top:6px;
 }
 
 
@@ -251,25 +261,14 @@ background: #000000 !important;
 
 @media screen and (max-width: 620px) {
   .searchBox:hover>.searchInput {
-    width: 228px !important;
-    padding: 0 28px;
-    left: -305% !important;
+      width: 150px;
+      padding: 0 6px;
+       left:10%;
   }
-
   .searchBox {
-     left: 37%
+left: 37%
   }
-
-  .searchBox:hover >.search-btn {
-    right: 188px !important;
-  }
-
-  .searchBox:hover >.searchButton{
-    right: 202px !important;
-  }
-  
 }
-
 .add-user {
   border: none;
   background: #000000;
@@ -280,7 +279,6 @@ background: #000000 !important;
   margin-top: 5px;
   margin-left: 17%;
 }
-
 .download-btn {
   border: none;
   background: #000000;
@@ -291,7 +289,6 @@ background: #000000 !important;
   top: 6px;
   left: 21%;
 }
-
 ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
   border: 1px solid #337ab7;
   margin-right: 4px;

@@ -9,10 +9,10 @@
 
 }
 
-mat-list {
+/* mat-list {
   padding-left: 8px;
   margin-top: 12px;
-}
+} */
 
 mat-list-item:hover {
   color: var(--bar);
@@ -31,9 +31,7 @@ mat-list-item :active {
   background: linear-gradient(270deg, #CED4DA 35.14%, rgba(206, 212, 218, 0) 84.89%);
   border-radius: 50px 0px 0px 50px;
 }
-mat-list-item{
-  margin-top: 10px;
-}
+
 /* mat-list-item:nth-child(1){
 position: absolute;
 top: -20px;
@@ -79,12 +77,11 @@ box-shadow: 0 17px 0 #CED4DA;
 .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
   background: linear-gradient(270deg, #CED4DA 35.14%, rgba(206, 212, 218, 0) 84.89%);
 }
-.mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true])::before{
+/* .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true])::before{
   position: absolute;
   content: '';
   height: 30px;
   width: 30px;
-  /* background: yellow; */
   right: 0;
   top: -30px;
   bottom: 100%;
@@ -96,12 +93,15 @@ box-shadow: 0 17px 0 #CED4DA;
   content: '';
   height: 30px;
   width: 50px;
-  /* background: yellow; */
   right: 0;
   top: 100%;
   bottom: -30px;
   border-top-right-radius: 13px;
   box-shadow: 0 -17px 0 #CED4DA;
+} */
+.sidenavbar::ng-deep.mat-expansion-panel-body {
+  padding: 0 0px 0px 20px !important;
+  /* padding: 0 24px 16px; */
 }
 .btnclose {
   margin-left: auto;

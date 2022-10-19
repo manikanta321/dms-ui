@@ -45,7 +45,7 @@
    
    
    
-    <mat-expansion-panel (click)="toogleCollapsed()" >
+    <mat-expansion-panel (click)="toogleCollapsed()" class="expnsnpanl">
    
     <mat-expansion-panel-header>
    
@@ -68,7 +68,7 @@
     
     <mat-list-item class="droplist"  style="font-size: 14px; cursor: pointer;" routerLink="/dashbord/materials" class="btn-link " routerLinkActive="active"
         (click)="closePanel()">
-            <img src="../../../assets/sidebarImages/sidenav-sub-materials.svg" alt="">
+            <img src="../../../assets/sidebarImages/sidenav-sub-material.svg" alt="">
             <!-- <mat-icon>store mall directory icon</mat-icon>    -->
             <span *ngIf="collapsed">Materials</span>
     </mat-list-item>
@@ -82,7 +82,7 @@
 
     <mat-list-item class="droplist"  style="font-size: 14px; cursor: pointer;" class="btn-link " routerLink="/dashbord/other-masters" routerLinkActive="active"
         (click)="closePanel()">
-            <img src="../../../assets/sidebarImages/sidenav-sub-othermaterial.svg" alt="">
+            <img src="../../../assets/sidebarImages/sidenav-sub-othermaster.svg" alt="">
             <!-- <mat-icon>person_outline</mat-icon>    -->
         <span  *ngIf="collapsed">Other Masters</span>
     </mat-list-item>

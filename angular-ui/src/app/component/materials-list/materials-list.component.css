@@ -383,17 +383,17 @@
           width: 93% !important;
         }
         ::ng-deep.multiselect-dropdown .dropdown-btn {
-          margin-bottom: 13px !important;
+          margin-bottom: 35px !important;
         }
         .refreshbtn{
           width: 40px;
           height: 39px;
-          margin-top: 1px;
-          margin-left: 27px;
+          margin-top: -20px;
+          margin-left: 261px;
         }
         .searchresp {
-          left: -120%;
-          top: -60px;
+          left: -115%;
+          top: -2px;
           
         }
         .searchresp:hover{
@@ -401,22 +401,20 @@
           
         }
         .add-user{
-          margin-left: 10px;
+          margin-left: -26px;
+          margin-top: -40px;
         }
         .printImg{
           left: 106%;
     /* bottom: 8%; */
         }
         .add-user{
-          margin-left: -35px;
-          margin-top: -98px;
+          margin-left: -29px;
+          margin-top: -41px;
         }
-        .mat-tab-header{
-          left: 78px;
-          top: -6px;
-          max-width: 246px;
+        ::ng-deep.multiselect-dropdown .dropdown-btn span span{
+          position: relative;
+          bottom: 0px;
         }
-        .material-text{
-        font-size: 17px;
-      }
+      
     }

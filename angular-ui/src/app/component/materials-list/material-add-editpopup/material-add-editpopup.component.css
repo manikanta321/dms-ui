@@ -331,7 +331,18 @@ mat-form-field {
   width: 735px;
   margin-top: 8px;
   margin-left: -2px;
+  
 }
+::ng-deep.hide .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret{
+  /* display: none; */
+  overflow: hidden;
+  /* appearance: none; */
+  /* background: url("assets/img/plus.png") 240px 4px no-repeat; */
+  background-image: url('../../../../assets/img/maximize.png'); 
+  background-size: 20px;
+  background-repeat: no-repeat;
+  height: 300px;
+} 
 
 .mat-slide {
   margin-left: 620px;

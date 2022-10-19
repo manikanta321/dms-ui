@@ -27,14 +27,3 @@ padding: 0 10px;
 width: 15px;
 background: green;
 }
-/* .cdk-overlay-pane {
-    position: absolute !important;
-    pointer-events: auto;
-    box-sizing: border-box;
-    z-index: 1000;
-    display: flex;
-    max-width: 100%;
-    max-height: 100%;
-    bottom: 2%;
-    left: 72%;
-} */

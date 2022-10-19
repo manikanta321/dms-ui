@@ -95,7 +95,17 @@ body {
     border-left: 10px solid #17B15C!important;
     padding: 10px 20px;
 }
-
+.deactiveSuccessPop{
+    position: absolute !important;
+    pointer-events: auto;
+    box-sizing: border-box;
+    z-index: 1000;
+    display: flex;
+    max-width: 100%;
+    max-height: 100%;
+    bottom: 2%;
+    left: 72%;
+}
 .geo-label .mat-tab-labels:nth-child(1) {
     width: 50% !important;
   }

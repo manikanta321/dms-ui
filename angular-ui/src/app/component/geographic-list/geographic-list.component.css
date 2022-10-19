@@ -608,15 +608,17 @@
     //   margin-left: 59px; */
       /* } */
      .searchButton{
-      margin-left: -108px;
+      margin-left: -148px;
      }
      .add-user{
-      margin-left: -25px;
+      margin-left: -50px;
      }
-     .download-btn{
-      margin-left: 30px;
-      margin-top: -43px;
-     }
+
+     .download-btn {
+      bottom: 36px;
+      left: 0;
+      top: -37px;
+    }
      .icon .btnhover{
       margin-top: 7px;
       width: 25px;
@@ -665,4 +667,10 @@
   #gridContainer .ag-paging-page-summary-panel {
     display:none !important;
   }
+
+
+  /* media query for settings in geographies */
+
+  
+  
   

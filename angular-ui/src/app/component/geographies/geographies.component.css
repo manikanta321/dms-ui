@@ -100,5 +100,14 @@ mat-tab{
     right: 20px;
   }
 
+  @media (max-width: 991px){
+    .print-img{
+        top: 1%;
+        right: 2px;
+      }
+  }
+
+
+
 
 

@@ -26,6 +26,7 @@
 .materialss {
     position: relative;
     bottom: 20px;
+    font-family: 'Gilroy';
 }
 .material-text{
 font-size: 25px;
@@ -106,8 +107,8 @@ mat-tab-group{
     height: 100vh;
 }
 .header-text{
-    font-family: 'Gilroy-Bold';
-    font-size: 30px;
+    font-family: 'Gilroy';
+    font-size: 28px;
     line-height: 41px;
     display: flex;
     align-items: center;
@@ -126,3 +127,10 @@ mat-tab-group{
     top: 2%;
     right: 20px;
   }
+.classi{
+    font-family: 'Gilroy-SemiBold';
+}
+.mati{
+    font-family: 'Gilroy-Medium'; 
+    color: black;
+}

@@ -57,6 +57,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { PopupCellRendererComponent } from '../popup-cell-renderer/popup-cell-renderer.component';
 import * as moment from 'moment';
+import { UseractionComponent } from '../useraction/useraction.component';
 
 @Component({
   selector: 'app-users',
@@ -145,14 +146,25 @@ cellClass: params => {
 },
 { 
 
-   headerName: "",
-field: '',  filter: false, sortable: false,width:30,
-cellRenderer: function clickNextRendererFunc(){
-  return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
-}, 
- cellEditorPopup: true,
- onCellClicked: (event: CellClickedEvent) => this.dialog.open(DeletecomponentComponent, {panelClass: 'editpopup'})
-// onCellClicked: (event: CellClickedEvent) => this.iconDisabled = true
+
+
+ headerName: '',
+ colId: 'action',
+cellRenderer: UseractionComponent,
+editable: false,
+
+
+
+
+
+//    headerName: "",
+// field: '',  filter: false, sortable: false,width:20,
+// cellRenderer: function clickNextRendererFunc(){
+//   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
+// }, 
+//  cellEditorPopup: true,
+//  onCellClicked: (event: CellClickedEvent) => this.dialog.open(DeletecomponentComponent, {panelClass: 'editpopup'})
+// // onCellClicked: (event: CellClickedEvent) => this.iconDisabled = true
 },
 
 // {
@@ -734,20 +746,53 @@ console.log(' this.statusTypes', this.userTypes)
 
 
   // Example of consuming Grid Event
-  onCellClicked( e: CellClickedEvent): void {
-    console.log('cellClicked', e);
-    this.userId=e.data.userId;
-    this.employeeName=e.data.userName
-    // console.log('checing an data')
-    console.log('userID',this.userId)
-    localStorage.setItem('userID',this.userId )
-    localStorage.setItem('employeeName',this.employeeName )
+  // onCellClicked( e: CellClickedEvent): void {
+  //   console.log('cellClicked', e);
+  //   this.userId=e.data.userId;
+  //   this.employeeName=e.data.employeeName
+  //   console.log('userID',this.userId)
+  //   localStorage.setItem('userID',this.userId )
+  //   localStorage.setItem('employeeName',this.employeeName )
 
 
     
 
-  }
+  // }
 
+
+
+   // Example of consuming Grid Event
+
+   onCellClicked( e): void {
+    console.log('cellClicked', e);
+    this.userId=e.data.userId;
+    this.employeeName=e.data.userName;
+    console.log('userID',this.userId);
+    localStorage.setItem('userID',this.userId )
+    localStorage.setItem('employeeName',this.employeeName )
+    if (
+      e.event.target.dataset.action == 'toggle' &&
+      e.column.getColId() == 'action'
+    ) {
+      const cellRendererInstances = e.api.getCellRendererInstances({
+        rowNodes: [e.node],
+        columns: [e.column],
+      });
+      if (cellRendererInstances.length > 0) {
+        const instance = cellRendererInstances[0];
+        instance.togglePopup();
+
+      }
+
+    }
+
+
+
+   
+
+
+
+  }
 
   onCellValueChanged(event: CellValueChangedEvent) {
     // alert(event.value)

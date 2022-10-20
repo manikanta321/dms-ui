@@ -20,14 +20,16 @@
 }
 .geography{
   overflow-y: auto;
-  max-height: 500px;
-  /* width: 900px; */
+   overflow-x: hidden;
+  max-height: 450px;
+   
 }
 /* ::ng-deep.steppers .prod.mat-horizontal-content-container {
   width: 800px !important;
 } */
 .scroll{
   overflow-y: auto;
+  overflow-x: auto;
 }
 
 ::-webkit-scrollbar {
@@ -40,7 +42,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  border-radius: 25px;
+  border-radius: 20px;
   margin-top: 16px;
   margin-bottom: 16px;
   margin-left: 20px;
@@ -339,9 +341,11 @@ mat-form-field {
   /* appearance: none; */
   /* background: url("assets/img/plus.png") 240px 4px no-repeat; */
   background-image: url('../../../../assets/img/maximize.png'); 
-  background-size: 20px;
+  background-size: 13px;
   background-repeat: no-repeat;
   height: 300px;
+  margin-top: 12px;
+  margin-right: -10px;
 } 
 
 .mat-slide {
@@ -469,7 +473,7 @@ li {
 .bar {
   height: 400px;
   overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-x: scroll;
   /* height: 500px; */
 }
 
@@ -480,37 +484,48 @@ li {
 
 .minorder {
   margin-top: -29px;
-  margin-left: 212px;
+  margin-left: 310px;
   font-family: 'Gilroy';
 }
-
+.mrp {
+  position: relative;
+  left: 27%;
+   font-family: 'Gilroy';
+} 
+.max{ 
+  margin-top: -29px;
+  margin-left: 409px;
+  font-family: 'Gilroy';
+}
+.discount{
+  margin-top: -29px;
+  margin-left: 608px;
+  font-family: 'Gilroy';
+}
 .margin {
   margin-top: -29px;
-  margin-left: 328px;
-  font-family: 'Gilroy';
-}
-
-.mrp {
-  margin-top: -29px;
-  margin-left: 431px;
+  margin-left: 512px;
   font-family: 'Gilroy';
 }
 
 .leadt {
-  margin-top: -31px;
-  margin-left: 496px;
+  position: relative;
+    left: 90%;
+    top: -32px;
   font-family: 'Gilroy';
 }
 
 .registration {
-  margin-top: -30px;
+  top: -64px;
+  left: 105%;
+  position: relative;
   font-family: 'Gilroy';
-  margin-left: 626px;
 }
 
 .tags {
-  margin-top: -32px;
-  margin-left: 793px;
+  position: relative;
+    left: 125%;
+    top: -93px;
   font-family: 'Gilroy';
 }
 
@@ -520,7 +535,7 @@ li {
 }
 
 .mala {
-  margin-top: 13px;
+  margin-top: -111px;
   margin-left: 4px;
 }
 
@@ -544,7 +559,7 @@ li {
 } */
 .addlink {
   margin-top: -21px;
-  margin-left: 799px;
+  margin-left: 987px;
 
 }
 .numberl{
@@ -554,6 +569,7 @@ li {
 .headergeo{
   position: relative;
     left: -7%;
+    top: -29px;
 }
 .malainput{
   position: relative;
@@ -581,4 +597,7 @@ li {
 ::ng-deep.mat-horizontal-content-container {
   overflow: hidden;
   padding: 0px 0px 0px 0px;
+}
+.submitbtn{
+  margin-top: 12px;
 }

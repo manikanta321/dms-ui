@@ -34,7 +34,10 @@
 
  import {Component,OnInit} from '@angular/core';
  import {FormBuilder, FormGroup} from '@angular/forms';
+ import { MatDialog } from '@angular/material/dialog';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { AddIdentifierComponent } from '../add-identifier/add-identifier.component';
+import { SelectProductComponent } from '../select-product/select-product.component';
  
  /**
   * @title Stepper animations
@@ -59,7 +62,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
   removelist:boolean =false;
   toggle:boolean=true;
   selectedItem = null;
-  constructor(private _formBuilder: FormBuilder) {}
+    constructor(private _formBuilder: FormBuilder, public dialog: MatDialog) {}
    firstFormGroup: FormGroup = this._formBuilder.group({firstCtrl: ['']});
    secondFormGroup: FormGroup = this._formBuilder.group({secondCtrl: ['']});
    onSubCategoryAll(items: any) {
@@ -94,6 +97,13 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
   
     onClick(item) {
     this.selectedItem = item;
+  }
+  selectProduct(){
+    this.dialog.open(SelectProductComponent);
+    
+  }
+  customIdentifier(){
+    this.dialog.open(AddIdentifierComponent);
   }
  }
 

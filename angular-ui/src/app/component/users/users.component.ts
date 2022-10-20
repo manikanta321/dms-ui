@@ -9,11 +9,12 @@ import {MatTableDataSource} from '@angular/material/table';
 import { Sort, MatSort, SortDirection } from '@angular/material/sort';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
 import { IDropdownSettings } from 'ng-multiselect-dropdown'; 
-import {
-  PaginationNumberFormatterParams,
-} from 'ag-grid-community'; 
+import {PaginationNumberFormatterParams,} from 'ag-grid-community'; 
+import { SharedService } from 'src/app/services/shared-services.service';
+import {Subscription} from 'rxjs'
 
 export interface PeriodicElement {
+
   name: any;
   position: string;
   weight: number;
@@ -46,7 +47,7 @@ import { AddcurrencyComponent } from './userPopups/addcurrency/addcurrency.compo
 import { EditTaxTemplateComponent } from './userPopups/edit-tax-template/edit-tax-template.component';
 import { DeletecomponentComponent } from '../deletecomponent/deletecomponent.component';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { CellClassParams,CellClassRules, CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef ,GridApi} from 'ag-grid-community';
+import { CellClassParams,CellClassRules, CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef ,GridApi,GridOptions,ModuleRegistry,ColumnResizedEvent,Grid,} from 'ag-grid-community';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AgGridAngular } from 'ag-grid-angular';
@@ -63,6 +64,10 @@ import * as moment from 'moment';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+  // clickEventSubscription:Subscription;
+
+  @ViewChild(AddUserPopupComponent) child;
+
   private gridApi!: GridApi;
   paginationPageSize = 10;
   myForm:any= FormGroup;
@@ -82,15 +87,16 @@ export class UsersComponent implements OnInit {
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
   
-   gridOptions = {
-    resizable: true,
-
+gridOptions : GridOptions ={
+    defaultColDef: {
+      resizable: true,
+    },
     onCellClicked: (event: CellClickedEvent) => console.log('Cell was clicked'),
     // set background colour on every row, this is probably bad, should be using CSS classes
     rowStyle: { background: 'black' },
 
     // set background colour on even rows again, this looks bad, should be using CSS classes
-    
+
 
     // other grid options ...
 }
@@ -104,7 +110,7 @@ public popupParent: HTMLElement = document.body;
 columnDefs: ColDef[] = [ 
 
   { headerName: "User Id",
-field: 'employeeCode' ,type: ['nonEditableColumn'], sort: 'desc',pinned: 'left',
+field: 'employeeCode' ,type: ['nonEditableColumn'], sort: 'desc',pinned: 'left'
 },
 
 {   headerName: "Username",field: 'employeeName',type: ['nonEditableColumn']},
@@ -160,10 +166,12 @@ rowData :any;
 rowData1=[];
 employeeName:any;
 public defaultColDef: ColDef = {
+
+  suppressSizeToFit: true,
+width:170,
   // set the default column width
-  width: 170,
   // make every column editable
-  editable: true,
+  // editable: true,
   // make every column use 'text' filter by default
   filter: 'agTextColumnFilter',
   // enable floating filters by default
@@ -241,6 +249,9 @@ public pivotPanelShow = 'always';
   statusArray:any=[];
   messages:any[]=[];
   stayScrolledToEnd = true;
+  message:boolean=false;
+  message1:boolean=true;
+
 
  paginationNumberFormatter: (
     params: PaginationNumberFormatterParams
@@ -274,8 +285,18 @@ public pivotPanelShow = 'always';
     private _liveAnnouncer: LiveAnnouncer,
     private user:UserService,
     private observer: BreakpointObserver,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private sharedService:SharedService,
    ) {
+
+    this.sharedService.listen().subscribe((m:any)=>{
+      console.log(m)
+      this.getusertabeldata()
+
+    })
+ this.sharedService.getClickEvent().subscribe(()=>{
+this.getusertabeldata()
+   })
       sort:[];
      }
 
@@ -290,6 +311,8 @@ public pivotPanelShow = 'always';
   sort: MatSort = new MatSort;
 
   ngAfterViewInit() {
+
+
     this.dataSource.sort = this.sort;
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
       if (res.matches) {
@@ -300,14 +323,23 @@ public pivotPanelShow = 'always';
         this.sidenav.open();
       }
     });
-  }
+    this.message = this.child.message
+console.log('parent is working',this.message )  }
 
 
 
   ngOnInit(): void {
- 
+  
+// if(this.message1=false){
+//   alert('working')
+// }else {
+//   alert('notworking')
 
-  this.getusertabeldata();
+// }
+this.getusertabeldata();
+
+
+ 
   this.roleItems();
   this.statusItems();
 
@@ -318,6 +350,8 @@ this.myForms = this.fb.group({
   citys: [this.selectedItems]
 });
 }
+
+
 
 scrolledIndexChange(i): void {
   this.scrolledIndex = i;
@@ -393,7 +427,6 @@ this.getusertabeldata();
   }
 
 getusertabeldata(){
-
     const data={
       userTypes:[],
       statuss:[],
@@ -750,11 +783,13 @@ console.log(' this.statusTypes', this.userTypes)
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
+    params.api.sizeColumnsToFit();
     
   }
+ sizeToFit() {
+    this.gridOptions.api!.sizeColumnsToFit();
+  }
 
-
-  
 
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     params.api.paginationGoToPage(4);
@@ -775,3 +810,7 @@ console.log(' this.statusTypes', this.userTypes)
 
 
 }
+function incrementCount() {
+  throw new Error('Function not implemented.');
+}
+

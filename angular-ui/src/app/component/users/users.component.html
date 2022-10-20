@@ -1,16 +1,17 @@
-<app-head (ToggleSideNav)="ToggleSideNav($event)"></app-head>
+<app-head  (ToggleSideNav)="ToggleSideNav($event)"></app-head>
 
-<mat-sidenav-container>
+<mat-sidenav-container >
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
       <app-sidenav-bar></app-sidenav-bar>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content >
     <!-- content -->
-    <div class="dash-content">
+  
+    <div class="dash-content"  >
                        <div class="UNFAPP-asmnt-rgt-area main" style="padding: 15px;">
                         <div class="row d-flex">
                           <div class="col-2">
-                           <h4 style="
+                           <h4  style="
                            font-size: 22px;
                            line-height: 29px;
                            display: flex;
@@ -90,8 +91,9 @@
                   <div >
                     <ag-grid-angular
                  id="gridContainer"
-                 style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy"
+                 style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
                  class="ag-theme-material"
+                 (gridReady)="onGridReady($event)"
                  [rowHeight]="25"
                  [headerHeight]="48"
                  [columnDefs]="columnDefs"
@@ -105,7 +107,6 @@
                  (firstDataRendered)="onFirstDataRendered($event)"
                  (rowClicked)="openDialog()"
                  (cellClicked)="onCellClicked($event)"
-                 (gridReady)="onGridReady($event)"
                  [paginationPageSize]="paginationPageSize"
 
                  (bodyScroll)="handleScroll($event)"

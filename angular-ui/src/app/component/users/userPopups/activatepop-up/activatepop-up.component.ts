@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
+import { SharedService } from 'src/app/services/shared-services.service';
 import { UserService } from 'src/app/services/user.service';
 import { ActiveSuccessPopComponent } from '../active-success-pop/active-success-pop.component';
 @Component({
@@ -13,7 +14,9 @@ export class ActivatepopUpComponent implements OnInit {
   LoginId: any;
   constructor(private dialogRef: MatDialogRef<any>,
     private user:UserService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private sharedService:SharedService,
+    ) { }
 
   ngOnInit(): void {
      this.employeeId = localStorage.getItem("userID");
@@ -32,6 +35,8 @@ export class ActivatepopUpComponent implements OnInit {
    this.user.activeDeavtive(data).subscribe((res) => {     
    });
    this.dialog.open(ActiveSuccessPopComponent, {panelClass: 'activeSuccessPop'})
+   this.sharedService.filter('Register click')
+;
    this.dialogRef.close();
   }
 }

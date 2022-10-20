@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output, EventEmitter,ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { SharedService } from 'src/app/services/shared-services.service';
 import { UserService } from 'src/app/services/user.service';
+import { UsersComponent } from '../../users.component';
 
 @Component({
   selector: 'app-add-user-popup',
@@ -9,6 +12,11 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./add-user-popup.component.css']
 })
 export class AddUserPopupComponent implements OnInit {
+  @Output() messageEvent = new EventEmitter<string>();
+  @ViewChild(UsersComponent) child;
+  @Output() ToggleSideNav1  = new EventEmitter();
+
+
   toppingList: any= [];
 
   toppings = new FormControl(this.toppingList);
@@ -21,19 +29,37 @@ export class AddUserPopupComponent implements OnInit {
   userType: string[] = ['Admin', 'Business Manager', 'Order Manager', 'Viewer','Business Manager', 'Order Manager', 'Viewer'];
   role = new FormControl('');
   errorMsg: any;
-  
+  message :any;
+  message1 :boolean=true;
   // toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
   constructor(
-    private dialogRef: MatDialogRef<AddUserPopupComponent>,
+    private router: Router,
 
+    private dialogRef: MatDialogRef<AddUserPopupComponent>,
+    private sharedService:SharedService,
     private user:UserService,
 
   ) { }
 
   ngOnInit(): void {
     this.roleItems()
-  }
+    // this.messageEvent.emit(this.message);
+  
 
+  }
+  eventemiter(){  
+    this.sharedService.filter('Register click')
+    this.router.navigate(['./dashbord/user']);
+
+    this.sharedService.sendClickEvent();
+    this.ToggleSideNav1.emit();
+    // this.message = true;
+    this.dialogRef.close();
+
+    window.opener.location.reload();
+    window.opener.reload();
+
+  }
   addUSer(){
   let data={
       FirstName:this.fullname,
@@ -47,7 +73,10 @@ export class AddUserPopupComponent implements OnInit {
     this.user.AddUser(data).subscribe((res: any) => {
       console.log('response',res.response.result)
       if (res.response.result === 'Success') {
+        this.sharedService.filter('Register click')
+
         this.dialogRef.close();
+    
       }
       else{
         this.errorMsg=res.response.result;

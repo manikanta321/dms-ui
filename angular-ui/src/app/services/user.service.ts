@@ -40,7 +40,7 @@ else {
   //       return data;
   //     }));
   // }
-  public getuserDeatils() {
+  public getuserDeatils() : Observable<any>{
 let options = {
   headers: new HttpHeaders().set('Content-Type', 'application/json')
 };

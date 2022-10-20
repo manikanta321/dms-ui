@@ -3,6 +3,8 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 import { UserService } from 'src/app/services/user.service';
+import { SharedService } from 'src/app/services/shared-services.service';
+
 @Component({
   selector: 'app-edit-popup',
   templateUrl: './edit-popup.component.html',
@@ -28,7 +30,9 @@ export class EditPopupComponent implements OnInit {
   errorMsg: any;
   constructor(private dialogRef: MatDialogRef<any>,
     private formBuilder: FormBuilder,
-    private user:UserService,) { }
+    private user:UserService,
+    private sharedService:SharedService,
+    ) { }
 
   ngOnInit(): void {
     this.roleItems();
@@ -98,7 +102,8 @@ editUser(){
  }
     this.user.EditUser(obj).subscribe((res: any) => {
       if (res.response.result =='successfully updated') {
-       
+        this.sharedService.filter('Register click')
+
       this.dialogRef.close()
       }
       else{

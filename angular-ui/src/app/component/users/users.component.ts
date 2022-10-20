@@ -734,7 +734,7 @@ console.log(' this.statusTypes', this.userTypes)
   onCellClicked( e: CellClickedEvent): void {
     console.log('cellClicked', e);
     this.userId=e.data.userId;
-    this.employeeName=e.data.employeeName
+    this.employeeName=e.data.userName
     // console.log('checing an data')
     console.log('userID',this.userId)
     localStorage.setItem('userID',this.userId )

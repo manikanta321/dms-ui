@@ -21,6 +21,7 @@ export class ActivatepopUpComponent implements OnInit {
   ngOnInit(): void {
      this.employeeId = localStorage.getItem("userID");
     this.employeename=localStorage.getItem("employeeName");
+    
     this.LoginId=localStorage.getItem("logInId");
   }
   close(){

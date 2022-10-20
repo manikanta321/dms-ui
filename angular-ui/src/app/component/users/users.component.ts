@@ -125,7 +125,10 @@ field: 'mobile',type: ['nonEditableColumn']},
 
 {   headerName: "Last Login",
 // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-field: 'lastLoginDate',type: ['nonEditableColumn']
+field: 'lastLoginDate',type: ['nonEditableColumn'],
+cellRenderer: function dateFormtter(params){
+  return moment(params.value).format('DD MMM YYYY, HH:mm A')
+}
 },
 
 // suppressMovable:true,

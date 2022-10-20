@@ -113,7 +113,7 @@ columnDefs: ColDef[] = [
 field: 'employeeCode' ,type: ['nonEditableColumn'], sort: 'desc',pinned: 'left'
 },
 
-{   headerName: "Username",field: 'employeeName',type: ['nonEditableColumn']},
+{   headerName: "Username",field: 'userName',type: ['nonEditableColumn']},
 
 {headerName: "Role", field: 'roleName', type: ['nonEditableColumn']},
 
@@ -143,7 +143,7 @@ cellClass: params => {
 { 
 
    headerName: "",
-field: '',  filter: false, sortable: false,width:20,
+field: '',  filter: false, sortable: false,width:30,
 cellRenderer: function clickNextRendererFunc(){
   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
 }, 
@@ -735,6 +735,7 @@ console.log(' this.statusTypes', this.userTypes)
     console.log('cellClicked', e);
     this.userId=e.data.userId;
     this.employeeName=e.data.employeeName
+    // console.log('checing an data')
     console.log('userID',this.userId)
     localStorage.setItem('userID',this.userId )
     localStorage.setItem('employeeName',this.employeeName )

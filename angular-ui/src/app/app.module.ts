@@ -79,6 +79,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import { AddGeolistPopupComponent } from './component/add-geolist-popup/add-geolist-popup.component';
 import { AddIdentifierComponent } from './component/materials-list/add-identifier/add-identifier.component';
 import { SelectProductComponent } from './component/materials-list/select-product/select-product.component';
+import { AddProductGroupComponent } from './component/materials-list/add-product-group/add-product-group.component';
+import { AddProductSubGroupComponent } from './component/materials-list/add-product-sub-group/add-product-sub-group.component';
 
 
 @NgModule({
@@ -130,6 +132,8 @@ import { SelectProductComponent } from './component/materials-list/select-produc
     AddGeolistPopupComponent,
     AddIdentifierComponent,
     SelectProductComponent,
+    AddProductGroupComponent,
+    AddProductSubGroupComponent,
     
   ],
   imports: [

@@ -178,8 +178,8 @@ background: #000000 !important;
 .searchBox {
   float:right;
   position: absolute;
-  right: -10px;
-  top: 5px;
+left: 94%;
+  top: 6px;
 }
 
 // .searchBox:hover >.searchButton {
@@ -206,8 +206,9 @@ background: #000000 !important;
 
 .searchBox:hover >.searchButton .material-icons {
   position: relative;    
-  right: 239px;
+  right: 298px;
   color:#000;
+  top: 3px;
 }
 ::ng-deep.roless .multiselect-dropdown .dropdown-btn .selected-item {
   right: 6% !important;
@@ -233,8 +234,8 @@ background: #000000 !important;
 
 .searchBox:hover>.searchInput {
   display:block;
-  width: 280px;
-  height: 50px;
+  width: 335px;
+  height: 43px;
   background: #FFFFFF;
   float: left;
   padding: 5px 32px 6px;
@@ -288,6 +289,8 @@ background: #000000 !important;
     right: -47px !important;
     color:#000;
   }
+  
+
 }
 .add-user {
   border: none;
@@ -296,8 +299,8 @@ background: #000000 !important;
   width: 37px;
   height: 37px;
   top: 6px;
-  margin-top: 5px;
-  margin-left: 17%;
+position: absolute;
+left: 72%;
 }
 .download-btn {
   border: none;
@@ -307,7 +310,7 @@ background: #000000 !important;
   width: 37px;
   height: 37px;
   top: 6px;
-  left: 21%;
+  left: 90%;
 }
 ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
   border: 1px solid #337ab7;

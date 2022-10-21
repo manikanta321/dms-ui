@@ -14,12 +14,14 @@
 "/></span>
 
     <span class="example-spacer"></span> 
-      <img src="../../../assets/img/bell.png" style="height: 50px;"> 
+      <img src="../../../assets/img/bell.png" style="height: 37px;width: 37px;"> 
         <!-- <i class='fa fa-bell' style='color: grey'></i> -->
        
-    <img src="../../../assets/img/profile.png" alt="" class="UNFAPP-prfimg" style="margin-left: 10px;">
-    <button mat-button [matMenuTriggerFor]="menu" style="border:white;color: black;" class="btn btn-outline-light"><span style="padding-bottom: 20px;">{{userName}}</span><mat-icon>arrow_drop_down</mat-icon>
-</button>
+    <img src="../../../assets/img/profile.png" alt="" class="UNFAPP-prfimg" style="margin-left: 10px;height: 33px; width: 34px;">
+    <!-- <div></div> -->
+   
+    <a mat-button [matMenuTriggerFor]="menu" style="border:white;color: black;    height: 51px;" class="btn btn-outline-light"><span style="font-size:14px;  font-family: 'Gilroy';font-weight: 600;display: block;margin-left: 15px;" >{{userName}}</span><span style="color:#686E74;font-size: 12.5px;" >{{userType}}</span>
+    </a>
     <mat-menu #menu="matMenu" style="border:white;background-color: white;">
       <button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;" >                <mat-icon mat-list-icon>account_box</mat-icon>
         Profile</button>

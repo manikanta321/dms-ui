@@ -10,6 +10,8 @@
 
 }
 
+
+
 .header-nav{
 
   padding-bottom: 46px;
@@ -17,8 +19,8 @@
 }
 
 .example-spacer {
-    flex: 1 1 auto;
-  }
+  flex: 0.978 1 auto;
+}
   ::ng-deep.mat-toolbar-single-row{
 background-color: white;
   }

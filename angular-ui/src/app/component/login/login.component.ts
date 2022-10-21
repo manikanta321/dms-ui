@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
       console.log("LoginData",this.loginData);
       localStorage.setItem('logInId',this.loginData.id)
       localStorage.setItem('userName',this.loginData.userName)
+      localStorage.setItem('userType',this.loginData.userType)
 
       if(this.loginData == -1){
         this.PasswordWrong =true;

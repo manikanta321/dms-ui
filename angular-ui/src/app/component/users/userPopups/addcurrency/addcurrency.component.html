@@ -1,113 +1,95 @@
 
-<div class="container">
-    <div class="addUser">
-        <mat-icon  mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
-        <div class="head-t">
-        <h3 class="addU">Add Currency</h3>
-    </div>
-    <div class="addUserForm">
-     <form>
-      <div class="row">
-        <div class="col">
-            <label>First Name <span>*</span></label>
-            <br>
-            <input type="text" placeholder="Enter your Name" [(ngModel)]="name" >        </div>
-          <div class="col">
-            <label>Display Units<span>*</span></label>
-            <br>
-          <input type="text" placeholder="Enter display unit" >        </div>
-      </div>
+  <div class="font ">
+    <div class=" main" width="400%">
+    <div class="container" >
+          <div class="addUser">
+            <mat-icon  mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>        <div class="head-t">
+          <h3 class="addU font">Add Currency</h3>
+        </div>
+        <div>
           <br>
-        <div class="row">
-          <div class="col">
-            <label>Conversion Rate<span>*</span></label>
-            <br>
-            <input type="text" placeholder="Enter Conversion Rate" >
-          
-          </div>
-          <div class="col">
-           
-            <label>Default Currency<span>*</span></label>
-            <br>
-            <input type="text" placeholder="Enter Default Currency" >
-          </div>
-        </div>       
-        <br>
-      <div class="row">
-          <div class="col">
-          
-        <label>Conversion<span>*</span></label>
-        <br>
-        <input type="text" placeholder="Enter Conversion" >
-          
-          </div>
-          <!-- <div class="col">
-            <label>Role</label><span>*</span>
-            <br>
-            <mat-form-field appearance="outline">
-              <mat-select [formControl]="role"  placeholder="Role " >
-               
-                  <mat-option   *ngFor="let user of userType" [value]="role">
-                    {{user}}</mat-option>
-              </mat-select>
-          </mat-form-field>
-          </div> -->
-        </div>    
-        <br>
-        </form>
-         <button class="btn btn-primary btn-block">Save</button>
-    </div>
-    </div>
-</div>
-
-
-
-<!-- <div class="row">   
-     <div class="col">     
-<div class="container1 ">
-    <div class="EditUser-p">
-        <mat-icon  mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
-        <div class="head-t">
-            <h3 class="addC">Add Currency</h3>
+          <h6 style="color: #000000
+   ;font-size:20px; font-weight: lighter;"><b> Information</b></h6>
+   <!-- <p style="color: red;">{{errorMsg}}</p> -->
         </div>
-        <div class="col">
-        <div class="row edituser" >
-            <div class="addCurrencyForm col-6">
-              
-                    <label>Name <span>*</span></label>
-                    <br>
-                    <input type="text" placeholder="Enter your Name" [(ngModel)]="name" >
-                    <br>
-                    <label>Display Units <span>*</span></label>
-                    <br>
-                    <input type="text" placeholder="Enter display unit">
-                    <br>
-                    <label>Conversion Rate<span>*</span></label>
-                    <br>
-                    <input type="text" placeholder="Enter Conversion Rate">
-                   </div>
-                   
-                   <div class="addCurrencyForm col-6">
-                    <label>Default Currency<span>*</span></label>
-                <br>
-                <input type="number" placeholder="12">
-                <br>
-                <label>Conversion<span>*</span></label>
-                <br>
-                <input type="text" placeholder="Enter Conversion">
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                </div>
-                  <div style="text-align: right; padding: 20px; margin-top: 10;">
-                    <button class="btn E-saveBtn ">Save</button>
-                   <button class="btn E-cancelBtn" (click)=" closeDialog()" >Cancel</button>
-                  </div> 
+        <div class="addUserForm">
+          <form>
+            <div class="row">
+              <div class="col">
+                  <label>First Name <span>*</span></label>
+                  <br>
+                  <input type="text" placeholder="Enter your Name" [(ngModel)]="name" class="imputtext">        </div>
+                <div class="col">
+                  <label>Display Units<span>*</span></label>
+                  <br>
+                <input type="text" placeholder="Enter display unit" class="imputtext" >         </div>
             </div>
+                <br>
+              <div class="row">
+                <div class="col">
+                  <label>Conversion Rate<span>*</span></label>
+                  <br>
+                  <input type="text" placeholder="Enter Conversion Rate" class="imputtext" style="width: 100%;">
+                
+                </div>
+                <!-- <div class="col">
+                 
+                  <label>Default Currency<span>*</span></label>
+                  <br>
+                  <input type="text" placeholder="Enter Default Currency" >
+                </div> -->
+              </div>       
+              <br>
+            <div class="row">
+                <div class="col">
+                
+              <label>Conversion<span>*</span></label>
+              <br>
+              <input type="text" placeholder="Enter Conversion" class="imputtext" >
+                
+                </div>
+                <div class="col">
+                
+                  <label><span style="color: aliceblue;">.</span></label>
+                  <br>
+<h2 style="padding-top: 11px;">=</h2>                    
+                    </div>
+                <div class="col">
+                
+                  <label><span style="color: aliceblue;">.</span></label>
+                  <br>
+                  <input type="text" placeholder="Enter Conversion"  class="imputtext form-select form-select-lg mb-8">
+                    
+                    </div>
+
+                   
+               
+              </div>    
+              <br>
+              </form>
+              <div class="row">
+                <div class="col">
+                  <button class="btn btn-primary btn-block" style="background-color: black;">Save</button>
+                </div>
+                  <div class="col">
+                    <button class="btn btn-primary btn-block" style="background-color: white;color: black;">calcel</button>
+ 
+                  </div>
+              </div>
+          <span style="margin-left:17%;position: relative;top: 10px;">Required fields*</span>
         </div>
+      </div>
     </div>
+  </div>
 </div>
-</div> -->
+
+
+
+
+
+
+
+
+
+
+

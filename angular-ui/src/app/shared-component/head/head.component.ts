@@ -12,6 +12,7 @@ export class HeadComponent implements OnInit {
 // @Output()ToggleSideNav : EventEmitter <any> = new EventEmitter();
 @Output() ToggleSideNav : EventEmitter <any> = new EventEmitter();
 sideBarOpen = true;
+userType:any;
 userName:any;
 @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
@@ -34,7 +35,7 @@ ngAfterViewInit() {
   ngOnInit(): void {
 
     this.userName = localStorage.getItem("userName");
-
+    this.userType=localStorage.getItem("userType");
     
   }
 // togglesidebar(){

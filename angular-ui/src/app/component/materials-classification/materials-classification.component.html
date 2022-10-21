@@ -23,7 +23,7 @@
           <!-- <div class="buttn" *ngIf=addButton> -->
             <div class="inbtn d-flex" *ngIf=addButton>
               <!-- <button class="btn btn-basic addcat">Add category name</button> -->
-              <input type="text col-lg-5" class="addcatg" [(ngModel)]="addcat" placeholder="Add category name">
+              <input type="text col-lg-5" class="addcatg" [(ngModel)]="addcat" placeholder="Add category">
               <!-- <button class="btn btn-basic addcode">Add code</button> -->
               <input type="text col-lg-3" class="addcd" [(ngModel)]="addcatcode" placeholder="Add Code">
               <button class="btn btn-basic addbt col-lg-2"(click)="addcatagory()" [disabled]="!addcat || !addcatcode ">Add</button>
@@ -58,7 +58,7 @@
           <!-- <div class="buttn d-flex" *ngIf=addButton> -->
             <div class="inbtn d-flex" *ngIf= addSubButton>
               <!-- <button class="btn btn-basic addcat">Add category name</button> -->
-              <input type="text col-lg-5" class="addcatg" [(ngModel)]="sucatname" placeholder="Add category name">
+              <input type="text col-lg-5" class="addcatg" [(ngModel)]="sucatname" placeholder="Add sub-category ">
               <input type="text col-lg-3" class="addcd" [(ngModel)]="sucatnameCode" placeholder="Add Code">
               <button class="btn btn-basic addbt col-lg-2" [disabled]="!sucatname || !sucatnameCode " (click)="addsubCat()">Add</button>
               <div class="rmve col-lg-2">
@@ -94,7 +94,7 @@
           <!-- <div class="buttn d-flex" *ngIf=addButton> -->
             <div class="inbtn d-flex" *ngIf=addTypeButton>
               <!-- <button class="btn btn-basic addcat">Add category name</button> -->
-              <input type="text col-lg-5" class="addcatg" [(ngModel)]="type" placeholder="Add category name">
+              <input type="text col-lg-5" class="addcatg" [(ngModel)]="type" placeholder="Add Type">
               <input type="text col-lg-3" class="addcd" [(ngModel)]="typeCode" placeholder="Add Code">
               <button class="btn btn-basic addbt col-lg-2" (click)="addtypes()" [disabled]="!type || !typeCode " >Add</button>
               <div class="rmve col-lg-2">

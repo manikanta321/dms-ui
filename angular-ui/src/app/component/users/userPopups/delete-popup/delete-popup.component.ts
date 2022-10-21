@@ -7,9 +7,13 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angu
 })
 export class DeletePopupComponent implements OnInit {
   panelOpenState = true;
+  employeeId:any;
+  employeename:any
   constructor(private dialogRef: MatDialogRef<any>) { }
 
   ngOnInit(): void {
+    this.employeeId = localStorage.getItem("userID");
+    this.employeename=localStorage.getItem("employeeName");
   }
   closeDialog(){
     this.dialogRef.close();

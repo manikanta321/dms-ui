@@ -42,32 +42,43 @@
     content: "";
     display: block;
     width: 205px;
-    height: 2px;
+    height: 0.8px;
     background: #686E74;
     right: 0;
     top: 50%;
     position: absolute;
+    width: 201px;
+
 }
 
 .addU:before {
     content: "";
     display: block;
     width: 201px;
-    height: 2px;
+    height: 0.8px;
     background: #686E74;
     left: 0;
     top: 50%;
+    width: 201px;
     position: absolute;
 }
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #686E74
+    ;
+    opacity: 1; /* Firefox */
+  }
 
 .addUserForm input {
-    border-radius: 5px;
+    height: 43px;
+
+    border-radius: 10px;
     /* border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
-    border: black 1px solid;
+    border: 0.5px solid #000000;
     padding: 5px 5px;
     width: 250px;
     font-size: 14px;
     outline: none !important;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
 }
 ::ng-deep.btn-primary[_ngcontent-uke-c437]:disabled {
     margin-bottom: 0px !important;

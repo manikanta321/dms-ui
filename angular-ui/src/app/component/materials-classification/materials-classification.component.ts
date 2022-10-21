@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
-
+import { interval } from 'rxjs';
 @Component({
   selector: 'app-materials-classification',
   templateUrl: './materials-classification.component.html',
@@ -179,6 +179,10 @@ this.calssification.getclassification().subscribe((res)=>{
     this.calssification.daleteSubcatagory(item.subCatId).subscribe((res)=>{
       console.log(res)
     })
+    setTimeout(function () {
+      
+  }, 10000);
+
 
 
     this.calssification.onclickcat(this.itemId).subscribe((res)=>{
@@ -196,6 +200,20 @@ this.calssification.getclassification().subscribe((res)=>{
       }
       });
 
+  // this.calssification.onclickcat(this.itemId).subscribe((res)=>{
+  //   console.log(res)
+  //   let data=res.response;
+  //   this.subname=data.allOtherSubCAts;
+  //   if(data.firstSubCat==null){
+  //     this.typename=[];
+  //     this.typecount='0'
+  //   }
+  //   else{
+  //     this.typename=data.firstSubCat.types;
+  //     this.subcatcount=res.totalRecords;
+  //  this.typecount=data.firstSubCat.typeCount;
+  //   }
+  //   });
 
   }
   removetype(item){
@@ -262,22 +280,27 @@ this.calssification.addsubCatagory(data).subscribe((res)=>{
   this.sucatnameCode='';
   })  
   // alert(this.itemId)
-  this.calssification.onclickcat(this.itemId).subscribe((res)=>{
-    console.log(res)
-    let data=res.response;
-    this.subname=data.allOtherSubCAts;
-    if(data.firstSubCat==null){
-      this.typename=[]
-      this.typecount='0'
-    }
-    else{
-      this.typename=data.firstSubCat.types;
-      this.subcatcount=res.totalRecords;
-      this.typecount=data.firstSubCat.typeCount;
-      // this.selectedtypeItem=res.response[0];
 
-    }
-    });
+  setTimeout(()=>{                           // <<<---using ()=> syntax
+    this.calssification.onclickcat(this.itemId).subscribe((res)=>{
+      console.log(res)
+      let data=res.response;
+      this.subname=data.allOtherSubCAts;
+      if(data.firstSubCat==null){
+        this.typename=[]
+        this.typecount='0'
+      }
+      else{
+        // this.typename=res.response;
+        this.selectedtypeItem=res.response[0];
+        this.typename=data.firstSubCat.types;
+        this.subcatcount=res.totalRecords;
+        this.typecount=data.firstSubCat.typeCount;
+        // this.selectedtypeItem=res.response[0];
+  
+      }
+      });}, 1000);
+ 
 }
 
 
@@ -292,15 +315,25 @@ this.calssification.addtypes(data).subscribe((res)=>{
   this.type='';
   this.typeCode='';
 })  
-this.calssification.onclicksubcat(this.subCatId).subscribe((res)=>{
-  console.log(res)
-  let data=res.response;
-  this.typename=res.response;
-  console.log(this.typename)
-  this.typecount=res.totalRecords;
 
 
-})
+
+setTimeout(()=>{                           // <<<---using ()=> syntax
+ 
+
+  this.calssification.onclicksubcat(this.subCatId).subscribe((res)=>{
+    console.log(res)
+    let data=res.response;
+    this.typename=res.response;
+    console.log(this.typename)
+    this.typecount=res.totalRecords;
+  
+  
+  })
+  
+
+
+}, 1000);
 
 
 }
@@ -340,7 +373,6 @@ this.selectedsubItem=data.allOtherSubCAts[0]
 if(data.firstSubCat==null){
   this.typename=[]
   this.subcatRoouting='No Sub-Category'
-
 }
 else{
   this.subcatRoouting=data.firstSubCat.subCatName;

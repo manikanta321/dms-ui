@@ -1,36 +1,39 @@
-<app-head (toggleSidebar)="sideBarToggler()"></app-head>
+<app-head (ToggleSideNav)="ToggleSideNav($event)"></app-head>
 
-<div class="container-fluid" style="padding-left: 0px;">
 <mat-sidenav-container>
-    <mat-sidenav mode="side" [opened]="sideBarOpen" class="sidenav">
-      
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
         <app-sidenav-bar></app-sidenav-bar>
     </mat-sidenav>
-    <mat-sidenav-content>
-            <div class="ACVTY-no-pad">
-                <div class="UNFAPP-asmnt-rgt-area" style="background-color: #EAECF2;padding: 15px;height: 100vh;">
-
-                   
-                            <div class="col-lg-12">
-                                <mat-tab-group>
-                                    <mat-tab label="Dealers ">
-                                        <app-dealers></app-dealers>
-                                    </mat-tab>
-                                    <mat-tab label="Association">
-                                        <app-association></app-association>
-                                    </mat-tab>
-                                    <mat-tab label="Reports">
-                                        <app-reports></app-reports>
-                                    </mat-tab>
-                                    <mat-tab label="promotions">
-                                       <app-promotions></app-promotions>
-                                    </mat-tab>
-                                </mat-tab-group>
-                            </div>
-                      
-                </div>
-            </div>
-        </mat-sidenav-content>
-    </mat-sidenav-container>
     
-</div>
+
+    <mat-sidenav-content>
+        <!--<div class="dash-content" > -->
+                <h2 class="header-text">Dealers</h2>
+                <!-- <img  class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
+         
+                    <div class="UNFAPP-asmnt-rgt-area main dealertab">
+                        <!-- <div class="col-lg-12"> -->
+                            <mat-tab-group class="geo-label">
+                                <mat-tab label="Dealers ">
+                                    <app-dealers></app-dealers>
+                                </mat-tab>
+                                <mat-tab label="Association">
+                                    <app-association></app-association>
+                                </mat-tab>
+                                <mat-tab label="Reports">
+                                    <app-reports></app-reports>
+                                </mat-tab>
+                                <mat-tab label="promotions">
+                                   <app-promotions></app-promotions>
+                                </mat-tab>
+                            </mat-tab-group>
+                           
+                        <!-- </div> -->
+                    </div>
+                    
+        <!--</div> -->
+    </mat-sidenav-content>
+    
+</mat-sidenav-container>
+
+

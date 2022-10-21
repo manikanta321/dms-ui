@@ -2,11 +2,29 @@
 <div class="container">
     <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
     <div class="actv-user text-center">
-        <h1 class="head-text" *ngIf="true">Reset Password</h1>
-        
-        <input type="text" placeholder="Enter Password" [(ngModel)]="enterfirst"><br>
-        <input type="text" placeholder="Confirm Password" [(ngModel)]="entersecond"><br>
-        <button class="exit" (click)="confrmPWS()">Update Password</button>
+        <h1 class="head-text">Reset Password</h1>
     </div>
-    <p style="color: red;position: relative;position: relative;width: 160px;padding: 0px;height: 0px;top: -6px;">{{error}}</p>
+    <form #loginForm="ngForm">
+    <div>
+        <label >New password <span style="color: red;">*</span></label><br>
+        <input type="password"id="password" placeholder="Enter your password (at least 8 ch)" name="password"
+        [type]="hide ? 'password' 
+          : 'text'" [(ngModel)]="enterfirst" required>
+          <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 
+            'visibility_off'}}</mat-icon> -->
+         
+<br>
+        <label >Re-enter password <span style="color: red;">*</span></label><br>
+        <input type="text" placeholder="Re-enter your new password (at least 8 ch)" 
+        [type]="hide ? 
+              'password' : 'text'" [(ngModel)]="entersecond">
+              <p style="color: red;position: relative;position: relative;padding: 0px;height: 0px;top: -6px;">{{error}}</p>
+                    <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 
+                        'visibility_off'}}</mat-icon> -->
+                        <br>
+        <button class="update-btn" (click)="confrmPWS()">Update Password</button>
+        <button class="cancel-btn">Cancel</button>
+    </div>
+</form>
+   
 </div>

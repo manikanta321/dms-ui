@@ -1,251 +1,154 @@
-
-       
-            <!-- <div class="bhb" style="width: 10%;" > -->
-              
-                <!-- <app-sidenav-bar></app-sidenav-bar> -->
-            <!-- </div> -->
-            <div class=" ACVTY-no-pad" >
-                <div class="UNFAPP-asmnt-rgt-area" style="background-color: #EAECF2;padding: 15px;height: 92vh;">
-       <div class="row">
-        <div class="selct_box" style="margin-left: 20px;" >
-          <!-- <mat-label>Role</mat-label>
-          <br> -->
-          <mat-form-field appearance="outline" style="width: 126px;
-          ;">
-              <mat-select [formControl]="toppings"  multiple placeholder="Promotion Type" >
-                <!-- <mat-select-trigger>
-                  {{toppings.value?.[0] || ''}}
-                  <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
-                    (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
-                  </span>
-                </mat-select-trigger> -->
-                <mat-select-trigger>
-                  <span *ngIf="(toppings.value?.length || 0) > 0" class="example-additional-selection">
-                    {{(toppings.value?.length || 0) }} {{toppings.value?.length === 2 ? 'Selected' : 'Selected'}}
-                  </span>
-                </mat-select-trigger>
-                  <mat-option   *ngFor="let topping of toppingList" [value]="topping.role_name"  (click)="roleFilter(topping.role_id)">
-                    {{topping.role_name}}</mat-option>
-              </mat-select>
-          </mat-form-field>
+<div>
+  <div class="dealer-promotion mt-3 ">
+    <section>
+      <div class="row">
+        <div class="col-md-2 col-lg-2 col-sm-2">
+          <form [formGroup]="myForm">
+        <ng-multiselect-dropdown class="roless"
+            name="city"
+            [placeholder]="'Roles'"
+            formControlName="city"
+            [disabled]="disabled"
+            [settings]="dropdownSettings"
+            [data]="toppingList"
+            (onSelect)="onItemSelect($event)"
+            (onDeSelect)="onItemDeSelect($event)"
+            (onDeSelectAll)="onItemDeSelectOrAll($event)"
+            (onSelectAll)="onItemSelectOrAll($event)">
+        </ng-multiselect-dropdown>
+   </form>
       </div>
-
-      <div class="selct_box" style="margin-left: 20px;" >
-        <!-- <mat-label>Role</mat-label>
-        <br> -->
-        <mat-form-field appearance="outline" style="width: 126px;
-        ;">
-            <mat-select [formControl]="toppings"  multiple placeholder="Product" >
-              <!-- <mat-select-trigger>
-                {{toppings.value?.[0] || ''}}
-                <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
-                  (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
-                </span>
-              </mat-select-trigger> -->
-              <mat-select-trigger>
-                <span *ngIf="(toppings.value?.length || 0) > 0" class="example-additional-selection">
-                  {{(toppings.value?.length || 0) }} {{toppings.value?.length === 2 ? 'Selected' : 'Selected'}}
-                </span>
-              </mat-select-trigger>
-                <mat-option   *ngFor="let topping of toppingList" [value]="topping.role_name"  (click)="roleFilter(topping.role_id)">
-                  {{topping.role_name}}</mat-option>
-            </mat-select>
-        </mat-form-field>
+      <div class="col-md-2 col-lg-2 col-sm-2" >
+        <form [formGroup]="myForms">
+      <ng-multiselect-dropdown class="stts"
+          name="citys"
+          [placeholder]="'Status'"
+          formControlName="citys"
+          [disabled]="disabled"
+          [settings]="dropdownSettings1"
+          [data]="toppingList1"
+          (onSelect)="onStatusSelect($event)"
+          (onDeSelect)="onStatusDeSelect($event)"
+          (onDeSelectAll)="onItemDeSelectOrAllStatus($event)"
+          (onSelectAll)="onItemSelectOrAllStatus($event)">
+      </ng-multiselect-dropdown>
+ </form>
     </div>
+    <div class="col-md-2 col-lg-2 col-sm-2" >
+      <form [formGroup]="myForms">
+    <ng-multiselect-dropdown class="stts"
+        name="citys"
+        [placeholder]="'Status'"
+        formControlName="citys"
+        [disabled]="disabled"
+        [settings]="dropdownSettings1"
+        [data]="toppingList1"
+        (onSelect)="onStatusSelect($event)"
+        (onDeSelect)="onStatusDeSelect($event)"
+        (onDeSelectAll)="onItemDeSelectOrAllStatus($event)"
+        (onSelectAll)="onItemSelectOrAllStatus($event)">
+    </ng-multiselect-dropdown>
+</form>
+  </div>
+  <div class="col-md-2 col-lg-2 col-sm-2" >
+    <form [formGroup]="myForms">
+  <ng-multiselect-dropdown class="stts"
+      name="citys"
+      [placeholder]="'Status'"
+      formControlName="citys"
+      [disabled]="disabled"
+      [settings]="dropdownSettings1"
+      [data]="toppingList1"
+      (onSelect)="onStatusSelect($event)"
+      (onDeSelect)="onStatusDeSelect($event)"
+      (onDeSelectAll)="onItemDeSelectOrAllStatus($event)"
+      (onSelectAll)="onItemSelectOrAllStatus($event)">
+  </ng-multiselect-dropdown>
+</form>
+</div>
+<div class="col-md-2 col-lg-2 col-sm-2" >
+  <form [formGroup]="myForms">
+<ng-multiselect-dropdown class="stts"
+    name="citys"
+    [placeholder]="'Status'"
+    formControlName="citys"
+    [disabled]="disabled"
+    [settings]="dropdownSettings1"
+    [data]="toppingList1"
+    (onSelect)="onStatusSelect($event)"
+    (onDeSelect)="onStatusDeSelect($event)"
+    (onDeSelectAll)="onItemDeSelectOrAllStatus($event)"
+    (onSelectAll)="onItemSelectOrAllStatus($event)">
+</ng-multiselect-dropdown>
+</form>
+</div>
 
-    <div class="selct_box" style="margin-left: 20px;" >
-        <!-- <mat-label>Role</mat-label>
-        <br> -->
-        <mat-form-field appearance="outline" style="width: 126px;
-        ;">
-            <mat-select [formControl]="toppings"  multiple placeholder="Geography " >
-              <!-- <mat-select-trigger>
-                {{toppings.value?.[0] || ''}}
-                <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
-                  (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
-                </span>
-              </mat-select-trigger> -->
-              <mat-select-trigger>
-                <span *ngIf="(toppings.value?.length || 0) > 0" class="example-additional-selection">
-                  {{(toppings.value?.length || 0) }} {{toppings.value?.length === 2 ? 'Selected' : 'Selected'}}
-                </span>
-              </mat-select-trigger>
-                <mat-option   *ngFor="let topping of toppingList" [value]="topping.role_name"  (click)="roleFilter(topping.role_id)">
-                  {{topping.role_name}}</mat-option>
-            </mat-select>
-        </mat-form-field>
+<!-- <div class="col-1"> -->
+    <div class="icon btnhover refreshbtn" >
+      <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;" alt="refresh" >
     </div>
+  <!-- </div> -->
+     </div> 
+     <!-- search -->
+     <div class="col-md-4 mt-3" style="margin-left: 68%;margin-bottom:10px">
+      <div class="row">
+      <div class="col-md-8">
+    <div class="searchBox d-flex">
+      <input class="searchInput" style="font-family: 'Gilroy'" type="text" name="" placeholder="Type & search for anything" 
+      >
+      <button class="searchButton" href="#"> 
+          <i class="material-icons">
+              search
+          </i>
+      </button>
+      <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+    </div>  
+  </div>
+  <div class="col-md-2">
+   <div class="add-user">
+     <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+   </div>
+  </div>
+  <!-- <div class="col-md-4">
+   <div class="download-btn" >
+     <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;" alt="add-user-btn">
+   </div>
+  </div> -->
+  </div>
+</div>
+    </section>
+    <div >
+      <ag-grid-angular
+   id="gridContainer"
+   style=" height: 350px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
+   class="ag-theme-material"
+   (gridReady)="onGridReady($event)"
+   [rowHeight]="25"
+   [headerHeight]="48"
+   [columnDefs]="columnDefs"
+   [defaultColDef]="defaultColDef"
+   [columnTypes]="columnTypes"
+   [rowData]="rowData5"
+   [suppressExcelExport]="true"
+   [popupParent]="popupParent"
+    (cellValueChanged)="onCellValueChanged($event)"
+   (firstDataRendered)="onFirstDataRendered($event)" 
+   (firstDataRendered)="onFirstDataRendered($event)"
+   (rowClicked)="openDialog()"
+   (cellClicked)="onCellClicked($event)"
+   [paginationPageSize]="paginationPageSize"
 
-
-    <div class="selct_box" style="margin-left: 20px;" >
-        <!-- <mat-label>Role</mat-label>
-        <br> -->
-        <mat-form-field appearance="outline" style="width: 126px;
-        ;">
-            <mat-select [formControl]="toppings"  multiple placeholder="Role " >
-              <!-- <mat-select-trigger>
-                {{toppings.value?.[0] || ''}}
-                <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
-                  (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
-                </span>
-              </mat-select-trigger> -->
-              <mat-select-trigger>
-                <span *ngIf="(toppings.value?.length || 0) > 0" class="example-additional-selection">
-                  {{(toppings.value?.length || 0) }} {{toppings.value?.length === 2 ? 'Selected' : 'Selected'}}
-                </span>
-              </mat-select-trigger>
-                <mat-option   *ngFor="let topping of toppingList" [value]="topping.role_name"  (click)="roleFilter(topping.role_id)">
-                  {{topping.role_name}}</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-
-
-      <div class="selct_box" style="margin-left: 20px;">
-        <!-- <mat-label>Status</mat-label><br> -->
-        <mat-form-field appearance="outline" style="width: 126px;
-        ;">
-            <mat-select [formControl]="toppings1" multiple placeholder="Status " >
-              <mat-select-trigger>
-                {{toppings1.value?.[0] || ''}}
-                <span *ngIf="(toppings1.value?.length || 0) > 1" class="example-additional-selection">
-                  (+{{(toppings1.value?.length || 0) - 1}} {{toppings1.value?.length === 2 ? 'other' : 'others'}})
-                </span>
-              </mat-select-trigger>
-             
-                <mat-option  *ngFor="let topping of toppingList1" [value]="topping.status_name"  >
-                   {{topping.status_name}}</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <button type="button" class="btn btn-primary1" style="margin-bottom: 9px;" (click)="refresh()">
-          <mat-icon mat-list-icon>refresh</mat-icon>
-        </button>
-    </div>
-    <div class="form-outline" style="margin-left: 20px;margin-top: 5px;">
-      <!-- <label class="form-label" for="form1">Search</label> -->
+   (bodyScroll)="handleScroll($event)"
   
-      <input type="search" placeholder="search"  (keyup)="applyFilter($event)"  #input class="form-control" style="border:solid #2962ff 1px;" />
-      
-    </div>
-    <!-- <button type="button" class="btn btn-primary">
-      <i class="fas fa-search"></i>
-    </button> -->
- 
-       </div>   
-       
-       <div class="row">
-        <div class="col-8">
-         <h4 style="color: #017EFA
-         ;font-family: Montserrat, sans-serif;font-size:15px ;font-weight: 550;"><b>Promotion</b></h4>
-        </div>
-        <div class="col-4">
-            <div class="crt-dwnl" style="float: right;">
-                <button class="btn  btnhover createcoursebtn" type="button" id="dropdownMenu2"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 20px;"(click)="addPromotion()" >
-                 + Add Promotion
-              </button>
-              <button class="btn btn-primary2" type="button" id="dropdownMenu2"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <mat-icon [ngStyle]="{'color':'white'}">download</mat-icon></button>
-              </div>
-        </div>
-        </div>
-           
-<br>
+   ></ag-grid-angular>
+   
+   </div>
+   <div class="pagination">
+       <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span class="pagination-cls">{{rowData5.length}}</span>
+   </div>
 
-<!-- AG Grid Angular Component -->
-<!-- <ag-grid-angular
-    style="width: 100%; height: 150px;"
-    class="ag-theme-alpine"
-    [rowData]="rowData"
-    [columnDefs]="columnDefs">
-</ag-grid-angular> -->
-<ag-grid-angular
-style="width: auto; height: 80%;border-radius: 35px;"
-class="ag-theme-alpine"
-[rowHeight]="30"
-[pagination]="true"
-[paginationAutoPageSize]="true"
-[columnDefs]="columnDefs"
-[defaultColDef]="defaultColDef"
-[columnTypes]="columnTypes"
-[rowData]="rowData"
-(cellValueChanged)="onCellValueChanged($event)"
-
-></ag-grid-angular>
- <!-- <gui-grid
- [columns]="columns"
- [source]="source"
- [sorting]="sorting"
- [paging]="paging"
- [searching]="searching"
- [columnMenu]="columnMenu"
- >
-
- 
- 
-</gui-grid> -->
-
-
- 
- <div >
-    <!-- <table>
-      <tr class="table-header-row">
-          <th style="padding-left:20px;">User ID</th>
-          <th style="width: 15%;">User Name</th>
-          <th style="width: 15%;">Role</th>
-          <th>Email</th>
-          <th>Phone</th>
-          <th>Last log in</th>
-          <th>Status</th>
-          <th style="width: 4%;"></th>
-      </tr>
-      <tr mat-table  *ngFor="let data of dataSource" class="tabledata-row">
-
-          <td title="{{data.position}}" style="padding-left: 21px;">{{(data.position.substring(0, 8))+'...'}}</td>
-          <td title="{{data?.name}}" class="elipsis-2line" style="padding-right: 10px;" >
-              {{data?.name}}</td>
-          <td>{{data?.weight}}</td>
-          <td title="{{data?.symbol}}">{{data?.symbol }}
-          </td>
-            <td title="{{data.emailid}}">{{(data.position.substring(0, 8))+'...' }}
-          </td>
-          <td>{{data.phonenum}}</td>
-          <td>22/10/2022</td>
-          <td> <button *ngIf="data.status=='active'" type="button" class="btn btn-primary" style="background-color:  #17B15C;
-            ;border: solid #17B15C;border-radius: 10px;color: black;font-weight: 500;padding-top: 4px;padding-bottom: 4px;">Active</button>
-          
-          <button *ngIf="data.status=='inactive'" type="button" class="btn btn-primary" style="background-color:  #63e99f;
-          ;border: solid #63e99f;border-radius: 10px;color: black;font-weight: 500;padding-top: 4px;padding-bottom: 4px;">InActiv</button>
-            <button *ngIf="data.status=='locked'" type="button" class="btn btn-primary" style="background-color:  #76817b;
-            ;border: solid #76817b;border-radius: 10px;color: black;font-weight: 500;padding-top: 4px;padding-bottom: 4px;">locked</button>
-              <button *ngIf="data.status=='invited'" type="button" class="btn btn-primary" style="background-color:  #1779b1;
-              ;border: solid #1779b1;border-radius: 10px;color: black;font-weight: 500;padding-top: 4px;padding-bottom: 4px;">Invited</button></td>
-        
-  <td>
-    <button mat-button [matMenuTriggerFor]="menu" style="border:white;" class="btn btn-outline-light"><img src="../../../assets/img/edit.svg"  alt=""  /></button>
-    <mat-menu #menu="matMenu" style="border:white;background-color: white;">
-      <button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;" (click)=" editUser()">Edit</button>
-      <button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;" (click)=" editUser()">Deactivate</button>
-      <button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;" (click)=" editUser()">Reactivate</button>
-      <button class="btn btn-outline-light" mat-menu-item style="border:white;background-color: white;" (click)=" editUser()">Reset  password</button>
-    
-    
-    
-      <button mat-menu-item  class="btn btn-outline-light" style="border:white;background-color: white;">Delete</button>
-    </mat-menu>
-  </td>
-      </tr>
-  </table> -->
-
-
+  </div>
 </div>
-
-</div>
-            </div>
-    
-<!-- </div> -->
-
 
 
 

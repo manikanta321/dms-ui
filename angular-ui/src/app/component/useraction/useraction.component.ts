@@ -21,7 +21,6 @@ export class UseractionComponent implements OnInit,  AfterViewInit {
   private tippyInstance;
   selected:boolean=false;
 
-
   ngOnInit(){}
   @ViewChild('content') container;
 
@@ -84,16 +83,20 @@ export class UseractionComponent implements OnInit,  AfterViewInit {
   editUser(){
    
     this.dialog.open( EditPopupComponent,);
+    this.isOpen = false;
   }
   deactive(){
     this.dialog.open(DeactivateUserpopupComponent);
+    this.isOpen = false;
   }
 
   activate(){
     this.dialog.open(ActivatepopUpComponent);
+    this.isOpen = false;
   }
   resetpws(){
     this.dialog.open(PswResetPopupComponent);
+    this.isOpen = false;
   }
   tickmark(){
     this.selected = true;

@@ -2,21 +2,52 @@
 .head-text{
 font-size: 20px;
 font-weight: 600;
+margin-bottom: 0;
 }
+/* .head-text::after{
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: #686E74;
+    right: 0;
+    top: 50%;
+    position: absolute;
+}
+.head-text::before{
+    content: "";
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: #686E74;
+    left: 0;
+    top: 50%;
+    position: absolute;
+} */
 input{
     padding: 5px 12px;
     margin-bottom: 10px;
-    border-radius: 8px;
-    border: 1px solid gray;
-    width: 240px;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    width: 404px;
+    height: 43px;
 }
-.exit{
+.update-btn{
 background: black;
 color: white;
-padding: 5px 40px;
+width: 183px;
+height: 43px;
 border: #000000;
 border-radius: 5px;
-width: 240px;
+margin-right: 35px;
+}
+.cancel-btn{
+    border: #000000;
+    border-radius: 5px;
+    width: 184px;
+    height: 43px;
+    background: white;
 }
 .close-icon{
     left: 100%;

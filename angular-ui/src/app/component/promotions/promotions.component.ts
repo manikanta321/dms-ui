@@ -5,10 +5,24 @@ import {AfterViewInit, ViewChild} from '@angular/core';
 
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import { Sort, MatSort, SortDirection } from '@angular/material/sort';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
+
+import { DeletecomponentComponent } from '../deletecomponent/deletecomponent.component';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridApi, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { AgGridAngular } from 'ag-grid-angular';
+import { UserService } from 'src/app/services/user.service';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
+import { MatSidenav } from '@angular/material/sidenav';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { AddPromotionsComponent } from '../add-promotions/add-promotions.component';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 export interface PeriodicElement {
+
   name: any;
   position: string;
   weight: number;
@@ -17,7 +31,6 @@ export interface PeriodicElement {
   phonenum:number;
   status:any;
 }
-
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: '6004005001', name: 'Rajasheka S', weight: 1.0079, symbol: 'Customer',emailid:'you@smartgig',phonenum:9448282822,status:'Active'},
   {position: '6004005002', name: 'Manoranjan B', weight: 1.0079, symbol: 'Dealer',emailid:'you@smartgig',phonenum:9448282822,status:'Inactive'},
@@ -33,46 +46,37 @@ const ELEMENT_DATA: PeriodicElement[] = [
    {position: '6004005006', name: 'prajwal vT', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked'},
 
 ];
-
-import { DeletecomponentComponent } from '../deletecomponent/deletecomponent.component';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { AgGridAngular } from 'ag-grid-angular';
-import { UserService } from 'src/app/services/user.service';
-import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
-import { MatSidenav } from '@angular/material/sidenav';
-import { BreakpointObserver } from '@angular/cdk/layout';
-import { AddPromotionsComponent } from '../add-promotions/add-promotions.component';
-
 @Component({
   selector: 'app-promotions',
   templateUrl: './promotions.component.html',
   styleUrls: ['./promotions.component.css']
 })
 export class PromotionsComponent implements OnInit {
-status:any;
-
-// // Data that gets displayed in the grid
-// public rowData=[
-//   {position: '6004005001', name: 'Rajasheka S', weight: 1.0079, symbol: 'Customer',emailid:'you@smartgig',phonenum:9448282822,status:'Active'},
-//   {position: '6004005002', name: 'Manoranjan B', weight: 1.0079, symbol: 'Dealer',emailid:'you@smartgig',phonenum:9448282822,status:'Inactive'},
-//   {position: '6004005003', name: 'Vishnu M', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822 , status:'Active'},
-//   {position: '6004005004', name: 'Mahendra S', weight: 1.0079, symbol: 'Dealer',emailid:'you@smartgig',phonenum:9448282822, status:'Invited'},
-//   {position: '6004005005', name: 'Veerendra kr', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked'},
-//   {position: '6004005006', name: 'mahathi Br', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Active'},
-//    {position: '6004005007', name: 'chetheshwar T', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked'},
-//    {position: '6004005008', name: 'Swami swami', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked'},
-
-//    {position: '6004005006', name: 'narendra gs', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked'},
-
-//    {position: '6004005006', name: 'prajwal vT', weight: 1.0079, symbol: 'Admin',emailid:'you@smartgig',phonenum:9448282822, status:'Locked'},
-
-// ];
-
-// For accessing the Grid's API
-
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  private gridApi!: GridApi;
+  paginationPageSize = 10;
+  myForm:any= FormGroup;
+  myForms:any= FormGroup;
+  disabled = false;
+  ShowFilter = false;
+  StatusFilter = false;
+  limitSelection = false;
+  statusSelection =false;
+  cities:any = [];
+  status:any = [];
+  selectedItems: any = [];
+  selectedStatus: any = [];
+  userTypes:any=[];
+  statusTypes:any=[];
+  searchText:any;
+  dropdownSettings: IDropdownSettings = {};
+  dropdownSettings1: IDropdownSettings = {};
+  public rowData5=[];
+  public popupParent: HTMLElement = document.body;
+  roleArray:any[] = [];
+  statusArray:any=[];
+  stayScrolledToEnd = true;
+  paginationScrollCount:any;
 
 columnDefs: ColDef[] = [
   // { headerName: "User Id",
@@ -246,7 +250,6 @@ public pivotPanelShow = 'always';
 	// 	multiSorting: true
 	// };
   displayedColumns: string[] = ['position', 'name',  'symbol','email','phonenum','login','status','edit'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
   toppings = new FormControl('');
   toppings1 = new FormControl('');
 
@@ -295,51 +298,15 @@ public pivotPanelShow = 'always';
     this.toppings = new FormControl(this.toppingList);
     this.toppings1 = new FormControl(this.toppingList1);
 
-    // var ageFilterComponent = this.gridApi.getFilterInstance('')!;
-    // ageFilterComponent.setModel(null);
-    // this.gridApi.onFilterChanged();
 this.getusertabeldata();
   }
 
 getusertabeldata(){
-//   this.user.getuserDeatils().subscribe((res: any) => {
-      
-//     this.rowData = res.response;
-//     if (this.rowData.length >= 1) {
-//     this.rowData.forEach((element: { [x: string]: any; }) => {
-//     if (element['status']=='Confirmed'){
-// }
-//     else{
-//       element['isActive']=='Inactive'
 
-//     }
-// console.log('element',element['isActive'])
-//     });
-//   }
-
-//     console.log('row data',this.rowData1)
-
-//   });
 }
 
 roleItems(){
 
-  // if (res != undefined) {
-  //   let localdata = res.data;
-
-  //   this.gradeList = localdata.map((dt) => {
-  //     return { grade_id: dt.gradeId, grade_name: dt.gradeName };
-  //   });
-  //   if (!this.gradesArray?.length) {
-  //     this.gradesArray = localdata.map((grade) => {
-  //       return grade.gradeId;
-  //     });
-  //   }
-  //   this.gradesArray.push(0)
-  //   // this.gradeList.push({ grade_id: 0, grade_name: 'all'})
-
-  //   this.grades = new FormControl(this.gradesArray);
-  // }
 
   this.user.getroleDetails().subscribe((res: any) => {
     let localdata=res.response;
@@ -384,21 +351,8 @@ statusItems(){
     console.log('status',this.toppingList1)
 
 
-
-
-
-
-
-
-
-
   });
 }
-
-
-
-
-
 
 
 roleFilter(data:any){
@@ -412,35 +366,6 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
   console.log('rolename',this.rowData)
 }
 
-  applyFilter(event: Event) {
-
-
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-}
-
-// applyEmpFilter(ob:MatSelectChange,empfilter:EmpFilter) {
-
-//   this.filterDictionary.set(empfilter.name,ob.value);
-//   var jsonString = JSON.stringify(Array.from(this.filterDictionary.entries()));
-//   this.dataSource.filter = jsonString;
-
-// }
- 
-  announceSortChange(sortState: any) {
-    // This example uses English messages. If your application supports
-    // multiple language, you would internationalize these strings.
-    // Furthermore, you can customize the message to add additional
-    // details about the values being sorted.
-    if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-    } else {
-      this._liveAnnouncer.announce('Sorting cleared');
-    }
-  }
-
-
-  // Example of consuming Grid Event
   onCellClicked( e: CellClickedEvent): void {
     console.log('cellClicked', e);
   }
@@ -453,29 +378,161 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
     );
   }
 
+  onItemSelect(item: any) {
 
-  onRowValueChanged(event: RowValueChangedEvent) {
-    var data = event.data;
-    alert(data.status)
-    // console.log(
-    //   'onRowValueChanged: (' +
-    //     data.make +
-    //     ', ' +
-    //     data.model +
-    //     ', ' +
-    //     data.price +
-    //     ', ' +
-    //     data.field5 +
-    //     ')'
-    // );
-  }
+    // alert(item.roleName)
+      this.userTypes.push(item.roleId);
+    
+      const data={
+        userTypes:this.userTypes,
+        statuss:this.statusTypes,
+        search:this.searchText,
+    
+      }
+      this.user.getuserDeatilsUser(data).subscribe((res) => {     
+        this.rowData5 = res.response;
+      });
+      console.log('rolefilter', this.userTypes)
+      console.log('onItemSelect', item);
+    }
+    onItemSelectOrAll(item:any){
+      this.userTypes=this.roleArray;
+      const data={
+        userTypes:this.userTypes,
+        statuss:this.statusTypes,
+        search:this.searchText,
+    
+      }
+      this.user.getuserDeatilsUser(data).subscribe((res) => {     
+        this.rowData5 = res.response;
+      });
+      console.log('rolefilter', this.userTypes)
+      console.log('onItemSelect', item);}
+    onItemDeSelectOrAll(item:any){
+      const data={
+        userTypes:this.userTypes,
+        statuss:[],
+        search:this.searchText,
+    
+      }
+      this.user.getuserDeatilsUser(data).subscribe((res) => {     
+        this.rowData5 = res.response;
+      });
+      console.log('rolefilter', this.userTypes)
+      console.log('onItemSelect', item);
+    }
+    
+    
+    
+      onItemDeSelectOrAllStatus(item:any){
+        const data={
+          userTypes:this.userTypes,
+          statuss:[],
+          search:this.searchText,
+      
+        }
+        this.user.getuserDeatilsUser(data).subscribe((res) => {     
+          this.rowData5 = res.response;
+        });
+        console.log('rolefilter', this.userTypes)
+      }
+    
+    
+      onItemSelectOrAllStatus(item:any){
+        this.statusTypes=this.statusArray;
+        const data={
+          userTypes:this.userTypes,
+          statuss:this.statusTypes,
+          search:this.searchText,
+      
+        }
+        this.user.getuserDeatilsUser(data).subscribe((res) => {     
+          this.rowData5 = res.response;
+        });
+        console.log('rolefilter', this.statusTypes)
+      }
+    
+    onStatusSelect(item: any) {
+      this.statusTypes.push(item.statusId);
+    
+      const data={
+        userTypes:this.userTypes,
+        statuss:this.statusTypes,
+        search:this.searchText,
+      }
+      this.user.getuserDeatilsUser(data).subscribe((res) => {     
+        this.rowData5 = res.response;
+      });
+      
+    }
+    
+    onItemDeSelect(item: any) {
+    
+      this.userTypes.forEach((element,index)=>{
+        if(element==item.roleId)  this.userTypes.splice(index,1);
+     });
+     console.log(' this.userTypes', this.userTypes)
+    
+      // this.userTypes.pop(item.roleId);
+      const data={
+        userTypes:this.userTypes,
+        statuss:this.statusTypes,
+        search:this.searchText,
+    
+      }
+      this.user.getuserDeatilsUser(data).subscribe((res) => {     
+        this.rowData5 = res.response;
+      });
+    
+    }
+    
+    
+    
+    onStatusDeSelect(item: any) {
+      this.statusTypes.forEach((element,index)=>{
+        if(element==item.statusId)  this.statusTypes.splice(index,1);
+     });
+      // this.statusTypes.pop(item.statusId);
+    console.log(' this.statusTypes', this.userTypes)
+      const data={
+        userTypes:this.userTypes,
+        statuss:this.statusTypes,
+        search:this.searchText,
+    
+      }
+      this.user.getuserDeatilsUser(data).subscribe((res) => {     
+        this.rowData5 = res.response;
+      });
+      console.log('rolefilter', this.userTypes)
+      console.log('onItemSelect', item);
+    }
+    applyFilter(event: Event) {
 
-  sideBarToggler(){
-    this.sideBarOpen = !this.sideBarOpen;
+
+      const filterValue = (event.target as HTMLInputElement).value;
+      this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  addPromotion(){
-    this.dialog.open(AddPromotionsComponent, );
+  onGridReady(params: GridReadyEvent) {
+    this.gridApi = params.api;
+    params.api.sizeColumnsToFit();
+    
   }
-  
+  onFirstDataRendered(params: FirstDataRenderedEvent) {
+    params.api.paginationGoToPage(4);
+  }
+  openDialog(){
+
+  }
+  handleScroll(event) {
+    const grid = document.getElementById('gridContainer');
+    if (grid) {
+      const gridBody = grid.querySelector('.ag-body-viewport') as any;
+      const scrollPos = gridBody.offsetHeight + event.top;
+      const scrollDiff = gridBody.scrollHeight - scrollPos;
+      //const api =  this.rowData5;
+      this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
+      this.paginationScrollCount = this.rowData5.length;
+    }
+  }
 }
 

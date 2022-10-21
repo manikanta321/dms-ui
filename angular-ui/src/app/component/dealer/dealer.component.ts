@@ -11,8 +11,9 @@ export class DealerComponent implements OnInit {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   constructor(private observer: BreakpointObserver,) { }
+  
   ngAfterViewInit() {
-    // this.dataSource.sort = this.sort;
+    //this.dataSource.sort = this.sort;
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
       if (res.matches) {
         this.sidenav.mode = 'over';
@@ -23,9 +24,10 @@ export class DealerComponent implements OnInit {
       }
     });
   }
+
   ngOnInit(): void {
   }
-  sideBarToggler(){
-    this.sideBarOpen = !this.sideBarOpen;
+  ToggleSideNav(value:any){
+    this.sidenav.toggle()
   }
 }

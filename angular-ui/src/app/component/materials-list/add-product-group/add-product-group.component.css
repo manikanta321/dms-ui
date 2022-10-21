@@ -1,0 +1,116 @@
+::ng-deep.mat-dialog-container {
+    
+    border-radius: 21px;
+}
+
+
+.mat-form-field-flex {
+    padding-top: -10px;
+    display: inline-flex;
+    align-items: baseline;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100px;
+
+    /* background-color: #CED4DA; */
+}
+
+.main {
+    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+
+}
+
+.font {
+    font-family: 'Gilroy';
+}
+
+.head-t h3 {
+    color: #000000;
+    text-align: center;
+    margin-top: -18px;
+    margin-bottom: 2px;
+}
+
+.addU {
+    position: relative;
+    /* font-family: 'Gilroy-Bold';  */
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.addU:after {
+    content: "";
+    display: block;
+    width: 55px;
+    height: 1px;
+    background: #686E74;
+    right: 21px;
+    top: 50%;
+    position: absolute;
+}
+
+.addU:before {
+    content: "";
+    display: block;
+    width: 58px;
+    height: 1px;
+    background: #686E74;
+    left: 16px;
+    top: 50%;
+    position: absolute;
+}
+
+.addUserForm input {
+    border-radius: 5px;
+    /* border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
+    border: black 1px solid;
+    padding: 5px 5px;
+    width: 250px;
+      font-size: 14px;
+    outline: none !important;
+}
+::ng-deep.btn-primary[_ngcontent-uke-c437]:disabled {
+    margin-bottom: 0px !important;
+}
+
+span {
+    color: red;
+}
+
+.close-icon {
+    left: 100%;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+label {
+    /* padding: 2px 0; */
+    font-size: 14px;
+    margin: 5px;
+}
+
+mat-form-field {
+    width: 246px;
+
+}
+
+/* ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0em 0 0.7em 0;
+    } */
+
+::ng-deep.mat-dialog-container {
+    background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+    ;
+}
+
+.btn-primary:disabled {
+    border-color: black;
+    background-color: black;
+    /* margin-left: 79px; */
+    /* margin-top: -12px; */
+    width:66%;
+}
+::ng-deep.product .mat-dialog-container #mat-dialog-1 {
+    height: 300px !important;
+}  

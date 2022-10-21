@@ -37,6 +37,8 @@
  import { MatDialog } from '@angular/material/dialog';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { AddIdentifierComponent } from '../add-identifier/add-identifier.component';
+import { AddProductGroupComponent } from '../add-product-group/add-product-group.component';
+import { AddProductSubGroupComponent } from '../add-product-sub-group/add-product-sub-group.component';
 import { SelectProductComponent } from '../select-product/select-product.component';
  
  /**
@@ -100,6 +102,14 @@ import { SelectProductComponent } from '../select-product/select-product.compone
   }
   selectProduct(){
     this.dialog.open(SelectProductComponent);
+    
+  }
+  addproduct(){
+    this.dialog.open(AddProductGroupComponent);
+    
+  }
+  addproductsubgroup(){
+    this.dialog.open(AddProductSubGroupComponent);
     
   }
   customIdentifier(){

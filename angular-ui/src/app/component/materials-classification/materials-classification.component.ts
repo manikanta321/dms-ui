@@ -97,20 +97,31 @@ this.calssification.getclassification().subscribe((res)=>{
     this.toprint=valueofprint;
   }
   addCategory(){
-    this.addButton =true;
+      this.addButton =true;
+   
+  }
+  removeaddformcat(){
+    this.addButton =false;
+
   }
   addSubCategory(){
     this.addSubButton=true;
+  }
+  removeaddformSubcat(){
+    this.addSubButton=false;
+
   }
   addTypeCategory(){
     this.addTypeButton=true;
 
   }
+  removeaddformtype(){
+    this.addTypeButton=false;
 
+  }
 
   removecatg(item):void{
     // this.catgname.splice(index, 1);
-  alert(item.catId);
 let data={
   CategoryId:item.catId,
 }
@@ -118,34 +129,43 @@ this.calssification.deletecatagory(item.catId).subscribe((res)=>{
   console.log(res)
 })
 
-this.calssification.getclassification().subscribe((res)=>{
-  let data=res.response;
-  this.coutCatagory=res.totalRecords;
-  this.catgname=data.allOtherCats
-  this.catagoryroouting=data.firstCat.catName;
-  this.selectedItem=data.allOtherCats[0];
-  this.subcatRoouting=data.firstCat.subCAts.firstSubCat.subCatName;
-  this.subcatcount=data.firstCat.subCatsCount;
-  this.typecount=data.firstCat.subCAts.firstSubCat.typeCount;
-  console.log('data',data.firstCat)
-  let char=[]
-  this.subname=data.firstCat.subCAts.allOtherSubCAts;
-  this.selectedsubItem=data.firstCat.subCAts.allOtherSubCAts[0];
-  this.typename=data.firstCat.subCAts.firstSubCat.types;
-  this.selectedtypeItem=data.firstCat.subCAts.firstSubCat.types[0];
-  this.itemId=data.firstCat.catId
-  this.subCatId=data.firstCat.subCAts.firstSubCat.subCatId;
+
+setTimeout(()=>{                           // <<<---using ()=> syntax
  
- console.log('typename',this.typename)
-  console.log('char',this.subname);
- //  this.subname = char.map((data: { subCatId: any; subCatName: any; }) => {
- //    debugger
- //   return { subCatId: data.subCatId, subCatName: data.subCatName };
+  this.calssification.getclassification().subscribe((res)=>{
+    let data=res.response;
+    this.coutCatagory=res.totalRecords;
+    this.catgname=data.allOtherCats
+    this.catagoryroouting=data.firstCat.catName;
+    this.selectedItem=data.allOtherCats[0];
+    this.subcatRoouting=data.firstCat.subCAts.firstSubCat.subCatName;
+    this.subcatcount=data.firstCat.subCatsCount;
+    this.typecount=data.firstCat.subCAts.firstSubCat.typeCount;
+    console.log('data',data.firstCat)
+    let char=[]
+    this.subname=data.firstCat.subCAts.allOtherSubCAts;
+    this.selectedsubItem=data.firstCat.subCAts.allOtherSubCAts[0];
+    this.typename=data.firstCat.subCAts.firstSubCat.types;
+    this.selectedtypeItem=data.firstCat.subCAts.firstSubCat.types[0];
+    this.itemId=data.firstCat.catId
+    this.subCatId=data.firstCat.subCAts.firstSubCat.subCatId;
    
- //   console.log('subname',this.subname)
- 
- // });
- })
+   console.log('typename',this.typename)
+    console.log('char',this.subname);
+   //  this.subname = char.map((data: { subCatId: any; subCatName: any; }) => {
+   //    debugger
+   //   return { subCatId: data.subCatId, subCatName: data.subCatName };
+     
+   //   console.log('subname',this.subname)
+   
+   // });
+   })
+
+}, 1000);
+
+
+
+
 
 
 // this.calssification.getclassification().subscribe((res)=>{
@@ -179,26 +199,38 @@ this.calssification.getclassification().subscribe((res)=>{
     this.calssification.daleteSubcatagory(item.subCatId).subscribe((res)=>{
       console.log(res)
     })
-    setTimeout(function () {
-      
-  }, 10000);
+   
 
-
-
-    this.calssification.onclickcat(this.itemId).subscribe((res)=>{
-      console.log(res)
-      let data=res.response;
-      this.subname=data.allOtherSubCAts;
-      if(data.firstSubCat==null){
-        this.typename=[];
-        this.typecount='0'
-      }
-      else{
-        this.typename=data.firstSubCat.types;
+    setTimeout(()=>{                           // <<<---using ()=> syntax
+ 
+      this.calssification.onclickcat(this.itemId).subscribe((res)=>{
+        console.log(res)
+        let data=res.response;
+        this.subname=data.allOtherSubCAts;
+        this.selectedsubItem=data.allOtherSubCAts[0];
         this.subcatcount=res.totalRecords;
-     this.typecount=data.firstSubCat.typeCount;
-      }
-      });
+
+
+        if(data.firstSubCat==null){
+          this.typename=[];
+          this.typecount='0';
+          this.subcatRoouting='No Sub-Category';
+
+        }
+        else{
+          this.subcatRoouting=data.firstSubCat.subCatName; 
+          this.selectedtypeItem=data.firstSubCat.types[0];
+          this.typename=data.firstSubCat.types;
+          this.subcatcount=res.totalRecords;
+       this.typecount=data.firstSubCat.typeCount;
+        }
+        });
+    
+    }, 1000);
+    
+
+
+   
 
   // this.calssification.onclickcat(this.itemId).subscribe((res)=>{
   //   console.log(res)
@@ -221,15 +253,25 @@ this.calssification.getclassification().subscribe((res)=>{
     this.calssification.deleteType(item.typeId).subscribe((res)=>{
       console.log(res)
     })
-    this.calssification.onclicksubcat(this.subCatId).subscribe((res)=>{
-      console.log(res)
-      let data=res.response;
-      this.typename=res.response;
-      console.log(this.typename)
-      this.typecount=res.totalRecords;
+
+    setTimeout(()=>{                           // <<<---using ()=> syntax
+ 
+      this.calssification.onclicksubcat(this.subCatId).subscribe((res)=>{
+        console.log(res)
+        let data=res.response;
+        this.typename=res.response;
+        console.log(this.typename)
+        this.typecount=res.totalRecords;
+        this.selectedtypeItem=res.response[0];
 
   
-    })
+    
+      })
+    
+    }, 1000);
+    
+
+
     // this.typename.splice(index, 1);
 
   }
@@ -286,13 +328,19 @@ this.calssification.addsubCatagory(data).subscribe((res)=>{
       console.log(res)
       let data=res.response;
       this.subname=data.allOtherSubCAts;
+      this.selectedsubItem=data.allOtherSubCAts[0]
+
       if(data.firstSubCat==null){
-        this.typename=[]
-        this.typecount='0'
+        this.typename=[];
+        this.typecount='0';
+
       }
       else{
         // this.typename=res.response;
-        this.selectedtypeItem=res.response[0];
+        this.selectedtypeItem=data.firstSubCat.types[0];
+        this.subcatRoouting=data.firstSubCat.subCatName;
+
+        // this.selectedtypeItem=res.response[0];
         this.typename=data.firstSubCat.types;
         this.subcatcount=res.totalRecords;
         this.typecount=data.firstSubCat.typeCount;
@@ -320,19 +368,16 @@ this.calssification.addtypes(data).subscribe((res)=>{
 
 setTimeout(()=>{                           // <<<---using ()=> syntax
  
-
   this.calssification.onclicksubcat(this.subCatId).subscribe((res)=>{
     console.log(res)
     let data=res.response;
     this.typename=res.response;
     console.log(this.typename)
     this.typecount=res.totalRecords;
-  
-  
+    this.selectedtypeItem=res.response[0];
+ 
   })
   
-
-
 }, 1000);
 
 
@@ -367,7 +412,7 @@ console.log(res)
 
 let data=res.response;
 this.subcatcount=res.totalRecords;
-this.typecount=data.firstSubCat.typeCount;
+this.typecount=data.firstSubCat?.typeCount;
 this.subname=data.allOtherSubCAts;
 this.selectedsubItem=data.allOtherSubCAts[0]
 if(data.firstSubCat==null){
@@ -375,6 +420,7 @@ if(data.firstSubCat==null){
   this.subcatRoouting='No Sub-Category'
 }
 else{
+  this.subCatId=data.firstSubCat.subCatId
   this.subcatRoouting=data.firstSubCat.subCatName;
   this.typename=data.firstSubCat.types;
   this.selectedtypeItem=data.firstSubCat.types[0];

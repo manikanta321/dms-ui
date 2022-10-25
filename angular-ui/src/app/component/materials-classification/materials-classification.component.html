@@ -11,14 +11,14 @@
       <div class="row">
         <p class="col-10">Category ({{coutCatagory}})</p>
         <p class="col-2">
-          <mat-icon (click)=addCategory()>add_circle</mat-icon>
+          <mat-icon (click)=addCategory() style="cursor: pointer;">add_circle</mat-icon>
         </p>
       </div>
       <mat-card  class="scroll">
         <mat-card-content>
           <div class=" d-flex" *ngFor="let catg of catgname">
-            <p class="col-10 catg cursor-pointer" (click)="onClick(catg)" [ngClass]="{ 'selected': catg == selectedItem }">{{catg.catName}}</p>
-            <mat-icon class="col-2" (click)="removecatg(catg)">remove_circle</mat-icon>
+            <p class="col-10 catg cursor-pointer" (click)="onClick(catg)" [ngClass]="{ 'selected': catg == selectedItem }" style="cursor: pointer;">{{catg.catName}}</p>
+            <mat-icon class="col-2" (click)="removecatg(catg)" style="cursor: pointer;">remove_circle</mat-icon>
           </div>
           <!-- <div class="buttn" *ngIf=addButton> -->
             <div class="inbtn d-flex" *ngIf=addButton>
@@ -26,9 +26,9 @@
               <input type="text col-lg-5" class="addcatg" [(ngModel)]="addcat" placeholder="Add category">
               <!-- <button class="btn btn-basic addcode">Add code</button> -->
               <input type="text col-lg-3" class="addcd" [(ngModel)]="addcatcode" placeholder="Add Code">
-              <button class="btn btn-basic addbt col-lg-2"(click)="addcatagory()" [disabled]="!addcat || !addcatcode ">Add</button>
+              <button class="btn btn-basic addbt col-lg-2"(click)="addcatagory()" [disabled]="!addcat || !addcatcode " style="cursor: pointer;">Add</button>
               <!-- <div class="rmve col-lg-1"> -->
-                <mat-icon class="col-lg-2">remove_circle</mat-icon>
+                <mat-icon class="col-lg-2" (click)="removeaddformcat()" style="cursor: pointer;">remove_circle</mat-icon>
               <!-- </div> -->
             </div>
             
@@ -41,7 +41,7 @@
       <div class="row">
         <p class="col-10">Sub-Category ({{subcatcount}})</p>
         <p class="col-2">
-          <mat-icon (click)=addSubCategory()>add_circle</mat-icon>
+          <mat-icon (click)=addSubCategory() style="cursor: pointer;">add_circle</mat-icon>
         </p>
       </div>
       <!-- sub category -->
@@ -51,18 +51,18 @@
             <mat-icon>arrow_drop_down</mat-icon>
           </div>
           <div class=" d-flex" *ngFor="let subc of subname">
-            <p class="col-10 subc" (click)="oclicksub(subc)" [ngClass]="{ 'subselected': subc == selectedsubItem }">{{subc.subCatName}}
+            <p class="col-10 subc" (click)="oclicksub(subc)" [ngClass]="{ 'subselected': subc == selectedsubItem }" style="cursor: pointer;">{{subc.subCatName}}
             </p>
-            <mat-icon class="col-2" (click)="removesub(subc)">remove_circle</mat-icon>
+            <mat-icon class="col-2" (click)="removesub(subc)" style="cursor: pointer;">remove_circle</mat-icon>
           </div>
           <!-- <div class="buttn d-flex" *ngIf=addButton> -->
             <div class="inbtn d-flex" *ngIf= addSubButton>
               <!-- <button class="btn btn-basic addcat">Add category name</button> -->
               <input type="text col-lg-5" class="addcatg" [(ngModel)]="sucatname" placeholder="Add sub-category ">
               <input type="text col-lg-3" class="addcd" [(ngModel)]="sucatnameCode" placeholder="Add Code">
-              <button class="btn btn-basic addbt col-lg-2" [disabled]="!sucatname || !sucatnameCode " (click)="addsubCat()">Add</button>
+              <button class="btn btn-basic addbt col-lg-2" [disabled]="!sucatname || !sucatnameCode " (click)="addsubCat()" style="cursor: pointer;">Add</button>
               <div class="rmve col-lg-2">
-                <mat-icon>remove_circle</mat-icon>
+                <mat-icon (click)="removeaddformSubcat()" style="cursor: pointer;">remove_circle</mat-icon>
               </div>
             </div>
            
@@ -74,7 +74,7 @@
       <div class="row">
         <p class="col-10">Type ({{typecount}})</p>
         <p class="col-2">
-          <mat-icon (click)=addTypeCategory()>add_circle</mat-icon>
+          <mat-icon (click)=addTypeCategory() style="cursor: pointer;">add_circle</mat-icon>
         </p>
       </div>
       <!-- type -->
@@ -87,18 +87,18 @@
           <!-- <li class="type" *ngFor="let type of typename" >{{type}}<mat-icon>add_circle</mat-icon></li> -->
           <div class=" d-flex" *ngFor="let type of typename">
             
-            <p class="col-10 type" (click)="typeselect(type)" [ngClass]="{ 'typeselected': type == selectedtypeItem }">{{type.typeName}}
+            <p class="col-10 type" (click)="typeselect(type)" [ngClass]="{ 'typeselected': type == selectedtypeItem }" style="cursor: pointer;">{{type.typeName}}
             </p>
-            <mat-icon class="col-2" (click)="removetype(type)">remove_circle</mat-icon>
+            <mat-icon class="col-2" (click)="removetype(type)" style="cursor: pointer;">remove_circle</mat-icon>
           </div>
           <!-- <div class="buttn d-flex" *ngIf=addButton> -->
             <div class="inbtn d-flex" *ngIf=addTypeButton>
               <!-- <button class="btn btn-basic addcat">Add category name</button> -->
               <input type="text col-lg-5" class="addcatg" [(ngModel)]="type" placeholder="Add Type">
               <input type="text col-lg-3" class="addcd" [(ngModel)]="typeCode" placeholder="Add Code">
-              <button class="btn btn-basic addbt col-lg-2" (click)="addtypes()" [disabled]="!type || !typeCode " >Add</button>
+              <button class="btn btn-basic addbt col-lg-2" (click)="addtypes()" [disabled]="!type || !typeCode "  style="cursor: pointer;">Add</button>
               <div class="rmve col-lg-2">
-                <mat-icon>remove_circle</mat-icon>
+                <mat-icon (click)="removeaddformtype()" style="cursor: pointer;">remove_circle</mat-icon>
               </div>
             </div>
             

@@ -1,4 +1,129 @@
+<div class="font ">
+    <div class=" main" width="900%">
+        <div class="container">
+            <div class="addUser">
+                <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+            </div>
+            <div class="head-t">
+                <h3 class="addU font">Add Promotions</h3>
+                <br>
+                <img src="assets/img/arrow-left-circle-fill.svg" style="width: 24px;margin-left: 760px;"
+                    alt="left-arr-btn">
+                <img src="assets/img/arrow-right-circle-fill.svg" style="width: 24px; margin-left: 12px;"
+                    alt="right-arr-btn">
+                <mat-stepper labelPosition="bottom" #stepper>
+                    <mat-step [stepControl]="firstFormGroup">
+                        <form [formGroup]="firstFormGroup">
+                            <ng-template matStepLabel>Basic Information</ng-template>
+                            <div class="heading">
+                                <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'">
+                                    <b>Basic
+                                        Information</b>
+                                </h6>
+                            </div>
+                            <div class="materialname">
+                                <label>Promotion Name <span>*</span></label>
+                            </div>
+                            <input matInput placeholder="Promotion Name" #input class="form-control container"
+                                style="border:solid lightgrey 1px;width: 774px;
+                           height: 35px;background-color: white;margin-top: 1px; margin-left: -1px;border-radius: 10px;font-family: 'Gilroy';">
+                            <div class="promotiont">
+                                <label>Promotion Type <span>*</span></label>
+                            </div>
+                            <div class="promotiontypedrp"> 
+                            
+                         <ng-multiselect-dropdown name="type" [placeholder]="'Select the promotion type'"
+                                    formControlName="type" [disabled]="disabled" [settings]="dropdownSettings3"
+                                    [data]="toppingList3" (onSelect)="onTypeSelect($event)"
+                                    (onSelectAll)="onTypeAll($event)">
+                                </ng-multiselect-dropdown>  
+                           </div>
 
+
+                            <div class="promotiont">
+                                <label>Start Date <span>*</span></label>
+                            </div>
+                            <div class="datepicker">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Select the start date</mat-label>
+                                    <input matInput [matDatepicker]="myDatepicker">
+                                    <mat-datepicker-toggle matSuffix [for]="myDatepicker" style="color: black;">
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #myDatepicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            <div class="promotiont">
+                                <label>End Date <span>*</span></label>
+                            </div>
+                            <div class="datepicker">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Select the end date</mat-label>
+                                    <input matInput [matDatepicker]="myDatepicker">
+                                    <mat-datepicker-toggle matSuffix [for]="myDatepicker" style="color: black;">
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #myDatepicker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                            <div class="image">
+                                <label>Image <span>*</span></label>
+                            </div>
+                            <input matInput placeholder="" #input class="form-control container"
+                                style="border: solid lightgrey 1px; width: 356px; height: 200px; border-radius: 15px; background-color: white;position: relative;left: 422px; top: -257px;">
+                            <img src="assets/img/add-image.png"
+                                style="width: 48px;position: relative; right: -576px; bottom: 388px;;"
+                                alt="left-arr-btn">
+                            <h3
+                                style="font-family: 'Gilroy';position: relative; bottom: 368px; left: 216px; color: lightgrey;">
+                                Add Image</h3>
+                            <!-- <input [matDatepicker]="myDatepicker" style="width: 361px; height: 35px; border-radius: 9px; border-color: grey;">
+                            <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                            <mat-datepicker #myDatepicker></mat-datepicker> -->
+                        </form>
+                    </mat-step>
+                    <mat-step [stepControl]="secondFormGroup">
+                        <form [formGroup]="secondFormGroup">
+                            <ng-template matStepLabel>Items in Promotion</ng-template>
+                            <article>
+                                <h1>Angular Get Selected Option Value</h1>
+                                <!-- <h2><span>Select the promotion type</span></h2> -->
+                                <select (change)="selectChangeHandler($event)">
+                                    <option default>Select the promotion type</option>
+                                    <option value="Monday">Monday</option>
+                                    <option value="Tuesday">Tuesday</option>
+                                    <option value="Wednesday">Wednesday</option>
+                                    <option value="Thursday">Thursday</option>
+                                    <option value="Friday">Friday</option>
+                                </select>
+                                <p>
+                                    <b>{{selectedDay}}</b>
+                                </p>
+                            </article>
+                        </form>
+                    </mat-step>
+                    <mat-step [stepControl]="secondFormGroup">
+                        <form [formGroup]="secondFormGroup">
+                            <ng-template matStepLabel> Geographies</ng-template>
+
+                        </form>
+                    </mat-step>
+                    <mat-step [stepControl]="secondFormGroup">
+                        <form [formGroup]="secondFormGroup">
+                            <ng-template matStepLabel>Dealers & Additionak Remarks</ng-template>
+                            fgbtfth
+                        </form>
+                    </mat-step>
+                </mat-stepper>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 
 <div class="container">
     <div class="addpromotion">
         <div class="head-t mt-3">
@@ -59,7 +184,7 @@
                   </mat-form-field>
             </div>
         </div>
-        <!-- geogragphy sect -->
+         geogragphy sect 
             <div class="geography d-flex">
                 <h3 class="geo-h">Geographies</h3>
                 <mat-form-field appearance="fill">
@@ -71,7 +196,7 @@
             <div class="inside-text-feild">
                 <textarea name="" id="" cols="70" rows="5" style=" overflow-y: scroll;"></textarea>
             </div>
-       <!-- dealers sect -->
+      
        <div class="dealers-part">
         <h3 class="dealers-h">Dealers</h3>
         <div class="row">
@@ -92,12 +217,12 @@
                    </mat-list>
             </div>
         </div>
-        <!-- addition remark sect -->
+       
         <div class="remarks">
             <h3 class="addt-remark">Aditional Remarks</h3>
             <textarea name="" id="" cols="70" rows="5" style=" overflow-y: scroll;"></textarea>
         </div>
-        <!-- buttuns -->
+        
         <div class="addPro-btns text-center m-2">
             <button class="btn btn-primary saveD">Save as Draft</button>
             <button class="btn btn-basic submit">Submit</button>
@@ -105,4 +230,4 @@
        </div>
        </div>
     </div>
-</div>
+</div> -->

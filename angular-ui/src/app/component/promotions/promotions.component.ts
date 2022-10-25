@@ -523,6 +523,10 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
   openDialog(){
 
   }
+  addPromotions(){
+    this.dialog.open( AddPromotionsComponent);
+    
+  }
   handleScroll(event) {
     const grid = document.getElementById('gridContainer');
     if (grid) {

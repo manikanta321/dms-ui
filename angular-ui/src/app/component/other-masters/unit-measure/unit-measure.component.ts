@@ -490,7 +490,9 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
   sideBarToggler(){
     this.sideBarOpen = !this.sideBarOpen;
   }
-  
+  adduom(){
+    this.dialog.open( UomPopupComponent);
+  }
   clickNextRendererFunc(){
     alert('hlo');
   }

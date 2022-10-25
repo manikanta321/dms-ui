@@ -83,7 +83,8 @@ import { AddProductGroupComponent } from './component/materials-list/add-product
 import { AddProductSubGroupComponent } from './component/materials-list/add-product-sub-group/add-product-sub-group.component';
 
 import{UseractionComponent} from './component/useraction/useraction.component';
-import { OrderListComponent } from './component/order-list/order-list.component'
+import { OrderListComponent } from './component/order-list/order-list.component';
+import { DateRangePickerModule } from '@uiowa/date-range-picker';
 
 @NgModule({
   declarations: [
@@ -173,7 +174,8 @@ import { OrderListComponent } from './component/order-list/order-list.component'
     NgMultiSelectDropDownModule,
     MatCardModule,
     MatStepperModule,
-    MatChipsModule
+    MatChipsModule,
+    DateRangePickerModule 
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

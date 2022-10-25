@@ -21,6 +21,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { AddPromotionsComponent } from '../add-promotions/add-promotions.component';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { DateRange } from '@uiowa/date-range-picker';
 export interface PeriodicElement {
 
   name: any;
@@ -77,7 +78,22 @@ export class PromotionsComponent implements OnInit {
   statusArray:any=[];
   stayScrolledToEnd = true;
   paginationScrollCount:any;
+  dateRange = new DateRange(new Date(2018, 1, 1), new Date(2018, 1, 31));
+  dateRange1 = DateRange.nextTwoWeeks();
+  dateRange2 = DateRange.nextMonth();
+  maxDate = new Date();
+  dateRange3 = new DateRange(new Date(2018, 9, 1), new Date(2018, 9, 9));
+  dateRange4 = new DateRange(new Date(2018, 9, 1), new Date(2018, 9, 9));
+  dateRange5 = new DateRange(new Date(2018, 9, 1), null);
+  dateRange6 = new DateRange(null, new Date(2018, 9, 1));
+  dateRange7 = new DateRange(new Date('sssss'), new Date('aaaa'));
 
+  min8 = new Date(2018, 0, 15);
+  date8 = new Date(2018, 0, 24);
+  date10: Date | null = new Date(2022, 7, 24);
+  date9 = new Date(2022, 6, 24, 22, 45, 42);
+  min9 = new Date(2022, 6, 23);
+  invalid = false;
 columnDefs: ColDef[] = [
   // { headerName: "User Id",
   //   field: 'employeeCode' , sort: 'desc'},
@@ -293,6 +309,7 @@ public pivotPanelShow = 'always';
   this.getusertabeldata();
   this.roleItems();
   this.statusItems();
+  this.maxDate.setDate(this.maxDate.getDate() + 20);
   }
   refresh(){
     this.toppings = new FormControl(this.toppingList);
@@ -537,6 +554,16 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
       this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
       this.paginationScrollCount = this.rowData5.length;
     }
+  }
+  changeDate() {
+    this.dateRange4 = new DateRange(
+      new Date(2018, 9, 1),
+      new Date(2018, 9, 19)
+    );
+  }
+
+  changeDate2() {
+    this.date9 = new Date(2022, 7, 13, 12, 30, 42);
   }
 }
 

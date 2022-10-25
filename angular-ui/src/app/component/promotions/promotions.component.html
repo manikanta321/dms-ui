@@ -4,154 +4,127 @@
       <div class="row">
         <div class="col-md-2 col-lg-2 col-sm-2">
           <form [formGroup]="myForm">
-        <ng-multiselect-dropdown class="roless"
-            name="city"
-            [placeholder]="'Roles'"
-            formControlName="city"
-            [disabled]="disabled"
-            [settings]="dropdownSettings"
-            [data]="toppingList"
-            (onSelect)="onItemSelect($event)"
-            (onDeSelect)="onItemDeSelect($event)"
-            (onDeSelectAll)="onItemDeSelectOrAll($event)"
-            (onSelectAll)="onItemSelectOrAll($event)">
-        </ng-multiselect-dropdown>
-   </form>
-      </div>
-      <div class="col-md-2 col-lg-2 col-sm-2" >
-        <form [formGroup]="myForms">
-      <ng-multiselect-dropdown class="stts"
-          name="citys"
-          [placeholder]="'Status'"
-          formControlName="citys"
-          [disabled]="disabled"
-          [settings]="dropdownSettings1"
-          [data]="toppingList1"
-          (onSelect)="onStatusSelect($event)"
-          (onDeSelect)="onStatusDeSelect($event)"
-          (onDeSelectAll)="onItemDeSelectOrAllStatus($event)"
-          (onSelectAll)="onItemSelectOrAllStatus($event)">
-      </ng-multiselect-dropdown>
- </form>
-    </div>
-    <div class="col-md-2 col-lg-2 col-sm-2" >
-      <form [formGroup]="myForms">
-    <ng-multiselect-dropdown class="stts"
-        name="citys"
-        [placeholder]="'Status'"
-        formControlName="citys"
-        [disabled]="disabled"
-        [settings]="dropdownSettings1"
-        [data]="toppingList1"
-        (onSelect)="onStatusSelect($event)"
-        (onDeSelect)="onStatusDeSelect($event)"
-        (onDeSelectAll)="onItemDeSelectOrAllStatus($event)"
-        (onSelectAll)="onItemSelectOrAllStatus($event)">
-    </ng-multiselect-dropdown>
-</form>
-  </div>
-  <div class="col-md-2 col-lg-2 col-sm-2" >
-    <form [formGroup]="myForms">
-  <ng-multiselect-dropdown class="stts"
-      name="citys"
-      [placeholder]="'Status'"
-      formControlName="citys"
-      [disabled]="disabled"
-      [settings]="dropdownSettings1"
-      [data]="toppingList1"
-      (onSelect)="onStatusSelect($event)"
-      (onDeSelect)="onStatusDeSelect($event)"
-      (onDeSelectAll)="onItemDeSelectOrAllStatus($event)"
-      (onSelectAll)="onItemSelectOrAllStatus($event)">
-  </ng-multiselect-dropdown>
-</form>
-</div>
-<div class="col-md-2 col-lg-2 col-sm-2" >
-  <form [formGroup]="myForms">
-<ng-multiselect-dropdown class="stts"
-    name="citys"
-    [placeholder]="'Status'"
-    formControlName="citys"
-    [disabled]="disabled"
-    [settings]="dropdownSettings1"
-    [data]="toppingList1"
-    (onSelect)="onStatusSelect($event)"
-    (onDeSelect)="onStatusDeSelect($event)"
-    (onDeSelectAll)="onItemDeSelectOrAllStatus($event)"
-    (onSelectAll)="onItemSelectOrAllStatus($event)">
-</ng-multiselect-dropdown>
-</form>
-</div>
-
-<!-- <div class="col-1"> -->
-    <div class="icon btnhover refreshbtn" >
-      <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;" alt="refresh" >
-    </div>
-  <!-- </div> -->
-     </div> 
-     <!-- search -->
-     <div class="col-md-4 mt-3" style="margin-left: 68%;margin-bottom:10px">
-      <div class="row">
-      <div class="col-md-8">
-    <div class="searchBox d-flex">
-      <input class="searchInput" style="font-family: 'Gilroy'" type="text" name="" placeholder="Type & search for anything" 
+            <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'Roles'" formControlName="city"
+              [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList" (onSelect)="onItemSelect($event)"
+              (onDeSelect)="onItemDeSelect($event)" (onDeSelectAll)="onItemDeSelectOrAll($event)"
+              (onSelectAll)="onItemSelectOrAll($event)">
+            </ng-multiselect-dropdown>
+          </form>
+        </div>
+        <div class="col-md-2 col-lg-2 col-sm-2">
+          <form [formGroup]="myForms">
+            <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Status'" formControlName="citys"
+              [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
+              (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
+              (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
+            </ng-multiselect-dropdown>
+          </form>
+        </div>
+        <div class="col-md-2 col-lg-2 col-sm-2">
+          <form [formGroup]="myForms">
+            <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Status'" formControlName="citys"
+              [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
+              (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
+              (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
+            </ng-multiselect-dropdown>
+          </form>
+        </div>
+        <div class="col-md-2 col-lg-2 col-sm-2">
+          <form [formGroup]="myForms">
+            <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Status'" formControlName="citys"
+              [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
+              (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
+              (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
+            </ng-multiselect-dropdown>
+          </form>
+        </div>
+        <div class="col-md-2 col-lg-2 col-sm-2">
+          <form [formGroup]="myForms">
+            <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Status'" formControlName="citys"
+              [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
+              (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
+              (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
+            </ng-multiselect-dropdown>
+          </form>
+        </div>
+        <!-- calender -->
+        <div class="col-2 row">
+          <!-- <div class="cal">
+            <mat-icon>calendar_today</mat-icon>
+          </div> -->
+          <section data-cy="regular-date-range" class="col-12 col-sm-6 col-lg-4">
+            <date-range-picker [(dateRange)]="dateRange1"
+            [maxDate]="maxDate">
+              <button
+        type="button"
+        class="btn btn-primary me-2"
+        (click)="changeDate2()"
       >
-      <button class="searchButton" href="#"> 
-          <i class="material-icons">
-              search
-          </i>
+        Change Date
       </button>
-      <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
-    </div>  
-  </div>
-  <div class="col-md-2"> 
-   <div class="add-user" (click)="addPromotions()">
-     <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
-   </div>
-  </div>
-  <!-- <div class="col-md-4">
+      <button
+        type="button"
+        class="btn btn-warning me-2"
+        (click)="invalid = !invalid"
+      >
+        Change Validity
+      </button>
+            </date-range-picker>
+            <!-- <pre>{{ dateRange1 | json }} </pre> -->
+            <hr />
+          </section>
+           
+          <div class="ref"><img class="refresh" src="assets/img/Vector.png" alt="refresh"></div>
+          <!-- <div class="col-1"> -->
+          <!-- <div class="icon btnhover refreshbtn" >
+      <img class="refresh" src="assets/img/Vector.png"  alt="refresh" >
+    </div> -->
+        </div>
+        <!-- </div> -->
+      </div>
+      <!-- search -->
+      <div class="col-md-4 mt-3" style="margin-left: 68%;margin-bottom:10px">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="searchBox d-flex">
+              <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+                placeholder="Type & search for anything">
+              <button class="searchButton" href="#">
+                <i class="material-icons">
+                  search
+                </i>
+              </button>
+              <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="add-user">
+              <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+            </div>
+          </div>
+          <!-- <div class="col-md-4">
    <div class="download-btn" >
      <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;" alt="add-user-btn">
    </div>
   </div> -->
-  </div>
-</div>
+        </div>
+      </div>
     </section>
-    <div >
-      <ag-grid-angular
-   id="gridContainer"
-   style=" height: 350px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
-   class="ag-theme-material"
-   (gridReady)="onGridReady($event)"
-   [rowHeight]="25"
-   [headerHeight]="48"
-   [columnDefs]="columnDefs"
-   [defaultColDef]="defaultColDef"
-   [columnTypes]="columnTypes"
-   [rowData]="rowData5"
-   [suppressExcelExport]="true"
-   [popupParent]="popupParent"
-    (cellValueChanged)="onCellValueChanged($event)"
-   (firstDataRendered)="onFirstDataRendered($event)" 
-   (firstDataRendered)="onFirstDataRendered($event)"
-   (rowClicked)="openDialog()"
-   (cellClicked)="onCellClicked($event)"
-   [paginationPageSize]="paginationPageSize"
+    <div>
+      <ag-grid-angular id="gridContainer"
+        style=" height: 350px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
+        class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
+        [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
+        [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
+        (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
+        (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+        (bodyScroll)="handleScroll($event)"></ag-grid-angular>
 
-   (bodyScroll)="handleScroll($event)"
-  
-   ></ag-grid-angular>
-   
-   </div>
-   <div class="pagination">
-       <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span class="pagination-cls">{{rowData5.length}}</span>
-   </div>
+    </div>
+    <div class="pagination">
+      <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
+        class="pagination-cls">{{rowData5.length}}</span>
+    </div>
 
   </div>
 </div>
-
-
-
-
-
-

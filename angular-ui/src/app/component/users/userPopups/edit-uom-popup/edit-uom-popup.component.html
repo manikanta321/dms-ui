@@ -2,25 +2,48 @@
 <div class="container">
     <div class="addUser">
         <mat-icon  mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
-        <div class="head-t">
-        <h3>Edit UoM</h3>
+        <div class="head-th">
+        <h3 class="edituom">Edit UoM</h3>
     </div>
     <div class="addUserForm">
      <form>
-        <label>Name <span>*</span></label>
-        <br>
+        <div class="row">
+
+            <div class="col">
+                <label>Name <span>*</span></label>
+                <br>
+                
         <input type="text" placeholder="Enter your Name" >
         <br>
-        <label>Display Code*<span>*</span></label>
         <br>
-        <input type="text" placeholder="Enter your Display Code" >
+      </div>
+        </div>
+      
+
+        <div class="row">
+            <div class="col">
+
+                <label>Display Code*<span>*</span></label>
+                <br>
+                <input type="text" placeholder="Enter your Display Code" >
+        <br>
+        <br>
+      </div>
+       </div>
         
      </form>
      
     </div>
-    <div>
-    <button class="btn btn-primary uombtn btn-block">Add</button>
-    <span>*Required Fields</span>
+    <div class="row">
+        <div class="col-6">
+            <button class="btn btn-light uombtnn btn-block">Save</button>
+            <span>*Required Fields</span>
+        </div>
+        <div class="col-6">
+            <button class="btn btn-light uombtnnn btn-block">Cancel</button>
+        </div>
+       </div>
+
+       
 </div>
     </div>
-</div>

@@ -1,7 +1,8 @@
 
-.head-t{
-    color: #0091EA;
-    text-align: center;
+.head-th{
+    /* color: #0091EA; */
+    /* text-align: center; */
+    justify-content: flex-start;
 }
 .addUserForm input{
 border-radius: 8px;
@@ -13,10 +14,11 @@ span{
     color: red;
 }
 .uombtn{
-   background: #0091EA;
+   background-color: #000000;
    padding: 5px;
    margin-top: 20px;
    border-radius: 5px;
+   color: white;
 }
 .close-icon{
     left: 100%;
@@ -24,3 +26,107 @@ span{
     font-size: 15px;
     font-weight: 600;
 }
+
+.addUser
+{
+    position: relative;
+width: 500px;
+height: 356px;
+
+
+}
+
+.edituom{
+ position: relative;
+ /* font-family: 'Gilroy-Bold';  */
+ font-weight: bold;
+ font-size: 18px;
+ color: black;
+}
+.edituom:after
+{
+   
+
+  
+
+    content: "";
+    display: block;
+    width: 369px;
+    height: 1px;
+    background: #686E74;
+     right: 44px; 
+     top: 50%; 
+    position: absolute;
+    
+}
+
+
+
+
+
+
+
+
+.addUserForm input{
+
+padding: 5px 12px;
+    margin-bottom: 10px;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    width: 500px;
+    height: 43px;
+
+
+
+
+}
+span{
+    color: red;
+}
+.uombtnn{
+   background: black;
+   color: white;
+   padding: 5px;
+   margin-top: 3px;
+   border-radius: 3px;
+   border-radius: 15px;
+   border: 1px solid black;
+   height: 48px;
+   margin-left: 16px;
+   width: 94%;
+}
+
+.uombtnnn{
+    background: white;
+    color: black;
+    padding: 5px;
+    margin-top: 3px;
+    border-radius: 3px;
+     border-radius: 15px; 
+    border: 1px solid black;
+    height: 48px;
+    margin-left: -1px;
+    width: 94%;
+ }
+ 
+
+.close-icon{
+    left: 100%;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* .addUserForm 
+{
+    height: 356px;
+width: 500px;
+left: 48653px;
+top: -19594px;
+border-radius: 0px;
+
+}*/
+
+
+

@@ -1,1 +1,44 @@
-<p>orders works!</p>
+
+
+<app-head (ToggleSideNav)="ToggleSideNav($event)"></app-head>
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+        <app-sidenav-bar></app-sidenav-bar>
+    </mat-sidenav>
+    
+<!-- <h2>Order works</h2> -->
+    
+<mat-sidenav-content>
+    <!--<div class="dash-content" > -->
+             <h2 class="header-text">Order-List works</h2> 
+            <img  class="print-img" src="../../../assets/material/print-img.svg" alt="">
+     
+                <div class="UNFAPP-asmnt-rgt-area main othersmastermenutab">
+                    <!-- <div class="col-lg-12"> -->
+                        <mat-tab-group class="geo-label">
+                            <mat-tab label="Order list">
+                            <app-order-list></app-order-list>
+                            </mat-tab>
+                            <mat-tab label="Shipments">
+                                 
+                                
+                            </mat-tab>
+                            <mat-tab label="Invice">
+                               <!-- <app-currency-conversation></app-currency-conversation>  -->
+                          </mat-tab>
+                        </mat-tab-group>
+                       
+                    <!-- </div> -->
+                </div>
+                
+    <!--</div> -->
+
+   
+   
+</mat-sidenav-content>
+
+
+
+</mat-sidenav-container> -->
+

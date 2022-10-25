@@ -82,7 +82,8 @@ import { SelectProductComponent } from './component/materials-list/select-produc
 import { AddProductGroupComponent } from './component/materials-list/add-product-group/add-product-group.component';
 import { AddProductSubGroupComponent } from './component/materials-list/add-product-sub-group/add-product-sub-group.component';
 
-import{UseractionComponent} from './component/useraction/useraction.component'
+import{UseractionComponent} from './component/useraction/useraction.component';
+import { OrderListComponent } from './component/order-list/order-list.component'
 
 @NgModule({
   declarations: [
@@ -137,6 +138,7 @@ import{UseractionComponent} from './component/useraction/useraction.component'
     AddProductSubGroupComponent,
     
     UseractionComponent,
+          OrderListComponent,
   ],
   imports: [
     FormsModule,

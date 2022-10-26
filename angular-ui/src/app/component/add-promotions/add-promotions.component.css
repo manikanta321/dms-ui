@@ -18,6 +18,11 @@
     font-family: 'Gilroy';
     margin-left: -4px;
   }
+  .additional{
+    margin-top: -10px;
+    font-family: 'Gilroy';
+    margin-left: -4px;
+  }
   .promotiont{
     margin-top: 3px;
     font-family: 'Gilroy';
@@ -129,7 +134,7 @@
   
   .mat-horizontal-stepper-wrapper {
     margin-top: -47px;
-  
+      
   }
   
   /* .mat-horizontal-stepper-header-container ng-tns-c418-7 {
@@ -349,18 +354,7 @@
     margin-left: -2px;
     
   }
-  ::ng-deep.hide .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret{
-    /* display: none; */
-    overflow: hidden;
-    /* appearance: none; */
-    /* background: url("assets/img/plus.png") 240px 4px no-repeat; */
-    /* background-image: url('');  */
-    background-size: 13px;
-    background-repeat: no-repeat;
-    height: 300px;
-    margin-top: 12px;
-    margin-right: -10px;
-  } 
+  
   
   .mat-slide {
     margin-left: 620px;
@@ -384,15 +378,19 @@
     margin-top: -29px;
   }
   
-  mat-card {
+  .mat-card {
     background: #FFFFFF;
     border: 0.5px solid #000000;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 25px;
-    height: 212px;
+    height: 190px;
     width: 186px;
   
     /* font-size: 10px; */
+  }
+  ::ng-deep.matcard-dealers .mat-card{
+    width: 373px;
+    height: 218px;
   }
   
   .catg {
@@ -635,4 +633,94 @@
         width: 180px;
        background-color: white;
        font-family: "Gilroy";
+}
+.mat-card-subtitle:before{
+  content: "";
+    display: block;
+    width: 372px;
+    height: 1px;
+    background: lightgrey ;
+    right: 0;
+    top: 17%;
+    position: absolute;
+}
+.mat-card-subtitle{
+  font-weight: bold;
+    font-family: 'Gilroy';
+}
+.alignment{
+  position: relative;
+  left: 209px;
+}
+.btn-row{
+  margin-top:-2px;
+}
+.material-card {
+  margin-top: -5px;
+}
+.getgrp{
+  position: relative;
+    left: 403px;
+    top: -74px;
+}
+.productlevel{
+  position: relative;
+    font-family: 'Gilroy';
+    bottom: 95px;
+}
+.items{
+  position: relative;
+    font-family: 'Gilroy';
+    bottom: 153px;
+}
+.itemstwo{
+  position: relative;
+    font-family: 'Gilroy';
+    bottom: 500px;
+    left: 408px;
+}
+.qty{
+  position: relative;
+    font-family: 'Gilroy';
+    bottom: 328px;
+    left: 293px;
+}
+.qtytwo{
+  position: relative;
+    font-family: 'Gilroy';
+    bottom: 678px;
+    left: 708px;
+}
+.moq{
+  position: relative;
+    font-family: 'Gilroy';
+    bottom: 321px;
+    left: 293px;
+}
+.productleveltwo{
+  position: relative;
+    font-family: 'Gilroy';
+    bottom: 166px;
+    left: 406px;
+}
+.hide .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret{
+    overflow: hidden;
+    display: none;
+   /* background-image: url('../../../../assets/img/maximize.png');   */
+  background-size: 13px;
+  background-repeat: no-repeat;
+  height: 300px;
+  margin-top: 12px;
+  margin-right: -10px;
+}  
+.productdrpdown {
+  width: 365px;
+  position: relative;
+    bottom: 89px;
+}
+.productdrpdowntwo {
+  width: 365px;
+  position: relative;
+    bottom: 160px;
+    left: 414px;
 }

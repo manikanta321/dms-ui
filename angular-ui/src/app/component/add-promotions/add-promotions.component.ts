@@ -17,8 +17,12 @@ export class AddPromotionsComponent implements OnInit {
     this.selectedDay = event.target.value;
   }
 /*-------*/
-
-
+countryname: string[] = ['Malaysia (71/126)', 'India (178/178)','Philipines (0/135)'];
+  statename: string[] = ['Johor(0/42)', 'Kedah(36/36','Perak(14/26)','Penang(21/22)'];
+  regionname: string[] = ['North(4/4)', 'South(8/8)', 'East(6/6)','West(3/4)'];
+  cityname:string[] =['George town','Balik Pulau','Batu Refringi','Teluk Bahang'];
+  selectedItem = null;
+  addButton:boolean =false;
   dropdownSettings3: IDropdownSettings = {};
   disabled = false;
   toppingList3:  any= [];
@@ -40,5 +44,11 @@ export class AddPromotionsComponent implements OnInit {
   }
   onTypeAll(items: any) {
     console.log('onSelectAll', items);
+  }
+  onClick(item) {
+    this.selectedItem = item;
+  }
+   addCategory(){
+    this.addButton =true;
   }
 }

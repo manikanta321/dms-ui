@@ -20,8 +20,8 @@
             <mat-card class="mat-card-content scroll">
                 <mat-card-content >
                     <div class=" d-flex " *ngFor="let catg of CountryList">
-                        <p class="col-10 catg"  (click)="onClick(catg)"  [ngClass]="{ 'selected': catg == selectedItem }">{{catg.catName}}</p>
-                        <mat-icon class="col-2" (click)="removecatg(catg)">remove_circle</mat-icon>
+                        <p class="col-10 catg"  (click)="getStateList(catg.countryId)"  [ngClass]="{ 'selected': catg.countryId == selectedItem }">{{catg.countryName}}</p>
+                        <mat-icon class="col-2" (click)="removeItem(catg.countryId)">remove_circle</mat-icon>
                     </div>
                     <div class="buttn d-flex" *ngIf = addCountryButton>
                         <div class="col-10">
@@ -62,8 +62,8 @@
             <mat-card class="mat-card-content scroll">
                 <mat-card-content>
                     <div class=" d-flex" *ngFor="let subc of stateList" >
-                        <p class="col-10 subc"  (click)="onClick(subc)"  [ngClass]="{ 'subselected': subc == selectedItem }">{{subc.catName}}</p>
-                        <mat-icon class="col-2" (click)="removesub(subc)">remove_circle</mat-icon>
+                        <p class="col-10 subc"  (click)="getDistrictList(subc.geographyId)"  [ngClass]="{ 'subselected': subc.geographyId == stateselectedItem }">{{subc.geographyName}}</p>
+                        <mat-icon class="col-2" (click)="removeItem(subc.geographyId)">remove_circle</mat-icon>
                     </div>
                     <div class="buttn d-flex" *ngIf = addStateButton>
                         <div class="col-10">
@@ -104,8 +104,8 @@
         <mat-card class="mat-card-content scroll">
             <mat-card-content>
                 <div class=" d-flex" *ngFor="let dist of distList">
-                    <p class="col-10 dist" (click)="onClick(dist)"  [ngClass]="{ 'typeselected': dist == selectedItem }">{{dist.catName}}</p>
-                    <mat-icon class="col-2" (click)="removetype(dist)">remove_circle</mat-icon>
+                    <p class="col-10 dist" (click)="getCityList(dist.geographyId)"  [ngClass]="{ 'typeselected': dist.geographyId == distselectedItem }">{{dist.geographyName}}</p>
+                    <mat-icon class="col-2" (click)="removeItem(dist.geographyId)">remove_circle</mat-icon>
                 </div>
                 <div class="buttn d-flex" *ngIf = addDistrictButton>
                     <div class="row add-country-cls">
@@ -135,6 +135,46 @@
         </div>
         <!--start district column -->
 
+        <!--start city column -->
+        <div class="col-sm-4">
+            <div class="row">
+                <p class="col-10">City ({{countCity}})</p>
+                <p class="col-2"><mat-icon (click) =addCity()>add_circle</mat-icon></p>
+            </div> 
+            <mat-card class="mat-card-content scroll">
+                <mat-card-content>
+                    <div class=" d-flex" *ngFor="let city of cityList">
+                        <p class="col-10 dist" (click)="getregionList(city.geographyId)"  [ngClass]="{ 'cityselected': city.geographyId == citySelectedItem }">{{city.geographyName}}</p>
+                        <mat-icon class="col-2" (click)="removeItem(city.geographyId)">remove_circle</mat-icon>
+                    </div>
+                    <div class="buttn d-flex" *ngIf = addCityButton>
+                        <div class="row add-country-cls">
+                            <form [formGroup]="cityForm">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                     <input type="text" class="input-district-cls" formControlName="cityFormTag" placeholder="Add category name">
+                                   </div>
+                                   <div class="col-3">
+                                    <input type="text" class="input-countrycode-cls" formControlName="citycode" placeholder="Code">
+                                  </div>
+                                    <div class="col-3">
+                                        <button type="submit" class="addcode" [disabled]="!cityForm.valid" (click)="addCityName()">Add</button>
+                                    </div> 
+                                </div>
+                            </div>
+                           
+                        </form>
+                        </div>
+                        
+                            <mat-icon class="col-2 remove-mat-icon" (click)="removeCitymoreFileds()">remove_circle</mat-icon>
+                        
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            </div>
+            <!--start city column -->
+
         <!--start region column -->
         <div class="col-sm-4 regions-column">
             <div class="row">
@@ -144,8 +184,8 @@
             <mat-card class="mat-card-content scroll">
                 <mat-card-content>
                     <div class=" d-flex" *ngFor="let region of regionList">
-                        <p class="col-10 region" (click)="onClick(region)"  [ngClass]="{ 'regionselected': region == selectedItem }">{{region.catName}}</p>
-                        <mat-icon class="col-2" (click)="removeregions(region)">remove_circle</mat-icon>
+                        <p class="col-10 region" (click)="getAreaList(region.geographyId)"  [ngClass]="{ 'regionselected': region.geographyId == regionSelctedItem }">{{region.geographyName}}</p>
+                        <mat-icon class="col-2" (click)="removeItem(region.geographyId)">remove_circle</mat-icon>
                     </div>
                     <div class="buttn d-flex" *ngIf = addRegionButton>
                         <div class="row add-country-cls">
@@ -159,7 +199,7 @@
                                     <input type="text" class="input-countrycode-cls" formControlName="regionCode" placeholder="Code">
                                   </div>
                                     <div class="col-3">
-                                        <button type="submit" class="addcode" [disabled]="!regionForm.valid" (click)="addRegion()">Add</button>
+                                        <button type="submit" class="addcode" [disabled]="!regionForm.valid" (click)="addZoneName()">Add</button>
                                     </div> 
                                 </div>
                             </div>
@@ -174,6 +214,91 @@
             </mat-card>
         </div>
         <!--end region column -->
+
+        <!--start Area column -->
+        <div class="col-sm-4 regions-column">
+            <div class="row">
+                <p class="col-10">Area ({{countArea}})</p>
+                <p class="col-2"><mat-icon (click) ="addAreaForm()">add_circle</mat-icon></p>
+            </div> 
+            <mat-card class="mat-card-content scroll">
+                <mat-card-content>
+                    <div class=" d-flex" *ngFor="let area of areaList">
+                        <p class="col-10 region" (click)="getSubAreaList(area.geographyId)"  [ngClass]="{ 'areaselected': area.geographyId == areaselectedItem }">{{area.geographyName}}</p>
+                        <mat-icon class="col-2" (click)="removeItem(area.geographyId)">remove_circle</mat-icon>
+                    </div>
+                    <div class="buttn d-flex" *ngIf="addAreaButton">
+                        <div class="row add-country-cls">
+                            <form [formGroup]="areaForm">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                     <input type="text" class="input-region-cls" formControlName="areaFormTag" placeholder="Add category name">
+                                   </div>
+                                   <div class="col-3">
+                                    <input type="text" class="input-countrycode-cls" formControlName="areaCode" placeholder="Code">
+                                  </div>
+                                    <div class="col-3">
+                                        <button type="submit" class="addcode" [disabled]="!areaForm.valid" (click)="addAreaName()">Add</button>
+                                    </div> 
+                                </div>
+                            </div>
+                           
+                        </form>
+                        </div>
+                        <div class="col-2">
+                            <mat-icon class="col-2 remove-mat-icon" (click)="removeareaMore()">remove_circle</mat-icon>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <!--end Area column -->
+   
+
+         <!--start sub Area column -->
+         <div class="col-sm-4 regions-column">
+            <div class="row">
+                <p class="col-10">Sub Area ({{countSubArea}})</p>
+                <p class="col-2"><mat-icon (click) =addSubAreaForm()>add_circle</mat-icon></p>
+            </div> 
+            <mat-card class="mat-card-content scroll">
+                <mat-card-content>
+                    <div class=" d-flex" *ngFor="let subArea of subAreaList">
+                        <p class="col-10 region"   [ngClass]="{ 'subAreaselected': subArea.geographyId == subAreaSelectedItem }">{{subArea.geographyName}}</p>
+                        <mat-icon class="col-2" (click)="removeItem(subArea.geographyId)">remove_circle</mat-icon>
+                    </div>
+                    <div class="buttn d-flex" *ngIf = addSubAreaButton>
+                        <div class="row add-country-cls">
+                            <form [formGroup]="subAreaForm">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                     <input type="text" class="input-region-cls" formControlName="subAreaFormTag" placeholder="Add category name">
+                                   </div>
+                                   <div class="col-3">
+                                    <input type="text" class="input-countrycode-cls" formControlName="SubAreaCode" placeholder="Code">
+                                  </div>
+                                    <div class="col-3">
+                                        <button type="submit" class="addcode" [disabled]="!subAreaForm.valid" (click)="addSubAreaName()">Add</button>
+                                    </div> 
+                                </div>
+                            </div>
+                           
+                        </form>
+                        </div>
+                        <div class="col-2">
+                            <mat-icon class="col-2 remove-mat-icon" (click)="removeareaMore()">remove_circle</mat-icon>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <!--end Sub Area column -->
+
+
+
+
          </div>
         </div>
     <!-- </div> -->

@@ -130,7 +130,22 @@ li{
     color: white;
   }
 
+  .cityselected {
+    background:  #C32F27;
+    color: white;
+  }
+
   .regionselected{
+    background:  #3D1A00;
+    color: white;
+  }
+
+  .areaselected{
+    background:  #3D1A00;
+    color: white;
+  }
+
+  .subAreaselected{
     background:  #3D1A00;
     color: white;
   }

@@ -84,4 +84,62 @@ deleteType(data){
 
 }
 
+//geoGraphies services
+
+//get country list
+getCountryList(){
+  return this.http.get<any>(this.classificationurl + 'OtherMasterApi/GetAllCountries');
+}
+
+//getstatelist
+getAllListByCountry(id:any){
+  return this.http.get<any>(this.classificationurl + 'OtherMasterApi/GetGeographies?id='+id);
+}
+
+//delete geographies List
+
+getDeleteListByCountry(id:any){
+  return this.http.get<any>(this.classificationurl + 'OtherMasterApi/DeleteGeography?id='+id);
+}
+
+//add country name 
+addCountryName(data:any){
+  return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddCountry', data);
+}
+
+//add country name 
+addStateName(data:any){
+  return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddState', data);
+}
+
+//add dist name
+addDistName(data:any){
+  return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddDistrict', data);
+}
+
+//add city name
+addCityName(data:any){
+  return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddCity', data);
+}
+
+
+//add city name
+addZoneName(data:any){
+  return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddZone', data);
+}
+
+//add city name
+addAreaName(data:any){
+  return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddArea', data);
+}
+
+//add city name
+AddSubArea(data:any){
+  return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddSubArea', data);
+}
+
+
+
+
+
 }

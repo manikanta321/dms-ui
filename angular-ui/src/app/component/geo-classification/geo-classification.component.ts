@@ -13,15 +13,23 @@ export class GeoClassificationComponent implements OnInit {
   stateForm!: FormGroup;
   districtForm!: FormGroup;
   regionForm!: FormGroup;
+  cityForm!: FormGroup;
+  areaForm!: FormGroup;
+  subAreaForm!: FormGroup;
 
   toprint:boolean=false;
   addCountryButton:boolean =false;
   addStateButton:boolean =false;
   addDistrictButton:boolean =false;
+  addCityButton:boolean =false;
   addRegionButton:boolean =false;
+  addAreaButton:boolean = false;
+  addSubAreaButton:boolean = false;
+
   removelist:boolean =false;
   toggle:boolean=true;
   selectedItem = null;
+  
 
   LoginId:any;
   numberValue:any;
@@ -29,18 +37,33 @@ export class GeoClassificationComponent implements OnInit {
   CountryList:any=[];
   stateList: any=[];
   distList:any=[];
+  cityList:any=[];
+  areaList:any=[];
   regionList:any=[];
+  subAreaList:any=[];
   
   countCountry='';
   countStates="";
   countDist="";
+  countCity="";
   countRegion="";
+  countArea="";
+  firstCountr="";
+  countSubArea="";
 
   catagoryroouting='';
   subcatRoouting='';
   selectedtypeItem='';
   subcatcount='';
   typecount='';
+
+
+  stateselectedItem:any;
+  distselectedItem:any;
+  citySelectedItem:any;
+  regionSelctedItem:any;
+  areaselectedItem:any;
+  subAreaSelectedItem:any;
 
   
   constructor(private fb: FormBuilder,
@@ -49,6 +72,9 @@ export class GeoClassificationComponent implements OnInit {
     this.stateFormValidators();
     this.districtFormValidator();
     this.regionFormValidator();
+    this.cityFormValidator();
+    this.areaFormValidator();
+    this.subAreaFormValidator();
    }
 
   ngOnInit(): void {
@@ -56,101 +82,218 @@ export class GeoClassificationComponent implements OnInit {
     this.numberValue = Number(this.LoginId);
 
     this.getCountryList();
-    this.getStateList();
-    this.getDistrictList();
-    this.getregionList();
   }
 
   //get Country List
   getCountryList(){
-    this.calssification.getclassification().subscribe((res)=>{
+    this.calssification.getCountryList().subscribe((res)=>{
           let data=res.response;
-          this.countCountry=res.totalRecords;
-          this.CountryList=data.allOtherCats
+          this.countCountry=res.response.allOtherCountries.length;
+          this.CountryList=data.allOtherCountries;
+          this.firstCountr =data.firstCountr;
+          this.getStateList(data.firstCountr.countryId);
+          this.selectedItem=data.firstCountr.countryId;
+         
         })
+       
   }
 
   //get State List
-  getStateList(){
-    this.calssification.getclassification().subscribe((res)=>{
+  getStateList(id:any){
+    localStorage.setItem('countryId',id);
+    this.selectedItem= id;
+    this.calssification.getAllListByCountry(id).subscribe((res)=>{
           let data=res.response;
-          this.countStates=res.totalRecords;
-          this.stateList=data.allOtherCats
+          this.countStates=data.allOtherGeography.length;
+          this.stateList=data.allOtherGeography;
+          this.stateselectedItem = data.firstGeography.geographyId;
+          this.getDistrictList(data.firstGeography.geographyId)
         })
   }
 
-  //get City List
-  getDistrictList(){
-    this.calssification.getclassification().subscribe((res)=>{
+  //get Dist List
+  getDistrictList(id:any){
+    this.stateselectedItem = id;
+    localStorage.setItem("stateId",id);
+    this.calssification.getAllListByCountry(id).subscribe((res)=>{
           let data=res.response;
-          this.countDist=res.totalRecords;
-          this.distList=data.allOtherCats
+          this.countDist=data.allOtherGeography.length;
+          this.distList=data.allOtherGeography;
+          this.distselectedItem = data.firstGeography.geographyId;
+          this.getCityList(data.firstGeography.geographyId);
         })
   }
+
+  //get Dist List
+  getCityList(id:any){
+    this.distselectedItem = id;
+    localStorage.setItem('distId',id);
+    this.calssification.getAllListByCountry(id).subscribe((res)=>{
+          let data=res.response;
+          this.countCity=data.allOtherGeography.length;
+          this.cityList=data.allOtherGeography;
+          this.citySelectedItem = data.firstGeography.geographyId;
+          this.getregionList(data.firstGeography.geographyId);
+        })
+  }
+
+
 
   //get Region List
-  getregionList(){
-    this.calssification.getclassification().subscribe((res)=>{
+  getregionList(id:any){
+    this.citySelectedItem = id;
+    localStorage.setItem('cityId',id);
+    this.calssification.getAllListByCountry(id).subscribe((res)=>{
           let data=res.response;
-          this.countRegion=res.totalRecords;
-          this.regionList=data.allOtherCats
+          this.countRegion=data.allOtherGeography.length;
+          this.regionList=data.allOtherGeography;
+          this.regionSelctedItem = data.firstGeography.geographyId;
+          this.getAreaList(data.firstGeography.geographyId);
         })
   }
 
-  //add conurty and refresh country list
+  //get Area List
+  getAreaList(id:any){
+    this.regionSelctedItem = id;
+    localStorage.setItem('regionId',id);
+    this.calssification.getAllListByCountry(id).subscribe((res)=>{
+          let data=res.response;
+          this.countArea=data.allOtherGeography.length;
+          this.areaList=data.allOtherGeography;
+          this.areaselectedItem = data.firstGeography.geographyId;
+          this.getSubAreaList(data.firstGeography.geographyId);
+        })
+  }
+
+   //get sub Area List
+   getSubAreaList(id:any){
+    this.areaselectedItem = id;
+    localStorage.setItem('areaId',id);
+    this.subAreaSelectedItem = id;
+    this.calssification.getAllListByCountry(id).subscribe((res)=>{
+          let data=res.response;
+          this.countSubArea = data.allOtherGeography.length;
+          this.subAreaList=data.allOtherGeography;
+         
+        })
+  }
+
+  //add conurty and refresh list
   addCountry(){
     let data = {
-              CategoryName:this.countryForm.value['countryFormTag'],
-              CategoryCode:this.countryForm.value['countryCodeTag'],
+              "GeographyName":this.countryForm.value['countryFormTag'],
+              "GeographyDesc":this.countryForm.value['countryCodeTag'],
+              "CreatedById":this.LoginId
               };
-  console.log(data);
-  // this.calssification.addCatagory(data).subscribe((res)=>{
-  //   this.addcat='';
-  //   this.addcatcode='';
-  // })
-   this.getCountryList();
+
+    this.calssification.addCountryName(data).subscribe((res)=>{
+      this.getCountryList();
+      this.countryForm.reset();
+    })
+
   }
 
-  //add state and refresh state list
+  //add state and refresh list
   addState(){
-    let data = {
-              CategoryName:this.stateForm.value['stateFormTag'],
-              CategoryCode:this.stateForm.value['statecodeFormTag'],
-              };
-  console.log(data);
-  // this.calssification.addCatagory(data).subscribe((res)=>{
-  //   this.addcat='';
-  //   this.addcatcode='';
-  // })
-   this.getStateList();
+      let data = {
+        "GeographyName":this.stateForm.value['stateFormTag'],
+        "GeographyDesc":this.stateForm.value['statecodeFormTag'],
+        "GeographyParentId":localStorage.getItem('countryId'),
+        "CreatedById":this.LoginId
+        };
+  
+      this.calssification.addStateName(data).subscribe((res)=>{
+        this.stateForm.reset();
+      })          
   }
 
-   //add dist and refresh dist list
+   //add dist and refresh list
    addDist(){
+
     let data = {
-              CategoryName:this.districtForm.value['distirictFormTag'],
-              CategoryCode:this.districtForm.value['districtcode'],
+              "GeographyName":this.districtForm.value['distirictFormTag'],
+              "GeographyDesc":this.districtForm.value['districtcode'],
+              "GeographyParentId":localStorage.getItem('stateId'),
+              "CreatedById":this.LoginId
               };
-  console.log(data);
-  // this.calssification.addCatagory(data).subscribe((res)=>{
-  //   this.addcat='';
-  //   this.addcatcode='';
-  // })
-   this.getDistrictList();
+
+    this.calssification.addDistName(data).subscribe((res)=>{
+      this.districtForm.reset();
+    });
+
   }
 
-  //add region and refresh dist list
-  addRegion(){
+  //add city and refresh list
+  addCityName(){
     let data = {
-              CategoryName:this.regionForm.value['regionFormTag'],
-              CategoryCode:this.regionForm.value['regionCode'],
-              };
-  console.log(data);
-  // this.calssification.addCatagory(data).subscribe((res)=>{
-  //   this.addcat='';
-  //   this.addcatcode='';
-  // })
-   this.getDistrictList();
+                "GeographyName":this.cityForm.value['cityFormTag'],
+                "GeographyDesc":this.cityForm.value['citycode'],
+                "GeographyParentId":localStorage.getItem('distId'),
+                "CreatedById":this.LoginId
+                };
+
+    console.log(data);
+
+    this.calssification.addCityName(data).subscribe((res)=>{
+      console.log(res);
+      this.cityForm.reset();
+    })
+ 
+  }
+
+  //add zone and refresh list
+  addZoneName(){
+    let data = {
+                "GeographyName":this.regionForm.value['regionFormTag'],
+                "GeographyDesc":this.regionForm.value['regionCode'],
+                "GeographyParentId": localStorage.getItem('cityId'),
+                "CreatedById":this.LoginId
+                };
+
+    console.log(data);
+
+    this.calssification.addZoneName(data).subscribe((res)=>{
+      console.log(res);
+      this.regionForm.reset();
+    })
+ 
+  }
+
+   //add area and refresh list
+   addAreaName(){
+
+    let data = {
+                "GeographyName":this.areaForm.value['areaFormTag'],
+                "GeographyDesc":this.areaForm.value['areaCode'],
+                "GeographyParentId": localStorage.getItem('regionId'),
+                "CreatedById":this.LoginId
+                };
+
+    console.log(data);
+
+    this.calssification.addAreaName(data).subscribe((res)=>{
+      console.log(res);
+      this.areaForm.reset();
+    })
+ 
+  }
+
+  //add subArea and refresh list
+  addSubAreaName(){
+    let data = {
+                "GeographyName":this.subAreaForm.value['subAreaFormTag'],
+                "GeographyDesc":this.subAreaForm.value['SubAreaCode'],
+                "GeographyParentId": localStorage.getItem('areaId'),
+                "CreatedById":this.LoginId
+                };
+
+    console.log(data);
+
+    this.calssification.AddSubArea(data).subscribe((res)=>{
+      console.log(res);
+      this.subAreaForm.reset();
+    })
+ 
   }
 
   printvalue(valueofprint:boolean){
@@ -169,30 +312,27 @@ export class GeoClassificationComponent implements OnInit {
     this.addDistrictButton =true;
   }
 
+  addCity(){
+    this.addCityButton =true;
+  }
+
   addRegionForm(){
     this.addRegionButton =true;
   }
 
-  removecatg(index):void{
-    this.CountryList.splice(index, 1);
+  addAreaForm(){
+    this.addAreaButton =true;
   }
 
-  removesub(index){
-    this.stateList.splice(index, 1);
+  addSubAreaForm(){
+    this.addSubAreaButton =true;
   }
 
-  removetype(index){
-    this.distList.splice(index, 1);
+  removeItem(id:any):void{
+    this.calssification.getDeleteListByCountry(id).subscribe((res)=>{
+      let data=res.response;
+    })
   }
-
-  removeregions(index){
-    this.regionList.splice(index, 1);
-  }
-
-  onClick(item) {
-    this.selectedItem = item;
-  }
-
 
   createform(){
     this.countryForm = this.fb.group({
@@ -222,6 +362,27 @@ export class GeoClassificationComponent implements OnInit {
     });
   }
 
+  cityFormValidator(){
+    this.cityForm = this.fb.group({
+      cityFormTag: ["", [Validators.required]],
+      citycode:["", [Validators.required]],
+    });
+  }
+
+  areaFormValidator(){
+    this.areaForm = this.fb.group({
+      areaFormTag: ["", [Validators.required]],
+      areacode:["", [Validators.required]],
+    });
+  }
+
+  subAreaFormValidator(){
+    this.subAreaForm = this.fb.group({
+      subAreaFormTag: ["", [Validators.required]],
+      SubAreaCode:["", [Validators.required]],
+    });
+  }
+
   removemoreFileds(){
     this.addCountryButton =false;
   }
@@ -234,7 +395,16 @@ export class GeoClassificationComponent implements OnInit {
     this.addDistrictButton =false;
   }
 
+  removeCitymoreFileds(){
+    this.addCityButton = true;
+  }
+
   removeregionsMore(){
     this.addRegionButton = false;
   }
+
+  removeareaMore(){
+    this.addAreaButton = false;
+  }
+
 }

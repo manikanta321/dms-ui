@@ -14,13 +14,13 @@
          <!--start country column -->
         <div class="col-sm-4">
             <div class="row">
-                <p class="col-10">Country (3)</p>
-                <p class="col-2"><mat-icon (click) =addCountry()>add_circle</mat-icon></p>
+                <p class="col-10">Country ({{countCountry}})</p>
+                <p class="col-2"><mat-icon (click) =addCountryForm()>add_circle</mat-icon></p>
             </div> 
-            <mat-card class="mat-card-content">
+            <mat-card class="mat-card-content scroll">
                 <mat-card-content >
-                    <div class=" d-flex " *ngFor="let catg of countryName">
-                        <p class="col-10 catg"  (click)="onClick(catg)"  [ngClass]="{ 'selected': catg == selectedItem }">{{catg}}</p>
+                    <div class=" d-flex " *ngFor="let catg of CountryList">
+                        <p class="col-10 catg"  (click)="onClick(catg)"  [ngClass]="{ 'selected': catg == selectedItem }">{{catg.catName}}</p>
                         <mat-icon class="col-2" (click)="removecatg(catg)">remove_circle</mat-icon>
                     </div>
                     <div class="buttn d-flex" *ngIf = addCountryButton>
@@ -31,12 +31,12 @@
                                     <div class="row">
                                         <div class="col-6">
                                          <input type="text" class="input-country-cls" formControlName="countryFormTag" placeholder="Add category name">
-                                       </div>
+                                        </div>
                                        <div class="col-3">
-                                        <input type="text" class="input-countrycode-cls" formControlName="countryFormTag" placeholder="Code">
+                                        <input type="text" class="input-countrycode-cls" formControlName="countryCodeTag" placeholder="Code">
                                       </div>
                                         <div class="col-3">
-                                            <button class="addcode">Add</button>
+                                            <button type="submit" class="addcode" [disabled]="!countryForm.valid" (click)="addCountry()">Add</button>
                                         </div> 
                                     </div>
                                 </div>
@@ -56,13 +56,13 @@
         <!--start state column -->    
         <div class="col-sm-4">
             <div class="row">
-                <p class="col-10">State (3)</p>
-                <p class="col-2"><mat-icon (click) =addState()>add_circle</mat-icon></p>
+                <p class="col-10">State ({{countStates}})</p>
+                <p class="col-2"><mat-icon (click) =addStateForm()>add_circle</mat-icon></p>
             </div> 
-            <mat-card class="mat-card-content">
+            <mat-card class="mat-card-content scroll">
                 <mat-card-content>
-                    <div class=" d-flex" *ngFor="let subc of stateName" >
-                        <p class="col-10 subc"  (click)="onClick(subc)"  [ngClass]="{ 'subselected': subc == selectedItem }">{{subc}}</p>
+                    <div class=" d-flex" *ngFor="let subc of stateList" >
+                        <p class="col-10 subc"  (click)="onClick(subc)"  [ngClass]="{ 'subselected': subc == selectedItem }">{{subc.catName}}</p>
                         <mat-icon class="col-2" (click)="removesub(subc)">remove_circle</mat-icon>
                     </div>
                     <div class="buttn d-flex" *ngIf = addStateButton>
@@ -78,7 +78,7 @@
                                         <input type="text" class="input-countrycode-cls" formControlName="statecodeFormTag" placeholder="Code">
                                       </div>
                                         <div class="col-3">
-                                            <button class="addcode">Add</button>
+                                            <button type="submit" class="addcode" [disabled]="!stateForm.valid" (click)="addState()">Add</button>
                                         </div> 
                                     </div>
                                 </div>
@@ -98,14 +98,14 @@
         <!--start district column -->
         <div class="col-sm-4">
         <div class="row">
-            <p class="col-10">District (2)</p>
+            <p class="col-10">District ({{countDist}})</p>
             <p class="col-2"><mat-icon (click) =addDistrict()>add_circle</mat-icon></p>
         </div> 
-        <mat-card class="mat-card-content">
+        <mat-card class="mat-card-content scroll">
             <mat-card-content>
-                <div class=" d-flex" *ngFor="let type of DistrictName">
-                    <p class="col-10 type" (click)="onClick(type)"  [ngClass]="{ 'typeselected': type == selectedItem }">{{type}}</p>
-                    <mat-icon class="col-2" (click)="removetype(type)">remove_circle</mat-icon>
+                <div class=" d-flex" *ngFor="let dist of distList">
+                    <p class="col-10 dist" (click)="onClick(dist)"  [ngClass]="{ 'typeselected': dist == selectedItem }">{{dist.catName}}</p>
+                    <mat-icon class="col-2" (click)="removetype(dist)">remove_circle</mat-icon>
                 </div>
                 <div class="buttn d-flex" *ngIf = addDistrictButton>
                     <div class="row add-country-cls">
@@ -119,7 +119,7 @@
                                 <input type="text" class="input-countrycode-cls" formControlName="districtcode" placeholder="Code">
                               </div>
                                 <div class="col-3">
-                                    <button class="addcode">Add</button>
+                                    <button type="submit" class="addcode" [disabled]="!districtForm.valid" (click)="addDist()">Add</button>
                                 </div> 
                             </div>
                         </div>
@@ -138,13 +138,13 @@
         <!--start region column -->
         <div class="col-sm-4 regions-column">
             <div class="row">
-                <p class="col-10">Regions (2)</p>
-                <p class="col-2"><mat-icon (click) =addRegion()>add_circle</mat-icon></p>
+                <p class="col-10">Regions ({{countRegion}})</p>
+                <p class="col-2"><mat-icon (click) =addRegionForm()>add_circle</mat-icon></p>
             </div> 
-            <mat-card class="mat-card-content">
+            <mat-card class="mat-card-content scroll">
                 <mat-card-content>
-                    <div class=" d-flex" *ngFor="let region of regionsName">
-                        <p class="col-10 region" (click)="onClick(region)"  [ngClass]="{ 'regionselected': region == selectedItem }">{{region}}</p>
+                    <div class=" d-flex" *ngFor="let region of regionList">
+                        <p class="col-10 region" (click)="onClick(region)"  [ngClass]="{ 'regionselected': region == selectedItem }">{{region.catName}}</p>
                         <mat-icon class="col-2" (click)="removeregions(region)">remove_circle</mat-icon>
                     </div>
                     <div class="buttn d-flex" *ngIf = addRegionButton>
@@ -159,7 +159,7 @@
                                     <input type="text" class="input-countrycode-cls" formControlName="regionCode" placeholder="Code">
                                   </div>
                                     <div class="col-3">
-                                        <button class="addcode">Add</button>
+                                        <button type="submit" class="addcode" [disabled]="!regionForm.valid" (click)="addRegion()">Add</button>
                                     </div> 
                                 </div>
                             </div>

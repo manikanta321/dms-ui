@@ -212,3 +212,13 @@ body {
     background: white !important;
     width: 156px;
    }
+
+
+ .geo-classification-list {
+    height:600px !important;
+  }
+
+  .geo-classification-list .mat-tab-group .mat-tab-body-wrapper,
+  .geo-classification-list .mat-tab-group {
+    height: 100% !important;
+  }

@@ -47,7 +47,7 @@ export class MaterialsClassificationComponent implements OnInit {
     this.numberValue = Number(this.LoginId);
 
 
-this.getclassification()
+   this.getclassification()
 
   }
   getclassification(){
@@ -83,14 +83,11 @@ this.calssification.getclassification().subscribe((res)=>{
   }
 
   cname1(cname:string,i:any){
-    
     if(cname=='Eectronics'){
       // this.Sname= ['mobile', 'earphone','mouse'];
     }
     if(cname!='Eectronics'){
       // this.Sname= ['fan','fridge'];
-    
-
     }
   }
   printvalue(valueofprint:boolean){

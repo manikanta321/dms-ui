@@ -224,7 +224,7 @@
             <mat-card class="mat-card-content scroll">
                 <mat-card-content>
                     <div class=" d-flex" *ngFor="let regionArea of areaList">
-                        <p class="col-10 region"   [ngClass]="{ 'subAreaselected': regionArea.geographyId == subAreaSelectedItem }">{{regionArea.geographyName}}</p>
+                        <p class="col-10 region" (click)="getSubAreaList(regionArea.geographyId)"   [ngClass]="{ 'areaselected': regionArea.geographyId == areaselectedItem }">{{regionArea.geographyName}}</p>
                         <mat-icon class="col-2" (click)="removeItem(regionArea.geographyId)">remove_circle</mat-icon>
                     </div>
                     <div class="buttn d-flex" *ngIf = addAreaButton>

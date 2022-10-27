@@ -65,6 +65,7 @@ export class UseractionComponent implements OnInit,  AfterViewInit {
     this.tippyInstance.setProps({
       trigger: 'manual',
       placement: 'left',
+      theme: 'user-tippy',
       arrow: false,
       interactive: true,
       appendTo: document.body,

@@ -90,6 +90,7 @@ import { UomActionComponent } from './component/uom-action/uom-action.component'
 import { DeleteUomPopupComponent } from './component/delete-uom-popup/delete-uom-popup.component';
 import { DeleteUomSuccessfullPopupComponent } from './component/delete-uom-successfull-popup/delete-uom-successfull-popup.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { AddorderpromotionsComponent } from './component/orders/addorderpromotions/addorderpromotions.component';
 
 @NgModule({
   declarations: [
@@ -149,6 +150,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
     UomActionComponent,
     DeleteUomPopupComponent,
     DeleteUomSuccessfullPopupComponent,
+          AddorderpromotionsComponent,
   ],
   imports: [
     FormsModule,

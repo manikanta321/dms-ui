@@ -48,31 +48,17 @@
           </form>
         </div>
         <!-- calender -->
+        <button (click)="testingAddItem()">tesing</button>
         <div class="col-2 row">
           <!-- <div class="cal">
             <mat-icon>calendar_today</mat-icon>
           </div> -->
-          <section data-cy="regular-date-range" class="col-12 col-sm-6 col-lg-4">
+          <!-- <section data-cy="regular-date-range" class="col-12 col-sm-6 col-lg-4">
             <date-range-picker [(dateRange)]="dateRange1"
             [maxDate]="maxDate">
-              <button
-        type="button"
-        class="btn btn-primary me-2"
-        (click)="changeDate2()"
-      >
-        Change Date
-      </button>
-      <button
-        type="button"
-        class="btn btn-warning me-2"
-        (click)="invalid = !invalid"
-      >
-        Change Validity
-      </button>
             </date-range-picker>
-            <!-- <pre>{{ dateRange1 | json }} </pre> -->
             <hr />
-          </section>
+          </section> -->
            
           <div class="ref"><img class="refresh" src="assets/img/Vector.png" alt="refresh"></div>
           <!-- <div class="col-1"> -->

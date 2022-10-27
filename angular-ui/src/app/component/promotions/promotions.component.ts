@@ -22,6 +22,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { AddPromotionsComponent } from '../add-promotions/add-promotions.component';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { DateRange } from '@uiowa/date-range-picker';
+import { AddItemsPromotionComponent } from './add-items-promotion/add-items-promotion.component';
 export interface PeriodicElement {
 
   name: any;
@@ -564,6 +565,9 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
 
   changeDate2() {
     this.date9 = new Date(2022, 7, 13, 12, 30, 42);
+  }
+  testingAddItem(){
+    this.dialog.open( AddItemsPromotionComponent);
   }
 }
 

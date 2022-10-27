@@ -215,21 +215,21 @@
         </div>
         <!--end region column -->
 
-        <!--start Area column -->
-        <div class="col-sm-4 regions-column">
+         <!--start Area column -->
+         <div class="col-sm-4 regions-column">
             <div class="row">
-                <p class="col-10">Area ({{countArea}})</p>
-                <p class="col-2"><mat-icon (click) ="addAreaForm()">add_circle</mat-icon></p>
+                <p class="col-10">Area ({{countSubArea}})</p>
+                <p class="col-2"><mat-icon (click) =addAreaForm()>add_circle</mat-icon></p>
             </div> 
             <mat-card class="mat-card-content scroll">
                 <mat-card-content>
-                    <div class=" d-flex" *ngFor="let area of areaList">
-                        <p class="col-10 region" (click)="getSubAreaList(area.geographyId)"  [ngClass]="{ 'areaselected': area.geographyId == areaselectedItem }">{{area.geographyName}}</p>
-                        <mat-icon class="col-2" (click)="removeItem(area.geographyId)">remove_circle</mat-icon>
+                    <div class=" d-flex" *ngFor="let regionArea of areaList">
+                        <p class="col-10 region"   [ngClass]="{ 'subAreaselected': regionArea.geographyId == subAreaSelectedItem }">{{regionArea.geographyName}}</p>
+                        <mat-icon class="col-2" (click)="removeItem(regionArea.geographyId)">remove_circle</mat-icon>
                     </div>
-                    <div class="buttn d-flex" *ngIf="addAreaButton">
+                    <div class="buttn d-flex" *ngIf = addAreaButton>
                         <div class="row add-country-cls">
-                            <form [formGroup]="areaForm">
+                            <form [formGroup]="regionAreaForm">
                             <div class="col-12">
                                 <div class="row">
                                     <div class="col-6">
@@ -239,7 +239,7 @@
                                     <input type="text" class="input-countrycode-cls" formControlName="areaCode" placeholder="Code">
                                   </div>
                                     <div class="col-3">
-                                        <button type="submit" class="addcode" [disabled]="!areaForm.valid" (click)="addAreaName()">Add</button>
+                                        <button type="submit" class="addcode" [disabled]="!regionAreaForm.valid" (click)="addAreaName()">Add</button>
                                     </div> 
                                 </div>
                             </div>
@@ -254,7 +254,6 @@
             </mat-card>
         </div>
         <!--end Area column -->
-   
 
          <!--start sub Area column -->
          <div class="col-sm-4 regions-column">

@@ -14,7 +14,7 @@ export class GeoClassificationComponent implements OnInit {
   districtForm!: FormGroup;
   regionForm!: FormGroup;
   cityForm!: FormGroup;
-  areaForm!: FormGroup;
+  regionAreaForm!: FormGroup;
   subAreaForm!: FormGroup;
 
   toprint:boolean=false;
@@ -80,7 +80,6 @@ export class GeoClassificationComponent implements OnInit {
   ngOnInit(): void {
     this.LoginId=localStorage.getItem("logInId");
     this.numberValue = Number(this.LoginId);
-
     this.getCountryList();
   }
 
@@ -94,8 +93,7 @@ export class GeoClassificationComponent implements OnInit {
           this.getStateList(data.firstCountr.countryId);
           this.selectedItem=data.firstCountr.countryId;
          
-        })
-       
+        })  
   }
 
   //get State List
@@ -137,8 +135,6 @@ export class GeoClassificationComponent implements OnInit {
         })
   }
 
-
-
   //get Region List
   getregionList(id:any){
     this.citySelectedItem = id;
@@ -147,8 +143,11 @@ export class GeoClassificationComponent implements OnInit {
           let data=res.response;
           this.countRegion=data.allOtherGeography.length;
           this.regionList=data.allOtherGeography;
-          this.regionSelctedItem = data.firstGeography.geographyId;
-          this.getAreaList(data.firstGeography.geographyId);
+          if(data.firstGeography != null){
+            this.regionSelctedItem = data.firstGeography.geographyId;
+            this.getAreaList(data.firstGeography.geographyId);
+          }
+          
         })
   }
 
@@ -263,17 +262,17 @@ export class GeoClassificationComponent implements OnInit {
    addAreaName(){
 
     let data = {
-                "GeographyName":this.areaForm.value['areaFormTag'],
-                "GeographyDesc":this.areaForm.value['areaCode'],
+                "GeographyName":this.regionAreaForm.value['areaFormTag'],
+                "GeographyDesc":this.regionAreaForm.value['areaCode'],
                 "GeographyParentId": localStorage.getItem('regionId'),
                 "CreatedById":this.LoginId
                 };
 
     console.log(data);
 
-    this.calssification.addAreaName(data).subscribe((res)=>{
+    this.calssification.addRegionAreaName(data).subscribe((res)=>{
       console.log(res);
-      this.areaForm.reset();
+      this.regionAreaForm.reset();
     })
  
   }
@@ -334,6 +333,30 @@ export class GeoClassificationComponent implements OnInit {
     })
   }
 
+  removemoreFileds(){
+    this.addCountryButton =false;
+  }
+
+  removeStatemoreFileds(){
+    this.addStateButton =false;
+  }
+
+  removeDistmoreFileds(){
+    this.addDistrictButton =false;
+  }
+
+  removeCitymoreFileds(){
+    this.addCityButton = true;
+  }
+
+  removeregionsMore(){
+    this.addRegionButton = false;
+  }
+
+  removeareaMore(){
+    this.addAreaButton = false;
+  }
+
   createform(){
     this.countryForm = this.fb.group({
       countryFormTag: ["", [Validators.required]],
@@ -370,9 +393,9 @@ export class GeoClassificationComponent implements OnInit {
   }
 
   areaFormValidator(){
-    this.areaForm = this.fb.group({
-      areaFormTag: ["", [Validators.required]],
-      areacode:["", [Validators.required]],
+    this.regionAreaForm = this.fb.group({
+      areaFormTag:["", [Validators.required]],
+      areaCode:["", [Validators.required]],
     });
   }
 
@@ -381,30 +404,6 @@ export class GeoClassificationComponent implements OnInit {
       subAreaFormTag: ["", [Validators.required]],
       SubAreaCode:["", [Validators.required]],
     });
-  }
-
-  removemoreFileds(){
-    this.addCountryButton =false;
-  }
-
-  removeStatemoreFileds(){
-    this.addStateButton =false;
-  }
-
-  removeDistmoreFileds(){
-    this.addDistrictButton =false;
-  }
-
-  removeCitymoreFileds(){
-    this.addCityButton = true;
-  }
-
-  removeregionsMore(){
-    this.addRegionButton = false;
-  }
-
-  removeareaMore(){
-    this.addAreaButton = false;
   }
 
 }

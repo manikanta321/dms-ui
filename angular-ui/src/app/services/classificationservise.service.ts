@@ -129,7 +129,7 @@ addZoneName(data:any){
 }
 
 //add city name
-addAreaName(data:any){
+addRegionAreaName(data:any){
   return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddArea', data);
 }
 

@@ -117,7 +117,7 @@ field: 'uoMName' ,type: ['nonEditableColumn'], sort: 'desc',pinned: 'left',
 // {  headerName: "Rate",
 //  field: 'uoMShortName',type: ['nonEditableColumn']},
 
-{   headerName: "Effictive Date",
+{   headerName: " Effective Date",
 field: 'effectiveFrom',type: ['nonEditableColumn']},
 
 {   headerName: "Standard Currency",

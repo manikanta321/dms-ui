@@ -139,20 +139,20 @@ columnDefs: ColDef[] = [
 
 rowData :any;
 rowData1=[]
-  public defaultColDef: ColDef = {
-    // set the default column width
-    width: 130,
-    // make every column editable
-    editable: true,
-    // make every column use 'text' filter by default
-    filter: 'agTextColumnFilter',
-    // enable floating filters by default
-    floatingFilter: true,
-    // make columns resizable
-    resizable: true,
-    sortable: true,
-  };
+public defaultColDef: ColDef = {
 
+  suppressSizeToFit: true,
+  width: 170,
+  // set the default column width
+  // make every column editable
+  // editable: true,
+  // make every column use 'text' filter by default
+  filter: 'agTextColumnFilter',
+  // enable floating filters by default
+  // make columns resizable
+  resizable: true,
+  sortable: true,
+};
 // public defaultColDef: ColDef = {
 //   sortable: true,
 //   resizable: true,

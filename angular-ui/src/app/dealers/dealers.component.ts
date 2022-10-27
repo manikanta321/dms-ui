@@ -65,6 +65,7 @@ import { AddTaxTemplateComponent } from '../component/users/userPopups/add-tax-t
 import { AddcurrencyComponent } from '../component/users/userPopups/addcurrency/addcurrency.component';
 import { EditTaxTemplateComponent } from '../component/users/userPopups/edit-tax-template/edit-tax-template.component';
 import { AddUserPopupComponent } from '../component/users/userPopups/add-user-popup/add-user-popup.component';
+import { AddDealerPopupComponent } from '../component/add-dealer-popup/add-dealer-popup.component';
 // import { UseractionComponent } from '../useraction/useraction.component';
 
 @Component({
@@ -715,7 +716,7 @@ export class DealersComponent implements OnInit {
 
 
   addUser() {
-    this.dialog.open(AddUserPopupComponent,);
+    this.dialog.open(AddDealerPopupComponent,);
   }
   editUser() {
     this.dialog.open(EditPopupComponent,);

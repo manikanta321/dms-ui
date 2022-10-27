@@ -214,4 +214,8 @@ li{
   overflow-y: scroll;
 }
 
+.delete-icon {
+  cursor: pointer;
+}
+
 

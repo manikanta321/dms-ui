@@ -106,6 +106,7 @@ export class GeoClassificationComponent implements OnInit {
           this.stateList=data.allOtherGeography;
           this.stateselectedItem = data.firstGeography.geographyId;
           this.getDistrictList(data.firstGeography.geographyId)
+
         })
   }
 
@@ -203,6 +204,7 @@ export class GeoClassificationComponent implements OnInit {
   
       this.calssification.addStateName(data).subscribe((res)=>{
         this.stateForm.reset();
+        this.getStateList(localStorage.getItem('countryId'));
       })          
   }
 
@@ -218,6 +220,7 @@ export class GeoClassificationComponent implements OnInit {
 
     this.calssification.addDistName(data).subscribe((res)=>{
       this.districtForm.reset();
+      this.getDistrictList(localStorage.getItem("stateId"));
     });
 
   }
@@ -231,11 +234,9 @@ export class GeoClassificationComponent implements OnInit {
                 "CreatedById":this.LoginId
                 };
 
-    console.log(data);
-
     this.calssification.addCityName(data).subscribe((res)=>{
-      console.log(res);
       this.cityForm.reset();
+      this.getCityList(localStorage.getItem("distId"));
     })
  
   }
@@ -249,18 +250,15 @@ export class GeoClassificationComponent implements OnInit {
                 "CreatedById":this.LoginId
                 };
 
-    console.log(data);
-
     this.calssification.addZoneName(data).subscribe((res)=>{
-      console.log(res);
       this.regionForm.reset();
+      this.getregionList(localStorage.getItem("cityId"));
     })
  
   }
 
    //add area and refresh list
    addAreaName(){
-
     let data = {
                 "GeographyName":this.regionAreaForm.value['areaFormTag'],
                 "GeographyDesc":this.regionAreaForm.value['areaCode'],
@@ -268,11 +266,10 @@ export class GeoClassificationComponent implements OnInit {
                 "CreatedById":this.LoginId
                 };
 
-    console.log(data);
 
     this.calssification.addRegionAreaName(data).subscribe((res)=>{
-      console.log(res);
       this.regionAreaForm.reset();
+      this.getAreaList(localStorage.getItem("regionId"));
     })
  
   }
@@ -286,11 +283,9 @@ export class GeoClassificationComponent implements OnInit {
                 "CreatedById":this.LoginId
                 };
 
-    console.log(data);
-
     this.calssification.AddSubArea(data).subscribe((res)=>{
-      console.log(res);
       this.subAreaForm.reset();
+      this.getSubAreaList(localStorage.getItem("areaId"));
     })
  
   }
@@ -327,11 +322,76 @@ export class GeoClassificationComponent implements OnInit {
     this.addSubAreaButton =true;
   }
 
-  removeItem(id:any):void{
-    this.getCountryList();
-    this.calssification.getDeleteListByCountry(id).subscribe((res)=>{
-      let data=res.response;
-    })
+  removeSubAreaForm(){
+    this.addSubAreaButton =false;
+  }
+
+  removeItem(id:any,status:any):void{
+   
+    var strName ="";
+    if(status === 1){
+      strName = "country";
+    }
+
+    if(status === 2){
+      strName = "state"; 
+    }
+
+    if(status === 3){
+      strName = "district";
+      this.getCountryList();
+    }
+
+    if(status === 4){
+      strName = "city"; 
+    }
+
+    if(status === 5){
+      strName = "region";  
+    }
+
+    if(status === 6){
+      strName = "area";  
+    }
+
+    if(status === 7){
+      strName = "subarea";
+    }
+    
+    if (confirm("Are you sure want to delete "+strName+"!") == true) {
+      this.calssification.getDeleteListByCountry(id).subscribe((res)=>{
+        let data=res.response;
+      })
+    }
+
+    if(status === 1){
+      this.getCountryList();
+    }
+
+    if(status === 2){
+      this.getStateList(localStorage.getItem('countryId'));
+    }
+
+    if(status === 3){
+      this.getDistrictList(localStorage.getItem("stateId"));
+    }
+
+    if(status === 4){
+      this.getCityList(localStorage.getItem("distId"));
+    }
+
+    if(status === 5){
+      this.getregionList(localStorage.getItem("cityId"));
+    }
+
+    if(status === 6){
+      this.getAreaList(localStorage.getItem("regionId"));
+    }
+
+    if(status === 7){
+      this.getSubAreaList(localStorage.getItem("areaId"));
+    }
+
   }
 
   removemoreFileds(){

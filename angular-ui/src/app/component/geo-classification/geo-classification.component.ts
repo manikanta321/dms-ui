@@ -328,6 +328,7 @@ export class GeoClassificationComponent implements OnInit {
   }
 
   removeItem(id:any):void{
+    this.getCountryList();
     this.calssification.getDeleteListByCountry(id).subscribe((res)=>{
       let data=res.response;
     })

@@ -106,23 +106,23 @@ public popupParent: HTMLElement = document.body;
 
 columnDefs: ColDef[] = [ 
 
-  { headerName: "User Id",
-field: 'employeeCode' ,type: ['nonEditableColumn'], sort: 'desc',pinned: 'left',
+  { headerName: "Name",
+field: 'uoMName' ,type: ['nonEditableColumn'], sort: 'desc',pinned: 'left',
 },
 
-{   headerName: "Username",field: 'employeeName',type: ['nonEditableColumn']},
+{   headerName: "Display Unit",field: 'uoMShortName',type: ['nonEditableColumn']},
 
-{headerName: "Role", field: 'roleName', type: ['nonEditableColumn']},
+{headerName: "Rate", field: 'conversionRate', type: ['nonEditableColumn']},
 
-{  headerName: "Email Id",
- field: 'email',type: ['nonEditableColumn']},
+// {  headerName: "Rate",
+//  field: 'uoMShortName',type: ['nonEditableColumn']},
 
-{   headerName: "Phone no",
-field: 'mobile',type: ['nonEditableColumn']},
+{   headerName: "Effictive Date",
+field: 'effectiveFrom',type: ['nonEditableColumn']},
 
-{   headerName: "Last Login",
+{   headerName: "Standard Currency",
 // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-field: 'lastLoginDate',type: ['nonEditableColumn']
+field: 'uomSymbol',type: ['nonEditableColumn']
 },
 
 // suppressMovable:true,
@@ -308,10 +308,11 @@ public pivotPanelShow = 'always';
 
   ngOnInit(): void {
  
-
-  this.getusertabeldata();
-  this.roleItems();
+this.getcurrencylist();
+  // this.getusertabeldata();
+  // this.roleItems();
   this.statusItems();
+  this.otherstatus();
 
 this.myForm = this.fb.group({
     city: [this.selectedItems]
@@ -324,7 +325,39 @@ this.myForms = this.fb.group({
 scrolledIndexChange(i): void {
   this.scrolledIndex = i;
 }
+otherstatus(){
+  const data ={
+  }
+  this.user.otherstatus(data).subscribe((res) => {     
+  });
+  console.log('data', data )
+}
+getcurrencylist(){
 
+  const data={
+    statuss:[],
+    search:"",
+  }
+    this.user.getcurrencylist(data).subscribe((res:any) => {
+    
+  this.rowData5 = res.response;
+  console.log('tableDaaaata', this.rowData5 )
+  if (this.rowData5.length >= 1) {
+  this.rowData.forEach((element: { [x: string]: any; }) => {
+  if (element['status']=='Confirmed'){
+}
+  else{
+    element['isActive']=='Inactive'
+
+  }
+console.log('element',element['isActive'])
+  });
+}
+
+  console.log('row data',this.rowData1)
+
+});
+}
 
 // myFunction(){
 // this. date=new Date();
@@ -388,78 +421,78 @@ if (this.statusSelection) {
       search:'',
   
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {     
+    this.user.getcurrencylist(data).subscribe((res) => {     
       this.rowData5 = res.response;
     });
-this.getusertabeldata();
+this.getcurrencylist();
   }
 
-getusertabeldata(){
+// getusertabeldata(){
 
-    const data={
-      userTypes:[],
-      statuss:[],
-    }
-      this.user.getuserDeatilsUser(data).subscribe((res) => {
+//     const data={
+//       userTypes:[],
+//       statuss:[],
+//     }
+//       this.user.getuserDeatilsUser(data).subscribe((res) => {
       
-    this.rowData5 = res.response;
-    console.log('tableDaaaata', this.rowData5 )
-    if (this.rowData5.length >= 1) {
-    this.rowData.forEach((element: { [x: string]: any; }) => {
-    if (element['status']=='Confirmed'){
-}
-    else{
-      element['isActive']=='Inactive'
+//     this.rowData5 = res.response;
+//     console.log('tableDaaaata', this.rowData5 )
+//     if (this.rowData5.length >= 1) {
+//     this.rowData.forEach((element: { [x: string]: any; }) => {
+//     if (element['status']=='Confirmed'){
+// }
+//     else{
+//       element['isActive']=='Inactive'
 
-    }
-console.log('element',element['isActive'])
-    });
-  }
+//     }
+// console.log('element',element['isActive'])
+//     });
+//   }
 
-    console.log('row data',this.rowData1)
+//     console.log('row data',this.rowData1)
 
-  });
-}
+//   });
+// }
 makeCellClicked(){
 }
-roleItems(){
-  this.user.getroleDetails().subscribe((res: any) => {
-    let localdata=res.response;
-console.log('checkdata',localdata)
+// roleItems(){
+//   this.user.getroleDetails().subscribe((res: any) => {
+//     let localdata=res.response;
+// console.log('checkdata',localdata)
 
-    this.toppingList = localdata.map((data: { roleId: any; roleName: any; }) => {
-      return { roleId: data.roleId, roleName: data.roleName };
-    });
+//     this.toppingList = localdata.map((data: { roleId: any; roleName: any; }) => {
+//       return { roleId: data.roleId, roleName: data.roleName };
+//     });
 
-    if (!this.toppingList?.length) {
-      this.toppingList = localdata.map((role: { designationName: any; }) => {
-        return role.designationName;
-      });
-    }
-    this.toppingList.push()
-   this.toppingList.forEach(element=>{
-   return   this.roleArray.push(element.roleId);
-        // console.log('rolecheck',rolecheck)
+//     if (!this.toppingList?.length) {
+//       this.toppingList = localdata.map((role: { designationName: any; }) => {
+//         return role.designationName;
+//       });
+//     }
+//     this.toppingList.push()
+//    this.toppingList.forEach(element=>{
+//    return   this.roleArray.push(element.roleId);
+//         // console.log('rolecheck',rolecheck)
 
-    })
-    console.log('rolearray',this.roleArray)
+//     })
+//     console.log('rolearray',this.roleArray)
 
-    // this.toppingList = res.response;
-    this.toppings = new FormControl(this.toppingList);
+//     // this.toppingList = res.response;
+//     this.toppings = new FormControl(this.toppingList);
 
-    console.log('rolelist',this.toppingList)
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'roleId',
-      textField: 'roleName',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 2,
-      allowSearchFilter: true
-  };
-  this.selectedItems = [];
-  });
-}
+//     console.log('rolelist',this.toppingList)
+//     this.dropdownSettings = {
+//       singleSelection: false,
+//       idField: 'roleId',
+//       textField: 'roleName',
+//       selectAllText: 'Select All',
+//       unSelectAllText: 'UnSelect All',
+//       itemsShowLimit: 2,
+//       allowSearchFilter: true
+//   };
+//   this.selectedItems = [];
+//   });
+// }
 
 handleRowDataChanged(event) {
   const index = this.messages.length - 1;
@@ -482,7 +515,10 @@ handleScroll(event) {
 
 
 statusItems(){
-  this.user.getstatusDeatils().subscribe((res: any) => {
+  const data ={
+
+  }
+  this.user.otherstatus(data).subscribe((res: any) => {
     this.toppingList1=res.response;
     // this.toppingList1 = localdata.map((data: { status_id: any; status_name: any; }) => {
     //   return {status_id: data.status_id, status_name: data.status_name };
@@ -516,16 +552,16 @@ statusItems(){
 
   });
 }
-roleFilter(data:any){
-  console.log('data',data)
-  this.roleName=this.toppings.value;
-this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=>{
-  this.rowData = res.response;
+// roleFilter(data:any){
+//   console.log('data',data)
+//   this.roleName=this.toppings.value;
+// this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=>{
+//   this.rowData = res.response;
 
 
-});
-  console.log('rolename',this.rowData)
-}
+// });
+//   console.log('rolename',this.rowData)
+// }
 onItemSelect(item: any) {
 
 // alert(item.roleName)
@@ -537,7 +573,7 @@ onItemSelect(item: any) {
     search:this.searchText,
 
   }
-  this.user.getuserDeatilsUser(data).subscribe((res) => {     
+  this.user.getcurrencylist(data).subscribe((res) => {     
     this.rowData5 = res.response;
   });
   console.log('rolefilter', this.userTypes)
@@ -551,7 +587,7 @@ onItemSelectOrAll(item:any){
     search:this.searchText,
 
   }
-  this.user.getuserDeatilsUser(data).subscribe((res) => {     
+  this.user.getcurrencylist(data).subscribe((res) => {     
     this.rowData5 = res.response;
   });
   console.log('rolefilter', this.userTypes)
@@ -563,7 +599,7 @@ onItemDeSelectOrAll(item:any){
     search:this.searchText,
 
   }
-  this.user.getuserDeatilsUser(data).subscribe((res) => {     
+  this.user.getcurrencylist(data).subscribe((res) => {     
     this.rowData5 = res.response;
   });
   console.log('rolefilter', this.userTypes)
@@ -579,7 +615,7 @@ onItemDeSelectOrAll(item:any){
       search:this.searchText,
   
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {     
+    this.user.getcurrencylist(data).subscribe((res) => {     
       this.rowData5 = res.response;
     });
     console.log('rolefilter', this.userTypes)
@@ -594,7 +630,7 @@ onItemDeSelectOrAll(item:any){
       search:this.searchText,
   
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {     
+    this.user.getcurrencylist(data).subscribe((res) => {     
       this.rowData5 = res.response;
     });
     console.log('rolefilter', this.statusTypes)
@@ -604,11 +640,12 @@ onStatusSelect(item: any) {
   this.statusTypes.push(item.statusId);
 
   const data={
-    userTypes:this.userTypes,
+    // userTypes:this.userTypes,
     statuss:this.statusTypes,
-    search:this.searchText,
+    // search:this.searchText,
+    search:"",
   }
-  this.user.getuserDeatilsUser(data).subscribe((res) => {     
+  this.user.getcurrencylist(data).subscribe((res) => {     
     this.rowData5 = res.response;
   });
   
@@ -628,7 +665,7 @@ onItemDeSelect(item: any) {
     search:this.searchText,
 
   }
-  this.user.getuserDeatilsUser(data).subscribe((res) => {     
+  this.user.getcurrencylist(data).subscribe((res) => {     
     this.rowData5 = res.response;
   });
 
@@ -648,7 +685,7 @@ console.log(' this.statusTypes', this.userTypes)
     search:this.searchText,
 
   }
-  this.user.getuserDeatilsUser(data).subscribe((res) => {     
+  this.user.getcurrencylist(data).subscribe((res) => {     
     this.rowData5 = res.response;
   });
   console.log('rolefilter', this.userTypes)
@@ -728,7 +765,7 @@ console.log(' this.statusTypes', this.userTypes)
       statuss:this.statusTypes,
       search:this.searchText,
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {     
+    this.user.getcurrencylist(data).subscribe((res) => {     
       this.rowData5 = res.response;
     });
 

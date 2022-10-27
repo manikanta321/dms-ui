@@ -118,9 +118,18 @@ public changepassword(data){
   return this.http.post<any>(this.userurl + 'UserMgmtApi/UpdatePasswordByAdmin', data);
 }
 
-
-
-
+public getcurrencylist(data){
+  return this.http.post<any>(this.userurl + 'OtherMasterApi/GetCurrencyList', data);
+}
+public otherstatus(data){
+  return this.http.post<any>(this.userurl + 'OtherMasterApi/GetStatusList', data);
+}
+public addcurrency(data){
+  return this.http.post<any>(this.userurl + 'OtherMasterApi/AddEditCurrency', data);
+}
+// http://52.172.24.161:801/api/OtherMasterApi/AddEditCurrency
+// http://52.172.24.161:801/api/OtherMasterApi/GetStatusList
+// http://52.172.24.161:801/api/OtherMasterApi/GetCurrencyList
 
                             //  http://52.172.24.161:801/api/GetUserTypes
 //   User types dropdown : - http://52.172.24.161:801/api/GetUserTypes

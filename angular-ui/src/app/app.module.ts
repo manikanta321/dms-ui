@@ -85,6 +85,7 @@ import { AddProductSubGroupComponent } from './component/materials-list/add-prod
 import{UseractionComponent} from './component/useraction/useraction.component';
 import { OrderListComponent } from './component/order-list/order-list.component';
 import { DateRangePickerModule } from '@uiowa/date-range-picker';
+import { AddItemsPromotionComponent } from './component/promotions/add-items-promotion/add-items-promotion.component';
 
 @NgModule({
   declarations: [
@@ -140,6 +141,7 @@ import { DateRangePickerModule } from '@uiowa/date-range-picker';
     
     UseractionComponent,
           OrderListComponent,
+          AddItemsPromotionComponent,
   ],
   imports: [
     FormsModule,

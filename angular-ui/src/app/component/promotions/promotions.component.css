@@ -438,21 +438,7 @@ left: 37%
             font-size: 14px;
             font-weight: 900;
           }
-         ::ng-deep.form-control{
-            background-color: #fdfdfd!important;
-            display: none !important;
-          }
-          ::ng-deep.dropdown-menu {
-            left: -285px !important;
-            font-size: 12px;
-        }
-        ::ng-deep.btn-outline-secondary {
-          height: 43px;
-        }
-        ::ng-deep.btn-outline-secondary:hover{
-          color: white;
-          background: #655356;
-        }
+         
         ::ng-deep.custom-day.weekend {
           color: black !important;
       }

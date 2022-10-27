@@ -86,6 +86,10 @@ import{UseractionComponent} from './component/useraction/useraction.component';
 import { OrderListComponent } from './component/order-list/order-list.component';
 import { DateRangePickerModule } from '@uiowa/date-range-picker';
 import { AddItemsPromotionComponent } from './component/promotions/add-items-promotion/add-items-promotion.component';
+import { UomActionComponent } from './component/uom-action/uom-action.component';
+import { DeleteUomPopupComponent } from './component/delete-uom-popup/delete-uom-popup.component';
+import { DeleteUomSuccessfullPopupComponent } from './component/delete-uom-successfull-popup/delete-uom-successfull-popup.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
   declarations: [
@@ -138,10 +142,13 @@ import { AddItemsPromotionComponent } from './component/promotions/add-items-pro
     SelectProductComponent,
     AddProductGroupComponent,
     AddProductSubGroupComponent,
-    
     UseractionComponent,
           OrderListComponent,
           AddItemsPromotionComponent,
+    OrderListComponent,
+    UomActionComponent,
+    DeleteUomPopupComponent,
+    DeleteUomSuccessfullPopupComponent,
   ],
   imports: [
     FormsModule,
@@ -177,7 +184,8 @@ import { AddItemsPromotionComponent } from './component/promotions/add-items-pro
     MatCardModule,
     MatStepperModule,
     MatChipsModule,
-    DateRangePickerModule 
+    DateRangePickerModule,
+    NgbModule 
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

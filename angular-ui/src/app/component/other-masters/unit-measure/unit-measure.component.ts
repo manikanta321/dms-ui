@@ -53,6 +53,10 @@ import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { UomPopupComponent } from '../../users/userPopups/uom-popup/uom-popup.component';
+import { UomServicesService } from 'src/app/services/uom-services.service';
+import { UseractionComponent } from '../../useraction/useraction.component';
+import { UomActionComponent } from '../../uom-action/uom-action.component';
+import { SharedService } from 'src/app/services/shared-services.service';
 @Component({
   selector: 'app-unit-measure',
   templateUrl: './unit-measure.component.html',
@@ -70,18 +74,19 @@ public popupParent: HTMLElement = document.body;
 columnDefs: ColDef[] = [ 
 
   { headerName: "Name",
-field: 'Name' ,type: ['nonEditableColumn'], sort: 'desc',pinned: 'left',
+field: 'uoMName' ,type: ['nonEditableColumn'], sort: 'desc',maxWidth:700
 },
 
-{   headerName: "Display Code",field: 'DisplayCode',type: ['nonEditableColumn']},
+{   headerName: "Display Code",field: 'uoMShortName',type: ['nonEditableColumn']},
 
 // suppressMovable:true,
 { headerName: "Status",
- field: 'status', 
+ field: 'statusName', 
  type: ['nonEditableColumn'],
 cellEditor: 'agSelectCellEditor',
 cellEditorParams: {
 values: ['Active', 'Inactive', 'Invited', 'Locked',],
+maxWidth:300
 },
 cellClass: params => {                      
   return params.value == 'Inactive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
@@ -89,13 +94,21 @@ cellClass: params => {
 },
 { 
 
-   headerName: "",
-field: '',  filter: false, sortable: false,
-cellRenderer: function clickNextRendererFunc(){
-  return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
-}, 
- cellEditorPopup: true,
+//    headerName: "",
+// field: '',  filter: false, sortable: false,
+// cellRenderer: function clickNextRendererFunc(){
+//   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
+// }, 
+//  cellEditorPopup: true,
 //  onCellClicked: (event: CellClickedEvent) => this.dialog.open( DeletecomponentComponent)
+
+
+headerName: '',
+colId: 'action',
+cellRenderer: UomActionComponent,
+editable: false,
+maxWidth:120
+
 
 },
 
@@ -108,21 +121,23 @@ cellRenderer: function clickNextRendererFunc(){
 
 ];
 
-public rowData5=[
-  {Name: 'Name', DisplayCode: 'Rajasheka S',status:'Active'},
-  {Name: 'Name', DisplayCode: 'Raj S',status:'InActive'},
+rowData5=[];
 
-  {Name: 'Name', DisplayCode: 'kariya S',status:'Active'},
+// public rowData5=[
+//   {Name: 'Name', DisplayCode: 'Rajasheka S',status:'Active'},
+//   {Name: 'Name', DisplayCode: 'Raj S',status:'InActive'},
 
-  {Name: 'Name', DisplayCode: 'ssampath S',status:'InActive'},
+//   {Name: 'Name', DisplayCode: 'kariya S',status:'Active'},
 
-  {Name: 'Name', DisplayCode: 'Raj',status:'Active'},
+//   {Name: 'Name', DisplayCode: 'ssampath S',status:'InActive'},
 
-  {Name: 'Name', DisplayCode: 'shekar',status:'InActive'},
+//   {Name: 'Name', DisplayCode: 'Raj',status:'Active'},
+
+//   {Name: 'Name', DisplayCode: 'shekar',status:'InActive'},
 
 
  
-];
+// ];
 
 rowData :any;
 rowData1=[]
@@ -224,12 +239,12 @@ public pivotPanelShow = 'always';
   userId: any;
   roleArray:any[] = [];
   statusArray:any=[];
-
-  
+  searchText:any;  
   start: number = 0;
   limit: number = 15;
+  uomName:any;
   end: number = this.limit + this.start;
-
+  UomId:any;
   gridsOptions = {
     defaultColDef: {
       sortable: true,
@@ -249,8 +264,15 @@ public pivotPanelShow = 'always';
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
     private user:UserService,
-    private observer: BreakpointObserver
-   ) {
+    private observer: BreakpointObserver,
+    private uomservise:UomServicesService,
+    private sharedService:SharedService,
+
+   ) { this.sharedService.listen().subscribe((m:any)=>{
+    console.log(m)
+    this.getusertabeldata()
+
+  })
       sort:[];
      }
      onFirstDataRendered(params: FirstDataRenderedEvent) {
@@ -276,8 +298,7 @@ public pivotPanelShow = 'always';
 
   ngOnInit(): void {
   this.getusertabeldata();
-  this.roleItems();
-  this.statusItems();
+
   }
   refresh(){
     this.toppings = new FormControl(this.toppingList);
@@ -293,22 +314,27 @@ this.getusertabeldata();
   }
 
 getusertabeldata(){
-  this.user.getuserDeatils().subscribe((res: any) => {
-      
-    this.rowData = res.response;
-    if (this.rowData.length >= 1) {
-    this.rowData.forEach((element: { [x: string]: any; }) => {
-    if (element['status']=='Confirmed'){
-}
-    else{
-      element['isActive']=='Inactive'
-
-    }
-console.log('element',element['isActive'])
-    });
+  const data={
+    search:"",
   }
+  this.uomservise.getuomDeatils(data).subscribe((res: any) => {
+    console.log('uom list',res.response)
+    
+   this.rowData5=res.response;
 
-    console.log('row data',this.rowData1)
+  });
+}
+
+onSearchChange($event:any , anything?:any){
+  const { target } = $event;
+  this.searchText=target.value;
+  const data={
+    search:this.searchText,
+  }
+  this.uomservise.getuomDeatils(data).subscribe((res: any) => {
+    console.log('uom list',res.response)
+    
+   this.rowData5=res.response;
 
   });
 }
@@ -456,11 +482,34 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
 
 
   // Example of consuming Grid Event
-  onCellClicked( e: CellClickedEvent): void {
+  onCellClicked( e): void {
     console.log('cellClicked', e);
+    this.UomId=e.data.uoMId;
+    this.uomName=e.data.uoMName;
+    // this.employeeName=e.data.userName;
+    // console.log('userID',this.userId);
+    localStorage.setItem('UomId',e.data.uoMId )
+    localStorage.setItem('UomName',e.data.uoMName)
+    
+    localStorage.setItem('niId',e.data.uoMId )
+    localStorage.setItem('Niname',e.data.uoMName)
+    // localStorage.setItem('employeeName',this.employeeName )
+    if (
+      e.event.target.dataset.action == 'toggle' &&
+      e.column.getColId() == 'action'
+    ) {
+      const cellRendererInstances = e.api.getCellRendererInstances({
+        rowNodes: [e.node],
+        columns: [e.column],
+      });
+      if (cellRendererInstances.length > 0) {
+        const instance = cellRendererInstances[0];
+        instance.togglePopup();
+
+      }
+    }
+
   }
-
-
   onCellValueChanged(event: CellValueChangedEvent) {
     alert(event.value)
     console.log(

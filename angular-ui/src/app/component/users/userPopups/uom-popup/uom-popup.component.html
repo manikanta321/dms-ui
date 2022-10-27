@@ -13,7 +13,7 @@
           <div class="col">
             <label>Name <span>*</span></label>
             <br />
-            <input type="text" placeholder="Enter  name" />
+            <input type="text" placeholder="Enter  name" [(ngModel)]="name" />
             <br />
             <br />
           </div>
@@ -23,13 +23,13 @@
           <div class="col">
             <label>Display Code<span>*</span></label>
             <br />
-            <input type="text" placeholder="Enter your Display Code" />
+            <input type="text" placeholder="Enter your Display Code"  [(ngModel)]="DisplayCode"/>
           </div>
         </div>
       </form>
     </div>
 
-    <button class="btn btn-dark uombtn btn-block">Add</button>
+    <button class="btn btn-dark uombtn btn-block" [disabled]="!DisplayCode || !name" (click)="addUom()">Add</button>
     <span>*Required Fields</span>
   </div>
 </div>

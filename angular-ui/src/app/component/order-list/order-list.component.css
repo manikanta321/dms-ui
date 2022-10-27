@@ -32,8 +32,8 @@
 }
 
 .input-field {
-    Width: 215px;
-    Height: 43px;
+    width: 215px;
+    height: 43px;
     padding: 10px;
     left: 130px;
     text-align: center;
@@ -41,8 +41,8 @@
 }
 
 .dropDown-field {
-    Width: 215px;
-    Height: 43px;
+    width: 215px;
+    height: 43px;
     left: 130px;
     text-align: center;
     border-radius: 8px;

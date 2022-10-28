@@ -1,115 +1,101 @@
+<div class="sidenavbar" [ngClass]="collapsed ? 'sidenav-collapsed': ''" (mouseenter)="collapsed=true"
+    (mouseleave)="collapsed=false" (click)="toogleCollapsed()">
+    <mat-list>
 
-  
-    <div class="sidenavbar" [ngClass]="collapsed ? 'sidenav-collapsed': ''" (mouseenter)="collapsed=true" (mouseleave)="collapsed=false" (click)="toogleCollapsed()"
-    >
-<mat-list >
+        <mat-list-item id="active">
+            <img src="../../../assets/sidebarImages/sidenav-dashboard.svg" alt="">
+            <!-- <mat-icon>dashboard</mat-icon>  -->
+            <!-- <mat-icon (click)="close()" class="btnclose">close</mat-icon> -->
+            <span routerLink="/maindashbord" class="dasb-menu cursor-pointer" routerLinkActive="active"
+                *ngIf="collapsed">Dashboard</span>
 
-    <mat-list-item id="active">
-   <img src="../../../assets/sidebarImages/sidenav-dashboard.svg" alt="">
-    <!-- <mat-icon>dashboard</mat-icon>  -->
-    <!-- <mat-icon (click)="close()" class="btnclose">close</mat-icon> -->
-    <span routerLink="/maindashbord" class="dasb-menu cursor-pointer"
-   
-    routerLinkActive="active" *ngIf="collapsed">Dashboard</span>
-   
-   </mat-list-item>
-   
-   
-    <mat-list-item  routerLink="/dashbord/oreders" routerLinkActive="active">
-        <img src="../../../assets/sidebarImages/sidenav-orders.svg" alt="">
-   <!-- <mat-icon >card_travel</mat-icon>  -->
-   <span *ngIf="collapsed"  >Orders</span>
-   
-  </mat-list-item>
-   
-    <mat-list-item>
-        <img src="../../../assets/sidebarImages/sidenav-products.svg" alt="">
-        <!-- <mat-icon>store_mall_directory</mat-icon> -->
-         <span *ngIf="collapsed">Products</span>
         </mat-list-item>
-   
-<!-- <mat-list-item>
+
+
+        <mat-list-item routerLink="/dashbord/oreders" routerLinkActive="active">
+            <img src="../../../assets/sidebarImages/sidenav-orders.svg" alt="">
+            <!-- <mat-icon >card_travel</mat-icon>  -->
+            <span *ngIf="collapsed">Orders</span>
+
+        </mat-list-item>
+
+        <mat-list-item>
+            <img src="../../../assets/sidebarImages/sidenav-products.svg" alt="">
+            <!-- <mat-icon>store_mall_directory</mat-icon> -->
+            <span *ngIf="collapsed">Products</span>
+        </mat-list-item>
+
+        <!-- <mat-list-item>
    
 <mat-icon>bar_chart</mat-icon> 
 <span *ngIf="collapsed">Reports</span>
 </mat-list-item> -->
-   
-    <mat-list-item>
-        <img src="../../../assets/sidebarImages/sidenav-dealer.svg" alt="">
-        <!-- <mat-icon>people</mat-icon> -->
-         <span 
-   
-    class="dash-menu" routerLink="/dashbord/dealer" routerLinkActive="active" *ngIf="collapsed">Dealer</span></mat-list-item>
-   
-    <mat-accordion >
-   
-   
-   
-    <mat-expansion-panel (click)="toogleCollapsed()" class="expnsnpanl">
-   
-    <mat-expansion-panel-header>
-   
-   <mat-panel-title >
-    <img src="../../../assets/sidebarImages/sidenav-settings.svg" alt="">
-  <!-- <mat-icon>settings</mat-icon> -->
-  <span *ngIf="collapsed">Settings</span>
-   
-   
-   
-  </mat-panel-title>
-   
-</mat-expansion-panel-header >
-    <mat-list-item  class="droplist" style="font-size: 14px; cursor: pointer;" routerLink="/dashbord/user"  class="btn-link " routerLinkActive="active"
-        (click)="closePanel()" >
-            <img src="../../../assets/sidebarImages/sidenav-sub-users.svg" alt="">
-                <!-- <mat-icon>person icon</mat-icon>    -->
-        <span *ngIf="collapsed">Users</span>
-    </mat-list-item>
-    
-    <mat-list-item class="droplist"  style="font-size: 14px; cursor: pointer;" routerLink="/dashbord/materials" class="btn-link " routerLinkActive="active"
-        (click)="closePanel()">
-            <img src="../../../assets/sidebarImages/sidenav-sub-material.svg" alt="">
-            <!-- <mat-icon>store mall directory icon</mat-icon>    -->
-            <span *ngIf="collapsed">Materials</span>
-    </mat-list-item>
-           
-    <mat-list-item class="droplist"   style="font-size: 14px; cursor: pointer;"   class="btn-link " routerLink="/dashbord/geographies" routerLinkActive="active"
-        (click)="closePanel()">
-            <img src="../../../assets/sidebarImages/sidenav-sub-geography.svg" alt="">
-                <!-- <mat-icon> map icon</mat-icon>    -->
-            <span  *ngIf="collapsed">Geographies</span>
-    </mat-list-item>
 
-    <mat-list-item class="droplist"  style="font-size: 14px; cursor: pointer;" class="btn-link " routerLink="/dashbord/other-masters" routerLinkActive="active"
-        (click)="closePanel()">
-            <img src="../../../assets/sidebarImages/sidenav-sub-othermaster.svg" alt="">
-            <!-- <mat-icon>person_outline</mat-icon>    -->
-        <span  *ngIf="collapsed">Other Masters</span>
-    </mat-list-item>
-  
-   
-   
- </mat-expansion-panel>
-   
-</mat-accordion>
-   
-<mat-list-item style="position: relative; top:50px">
-   <img src="../../../assets/sidebarImages/sidenav-help.svg" alt="">
-<!-- <mat-icon>help</mat-icon>  -->
-<span *ngIf="collapsed" >Help</span>
-   
-</mat-list-item>
-   
-</mat-list>
+        <mat-list-item>
+            <img src="../../../assets/sidebarImages/sidenav-dealer.svg" alt="">
+            <!-- <mat-icon>people</mat-icon> -->
+            <span class="dash-menu" routerLink="/dashbord/dealer" routerLinkActive="active"
+                *ngIf="collapsed">Dealer</span>
+        </mat-list-item>
+
+        <mat-accordion>
+
+
+
+            <mat-expansion-panel (click)="toogleCollapsed()" class="expnsnpanl">
+
+                <mat-expansion-panel-header>
+
+                    <mat-panel-title>
+                        <img src="../../../assets/sidebarImages/sidenav-settings.svg" alt="">
+                        <!-- <mat-icon>settings</mat-icon> -->
+                        <span *ngIf="collapsed">Settings</span>
+
+
+
+                    </mat-panel-title>
+
+                </mat-expansion-panel-header>
+                <mat-list-item class="droplist" style="font-size: 14px; cursor: pointer;" routerLink="/dashbord/user"
+                    class="btn-link " routerLinkActive="active" (click)="closePanel()">
+                    <img src="../../../assets/sidebarImages/sidenav-sub-users.svg" alt="">
+                    <!-- <mat-icon>person icon</mat-icon>    -->
+                    <span *ngIf="collapsed">Users</span>
+                </mat-list-item>
+
+                <mat-list-item class="droplist" style="font-size: 14px; cursor: pointer;"
+                    routerLink="/dashbord/materials" class="btn-link " routerLinkActive="active" (click)="closePanel()">
+                    <img src="../../../assets/sidebarImages/sidenav-sub-material.svg" alt="">
+                    <!-- <mat-icon>store mall directory icon</mat-icon>    -->
+                    <span *ngIf="collapsed">Materials</span>
+                </mat-list-item>
+
+                <mat-list-item class="droplist" style="font-size: 14px; cursor: pointer;" class="btn-link "
+                    routerLink="/dashbord/geographies" routerLinkActive="active" (click)="closePanel()">
+                    <img src="../../../assets/sidebarImages/sidenav-sub-geography.svg" alt="">
+                    <!-- <mat-icon> map icon</mat-icon>    -->
+                    <span *ngIf="collapsed">Geographies</span>
+                </mat-list-item>
+
+                <mat-list-item class="droplist" style="font-size: 14px; cursor: pointer;" class="btn-link "
+                    routerLink="/dashbord/other-masters" routerLinkActive="active" (click)="closePanel()">
+                    <img src="../../../assets/sidebarImages/sidenav-sub-othermaster.svg" alt="">
+                    <!-- <mat-icon>person_outline</mat-icon>    -->
+                    <span *ngIf="collapsed">Other Masters</span>
+                </mat-list-item>
+
+
+
+            </mat-expansion-panel>
+
+        </mat-accordion>
+
+        <mat-list-item style="position: relative; top:50px">
+            <img src="../../../assets/sidebarImages/sidenav-help.svg" alt="">
+            <!-- <mat-icon>help</mat-icon>  -->
+            <span *ngIf="collapsed">Help</span>
+
+        </mat-list-item>
+
+    </mat-list>
 </div>
-
-
-
-
-
-
-
-
-
-
-

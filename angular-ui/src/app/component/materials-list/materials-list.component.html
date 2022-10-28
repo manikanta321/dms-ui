@@ -7,7 +7,7 @@
   <div class="row d-flex">
       <div class="col-xl-12 col-md-12 ACVTY-no-pad" style="width: 100%;">
           <div class="UNFAPP-asmnt-rgt-area" style="height: 92vh;">
-            <div class="row" style="position: relative;top: 3%; width: 118%;">
+            <div class="row" style="position: relative;top: 5%; width: 118%;">
               <div class="col-md-2 col-lg-2 col-sm-2">
                 <form [formGroup]="myForm">
               <ng-multiselect-dropdown class="catty"
@@ -16,9 +16,11 @@
                   formControlName="city"
                   [disabled]="disabled"
                   [settings]="dropdownSettings"
-                  [data]="toppingList"
+                  [data]="catgname"
                   (onSelect)="onItemSelect($event)"
-                  (onSelectAll)="onSelectAll($event)">
+                  (onDeSelect)="onItemDeSelect($event)"
+                  (onDeSelectAll)="onItemDeSelectOrAll($event)"
+                  (onSelectAll)="onItemSelectOrAll($event)">
               </ng-multiselect-dropdown>
          </form>
             </div>
@@ -30,7 +32,7 @@
                 formControlName="subCategory"
                 [disabled]="disabled"
                 [settings]="dropdownSettings2"
-                [data]="toppingList2"
+                [data]="subCatty"
                 (onSelect)="onSubCategorySelect($event)"
                 (onSelectAll)="onSubCategoryAll($event)">
             </ng-multiselect-dropdown>
@@ -44,7 +46,7 @@
               formControlName="type"
               [disabled]="disabled"
               [settings]="dropdownSettings3"
-              [data]="toppingList3"
+              [data]="typss"
               (onSelect)="onTypeSelect($event)"
               (onSelectAll)="onTypeAll($event)">
           </ng-multiselect-dropdown>
@@ -58,9 +60,11 @@
             formControlName="product"
             [disabled]="disabled"
             [settings]="dropdownSettings4"
-            [data]="toppingList4"
+            [data]="Product"
             (onSelect)="onProductSelect($event)"
-            (onSelectAll)="onProductAll($event)">
+            (onDeSelect)="onProductDeSelect($event)"
+            (onDeSelectAll)="onProductDeSelectOrAll($event)"
+            (onSelectAll)="onProductSelectOrAll($event)">
         </ng-multiselect-dropdown>
         </form>
         </div>
@@ -72,7 +76,7 @@
                 formControlName="citys"
                 [disabled]="disabled"
                 [settings]="dropdownSettings1"
-                [data]="toppingList1"
+                [data]="statusList"
                 (onSelect)="onStatusSelect($event)"
                 (onSelectAll)="onStatusAll($event)">
             </ng-multiselect-dropdown>
@@ -85,11 +89,11 @@
            <!-- <div class="printImg">
             <img src="../../../assets/material/print-img.svg" alt="">
           </div> -->
-        <div class="col-md-4" style="margin-left: 88%;position: relative;top: 7%;">
+        <div class="col-md-4" style="margin-left: 88%;position: relative;top: 8%;">
           <div class="row">
           <div class="col-md-2">
         <div class="searchBox searchresp d-flex">
-          <input class="searchInput" style="font-family: 'Gilroy'" type="text" name="" placeholder="Type & search for anything" >
+          <input class="searchInput" style="font-family: 'Gilroy'" type="text" name="" placeholder="Type & search for anything"(keyup)="onSearchChange($event)" >
           <button class="searchButton" href="#"> 
               <i class="material-icons">
                   search
@@ -112,7 +116,7 @@
     </div>
            <ag-grid-angular
            id="gridContainer"
-           style="width: 100%; height: 440px;border-radius: 20px;background-color: white;font-family: Gilroy;position: relative;top: 9%;"
+           style="width: 100%; height: 440px;border-radius: 20px;background-color: white;font-family: Gilroy;position: relative;top: 9.5%;"
            class="ag-theme-material"
            [rowHeight]="32"
            [headerHeight]="52"

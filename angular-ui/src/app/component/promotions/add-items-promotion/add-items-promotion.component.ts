@@ -3,6 +3,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import * as moment from 'moment';
 import { MatTableDataSource } from '@angular/material/table';
 import { CellClassParams, CellClassRules, CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef, GridApi, GridOptions, ModuleRegistry, ColumnResizedEvent, Grid, } from 'ag-grid-community';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 export interface PeriodicElement {
 
   name: any;
@@ -43,6 +44,7 @@ export class AddItemsPromotionComponent implements OnInit {
   });
   isLinear = false;
   private gridApi!: GridApi;
+  searchText;
   columnDefs: ColDef[] = [
 
     {
@@ -192,6 +194,9 @@ export class AddItemsPromotionComponent implements OnInit {
     message: boolean = false;
     message1: boolean = true;
     paginationPageSize = 10;
+    disabled = false;
+    dropdownSettings: IDropdownSettings = {};
+    dropdownSettings1: IDropdownSettings = {};
   constructor(private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {

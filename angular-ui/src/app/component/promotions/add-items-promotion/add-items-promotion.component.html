@@ -1,30 +1,53 @@
 <div class="comntainer">
   <div class="add-item">
+    <div class="addUser">
+      <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+  </div>
+  <div class="head-t">
+      <h3 class="addU font">Add Items: <b style="color: black;">Product</b></h3>
+    </div>
 <mat-stepper [linear]="isLinear" #stepper>
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>product</ng-template>
       <div class="drpd d-flex">
-      <div class="search">
+      <!-- <div class="search">
         <input type="text" placeholder="category">
         <mat-icon>search</mat-icon>
-      </div>
-      <div class="search">
-        <input type="text" placeholder="category">
+      </div> -->
+      <div class="search-hero d-flex">
+        <input class="form-control" type="search"  [(ngModel)]="searchText" autocomplete="off" 
+        placeholder=" search"  name="search">
         <mat-icon>search</mat-icon>
       </div>
-      <div class="search">
-        <input type="text" placeholder="category">
+      <div class="search-hero d-flex">
+        <input class="form-control" type="search"  [(ngModel)]="searchText" autocomplete="off" 
+        placeholder=" search"  name="search">
         <mat-icon>search</mat-icon>
       </div>
-      <div class="search">
-        <input type="text" placeholder="category">
+      <div class="search-hero d-flex">
+        <input class="form-control" type="search"  [(ngModel)]="searchText" autocomplete="off" 
+        placeholder=" search"  name="search">
+        <mat-icon>search</mat-icon>
+      </div>
+      <div class="search-hero d-flex">
+        <input class="form-control" type="search"  [(ngModel)]="searchText" autocomplete="off" 
+        placeholder=" search"  name="search">
         <mat-icon>search</mat-icon>
       </div>
 
       <div class="ref"><img class="refresh" src="assets/img/Vector.png" alt="refresh"></div>
-      
     </div>
+    <!-- <div class="row"> -->
+      <div class=" mt-2" style="width: 207.5px;
+      height: 43px;">
+        <form>
+          <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'Roles'" formControlName="city"
+            [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList">
+          </ng-multiselect-dropdown>
+        </form>
+      </div>
+    <!-- </div> -->
     <div class="col-md-4 mt-3" style="margin-left: 40%;margin-bottom:10px">
       <div class="row">
         <div class="col-md-8">
@@ -56,38 +79,124 @@
     <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
       class="pagination-cls">{{rowData5.length}}</span>
   </div>
-  <button class="addItem-btn btn-btn-primary">Add items</button>
+  <div class="addbtn mt-3 text-center">
+    <button class="addItem-btn btn-btn-primary">Add items</button>
+  </div>
   </mat-step>
  
 
-  <!-- second -->
-  <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
-    <form [formGroup]="secondFormGroup">
-      <mat-form-field appearance="fill">
-        <mat-label>Product Short Code</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
+  <!-- step2 -->
   <mat-step>
     <ng-template matStepLabel>Product Group</ng-template>
-    <p>You are now done.</p>
+    <div class="col-md-4 mt-3" style="margin-left: 40%;margin-bottom:10px">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="searchBox d-flex">
+            <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+              placeholder="Type & search for anything">
+            <button class="searchButton" href="#">
+              <i class="material-icons">
+                search
+              </i>
+            </button>
+            <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- grid -->
     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+      <ag-grid-angular id="gridContainer"
+      style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
+      class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
+      [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
+      [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
+      (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
+      (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+      (bodyScroll)="handleScroll($event)"></ag-grid-angular>
+    </div>
+    <div class="pagination">
+      <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
+        class="pagination-cls">{{rowData5.length}}</span>
+    </div>
+    <div class="addbtn mt-3 text-center">
+      <button class="addItem-btn btn-btn-primary">Add items</button>
     </div>
   </mat-step>
+  <!-- step3 -->
+  <mat-step>
+    <ng-template matStepLabel>Product Group</ng-template>
+    <div class="col-md-4 mt-3" style="margin-left: 40%;margin-bottom:10px">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="searchBox d-flex">
+            <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+              placeholder="Type & search for anything">
+            <button class="searchButton" href="#">
+              <i class="material-icons">
+                search
+              </i>
+            </button>
+            <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- grid -->
+    <div>
+      <ag-grid-angular id="gridContainer"
+      style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
+      class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
+      [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
+      [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
+      (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
+      (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+      (bodyScroll)="handleScroll($event)"></ag-grid-angular>
+    </div>
+    <div class="pagination">
+      <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
+        class="pagination-cls">{{rowData5.length}}</span>
+    </div>
+    <div class="addbtn mt-3 text-center">
+      <button class="addItem-btn btn-btn-primary">Add items</button>
+    </div>
+  </mat-step>
+  <!-- step4 -->
   <mat-step>
     <ng-template matStepLabel>Product Sub-Group</ng-template>
-    <p>You are now done.</p>
+    <div class="col-md-4 mt-3" style="margin-left: 40%;margin-bottom:10px">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="searchBox d-flex">
+            <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+              placeholder="Type & search for anything">
+            <button class="searchButton" href="#">
+              <i class="material-icons">
+                search
+              </i>
+            </button>
+            <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- grid -->
     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+      <ag-grid-angular id="gridContainer"
+      style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
+      class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
+      [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
+      [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
+      (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
+      (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+      (bodyScroll)="handleScroll($event)"></ag-grid-angular>
+    </div>
+    <div class="pagination">
+      <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
+        class="pagination-cls">{{rowData5.length}}</span>
+    </div>
+    <div class="addbtn mt-3 text-center">
+      <button class="addItem-btn btn-btn-primary">Add items</button>
     </div>
   </mat-step>
 </mat-stepper>

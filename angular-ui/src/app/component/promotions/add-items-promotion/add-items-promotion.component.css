@@ -168,7 +168,7 @@
   }
   
   .head-t h3 {
-    color: #000000;
+    color: #686E74;
     text-align: center;
     margin-top: -18px;
     margin-bottom: 2px;
@@ -177,30 +177,30 @@
   .addU {
     position: relative;
     /* font-family: 'Gilroy-Bold';  */
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 20px;
   }
   
   .addU:after {
     content: "";
     display: block;
-    width: 280px;
-    height: 2px;
-    background: #686E74;
-    right: 0;
+    width: 314px;
+    height: 0px;
+    right: 45px;
     top: 50%;
     position: absolute;
+    border: 0.5px solid rgba(104, 110, 116, 0.75);
   }
   
   .addU:before {
     content: "";
     display: block;
-    width: 280px;
-    height: 2px;
-    background: #686E74;
-    left: 0;
+    width: 314px;
+    height: 0px;
+    left: 45px;
     top: 50%;
     position: absolute;
+    border: 0.5px solid rgba(104, 110, 116, 0.75);
   }
   
   .addUserForm input {
@@ -725,7 +725,12 @@
     left: 414px;
 }
 mat-icon{
-  margin-left: -25px;
+  position: relative;
+  top: 7px;
+  left: -36px;
+}
+.search{
+margin-right: 10px;
 }
 .search input{
   width: 207.5px;
@@ -828,15 +833,32 @@ border-radius: 10px;
 .addItem-btn{
   width: 106px;
 height: 39px;
-right: 469px;
-top: 789px;
-
-font-family: 'Gilroy-SemiBold';
-font-size: 15px;
-line-height: 18px;
-display: flex;
+border-radius: 8px;
 align-items: center;
 text-align: center;
 background: #000;
 color: #FFFFFF;
 }
+::ng-deep.add-item .mat-stepper-horizontal-line {
+      border-top-style: none; 
+}
+::ng-deep .add-item .mat-horizontal-stepper-header-container{
+  width: 50% !important;
+  margin: auto;
+  padding: 0;
+}
+::ng-deep .add-item .mat-horizontal-stepper-header{
+padding: 0;
+}
+::ng-deep .add-item .mat-step-header .mat-step-icon-selected{
+background: #000;
+}
+
+/* .search-hero input{
+  border: 1px solid #555;
+  width: 100%;
+  padding: 9px 4px 9px 40px;
+   background: white url(../../../../assets/img/search-icon.svg)
+   no-repeat 13px center;
+   float: right;
+} */

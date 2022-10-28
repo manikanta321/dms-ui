@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import * as moment from 'moment';
 import { MatTableDataSource } from '@angular/material/table';
 import { CellClassParams, CellClassRules, CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef, GridApi, GridOptions, ModuleRegistry, ColumnResizedEvent, Grid, } from 'ag-grid-community';
@@ -7,7 +7,8 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ProductShortCodeComponent } from '../product-short-code/product-short-code.component';
 import { ProductGroupAddItemComponent } from '../product-group-add-item/product-group-add-item.component';
-import { ProductSubGroupComponent } from '../product-sub-group/product-sub-group.component';
+import { AddItemsPromotionComponent } from '../add-items-promotion/add-items-promotion.component';
+import { UserService } from 'src/app/services/user.service';
 export interface PeriodicElement {
 
   name: any;
@@ -34,67 +35,37 @@ const ELEMENT_DATA: PeriodicElement[] = [
   { position: '6004005006', name: 'prajwal vT', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Locked' },
 
 ];
+
 @Component({
-  selector: 'app-add-items-promotion',
-  templateUrl: './add-items-promotion.component.html',
-  styleUrls: ['./add-items-promotion.component.css']
+  selector: 'app-product-sub-group',
+  templateUrl: './product-sub-group.component.html',
+  styleUrls: ['./product-sub-group.component.css']
 })
-export class AddItemsPromotionComponent implements OnInit {
-  // firstFormGroup = this._formBuilder.group({
-  //   firstCtrl: ['', Validators.required],
-  // });
-  // secondFormGroup = this._formBuilder.group({
-  //   secondCtrl: ['', Validators.required],
-  // });
-  // isLinear = false;
+export class ProductSubGroupComponent implements OnInit {
   private gridApi!: GridApi;
   searchText;
   columnDefs: ColDef[] = [
 
     {
-      headerName: "Porduct Name",
+      headerName: "Product Sub-Group",
       field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
     },
 
-    { headerName: "Classification", field: 'userName', type: ['nonEditableColumn'] },
+    { headerName: "", field: '', type: ['nonEditableColumn'] },
 
-    { headerName: "Role", field: 'roleName', type: ['nonEditableColumn'] },
+    { headerName: "Product Group", field: '', type: ['nonEditableColumn'] },
 
     {
-      headerName: "SKU",
-      field: 'email', type: ['nonEditableColumn']
+      headerName: "",
+      field: '', type: ['nonEditableColumn']
     },
 
     {
-      headerName: "Product Identifier",
+      headerName: "#of Products",
       field: 'mobile', type: ['nonEditableColumn']
-    },
+    },  
 
-    {
-      headerName: "product Group",
-      // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-      field: 'lastLoginDate', type: ['nonEditableColumn'],
-      cellRenderer: function dateFormtter(params) {
-        return moment(params.value).format('DD MMM YYYY, HH:mm A')
-      }
-    },
     // suppressMovable:true,
-    {
-      headerName: "Product Code",
-      field: 'statusName',
-      type: ['nonEditableColumn'],
-      cellEditor: 'agSelectCellEditor',
-      cellEditorParams: {
-        values: ['Active', 'Inactive', 'Invited', 'Locked',],
-      },
-      cellClass: params => {
-        return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
-      }
-    },
-    {
-      headerName: "Product Shot Code",
-      field: 'email', type: ['nonEditableColumn']
-    },
     {
       headerName: '',
       colId: 'action',
@@ -188,7 +159,8 @@ export class AddItemsPromotionComponent implements OnInit {
   
     // toppingList: string[] = ['Admin', 'Dealer','Customer'];
     toppingList: any = [];
-  
+    myForm:any= FormGroup;
+    myForms:any= FormGroup;
     toppingList1: any = [];
     filterDictionary: any;
     sideBarOpen = true;
@@ -204,15 +176,59 @@ export class AddItemsPromotionComponent implements OnInit {
     disabled = false;
     dropdownSettings: IDropdownSettings = {};
     dropdownSettings1: IDropdownSettings = {};
-    productchk:boolean=true;
+    productchk:boolean=false;
     prodShtCode:boolean=false;
     productGrpChk:boolean=false;
-    productSubGChk:boolean=false;
+    productSubGChk:boolean=true;
+    userTypes: any = [];
+    statusTypes: any = [];
+    statusArray: any = [];
+    toppings = new FormControl('');
+    toppings1 = new FormControl('');
+    selectedStatus: any = [];
+    StatusFilter = false;
   constructor(private _formBuilder: FormBuilder,
     public dialog: MatDialog,
-    private dialogRef: MatDialogRef<any>,) { }
+    private dialogRef: MatDialogRef<any>,
+    private user: UserService,) { }
 
   ngOnInit(): void {
+    this.statusItems();
+  }
+   statusItems() {
+    this.user.getstatusDeatils().subscribe((res: any) => {
+      this.toppingList1 = res.response;
+      // this.toppingList1 = localdata.map((data: { status_id: any; status_name: any; }) => {
+      //   return {status_id: data.status_id, status_name: data.status_name };
+      // });
+
+      // if (!this.toppingList1?.length) {
+      //   this.toppingList1 = localdata.map((status: { status_name: any; }) => {
+      //     return status.status_name;
+      //   });
+      // }
+      // this.toppingList1.push()
+      console.log('we have to check here', this.toppingList1)
+      this.toppingList1.forEach(element => {
+        return this.statusArray.push(element.statusId);
+        // console.log('rolecheck',rolecheck)
+
+      })
+      console.log('statusArray', this.statusArray)
+      // this.toppingList = res.response;
+      this.dropdownSettings1 = {
+        singleSelection: false,
+        idField: 'statusId',
+        textField: 'statusName',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        itemsShowLimit: 2,
+        allowSearchFilter: this.StatusFilter
+      };
+      this.selectedStatus = [];
+      this.toppings1 = new FormControl(this.toppingList1);
+
+    });
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -273,7 +289,6 @@ export class AddItemsPromotionComponent implements OnInit {
   }
   productShotCode(){
     this.dialog.open(  ProductShortCodeComponent,{width:'1043px'});
-    this.productchk = true;
     this.dialogRef.close()
   }
   productGrp(){
@@ -283,5 +298,64 @@ export class AddItemsPromotionComponent implements OnInit {
   productSubG(){
     this.dialog.open( ProductSubGroupComponent,{width:'1043px'});
     this.dialogRef.close()
+  }
+  onSelectAll(items: any) {
+    console.log('onSelectAll', items);
+  }
+  onStatusSelect(item: any) {
+    this.statusTypes.push(item.statusId);
+
+    const data = {
+      userTypes: this.userTypes,
+      statuss: this.statusTypes,
+      search: this.searchText,
+    }
+    this.user.getuserDeatilsUser(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
+
+  }
+  onStatusDeSelect(item: any) {
+    this.statusTypes.forEach((element, index) => {
+      if (element == item.statusId) this.statusTypes.splice(index, 1);
+    });
+    // this.statusTypes.pop(item.statusId);
+    console.log(' this.statusTypes', this.userTypes)
+    const data = {
+      userTypes: this.userTypes,
+      statuss: this.statusTypes,
+      search: this.searchText,
+
+    }
+    this.user.getuserDeatilsUser(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
+    console.log('rolefilter', this.userTypes)
+    console.log('onItemSelect', item);
+  }
+  onItemDeSelectOrAllStatus(item: any) {
+    const data = {
+      userTypes: this.userTypes,
+      statuss: [],
+      search: this.searchText,
+
+    }
+    this.user.getuserDeatilsUser(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
+    console.log('rolefilter', this.userTypes)
+  }
+  onItemSelectOrAllStatus(item: any) {
+    this.statusTypes = this.statusArray;
+    const data = {
+      userTypes: this.userTypes,
+      statuss: this.statusTypes,
+      search: this.searchText,
+
+    }
+    this.user.getuserDeatilsUser(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
+    console.log('rolefilter', this.statusTypes)
   }
 }

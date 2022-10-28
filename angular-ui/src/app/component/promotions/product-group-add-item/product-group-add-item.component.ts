@@ -6,8 +6,8 @@ import { CellClassParams, CellClassRules, CellClickedEvent, CellValueChangedEven
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ProductShortCodeComponent } from '../product-short-code/product-short-code.component';
-import { ProductGroupAddItemComponent } from '../product-group-add-item/product-group-add-item.component';
 import { ProductSubGroupComponent } from '../product-sub-group/product-sub-group.component';
+import { AddItemsPromotionComponent } from '../add-items-promotion/add-items-promotion.component';
 export interface PeriodicElement {
 
   name: any;
@@ -35,66 +35,34 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 ];
 @Component({
-  selector: 'app-add-items-promotion',
-  templateUrl: './add-items-promotion.component.html',
-  styleUrls: ['./add-items-promotion.component.css']
+  selector: 'app-product-group-add-item',
+  templateUrl: './product-group-add-item.component.html',
+  styleUrls: ['./product-group-add-item.component.css']
 })
-export class AddItemsPromotionComponent implements OnInit {
-  // firstFormGroup = this._formBuilder.group({
-  //   firstCtrl: ['', Validators.required],
-  // });
-  // secondFormGroup = this._formBuilder.group({
-  //   secondCtrl: ['', Validators.required],
-  // });
-  // isLinear = false;
+export class ProductGroupAddItemComponent implements OnInit {
   private gridApi!: GridApi;
   searchText;
   columnDefs: ColDef[] = [
 
     {
-      headerName: "Porduct Name",
+      headerName: "Product Group",
       field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
     },
 
-    { headerName: "Classification", field: 'userName', type: ['nonEditableColumn'] },
+    { headerName: "", field: '', type: ['nonEditableColumn'] },
 
-    { headerName: "Role", field: 'roleName', type: ['nonEditableColumn'] },
+    { headerName: "", field: '', type: ['nonEditableColumn'] },
 
     {
-      headerName: "SKU",
-      field: 'email', type: ['nonEditableColumn']
+      headerName: "",
+      field: '', type: ['nonEditableColumn']
     },
 
     {
-      headerName: "Product Identifier",
+      headerName: "#of products",
       field: 'mobile', type: ['nonEditableColumn']
     },
 
-    {
-      headerName: "product Group",
-      // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-      field: 'lastLoginDate', type: ['nonEditableColumn'],
-      cellRenderer: function dateFormtter(params) {
-        return moment(params.value).format('DD MMM YYYY, HH:mm A')
-      }
-    },
-    // suppressMovable:true,
-    {
-      headerName: "Product Code",
-      field: 'statusName',
-      type: ['nonEditableColumn'],
-      cellEditor: 'agSelectCellEditor',
-      cellEditorParams: {
-        values: ['Active', 'Inactive', 'Invited', 'Locked',],
-      },
-      cellClass: params => {
-        return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
-      }
-    },
-    {
-      headerName: "Product Shot Code",
-      field: 'email', type: ['nonEditableColumn']
-    },
     {
       headerName: '',
       colId: 'action',
@@ -204,9 +172,9 @@ export class AddItemsPromotionComponent implements OnInit {
     disabled = false;
     dropdownSettings: IDropdownSettings = {};
     dropdownSettings1: IDropdownSettings = {};
-    productchk:boolean=true;
+    productchk:boolean=false;
     prodShtCode:boolean=false;
-    productGrpChk:boolean=false;
+    productGrpChk:boolean=true;
     productSubGChk:boolean=false;
   constructor(private _formBuilder: FormBuilder,
     public dialog: MatDialog,
@@ -273,7 +241,6 @@ export class AddItemsPromotionComponent implements OnInit {
   }
   productShotCode(){
     this.dialog.open(  ProductShortCodeComponent,{width:'1043px'});
-    this.productchk = true;
     this.dialogRef.close()
   }
   productGrp(){

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { MatTableDataSource } from '@angular/material/table';
 import { CellClassParams, CellClassRules, CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef, GridApi, GridOptions, ModuleRegistry, ColumnResizedEvent, Grid, } from 'ag-grid-community';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ProductShortCodeComponent } from '../product-short-code/product-short-code.component';
+import { AddItemsPromotionComponent } from '../add-items-promotion/add-items-promotion.component';
 import { ProductGroupAddItemComponent } from '../product-group-add-item/product-group-add-item.component';
 import { ProductSubGroupComponent } from '../product-sub-group/product-sub-group.component';
 export interface PeriodicElement {
@@ -35,66 +35,24 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 ];
 @Component({
-  selector: 'app-add-items-promotion',
-  templateUrl: './add-items-promotion.component.html',
-  styleUrls: ['./add-items-promotion.component.css']
+  selector: 'app-product-short-code',
+  templateUrl: './product-short-code.component.html',
+  styleUrls: ['./product-short-code.component.css']
 })
-export class AddItemsPromotionComponent implements OnInit {
-  // firstFormGroup = this._formBuilder.group({
-  //   firstCtrl: ['', Validators.required],
-  // });
-  // secondFormGroup = this._formBuilder.group({
-  //   secondCtrl: ['', Validators.required],
-  // });
-  // isLinear = false;
+export class ProductShortCodeComponent implements OnInit {
   private gridApi!: GridApi;
   searchText;
   columnDefs: ColDef[] = [
 
     {
-      headerName: "Porduct Name",
+      headerName: "Product Shot Code",
       field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
     },
+    { headerName: "", field: '', type: ['nonEditableColumn'] },
+    { headerName: "", field: '', type: ['nonEditableColumn'] },
 
-    { headerName: "Classification", field: 'userName', type: ['nonEditableColumn'] },
+    { headerName: "#of Products", field: 'userName', type: ['nonEditableColumn'] },
 
-    { headerName: "Role", field: 'roleName', type: ['nonEditableColumn'] },
-
-    {
-      headerName: "SKU",
-      field: 'email', type: ['nonEditableColumn']
-    },
-
-    {
-      headerName: "Product Identifier",
-      field: 'mobile', type: ['nonEditableColumn']
-    },
-
-    {
-      headerName: "product Group",
-      // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-      field: 'lastLoginDate', type: ['nonEditableColumn'],
-      cellRenderer: function dateFormtter(params) {
-        return moment(params.value).format('DD MMM YYYY, HH:mm A')
-      }
-    },
-    // suppressMovable:true,
-    {
-      headerName: "Product Code",
-      field: 'statusName',
-      type: ['nonEditableColumn'],
-      cellEditor: 'agSelectCellEditor',
-      cellEditorParams: {
-        values: ['Active', 'Inactive', 'Invited', 'Locked',],
-      },
-      cellClass: params => {
-        return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
-      }
-    },
-    {
-      headerName: "Product Shot Code",
-      field: 'email', type: ['nonEditableColumn']
-    },
     {
       headerName: '',
       colId: 'action',
@@ -204,8 +162,8 @@ export class AddItemsPromotionComponent implements OnInit {
     disabled = false;
     dropdownSettings: IDropdownSettings = {};
     dropdownSettings1: IDropdownSettings = {};
-    productchk:boolean=true;
-    prodShtCode:boolean=false;
+    productchk:boolean=false;
+    prodShtCode:boolean=true;
     productGrpChk:boolean=false;
     productSubGChk:boolean=false;
   constructor(private _formBuilder: FormBuilder,
@@ -268,20 +226,19 @@ export class AddItemsPromotionComponent implements OnInit {
     }
   }
   product(){
-    this.dialog.open( AddItemsPromotionComponent,{width:'1043px'});
+    this.dialog.open( AddItemsPromotionComponent, {width:'1043px'});
     this.dialogRef.close()
   }
   productShotCode(){
-    this.dialog.open(  ProductShortCodeComponent,{width:'1043px'});
-    this.productchk = true;
+    this.dialog.open(  ProductShortCodeComponent, {width:'1043px'});
     this.dialogRef.close()
   }
   productGrp(){
-    this.dialog.open( ProductGroupAddItemComponent,{width:'1043px'});
+    this.dialog.open( ProductGroupAddItemComponent, {width:'1043px'});
     this.dialogRef.close()
   }
   productSubG(){
-    this.dialog.open( ProductSubGroupComponent,{width:'1043px'});
+    this.dialog.open( ProductSubGroupComponent, {width:'1043px'});
     this.dialogRef.close()
   }
 }

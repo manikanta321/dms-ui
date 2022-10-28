@@ -287,12 +287,9 @@ mat-radio-group{
   display: flex;
   justify-content: center;
 }
-::ng-deep .radio-btn .mat-radio-button.mat-accent .mat-radio-inner-circle{
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle{
   background-color: black;
 }
-::ng-deep .radio-btn .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
   border-color: black;
-}
-::ng-deep.radio-btn .mat-radio-label-content{
-  margin-right: 10px;
 }

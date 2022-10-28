@@ -81,7 +81,7 @@
     display: block;
     width: 314px;
     height: 0px;
-    right: 45px;
+    right: 20px;
     top: 50%;
     position: absolute;
     border: 0.5px solid rgba(104, 110, 116, 0.75);
@@ -92,7 +92,7 @@
     display: block;
     width: 314px;
     height: 0px;
-    left: 45px;
+    left: 20px;
     top: 50%;
     position: absolute;
     border: 0.5px solid rgba(104, 110, 116, 0.75);
@@ -287,12 +287,9 @@ mat-radio-group{
   display: flex;
   justify-content: center;
 }
-::ng-deep .radio-btn .mat-radio-button.mat-accent .mat-radio-inner-circle{
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle{
   background-color: black;
 }
-::ng-deep .radio-btn .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
   border-color: black;
-}
-::ng-deep.radio-btn .mat-radio-label-content{
-  margin-right: 10px;
 }

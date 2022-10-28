@@ -94,6 +94,10 @@ import { AddorderpromotionsComponent } from './component/orders/addorderpromotio
 import { AddOrderPromotionlistComponent } from './component/orders/add-order-promotionlist/add-order-promotionlist.component';
 import { DeleteUomNewComponent } from './component/delete-uom-new/delete-uom-new.component';
 import { TaxTempleateActionComponent } from './component/tax-templeate-action/tax-templeate-action.component';
+import { ProductGroupAddItemComponent } from './component/promotions/product-group-add-item/product-group-add-item.component';
+import { ProductSubGroupComponent } from './component/promotions/product-sub-group/product-sub-group.component';
+import { ProductShortCodeComponent } from './component/promotions/product-short-code/product-short-code.component';
+import { OrderNonpromotionlistComponent } from './component/orders/order-nonpromotionlist/order-nonpromotionlist.component';
 
 @NgModule({
   declarations: [
@@ -157,6 +161,10 @@ import { TaxTempleateActionComponent } from './component/tax-templeate-action/ta
           AddOrderPromotionlistComponent,
           DeleteUomNewComponent,
           TaxTempleateActionComponent,
+          ProductGroupAddItemComponent,
+          ProductSubGroupComponent,
+          ProductShortCodeComponent,
+          OrderNonpromotionlistComponent,
   ],
   imports: [
     FormsModule,

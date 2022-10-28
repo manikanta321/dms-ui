@@ -615,7 +615,6 @@ onItemDeSelectOrAll(item:any){
 
   onItemDeSelectOrAllStatus(item:any){
     const data={
-      userTypes:this.userTypes,
       statuss:[],
       search:this.searchText,
   
@@ -630,7 +629,6 @@ onItemDeSelectOrAll(item:any){
   onItemSelectOrAllStatus(item:any){
     this.statusTypes=this.statusArray;
     const data={
-      userTypes:this.userTypes,
       statuss:this.statusTypes,
       search:this.searchText,
   
@@ -685,7 +683,7 @@ onStatusDeSelect(item: any) {
   // this.statusTypes.pop(item.statusId);
 console.log(' this.statusTypes', this.userTypes)
   const data={
-    userTypes:this.userTypes,
+   
     statuss:this.statusTypes,
     search:this.searchText,
 

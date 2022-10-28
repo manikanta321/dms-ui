@@ -163,15 +163,18 @@ rowData :any;
 rowData1=[];
 employeeName:any;
 public defaultColDef: ColDef = {
-  // set the default column width
+  suppressSizeToFit: true,
+
   // make every column editable
   editable: true,
   // make every column use 'text' filter by default
   filter: 'agTextColumnFilter',
   // enable floating filters by default
   // make columns resizable
-  // resizable: true,
+  resizable: true,
   sortable: true,
+  flex: 1,
+  width:100
 };
 
 
@@ -243,7 +246,7 @@ public pivotPanelShow = 'always';
   statusArray:any=[];
   messages:any[]=[];
   stayScrolledToEnd = true;
-
+  uomId:any;
  paginationNumberFormatter: (
     params: PaginationNumberFormatterParams
   ) => string = (params: PaginationNumberFormatterParams) => {
@@ -308,6 +311,8 @@ public pivotPanelShow = 'always';
 
   ngOnInit(): void {
  
+   
+    this.uomId = localStorage.getItem('niId');
 this.getcurrencylist();
   // this.getusertabeldata();
   // this.roleItems();
@@ -610,7 +615,6 @@ onItemDeSelectOrAll(item:any){
 
   onItemDeSelectOrAllStatus(item:any){
     const data={
-      userTypes:this.userTypes,
       statuss:[],
       search:this.searchText,
   
@@ -625,7 +629,6 @@ onItemDeSelectOrAll(item:any){
   onItemSelectOrAllStatus(item:any){
     this.statusTypes=this.statusArray;
     const data={
-      userTypes:this.userTypes,
       statuss:this.statusTypes,
       search:this.searchText,
   
@@ -680,7 +683,7 @@ onStatusDeSelect(item: any) {
   // this.statusTypes.pop(item.statusId);
 console.log(' this.statusTypes', this.userTypes)
   const data={
-    userTypes:this.userTypes,
+   
     statuss:this.statusTypes,
     search:this.searchText,
 

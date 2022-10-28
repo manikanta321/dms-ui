@@ -703,10 +703,10 @@
     bottom: 166px;
     left: 406px;
 }
-.hide .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret{
+.arrow .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret{
     overflow: hidden;
     display: none;
-   /* background-image: url('../../../../assets/img/maximize.png');   */
+    /* background-image: url('../../../../assets/img/maximize.png');    */
   background-size: 13px;
   background-repeat: no-repeat;
   height: 300px;
@@ -723,4 +723,74 @@
   position: relative;
     bottom: 160px;
     left: 414px;
+}
+.buyg{
+  bottom: 554px;
+    position: relative;
+}
+.getg{
+  position: relative;
+  bottom: 627px;
+  left: 424px;
+}
+.productlevelthree{
+  position: relative;
+    font-family: 'Gilroy';
+    bottom: 656px;
+}
+.productlevelf{
+  position: relative;
+    font-family: 'Gilroy';
+    bottom: 724px;
+    left: 422px;
+}
+.productdrpdownthree {
+  width: 365px;
+  position: relative;
+    bottom: 650px;
+    left: 1px;
+}
+.productdrpdownf{
+  width: 365px;
+  position: relative;
+    bottom: 719px;
+    left: 414px;
+}
+.itemso{
+  position: relative;
+    font-family: 'Gilroy';
+    bottom: 716px;
+}
+.qty-three{
+  position: relative;
+    font-family: 'Gilroy';
+    bottom: 882px;
+    left: 298px;
+}
+.moq-three{
+  position: relative;
+    font-family: 'Gilroy';
+    bottom: 878px;
+    left: 293px;
+}
+.itemst{
+  position: relative;
+    font-family: 'Gilroy';
+    bottom: 1061px;
+    left: 425px;
+}
+.qtyf{
+  position: relative;
+    font-family: 'Gilroy';
+    bottom: 1231px;
+    left: 718px;
+}
+.moqf{
+  position: relative;
+    font-family: 'Gilroy';
+    bottom: 878px;
+    left: 293px;
+}
+.buygrp-hide{
+  display: none;
 }

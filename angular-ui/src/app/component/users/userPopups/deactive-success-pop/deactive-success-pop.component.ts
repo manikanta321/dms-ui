@@ -16,8 +16,9 @@ export class DeactiveSuccessPopComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.employeeId = localStorage.getItem("userID");
     this.employeename=localStorage.getItem("employeeName");
+    this.employeename = localStorage.getItem('Niname');
+
   }
   closeDialog(){
     this.sharedService.filter('Register click');

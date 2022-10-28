@@ -9,6 +9,8 @@ import { Sort, MatSort, SortDirection } from '@angular/material/sort';
 import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';  
+import { TaxTemplateServiceService } from 'src/app/services/tax-template-service.service';
+import { TaxTempleateActionComponent } from '../../tax-templeate-action/tax-templeate-action.component';
 export interface PeriodicElement {
   name: any;
   position: string;
@@ -59,14 +61,14 @@ export class TaxTemplateComponent implements OnInit {
   columnDefs: ColDef[] = [ 
 
     { headerName: "Name",
-  field: 'name' ,type: ['nonEditableColumn'], sort: 'desc',pinned: 'left',
+  field: 'taxTemplateName' ,type: ['nonEditableColumn'], sort: 'desc',pinned: 'left',minWidth:400
   },
   
-  {   headerName: "Tax Items",field: 'Taxitem',type: ['nonEditableColumn']},
+  {   headerName: "Tax Items",field: 'taxTemplateDetails',type: ['nonEditableColumn'] ,minWidth:400},
   
   // suppressMovable:true,
   { headerName: "Status",
-   field: 'Status', 
+   field: 'statusName', 
    type: ['nonEditableColumn'],
   cellEditor: 'agSelectCellEditor',
   cellEditorParams: {
@@ -78,14 +80,11 @@ export class TaxTemplateComponent implements OnInit {
   },
   { 
   
-     headerName: "",
-  field: '',  filter: false, sortable: false,
-  cellRenderer: function clickNextRendererFunc(){
-    return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
-  }, 
-   cellEditorPopup: true,
-  //  onCellClicked: (event: CellClickedEvent) => this.dialog.open( DeletecomponentComponent)
-  
+    headerName: '',
+    colId: 'action',
+    cellRenderer: TaxTempleateActionComponent,
+    editable: false,
+    maxWidth: 75
   },
   
   // {
@@ -99,9 +98,8 @@ export class TaxTemplateComponent implements OnInit {
   
   rowData :any;
   rowData1=[]
-  public defaultColDef: ColDef = {
-    // set the default column width
-    width: 370,
+  public defaultColDef: ColDef = { suppressSizeToFit: true,
+
     // make every column editable
     editable: true,
     // make every column use 'text' filter by default
@@ -110,6 +108,8 @@ export class TaxTemplateComponent implements OnInit {
     // make columns resizable
     resizable: true,
     sortable: true,
+    flex: 1,
+    width:100
   };
   // public defaultColDef: ColDef = {
   //   sortable: true,
@@ -166,7 +166,8 @@ export class TaxTemplateComponent implements OnInit {
   userId: any;
   roleArray:any[] = [];
   statusArray:any=[];
-
+  selectedStatus: any = [];
+   search:any='';
   
   start: number = 0;
   limit: number = 15;
@@ -251,7 +252,7 @@ export class TaxTemplateComponent implements OnInit {
   selectedItems: any;
   userTypes:any=[];
   statusTypes:any=[];
-  searchText:any;
+  searchText:any='';
   scrolledIndex: any;
   ShowFilter = false;
   StatusFilter = false;
@@ -259,7 +260,8 @@ export class TaxTemplateComponent implements OnInit {
   statusSelection =false;
   toppingList: any= [];
 
-  constructor( private user:UserService,
+  constructor( private user:UserService,   
+   private tax:TaxTemplateServiceService,
     public dialog: MatDialog,
     private fb: FormBuilder,
     private _liveAnnouncer: LiveAnnouncer,) { sort:[];}
@@ -325,12 +327,11 @@ export class TaxTemplateComponent implements OnInit {
       // ageFilterComponent.setModel(null);
       // this.gridApi.onFilterChanged();
       const data={
-        userTypes:[],
-        statuss:[],
-        search:'',
+        Statuss:[],
+        Search:"",
     
       }
-      this.user.getuserDeatilsUser(data).subscribe((res) => {     
+      this.tax.gettaxlist(data).subscribe((res: any) => {
         this.rowData5 = res.response;
       });
   this.getusertabeldata();
@@ -352,11 +353,10 @@ export class TaxTemplateComponent implements OnInit {
       this.statusTypes.push(item.statusId);
     
       const data={
-        userTypes:this.userTypes,
         statuss:this.statusTypes,
         search:this.searchText,
       }
-      this.user.getuserDeatilsUser(data).subscribe((res) => {     
+      this.tax.gettaxlist(data).subscribe((res: any) => {
         this.rowData5 = res.response;
       });
       
@@ -370,12 +370,11 @@ export class TaxTemplateComponent implements OnInit {
     
       // this.userTypes.pop(item.roleId);
       const data={
-        userTypes:this.userTypes,
         statuss:this.statusTypes,
         search:this.searchText,
     
       }
-      this.user.getuserDeatilsUser(data).subscribe((res) => {     
+      this.tax.gettaxlist(data).subscribe((res: any) => {
         this.rowData5 = res.response;
       });
     
@@ -386,12 +385,11 @@ export class TaxTemplateComponent implements OnInit {
         this.userTypes.push(item.roleId);
       
         const data={
-          userTypes:this.userTypes,
           statuss:this.statusTypes,
           search:this.searchText,
       
         }
-        this.user.getuserDeatilsUser(data).subscribe((res) => {     
+        this.tax.gettaxlist(data).subscribe((res: any) => {
           this.rowData5 = res.response;
         });
         console.log('rolefilter', this.userTypes)
@@ -400,24 +398,22 @@ export class TaxTemplateComponent implements OnInit {
       onItemSelectOrAll(item:any){
         this.userTypes=this.roleArray;
         const data={
-          userTypes:this.userTypes,
           statuss:this.statusTypes,
           search:this.searchText,
       
         }
-        this.user.getuserDeatilsUser(data).subscribe((res) => {     
+        this.tax.gettaxlist(data).subscribe((res: any) => {
           this.rowData5 = res.response;
         });
         console.log('rolefilter', this.userTypes)
         console.log('onItemSelect', item);}
       onItemDeSelectOrAll(item:any){
         const data={
-          userTypes:this.userTypes,
           statuss:[],
           search:this.searchText,
       
         }
-        this.user.getuserDeatilsUser(data).subscribe((res) => {     
+        this.tax.gettaxlist(data).subscribe((res: any) => {
           this.rowData5 = res.response;
         });
         console.log('rolefilter', this.userTypes)
@@ -426,12 +422,11 @@ export class TaxTemplateComponent implements OnInit {
       
         onItemDeSelectOrAllStatus(item:any){
           const data={
-            userTypes:this.userTypes,
             statuss:[],
             search:this.searchText,
         
           }
-          this.user.getuserDeatilsUser(data).subscribe((res) => {     
+          this.tax.gettaxlist(data).subscribe((res: any) => {
             this.rowData5 = res.response;
           });
           console.log('rolefilter', this.userTypes)
@@ -441,12 +436,11 @@ export class TaxTemplateComponent implements OnInit {
         onItemSelectOrAllStatus(item:any){
           this.statusTypes=this.statusArray;
           const data={
-            userTypes:this.userTypes,
             statuss:this.statusTypes,
             search:this.searchText,
         
           }
-          this.user.getuserDeatilsUser(data).subscribe((res) => {     
+          this.tax.gettaxlist(data).subscribe((res: any) => {
             this.rowData5 = res.response;
           });
           console.log('rolefilter', this.statusTypes)
@@ -460,21 +454,26 @@ export class TaxTemplateComponent implements OnInit {
       // this.statusTypes.pop(item.statusId);
     console.log(' this.statusTypes', this.userTypes)
       const data={
-        userTypes:this.userTypes,
         statuss:this.statusTypes,
         search:this.searchText,
     
       }
-      this.user.getuserDeatilsUser(data).subscribe((res) => {     
+      this.tax.gettaxlist(data).subscribe((res: any) => {
         this.rowData5 = res.response;
       });
       console.log('rolefilter', this.userTypes)
       console.log('onItemSelect', item);
     }
   getusertabeldata(){
-    this.user.getuserDeatils().subscribe((res: any) => {
+    let data={
+      Search:this.searchText,
+      Statuss:this.statusTypes,
+
+      
+    }
+    this.tax.gettaxlist(data).subscribe((res: any) => {
         
-      this.rowData = res.response;
+      this.rowData5 = res.response;
       if (this.rowData.length >= 1) {
       this.rowData.forEach((element: { [x: string]: any; }) => {
       if (element['status']=='Confirmed'){
@@ -492,30 +491,61 @@ export class TaxTemplateComponent implements OnInit {
     });
   }
   
-statusItems(){
-  this.user.getstatusDeatils().subscribe((res: any) => {
-      
-    let localdata=res.response;
-
-
-    this.toppingList1 = localdata.map((data: { statusId: any; statusname: any; }) => {
-      return {status_id: data.statusId, status_name: data.statusname };
-    });
-
-    if (!this.toppingList1?.length) {
-      this.toppingList1 = localdata.map((status: { statusname: any; }) => {
-        return status.statusname;
-      });
-    }
-    this.toppingList1.push()
-    // this.toppingList = res.response;
-    this.toppings1 = new FormControl(this.toppingList1);
-
-    console.log('status',this.toppingList1)
-
+  
+onSearchChange($event:any , anything?:any){
+  const { target } = $event;
+  this.searchText=target.value;
+  const data={
+    Statuss:this.statusTypes,
+    search:this.searchText,
+  }
+  this.tax.gettaxlist(data).subscribe((res: any) => {
+    console.log('uom list',res.response)
+    
+   this.rowData5=res.response;
 
   });
 }
+
+
+  statusItems(){
+    const data ={
+  
+    }
+    this.user.tatemplatestatus(data).subscribe((res: any) => {
+      this.toppingList1=res.response;
+      // this.toppingList1 = localdata.map((data: { status_id: any; status_name: any; }) => {
+      //   return {status_id: data.status_id, status_name: data.status_name };
+      // });
+  
+      // if (!this.toppingList1?.length) {
+      //   this.toppingList1 = localdata.map((status: { status_name: any; }) => {
+      //     return status.status_name;
+      //   });
+      // }
+      // this.toppingList1.push()
+      console.log('we have to check here', this.toppingList1)
+      this.toppingList1.forEach(element=>{
+        return   this.statusArray.push(element.statusId);
+             // console.log('rolecheck',rolecheck)
+     
+         })
+         console.log('statusArray',this.statusArray)
+      // this.toppingList = res.response;
+      this.dropdownSettings1 = {
+        singleSelection: false,
+        idField: 'statusId',
+        textField: 'statusName',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        itemsShowLimit: 2,
+        allowSearchFilter: this.StatusFilter
+      };
+      this.selectedStatus = [];
+      this.toppings1 = new FormControl(this.toppingList1);
+  
+    });
+  }
 
 addtaxTempl(){
   this.dialog.open( AddTaxTemplateComponent,);
@@ -540,8 +570,20 @@ announceSortChange(sortState: any) {
 
 
 // Example of consuming Grid Event
-onCellClicked( e: CellClickedEvent): void {
+onCellClicked( e) {
   console.log('cellClicked', e);
+
+  
+  if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
+    const cellRendererInstances = e.api.getCellRendererInstances({
+      rowNodes: [e.node],
+      columns: [e.column],
+    });
+    if (cellRendererInstances.length > 0) {
+      const instance = cellRendererInstances[0];
+      instance.togglePopup();
+    }
+  }
 }
 
 openDialog(){

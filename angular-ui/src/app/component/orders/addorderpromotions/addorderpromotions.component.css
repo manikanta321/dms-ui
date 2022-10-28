@@ -172,6 +172,7 @@
     text-align: center;
     margin-top: -18px;
     margin-bottom: 2px;
+    cursor: pointer;
   }
   
   .addU {
@@ -221,6 +222,7 @@
     position: relative;
     font-size: 15px;
     font-weight: 600;
+    cursor: pointer;
   }
   
   label {
@@ -804,6 +806,7 @@
     align-items: center;
     text-align: center;
     float:right;
+    cursor: pointer;
 }
 
 .add-edit-non-promo {
@@ -815,6 +818,7 @@
     align-items: center;
     text-align: center;
     margin-left:-13px;
+    cursor: pointer;
 }
 
 .promotions-label{
@@ -836,36 +840,35 @@
 }
 
 .promotionpopup-scroll {
-    height: 480px !important;
+    height: 390px !important;
 }
 
 .footer {
     position:fixed;
-    background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
     border-radius: 0px 0px 25px 25px;
-    margin-top:-28px;
     height: 50px;
-    width: 67%;
+    width:860px !important;
+  
 }
 
 .save-submit {
     background: #FFFFFF;
     border: 2px solid #000000;
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
-    border-radius: 10px;
+    border-radius: 8px;
     float:right;
-    position: relative;
-    right:40px;
+    margin-top:10px;
+    cursor: pointer;
 }
 
 .saveas-draft {
     color: #fff;
     background: #000000;
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
-    border-radius: 10px;
+    border-radius: 8px;
     float:right;
-    position: relative;
-    right:-70px;
+    margin-top:10px;
+    cursor: pointer;
 }
 
 .cancel {
@@ -876,9 +879,9 @@
     text-align: center;
     color: #000000;
     border: none;
-    position: relative;
-    right:30px;
+    margin-top:10px;
     text-decoration-line:underline;
+    cursor: pointer;
 }
 
 
@@ -950,6 +953,13 @@
 
 .req-date .mat-form-field-wrapper .mat-form-field-flex {
     border-radius: 4px 4px 4px 4px !important;
+}
+
+.expand-arrow {
+  width: 70%;
+  position: relative;
+  right: -28px;
+  top: 4px;
 }
 
 

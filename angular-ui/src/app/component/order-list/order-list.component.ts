@@ -21,6 +21,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { AddPromotionsComponent } from '../add-promotions/add-promotions.component';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { AddorderpromotionsComponent } from '../orders/addorderpromotions/addorderpromotions.component';
 // import { DateRange } from '@uiowa/date-range-picker';
 
 export interface PeriodicElement {
@@ -544,5 +545,14 @@ export class OrderListComponent implements OnInit {
       this.paginationScrollCount = this.rowData5.length;
     }
   }
+
+  addOrderPromotion(){
+ 
+    this.dialog.open( AddorderpromotionsComponent,{width: '900px',height:'460px'});
+  }
+
+
+
+
 }
 

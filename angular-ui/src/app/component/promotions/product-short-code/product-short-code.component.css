@@ -1,0 +1,295 @@
+.mat-form-field {
+    width: 680px;
+    font-family: 'Gilroy';
+    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+  }
+  
+  .mat-form-field::placeholder {
+    bottom: 2px;
+  }
+  .scroll{
+    overflow-y: auto;
+    overflow-x: auto;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 25px;
+    /* background: #b3b3bc; */
+  }
+  
+  ::-webkit-scrollbar-track {
+    border-radius: 20px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    margin-left: 20px;
+  }
+  
+  .font {
+    font-family: 'Gilroy';
+  }
+
+  /* .mat-horizontal-stepper-header-container ng-tns-c418-7 {
+    margin: top -51px;
+  }; */
+  ::ng-deep.input.mat-input-text {
+    margin-top: -9px;
+    margin-left: -6px;
+  }
+  
+  /*old css*/
+  
+  .mat-form-field-flex {
+    padding-top: -10px;
+    display: inline-flex;
+    align-items: baseline;
+    box-sizing: border-box;
+    width: 100%;
+    height: 37px;
+  
+    /* background-color: #CED4DA; */
+  }
+  
+  .main {
+    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+  
+  }
+  
+  .font {
+    font-family: 'Gilroy';
+  }
+  
+  .head-t h3 {
+    color: #686E74;
+    text-align: center;
+    margin-top: -18px;
+    margin-bottom: 2px;
+  }
+  
+  .addU {
+    position: relative;
+    /* font-family: 'Gilroy-Bold';  */
+    /* font-weight: bold; */
+    font-size: 20px;
+  }
+  
+  .addU:after {
+    content: "";
+    display: block;
+    width: 314px;
+    height: 0px;
+    right: 20px;
+    top: 50%;
+    position: absolute;
+    border: 0.5px solid rgba(104, 110, 116, 0.75);
+  }
+  
+  .addU:before {
+    content: "";
+    display: block;
+    width: 314px;
+    height: 0px;
+    left: 20px;
+    top: 50%;
+    position: absolute;
+    border: 0.5px solid rgba(104, 110, 116, 0.75);
+  }
+  
+  .addUserForm input {
+    border-radius: 5px;
+    border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+    padding: 5px 5px;
+    width: 250px;
+    font-size: 14px;
+    outline: none;
+  }
+  .close-icon {
+    left: 100%;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  
+  label {
+    /* padding: 2px 0; */
+    font-size: 14px;
+    margin: 5px;
+  }
+  
+  mat-form-field {
+    width: 246px;
+  
+  }
+  
+  ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0em 0 0.7em 0;
+    border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+  }
+  
+  ::ng-deep.mat-dialog-container {
+    background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+    ;
+  }
+
+.productdrpdown {
+  width: 365px;
+  position: relative;
+    bottom: 89px;
+}
+.productdrpdowntwo {
+  width: 365px;
+  position: relative;
+    bottom: 160px;
+    left: 414px;
+}
+mat-icon{
+  position: relative;
+  top: 7px;
+  left: -36px;
+}
+.search{
+margin-right: 10px;
+}
+.search input{
+  width: 207.5px;
+height: 43px;
+border-radius: 10px;
+
+}
+.ref{
+  border: 1px solid black;
+  border-radius: 10px;
+  background: black;
+  margin-left: 15px;
+  width: 43px;
+  padding: 8px 0px 0px 10px;
+  height: 43px;
+}
+.searchBox:hover >.searchButton,
+.searchBox>.searchInput,
+.search-btn {
+  display:none;
+}
+.searchBox {
+  float:right;
+  /* position: absolute; */
+  right: -10px;
+  top: 5px;
+}
+
+.searchBox:hover >.searchButton {
+  display:bolck;
+  color: #000;
+  float: left;
+  width: 42px;
+  height: 42px;
+  background: #ffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+  background: none;
+  position: relative;
+    right: 223px;
+    top: 2px;
+
+}
+.searchBox:hover >.search-btn {
+  display:block;
+  height: 26px;
+  border: none;
+  background: #000000;
+  color: white;
+  border-radius: 5px;
+  position: absolute;
+  right: 10px;
+  top:10px;
+}
+.searchBox:hover>.searchInput {
+  display:block;
+  width: 280px;
+  height: 50px;
+  background: #FFFFFF;
+  float: left;
+  padding: 5px 32px 6px;
+  border-radius: 10px;
+  font-family: 'Gilroy-medium';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 17px;
+  letter-spacing: 0.08em;
+  color: #263643;
+  box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+  /* // transition: 0.2s  ease-in-out; */
+  position: absolute;
+  right: 0px;
+  bottom: -3px;
+}
+.searchButton {
+  display:bolck;
+  color: #FFFFFF;
+  float: left;
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  background: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+  border: none;
+}
+.pagination {
+  float:right !important;
+}
+
+.pagination-cls {
+  font-size: 14px;
+  font-weight: 900;
+}
+.addItem-btn{
+  width: 106px;
+height: 39px;
+border-radius: 8px;
+align-items: center;
+text-align: center;
+background: #000;
+color: #FFFFFF;
+}
+/* ::ng-deep.add-item .mat-stepper-horizontal-line {
+      border-top-style: none; 
+}
+::ng-deep .add-item .mat-horizontal-stepper-header-container{
+  width: 50% !important;
+  margin: auto;
+  padding: 0;
+}
+::ng-deep .add-item .mat-horizontal-stepper-header{
+padding: 0;
+}
+::ng-deep .add-item .mat-step-header .mat-step-icon-selected{
+background: #000;
+} */
+
+/* .search-hero input{
+  border: 1px solid #555;
+  width: 100%;
+  padding: 9px 4px 9px 40px;
+   background: white url(../../../../assets/img/search-icon.svg)
+   no-repeat 13px center;
+   float: right;
+} */
+mat-radio-group{
+  display: flex;
+  justify-content: center;
+}
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle{
+  background-color: black;
+}
+::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: black;
+}

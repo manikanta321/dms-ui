@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatStepper } from '@angular/material/stepper';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 
 @Component({
@@ -7,14 +8,20 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
   templateUrl: './add-promotions.component.html',
   styleUrls: ['./add-promotions.component.css']
 })
-export class AddPromotionsComponent implements OnInit {
+export class AddPromotionsComponent implements OnInit, AfterViewInit {
   selectedTeam = '';
   selectedDay: string = '';
-
+  showDiv = {
+    previous : false,
+    current : false,
+    next : false
+  }
+  showdata=false;
   //event handler for the select element's change event
   selectChangeHandler (event: any) {
     //update the ui
     this.selectedDay = event.target.value;
+     
   }
 /*-------*/
   countryname: string[] = ['Malaysia (71/126)', 'India (178/178)','Philipines (0/135)'];
@@ -25,7 +32,13 @@ export class AddPromotionsComponent implements OnInit {
   addButton:boolean =false;
   dropdownSettings3: IDropdownSettings = {};
   disabled = false;
+  promotionlist: any[] | undefined;
   toppingList3:  any= [];
+  ShowFilter = false;
+  totalStepsCount: number | undefined;
+  @ViewChild('stepper') private myStepper: MatStepper | any;
+  
+  // CategoryName:any;
   getgroup : string[]= ["Product Name","Product Name", "Product Name", "Product Name"]
   buygroup : string[]= ["Product Name","Product Name", "Product Name", "Product Name"];
   CustomerSelect : string[] = ['Valiant Distributors', 'Global Movers', 'Somebody Sales']
@@ -38,7 +51,15 @@ export class AddPromotionsComponent implements OnInit {
 /* on Select of Dropdown screen change */
 
   ngOnInit(): void {
+    this.toppingList3 = [
+      { CategoryId: 1, CategoryName: 'Buy(A+B..) get(X+Y..)' },
+      { CategoryId: 2, CategoryName: 'Buy(A or B +C or D...) get(X+Y or Y+Z..)' },
+      { CategoryId: 3, CategoryName: 'Volume Discount' },
+      { CategoryId: 4, CategoryName: 'Price Discount' },
+         ];
+         
   }
+  
   onTypeSelect(item: any) {
     console.log(item);
   }
@@ -48,7 +69,33 @@ export class AddPromotionsComponent implements OnInit {
   onClick(item) {
     this.selectedItem = item;
   }
+  displaydata(){
+    this.showdata=true;
+  }
+  hidedata(){
+    this.showdata=false;
+  }
+  ngAfterViewInit() {
+    this.totalStepsCount = this.myStepper._steps.length;
+  }
+  goForward(stepper: MatStepper) {
+    stepper.next();
+  }
+  getCategory(event: any){
+    if (event.CategoryName=='Buy(A+B..) get(X+Y..)'){
+      this.goForward(this.myStepper);
+      }
+      
+    }
+    // alert(event.CategoryName);
+  
+
+  
    addCategory(){
     this.addButton =true;
+  }
+  toogleShowFilter() {
+    this.ShowFilter = !this.ShowFilter;
+    this.dropdownSettings3 = Object.assign({}, this.dropdownSettings3, { allowSearchFilter: this.ShowFilter });
   }
 }

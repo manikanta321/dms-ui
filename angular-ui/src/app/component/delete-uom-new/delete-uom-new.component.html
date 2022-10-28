@@ -1,0 +1,10 @@
+<div class="container">
+    <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+    <div class="actv-user text-center">
+        <h1 class="head-text" >Delete UoM</h1>
+        <p>Are you sure you want to <b style="color:red">Delete</b><br>
+             UoM<b> {{UomName}}</b></p>
+        <button class="undo" (click)="deactive()">Yes</button>
+        <button class="exit"(click)='close()'>Cancel</button>
+    </div>
+</div>

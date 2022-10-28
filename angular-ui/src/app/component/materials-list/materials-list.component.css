@@ -139,34 +139,40 @@
   ::ng-deep.catty .multiselect-dropdown .dropdown-btn .selected-item {
     background: #D23F00 !important;
     right: 6% !important;
+    display: block;
   }
+  /* ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
+    background: #D23F00 !important;
+    right: 6% !important;
+    display: block;
+  } */
   /* ::ng-deep .catty .multiselect-item-checkbox input[type=checkbox]:checked + div:before {
     background: #D23F00 !important;
     } */
   ::ng-deep.subcatty .multiselect-dropdown .dropdown-btn .selected-item {
     background: #0C5A3E !important;
-    right: 42% !important;
+    right: 71% !important;
   }
   ::ng-deep .subcatty .multiselect-item-checkbox input[type=checkbox]:checked + div:before {
     background: #0C5A3E !important;
     }
   ::ng-deep.typy .multiselect-dropdown .dropdown-btn .selected-item {
     background: #C32F27 !important;
-    right: 78% !important;
+    right: 156% !important;
   }
   ::ng-deep .typy .multiselect-item-checkbox input[type=checkbox]:checked + div:before {
     background: #C32F27 !important;
     }
   ::ng-deep.producty .multiselect-dropdown .dropdown-btn .selected-item {
     background: #44026C !important;
-    right: 114% !important;
+    right: 247% !important;
   }
   ::ng-deep .product .multiselect-item-checkbox input[type=checkbox]:checked + div:before {
     background: #44026C !important;
     }
   ::ng-deep.sttss .multiselect-dropdown .dropdown-btn .selected-item {
     background: #000000 !important;
-    right: 150% !important;
+    right: 289% !important;
   }
   ::ng-deep .sttss .multiselect-item-checkbox input[type=checkbox]:checked + div:before {
     background: #000000 !important;
@@ -174,10 +180,10 @@
     ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before{
         border: 2px solid #000000 !important;
       }
-  ::ng-deep.multiselect-dropdown .dropdown-btn span span{
+  /* ::ng-deep.multiselect-dropdown .dropdown-btn span span{
     position: relative;
     bottom: 25px !important;
-  }
+  } */
   ::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
     color: #17c017 !important;
   }

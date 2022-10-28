@@ -7,44 +7,6 @@
   .mat-form-field::placeholder {
     bottom: 2px;
   }
-  
-  .category {
-    margin-top: 18px;
-    font-family: 'Gilroy';
-  }
-  
-  .materialname {
-    margin-top: 3px;
-    font-family: 'Gilroy';
-    margin-left: -4px;
-  }
-  .additional{
-    margin-top: -10px;
-    font-family: 'Gilroy';
-    margin-left: -4px;
-  }
-  .promotiont{
-    margin-top: 3px;
-    font-family: 'Gilroy';
-    margin-left: 2px;
-  }
-  .image{
-    font-family: 'Gilroy';
-    margin-left: 2px;
-    position: relative;
-    top: -260px;
-    left: 415px;
-    
-  }
-  .geography{
-    overflow-y: auto;
-     overflow-x: hidden;
-    max-height: 450px;
-     
-  }
-  /* ::ng-deep.steppers .prod.mat-horizontal-content-container {
-    width: 800px !important;
-  } */
   .scroll{
     overflow-y: auto;
     overflow-x: auto;
@@ -66,77 +28,10 @@
     margin-left: 20px;
   }
   
-  .description {
-    font-family: 'Gilroy';
-    margin-top: 15px;
-  }
-  
-  .materialci {
-    font-family: 'Gilroy';
-    margin-top: -29px;
-    margin-left: 499px;
-  }
-  
-  .imageofm {
-    font-family: 'Gilroy';
-    margin-top: -31px;
-    margin-left: 314px;
-  }
-  
-  .expiryperiod {
-    font-family: 'Gilroy';
-    margin-top: 10px;
-    margin-left: 498px;
-  }
-  
-  .describem {
-    width: 250px;
-  
-  }
-  
-  .uom {
-    margin-top: 16px;
-    font-family: 'Gilroy';
-    margin-left: -5px;
-  }
-  
-  .sub-category {
-    margin-top: -28px;
-    margin-left: 255px;
-    font-family: 'Gilroy';
-  }
-  
-  .type {
-    margin-top: -30px;
-    margin-left: 496px;
-    font-family: 'Gilroy';
-  }
-  
   .font {
     font-family: 'Gilroy';
   }
-  
-  .heading {
-    margin-top: 8px;
-    font-family: 'Gilroy';
-  }
-  
-  ::ng-deep.mat-stepper-vertical,
-  .mat-stepper-horizontal {
-    display: inline;
-    width: 500px;
-  }
-  
-  ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
-    width: 767px;
-    margin-top: -51px;
-  }
-  
-  .mat-horizontal-stepper-wrapper {
-    margin-top: -47px;
-      
-  }
-  
+
   /* .mat-horizontal-stepper-header-container ng-tns-c418-7 {
     margin: top -51px;
   }; */
@@ -168,7 +63,7 @@
   }
   
   .head-t h3 {
-    color: #000000;
+    color: #686E74;
     text-align: center;
     margin-top: -18px;
     margin-bottom: 2px;
@@ -177,30 +72,30 @@
   .addU {
     position: relative;
     /* font-family: 'Gilroy-Bold';  */
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 20px;
   }
   
   .addU:after {
     content: "";
     display: block;
-    width: 280px;
-    height: 2px;
-    background: #686E74;
-    right: 0;
+    width: 314px;
+    height: 0px;
+    right: 45px;
     top: 50%;
     position: absolute;
+    border: 0.5px solid rgba(104, 110, 116, 0.75);
   }
   
   .addU:before {
     content: "";
     display: block;
-    width: 280px;
-    height: 2px;
-    background: #686E74;
-    left: 0;
+    width: 314px;
+    height: 0px;
+    left: 45px;
     top: 50%;
     position: absolute;
+    border: 0.5px solid rgba(104, 110, 116, 0.75);
   }
   
   .addUserForm input {
@@ -211,11 +106,6 @@
     font-size: 14px;
     outline: none;
   }
-  
-  span {
-    color: red;
-  }
-  
   .close-icon {
     left: 100%;
     position: relative;
@@ -243,476 +133,7 @@
     background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
     ;
   }
-  
-  .categorydrp {
-    width: 205px;
-  }
-  
-  .subcategorydrp {
-    width: 205px;
-    margin-left: 250px;
-    margin-top: -40px;
-  }
-  
-  .typedrp {
-    width: 205px;
-    margin-left: 499px;
-    margin-top: -42px;
-  }
-  
-  .customidentifier {
-    width: 205px;
-    margin-left: 499px;
-    margin-top: -145px;
-  }
-  
-  .uomp {
-    margin-left: 499px;
-    margin-top: -29px;
-  }
-  
-  .promotiontypedrp {
-    width: 390px;
-    margin-top: 2px;
-    color: lightgrey;
-    font-family: 'Gilroy';
-  }
-  
-  .brandname {
-    margin-top: 1px;
-    margin-left: -5px;
-    font-family: 'Gilroy';
-  }
-  
-  .globalcode {
-    margin-top: -35px;
-    margin-left: 388px;
-    font-family: 'Gilroy';
-  }
-  
-  .brandpl {
-    margin-top: 10px;
-  }
-  
-  .sku {
-    margin-top: 10px;
-    margin-left: -5px;
-    font-family: 'Gilroy';
-  }
-  
-  .shortcode {
-    margin-top: -35px;
-    margin-left: 388px;
-    font-family: 'Gilroy';
-  }
-  
-  .productg {
-    margin-top: 10px;
-    margin-left: -5px;
-    font-family: 'Gilroy';
-  }
-  
-  .manualsort {
-    margin-top: -35px;
-    margin-left: 388px;
-    font-family: 'Gilroy';
-  }
-  
-  .productdrp {
-    width: 309px;
-    margin-top: 8px;
-    margin-left: -2px;
-  }
-  
-  .productsg {
-    margin-top: 10px;
-    margin-left: -5px;
-    font-family: 'Gilroy';
-  }
-  
-  .productlink {
-    margin-top: -35px;
-    margin-left: 388px;
-    font-family: 'Gilroy';
-  }
-  
-  .productsdrp {
-    width: 309px;
-    margin-top: 8px;
-    margin-left: -2px;
-  }
-  
-  .productci {
-    margin-top: 10px;
-    margin-left: -5px;
-    font-family: 'Gilroy';
-  }
-  
-  .identiersdrp {
-    width: 735px;
-    margin-top: 8px;
-    margin-left: -2px;
-    
-  }
-  
-  
-  .mat-slide {
-    margin-left: 620px;
-    color: black;
-    font-family: 'Gilroy';
-    margin-top: -1px;
-  }
-  
-  .city {
-    margin-left: 608px;
-    margin-top: -30px;
-  }
-  
-  .state {
-    margin-left: 228px;
-    margin-top: -29px;
-  }
-  
-  .region {
-    margin-left: 425px;
-    margin-top: -29px;
-  }
-  
-  .mat-card {
-    background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-    border-radius: 25px;
-    height: 190px;
-    width: 186px;
-  
-    /* font-size: 10px; */
-  }
-  ::ng-deep.matcard-dealers .mat-card{
-    width: 373px;
-    height: 218px;
-  }
-  
-  .catg {
-    background: #EAEEFF;
-    border: 1px solid #00187A;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    color: #00187A;
-    padding: 5px;
-    text-align: center;
-  }
-  
-  div.catg[data-selected] {
-    border: 2px solid #333;
-  }
-  
-  .subc {
-    background: #E6FFF6;
-    border: 1px solid #0C5A3E;
-    border-radius: 10px;
-    color: #0C5A3E;
-    font-size: 14px;
-    margin-bottom: 10px;
-    padding: 5px;
-    text-align: center;
-  }
-  
-  .typeg {
-    background: #FFEDEC;
-    border: 1px solid #C32F27;
-    border-radius: 10px;
-    color: #C32F27;
-    font-size: 14px;
-    margin-bottom: 10px;
-    padding: 5px;
-    text-align: center;
-  }
-  
-  li {
-    list-style: none;
-  }
-  
-  .addcat {
-    background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    margin-right: 10px;
-    font-size: 13px;
-    color: rgba(104, 110, 116, 0.75);
-    padding: 8px 16px;
-    /* width: 150px; */
-    margin-left: -12px;
-  }
-  
-  .addcode {
-    background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    font-size: 13px;
-    color: rgba(104, 110, 116, 0.75);
-    padding: 8px 20px;
-  }
-  
-  .span-subhead {
-    margin-bottom: 10px;
-    display: flex;
-    color: rgba(104, 110, 116, 0.75);
-    font-size: 13px;
-  }
-  
-  .selected {
-    background-color: #00187A;
-    color: white;
-  }
-  
-  .subselected {
-    background: #0C5A3E;
-    color: white;
-  }
-  
-  .typeselected {
-    background: #C32F27;
-    color: white;
-  }
-  
-  .row {
-    width: 767px
-  }
-  
-  .bar {
-    height: 400px;
-    overflow-y: scroll;
-    overflow-x: scroll;
-    /* height: 500px; */
-  }
-  
-  .geo {
-    margin-top: 18px;
-    font-family: 'Gilroy';
-  }
-  
-  .minorder {
-    margin-top: -29px;
-    margin-left: 310px;
-    font-family: 'Gilroy';
-  }
-  .mrp {
-    position: relative;
-    left: 27%;
-     font-family: 'Gilroy';
-  } 
-  .max{ 
-    margin-top: -29px;
-    margin-left: 409px;
-    font-family: 'Gilroy';
-  }
-  .discount{
-    margin-top: -29px;
-    margin-left: 608px;
-    font-family: 'Gilroy';
-  }
-  .margin {
-    margin-top: -29px;
-    margin-left: 512px;
-    font-family: 'Gilroy';
-  }
-  
-  .leadt {
-    position: relative;
-      left: 90%;
-      top: -32px;
-    font-family: 'Gilroy';
-  }
-  
-  .registration {
-    top: -64px;
-    left: 105%;
-    position: relative;
-    font-family: 'Gilroy';
-  }
-  
-  .tags {
-    position: relative;
-      left: 125%;
-      top: -93px;
-    font-family: 'Gilroy';
-  }
-  
-  .Kedah {
-    margin-top: 24px;
-    margin-left: 4px;
-  }
-  
-  .mala {
-    margin-top: -111px;
-    margin-left: 4px;
-  }
-  
-  .Perak {
-    margin-top: 18px;
-    margin-left: 4px;
-  }
-  
-  .Penang {
-    margin-top: 17px;
-    margin-left: 4px;
-  }
-  
-  .North {
-    margin-top: 17px;
-    margin-left: 4px;
-  }
-  
-  /* .geoo{
-    width: 900px;
-  } */
-  .addlink {
-    margin-top: -21px;
-    margin-left: 987px;
-  
-  }
-  .numberl{
-    margin-top: -21px;
-    margin-left: 799px;
-  }
-  .headergeo{
-    position: relative;
-      left: -7%;
-      top: -29px;
-  }
-  .malainput{
-    position: relative;
-      left: -7%;
-  }
-  .kedahinput{
-    position: relative;
-      left: -7%;
-  }
-  .perakinput{
-    position: relative;
-      left: -7%;
-  }
-  .penanginput{
-    position: relative;
-      left: -7%;
-  }
-  .northinput{
-    position: relative;
-      left: -7%;
-  }
-  .infosize{
-    width: 300px !important;
-  }
-  ::ng-deep.mat-horizontal-content-container {
-    overflow: hidden;
-    padding: 0px 0px 0px 0px;
-  }
-  .submitbtn{
-    margin-top: 12px;
-  }
-  ::ng-deep.mat-step-text-label {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    font-size: 12px;
-}
-::ng-deep.datepicker .mat-form-field-appearance-fill .mat-form-field-flex {
-    padding: .75em .75em 0 .75em;
-    border-radius: 14px;
-    width: 393px;
-    height: 42px;
-    
-}
-.datepicker.mat-form-field-infix{
-        display: block;
-        position: relative;
-        flex: auto;
-        min-width: 0;
-        width: 180px;
-       background-color: white;
-       font-family: "Gilroy";
-}
-.mat-card-subtitle:before{
-  content: "";
-    display: block;
-    width: 372px;
-    height: 1px;
-    background: lightgrey ;
-    right: 0;
-    top: 17%;
-    position: absolute;
-}
-.mat-card-subtitle{
-  font-weight: bold;
-    font-family: 'Gilroy';
-}
-.alignment{
-  position: relative;
-  left: 209px;
-}
-.btn-row{
-  margin-top:-2px;
-}
-.material-card {
-  margin-top: -5px;
-}
-.getgrp{
-  position: relative;
-    left: 403px;
-    top: -74px;
-}
-.productlevel{
-  position: relative;
-    font-family: 'Gilroy';
-    bottom: 95px;
-}
-.items{
-  position: relative;
-    font-family: 'Gilroy';
-    bottom: 153px;
-}
-.itemstwo{
-  position: relative;
-    font-family: 'Gilroy';
-    bottom: 500px;
-    left: 408px;
-}
-.qty{
-  position: relative;
-    font-family: 'Gilroy';
-    bottom: 328px;
-    left: 293px;
-}
-.qtytwo{
-  position: relative;
-    font-family: 'Gilroy';
-    bottom: 678px;
-    left: 708px;
-}
-.moq{
-  position: relative;
-    font-family: 'Gilroy';
-    bottom: 321px;
-    left: 293px;
-}
-.productleveltwo{
-  position: relative;
-    font-family: 'Gilroy';
-    bottom: 166px;
-    left: 406px;
-}
-.hide .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret{
-    overflow: hidden;
-    display: none;
-   /* background-image: url('../../../../assets/img/maximize.png');   */
-  background-size: 13px;
-  background-repeat: no-repeat;
-  height: 300px;
-  margin-top: 12px;
-  margin-right: -10px;
-}  
+
 .productdrpdown {
   width: 365px;
   position: relative;
@@ -725,7 +146,12 @@
     left: 414px;
 }
 mat-icon{
-  margin-left: -25px;
+  position: relative;
+  top: 7px;
+  left: -36px;
+}
+.search{
+margin-right: 10px;
 }
 .search input{
   width: 207.5px;
@@ -828,15 +254,45 @@ border-radius: 10px;
 .addItem-btn{
   width: 106px;
 height: 39px;
-right: 469px;
-top: 789px;
-
-font-family: 'Gilroy-SemiBold';
-font-size: 15px;
-line-height: 18px;
-display: flex;
+border-radius: 8px;
 align-items: center;
 text-align: center;
 background: #000;
 color: #FFFFFF;
+}
+/* ::ng-deep.add-item .mat-stepper-horizontal-line {
+      border-top-style: none; 
+}
+::ng-deep .add-item .mat-horizontal-stepper-header-container{
+  width: 50% !important;
+  margin: auto;
+  padding: 0;
+}
+::ng-deep .add-item .mat-horizontal-stepper-header{
+padding: 0;
+}
+::ng-deep .add-item .mat-step-header .mat-step-icon-selected{
+background: #000;
+} */
+
+/* .search-hero input{
+  border: 1px solid #555;
+  width: 100%;
+  padding: 9px 4px 9px 40px;
+   background: white url(../../../../assets/img/search-icon.svg)
+   no-repeat 13px center;
+   float: right;
+} */
+mat-radio-group{
+  display: flex;
+  justify-content: center;
+}
+::ng-deep .radio-btn .mat-radio-button.mat-accent .mat-radio-inner-circle{
+  background-color: black;
+}
+::ng-deep .radio-btn .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: black;
+}
+::ng-deep.radio-btn .mat-radio-label-content{
+  margin-right: 10px;
 }

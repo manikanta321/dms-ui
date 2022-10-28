@@ -1,0 +1,17 @@
+<i class="fa fa-ellipsis-v" #trigger  data-action="toggle" style="cursor: pointer;"></i>
+
+<div #content *ngIf="isOpen" class="menu-container">
+ 
+  <div (click)="editUser()" class="menu-item tick" > Edit <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+
+
+  <div (click)="deactive()" class="menu-item tick">Deactive <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+
+  <div (click)="activate()" class="menu-item tick">Reactive<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" > </div>
+
+</div>
+<!-- <div (click)="editUser()" class="tick">Edit <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+<div (click)="resetpws()" class="tick">Reset Password <img src="../../../assets/userImages/done-tick.svg" class="tickmark" alt="" ></div>
+<div (click)="deactive()" class="tick">Deactive <img src="../../../assets/userImages/done-tick.svg" class="tickmark" alt="" ></div>
+<div (click)="activate()" class="tick">Reactive <img src="../../../assets/userImages/done-tick.svg" class="tickmark" alt="" ></div>
+ <img src="../../../assets/userImages/carbon_thumbs-up.svg" alt="" > -->

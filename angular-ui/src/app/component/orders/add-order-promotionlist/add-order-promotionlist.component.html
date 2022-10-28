@@ -1,0 +1,104 @@
+<div class="font">
+    <div class="main" width="900%">
+        <div class="container promotionpopup-scroll">
+            <div class="addUser">
+                <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+            </div>
+            <div class="head-t">
+                <h3 class="addU font">Add Order : <b>Promotions</b></h3>
+                    <div class="row top-bottom">
+                        <div class="row text-center"></div>
+                    </div>
+
+                    <div class="promotion-card">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card1">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card1">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card1">
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    
+                    <div class="label-div">
+                        <span class="selected-promotion-label">Selected Promotions</span>
+                    </div>
+
+                    <div (click)="orderPromoList()" class="collapsible label-div">
+                        <div class="row">
+                            <div class="col-md-11">
+                                <p class="label-cls">Great Indian Sale</p>
+                            </div>
+                            <div class="col-md-1">
+                                <img [src]="image" class="expand-arrow" alt="add-user-btn">
+                            </div>
+                         </div>
+                    </div>
+
+                    <div class="content" *ngIf="!promoList">
+                        <div class="row label-div">
+                            <div class="col-md-3">
+                               <span class="buy-grp">Buy Group</span>
+                            </div>
+                            <div class="col-md-3" style="text-align: center;">
+                                <span class="total-items">Total Items(20)</span>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="searchButton" href="#">
+                                    <i class="material-icons">
+                                        search
+                                    </i>
+                                </button>
+                                <div class="searchBox d-flex" style=" cursor: pointer">
+                                    <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+                                        placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
+                                    <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+                                   
+                                </div>
+                            </div>
+                            
+                        </div>
+                             
+                        <div class="label-div">
+                            <ag-grid-angular
+                            id="OrderPromotionListContainer"
+                            style=" height: 386px;border-radius: 20px;background-color: white;font-family: Gilroy"
+                            class="ag-theme-material"
+                            [rowHeight]="25"
+                            [headerHeight]="48"
+                            [columnDefs]="columnDefs"
+                            [defaultColDef]="defaultColDef"
+                            [columnTypes]="columnTypes"
+                            [rowData]="rowData5"
+                            [suppressExcelExport]="true"
+                             (cellValueChanged)="onCellValueChanged($event)"
+                            (firstDataRendered)="onFirstDataRendered($event)" 
+                            (firstDataRendered)="onFirstDataRendered($event)"
+                            (rowClicked)="openDialog()"
+                            (cellClicked)="onCellClicked($event)"
+                            (gridReady)="onGridReady($event)"
+                            [pagination]="true"
+                            ></ag-grid-angular>
+                        </div>
+                    </div>   
+            </div>
+        </div>
+        
+    </div>
+    <div class="row footer">
+        <div class="col-md-5">                          
+        </div>
+        <div class="col-md-2">                      
+                <button type="button" class="saveas-draft">Add Items</button>                   
+        </div>
+        <div class="col-md-5">                                  
+        </div>
+    </div>
+</div>

@@ -13,7 +13,14 @@
                     </div>
 
                     <div (click)="expandDealerInfoDiv()" class="collapsible">
-                        <p class="label-cls">Dealer Information</p>
+                        <div class="row">
+                            <div class="col-md-11">
+                                <p class="label-cls">Dealer Information</p>
+                            </div>
+                            <div class="col-md-1">
+                                <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                            </div>
+                         </div>
                     </div>
                     <div class="content" *ngIf="!dealerInfo">
                         <div class="row">
@@ -69,20 +76,23 @@
                     </div>
 
                     <div class="top-bottom">
-                    <div (click)="expandOrderItemsDiv()" class="collapsible">
+                    <div  class="collapsible">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-5" (click)="expandOrderItemsDiv()">
                                <p class="label-cls">Order Items</p>
                             </div>
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class="col-md-6">
-                                         <button class="add-edit-promo">Add/Edit Promo Items</button> 
+                                         <button (click)="addOrderPromotionList()" class="add-edit-promo" [mat-dialog-close]="true">Add/Edit Promo Items</button> 
                                     </div>
                                     <div class="col-md-6">
-                                         <button class="add-edit-non-promo">Add/Edit Non Promo Items</button>
+                                         <button (click)="addOrderNonPromotionList()"  [mat-dialog-close]="true" class="add-edit-non-promo">Add/Edit Non Promo Items</button>
                                     </div>  
                                 </div>
+                            </div>
+                            <div class="col-md-1" (click)="expandOrderItemsDiv()">
+                                <img [src]="image2" class="expand-arrow" alt="add-user-btn">
                             </div>
                         </div>
                     </div>
@@ -207,10 +217,13 @@
                 <div class="top-bottom">
                     <div (click)="expandOtherInfoDiv()" class="collapsible">
                         <div class="row">
-                            <div class="col-md-6">
-                               <p class="label-cls">Other Information</p>
+                            <div class="col-md-11">
+                                <p class="label-cls">Other Information</p>
                             </div>
-                        </div>
+                            <div class="col-md-1">
+                                <img [src]="image3" class="expand-arrow" alt="add-user-btn">
+                            </div>
+                         </div>
                     </div>
                     <div class="content" *ngIf="!otherInfo">
                             <div class="row">
@@ -249,13 +262,13 @@
         
     </div>
     <div class="row footer">
-        <div class="col-md-4">
+        <div class="col-md-5">
                 <button type="button" class="saveas-draft">Save as draft</button>                       
         </div>
-        <div class="col-md-4">                      
+        <div class="col-md-2">                      
                 <button type="button" class="save-submit">Save & Submit</button>                   
         </div>
-        <div class="col-md-4">              
+        <div class="col-md-5">              
                 <button type="button" class="cancel">Cancel</button>                 
         </div>
     </div>

@@ -54,7 +54,7 @@ adduom(data){
 
 }
 deleteUom(UomId){
-  return this.http.get<any>(this.uomurl + `OtherMasterApi/DeleteUoM?UoMId= = ${UomId}`);
+  return this.http.get<any>(this.uomurl + `OtherMasterApi/DeleteUoM?UoMId=${UomId}`);
 }
 edititems(UomId){
   return this.http.get<any>(this.uomurl + `OtherMasterApi/GetUOMDetailsToEdit?UoMId=${UomId}`);

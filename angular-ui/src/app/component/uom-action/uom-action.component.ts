@@ -7,6 +7,7 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
 
 import tippy, { hideAll } from 'tippy.js'; 
+import { DeleteUomNewComponent } from '../delete-uom-new/delete-uom-new.component';
 import { DeleteUomPopupComponent } from '../delete-uom-popup/delete-uom-popup.component';
 import { ActivatepopUpComponent } from '../users/userPopups/activatepop-up/activatepop-up.component';
 import { DeactivateUserpopupComponent } from '../users/userPopups/deactivate-userpopup/deactivate-userpopup.component';
@@ -104,7 +105,7 @@ export class UomActionComponent implements OnInit,  AfterViewInit {
   }
 
   deleteUom(){
-    this.dialog.open(DeleteUomPopupComponent);
+    this.dialog.open(DeleteUomNewComponent);
     this.isOpen = false;
   }
   tickmark(){

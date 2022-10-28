@@ -31,13 +31,19 @@
                                 <label>Promotion Type <span>*</span></label>
                             </div>
                             <div class="promotiontypedrp">
+                                <ng-select [items]="toppingList3"
+                                        placeholder="Select the promotion type"
+                                        bindLabel="CategoryName"
+                                             bindValue="CategoryId" 
+                                             (change)="getCategory($event)">
+                                          </ng-select>
 
-                                <ng-multiselect-dropdown name="type" [placeholder]="'Select the promotion type'"
+                                <!-- <ng-select name="type" [placeholder]="'Select the promotion type'"
                                     formControlName="type" [disabled]="disabled" [settings]="dropdownSettings3"
-                                    [data]="toppingList3" (onSelect)="onTypeSelect($event)"
-                                    (onSelectAll)="onTypeAll($event)">
-                                </ng-multiselect-dropdown>
-                            </div>
+                                    [data]="toppingList3"  (onSelect)="onTypeSelect($event)"
+                                    (onSelectAll)="onTypeAll($event)" >
+                                </ng-select> -->
+                            </div> 
 
 
                             <div class="promotiont">
@@ -94,8 +100,12 @@
                                     <h6>
                                         <b style="color: #000000 ;font-size:18px; font-weight: bold;font-family: 'Gilroy'">Buy</b>&nbsp; <b style="color: #000000 ;font-size:18px; font-weight: lighter;font-family: 'Gilroy'">group</b>
                                     </h6>
+                                    <div class="btn"
+					(click)="showDiv.previous = !showDiv.previous;showDiv.current = false;showDiv.next = false" (click)="displaydata()">
                                     <img src="assets/img/plus.png" style="width: 22px;margin-left: 346px;margin-top: -67px;" alt="plus-btn">
                                 </div>
+                                </div>
+                           
                                 <div class="getgrp">
                                     <br>
                                     <h6>
@@ -106,7 +116,7 @@
                                 <div class="productlevel">
                                     <label>Product Level <span>*</span></label>
                                 </div>
-                                <div class="productdrpdown hide" >
+                                <div class="productdrpdown arrow" >
                                     <ng-multiselect-dropdown  
                                     name="type" 
                                     [placeholder]="'Select Identifier'" 
@@ -121,7 +131,7 @@
                                   <div class="productleveltwo">
                                     <label>Product Level <span>*</span></label>
                                 </div>
-                                <div class="productdrpdowntwo hide">
+                                <div class="productdrpdowntwo arrow">
                                     <ng-multiselect-dropdown  
                                     name="type" 
                                     [placeholder]="'Select Identifier'" 
@@ -159,8 +169,82 @@
                                 </div>
                                 <input matInput placeholder="1" #input class="form-control container"
                                 style="border: solid lightgrey 1px; width: 75px; height: 53px; border-radius: 15px; border-color:black;background-color: white;position: relative;left: 707px; bottom: 676px;">
-
-
+                              
+                               <div *ngIf =showdata>
+                                <!-- <div class="buygrp-hide"> -->
+                                <div class="buyg">
+                                <h6>
+                                    <b style="color: #000000 ;font-size:18px; font-weight: bold;font-family: 'Gilroy'">Buy</b>&nbsp; <b style="color: #000000 ;font-size:18px; font-weight: lighter;font-family: 'Gilroy'">group</b>
+                                </h6>
+                                <img src="assets/img/minus.png" style="width: 22px;margin-left: 346px;margin-top: -67px;" alt="plus-btn" (click)="hidedata()">
+                            </div>
+                            <div class="getg">
+                                <br>
+                                <h6>
+                                    <b style="color: #000000 ;font-size:18px; font-weight: bold;font-family: 'Gilroy'">Get</b>&nbsp; <b style="color: #000000 ;font-size:18px; font-weight: lighter;font-family: 'Gilroy'">group</b>
+                                </h6>
+                                <img src="assets/img/minus.png" style="width: 22px;margin-left: 344px;margin-top: -67px;" alt="plus-btn">
+                            </div>
+                            <div class="productlevelthree">
+                                <label>Product Level <span>*</span></label>
+                            </div>
+                            <div class="productdrpdownthree arrow" >
+                                <ng-multiselect-dropdown  
+                                name="type" 
+                                [placeholder]="'Select Identifier'" 
+                                formControlName="type" 
+                                [disabled]="disabled"
+                                  [settings]="dropdownSettings3" 
+                                  [data]="toppingList3" 
+                                  (onSelect)="onTypeSelect($event)"
+                                  (onSelectAll)="onTypeAll($event)">
+                                </ng-multiselect-dropdown>
+                              </div>
+                              <div class="productlevelf">
+                                <label>Product Level <span>*</span></label>
+                            </div>
+                            <div class="productdrpdownf arrow">
+                                <ng-multiselect-dropdown  
+                                name="type" 
+                                [placeholder]="'Select Identifier'" 
+                                formControlName="type" 
+                                [disabled]="disabled"
+                                  [settings]="dropdownSettings3" 
+                                  [data]="toppingList3" 
+                                  (onSelect)="onTypeSelect($event)"
+                                  (onSelectAll)="onTypeAll($event)">
+                                </ng-multiselect-dropdown>
+                              </div>
+                              <div class="itemso">
+                                <label>Items<span>*</span></label>
+                            </div>
+                            <input matInput placeholder="Item Information" #input class="form-control container"
+                            style="border: solid lightgrey 1px; width: 275px; height: 146px; border-radius: 15px; border-color:black;background-color: white;position: relative;left: 0px; bottom:710px;">
+                            <div class="qty-three">
+                                <label>Qty<span>*</span></label>
+                            </div>
+                            <input matInput placeholder="1" #input class="form-control container"
+                            style="border: solid lightgrey 1px; width: 75px; height: 53px; border-radius: 15px; border-color:black;background-color: white;position: relative;left: 293px; bottom:884px;">
+                            <div class="moq-three">
+                                <label>MOQ<span>*</span></label>
+                            </div>
+                            <input matInput placeholder="1" #input class="form-control container"
+                            style="border: solid lightgrey 1px; width: 75px; height: 53px; border-radius: 15px; border-color:black;background-color: white;position: relative;left: 293px; bottom:884px;">
+                            <div class="itemst">
+                                <label>Items<span>*</span></label>
+                            </div>
+                            <input matInput placeholder="Item Information" #input class="form-control container"
+                            style="border: solid lightgrey 1px; width: 275px; height: 146px; border-radius: 15px; border-color:black;background-color: white;position: relative;left: 422px; bottom:1056px;">
+                            <div class="qtyf">
+                                <label>Qty<span>*</span></label>
+                            </div>
+                            <input matInput placeholder="1" #input class="form-control container"
+                            style="border: solid lightgrey 1px; width: 75px; height: 53px; border-radius: 15px; border-color:black;background-color: white;position: relative;left: 711px; bottom:1234px;">
+                        </div>
+                    <!-- </div> -->
+                    <!-- <div class="buysets">
+                        
+                    </div> -->
                             </article>
                         </form>
                     </mat-step>

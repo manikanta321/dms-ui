@@ -37,26 +37,6 @@ export class UseractionComponent implements OnInit,  AfterViewInit {
     this.params = params;
   }
 
-  onClickHandler(option) {
-    this.togglePopup();
-    if (option === 'create') {
-      this.params.api.applyTransaction({
-        add: [{}],
-      });
-    }
-    if (option === 'delete') {
-      this.params.api.applyTransaction({ remove: [this.params.data] });
-    }
-
-    if (option === 'edit') {
-      // this.params.api.startEditingCell({
-      //   rowIndex: this.params.rowIndex,
-      //   colKey: 'make',
-      // });
-      this.dialog.open( EditPopupComponent,);
-      // this.dialogRef.close()
-    }
-  }
 
   configureTippyInstance() {
     this.tippyInstance.enable();
@@ -70,7 +50,7 @@ export class UseractionComponent implements OnInit,  AfterViewInit {
       interactive: true,
       appendTo: document.body,
       hideOnClick: false,
-      offset: [0, 200],
+      offset: [-100, 200],
       onShow: (instance) => {
         hideAll({ exclude: instance });
       },

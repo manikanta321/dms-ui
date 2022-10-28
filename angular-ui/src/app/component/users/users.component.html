@@ -16,21 +16,30 @@
         </div>
         <div class="row" style="position: relative;top: 3%;bottom: 8px; font-family: 'Gilroy'; color: grey;">
           <div class="col-md-2 col-lg-2 col-sm-2">
-            <form [formGroup]="myForm">
+            <form [formGroup]="myForm" class="dropdown-form">
               <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'Roles'" formControlName="city"
                 [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList"
                 (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
                 (onDeSelectAll)="onItemDeSelectOrAll($event)" (onSelectAll)="onItemSelectOrAll($event)">
               </ng-multiselect-dropdown>
+              <div class="dropdown-placeholder roless-placeholder">
+                <span *ngIf="myForm.get('city').value.length == 0"> Select Roles </span>
+                <span *ngIf="myForm.get('city').value.length > 0" class="selected-placeholder"> {{myForm.get('city').value.length}} Role(s) selected </span>
+              </div>
+
             </form>
           </div>
           <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;">
-            <form [formGroup]="myForms">
+            <form [formGroup]="myForms"  class="dropdown-form">
               <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Status'" formControlName="citys"
                 [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
                 (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
                 (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
               </ng-multiselect-dropdown>
+              <div class="dropdown-placeholder stts-placeholder">
+                <span *ngIf="myForms.get('citys').value.length == 0"> Select Status </span>
+              <span *ngIf="myForms.get('citys').value.length > 0"  class="selected-placeholder"> {{myForms.get('citys').value.length}} Status(s) selected </span>
+              </div>
             </form>
           </div>
           <div class="icon btnhover refreshbtn" (click)="refresh()" style=" cursor: pointer">

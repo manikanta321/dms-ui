@@ -303,6 +303,8 @@ export class UsersComponent implements OnInit {
     paginationAutoPageSize: false,
   }
 
+  instancePopup:any = null;
+
 
   constructor(public dialog: MatDialog,
     private router: Router,
@@ -525,11 +527,11 @@ export class UsersComponent implements OnInit {
   }
 
   handleScroll(event) {
-    var tippyPopups: NodeListOf<Element> | null | undefined = document.querySelectorAll(".tippy-box[data-theme='user-tippy']");
+    if(this.instancePopup){
+      this.instancePopup.togglePopup();
+      this.instancePopup = null;
+    }
     
-      tippyPopups.forEach(element=> {
-        element.parentNode?.removeChild(element)
-      })
     const grid = document.getElementById('gridContainer');
     if (grid) {
       const gridBody = grid.querySelector('.ag-body-viewport') as any;
@@ -794,6 +796,7 @@ export class UsersComponent implements OnInit {
       });
       if (cellRendererInstances.length > 0) {
         const instance = cellRendererInstances[0];
+        this.instancePopup = instance;
         instance.togglePopup();
       }
     }

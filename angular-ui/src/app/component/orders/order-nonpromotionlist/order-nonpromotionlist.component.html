@@ -1,1 +1,114 @@
-<p>order-nonpromotionlist works!</p>
+<div class="font">
+    <div class="main" width="900%">
+        <div class="container promotionpopup-scroll">
+            <div class="addUser">
+                <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+            </div>
+            <div class="head-t">
+                <h3 class="addU font">Add Order : <b>Other Items</b></h3>
+                    <div class="row top-bottom">
+                        <div class="row text-center"></div>
+                    </div>
+
+                    <div class="promotion-card">
+                        <div class="row">
+                            <div class="col-md-2.5">
+                                <div class="input-icons">
+                                    <i class="fa fa-search icon" aria-hidden="true"></i>
+                                    <input class="input-field" type="text" placeholder="Catogory">
+                                </div>
+                            </div>
+                            <div class="col-md-2.5">
+                                <div class="input-icons ">
+                                    <i class="fa fa-search icon" aria-hidden="true"></i>
+                                    <input class="input-field" type="text" placeholder="Sub-catogory">
+                                </div>
+                            </div>
+                            <div class="col-md-2.5">
+                                <div class="input-icons ">
+                                    <i class="fa fa-search icon" aria-hidden="true"></i>
+                                    <input class="input-field" type="text" placeholder="Type">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                            <div class="input-icons ">
+                                <form [formGroup]="myForms" class="dropDown-field">
+                                    <ng-multiselect-dropdown class="stts"  [placeholder]="'Identifier'"
+                                        formControlName="citys" [settings]="dropdownSettings1"
+                                        (onDeSelect)="onStatusDeSelect($event)" (onDeSelectAll)="onItemDeSelectOrAllStatus($event)"
+                                        (onSelectAll)="onItemSelectOrAllStatus($event)">
+                                    </ng-multiselect-dropdown>
+                                </form>
+                            </div>
+                            </div>
+                            
+                            <div class="col-md-1.5">
+                            <div class="icon btnhover refreshbtn" >
+                                <img src="assets/img/Vector.png" class="refresh-icon" alt="refresh" >
+                              </div>
+                            </div>  
+
+
+                        </div>
+                    </div> 
+                    
+                    <div class="label-div">
+                    </div>
+
+                    <div class="row label-div">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-3" style="text-align: center;">
+                        </div>
+                        <div class="col-md-6">
+                            <button class="searchButton" href="#">
+                                <i class="material-icons">
+                                    search
+                                </i>
+                            </button>
+                            <div class="searchBox d-flex" style=" cursor: pointer">
+                                <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+                                    placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
+                                <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                             
+                        <div class="label-div">
+                            <ag-grid-angular
+                            id="OrderPromotionListContainer"
+                            style=" height: 386px;border-radius: 20px;background-color: white;font-family: Gilroy"
+                            class="ag-theme-material"
+                            [rowHeight]="25"
+                            [headerHeight]="48"
+                            [columnDefs]="columnDefs"
+                            [defaultColDef]="defaultColDef"
+                            [columnTypes]="columnTypes"
+                            [rowData]="rowData5"
+                            [suppressExcelExport]="true"
+                             (cellValueChanged)="onCellValueChanged($event)"
+                            (firstDataRendered)="onFirstDataRendered($event)" 
+                            (firstDataRendered)="onFirstDataRendered($event)"
+                            (rowClicked)="openDialog()"
+                            (cellClicked)="onCellClicked($event)"
+                            (gridReady)="onGridReady($event)"
+                            [pagination]="true"
+                            ></ag-grid-angular>
+                        </div>
+                    
+            </div>
+        </div>
+        
+    </div>
+    <div class="row footer">
+        <div class="col-md-5">                          
+        </div>
+        <div class="col-md-2">                      
+                <button type="button" class="saveas-draft">Add Items</button>                   
+        </div>
+        <div class="col-md-5">                                  
+        </div>
+    </div>
+</div>

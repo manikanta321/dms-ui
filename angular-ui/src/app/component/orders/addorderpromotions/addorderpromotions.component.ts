@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddOrderPromotionlistComponent } from '../add-order-promotionlist/add-order-promotionlist.component';
+import { OrderNonpromotionlistComponent } from '../order-nonpromotionlist/order-nonpromotionlist.component';
 
 @Component({
   selector: 'app-addorderpromotions',
@@ -94,7 +95,11 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   addOrderPromotionList(){
-    this.dialog.open( AddOrderPromotionlistComponent,{width: '900px'});
+    this.dialog.open( AddOrderPromotionlistComponent,{width: '900px',height:'460px'});
+  }
+
+  addOrderNonPromotionList(){
+    this.dialog.open( OrderNonpromotionlistComponent,{width: '1000px',height:'460px'});
   }
 
 }

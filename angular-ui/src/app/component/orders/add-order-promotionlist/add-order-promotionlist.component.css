@@ -837,16 +837,14 @@
 }
 
 .promotionpopup-scroll {
-    height: 480px !important;
+    height: 360px !important;
 }
 
 .footer {
     position:fixed;
-    background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
     border-radius: 0px 0px 25px 25px;
-    margin-top:-28px;
     height: 50px;
-    width: 67%;
+    width: 860px;
 }
 
 .saveas-draft {

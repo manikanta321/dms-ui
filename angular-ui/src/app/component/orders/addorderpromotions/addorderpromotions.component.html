@@ -1,1 +1,262 @@
-<p>addorderpromotions works!</p>
+<div class="font">
+    <div class="main" width="900%">
+        <div class="container promotionpopup-scroll">
+            <div class="addUser">
+                <img  class="print-img" src="../../../assets/material/print-img.svg" alt="">
+                <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+
+            </div>
+            <div class="head-t">
+                <h3 class="addU font">Add Order</h3>
+                    <div class="row top-bottom">
+                        <div class="row text-center"></div>
+                    </div>
+
+                    <div (click)="expandDealerInfoDiv()" class="collapsible">
+                        <p class="label-cls">Dealer Information</p>
+                    </div>
+                    <div class="content" *ngIf="!dealerInfo">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="promotiont">
+                                    <label>Dealer <span>*</span></label>
+                                </div>
+                                <input matInput placeholder="Search for the geography here" #input class="form-control container input-box" >
+                                <img src="assets/img/search.png" class="search-img"  alt="search">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="promotiont">
+                                    <label>Geography <span>*</span></label>
+                                    <ng-multiselect-dropdown name="type" [placeholder]="'Select the promotion type'"
+                                    formControlName="type" [disabled]="disabled" [settings]="dropdownSettings3"
+                                    [data]="toppingList3" (onSelect)="onTypeSelect($event)"
+                                    (onSelectAll)="onTypeAll($event)">
+                                </ng-multiselect-dropdown>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="row" style="margin-top:-19px">
+                            <div class="col-md-6">
+                                <div class="promotiont">
+                                    <label>Billing Address <span>*</span></label>
+                                </div>
+                                <input matInput placeholder="Billing address" #input class="form-control container input-box" >
+                            </div>
+                            <div class="col-md-6">
+                                <div class="promotiont">
+                                    <label>Shipping Address <span>*</span></label>
+                                    <input matInput placeholder="Select shipping address" #input class="form-control container input-box" >
+                                </div>
+                            </div>   
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="promotiont">
+                                    <label>Dealer Reference No <span>*</span></label>
+                                </div>
+                                <input matInput placeholder="Enter dealer reference number" #input class="form-control container input-box" >
+                            </div>
+                            <div class="col-md-6">
+                                <div class="promotiont">
+                                    <label>Company Reference No <span>*</span></label>
+                                    <input matInput placeholder="Enter Company reference number" #input class="form-control container input-box" >
+                                </div>
+                            </div>   
+                        </div>
+                    </div>
+
+                    <div class="top-bottom">
+                    <div (click)="expandOrderItemsDiv()" class="collapsible">
+                        <div class="row">
+                            <div class="col-md-6">
+                               <p class="label-cls">Order Items</p>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                         <button class="add-edit-promo">Add/Edit Promo Items</button> 
+                                    </div>
+                                    <div class="col-md-6">
+                                         <button class="add-edit-non-promo">Add/Edit Non Promo Items</button>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content" *ngIf="!orderitem">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="promotiont">
+                                    <label class="promotions-label">Promotions  <span class="buy-text">Buy(A+B) get (X+Y..)</span></label>
+                                </div>
+                            </div>
+             
+
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <div class="promotiont">
+                                        <div>
+                                            <label class="promotions-label">Items </label>
+                                        </div>
+                                        <div>
+                                            <label class="promotions-label">Lays Classic </label>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="promotiont">
+                                        <div>
+                                            <label class="promotions-label">UoM </label>
+                                        </div>
+                                        <div>
+                                            <input type="text" class="uom-cls" id="fname" name="fname">
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="promotiont">
+                                        <div>
+                                            <label class="promotions-label">Order Quantity </label>
+                                        </div>
+                                        <div>
+                                            <input type="text" class="qyt-cls" id="fname" name="fname">
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="promotiont">
+                                        <div>
+                                            <label class="promotions-label">Stack </label>
+                                        </div>
+                                        <div>
+                                            <input type="text" class="stack-cls" id="fname" name="fname">
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="promotiont">
+                                        <div>
+                                            <label class="promotions-label">Value </label>
+                                        </div>
+                                        <div>
+                                            <input type="text" class="value-cls" id="fname" name="fname">
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="promotiont">
+                                        <div>
+                                            <label class="promotions-label">Discount </label>
+                                        </div>
+                                        <div>
+                                            <input type="text" class="dis-cls" id="fname" name="fname">
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="promotiont">
+                                        <div>
+                                            <label class="promotions-label">Final Value </label>
+                                        </div>
+                                        <div>
+                                            <input type="text" class="final-cls" id="fname" name="fname">
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="promotiont">
+                                        <div>
+                                            <label class="promotions-label">Tax </label>
+                                        </div>
+                                        <div>
+                                            <input type="text" class="tax-cls" id="fname" name="fname">
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="promotiont">
+                                        <div>
+                                            <label class="promotions-label">Amount </label>
+                                        </div>
+                                        <div>
+                                            <input type="text" class="amt-cls" id="fname" name="fname">
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="top-bottom">
+                    <div (click)="expandOtherInfoDiv()" class="collapsible">
+                        <div class="row">
+                            <div class="col-md-6">
+                               <p class="label-cls">Other Information</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content" *ngIf="!otherInfo">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="promotiont">
+                                        <label>Requirment Date </label>
+                                    </div>
+                                    <mat-form-field appearance="fill" class="req-date">
+                                        <mat-label>Select a date</mat-label>
+                                        <input class="req-date" matInput [matDatepicker]="picker">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="promotiont">
+                                        <label>Delivery Instructions/Extra Information</label>
+                                    </div>
+                                    <mat-form-field  class="text-area">
+                                        <textarea matInput
+                                           placeholder="Please write down if there are any delivery instructions or extra information you want to share" 
+                                          >
+                                        </textarea>
+                                      </mat-form-field> 
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+               
+                     
+            </div>
+        </div>
+        
+    </div>
+    <div class="row footer">
+        <div class="col-md-4">
+                <button type="button" class="saveas-draft">Save as draft</button>                       
+        </div>
+        <div class="col-md-4">                      
+                <button type="button" class="save-submit">Save & Submit</button>                   
+        </div>
+        <div class="col-md-4">              
+                <button type="button" class="cancel">Cancel</button>                 
+        </div>
+    </div>
+</div>

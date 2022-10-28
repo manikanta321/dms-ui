@@ -45,16 +45,8 @@ export class GeographicListComponent implements OnInit {
 
   gridOptions = {
     resizable: true,
-    
-
     onCellClicked: (event: CellClickedEvent) => console.log('Cell was clicked'),
-    // set background colour on every row, this is probably bad, should be using CSS classes
     rowStyle: { background: 'black' },
-
-    // set background colour on even rows again, this looks bad, should be using CSS classes
-    
-
-    // other grid options ...
 }
 
 

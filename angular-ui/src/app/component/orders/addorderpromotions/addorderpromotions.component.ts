@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AddOrderPromotionlistComponent } from '../add-order-promotionlist/add-order-promotionlist.component';
 
 @Component({
   selector: 'app-addorderpromotions',
@@ -15,6 +17,9 @@ export class AddorderpromotionsComponent implements OnInit {
   dealerInfo = true;  
   orderitem = true;
   otherInfo = true;
+  image1 = 'assets/img/maximize-arrow.png';
+  image2 = 'assets/img/maximize-arrow.png';
+  image3 = 'assets/img/maximize-arrow.png';
 
   //event handler for the select element's change event
   selectChangeHandler (event: any) {
@@ -35,7 +40,8 @@ export class AddorderpromotionsComponent implements OnInit {
   buygroup : string[]= ["Product Name","Product Name", "Product Name", "Product Name"];
   CustomerSelect : string[] = ['Valiant Distributors', 'Global Movers', 'Somebody Sales']
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder,
+    public dialog: MatDialog) { }
 
   firstFormGroup: FormGroup = this._formBuilder.group({firstCtrl: ['']});
   secondFormGroup: FormGroup = this._formBuilder.group({secondCtrl: ['']});
@@ -58,15 +64,37 @@ export class AddorderpromotionsComponent implements OnInit {
 
   expandDealerInfoDiv(){
     this.dealerInfo = !this.dealerInfo;
+
+    if(this.dealerInfo === false){
+      this.image1 = 'assets/img/minimize-tag.png';
+    } else {
+      this.image1 = 'assets/img/maximize-arrow.png';
+    }
   }
 
   expandOrderItemsDiv(){
     this.orderitem = !this.orderitem;
+
+    if(this.orderitem === false){
+      this.image2 = 'assets/img/minimize-tag.png';
+    } else {
+      this.image2 = 'assets/img/maximize-arrow.png';
+    }
     
   }
 
   expandOtherInfoDiv(){
     this.otherInfo = !this.otherInfo;
+
+    if(this.otherInfo === false){
+      this.image3 = 'assets/img/minimize-tag.png';
+    } else {
+      this.image3 = 'assets/img/maximize-arrow.png';
+    }
+  }
+
+  addOrderPromotionList(){
+    this.dialog.open( AddOrderPromotionlistComponent,{width: '900px'});
   }
 
 }

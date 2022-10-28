@@ -9,7 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Sort, MatSort, SortDirection } from '@angular/material/sort';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { PaginationNumberFormatterParams, } from 'ag-grid-community';
+import { ITooltipParams, PaginationNumberFormatterParams, } from 'ag-grid-community';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { Subscription } from 'rxjs'
 
@@ -112,21 +112,26 @@ export class UsersComponent implements OnInit {
 
     {
       headerName: "User Id",
-      field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
+      field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
+      tooltipField:"employeeCode",
     },
 
-    { headerName: "Username", field: 'userName', type: ['nonEditableColumn'] },
+    { headerName: "Username", field: 'userName', type: ['nonEditableColumn'],tooltipField:"userName", },
 
-    { headerName: "Role", field: 'roleName', type: ['nonEditableColumn'] },
+    { headerName: "Role", field: 'roleName', type: ['nonEditableColumn'], tooltipField:"roleName", },
 
     {
       headerName: "Email Id",
-      field: 'email', type: ['nonEditableColumn']
+      field: 'email', type: ['nonEditableColumn'],
+      tooltipField:"email",      
+      minWidth:200,
+      // flex: 1,
     },
 
     {
       headerName: "Phone no",
-      field: 'mobile', type: ['nonEditableColumn']
+      field: 'mobile', type: ['nonEditableColumn'],
+      tooltipField:"mobile"
     },
 
     {
@@ -135,7 +140,8 @@ export class UsersComponent implements OnInit {
       field: 'lastLoginDate', type: ['nonEditableColumn'],
       cellRenderer: function dateFormtter(params) {
         return moment(params.value).format('DD MMM YYYY, HH:mm A')
-      }
+      },
+      tooltipValueGetter:(params: ITooltipParams) => moment(params.value).format('DD MMM YYYY, HH:mm A'),
     },
 
     // suppressMovable:true,
@@ -149,7 +155,8 @@ export class UsersComponent implements OnInit {
       },
       cellClass: params => {
         return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
-      }
+      },
+      tooltipField:"statusName",
     },
     {
       headerName: '',
@@ -191,6 +198,8 @@ export class UsersComponent implements OnInit {
     filter: 'agTextColumnFilter',
     // enable floating filters by default
     // make columns resizable
+    flex: 1,
+    minWidth: 100,
     resizable: true,
     sortable: true,
   };

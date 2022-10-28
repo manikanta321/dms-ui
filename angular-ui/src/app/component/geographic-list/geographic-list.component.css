@@ -12,85 +12,100 @@
     font-weight: bold;
 }
 .searchButton {
-    display:bolck;
-    color: #FFFFFF;
-    float: left;
-    width: 37px;
-    height: 37px;
-    border-radius: 50%;
-    background: #000000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.2s;
-    border: none;
-  }
-  
-  .searchBox:hover >.searchButton,
-  .searchBox>.searchInput,
-  .search-btn {
-    display:none;
-  }
-  
-  .searchBox {
-    float:right;
-    position: absolute;
-    right: -10px;
-    top: 5px;
-  }
-  
-  .searchBox:hover >.searchButton {
-    display:bolck;
-    color: #000;
-    float: left;
-    width: 42px;
-    height: 42px;
-    background: #ffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.2s;
-    background: none;
-    position: relative;
-      right: 239px;
-      top: 2px;
-  
-  }
-  
-  .searchBox:hover >.search-btn {
-    display:block;
-    height: 26px;
-    border: none;
-    background: #000000;
-    color: white;
-    border-radius: 5px;
-    position: absolute;
-    right: 10px;
-    top:10px;
-  }
-  
-  
-  .searchBox:hover>.searchInput {
-    display:block;
-    width: 280px;
-    height: 50px;
-    background: #FFFFFF;
-    float: left;
-    padding: 5px 32px 6px;
-    border-radius: 10px;
-    font-family: 'Gilroy-medium';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 17px;
-    letter-spacing: 0.08em;
-    color: #263643;
-    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
-    /* // transition: 0.2s  ease-in-out; */
-    position: absolute;
-    right: 0px;
-    bottom: -3px;
-  }
+  display:bolck;
+  color: #FFFFFF;
+  float: left;
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  background: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+  border: none;
+}
+.searchBox:hover >.searchButton,
+.searchBox>.searchInput,
+.search-btn {
+display:none;
+}
+
+.searchBox {
+float:right;
+top: 11px;
+position: relative;
+left: 84%;
+}
+.searchBox:hover >.searchButton .material-icons {
+  position: relative;    
+  right: 56px;
+  color:#000;
+  top: -5px;
+}
+.add-user{
+margin-left: -25px;
+}
+.searchBox:hover >.searchButton {
+display:bolck;
+color: #000;
+float: left;
+width: 37px;
+height: 37px;
+background: #ffff;
+display: flex;
+justify-content: center;
+align-items: center;
+transition: 0.2s;
+background: none;
+position: relative;
+right: 188px;
+top: 4px;
+
+}
+.add-user {
+border: none;
+background: #000000;
+border-radius: 50%;
+width: 37px;
+height: 37px;
+top: 6px;
+margin-top: 5px;
+margin-left: 17%;
+}
+.searchBox:hover >.search-btn {
+display:block;
+height: 26px;
+border: none;
+background: #000000;
+color: white;
+border-radius: 5px;
+position: absolute;
+right: 10px;
+top:4px;
+}
+
+
+.searchBox:hover>.searchInput {
+display:block;
+width: 280px;
+height: 50px;
+background: #FFFFFF;
+float: left;
+padding: 5px 32px 6px;
+border-radius: 10px;
+font-family: 'Gilroy-medium';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 17px;
+letter-spacing: 0.08em;
+color: #263643;
+box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+position: absolute;
+right: 0px;
+bottom: -3px;
+}
   .addU:before {
     width: 201px;
   }
@@ -140,8 +155,8 @@
     width: 37px;
     height: 37px;
     top: 6px;
-    margin-top: 5px;
-    margin-left: 17%;
+  position: absolute;
+  left: 72%;
   }
   .download-btn {
     border: none;
@@ -150,8 +165,8 @@
     position: relative;
     width: 37px;
     height: 37px;
-    top: 6px;
-    left: 21%;
+    top: 11px;
+    left: 114%;
   }
   ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
     border: 1px solid #337ab7;
@@ -639,10 +654,22 @@
       margin-left: -50px;
      }
 
-     .download-btn {
+     /* .download-btn {
       bottom: 36px;
       left: 0;
       top: -37px;
+    } */
+    /* .download-btn{
+      margin-left: 30px;
+      margin-top: -43px;
+     } */
+     .download-btn:hover {
+      background-color: grey !important;
+      color: white !important;
+    }
+    .add-user:hover {
+      background-color: grey !important;
+      color: white !important;
     }
      .icon .btnhover{
       margin-top: 7px;

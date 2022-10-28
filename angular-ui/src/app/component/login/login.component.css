@@ -14,6 +14,31 @@
   background-size: cover;
   position: relative;
 }
+.highlitepopup{position: absolute;
+  position: absolute;
+  width: 333px;
+  height: 105.5px;
+  left: 643px;
+  top: 162.5px;
+
+
+/* transform: matrix(1, 0, 0, -1, 0, 0); */
+}
+.logo{
+position: absolute;
+width: 204px;
+height: 75px;
+left: 19px;
+top: 35px;
+
+font-family: 'Gilroy-BlackItalic';
+font-size: 50px;
+line-height: 59px;
+text-align: center;
+letter-spacing: 0.16em;
+
+color: #06997E;
+}
 
 section{
 /* background: white; */
@@ -32,7 +57,7 @@ box-shadow: 6px 6px 8px rgba(47, 46, 46, 0.2), -4px -4px 8px rgba(255, 255, 255,
 border-radius: 40px;
 /* transform: matrix(1, 0, 0, -1, 0, 0); */
 position: relative;
-top: 100px;
+top: 125px;
 left: 104px;
 }
 form{

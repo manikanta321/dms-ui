@@ -22,7 +22,7 @@
         <mat-list-item>
             <img src="../../../assets/sidebarImages/sidenav-products.svg" alt="">
             <!-- <mat-icon>store_mall_directory</mat-icon> -->
-            <span *ngIf="collapsed">Products</span>
+            <span *ngIf="collapsed">Sales</span>
         </mat-list-item>
 
         <!-- <mat-list-item>
@@ -42,11 +42,11 @@
 
 
 
-            <mat-expansion-panel (click)="toogleCollapsed()" class="expnsnpanl">
+            <mat-expansion-panel (click)="toogleCollapsed()" class="expnsnpanl" [hideToggle]="true">
 
-                <mat-expansion-panel-header>
+                <mat-expansion-panel-header >
 
-                    <mat-panel-title>
+                    <mat-panel-title >
                         <img src="../../../assets/sidebarImages/sidenav-settings.svg" alt="">
                         <!-- <mat-icon>settings</mat-icon> -->
                         <span *ngIf="collapsed">Settings</span>

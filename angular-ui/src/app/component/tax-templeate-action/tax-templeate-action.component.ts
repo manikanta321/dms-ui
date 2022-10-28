@@ -7,20 +7,17 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
 
 import tippy, { hideAll } from 'tippy.js'; 
-import { DeleteUomNewComponent } from '../delete-uom-new/delete-uom-new.component';
-import { DeleteUomPopupComponent } from '../delete-uom-popup/delete-uom-popup.component';
 import { ActivatepopUpComponent } from '../users/userPopups/activatepop-up/activatepop-up.component';
 import { DeactivateUserpopupComponent } from '../users/userPopups/deactivate-userpopup/deactivate-userpopup.component';
 import { EditPopupComponent } from '../users/userPopups/edit-popup/edit-popup.component';
-import { EditUomPopupComponent } from '../users/userPopups/edit-uom-popup/edit-uom-popup.component';
 import { PswResetPopupComponent } from '../users/userPopups/psw-reset-popup/psw-reset-popup.component';
 
 @Component({
-  selector: 'app-uom-action',
-  templateUrl: './uom-action.component.html',
-  styleUrls: ['./uom-action.component.css']
+  selector: 'app-tax-templeate-action',
+  templateUrl: './tax-templeate-action.component.html',
+  styleUrls: ['./tax-templeate-action.component.css']
 })
-export class UomActionComponent implements OnInit,  AfterViewInit {
+export class TaxTempleateActionComponent implements OnInit,  AfterViewInit {
   private params;
   public isOpen = false;
   private tippyInstance;
@@ -70,6 +67,7 @@ export class UomActionComponent implements OnInit,  AfterViewInit {
     this.tippyInstance.setProps({
       trigger: 'manual',
       placement: 'left',
+      theme: 'user-tippy',
       arrow: false,
       interactive: true,
       appendTo: document.body,
@@ -87,7 +85,7 @@ export class UomActionComponent implements OnInit,  AfterViewInit {
 
   editUser(){
    
-    this.dialog.open( EditUomPopupComponent,);
+    this.dialog.open( EditPopupComponent,);
     this.isOpen = false;
   }
   deactive(){
@@ -101,11 +99,6 @@ export class UomActionComponent implements OnInit,  AfterViewInit {
   }
   resetpws(){
     this.dialog.open(PswResetPopupComponent);
-    this.isOpen = false;
-  }
-
-  deleteUom(){
-    this.dialog.open(DeleteUomNewComponent);
     this.isOpen = false;
   }
   tickmark(){

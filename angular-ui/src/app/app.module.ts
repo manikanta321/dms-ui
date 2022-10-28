@@ -92,6 +92,8 @@ import { DeleteUomSuccessfullPopupComponent } from './component/delete-uom-succe
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { AddorderpromotionsComponent } from './component/orders/addorderpromotions/addorderpromotions.component';
 import { AddOrderPromotionlistComponent } from './component/orders/add-order-promotionlist/add-order-promotionlist.component';
+import { DeleteUomNewComponent } from './component/delete-uom-new/delete-uom-new.component';
+import { TaxTempleateActionComponent } from './component/tax-templeate-action/tax-templeate-action.component';
 
 @NgModule({
   declarations: [
@@ -153,6 +155,8 @@ import { AddOrderPromotionlistComponent } from './component/orders/add-order-pro
     DeleteUomSuccessfullPopupComponent,
           AddorderpromotionsComponent,
           AddOrderPromotionlistComponent,
+          DeleteUomNewComponent,
+          TaxTempleateActionComponent,
   ],
   imports: [
     FormsModule,

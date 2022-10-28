@@ -74,7 +74,7 @@ public popupParent: HTMLElement = document.body;
 columnDefs: ColDef[] = [ 
 
   { headerName: "Name",
-field: 'uoMName' ,type: ['nonEditableColumn'], sort: 'desc',maxWidth:700
+field: 'uoMName' ,type: ['nonEditableColumn'], sort: 'desc',minWidth:400
 },
 
 {   headerName: "Display Code",field: 'uoMShortName',type: ['nonEditableColumn']},
@@ -86,8 +86,9 @@ field: 'uoMName' ,type: ['nonEditableColumn'], sort: 'desc',maxWidth:700
 cellEditor: 'agSelectCellEditor',
 cellEditorParams: {
 values: ['Active', 'Inactive', 'Invited', 'Locked',],
-maxWidth:300
+
 },
+maxWidth:150,
 cellClass: params => {                      
   return params.value == 'Inactive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
 }
@@ -143,7 +144,8 @@ rowData :any;
 rowData1=[]
 public defaultColDef: ColDef = {
   // set the default column width
-  
+  suppressSizeToFit: true,
+
   // make every column editable
   editable: true,
   // make every column use 'text' filter by default
@@ -152,6 +154,9 @@ public defaultColDef: ColDef = {
   // make columns resizable
   resizable: true,
   sortable: true,
+  flex: 1,
+  width:100
+
 };
 
 // public defaultColDef: ColDef = {

@@ -1,7 +1,86 @@
+.addU {
+    position: relative;
+    /* font-family: 'Gilroy-Bold';  */
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.addU:after {
+    content: "";
+    display: block;
+    width: 205px;
+    height: 0.8px;
+    background: #686E74;
+    right: 0;
+    top: 50%;
+    position: absolute;
+    width: 201px;
+
+}
+.close-icon {
+    left: 100%;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.addU:after {
+    content: "";
+    display: block;
+    width: 205px;
+    height: 0.8px;
+    background: #686E74;
+    right: 0;
+    top: 50%;
+    position: absolute;
+    width: 201px;
+
+}
+
+.addU:before {
+    content: "";
+    display: block;
+    width: 201px;
+    height: 0.8px;
+    background: #686E74;
+    left: 0;
+    top: 50%;
+    width: 201px;
+    position: absolute;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #686E74
+    ;
+    opacity: 1; /* Firefox */
+  }
+
+.input {
+    height: 43px;
+
+    border-radius: 10px;
+    /* border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
+    border: 0.5px solid #000000;
+    padding: 5px 5px;
+    width: 250px;
+    font-size: 14px;
+    outline: none !important;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+}
+::ng-deep.btn-primary[_ngcontent-uke-c437]:disabled {
+    margin-bottom: 0px !important;
+}
 
 .head-t{
     color: #0091EA;
 }
+
+.head-t h3 {
+    color: #000000;
+    text-align: center;
+    margin-top: -18px;
+    margin-bottom: 2px;
+}
+
 .head-t input{
     border-radius: 5px;
     border: 1px solid #D6D6D6;
@@ -21,14 +100,24 @@ label{
     padding: 2px 0;
 }
 .E-saveBtn{
-background: #0091EA;
+background:black;
+color: white;
  padding: 2px 30px;
+ width: 175px;
+ height: 43px;
+ border-radius: 10px;
  margin-right: 10px;
 }
 .E-cancelBtn{
     background: #fff;
+    color: black;
     padding: 2px 30px;
     border: 1px solid grey;
+    width: 175px;
+    height: 43px;
+    border: solid 2px black;
+    border-radius: 10px;
+
 }
 .E-saveBtn:hover{
     border: 2px solid rgba(250, 63, 63, 1);
@@ -44,13 +133,15 @@ background: #0091EA;
 }
 .minus-icon{
  background: red;
- padding: 0 5px;
- border-radius: 50%;
+ padding: 1px 10px;
+  border-radius: 50%;
 }
-.k-arrw-dwn{
-
-
+.minus-icon1{
+    background: #0091EA;
+    padding: 1px 10px;
+     border-radius: 50%;
 }
+
 td{
     padding: 10px;
 }

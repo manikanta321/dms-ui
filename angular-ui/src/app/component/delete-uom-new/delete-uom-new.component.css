@@ -1,0 +1,27 @@
+
+.head-text{
+    font-size: 20px;
+    font-weight: 600;
+    }
+    .undo{
+        padding: 5px 52px;
+        background: black;
+        color: white;
+        margin-right: 20px;
+        /* border: #000000; */
+        border-radius: 5px;
+        }
+    .exit{
+    background: #fff;
+    color: black;
+    padding: 5px 52px;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    }
+    .close-icon{
+        left: 100%;
+        position: relative;
+        font-size: 15px;
+        font-weight: 600;
+    }
+    

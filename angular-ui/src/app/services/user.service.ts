@@ -124,6 +124,9 @@ public getcurrencylist(data){
 public otherstatus(data){
   return this.http.post<any>(this.userurl + 'OtherMasterApi/GetStatusList', data);
 }
+public tatemplatestatus(data){
+  return this.http.post<any>(this.userurl + 'OtherMasterApi/GetTaxTemplateStatus', data);
+}
 public addcurrency(data){
   return this.http.post<any>(this.userurl + 'OtherMasterApi/AddEditCurrency', data);
 }

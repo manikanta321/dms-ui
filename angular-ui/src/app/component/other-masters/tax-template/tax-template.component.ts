@@ -10,6 +10,7 @@ import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRender
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';  
 import { TaxTemplateServiceService } from 'src/app/services/tax-template-service.service';
+import { TaxTempleateActionComponent } from '../../tax-templeate-action/tax-templeate-action.component';
 export interface PeriodicElement {
   name: any;
   position: string;
@@ -79,14 +80,11 @@ export class TaxTemplateComponent implements OnInit {
   },
   { 
   
-     headerName: "",
-  field: '',  filter: false, sortable: false,
-  cellRenderer: function clickNextRendererFunc(){
-    return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
-  }, 
-   cellEditorPopup: true,
-  //  onCellClicked: (event: CellClickedEvent) => this.dialog.open( DeletecomponentComponent)
-  
+    headerName: '',
+    colId: 'action',
+    cellRenderer: TaxTempleateActionComponent,
+    editable: false,
+    maxWidth: 75
   },
   
   // {
@@ -514,7 +512,7 @@ onSearchChange($event:any , anything?:any){
     const data ={
   
     }
-    this.user.otherstatus(data).subscribe((res: any) => {
+    this.user.tatemplatestatus(data).subscribe((res: any) => {
       this.toppingList1=res.response;
       // this.toppingList1 = localdata.map((data: { status_id: any; status_name: any; }) => {
       //   return {status_id: data.status_id, status_name: data.status_name };
@@ -572,8 +570,20 @@ announceSortChange(sortState: any) {
 
 
 // Example of consuming Grid Event
-onCellClicked( e: CellClickedEvent): void {
+onCellClicked( e) {
   console.log('cellClicked', e);
+
+  
+  if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
+    const cellRendererInstances = e.api.getCellRendererInstances({
+      rowNodes: [e.node],
+      columns: [e.column],
+    });
+    if (cellRendererInstances.length > 0) {
+      const instance = cellRendererInstances[0];
+      instance.togglePopup();
+    }
+  }
 }
 
 openDialog(){

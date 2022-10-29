@@ -103,11 +103,8 @@ columnDefs: ColDef[] = [
 
   {  headerName: "Type",field: 'role', },
 
-  {  headerName: "#of Products",
+  {  headerName: "# of Dealers",
      field: 'emailId' },
-
-  {   headerName: "# of Dealers",
-    field: 'mobilePhone',},
 
   {   headerName: "Start Date",
     // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
@@ -116,6 +113,10 @@ columnDefs: ColDef[] = [
     {   headerName: "End Date",
     // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
     field: 'lastLoginDate',type: ['nonEditableColumn']},
+    {  headerName: "# of orders",
+    field: 'emailId' }, 
+    {  headerName: "Invoiced Value",
+    field: 'emailId' }, 
   { headerName: "Status",
      field: 'status', 
   cellEditor: 'agSelectCellEditor',

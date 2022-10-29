@@ -47,13 +47,21 @@ export class AddItemsPromotionComponent implements OnInit {
   //   secondCtrl: ['', Validators.required],
   // });
   // isLinear = false;
+  public rowData3 = [
+    {name: 'revathi', Taxitem: 'IGST', Status: 'Active'},
+    {name: 'rani', Taxitem: 'CGST', Status: 'Inactive'},
+    {name: 'naveen', Taxitem: 'SGST', Status: 'Inactive'},
+    {name: 'swetha', Taxitem: 'IGST', Status: 'Locked'},
+    {name: 'sneha', Taxitem: 'SGST', Status: 'Active'},
+    {name: 'anjali', Taxitem: 'CGST', Status: 'Active'},
+  ];
   private gridApi!: GridApi;
   searchText;
   columnDefs: ColDef[] = [
 
     {
       headerName: "Porduct Name",
-      field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
+      field: 'name', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
     },
 
     { headerName: "Classification", field: 'userName', type: ['nonEditableColumn'] },

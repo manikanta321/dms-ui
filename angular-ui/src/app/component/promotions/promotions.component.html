@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-2 col-lg-2 col-sm-2">
           <form [formGroup]="myForm">
-            <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'Roles'" formControlName="city"
+            <ng-multiselect-dropdown class="promo" name="city" [placeholder]="'Promotions'" formControlName="city"
               [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList" (onSelect)="onItemSelect($event)"
               (onDeSelect)="onItemDeSelect($event)" (onDeSelectAll)="onItemDeSelectOrAll($event)"
               (onSelectAll)="onItemSelectOrAll($event)">
@@ -13,7 +13,7 @@
         </div>
         <div class="col-md-2 col-lg-2 col-sm-2">
           <form [formGroup]="myForms">
-            <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Status'" formControlName="citys"
+            <ng-multiselect-dropdown class="product" name="citys" [placeholder]="'Product'" formControlName="citys"
               [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
               (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
               (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
@@ -22,7 +22,7 @@
         </div>
         <div class="col-md-2 col-lg-2 col-sm-2">
           <form [formGroup]="myForms">
-            <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Status'" formControlName="citys"
+            <ng-multiselect-dropdown class="geog" name="citys" [placeholder]="'Geography'" formControlName="citys"
               [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
               (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
               (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
@@ -31,7 +31,7 @@
         </div>
         <div class="col-md-2 col-lg-2 col-sm-2">
           <form [formGroup]="myForms">
-            <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Status'" formControlName="citys"
+            <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Dealer'" formControlName="citys"
               [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
               (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
               (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">

@@ -40,18 +40,26 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./product-short-code.component.css']
 })
 export class ProductShortCodeComponent implements OnInit {
+  public rowData3 = [
+    {name: 'revathi', Taxitem: '25', Status: 'Active'},
+    {name: 'rani', Taxitem: '25', Status: 'Inactive'},
+    {name: 'naveen', Taxitem: '25', Status: 'Inactive'},
+    {name: 'swetha', Taxitem: '25', Status: 'Locked'},
+    {name: 'sneha', Taxitem: '25', Status: 'Active'},
+    {name: 'anjali', Taxitem: '25', Status: 'Active'},
+  ];
   private gridApi!: GridApi;
   searchText;
   columnDefs: ColDef[] = [
 
     {
       headerName: "Product Shot Code",
-      field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
+      field: 'name', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
     },
     { headerName: "", field: '', type: ['nonEditableColumn'] },
     { headerName: "", field: '', type: ['nonEditableColumn'] },
 
-    { headerName: "#of Products", field: 'userName', type: ['nonEditableColumn'] },
+    { headerName: "#of Products", field: 'Taxitem', type: ['nonEditableColumn'] },
 
     {
       headerName: '',

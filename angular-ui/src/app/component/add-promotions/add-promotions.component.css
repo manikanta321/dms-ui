@@ -42,6 +42,134 @@
     max-height: 450px;
      
   }
+  
+.navItems{
+  margin-left: 20px;
+}
+
+.contentinline{
+  display: contents;
+}
+  .itemSize {
+    width: 517px;
+    height: 130px;
+    border: 0.5px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+.removeCircle{
+  margin-left: 99%;
+  margin-top: 37px;
+  color: red;
+}
+
+.addBtnAlign{
+  margin-left: -93px;
+}
+.alignInlineNav{
+  display: -webkit-inline-box;
+}
+/* .items-headers{
+
+} */
+
+.listStyleOfItems{
+  list-style: none;
+  display: flex;
+  /* padding: 25px 0px 0px 0px; */
+
+}
+.listStyleOfItems li{
+  padding: 0 60px 0px 0px;
+}
+
+
+
+/* .alignTop{
+  padding: 26px 0px 0px 0px;
+} */
+
+.qtyOfItems{
+  width: 100px;   
+  height: 43px;
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  /* margin: 26px 0px 5px 105px; */
+}
+.topItems{
+  padding-top: 25px;
+  
+}
+/* .inlineNav{
+  display: -webkit-inline-box;
+} */
+
+
+
+.addAlign{
+  margin-left: 40px;
+}
+
+.setInput{
+  margin: 9px 0px 0px 62px;
+}
+.setndInput{
+  margin: 8px 0px 0px 0px;
+}
+/* .qtyOfItems .firstInputOfItems {
+  width: 100px;   
+  height: 43px;
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin: 26px 0px 5px 105px;
+
+} */
+
+/* .qtyOfItems .secondInputOfItems{
+  width: 100px;   
+  height: 43px;
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+} */
+
+/* .qtyOfItems .thirdInputOfItems{
+  width: 100px;   
+  height: 43px;
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  
+} */
+
+
+.allQty{
+  position: relative;
+  float: right;
+}
+
+.qty {
+  width: 100px;   
+  height: 43px;
+  /* background: #FFFFFF; */
+    /* border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px; */
+}
+
+  .productSize {
+    width: 949px;
+    height: 43px;
+    border: 0.5px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
   /* ::ng-deep.steppers .prod.mat-horizontal-content-container {
     width: 800px !important;
   } */
@@ -478,9 +606,9 @@
     color: white;
   }
   
-  .row {
+  /* .row {
     width: 767px
-  }
+  } */
   
   .bar {
     height: 400px;

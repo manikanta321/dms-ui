@@ -543,7 +543,12 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
 
   }
   addPromotions(){
-    this.dialog.open( AddPromotionsComponent);
+    const config: MatDialogConfig = {
+      width: '1043',
+      height: '583'
+    };
+    this.dialog.open( AddPromotionsComponent, config);
+
   }
   handleScroll(event) {
     const grid = document.getElementById('gridContainer');
@@ -567,6 +572,7 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
     this.date9 = new Date(2022, 7, 13, 12, 30, 42);
   }
   testingAddItem(){
+    
     this.dialog.open( AddItemsPromotionComponent);
   }
 }

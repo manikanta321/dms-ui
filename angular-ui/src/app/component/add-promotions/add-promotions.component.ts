@@ -17,6 +17,15 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     next : false
   }
   showdata=false;
+  public packingCharges: any[] = [{
+    sValue: '',
+    eValue: '',
+    pValue: '',
+  }];
+  errorMsg: any;
+  addCountryButton: boolean = false;
+  removelist: boolean = false;
+  stateName: string[] = ['State 1', 'State 2',];
   //event handler for the select element's change event
   selectChangeHandler (event: any) {
     //update the ui
@@ -85,7 +94,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     if (event.CategoryName=='Buy(A+B..) get(X+Y..)'){
       this.goForward(this.myStepper);
       }
-      
+      if (event.CategoryName=='Price Discount'){
+        this.goForward(this.myStepper);
+        }
+        if (event.CategoryName=='Volume Discount'){
+          this.goForward(this.myStepper);
+          }
     }
     // alert(event.CategoryName);
   
@@ -98,4 +112,20 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     this.ShowFilter = !this.ShowFilter;
     this.dropdownSettings3 = Object.assign({}, this.dropdownSettings3, { allowSearchFilter: this.ShowFilter });
   }
+
+  addCountry() {
+    this.addCountryButton = true;
+  }
+  removesub(uId: number) {
+    const index = this.packingCharges.findIndex((address) => address.id === uId);
+    this.packingCharges.splice(index, 1);
+  }
+  addFields() {
+    this.packingCharges.push({
+      sValue: '',
+      eValue: '',
+      pValue: '',
+    });
+  }
 }
+

@@ -46,7 +46,7 @@ export class ProductGroupAddItemComponent implements OnInit {
 
     {
       headerName: "Product Group",
-      field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
+      field: 'name', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left', checkboxSelection: true
     },
 
     { headerName: "", field: '', type: ['nonEditableColumn'] },
@@ -60,7 +60,8 @@ export class ProductGroupAddItemComponent implements OnInit {
 
     {
       headerName: "#of products",
-      field: 'mobile', type: ['nonEditableColumn']
+      field: 'Taxitem', type: ['nonEditableColumn'],
+      cellStyle: {color: '#017EFA'}
     },
 
     {
@@ -176,6 +177,14 @@ export class ProductGroupAddItemComponent implements OnInit {
     prodShtCode:boolean=false;
     productGrpChk:boolean=true;
     productSubGChk:boolean=false;
+    public rowData3 = [
+      {name: 'revathi', Taxitem: '25', Status: 'Active'},
+      {name: 'rani', Taxitem: '25', Status: 'Inactive'},
+      {name: 'naveen', Taxitem: '25', Status: 'Inactive'},
+      {name: 'swetha', Taxitem: '25', Status: 'Locked'},
+      {name: 'sneha', Taxitem: '25', Status: 'Active'},
+      {name: 'anjali', Taxitem: '25', Status: 'Active'},
+    ];
   constructor(private _formBuilder: FormBuilder,
     public dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,) { }

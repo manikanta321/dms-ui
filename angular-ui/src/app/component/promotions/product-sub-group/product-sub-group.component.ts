@@ -48,7 +48,7 @@ export class ProductSubGroupComponent implements OnInit {
 
     {
       headerName: "Product Sub-Group",
-      field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
+      field: 'name', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
     },
 
     { headerName: "", field: '', type: ['nonEditableColumn'] },
@@ -62,7 +62,7 @@ export class ProductSubGroupComponent implements OnInit {
 
     {
       headerName: "#of Products",
-      field: 'mobile', type: ['nonEditableColumn']
+      field: 'Taxitem', type: ['nonEditableColumn']
     },  
 
     // suppressMovable:true,
@@ -187,6 +187,14 @@ export class ProductSubGroupComponent implements OnInit {
     toppings1 = new FormControl('');
     selectedStatus: any = [];
     StatusFilter = false;
+    public rowData3 = [
+      {name: 'revathi', Taxitem: '25', Status: 'Active'},
+      {name: 'rani', Taxitem: '25', Status: 'Inactive'},
+      {name: 'naveen', Taxitem: '25', Status: 'Inactive'},
+      {name: 'swetha', Taxitem: '25', Status: 'Locked'},
+      {name: 'sneha', Taxitem: '25', Status: 'Active'},
+      {name: 'anjali', Taxitem: '25', Status: 'Active'},
+    ];
   constructor(private _formBuilder: FormBuilder,
     public dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,

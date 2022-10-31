@@ -54,12 +54,14 @@ export class ProductShortCodeComponent implements OnInit {
 
     {
       headerName: "Product Shot Code",
-      field: 'name', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
+      field: 'name', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',  checkboxSelection: true
     },
     { headerName: "", field: '', type: ['nonEditableColumn'] },
     { headerName: "", field: '', type: ['nonEditableColumn'] },
 
-    { headerName: "#of Products", field: 'Taxitem', type: ['nonEditableColumn'] },
+    { headerName: "#of Products", field: 'Taxitem', type: ['nonEditableColumn'],
+    cellStyle: {color: '#017EFA'}
+   },
 
     {
       headerName: '',
@@ -111,6 +113,7 @@ export class ProductShortCodeComponent implements OnInit {
     // make columns resizable
     resizable: true,
     sortable: true,
+    
   };
   public columnTypes: {
     [key: string]: ColDef;

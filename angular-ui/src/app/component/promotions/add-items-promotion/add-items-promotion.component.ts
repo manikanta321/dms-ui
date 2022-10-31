@@ -61,7 +61,7 @@ export class AddItemsPromotionComponent implements OnInit {
 
     {
       headerName: "Porduct Name",
-      field: 'name', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
+      field: 'name', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left', checkboxSelection: true
     },
 
     { headerName: "Classification", field: 'userName', type: ['nonEditableColumn'] },

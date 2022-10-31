@@ -151,6 +151,8 @@ public defaultColDef: ColDef = {
   filter: 'agTextColumnFilter',
   // enable floating filters by default
   // make columns resizable
+  flex: 1,
+    minWidth: 100,
   resizable: true,
   sortable: true,
 };

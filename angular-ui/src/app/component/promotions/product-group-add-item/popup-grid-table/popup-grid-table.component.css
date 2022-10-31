@@ -1,0 +1,17 @@
+
+    /* ::ng-deep .ag-body-viewport.ag-layout-normal::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::ng-deep .ag-body-viewport.ag-layout-normal::-webkit-scrollbar-thumb {
+        border-radius: 25px;
+        background: #b3b3bc;
+    }
+    ::ng-deep .ag-body-viewport.ag-layout-normal::-webkit-scrollbar-track{
+    border-radius: 25px;
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+    .ag-body-viewport.ag-layout-normal{
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    } */

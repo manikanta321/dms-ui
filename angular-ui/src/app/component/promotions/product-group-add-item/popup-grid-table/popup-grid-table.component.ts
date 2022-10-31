@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { MatTableDataSource } from '@angular/material/table';
 import { CellClassParams, CellClassRules, CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef, GridApi, GridOptions, ModuleRegistry, ColumnResizedEvent, Grid, } from 'ag-grid-community';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { AddItemsPromotionComponent } from '../add-items-promotion/add-items-promotion.component';
-import { ProductGroupAddItemComponent } from '../product-group-add-item/product-group-add-item.component';
-import { ProductSubGroupComponent } from '../product-sub-group/product-sub-group.component';
 export interface PeriodicElement {
 
   name: any;
@@ -35,34 +30,41 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 ];
 @Component({
-  selector: 'app-product-short-code',
-  templateUrl: './product-short-code.component.html',
-  styleUrls: ['./product-short-code.component.css']
+  selector: 'app-popup-grid-table',
+  templateUrl: './popup-grid-table.component.html',
+  styleUrls: ['./popup-grid-table.component.css']
 })
-export class ProductShortCodeComponent implements OnInit {
-  public rowData3 = [
-    {name: 'revathi', Taxitem: '25', Status: 'Active'},
-    {name: 'rani', Taxitem: '25', Status: 'Inactive'},
-    {name: 'naveen', Taxitem: '25', Status: 'Inactive'},
-    {name: 'swetha', Taxitem: '25', Status: 'Locked'},
-    {name: 'sneha', Taxitem: '25', Status: 'Active'},
-    {name: 'anjali', Taxitem: '25', Status: 'Active'},
-  ];
+export class PopupGridTableComponent implements OnInit {
   private gridApi!: GridApi;
   searchText;
   columnDefs: ColDef[] = [
 
     {
-      headerName: "Product Shot Code",
-      field: 'name', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',  checkboxSelection: true
+      headerName: "Product Name",
+      field: 'name', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
     },
-    { headerName: "", field: '', type: ['nonEditableColumn'] },
-    { headerName: "", field: '', type: ['nonEditableColumn'] },
 
-    { headerName: "#of Products", field: 'Taxitem', type: ['nonEditableColumn'],
-    cellStyle: {color: '#017EFA'}
-   },
+    { headerName: "Classification", field: 'clsfic', type: ['nonEditableColumn'] },
 
+    { headerName: "SKU", field: 'sku', type: ['nonEditableColumn'] },
+
+    {
+      headerName: "Product Identifier",
+      field: 'prodcid', type: ['nonEditableColumn']
+    },
+
+    {
+      headerName: "Product Group",
+      field: 'productg', type: ['nonEditableColumn'],
+    },
+    {
+      headerName: "Product Code",
+      field: 'prodc', type: ['nonEditableColumn'],
+    },
+    {
+      headerName: "Product Shot Code",
+      field: 'prosc', type: ['nonEditableColumn'],
+    },
     {
       headerName: '',
       colId: 'action',
@@ -115,7 +117,6 @@ export class ProductShortCodeComponent implements OnInit {
     minWidth: 100,
     resizable: true,
     sortable: true,
-    
   };
   public columnTypes: {
     [key: string]: ColDef;
@@ -176,12 +177,30 @@ export class ProductShortCodeComponent implements OnInit {
     dropdownSettings: IDropdownSettings = {};
     dropdownSettings1: IDropdownSettings = {};
     productchk:boolean=false;
-    prodShtCode:boolean=true;
-    productGrpChk:boolean=false;
+    prodShtCode:boolean=false;
+    productGrpChk:boolean=true;
     productSubGChk:boolean=false;
-  constructor(private _formBuilder: FormBuilder,
-    public dialog: MatDialog,
-    private dialogRef: MatDialogRef<any>,) { }
+    public rowData3 = [
+      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable', productg: 'snack item',prodc: 'P0568',prosc:'7878'},
+      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
+      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
+      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
+      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item',prodc: 'P0568',prosc:'7878'},
+      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item',prodc: 'P0568',prosc:'7878'},
+      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable', productg: 'snack item',prodc: 'P0568',prosc:'7878'},
+      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
+      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
+      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
+      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item',prodc: 'P0568',prosc:'7878'},
+      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item',prodc: 'P0568',prosc:'7878'},
+      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable', productg: 'snack item',prodc: 'P0568',prosc:'7878'},
+      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
+      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
+      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
+      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item',prodc: 'P0568',prosc:'7878'},
+      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item',prodc: 'P0568',prosc:'7878'},
+    ];
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -237,21 +256,5 @@ export class ProductShortCodeComponent implements OnInit {
         instance.togglePopup();
       }
     }
-  }
-  product(){
-    this.dialog.open( AddItemsPromotionComponent, {width:'1043px'});
-    this.dialogRef.close()
-  }
-  productShotCode(){
-    this.dialog.open(  ProductShortCodeComponent, {width:'1043px'});
-    this.dialogRef.close()
-  }
-  productGrp(){
-    this.dialog.open( ProductGroupAddItemComponent, {width:'1043px'});
-    this.dialogRef.close()
-  }
-  productSubG(){
-    this.dialog.open( ProductSubGroupComponent, {width:'1043px'});
-    this.dialogRef.close()
   }
 }

@@ -8,6 +8,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ProductShortCodeComponent } from '../product-short-code/product-short-code.component';
 import { ProductSubGroupComponent } from '../product-sub-group/product-sub-group.component';
 import { AddItemsPromotionComponent } from '../add-items-promotion/add-items-promotion.component';
+import { PopupGridTableComponent } from './popup-grid-table/popup-grid-table.component';
 export interface PeriodicElement {
 
   name: any;
@@ -61,7 +62,9 @@ export class ProductGroupAddItemComponent implements OnInit {
     {
       headerName: "#of products",
       field: 'Taxitem', type: ['nonEditableColumn'],
-      cellStyle: {color: '#017EFA'}
+      cellStyle: {color: '#017EFA'},
+      cellEditorPopup: true,
+       onCellClicked: (event: CellClickedEvent) => this.dialog.open(PopupGridTableComponent, {panelClass: 'grid-popup'})
     },
 
     {
@@ -112,6 +115,8 @@ export class ProductGroupAddItemComponent implements OnInit {
     filter: 'agTextColumnFilter',
     // enable floating filters by default
     // make columns resizable
+    flex: 1,
+    minWidth: 100,
     resizable: true,
     sortable: true,
   };

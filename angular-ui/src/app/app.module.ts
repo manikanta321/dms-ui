@@ -98,6 +98,7 @@ import { ProductGroupAddItemComponent } from './component/promotions/product-gro
 import { ProductSubGroupComponent } from './component/promotions/product-sub-group/product-sub-group.component';
 import { ProductShortCodeComponent } from './component/promotions/product-short-code/product-short-code.component';
 import { OrderNonpromotionlistComponent } from './component/orders/order-nonpromotionlist/order-nonpromotionlist.component';
+import { PopupGridTableComponent } from './component/promotions/product-group-add-item/popup-grid-table/popup-grid-table.component';
 
 @NgModule({
   declarations: [
@@ -165,6 +166,7 @@ import { OrderNonpromotionlistComponent } from './component/orders/order-nonprom
           ProductSubGroupComponent,
           ProductShortCodeComponent,
           OrderNonpromotionlistComponent,
+          PopupGridTableComponent,
   ],
   imports: [
     FormsModule,

@@ -48,60 +48,45 @@ export class AddItemsPromotionComponent implements OnInit {
   // });
   // isLinear = false;
   public rowData3 = [
-    {name: 'revathi', Taxitem: 'IGST', Status: 'Active'},
-    {name: 'rani', Taxitem: 'CGST', Status: 'Inactive'},
-    {name: 'naveen', Taxitem: 'SGST', Status: 'Inactive'},
-    {name: 'swetha', Taxitem: 'IGST', Status: 'Locked'},
-    {name: 'sneha', Taxitem: 'SGST', Status: 'Active'},
-    {name: 'anjali', Taxitem: 'CGST', Status: 'Active'},
+    {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable', productg: 'snack item',prodc: 'P0568',prosc:'7878'},
+    {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
+    {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
+    {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
+    {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item',prodc: 'P0568',prosc:'7878'},
+    {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item',prodc: 'P0568',prosc:'7878'},
+    {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable', productg: 'snack item',prodc: 'P0568',prosc:'7878'},
+    {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
+    {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
   ];
   private gridApi!: GridApi;
   searchText;
   columnDefs: ColDef[] = [
 
     {
-      headerName: "Porduct Name",
-      field: 'name', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left', checkboxSelection: true
+      headerName: "Product Name",
+      field: 'name', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
     },
 
-    { headerName: "Classification", field: 'userName', type: ['nonEditableColumn'] },
+    { headerName: "Classification", field: 'clsfic', type: ['nonEditableColumn'] },
 
-    { headerName: "Role", field: 'roleName', type: ['nonEditableColumn'] },
-
-    {
-      headerName: "SKU",
-      field: 'email', type: ['nonEditableColumn']
-    },
+    { headerName: "SKU", field: 'sku', type: ['nonEditableColumn'] },
 
     {
       headerName: "Product Identifier",
-      field: 'mobile', type: ['nonEditableColumn']
+      field: 'prodcid', type: ['nonEditableColumn']
     },
 
     {
-      headerName: "product Group",
-      // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-      field: 'lastLoginDate', type: ['nonEditableColumn'],
-      cellRenderer: function dateFormtter(params) {
-        return moment(params.value).format('DD MMM YYYY, HH:mm A')
-      }
+      headerName: "Product Group",
+      field: 'productg', type: ['nonEditableColumn'],
     },
-    // suppressMovable:true,
     {
       headerName: "Product Code",
-      field: 'statusName',
-      type: ['nonEditableColumn'],
-      cellEditor: 'agSelectCellEditor',
-      cellEditorParams: {
-        values: ['Active', 'Inactive', 'Invited', 'Locked',],
-      },
-      cellClass: params => {
-        return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
-      }
+      field: 'prodc', type: ['nonEditableColumn'],
     },
     {
       headerName: "Product Shot Code",
-      field: 'email', type: ['nonEditableColumn']
+      field: 'prosc', type: ['nonEditableColumn'],
     },
     {
       headerName: '',
@@ -151,6 +136,8 @@ export class AddItemsPromotionComponent implements OnInit {
     filter: 'agTextColumnFilter',
     // enable floating filters by default
     // make columns resizable
+    flex: 1,
+    minWidth: 100,
     resizable: true,
     sortable: true,
   };

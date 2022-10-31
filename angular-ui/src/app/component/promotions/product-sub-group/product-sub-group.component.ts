@@ -62,7 +62,8 @@ export class ProductSubGroupComponent implements OnInit {
 
     {
       headerName: "#of Products",
-      field: 'Taxitem', type: ['nonEditableColumn']
+      field: 'Taxitem', type: ['nonEditableColumn'],
+      cellStyle: {color: '#017EFA'}
     },  
 
     // suppressMovable:true,
@@ -114,6 +115,8 @@ export class ProductSubGroupComponent implements OnInit {
     filter: 'agTextColumnFilter',
     // enable floating filters by default
     // make columns resizable
+    flex: 1,
+    minWidth: 100,
     resizable: true,
     sortable: true,
   };

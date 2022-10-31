@@ -293,3 +293,10 @@ mat-radio-group{
 ::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
   border-color: black;
 }
+::ng-deep .grid-popup {
+width: 999px !important;
+}
+::ng-deep .grid-popup .mat-dialog-container{
+  padding: 0 !important;
+  margin-top: 72px;
+}

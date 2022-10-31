@@ -1,7 +1,9 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { AddItemsPromotionComponent } from '../promotions/add-items-promotion/add-items-promotion.component';
 
 @Component({
   selector: 'app-add-promotions',
@@ -52,7 +54,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   buygroup : string[]= ["Product Name","Product Name", "Product Name", "Product Name"];
   CustomerSelect : string[] = ['Valiant Distributors', 'Global Movers', 'Somebody Sales']
  
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
+    private dialogRef: MatDialogRef<any>,) { }
   firstFormGroup: FormGroup = this._formBuilder.group({firstCtrl: ['']});
   secondFormGroup: FormGroup = this._formBuilder.group({secondCtrl: ['']});
 
@@ -126,6 +129,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       eValue: '',
       pValue: '',
     });
+  }
+  addItems(){
+    this.dialog.open( AddItemsPromotionComponent,);
+    this.dialogRef.close();
   }
 }
 

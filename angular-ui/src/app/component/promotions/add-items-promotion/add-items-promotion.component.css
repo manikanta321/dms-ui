@@ -293,6 +293,6 @@ mat-radio-group{
 ::ng-deep .radio-btn .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
   border-color: black;
 }
-::ng-deep.radio-btn .mat-radio-label-content{
-  margin-right: 10px;
+::ng-deep.ag-theme-material .ag-checkbox-input-wrapper.ag-checked::after {
+  color: black!important;
 }

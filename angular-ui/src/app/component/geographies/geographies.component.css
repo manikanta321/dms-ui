@@ -54,16 +54,21 @@ mat-tab{
     z-index: 2;
 }
 
-::ng-deep .mat-tab-header{
+::ng-deep.mat-tab-header{
     display: flex;
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
-    width: 310px !important;
+    width: 378px !important;
     border-radius: 25px;
     background: white;
     left: 35%;
+    height: 35px;
 
+}
+::ng-deep.mat-tab-label{
+    height: 35px !important;
+    min-width: 190px !important;
 }
 ::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     display: none !important;

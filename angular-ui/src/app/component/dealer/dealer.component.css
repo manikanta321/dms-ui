@@ -59,7 +59,7 @@ mat-tab{
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
-    width: 310px !important;
+     width: 378px !important; 
     border-radius: 25px;
     background: white;
     left: 35%;
@@ -103,6 +103,17 @@ mat-tab{
     width: 610px !important;
     left: 28%;
   }
+
+  ::ng-deep.mat-tab-label{
+    height: 35px !important;
+    min-width: 156px !important;
+    
+  }
+
+
+
+
+
   @media (max-width: 991px){
     .print-img{
         top: 1%;

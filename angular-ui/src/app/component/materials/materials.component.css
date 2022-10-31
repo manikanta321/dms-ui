@@ -85,10 +85,11 @@ mat-sidenav-container {
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
-    width: 320px !important;
+    width: 378px !important;
     border-radius: 25px;
     background: white;
     left: 30%;
+    font-size: 15px;
 
 }
 ::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
@@ -134,3 +135,9 @@ mat-tab-group{
     font-family: 'Gilroy-Medium'; 
     color: black;
 }
+
+
+::ng-deep.mat-tab-label{
+    height: 35px !important;
+    min-width: 190px !important;
+  }

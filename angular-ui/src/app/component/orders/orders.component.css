@@ -61,11 +61,11 @@ mat-tab{
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
-    width: 310px !important;
+    width: 547px !important;
     border-radius: 25px;
     background: white;
     left: 35%;
-
+height: 35px;
 }
 ::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     display: none !important;
@@ -76,7 +76,7 @@ mat-tab{
     border-radius: 25px;
 }
 
- .geo-label .mat-tab-labels:nth-child(1) {
+ .order-lab .mat-tab-labels:nth-child(1) {
     width: 50% !important;
   }
 
@@ -144,17 +144,17 @@ mat-tab{
     z-index: 2;
 }
 
-::ng-deep.othersmastermenutab .mat-tab-header{
+/* ::ng-deep.othersmastermenutab .mat-tab-header{
     width: 481px !important;
     left: 28%;
-}
+} */
 
-::ng-deep.mat-tab-header{
+::ng-deep.order-lab .mat-tab-header{
     display: flex;
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
-    width: 310px !important;
+    width: 547px !important;
     border-radius: 25px;
     background: white;
     left: 35%;
@@ -203,8 +203,9 @@ mat-tab-group{
     border-radius: 25px;
 }
 
- .geo-label .mat-tab-labels:nth-child(1) {
-    width: 50% !important;
+::ng-deep .order-lab .mat-tab-label{
+    height: 35px !important;
+    min-width: 187px !important;
   }
 
 

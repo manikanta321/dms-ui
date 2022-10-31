@@ -305,6 +305,7 @@ setTimeout(()=>{                           // <<<---using ()=> syntax
      
     //  // });
      })
+     this.addButton =false;
   }
 
 addsubCat(){
@@ -345,7 +346,7 @@ this.calssification.addsubCatagory(data).subscribe((res)=>{
   
       }
       });}, 1000);
- 
+ this.addSubButton =false;
 }
 
 
@@ -377,7 +378,7 @@ setTimeout(()=>{                           // <<<---using ()=> syntax
   
 }, 1000);
 
-
+this.addTypeButton=false;
 }
 
 oclicksub(item){

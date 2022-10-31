@@ -24,7 +24,9 @@
               </ng-multiselect-dropdown>
               <div class="dropdown-placeholder roless-placeholder">
                 <span *ngIf="myForm.get('city').value.length == 0"> Select Roles </span>
-                <span *ngIf="myForm.get('city').value.length > 0" class="selected-placeholder"> {{myForm.get('city').value.length}} Role(s) selected </span>
+                <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Role selected </span>
+                <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Role(s) selected </span>
+
               </div>
 
             </form>
@@ -38,7 +40,8 @@
               </ng-multiselect-dropdown>
               <div class="dropdown-placeholder stts-placeholder">
                 <span *ngIf="myForms.get('citys').value.length == 0"> Select Status </span>
-              <span *ngIf="myForms.get('citys').value.length > 0"  class="selected-placeholder"> {{myForms.get('citys').value.length}} Status(s) selected </span>
+              <span *ngIf="myForms.get('citys').value.length == 1"  class="selected-placeholder"> {{myForms.get('citys').value.length}} Status selected </span>
+              <span *ngIf="myForms.get('citys').value.length > 1"  class="selected-placeholder"> {{myForms.get('citys').value.length}} Status(s) selected </span>
               </div>
             </form>
           </div>

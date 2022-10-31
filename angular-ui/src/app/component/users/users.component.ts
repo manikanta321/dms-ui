@@ -111,17 +111,17 @@ export class UsersComponent implements OnInit {
   columnDefs: ColDef[] = [
 
     {
-      headerName: "User Id",
+      headerName: "User ID",
       field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
       tooltipField:"employeeCode",
     },
 
-    { headerName: "Username", field: 'userName', type: ['nonEditableColumn'],tooltipField:"userName", },
+    { headerName: "User Name", field: 'userName', type: ['nonEditableColumn'],tooltipField:"userName", },
 
     { headerName: "Role", field: 'roleName', type: ['nonEditableColumn'], tooltipField:"roleName", },
 
     {
-      headerName: "Email Id",
+      headerName: "Email ID",
       field: 'email', type: ['nonEditableColumn'],
       tooltipField:"email",      
       minWidth:200,

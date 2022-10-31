@@ -3,7 +3,17 @@
     border-radius: 21px;
 }
 
-
+/* select option {
+    background: #f00; 
+    color: #fff; 
+    box-shadow: inset 20px 20px #f00
+  } 
+  
+  ::ng-deep select option:hover {
+    color: #000 !important; 
+    box-shadow: inset 20px 20px green !important;
+    background-color: green !important;
+  } */
 .mat-form-field-flex {
     padding-top: -10px;
     display: inline-flex;
@@ -93,6 +103,8 @@ span {
     position: relative;
     font-size: 15px;
     font-weight: 600;
+    color: #686E74;
+    font-weight:  #686E74;
 }
 
 label {

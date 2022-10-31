@@ -12,7 +12,6 @@
     margin-top: 18px;
     font-family: 'Gilroy';
   }
-  
   .materialname {
     margin-top: 3px;
     font-family: 'Gilroy';
@@ -747,7 +746,7 @@
     font-size: 12px;
 }
 ::ng-deep.datepicker .mat-form-field-appearance-fill .mat-form-field-flex {
-    padding: .75em .75em 0 .75em;
+    /* padding: .75em .75em 0 .75em; */
     border-radius: 14px;
     width: 393px;
     height: 42px;

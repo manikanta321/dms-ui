@@ -190,7 +190,7 @@ export class GeoClassificationComponent implements OnInit {
       this.getCountryList();
       this.countryForm.reset();
     })
-
+    this.addCountryButton =false;
   }
 
   //add state and refresh list
@@ -205,12 +205,12 @@ export class GeoClassificationComponent implements OnInit {
       this.calssification.addStateName(data).subscribe((res)=>{
         this.stateForm.reset();
         this.getStateList(localStorage.getItem('countryId'));
-      })          
+      })  
+      this.addStateButton =false;        
   }
 
    //add dist and refresh list
    addDist(){
-
     let data = {
               "GeographyName":this.districtForm.value['distirictFormTag'],
               "GeographyDesc":this.districtForm.value['districtcode'],
@@ -222,7 +222,7 @@ export class GeoClassificationComponent implements OnInit {
       this.districtForm.reset();
       this.getDistrictList(localStorage.getItem("stateId"));
     });
-
+    this.addDistrictButton =false;
   }
 
   //add city and refresh list

@@ -13,7 +13,11 @@
   padding-left: 8px;
   margin-top: 12px;
 } */
+::ng-deep.mat-expansion-panel-content .mat-list-item{
 
+  height: 35px !important;
+
+}
 mat-list-item:hover {
   color: var(--bar);
   background: linear-gradient(270deg, #CED4DA 35.14%, rgba(206, 212, 218, 0) 84.89%);

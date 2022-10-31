@@ -57,6 +57,7 @@ import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import * as moment from 'moment';
+import { CurrencyActionComponent } from './currency-action/currency-action.component';
 
 @Component({
   selector: 'app-currency-conversation',
@@ -137,16 +138,21 @@ cellClass: params => {
   return params.value == 'Inactive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
 }
 },
-{ 
-
-   headerName: "",
-field: '',  filter: false, sortable: false,
-cellRenderer: function clickNextRendererFunc(){
-  return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
-}, 
- cellEditorPopup: true,
- onCellClicked: (event: CellClickedEvent) => this.dialog.open( DeletecomponentComponent)
-
+{
+  headerName: '',
+  colId: 'action',
+  cellRenderer: CurrencyActionComponent,
+  
+  editable: false,
+  maxWidth: 75
+  //    headerName: "",
+  // field: '',  filter: false, sortable: false,width:20,
+  // cellRenderer: function clickNextRendererFunc(){
+  //   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
+  // }, 
+  //  cellEditorPopup: true,
+  //  onCellClicked: (event: CellClickedEvent) => this.dialog.open(DeletecomponentComponent, {panelClass: 'editpopup'})
+  // // onCellClicked: (event: CellClickedEvent) => this.iconDisabled = true
 },
 
 // {
@@ -256,7 +262,8 @@ public pivotPanelShow = 'always';
   start: number = 0;
   limit: number = 15;
   end: number = this.limit + this.start;
-
+  UomId:any;
+  uomName:any;
   gridsOptions = {
     defaultColDef: {
       sortable: true,
@@ -739,19 +746,34 @@ console.log(' this.statusTypes', this.userTypes)
 
 
   // Example of consuming Grid Event
-  onCellClicked( e: CellClickedEvent): void {
+  onCellClicked( e): void {
     console.log('cellClicked', e);
-    this.userId=e.data.userId;
-    this.employeeName=e.data.employeeName
-    console.log('userID',this.userId)
-    localStorage.setItem('userID',this.userId )
-    localStorage.setItem('employeeName',this.employeeName )
-
-
+    this.UomId=e.data.uoMId;
+    this.uomName=e.data.uoMName;
+    // this.employeeName=e.data.userName;
+    // console.log('userID',this.userId);
+    localStorage.setItem('UomId',e.data.uoMId )
+    localStorage.setItem('UomName',e.data.uoMName)
     
+    localStorage.setItem('niId',e.data.uoMId )
+    localStorage.setItem('Niname',e.data.uoMName)
+    // localStorage.setItem('employeeName',this.employeeName )
+    if (
+      e.event.target.dataset.action == 'toggle' &&
+      e.column.getColId() == 'action'
+    ) {
+      const cellRendererInstances = e.api.getCellRendererInstances({
+        rowNodes: [e.node],
+        columns: [e.column],
+      });
+      if (cellRendererInstances.length > 0) {
+        const instance = cellRendererInstances[0];
+        instance.togglePopup();
+
+      }
+    }
 
   }
-
 
   onCellValueChanged(event: CellValueChangedEvent) {
     // alert(event.value)
@@ -812,7 +834,5 @@ console.log(' this.statusTypes', this.userTypes)
   ToggleSideNav(value:any){
     this.sidenav.toggle()
   }
-
-
 
 }

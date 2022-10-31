@@ -1,0 +1,31 @@
+.activeSuccessPop{
+    background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+    border: 0.5px solid #000000;
+    border-radius: 25px !important;
+    border-left: 10px solid green !important;
+}
+.head-text{
+font-size: 20px;
+font-weight: 600;
+}
+.undo{
+    padding: 5px 40px;
+    background: black;
+    color: #fff;
+    margin-right: 20px;
+    /* border: #000000; */
+    border-radius: 5px;
+    }
+.exit{
+background: #fff;
+color: black;
+padding: 5px 40px;
+border: 2px solid #000000;
+border-radius: 5px;
+}
+.close-icon{
+    left: 100%;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+}

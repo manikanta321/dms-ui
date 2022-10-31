@@ -99,6 +99,13 @@ import { ProductSubGroupComponent } from './component/promotions/product-sub-gro
 import { ProductShortCodeComponent } from './component/promotions/product-short-code/product-short-code.component';
 import { OrderNonpromotionlistComponent } from './component/orders/order-nonpromotionlist/order-nonpromotionlist.component';
 import { PopupGridTableComponent } from './component/promotions/product-group-add-item/popup-grid-table/popup-grid-table.component';
+import { ReactiveCurrencyComponent } from './component/other-masters/currency-conversation/reactive-currency/reactive-currency.component';
+import { DeactiveCurrencyComponent } from './component/other-masters/currency-conversation/deactive-currency/deactive-currency.component';
+import { MakeDefaultComponent } from './component/other-masters/currency-conversation/make-default/make-default.component';
+import { CurrencyDonePopupComponent } from './component/other-masters/currency-conversation/currency-done-popup/currency-done-popup.component';
+import { CurrencyActionComponent } from './component/other-masters/currency-conversation/currency-action/currency-action.component';
+import { CurrencyReactivatedComponent } from './component/other-masters/currency-conversation/currency-reactivated/currency-reactivated.component';
+import { CurrencyDefaultComponent } from './component/other-masters/currency-conversation/currency-default/currency-default.component';
 
 @NgModule({
   declarations: [
@@ -167,6 +174,13 @@ import { PopupGridTableComponent } from './component/promotions/product-group-ad
           ProductShortCodeComponent,
           OrderNonpromotionlistComponent,
           PopupGridTableComponent,
+          ReactiveCurrencyComponent,
+          DeactiveCurrencyComponent,
+          MakeDefaultComponent,
+          CurrencyDonePopupComponent,
+          CurrencyActionComponent,
+          CurrencyReactivatedComponent,
+          CurrencyDefaultComponent,
   ],
   imports: [
     FormsModule,

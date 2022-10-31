@@ -41,32 +41,27 @@
                                     (onSelectAll)="onTypeAll($event)" >
                                 </ng-select> -->
                             </div> 
-
-
                             <div class="promotiont">
                                 <label>Start Date <span>*</span></label>
                             </div>
-                            <div class="datepicker">
-                                <mat-form-field appearance="fill">
-                                    <!-- <mat-label>Select the start date</mat-label> -->
-                                    <input placeholder="Select the start date" matInput [matDatepicker]="myDatepicker">
-                                    <mat-datepicker-toggle matSuffix [for]="myDatepicker" style="color: black;">
-                                    </mat-datepicker-toggle>
-                                    <mat-datepicker #myDatepicker></mat-datepicker>
-                                </mat-form-field>
+                            <div class=" mydatepicker">
+                                <mat-form-field class="form-field">
+                                <input matInput placeholder="Select the start date" style="padding-bottom:2px;" [matDatepicker]="basicDatepicker">
+                                <mat-datepicker-toggle matSuffix [for]="basicDatepicker"></mat-datepicker-toggle>
+                                <mat-datepicker #basicDatepicker></mat-datepicker>
+                            </mat-form-field> 
                             </div>
                             <div class="promotiont">
                                 <label>End Date <span>*</span></label>
                             </div>
-                            <div class="datepicker">
-                                <mat-form-field appearance="fill">
-                                    <!-- <mat-label>Select the end date</mat-label> -->
-                                    <input matInput placeholder="Select the end date" [matDatepicker]="myDatepicker">
-                                    <mat-datepicker-toggle matSuffix [for]="myDatepicker" style="color: black;">
-                                    </mat-datepicker-toggle>
-                                    <mat-datepicker #myDatepicker></mat-datepicker>
-                                </mat-form-field>
+                            <div class=" mydatepicker">
+                                <mat-form-field class="form-field">
+                                <input matInput placeholder="Select the end date" [matDatepicker]="basicDatepicker">
+                                <mat-datepicker-toggle matSuffix [for]="basicDatepicker"></mat-datepicker-toggle>
+                                <mat-datepicker #basicDatepicker></mat-datepicker>
+                            </mat-form-field>
                             </div>
+                            <div class="imagefield">
                             <div class="image">
                                 <label>Image <span>*</span></label>
                             </div>
@@ -78,6 +73,7 @@
                             <h3
                                 style="font-family: 'Gilroy';position: relative; bottom: 368px; left: 154px; color: lightgrey;">
                                 Add Image</h3>
+                            </div>
                             <!-- <input [matDatepicker]="myDatepicker" style="width: 361px; height: 35px; border-radius: 9px; border-color: grey;">
                             <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
                             <mat-datepicker #myDatepicker></mat-datepicker> -->
@@ -87,8 +83,8 @@
                         <form [formGroup]="secondFormGroup">
                             <ng-template matStepLabel>Items in Promotion</ng-template>
                             <article>
-                                <div class="container">
-                                    <div class="row">
+                                <!-- <div class="container">
+                                    <div class="row"> -->
                                         <div class="col-12">
                                             <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'"
                                                 class="heading">
@@ -152,12 +148,13 @@
                                     <label>Qty<span>*</span></label>
                                 </div>
                                 <input matInput placeholder="1" #input class="form-control container"
-                                style="border: solid lightgrey 1px; width: 75px; height: 53px; border-radius: 15px; border-color:black;background-color: white;position: relative;left: 293px; top: -327px;">
+                                style="border: solid lightgrey 1px; width: 75px; height: 53px; border-radius: 15px; border-color:black;background-color: white;position: relative;left: 293px; bottom:340px;">
                                 <div class="moq">
                                     <label>MOQ<span>*</span></label>
                                 </div>
                                 <input matInput placeholder="1" #input class="form-control container"
-                                style="border: solid lightgrey 1px; width: 75px; height: 53px; border-radius: 15px; border-color:black;background-color: white;position: relative;left: 293px; top: -321px;">
+                                style="border: solid lightgrey 1px; width: 75px; height: 53px; border-radius: 15px; border-color:black;background-color: white;position: relative;left: 293px; bottom:337px;">
+                                <div class="seconditems">
                                 <div class="itemstwo">
                                     <label>Items<span>*</span></label>
                                 </div>
@@ -169,7 +166,7 @@
                                 </div>
                                 <input matInput placeholder="1" #input class="form-control container"
                                 style="border: solid lightgrey 1px; width: 75px; height: 53px; border-radius: 15px; border-color:black;background-color: white;position: relative;left: 707px; bottom: 676px;">
-                              
+                            </div>
                                <div *ngIf =showdata>
                                 <!-- <div class="buygrp-hide"> -->
                                 <div class="buyg">
@@ -291,10 +288,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    </div>
-                                </div>
+                                    <!-- </div>
+                                </div> -->
                             </article>
-                        </form> 
+                        </form>
                     </mat-step>
                     <mat-step [stepControl]="secondFormGroup">
                         <form [formGroup]="secondFormGroup">

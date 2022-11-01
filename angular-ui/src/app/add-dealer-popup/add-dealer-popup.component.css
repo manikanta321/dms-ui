@@ -399,7 +399,7 @@ border-radius: 10px;
   
   label {
     /* padding: 2px 0; */
-    font-size: 14px;
+    font-size: 12px;
     margin: 5px;
   }
   
@@ -1084,35 +1084,35 @@ border-radius: 10px;
   }
 
   .addtype {
-    width:82px !important;
+    width:70px !important;
   }
 
   .addname {
-    width:150px !important;
+    width:135px !important;
   }
 
   .addtax {
-    width:82px !important;
+    width:70px !important;
   }
 
   .addadress {
-    width:150px !important;
+    width:135px !important;
   }
 
   .addcountry {
-    width:82px !important;
+    width:70px !important;
   }
 
   .aastate {
-    width:82px !important;
+    width:70px !important;
   }
 
   .addcity {
-    width:150px !important;
+    width:135px !important;
   }
 
   .addphone {
-    width:82px !important;
+    width:70px !important;
   }
 
   .remove-address{

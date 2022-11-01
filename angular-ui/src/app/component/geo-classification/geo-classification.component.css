@@ -61,11 +61,13 @@ li{
     border-radius: 10px;
     margin-right: 10px;
     font-size: 11px;
-    color: rgba(104, 110, 116, 0.75);
+    color: #000000;
     padding: 8px 16px;
     /* width: 150px; */
     margin-left: -12px;
-    width:130px;
+    width:160px;
+    height: 43px;
+    font-weight: bold;
 }
 
 .input-district-cls,
@@ -76,9 +78,13 @@ li{
   border-radius: 10px;
   margin-right: 10px;
   font-size: 11px;
-  color: rgba(104, 110, 116, 0.75);
   padding: 8px 16px;
-  width:130px;
+  /* width: 150px; */
+  margin-left: -12px;
+  width:160px;
+  height: 43px;
+  font-weight: bold;
+  color: #000000;
 }
 
 
@@ -89,10 +95,12 @@ li{
     border-radius: 10px;
     margin-right: 10px;
     font-size: 11px;
-    color: rgba(104, 110, 116, 0.75);
+    font-weight: bold;
+  color: #000000;
     padding: 8px 16px;
-    /* width: 150px; */
-    width:70px;
+    width:80px;
+    height: 43px;
+    margin-left: 5px;
 }
 
 .addcode{
@@ -102,10 +110,11 @@ li{
   border-radius: 5px;
   font-size: 11px;
   color: rgba(104, 110, 116, 0.75);
-  /* padding: 4px 7px; */
   color: #fff;
-  margin-left: 10px;
+  margin-left: 18px;
   margin-top: 8px;
+  width: 40px;
+  height: 30px;
 }
 
 .span-subhead{

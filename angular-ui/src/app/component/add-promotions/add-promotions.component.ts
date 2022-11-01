@@ -14,64 +14,67 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   selectedTeam = '';
   selectedDay: string = '';
   showDiv = {
-    previous : false,
-    current : false,
-    next : false
+    previous: false,
+    current: false,
+    next: false
   }
-  showdata=false;
+  showdata = false;
   public packingCharges: any[] = [{
     sValue: '',
     eValue: '',
     pValue: '',
   }];
   errorMsg: any;
+  buyab: boolean = false;
+  volumedc: boolean = false;
+  buysets: boolean = false;
   addCountryButton: boolean = false;
   removelist: boolean = false;
   stateName: string[] = ['State 1', 'State 2',];
   //event handler for the select element's change event
-  selectChangeHandler (event: any) {
+  selectChangeHandler(event: any) {
     //update the ui
     this.selectedDay = event.target.value;
-     
+
   }
-/*-------*/
-  countryname: string[] = ['Malaysia (71/126)', 'India (178/178)','Philipines (0/135)'];
-  statename: string[] = ['Johor(0/42)', 'Kedah(36/36','Perak(14/26)','Penang(21/22)'];
-  regionname: string[] = ['North(4/4)', 'South(8/8)', 'East(6/6)','West(3/4)'];
-  cityname:string[] =['George town','Balik Pulau','Batu Refringi','Teluk Bahang'];
+  /*-------*/
+  countryname: string[] = ['Malaysia (71/126)', 'India (178/178)', 'Philipines (0/135)'];
+  statename: string[] = ['Johor(0/42)', 'Kedah(36/36', 'Perak(14/26)', 'Penang(21/22)'];
+  regionname: string[] = ['North(4/4)', 'South(8/8)', 'East(6/6)', 'West(3/4)'];
+  cityname: string[] = ['George town', 'Balik Pulau', 'Batu Refringi', 'Teluk Bahang'];
   selectedItem = null;
-  addButton:boolean =false;
+  addButton: boolean = false;
   dropdownSettings3: IDropdownSettings = {};
   disabled = false;
   promotionlist: any[] | undefined;
-  toppingList3:  any= [];
+  toppingList3: any = [];
   ShowFilter = false;
   totalStepsCount: number | undefined;
   @ViewChild('stepper') private myStepper: MatStepper | any;
-  
+
   // CategoryName:any;
-  getgroup : string[]= ["Product Name","Product Name", "Product Name", "Product Name"]
-  buygroup : string[]= ["Product Name","Product Name", "Product Name", "Product Name"];
-  CustomerSelect : string[] = ['Valiant Distributors', 'Global Movers', 'Somebody Sales']
- 
+  getgroup: string[] = ["Product Name", "Product Name", "Product Name", "Product Name"]
+  buygroup: string[] = ["Product Name", "Product Name", "Product Name", "Product Name"];
+  CustomerSelect: string[] = ['Valiant Distributors', 'Global Movers', 'Somebody Sales']
+
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,) { }
-  firstFormGroup: FormGroup = this._formBuilder.group({firstCtrl: ['']});
-  secondFormGroup: FormGroup = this._formBuilder.group({secondCtrl: ['']});
+  firstFormGroup: FormGroup = this._formBuilder.group({ firstCtrl: [''] });
+  secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
 
-  
-/* on Select of Dropdown screen change */
+
+  /* on Select of Dropdown screen change */
 
   ngOnInit(): void {
     this.toppingList3 = [
       { CategoryId: 1, CategoryName: 'Buy(A+B..) get(X+Y..)' },
-      { CategoryId: 2, CategoryName: 'Buy(A or B +C or D...) get(X+Y or Y+Z..)' },
+      { CategoryId: 2, CategoryName: 'Buy(A/B..) get(C/D...)' },
       { CategoryId: 3, CategoryName: 'Volume Discount' },
       { CategoryId: 4, CategoryName: 'Price Discount' },
-         ];
-         
+    ];
+
   }
-  
+
   onTypeSelect(item: any) {
     console.log(item);
   }
@@ -81,11 +84,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   onClick(item) {
     this.selectedItem = item;
   }
-  displaydata(){
-    this.showdata=true;
+  displaydata() {
+    this.showdata = true;
   }
-  hidedata(){
-    this.showdata=false;
+  hidedata() {
+    this.showdata = false;
   }
   ngAfterViewInit() {
     this.totalStepsCount = this.myStepper._steps.length;
@@ -93,23 +96,39 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   goForward(stepper: MatStepper) {
     stepper.next();
   }
-  getCategory(event: any){
-    if (event.CategoryName=='Buy(A+B..) get(X+Y..)'){
+  getCategory(event: any) {
+    if (event.CategoryName == 'Buy(A+B..) get(X+Y..)') {
       this.goForward(this.myStepper);
-      }
-      if (event.CategoryName=='Price Discount'){
-        this.goForward(this.myStepper);
-        }
-        if (event.CategoryName=='Volume Discount'){
-          this.goForward(this.myStepper);
-          }
+      this.buyab = true;
+      this.volumedc = false;
     }
-    // alert(event.CategoryName);
-  
+    if (event.CategoryName == 'Price Discount') {
+      this.goForward(this.myStepper);
+      this.buyab = false;
+      this.volumedc = true;
+    }
+    if (event.CategoryName == 'Volume Discount') {
+      // alert(event.CategoryName);
+      this.buyab = false;
+      this.volumedc = true;
+      this.goForward(this.myStepper);
 
-  
-   addCategory(){
-    this.addButton =true;
+    }
+    if (event.CategoryName == 'Buy(A/B..) get(C/D...)') {
+      // alert(event.CategoryName);
+      this.buyab = false;
+      this.volumedc = false;
+      this.buysets = true;
+      this.goForward(this.myStepper);
+
+    }
+  }
+  // alert(event.CategoryName);
+
+
+
+  addCategory() {
+    this.addButton = true;
   }
   toogleShowFilter() {
     this.ShowFilter = !this.ShowFilter;
@@ -130,8 +149,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       pValue: '',
     });
   }
-  addItems(){
-    this.dialog.open( AddItemsPromotionComponent,);
+  addItems() {
+    this.dialog.open(AddItemsPromotionComponent,);
     this.dialogRef.close();
   }
 }

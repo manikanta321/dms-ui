@@ -27,7 +27,7 @@
 }
 
 .promotiont {
-  margin-top: 3px;
+  margin-top: 9px;
   font-family: 'Gilroy';
   margin-left: -2px;
 }
@@ -36,8 +36,8 @@
   font-family: 'Gilroy';
   margin-left: 2px;
   position: relative;
-  top: -260px;
-  left: 415px;
+  bottom:272px;
+  left: 474px;
 
 }
 
@@ -384,7 +384,8 @@ mat-form-field {
 
 ::ng-deep.mat-dialog-container {
   background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-  ;
+  width: 1043px;
+  height: 583px;
 }
 
 .categorydrp {
@@ -415,10 +416,11 @@ mat-form-field {
 }
 
 .promotiontypedrp {
-  width: 390px;
   margin-top: 2px;
   color: lightgrey;
   font-family: 'Gilroy';
+  width: 456px;
+  height: 43px;
 }
 
 .brandname {
@@ -828,7 +830,11 @@ li {
 .getgrp {
   position: relative;
   left: 414px;
- bottom: 83px;
+  bottom: 88px;
+}
+.prod{
+  position: relative;
+    bottom: 17px;
 }
 
 .productlevel {
@@ -878,10 +884,9 @@ li {
   left: 406px;
 }
 
-.arrow .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
+::ng-deep.identify .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
   overflow: hidden;
-  display: none;
-  /* background-image: url('../../../../assets/img/maximize.png');    */
+  background-image: url('../../../assets/img/maximize.png') !important;
   background-size: 13px;
   background-repeat: no-repeat;
   height: 300px;
@@ -906,7 +911,10 @@ li {
   bottom: 554px;
   position: relative;
 }
+.buys{
+  position: relative;
 
+}
 .getg {
   position: relative;
   bottom: 627px;
@@ -986,39 +994,81 @@ li {
   overflow-x: auto;
 }
 
-/* .fill .mat-form-field{
-  
-  position: relative;
-} */
 .mydatepicker {
   border-radius: 2px;
   font-family: 'Gilroy';
 }
 
 ::ng-deep.mydatepicker .mat-form-field {
-  width: 386px;
- 
-  height: 47px;
+  width: 456px;
+  height: 43px;
   background: white !important;
   border-radius: 5px;
   padding-left: 10px;
- 
+
 }
-.imagefield{
+
+.imagefield {
   position: relative;
-  top:34px;
+  top: 34px;
 }
+
 ::ng-deep.mydatepicker .mat-icon-button {
   background: transparent;
   color: black;
   position: relative;
-    right: 8px;
+  right: 8px;
 }
-.seconditems{
-position: relative;
-bottom: 10px;
-left: 4px;
+
+.seconditems {
+  position: relative;
+  bottom: 10px;
+  left: 4px;
 }
-.showdatascroll{
+
+.showdatascroll {
   overflow-x: auto;
+}
+
+.setone{
+  color: #000000 ;
+  font-size:12px;
+   font-weight: bold;
+   font-family: 'Gilroy';
+   position: relative;
+    bottom: 44px;
+}
+.settwo{
+  color: #000000 ;
+  font-size:12px;
+   font-weight: bold;
+   font-family: 'Gilroy';
+   position: relative;
+    bottom: 187px;
+    left: 412px;
+}
+.level-section{
+position: relative;
+    bottom: 20px;
+}
+/* ::ng-deep.getset-matcard  .mat-card{
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border-radius: 25px;
+  height: 190px;
+  width: 186px;
+  height: 629px;
+    width: 465px;
+} */
+.getset-matcard {
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border-radius: 25px;
+  height: 629px;
+  width: 465px;
+  position: absolute;
+  top: 292px;
+  left: 180px;
 }

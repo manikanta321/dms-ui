@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 //import { AddItemsPromotionComponent } from '/add-items-promotion/add-items-promotion.component';
+import { FormArray } from '@angular/forms' 
 
 
 @Component({
@@ -12,6 +13,8 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
   styleUrls: ['./add-dealer-popup.component.css']
 })
 export class AddDealerPopupComponent implements OnInit {
+
+  addAddressDetailsForm!: FormGroup;  
 
   selectedTeam = '';
   selectedDay: string = '';
@@ -57,7 +60,10 @@ export class AddDealerPopupComponent implements OnInit {
   CustomerSelect : string[] = ['Valiant Distributors', 'Global Movers', 'Somebody Sales']
  
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
-    private dialogRef: MatDialogRef<any>,) { }
+    private dialogRef: MatDialogRef<any>) {
+
+      this.formReader();
+     }
   firstFormGroup: FormGroup = this._formBuilder.group({firstCtrl: ['']});
   secondFormGroup: FormGroup = this._formBuilder.group({secondCtrl: ['']});
 
@@ -66,12 +72,13 @@ export class AddDealerPopupComponent implements OnInit {
 
   ngOnInit(): void {
     this.toppingList3 = [
-      { CategoryId: 1, CategoryName: 'Buy(A+B..) get(X+Y..)' },
-      { CategoryId: 2, CategoryName: 'Buy(A or B +C or D...) get(X+Y or Y+Z..)' },
-      { CategoryId: 3, CategoryName: 'Volume Discount' },
-      { CategoryId: 4, CategoryName: 'Price Discount' },
-         ];
+                          { CategoryId: 1, CategoryName: 'Buy(A+B..) get(X+Y..)' },
+                          { CategoryId: 2, CategoryName: 'Buy(A or B +C or D...) get(X+Y or Y+Z..)' },
+                          { CategoryId: 3, CategoryName: 'Volume Discount' },
+                          { CategoryId: 4, CategoryName: 'Price Discount' },
+                         ];
          
+     this.addAddressForm();
   }
   
   onTypeSelect(item: any) {
@@ -121,10 +128,12 @@ export class AddDealerPopupComponent implements OnInit {
   addCountry() {
     this.addCountryButton = true;
   }
+
   removesub(uId: number) {
     const index = this.packingCharges.findIndex((address) => address.id === uId);
     this.packingCharges.splice(index, 1);
   }
+
   addFields() {
     this.packingCharges.push({
       sValue: '',
@@ -132,9 +141,43 @@ export class AddDealerPopupComponent implements OnInit {
       pValue: '',
     });
   }
-  addItems(){
-    // this.dialog.open( AddItemsPromotionComponent,);
-    // this.dialogRef.close();
+
+
+  quantities() : FormArray {  
+    return this.addAddressDetailsForm.get("quantities") as FormArray  
+  }  
+     
+  newQuantity(): FormGroup {  
+    return this._formBuilder.group({  
+      addType: '',  
+      consigName: '',
+      price: '',
+      tax: '',
+      addressLine: '',
+      country: '',
+      state: '',
+      cityAndZip: '',
+      phoneNo: '',  
+    })  
+  }  
+     
+  addAddressForm() {  
+    this.quantities().push(this.newQuantity());  
+  }  
+
+  formReader(){
+    this.addAddressDetailsForm = this._formBuilder.group({  
+      name: '',  
+      quantities: this._formBuilder.array([]) ,  
+    });  
   }
+
+  removeQuantity(i:number) {
+    
+    if( i >= 1){
+      this.quantities().removeAt(i);  
+    }
+    
+  }  
 
 }

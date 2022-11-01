@@ -716,7 +716,7 @@ export class DealersComponent implements OnInit {
 
 
   addUser() {
-    this.dialog.open(AddDealerPopupComponent,);
+    this.dialog.open(AddDealerPopupComponent,{height:"570px"});
   }
   editUser() {
     this.dialog.open(EditPopupComponent,);

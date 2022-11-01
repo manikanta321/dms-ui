@@ -1,6 +1,6 @@
 <div class="font ">
     <div class=" main" width="900%">
-        <div class="container ">
+        <div class="container add-dealer-scroll">
             <div class="addUser">
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
             </div>
@@ -73,7 +73,7 @@
                             </div>
                             <!-- AdminUser -->
                             <ng-template matStepLabel>AdminUser</ng-template>
-                            <div class="headefont">
+                            <div class="headefont" style="margin-top:25px;">
                                 <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'">
                                     <b>Admin user</b>
                                 </h6>
@@ -117,8 +117,88 @@
                             </div>
                             <!-- Address -->
 
+                            <div class="col-12" style="margin-top:25px;">
+                                <div class="row">
+                                    <div class="col-11">
+                                        <div class="headefont">
+                                            <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'">
+                                                <b>Addresses</b>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-1">
+                                        <mat-icon (click) =addAddressForm()>add_circle</mat-icon>
+                                    </div>
+                                </div>
+
+                                <form [formGroup]="addAddressDetailsForm">
+
+                                    <div formArrayName="quantities">
+                            
+                                <div class="row" *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
+                                <div class="col-1">
+                                    <label *ngIf="i == 0">Type<span>*</span></label>
+                                    <br>
+                                    <input type="text" placeholder="Type" formControlName="addType" class="addDelercols addtype">
+                                </div>
+
+                                <div class="col-2">
+                                    <label *ngIf="i == 0">Consignee Name<span>*</span></label>
+                                    <br>
+                                    <input type="text" placeholder="ConsigNee" formControlName="consigName" class="addDelercols addname">
+                                </div>
+
+                                <div class="col-1">
+                                    <label *ngIf="i == 0">Tax<span>*</span></label>
+                                    <br>
+                                    <input type="text" placeholder="Tax" formControlName="tax" class="addDelercols addtax">
+                                </div>
+
+                                <div class="col-2">
+                                    <label *ngIf="i == 0">Address Line<span>*</span></label>
+                                    <br>
+                                    <input type="text" placeholder="Address" formControlName="addressLine" class="addDelercols addadress">
+                                </div>
+
+                                <div class="col-1">
+                                    <label *ngIf="i == 0">Country<span>*</span></label>
+                                    <br>
+                                    <input type="text" placeholder="Country" formControlName="country" class="addDelercols addcountry">
+                                </div>
+
+                                <div class="col-1">
+                                    <label *ngIf="i == 0">State<span>*</span></label>
+                                    <br>
+                                    <input type="text" placeholder="State" formControlName="state" class="addDelercols aastate">
+                                </div>
+
+                                <div class="col-2">
+                                    <label *ngIf="i == 0">City & Zip<span>*</span></label>
+                                    <br>
+                                    <input type="text" placeholder="city & zip"formControlName="cityAndZip" class="addDelercols addcity">
+                                </div>
+
+                                <div class="col-1">
+                                    <label *ngIf="i == 0">Phone<span>*</span></label>
+                                    <br>
+                                    <input type="text" placeholder="Phone no" formControlName="phoneNo" class="addDelercols addphone">
+                                </div>
+                                
+                    
+                                <div class="col-1">
+                                    <label><span></span></label>
+                                    <mat-icon (click)="removeQuantity(i)" class="col-2 remove-mat-icon delete-icon remove-address">remove_circle</mat-icon>
+                                </div>
+                            </div>
+
+                            </div>
+                        </form>
+
+                            </div>
+
+
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-5">
                                 </div>
                                 <div class="col-2">
                                     <button class="btn btn-primary btn-block submitbtn save-btn">Submit</button>

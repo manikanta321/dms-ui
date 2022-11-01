@@ -358,7 +358,7 @@ border-radius: 10px;
   .addU:after {
     content: "";
     display: block;
-    width: 280px;
+    width: 450px;
     height: 2px;
     background: #686E74;
     right: 0;
@@ -369,7 +369,7 @@ border-radius: 10px;
   .addU:before {
     content: "";
     display: block;
-    width: 280px;
+    width: 450px;
     height: 2px;
     background: #686E74;
     left: 0;
@@ -1076,4 +1076,46 @@ border-radius: 10px;
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 10px;
     color:#000000;
+  }
+
+  .add-dealer-scroll {
+    height:470px;
+    overflow-x: hidden;
+  }
+
+  .addtype {
+    width:82px !important;
+  }
+
+  .addname {
+    width:150px !important;
+  }
+
+  .addtax {
+    width:82px !important;
+  }
+
+  .addadress {
+    width:150px !important;
+  }
+
+  .addcountry {
+    width:82px !important;
+  }
+
+  .aastate {
+    width:82px !important;
+  }
+
+  .addcity {
+    width:150px !important;
+  }
+
+  .addphone {
+    width:82px !important;
+  }
+
+  .remove-address{
+    position:relative;
+    top:25px;
   }

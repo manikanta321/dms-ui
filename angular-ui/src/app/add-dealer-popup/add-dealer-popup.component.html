@@ -62,7 +62,9 @@
 
                         </form>
                     </mat-step>
-<!-- geography -->
+
+                <!-- geography -->
+                
                     <mat-step [stepControl]="secondFormGroup">
                         <form [formGroup]="secondFormGroup">
                             <ng-template matStepLabel> Geographies</ng-template>
@@ -150,12 +152,25 @@
 
                                 </div>
                             </div>
-                            <div class="row btn-row">
-                                <button class="btn btn-primary btn-block submitbtn"
-                                    style="background-color:#000000;width:23%;position:relative; left: 28%;border-radius: 11px;">Save</button>
-                                <button class="btn btn-primary btn-block submitbtn"
-                                    style="background-color:white;width:23%;position:relative; left: 31%;border-radius: 11px; border-color: black ;color: #000000;">Cancel</button>
+                            <div class="row">
+                                <div class="col-4">
+
+                                </div>
+                                <div class="col-4">
+                                    <div class="row">
+                                        <div class="col-5">
+                                            <button class="btn btn-primary btn-block submitbtn save-btn">Save</button>
+                                        </div>
+                                        <div class="col-5">
+                                            <button class="btn btn-primary btn-block submitbtn cancel-btn">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    
+                                </div>
                             </div>
+                            
                         </form>
                     </mat-step>
 

@@ -106,11 +106,13 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       this.goForward(this.myStepper);
       this.buyab = false;
       this.volumedc = true;
+      this.buysets = false;
     }
     if (event.CategoryName == 'Volume Discount') {
       // alert(event.CategoryName);
       this.buyab = false;
       this.volumedc = true;
+      this.buysets = false;
       this.goForward(this.myStepper);
 
     }

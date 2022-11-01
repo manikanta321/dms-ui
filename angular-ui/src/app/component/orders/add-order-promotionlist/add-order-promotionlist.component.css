@@ -868,9 +868,9 @@
 }
 
 .card1 {
-    height: 120px;
-    border-radius: 8.5px;
-    background: #000;
+    height: 100px;
+    width:230px;
+    border-radius: 10px;
     margin-top: 49px;
     margin-left: 20px;
 
@@ -984,7 +984,7 @@ margin-top: 0px;
 }
 
 .expand-arrow {
-    width: 70%;
+    width: 40%;
     position: relative;
     right: -28px;
     top: 4px;

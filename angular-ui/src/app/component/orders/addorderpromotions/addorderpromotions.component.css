@@ -226,13 +226,8 @@
   }
   
   label {
-    /* padding: 2px 0; */
-    font-size: 12px;
     margin: 5px;
-    font-family: 'Gilroy-Medium';
-    font-size: 13px;
-    line-height: 15px;
-    display: flex;
+    font-size: 12.5px;
     align-items: center;
   }
   
@@ -763,6 +758,7 @@
     border-radius: 10px;
     font-family: 'Gilroy';
     padding: 4px 10px;
+    font: 12px/3 sans-serif;
 }
 
 .collapsible {
@@ -948,26 +944,16 @@
 }
 
 .req-date {
-    /* background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-    border-radius: 10px; */
     width:100%;
     background-image: none !important;
     background: #fff;
     border-radius: 10px;
+    height:56%;
 }
 
-.req-date .mat-form-field-flex {
-
-}
-
-.req-date .mat-form-field-wrapper .mat-form-field-flex {
-    border-radius: 4px 4px 4px 4px !important;
-}
 
 .expand-arrow {
-  width: 45%;
+  width: 40%;
   position: relative;
   right: -28px;
   top: 4px;

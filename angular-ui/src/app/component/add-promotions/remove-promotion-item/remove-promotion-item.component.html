@@ -1,0 +1,12 @@
+<div class="container removepopup">
+    <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+    <div class="actv-user text-center">
+        <h1 class="head-text" >Remove Item</h1>
+        <p class="addc">Are you sure you want to <b style="color:red">remove</b><br>
+             item (Little hearts classic edition 100gm (PO01254)) from selected list?</p>
+             <div class="buttonr">
+        <button class="undo" (click)="deactive()">Yes</button>
+        <button class="exit"(click)='close()'>Cancel</button>
+    </div>
+    </div>
+</div>

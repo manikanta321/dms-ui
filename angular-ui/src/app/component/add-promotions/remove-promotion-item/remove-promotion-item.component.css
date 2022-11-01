@@ -1,0 +1,51 @@
+.head-text {
+    font-size: 36px;
+    font-weight: 600;
+    font-family: 'Gilroy';
+}
+
+.undo {
+    padding: 5px 52px;
+    background: black;
+    color: white;
+    margin-right: 20px;
+    /* border: #000000; */
+    border-radius: 5px;
+}
+
+.exit {
+    background: #fff;
+    color: black;
+    padding: 5px 52px;
+    border: 2px solid #000000;
+    border-radius: 5px;
+}
+
+.close-icon {
+    left: 100%;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.removepopup {
+    position: relative;
+    width: 468px;
+    height: 261px;
+}
+
+.addc {
+    font-size: 20px;
+    position: relative;
+    top: 18px;
+}
+.buttonr{
+    position: relative;
+    top: 33px;
+}
+.removeitemsucess .mat-dialog-container{
+    bottom:0px;
+    left: 60%;
+    border: 10px solid red;
+    
+}

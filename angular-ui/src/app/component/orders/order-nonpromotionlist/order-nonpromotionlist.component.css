@@ -989,8 +989,8 @@ margin-top: 0px;
 }
 
 .input-icons i {
-  position:absolute;
-  padding:12px;
+  position:relative;
+  left: 30px;
 }
 
 .refreshbtn{

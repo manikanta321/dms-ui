@@ -227,8 +227,13 @@
   
   label {
     /* padding: 2px 0; */
-    font-size: 14px;
+    font-size: 12px;
     margin: 5px;
+    font-family: 'Gilroy-Medium';
+    font-size: 13px;
+    line-height: 15px;
+    display: flex;
+    align-items: center;
   }
   
   mat-form-field {
@@ -949,6 +954,12 @@
     border-radius: 10px; */
     width:100%;
     background-image: none !important;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.req-date .mat-form-field-flex {
+
 }
 
 .req-date .mat-form-field-wrapper .mat-form-field-flex {
@@ -956,7 +967,7 @@
 }
 
 .expand-arrow {
-  width: 70%;
+  width: 45%;
   position: relative;
   right: -28px;
   top: 4px;

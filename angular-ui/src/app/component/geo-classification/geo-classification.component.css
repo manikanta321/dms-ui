@@ -6,6 +6,9 @@ mat-card{
     border-radius: 25px;
     height: 400px;
 }
+.font{
+  font-family: 'Gilroy';
+}
 .catg{
     background: #EAEEFF;
     border: 1px solid #00187A;

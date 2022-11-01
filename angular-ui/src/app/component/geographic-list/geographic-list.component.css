@@ -11,6 +11,9 @@
     font-family: 'Gilroy-Bold', sans-serif;
     font-weight: bold;
 }
+.font{
+  font-family: 'Gilroy';
+}
 .searchButton {
   display:bolck;
   color: #FFFFFF;

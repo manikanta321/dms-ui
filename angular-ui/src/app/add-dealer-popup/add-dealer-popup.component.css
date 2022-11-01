@@ -11,6 +11,24 @@ box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.
 border-radius: 10px;
 }
 
+.headefont{
+
+    width: 195px;
+    height: 38px;
+    left: 0px;
+    top: 0px;
+    
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    
+    color: #000000;
+}
+
 .mat-form-field {
     width: 680px;
     font-family: 'Gilroy';

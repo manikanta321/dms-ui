@@ -15,7 +15,7 @@
                     <mat-step [stepControl]="firstFormGroup">
                         <form [formGroup]="firstFormGroup">
                             <ng-template matStepLabel>Basic Information</ng-template>
-                            <div class="heading">
+                            <div class="headefont">
                                 <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'">
                                     <b>Basic
                                         Information</b>
@@ -25,23 +25,35 @@
                                 <div class="col-12">
                                     <div class="row">
                                         <div class="col-4">
+                                            <label>Name<span>*</span></label>
+                                            <br>
                                             <input type="text" class="addDelercols">
                                         </div>
                                         <div class="col-4">
+                                            <label>Email-Id<span>*</span></label>
+                                            <br>
                                             <input type="text" class="addDelercols">
                                         </div>
                                         <div class="col-4">
+                                            <label>Code.<span>*</span></label>
+                                            <br>
                                             <input type="text" class="addDelercols">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-4">
+                                            <label>Website<span>*</span></label>
+                                            <br>
                                             <input type="text" class="addDelercols">
                                         </div>
                                         <div class="col-4">
+                                            <label>Phone no<span>*</span></label>
+                                            <br>
                                             <input type="text" class="addDelercols">
                                         </div>
                                         <div class="col-4">
+                                            <label>Company id<span>*</span></label>
+                                            <br>
                                             <input type="text" class="addDelercols">
                                         </div>
                                     </div>
@@ -50,6 +62,8 @@
                                             <!-- <input type="text"> -->
                                         </div>
                                         <div class="col-4">
+                                            <label>Other identifer<span>*</span></label>
+                                            <br>
                                             <input type="text" class="addDelercols">
                                         </div>
                                         <div class="col-4">
@@ -57,10 +71,55 @@
                                         </div>
                                     </div>
                                 </div>
-                            
+        <!-- AdminUser -->
+                                <ng-template matStepLabel>AdminUser</ng-template>
+                                <div class="headefont">
+                                    <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'">
+                                        <b>Admin user</b>
+                                    </h6>
+                                </div>
+    
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label>Username<span>*</span></label>
+                                                <br>
+                                                <input type="text" class="addDelercols">
+                                            </div>
+                                            <div class="col-4">
+                                                <label>Email-Id<span>*</span></label>
+                                                <br>
+                                                <input type="text" class="addDelercols">
+                                            </div>
+                                            <div class="col-4">
+                                                <label>phone no<span>*</span></label>
+                                                <br>
+                                                <input type="text" class="addDelercols">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label>First Name<span>*</span></label>
+                                                <br>
+                                                <input type="text" class="addDelercols">
+                                            </div>
+                                            <div class="col-4">
+                                                <label>Last Name<span>*</span></label>
+                                                <br>
+                                                <input type="text" class="addDelercols">
+                                            </div>
+                                            <div class="col-4">
+                                                <label>Status<span>*</span></label>
+                                                <br>
+                                                <input type="text" class="addDelercols">
+                                            </div>
+                                        </div>
+
+                                    </div>
 
 
                         </form>
+
                     </mat-step>
 
                 <!-- geography -->

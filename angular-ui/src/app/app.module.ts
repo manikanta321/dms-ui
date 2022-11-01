@@ -106,6 +106,8 @@ import { CurrencyDonePopupComponent } from './component/other-masters/currency-c
 import { CurrencyActionComponent } from './component/other-masters/currency-conversation/currency-action/currency-action.component';
 import { CurrencyReactivatedComponent } from './component/other-masters/currency-conversation/currency-reactivated/currency-reactivated.component';
 import { CurrencyDefaultComponent } from './component/other-masters/currency-conversation/currency-default/currency-default.component';
+import { RemovePromotionItemComponent } from './component/add-promotions/remove-promotion-item/remove-promotion-item.component';
+import { RemovePromotionSucessComponent } from './component/add-promotions/remove-promotion-sucess/remove-promotion-sucess.component';
 
 @NgModule({
   declarations: [
@@ -181,6 +183,8 @@ import { CurrencyDefaultComponent } from './component/other-masters/currency-con
           CurrencyActionComponent,
           CurrencyReactivatedComponent,
           CurrencyDefaultComponent,
+          RemovePromotionItemComponent,
+          RemovePromotionSucessComponent,
   ],
   imports: [
     FormsModule,

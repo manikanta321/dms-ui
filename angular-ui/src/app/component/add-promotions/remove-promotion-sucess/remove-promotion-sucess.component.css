@@ -1,0 +1,51 @@
+.head-text {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* .close-icon{
+        left: 100%;
+        position: relative;
+        font-size: 15px;
+        font-weight: 600;
+    } */
+.tumbsup {
+    width: 106px;
+    height: 72px;
+    padding: 0 10px;
+    font-size: 25px;
+    position: relative;
+    right: 12px;
+}
+
+.donep {
+
+    position: relative;
+    right: 12px;
+    top: 13px;
+}
+
+.text-succ {
+    position: relative;
+    left: 12px;
+    /* padding: 0 10px; */
+}
+
+.closeImg {
+    padding: 15px 0 15px 20px;
+}
+
+.closeImg img {
+    width: 20px;
+}
+
+.left {
+    width: 15px;
+    background: green;
+}
+
+.removes {
+    width: 473px;
+    height: 79px;
+
+}

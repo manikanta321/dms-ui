@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { AddItemsPromotionComponent } from '../promotions/add-items-promotion/add-items-promotion.component';
+import { RemovePromotionItemComponent } from './remove-promotion-item/remove-promotion-item.component';
 
 @Component({
   selector: 'app-add-promotions',
@@ -155,5 +156,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     this.dialog.open(AddItemsPromotionComponent,);
     this.dialogRef.close();
   }
+  addRemoveitem(){
+    
+    this.dialog.open( RemovePromotionItemComponent);
+}
 }
 

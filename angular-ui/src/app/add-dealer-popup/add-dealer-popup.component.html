@@ -7,9 +7,9 @@
             <div class="head-t">
                 <h3 class="addU font">Add: Dealer Name</h3>
                 <br>
-                <img src="assets/img/arrow-left-circle-fill.svg" style="width: 24px;margin-left: 760px;"
+                <img src="assets/img/arrow-left-circle-fill.svg"  class="addMore-icon" style="width: 24px;margin-left: 760px;"
                     alt="left-arr-btn">
-                <img src="assets/img/arrow-right-circle-fill.svg" style="width: 24px; margin-left: 12px;"
+                <img src="assets/img/arrow-right-circle-fill.svg"  class="addMore-icon" style="width: 24px; margin-left: 12px;"
                     alt="right-arr-btn">
                 <mat-stepper labelPosition="bottom" #stepper>
                     <mat-step [stepControl]="firstFormGroup">
@@ -127,7 +127,7 @@
                                         </div>
                                     </div>
                                     <div class="col-1">
-                                        <mat-icon (click) =addAddressForm()>add_circle</mat-icon>
+                                        <mat-icon class="addMore-icon" (click) =addAddressForm()>add_circle</mat-icon>
                                     </div>
                                 </div>
 

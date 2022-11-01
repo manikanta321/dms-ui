@@ -358,7 +358,7 @@ border-radius: 10px;
   .addU:after {
     content: "";
     display: block;
-    width: 450px;
+    width: 380px;
     height: 2px;
     background: #686E74;
     right: 0;
@@ -369,7 +369,7 @@ border-radius: 10px;
   .addU:before {
     content: "";
     display: block;
-    width: 450px;
+    width: 380px;
     height: 2px;
     background: #686E74;
     left: 0;
@@ -395,6 +395,7 @@ border-radius: 10px;
     position: relative;
     font-size: 15px;
     font-weight: 600;
+    cursor: pointer;
   }
   
   label {
@@ -1118,4 +1119,9 @@ border-radius: 10px;
   .remove-address{
     position:relative;
     top:25px;
+    cursor: pointer;
+  }
+
+  .addMore-icon {
+    cursor: pointer;
   }

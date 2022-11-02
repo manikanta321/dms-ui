@@ -47,8 +47,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   addButton: boolean = false;
   dropdownSettings3: IDropdownSettings = {};
   disabled = false;
+  dropdownSettings:IDropdownSettings = {};
   promotionlist: any[] | undefined;
   toppingList3: any = [];
+  toppingList:any;
   ShowFilter = false;
   totalStepsCount: number | undefined;
   @ViewChild('stepper') private myStepper: MatStepper | any;
@@ -133,10 +135,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   addCategory() {
     this.addButton = true;
   }
-  toogleShowFilter() {
-    this.ShowFilter = !this.ShowFilter;
-    this.dropdownSettings3 = Object.assign({}, this.dropdownSettings3, { allowSearchFilter: this.ShowFilter });
-  }
+  // toogleShowFilter() {
+  //   this.ShowFilter = !this.ShowFilter;
+  //   this.dropdownSettings3 = Object.assign({}, this.dropdownSettings3, { allowSearchFilter: this.ShowFilter });
+  // }
 
   addCountry() {
     this.addCountryButton = true;

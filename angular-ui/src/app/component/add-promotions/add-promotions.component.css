@@ -36,7 +36,7 @@
   font-family: 'Gilroy';
   margin-left: 2px;
   position: relative;
-  bottom:272px;
+  bottom: 272px;
   left: 474px;
 
 }
@@ -843,9 +843,16 @@ li {
   left: 414px;
   bottom: 88px;
 }
-.prod{
+
+.prod {
   position: relative;
-    bottom: 17px;
+  bottom: 17px;
+}
+
+.prodb {
+  position: relative;
+  top: 132px;
+  left: 13px;
 }
 
 .productlevel {
@@ -922,10 +929,13 @@ li {
   bottom: 554px;
   position: relative;
 }
-.buys{
-  position: relative;
 
+.buys {
+  position: relative;
+  top: 25px;
+  left: 18px;
 }
+
 .getg {
   position: relative;
   bottom: 627px;
@@ -1041,27 +1051,30 @@ li {
   overflow-x: auto;
 }
 
-.setone{
-  color: #000000 ;
-  font-size:12px;
-   font-weight: bold;
-   font-family: 'Gilroy';
-   position: relative;
-    bottom: 44px;
+.setone {
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Gilroy';
+  position: relative;
+  bottom: 44px;
 }
-.settwo{
-  color: #000000 ;
-  font-size:12px;
-   font-weight: bold;
-   font-family: 'Gilroy';
-   position: relative;
-    bottom: 187px;
-    left: 412px;
+
+.settwo {
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Gilroy';
+  position: relative;
+  bottom: 187px;
+  left: 412px;
 }
-.level-section{
-position: relative;
-    bottom: 20px;
+
+.level-section {
+  position: relative;
+  bottom: 20px;
 }
+
 /* ::ng-deep.getset-matcard  .mat-card{
   background: #FFFFFF;
   border: 0.5px solid #000000;
@@ -1083,3 +1096,60 @@ position: relative;
   top: 292px;
   left: 180px;
 }
+
+.item-section {
+  position: relative;
+  bottom: 2px
+}
+
+.item-sectionb {
+  position: relative;
+  top: 204px;
+  left: 16px;
+}
+
+.buy-head {
+  position: relative;
+  border: 2px solid black;
+  border-radius: 18px;
+  width: 413px;
+  left: 9px;
+  bottom: 31px;
+  background-color: lightgrey;
+}
+
+.head-get {
+  position: relative;
+  border: 2px solid black;
+  border-radius: 18px;
+  width: 413px;
+  left: 468px;
+  bottom: 616px;
+  height: 360px;
+  background-color: lightgrey;
+}
+
+.heag {
+  position: relative;
+  left: 18px;
+}
+
+.head-h {
+  position: relative;
+  left: 471px;
+  bottom: 582px;
+}
+
+.image-getset {
+  width: 22px;
+ position: relative;
+ bottom: 172px;
+    left: 354px;
+}
+.image-getsetone {
+  width: 22px;
+ position: relative;
+ bottom: 172px;
+    left: 354px;
+}
+

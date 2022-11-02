@@ -327,7 +327,7 @@
 .addU:after {
   content: "";
   display: block;
-  width: 280px;
+  width: 375px;
   height: 2px;
   background: #686E74;
   right: 0;
@@ -338,7 +338,7 @@
 .addU:before {
   content: "";
   display: block;
-  width: 280px;
+  width: 375px;
   height: 2px;
   background: #686E74;
   left: 0;
@@ -384,8 +384,10 @@ mat-form-field {
 
 .popup-size {
   background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-  width: 1043px;
-  height: 583px;
+  /* width: 1043px; */
+  /* height: 583px; */
+  overflow-x: hidden;
+  height: 532px;
 }
 
 .categorydrp {

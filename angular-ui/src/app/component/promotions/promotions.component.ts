@@ -546,8 +546,8 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
   }
   addPromotions(){
     const config: MatDialogConfig = {
-      width: '1043',
-      height: '583'
+      width: '1043px',
+      height: '583px',
     };
     this.dialog.open( AddPromotionsComponent, config);
 

@@ -714,25 +714,33 @@ export class DealersComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-
   addUser() {
     this.dialog.open(AddDealerPopupComponent,{height:"570px"});
   }
+
   editUser() {
     this.dialog.open(EditPopupComponent,);
   }
+
   AddUomPopup() {
     this.dialog.open(UomPopupComponent,);
   }
+
   EditUomPopup() {
     this.dialog.open(EditUomPopupComponent,);
   }
+
   addtaxTempl() {
     this.dialog.open(AddTaxTemplateComponent,);
   }
+
   addCurrency() {
-    this.dialog.open(AddcurrencyComponent);
+    let dialogRef = this.dialog.open(AddcurrencyComponent);
+    dialogRef.afterClosed().subscribe((res) => {
+      localStorage.setItem('headerStatus','')
+      })
   }
+
   edittaxTempl() {
     this.dialog.open(EditTaxTemplateComponent);
   }

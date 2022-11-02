@@ -744,7 +744,10 @@ export class UsersComponent implements OnInit {
     this.dialog.open(AddTaxTemplateComponent,);
   }
   addCurrency() {
-    this.dialog.open(AddcurrencyComponent);
+    let dialogRef = this.dialog.open(AddcurrencyComponent);
+    dialogRef.afterClosed().subscribe((res) => {
+      localStorage.setItem('headerStatus','')
+      })
   }
   edittaxTempl() {
     this.dialog.open(EditTaxTemplateComponent);

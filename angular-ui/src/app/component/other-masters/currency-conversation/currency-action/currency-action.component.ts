@@ -50,8 +50,10 @@ export class CurrencyActionComponent implements OnInit {
       //   rowIndex: this.params.rowIndex,
       //   colKey: 'make',
       // });
-      this.dialog.open( AddcurrencyComponent,);
-      // this.dialogRef.close()
+     let dialogRef = this.dialog.open(AddcurrencyComponent);
+      dialogRef.afterClosed().subscribe((res) => {
+        localStorage.setItem('headerStatus','')
+        })
     }
   }
 
@@ -79,7 +81,10 @@ export class CurrencyActionComponent implements OnInit {
 
   editpop(){
     localStorage.setItem('headerStatus','EditCurrency')
-    this.dialog.open( AddcurrencyComponent);
+    let dialogRef = this.dialog.open( AddcurrencyComponent);
+    dialogRef.afterClosed().subscribe((res) => {
+      localStorage.setItem('headerStatus','')
+      })
     this.isOpen = false;
   }
   Deactive(){

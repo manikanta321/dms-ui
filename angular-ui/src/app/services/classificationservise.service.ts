@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpParams, HttpRequest, JsonpClientBackend } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 @Injectable({
   providedIn: 'root'
 })
@@ -98,8 +99,8 @@ getAllListByCountry(id:any){
 
 //delete geographies List
 
-getDeleteListByCountry(id:any){
-  return this.http.get<any>(this.classificationurl + 'OtherMasterApi/DeleteGeography?id='+id);
+getDeleteListByCountry(id:any,status:any){
+  return this.http.get<any>(this.classificationurl + 'OtherMasterApi/DeleteGeography?id='+ id +'/spec='+status);
 }
 
 //add country name 

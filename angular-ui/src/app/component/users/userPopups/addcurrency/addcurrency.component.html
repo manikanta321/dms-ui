@@ -16,9 +16,9 @@
           <form>
             <div class="row">
               <div class="col">
-                  <label>First Name <span>*</span></label>
+                  <label>Name <span>*</span></label>
                   <br>
-                  <input type="text" placeholder="Enter your Name" [(ngModel)]="name" class="imputtext">        </div>
+                  <input type="text" placeholder="Enter Name" [(ngModel)]="name" class="imputtext">        </div>
                 <div class="col">
                   <label>Display Units<span>*</span></label>
                   <br>
@@ -58,7 +58,7 @@
                 
                   <label><span style="color: aliceblue;">.</span></label>
                   <br>
-                  <input type="text" placeholder="Enter Conversion"  class="imputtext form-select form-select-lg mb-8">
+                  <input type="text" placeholder="Enter Conversion" [disabled]="true" class="imputtext form-select form-select-lg mb-8">
                     
                     </div>
 

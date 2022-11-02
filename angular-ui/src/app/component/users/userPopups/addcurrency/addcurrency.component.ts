@@ -8,7 +8,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AddcurrencyComponent implements OnInit {
     name:any;
-    headerName:string = 'Add Currency';
+    headerName:any;
 
   constructor(private dialogRef: MatDialogRef<any>,
     private user:UserService,) { }
@@ -16,8 +16,10 @@ export class AddcurrencyComponent implements OnInit {
   ngOnInit(): void {
     // this.addcurrency()
     var editcurrencyHeader =localStorage.getItem('headerStatus');
-    if(editcurrencyHeader!== null){
+    if(editcurrencyHeader == "EditCurrency"){
       this.headerName ="Edit Currency";
+    } else {
+      this.headerName = 'Add Currency';
     }
   }
   closeDialog(){

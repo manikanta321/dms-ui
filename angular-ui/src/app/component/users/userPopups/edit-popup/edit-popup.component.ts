@@ -63,7 +63,7 @@ console.log('dataofEdit',this.data)
   }
   selectedValue($event){
     // alert($event)
-this.role=$event  
+this.roleId=$event 
 }
 roleItems(){
   this.user.getroleDetails().subscribe((res: any) => {
@@ -101,6 +101,8 @@ editUser(){
       roleId:this.roleId,
  }
     this.user.EditUser(obj).subscribe((res: any) => {
+      this.dialogRef.close()
+
       if (res.response.result =='successfully updated') {
         this.sharedService.filter('Register click')
 

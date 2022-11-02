@@ -5,7 +5,8 @@ import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dial
 import { DeactiveCurrencyComponent } from '../deactive-currency/deactive-currency.component';
 import { ReactiveCurrencyComponent } from '../reactive-currency/reactive-currency.component';
 import { MakeDefaultComponent } from '../make-default/make-default.component';
-import { EditPopupComponent } from 'src/app/component/users/userPopups/edit-popup/edit-popup.component';
+// import { EditPopupComponent } from 'src/app/component/users/userPopups/edit-popup/edit-popup.component';
+import { AddcurrencyComponent } from 'src/app/component/users/userPopups/addcurrency/addcurrency.component';
 
 @Component({
   selector: 'app-currency-action',
@@ -49,7 +50,7 @@ export class CurrencyActionComponent implements OnInit {
       //   rowIndex: this.params.rowIndex,
       //   colKey: 'make',
       // });
-      this.dialog.open( EditPopupComponent,);
+      this.dialog.open( AddcurrencyComponent,);
       // this.dialogRef.close()
     }
   }
@@ -77,8 +78,8 @@ export class CurrencyActionComponent implements OnInit {
   }
 
   editpop(){
-   
-    this.dialog.open( EditPopupComponent,);
+    localStorage.setItem('headerStatus','EditCurrency')
+    this.dialog.open( AddcurrencyComponent);
     this.isOpen = false;
   }
   Deactive(){

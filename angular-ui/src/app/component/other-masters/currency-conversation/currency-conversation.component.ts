@@ -711,7 +711,11 @@ console.log(' this.statusTypes', this.userTypes)
 
 
   addUser(){
-   this.dialog.open( AddcurrencyComponent,);
+    
+   let dialogRef =  this.dialog.open( AddcurrencyComponent,);
+   dialogRef.afterClosed().subscribe((res) => {
+   localStorage.setItem('headerStatus','')
+   })
   }
   editUser(){
     this.dialog.open( EditPopupComponent,);

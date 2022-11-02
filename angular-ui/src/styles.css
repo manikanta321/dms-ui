@@ -258,3 +258,7 @@ body {
   background:transparent !important
 }
 
+.popup-size .mat-stepper-horizontal .mat-horizontal-stepper-wrapper {
+  height: 85%;
+}
+

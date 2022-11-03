@@ -47,7 +47,7 @@ mat-sidenav-container {
 mat-tab{
     display: flex;
     position: relative;
-    background: grey;
+    background: grey; 
     box-shadow: #1292EE;
     padding: 0.75rem;
     border-radius: 99px;
@@ -64,11 +64,13 @@ mat-tab{
     background: white;
     left: 35%;
     height: 35px;
+    
 
 }
 ::ng-deep.mat-tab-label{
     height: 35px !important;
     min-width: 190px !important;
+   
 }
 ::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     display: none !important;
@@ -91,9 +93,13 @@ mat-tab{
     align-items: center;
     height: 0px;
     color: #000000;
+    font-style: bold;
+    font-weight: bold;
+
+
     position: relative;
     top: 6%;
-    font-weight: bold;
+    /* font-weight: bold; */
     left: 20px; 
   }
 

@@ -3,27 +3,44 @@
 font-size: 20px;
 font-weight: 600;
 margin-bottom: 0;
+margin-top: -20px;
 }
-/* .head-text::after{
+.olpass
+{
+ font-family: 'Gilroy-Light';
+font-size: 20px;
+line-height: 100%;
+font-weight: 600;
+margin-top: 15px;
+}
+.newspass
+{
+    font-family: 'Gilroy-Light';
+font-size: 20px;
+line-height: 100%;
+font-weight: 600;
+margin-top: 5px;
+}
+ .head-text::after{
     content: "";
     display: block;
-    width: 40px;
+    width: 94px;
     height: 2px;
     background: #686E74;
-    right: 0;
+    right: 20px;
     top: 50%;
     position: absolute;
 }
 .head-text::before{
     content: "";
     display: block;
-    width: 30px;
+    width: 94px;
     height: 2px;
     background: #686E74;
-    left: 0;
+    left: 20px;
     top: 50%;
     position: absolute;
-} */
+} 
 input{
     padding: 5px 12px;
     margin-bottom: 10px;
@@ -43,7 +60,7 @@ border-radius: 5px;
 margin-right: 35px;
 }
 .cancel-btn{
-    border: #000000;
+    border: 2px solid #000000;
     border-radius: 5px;
     width: 184px;
     height: 43px;
@@ -55,7 +72,8 @@ margin-right: 35px;
     position: relative;
     font-size: 15px;
     font-weight: 600;
-    top: 26px;
+    top: -3px;
+    color: gray;
 }
 .actv-user{
 position: relative;

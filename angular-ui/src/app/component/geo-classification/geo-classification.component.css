@@ -1,4 +1,87 @@
 
+.section
+{
+  margin-top: 50px;
+}
+
+.geo-classification-crad
+{
+
+}
+
+.country
+{
+  
+  font-family: 'Gilroy';
+font-size: 16px;
+font-weight: 300;
+line-height: 23.06px;
+letter-spacing: 0em;
+color:  #000000;
+font-style: light;
+}
+.State
+{
+  font-family: 'Gilroy';
+font-size: 16px;
+font-weight: 300;
+line-height: 23.06px;
+font-style: light;
+letter-spacing: 0em;
+color:  #000000;
+
+}
+.District
+{
+  font-family: 'Gilroy';
+font-size: 16px;
+font-weight: 300;
+line-height: 23.06px;
+font-style: light;
+letter-spacing: 0em;
+color:  #000000;
+}
+.City
+{
+  font-family: 'Gilroy';
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 23.06px;
+  font-style: light;
+  letter-spacing: 0em;
+  color:  #000000;
+}
+.Regions
+{
+  font-family: 'Gilroy';
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 23.06px;
+  font-style: light;
+  letter-spacing: 0em;
+  color:  #000000;
+}
+.Area
+{
+  font-family: 'Gilroy';
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 23.06px;
+  font-style: light;
+  letter-spacing: 0em;
+  color:  #000000;
+}
+.Sub Area
+{
+  font-family: 'Gilroy';
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 23.06px;
+  font-style: light;
+  letter-spacing: 0em;
+  color:  #000000;
+}
+
 mat-card{
     background: #FFFFFF;
     border: 0.5px solid #000000;
@@ -66,11 +149,12 @@ li{
     font-size: 11px;
     color: #000000;
     padding: 8px 16px;
-    /* width: 150px; */
+    /* width: 160px;  */
     margin-left: -12px;
-    width:140px;
+    width:186px;
     height: 43px;
-    font-weight: bold;
+    /* font-weight: bold; */
+    font-weight: gray;
 }
 
 .input-district-cls,
@@ -98,12 +182,13 @@ li{
     border-radius: 10px;
     margin-right: 10px;
     font-size: 11px;
-    font-weight: bold;
-    color: #000000;
+    /* font-weight: bold; */
+    font-weight: gray;
+  color: #000000;
     padding: 8px 16px;
-    width:70px;
+    width:87px;
     height: 43px;
-    margin-left: 5px;
+    margin-left: 16px;
 }
 
 .addcode{
@@ -114,7 +199,7 @@ li{
   font-size: 11px;
   color: rgba(104, 110, 116, 0.75);
   color: #fff;
-  margin-left: 18px;
+  margin-left: 31px;
   margin-top: 8px;
   width: 40px;
   height: 30px;
@@ -189,8 +274,11 @@ li{
 
   .geo-classification-crad  {
     display: -webkit-box !important;
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
+    overflow-y: auto;
     flex-wrap: nowrap !important;
+    /* height: 22em; */
+    
   }
 
   .row-padding {
@@ -222,8 +310,17 @@ li{
   background: #000000;
 }
 
+   ::-webkit-scrollbar{
+     /* width: 1px; */
+    overflow-x: scroll;
+       height: 0.6em;  
+      border-radius: 20px;
+      /* margin-top: -150px; */
+} 
 .scroll {
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
+  overflow-y: auto;
+  /* margin-top: 150px; */
 }
 
 .delete-icon {

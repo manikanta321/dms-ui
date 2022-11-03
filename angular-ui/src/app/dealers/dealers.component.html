@@ -13,7 +13,7 @@
 
       <div class="col-md-2 col-lg-2 col-sm-2">
         <form [formGroup]="myForm">
-          <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'Product'" formControlName="city"
+          <ng-multiselect-dropdown class="roless-product" name="city" [placeholder]="'Product'" formControlName="city"
             [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList"
             (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
             (onDeSelectAll)="onItemDeSelectOrAll($event)" (onSelectAll)="onItemSelectOrAll($event)">
@@ -53,7 +53,7 @@
           </div>
           <div class="col-md-1">
             <div class="add-user" (click)="addUser()" style=" cursor: pointer">
-              <img src="assets/img/add-dealer.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+              <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
             </div>
           </div>
           <div class="col-md-0">

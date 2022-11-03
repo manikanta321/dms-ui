@@ -28,7 +28,10 @@ border-radius: 10px;
     
     color: #000000;
 }
-
+.fontcolor{
+  color: #000;
+  font-family: 'Gilroy';
+}
 .mat-form-field {
     width: 680px;
     font-family: 'Gilroy';
@@ -814,6 +817,7 @@ border-radius: 10px;
     text-overflow: ellipsis;
     overflow: hidden;
     font-size: 12px;
+    font-family: 'Gilroy';
   }
   
   ::ng-deep.datepicker .mat-form-field-appearance-fill .mat-form-field-flex {
@@ -1062,8 +1066,10 @@ border-radius: 10px;
   }
 
   .save-btn {
-    width: 100px;
-    height: 39px;
+    width: 168px;
+    height: 43px;
+    position: absolute;
+    right: 2px;
     font-family: 'Gilroy-SemiBold';
     font-size: 15px;
     line-height: 18px;
@@ -1077,7 +1083,8 @@ border-radius: 10px;
   }
 
   .cancel-btn {
-    width: 100px;
+    width: 168px;
+    height: 43px;
     background: #FFFFFF;
     border: 2px solid #000000;
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);

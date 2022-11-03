@@ -75,7 +75,11 @@
   background: #000000 !important;
   }
   ::ng-deep.roless .multiselect-dropdown .dropdown-btn .selected-item {
-    background: #D23F00 !important;
+    background: #006466 !important;
+    font-size: 12px;
+  }
+  ::ng-deep.roless-product .multiselect-dropdown .dropdown-btn .selected-item {
+    background: #44026C !important;
     font-size: 12px;
   }
    ::ng-deep .roless .multiselect-item-checkbox input[type=checkbox]:checked + div:before {

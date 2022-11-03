@@ -291,7 +291,6 @@ border-radius: 10px;
   }
   
   .heading {
-    margin-top: 8px;
     font-family: 'Gilroy';
   }
   
@@ -861,7 +860,7 @@ border-radius: 10px;
   }
   
   .material-card {
-    margin-top: -5px;
+    margin-top: 15px;
   }
   
   .getgrp {

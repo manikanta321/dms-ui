@@ -48,5 +48,8 @@ gettaxlist(data){
 JSON.stringify(data)
   return this.http.post<any>('http://52.172.24.161:801/api/OtherMasterApi/GetTAxTemplatesList', data);
 }
+addtax(data){
+  return this.http.post<any>('http://52.172.24.161:801/api/OtherMasterApi/AddTaxTemplate', data);
 
+}
 }

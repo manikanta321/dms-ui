@@ -11,6 +11,7 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';  
 import { TaxTemplateServiceService } from 'src/app/services/tax-template-service.service';
 import { TaxTempleateActionComponent } from '../../tax-templeate-action/tax-templeate-action.component';
+import { SharedService } from 'src/app/services/shared-services.service';
 export interface PeriodicElement {
   name: any;
   position: string;
@@ -263,11 +264,19 @@ export class TaxTemplateComponent implements OnInit {
 
   constructor( private user:UserService,   
    private tax:TaxTemplateServiceService,
+   
     public dialog: MatDialog,
     private fb: FormBuilder,
+    private sharedService: SharedService,
     private _liveAnnouncer: LiveAnnouncer,) { sort:[];}
     onFirstDataRendered(params: FirstDataRenderedEvent) {
       params.api.sizeColumnsToFit();
+      
+    this.sharedService.listen().subscribe((m: any) => {
+      console.log(m)
+      this.getusertabeldata()
+
+    })
     }
     @ViewChild(MatSort)
     sort: MatSort = new MatSort;
@@ -337,16 +346,7 @@ export class TaxTemplateComponent implements OnInit {
       });
   this.getusertabeldata();
     }
-  roleFilter(data:any){
-    console.log('data',data)
-    this.roleName=this.toppings.value;
-  this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=>{
-    this.rowData = res.response;
-  
-  
-  });
-    console.log('rolename',this.rowData)
-  }
+
   onStatusAll(items: any) {
     console.log('onSelectAll', items);
     }

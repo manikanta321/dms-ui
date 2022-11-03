@@ -29,6 +29,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   errorMsg: any;
   buyab: boolean = false;
   volumedc: boolean = false;
+  pricedc : boolean =false
   buysets: boolean = false;
   addCountryButton: boolean = false;
   removelist: boolean = false;
@@ -71,7 +72,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   /* on Select of Dropdown screen change */
 
   ngOnInit(): void {
-    this.GetPromotionTypes();
+    this.GetPromotionTypes(Event);
     // this.toppingList3 = [
     //   { CategoryId: 1, CategoryName: 'Buy(A+B..) get(X+Y..)' },
     //   { CategoryId: 2, CategoryName: 'Buy(A/B..) get(C/D...)' },
@@ -129,14 +130,45 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
     // }
   }
-  GetPromotionTypes(){
+  GetPromotionTypes(event:any){
     //  const data = {
     //   promotionTypesId : this.promotionTypesId,
     //   promotionTypesName: this.promotionTypesName
     // }
     this.promotionTypes.GetPromotionTypes().subscribe ((res)=> {
-      console.log('check promotiontypes', res);
-      this.toppingList3 = res.response
+      // console.log('check promotiontypes', res);
+      this.toppingList3 = res.response;
+      if (event.promotionTypesName == 'Buy (A+B..) get (X+Y..)') {
+          this.goForward(this.myStepper);
+          this.buyab = true;
+          this.volumedc = false;
+          this.buysets = false;
+          this.pricedc = false;
+        }
+        if (event.promotionTypesName == 'Buy (A or B + C or D..) get (X+Y or Y+Z..)') {
+            this.buyab = false;
+            this.volumedc = false;
+            this.buysets = true;
+            this.pricedc = false;
+            this.goForward(this.myStepper);
+      
+          }
+          if (event.promotionTypesName == 'Volume Discount') {
+              this.buyab = false;
+              this.volumedc = true;
+              this.buysets = false;
+              this.pricedc = false;
+              this.goForward(this.myStepper);
+        
+            }
+          if (event.promotionTypesName == 'Price Discount') {
+              this.goForward(this.myStepper);
+              this.buyab = false;
+              this.volumedc = false;
+              this.buysets = false;
+              this.pricedc = true;
+            }
+            
     })
   }
 

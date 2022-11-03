@@ -3,6 +3,7 @@ import * as moment from 'moment';
 import { MatTableDataSource } from '@angular/material/table';
 import { CellClassParams, CellClassRules, CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef, GridApi, GridOptions, ModuleRegistry, ColumnResizedEvent, Grid, } from 'ag-grid-community';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { PromotionService } from 'src/app/services/promotion.service';
 export interface PeriodicElement {
 
   name: any;
@@ -200,9 +201,10 @@ export class PopupGridTableComponent implements OnInit {
       {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item',prodc: 'P0568',prosc:'7878'},
       {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item',prodc: 'P0568',prosc:'7878'},
     ];
-  constructor() { }
+  constructor(public promotionTypes : PromotionService) { }
 
   ngOnInit(): void {
+    this.producttable();
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -256,5 +258,10 @@ export class PopupGridTableComponent implements OnInit {
         instance.togglePopup();
       }
     }
+  }
+  producttable(){
+    this.promotionTypes.GetPGDetailList().subscribe((res) => {
+      console.log('pg details check', res);
+    })
   }
 }

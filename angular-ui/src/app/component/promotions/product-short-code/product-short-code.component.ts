@@ -8,6 +8,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { AddItemsPromotionComponent } from '../add-items-promotion/add-items-promotion.component';
 import { ProductGroupAddItemComponent } from '../product-group-add-item/product-group-add-item.component';
 import { ProductSubGroupComponent } from '../product-sub-group/product-sub-group.component';
+import { PromotionService } from 'src/app/services/promotion.service';
 export interface PeriodicElement {
 
   name: any;
@@ -40,26 +41,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./product-short-code.component.css']
 })
 export class ProductShortCodeComponent implements OnInit {
-  public rowData3 = [
-    {name: 'revathi', Taxitem: '25', Status: 'Active'},
-    {name: 'rani', Taxitem: '25', Status: 'Inactive'},
-    {name: 'naveen', Taxitem: '25', Status: 'Inactive'},
-    {name: 'swetha', Taxitem: '25', Status: 'Locked'},
-    {name: 'sneha', Taxitem: '25', Status: 'Active'},
-    {name: 'anjali', Taxitem: '25', Status: 'Active'},
-  ];
   private gridApi!: GridApi;
   searchText;
   columnDefs: ColDef[] = [
 
     {
       headerName: "Product Shot Code",
-      field: 'name', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',  checkboxSelection: true
+      field: 'shortCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',  checkboxSelection: true
     },
     { headerName: "", field: '', type: ['nonEditableColumn'] },
     { headerName: "", field: '', type: ['nonEditableColumn'] },
 
-    { headerName: "#of Products", field: 'Taxitem', type: ['nonEditableColumn'],
+    { headerName: "#of Products", field: 'noofproducts', type: ['nonEditableColumn'],
     cellStyle: {color: '#017EFA'}
    },
 
@@ -181,9 +174,11 @@ export class ProductShortCodeComponent implements OnInit {
     productSubGChk:boolean=false;
   constructor(private _formBuilder: FormBuilder,
     public dialog: MatDialog,
-    private dialogRef: MatDialogRef<any>,) { }
+    private dialogRef: MatDialogRef<any>,
+    public promotionTypes : PromotionService) { }
 
   ngOnInit(): void {
+    this.GetProductShortCodeList();
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -254,4 +249,23 @@ export class ProductShortCodeComponent implements OnInit {
     this.dialog.open( ProductSubGroupComponent, {width:'1043px'});
     this.dialogRef.close()
   }
+  GetProductShortCodeList(){
+   const data = {
+      Search : ''
+    }
+    this.promotionTypes.GetProductShortCodeList(data).subscribe((res) =>{
+      console.log('shortcodeworks', res);
+      this.rowData5 = res.response;
+    })
+  }
+  onSearchChange(event : any){
+    const data = {
+      Search : ''
+    }
+    this.promotionTypes.GetProductShortCodeList(data).subscribe((res) =>{
+      console.log('shortcodeworks', res);
+      this.rowData5 = res.response;
+    })
+  }
+  
 }

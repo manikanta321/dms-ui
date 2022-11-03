@@ -9,6 +9,7 @@ import { ProductShortCodeComponent } from '../product-short-code/product-short-c
 import { ProductGroupAddItemComponent } from '../product-group-add-item/product-group-add-item.component';
 import { AddItemsPromotionComponent } from '../add-items-promotion/add-items-promotion.component';
 import { UserService } from 'src/app/services/user.service';
+import { PromotionService } from 'src/app/services/promotion.service';
 export interface PeriodicElement {
 
   name: any;
@@ -48,12 +49,12 @@ export class ProductSubGroupComponent implements OnInit {
 
     {
       headerName: "Product Sub-Group",
-      field: 'name', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
+      field: 'productSubGroup', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
     },
 
     { headerName: "", field: '', type: ['nonEditableColumn'] },
 
-    { headerName: "Product Group", field: '', type: ['nonEditableColumn'] },
+    { headerName: "Product Group", field: 'productGroup', type: ['nonEditableColumn'] },
 
     {
       headerName: "",
@@ -62,7 +63,7 @@ export class ProductSubGroupComponent implements OnInit {
 
     {
       headerName: "#of Products",
-      field: 'Taxitem', type: ['nonEditableColumn'],
+      field: 'noofproducts', type: ['nonEditableColumn'],
       cellStyle: {color: '#017EFA'}
     },  
 
@@ -190,24 +191,20 @@ export class ProductSubGroupComponent implements OnInit {
     toppings1 = new FormControl('');
     selectedStatus: any = [];
     StatusFilter = false;
-    public rowData3 = [
-      {name: 'revathi', Taxitem: '25', Status: 'Active'},
-      {name: 'rani', Taxitem: '25', Status: 'Inactive'},
-      {name: 'naveen', Taxitem: '25', Status: 'Inactive'},
-      {name: 'swetha', Taxitem: '25', Status: 'Locked'},
-      {name: 'sneha', Taxitem: '25', Status: 'Active'},
-      {name: 'anjali', Taxitem: '25', Status: 'Active'},
-    ];
   constructor(private _formBuilder: FormBuilder,
     public dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
-    private user: UserService,) { }
+    public promotionTypes : PromotionService) { }
 
   ngOnInit(): void {
     this.statusItems();
+    this.GetProductSubGroupList1()
   }
    statusItems() {
-    this.user.getstatusDeatils().subscribe((res: any) => {
+    const data = {
+      productgroup : []
+    }
+    this.promotionTypes.GetProductSubGroupList(data).subscribe((res: any) => {
       this.toppingList1 = res.response;
       // this.toppingList1 = localdata.map((data: { status_id: any; status_name: any; }) => {
       //   return {status_id: data.status_id, status_name: data.status_name };
@@ -315,13 +312,10 @@ export class ProductSubGroupComponent implements OnInit {
   }
   onStatusSelect(item: any) {
     this.statusTypes.push(item.statusId);
-
     const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
+      productgroup : []
+     }
+     this.promotionTypes.GetProductSubGroupList(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
 
@@ -333,25 +327,19 @@ export class ProductSubGroupComponent implements OnInit {
     // this.statusTypes.pop(item.statusId);
     console.log(' this.statusTypes', this.userTypes)
     const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
-
+     productgroup : []
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
+    this.promotionTypes.GetProductSubGroupList(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
-    console.log('rolefilter', this.userTypes)
+    console.log('products', this.promotionTypes)
     console.log('onItemSelect', item);
   }
   onItemDeSelectOrAllStatus(item: any) {
     const data = {
-      userTypes: this.userTypes,
-      statuss: [],
-      search: this.searchText,
-
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
+      productgroup : []
+     }
+     this.promotionTypes.GetProductSubGroupList(data).subscribe((res)  => {
       this.rowData5 = res.response;
     });
     console.log('rolefilter', this.userTypes)
@@ -359,14 +347,20 @@ export class ProductSubGroupComponent implements OnInit {
   onItemSelectOrAllStatus(item: any) {
     this.statusTypes = this.statusArray;
     const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
-
+      productgroup : []
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
+    this.promotionTypes.GetProductSubGroupList(data).subscribe((res)  => {
       this.rowData5 = res.response;
     });
     console.log('rolefilter', this.statusTypes)
+  }
+  GetProductSubGroupList1(){
+    const data = {
+      productgroup : [],
+    }
+    this.promotionTypes.GetProductSubGroupList(data).subscribe((res) =>{
+      console.log('productsubgroup is works', res);
+      this.rowData5 = res.response;
+    })
   }
 }

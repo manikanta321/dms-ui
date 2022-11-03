@@ -32,7 +32,7 @@
                             </div>
                             <div class="promotiontypedrp">
                                 <ng-select [items]="toppingList3" placeholder="Select the promotion type"
-                                    bindLabel="promotionTypesName" bindValue="promotionTypesId" (change)="GetPromotionTypes()">
+                                    bindLabel="promotionTypesName" bindValue="promotionTypesId" (change)="GetPromotionTypes($event)">
                                 </ng-select>
                             </div>
                             <div class="promotiont">
@@ -415,7 +415,7 @@
 
                                             </div>
                                             <div class="col-3">
-                                                <label>Price</label>
+                                                <label>Discount</label>
                                                 <input class="qtyOfItems" type="text" id="pValue" name="pValue"
                                                     required placeholder="1500" [(ngModel)]="packingCharge.pValue"
                                                     name="city_{{i}}">
@@ -432,7 +432,61 @@
                                     </div>
                                 </div>
                             </div>
+<!-- price -->
+<div *ngIf="pricedc">
+    <div class="row">
+        <div class="col-12">
+            <label>Product Level</label>
+            <br>
+            <input class="productSize" type="text" id="pValue" name="pValue" required
+                placeholder="1500" (click)="addItems()">
+        </div>
+    </div>
 
+    <div class="row topItems">
+        <div class="col-6 inlineNav">
+            <label>Items*</label>
+            <input class="itemSize" type="text" id="pValue" name="pValue" required
+                placeholder="1500">
+            <!-- <textarea id="w3review" name="w3review" rows="4"
+                cols="50">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea> -->
+
+        </div>
+        <div class="col-5 navItems">
+            <div class="row"
+                *ngFor="let packingCharge of packingCharges; let i = index;">
+                <div class="col-3">
+                    <label>Qty From</label>
+                    <input class="qtyOfItems" type="text" id="pValue" name="pValue"
+                        required placeholder="1500" [(ngModel)]="packingCharge.address"
+                        name="address_{{i}}">
+
+                </div>
+                <div class="col-3">
+                    <label>Qty To</label>
+                    <input class="qtyOfItems" type="text" id="pValue" name="pValue"
+                        required placeholder="1500" [(ngModel)]="packingCharge.eValue"
+                        name="street_{{i}}">
+
+                </div>
+                <div class="col-3">
+                    <label>Price</label>
+                    <input class="qtyOfItems" type="text" id="pValue" name="pValue"
+                        required placeholder="1500" [(ngModel)]="packingCharge.pValue"
+                        name="city_{{i}}">
+
+                </div>
+                <div class="col-1">
+                    <mat-icon class="removeCircle" *ngIf="i>=0" (click)=removesub(i)>
+                        remove_circle</mat-icon>
+                </div>
+            </div>
+        </div>
+        <div class="col-1 contentinline">
+            <mat-icon class="" (click)=addFields()>add_circle</mat-icon>
+        </div>
+    </div>
+</div>
                         </form>
                     </mat-step>
 

@@ -32,5 +32,25 @@ else {
 public GetPromotionTypes() {
   return this.http.get<any>(this.userurl + 'PromotionsApi/GetPromotionTypes');
 }
-}
 // http://52.172.24.161:801/api/PromotionsApi/GetPromotionTypes
+public GetProductGroupList(data: any){
+  return this.http.post<any>(this.userurl + 'PromotionsApi/GetProductGroupList', data);
+}
+// http://52.172.24.161:801/api/PromotionsApi/GetProductGroupList
+public GetProductShortCodeList(data: any){
+  return this.http.post<any>(this.userurl + 'PromotionsApi/GetProductShortCodeList', data)
+}
+// http://52.172.24.161:801/api/PromotionsApi/GetProductShortCodeList
+public GetProductSubGroupList(data:any){
+  return this.http.post<any>(this.userurl + 'PromotionsApi/GetProductSubGroupList',data)
+}
+// http://52.172.24.161:801/api/PromotionsApi/GetProductSubGroupList
+public GetProductList(data : any){
+  return this.http.post<any>(this.userurl + 'PromotionsApi/GetProductList', data) 
+}
+// http://52.172.24.161:801/api/PromotionsApi/GetProductList
+public GetPGDetailList(){
+  return this.http.get<any>(this.userurl + 'PromotionsApi/GetPGDetailList?ProductGroupId=18')
+}
+// http://52.172.24.161:801/api/PromotionsApi/GetPGDetailList?ProductGroupId=18
+}

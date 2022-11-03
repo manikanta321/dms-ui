@@ -8,6 +8,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ProductShortCodeComponent } from '../product-short-code/product-short-code.component';
 import { ProductGroupAddItemComponent } from '../product-group-add-item/product-group-add-item.component';
 import { ProductSubGroupComponent } from '../product-sub-group/product-sub-group.component';
+import { PromotionService } from 'src/app/services/promotion.service';
 export interface PeriodicElement {
 
   name: any;
@@ -47,46 +48,35 @@ export class AddItemsPromotionComponent implements OnInit {
   //   secondCtrl: ['', Validators.required],
   // });
   // isLinear = false;
-  public rowData3 = [
-    {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable', productg: 'snack item',prodc: 'P0568',prosc:'7878'},
-    {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
-    {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
-    {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
-    {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item',prodc: 'P0568',prosc:'7878'},
-    {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item',prodc: 'P0568',prosc:'7878'},
-    {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable', productg: 'snack item',prodc: 'P0568',prosc:'7878'},
-    {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
-    {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
-  ];
   private gridApi!: GridApi;
   searchText;
   columnDefs: ColDef[] = [
 
     {
       headerName: "Product Name",
-      field: 'name', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
+      field: 'stockItemName', type: ['nonEditableColumn'], pinned: 'left',
     },
 
-    { headerName: "Classification", field: 'clsfic', type: ['nonEditableColumn'] },
+    { headerName: "Classification", field: 'classification', type: ['nonEditableColumn'] },
 
-    { headerName: "SKU", field: 'sku', type: ['nonEditableColumn'] },
+    { headerName: "SKU", field: 'productSKUName', type: ['nonEditableColumn'] },
 
     {
       headerName: "Product Identifier",
-      field: 'prodcid', type: ['nonEditableColumn']
+      field: 'productCustomName', type: ['nonEditableColumn']
     },
 
     {
       headerName: "Product Group",
-      field: 'productg', type: ['nonEditableColumn'],
+      field: 'productGroupName', type: ['nonEditableColumn'],
     },
     {
       headerName: "Product Code",
-      field: 'prodc', type: ['nonEditableColumn'],
+      field: 'globalCode', type: ['nonEditableColumn'],
     },
     {
       headerName: "Product Shot Code",
-      field: 'prosc', type: ['nonEditableColumn'],
+      field: 'shortCode', type: ['nonEditableColumn'],
     },
     {
       headerName: '',
@@ -205,9 +195,11 @@ export class AddItemsPromotionComponent implements OnInit {
     productSubGChk:boolean=false;
   constructor(private _formBuilder: FormBuilder,
     public dialog: MatDialog,
-    private dialogRef: MatDialogRef<any>,) { }
+    private dialogRef: MatDialogRef<any>,
+    public promotionTypes : PromotionService) { }
 
   ngOnInit(): void {
+    this.productListtable()
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -278,5 +270,19 @@ export class AddItemsPromotionComponent implements OnInit {
   productSubG(){
     this.dialog.open( ProductSubGroupComponent,{width:'1043px'});
     this.dialogRef.close()
+  }
+  productListtable(){
+    const data = {
+      Cat : [],
+      Sub_Cat : [],
+      type : [],
+      productgroup : [],
+      productidentifier :[],
+      Search : ''
+    }
+    this.promotionTypes.GetProductList(data).subscribe((res) =>{
+      console.log('productlist is works', res);
+      this.rowData5 = res.response;
+    })
   }
 }

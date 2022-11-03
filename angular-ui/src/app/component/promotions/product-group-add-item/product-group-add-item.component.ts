@@ -9,6 +9,7 @@ import { ProductShortCodeComponent } from '../product-short-code/product-short-c
 import { ProductSubGroupComponent } from '../product-sub-group/product-sub-group.component';
 import { AddItemsPromotionComponent } from '../add-items-promotion/add-items-promotion.component';
 import { PopupGridTableComponent } from './popup-grid-table/popup-grid-table.component';
+import { PromotionService } from 'src/app/services/promotion.service';
 export interface PeriodicElement {
 
   name: any;
@@ -47,7 +48,7 @@ export class ProductGroupAddItemComponent implements OnInit {
 
     {
       headerName: "Product Group",
-      field: 'name', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left', checkboxSelection: true
+      field: 'productGroup', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left', checkboxSelection: true
     },
 
     { headerName: "", field: '', type: ['nonEditableColumn'] },
@@ -61,7 +62,7 @@ export class ProductGroupAddItemComponent implements OnInit {
 
     {
       headerName: "#of products",
-      field: 'Taxitem', type: ['nonEditableColumn'],
+      field: 'noofproducts', type: ['nonEditableColumn'],
       cellStyle: {color: '#017EFA'},
       cellEditorPopup: true,
        onCellClicked: (event: CellClickedEvent) => this.dialog.open(PopupGridTableComponent, {panelClass: 'grid-popup'})
@@ -182,19 +183,14 @@ export class ProductGroupAddItemComponent implements OnInit {
     prodShtCode:boolean=false;
     productGrpChk:boolean=true;
     productSubGChk:boolean=false;
-    public rowData3 = [
-      {name: 'revathi', Taxitem: '25', Status: 'Active'},
-      {name: 'rani', Taxitem: '25', Status: 'Inactive'},
-      {name: 'naveen', Taxitem: '25', Status: 'Inactive'},
-      {name: 'swetha', Taxitem: '25', Status: 'Locked'},
-      {name: 'sneha', Taxitem: '25', Status: 'Active'},
-      {name: 'anjali', Taxitem: '25', Status: 'Active'},
-    ];
   constructor(private _formBuilder: FormBuilder,
     public dialog: MatDialog,
-    private dialogRef: MatDialogRef<any>,) { }
+    private dialogRef: MatDialogRef<any>,
+    public promotionTypes : PromotionService) { }
 
   ngOnInit(): void {
+    this.GetProductGroupList();
+    
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -264,5 +260,34 @@ export class ProductGroupAddItemComponent implements OnInit {
   productSubG(){
     this.dialog.open( ProductSubGroupComponent,{width:'1043px'});
     this.dialogRef.close()
+  }
+  GetProductGroupList(){
+  const  data = {
+    Search : ''
+    }
+    this.promotionTypes.GetProductGroupList(data).subscribe ((res) => {
+       console.log('check productGlist', res);
+       this.rowData5 = res.response;
+    })
+  }
+  onLoad() {
+    const data = {
+      Search : ''
+    }
+    this.promotionTypes.GetProductGroupList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
+
+  }
+  onSearchChange($event: any, anything?: any) {
+    const { target } = $event;
+    this.searchText = target.value;
+    const data = {
+      Search : ''
+    }
+    this.promotionTypes.GetProductGroupList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
+
   }
 }

@@ -6,9 +6,12 @@ mat-card{
     border-radius: 25px;
     height: 380px;
     margin-bottom: 30px;
+    padding-right: 0px;
+
 }
 .scroll{
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 ::-webkit-scrollbar {
   width: 8px;
@@ -106,7 +109,7 @@ li{
  height: 34px;
  font-size: 14px;
  border-radius: 8px;
- left:1%;
+ left:5%;
 }
 .material-card
 
@@ -128,6 +131,11 @@ li{
     display: flex;
     color: rgba(104, 110, 116, 0.75);
     font-size: 13px;
+}
+.span-subhead1{
+  display: flex;
+  color: rgba(104, 110, 116, 0.75);
+  font-size: 13px;
 }
 .selected {
     background-color: #00187A;

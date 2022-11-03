@@ -29,12 +29,12 @@ export class MaterialsClassificationComponent implements OnInit {
   numberValue:any;
   itemId:any;
   subCatId:any='';
-  coutCatagory='';
+  coutCatagory:any;
   catagoryroouting='';
   subcatRoouting='';
   selectedtypeItem='';
-  subcatcount='';
-  typecount='';
+  subcatcount:any;
+  typecount:any;
   // clData: string[] = ['Type TP 1', 'Type TP 2', 'Type TP 3','Type TP 4'];
   // subcat: string[] = ['sub category', 'sub category 2',];
   constructor(

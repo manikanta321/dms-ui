@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { PromotionService } from 'src/app/services/promotion.service';
 import { AddItemsPromotionComponent } from '../promotions/add-items-promotion/add-items-promotion.component';
 import { RemovePromotionItemComponent } from './remove-promotion-item/remove-promotion-item.component';
 
@@ -61,7 +62,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   CustomerSelect: string[] = ['Valiant Distributors', 'Global Movers', 'Somebody Sales']
 
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
-    private dialogRef: MatDialogRef<any>,) { }
+    private dialogRef: MatDialogRef<any>,
+    public promotionTypes : PromotionService) { }
   firstFormGroup: FormGroup = this._formBuilder.group({ firstCtrl: [''] });
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
 
@@ -69,12 +71,13 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   /* on Select of Dropdown screen change */
 
   ngOnInit(): void {
-    this.toppingList3 = [
-      { CategoryId: 1, CategoryName: 'Buy(A+B..) get(X+Y..)' },
-      { CategoryId: 2, CategoryName: 'Buy(A/B..) get(C/D...)' },
-      { CategoryId: 3, CategoryName: 'Volume Discount' },
-      { CategoryId: 4, CategoryName: 'Price Discount' },
-    ];
+    this.GetPromotionTypes();
+    // this.toppingList3 = [
+    //   { CategoryId: 1, CategoryName: 'Buy(A+B..) get(X+Y..)' },
+    //   { CategoryId: 2, CategoryName: 'Buy(A/B..) get(C/D...)' },
+    //   { CategoryId: 3, CategoryName: 'Volume Discount' },
+    //   { CategoryId: 4, CategoryName: 'Price Discount' },
+    // ];
 
   }
 
@@ -100,36 +103,42 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     stepper.next();
   }
   getCategory(event: any) {
-    if (event.CategoryName == 'Buy(A+B..) get(X+Y..)') {
-      this.goForward(this.myStepper);
-      this.buyab = true;
-      this.volumedc = false;
-      this.buysets = false;
-    }
-    if (event.CategoryName == 'Price Discount') {
-      this.goForward(this.myStepper);
-      this.buyab = false;
-      this.volumedc = true;
-      this.buysets = false;
-    }
-    if (event.CategoryName == 'Volume Discount') {
-      // alert(event.CategoryName);
-      this.buyab = false;
-      this.volumedc = true;
-      this.buysets = false;
-      this.goForward(this.myStepper);
+    // if (event.CategoryName == 'Buy(A+B..) get(X+Y..)') {
+    //   this.goForward(this.myStepper);
+    //   this.buyab = true;
+    //   this.volumedc = false;
+    // }
+    // if (event.CategoryName == 'Price Discount') {
+    //   this.goForward(this.myStepper);
+    //   this.buyab = false;
+    //   this.volumedc = true;
+    //   this.buysets = false;
+    // }
+    // if (event.CategoryName == 'Volume Discount') {
+    //   this.buyab = false;
+    //   this.volumedc = true;
+    //   this.buysets = false;
+    //   this.goForward(this.myStepper);
 
-    }
-    if (event.CategoryName == 'Buy(A/B..) get(C/D...)') {
-      // alert(event.CategoryName);
-      this.buyab = false;
-      this.volumedc = false;
-      this.buysets = true;
-      this.goForward(this.myStepper);
+    // }
+    // if (event.CategoryName == 'Buy(A/B..) get(C/D...)') {
+    //   this.buyab = false;
+    //   this.volumedc = false;
+    //   this.buysets = true;
+    //   this.goForward(this.myStepper);
 
-    }
+    // }
   }
-  // alert(event.CategoryName);
+  GetPromotionTypes(){
+    //  const data = {
+    //   promotionTypesId : this.promotionTypesId,
+    //   promotionTypesName: this.promotionTypesName
+    // }
+    this.promotionTypes.GetPromotionTypes().subscribe ((res)=> {
+      console.log('check promotiontypes', res);
+      this.toppingList3 = res.response
+    })
+  }
 
 
 
@@ -163,5 +172,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
    
     this.dialog.open( RemovePromotionItemComponent);
 }
+// GetPromotionTypes(){
+// this.promotionTypes.GetPromotionTypes().subscribe ((res)=> {
+//   console.log('check promotiontypes', res);
+// })
+// }
 }
 

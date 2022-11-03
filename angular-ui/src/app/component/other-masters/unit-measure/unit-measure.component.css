@@ -207,4 +207,12 @@ left: 37%
     margin-top: -8px;
     
     }
+    .pagination {
+      float:right !important;
+    }
+    
+    .pagination-cls {
+      font-size: 14px;
+      font-weight: 900;
+    }
     

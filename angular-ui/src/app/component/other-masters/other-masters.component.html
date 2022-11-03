@@ -9,18 +9,18 @@
     <mat-sidenav-content>
         <!--<div class="dash-content" > -->
                 <h2 class="header-text">Other Masters </h2>
-                <img  class="print-img" src="../../../assets/material/print-img.svg" alt="">
+                <div *ngIf="print"><img  class="print-img" src="../../../assets/material/print-img.svg" alt="" ></div>
          
                     <div class="UNFAPP-asmnt-rgt-area main othersmastermenutab">
                         <!-- <div class="col-lg-12"> -->
-                            <mat-tab-group class="other-label">
-                                <mat-tab label="Unit of Measure">
+                            <mat-tab-group class="other-label" (selectedTabChange)="tabClick($event)">
+                                <mat-tab label="Unit of Measure" >
                                    <app-unit-measure></app-unit-measure>
                                 </mat-tab>
-                                <mat-tab label="Tax Templates">
+                                <mat-tab label="Tax Templates" >
                                     <app-tax-template></app-tax-template>
                                 </mat-tab>
-                                <mat-tab label="Currency Conversion">
+                                <mat-tab label="Currency Conversion" >
                                   <app-currency-conversation></app-currency-conversation>
                               </mat-tab>
                             </mat-tab-group>

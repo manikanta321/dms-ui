@@ -52,9 +52,11 @@
   (firstDataRendered)="onFirstDataRendered($event)"
   (rowClicked)="openDialog()"
   (cellClicked)="onCellClicked($event)"
-
-  [pagination]="true"
+  [paginationPageSize]="paginationPageSize"
+  
   ></ag-grid-angular>
 
-     
+  <div class="pagination">
+    <span class="pagination-cls">1</span> to <span class="pagination-cls">{{rowData5.length}}</span> of <span class="pagination-cls">{{rowData5.length}}</span>
+    </div>
 </div>

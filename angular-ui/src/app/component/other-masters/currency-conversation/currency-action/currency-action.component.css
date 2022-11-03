@@ -70,3 +70,11 @@ display:none;
     display: block;
 } */
 .tick:hover .tickmark { display:block;}
+.pagination {
+  float:right !important;
+}
+
+.pagination-cls {
+  font-size: 14px;
+  font-weight: 900;
+}

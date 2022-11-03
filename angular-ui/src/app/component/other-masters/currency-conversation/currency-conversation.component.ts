@@ -108,7 +108,7 @@ public popupParent: HTMLElement = document.body;
 columnDefs: ColDef[] = [ 
 
   { headerName: "Name",
-field: 'uoMName' ,type: ['nonEditableColumn'], sort: 'desc',pinned: 'left',
+field: 'uoMName' ,type: ['nonEditableColumn'], pinned: 'left',
 },
 
 {   headerName: "Display Unit",field: 'uoMShortName',type: ['nonEditableColumn']},

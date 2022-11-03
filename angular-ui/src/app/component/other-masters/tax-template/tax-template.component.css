@@ -413,4 +413,11 @@ left: 37%
           background: #000000 !important;
           }
       
-    
+          .pagination {
+            float:right !important;
+          }
+          
+          .pagination-cls {
+            font-size: 14px;
+            font-weight: 900;
+          }

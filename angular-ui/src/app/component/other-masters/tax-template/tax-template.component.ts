@@ -61,7 +61,7 @@ export class TaxTemplateComponent implements OnInit {
   columnDefs: ColDef[] = [ 
 
     { headerName: "Name",
-  field: 'taxTemplateName' ,type: ['nonEditableColumn'], sort: 'desc',pinned: 'left',minWidth:400
+  field: 'taxTemplateName' ,type: ['nonEditableColumn'],pinned: 'left',minWidth:400
   },
   
   {   headerName: "Tax Items",field: 'taxTemplateDetails',type: ['nonEditableColumn'] ,minWidth:400},
@@ -168,7 +168,8 @@ export class TaxTemplateComponent implements OnInit {
   statusArray:any=[];
   selectedStatus: any = [];
    search:any='';
-  
+   paginationPageSize = 10;
+  paginationScrollCount:any;
   start: number = 0;
   limit: number = 15;
   end: number = this.limit + this.start;

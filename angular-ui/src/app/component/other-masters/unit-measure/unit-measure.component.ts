@@ -73,8 +73,8 @@ public popupParent: HTMLElement = document.body;
 
 columnDefs: ColDef[] = [ 
 
-  { headerName: "Name",
-field: 'uoMName' ,type: ['nonEditableColumn'], sort: 'desc',minWidth:400
+  { headerName: "Name", 
+field: 'uoMName' ,type: ['nonEditableColumn'], minWidth:400
 },
 
 {   headerName: "Display Code",field: 'uoMShortName',type: ['nonEditableColumn']},
@@ -250,6 +250,8 @@ public pivotPanelShow = 'always';
   uomName:any;
   end: number = this.limit + this.start;
   UomId:any;
+  paginationPageSize = 10;
+  paginationScrollCount:any;
   gridsOptions = {
     defaultColDef: {
       sortable: true,
@@ -258,11 +260,12 @@ public pivotPanelShow = 'always';
       suppressMenu: true,
       filter: true,
       floatingFilter: true,
+      
       filterParams: { buttons: ['clear'] }
     },
     headerHeight: 60,
     animateRows: true,
-    pagination: false,
+    // pagination: false,
     paginationAutoPageSize: false,
 }
   constructor(public dialog: MatDialog,

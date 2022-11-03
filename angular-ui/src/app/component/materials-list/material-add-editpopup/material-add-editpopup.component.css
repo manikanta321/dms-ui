@@ -155,7 +155,11 @@
   margin-top: -18px;
   margin-bottom: 2px;
 }
-
+.add-img{
+  position: relative;
+  left:24px;
+  top: 24px;
+}
 .addU {
   position: relative;
   /* font-family: 'Gilroy-Bold';  */

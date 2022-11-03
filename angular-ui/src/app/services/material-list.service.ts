@@ -33,14 +33,12 @@ else {
     return this.http.get<any>(this.classificationurl + 'MaterialApi/GetCategories');
   
   }
-  onclickcat(catId:any){
-    return this.http.get<any>(`${this.classificationurl}MaterialApi/GetSUbCAts?catid=${catId}`);
+  onclickcat(Subdata){
+    return this.http.post<any>(`${this.classificationurl}MaterialApi/GetSUbCAtsOfMultiCats`,Subdata);
   
   }
-  
-  onclicksubcat(catId:any){
-    return this.http.get<any>(`${this.classificationurl}MaterialApi/GetTypes?subCatId=${catId}`);
-  
+  onclicksubcat(Type){
+    return this.http.post<any>(`${this.classificationurl}MaterialApi/GettypesOfMultiSubCats`,Type);
   }
   getProduct(){
     return this.http.get<any>(this.classificationurl + 'MaterialApi/GetProductGroupList');

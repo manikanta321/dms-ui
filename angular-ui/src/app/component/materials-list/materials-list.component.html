@@ -32,9 +32,11 @@
                 formControlName="subCategory"
                 [disabled]="disabled"
                 [settings]="dropdownSettings2"
-                [data]="subCatty"
+                [data]="sub_category"
                 (onSelect)="onSubCategorySelect($event)"
-                (onSelectAll)="onSubCategoryAll($event)">
+                (onDeSelect)="onSubCategoryDeSelect($event)"
+                (onDeSelectAll)="onSubCategoryDSelectOrAll($event)"
+                (onSelectAll)="onSubCategorySelectOrAll($event)">
             </ng-multiselect-dropdown>
         </form>
           </div>
@@ -46,9 +48,9 @@
               formControlName="type"
               [disabled]="disabled"
               [settings]="dropdownSettings3"
-              [data]="typss"
+              [data]="typeI"
               (onSelect)="onTypeSelect($event)"
-              (onSelectAll)="onTypeAll($event)">
+              (onDeSelect)="onTypeDeSelect($event)">
           </ng-multiselect-dropdown>
         </form>
         </div>
@@ -78,7 +80,9 @@
                 [settings]="dropdownSettings1"
                 [data]="statusList"
                 (onSelect)="onStatusSelect($event)"
-                (onSelectAll)="onStatusAll($event)">
+                (onDeSelect)="onStatusDeSelect($event)"
+                (onDeSelectAll)="onItemDeSelectOrAllStatus($event)"
+                (onSelectAll)="onItemSelectOrAllStatus($event)">
             </ng-multiselect-dropdown>
         </form>
           </div>

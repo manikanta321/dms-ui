@@ -33,14 +33,14 @@
  */
 
  import {Component,OnInit} from '@angular/core';
- import {FormBuilder, FormGroup} from '@angular/forms';
+ import {FormBuilder, FormGroup, FormControl} from '@angular/forms';
  import { MatDialog } from '@angular/material/dialog';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { AddIdentifierComponent } from '../add-identifier/add-identifier.component';
 import { AddProductGroupComponent } from '../add-product-group/add-product-group.component';
 import { AddProductSubGroupComponent } from '../add-product-sub-group/add-product-sub-group.component';
 import { SelectProductComponent } from '../select-product/select-product.component';
- 
+import { AddMaterialsService } from 'src/app/services/add-materials.service';
  /**
   * @title Stepper animations
   */
@@ -51,6 +51,7 @@ import { SelectProductComponent } from '../select-product/select-product.compone
  })
  export class MaterialAddEditpopupComponent {
   disabled = false;
+  catgname:any=[];
   dropdownSettings2: IDropdownSettings = {};
   dropdownSettings3: IDropdownSettings = {};
   toppingList2:  any= []; 
@@ -64,20 +65,106 @@ import { SelectProductComponent } from '../select-product/select-product.compone
   removelist:boolean =false;
   toggle:boolean=true;
   selectedItem = null;
-    constructor(private _formBuilder: FormBuilder, public dialog: MatDialog) {}
-   firstFormGroup: FormGroup = this._formBuilder.group({firstCtrl: ['']});
-   secondFormGroup: FormGroup = this._formBuilder.group({secondCtrl: ['']});
+  ShowFilter = false;
+  subCategoryFilter=false;
+  myForm: any = FormGroup;
+  toppings: any = [];
+  toppings1: any = [];
+  toppings2: any = [];
+  materialIdentifier:any=[];
+  selectedItems: any;
+  sub_category:any;
+  typeI:any;
+  rowData5:any=[];
+  dropdownSettings: IDropdownSettings = {};
+    constructor(private fb: FormBuilder, public dialog: MatDialog,
+      private addMaterials: AddMaterialsService) {}
+   firstFormGroup: FormGroup = this.fb.group({firstCtrl: ['']});
+   secondFormGroup: FormGroup = this.fb.group({secondCtrl: ['']});
+
+   ngOnInit():void {
+    this.selectedItems = [];
+    this.dropdownSettings = {
+      singleSelection: true,
+      idField: 'catId',
+      textField: 'catName',
+      itemsShowLimit: 1,
+      allowSearchFilter: this.ShowFilter
+    };
+    this.dropdownSettings2 = {
+      singleSelection: false,
+      idField: 'subCatId',
+      textField: 'subCatName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+      allowSearchFilter: this.subCategoryFilter
+    };
+    this.myForm = this.fb.group({
+      city: [this.selectedItems]
+    });
+this.getclassification();
+this.getAllUom();
+this.getMaterialIdentifier();
+   }
+   getclassification() {
+
+    this.addMaterials.getclassification().subscribe((res) => {
+      let data = res.response;
+      this.catgname = data.allOtherCats;
+      // let dataCat = data.allOtherCats;
+      this.toppings = new FormControl(this.catgname);
+    })
+  }
+  getMaterialIdentifier(){
+    this.addMaterials.getMaterialIdentifier().subscribe((res) => {
+      let data = res.response;
+     this.materialIdentifier =data;
+    })
+  }
    onSubCategoryAll(items: any) {
     console.log('onSelectAll', items);
   }
-  onSubCategorySelect(item: any) {
-    console.log(item);
+  onItemSelect(item:any){
+    // alert(item.catId)
+    this.addMaterials.onclickcat(item.catId).subscribe((res) => {
+      let subcaty = res.response;
+      console.log("response1", res)
+      console.log("responseeee", subcaty);
+      this.sub_category = subcaty.allOtherSubCAts;
+      this.toppings1 = new FormControl(this.sub_category);
+    });
+  }
+  onSubCategorySelect(item:any){
+    this.addMaterials.onclicksubcat(item.subCatId).subscribe((res) => {
+      let typs = res.response;
+      console.log("types..res", typs);
+      this.typeI = typs;
+      console.log("Typess", this.typeI);
+      this.toppings2 = new FormControl(this.typeI);
+    });
+  }
+  onUomSelect(item:any){
+    // alert(item.uoMShortName);
+  }
+  getAllUom(){
+    const data={
+      search:"",
+    }
+    this.addMaterials.getuomDeatils(data).subscribe((res: any) => {
+      console.log('uom list',res.response)
+      
+     this.rowData5=res.response;
+    });
+  }
+  onIdentiSelect(item:any){
+// alert(item.materialCustomName)
   }
   onTypeSelect(item: any) {
-    console.log(item);
+    // alert(item.typeId)
   }
-  onTypeAll(items: any) {
-    console.log('onSelectAll', items);
+  onTypeAll(item:any){
+    console.log(item);
   }
   cname1(cname:string,i:any){
     

@@ -538,20 +538,6 @@ border-radius: 10px;
     margin-top: -1px;
   }
   
-  .city {
-    margin-left: 608px;
-    margin-top: -30px;
-  }
-  
-  .state {
-    margin-left: 228px;
-    margin-top: -29px;
-  }
-  
-  .region {
-    margin-left: 425px;
-    margin-top: -29px;
-  }
   
   .mat-card {
     background: #FFFFFF;
@@ -570,14 +556,15 @@ border-radius: 10px;
   }
   
   .catg {
-    background: #EAEEFF;
-    border: 1px solid #00187A;
     border-radius: 10px;
     margin-bottom: 10px;
     color: #00187A;
     padding: 5px;
     text-align: center;
     font-size: 12px;
+    background: #DBB802;
+    border: 1px solid #DBB802;
+    border-radius: 10px;
   }
   
   div.catg[data-selected] {
@@ -595,17 +582,28 @@ border-radius: 10px;
     text-align: center;
     font-size: 12px;
   }
-  
+
   .typeg {
-    background: #FFEDEC;
-    border: 1px solid #C32F27;
-    border-radius: 10px;
-    color: #C32F27;
+    color:#009B63;
     font-size: 14px;
     margin-bottom: 10px;
     padding: 5px;
     text-align: center;
     font-size: 12px;
+    border: 1px solid #009B63;
+    border-radius: 10px;
+  }
+  
+  .city {
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 10px;
+    padding: 5px;
+    text-align: center;
+    font-size: 12px;
+    background: #000000;
+    border: 1px solid #000000;
+    border-radius: 10px;
   }
   
   li {
@@ -651,10 +649,16 @@ border-radius: 10px;
     background: #0C5A3E;
     color: white;
   }
+
+  .regionselected {
+    background: #DBB802;
+    color: #fff;
+    border: 1px solid #DBB802;
+  }
   
   .typeselected {
-    background: #C32F27;
-    color: white;
+    background: #fff;
+    color: #000;
   }
   
   /* .row {

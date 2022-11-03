@@ -558,12 +558,12 @@ border-radius: 10px;
   .catg {
     border-radius: 10px;
     margin-bottom: 10px;
-    color: #00187A;
+    color: #009B63;
     padding: 5px;
     text-align: center;
     font-size: 12px;
-    background: #DBB802;
-    border: 1px solid #DBB802;
+    background: #fff;
+    border: 1px solid #009B63;
     border-radius: 10px;
   }
   
@@ -641,12 +641,12 @@ border-radius: 10px;
   }
   
   .selected {
-    background-color: #00187A;
+    background-color: #DBB802;
     color: white;
   }
   
   .subselected {
-    background: #0C5A3E;
+    background: #DBB802;
     color: white;
   }
 

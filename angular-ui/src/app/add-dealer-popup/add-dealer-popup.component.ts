@@ -18,6 +18,7 @@ import { ClassificationserviseService } from 'src/app/services/classificationser
 export class AddDealerPopupComponent implements OnInit {
 
   addAddressDetailsForm!: FormGroup;
+  gepGraphiesFormGroup!: FormGroup;
 
   LoginId:any;
   numberValue:any;
@@ -40,6 +41,26 @@ export class AddDealerPopupComponent implements OnInit {
   addCountryButton: boolean = false;
   removelist: boolean = false;
   stateName: string[] = ['State 1', 'State 2',];
+
+
+  CountryList:any=[];
+  stateList: any=[];
+  distList:any=[];
+  cityList:any=[];
+
+  catagoryroouting='';
+  subcatRoouting='';
+  selectedtypeItem='';
+  subcatcount='';
+  typecount='';
+
+  stateselectedItem:any;
+  distselectedItem:any;
+  citySelectedItem:any;
+
+
+
+
   //event handler for the select element's change event
   selectChangeHandler (event: any) {
     //update the ui
@@ -47,10 +68,7 @@ export class AddDealerPopupComponent implements OnInit {
      
   }
 /*-------*/
-  countryname: string[] = ['Malaysia (71/126)', 'India (178/178)','Philipines (0/135)'];
-  statename: string[] = ['Johor(0/42)', 'Kedah(36/36','Perak(14/26)','Penang(21/22)'];
-  regionname: string[] = ['North(4/4)', 'South(8/8)', 'East(6/6)','West(3/4)'];
-  cityname:string[] =['George town','Balik Pulau','Batu Refringi','Teluk Bahang'];
+
   selectedItem = null;
   addButton:boolean =false;
   dropdownSettings3: IDropdownSettings = {};
@@ -90,6 +108,10 @@ export class AddDealerPopupComponent implements OnInit {
     this.numberValue = Number(this.LoginId);
      this.addAddressForm();
      this.statusForm();
+
+     //geographies List
+     this.getCountryList();
+
   }
 
   statusForm(){
@@ -230,11 +252,8 @@ export class AddDealerPopupComponent implements OnInit {
       "CreatedById":this.LoginId
       };
 
-     
-
       this.calssification.addDealerData(data).subscribe((res)=>{
-       
-
+      
       })  
 
     }
@@ -261,5 +280,92 @@ export class AddDealerPopupComponent implements OnInit {
       quantities: this._formBuilder.array([]) ,  
     });  
   }
+
+  //get Country List  - geographies
+  getCountryList(){
+    
+    this.calssification.getCountryList().subscribe((res)=>{
+          let data=res.response;
+          this.CountryList=data.allOtherCountries;
+          this.getStateList(data.firstCountr.countryId);
+          this.selectedItem=data.firstCountr.countryId;
+           
+        })  
+  }
+
+  //get State List
+  getStateList(id:any){
+    this.stateList.length = 0;
+    this.distList.length = 0;
+    this.cityList.length = 0;
+
+    localStorage.setItem('cityId','');
+    localStorage.setItem("stateId",'');
+    localStorage.setItem('distId','');
+
+    localStorage.setItem('countryId',id);
+    this.selectedItem= id;
+    this.calssification.getAllListByCountry(id).subscribe((res)=>{
+          let data=res.response;
+          this.stateList=data.allOtherGeography;
+          this.stateselectedItem = data.firstGeography.geographyId;
+           this.getDistrictList(data.firstGeography.geographyId)
+    
+
+        })
+  }
+
+  //get Dist List
+  getDistrictList(id:any){
+    this.cityList.length = 0;
+    localStorage.setItem('cityId','');
+    localStorage.setItem('distId','');
+    this.stateselectedItem = id;
+    localStorage.setItem("stateId",id);
+    this.calssification.getAllListByCountry(id).subscribe((res)=>{
+          let data=res.response;
+          this.distList=data.allOtherGeography;
+          this.distselectedItem = data.firstGeography.geographyId;
+          this.getCityList(data.firstGeography.geographyId);
+        })
+  }
+
+  //get Dist List
+  getCityList(id:any){
+   
+    this.distselectedItem = id;
+    localStorage.setItem('distId',id);
+    this.calssification.getAllListByCountry(id).subscribe((res)=>{
+          let data=res.response;
+          this.cityList=data.allOtherGeography;
+          this.citySelectedItem = data.firstGeography.geographyId;
+          this.getSelectedCity(data.firstGeography.geographyId);
+        })
+  }
+
+  getSelectedCity(id:any){
+    localStorage.setItem('cityId',id);
+    this.citySelectedItem = id;
+  }
+
+  saveGeographiesList(){
+
+    let data = {
+      "country":localStorage.getItem('countryId'),
+      "state":localStorage.getItem('stateId'),
+      "dist":localStorage.getItem('distId'),
+      "city":localStorage.getItem('cityId'),
+      "CreatedById":this.LoginId
+      };
+
+      console.log(data);
+
+    // this.calssification.addCityName(data).subscribe((res)=>{
+    //       this.getCityList(localStorage.getItem("distId"));
+    // })
+
+  }
+
+
 
 }

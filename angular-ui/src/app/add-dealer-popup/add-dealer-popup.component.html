@@ -223,7 +223,7 @@
                     <!-- geography -->
 
                     <mat-step [stepControl]="secondFormGroup">
-                        <form [formGroup]="secondFormGroup">
+                        <form [formGroup]="gepGraphiesFormGroup">
                             <ng-template matStepLabel> Geographies</ng-template>
                             <div class="heading">
                                 <h6 class="Geo-headerlabel"><b>Geographies</b></h6>
@@ -237,20 +237,14 @@
                                     </div>
                                     <mat-card class="mat-card-content ">
                                         <mat-card-content class="card-cls">
-                                            <div class=" d-flex " *ngFor="let catg of countryname">
-                                                <p class="col-10 catg" (click)="onClick(catg)">{{catg}}</p>
-                                            </div>
-                                            <div class="buttn d-flex" *ngIf=addButton>
-                                                <div class="col-10">
-                                                    <button class="btn btn-basic addcat">Add category name</button>
-                                                    <button class="btn btn-basic addcode">Add code</button>
-                                                </div>
-                                            
+                                            <div class=" d-flex " *ngFor="let catg of CountryList">
+                                                <p class="col-10 catg" (click)="getStateList(catg.countryId)" [ngClass]="{ 'selected': catg.countryId == selectedItem }">{{catg.countryName}}</p>
                                             </div>
                                         </mat-card-content>
 
                                     </mat-card>
                                 </div>
+
                                 <div class="col-3 mat-card-width">
                                     <div class="row">
                                         <p class="col-10 sub-label">State</p>
@@ -259,12 +253,13 @@
                                     <mat-card class="mat-card-content1">
                                         <mat-card-content class="card-cls">
                                             <!-- <div class="span-subhead"><span>category 3</span><mat-icon>arrow_drop_down</mat-icon></div> -->
-                                            <div class=" d-flex" *ngFor="let subc of statename">
-                                                <p class="col-10 subc" (click)="onClick(subc)">{{subc}}</p>
+                                            <div class=" d-flex" *ngFor="let subc of stateList">
+                                                <p class="col-10 subc" (click)="getDistrictList(subc.geographyId)" [ngClass]="{ 'subselected': subc.geographyId == stateselectedItem }">{{subc.geographyName}}</p>
                                             </div>
                                         </mat-card-content>
                                     </mat-card>
                                 </div>
+
                                 <div class="col-3">
                                     <div class="row">
                                         <p class="col-10 sub-label">Region</p>
@@ -273,13 +268,14 @@
                                     <mat-card class="mat-card-content2">
 
                                         <mat-card-content class="card-cls">
-                                            <div class=" d-flex" *ngFor="let type of regionname">
-                                                <p class="col-10 typeg" (click)="onClick(type)" [ngClass]="{ 'regionselected': type == selectedItem }">{{type}}</p>
+                                            <div class=" d-flex" *ngFor="let dist of distList">
+                                                <p class="col-10 typeg" (click)="getCityList(dist.geographyId)" [ngClass]="{ 'regionselected': dist.geographyId == distselectedItem }">{{dist.geographyName}}</p>
                                             </div>
                                         </mat-card-content>
                                     </mat-card>
 
                                 </div>
+                                
                                 <div class="col-3">
                                     <div class="row">
                                         <p class="col-10 sub-label">City</p>
@@ -287,9 +283,9 @@
                                     </div>
                                     <mat-card class="mat-card-content3 ">
                                         <mat-card-content class="card-cls">
-                                            <div class=" d-flex" *ngFor="let type of cityname">
-                                                <p class="col-10 city" (click)="onClick(type)"
-                                                    [ngClass]="{ 'typeselected': type == selectedItem }">{{type}}</p>
+                                            <div class=" d-flex" *ngFor="let type of cityList">
+                                                <p class="col-10 city" (click)="getSelectedCity(type.geographyId)"
+                                                    [ngClass]="{ 'typeselected': type.geographyId == citySelectedItem }">{{type.geographyName}}</p>
                                             </div>
                                         </mat-card-content>
                                     </mat-card>
@@ -303,7 +299,7 @@
                                 <div class="col-4">
                                     <div class="row">
                                         <div class="col-5">
-                                            <button class="btn btn-primary btn-block submitbtn save-btn"  >Save</button>
+                                            <button class="btn btn-primary btn-block submitbtn save-btn" (click)="saveGeographiesList()" >Save</button>
                                         </div>
                                         <div class="col-5">
                                             <button

@@ -237,7 +237,7 @@
                                     </div>
                                     <mat-card class="mat-card-content ">
                                         <mat-card-content class="card-cls">
-                                            <div class=" d-flex " *ngFor="let catg of CountryList">
+                                            <div class=" d-flex " *ngFor="let catg of CountryList;let i=index">
                                                 <p class="col-10 catg" (click)="getStateList(catg.countryId)" [ngClass]="{ 'selected': catg.countryId == selectedItem }">{{catg.countryName}}</p>
                                             </div>
                                         </mat-card-content>

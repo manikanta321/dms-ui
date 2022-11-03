@@ -19,7 +19,7 @@
             </div> 
             <mat-card class="mat-card-content scroll">
                 <mat-card-content >
-                    <div class=" d-flex " *ngFor="let catg of CountryList">
+                    <div class="d-flex " *ngFor="let catg of CountryList">
                         <p class="col-10 catg"  (click)="getStateList(catg.countryId)"  [ngClass]="{ 'selected': catg.countryId == selectedItem }">{{catg.countryName}}</p>
                         <mat-icon class="col-2 delete-icon" (click)="removeItem(catg.countryId,1)">remove_circle</mat-icon>
                     </div>
@@ -30,7 +30,7 @@
                                 <div class="col-12">
                                     <div class="row">
                                         <div class="col-6">
-                                         <input type="text" class="input-country-cls" formControlName="countryFormTag" placeholder="Add category name">
+                                         <input type="text" class="input-country-cls" formControlName="countryFormTag" placeholder="Add country name">
                                         </div>
                                        <div class="col-3">
                                         <input type="text" class="input-countrycode-cls" formControlName="countryCodeTag" placeholder="Code">
@@ -72,7 +72,7 @@
                                 <div class="col-12">
                                     <div class="row">
                                         <div class="col-6">
-                                         <input type="text" class="input-country-cls" formControlName="stateFormTag" placeholder="Add category name">
+                                         <input type="text" class="input-country-cls" formControlName="stateFormTag" placeholder="Add state name">
                                        </div>
                                        <div class="col-3">
                                         <input type="text" class="input-countrycode-cls" formControlName="statecodeFormTag" placeholder="Code">
@@ -114,7 +114,7 @@
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-6">
-                                 <input type="text" class="input-district-cls" formControlName="distirictFormTag" placeholder="Add category name">
+                                 <input type="text" class="input-district-cls" formControlName="distirictFormTag" placeholder="Add district name">
                                </div>
                                <div class="col-3">
                                 <input type="text" class="input-countrycode-cls" formControlName="districtcode" placeholder="Code">
@@ -240,7 +240,7 @@
                             <div class="col-12">
                                 <div class="row">
                                     <div class="col-6">
-                                     <input type="text" class="input-region-cls" formControlName="areaFormTag" placeholder="Add category name">
+                                     <input type="text" class="input-region-cls" formControlName="areaFormTag" placeholder="Add area">
                                    </div>
                                    <div class="col-3">
                                     <input type="text" class="input-countrycode-cls" formControlName="areaCode" placeholder="Code">
@@ -282,11 +282,11 @@
                             <div class="col-12">
                                 <div class="row">
                                     <div class="col-6">
-                                     <input type="text" class="input-region-cls" formControlName="subAreaFormTag" placeholder="Add category name">
-                                   </div>
-                                   <div class="col-3">
-                                    <input type="text" class="input-countrycode-cls" formControlName="SubAreaCode" placeholder="Code">
-                                  </div>
+                                     <input type="text" class="input-region-cls" formControlName="subAreaFormTag" placeholder="Add subarea">
+                                    </div>
+                                    <div class="col-3">
+                                        <input type="text" class="input-countrycode-cls" formControlName="SubAreaCode" placeholder="Code">
+                                    </div>
                                     <div class="col-3">
                                         <button type="submit" class="addcode" [disabled]="!subAreaForm.valid" (click)="addSubAreaName()">Add</button>
                                     </div> 

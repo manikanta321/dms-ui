@@ -1125,3 +1125,13 @@ border-radius: 10px;
   .addMore-icon {
     cursor: pointer;
   }
+
+  .status-class {
+    box-sizing: border-box;
+    width: 280px;
+    height: 43px;
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+    border-radius: 10px;
+  }

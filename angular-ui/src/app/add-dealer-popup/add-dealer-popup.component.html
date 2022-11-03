@@ -13,7 +13,7 @@
                     alt="right-arr-btn">
                 <mat-stepper labelPosition="bottom" #stepper>
                     <mat-step [stepControl]="firstFormGroup">
-                        <form [formGroup]="firstFormGroup">
+                        <form [formGroup]="addAddressDetailsForm">
                             <ng-template matStepLabel>Basic Information</ng-template>
                             <div class="headefont">
                                 <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'">
@@ -27,34 +27,34 @@
                                     <div class="col-4">
                                         <label>Name<span>*</span></label>
                                         <br>
-                                        <input type="text" class="addDelercols">
+                                        <input type="text" formControlName="dealerName" class="addDelercols">
                                     </div>
                                     <div class="col-4">
                                         <label>Email-Id<span>*</span></label>
                                         <br>
-                                        <input type="text" class="addDelercols">
+                                        <input type="text" formControlName="email" class="addDelercols">
                                     </div>
                                     <div class="col-4">
                                         <label>Code.<span>*</span></label>
                                         <br>
-                                        <input type="text" class="addDelercols">
+                                        <input type="text" formControlName="dealerCode" class="addDelercols">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-4">
                                         <label>Website<span>*</span></label>
                                         <br>
-                                        <input type="text" class="addDelercols">
+                                        <input type="text" formControlName="website"  class="addDelercols">
                                     </div>
                                     <div class="col-4">
                                         <label>Phone no<span>*</span></label>
                                         <br>
-                                        <input type="text" class="addDelercols">
+                                        <input type="text" formControlName="phone"  class="addDelercols">
                                     </div>
                                     <div class="col-4">
                                         <label>Company id<span>*</span></label>
                                         <br>
-                                        <input type="text" class="addDelercols">
+                                        <input type="text" formControlName="companyId"  class="addDelercols">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -64,7 +64,7 @@
                                     <div class="col-4">
                                         <label>Other identifer<span>*</span></label>
                                         <br>
-                                        <input type="text" class="addDelercols">
+                                        <input type="text" formControlName="identifier"  class="addDelercols">
                                     </div>
                                     <div class="col-4">
                                         <!-- <input type="text"> -->
@@ -79,39 +79,46 @@
                                 </h6>
                             </div>
 
+                            
                             <div class="col-12">
                                 <div class="row">
                                     <div class="col-4">
                                         <label>Username<span>*</span></label>
                                         <br>
-                                        <input type="text" class="addDelercols">
+                                        <input type="text" formControlName="userName" class="addDelercols">
                                     </div>
                                     <div class="col-4">
                                         <label>Email-Id<span>*</span></label>
                                         <br>
-                                        <input type="text" class="addDelercols">
+                                        <input type="text" formControlName="userEmail" class="addDelercols">
                                     </div>
                                     <div class="col-4">
                                         <label>phone no<span>*</span></label>
                                         <br>
-                                        <input type="text" class="addDelercols">
+                                        <input type="text" formControlName="usermobile" class="addDelercols">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-4">
                                         <label>First Name<span>*</span></label>
                                         <br>
-                                        <input type="text" class="addDelercols">
+                                        <input type="text" formControlName="firstName" class="addDelercols">
                                     </div>
                                     <div class="col-4">
                                         <label>Last Name<span>*</span></label>
                                         <br>
-                                        <input type="text" class="addDelercols">
+                                        <input type="text" formControlName="lastName" class="addDelercols">
                                     </div>
                                     <div class="col-4">
                                         <label>Status<span>*</span></label>
                                         <br>
-                                        <input type="text" class="addDelercols">
+                                        <select class="status-class" formControlName="status" name="status" placeholder="Select Status">
+                                            <option value=""  selected hidden>Select your Role</option>                                       
+                                            <option *ngFor="let option of statusList" [value]="option.statusId">
+                                                {{option.statusName}}
+                                            </option>
+                                        </select>
+    
                                     </div>
                                 </div>
                             </div>
@@ -131,9 +138,9 @@
                                     </div>
                                 </div>
 
-                                <form [formGroup]="addAddressDetailsForm">
+                                
 
-                                    <div formArrayName="quantities">
+                                <div formArrayName="quantities">
                             
                                 <div class="row" *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
                                 <div class="col-1">
@@ -192,8 +199,6 @@
                             </div>
 
                             </div>
-                        </form>
-
                             </div>
 
 
@@ -201,16 +206,12 @@
                                 <div class="col-5">
                                 </div>
                                 <div class="col-2">
-                                    <button class="btn btn-primary btn-block submitbtn save-btn">Submit</button>
+                                    <button (click)="saveDealerData()" [disabled]="!addAddressDetailsForm.valid" class="btn btn-primary btn-block submitbtn save-btn">Submit</button>
                                 </div>
                                 <div class="col-5">
                                 </div>
                             </div>
-
-
-
                         </form>
-
                     </mat-step>
 
                     <!-- geography -->
@@ -309,11 +310,11 @@
                                 <div class="col-4">
                                     <div class="row">
                                         <div class="col-5">
-                                            <button class="btn btn-primary btn-block submitbtn save-btn">Save</button>
+                                            <button class="btn btn-primary btn-block submitbtn save-btn"  >Save</button>
                                         </div>
                                         <div class="col-5">
                                             <button
-                                                class="btn btn-primary btn-block submitbtn cancel-btn">Cancel</button>
+                                                class="btn btn-primary btn-block submitbtn cancel-btn" [mat-dialog-close]="true">Cancel</button>
                                         </div>
                                     </div>
                                 </div>

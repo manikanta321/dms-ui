@@ -139,6 +139,11 @@ AddSubArea(data:any){
   return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddSubArea', data);
 }
 
+//add dealer data
+addDealerData(data:any){
+  return this.http.post<any>(this.classificationurl + 'DealerApi/AddDealer', data);
+}
+
 
 
 

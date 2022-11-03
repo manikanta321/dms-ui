@@ -1,10 +1,13 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators  } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 //import { AddItemsPromotionComponent } from '/add-items-promotion/add-items-promotion.component';
 import { FormArray } from '@angular/forms' 
+import { UserService } from 'src/app/services/user.service';
+import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
+//import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -14,7 +17,11 @@ import { FormArray } from '@angular/forms'
 })
 export class AddDealerPopupComponent implements OnInit {
 
-  addAddressDetailsForm!: FormGroup;  
+  addAddressDetailsForm!: FormGroup;
+
+  LoginId:any;
+  numberValue:any;
+  statusList:any;
 
   selectedTeam = '';
   selectedDay: string = '';
@@ -52,6 +59,7 @@ export class AddDealerPopupComponent implements OnInit {
   toppingList3:  any= [];
   ShowFilter = false;
   totalStepsCount: number | undefined;
+
   @ViewChild('stepper') private myStepper: MatStepper | any;
   
   // CategoryName:any;
@@ -60,10 +68,17 @@ export class AddDealerPopupComponent implements OnInit {
   CustomerSelect : string[] = ['Valiant Distributors', 'Global Movers', 'Somebody Sales']
  
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
+    private user: UserService,
+    private calssification:ClassificationserviseService,
+    //private toastrService: ToastrService,
     private dialogRef: MatDialogRef<any>) {
+      
 
       this.formReader();
+     
      }
+
+     
   firstFormGroup: FormGroup = this._formBuilder.group({firstCtrl: ['']});
   secondFormGroup: FormGroup = this._formBuilder.group({secondCtrl: ['']});
 
@@ -71,37 +86,46 @@ export class AddDealerPopupComponent implements OnInit {
 /* on Select of Dropdown screen change */
 
   ngOnInit(): void {
-    this.toppingList3 = [
-                          { CategoryId: 1, CategoryName: 'Buy(A+B..) get(X+Y..)' },
-                          { CategoryId: 2, CategoryName: 'Buy(A or B +C or D...) get(X+Y or Y+Z..)' },
-                          { CategoryId: 3, CategoryName: 'Volume Discount' },
-                          { CategoryId: 4, CategoryName: 'Price Discount' },
-                         ];
-         
+    this.LoginId=localStorage.getItem("logInId");
+    this.numberValue = Number(this.LoginId);
      this.addAddressForm();
+     this.statusForm();
   }
-  
+
+  statusForm(){
+    this.user.getstatusDeatils().subscribe((res: any) => {
+        this.statusList = res.response;
+    })
+  }
+
   onTypeSelect(item: any) {
     console.log(item);
   }
+
   onTypeAll(items: any) {
     console.log('onSelectAll', items);
   }
+
   onClick(item) {
     this.selectedItem = item;
   }
+
   displaydata(){
     this.showdata=true;
   }
+
   hidedata(){
     this.showdata=false;
   }
+
   ngAfterViewInit() {
     this.totalStepsCount = this.myStepper._steps.length;
   }
+
   goForward(stepper: MatStepper) {
     stepper.next();
   }
+
   getCategory(event: any){
     if (event.CategoryName=='Buy(A+B..) get(X+Y..)'){
       this.goForward(this.myStepper);
@@ -115,17 +139,16 @@ export class AddDealerPopupComponent implements OnInit {
     }
     // alert(event.CategoryName);
   
-
-  
-   addCategory(){
+  addCategory(){
     this.addButton =true;
   }
-  toogleShowFilter() {
+
+  toogleShowFilter(){
     this.ShowFilter = !this.ShowFilter;
     this.dropdownSettings3 = Object.assign({}, this.dropdownSettings3, { allowSearchFilter: this.ShowFilter });
   }
 
-  addCountry() {
+  addCountry(){
     this.addCountryButton = true;
   }
 
@@ -134,7 +157,7 @@ export class AddDealerPopupComponent implements OnInit {
     this.packingCharges.splice(index, 1);
   }
 
-  addFields() {
+  addFields(){
     this.packingCharges.push({
       sValue: '',
       eValue: '',
@@ -142,35 +165,28 @@ export class AddDealerPopupComponent implements OnInit {
     });
   }
 
-
-  quantities() : FormArray {  
-    return this.addAddressDetailsForm.get("quantities") as FormArray  
+  quantities(): FormArray {  
+    return this.addAddressDetailsForm.controls["quantities"] as FormArray  
   }  
      
-  newQuantity(): FormGroup {  
+  initAddress(): FormGroup {  
     return this._formBuilder.group({  
-      addType: '',  
-      consigName: '',
-      price: '',
-      tax: '',
-      addressLine: '',
-      country: '',
-      state: '',
-      cityAndZip: '',
-      phoneNo: '',  
+      addType:['',[Validators.required]], 
+      consigName:['',[Validators.required]],
+      tax: ['',[Validators.required]],
+      addressLine: ['',[Validators.required]],
+      country: ['',[Validators.required]],
+      state: ['',[Validators.required]],
+      cityAndZip: ['',[Validators.required]],
+      phoneNo: ['',[Validators.required]],  
     })  
   }  
      
   addAddressForm() {  
-    this.quantities().push(this.newQuantity());  
+    this.quantities().push(this.initAddress());  
   }  
 
-  formReader(){
-    this.addAddressDetailsForm = this._formBuilder.group({  
-      name: '',  
-      quantities: this._formBuilder.array([]) ,  
-    });  
-  }
+ 
 
   removeQuantity(i:number) {
     
@@ -179,5 +195,71 @@ export class AddDealerPopupComponent implements OnInit {
     }
     
   }  
+
+
+  saveDealerData(){
+   
+    for(let i=0;i<this.quantities().length;i++){
+
+      console.log(this.quantities().value[i].consigName)
+
+    let data = {
+      "CustomerName":this.addAddressDetailsForm.value['dealerName'],
+      "Email":this.addAddressDetailsForm.value['email'],
+      "Code":this.addAddressDetailsForm.value['dealerCode'],
+      "Website":this.addAddressDetailsForm.value['website'],
+      "Phoneno":this.addAddressDetailsForm.value['phone'],
+      "CompanyId":parseInt(this.addAddressDetailsForm.value['companyId']),
+      "OtherIdentifier":this.addAddressDetailsForm.value['identifier'],
+      "UserName":this.addAddressDetailsForm.value['userName'],
+      "EmailId":this.addAddressDetailsForm.value['userEmail'],
+      "Mobile":this.addAddressDetailsForm.value['usermobile'],
+      "FirstName":this.addAddressDetailsForm.value['firstName'],
+      "LastName":this.addAddressDetailsForm.value['lastName'],
+      "StatusId":parseInt(this.addAddressDetailsForm.value['status']),
+      "AddressTypeId":parseInt(this.quantities().value[i].addType),
+      "ConsigneeName":this.quantities().value[i].consigName,
+      "Taxid":parseInt(this.quantities().value[i].tax),
+      "AddressLine1":this.quantities().value[i].addressLine,
+       "AddressLine2":this.quantities().value[i].addressLine,
+      "CountryName":this.quantities().value[i].country,
+      "StateName":this.quantities().value[i].state,
+      "CityName":this.quantities().value[i].cityAndZip,
+      "ZipCode": this.quantities().value[i].cityAndZip,
+      "Telephone":this.quantities().value[i].phoneNo,
+      "CreatedById":this.LoginId
+      };
+
+     
+
+      this.calssification.addDealerData(data).subscribe((res)=>{
+       
+
+      })  
+
+    }
+     
+     
+  }
+
+ 
+  formReader(){
+    this.addAddressDetailsForm = this._formBuilder.group({  
+      dealerName: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      dealerCode:['', [Validators.required]],
+      website: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
+      companyId: ['', [Validators.required]],
+      identifier: ['', [Validators.required]],
+      userName: ['', [Validators.required]],
+      userEmail:['', [Validators.required]],
+      usermobile: ['', [Validators.required]],
+      firstName:['', [Validators.required]],
+      lastName:['', [Validators.required]],
+      status: ['', [Validators.required]],
+      quantities: this._formBuilder.array([]) ,  
+    });  
+  }
 
 }

@@ -577,6 +577,7 @@ border-radius: 10px;
     color: #00187A;
     padding: 5px;
     text-align: center;
+    font-size: 12px;
   }
   
   div.catg[data-selected] {
@@ -592,6 +593,7 @@ border-radius: 10px;
     margin-bottom: 10px;
     padding: 5px;
     text-align: center;
+    font-size: 12px;
   }
   
   .typeg {
@@ -603,6 +605,7 @@ border-radius: 10px;
     margin-bottom: 10px;
     padding: 5px;
     text-align: center;
+    font-size: 12px;
   }
   
   li {
@@ -1134,4 +1137,29 @@ border-radius: 10px;
     border: 0.5px solid #000000;
     box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
     border-radius: 10px;
+  }
+
+  .Geo-headerlabel {
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+  }
+
+  .sub-label {
+    font-family: 'Gilroy-Medium';
+    font-size: 12.5px;
+    line-height: 15px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+  }
+
+  .card-cls {
+    height: 165px;
+    overflow-y: scroll;
   }

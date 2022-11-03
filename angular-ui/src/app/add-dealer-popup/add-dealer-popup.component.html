@@ -146,7 +146,13 @@
                                 <div class="col-1">
                                     <label *ngIf="i == 0">Type<span>*</span></label>
                                     <br>
-                                    <input type="text" placeholder="Type" formControlName="addType" class="addDelercols addtype">
+                                    <select class="addDelercols addtype" formControlName="addType" name="status" placeholder="Type">
+                                        <option value=""  selected hidden>Type</option>                                       
+                                        <option value="1">Billing</option>
+                                        <option valiue="2">Shipping</option>
+                                    </select>
+                                
+                                
                                 </div>
 
                                 <div class="col-2">
@@ -220,26 +226,17 @@
                         <form [formGroup]="secondFormGroup">
                             <ng-template matStepLabel> Geographies</ng-template>
                             <div class="heading">
-                                <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'">
-                                    <b>Geographies</b>
-                                </h6>
+                                <h6 class="Geo-headerlabel"><b>Geographies</b></h6>
                             </div>
-                            <input matInput placeholder="Search for the geography here" #input
-                                class="form-control container"
-                                style="border:solid lightgrey 1px;width: 376px;
-                       height: 35px;background-color: white;margin-top: 1px; margin-left: -1px;border-radius: 10px;font-family: 'Gilroy';">
-                            <img src="assets/img/search.png"
-                                style="width: 17px;left: 342px;top: -28px;position: relative;" alt="search">
-                            <br>
                             <div class="material-card row">
                                 <div class="col-3">
 
                                     <div class="row">
-                                        <p class="col-10" style="font-family: 'Gilroy'">Country</p>
+                                        <p class="col-10 sub-label">Country</p>
                                         <p class="col-2"></p>
                                     </div>
                                     <mat-card class="mat-card-content ">
-                                        <mat-card-content style="height:188px; overflow-y: scroll;">
+                                        <mat-card-content class="card-cls">
                                             <div class=" d-flex " *ngFor="let catg of countryname">
                                                 <p class="col-10 catg" (click)="onClick(catg)">{{catg}}</p>
                                             </div>
@@ -248,7 +245,7 @@
                                                     <button class="btn btn-basic addcat">Add category name</button>
                                                     <button class="btn btn-basic addcode">Add code</button>
                                                 </div>
-                                                <!-- <div class="col-2"><mat-icon>remove_circle</mat-icon></div> -->
+                                            
                                             </div>
                                         </mat-card-content>
 
@@ -256,11 +253,11 @@
                                 </div>
                                 <div class="col-3 mat-card-width">
                                     <div class="row">
-                                        <p class="col-10" style="font-family: 'Gilroy'">State</p>
+                                        <p class="col-10 sub-label">State</p>
                                         <p class="col-2"></p>
                                     </div>
                                     <mat-card class="mat-card-content1">
-                                        <mat-card-content style="height:188px; overflow-y: scroll;">
+                                        <mat-card-content class="card-cls">
                                             <!-- <div class="span-subhead"><span>category 3</span><mat-icon>arrow_drop_down</mat-icon></div> -->
                                             <div class=" d-flex" *ngFor="let subc of statename">
                                                 <p class="col-10 subc" (click)="onClick(subc)">{{subc}}</p>
@@ -270,14 +267,12 @@
                                 </div>
                                 <div class="col-3">
                                     <div class="row">
-                                        <p class="col-10" style="font-family: 'Gilroy'">Region</p>
+                                        <p class="col-10 sub-label">Region</p>
                                         <p class="col-2"> </p>
                                     </div>
                                     <mat-card class="mat-card-content2">
 
-                                        <mat-card-content style="height:188px; overflow-y: scroll;">
-                                            <!-- <div class="span-subhead"><span style="padding-bottom: 10px;">category 3</span><mat-icon>keyboard_arrow_right</mat-icon><span>Sub-category</span><mat-icon>arrow_drop_down</mat-icon></div> -->
-                                            <!-- <li class="type" *ngFor="let type of typename" >{{type}}<mat-icon>add_circle</mat-icon></li> -->
+                                        <mat-card-content class="card-cls">
                                             <div class=" d-flex" *ngFor="let type of regionname">
                                                 <p class="col-10 typeg" (click)="onClick(type)">{{type}}</p>
                                             </div>
@@ -287,13 +282,11 @@
                                 </div>
                                 <div class="col-3">
                                     <div class="row">
-                                        <p class="col-10" style="font-family: 'Gilroy';">City</p>
+                                        <p class="col-10 sub-label">City</p>
                                         <p class="col-2"> </p>
                                     </div>
                                     <mat-card class="mat-card-content3 ">
-                                        <mat-card-content style="height:188px; overflow-y: scroll;">
-                                            <!-- <div class="span-subhead"><span style="padding-bottom: 10px;">category 3</span><mat-icon>keyboard_arrow_right</mat-icon><span>Sub-category</span><mat-icon>arrow_drop_down</mat-icon></div> -->
-                                            <!-- <li class="type" *ngFor="let type of typename" >{{type}}<mat-icon>add_circle</mat-icon></li> -->
+                                        <mat-card-content class="card-cls">
                                             <div class=" d-flex" *ngFor="let type of cityname">
                                                 <p class="col-10 typeg" (click)="onClick(type)"
                                                     [ngClass]="{ 'typeselected': type == selectedItem }">{{type}}</p>

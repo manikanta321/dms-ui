@@ -104,6 +104,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       this.goForward(this.myStepper);
       this.buyab = true;
       this.volumedc = false;
+      this.buysets = false;
     }
     if (event.CategoryName == 'Price Discount') {
       this.goForward(this.myStepper);
@@ -159,7 +160,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     this.dialogRef.close();
   }
   addRemoveitem(){
-    
+   
     this.dialog.open( RemovePromotionItemComponent);
 }
 }

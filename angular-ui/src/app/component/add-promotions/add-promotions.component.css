@@ -36,7 +36,7 @@
   font-family: 'Gilroy';
   margin-left: 2px;
   position: relative;
-  bottom:272px;
+  bottom: 272px;
   left: 474px;
 
 }
@@ -168,14 +168,7 @@
   float: right;
 }
 
-.qty {
-  width: 100px;
-  height: 43px;
-  /* background: #FFFFFF; */
-  /* border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-    border-radius: 10px; */
-}
+
 
 .productSize {
   width: 949px;
@@ -268,10 +261,7 @@
 .mat-stepper-horizontal {
   display: inline;
   width: 500px;
-  height:100%
 }
-
-
 
 ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
   width: 767px;
@@ -330,7 +320,7 @@
 .addU:after {
   content: "";
   display: block;
-  width: 375px;
+  width: 280px;
   height: 2px;
   background: #686E74;
   right: 0;
@@ -341,7 +331,7 @@
 .addU:before {
   content: "";
   display: block;
-  width: 375px;
+  width: 280px;
   height: 2px;
   background: #686E74;
   left: 0;
@@ -387,14 +377,9 @@ mat-form-field {
 
 .popup-size {
   background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-  /* width: 1043px; */
-  /* height: 583px; */
-  overflow-x: hidden;
-  height: 532px;
-}
-
-.popup-size .head-t {
-  height: 100%;
+  width: 1043px;
+  height: 583px;
+  max-width: 95vw !important;
 }
 
 .categorydrp {
@@ -841,15 +826,22 @@ li {
   left: 414px;
   bottom: 88px;
 }
-.prod{
+
+.prod {
   position: relative;
-    bottom: 17px;
+  bottom: 17px;
+}
+
+.prodb {
+  position: relative;
+  top: 132px;
+  left: 13px;
 }
 
 .productlevel {
-  position: relative;
   font-family: 'Gilroy';
-  bottom: 95px;
+  position: relative;
+  width: 401px;
 }
 
 .items {
@@ -879,18 +871,13 @@ li {
   left: 708px;
 }
 
-.moq {
-  position: relative;
-  font-family: 'Gilroy';
-  bottom: 337px;
-  left: 293px;
-}
+
 
 .productleveltwo {
   position: relative;
   font-family: 'Gilroy';
-  bottom: 166px;
-  left: 406px;
+  width: 405px;
+  /* height: 43px;  */
 }
 
 ::ng-deep.identify .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
@@ -898,9 +885,9 @@ li {
   background-image: url('../../../assets/img/maximize.png') !important;
   background-size: 13px;
   background-repeat: no-repeat;
-  height: 300px;
+  height: 122px;
   margin-top: 12px;
-  margin-right: -10px;
+  margin-right: -7px;
 }
 
 .productdrpdown {
@@ -920,10 +907,13 @@ li {
   bottom: 554px;
   position: relative;
 }
-.buys{
-  position: relative;
 
+.buys {
+  position: relative;
+  top: 25px;
+  left: 18px;
 }
+
 .getg {
   position: relative;
   bottom: 627px;
@@ -1039,27 +1029,30 @@ li {
   overflow-x: auto;
 }
 
-.setone{
-  color: #000000 ;
-  font-size:12px;
-   font-weight: bold;
-   font-family: 'Gilroy';
-   position: relative;
-    bottom: 44px;
+.setone {
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Gilroy';
+  position: relative;
+  bottom: 44px;
 }
-.settwo{
-  color: #000000 ;
-  font-size:12px;
-   font-weight: bold;
-   font-family: 'Gilroy';
-   position: relative;
-    bottom: 187px;
-    left: 412px;
+
+.settwo {
+  color: #000000;
+  font-size: 12px;
+  font-weight: bold;
+  font-family: 'Gilroy';
+  position: relative;
+  bottom: 187px;
+  left: 412px;
 }
-.level-section{
-position: relative;
-    bottom: 20px;
+
+.level-section {
+  position: relative;
+  bottom: 20px;
 }
+
 /* ::ng-deep.getset-matcard  .mat-card{
   background: #FFFFFF;
   border: 0.5px solid #000000;
@@ -1082,9 +1075,151 @@ position: relative;
   left: 180px;
 }
 
-.buy-label {
-  color: #000000 ;
-  font-size:18px; 
+.item-section {
+  position: relative;
+  bottom: 2px
+}
+
+.item-sectionb {
+  position: relative;
+  top: 204px;
+  left: 16px;
+}
+
+.buy-head {
+  position: relative;
+  border: 2px solid black;
+  border-radius: 18px;
+  width: 413px;
+  left: 9px;
+  bottom: 31px;
+  background-color: lightgrey;
+}
+
+.head-get {
+  position: relative;
+  border: 2px solid black;
+  border-radius: 18px;
+  width: 413px;
+  left: 468px;
+  bottom: 616px;
+  height: 360px;
+  background-color: lightgrey;
+}
+
+.heag {
+  position: relative;
+  left: 18px;
+}
+
+.head-h {
+  position: relative;
+  left: 471px;
+  bottom: 582px;
+}
+
+.image-getset {
+  width: 22px;
+  position: relative;
+  bottom: 172px;
+  left: 354px;
+}
+
+.image-getsetone {
+  width: 22px;
+  position: relative;
+  bottom: 172px;
+  left: 354px;
+}
+
+.buyget-show {
+  position: relative;
+  top: 509px;
+  left: 17px;
+}
+
+/* New CSS */
+.item-header {
+  color: #000000;
+  font-size: 18px;
   font-weight: bold;
-  font-family: 'Gilroy'
+  font-family: 'Gilroy';
+
+}
+
+.plus-image {
+  width: 22px;
+  position: relative;
+  left: 14px;
+}
+.plus-imageone {
+  width: 22px;
+  position: relative;
+  left: 15px;
+}
+
+.item-promotion {
+  position: relative;
+  top: 30px;
+}
+
+.itemspone {
+  width: 333px;
+  height: 130px;
+  border: 0.5px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.itemsptwo {
+  width: 333px;
+  height: 130px;
+  border: 0.5px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.qty-items {
+  width: 48px;
+  height: 43px;
+  position: absolute;
+  left: 76px;
+  border: 0.5px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.qty-items-text {
+  width: 48px;
+  height: 43px;
+  position: absolute;
+  left: 75px;
+  border: 0.5px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+
+.moq {
+  position: absolute;
+  top: 52px;
+  right: 25px;
+}
+
+.moq-text {
+  width: 48px;
+  height: 43px;
+  position: absolute;
+  top: 86px;
+  right: 23px;
+  border: 0.5px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+.qty-labe{
+  position: absolute;
+  left: 177px;
+}
+.item-scroll{
+  overflow-x: hidden;
 }

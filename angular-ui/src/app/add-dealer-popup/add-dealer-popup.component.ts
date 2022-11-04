@@ -220,45 +220,10 @@ export class AddDealerPopupComponent implements OnInit {
 
 
   saveDealerData(){
-   
-    for(let i=0;i<this.quantities().length;i++){
-
-      console.log(this.quantities().value[i].consigName)
-
-    let data = {
-      "CustomerName":this.addAddressDetailsForm.value['dealerName'],
-      "Email":this.addAddressDetailsForm.value['email'],
-      "Code":this.addAddressDetailsForm.value['dealerCode'],
-      "Website":this.addAddressDetailsForm.value['website'],
-      "Phoneno":this.addAddressDetailsForm.value['phone'],
-      "CompanyId":parseInt(this.addAddressDetailsForm.value['companyId']),
-      "OtherIdentifier":this.addAddressDetailsForm.value['identifier'],
-      "UserName":this.addAddressDetailsForm.value['userName'],
-      "EmailId":this.addAddressDetailsForm.value['userEmail'],
-      "Mobile":this.addAddressDetailsForm.value['usermobile'],
-      "FirstName":this.addAddressDetailsForm.value['firstName'],
-      "LastName":this.addAddressDetailsForm.value['lastName'],
-      "StatusId":parseInt(this.addAddressDetailsForm.value['status']),
-      "AddressTypeId":parseInt(this.quantities().value[i].addType),
-      "ConsigneeName":this.quantities().value[i].consigName,
-      "Taxid":parseInt(this.quantities().value[i].tax),
-      "AddressLine1":this.quantities().value[i].addressLine,
-       "AddressLine2":this.quantities().value[i].addressLine,
-      "CountryName":this.quantities().value[i].country,
-      "StateName":this.quantities().value[i].state,
-      "CityName":this.quantities().value[i].cityAndZip,
-      "ZipCode": this.quantities().value[i].cityAndZip,
-      "Telephone":this.quantities().value[i].phoneNo,
-      "CreatedById":this.LoginId
-      };
-
-      this.calssification.addDealerData(data).subscribe((res)=>{
-      
-      })  
-
-    }
-     
-     
+      console.log(this.addAddressDetailsForm.value);
+      this.calssification.addDealerData(this.addAddressDetailsForm.value).subscribe((res)=>{
+          console.log(res);
+      });  
   }
 
  

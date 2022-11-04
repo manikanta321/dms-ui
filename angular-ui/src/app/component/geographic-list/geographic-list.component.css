@@ -1,3 +1,29 @@
+
+
+
+ .pagination22{
+  float:right !important;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-right: 24px;
+  
+}
+
+.pagination-cls22{
+  font-size: 14px;
+  font-weight: 900;
+  font-weight: bold;
+}
+.radioPadding
+{
+  margin-left: 20px;
+}
+
+.ag-body-horizontal-scroll-viewport
+{
+  overflow: hidden;
+}
+
 ::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle{
     background-color: black;
 }
@@ -25,7 +51,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: 0.2s;
+  transition: 0.5s;
   border: none;
 }
 .searchBox:hover >.searchButton,
@@ -44,14 +70,14 @@ left: 84%;
   position: relative;    
   right: 56px;
   color:#000;
-  top: -5px;
+  top: -8px;
 }
 .add-user{
-margin-left: -25px;
+margin-left: -35px;
 }
 .searchBox:hover >.searchButton {
 display:bolck;
-color: #000;
+ color: #000;
 float: left;
 width: 37px;
 height: 37px;
@@ -63,7 +89,7 @@ transition: 0.2s;
 background: none;
 position: relative;
 right: 188px;
-top: 4px;
+top: 4px; 
 
 }
 .add-user {
@@ -74,7 +100,7 @@ width: 37px;
 height: 37px;
 top: 6px;
 margin-top: 5px;
-margin-left: 17%;
+margin-left: 40%;
 }
 .searchBox:hover >.search-btn {
 display:block;
@@ -85,14 +111,14 @@ color: white;
 border-radius: 5px;
 position: absolute;
 right: 10px;
-top:4px;
+top:1px;
 }
 
 
 .searchBox:hover>.searchInput {
 display:block;
 width: 280px;
-height: 50px;
+height: 43px;
 background: #FFFFFF;
 float: left;
 padding: 5px 32px 6px;
@@ -107,7 +133,7 @@ color: #263643;
 box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
 position: absolute;
 right: 0px;
-bottom: -3px;
+bottom: 2px;
 }
   .addU:before {
     width: 201px;
@@ -169,7 +195,7 @@ bottom: -3px;
     width: 37px;
     height: 37px;
     top: 11px;
-    left: 114%;
+    left: 129%;
   }
   ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
     border: 1px solid #337ab7;
@@ -651,7 +677,7 @@ bottom: -3px;
     //   margin-left: 59px; */
       /* } */
      .searchButton{
-      margin-left: -148px;
+      margin-left: -148px; 
      }
      .add-user{
       margin-left: -50px;

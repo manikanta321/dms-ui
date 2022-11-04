@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+.form-label
+{
+  margin-left: 8px;
+}
 .bg-img {
   /* The image used */
   background-image: url("/assets/img/login-background-img.png");
@@ -49,8 +53,10 @@ position: absolute;
 }
 .loginform-page{
 background: 6C757D;
-width:439px;
-height: 480px;
+/* width:439px;
+height: 480px; */
+height: 424px;
+width: 439px;
 box-shadow:2px;
 margin: auto;
  /* border:solid #000000;  */
@@ -71,22 +77,27 @@ top: 125px;
 left: 104px;
 }
 
-
+input
+{
+  border-radius: 20px;
+}
 
 
 form{
     /* width: 361px; */
     /* margin: auto; */
-    margin: 20px;
+    /* margin: 20px; */
+    margin-left: 34px;
+    
 
 }
 /* .signIn-img{
   text-align: end;
 } */
-
-/* .login-form{
-  margin-top: 90px;
-} */
+/* 
+ .login-form{
+  margin-left: 25px;
+}  */
 .welcome{
 position: absolute;
 width: 374px;

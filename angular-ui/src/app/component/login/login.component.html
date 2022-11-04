@@ -26,8 +26,9 @@
                 placeholder="Enter a valid email address"   [(ngModel)]="usernameofuser"  /> -->
               <br>
               <p *ngIf="usernameReqired" style="color: red;">Username required</p>
-              <input type="text" placeholder="Username" name="username" required [(ngModel)]="usernameofuser" pInputText
-                required />
+              
+              <input type="text" style="border-radius:10px" placeholder="Username" name="username" required [(ngModel)]="usernameofuser" pInputText
+                required/>
             </div>
             <!-- Password input -->
             <div class="form-outline mb-3">
@@ -35,7 +36,7 @@
               <p *ngIf="passwordrequired" style="color: red;">Password required</p>
               <!-- <input type="password" id="form3Example4" class="form-control form-control-lg"
                 placeholder="Enter password"  [(ngModel)]="passwordofuser" /> -->
-              <input placeholder="Password" type="password" [type]="showPassword ? 'text' : 'password'" name="password"
+              <input placeholder="Password" style="border-radius:10px" type="password" [type]="showPassword ? 'text' : 'password'" name="password"
                 required [(ngModel)]="passwordofuser" pInputText required />
               <mat-icon matSuffix (click)="togglePasswordVisibility()">
                 {{showPassword?'visibility_off':'visibility'}}

@@ -2,6 +2,25 @@
     
     border-radius: 21px;
 }
+.main
+{
+     /* width: 691px; */
+    /* height: 100px;   */
+}
+.btn
+{
+    /* justify-content: center;
+     text-align: center; 
+    align-items: center; */
+    margin-left: 20%;
+    width: 360px;
+    background-color: #000000;
+    color: whitesmoke;
+    border-radius: 10px;
+    border: 1px solid black;
+    height: 43px;
+    
+}
 
 
 .mat-form-field-flex {
@@ -18,6 +37,7 @@
 .main {
     background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 
+
 }
 
 .font {
@@ -27,7 +47,7 @@
 .head-t h3 {
     color: #000000;
     text-align: center;
-    margin-top: -18px;
+    margin-top: -45px;
     margin-bottom: 2px;
 }
 
@@ -44,7 +64,7 @@
     width: 220px;
     height: 2px;
     background: #686E74;
-    right: 25px;
+    right: 12px;
     top: 50%;
     position: absolute;
 }
@@ -55,7 +75,7 @@
     width: 220px;
     height: 2px;
     background: #686E74;
-    left: 25px;
+    left: 13px;
     top: 50%;
     position: absolute;
 }
@@ -75,10 +95,11 @@ span {
 }
 
 .close-icon {
-    left: 100%;
+    left: 101%;
     position: relative;
     font-size: 15px;
     font-weight: 600;
+    top:-24px;
 }
 
 label {
@@ -99,6 +120,9 @@ mat-form-field {
 ::ng-deep.mat-dialog-container {
     background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
     ;
+    /* height: 300px; */
+     overflow: auto;
+    
 }
 
 .btn-primary:disabled {
@@ -118,7 +142,7 @@ mat-form-field {
     font-weight: lighter;
 }
 .bothDown{
-    margin-top: 50px;
+    margin-top: 31px;
 }
 .colorText{
     color: red;
@@ -145,7 +169,17 @@ mat-form-field {
     color: red;
 }
 
-
+.minus-icon10
+{
+    background-color: red;
+    margin-left: 275px;
+    margin-top: -36px;
+    color: white;
+    text-align: center;
+    border-radius: 90%;
+    width: 20px !important;
+    
+}
 .searchBox[_ngcontent-hbx-c448]:hover > .searchInput[_ngcontent-hbx-c448] {
     width: 230px;
     padding: 0 47px;

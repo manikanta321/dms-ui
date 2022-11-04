@@ -1,6 +1,6 @@
 <div >
     <section >
-        <div class="row" style="margin-top:15px;">
+        <div class="row" style="margin-top:80px;">
             <div class="col-6">
         <mat-radio-group class="radioPadding" >
           <mat-radio-button class="shipButton" (click)="shipClick('Shipping')" value="Shipping" [checked]="shippingChk">Shipping Charges</mat-radio-button>
@@ -40,7 +40,7 @@
       </section>
     <ag-grid-angular
                  id="gridContainer"
-                 style=" height: 386px;border-radius: 20px;background-color: white;font-family: Gilroy"
+                 style=" height: 386px;margin-left:23px;  overflow: hidden;    border-radius: 20px;background-color: white;font-family: Gilroy"
                  class="ag-theme-material"
                  [rowHeight]="25"
                  [headerHeight]="48"
@@ -56,7 +56,13 @@
                  (rowClicked)="openDialog()"
                  (cellClicked)="onCellClicked($event)"
                  (gridReady)="onGridReady($event)"
-                 [pagination]="true"
+                  [pagination]="false" 
                  ></ag-grid-angular>
  
  </div>
+
+
+ 
+ <div class="pagination22">
+  <span class="pagination-cls22">1</span> to <span class="pagination-cls">{{rowData5.length}}</span> of <span class="pagination-cls">{{rowData5.length}}</span>
+  </div>

@@ -40,6 +40,7 @@ line-height: 23.06px;
 font-style: light;
 letter-spacing: 0em;
 color:  #000000;
+
 }
 .City
 {
@@ -157,7 +158,21 @@ li{
     font-weight: gray;
 }
 
-.input-district-cls,
+.input-district-cls{
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin-right: 10px;
+  font-size: 11px;
+  padding: 8px 16px;
+  /* width: 150px; */
+  margin-left: -12px;
+  width: 186px;
+  height: 43px;
+  font-weight: gray;
+  color: #000000;
+}
 .input-region-cls {
   background: #FFFFFF;
   border: 0.5px solid #000000;
@@ -168,9 +183,9 @@ li{
   padding: 8px 16px;
   /* width: 150px; */
   margin-left: -12px;
-  width:140px;
+  width: 186px;
   height: 43px;
-  font-weight: bold;
+  font-weight: gray;
   color: #000000;
 }
 
@@ -190,6 +205,24 @@ li{
     height: 43px;
     margin-left: 16px;
 }
+.input-district-cls
+{
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin-right: 10px;
+  font-size: 11px;
+  color: #000000;
+  padding: 8px 16px;
+  /* width: 160px;  */
+  margin-left: -12px;
+  width:186px;
+  height: 43px;
+  /* font-weight: bold; */
+  font-weight: gray;
+}
+
 
 .addcode{
   background: #000;

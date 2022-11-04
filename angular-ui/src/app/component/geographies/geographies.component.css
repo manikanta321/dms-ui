@@ -2,6 +2,7 @@
 .font{
     font-family: 'Gilroy';
   }
+  
 /* mat-select-trigger {
     font-style: normal;
     font-weight: 600;
@@ -47,7 +48,8 @@ mat-sidenav-container {
 mat-tab{
     display: flex;
     position: relative;
-    background: grey; 
+    /* background: grey;  */
+    /* background-color: #000000; */
     box-shadow: #1292EE;
     padding: 0.75rem;
     border-radius: 99px;
@@ -61,7 +63,7 @@ mat-tab{
     flex-shrink: 0;
     width: 378px !important;
     border-radius: 25px;
-    background: white;
+     background: white; 
     left: 35%;
     height: 35px;
     
@@ -70,13 +72,14 @@ mat-tab{
 ::ng-deep.mat-tab-label{
     height: 35px !important;
     min-width: 190px !important;
+    
    
 }
 ::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     display: none !important;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    background: black;
+    background-color: black;
     color: white;
     border-radius: 25px;
 }

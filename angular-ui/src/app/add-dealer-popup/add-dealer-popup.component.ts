@@ -25,18 +25,12 @@ export class AddDealerPopupComponent implements OnInit {
   statusList:any;
 
   selectedTeam = '';
-  selectedDay: string = '';
   showDiv = {
     previous : false,
     current : false,
     next : false
   }
-  showdata=false;
-  public packingCharges: any[] = [{
-    sValue: '',
-    eValue: '',
-    pValue: '',
-  }];
+  
   errorMsg: any;
   addCountryButton: boolean = false;
   removelist: boolean = false;
@@ -58,24 +52,7 @@ export class AddDealerPopupComponent implements OnInit {
   distselectedItem:any;
   citySelectedItem:any;
 
-
-
-
-  //event handler for the select element's change event
-  selectChangeHandler (event: any) {
-    //update the ui
-    this.selectedDay = event.target.value;
-     
-  }
-/*-------*/
-
   selectedItem = null;
-  addButton:boolean =false;
-  dropdownSettings3: IDropdownSettings = {};
-  disabled = false;
-  promotionlist: any[] | undefined;
-  toppingList3:  any= [];
-  ShowFilter = false;
   totalStepsCount: number | undefined;
 
   @ViewChild('stepper') private myStepper: MatStepper | any;
@@ -90,56 +67,31 @@ export class AddDealerPopupComponent implements OnInit {
     private calssification:ClassificationserviseService,
     //private toastrService: ToastrService,
     private dialogRef: MatDialogRef<any>) {
-      
-
       this.formReader();
-     
      }
 
      
   firstFormGroup: FormGroup = this._formBuilder.group({firstCtrl: ['']});
   secondFormGroup: FormGroup = this._formBuilder.group({secondCtrl: ['']});
 
-  
-/* on Select of Dropdown screen change */
-
   ngOnInit(): void {
     this.LoginId=localStorage.getItem("logInId");
     this.numberValue = Number(this.LoginId);
      this.addAddressForm();
      this.statusForm();
-
      //geographies List
      this.getCountryList();
 
   }
 
+  //status dropdownlist
   statusForm(){
     this.user.getstatusDeatils().subscribe((res: any) => {
         this.statusList = res.response;
     })
   }
 
-  onTypeSelect(item: any) {
-    console.log(item);
-  }
-
-  onTypeAll(items: any) {
-    console.log('onSelectAll', items);
-  }
-
-  onClick(item) {
-    this.selectedItem = item;
-  }
-
-  displaydata(){
-    this.showdata=true;
-  }
-
-  hidedata(){
-    this.showdata=false;
-  }
-
+  
   ngAfterViewInit() {
     this.totalStepsCount = this.myStepper._steps.length;
   }
@@ -159,33 +111,7 @@ export class AddDealerPopupComponent implements OnInit {
           this.goForward(this.myStepper);
           }
     }
-    // alert(event.CategoryName);
-  
-  addCategory(){
-    this.addButton =true;
-  }
 
-  toogleShowFilter(){
-    this.ShowFilter = !this.ShowFilter;
-    this.dropdownSettings3 = Object.assign({}, this.dropdownSettings3, { allowSearchFilter: this.ShowFilter });
-  }
-
-  addCountry(){
-    this.addCountryButton = true;
-  }
-
-  removesub(uId: number) {
-    const index = this.packingCharges.findIndex((address) => address.id === uId);
-    this.packingCharges.splice(index, 1);
-  }
-
-  addFields(){
-    this.packingCharges.push({
-      sValue: '',
-      eValue: '',
-      pValue: '',
-    });
-  }
 
   quantities(): FormArray {  
     return this.addAddressDetailsForm.controls["quantities"] as FormArray  
@@ -210,12 +136,10 @@ export class AddDealerPopupComponent implements OnInit {
 
  
 
-  removeQuantity(i:number) {
-    
+  removeQuantity(i:number) { 
     if( i >= 1){
       this.quantities().removeAt(i);  
     }
-    
   }  
 
 

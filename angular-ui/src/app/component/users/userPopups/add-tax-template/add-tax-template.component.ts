@@ -99,20 +99,8 @@ setUpForm(cars: any[] ) {
   }  
      
   addQuantity(data:any) {  
-    
    this.TaxDetails().push(this.newQuantity(data));  
   }  
-
-// incrementnum(){
-// let item=this.letter
-// item= String.fromCharCode(item.charCodeAt(0) + 1);
-// this.letter=item
-// // alert(this.letter)
-
-//   }  
-
-
-
 
   removeQuantity(i:number) {  
     if(i>0){

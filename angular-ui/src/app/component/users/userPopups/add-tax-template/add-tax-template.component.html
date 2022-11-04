@@ -4,20 +4,6 @@
         <div class="head-t">
             <h3 class="addU font">Add Tax Template</h3>
           </div>
-        <!-- <div  class="row">
-            <div class="col-8">
-                <label>Name</label>
-                <br>
-                <input style="height: 43px;width: 220px;border-radius: 10px;border: ' 0.5px solid #000000';" type="text" placeholder="Indian GST">
-    
-            </div>
-            <div class="col">
-                <br>
-                <br>
-              <p>  Used <b>T</b> for <b>Total</b> in Formula*</p>
-            </div>
-           
-        </div> -->
         <br>
        <div class="cl-tax">
        <div class="tax-head scroll" >
@@ -51,7 +37,6 @@
                     </tr>
                     <tr *ngFor="let quantity of TaxDetails().controls; let i=index" [formGroupName]="i">
                         <td><input type="text" class="minus-icon1"  formControlName="DisplayOrder" readonly></td>
-                        
                         <td><input type="text"  style="width: 160px;height: 43px;border-radius: 10px;border: 0.5px solid #000000;" formControlName="TaxCodeName" ></td>
                         <td><input type="text"  style="width: 160px;height: 43px;border-radius: 10px;border: 0.5px solid #000000;"  formControlName="PercentageValue"></td>
                         <td><input type="text"   style="width: 190px;height: 43px;border-radius: 10px;border: 0.5px solid #000000;"  formControlName="Formula" ></td>

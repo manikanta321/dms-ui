@@ -25,28 +25,6 @@ export interface PeriodicElement {
   status: any;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: '6004005001', name: 'Rajasheka S', weight: 1.0079, symbol: 'Customer', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Active' },
-  { position: '6004005002', name: 'Manoranjan B', weight: 1.0079, symbol: 'Dealer', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Inactive' },
-  { position: '6004005003', name: 'Vishnu M', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Active' },
-  { position: '6004005004', name: 'Mahendra S', weight: 1.0079, symbol: 'Dealer', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Invited' },
-  { position: '6004005005', name: 'Veerendra kr', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Locked' },
-  { position: '6004005006', name: 'mahathi Br', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Active' },
-  { position: '6004005007', name: 'chetheshwar T', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Locked' },
-  { position: '6004005008', name: 'Swami swami', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Locked' },
-
-  { position: '6004005006', name: 'narendra gs', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Locked' },
-
-  { position: '6004005006', name: 'prajwal vT', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Locked' },
-
-];
-// import { EditPopupComponent } from './userPopups/edit-popup/edit-popup.component';
-// import { UomPopupComponent } from './userPopups/uom-popup/uom-popup.component';
-// import { EditUomPopupComponent } from './userPopups/edit-uom-popup/edit-uom-popup.component';
-// import { AddTaxTemplateComponent } from './userPopups/add-tax-template/add-tax-template.component';
-// import { AddcurrencyComponent } from './userPopups/addcurrency/addcurrency.component';
-// import { EditTaxTemplateComponent } from './userPopups/edit-tax-template/edit-tax-template.component';
-// import { DeletecomponentComponent } from '../deletecomponent/deletecomponent.component';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { CellClassParams, CellClassRules, CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef, GridApi, GridOptions, ModuleRegistry, ColumnResizedEvent, Grid, } from 'ag-grid-community';
 import { HttpClient } from '@angular/common/http';
@@ -104,14 +82,9 @@ export class DealersComponent implements OnInit {
     onCellClicked: (event: CellClickedEvent) => console.log('Cell was clicked'),
     // set background colour on every row, this is probably bad, should be using CSS classes
     rowStyle: { background: 'black' },
-
-    // set background colour on even rows again, this looks bad, should be using CSS classes
-
-
-    // other grid options ...
   }
 
-  // status:any;
+
 
   // Data that gets displayed in the grid
   public rowData5 = [];
@@ -121,21 +94,20 @@ export class DealersComponent implements OnInit {
 
     {
       headerName: "Code",
-      // field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
+       field: 'customerCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
     },
 
-    { headerName: "Name",minWidth:400   },
-
-    // { headerName: "Role", field: 'roleName', type: ['nonEditableColumn'] },
-
+    { headerName: "Name",
+    minWidth:450,
+    field: 'customerName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
+    },
     {
-      headerName: "Geography",minWidth:550  
-      // field: 'email', type: ['nonEditableColumn']
+      headerName: "Geography",
+      minWidth:550,
+       field: 'geographyName', type: ['nonEditableColumn']
     },
 
  
- 
-
     // suppressMovable:true,
     {
       headerName: "Status",
@@ -143,35 +115,13 @@ export class DealersComponent implements OnInit {
       type: ['nonEditableColumn'],
       cellEditor: 'agSelectCellEditor',
       cellEditorParams: {
-        values: ['Active', 'Inactive', 'Invited', 'Locked',],
-      },maxWidth:100,
+        values: ['Approved', 'Inactive', 'Invited', 'Locked',],
+      },minWidth:200,
       cellClass: params => {
         return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
       }
     },
-    {
-      headerName: '',
-      colId: 'action',
-      cellRenderer: UseractionComponent,
-      editable: false,
-      maxWidth: 75
-      //    headerName: "",
-      // field: '',  filter: false, sortable: false,width:20,
-      // cellRenderer: function clickNextRendererFunc(){
-      //   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
-      // }, 
-      //  cellEditorPopup: true,
-      //  onCellClicked: (event: CellClickedEvent) => this.dialog.open(DeletecomponentComponent, {panelClass: 'editpopup'})
-      // // onCellClicked: (event: CellClickedEvent) => this.iconDisabled = true
-    },
-
-    // {
-    //   headerName: "Avatar",
-    //   field: "avatar",
-    //   width: 100,
-    //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
-    //  },
-
+   
   ];
 
 
@@ -182,13 +132,9 @@ export class DealersComponent implements OnInit {
 
     suppressSizeToFit: true,
     width: 170,
-    // set the default column width
-    // make every column editable
-    // editable: true,
-    // make every column use 'text' filter by default
     filter: 'agTextColumnFilter',
-    // enable floating filters by default
-    // make columns resizable
+    flex: 1,
+    minWidth: 100,
     resizable: true,
     sortable: true,
   };
@@ -234,7 +180,7 @@ export class DealersComponent implements OnInit {
   public pivotPanelShow = 'always';
 
   displayedColumns: string[] = ['position', 'name', 'symbol', 'email', 'phonenum', 'login', 'status', 'edit'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+;
   toppings = new FormControl('');
   toppings1 = new FormControl('');
 
@@ -313,11 +259,6 @@ export class DealersComponent implements OnInit {
     sort: [];
   }
 
-  //   getRowStyle = params => {
-  //     if (params.node.rowIndex % 2 === 0) {
-  //         return { background: 'red' };
-  //     }
-  // };
 
 
   @ViewChild(MatSort)
@@ -326,7 +267,7 @@ export class DealersComponent implements OnInit {
   ngAfterViewInit() {
 
 
-    this.dataSource.sort = this.sort;
+   // this.dataSource.sort = this.sort;
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
       if (res.matches) {
         this.sidenav.mode = 'over';
@@ -343,17 +284,7 @@ export class DealersComponent implements OnInit {
 
 
   ngOnInit(): void {
-
-    // if(this.message1=false){
-    //   alert('working')
-    // }else {
-    //   alert('notworking')
-
-    // }
     this.getusertabeldata();
-
-
-
     this.roleItems();
     this.statusItems();
 
@@ -371,23 +302,18 @@ export class DealersComponent implements OnInit {
     this.scrolledIndex = i;
   }
 
-
-  // myFunction(){
-  // this. date=new Date();
-  // let latest_date =this. datepipe. transform(this. date, ‘yyyy-MM-dd’);
-  // }
-
   editfn() {
     alert('guru')
   }
-  // onCellClicked($event){}
 
   onSelectAll(items: any) {
     console.log('onSelectAll', items);
   }
+
   onStatusAll(items: any) {
     console.log('onSelectAll', items);
   }
+
   toogleShowFilter() {
     this.ShowFilter = !this.ShowFilter;
     this.dropdownSettings = Object.assign({}, this.dropdownSettings, { allowSearchFilter: this.ShowFilter });
@@ -400,6 +326,7 @@ export class DealersComponent implements OnInit {
       this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: null });
     }
   }
+
   toogleStatusFilter() {
     this.StatusFilter = !this.StatusFilter;
     this.dropdownSettings1 = Object.assign({}, this.dropdownSettings1, { allowSearchFilter: this.StatusFilter });
@@ -425,9 +352,7 @@ export class DealersComponent implements OnInit {
     this.myForms = this.fb.group({
       citys: [this.selectedItems]
     });
-    // var ageFilterComponent = this.gridApi.getFilterInstance('')!;
-    // ageFilterComponent.setModel(null);
-    // this.gridApi.onFilterChanged();
+  
     const data = {
       userTypes: [],
       statuss: [],
@@ -442,31 +367,20 @@ export class DealersComponent implements OnInit {
 
   getusertabeldata() {
     const data = {
-      userTypes: [],
-      statuss: [],
+      "geographys":[],
+      "statuss":[],
+      "Search":""
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
+    this.user.getAllDealerList(data).subscribe((res) => {
 
       this.rowData5 = res.response;
-      console.log('tableDaaaata', this.rowData5)
-      if (this.rowData5.length >= 1) {
-        this.rowData.forEach((element: { [x: string]: any; }) => {
-          if (element['status'] == 'Confirmed') {
-          }
-          else {
-            element['isActive'] == 'Inactive'
-
-          }
-          console.log('element', element['isActive'])
-        });
-      }
-
-      console.log('row data', this.rowData1)
+  
 
     });
   }
   makeCellClicked() {
   }
+
   roleItems() {
     this.user.getroleDetails().subscribe((res: any) => {
       let localdata = res.response;
@@ -535,24 +449,15 @@ export class DealersComponent implements OnInit {
   statusItems() {
     this.user.getstatusDeatils().subscribe((res: any) => {
       this.toppingList1 = res.response;
-      // this.toppingList1 = localdata.map((data: { status_id: any; status_name: any; }) => {
-      //   return {status_id: data.status_id, status_name: data.status_name };
-      // });
-
-      // if (!this.toppingList1?.length) {
-      //   this.toppingList1 = localdata.map((status: { status_name: any; }) => {
-      //     return status.status_name;
-      //   });
-      // }
-      // this.toppingList1.push()
+      
       console.log('we have to check here', this.toppingList1)
       this.toppingList1.forEach(element => {
         return this.statusArray.push(element.statusId);
-        // console.log('rolecheck',rolecheck)
+      
 
       })
       console.log('statusArray', this.statusArray)
-      // this.toppingList = res.response;
+    
       this.dropdownSettings1 = {
         singleSelection: false,
         idField: 'statusId',
@@ -711,7 +616,7 @@ export class DealersComponent implements OnInit {
 
 
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    //this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   addUser() {
@@ -756,23 +661,6 @@ export class DealersComponent implements OnInit {
       this._liveAnnouncer.announce('Sorting cleared');
     }
   }
-
-
-  // Example of consuming Grid Event
-  // onCellClicked( e: CellClickedEvent): void {
-  //   console.log('cellClicked', e);
-  //   this.userId=e.data.userId;
-  //   this.employeeName=e.data.employeeName
-  //   console.log('userID',this.userId)
-  //   localStorage.setItem('userID',this.userId )
-  //   localStorage.setItem('employeeName',this.employeeName )
-
-
-
-
-  // }
-
-
 
   // Example of consuming Grid Event
 
@@ -858,9 +746,8 @@ export class DealersComponent implements OnInit {
     this.sidenav.toggle()
   }
 
-
-
 }
+
 function incrementCount() {
   throw new Error('Function not implemented.');
 }

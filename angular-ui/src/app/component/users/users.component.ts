@@ -136,7 +136,6 @@ export class UsersComponent implements OnInit {
 
     {
       headerName: "Last Login",
-      // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
       field: 'lastLoginDate', type: ['nonEditableColumn'],
       cellRenderer: function dateFormtter(params) {
         return moment(params.value).format('DD MMM YYYY, HH:mm A')
@@ -163,23 +162,8 @@ export class UsersComponent implements OnInit {
       colId: 'action',
       cellRenderer: UseractionComponent,
       editable: false,
-      maxWidth: 75
-      //    headerName: "",
-      // field: '',  filter: false, sortable: false,width:20,
-      // cellRenderer: function clickNextRendererFunc(){
-      //   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
-      // }, 
-      //  cellEditorPopup: true,
-      //  onCellClicked: (event: CellClickedEvent) => this.dialog.open(DeletecomponentComponent, {panelClass: 'editpopup'})
-      // // onCellClicked: (event: CellClickedEvent) => this.iconDisabled = true
+      maxWidth: 75  
     },
-
-    // {
-    //   headerName: "Avatar",
-    //   field: "avatar",
-    //   width: 100,
-    //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
-    //  },
 
   ];
 
@@ -238,9 +222,6 @@ export class UsersComponent implements OnInit {
       },
     };
 
-  // public sideBar: SideBarDef | string | string[] | boolean | null = {
-  //   toolPanels: ['columns'],
-  // };
   public rowGroupPanelShow = 'always';
   public pivotPanelShow = 'always';
 
@@ -249,7 +230,6 @@ export class UsersComponent implements OnInit {
   toppings = new FormControl('');
   toppings1 = new FormControl('');
 
-  // toppingList: string[] = ['Admin', 'Dealer','Customer'];
   toppingList: any = [];
 
   toppingList1: any = [];
@@ -326,13 +306,7 @@ export class UsersComponent implements OnInit {
     sort: [];
   }
 
-  //   getRowStyle = params => {
-  //     if (params.node.rowIndex % 2 === 0) {
-  //         return { background: 'red' };
-  //     }
-  // };
-
-
+ 
   @ViewChild(MatSort)
   sort: MatSort = new MatSort;
 
@@ -357,16 +331,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // if(this.message1=false){
-    //   alert('working')
-    // }else {
-    //   alert('notworking')
-
-    // }
     this.getusertabeldata();
-
-
-
     this.roleItems();
     this.statusItems();
 
@@ -378,23 +343,14 @@ export class UsersComponent implements OnInit {
     });
   }
 
-
-
   scrolledIndexChange(i): void {
     this.scrolledIndex = i;
   }
 
-
-  // myFunction(){
-  // this. date=new Date();
-  // let latest_date =this. datepipe. transform(this. date, ‘yyyy-MM-dd’);
-  // }
-
   editfn() {
     alert('guru')
   }
-  // onCellClicked($event){}
-
+  
   onSelectAll(items: any) {
     console.log('onSelectAll', items);
   }
@@ -427,8 +383,6 @@ export class UsersComponent implements OnInit {
 
   }
 
-
-
   refresh() {
     this.toppings = new FormControl(this.toppingList);
     this.toppings1 = new FormControl(this.toppingList1);
@@ -438,9 +392,7 @@ export class UsersComponent implements OnInit {
     this.myForms = this.fb.group({
       citys: [this.selectedItems]
     });
-    // var ageFilterComponent = this.gridApi.getFilterInstance('')!;
-    // ageFilterComponent.setModel(null);
-    // this.gridApi.onFilterChanged();
+
     const data = {
       userTypes: [],
       statuss: [],
@@ -548,21 +500,10 @@ export class UsersComponent implements OnInit {
   statusItems() {
     this.user.getstatusDeatils().subscribe((res: any) => {
       this.toppingList1 = res.response;
-      // this.toppingList1 = localdata.map((data: { status_id: any; status_name: any; }) => {
-      //   return {status_id: data.status_id, status_name: data.status_name };
-      // });
-
-      // if (!this.toppingList1?.length) {
-      //   this.toppingList1 = localdata.map((status: { status_name: any; }) => {
-      //     return status.status_name;
-      //   });
-      // }
-      // this.toppingList1.push()
       console.log('we have to check here', this.toppingList1)
       this.toppingList1.forEach(element => {
         return this.statusArray.push(element.statusId);
-        // console.log('rolecheck',rolecheck)
-
+      
       })
       console.log('statusArray', this.statusArray)
       // this.toppingList = res.response;
@@ -591,8 +532,6 @@ export class UsersComponent implements OnInit {
     console.log('rolename', this.rowData)
   }
   onItemSelect(item: any) {
-
-    // alert(item.roleName)
     this.userTypes.push(item.roleId);
 
     const data = {
@@ -607,6 +546,7 @@ export class UsersComponent implements OnInit {
     console.log('rolefilter', this.userTypes)
     console.log('onItemSelect', item);
   }
+
   onItemSelectOrAll(item: any) {
     this.userTypes = this.roleArray;
     const data = {
@@ -618,9 +558,9 @@ export class UsersComponent implements OnInit {
     this.user.getuserDeatilsUser(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
-    console.log('rolefilter', this.userTypes)
-    console.log('onItemSelect', item);
+  
   }
+
   onItemDeSelectOrAll(item: any) {
     const data = {
       userTypes: this.userTypes,
@@ -765,23 +705,6 @@ export class UsersComponent implements OnInit {
     }
   }
 
-
-  // Example of consuming Grid Event
-  // onCellClicked( e: CellClickedEvent): void {
-  //   console.log('cellClicked', e);
-  //   this.userId=e.data.userId;
-  //   this.employeeName=e.data.employeeName
-  //   console.log('userID',this.userId)
-  //   localStorage.setItem('userID',this.userId )
-  //   localStorage.setItem('employeeName',this.employeeName )
-
-
-
-
-  // }
-
-
-
   // Example of consuming Grid Event
 
   onCellClicked(e): void {
@@ -868,8 +791,8 @@ export class UsersComponent implements OnInit {
   }
 
 
-
 }
+
 function incrementCount() {
   throw new Error('Function not implemented.');
 }

@@ -361,37 +361,37 @@ export class GeoClassificationComponent implements OnInit {
     if (confirm("Are you sure want to delete "+strName+"!") == true) {
       this.calssification.getDeleteListByCountry(id).subscribe((res)=>{
         let data=res.response;
-      })
-    }
+        if(status === 1){
+          this.getCountryList();
+        }
+    
+        if(status === 2){
+          this.getStateList(localStorage.getItem('countryId'));
+        }
+    
+        if(status === 3){
+          this.getDistrictList(localStorage.getItem("stateId"));
+        }
+    
+        if(status === 4){
+          this.getCityList(localStorage.getItem("distId"));
+        }
+    
+        if(status === 5){
+          this.getregionList(localStorage.getItem("cityId"));
+        }
+    
+        if(status === 6){
+          this.getAreaList(localStorage.getItem("regionId"));
+        }
+    
+        if(status === 7){
+          this.getSubAreaList(localStorage.getItem("areaId"));
+        }
+      });
 
-    if(status === 1){
-      this.getCountryList();
     }
-
-    if(status === 2){
-      this.getStateList(localStorage.getItem('countryId'));
-    }
-
-    if(status === 3){
-      this.getDistrictList(localStorage.getItem("stateId"));
-    }
-
-    if(status === 4){
-      this.getCityList(localStorage.getItem("distId"));
-    }
-
-    if(status === 5){
-      this.getregionList(localStorage.getItem("cityId"));
-    }
-
-    if(status === 6){
-      this.getAreaList(localStorage.getItem("regionId"));
-    }
-
-    if(status === 7){
-      this.getSubAreaList(localStorage.getItem("areaId"));
-    }
-
+    
   }
 
   removemoreFileds(){

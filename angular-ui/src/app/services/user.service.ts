@@ -70,26 +70,16 @@ EditUser(obj){
   return this.http.post<any>(this.userurl + 'UserMgmtApi/AddEditUser',obj);
 
 }
+
 GetEditUSer(userID:any){
   return this.http.get<any>(`${this.userurl}UserMgmtApi/GetUserDetailsToEdit?userId=${userID}`);
 
 }
-public getuserDeatilsUser(data) {
-  let options = {
-    headers: new HttpHeaders().set('Content-Type', 'application/json')
-  };
-      //     const idToken = localStorage.getItem('token');
-  // console.log('idtoken',idToken)
-  //     const headers = {
-  //       'accesstoken': localStorage.getItem('token'),
-  //       //'methodtype': 'RULES'
-  //     };
-  
-  
-  JSON.stringify(data)
-      return this.http.post<any>(this.userurl + 'UserMgmtApi/GetAllUsers', data);
-      
-    }
+
+   public getuserDeatilsUser(data) {
+     
+    return this.http.post<any>(this.userurl + 'UserMgmtApi/GetAllUsers', data);
+   }
 
 public getroleDetails(){
   return this.http.get<any>(this.userurl + 'UserMgmtApi/GetUserTypes');
@@ -130,16 +120,10 @@ public tatemplatestatus(data){
 public addcurrency(data){
   return this.http.post<any>(this.userurl + 'OtherMasterApi/AddEditCurrency', data);
 }
-// http://52.172.24.161:801/api/OtherMasterApi/AddEditCurrency
-// http://52.172.24.161:801/api/OtherMasterApi/GetStatusList
-// http://52.172.24.161:801/api/OtherMasterApi/GetCurrencyList
 
-                            //  http://52.172.24.161:801/api/GetUserTypes
-//   User types dropdown : - http://52.172.24.161:801/api/GetUserTypes
+//get Dealer list
+public getAllDealerList(data){
+  return this.http.post<any>(this.userurl + 'DealerApi/GetAllDealers',data);
+}
 
-// Status Dropdown : - http://52.172.24.161:801/api/GetUserStatusList
-
-  // getPastClassDetails(classId: any) {
-  //   return this.http.get(`${this.liveApi}/api/v1/eclasses/${classId}/download`);
-  // }
 }

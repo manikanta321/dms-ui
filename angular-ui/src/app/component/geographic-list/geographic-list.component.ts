@@ -245,8 +245,8 @@ shipPackCharges:any;
   }
   addUser(){
     this.dialog.open( AddGeolistPopupComponent,{
-      width: '691px', //sets width of dialog
-      height:'370px',
+      width: '700px', //sets width of dialog
+      height:'450px',
     });
    }
 

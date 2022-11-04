@@ -359,7 +359,7 @@ export class GeoClassificationComponent implements OnInit {
     }
     
     if (confirm("Are you sure want to delete "+strName+"!") == true) {
-      this.calssification.getDeleteListByCountry(id,status).subscribe((res)=>{
+      this.calssification.getDeleteListByCountry(id).subscribe((res)=>{
         let data=res.response;
       })
     }

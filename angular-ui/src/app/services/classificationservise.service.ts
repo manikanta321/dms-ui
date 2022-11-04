@@ -99,8 +99,8 @@ getAllListByCountry(id:any){
 
 //delete geographies List
 
-getDeleteListByCountry(id:any,status:any){
-  return this.http.get<any>(this.classificationurl + 'OtherMasterApi/DeleteGeography?id='+ id +'/spec='+status);
+getDeleteListByCountry(id:any){
+  return this.http.get<any>(this.classificationurl + 'OtherMasterApi/DeleteGeography?id='+ id);
 }
 
 //add country name 

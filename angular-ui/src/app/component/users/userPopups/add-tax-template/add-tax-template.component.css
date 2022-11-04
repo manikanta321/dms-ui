@@ -113,10 +113,10 @@
     width: 250px;
 }
 .tax-head input{
-border-radius: 5px;
-border: 1px solid #D6D6D6;
-padding: 8px 5px;
-width: 250px;
+    border-radius: 5px;
+    border: 1px solid #D6D6D6;
+    padding: 8px 5px;
+    width: 250px;
 }
 span{
     color: red;
@@ -164,7 +164,10 @@ color: white;
 .minus-icon1{
     background: #0091EA;
     padding: 4px 10px;
-     border-radius: 50%;
+    border-radius: 50% !important;
+    width: 39px !important;
+    text-align: center;
+
 }
 
 td{

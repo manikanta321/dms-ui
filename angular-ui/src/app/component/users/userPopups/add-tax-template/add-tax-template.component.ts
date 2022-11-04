@@ -37,7 +37,7 @@ export class AddTaxTemplateComponent implements OnInit {
       TaxTemplateName:'',  
       TaxDetails: this.fb.array([]) ,  
     }); 
-    this.addQuantity()
+    this.addQuantity(1)
   }
   modelChanged(newObj) {
   alert(newObj)
@@ -77,31 +77,39 @@ setUpForm(cars: any[] ) {
     return this.productForm.get("TaxDetails") as FormArray  
   }  
      
-  newQuantity(): FormGroup {  
+  newQuantity(data:any): FormGroup {  
+
+    if(data === 1){
+      let item=this.letter
+      item= String.fromCharCode(item.charCodeAt(0));
+      this.letter=item
+    } else {
+      let item=this.letter
+      item= String.fromCharCode(item.charCodeAt(0) + 1);
+      this.letter=item
+    }
+   
 
     return this.fb.group({  
       TaxCodeName: '',  
       PercentageValue: '',  
       Formula:'',
-      DisplayOrder:''
+      DisplayOrder:this.letter,
     })  
   }  
      
-  addQuantity() {  
+  addQuantity(data:any) {  
     
-    this.TaxDetails().push(this.newQuantity());  
-
-    this.incrementnum()
-
+   this.TaxDetails().push(this.newQuantity(data));  
   }  
 
-incrementnum(){
-let item=this.letter
-item= String.fromCharCode(item.charCodeAt(0) + 1);
-this.letter=item
-// alert(this.letter)
+// incrementnum(){
+// let item=this.letter
+// item= String.fromCharCode(item.charCodeAt(0) + 1);
+// this.letter=item
+// // alert(this.letter)
 
-  }  
+//   }  
 
 
 
@@ -114,7 +122,6 @@ this.letter=item
      
   onSubmit() { 
     this.enteredname=this.taxname;
-    this.newQuantity();
     console.log(this.productForm.value);  
 
     console.log('checkarray',this.productForm.value)

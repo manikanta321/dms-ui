@@ -1,7 +1,7 @@
 .mat-form-field {
   width: 680px;
   font-family: 'Gilroy';
-  background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+  /* background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
 }
 
 .mat-form-field::placeholder {
@@ -14,20 +14,24 @@
 }
 
 .materialname {
-  margin-top: -18px;
+  /* margin-top: -18px; */
   font-family: 'Gilroy';
-  margin-left: -4px;
+  position: relative;
+  top: 7px;
+  /* margin-left: -4px; */
 }
-.geography{
+
+.geography {
   overflow-y: auto;
-   overflow-x: hidden;
+  overflow-x: hidden;
   max-height: 450px;
-   
+
 }
+
 /* ::ng-deep.steppers .prod.mat-horizontal-content-container {
   width: 800px !important;
 } */
-.scroll{
+.scroll {
   overflow-y: auto;
   overflow-x: auto;
 }
@@ -50,7 +54,7 @@
 
 .description {
   font-family: 'Gilroy';
-  margin-top: 15px;
+  margin-top: 21px;
 }
 
 .materialci {
@@ -155,11 +159,13 @@
   margin-top: -18px;
   margin-bottom: 2px;
 }
-.add-img{
+
+.add-img {
   position: relative;
-  left:24px;
+  left: 24px;
   top: 24px;
 }
+
 .addU {
   position: relative;
   /* font-family: 'Gilroy-Bold';  */
@@ -220,6 +226,11 @@ mat-form-field {
 
 }
 
+.mat-align {
+  position: relative;
+  bottom: 15px;
+}
+
 ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
   padding: 0em 0 0.7em 0;
   border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
@@ -237,19 +248,19 @@ mat-form-field {
 .subcategorydrp {
   width: 205px;
   margin-left: 250px;
-  margin-top: -40px;
+  margin-top: -37px;
 }
 
 .typedrp {
   width: 205px;
   margin-left: 499px;
-  margin-top: -42px;
+  margin-top: -36px;
 }
 
 .customidentifier {
   width: 205px;
   margin-left: 499px;
-  margin-top: -145px;
+  margin-top: -127px;
 }
 
 .uomp {
@@ -308,7 +319,8 @@ mat-form-field {
   margin-top: 8px;
   margin-left: -2px;
 }
-::ng-deep.arrow-hide .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret{
+
+::ng-deep.arrow-hide .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
   display: none;
 }
 
@@ -340,20 +352,21 @@ mat-form-field {
   width: 735px;
   margin-top: 8px;
   margin-left: -2px;
-  
+
 }
-::ng-deep.hide .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret{
+
+::ng-deep.hide .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
   /* display: none; */
   overflow: hidden;
   /* appearance: none; */
   /* background: url("assets/img/plus.png") 240px 4px no-repeat; */
-  background-image: url('../../../../assets/img/maximize.png'); 
+  background-image: url('../../../../assets/img/maximize.png');
   background-size: 13px;
   background-repeat: no-repeat;
   height: 300px;
   margin-top: 12px;
   margin-right: -10px;
-} 
+}
 
 .mat-slide {
   margin-left: 620px;
@@ -480,7 +493,7 @@ li {
 .bar {
   height: 400px;
   overflow-y: scroll;
-  overflow-x: hidden;   
+  overflow-x: hidden;
   /* height: 500px; */
 }
 
@@ -488,30 +501,36 @@ li {
   margin-top: 18px;
   font-family: 'Gilroy';
 }
-.placeholder-border{
+
+.placeholder-border {
   border: 1px solid !important;
-    border-radius: 8px;
+  border-radius: 8px;
 }
+
 .minorder {
   margin-top: -29px;
   margin-left: 310px;
   font-family: 'Gilroy';
 }
+
 .mrp {
   position: relative;
   left: 27%;
-   font-family: 'Gilroy';
-} 
-.max{ 
+  font-family: 'Gilroy';
+}
+
+.max {
   margin-top: -29px;
   margin-left: 409px;
   font-family: 'Gilroy';
 }
-.discount{
+
+.discount {
   margin-top: -29px;
   margin-left: 608px;
   font-family: 'Gilroy';
 }
+
 .margin {
   margin-top: -29px;
   margin-left: 512px;
@@ -520,8 +539,8 @@ li {
 
 .leadt {
   position: relative;
-    left: 90%;
-    top: -32px;
+  left: 90%;
+  top: -32px;
   font-family: 'Gilroy';
 }
 
@@ -534,8 +553,8 @@ li {
 
 .tags {
   position: relative;
-    left: 125%;
-    top: -93px;
+  left: 125%;
+  top: -93px;
   font-family: 'Gilroy';
 }
 
@@ -572,42 +591,132 @@ li {
   margin-left: 987px;
 
 }
-.numberl{
+
+.numberl {
   margin-top: -21px;
   margin-left: 799px;
 }
-.headergeo{
+
+.headergeo {
   position: relative;
-    left: -7%;
-    top: -29px;
+  left: -7%;
+  top: -29px;
 }
-.malainput{
+
+.malainput {
   position: relative;
-    left: -7%;
+  left: -7%;
 }
-.kedahinput{
+
+.kedahinput {
   position: relative;
-    left: -7%;
+  left: -7%;
 }
-.perakinput{
+
+.perakinput {
   position: relative;
-    left: -7%;
+  left: -7%;
 }
-.penanginput{
+
+.penanginput {
   position: relative;
-    left: -7%;
+  left: -7%;
 }
-.northinput{
+
+.northinput {
   position: relative;
-    left: -7%;
+  left: -7%;
 }
-.infosize{
+
+.infosize {
   width: 300px !important;
 }
+
 ::ng-deep.mat-horizontal-content-container {
   overflow: hidden;
   padding: 0px 0px 0px 0px;
 }
-.submitbtn{
+
+.submitbtn {
   margin-top: 12px;
 }
+
+#abc::placeholder {
+  /* position: relative; */
+  /* text-align: center; */
+  bottom: 90px;
+}
+
+::ng-deep.categorydrp .ng-select.ng-select-single .ng-select-container {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border-radius: 10px;
+}
+
+::ng-deep.subcategorydrp .ng-select.ng-select-single .ng-select-container {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border-radius: 10px;
+}
+
+::ng-deep.typedrp .ng-select.ng-select-single .ng-select-container {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border-radius: 10px;
+}
+
+::ng-deep.uomdrp .ng-select.ng-select-single .ng-select-container {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border-radius: 10px;
+}
+
+::ng-deep.customidentifier .ng-select.ng-select-single .ng-select-container {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border-radius: 10px;
+}
+
+::ng-deep.categorydrp .ng-placeholder {
+  color: #999;
+  font-size: 12px;
+  font-family: 'Gilroy';
+  font-weight: lighter;
+}
+
+::ng-deep.subcategorydrp .ng-placeholder {
+  color: #999;
+  font-size: 12px;
+  font-family: 'Gilroy';
+}
+
+::ng-deep.typedrp .ng-placeholder {
+  color: #999;
+  font-size: 12px;
+  font-family: 'Gilroy';
+}
+
+::ng-deep.uomdrp .ng-placeholder {
+  color: #999;
+  font-size: 12px;
+  font-family: 'Gilroy';
+}
+
+::ng-deep.customidentifier .ng-placeholder {
+  color: #999;
+  font-size: 12px;
+  font-family: 'Gilroy';
+}
+
+.materialname-placeholder {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  }
+
+  ::ng-deep.sss .mat-form-field-label{
+    color: rgba(104, 110, 116, 0.75);
+    font-size: 12px;
+    padding-top: 5px;
+    padding-left: 9px;
+  }

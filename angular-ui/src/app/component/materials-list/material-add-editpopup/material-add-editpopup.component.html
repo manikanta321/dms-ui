@@ -33,13 +33,13 @@
               </div>
               <div class="categorydrp">
                 <ng-select [items]="catgname" [virtualScroll]="true" bindLabel="catName" bindValue="catId"
-                  [searchable]="true" [clearable]="false" placeholder="Category" [(ngModel)]="selectedItems"
+                  [searchable]="true" [clearable]="false" placeholder="Search & select category" [(ngModel)]="selectedItems"
                   (change)="onItemSelect($event)">
                 </ng-select>
               </div>
               <div class="subcategorydrp">
                 <ng-select [items]="sub_category" [virtualScroll]="true" bindLabel="subCatName" bindValue="subCatId"
-                  [searchable]="true" [clearable]="false" placeholder="Sub-Category" [(ngModel)]="selectedItems"
+                  [searchable]="true" [clearable]="false" placeholder="search & select sub-category" [(ngModel)]="selectedItems"
                   (change)="onSubCategorySelect($event)">
                 </ng-select>
               </div>
@@ -49,28 +49,30 @@
                   (onSelectAll)="onTypeAll($event)">
                 </ng-multiselect-dropdown> -->
                 <ng-select [items]="typeI" [virtualScroll]="true" bindLabel="typeName" bindValue="typeId"
-                  [searchable]="true" [clearable]="false" placeholder="Type" [(ngModel)]="selectedItems"
+                  [searchable]="true" [clearable]="false" placeholder="Search & select type" [(ngModel)]="selectedItems"
                   (change)="onTypeSelect($event)">
                 </ng-select>
               </div>
               <br>
+              <div class="mat-align">
               <div class="materialname">
                 <label>Name <span>*</span></label>
               </div>
               <div class="uomp">
                 <label>UOM <span>*</span></label>
-              </div>
-
+              
+            </div>
               <mat-form-field>
-                <input matInput placeholder="Enter the name of material" #input class="form-control container" style="border:1px solid !important; border-radius: 9px;border-color: lightgrey;width: 461px;
+                <input matInput placeholder="Enter the name of material" #input class="form-control container materialname-placeholder sss" style="width: 461px;
                            height: 35px;background-color: white;margin-top: -9px; margin-left: -1px;">
               </mat-form-field>
               <div class="uomdrp">
                 <ng-select [items]="rowData5" [virtualScroll]="true" bindLabel="uoMShortName" bindValue="uoMId"
-                  [searchable]="true" [clearable]="false" placeholder="UOM" [(ngModel)]="selectedItems"
+                  [searchable]="true" [clearable]="false" placeholder="Search & select measuring unit" [(ngModel)]="selectedItems"
                   (change)="onUomSelect($event)">
                 </ng-select>
               </div>
+            
               <div class="description">
                 <label>Description <span>*</span></label>
               </div>
@@ -80,9 +82,11 @@
               <div class="materialci">
                 <label> Material Custom Identifiers <span>*</span></label>
               </div>
-              <input matInput placeholder="Describe the material" #input class="form-control container" style="border:solid lightgrey 1px;width: 256px;
+              <input matInput placeholder="Describe the material" #input class="form-control container" id="abc"style="border: 1px solid !important;
+              border-radius: 10px;width: 281px;
                            height: 126px;background-color: white;margin-top: 6px; margin-left: 3px;">
-              <div placeholder="" #input class="form-control container" style="border:solid lightgrey 1px;width: 146px;
+              <div placeholder="" #input class="form-control container" style="border: 1px solid !important;
+              border-radius: 8px;;width: 146px;
               height: 129px;background-color: white;margin-top: -132px; margin-left: 314px;">
               <img src="assets/img/add-image.png"  class="add-img"
                 alt="left-arr-btn">
@@ -105,11 +109,13 @@
               <div class="expiryperiod">
                 <label> Expiry Period (in months)<span>*</span></label>
               </div>
-              <input matInput placeholder="NA" #input class="form-control container" style="border:solid lightgrey 1px;width: 201px;
+              <input matInput placeholder="NA" #input class="form-control container" style="border: 1px solid !important;
+              border-radius: 10px;width: 201px;
               height: 34px;background-color: white;margin-top:4px; margin-left: 503px;">
               <!-- <div>
         <button mat-button matStepperNext>Next</button>
       </div> -->
+    </div>
             </form>
           </mat-step>
 
@@ -133,7 +139,7 @@
                   <label>Global Code<span>*</span></label>
                 </div>
 
-                <input matInput placeholder="Enter the name of brand" #input class="form-control container" style="border:solid lightgrey 1px;width: 351px;
+                <input matInput placeholder="Enter the name of brand" #input class="form-control container " style="border:solid lightgrey 1px;width: 351px;
                 height: 31px;background-color: white;margin-top: 7px; margin-left: -4px;">
 
                 <input matInput placeholder="Enter product global code" #input class="form-control container" style="border:solid lightgrey 1px;width: 334px;

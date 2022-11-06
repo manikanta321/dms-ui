@@ -89,7 +89,7 @@
     width: 250px;
     font-size: 14px;
     outline: none !important;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
 }
 ::ng-deep.btn-primary[_ngcontent-uke-c437]:disabled {
     margin-bottom: 0px !important;

@@ -65,7 +65,7 @@ export class TaxTemplateComponent implements OnInit {
   field: 'taxTemplateName' ,type: ['nonEditableColumn'],pinned: 'left',minWidth:400
   },
   
-  {   headerName: "Tax Items",field: 'taxTemplateDetails',type: ['nonEditableColumn'] ,minWidth:400},
+  {   headerName: "Tax Items",field: 'taxTemplateDetails',type: ['nonEditableColumn'] ,minWidth:700},
   
   // suppressMovable:true,
   { headerName: "Status",
@@ -190,64 +190,7 @@ export class TaxTemplateComponent implements OnInit {
     pagination: false,
     paginationAutoPageSize: false,
 }
-
-  
-    // columns: Array<GuiColumn> = [
-    //   {
-    //     header: 'Name',
-    //     field: 'name' 			//source {name: 'T-shirt'}
-    //   },
-    //   {
-    //     header: 'Type',
-    //     field: 'type' 			//source {type: 'clothes'}
-    //   },
-    //   {
-    //     header: 'Price',
-    //     field: 'price'			//source {price: '15$'}
-    //   }];
-  
-    // source: Array<any> = [
-    //   {
-    //     name: 'T-shirt',		//columns {header: 'Name', field: 'name'}
-    //     type: 'clothes',		//columns {header: 'Type', field: 'type'}
-    //     price: '15$' 			//columns {header: 'Price', field: 'price'}
-    //   },
-    //   {
-    //     name: 'Shoes',
-    //     type: 'footwear',
-    //     price: '100$'
-    //   },
-    //   {
-    //     name: 'Ball cap',
-    //     type: 'headgear',
-    //     price: '50$'
-    //   }];
-  
-    //   sorting: GuiSorting = {
-    //     enabled: true
-    // };
-  
-    // paging: GuiPaging = {
-    //   enabled: true,
-    //   page: 1,
-    //   pageSize: 10,
-    //   pageSizes: [10, 25, 50],
-    //   pagerTop: true,
-    //   pagerBottom: true,
-    //   display: GuiPagingDisplay.BASIC
-    // };
-  
-    // searching: GuiSearching = {
-    //   enabled: true,
-    //   placeholder: 'Search heroes'
-    // };
-  
-    // columnMenu: GuiColumnMenu = {
-    //   enabled: true,
-    //   sort: true,
-    //   columnsManager: true,
-  
-    // };
+instancePopup:any = null;
     displayedColumns: string[] = ['position', 'name',  'symbol','email','phonenum','login','status','edit'];
     dataSource = new MatTableDataSource(ELEMENT_DATA);
     toppings = new FormControl('');
@@ -261,6 +204,10 @@ export class TaxTemplateComponent implements OnInit {
   limitSelection = false;
   statusSelection =false;
   toppingList: any= [];
+  taxId: any;
+  taxTemplateName:any;
+  stayScrolledToEnd = true;
+  messages: any[] = [];
 
   constructor( private user:UserService,   
    private tax:TaxTemplateServiceService,
@@ -354,8 +301,8 @@ export class TaxTemplateComponent implements OnInit {
       this.statusTypes.push(item.statusId);
     
       const data={
-        statuss:this.statusTypes,
-        search:this.searchText,
+        Statuss:this.statusTypes,
+        Search:this.searchText,
       }
       this.tax.gettaxlist(data).subscribe((res: any) => {
         this.rowData5 = res.response;
@@ -386,8 +333,8 @@ export class TaxTemplateComponent implements OnInit {
         this.userTypes.push(item.roleId);
       
         const data={
-          statuss:this.statusTypes,
-          search:this.searchText,
+          Statuss:this.statusTypes,
+          Search:this.searchText,
       
         }
         this.tax.gettaxlist(data).subscribe((res: any) => {
@@ -399,8 +346,8 @@ export class TaxTemplateComponent implements OnInit {
       onItemSelectOrAll(item:any){
         this.userTypes=this.roleArray;
         const data={
-          statuss:this.statusTypes,
-          search:this.searchText,
+          Statuss:this.statusTypes,
+          Search:this.searchText,
       
         }
         this.tax.gettaxlist(data).subscribe((res: any) => {
@@ -410,8 +357,8 @@ export class TaxTemplateComponent implements OnInit {
         console.log('onItemSelect', item);}
       onItemDeSelectOrAll(item:any){
         const data={
-          statuss:[],
-          search:this.searchText,
+          Statuss:[],
+          Search:this.searchText,
       
         }
         this.tax.gettaxlist(data).subscribe((res: any) => {
@@ -423,8 +370,8 @@ export class TaxTemplateComponent implements OnInit {
       
         onItemDeSelectOrAllStatus(item:any){
           const data={
-            statuss:[],
-            search:this.searchText,
+            Statuss:[],
+            Search:this.searchText,
         
           }
           this.tax.gettaxlist(data).subscribe((res: any) => {
@@ -436,6 +383,7 @@ export class TaxTemplateComponent implements OnInit {
       
         onItemSelectOrAllStatus(item:any){
           this.statusTypes=this.statusArray;
+          console.log('y this is not coming',this.statusTypes)
           const data={
             statuss:this.statusTypes,
             search:this.searchText,
@@ -444,11 +392,11 @@ export class TaxTemplateComponent implements OnInit {
           this.tax.gettaxlist(data).subscribe((res: any) => {
             this.rowData5 = res.response;
           });
-          console.log('rolefilter', this.statusTypes)
         }
     
     
     onStatusDeSelect(item: any) {
+      alert(item)
       this.statusTypes.forEach((element,index)=>{
         if(element==item.statusId)  this.statusTypes.splice(index,1);
      });
@@ -569,12 +517,42 @@ announceSortChange(sortState: any) {
   }
 }
 
+handleRowDataChanged(event) {
+  const index = this.messages.length - 1;
+  if (this.stayScrolledToEnd) {
+    //this.gridOptions.ensureIndexVisible(index, 'bottom');
+  }
+}
+
+handleScroll(event) {
+  if(this.instancePopup){
+    this.instancePopup.togglePopup();
+    this.instancePopup = null;
+  }
+  
+  const grid = document.getElementById('gridContainer');
+  if (grid) {
+    const gridBody = grid.querySelector('.ag-body-viewport') as any;
+    const scrollPos = gridBody.offsetHeight + event.top;
+    const scrollDiff = gridBody.scrollHeight - scrollPos;
+    //const api =  this.rowData5;
+    this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
+    this.paginationScrollCount = this.rowData5.length;
+  }
+}
+
 
 // Example of consuming Grid Event
 onCellClicked( e) {
   console.log('cellClicked', e);
+  this.taxId=e.data.taxTemplateId
+  localStorage.setItem('taxId', this.taxId)
+  // alert(this.taxId)
+  this.taxTemplateName=e.data.taxTemplateName
+  localStorage.setItem('taxTemplateName', this.taxTemplateName)
 
   
+
   if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
     const cellRendererInstances = e.api.getCellRendererInstances({
       rowNodes: [e.node],
@@ -582,9 +560,12 @@ onCellClicked( e) {
     });
     if (cellRendererInstances.length > 0) {
       const instance = cellRendererInstances[0];
+      this.instancePopup = instance;
       instance.togglePopup();
     }
   }
+
+
 }
 
 openDialog(){

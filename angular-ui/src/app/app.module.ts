@@ -108,6 +108,12 @@ import { CurrencyReactivatedComponent } from './component/other-masters/currency
 import { CurrencyDefaultComponent } from './component/other-masters/currency-conversation/currency-default/currency-default.component';
 import { RemovePromotionItemComponent } from './component/add-promotions/remove-promotion-item/remove-promotion-item.component';
 import { RemovePromotionSucessComponent } from './component/add-promotions/remove-promotion-sucess/remove-promotion-sucess.component';
+import { DeactiveTaxCoponentComponent } from './component/deactive-tax-coponent/deactive-tax-coponent.component';
+import { ReactiveTaxCoponentComponent } from './component/reactive-tax-coponent/reactive-tax-coponent.component';
+import { ActiveSuccessTaxTemplateComponent } from './component/active-success-tax-template/active-success-tax-template.component';
+import { DeactiveSuccessTaxTemplateComponent } from './component/deactive-success-tax-template/deactive-success-tax-template.component';
+import { DeactivateTaxCoponentComponent } from './component/deactivate-tax-coponent/deactivate-tax-coponent.component';
+import { SuccessDeactivateTaxComponentComponent } from './component/success-deactivate-tax-component/success-deactivate-tax-component.component';
 
 @NgModule({
   declarations: [
@@ -185,6 +191,12 @@ import { RemovePromotionSucessComponent } from './component/add-promotions/remov
           CurrencyDefaultComponent,
           RemovePromotionItemComponent,
           RemovePromotionSucessComponent,
+          DeactiveTaxCoponentComponent,
+          ReactiveTaxCoponentComponent,
+          ActiveSuccessTaxTemplateComponent,
+          DeactiveSuccessTaxTemplateComponent,
+          DeactivateTaxCoponentComponent,
+          SuccessDeactivateTaxComponentComponent,
   ],
   imports: [
     FormsModule,

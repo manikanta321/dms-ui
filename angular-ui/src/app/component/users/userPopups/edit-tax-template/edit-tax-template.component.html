@@ -2,52 +2,72 @@
     <div class="EditUser-p">
         <mat-icon  mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
         <div class="head-t">
-            <h3>Add Tax Template</h3>
-            <label>Name</label>
-            <br>
-            <input type="text" placeholder="Indian GST">
-        </div>
+            <h3 class="addU">Edit Tax Template</h3>
+          </div>
+        <!-- <div  class="row">
+            <div class="col-8">
+                <label>Name</label>
+                <br>
+                <input style="height: 43px;width: 220px;border-radius: 10px;border: ' 0.5px solid #000000';" type="text" placeholder="Indian GST">
+    
+            </div>
+            <div class="col">
+                <br>
+                <br>
+              <p>  Used <b>T</b> for <b>Total</b> in Formula*</p>
+            </div>
+           
+        </div> -->
+        <br>
        <div class="cl-tax">
-       <div class="tax-head">
+       <div class="tax-head scroll" >
         <div>
             
-            <table>
-                <tr>
-                    <th></th>
-                    <th>Tax item Name</th>
-                    <th>Options (in %)</th>
-                    <th>Formula</th>
-                </tr>
-                <tr>
-                    <td>A</td>
-                    <td><input type="text" placeholder="IGST"></td>
-                    <td><input type="text" placeholder="0,5,15,25,"></td>
-                    <td><input type="text" placeholder="0,5,15,25,"></td>
-                    <td><p class="minus-icon">+</p></td>
-                </tr>
-                <tr>
-                    <td>B</td>
-                    <td><input type="text" placeholder="IGST"></td>
-                    <td><input type="text" placeholder="0,5,15,25,"></td>
-                    <td><input type="text" placeholder="0,5,15,25,"></td>
-                    <td><p class="minus-icon">+</p></td>
-                </tr>
-                <tr>
-                    <td>C</td>
-                    <td><input type="text" placeholder="IGST"></td>
-                    <td><input type="text" placeholder="0,5,15,25,"></td>
-                    <td><input type="text" placeholder="0,5,15,25,"></td>
-                    <td><p class="minus-icon">+</p></td>
-                </tr>
-            </table>
-            <div style="text-align: right; padding:20px">
-            <button class="btn E-saveBtn">Save</button>
+            <form [formGroup]="productForm" (ngSubmit)="onSubmit()">  
+                
+                <div  class="row">
+                    <div class="col-8">
+                        <label>Name</label>
+                        <br>
+                        <input style="height: 43px;width: 220px;border-radius: 10px;border: ' 0.5px solid #000000';" type="text"  id="TaxTemplateName" name="TaxTemplateName"  formControlName="TaxTemplateName" >
+            
+                    </div>
+                    <div class="col">
+                        <br>
+                        <br>
+                      <p>  Used <b>T</b> for <b>Total</b> in Formula*</p>
+                    </div>
+                   
+                </div> 
+              <table formArrayName="TaxDetails" >
+                    <tr>
+                        <th></th>
+                        <th>Tax item Name</th>
+                        <th>Options (in %)</th>       
+                        <th>Formula</th>
+                        <td  (click)="addQuantity(0)"><mat-icon  style="cursor: pointer;">add_circle</mat-icon>
+                        </td>
+    
+                    </tr>
+                    <tr *ngFor="let quantity of TaxDetails().controls; let i=index" [formGroupName]="i">
+                        <td><input type="text" class="minus-icon1"  formControlName="DisplayOrder" readonly></td>
+                        <td><input type="text"  style="width: 160px;height: 43px;border-radius: 10px;border: 0.5px solid #000000;" formControlName="TaxCodeName" ></td>
+                        <td><input type="text"  style="width: 160px;height: 43px;border-radius: 10px;border: 0.5px solid #000000;"  formControlName="PercentageValue"></td>
+                        <td><input type="text"   style="width: 190px;height: 43px;border-radius: 10px;border: 0.5px solid #000000;"  formControlName="Formula" ></td>
+                        <td (click)="removeQuantity(i)"><p class="minus-icon">-</p></td>
+                        <mat-icon>keyboard_arrow_down</mat-icon>
+                    </tr>
+                   
+                </table>
+
+              </form>  
+          <div style="text-align: center; padding:20px">
+            <button class="btn E-saveBtn" type="submit" (click)="onSubmit()" [disabled]="TaxTemplateName">Save</button>
                 <button class="btn E-cancelBtn" (click)=" closeDialog()" >Cancel</button>
             </div>
 
         </div>
        
-
        </div>
        </div>
     </div>

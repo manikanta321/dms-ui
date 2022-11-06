@@ -7,9 +7,12 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
 
 import tippy, { hideAll } from 'tippy.js'; 
+import { DeactivateTaxCoponentComponent } from '../deactivate-tax-coponent/deactivate-tax-coponent.component';
+import { ReactiveTaxCoponentComponent } from '../reactive-tax-coponent/reactive-tax-coponent.component';
 import { ActivatepopUpComponent } from '../users/userPopups/activatepop-up/activatepop-up.component';
 import { DeactivateUserpopupComponent } from '../users/userPopups/deactivate-userpopup/deactivate-userpopup.component';
 import { EditPopupComponent } from '../users/userPopups/edit-popup/edit-popup.component';
+import { EditTaxTemplateComponent } from '../users/userPopups/edit-tax-template/edit-tax-template.component';
 import { PswResetPopupComponent } from '../users/userPopups/psw-reset-popup/psw-reset-popup.component';
 
 @Component({
@@ -72,7 +75,7 @@ export class TaxTempleateActionComponent implements OnInit,  AfterViewInit {
       interactive: true,
       appendTo: document.body,
       hideOnClick: false,
-      offset: [0, 200],
+      offset: [-100, 200],
       onShow: (instance) => {
         hideAll({ exclude: instance });
       },
@@ -85,16 +88,16 @@ export class TaxTempleateActionComponent implements OnInit,  AfterViewInit {
 
   editUser(){
    
-    this.dialog.open( EditPopupComponent,);
+    this.dialog.open( EditTaxTemplateComponent,);
     this.isOpen = false;
   }
   deactive(){
-    this.dialog.open(DeactivateUserpopupComponent);
+    this.dialog.open(DeactivateTaxCoponentComponent);
     this.isOpen = false;
   }
 
   activate(){
-    this.dialog.open(ActivatepopUpComponent);
+    this.dialog.open(ReactiveTaxCoponentComponent);
     this.isOpen = false;
   }
   resetpws(){

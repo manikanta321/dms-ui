@@ -28,11 +28,22 @@ export class EditPopupComponent implements OnInit {
   toppings = new FormControl(this.toppingList);
   UserId: any;
   errorMsg: any;
+  name = 'Angular';  
+    
+  productForm!: FormGroup;  
   constructor(private dialogRef: MatDialogRef<any>,
     private formBuilder: FormBuilder,
     private user:UserService,
     private sharedService:SharedService,
-    ) { }
+    private fb:FormBuilder,
+     
+  
+    ) { 
+      this.productForm = this.fb.group({  
+        name: '',  
+        quantities: this.fb.array([]) ,  
+      });  
+    }
 
   ngOnInit(): void {
     this.roleItems();
@@ -48,6 +59,32 @@ console.log('dataofEdit',this.data)
     })
   }
 
+
+  
+
+    
+  quantities() : FormArray {  
+    return this.productForm.get("quantities") as FormArray  
+  }  
+     
+  newQuantity(): FormGroup {  
+    return this.fb.group({  
+      qty: '',  
+      price: '',  
+    })  
+  }  
+     
+  addQuantity() {  
+    this.quantities().push(this.newQuantity());  
+  }  
+     
+  removeQuantity(i:number) {  
+    this.quantities().removeAt(i);  
+  }  
+     
+  onSubmit() {  
+    console.log(this.productForm.value);  
+  }  
   patchValue(){
     this.username=this.data.userName
     this.email=this.data.email;

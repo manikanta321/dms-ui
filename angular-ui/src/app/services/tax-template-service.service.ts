@@ -35,21 +35,26 @@ else {
 
 
 gettaxlist(data){
-  
-  // const data={
-  //   userTypes:[],
-  //   statuss:[],
-  // }//     const idToken = localStorage.getItem('token');
-// console.log('idtoken',idToken)
-//     const headers = {
-//       'accesstoken': localStorage.getItem('token'),
-//       //'methodtype': 'RULES'
-//     };
-JSON.stringify(data)
-  return this.http.post<any>('http://52.172.24.161:801/api/OtherMasterApi/GetTAxTemplatesList', data);
+  return this.http.post<any>(this.taxurl+'OtherMasterApi/GetTAxTemplatesList', data);
 }
 addtax(data){
-  return this.http.post<any>('http://52.172.24.161:801/api/OtherMasterApi/AddTaxTemplate', data);
+  return this.http.post<any>(this.taxurl+'OtherMasterApi/AddTaxTemplate', data);
 
 }
+
+reactiveuser(taxid){
+  return this.http.get<any>(`${this.taxurl}OtherMasterApi/TaxTemplateReactivate?TaxTemplateId=${taxid}`);
+
+}
+deactiveuser(taxid){
+  return this.http.get<any>(`${this.taxurl}OtherMasterApi/TaxTemplateDeactivate?TaxTemplateId=${taxid}`);
+
+}
+
+gettaxitemToEdit(taxid){
+  return this.http.get<any>(`${this.taxurl}OtherMasterApi/GetTaxTemplateToEdit?TaxTemplateId=${taxid}`);
+
+}
+
+
 }

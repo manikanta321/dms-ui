@@ -109,7 +109,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
     headerList(){
       this.columnDefs= [
         {
-          headerName: 'Product Name',field: 'productname', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
+          headerName: 'Product Name',field: 'productname', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',checkboxSelection: true,
         },
     
         { headerName: 'SKU', field: 'sku', type: ['nonEditableColumn'] },
@@ -145,6 +145,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
     onCellClicked( e: CellClickedEvent): void {
       console.log('cellClicked', e);
+      
       // this.userId=e.data.userId;
       // this.employeeName=e.data.employeeName
       // console.log('userID',this.userId)

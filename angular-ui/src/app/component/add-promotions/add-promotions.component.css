@@ -8,6 +8,18 @@
   bottom: 2px;
 
 }
+.addMore-icon {
+  cursor: pointer;
+  /* cursor: not-allowed;
+  pointer-events: none !important; */
+}
+
+.addMore-icons {
+  cursor: pointer;
+  color: grey;
+  /* cursor: not-allowed;
+  pointer-events: none !important; */
+}
 
 .category {
   margin-top: 18px;

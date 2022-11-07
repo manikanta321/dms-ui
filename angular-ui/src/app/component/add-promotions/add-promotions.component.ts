@@ -27,6 +27,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     pValue: '',
   }];
   errorMsg: any;
+  
+  basicInfo:boolean=false;
+
   buyab: boolean = false;
   volumedc: boolean = false;
   pricedc : boolean =false
@@ -172,7 +175,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     })
   }
 
-
+  disableBackbutton(){
+    this.goForward(this.myStepper);
+   this.basicInfo=true;
+   // alert(this.basicInfo);
+ } 
 
   addCategory() {
     this.addButton = true;

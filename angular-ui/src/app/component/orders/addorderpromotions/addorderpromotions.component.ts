@@ -15,12 +15,12 @@ export class AddorderpromotionsComponent implements OnInit {
   selectedTeam = '';
   selectedDay: string = '';
 
-  dealerInfo = true;  
-  orderitem = true;
-  otherInfo = true;
-  image1 = 'assets/img/maximize-arrow.png';
-  image2 = 'assets/img/maximize-arrow.png';
-  image3 = 'assets/img/maximize-arrow.png';
+  dealerInfo = false;  
+  orderitem = false;
+  otherInfo = false;
+  image1 = 'assets/img/minimize-tag.png';
+  image2 = 'assets/img/minimize-tag.png';
+  image3 = 'assets/img/minimize-tag.png';
 
   //event handler for the select element's change event
   selectChangeHandler (event: any) {
@@ -67,9 +67,10 @@ export class AddorderpromotionsComponent implements OnInit {
     this.dealerInfo = !this.dealerInfo;
 
     if(this.dealerInfo === false){
-      this.image1 = 'assets/img/minimize-tag.png';
-    } else {
       this.image1 = 'assets/img/maximize-arrow.png';
+    } else {
+      this.image1 = 'assets/img/minimize-tag.png';
+     
     }
   }
 

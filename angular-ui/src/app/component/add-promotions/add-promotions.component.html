@@ -7,10 +7,12 @@
             <div class="head-t">
                 <h3 class="addU font">Add Promotions</h3>
                 <br>
-                <img src="assets/img/arrow-left-circle-fill.svg" style="width: 24px;margin-left: 760px;"
-                    alt="left-arr-btn">
-                <img src="assets/img/arrow-right-circle-fill.svg" style="width: 24px; margin-left: 12px;"
-                    alt="right-arr-btn">
+                <img src="assets/img/arrow-left-disable.png"   *ngIf="!basicInfo" class="addMore-icon" style="width: 32px;margin-left: 760px;"
+                alt="left-arr-btn">
+                <img src="assets/img/arrow-left-circle-fill.svg"   *ngIf="basicInfo" class="addMore-icons" style="width: 24px;margin-left: 760px;"
+                alt="left-arr-btn">
+            <img src="assets/img/arrow-right-circle-fill.svg"  (click)="disableBackbutton()"  class="addMore-icon" style="width: 24px; margin-left: 12px;"
+                alt="right-arr-btn">
                 <mat-stepper labelPosition="bottom" #stepper>
                     <mat-step [stepControl]="firstFormGroup">
                         <form [formGroup]="firstFormGroup">

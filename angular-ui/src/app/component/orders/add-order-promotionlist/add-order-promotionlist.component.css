@@ -836,9 +836,9 @@
     overflow-x: hidden !important;
 }
 
-.promotionpopup-scroll {
+/* .promotionpopup-scroll {
     height: 360px !important;
-}
+} */
 
 .footer {
     position:fixed;

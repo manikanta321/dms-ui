@@ -1134,8 +1134,16 @@ border-radius: 10px;
 
   .addMore-icon {
     cursor: pointer;
+    /* cursor: not-allowed;
+    pointer-events: none !important; */
   }
-
+  
+  .addMore-icons {
+    cursor: pointer;
+    color: grey;
+    /* cursor: not-allowed;
+    pointer-events: none !important; */
+  }
   .status-class {
     box-sizing: border-box;
     width: 280px;

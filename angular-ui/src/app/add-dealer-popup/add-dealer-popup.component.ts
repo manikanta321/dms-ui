@@ -30,11 +30,17 @@ export class AddDealerPopupComponent implements OnInit {
     current : false,
     next : false
   }
-  
+  payloadArray={
+    enabled:false
+  }
   errorMsg: any;
   addCountryButton: boolean = false;
+
+  basicInfo:boolean=false;
+
   removelist: boolean = false;
   stateName: string[] = ['State 1', 'State 2',];
+
 
 
   CountryList:any=[];
@@ -54,6 +60,7 @@ export class AddDealerPopupComponent implements OnInit {
 
   selectedItem = null;
   totalStepsCount: number | undefined;
+ 
 
   @ViewChild('stepper') private myStepper: MatStepper | any;
   
@@ -99,6 +106,16 @@ export class AddDealerPopupComponent implements OnInit {
   goForward(stepper: MatStepper) {
     stepper.next();
   }
+
+  disableBackbutton(){
+       this.goForward(this.myStepper);
+      this.basicInfo=true;
+      // alert(this.basicInfo);
+    } 
+   
+  
+  
+
 
   getCategory(event: any){
     if (event.CategoryName=='Buy(A+B..) get(X+Y..)'){

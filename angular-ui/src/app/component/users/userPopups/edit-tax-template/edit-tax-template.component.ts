@@ -7,7 +7,7 @@ import { FormGroup, FormArray, FormControl, Validators, FormBuilder, AbstractCon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
 import { TaxTemplateServiceService } from 'src/app/services/tax-template-service.service';
 import { SharedService } from 'src/app/services/shared-services.service';
-import { dataBinding } from '@syncfusion/ej2-angular-schedule';
+// import { dataBinding } from '@syncfusion/ej2-angular-schedule';
 
 @Component({
   selector: 'app-edit-tax-template',

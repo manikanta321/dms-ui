@@ -1,14 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import * as moment from 'moment';
 import { MatTableDataSource } from '@angular/material/table';
 import { CellClassParams, CellClassRules, CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef, GridApi, GridOptions, ModuleRegistry, ColumnResizedEvent, Grid, } from 'ag-grid-community';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ProductShortCodeComponent } from '../product-short-code/product-short-code.component';
-import { ProductGroupAddItemComponent } from '../product-group-add-item/product-group-add-item.component';
-import { ProductSubGroupComponent } from '../product-sub-group/product-sub-group.component';
 import { PromotionService } from 'src/app/services/promotion.service';
+
 export interface PeriodicElement {
 
   name: any;
@@ -36,25 +30,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 ];
 @Component({
-  selector: 'app-add-items-promotion',
-  templateUrl: './add-items-promotion.component.html',
-  styleUrls: ['./add-items-promotion.component.css']
+  selector: 'app-popup-psubg-grid-table',
+  templateUrl: './popup-psubg-grid-table.component.html',
+  styleUrls: ['./popup-psubg-grid-table.component.css']
 })
-export class AddItemsPromotionComponent implements OnInit {
-  // firstFormGroup = this._formBuilder.group({
-  //   firstCtrl: ['', Validators.required],
-  // });
-  // secondFormGroup = this._formBuilder.group({
-  //   secondCtrl: ['', Validators.required],
-  // });
-  // isLinear = false;
+export class PopupPsubgGridTableComponent implements OnInit {
   private gridApi!: GridApi;
   searchText;
   columnDefs: ColDef[] = [
 
     {
       headerName: "Product Name",
-      field: 'stockItemName', type: ['nonEditableColumn'], pinned: 'left',checkboxSelection: true
+      field: 'stockItemName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
     },
 
     { headerName: "Classification", field: 'classification', type: ['nonEditableColumn'] },
@@ -75,7 +62,7 @@ export class AddItemsPromotionComponent implements OnInit {
       field: 'globalCode', type: ['nonEditableColumn'],
     },
     {
-      headerName: "Product Shot Code",
+      headerName: "ShortCode",
       field: 'shortCode', type: ['nonEditableColumn'],
     },
     {
@@ -173,8 +160,7 @@ export class AddItemsPromotionComponent implements OnInit {
   
     // toppingList: string[] = ['Admin', 'Dealer','Customer'];
     toppingList: any = [];
-    addcategory : any = [];
-    catgadd : any =[];
+  
     toppingList1: any = [];
     filterDictionary: any;
     sideBarOpen = true;
@@ -188,76 +174,14 @@ export class AddItemsPromotionComponent implements OnInit {
     message1: boolean = true;
     paginationPageSize = 10;
     disabled = false;
-    dropdownSettings: IDropdownSettings = {};
-    dropdownSettings1: IDropdownSettings = {};
-    dropdownSettings2: IDropdownSettings = {};
-    dropdownSettings3: IDropdownSettings = {};
-    dropdownSettings5: IDropdownSettings = {};
-    productchk:boolean=true;
+    productchk:boolean=false;
     prodShtCode:boolean=false;
-    productGrpChk:boolean=false;
+    productGrpChk:boolean=true;
     productSubGChk:boolean=false;
-    myForm: any = FormGroup;
-    selectedItems: any = [];
-    allOtherSubCAts :any = [];
-    productg : any = [];
-    addtypes : any =[];
-    subCategory : any = [];
-    statusTypes =[];
-    userTypes = [];
-  constructor(private _formBuilder: FormBuilder,
-    public dialog: MatDialog,
-    private dialogRef: MatDialogRef<any>,
-    public promotionTypes : PromotionService,
-    private fb: FormBuilder,) { }
+  constructor(public promotionTypes : PromotionService) { }
 
   ngOnInit(): void {
-    this.productListtable();
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'catId',
-      textField: 'catName',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 1,
-      // allowSearchFilter: this.StatusFilter
-    };
-    this.dropdownSettings1 = {
-      singleSelection: false,
-      idField: 'statusId',
-      textField: 'statusName',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 1,
-      // allowSearchFilter: this.StatusFilter
-    };
-    this.dropdownSettings2 = {
-      singleSelection: false,
-      idField: 'productCustomIdentifierId',
-      textField: 'productCustomName',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 1,
-    }
-    this.dropdownSettings3 = {
-      singleSelection: false,
-      idField: 'productGroupId',
-      textField: 'productGroupName',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 1,
-    }
-    this.dropdownSettings5 = {
-      singleSelection: false,
-      idField: 'productCustomIdentifierId',
-      textField: 'productCustomName',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 1,
-    }
-    this.myForm = this.fb.group({
-      city: [this.selectedItems]
-    });
+   this.GetPSubgTableList();
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -274,7 +198,6 @@ export class AddItemsPromotionComponent implements OnInit {
     params.api.paginationGoToPage(4);
   }
   openDialog() {
-    // alert('mani')
 
   }
   handleScroll(event) {
@@ -312,137 +235,10 @@ export class AddItemsPromotionComponent implements OnInit {
       }
     }
   }
-  product(){
-    this.dialog.open( AddItemsPromotionComponent,{width:'1043px'});
-    this.dialogRef.close()
-  }
-  productShotCode(){
-    this.dialog.open(  ProductShortCodeComponent,{width:'1043px'});
-    this.productchk = true;
-    this.dialogRef.close()
-  }
-  productGrp(){
-    this.dialog.open( ProductGroupAddItemComponent,{width:'1043px'});
-    this.dialogRef.close()
-  }
-  productSubG(){
-    this.dialog.open( ProductSubGroupComponent,{width:'1043px'});
-    this.dialogRef.close()
-  }
-  productListtable(){
-    const data = {
-      Cat : [],
-      Sub_Cat : [],
-      type : [],
-      productgroup : [],
-      productidentifier :[],
-      Search : ''
-    }
-    this.promotionTypes.GetProductList(data).subscribe((res) =>{
-      console.log('productlist is works', res);
+  GetPSubgTableList(){
+    this.promotionTypes.GetPSGDetailList().subscribe((res) =>{
+      console.log('checksubgtable', res);
       this.rowData5 = res.response;
     })
   }
-  onSearchChange($event: any, anything?: any){
-    const { target } = $event;
-    this.searchText = target.value;
-    const data = {
-      Cat : [],
-      Sub_Cat : [],
-      type : [],
-      productgroup : [],
-      productidentifier :[],
-      // Search : '',
-      search: this.searchText,
-    }
-    this.promotionTypes.GetProductList(data).subscribe((res) =>{
-      console.log('search data', res);
-      this.rowData5 = res.response;
-      
-    })
-  }
-  onRowSelect(event) {
-    const selectedRows = this.gridApi.getSelectedRows();
-    console.log(selectedRows);
-  }
-  addproductitems(){
-    const selectedRows = this.gridApi.getSelectedRows();
-    console.log(selectedRows);
-    this.dialogRef.close(selectedRows);
-  }
-  oncatselect(item : any){
-    // const data = {
-    //     catId : [26,33,37],
-    //     firstSubCat :[],
-    //     allOtherSubCAts :[],
-    // }
-    // this.promotionTypes.GetSUbCAtsOfMultiCats(data).subscribe((res) =>{
-    //   console.log('search data', this.addcategory);
-    //   this.addcategory = res.response;
-    // this.allOtherSubCAts =this.allOtherSubCAts;
-    // })
-    // const data = {
-    //       catId : [26,33,37],
-    //       firstSubCat :[],
-    //       allOtherSubCAts :[],
-    //   }
-    this.promotionTypes.GetCategories().subscribe((res) =>{
-      console.log('search data', this.addcategory);
-        this.addcategory = res.response.allOtherCats;
-    })
-  }
-  productidentify(item : any){
-    this.promotionTypes.GetProductIdentifier().subscribe((res) =>{
-      console.log('search data', this.toppingList);
-    this.toppingList = res.response;
-    // this.categorydrp = res.response
-    })
-  }
-  onproductSelect(item : any){
-    const data = {
-      Search : ''
-    }
-    this.promotionTypes.GetProductGroupList(data).subscribe((res) =>{
-console.log('CHECK',this.productg );
-this.productg = res.response;
-this.rowData5 = this.productg;
-    })
-  }
-  onTypeSelect(item : any){
-    // const data = {
-    //   SubCatId : '',
-    // }
-    this.promotionTypes.GettypesOfMultiSubCats().subscribe((res) =>{
-console.log('type', this.addtypes)
-this.addtypes = res.response;
-    })
-  }
-  onStatusDeSelect(item: any) {
-    this.statusTypes.forEach((element,index)=>{
-      if(element==item.statusId)  this.statusTypes.splice(index,1);
-   });
-    // this.statusTypes.pop(item.statusId);
-  console.log(' this.statusTypes', this.userTypes)
-    const data={
-     
-      statuss:this.statusTypes,
-      search:this.searchText,
-  
-    }
-    this.promotionTypes.GetProductGroupList(data).subscribe((res) => {     
-      this.rowData5 = res.response;
-    });
-    console.log('rolefilter', this.userTypes)
-    console.log('onItemSelect', item);
-  }
-onsubcatg(item : any){
-  // const data = {
-  //   catId : []
-  // }
-  this.promotionTypes. GetSUbCAtsOfMultiCats().subscribe((res) =>{
-    console.log('search data', this.subCategory);
-      this.subCategory = res.response;
-  })
-}
-
 }

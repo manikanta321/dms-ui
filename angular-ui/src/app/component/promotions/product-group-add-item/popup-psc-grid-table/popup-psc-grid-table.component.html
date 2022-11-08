@@ -1,0 +1,10 @@
+<div class="psc-grid">
+    <ag-grid-angular id="gridContainer"
+    style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
+    class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
+    [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
+    [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
+    (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
+    (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+    (bodyScroll)="handleScroll($event)"></ag-grid-angular>
+    </div>

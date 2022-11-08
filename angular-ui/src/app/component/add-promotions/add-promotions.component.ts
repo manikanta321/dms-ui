@@ -32,7 +32,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
   buyab: boolean = false;
   volumedc: boolean = false;
-  pricedc : boolean =false
+  pricedc: boolean = false
   buysets: boolean = false;
   addCountryButton: boolean = false;
   removelist: boolean = false;
@@ -52,10 +52,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   addButton: boolean = false;
   dropdownSettings3: IDropdownSettings = {};
   disabled = false;
-  dropdownSettings:IDropdownSettings = {};
+  dropdownSettings: IDropdownSettings = {};
   promotionlist: any[] | undefined;
   toppingList3: any = [];
-  toppingList:any;
+  toppingList: any;
   ShowFilter = false;
   totalStepsCount: number | undefined;
   @ViewChild('stepper') private myStepper: MatStepper | any;
@@ -67,7 +67,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
-    public promotionTypes : PromotionService) { }
+    public promotionTypes: PromotionService) { }
   firstFormGroup: FormGroup = this._formBuilder.group({ firstCtrl: [''] });
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
 
@@ -133,45 +133,45 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
     // }
   }
-  GetPromotionTypes(event:any){
+  GetPromotionTypes(event: any) {
     //  const data = {
     //   promotionTypesId : this.promotionTypesId,
     //   promotionTypesName: this.promotionTypesName
     // }
-    this.promotionTypes.GetPromotionTypes().subscribe ((res)=> {
+    this.promotionTypes.GetPromotionTypes().subscribe((res) => {
       // console.log('check promotiontypes', res);
       this.toppingList3 = res.response;
       if (event.promotionTypesName == 'Buy (A+B..) get (X+Y..)') {
-          this.goForward(this.myStepper);
-          this.buyab = true;
-          this.volumedc = false;
-          this.buysets = false;
-          this.pricedc = false;
-        }
-        if (event.promotionTypesName == 'Buy (A or B + C or D..) get (X+Y or Y+Z..)') {
-            this.buyab = false;
-            this.volumedc = false;
-            this.buysets = true;
-            this.pricedc = false;
-            this.goForward(this.myStepper);
-      
-          }
-          if (event.promotionTypesName == 'Volume Discount') {
-              this.buyab = false;
-              this.volumedc = true;
-              this.buysets = false;
-              this.pricedc = false;
-              this.goForward(this.myStepper);
-        
-            }
-          if (event.promotionTypesName == 'Price Discount') {
-              this.goForward(this.myStepper);
-              this.buyab = false;
-              this.volumedc = false;
-              this.buysets = false;
-              this.pricedc = true;
-            }
-            
+        this.goForward(this.myStepper);
+        this.buyab = true;
+        this.volumedc = false;
+        this.buysets = false;
+        this.pricedc = false;
+      }
+      if (event.promotionTypesName == 'Buy (A or B + C or D..) get (X+Y or Y+Z..)') {
+        this.buyab = false;
+        this.volumedc = false;
+        this.buysets = true;
+        this.pricedc = false;
+        this.goForward(this.myStepper);
+
+      }
+      if (event.promotionTypesName == 'Volume Discount') {
+        this.buyab = false;
+        this.volumedc = true;
+        this.buysets = false;
+        this.pricedc = false;
+        this.goForward(this.myStepper);
+
+      }
+      if (event.promotionTypesName == 'Price Discount') {
+        this.goForward(this.myStepper);
+        this.buyab = false;
+        this.volumedc = false;
+        this.buysets = false;
+        this.pricedc = true;
+      }
+
     })
   }
 
@@ -205,16 +205,31 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   }
   addItems() {
     this.dialog.open(AddItemsPromotionComponent,);
-    this.dialogRef.close();
+    // this.dialogRef.close();
+    const dialogRef = this.dialog.open(AddItemsPromotionComponent);
+
+    dialogRef.afterClosed().subscribe((res) => {
+      console.log(res);
+      // if(status) this.championBadgeUpdateSubject.next(status)
+
+    })
   }
-  addRemoveitem(){
-   
-    this.dialog.open( RemovePromotionItemComponent);
-}
-// GetPromotionTypes(){
-// this.promotionTypes.GetPromotionTypes().subscribe ((res)=> {
-//   console.log('check promotiontypes', res);
-// })
-// }
+  addRemoveitem() {
+
+    this.dialog.open(RemovePromotionItemComponent);
+  }
+  // GetPromotionTypes(){
+  // this.promotionTypes.GetPromotionTypes().subscribe ((res)=> {
+  //   console.log('check promotiontypes', res);
+  // })
+  // }
+  addimage(){
+    const data = {
+
+    }
+    this.promotionTypes.Image(data).subscribe((res) => {
+  console.log ('image')
+    })
+  }
 }
 

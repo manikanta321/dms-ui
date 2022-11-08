@@ -23,6 +23,7 @@ import { AddPromotionsComponent } from '../add-promotions/add-promotions.compone
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { DateRange } from '@uiowa/date-range-picker';
 import { AddItemsPromotionComponent } from './add-items-promotion/add-items-promotion.component';
+import { PromotionService } from 'src/app/services/promotion.service';
 export interface PeriodicElement {
 
   name: any;
@@ -287,7 +288,8 @@ public pivotPanelShow = 'always';
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
     private user:UserService,
-    private observer: BreakpointObserver
+    private observer: BreakpointObserver,
+    public promotionTypes : PromotionService
    ) {
       sort:[];
      }
@@ -481,10 +483,17 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
         statuss:this.statusTypes,
         search:this.searchText,
       }
-      this.user.getuserDeatilsUser(data).subscribe((res) => {     
+      this.promotionTypes.GetGeographies().subscribe((res) => {     
         this.rowData5 = res.response;
       });
       
+    }
+    Geographies(item:any){
+      this.promotionTypes.GetGeographies().subscribe((res) =>{
+        console.log('search data', this.toppingList1);
+      //  this.productCustomIdentifierId = this.categorydrp;
+      this.toppingList1 = res.response
+      })
     }
     
     onItemDeSelect(item: any) {

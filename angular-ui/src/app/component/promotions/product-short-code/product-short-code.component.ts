@@ -9,6 +9,7 @@ import { AddItemsPromotionComponent } from '../add-items-promotion/add-items-pro
 import { ProductGroupAddItemComponent } from '../product-group-add-item/product-group-add-item.component';
 import { ProductSubGroupComponent } from '../product-sub-group/product-sub-group.component';
 import { PromotionService } from 'src/app/services/promotion.service';
+import { PopupPscGridTableComponent } from '../product-group-add-item/popup-psc-grid-table/popup-psc-grid-table.component';
 export interface PeriodicElement {
 
   name: any;
@@ -53,7 +54,9 @@ export class ProductShortCodeComponent implements OnInit {
     { headerName: "", field: '', type: ['nonEditableColumn'] },
 
     { headerName: "#of Products", field: 'noofproducts', type: ['nonEditableColumn'],
-    cellStyle: {color: '#017EFA'}
+    cellStyle: {color: '#017EFA'},
+    cellEditorPopup: true,
+       onCellClicked: (event: CellClickedEvent) => this.dialog.open(PopupPscGridTableComponent, {panelClass: 'pscgrid-popup'})
    },
 
     {
@@ -172,6 +175,7 @@ export class ProductShortCodeComponent implements OnInit {
     prodShtCode:boolean=true;
     productGrpChk:boolean=false;
     productSubGChk:boolean=false;
+    isRowSelectable : boolean = true;
   constructor(private _formBuilder: FormBuilder,
     public dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
@@ -258,14 +262,24 @@ export class ProductShortCodeComponent implements OnInit {
       this.rowData5 = res.response;
     })
   }
-  onSearchChange(event : any){
+  onSearchChange($event: any, anything?: any){
+    const { target } = $event;
+    this.searchText = target.value;
     const data = {
-      Search : ''
+      search: this.searchText,
     }
     this.promotionTypes.GetProductShortCodeList(data).subscribe((res) =>{
       console.log('shortcodeworks', res);
       this.rowData5 = res.response;
     })
   }
-  
+  additems(){
+    console.log('revathi');
+    const selectedRows = this.gridApi.getSelectedRows();
+    console.log(selectedRows);
+  }
+  onRowSelect(event) {
+    const selectedRows = this.gridApi.getSelectedRows();
+    console.log(selectedRows);
+  }
 }

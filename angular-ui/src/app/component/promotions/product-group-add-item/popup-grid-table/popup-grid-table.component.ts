@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
 import { MatTableDataSource } from '@angular/material/table';
 import { CellClassParams, CellClassRules, CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef, GridApi, GridOptions, ModuleRegistry, ColumnResizedEvent, Grid, } from 'ag-grid-community';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { PromotionService } from 'src/app/services/promotion.service';
+
 export interface PeriodicElement {
 
   name: any;
@@ -14,7 +13,6 @@ export interface PeriodicElement {
   phonenum: number;
   status: any;
 }
-
 const ELEMENT_DATA: PeriodicElement[] = [
   { position: '6004005001', name: 'Rajasheka S', weight: 1.0079, symbol: 'Customer', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Active' },
   { position: '6004005002', name: 'Manoranjan B', weight: 1.0079, symbol: 'Dealer', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Inactive' },
@@ -42,29 +40,29 @@ export class PopupGridTableComponent implements OnInit {
 
     {
       headerName: "Product Name",
-      field: 'name', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
+      field: 'stockItemName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
     },
 
-    { headerName: "Classification", field: 'clsfic', type: ['nonEditableColumn'] },
+    { headerName: "Classification", field: 'classification', type: ['nonEditableColumn'] },
 
-    { headerName: "SKU", field: 'sku', type: ['nonEditableColumn'] },
+    { headerName: "SKU", field: 'productSKUName', type: ['nonEditableColumn'] },
 
     {
       headerName: "Product Identifier",
-      field: 'prodcid', type: ['nonEditableColumn']
+      field: 'productCustomName', type: ['nonEditableColumn']
     },
 
     {
       headerName: "Product Group",
-      field: 'productg', type: ['nonEditableColumn'],
+      field: 'productGroupName', type: ['nonEditableColumn'],
     },
     {
       headerName: "Product Code",
-      field: 'prodc', type: ['nonEditableColumn'],
+      field: 'globalCode', type: ['nonEditableColumn'],
     },
     {
       headerName: "Product Shot Code",
-      field: 'prosc', type: ['nonEditableColumn'],
+      field: 'shortCode', type: ['nonEditableColumn'],
     },
     {
       headerName: '',
@@ -156,10 +154,6 @@ export class PopupGridTableComponent implements OnInit {
   
     displayedColumns: string[] = ['position', 'name', 'symbol', 'email', 'phonenum', 'login', 'status', 'edit'];
     dataSource = new MatTableDataSource(ELEMENT_DATA);
-    // toppings = new FormControl('');
-    // toppings1 = new FormControl('');
-  
-    // toppingList: string[] = ['Admin', 'Dealer','Customer'];
     toppingList: any = [];
   
     toppingList1: any = [];
@@ -175,32 +169,10 @@ export class PopupGridTableComponent implements OnInit {
     message1: boolean = true;
     paginationPageSize = 10;
     disabled = false;
-    dropdownSettings: IDropdownSettings = {};
-    dropdownSettings1: IDropdownSettings = {};
     productchk:boolean=false;
     prodShtCode:boolean=false;
     productGrpChk:boolean=true;
     productSubGChk:boolean=false;
-    public rowData3 = [
-      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable', productg: 'snack item',prodc: 'P0568',prosc:'7878'},
-      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
-      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
-      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
-      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item',prodc: 'P0568',prosc:'7878'},
-      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item',prodc: 'P0568',prosc:'7878'},
-      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable', productg: 'snack item',prodc: 'P0568',prosc:'7878'},
-      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
-      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
-      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
-      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item',prodc: 'P0568',prosc:'7878'},
-      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item',prodc: 'P0568',prosc:'7878'},
-      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable', productg: 'snack item',prodc: 'P0568',prosc:'7878'},
-      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
-      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
-      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item', prodc: 'P0568',prosc:'7878'},
-      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item',prodc: 'P0568',prosc:'7878'},
-      {name: 'little hearts',clsfic: 'Snacks >Biskets',sku:'KA87878',prodcid:'Perishable',  productg: 'snack item',prodc: 'P0568',prosc:'7878'},
-    ];
   constructor(public promotionTypes : PromotionService) { }
 
   ngOnInit(): void {
@@ -262,6 +234,7 @@ export class PopupGridTableComponent implements OnInit {
   producttable(){
     this.promotionTypes.GetPGDetailList().subscribe((res) => {
       console.log('pg details check', res);
+      this.rowData5 = res.response
     })
   }
 }

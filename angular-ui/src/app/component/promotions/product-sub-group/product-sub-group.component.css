@@ -395,4 +395,10 @@ background: #000000 !important;
 }::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
   padding: 0em 0 0.7em 0;
   }
-  
+  ::ng-deep .psubgrid-popup {
+    width: 999px !important;
+    }
+    ::ng-deep .psubgrid-popup .mat-dialog-container{
+      padding: 0 !important;
+      margin-top: 72px;
+    }

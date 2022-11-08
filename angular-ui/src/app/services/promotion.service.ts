@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import { HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpParams, HttpRequest, JsonpClientBackend } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 @Injectable({
@@ -33,9 +33,10 @@ public GetPromotionTypes() {
   return this.http.get<any>(this.userurl + 'PromotionsApi/GetPromotionTypes');
 }
 // http://52.172.24.161:801/api/PromotionsApi/GetPromotionTypes
-public GetProductGroupList(data: any){
+public GetProductGroupList(data){
   return this.http.post<any>(this.userurl + 'PromotionsApi/GetProductGroupList', data);
 }
+// http://13.126.235.145:801/api/PromotionsApi/GetProductGroupList
 // http://52.172.24.161:801/api/PromotionsApi/GetProductGroupList
 public GetProductShortCodeList(data: any){
   return this.http.post<any>(this.userurl + 'PromotionsApi/GetProductShortCodeList', data)
@@ -53,4 +54,36 @@ public GetPGDetailList(){
   return this.http.get<any>(this.userurl + 'PromotionsApi/GetPGDetailList?ProductGroupId=18')
 }
 // http://52.172.24.161:801/api/PromotionsApi/GetPGDetailList?ProductGroupId=18
+public GetPSGDetailList(){
+return this.http.get<any>(this.userurl + 'PromotionsApi/GetPSGDetailList?ProductGroupId=18&ProductSubGroupId=29')
+}
+// http://52.172.24.161:801/api/PromotionsApi/GetPSGDetailList?ProductGroupId=18&ProductSubGroupId=29
+public GetPSCDetailList(){
+  return this.http.get<any>(this.userurl + 'PromotionsApi/GetPSCDetailList?ProductSKUId=22')
+}
+// http://52.172.24.161:801/api/PromotionsApi/GetPSCDetailList?ProductSKUId=22
+ GetSUbCAtsOfMultiCats(){
+return this.http.get<any>(this.userurl + 'MaterialApi/GetSUbCAtsOfMultiCats')
+}
+// http://13.126.235.145:801/api/MaterialApi/GetSUbCAtsOfMultiCats
+GetProductIdentifier(){
+  return this.http.get<any>(this.userurl + 'PromotionsApi/GetProductIdentifier')
+}
+// http://13.126.235.145:801/api/PromotionsApi/GetProductIdentifier
+GetGeographies(){
+  return this.http.get<any>(this.userurl + 'PromotionsApi/GetGeographies')
+}
+// http://13.126.235.145:801/api/PromotionsApi/GetGeographies
+ GettypesOfMultiSubCats(){
+  return this.http.get<any>(this.userurl + 'PromotionsApi/GetGeographies')
+}
+GetCategories(){
+  return this.http.get<any>(this.userurl + 'MaterialApi/GetCategories')
+}
+// http://13.126.235.145:801/api/MaterialApi/GetCategories
+Image(data: any){
+  return this.http.post<any>(this.userurl + 'PromotionsApi/UploadImg', data)
+}
+// http://13.126.235.145:801/api/PromotionsApi/UploadImg
+
 }

@@ -7,12 +7,16 @@
         <h3 class="addU font">Add Items: <b style="color: black;">Product Sub Group</b></h3>
       </div>
       <div class="radio-btn mt-2">
+        <div class="row">
+          <div class="col-12">
       <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="product" (click)="product()"  [checked]="productchk">Product</mat-radio-button>
-        <mat-radio-button value="prodsht" (click)="productShotCode()" [checked]="prodShtCode">Product Short Code</mat-radio-button>
-        <mat-radio-button value="progrp" (click)="productGrp()" [checked]="productGrpChk">Product Group</mat-radio-button>
-        <mat-radio-button value="prosub" (click)="productSubG()" [checked]="productSubGChk">Product Sub-Group</mat-radio-button>
+        <div class="col-2 col-lg-2 "><mat-radio-button value="product" (click)="product()"  [checked]="productchk">Product</mat-radio-button></div>
+          <div class="col-2 col-lg-2 "><mat-radio-button value="prodsht" (click)="productShotCode()" [checked]="prodShtCode">Product Short Code</mat-radio-button></div>
+            <div class="col-2 col-lg-2 "><mat-radio-button value="progrp" (click)="productGrp()" [checked]="productGrpChk">Product Group</mat-radio-button></div>
+              <div class="col-2 col-lg-2 "><mat-radio-button value="prosub" (click)="productSubG()" [checked]="productSubGChk">Product Sub-Group</mat-radio-button></div>
       </mat-radio-group>
+          </div>
+        </div>
     </div>
     <div class="d-flex mb-5">
       <div class="col-md-3 col-lg-3 col-sm-2" style="font-family: 'Gilroy'; color: grey;">
@@ -52,14 +56,14 @@
           [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
           (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
           (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
-          (bodyScroll)="handleScroll($event)"></ag-grid-angular>
+          (bodyScroll)="handleScroll($event)"  [rowSelection]="'multiple'"(rowSelected)="onRowSelect($event)"></ag-grid-angular>
       </div>
       <div class="pagination">
         <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
           class="pagination-cls">{{rowData5.length}}</span>
       </div>
       <div class="addbtn mt-3 text-center">
-        <button class="addItem-btn btn-btn-primary">Add items</button>
+        <button class="addItem-btn btn-btn-primary" (click)="addsubg()">Add items</button>
       </div>
     </div>
   </div>

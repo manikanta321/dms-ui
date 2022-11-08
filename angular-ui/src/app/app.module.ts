@@ -115,6 +115,8 @@ import { DeactiveSuccessTaxTemplateComponent } from './component/deactive-succes
 import { DeactivateTaxCoponentComponent } from './component/deactivate-tax-coponent/deactivate-tax-coponent.component';
 import { SuccessDeactivateTaxComponentComponent } from './component/success-deactivate-tax-component/success-deactivate-tax-component.component';
 import { EditdealersComponent } from './component/users/userPopups/editdealers/editdealers.component';
+import { PopupPscGridTableComponent } from './component/promotions/product-group-add-item/popup-psc-grid-table/popup-psc-grid-table.component';
+import { PopupPsubgGridTableComponent } from './component/promotions/product-group-add-item/popup-psubg-grid-table/popup-psubg-grid-table.component';
 
 @NgModule({
   declarations: [
@@ -199,6 +201,8 @@ import { EditdealersComponent } from './component/users/userPopups/editdealers/e
           DeactivateTaxCoponentComponent,
           SuccessDeactivateTaxComponentComponent,
           EditdealersComponent,
+          PopupPscGridTableComponent,
+          PopupPsubgGridTableComponent,
   ],
   imports: [
     FormsModule,

@@ -15,7 +15,7 @@
           <form [formGroup]="myForms">
             <ng-multiselect-dropdown class="product" name="citys" [placeholder]="'Product'" formControlName="citys"
               [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
-              (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
+              (onSelect)="Geographies($event)" (onDeSelect)="onStatusDeSelect($event)"
               (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
             </ng-multiselect-dropdown>
           </form>

@@ -168,37 +168,45 @@ border-radius: 10px;
   padding: 8px 0px 0px 10px;
   height: 43px;
 }
-.searchBox:hover >.searchButton,
-.searchBox>.searchInput,
-.search-btn {
-  display:none;
-}
-.searchBox {
-  float:right;
-  /* position: absolute; */
-  right: -10px;
-  top: 5px;
-}
-
-.searchBox:hover >.searchButton {
-  display:bolck;
-  color: #000;
+.searchButton {
+  display: bolck;
+  color: #FFFFFF;
   float: left;
-  width: 42px;
-  height: 42px;
-  background: #ffff;
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  background: #000000;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: 0.2s;
-  background: none;
-  position: relative;
-    right: 223px;
-    top: 2px;
-
+  border: none;
 }
-.searchBox:hover >.search-btn {
+
+.searchBox:hover>.searchButton,
+.searchBox>.searchInput,
+.search-btn {
+  display: none;
+}
+
+.searchBox {
+  float: right;
+  /* position: absolute;
+  left: 94%;
+  top: 6px; */
+}
+.searchBox:hover >.searchButton {
   display:block;
+}
+
+.searchBox:hover>.searchButton .material-icons {
+  position: relative;
+  right: 284px;
+  color: #000;
+  top: 3px;
+}
+.searchBox:hover>.search-btn {
+  display: block;
   height: 26px;
   border: none;
   background: #000000;
@@ -206,12 +214,14 @@ border-radius: 10px;
   border-radius: 5px;
   position: absolute;
   right: 10px;
-  top:10px;
+  top: 6px;
 }
+
+
 .searchBox:hover>.searchInput {
-  display:block;
-  width: 280px;
-  height: 50px;
+  display: block;
+  width: 335px;
+  height: 43px;
   background: #FFFFFF;
   float: left;
   padding: 5px 32px 6px;
@@ -229,19 +239,8 @@ border-radius: 10px;
   right: 0px;
   bottom: -3px;
 }
-.searchButton {
-  display:bolck;
-  color: #FFFFFF;
-  float: left;
-  width: 37px;
-  height: 37px;
-  border-radius: 50%;
-  background: #000000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.2s;
-  border: none;
+.searchBox {
+  top: 6px;
 }
 .pagination {
   float:right !important;
@@ -293,3 +292,10 @@ mat-radio-group{
 ::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
   border-color: black;
 }
+::ng-deep .pscgrid-popup {
+  width: 999px !important;
+  }
+  ::ng-deep .pscgrid-popup .mat-dialog-container{
+    padding: 0 !important;
+    margin-top: 72px;
+  }

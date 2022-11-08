@@ -10,6 +10,7 @@ import { ProductGroupAddItemComponent } from '../product-group-add-item/product-
 import { AddItemsPromotionComponent } from '../add-items-promotion/add-items-promotion.component';
 import { UserService } from 'src/app/services/user.service';
 import { PromotionService } from 'src/app/services/promotion.service';
+import { PopupPsubgGridTableComponent } from '../product-group-add-item/popup-psubg-grid-table/popup-psubg-grid-table.component';
 export interface PeriodicElement {
 
   name: any;
@@ -49,7 +50,7 @@ export class ProductSubGroupComponent implements OnInit {
 
     {
       headerName: "Product Sub-Group",
-      field: 'productSubGroup', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
+      field: 'productSubGroup', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left', checkboxSelection: true
     },
 
     { headerName: "", field: '', type: ['nonEditableColumn'] },
@@ -64,7 +65,9 @@ export class ProductSubGroupComponent implements OnInit {
     {
       headerName: "#of Products",
       field: 'noofproducts', type: ['nonEditableColumn'],
-      cellStyle: {color: '#017EFA'}
+      cellStyle: {color: '#017EFA'},
+      cellEditorPopup: true,
+       onCellClicked: (event: CellClickedEvent) => this.dialog.open(PopupPsubgGridTableComponent, {panelClass: 'psubgrid-popup'})
     },  
 
     // suppressMovable:true,
@@ -362,5 +365,13 @@ export class ProductSubGroupComponent implements OnInit {
       console.log('productsubgroup is works', res);
       this.rowData5 = res.response;
     })
+  }
+  onRowSelect(event) {
+    const selectedRows = this.gridApi.getSelectedRows();
+    console.log(selectedRows);
+  }
+  addsubg(){
+    const selectedRows = this.gridApi.getSelectedRows();
+    console.log(selectedRows);
   }
 }

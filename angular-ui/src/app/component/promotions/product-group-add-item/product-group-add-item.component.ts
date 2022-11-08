@@ -189,7 +189,7 @@ export class ProductGroupAddItemComponent implements OnInit {
     public promotionTypes : PromotionService) { }
 
   ngOnInit(): void {
-    this.GetProductGroupList();
+    this.ProductGroupList();
     
   }
   onGridReady(params: GridReadyEvent) {
@@ -261,7 +261,7 @@ export class ProductGroupAddItemComponent implements OnInit {
     this.dialog.open( ProductSubGroupComponent,{width:'1043px'});
     this.dialogRef.close()
   }
-  GetProductGroupList(){
+  ProductGroupList(){
   const  data = {
     Search : ''
     }
@@ -283,11 +283,19 @@ export class ProductGroupAddItemComponent implements OnInit {
     const { target } = $event;
     this.searchText = target.value;
     const data = {
-      Search : ''
+      search: this.searchText,
     }
     this.promotionTypes.GetProductGroupList(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
 
+  }
+  onRowSelect(event) {
+    const selectedRows = this.gridApi.getSelectedRows();
+    console.log(selectedRows);
+  }
+  addproductg(){
+    const selectedRows = this.gridApi.getSelectedRows();
+    console.log(selectedRows);
   }
 }

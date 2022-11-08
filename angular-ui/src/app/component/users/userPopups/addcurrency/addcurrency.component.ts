@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormArray, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 import { UserService } from 'src/app/services/user.service';
 @Component({
@@ -9,8 +10,10 @@ import { UserService } from 'src/app/services/user.service';
 export class AddcurrencyComponent implements OnInit {
     name:any;
     headerName:any;
+    currencyForm!:FormGroup;
 
-  constructor(private dialogRef: MatDialogRef<any>,
+  constructor(private fb: FormBuilder,
+    private dialogRef: MatDialogRef<any>,
     private user:UserService,) { }
 
   ngOnInit(): void {
@@ -21,10 +24,19 @@ export class AddcurrencyComponent implements OnInit {
     } else {
       this.headerName = 'Add Currency';
     }
+
+    this.addcurrencyForm();
+    this.currencyForm.controls["conversionFixed"].setValue("1 INR");
   }
   closeDialog(){
     this.dialogRef.close();
   }
+
+
+  calCulating(data:any){
+    //this.currencyForm.controls["conversion"].setValue("1 INR");
+  }
+
   addcurncy(){
     const data={
       statuss:[],
@@ -33,4 +45,15 @@ export class AddcurrencyComponent implements OnInit {
     this.user.addcurrency(data).subscribe((res) => {     
     });
   }
+
+  addcurrencyForm(){
+    this.currencyForm = this.fb.group({
+      name: ["", [Validators.required]],
+      displayUnit: ["", [Validators.required]],
+      conversionRate: ["", [Validators.required]],
+      conversion:["", [Validators.required]],
+      conversionFixed:["", [Validators.required]],
+    });
+  }
+
 }

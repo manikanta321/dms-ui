@@ -13,23 +13,23 @@
    <!-- <p style="color: red;">{{errorMsg}}</p> -->
         </div>
         <div class="addUserForm">
-          <form>
+          <form [formGroup]="currencyForm">
             <div class="row">
               <div class="col">
                   <label>Name <span>*</span></label>
                   <br>
-                  <input type="text" placeholder="Enter Name" [(ngModel)]="name" class="imputtext">        </div>
+                  <input type="text" placeholder="Enter Name" formControlName="name" class="imputtext">        </div>
                 <div class="col">
                   <label>Display Units<span>*</span></label>
                   <br>
-                <input type="text" placeholder="Enter display unit" class="imputtext" >         </div>
+                <input type="text" placeholder="Enter display unit" formControlName="displayUnit" class="imputtext" >         </div>
             </div>
                 <br>
               <div class="row">
                 <div class="col">
                   <label>Conversion Rate<span>*</span></label>
                   <br>
-                  <input type="text" placeholder="Enter Conversion Rate" class="imputtext" style="width: 100%;">
+                  <input type="text" (keyup)="calCulating($event)"  formControlName="conversionRate" placeholder="Enter Conversion Rate" class="imputtext" style="width: 100%;">
                 
                 </div>
                 <!-- <div class="col">
@@ -45,7 +45,7 @@
                 
               <label>Conversion<span>*</span></label>
               <br>
-              <input type="text" placeholder="Enter Conversion" class="imputtext" >
+              <input type="text" placeholder="Enter Conversion" formControlName="conversion" class="imputtext" >
                 
                 </div>
                 <div class="col">
@@ -58,7 +58,7 @@
                 
                   <label><span style="color: aliceblue;">.</span></label>
                   <br>
-                  <input type="text" placeholder="Enter Conversion" [disabled]="true" class="imputtext form-select form-select-lg mb-8">
+                  <input type="text" placeholder="Enter Conversion" [disabled]="true" formControlName="conversionFixed"  class="imputtext form-select form-select-lg mb-8">
                     
                     </div>
 

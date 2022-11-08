@@ -1226,3 +1226,8 @@ li {
 .item-scroll{
   overflow-x: hidden;
 }
+
+.add-dealer-promotion-cls{
+  overflow-x: hidden;
+  height:530px;
+}

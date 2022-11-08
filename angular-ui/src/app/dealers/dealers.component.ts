@@ -35,7 +35,7 @@ import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import * as moment from 'moment';
-import { UseractionComponent } from '../component/useraction/useraction.component';
+import { EditdealersComponent } from '../component/users/userPopups/editdealers/editdealers.component';
 import { EditPopupComponent } from '../component/users/userPopups/edit-popup/edit-popup.component';
 import { UomPopupComponent } from '../component/users/userPopups/uom-popup/uom-popup.component';
 import { EditUomPopupComponent } from '../component/users/userPopups/edit-uom-popup/edit-uom-popup.component';
@@ -104,10 +104,14 @@ export class DealersComponent implements OnInit {
     {
       headerName: "Geography",
       minWidth:550,
-       field: 'geographyName', type: ['nonEditableColumn']
+      field: 'geographyName', 
+      cellRenderer: this.daysSunshineRenderer,
+      // cellRendererParams: {
+      // rendererImage: '', // Complementing the Cell Renderer parameters
+      // },
+      type: ['nonEditableColumn']
     },
-
- 
+   
     // suppressMovable:true,
     {
       headerName: "Status",
@@ -115,12 +119,22 @@ export class DealersComponent implements OnInit {
       type: ['nonEditableColumn'],
       cellEditor: 'agSelectCellEditor',
       cellEditorParams: {
-        values: ['Approved', 'Inactive', 'Invited', 'Locked',],
+        values: ['Approved', 'getusertabeldata', 'Invited', 'Locked',],
       },minWidth:200,
       cellClass: params => {
         return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
       }
     },
+
+    {
+      headerName: '',
+      colId: 'action',
+      cellRenderer: EditdealersComponent,
+      editable: false,
+      maxWidth: 75  
+    },
+
+
    
   ];
 
@@ -210,6 +224,7 @@ export class DealersComponent implements OnInit {
   stayScrolledToEnd = true;
   message: boolean = false;
   message1: boolean = true;
+  instancePopup:any = null;
 
 
   paginationNumberFormatter: (
@@ -390,11 +405,6 @@ export class DealersComponent implements OnInit {
         return { geographyId: data.geographyId, geographyName: data.geographyName };
       });
 
-      // if (!this.toppingList?.length) {
-      //   this.toppingList = localdata.map((role: { designationName: any; }) => {
-      //     return role.designationName;
-      //   });
-      // }
       this.toppingList.push()
       this.toppingList.forEach(element => {
         return this.roleArray.push(element.geographyId);
@@ -428,11 +438,12 @@ export class DealersComponent implements OnInit {
   }
 
   handleScroll(event) {
-    var tippyPopups: NodeListOf<Element> | null | undefined = document.querySelectorAll(".tippy-box[data-theme='user-tippy']");
-    
-      tippyPopups.forEach(element=> {
-        element.parentNode?.removeChild(element)
-      })
+
+    if(this.instancePopup){
+      this.instancePopup.togglePopup();
+      this.instancePopup = null;
+    }
+
     const grid = document.getElementById('gridContainer');
     if (grid) {
       const gridBody = grid.querySelector('.ag-body-viewport') as any;
@@ -620,6 +631,7 @@ export class DealersComponent implements OnInit {
   }
 
   addUser() {
+    localStorage.setItem('edit-dealer','Add')
     this.dialog.open(AddDealerPopupComponent,{height:"570px"});
   }
 
@@ -662,27 +674,7 @@ export class DealersComponent implements OnInit {
     }
   }
 
-  // Example of consuming Grid Event
 
-  onCellClicked(e): void {
-    console.log('cellClicked', e);
-    this.userId = e.data.userId;
-    this.employeeName = e.data.userName;
-    console.log('userID', this.userId);
-    localStorage.setItem('userID', this.userId)
-    localStorage.setItem('employeeName', this.employeeName);
-
-    if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
-      const cellRendererInstances = e.api.getCellRendererInstances({
-        rowNodes: [e.node],
-        columns: [e.column],
-      });
-      if (cellRendererInstances.length > 0) {
-        const instance = cellRendererInstances[0];
-        instance.togglePopup();
-      }
-    }
-  }
 
   onCellValueChanged(event: CellValueChangedEvent) {
     // alert(event.value)
@@ -744,6 +736,38 @@ export class DealersComponent implements OnInit {
 
   ToggleSideNav(value: any) {
     this.sidenav.toggle()
+  }
+
+  onCellClicked(e): void {
+    console.log('cellClicked', e);
+    this.userId = e.data.userId;
+    this.employeeName = e.data.userName;
+    console.log('userID', this.userId);
+    localStorage.setItem('userID', this.userId)
+    localStorage.setItem('employeeName', this.employeeName);
+
+    if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
+      const cellRendererInstances = e.api.getCellRendererInstances({
+        rowNodes: [e.node],
+        columns: [e.column],
+      });
+      if (cellRendererInstances.length > 0) {
+        const instance = cellRendererInstances[0];
+        this.instancePopup = instance;
+        instance.togglePopup();
+      }
+    }
+  }
+
+  daysSunshineRenderer(params) {
+  const divelement = document.createElement('div');  
+  const element = document.createElement('span');
+  const imageElement = document.createElement('img');
+  imageElement.className = "country-info";
+  imageElement.src ='assets/img/countryinfo.png';
+  element.appendChild(document.createTextNode(params.value));
+  element.appendChild(imageElement);
+  return element;
   }
 
 }

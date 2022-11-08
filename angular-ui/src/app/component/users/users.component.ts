@@ -172,16 +172,9 @@ export class UsersComponent implements OnInit {
   rowData1 = [];
   employeeName: any;
   public defaultColDef: ColDef = {
-
     suppressSizeToFit: true,
     width: 170,
-    // set the default column width
-    // make every column editable
-    // editable: true,
-    // make every column use 'text' filter by default
     filter: 'agTextColumnFilter',
-    // enable floating filters by default
-    // make columns resizable
     flex: 1,
     minWidth: 100,
     resizable: true,
@@ -202,8 +195,6 @@ export class UsersComponent implements OnInit {
         filterParams: {
           // provide comparator function
           comparator: (filterLocalDateAtMidnight: Date, cellValue: string) => {
-            // In the example application, dates are stored as dd/mm/yyyy
-            // We create a Date object for comparison against the filter date
             const dateParts = cellValue.split('/');
             const day = Number(dateParts[0]);
             const month = Number(dateParts[1]) - 1;
@@ -284,7 +275,6 @@ export class UsersComponent implements OnInit {
   }
 
   instancePopup:any = null;
-
 
   constructor(public dialog: MatDialog,
     private router: Router,
@@ -709,8 +699,8 @@ export class UsersComponent implements OnInit {
 
   onCellClicked(e): void {
     console.log('cellClicked', e);
-    this.userId = e.data.userId;
-    this.employeeName = e.data.userName;
+    this.userId = e.data.customerCode;
+    this.employeeName = e.data.customerName;
     console.log('userID', this.userId);
     localStorage.setItem('userID', this.userId)
     localStorage.setItem('employeeName', this.employeeName);

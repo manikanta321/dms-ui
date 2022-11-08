@@ -5,7 +5,7 @@
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
             </div>
             <div class="head-t">
-                <h3 class="addU font">Add: Dealer Name</h3>
+                <h3 class="addU font">{{dealerAction}}: Dealer Name</h3>
                 <br>
                 <img src="assets/img/arrow-left-disable.png"   *ngIf="!basicInfo" class="addMore-icon" style="width: 32px;margin-left: 760px;"
                     alt="left-arr-btn">
@@ -148,55 +148,56 @@
                                 <div class="col-1">
                                     <label *ngIf="i == 0">Type<span>*</span></label>
                                     <br>
-                                    <select class="addDelercols addtype" formControlName="addType" name="status" placeholder="Type">
+                                    <select class="addDelercols addtype" formControlName="addType" name="status" placeholder="select">
                                         <option value=""  selected hidden>Type</option>                                       
                                         <option value="1">Billing</option>
                                         <option valiue="2">Shipping</option>
                                     </select>
-                                
                                 
                                 </div>
 
                                 <div class="col-2">
                                     <label *ngIf="i == 0">Consignee Name<span>*</span></label>
                                     <br>
-                                    <input type="text" placeholder="Consignee" formControlName="consigName" class="addDelercols addname">
+                                    <input type="text" placeholder="Enter" formControlName="consigName" class="addDelercols addname">
                                 </div>
 
                                 <div class="col-1">
                                     <label *ngIf="i == 0">Tax<span>*</span></label>
                                     <br>
-                                    <input type="text" placeholder="Tax" formControlName="tax" class="addDelercols addtax">
+                                    <input type="text" placeholder="Select" formControlName="tax" class="addDelercols addtax">
                                 </div>
 
                                 <div class="col-2">
                                     <label *ngIf="i == 0">Address Line<span>*</span></label>
                                     <br>
-                                    <input type="text" placeholder="Address" formControlName="addressLine" class="addDelercols addadress">
+                                    <input type="text" placeholder="Enter" formControlName="addressLine1" class="addDelercols addadress">
+                                    <input type="text" placeholder="Enter" formControlName="addressLine" class="addDelercols addadressLine1">
                                 </div>
 
                                 <div class="col-1">
                                     <label *ngIf="i == 0">Country<span>*</span></label>
                                     <br>
-                                    <input type="text" placeholder="Country" formControlName="country" class="addDelercols addcountry">
+                                    <input type="text" placeholder="Enter" formControlName="country" class="addDelercols addcountry">
                                 </div>
 
                                 <div class="col-1">
                                     <label *ngIf="i == 0">State<span>*</span></label>
                                     <br>
-                                    <input type="text" placeholder="State" formControlName="state" class="addDelercols aastate">
+                                    <input type="text" placeholder="Enter" formControlName="state" class="addDelercols aastate">
                                 </div>
 
                                 <div class="col-2">
                                     <label *ngIf="i == 0">City & Zip<span>*</span></label>
                                     <br>
-                                    <input type="text" placeholder="city & zip"formControlName="cityAndZip" class="addDelercols addcity">
+                                    <input type="text" placeholder="Enter City" formControlName="cityAndZip" class="addDelercols addcity">
+                                    <input type="text" placeholder="Enter Zip" formControlName="Zipcode" class="addDelercols addzip">
                                 </div>
 
                                 <div class="col-1">
                                     <label *ngIf="i == 0">Phone<span>*</span></label>
                                     <br>
-                                    <input type="text" placeholder="Phone no" formControlName="phoneNo" class="addDelercols addphone">
+                                    <input type="text" placeholder="Enter" formControlName="phoneNo" class="addDelercols addphone">
                                 </div>
                                 
                     
@@ -204,8 +205,10 @@
                                     <label><span></span></label>
                                     <mat-icon (click)="removeQuantity(i)" class="col-2 remove-mat-icon delete-icon remove-address">remove_circle</mat-icon>
                                 </div>
-                            </div>
+      
 
+                  
+                            </div>
                             </div>
                             </div>
 
@@ -214,7 +217,7 @@
                                 <div class="col-5">
                                 </div>
                                 <div class="col-2">
-                                    <button (click)="saveDealerData()" [disabled]="!addAddressDetailsForm.valid" class="btn btn-primary btn-block submitbtn save-btn">Submit</button>
+                                    <button (click)="saveDealerData()" [disabled]="!addAddressDetailsForm.valid" class="btn btn-primary btn-block submitbtn save-btn">Next</button>
                                 </div>
                                 <div class="col-5">
                                 </div>

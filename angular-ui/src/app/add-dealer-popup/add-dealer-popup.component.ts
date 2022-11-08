@@ -7,6 +7,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { FormArray } from '@angular/forms' 
 import { UserService } from 'src/app/services/user.service';
 import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
+import { HostListener } from '@angular/core';
 //import { ToastrService } from 'ngx-toastr';
 
 
@@ -60,6 +61,8 @@ export class AddDealerPopupComponent implements OnInit {
 
   selectedItem = null;
   totalStepsCount: number | undefined;
+
+  dealerAction:any;
  
 
   @ViewChild('stepper') private myStepper: MatStepper | any;
@@ -88,6 +91,11 @@ export class AddDealerPopupComponent implements OnInit {
      this.statusForm();
      //geographies List
      this.getCountryList();
+     if(localStorage.getItem('edit-dealer') === 'Edit'){
+      this.dealerAction = "Edit"
+     } else {
+      this.dealerAction = "Add"
+     }
 
   }
 
@@ -140,9 +148,11 @@ export class AddDealerPopupComponent implements OnInit {
       consigName:['',[Validators.required]],
       tax: ['',[Validators.required]],
       addressLine: ['',[Validators.required]],
+      addressLine1: ['',[Validators.required]],
       country: ['',[Validators.required]],
       state: ['',[Validators.required]],
       cityAndZip: ['',[Validators.required]],
+      Zipcode: ['',[Validators.required]],
       phoneNo: ['',[Validators.required]],  
     })  
   }  
@@ -151,8 +161,7 @@ export class AddDealerPopupComponent implements OnInit {
     this.quantities().push(this.initAddress());  
   }  
 
- 
-
+  
   removeQuantity(i:number) { 
     if( i >= 1){
       this.quantities().removeAt(i);  
@@ -161,10 +170,8 @@ export class AddDealerPopupComponent implements OnInit {
 
 
   saveDealerData(){
-      console.log(this.addAddressDetailsForm.value);
-      this.calssification.addDealerData(this.addAddressDetailsForm.value).subscribe((res)=>{
-          console.log(res);
-      });  
+    this.goForward(this.myStepper);
+    // console.log(this.addAddressDetailsForm.value);
   }
 
  
@@ -256,19 +263,21 @@ export class AddDealerPopupComponent implements OnInit {
 
   saveGeographiesList(){
 
-    let data = {
-      "country":localStorage.getItem('countryId'),
-      "state":localStorage.getItem('stateId'),
-      "dist":localStorage.getItem('distId'),
-      "city":localStorage.getItem('cityId'),
+    let countrydata = {
+      "CountryId":localStorage.getItem('countryId'),
+      "StateId":localStorage.getItem('stateId'),
+      "RegionId":localStorage.getItem('distId'),
+      "CityId":localStorage.getItem('cityId'),
       "CreatedById":this.LoginId
       };
 
+      let data = Object.assign(this.addAddressDetailsForm.value, countrydata)
+
       console.log(data);
 
-    // this.calssification.addCityName(data).subscribe((res)=>{
-    //       this.getCityList(localStorage.getItem("distId"));
-    // })
+     this.calssification.addDealerData(data).subscribe((res)=>{
+            console.log(res);
+        });  
 
   }
 

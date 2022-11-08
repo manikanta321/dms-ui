@@ -10,11 +10,20 @@ import { UserService } from 'src/app/services/user.service';
 export class AddcurrencyComponent implements OnInit {
     name:any;
     headerName:any;
-    currencyForm!:FormGroup;
+    currencyForm:FormGroup;
+   
 
-  constructor(private fb: FormBuilder,
-    private dialogRef: MatDialogRef<any>,
-    private user:UserService,) { }
+  constructor(private dialogRef: MatDialogRef<any>,
+    private user:UserService,) {
+      this.currencyForm = new FormGroup({
+        currencyName: new FormControl(	'',	[Validators.required]),
+        displayUnits: new FormControl(  '',  [Validators.required]),
+        conversionRate: new FormControl(  '',  [Validators.required, Validators.pattern('^.+@.+\..+$')]),
+        Conversion: new FormControl('',   [Validators.required]),
+        defaultInr:new FormControl('',   [Validators.required])
+
+     });
+     }
 
   ngOnInit(): void {
     // this.addcurrency()
@@ -25,35 +34,33 @@ export class AddcurrencyComponent implements OnInit {
       this.headerName = 'Add Currency';
     }
 
-    this.addcurrencyForm();
-    this.currencyForm.controls["conversionFixed"].setValue("1 INR");
+     this.currencyForm.controls["defaultInr"].setValue("1 INR");
   }
   closeDialog(){
     this.dialogRef.close();
   }
 
-
-  calCulating(data:any){
-    //this.currencyForm.controls["conversion"].setValue("1 INR");
-  }
-
+  
   addcurncy(){
     const data={
-      statuss:[],
-      search:"",
+      UoMName:this.currencyForm.value['currencyName'],
+      UoMShortName:this.currencyForm.value['displayUnits'],
+      ConversionRate:this.currencyForm.value['conversionRate'],
+      UOMSymbol:this.currencyForm.value["defaultInr"],
+      Conversion:this.currencyForm.value['Conversion'],
+
+      
     }
-    this.user.addcurrency(data).subscribe((res) => {     
+    this.user.addcurrency(data).subscribe((res) => {    
+      this.currencyForm.reset(); 
+      // console.log(res,"123456987654")
     });
+    this.closeDialog();
   }
 
-  addcurrencyForm(){
-    this.currencyForm = this.fb.group({
-      name: ["", [Validators.required]],
-      displayUnit: ["", [Validators.required]],
-      conversionRate: ["", [Validators.required]],
-      conversion:["", [Validators.required]],
-      conversionFixed:["", [Validators.required]],
-    });
+  currencyConverteredValue(data:any){
+    // alert("suceccy key finction")
   }
+
 
 }

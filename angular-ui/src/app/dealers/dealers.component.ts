@@ -184,7 +184,7 @@ export class DealersComponent implements OnInit {
   toppings = new FormControl('');
   toppings1 = new FormControl('');
 
-  // toppingList: string[] = ['Admin', 'Dealer','Customer'];
+
   toppingList: any = [];
 
   toppingList1: any = [];
@@ -382,22 +382,22 @@ export class DealersComponent implements OnInit {
   }
 
   roleItems() {
-    this.user.getroleDetails().subscribe((res: any) => {
+    this.user.getGographicDropdown().subscribe((res: any) => {
       let localdata = res.response;
-      console.log('checkdata', localdata)
+      // console.log('checkdata', localdata)
 
-      this.toppingList = localdata.map((data: { roleId: any; roleName: any; }) => {
-        return { roleId: data.roleId, roleName: data.roleName };
+      this.toppingList = localdata.map((data: { geographyId: any; geographyName: any; }) => {
+        return { geographyId: data.geographyId, geographyName: data.geographyName };
       });
 
-      if (!this.toppingList?.length) {
-        this.toppingList = localdata.map((role: { designationName: any; }) => {
-          return role.designationName;
-        });
-      }
+      // if (!this.toppingList?.length) {
+      //   this.toppingList = localdata.map((role: { designationName: any; }) => {
+      //     return role.designationName;
+      //   });
+      // }
       this.toppingList.push()
       this.toppingList.forEach(element => {
-        return this.roleArray.push(element.roleId);
+        return this.roleArray.push(element.geographyId);
         // console.log('rolecheck',rolecheck)
 
       })
@@ -406,11 +406,11 @@ export class DealersComponent implements OnInit {
       // this.toppingList = res.response;
       this.toppings = new FormControl(this.toppingList);
 
-      console.log('rolelist', this.toppingList)
+      // console.log('rolelist', this.toppingList)
       this.dropdownSettings = {
         singleSelection: false,
-        idField: 'roleId',
-        textField: 'roleName',
+        idField: 'geographyId',
+        textField: 'geographyName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
         itemsShowLimit: 2,
@@ -447,7 +447,7 @@ export class DealersComponent implements OnInit {
 
 
   statusItems() {
-    this.user.getstatusDeatils().subscribe((res: any) => {
+    this.user.dealersStatus().subscribe((res: any) => {
       this.toppingList1 = res.response;
       
       console.log('we have to check here', this.toppingList1)
@@ -748,7 +748,4 @@ export class DealersComponent implements OnInit {
 
 }
 
-function incrementCount() {
-  throw new Error('Function not implemented.');
-}
 

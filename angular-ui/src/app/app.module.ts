@@ -114,6 +114,7 @@ import { ActiveSuccessTaxTemplateComponent } from './component/active-success-ta
 import { DeactiveSuccessTaxTemplateComponent } from './component/deactive-success-tax-template/deactive-success-tax-template.component';
 import { DeactivateTaxCoponentComponent } from './component/deactivate-tax-coponent/deactivate-tax-coponent.component';
 import { SuccessDeactivateTaxComponentComponent } from './component/success-deactivate-tax-component/success-deactivate-tax-component.component';
+import { EditdealersComponent } from './component/users/userPopups/editdealers/editdealers.component';
 
 @NgModule({
   declarations: [
@@ -197,6 +198,7 @@ import { SuccessDeactivateTaxComponentComponent } from './component/success-deac
           DeactiveSuccessTaxTemplateComponent,
           DeactivateTaxCoponentComponent,
           SuccessDeactivateTaxComponentComponent,
+          EditdealersComponent,
   ],
   imports: [
     FormsModule,

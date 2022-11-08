@@ -86,10 +86,17 @@ public getroleDetails(){
 
 }
 
+public getGographicDropdown(){
+  return this.http.get<any>(this.userurl + 'DealerApi/GetGeographyListdrop')
+}
+
 public getstatusDeatils(){
   return this.http.get<any>(this.userurl + 'UserMgmtApi/GetUserStatusList');
 }
 
+public dealersStatus(){
+  return this.http.get<any>(this.userurl + 'DealerApi/GetDealerStatusdrop');
+}
 
 public UserFilterServices(roleId:any,statusId:any){
   if(statusId==undefined){

@@ -710,7 +710,7 @@ console.log(' this.statusTypes', this.userTypes)
 }
 
 
-  addUser(){
+  addCurrencyButton(){
     
    let dialogRef =  this.dialog.open( AddcurrencyComponent);
    dialogRef.afterClosed().subscribe((res) => {
@@ -729,12 +729,7 @@ console.log(' this.statusTypes', this.userTypes)
   addtaxTempl(){
     this.dialog.open( AddTaxTemplateComponent,);
   }
-  addCurrency(){
-    let dialogRef =  this.dialog.open( AddcurrencyComponent);
-    dialogRef.afterClosed().subscribe((res) => {
-      localStorage.setItem('headerStatus','')
-      })
-  }
+
   edittaxTempl(){
     this.dialog.open( EditTaxTemplateComponent);
   }

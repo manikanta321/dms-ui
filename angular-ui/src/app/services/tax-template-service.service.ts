@@ -41,6 +41,10 @@ addtax(data){
   return this.http.post<any>(this.taxurl+'OtherMasterApi/AddTaxTemplate', data);
 
 }
+ediTax(data){
+  return this.http.post<any>(this.taxurl+'OtherMasterApi/EditTaxTemplate', data);
+
+}
 
 reactiveuser(taxid){
   return this.http.get<any>(`${this.taxurl}OtherMasterApi/TaxTemplateReactivate?TaxTemplateId=${taxid}`);

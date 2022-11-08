@@ -1,13 +1,9 @@
-
-
-
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 import { FormGroup, FormArray, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
 import { TaxTemplateServiceService } from 'src/app/services/tax-template-service.service';
 import { SharedService } from 'src/app/services/shared-services.service';
-// import { dataBinding } from '@syncfusion/ej2-angular-schedule';
 
 @Component({
   selector: 'app-edit-tax-template',
@@ -26,36 +22,72 @@ export class EditTaxTemplateComponent implements OnInit {
    taxname:any;
    enteredname:any;
    letter:any='a';
+
    taxId:any;
-   taxItemName:any;
+   taxItemName:any='';
+   objData:any;
+
   constructor(private dialogRef: MatDialogRef<any>,
     private fb:FormBuilder,
     private sharedService:SharedService,
     private taxservise:TaxTemplateServiceService,
     ) { 
+
       }
 
   ngOnInit(): void {
     this.LoginId=localStorage.getItem("logInId");
     this.taxId = localStorage.getItem("taxId");
-
+    
     this.taxservise.gettaxitemToEdit(this.taxId).subscribe((res)=>{
       console.log('check data for edit',res.response)
       let data= res.response
-      this.taxItemName=res.response.taxTemplateName
-    })
+      this.taxItemName=res.response.taxTemplateName;
+      let localdata=res.response.taxTemplateDets;
+      this.productForm.patchValue({
+        TaxTemplateName:this.taxItemName,
+      });
+       for (let detail of localdata) {
+            // alert(detail.taxCodeName)
+            let TaxCodeName: FormControl = new FormControl('');
+            let PercentageValue: FormControl = new FormControl('');
+            let Formula: FormControl = new FormControl('');
+            let DisplayOrder: FormControl = new FormControl('');
+
+            this.letter=detail.displayOrder
+            TaxCodeName.setValue(detail.taxCodeName);
+            PercentageValue.setValue(detail.percentageValue);
+            Formula.setValue(detail.formula);
+            DisplayOrder.setValue(detail.displayOrder);
+
+            this.getFormArray().push(new FormGroup({
+               TaxCodeName:TaxCodeName,
+        PercentageValue: PercentageValue,  
+        Formula: Formula,
+        DisplayOrder:DisplayOrder,
+            }));
+           }
+
+    })  
 
 
     this.productForm = this.fb.group({  
       DoneBy:this.LoginId,
-      TaxTemplateName:'',  
+      TaxTemplateId:this.taxId,
+      TaxTemplateName:this.taxItemName,  
       TaxDetails: this.fb.array([]) ,  
     }); 
-    this.addQuantity(1)
+
+    this.productForm.patchValue({
+      TaxTemplateName:this.taxItemName,
+    });
+    // this.addQuantity(1)
   }
-  modelChanged(newObj) {
-  alert(newObj)
-} 
+
+getFormArray(): FormArray{
+  return this.productForm.get('TaxDetails') as FormArray;
+}
+
 
 
 setUpForm(cars: any[] ) {
@@ -87,7 +119,9 @@ setUpForm(cars: any[] ) {
 
 
     
-  TaxDetails() : FormArray {  
+  TaxDetails() : FormArray { 
+   
+ 
     return this.productForm.get("TaxDetails") as FormArray  
   }  
      
@@ -103,7 +137,8 @@ setUpForm(cars: any[] ) {
       this.letter=item
     }
    
-
+   
+    
     return this.fb.group({  
       TaxCodeName: '',  
       PercentageValue: '',  
@@ -113,23 +148,8 @@ setUpForm(cars: any[] ) {
   }  
      
   addQuantity(data:any) {  
-    
-    this.TaxDetails().push(this.newQuantity(data));  
-
-    this.incrementnum()
-
+   this.TaxDetails().push(this.newQuantity(data));  
   }  
-
-incrementnum(){
-let item=this.letter
-item= String.fromCharCode(item.charCodeAt(0) + 1);
-this.letter=item
-// alert(this.letter)
-
-  }  
-
-
-
 
   removeQuantity(i:number) {  
     if(i>0){
@@ -142,7 +162,7 @@ this.letter=item
     console.log(this.productForm.value);  
 
     console.log('checkarray',this.productForm.value)
-    this.taxservise.addtax(this.productForm.value).subscribe((res)=>{
+    this.taxservise.ediTax(this.productForm.value).subscribe((res)=>{
 console.log(res)
 this.sharedService.filter('Register click')
 
@@ -153,3 +173,5 @@ this.dialogRef.close();
 
 
 }
+
+

@@ -3,6 +3,7 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angu
 import { SharedService } from 'src/app/services/shared-services.service';
 import { UserService } from 'src/app/services/user.service';
 import { DeactiveSuccessPopComponent } from '../deactive-success-pop/deactive-success-pop.component';
+import { AddMaterialsService } from 'src/app/services/add-materials.service';
 @Component({
   selector: 'app-deactivate-userpopup',
   templateUrl: './deactivate-userpopup.component.html',
@@ -12,19 +13,40 @@ export class DeactivateUserpopupComponent implements OnInit {
   employeeId:any;
   employeename:any
   LoginId:any;
+  session:any;
+  localName:any;
+  localData:any;
   constructor(private dialogRef: MatDialogRef<any>,
     private dialog: MatDialog,
     private user:UserService,
     private sharedService:SharedService,
+    private addMaterials: AddMaterialsService
     ) { }
 
   ngOnInit(): void {
      this.employeeId = localStorage.getItem("userID");
     this.employeename=localStorage.getItem("employeeName");
     this.LoginId=localStorage.getItem("logInId");
+    this.deactivateMaterial();
   }
   close(){
     this.dialogRef.close()
+  }
+  deactivateMaterial(){
+    let data = localStorage.getItem('session');
+    if(data!=="MaterialList"){
+      this.session =false;
+      alert(this.session)
+      localStorage.setItem('listData','');
+      localStorage.setItem('listName','');
+    }
+    else {
+      this.session =true;
+      alert(this.session)
+      this.localData = localStorage.getItem('listData');
+      this.localName = localStorage.getItem('listName');
+      alert(this.localData);
+    }
   }
   deactive(){
     const data={
@@ -33,6 +55,19 @@ export class DeactivateUserpopupComponent implements OnInit {
      status:"deactivate"
    }
     this.user.activeDeavtive(data).subscribe((res) => {     
+    });
+
+    this.sharedService.filter('Register click');
+
+    this.dialog.open(DeactiveSuccessPopComponent, {panelClass: 'deactiveSuccessPop'});
+    this.sharedService.filter('Register click');
+    this.dialogRef.close()
+  }
+  deactiveList(){
+    this.addMaterials.onDeactivate(this.localData).subscribe((res) => {
+      let newData = res.response;
+      console.log("LocalData",newData);
+      // this.activateData = newData;
     });
     this.sharedService.filter('Register click');
 

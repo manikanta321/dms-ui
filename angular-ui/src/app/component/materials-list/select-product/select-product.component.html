@@ -8,12 +8,10 @@
         <div class="head-t">
           <h3 class="addU font">Select Identifier<span>*</span></h3>
         </div>
-        <mat-chip-list>
-            <mat-chip class="peri">Perishable</mat-chip>
-            <mat-chip class="frag">Fragile</mat-chip>
-            <mat-chip class="fire">Fire hazard</mat-chip>
+        <mat-chip-list *ngFor="let List of materialIdentifier">
+            <mat-chip  (click)="matIdentifier(List.materialCustomName)"class=" peri">{{List.materialCustomName}}</mat-chip>
             </mat-chip-list>
-            <mat-chip-list>
+            <!-- <mat-chip-list>
             <mat-chip class="cold">Cold Storage</mat-chip>
             <mat-chip class="dangerous">Dangerous goods</mat-chip>
         </mat-chip-list>
@@ -29,7 +27,7 @@
         <mat-chip-list>
             <mat-chip>Don't drop</mat-chip>
             <mat-chip >Don't trample</mat-chip>
-        </mat-chip-list>
+        </mat-chip-list> -->
       </div>
     </div>
   </div>

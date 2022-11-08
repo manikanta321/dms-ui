@@ -165,7 +165,24 @@
   left: 24px;
   top: 24px;
 }
+.selected {
+  background-color:#DBB802;
+  color: white;
+}
 
+.subselected{
+  background:#DBB802;
+  color: white;
+}
+.typeselected{
+  background:#DBB802;
+  color: white;
+}
+
+.cityselected {
+  background:#000000;
+  color: white;
+}
 .addU {
   position: relative;
   /* font-family: 'Gilroy-Bold';  */
@@ -470,22 +487,6 @@ li {
   color: rgba(104, 110, 116, 0.75);
   font-size: 13px;
 }
-
-.selected {
-  background-color: #00187A;
-  color: white;
-}
-
-.subselected {
-  background: #0C5A3E;
-  color: white;
-}
-
-.typeselected {
-  background: #C32F27;
-  color: white;
-}
-
 .row {
   width: 767px
 }

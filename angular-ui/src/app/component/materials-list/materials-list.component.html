@@ -22,13 +22,19 @@
                   (onDeSelectAll)="onItemDeSelectOrAll($event)"
                   (onSelectAll)="onItemSelectOrAll($event)">
               </ng-multiselect-dropdown>
+              <div class="dropdown-placeholder roless-placeholder">
+                <span *ngIf="myForm.get('city').value.length == 0"> Category </span>
+                <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} category selected </span>
+                <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} category(s) selected </span>
+
+              </div>
          </form>
             </div>
             <div class="col-md-2 col-lg-2 col-sm-2">
               <form [formGroup]="subCategory">
             <ng-multiselect-dropdown class="subcatty"
                 name="subCategory"
-                [placeholder]="'Sub-Category'"
+                [placeholder]="''"
                 formControlName="subCategory"
                 [disabled]="disabled"
                 [settings]="dropdownSettings2"
@@ -39,26 +45,40 @@
                 (onSelectAll)="onSubCategorySelectOrAll($event)">
             </ng-multiselect-dropdown>
         </form>
+        <div class="dropdown-placeholder roless-placeholder">
+          <span *ngIf="subCategory.get('subCategory').value.length == 0">Sub-category </span>
+          <span *ngIf="subCategory.get('subCategory').value.length == 1" class="selected-placeholder"> {{subCategory.get('subCategory').value.length}} sub-category selected </span>
+          <span *ngIf="subCategory.get('subCategory').value.length > 1" class="selected-placeholder"> {{subCategory.get('subCategory').value.length}} sub-category(s) selected </span>
+
+        </div>
           </div>
           <div class="col-md-2 col-lg-2 col-sm-2">
             <form [formGroup]="type">
           <ng-multiselect-dropdown class="typy"
               name="type"
-              [placeholder]="'Type'"
+              [placeholder]="''"
               formControlName="type"
               [disabled]="disabled"
               [settings]="dropdownSettings3"
               [data]="typeI"
               (onSelect)="onTypeSelect($event)"
-              (onDeSelect)="onTypeDeSelect($event)">
+              (onDeSelect)="onTypeDeSelect($event)"
+              (onSelectAll) = "onTypeSelectOrAll()"
+              (onDeSelectAll)="OnTypeDeselectOrAll()">
           </ng-multiselect-dropdown>
         </form>
+        <div class="dropdown-placeholder roless-placeholder">
+          <span *ngIf="type.get('type').value.length == 0">Select Type</span>
+          <span *ngIf="type.get('type').value.length == 1" class="selected-placeholder"> {{type.get('type').value.length}} type selected </span>
+          <span *ngIf="type.get('type').value.length > 1" class="selected-placeholder"> {{type.get('type').value.length}} type(s) selected </span>
+
+        </div>
         </div>
         <div class="col-md-2 col-lg-2 col-sm-2">
           <form [formGroup]="product">
         <ng-multiselect-dropdown class="producty"
             name="product"
-            [placeholder]="'Product'"
+            [placeholder]="''"
             formControlName="product"
             [disabled]="disabled"
             [settings]="dropdownSettings4"
@@ -69,6 +89,12 @@
             (onSelectAll)="onProductSelectOrAll($event)">
         </ng-multiselect-dropdown>
         </form>
+        <div class="dropdown-placeholder roless-placeholder">
+          <span *ngIf="product.get('product').value.length == 0">Product Group </span>
+          <span *ngIf="product.get('product').value.length == 1" class="selected-placeholder"> {{product.get('product').value.length}} product group selected </span>
+          <span *ngIf="product.get('product').value.length > 1" class="selected-placeholder"> {{product.get('product').value.length}} product group(s) selected </span>
+
+        </div>
         </div>
             <div class="col-md-2 col-lg-2 col-sm-2">
               <form [formGroup]="myForms">
@@ -85,6 +111,12 @@
                 (onSelectAll)="onItemSelectOrAllStatus($event)">
             </ng-multiselect-dropdown>
         </form>
+        <div class="dropdown-placeholder roless-placeholder">
+          <span *ngIf="myForms.get('citys').value.length == 0"> Select Status </span>
+          <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} status selected </span>
+          <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} status(s) selected </span>
+
+        </div>
           </div>
           <div class="icon btnhover refreshbtn" (click)="refresh()">
             <img src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;" alt="refresh" >
@@ -134,7 +166,7 @@
            (firstDataRendered)="onFirstDataRendered($event)" 
            (firstDataRendered)="onFirstDataRendered($event)"
            (rowClicked)="openDialog()"
-           
+           (cellClicked)="onCellClicked($event)"
            (gridReady)="onGridReady($event)"
 
            

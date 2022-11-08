@@ -3,29 +3,20 @@ import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
-
-import tippy, { hideAll } from 'tippy.js'; 
 import { ActivatepopUpComponent } from '../users/userPopups/activatepop-up/activatepop-up.component';
 import { DeactivateUserpopupComponent } from '../users/userPopups/deactivate-userpopup/deactivate-userpopup.component';
-import { EditPopupComponent } from '../users/userPopups/edit-popup/edit-popup.component';
-import { PswResetPopupComponent } from '../users/userPopups/psw-reset-popup/psw-reset-popup.component';
+import tippy, { hideAll } from 'tippy.js'; 
 
 @Component({
-  selector: 'app-useraction',
-  templateUrl: './useraction.component.html',
-  styleUrls: ['./useraction.component.css']
+  selector: 'app-material-list-action',
+  templateUrl: './material-list-action.component.html',
+  styleUrls: ['./material-list-action.component.css']
 })
-export class UseractionComponent implements OnInit,  AfterViewInit {
+export class MaterialListActionComponent implements OnInit {
   private params;
   public isOpen = false;
   private tippyInstance;
-  selected:boolean=false;
-
-  ngOnInit(){}
-  @ViewChild('content') container;
-
-  @ViewChild('trigger') button;
-
+  unActiveList:any;
   constructor(private changeDetector: ChangeDetectorRef,private dialog: MatDialog) {}
 
   ngAfterViewInit(): void {
@@ -37,7 +28,11 @@ export class UseractionComponent implements OnInit,  AfterViewInit {
     this.params = params;
   }
 
+  ngOnInit(): void {
+  }
+  @ViewChild('content') container;
 
+  @ViewChild('trigger') button;
   configureTippyInstance() {
     this.tippyInstance.enable();
     this.tippyInstance.show();
@@ -60,11 +55,17 @@ export class UseractionComponent implements OnInit,  AfterViewInit {
       },
     });
   }
-
-  editUser(){
-   
-    this.dialog.open( EditPopupComponent,);
-    this.isOpen = false;
+  togglePopup() {
+    this.isOpen = !this.isOpen;
+    this.changeDetector.detectChanges();
+    if (this.isOpen) {
+      this.unActiveList ="MaterialList"
+      localStorage.setItem('session', this.unActiveList);
+      this.configureTippyInstance();
+      this.tippyInstance.setContent(this.container.nativeElement);
+    } else {
+      this.tippyInstance.unmount();
+    }
   }
   deactive(){
     this.dialog.open(DeactivateUserpopupComponent);
@@ -75,25 +76,4 @@ export class UseractionComponent implements OnInit,  AfterViewInit {
     this.dialog.open(ActivatepopUpComponent);
     this.isOpen = false;
   }
-  resetpws(){
-    this.dialog.open(PswResetPopupComponent);
-    this.isOpen = false;
-  }
-  tickmark(){
-    this.selected = true;
-  }
-  togglePopup() {
-    this.isOpen = !this.isOpen;
-    this.changeDetector.detectChanges();
-    if (this.isOpen) {
-      let data:any = localStorage.setItem('session','');
-      this.configureTippyInstance();
-      this.tippyInstance.setContent(this.container.nativeElement);
-    } else {
-      this.tippyInstance.unmount();
-    }
-  }
-
-
-
 }

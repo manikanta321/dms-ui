@@ -33,23 +33,19 @@
               </div>
               <div class="categorydrp">
                 <ng-select [items]="catgname" [virtualScroll]="true" bindLabel="catName" bindValue="catId"
-                  [searchable]="true" [clearable]="false" placeholder="Search & select category" [(ngModel)]="selectedItems"
+                  [searchable]="true" [clearable]="false" placeholder="Search & select category" [(ngModel)]="selectedItems1"
                   (change)="onItemSelect($event)">
                 </ng-select>
               </div>
               <div class="subcategorydrp">
                 <ng-select [items]="sub_category" [virtualScroll]="true" bindLabel="subCatName" bindValue="subCatId"
-                  [searchable]="true" [clearable]="false" placeholder="search & select sub-category" [(ngModel)]="selectedItems"
+                  [searchable]="true" [clearable]="false" placeholder="search & select sub-category" [(ngModel)]="selectedItems2"
                   (change)="onSubCategorySelect($event)">
                 </ng-select>
               </div>
               <div class="typedrp">
-                <!-- <ng-multiselect-dropdown name="type" [placeholder]="'Type'" formControlName="type" [disabled]="disabled"
-                  [settings]="dropdownSettings3" [data]="toppingList3" (onSelect)="onTypeSelect($event)"
-                  (onSelectAll)="onTypeAll($event)">
-                </ng-multiselect-dropdown> -->
                 <ng-select [items]="typeI" [virtualScroll]="true" bindLabel="typeName" bindValue="typeId"
-                  [searchable]="true" [clearable]="false" placeholder="Search & select type" [(ngModel)]="selectedItems"
+                  [searchable]="true" [clearable]="false" placeholder="Search & select type" [(ngModel)]="selectedItems3"
                   (change)="onTypeSelect($event)">
                 </ng-select>
               </div>
@@ -68,7 +64,7 @@
               </mat-form-field>
               <div class="uomdrp">
                 <ng-select [items]="rowData5" [virtualScroll]="true" bindLabel="uoMShortName" bindValue="uoMId"
-                  [searchable]="true" [clearable]="false" placeholder="Search & select measuring unit" [(ngModel)]="selectedItems"
+                  [searchable]="true" [clearable]="false" placeholder="Search & select measuring unit" [(ngModel)]="selectedItems4"
                   (change)="onUomSelect($event)">
                 </ng-select>
               </div>
@@ -91,15 +87,14 @@
               <img src="assets/img/add-image.png"  class="add-img"
                 alt="left-arr-btn">
                 </div>
-              <div class="customidentifier hide" >
+              <div class="customidentifier hide" (click)="selectProduct()">
                 <!-- (click)="selectProduct()" -->
                 <!-- <ng-multiselect-dropdown name="type" [placeholder]="'Select Identifier'" formControlName="type"
                   [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList3"
                   (onSelect)="onTypeSelect($event)" (onSelectAll)="onTypeAll($event)">
                 </ng-multiselect-dropdown> -->
-                <ng-select [items]="materialIdentifier" [virtualScroll]="true" bindLabel="materialCustomName" bindValue="materilCustomIdentifierId"
-                [searchable]="true" [clearable]="false" placeholder="Select Identifier" [(ngModel)]="selectedItems"
-                (change)="onIdentiSelect($event)">
+                <ng-select [items]="selectedItems5" [virtualScroll]="true" bindLabel="materialCustomName" bindValue="materilCustomIdentifierId"
+                [searchable]="true" [clearable]="true" placeholder="Select Identifier" [(ngModel)]="selectedItems5">
               </ng-select>
               </div>
               <!-- <div class="describem">
@@ -161,10 +156,14 @@
                   <label>Manual Sort Order<span>*</span></label>
                 </div>
                 <div class="productdrp">
-                  <ng-multiselect-dropdown name="type" [placeholder]="'Search & select group'" formControlName="type"
+                  <!-- <ng-multiselect-dropdown name="type" [placeholder]="'Search & select group'" formControlName="type"
                     [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList3"
                     (onSelect)="onTypeSelect($event)" (onSelectAll)="onTypeAll($event)">
-                  </ng-multiselect-dropdown>
+                  </ng-multiselect-dropdown> -->
+                  <ng-select [items]="productList" [virtualScroll]="true" bindLabel="productGroupName" bindValue="productGroupId"
+                  [searchable]="true" [clearable]="false" placeholder="Search & select group" [(ngModel)]="selectedItems6"
+                  (change)="onProductSelect($event)">
+                </ng-select>
                 </div>
                 <img src="assets/img/plus.png" style="width: 22px;margin-left: 316px;margin-top: -67px;" alt="plus-btn"
                   (click)="addproduct()">
@@ -177,10 +176,14 @@
                   <label>Product Link<span>*</span></label>
                 </div>
                 <div class="productsdrp">
-                  <ng-multiselect-dropdown name="type" [placeholder]="'Search & select sub-group'"
+                  <!-- <ng-multiselect-dropdown name="type" [placeholder]="'Search & select sub-group'"
                     formControlName="type" [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList3"
                     (onSelect)="onTypeSelect($event)" (onSelectAll)="onTypeAll($event)">
-                  </ng-multiselect-dropdown>
+                  </ng-multiselect-dropdown> -->
+                  <ng-select [items]="subProduct" [virtualScroll]="true" bindLabel="productGroupName" bindValue="productGroupId"
+                  [searchable]="true" [clearable]="false" placeholder="Search & select sub-group" [(ngModel)]="selectedItems7"
+                  (change)="onSubProductSelect($event)">
+                </ng-select>
                 </div>
                 <div class="image">
                   <img src="assets/img/plus.png" style="width: 22px;margin-left: 316px;margin-top: -67px;"
@@ -223,8 +226,8 @@
                   </div>
                   <mat-card class="mat-card-content ">
                     <mat-card-content style="height:188px; overflow-y: scroll;">
-                      <div class=" d-flex " *ngFor="let catg of countryname">
-                        <p class="col-10 catg" (click)="onClick(catg)">{{catg}}</p>
+                      <div class=" d-flex " *ngFor="let catg of countryList">
+                        <p class="col-10 catg" (click)="getStateList(catg.countryId)" [ngClass]="{ 'selected': catg.countryId == selectedItem }" (click)="onClick(catg)">{{catg.countryName}}</p>
                       </div>
                       <div class="buttn d-flex" *ngIf=addButton>
                         <div class="col-10">
@@ -245,23 +248,23 @@
                   <mat-card class="mat-card-content1">
                     <mat-card-content style="height:188px; overflow-y: scroll;">
                       <!-- <div class="span-subhead"><span>category 3</span><mat-icon>arrow_drop_down</mat-icon></div> -->
-                      <div class=" d-flex" *ngFor="let subc of statename">
-                        <p class="col-10 subc" (click)="onClick(subc)">{{subc}}</p>
+                      <div class=" d-flex" *ngFor="let subc of stateList">
+                        <p class="col-10 subc" [ngClass]="{ 'subselected': subc.geographyId == stateselectedItem }" (click)="onClick(subc)">{{subc.geographyName}}</p>
                       </div>
                     </mat-card-content>
                   </mat-card>
                 </div>
                 <div class="col-3">
                   <div class="row">
-                    <p class="col-10" style="font-family: 'Gilroy'">Region</p>
+                    <p class="col-10" style="font-family: 'Gilroy'">District</p>
                     <p class="col-2"> </p>
                   </div>
                   <mat-card class="mat-card-content2">
                     <mat-card-content style="height:188px; overflow-y: scroll;">
                       <!-- <div class="span-subhead"><span style="padding-bottom: 10px;">category 3</span><mat-icon>keyboard_arrow_right</mat-icon><span>Sub-category</span><mat-icon>arrow_drop_down</mat-icon></div> -->
                       <!-- <li class="type" *ngFor="let type of typename" >{{type}}<mat-icon>add_circle</mat-icon></li> -->
-                      <div class=" d-flex" *ngFor="let type of regionname">
-                        <p class="col-10 typeg" (click)="onClick(type)">{{type}}</p>
+                      <div class=" d-flex" *ngFor="let type of distList">
+                        <p class="col-10 typeg" (click)="onClick(type)"[ngClass]="{ 'typeselected': type.geographyId == distselectedItem }">{{type.geographyName}}</p>
                       </div>
                     </mat-card-content>
                   </mat-card>
@@ -276,9 +279,9 @@
                     <mat-card-content style="height:188px; overflow-y: scroll;">
                       <!-- <div class="span-subhead"><span style="padding-bottom: 10px;">category 3</span><mat-icon>keyboard_arrow_right</mat-icon><span>Sub-category</span><mat-icon>arrow_drop_down</mat-icon></div> -->
                       <!-- <li class="type" *ngFor="let type of typename" >{{type}}<mat-icon>add_circle</mat-icon></li> -->
-                      <div class=" d-flex" *ngFor="let type of cityname">
-                        <p class="col-10 typeg" (click)="onClick(type)"
-                          [ngClass]="{ 'typeselected': type == selectedItem }">{{type}}</p>
+                      <div class=" d-flex" *ngFor="let type of cityList">
+                        <p class="col-10 typeg" (click)="onClick(type)" 
+                          [ngClass]="{ 'cityselected': type == citySelectedItem }">{{type.geographyName}}</p>
                       </div>
                     </mat-card-content>
                   </mat-card>

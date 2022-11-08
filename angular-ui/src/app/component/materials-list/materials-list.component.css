@@ -136,6 +136,13 @@
     position: relative;
     top: 39px !important;
   }
+  ::ng-deep.my-class-1 {
+    color: #FA3F3F !important;
+  }
+  
+  ::ng-deep.my-class-2 {
+    color: #17B15C !important;
+  }
   ::ng-deep.catty .multiselect-dropdown .dropdown-btn .selected-item {
     background: #D23F00 !important;
     right: 6% !important;
@@ -389,7 +396,9 @@
         border: none;
       } */
       
-      
+      .dropdown-btn span .ng-star-inserted {
+        display: none !important;
+      }
       @media (max-width: 991px){
         ::ng-deep.multiselect-dropdown {
           width: 90% !important;
@@ -445,4 +454,27 @@
           right: 0% !important;
         }
       
+    }
+    .dropdown-placeholder {
+      background: white;
+      color: #808080;
+      top: 0;
+      position: absolute;
+      height: 41px;
+      line-height: 41px;
+      left: 16px;
+      border-top: 1px solid #000;
+      border-bottom: 1px solid #000;
+      /* width: 80%; */
+      border-radius: 10px 0 0 10px !important;
+      padding-left: 10px;
+      pointer-events: none;
+    }
+    
+    .roless-placeholder.dropdown-placeholder .selected-placeholder {
+      color: #D23F00 !important;
+    }
+    
+    .stts-placeholder.dropdown-placeholder .selected-placeholder {
+      color: #000 !important;
     }

@@ -9,7 +9,7 @@ import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, Gu
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { MaterialListService } from 'src/app/services/material-list.service';
-
+import {MaterialListActionComponent} from '../material-list-action/material-list-action.component';
 // import { ButtonRendererComponent } from './renderer/button-renderer.component';
 
 export interface PeriodicElement {
@@ -70,7 +70,11 @@ export class MaterialsListComponent implements OnInit {
   sub_category: any = [];
   sub_categorys:any=[];
   typeI: any = [];
+  typesI: any = [];
+  typesData:any = [];
   typeD: any = [];
+  typessData:any = [];
+  typessArray:any = [];
   searchText: any;
   statusTypes: any = [];
   productID: any = [];
@@ -80,7 +84,8 @@ export class MaterialsListComponent implements OnInit {
   typeArray: any[] = [];
   prodArray: any[] = [];
   catagData: any = [];
-
+  userId: any;
+  employeeName: any;
   prodData: any = [];
   subcatagData: any = [];
   typeData: any = [];
@@ -89,6 +94,9 @@ export class MaterialsListComponent implements OnInit {
   toppingList2: any = [];
   toppingList3: any = [];
   toppingList4: any = [];
+  stockItemId:any;
+  stockItemName:any;
+  instancePopup:any = null;
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
   dropdownSettings2: IDropdownSettings = {};
@@ -300,8 +308,8 @@ export class MaterialsListComponent implements OnInit {
     });
     const data = {
       Cat: this.catergory,
-      Sub_Cat: this.sub_category,
-      type: this.typeI,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText
@@ -327,8 +335,8 @@ export class MaterialsListComponent implements OnInit {
     console.log('this.catergory', this.catergory);
     const data = {
       Cat: this.catergory,
-      Sub_Cat: this.sub_category,
-      type: this.typeI,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText
@@ -357,7 +365,7 @@ export class MaterialsListComponent implements OnInit {
     const data = {
       Cat: this.catergory,
       Sub_Cat: this.sub_category,
-      type: this.typeI,
+      type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText
@@ -370,10 +378,11 @@ export class MaterialsListComponent implements OnInit {
     this.catergory = [];
     this.sub_category = [];
     this.typeI = [];
+    this.typesI = [];
     const data = {
       Cat: this.catergory,
       Sub_Cat: this.sub_category,
-      type: this.typeI,
+      type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText
@@ -384,35 +393,13 @@ export class MaterialsListComponent implements OnInit {
   }
   onSubCategorySelect(item: any) {
     console.log(" item Types", item);
-    // this.sub_category =[];
     this.sub_categorys.push(item.subCatId);
-    console.log("typesss2",this.sub_category)
-    this.itemId1 = item.subCatId;
-    this.types = item.subCatName;
-    this.subcatagData = item.map((data: { subCatId: any; subCatName: any; }) => {
-      return { subCatId: data.subCatId, subCatName: data.subCatName };
-    });
-
-    if (!this.subcatagData?.length) {
-      this.subcatagData = item.map((subCatData: { designationName: any; }) => {
-        return subCatData.designationName;
-      });
-    }
-    this.subcatagData.push()
-    this.subcatagData.forEach(element => {
-      return this.subcatArray.push(element.subCatId);
-
-    })
-    // let Type = {
-    //   subCatId: this.subcatArray
-    // }
-        let Type = {
+    let Type = {
       subCatId: this.sub_categorys
     }
-    this.sub_category = this.subcatArray;
-    console.log("Typeess Catttyy",this.subcatArray)
     this.materialList.onclicksubcat(Type).subscribe((res) => {
       let typs = res.response;
+      alert(typs)
       console.log("types..res", typs);
       this.typeI = typs;
       console.log("Typess", this.typss);
@@ -420,8 +407,8 @@ export class MaterialsListComponent implements OnInit {
     });
     const data = {
       Cat: this.catergory,
-      Sub_Cat: this.sub_category,
-      type: this.typeI,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText
@@ -431,43 +418,28 @@ export class MaterialsListComponent implements OnInit {
     });
   }
   onSubCategoryDeSelect(item: any) {
-
-    this.sub_category.forEach((element, index) => {
-      if (element == item.subCatId) this.sub_category.splice(index, 1);
+    this.sub_categorys.forEach((element, index) => {
+      if (element == item.subCatId) this.sub_categorys.splice(index, 1);
 
     });
-    //    this.subcatagData = item.map((data: { subCatId: any; subCatName: any; }) => {
-    //     return { subCatId: data.subCatId, subCatName: data.subCatName };
-    //   });
-
-    //   if (!this.subcatagData?.length) {
-    //     this.subcatagData = item.map((subCatData: { designationName: any; }) => {
-    //       return subCatData.designationName;
-    //     });
-    //   }
-    //   this.subcatagData.push()
-    //  this.subcatagData.forEach(element=>{
-    //  return   this.subcatArray.push(element.subCatId);
-
-    //   })
-    //   let Type = {
-    //     subCatId:this.subcatArray
-    //    }
-    this.materialList.onclicksubcat(this.sub_category).subscribe((res) => {
+    let subCat ={
+      subCatId: this.sub_categorys
+    }
+    this.materialList.onclicksubcat(subCat).subscribe((res) => {
       let typs = res.response;
       console.log("types..res", typs);
-      this.typeI = typs;
+      this.typesI = typs;
+      if(this.typesI.length ==0){
+        this.typeI = [];
+      }
       console.log("Typess", this.typss);
       this.topping2 = new FormControl(this.typeI);
     });
-    console.log(' this.sub_category', this.sub_category)
-
-    // this.userTypes.pop(item.roleId);
-    // this.type=[];
+    console.log(' this.sub_categorys', this.sub_categorys)
     const data = {
       Cat: this.catergory,
-      Sub_Cat: this.sub_category,
-      type: this.typeI,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText
@@ -478,10 +450,6 @@ export class MaterialsListComponent implements OnInit {
 
   }
   onSubCategorySelectOrAll(item: any) {
-    console.log(" item Types", item);
-    this.sub_category.push(item.subCatId);
-    this.itemId1 = item.subCatId;
-    this.types = item.subCatName;
     this.subcatagData = item.map((data: { subCatId: any; subCatName: any; }) => {
       return { subCatId: data.subCatId, subCatName: data.subCatName };
     });
@@ -494,7 +462,6 @@ export class MaterialsListComponent implements OnInit {
     this.subcatagData.push()
     this.subcatagData.forEach(element => {
       return this.subcatArray.push(element.subCatId);
-      // alert(this.subcatArray);
 
     })
     let Type = {
@@ -503,15 +470,15 @@ export class MaterialsListComponent implements OnInit {
     this.materialList.onclicksubcat(Type).subscribe((res) => {
       let typs = res.response;
       console.log("types..res", typs);
-      this.typeI = typs;
+      this.typesI = typs;
       console.log("Typess", this.typss);
       this.topping2 = new FormControl(this.typeI);
     });
-    this.sub_category = this.subcatArray;
+    this.sub_categorys = this.subcatArray;
     const data = {
       Cat: this.catergory,
-      Sub_Cat: this.subcatArray,
-      type: this.typeI,
+      Sub_Cat: this.sub_categorys,
+      types: this.typesI,
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText
@@ -521,12 +488,13 @@ export class MaterialsListComponent implements OnInit {
     });
   }
   onSubCategoryDSelectOrAll(item: any) {
-    // this.sub_category=[];
-    this.type = [];
+    this.sub_categorys=[];
+    this.typesI = [];
+    this.typeI =[]
     const data = {
       Cat: this.catergory,
-      Sub_Cat: this.sub_category,
-      type: this.typeI,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText
@@ -536,37 +504,30 @@ export class MaterialsListComponent implements OnInit {
     });
   }
   onTypeSelect(item: any) {
-    // alert(this.typeI)
-    this.typeI.push(item.typeId);
+    this.typesData.push(item.typeId);
+    this.typesI = this.typesData;
     const data = {
       Cat: this.catergory,
-      Sub_Cat: this.sub_category,
-      type: this.typeI,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText
     }
-    // alert(data)
-    console.log("tttttt",data)
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
-      console.log("this TYpe",this.rowData5)
     });
-    console.log(item);
   }
   onTypeDeSelect(item: any) {
 
-    this.typeI.forEach((element, index) => {
-      if (element == item.typeId) this.catergory.splice(index, 1);
+    this.typesI.forEach((element, index) => {
+      if (element == item.typeId) this.typesI.splice(index, 1);
 
     });
-    console.log(' this.catergory', this.catergory)
-
-    // this.userTypes.pop(item.roleId);
     const data = {
       Cat: this.catergory,
-      Sub_Cat: this.sub_category,
-      type: this.typeI,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText
@@ -575,14 +536,57 @@ export class MaterialsListComponent implements OnInit {
       this.rowData5 = res.response;
     });
 
+  }
+  onTypeSelectOrAll(){
+    
+    this.typessData = this.typeI.map((data: { typeId: any; typeName: any; }) => {
+      return { typeId: data.typeId, typeName: data.typeName };
+    });
+
+    if (!this.typessData?.length) {
+      this.typessData = this.typeI.map((type: { designationName: any; }) => {
+        return type.designationName;
+      });
+    }
+    this.typessData.push()
+    this.typessData.forEach(element => {
+      return this.typessArray.push(element.typeId);
+
+    })
+    this.typesI = this.typessArray;
+    const data = {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      product: this.productID,
+      status: this.statusTypes,
+      Search: this.searchText
+    }
+    this.materialList.getMaterialList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
+  }
+  OnTypeDeselectOrAll(){
+this.typesI =[];
+const data = {
+  Cat: this.catergory,
+  Sub_Cat: this.sub_categorys,
+  type: this.typesI,
+  product: this.productID,
+  status: this.statusTypes,
+  Search: this.searchText
+}
+this.materialList.getMaterialList(data).subscribe((res) => {
+  this.rowData5 = res.response;
+});
   }
   onProductSelect(item: any) {
     this.productID.push(item.productGroupId);
     console.log(item);
     const data = {
       Cat: this.catergory,
-      Sub_Cat: this.sub_category,
-      type: this.typeI,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText
@@ -601,8 +605,8 @@ export class MaterialsListComponent implements OnInit {
     // this.userTypes.pop(item.roleId);
     const data = {
       Cat: this.catergory,
-      Sub_Cat: this.sub_category,
-      type: this.typeI,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText
@@ -617,8 +621,8 @@ export class MaterialsListComponent implements OnInit {
     console.log("ProdData", this.ProdData);
     const data = {
       Cat: this.catergory,
-      Sub_Cat: this.sub_category,
-      type: this.typeI,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText
@@ -638,8 +642,8 @@ export class MaterialsListComponent implements OnInit {
     // this.userTypes.pop(item.roleId);
     const data = {
       Cat: this.catergory,
-      Sub_Cat: this.sub_category,
-      type: this.typeI,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText
@@ -654,8 +658,8 @@ export class MaterialsListComponent implements OnInit {
     console.log(item);
     const data = {
       Cat: this.catergory,
-      Sub_Cat: this.sub_category,
-      type: this.typeI,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText
@@ -670,8 +674,8 @@ export class MaterialsListComponent implements OnInit {
     });
     const data = {
       Cat: this.catergory,
-      Sub_Cat: this.sub_category,
-      type: this.typeI,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText
@@ -683,8 +687,8 @@ export class MaterialsListComponent implements OnInit {
   onItemDeSelectOrAllStatus(item: any) {
     const data = {
       Cat: this.catergory,
-      Sub_Cat: this.sub_category,
-      type: this.typeI,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText
@@ -697,8 +701,8 @@ export class MaterialsListComponent implements OnInit {
     this.statusTypes = this.statusArray;
     const data = {
       Cat: this.catergory,
-      Sub_Cat: this.sub_category,
-      type: this.typeI,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText
@@ -794,6 +798,29 @@ export class MaterialsListComponent implements OnInit {
     this.dialog.open(MaterialAddEditpopupComponent);
 
   }
+  onCellClicked(e): void {
+    console.log('cellClicked', e);
+    this.userId = e.data.userId;
+    this.employeeName = e.data.userName;
+    this.stockItemId = e.data.stockItemId;
+    this.stockItemName = e.data.stockItemName;
+    console.log('userID', this.userId);
+    localStorage.setItem('userID', this.userId)
+    localStorage.setItem('employeeName', this.employeeName);
+    localStorage.setItem('listData',this.stockItemId);
+    localStorage.setItem('listName',this.stockItemName);
+    if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
+      const cellRendererInstances = e.api.getCellRendererInstances({
+        rowNodes: [e.node],
+        columns: [e.column],
+      });
+      if (cellRendererInstances.length > 0) {
+        const instance = cellRendererInstances[0];
+        this.instancePopup = instance;
+        instance.togglePopup();
+      }
+    }
+  }
   refresh() {
     this.myForm = this.fb.group({
       city: [this.selectedItems]
@@ -812,7 +839,9 @@ export class MaterialsListComponent implements OnInit {
     });
     this.catergory = [];
     this.sub_category = [];
+    this.sub_categorys =[];
     this.typeI = [];
+    this.typesI = [];
     this.productID = [];
     this.statusTypes = [];
     const data = {
@@ -835,7 +864,7 @@ export class MaterialsListComponent implements OnInit {
 
     {
       headerName: "Classification",
-      field: 'classification'
+      field: 'classification',type: ['nonEditableColumn']
     },
 
     {
@@ -852,12 +881,23 @@ export class MaterialsListComponent implements OnInit {
     },
     {
       headerName: "Status",
-
       field: 'statusName',
+      type: ['nonEditableColumn'],
       cellEditor: 'agSelectCellEditor',
       cellEditorParams: {
-        values: ['Active', 'Inactive', 'Invited', 'Locked',],
-      }
+        values: ['Active', 'Inactive'],
+      },
+      cellClass: params => {
+        return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2': 'my-class-4'
+      },
+      tooltipField:"statusName",
+    },
+    {
+      headerName: '',
+      colId: 'action',
+      cellRenderer: MaterialListActionComponent,
+      editable: false,
+      maxWidth: 75  
     },
 
   ];
@@ -911,7 +951,7 @@ export class MaterialsListComponent implements OnInit {
     params.api.sizeColumnsToFit();
   }
   openDialog() {
-    alert('Shivam')
+    // alert('Shivam')
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;

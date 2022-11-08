@@ -34,17 +34,38 @@ else {
 }
 getclassification(){
   return this.http.get<any>(this.addmaterialsurl + 'MaterialApi/GetCategories');
-
 }
 getUploadImage(){
   return this.http.get<any>(this.addmaterialsurl + 'MaterialApi/UploadImg');
-
+}
+getProductGroup(){
+  return this.http.get<any>(this.addmaterialsurl + 'MaterialApi/GetProductGroupList');
+}
+getProductSubGroup(subProdId:any){
+  return this.http.get<any>(`${this.addmaterialsurl}MaterialApi/GetSubProducts?ParentId=${subProdId}`);
+}
+getCountryList(){
+  return this.http.get<any>(this.addmaterialsurl + 'OtherMasterApi/GetAllCountries');
+}
+getAllListByCountry(id:any){
+  return this.http.get<any>(this.addmaterialsurl + 'OtherMasterApi/GetGeographies?id='+id);
 }
 onclickcat(catId:any){
   return this.http.get<any>(`${this.addmaterialsurl}MaterialApi/GetSUbCAts?catid=${catId}`);
 
 }
+onEditList(listId:any){
+  return this.http.get<any>(`${this.addmaterialsurl}MaterialApi/GetMaterialByIdToEdit?StockItemId=${listId}`);
 
+}
+onReactivate(listId:any){
+  return this.http.get<any>(`${this.addmaterialsurl}MaterialApi/GetMaterialByIdToEdit?StockItemId=${listId}`);
+
+}
+onDeactivate(listId:any){
+  return this.http.get<any>(`${this.addmaterialsurl}MaterialApi/GetMaterialByIdToEdit?StockItemId=${listId}`);
+
+}
 onclicksubcat(catId:any){
   return this.http.get<any>(`${this.addmaterialsurl}MaterialApi/GetTypes?subCatId=${catId}`);
 

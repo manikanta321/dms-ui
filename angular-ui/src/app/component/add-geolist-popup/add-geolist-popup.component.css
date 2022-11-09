@@ -47,8 +47,6 @@
 .head-t h3 {
     color: #000000;
     text-align: center;
-    margin-top: -45px;
-    margin-bottom: 2px;
 }
 
 .addU {
@@ -95,15 +93,13 @@ span {
 }
 
 .close-icon {
-    left: 101%;
+    left: 100%;
     position: relative;
     font-size: 15px;
     font-weight: 600;
-    top:-24px;
 }
 
 label {
-    /* padding: 2px 0; */
     font-size: 14px;
     margin: 5px;
 }
@@ -216,6 +212,26 @@ mat-form-field {
     height: 370px;
     overflow-x: hidden;
 }
+
+.scroll {
+    overflow-y: auto;
+    overflow-x: auto;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 25px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    border-radius: 20px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    margin-left: 20px;
+  }
 
 .save-btn {
     width: 168px;

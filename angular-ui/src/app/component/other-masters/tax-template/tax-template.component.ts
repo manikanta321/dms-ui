@@ -194,7 +194,7 @@ instancePopup:any = null;
     displayedColumns: string[] = ['position', 'name',  'symbol','email','phonenum','login','status','edit'];
     dataSource = new MatTableDataSource(ELEMENT_DATA);
     toppings = new FormControl('');
-  selectedItems: any;
+  selectedItems: any=[];
   userTypes:any=[];
   statusTypes:any=[];
   searchText:any='';

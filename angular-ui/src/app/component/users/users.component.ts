@@ -699,8 +699,8 @@ export class UsersComponent implements OnInit {
 
   onCellClicked(e): void {
     console.log('cellClicked', e);
-    this.userId = e.data.customerCode;
-    this.employeeName = e.data.customerName;
+    this.userId = e.data.userId;
+    this.employeeName = e.data.userName;
     console.log('userID', this.userId);
     localStorage.setItem('userID', this.userId)
     localStorage.setItem('employeeName', this.employeeName);

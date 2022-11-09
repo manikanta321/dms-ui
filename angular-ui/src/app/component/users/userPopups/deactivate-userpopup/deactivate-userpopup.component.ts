@@ -36,16 +36,13 @@ export class DeactivateUserpopupComponent implements OnInit {
     let data = localStorage.getItem('session');
     if(data!=="MaterialList"){
       this.session =false;
-      alert(this.session)
       localStorage.setItem('listData','');
       localStorage.setItem('listName','');
     }
     else {
       this.session =true;
-      alert(this.session)
       this.localData = localStorage.getItem('listData');
       this.localName = localStorage.getItem('listName');
-      alert(this.localData);
     }
   }
   deactive(){

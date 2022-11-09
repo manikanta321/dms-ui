@@ -199,7 +199,6 @@ export class MaterialsListComponent implements OnInit {
       this.catagData.push()
       this.catagData.forEach(element => {
         return this.catArray.push(element.catId);
-        // alert(this.catArray);
 
       })
     })
@@ -223,7 +222,6 @@ export class MaterialsListComponent implements OnInit {
       this.prodData.push()
       this.prodData.forEach(element => {
         return this.prodArray.push(element.productGroupId);
-        // alert(this.catArray);
 
       })
     })
@@ -399,7 +397,6 @@ export class MaterialsListComponent implements OnInit {
     }
     this.materialList.onclicksubcat(Type).subscribe((res) => {
       let typs = res.response;
-      alert(typs)
       console.log("types..res", typs);
       this.typeI = typs;
       console.log("Typess", this.typss);
@@ -713,7 +710,6 @@ this.materialList.getMaterialList(data).subscribe((res) => {
     console.log('rolefilter', this.statusTypes)
   }
   editfn() {
-    alert('guru')
   }
 
   // onSelectAll(items: any) {
@@ -888,7 +884,7 @@ this.materialList.getMaterialList(data).subscribe((res) => {
         values: ['Active', 'Inactive'],
       },
       cellClass: params => {
-        return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2': 'my-class-4'
+        return params.value == 'InActive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2': 'my-class-4'
       },
       tooltipField:"statusName",
     },
@@ -942,7 +938,6 @@ this.materialList.getMaterialList(data).subscribe((res) => {
   public rowData5 = [];
   public popupParent: HTMLElement = document.body;
   onCellValueChanged(event: CellValueChangedEvent) {
-    // alert(event.value)
     console.log(
       'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );
@@ -951,7 +946,6 @@ this.materialList.getMaterialList(data).subscribe((res) => {
     params.api.sizeColumnsToFit();
   }
   openDialog() {
-    // alert('Shivam')
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;

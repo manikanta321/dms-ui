@@ -59,11 +59,11 @@ onEditList(listId:any){
 
 }
 onReactivate(listId:any){
-  return this.http.get<any>(`${this.addmaterialsurl}MaterialApi/GetMaterialByIdToEdit?StockItemId=${listId}`);
+  return this.http.get<any>(`${this.addmaterialsurl}MaterialApi/MaterialReactivate?StockItemId=${listId}`);
 
 }
 onDeactivate(listId:any){
-  return this.http.get<any>(`${this.addmaterialsurl}MaterialApi/GetMaterialByIdToEdit?StockItemId=${listId}`);
+  return this.http.get<any>(`${this.addmaterialsurl}MaterialApi/MaterialDeactivate?StockItemId=${listId}`);
 
 }
 onclicksubcat(catId:any){

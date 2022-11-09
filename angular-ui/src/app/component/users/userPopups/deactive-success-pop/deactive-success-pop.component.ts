@@ -10,7 +10,8 @@ import { SharedService } from 'src/app/services/shared-services.service';
 export class DeactiveSuccessPopComponent implements OnInit {
   employeeId:any;
   employeename:any;
-
+  materialListName:any;
+  matValue:boolean =false;
   constructor(private dialogRef: MatDialogRef<any>,
     private sharedService:SharedService,
     ) { }
@@ -18,7 +19,17 @@ export class DeactiveSuccessPopComponent implements OnInit {
   ngOnInit(): void {
     this.employeename=localStorage.getItem("employeeName");
     this.employeename = localStorage.getItem('Niname');
-
+    this.materialListName =localStorage.getItem('listName');
+    this.materialList();
+  }
+  materialList(){
+    if(this.materialListName ==''){
+    this.matValue = false;
+    localStorage.setItem('listName','');
+    }
+    else {
+      this.matValue = true;
+    }
   }
   closeDialog(){
     this.sharedService.filter('Register click');

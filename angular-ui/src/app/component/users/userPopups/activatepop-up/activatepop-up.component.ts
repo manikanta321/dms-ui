@@ -37,7 +37,6 @@ export class ActivatepopUpComponent implements OnInit {
     let data = localStorage.getItem('session');
     if(data!=="MaterialList"){
       this.session =false;
-      alert(this.session)
       localStorage.setItem('listData','');
       localStorage.setItem('listName','');
     }
@@ -45,7 +44,6 @@ export class ActivatepopUpComponent implements OnInit {
       this.session =true;
        this.localData = localStorage.getItem('listData');
       this.localName = localStorage.getItem('listName');
-      alert(this.localName);
     }
   }
   reactive(){

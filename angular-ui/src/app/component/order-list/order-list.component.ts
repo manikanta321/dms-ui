@@ -552,6 +552,16 @@ export class OrderListComponent implements OnInit {
   }
 
 
+  // ORDER SEARCH SELECT
+
+  onSearchChangeGEO($event: any, anything?: any){
+
+  }
+
+  onSearchChangeDEAL($event: any, anything?: any){
+
+  }
+
 
 
 }

@@ -12,13 +12,8 @@ import { AddUserPopupComponent } from '../users/userPopups/add-user-popup/add-us
   styleUrls: ['./orders.component.css']
 })
 export class OrdersComponent implements OnInit {
-  // sidenav: any;
-  // observer: any;
 
-  @ViewChild(AddUserPopupComponent) child;
-
-  
-  
+  @ViewChild(AddUserPopupComponent) child; 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
 

@@ -1,13 +1,14 @@
 <div class="filterSection">
     <div style="margin-left: 20px; display: inline-flex;">
         <div class="input-icons ">
+            <input class="input-field" type="text" placeholder="Dealers" (keyup)="onSearchChangeGEO($event)">
             <i class="fa fa-search icon" aria-hidden="true"></i>
-            <input class="input-field" type="text" placeholder="Search">
         </div>
 
         <div class="input-icons ">
+
+            <input class="input-field" type="text" placeholder="Geography" (keyup)="onSearchChangeDEAL($event)">
             <i class="fa fa-search icon" aria-hidden="true"></i>
-            <input class="input-field" type="text" placeholder="Search">
         </div>
 
         <!-- <div class="input-icons ">

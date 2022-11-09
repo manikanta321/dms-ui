@@ -205,13 +205,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   }
   addItems() {
     this.dialog.open(AddItemsPromotionComponent,);
-    // this.dialogRef.close();
+    this.dialogRef.close();
     const dialogRef = this.dialog.open(AddItemsPromotionComponent);
 
     dialogRef.afterClosed().subscribe((res) => {
       console.log(res);
-      // if(status) this.championBadgeUpdateSubject.next(status)
-
+localStorage.setItem('additem','1')
     })
   }
   addRemoveitem() {

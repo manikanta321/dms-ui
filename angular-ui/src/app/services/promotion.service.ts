@@ -62,8 +62,8 @@ public GetPSCDetailList(){
   return this.http.get<any>(this.userurl + 'PromotionsApi/GetPSCDetailList?ProductSKUId=22')
 }
 // http://52.172.24.161:801/api/PromotionsApi/GetPSCDetailList?ProductSKUId=22
- GetSUbCAtsOfMultiCats(){
-return this.http.get<any>(this.userurl + 'MaterialApi/GetSUbCAtsOfMultiCats')
+ GetSUbCAtsOfMultiCats(data : any){
+return this.http.post<any>(this.userurl + 'MaterialApi/GetSUbCAtsOfMultiCats', data)
 }
 // http://13.126.235.145:801/api/MaterialApi/GetSUbCAtsOfMultiCats
 GetProductIdentifier(){
@@ -74,12 +74,17 @@ GetGeographies(){
   return this.http.get<any>(this.userurl + 'PromotionsApi/GetGeographies')
 }
 // http://13.126.235.145:801/api/PromotionsApi/GetGeographies
- GettypesOfMultiSubCats(){
-  return this.http.get<any>(this.userurl + 'PromotionsApi/GetGeographies')
+ GettypesOfMultiSubCats(data : any){
+  return this.http.post<any>(this.userurl + 'MaterialApi/GettypesOfMultiSubCats', data)
 }
+// http://13.126.235.145:801/api/MaterialApi/GettypesOfMultiSubCats
 GetCategories(){
   return this.http.get<any>(this.userurl + 'MaterialApi/GetCategories')
 }
+GetProductGroupList1(){
+  return this.http.get<any>(this.userurl + 'MaterialApi/GetProductGroupList')
+}
+// http://13.126.235.145:801/api/MaterialApi/GetProductGroupList
 // http://13.126.235.145:801/api/MaterialApi/GetCategories
 Image(data: any){
   return this.http.post<any>(this.userurl + 'PromotionsApi/UploadImg', data)

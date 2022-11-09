@@ -284,3 +284,30 @@ mat-radio-group{
 ::ng-deep .category-add .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
   background: #479E00 !important;
 }
+
+::ng-deep.add-item.mat-stepper-vertical,
+.mat-stepper-horizontal {
+  display: inline;
+  width: 500px;
+}
+
+::ng-deep.add-item.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
+  width: 767px;
+  margin-top: -51px;
+}
+
+.add-item.mat-horizontal-stepper-wrapper {
+  margin-top: -47px;  
+}
+::ng-deep.add-item .mat-stepper-horizontal-line {
+  /* border-top-width: 1px; */
+  border-top-style: none;
+  /* flex: auto;
+  height: 0;
+  margin: 0 -16px;
+  min-width: 32px; */
+}
+
+/* .mat-horizontal-stepper-header-container ng-tns-c418-7 {
+  margin: top -51px;
+}; */

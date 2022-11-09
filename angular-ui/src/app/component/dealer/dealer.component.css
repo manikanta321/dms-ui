@@ -101,7 +101,7 @@ mat-tab{
   }
   ::ng-deep.dealertab .mat-tab-header{
     width: 752px !important;
-    left: 28%;
+    left: 16%;
   }
 
   ::ng-deep.mat-tab-label{

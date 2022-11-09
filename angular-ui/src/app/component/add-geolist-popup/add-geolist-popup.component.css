@@ -2,24 +2,14 @@
     
     border-radius: 21px;
 }
-.main
-{
-     /* width: 691px; */
-    /* height: 100px;   */
-}
+
 .btn
 {
-    /* justify-content: center;
-     text-align: center; 
-    align-items: center; */
-    margin-left: 20%;
-    width: 360px;
     background-color: #000000;
     color: whitesmoke;
     border-radius: 10px;
     border: 1px solid black;
     height: 43px;
-    
 }
 
 

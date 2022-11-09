@@ -383,16 +383,16 @@
                             <div *ngIf="volumedc">
                                 <div class="row">
                                     <div class="col-12">
-                                        <label>Product Level</label>
+                                        <label>Product Level<span>*</span></label>
                                         <br>
                                         <input class="productSize" type="text" id="pValue" name="pValue" required
-                                            placeholder="1500" (click)="addItems()">
+                                            placeholder="Item Information" (click)="addItems()">
                                     </div>
                                 </div>
 
                                 <div class="row topItems">
                                     <div class="col-6 inlineNav">
-                                        <label>Items*</label>
+                                        <label>Items<span>*</span></label>
                                         <input class="itemSize" type="text" id="pValue" name="pValue" required
                                             placeholder="1500">
                                         <!-- <textarea id="w3review" name="w3review" rows="4"
@@ -433,21 +433,30 @@
                                         <mat-icon class="" (click)=addFields()>add_circle</mat-icon>
                                     </div>
                                 </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <label>Minimum Order Quantity<span>*</span></label>
+                                        <br>
+                                        <input class="minimumorderquantity" type="text" id="pValue" name="pValue" required
+                                            placeholder="Enter value" (click)="addItems()">
+                                    </div>
+                                </div>
                             </div>
 <!-- price -->
 <div *ngIf="pricedc">
     <div class="row">
         <div class="col-12">
-            <label>Product Level</label>
+            <label>Product Level<span>*</span></label>
             <br>
             <input class="productSize" type="text" id="pValue" name="pValue" required
-                placeholder="1500" (click)="addItems()">
+                placeholder="Item Information" (click)="addItems()">
         </div>
     </div>
 
     <div class="row topItems">
         <div class="col-6 inlineNav">
-            <label>Items*</label>
+            <label>Items<span>*</span></label>
             <input class="itemSize" type="text" id="pValue" name="pValue" required
                 placeholder="1500">
             <!-- <textarea id="w3review" name="w3review" rows="4"
@@ -486,6 +495,15 @@
         </div>
         <div class="col-1 contentinline">
             <mat-icon class="" (click)=addFields()>add_circle</mat-icon>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-12">
+            <label>Minimum Order Quantity<span>*</span></label>
+            <br>
+            <input class="minimumorderquantity" type="text" id="pValue" name="pValue" required
+                placeholder="Enter value" (click)="addItems()">
         </div>
     </div>
 </div>

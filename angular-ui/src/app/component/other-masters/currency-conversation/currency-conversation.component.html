@@ -18,6 +18,11 @@
         (onSelectAll)="onItemSelectOrAllStatus($event)">
     </ng-multiselect-dropdown>
 </form>
+<div class="dropdown-placeholder roless-placeholder">
+  <span *ngIf="myForms.get('citys').value.length == 0">Select Status</span>
+ <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} status selected </span>
+  <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} status(s) selected </span>
+</div>
   </div>
   <!-- <button (click)="otherstatus()">bhbh</button> -->
   <div class="icon btnhover refreshbtn" (click)="refresh()">

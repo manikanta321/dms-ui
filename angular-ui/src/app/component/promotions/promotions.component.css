@@ -7,6 +7,12 @@
 
 
 
+.promo-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #D23F00 !important;
+}
+.dropdown-form {
+  position: relative;
+}
 
 .searchBox:hover >.searchButton,
 .searchBox>.searchInput,

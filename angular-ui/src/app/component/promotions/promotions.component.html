@@ -3,29 +3,37 @@
     <section>
       <div class="row">
         <div class="col-md-2 col-lg-2 col-sm-2">
-          <form [formGroup]="myForm">
-            <ng-multiselect-dropdown class="promo" name="city" [placeholder]="'Promotions'" formControlName="city"
+          <form [formGroup]="myForm1" class="dropdown-form">
+            <ng-multiselect-dropdown class="promo"  [placeholder]="'Promotions'" formControlName="city"
               [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList" (onSelect)="onItemSelect($event)"
               (onDeSelect)="onItemDeSelect($event)" (onDeSelectAll)="onItemDeSelectOrAll($event)"
               (onSelectAll)="onItemSelectOrAll($event)">
             </ng-multiselect-dropdown>
+            <div class="dropdown-placeholder promo-placeholder">
+              <!-- <span *ngIf="myForm1.get('city')?.value?.length == 0"> Select Promotions </span>
+              <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Role selected </span>
+                <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Role(s) selected </span> -->
+                <span  class="selected-placeholder"> {{myForm?.get('city')?.value?.length}} Role selected </span>
+
+         
+            </div>
           </form>
         </div>
         <div class="col-md-2 col-lg-2 col-sm-2">
           <form [formGroup]="myForms">
             <ng-multiselect-dropdown class="product" name="citys" [placeholder]="'Product'" formControlName="citys"
-              [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
-              (onSelect)="Geographies($event)" (onDeSelect)="onStatusDeSelect($event)"
-              (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
+              [disabled]="disabled" [settings]="dropdownSettings1" [data]="productLisst"
+              (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)"
+              (onDeSelectAll)="onItemDeSelectOrAllProduct($event)" (onSelectAll)="onItemSelectOrAllProduct($event)">
             </ng-multiselect-dropdown>
           </form>
         </div>
         <div class="col-md-2 col-lg-2 col-sm-2">
           <form [formGroup]="myForms">
             <ng-multiselect-dropdown class="geog" name="citys" [placeholder]="'Geography'" formControlName="citys"
-              [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
-              (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
-              (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
+              [disabled]="disabled" [settings]="dropdownSettings2" [data]="geoList"
+              (onSelect)="onGeoSelect($event)" (onDeSelect)="onGeoDeSelect($event)"
+              (onDeSelectAll)="onItemDeSelectOrAllGeo($event)" (onSelectAll)="onItemSelectOrAllGeo($event)">
             </ng-multiselect-dropdown>
           </form>
         </div>
@@ -41,7 +49,7 @@
         <div class="col-md-2 col-lg-2 col-sm-2">
           <form [formGroup]="myForms">
             <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Status'" formControlName="citys"
-              [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
+              [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList1"
               (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
               (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
             </ng-multiselect-dropdown>
@@ -72,7 +80,7 @@
         <div class="row">
           <div class="col-md-8">
             <div class="searchBox d-flex">
-              <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+              <input class="searchInput" style="font-family: 'Gilroy'" type="text" name="" (keyup)="onSearchChange($event)"
                 placeholder="Type & search for anything">
               <button class="searchButton" href="#">
                 <i class="material-icons">

@@ -24,6 +24,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { DateRange } from '@uiowa/date-range-picker';
 import { AddItemsPromotionComponent } from './add-items-promotion/add-items-promotion.component';
 import { PromotionService } from 'src/app/services/promotion.service';
+import { PromotionListService } from 'src/app/services/promotion-list.service';
 export interface PeriodicElement {
 
   name: any;
@@ -59,6 +60,8 @@ export class PromotionsComponent implements OnInit {
   private gridApi!: GridApi;
   paginationPageSize = 10;
   myForm:any= FormGroup;
+  myForm1:any= FormGroup;
+
   myForms:any= FormGroup;
   disabled = false;
   ShowFilter = false;
@@ -71,12 +74,27 @@ export class PromotionsComponent implements OnInit {
   selectedStatus: any = [];
   userTypes:any=[];
   statusTypes:any=[];
-  searchText:any;
+  searchText:any='';
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
+  dropdownSettings2: IDropdownSettings = {};
+  dropdownSettings3: IDropdownSettings = {};
   public rowData5=[];
   public popupParent: HTMLElement = document.body;
   roleArray:any[] = [];
+  promotionArray:any[] = [];
+  productarray:any[]=[];
+  geoArray:any[]=[];
+
+  promotionSelected:any[]=[];
+  productSelected:any[]=[];
+  geographySelected:any[]=[];
+  statusSelected:any[]=[];
+  searchfilter:any='';
+
+
+
+
   statusArray:any=[];
   stayScrolledToEnd = true;
   paginationScrollCount:any;
@@ -100,26 +118,26 @@ columnDefs: ColDef[] = [
   // { headerName: "User Id",
   //   field: 'employeeCode' , sort: 'desc'},
 
-  {   headerName: "Name",field: 'employeeName' },
+  {   headerName: "Name",field: 'promotionName' },
 
-  {  headerName: "Type",field: 'role', },
+  {  headerName: "Type",field: 'promotionTypesName', },
 
   {  headerName: "# of Dealers",
-     field: 'emailId' },
+     field: '' },
 
   {   headerName: "Start Date",
     // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-    field: 'lastLoginDate',type: ['nonEditableColumn']},
+    field: 'startDate',type: ['nonEditableColumn']},
 
     {   headerName: "End Date",
     // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-    field: 'lastLoginDate',type: ['nonEditableColumn']},
+    field: 'endDate',type: ['nonEditableColumn']},
     {  headerName: "# of orders",
     field: 'emailId' }, 
     {  headerName: "Invoiced Value",
     field: 'emailId' }, 
   { headerName: "Status",
-     field: 'status', 
+     field: 'statusName', 
   cellEditor: 'agSelectCellEditor',
   cellEditorParams: {
     values: ['Active', 'Inactive', 'Invited', 'Locked',],
@@ -272,24 +290,30 @@ public pivotPanelShow = 'always';
 	// };
   displayedColumns: string[] = ['position', 'name',  'symbol','email','phonenum','login','status','edit'];
   toppings = new FormControl('');
+  product=new FormControl('');
+  geo=new FormControl('');
   toppings1 = new FormControl('');
 
   // toppingList: string[] = ['Admin', 'Dealer','Customer'];
   toppingList: any= [];
 
   toppingList1:  any= [];
+  productLisst:  any= [];
+geoList:any=[]
   filterDictionary: any;
   sideBarOpen = true;
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   roleName: any;
   statusname:any;
+
   constructor(public dialog: MatDialog,
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
     private user:UserService,
     private observer: BreakpointObserver,
-    public promotionTypes : PromotionService
+    public promotionTypes : PromotionService,
+    private promotin:PromotionListService
    ) {
       sort:[];
      }
@@ -311,83 +335,595 @@ public pivotPanelShow = 'always';
 
 
 
-  ngOnInit(): void {
+  ngOnInit() {
   this.getusertabeldata();
-  this.roleItems();
   this.statusItems();
+  this.promotionList();
+  this.productList();
+  this.geogrophylist();
   this.maxDate.setDate(this.maxDate.getDate() + 20);
   }
   refresh(){
-    this.toppings = new FormControl(this.toppingList);
+    this.toppings = new FormControl('');
     this.toppings1 = new FormControl(this.toppingList1);
+    this.product=new FormControl(this.productLisst);
+    this.geo=new FormControl(this.geoList);
+    this.getusertabeldata();
+
+
 
 this.getusertabeldata();
   }
 
-getusertabeldata(){
 
-}
+  getusertabeldata() {
+    const data = { 
+    Ptype:this.promotionSelected,
+    Prodct:this.productSelected,
+    Geo:this.geographySelected,
+    Deler:[],
+    status:this.statusSelected,
+    search:this.searchText
+    }
+    this.promotin.promotionTabledata(data).subscribe((res) => {
 
-roleItems(){
+      this.rowData5 = res.response;
+     
+
+    });
+  }
 
 
-  this.user.getroleDetails().subscribe((res: any) => {
-    let localdata=res.response;
+  onSearchChange($event: any, anything?: any) {
+    const { target } = $event;
+    this.searchText = target.value;
+    const data = {
+      Ptype:this.promotionSelected,
+      Prodct:this.productSelected,
+      Geo:this.geographySelected,
+      Deler:[],
+      status:this.statusSelected,
+      search:this.searchText
+    }
+    this.promotin.promotionTabledata(data).subscribe((res) => {
 
+      this.rowData5 = res.response;
+     
 
-    this.toppingList = localdata.map((data: { designationId: any; designationName: any; }) => {
-      return { role_id: data.designationId, role_name: data.designationName };
     });
 
-    if (!this.toppingList?.length) {
-      this.toppingList = localdata.map((role: { designationName: any; }) => {
-        return role.designationName;
-      });
-    }
+  }
+
+  promotionList(){
+    this.promotin.promotionlist().subscribe((res)=>{
+      let localdata=res.response;
+
+
+    this.toppingList = localdata.map((data: { promotionTypesId: any; promotionTypesName: any; }) => {
+      return { promotionTypesId: data.promotionTypesId, promotionTypesName: data.promotionTypesName };
+    });
+
+    // if (!this.toppingList?.length) {
+    //   this.toppingList = localdata.map((role: { designationName: any; }) => {
+    //     return role.designationName;
+    //   });
+    // }
     this.toppingList.push()
+    console.log('array check',this.toppingList)
+    this.toppingList.push()
+    this.toppingList.forEach(element => {
+      return this.promotionArray.push(element.promotionTypesId);
+      // console.log('rolecheck',rolecheck)
+
+    })
+    console.log('promotionArray', this.promotionArray)
     // this.toppingList = res.response;
     this.toppings = new FormControl(this.toppingList);
 
     console.log('rolelist',this.toppingList)
+    
+    console.log('rolelist', this.toppingList)
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'promotionTypesId',
+      textField: 'promotionTypesName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 2,
+      allowSearchFilter: true
+    };
+    this.selectedItems = [];
+    })
+  }
+
+
+
+  onItemSelect(item: any) {
+
+    // alert(item.roleName)
+      this.promotionSelected.push(item.promotionTypesId);
+    
+      const data={
+        Ptype:this.promotionSelected,
+        Prodct:this.productSelected,
+        Geo:this.geographySelected,
+        Deler:[],
+        status:this.statusSelected,
+        search:this.searchText
+    
+      }
+      this.promotin.promotionTabledata(data).subscribe((res) => {
+
+        this.rowData5 = res.response;
+       
+  
+      });
+      console.log('rolefilter', this.userTypes)
+      console.log('onItemSelect', item);
+    }
+
+    onItemDeSelect(item: any) {
+    
+      this.promotionSelected.forEach((element,index)=>{
+        if(element==item.promotionTypesId)  this.promotionSelected.splice(index,1);
+     });
+     console.log(' this.userTypes', this.userTypes)
+    
+      // this.userTypes.pop(item.roleId);
+      const data={
+        Ptype:this.promotionSelected,
+        Prodct:this.productSelected,
+        Geo:this.geographySelected,
+        Deler:[],
+        status:this.statusSelected,
+        search:this.searchText
+    
+      }
+      this.promotin.promotionTabledata(data).subscribe((res) => {
+
+        this.rowData5 = res.response;
+       
+  
+      });
+    
+    }
+
+    onItemSelectOrAll(item:any){
+      this.promotionSelected=this.promotionArray;
+     
+      const data={
+        Ptype:this.promotionSelected,
+        Prodct:this.productSelected,
+        Geo:this.geographySelected,
+        Deler:[],
+        status:this.statusSelected,
+        search:this.searchText
+    
+      }
+      this.promotin.promotionTabledata(data).subscribe((res) => {
+
+        this.rowData5 = res.response;
+       
+  
+      });
+      console.log('rolefilter', this.userTypes)
+      console.log('onItemSelect', item);}
+   
+      onItemDeSelectOrAll(item:any){
+        const data={
+          Ptype:[],
+          Prodct:this.productSelected,
+          Geo:this.geographySelected,
+          Deler:[],
+          status:this.statusSelected,
+          search:this.searchText
+      
+        }
+        this.promotin.promotionTabledata(data).subscribe((res) => {
+  
+          this.rowData5 = res.response;
+         
+    
+        });
+      console.log('rolefilter', this.userTypes)
+      console.log('onItemSelect', item);
+    }
+    
+
+
+
+productList(){
+  this.promotin.productListApi().subscribe((res)=>{
+    let localdata=res.response;
+
+
+  this.productLisst = localdata.map((data: { productGroupId: any; productGroupName: any; }) => {
+    return { productGroupId: data.productGroupId, productGroupName: data.productGroupName };
   });
+
+  // if (!this.toppingList?.length) {
+  //   this.toppingList = localdata.map((role: { designationName: any; }) => {
+  //     return role.designationName;
+  //   });
+  // }
+  this.productLisst.push()
+  console.log('array check',this.toppingList)
+  this.productLisst.push()
+  this.productLisst.forEach(element => {
+    return this.productarray.push(element.productGroupId);
+    // console.log('rolecheck',rolecheck)
+
+  })
+  console.log('productarray', this.productarray)
+  // this.toppingList = res.response;
+  this.product = new FormControl(this.productLisst);
+
+  
+  this.dropdownSettings1 = {
+    singleSelection: false,
+    idField: 'productGroupId',
+    textField: 'productGroupName',
+    selectAllText: 'Select All',
+    unSelectAllText: 'UnSelect All',
+    itemsShowLimit: 2,
+    allowSearchFilter: true
+  };
+  this.selectedItems = [];
+  })
+
 }
 
+
+onProductSelect(item: any) {
+
+  // alert(item.roleName)
+    this.productSelected.push(item.productGroupId);
+  
+    const data={
+      Ptype:this.promotionSelected,
+      Prodct:this.productSelected,
+      Geo:this.geographySelected,
+      Deler:[],
+      status:this.statusSelected,
+      search:this.searchText
+  
+    }
+    this.promotin.promotionTabledata(data).subscribe((res) => {
+
+      this.rowData5 = res.response;
+     
+
+    });
+    console.log('rolefilter', this.userTypes)
+    console.log('onItemSelect', item);
+  }
+
+  onProductDeSelect(item: any) {
+  
+    this.productSelected.forEach((element,index)=>{
+      if(element==item.productGroupId)  this.productSelected.splice(index,1);
+   });
+   console.log(' this.userTypes', this.userTypes)
+  
+    // this.userTypes.pop(item.roleId);
+    const data={
+      Ptype:this.promotionSelected,
+      Prodct:this.productSelected,
+      Geo:this.geographySelected,
+      Deler:[],
+      status:this.statusSelected,
+      search:this.searchText
+  
+    }
+    this.promotin.promotionTabledata(data).subscribe((res) => {
+
+      this.rowData5 = res.response;
+     
+
+    });
+  
+  }
+
+  onItemSelectOrAllProduct(item:any){
+    this.productSelected=this.productarray;
+   
+    const data={
+      Ptype:this.promotionSelected,
+      Prodct:this.productSelected,
+      Geo:this.geographySelected,
+      Deler:[],
+      status:this.statusSelected,
+      search:this.searchText
+  
+    }
+    this.promotin.promotionTabledata(data).subscribe((res) => {
+
+      this.rowData5 = res.response;
+     
+
+    });
+    console.log('rolefilter', this.userTypes)
+    console.log('onItemSelect', item);}
+ 
+    onItemDeSelectOrAllProduct(item:any){
+      const data={
+        Ptype:this.promotionSelected,
+        Prodct:[],
+        Geo:this.geographySelected,
+        Deler:[],
+        status:this.statusSelected,
+        search:this.searchText
+    
+      }
+      this.promotin.promotionTabledata(data).subscribe((res) => {
+
+        this.rowData5 = res.response;
+       
+  
+      });
+    console.log('rolefilter', this.userTypes)
+    console.log('onItemSelect', item);
+  }
+  
+
+geogrophylist(){
+  
+  this.promotin.giographiesList().subscribe((res)=>{
+    let localdata=res.response;
+
+
+  this.geoList = localdata.map((data: { geographyId: any; geographyName: any; }) => {
+    return { geographyId: data.geographyId, geographyName: data.geographyName };
+  });
+
+ 
+  this.geoList.push()
+  this.geoList.forEach(element => {
+    return this.geoArray.push(element.geographyId);
+    // console.log('rolecheck',rolecheck)
+
+  })
+  console.log('geoarray', this.geoArray)
+  // this.toppingList = res.response;
+  this.geo = new FormControl(this.geoList);
+
+  
+  this.dropdownSettings2 = {
+    singleSelection: false,
+    idField: 'geographyId',
+    textField: 'geographyName',
+    selectAllText: 'Select All',
+    unSelectAllText: 'UnSelect All',
+    itemsShowLimit: 2,
+    allowSearchFilter: true
+  };
+  this.selectedItems = [];
+  })
+}
+
+
+onGeoSelect(item: any) {
+
+  // alert(item.roleName)
+    this.geographySelected.push(item.geographyId);
+  
+    const data={
+      Ptype:this.promotionSelected,
+      Prodct:this.productSelected,
+      Geo:this.geographySelected,
+      Deler:[],
+      status:this.statusSelected,
+      search:this.searchText
+  
+    }
+    this.promotin.promotionTabledata(data).subscribe((res) => {
+
+      this.rowData5 = res.response;
+     
+
+    });
+    console.log('rolefilter', this.userTypes)
+    console.log('onItemSelect', item);
+  }
+
+  onGeoDeSelect(item: any) {
+  
+    this.geographySelected.forEach((element,index)=>{
+      if(element==item.geographyId)  this.geographySelected.splice(index,1);
+   });
+   console.log(' this.userTypes', this.userTypes)
+  
+    // this.userTypes.pop(item.roleId);
+    const data={
+      Ptype:this.promotionSelected,
+      Prodct:this.productSelected,
+      Geo:this.geographySelected,
+      Deler:[],
+      status:this.statusSelected,
+      search:this.searchText
+  
+    }
+    this.promotin.promotionTabledata(data).subscribe((res) => {
+
+      this.rowData5 = res.response;
+     
+
+    });
+  
+  }
+
+  onItemSelectOrAllGeo(item:any){
+    this.geographySelected=this.geoArray;
+   
+    const data={
+      Ptype:this.promotionSelected,
+      Prodct:this.productSelected,
+      Geo:this.geographySelected,
+      Deler:[],
+      status:this.statusSelected,
+      search:this.searchText
+  
+    }
+    this.promotin.promotionTabledata(data).subscribe((res) => {
+
+      this.rowData5 = res.response;
+     
+
+    });
+    console.log('rolefilter', this.userTypes)
+    console.log('onItemSelect', item);}
+ 
+    onItemDeSelectOrAllGeo(item:any){
+      const data={
+        Ptype:this.promotionSelected,
+        Prodct:this.productSelected,
+        Geo:[],
+        Deler:[],
+        status:this.statusSelected,
+        search:this.searchText
+    
+      }
+      this.promotin.promotionTabledata(data).subscribe((res) => {
+
+        this.rowData5 = res.response;
+       
+  
+      });
+    console.log('rolefilter', this.userTypes)
+    console.log('onItemSelect', item);
+  }
+  
+
 statusItems(){
-  this.user.getstatusDeatils().subscribe((res: any) => {
+  
+  this.promotin.getstatusDeatils().subscribe((res: any) => {
       
     let localdata=res.response;
 
 
-    this.toppingList1 = localdata.map((data: { statusId: any; statusname: any; }) => {
-      return {status_id: data.statusId, status_name: data.statusname };
+    this.toppingList1 = localdata.map((data: { statusId: any; statusName: any; }) => {
+      return {statusId: data.statusId, statusName: data.statusName };
     });
 
-    if (!this.toppingList1?.length) {
-      this.toppingList1 = localdata.map((status: { statusname: any; }) => {
-        return status.statusname;
-      });
-    }
+  
     this.toppingList1.push()
+    console.log(this.toppingList1,'dealer status')
     // this.toppingList = res.response;
     this.toppings1 = new FormControl(this.toppingList1);
 
-    console.log('status',this.toppingList1)
 
+    this.toppingList1.forEach(element => {
+      return this.statusArray.push(element.statusId);
+      // console.log('rolecheck',rolecheck)
+  
+    })
+    console.log('statusArray', this.statusArray)
+    // this.toppingList = res.response;
+    this.toppings1 = new FormControl(this.toppingList1);
+  
+    
+    this.dropdownSettings3 = {
+      singleSelection: false,
+      idField: 'statusId',
+      textField: 'statusName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 2,
+      allowSearchFilter: true
+    };
+    this.selectedItems = [];
 
   });
 }
 
 
-roleFilter(data:any){
-  console.log('data',data)
-  this.roleName=this.toppings.value;
-this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=>{
-  this.rowData = res.response;
 
+
+
+onItemDeSelectOrAllStatus(item:any){
+  const data={
+    Ptype:this.promotionSelected,
+    Prodct:this.productSelected,
+    Geo:this.geographySelected,
+    Deler:[],
+    status:[],
+    search:this.searchText
+  }
+  this.promotin.promotionTabledata(data).subscribe((res) => {
+  
+    this.rowData5 = res.response;
+   
+  
+  });
+  console.log('rolefilter', this.userTypes)
+}
+
+
+onItemSelectOrAllStatus(item:any){
+  this.statusSelected=this.statusArray;
+  const data={
+    Ptype:this.promotionSelected,
+    Prodct:this.productSelected,
+    Geo:this.geographySelected,
+    Deler:[],
+    status:this.statusSelected,
+    search:this.searchText
+  }
+  this.promotin.promotionTabledata(data).subscribe((res) => {
+  
+    this.rowData5 = res.response;
+   
+  
+  });
+  console.log('rolefilter', this.statusTypes)
+}
+
+onStatusSelect(item: any) {
+this.statusSelected.push(item.statusId);
+
+const data={
+  Ptype:this.promotionSelected,
+  Prodct:this.productSelected,
+  Geo:this.geographySelected,
+  Deler:[],
+  status:this.statusSelected,
+  search:this.searchText
+}
+this.promotin.promotionTabledata(data).subscribe((res) => {
+
+  this.rowData5 = res.response;
+ 
 
 });
-  console.log('rolename',this.rowData)
 }
+
+
+onStatusDeSelect(item: any) {
+this.statusSelected.forEach((element,index)=>{
+  if(element==item.statusId)  this.statusSelected.splice(index,1);
+});
+// this.statusTypes.pop(item.statusId);
+console.log(' this.statusTypes', this.userTypes)
+const data={
+  Ptype:this.promotionSelected,
+  Prodct:this.productSelected,
+  Geo:this.geographySelected,
+  Deler:[],
+  status:this.statusSelected,
+  search:this.searchText
+}
+this.promotin.promotionTabledata(data).subscribe((res) => {
+
+  this.rowData5 = res.response;
+ 
+
+});
+console.log('rolefilter', this.userTypes)
+console.log('onItemSelect', item);
+}
+
+
+
 
   onCellClicked( e: CellClickedEvent): void {
     console.log('cellClicked', e);
@@ -401,141 +937,9 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
     );
   }
 
-  onItemSelect(item: any) {
-
-    // alert(item.roleName)
-      this.userTypes.push(item.roleId);
-    
-      const data={
-        userTypes:this.userTypes,
-        statuss:this.statusTypes,
-        search:this.searchText,
-    
-      }
-      this.user.getuserDeatilsUser(data).subscribe((res) => {     
-        this.rowData5 = res.response;
-      });
-      console.log('rolefilter', this.userTypes)
-      console.log('onItemSelect', item);
-    }
-    onItemSelectOrAll(item:any){
-      this.userTypes=this.roleArray;
-      const data={
-        userTypes:this.userTypes,
-        statuss:this.statusTypes,
-        search:this.searchText,
-    
-      }
-      this.user.getuserDeatilsUser(data).subscribe((res) => {     
-        this.rowData5 = res.response;
-      });
-      console.log('rolefilter', this.userTypes)
-      console.log('onItemSelect', item);}
-    onItemDeSelectOrAll(item:any){
-      const data={
-        userTypes:this.userTypes,
-        statuss:[],
-        search:this.searchText,
-    
-      }
-      this.user.getuserDeatilsUser(data).subscribe((res) => {     
-        this.rowData5 = res.response;
-      });
-      console.log('rolefilter', this.userTypes)
-      console.log('onItemSelect', item);
-    }
+ 
     
     
-    
-      onItemDeSelectOrAllStatus(item:any){
-        const data={
-          userTypes:this.userTypes,
-          statuss:[],
-          search:this.searchText,
-      
-        }
-        this.user.getuserDeatilsUser(data).subscribe((res) => {     
-          this.rowData5 = res.response;
-        });
-        console.log('rolefilter', this.userTypes)
-      }
-    
-    
-      onItemSelectOrAllStatus(item:any){
-        this.statusTypes=this.statusArray;
-        const data={
-          userTypes:this.userTypes,
-          statuss:this.statusTypes,
-          search:this.searchText,
-      
-        }
-        this.user.getuserDeatilsUser(data).subscribe((res) => {     
-          this.rowData5 = res.response;
-        });
-        console.log('rolefilter', this.statusTypes)
-      }
-    
-    onStatusSelect(item: any) {
-      this.statusTypes.push(item.statusId);
-    
-      const data={
-        userTypes:this.userTypes,
-        statuss:this.statusTypes,
-        search:this.searchText,
-      }
-      this.promotionTypes.GetGeographies().subscribe((res) => {     
-        this.rowData5 = res.response;
-      });
-      
-    }
-    Geographies(item:any){
-      this.promotionTypes.GetGeographies().subscribe((res) =>{
-        console.log('search data', this.toppingList1);
-      //  this.productCustomIdentifierId = this.categorydrp;
-      this.toppingList1 = res.response
-      })
-    }
-    
-    onItemDeSelect(item: any) {
-    
-      this.userTypes.forEach((element,index)=>{
-        if(element==item.roleId)  this.userTypes.splice(index,1);
-     });
-     console.log(' this.userTypes', this.userTypes)
-    
-      // this.userTypes.pop(item.roleId);
-      const data={
-        userTypes:this.userTypes,
-        statuss:this.statusTypes,
-        search:this.searchText,
-    
-      }
-      this.user.getuserDeatilsUser(data).subscribe((res) => {     
-        this.rowData5 = res.response;
-      });
-    
-    }
-    
-    
-    
-    onStatusDeSelect(item: any) {
-      this.statusTypes.forEach((element,index)=>{
-        if(element==item.statusId)  this.statusTypes.splice(index,1);
-     });
-      // this.statusTypes.pop(item.statusId);
-    console.log(' this.statusTypes', this.userTypes)
-      const data={
-        userTypes:this.userTypes,
-        statuss:this.statusTypes,
-        search:this.searchText,
-    
-      }
-      this.user.getuserDeatilsUser(data).subscribe((res) => {     
-        this.rowData5 = res.response;
-      });
-      console.log('rolefilter', this.userTypes)
-      console.log('onItemSelect', item);
-    }
     applyFilter(event: Event) {
 
 

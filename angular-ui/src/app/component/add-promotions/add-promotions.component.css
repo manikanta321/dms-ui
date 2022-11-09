@@ -1248,3 +1248,10 @@ li {
   position: relative;
   right: 17px;
 }
+
+.cancel-image{
+position: relative;
+bottom: 126px;
+width: 14px;
+left: 309px;
+}

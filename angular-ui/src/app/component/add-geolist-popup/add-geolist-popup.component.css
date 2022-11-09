@@ -26,8 +26,6 @@
 
 .main {
     background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-
-
 }
 
 .font {
@@ -41,7 +39,6 @@
 
 .addU {
     position: relative;
-    /* font-family: 'Gilroy-Bold';  */
     font-weight: bold;
     font-size: 20px;
 }
@@ -70,7 +67,6 @@
 
 .addUserForm input {
     border-radius: 5px;
-    /* border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
     border: black 1px solid;
     padding: 5px 5px;
     width: 250px;
@@ -99,9 +95,7 @@ mat-form-field {
 
 }
 
-/* ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
-    padding: 0em 0 0.7em 0;
-    } */
+
 
 ::ng-deep.mat-dialog-container {
     background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;

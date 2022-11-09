@@ -494,11 +494,7 @@ li {
 .bar {
   height: 400px;
   overflow-y: scroll;
-<<<<<<< Updated upstream
-  overflow-x: scroll;
-=======
   overflow-x: auto;
->>>>>>> Stashed changes
   /* height: 500px; */
 }
 

@@ -330,8 +330,8 @@
   transition: 0.2s;
   background: none;
   position: relative;
-  right: 188px;
-  top: -2px;
+  right: 238px;
+  top: 0px;
 
 }
 .add-user {
@@ -356,11 +356,15 @@
   top:10px;
 }
 
-
+/* .material-icons
+{
+  margin-right: 95px;
+  margin-top: 5px;
+} */
 .searchBox:hover>.searchInput {
   display:block;
-  width: 280px;
-  height: 50px;
+  width: 335px;
+  height: 43px;
   background: #FFFFFF;
   float: left;
   padding: 5px 32px 6px;

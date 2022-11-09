@@ -1,4 +1,12 @@
 
+.row
+{
+  margin-left: 7px;
+  margin-top: 35px;
+}
+
+
+
 
 .searchBox:hover >.searchButton,
 .searchBox>.searchInput,
@@ -448,6 +456,7 @@ left: 37%
           width: 43px;
           padding: 8px 0px 0px 10px;
           height: 43px;
+          margin-top: -33px;
         }
         ::ng-deep.btnhover:hover{
           background: #000000 !important;
@@ -465,3 +474,15 @@ left: 37%
         ::ng-deep.custom-day.weekend {
           color: black !important;
       }
+
+
+      /* .multiselect-dropdown
+      {
+        margin-top: 59px;
+        margin-left: 23px;
+      } */
+      /* .promo
+      {
+        margin-top: 65px;
+        margin-left: 23px;
+      } */

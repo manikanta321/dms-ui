@@ -31,6 +31,7 @@ export class AddUserPopupComponent implements OnInit {
   errorMsg: any;
   message :any;
   message1 :boolean=true;
+  
   // toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
   constructor(
     private router: Router,

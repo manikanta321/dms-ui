@@ -7,6 +7,7 @@
 .head-text{
 font-size: 20px;
 font-weight: 600;
+margin-top: -39px;
 }
 .undo{
     padding: 5px 40px;
@@ -28,4 +29,5 @@ border-radius: 5px;
     position: relative;
     font-size: 15px;
     font-weight: 600;
+    top:-13px;
 }

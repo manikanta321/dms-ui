@@ -4,6 +4,7 @@
     overflow-x: hidden;
     width: 100%;
   }
+  
   ::-webkit-scrollbar {
     width: 8px;
   }
@@ -20,7 +21,7 @@
       overflow: hidden !important;
   }
 .tax-head{
-    height: 250px;
+    height: 270px;
 }
 
 .addU {
@@ -117,6 +118,11 @@
     border: 1px solid #D6D6D6;
     padding: 8px 5px;
     width: 250px;
+}
+.tax-head
+{
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 span{
     color: red;

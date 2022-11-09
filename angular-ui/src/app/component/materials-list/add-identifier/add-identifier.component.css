@@ -1,9 +1,13 @@
 ::ng-deep.mat-dialog-container {
     
     border-radius: 21px;
+    overflow: hidden;
 }
 
-
+.addUserrr
+{
+    width: 975px;
+}
 .mat-form-field-flex {
     padding-top: -10px;
     display: inline-flex;

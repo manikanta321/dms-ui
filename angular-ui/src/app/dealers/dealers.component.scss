@@ -55,6 +55,7 @@
     border-radius: 10px !important;
     background: white !important;
     height: 41px;
+    //  margin-left: 26px;
   }
   ::ng-deep.dropdown-list {
     position: absolute;
@@ -83,6 +84,10 @@
     font-size: 12px;
   }
    ::ng-deep .roless .multiselect-item-checkbox input[type=checkbox]:checked + div:before {
+<<<<<<< Updated upstream
+=======
+  // background: #D23F00 !important;
+>>>>>>> Stashed changes
   background: #006466 !important;
   }
   ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before{
@@ -180,6 +185,7 @@
     align-items: center;
     transition: 0.2s;
     border: none;
+    margin-top: 80px;
   }
   
   .searchBox:hover >.searchButton,
@@ -241,7 +247,7 @@
     border-radius: 5px;
     position: absolute;
     right: 10px;
-    top:6px;
+    top:84px;
   }
   
   
@@ -286,6 +292,7 @@
   
     .searchBox:hover >.search-btn {
       right: 183px !important;
+      
     }
   
     .searchBox:hover >.searchButton{
@@ -311,9 +318,9 @@
     border-radius: 50%;
     width: 37px;
     height: 37px;
-    top: 6px;
+    top: 87px;
   position: absolute;
-  left: 72%;
+  left: 66%;
   }
   .download-btn {
     border: none;
@@ -322,7 +329,7 @@
     position: relative;
     width: 37px;
     height: 37px;
-    top: 6px;
+    top: 87px;
     left: 90%;
   }
   ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
@@ -351,7 +358,7 @@
   }
   
   ::ng-deep.my-class-1{
-      color: #F5B666 !important ;
+     color: #F5B666 !important ;
   }
   ::ng-deep.my-class-2{
       color: #17B15C !important ;
@@ -476,7 +483,8 @@
     font-weight: bold;
   }
   .ag-pivot-off .ag-header-cell-label {
-    color: #8a6d3b;
+     color: #8a6d3b;
+    
   }
   
   .ag-theme-material{

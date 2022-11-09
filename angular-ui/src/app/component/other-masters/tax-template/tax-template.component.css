@@ -1,4 +1,16 @@
 
+.d-flex
+{
+  margin-top: 35px;
+  margin-left: 10px;
+} 
+
+#gridContainer
+{
+  margin-top: 5px;
+  
+}
+
 .searchBox:hover >.searchButton,
 .searchBox>.searchInput,
 .search-btn {
@@ -23,7 +35,7 @@
   transition: 0.2s;
   background: none;
   position: relative;
-    right: 239px;
+    right: 287px;
     top: 2px;
 
 }
@@ -40,8 +52,8 @@
 }
 .searchBox:hover>.searchInput {
   display:block;
-  width: 280px;
-  height: 50px;
+  width: 335px;
+  height: 43px;
   background: #FFFFFF;
   float: left;
   padding: 5px 32px 6px;
@@ -72,8 +84,8 @@
   width: 37px;
   height: 37px;
   top: 6px;
-  margin-top: 5px;
-  margin-left: 17%;
+  margin-top: 39px;
+  margin-left: 59%;
 }
 .download-btn {
   border: none;

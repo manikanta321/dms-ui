@@ -1249,9 +1249,20 @@ li {
   right: 17px;
 }
 
-.cancel-image{
-position: relative;
-bottom: 126px;
-width: 14px;
-left: 309px;
+.cancel-image {
+  position: relative;
+  bottom: 126px;
+  width: 14px;
+  left: 309px;
+}
+
+.placeh-align {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+::ng-deep.promotiondrpalign .ng-select-container{
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
 }

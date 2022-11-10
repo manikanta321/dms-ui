@@ -1,8 +1,7 @@
 .mat-form-field {
   width: 680px;
   font-family: 'Gilroy';
-  /* background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
-}
+  }
 
 .mat-form-field::placeholder {
   bottom: 2px;
@@ -14,12 +13,10 @@
 }
 
 .materialname {
-  /* margin-top: -18px; */
-  font-family: 'Gilroy';
+   font-family: 'Gilroy';
   position: relative;
   top: 7px;
-  /* margin-left: -4px; */
-}
+  }
 
 .geography {
   overflow-y: auto;
@@ -27,10 +24,6 @@
   max-height: 450px;
 
 }
-
-/* ::ng-deep.steppers .prod.mat-horizontal-content-container {
-  width: 800px !important;
-} */
 .scroll {
   overflow-y: auto;
   overflow-x: auto;
@@ -42,8 +35,7 @@
 
 ::-webkit-scrollbar-thumb {
   border-radius: 25px;
-  /* background: #b3b3bc; */
-}
+ }
 
 ::-webkit-scrollbar-track {
   border-radius: 20px;
@@ -122,10 +114,6 @@
   margin-top: -47px;
 
 }
-
-/* .mat-horizontal-stepper-header-container ng-tns-c418-7 {
-  margin: top -51px;
-}; */
 ::ng-deep.input.mat-input-text {
   margin-top: -9px;
   margin-left: -6px;
@@ -140,8 +128,6 @@
   box-sizing: border-box;
   width: 100%;
   height: 37px;
-
-  /* background-color: #CED4DA; */
 }
 
 .main {
@@ -165,28 +151,30 @@
   left: 24px;
   top: 24px;
 }
+
 .selected {
-  background-color:#DBB802;
+  background-color: #DBB802;
   color: white;
 }
 
-.subselected{
-  background:#DBB802;
+.subselected {
+  background: #DBB802;
   color: white;
 }
-.typeselected{
-  background:#DBB802;
+
+.typeselected {
+  background: #DBB802;
   color: white;
 }
 
 .cityselected {
-  background:#000000;
+  background: #000000;
   color: white;
 }
+
 .addU {
   position: relative;
-  /* font-family: 'Gilroy-Bold';  */
-  font-weight: bold;
+   font-weight: bold;
   font-size: 20px;
 }
 
@@ -233,8 +221,7 @@ span {
 }
 
 label {
-  /* padding: 2px 0; */
-  font-size: 14px;
+   font-size: 14px;
   margin: 5px;
 }
 
@@ -373,11 +360,8 @@ mat-form-field {
 }
 
 ::ng-deep.hide .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
-  /* display: none; */
-  overflow: hidden;
-  /* appearance: none; */
-  /* background: url("assets/img/plus.png") 240px 4px no-repeat; */
-  background-image: url('../../../../assets/img/maximize.png');
+   overflow: hidden;
+   background-image: url('../../../../assets/img/maximize.png');
   background-size: 13px;
   background-repeat: no-repeat;
   height: 300px;
@@ -467,8 +451,7 @@ li {
   font-size: 13px;
   color: rgba(104, 110, 116, 0.75);
   padding: 8px 16px;
-  /* width: 150px; */
-  margin-left: -12px;
+   margin-left: -12px;
 }
 
 .addcode {
@@ -487,6 +470,7 @@ li {
   color: rgba(104, 110, 116, 0.75);
   font-size: 13px;
 }
+
 .row {
   width: 767px
 }
@@ -495,7 +479,7 @@ li {
   height: 400px;
   overflow-y: scroll;
   overflow-x: auto;
-  /* height: 500px; */
+ 
 }
 
 .geo {
@@ -584,9 +568,6 @@ li {
   margin-left: 4px;
 }
 
-/* .geoo{
-  width: 900px;
-} */
 .addlink {
   margin-top: -21px;
   margin-left: 987px;
@@ -640,12 +621,14 @@ li {
 
 .submitbtn {
   margin-top: 12px;
+  background-color: #000000;
+  width: 66%;
+  position: relative;
+  left: 22%;
 }
 
 #abc::placeholder {
-  /* position: relative; */
-  /* text-align: center; */
-  bottom: 90px;
+   bottom: 90px;
 }
 
 ::ng-deep.categorydrp .ng-select.ng-select-single .ng-select-container {
@@ -713,12 +696,242 @@ li {
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  }
+  width: 461px;
+  height: 35px;
+  background-color: white;
+  margin-top: -9px;
+  margin-left: -1px;
+}
 
-  ::ng-deep.sss .mat-form-field-label{
-    color: rgba(104, 110, 116, 0.75);
-    font-size: 12px;
-    padding-top: 5px;
-    padding-left: 9px;
-  }
+::ng-deep.sss .mat-form-field-label {
+  color: rgba(104, 110, 116, 0.75);
+  font-size: 12px;
+  padding-top: 5px;
+  padding-left: 9px;
+}
 
+.addmaterial-align {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.brand-name {
+  width: 351px;
+  height: 31px;
+  background-color: white;
+  margin-top: 7px;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.global-codeplaceholder {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  width: 334px;
+  height: 31px;
+  background-color: white;
+  margin-top: -35px;
+  margin-left: 393px;
+}
+
+.sku-placeholder {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  width: 351px;
+  height: 31px;
+  background-color: white;
+  margin-top: 7px;
+}
+
+.shortcode-placeholder {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  width: 334px;
+  height: 31px;
+  background-color: white;
+  margin-top: -35px;
+  margin-left: 393px;
+}
+
+.sort-placeh {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  width: 334px;
+  height: 31px;
+  background-color: white;
+  margin-top: -60px;
+  margin-left: 393px;
+}
+
+.link-placeh {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  width: 334px;
+  height: 31px;
+  background-color: white;
+  margin-top: -61px;
+  margin-left: 393px;
+}
+
+::ng-deep.productg-align .ng-select-container {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.geo-align {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.leftarrow {
+  width: 24px;
+  margin-left: 728px;
+}
+
+.rightarrow {
+  width: 24px;
+  margin-left: 12px;
+}
+
+.stepperHeader-b {
+  color: #000000;
+  font-size: 20px;
+  font-weight: lighter;
+  font-family: 'Gilroy';
+}
+
+.materialDesc {
+  border: 1px solid !important;
+  border-radius: 10px;
+  width: 281px;
+  height: 126px;
+  background-color: white;
+  margin-top: 6px;
+  margin-left: 3px;
+}
+
+.imagePl {
+  border: 1px solid !important;
+  border-radius: 8px;
+  width: 146px;
+  height: 129px;
+  background-color: white;
+  margin-top: -132px;
+  margin-left: 314px;
+}
+
+.na-placeholder {
+  border: 1px solid !important;
+  border-radius: 10px;
+  width: 190px;
+  padding-left: 10px;
+  height: 34px;
+  background-color: white;
+  margin-top: 4px;
+  margin-left: 503px
+}
+
+.stepperHeader-p {
+  color: #000000;
+  font-size: 20px;
+  font-weight: lighter;
+  font-family: 'Gilroy';
+  margin-top: -25px;
+}
+
+.imagePlus {
+  width: 22px;
+  margin-left: 316px;
+  margin-top: -67px;
+}
+
+.matcardscroll {
+  height: 188px;
+  overflow-y: scroll;
+}
+
+.mrpP {
+  width: 83px;
+  height: 30px;
+  background-color: white;
+  margin-top: -22px;
+  margin-left: 216px;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.min-qP {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  width: 83px;
+  height: 30px;
+  background-color: white;
+  margin-top: -33px;
+  margin-left: 314px;
+}
+
+.maxP {
+  width: 83px;
+  height: 30px;
+  background-color: white;
+  margin-top: -33px;
+  margin-left: 413px;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.marginP {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  width: 83px;
+  height: 30px;
+  background-color: white;
+  margin-top: -33px;
+  margin-left: 508px;
+}
+
+.discountP {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  width: 83px;
+  height: 30px;
+  background-color: white;
+  margin-top: -33px;
+  margin-left: 611px;
+}
+
+.leadtimeP {
+  width: 83px;
+  height: 30px;
+  background-color: white;
+  margin-top: -33px;
+  margin-left: 709px;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.regP {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  width: 141px;
+  height: 30px;
+  background-color: white;
+  margin-top: -33px;
+  margin-left: 828px;
+}

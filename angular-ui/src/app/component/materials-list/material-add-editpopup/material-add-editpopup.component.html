@@ -7,19 +7,15 @@
       <div class="head-t">
         <h3 class="addU font">Add Material</h3>
         <br>
-        <img src="assets/img/arrow-left-circle-fill.svg" style="width: 24px;margin-left: 684px;" alt="left-arr-btn">
-        <img src="assets/img/arrow-right-circle-fill.svg" style="width: 24px; margin-left: 12px;" alt="right-arr-btn">
-        <!-- <div class="example-input-wrapper">
-  <label for="duration">Animation duration:</label>
-  <input id="duration" value="2000" type="number" min="0" step="100" #duration>
-</div> -->
-
-        <mat-stepper labelPosition="bottom" #stepper>
+        <img src="assets/img/arrow-left-circle-fill.svg" class="leftarrow" alt="left-arr-btn">
+        <img src="assets/img/arrow-right-circle-fill.svg" class="rightarrow" alt="right-arr-btn">
+        
+        <mat-stepper labelPosition="bottom" #stepper> 
           <mat-step [stepControl]="firstFormGroup">
             <form [formGroup]="firstFormGroup">
               <ng-template matStepLabel>Basic Information</ng-template>
               <div class="heading">
-                <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'"><b>Basic
+                <h6 class="stepperHeader-b"><b>Basic
                     Information</b></h6>
               </div>
               <div class="category">
@@ -59,8 +55,7 @@
               
             </div> 
               <mat-form-field >
-                <input matInput placeholder="Enter the name of material" #input class="form-control container materialname-placeholder mn" style="width: 461px;
-                           height: 35px;background-color: white;margin-top: -9px; margin-left: -1px;">
+                <input matInput placeholder="Enter the name of material" #input class="form-control container materialname-placeholder">
               </mat-form-field>
               <div class="uomdrp">
                 <ng-select [items]="rowData5" [virtualScroll]="true" bindLabel="uoMShortName" bindValue="uoMId"
@@ -78,39 +73,21 @@
               <div class="materialci">
                 <label> Material Custom Identifiers <span>*</span></label>
               </div>
-              <input matInput placeholder="Describe the material" #input class="form-control container" id="abc"style="border: 1px solid !important;
-              border-radius: 10px;width: 281px;
-                           height: 126px;background-color: white;margin-top: 6px; margin-left: 3px;">
-              <div placeholder="" #input class="form-control container" style="border: 1px solid !important;
-              border-radius: 8px;;width: 146px;
-              height: 129px;background-color: white;margin-top: -132px; margin-left: 314px;">
+              <input matInput placeholder="Describe the material" #input class="form-control container materialDesc" id="abc">
+              <div placeholder="" #input class="form-control container imagePl">
               <img src="assets/img/add-image.png"  class="add-img"
-                alt="left-arr-btn">
+                alt="add-image=btn">
                 </div>
               <div class="customidentifier hide" (click)="selectProduct()">
-                <!-- (click)="selectProduct()" -->
-                <!-- <ng-multiselect-dropdown name="type" [placeholder]="'Select Identifier'" formControlName="type"
-                  [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList3"
-                  (onSelect)="onTypeSelect($event)" (onSelectAll)="onTypeAll($event)">
-                </ng-multiselect-dropdown> -->
                 <ng-select [items]="selectedItems5" [virtualScroll]="true" bindLabel="materialCustomName" bindValue="materilCustomIdentifierId"
                 [searchable]="true" [clearable]="true" placeholder="Select Identifier" [(ngModel)]="selectedItems5">
               </ng-select>
               </div>
-              <!-- <div class="describem">
-                <input type="text" placeholder="Describe the material" style="width: 256px; margin-top: 14px;height: 110px;">
-              </div> -->
-
-              <div class="expiryperiod">
+                  <div class="expiryperiod">
                 <label> Expiry Period (in months)<span>*</span></label>
               </div>
-              <input matInput placeholder="NA" #input class="form-control container" style="border: 1px solid !important;
-              border-radius: 10px;width: 190px;padding-left: 10px;
-              height: 34px;background-color: white;margin-top:4px; margin-left: 503px;">
-              <!-- <div>
-        <button mat-button matStepperNext>Next</button>
-      </div> -->
-    </div>
+              <input matInput placeholder="NA" #input class="form-control container na-placeholder">
+             </div>
             </form>
           </mat-step>
 
@@ -123,8 +100,7 @@
               </div>
               <div class="productcont">
                 <div class="heading">
-                  <h6
-                    style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy';margin-top: -25px;;">
+                  <h6 class="stepperHeader-p">
                     <b>Product Information</b></h6>
                 </div>
                 <div class="brandname">
@@ -133,33 +109,23 @@
                 <div class="globalcode">
                   <label>Global Code<span>*</span></label>
                 </div>
-
-                <input matInput placeholder="Enter the name of brand" #input class="form-control container " style="border:solid lightgrey 1px;width: 351px;
-                height: 31px;background-color: white;margin-top: 7px; margin-left: -4px;">
-
-                <input matInput placeholder="Enter product global code" #input class="form-control container" style="border:solid lightgrey 1px;width: 334px;
-              height: 31px;background-color: white;margin-top: -35px; margin-left: 393px;">
+                <input matInput placeholder="Enter the name of brand" #input class="form-control container brand-name" >
+                <input matInput placeholder="Enter product global code" #input class="form-control container global-codeplaceholder">
                 <div class="sku">
                   <label>SKU<span>*</span></label>
                 </div>
                 <div class="shortcode">
                   <label>Short Code<span>*</span></label>
                 </div>
-                <input matInput placeholder="Enter SKU" #input class="form-control container" style="border:solid lightgrey 1px;width: 351px;
-              height: 31px;background-color: white;margin-top: 7px; margin-left: -4px;">
-                <input matInput placeholder="Enter product short code" #input class="form-control container" style="border:solid lightgrey 1px;width: 334px;
-            height: 31px;background-color: white;margin-top: -35px; margin-left: 393px;">
+                <input matInput placeholder="Enter SKU" #input class="form-control container sku-placeholder">
+                <input matInput placeholder="Enter product short code" #input class="form-control container shortcode-placeholder">
                 <div class="productg">
                   <label>Product Group<span>*</span></label>
                 </div>
                 <div class="manualsort">
                   <label>Manual Sort Order<span>*</span></label>
                 </div>
-                <div class="productdrp">
-                  <!-- <ng-multiselect-dropdown name="type" [placeholder]="'Search & select group'" formControlName="type"
-                    [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList3"
-                    (onSelect)="onTypeSelect($event)" (onSelectAll)="onTypeAll($event)">
-                  </ng-multiselect-dropdown> -->
+                <div class="productdrp productg-align">
                   <ng-select [items]="productList" [virtualScroll]="true" bindLabel="productGroupName" bindValue="productGroupId"
                   [searchable]="true" [clearable]="false" placeholder="Search & select group" [(ngModel)]="selectedItems6"
                   (change)="onProductSelect($event)">
@@ -167,29 +133,23 @@
                 </div>
                 <img src="assets/img/plus.png" style="width: 22px;margin-left: 316px;margin-top: -67px;" alt="plus-btn"
                   (click)="addproduct()">
-                <input matInput placeholder="Enter the sort order" #input class="form-control container" style="border:solid lightgrey 1px;width: 334px;
-            height: 31px;background-color: white;margin-top: -60px; margin-left: 393px;">
+                <input matInput placeholder="Enter the sort order" #input class="form-control container sort-placeh">
                 <div class="productsg">
                   <label>Product Sub-group<span>*</span></label>
                 </div>
                 <div class="productlink">
                   <label>Product Link<span>*</span></label>
                 </div>
-                <div class="productsdrp">
-                  <!-- <ng-multiselect-dropdown name="type" [placeholder]="'Search & select sub-group'"
-                    formControlName="type" [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList3"
-                    (onSelect)="onTypeSelect($event)" (onSelectAll)="onTypeAll($event)">
-                  </ng-multiselect-dropdown> -->
+                <div class="productsdrp productg-align">
                   <ng-select [items]="subProduct" [virtualScroll]="true" bindLabel="productGroupName" bindValue="productGroupId"
                   [searchable]="true" [clearable]="false" placeholder="Search & select sub-group" [(ngModel)]="selectedItems7"
                   (change)="onSubProductSelect($event)">
                 </ng-select>
                 </div>
                 <div class="image">
-                  <img src="assets/img/plus.png" style="width: 22px;margin-left: 316px;margin-top: -67px;"
+                  <img src="assets/img/plus.png" class="imagePlus"
                     alt="plus-btn" (click)="addproductsubgroup()">
-                  <input matInput placeholder="Paste the link" #input class="form-control container" style="border:solid lightgrey 1px;width: 334px;
-            height: 31px;background-color: white;margin-top: -61px; margin-left: 393px;">
+                  <input matInput placeholder="Paste the link" #input class="form-control container link-placeh">
                 </div>
                 <div class="productci">
                   <label>Product Custom Identifier<span>*</span></label>
@@ -202,30 +162,25 @@
                 <br>
                 <br>
               </div>
-              <!-- <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
-              </div> -->
-            </form>
-
+              </form>
           </mat-step>
 
           <mat-step class="geoo">
             <ng-template matStepLabel>Geographies & Properties</ng-template>
             <div class="geography" style="width: 800px;">
               <div class="heading">
-                <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'">
+                <h6 class="stepperHeader-b">
                   <b>Geographies</b></h6>
               </div>
               <div class="material-card row">
                 <div class="col-3">
 
                   <div class="row">
-                    <p class="col-10" style="font-family: 'Gilroy'">Country</p>
+                    <p class="col-10 font" >Country</p>
                     <p class="col-2"></p>
                   </div>
                   <mat-card class="mat-card-content ">
-                    <mat-card-content style="height:188px; overflow-y: scroll;">
+                    <mat-card-content class="matcardscroll">
                       <div class=" d-flex " *ngFor="let catg of countryList">
                         <p class="col-10 catg" (click)="getStateList(catg.countryId)" [ngClass]="{ 'selected': catg.countryId == selectedItem }" (click)="onClick(catg)">{{catg.countryName}}</p>
                       </div>
@@ -234,21 +189,19 @@
                           <button class="btn btn-basic addcat">Add category name</button>
                           <button class="btn btn-basic addcode">Add code</button>
                         </div>
-                        <!-- <div class="col-2"><mat-icon>remove_circle</mat-icon></div> -->
-                      </div>
+                         </div>
                     </mat-card-content>
 
                   </mat-card>
                 </div>
                 <div class="col-3 mat-card-width">
                   <div class="row">
-                    <p class="col-10" style="font-family: 'Gilroy'">State</p>
+                    <p class="col-10 font">State</p>
                     <p class="col-2"></p>
                   </div>
                   <mat-card class="mat-card-content1">
-                    <mat-card-content style="height:188px; overflow-y: scroll;">
-                      <!-- <div class="span-subhead"><span>category 3</span><mat-icon>arrow_drop_down</mat-icon></div> -->
-                      <div class=" d-flex" *ngFor="let subc of stateList">
+                    <mat-card-content class="matcardscroll">
+                     <div class=" d-flex" *ngFor="let subc of stateList">
                         <p class="col-10 subc" [ngClass]="{ 'subselected': subc.geographyId == stateselectedItem }" (click)="onClick(subc)">{{subc.geographyName}}</p>
                       </div>
                     </mat-card-content>
@@ -256,13 +209,11 @@
                 </div>
                 <div class="col-3">
                   <div class="row">
-                    <p class="col-10" style="font-family: 'Gilroy'">District</p>
+                    <p class="col-10 font">District</p>
                     <p class="col-2"> </p>
                   </div>
                   <mat-card class="mat-card-content2">
-                    <mat-card-content style="height:188px; overflow-y: scroll;">
-                      <!-- <div class="span-subhead"><span style="padding-bottom: 10px;">category 3</span><mat-icon>keyboard_arrow_right</mat-icon><span>Sub-category</span><mat-icon>arrow_drop_down</mat-icon></div> -->
-                      <!-- <li class="type" *ngFor="let type of typename" >{{type}}<mat-icon>add_circle</mat-icon></li> -->
+                    <mat-card-content class="matcardscroll">
                       <div class=" d-flex" *ngFor="let type of distList">
                         <p class="col-10 typeg" (click)="onClick(type)"[ngClass]="{ 'typeselected': type.geographyId == distselectedItem }">{{type.geographyName}}</p>
                       </div>
@@ -272,14 +223,12 @@
                 </div>
                 <div class="col-3">
                   <div class="row">
-                    <p class="col-10" style="font-family: 'Gilroy';">City</p>
+                    <p class="col-10 font">City</p>
                     <p class="col-2"> </p>
                   </div>
                   <mat-card class="mat-card-content3 ">
-                    <mat-card-content style="height:188px; overflow-y: scroll;">
-                      <!-- <div class="span-subhead"><span style="padding-bottom: 10px;">category 3</span><mat-icon>keyboard_arrow_right</mat-icon><span>Sub-category</span><mat-icon>arrow_drop_down</mat-icon></div> -->
-                      <!-- <li class="type" *ngFor="let type of typename" >{{type}}<mat-icon>add_circle</mat-icon></li> -->
-                      <div class=" d-flex" *ngFor="let type of cityList">
+                    <mat-card-content class="matcardscroll">
+                       <div class=" d-flex" *ngFor="let type of cityList">
                         <p class="col-10 typeg" (click)="onClick(type)" 
                           [ngClass]="{ 'cityselected': type == citySelectedItem }">{{type.geographyName}}</p>
                       </div>
@@ -289,7 +238,7 @@
                 </div>
               </div>
               <div class="heading">
-                <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'"><b>Properties</b>
+                <h6  class="stepperHeader-b"><b>Properties</b>
                 </h6>
               </div>
               <div class="bar">
@@ -326,21 +275,13 @@
                 <div class="mala">
                   Malaysia(71/26)</div>
                 <div class="malainput">
-                  <input matInput placeholder="    -" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-          height: 30px;background-color: white;margin-top: -22px; margin-left: 216px;border-radius: 10px;">
-                  <input matInput placeholder="    -" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-          height: 30px;background-color: white;margin-top: -33px; margin-left: 314px;border-radius: 10px;">
-                  <input matInput placeholder="    -" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-          height: 30px;background-color: white;margin-top: -33px; margin-left: 413px;border-radius: 10px;">
-                  <input matInput placeholder="    -" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-          height: 30px;background-color: white;margin-top: -33px; margin-left: 508px;border-radius: 10px;">
-                  <input matInput placeholder="    -" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-          height: 30px;background-color: white;margin-top: -33px; margin-left: 611px;border-radius: 10px;">
-                  <input matInput placeholder="    -" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-          height: 30px;background-color: white;margin-top: -33px; margin-left: 709px; border-radius: 10px;">
-                  <input matInput placeholder="   Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 141px;
-          height: 30px;background-color: white;margin-top: -33px; margin-left: 828px; border-radius: 10px;">
-
+                  <input matInput placeholder="-" #input class="form-control container mrpP">
+                  <input matInput placeholder="    -" #input class="form-control container min-qP">
+                  <input matInput placeholder="    -" #input class="form-control container maxP">
+                  <input matInput placeholder="    -" #input class="form-control container marginP">
+                  <input matInput placeholder="    -" #input class="form-control container discountP">
+                  <input matInput placeholder="    -" #input class="form-control container leadtimeP">
+                  <input matInput placeholder="   Enter" #input class="form-control container regP">
                   <div class="addlink">
                     <a href="url">Add</a>
                   </div>
@@ -349,20 +290,13 @@
                   Kedah(36/26)
                 </div>
                 <div class="kedahinput">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-                        height: 30px;background-color: white;margin-top: -22px; margin-left: 216px;border-radius: 10px;">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-                        height: 30px;background-color: white;margin-top: -33px; margin-left: 314px;border-radius: 10px;">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-                        height: 30px;background-color: white;margin-top: -33px; margin-left: 413px;border-radius: 10px;">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-                        height: 30px;background-color: white;margin-top: -33px; margin-left: 508px;border-radius: 10px;">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-                        height: 30px;background-color: white;margin-top: -33px; margin-left: 611px;border-radius: 10px;">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-                        height: 30px;background-color: white;margin-top: -33px; margin-left: 709px; border-radius: 10px;">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 141px;
-                        height: 30px;background-color: white;margin-top: -33px; margin-left: 828px; border-radius: 10px;">
+                  <input matInput placeholder="    Enter" #input class="form-control container mrpP">
+                  <input matInput placeholder="    Enter" #input class="form-control container min-qP">
+                  <input matInput placeholder="    Enter" #input class="form-control container maxP">
+                  <input matInput placeholder="    Enter" #input class="form-control container marginP">
+                  <input matInput placeholder="    Enter" #input class="form-control container discountP">
+                  <input matInput placeholder="    Enter" #input class="form-control container leadtimeP">
+                  <input matInput placeholder="    Enter" #input class="form-control container regP">
                   <div class="addlink">
                     <a href="url">Add</a>
                   </div>
@@ -371,20 +305,13 @@
                   Perak(14/26)
                 </div>
                 <div class="perakinput">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-            height: 30px;background-color: white;margin-top: -22px; margin-left: 216px;border-radius: 10px;">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-            height: 30px;background-color: white;margin-top: -33px; margin-left: 314px;border-radius: 10px;">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-            height: 30px;background-color: white;margin-top: -33px; margin-left: 413px;;border-radius: 10px;">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-            height: 30px;background-color: white;margin-top: -33px; margin-left: 508px;border-radius: 10px;">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-            height: 30px;background-color: white;margin-top: -33px; margin-left: 611px; border-radius: 10px;">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-            height: 30px;background-color: white;margin-top: -33px; margin-left: 709px;border-radius: 10px;">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 141px;
-            height: 30px;background-color: white;margin-top: -33px; margin-left: 828px;border-radius: 10px;">
+                  <input matInput placeholder="    Enter" #input class="form-control container mrpP">
+                  <input matInput placeholder="    Enter" #input class="form-control container min-qP">
+                  <input matInput placeholder="    Enter" #input class="form-control container maxP">
+                  <input matInput placeholder="    Enter" #input class="form-control container marginP">
+                  <input matInput placeholder="    Enter" #input class="form-control container discountP">
+                  <input matInput placeholder="    Enter" #input class="form-control container leadtimeP">
+                  <input matInput placeholder="    Enter" #input class="form-control container regP">
                   <div class="addlink">
                     <a href="url">Add</a>
                   </div>
@@ -393,20 +320,13 @@
                   Penang(21/22)
                 </div>
                 <div class="penanginput">
-                  <input matInput placeholder="    -" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-            height: 30px;background-color: white;margin-top: -22px; margin-left: 216px;border-radius: 10px;">
-                  <input matInput placeholder="    -" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-            height: 30px;background-color: white;margin-top: -33px; margin-left: 314px;border-radius: 10px;">
-                  <input matInput placeholder="    -" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-            height: 30px;background-color: white;margin-top: -33px; margin-left: 413px;border-radius: 10px;">
-                  <input matInput placeholder="    -" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-            height: 30px;background-color: white;margin-top: -33px; margin-left: 508px;border-radius: 10px;">
-                  <input matInput placeholder="    -" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-            height: 30px;background-color: white;margin-top: -33px; margin-left: 611px;border-radius: 10px;">
-                  <input matInput placeholder="    -" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-            height: 30px;background-color: white;margin-top: -33px; margin-left: 709px;border-radius: 10px;">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 141px;
-            height: 30px;background-color: white;margin-top: -33px; margin-left: 828px;border-radius: 10px;">
+                  <input matInput placeholder="    -" #input class="form-control container mrpP">
+                  <input matInput placeholder="    -" #input class="form-control container min-qP">
+                  <input matInput placeholder="    -" #input class="form-control container maxP">
+                  <input matInput placeholder="    -" #input class="form-control container marginP">
+                  <input matInput placeholder="    -" #input class="form-control container discountP">
+                  <input matInput placeholder="    -" #input class="form-control container leadtimeP">
+                  <input matInput placeholder="    Enter" #input class="form-control container regP">
                   <div class="addlink">
                     <a href="url">Add</a>
                   </div>
@@ -415,44 +335,24 @@
                   North(4/4)
                 </div>
                 <div class="northinput">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-            height: 30px;background-color: white;margin-top: -22px; margin-left: 216px;;border-radius: 10px;">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-            height: 30px;background-color: white;margin-top: -33px; margin-left: 314px; border-radius: 10px;">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-            height: 30px;background-color: white;margin-top: -33px; margin-left: 413px;border-radius: 10px;">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-            height: 30px;background-color: white;margin-top: -33px; margin-left: 508px;border-radius: 10px;">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-            height: 30px;background-color: white;margin-top: -33px; margin-left: 611px; border-radius: 10px;">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 83px;
-            height: 30px;background-color: white;margin-top: -33px; margin-left: 709px;border-radius: 10px;">
-                  <input matInput placeholder="    Enter" #input class="form-control container" style="border:solid lightgrey 1px;width: 141px;
-            height: 30px;background-color: white;margin-top: -33px; margin-left: 828px;border-radius: 10px;">
+                  <input matInput placeholder="    Enter" #input class="form-control container mrpP">
+                  <input matInput placeholder="    Enter" #input class="form-control container min-qP">
+                  <input matInput placeholder="    Enter" #input class="form-control container maxP">
+                  <input matInput placeholder="    Enter" #input class="form-control container marginP">
+                  <input matInput placeholder="    Enter" #input class="form-control container discountP">
+                  <input matInput placeholder="    Enter" #input class="form-control container leadtimeP">
+                  <input matInput placeholder="    Enter" #input class="form-control container regP">
                   <div class="addlink">
                     <a href="url">Add</a>
                   </div>
                 </div>
-
-
-
-
-
               </div>
-              <!-- You are now done. -->
-              <!-- <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button >Reset</button>
-            </div> -->
-            </div>
+                     </div>
             <div class="row">
-              <button class="btn btn-primary btn-block submitbtn"
-                style="background-color:#000000;width:66%;position:relative; left: 22%;">Submit</button>
+              <button class="btn btn-primary btn-block submitbtn">Submit</button>
             </div>
           </mat-step>
-
         </mat-stepper>
-
       </div>
     </div>
   </div>

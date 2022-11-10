@@ -34,21 +34,21 @@ export interface PeriodicElement {
   phonenum: number;
   status: any;
 }
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: '6004005001', name: 'Rajasheka S', weight: 1.0079, symbol: 'Customer', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Active' },
-  { position: '6004005002', name: 'Manoranjan B', weight: 1.0079, symbol: 'Dealer', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Inactive' },
-  { position: '6004005003', name: 'Vishnu M', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Active' },
-  { position: '6004005004', name: 'Mahendra S', weight: 1.0079, symbol: 'Dealer', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Invited' },
-  { position: '6004005005', name: 'Veerendra kr', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Locked' },
-  { position: '6004005006', name: 'mahathi Br', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Active' },
-  { position: '6004005007', name: 'chetheshwar T', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Locked' },
-  { position: '6004005008', name: 'Swami swami', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Locked' },
+// const ELEMENT_DATA: PeriodicElement[] = [
+//   { position: '6004005001', name: 'Rajasheka S', weight: 1.0079, symbol: 'Customer', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Active' },
+//   { position: '6004005002', name: 'Manoranjan B', weight: 1.0079, symbol: 'Dealer', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Inactive' },
+//   { position: '6004005003', name: 'Vishnu M', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Active' },
+//   { position: '6004005004', name: 'Mahendra S', weight: 1.0079, symbol: 'Dealer', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Invited' },
+//   { position: '6004005005', name: 'Veerendra kr', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Locked' },
+//   { position: '6004005006', name: 'mahathi Br', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Active' },
+//   { position: '6004005007', name: 'chetheshwar T', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Locked' },
+//   { position: '6004005008', name: 'Swami swami', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Locked' },
 
-  { position: '6004005006', name: 'narendra gs', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Locked' },
+//   { position: '6004005006', name: 'narendra gs', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Locked' },
 
-  { position: '6004005006', name: 'prajwal vT', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Locked' },
+//   { position: '6004005006', name: 'prajwal vT', weight: 1.0079, symbol: 'Admin', emailid: 'you@smartgig', phonenum: 9448282822, status: 'Locked' },
 
-];
+// ];
 @Component({
   selector: 'app-order-list',
   templateUrl: './order-list.component.html',
@@ -57,7 +57,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 
 export class OrderListComponent implements OnInit {
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  // dataSource = new MatTableDataSource(ELEMENT_DATA);
   // dateRange = new DateRange(new Date(2018, 1, 1), new Date(2018, 1, 31));
   // dateRange1 = DateRange.nextTwoWeeks();
   // maxDate = new Date();
@@ -75,11 +75,24 @@ export class OrderListComponent implements OnInit {
   selectedItems: any = [];
   selectedStatus: any = [];
   userTypes: any = [];
+  
+  StatusId:any=[];
+
+  GeographyId:any=[];
+
+  DealerId:any=[];
+
+  OrderDate:any = "";
+
+
   statusTypes: any = [];
   searchText: any;
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
   public rowData5 = [];
+  
+  public rowDatalist =[];
+  
   public popupParent: HTMLElement = document.body;
   roleArray: any[] = [];
   statusArray: any = [];
@@ -90,18 +103,18 @@ export class OrderListComponent implements OnInit {
     // { headerName: "User Id",
     //   field: 'employeeCode' , sort: 'desc'},
 
-    { headerName: "Order No.", field: 'Order No' },
+    { headerName: "Order No.", field: 'orderNUmber' },
 
-    { headerName: "Order Date", field: 'Order Date', },
+    { headerName: "Order Date", field: 'orderDate', },
 
     {
       headerName: "Dealer",
-      field: 'Dealer'
+      field: 'dealerName'
     },
 
     {
       headerName: "Geography",
-      field: 'Geography',
+      field: 'geographyName',
     },
 
 
@@ -110,7 +123,7 @@ export class OrderListComponent implements OnInit {
       field: 'status',
       cellEditor: 'agSelectCellEditor',
       cellEditorParams: {
-        values: ['Active', 'Inactive', 'Invited', 'Locked',],
+        values: ['Closed','Approved',],
       }
     },
     {
@@ -193,37 +206,6 @@ export class OrderListComponent implements OnInit {
   public pivotPanelShow = 'always';
 
 
-  columns: Array<GuiColumn> = [
-    {
-      header: 'Name',
-      field: 'name' 			//source {name: 'T-shirt'}
-    },
-    {
-      header: 'Type',
-      field: 'type' 			//source {type: 'clothes'}
-    },
-    {
-      header: 'Price',
-      field: 'price'			//source {price: '15$'}
-    }];
-
-  source: Array<any> = [
-    {
-      name: 'T-shirt',		//columns {header: 'Name', field: 'name'}
-      type: 'clothes',		//columns {header: 'Type', field: 'type'}
-      price: '15$' 			//columns {header: 'Price', field: 'price'}
-    },
-    {
-      name: 'Shoes',
-      type: 'footwear',
-      price: '100$'
-    },
-    {
-      name: 'Ball cap',
-      type: 'headgear',
-      price: '50$'
-    }];
-
   sorting: GuiSorting = {
     enabled: true
   };
@@ -284,7 +266,7 @@ export class OrderListComponent implements OnInit {
   sort: MatSort = new MatSort;
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
+    // this.dataSource.sort = this.sort;
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
       if (res.matches) {
         this.sidenav.mode = 'over';
@@ -299,45 +281,44 @@ export class OrderListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getusertabeldata();
-    this.roleItems();
+
+    // this.roleItems();
     this.statusItems();
     // this.maxDate.setDate(this.maxDate.getDate() + 20);
+    this.orderlistGrid();
   }
   refresh() {
     this.toppings = new FormControl(this.toppingList);
     this.toppings1 = new FormControl(this.toppingList1);
 
-    this.getusertabeldata();
+  
   }
 
-  getusertabeldata() {
+ 
 
-  }
-
-  roleItems() {
+  // roleItems() {
 
 
-    this.user.getroleDetails().subscribe((res: any) => {
-      let localdata = res.response;
+  //   this.user.getroleDetails().subscribe((res: any) => {
+  //     let localdata = res.response;
 
 
-      this.toppingList = localdata.map((data: { designationId: any; designationName: any; }) => {
-        return { role_id: data.designationId, role_name: data.designationName };
-      });
+  //     this.toppingList = localdata.map((data: { designationId: any; designationName: any; }) => {
+  //       return { role_id: data.designationId, role_name: data.designationName };
+  //     });
 
-      if (!this.toppingList?.length) {
-        this.toppingList = localdata.map((role: { designationName: any; }) => {
-          return role.designationName;
-        });
-      }
-      this.toppingList.push()
-      // this.toppingList = res.response;
-      this.toppings = new FormControl(this.toppingList);
+  //     if (!this.toppingList?.length) {
+  //       this.toppingList = localdata.map((role: { designationName: any; }) => {
+  //         return role.designationName;
+  //       });
+  //     }
+  //     this.toppingList.push()
+  //     // this.toppingList = res.response;
+  //     this.toppings = new FormControl(this.toppingList);
 
-      console.log('rolelist', this.toppingList)
-    });
-  }
+  //     console.log('rolelist', this.toppingList)
+  //   });
+  // }
 
   statusItems() {
     this.user.getstatusDeatils().subscribe((res: any) => {
@@ -402,8 +383,8 @@ export class OrderListComponent implements OnInit {
     this.user.getuserDeatilsUser(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
-    console.log('rolefilter', this.userTypes)
-    console.log('onItemSelect', item);
+    // console.log('rolefilter', this.userTypes)
+    // console.log('onItemSelect', item);
   }
   onItemSelectOrAll(item: any) {
     this.userTypes = this.roleArray;
@@ -514,14 +495,14 @@ export class OrderListComponent implements OnInit {
     this.user.getuserDeatilsUser(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
-    console.log('rolefilter', this.userTypes)
-    console.log('onItemSelect', item);
+    // console.log('rolefilter', this.userTypes)
+    // console.log('onItemSelect', item);
   }
   applyFilter(event: Event) {
 
 
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    // this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -555,14 +536,76 @@ export class OrderListComponent implements OnInit {
   // ORDER SEARCH SELECT
 
   onSearchChangeGEO($event: any, anything?: any){
-
+    // const { target } = $event;
+    // this.searchText = target.value;
+    // const data = {
+    //   userTypes: this.userTypes,
+    //   statuss: this.statusTypes,
+    //   search: this.searchText,
+    // }
+    // this.user.getuserDeatilsUser(data).subscribe((res) => {
+    //   this.rowData5 = res.response;
+    // });
   }
+
+  // roleItems($event: any, anything?: any) {
+  //   const { target } = $event;
+  //   this.searchText = target.value;
+  //   this.user.getGographicDropdown().subscribe((res: any) => {
+  //     let localdata = res.response;
+
+
+  //     this.toppingList = localdata.map((data: { geographyId: any; geographyName: any; }) => {
+  //       return { geographyId: data.geographyId, geographyName: data.geographyName };
+  //     });
+
+  //     this.toppingList.push()
+  //     this.toppingList.forEach(element => {
+  //       return this.roleArray.push(element.geographyId);
+
+
+  //     })
+  //     this.toppings = new FormControl(this.toppingList);
+
+  //     this.dropdownSettings = {
+  //       singleSelection: false,
+  //       idField: 'geographyId',
+  //       textField: 'geographyName',
+  //       selectAllText: 'Select All',
+  //       unSelectAllText: 'UnSelect All',
+  //       itemsShowLimit: 2,
+  //       allowSearchFilter: true
+  //     };
+  //     this.selectedItems = [];
+  //   });
+  // }
+
+
 
   onSearchChangeDEAL($event: any, anything?: any){
 
   }
 
+ orderlistGrid(){
+  const data = {
+    // userTypes: this.userTypes,
+    // statuss: this.statusTypes,
+    // search: this.searchText,
+    "StatusId":[],
 
+    "GeographyId":[],
+
+    "DealerId":[],
+
+    "OrderDate":"",
+
+    "Search":""
+
+  }
+  this.user.getorderDeatilslist(data).subscribe((res) => {
+    this.rowDatalist = res.response;
+  });
+}
 
 }
 

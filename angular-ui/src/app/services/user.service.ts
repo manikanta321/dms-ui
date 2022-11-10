@@ -81,6 +81,11 @@ GetEditUSer(userID:any){
     return this.http.post<any>(this.userurl + 'UserMgmtApi/GetAllUsers', data);
    }
 
+   public getorderDeatilslist(data) {
+     
+    return this.http.post<any>(this.userurl + 'OrdersApi/GetAllOrders', data);
+   }
+
 public getroleDetails(){
   return this.http.get<any>(this.userurl + 'UserMgmtApi/GetUserTypes');
 

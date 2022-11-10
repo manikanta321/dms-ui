@@ -27,52 +27,69 @@
                 </ng-multiselect-dropdown>
             </form>
         </div>
+
     </div>
+    <div class="icon btnhover1 refreshbtn1" (click)="refresh()">
+        <img class="refresh1" src="assets/img/Vector.png" 
+          alt="refresh">
+      </div>
 
 </div>
 <div class="row" style="margin-bottom:5px;">
     <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
-    <div class="col-md-4" style="margin-left: 65%;margin-bottom:10px">
+    <div class="col-md-4"  class="allicons">
+
         <div class="row">
             <div class="col-md-4">
-                <div class="searchBox d-flex" style=" cursor: pointer">
-                    <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+                <div class="searchBox1 d-flex">
+                    
+                    <input class="searchInput1"  type="text" name=""
                         placeholder="Type & search for anything">
+    
                     <!-- (keyup)="onSearchChange($event)" -->
                     <button class="searchButton" href="#">
                         <i class="material-icons">
                             search
                         </i>
                     </button>
-                    <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+                    <button class="search-btn" >Search</button>
+                
                 </div>
             </div>
             <div class="col-md-2">
                 <!-- (click)="addUser()" -->
-                <div class="add-user" style=" cursor: pointer">
-                    <img  (click)="addOrderPromotion()" src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;"
+                <div class="add-user1">
+            
+                    <img class="imgorder" (click)="addOrderPromotion()" src="assets/img/add-btn.png"
                         alt="add-user-btn">
+                        
                 </div>
             </div>
             <div class="col-md-0">
                 <!-- (click)="onBtnExport()" -->
-                <div class="download-btn" style=" cursor: pointer">
-                    <img src="assets/img/orderlist-upload.svg" style="position: relative;top: 8px;left: 12px;"
+                <div class="download-btn1" >
+    
+                    <img class="IMGorder" src="assets/img/orderlist-upload.svg" 
                         alt="add-user-btn">
+            
                 </div>
             </div>
             <div class="col-md-2">
                 <!-- (click)="onBtnExport()" -->
-                <div class="download-btn" style=" cursor: pointer">
-                    <img src="assets/img/orderlist-downloD.svg" style="position: relative;top: 8px;left: 12px;"
+                <div class="download-btn2">
+                
+                    <img   class="imgOrder3"    src="assets/img/orderlist-downloD.svg" 
                         alt="add-user-btn">
+                        
                 </div>
             </div>
             <div class="col-md-0">
                 <!-- (click)="onBtnExport()" -->
-                <div class="download-btn" style=" cursor: pointer">
-                    <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;"
+                <div class="download-btn3" >
+            
+                    <img   class="imgOrder4" src="assets/img/download-btn.png"
                         alt="add-user-btn">
+                        
                 </div>
             </div>
         </div>
@@ -83,7 +100,7 @@
 <div >
     <ag-grid-angular
  id="gridContainer"
- style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%; margin-left: 20px;"
+ style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 98%; margin-left: 20px;"
  class="ag-theme-material"
  (gridReady)="onGridReady($event)"
  [rowHeight]="25"

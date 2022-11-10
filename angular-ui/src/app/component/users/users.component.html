@@ -17,12 +17,12 @@
         <div class="row" style="position: relative;top: 3%;bottom: 8px; font-family: 'Gilroy'; color: grey;">
           <div class="col-md-2 col-lg-2 col-sm-2">
             <form [formGroup]="myForm" class="dropdown-form">
-              <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'Roles'" formControlName="city"
+              <ng-multiselect-dropdown class="roles" name="city" [placeholder]="'Roles'" formControlName="city"
                 [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList"
                 (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
                 (onDeSelectAll)="onItemDeSelectOrAll($event)" (onSelectAll)="onItemSelectOrAll($event)">
               </ng-multiselect-dropdown>
-              <div class="dropdown-placeholder roless-placeholder">
+              <div class="dropdown-placeholder roles-placeholder">
                 <span *ngIf="myForm.get('city').value.length == 0"> Select Roles </span>
                 <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Role selected </span>
                 <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Role(s) selected </span>

@@ -148,6 +148,10 @@
     right: 6% !important;
     display: block;
   }
+  
+  .catty-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #00187A !important;
+}
   /* ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
     background: #D23F00 !important;
     right: 6% !important;
@@ -164,7 +168,7 @@
     background: #0C5A3E !important;
     }
   ::ng-deep.typy .multiselect-dropdown .dropdown-btn .selected-item {
-    background: #C32F27 !important;
+      background: #C32F27 !important; 
     right: 156% !important;
   }
   ::ng-deep .typy .multiselect-item-checkbox input[type=checkbox]:checked + div:before {
@@ -475,19 +479,27 @@
       pointer-events: none;
     }
     
-    .cats-placeholder.dropdown-placeholder .selected-placeholder {
-      color: #00187A !important;
-    }
-    .subcats-placeholder.dropdown-placeholder .selected-placeholder {
-      color: #0C5A3E !important;
-    }
-    .types-placeholder.dropdown-placeholder .selected-placeholder {
-      color: #C32F27 !important;
-    }
-    .prod-placeholder.dropdown-placeholder .selected-placeholder {
+    .catty-placeholder.dropdown-placeholder .selected-placeholder {
+      
       color: #44026C !important;
-    }
+   }
+
+   .subcatty-placeholder.dropdown-placeholder .selected-placeholder
+   {
+      color:  #0C5A3E !important;
+   }
+
+   .producty-placeholder.dropdown-placeholder .selected-placeholder
+   {
+    color: #44026C !important;
+   }
+
+   .sttss-placeholder.dropdown-placeholder .selected-placeholder
+   {
+     color: #000 !important; 
     
+   }
+
     .stts-placeholder.dropdown-placeholder .selected-placeholder {
       color: #000 !important;
     }

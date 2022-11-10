@@ -1,7 +1,74 @@
 .filterSection {
     margin-top: 3%;
     display: inline-flex;
+    
 }
+
+
+.allicons
+{
+    margin-bottom:10px;
+    margin-left: 68%;
+
+} 
+.searchInput1
+{
+    font-family: 'Gilroy';
+}
+.search-btn
+{
+    font-family: 'Gilroy';
+}
+.imgorder
+{
+    position: relative;
+    top: 8px;
+    left: 10px;
+}
+.IMGorder
+{
+    position: relative;
+    top: 7px;
+    left: 9px;
+}
+.imgOrder3
+{
+    position: relative;
+    top: 7px;
+    left: 9px;
+}
+
+.imgOrder4
+{
+    position: relative;
+    top: 8px;
+    left: 12px;
+}
+
+.refresh1
+{
+    position: relative;
+    top:-8px;
+    left: -4px;
+}
+.refreshbtn1{
+    /* width: 36px;
+    height: 36px;
+    margin-top: 6px;
+    margin-left: 10px; */
+    cursor: pointer;
+
+  }
+
+.refreshbtn1:hover {
+    background-color: grey !important;
+    color: white !important;
+  }
+
+  .input-field[type="text"]::placeholder
+  {
+      text-align: left;
+  }
 
 /* .btn-outline{
     background:transparent;
@@ -123,7 +190,7 @@ input {
     border: 2px solid #000000 !important;
 }
 
-.add-user:hover {
+.add-user1:hover {
     background-color: grey !important;
     color: white !important;
 }
@@ -133,7 +200,7 @@ input {
     color: white !important;
 }
 
-.refreshbtn:hover {
+.refreshbtn1:hover {
     background-color: grey !important;
     color: white !important;
 }
@@ -178,17 +245,21 @@ input {
 }
 
 
-.btnhover {
+.btnhover1 {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
     border: none;
     background: #000000;
     border-radius: 35%;
     position: relative;
     width: 43px;
+    height: 41px;
+    margin-top: 1px;
+    margin-left: 24px;
+    
 }
 
 
-::ng-deep.btnhover:hover {
+::ng-deep.btnhover1:hover {
     background: #000000 !important;
 }
 
@@ -207,26 +278,27 @@ input {
     border: none;
 }
 
-.searchBox:hover>.searchButton,
-.searchBox>.searchInput,
+.searchBox1:hover>.searchButton,
+.searchBox1>.searchInput1,
 .search-btn {
     display: none;
 }
 
-.searchBox {
+.searchBox1 {
     float: right;
     position: absolute;
-    left: 94%;
-    top: 6px;
+    left: 142%;
+    top: 46px;
+    cursor: pointer;
 }
 
 
 
-.searchBox:hover>.searchButton {
+.searchBox1:hover>.searchButton {
     display: block;
 }
 
-.searchBox:hover>.searchButton .material-icons {
+.searchBox1:hover>.searchButton .material-icons {
     position: relative;
     right: 298px;
     color: #000;
@@ -245,7 +317,7 @@ input {
     transform: rotate(180deg) !important;
 }
 
-.searchBox:hover>.search-btn {
+.searchBox1:hover>.search-btn {
     display: block;
     height: 26px;
     border: none;
@@ -258,7 +330,7 @@ input {
 }
 
 
-.searchBox:hover>.searchInput {
+.searchBox1:hover>.searchInput1 {
     display: block;
     width: 335px;
     height: 43px;
@@ -266,7 +338,7 @@ input {
     float: left;
     padding: 5px 32px 6px;
     border-radius: 10px;
-    font-family: 'Gilroy-medium';
+    font-family: 'Gilroy';
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -289,30 +361,30 @@ input {
 }
 
 @media screen and (max-width: 620px) {
-    .searchBox:hover>.searchInput {
+    .searchBox1:hover>.searchInput1 {
         width: 228px !important;
         padding: 0 28px;
         left: -302% !important;
     }
 
-    .searchBox {
+    .searchBox1 {
         left: 37%
     }
 
-    .searchBox:hover>.search-btn {
+    .searchBox1:hover>.search-btn {
         right: 183px !important;
     }
 
-    .searchBox:hover>.searchButton {
+    .searchBox1:hover>.searchButton {
         /* right: 190px !important; */
         background: transparent !important;
     }
 
-    .searchBox:hover>.searchButton {
+    .searchBox1:hover>.searchButton {
         display: block;
     }
 
-    .searchBox:hover>.searchButton .material-icons {
+    .searchBox1:hover>.searchButton .material-icons {
         position: relative;
         right: -47px !important;
         color: #000;
@@ -321,18 +393,41 @@ input {
 
 }
 
-.add-user {
+.add-user1 {
     border: none;
     background: #000000;
     border-radius: 50%;
     width: 37px;
     height: 37px;
-    top: 6px;
+    top: 45px;
     position: absolute;
-    left: 72%;
+    left: 139%;
+    cursor: pointer;
 }
 
-.download-btn {
+.download-btn1 {
+    border: none;
+    background: #000000;
+    border-radius: 50%;
+    position: relative;
+    width: 37px;
+    height: 37px;
+    top: 45px;
+    left: 210%;
+    cursor: pointer;
+}
+.download-btn2 {
+    border: none;
+    background: #000000;
+    border-radius: 50%;
+    position: relative;
+    width: 37px;
+    height: 37px;
+    top: 120%;
+    left: 135%;
+    cursor: pointer;
+}
+.download-btn3{
     border: none;
     background: #000000;
     border-radius: 50%;
@@ -340,7 +435,8 @@ input {
     width: 37px;
     height: 37px;
     top: 6px;
-    left: 90%;
+    margin-left: 415px;
+    cursor: pointer;
 }
 
 ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
@@ -857,13 +953,13 @@ mat-sidenav-container {
 }
 
 @media (max-width: 991px) {
-    .refresh {
+    .refresh1 {
         top: 6px !important;
         left: 14px;
         width: 12px;
     }
 
-    .refreshbtn {
+    .refreshbtn1 {
         width: 36px;
         height: 36px;
         margin-top: 6px;
@@ -875,7 +971,7 @@ mat-sidenav-container {
     //     animation: pulse 1s infinite !important;
     //     transition: .3s !important;
     //   } */
-    .searchBox {
+    .searchBox1 {
         top: 6px;
     }
 
@@ -886,7 +982,7 @@ mat-sidenav-container {
         margin-left: -108px;
     }
 
-    .add-user {
+    .add-user1 {
         margin-left: -25px;
     }
 
@@ -895,7 +991,7 @@ mat-sidenav-container {
         margin-top: -43px;
     }
 
-    .icon .btnhover {
+    .icon .btnhover1 {
         margin-top: 7px;
         width: 25px;
         height: 28px;
@@ -932,6 +1028,7 @@ mat-sidenav {
     color: white;
     border-radius: 10px;
     text-align: center;
+    overflow: hidden;
 }
 
 .content {
@@ -940,11 +1037,13 @@ mat-sidenav {
     border-radius: 10px;
     padding: 10px;
     background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);
+    
 }
 
 #gridContainer .ag-paging-page-summary-panel {
     display: none !important;
 }
+
 
 .pagination {
     float: right !important;

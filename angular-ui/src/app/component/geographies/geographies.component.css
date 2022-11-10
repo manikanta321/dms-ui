@@ -79,7 +79,7 @@ mat-tab{
     display: none !important;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    background-color: black;
+    background-color: black; 
     color: white;
     border-radius: 25px;
 }

@@ -6,6 +6,7 @@
   border-left: 10px solid var (--blue);
   transition: 0.5s;
   z-index: 1;
+  
 
 }
 
@@ -120,11 +121,14 @@ box-shadow: 0 17px 0 #CED4DA;
   width: 12.5625rem;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
+  
 }
 
 mat-expansion-panel-header {
   margin-left: -8px;
 }
+
+
 
 /* mat-expansion-panel-header :hover{
   background:  linear-gradient(270deg, #CED4DA 35.14%, rgba(206, 212, 218, 0) 84.89%);

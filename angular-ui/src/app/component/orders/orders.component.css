@@ -144,6 +144,7 @@ mat-tab{
     padding: 0.75rem;
     border-radius: 99px;
     z-index: 2;
+
 }
 
 /* ::ng-deep.othersmastermenutab .mat-tab-header{
@@ -157,6 +158,7 @@ mat-tab{
     position: relative;
     flex-shrink: 0;
     width: 547px !important;
+
     border-radius: 25px;
     background: white;
     left: 35%;
@@ -173,7 +175,7 @@ mat-tab{
     display: none;
 }
 mat-tab-group{
-    height: 100vh;
+    height: 92vh;
 }
 .header-text{
     font-family: 'Gilroy-Bold';

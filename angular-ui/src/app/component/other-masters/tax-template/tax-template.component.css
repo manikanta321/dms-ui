@@ -1,7 +1,7 @@
 
 .d-flex
 {
-  margin-top: 35px;
+  margin-top: 15px;
   margin-left: 10px;
 } 
 
@@ -20,7 +20,7 @@
   float: right;
   position: absolute;
   right: -10px;
-  top: 5px;
+  top: 25px;
 }
 
 .searchBox:hover>.searchButton {
@@ -505,10 +505,6 @@
   border-radius: 10px 0 0 10px !important;
   padding-left: 10px;
   pointer-events: none;
-
-}
-.roless-placeholder.dropdown-placeholder .selected-placeholder {
-  color: #D23F00 !important;
 }
 .stts-placeholder.dropdown-placeholder .selected-placeholder {
   color: #000 !important;

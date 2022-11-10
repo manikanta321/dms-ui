@@ -55,8 +55,8 @@
 }
 .searchBox:hover>.searchInput {
   display:block;
-  width: 280px;
-  height: 50px;
+  width: 335px;
+  height: 43px;
   background: #FFFFFF;
   float: left;
   padding: 5px 32px 6px;
@@ -492,3 +492,10 @@ left: 37%
         margin-top: 65px;
         margin-left: 23px;
       } */
+
+      
+    .searchBox:hover >.searchButton .material-icons {
+      position: relative;    
+      right: 55px !important;
+      color:#000;
+    } 

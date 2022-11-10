@@ -24,3 +24,8 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #555; 
   }
+
+
+  .ag-body-horizontal-scroll-viewport {
+     overflow-x: hidden; 
+}

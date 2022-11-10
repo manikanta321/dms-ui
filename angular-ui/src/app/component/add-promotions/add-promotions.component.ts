@@ -1,12 +1,12 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { PromotionService } from 'src/app/services/promotion.service';
 import { AddItemsPromotionComponent } from '../promotions/add-items-promotion/add-items-promotion.component';
 import { RemovePromotionItemComponent } from './remove-promotion-item/remove-promotion-item.component';
-
+import { Subject } from 'rxjs';
 @Component({
   selector: 'app-add-promotions',
   templateUrl: './add-promotions.component.html',
@@ -58,6 +58,14 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   toppingList: any;
   ShowFilter = false;
   totalStepsCount: number | undefined;
+  startDate = new FormControl(new Date());
+  endDate = new FormControl(new Date());
+  minDateToFinish = new Subject<string>();
+  minDate;
+
+  dateChange(e) {
+    this.minDateToFinish.next(e.value.toString());
+  }
   @ViewChild('stepper') private myStepper: MatStepper | any;
 
   // CategoryName:any;
@@ -67,7 +75,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
-    public promotionTypes: PromotionService) { }
+    public promotionTypes: PromotionService) { 
+      this.minDateToFinish.subscribe(r => {
+        this.minDate = new Date(r);
+      })
+    }
   firstFormGroup: FormGroup = this._formBuilder.group({ firstCtrl: [''] });
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
 

@@ -318,8 +318,7 @@ mat-radio-group{
 }; */
 /* .dropdown-placeholder {
   position: relative;
-    top: -40px;
-    padding: 10px;
+    bottom: 25px;
 } */
 .catag-placeholder.dropdown-placeholder .selected-placeholder {
   color: #D23F00 !important;

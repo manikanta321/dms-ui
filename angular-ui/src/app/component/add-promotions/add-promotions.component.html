@@ -43,9 +43,9 @@
                             <div class=" mydatepicker">
                                 <mat-form-field class="form-field">
                                     <input matInput placeholder="Select the start date" style="padding-bottom:2px;"
-                                        [matDatepicker]="basicDatepicker">
-                                    <mat-datepicker-toggle matSuffix [for]="basicDatepicker"></mat-datepicker-toggle>
-                                    <mat-datepicker #basicDatepicker></mat-datepicker>
+                                        [matDatepicker]="picker1" [formControl]="startDate" (dateChange)="dateChange($event)">
+                                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker1></mat-datepicker>
                                 </mat-form-field>
                             </div>
                             <div class="promotiont">
@@ -53,9 +53,9 @@
                             </div>
                             <div class=" mydatepicker">
                                 <mat-form-field class="form-field">
-                                    <input matInput placeholder="Select the end date" [matDatepicker]="basicDatepicker">
-                                    <mat-datepicker-toggle matSuffix [for]="basicDatepicker"></mat-datepicker-toggle>
-                                    <mat-datepicker #basicDatepicker></mat-datepicker>
+                                    <input matInput placeholder="Select the end date" [matDatepicker]="picker2" [formControl]="endDate" [min]="minDate">
+                                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker2></mat-datepicker>
                                 </mat-form-field>
                             </div>
                             <div class="imagefield">
@@ -398,7 +398,8 @@
                                     <div class="col-6 inlineNav">
                                         <label>Items<span>*</span></label>
                                         <input class="itemSize" type="text" id="pValue" name="pValue" required
-                                            placeholder="1500">
+                                            placeholder="1500" >
+                                           
                                         <!-- <textarea id="w3review" name="w3review" rows="4"
                                             cols="50">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea> -->
 

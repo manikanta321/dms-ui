@@ -1,7 +1,7 @@
 <div class="comntainer">
   <div class="add-item">
     <div class="additem">
-      <mat-icon mat-button class="close-icon"  (click)="closeicon()">close</mat-icon>
+      <mat-icon mat-button class="close-icon" (click)="closeicon()">close</mat-icon>
     </div>
     <div class="head-t">
       <h3 class="additems-h font">Add Items: <b style="color: black;">Product</b></h3>
@@ -22,8 +22,8 @@
     </div>
     </div>
     </div> -->
-      <div class="drpd d-flex mt-2">
-        <div class="search-d mt-2">
+      <div class="drpd d-flex">
+        <div class="search-d">
           <form [formGroup]="myForm">
             <ng-multiselect-dropdown class="catty"
                 name="city"
@@ -32,24 +32,30 @@
                 [disabled]="disabled"
                 [settings]="dropdownSettings"
                 [data]="catgname"
-                (onSelect)="onItemSelect($event)"
-                (onDeSelect)="onItemDeSelect($event)"
-                (onDeSelectAll)="onItemDeSelectOrAll($event)"
-                (onSelectAll)="onItemSelectOrAll($event)">
+                (onSelect)="addItemSelect($event)"
+                (onDeSelect)="addItemDeSelect($event)"
+                (onDeSelectAll)="addItemDeSelectOrAll($event)"
+                (onSelectAll)="addItemSelectOrAll($event)">
             </ng-multiselect-dropdown>
+            <div class="dropdown-placeholder catag-placeholder">
+              <span *ngIf="myForm.get('city').value.length == 0"> Select Category </span>
+              <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Category selected </span>
+              <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Categories selected </span>
+
+            </div>
        </form>
       </div>
-      <div class="search-d mt-2">
+      <div class="search-d">
       <form>
         <ng-multiselect-dropdown class="addsubc" name="city" placeholder="sub-category" formControlName="city"
           [disabled]="disabled" [settings]="dropdownSettings1" [data]="sub_category" 
-          (onSelect)="onSubCategorySelect($event)" (onDeSelect)="onSubCategoryDeSelect($event)"
-          (onDeSelectAll)="onSubCategoryDSelectOrAll($event)"
-          (onSelectAll)="onSubCategorySelectOrAll($event)">
+          (onSelect)="addSubCategorySelect($event)" (onDeSelect)="addSubCategoryDeSelect($event)"
+          (onDeSelectAll)="addSubCategoryDSelectOrAll($event)"
+          (onSelectAll)="addSubCategorySelectOrAll($event)">
         </ng-multiselect-dropdown>
       </form>
     </div>
-    <div class="search-d mt-2">
+    <div class="search-d">
       <form [formGroup]="type">
         <ng-multiselect-dropdown class="typy"
             name="type"
@@ -58,17 +64,17 @@
             [disabled]="disabled"
             [settings]="dropdownSettings2"
             [data]="typeI"
-            (onSelect)="onTypeSelect($event)"
-            (onDeSelect)="onTypeDeSelect($event)">
+            (onSelect)="addTypeSelect($event)"
+            (onDeSelect)="addTypeDeSelect($event)">
         </ng-multiselect-dropdown>
       </form>
   </div>
-  <div class="search-d mt-2">
+  <div class="search-d">
     <form [formGroup]="products">
       <ng-multiselect-dropdown class="producty"
           name="product"
           [placeholder]="'Product'"
-          formControlName="product"
+          formControlName="products"
           [disabled]="disabled"
           [settings]="dropdownSettings3"
           [data]="Productarr"
@@ -80,10 +86,10 @@
       </form>
   </div>
   
-        <div class="ref"><img class="refresh" src="assets/img/Vector.png" alt="refresh"></div>
+        <div class="ref"><img class="refresh" (click)="addItemRefresh()" src="assets/img/Vector.png" alt="refresh"></div>
       </div>
       <!-- <div class="row"> -->
-      <div class="search-d mt-2">
+      <div class="search-prodId">
         <form>
           <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'product Identifier'" formControlName="city"
             [disabled]="disabled" [settings]="dropdownSettings5" [data]="toppingList" (click)="productidentify($event)"
@@ -137,12 +143,12 @@
   <!-- third -->
   <mat-step>
     <ng-template matStepLabel>Product Group</ng-template>
-    <app-product-short-code></app-product-short-code>
+    <app-product-group-add-item></app-product-group-add-item>
   </mat-step>
   <!--  -->
   <mat-step>
     <ng-template matStepLabel>Product Sub-Group</ng-template>
-    <app-product-short-code></app-product-short-code>
+    <app-product-sub-group></app-product-sub-group>
   </mat-step>
 </mat-stepper>
 </div>

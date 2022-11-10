@@ -163,6 +163,11 @@ border-radius: 10px;
 width: 207.5px;
 margin-right: 15px;
 }
+.search-prodId{
+  width: 207.5px;
+  margin-top: 56px;
+/* margin-right: 15px; */
+}
 .ref{
   border: 1px solid black;
   border-radius: 10px;
@@ -292,7 +297,7 @@ mat-radio-group{
 }
 
 ::ng-deep.add-item.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
-  width: 767px;
+  width: 1043px;
   margin-top: -51px;
 }
 
@@ -311,3 +316,11 @@ mat-radio-group{
 /* .mat-horizontal-stepper-header-container ng-tns-c418-7 {
   margin: top -51px;
 }; */
+/* .dropdown-placeholder {
+  position: relative;
+    top: -40px;
+    padding: 10px;
+} */
+.catag-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #D23F00 !important;
+}

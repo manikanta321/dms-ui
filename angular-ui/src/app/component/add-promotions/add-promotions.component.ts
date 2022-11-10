@@ -204,7 +204,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     });
   }
   addItems() {
-    this.dialog.open(AddItemsPromotionComponent,);
+    this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
     this.dialogRef.close();
     const dialogRef = this.dialog.open(AddItemsPromotionComponent);
 

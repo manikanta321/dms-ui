@@ -227,7 +227,12 @@ export class AddItemsPromotionComponent implements OnInit {
     subcatagData: any = [];
     subcatArray: any[] = [];
     typss: any;
+    allcatlist : any[] = [];
     closeIcon :boolean = false;
+    typesI: any = [];
+    ShowFilter = false;
+    limitSelection = false;
+    StatusFilter = false;
     @ViewChild('stepper') private myStepper: MatStepper | any;
   constructor(private _formBuilder: FormBuilder,
     public dialog: MatDialog,
@@ -246,7 +251,7 @@ export class AddItemsPromotionComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      // allowSearchFilter: this.StatusFilter
+      allowSearchFilter: this.StatusFilter
     };
     this.dropdownSettings1 = {
       singleSelection: false,
@@ -294,7 +299,7 @@ export class AddItemsPromotionComponent implements OnInit {
       type: [this.selectedItems]
     });
     this.products = this.fb.group({
-      product: [this.selectedItems]
+      products: [this.selectedItems]
     });
   }
   onGridReady(params: GridReadyEvent) {
@@ -410,11 +415,23 @@ export class AddItemsPromotionComponent implements OnInit {
   }
   oncatselect(){
     this.promotionTypes.GetCategories().subscribe((res) =>{
-      console.log('search data', this.catgname);
+      
         this.catgname = res.response.allOtherCats;
+        console.log('search data', this.catgname);
+        this.catgname.forEach(element => {
+          return this.allcatlist.push(element.catId);
+        })
+        console.log('allcatlist',this.allcatlist)
     })
+    // let localdata = res.response.allOtherCats;
+    // this.toppingList = localdata.map((data: { promotionTypesId: any; promotionTypesName: any; }) => {
+
+    //   return { promotionTypesId: data.promotionTypesId, promotionTypesName: data.promotionTypesName };
+
+    // });
+   
   }
-  onItemSelect(item: any) {
+  addItemSelect(item: any) {
     // this.selectedItem = item;
     this.catergory.push(item.catId);
     console.log("Catttyyyyy",this.catergory)
@@ -426,10 +443,10 @@ export class AddItemsPromotionComponent implements OnInit {
       catId: this.catergory
     }
     this.promotionTypes.GetSUbCAtsOfMultiCats(Subdata).subscribe((res) => {
-      let subcaty = res.response;
+      this.sub_category = res.response.allOtherSubCAts;
       console.log("response1", res)
-      console.log("responseeee", subcaty);
-      this.sub_category = subcaty.allOtherSubCAts;
+      // console.log("responseeee", subcaty);
+      // this.sub_category = subcaty.allOtherSubCAts;
       console.log("SubCategory", this.sub_category);
       this.topping1 = new FormControl(this.sub_category);
     });
@@ -441,11 +458,13 @@ export class AddItemsPromotionComponent implements OnInit {
       status: this.statusTypes,
       Search: this.searchText
     }
-    // this.materialList.getMaterialList(data).subscribe((res) => {
-    //   this.rowData5 = res.response;
-    // });
+    this.productListtable()
+    this.promotionTypes.GetProductList(data).subscribe((res) =>{
+      console.log('productlist is works', res);
+      this.rowData5 = res.response;
+    })
   }
-  onItemDeSelect(item: any) {
+  addItemDeSelect(item: any) {
     this.catergory.forEach((element, index) => {
       if (element == item.catId) this.catergory.splice(index, 1);
 
@@ -468,12 +487,13 @@ export class AddItemsPromotionComponent implements OnInit {
       // status: this.statusTypes,
       Search: this.searchText
     }
-    // this.promotionTypes.GetCategories().subscribe((res) => {
-    //   this.rowData5 = res.response;
-    // });
+    this.promotionTypes.GetProductList(data).subscribe((res) =>{
+      console.log('productlist is works', res);
+      this.rowData5 = res.response;
+    })
 
   }
-  onItemDeSelectOrAll(item: any) {
+  addItemDeSelectOrAll(item: any) {
     this.catergory = [];
     this.sub_category = [];
     // this.typeI = [];
@@ -485,12 +505,12 @@ export class AddItemsPromotionComponent implements OnInit {
       // status: this.statusTypes,
       Search: this.searchText
     }
-    // this.promotionTypes.GetCategories(data).subscribe((res) => {
-    //   this.rowData5 = res.response;
-    // });
+    this.promotionTypes.GetProductList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
   }
-  onItemSelectOrAll(item: any) {
-    // this.catergory = this.catArray;
+  addItemSelectOrAll(item: any) {
+    this.catergory = this.allcatlist
     let Subdataall = {
       catId: this.catergory
     }
@@ -513,11 +533,11 @@ export class AddItemsPromotionComponent implements OnInit {
       // status: this.statusTypes,
       Search: this.searchText
     }
-    // this.promotionTypes.GetCategories(data).subscribe((res) => {
-    //   this.rowData5 = res.response;
-    // });
+    this.promotionTypes.GetProductList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
   }
-  onTypeSelect(item: any) {
+  addTypeSelect(item: any) {
     // alert(this.typeI)
     this.typeI.push(item.typeId);
     const data = {
@@ -537,7 +557,7 @@ export class AddItemsPromotionComponent implements OnInit {
     });
     console.log(item);
   }
-  onTypeDeSelect(item: any) {
+  addTypeDeSelect(item: any) {
 
     this.typeI.forEach((element, index) => {
       if (element == item.typeId) this.catergory.splice(index, 1);
@@ -554,9 +574,10 @@ export class AddItemsPromotionComponent implements OnInit {
       status: this.statusTypes,
       Search: this.searchText
     }
-    // this.materialList.getMaterialList(data).subscribe((res) => {
-    //   this.rowData5 = res.response;
-    // });
+    this.promotionTypes.GetProductList(data).subscribe((res) =>{
+      console.log('productlist is works', res);
+      this.rowData5 = res.response;
+    })
 
   }
   productidentify(item : any){
@@ -685,13 +706,25 @@ export class AddItemsPromotionComponent implements OnInit {
 //       this.sub_category = res.response;
 //   })
 // }
-onSubCategorySelect(item: any) {
+addSubCategorySelect(item: any) {
   console.log(" item Types", item);
   // this.sub_category =[];
   this.sub_categorys.push(item.subCatId);
   console.log("typesss2",this.sub_category)
   this.itemId1 = item.subCatId;
   this.types = item.subCatName;
+  let data1 = {
+    subCatId: this.sub_categorys
+  }
+  this.sub_category = this.subcatArray;
+  console.log("Typeess Catttyy",this.subcatArray)
+  this.promotionTypes.GettypesOfMultiSubCats(data1).subscribe((res) => {
+    let typs = res.response;
+    console.log("types..res", typs);
+    this.typeI = typs;
+    console.log("Typess", this.typss);
+    // this.topping2 = new FormControl(this.typeI);
+  });
   this.subcatagData = item.map((data: { subCatId: any; subCatName: any; }) => {
     return { subCatId: data.subCatId, subCatName: data.subCatName };
   });
@@ -714,7 +747,7 @@ onSubCategorySelect(item: any) {
   }
   this.sub_category = this.subcatArray;
   console.log("Typeess Catttyy",this.subcatArray)
-  this.promotionTypes.GetSUbCAtsOfMultiCats(Type).subscribe((res) => {
+  this.promotionTypes.GettypesOfMultiSubCats(Type).subscribe((res) => {
     let typs = res.response;
     console.log("types..res", typs);
     this.typeI = typs;
@@ -729,11 +762,13 @@ onSubCategorySelect(item: any) {
     status: this.statusTypes,
     Search: this.searchText
   }
-  // this.materialList.getMaterialList(data).subscribe((res) => {
-  //   this.rowData5 = res.response;
-  // });
+  this.promotionTypes.GetProductList(data).subscribe((res) =>{
+    console.log('productlist is works', res);
+    this.rowData5 = res.response;
+  })
+  // this.addTypeSelect(item)
 }
-onSubCategoryDeSelect(item: any) {
+addSubCategoryDeSelect(item: any) {
 
   this.sub_category.forEach((element, index) => {
     if (element == item.subCatId) this.sub_category.splice(index, 1);
@@ -755,12 +790,13 @@ onSubCategoryDeSelect(item: any) {
     status: this.statusTypes,
     Search: this.searchText
   }
-  // this.materialList.getMaterialList(data).subscribe((res) => {
-  //   this.rowData5 = res.response;
-  // });
-
+  this.promotionTypes.GetProductList(data).subscribe((res) =>{
+    console.log('productlist is works', res);
+    this.rowData5 = res.response;
+  })
+  this.addTypeSelect(item);
 }
-onSubCategoryDSelectOrAll(item: any) {
+addSubCategoryDSelectOrAll(item: any) {
   // this.sub_category=[];
   this.type = [];
   const data = {
@@ -771,11 +807,12 @@ onSubCategoryDSelectOrAll(item: any) {
     status: this.statusTypes,
     Search: this.searchText
   }
-  // this.materialList.getMaterialList(data).subscribe((res) => {
-  //   this.rowData5 = res.response;
-  // });
+  this.promotionTypes.GetProductList(data).subscribe((res) =>{
+    console.log('productlist is works', res);
+    this.rowData5 = res.response;
+  })
 }
-onSubCategorySelectOrAll(item: any) {
+addSubCategorySelectOrAll(item: any) {
   console.log(" item Types", item);
   this.sub_category.push(item.subCatId);
   this.itemId1 = item.subCatId;
@@ -795,10 +832,22 @@ onSubCategorySelectOrAll(item: any) {
     // alert(this.subcatArray);
 
   })
-  let Type = {
-    subCatId: this.subcatArray
+  // let Type = {
+  //   subCatId: this.subcatArray
+  // }
+  // this.promotionTypes.GetSUbCAtsOfMultiCats(Type).subscribe((res) => {
+  //   let typs = res.response;
+  //   console.log("types..res", typs);
+  //   this.typeI = typs;
+  //   console.log("Typess", this.typss);
+  //   // this.topping2 = new FormControl(this.typeI);
+  // });
+  let data1 = {
+    subCatId: this.sub_categorys
   }
-  this.promotionTypes.GetSUbCAtsOfMultiCats(Type).subscribe((res) => {
+  this.sub_category = this.subcatArray;
+  console.log("Typeess Catttyy",this.subcatArray)
+  this.promotionTypes.GettypesOfMultiSubCats(data1).subscribe((res) => {
     let typs = res.response;
     console.log("types..res", typs);
     this.typeI = typs;
@@ -814,17 +863,66 @@ onSubCategorySelectOrAll(item: any) {
     status: this.statusTypes,
     Search: this.searchText
   }
-  // this.materialList.getMaterialList(data).subscribe((res) => {
-  //   this.rowData5 = res.response;
-  // });
+  this.promotionTypes.GetProductList(data).subscribe((res) =>{
+    console.log('productlist is works', res);
+    this.rowData5 = res.response;
+  })
 }
 closeicon(){
   // this.closeIcon
   this.dialogRef.close();
-  this.dialog.open(AddPromotionsComponent);
-  this.goForward(this.myStepper);
+//   this.dialog.open(AddPromotionsComponent);
+//   this.goForward(this.myStepper);
+// }
+// goForward(stepper: MatStepper) {
+//   stepper.next();
 }
-goForward(stepper: MatStepper) {
-  stepper.next();
+addItemRefresh(){
+  this.myForm = this.fb.group({
+    city: [this.selectedItems]
+  });
+  this.myForms = this.fb.group({
+    citys: [this.selectedItems]
+  });
+  this.subCategory = this.fb.group({
+    subCategory: [this.selectedItems]
+  });
+  this.type = this.fb.group({
+    type: [this.selectedItems]
+  });
+  this.Productarr = this.fb.group({
+    Productarr: [this.selectedItems]
+  });
+  this.catergory = [];
+  this.sub_category = [];
+  this.sub_categorys =[];
+  this.typeI = [];
+  // this.typesI = [];
+  this.Productarr = [];
+  this.toppingList = [];
+  const data = {
+    Cat: this.catergory,
+    Sub_Cat: this.sub_category,
+    type: this.typeI,
+    Products: this.Productarr,
+    city: this.toppingList,
+    Search: this.searchText
+  }
+  // this.promotionTypes.GetProductList(data).subscribe((res) =>{
+  //   console.log('productlist is works', res);
+  //   this.rowData5 = res.response;
+  // })
+}
+toogleShowFilter() {
+  this.ShowFilter = !this.ShowFilter;
+  this.dropdownSettings = Object.assign({}, this.dropdownSettings, { allowSearchFilter: this.ShowFilter });
+}
+
+handleLimitSelection() {
+  if (this.limitSelection) {
+    this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: 2 });
+  } else {
+    this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: null });
+  }
 }
 }

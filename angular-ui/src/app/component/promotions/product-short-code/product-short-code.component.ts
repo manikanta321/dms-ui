@@ -237,22 +237,22 @@ export class ProductShortCodeComponent implements OnInit {
       }
     }
   }
-  product(){
-    this.dialog.open( AddItemsPromotionComponent, {width:'1043px'});
-    this.dialogRef.close()
-  }
-  productShotCode(){
-    this.dialog.open(  ProductShortCodeComponent, {width:'1043px'});
-    this.dialogRef.close()
-  }
-  productGrp(){
-    this.dialog.open( ProductGroupAddItemComponent, {width:'1043px'});
-    this.dialogRef.close()
-  }
-  productSubG(){
-    this.dialog.open( ProductSubGroupComponent, {width:'1043px'});
-    this.dialogRef.close()
-  }
+  // product(){
+  //   this.dialog.open( AddItemsPromotionComponent, {width:'1043px'});
+  //   this.dialogRef.close()
+  // }
+  // productShotCode(){
+  //   this.dialog.open(  ProductShortCodeComponent, {width:'1043px'});
+  //   this.dialogRef.close()
+  // }
+  // productGrp(){
+  //   this.dialog.open( ProductGroupAddItemComponent, {width:'1043px'});
+  //   this.dialogRef.close()
+  // }
+  // productSubG(){
+  //   this.dialog.open( ProductSubGroupComponent, {width:'1043px'});
+  //   this.dialogRef.close()
+  // }
   GetProductShortCodeList(){
    const data = {
       Search : ''

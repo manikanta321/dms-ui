@@ -194,6 +194,9 @@ export class ProductSubGroupComponent implements OnInit {
     toppings1 = new FormControl('');
     selectedStatus: any = [];
     StatusFilter = false;
+    Productarr: any = [];
+    productID: any = [];
+    prodArray: any[] = [];
   constructor(private _formBuilder: FormBuilder,
     public dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
@@ -201,7 +204,16 @@ export class ProductSubGroupComponent implements OnInit {
 
   ngOnInit(): void {
     this.statusItems();
-    this.GetProductSubGroupList1()
+    this.productselt();
+    this.GetProductSubGroupList1();
+    this.dropdownSettings1 = {
+      singleSelection: false,
+      idField: 'productGroupId',
+      textField: 'productGroupName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+    }
   }
    statusItems() {
     const data = {
@@ -227,15 +239,6 @@ export class ProductSubGroupComponent implements OnInit {
       })
       console.log('statusArray', this.statusArray)
       // this.toppingList = res.response;
-      this.dropdownSettings1 = {
-        singleSelection: false,
-        idField: 'statusId',
-        textField: 'statusName',
-        selectAllText: 'Select All',
-        unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
-        allowSearchFilter: this.StatusFilter
-      };
       this.selectedStatus = [];
       this.toppings1 = new FormControl(this.toppingList1);
 
@@ -294,34 +297,39 @@ export class ProductSubGroupComponent implements OnInit {
       }
     }
   }
-  product(){
-    this.dialog.open( AddItemsPromotionComponent,{width:'1043px'});
-    this.dialogRef.close()
-  }
-  productShotCode(){
-    this.dialog.open(  ProductShortCodeComponent,{width:'1043px'});
-    this.dialogRef.close()
-  }
-  productGrp(){
-    this.dialog.open( ProductGroupAddItemComponent,{width:'1043px'});
-    this.dialogRef.close()
-  }
-  productSubG(){
-    this.dialog.open( ProductSubGroupComponent,{width:'1043px'});
-    this.dialogRef.close()
-  }
+  // product(){
+  //   this.dialog.open( AddItemsPromotionComponent,{width:'1043px'});
+  //   this.dialogRef.close()
+  // }
+  // productShotCode(){
+  //   this.dialog.open(  ProductShortCodeComponent,{width:'1043px'});
+  //   this.dialogRef.close()
+  // }
+  // productGrp(){
+  //   this.dialog.open( ProductGroupAddItemComponent,{width:'1043px'});
+  //   this.dialogRef.close()
+  // }
+  // productSubG(){
+  //   this.dialog.open( ProductSubGroupComponent,{width:'1043px'});
+  //   this.dialogRef.close()
+  // }
   onSelectAll(items: any) {
     console.log('onSelectAll', items);
   }
-  onStatusSelect(item: any) {
-    this.statusTypes.push(item.statusId);
-    const data = {
-      productgroup : []
-     }
-     this.promotionTypes.GetProductSubGroupList(data).subscribe((res) => {
-      this.rowData5 = res.response;
+  onProductSelect(item: any) {
+    // this.statusTypes.push(item.statusId);
+     this.promotionTypes.GetProductGroupList1().subscribe((res) => {
+      this.Productarr = res.response;
+      console.log('product lis', this.Productarr)
     });
 
+  }
+  productselt(){
+    this.promotionTypes.GetProductGroupList1().subscribe((res) => {
+      // this.rowData5 = res.response;
+      this.Productarr = res.response;
+      console.log('product lis', this.Productarr)
+    });
   }
   onStatusDeSelect(item: any) {
     this.statusTypes.forEach((element, index) => {
@@ -348,14 +356,16 @@ export class ProductSubGroupComponent implements OnInit {
     console.log('rolefilter', this.userTypes)
   }
   onItemSelectOrAllStatus(item: any) {
-    this.statusTypes = this.statusArray;
+    this.productID = this.prodArray;
+    // console.log("ProdData", this.ProdData);
     const data = {
-      productgroup : []
+      status: this.statusTypes,
+      Search: this.searchText,
+      productgroup : [],
     }
-    this.promotionTypes.GetProductSubGroupList(data).subscribe((res)  => {
+    this.promotionTypes.GetProductSubGroupList(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
-    console.log('rolefilter', this.statusTypes)
   }
   GetProductSubGroupList1(){
     const data = {

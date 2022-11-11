@@ -53,18 +53,25 @@ export class EditTaxTemplateComponent implements OnInit {
             let PercentageValue: FormControl = new FormControl('');
             let Formula: FormControl = new FormControl('');
             let DisplayOrder: FormControl = new FormControl('');
+            let TaxTemplateDetailsId: FormControl = new FormControl('');
+            // let TaxTemplateDetailsId:FormControl = new FormControl('');
+          // let  TaxTemplateDetailsId=detail.taxTemplateDetailsId;
 
+         
             this.letter=detail.displayOrder
             TaxCodeName.setValue(detail.taxCodeName);
             PercentageValue.setValue(detail.percentageValue);
             Formula.setValue(detail.formula);
             DisplayOrder.setValue(detail.displayOrder);
+            TaxTemplateDetailsId.setValue(detail.taxTemplateDetailsId);
 
+            
             this.getFormArray().push(new FormGroup({
-               TaxCodeName:TaxCodeName,
+        TaxCodeName:TaxCodeName,
         PercentageValue: PercentageValue,  
         Formula: Formula,
         DisplayOrder:DisplayOrder,
+        TaxTemplateDetailsId:TaxTemplateDetailsId
             }));
            }
 
@@ -144,6 +151,7 @@ setUpForm(cars: any[] ) {
       PercentageValue: '',  
       Formula:'',
       DisplayOrder:this.letter,
+
     })  
   }  
      
@@ -155,6 +163,10 @@ setUpForm(cars: any[] ) {
     if(i>0){
       this.TaxDetails().removeAt(i);  
     }
+    let data;
+    this.taxservise.deletetaxdetails(data).subscribe((res)=>{
+
+    })
   }  
      
   onSubmit() { 

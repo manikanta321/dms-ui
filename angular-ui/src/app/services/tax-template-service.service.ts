@@ -45,6 +45,10 @@ ediTax(data){
   return this.http.post<any>(this.taxurl+'OtherMasterApi/EditTaxTemplate', data);
 
 }
+deletetaxdetails(data){
+  return this.http.get<any>(this.taxurl+`OtherMasterApi/DeleteTaxTemplateDetails?TaxTemplateDetailsId=${data}`);
+
+}
 
 reactiveuser(taxid){
   return this.http.get<any>(`${this.taxurl}OtherMasterApi/TaxTemplateReactivate?TaxTemplateId=${taxid}`);

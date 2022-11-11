@@ -6,9 +6,30 @@
 }
 
 
+.dropdown-placeholder {
+  background: white;
+  color: #808080;
+  top: 0;
+  position: absolute;
+  height: 41px;
+  line-height: 41px;
+  left: 1px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  width: 80%;
+  border-radius: 10px 0 0 10px !important;
+  padding-left: 10px;
+  pointer-events: none;
+}
 
 .promo-placeholder.dropdown-placeholder .selected-placeholder {
   color: #D23F00 !important;
+}
+.product-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #44026C !important;
+}
+.geog-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #006466 !important;
 }
 .dropdown-form {
   position: relative;

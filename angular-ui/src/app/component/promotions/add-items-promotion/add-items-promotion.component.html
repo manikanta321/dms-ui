@@ -65,7 +65,11 @@
             [settings]="dropdownSettings2"
             [data]="typeI"
             (onSelect)="addTypeSelect($event)"
-            (onDeSelect)="addTypeDeSelect($event)">
+            (onDeSelect)="addTypeDeSelect($event)"
+            
+            (onDeSelectAll)="addTypeDeSelectOrAll($event)"
+            (onSelectAll)="addTypeSelectOrAll($event)"
+            >
         </ng-multiselect-dropdown>
       </form>
   </div>
@@ -92,8 +96,10 @@
       <div class="search-prodId">
         <form>
           <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'product Identifier'" formControlName="city"
-            [disabled]="disabled" [settings]="dropdownSettings5" [data]="toppingList" (click)="productidentify($event)"
-            (onDeSelect)="onStatusDeSelect($event)">
+            [disabled]="disabled" [settings]="dropdownSettings5" [data]="toppingList" 
+            (onDeSelect)="onproductIdentifierDeSelect($event)"
+            (onDeSelectAll)="onproductIdentifierDeSelectOrAll($event)"
+            (onSelectAll)="onproductIdentifierSelectOrAll($event)">
           </ng-multiselect-dropdown>
         </form>
       </div>

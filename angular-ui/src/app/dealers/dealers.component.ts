@@ -143,12 +143,9 @@ export class DealersComponent implements OnInit {
   rowData1 = [];
   employeeName: any;
   public defaultColDef: ColDef = {
-
     suppressSizeToFit: true,
-    width: 170,
     filter: 'agTextColumnFilter',
     flex: 1,
-    minWidth: 100,
     resizable: true,
     sortable: true,
   };

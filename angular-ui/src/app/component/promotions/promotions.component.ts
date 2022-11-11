@@ -5,7 +5,7 @@ import {AfterViewInit, ViewChild} from '@angular/core';
 
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import { Sort, MatSort, SortDirection } from '@angular/material/sort';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
 
@@ -25,6 +25,7 @@ import { DateRange } from '@uiowa/date-range-picker';
 import { AddItemsPromotionComponent } from './add-items-promotion/add-items-promotion.component';
 import { PromotionService } from 'src/app/services/promotion.service';
 import { PromotionListService } from 'src/app/services/promotion-list.service';
+import { UseractionComponent } from '../useraction/useraction.component';
 export interface PeriodicElement {
 
   name: any;
@@ -63,6 +64,10 @@ export class PromotionsComponent implements OnInit {
   myForm1:any= FormGroup;
 
   myForms:any= FormGroup;
+  myForms2:any= FormGroup;
+
+  myForms3:any= FormGroup;
+
   disabled = false;
   ShowFilter = false;
   StatusFilter = false;
@@ -91,7 +96,7 @@ export class PromotionsComponent implements OnInit {
   geographySelected:any[]=[];
   statusSelected:any[]=[];
   searchfilter:any='';
-
+  messages: any[] = [];
 
 
 
@@ -118,24 +123,31 @@ columnDefs: ColDef[] = [
   // { headerName: "User Id",
   //   field: 'employeeCode' , sort: 'desc'},
 
-  {   headerName: "Name",field: 'promotionName' },
+  {   headerName: "Name",field: 'promotionName' ,      tooltipField:"promotionName",
+},
 
-  {  headerName: "Type",field: 'promotionTypesName', },
+  {  headerName: "Type",field: 'promotionTypesName',      tooltipField:"promotionTypesName",
+},
 
   {  headerName: "# of Dealers",
-     field: '' },
+     field: '',      tooltipField:"",
+    },
 
   {   headerName: "Start Date",
     // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-    field: 'startDate',type: ['nonEditableColumn']},
+    field: 'startDate',      tooltipField:"startDate",
+    type: ['nonEditableColumn']},
 
     {   headerName: "End Date",
     // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-    field: 'endDate',type: ['nonEditableColumn']},
+    field: 'endDate',type: ['nonEditableColumn'],      tooltipField:"endDate",
+  },
     {  headerName: "# of orders",
-    field: 'emailId' }, 
+    field: '',      tooltipField:"",
+  }, 
     {  headerName: "Invoiced Value",
-    field: 'emailId' }, 
+    field: '',      tooltipField:"",
+  }, 
   { headerName: "Status",
      field: 'statusName', 
   cellEditor: 'agSelectCellEditor',
@@ -143,11 +155,14 @@ columnDefs: ColDef[] = [
     values: ['Active', 'Inactive', 'Invited', 'Locked',],
   }
 },
-{ headerName: "",
-  field: '',  filter: false, sortable: false,
-  cellRenderer: function clickNextRendererFunc(){
-    return '<i class="fa fa-ellipsis-v" aria-hidden="true" (click)="editfn()"></i>';
-}},
+{    
+  headerName: '',
+  colId: 'action',
+  cellRenderer: UseractionComponent,
+  editable: false,
+  maxWidth: 75  
+
+},
 // {
 //   headerName: "Avatar",
 //   field: "avatar",
@@ -162,7 +177,6 @@ rowData1=[]
 public defaultColDef: ColDef = {
 
   suppressSizeToFit: true,
-  width: 170,
   // set the default column width
   // make every column editable
   // editable: true,
@@ -170,19 +184,12 @@ public defaultColDef: ColDef = {
   filter: 'agTextColumnFilter',
   // enable floating filters by default
   // make columns resizable
-  flex: 1,
+  flex:1,
     minWidth: 100,
   resizable: true,
   sortable: true,
 };
-// public defaultColDef: ColDef = {
-//   sortable: true,
-//   resizable: true,
-//   width: 100,
-//   enableRowGroup: true,
-//   enablePivot: true,
-//   enableValue: true,
-// };
+
 public columnTypes: {
   [key: string]: ColDef;
 } = {
@@ -306,6 +313,7 @@ geoList:any=[]
   sidenav!: MatSidenav;
   roleName: any;
   statusname:any;
+  instancePopup:any = null;
 
   constructor(public dialog: MatDialog,
     private router: Router,
@@ -313,7 +321,9 @@ geoList:any=[]
     private user:UserService,
     private observer: BreakpointObserver,
     public promotionTypes : PromotionService,
-    private promotin:PromotionListService
+    private promotin:PromotionListService,
+    private fb: FormBuilder,
+
    ) {
       sort:[];
      }
@@ -336,6 +346,28 @@ geoList:any=[]
 
 
   ngOnInit() {
+    
+    const config: MatDialogConfig = {
+      width: '1100px',
+      height: '583px',
+     
+    };
+    this.dialog.open( AddItemsPromotionComponent, config);
+
+  
+    
+    this.myForm = this.fb.group({
+      city1: [this.selectedItems]
+    });
+    this.myForms = this.fb.group({
+      city2: [this.selectedItems]
+    });
+    this.myForms2 = this.fb.group({ 
+      city3: [this.selectedItems]
+    });
+    this.myForms3 = this.fb.group({ 
+      city4: [this.selectedItems]
+    });
   this.getusertabeldata();
   this.statusItems();
   this.promotionList();
@@ -344,6 +376,19 @@ geoList:any=[]
   this.maxDate.setDate(this.maxDate.getDate() + 20);
   }
   refresh(){
+
+    this.myForm = this.fb.group({
+      city1: [this.selectedItems]
+    });
+    this.myForms = this.fb.group({
+      city2: [this.selectedItems]
+    });
+    this.myForms2 = this.fb.group({ 
+      city3: [this.selectedItems]
+    });
+    this.myForms3 = this.fb.group({ 
+      city4: [this.selectedItems]
+    });
     this.toppings = new FormControl('');
     this.toppings1 = new FormControl(this.toppingList1);
     this.product=new FormControl(this.productLisst);
@@ -923,10 +968,46 @@ console.log('onItemSelect', item);
 }
 
 
+handleRowDataChanged(event) {
+  const index = this.messages.length - 1;
+  if (this.stayScrolledToEnd) {
+    //this.gridOptions.ensureIndexVisible(index, 'bottom');
+  }
+}
+
+handleScroll(event) {
+  if(this.instancePopup){
+    this.instancePopup.togglePopup();
+    this.instancePopup = null;
+  }
+  
+  const grid = document.getElementById('gridContainer');
+  if (grid) {
+    const gridBody = grid.querySelector('.ag-body-viewport') as any;
+    const scrollPos = gridBody.offsetHeight + event.top;
+    const scrollDiff = gridBody.scrollHeight - scrollPos;
+    //const api =  this.rowData5;
+    this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
+    this.paginationScrollCount = this.rowData5.length;
+  }
+}
 
 
-  onCellClicked( e: CellClickedEvent): void {
-    console.log('cellClicked', e);
+
+  onCellClicked( e): void {
+    let cellCLickedpromotion = '1'
+    localStorage.setItem('cellCLickedpromotion', cellCLickedpromotion)
+    if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
+      const cellRendererInstances = e.api.getCellRendererInstances({
+        rowNodes: [e.node],
+        columns: [e.column],
+      });
+      if (cellRendererInstances.length > 0) {
+        const instance = cellRendererInstances[0];
+        this.instancePopup = instance;
+        instance.togglePopup();
+      }
+    }
   }
 
 
@@ -966,17 +1047,17 @@ console.log('onItemSelect', item);
     this.dialog.open( AddPromotionsComponent, config);
 
   }
-  handleScroll(event) {
-    const grid = document.getElementById('gridContainer');
-    if (grid) {
-      const gridBody = grid.querySelector('.ag-body-viewport') as any;
-      const scrollPos = gridBody.offsetHeight + event.top;
-      const scrollDiff = gridBody.scrollHeight - scrollPos;
-      //const api =  this.rowData5;
-      this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
-      this.paginationScrollCount = this.rowData5.length;
-    }
-  }
+  // handleScroll(event) {
+  //   const grid = document.getElementById('gridContainer');
+  //   if (grid) {
+  //     const gridBody = grid.querySelector('.ag-body-viewport') as any;
+  //     const scrollPos = gridBody.offsetHeight + event.top;
+  //     const scrollDiff = gridBody.scrollHeight - scrollPos;
+  //     //const api =  this.rowData5;
+  //     this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
+  //     this.paginationScrollCount = this.rowData5.length;
+  //   }
+  // }
   changeDate() {
     this.dateRange4 = new DateRange(
       new Date(2018, 9, 1),

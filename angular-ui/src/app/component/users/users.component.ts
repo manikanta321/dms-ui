@@ -698,6 +698,9 @@ export class UsersComponent implements OnInit {
   // Example of consuming Grid Event
 
   onCellClicked(e): void {
+    let cellCLickedpromotion = '0'
+    localStorage.setItem('cellCLickedpromotion', cellCLickedpromotion)
+
     console.log('cellClicked', e);
     this.userId = e.data.userId;
     this.employeeName = e.data.userName;

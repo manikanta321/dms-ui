@@ -36,7 +36,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   buysets: boolean = false;
   addCountryButton: boolean = false;
   removelist: boolean = false;
+  base64textString= "";
   stateName: string[] = ['State 1', 'State 2',];
+  fileupload: any;
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
     //update the ui
@@ -57,6 +59,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   toppingList3: any = [];
   toppingList: any;
   ShowFilter = false;
+  imagepath :any;
+  selecetdFile: any;
+
+  imagePreview: any;
+  addImage : any;
   totalStepsCount: number | undefined;
   startDate = new FormControl(new Date());
   endDate = new FormControl(new Date());
@@ -88,6 +95,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.GetPromotionTypes(Event);
+    this.addimg();
     // this.toppingList3 = [
     //   { CategoryId: 1, CategoryName: 'Buy(A+B..) get(X+Y..)' },
     //   { CategoryId: 2, CategoryName: 'Buy(A/B..) get(C/D...)' },
@@ -216,8 +224,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     });
   }
   addItems() {
-    this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
-    this.dialogRef.close();
+    // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
+    
     const dialogRef = this.dialog.open(AddItemsPromotionComponent);
 
     dialogRef.afterClosed().subscribe((res) => {
@@ -234,13 +242,46 @@ localStorage.setItem('additem','1')
   //   console.log('check promotiontypes', res);
   // })
   // }
-  addimage(){
-    const data = {
-
-    }
-    this.promotionTypes.Image(data).subscribe((res) => {
-  console.log ('image')
-    })
+  // addimage(item : any){
+  //   console.log(item.target.files[0])
+  //   this.fileupload = item.target.files[0]
+  // //   const data = {
+  // // this.fileupload = item.target.files[0]
+  // //   }
+  //   this.promotionTypes.Image(this.fileupload).subscribe((res) => {
+  // console.log ('image', res)
+  
+  //   })
+  // }
+addimg(){
+  const data ={
+//  const addImage = this.base64textString
   }
+  this.promotionTypes.Image(data).subscribe((res) => {
+    console.log ('image', res)
+      })
+     
+}
+  public onFileChanged(event) {
+    this.selecetdFile = event.target.files[0];
+    if (this.selecetdFile.size <= 1 * 1024 * 1024) {
+    this.handleInputChange(this.selecetdFile); 
+    }
+    else {
+        alert('File size should not be greater than 1MB');
+          }
+  }
+  handleInputChange(files) {
+    this.imagePreview = files 
+    var reader = new FileReader();
+    reader.onloadend = this.handleReaderLoaded.bind(this);
+    reader.readAsDataURL(this.imagePreview);
+  }
+  handleReaderLoaded(e) {
+    let reader = e.target;
+    this.base64textString = reader.result.substr(reader.result.indexOf(',') + 1);
+    console.log(this.base64textString,"base64")
+  }
+  
 }
 

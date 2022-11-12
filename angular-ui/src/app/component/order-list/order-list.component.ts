@@ -22,6 +22,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { AddPromotionsComponent } from '../add-promotions/add-promotions.component';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { AddorderpromotionsComponent } from '../orders/addorderpromotions/addorderpromotions.component';
+import { OrderlistActionPopupComponent } from './orderlist-action-popup/orderlist-action-popup.component';
 // import { DateRange } from '@uiowa/date-range-picker';
 
 export interface PeriodicElement {
@@ -126,12 +127,19 @@ export class OrderListComponent implements OnInit {
         values: ['Closed','Approved',],
       }
     },
+    // {
+    //   headerName: "",
+    //   field: '', filter: false, sortable: false,
+    //   cellRenderer: function clickNextRendererFunc() {
+    //     return '<i class="fa fa-ellipsis-v" aria-hidden="true" (click)="editfn()"></i>';
+    //   }
+    // },
     {
-      headerName: "",
-      field: '', filter: false, sortable: false,
-      cellRenderer: function clickNextRendererFunc() {
-        return '<i class="fa fa-ellipsis-v" aria-hidden="true" (click)="editfn()"></i>';
-      }
+      headerName: '',
+      colId: 'action',
+      cellRenderer: OrderlistActionPopupComponent,
+      editable: false,
+      maxWidth: 75  
     },
     // {
     //   headerName: "Avatar",
@@ -231,6 +239,9 @@ export class OrderListComponent implements OnInit {
     columnsManager: true,
 
   };
+  UomId: any;
+  uomId :any;
+  uomName: any;
   clickNextRendererFunc() {
     alert('hlo');
   }
@@ -281,7 +292,7 @@ export class OrderListComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    this.uomId = localStorage.getItem('niId');
     // this.roleItems();
     this.statusItems();
     // this.maxDate.setDate(this.maxDate.getDate() + 20);
@@ -357,8 +368,33 @@ export class OrderListComponent implements OnInit {
     console.log('rolename', this.rowData)
   }
 
-  onCellClicked(e: CellClickedEvent): void {
+  onCellClicked( e): void {
     console.log('cellClicked', e);
+    this.UomId=e.data.uoMId;
+    this.uomName=e.data.uoMName;
+    // this.employeeName=e.data.userName;
+    // console.log('userID',this.userId);
+    localStorage.setItem('UomId',e.data.uoMId )
+    localStorage.setItem('UomName',e.data.uoMName)
+    
+    localStorage.setItem('niId',e.data.uoMId )
+    localStorage.setItem('Niname',e.data.uoMName)
+    // localStorage.setItem('employeeName',this.employeeName )
+    if (
+      e.event.target.dataset.action == 'toggle' &&
+      e.column.getColId() == 'action'
+    ) {
+      const cellRendererInstances = e.api.getCellRendererInstances({
+        rowNodes: [e.node],
+        columns: [e.column],
+      });
+      if (cellRendererInstances.length > 0) {
+        const instance = cellRendererInstances[0];
+        instance.togglePopup();
+
+      }
+    }
+
   }
 
 

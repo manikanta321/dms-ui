@@ -62,11 +62,13 @@
                                 <div class="image">
                                     <label>Image <span>*</span></label>
                                 </div>
-                                <input matInput placeholder="" #input class="form-control container placeh-align"
-                                    style=" width: 484px; height: 206px; background-color: white;position: relative;left: 475px; bottom:270px;">
-                                <img src="assets/img/add-image.png"
+                                <input matInput placeholder="" #input class="form-control container"
+                                    style="border: solid lightgrey 1px; width: 484px; height: 206px; 
+                                    border-radius: 15px; background-color: white;position: relative;left: 475px; bottom:270px;" 
+                                    type="file" (change)="onFileChanged($event)">
+                                <!-- <img src="assets/img/add-image.png" type="file"
                                     style="width: 48px;position: relative; left: 694px; bottom: 405px;;"
-                                    alt="left-arr-btn" (click)="addimage()">
+                                    alt="left-arr-btn" (click)="addimage($event)"> -->
                                 <h3
                                     style="font-family: 'Gilroy';position: relative; bottom: 386px; left: 242px; color: lightgrey;">
                                     Add Image</h3>
@@ -397,8 +399,11 @@
                                 <div class="row topItems">
                                     <div class="col-6 inlineNav">
                                         <label>Items<span>*</span></label>
-                                        <input class="itemSize" type="text" id="pValue" name="pValue" required
-                                            placeholder="1500" >
+                                        <!-- <input class="itemSize" type="text" id="pValue" name="pValue" required
+                                            placeholder="1500" > -->
+                                            <!-- <textarea name="" id="" cols="30" rows="10"> -->
+                                                <ul><li>Little hearts classic edition 100 gm (PO01254)</li></ul>
+                                            <!-- </textarea>x -->
                                            
                                         <!-- <textarea id="w3review" name="w3review" rows="4"
                                             cols="50">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea> -->

@@ -118,6 +118,8 @@ import { EditdealersComponent } from './component/users/userPopups/editdealers/e
 import { PopupPscGridTableComponent } from './component/promotions/product-group-add-item/popup-psc-grid-table/popup-psc-grid-table.component';
 import { PopupPsubgGridTableComponent } from './component/promotions/product-group-add-item/popup-psubg-grid-table/popup-psubg-grid-table.component';
 import { MaterialListActionComponent } from './component/material-list-action/material-list-action.component';
+import { OrderlistActionPopupComponent } from './component/order-list/orderlist-action-popup/orderlist-action-popup.component';
+import { OrderlistEditPopupComponent } from './component/order-list/orderlist-edit-popup/orderlist-edit-popup.component';
 
 @NgModule({
   declarations: [
@@ -205,6 +207,8 @@ import { MaterialListActionComponent } from './component/material-list-action/ma
           PopupPscGridTableComponent,
           PopupPsubgGridTableComponent,
           MaterialListActionComponent,
+          OrderlistActionPopupComponent,
+          OrderlistEditPopupComponent,
   ],
   imports: [
     FormsModule,

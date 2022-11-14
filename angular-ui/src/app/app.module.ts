@@ -120,6 +120,8 @@ import { PopupPsubgGridTableComponent } from './component/promotions/product-gro
 import { MaterialListActionComponent } from './component/material-list-action/material-list-action.component';
 import { OrderlistActionPopupComponent } from './component/order-list/orderlist-action-popup/orderlist-action-popup.component';
 import { OrderlistEditPopupComponent } from './component/order-list/orderlist-edit-popup/orderlist-edit-popup.component';
+import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { DateRangeSelectionComponent } from './component/promotions/date-range-selection/date-range-selection.component';
 
 @NgModule({
   declarations: [
@@ -209,6 +211,7 @@ import { OrderlistEditPopupComponent } from './component/order-list/orderlist-ed
           MaterialListActionComponent,
           OrderlistActionPopupComponent,
           OrderlistEditPopupComponent,
+          DateRangeSelectionComponent,
   ],
   imports: [
     FormsModule,
@@ -245,7 +248,8 @@ import { OrderlistEditPopupComponent } from './component/order-list/orderlist-ed
     MatStepperModule,
     MatChipsModule,
     DateRangePickerModule,
-    NgbModule 
+    NgbModule ,
+    NgbDatepickerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

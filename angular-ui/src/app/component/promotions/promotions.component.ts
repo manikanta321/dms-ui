@@ -26,6 +26,7 @@ import { AddItemsPromotionComponent } from './add-items-promotion/add-items-prom
 import { PromotionService } from 'src/app/services/promotion.service';
 import { PromotionListService } from 'src/app/services/promotion-list.service';
 import { UseractionComponent } from '../useraction/useraction.component';
+import { DateRangeSelectionComponent } from './date-range-selection/date-range-selection.component';
 export interface PeriodicElement {
 
   name: any;
@@ -103,22 +104,7 @@ export class PromotionsComponent implements OnInit {
   statusArray:any=[];
   stayScrolledToEnd = true;
   paginationScrollCount:any;
-  dateRange = new DateRange(new Date(2018, 1, 1), new Date(2018, 1, 31));
-  dateRange1 = DateRange.nextTwoWeeks();
-  dateRange2 = DateRange.nextMonth();
-  maxDate = new Date();
-  dateRange3 = new DateRange(new Date(2018, 9, 1), new Date(2018, 9, 9));
-  dateRange4 = new DateRange(new Date(2018, 9, 1), new Date(2018, 9, 9));
-  dateRange5 = new DateRange(new Date(2018, 9, 1), null);
-  dateRange6 = new DateRange(null, new Date(2018, 9, 1));
-  dateRange7 = new DateRange(new Date('sssss'), new Date('aaaa'));
-
-  min8 = new Date(2018, 0, 15);
-  date8 = new Date(2018, 0, 24);
-  date10: Date | null = new Date(2022, 7, 24);
-  date9 = new Date(2022, 6, 24, 22, 45, 42);
-  min9 = new Date(2022, 6, 23);
-  invalid = false;
+ 
 columnDefs: ColDef[] = [
   // { headerName: "User Id",
   //   field: 'employeeCode' , sort: 'desc'},
@@ -314,6 +300,10 @@ geoList:any=[]
   roleName: any;
   statusname:any;
   instancePopup:any = null;
+  dateRange = new DateRange();
+  maxDate = new Date();
+  dateRange1 =  DateRange.nextMonth();
+  // date: Date;
 
   constructor(public dialog: MatDialog,
     private router: Router,
@@ -346,7 +336,7 @@ geoList:any=[]
 
 
   ngOnInit() {
-     
+    this.maxDate.setDate(this.maxDate.getDate() + 20);     
     
     this.myForm = this.fb.group({
       city1: [this.selectedItems]
@@ -365,7 +355,7 @@ geoList:any=[]
   this.promotionList();
   this.productList();
   this.geogrophylist();
-  this.maxDate.setDate(this.maxDate.getDate() + 20);
+  // this.maxDate.setDate(this.maxDate.getDate() + 20);
   }
   refresh(){
 
@@ -1050,19 +1040,13 @@ handleScroll(event) {
   //     this.paginationScrollCount = this.rowData5.length;
   //   }
   // }
-  changeDate() {
-    this.dateRange4 = new DateRange(
-      new Date(2018, 9, 1),
-      new Date(2018, 9, 19)
-    );
-  }
 
-  changeDate2() {
-    this.date9 = new Date(2022, 7, 13, 12, 30, 42);
-  }
   testingAddItem(){
     
     this.dialog.open( AddItemsPromotionComponent);
+  }
+  datep(){
+    this.dialog.open( DateRangeSelectionComponent);
   }
 }
 

@@ -265,6 +265,7 @@ export class OrderListComponent implements OnInit {
   sidenav!: MatSidenav;
   roleName: any;
   statusname: any;
+  instancePopup:any = null;
   constructor(public dialog: MatDialog,
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
@@ -552,6 +553,10 @@ export class OrderListComponent implements OnInit {
 
   }
   handleScroll(event) {
+    if(this.instancePopup){
+      this.instancePopup.togglePopup();
+      this.instancePopup = null;
+    }
     const grid = document.getElementById('gridContainer');
     if (grid) {
       const gridBody = grid.querySelector('.ag-body-viewport') as any;

@@ -376,6 +376,15 @@ mat-form-field {
   margin-top: -1px;
 }
 
+::ng-deep.mat-slide .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: white;
+  border: 2px solid;
+}
+
+::ng-deep.mat-slide .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: #212529;
+}
+
 .city {
   margin-left: 608px;
   margin-top: -30px;
@@ -700,7 +709,7 @@ li {
   height: 35px;
   background-color: white;
   margin-top: -9px;
-  margin-left: -1px;
+  /* margin-left: -1px; */
 }
 
 ::ng-deep.sss .mat-form-field-label {
@@ -717,41 +726,45 @@ li {
 }
 
 .brand-name {
-  width: 351px;
+  width: 344px;
   height: 31px;
   background-color: white;
   margin-top: 7px;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
+  padding-left: 8px;
 }
 
 .global-codeplaceholder {
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  width: 334px;
+  width: 324px;
   height: 31px;
   background-color: white;
   margin-top: -35px;
   margin-left: 393px;
+  padding-left: 8px;
 }
 
 .sku-placeholder {
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  width: 351px;
+  width: 344px;
   height: 31px;
   background-color: white;
   margin-top: 7px;
+  padding-left: 8px;
 }
 
 .shortcode-placeholder {
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  width: 334px;
+  width: 324px;
+  padding-left: 8px;
   height: 31px;
   background-color: white;
   margin-top: -35px;
@@ -762,22 +775,24 @@ li {
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  width: 334px;
+  width: 324px;
   height: 31px;
   background-color: white;
   margin-top: -60px;
   margin-left: 393px;
+  padding-left: 8px;
 }
 
 .link-placeh {
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  width: 334px;
+  width: 324px;
   height: 31px;
   background-color: white;
   margin-top: -61px;
   margin-left: 393px;
+  padding-left: 8px;
 }
 
 ::ng-deep.productg-align .ng-select-container {
@@ -825,7 +840,7 @@ li {
   width: 146px;
   height: 129px;
   background-color: white;
-  margin-top: -132px;
+  margin-top: -148px;
   margin-left: 314px;
 }
 
@@ -834,7 +849,7 @@ li {
   border-radius: 10px;
   width: 190px;
   padding-left: 10px;
-  height: 34px;
+  height: 32px;
   background-color: white;
   margin-top: 4px;
   margin-left: 503px
@@ -934,4 +949,9 @@ li {
   background-color: white;
   margin-top: -33px;
   margin-left: 828px;
+}
+::ng-deep.arrowHide .ng-arrow-wrapper {
+  width: 25px;
+  padding-right: 5px;
+  display: none;
 }

@@ -346,15 +346,7 @@ geoList:any=[]
 
 
   ngOnInit() {
-    
-    const config: MatDialogConfig = {
-      width: '1100px',
-      height: '583px',
      
-    };
-    this.dialog.open( AddItemsPromotionComponent, config);
-
-  
     
     this.myForm = this.fb.group({
       city1: [this.selectedItems]

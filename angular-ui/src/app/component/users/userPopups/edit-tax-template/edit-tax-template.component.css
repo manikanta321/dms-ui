@@ -4,6 +4,10 @@
     overflow-x: hidden;
     width: 100%;
   }
+  .arrow2
+  {
+    margin-top: 14px;
+  }
   ::-webkit-scrollbar {
     width: 8px;
   }

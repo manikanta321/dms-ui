@@ -122,7 +122,11 @@ import { OrderlistActionPopupComponent } from './component/order-list/orderlist-
 import { OrderlistEditPopupComponent } from './component/order-list/orderlist-edit-popup/orderlist-edit-popup.component';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { DateRangeSelectionComponent } from './component/promotions/date-range-selection/date-range-selection.component';
-
+import { SalesListComponent } from './component/sales-list/sales-list.component';
+import { SalesInventoryComponent } from './component/sales-list/sales-inventory/sales-inventory.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { SalesUploadsComponent } from './component/sales-list/sales-uploads/sales-uploads.component';
+import { SalesReportsComponent } from './component/sales-list/sales-reports/sales-reports.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -212,6 +216,10 @@ import { DateRangeSelectionComponent } from './component/promotions/date-range-s
           OrderlistActionPopupComponent,
           OrderlistEditPopupComponent,
           DateRangeSelectionComponent,
+          SalesListComponent,
+          SalesInventoryComponent,
+          SalesUploadsComponent,
+          SalesReportsComponent,
   ],
   imports: [
     FormsModule,
@@ -249,7 +257,8 @@ import { DateRangeSelectionComponent } from './component/promotions/date-range-s
     MatChipsModule,
     DateRangePickerModule,
     NgbModule ,
-    NgbDatepickerModule
+    NgbDatepickerModule,
+    MatAutocompleteModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

@@ -1,0 +1,100 @@
+
+mat-sidenav {
+    width: 5rem;
+    border-right: none;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+}
+mat-sidenav-content{
+    /* height: calc(100vh - 98px); */
+    height: 100vh;
+    border-radius: 10px;
+    padding: 10px;
+    background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);
+}
+mat-sidenav-container {
+    height: calc(100vh - 65px);
+    /* height: 100vh; */
+}
+mat-tab{
+    display: flex;
+    position: relative;
+    background: grey;
+    box-shadow: #1292EE;
+    padding: 0.75rem;
+    border-radius: 99px;
+    z-index: 2;
+}
+
+/* ::ng-deep.othersmastermenutab .mat-tab-header{ */
+    /* width: 481px !important; */
+    /* left: 28%; */
+/* } */
+
+::ng-deep .sales-label .mat-tab-header{
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    width: 564px !important;
+    height: 33px;
+    border-radius: 25px;
+    background: white;
+    left: 35%;
+    font-size: 15px;
+    
+
+}::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+    display: none !important;
+}
+::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
+    background: black;
+    color: white;
+    border-radius: 25px;
+}
+::ng-deep.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    display: none;
+}
+mat-tab-group{
+    height: 100vh;
+}
+.sales-header-text{
+    font-family:  'Gilroy';
+    font-size: 30px;
+    line-height: 41px;
+    display: flex;
+    align-items: center;
+    height: 0px;
+    color: #000000;
+    position: relative;
+    top: 6%;
+   font-weight: 600;
+    left: 20px; 
+  }
+
+  .print-img{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 2%;
+    right: 20px;
+  }
+::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+    display: none !important;
+}
+::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
+    background: black;
+    color: white;
+    border-radius: 25px;
+}
+
+ /* .geo-label .mat-tab-labels:nth-child(1) { */
+    /* width: 50% !important; */
+  /* } */
+
+   ::ng-deep .sales-label .mat-tab-label{ 
+      height: 31px !important;  
+     min-width: 187px !important; 
+    /* min-width: 152px; */
+   } 

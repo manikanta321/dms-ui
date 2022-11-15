@@ -11,6 +11,7 @@ import { OrdersComponent } from './component/orders/orders.component';
 import { OtherMastersComponent } from './component/other-masters/other-masters.component';
 import { TaxTemplateComponent } from './component/other-masters/tax-template/tax-template.component';
 import { UnitMeasureComponent } from './component/other-masters/unit-measure/unit-measure.component';
+import { SalesListComponent } from './component/sales-list/sales-list.component';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { UsersComponent } from './component/users/users.component';
 import { DashbordComponent } from './shared-component/dashbord/dashbord.component';
@@ -33,6 +34,8 @@ const routes: Routes = [
 { path: 'dashbord/oreders', pathMatch: 'full',component: OrdersComponent  }
 ,
   { path: 'dashbord/geographies', pathMatch: 'full',component: GeographiesComponent  },
+  { path: 'dashbord/saleslist', pathMatch:'full', component: SalesListComponent}
+  
   
 ];
 

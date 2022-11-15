@@ -21,7 +21,7 @@ export class EditTaxTemplateComponent implements OnInit {
    LoginId:any;
    taxname:any;
    enteredname:any;
-   letter:any='a';
+   letter:any='A';
 
    taxId:any;
    taxItemName:any='';

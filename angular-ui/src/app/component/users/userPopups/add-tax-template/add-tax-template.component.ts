@@ -21,7 +21,7 @@ export class AddTaxTemplateComponent implements OnInit {
    LoginId:any;
    taxname:any;
    enteredname:any;
-   letter:any='a';
+   letter:any='A';
 
   constructor(private dialogRef: MatDialogRef<any>,
     private fb:FormBuilder,

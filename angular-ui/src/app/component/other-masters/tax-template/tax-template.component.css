@@ -5,6 +5,25 @@
   margin-left: 10px;
 } 
 
+
+.material-icons
+{
+  margin-top: 2px;
+}
+
+
+.searchInput
+{
+  font-family: 'Gilroy';
+}
+/* 
+.searchInput[type="text"]::placeholder
+{   
+    text-align: center; 
+
+  
+} */
+
 #gridContainer
 {
   margin-top: 5px;

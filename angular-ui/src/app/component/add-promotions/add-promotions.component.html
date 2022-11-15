@@ -7,12 +7,12 @@
             <div class="head-t">
                 <h3 class="addU font">Add Promotions</h3>
                 <br>
-                <img src="assets/img/arrow-left-disable.png"   *ngIf="!basicInfo" class="addMore-icon" style="width: 32px;margin-left: 760px;"
-                alt="left-arr-btn">
-                <img src="assets/img/arrow-left-circle-fill.svg"   *ngIf="basicInfo" class="addMore-icons" style="width: 24px;margin-left: 760px;"
-                alt="left-arr-btn">
-            <img src="assets/img/arrow-right-circle-fill.svg"  (click)="disableBackbutton()"  class="addMore-icon" style="width: 24px; margin-left: 12px;"
-                alt="right-arr-btn">
+                <img src="assets/img/arrow-left-disable.png" *ngIf="!basicInfo" class="addMore-icon"
+                    style="width: 32px;margin-left: 760px;" alt="left-arr-btn">
+                <img src="assets/img/arrow-left-circle-fill.svg" *ngIf="basicInfo" class="addMore-icons"
+                    style="width: 24px;margin-left: 760px;" alt="left-arr-btn">
+                <img src="assets/img/arrow-right-circle-fill.svg" (click)="disableBackbutton()" class="addMore-icon"
+                    style="width: 24px; margin-left: 12px;" alt="right-arr-btn">
                 <mat-stepper labelPosition="bottom" #stepper>
                     <mat-step [stepControl]="firstFormGroup">
                         <form [formGroup]="firstFormGroup">
@@ -26,28 +26,36 @@
                             <div class="materialname">
                                 <label>Promotion Name <span>*</span></label>
                             </div>
-                            <input matInput placeholder="Promotion Name" #input class="form-control container placeh-align"
+                            <input matInput placeholder="Promotion Name" #input
+                                class="form-control container placeh-align"
                                 style="width: 949px;
                            height: 43px;background-color: white;margin-top: 1px; margin-left: -1px;font-family: 'Gilroy';padding-left: 10px;padding-left: 10px;">
                             <div class="promotiont">
-                                <label>Promotion Type <span>*</span></label> 
+                                <label>Promotion Type <span>*</span></label>
                             </div>
                             <div class="promotiontypedrp promotiondrpalign">
                                 <ng-select [items]="toppingList3" placeholder="Select the promotion type"
-                                    bindLabel="promotionTypesName" bindValue="promotionTypesId" (change)="GetPromotionTypes($event)">
+                                    bindLabel="promotionTypesName" bindValue="promotionTypesId"
+                                    (change)="GetPromotionTypes($event)">
                                 </ng-select>
                             </div>
                             <div class="promotiont">
                                 <label>Start Date <span>*</span></label>
                             </div>
-                            <div class=" mydatepicker">
+                            <div class=" mydatepicker ">
                                 <mat-form-field class="form-field placeh-align">
                                     <input matInput placeholder="Select the start date" style="padding-bottom:2px;"
-                                        [matDatepicker]="picker1" [formControl]="startDate" (dateChange)="dateChange($event)">
-                                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                        [matDatepicker]="picker1" [formControl]="startDate"
+                                        (dateChange)="dateChange($event)">
+                                    <mat-datepicker-toggle matSuffix [for]="picker1">
+                                        <br>
+                                        <!-- <mat-icon matDatepickerToggleIcon>
+                                            <img src="assets/img/calendar.png" class="calendarToggle">
+                                        </mat-icon> -->
+                                </mat-datepicker-toggle>
                                     <mat-datepicker #picker1></mat-datepicker>
                                 </mat-form-field>
-                            </div>
+                            </div>  
                             <div class="promotiont">
                                 <label>End Date <span>*</span></label>
                             </div>
@@ -136,21 +144,41 @@
                                     <div class="col-5">
                                         <label>Items<span>*</span></label>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-1 qtyalign">
                                         <label>Qty<span>*</span></label>
                                     </div>
                                     <div class="col-5">
                                         <label>Items<span>*</span></label>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-1 qtyalign">
                                         <label>Qty<span>*</span></label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-4">
-                                        <input class="itemspone" type="text" id="pValue" name="pValue" required
-                                            placeholder="Items in promotion">
-                                            <img src="assets/img/cancel.png" class="cancel-image" alt="plus-btn">
+                                        <form class="itemsList">
+                                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                            <label for="vehicle1"> Little hearts classic edition 100gm
+                                                (PO01254)</label><br>
+                                            <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                            <label for="vehicle2"> Little hearts classic edition 100gm
+                                                (PO01254)</label><br>
+                                            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                            <label for="vehicle3"> Little hearts classic edition 100gm (PO01254)</label>
+                                            <br>
+                                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                            <label for="vehicle1"> Little hearts classic edition 100gm
+                                                (PO01254)</label><br>
+                                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                            <label for="vehicle1"> Little hearts classic edition 100gm
+                                                (PO01254)</label><br>
+
+                                            <br>
+                                            <!-- <img src="assets/img/cancel.png" class="cancel-image" alt="plus-btn">  -->
+                                        </form>
+                                        <!-- <input class="itemspone" type="text" id="pValue" name="pValue" required
+                                            placeholder="Items in promotion">-->
+
                                     </div>
                                     <div class="col-2">
                                         <input class="qty-items" type="text" id="pValue" name="pValue" required
@@ -162,7 +190,7 @@
                                     <div class="col-4">
                                         <input class="itemsptwo" type="text" id="pValue" name="pValue" required
                                             placeholder="Items in promotion">
-                                            <img src="assets/img/cancel.png" class="cancel-image" alt="plus-btn">
+                                        <img src="assets/img/cancel.png" class="cancel-image" alt="plus-btn">
                                     </div>
                                     <div class="col-2">
                                         <input class="qty-items-text" type="text" id="pValue" name="pValue" required
@@ -221,7 +249,7 @@
                                     <div class="col-5">
                                         <label>Items<span>*</span></label>
                                     </div>
-                                    <div class="col-1">
+                                    <div class="col-1 ">
                                         <label>Qty<span>*</span></label>
                                     </div>
                                     <div class="col-5">
@@ -293,7 +321,7 @@
                                         <img src="assets/img/plus.png" class="plus-imageone" alt="plus-btn">
                                     </div>
                                     <div class="col-5">
-                                        <p ><b>Get </b>group 1</p>
+                                        <p><b>Get </b>group 1</p>
                                     </div>
                                     <div class="col-1">
                                         <img src="assets/img/plus.png" class="plus-imageone" alt="plus-btn">
@@ -345,7 +373,7 @@
                                     <div class="col-4">
                                         <input class="itemspone" type="text" id="pValue" name="pValue" required
                                             placeholder="Items in promotion">
-                                            <img src="assets/img/cancel.png" class="cancel-image" alt="plus-btn">
+                                        <img src="assets/img/cancel.png" class="cancel-image" alt="plus-btn">
                                     </div>
                                     <div class="col-2">
                                         <input class="qty-items" type="text" id="pValue" name="pValue" required
@@ -357,7 +385,7 @@
                                     <div class="col-4">
                                         <input class="itemsptwo" type="text" id="pValue" name="pValue" required
                                             placeholder="Items in promotion">
-                                            <img src="assets/img/cancel.png" class="cancel-image" alt="plus-btn">
+                                        <img src="assets/img/cancel.png" class="cancel-image" alt="plus-btn">
                                     </div>
                                     <div class="col-2">
                                         <input class="qty-items-text" type="text" id="pValue" name="pValue" required
@@ -383,7 +411,7 @@
                                             </ng-multiselect-dropdown>
                                         </div>
                                     </div>
-                                      </div>
+                                </div>
                             </div>
                             <!-- Volume Discount Section -->
                             <div *ngIf="volumedc">
@@ -399,37 +427,33 @@
                                 <div class="row topItems">
                                     <div class="col-6 inlineNav">
                                         <label>Items<span>*</span></label>
-                                        <!-- <input class="itemSize" type="text" id="pValue" name="pValue" required
-                                            placeholder="1500" > -->
-                                            <!-- <textarea name="" id="" cols="30" rows="10"> -->
-                                                <ul><li>Little hearts classic edition 100 gm (PO01254)</li></ul>
-                                            <!-- </textarea>x -->
+                                        <input class="itemSize" type="text" id="pValue" name="pValue" required
+                                            placeholder="1500" >
                                            
                                         <!-- <textarea id="w3review" name="w3review" rows="4"
                                             cols="50">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea> -->
 
                                     </div>
                                     <div class="col-5 navItems">
-                                        <div class="row"
-                                            *ngFor="let packingCharge of packingCharges; let i = index;">
+                                        <div class="row" *ngFor="let packingCharge of packingCharges; let i = index;">
                                             <div class="col-3">
                                                 <label>Qty From</label>
-                                                <input class="qtyOfItems" type="text" id="pValue" name="pValue"
-                                                    required placeholder="1500" [(ngModel)]="packingCharge.address"
+                                                <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
+                                                    placeholder="1500" [(ngModel)]="packingCharge.address"
                                                     name="address_{{i}}">
 
                                             </div>
                                             <div class="col-3">
                                                 <label>Qty To</label>
-                                                <input class="qtyOfItems" type="text" id="pValue" name="pValue"
-                                                    required placeholder="1500" [(ngModel)]="packingCharge.eValue"
+                                                <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
+                                                    placeholder="1500" [(ngModel)]="packingCharge.eValue"
                                                     name="street_{{i}}">
 
                                             </div>
                                             <div class="col-3">
                                                 <label>Discount</label>
-                                                <input class="qtyOfItems" type="text" id="pValue" name="pValue"
-                                                    required placeholder="1500" [(ngModel)]="packingCharge.pValue"
+                                                <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
+                                                    placeholder="1500" [(ngModel)]="packingCharge.pValue"
                                                     name="city_{{i}}">
 
                                             </div>
@@ -448,75 +472,74 @@
                                     <div class="col-12">
                                         <label>Minimum Order Quantity<span>*</span></label>
                                         <br>
-                                        <input class="minimumorderquantity" type="text" id="pValue" name="pValue" required
-                                            placeholder="Enter value" (click)="addItems()">
+                                        <input class="minimumorderquantity" type="text" id="pValue" name="pValue"
+                                            required placeholder="Enter value" (click)="addItems()">
                                     </div>
                                 </div>
                             </div>
-<!-- price -->
-<div *ngIf="pricedc">
-    <div class="row">
-        <div class="col-12">
-            <label>Product Level<span>*</span></label>
-            <br>
-            <input class="productSize" type="text" id="pValue" name="pValue" required
-                placeholder="Item Information" (click)="addItems()">
-        </div>
-    </div>
+                            <!-- price -->
+                            <div *ngIf="pricedc">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <label>Product Level<span>*</span></label>
+                                        <br>
+                                        <input class="productSize" type="text" id="pValue" name="pValue" required
+                                            placeholder="Item Information" (click)="addItems()">
+                                    </div>
+                                </div>
 
-    <div class="row topItems">
-        <div class="col-6 inlineNav">
-            <label>Items<span>*</span></label>
-            <input class="itemSize" type="text" id="pValue" name="pValue" required
-                placeholder="1500">
-            <!-- <textarea id="w3review" name="w3review" rows="4"
+                                <div class="row topItems">
+                                    <div class="col-6 inlineNav">
+                                        <label>Items<span>*</span></label>
+                                        <input class="itemSize" type="text" id="pValue" name="pValue" required
+                                            placeholder="1500">
+                                        <!-- <textarea id="w3review" name="w3review" rows="4"
                 cols="50">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea> -->
 
-        </div>
-        <div class="col-5 navItems">
-            <div class="row"
-                *ngFor="let packingCharge of packingCharges; let i = index;">
-                <div class="col-3">
-                    <label>Qty From</label>
-                    <input class="qtyOfItems" type="text" id="pValue" name="pValue"
-                        required placeholder="1500" [(ngModel)]="packingCharge.address"
-                        name="address_{{i}}">
+                                    </div>
+                                    <div class="col-5 navItems">
+                                        <div class="row" *ngFor="let packingCharge of packingCharges; let i = index;">
+                                            <div class="col-3">
+                                                <label>Qty From</label>
+                                                <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
+                                                    placeholder="1500" [(ngModel)]="packingCharge.address"
+                                                    name="address_{{i}}">
 
-                </div>
-                <div class="col-3">
-                    <label>Qty To</label>
-                    <input class="qtyOfItems" type="text" id="pValue" name="pValue"
-                        required placeholder="1500" [(ngModel)]="packingCharge.eValue"
-                        name="street_{{i}}">
+                                            </div>
+                                            <div class="col-3">
+                                                <label>Qty To</label>
+                                                <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
+                                                    placeholder="1500" [(ngModel)]="packingCharge.eValue"
+                                                    name="street_{{i}}">
 
-                </div>
-                <div class="col-3">
-                    <label>Price</label>
-                    <input class="qtyOfItems" type="text" id="pValue" name="pValue"
-                        required placeholder="1500" [(ngModel)]="packingCharge.pValue"
-                        name="city_{{i}}">
+                                            </div>
+                                            <div class="col-3">
+                                                <label>Price</label>
+                                                <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
+                                                    placeholder="1500" [(ngModel)]="packingCharge.pValue"
+                                                    name="city_{{i}}">
 
-                </div>
-                <div class="col-1">
-                    <mat-icon class="removeCircle" *ngIf="i>=0" (click)=removesub(i)>
-                        remove_circle</mat-icon>
-                </div>
-            </div>
-        </div>
-        <div class="col-1 contentinline">
-            <mat-icon class="" (click)=addFields()>add_circle</mat-icon>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-12">
-            <label>Minimum Order Quantity<span>*</span></label>
-            <br>
-            <input class="minimumorderquantity" type="text" id="pValue" name="pValue" required
-                placeholder="Enter value" (click)="addItems()">
-        </div>
-    </div>
-</div>
+                                            </div>
+                                            <div class="col-1">
+                                                <mat-icon class="removeCircle" *ngIf="i>=0" (click)=removesub(i)>
+                                                    remove_circle</mat-icon>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 contentinline">
+                                        <mat-icon class="" (click)=addFields()>add_circle</mat-icon>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <label>Minimum Order Quantity<span>*</span></label>
+                                        <br>
+                                        <input class="minimumorderquantity" type="text" id="pValue" name="pValue"
+                                            required placeholder="Enter value" (click)="addItems()">
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </mat-step>
 
@@ -542,10 +565,10 @@
                                         <p class="col-10" style="font-family: 'Gilroy'">Country</p>
                                         <p class="col-2"></p>
                                     </div>
-                                    <mat-card class="mat-card-content ">
+                                    <mat-card class="matcardAlign ">
                                         <mat-card-content style="height:188px; overflow-y: scroll;">
                                             <div class=" d-flex " *ngFor="let catg of countryname">
-                                                <p class="col-10 catg" (click)="onClick(catg)">{{catg}}</p>
+                                                <p class="col-10 countryName" (click)="onClick(catg)">{{catg}}</p>
                                             </div>
                                             <div class="buttn d-flex" *ngIf=addButton>
                                                 <div class="col-10">
@@ -563,7 +586,7 @@
                                         <p class="col-10" style="font-family: 'Gilroy'">State</p>
                                         <p class="col-2"></p>
                                     </div>
-                                    <mat-card class="mat-card-content1">
+                                    <mat-card class="matcardAlign">
                                         <mat-card-content style="height:188px; overflow-y: scroll;">
                                             <!-- <div class="span-subhead"><span>category 3</span><mat-icon>arrow_drop_down</mat-icon></div> -->
                                             <div class=" d-flex" *ngFor="let subc of statename">
@@ -577,7 +600,7 @@
                                         <p class="col-10" style="font-family: 'Gilroy'">Region</p>
                                         <p class="col-2"> </p>
                                     </div>
-                                    <mat-card class="mat-card-content2">
+                                    <mat-card class="matcardAlign">
 
                                         <mat-card-content style="height:188px; overflow-y: scroll;">
                                             <!-- <div class="span-subhead"><span style="padding-bottom: 10px;">category 3</span><mat-icon>keyboard_arrow_right</mat-icon><span>Sub-category</span><mat-icon>arrow_drop_down</mat-icon></div> -->
@@ -594,7 +617,7 @@
                                         <p class="col-10" style="font-family: 'Gilroy';">City</p>
                                         <p class="col-2"> </p>
                                     </div>
-                                    <mat-card class="mat-card-content3 ">
+                                    <mat-card class="matcardAlign ">
                                         <mat-card-content style="height:188px; overflow-y: scroll;">
                                             <!-- <div class="span-subhead"><span style="padding-bottom: 10px;">category 3</span><mat-icon>keyboard_arrow_right</mat-icon><span>Sub-category</span><mat-icon>arrow_drop_down</mat-icon></div> -->
                                             <!-- <li class="type" *ngFor="let type of typename" >{{type}}<mat-icon>add_circle</mat-icon></li> -->
@@ -683,7 +706,8 @@
                             <div class="additional">
                                 <label>Additional Remarks <span>*</span></label>
                             </div>
-                            <input matInput placeholder="Enter your remarks here" #input class="form-control container placeh-align"
+                            <input matInput placeholder="Enter your remarks here" #input
+                                class="form-control container placeh-align"
                                 style="width: 771px;
                    height: 35px;background-color: white;margin-top: 1px; margin-left: -1px;font-family: 'Gilroy';padding-left: 10px;">
 

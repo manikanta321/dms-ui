@@ -127,6 +127,9 @@ import { SalesInventoryComponent } from './component/sales-list/sales-inventory/
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { SalesUploadsComponent } from './component/sales-list/sales-uploads/sales-uploads.component';
 import { SalesReportsComponent } from './component/sales-list/sales-reports/sales-reports.component';
+import { AddDealerAssociationsComponent } from './component/add-dealer-associations/add-dealer-associations.component';
+import { PramotionActionComponent } from './component/pramotion-action/pramotion-action.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -220,6 +223,8 @@ import { SalesReportsComponent } from './component/sales-list/sales-reports/sale
           SalesInventoryComponent,
           SalesUploadsComponent,
           SalesReportsComponent,
+          AddDealerAssociationsComponent,
+          PramotionActionComponent,
   ],
   imports: [
     FormsModule,

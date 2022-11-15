@@ -30,6 +30,18 @@
   font-family: 'Gilroy';
   margin-left: 2px;
 }
+.promotiont1 {
+  margin-top: 3px;
+  font-family: 'Gilroy';
+  margin-left: 2px;
+  font-weight: bold;
+  font-family: 'Gilroy-Medium';
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0em;
+  color: #000000;
+
+}
 
 .image {
   font-family: 'Gilroy';
@@ -209,13 +221,17 @@
   position: absolute;
 }
 
-.addUserForm input {
+.addUser1Form input {
   border-radius: 5px;
   border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
   padding: 5px 5px;
   width: 250px;
   font-size: 14px;
   outline: none;
+}
+.addUser1
+{
+  margin-top: -12px;
 }
 
 span {
@@ -228,6 +244,8 @@ span {
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
+  margin-top: 11px;
+
 }
 
 label {
@@ -255,6 +273,7 @@ border-radius: 10px;
 
 ::ng-deep.mat-dialog-container {
   background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+  overflow: auto;
   ;
 }
 
@@ -775,8 +794,8 @@ li {
 
 .search-img {
   width: 17px;
-  margin-top: -57px;
-  margin-left: 325px;
+  margin-top: -67px;
+  margin-left: 346px;
 }
 
 .input-box {
@@ -871,14 +890,16 @@ li {
 
 .main {
   overflow-x: hidden !important;
+
+  
 }
 
 .promotionpopup-scroll {
-  height: 390px !important;
+   height: 371px !important;
 }
 
 .footer {
-  position: fixed;
+  /* position: fixed; */
   border-radius: 0px 0px 25px 25px;
   height: 50px;
   width: 860px !important;
@@ -889,10 +910,12 @@ li {
   background: #FFFFFF;
   border: 2px solid #000000;
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
-  border-radius: 8px;
-  float: right;
-  margin-top: 10px;
+  border-radius: 10px;
+  /* float: right; */
+  margin-top: 15px;
   cursor: pointer;
+  width: 168px;
+  height: 43px;
 }
 
 .saveas-draft {
@@ -901,19 +924,26 @@ li {
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   float: right;
-  margin-top: 10px;
+  margin-top: 15px;
   cursor: pointer;
+  width: 168px;
+height: 43px;
+border-radius:10px;
 }
 
 .cancel {
   font-size: 15px;
+  width: 106px;
+  height: 39px;
   line-height: 18px;
   display: flex;
   align-items: center;
   text-align: center;
   color: #000000;
   border: none;
-  margin-top: 10px;
+  margin-top: 15px;
+  margin-left: 59px;
+  font-weight: bold;
   text-decoration-line: underline;
   cursor: pointer;
 }
@@ -982,11 +1012,16 @@ li {
 }
 
 .req-date {
-  width: 100%;
+
+    width: 456px;
+  
   background-image: none !important;
   background: #fff;
   border-radius: 10px;
-  height: 56%;
+   height: 56%; 
+   
+  box-sizing: border-box;
+
 }
 
 

@@ -74,6 +74,7 @@
                 <label> Material Custom Identifiers <span>*</span></label>
               </div>
               <input matInput placeholder="Describe the material" #input class="form-control container materialDesc" id="abc">
+              <br>
               <div placeholder="" #input class="form-control container imagePl">
               <img src="assets/img/add-image.png"  class="add-img"
                 alt="add-image=btn">
@@ -125,7 +126,7 @@
                 <div class="manualsort">
                   <label>Manual Sort Order<span>*</span></label>
                 </div>
-                <div class="productdrp productg-align">
+                <div class="productdrp productg-align arrowHide">
                   <ng-select [items]="productList" [virtualScroll]="true" bindLabel="productGroupName" bindValue="productGroupId"
                   [searchable]="true" [clearable]="false" placeholder="Search & select group" [(ngModel)]="selectedItems6"
                   (change)="onProductSelect($event)">
@@ -140,7 +141,7 @@
                 <div class="productlink">
                   <label>Product Link<span>*</span></label>
                 </div>
-                <div class="productsdrp productg-align">
+                <div class="productsdrp productg-align arrowHide">
                   <ng-select [items]="subProduct" [virtualScroll]="true" bindLabel="productGroupName" bindValue="productGroupId"
                   [searchable]="true" [clearable]="false" placeholder="Search & select sub-group" [(ngModel)]="selectedItems7"
                   (change)="onSubProductSelect($event)">

@@ -4,6 +4,11 @@
     overflow-x: hidden;
     width: 100%;
   }
+  .arrow
+  {
+    
+    margin-top: 14px;
+  }
   
   ::-webkit-scrollbar {
     width: 8px;
@@ -170,7 +175,7 @@ color: white;
 
 .minus-icon1{
     background: #0091EA;
-    padding: 4px 10px;
+    /* padding: 4px 10px; */
     border-radius: 50% !important;
     width: 39px !important;
     text-align: center;

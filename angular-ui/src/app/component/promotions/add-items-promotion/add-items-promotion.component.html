@@ -97,6 +97,7 @@
         <form>
           <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'product Identifier'" formControlName="city"
             [disabled]="disabled" [settings]="dropdownSettings5" [data]="toppingList" 
+            (onSelect)="onproductIdentifierSelect($event)"
             (onDeSelect)="onproductIdentifierDeSelect($event)"
             (onDeSelectAll)="onproductIdentifierDeSelectOrAll($event)"
             (onSelectAll)="onproductIdentifierSelectOrAll($event)">

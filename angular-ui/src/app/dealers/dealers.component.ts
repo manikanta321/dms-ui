@@ -103,7 +103,7 @@ export class DealersComponent implements OnInit {
     },
     {
       headerName: "Geography",
-      minWidth:550,
+      minWidth:350,
       field: 'geographyName', 
       cellRenderer: this.daysSunshineRenderer,
       // cellRendererParams: {
@@ -146,6 +146,7 @@ export class DealersComponent implements OnInit {
     suppressSizeToFit: true,
     filter: 'agTextColumnFilter',
     flex: 1,
+    minWidth: 100,
     resizable: true,
     sortable: true,
   };

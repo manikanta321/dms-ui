@@ -122,6 +122,8 @@ import { OrderlistActionPopupComponent } from './component/order-list/orderlist-
 import { OrderlistEditPopupComponent } from './component/order-list/orderlist-edit-popup/orderlist-edit-popup.component';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { DateRangeSelectionComponent } from './component/promotions/date-range-selection/date-range-selection.component';
+import { AddDealerAssociationsComponent } from './component/add-dealer-associations/add-dealer-associations.component';
+import { PramotionActionComponent } from './component/pramotion-action/pramotion-action.component';
 
 @NgModule({
   declarations: [
@@ -212,6 +214,8 @@ import { DateRangeSelectionComponent } from './component/promotions/date-range-s
           OrderlistActionPopupComponent,
           OrderlistEditPopupComponent,
           DateRangeSelectionComponent,
+          AddDealerAssociationsComponent,
+          PramotionActionComponent,
   ],
   imports: [
     FormsModule,

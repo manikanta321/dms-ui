@@ -564,7 +564,6 @@ export class AddItemsPromotionComponent implements OnInit {
     console.log("tttttt",data)
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
-      this.typeI = res.response
       console.log("this TYpe",this.typeI)
     });
     console.log(item);

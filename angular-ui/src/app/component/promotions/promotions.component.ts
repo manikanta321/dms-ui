@@ -27,6 +27,7 @@ import { PromotionService } from 'src/app/services/promotion.service';
 import { PromotionListService } from 'src/app/services/promotion-list.service';
 import { UseractionComponent } from '../useraction/useraction.component';
 import { DateRangeSelectionComponent } from './date-range-selection/date-range-selection.component';
+import { PramotionActionComponent } from '../pramotion-action/pramotion-action.component';
 export interface PeriodicElement {
 
   name: any;
@@ -144,7 +145,7 @@ columnDefs: ColDef[] = [
 {    
   headerName: '',
   colId: 'action',
-  cellRenderer: UseractionComponent,
+  cellRenderer: PramotionActionComponent,
   editable: false,
   maxWidth: 75  
 

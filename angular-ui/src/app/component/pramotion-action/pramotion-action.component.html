@@ -1,0 +1,10 @@
+<div #trigger  data-action="toggle" style="cursor: pointer;">
+    <i class="fa fa-ellipsis-v" data-action="toggle"></i>
+  </div>
+  
+  <div #content *ngIf="isOpen" class="menu-container">
+    <div  class="menu-item tick"> Edit <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+    <div  (click)="close()" class="menu-item tick">close <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+    </div>
+  
+  

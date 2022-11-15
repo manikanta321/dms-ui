@@ -1,3 +1,4 @@
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -8,6 +9,7 @@ import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, Gu
 import { Sort, MatSort, SortDirection } from '@angular/material/sort';
 import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { AddDealerAssociationsComponent } from '../component/add-dealer-associations/add-dealer-associations.component';
 
 @Component({
   selector: 'app-association',
@@ -174,6 +176,8 @@ export class AssociationComponent implements OnInit {
      
     }
   ngOnInit(): void {
+    this.dialog.open(AddDealerAssociationsComponent,{width: '900px',height:'460px'});
+
     this.statusItems();
   }
   statusItems(){
@@ -225,7 +229,10 @@ export class AssociationComponent implements OnInit {
   onCellClicked( e: CellClickedEvent): void {
     console.log('cellClicked', e);
   }
-  
+  addassition(){
+    this.dialog.open(AddDealerAssociationsComponent,{width: '900px',height:'460px'});
+
+  }
   
   onCellValueChanged(event: CellValueChangedEvent) {
     alert(event.value)

@@ -1,0 +1,319 @@
+<div class="container">
+<div class="add-sales ">
+    <div class="addSales">
+        <img  class="print-img" src="../../../assets/material/print-img.svg" alt="">
+        <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+    </div>
+    <div class="sales-head">
+        <h3 class="sales-add font">Add Sales</h3>
+    </div>
+    <!-- expension   -->
+    <div class="slaes-expension">
+        <div (click)="expandDealerInfoDiv()" class="collapsible">
+            <div class="row">
+                <div class="col-md-3">
+                    <p class="label-cls">Dealer Information</p>
+                </div>
+                <div class="col-md-8 check1">
+                    <p class="label-cls"><b>Dealer Name:</b> Mobile worlds pvt ltd  ;  <b>Dealer Code:</b> 123456789</p>
+                </div>
+                <div class="col-md-1">
+                    <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                </div>
+             </div>
+        </div>
+        <div class="content" *ngIf="!dealerInfo">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="promotiont">
+                        <label>Dealer <span>*</span></label>
+                    </div>
+                    <input matInput placeholder="Search for the geography here" #input class="form-control container input-box" >
+                    <img src="assets/img/search.png" class="search-img"  alt="search">
+                </div>
+                <div class="col-md-6">
+                    <div class="promotiont">
+                        <label>Geography <span>*</span></label>
+                        <ng-multiselect-dropdown name="type" [placeholder]="'Select the promotion type'"
+                        formControlName="type" [disabled]="disabled" [settings]="dropdownSettings3"
+                        [data]="toppingList3" (onSelect)="onTypeSelect($event)"
+                        (onSelectAll)="onTypeAll($event)">
+                    </ng-multiselect-dropdown>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="row" style="margin-top:-19px">
+                <div class="col-md-6">
+                    <div class="promotiont">
+                        <label>Billing Address <span>*</span></label>
+                    </div>
+                    <input matInput placeholder="Billing address" #input class="form-control container input-box" >
+                </div>
+                <div class="col-md-6">
+                    <div class="promotiont">
+                        <label>Shipping Address <span>*</span></label>
+                        <input matInput placeholder="Select shipping address" #input class="form-control container input-box" >
+                    </div>
+                </div>   
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="promotiont">
+                        <label>Dealer Reference No <span>*</span></label>
+                    </div>
+                    <input matInput placeholder="Enter dealer reference number" #input class="form-control container input-box" >
+                </div>
+                <div class="col-md-6">
+                    <div class="promotiont">
+                        <label>Company Reference No <span>*</span></label>
+                        <input matInput placeholder="Enter Company reference number" #input class="form-control container input-box" >
+                    </div>
+                </div>   
+            </div>
+        </div>
+        
+        <div (click)="expandDealerInfoDiv1()" class="collapsible mt-3">
+            <div class="row">
+                <div class="col-md-3">
+                    <p class="label-cls">Product information</p>
+                </div>
+                <div class="col-md-8 check1">
+                    <p class="label-cls"><b>Product Name:</b> Mobile worlds pvt ltd  ;  <b>Product Code:</b> 123456789</p>
+                </div>
+                <div class="col-md-1">
+                    <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                </div>
+             </div>
+        </div>
+        <div class="content" *ngIf="!productInfo">
+            <h4>Product</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="promotiont">
+                        <label>Brand Name <span>*</span></label>
+                    </div>
+                    <input matInput placeholder="Search for the geography here" #input class="form-control container input-box" >
+                    <img src="assets/img/search.png" class="search-img"  alt="search">
+                </div>
+                <div class="col-md-6">
+                    <div class="promotiont">
+                        <label>Global Code </label>
+                        <input matInput placeholder="Billing address" #input class="form-control container input-box" >
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="row" style="margin-top:-19px">
+                <div class="col-md-6">
+                    <div class="promotiont">
+                        <label> SKU* <span>*</span></label>
+                    </div>
+                    <input matInput placeholder="Billing address" #input class="form-control container input-box" >
+                </div>
+                <div class="col-md-6">
+                    <div class="promotiont">
+                        <label>Short Code</label>
+                        <input matInput placeholder="Select shipping address" #input class="form-control container input-box" >
+                    </div>
+                </div>   
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="promotiont">
+                        <label>Product Group<span>*</span></label>
+                    </div>
+                    <input matInput placeholder="Enter dealer reference number" #input class="form-control container input-box" >
+                </div>
+                <div class="col-md-6">
+                    <div class="promotiont">
+                        <label>Manual Sort Order</label>
+                        <input matInput placeholder="Enter Company reference number" #input class="form-control container input-box" >
+                    </div>
+                </div>   
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="promotiont">
+                        <label>Product Sub-group<span>*</span></label>
+                    </div>
+                    <input matInput placeholder="Enter dealer reference number" #input class="form-control container input-box" >
+                </div>
+                <div class="col-md-6">
+                    <div class="promotiont">
+                        <label>Product Link</label>
+                        <input matInput placeholder="Enter Company reference number" #input class="form-control container input-box" >
+                    </div>
+                </div>   
+            </div>
+            <div (click)="expandDealerInfoDiv2()" class="collapsible mt-3">
+                <div class="row">
+                    <div class="col-md-11">
+                        <p class="label-cls">Perishable, Cold storage, Dangerous goods, Handle with care, Heavy goods, Fire hazard, Delicate, Don’t drop</p>
+                    </div>
+                    <div class="col-md-1">
+                        <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                    </div>
+                 </div>
+            </div>
+            <div class="contents" *ngIf="!productCustomIdentifier">
+                <div class="heading">
+                    <h6 class="Geo-headerlabel"><b>Geographies</b></h6>
+                </div>
+                <div class="material-card row">
+                    <div class="col-3">
+
+                        <div class="row">
+                            <p class="col-10 sub-label">Country</p>
+                            <p class="col-2"></p>
+                        </div>
+                        <mat-card class="mat-card-content ">
+                            <mat-card-content class="card-cls">
+                                <div class="list" >
+                                    <p class="col-10 catg" >country name</p>
+                                    <p class="col-10 catg" >country name</p>
+                                </div>
+                            </mat-card-content>
+
+                        </mat-card>
+                    </div>
+
+                    <div class="col-3 mat-card-width">
+                        <div class="row">
+                            <p class="col-10 sub-label">State</p>
+                            <p class="col-2"></p>
+                        </div>
+                        <mat-card class="mat-card-content1">
+                            <mat-card-content class="card-cls">
+                                <!-- <div class="span-subhead"><span>category 3</span><mat-icon>arrow_drop_down</mat-icon></div> -->
+                                <div class=" d-flex" >
+                                    <p class="col-10 subc" >geo name</p>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="row">
+                            <p class="col-10 sub-label">Region</p>
+                            <p class="col-2"> </p>
+                        </div>
+                        <mat-card class="mat-card-content2">
+
+                            <mat-card-content class="card-cls">
+                                <div class=" d-flex">
+                                    <p class="col-10 typeg" >geocity</p>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+
+                    </div>
+                    
+                    <div class="col-3">
+                        <div class="row">
+                            <p class="col-10 sub-label">City</p>
+                            <p class="col-2"> </p>
+                        </div>
+                        <mat-card class="mat-card-content3 ">
+                            <mat-card-content class="card-cls">
+                                <div class=" d-flex" >
+                                    <p class="col-10 city">geographyName</p>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+
+                    </div>
+                </div>
+    
+            </div>
+            
+        </div>
+
+        <div (click)="expandDealerInfoDiv3()" class="collapsible mt-3">
+            <div class="row">
+                <div class="col-md-3">
+                    <p class="label-cls">Receipts</p>
+                </div>
+                <div class="col-md-8 check1">
+                    <p class="label-cls"><b>Stock:</b> 1000 boxes  ;  <b>Totol Receipts:</b> 11,540 boxes</p>
+                </div>
+                <div class="col-md-1">
+                    <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                </div>
+             </div>
+        </div>
+        <div class="content" *ngIf="!receipts">
+            <div class="row">
+               <!-- grid -->
+               <div class="grid-table mt-3">
+                <ag-grid-angular id="gridContainer" class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
+                  [headerHeight]="48" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
+                  [rowData]="rowData5" [suppressExcelExport]="true" [popupParent]="popupParent"
+                  (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"
+                  (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
+                  (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+                  (bodyScroll)="handleScroll($event)"></ag-grid-angular>
+              </div>
+            </div>
+           
+        </div>
+
+        <div (click)="expandDealerInfoDiv4()" class="collapsible mt-3">
+            <div class="row">
+                <div class="col-md-3">
+                    <p class="label-cls">Dealer Information</p>
+                </div>
+                <div class="col-md-8 check1">
+                    <p class="label-cls"><b>Stock:</b> 1000 boxes  ;  <b>Sales:</b> boxes</p>
+                </div>
+                <div class="col-md-1">
+                    <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                </div>
+             </div>
+        </div>
+        <div class="content" *ngIf="!sales">
+            <div class="row">
+                <div class="col-2">
+                 <p>Date</p>
+                </div>
+                <div class="col-2">
+                  <p>Quantity</p>
+                  </div>
+                  <div class="col-7">
+                    <p>Customer Reference</p>
+                  </div>
+                <div class="col-1">
+                  <mat-icon class="addAlign">add_circle</mat-icon>
+                </div>
+              </div>
+            <div class="row">
+                <div class="col-2 Dquantity" >
+                    <input type="text" placeholder="15 Aug 2022" >
+                  </div>
+                  <div class="col-2 Dquantity">
+                    <input type="text" placeholder="2000">
+                  </div>
+                  <div class="col-7 custmRef">
+                    <input type="text" placeholder="nandhanal supermarket"/>
+                  </div>
+                  <div class="col-1 rmvicon">
+                    <mat-icon class="removeCircle" >remove_circle</mat-icon>
+                  </div>
+            </div>
+           
+        </div>
+    </div>
+    <div class="row footer">
+        <div class="col-md-6">
+                <button type="button" class="saveas-draft">Save </button>                       
+        </div>
+        <div class="col-md-6">                      
+                <button type="button"  [mat-dialog-close]="true"  class="cancel">Cancel</button>                   
+        </div>
+    </div>
+</div>
+</div>

@@ -130,6 +130,8 @@ import { SalesReportsComponent } from './component/sales-list/sales-reports/sale
 import { AddDealerAssociationsComponent } from './component/add-dealer-associations/add-dealer-associations.component';
 import { PramotionActionComponent } from './component/pramotion-action/pramotion-action.component';
 import { EditProfileComponent } from './component/edit-profile/edit-profile.component';
+import { AddSalesPopupComponent } from './component/sales-list/sales-inventory/add-sales-popup/add-sales-popup.component';
+import { SalesBulkDownloadComponent } from './component/sales-list/sales-inventory/sales-bulk-download/sales-bulk-download.component';
 
 @NgModule({
   declarations: [
@@ -227,6 +229,8 @@ import { EditProfileComponent } from './component/edit-profile/edit-profile.comp
           AddDealerAssociationsComponent,
           PramotionActionComponent,
           EditProfileComponent,
+          AddSalesPopupComponent,
+          SalesBulkDownloadComponent,
   ],
   imports: [
     FormsModule,

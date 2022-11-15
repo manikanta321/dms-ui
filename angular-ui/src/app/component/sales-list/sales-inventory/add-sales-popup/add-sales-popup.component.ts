@@ -1,23 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import {Observable} from 'rxjs';
-import {startWith, map} from 'rxjs/operators';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridApi, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
-import { MatDialog } from '@angular/material/dialog';
-import { AddSalesPopupComponent } from './add-sales-popup/add-sales-popup.component';
-import { SalesBulkDownloadComponent } from './sales-bulk-download/sales-bulk-download.component';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
+
 @Component({
-  selector: 'app-sales-inventory',
-  templateUrl: './sales-inventory.component.html',
-  styleUrls: ['./sales-inventory.component.css']
+  selector: 'app-add-sales-popup',
+  templateUrl: './add-sales-popup.component.html',
+  styleUrls: ['./add-sales-popup.component.css']
 })
-export class SalesInventoryComponent implements OnInit {
-  myForm: any = FormGroup;
+export class AddSalesPopupComponent implements OnInit {
+  dealerInfo = true;
+  orderitem = false;
+  productInfo= true
+  otherInfo = false;
+  receipts = true;
+  sales = true;
+  productCustomIdentifier= true;
+  image1 = 'assets/img/minimize-tag.png';
+  image2 = 'assets/img/minimize-tag.png';
+  image3 = 'assets/img/minimize-tag.png';
   disabled = false;
-  dropdownSettings: IDropdownSettings = {};
-  dealersdrop: any = ['dealr','d'];
+  dropdownSettings3: IDropdownSettings = {};
+  toppingList3:  any= [];
   private gridApi!: GridApi;
   public rowData5=[];
   public popupParent: HTMLElement = document.body;
@@ -32,72 +36,22 @@ export class SalesInventoryComponent implements OnInit {
     {   headerName: "Dealer",field: 'promotionName' ,      tooltipField:"promotionName",
   },
   
-    {  headerName: "Product Name",field: 'promotionTypesName',      tooltipField:"promotionTypesName",
+    {  headerName: "Quantity",field: 'promotionTypesName',      tooltipField:"promotionTypesName",
   },
   
-    {  headerName: "Geography",
+    {  headerName: "Invoice No",
        field: '',      tooltipField:"",
       },
-  
-    {   headerName: "Current stock",
-      // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-      field: 'startDate',      tooltipField:"startDate",
-      type: ['nonEditableColumn']},
-  
-      {   headerName: "In Transit Qty",
-      // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-      field: 'endDate',type: ['nonEditableColumn'],      tooltipField:"endDate",
-    },
-      {  headerName: "Pending Qty",
+      {  headerName: "Order Confirmation No.",
       field: '',      tooltipField:"",
     }, 
-      {  headerName: "Purchase Qty",
-      field: '',      tooltipField:"",
-    }, 
-    { headerName: "Sales",
-       field: 'statusName', 
-    cellEditor: 'agSelectCellEditor',
-    cellEditorParams: {
-      values: ['Active', 'Inactive', 'Invited', 'Locked',],
-    }
-  },
-  {  headerName: "Annual Target",
-      field: '',      tooltipField:"",
-    },
-    {  headerName: "Target (%)",
-      field: '',      tooltipField:"",
-    },
-     
-  // {    
-  //   headerName: '',
-  //   colId: 'action',
-  //   cellRenderer: UseractionComponent,
-  //   editable: false,
-  //   maxWidth: 75  
-  
-  // },
-  // {
-  //   headerName: "Avatar",
-  //   field: "avatar",
-  //   width: 100,
-  //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
-  //  },
   
   ];
   public defaultColDef: ColDef = {
 
     suppressSizeToFit: true,
-    // set the default column width
-    // make every column editable
-    // editable: true,
-    // make every column use 'text' filter by default
-    filter: 'agTextColumnFilter',
-    // enable floating filters by default
-    // make columns resizable
     flex:1,
       minWidth: 100,
-    resizable: true,
-    sortable: true,
   };
   
   public columnTypes: {
@@ -191,12 +145,60 @@ export class SalesInventoryComponent implements OnInit {
   clickNextRendererFunc(){
     alert('hlo');
   }
-
-  
-  constructor( public dialog: MatDialog,) { }
+  constructor() { }
 
   ngOnInit(): void {
-    
+  }
+  expandDealerInfoDiv(){
+    this.dealerInfo = !this.dealerInfo;
+
+    if(this.dealerInfo === false){
+      this.image1 = 'assets/img/maximize-arrow.png';
+    } else {
+      this.image1 = 'assets/img/minimize-tag.png';
+     
+    }
+  }
+  expandDealerInfoDiv1(){
+    this.productInfo = !this.productInfo;
+    if(this.productInfo === false){
+      this.image1 = 'assets/img/maximize-arrow.png';
+    } else {
+      this.image1 = 'assets/img/minimize-tag.png';
+    }
+  }
+  expandDealerInfoDiv2(){
+    this.productCustomIdentifier = !this.productCustomIdentifier;
+    if(this.productCustomIdentifier === false){
+      this.image1 = 'assets/img/maximize-arrow.png';
+    } else {
+      this.image1 = 'assets/img/minimize-tag.png';
+     
+    }
+  }
+  expandDealerInfoDiv3(){
+    this.receipts = !this.receipts;
+    if(this.receipts === false){
+      this.image1 = 'assets/img/maximize-arrow.png';
+    } else {
+      this.image1 = 'assets/img/minimize-tag.png';
+     
+    }
+  }
+  expandDealerInfoDiv4(){
+    this.sales = !this.sales;
+    if(this.sales === false){
+      this.image1 = 'assets/img/maximize-arrow.png';
+    } else {
+      this.image1 = 'assets/img/minimize-tag.png';
+     
+    }
+  }
+  onTypeSelect(item: any) {
+    console.log(item);
+  }
+  onTypeAll(items: any) {
+    console.log('onSelectAll', items);
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -245,11 +247,5 @@ export class SalesInventoryComponent implements OnInit {
       this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
       this.paginationScrollCount = this.rowData5.length;
     }
-  }
-  addSales() {
-    this.dialog.open(AddSalesPopupComponent, {width: '1043px'});
-  }
-  salesBulkDownload() {
-    this.dialog.open(SalesBulkDownloadComponent, {width: '1289px',});
   }
 }

@@ -2,37 +2,28 @@
   <div class="section sales">
     <div class="sales-search-drop">
       <div class="row">
-        <div class="col-2">
-          <form class="sales-example-form">
-            <input type="text" placeholder="Dealer" [formControl]="control" [matAutocomplete]="auto">
-            <i class="fa fa-search icon" aria-hidden="true"></i>
-            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let street of filteredStreets | async" [value]="street">
-                {{street}}
-              </mat-option>
-            </mat-autocomplete>
+        <div class="col-md-2 col-lg-2 col-sm-2">
+          <form [formGroup]="myForm" class="dropdown-form">
+            <ng-multiselect-dropdown class="dealer" name="city" [placeholder]="'Dealer'" formControlName="city"
+              [disabled]="disabled" [settings]="dropdownSettings" [data]="dealersdrop"
+             >
+            </ng-multiselect-dropdown>
           </form>
         </div>
-        <div class="col-2">
-          <form class="sales-example-form">
-            <input type="text" placeholder="Dealer" [formControl]="control" [matAutocomplete]="auto">
-            <i class="fa fa-search icon" aria-hidden="true"></i>
-            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let street of filteredStreets | async" [value]="street">
-                {{street}}
-              </mat-option>
-            </mat-autocomplete>
+        <div class="col-md-2 col-lg-2 col-sm-2">
+          <form [formGroup]="myForm" class="dropdown-form">
+            <ng-multiselect-dropdown class="product" name="city" [placeholder]="'Product'" formControlName="city"
+              [disabled]="disabled" [settings]="dropdownSettings" [data]="dealersdrop"
+             >
+            </ng-multiselect-dropdown>
           </form>
         </div>
-        <div class="col-2">
-          <form class="sales-example-form">
-            <input type="text" placeholder="Dealer" [formControl]="control" [matAutocomplete]="auto">
-            <i class="fa fa-search icon" aria-hidden="true"></i>
-            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let street of filteredStreets | async" [value]="street">
-                {{street}}
-              </mat-option>
-            </mat-autocomplete>
+        <div class="col-md-2 col-lg-2 col-sm-2">
+          <form [formGroup]="myForm" class="dropdown-form">
+            <ng-multiselect-dropdown class="geography" name="city" [placeholder]="'Geography'" formControlName="city"
+              [disabled]="disabled" [settings]="dropdownSettings" [data]="dealersdrop"
+             >
+            </ng-multiselect-dropdown>
           </form>
         </div>
         <div class="sales-refreshbtn">
@@ -56,13 +47,13 @@
         </div>
       </div>
       <div class="col-md-0">
-        <div class="sales-add">
+        <div class="sales-add" (click)="addSales()">
             <img class="imgorder" src="assets/img/add-btn.png"
                 alt="add">
         </div>
     </div>
     <div class="col-md-0">
-      <div class="sales-download" >
+      <div class="sales-download" (click)="salesBulkDownload()">
           <img class="dwnld-img" src="assets/img/orderlist-upload.svg" 
               alt="add-user-btn">
       </div>

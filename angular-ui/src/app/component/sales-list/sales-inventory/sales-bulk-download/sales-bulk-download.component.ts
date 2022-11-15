@@ -1,23 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import {Observable} from 'rxjs';
-import {startWith, map} from 'rxjs/operators';
+import { FormGroup } from '@angular/forms';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridApi, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
-import { MatDialog } from '@angular/material/dialog';
-import { AddSalesPopupComponent } from './add-sales-popup/add-sales-popup.component';
-import { SalesBulkDownloadComponent } from './sales-bulk-download/sales-bulk-download.component';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
+
+
 @Component({
-  selector: 'app-sales-inventory',
-  templateUrl: './sales-inventory.component.html',
-  styleUrls: ['./sales-inventory.component.css']
+  selector: 'app-sales-bulk-download',
+  templateUrl: './sales-bulk-download.component.html',
+  styleUrls: ['./sales-bulk-download.component.css']
 })
-export class SalesInventoryComponent implements OnInit {
+export class SalesBulkDownloadComponent implements OnInit {
   myForm: any = FormGroup;
   disabled = false;
   dropdownSettings: IDropdownSettings = {};
   dealersdrop: any = ['dealr','d'];
+
   private gridApi!: GridApi;
   public rowData5=[];
   public popupParent: HTMLElement = document.body;
@@ -192,11 +190,9 @@ export class SalesInventoryComponent implements OnInit {
     alert('hlo');
   }
 
-  
-  constructor( public dialog: MatDialog,) { }
+  constructor() { }
 
   ngOnInit(): void {
-    
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -245,11 +241,5 @@ export class SalesInventoryComponent implements OnInit {
       this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
       this.paginationScrollCount = this.rowData5.length;
     }
-  }
-  addSales() {
-    this.dialog.open(AddSalesPopupComponent, {width: '1043px'});
-  }
-  salesBulkDownload() {
-    this.dialog.open(SalesBulkDownloadComponent, {width: '1289px',});
   }
 }

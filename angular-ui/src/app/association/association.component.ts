@@ -176,8 +176,6 @@ export class AssociationComponent implements OnInit {
      
     }
   ngOnInit(): void {
-    this.dialog.open(AddDealerAssociationsComponent,{width: '900px',height:'460px'});
-
     this.statusItems();
   }
   statusItems(){

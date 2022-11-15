@@ -20,15 +20,7 @@
 {
   font-weight: bold;
 }
- /* .text-area input
-{
-  resize: none;
-  width: 757px;
-  height: 120px;
-  border-radius: 10px;
-  border: 2px solid black;
 
-} */
 
 .materialname {
   margin-top: 3px;
@@ -936,6 +928,12 @@ li {
   cursor: pointer;
   width: 168px;
   height: 43px;
+  font-family: 'Gilroy-SemiBold';
+font-size: 15px;
+line-height: 18px;
+letter-spacing: 0em;
+text-align: center;
+
 }
 
 .saveas-draft {

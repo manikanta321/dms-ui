@@ -1,0 +1,221 @@
+.font{
+    font-family: 'Gilroy';
+  }
+mat-sidenav {
+    width: 5rem;
+    border-right: none;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+}
+mat-sidenav-content{
+    height: 100vh;
+    border-radius: 10px;
+    padding: 10px;
+    background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);
+}
+mat-sidenav-container {
+    height: calc(100vh - 65px);
+}
+.edit-heading{
+    position:relative;
+    font-family: 'Gilroy-Bold';
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 41px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    top: 11px;
+    left: 58px;
+}
+.edit-div{
+    position: relative;
+    top: 15px;
+    margin-left: 169px;
+}
+.img-div{
+    position: absolute;
+    width: 283px;
+    height: 260px;
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+}
+.edit-data {
+    position: absolute;
+    width: 691px;
+    height: 498px;
+    left: 309px;
+    top: 0px;
+
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+}
+.button-save-chng{
+    position: relative;
+    width: 597px;
+    height: 43px;
+    left: 24%;
+    top: 530px;
+}
+.save-chng {
+    width: 280px;
+    height: 43px;
+    text-align: center;
+    background: #000000;
+    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+}
+.discard{
+    width: 280px;
+    height: 43px;
+    position: relative;
+    left: 43px;
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    text-align: center;
+}
+.save-text {
+    color: white;
+    background: #000000;
+    position: relative;
+    top: 11px;
+    font-family: 'Gilroy-SemiBold';
+    font-size: 15px;
+    line-height: 18px;
+    /* display: flex; */
+    align-items: center;
+    text-align: center;
+    border: none;
+}
+.discard-text {
+    color: black;
+    background:#FFFFFF;
+    position: relative;
+    top: 11px;
+    font-family: 'Gilroy-SemiBold';
+    font-size: 15px;
+    line-height: 18px;
+    /* display: flex; */
+    align-items: center;
+    text-align: center;
+    border: none;
+}
+.profile-icon {
+    position: relative;
+    left: 68px;
+    width: 131px;
+    height: 131px;
+    background: '';
+    border: 1px solid #000000;
+    filter: drop-shadow(-2px -2px 4px rgba(0, 0, 0, 0.03)) drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.03));
+}
+.profile-name {
+    position: relative;
+    font-family: 'Gilroy';
+    font-size: 25px;
+    line-height: 29px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    left: 31%;
+    color: #000000;
+}
+.prof-s {
+    position: relative;
+    font-family: 'Gilroy';
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    left: 26%;
+    color: #000000;
+    top: -13px;
+}
+.last-login-txt{
+    position: relative;
+    left: 10%;
+    top: 11%;
+    font-family: 'Gilroy';
+    font-size: 16px;
+    line-height: 106.3%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+.basic-info {
+position: relative;
+left: 47px;
+top: 13px;
+font-family: 'Gilroy';
+font-size: 20px;
+line-height: 23px;
+display: flex;
+align-items: center;
+color: #000000;
+}
+.f-name{
+width: 280px;
+height: 43px;
+background: #FFFFFF;
+border: 0.5px solid #000000;
+border-radius: 10px;
+}
+.input-2 {
+    right: 5%;
+    position: relative;
+}
+.f-label{
+    position: relative;
+    left: -9px;
+}
+.ip-top{
+    position: relative;
+    top: 1%;
+}
+.div-1 {
+    position: relative;
+    top: 4%;
+}
+.div-2 {
+    position: relative;
+    top: 10%;
+}
+.div-3 {
+    position: relative;
+    top: 16%;
+}
+.user-label {
+    position: relative;
+    left: 2%;
+}
+.f-labels{
+    bottom: 4px;
+    position: relative;
+}
+.role-input {
+    background: linear-gradient(90deg, #CED4DA 0%, rgba(248, 249, 250, 0) 100%);
+}
+.role-text{
+    position: relative;
+    left: 61px;
+    top: 73px;
+    font-family: 'Gilroy';
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+span
+{
+    color: red;
+}

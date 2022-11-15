@@ -171,13 +171,15 @@
   background: #000000;
   color: white;
 }
-
 .addU {
   position: relative;
    font-weight: bold;
   font-size: 20px;
 }
-
+.dropdown-btn span span {
+  position: absolute !important;
+  display: none !important;
+}
 .addU:after {
   content: "";
   display: block;

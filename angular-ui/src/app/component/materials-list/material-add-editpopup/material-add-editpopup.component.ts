@@ -56,7 +56,7 @@ import { AddMaterialsService } from 'src/app/services/add-materials.service';
   dropdownSettings3: IDropdownSettings = {};
   toppingList2:  any= []; 
   toppingList3:  any= [];
-  // countryname: string[] = ['Malaysia (71/126)', 'India (178/178)','Philipines (0/135)'];
+  actineLabel:any ; // countryname: string[] = ['Malaysia (71/126)', 'India (178/178)','Philipines (0/135)'];
   // statename: string[] = ['Johor(0/42)', 'Kedah(36/36','Perak(14/26)','Penang(21/22)'];
   regionname: string[] = ['North(4/4)', 'South(8/8)', 'East(6/6)','West(3/4)'];
   cityname:string[] =['George town','Balik Pulau','Batu Refringi','Teluk Bahang'];
@@ -96,6 +96,26 @@ import { AddMaterialsService } from 'src/app/services/add-materials.service';
   countCity:any;
   cityList:any =[];
   session:any;
+  getEditId:any;
+  catId:any;
+  subCatId:any;
+  typeId:any;
+  productId:any;
+  subProductId:any;
+  uomID:any;
+  materialName:string ='';
+  description:string ='';
+  desc:any;
+  nameM:any;
+  expiryDate:string ='';
+  BrandName:string = '';
+  gloabKey:any;
+  Sku:any;
+  shortCode:any;
+  Sort:any;
+  AddSP:any;
+  prodId:any;
+  editData:boolean = false;
   dropdownSettings: IDropdownSettings = {};
     constructor(private fb: FormBuilder, public dialog: MatDialog,
       private addMaterials: AddMaterialsService) {}
@@ -103,20 +123,81 @@ import { AddMaterialsService } from 'src/app/services/add-materials.service';
    secondFormGroup: FormGroup = this.fb.group({secondCtrl: ['']});
 
    ngOnInit():void {
-    this.selectedItems1 = [];
+    this.getProductList();
+    this.selectedItems1 = ["Shivam"];
     this.selectedItems2 = [];
     this.selectedItems3 = [];
     this.selectedItems4 = [];
     this.selectedItems5 = [];
     this.selectedItems6 = [];
     this.selectedItems7 = [];
+     this.editList()
 this.getclassification();
 this.getAllUom();
 this.getMaterialIdentifier();
-this.getProductList();
 this.countryData();
    }
-  
+   onKey(event) {
+    let inputName = event.target.value;
+  this.materialName = inputName;
+  console.log("inputName" ,this.materialName)
+  }
+  onKeyDesc(event) {
+    let inputDesc = event.target.value;
+  this.description =  inputDesc;
+  console.log("description" ,this.description)
+  }
+  onKeyExpry(event) {
+    let inputExpry = event.target.value;
+  this.expiryDate =  inputExpry;
+  console.log("expiryDate" ,this.expiryDate)
+  }
+  onKeyBrand(event) {
+    let brandName = event.target.value;
+  this.BrandName =  brandName;
+  console.log("BrandName" ,this.BrandName)
+  }
+  onKeyGloabal(event) {
+    let gloabK = event.target.value;
+  this.gloabKey =  gloabK;
+  console.log("gloabKey" ,this.gloabKey)
+  }
+  onKeySKU(event) {
+    let sku = event.target.value;
+  this.Sku =  sku;
+  console.log("Sku" ,this.Sku)
+  }
+  onKeyShortCode(event) {
+    let shortC = event.target.value;
+  this.shortCode =  shortC;
+  console.log("shortCode" ,this.shortCode)
+  }
+  onKeySort(event) {
+    let sort = event.target.value;
+  this.Sort =  sort;
+  console.log("Sort" ,this.Sort)
+  }
+  onKeyAddSP(event) {
+    let AddSp = event.target.value;
+  this.AddSP =  AddSp;
+  console.log("AddSP" ,this.AddSP)
+  }
+  editList(){
+    this.getEditId = localStorage.getItem('listData');
+    let editV =localStorage.getItem('Edit');
+    if(editV == 'Edit'){
+      this.actineLabel = "Edit Material";
+      this.addMaterials.onEditList(this.getEditId).subscribe((res) => {
+        let data = res.response;
+        console.log("EditData",data);
+        this.editData = true;
+      })
+    }
+    else{
+      this.actineLabel = "Add Material";
+      this.editData = false;
+    }
+  }
    getclassification() {
 
     this.addMaterials.getclassification().subscribe((res) => {
@@ -130,6 +211,8 @@ this.countryData();
     this.addMaterials.getProductGroup().subscribe((res) => {
       let data =res.response;
       this.productList =data;
+     let prodG = localStorage.getItem('productG')
+     console.log("prodG",prodG)
     })
   }
   getMaterialIdentifier(){
@@ -143,32 +226,63 @@ this.countryData();
     this.selectedItems5 = JSON.parse(data);
     console.log("Selected Item 5",this.selectedItems5)
   }
+  addMaterial(){
+let data ={
+  StockItemId:this.catId,
+  StockItemSubCategoryId:this.subCatId,
+  StockItemTypeId:this.typeId,
+  StockItemName:this.materialName,
+  StockItemDesc:this.description,
+  BaseUoMId:this.uomID,
+  Materialcustomidentifier:this.selectedItems5,
+  ExpiryPeriod:this.expiryDate,
+  BrandName:this.BrandName,
+  GlobalCode:this.gloabKey,
+  ProductSKUName:this.Sku,
+  ShortCode:this.shortCode,
+  ManualShortOrder:this.Sort,
+  ProductLink:this.AddSP,
+  ProductSubGroupId:this.selectedItems7,
+  // ProductCustomIdentifierId:
+  // IsProduct:
+}
+  }
    onSubCategoryAll(items: any) {
     console.log('onSelectAll', items);
   }
   onItemSelect(item:any){
+    this.catId = item.catId;
     this.addMaterials.onclickcat(item.catId).subscribe((res) => {
       let subcaty = res.response;
       console.log("response1", res)
-      console.log("responseeee", subcaty);
+      console.log("catId", this.catId);
       this.sub_category = subcaty.allOtherSubCAts;
       this.toppings1 = new FormControl(this.sub_category);
     });
   }
   onSubCategorySelect(item:any){
+    this.subCatId = item.subCatId;
     this.addMaterials.onclicksubcat(item.subCatId).subscribe((res) => {
       let typs = res.response;
-      console.log("types..res", typs);
+      console.log("subCatId", this.subCatId);
       this.typeI = typs;
       console.log("Typess", this.typeI);
       this.toppings2 = new FormControl(this.typeI);
     });
   }
   onUomSelect(item:any){
-    // alert(item.uoMShortName);
+      this.uomID = item.uoMId
+      console.log("this.uomID",this.uomID)
+
   }
   onProductSelect(item:any){
-    alert(item.productGroupId);
+    // alert(item.productGroupId);
+     this.prodId = item.productGroupId;
+    let prodName = item.productGroupName;
+    sessionStorage.setItem("productId",this.prodId)
+    sessionStorage.setItem("productName",prodName);
+    console.log("item.productGroupId",item.productGroupId);
+    this.productId = item.productGroupId;
     this.addMaterials.getProductSubGroup(item.productGroupId).subscribe((res) => {
       let subProd = res.response;
       console.log("subProd", subProd);
@@ -177,7 +291,9 @@ this.countryData();
     });
   }
   onSubProductSelect(item:any){
-    alert(item.productGroupId);
+    // alert(item.productGroupId);
+    console.log("item.productGroupId",item.productGroupId);
+    this.subProductId = item.productGroupId;
   }
   countryData(){
     this.addMaterials.getCountryList().subscribe((res) => {
@@ -246,7 +362,7 @@ this.countryData();
 // alert(item.materialCustomName)
   }
   onTypeSelect(item: any) {
-    // alert(item.typeId)
+    this.typeId = item.typeId;
   }
   onTypeAll(item:any){
     console.log(item);

@@ -125,7 +125,7 @@
                 <div class="manualsort">
                   <label>Manual Sort Order<span>*</span></label>
                 </div>
-                <div class="productdrp productg-align arrowHide">
+                <div class="productdrp productg-align">
                   <ng-select [items]="productList" [virtualScroll]="true" bindLabel="productGroupName" bindValue="productGroupId"
                   [searchable]="true" [clearable]="false" placeholder="Search & select group" [(ngModel)]="selectedItems6"
                   (change)="onProductSelect($event)">
@@ -140,7 +140,7 @@
                 <div class="productlink">
                   <label>Product Link<span>*</span></label>
                 </div>
-                <div class="productsdrp productg-align arrowHide">
+                <div class="productsdrp productg-align">
                   <ng-select [items]="subProduct" [virtualScroll]="true" bindLabel="productGroupName" bindValue="productGroupId"
                   [searchable]="true" [clearable]="false" placeholder="Search & select sub-group" [(ngModel)]="selectedItems7"
                   (change)="onSubProductSelect($event)">

@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container" *ngIf="!adminPassword">
     <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
     <div class="actv-user text-center">
         <h1 class="head-text">Reset password</h1>
@@ -31,6 +31,42 @@
               <p style="color: red;position: relative;position: relative;padding: 0px;height: 0px;top: -6px;">{{error}}</p>
                     <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 
                         'visibility_off'}}</mat-icon> -->
+                        <br>
+        <button class="update-btn" (click)="confrmPWS()">Update Password</button>
+        <button class="cancel-btn">Cancel</button>
+    </div>
+    <span style="color: red;">*Required fields</span>
+</form>
+   
+</div>
+<div class="container" *ngIf="adminPassword">
+    <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+    <div class="actv-user text-center">
+        <h1 class="head-text">Reset password</h1>
+    </div>
+    <form #loginForm="ngForm">
+    <div>
+        <div class="olpass">
+            <h1>Old password</h1>
+        </div>
+            <label >current password <span style="color: red;">*</span></label><br>
+            <input type=" old password"id=" old password" placeholder="Enter your old  password (at least 8 ch)" name="old password"
+            [type]="hide ? 'old password' 
+              : 'text'" [(ngModel)]="enterfirst" required><br><br>
+              <div class="newspass">
+                <h1>New password</h1>
+            </div>
+        <label >Latest password <span style="color: red;">*</span></label><br>
+        <input type="password"id="password" placeholder="Enter your password (at least 8 ch)" name="password"
+        [type]="hide ? 'password' 
+          : 'text'" [(ngModel)]="enterfirst" required>
+         
+<br>
+        <label >Re-enter password <span style="color: red;">*</span></label><br>
+        <input type="text" placeholder="Re-enter your new password (at least 8 ch)" 
+        [type]="hide ? 
+              'password' : 'text'" [(ngModel)]="entersecond">
+              <p style="color: red;position: relative;position: relative;padding: 0px;height: 0px;top: -6px;">{{error}}</p>
                         <br>
         <button class="update-btn" (click)="confrmPWS()">Update Password</button>
         <button class="cancel-btn">Cancel</button>

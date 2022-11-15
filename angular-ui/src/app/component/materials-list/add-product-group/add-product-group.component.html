@@ -17,7 +17,7 @@
                         <div class="col">
                             <label>Product Group Name<span>*</span></label>
                             <br>
-                            <input type="text" id="uname" name="uname" required placeholder="Enter name"
+                            <input (keyup)="onProductGroup($event)" type="text" id="uname" name="uname" required placeholder="Enter name"
                                 style="width: 404px; position: relative; top: 9%; height: 38px;">
                             <!-- <span style="color:red;position: relative;" >
       *Username is required.
@@ -27,7 +27,7 @@
 
                     </div>
                     <div class="row">
-                        <button class="btn btn-primary btn-block justify-center" style="background-color:#000000;width: 40%; position: relative; left: 28%; top: 36px;">Add </button>
+                        <button class="btn btn-primary btn-block justify-center" style="background-color:#000000;width: 40%; position: relative; left: 28%; top: 36px;"(click)="addProduct()">Add </button>
 
                     </div>
                 </div>

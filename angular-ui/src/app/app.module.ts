@@ -129,6 +129,7 @@ import { SalesUploadsComponent } from './component/sales-list/sales-uploads/sale
 import { SalesReportsComponent } from './component/sales-list/sales-reports/sales-reports.component';
 import { AddDealerAssociationsComponent } from './component/add-dealer-associations/add-dealer-associations.component';
 import { PramotionActionComponent } from './component/pramotion-action/pramotion-action.component';
+import { EditProfileComponent } from './component/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -225,6 +226,7 @@ import { PramotionActionComponent } from './component/pramotion-action/pramotion
           SalesReportsComponent,
           AddDealerAssociationsComponent,
           PramotionActionComponent,
+          EditProfileComponent,
   ],
   imports: [
     FormsModule,

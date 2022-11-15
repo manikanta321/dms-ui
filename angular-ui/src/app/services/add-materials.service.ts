@@ -44,6 +44,12 @@ getProductGroup(){
 getProductSubGroup(subProdId:any){
   return this.http.get<any>(`${this.addmaterialsurl}MaterialApi/GetSubProducts?ParentId=${subProdId}`);
 }
+addProductItem(ProdItem){
+  return this.http.post<any>(`${this.addmaterialsurl}MaterialApi/AddProductGroup`,ProdItem);
+}
+addSubProductItem(ProdItem){
+  return this.http.post<any>(`${this.addmaterialsurl}MaterialApi/AddSubProductGroup`,ProdItem);
+}
 getCountryList(){
   return this.http.get<any>(this.addmaterialsurl + 'OtherMasterApi/GetAllCountries');
 }
@@ -65,6 +71,9 @@ onReactivate(listId:any){
 onDeactivate(listId:any){
   return this.http.get<any>(`${this.addmaterialsurl}MaterialApi/MaterialDeactivate?StockItemId=${listId}`);
 
+}
+onAddMaterials(){
+  return this.http.get<any>(this.addmaterialsurl + 'MaterialApi/AddMaterial');
 }
 onclicksubcat(catId:any){
   return this.http.get<any>(`${this.addmaterialsurl}MaterialApi/GetTypes?subCatId=${catId}`);

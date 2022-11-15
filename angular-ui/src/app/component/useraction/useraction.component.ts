@@ -76,6 +76,7 @@ export class UseractionComponent implements OnInit,  AfterViewInit {
     this.isOpen = false;
   }
   resetpws(){
+    sessionStorage.setItem("admin",'')
     this.dialog.open(PswResetPopupComponent);
     this.isOpen = false;
   }

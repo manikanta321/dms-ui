@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DealerComponent } from './component/dealer/dealer.component';
+import { EditProfileComponent } from './component/edit-profile/edit-profile.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { GeographiesComponent } from './component/geographies/geographies.component';
 import { LoginComponent } from './component/login/login.component';
@@ -15,7 +16,6 @@ import { SalesListComponent } from './component/sales-list/sales-list.component'
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { UsersComponent } from './component/users/users.component';
 import { DashbordComponent } from './shared-component/dashbord/dashbord.component';
-
 
 const routes: Routes = [
   { path: '', pathMatch: 'full',component: LoginComponent },
@@ -34,8 +34,9 @@ const routes: Routes = [
 { path: 'dashbord/oreders', pathMatch: 'full',component: OrdersComponent  }
 ,
   { path: 'dashbord/geographies', pathMatch: 'full',component: GeographiesComponent  },
-  { path: 'dashbord/saleslist', pathMatch:'full', component: SalesListComponent}
+  { path: 'dashbord/saleslist', pathMatch:'full', component: SalesListComponent},
   
+  { path: 'dashbord/edit-profile', pathMatch: 'full',component: EditProfileComponent  },
   
 ];
 

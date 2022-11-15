@@ -5,6 +5,7 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
 import { ActivatepopUpComponent } from '../users/userPopups/activatepop-up/activatepop-up.component';
 import { DeactivateUserpopupComponent } from '../users/userPopups/deactivate-userpopup/deactivate-userpopup.component';
+import { MaterialAddEditpopupComponent } from '../materials-list/material-add-editpopup/material-add-editpopup.component';
 import tippy, { hideAll } from 'tippy.js'; 
 
 @Component({
@@ -66,6 +67,16 @@ export class MaterialListActionComponent implements OnInit {
     } else {
       this.tippyInstance.unmount();
     }
+  }
+  edit(){
+    localStorage.setItem("Edit",'Edit')
+    let dialogRef =this.dialog.open(MaterialAddEditpopupComponent);
+    this.isOpen = false;
+    dialogRef.afterClosed().subscribe((res) => {
+
+    localStorage.setItem('Edit','');
+
+   })
   }
   deactive(){
     this.dialog.open(DeactivateUserpopupComponent);

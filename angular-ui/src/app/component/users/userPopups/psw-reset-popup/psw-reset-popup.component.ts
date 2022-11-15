@@ -15,6 +15,7 @@ export class PswResetPopupComponent implements OnInit {
   userId:any;
   error:any='';
   LoginId:any;
+  adminPassword:boolean =false;
   showPassword: boolean = false;
   constructor( private dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
@@ -33,8 +34,18 @@ export class PswResetPopupComponent implements OnInit {
   ngOnInit(): void {
     this.userId = localStorage.getItem("userID");
     this.LoginId=localStorage.getItem("logInId");
-
-
+    this.adminPass();
+  }
+  adminPass(){
+    let admin =sessionStorage.getItem("admin");
+    if(admin !== '')
+    {
+      this.adminPassword = true;
+      alert(admin);
+    }
+    else{
+      this.adminPassword =false;
+    }
   }
   confrmPWS(){
     if(this.enterfirst==this.entersecond){

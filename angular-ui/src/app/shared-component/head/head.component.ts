@@ -1,7 +1,9 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
+import { PswResetPopupComponent } from 'src/app/component/users/userPopups/psw-reset-popup/psw-reset-popup.component';
 
 @Component({
   selector: 'app-head',
@@ -14,6 +16,7 @@ export class HeadComponent implements OnInit {
 sideBarOpen = true;
 userType:any;
 userName:any;
+public isOpen = false;
 @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
 ngAfterViewInit() {
@@ -30,7 +33,7 @@ ngAfterViewInit() {
   }, 1);
  }
   constructor(private observer: BreakpointObserver,
-    private router: Router,) { }
+    private router: Router,private dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -46,11 +49,15 @@ ngAfterViewInit() {
 sidenavtoggle(){
   this.ToggleSideNav.emit();
 }
-
 logout() {
   this.router.navigate(['']);
 
   localStorage.removeItem("token");
   localStorage.removeItem("expires_at");
+}
+resetpws(){
+  sessionStorage.setItem("admin","adminPassword")
+  this.dialog.open(PswResetPopupComponent);
+  this.isOpen = false;
 }
 }

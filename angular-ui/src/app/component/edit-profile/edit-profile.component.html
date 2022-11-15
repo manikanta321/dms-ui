@@ -1,0 +1,81 @@
+<app-head (ToggleSideNav)="ToggleSideNav($event)"></app-head>
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+        <app-sidenav-bar></app-sidenav-bar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="UNFAPP-asmnt-rgt-area main">
+            <h1 class="edit-heading">Edit Profile</h1>
+            <div class="edit-div">
+                <div class="img-div">
+                    <div class="profile-icon"></div>
+                    <h3 class="profile-name">smartgig</h3>
+                    <span class="prof-s">@smartgigthegreat</span>
+                    <span class="last-login-txt">Last login : 12 Aug 22, 18:06 pm</span>
+                </div>
+                <div class="edit-data">
+                    <h4 class="basic-info">Basic Information</h4>
+                    <div class="div-1">
+                        <div class="row f-labels">
+                            <div class="col-1"></div>
+                            <div class="col-5 f-label">Full Name <span>*</span></div>
+                            <div class="col-3 user-label">Username <span>*</span></div>
+                        </div>
+                        <div class="row ip-top">
+                            <div class="col-1"></div>
+                            <input class="col-5 f-name" type="text">
+                            <div class="col-1"></div>
+                            <input type="text" class="col-5 f-name input-2">
+                        </div>
+                    </div>
+                    <div class="div-2">
+                        <div class="row f-labels">
+                            <div class="col-1"></div>
+                            <div class="col-5 f-label">Email ID<span>*</span></div>
+                            <div class="col-3 user-label">Phone No<span>*</span></div>
+                        </div>
+                        <div class="row ip-top">
+                            <div class="col-1"></div>
+                            <input class="col-5 f-name" type="email">
+                            <div class="col-1"></div>
+                            <input type="text" class="col-5 f-name input-2">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h4 class="role-text">Role selection</h4>
+                    </div>
+                    <div class="div-3">
+                        <div class="row f-labels">
+                            <div class="col-1"></div>
+                            <div class="col-11 f-label">Role <span>*</span></div>
+                        </div>
+                        <div class="row ip-top">
+                            <div class="col-1"></div>
+                            <input class="col-10 f-name role-input" type="text" disabled>
+                            <!-- <div class="col-1"></div> -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="button-save-chng row">
+                <div class="save-chng">
+                    <button class="save-text">
+                        Save changes
+                    </button>
+                </div>
+                <div class="discard">
+                    <button class="discard-text">
+                        Discard
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+    </mat-sidenav-content>
+
+
+
+</mat-sidenav-container>

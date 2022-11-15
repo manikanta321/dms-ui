@@ -28,13 +28,13 @@
                                 <div class="promotiont">
                                     <label>Dealer <span>*</span></label>
                                 </div>
-                                <input matInput placeholder="Search for the geography here" #input class="form-control container input-box" >
+                                <input matInput placeholder="Search & select geography" #input class="form-control container input-box" >
                                 <img src="assets/img/search.png" class="search-img"  alt="search">
                             </div>
                             <div class="col-md-6">
                                 <div class="promotiont">
                                     <label>Geography <span>*</span></label>
-                                    <ng-multiselect-dropdown name="type" [placeholder]="'Select the promotion type'"
+                                    <ng-multiselect-dropdown name="type" [placeholder]="'Select geography'"
                                     formControlName="type" [disabled]="disabled" [settings]="dropdownSettings3"
                                     [data]="toppingList3" (onSelect)="onTypeSelect($event)"
                                     (onSelectAll)="onTypeAll($event)">
@@ -49,7 +49,7 @@
                                 <div class="promotiont">
                                     <label>Billing Address <span>*</span></label>
                                 </div>
-                                <input matInput placeholder="Billing address" #input class="form-control container input-box" >
+                                <input matInput placeholder=" Select Billing address" #input class="form-control container input-box" >
                             </div>
                             <div class="col-md-6">
                                 <div class="promotiont">
@@ -142,7 +142,7 @@
                                 <div class="col-md-2">
                                     <div class="promotiont">
                                         <div>
-                                            <label class="promotions-label">Stack </label>
+                                            <label class="promotions-label">Stock </label>
                                         </div>
                                         <div>
                                             <input type="text" class="stack-cls" id="fname" name="fname">
@@ -227,14 +227,15 @@
                     </div>
                     <div class="content" *ngIf="!otherInfo">
                             <div class="row">
+                                
                                 <div class="col-md-6">
                                     <div class="promotiont">
-                                        <label>Requirment Date </label>
+                                        <label class="boldR">Requirement Date </label>
                                     </div>
                                     <mat-form-field appearance="fill" class="req-date required-border">
                                         <mat-label>Select a date</mat-label>
                                         <input class="req-date" matInput [matDatepicker]="picker">
-                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                     <mat-datepicker-toggle matSuffix [for]="picker" class="calicon"></mat-datepicker-toggle> 
                                         <mat-datepicker #picker></mat-datepicker>
                                     </mat-form-field>
                                 </div>
@@ -242,7 +243,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="promotiont">
-                                        <label>Delivery Instructions/Extra Information</label>
+                                        <label class="delivery1">Delivery Instructions/Extra Information</label>
                                     </div>
                                     <!-- <mat-form-field  class="text-area">
                                         <textarea matInput
@@ -251,8 +252,18 @@
                                         </textarea>
                                       </mat-form-field>  -->
 
-                                      <textarea class="text-area"  placeholder="Please write down if there are any delivery instructions or extra information you want to share" name="w3review" rows="4" cols="50"></textarea>
-                                </div>
+                                 
+                                       <textarea class="text-area" style="resize: none;"  placeholder=" &nbsp;&nbsp;Please write down if there are any delivery instructions or extra information you want to share" name="w3review" rows="4" cols="50"></textarea>
+                                      
+                            
+
+
+    
+
+                                      
+                                                             
+                                    </div>
+
                             </div>
                     </div>
                 </div>

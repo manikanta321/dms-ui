@@ -907,6 +907,7 @@
     align-items: center;
     transition: 0.2s;
     border: none;
+
 }
 
 .searchButton {
@@ -928,7 +929,7 @@
 .searchButton .material-icons{
     margin-left: 72px;
 z-index: 9999;
-margin-top: 0px;
+margin-top: 4px;
 }
 
 .search-btn {

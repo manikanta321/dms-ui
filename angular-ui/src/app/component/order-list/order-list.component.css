@@ -2,12 +2,8 @@
     margin-top: 3%;
     display: inline-flex;
     
-}
-
-
-.allicons
-{
-    margin-bottom:10px;
+}.allicons{    
+        margin-bottom:10px;
     margin-left: 68%;
 
 } 
@@ -65,10 +61,11 @@
     color: white !important;
   }
 
-  .input-field[type="text"]::placeholder
+  /* .input-field[type="text"]::placeholder
   {
-      text-align: left;
-  }
+       text-align: left; 
+       cursor:left; 
+  } */
 
 /* .btn-outline{
     background:transparent;
@@ -104,7 +101,7 @@
     height: 43px;
     padding: 10px;
     left: 130px;
-    text-align: center;
+    /* text-align: center; */
     border-radius: 8px;
 }
 
@@ -288,7 +285,7 @@ input {
     float: right;
     position: absolute;
     left: 142%;
-    top: 46px;
+    top: 45px;
     cursor: pointer;
 }
 
@@ -434,7 +431,7 @@ input {
     position: relative;
     width: 37px;
     height: 37px;
-    top: 6px;
+    top: 7px;
     margin-left: 415px;
     cursor: pointer;
 }

@@ -97,7 +97,7 @@ mat-tab{
     align-items: center;
     position: absolute;
     top: 2%;
-    right: 20px;
+    right: 26px;
   }
   ::ng-deep.dealertab .mat-tab-header{
     width: 752px !important;

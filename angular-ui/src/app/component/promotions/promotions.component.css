@@ -43,7 +43,7 @@
 .searchBox {
   float:right;
   position: absolute;
-  right: -10px;
+  right: -29px;
   top: 5px;
 }
 .searchBox:hover >.searchButton {
@@ -109,7 +109,7 @@
   height: 37px;
   top: 6px;
   margin-top: 5px;
-  margin-left: 17%;
+  margin-left: 83%;
 }
 .download-btn {
   border: none;

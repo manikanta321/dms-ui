@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddPromotionsComponent } from '../add-promotions/add-promotions.component';
 import { ImpactedAssociationComponent } from './impacted-association/impacted-association.component';
 import { MaterialAddEditpopupComponent } from './material-add-editpopup/material-add-editpopup.component';
-import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef, GridApi } from 'ag-grid-community';
+import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef, GridApi, GridOptions } from 'ag-grid-community';
 import { UserService } from 'src/app/services/user.service';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
@@ -102,6 +102,21 @@ export class MaterialsListComponent implements OnInit {
   dropdownSettings2: IDropdownSettings = {};
   dropdownSettings3: IDropdownSettings = {};
   dropdownSettings4: IDropdownSettings = {};
+  gridOptions: GridOptions = {
+    defaultColDef: {
+      resizable: true,
+    }
+  }
+  public defaultColDef: ColDef = {
+    suppressSizeToFit: true,
+    width: 170,
+    filter: 'agTextColumnFilter',
+    flex: 1,
+    minWidth: 100,
+    resizable: true,
+    sortable: true,
+  };
+  
   constructor(public dialog: MatDialog,
     private user: UserService,
     private fb: FormBuilder,
@@ -897,12 +912,12 @@ this.materialList.getMaterialList(data).subscribe((res) => {
     },
 
   ];
-  public defaultColDef: ColDef = {
-    editable: true,
-    filter: 'agTextColumnFilter',
-    resizable: true,
-    sortable: true,
-  };
+  // public defaultColDef: ColDef = {
+  //   editable: true,
+  //   filter: 'agTextColumnFilter',
+  //   resizable: true,
+  //   sortable: true,
+  // };
   public columnTypes: {
     [key: string]: ColDef;
   } = {

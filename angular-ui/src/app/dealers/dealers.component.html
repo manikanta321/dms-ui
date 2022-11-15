@@ -3,12 +3,18 @@
     <div class="row" style="position: relative;top: 8%;bottom: 8px; font-family: 'Gilroy'; color: grey;margin-left: 7px;">
       <div class="col-md-2 col-lg-2 col-sm-2">
         <form [formGroup]="myForm">
-          <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'Geographies'" formControlName="city"
+          <ng-multiselect-dropdown class="roless" name="city" [placeholder]="''" formControlName="city"
             [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList"
             (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
             (onDeSelectAll)="onItemDeSelectOrAll($event)" (onSelectAll)="onItemSelectOrAll($event)">
           </ng-multiselect-dropdown>
         </form>
+        <div class="dropdown-placeholder catty-placeholder">
+          <span *ngIf="myForm.get('city').value.length == 0"> Geographies </span>
+          <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Geography selected </span>
+          <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Geography(s) selected </span>
+
+        </div>
       </div>
 
       <div class="col-md-2 col-lg-2 col-sm-2">
@@ -19,6 +25,12 @@
             (onDeSelectAll)="onItemDeSelectOrAll($event)" (onSelectAll)="onItemSelectOrAll($event)">
           </ng-multiselect-dropdown>
         </form>
+        <div class="dropdown-placeholder catty-placeholder">
+          <span *ngIf="myForm.get('city').value.length == 0">  </span>
+          <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Products selected </span>
+          <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Product(s) selected </span>
+
+        </div>
       </div>
 
       <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;">
@@ -29,6 +41,12 @@
             (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
           </ng-multiselect-dropdown>
         </form>
+        <div class="dropdown-placeholder catty-placeholder">
+          <span *ngIf="myForms.get('citys').value.length == 0">  </span>
+          <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Products selected </span>
+          <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Product(s) selected </span>
+
+        </div>
       </div>
       <div class="icon btnhover refreshbtn" (click)="refresh()" style=" cursor: pointer;">
         <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;"

@@ -99,7 +99,7 @@ li{
     margin-right: 10px;
     font-size: 12px;
     position: relative;
-    left: 2%;
+    left: 1%;
     color: #000000;
     font-weight: bold;
 }
@@ -110,7 +110,7 @@ li{
  height: 34px;
  font-size: 14px;
  border-radius: 8px;
- left:5%;
+ left:-1%;
 }
 .material-card
 

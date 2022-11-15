@@ -24,12 +24,12 @@
           <!-- <div class="buttn" *ngIf=addButton> -->
             <div class="inbtn d-flex" *ngIf=addButton>
               <!-- <button class="btn btn-basic addcat">Add category name</button> -->
-              <input type="text " class="addcatg  col-4" [(ngModel)]="addcat" placeholder="Add category">
+              <input type="text " class="addcatg  col-5" [(ngModel)]="addcat" placeholder="Add category">
               <!-- <button class="btn btn-basic addcode">Add code</button> -->
               <input type="text" class="addcd  col-3" [(ngModel)]="addcatcode" placeholder="Add Code">
               <button class="btn btn-basic addbt  col-2"(click)="addcatagory()" [disabled]="!addcat || !addcatcode " style="cursor: pointer;">Add</button>
               <!-- <div class="rmve col-lg-1"> -->
-                <mat-icon class=" col-2"  (click)="removeaddformcat()" style="cursor: pointer; position: relative;left: 15px;top: 4px;">remove_circle</mat-icon>
+                <mat-icon class=" col-2"  (click)="removeaddformcat()" style="cursor: pointer; position: relative;left: -7px;top: 4px;">remove_circle</mat-icon>
               <!-- </div> -->
             </div>
             

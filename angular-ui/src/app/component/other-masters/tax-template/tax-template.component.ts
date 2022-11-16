@@ -62,7 +62,7 @@ export class TaxTemplateComponent implements OnInit {
   columnDefs: ColDef[] = [ 
 
     { headerName: "Name",
-  field: 'taxTemplateName' ,type: ['nonEditableColumn'],pinned: 'left',minWidth:550
+  field: 'taxTemplateName' ,type: ['nonEditableColumn'],pinned: 'left',minWidth:600
   },
   
   {   headerName: "Tax Items",field: 'taxTemplateDetails',type: ['nonEditableColumn'] ,minWidth:600},

@@ -221,8 +221,8 @@ mat-form-field {
   }
 
 .save-btn {
-    width: 168px;
-    height: 39px;
+    width: 362px;
+    height: 43px;
     font-family: 'Gilroy-SemiBold';
     font-size: 15px;
     line-height: 18px;
@@ -232,5 +232,6 @@ mat-form-field {
     background: #000000;
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 10px;
+    margin-left: -106px;
   }
 

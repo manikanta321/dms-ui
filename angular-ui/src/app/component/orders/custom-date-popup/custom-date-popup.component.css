@@ -1,0 +1,11 @@
+
+li{
+    list-style: none;
+    padding: 8px 60px 5px 6px;
+}
+li:hover{
+    background: #DEE2E6;
+}
+ul{
+    padding: 3px;
+}

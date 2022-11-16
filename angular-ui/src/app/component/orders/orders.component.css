@@ -174,9 +174,9 @@ mat-tab{
 ::ng-deep.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
     display: none;
 }
-mat-tab-group{
+/* mat-tab-group{
     height: 92vh;
-}
+} */
 .header-text{
     font-family: 'Gilroy-Bold';
     font-size: 30px;

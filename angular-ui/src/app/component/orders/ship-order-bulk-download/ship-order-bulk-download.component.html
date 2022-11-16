@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="bulk-dwnld ">
+        <div class="B-download">
+            <img  class="print-img" src="../../../assets/material/print-img.svg" alt="">
+            <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+        </div>
+        <div class="bulk-d">
+            <h3 class="bulk-head font">Ship Order: <b>Bulk Download</b></h3>
+        </div>
+<div class="bulk-Dcontent">
+    <p>Bulk download of invoices & shipment data</p>
+    <p><b>Option 1:</b> Download <b>empty</b> template</p>
+</div>
+<div class="row">
+    <div class="dowload">
+        <div class="bulk-download">
+            <img class="dwnld-img" src="assets/img/orderlist-upload.svg" 
+                alt="add-user-btn">
+        </div>
+       <p class="dwnload-text"> Download the unfiltered attached template <br>
+        to add the invoice information</p>
+    </div>
+</div>
+<div class="row opt2">
+    <div class="col-6">
+        <p><b>Option 2:</b> Download template with <b>filtered</b>data</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3 col-lg-3 col-sm-2">
+        <form [formGroup]="myForm" class="dropdown-form">
+          <ng-multiselect-dropdown class="dealer" name="city" [placeholder]="'Dealer'" formControlName="city"
+            [disabled]="disabled" [settings]="dropdownSettings" [data]="dealersdrop"
+           >
+          </ng-multiselect-dropdown>
+        </form>
+      </div>
+      <div class="col-md-3 col-lg-3 col-sm-2">
+        <form [formGroup]="myForm" class="dropdown-form">
+          <ng-multiselect-dropdown class="order" name="city" [placeholder]="'Order Date'" formControlName="city"
+            [disabled]="disabled" [settings]="dropdownSettings" [data]="dealersdrop"
+           >
+          </ng-multiselect-dropdown>
+        </form>
+      </div>
+      <div class="col-md-3 col-lg-3 col-sm-2">
+        <form [formGroup]="myForm" class="dropdown-form">
+          <ng-multiselect-dropdown class="geography" name="city" [placeholder]="'Geography'" formControlName="city"
+            [disabled]="disabled" [settings]="dropdownSettings" [data]="dealersdrop"
+           >
+          </ng-multiselect-dropdown>
+        </form>
+      </div>
+      <!-- refresh -->
+      <div class=" refreshbtn" style=" cursor: pointer">
+        <img class="refresh-img" src="assets/img/Vector.png" alt="refresh">
+      </div>
+</div>
+ <!-- grid -->
+ <div class="grid-table mt-5">
+    <ag-grid-angular id="gridContainer" class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
+      [headerHeight]="48" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
+      [rowData]="rowData5" [suppressExcelExport]="true" [popupParent]="popupParent"
+      (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"
+      (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
+      (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+      (bodyScroll)="handleScroll($event)"></ag-grid-angular>
+    <div class="pagination">
+      <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
+        class="pagination-cls">{{rowData5.length}}</span>
+    </div>
+  </div>
+  <!-- footer -->
+  <div class="row footer">
+    <div class="col-md-6">
+            <button type="button" class="download-csv">Download CSV </button>                       
+    </div>
+    <div class="col-md-6">                      
+            <button type="button"  [mat-dialog-close]="true"  class="cancel">Cancel</button>                   
+    </div>
+</div>
+    </div>
+</div>

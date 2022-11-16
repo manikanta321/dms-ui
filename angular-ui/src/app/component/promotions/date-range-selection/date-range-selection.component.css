@@ -16,3 +16,24 @@
   .custom-day.faded {
     background-color: rgba(2, 117, 216, 0.5);
   }
+  .reset{
+    width: 85px;
+    height: 34px;
+    background: white;
+    border: 2px solid black;
+    color: black;
+    margin-right: 10px;
+    border-radius: 10px;
+  }
+  .done{
+    width: 85px;
+    height: 34px;
+    background: black;
+    border: 2px solid black;
+    color: white;
+    border-radius: 10px;
+  }
+  .reset-doneBtn{
+display: flex;
+justify-content: end;
+  }

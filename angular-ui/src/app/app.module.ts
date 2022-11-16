@@ -132,10 +132,16 @@ import { PramotionActionComponent } from './component/pramotion-action/pramotion
 import { EditProfileComponent } from './component/edit-profile/edit-profile.component';
 import { AddSalesPopupComponent } from './component/sales-list/sales-inventory/add-sales-popup/add-sales-popup.component';
 import { SalesBulkDownloadComponent } from './component/sales-list/sales-inventory/sales-bulk-download/sales-bulk-download.component';
+<<<<<<< Updated upstream
 import { InvoiceComponent } from './invoice/invoice.component';
 import { InvoiceActionComponent } from './invoice-action/invoice-action.component';
 import { ViewInvoiceComponentComponent } from './view-invoice-component/view-invoice-component.component';
 import { DownloadInvoiceComponentComponent } from './download-invoice-component/download-invoice-component.component';
+=======
+import { OrdersShipmentComponent } from './component/orders/orders-shipment/orders-shipment.component';
+import { ShipOrderBulkDownloadComponent } from './component/orders/ship-order-bulk-download/ship-order-bulk-download.component';
+import { CustomDatePopupComponent } from './component/orders/custom-date-popup/custom-date-popup.component';
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -235,10 +241,16 @@ import { DownloadInvoiceComponentComponent } from './download-invoice-component/
           EditProfileComponent,
           AddSalesPopupComponent,
           SalesBulkDownloadComponent,
+<<<<<<< Updated upstream
           InvoiceComponent,
           InvoiceActionComponent,
           ViewInvoiceComponentComponent,
           DownloadInvoiceComponentComponent,
+=======
+          OrdersShipmentComponent,
+          ShipOrderBulkDownloadComponent,
+          CustomDatePopupComponent,
+>>>>>>> Stashed changes
   ],
   imports: [
     FormsModule,

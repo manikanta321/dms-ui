@@ -1,0 +1,61 @@
+<div >
+    <section >
+      <div class="row">
+          <div class="col-6">
+  </div>
+      <div class="col-6" style="margin-bottom:7px;">
+          <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
+          <div class="col-md-4" style="margin-left: 68%;margin-bottom:10px">
+            <div class="row">
+            <div class="col-md-8">
+          <div class="searchBox d-flex">
+            <input class="searchInput" style="font-family: 'Gilroy'" type="text" name="" placeholder="Type & search for anything" 
+               (keyup)="onSearchChange($event)" >
+            <button class="searchButton" href="#"> 
+                <i class="material-icons">
+                    search
+                </i>
+            </button>
+            <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+          </div>  
+        </div>
+        <div class="col-md-2">
+         <div class="add-user">
+         </div>
+        </div>
+        <!-- <div class="col-md-4">
+         <div class="download-btn" >
+           <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;" alt="add-user-btn">
+         </div>
+        </div> -->
+        </div>
+      </div>
+        </div>
+      </div>
+    </section>
+  
+    <ag-grid-angular
+    id="gridContainer"
+    style=" height: 400px;margin-left: 20px;border-radius: 20px;background-color: white;font-family: Gilroy"
+    class="ag-theme-material"
+    [rowHeight]="25"
+    [headerHeight]="48"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [columnTypes]="columnTypes"
+    [rowData]="rowData5"
+    [suppressExcelExport]="true"
+    [popupParent]="popupParent"
+     (cellValueChanged)="onCellValueChanged($event)"
+    (firstDataRendered)="onFirstDataRendered($event)" 
+    (firstDataRendered)="onFirstDataRendered($event)"
+    (rowClicked)="openDialog()"
+    (cellClicked)="onCellClicked($event)"
+    [paginationPageSize]="paginationPageSize"
+    
+    ></ag-grid-angular>
+  
+    <div class="pagination">
+      <span class="pagination-cls">1</span> to <span class="pagination-cls">{{rowData5.length}}</span> of <span class="pagination-cls">{{rowData5.length}}</span>
+      </div>
+  </div>

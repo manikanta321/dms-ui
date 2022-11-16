@@ -132,6 +132,10 @@ import { PramotionActionComponent } from './component/pramotion-action/pramotion
 import { EditProfileComponent } from './component/edit-profile/edit-profile.component';
 import { AddSalesPopupComponent } from './component/sales-list/sales-inventory/add-sales-popup/add-sales-popup.component';
 import { SalesBulkDownloadComponent } from './component/sales-list/sales-inventory/sales-bulk-download/sales-bulk-download.component';
+import { InvoiceComponent } from './invoice/invoice.component';
+import { InvoiceActionComponent } from './invoice-action/invoice-action.component';
+import { ViewInvoiceComponentComponent } from './view-invoice-component/view-invoice-component.component';
+import { DownloadInvoiceComponentComponent } from './download-invoice-component/download-invoice-component.component';
 
 @NgModule({
   declarations: [
@@ -231,6 +235,10 @@ import { SalesBulkDownloadComponent } from './component/sales-list/sales-invento
           EditProfileComponent,
           AddSalesPopupComponent,
           SalesBulkDownloadComponent,
+          InvoiceComponent,
+          InvoiceActionComponent,
+          ViewInvoiceComponentComponent,
+          DownloadInvoiceComponentComponent,
   ],
   imports: [
     FormsModule,

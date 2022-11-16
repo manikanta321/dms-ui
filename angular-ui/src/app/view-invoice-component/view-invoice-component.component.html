@@ -1,0 +1,22 @@
+
+  
+                  <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+                  <div class="head-t">
+                    <h3 class="addU font">View: ID 25</h3>
+                  </div>
+                <div>
+                    <div class="ag-grid-dummy" id="ag-grid-dummy"></div>  
+                    <ag-grid-angular id="gridContainer" [tooltipMouseTrack]="true"
+                      style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%; margin-left:-4px;"
+                      class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
+                      [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
+                      [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
+                      (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
+                      (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+                      (bodyScroll)="handleScroll($event)"></ag-grid-angular>
+                  </div>
+                  <div class="pagination">
+                    <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of
+                    <span class="pagination-cls">{{rowData5.length}}</span>
+                  </div>
+       

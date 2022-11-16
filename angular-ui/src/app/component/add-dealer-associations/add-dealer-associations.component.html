@@ -172,7 +172,25 @@
                 </div>
             </div>
 
-               
+           
+           </div>
+           <div class="row">
+            <div class="col-3 promotiont1">
+                <form [formGroup]="myForm" class="dropdown-form">
+                    <ng-multiselect-dropdown class="promo1"  [placeholder]="'Geographies'" formControlName="city1"
+                      [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList" >
+                    </ng-multiselect-dropdown>
+                  
+        
+                    <div class="dropdown-placeholder promo1-placeholder">
+                      <span *ngIf="myForm.get('city1').value.length == 0" style="color: black;">Select Product </span>
+                      <span *ngIf="myForm.get('city1').value.length == 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Product  </span>
+                      <span *ngIf="myForm.get('city1').value.length > 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Product  </span>
+        
+                    </div>
+        
+                  </form>
+            </div>
            </div>
 </div>
                   

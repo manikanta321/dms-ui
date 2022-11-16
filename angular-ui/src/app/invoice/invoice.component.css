@@ -1,0 +1,219 @@
+
+.searchBox:hover >.searchButton,
+.searchBox>.searchInput,
+.search-btn {
+  display:none;
+}
+.searchBox {
+  float:right;
+  position: absolute;
+  right: -10px;
+  top: 5px;
+}
+.searchBox:hover >.searchButton {
+  display:bolck;
+  color: #000;
+  float: left;
+  width: 42px;
+  height: 42px;
+  background: #ffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+  background: none;
+  position: relative;
+    right: 288px;
+    top: 2px;
+
+}
+.searchBox:hover >.search-btn {
+  display:block;
+  height: 26px;
+  border: none;
+  background: #000000;
+  color: white;
+  border-radius: 5px;
+  position: absolute;
+  right: 10px;
+  top:94px;
+}
+.searchBox:hover>.searchInput {
+  display:block;
+  width: 335px;
+  height: 43px;
+  background: #FFFFFF;
+  float: left;
+  padding: 5px 32px 6px;
+  border-radius: 10px;
+  font-family: 'Gilroy-medium';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 17px;
+  letter-spacing: 0.08em;
+  color: #263643;
+  box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+  /* // transition: 0.2s  ease-in-out; */
+  position: absolute;
+  right: 0px;
+  bottom: -3px;
+}
+.addU:before {
+  width: 201px;
+}
+.addU[_ngcontent-mps-c425]:after {
+  width: 205px;
+}
+.add-user {
+  border: none;
+  background: #ffffff00;
+  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+  top: 6px;
+  margin-top: 88px;
+  margin-left: 102%;
+}
+.download-btn {
+  border: none;
+  background: #000000;
+  border-radius: 50%;
+  position: relative;
+  width: 37px;
+  height: 37px;
+  top: 6px;
+  left: 21%;
+}
+.searchButton {
+  display:bolck;
+  color: #FFFFFF;
+  float: left;
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  background: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+  border: none;
+  margin-top: 83px;
+}
+@media screen and (max-width: 620px) {
+  .searchBox:hover>.searchInput {
+      width: 150px;
+      padding: 0 6px;
+       left:10%;
+  }
+  .searchBox {
+left: 37%
+  }
+}
+.ag-theme-material .ag-filter-toolpanel-header, .ag-theme-material .ag-filter-toolpanel-search, .ag-theme-material .ag-status-bar, .ag-theme-material .ag-header-row, .ag-theme-alpine .ag-panel-title-bar-title, .ag-theme-alpine .ag-multi-filter-group-title-bar {
+
+  --ag-background-color: rgba(219, 19, 19, 0.863);
+  --ag-border-radius:25px;
+  
+  
+  }
+  .ag-header-row ag-header-row-column{
+  --ag-background-color: rgba(0, 0, 0, 0.815);
+  }
+  .ag-root-wrapper .ag-layout-normal .ag-ltr{
+    border: solid 10px;
+    border-color: var(--ag-border-color, #094db9) !important;
+    border-radius: 100px;
+  }
+  .customHeaderLabel{
+    color: #007bff;
+  }
+  .ag-theme-balham .ag-header-cell{
+    background-color: #b81111 !important;
+  }
+  ::ng-deep.ag-header-cell-text {
+    color: #686E74 !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px !important;
+  }
+  
+  ::ng-deep.ag-theme-material .ag-root-wrapper, .ag-theme-material .ag-sticky-top {
+  
+    border: 0.5px solid #000000 !important;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
+    border-radius: 25px !important;
+  
+  }
+  .ag-root-wrapper {
+    border: solid 10px;
+    border-color: var(--ag-border-color, #094db9) !important;
+    border-radius: 100px;
+  }
+  .ag-layout-norm{
+    --ag-border: solid;
+  
+  }
+   .ag-ltr{
+    --ag-border: solid;
+  
+   }
+   .ag-header-cell-label {
+    color: blue !important;
+    font-weight: bold;
+  }
+  .ag-pivot-off .ag-header-cell-label {
+    color: #8a6d3b;
+  }
+  
+  .ag-theme-material{
+      
+    --ag-card-radius: 100px;
+    --ag-border-radius: 20px;
+  --ag-header-height: 30px;
+  /* --ag-header-foreground-color: blue; */
+  --ag-header-background-color: rgba(0, 0, 0, 0);
+  /* --ag-header-cell-hover-background-color: rgb(80, 40, 140);
+  --ag-header-cell-moving-background-color: rgb(80, 40, 140); */
+  }
+  .test-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(223, 8, 8);
+    }
+    
+    .test-header {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 13px;
+    margin-bottom: 0.5rem;
+    }
+    
+    .test-header .example-section {
+    margin-bottom: 0.5rem;
+    }
+    
+    #myGrid {
+    flex: 1 1 0px;
+    }
+    .matsorticonclass{
+    color: black;
+    }
+    
+    .matsorticonclass:hover{
+    color: rgba(128, 128, 128, 0.534);
+    }
+    ::ng-deep.mat-select-arrow-wrapper {
+    
+    margin-top: -8px;
+    
+    }
+    .pagination {
+      float:right !important;
+    }
+    
+    .pagination-cls {
+      font-size: 14px;
+      font-weight: 900;
+    }
+    

@@ -1,68 +1,60 @@
-<div >
-    <section >
-        <div class="row"  id="table1">
-            <div class="col-6">
-        <mat-radio-group class="radioPadding" >
-          <mat-radio-button class="shipButton" (click)="shipClick('Shipping')" value="Shipping" [checked]="shippingChk">Shipping Charges</mat-radio-button>
-          <mat-radio-button class="shipButton"(click)="shipClick('Packing')" value="Packing"  [checked]="packageChk">Packing Charges</mat-radio-button>
+<div>
+  <section>
+    <div class="row" id="table1">
+      <div class="col-6">
+        <mat-radio-group class="radioPadding">
+          <mat-radio-button class="shipButton" (click)="shipClick('Shipping')" value="Shipping" [checked]="shippingChk">
+            Shipping Charges</mat-radio-button>
+          <mat-radio-button class="shipButton" (click)="shipClick('Packing')" value="Packing" [checked]="packageChk">
+            Packing Charges</mat-radio-button>
         </mat-radio-group>
-    </div>
-        <div class="col-6" id="icons11">
-            <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
-            <div class="col-md-4"  id="allicons">
-              <div class="row">
-              <div class="col-md-4">
-            <div class="searchBox d-flex">
-              <input class="searchInput" style="font-family: 'Gilroy'" type="text" name="" placeholder="Type & search for anything" 
-              (keyup)="onSearchChange($event)">
-              <button class="searchButton" href="#"> 
+      </div>
+      <div class="col-6" id="icons11">
+        <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
+        <div class="col-md-4" id="allicons">
+          <div class="row">
+            <div class="col-md-4 search-grid">
+              <div class="searchBox d-flex">
+                <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+                  placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
+                <button class="searchButton" href="#">
                   <i class="material-icons">
-                      search
+                    search
                   </i>
-              </button>
-              <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
-            </div>  
-          </div>
-          <div class="col-md-1">
-           <div class="add-user" (click)="addUser()">
-             <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
-           </div>
-          </div>
-          <div class="col-md-0">
-           <div class="download-btn" (click)="onBtnExport()">
-             <img src="../../../assets/img/dwnld-edit.svg" style="position: relative;top: 8px;left: 12px;" alt="add-user-btn">
-           </div>
-          </div>
+                </button>
+                <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+              </div>
+            </div>
+            <div class="col-md-1">
+              <div class="add-user" (click)="addUser()">
+                <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+              </div>
+            </div>
+            <div class="col-md-0">
+              <div class="download-btn" (click)="onBtnExport()">
+                <img src="../../../assets/img/dwnld-edit.svg" style="position: relative;top: 8px;left: 12px;"
+                  alt="add-user-btn">
+              </div>
+            </div>
           </div>
         </div>
-          </div>
-        </div>
-      </section>
-    <ag-grid-angular
-                 id="gridContainer"
-                 style=" height: 386px;margin-left:17px;  overflow: hidden;    border-radius: 20px;background-color: white;font-family: Gilroy"
-                 class="ag-theme-material"
-                 [rowHeight]="25"
-                 [headerHeight]="48"
-                 [columnDefs]="columnDefs"
-                 [defaultColDef]="defaultColDef"
-                 [columnTypes]="columnTypes"
-                 [rowData]="rowData5"
-                 [suppressExcelExport]="true"
-                 [popupParent]="popupParent"
-                  (cellValueChanged)="onCellValueChanged($event)"
-                 (firstDataRendered)="onFirstDataRendered($event)" 
-                 (firstDataRendered)="onFirstDataRendered($event)"
-                 (rowClicked)="openDialog()"
-                 (cellClicked)="onCellClicked($event)"
-                 (gridReady)="onGridReady($event)"
-                  [pagination]="false" 
-                 ></ag-grid-angular>
- 
- </div>
+      </div>
+    </div>
+  </section>
+  <ag-grid-angular id="gridContainer"
+    style=" height: 386px;margin-left:17px;  overflow: hidden;    border-radius: 20px;background-color: white;font-family: Gilroy"
+    class="ag-theme-material" [rowHeight]="25" [headerHeight]="48" [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5" [suppressExcelExport]="true"
+    [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
+    (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
+    (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" (gridReady)="onGridReady($event)"
+    [pagination]="false"></ag-grid-angular>
+
+</div>
 
 
- 
- <div class="pagination22">
-  <span class="pagination-cls22">1</span> to <span class="pagination-cls">{{rowData5.length}}</span> of <span class="pagination-cls">{{rowData5.length}}</span>
-  </div>
+
+<div class="pagination22">
+  <span class="pagination-cls22">1</span> to <span class="pagination-cls">{{rowData5.length}}</span> of <span
+    class="pagination-cls">{{rowData5.length}}</span>
+</div>

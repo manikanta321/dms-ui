@@ -52,8 +52,14 @@
 .font{
   font-family: 'Gilroy';
 }
+
+.search-grid{
+  position: relative;
+  top: 15px;
+  right: -30px;
+}
 .searchButton {
-  display:bolck;
+  display:block;
   color: #FFFFFF;
   float: left;
   width: 37px;
@@ -65,6 +71,8 @@
   align-items: center;
   transition: 0.2s;
   border: none;
+  position: relative;
+  top: -3px;
 }
 .searchBox:hover >.searchButton,
 .searchBox>.searchInput,
@@ -74,9 +82,9 @@ display:none;
 
 .searchBox {
 float:right;
-top: 11px;
+/* top: 11px;
 position: relative;
-left: 84%;
+left: 84%; */
 cursor: pointer;
 }
 .searchBox:hover >.searchButton .material-icons {
@@ -88,7 +96,7 @@ cursor: pointer;
 .add-user{
 margin-left: -35px;
 }
-.searchBox:hover >.searchButton {
+/* .searchBox:hover >.searchButton {
 display:bolck;
  color: #000; 
 float: left;
@@ -104,7 +112,7 @@ position: relative;
 right: 188px;
 top: 4px; 
 
-}
+} */
 .add-user {
 border: none;
 background: #000000;

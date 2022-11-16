@@ -82,6 +82,7 @@ mat-tab{
     background-color: black; 
     color: white;
     border-radius: 25px;
+    opacity: 1;
 }
 
  .geo-label .mat-tab-labels:nth-child(1) {

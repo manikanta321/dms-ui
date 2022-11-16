@@ -274,11 +274,11 @@ shipPackCharges:any;
     this.columnDefs= [
       {
         headerName: this.headerName,field: 'shippingForm', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
-      },
+          },
   
-      { headerName: this.secondColumn, field: 'shippingTo', type: ['nonEditableColumn'] },
+      { headerName: this.secondColumn, field: 'shippingTo', type: ['nonEditableColumn']  },
   
-      { headerName: this.ThirdColumn, field: 'shippingCharges', type: ['nonEditableColumn'] , width: 1250   }, 
+      { headerName: this.ThirdColumn, field: 'shippingCharges', type: ['nonEditableColumn'] , width: 1200   }, 
     ];
    }
 }

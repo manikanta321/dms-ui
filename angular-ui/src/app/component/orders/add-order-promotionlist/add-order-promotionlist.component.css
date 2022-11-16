@@ -847,8 +847,7 @@
     width: 860px;
 }
 
-.saveas-draft {
-    color: #fff;
+.saveas-draft1 {
     background: #000000;
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 10px;
@@ -856,8 +855,19 @@
     height: 43px;
     margin:auto;
     text-align: center;
-    margin-top:10px;
+    margin-top:50px;
     cursor:pointer;
+    margin-left: 40%;
+
+
+
+    font-family: 'Gilroy-SemiBold';
+font-size: 15px;
+line-height: 18px;
+align-items: center;
+text-align: center;
+
+color: #FFFFFF;
 }
 
 .promotion-card {
@@ -999,13 +1009,15 @@ color: #000000;
      font-family: 'Gilroy-Bold';  
      
      font:'Gilroy-Medium';
-    font-size: 13px;
-    line-height: 16.41px;
-     font-weight: bold; 
-    /* display: flex; */
-    /* align-items: center;
-    text-align: center;  */
-    color: #000000;
+    color: #000000; 
+font-size: 14px;
+line-height: 16px;
+letter-spacing: 0em;
+text-align: center;
+line-height: 16px;
+letter-spacing: 0em;
+text-align: center;
+
 }
 
 .expand-arrow {

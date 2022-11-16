@@ -2,11 +2,13 @@
     margin-top: 3%;
     display: inline-flex;
     
-}.allicons{    
+}
+ .allicons{    
         margin-bottom:10px;
     margin-left: 68%;
 
-} 
+}   
+
 .searchInput1
 {
     font-family: 'Gilroy';

@@ -6,7 +6,7 @@
           >close</mat-icon
         >
         <div class="head-t">
-          <h3 class="addU font">Charges</h3>
+          <h3 class="addU font"> Add Charges</h3>
         </div>
 
         <div class="row bothDown">
@@ -32,7 +32,7 @@
               id="sValue"
               name="sValue"
               required
-              placeholder="50"
+              placeholder="Enter"
               [(ngModel)]="packingCharge.address"
               name="address_{{ i }}"
             />
@@ -44,7 +44,7 @@
               id="eValue"
               name="eValue"
               required
-              placeholder="5000"
+              placeholder="Enter"
               [(ngModel)]="packingCharge.eValue"
               name="street_{{ i }}"
             />
@@ -57,12 +57,12 @@
               id="pValue"
               name="pValue"
               required
-              placeholder="1500"
+              placeholder="Enter"
               [(ngModel)]="packingCharge.pValue"
               name="city_{{ i }}"
             />
 
-            <!-- <p class="minus-icon10">-</p>  -->
+            <!-- <p class="minus-icon10" >-</p>  -->
           </div>
           <div class="col-2">
             <mat-icon class="removeCircle" *ngIf="i >= 1" (click)="removesub(i)">remove_circle</mat-icon>

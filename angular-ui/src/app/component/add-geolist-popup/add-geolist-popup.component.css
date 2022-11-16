@@ -35,6 +35,7 @@
 .head-t h3 {
     color: #000000;
     text-align: center;
+    margin-top: -20px;
 }
 
 .addU {
@@ -83,6 +84,7 @@ span {
     position: relative;
     font-size: 15px;
     font-weight: 600;
+    top:-2px;
 }
 
 label {
@@ -151,13 +153,14 @@ mat-form-field {
 
 .minus-icon10
 {
-    background-color: red;
-    margin-left: 275px;
+    background-color: #686E74;
+    margin-left: 243px;
     margin-top: -36px;
     color: white;
     text-align: center;
     border-radius: 90%;
     width: 20px !important;
+    
     
 }
 .searchBox[_ngcontent-hbx-c448]:hover > .searchInput[_ngcontent-hbx-c448] {

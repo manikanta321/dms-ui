@@ -122,6 +122,7 @@ export class OrderListComponent implements OnInit {
     {
       headerName: "Status",
       field: 'status',
+      maxWidth:120,
       cellEditor: 'agSelectCellEditor',
       cellEditorParams: {
         values: ['Closed','Approved',],
@@ -136,10 +137,12 @@ export class OrderListComponent implements OnInit {
     // },
     {
       headerName: '',
+    
       colId: 'action',
+
       cellRenderer: OrderlistActionPopupComponent,
       editable: false,
-      maxWidth: 75  
+      maxWidth: 70  
     },
     // {
     //   headerName: "Avatar",
@@ -153,17 +156,15 @@ export class OrderListComponent implements OnInit {
   rowData: any;
   rowData1 = []
   public defaultColDef: ColDef = {
-    // set the default column width
-    width: 130,
-    // make every column editable
-    editable: true,
-    // make every column use 'text' filter by default
+     
+    suppressSizeToFit: true,
+    width: 170,
     filter: 'agTextColumnFilter',
-    // enable floating filters by default
-    // floatingFilter: true,
-    // make columns resizable
+    flex: 1,
+    minWidth: 100,
     resizable: true,
     sortable: true,
+    
   };
 
   // public defaultColDef: ColDef = {

@@ -240,8 +240,8 @@ bottom: 2px;
   
   ::ng-deep.ag-theme-material ::-webkit-scrollbar-thumb {
   
-      background: red !important; 
-      border-radius: 10px;    
+      /* background: red !important; 
+      border-radius: 10px;     */
   
   }
   

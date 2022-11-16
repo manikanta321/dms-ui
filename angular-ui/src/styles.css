@@ -9,165 +9,198 @@
 @import 'ag-grid-community/dist/styles/ag-theme-material.css';
 
 
-  
+
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    margin: 0;
-    font-family: Montserrat, sans-serif;
+  margin: 0;
+  font-family: Montserrat, sans-serif;
 }
+
 ::ng-deep body {
-    font-family: Montserrat, sans-serif;
-    }
+  font-family: Montserrat, sans-serif;
+}
+
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #000000 #dee2e6;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #dee2e6;
+}
+
+*::-webkit-scrollbar-thumb, *::-webkit-scrollbar-thumb:hover {
+  background-color: #000000;
+  border-radius: 10px;
+  border: 0px none #000000;
+}
 
 .mat-form-field-underline {
 
-    display: none;
+  display: none;
 
 }
+
 @font-face {
-    font-family: "Gilroy";
-    src: local("gilroy"), url(./assets/fonts/gilroy/Gilroy-Medium.ttf) format("truetype");
+  font-family: "Gilroy";
+  src: local("gilroy"), url(./assets/fonts/gilroy/Gilroy-Medium.ttf) format("truetype");
 }
-.cdk-overlay-container:empty { 
-    /* display: none; */ 
-    display: '';
+
+.cdk-overlay-container:empty {
+  /* display: none; */
+  display: '';
 }
+
 /* *{
     font-family: "Gilroy-Medium";
 } */
 .w-100 {
-    width: 100%;
+  width: 100%;
 }
 
 .custom-dialog-container .mat-dialog-container {
-    padding: 0;
+  padding: 0;
 }
 
 .mat-tab-body-content {
-    overflow: inherit !important;
+  overflow: inherit !important;
 }
 
 .mat-expansion-panel:not([class*=mat-elevation-z]) {
-    width: 100%;
+  width: 100%;
 }
 
-.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value{
-    background: #0091EA;
-    padding: 0 5px;
-    color: #fff;
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
+  background: #0091EA;
+  padding: 0 5px;
+  color: #fff;
 }
 
 
 .primary-color {
-   color: #017EFA;
+  color: #017EFA;
 }
 
 #gridContainer .ag-paging-page-summary-panel {
-    display:none !important;
+  display: none !important;
 }
 
-#gridContainer .ag-paging-row-summary-panel-number{
-    font-weight: 800;
-    color: #000;
+#gridContainer .ag-paging-row-summary-panel-number {
+  font-weight: 800;
+  color: #000;
 }
 
-.mat-dialog-container{
-    background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
-    border: 0.5px solid #000000;
-    border-radius: 15px !important;
+.mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
+  border: 0.5px solid #000000;
+  border-radius: 15px !important;
 }
 
-.activeSuccessPop .mat-dialog-container{
-    background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
-    border: 0.5px solid #000000;
-    border-radius: 10px !important;
-    border-left: 10px solid green !important;
-    padding: 10px 20px;
+.activeSuccessPop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
 }
-.deactiveSuccessPop .mat-dialog-container{
-    background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
-    border: 0.5px solid #000000;
-    border-radius: 10px !important;
-    border-left: 10px solid #FF0000!important;
-    padding: 10px 20px;
+
+.deactiveSuccessPop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid #FF0000 !important;
+  padding: 10px 20px;
 }
-.deactiveSuccessPop{
-    position: absolute !important;
-    pointer-events: auto;
-    box-sizing: border-box;
-    z-index: 1000;
-    display: flex;
-    max-width: 100%;
-    max-height: 100%;
-    bottom: 2%;
-    left: 65%;
+
+.deactiveSuccessPop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 65%;
 }
-.activeSuccessPop{
-    position: absolute !important;
-    pointer-events: auto;
-    box-sizing: border-box;
-    z-index: 1000;
-    display: flex;
-    max-width: 100%;
-    max-height: 100%;
-    bottom: 2%;
-    left: 65%;
+
+.activeSuccessPop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 65%;
 }
+
 .geo-label .mat-tab-labels:nth-child(1) {
-    width: 50% !important;
-  }
+  width: 50% !important;
+}
 
 @media(max-width:569px) {
-    .geo-label .mat-tab-header {
-        width:22% !important;
-    }
+  .geo-label .mat-tab-header {
+    width: 22% !important;
+  }
 }
 
 .geo-label .mat-ink-bar {
-    display:none;
+  display: none;
 }
 
 .remove-mat-icon {
-    margin-left:-14px !important;
-    margin-top:10px !important;
-    overflow:unset !important;
-    font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px;
-    line-height: 1;
-    letter-spacing: normal;
-    text-transform: none;
-    display: inline-block;
-    white-space: nowrap;
-    word-wrap: normal;
-    direction: ltr;
-    -webkit-font-feature-settings: 'liga';
-    -webkit-font-smoothing: antialiased;
+  margin-left: -14px !important;
+  margin-top: 10px !important;
+  overflow: unset !important;
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+@media only screen and (max-width: 600px) {
+  .header-text {
+    font-size: 20px !important;
   }
 
-  @media only screen and (max-width: 600px) {
-   .header-text {
-     font-size:20px !important;
-   }
-   .geo-label .mat-tab-header {
-     width: 48% !important;
-   }
-   .geo-label .mat-tab-labels:nth-child(1) {
-    width: 80% !important;
-   }
+  .geo-label .mat-tab-header {
+    width: 48% !important;
+  }
 
-   .searchBox:hover >.searchButton {
+  .geo-label .mat-tab-labels:nth-child(1) {
+    width: 80% !important;
+  }
+
+  .searchBox:hover>.searchButton {
     position: relative;
     right: 239px;
   }
-  
-  .searchBox:hover >.search-btn {
-    display:block;
+
+  .searchBox:hover>.search-btn {
+    display: block;
     height: 26px;
     border: none;
     background: #000000;
@@ -175,10 +208,10 @@ body {
     border-radius: 5px;
     position: absolute;
     right: 10px;
-    top:10px;
+    top: 10px;
   }
-  
-  
+
+
   .searchBox:hover>.searchInput {
     width: 280px;
     float: left;
@@ -186,47 +219,48 @@ body {
     bottom: -3px;
   }
 
-  .searchBox:hover >.search-btn {
+  .searchBox:hover>.search-btn {
     right: 10px;
   }
-  
-  
+
+
   .searchBox:hover>.searchInput {
     width: 280px;
     bottom: -3px;
   }
 
   searchButton {
-    margin-left:-28px !important;
+    margin-left: -28px !important;
   }
 
-  }
+}
 
-  mat-list-item-content::before {
-    content: "Read this: ";
-  }
-.editpopup .mat-dialog-container{
-    border-radius: 10px;
-   /* padding: 2px 20px 2px 20px; */
-    padding: 0px 1px !important;
-    background: white !important;
-    width: 156px;
-   }
+mat-list-item-content::before {
+  content: "Read this: ";
+}
+
+.editpopup .mat-dialog-container {
+  border-radius: 10px;
+  /* padding: 2px 20px 2px 20px; */
+  padding: 0px 1px !important;
+  background: white !important;
+  width: 156px;
+}
 
 
- .geo-classification-list {
-    height:600px !important;
-  }
+.geo-classification-list {
+  height: 600px !important;
+}
 
-  .geo-classification-list .mat-tab-group .mat-tab-body-wrapper,
-  .geo-classification-list .mat-tab-group {
-    height: 100% !important;
-  }
+.geo-classification-list .mat-tab-group .mat-tab-body-wrapper,
+.geo-classification-list .mat-tab-group {
+  height: 100% !important;
+}
 
-  .req-date .mat-form-field-wrapper .mat-form-field-flex {
-    border-radius: 10px !important;
-    background: #fff !important;
-  }
+.req-date .mat-form-field-wrapper .mat-form-field-flex {
+  border-radius: 10px !important;
+  background: #fff !important;
+}
 
 .text-area {
   width: 748px;
@@ -247,18 +281,17 @@ body {
 
 
 #OrderPromotionListContainer .ag-paging-page-summary-panel {
-  display:none !important;
+  display: none !important;
 }
 
 #OrderPromotionListContainer .ag-root-wrapper {
-  height:368px !important
+  height: 368px !important
 }
 
 #OrderPromotionListContainer {
-  background:transparent !important
+  background: transparent !important
 }
 
 /* .popup-size .mat-stepper-horizontal .mat-horizontal-stepper-wrapper {
   height: 85%;
 } */
-

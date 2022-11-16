@@ -11,11 +11,13 @@ mat-sidenav-content{
     height: 100vh;
     border-radius: 10px;
     padding: 10px;
+    overflow: hidden;
     background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);
 }
 mat-sidenav-container {
     height: calc(100vh - 65px);
     /* height: 100vh; */
+    
 }
 mat-tab{
     display: flex;
@@ -98,3 +100,6 @@ mat-tab-group{
      min-width: 187px !important; 
     /* min-width: 152px; */
    } 
+   mat-drawer-content .hideScrollOthermasters{
+        overflow: hidden;
+   }

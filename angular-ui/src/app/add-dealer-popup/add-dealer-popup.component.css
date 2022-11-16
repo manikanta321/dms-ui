@@ -4,7 +4,7 @@ width: 280px;
 height: 43px;
 left: 0px;
 top: 78px;
-
+font-family: 'Gilroy';
 background: #FFFFFF;
 border: 0.5px solid #000000;
 box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
@@ -405,6 +405,7 @@ border-radius: 10px;
     /* padding: 2px 0; */
     font-size: 12px;
     margin: 5px;
+    font-family: 'Gilroy';
   }
   
   mat-form-field {
@@ -1077,6 +1078,7 @@ border-radius: 10px;
     background: #000000;
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 10px;
+    border-color: black;
   }
 
   .cancel-btn {
@@ -1154,6 +1156,7 @@ border-radius: 10px;
     border: 0.5px solid #000000;
     box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
     border-radius: 10px;
+    color: grey;
   }
 
   .Geo-headerlabel {

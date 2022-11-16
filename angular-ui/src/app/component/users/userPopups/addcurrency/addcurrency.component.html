@@ -11,31 +11,29 @@
           <h6 style="color: #000000
    ;font-size:20px; font-weight: lighter;"><b> Information</b></h6>
    <!-- <p style="color: red;">{{errorMsg}}</p> -->
+       <label class="defaultCurrLabel">Default Currency =<b> Indian Rupee (INR)</b><span>*</span></label>
+ 
         </div>
-        <div class="addUserForm">
+        
+        <div class="addUserForm divAlign">
           <form [formGroup]="currencyForm">
             <div class="row">
               <div class="col">
                   <label>Name <span>*</span></label>
                   <br>
-                  <input type="text" placeholder="Enter Name" formControlName="name" class="imputtext">        </div>
+                  <input type="text" placeholder="Enter Name" formControlName="name" class="imputtext"></div>
                 <div class="col">
                   <label>Display Units<span>*</span></label>
                   <br>
-                <input type="text" placeholder="Enter display unit" formControlName="displayUnit" class="imputtext" >         </div>
+                <input type="text" placeholder="Enter display unit" formControlName="displayUnit" class="imputtext" ></div>
             </div>
                 <br>
               <div class="row">
                 <div class="col">
                   <label>Conversion Rate<span>*</span></label>
                   <br>
-<<<<<<< Updated upstream
-                  <input type="text"  formControlName="conversionRate" placeholder="Enter Conversion Rate" class="imputtext" style="width: 100%;">
-                <!-- (keyup)="calCulating($event)"  -->
-=======
                   <input type="text"   formControlName="conversionRate" placeholder="Enter Conversion Rate" class="imputtext" style="width: 100%;">
                 
->>>>>>> Stashed changes
                 </div>
                 <!-- <div class="col"> 
                  
@@ -50,20 +48,20 @@
                 
               <label>Conversion<span>*</span></label>
               <br>
-              <input type="text" placeholder="Enter Conversion" formControlName="conversion" class="imputtext" >
+              <input type="text" placeholder="Enter Conversion" formControlName="conversion" class="imputtext">
                 
                 </div>
-                <div class="col">
-                
+                <div class="col"> 
+                 
                   <label><span style="color: aliceblue;">.</span></label>
                   <br>
-<h2 style="padding-top: 11px;">=</h2>                    
+<h2 style="padding-top: 11px;">=</h2>                     
                     </div>
                 <div class="col">
                 
                   <label><span style="color: aliceblue;">.</span></label>
                   <br>
-                  <input type="text" placeholder="Enter Conversion" [disabled]="true" formControlName="conversionFixed"  class="imputtext form-select form-select-lg mb-8">
+                  <input type="text" placeholder="1 INR" [disabled]="true" formControlName="conversionFixed"  class="imputtext form-select form-select-lg mb-8">
                     
                     </div>
 
@@ -81,7 +79,7 @@
  
                   </div>
               </div>
-          <span style="margin-left:17%;position: relative;top: 10px;">Required fields*</span>
+          <span style="position: relative;top: 10px;">Required fields*</span>
         </div>
       </div>
     </div>

@@ -68,6 +68,11 @@
     width: 250px;
     font-size: 14px;
     outline: none !important;
+  
+}
+.divAlign{
+    position: relative;
+    bottom: 22px;
 }
 ::ng-deep.btn-primary[_ngcontent-uke-c437]:disabled {
     margin-bottom: 0px !important;
@@ -113,4 +118,9 @@ mat-form-field {
 }
 .imputtext{
     height: 43px;
+}
+.defaultCurrLabel{
+    position: relative;
+    left: 300px;
+    bottom: 36px;
 }

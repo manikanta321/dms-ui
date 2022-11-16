@@ -11,7 +11,7 @@ export class AddcurrencyComponent implements OnInit {
     name:any;
     headerName:any;
     currencyForm:FormGroup;
-   
+    disabled:boolean | undefined;
 
   constructor(private dialogRef: MatDialogRef<any>,
     private user:UserService,) {

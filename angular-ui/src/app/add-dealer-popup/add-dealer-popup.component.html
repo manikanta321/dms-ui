@@ -32,31 +32,31 @@
                                         <input type="text" formControlName="dealerName" class="addDelercols" required placeholder="Enter your name">
                                     </div>
                                     <div class="col-4 ">
-                                        <label>Email-Id<span>*</span></label>
+                                        <label>Email-ID<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="email" class="addDelercols">
+                                        <input type="text" formControlName="email" class="addDelercols" required placeholder="Enter your Email ID">
                                     </div>
                                     <div class="col-4 ">
-                                        <label>Code.<span>*</span></label>
+                                        <label>Code<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="dealerCode" class="addDelercols">
+                                        <input type="text" formControlName="dealerCode" class="addDelercols" required placeholder="Enter your code">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-4 ">
                                         <label>Website<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="website"  class="addDelercols">
+                                        <input type="text" formControlName="website"  class="addDelercols" required placeholder="Enter your company website">
                                     </div>
                                     <div class="col-4 ">
-                                        <label>Phone no<span>*</span></label>
+                                        <label>Phone No<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="phone"  class="addDelercols">
+                                        <input type="text" formControlName="phone"  class="addDelercols" required placeholder="Enter phone no">
                                     </div>
                                     <div class="col-4 ">
-                                        <label>Company id<span>*</span></label>
+                                        <label>Company ID<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="companyId"  class="addDelercols">
+                                        <input type="text" formControlName="companyId"  class="addDelercols" required placeholder="Enter your company ID">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -64,9 +64,9 @@
                                         <!-- <input type="text"> -->
                                     </div>
                                     <div class="col-4 ">
-                                        <label>Other identifer<span>*</span></label>
+                                        <label>Other Identifer<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="identifier"  class="addDelercols">
+                                        <input type="text" formControlName="identifier"  class="addDelercols" required placeholder="Enter and select">
                                     </div>
                                     <div class="col-4 ">
                                         <!-- <input type="text"> -->
@@ -85,37 +85,37 @@
                             <div class="col-12">
                                 <div class="row">
                                     <div class="col-4 fontcolor">
-                                        <label>Username<span>*</span></label>
+                                        <label>User Name<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="userName" class="addDelercols">
+                                        <input type="text" formControlName="userName" class="addDelercols" required placeholder="Enter your name">
                                     </div>
                                     <div class="col-4 fontcolor">
-                                        <label>Email-Id<span>*</span></label>
+                                        <label>Email ID<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="userEmail" class="addDelercols">
+                                        <input type="text" formControlName="userEmail" class="addDelercols" required placeholder="Enter your email ID">
                                     </div>
                                     <div class="col-4 fontcolor">
-                                        <label>phone no<span>*</span></label>
+                                        <label>Phone No<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="usermobile" class="addDelercols">
+                                        <input type="text" formControlName="usermobile" class="addDelercols" required placeholder="Enter your phone no">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-4">
                                         <label>First Name<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="firstName" class="addDelercols">
+                                        <input type="text" formControlName="firstName" class="addDelercols" required placeholder="Enter your First Name"> 
                                     </div>
                                     <div class="col-4">
                                         <label>Last Name<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="lastName" class="addDelercols">
+                                        <input type="text" formControlName="lastName" class="addDelercols" required placeholder="Enter your Last Name">
                                     </div>
                                     <div class="col-4">
                                         <label>Status<span>*</span></label>
                                         <br>
                                         <select class="status-class" formControlName="status" name="status" placeholder="Select Status">
-                                            <option value=""  selected hidden>Select your Role</option>                                       
+                                            <option value=""  selected hidden>Select  status</option>                                       
                                             <option *ngFor="let option of statusList" [value]="option.statusId">
                                                 {{option.statusName}}
                                             </option>

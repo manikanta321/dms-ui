@@ -29,7 +29,7 @@
               <input type="text" class="addcd  col-3" [(ngModel)]="addcatcode" placeholder="Add Code">
               <button class="btn btn-basic addbt  col-2"(click)="addcatagory()" [disabled]="!addcat || !addcatcode " style="cursor: pointer;">Add</button>
               <!-- <div class="rmve col-lg-1"> -->
-                <mat-icon class=" col-2"  (click)="removeaddformcat()" style="cursor: pointer; position: relative;left: -7px;top: 4px;">remove_circle</mat-icon>
+                <mat-icon class=" col-2"  (click)="removeaddformcat()" style="cursor: pointer; position: relative;left: -9px;top: 4px;">remove_circle</mat-icon>
               <!-- </div> -->
             </div>
             
@@ -59,11 +59,11 @@
           <!-- <div class="buttn d-flex" *ngIf=addButton> -->
             <div class="inbtn d-flex" *ngIf= addSubButton>
               <!-- <button class="btn btn-basic addcat">Add category name</button> -->
-              <input type="text " class="addcatg  col-4" [(ngModel)]="sucatname" placeholder="Add sub-category ">
+              <input type="text " class="addcatg  col-5" [(ngModel)]="sucatname" placeholder="Add sub-category ">
               <input type="text " class="addcd  col-3" [(ngModel)]="sucatnameCode" placeholder="Add Code">
               <button class="btn btn-basic addbt  col-2" [disabled]="!sucatname || !sucatnameCode " (click)="addsubCat()" style="cursor: pointer;">Add</button>
               <div class="rmve  col-2">
-                <mat-icon (click)="removeaddformSubcat()" style="cursor: pointer; position: relative;left: 14px;top: 4px;">remove_circle</mat-icon>
+                <mat-icon (click)="removeaddformSubcat()" style="cursor: pointer; position: relative;left: -9px;top: 4px;">remove_circle</mat-icon>
               </div>
             </div>
            
@@ -95,11 +95,11 @@
           <!-- <div class="buttn d-flex" *ngIf=addButton> -->
             <div class="inbtn d-flex" *ngIf=addTypeButton>
               <!-- <button class="btn btn-basic addcat">Add category name</button> -->
-              <input type="text" class="addcatg col-4" [(ngModel)]="type" placeholder="Add Type">
+              <input type="text" class="addcatg col-5" [(ngModel)]="type" placeholder="Add Type">
               <input type="text " class="addcd col-3" [(ngModel)]="typeCode" placeholder="Add Code">
               <button class="btn btn-basic addbt col-2" (click)="addtypes()" [disabled]="!type || !typeCode "  style="cursor: pointer;">Add</button>
               <div class="rmve col-2">
-                <mat-icon (click)="removeaddformtype()" style="cursor: pointer; position: relative;left: 14px;top: 4px;">remove_circle</mat-icon>
+                <mat-icon (click)="removeaddformtype()" style="cursor: pointer; position: relative;left: -9px;top: 4px;">remove_circle</mat-icon>
               </div>
             </div>
             

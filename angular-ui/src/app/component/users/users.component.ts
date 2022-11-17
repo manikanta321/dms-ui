@@ -147,10 +147,11 @@ export class UsersComponent implements OnInit {
     {
       headerName: "Status",
       field: 'statusName',
+      maxWidth: 109,
       type: ['nonEditableColumn'],
       cellEditor: 'agSelectCellEditor',
       cellEditorParams: {
-        values: ['Active', 'Inactive', 'Invited', 'Locked',],
+        values: ['Active', 'Inactive', 'Invited', 'Locked',] ,
       },
       cellClass: params => {
         return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
@@ -162,7 +163,7 @@ export class UsersComponent implements OnInit {
       colId: 'action',
       cellRenderer: UseractionComponent,
       editable: false,
-      maxWidth: 75  
+      maxWidth: 60  
     },
 
   ];
@@ -173,10 +174,11 @@ export class UsersComponent implements OnInit {
   employeeName: any;
   public defaultColDef: ColDef = {
     suppressSizeToFit: true,
-    width: 170,
+    // width: 170,
+    width:400,
     filter: 'agTextColumnFilter',
     flex: 1,
-    minWidth: 100,
+    //  minWidth: 100,
     resizable: true,
     sortable: true,
   };

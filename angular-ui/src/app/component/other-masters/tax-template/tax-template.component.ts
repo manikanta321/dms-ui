@@ -65,11 +65,12 @@ export class TaxTemplateComponent implements OnInit {
   field: 'taxTemplateName' ,type: ['nonEditableColumn'],pinned: 'left',minWidth:600
   },
   
-  {   headerName: "Tax Items",field: 'taxTemplateDetails',type: ['nonEditableColumn'] ,minWidth:600},
+  {   headerName: "Tax Items",field: 'taxTemplateDetails',type: ['nonEditableColumn'] ,minWidth:623},
   
   // suppressMovable:true,
   { headerName: "Status",
-   field: 'statusName', 
+   field: 'statusName',
+   
    type: ['nonEditableColumn'],
   cellEditor: 'agSelectCellEditor',
   cellEditorParams: {

@@ -19,7 +19,7 @@
           <form #loginForm="ngForm">
             <div class="row">
     <div class="col">
-      <label>Username<span>*</span></label>
+      <label>User Name<span>*</span></label>
       <br>
       <input type="text" id="uname" name="uname" required placeholder="Enter your username" [(ngModel)]="username" #uname="ngModel" style="width: 100%;">
       <p style="margin-bottom:-22px; padding: 0px;" *ngIf="uname.invalid && (uname.dirty || uname.touched)"
@@ -72,7 +72,7 @@
             <br>
             <div class="row">
               <div class="col">
-                <label>Email ID<span>*</span></label>
+                <label>Email <span>*</span></label>
                 <br>
                 <input type="email"id="emails" name="emails" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$" #emails="ngModel" placeholder="Enter your email Id" [(ngModel)]="email">
                 <p style="margin-bottom:-22px;padding: 0px;" *ngIf="emails.invalid && (emails.dirty || emails.touched)"
@@ -90,7 +90,7 @@
 
                 <label>Phone No<span>*</span></label>
                 <br>
-                <input type="text"id="mobile" name="mobile" required placeholder="Enter your phone no." pattern="^((\\+91-?)|0)?[0-9]{10}$" [(ngModel)]="phone"#mobile="ngModel">
+                <input type="text"id="mobile" name="mobile" required placeholder="Enter your phone no" pattern="^((\\+91-?)|0)?[0-9]{10}$" [(ngModel)]="phone"#mobile="ngModel">
                 <p  style="margin-bottom:-22px;padding: 0px;" *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)"
                 class="alert">
               <span style="color:red;position: relative;" *ngIf="mobile.errors?.['required']">
@@ -114,7 +114,7 @@
               <div class="col">
 
                 <select  #teams class="form-select form-select-lg mb-8 " (change)="selectedValue(teams.value);" placeholder="Select your Role" aria-label=".form-select-lg example" style="height: 35px;border-radius: 10px;width: 100%;height: 43px;">
-                  <option value=""  selected hidden>Select your Role</option>
+                  <option value=""  selected hidden>Select your role</option>
 
                   <option style="height: 900px;"     *ngFor="let topping of toppingList" [value]="topping.roleId">{{topping.roleName}}</option>
 

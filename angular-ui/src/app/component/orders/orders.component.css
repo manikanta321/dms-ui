@@ -75,6 +75,7 @@ height: 35px;
     background: black;
     color: white;
     border-radius: 25px;
+    opacity: 1;
 }
 
 
@@ -170,6 +171,7 @@ mat-tab{
     background: black;
     color: white;
     border-radius: 25px;
+    opacity: 1;
 }
 ::ng-deep.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
     display: none;
@@ -205,6 +207,7 @@ mat-tab{
     background: black;
     color: white;
     border-radius: 25px;
+    opacity: 1;
 }
 
 ::ng-deep .order-lab .mat-tab-label{

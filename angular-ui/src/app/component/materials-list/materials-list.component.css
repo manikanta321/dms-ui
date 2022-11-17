@@ -361,6 +361,7 @@
   top: 32px;
   position: relative;
   left: 142%;
+  cursor: pointer;
 }
 
 .add-user {
@@ -393,6 +394,7 @@
   height: 37px;
   margin-top: 32px;
   margin-left: 62%;
+  cursor: pointer;
 }
 
 .searchBox:hover>.search-btn {

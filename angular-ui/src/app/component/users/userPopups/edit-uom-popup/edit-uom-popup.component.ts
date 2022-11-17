@@ -37,6 +37,7 @@ this.uoMShortName=data.uoMShortName
       UoMShortName:this.uoMShortName,
       UoMId:this.uomId
     }
+    
     this.uomservise.adduom(data).subscribe((res:any)=>{
       this.sharedService.filter('Register click')
   
@@ -45,5 +46,7 @@ this.uoMShortName=data.uoMShortName
   
     })
   }
-
+  closeDialog(){
+    this.dialogRef.close();
+  }
 }

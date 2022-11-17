@@ -133,7 +133,7 @@ setTimeout(()=>{                           // <<<---using ()=> syntax
     let data=res.response;
     this.coutCatagory=res.totalRecords;
     this.catgname=data.allOtherCats
-    this.catagoryroouting=data.firstCat.catName;
+    this.catagoryroouting=data.firstCat;
     this.selectedItem=data.allOtherCats[0];
     this.subcatRoouting=data.firstCat.subCAts.firstSubCat.subCatName;
     this.subcatcount=data.firstCat.subCatsCount;

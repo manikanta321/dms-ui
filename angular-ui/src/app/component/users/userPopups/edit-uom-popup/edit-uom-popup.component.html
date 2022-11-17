@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col">
 
-                <label>Display Code*<span>*</span></label>
+                <label>Display Code<span>*</span></label>
                 <br>
                 <input type="text" placeholder="Enter your Display Code" [(ngModel)]="uoMShortName" >
         <br>
@@ -35,10 +35,10 @@
     <div class="row">
         <div class="col-6">
             <button class="btn btn-light uombtnn btn-block" [disabled]="!uoMShortName || !uoMName" (click)="editUom()">Save</button>
-            <span>*Required Fields</span>
+            <span class="requiredF">*Required Fields</span>
         </div>
         <div class="col-6">
-            <button class="btn btn-light uombtnnn btn-block">Cancel</button>
+            <button class="btn btn-light uombtnnn btn-block"  (click)=" closeDialog()">Cancel</button>
         </div>
        </div>
 

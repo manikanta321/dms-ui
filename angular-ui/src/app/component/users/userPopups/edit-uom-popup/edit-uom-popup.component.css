@@ -128,5 +128,9 @@ border-radius: 0px;
 
 }*/
 
-
+.requiredF{
+    position: relative;
+    left: 19px;
+    font-family: 'Gilroy';
+}
 

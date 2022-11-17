@@ -1,6 +1,4 @@
 
-
-
 import { Component, OnInit } from '@angular/core';
 // import { AddUserPopupComponent } from './userPopups/add-user-popup/add-user-popup.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -74,10 +72,11 @@ public popupParent: HTMLElement = document.body;
 columnDefs: ColDef[] = [ 
 
   { headerName: "Name", 
-field: 'uoMName' ,type: ['nonEditableColumn'], minWidth:400
+field: 'uoMName' ,type: ['nonEditableColumn'], minWidth:500
 },
 
-{   headerName: "Display Code",field: 'uoMShortName',type: ['nonEditableColumn']},
+{   headerName: "Display Code",
+field: 'uoMShortName',type: ['nonEditableColumn'], minWidth:440 },
 
 // suppressMovable:true,
 { headerName: "Status",
@@ -88,7 +87,7 @@ cellEditorParams: {
 values: ['Active', 'Inactive', 'Invited', 'Locked',],
 
 },
-maxWidth:150,
+maxWidth:110,
 cellClass: params => {                      
   return params.value == 'Inactive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
 }
@@ -108,7 +107,7 @@ headerName: '',
 colId: 'action',
 cellRenderer: UomActionComponent,
 editable: false,
-maxWidth:120
+maxWidth:40
 
 
 },
@@ -252,6 +251,7 @@ public pivotPanelShow = 'always';
   UomId:any;
   paginationPageSize = 10;
   paginationScrollCount:any;
+  
   gridsOptions = {
     defaultColDef: {
       sortable: true,
@@ -263,6 +263,7 @@ public pivotPanelShow = 'always';
       
       filterParams: { buttons: ['clear'] }
     },
+    
     headerHeight: 60,
     animateRows: true,
     // pagination: false,

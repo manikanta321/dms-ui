@@ -104,6 +104,7 @@ li{
     color: #000000;
     font-weight: lighter;
     font-family: 'Gilroy';
+    border: 1px solid black;
 }
 .addbt{
  background: #000000;

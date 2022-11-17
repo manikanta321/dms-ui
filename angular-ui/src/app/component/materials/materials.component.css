@@ -68,6 +68,7 @@ mat-sidenav {
     color: white;
     border-radius: 10px;
     text-align: center;
+    overflow: hidden;
 }
 mat-sidenav-content{
     /* height: calc(100vh - 98px); */
@@ -140,4 +141,7 @@ mat-tab-group{
 ::ng-deep.mat-tab-label{
     height: 35px !important;
     min-width: 190px !important;
+  }
+  .mat-drawer-content{
+    overflow: hidden;
   }

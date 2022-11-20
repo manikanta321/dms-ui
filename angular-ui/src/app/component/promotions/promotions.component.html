@@ -78,9 +78,10 @@
         </div>
         <!-- calender -->
         <div class="col-md-2 col-lg-2 col-sm-2 d-flex">
-          <div class="cal" (click)="datep()">
+          <app-customdatepicker  [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
+          <!-- <div class="cal" (click)="datep()">
            <img src="assets/img/calenderImage.svg" alt="">
-          </div>
+          </div> -->
           <!-- <section data-cy="regular-date-range" class="col-12 col-sm-6 col-lg-4">
             <date-range-picker [(dateRange)]="dateRange1"
             [maxDate]="maxDate">

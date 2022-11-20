@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="calendar-btn-section" #calendarSection>
+            <div class="cal" [ngbPopover]="popContent" [placement]="['bottom','bottom-start','left-top','right-top']"
+                [autoClose]="'outside'" #datepickerBtn="ngbPopover" popoverClass="datepicker-menu">
+                <img src="assets/img/calenderImage.svg" alt="">
+            </div>
+        </div>
+
+        <div class="cal" style="display:none;" [ngbPopover]="popContent2"
+            [placement]="['bottom','left-top','right-top']" [autoClose]="'outside'"
+            #datepickerBtn2="ngbPopover" [positionTarget]="calendarSection" popoverClass="datepicker-popover">
+            <img src="assets/img/calenderImage.svg" alt="">
+        </div>
+    </div>
+
+
+    <ng-template #popContent>
+        <ul class="datepicker-menu-list">
+            <li *ngFor="let item of menuDateValues" (click)="DateOptionClicked(datepickerBtn,item.title )">
+                {{item.title}}
+            </li>
+        </ul>
+    </ng-template>
+    <ng-template #popContent2>
+        <ngx-daterangepicker-material  (choosedDate)="chosenDate($event)" [showDropdowns]="true"
+            [startDate]="selected?.startDate" [endDate]="selected?.endDate"  [showClearButton]="true"
+            [locale]="{applyLabel: 'Done', clearLabel:'Reset'}"    >
+        </ngx-daterangepicker-material>
+    </ng-template>
+</div>

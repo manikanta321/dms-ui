@@ -334,6 +334,15 @@ geoList:any=[]
     });
   }
 
+  selectedDateRange = {
+    startDate: '11/11/2022',
+    endDate: '11/15/2022',
+  }
+
+  customDatePickerEvent(eventChange){
+    this.selectedDateRange = eventChange.selectedDate;
+    console.log(this.selectedDateRange);
+  }
 
 
   ngOnInit() {

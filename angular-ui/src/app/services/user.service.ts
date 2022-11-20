@@ -71,6 +71,10 @@ EditUser(obj){
 
 }
 
+EditUserProfile(profileObj){
+  return this.http.post<any>(this.userurl + 'UserMgmtApi/UpdateProfile',profileObj);
+}
+
 GetEditUSer(userID:any){
   return this.http.get<any>(`${this.userurl}UserMgmtApi/GetUserDetailsToEdit?userId=${userID}`);
 

@@ -110,10 +110,11 @@ mat-sidenav-container {
 .profile-icon {
     position: relative;
     left: 68px;
+    top: 10px;
     width: 131px;
     height: 131px;
-    background: '';
     border: 1px solid #000000;
+    border-radius: 50%;
     filter: drop-shadow(-2px -2px 4px rgba(0, 0, 0, 0.03)) drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.03));
 }
 .profile-name {
@@ -121,11 +122,15 @@ mat-sidenav-container {
     font-family: 'Gilroy';
     font-size: 25px;
     line-height: 29px;
+    font-weight: 600;
     display: flex;
     align-items: center;
     text-align: center;
-    left: 31%;
+    left: 27%;
     color: #000000;
+}
+.user_names{
+padding-top: 8px;
 }
 .prof-s {
     position: relative;
@@ -135,14 +140,14 @@ mat-sidenav-container {
     display: flex;
     align-items: center;
     text-align: center;
-    left: 26%;
+    left: 32%;
     color: #000000;
     top: -13px;
 }
 .last-login-txt{
     position: relative;
     left: 10%;
-    top: 11%;
+    top: 6%;
     font-family: 'Gilroy';
     font-size: 16px;
     line-height: 106.3%;
@@ -176,9 +181,6 @@ border-radius: 10px;
 .f-label{
     position: relative;
     left: -9px;
-}
-.ip-top{
-    position: relative;
     top: 1%;
 }
 .div-1 {

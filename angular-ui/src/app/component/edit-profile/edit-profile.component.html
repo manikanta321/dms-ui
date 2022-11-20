@@ -9,10 +9,16 @@
             <h1 class="edit-heading">Edit Profile</h1>
             <div class="edit-div">
                 <div class="img-div">
-                    <div class="profile-icon"></div>
-                    <h3 class="profile-name">smartgig</h3>
-                    <span class="prof-s">@smartgigthegreat</span>
-                    <span class="last-login-txt">Last login : 12 Aug 22, 18:06 pm</span>
+                    <label>
+                        <input type="file" id="file" style="display:none" (change)="onFileChanged($event)">
+                        <img class="profile-icon" src='data:image/jpeg;base64,{{base64textString}}'>
+                    </label>
+
+                    <div class="user_names">
+                    <h3 class="profile-name">{{EmployeeName}}</h3>
+                    <span class="prof-s">@{{userName}}</span>
+                    </div>
+                    <span class="last-login-txt">Last login : {{lastLogin}}</span>
                 </div>
                 <div class="edit-data">
                     <h4 class="basic-info">Basic Information</h4>
@@ -24,9 +30,14 @@
                         </div>
                         <div class="row ip-top">
                             <div class="col-1"></div>
-                            <input class="col-5 f-name" type="text">
+                            <input type="text" class="col-5 f-name" id="EmployeeName" name="EmployeeName" required
+                                placeholder="Enter your EmployeeName" [(ngModel)]="EmployeeName" 
+                                style="width: 100%;">
                             <div class="col-1"></div>
-                            <input type="text" class="col-5 f-name input-2">
+                            <input type="text" class="col-5 f-name input-2" id="uname" name="uname" required
+                                placeholder="Enter your username" [(ngModel)]="userName" #uname="ngModel"
+                                style="width: 100%;">
+
                         </div>
                     </div>
                     <div class="div-2">
@@ -37,9 +48,35 @@
                         </div>
                         <div class="row ip-top">
                             <div class="col-1"></div>
-                            <input class="col-5 f-name" type="email">
+                            <input class="col-5 f-name" id="emails" name="emails" type="email" required
+                                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$" #emails="ngModel"
+                                placeholder="Enter your email Id" [(ngModel)]="Email">
+                            <p style="margin-bottom:-22px;padding: 0px;"
+                                *ngIf="emails.invalid && (emails.dirty || emails.touched)" class="alert">
+
+                                <span style="color:red;position: relative;" *ngIf="emails.errors?.['required']">
+                                    *Email is required.
+                                </span>
+                                <span style="color:red;position: relative;"
+                                    *ngIf="emails.errors&&emails.errors?.['pattern']">
+                                    *Email is Invalid.
+                                </span>
+                            </p>
+
                             <div class="col-1"></div>
-                            <input type="text" class="col-5 f-name input-2">
+                            <input type="text" class="col-5 f-name input-2" id="mobile" name="mobile" required
+                                placeholder="Enter your phone no." pattern="^((\\+91-?)|0)?[0-9]{10}$"
+                                [(ngModel)]="phone" #mobile="ngModel">
+                            <p style="margin-bottom:-22px;padding: 0px;"
+                                *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)" class="alert">
+                                <span style="color:red;position: relative;" *ngIf="mobile.errors?.['required']">
+                                    *Phone Number is required.
+                                </span>
+                                <span style="color:red;position: relative;"
+                                    *ngIf="mobile.errors&&mobile.errors?.['pattern']">
+                                    *Phone Number is Invalid.
+                                </span>
+                            </p>
                         </div>
                     </div>
                     <div class="row">
@@ -52,7 +89,9 @@
                         </div>
                         <div class="row ip-top">
                             <div class="col-1"></div>
-                            <input class="col-10 f-name role-input" type="text" disabled>
+                            <input class="col-10 f-name role-input" type="text" id="roleName" name="roleName"
+                            [ngModel]="rolename"  readonly #roleName="ngModel" >
+
                             <!-- <div class="col-1"></div> -->
                         </div>
                     </div>
@@ -61,7 +100,7 @@
             </div>
             <div class="button-save-chng row">
                 <div class="save-chng">
-                    <button class="save-text">
+                    <button class="save-text" (click)="editUser()">
                         Save changes
                     </button>
                 </div>

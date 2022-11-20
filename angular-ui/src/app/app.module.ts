@@ -139,6 +139,8 @@ import { DownloadInvoiceComponentComponent } from './download-invoice-component/
 import { OrdersShipmentComponent } from './component/orders/orders-shipment/orders-shipment.component';
 import { ShipOrderBulkDownloadComponent } from './component/orders/ship-order-bulk-download/ship-order-bulk-download.component';
 import { CustomDatePopupComponent } from './component/orders/custom-date-popup/custom-date-popup.component';
+import { CustomdatepickerComponent } from './shared-component/customdatepicker/customdatepicker.component';
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 
 @NgModule({
   declarations: [
@@ -245,6 +247,7 @@ import { CustomDatePopupComponent } from './component/orders/custom-date-popup/c
           OrdersShipmentComponent,
           ShipOrderBulkDownloadComponent,
           CustomDatePopupComponent,
+          CustomdatepickerComponent,
   ],
   imports: [
     FormsModule,
@@ -283,7 +286,8 @@ import { CustomDatePopupComponent } from './component/orders/custom-date-popup/c
     DateRangePickerModule,
     NgbModule ,
     NgbDatepickerModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    NgxDaterangepickerMd.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

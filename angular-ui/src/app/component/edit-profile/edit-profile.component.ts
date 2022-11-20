@@ -30,6 +30,7 @@ export class EditProfileComponent implements OnInit {
   selecetdFile: any;
   imagePreview: any;
   lastLogin: any;
+  Imgpreview:boolean = false;
 
   constructor(private observer: BreakpointObserver,
 
@@ -63,6 +64,11 @@ export class EditProfileComponent implements OnInit {
   getUserProfileDetails(){
   this.user.GetEditUSer(this.UserId).subscribe((res: any) => {
     this.data = res.response;
+    if(this.data.imageUrl == null){
+      this.Imgpreview = false; 
+    }else {
+      this.Imgpreview = true;
+    }
     localStorage.setItem('RoleId',this.data.roleId)
     this.patchValue()
   })

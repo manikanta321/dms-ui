@@ -9,10 +9,17 @@
             <h1 class="edit-heading">Edit Profile</h1>
             <div class="edit-div">
                 <div class="img-div">
-                    <label>
+                    <label  *ngIf= "Imgpreview">
                         <input type="file" id="file" style="display:none" (change)="onFileChanged($event)">
                         <img class="profile-icon" src='data:image/jpeg;base64,{{base64textString}}'>
                     </label>
+
+                    <label  *ngIf= "!Imgpreview">
+                        <input type="file" id="file" style="display:none" (change)="onFileChanged($event)">
+                        <img class="profile-icon" src="../../../assets/img/no-profile-Pic.png">
+                    </label>
+                    
+
 
                     <div class="user_names">
                     <h3 class="profile-name">{{EmployeeName}}</h3>

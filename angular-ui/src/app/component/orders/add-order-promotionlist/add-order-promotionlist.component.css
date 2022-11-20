@@ -849,7 +849,7 @@
 
 .saveas-draft1 {
     background: #000000;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    
     border-radius: 10px;
     width: 168px;
     height: 43px;
@@ -1006,17 +1006,14 @@ color: #000000;
 }
 
 .total-itemss{
-     font-family: 'Gilroy-Bold';  
-     
-     font:'Gilroy-Medium';
-    color: #000000; 
-font-size: 14px;
-line-height: 16px;
-letter-spacing: 0em;
-text-align: center;
-line-height: 16px;
-letter-spacing: 0em;
-text-align: center;
+  font-family: 'Gilroy-Bold';
+  font-size: 14px;
+  line-height: 16px;
+
+  align-items: center;
+  text-align: center;
+  
+  color: #000000;
 
 }
 

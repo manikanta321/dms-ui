@@ -20,7 +20,29 @@
 {
   font-weight: bold;
 }
+.form-control::placeholder
+{
+  font-family: 'Gilroy-Regular';
+font-size: 14px;
+line-height: 16px;
+color: rgba(104, 110, 116, 0.75);
 
+}
+
+.text-area::placeholder
+{
+  font-family: 'Gilroy';
+font-style: normal;
+font-weight: 300;
+font-size: 14px;
+
+color: rgba(104, 110, 116, 0.75);
+}
+
+.rr::placeholder
+{
+  color: #C32F27;
+}
 
 .materialname {
   margin-top: 3px;
@@ -38,6 +60,11 @@
   margin-top: 3px;
   font-family: 'Gilroy';
   margin-left: 2px;
+  
+}
+::ng-deep.promotiont .multiselect-dropdown .dropdown-btn ::placeholder
+{
+  color: red !important;
 }
 .promotiont1 {
   margin-top: 3px;
@@ -49,6 +76,7 @@
   line-height: 15px;
   letter-spacing: 0em;
   color: #000000;
+
 
 }
 
@@ -923,21 +951,29 @@ li {
   border: 2px solid #000000;
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
-  /* float: right; */
+
   margin-top: 15px;
   cursor: pointer;
   width: 168px;
   height: 43px;
-  font-family: 'Gilroy-SemiBold';
-font-size: 15px;
+
 line-height: 18px;
 letter-spacing: 0em;
 text-align: center;
 
+font-family: 'Gilroy-SemiBold';
+font-size: 15px;
+line-height: 18px;
+align-items: center;
+text-align: center;
+
+color: #000000;
+
+
 }
 
 .saveas-draft {
-  color: #fff;
+  
   background: #000000;
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 8px;
@@ -947,6 +983,16 @@ text-align: center;
   width: 168px;
 height: 43px;
 border-radius:10px;
+
+
+font-family: 'Gilroy-SemiBold';
+font-size: 15px;
+line-height: 18px;
+
+align-items: center;
+text-align: center;
+
+color: #FFFFFF;
 }
 
 .cancel {
@@ -961,9 +1007,15 @@ border-radius:10px;
   border: none;
   margin-top: 15px;
   margin-left: 59px;
-  font-weight: bold;
+ font-weight: bold;
   text-decoration-line: underline;
   cursor: pointer;
+
+  font-family: 'Gilroy-Bold';
+
+
+
+
 }
 
 

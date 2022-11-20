@@ -73,7 +73,7 @@ span{
    padding: 5px;
    margin-top: 20px;
    border-radius: 3px;
-   border-radius: 35px;
+   border-radius: 10px;
    border: 1px solid black;
    height: 48px;
    margin-left: 16px;
@@ -85,7 +85,11 @@ span{
     font-size: 15px;
     font-weight: 600;
 }
-
+.requiredF{
+    position: relative;
+    left: 19px;
+    font-family: 'Gilroy';
+}
 /* .addUserForm 
 {
     height: 356px;

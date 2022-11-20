@@ -28,13 +28,13 @@
                                 <div class="promotiont">
                                     <label>Dealer <span>*</span></label>
                                 </div>
-                                <input matInput placeholder="Search and  select dealer" #input class="form-control container input-box" >
+                                <input matInput placeholder="Search &  select dealer" #input class="form-control container input-box" >
                                 <img src="assets/img/search.png" class="search-img"  alt="search">
                             </div>
                             <div class="col-md-6">
                                 <div class="promotiont">
                                     <label>Geography <span>*</span></label>
-                                    <ng-multiselect-dropdown name="type" [placeholder]="'Select geography'"
+                                    <ng-multiselect-dropdown name="type" [placeholder]="' Search & select geography'" 
                                     formControlName="type" [disabled]="disabled" [settings]="dropdownSettings3"
                                     [data]="toppingList3" (onSelect)="onTypeSelect($event)"
                                     (onSelectAll)="onTypeAll($event)">

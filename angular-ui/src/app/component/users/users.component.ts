@@ -11,7 +11,6 @@ import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, Gu
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { ITooltipParams, PaginationNumberFormatterParams, } from 'ag-grid-community';
 import { SharedService } from 'src/app/services/shared-services.service';
-import { Subscription } from 'rxjs'
 
 export interface PeriodicElement {
 
@@ -173,11 +172,10 @@ export class UsersComponent implements OnInit {
   employeeName: any;
   public defaultColDef: ColDef = {
     suppressSizeToFit: true,
-    // width: 170,
+    
     width:400,
     filter: 'agTextColumnFilter',
     flex: 1,
-    //  minWidth: 100,
     resizable: true,
     sortable: true,
   };

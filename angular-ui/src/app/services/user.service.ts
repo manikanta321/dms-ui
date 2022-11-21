@@ -71,6 +71,10 @@ EditUser(obj){
 
 }
 
+EditUserProfile(profileObj){
+  return this.http.post<any>(this.userurl + 'UserMgmtApi/UpdateProfile',profileObj);
+}
+
 GetEditUSer(userID:any){
   return this.http.get<any>(`${this.userurl}UserMgmtApi/GetUserDetailsToEdit?userId=${userID}`);
 
@@ -132,7 +136,9 @@ public tatemplatestatus(data){
 public addcurrency(data){
   return this.http.post<any>(this.userurl + 'OtherMasterApi/AddEditCurrency', data);
 }
-
+public activeDeavtiveCurrency(data){
+  return this.http.post<any>(this.userurl + 'OtherMasterApi/ActiveDeactive', data);
+}
 //get Dealer list
 public getAllDealerList(data){
   return this.http.post<any>(this.userurl + 'DealerApi/GetAllDealers',data);

@@ -23,6 +23,7 @@ import { AddPromotionsComponent } from '../add-promotions/add-promotions.compone
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { AddorderpromotionsComponent } from '../orders/addorderpromotions/addorderpromotions.component';
 import { OrderlistActionPopupComponent } from './orderlist-action-popup/orderlist-action-popup.component';
+import { SalesBulkUploadComponent } from '../sales-bulk-upload/sales-bulk-upload.component';
 // import { DateRange } from '@uiowa/date-range-picker';
 
 export interface PeriodicElement {
@@ -648,6 +649,9 @@ export class OrderListComponent implements OnInit {
     this.rowDatalist = res.response;
   });
 }
-
+orderUpload(){
+  sessionStorage.setItem('sales','');
+  this.dialog.open(SalesBulkUploadComponent);
+}
 }
 

@@ -1,27 +1,38 @@
-.mat-form-field {
+/* .mat-form-field {
   width: 680px;
   font-family: 'Gilroy';
   background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+} */
+.indexImg{
+margin-left: 10px;
+margin-bottom: 10px;
 }
-
+.buyoneSet{
+  background: #CED4DA;
+border: 1px solid #000000;
+box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+border-radius: 10px;
+padding: 10px;
+}
+.getSet1,.additionalGetset-2{
+  background: #CED4DA;
+border: 1px solid #000000;
+box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+border-radius: 10px;
+padding: 10px;
+}
 .mat-form-field::placeholder {
   bottom: 2px;
 
 }
-
-.addMore-icon {
-  cursor: pointer;
-  /* cursor: not-allowed;
-  pointer-events: none !important; */
-}
-
 .addMore-icons {
   cursor: pointer;
   color: grey;
-  /* cursor: not-allowed;
-  pointer-events: none !important; */
 }
-
+.labelname{
+  margin: 15px 5px 5px;
+  font-size: 13px;
+}
 .category {
   margin-top: 18px;
   font-family: 'Gilroy';
@@ -39,34 +50,29 @@
   margin-left: -4px;
 }
 
-.promotiont {
+/* .promotiont {
   margin-top: 9px;
   font-family: 'Gilroy';
   margin-left: -2px;
-}
+} */
 
 .image {
-  font-family: 'Gilroy';
-  margin-left: 2px;
-  position: relative;
-  bottom: 272px;
-  left: 474px;
-
+  width: 443px;
+  height: 217px;
+  background: #FFFFFF;
+border: 0.5px solid #000000;
+box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+border-radius: 10px;
 }
-
+.promoItem{
+  font-weight: 300;
+font-size: 20px;
+}
 .geography {
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 450px;
 
-}
-
-.navItems {
-  margin-left: 20px;
-}
-
-.contentinline {
-  display: contents;
 }
 
 .itemSize {
@@ -78,22 +84,12 @@
 }
 
 .removeCircle {
-  margin-left: 99%;
-  margin-top: 37px;
   color: red;
 }
 
 .addBtnAlign {
   margin-left: -93px;
 }
-
-.alignInlineNav {
-  display: -webkit-inline-box;
-}
-
-/* .items-headers{
-
-} */
 
 .listStyleOfItems {
   list-style: none;
@@ -119,19 +115,8 @@
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  /* margin: 26px 0px 5px 105px; */
+  margin-bottom: 8px;
 }
-
-.topItems {
-  padding-top: 25px;
-
-}
-
-/* .inlineNav{
-  display: -webkit-inline-box;
-} */
-
-
 
 .addAlign {
   margin-left: 40px;
@@ -192,7 +177,7 @@
 }
 
 .minimumorderquantity {
-  width: 520px;
+  width: 461px;
   height: 43px;
   border: 0.5px solid #000000;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -331,59 +316,142 @@
   margin-bottom: 2px;
 }
 
-.addU {
+.addPromo {
   position: relative;
   /* font-family: 'Gilroy-Bold';  */
   font-weight: bold;
   font-size: 20px;
 }
 
-.addU:after {
+.addPromo:after {
   content: "";
   display: block;
-  width: 280px;
-  height: 2px;
+  width: 330px;
+  height: 1px;
   background: #686E74;
   right: 0;
   top: 50%;
   position: absolute;
 }
 
-.addU:before {
+.addPromo:before {
   content: "";
   display: block;
-  width: 280px;
-  height: 2px;
+  width: 330px;
+  height: 1px;
   background: #686E74;
   left: 0;
   top: 50%;
   position: absolute;
 }
 
-.addUserForm input {
+.promo-head {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+}
+.geo-head{
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+.promo-Name {
+  height: 43px;
+  font-weight: 300;
+font-size: 14px;
+color: rgba(104, 110, 116, 0.75);
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 0 10px;
+}
+
+/* .addUserForm input {
   border-radius: 5px;
   border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
   padding: 5px 5px;
   width: 250px;
   font-size: 14px;
   outline: none;
+} */
+.slctd-row{
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  height: 43px;
+  padding: 4px;
 }
-
-span {
-  color: red;
+.slctd-geo-btn{
+  background: #000000;
+box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+border-radius: 10px;
+height: 33px;
+color: white;
+float: right;
 }
-
+.sltd-span{
+  margin-top: 6px;
+}
+.astr {
+  color: #FF0000;
+}
+.selectedcolor{
+  color: #DBB802;
+}
+.selectedclr2{
+  color: #009B63;
+}
 .close-icon {
   left: 100%;
   position: relative;
   font-size: 15px;
   font-weight: 600;
 }
-
+.searchGeo{
+  background: #FFFFFF;
+border: 0.5px solid #000000;
+box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+border-radius: 10px;
+height: 43px;
+width: 456px;
+}
+.addtnlRemarks{
+  background: #FFFFFF;
+border: 0.5px solid #000000;
+box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+border-radius: 10px;
+height: 43px;
+width: 873px;
+}
+.saveDraft{
+  background: #000000;
+box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+border-radius: 10px;
+width: 168px;
+height: 43px;
+color: white ;
+margin-right: 15px;
+}
+.submit{
+  background: #FFFFFF;
+border: 2px solid #000000;
+box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+border-radius: 10px;
+width: 168px;
+height: 43px;
+color: #000000;
+margin-right: 15px;
+}
+.footer-btns{
+  margin: auto;
+  margin-top: 20px;
+}
 label {
   /* padding: 2px 0; */
   font-size: 14px;
-  margin: 5px;
+  margin: 15px 5px 5px;
 }
 
 mat-form-field {
@@ -432,10 +500,7 @@ mat-form-field {
 
 .promotiontypedrp {
   margin-top: 2px;
-  color: lightgrey;
   font-family: 'Gilroy';
-  width: 456px;
-  height: 43px;
 }
 
 .brandname {
@@ -806,15 +871,15 @@ li {
   font-size: 12px;
 }
 
-::ng-deep.datepicker .mat-form-field-appearance-fill .mat-form-field-flex {
-  /* padding: .75em .75em 0 .75em; */
+/* ::ng-deep.datepicker .mat-form-field-appearance-fill .mat-form-field-flex {
+
   border-radius: 14px;
   width: 393px;
   height: 42px;
 
-}
+} */
 
-.datepicker.mat-form-field-infix {
+/* .datepicker.mat-form-field-infix {
   display: block;
   position: relative;
   flex: auto;
@@ -822,7 +887,7 @@ li {
   width: 180px;
   background-color: white;
   font-family: "Gilroy";
-}
+} */
 
 .mat-card-subtitle:before {
   content: "";
@@ -870,11 +935,11 @@ li {
   left: 13px;
 }
 
-.productlevel {
+/* .productlevel {
   font-family: 'Gilroy';
   position: relative;
   width: 401px;
-}
+} */
 
 .items {
   position: relative;
@@ -912,7 +977,7 @@ li {
   /* height: 43px;  */
 }
 
-::ng-deep.identify .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
+/* ::ng-deep.identify .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
   overflow: hidden;
   background-image: url('../../../assets/img/maximize.png') !important;
   background-size: 13px;
@@ -920,8 +985,38 @@ li {
   height: 122px;
   margin-top: 12px;
   margin-right: -7px;
+} */
+.expsion-img{
+height: 18px;
 }
-
+.collapsible{
+  background: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  height: 43px;
+}
+.qty-box{
+  background: #FFFFFF;
+border: 0.5px solid #000000;
+box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+border-radius: 10px;
+width: 48px;
+height: 43px;
+text-align: center;
+}
+.mty-box{
+  background: #FFFFFF;
+border: 0.5px solid #000000;
+box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+border-radius: 10px;
+width: 48px;
+height: 43px;
+text-align: center;
+}
+.expn-t{
+  margin: 2px;
+}
 .productdrpdown {
   width: 365px;
   position: relative;
@@ -952,18 +1047,12 @@ li {
   left: 424px;
 }
 
-.productlevelthree {
-  position: relative;
-  font-family: 'Gilroy';
-  bottom: 656px;
-}
-
-.productlevelf {
+/* .productlevelf {
   position: relative;
   font-family: 'Gilroy';
   bottom: 724px;
   left: 422px;
-}
+} */
 
 .productdrpdownthree {
   width: 365px;
@@ -1031,17 +1120,19 @@ li {
 }
 
 ::ng-deep.mydatepicker .mat-form-field {
-  width: 456px;
-  height: 43px;
+  width: 425px;
+height: 43px;
   background: white !important;
   border-radius: 5px;
   padding-left: 10px;
 
 }
-
-.imagefield {
+.fileadd{
   position: relative;
-  top: 34px;
+    top: 17%;
+}
+.imgupload{
+display: none;
 }
 
 ::ng-deep.mydatepicker .mat-icon-button {
@@ -1165,11 +1256,20 @@ li {
 .item-header {
   color: #000000;
   font-size: 18px;
-  font-weight: bold;
   font-family: 'Gilroy';
 
 }
-
+.list-item{
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+/* width: 401px; */
+height: 130px;
+border-radius: 10px;
+}
+.item-in-box{
+      height: 98px;
+    overflow-y: auto;
+}
 .plus-image {
   width: 22px;
   position: relative;
@@ -1259,7 +1359,14 @@ li {
   position: relative;
   right: 17px;
 }
-
+.slct-items{
+  background: #FFFFFF;
+border: 0.5px solid #000000;
+box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+border-radius: 10px;
+width: 456px;
+height: 43px;
+}
 .cancel-image {
   position: relative;
   bottom: 126px;
@@ -1290,6 +1397,7 @@ li {
   height: 129px;
   overflow-y: scroll;
 }
+
 ::ng-deep.toggleIcon .mat-datepicker-toggle-default-icon {
   width: 1em;
   overflow: hidden;
@@ -1301,7 +1409,7 @@ li {
   margin-right: -7px; */
 }
 
-.calendarToggle{
+.calendarToggle {
   position: relative;
   bottom: 3px;
   width: 16px;
@@ -1309,4 +1417,11 @@ li {
 
 ::ng-deep.mat-icon {
   width: 2em;
+}
+
+.itempromtion {
+  border: 1px solid black;
+  padding: 8px;
+  border-radius: 10px;
+  /* margin-top: 10px; */
 }

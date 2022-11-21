@@ -12,6 +12,7 @@ import { OrdersComponent } from './component/orders/orders.component';
 import { OtherMastersComponent } from './component/other-masters/other-masters.component';
 import { TaxTemplateComponent } from './component/other-masters/tax-template/tax-template.component';
 import { UnitMeasureComponent } from './component/other-masters/unit-measure/unit-measure.component';
+import { SalesBulkUploadComponent } from './component/sales-bulk-upload/sales-bulk-upload.component';
 import { SalesListComponent } from './component/sales-list/sales-list.component';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { UsersComponent } from './component/users/users.component';
@@ -36,8 +37,7 @@ const routes: Routes = [
   { path: 'dashbord/geographies', pathMatch: 'full',component: GeographiesComponent  },
   { path: 'dashbord/saleslist', pathMatch:'full', component: SalesListComponent},
   
-  { path: 'dashbord/edit-profile', pathMatch: 'full',component: EditProfileComponent  },
-  
+  { path: 'dashbord/edit-profile', pathMatch: 'full',component: EditProfileComponent  }
 ];
 
 @NgModule({

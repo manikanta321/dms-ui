@@ -141,6 +141,11 @@ import { ShipOrderBulkDownloadComponent } from './component/orders/ship-order-bu
 import { CustomDatePopupComponent } from './component/orders/custom-date-popup/custom-date-popup.component';
 import { CustomdatepickerComponent } from './shared-component/customdatepicker/customdatepicker.component';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import { AssosiationActionComponent } from './component/assosiation-action/assosiation-action.component';
+import { BulkEditAssosiationComponent } from './component/bulk-edit-assosiation/bulk-edit-assosiation.component';
+import { SalesBulkUploadComponent } from './component/sales-bulk-upload/sales-bulk-upload.component';
+import { AddPromotionGeographiesComponent } from './component/add-promotions/add-promotion-geographies/add-promotion-geographies.component';
+import { DealerTargetComponent } from './component/dealer-target/dealer-target.component';
 
 @NgModule({
   declarations: [
@@ -248,6 +253,11 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
           ShipOrderBulkDownloadComponent,
           CustomDatePopupComponent,
           CustomdatepickerComponent,
+          AssosiationActionComponent,
+          BulkEditAssosiationComponent,
+          SalesBulkUploadComponent,
+          AddPromotionGeographiesComponent,
+          DealerTargetComponent,
   ],
   imports: [
     FormsModule,

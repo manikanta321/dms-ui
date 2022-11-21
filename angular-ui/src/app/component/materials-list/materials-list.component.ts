@@ -482,7 +482,7 @@ export class MaterialsListComponent implements OnInit {
     this.materialList.onclicksubcat(Type).subscribe((res) => {
       let typs = res.response;
       console.log("types..res", typs);
-      this.typesI = typs;
+      this.typeI = typs;
       console.log("Typess", this.typss);
       this.topping2 = new FormControl(this.typeI);
     });
@@ -870,33 +870,34 @@ this.materialList.getMaterialList(data).subscribe((res) => {
   columnDefs: ColDef[] = [
     {
       headerName: "Name",
-      field: 'stockItemName', type: ['nonEditableColumn'], sort: 'desc'
+      field: 'stockItemName', type: ['nonEditableColumn'], sort: 'desc', minWidth: 200
     },
 
     {
       headerName: "Classification",
-      field: 'classification',type: ['nonEditableColumn']
+      field: 'classification',type: ['nonEditableColumn'], minWidth:250
     },
 
     {
       headerName: "UoM",
-      field: 'uoMName', type: ['nonEditableColumn']
+      field: 'uoMName', type: ['nonEditableColumn'], minWidth:40
     },
     {
       headerName: "Product Group",
-      field: 'productGroupName', type: ['nonEditableColumn']
+      field: 'productGroupName', type: ['nonEditableColumn'], minWidth:200
     },
     {
       headerName: "SKU",
-      field: 'productSKUName', type: ['nonEditableColumn']
+      field: 'productSKUName', type: ['nonEditableColumn'],minWidth:130
     },
     {
       headerName: "Status",
       field: 'statusName',
       type: ['nonEditableColumn'],
       cellEditor: 'agSelectCellEditor',
+      maxWidth:200,
       cellEditorParams: {
-        values: ['Active', 'Inactive'],
+        values: ['Active', 'Inactive']
       },
       cellClass: params => {
         return params.value == 'InActive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2': 'my-class-4'
@@ -908,7 +909,7 @@ this.materialList.getMaterialList(data).subscribe((res) => {
       colId: 'action',
       cellRenderer: MaterialListActionComponent,
       editable: false,
-      maxWidth: 75  
+      maxWidth: 60  
     },
 
   ];

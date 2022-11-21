@@ -34,7 +34,7 @@
                             <div class="col-md-6">
                                 <div class="promotiont">
                                     <label>Geography <span>*</span></label>
-                                    <ng-multiselect-dropdown name="type" [placeholder]="' Search & select geography'" 
+                                    <ng-multiselect-dropdown name="type"[placeholder]="' Search & select geography'" 
                                     formControlName="type" [disabled]="disabled" [settings]="dropdownSettings3"
                                     [data]="toppingList3" (onSelect)="onTypeSelect($event)"
                                     (onSelectAll)="onTypeAll($event)">
@@ -253,7 +253,7 @@
                                       </mat-form-field>  -->
 
                                  
-                                       <textarea class="text-area" style="resize: none;"  placeholder=" &nbsp;Please write down if there are any delivery instructions or extra information you want to share" name="w3review" rows="4" cols="50"></textarea>
+                                       <textarea class="text-area" style="resize: none;"  placeholder="Please write down if there are any delivery instructions or extra information you want to share" name="w3review" rows="4" cols="50"></textarea>
                                       
                             
 
@@ -279,7 +279,7 @@
                 <button type="button" class="saveas-draft">Save as draft</button>                       
         </div>
         <div class="col-md-2">                      
-                <button type="button" class="save-submit">Save & Submit</button>                   
+                <button type="button" class="save-submit">Save & submit</button>                   
         </div>
         <div class="col-md-5">              
                 <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>                 

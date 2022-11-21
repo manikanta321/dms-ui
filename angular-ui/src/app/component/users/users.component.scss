@@ -73,6 +73,7 @@
 ::ng-deep.stts .multiselect-dropdown .dropdown-btn .selected-item {
   background: #000000 !important;
   font-size: 12px;
+  
 }
 
 ::ng-deep .stts .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -226,7 +227,7 @@
 }
 
 ::ng-deep.stts .multiselect-dropdown .dropdown-btn .selected-item {
-  right: 6% !important;
+  right: 40% !important;
 }
 
 .multiselect-dropdown .dropdown-btn .dropdown-multiselect--active .dropdown-multiselect__caret {
@@ -387,10 +388,14 @@
 ::ng-deep.ag-sticky-top {
   border-bottom: 0.5px solid #000000;
 }
-.main{
+.m{
     background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
     border-radius: 19px;
+     height: 676px;
+   
+
 }
+
 
 
 

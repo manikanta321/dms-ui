@@ -1,11 +1,11 @@
 <div class="font ">
     <div class=" main ">
         <div class="container add-dealer-promotion-cls">
-            <div class="addUser">
+            <div class="addPromotion">
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
             </div>
             <div class="head-t">
-                <h3 class="addU font">Add Promotions</h3>
+                <h3 class="addPromo font">Add Promotions</h3>
                 <br>
                 <img src="assets/img/arrow-left-disable.png" *ngIf="!basicInfo" class="addMore-icon"
                     style="width: 32px;margin-left: 760px;" alt="left-arr-btn">
@@ -13,716 +13,700 @@
                     style="width: 24px;margin-left: 760px;" alt="left-arr-btn">
                 <img src="assets/img/arrow-right-circle-fill.svg" (click)="disableBackbutton()" class="addMore-icon"
                     style="width: 24px; margin-left: 12px;" alt="right-arr-btn">
-                <mat-stepper labelPosition="bottom" #stepper>
-                    <mat-step [stepControl]="firstFormGroup">
-                        <form [formGroup]="firstFormGroup">
-                            <ng-template matStepLabel>Basic Information</ng-template>
-                            <div class="heading">
-                                <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'">
-                                    <b>Basic
-                                        Information</b>
-                                </h6>
+            </div>
+            <mat-stepper labelPosition="bottom" #stepper>
+                <mat-step [stepControl]="firstFormGroup">
+                    <form [formGroup]="firstFormGroup">
+                        <ng-template matStepLabel>Promotion Information</ng-template>
+                        <div class="heading">
+                            <h5 class="promo-head">Promotion Information </h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 materialname">
+                                <label>Promotion Name <span class="astr">*</span></label>
+                                <input matInput placeholder="Promotion Name" #input class="form-control promo-Name">
                             </div>
-                            <div class="materialname">
-                                <label>Promotion Name <span>*</span></label>
-                            </div>
-                            <input matInput placeholder="Promotion Name" #input
-                                class="form-control container placeh-align"
-                                style="width: 949px;
-                           height: 43px;background-color: white;margin-top: 1px; margin-left: -1px;font-family: 'Gilroy';padding-left: 10px;padding-left: 10px;">
-                            <div class="promotiont">
-                                <label>Promotion Type <span>*</span></label>
-                            </div>
-                            <div class="promotiontypedrp promotiondrpalign">
-                                <ng-select [items]="toppingList3" placeholder="Select the promotion type"
-                                    bindLabel="promotionTypesName" bindValue="promotionTypesId"
-                                    (change)="GetPromotionTypes($event)">
-                                </ng-select>
-                            </div>
-                            <div class="promotiont">
-                                <label>Start Date <span>*</span></label>
-                            </div>
-                            <div class=" mydatepicker ">
-                                <mat-form-field class="form-field placeh-align">
-                                    <input matInput placeholder="Select the start date" style="padding-bottom:2px;"
-                                        [matDatepicker]="picker1" [formControl]="startDate"
-                                        (dateChange)="dateChange($event)">
-                                    <mat-datepicker-toggle matSuffix [for]="picker1">
-                                        <br>
-                                        <!-- <mat-icon matDatepickerToggleIcon>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-lg-6">
+                                <!-- <div class="promotiont"> -->
+                                <!-- <label>Promotion Type <span>*</span></label> -->
+                                <!-- </div> -->
+                                <div class="promotiontypedrp identify promotiondrpalign">
+                                    <label>Promotion Type <span class="astr">*</span></label>
+                                    <ng-select [items]="promotionTypedropdown" placeholder="Select the promotion type"
+                                        bindLabel="promotionTypesName" bindValue="promotionTypesId"
+                                        (change)="GetPromotionTypes($event)">
+                                    </ng-select>
+                                </div>
+                                <div class=" mydatepicker ">
+                                    <label>Start Date <span class="astr">*</span></label><br>
+                                    <mat-form-field class="form-field placeh-align">
+                                        <input matInput placeholder="Select the start date" style="padding-bottom:2px;"
+                                            [matDatepicker]="picker1" [formControl]="startDate"
+                                            (dateChange)="dateChange($event)">
+                                        <mat-datepicker-toggle matSuffix [for]="picker1">
+                                            <br>
+                                            <!-- <mat-icon matDatepickerToggleIcon>
                                             <img src="assets/img/calendar.png" class="calendarToggle">
                                         </mat-icon> -->
-                                </mat-datepicker-toggle>
-                                    <mat-datepicker #picker1></mat-datepicker>
-                                </mat-form-field>
-                            </div>  
-                            <div class="promotiont">
-                                <label>End Date <span>*</span></label>
-                            </div>
-                            <div class=" mydatepicker">
-                                <mat-form-field class="form-field placeh-align">
-                                    <input matInput placeholder="Select the end date" [matDatepicker]="basicDatepicker">
-                                    <mat-datepicker-toggle matSuffix [for]="basicDatepicker"></mat-datepicker-toggle>
-                                    <mat-datepicker #basicDatepicker></mat-datepicker>
-                                </mat-form-field>
-                            </div>
-                            <div class="imagefield">
-                                <div class="image">
-                                    <label>Image <span>*</span></label>
+                                        </mat-datepicker-toggle>
+                                        <mat-datepicker #picker1></mat-datepicker>
+                                    </mat-form-field>
                                 </div>
-                                <input matInput placeholder="" #input class="form-control container"
-                                    style="border: solid lightgrey 1px; width: 484px; height: 206px; 
-                                    border-radius: 15px; background-color: white;position: relative;left: 475px; bottom:270px;" 
-                                    type="file" (change)="onFileChanged($event)">
-                                <!-- <img src="assets/img/add-image.png" type="file"
-                                    style="width: 48px;position: relative; left: 694px; bottom: 405px;;"
-                                    alt="left-arr-btn" (click)="addimage($event)"> -->
-                                <h3
-                                    style="font-family: 'Gilroy';position: relative; bottom: 386px; left: 242px; color: lightgrey;">
-                                    Add Image</h3>
+                                <div class=" mydatepicker">
+                                    <label>End Date <span class="astr">*</span></label><br>
+                                    <mat-form-field class="form-field placeh-align">
+                                        <input matInput placeholder="Select the end date"
+                                            [matDatepicker]="basicDatepicker">
+                                        <mat-datepicker-toggle matSuffix [for]="basicDatepicker">
+                                        </mat-datepicker-toggle>
+                                        <mat-datepicker #basicDatepicker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
                             </div>
 
+                            <div class="col-12 col-lg-6 imagefield">
+                                <label>Image <span class="astr">*</span></label>
+                                <div class="image text-center">
+                                    <div class="fileadd">
+                                        <label class="uploadlabel">
+                                            <input matInput placeholder="" #input id="file-input"
+                                                class="form-control imgupload" type="file"
+                                                (change)="onFileChanged($event)">
 
-                        </form>
-                    </mat-step>
+                                            <img src="assets/img/add-image.png" type="file" for="file-input"
+                                                alt="left-arr-btn" (change)="onFileChanged($event)"></label>
+                                        <p>Add Image</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- items in promotion -->
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <div class="d-flex">
+                                <h5 class="promoItem"> Items in Promotions </h5>
+                                <img src="assets/img/item-info-i.svg" class="indexImg" data-toggle="tooltip" data-placement="top"
+                                    data-html="true"
+                                    title="The user needs to add products in the Buy Product Group. There should
+         be at least one Product in this group. The Qty for the products in the Buy Product Group will be displayed in saleable UOM. The user needs to add products in the Get Product Group."
+                                    alt=""></div>
+                                <p class="itempromtion" *ngIf="noPromotionSelected">No Promotion Selected Yet</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div *ngIf="buyab">
+                            <div class="row">
+                                <div class="col-lg-6 BuyGroup">
+                                    <div class="buy1">
+                                        <div class="row">
+                                            <div class="col-10 buyGrp-h">
+                                                <h5 class="item-header"><b>Buy </b>group 1</h5>
+                                            </div>
+                                            <div class="col-2 plsImg" (click)="displaydata()">
+                                                <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="productlevel col-12">
+                                                <label>Item Level<span class="astr">*</span></label>
+                                                <div class="collapsible" (click)="addItems()">
+                                                    <div class="row">
+                                                        <div class="col-10">
+                                                            <p class="expn-t">Select the Items</p>
+                                                        </div>
+                                                        <div class="col-2"> <img class="expsion-img"
+                                                                src="assets/img/maximize.png" alt=""></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <label>Items<span class="astr">*</span></label>
+                                                <mat-card class="list-item">
+                                                    <mat-card-content class="item-in-box">
+                                                        <ul>
+                                                            <li>Little hearts classic edition 100gm
+                                                                (PO01254)</li>
+                                                            <li>Little hearts classic edition 100gm
+                                                                (PO01254)</li>
+                                                            <li>Little hearts classic edition 100gm
+                                                                (PO01254)</li>
+                                                            <li>Little hearts classic edition 100gm
+                                                                (PO01254)</li>
+                                                            <li>Little hearts classic edition 100gm
+                                                                (PO01254)</li>
+                                                            <li>Little hearts classic edition 100gm
+                                                                (PO01254)</li>
+                                                            <li>Little hearts classic edition 100gm
+                                                                (PO01254)</li>
+                                                            <li>Little hearts classic edition 100gm
+                                                                (PO01254)</li>
+                                                            <li>Little hearts classic edition 100gm
+                                                                (PO01254)</li>
 
-                    <mat-step [stepControl]="secondFormGroup">
-                        <form [formGroup]="secondFormGroup">
-                            <ng-template matStepLabel>Items in Promotion</ng-template>
+                                                        </ul>
+                                                    </mat-card-content>
+                                                </mat-card>
+                                            </div>
+                                            <div class="col-2 qtyalign">
+                                                <label>Qty<span class="astr">*</span></label>
+                                                <div class="qty-box"> 1</div>
+                                                <label>mty<span class="astr">*</span></label>
+                                                <div class="mty-box"> 1</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- additional buy-g -->
+                                    <div class="additionalBuyg-2 mt-3">
+                                        <div class="row">
+                                            <div class="col-10 buyGrp-h">
+                                                <h5 class="item-header"><b>Buy </b>group 2</h5>
+                                            </div>
+                                            <div class="col-2 plsAdd" (click)="displaydata()">
+                                                <img src="assets/img/minus.png" class="plus-image" alt="plus-btn">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="productlevel col-12">
+                                                <label>Item Level<span class="astr">*</span></label>
+                                                <div class="collapsible" (click)="addItems()">
+                                                    <div class="row">
+                                                        <div class="col-10">
+                                                            <p class="expn-t">Select the Items</p>
+                                                        </div>
+                                                        <div class="col-2"> <img class="expsion-img"
+                                                                src="assets/img/maximize.png" alt=""></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <label>Items<span class="astr">*</span></label>
+                                                <mat-card class="list-item">
+                                                    <mat-card-content class="item-in-box">
+                                                        <ul>
+                                                            <li>Item Information</li>
+                                                        </ul>
+                                                    </mat-card-content>
+                                                </mat-card>
+                                            </div>
+                                            <div class="col-2 qtyalign">
+                                                <label>Qty<span class="astr">*</span></label>
+                                                <div class="qty-box"> 1</div>
+                                                <label>mty<span class="astr">*</span></label>
+                                                <div class="mty-box"> 1</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- additional buy-g ends -->
+                                </div>
+                                <div class="col-lg-6 GetGroup">
+                                    <div class="get1">
+                                        <div class="row">
+                                            <div class="col-10 buyGrp-h">
+                                                <h5 class="item-header"><b>Get </b>group 1</h5>
+                                            </div>
+                                            <div class="col-2 plsImg" (click)="displaydata()">
+                                                <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="productlevel col-12">
+                                                <label>Item Level<span class="astr">*</span></label>
+                                                <div class="collapsible" (click)="addItems()">
+                                                    <div class="row">
+                                                        <div class="col-10">
+                                                            <p class="expn-t">Select the Items</p>
+                                                        </div>
+                                                        <div class="col-2"> <img class="expsion-img"
+                                                                src="assets/img/maximize.png" alt=""></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <label>Items<span class="astr">*</span></label>
+                                                <mat-card class="list-item">
+                                                    <mat-card-content class="item-in-box">
+                                                        <ul>
+                                                            <li>Item Information</li>
+                                                        </ul>
+                                                    </mat-card-content>
+                                                </mat-card>
+                                            </div>
+                                            <div class="col-2 qtyalign">
+                                                <label>Qty<span class="astr">*</span></label>
+                                                <div class="qty-box"> 1</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- or add getGroup -->
+                                    <div class="additionalGetg-2 mt-3">
+                                        <div class="row">
+                                            <div class="col-10 buyGrp-h">
+                                                <h5 class="item-header"><b>Get </b>group 2</h5>
+                                            </div>
+                                            <div class="col-2 plsAdd" (click)="displaydata()">
+                                                <img src="assets/img/minus.png" class="plus-image" alt="plus-btn">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="productlevel col-12">
+                                                <label>Item Level<span class="astr">*</span></label>
+                                                <div class="collapsible" (click)="addItems()">
+                                                    <div class="row">
+                                                        <div class="col-10">
+                                                            <p class="expn-t">Select the Items</p>
+                                                        </div>
+                                                        <div class="col-2"> <img class="expsion-img"
+                                                                src="assets/img/maximize.png" alt=""></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <label>Items<span class="astr">*</span></label>
+                                                <mat-card class="list-item">
+                                                    <mat-card-content class="item-in-box">
+                                                        <ul>
+                                                            <li>Item Information</li>
+                                                        </ul>
+                                                    </mat-card-content>
+                                                </mat-card>
+                                            </div>
+                                            <div class="col-2 qtyalign">
+                                                <label>Qty<span class="astr">*</span></label>
+                                                <div class="qty-box"> 1</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- additional get-g ends -->
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Buy A/B to get C/D section -->
+                        <div *ngIf="buysets">
+                            <div class="row">
+                                <div class="col-lg-6 BuySets">
+                                    <div class="row">
+                                        <div class="col-10 buyGrp-h">
+                                            <h5 class="item-header"><b>Buy </b>Sets</h5>
+                                        </div>
+                                        <div class="col-2 plsImg" (click)="displaydata()">
+                                            <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
+                                        </div>
+                                    </div>
+                                    <b>Set 1</b>
+                                    <div class="buyoneSet">
+                                        <div class="buy-set-1">
+                                            <div class="row">
+                                                <div class="col-10 buyGrp-h">
+                                                    <h5 class="item-header"><b>Buy </b>group 1</h5>
+                                                </div>
+                                                <div class="col-2 plsImg" (click)="displaydata()">
+                                                    <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="productlevel col-12">
+                                                    <label>Item Level<span class="astr">*</span></label>
+                                                    <div class="collapsible" (click)="addItems()">
+                                                        <div class="row">
+                                                            <div class="col-10">
+                                                                <p class="expn-t">Select the Items</p>
+                                                            </div>
+                                                            <div class="col-2"> <img class="expsion-img"
+                                                                    src="assets/img/maximize.png" alt=""></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <label>Items<span class="astr">*</span></label>
+                                                    <mat-card class="list-item">
+                                                        <mat-card-content class="item-in-box">
+                                                            <ul>
+                                                                <li>Item Information</li>
+                                                            </ul>
+                                                        </mat-card-content>
+                                                    </mat-card>
+                                                </div>
+                                                <div class="col-2 qtyalign">
+                                                    <label>Qty<span class="astr">*</span></label>
+                                                    <div class="qty-box"> 1</div>
+                                                    <label>mty<span class="astr">*</span></label>
+                                                    <div class="mty-box"> 1</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- additional buy-g -->
+                                        <div class="additionalBuyg-2 mt-3">
+                                            <div class="row">
+                                                <div class="col-10 buyGrp-h">
+                                                    <h5 class="item-header"><b>Buy </b>group 2</h5>
+                                                </div>
+                                                <div class="col-2 plsAdd" (click)="displaydata()">
+                                                    <img src="assets/img/minus.png" class="plus-image" alt="plus-btn">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="productlevel col-12">
+                                                    <label>Item Level<span class="astr">*</span></label>
+                                                    <div class="collapsible" (click)="addItems()">
+                                                        <div class="row">
+                                                            <div class="col-10">
+                                                                <p class="expn-t">Select the Items</p>
+                                                            </div>
+                                                            <div class="col-2"> <img class="expsion-img"
+                                                                    src="assets/img/maximize.png" alt=""></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <label>Items<span class="astr">*</span></label>
+                                                    <mat-card class="list-item">
+                                                        <mat-card-content class="item-in-box">
+                                                            <ul>
+                                                                <li>Item Information</li>
+                                                            </ul>
+                                                        </mat-card-content>
+                                                    </mat-card>
+                                                </div>
+                                                <div class="col-2 qtyalign">
+                                                    <label>Qty<span class="astr">*</span></label>
+                                                    <div class="qty-box"> 1</div>
+                                                    <label>mty<span class="astr">*</span></label>
+                                                    <div class="mty-box"> 1</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- additional buy-g ends -->
+                                </div>
+                                <div class="col-lg-6 GetGroup">
+                                    <div class="row">
+                                        <div class="col-10 buyGrp-h">
+                                            <h5 class="item-header"><b>Get </b>Sets</h5>
+                                        </div>
+                                        <div class="col-2 plsImg" (click)="displaydata()">
+                                            <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
+                                        </div>
+                                    </div>
+                                    <b>Set 1</b>
+                                    <div class="getSet1">
+                                        <div class="row">
+                                            <div class="col-10 buyGrp-h">
+                                                <h5 class="item-header"><b>Get </b>group 1</h5>
+                                            </div>
+                                            <div class="col-2 plsImg" (click)="displaydata()">
+                                                <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="productlevel col-12">
+                                                <label>Item Level<span class="astr">*</span></label>
+                                                <div class="collapsible" (click)="addItems()">
+                                                    <div class="row">
+                                                        <div class="col-10">
+                                                            <p class="expn-t">Select the Items</p>
+                                                        </div>
+                                                        <div class="col-2"> <img class="expsion-img"
+                                                                src="assets/img/maximize.png" alt=""></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <label>Items<span class="astr">*</span></label>
+                                                <mat-card class="list-item">
+                                                    <mat-card-content class="item-in-box">
+                                                        <ul>
+                                                            <li>Item Information</li>
+                                                        </ul>
+                                                    </mat-card-content>
+                                                </mat-card>
+                                            </div>
+                                            <div class="col-2 qtyalign">
+                                                <label>Qty<span class="astr">*</span></label>
+                                                <div class="qty-box"> 1</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- or add getGroup -->
+                                    <div class="additionalGetset-2 mt-3">
+                                        <div class="row">
+                                            <div class="col-10 buyGrp-h">
+                                                <h5 class="item-header"><b>Get </b>group 2</h5>
+                                            </div>
+                                            <div class="col-2 plsAdd" (click)="displaydata()">
+                                                <img src="assets/img/minus.png" class="plus-image" alt="plus-btn">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="productlevel col-12">
+                                                <label>Item Level<span class="astr">*</span></label>
+                                                <div class="collapsible" (click)="addItems()">
+                                                    <div class="row">
+                                                        <div class="col-10">
+                                                            <p class="expn-t">Select the Items</p>
+                                                        </div>
+                                                        <div class="col-2"> <img class="expsion-img"
+                                                                src="assets/img/maximize.png" alt=""></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <label>Items<span class="astr">*</span></label>
+                                                <mat-card class="list-item">
+                                                    <mat-card-content class="item-in-box">
+                                                        <ul>
+                                                            <li>Item Information</li>
+                                                        </ul>
+                                                    </mat-card-content>
+                                                </mat-card>
+                                            </div>
+                                            <div class="col-2 qtyalign">
+                                                <label>Qty<span class="astr">*</span></label>
+                                                <div class="qty-box"> 1</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- additional get-g ends -->
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- Volume Discount Section -->
+                        <div *ngIf="volumedc">
                             <div class="row">
                                 <div class="col-12">
-                                    <label> Items in Promotions</label>
-                                </div>
-                            </div>
-                            <br>
-                            <div *ngIf="buyab">
-                                <div class="row">
-                                    <div class="col-5">
-                                        <p class="item-header"><b>Buy </b>group</p>
-                                    </div>
-                                    <div class="col-1" (click)="displaydata()">
-                                        <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
-                                    </div>
-                                    <div class="col-5">
-                                        <p class="item-header"><b>Get </b>group</p>
-                                    </div>
-                                    <div class="col-1" (click)="displaydata()">
-                                        <img src="assets/img/plus.png" class="plus-imageone" alt="plus-btn">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <label>Product Level<span>*</span></label>
-                                    </div>
-                                    <div class="col-6">
-                                        <label>Product Level<span>*</span></label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="productlevel identify" (click)="addItems()">
-                                            <ng-multiselect-dropdown name="type" [placeholder]="'Select Identifier'"
-                                                formControlName="type" [disabled]="disabled" clearable="false"
-                                                [settings]="dropdownSettings3" [data]="toppingList3"
-                                                (onSelect)="onTypeSelect($event)" (onSelectAll)="onTypeAll($event)">
-                                            </ng-multiselect-dropdown>
+                                    <label>Item Level<span class="astr">*</span></label>
+                                    <div class="collapsible" (click)="addItems()">
+                                        <div class="row">
+                                            <div class="col-11">
+                                                <p class="expn-t">Select the Items</p>
+                                            </div>
+                                            <div class="col-1"> <img class="expsion-img" src="assets/img/maximize.png"
+                                                    alt=""></div>
                                         </div>
-                                    </div>
-                                    <div class="col-2"></div>
-                                    <div class="col-4">
-                                        <div class=" productleveltwo identify" (click)="addItems()">
-                                            <ng-multiselect-dropdown name="type" [placeholder]="'Select Identifier'"
-                                                formControlName="type" [disabled]="disabled"
-                                                [settings]="dropdownSettings3" [data]="toppingList3"
-                                                (onSelect)="onTypeSelect($event)" (onSelectAll)="onTypeAll($event)">
-                                            </ng-multiselect-dropdown>
-                                        </div>
-                                    </div>
-                                    <!-- <div class="col-2"></div> -->
-                                </div>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <label>Items<span>*</span></label>
-                                    </div>
-                                    <div class="col-1 qtyalign">
-                                        <label>Qty<span>*</span></label>
-                                    </div>
-                                    <div class="col-5">
-                                        <label>Items<span>*</span></label>
-                                    </div>
-                                    <div class="col-1 qtyalign">
-                                        <label>Qty<span>*</span></label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-4">
-                                        <form class="itemsList">
-                                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                                            <label for="vehicle1"> Little hearts classic edition 100gm
-                                                (PO01254)</label><br>
-                                            <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-                                            <label for="vehicle2"> Little hearts classic edition 100gm
-                                                (PO01254)</label><br>
-                                            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                                            <label for="vehicle3"> Little hearts classic edition 100gm (PO01254)</label>
-                                            <br>
-                                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                                            <label for="vehicle1"> Little hearts classic edition 100gm
-                                                (PO01254)</label><br>
-                                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                                            <label for="vehicle1"> Little hearts classic edition 100gm
-                                                (PO01254)</label><br>
-
-                                            <br>
-                                            <!-- <img src="assets/img/cancel.png" class="cancel-image" alt="plus-btn">  -->
-                                        </form>
-                                        <!-- <input class="itemspone" type="text" id="pValue" name="pValue" required
-                                            placeholder="Items in promotion">-->
-
-                                    </div>
-                                    <div class="col-2">
-                                        <input class="qty-items" type="text" id="pValue" name="pValue" required
-                                            placeholder="1">
-                                        <label class="moq">MOQ<span>*</span></label>
-                                        <input class="moq-text" type="text" id="pValue" name="pValue" required
-                                            placeholder="1">
-                                    </div>
-                                    <div class="col-4">
-                                        <input class="itemsptwo" type="text" id="pValue" name="pValue" required
-                                            placeholder="Items in promotion">
-                                        <img src="assets/img/cancel.png" class="cancel-image" alt="plus-btn">
-                                    </div>
-                                    <div class="col-2">
-                                        <input class="qty-items-text" type="text" id="pValue" name="pValue" required
-                                            placeholder="1">
-                                    </div>
-                                </div>
-                                <br>
-                            </div>
-                            <!-- Add section on plus image -->
-                            <div *ngIf=showdata>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <p class="item-header"><b>Buy </b>group</p>
-                                    </div>
-                                    <div class="col-1" (click)=" hidedata()">
-                                        <img src="assets/img/minus.png" class="plus-image" alt="plus-btn"
-                                            (click)=" addRemoveitem()">
-                                    </div>
-                                    <div class="col-5">
-                                        <p class="item-header"><b>Get </b>group</p>
-                                    </div>
-                                    <div class="col-1" (click)=" hidedata()">
-                                        <img src="assets/img/minus.png" class="plus-imageone" alt="plus-btn"
-                                            (click)="addRemoveitem() ">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <label>Product Level<span>*</span></label>
-                                    </div>
-                                    <div class="col-6">
-                                        <label>Product Level<span>*</span></label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="productlevel identify" (click)="addItems()">
-                                            <ng-multiselect-dropdown name="type" [placeholder]="'Select Identifier'"
-                                                formControlName="type" [disabled]="disabled"
-                                                [settings]="dropdownSettings3" [data]="toppingList3"
-                                                (onSelect)="onTypeSelect($event)" (onSelectAll)="onTypeAll($event)">
-                                            </ng-multiselect-dropdown>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class=" productleveltwo identify" (click)="addItems()">
-                                            <ng-multiselect-dropdown name="type" [placeholder]="'Select Identifier'"
-                                                formControlName="type" [disabled]="disabled"
-                                                [settings]="dropdownSettings3" [data]="toppingList3"
-                                                (onSelect)="onTypeSelect($event)" (onSelectAll)="onTypeAll($event)">
-                                            </ng-multiselect-dropdown>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <label>Items<span>*</span></label>
-                                    </div>
-                                    <div class="col-1 ">
-                                        <label>Qty<span>*</span></label>
-                                    </div>
-                                    <div class="col-5">
-                                        <label>Items<span>*</span></label>
-                                    </div>
-                                    <div class="col-1">
-                                        <label>Qty<span>*</span></label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-4">
-                                        <input class="itemspone" type="text" id="pValue" name="pValue" required
-                                            placeholder="Items in promotion">
-                                    </div>
-                                    <div class="col-2">
-                                        <input class="qty-items" type="text" id="pValue" name="pValue" required
-                                            placeholder="1">
-                                        <label class="moq">MOQ<span>*</span></label>
-                                        <input class="moq-text" type="text" id="pValue" name="pValue" required
-                                            placeholder="1">
-                                    </div>
-                                    <div class="col-4">
-                                        <input class="itemsptwo" type="text" id="pValue" name="pValue" required
-                                            placeholder="Items in promotion">
-                                    </div>
-                                    <div class="col-2">
-                                        <input class="qty-items-text" type="text" id="pValue" name="pValue" required
-                                            placeholder="1">
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Buy A/B to get C/D section -->
-                            <div *ngIf="buysets">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <label> Items in Promotions</label>
-                                    </div>
+                            <div class="row">
+                                <div class="col-lg-6 inlineNav">
+                                    <label>Items<span class="astr">*</span></label>
+                                    <mat-card class="list-item">
+                                        <mat-card-content class="item-in-box">
+                                            <ul>
+                                                <li>Item Information</li>
+                                            </ul>
+                                        </mat-card-content>
+                                    </mat-card>
+                                    <br>
+                                    <label>Minimum Order Quantity<span class="astr">*</span></label>
+                                    <br>
+                                    <input class="minimumorderquantity" type="text" id="pValue" name="pValue" required
+                                        placeholder="240" (click)="addItems()">
                                 </div>
-                                <br>
-
-                                <div class="row">
-                                    <div class="col-5">
-                                        <p class="item-header"><b>Buy </b>Sets 1</p>
-                                    </div>
-                                    <div class="col-1" (click)="displaydata()">
-                                        <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
-                                    </div>
-                                    <div class="col-5">
-                                        <p class="item-header"><b>Get </b>Sets 1</p>
-                                    </div>
-                                    <div class="col-1" (click)="displaydata()">
-                                        <img src="assets/img/plus.png" class="plus-imageone" alt="plus-btn">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <label> Set 1</label>
-                                    </div>
-                                    <div class="col-6">
-                                        <label> Set 1</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <p><b>Buy </b>group 1</p>
-                                    </div>
-                                    <div class="col-1">
-                                        <img src="assets/img/plus.png" class="plus-imageone" alt="plus-btn">
-                                    </div>
-                                    <div class="col-5">
-                                        <p><b>Get </b>group 1</p>
-                                    </div>
-                                    <div class="col-1">
-                                        <img src="assets/img/plus.png" class="plus-imageone" alt="plus-btn">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <label>Product Level<span>*</span></label>
-                                    </div>
-                                    <div class="col-6">
-                                        <label>Product Level<span>*</span></label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="productlevel identify" (click)="addItems()">
-                                            <ng-multiselect-dropdown name="type" [placeholder]="'Select Identifier'"
-                                                formControlName="type" [disabled]="disabled"
-                                                [settings]="dropdownSettings3" [data]="toppingList3"
-                                                (onSelect)="onTypeSelect($event)" (onSelectAll)="onTypeAll($event)">
-                                            </ng-multiselect-dropdown>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class=" productleveltwo identify" (click)="addItems()">
-                                            <ng-multiselect-dropdown name="type" [placeholder]="'Select Identifier'"
-                                                formControlName="type" [disabled]="disabled"
-                                                [settings]="dropdownSettings3" [data]="toppingList3"
-                                                (onSelect)="onTypeSelect($event)" (onSelectAll)="onTypeAll($event)">
-                                            </ng-multiselect-dropdown>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <label>Items<span>*</span></label>
-                                    </div>
-                                    <div class="col-1 qtyalign">
-                                        <label>Qty<span>*</span></label>
-                                    </div>
-                                    <div class="col-5">
-                                        <label>Items<span>*</span></label>
-                                    </div>
-                                    <div class="col-1 qtyalign">
-                                        <label>Qty<span>*</span></label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-4">
-                                        <input class="itemspone" type="text" id="pValue" name="pValue" required
-                                            placeholder="Items in promotion">
-                                        <img src="assets/img/cancel.png" class="cancel-image" alt="plus-btn">
-                                    </div>
-                                    <div class="col-2">
-                                        <input class="qty-items" type="text" id="pValue" name="pValue" required
-                                            placeholder="1">
-                                        <label class="moq">MOQ<span>*</span></label>
-                                        <input class="moq-text" type="text" id="pValue" name="pValue" required
-                                            placeholder="1">
-                                    </div>
-                                    <div class="col-4">
-                                        <input class="itemsptwo" type="text" id="pValue" name="pValue" required
-                                            placeholder="Items in promotion">
-                                        <img src="assets/img/cancel.png" class="cancel-image" alt="plus-btn">
-                                    </div>
-                                    <div class="col-2">
-                                        <input class="qty-items-text" type="text" id="pValue" name="pValue" required
-                                            placeholder="1">
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <p><b>Buy </b>group 2</p>
-                                    </div>
-                                    <div class="col-1">
-                                        <img src="assets/img/minus.png" class="plus-imageone" alt="plus-btn">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="productlevel identify" (click)="addItems()">
-                                            <ng-multiselect-dropdown name="type" [placeholder]="'Select Identifier'"
-                                                formControlName="type" [disabled]="disabled"
-                                                [settings]="dropdownSettings3" [data]="toppingList3"
-                                                (onSelect)="onTypeSelect($event)" (onSelectAll)="onTypeAll($event)">
-                                            </ng-multiselect-dropdown>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Volume Discount Section -->
-                            <div *ngIf="volumedc">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <label>Product Level<span>*</span></label>
-                                        <br>
-                                        <input class="productSize" type="text" id="pValue" name="pValue" required
-                                            placeholder="Item Information" (click)="addItems()">
-                                    </div>
-                                </div>
-
-                                <div class="row topItems">
-                                    <div class="col-6 inlineNav">
-                                        <label>Items<span>*</span></label>
-                                        <input class="itemSize" type="text" id="pValue" name="pValue" required
-                                            placeholder="1500" >
-                                           
-                                        <!-- <textarea id="w3review" name="w3review" rows="4"
-                                            cols="50">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea> -->
-
-                                    </div>
-                                    <div class="col-5 navItems">
-                                        <div class="row" *ngFor="let packingCharge of packingCharges; let i = index;">
-                                            <div class="col-3">
-                                                <label>Qty From</label>
-                                                <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
-                                                    placeholder="1500" [(ngModel)]="packingCharge.address"
-                                                    name="address_{{i}}">
-
-                                            </div>
-                                            <div class="col-3">
-                                                <label>Qty To</label>
-                                                <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
-                                                    placeholder="1500" [(ngModel)]="packingCharge.eValue"
-                                                    name="street_{{i}}">
-
-                                            </div>
-                                            <div class="col-3">
-                                                <label>Discount</label>
-                                                <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
-                                                    placeholder="1500" [(ngModel)]="packingCharge.pValue"
-                                                    name="city_{{i}}">
-
-                                            </div>
-                                            <div class="col-1">
-                                                <mat-icon class="removeCircle" *ngIf="i>=0" (click)=removesub(i)>
-                                                    remove_circle</mat-icon>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-1 contentinline">
-                                        <mat-icon class="" (click)=addFields()>add_circle</mat-icon>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <label>Minimum Order Quantity<span>*</span></label>
-                                        <br>
-                                        <input class="minimumorderquantity" type="text" id="pValue" name="pValue"
-                                            required placeholder="Enter value" (click)="addItems()">
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- price -->
-                            <div *ngIf="pricedc">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <label>Product Level<span>*</span></label>
-                                        <br>
-                                        <input class="productSize" type="text" id="pValue" name="pValue" required
-                                            placeholder="Item Information" (click)="addItems()">
-                                    </div>
-                                </div>
-
-                                <div class="row topItems">
-                                    <div class="col-6 inlineNav">
-                                        <label>Items<span>*</span></label>
-                                        <input class="itemSize" type="text" id="pValue" name="pValue" required
-                                            placeholder="1500">
-                                        <!-- <textarea id="w3review" name="w3review" rows="4"
-                cols="50">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea> -->
-
-                                    </div>
-                                    <div class="col-5 navItems">
-                                        <div class="row" *ngFor="let packingCharge of packingCharges; let i = index;">
-                                            <div class="col-3">
-                                                <label>Qty From</label>
-                                                <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
-                                                    placeholder="1500" [(ngModel)]="packingCharge.address"
-                                                    name="address_{{i}}">
-
-                                            </div>
-                                            <div class="col-3">
-                                                <label>Qty To</label>
-                                                <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
-                                                    placeholder="1500" [(ngModel)]="packingCharge.eValue"
-                                                    name="street_{{i}}">
-
-                                            </div>
-                                            <div class="col-3">
-                                                <label>Price</label>
-                                                <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
-                                                    placeholder="1500" [(ngModel)]="packingCharge.pValue"
-                                                    name="city_{{i}}">
-
-                                            </div>
-                                            <div class="col-1">
-                                                <mat-icon class="removeCircle" *ngIf="i>=0" (click)=removesub(i)>
-                                                    remove_circle</mat-icon>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-1 contentinline">
-                                        <mat-icon class="" (click)=addFields()>add_circle</mat-icon>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <label>Minimum Order Quantity<span>*</span></label>
-                                        <br>
-                                        <input class="minimumorderquantity" type="text" id="pValue" name="pValue"
-                                            required placeholder="Enter value" (click)="addItems()">
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </mat-step>
-
-                    <mat-step [stepControl]="secondFormGroup">
-                        <form [formGroup]="secondFormGroup">
-                            <ng-template matStepLabel> Geographies</ng-template>
-                            <div class="heading">
-                                <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'">
-                                    <b>Geographies</b>
-                                </h6>
-                            </div>
-                            <input matInput placeholder="Search for the geography here" #input
-                                class="form-control container placeh-align"
-                                style="width: 376px;
-                       height: 35px;background-color: white;margin-top: 1px; margin-left: -1px;font-family: 'Gilroy';padding-left: 10px;">
-                            <img src="assets/img/search.png"
-                                style="width: 17px;left: 342px;top: -28px;position: relative;" alt="search">
-                            <br>
-                            <div class="material-card row">
-                                <div class="col-3">
-
+                                <div class="col-lg-6 navItems">
                                     <div class="row">
-                                        <p class="col-10" style="font-family: 'Gilroy'">Country</p>
-                                        <p class="col-2"></p>
+                                        <div class="col-3">
+                                            <h5 class="labelname">Qty From</h5>
+                                        </div>
+                                        <div class="col-3">
+                                            <h5 class="labelname">Qty To</h5>
+                                        </div>
+                                        <div class="col-3">
+                                            <h5 class="labelname">Discount</h5>
+                                        </div>
+                                        <div class="col-3">
+                                            <mat-icon class="" (click)=addFields()>add_circle</mat-icon>
+                                        </div>
                                     </div>
-                                    <mat-card class="matcardAlign ">
-                                        <mat-card-content style="height:188px; overflow-y: scroll;">
-                                            <div class=" d-flex " *ngFor="let catg of countryname">
-                                                <p class="col-10 countryName" (click)="onClick(catg)">{{catg}}</p>
-                                            </div>
-                                            <div class="buttn d-flex" *ngIf=addButton>
-                                                <div class="col-10">
-                                                    <button class="btn btn-basic addcat">Add category name</button>
-                                                    <button class="btn btn-basic addcode">Add code</button>
-                                                </div>
-                                                <!-- <div class="col-2"><mat-icon>remove_circle</mat-icon></div> -->
-                                            </div>
-                                        </mat-card-content>
+                                    <div class="row" *ngFor="let packingCharge of packingCharges; let i = index;">
+                                        <div class="col-3">
+                                            <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
+                                                placeholder="1500" [(ngModel)]="packingCharge.address"
+                                                name="address_{{i}}">
+                                        </div>
+                                        <div class="col-3">
+                                            <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
+                                                placeholder="1500" [(ngModel)]="packingCharge.eValue"
+                                                name="street_{{i}}">
 
-                                    </mat-card>
+                                        </div>
+                                        <div class="col-3">
+                                            <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
+                                                placeholder="1500" [(ngModel)]="packingCharge.pValue" name="city_{{i}}">
+
+                                        </div>
+                                        <div class="col-3">
+                                            <mat-icon class="removeCircle" *ngIf="i>=0" (click)=removesub(i)>
+                                                remove_circle</mat-icon>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-3 mat-card-width">
+
+                            </div>
+                        </div>
+                        <!-- price -->
+                        <div *ngIf="pricedc">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label>Item Level<span class="astr">*</span></label>
+                                    <div class="collapsible" (click)="addItems()">
+                                        <div class="row">
+                                            <div class="col-11">
+                                                <p class="expn-t">Select the Items</p>
+                                            </div>
+                                            <div class="col-1"> <img class="expsion-img" src="assets/img/maximize.png"
+                                                    alt=""></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6 inlineNav">
+                                    <label>Items<span class="astr">*</span></label>
+                                    <mat-card class="list-item">
+                                        <mat-card-content class="item-in-box">
+                                            <ul>
+                                                <li>Item Information</li>
+                                            </ul>
+                                        </mat-card-content>
+                                    </mat-card>
+                                    <br>
+                                    <label>Minimum Order Quantity<span class="astr">*</span></label>
+                                    <br>
+                                    <input class="minimumorderquantity" type="text" id="pValue" name="pValue" required
+                                        placeholder="240" (click)="addItems()">
+                                </div>
+                                <div class="col-lg-6 navItems">
                                     <div class="row">
-                                        <p class="col-10" style="font-family: 'Gilroy'">State</p>
-                                        <p class="col-2"></p>
+                                        <div class="col-3">
+                                            <h5 class="labelname">Qty From</h5>
+                                        </div>
+                                        <div class="col-3">
+                                            <h5 class="labelname">Qty To</h5>
+                                        </div>
+                                        <div class="col-3">
+                                            <h5 class="labelname">Price</h5>
+                                        </div>
+                                        <div class="col-3">
+                                            <mat-icon class="" (click)=addFields()>add_circle</mat-icon>
+                                        </div>
                                     </div>
-                                    <mat-card class="matcardAlign">
-                                        <mat-card-content style="height:188px; overflow-y: scroll;">
-                                            <!-- <div class="span-subhead"><span>category 3</span><mat-icon>arrow_drop_down</mat-icon></div> -->
-                                            <div class=" d-flex" *ngFor="let subc of statename">
-                                                <p class="col-10 subc" (click)="onClick(subc)">{{subc}}</p>
-                                            </div>
-                                        </mat-card-content>
-                                    </mat-card>
-                                </div>
-                                <div class="col-3">
-                                    <div class="row">
-                                        <p class="col-10" style="font-family: 'Gilroy'">Region</p>
-                                        <p class="col-2"> </p>
+                                    <div class="row" *ngFor="let packingCharge of packingCharges; let i = index;">
+                                        <div class="col-3">
+                                            <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
+                                                placeholder="1500" [(ngModel)]="packingCharge.address"
+                                                name="address_{{i}}">
+                                        </div>
+                                        <div class="col-3">
+                                            <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
+                                                placeholder="1500" [(ngModel)]="packingCharge.eValue"
+                                                name="street_{{i}}">
+
+                                        </div>
+                                        <div class="col-3">
+                                            <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
+                                                placeholder="1500" [(ngModel)]="packingCharge.pValue" name="city_{{i}}">
+
+                                        </div>
+                                        <div class="col-3">
+                                            <mat-icon class="removeCircle" *ngIf="i>=0" (click)=removesub(i)>
+                                                remove_circle</mat-icon>
+                                        </div>
                                     </div>
-                                    <mat-card class="matcardAlign">
-
-                                        <mat-card-content style="height:188px; overflow-y: scroll;">
-                                            <!-- <div class="span-subhead"><span style="padding-bottom: 10px;">category 3</span><mat-icon>keyboard_arrow_right</mat-icon><span>Sub-category</span><mat-icon>arrow_drop_down</mat-icon></div> -->
-                                            <!-- <li class="type" *ngFor="let type of typename" >{{type}}<mat-icon>add_circle</mat-icon></li> -->
-                                            <div class=" d-flex" *ngFor="let type of regionname">
-                                                <p class="col-10 typeg" (click)="onClick(type)">{{type}}</p>
-                                            </div>
-                                        </mat-card-content>
-                                    </mat-card>
-
                                 </div>
-                                <div class="col-3">
-                                    <div class="row">
-                                        <p class="col-10" style="font-family: 'Gilroy';">City</p>
-                                        <p class="col-2"> </p>
+
+                            </div>
+                        </div>
+                    </form>
+                </mat-step>
+
+                <mat-step [stepControl]="secondFormGroup">
+                    <form [formGroup]="secondFormGroup">
+                        <ng-template matStepLabel> Geographies & Dealers</ng-template>
+                        <!-- <div class="heading">
+                            <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'">
+                                <b>Geographies</b>
+                            </h6>
+                        </div> -->
+                        <div class="heading">
+                            <h5 class="geo-head">Geographies</h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 slctd-row">
+                                <div class="row">
+                                    <div class="col-lg-9 sltd-span">
+                                        <span class="selectedname" *ngIf="false">Selected Geogrphies</span>
+                                        <span class="selectedcolor" *ngIf="true">Malasia(3/4)</span>;
+                                        <span class="selectedclr2">India(15/15)</span>;
+                                        <span class="astr">Singpore(0/6)</span>;
+                                        <span class="selectedclr2">Japan(23/23)</span>
                                     </div>
-                                    <mat-card class="matcardAlign ">
-                                        <mat-card-content style="height:188px; overflow-y: scroll;">
-                                            <!-- <div class="span-subhead"><span style="padding-bottom: 10px;">category 3</span><mat-icon>keyboard_arrow_right</mat-icon><span>Sub-category</span><mat-icon>arrow_drop_down</mat-icon></div> -->
-                                            <!-- <li class="type" *ngFor="let type of typename" >{{type}}<mat-icon>add_circle</mat-icon></li> -->
-                                            <div class=" d-flex" *ngFor="let type of cityname">
-                                                <p class="col-10 typeg" (click)="onClick(type)"
-                                                    [ngClass]="{ 'typeselected': type == selectedItem }">{{type}}</p>
-                                            </div>
-                                        </mat-card-content>
-                                    </mat-card>
-
+                                    <div class="col-lg-3">
+                                        <button class="slctd-geo-btn" (click)="geography()"> Selected Geographies</button>
+                                    </div>
                                 </div>
                             </div>
-                        </form>
-                    </mat-step>
-
-                    <mat-step [stepControl]="secondFormGroup">
-                        <form [formGroup]="secondFormGroup">
-                            <ng-template matStepLabel>Dealers & Additional Remarks</ng-template>
-                            <!-- <div class="pagescroll" 
-                                style="height:477px; overflow-y: scroll;overflow-x: auto;width: 792px;">-->
-                            <div class="heading">
-                                <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'">
-                                    <b>Dealers</b>
-                                </h6>
+                        </div>
+                        <div class="heading">
+                            <h5 class="geo-head">Dealers</h5>
+                        </div>
+                        <div class="row">
+<input type="text" placeholder="Search for the Geography/ Dealers here" class="searchGeo">
+                        </div>
+                        <!-- grid table -->
+                        <div class="grid-table mt-2">
+                            <ag-grid-angular id="gridContainer"
+                              style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
+                              class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
+                              [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
+                              [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
+                              (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
+                              (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+                              (bodyScroll)="handleScroll($event)" [rowSelection]="'multiple'"(rowSelected)="onRowSelect($event)"></ag-grid-angular>
+                          </div>
+                          <!-- additional remarks -->
+                          <div class="row">
+                            <div class="col-lg-12">
+                                <label > Additional Remarks</label><br>
+                                <input type="text" placeholder="Enter your remarks here..." class="addtnlRemarks">
                             </div>
-                            <input matInput placeholder="Search for the Geography/Dealers here" #input
-                                class="form-control container placeh-align"
-                                style="width: 376px;
-                       height: 35px;background-color: white;margin-top: 1px; margin-left: -1px;font-family: 'Gilroy';padding-left: 10px;">
-                            <img src="assets/img/search.png"
-                                style="width: 17px;left: 342px;top: -28px;position: relative;" alt="search">
-                            <div class="material-card row">
-                                <div class="col-3 matcard-dealers">
-                                    <mat-card class="mat-card-content ">
-                                        <mat-card-subtitle style="margin-left: 21px;">Searched Dealers
-                                        </mat-card-subtitle>
-                                        <mat-card-content style="height:130px; overflow-y: scroll;">
-                                            <!-- <div class=" d-flex " *ngFor="let catg of countryname"><p class="col-10 catg"  (click)="onClick(catg)"  >{{catg}}</p></div> -->
-                                            <!-- <div class="buttn d-flex" *ngIf = addButton> -->
-                                            <div class="col-10">
-                                                <mat-checkbox class="example-margin">Valiant distributorsss
-                                                </mat-checkbox>
-                                                <mat-checkbox class="example-margin">Kaldera sdn bhd (SKS02),
-                                                    Singapore
-                                                </mat-checkbox>
-                                                <mat-checkbox class="example-margin">Eea enterprise (MEE03),
-                                                    Malaysia
-                                                </mat-checkbox>
-                                                <mat-checkbox class="example-margin">Lien nha co ltd (ILN04), India
-                                                </mat-checkbox>
-                                                <mat-checkbox class="example-margin">Tuyet hai</mat-checkbox>
-                                                <!-- <button class="btn btn-basic addcode">Add code</button>-->
-                                            </div>
-                                            <!-- <div class="col-2"><mat-icon>remove_circle</mat-icon></div> -->
-                                            <!-- </div> -->
-                                        </mat-card-content>
-                                    </mat-card>
-                                </div>
-                                <div class="col-3 matcard-dealers alignment">
-                                    <mat-card class="mat-card-content ">
-                                        <mat-card-subtitle style="margin-left: 21px;">Selected Dealers
-                                        </mat-card-subtitle>
-                                        <mat-card-content style="height:130px; overflow-y: scroll;">
-                                            <!-- <div class=" d-flex " *ngFor="let catg of countryname"><p class="col-10 catg"  (click)="onClick(catg)"  >{{catg}}</p></div> -->
-                                            <!-- <div class="buttn d-flex" *ngIf = addButton> -->
-                                            <div class="col-10">
-                                                <mat-checkbox class="example-margin">Valiant distributorsss
-                                                </mat-checkbox>
-                                                <mat-checkbox class="example-margin">Kaldera sdn bhd (SKS02),
-                                                    Singapore
-                                                </mat-checkbox>
-                                                <mat-checkbox class="example-margin">Eea enterprise (MEE03),
-                                                    Malaysia
-                                                </mat-checkbox>
-                                                <mat-checkbox class="example-margin">Lien nha co ltd (ILN04), India
-                                                </mat-checkbox>
-                                                <mat-checkbox class="example-margin">Tuyet hai</mat-checkbox>
-                                                <!-- <button class="btn btn-basic addcode">Add code</button>-->
-                                            </div>
-
-                                        </mat-card-content>
-                                    </mat-card>
-                                </div>
-
+                          </div>
+                          <!-- footer -->
+                          <div class="row">
+                            <div class="footer-btns">
+                                <button class="btn btn-light saveDraft">Save as draft</button>
+                                <button class="btn btn-light submit" >Save & Submit</button>
+                                <a href="">Cancel</a>
                             </div>
-                            <div class="additional">
-                                <label>Additional Remarks <span>*</span></label>
-                            </div>
-                            <input matInput placeholder="Enter your remarks here" #input
-                                class="form-control container placeh-align"
-                                style="width: 771px;
-                   height: 35px;background-color: white;margin-top: 1px; margin-left: -1px;font-family: 'Gilroy';padding-left: 10px;">
+                          </div>
+                    </form>
+                </mat-step>
 
-                            <div class="row btn-row">
-                                <button class="btn btn-primary btn-block submitbtn"
-                                    style="background-color:#000000;width:23%;position:relative; left: 28%;border-radius: 11px;">Save</button>
-                                <button class="btn btn-primary btn-block submitbtn"
-                                    style="background-color:white;width:23%;position:relative; left: 31%;border-radius: 11px; border-color: black ;color: #000000;">Cancel</button>
-                            </div>
-
-                        </form>
-                    </mat-step>
-
-                </mat-stepper>
-            </div>
+            </mat-stepper>
+            <!-- </div> -->
         </div>
     </div>
 </div>

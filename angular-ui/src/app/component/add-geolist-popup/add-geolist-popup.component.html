@@ -61,11 +61,11 @@
               [(ngModel)]="packingCharge.pValue"
               name="city_{{ i }}"
             />
-
-            <!-- <p class="minus-icon10" >-</p>  -->
+         
+               <!-- <p class="minus-icon10" >-</p> -->
           </div>
           <div class="col-2">
-            <mat-icon class="removeCircle" *ngIf="i >= 1" (click)="removesub(i)">remove_circle</mat-icon>
+            <mat-icon [ngClass]="{ 'removeCircle': i>0 ,'removeCircle1': i==0 }"  *ngIf="i >= 0 " (click)="removesub(i)" >remove_circle</mat-icon>
           </div>
         </div>
         <div class="col-12">

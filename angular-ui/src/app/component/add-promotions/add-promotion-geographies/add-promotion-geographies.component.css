@@ -1,0 +1,78 @@
+
+.close-icon {
+    left: 100%;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+  }
+ 
+  .head-t:after {
+    content: "";
+    display: block;
+    width: 162px;
+    height: 1px;
+    background: #686E74;
+    right: 0;
+    top: 50%;
+    position: absolute;
+  }
+  
+  .head-t:before {
+    content: "";
+    display: block;
+    width: 162px;
+    height: 1px;
+    background: #686E74;
+    left: 0;
+    top: 50%;
+    position: absolute;
+  }
+  .head-t{
+    position: relative;
+    /* font-family: 'Gilroy-Bold';  */
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .head-geo{
+    text-align: center;
+  }
+  .search-geo{
+    background: #FFFFFF;
+border: 0.5px solid #000000;
+box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+border-radius: 10px;
+width: 391px;
+height: 43px;
+  }
+  .geo-label{
+    margin-right: 20px;
+  }
+  .list-states{
+    background: #FFFFFF;
+border: 0.5px solid #000000;
+box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+border-radius: 25px;
+width: 293px;
+height: 228px;
+  }
+  .add-geopgraphy li{
+list-style: none;
+  }
+  .countries-sect{
+    height: 300px;
+  }
+  .saveGeo{
+    background: #000000;
+box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+border-radius: 10px;
+width: 168px;
+height: 43px;
+color: white;
+margin: auto;
+  }
+::ng-deep.add-geopgraphy .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background{
+  background-color: black !important;
+}
+::ng-deep.add-geopgraphy .mat-checkbox-checked.mat-accent .mat-checkbox-background{
+  background-color: black !important;
+}

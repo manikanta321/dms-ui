@@ -11,7 +11,6 @@ import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, Gu
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { ITooltipParams, PaginationNumberFormatterParams, } from 'ag-grid-community';
 import { SharedService } from 'src/app/services/shared-services.service';
-import { Subscription } from 'rxjs'
 
 export interface PeriodicElement {
 
@@ -48,7 +47,6 @@ import { EditTaxTemplateComponent } from './userPopups/edit-tax-template/edit-ta
 import { DeletecomponentComponent } from '../deletecomponent/deletecomponent.component';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { CellClassParams, CellClassRules, CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef, GridApi, GridOptions, ModuleRegistry, ColumnResizedEvent, Grid, } from 'ag-grid-community';
-import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AgGridAngular } from 'ag-grid-angular';
 import { UserService } from 'src/app/services/user.service';
@@ -113,7 +111,8 @@ export class UsersComponent implements OnInit {
     {
       headerName: "User ID",
       field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
-      tooltipField:"employeeCode",
+      tooltipField:"employeeCode",minWidth:200,
+
     },
 
     { headerName: "User Name", field: 'userName', type: ['nonEditableColumn'],tooltipField:"userName", },
@@ -124,7 +123,6 @@ export class UsersComponent implements OnInit {
       headerName: "Email ID",
       field: 'email', type: ['nonEditableColumn'],
       tooltipField:"email",      
-      minWidth:200,
       // flex: 1,
     },
 
@@ -174,11 +172,10 @@ export class UsersComponent implements OnInit {
   employeeName: any;
   public defaultColDef: ColDef = {
     suppressSizeToFit: true,
-    // width: 170,
+    
     width:400,
     filter: 'agTextColumnFilter',
     flex: 1,
-    //  minWidth: 100,
     resizable: true,
     sortable: true,
   };

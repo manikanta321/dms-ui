@@ -143,7 +143,10 @@ AddSubArea(data:any){
 addDealerData(data:any){
   return this.http.post<any>(this.classificationurl + 'DealerApi/AddDealer', data);
 }
+editDealerData(id){
+  return this.http.get<any>(this.classificationurl + 'OtherMasterApi/GetDealersToEdit?CustomerId='+ id);
 
+}
 
 
 

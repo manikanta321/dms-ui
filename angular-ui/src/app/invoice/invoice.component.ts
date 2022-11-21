@@ -126,23 +126,6 @@ maxWidth:120
 ];
 
 rowData5=[];
-
-// public rowData5=[
-//   {Name: 'Name', DisplayCode: 'Rajasheka S',status:'Active'},
-//   {Name: 'Name', DisplayCode: 'Raj S',status:'InActive'},
-
-//   {Name: 'Name', DisplayCode: 'kariya S',status:'Active'},
-
-//   {Name: 'Name', DisplayCode: 'ssampath S',status:'InActive'},
-
-//   {Name: 'Name', DisplayCode: 'Raj',status:'Active'},
-
-//   {Name: 'Name', DisplayCode: 'shekar',status:'InActive'},
-
-
- 
-// ];
-
 rowData :any;
 rowData1=[]
 public defaultColDef: ColDef = {
@@ -473,17 +456,7 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
   onRowValueChanged(event: RowValueChangedEvent) {
     var data = event.data;
     alert(data.status)
-    // console.log(
-    //   'onRowValueChanged: (' +
-    //     data.make +
-    //     ', ' +
-    //     data.model +
-    //     ', ' +
-    //     data.price +
-    //     ', ' +
-    //     data.field5 +
-    //     ')'
-    // );
+   
   }
 
   sideBarToggler(){

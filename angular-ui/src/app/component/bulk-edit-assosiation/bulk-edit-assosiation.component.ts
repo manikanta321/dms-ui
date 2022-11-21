@@ -1,4 +1,12 @@
 
+
+
+
+
+
+
+
+
 import { Component, OnInit } from '@angular/core';
 // import { AddUserPopupComponent } from './userPopups/add-user-popup/add-user-popup.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -35,29 +43,15 @@ import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import * as moment from 'moment';
-import { EditdealersComponent } from '../component/users/userPopups/editdealers/editdealers.component';
-import { EditPopupComponent } from '../component/users/userPopups/edit-popup/edit-popup.component';
-import { UomPopupComponent } from '../component/users/userPopups/uom-popup/uom-popup.component';
-import { EditUomPopupComponent } from '../component/users/userPopups/edit-uom-popup/edit-uom-popup.component';
-import { AddTaxTemplateComponent } from '../component/users/userPopups/add-tax-template/add-tax-template.component';
-import { AddcurrencyComponent } from '../component/users/userPopups/addcurrency/addcurrency.component';
-import { EditTaxTemplateComponent } from '../component/users/userPopups/edit-tax-template/edit-tax-template.component';
-import { AddUserPopupComponent } from '../component/users/userPopups/add-user-popup/add-user-popup.component';
-import { AddDealerPopupComponent } from '../add-dealer-popup/add-dealer-popup.component';
-import { AddDealerAssociationsComponent } from '../component/add-dealer-associations/add-dealer-associations.component';
-import { AssosiationActionComponent } from '../component/assosiation-action/assosiation-action.component';
-import { BulkEditAssosiationComponent } from '../component/bulk-edit-assosiation/bulk-edit-assosiation.component';
-// import { UseractionComponent } from '../useraction/useraction.component';
 
 @Component({
-  selector: 'app-association',
-  templateUrl: './association.component.html',
-  styleUrls: ['./association.component.scss']
+  selector: 'app-bulk-edit-assosiation',
+  templateUrl: './bulk-edit-assosiation.component.html',
+  styleUrls: ['./bulk-edit-assosiation.component.scss']
 })
-export class AssociationComponent implements OnInit {
+export class BulkEditAssosiationComponent implements OnInit {
   // clickEventSubscription:Subscription;
 
-  @ViewChild(AddUserPopupComponent) child;
 
   private gridApi!: GridApi;
   paginationPageSize = 10;
@@ -92,68 +86,6 @@ export class AssociationComponent implements OnInit {
   // Data that gets displayed in the grid
   public rowData5 = [];
   public popupParent: HTMLElement = document.body;
-
-  columnDefs: ColDef[] = [
-
-    {
-      headerName: "Product",
-       field: 'customerCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
-    },
-
-    { headerName: "Dealer",
-    minWidth:250,
-    field: 'customerName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
-    },
-    {
-      headerName: "Geography",
-      minWidth:250,
-      field: 'geographyName', 
-      cellRenderer: this.daysSunshineRenderer,
-      // cellRendererParams: {
-      // rendererImage: '', // Complementing the Cell Renderer parameters
-      // },
-      type: ['nonEditableColumn']
-    },
-
-    {
-      headerName: "MRP",
-      field: "10", 
-      type: ['nonEditableColumn']
-    },
-
-    {
-      headerName: "Max.Order.Qty",
-      field: "10", 
-      type: ['nonEditableColumn']
-    },
-    {
-      headerName: "Margin",
-      field: "10", 
-      type: ['nonEditableColumn']
-    },
-    {
-      headerName: "Discount",
-      field: "10", 
-      type: ['nonEditableColumn']
-    },
-    {
-      headerName: "Lead Time",
-      field: "10", 
-      type: ['nonEditableColumn']
-    },
-
-    {
-      headerName: '',
-      colId: 'action',
-      cellRenderer: AssosiationActionComponent,
-      editable: false,
-      maxWidth: 75  
-    },
-
-
-   
-  ];
-
 
   rowData: any;
   rowData1 = [];
@@ -306,13 +238,12 @@ export class AssociationComponent implements OnInit {
         this.sidenav.open();
       }
     });
-    this.message = this.child.message
     console.log('parent is working', this.message)
   }
 
 
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getusertabeldata();
     this.roleItems();
     this.statusItems();
@@ -645,147 +576,12 @@ export class AssociationComponent implements OnInit {
   }
 
   addUser() {
-    this.dialog.open(AddDealerAssociationsComponent,{width: '900px',height:'460px'});
   }
   editBulk(){
-    this.dialog.open(BulkEditAssosiationComponent,{width: '1300px'});
+    this.dialog.open(BulkEditAssosiationComponent,{width: '1000px',height:'660px'});
 
   }
 
-  editUser() {
-    this.dialog.open(EditPopupComponent,);
-  }
-
-  AddUomPopup() {
-    this.dialog.open(UomPopupComponent,);
-  }
-
-  EditUomPopup() {
-    this.dialog.open(EditUomPopupComponent,);
-  }
-
-  addtaxTempl() {
-    this.dialog.open(AddTaxTemplateComponent,);
-  }
-
-  addCurrency() {
-    let dialogRef = this.dialog.open(AddcurrencyComponent);
-    dialogRef.afterClosed().subscribe((res) => {
-      localStorage.setItem('headerStatus','')
-      })
-  }
-
-  edittaxTempl() {
-    this.dialog.open(EditTaxTemplateComponent);
-  }
-  delete() {
-    this.dialog.open(AddUserPopupComponent, { height: '580px', });
-
-  }
-  announceSortChange(sortState: any) {
-
-    if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-    } else {
-      this._liveAnnouncer.announce('Sorting cleared');
-    }
-  }
-
-
-
-  onCellValueChanged(event: CellValueChangedEvent) {
-    // alert(event.value)
-    console.log(
-      'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
-    );
-  }
-
-  onSearchChange($event: any, anything?: any) {
-    const { target } = $event;
-    this.searchText = target.value;
-    const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
-      this.rowData5 = res.response;
-    });
-
-  }
-  onRowValueChanged(event: RowValueChangedEvent) {
-    var data = event.data;
-
-  }
-
-  sideBarToggler() {
-    this.sideBarOpen = !this.sideBarOpen;
-  }
-  openDialog() {
-    // alert('mani')
-
-  }
-  onBtnExport() {
-    this.gridApi.exportDataAsCsv();
-
-  }
-  onGridReady(params: GridReadyEvent) {
-    this.gridApi = params.api;
-    params.api.sizeColumnsToFit();
-
-  }
-  sizeToFit() {
-    this.gridOptions.api!.sizeColumnsToFit();
-  }
-
-
-  onFirstDataRendered(params: FirstDataRenderedEvent) {
-    params.api.paginationGoToPage(4);
-  }
-
-  onPageSizeChanged() {
-    var value = (document.getElementById('page-size') as HTMLInputElement)
-      .value;
-    this.gridApi.paginationSetPageSize(Number(value));
-  }
-
-
-
-  ToggleSideNav(value: any) {
-    this.sidenav.toggle()
-  }
-
-  onCellClicked(e): void {
-    console.log('cellClicked', e);
-    this.userId = e.data.userId;
-    this.employeeName = e.data.userName;
-    console.log('userID', this.userId);
-    localStorage.setItem('userID', this.userId)
-    localStorage.setItem('employeeName', this.employeeName);
-
-    if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
-      const cellRendererInstances = e.api.getCellRendererInstances({
-        rowNodes: [e.node],
-        columns: [e.column],
-      });
-      if (cellRendererInstances.length > 0) {
-        const instance = cellRendererInstances[0];
-        this.instancePopup = instance;
-        instance.togglePopup();
-      }
-    }
-  }
-
-  daysSunshineRenderer(params) {
-  const divelement = document.createElement('div');  
-  const element = document.createElement('span');
-  const imageElement = document.createElement('img');
-  imageElement.className = "country-info";
-  imageElement.src ='assets/img/countryinfo.png';
-  element.appendChild(document.createTextNode(params.value));
-  element.appendChild(imageElement);
-  return element;
-  }
 
 }
 

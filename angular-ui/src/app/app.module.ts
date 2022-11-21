@@ -141,6 +141,8 @@ import { ShipOrderBulkDownloadComponent } from './component/orders/ship-order-bu
 import { CustomDatePopupComponent } from './component/orders/custom-date-popup/custom-date-popup.component';
 import { CustomdatepickerComponent } from './shared-component/customdatepicker/customdatepicker.component';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import { AssosiationActionComponent } from './component/assosiation-action/assosiation-action.component';
+import { BulkEditAssosiationComponent } from './component/bulk-edit-assosiation/bulk-edit-assosiation.component';
 
 @NgModule({
   declarations: [
@@ -248,6 +250,8 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
           ShipOrderBulkDownloadComponent,
           CustomDatePopupComponent,
           CustomdatepickerComponent,
+          AssosiationActionComponent,
+          BulkEditAssosiationComponent,
   ],
   imports: [
     FormsModule,

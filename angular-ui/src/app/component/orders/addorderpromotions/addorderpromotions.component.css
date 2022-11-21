@@ -62,10 +62,8 @@ color: rgba(104, 110, 116, 0.75);
   margin-left: 2px;
   
 }
-::ng-deep.promotiont .multiselect-dropdown .dropdown-btn ::placeholder
-{
-  color: red !important;
-}
+
+
 .promotiont1 {
   margin-top: 3px;
   font-family: 'Gilroy';
@@ -960,7 +958,7 @@ li {
 line-height: 18px;
 letter-spacing: 0em;
 text-align: center;
-
+font-weight: bold;
 font-family: 'Gilroy-SemiBold';
 font-size: 15px;
 line-height: 18px;

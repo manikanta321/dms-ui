@@ -56,7 +56,6 @@ shipPackCharges:any;
   secondColumn: any;
   ThirdColumn: any;
   packageChk: boolean = false;
- 
   // headerName: string;
   // fieldName: string;
   constructor(
@@ -274,11 +273,12 @@ shipPackCharges:any;
     this.columnDefs= [
       {
         headerName: this.headerName,field: 'shippingForm', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
-          },
+        width: 300   },
   
-      { headerName: this.secondColumn, field: 'shippingTo', type: ['nonEditableColumn']  },
+      { headerName: this.secondColumn, field: 'shippingTo', type: ['nonEditableColumn'] ,width: 400 },
   
-      { headerName: this.ThirdColumn, field: 'shippingCharges', type: ['nonEditableColumn'] , width: 1200   }, 
+      { headerName: this.ThirdColumn, field: 'shippingCharges', type: ['nonEditableColumn'] , width: 1100   }, 
+      
     ];
    }
 }

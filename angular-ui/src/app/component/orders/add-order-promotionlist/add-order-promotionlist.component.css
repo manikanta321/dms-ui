@@ -242,7 +242,6 @@
   
   ::ng-deep.mat-dialog-container {
     background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-    ;
   }
   
   .categorydrp {
@@ -855,7 +854,7 @@
     height: 43px;
     margin:auto;
     text-align: center;
-    margin-top:50px;
+    margin-top:49px;
     cursor:pointer;
     margin-left: 40%;
 
@@ -869,6 +868,8 @@ text-align: center;
 
 color: #FFFFFF;
 }
+
+
 
 .promotion-card {
     height: 159px;
@@ -1009,7 +1010,7 @@ color: #000000;
   font-family: 'Gilroy-Bold';
   font-size: 14px;
   line-height: 16px;
-
+  font-weight: bold;
   align-items: center;
   text-align: center;
   

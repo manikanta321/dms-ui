@@ -67,6 +67,8 @@ box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.
 border-radius: 10px;
 width: 168px;
 height: 43px;
+color: white;
+margin: auto;
   }
 ::ng-deep.add-geopgraphy .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background{
   background-color: black !important;

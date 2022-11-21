@@ -324,6 +324,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         this.pricedc = false;
       }
       if (event.promotionTypesName == 'Buy (A or B + C or D..) get (X+Y or Y+Z..)') {
+        this.noPromotionSelected = false;
         this.buyab = false;
         this.volumedc = false;
         this.buysets = true;
@@ -332,6 +333,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
       }
       if (event.promotionTypesName == 'Volume Discount') {
+        this.noPromotionSelected = false;
         this.buyab = false;
         this.volumedc = true;
         this.buysets = false;
@@ -340,6 +342,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
       }
       if (event.promotionTypesName == 'Price Discount') {
+        this.noPromotionSelected = false;
         // this.goForward(this.myStepper);
         this.buyab = false;
         this.volumedc = false;

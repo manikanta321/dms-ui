@@ -3,6 +3,10 @@
   font-family: 'Gilroy';
   background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 } */
+.indexImg{
+margin-left: 10px;
+margin-bottom: 10px;
+}
 .buyoneSet{
   background: #CED4DA;
 border: 1px solid #000000;
@@ -999,6 +1003,7 @@ box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.
 border-radius: 10px;
 width: 48px;
 height: 43px;
+text-align: center;
 }
 .mty-box{
   background: #FFFFFF;
@@ -1007,6 +1012,7 @@ box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.
 border-radius: 10px;
 width: 48px;
 height: 43px;
+text-align: center;
 }
 .expn-t{
   margin: 2px;

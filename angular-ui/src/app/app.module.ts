@@ -145,6 +145,7 @@ import { AssosiationActionComponent } from './component/assosiation-action/assos
 import { BulkEditAssosiationComponent } from './component/bulk-edit-assosiation/bulk-edit-assosiation.component';
 import { SalesBulkUploadComponent } from './component/sales-bulk-upload/sales-bulk-upload.component';
 import { AddPromotionGeographiesComponent } from './component/add-promotions/add-promotion-geographies/add-promotion-geographies.component';
+import { DealerTargetComponent } from './component/dealer-target/dealer-target.component';
 
 @NgModule({
   declarations: [
@@ -256,6 +257,7 @@ import { AddPromotionGeographiesComponent } from './component/add-promotions/add
           BulkEditAssosiationComponent,
           SalesBulkUploadComponent,
           AddPromotionGeographiesComponent,
+          DealerTargetComponent,
   ],
   imports: [
     FormsModule,

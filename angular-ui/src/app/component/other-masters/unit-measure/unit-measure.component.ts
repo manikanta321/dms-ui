@@ -112,32 +112,10 @@ maxWidth:40
 
 },
 
-// {
-//   headerName: "Avatar",
-//   field: "avatar",
-//   width: 100,
-//   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
-//  },
-
 ];
 
 rowData5=[];
 
-// public rowData5=[
-//   {Name: 'Name', DisplayCode: 'Rajasheka S',status:'Active'},
-//   {Name: 'Name', DisplayCode: 'Raj S',status:'InActive'},
-
-//   {Name: 'Name', DisplayCode: 'kariya S',status:'Active'},
-
-//   {Name: 'Name', DisplayCode: 'ssampath S',status:'InActive'},
-
-//   {Name: 'Name', DisplayCode: 'Raj',status:'Active'},
-
-//   {Name: 'Name', DisplayCode: 'shekar',status:'InActive'},
-
-
- 
-// ];
 
 rowData :any;
 rowData1=[]
@@ -158,14 +136,6 @@ public defaultColDef: ColDef = {
 
 };
 
-// public defaultColDef: ColDef = {
-//   sortable: true,
-//   resizable: true,
-//   width: 100,
-//   enableRowGroup: true,
-//   enablePivot: true,
-//   enableValue: true,
-// };
 public columnTypes: {
   [key: string]: ColDef;
 } = {

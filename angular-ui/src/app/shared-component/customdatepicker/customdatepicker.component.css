@@ -18,7 +18,7 @@
 .datepicker-menu-list li {
     list-style: none;
     padding: 5px;
-    border-bottom: 1px solid #ccc;
+    /* border-bottom: 1px solid #ccc; */
     font-weight: 500;
     cursor: pointer;
     text-transform: capitalize;

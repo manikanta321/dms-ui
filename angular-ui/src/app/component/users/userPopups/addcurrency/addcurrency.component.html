@@ -21,18 +21,20 @@
               <div class="col">
                   <label>Name <span>*</span></label>
                   <br>
-                  <input type="text" placeholder="Enter Name" formControlName="name" class="imputtext"></div>
+                  <input type="text" id="uname" name="uname" required  (keyup)="onKeyName($event)" placeholder="Enter Name" formControlName="currencyName" class="imputtext">
+
+                </div>
                 <div class="col">
                   <label>Display Units<span>*</span></label>
                   <br>
-                <input type="text" placeholder="Enter display unit" formControlName="displayUnit" class="imputtext" ></div>
+                <input type="text" required placeholder="Enter display unit" formControlName="displayUnits" class="imputtext" ></div>
             </div>
                 <br>
               <div class="row">
                 <div class="col">
                   <label>Conversion Rate<span>*</span></label>
                   <br>
-                  <input type="text"   formControlName="conversionRate" placeholder="Enter Conversion Rate" class="imputtext" style="width: 100%;">
+                  <input type="number" required (keyup)="onKeyConversion($event)"  formControlName="conversionRate" placeholder="Enter Conversion Rate" class="imputtext" style="width: 100%;">
                 
                 </div>
                 <!-- <div class="col"> 
@@ -48,7 +50,7 @@
                 
               <label>Conversion<span>*</span></label>
               <br>
-              <input type="text" placeholder="Enter Conversion" formControlName="conversion" class="imputtext">
+              <input type="text" [value]="editedConversion" placeholder="Enter Conversion"  class="imputtext" disabled>
                 
                 </div>
                 <div class="col"> 
@@ -61,8 +63,8 @@
                 
                   <label><span style="color: aliceblue;">.</span></label>
                   <br>
-                  <div formControlName="conversionFixed" >
-                  <input type="text" placeholder="1 INR" disabled  class="imputtext">
+                  <div formControlName="defaultInr" >
+                  <input type="text"  placeholder="1 INR" disabled  class="imputtext">
                 </div>
                     </div>
 

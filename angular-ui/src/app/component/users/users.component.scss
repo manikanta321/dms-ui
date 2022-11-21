@@ -73,6 +73,7 @@
 ::ng-deep.stts .multiselect-dropdown .dropdown-btn .selected-item {
   background: #000000 !important;
   font-size: 12px;
+  
 }
 
 ::ng-deep .stts .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -226,7 +227,7 @@
 }
 
 ::ng-deep.stts .multiselect-dropdown .dropdown-btn .selected-item {
-  right: 6% !important;
+  right: 40% !important;
 }
 
 .multiselect-dropdown .dropdown-btn .dropdown-multiselect--active .dropdown-multiselect__caret {

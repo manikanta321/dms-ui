@@ -151,7 +151,14 @@ mat-form-field {
     color: red;
 }
 
-.minus-icon10
+
+.removeCircle1{
+    margin-left: 99%;
+    margin-top: 37px;
+    color: #686E74;
+}
+
+ .minus-icon10
 {
     background-color: #686E74;
     margin-left: 243px;
@@ -162,7 +169,7 @@ mat-form-field {
     width: 20px !important;
     
     
-}
+} 
 .searchBox[_ngcontent-hbx-c448]:hover > .searchInput[_ngcontent-hbx-c448] {
     width: 230px;
     padding: 0 47px;

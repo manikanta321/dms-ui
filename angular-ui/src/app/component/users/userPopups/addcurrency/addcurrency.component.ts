@@ -12,15 +12,19 @@ export class AddcurrencyComponent implements OnInit {
     headerName:any;
     currencyForm:FormGroup;
     disabled:boolean | undefined;
-
+    Name:any;
+    conversion:any;
+    conversionRates:any;
+    editedConversion:any ='';
+    UOMSymbol:any;
   constructor(private dialogRef: MatDialogRef<any>,
     private user:UserService,) {
       this.currencyForm = new FormGroup({
         currencyName: new FormControl(	'',	[Validators.required]),
         displayUnits: new FormControl(  '',  [Validators.required]),
         conversionRate: new FormControl(  '',  [Validators.required, Validators.pattern('^.+@.+\..+$')]),
-        Conversion: new FormControl('',   [Validators.required]),
-        defaultInr:new FormControl('',   [Validators.required])
+        // Conversion: new FormControl('',   [Validators.required]),
+        // defaultInr:new FormControl('',   [Validators.required])
 
      });
      }
@@ -34,20 +38,35 @@ export class AddcurrencyComponent implements OnInit {
       this.headerName = 'Add Currency';
     }
 
-     this.currencyForm.controls["defaultInr"].setValue("1 INR");
+    //  this.currencyForm.controls["defaultInr"].setValue("1");
+    this.UOMSymbol = "1 INR";
   }
   closeDialog(){
     this.dialogRef.close();
   }
-
-  
+  onKeyName(event){
+let keyName = event.target.value;
+this.Name = keyName;
+  }
+  onKeyConversion(event){
+  let keyConversion = event.target.value;
+  this.conversionRates = keyConversion;
+  if(this.conversionRates>=1){
+    let convo = 1/(this.conversionRates);
+    this.conversion = convo.toFixed(3);
+    this.editedConversion = this.conversion +" "+this.currencyForm.value['displayUnits'];
+  }
+  else{
+    this.editedConversion = '';
+  }
+  }
   addcurncy(){
     const data={
-      UoMName:this.currencyForm.value['currencyName'],
+      UoMName:this.Name,
       UoMShortName:this.currencyForm.value['displayUnits'],
-      ConversionRate:this.currencyForm.value['conversionRate'],
-      UOMSymbol:this.currencyForm.value["defaultInr"],
-      Conversion:this.currencyForm.value['Conversion'],
+      ConversionRate:this.conversionRates,
+      UOMSymbol:this.UOMSymbol,
+      Conversion:this.conversion,
 
       
     }

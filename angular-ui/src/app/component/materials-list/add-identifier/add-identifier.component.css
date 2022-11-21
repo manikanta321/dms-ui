@@ -33,6 +33,9 @@
     text-align: center;
     margin-top: -18px;
     margin-bottom: 2px;
+    text-decoration: underline;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .addU {
@@ -40,7 +43,7 @@
     /* font-family: 'Gilroy-Bold';  */
     font-weight: lighter;
     position:relative;
-    left: -431px;
+    left: -445px;
     font-size: 12px;
     top: -4px;
 }
@@ -49,7 +52,7 @@
     /* font-family: 'Gilroy-Bold';  */
     font-weight: lighter;
     position:relative;
-    left: -106px;
+    left: -119px;
     font-size: 12px;
     top: -188px;
 }
@@ -58,7 +61,7 @@
     /* font-family: 'Gilroy-Bold';  */
     font-weight: lighter;
     position:relative;
-    left: 255px;
+    left: 274px;
     font-size: 12px;
     top: -190px;
 }
@@ -134,21 +137,21 @@ mat-form-field {
     width:66%;
 }
 .peri {
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
 }
 .frag .fire .mat-chip.mat-standard-chip{
     background-color: white;
     color: black;
-    border-block-color:  black;
+    border-block-color:  black; 
 }
 .dangerous  {
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
 }
 .cold{
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
 }
 .productidenti{
     margin-top: -190px;

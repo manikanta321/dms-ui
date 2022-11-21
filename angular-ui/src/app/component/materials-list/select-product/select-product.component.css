@@ -1,5 +1,5 @@
 ::ng-deep.mat-dialog-container {
-    
+
     border-radius: 21px;
 }
 
@@ -27,16 +27,19 @@
 
 .head-t h3 {
     color: #000000;
-    text-align: center;
     margin-top: -18px;
     margin-bottom: 2px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: underline;
+    margin-left: 93px;
 }
 
 .addU {
     position: relative;
     /* font-family: 'Gilroy-Bold';  */
     font-weight: lighter;
-    position:relative;
+    position: relative;
     left: -86px;
     font-size: 12px;
 }
@@ -109,25 +112,32 @@ mat-form-field {
     background-color: black;
     /* margin-left: 79px; */
     margin-top: -12px;
-    width:66%;
+    width: 66%;
 }
+
 .peri {
-    background-color: black;
-    color: white;
+    background-color: #e0e0e0;
+    color: black;
+    border: 1px solid black;
+    top: 10px;
 }
-.frag .fire .mat-chip.mat-standard-chip{
+
+.frag .fire .mat-chip.mat-standard-chip {
     background-color: white;
     color: black;
-    border-block-color:  black;
+    border-block-color: black;
 }
-.dangerous  {
+
+.dangerous {
     background-color: black;
     color: white;
 }
-.cold{
+
+.cold {
     background-color: black;
     color: white;
 }
+
 /* .mat-chip.mat-standard-chip{
     background-color: white;
 } */

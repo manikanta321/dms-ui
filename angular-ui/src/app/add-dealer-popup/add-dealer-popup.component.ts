@@ -24,7 +24,7 @@ export class AddDealerPopupComponent implements OnInit {
   LoginId:any;
   numberValue:any;
   statusList:any;
-
+  addAddress:boolean = false;
   selectedTeam = '';
   showDiv = {
     previous : false,
@@ -54,7 +54,8 @@ export class AddDealerPopupComponent implements OnInit {
   selectedtypeItem='';
   subcatcount='';
   typecount='';
-
+  ConsigneeName1:any;
+  ConsigneeName2:any;
   stateselectedItem:any;
   distselectedItem:any;
   citySelectedItem:any;
@@ -87,7 +88,7 @@ export class AddDealerPopupComponent implements OnInit {
   ngOnInit(): void {
     this.LoginId=localStorage.getItem("logInId");
     this.numberValue = Number(this.LoginId);
-     this.addAddressForm();
+    //  this.addAddressForm();
      this.statusForm();
      //geographies List
      this.getCountryList();
@@ -96,10 +97,15 @@ export class AddDealerPopupComponent implements OnInit {
      } else {
       this.dealerAction = "Add"
      }
-
+     this.ConsigneeName2='';
   }
-
   //status dropdownlist
+  onKeyName(event){
+     this.ConsigneeName1 =event.target.value;
+  }
+  Checked(){
+    this.ConsigneeName2 = this.ConsigneeName1;
+  }
   statusForm(){
     this.user.getstatusDeatils().subscribe((res: any) => {
         this.statusList = res.response;
@@ -158,14 +164,15 @@ export class AddDealerPopupComponent implements OnInit {
   }  
      
   addAddressForm() {  
+    this.addAddress =true;
     this.quantities().push(this.initAddress());  
   }  
 
   
   removeQuantity(i:number) { 
-    if( i >= 1){
+    // if( i >= 1){
       this.quantities().removeAt(i);  
-    }
+    // }
   }  
 
 

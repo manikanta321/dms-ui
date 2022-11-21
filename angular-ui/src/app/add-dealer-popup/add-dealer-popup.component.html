@@ -41,6 +41,7 @@
                                         <br>
                                         <input type="text" formControlName="dealerCode" class="addDelercols" required placeholder="Enter your code">
                                     </div>
+                                    
                                 </div>
                                 <div class="row">
                                     <div class="col-4 ">
@@ -139,10 +140,146 @@
                                         <mat-icon class="addMore-icon" (click) =addAddressForm()>add_circle</mat-icon>
                                     </div>
                                 </div>
-
-                                
-
                                 <div formArrayName="quantities">
+                            
+                                    <div class="row">
+                                    <div class="col-1">
+                                        <label>Type<span>*</span></label>
+                                        <br>
+                                        <select class="addDelercols addtype" formControlName="addType" name="status" placeholder="select">
+                                            <!-- <option value=""  selected hidden>Type</option>                                        -->
+                                            <option value="1" selected>Billing</option>
+                                            <option valiue="2">Shipping</option>
+                                        </select>
+                                    
+                                    </div>
+    
+                                    <div class="col-2">
+                                        <label>Consignee Name<span>*</span></label>
+                                        <br>
+                                        <input (keyup)="onKeyName($event)" type="text" placeholder="Enter" formControlName="consigName" class="addDelercols addname">
+                                    </div>
+    
+                                    <div class="col-1">
+                                        <label>Tax<span>*</span></label>
+                                        <br>
+                                        <input type="text" placeholder="Select" formControlName="tax" class="addDelercols addtax">
+                                    </div>
+    
+                                    <div class="col-2">
+                                        <label>Address Line<span>*</span></label>
+                                        <br>
+                                        <input type="text" placeholder="Enter" formControlName="addressLine1" class="addDelercols addadress">
+                                        <input type="text" placeholder="Enter" formControlName="addressLine" class="addDelercols addadressLine1">
+                                    </div>
+    
+                                    <div class="col-1">
+                                        <label>Country<span>*</span></label>
+                                        <br>
+                                        <input type="text" placeholder="Enter" formControlName="country" class="addDelercols addcountry">
+                                    </div>
+    
+                                    <div class="col-1">
+                                        <label>State<span>*</span></label>
+                                        <br>
+                                        <input type="text" placeholder="Enter" formControlName="state" class="addDelercols aastate">
+                                    </div>
+    
+                                    <div class="col-2">
+                                        <label>City & Zip<span>*</span></label>
+                                        <br>
+                                        <input type="text" placeholder="Enter City" formControlName="cityAndZip" class="addDelercols addcity">
+                                        <input type="text" placeholder="Enter Zip" formControlName="Zipcode" class="addDelercols addzip">
+                                    </div>
+    
+                                    <div class="col-1">
+                                        <label>Phone<span>*</span></label>
+                                        <br>
+                                        <input type="text" placeholder="Enter" formControlName="phoneNo" class="addDelercols addphone">
+                                    </div>
+                                    
+                        
+                                    <div class="col-1" >
+                                        <label><span></span></label>
+                                        <mat-icon class="col-2 remove-mat-icon delete-icon remove-addresss">remove_circle</mat-icon>
+                                    </div>
+          
+    
+                      
+                                </div>
+                                </div>
+                                <div formArrayName="quantities">
+                            
+                                    <div class="row">
+                                    <div class="col-1">
+                                        <label>Type<span>*</span></label>
+                                        <br>
+                                        <select class="addDelercols addtype" formControlName="addType" name="status" placeholder="select">
+                                            <!-- <option value=""  selected hidden>Type</option>                                        -->
+                                            <option value="1">Billing</option>
+                                            <option valiue="2" selected>Shipping</option>
+                                        </select>
+                                    
+                                    </div>
+    
+                                    <div class="col-2">
+                                        <label>Consignee Name<span>*</span></label>
+                                        <br>
+                                        <input type="text" placeholder="Enter" [value]="ConsigneeName2"  formControlName="consigName" class="addDelercols addname">
+                                    </div>
+    
+                                    <div class="col-1">
+                                        <label>Tax<span>*</span></label>
+                                        <br>
+                                        <input type="text" placeholder="Select" formControlName="tax" class="addDelercols addtax">
+                                    </div>
+    
+                                    <div class="col-2">
+                                        <label>Address Line<span>*</span></label>
+                                        <br>
+                                        <input type="text" placeholder="Enter" formControlName="addressLine1" class="addDelercols addadress">
+                                        <input type="text" placeholder="Enter" formControlName="addressLine" class="addDelercols addadressLine1">
+                                    </div>
+    
+                                    <div class="col-1">
+                                        <label>Country<span>*</span></label>
+                                        <br>
+                                        <input type="text" placeholder="Enter" formControlName="country" class="addDelercols addcountry">
+                                    </div>
+    
+                                    <div class="col-1">
+                                        <label>State<span>*</span></label>
+                                        <br>
+                                        <input type="text" placeholder="Enter" formControlName="state" class="addDelercols aastate">
+                                    </div>
+    
+                                    <div class="col-2">
+                                        <label>City & Zip<span>*</span></label>
+                                        <br>
+                                        <input type="text" placeholder="Enter City" formControlName="cityAndZip" class="addDelercols addcity">
+                                        <input type="text" placeholder="Enter Zip" formControlName="Zipcode" class="addDelercols addzip">
+                                    </div>
+    
+                                    <div class="col-1">
+                                        <label>Phone<span>*</span></label>
+                                        <br>
+                                        <input type="text" placeholder="Enter" formControlName="phoneNo" class="addDelercols addphone">
+                                    </div>
+                                    
+                        
+                                    <div class="col-1" >
+                                        <label><span></span></label>
+                                        <mat-icon class="col-2 remove-mat-icon delete-icon remove-addresss">remove_circle</mat-icon>
+                                    </div>
+          
+    
+                      
+                                </div>
+                                </div>
+                                <p id="shiptobilling" class="form-row">
+                                    <input type="checkbox" (click) =Checked()> Shipping information is same as billing information
+                                  </p>
+                            <div *ngIf="addAddress" formArrayName="quantities">
                             
                                 <div class="row" *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
                                 <div class="col-1">
@@ -201,7 +338,7 @@
                                 </div>
                                 
                     
-                                <div class="col-1">
+                                <div class="col-1" >
                                     <label><span></span></label>
                                     <mat-icon (click)="removeQuantity(i)" class="col-2 remove-mat-icon delete-icon remove-address">remove_circle</mat-icon>
                                 </div>

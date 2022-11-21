@@ -72,6 +72,7 @@ export class DealersComponent implements OnInit {
   userTypes: any = [];
   statusTypes: any = [];
   searchText: any;
+  customerID:any;
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
 
@@ -83,8 +84,6 @@ export class DealersComponent implements OnInit {
     // set background colour on every row, this is probably bad, should be using CSS classes
     rowStyle: { background: 'black' },
   }
-
-
 
   // Data that gets displayed in the grid
   public rowData5 = [];
@@ -739,11 +738,12 @@ export class DealersComponent implements OnInit {
   onCellClicked(e): void {
     console.log('cellClicked', e);
     this.userId = e.data.userId;
+     this.customerID = e.data.customerId;
     this.employeeName = e.data.userName;
     console.log('userID', this.userId);
     localStorage.setItem('userID', this.userId)
     localStorage.setItem('employeeName', this.employeeName);
-
+    localStorage.setItem('customerId', this.customerID);
     if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
       const cellRendererInstances = e.api.getCellRendererInstances({
         rowNodes: [e.node],

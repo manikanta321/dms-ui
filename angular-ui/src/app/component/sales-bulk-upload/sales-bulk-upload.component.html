@@ -1,0 +1,591 @@
+<div *ngIf="uploadSales" class="container sales-container">
+    <div class="addUser">
+        <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+    </div>
+    <span class="ship shipO">Ship Order:</span>
+    <h1 class="ship shipBulk">Bulk Upload</h1>
+    <div class="sales">
+        <div class="row">
+            <h4 class="bulk-txt">Bulk upload of sales</h4>
+        </div>
+        <div class="row">
+            <span class="step1-txt">Step 1:</span>
+            <h4 class="up-doc"> Upload document</h4>
+        </div>
+        <div class=" row upload-div">
+            <img src="../../../assets/img/upload-icon.png" class="upload-icon" alt="Upload icon">
+            <div class="row">
+                <h6 class="upload-doc txt-1">Upload the document</h6>
+            </div>
+            <div class="row">
+                <h6 class="upload-doc txt-2">after adding all required information related to sales</h6>
+            </div>
+            <!-- <img src="../../../assets/img/uploaded-doc.png" class="upload-icon" alt="Uploaded icon">
+         <div class="row">
+            <h6 class="upload-doc txt-3">Document <span class="bold-txt">Sale detail 13 Oct 2022 is</span> </h6>
+        </div>
+        <div class="row">
+            <h6 class="upload-doc txt-4">successfully <span class="bold-txt"> Uploaded!</span></h6>
+        </div> -->
+        </div>
+        <!-- <div class="row">
+            <h5 class="upload-new-doc">*Upload a new document by clicking <a href="" class="h-link"> here</a></h5>
+        </div> -->
+        <!-- <div class="row step2">
+            <span class="step1-txt">Step 2:</span><h4 class="up-doc">Analyzing Uploaded document</h4>
+        </div> -->
+        <!-- <div class="row ">
+            <input type="text" class="total-rows no-doc col-md-11" placeholder="No document uploaded yet" disabled>
+        </div> -->
+        <div class="step-2-filled">
+            <div class="row step2">
+                <span class="step1-txt">Step 2:</span>
+                <h4 class="up-doc">Analyzing Uploaded document</h4>
+            </div>
+            <div class="row " (click)="expandTotalRows()">
+                <input type="text" [(ngModel)]="totalRows" class="total-rows total-bg col-md-11" disabled>
+                <div class="col-md-1 total-style">
+                    <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                </div>
+            </div>
+            <div class="row " (click)="expandErrorFree()">
+                <input type="text" [(ngModel)]="errorFree" class="total-rows error-txt col-md-11" disabled>
+                <div class="col-md-1 error-style">
+                    <img [src]="image2" class="expand-arrow" alt="add-user-btn">
+                </div>
+            </div>
+            <div>
+                <div class="row " (click)="expandDuplicateEntry()">
+                    <input type="text" [(ngModel)]="duplicateEntry" class="total-rows duplicate-txt col-md-11" disabled>
+                    <div class="col-md-1 expand-style">
+                        <img [src]="image3" class="expand-arrow" alt="add-user-btn">
+                    </div>
+                </div>
+                <div  *ngIf = "!duplicate" class="row duplicate-tabel">
+                    <table matSort  class="class_table">
+                        <tr class="table-header-row">
+                            <th style="padding-left:20px;">Row No</th>
+                            <th >Product Code</th>
+                            <th>Product Name</th>
+                            <th>Product Name</th>
+                            <th>Current stock</th>
+                            <th>Sale Date</th>
+                            <th>Sale Qty</th>
+                            <th>Customer Reference</th>
+                            <th ></th>
+                        </tr>
+                        <tr>
+            
+                            <td title="" style="padding-left: 21px;">{{"23"}}</td>
+                            <td title="" class="elipsis-2line">
+                                {{"P12345"}}</td>
+                            <td title="">{{"Samsung M32 prime edition 20.."}}</td>
+                              <td title="">{{"Bubaneshwar, Chennai, Kochi,.."}}</td>
+                            <td>{{"50,000 boxes"}}</td>
+                            <td>{{"21 Aug 22"}}</td>
+                            <td>{{"2000 boxes"}}</td>
+                            <td >{{"Nandanlal Superm.."}}</td>
+                            <td></td>
+            
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="topmargin" (click)="expandZeroValue()">
+                <div class="row">
+                    <input type="text" [(ngModel)]="zeroValue" class="total-rows duplicate-txt col-md-11" disabled>
+                    <div class="col-md-1 expand-style">
+                        <img [src]="image4" class="expand-arrow" alt="add-user-btn">
+                    </div>
+                </div>
+                <div *ngIf="!zeroVal" class="row duplicate-tabel">
+                    <table matSort  class="class_table">
+                        <tr class="table-header-row">
+                            <th style="padding-left:20px;">Row No</th>
+                            <th style="width: 15%;">Product Code</th>
+                            <th style="width: 15%;">Product Name</th>
+                            <th>Product Name</th>
+                            <th>Current stock</th>
+                            <th>Sale Date</th>
+                            <th>Sale Qty</th>
+                            <th>Customer Reference</th>
+                            <th ></th>
+                        </tr>
+                        <tr>
+            
+                            <td title="" style="padding-left: 21px;">{{"23"}}</td>
+                            <td title="" class="elipsis-2line">
+                                {{"P12345"}}</td>
+                            <td title="">{{"Samsung M32 prime edition 20.."}}</td>
+                              <td title="">{{"Bubaneshwar, Chennai, Kochi,.."}}</td>
+                            <td>{{"50,000 boxes"}}</td>
+                            <td>{{"21 Aug 22"}}</td>
+                            <td>{{"2000 boxes"}}</td>
+                            <td >{{"Nandanlal Superm.."}}</td>
+                            <td></td>
+            
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="topmargin" (click)="expandpartialData()">
+                <div class="row ">
+                    <input type="text" [(ngModel)]="partialData" class="total-rows duplicate-txt col-md-11" disabled>
+                    <div class="col-md-1 expand-style">
+                        <img [src]="image5" class="expand-arrow" alt="add-user-btn">
+                    </div>
+                </div>
+                <div *ngIf="!partialD" class="row duplicate-tabel">
+                    <table matSort  class="class_table">
+                        <tr class="table-header-row">
+                            <th style="padding-left:20px;">Row No</th>
+                            <th style="width: 15%;">Product Code</th>
+                            <th style="width: 15%;">Product Name</th>
+                            <th>Product Name</th>
+                            <th>Current stock</th>
+                            <th>Sale Date</th>
+                            <th>Sale Qty</th>
+                            <th>Customer Reference</th>
+                            <th ></th>
+                        </tr>
+                        <tr>
+            
+                            <td title="" style="padding-left: 21px;">{{"23"}}</td>
+                            <td title="" class="elipsis-2line">
+                                {{"P12345"}}</td>
+                            <td title="">{{"Samsung M32 prime edition 20.."}}</td>
+                              <td title="">{{"Bubaneshwar, Chennai, Kochi,.."}}</td>
+                            <td>{{"50,000 boxes"}}</td>
+                            <td>{{"21 Aug 22"}}</td>
+                            <td>{{"2000 boxes"}}</td>
+                            <td >{{"Nandanlal Superm.."}}</td>
+                            <td></td>
+            
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="topmargin" (click)="expandFormating()">
+                <div class="row ">
+                    <input type="text" [(ngModel)]="incorrectFormating" class="total-rows duplicate-txt col-md-11" disabled>
+                    <div class="col-md-1 expand-style">
+                        <img [src]="image6" class="expand-arrow" alt="add-user-btn">
+                    </div>
+                </div>
+                <div *ngIf="!formating" class="row duplicate-tabel">
+                    <table matSort  class="class_table">
+                        <tr class="table-header-row">
+                            <th style="padding-left:20px;">Row No</th>
+                            <th style="width: 15%;">Product Code</th>
+                            <th style="width: 15%;">Product Name</th>
+                            <th>Product Name</th>
+                            <th>Current stock</th>
+                            <th>Sale Date</th>
+                            <th>Sale Qty</th>
+                            <th>Customer Reference</th>
+                            <th ></th>
+                        </tr>
+                        <tr>
+            
+                            <td title="" style="padding-left: 21px;">{{"23"}}</td>
+                            <td title="" class="elipsis-2line">
+                                {{"P12345"}}</td>
+                            <td title="">{{"Samsung M32 prime edition 20.."}}</td>
+                              <td title="">{{"Bubaneshwar, Chennai, Kochi,.."}}</td>
+                            <td>{{"50,000 boxes"}}</td>
+                            <td>{{"21 Aug 22"}}</td>
+                            <td>{{"2000 boxes"}}</td>
+                            <td >{{"Nandanlal Superm.."}}</td>
+                            <td></td>
+            
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="topmargin" (click)="expandprodGeo()">
+                <div class="row ">
+                    <input type="text" [(ngModel)]="prodGeo" class="total-rows duplicate-txt col-md-11" disabled>
+                    <div class="col-md-1 expand-style">
+                        <img [src]="image7" class="expand-arrow" alt="add-user-btn">
+                    </div>
+                </div>
+                <div *ngIf="!product" class="row duplicate-tabel">
+                    <table matSort  class="class_table">
+                        <tr class="table-header-row">
+                            <th style="padding-left:20px;">Row No</th>
+                            <th style="width: 15%;">Product Code</th>
+                            <th style="width: 15%;">Product Name</th>
+                            <th>Product Name</th>
+                            <th>Current stock</th>
+                            <th>Sale Date</th>
+                            <th>Sale Qty</th>
+                            <th>Customer Reference</th>
+                            <th ></th>
+                        </tr>
+                        <tr>
+            
+                            <td title="" style="padding-left: 21px;">{{"23"}}</td>
+                            <td title="" class="elipsis-2line">
+                                {{"P12345"}}</td>
+                            <td title="">{{"Samsung M32 prime edition 20.."}}</td>
+                              <td title="">{{"Bubaneshwar, Chennai, Kochi,.."}}</td>
+                            <td>{{"50,000 boxes"}}</td>
+                            <td>{{"21 Aug 22"}}</td>
+                            <td>{{"2000 boxes"}}</td>
+                            <td >{{"Nandanlal Superm.."}}</td>
+                            <td></td>
+            
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="topmargin" (click)="expandExceedQty()">
+                <div class="row ">
+                    <input type="text" [(ngModel)]="qtyExceed" class="total-rows duplicate-txt col-md-11" disabled>
+                    <div class="col-md-1 expand-style">
+                        <img [src]="image8" class="expand-arrow" alt="add-user-btn">
+                    </div>
+                </div>
+                <div *ngIf="!exceedQty" class="row duplicate-tabel">
+                    <table matSort  class="class_table">
+                        <tr class="table-header-row">
+                            <th style="padding-left:20px;">Row No</th>
+                            <th style="width: 15%;">Product Code</th>
+                            <th style="width: 15%;">Product Name</th>
+                            <th>Product Name</th>
+                            <th>Current stock</th>
+                            <th>Sale Date</th>
+                            <th>Sale Qty</th>
+                            <th>Customer Reference</th>
+                            <th ></th>
+                        </tr>
+                        <tr>
+            
+                            <td title="" style="padding-left: 21px;">{{"23"}}</td>
+                            <td title="" class="elipsis-2line">
+                                {{"P12345"}}</td>
+                            <td title="">{{"Samsung M32 prime edition 20.."}}</td>
+                              <td title="">{{"Bubaneshwar, Chennai, Kochi,.."}}</td>
+                            <td>{{"50,000 boxes"}}</td>
+                            <td>{{"21 Aug 22"}}</td>
+                            <td>{{"2000 boxes"}}</td>
+                            <td >{{"Nandanlal Superm.."}}</td>
+                            <td></td>
+            
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="button-save-chng row">
+                <div class="save-chng">
+                    <button class="save-text">
+                       Upload
+                    </button>
+                </div>
+                <div class="discard">
+                    <button class="discard-text">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!uploadSales" class="container sales-container">
+    <div class="addUser">
+        <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+    </div>
+    <span class="ship shipO">Ship Order:</span>
+    <h1 class="ship shipBulk">Bulk Upload</h1>
+    <div class="sales">
+        <div class="row">
+            <h4 class="bulk-txt">Bulk upload of invoices & shipment data</h4>
+        </div>
+        <div class="row">
+            <span class="step1-txt">Step 1:</span>
+            <h4 class="up-doc"> Upload document</h4>
+        </div>
+        <div class=" row upload-div">
+            <img src="../../../assets/img/upload-icon.png" class="upload-icon" alt="Upload icon">
+            <div class="row">
+                <h6 class="upload-doc txt-1">Upload the document</h6>
+            </div>
+            <div class="row">
+                <h6 class="upload-doc txt-2">after adding all required information related to sales</h6>
+            </div>
+
+            <!-- Don't remove this commented code we need this while integration -->
+            
+
+            <!-- <img src="../../../assets/img/uploaded-doc.png" class="upload-icon" alt="Uploaded icon">
+         <div class="row">
+            <h6 class="upload-doc txt-3">Document <span class="bold-txt">Sale detail 13 Oct 2022 is</span> </h6>
+        </div>
+        <div class="row">
+            <h6 class="upload-doc txt-4">successfully <span class="bold-txt"> Uploaded!</span></h6>
+        </div> -->
+        </div>
+        <!-- <div class="row">
+            <h5 class="upload-new-doc">*Upload a new document by clicking <a href="" class="h-link"> here</a></h5>
+        </div> -->
+        <!-- <div class="row step2">
+            <span class="step1-txt">Step 2:</span><h4 class="up-doc">Analyzing Uploaded document</h4>
+        </div> -->
+        <!-- <div class="row ">
+            <input type="text" class="total-rows no-doc col-md-11" placeholder="No document uploaded yet" disabled>
+        </div> -->
+        <div class="step-2-filled">
+            <div class="row step2">
+                <span class="step1-txt">Step 2:</span>
+                <h4 class="up-doc">Analyzing Uploaded document</h4>
+            </div>
+            <div class="row " (click)="expandTotalRows()">
+                <input type="text" [(ngModel)]="totalRows" class="total-rows total-bg col-md-11" disabled>
+                <div class="col-md-1 total-style">
+                    <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                </div>
+            </div>
+            <div class="row " (click)="expandErrorFree()">
+                <input type="text" [(ngModel)]="errorFree" class="total-rows error-txt col-md-11" disabled>
+                <div class="col-md-1 error-style">
+                    <img [src]="image2" class="expand-arrow" alt="add-user-btn">
+                </div>
+            </div>
+            <div>
+                <div class="row " (click)="expandDuplicateEntry()">
+                    <input type="text" [(ngModel)]="duplicateEntry" class="total-rows duplicate-txt col-md-11" disabled>
+                    <div class="col-md-1 expand-style">
+                        <img [src]="image3" class="expand-arrow" alt="add-user-btn">
+                    </div>
+                </div>
+                <div  *ngIf = "!duplicate" class="row duplicate-tabel">
+                    <table matSort  class="class_table">
+                        <tr class="table-header-row">
+                            <th style="padding-left:20px;">Row No</th>
+                            <th>Order No</th>
+                            <th>Product Name</th>
+                            <th>Product Code</th>
+                            <th>Dispatch Qty</th>
+                            <th>Dispatch Date</th>
+                            <th>Invoice Date</th>
+                            <th>Invoice No.</th>
+                            <th >Uploaded Date</th>
+                        </tr>
+                        <tr>
+            
+                            <td title="" style="padding-left: 21px;">{{"23"}}</td>
+                            <td title="" class="elipsis-2line">
+                                {{"01123684"}}</td>
+                            <td title="">{{"Samsung M32 prime edition 20.."}}</td>
+                              <td title="">{{"P12345"}}</td>
+                            <td>{{"2000"}}</td>
+                            <td>{{"31 Oct 22"}}</td>
+                            <td>{{"29 Oct 22"}}</td>
+                            <td >{{"982745011"}}</td>
+                            <td>{{"22 Aug 22, 18:45"}}</td>
+            
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="topmargin" (click)="expandZeroValue()">
+                <div class="row">
+                    <input type="text" [(ngModel)]="zeroValue" class="total-rows duplicate-txt col-md-11" disabled>
+                    <div class="col-md-1 expand-style">
+                        <img [src]="image4" class="expand-arrow" alt="add-user-btn">
+                    </div>
+                </div>
+                <div *ngIf="!zeroVal" class="row duplicate-tabel">
+                    <table matSort  class="class_table">
+                        <tr class="table-header-row">
+                            <th style="padding-left:20px;">Row No</th>
+                            <th>Order No</th>
+                            <th>Product Name</th>
+                            <th>Product Code</th>
+                            <th>Dispatch Qty</th>
+                            <th>Dispatch Date</th>
+                            <th>Invoice Date</th>
+                            <th>Invoice No.</th>
+                            <th >Uploaded Date</th>
+                        </tr>
+                        <tr>
+            
+                            <td title="" style="padding-left: 21px;">{{"23"}}</td>
+                            <td title="" class="elipsis-2line">
+                                {{"01123684"}}</td>
+                            <td title="">{{"Samsung M32 prime edition 20.."}}</td>
+                              <td title="">{{"P12345"}}</td>
+                            <td>{{"2000"}}</td>
+                            <td>{{"31 Oct 22"}}</td>
+                            <td>{{"29 Oct 22"}}</td>
+                            <td >{{"982745011"}}</td>
+                            <td>{{"22 Aug 22, 18:45"}}</td>
+            
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="topmargin" (click)="expandpartialData()">
+                <div class="row ">
+                    <input type="text" [(ngModel)]="partialData" class="total-rows duplicate-txt col-md-11" disabled>
+                    <div class="col-md-1 expand-style">
+                        <img [src]="image5" class="expand-arrow" alt="add-user-btn">
+                    </div>
+                </div>
+                <div *ngIf="!partialD" class="row duplicate-tabel">
+                    <table matSort  class="class_table">
+                        <tr class="table-header-row">
+                            <th style="padding-left:20px;">Row No</th>
+                            <th>Order No</th>
+                            <th>Product Name</th>
+                            <th>Product Code</th>
+                            <th>Dispatch Qty</th>
+                            <th>Dispatch Date</th>
+                            <th>Invoice Date</th>
+                            <th>Invoice No.</th>
+                            <th >Uploaded Date</th>
+                        </tr>
+                        <tr>
+            
+                            <td title="" style="padding-left: 21px;">{{"23"}}</td>
+                            <td title="" class="elipsis-2line">
+                                {{"01123684"}}</td>
+                            <td title="">{{"Samsung M32 prime edition 20.."}}</td>
+                              <td title="">{{"P12345"}}</td>
+                            <td>{{"2000"}}</td>
+                            <td>{{"31 Oct 22"}}</td>
+                            <td>{{"29 Oct 22"}}</td>
+                            <td >{{"982745011"}}</td>
+                            <td>{{"22 Aug 22, 18:45"}}</td>
+            
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="topmargin" (click)="expandFormating()">
+                <div class="row ">
+                    <input type="text" [(ngModel)]="incorrectFormating" class="total-rows duplicate-txt col-md-11" disabled>
+                    <div class="col-md-1 expand-style">
+                        <img [src]="image6" class="expand-arrow" alt="add-user-btn">
+                    </div>
+                </div>
+                <div *ngIf="!formating" class="row duplicate-tabel">
+                    <table matSort  class="class_table">
+                        <tr class="table-header-row">
+                            <th style="padding-left:20px;">Row No</th>
+                            <th>Order No</th>
+                            <th>Product Name</th>
+                            <th>Product Code</th>
+                            <th>Dispatch Qty</th>
+                            <th>Dispatch Date</th>
+                            <th>Invoice Date</th>
+                            <th>Invoice No.</th>
+                            <th >Uploaded Date</th>
+                        </tr>
+                        <tr>
+            
+                            <td title="" style="padding-left: 21px;">{{"23"}}</td>
+                            <td title="" class="elipsis-2line">
+                                {{"01123684"}}</td>
+                            <td title="">{{"Samsung M32 prime edition 20.."}}</td>
+                              <td title="">{{"P12345"}}</td>
+                            <td>{{"2000"}}</td>
+                            <td>{{"31 Oct 22"}}</td>
+                            <td>{{"29 Oct 22"}}</td>
+                            <td >{{"982745011"}}</td>
+                            <td>{{"22 Aug 22, 18:45"}}</td>
+            
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="topmargin" (click)="expandprodGeo()">
+                <div class="row ">
+                    <input type="text" [(ngModel)]="prodGeo" class="total-rows duplicate-txt col-md-11" disabled>
+                    <div class="col-md-1 expand-style">
+                        <img [src]="image7" class="expand-arrow" alt="add-user-btn">
+                    </div>
+                </div>
+                <div *ngIf="!product" class="row duplicate-tabel">
+                    <table matSort  class="class_table">
+                        <tr class="table-header-row">
+                            <th style="padding-left:20px;">Row No</th>
+                            <th>Order No</th>
+                            <th>Product Name</th>
+                            <th>Product Code</th>
+                            <th>Dispatch Qty</th>
+                            <th>Dispatch Date</th>
+                            <th>Invoice Date</th>
+                            <th>Invoice No.</th>
+                            <th >Uploaded Date</th>
+                        </tr>
+                        <tr>
+            
+                            <td title="" style="padding-left: 21px;">{{"23"}}</td>
+                            <td title="" class="elipsis-2line">
+                                {{"01123684"}}</td>
+                            <td title="">{{"Samsung M32 prime edition 20.."}}</td>
+                              <td title="">{{"P12345"}}</td>
+                            <td>{{"2000"}}</td>
+                            <td>{{"31 Oct 22"}}</td>
+                            <td>{{"29 Oct 22"}}</td>
+                            <td >{{"982745011"}}</td>
+                            <td>{{"22 Aug 22, 18:45"}}</td>
+            
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="topmargin" (click)="expandExceedQty()">
+                <div class="row ">
+                    <input type="text" [(ngModel)]="qtyExceed" class="total-rows duplicate-txt col-md-11" disabled>
+                    <div class="col-md-1 expand-style">
+                        <img [src]="image8" class="expand-arrow" alt="add-user-btn">
+                    </div>
+                </div>
+                <div *ngIf="!exceedQty" class="row duplicate-tabel">
+                    <table matSort  class="class_table">
+                        <tr class="table-header-row">
+                            <th style="padding-left:20px;">Row No</th>
+                            <th>Order No</th>
+                            <th>Product Name</th>
+                            <th>Product Code</th>
+                            <th>Dispatch Qty</th>
+                            <th>Dispatch Date</th>
+                            <th>Invoice Date</th>
+                            <th>Invoice No.</th>
+                            <th >Uploaded Date</th>
+                        </tr>
+                        <tr>
+            
+                            <td title="" style="padding-left: 21px;">{{"23"}}</td>
+                            <td title="" class="elipsis-2line">
+                                {{"01123684"}}</td>
+                            <td title="">{{"Samsung M32 prime edition 20.."}}</td>
+                              <td title="">{{"P12345"}}</td>
+                            <td>{{"2000"}}</td>
+                            <td>{{"31 Oct 22"}}</td>
+                            <td>{{"29 Oct 22"}}</td>
+                            <td >{{"982745011"}}</td>
+                            <td>{{"22 Aug 22, 18:45"}}</td>
+            
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="button-save-chng row">
+                <div class="save-chng">
+                    <button class="save-text">
+                       Upload
+                    </button>
+                </div>
+                <div class="discard">
+                    <button class="discard-text">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

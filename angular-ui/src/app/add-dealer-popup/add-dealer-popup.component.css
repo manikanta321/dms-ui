@@ -1133,9 +1133,15 @@ border-radius: 10px;
   .remove-address{
     position:relative;
     top:25px;
+
     cursor: pointer;
   }
-
+  .remove-addresss{
+    position:relative;
+    top:25px;
+    color: grey;
+    cursor: pointer;
+  }
   .addMore-icon {
     cursor: pointer;
     /* cursor: not-allowed;

@@ -184,6 +184,7 @@ this.countryData();
   }
   editList(){
     this.getEditId = localStorage.getItem('listData');
+    console.log("ListData",this.getEditId)
     let editV =localStorage.getItem('Edit');
     if(editV == 'Edit'){
       this.actineLabel = "Edit Material";

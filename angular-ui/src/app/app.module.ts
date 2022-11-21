@@ -143,6 +143,7 @@ import { CustomdatepickerComponent } from './shared-component/customdatepicker/c
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { AssosiationActionComponent } from './component/assosiation-action/assosiation-action.component';
 import { BulkEditAssosiationComponent } from './component/bulk-edit-assosiation/bulk-edit-assosiation.component';
+import { SalesBulkUploadComponent } from './component/sales-bulk-upload/sales-bulk-upload.component';
 
 @NgModule({
   declarations: [
@@ -252,6 +253,7 @@ import { BulkEditAssosiationComponent } from './component/bulk-edit-assosiation/
           CustomdatepickerComponent,
           AssosiationActionComponent,
           BulkEditAssosiationComponent,
+          SalesBulkUploadComponent,
   ],
   imports: [
     FormsModule,

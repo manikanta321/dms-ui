@@ -482,7 +482,7 @@ export class MaterialsListComponent implements OnInit {
     this.materialList.onclicksubcat(Type).subscribe((res) => {
       let typs = res.response;
       console.log("types..res", typs);
-      this.typesI = typs;
+      this.typeI = typs;
       console.log("Typess", this.typss);
       this.topping2 = new FormControl(this.typeI);
     });

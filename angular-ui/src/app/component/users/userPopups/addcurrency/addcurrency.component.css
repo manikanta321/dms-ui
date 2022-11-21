@@ -68,6 +68,8 @@
     width: 250px;
     font-size: 14px;
     outline: none !important;
+    font-weight: bold;
+    color: #000000;
   
 }
 .divAlign{

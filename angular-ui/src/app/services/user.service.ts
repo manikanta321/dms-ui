@@ -136,7 +136,9 @@ public tatemplatestatus(data){
 public addcurrency(data){
   return this.http.post<any>(this.userurl + 'OtherMasterApi/AddEditCurrency', data);
 }
-
+public activeDeavtiveCurrency(data){
+  return this.http.post<any>(this.userurl + 'OtherMasterApi/ActiveDeactive', data);
+}
 //get Dealer list
 public getAllDealerList(data){
   return this.http.post<any>(this.userurl + 'DealerApi/GetAllDealers',data);

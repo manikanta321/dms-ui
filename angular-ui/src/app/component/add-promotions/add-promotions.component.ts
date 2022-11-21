@@ -7,6 +7,9 @@ import { PromotionService } from 'src/app/services/promotion.service';
 import { AddItemsPromotionComponent } from '../promotions/add-items-promotion/add-items-promotion.component';
 import { RemovePromotionItemComponent } from './remove-promotion-item/remove-promotion-item.component';
 import { Subject } from 'rxjs';
+import { CellClassParams, CellClassRules, CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef, GridApi, GridOptions, ModuleRegistry, ColumnResizedEvent, Grid, } from 'ag-grid-community';
+import { MatTableDataSource } from '@angular/material/table';
+import { AddPromotionGeographiesComponent } from './add-promotion-geographies/add-promotion-geographies.component';
 @Component({
   selector: 'app-add-promotions',
   templateUrl: './add-promotions.component.html',
@@ -29,7 +32,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   errorMsg: any;
   
   basicInfo:boolean=false;
-
+  noPromotionSelected:boolean = true;
   buyab: boolean = false;
   volumedc: boolean = false;
   pricedc: boolean = false
@@ -57,6 +60,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   dropdownSettings: IDropdownSettings = {};
   promotionlist: any[] | undefined;
   toppingList3: any = [];
+  promotionTypedropdown :any =[]
   toppingList: any;
   ShowFilter = false;
   imagepath :any;
@@ -79,7 +83,130 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   getgroup: string[] = ["Product Name", "Product Name", "Product Name", "Product Name"]
   buygroup: string[] = ["Product Name", "Product Name", "Product Name", "Product Name"];
   CustomerSelect: string[] = ['Valiant Distributors', 'Global Movers', 'Somebody Sales']
+  private gridApi!: GridApi;
+  searchText;
+  columnDefs: ColDef[] = [
 
+    {
+      headerName: "Code",
+      field: 'shortCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',  checkboxSelection: true
+    },
+    { headerName: "Dealer Name", field: '', type: ['nonEditableColumn'] },
+    { headerName: "", field: '', type: ['nonEditableColumn'] },
+
+    { headerName: "Geography", field: 'noofproducts', type: ['nonEditableColumn'],
+    cellStyle: {color: '#017EFA'},
+   },
+
+    {
+      headerName: '',
+      colId: 'action',
+      // cellRenderer: UseractionComponent,
+      editable: false,
+      maxWidth: 75
+      //    headerName: "",
+      // field: '',  filter: false, sortable: false,width:20,
+      // cellRenderer: function clickNextRendererFunc(){
+      //   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
+      // }, 
+      //  cellEditorPopup: true,
+      //  onCellClicked: (event: CellClickedEvent) => this.dialog.open(DeletecomponentComponent, {panelClass: 'editpopup'})
+      // // onCellClicked: (event: CellClickedEvent) => this.iconDisabled = true
+    },
+
+    // {
+    //   headerName: "Avatar",
+    //   field: "avatar",
+    //   width: 100,
+    //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
+    //  },
+
+  ];
+  gridOptions: GridOptions = {
+    defaultColDef: {
+      resizable: true,
+    },
+    onCellClicked: (event: CellClickedEvent) => console.log('Cell was clicked'),
+    // set background colour on every row, this is probably bad, should be using CSS classes
+    rowStyle: { background: 'black' },
+
+    // set background colour on even rows again, this looks bad, should be using CSS classes
+
+
+    // other grid options ...
+  }
+  public defaultColDef: ColDef = {
+
+    suppressSizeToFit: true,
+    width: 170,
+    filter: 'agTextColumnFilter',
+    flex: 1,
+    minWidth: 100,
+    resizable: true,
+    
+  };
+  public columnTypes: {
+    [key: string]: ColDef;
+  } = {
+      numberColumn: { width: 130, filter: 'agNumberColumnFilter' },
+      medalColumn: { width: 100, columnGroupShow: 'open', filter: false },
+      nonEditableColumn: { editable: false },
+      dateColumn: {
+        // specify we want to use the date filter
+        filter: 'agDateColumnFilter',
+        // add extra parameters for the date filter
+        filterParams: {
+          // provide comparator function
+          comparator: (filterLocalDateAtMidnight: Date, cellValue: string) => {
+            // In the example application, dates are stored as dd/mm/yyyy
+            // We create a Date object for comparison against the filter date
+            const dateParts = cellValue.split('/');
+            const day = Number(dateParts[0]);
+            const month = Number(dateParts[1]) - 1;
+            const year = Number(dateParts[2]);
+            const cellDate = new Date(year, month, day);
+            // Now that both parameters are Date objects, we can compare
+            if (cellDate < filterLocalDateAtMidnight) {
+              return -1;
+            } else if (cellDate > filterLocalDateAtMidnight) {
+              return 1;
+            } else {
+              return 0;
+            }
+          },
+        },
+      },
+    };
+    public rowGroupPanelShow = 'always';
+    public pivotPanelShow = 'always';
+  
+    displayedColumns: string[] = ['position', 'name', 'symbol', 'email', 'phonenum', 'login', 'status', 'edit'];
+    // dataSource = new MatTableDataSource(ELEMENT_DATA);
+    // toppings = new FormControl('');
+    // toppings1 = new FormControl('');
+  
+    // toppingList: string[] = ['Admin', 'Dealer','Customer'];
+    // toppingList: any = [];
+  
+    toppingList1: any = [];
+    filterDictionary: any;
+    sideBarOpen = true;
+    scrolledIndex = 0;
+    defaultPageSize = 12;
+    paginationScrollCount: any;
+    public rowData5 = [];
+    public popupParent: HTMLElement = document.body;
+    stayScrolledToEnd = true;
+    message: boolean = false;
+    message1: boolean = true;
+    paginationPageSize = 10;
+    // disabled = false;
+    dropdownSettings1: IDropdownSettings = {};
+    productchk:boolean=false;
+    prodShtCode:boolean=true;
+    productGrpChk:boolean=false;
+    productSubGChk:boolean=false;
+    isRowSelectable : boolean = true;
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
     public promotionTypes: PromotionService) { 
@@ -104,6 +231,60 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     // ];
 
   }
+  onGridReady(params: GridReadyEvent) {
+    this.gridApi = params.api;
+    params.api.sizeColumnsToFit();
+
+  }
+  onCellValueChanged(event: CellValueChangedEvent) {
+    // alert(event.value)
+    console.log(
+      'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
+    );
+  }
+  onFirstDataRendered(params: FirstDataRenderedEvent) {
+    params.api.paginationGoToPage(4);
+  }
+  openDialog() {
+    // alert('mani')
+
+  }
+  handleScroll(event) {
+    var tippyPopups: NodeListOf<Element> | null | undefined = document.querySelectorAll(".tippy-box[data-theme='user-tippy']");
+    
+      tippyPopups.forEach(element=> {
+        element.parentNode?.removeChild(element)
+      })
+    const grid = document.getElementById('gridContainer');
+    if (grid) {
+      const gridBody = grid.querySelector('.ag-body-viewport') as any;
+      const scrollPos = gridBody.offsetHeight + event.top;
+      const scrollDiff = gridBody.scrollHeight - scrollPos;
+      //const api =  this.rowData5;
+      this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
+      this.paginationScrollCount = this.rowData5.length;
+    }
+  }
+  onCellClicked(e): void {
+    console.log('cellClicked', e);
+    // this.userId = e.data.userId;
+    // this.employeeName = e.data.userName;
+    // console.log('userID', this.userId);
+    // localStorage.setItem('userID', this.userId)
+    // localStorage.setItem('employeeName', this.employeeName);
+
+    if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
+      const cellRendererInstances = e.api.getCellRendererInstances({
+        rowNodes: [e.node],
+        columns: [e.column],
+      });
+      if (cellRendererInstances.length > 0) {
+        const instance = cellRendererInstances[0];
+        instance.togglePopup();
+      }
+    }
+
+  }
 
   onTypeSelect(item: any) {
     console.log(item);
@@ -126,33 +307,6 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   goForward(stepper: MatStepper) {
     stepper.next();
   }
-  getCategory(event: any) {
-    // if (event.CategoryName == 'Buy(A+B..) get(X+Y..)') {
-    //   this.goForward(this.myStepper);
-    //   this.buyab = true;
-    //   this.volumedc = false;
-    // }
-    // if (event.CategoryName == 'Price Discount') {
-    //   this.goForward(this.myStepper);
-    //   this.buyab = false;
-    //   this.volumedc = true;
-    //   this.buysets = false;
-    // }
-    // if (event.CategoryName == 'Volume Discount') {
-    //   this.buyab = false;
-    //   this.volumedc = true;
-    //   this.buysets = false;
-    //   this.goForward(this.myStepper);
-
-    // }
-    // if (event.CategoryName == 'Buy(A/B..) get(C/D...)') {
-    //   this.buyab = false;
-    //   this.volumedc = false;
-    //   this.buysets = true;
-    //   this.goForward(this.myStepper);
-
-    // }
-  }
   GetPromotionTypes(event: any) {
     //  const data = {
     //   promotionTypesId : this.promotionTypesId,
@@ -160,9 +314,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     // }
     this.promotionTypes.GetPromotionTypes().subscribe((res) => {
       // console.log('check promotiontypes', res);
-      this.toppingList3 = res.response;
+      this.promotionTypedropdown = res.response;
       if (event.promotionTypesName == 'Buy (A+B..) get (X+Y..)') {
-        this.goForward(this.myStepper);
+        // this.goForward(this.myStepper);
+        this.noPromotionSelected = false;
         this.buyab = true;
         this.volumedc = false;
         this.buysets = false;
@@ -173,7 +328,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         this.volumedc = false;
         this.buysets = true;
         this.pricedc = false;
-        this.goForward(this.myStepper);
+        // this.goForward(this.myStepper);
 
       }
       if (event.promotionTypesName == 'Volume Discount') {
@@ -181,11 +336,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         this.volumedc = true;
         this.buysets = false;
         this.pricedc = false;
-        this.goForward(this.myStepper);
+        // this.goForward(this.myStepper);
 
       }
       if (event.promotionTypesName == 'Price Discount') {
-        this.goForward(this.myStepper);
+        // this.goForward(this.myStepper);
         this.buyab = false;
         this.volumedc = false;
         this.buysets = false;
@@ -282,6 +437,12 @@ addimg(){
     this.base64textString = reader.result.substr(reader.result.indexOf(',') + 1);
     console.log(this.base64textString,"base64")
   }
-  
+  onRowSelect(event) {
+    const selectedRows = this.gridApi.getSelectedRows();
+    console.log(selectedRows);
+  }
+  geography(){
+    this.dialog.open( AddPromotionGeographiesComponent, {width: '654px', height:'743px'})
+  }
 }
 

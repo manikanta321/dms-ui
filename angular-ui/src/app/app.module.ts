@@ -144,6 +144,7 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { AssosiationActionComponent } from './component/assosiation-action/assosiation-action.component';
 import { BulkEditAssosiationComponent } from './component/bulk-edit-assosiation/bulk-edit-assosiation.component';
 import { SalesBulkUploadComponent } from './component/sales-bulk-upload/sales-bulk-upload.component';
+import { AddPromotionGeographiesComponent } from './component/add-promotions/add-promotion-geographies/add-promotion-geographies.component';
 
 @NgModule({
   declarations: [
@@ -254,6 +255,7 @@ import { SalesBulkUploadComponent } from './component/sales-bulk-upload/sales-bu
           AssosiationActionComponent,
           BulkEditAssosiationComponent,
           SalesBulkUploadComponent,
+          AddPromotionGeographiesComponent,
   ],
   imports: [
     FormsModule,

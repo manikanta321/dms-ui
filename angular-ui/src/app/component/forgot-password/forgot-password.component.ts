@@ -7,16 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent implements OnInit {
-  enteremail:boolean=true;
-
-  usernameofuser:any;
+ 
+  userExist:boolean = false;
   constructor() { }
 
   ngOnInit(): void {
    
   }
   onsubmitemail(){
-    this.enteremail=false
+  
 
   }
 }

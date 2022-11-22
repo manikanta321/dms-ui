@@ -2,170 +2,142 @@
   box-sizing: border-box;
 }
 
-.form-label
-{
+.form-label {
   margin-left: 8px;
 }
+
 .bg-img {
-  /* The image used */
   background-image: url("/assets/img/login-background-img.png");
-
-  /* Full height */
-  height: 100%; 
-
-  /* Center and scale the image nicely */
+  height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
 }
-.highlitepopup{position: absolute;
+
+.highlitepopup {
+  position: absolute;
   position: absolute;
   width: 333px;
   height: 105.5px;
   left: 643px;
   top: 162.5px;
-
-
-/* transform: matrix(1, 0, 0, -1, 0, 0); */
-}
-.logo{
-position: absolute;
-width: 204px;
-height: 75px;
-left: 19px;
-top: 35px;
-
-font-family: 'Gilroy-BlackItalic';
-font-size: 50px;
-line-height: 59px;
-text-align: center;
-letter-spacing: 0.16em;
-
-color: #06997E;
 }
 
-section{
-/* background: white; */
-/* background: #EAECF2; */
-/* height: 100vh; */
-position: absolute;
-}
-.loginform-page{
-background: 6C757D;
-/* width:439px;
-height: 480px; */
-height: 424px;
-width: 439px;
-box-shadow:2px;
-margin: auto;
- /* border:solid #000000;  */
- border-right: 3px solid  #000000;
-  border-left: 3px solid whitesmoke; 
-  border-top: 3px solid gray; 
- border-bottom: 3px solid gray;
- /* outline:2px solid white; */
-  box-shadow: 6px 6px 8px rgba(47, 46, 46, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);  
-
-
-
- 
-border-radius: 40px;
-/* transform: matrix(1, 0, 0, -1, 0, 0); */
-position: relative;
-top: 125px;
-left: 104px;
+.logo {
+  position: absolute;
+  width: 204px;
+  height: 75px;
+  left: 19px;
+  top: 35px;
+  font-family: 'Gilroy-BlackItalic';
+  font-size: 50px;
+  line-height: 59px;
+  text-align: center;
+  letter-spacing: 0.16em;
+  color: #06997E;
 }
 
-input
-{
+section {
+  position: absolute;
+}
+
+.loginform-page {
+  background: 6C757D;
+  height: 424px;
+  width: 439px;
+  box-shadow: 2px;
+  margin: auto;
+  border-right: 3px solid #000000;
+  border-left: 3px solid whitesmoke;
+  border-top: 3px solid gray;
+  border-bottom: 3px solid gray;
+  box-shadow: 6px 6px 8px rgba(47, 46, 46, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 40px;
+  position: relative;
+  top: 125px;
+  left: 104px;
+}
+
+input {
   border-radius: 20px;
 }
 
 
-form{
-    /* width: 361px; */
-    /* margin: auto; */
-    /* margin: 20px; */
-    margin-left: 34px;
-    
-
+form {
+  margin-left: 34px;
 }
-/* .signIn-img{
-  text-align: end;
-} */
-/* 
- .login-form{
-  margin-left: 25px;
-}  */
-.welcome{
-position: absolute;
-width: 374px;
-height: 38px;
-left: 14px;
-top:10px;
-/* font-family: 'Gilroy'; */
-font-style: normal;
-font-weight: 300;
-font-size: 40px;
-line-height: 46px;
-/* display: flex; */
-align-items: center;
 
-color: #000000;
+.welcome {
+  position: absolute;
+  width: 374px;
+  height: 38px;
+  left: 14px;
+  top: 10px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 46px;
+  align-items: center;
+
+  color: #000000;
 }
-.sign-head{
-  /* background: linear-gradient(135deg, 000000 0%, 000000 100%); */
+
+.sign-head {
   color: black;
-/* -webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text; */
   font-size: 31px;
   font-weight: 700;
-  /* height: 40px; */
-  padding:11px 0;
-  /* padding-top: 8px; */
+  padding: 11px 0;
 }
+
 .login-head p {
   color: 000000;
   font-weight: 400;
   font-size: 17px;
 }
-.login-btn{
+
+.login-btn {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
   background: black;
   box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.12), 0px 2px 4px -1px rgba(0, 0, 0, 0.07);
-border-radius: 8px;
+  border-radius: 8px;
 }
-.forgot-ps a{
+
+.forgot-ps a {
   color: black;
 }
+
 .login-menu ul {
   list-style: none;
   /* display: flex; */
 }
-.login-menu li{
+
+.login-menu li {
   display: inline;
   padding: 8px;
 }
-.forgot-ps{
+
+.forgot-ps {
   color: black;
   text-decoration: underline;
   margin-right: 38px;
 }
-.form-outline input{
-      width:361px;
-          border: 1.6px solid 6C757D;
-          border-radius: 4px;
-          padding: 5px;
+
+.form-outline input {
+  width: 361px;
+  border: 1.6px solid 6C757D;
+  border-radius: 4px;
+  padding: 5px;
 }
-.form-outline label{
+
+.form-outline label {
   font-size: 14px;
   color: #252F40;
   font-weight: 600;
 }
-mat-icon{
+
+mat-icon {
   color: grey;
   position: relative;
   right: 30px;

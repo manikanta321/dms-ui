@@ -56,6 +56,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { PopupCellRendererComponent } from '../popup-cell-renderer/popup-cell-renderer.component';
 import * as moment from 'moment';
 import { UseractionComponent } from '../useraction/useraction.component';
+import { parseMessage } from '@angular/localize/src/utils';
 
 @Component({
   selector: 'app-users',
@@ -136,7 +137,13 @@ export class UsersComponent implements OnInit {
       headerName: "Last Login",
       field: 'lastLoginDate', type: ['nonEditableColumn'],
       cellRenderer: function dateFormtter(params) {
-        return moment(params.value).format('DD MMM YYYY, HH:mm A')
+        if(params.value==null){
+          return params.value=''
+        }
+         else{
+          return moment(params.value).format('DD MMM YYYY, HH:mm A')
+
+        }
       },
       tooltipValueGetter:(params: ITooltipParams) => moment(params.value).format('DD MMM YYYY, HH:mm A'),
     },

@@ -27,6 +27,14 @@ mat-list-item:hover {
   transition: 0.4s;
 }
 
+.active
+{
+   background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; 
+
+}
+
+
+
 #active:hover {
   background: linear-gradient(270deg, #CED4DA 35.14%, rgba(206, 212, 218, 0) 84.89%);
   border-radius: 50px 30px 0px 50px;

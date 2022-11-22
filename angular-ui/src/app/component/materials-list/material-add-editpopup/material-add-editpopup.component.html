@@ -76,15 +76,10 @@
                     </ng-select>
                   </div>
                 </div>
-
-
-
-                <div class="col-md-4">
-                  <div class="description">
-                    <label>Description <span>*</span></label>
-                  </div>
-                  <input (keyup)="onKeyDesc($event)" matInput placeholder="Describe the material" #input
-                    class="form-control container materialDesc" id="abc">
+                <input (keyup)="onKeyDesc($event)" matInput placeholder="Describe the material" #input
+                  class="form-control container materialDesc" id="abc">
+                <div placeholder="" #input class="form-control container imagePl">
+                  <img src="../../../../assets/img/down13.png" class="add-img" alt="add-image=btn" width="60px" height="60px">
                 </div>
                 <div class="col-md-4">
                   <div class="imageofm">

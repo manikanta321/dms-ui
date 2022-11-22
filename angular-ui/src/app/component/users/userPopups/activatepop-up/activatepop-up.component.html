@@ -3,7 +3,7 @@
     <div class="actv-user text-center">
         <h1 class="head-text" >Reactivate User</h1>
         <p>Are you sure you want to <b style="color:rgba(23, 177, 92, 1)">reactivate</b><br>
-            user<b> {{employeename}}?</b></p><br>
+            user<b> {{employeedata}}?</b></p><br>
         <button class="undo" (click)="reactive()">Yes</button>
         <button class="exit" (click)="close()">Cancel</button>
     </div>
@@ -13,7 +13,9 @@
     <div class="actv-user text-center">
         <h1 class="head-text" >Reactivate List</h1>
         <p>Are you sure you want to <b style="color:rgba(23, 177, 92, 1)">reactivate</b><br>
-            list<b> {{localName}}?</b></p><br>
+            list
+            <b> {{localName}}?</b></p><br>
+            
         <button class="undo" (click)="reactiveData()">Yes</button>
         <button class="exit" (click)="close()">Cancel</button>
     </div>

@@ -17,6 +17,7 @@ export class ActivatepopUpComponent implements OnInit {
   localData:any;
   session:any;
   activateData:any= [];
+  employeedata:any;
   constructor(private dialogRef: MatDialogRef<any>,
     private user:UserService,
     private dialog: MatDialog,
@@ -24,9 +25,10 @@ export class ActivatepopUpComponent implements OnInit {
     private sharedService:SharedService,
     ) { }
 
-  ngOnInit(): void {
-     this.employeeId = localStorage.getItem("userID");
+  ngOnInit() {
+    this.employeeId = localStorage.getItem("userID");
     this.employeename=localStorage.getItem("employeeName");
+    this.employeedata= this.employeename+"/"+this.employeeId;
     this.activateMaterial();
     this.LoginId=localStorage.getItem("logInId");
   }

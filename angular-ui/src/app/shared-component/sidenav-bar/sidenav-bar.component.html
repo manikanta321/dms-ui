@@ -2,24 +2,24 @@
     (mouseleave)="collapsed=false" (click)="toogleCollapsed()">
     <mat-list>
 
-        <mat-list-item id="active">
+        <mat-list-item  routerLink="/maindashbord"  routerLinkActive="active">
             <img src="../../../assets/sidebarImages/sidenav-dashboard.svg" alt="">
             <!-- <mat-icon>dashboard</mat-icon>  -->
             <!-- <mat-icon (click)="close()" class="btnclose">close</mat-icon> -->
-            <span routerLink="/maindashbord" class="dasb-menu cursor-pointer" routerLinkActive="active"
+            <span  class="dasb-menu cursor-pointer"
                 *ngIf="collapsed">Dashboard</span>
 
         </mat-list-item>
 
 
-        <mat-list-item routerLink="/dashbord/oreders" routerLinkActive="active">
+        <mat-list-item  routerLink="/dashbord/oreders" routerLinkActive="active">
             <img src="../../../assets/sidebarImages/sidenav-orders.svg" alt="">
             <!-- <mat-icon >card_travel</mat-icon>  -->
             <span *ngIf="collapsed">Orders</span>
 
         </mat-list-item>
 
-        <mat-list-item routerLink="/dashbord/saleslist">
+        <mat-list-item routerLink="/dashbord/saleslist" routerLinkActive="active">
             <img src="../../../assets/sidebarImages/sidenav-products.svg" alt="">
             <!-- <mat-icon>store_mall_directory</mat-icon> -->
             <span *ngIf="collapsed">Sales</span>
@@ -31,10 +31,10 @@
 <span *ngIf="collapsed">Reports</span>
 </mat-list-item> -->
 
-        <mat-list-item>
+        <mat-list-item routerLink="/dashbord/dealer" routerLinkActive="active">
             <img src="../../../assets/sidebarImages/sidenav-dealer.svg" alt="">
             <!-- <mat-icon>people</mat-icon> -->
-            <span class="dash-menu" routerLink="/dashbord/dealer" routerLinkActive="active"
+            <span class="dash-menu" 
                 *ngIf="collapsed">Dealer</span>
         </mat-list-item>
 

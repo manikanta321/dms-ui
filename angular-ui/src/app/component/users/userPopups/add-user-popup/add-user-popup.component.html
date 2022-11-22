@@ -26,7 +26,7 @@
       class="alert">
   
     <span style="color:red;position: relative;" *ngIf="uname.errors?.['required']">
-      *Username is required.
+      *User Name is required
       
   
     </span>
@@ -50,7 +50,7 @@
                
               
               <span style="color:red;position: relative;" *ngIf="fname.errors?.['required']">
-                *First Name is required.
+                *First Name is required
               </span>
             
             </p>
@@ -64,7 +64,7 @@
                 class="alert">
             
               <span style="color:red;position: relative;" *ngIf="lname.errors?.['required']">
-                *Last Name is required.
+                *Last Name is required
               </span>
             </p>
               </div>
@@ -79,10 +79,10 @@
                 class="alert">
             
               <span style="color:red;position: relative;" *ngIf="emails.errors?.['required']">
-                *Email is required.
+                *Email is required
               </span>
               <span style="color:red;position: relative;" *ngIf="emails.errors&&emails.errors?.['pattern']">
-                *Email is Invalid.
+                *Email is Invalid
               </span>
             </p>
               </div>
@@ -94,10 +94,10 @@
                 <p  style="margin-bottom:-22px;padding: 0px;" *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)"
                 class="alert">
               <span style="color:red;position: relative;" *ngIf="mobile.errors?.['required']">
-                *Phone Number is required.
+                *Phone Number is required
               </span>
               <span style="color:red;position: relative;" *ngIf="mobile.errors&&mobile.errors?.['pattern']">
-                *Phone Number is Invalid.
+                *Phone Number is Invalid
               </span>
             </p>
   
@@ -112,7 +112,7 @@
    ;font-size:20px; font-weight: lighter;"><b>Role Selection</b></h6>
             <div class="row">
               <div class="col">
-
+                <label class="role1">Role<span>*</span></label>
                 <select  #teams class="form-select form-select-lg mb-8 " (change)="selectedValue(teams.value);" placeholder="Select your Role" aria-label=".form-select-lg example" style="height: 35px;border-radius: 10px;width: 100%;height: 43px;">
                   <option value=""  selected hidden>Select your role</option>
 

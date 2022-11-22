@@ -8,6 +8,12 @@ select option:hover
     background-color:gray !important;
 } 
 
+.role1
+{
+ font-family: 'Gilroy-Medium';
+
+color: #000000;
+}
 
 .mat-form-field-flex {
     padding-top: -10px;

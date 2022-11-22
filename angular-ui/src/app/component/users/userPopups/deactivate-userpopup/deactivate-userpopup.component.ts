@@ -16,6 +16,7 @@ export class DeactivateUserpopupComponent implements OnInit {
   session:any;
   localName:any;
   localData:any;
+  employeedata:any;
   constructor(private dialogRef: MatDialogRef<any>,
     private dialog: MatDialog,
     private user:UserService,
@@ -26,6 +27,7 @@ export class DeactivateUserpopupComponent implements OnInit {
   ngOnInit(): void {
      this.employeeId = localStorage.getItem("userID");
     this.employeename=localStorage.getItem("employeeName");
+    this.employeedata= this.employeename+"/"+this.employeeId;
     this.LoginId=localStorage.getItem("logInId");
     this.deactivateMaterial();
   }

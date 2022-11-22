@@ -41,7 +41,7 @@ export class PswResetPopupComponent implements OnInit {
     if(admin !== '')
     {
       this.adminPassword = true;
-      alert(admin);
+      // alert(admin);
     }
     else{
       this.adminPassword =false;

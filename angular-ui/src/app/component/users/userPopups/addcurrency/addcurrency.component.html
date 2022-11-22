@@ -16,25 +16,24 @@
         </div>
         
         <div class="addUserForm divAlign">
-          <form [formGroup]="currencyForm">
+          <!-- <form> -->
             <div class="row">
               <div class="col">
                   <label>Name <span>*</span></label>
                   <br>
-                  <input type="text" id="uname" name="uname" required  (keyup)="onKeyName($event)" placeholder="Enter Name" formControlName="currencyName" class="imputtext">
-
+                  <input type="text" required  (keyup)="onKeyName($event)" placeholder="Enter Name"[(ngModel)]="EUomName" class="imputtext">
                 </div>
                 <div class="col">
                   <label>Display Units<span>*</span></label>
                   <br>
-                <input type="text" required placeholder="Enter display unit" formControlName="displayUnits" class="imputtext" ></div>
+                <input type="text" (keyup)="onKeyShortName($event)" required placeholder="Enter display unit" [(ngModel)]="EuoMShortName" class="imputtext" ></div>
             </div>
                 <br>
               <div class="row">
                 <div class="col">
                   <label>Conversion Rate<span>*</span></label>
                   <br>
-                  <input type="number" required (keyup)="onKeyConversion($event)"  formControlName="conversionRate" placeholder="Enter Conversion Rate" class="imputtext" style="width: 100%;">
+                  <input required (keyup)="onKeyConversion($event)" [(ngModel)]="EConversionRate" placeholder="Enter Conversion Rate" class="imputtext" style="width: 100%;">
                 
                 </div>
                 <!-- <div class="col"> 
@@ -50,7 +49,7 @@
                 
               <label>Conversion<span>*</span></label>
               <br>
-              <input type="text" [value]="editedConversion" placeholder="Enter Conversion"  class="imputtext" disabled>
+              <input type="text" [value]="editedConversion" placeholder="Enter Conversion" [(ngModel)]="EConversionShow" class="imputtext" disabled>
                 
                 </div>
                 <div class="col"> 
@@ -63,22 +62,23 @@
                 
                   <label><span style="color: aliceblue;">.</span></label>
                   <br>
-                  <div formControlName="defaultInr" >
-                  <input type="text"  placeholder="1 INR" disabled  class="imputtext">
-                </div>
+                  <div>
+                  <input type="text"  placeholder="1 INR" disabled [(ngModel)]="EuomSymbol"  class="imputtext">
+                  </div>
                     </div>
 
                    
                
               </div>    
               <br>
-              </form>
+              <!-- </form> -->
               <div class="row">
                 <div class="col">
-                  <button class="btn btn-primary btn-block" style="background-color: black; border-radius: 10px;" (click)="addcurncy()">Save</button>
+                  <button class="btn btn-primary btn-block" *ngIf="editButton" [disabled]="(!EUomName || !EuoMShortName || !EConversionRate || !EConversionShow || !EuomSymbol)" style="background-color: black; border-radius: 10px;" (click)="addcurncy()">Save</button>
+                  <button class="btn btn-primary btn-block" *ngIf="!editButton" [disabled]="(!Name || !uomShortName || !conversionRates || !UOMSymbol || !conversion)" style="background-color: black; border-radius: 10px;" (click)="addcurncy()">Save</button>
                 </div>
                   <div class="col">
-                    <button class="btn btn-primary btn-block" style="background-color: white;color: black; border: 2px solid black; border-radius: 10px;">Cancel</button>
+                    <button class="btn btn-primary btn-block" (click)="closeDialog()" style="background-color: white;color: black; border: 2px solid black; border-radius: 10px;">Cancel</button>
  
                   </div>
               </div>

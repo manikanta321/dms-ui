@@ -115,8 +115,8 @@ mat-form-field {
     border-color: black;
     background-color: black;
     /* margin-left: 79px; */
-    margin-top: -12px;
-    width:66%;
+    /* margin-top: -12px;
+    width:66%; */
 }
 .imputtext{
     height: 43px;

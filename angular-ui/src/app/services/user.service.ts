@@ -139,9 +139,11 @@ public addcurrency(data){
 public activeDeavtiveCurrency(data){
   return this.http.post<any>(this.userurl + 'OtherMasterApi/ActiveDeactive', data);
 }
+public getEditCurrencyByID(FxID:any){
+  return this.http.get<any>(`${this.userurl}OtherMasterApi/GetCurrencyDetailsToEdit?FxRateId=${FxID}`);
+}
 //get Dealer list
 public getAllDealerList(data){
   return this.http.post<any>(this.userurl + 'DealerApi/GetAllDealers',data);
 }
-
 }

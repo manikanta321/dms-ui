@@ -756,7 +756,7 @@ console.log(' this.statusTypes', this.userTypes)
     // console.log('userID',this.userId);
     localStorage.setItem('UomId',e.data.uoMId )
     localStorage.setItem('UomName',e.data.uoMName)
-    
+    localStorage.setItem('fxRateId',e.data.fxRateId)
     localStorage.setItem('niId',e.data.uoMId )
     localStorage.setItem('Niname',e.data.uoMName)
     // localStorage.setItem('employeeName',this.employeeName )

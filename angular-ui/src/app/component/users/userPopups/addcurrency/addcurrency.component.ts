@@ -17,6 +17,18 @@ export class AddcurrencyComponent implements OnInit {
     conversionRates:any;
     editedConversion:any ='';
     UOMSymbol:any;
+    editFxId:any;
+    editUomData:any;
+    EUomId:any;
+    EUomName:any;
+    EuoMShortName:any;
+    EConversionRate:any;
+    EuomSymbol:any;
+    EConversion:any;
+    editcurrencyHeader:any;
+    EConversionShow:any;
+    editButton:boolean=false;
+    uomShortName:any;
   constructor(private dialogRef: MatDialogRef<any>,
     private user:UserService,) {
       this.currencyForm = new FormGroup({
@@ -31,9 +43,13 @@ export class AddcurrencyComponent implements OnInit {
 
   ngOnInit(): void {
     // this.addcurrency()
-    var editcurrencyHeader =localStorage.getItem('headerStatus');
-    if(editcurrencyHeader == "EditCurrency"){
+     this.editcurrencyHeader =localStorage.getItem('headerStatus');
+    if(this.editcurrencyHeader == "EditCurrency"){
       this.headerName ="Edit Currency";
+      this.editFxId = localStorage.getItem('fxRateId');
+      this.EUomId = localStorage.getItem('UomId');
+      this.editMaterials();
+     alert(this.editFxId)
     } else {
       this.headerName = 'Add Currency';
     }
@@ -41,12 +57,31 @@ export class AddcurrencyComponent implements OnInit {
     //  this.currencyForm.controls["defaultInr"].setValue("1");
     this.UOMSymbol = "1 INR";
   }
+  editMaterials(){
+    this.editButton =true;
+    this.user.getEditCurrencyByID(this.editFxId).subscribe((res) => {   
+      this.editUomData = res.response;
+      this.EUomName = this.editUomData.uoMName;
+      this.EuoMShortName = this.editUomData.uoMShortName;
+      this.EConversionRate = this.editUomData.conversionRate;
+      this.EuomSymbol = this.editUomData.uomSymbol;
+      let convo = 1/(this.EConversionRate);
+      let conversion = convo.toFixed(3);
+      this.EConversionShow = conversion+" "+this.EuoMShortName;
+      this.EConversion = conversion;
+      console.log("editUomData",this.editUomData);
+    });
+  }
   closeDialog(){
     this.dialogRef.close();
   }
   onKeyName(event){
 let keyName = event.target.value;
 this.Name = keyName;
+  }
+  onKeyShortName(event){
+    let shortName = event.target.value;
+this.uomShortName = shortName;
   }
   onKeyConversion(event){
   let keyConversion = event.target.value;
@@ -61,9 +96,10 @@ this.Name = keyName;
   }
   }
   addcurncy(){
+    if(this.editButton ==false){
     const data={
       UoMName:this.Name,
-      UoMShortName:this.currencyForm.value['displayUnits'],
+      UoMShortName:this.uomShortName,
       ConversionRate:this.conversionRates,
       UOMSymbol:this.UOMSymbol,
       Conversion:this.conversion,
@@ -74,12 +110,24 @@ this.Name = keyName;
       this.currencyForm.reset(); 
       // console.log(res,"123456987654")
     });
-    this.closeDialog();
+  }else{
+    const data2={
+      UoMName:this.EUomName,
+      UoMShortName:this.EuoMShortName,
+      ConversionRate:this.EConversionRate,
+      UOMSymbol:this.EuomSymbol,
+      Conversion:this.EConversion,
+      UoMId:this.EUomId
+      
+    }
+      this.user.addcurrency(data2).subscribe((res) => {   
+        this.editUomData = res;
+        console.log("editUomData",this.editUomData);
+      });
   }
-
+  this.closeDialog();
+  }
   currencyConverteredValue(data:any){
     // alert("suceccy key finction")
   }
-
-
 }

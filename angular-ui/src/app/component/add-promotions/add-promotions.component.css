@@ -39,9 +39,7 @@ padding: 10px;
 }
 
 .materialname {
-  margin-top: 3px;
   font-family: 'Gilroy';
-  margin-left: -4px;
 }
 
 .additional {
@@ -68,27 +66,23 @@ border-radius: 10px;
   font-weight: 300;
 font-size: 20px;
 }
-.geography {
+/* .geography {
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 450px;
 
-}
+} */
 
-.itemSize {
+/* .itemSize {
   width: 517px;
   height: 130px;
   border: 0.5px solid #000000;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-}
+} */
 
 .removeCircle {
   color: red;
-}
-
-.addBtnAlign {
-  margin-left: -93px;
 }
 
 .listStyleOfItems {
@@ -101,13 +95,6 @@ font-size: 20px;
 .listStyleOfItems li {
   padding: 0 60px 0px 0px;
 }
-
-
-
-/* .alignTop{
-  padding: 26px 0px 0px 0px;
-} */
-
 .qtyOfItems {
   width: 100px;
   height: 43px;
@@ -159,15 +146,6 @@ font-size: 20px;
   border-radius: 10px;
   
 } */
-
-
-.allQty {
-  position: relative;
-  float: right;
-}
-
-
-
 .productSize {
   width: 949px;
   height: 43px;
@@ -184,9 +162,6 @@ font-size: 20px;
   border-radius: 10px;
 }
 
-/* ::ng-deep.steppers .prod.mat-horizontal-content-container {
-    width: 800px !important;
-  } */
 .scroll {
   overflow-y: auto;
   overflow-x: auto;
@@ -207,52 +182,11 @@ font-size: 20px;
   margin-bottom: 16px;
   margin-left: 20px;
 }
-
-.description {
-  font-family: 'Gilroy';
-  margin-top: 15px;
-}
-
-.materialci {
-  font-family: 'Gilroy';
-  margin-top: -29px;
-  margin-left: 499px;
-}
-
-.imageofm {
-  font-family: 'Gilroy';
-  margin-top: -31px;
-  margin-left: 314px;
-}
-
-.expiryperiod {
-  font-family: 'Gilroy';
-  margin-top: 10px;
-  margin-left: 498px;
-}
-
-.describem {
-  width: 250px;
-
-}
-
-.uom {
-  margin-top: 16px;
-  font-family: 'Gilroy';
-  margin-left: -5px;
-}
-
-.sub-category {
-  margin-top: -28px;
-  margin-left: 255px;
-  font-family: 'Gilroy';
-}
-
-.type {
+/* .type {
   margin-top: -30px;
   margin-left: 496px;
   font-family: 'Gilroy';
-}
+} */
 
 .font {
   font-family: 'Gilroy';
@@ -282,10 +216,10 @@ font-size: 20px;
 /* .mat-horizontal-stepper-header-container ng-tns-c418-7 {
     margin: top -51px;
   }; */
-::ng-deep.input.mat-input-text {
+/* ::ng-deep.input.mat-input-text {
   margin-top: -9px;
   margin-left: -6px;
-}
+} */
 
 /*old css*/
 
@@ -463,433 +397,33 @@ mat-form-field {
   padding: 0em 0 0.7em 0;
   border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 }
-
-.popup-size {
-  background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-  width: 1043px;
-  height: 583px;
-  max-width: 95vw !important;
-}
-
-.categorydrp {
-  width: 205px;
-}
-
-.subcategorydrp {
-  width: 205px;
-  margin-left: 250px;
-  margin-top: -40px;
-}
-
-.typedrp {
-  width: 205px;
-  margin-left: 499px;
-  margin-top: -42px;
-}
-
-.customidentifier {
-  width: 205px;
-  margin-left: 499px;
-  margin-top: -145px;
-}
-
-.uomp {
-  margin-left: 499px;
-  margin-top: -29px;
-}
-
 .promotiontypedrp {
   margin-top: 2px;
   font-family: 'Gilroy';
 }
-
-.brandname {
-  margin-top: 1px;
-  margin-left: -5px;
-  font-family: 'Gilroy';
-}
-
-.globalcode {
-  margin-top: -35px;
-  margin-left: 388px;
-  font-family: 'Gilroy';
-}
-
-.brandpl {
-  margin-top: 10px;
-}
-
-.sku {
-  margin-top: 10px;
-  margin-left: -5px;
-  font-family: 'Gilroy';
-}
-
-.shortcode {
-  margin-top: -35px;
-  margin-left: 388px;
-  font-family: 'Gilroy';
-}
-
-.productg {
-  margin-top: 10px;
-  margin-left: -5px;
-  font-family: 'Gilroy';
-}
-
-.manualsort {
-  margin-top: -35px;
-  margin-left: 388px;
-  font-family: 'Gilroy';
-}
-
-.productdrp {
-  width: 309px;
-  margin-top: 8px;
-  margin-left: -2px;
-}
-
-.productsg {
-  margin-top: 10px;
-  margin-left: -5px;
-  font-family: 'Gilroy';
-}
-
-.productlink {
-  margin-top: -35px;
-  margin-left: 388px;
-  font-family: 'Gilroy';
-}
-
-.productsdrp {
-  width: 309px;
-  margin-top: 8px;
-  margin-left: -2px;
-}
-
-.productci {
-  margin-top: 10px;
-  margin-left: -5px;
-  font-family: 'Gilroy';
-}
-
-.identiersdrp {
-  width: 735px;
-  margin-top: 8px;
-  margin-left: -2px;
-
-}
-
-
-.mat-slide {
-  margin-left: 620px;
-  color: black;
-  font-family: 'Gilroy';
-  margin-top: -1px;
-}
-
-.city {
-  margin-left: 608px;
-  margin-top: -30px;
-}
-
-.state {
-  margin-left: 228px;
-  margin-top: -29px;
-}
-
-.region {
-  margin-left: 425px;
-  margin-top: -29px;
-}
-
-.matcardAlign {
-  background: #FFFFFF;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-  border-radius: 25px;
-  height: 190px;
-  width: 193px;
-
-  /* font-size: 10px; */
-}
-
+/* 
 ::ng-deep.matcard-dealers .mat-card {
   width: 373px;
   height: 218px;
-}
-
-.catg {
-  background: #EAEEFF;
-  border: 1px solid #00187A;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  padding: 5px;
-  text-align: center;
-}
-
-.countryName {
-  background-color: rgba(219, 184, 2, 1);
-  color: white;
-  font-size: 14px;
-  font-family: 'Gilroy';
-  border: 1px solid;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  padding: 5px;
-  text-align: center;
-}
+} */
 
 div.catg[data-selected] {
   border: 2px solid #333;
 }
 
-.subc {
-  background: #E6FFF6;
-  border: 1px solid #0C5A3E;
-  border-radius: 10px;
-  color: #0C5A3E;
-  font-size: 14px;
-  margin-bottom: 10px;
-  padding: 5px;
-  text-align: center;
-}
-
-.typeg {
-  background: #FFEDEC;
-  border: 1px solid #C32F27;
-  border-radius: 10px;
-  color: #C32F27;
-  font-size: 14px;
-  margin-bottom: 10px;
-  padding: 5px;
-  text-align: center;
-}
-
 li {
   list-style: none;
 }
-
-.addcat {
-  background: #FFFFFF;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  margin-right: 10px;
-  font-size: 13px;
-  color: rgba(104, 110, 116, 0.75);
-  padding: 8px 16px;
-  /* width: 150px; */
-  margin-left: -12px;
-}
-
-.addcode {
-  background: #FFFFFF;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  font-size: 13px;
-  color: rgba(104, 110, 116, 0.75);
-  padding: 8px 20px;
-}
-
-.span-subhead {
-  margin-bottom: 10px;
-  display: flex;
-  color: rgba(104, 110, 116, 0.75);
-  font-size: 13px;
-}
-
-.selected {
-  background-color: #00187A;
-  color: white;
-}
-
-.subselected {
-  background: #0C5A3E;
-  color: white;
-}
-
-.typeselected {
-  background: #C32F27;
-  color: white;
-}
-
-/* .row {
-    width: 767px
-  } */
-
-.bar {
-  height: 400px;
-  overflow-y: scroll;
-  overflow-x: scroll;
-  /* height: 500px; */
-}
-
-.geo {
-  margin-top: 18px;
-  font-family: 'Gilroy';
-}
-
-.minorder {
-  margin-top: -29px;
-  margin-left: 310px;
-  font-family: 'Gilroy';
-}
-
-.mrp {
-  position: relative;
-  left: 27%;
-  font-family: 'Gilroy';
-}
-
-.max {
-  margin-top: -29px;
-  margin-left: 409px;
-  font-family: 'Gilroy';
-}
-
-.discount {
-  margin-top: -29px;
-  margin-left: 608px;
-  font-family: 'Gilroy';
-}
-
-.margin {
-  margin-top: -29px;
-  margin-left: 512px;
-  font-family: 'Gilroy';
-}
-
-.leadt {
-  position: relative;
-  left: 90%;
-  top: -32px;
-  font-family: 'Gilroy';
-}
-
-.registration {
-  top: -64px;
-  left: 105%;
-  position: relative;
-  font-family: 'Gilroy';
-}
-
-.tags {
-  position: relative;
-  left: 125%;
-  top: -93px;
-  font-family: 'Gilroy';
-}
-
-.Kedah {
-  margin-top: 24px;
-  margin-left: 4px;
-}
-
-.mala {
-  margin-top: -111px;
-  margin-left: 4px;
-}
-
-.Perak {
-  margin-top: 18px;
-  margin-left: 4px;
-}
-
-.Penang {
-  margin-top: 17px;
-  margin-left: 4px;
-}
-
-.North {
-  margin-top: 17px;
-  margin-left: 4px;
-}
-
-/* .geoo{
-    width: 900px;
-  } */
-.addlink {
-  margin-top: -21px;
-  margin-left: 987px;
-
-}
-
-.numberl {
-  margin-top: -21px;
-  margin-left: 799px;
-}
-
-.headergeo {
-  position: relative;
-  left: -7%;
-  top: -29px;
-}
-
-.malainput {
-  position: relative;
-  left: -7%;
-}
-
-.kedahinput {
-  position: relative;
-  left: -7%;
-}
-
-.perakinput {
-  position: relative;
-  left: -7%;
-}
-
-.penanginput {
-  position: relative;
-  left: -7%;
-}
-
-.northinput {
-  position: relative;
-  left: -7%;
-}
-
-.infosize {
-  width: 300px !important;
-}
-
-::ng-deep.mat-horizontal-content-container {
+/* ::ng-deep.mat-horizontal-content-container {
   overflow: hidden;
   padding: 0px 0px 0px 0px;
-}
-
-.submitbtn {
-  margin-top: 12px;
-}
-
+} */
 ::ng-deep.mat-step-text-label {
   text-overflow: ellipsis;
   overflow: hidden;
   font-size: 12px;
 }
-
-/* ::ng-deep.datepicker .mat-form-field-appearance-fill .mat-form-field-flex {
-
-  border-radius: 14px;
-  width: 393px;
-  height: 42px;
-
-} */
-
-/* .datepicker.mat-form-field-infix {
-  display: block;
-  position: relative;
-  flex: auto;
-  min-width: 0;
-  width: 180px;
-  background-color: white;
-  font-family: "Gilroy";
-} */
-
-.mat-card-subtitle:before {
+/* .mat-card-subtitle:before {
   content: "";
   display: block;
   width: 372px;
@@ -903,79 +437,7 @@ li {
 .mat-card-subtitle {
   font-weight: bold;
   font-family: 'Gilroy';
-}
-
-.alignment {
-  position: relative;
-  left: 209px;
-}
-
-.btn-row {
-  margin-top: -2px;
-}
-
-.material-card {
-  margin-top: -5px;
-}
-
-.getgrp {
-  position: relative;
-  left: 414px;
-  bottom: 88px;
-}
-
-.prod {
-  position: relative;
-  bottom: 17px;
-}
-
-.prodb {
-  position: relative;
-  top: 132px;
-  left: 13px;
-}
-
-/* .productlevel {
-  font-family: 'Gilroy';
-  position: relative;
-  width: 401px;
 } */
-
-.items {
-  position: relative;
-  font-family: 'Gilroy';
-  bottom: 153px;
-}
-
-.itemstwo {
-  position: relative;
-  font-family: 'Gilroy';
-  bottom: 500px;
-  left: 408px;
-}
-
-.qty {
-  position: relative;
-  font-family: 'Gilroy';
-  bottom: 328px;
-  left: 293px;
-}
-
-.qtytwo {
-  position: relative;
-  font-family: 'Gilroy';
-  bottom: 678px;
-  left: 708px;
-}
-
-
-
-.productleveltwo {
-  position: relative;
-  font-family: 'Gilroy';
-  width: 405px;
-  /* height: 43px;  */
-}
 
 /* ::ng-deep.identify .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
   overflow: hidden;
@@ -1047,73 +509,6 @@ text-align: center;
   left: 424px;
 }
 
-/* .productlevelf {
-  position: relative;
-  font-family: 'Gilroy';
-  bottom: 724px;
-  left: 422px;
-} */
-
-.productdrpdownthree {
-  width: 365px;
-  position: relative;
-  bottom: 650px;
-  left: 1px;
-}
-
-.productdrpdownf {
-  width: 365px;
-  position: relative;
-  bottom: 719px;
-  left: 414px;
-}
-
-.itemso {
-  position: relative;
-  font-family: 'Gilroy';
-  bottom: 716px;
-}
-
-.qty-three {
-  position: relative;
-  font-family: 'Gilroy';
-  bottom: 882px;
-  left: 298px;
-}
-
-.moq-three {
-  position: relative;
-  font-family: 'Gilroy';
-  bottom: 878px;
-  left: 293px;
-}
-
-.itemst {
-  position: relative;
-  font-family: 'Gilroy';
-  bottom: 1061px;
-  left: 425px;
-}
-
-.qtyf {
-  position: relative;
-  font-family: 'Gilroy';
-  bottom: 1231px;
-  left: 718px;
-}
-
-.moqf {
-  position: relative;
-  font-family: 'Gilroy';
-  bottom: 878px;
-  left: 293px;
-}
-
-.buygrp-hide {
-  overflow-y: auto;
-  overflow-x: auto;
-}
-
 .mydatepicker {
   border-radius: 2px;
   font-family: 'Gilroy';
@@ -1141,43 +536,7 @@ display: none;
   position: relative;
   right: 8px;
 }
-
-.seconditems {
-  position: relative;
-  bottom: 10px;
-  left: 4px;
-}
-
-.showdatascroll {
-  overflow-x: auto;
-}
-
-.setone {
-  color: #000000;
-  font-size: 12px;
-  font-weight: bold;
-  font-family: 'Gilroy';
-  position: relative;
-  bottom: 44px;
-}
-
-.settwo {
-  color: #000000;
-  font-size: 12px;
-  font-weight: bold;
-  font-family: 'Gilroy';
-  position: relative;
-  bottom: 187px;
-  left: 412px;
-}
-
-.level-section {
-  position: relative;
-  bottom: 20px;
-}
-
-
-.getset-matcard {
+/* .getset-matcard {
   background: #FFFFFF;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
@@ -1187,30 +546,9 @@ display: none;
   position: absolute;
   top: 292px;
   left: 180px;
-}
+} */
 
-.item-section {
-  position: relative;
-  bottom: 2px
-}
-
-.item-sectionb {
-  position: relative;
-  top: 204px;
-  left: 16px;
-}
-
-.buy-head {
-  position: relative;
-  border: 2px solid black;
-  border-radius: 18px;
-  width: 413px;
-  left: 9px;
-  bottom: 31px;
-  background-color: lightgrey;
-}
-
-.head-get {
+/* .head-get {
   position: relative;
   border: 2px solid black;
   border-radius: 18px;
@@ -1219,46 +557,32 @@ display: none;
   bottom: 616px;
   height: 360px;
   background-color: lightgrey;
-}
-
-.heag {
-  position: relative;
-  left: 18px;
-}
-
-.head-h {
+} */
+/* .head-h {
   position: relative;
   left: 471px;
   bottom: 582px;
-}
-
+} */
+/* 
 .image-getset {
   width: 22px;
   position: relative;
   bottom: 172px;
   left: 354px;
-}
-
+} */
+/* 
 .image-getsetone {
   width: 22px;
   position: relative;
   bottom: 172px;
   left: 354px;
-}
-
+} */
+/* 
 .buyget-show {
   position: relative;
   top: 509px;
   left: 17px;
-}
-
-/* New CSS */
-.item-header {
-  color: #000000;
-  font-size: 18px;
-  font-family: 'Gilroy';
-
-}
+} */
 .list-item{
   background: #FFFFFF;
   border: 0.5px solid #000000;
@@ -1287,23 +611,23 @@ border-radius: 10px;
   top: 30px;
 }
 
-.itemspone {
+/* .itemspone {
   width: 333px;
   height: 130px;
   border: 0.5px solid #000000;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-}
+} */
 
-.itemsptwo {
+/* .itemsptwo {
   width: 333px;
   height: 130px;
   border: 0.5px solid #000000;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-}
+} */
 
-.qty-items {
+/* .qty-items {
   width: 48px;
   height: 43px;
   position: absolute;
@@ -1311,9 +635,9 @@ border-radius: 10px;
   border: 0.5px solid #000000;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-}
+} */
 
-.qty-items-text {
+/* .qty-items-text {
   width: 48px;
   height: 43px;
   position: absolute;
@@ -1321,35 +645,7 @@ border-radius: 10px;
   border: 0.5px solid #000000;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-}
-
-
-.moq {
-  position: absolute;
-  top: 52px;
-  right: 25px;
-}
-
-.moq-text {
-  width: 48px;
-  height: 43px;
-  position: absolute;
-  top: 86px;
-  right: 23px;
-  border: 0.5px solid #000000;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-}
-
-.qty-labe {
-  position: absolute;
-  left: 177px;
-}
-
-.item-scroll {
-  overflow-x: hidden;
-}
-
+} */
 .add-dealer-promotion-cls {
   overflow-x: hidden;
   height: 530px;

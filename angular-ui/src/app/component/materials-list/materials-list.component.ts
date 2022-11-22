@@ -9,7 +9,7 @@ import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, Gu
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { MaterialListService } from 'src/app/services/material-list.service';
-import {MaterialListActionComponent} from '../material-list-action/material-list-action.component';
+import { MaterialListActionComponent } from '../material-list-action/material-list-action.component';
 // import { ButtonRendererComponent } from './renderer/button-renderer.component';
 
 export interface PeriodicElement {
@@ -68,13 +68,13 @@ export class MaterialsListComponent implements OnInit {
   catergory: any = [];
   ProdData: any = [];
   sub_category: any = [];
-  sub_categorys:any=[];
+  sub_categorys: any = [];
   typeI: any = [];
   typesI: any = [];
-  typesData:any = [];
+  typesData: any = [];
   typeD: any = [];
-  typessData:any = [];
-  typessArray:any = [];
+  typessData: any = [];
+  typessArray: any = [];
   searchText: any;
   statusTypes: any = [];
   productID: any = [];
@@ -94,9 +94,9 @@ export class MaterialsListComponent implements OnInit {
   toppingList2: any = [];
   toppingList3: any = [];
   toppingList4: any = [];
-  stockItemId:any;
-  stockItemName:any;
-  instancePopup:any = null;
+  stockItemId: any;
+  stockItemName: any;
+  instancePopup: any = null;
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
   dropdownSettings2: IDropdownSettings = {};
@@ -116,7 +116,7 @@ export class MaterialsListComponent implements OnInit {
     resizable: true,
     sortable: true,
   };
-  
+
   constructor(public dialog: MatDialog,
     private user: UserService,
     private fb: FormBuilder,
@@ -303,7 +303,7 @@ export class MaterialsListComponent implements OnInit {
   onItemSelect(item: any) {
     // this.selectedItem = item;
     this.catergory.push(item.catId);
-    console.log("Catttyyyyy",this.catergory)
+    console.log("Catttyyyyy", this.catergory)
     console.log('item Subcatty', item)
 
     this.itemId = item.catId;
@@ -434,14 +434,14 @@ export class MaterialsListComponent implements OnInit {
       if (element == item.subCatId) this.sub_categorys.splice(index, 1);
 
     });
-    let subCat ={
+    let subCat = {
       subCatId: this.sub_categorys
     }
     this.materialList.onclicksubcat(subCat).subscribe((res) => {
       let typs = res.response;
       console.log("types..res", typs);
       this.typesI = typs;
-      if(this.typesI.length ==0){
+      if (this.typesI.length == 0) {
         this.typeI = [];
       }
       console.log("Typess", this.typss);
@@ -500,9 +500,9 @@ export class MaterialsListComponent implements OnInit {
     });
   }
   onSubCategoryDSelectOrAll(item: any) {
-    this.sub_categorys=[];
+    this.sub_categorys = [];
     this.typesI = [];
-    this.typeI =[]
+    this.typeI = []
     const data = {
       Cat: this.catergory,
       Sub_Cat: this.sub_categorys,
@@ -549,8 +549,8 @@ export class MaterialsListComponent implements OnInit {
     });
 
   }
-  onTypeSelectOrAll(){
-    
+  onTypeSelectOrAll() {
+
     this.typessData = this.typeI.map((data: { typeId: any; typeName: any; }) => {
       return { typeId: data.typeId, typeName: data.typeName };
     });
@@ -578,19 +578,19 @@ export class MaterialsListComponent implements OnInit {
       this.rowData5 = res.response;
     });
   }
-  OnTypeDeselectOrAll(){
-this.typesI =[];
-const data = {
-  Cat: this.catergory,
-  Sub_Cat: this.sub_categorys,
-  type: this.typesI,
-  product: this.productID,
-  status: this.statusTypes,
-  Search: this.searchText
-}
-this.materialList.getMaterialList(data).subscribe((res) => {
-  this.rowData5 = res.response;
-});
+  OnTypeDeselectOrAll() {
+    this.typesI = [];
+    const data = {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      product: this.productID,
+      status: this.statusTypes,
+      Search: this.searchText
+    }
+    this.materialList.getMaterialList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
   }
   onProductSelect(item: any) {
     this.productID.push(item.productGroupId);
@@ -806,7 +806,10 @@ this.materialList.getMaterialList(data).subscribe((res) => {
 
   }
   addMaterials() {
-    this.dialog.open(MaterialAddEditpopupComponent);
+    this.dialog.open(MaterialAddEditpopupComponent, {
+      // width: '100vw',
+      maxWidth: '70vw',
+  });
 
   }
   onCellClicked(e): void {
@@ -818,9 +821,9 @@ this.materialList.getMaterialList(data).subscribe((res) => {
     console.log('userID', this.userId);
     localStorage.setItem('userID', this.userId)
     localStorage.setItem('employeeName', this.employeeName);
-    localStorage.setItem('listData',this.stockItemId);
-    localStorage.setItem('listName',this.stockItemName);
-    if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
+    localStorage.setItem('listData', this.stockItemId);
+    localStorage.setItem('listName', this.stockItemName);
+    if (e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action') {
       const cellRendererInstances = e.api.getCellRendererInstances({
         rowNodes: [e.node],
         columns: [e.column],
@@ -850,7 +853,7 @@ this.materialList.getMaterialList(data).subscribe((res) => {
     });
     this.catergory = [];
     this.sub_category = [];
-    this.sub_categorys =[];
+    this.sub_categorys = [];
     this.typeI = [];
     this.typesI = [];
     this.productID = [];
@@ -875,41 +878,41 @@ this.materialList.getMaterialList(data).subscribe((res) => {
 
     {
       headerName: "Classification",
-      field: 'classification',type: ['nonEditableColumn'], minWidth:250
+      field: 'classification', type: ['nonEditableColumn'], minWidth: 250
     },
 
     {
       headerName: "UoM",
-      field: 'uoMName', type: ['nonEditableColumn'], minWidth:40
+      field: 'uoMName', type: ['nonEditableColumn'], minWidth: 40
     },
     {
       headerName: "Product Group",
-      field: 'productGroupName', type: ['nonEditableColumn'], minWidth:200
+      field: 'productGroupName', type: ['nonEditableColumn'], minWidth: 200
     },
     {
       headerName: "SKU",
-      field: 'productSKUName', type: ['nonEditableColumn'],minWidth:130
+      field: 'productSKUName', type: ['nonEditableColumn'], minWidth: 130
     },
     {
       headerName: "Status",
       field: 'statusName',
       type: ['nonEditableColumn'],
       cellEditor: 'agSelectCellEditor',
-      maxWidth:200,
+      maxWidth: 200,
       cellEditorParams: {
         values: ['Active', 'Inactive']
       },
       cellClass: params => {
-        return params.value == 'InActive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2': 'my-class-4'
+        return params.value == 'InActive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : 'my-class-4'
       },
-      tooltipField:"statusName",
+      tooltipField: "statusName",
     },
     {
       headerName: '',
       colId: 'action',
       cellRenderer: MaterialListActionComponent,
       editable: false,
-      maxWidth: 60  
+      maxWidth: 60
     },
 
   ];

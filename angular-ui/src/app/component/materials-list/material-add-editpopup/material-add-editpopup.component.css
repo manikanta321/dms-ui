@@ -1,6 +1,10 @@
 .mat-form-field {
-  width: 680px;
+  /* width: 680px; */
+  width: 100%;
   font-family: 'Gilroy';
+  }
+  .mat-form-field-label-wrapper {
+    left: 10px;
   }
 
 .mat-form-field::placeholder {
@@ -47,28 +51,28 @@
   margin-bottom: 16px;
   margin-left: 20px;
 }
+form[name="myBasicInfo"]{
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 450px;
+}
 
 .description {
   font-family: 'Gilroy';
-  margin-top: 21px;
+  /* margin-top: 21px; */
 }
 
 .materialci {
   font-family: 'Gilroy';
-  margin-top: -29px;
-  margin-left: 499px;
+  
 }
 
 .imageofm {
   font-family: 'Gilroy';
-  margin-top: -31px;
-  margin-left: 314px;
 }
 
 .expiryperiod {
   font-family: 'Gilroy';
-  margin-top: 10px;
-  margin-left: 498px;
 }
 
 .describem {
@@ -89,8 +93,6 @@
 }
 
 .type {
-  margin-top: -30px;
-  margin-left: 496px;
   font-family: 'Gilroy';
 }
 
@@ -148,12 +150,6 @@
   text-align: center;
   margin-top: -18px;
   margin-bottom: 2px;
-}
-
-.add-img {
-  position: relative;
-  left: 24px;
-  top: 24px;
 }
 
 .selected {
@@ -251,48 +247,32 @@ mat-form-field {
   ;
 }
 
-.categorydrp {
-  width: 205px;
-}
-
-.subcategorydrp {
-  width: 205px;
-  margin-left: 250px;
-  margin-top: -37px;
-}
-
-.typedrp {
-  width: 205px;
-  margin-left: 499px;
-  margin-top: -36px;
-}
 
 .customidentifier {
-  width: 205px;
-  margin-left: 499px;
-  margin-top: -127px;
+  
 }
 
 .uomp {
-  margin-left: 499px;
-  margin-top: -29px;
+  /* margin-left: 499px;
+  margin-top: -29px; */
+  margin-top: 10px;
 }
 
 .uomdrp {
-  margin-left: 499px;
+  /* margin-left: 499px;
   margin-top: -65px;
-  width: 207px;
+  width: 207px; */
 }
 
 .brandname {
-  margin-top: 1px;
-  margin-left: -5px;
+  /* margin-top: 1px;
+  margin-left: -5px; */
   font-family: 'Gilroy';
 }
 
 .globalcode {
-  margin-top: -35px;
-  margin-left: 388px;
+  /* margin-top: -35px;
+  margin-left: 388px; */
   font-family: 'Gilroy';
 }
 
@@ -301,33 +281,27 @@ mat-form-field {
 }
 
 .sku {
-  margin-top: 10px;
-  margin-left: -5px;
+ 
   font-family: 'Gilroy';
 }
 
 .shortcode {
-  margin-top: -35px;
-  margin-left: 388px;
+ 
   font-family: 'Gilroy';
 }
 
 .productg {
-  margin-top: 10px;
-  margin-left: -5px;
+ 
   font-family: 'Gilroy';
 }
 
 .manualsort {
-  margin-top: -35px;
-  margin-left: 388px;
+ 
   font-family: 'Gilroy';
 }
 
-.productdrp {
-  width: 309px;
-  margin-top: 8px;
-  margin-left: -2px;
+.productdrp ng-select{
+  margin: 0px 40px 0 0;
 }
 
 ::ng-deep.arrow-hide .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
@@ -335,21 +309,15 @@ mat-form-field {
 }
 
 .productsg {
-  margin-top: 10px;
-  margin-left: -5px;
   font-family: 'Gilroy';
 }
 
 .productlink {
-  margin-top: -35px;
-  margin-left: 388px;
   font-family: 'Gilroy';
 }
 
-.productsdrp {
-  width: 309px;
-  margin-top: 8px;
-  margin-left: -2px;
+.productsdrp ng-select{
+  margin: 0px 40px 0 0;
 }
 
 .productci {
@@ -358,12 +326,6 @@ mat-form-field {
   font-family: 'Gilroy';
 }
 
-.identiersdrp {
-  width: 735px;
-  margin-top: 8px;
-  margin-left: -2px;
-
-}
 
 ::ng-deep.hide .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
    overflow: hidden;
@@ -376,10 +338,9 @@ mat-form-field {
 }
 
 .mat-slide {
-  margin-left: 620px;
-  color: black;
-  font-family: 'Gilroy';
-  margin-top: -1px;
+      color: black;
+      font-family: 'Gilroy';
+      text-align: right;
 }
 
 ::ng-deep.mat-slide .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
@@ -711,7 +672,7 @@ li {
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  width: 461px;
+  
   height: 35px;
   background-color: white;
   margin-top: -9px;
@@ -732,10 +693,10 @@ li {
 }
 
 .brand-name {
-  width: 344px;
+  /* width: 344px; */
   height: 31px;
   background-color: white;
-  margin-top: 7px;
+  /* margin-top: 7px; */
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
@@ -746,11 +707,10 @@ li {
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  width: 324px;
+  /* width: 324px; */
   height: 31px;
   background-color: white;
-  margin-top: -35px;
-  margin-left: 393px;
+
   padding-left: 8px;
 }
 
@@ -758,10 +718,10 @@ li {
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  width: 344px;
+  
   height: 31px;
   background-color: white;
-  margin-top: 7px;
+  
   padding-left: 8px;
 }
 
@@ -769,23 +729,21 @@ li {
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  width: 324px;
+  
   padding-left: 8px;
   height: 31px;
   background-color: white;
-  margin-top: -35px;
-  margin-left: 393px;
 }
 
 .sort-placeh {
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  width: 324px;
+  
   height: 31px;
   background-color: white;
-  margin-top: -60px;
-  margin-left: 393px;
+  /* margin-top: -60px;
+  margin-left: 393px; */
   padding-left: 8px;
 }
 
@@ -793,11 +751,10 @@ li {
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  width: 324px;
+  
   height: 31px;
   background-color: white;
-  margin-top: -61px;
-  margin-left: 393px;
+  
   padding-left: 8px;
 }
 
@@ -833,7 +790,7 @@ li {
 .materialDesc {
   border: 1px solid !important;
   border-radius: 10px;
-  width: 281px;
+  /* width: 281px; */
   height: 126px;
   background-color: white;
   margin-top: 6px;
@@ -843,36 +800,34 @@ li {
 .imagePl {
   border: 1px solid !important;
   border-radius: 8px;
-  width: 146px;
   height: 129px;
   background-color: white;
-  margin-top: -130px;
-  margin-left: 314px;
+  display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .na-placeholder {
   border: 1px solid !important;
   border-radius: 10px;
-  width: 190px;
-  padding-left: 10px;
+  /* width: 190px; */
+  /* padding-left: 10px; */
   height: 32px;
   background-color: white;
-  margin-top: 4px;
-  margin-left: 503px
+  padding: 0 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    /* box-sizing: border-box; */
 }
-
 .stepperHeader-p {
   color: #000000;
   font-size: 20px;
   font-weight: lighter;
   font-family: 'Gilroy';
-  margin-top: -25px;
 }
 
 .imagePlus {
   width: 22px;
-  margin-left: 316px;
-  margin-top: -67px;
 }
 
 .matcardscroll {

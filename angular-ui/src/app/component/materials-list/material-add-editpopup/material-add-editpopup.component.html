@@ -18,80 +18,105 @@
                 <h6 class="stepperHeader-b"><b>Basic
                     Information</b></h6>
               </div>
-              <div class="category">
-                <label>Category<span>*</span></label>
-              </div>
-              <div class="sub-category">
-                <label>Sub-Category<span>*</span></label>
-              </div>
-              <div class="type">
-                <label>Type<span>*</span></label>
-              </div>
-              <div class="categorydrp">
-                <ng-select [items]="catgname" required [virtualScroll]="true" bindLabel="catName" bindValue="catId"
-                  [searchable]="true" [clearable]="false" placeholder="Search & select category"
-                  [(ngModel)]="selectedItems1" (change)="onItemSelect($event)">
-                </ng-select>
-              </div>
-              <div class="subcategorydrp">
-                <ng-select [items]="sub_category" required [virtualScroll]="true" bindLabel="subCatName"
-                  bindValue="subCatId" [searchable]="true" [clearable]="false"
-                  placeholder="search & select sub-category" [(ngModel)]="selectedItems2"
-                  (change)="onSubCategorySelect($event)">
-                </ng-select>
-              </div>
-              <div class="typedrp">
-                <ng-select [items]="typeI" required [virtualScroll]="true" bindLabel="typeName" bindValue="typeId"
-                  [searchable]="true" [clearable]="false" placeholder="Search & select type"
-                  [(ngModel)]="selectedItems3" (change)="onTypeSelect($event)">
-                </ng-select>
-              </div>
-              <br>
-              <div class="mat-align">
-                <div class="materialname">
-                  <label>Name <span>*</span></label>
-                </div>
-                <div class="uomp">
-                  <label>UOM <span>*</span></label>
 
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="">
+                    <label>Category<span>*</span></label>
+                    <div class="categorydrp">
+                      <ng-select [items]="catgname" required [virtualScroll]="true" bindLabel="catName"
+                        bindValue="catId" [searchable]="true" [clearable]="false" placeholder="Search & select category"
+                        [(ngModel)]="selectedItems1" (change)="onItemSelect($event)">
+                      </ng-select>
+                    </div>
+                  </div>
                 </div>
-                <mat-form-field>
-                  <input (keyup)="onKey($event)" matInput placeholder="Enter the name of material" #input
-                    class="form-control container materialname-placeholder">
-                </mat-form-field>
-                <div class="uomdrp">
-                  <ng-select [items]="rowData5" [virtualScroll]="true" bindLabel="uoMShortName" bindValue="uoMId"
-                    [searchable]="true" [clearable]="false" placeholder="Search & select measuring unit"
-                    [(ngModel)]="selectedItems4" (change)="onUomSelect($event)">
-                  </ng-select>
+                <div class="col-md-4">
+                  <div class="">
+                    <label>Sub-Category<span>*</span></label>
+                    <div class="subcategorydrp">
+                      <ng-select [items]="sub_category" required [virtualScroll]="true" bindLabel="subCatName"
+                        bindValue="subCatId" [searchable]="true" [clearable]="false"
+                        placeholder="search & select sub-category" [(ngModel)]="selectedItems2"
+                        (change)="onSubCategorySelect($event)">
+                      </ng-select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+
+                  <div class="type">
+                    <label>Type<span>*</span></label>
+                    <div class="typedrp">
+                      <ng-select [items]="typeI" required [virtualScroll]="true" bindLabel="typeName" bindValue="typeId"
+                        [searchable]="true" [clearable]="false" placeholder="Search & select type"
+                        [(ngModel)]="selectedItems3" (change)="onTypeSelect($event)">
+                      </ng-select>
+                    </div>
+                  </div>
                 </div>
 
-                <div class="description">
-                  <label>Description <span>*</span></label>
+                <div class="col-md-8">
+                  <div class="materialname">
+                    <label>Name <span>*</span></label>
+                  </div>
+                  <mat-form-field>
+                    <input (keyup)="onKey($event)" matInput placeholder="Enter the name of material" #input
+                      class="form-control container materialname-placeholder">
+                  </mat-form-field>
                 </div>
-                <div class="imageofm">
-                  <label>Image of Material <span>*</span></label>
+                <div class="col-md-4">
+                  <div class="uomp">
+                    <label>UOM <span>*</span></label>
+                  </div>
+                  <div class="uomdrp">
+                    <ng-select [items]="rowData5" [virtualScroll]="true" bindLabel="uoMShortName" bindValue="uoMId"
+                      [searchable]="true" [clearable]="false" placeholder="Search & select measuring unit"
+                      [(ngModel)]="selectedItems4" (change)="onUomSelect($event)">
+                    </ng-select>
+                  </div>
                 </div>
-                <div class="materialci">
-                  <label> Material Custom Identifiers <span>*</span></label>
+
+
+
+                <div class="col-md-4">
+                  <div class="description">
+                    <label>Description <span>*</span></label>
+                  </div>
+                  <input (keyup)="onKeyDesc($event)" matInput placeholder="Describe the material" #input
+                    class="form-control container materialDesc" id="abc">
                 </div>
-                <input (keyup)="onKeyDesc($event)" matInput placeholder="Describe the material" #input
-                  class="form-control container materialDesc" id="abc">
-                <div placeholder="" #input class="form-control container imagePl">
-                  <img src="assets/img/add-image.png" class="add-img" alt="add-image=btn">
+                <div class="col-md-4">
+                  <div class="imageofm">
+                    <label>Image of Material <span>*</span></label>
+                  </div>
+                  <div placeholder="" #input class="form-control container imagePl">
+                    <img src="assets/img/add-image.png" class="add-img" alt="add-image=btn">
+                  </div>
                 </div>
-                <div class="customidentifier hide" (click)="selectProduct()">
-                  <ng-select [items]="selectedItems5" [virtualScroll]="true" bindLabel="materialCustomName"
-                    bindValue="materilCustomIdentifierId" [searchable]="true" [clearable]="true"
-                    placeholder="Select Identifier" [(ngModel)]="selectedItems5">
-                  </ng-select>
+                <div class="col-md-4">
+                  <div class="materialci">
+                    <label> Material Custom Identifiers <span>*</span></label>
+                  </div>
+                  <div class="customidentifier hide" (click)="selectProduct()">
+                    <ng-select [items]="selectedItems5" [virtualScroll]="true" bindLabel="materialCustomName"
+                      bindValue="materilCustomIdentifierId" [searchable]="true" [clearable]="true"
+                      placeholder="Select Identifier" [(ngModel)]="selectedItems5">
+                    </ng-select>
+                  </div>
+
+                  <div class="expiryperiod">
+                    <label> Expiry Period (in months)<span>*</span></label>
+                  </div>
+                  <input (keyup)="onKeyExpry($event)" matInput placeholder="NA" #input
+                    class="form-control container na-placeholder">
+
+
                 </div>
-                <div class="expiryperiod">
-                  <label> Expiry Period (in months)<span>*</span></label>
-                </div>
-                <input (keyup)="onKeyExpry($event)" matInput placeholder="NA" #input
-                  class="form-control container na-placeholder">
+
               </div>
+
+
             </form>
           </mat-step>
 
@@ -99,160 +124,191 @@
             <form [formGroup]="secondFormGroup">
 
               <ng-template matStepLabel>Product Information</ng-template>
-              <div class="mat-slide">
-                <mat-slide-toggle>Is a product?</mat-slide-toggle>
-              </div>
-              <div class="productcont">
-                <div class="heading">
-                  <h6 class="stepperHeader-p">
-                    <b>Product Information</b>
-                  </h6>
+
+
+
+              <div class="row">
+
+
+                <div class="col-md-6">
+                  <div class="heading">
+                    <h6 class="stepperHeader-p">
+                      <b>Product Information</b>
+                    </h6>
+                  </div>
                 </div>
-                <div class="brandname">
-                  <label>Brand Name<span>*</span></label>
+                <div class="col-md-6">
+                  <div class="mat-slide">
+                    <mat-slide-toggle>Is a product?</mat-slide-toggle>
+                  </div>
                 </div>
-                <div class="globalcode">
-                  <label>Global Code<span>*</span></label>
+                <div class="col-md-6">
+                  <div class="brandname">
+                    <label>Brand Name<span>*</span></label>
+                  </div>
+                  <input required (keyup)="onKeyBrand($event)" matInput placeholder="Enter the name of brand" #input
+                    class="form-control container brand-name">
                 </div>
-                <input required (keyup)="onKeyBrand($event)" matInput placeholder="Enter the name of brand" #input
-                  class="form-control container brand-name">
-                <input required (keyup)="onKeyGloabal($event)" matInput placeholder="Enter product global code" #input
-                  class="form-control container global-codeplaceholder">
-                <div class="sku">
-                  <label>SKU<span>*</span></label>
+                <div class="col-md-6">
+                  <div class="globalcode">
+                    <label>Global Code<span>*</span></label>
+                  </div>
+                  <input required (keyup)="onKeyGloabal($event)" matInput placeholder="Enter product global code" #input
+                    class="form-control container global-codeplaceholder">
                 </div>
-                <div class="shortcode">
-                  <label>Short Code<span>*</span></label>
+                <div class="col-md-6">
+                  <div class="sku">
+                    <label>SKU<span>*</span></label>
+                  </div>
+                  <input required (keyup)="onKeySKU($event)" matInput placeholder="Enter SKU" #input
+                    class="form-control container sku-placeholder">
                 </div>
-                <input required (keyup)="onKeySKU($event)" matInput placeholder="Enter SKU" #input
-                  class="form-control container sku-placeholder">
-                <input required (keyup)="onKeyShortCode($event)" matInput placeholder="Enter product short code" #input
-                  class="form-control container shortcode-placeholder">
-                <div class="productg">
-                  <label>Product Group<span>*</span></label>
+                <div class="col-md-6">
+
+                  <div class="shortcode">
+                    <label>Short Code<span>*</span></label>
+                  </div>
+
+                  <input required (keyup)="onKeyShortCode($event)" matInput placeholder="Enter product short code"
+                    #input class="form-control container shortcode-placeholder">
                 </div>
-                <div class="manualsort">
-                  <label>Manual Sort Order<span>*</span></label>
+                <div class="col-md-6">
+                  <div class="productg">
+                    <label>Product Group<span>*</span></label>
+                  </div>
+                  <div class="productdrp productg-align arrowHide">
+                    <ng-select [items]="productList" [virtualScroll]="true" bindLabel="productGroupName"
+                      bindValue="productGroupId" [searchable]="true" [clearable]="false"
+                      placeholder="Search & select group" [(ngModel)]="selectedItems6"
+                      (change)="onProductSelect($event)">
+                    </ng-select>
+                    <img src="assets/img/plus.png" style="width: 22px;position: absolute;right: 20px;bottom: 5px;"
+                      alt="plus-btn" (click)="addproduct()">
+                  </div>
                 </div>
-                <div class="productdrp productg-align arrowHide">
-                  <ng-select [items]="productList" [virtualScroll]="true" bindLabel="productGroupName"
-                    bindValue="productGroupId" [searchable]="true" [clearable]="false"
-                    placeholder="Search & select group" [(ngModel)]="selectedItems6" (change)="onProductSelect($event)">
-                  </ng-select>
+                <div class="col-md-6">
+                  <div class="manualsort">
+                    <label>Manual Sort Order<span>*</span></label>
+                  </div>
+                  <input required (keyup)="onKeySort($event)" matInput placeholder="Enter the sort order" #input
+                    class="form-control container sort-placeh">
                 </div>
-                <img src="assets/img/plus.png" style="width: 22px;margin-left: 316px;margin-top: -67px;" alt="plus-btn"
-                  (click)="addproduct()">
-                <input required (keyup)="onKeySort($event)" matInput placeholder="Enter the sort order" #input
-                  class="form-control container sort-placeh">
-                <div class="productsg">
-                  <label>Product Sub-group<span>*</span></label>
+                <div class="col-md-6">
+                  <div class="productsg">
+                    <label>Product Sub-group<span>*</span></label>
+                  </div>
+                  <div class="productsdrp productg-align arrowHide">
+                    <ng-select [items]="subProduct" [virtualScroll]="true" bindLabel="productGroupName"
+                      bindValue="productGroupId" [searchable]="true" [clearable]="false"
+                      placeholder="Search & select sub-group" [(ngModel)]="selectedItems7"
+                      (change)="onSubProductSelect($event)">
+                    </ng-select>
+                  </div>
+                  <div class="image">
+                    <img src="assets/img/plus.png" class="imagePlus" style="width: 22px;position: absolute;right: 20px;bottom: 5px;" alt="plus-btn" (click)="addproductsubgroup()">
+                  </div>
                 </div>
-                <div class="productlink">
-                  <label>Product Link<span>*</span></label>
-                </div>
-                <div class="productsdrp productg-align arrowHide">
-                  <ng-select [items]="subProduct" [virtualScroll]="true" bindLabel="productGroupName"
-                    bindValue="productGroupId" [searchable]="true" [clearable]="false"
-                    placeholder="Search & select sub-group" [(ngModel)]="selectedItems7"
-                    (change)="onSubProductSelect($event)">
-                  </ng-select>
-                </div>
-                <div class="image">
-                  <img src="assets/img/plus.png" class="imagePlus" alt="plus-btn" (click)="addproductsubgroup()">
+
+                <div class="col-md-6">
+                  <div class="productlink">
+                    <label>Product Link<span>*</span></label>
+                  </div>
+
                   <input required (keyup)="onKeyAddSP($event)" matInput placeholder="Paste the link" #input
                     class="form-control container link-placeh">
                 </div>
-                <div class="productci">
-                  <label>Product Custom Identifier<span>*</span></label>
+
+                <div class="col-md-12">
+                  <div class="productci">
+                    <label>Product Custom Identifier<span>*</span></label>
+                  </div>
+                  <div class="identiersdrp hide" (click)="customIdentifier()">
+                    <ng-multiselect-dropdown name="type" [placeholder]="'Select the identifiers'" formControlName="type"
+                      [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList3">
+                    </ng-multiselect-dropdown>
+                  </div>
                 </div>
-                <div class="identiersdrp hide" (click)="customIdentifier()">
-                  <ng-multiselect-dropdown name="type" [placeholder]="'Select the identifiers'" formControlName="type"
-                    [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList3">
-                  </ng-multiselect-dropdown>
-                </div>
-                <br>
-                <br>
               </div>
             </form>
           </mat-step>
 
           <mat-step class="geoo">
             <ng-template matStepLabel>Geographies & Properties</ng-template>
-            <div class="geography" style="width: 800px;">
+            <div class="geography">
               <div class="heading">
                 <h6 class="stepperHeader-b">
                   <b>Geographies</b>
                 </h6>
               </div>
               <div class="material-card row">
-                  <div class="col-sm-4">
+                <div class="col-sm-3">
 
-                    <div class="row">
-                      <p class="col-10 font">Country</p>
-                      <p class="col-2"></p>
-                    </div>
-                    <mat-card class="mat-card-content ">
-                      <mat-card-content class="matcardscroll">
-                        <div class=" d-flex " *ngFor="let catg of countryList">
-                          <p class="col-10 catg" (click)="getStateList(catg.countryId)"
-                            [ngClass]="{ 'selected': catg.countryId == selectedItem }" (click)="onClick(catg)">
-                            {{catg.countryName}}</p>
+                  <div class="row">
+                    <p class="col-10 font">Country</p>
+                    <p class="col-2"></p>
+                  </div>
+                  <mat-card class="mat-card-content ">
+                    <mat-card-content class="matcardscroll">
+                      <div class=" d-flex " *ngFor="let catg of countryList">
+                        <p class="col-10 catg" (click)="getStateList(catg.countryId)"
+                          [ngClass]="{ 'selected': catg.countryId == selectedItem }" (click)="onClick(catg)">
+                          {{catg.countryName}}</p>
+                      </div>
+                      <div class="buttn d-flex" *ngIf=addButton>
+                        <div class="col-10">
+                          <button class="btn btn-basic addcat">Add category name</button>
+                          <button class="btn btn-basic addcode">Add code</button>
                         </div>
-                        <div class="buttn d-flex" *ngIf=addButton>
-                          <div class="col-10">
-                            <button class="btn btn-basic addcat">Add category name</button>
-                            <button class="btn btn-basic addcode">Add code</button>
-                          </div>
-                        </div>
-                      </mat-card-content>
+                      </div>
+                    </mat-card-content>
 
-                    </mat-card>
+                  </mat-card>
+                </div>
+                <div class="col-sm-3">
+                  <div class="row">
+                    <p class="col-10 font">State</p>
+                    <p class="col-2"></p>
                   </div>
-                  <div class="col-sm-4">
-                    <div class="row">
-                      <p class="col-10 font">State</p>
-                      <p class="col-2"></p>
-                    </div>
-                    <mat-card class="mat-card-content1">
-                      <mat-card-content class="matcardscroll">
-                        <div class=" d-flex" *ngFor="let subc of stateList">
-                          <p class="col-10 subc" [ngClass]="{ 'subselected': subc.geographyId == stateselectedItem }"
-                            (click)="onClick(subc)">{{subc.geographyName}}</p>
-                        </div>
-                      </mat-card-content>
-                    </mat-card>
+                  <mat-card class="mat-card-content1">
+                    <mat-card-content class="matcardscroll">
+                      <div class=" d-flex" *ngFor="let subc of stateList">
+                        <p class="col-10 subc" [ngClass]="{ 'subselected': subc.geographyId == stateselectedItem }"
+                          (click)="onClick(subc)">{{subc.geographyName}}</p>
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+                <div class="col-sm-3">
+                  <div class="row">
+                    <p class="col-10 font">District</p>
+                    <p class="col-2"> </p>
                   </div>
-                  <div class="col-sm-4">
-                    <div class="row">
-                      <p class="col-10 font">District</p>
-                      <p class="col-2"> </p>
-                    </div>
-                    <mat-card class="mat-card-content2">
-                      <mat-card-content class="matcardscroll">
-                        <div class=" d-flex" *ngFor="let type of distList">
-                          <p class="col-10 typeg" (click)="onClick(type)"
-                            [ngClass]="{ 'typeselected': type.geographyId == distselectedItem }">{{type.geographyName}}
-                          </p>
-                        </div>
-                      </mat-card-content>
-                    </mat-card>
+                  <mat-card class="mat-card-content2">
+                    <mat-card-content class="matcardscroll">
+                      <div class=" d-flex" *ngFor="let type of distList">
+                        <p class="col-10 typeg" (click)="onClick(type)"
+                          [ngClass]="{ 'typeselected': type.geographyId == distselectedItem }">{{type.geographyName}}
+                        </p>
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
 
+                </div>
+                <div class="col-sm-3">
+                  <div class="row">
+                    <p class="col-10 font">City</p>
+                    <p class="col-2"> </p>
                   </div>
-                  <div class="col-sm-4">
-                    <div class="row">
-                      <p class="col-10 font">City</p>
-                      <p class="col-2"> </p>
-                    </div>
-                    <mat-card class="mat-card-content3 ">
-                      <mat-card-content class="matcardscroll">
-                        <div class=" d-flex" *ngFor="let type of cityList">
-                          <p class="col-10 typeg" (click)="onClick(type)"
-                            [ngClass]="{ 'cityselected': type == citySelectedItem }">{{type.geographyName}}</p>
-                        </div>
-                      </mat-card-content>
-                    </mat-card>
+                  <mat-card class="mat-card-content3 ">
+                    <mat-card-content class="matcardscroll">
+                      <div class=" d-flex" *ngFor="let type of cityList">
+                        <p class="col-10 typeg" (click)="onClick(type)"
+                          [ngClass]="{ 'cityselected': type == citySelectedItem }">{{type.geographyName}}</p>
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
 
-                  </div>
+                </div>
               </div>
               <div class="heading">
                 <h6 class="stepperHeader-b"><b>Properties</b>

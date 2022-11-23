@@ -4,6 +4,28 @@
   margin-top: 50px;
 }
 
+
+.horizontal-scroll {
+  display: flex;
+  gap: 10px;
+  height: 450px;
+  overflow-x: auto;
+  /* -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
+  scrollbar-width: none; */
+}
+/* .horizontal-scroll::-webkit-scrollbar {
+  display: none;
+} */
+.horizontal-scroll__item {
+  /* border: 1px solid black; */
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+}
+
+.grid-heading{
+  padding: 0 20px;
+}
 .geo-classification-crad
 {
 

@@ -8,7 +8,7 @@ import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 })
 export class ClassificationserviseService {
 
-  
+
   classificationurl = environment.url;
 
 
@@ -18,135 +18,144 @@ export class ClassificationserviseService {
   intercept(req: HttpRequest<any>,
     next: HttpHandler): Observable<HttpEvent<any>> {
 
-const idToken = localStorage.getItem("token");
-debugger
-console.log('idtoken',idToken)
-alert(idToken)
+    const idToken = localStorage.getItem("token");
+    debugger
+    console.log('idtoken', idToken)
+    alert(idToken)
 
-if (idToken) {
-  const cloned = req.clone({
-      headers: req.headers.set("Authorization",
+    if (idToken) {
+      const cloned = req.clone({
+        headers: req.headers.set("Authorization",
           "Bearer " + idToken)
-  });
+      });
 
-  return next.handle(cloned);
-}
-else {
-  return next.handle(req);
-}
-}
-
-
-
-getclassification(){
-  return this.http.get<any>(this.classificationurl + 'MaterialApi/GetCategories');
-
-}
-onclickcat(catId:any){
-  return this.http.get<any>(`${this.classificationurl}MaterialApi/GetSUbCAts?catid=${catId}`);
-
-}
-
-onclicksubcat(catId:any){
-  return this.http.get<any>(`${this.classificationurl}MaterialApi/GetTypes?subCatId=${catId}`);
-
-}
-
-addCatagory(data){
-  return this.http.post<any>(this.classificationurl + 'MaterialApi/AddCategory', data);
-  
-}
-addsubCatagory(data){
-  return this.http.post<any>(this.classificationurl + 'MaterialApi/AddsubCategory', data);
-  
-}
-addtypes(data){
-  return this.http.post<any>(this.classificationurl + 'MaterialApi/Addstocktype', data);
-
-}
-deletecatagory(data){
-  return this.http.get<any>(`${this.classificationurl}MaterialApi/DeleteCategory?CategoryId=${data}`)
-
-}
-
-daleteSubcatagory(data){
-  return this.http.get<any>(`${this.classificationurl}MaterialApi/DeletesubCategory?subCategoryId=${data}`)
-
-  // return this.http.post<any>(this.classificationurl + 'MaterialApi/DeletesubCategory', data);
-
-}
+      return next.handle(cloned);
+    }
+    else {
+      return next.handle(req);
+    }
+  }
 
 
-deleteType(data){
-  return this.http.get<any>(`${this.classificationurl}MaterialApi/Deletetype?typeId=${data}`)
 
-  // return this.http.post<any>(this.classificationurl + 'MaterialApi/Deletetype', data);
+  getclassification() {
+    return this.http.get<any>(this.classificationurl + 'MaterialApi/GetCategories');
 
+  }
+  onclickcat(catId: any) {
+    return this.http.get<any>(`${this.classificationurl}MaterialApi/GetSUbCAts?catid=${catId}`);
 
-}
+  }
 
-//geoGraphies services
+  onclicksubcat(catId: any) {
+    return this.http.get<any>(`${this.classificationurl}MaterialApi/GetTypes?subCatId=${catId}`);
 
-//get country list
-getCountryList(){
-  return this.http.get<any>(this.classificationurl + 'OtherMasterApi/GetAllCountries');
-}
+  }
 
-//getstatelist
-getAllListByCountry(id:any){
-  return this.http.get<any>(this.classificationurl + 'OtherMasterApi/GetGeographies?id='+id);
-}
+  addCatagory(data) {
+    return this.http.post<any>(this.classificationurl + 'MaterialApi/AddCategory', data);
 
-//delete geographies List
+  }
+  addsubCatagory(data) {
+    return this.http.post<any>(this.classificationurl + 'MaterialApi/AddsubCategory', data);
 
-getDeleteListByCountry(id:any){
-  return this.http.get<any>(this.classificationurl + 'OtherMasterApi/DeleteGeography?id='+ id);
-}
+  }
+  addtypes(data) {
+    return this.http.post<any>(this.classificationurl + 'MaterialApi/Addstocktype', data);
 
-//add country name 
-addCountryName(data:any){
-  return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddCountry', data);
-}
+  }
+  deletecatagory(data) {
+    return this.http.get<any>(`${this.classificationurl}MaterialApi/DeleteCategory?CategoryId=${data}`)
 
-//add country name 
-addStateName(data:any){
-  return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddState', data);
-}
+  }
 
-//add dist name
-addDistName(data:any){
-  return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddDistrict', data);
-}
+  daleteSubcatagory(data) {
+    return this.http.get<any>(`${this.classificationurl}MaterialApi/DeletesubCategory?subCategoryId=${data}`)
 
-//add city name
-addCityName(data:any){
-  return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddCity', data);
-}
+    // return this.http.post<any>(this.classificationurl + 'MaterialApi/DeletesubCategory', data);
+
+  }
 
 
-//add city name
-addZoneName(data:any){
-  return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddZone', data);
-}
+  deleteType(data) {
+    return this.http.get<any>(`${this.classificationurl}MaterialApi/Deletetype?typeId=${data}`)
 
-//add city name
-addRegionAreaName(data:any){
-  return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddArea', data);
-}
+    // return this.http.post<any>(this.classificationurl + 'MaterialApi/Deletetype', data);
 
-//add city name
-AddSubArea(data:any){
-  return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddSubArea', data);
-}
 
-//add dealer data
-addDealerData(data:any){
-  return this.http.post<any>(this.classificationurl + 'DealerApi/AddDealer', data);
-}
-editDealerData(id){
-  return this.http.get<any>(this.classificationurl + 'OtherMasterApi/GetDealersToEdit?CustomerId='+ id);
+  }
 
-}
+  //geoGraphies services
+
+
+  getGeographyHierarchy() {
+    return this.http.get<any>(this.classificationurl + 'OtherMasterApi/GetGeographyHierarchy');
+  }
+
+  getGeographiesById(id) {
+    let parmeter = id ? "?id=" + id : "";
+    return this.http.get<any>(this.classificationurl + 'OtherMasterApi/GetGeographies' + parmeter);
+  }
+  //get country list
+  getCountryList() {
+    return this.http.get<any>(this.classificationurl + 'OtherMasterApi/GetAllCountries');
+  }
+
+  //getstatelist
+  getAllListByCountry(id: any) {
+    return this.http.get<any>(this.classificationurl + 'OtherMasterApi/GetGeographies?id=' + id);
+  }
+
+  //delete geographies List
+
+  getDeleteListByCountry(id: any) {
+    return this.http.get<any>(this.classificationurl + 'OtherMasterApi/DeleteGeography?id=' + id);
+  }
+
+  //add country name 
+  addCountryName(data: any) {
+    return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddCountry', data);
+  }
+
+  //add country name 
+  addStateName(data: any) {
+    return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddState', data);
+  }
+
+  //add dist name
+  addDistName(data: any) {
+    return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddDistrict', data);
+  }
+
+  //add city name
+  addCityName(data: any) {
+    return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddCity', data);
+  }
+
+
+  //add city name
+  addZoneName(data: any) {
+    return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddZone', data);
+  }
+
+  //add city name
+  addRegionAreaName(data: any) {
+    return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddArea', data);
+  }
+
+  //add city name
+  AddSubArea(data: any) {
+    return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddSubArea', data);
+  }
+
+  //add dealer data
+  addDealerData(data: any) {
+    return this.http.post<any>(this.classificationurl + 'DealerApi/AddDealer', data);
+  }
+  editDealerData(id) {
+    return this.http.get<any>(this.classificationurl + 'OtherMasterApi/GetDealersToEdit?CustomerId=' + id);
+
+  }
 
 
 

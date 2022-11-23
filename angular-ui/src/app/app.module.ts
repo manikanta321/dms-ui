@@ -146,6 +146,7 @@ import { BulkEditAssosiationComponent } from './component/bulk-edit-assosiation/
 import { SalesBulkUploadComponent } from './component/sales-bulk-upload/sales-bulk-upload.component';
 import { AddPromotionGeographiesComponent } from './component/add-promotions/add-promotion-geographies/add-promotion-geographies.component';
 import { DealerTargetComponent } from './component/dealer-target/dealer-target.component';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -297,7 +298,8 @@ import { DealerTargetComponent } from './component/dealer-target/dealer-target.c
     NgbModule ,
     NgbDatepickerModule,
     MatAutocompleteModule,
-    NgxDaterangepickerMd.forRoot()
+    NgxDaterangepickerMd.forRoot(),
+    NgxSpinnerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

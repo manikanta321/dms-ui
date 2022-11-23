@@ -76,15 +76,22 @@
                     </ng-select>
                   </div>
                 </div>
-                <input (keyup)="onKeyDesc($event)" matInput placeholder="Describe the material" #input
-                  class="form-control container materialDesc" id="abc">
-                <div placeholder="" #input class="form-control container imagePl">
-                  <img src="../../../../assets/img/down13.png" class="add-img" alt="add-image=btn" width="60px" height="60px">
+                <div class="col-md-4">
+                  <div class="description">
+                    <label>Description <span>*</span></label>
+                  </div>
+                  <input (keyup)="onKeyDesc($event)" matInput placeholder="Describe the material" #input
+                    class="form-control container materialDesc" id="abc">
+                 
                 </div>
                 <div class="col-md-4">
                   <div class="imageofm">
                     <label>Image of Material <span>*</span></label>
                   </div>
+                   <!-- <div placeholder="" #input class="form-control container imagePl">
+                    <img src="../../../../assets/img/down13.png" class="add-img" alt="add-image=btn" width="60px"
+                      height="60px">
+                  </div> -->
                   <div placeholder="" #input class="form-control container imagePl">
                     <img src="assets/img/add-image.png" class="add-img" alt="add-image=btn">
                   </div>
@@ -200,7 +207,9 @@
                     </ng-select>
                   </div>
                   <div class="image">
-                    <img src="assets/img/plus.png" class="imagePlus" style="width: 22px;position: absolute;right: 20px;bottom: 5px;" alt="plus-btn" (click)="addproductsubgroup()">
+                    <img src="assets/img/plus.png" class="imagePlus"
+                      style="width: 22px;position: absolute;right: 20px;bottom: 5px;" alt="plus-btn"
+                      (click)="addproductsubgroup()">
                   </div>
                 </div>
 

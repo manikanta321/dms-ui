@@ -105,4 +105,8 @@ export class PswResetPopupComponent implements OnInit {
     }
   }
   
+
+  closeDialog(){
+    this.dialogRef.close();
+  }
 }

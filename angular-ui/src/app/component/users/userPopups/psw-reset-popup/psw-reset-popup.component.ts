@@ -20,6 +20,9 @@ export class PswResetPopupComponent implements OnInit {
   LoginId:any;
   adminPassword:boolean =false;
   showPassword: boolean = false;
+  showre_Password: boolean = false;
+  showoldPassword: boolean = false;
+
   constructor( private dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
     private user:UserService,
@@ -52,6 +55,21 @@ export class PswResetPopupComponent implements OnInit {
       this.adminPassword =false;
     }
   }
+  public PasswordVisibilityLatest(): void {
+    this.showPassword = !this.showPassword;
+  }
+  public PasswordVisibilityreenter(): void {
+    this.showre_Password = !this.showre_Password;
+  }
+  public PasswordVisibilityold(): void {
+    this.showoldPassword = !this.showoldPassword;
+  }
+  
+  
+
+
+  
+
 
   changeUserPassword(){
     if(this.latestPassword==this.relatestpassword){

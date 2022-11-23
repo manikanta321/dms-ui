@@ -83,3 +83,10 @@ top: -10px;
     padding: 16px !important;
     padding-top: 2px !important;
 }
+mat-icon {
+    color: grey;
+    position: relative;
+    right: 30px;
+    top: 8px;
+    font-size: 21px;
+  }

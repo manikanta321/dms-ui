@@ -11,15 +11,20 @@
             </div>
             <label>Latest password <span style="color: red;">*</span></label><br>
             <input type="password" id="password" placeholder="Enter your password (at least 8 ch)" name="password"
-                [type]="hide ? 'password' 
-          : 'text'" [(ngModel)]="enterfirst" required>
+            [type]="showPassword ? 'text': 'password'" [(ngModel)]="enterfirst" required>
+          <mat-icon matSuffix (click)="PasswordVisibilityLatest()">
+            {{showPassword?'visibility_off':'visibility'}}
+          </mat-icon>
             <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 
             'visibility_off'}}</mat-icon> -->
 
             <br>
             <label>Re-enter password <span style="color: red;">*</span></label><br>
-            <input type="text" placeholder="Re-enter your new password (at least 8 ch)" [type]="hide ? 
-              'password' : 'text'" [(ngModel)]="entersecond">
+            <input type="text" placeholder="Re-enter your new password (at least 8 ch)"
+            [type]="showre_Password ? 'text': 'password'" [(ngModel)]="entersecond">
+            <mat-icon matSuffix (click)="PasswordVisibilityreenter()">
+                {{showre_Password?'visibility_off':'visibility'}}
+              </mat-icon>
             <p style="color: red;position: relative;position: relative;padding: 0px;height: 0px;top: -6px;">{{error}}
             </p>
             <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 
@@ -45,24 +50,34 @@
                 <h1>Old password</h1>
             </div>
             <label>current password <span style="color: red;">*</span></label><br>
-            <input type="text" id=" oldPassword" placeholder="Enter your old  password (at least 8 ch)"
-                name="oldPassword" [(ngModel)]="oldPassword" required><br><br>
+            <input type="password" id=" oldPassword" placeholder="Enter your old  password (at least 8 ch)"
+            [type]="showoldPassword? 'text': 'password'"  name="oldPassword" [(ngModel)]="oldPassword" required>
+            <mat-icon matSuffix (click)="PasswordVisibilityold()">
+                {{showoldPassword?'visibility_off':'visibility'}}
+            </mat-icon>
+            <br><br>
 
             <div class="newspass">
                 <h1>New password</h1>
             </div>
             <label>Latest password <span style="color: red;">*</span></label><br>
             <input type="password" id="latestPassword" placeholder="Enter your password (at least 8 ch)"
-             name="latestPassword" [(ngModel)]="latestPassword" required>
-
+            [type]="showPassword? 'text': 'password'" name="latestPassword" [(ngModel)]="latestPassword" required>
+            <mat-icon matSuffix (click)="PasswordVisibilityLatest()">
+                {{showPassword?'visibility_off':'visibility'}}
+              </mat-icon>
             <br>
 
             <label>Re-enter password <span style="color: red;">*</span></label><br>
             <input type="password"  id="relatestpassword" placeholder="Re-enter your new password (at least 8 ch)" 
-            name="relatestpassword" [(ngModel)]="relatestpassword">
+            [type]="showre_Password? 'text': 'password'" name="relatestpassword" [(ngModel)]="relatestpassword">
+            <mat-icon matSuffix (click)="PasswordVisibilityreenter()">
+                {{showre_Password?'visibility_off':'visibility'}}
+              </mat-icon>
             <p style="color: red;position: relative;position: relative;padding: 0px;height: 0px;top: -6px;">{{error}}
             </p>
             <br>
+
             <button class="update-btn" (click)="changeUserPassword()">Update Password</button>
             <button class="cancel-btn">Cancel</button>
         </div>

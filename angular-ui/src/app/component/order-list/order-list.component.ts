@@ -627,6 +627,7 @@ export class OrderListComponent implements OnInit {
   });
 }
 orderUpload(){
+  
   sessionStorage.setItem('sales','');
   this.dialog.open(SalesBulkUploadComponent);
 }

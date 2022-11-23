@@ -35,7 +35,26 @@
                         </div>
                         
                     </div>
-
+<!-- geography -->
+<div class="row heading">
+  <h5 class="geo-head">Geographies</h5>
+</div>
+<div class="row">
+  <div class="col-md-12 slctd-row">
+      <div class="row">
+          <div class="col-md-9 sltd-span">
+              <span class="selectedname" *ngIf="false">Selected Geogrphies</span>
+              <span class="selectedcolor" *ngIf="true">Malasia(3/4)</span>;
+              <span class="selectedclr2">India(15/15)</span>;
+              <span class="astr">Singpore(0/6)</span>;
+              <span class="selectedclr2">Japan(23/23)</span>
+          </div>
+          <div class="col-md-3">
+              <button class="slctd-geo-btn" (click)="geography()"> Selected Geographies</button>
+          </div>
+      </div>
+  </div>
+</div>
 
 <div *ngIf="screenValue==1">
     <label class="dealer-list">Dealers List</label>

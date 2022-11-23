@@ -124,6 +124,11 @@ public changepassword(data){
   return this.http.post<any>(this.userurl + 'UserMgmtApi/UpdatePasswordByAdmin', data);
 }
 
+public changePasswordByUser(userChangePasswordData){
+return this.http.post<any>(this.userurl +'UserMgmtApi/UpdatePassword',userChangePasswordData);
+// userId=215&currentPassword=Abc@123&newPassword=Abc@1233
+}
+
 public getcurrencylist(data){
   return this.http.post<any>(this.userurl + 'OtherMasterApi/GetCurrencyList', data);
 }

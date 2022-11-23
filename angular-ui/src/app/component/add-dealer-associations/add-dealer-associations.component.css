@@ -1298,3 +1298,36 @@ border-radius: 10px;
     right: 26px;
     top: 4px;
   }
+  .geo-head{
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+  }
+  .slctd-row{
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    height: 43px;
+    padding: 4px;
+  }
+  .sltd-span{
+    margin-top: 6px;
+  }
+  .selectedcolor{
+    color: #DBB802;
+  }
+  .selectedclr2{
+    color: #009B63;
+  }
+  .astr {
+    color: #FF0000;
+  }
+  .slctd-geo-btn{
+    background: #000000;
+  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  height: 33px;
+  color: white;
+  float: right;
+  }

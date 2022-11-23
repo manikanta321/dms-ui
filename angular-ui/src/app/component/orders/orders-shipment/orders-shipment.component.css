@@ -196,7 +196,7 @@
   left: 10px;
 }
 .searchButton {
-        display:bolck;
+        display:block;
         color: #FFFFFF;
         width: 37px;
         height: 37px;
@@ -224,15 +224,19 @@
       .searchBox:hover >.searchButton {
         display:block;
       }
+      .searchBox:hover>.searchButton {
+        /* right: 190px !important; */
+        background: transparent !important;
+      }
       .searchInput1{
         display: none;
       }
       .searchInput1 :hover{
         display: block;
       }
-      .searchBox:hover >.searchButton .material-icons {
+      .searchBox1:hover >.searchButton .material-icons {
         position: relative;    
-        right: 298px;
+        right: 282px;
         color:#000;
         top: 3px;
       }

@@ -1,19 +1,10 @@
-.filterSection {
-    margin-top: 3%;
-    display: inline-flex;
-    
-}
- .allicons{    
+
+ /* .allicons{    
         margin-bottom:10px;
     margin-left: 68%;
 
-}   
-
+}    */
 .searchInput1
-{
-    font-family: 'Gilroy';
-}
-.search-btn
 {
     font-family: 'Gilroy';
 }
@@ -76,19 +67,9 @@
     margin-left: -42px;
     margin-top: 1px;
 } */
-.input-icons i {
-    position: absolute;
 
-}
 ::ng-deep.weekday .weekdays{
     font-style: normal !important;
-}
-
-.input-icons {
-    width: 100%;
-    margin-bottom: 10px;
-    margin: 0 5px;
-
 }
 
 .icon {
@@ -261,49 +242,6 @@ input {
 ::ng-deep.btnhover1:hover {
     background: #000000 !important;
 }
-
-.searchButton {
-    display: bolck;
-    color: #FFFFFF;
-    float: left;
-    width: 37px;
-    height: 37px;
-    border-radius: 50%;
-    background: #000000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.2s;
-    border: none;
-}
-
-.searchBox1:hover>.searchButton,
-.searchBox1>.searchInput1,
-.search-btn {
-    display: none;
-}
-
-.searchBox1 {
-    float: right;
-    position: absolute;
-    left: 142%;
-    top: 45px;
-    cursor: pointer;
-}
-
-
-
-.searchBox1:hover>.searchButton {
-    display: block;
-}
-
-.searchBox1:hover>.searchButton .material-icons {
-    position: relative;
-    right: 298px;
-    color: #000;
-    top: 3px;
-}
-
 ::ng-deep.roless .multiselect-dropdown .dropdown-btn .selected-item {
     right: 6% !important;
 }
@@ -316,40 +254,6 @@ input {
     transform: rotate(180deg) !important;
 }
 
-.searchBox1:hover>.search-btn {
-    display: block;
-    height: 26px;
-    border: none;
-    background: #000000;
-    color: white;
-    border-radius: 5px;
-    position: absolute;
-    right: 10px;
-    top: 6px;
-}
-
-
-.searchBox1:hover>.searchInput1 {
-    display: block;
-    width: 335px;
-    height: 43px;
-    background: #FFFFFF;
-    float: left;
-    padding: 5px 32px 6px;
-    border-radius: 10px;
-    font-family: 'Gilroy';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 17px;
-    letter-spacing: 0.08em;
-    color: #263643;
-    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
-    /* // transition: 0.2s  ease-in-out; */
-    position: absolute;
-    right: 0px;
-    bottom: -3px;
-}
 
 .addU:before {
     width: 201px;
@@ -584,6 +488,12 @@ mat-sidenav-container {
     border-radius: 25px !important;
 
 }
+.ag-theme-material {
+    height: 350px;
+    border-radius: 20px;
+    background-color: white;
+    font-family: Gilroy;
+  }
 
 /* ::ng-deep.ag-root-wrapper {
     --ag-border: solid;
@@ -1052,3 +962,148 @@ mat-sidenav {
     font-size: 14px;
     font-weight: 900;
 }
+.listicon {
+    display: flex;
+    justify-content: end;
+    margin-right: 10px;
+  }
+  
+  .searchBox1 {
+    float: right;
+  }
+  .sales-add{
+    background: #000000;
+    border-radius: 50%;
+    width: 37px;
+    height: 37px;
+    margin-right: 10px;
+  }
+  .imgorder{
+    position: relative;
+    top: 8px;
+    left: 10px;
+  }
+  .sales-download{
+    background: #000000;
+    border-radius: 50%;
+    width: 37px;
+    height: 37px;
+    margin-right: 10px;
+  }
+  .dwnld-img{
+    position: relative;
+    top: 8px;
+    left: 10px;
+  }
+  .sales-upload{
+    background: #000000;
+    border-radius: 50%;
+    width: 37px;
+    height: 37px;
+    margin-right: 10px;
+  }
+  .imgupload{
+    position: relative;
+    top: 8px;
+    left: 10px;
+  }
+  .sales-dwnld{
+    background: #000000;
+    border-radius: 50%;
+    width: 37px;
+    height: 37px;
+  }
+  .imgdwnl{
+    position: relative;
+    top: 8px;
+    left: 10px;
+  }
+  .searchButton {
+          display:block;
+          color: #FFFFFF;
+          width: 37px;
+          height: 37px;
+          border-radius: 50%;
+          background: #000000;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: 0.2s;
+          border: none;
+        }
+  
+  .searchBox:hover >.searchButton,
+        .searchBox>.searchInput,
+        .search-btn {
+          display:none;
+        }
+  
+  /* .searchBox {
+          float:right;
+          position: absolute;
+        left: 94%;
+          top: 6px;
+        } */
+        .searchBox:hover >.searchButton {
+          display:block;
+        }
+        .searchBox:hover>.searchButton {
+          /* right: 190px !important; */
+          background: transparent !important;
+        }
+        .searchInput1{
+          display: none;
+        }
+        .searchInput1 :hover{
+          display: block;
+        }
+        .searchBox1:hover >.searchButton .material-icons {
+          position: relative;    
+          right: 282px;
+          color:#000;
+          top: 3px;
+        }
+        .searchBox:hover >.search-btn {
+          display:block;
+          height: 26px;
+          border: none;
+          background: #000000;
+          color: white;
+          border-radius: 5px;
+          position: absolute;
+          right: 10px;
+          top:84px;
+        }
+  
+        .searchBox1:hover>.search-btn {
+          display: block;
+          height: 26px;
+          border: none;
+          background: #000000;
+          color: white;
+          border-radius: 5px;
+          position: absolute;
+          right: 10px;
+          top: 6px;
+      }
+      .searchBox1:hover>.searchInput1 {
+          display: block;
+          width: 335px;
+          height: 43px;
+          background: #FFFFFF;
+          float: left;
+          padding: 5px 32px 6px;
+          border-radius: 10px;
+          font-family: 'Gilroy';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 17px;
+          letter-spacing: 0.08em;
+          color: #263643;
+          box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+          /* // transition: 0.2s  ease-in-out; */
+          position: absolute;
+          right: 0px;
+          bottom: -3px;
+      }

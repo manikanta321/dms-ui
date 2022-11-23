@@ -23,7 +23,7 @@ mat-sidenav-container {
 
 .edit-heading {
     position: relative;
-    font-family: 'Gilroy-Bold';
+    font-family: 'Gilroy';
     font-weight: bold;
     font-size: 30px;
     line-height: 41px;
@@ -34,29 +34,43 @@ mat-sidenav-container {
     left: 58px;
 }
 
+.edit-heading:after{
+    content: "";
+    display: block;
+    width: 205px;
+    height: 0.8px;
+    background: #686E74;
+   left: 114%;
+    top: 50%;
+    position: absolute;
+    width: 913px;
+}
+
 .edit-div {
-    position: relative;
+    position: absolute;
     /* top: 15px; */
-    margin-left: 169px;
+    /* margin-left: 169px; */
+    margin-left: 155px;
 }
 
 .img-div {
     position: relative;
-    width: 283px;
+    /* width: 283px; */
     height: 260px;
     background: #FFFFFF;
     border: 0.5px solid #000000;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 25px;
-    right: 66px;
+    /* right: 66px; */
+    right: 44px;
 }
 
 .edit-data {
-    position: absolute;
-    width: 691px;
+    position: relative;
+    /* width: 691px; */
     height: 415px;
-    left: 281px;
-    top: 0px;
+    /* left: 281px; */
+    /* top: 0px; */
 
     background: #FFFFFF;
     border: 0.5px solid #000000;
@@ -65,11 +79,10 @@ mat-sidenav-container {
 }
 
 .button-save-chng {
-    /* position: relative; */
-    width: 597px;
+    position: relative;
+    /* width: 597px; */
     height: 43px;
-    /* left: 24%;
-    top: 530px; */
+    top: 8px;
 }
 
 .save-chng {
@@ -98,7 +111,7 @@ mat-sidenav-container {
     background: #000000;
     position: relative;
     top: 11px;
-    font-family: 'Gilroy-SemiBold';
+    font-family: 'Gilroy';
     font-size: 15px;
     line-height: 18px;
     /* display: flex; */
@@ -112,7 +125,7 @@ mat-sidenav-container {
     background: #FFFFFF;
     position: relative;
     top: 11px;
-    font-family: 'Gilroy-SemiBold';
+    font-family: 'Gilroy';
     font-size: 15px;
     line-height: 18px;
     /* display: flex; */
@@ -143,10 +156,12 @@ mat-sidenav-container {
     text-align: center;
     /* left: 27%; */
     color: #000000;
+    /* margin-left: 9%; */
 }
- 
+
 .user_names {
     padding-top: 8px;
+    text-align: center;
 }
 
 .prof-s {
@@ -164,10 +179,11 @@ mat-sidenav-container {
 
 .last-login-txt {
     position: relative;
-    left: 10%;
-    top: 6%;
+    /* left: 3%; */
+    /* top: 6%; */
     font-family: 'Gilroy';
     font-size: 16px;
+    
     line-height: 106.3%;
     display: flex;
     align-items: center;
@@ -196,6 +212,7 @@ top: 13px; */
     border: 0.5px solid #000000;
     border-radius: 10px;
 }
+
 .f-roles {
     width: 364px;
     height: 43px;
@@ -205,7 +222,7 @@ top: 13px; */
 }
 
 .input-2 {
-    right: 5%;
+    
     position: relative;
 }
 
@@ -230,7 +247,7 @@ top: 13px; */
 
 .user-label {
     margin-top: 13px;
-    margin-left: -10px;
+    /* margin-left: -10px; */
 }
 
 .f-labels {
@@ -258,4 +275,54 @@ top: 13px; */
 
 span {
     color: red;
+}
+
+/* .main {
+    height: 100vh;
+} */
+
+ @media (max-width: 1158px) {
+    .edit-div {
+        position: absolute;
+        margin-left: 38px;
+        height: 522px;
+    }
+
+    .img-div {
+        position: relative;
+        right: 13px;
+    }
+
+    .edit-data {
+        width: 600px;
+    }
+
+}
+
+@media (max-width: 992px) {
+    .img-div {
+        position: relative;
+        left: 31% !important;
+       
+    }
+    .edit-data{
+        margin-left: 10%;
+    }
+    .main{
+        height: 824px;
+    }
+    .button-save-chng{
+        right: 9%;
+    }
+    .role-sel{
+        margin-left: 6%;
+    }
+}
+@media (max-width: 767px) {
+    .edit-div{
+        height: 942px;
+    }
+    .edit-data{
+        height: 580px;
+    }
 }

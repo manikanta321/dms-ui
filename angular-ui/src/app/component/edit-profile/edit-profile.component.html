@@ -6,10 +6,12 @@
     </mat-sidenav>
     <mat-sidenav-content>
         <div class="UNFAPP-asmnt-rgt-area main">
+            <div class="row EditHeading">
             <h1 class="edit-heading">Edit Profile</h1>
+        </div>
             <div class=" edit-div">
                 <div class="row">
-                    <div class="  col-lg-4  col-12  img-div">
+                    <div class="  col-lg-4   col-4  img-div">
                         <label *ngIf="Imgpreview">
                             <input type="file" id="file" style="display:none" (change)="onFileChanged($event)">
                             <img class="profile-icon" src='data:image/jpeg;base64,{{base64textString}}'>
@@ -21,32 +23,62 @@
                         </label>
 
                         <div class="user_names">
-                            <h3 class="profile-name">{{EmployeeName}}</h3>
+                            <h2 class="profile-name">{{EmployeeName}}</h2>
                             <span class="prof-s">@{{userName}}</span>
                         </div>
-                        <span class="last-login-txt">Last login : {{lastLogin}}</span>
+                      
+                        <div class="row">
+                            <div class="col-1"></div>
+                            <h4 class="last-login-txt"><b>Last active &nbsp;:  &nbsp;</b> {{lastLogin}}</h4>
+                        </div>
+                      
                     </div>
 
-
-                    <div class="col-lg-8  col-12 edit-data">
+                    <div class="col-lg-8  col-sm-9 edit-data">
                         <h4 class="basic-info">Basic Information</h4>
-                        <div class=" col-lg-12 col-md-6 col-sm-12 fontcolor">
+                        <div class=" col-lg-12  col-sm-12 fontcolor">
                             <div class="row d-flex">
-                                <div class="col-md-6 col-sm-12 ">
+                                <div class="col-lg-6 col-md-6 col-sm-12 ">
                                     <label class="f-label">Full Name <span>*</span></label>
                                     <br>
-                                    <input type="text" class="f-name" required placeholder="Enter your username"
-                                        [(ngModel)]="userName" #uname="ngModel">
+                                    <input type="text" id="fname" name="fname" class="f-name" required placeholder="Enter your full name"
+                                        [(ngModel)]="EmployeeName" #fname="ngModel" >
+                                        <p style="margin-bottom:-22px;padding: 0px;"
+
+                                        *ngIf="fname.invalid && (fname.dirty || fname.touched)" class="alert">
+
+                                        <span style="color:red;position: relative;" *ngIf="fname.errors?.['required']">
+
+                                            *Full Name is required.
+
+                                        </span>
+
+                                    </p>
                                 </div>
-                                <div class="col-md-6 col-sm-12 ">
+                               
+                                <div class="col-lg-6 col-md-6 col-sm-12 ">
                                     <label class="user-label">Username<span>*</span></label>
                                     <br>
-                                    <input type="text" class="f-name input-2" required placeholder="Enter your username"
+                                    <input type="text" id="uname" name="uname" class="f-name input-2" required placeholder="Enter your username"
                                         [(ngModel)]="userName" #uname="ngModel">
+                                        <p style="margin-bottom:-22px;padding: 0px;"
+
+                                        *ngIf="uname.invalid && (uname.dirty || uname.touched)" class="alert">
+
+
+
+                                        <span style="color:red;position: relative;" *ngIf="uname.errors?.['required']">
+
+                                            *Username is required.
+
+                                        </span>
+
+                                    </p>
                                 </div>
                             </div>
+                            <br>
                             <div class="row div-2 d-flex">
-                                <div class="col-lg-6 col-sm-12 ">
+                                <div class="col-lg-6 col-md-6 col-sm-12 ">
                                     <label class="f-label">Email ID <span>*</span></label>
                                     <br>
                                     <input class="f-name" id="emails" name="emails" type="email" required
@@ -64,24 +96,44 @@
                                         </span>
                                     </p>
                                 </div>
-                                <div class="col-lg-6 col-sm-12 ">
+                                <div class="col-lg-6 col-md-6 col-sm-12 ">
                                     <label class="user-label">Phone No<span>*</span></label>
                                     <br>
-                                    <input type="text" class="f-name input-2" id="uname" name="uname" required
-                                        placeholder="Enter your username" [(ngModel)]="userName" #uname="ngModel">
+                                    <input type="text" id="mobile" name="mobile" pattern="^((\\+91-?)|0)?[0-9]{10}$"   class="f-name input-2" id="uname" name="uname" required
+                                        placeholder="Enter your phone no." [(ngModel)]="phone" #mobile="ngModel">
+                                        <p  style="margin-bottom:-22px;padding: 0px;" *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)"
+
+                class="alert">
+
+              <span style="color:red;position: relative;" *ngIf="mobile.errors?.['required']">
+
+                *Phone Number is required
+
+              </span>
+
+              <span style="color:red;position: relative;" *ngIf="mobile.errors&&mobile.errors?.['pattern']">
+
+                *Phone Number is Invalid
+
+              </span>
+
+            </p>
                                 </div>
                             </div>
                         </div>
 
                         <br>
 
-                        <div class="row">
-                            <div class="col-1"></div>
+                        <div class="row d-flex role-sel">
+                            <div class="col-1 col-sm-1"></div>
+                            
                             <div class=" row d-flex">
+                              
                                 <h4 class="role-text">Role selection</h4>
-
-                                <div class="col-12"></div>
+                               <!-- <div class="col-sm-2"></div> -->
+                                <div class="col-lg-12 "></div>
                                 <h4 class=" f-role">Role <span>*</span></h4>
+                                <div class="col-sm-12"></div>
                                 <input class="col-lg-12 f-roles role-input" type="text" id="roleName" name="roleName"
                                     [ngModel]="rolename" readonly #roleName="ngModel">
 
@@ -90,20 +142,25 @@
                         </div>
 
                     </div>
-                    <div class="col-sm-1"></div>
+                    <!-- <div class="col-sm-1"></div> -->
                 </div>
-                <div class="button-save-chng row">
-                    <div class=" save-chng">
-                        <button class="save-text" (click)="editUser()">
-                            Save changes
-                        </button>
-                    </div>
-                    <div class="discard">
-                        <button class="discard-text">
-                            Discard
-                        </button>
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="  button-save-chng row ">
+                        <div class=" save-chng">
+                            <button class="save-text" (click)="editUser()">
+                                Save changes
+                            </button>
+                        </div>
+                        <div class="discard">
+                            <button class="discard-text">
+                                Discard
+                            </button>
+                        </div>
                     </div>
                 </div>
+
+
             </div>
 
         </div>

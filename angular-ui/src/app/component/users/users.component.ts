@@ -713,6 +713,8 @@ export class UsersComponent implements OnInit {
     console.log('userID', this.userId);
     localStorage.setItem('userID', this.userId)
     localStorage.setItem('employeeName', this.employeeName);
+    localStorage.setItem('employeeCodeSet', e.data.employeeCode);
+
 
     if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
       const cellRendererInstances = e.api.getCellRendererInstances({

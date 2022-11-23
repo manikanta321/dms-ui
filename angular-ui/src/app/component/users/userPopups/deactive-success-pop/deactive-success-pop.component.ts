@@ -20,6 +20,7 @@ export class DeactiveSuccessPopComponent implements OnInit {
     this.employeename=localStorage.getItem("employeeName");
     this.employeename = localStorage.getItem('Niname');
     this.materialListName =localStorage.getItem('listName');
+
     this.materialList();
   }
   materialList(){

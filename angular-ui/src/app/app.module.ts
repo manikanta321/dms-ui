@@ -5,7 +5,7 @@ import { LoginComponent } from './component/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SignUpComponent } from './component/sign-up/sign-up.component';
+import { ResetPassword } from './component/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './component/forgot-password/forgot-password.component';
 import { DashbordComponent } from './shared-component/dashbord/dashbord.component';
 import { SidenavBarComponent } from './shared-component/sidenav-bar/sidenav-bar.component';
@@ -152,7 +152,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
   declarations: [
     AppComponent,
     LoginComponent,
-    SignUpComponent,
+    ResetPassword,
     ForgotPasswordComponent,
     DashbordComponent,
     SidenavBarComponent,

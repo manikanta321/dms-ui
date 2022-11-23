@@ -83,10 +83,10 @@ export class PswResetPopupComponent implements OnInit {
         alert('passwrodhaschanged' )
       })
 
-    }
+    }else{
    this.error="*Entered fields doesn’t match"
   }
-
+  }
   confrmPWS(){
     if(this.enterfirst==this.entersecond){
       let data={
@@ -100,8 +100,9 @@ export class PswResetPopupComponent implements OnInit {
       })
       this.dialog.open(RestPwsdUserPopupComponent, {panelClass: 'activeSuccessPop'});
       this.dialogRef.close();
-    }
+    }else {
    this.error="*Entered fields doesn’t match"
+    }
   }
   
 }

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent implements OnInit {
+export class ResetPassword implements OnInit {
   myform !: FormGroup;
   username = new FormControl('', [
     Validators.required,

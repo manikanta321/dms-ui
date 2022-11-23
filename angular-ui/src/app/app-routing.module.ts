@@ -14,7 +14,7 @@ import { TaxTemplateComponent } from './component/other-masters/tax-template/tax
 import { UnitMeasureComponent } from './component/other-masters/unit-measure/unit-measure.component';
 import { SalesBulkUploadComponent } from './component/sales-bulk-upload/sales-bulk-upload.component';
 import { SalesListComponent } from './component/sales-list/sales-list.component';
-import { SignUpComponent } from './component/sign-up/sign-up.component';
+import { ResetPassword } from './component/sign-up/sign-up.component';
 import { UsersComponent } from './component/users/users.component';
 import { DashbordComponent } from './shared-component/dashbord/dashbord.component';
 
@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full',component: LoginComponent },
   { path: 'login', pathMatch: 'full',component: LoginComponent },
   { path: 'login', pathMatch: 'full',component: LoginComponent },
-  { path: 'SignUpComponent', pathMatch: 'full',component: SignUpComponent },
+  { path: 'ResetPassword', pathMatch: 'full',component: ResetPassword },
   { path: 'ForgotPassword', pathMatch: 'full',component: ForgotPasswordComponent },
   { path: 'maindashbord', pathMatch: 'full',component: DashbordComponent  },
   { path: 'dashbord/user', pathMatch: 'full',component: UsersComponent  },

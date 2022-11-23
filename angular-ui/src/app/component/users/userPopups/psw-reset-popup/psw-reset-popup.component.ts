@@ -10,6 +10,9 @@ import {FormControl, FormGroupDirective, NgForm, Validators} from
   styleUrls: ['./psw-reset-popup.component.css']
 })
 export class PswResetPopupComponent implements OnInit {
+  oldPassword:any
+  latestPassword:any;
+  relatestpassword:any;
   enterfirst:any;
   entersecond:any;
   userId:any;
@@ -33,7 +36,9 @@ export class PswResetPopupComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = localStorage.getItem("userID");
+    console.log(this.userId)
     this.LoginId=localStorage.getItem("logInId");
+    console.log(this.LoginId)
     this.adminPass();
   }
   adminPass(){
@@ -47,6 +52,23 @@ export class PswResetPopupComponent implements OnInit {
       this.adminPassword =false;
     }
   }
+
+  changeUserPassword(){
+    if(this.latestPassword==this.relatestpassword){
+      let userChangePasswordData={
+        UserId:this.LoginId,
+        currentPassword:this.oldPassword,
+        newPassword:this.relatestpassword
+      }
+      this.user.changePasswordByUser(userChangePasswordData).subscribe((res: any) => {
+
+        alert('passwrodhaschanged' )
+      })
+
+    }
+   this.error="*Entered fields doesn’t match"
+  }
+
   confrmPWS(){
     if(this.enterfirst==this.entersecond){
       let data={

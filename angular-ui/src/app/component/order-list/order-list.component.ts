@@ -24,6 +24,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { AddorderpromotionsComponent } from '../orders/addorderpromotions/addorderpromotions.component';
 import { OrderlistActionPopupComponent } from './orderlist-action-popup/orderlist-action-popup.component';
 import { SalesBulkUploadComponent } from '../sales-bulk-upload/sales-bulk-upload.component';
+import { CustomDatePopupComponent } from '../orders/custom-date-popup/custom-date-popup.component';
 // import { DateRange } from '@uiowa/date-range-picker';
 
 export interface PeriodicElement {
@@ -63,6 +64,7 @@ export class OrderListComponent implements OnInit {
   // dateRange = new DateRange(new Date(2018, 1, 1), new Date(2018, 1, 31));
   // dateRange1 = DateRange.nextTwoWeeks();
   // maxDate = new Date();
+  disableSelect = new FormControl(false);
   private gridApi!: GridApi;
   paginationPageSize = 10;
   myForm: any = FormGroup;
@@ -268,6 +270,8 @@ export class OrderListComponent implements OnInit {
   roleName: any;
   statusname: any;
   instancePopup:any = null;
+  dealerlist : any = [];
+  dealerss : any =[]
   constructor(public dialog: MatDialog,
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
@@ -307,33 +311,6 @@ export class OrderListComponent implements OnInit {
 
   
   }
-
- 
-
-  // roleItems() {
-
-
-  //   this.user.getroleDetails().subscribe((res: any) => {
-  //     let localdata = res.response;
-
-
-  //     this.toppingList = localdata.map((data: { designationId: any; designationName: any; }) => {
-  //       return { role_id: data.designationId, role_name: data.designationName };
-  //     });
-
-  //     if (!this.toppingList?.length) {
-  //       this.toppingList = localdata.map((role: { designationName: any; }) => {
-  //         return role.designationName;
-  //       });
-  //     }
-  //     this.toppingList.push()
-  //     // this.toppingList = res.response;
-  //     this.toppings = new FormControl(this.toppingList);
-
-  //     console.log('rolelist', this.toppingList)
-  //   });
-  // }
-
   statusItems() {
     this.user.getstatusDeatils().subscribe((res: any) => {
 
@@ -653,5 +630,32 @@ orderUpload(){
   sessionStorage.setItem('sales','');
   this.dialog.open(SalesBulkUploadComponent);
 }
+selectdays(){
+  this.dialog.open(CustomDatePopupComponent,{panelClass:'custmdays'})
+  }
+  orderItemSelect(item: any){
+    const data = {
+      // "StatusId":[],
+      // "GeographyId":[],
+      "DealerId":[],
+      // "OrderDate":"",
+      "Search":"",
+      dealerss: this.DealerId
+    }
+    this.user.getorderDeatilslist(data).subscribe((res) => {
+      this.rowDatalist = res.response;
+      this.dealerlist = this.DealerId
+    });
+  }
+  selectedDateRange = {
+    startDate: '11/11/2022',
+    endDate: '11/15/2022',
+  }
+
+  customDatePickerEvent(eventChange){
+    this.selectedDateRange = eventChange.selectedDate;
+    console.log(this.selectedDateRange);
+  }
+
 }
 

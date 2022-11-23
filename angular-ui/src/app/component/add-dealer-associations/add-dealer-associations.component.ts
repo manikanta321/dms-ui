@@ -4,6 +4,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddOrderPromotionlistComponent } from '../orders/add-order-promotionlist/add-order-promotionlist.component';
 import { OrderNonpromotionlistComponent } from '../orders/order-nonpromotionlist/order-nonpromotionlist.component';
+import { AddPromotionGeographiesComponent } from '../add-promotions/add-promotion-geographies/add-promotion-geographies.component';
 
 @Component({
   selector: 'app-add-dealer-associations',
@@ -47,7 +48,7 @@ export class AddDealerAssociationsComponent implements OnInit {
   screenValue:any=1;
   myForm:any= FormGroup;
   selectedItems: any = [];
-
+  productDlr :boolean = false;
   constructor(private _formBuilder: FormBuilder,
     public dialog: MatDialog,
     private fb: FormBuilder,
@@ -139,7 +140,9 @@ this.screenValue=value
   addOrderNonPromotionList(){
     this.dialog.open( OrderNonpromotionlistComponent,{width: '1000px',height:'460px'});
   }
-
+  geography(){
+    this.dialog.open( AddPromotionGeographiesComponent, {width: '654px', height:'743px'})
+  }
 }
 
 

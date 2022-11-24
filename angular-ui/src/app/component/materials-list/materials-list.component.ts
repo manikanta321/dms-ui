@@ -371,13 +371,28 @@ export class MaterialsListComponent implements OnInit {
       let subcaty = res.response;
       console.log("responseeee", subcaty);
       this.sub_category = subcaty.allOtherSubCAts;
+      let allSub_cats = subcaty.allOtherSubCAts;
       console.log("SubCategory", this.sub_category);
+      this.subcatagData = allSub_cats.map((data: { subCatId: any; subCatName: any; }) => {
+        return { subCatId: data.subCatId, subCatName: data.subCatName };
+      });
+  
+      if (!this.subcatagData?.length) {
+        this.subcatagData = allSub_cats.map((subCatData: { designationName: any; }) => {
+          return subCatData.designationName;
+        });
+      }
+      this.subcatagData.push()
+      this.subcatagData.forEach(element => {
+        return this.subcatArray.push(element.subCatId);
+  
+      })
       this.topping1 = new FormControl(this.sub_category);
     });
     console.log("catArray", this.catergory)
     const data = {
       Cat: this.catergory,
-      Sub_Cat: this.sub_category,
+      Sub_Cat: this.sub_categorys,
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
@@ -390,11 +405,12 @@ export class MaterialsListComponent implements OnInit {
   onItemDeSelectOrAll(item: any) {
     this.catergory = [];
     this.sub_category = [];
+    this.sub_categorys = [];
     this.typeI = [];
     this.typesI = [];
     const data = {
       Cat: this.catergory,
-      Sub_Cat: this.sub_category,
+      Sub_Cat: this.sub_categorys,
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
@@ -440,9 +456,9 @@ export class MaterialsListComponent implements OnInit {
     this.materialList.onclicksubcat(subCat).subscribe((res) => {
       let typs = res.response;
       console.log("types..res", typs);
-      this.typesI = typs;
-      if (this.typesI.length == 0) {
-        this.typeI = [];
+      this.typeI = typs;
+      if (this.typeI.length == 0) {
+        this.typesI = [];
       }
       console.log("Typess", this.typss);
       this.topping2 = new FormControl(this.typeI);
@@ -462,22 +478,9 @@ export class MaterialsListComponent implements OnInit {
 
   }
   onSubCategorySelectOrAll(item: any) {
-    this.subcatagData = item.map((data: { subCatId: any; subCatName: any; }) => {
-      return { subCatId: data.subCatId, subCatName: data.subCatName };
-    });
-
-    if (!this.subcatagData?.length) {
-      this.subcatagData = item.map((subCatData: { designationName: any; }) => {
-        return subCatData.designationName;
-      });
-    }
-    this.subcatagData.push()
-    this.subcatagData.forEach(element => {
-      return this.subcatArray.push(element.subCatId);
-
-    })
+    this.sub_categorys = this.subcatArray;
     let Type = {
-      subCatId: this.subcatArray
+      subCatId: this.sub_categorys
     }
     this.materialList.onclicksubcat(Type).subscribe((res) => {
       let typs = res.response;

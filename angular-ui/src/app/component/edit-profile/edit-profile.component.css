@@ -157,7 +157,8 @@ mat-sidenav-container {
     /* left: 27%; */
     color: #000000;
     /* margin-left: 9%; */
-    width: 308px;
+    /* width: 308px; */
+    text-indent: 0.5em;
 }
 
 .user_names {

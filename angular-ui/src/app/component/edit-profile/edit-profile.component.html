@@ -7,14 +7,18 @@
     <mat-sidenav-content>
         <div class="UNFAPP-asmnt-rgt-area main">
             <div class="row EditHeading">
-            <h1 class="edit-heading">Edit Profile</h1>
-        </div>
+                <h1 class="edit-heading">Edit Profile</h1>
+            </div>
             <div class=" edit-div">
                 <div class="row">
                     <div class="  col-lg-4   col-4  img-div">
-                        <label *ngIf="Imgpreview">
+                        <label *ngIf="Imgpreview" class="prof-hov">
                             <input type="file" id="file" style="display:none" (change)="onFileChanged($event)">
                             <img class="profile-icon" src='data:image/jpeg;base64,{{base64textString}}'>
+                            <div class="profilepic__content">
+                                <span class="profilepic__icon"><img class="fas" src="../../../assets/img/camera-icon.png"></span>
+                                <span class="profilepic__text">Change profile picture</span>
+                            </div>
                         </label>
 
                         <label *ngIf="!Imgpreview">
@@ -26,12 +30,12 @@
                             <h2 class="profile-name">{{EmployeeName}}</h2>
                             <span class="prof-s">@{{userName}}</span>
                         </div>
-                      
+
                         <div class="row">
                             <div class="col-1"></div>
-                            <h4 class="last-login-txt"><b>Last active &nbsp;:  &nbsp;</b> {{lastLogin}}</h4>
+                            <h4 class="last-login-txt"><b>Last active &nbsp;: &nbsp;</b> {{lastLogin}}</h4>
                         </div>
-                      
+
                     </div>
 
                     <div class="col-lg-8  col-sm-9 edit-data">
@@ -41,10 +45,9 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12 ">
                                     <label class="f-label">Full Name <span>*</span></label>
                                     <br>
-                                    <input type="text" id="fname" name="fname" class="f-name" required placeholder="Enter your full name"
-                                        [(ngModel)]="EmployeeName" #fname="ngModel" >
-                                        <p style="margin-bottom:-22px;padding: 0px;"
-
+                                    <input type="text" id="fname" name="fname" class="f-name" required
+                                        placeholder="Enter your full name" [(ngModel)]="EmployeeName" #fname="ngModel">
+                                    <p style="margin-bottom:-22px;padding: 0px;"
                                         *ngIf="fname.invalid && (fname.dirty || fname.touched)" class="alert">
 
                                         <span style="color:red;position: relative;" *ngIf="fname.errors?.['required']">
@@ -55,14 +58,13 @@
 
                                     </p>
                                 </div>
-                               
+
                                 <div class="col-lg-6 col-md-6 col-sm-12 ">
                                     <label class="user-label">User Name<span>*</span></label>
                                     <br>
-                                    <input type="text" id="uname" name="uname" class="f-name input-2" required placeholder="Enter your username"
-                                        [(ngModel)]="userName" #uname="ngModel">
-                                        <p style="margin-bottom:-22px;padding: 0px;"
-
+                                    <input type="text" id="uname" name="uname" class="f-name input-2" required
+                                        placeholder="Enter your username" [(ngModel)]="userName" #uname="ngModel">
+                                    <p style="margin-bottom:-22px;padding: 0px;"
                                         *ngIf="uname.invalid && (uname.dirty || uname.touched)" class="alert">
 
 
@@ -99,25 +101,26 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12 ">
                                     <label class="user-label">Phone No<span>*</span></label>
                                     <br>
-                                    <input type="text" id="mobile" name="mobile" pattern="^((\\+91-?)|0)?[0-9]{10}$"   class="f-name input-2" id="uname" name="uname" required
+                                    <input type="text" id="mobile" name="mobile" pattern="^((\\+91-?)|0)?[0-9]{10}$"
+                                        class="f-name input-2" id="uname" name="uname" required
                                         placeholder="Enter your phone no." [(ngModel)]="phone" #mobile="ngModel">
-                                        <p  style="margin-bottom:-22px;padding: 0px;" *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)"
+                                    <p style="margin-bottom:-22px;padding: 0px;"
+                                        *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)" class="alert">
 
-                class="alert">
+                                        <span style="color:red;position: relative;" *ngIf="mobile.errors?.['required']">
 
-              <span style="color:red;position: relative;" *ngIf="mobile.errors?.['required']">
+                                            *Phone Number is required
 
-                *Phone Number is required
+                                        </span>
 
-              </span>
+                                        <span style="color:red;position: relative;"
+                                            *ngIf="mobile.errors&&mobile.errors?.['pattern']">
 
-              <span style="color:red;position: relative;" *ngIf="mobile.errors&&mobile.errors?.['pattern']">
+                                            *Phone Number is Invalid
 
-                *Phone Number is Invalid
+                                        </span>
 
-              </span>
-
-            </p>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -126,11 +129,11 @@
 
                         <div class="row d-flex role-sel">
                             <div class="col-1 col-sm-1"></div>
-                            
+
                             <div class=" row d-flex">
-                              
+
                                 <h4 class="role-text">Role selection</h4>
-                               <!-- <div class="col-sm-2"></div> -->
+                                <!-- <div class="col-sm-2"></div> -->
                                 <div class="col-lg-12 "></div>
                                 <h4 class=" f-role">Role <span>*</span></h4>
                                 <div class="col-sm-12"></div>

@@ -5,20 +5,20 @@
     <div class="actv-user text-center">
         <h1 class="head-text">{{catsetName}}</h1>
     </div>
-    <form #loginForm="ngForm">
     <div>
         <label >Name<span style="color: red;">*</span></label><br>
-        <input type="text"id="password" placeholder="Enter category name" 
+        <input type="text" placeholder="Enter category name" 
           required [(ngModel)]="addcat">       
 <br>
         <label >Code<span style="color: red;">*</span></label><br>
         <input type="text" placeholder="Enter category code" [(ngModel)]="addcatcode"
       >
      <br>
-        <button class="update-btn" (click)="AddCat()" [disabled]="!addcat || !addcatcode">Add</button>
+        <button  *ngIf="catsetName=='Add Category'"   class="update-btn" (click)="AddCat()" [disabled]="!addcat || !addcatcode">Add</button>
+        <button *ngIf="catsetName=='Edit Category'" class="update-btn" (click)="editCat()" [disabled]="!addcat || !addcatcode">Add</button>
+
         <button class="cancel-btn" (click)="close()">Cancel</button>
     </div>
     <span style="color: red;">*Required fields</span>
-</form>
    
 </div>

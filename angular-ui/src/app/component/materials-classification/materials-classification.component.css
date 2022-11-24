@@ -62,21 +62,24 @@ div.catg[data-selected] {
 .subc{
     border: 1px solid #0C5A3E;
     border-radius: 10px;
-    color: #0C5A3E;
     font-size: 14px;
     margin-bottom: 10px;
     padding: 5px;
 }
 .type{
-    background: #FFEDEC;
     border: 1px solid #C32F27;
     border-radius: 10px;
-    color: #C32F27;
     font-size: 14px;
     margin-bottom: 10px;
     padding: 5px;
     text-align: start;
 }
+
+.selectedTypeInactive{
+  background: #FFEDEC;
+  color: #C32F27;
+}
+
 li{
     list-style: none;
 }

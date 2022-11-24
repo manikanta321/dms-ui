@@ -151,6 +151,8 @@ import { AddCatComponent } from './component/add-cat/add-cat.component';
 import { AddSubCatComponent } from './component/add-sub-cat/add-sub-cat.component';
 import { AddTypesPopupComponent } from './component/add-types-popup/add-types-popup.component';
 import { DeactivateClassificationPopUpComponent } from './component/deactivate-classification-pop-up/deactivate-classification-pop-up.component';
+import { DeactiveSubcategoryCompoComponent } from './component/deactive-subcategory-compo/deactive-subcategory-compo.component';
+import { DeactiveTypeCompoComponent } from './component/deactive-type-compo/deactive-type-compo.component';
 
 @NgModule({
   declarations: [
@@ -267,6 +269,8 @@ import { DeactivateClassificationPopUpComponent } from './component/deactivate-c
           AddSubCatComponent,
           AddTypesPopupComponent,
           DeactivateClassificationPopUpComponent,
+          DeactiveSubcategoryCompoComponent,
+          DeactiveTypeCompoComponent,
   ],
   imports: [
     FormsModule,

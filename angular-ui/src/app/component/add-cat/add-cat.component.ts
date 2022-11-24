@@ -22,6 +22,7 @@ export class AddCatComponent implements OnInit {
   addcatcode:any;
   numberValue:any;
   catsetName:any;
+  activeCatId:any;
 
   adminPassword:boolean =false;
   showPassword: boolean = false;
@@ -37,22 +38,24 @@ export class AddCatComponent implements OnInit {
    
     }
 
-    passFormControl = new FormControl('', [
-      Validators.required,
-  ]);
-  confirmFormControl = new FormControl('', [
-      Validators.required,
-      ]);
-
-       hide =true;
+  
 
   ngOnInit(): void {
     this.LoginId=localStorage.getItem("logInId");
     this.numberValue = Number(this.LoginId);
     this.userId = localStorage.getItem("userID");
     this.LoginId=localStorage.getItem("logInId");
-
+    this.activeCatId=localStorage.getItem("activeCatId");
     this.catsetName=localStorage.getItem("catsetName");
+
+
+    if(this.catsetName=='Edit Category'){
+this.calssification.getCatDetailsById(this.activeCatId).subscribe((res)=>{
+this.addcat=res.response.categoryName;
+this.addcatcode=res.response.categoryCode;
+})
+
+    }
 
 
 
@@ -76,6 +79,24 @@ export class AddCatComponent implements OnInit {
   })
 
   }
+
+  editCat(){
+    const data={
+            CategoryId:this.activeCatId,
+            CategoryName:this.addcat,
+            CategoryCode:this.addcatcode,
+            LastModifiedById:this.LoginId
+
+    }
+
+    this.calssification.updateCat(data).subscribe((res)=>{
+      this.sharedService.filter('Register click')
+      this.addcat='';
+      this.addcatcode='';
+      this.dialogRef.close();
+    })
+  }
+
 
   close(){
     this.dialogRef.close();

@@ -52,7 +52,7 @@
             <!-- <mat-icon>arrow_drop_down</mat-icon> -->
           </div>
           <div class=" d-flex" *ngFor="let subc of subname">
-            <p class="col-11 subc" (click)="subc.isActive==true ?  oclicksub(subc): false" [ngClass]="{ 'subselected': subc == selectedsubItem ,'selectedInactivesub': subc.isActive == false,'selectedactivesub': subc.isActive == true}" style="cursor: pointer;">{{subc.subCatName}} <img src="../../../assets/img/pencil.svg" *ngIf="subc.isActive"  alt="" class="tickmark" (click)="editSubcategory(subc)"  > <img src="../../../assets/img/power.svg"  alt="" class="tickmark" >
+            <p class="col-11 subc" (click)="subc.isActive==true ?  oclicksub(subc): false" [ngClass]="{ 'subselected': subc == selectedsubItem ,'selectedInactivesub': subc.isActive == false,'selectedactivesub': subc.isActive == true}" style="cursor: pointer;">{{subc.subCatName}} <img src="../../../assets/img/pencil.svg" *ngIf="subc.isActive"  alt="" class="tickmark" (click)="editSubcategory(subc)"  > <img src="../../../assets/img/power.svg" (click)="deactivate(subc)"  alt="" class="tickmark" >
             </p>
             <!-- <mat-icon class="col-2" (click)="removesub(subc)" style="cursor: pointer;padding-top: 2px;">remove_circle</mat-icon> -->
           </div>
@@ -88,7 +88,7 @@
           <!-- <li class="type" *ngFor="let type of typename" >{{type}}<mat-icon>add_circle</mat-icon></li> -->
           <div class=" d-flex" *ngFor="let type of typename">
             
-            <p class="col-11 type" (click)="type.isActive==true ? typeselect(type): false " [ngClass]="{ 'typeselected': type == selectedtypeItem ,'selectedInactive': type.isActive==false}" style="cursor: pointer;">{{type.typeName}}  <img src="../../../assets/img/pencil.svg"  alt="" class="tickmark"  *ngIf="type.isActive"  (click)="edittype(type)"> <img src="../../../assets/img/power.svg"  alt="" class="tickmark" >
+            <p class="col-11 type" (click)="type.isActive==true ? typeselect(type): false " [ngClass]="{ 'typeselected': type == selectedtypeItem ,'selectedInactive': type.isActive==false,'selectedTypeInactive': type.isActive==true}" style="cursor: pointer;">{{type.typeName}}  <img src="../../../assets/img/pencil.svg"  alt="" class="tickmark"  *ngIf="type.isActive"  (click)="edittype(type)"> <img src="../../../assets/img/power.svg"  alt="" class="tickmark"(click)='deactivateType(type)' >
             </p>
             <!-- <mat-icon class="col-2" (click)="removetype(type)" style="cursor: pointer;padding-top: 2px;">remove_circle</mat-icon> -->
           </div>

@@ -9,6 +9,8 @@ import { AddTypesPopupComponent } from '../add-types-popup/add-types-popup.compo
 import { SharedServiceAddSubService } from 'src/app/services/shared-service-add-sub.service';
 import { SharedServiceAddTypesService } from 'src/app/services/shared-service-add-types.service';
 import { DeactivateClassificationPopUpComponent } from '../deactivate-classification-pop-up/deactivate-classification-pop-up.component';
+import { DeactiveSubcategoryCompoComponent } from '../deactive-subcategory-compo/deactive-subcategory-compo.component';
+import { DeactiveTypeCompoComponent } from '../deactive-type-compo/deactive-type-compo.component';
 
 @Component({
   selector: 'app-materials-classification',
@@ -141,6 +143,7 @@ this.calssification.getclassification().subscribe((res)=>{
  
 console.log('item to edit',item)
 localStorage.setItem('catsetName',catsetName)
+localStorage.setItem('activeCatId',item.catId);
 
     this.dialog.open(AddCatComponent,{height:'320px'});
 
@@ -180,6 +183,7 @@ localStorage.setItem('catsetName',catsetName)
  
     console.log('item to edit',item)
     localStorage.setItem('subcatsetName',subcatsetName)
+    localStorage.setItem('activeSubCatId',item.subCatId);
     this.dialog.open(AddSubCatComponent,{height:'320px'});
 
   }
@@ -188,6 +192,17 @@ localStorage.setItem('catsetName',catsetName)
     this.addSubButton=false;
 
   }
+
+  deactivate(item){
+    console.log('itemin Subcat',item)
+    localStorage.setItem('activeSubCatId',item.subCatId);
+    localStorage.setItem('activeSubCatName',item.subCatName)
+    localStorage.setItem('activeSubCatIsActive',item.isActive)
+    this.dialog.open(DeactiveSubcategoryCompoComponent);
+
+  }
+
+
   addTypeCategory(){
     let TypeName='Add Types'
       localStorage.setItem('TypeName',TypeName)
@@ -202,9 +217,25 @@ localStorage.setItem('catsetName',catsetName)
   
     console.log('item to edit',item)
     localStorage.setItem('TypeName',TypeName)
+    localStorage.setItem('activeTypeId',item.typeId);
+    localStorage.setItem('activeTypeId',item.typeId);
+
     this.dialog.open(AddTypesPopupComponent,{height:'320px'});
 
   }
+
+  deactivateType(item){
+    console.log('itemin type',item)
+    localStorage.setItem('activeTypeId',item.typeId);
+    localStorage.setItem('activeTypeName',item.typeName)
+    localStorage.setItem('activeTypeIsActive',item.isActive)
+    this.dialog.open(DeactiveTypeCompoComponent);
+    
+
+
+
+  }
+
   removeaddformtype(){
     this.addTypeButton=false;
 

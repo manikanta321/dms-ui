@@ -59,6 +59,16 @@
     border-radius: 5px;
     margin-right: 35px;
     }
+
+    .update-btn:disabled{
+        background: grey;
+        width: 183px;
+        height: 43px;
+        border: #000000;
+        border-radius: 5px;
+        margin-right: 35px;
+        }
+
     .cancel-btn{
         border: 2px solid #000000;
         border-radius: 5px;

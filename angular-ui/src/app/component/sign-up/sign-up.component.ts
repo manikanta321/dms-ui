@@ -8,6 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./sign-up.component.css']
 })
 export class ResetPassword implements OnInit {
+  showPassword: boolean = false;
+  showre_Password: boolean = false;
+  showoldPassword: boolean = false;
+  enterfirst:any;
+  entersecond:any;
   myform !: FormGroup;
   username = new FormControl('', [
     Validators.required,
@@ -21,5 +26,13 @@ confirmPassward = new FormControl('', [
  
   ngOnInit(): void {
   }
-
+  public PasswordVisibilityLatest(): void {
+    this.showPassword = !this.showPassword;
+  }
+  public PasswordVisibilityreenter(): void {
+    this.showre_Password = !this.showre_Password;
+  }
+  public PasswordVisibilityold(): void {
+    this.showoldPassword = !this.showoldPassword;
+  }
 }

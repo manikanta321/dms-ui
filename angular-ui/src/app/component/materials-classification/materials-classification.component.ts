@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
 import { interval } from 'rxjs';
+import { AddCatComponent } from '../add-cat/add-cat.component';
+import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { SharedService } from 'src/app/services/shared-services.service';
+import { AddSubCatComponent } from '../add-sub-cat/add-sub-cat.component';
+import { AddTypesPopupComponent } from '../add-types-popup/add-types-popup.component';
+import { SharedServiceAddSubService } from 'src/app/services/shared-service-add-sub.service';
+import { SharedServiceAddTypesService } from 'src/app/services/shared-service-add-types.service';
+import { DeactivateClassificationPopUpComponent } from '../deactivate-classification-pop-up/deactivate-classification-pop-up.component';
+
 @Component({
   selector: 'app-materials-classification',
   templateUrl: './materials-classification.component.html',
@@ -25,6 +34,7 @@ export class MaterialsClassificationComponent implements OnInit {
   toggle:boolean=true;
   selectedItem = null;
   selectedsubItem=null;
+  selected:boolean=false;
   LoginId:any;
   numberValue:any;
   itemId:any;
@@ -38,15 +48,34 @@ export class MaterialsClassificationComponent implements OnInit {
   // clData: string[] = ['Type TP 1', 'Type TP 2', 'Type TP 3','Type TP 4'];
   // subcat: string[] = ['sub category', 'sub category 2',];
   constructor(
+    private dialog: MatDialog,
     private calssification:ClassificationserviseService,
+    private sharedService: SharedService,
+    private sharedServiceaddsub:SharedServiceAddSubService,
+    private sharedServiceaddtype:SharedServiceAddTypesService,
 
-  ) { }
+
+
+  ) {
+    this.sharedService.listen().subscribe((m: any) => {
+      console.log(m)
+this.addcatagory();
+    })
+    this.sharedServiceaddsub.listen().subscribe((m: any) => {
+      console.log(m)
+this.addsubCat();
+    })
+
+    this.sharedServiceaddtype.listen().subscribe((m: any) => {
+      console.log(m)
+this.addtypes();
+    })
+
+   }
 
   ngOnInit() {
     this.LoginId=localStorage.getItem("logInId");
     this.numberValue = Number(this.LoginId);
-
-
    this.getclassification()
 
   }
@@ -68,7 +97,11 @@ this.calssification.getclassification().subscribe((res)=>{
   this.typename=data.firstCat.subCAts.firstSubCat.types;
   this.selectedtypeItem=data.firstCat.subCAts.firstSubCat.types[0];
   this.itemId=data.firstCat.catId
+  localStorage.setItem('Catidset',this.itemId)
+
   this.subCatId=data.firstCat.subCAts.firstSubCat.subCatId;
+  localStorage.setItem('Subcatidset',this.subCatId)
+
  
  console.log('typename',this.typename)
   console.log('char',this.subname);
@@ -94,22 +127,82 @@ this.calssification.getclassification().subscribe((res)=>{
     this.toprint=valueofprint;
   }
   addCategory(){
-      this.addButton =true;
+    let catsetName='Add Category'
+     localStorage.setItem('catsetName',catsetName)
+
+    this.dialog.open(AddCatComponent,{height:'320px'});
+      // this.addButton =true;
    
   }
+
+
+  editcategory(item){
+    let catsetName='Edit Category'
+ 
+console.log('item to edit',item)
+localStorage.setItem('catsetName',catsetName)
+
+    this.dialog.open(AddCatComponent,{height:'320px'});
+
+  }
+
+  deativateCat(item){
+        console.log('itemin cat',item)
+        localStorage.setItem('activeCatId',item.catId);
+        localStorage.setItem('activeCatName',item.catName)
+        localStorage.setItem('activeCatIsActive',item.isActive)
+
+
+
+
+    this.dialog.open(DeactivateClassificationPopUpComponent);
+    localStorage.setItem('Catidset',this.itemId)
+
+
+
+
+
+  }
+
   removeaddformcat(){
     this.addButton =false;
 
   }
   addSubCategory(){
-    this.addSubButton=true;
+    let subcatsetName='Add Sub-Category'
+     localStorage.setItem('subcatsetName',subcatsetName)
+    this.dialog.open(AddSubCatComponent,{height:'320px'});
+
+    // this.addSubButton=true;
   }
+  editSubcategory(item){
+    let subcatsetName='Edit Sub-Category'
+ 
+    console.log('item to edit',item)
+    localStorage.setItem('subcatsetName',subcatsetName)
+    this.dialog.open(AddSubCatComponent,{height:'320px'});
+
+  }
+
   removeaddformSubcat(){
     this.addSubButton=false;
 
   }
   addTypeCategory(){
-    this.addTypeButton=true;
+    let TypeName='Add Types'
+      localStorage.setItem('TypeName',TypeName)
+    this.dialog.open(AddTypesPopupComponent,{height:'320px'});
+
+    // this.addTypeButton=true;
+
+  }
+
+  edittype(item){
+    let TypeName='Edit Types'
+  
+    console.log('item to edit',item)
+    localStorage.setItem('TypeName',TypeName)
+    this.dialog.open(AddTypesPopupComponent,{height:'320px'});
 
   }
   removeaddformtype(){
@@ -118,6 +211,7 @@ this.calssification.getclassification().subscribe((res)=>{
   }
 
   removecatg(item):void{
+    console.log('item to check',item)
     // this.catgname.splice(index, 1);
 let data={
   CategoryId:item.catId,
@@ -145,7 +239,10 @@ setTimeout(()=>{                           // <<<---using ()=> syntax
     this.typename=data.firstCat.subCAts.firstSubCat.types;
     this.selectedtypeItem=data.firstCat.subCAts.firstSubCat.types[0];
     this.itemId=data.firstCat.catId
+    localStorage.setItem('Catidset',this.itemId)
     this.subCatId=data.firstCat.subCAts.firstSubCat.subCatId;
+    localStorage.setItem('Subcatidset',this.subCatId)
+
    
    console.log('typename',this.typename)
     console.log('char',this.subname);
@@ -273,21 +370,25 @@ setTimeout(()=>{                           // <<<---using ()=> syntax
 
   }
   addcatagory(){
-    let data={
-        CategoryName:this.addcat,
-        CategoryCode:this.addcatcode,
-        CreatedById:this.numberValue
-    };
-    this.calssification.addCatagory(data).subscribe((res)=>{
-      this.addcat='';
-      this.addcatcode='';
-    })
+    // let data={
+    //     CategoryName:this.addcat,
+    //     CategoryCode:this.addcatcode,
+    //     CreatedById:this.numberValue
+    // };
+    // this.calssification.addCatagory(data).subscribe((res)=>{
+    //   this.addcat='';
+    //   this.addcatcode='';
+    // })
+    
+
     this.calssification.getclassification().subscribe((res)=>{
       let data=res.response;
       this.coutCatagory=res.totalRecords;
       this.catgname=data.allOtherCats;
       this.subcatcount=data.firstCat.subCatsCount;
       this.typecount=data.firstCat.subCAts.firstSubCat.typeCount;
+      this.selectedItem=data.allOtherCats[0];
+
     //   console.log('data',data.firstCat)
     //   let char=[]
     //   this.subname=data.firstCat.subCAts.allOtherSubCAts;
@@ -307,18 +408,21 @@ setTimeout(()=>{                           // <<<---using ()=> syntax
      })
      this.addButton =false;
   }
+  tickmark(){
+    this.selected = true;
+  }
 
 addsubCat(){
-  let data={
-    subCategoryName:this.sucatname,
-    subCategoryCode:this.sucatnameCode,
-    categoryid:this.itemId,
-    CreatedById:this.numberValue
-};
-this.calssification.addsubCatagory(data).subscribe((res)=>{
-  this.sucatname='';
-  this.sucatnameCode='';
-  })  
+//   let data={
+//     subCategoryName:this.sucatname,
+//     subCategoryCode:this.sucatnameCode,
+//     categoryid:this.itemId,
+//     CreatedById:this.numberValue
+// };
+// this.calssification.addsubCatagory(data).subscribe((res)=>{
+//   this.sucatname='';
+//   this.sucatnameCode='';
+//   })  
   // alert(this.itemId)
 
   setTimeout(()=>{                           // <<<---using ()=> syntax
@@ -351,20 +455,20 @@ this.calssification.addsubCatagory(data).subscribe((res)=>{
 
 
 addtypes(){
-  let data={
-    typeName:this.type,
-    typeCode:this.typeCode,
-    subcategoryid:this.subCatId,
-    CreatedById:this.numberValue
-};
-this.calssification.addtypes(data).subscribe((res)=>{
-  this.type='';
-  this.typeCode='';
-})  
+//   let data={
+//     typeName:this.type,
+//     typeCode:this.typeCode,
+//     subcategoryid:this.subCatId,
+//     CreatedById:this.numberValue
+// };
+// this.calssification.addtypes(data).subscribe((res)=>{
+//   this.type='';
+//   this.typeCode='';
+// })  
 
 
 
-setTimeout(()=>{                           // <<<---using ()=> syntax
+setTimeout(()=>{                          
  
   this.calssification.onclicksubcat(this.subCatId).subscribe((res)=>{
     console.log(res)
@@ -385,6 +489,7 @@ oclicksub(item){
   this.selectedsubItem=item;
   console.log('item1',item)
    this.subCatId=item.subCatId;
+   localStorage.setItem('Subcatidset',this.subCatId);
    this.subcatRoouting=item.subCatName;
   this.calssification.onclicksubcat(this.subCatId).subscribe((res)=>{
     console.log(res)
@@ -404,6 +509,7 @@ oclicksub(item){
 console.log('item',item)
 
  this.itemId=item.catId;
+ localStorage.setItem('Catidset',this.itemId)
  this.catagoryroouting=item.catName;
 this.calssification.onclickcat(this.itemId).subscribe((res)=>{
 console.log(res)
@@ -419,6 +525,7 @@ if(data.firstSubCat==null){
 }
 else{
   this.subCatId=data.firstSubCat.subCatId
+  localStorage.setItem('Subcatidset',this.subCatId)
   this.subcatRoouting=data.firstSubCat.subCatName;
   this.typename=data.firstSubCat.types;
   this.selectedtypeItem=data.firstSubCat.types[0];

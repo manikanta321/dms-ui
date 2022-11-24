@@ -160,6 +160,11 @@ export class ClassificationserviseService {
 
   }
 
+deactivate(data){
+  return this.http.post<any>(this.classificationurl + 'MaterialApi/ActiveDeactiveCategory', data);
+
+}
+
 
 
 

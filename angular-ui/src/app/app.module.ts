@@ -147,6 +147,10 @@ import { SalesBulkUploadComponent } from './component/sales-bulk-upload/sales-bu
 import { AddPromotionGeographiesComponent } from './component/add-promotions/add-promotion-geographies/add-promotion-geographies.component';
 import { DealerTargetComponent } from './component/dealer-target/dealer-target.component';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { AddCatComponent } from './component/add-cat/add-cat.component';
+import { AddSubCatComponent } from './component/add-sub-cat/add-sub-cat.component';
+import { AddTypesPopupComponent } from './component/add-types-popup/add-types-popup.component';
+import { DeactivateClassificationPopUpComponent } from './component/deactivate-classification-pop-up/deactivate-classification-pop-up.component';
 
 @NgModule({
   declarations: [
@@ -259,6 +263,10 @@ import { NgxSpinnerModule } from "ngx-spinner";
           SalesBulkUploadComponent,
           AddPromotionGeographiesComponent,
           DealerTargetComponent,
+          AddCatComponent,
+          AddSubCatComponent,
+          AddTypesPopupComponent,
+          DeactivateClassificationPopUpComponent,
   ],
   imports: [
     FormsModule,

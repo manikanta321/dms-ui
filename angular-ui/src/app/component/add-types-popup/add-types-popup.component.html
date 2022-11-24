@@ -1,0 +1,22 @@
+<div class="container">
+    <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+    <div class="actv-user text-center">
+        <h1 class="head-text">{{TypeName}}</h1>
+    </div>
+    <form #loginForm="ngForm">
+    <div>
+        <label >Name<span style="color: red;">*</span></label><br>
+        <input type="text"id="password" placeholder="Enter Type name" 
+          required [(ngModel)]="type">       
+<br>
+        <label >Code<span style="color: red;">*</span></label><br>
+        <input type="text" placeholder="Enter Type code" [(ngModel)]="typeCode"
+      >
+     <br>
+        <button class="update-btn" (click)="AddCat()" [disabled]="!type || !typeCode">Add</button>
+        <button class="cancel-btn" (click)="close()">Cancel</button>
+    </div>
+    <span style="color: red;">*Required fields</span>
+</form>
+   
+</div>

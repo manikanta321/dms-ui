@@ -83,6 +83,7 @@ export class UseractionComponent implements OnInit,  AfterViewInit {
   tickmark(){
     this.selected = true;
   }
+  
   togglePopup() {
     this.isOpen = !this.isOpen;
     this.changeDetector.detectChanges();

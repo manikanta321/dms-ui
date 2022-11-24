@@ -1,7 +1,15 @@
 <div class="row">
     <div class="col-md-12">
         <div class="calendar-btn-section" #calendarSection>
-            <div class="cal" [ngbPopover]="popContent" [placement]="['bottom','bottom-start','left-top','right-top']"
+            <div class="invoice" *ngIf="showInputField" [ngbPopover]="popContent" [placement]="['bottom','bottom-start','left-top','right-top']"
+            [autoClose]="'outside'" #datepickerBtn="ngbPopover" popoverClass="datepicker-menu">
+                <mat-form-field appearance="fill" >
+                  <mat-label>{{label}}</mat-label>
+                  <mat-select >
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            <div class="cal" *ngIf="!showInputField" [ngbPopover]="popContent" [placement]="['bottom','bottom-start','left-top','right-top']"
                 [autoClose]="'outside'" #datepickerBtn="ngbPopover" popoverClass="datepicker-menu">
                 <img src="assets/img/calenderImage.svg" alt="">
             </div>
@@ -13,11 +21,11 @@
             <!-- <img src="assets/img/calenderImage.svg" alt=""> -->
         </div>
     </div>
-
+   
 
     <ng-template #popContent>
         <ul class="datepicker-menu-list">
-            <li *ngFor="let item of menuDateValues" (click)="DateOptionClicked(datepickerBtn,item.title )">
+            <li *ngFor="let item of menuDateValues" (click)="DateOptionClicked(item.title )">
                 {{item.title}}
             </li>
         </ul>

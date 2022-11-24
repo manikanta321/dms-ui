@@ -13,22 +13,10 @@
         <option *ngFor="let invoice of invoiceDate">{{invoice}}</option>
         </select> -->
         <div class="shipment mr-3">
-        <mat-form-field appearance="fill">
-          <mat-label>Shipment Date</mat-label>
-          <mat-select [disabled]="disableSelect.value">
-            <!-- <mat-option value="option1">Option 1</mat-option>
-            <mat-option value="option3" *ngFor="let invoice of invoiceDate">{{invoice}}</mat-option> -->
-          </mat-select>
-        </mat-form-field>
+        <app-customdatepicker [showInputField]="true" label="Shipment Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
       </div>
-        <div class="invoice" (click)="selectdays()">
-        <mat-form-field appearance="fill">
-          <mat-label>Invoice Date</mat-label>
-          <mat-select [disabled]="disableSelect.value">
-            <!-- <mat-option value="option1">Option 1</mat-option>
-            <mat-option value="option3" *ngFor="let invoice of invoiceDate">{{invoice}}</mat-option> -->
-          </mat-select>
-        </mat-form-field>
+        <div class="invoice">
+          <app-customdatepicker [showInputField]="true" label="Invoice Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
       </div>
       <div class="col-md-2 col-lg-2 col-sm-2">
         <form [formGroup]="myForm" class="dropdown-form">

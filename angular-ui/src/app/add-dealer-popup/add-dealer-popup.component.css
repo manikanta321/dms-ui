@@ -317,10 +317,10 @@ border-radius: 10px;
   /* .mat-horizontal-stepper-header-container ng-tns-c418-7 {
       margin: top -51px;
     }; */
-  ::ng-deep.input.mat-input-text {
+  /* ::ng-deep.input.mat-input-text {
     margin-top: -9px;
     margin-left: -6px;
-  }
+  } */
   
   /*old css*/
   

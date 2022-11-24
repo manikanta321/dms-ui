@@ -60,7 +60,9 @@ export class CustomdatepickerComponent implements OnInit {
     }];
 
   @Input() selectedDate: any;
-
+  @Input() showInputField: boolean = false;
+  @Input() showInputShipment: boolean = false;
+  @Input() label :  any;
   @Output() customDatePickerEvent: EventEmitter<any> = new EventEmitter();
 
   constructor() {
@@ -103,9 +105,9 @@ export class CustomdatepickerComponent implements OnInit {
     this.customDatePickerEvent.emit({ selectedDate: this.selectedDate });
   }
 
-  DateOptionClicked(popover, clickedItem) {
-    if (popover.isOpen()) {
-      popover.close();
+  DateOptionClicked( clickedItem) {
+    if (this.datePickerTrigger.isOpen()) {
+      this.datePickerTrigger.close();
       console.log(clickedItem);
       if (clickedItem == 'Custom') {
         this.datePickerTrigger2.open();

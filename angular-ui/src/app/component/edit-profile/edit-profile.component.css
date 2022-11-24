@@ -339,9 +339,9 @@ span {
 
 .profilepic__content {
     position: absolute;
-    top: 0;
+    top: 17%;
     right: 0;
-    bottom: 24%;
+    /* bottom: 24%; */
     left: -3%;
     display: flex;
     flex-direction: column;

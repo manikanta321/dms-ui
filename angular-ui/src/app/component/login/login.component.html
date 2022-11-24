@@ -21,12 +21,12 @@
             <!-- Email input -->
             <div class="form-outline mb-4">
               <p style="color:red;" *ngIf="userExist">User does not exist</p>
-              <label class="form-label" for="form3Example3">Username*</label>
+              <label class="form-label" for="form3Example3">User Name*</label>
 
               <br>
-              <p *ngIf="usernameReqired" style="color: red;">Username required</p>
+              <p *ngIf="usernameReqired" style="color: red;">User Name required</p>
               
-              <input type="text" style="border-radius:10px" placeholder="Username" name="username" required [(ngModel)]="usernameofuser" pInputText
+              <input type="text" style="border-radius:10px" placeholder=" Enter your user name" name="username" required [(ngModel)]="usernameofuser" pInputText
                 required/>
             </div>
             <!-- Password input -->
@@ -34,7 +34,7 @@
               <label class="form-label" for="form3Example4">Password *</label>
               <p *ngIf="passwordrequired" style="color: red;">Password required</p>
 
-              <input placeholder="Password" style="border-radius:10px" type="password" [type]="showPassword ? 'text' : 'password'" name="password"
+              <input placeholder=" Enter password" style="border-radius:10px" type="password" [type]="showPassword ? 'text' : 'password'" name="password"
                 required [(ngModel)]="passwordofuser" pInputText required />
               <mat-icon matSuffix (click)="togglePasswordVisibility()">
                 {{showPassword?'visibility_off':'visibility'}}
@@ -45,7 +45,8 @@
             <div class="d-flex justify-content-between align-items-center">
               <!-- Checkbox -->
               <div>
-                <mat-slide-toggle color="primary">
+                <mat-slide-toggle >
+                  <!-- color="primary -->
                   Remember me </mat-slide-toggle> <br />
               </div>
               <a routerLink="/ForgotPassword" class="forgot-ps">Forgot password?</a>

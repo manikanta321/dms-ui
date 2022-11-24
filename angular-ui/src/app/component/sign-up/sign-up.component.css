@@ -146,3 +146,10 @@
     bottom: 26px;
     font-size: 21px;
   }
+  .errorMessage{
+    color: red;
+    position: relative;
+    position: relative;
+    height: 0px;
+    bottom: 25px
+  }

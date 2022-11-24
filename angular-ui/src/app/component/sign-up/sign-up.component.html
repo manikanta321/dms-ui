@@ -19,8 +19,8 @@
               <label class="form-label" for="form3Example3">Latest password*</label>
               <br>            
               <input type="password"  style="border-radius:10px" id="password" placeholder="Enter your password (at least 8 ch)" name="password"
-              [type]="showPassword ? 'text': 'password'"  required>
-              <!-- [(ngModel)]="enterfirst" -->
+              [type]="showPassword ? 'text': 'password'" [(ngModel)]="enterfirst" required>
+              
             <mat-icon matSuffix (click)="PasswordVisibilityLatest()">
               {{showPassword?'visibility':'visibility_off'}}
             </mat-icon>
@@ -30,19 +30,18 @@
               <label class="form-label" for="form3Example3">Re-enter password*</label>
               <br>
               <input type="text"  style="border-radius:10px" placeholder="Re-enter your new password (at least 8 ch)"
-              [type]="showre_Password ? 'text': 'password'" >
-              <!-- [(ngModel)]="entersecond" -->
+              [type]="showre_Password ? 'text': 'password'"  [(ngModel)]="entersecond">
+              
               <mat-icon matSuffix (click)="PasswordVisibilityreenter()">
                   {{showre_Password?'visibility':'visibility_off'}}
                 </mat-icon>
-              <!-- <p style="color: red;position: relative;position: relative;padding: 0px;height: 0px;top: -6px;">{{error}}
-              </p> -->
+                <p class="errorMessage">{{error}}</p>
             
             </div>
 
             <div class="text-center text-lg-start mt-2">
               <button type="button" class="btn btn-primary btn-block login-btn" style="width: 361px;"
-                >Update Password</button>
+               (click)="UpdatePassword()" >Update Password</button>
               <!-- <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a  routerLink="/ResetPassword"
                   class="link-danger">Register</a></p> -->
             </div>

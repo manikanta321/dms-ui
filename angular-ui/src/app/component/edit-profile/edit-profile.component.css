@@ -24,13 +24,13 @@ mat-sidenav-container {
 .edit-heading {
     position: relative;
     font-family: 'Gilroy';
-    font-weight: bold;
+    font-weight: bold; 
     font-size: 30px;
     line-height: 41px;
     display: flex;
     align-items: center;
     color: #000000;
-    top: 11px;
+    top: -4px;
     left: 58px;
 }
 
@@ -55,7 +55,7 @@ mat-sidenav-container {
 
 .img-div {
     position: relative;
-    /* width: 283px; */
+    width: 283px;
     height: 260px;
     background: #FFFFFF;
     border: 0.5px solid #000000;
@@ -157,6 +157,7 @@ mat-sidenav-container {
     /* left: 27%; */
     color: #000000;
     /* margin-left: 9%; */
+    width: 308px;
 }
 
 .user_names {
@@ -211,14 +212,16 @@ top: 13px; */
     background: #FFFFFF;
     border: 0.5px solid #000000;
     border-radius: 10px;
+    font-weight: bold;
 }
 
 .f-roles {
-    width: 364px;
+    width: 338px;
     height: 43px;
     background: #FFFFFF;
     border: 0.5px solid #000000;
     border-radius: 10px;
+    font-weight: bold;
 }
 
 .input-2 {

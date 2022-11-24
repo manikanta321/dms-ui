@@ -15,6 +15,7 @@ export class EditProfileComponent implements OnInit {
   sidenav!: MatSidenav;
 
   EmployeeName:any = '';
+  EmployeeName1:any ='';
   userName: any = '';
   Email: any = '';
   phone: any = '';
@@ -98,7 +99,7 @@ export class EditProfileComponent implements OnInit {
 
       if (res.response.result == 'successfully updated') {
         // this.sharedService.filter('Register click')
-        this.getUserProfileDetails();
+        // this.getUserProfileDetails();
         // this.dialogRef.close()
       }
       else {

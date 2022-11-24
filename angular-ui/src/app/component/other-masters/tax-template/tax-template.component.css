@@ -38,8 +38,12 @@
 .searchBox {
   float: right;
   position: absolute;
-  right: -10px;
-  top: 25px;
+   right: -10px;
+  top: 25px; 
+
+  
+
+  
 }
 
 .searchBox:hover>.searchButton {
@@ -125,7 +129,7 @@
 }
 
 .searchButton {
-  display: bolck;
+  display: block;
   color: #FFFFFF;
   float: left;
   width: 37px;
@@ -137,13 +141,18 @@
   align-items: center;
   transition: 0.2s;
   border: none;
+
+  position: relative;
+  top:-3px;
 }
 
 @media screen and (max-width: 620px) {
   .searchBox:hover>.searchInput {
-    width: 150px;
+     width: 150px;
     padding: 0 6px;
-    left: 10%;
+    left: 10%; 
+
+   
   }
 
   .searchBox {

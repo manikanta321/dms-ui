@@ -112,16 +112,16 @@ export class UsersComponent implements OnInit {
     {
       headerName: "User ID",
       field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
-      tooltipField:"employeeCode",minWidth:200,
+      tooltipField:"employeeCode",maxWidth:200,
 
     },
 
-    { headerName: "User Name", field: 'userName', type: ['nonEditableColumn'],tooltipField:"userName", },
+    { headerName: "Username", field: 'userName', type: ['nonEditableColumn'],tooltipField:"userName", },
 
     { headerName: "Role", field: 'roleName', type: ['nonEditableColumn'], tooltipField:"roleName", },
 
     {
-      headerName: "Email ID",
+      headerName: "Email ",
       field: 'email', type: ['nonEditableColumn'],
       tooltipField:"email",      
       // flex: 1,

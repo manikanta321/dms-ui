@@ -62,10 +62,10 @@ export class TaxTemplateComponent implements OnInit {
   columnDefs: ColDef[] = [ 
 
     { headerName: "Name",
-  field: 'taxTemplateName' ,type: ['nonEditableColumn'],pinned: 'left',minWidth:600
+  field: 'taxTemplateName' ,type: ['nonEditableColumn'],pinned: 'left',minWidth:500
   },
   
-  {   headerName: "Tax Items",field: 'taxTemplateDetails',type: ['nonEditableColumn'] ,minWidth:623},
+  {   headerName: "Tax Items",field: 'taxTemplateDetails',type: ['nonEditableColumn'] },
   
   // suppressMovable:true,
   { headerName: "Status",
@@ -76,6 +76,7 @@ export class TaxTemplateComponent implements OnInit {
   cellEditorParams: {
   values: ['Active', 'Inactive', 'Invited', 'Locked',],
   },
+  maxWidth:108,
   cellClass: params => {                      
     return params.value == 'Inactive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
   }
@@ -86,7 +87,7 @@ export class TaxTemplateComponent implements OnInit {
     colId: 'action',
     cellRenderer: TaxTempleateActionComponent,
     editable: false,
-    maxWidth: 75
+    maxWidth:60
   },
   
   // {

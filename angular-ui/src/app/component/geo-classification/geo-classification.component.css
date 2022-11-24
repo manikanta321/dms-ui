@@ -383,3 +383,47 @@ li{
 }
 
 
+
+
+.geography-item{
+  display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+/* .geography-item .title{
+  flex: 2;
+} */
+.action-items {
+  display: flex;
+  gap: 10px;
+}
+
+.action-items .action-item {
+  cursor: pointer;
+  display: none;
+  transition: .3s;
+}
+
+
+
+.geography-item:hover .action-items .action-item {
+  display: block;
+}
+
+.bread-crumb-display {
+  color: #686E74;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.bread-crumb-display span {
+  font-size: 18px;
+  color: #000;
+  font-weight: 600;
+}

@@ -92,8 +92,11 @@ export class ClassificationserviseService {
     return this.http.get<any>(this.classificationurl + 'OtherMasterApi/GetGeographyHierarchy');
   }
 
-  getGeographiesById(id) {
+  getGeographiesById(id, hierarchyIndex) {
     let parmeter = id ? "?id=" + id : "";
+    if(hierarchyIndex != null ){
+      parmeter += (id ? "&" :"?")+ "hid=" + hierarchyIndex;
+    }
     return this.http.get<any>(this.classificationurl + 'OtherMasterApi/GetGeographies' + parmeter);
   }
   //get country list

@@ -1,6 +1,7 @@
 import { Component, createPlatform, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
 
@@ -70,9 +71,22 @@ export class GeoClassificationComponent implements OnInit {
   geoGraphyHirerachyData: any;
   geoGraphyFullData: any;
 
+  colorsList = [
+    { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#000" }, },
+    { primaryColor: { background: '#0C5A3E', color: '#fff' }, secondaryColor: { background: "#E6FFF6", color: "#000" }, },
+    { primaryColor: { background: '#C32F27', color: '#fff' }, secondaryColor: { background: "#FFEDEC", color: "#000" }, },
+    { primaryColor: { background: '#3D1A00', color: '#fff' }, secondaryColor: { background: "#D6C8C3", color: "#000" }, },
+    { primaryColor: { background: '#DC0063', color: '#fff' }, secondaryColor: { background: "#FFE1EE", color: "#000" }, },
+    { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#000" }, },
+    { primaryColor: { background: '#0C5A3E', color: '#fff' }, secondaryColor: { background: "#E6FFF6", color: "#000" }, },
+    { primaryColor: { background: '#C32F27', color: '#fff' }, secondaryColor: { background: "#FFEDEC", color: "#000" }, },
+    { primaryColor: { background: '#3D1A00', color: '#fff' }, secondaryColor: { background: "#D6C8C3", color: "#000" }, },
+    { primaryColor: { background: '#DC0063', color: '#fff' }, secondaryColor: { background: "#FFE1EE", color: "#000" }, },
+  ]
+
 
   constructor(private fb: FormBuilder, private spinner: NgxSpinnerService,
-    private calssification: ClassificationserviseService) {
+    private calssification: ClassificationserviseService, private sanitizer: DomSanitizer) {
     this.createform();
     this.stateFormValidators();
     this.districtFormValidator();
@@ -93,28 +107,80 @@ export class GeoClassificationComponent implements OnInit {
     this.spinner.show();
     this.geoGraphyHirerachyData = null;
     this.calssification.getGeographyHierarchy().subscribe(res => {
-      console.log(res);
+      // console.log(res);
       this.spinner.hide();
       this.geoGraphyHirerachyData = res.response;
-      this.geoGraphyFullData = res.response;
-      this.getGeographiesDataById(null, 0);
+      this.geoGraphyFullData = JSON.parse(JSON.stringify(res.response));
+      this.getGeographiesDataById(null, 1);
     }, err => {
       console.log(err);
       this.spinner.hide();
     })
   }
 
-  getGeographiesDataById(id, hirerachyIndex = 0){
+  selectGeoGraphy(clickedItem, hirerachyIndex) {
+    console.log(clickedItem, hirerachyIndex);
+    this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.forEach(element => {
+      if (element.geographyId == clickedItem.geographyId) {
+        let index = this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.indexOf(element.geographyId);
+        if (index == -1) {
+          if (hirerachyIndex == this.geoGraphyFullData.length) {
+            this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.push(element.geographyId);
+            this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected.push(element.geographyName);
+          } else {
+            this.geoGraphyFullData[hirerachyIndex - 1].geographySelected = [element.geographyId];
+            this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected = [element.geographyName];
+            this.getGeographiesDataById(element.geographyId, (hirerachyIndex + 1));
+            this.removeOtherGeographiesData(hirerachyIndex);
+          }
+        } else {
+          this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.splice(index, 1);
+          this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected.splice(index, 1);
+        }
+      }
+
+
+    });
+  }
+  removeOtherGeographiesData(hirerachyIndex) {
+    for (var i = hirerachyIndex; i < this.geoGraphyFullData.length; i++) {
+      this.geoGraphyFullData[i].allOtherGeography = [];
+      this.geoGraphyFullData[i].geographySelected = [];
+      this.geoGraphyFullData[i].geographyNamesSelected = [];
+      this.geoGraphyFullData[i].geographyCount = 0;
+    }
+
+  }
+
+  getGeographiesDataById(id, hirerachyIndex = 0) {
     this.spinner.show();
-    hirerachyIndex = 0;
-      this.calssification.getGeographiesById(id).subscribe(geographiesRes => {
-        console.log(geographiesRes);
-        this.spinner.hide();
-        this.geoGraphyFullData[hirerachyIndex].allOtherGeography = geographiesRes.response.allOtherGeography ?? [];
-      }, err => {
-        console.log(err);
-        this.spinner.hide();
-      })
+    console.log(id, hirerachyIndex);
+    this.calssification.getGeographiesById(id, hirerachyIndex).subscribe(geographiesRes => {
+      console.log(geographiesRes);
+      this.spinner.hide();
+      this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography = geographiesRes.response.allOtherGeography ?? [];
+      this.geoGraphyFullData[hirerachyIndex - 1].geographySelected = [];
+      this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected = [];
+      this.geoGraphyFullData[hirerachyIndex - 1].geographyCount = this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.length;
+
+    }, err => {
+      console.log(err);
+      this.spinner.hide();
+    })
+  }
+
+  geoGraphyBreadCrumb(index) {
+    let breadCrumb = "";
+    for (var i = 0; i <= (index - 1); i++) {
+      if (this.geoGraphyFullData[index - 1] && this.geoGraphyFullData[index].geographyNamesSelected) {
+        breadCrumb += this.geoGraphyFullData[i].geographyNamesSelected.join(',');
+        if (i != (index - 1)) {
+          breadCrumb += ' <strong style="color:#000" > &#62; </strong> '
+        }
+      }
+    }
+    console.log(breadCrumb, index)
+    return this.sanitizer.bypassSecurityTrustHtml(breadCrumb);
   }
 
 

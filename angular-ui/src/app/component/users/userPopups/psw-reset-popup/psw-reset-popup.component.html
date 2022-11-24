@@ -13,7 +13,7 @@
             <input type="password" id="password" placeholder="Enter your password (at least 8 ch)" name="password"
             [type]="showPassword ? 'text': 'password'" [(ngModel)]="enterfirst" required>
           <mat-icon matSuffix (click)="PasswordVisibilityLatest()">
-            {{showPassword?'visibility_off':'visibility'}}
+            {{showPassword?'visibility':'visibility_off'}}
           </mat-icon>
             <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 
             'visibility_off'}}</mat-icon> -->
@@ -23,7 +23,7 @@
             <input type="text" placeholder="Re-enter your new password (at least 8 ch)"
             [type]="showre_Password ? 'text': 'password'" [(ngModel)]="entersecond">
             <mat-icon matSuffix (click)="PasswordVisibilityreenter()">
-                {{showre_Password?'visibility_off':'visibility'}}
+                {{showre_Password?'visibility':'visibility_off'}}
               </mat-icon>
             <p style="color: red;position: relative;position: relative;padding: 0px;height: 0px;top: -6px;">{{error}}
             </p>
@@ -53,7 +53,7 @@
             <input type="password" id=" oldPassword" placeholder="Enter your old  password (at least 8 ch)"
             [type]="showoldPassword? 'text': 'password'"  name="oldPassword" [(ngModel)]="oldPassword" required>
             <mat-icon matSuffix (click)="PasswordVisibilityold()">
-                {{showoldPassword?'visibility_off':'visibility'}}
+                {{showoldPassword?'visibility':'visibility_off'}}
             </mat-icon>
             <br><br>
 
@@ -64,7 +64,7 @@
             <input type="password" id="latestPassword" placeholder="Enter your password (at least 8 ch)"
             [type]="showPassword? 'text': 'password'" name="latestPassword" [(ngModel)]="latestPassword" required>
             <mat-icon matSuffix (click)="PasswordVisibilityLatest()">
-                {{showPassword?'visibility_off':'visibility'}}
+                {{showPassword?'visibility':'visibility_off'}}
               </mat-icon>
             <br>
 
@@ -72,7 +72,7 @@
             <input type="password"  id="relatestpassword" placeholder="Re-enter your new password (at least 8 ch)" 
             [type]="showre_Password? 'text': 'password'" name="relatestpassword" [(ngModel)]="relatestpassword">
             <mat-icon matSuffix (click)="PasswordVisibilityreenter()">
-                {{showre_Password?'visibility_off':'visibility'}}
+                {{showre_Password?'visibility':'visibility_off'}}
               </mat-icon>
             <p style="color: red;position: relative;position: relative;padding: 0px;height: 0px;top: -6px;">{{error}}
             </p>

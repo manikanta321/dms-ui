@@ -37,7 +37,7 @@
               <input placeholder=" Enter password" style="border-radius:10px" type="password" [type]="showPassword ? 'text' : 'password'" name="password"
                 required [(ngModel)]="passwordofuser" pInputText required />
               <mat-icon matSuffix (click)="togglePasswordVisibility()">
-                {{showPassword?'visibility_off':'visibility'}}
+                {{showPassword?'visibility':'visibility_off'}}
               </mat-icon>
               <p style="color:red;" *ngIf="PasswordWrong">Password is wrong</p>
             </div>

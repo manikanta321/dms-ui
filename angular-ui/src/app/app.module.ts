@@ -160,6 +160,7 @@ import { DeactiveReactivePopupComponent } from './component/users/userPopups/edi
 import { DealerDeactiveComponent } from './component/users/userPopups/editdealers/dealer-deactive/dealer-deactive.component';
 import { DealerReactivePopupComponent } from './component/users/userPopups/editdealers/dealer-reactive-popup/dealer-reactive-popup.component';
 import { DealerReactvSuccessComponent } from './component/users/userPopups/editdealers/dealer-reactv-success/dealer-reactv-success.component';
+import { TargetGroupsComponent } from './component/target-groups/target-groups.component';
 
 @NgModule({
   declarations: [
@@ -342,6 +343,9 @@ import { DealerReactvSuccessComponent } from './component/users/userPopups/editd
           DealerDeactiveComponent,
           DealerReactivePopupComponent,
           DealerReactvSuccessComponent,
+          DeactiveSubcategoryCompoComponent,
+          DeactiveTypeCompoComponent,
+          TargetGroupsComponent
   ],
   imports: [
     FormsModule,

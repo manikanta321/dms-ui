@@ -10,6 +10,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { MaterialListService } from 'src/app/services/material-list.service';
 import { MaterialListActionComponent } from '../material-list-action/material-list-action.component';
+import { SharedServiceMaterialListService } from 'src/app/services/shared-service-material-list.service';
 // import { ButtonRendererComponent } from './renderer/button-renderer.component';
 
 export interface PeriodicElement {
@@ -75,7 +76,7 @@ export class MaterialsListComponent implements OnInit {
   typeD: any = [];
   typessData: any = [];
   typessArray: any = [];
-  searchText: any;
+  searchText: any ='';
   statusTypes: any = [];
   productID: any = [];
   statusData: any = [];
@@ -120,7 +121,19 @@ export class MaterialsListComponent implements OnInit {
   constructor(public dialog: MatDialog,
     private user: UserService,
     private fb: FormBuilder,
-    private materialList: MaterialListService) { }
+    private materialList: MaterialListService,
+    private sharedService: SharedServiceMaterialListService) {
+
+      this.sharedService.listen().subscribe((m: any) => {
+        console.log(m)
+        this.getMaterialList();
+  
+      })
+      this.sharedService.getClickEvent().subscribe(() => {
+        this.getMaterialList();
+      })
+      sort: [];
+    }
 
   ngOnInit(): void {
     this.getMaterialList();
@@ -477,7 +490,7 @@ export class MaterialsListComponent implements OnInit {
     });
 
   }
-  onSubCategorySelectOrAll(item: any) {
+  onSubCategorySelectOrAll() {
     this.sub_categorys = this.subcatArray;
     let Type = {
       subCatId: this.sub_categorys
@@ -489,7 +502,6 @@ export class MaterialsListComponent implements OnInit {
       console.log("Typess", this.typss);
       this.topping2 = new FormControl(this.typeI);
     });
-    this.sub_categorys = this.subcatArray;
     const data = {
       Cat: this.catergory,
       Sub_Cat: this.sub_categorys,

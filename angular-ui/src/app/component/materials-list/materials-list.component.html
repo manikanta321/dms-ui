@@ -27,7 +27,7 @@
               <ng-multiselect-dropdown class="subcatty" name="subCategory" [placeholder]="''"
                 formControlName="subCategory" [disabled]="disabled" [settings]="dropdownSettings2" [data]="sub_category"
                 (onSelect)="onSubCategorySelect($event)" (onDeSelect)="onSubCategoryDeSelect($event)"
-                (onDeSelectAll)="onSubCategoryDSelectOrAll($event)" (onSelectAll)="onSubCategorySelectOrAll($event)">
+                (onDeSelectAll)="onSubCategoryDSelectOrAll($event)" (onSelectAll)="onSubCategorySelectOrAll()">
               </ng-multiselect-dropdown>
             </form>
             <div class="dropdown-placeholder subcatty-placeholder">

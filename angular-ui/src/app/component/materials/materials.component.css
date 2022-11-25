@@ -145,3 +145,36 @@ mat-tab-group{
   .mat-drawer-content{
     overflow: hidden;
   }
+  ::ng-deep .order-lab .mat-tab-label{
+    height: 35px !important;
+    min-width: 187px !important;
+  }
+  .order-lab .mat-tab-labels:nth-child(1) {
+    width: 50% !important;
+  }
+  
+::ng-deep.order-lab .mat-tab-header{
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    width: 547px !important;
+    bottom: 20px;
+    height: 38px;
+    font-family: 'Gilroy';
+    border-radius: 25px;
+    background: white;
+    left: 30%;
+
+}::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+    display: none !important;
+}
+::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
+    background: black;
+    color: white;
+    border-radius: 25px;
+    opacity: 1;
+}
+::ng-deep.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    display: none;
+}

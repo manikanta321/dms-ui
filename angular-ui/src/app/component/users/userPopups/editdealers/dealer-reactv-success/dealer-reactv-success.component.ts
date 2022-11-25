@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dealer-reactv-success.component.css']
 })
 export class DealerReactvSuccessComponent implements OnInit {
-
-  constructor() { }
+  customerName:any;
+  constructor(
+    
+  ) { }
 
   ngOnInit(): void {
+    this.customerName=localStorage.getItem("employeeNameOfDealer");
+
   }
 
 }

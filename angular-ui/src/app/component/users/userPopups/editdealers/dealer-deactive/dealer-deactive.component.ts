@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dealer-deactive.component.css']
 })
 export class DealerDeactiveComponent implements OnInit {
-
+  customerName:any
   constructor() { }
 
   ngOnInit(): void {
+
+    this.customerName=localStorage.getItem("employeeNameOfDealer");
+
   }
 
 }

@@ -50,7 +50,7 @@ deactv :any = ['name', 'dfdfdd'];
       interactive: true,
       appendTo: document.body,
       hideOnClick: false,
-      offset: [-100, 200],
+      offset: [-70, 200],
       onShow: (instance) => {
         hideAll({ exclude: instance });
       },
@@ -81,11 +81,15 @@ deactv :any = ['name', 'dfdfdd'];
   deaActivate(){
     console.log('thisd', this.deactv);
     this.dialog.open(DeactiveReactivePopupComponent);
+    this.isOpen = false;
+
     // const dialogRef = this.dialog.open(DeactiveReactivePopupComponent, { disableClose: true, data: dealer});
   }
 
   reActivate(){
     this.dialog.open( DealerReactivePopupComponent);
+    this.isOpen = false;
+
     // const dialogRef = this.dialog.open(DeactiveReactivePopupComponent, { disableClose: true, data: dealer});
   }
 

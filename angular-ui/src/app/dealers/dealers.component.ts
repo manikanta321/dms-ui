@@ -44,6 +44,7 @@ import { AddcurrencyComponent } from '../component/users/userPopups/addcurrency/
 import { EditTaxTemplateComponent } from '../component/users/userPopups/edit-tax-template/edit-tax-template.component';
 import { AddUserPopupComponent } from '../component/users/userPopups/add-user-popup/add-user-popup.component';
 import { AddDealerPopupComponent } from '../add-dealer-popup/add-dealer-popup.component';
+import { SharedServicesDealerService } from '../services/shared-services-dealer.service';
 // import { UseractionComponent } from '../useraction/useraction.component';
 
 @Component({
@@ -109,7 +110,6 @@ export class DealersComponent implements OnInit {
     },
     {
       headerName: "Geography",
-      minWidth:350,
       field: 'geographyName', 
       cellRenderer: this.daysSunshineRenderer,
       // cellRendererParams: {
@@ -126,7 +126,7 @@ export class DealersComponent implements OnInit {
       cellEditor: 'agSelectCellEditor',
       cellEditorParams: {
         values: ['Approved', 'getusertabeldata', 'Invited', 'Locked',],
-      },minWidth:200,
+      },maxWidth:150,
       cellClass: params => {
         return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
       }
@@ -266,16 +266,13 @@ export class DealersComponent implements OnInit {
     private user: UserService,
     private observer: BreakpointObserver,
     private fb: FormBuilder,
-    private sharedService: SharedService,
+    private sharedService: SharedServicesDealerService,
   ) {
 
     this.sharedService.listen().subscribe((m: any) => {
       console.log(m)
       this.getusertabeldata()
 
-    })
-    this.sharedService.getClickEvent().subscribe(() => {
-      this.getusertabeldata()
     })
     sort: [];
   }
@@ -836,11 +833,10 @@ ProductItems(){
     console.log('cellClicked', e);
     this.userId = e.data.userId;
      this.customerID = e.data.customerId;
-    this.employeeName = e.data.userName;
+    this.employeeName = e.data.customerCode;
     console.log('userID', this.userId);
-    localStorage.setItem('userID', this.userId)
-    localStorage.setItem('employeeName', this.employeeName);
-    localStorage.setItem('customerId', this.customerID);
+    localStorage.setItem('employeeNameOfDealer', this.employeeName);
+    localStorage.setItem('customerIdOfDealer', this.customerID);
     if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
       const cellRendererInstances = e.api.getCellRendererInstances({
         rowNodes: [e.node],

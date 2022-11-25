@@ -160,4 +160,9 @@ public getproductlist(){
   return this.http.get<any>(`${this.userurl}MaterialApi/GetStockList`);
 }
 
+public activateDeactivateDealers(data){
+
+  return this.http.post<any>(this.userurl + 'DealerApi/ActiveDeactiveDealer', data);
+}
+
 }

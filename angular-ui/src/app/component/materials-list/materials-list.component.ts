@@ -493,7 +493,7 @@ export class MaterialsListComponent implements OnInit {
     const data = {
       Cat: this.catergory,
       Sub_Cat: this.sub_categorys,
-      types: this.typesI,
+      type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText

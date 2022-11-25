@@ -1069,7 +1069,7 @@ border-radius: 10px;
   .save-btn {
     width: 168px;
     height: 43px;
-    font-family: 'Gilroy-SemiBold';
+    font-family: 'Gilroy';
     font-size: 15px;
     line-height: 18px;
     align-items: center;
@@ -1089,6 +1089,7 @@ border-radius: 10px;
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 10px;
     color:#000000;
+    font-family: 'Gilroy';
   }
 
   .add-dealer-scroll {
@@ -1177,7 +1178,7 @@ border-radius: 10px;
   }
 
   .sub-label {
-    font-family: 'Gilroy-Medium';
+    font-family: 'Gilroy';
     font-size: 12.5px;
     line-height: 15px;
     display: flex;

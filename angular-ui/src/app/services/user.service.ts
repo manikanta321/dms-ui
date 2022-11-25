@@ -155,4 +155,9 @@ public getEditCurrencyByID(FxID:any){
 public getAllDealerList(data){
   return this.http.post<any>(this.userurl + 'DealerApi/GetAllDealers',data);
 }
+
+public getproductlist(){
+  return this.http.get<any>(`${this.userurl}MaterialApi/GetStockList`);
+}
+
 }

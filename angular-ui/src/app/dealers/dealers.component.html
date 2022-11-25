@@ -18,17 +18,17 @@
       </div>
 
       <div class="col-md-2 col-lg-2 col-sm-2">
-        <form [formGroup]="myForm">
-          <ng-multiselect-dropdown class="roless-product" name="city" [placeholder]="'Product'" formControlName="city"
-            [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList"
+        <form [formGroup]="myForms1">
+          <ng-multiselect-dropdown class="roless-product" name="city1" [placeholder]="'Product'" formControlName="city1"
+            [disabled]="disabled" [settings]="dropdownSettings2" [data]="ProductListArray"
             (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
             (onDeSelectAll)="onItemDeSelectOrAll($event)" (onSelectAll)="onItemSelectOrAll($event)">
           </ng-multiselect-dropdown>
         </form>
         <div class="dropdown-placeholder catty-placeholder">
-          <span *ngIf="myForm.get('city').value.length == 0">  </span>
-          <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Products selected </span>
-          <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Product(s) selected </span>
+          <span *ngIf="myForms1.get('city1').value.length == 0">  </span>
+          <span *ngIf="myForms1.get('city1').value.length == 1" class="selected-placeholder"> {{myForms1.get('city1').value.length}} Products selected </span>
+          <span *ngIf="myForms1.get('city1').value.length > 1" class="selected-placeholder">{{myForms1.get('city1').value.length}} Products selected </span>
 
         </div>
       </div>
@@ -43,8 +43,8 @@
         </form>
         <div class="dropdown-placeholder catty-placeholder">
           <span *ngIf="myForms.get('citys').value.length == 0">  </span>
-          <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Products selected </span>
-          <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Product(s) selected </span>
+          <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Status selected </span>
+          <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Status(s) selected </span>
 
         </div>
       </div>

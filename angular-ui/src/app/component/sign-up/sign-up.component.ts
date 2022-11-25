@@ -18,6 +18,7 @@ export class ResetPassword implements OnInit {
   enterfirst:any;
   entersecond:any;
   error: any;
+  redirectSuccessMessage:boolean= false;
   myform !: FormGroup;
   username = new FormControl('', [
     Validators.required,
@@ -34,9 +35,8 @@ confirmPassward = new FormControl('', [
 // 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.Token = params['Token'];
+      this.Token = params['token'];
       console.log(this.Token); 
-      // Print the parameter to the console. 
   });
   }
   public PasswordVisibilityLatest(): void {
@@ -49,16 +49,29 @@ confirmPassward = new FormControl('', [
     this.showoldPassword = !this.showoldPassword;
   }
   
-  UpdatePassword(){
 
+  redirect_To_Sign(){
+    this.router.navigate(['']);
+  }
+  UpdatePassword(){
+    
       if(this.enterfirst==this.entersecond){
         let data={
           token:this.Token,
           Password:this.entersecond,
         }
-        this.user.changepassword(data).subscribe((res: any) => {
-          this.router.navigate(['']);
-        })
+        this.user.changepassword(data).subscribe(
+          {
+            next: (res: any) => {
+              if (res) {
+                this.redirectSuccessMessage = !this.redirectSuccessMessage;
+              }
+            },
+            error: (err: any) => {
+
+              console.log(err)
+            }
+          })
         // this.dialog.open(RestPwsdUserPopupComponent, {panelClass: 'activeSuccessPop'});
         // this.dialogRef.close();
       }else {

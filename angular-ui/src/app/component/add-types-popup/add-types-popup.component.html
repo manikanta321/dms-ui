@@ -1,23 +1,26 @@
 <div class="container">
     <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
     <div class="actv-user text-center">
-        <h1 class="head-text">{{TypeName}}</h1>
+        <h1 class="head-text" *ngIf="TypeName=='Edit Types'">Edit Type</h1>
+        <h1 class="head-text" *ngIf="TypeName=='Add Types'">Add Type</h1>
+
+
     </div>
     <div>
-        <label >Name<span style="color: red;">*</span></label><br>
+        <label class="addtypes1" >Name<span style="color: red;">*</span></label><br>
         <input type="text"id="password" placeholder="Enter Type name" 
           required [(ngModel)]="type">       
 <br>
-        <label >Code<span style="color: red;">*</span></label><br>
+        <label class="addtypes2" >Code<span style="color: red;">*</span></label><br>
         <input type="text" placeholder="Enter Type code" [(ngModel)]="typeCode"
       >
      <br>
-        <button class="update-btn" *ngIf="TypeName=='Add Types'"  (click)="AddCat()" [disabled]="!type || !typeCode">Add</button>
-        <button class="update-btn" *ngIf="TypeName=='Edit Types'" (click)="editType()" [disabled]="!type || !typeCode">Add</button>
+        <button class="update-btn" *ngIf="TypeName=='Add Types'"  (click)="AddCat()" [disabled]="!type || !typeCode">Save</button>
+        <button class="update-btn" *ngIf="TypeName=='Edit Types'" (click)="editType()" [disabled]="!type || !typeCode">Save</button>
 
         <button class="cancel-btn" (click)="close()">Cancel</button>
     </div>
-    <span style="color: red;">*Required fields</span>
+    
 
    
 </div>

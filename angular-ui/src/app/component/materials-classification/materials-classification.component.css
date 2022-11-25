@@ -10,6 +10,11 @@ mat-card{
     margin-left: -12px;
 
 } 
+.arrow
+{
+  top:10px;
+  margin-top: -5px;
+}
 .scroll{
   overflow-y: scroll;
   overflow-x: hidden;
@@ -97,12 +102,10 @@ li{
 .primary
 
 {
-
   font-family:  'Gilroy';
-
-  size: 12.5px;
-
-  color: #686E74;
+font-size: 14px;
+line-height: 15px;
+color: #686E74;
 
 }
 .addcd{
@@ -147,12 +150,21 @@ li{
     margin-bottom: 10px;
     display: flex;
     color: rgba(104, 110, 116, 0.75);
-    font-size: 13px;
+    
+    font-family:  'Gilroy';
+font-size: 14px;
+line-height: 15px;
+color: #686E74;
+
 }
 .span-subhead1{
   display: flex;
-  color: rgba(104, 110, 116, 0.75);
-  font-size: 13px;
+  font-family:  'Gilroy';
+  font-size: 14px;
+  line-height: 15px;
+  color: #686E74;
+  
+  
 }
 .selected {
     background-color: #00187A;

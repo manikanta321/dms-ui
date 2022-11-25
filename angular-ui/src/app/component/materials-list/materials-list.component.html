@@ -30,7 +30,10 @@
                 (onDeSelectAll)="onSubCategoryDSelectOrAll($event)" (onSelectAll)="onSubCategorySelectOrAll()">
               </ng-multiselect-dropdown>
             </form>
-            <div class="dropdown-placeholder subcatty-placeholder">
+            <div *ngIf="sub_category.length == ''" class="dropdown-placeholder subcatty-placeholder">
+              <span *ngIf="subCategory.get('subCategory').value.length == 0">Sub-category </span>
+            </div>
+            <div *ngIf="sub_category.length!= ''" class="dropdown-placeholder subcatty-placeholder">
               <span *ngIf="subCategory.get('subCategory').value.length == 0">Sub-category </span>
               <span *ngIf="subCategory.get('subCategory').value.length == 1" class="selected-placeholder">
                 {{subCategory.get('subCategory').value.length}} subcategory selected </span>
@@ -47,7 +50,10 @@
                 (onDeSelectAll)="OnTypeDeselectOrAll()">
               </ng-multiselect-dropdown>
             </form>
-            <div class="dropdown-placeholder types-placeholder">
+            <div *ngIf="typeI.length == ''" class="dropdown-placeholder types-placeholder">
+              <span *ngIf="type.get('type').value.length == 0">Select Type</span>
+            </div>
+            <div *ngIf="typeI.length != ''" class="dropdown-placeholder types-placeholder">
               <span *ngIf="type.get('type').value.length == 0">Select Type</span>
               <span *ngIf="type.get('type').value.length == 1" class="selected-placeholder">
                 {{type.get('type').value.length}} type selected </span>

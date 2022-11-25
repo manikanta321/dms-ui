@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DealerReactvSuccessComponent } from '../dealer-reactv-success/dealer-reactv-success.component';
 
 @Component({
@@ -9,11 +9,13 @@ import { DealerReactvSuccessComponent } from '../dealer-reactv-success/dealer-re
 })
 export class DealerReactivePopupComponent implements OnInit {
 
-  constructor( private dialog: MatDialog) { }
+  constructor( private dialog: MatDialog,
+    private dialogRef: MatDialogRef<any>,) { }
 
   ngOnInit(): void {
   }
   reactv(){
-    this.dialog.open(DealerReactvSuccessComponent ,{panelClass: 'deactiveSuccessPop'})
+    this.dialog.open(DealerReactvSuccessComponent ,{panelClass: 'activeSuccessPop'})
+    this.dialogRef.close()
    }
 }

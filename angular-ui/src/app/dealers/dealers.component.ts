@@ -60,6 +60,8 @@ export class DealersComponent implements OnInit {
   paginationPageSize = 10;
   myForm: any = FormGroup;
   myForms: any = FormGroup;
+  myForms1: any = FormGroup;
+
   disabled = false;
   ShowFilter = false;
   StatusFilter = false;
@@ -70,11 +72,16 @@ export class DealersComponent implements OnInit {
   selectedItems: any = [];
   selectedStatus: any = [];
   userTypes: any = [];
+  geoTypes: any = [];
+  statusTytpes:any=[];
+
   statusTypes: any = [];
   searchText: any;
   customerID:any;
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
+  dropdownSettings2: IDropdownSettings = {};
+
 
   gridOptions: GridOptions = {
     defaultColDef: {
@@ -197,6 +204,7 @@ export class DealersComponent implements OnInit {
 
 
   toppingList: any = [];
+  ProductListArray:any=[];
 
   toppingList1: any = [];
   filterDictionary: any;
@@ -216,6 +224,7 @@ export class DealersComponent implements OnInit {
   msg: any;
   userId: any;
   roleArray: any[] = [];
+  productAllArray:any[]=[]
   statusArray: any = [];
   messages: any[] = [];
   stayScrolledToEnd = true;
@@ -299,12 +308,15 @@ export class DealersComponent implements OnInit {
     this.getusertabeldata();
     this.roleItems();
     this.statusItems();
-
-    this.myForm = this.fb.group({
+this.ProductItems() ;
+   this.myForm = this.fb.group({
       city: [this.selectedItems]
     });
     this.myForms = this.fb.group({
       citys: [this.selectedItems]
+    });
+    this.myForms1 = this.fb.group({
+      city1: [this.selectedItems]
     });
   }
 
@@ -354,6 +366,21 @@ export class DealersComponent implements OnInit {
   }
 
 
+  toogleStatusFilter1() {
+    this.StatusFilter = !this.StatusFilter;
+    this.dropdownSettings2 = Object.assign({}, this.dropdownSettings2, { allowSearchFilter: this.StatusFilter });
+  }
+
+  handleStatusSelection1() {
+    if (this.statusSelection) {
+      this.dropdownSettings2 = Object.assign({}, this.dropdownSettings2, { statusSelection: 2 });
+    } else {
+      this.dropdownSettings2 = Object.assign({}, this.dropdownSettings2 , { statusSelection: null });
+    }
+
+  }
+
+
 
   refresh() {
     this.toppings = new FormControl(this.toppingList);
@@ -364,15 +391,21 @@ export class DealersComponent implements OnInit {
     this.myForms = this.fb.group({
       citys: [this.selectedItems]
     });
+    this.myForms1 = this.fb.group({
+      city1: [this.selectedItems]
+    });
   
+    this.geoTypes=[];
+    this.statusTytpes=[];
+    this.searchText='';
     const data = {
-      userTypes: [],
-      statuss: [],
-      search: '',
-
+      geographys:this.geoTypes,
+      statuss:this.statusTytpes,
+      Search:this.searchText,
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
+    this.user.getAllDealerList(data).subscribe((res) => {
       this.rowData5 = res.response;
+  
     });
     this.getusertabeldata();
   }
@@ -414,18 +447,54 @@ export class DealersComponent implements OnInit {
       this.toppings = new FormControl(this.toppingList);
 
       // console.log('rolelist', this.toppingList)
-      this.dropdownSettings = {
-        singleSelection: false,
-        idField: 'geographyId',
-        textField: 'geographyName',
-        selectAllText: 'Select All',
-        unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
-        allowSearchFilter: true
-      };
-      this.selectedItems = [];
+                                                                    
     });
+
+
+    
+    this.dropdownSettings= {
+      singleSelection: false,
+      idField: 'geographyId',
+      textField: 'geographyName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 2,
+      allowSearchFilter: this.StatusFilter
+    };
+    this.selectedStatus = [];
   }
+
+
+ProductItems(){
+  this.user.getproductlist().subscribe((res: any) => {
+      let localdata = res.response;
+      // console.log('checkdata', localdata)
+
+      this.ProductListArray = localdata.map((data: { stockItemId: any; stockItemName: any; }) => {
+        return { stockItemId: data.stockItemId, stockItemName: data.stockItemName };
+      });
+
+      this.ProductListArray.push()
+      this.productAllArray.forEach(element => {
+        return this.productAllArray.push(element.stockItemId);
+        // console.log('rolecheck',rolecheck)
+
+      })                                                                    
+    });
+  
+    this.dropdownSettings2 = {
+      singleSelection: false,
+      idField: 'stockItemId',
+      textField: 'stockItemName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 2,
+      allowSearchFilter: this.StatusFilter
+    };
+    this.selectedStatus = [];
+    this.toppings1 = new FormControl(this.toppingList1);
+}
+
 
   handleRowDataChanged(event) {
     const index = this.messages.length - 1;
@@ -461,8 +530,6 @@ export class DealersComponent implements OnInit {
       console.log('we have to check here', this.toppingList1)
       this.toppingList1.forEach(element => {
         return this.statusArray.push(element.statusId);
-      
-
       })
       console.log('statusArray', this.statusArray)
     
@@ -480,144 +547,186 @@ export class DealersComponent implements OnInit {
 
     });
   }
-  roleFilter(data: any) {
-    console.log('data', data)
-    this.roleName = this.toppings.value;
-    this.user.UserFilterServices(this.roleName, this.statusname).subscribe((res: any) => {
-      this.rowData = res.response;
-
-
-    });
-    console.log('rolename', this.rowData)
-  }
+ 
   onItemSelect(item: any) {
 
     // alert(item.roleName)
-    this.userTypes.push(item.roleId);
+    this.geoTypes.push(item.geographyId);
 
     const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
-
+      geographys:this.geoTypes,
+      statuss:this.statusTytpes,
+      Search:this.searchText,
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
+    this.user.getAllDealerList(data).subscribe((res) => {
+
       this.rowData5 = res.response;
+  
+
     });
-    console.log('rolefilter', this.userTypes)
-    console.log('onItemSelect', item);
+    
   }
-  onItemSelectOrAll(item: any) {
-    this.userTypes = this.roleArray;
-    const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
 
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
-      this.rowData5 = res.response;
+
+
+
+  onItemDeSelect(item: any) {
+
+    this.geoTypes.forEach((element, index) => {
+      if (element == item.geographyId) this.geoTypes.splice(index, 1);
     });
+    console.log(' this.userTypes', this.userTypes)
+
+    const data = {
+      geographys:this.geoTypes,
+      statuss:this.statusTytpes,
+      Search:this.searchText,
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {
+
+      this.rowData5 = res.response;
+  
+
+    });
+
+  }
+
+
+
+  onItemSelectOrAll(item: any) {
+    this.geoTypes = this.roleArray;
+  
+    const data = {
+      geographys:this.geoTypes,
+      statuss:this.statusTytpes,
+      Search:this.searchText,
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {
+
+      this.rowData5 = res.response;
+  
+
+    });
+
     console.log('rolefilter', this.userTypes)
     console.log('onItemSelect', item);
   }
   onItemDeSelectOrAll(item: any) {
-    const data = {
-      userTypes: this.userTypes,
-      statuss: [],
-      search: this.searchText,
 
+    this.geoTypes=[];
+    const data = {
+      geographys:this.geoTypes,
+      statuss:this.statusTytpes,
+      Search:this.searchText,
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
+    this.user.getAllDealerList(data).subscribe((res) => {
+
       this.rowData5 = res.response;
+  
+
     });
+
     console.log('rolefilter', this.userTypes)
     console.log('onItemSelect', item);
   }
 
 
 
-  onItemDeSelectOrAllStatus(item: any) {
-    const data = {
-      userTypes: this.userTypes,
-      statuss: [],
-      search: this.searchText,
 
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
-      this.rowData5 = res.response;
-    });
-    console.log('rolefilter', this.userTypes)
-  }
-
-
-  onItemSelectOrAllStatus(item: any) {
-    this.statusTypes = this.statusArray;
-    const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
-
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
-      this.rowData5 = res.response;
-    });
-    console.log('rolefilter', this.statusTypes)
-  }
-
+  
   onStatusSelect(item: any) {
-    this.statusTypes.push(item.statusId);
+    this.statusTytpes.push(item.statusId);
 
     const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
+      geographys:this.geoTypes,
+      statuss:this.statusTytpes,
+      Search:this.searchText,
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
+    this.user.getAllDealerList(data).subscribe((res) => {
+
       this.rowData5 = res.response;
+  
+
     });
 
   }
 
-  onItemDeSelect(item: any) {
-
-    this.userTypes.forEach((element, index) => {
-      if (element == item.roleId) this.userTypes.splice(index, 1);
-    });
-    console.log(' this.userTypes', this.userTypes)
-
-    // this.userTypes.pop(item.roleId);
-    const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
-
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
-      this.rowData5 = res.response;
-    });
-
-  }
+  
 
 
 
   onStatusDeSelect(item: any) {
-    this.statusTypes.forEach((element, index) => {
-      if (element == item.statusId) this.statusTypes.splice(index, 1);
+    this.statusTytpes.forEach((element, index) => {
+      if (element == item.statusId) this.statusTytpes.splice(index, 1);
     });
     // this.statusTypes.pop(item.statusId);
     console.log(' this.statusTypes', this.userTypes)
     const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
-
+      geographys:this.geoTypes,
+      statuss:this.statusTytpes,
+      Search:this.searchText,
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
+    this.user.getAllDealerList(data).subscribe((res) => {
+
       this.rowData5 = res.response;
+  
+
     });
-    console.log('rolefilter', this.userTypes)
-    console.log('onItemSelect', item);
+   
+  }
+
+
+
+
+  
+  onItemDeSelectOrAllStatus(item: any) {
+    this.statusTytpes=[];
+    const data = {
+      geographys:this.geoTypes,
+      statuss:this.statusTytpes,
+      Search:this.searchText,
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {
+
+      this.rowData5 = res.response;
+  
+
+    });
+
+  }
+
+
+  onItemSelectOrAllStatus(item: any) {
+    this.statusTytpes = this.statusArray;
+    const data = {
+      geographys:this.geoTypes,
+      statuss:this.statusTytpes,
+      Search:this.searchText,
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {
+
+      this.rowData5 = res.response;
+  
+
+    });
+    console.log('rolefilter', this.statusTypes)
+  }
+
+  onSearchChange($event: any, anything?: any) {
+    const { target } = $event;
+    this.searchText = target.value;
+    const data = {
+      geographys:this.geoTypes,
+      statuss:this.statusTytpes,
+      Search:this.searchText,
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {
+
+      this.rowData5 = res.response;
+  
+
+    });
+
   }
 
   applyFilter(event: Event) {
@@ -680,19 +789,7 @@ export class DealersComponent implements OnInit {
     );
   }
 
-  onSearchChange($event: any, anything?: any) {
-    const { target } = $event;
-    this.searchText = target.value;
-    const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
-      this.rowData5 = res.response;
-    });
-
-  }
+ 
   onRowValueChanged(event: RowValueChangedEvent) {
     var data = event.data;
 

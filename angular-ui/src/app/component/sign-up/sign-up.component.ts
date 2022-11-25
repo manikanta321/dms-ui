@@ -34,7 +34,7 @@ confirmPassward = new FormControl('', [
 // 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.Token = params['Token'];
+      this.Token = params['token'];
       console.log(this.Token); 
 
       

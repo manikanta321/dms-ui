@@ -11,6 +11,12 @@ export class CurrencyReactivatedComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<any>,) { }
 
   ngOnInit(): void {
+
+    setTimeout(() => {
+
+      this.closeDialog()
+
+    }, 5000);
   }
   closeDialog(){
     // this.sharedService.filter('Register click');

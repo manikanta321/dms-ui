@@ -22,7 +22,19 @@ export class ActiveSuccessPopComponent implements OnInit {
     this.employeename=localStorage.getItem("employeeName");
     this.materialListName =localStorage.getItem('listName');
     this.materialList();
+
+
+    setTimeout(() => {
+
+       this.closeDialog()
+
+     }, 5000);
+   
   }
+     
+
+
+
   materialList(){
     if(this.materialListName ==''){
     this.matValue = false;

@@ -6,19 +6,19 @@
         <h1 class="head-text">{{catsetName}}</h1>
     </div>
     <div>
-        <label >Name<span style="color: red;">*</span></label><br>
+        <label class="addcat" >Name<span style="color: red;">*</span></label><br>
         <input type="text" placeholder="Enter category name" 
           required [(ngModel)]="addcat">       
 <br>
-        <label >Code<span style="color: red;">*</span></label><br>
+        <label class="addcat1" >Code<span style="color: red;">*</span></label><br>
         <input type="text" placeholder="Enter category code" [(ngModel)]="addcatcode"
       >
      <br>
-        <button  *ngIf="catsetName=='Add Category'"   class="update-btn" (click)="AddCat()" [disabled]="!addcat || !addcatcode">Add</button>
-        <button *ngIf="catsetName=='Edit Category'" class="update-btn" (click)="editCat()" [disabled]="!addcat || !addcatcode">Add</button>
+        <button  *ngIf="catsetName=='Add Category'"   class="update-btn" (click)="AddCat()" [disabled]="!addcat || !addcatcode">Save</button>
+        <button *ngIf="catsetName=='Edit Category'" class="update-btn" (click)="editCat()" [disabled]="!addcat || !addcatcode">Save</button>
 
         <button class="cancel-btn" (click)="close()">Cancel</button>
     </div>
-    <span style="color: red;">*Required fields</span>
+   
    
 </div>

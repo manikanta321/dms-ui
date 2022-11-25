@@ -22,6 +22,13 @@ export class SuccessDeactivateTaxComponentComponent implements OnInit {
     this.taxId = localStorage.getItem("taxId");
     this.taxTemplateName=localStorage.getItem("taxTemplateName");
 
+
+    setTimeout(() => {
+
+      this.closeDialog()
+
+    }, 5000);
+
   }
   closeDialog(){
     this.sharedService.filter('Register click');

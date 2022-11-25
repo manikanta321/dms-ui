@@ -6,19 +6,19 @@
         <h1 class="head-text">{{SubcatsetName}}</h1>
     </div>
     <div>
-        <label >Name<span style="color: red;">*</span></label><br>
+        <label class="addsub1" >Name<span style="color: red;">*</span></label><br>
         <input type="text"id="password" placeholder="Enter sub-category name" 
           required [(ngModel)]="sucatname">       
 <br>
-        <label >Code<span style="color: red;">*</span></label><br>
+        <label  class="addsub2" >Code<span style="color: red;">*</span></label><br>
         <input type="text" placeholder="Enter sub-category code" [(ngModel)]="sucatnameCode"
       >
      <br>
-        <button class="update-btn" *ngIf="SubcatsetName=='Add Sub-Category'" (click)="AddCat()" [disabled]="!sucatname || !sucatnameCode">Add</button>
-        <button class="update-btn" *ngIf="SubcatsetName=='Edit Sub-Category'"  (click)="edit()" [disabled]="!sucatname || !sucatnameCode">Add</button>
+        <button class="update-btn" *ngIf="SubcatsetName=='Add Sub-Category'" (click)="AddCat()" [disabled]="!sucatname || !sucatnameCode">Save</button>
+        <button class="update-btn" *ngIf="SubcatsetName=='Edit Sub-Category'"  (click)="edit()" [disabled]="!sucatname || !sucatnameCode">Save</button>
 
         <button class="cancel-btn" (click)="close()">Cancel</button>
     </div>
-    <span style="color: red;">*Required fields</span>
+   
    
 </div>

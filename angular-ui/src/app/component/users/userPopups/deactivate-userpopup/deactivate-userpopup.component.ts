@@ -4,6 +4,7 @@ import { SharedService } from 'src/app/services/shared-services.service';
 import { UserService } from 'src/app/services/user.service';
 import { DeactiveSuccessPopComponent } from '../deactive-success-pop/deactive-success-pop.component';
 import { AddMaterialsService } from 'src/app/services/add-materials.service';
+import { duration } from 'moment';
 @Component({
   selector: 'app-deactivate-userpopup',
   templateUrl: './deactivate-userpopup.component.html',
@@ -18,6 +19,7 @@ export class DeactivateUserpopupComponent implements OnInit {
   localData:any;
   employeedata:any;
   employeeCodeSet:any;
+  
   constructor(private dialogRef: MatDialogRef<any>,
     private dialog: MatDialog,
     private user:UserService,
@@ -61,7 +63,8 @@ export class DeactivateUserpopupComponent implements OnInit {
     });
 
     this.sharedService.filter('Register click');
-
+     
+    
     this.dialog.open(DeactiveSuccessPopComponent, {panelClass: 'deactiveSuccessPop'});
     this.sharedService.filter('Register click');
     this.dialogRef.close()
@@ -74,7 +77,7 @@ export class DeactivateUserpopupComponent implements OnInit {
     });
     this.sharedService.filter('Register click');
 
-    this.dialog.open(DeactiveSuccessPopComponent, {panelClass: 'deactiveSuccessPop'});
+    this.dialog.open(DeactiveSuccessPopComponent,{panelClass: 'deactiveSuccessPop'});
     this.sharedService.filter('Register click');
     this.dialogRef.close()
   }

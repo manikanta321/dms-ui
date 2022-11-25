@@ -17,11 +17,24 @@ export class DeactiveSuccessPopComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+
+
+    
+
+
     this.employeename=localStorage.getItem("employeeName");
     this.employeename = localStorage.getItem('Niname');
     this.materialListName =localStorage.getItem('listName');
 
     this.materialList();
+
+     setTimeout(() => {
+
+      this.closeDialog()
+
+     }, 5000);
+
+
   }
   materialList(){
     if(this.materialListName ==''){

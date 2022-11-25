@@ -20,6 +20,12 @@ export class ActiveSuccessTaxTemplateComponent implements OnInit {
   ngOnInit(): void {
     this.taxId = localStorage.getItem("taxId");
     this.taxTemplateName=localStorage.getItem("taxTemplateName");
+
+    setTimeout(() => {
+
+      this.closeDialog()
+
+    }, 5000);
   }
   closeDialog(){
     this.dialogRef.close();

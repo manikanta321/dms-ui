@@ -46,7 +46,7 @@ if(this.activeCatIsActive == 'false'){
   this.headername= 'Activate'
 }
 else{
-  this.headername= 'De-activate'
+  this.headername= 'de-activate'
 
 }
   }

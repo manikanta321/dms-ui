@@ -36,6 +36,8 @@ confirmPassward = new FormControl('', [
     this.route.queryParams.subscribe(params => {
       this.Token = params['Token'];
       console.log(this.Token); 
+
+      
       // Print the parameter to the console. 
   });
   }

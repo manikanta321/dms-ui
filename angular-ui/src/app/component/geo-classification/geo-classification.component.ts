@@ -93,7 +93,7 @@ export class GeoClassificationComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private spinner: NgxSpinnerService,
     private dialog: MatDialog,
-    private calssification: ClassificationserviseService, private sanitizer: DomSanitizer) {
+    private classification: ClassificationserviseService, private sanitizer: DomSanitizer) {
     this.createform();
     this.stateFormValidators();
     this.districtFormValidator();
@@ -114,7 +114,7 @@ export class GeoClassificationComponent implements OnInit {
   getGeographyHierarchy() {
     this.spinner.show();
     this.geoGraphyHirerachyData = null;
-    this.calssification.getGeographyHierarchy().subscribe(res => {
+    this.classification.getGeographyHierarchy().subscribe(res => {
       // console.log(res);
       this.spinner.hide();
       this.geoGraphyHirerachyData = res.response;
@@ -166,7 +166,7 @@ export class GeoClassificationComponent implements OnInit {
   getGeographiesDataById(id, hirerachyIndex = 0) {
     this.spinner.show();
     console.log(id, hirerachyIndex);
-    this.calssification.getGeographiesById(id, hirerachyIndex).subscribe(geographiesRes => {
+    this.classification.getGeographiesById(id, hirerachyIndex).subscribe(geographiesRes => {
       console.log(geographiesRes);
       this.spinner.hide();
       this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography = geographiesRes.response.allOtherGeography ?? [];
@@ -207,42 +207,55 @@ export class GeoClassificationComponent implements OnInit {
   editGeography(event, geoItem, geographyHierarchyName, hirerachyIndex) {
     event.stopPropagation();
     console.log(geoItem);
-    let data = { geography: geoItem, title: geographyHierarchyName, isEdit: true };
+    let data = { geography: geoItem, title: geographyHierarchyName, isEdit: true, GeographyParentId: this.geoGraphyFullData[hirerachyIndex - 2]?.geographySelected[0], hirerachyIndex: hirerachyIndex };
     const dialogRef = this.dialog.open(AddeditgeoComponent, { height: '320px', disableClose: true, data: data });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(({ res, result }) => {
       console.log(result);
-      this.AddEditGeography(result, hirerachyIndex);
+      this.addEditapiResponse(res,result,hirerachyIndex);
+      
+      // this.AddEditGeography(result, hirerachyIndex);
     });
+  }
+  addEditapiResponse(apiResponse, result,hirerachyIndex){
+    let geoGraphyObj = this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.find(x => x.geographyId == result.id);
+    if (geoGraphyObj) {
+      geoGraphyObj.geographyName = result.name;
+      geoGraphyObj.geographyCode = result.code;
+    } else {
+      // Need to updated based on the response success
+      let temp = { geographyName: result.name, geographyCode: result.code, geographyId: null }
+      this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.push(temp);
+    }
   }
 
   addGeographyForm(geoGraphyGrid, hirerachyIndex) {
     // console.log(geoGraphyGrid);
-    let data = { geography: {}, title: geoGraphyGrid.geographyHierarchyName, isEdit: false };
+    let data = { geography: {}, title: geoGraphyGrid.geographyHierarchyName, isEdit: false, GeographyParentId: this.geoGraphyFullData[hirerachyIndex - 2]?.geographySelected[0], hirerachyIndex: hirerachyIndex  };
     const dialogRef = this.dialog.open(AddeditgeoComponent, { height: '320px', disableClose: true, data: data });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(({ res, result }) => {
       console.log(result);
-      if (result) {
-        this.AddEditGeography(result, hirerachyIndex);
-      }
+      this.addEditapiResponse(res,result,hirerachyIndex);
+      
+      // this.AddEditGeography(result, hirerachyIndex);
     });
   }
 
 
   ActivateDeactivateGeography(geoItem, hirerachyIndex) {
     this.spinner.show();
-    this.calssification.ActivateDeActivateGeoGraphy(geoItem.geographyId, this.userIdNumber, hirerachyIndex).subscribe({
+    this.classification.ActivateDeActivateGeoGraphy(geoItem.geographyId, this.userIdNumber, hirerachyIndex).subscribe({
       next: (res) => {
         if (res.response.result.indexOf("Successfully") != -1) {
           let geoGraphyObj = this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.find(x => x.geographyId == geoItem.geographyId);
           if (geoGraphyObj) {
             geoGraphyObj.isActive = !geoGraphyObj.isActive;
             let geoGraphyIndex = this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.indexOf(geoGraphyObj.geographyId);
-            if(geoGraphyIndex != -1){
+            if (geoGraphyIndex != -1) {
               this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.splice(geoGraphyIndex, 1);
-            this.removeOtherGeographiesData(hirerachyIndex);
+              this.removeOtherGeographiesData(hirerachyIndex);
             }
-            
-            this.dialog.open(GeoStatusPopComponent, {panelClass:(geoGraphyObj.isActive ? 'activeSuccessPop' :'deactiveSuccessPop'), data:geoGraphyObj});
+
+            this.dialog.open(GeoStatusPopComponent, { panelClass: (geoGraphyObj.isActive ? 'activeSuccessPop' : 'deactiveSuccessPop'), data: geoGraphyObj });
 
           }
         }
@@ -256,46 +269,46 @@ export class GeoClassificationComponent implements OnInit {
   }
 
 
-  AddEditGeography(result, hirerachyIndex) {
-    let obj: any = {};
-    obj.CompanyId = 1;
-    obj.GeographyName = result.name;
-    obj.GeographyCode = result.code;
-    if (result.id) {
-      obj.geographyId = result.id;
-    }
+  // AddEditGeography(result, hirerachyIndex) {
+  //   let obj: any = {};
+  //   obj.CompanyId = 1;
+  //   obj.GeographyName = result.name;
+  //   obj.GeographyCode = result.code;
+  //   if (result.id) {
+  //     obj.geographyId = result.id;
+  //   }
 
-    obj.GeographyParentId = this.geoGraphyFullData[hirerachyIndex - 2]?.geographySelected[0]; // Need to GeographyParentId
-    obj.GeographyHierarchyId = hirerachyIndex;
-    obj.logedUserId = this.userIdNumber;
+  //   obj.GeographyParentId = this.geoGraphyFullData[hirerachyIndex - 2]?.geographySelected[0]; // Need to GeographyParentId
+  //   obj.GeographyHierarchyId = hirerachyIndex;
+  //   obj.logedUserId = this.userIdNumber;
 
-    console.log(obj);
-    this.spinner.show();
-    this.calssification.SaveGeography(obj).subscribe({
-      next: (res) => {
-        if (res.response.result.indexOf("Succes") != -1 || res.response.result.indexOf("Added") != -1) {
-          let geoGraphyObj = this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.find(x => x.geographyId == result.id);
-          if (geoGraphyObj) {
-            geoGraphyObj.geographyName = result.name;
-            geoGraphyObj.geographyCode = result.code;
-          } else {
-            // Need to updated based on the response success
-            let temp = { geographyName: result.name, geographyCode: result.code, geographyId: null }
-            this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.push(temp);
-          }
-        }
-        this.spinner.hide();
-      },
-      error: (e) => {
-        console.error(e)
-        this.spinner.hide();
-      },
-    })
-  }
+  //   console.log(obj);
+  //   this.spinner.show();
+  //   this.classification.SaveGeography(obj).subscribe({
+  //     next: (res) => {
+  //       if (res.response.result.indexOf("Succes") != -1 || res.response.result.indexOf("Added") != -1) {
+  //         let geoGraphyObj = this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.find(x => x.geographyId == result.id);
+  //         if (geoGraphyObj) {
+  //           geoGraphyObj.geographyName = result.name;
+  //           geoGraphyObj.geographyCode = result.code;
+  //         } else {
+  //           // Need to updated based on the response success
+  //           let temp = { geographyName: result.name, geographyCode: result.code, geographyId: null }
+  //           this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.push(temp);
+  //         }
+  //       }
+  //       this.spinner.hide();
+  //     },
+  //     error: (e) => {
+  //       console.error(e)
+  //       this.spinner.hide();
+  //     },
+  //   })
+  // }
 
   //get Country List
   getCountryList() {
-    this.calssification.getCountryList().subscribe((res) => {
+    this.classification.getCountryList().subscribe((res) => {
       let data = res.response;
       this.countCountry = res.response.allOtherCountries.length;
       this.CountryList = data.allOtherCountries;
@@ -310,7 +323,7 @@ export class GeoClassificationComponent implements OnInit {
   getStateList(id: any) {
     localStorage.setItem('countryId', id);
     this.selectedItem = id;
-    this.calssification.getAllListByCountry(id).subscribe((res) => {
+    this.classification.getAllListByCountry(id).subscribe((res) => {
       let data = res.response;
       this.countStates = data.allOtherGeography.length;
       this.stateList = data.allOtherGeography;
@@ -324,7 +337,7 @@ export class GeoClassificationComponent implements OnInit {
   getDistrictList(id: any) {
     this.stateselectedItem = id;
     localStorage.setItem("stateId", id);
-    this.calssification.getAllListByCountry(id).subscribe((res) => {
+    this.classification.getAllListByCountry(id).subscribe((res) => {
       let data = res.response;
       this.countDist = data.allOtherGeography.length;
       this.distList = data.allOtherGeography;
@@ -337,7 +350,7 @@ export class GeoClassificationComponent implements OnInit {
   getCityList(id: any) {
     this.distselectedItem = id;
     localStorage.setItem('distId', id);
-    this.calssification.getAllListByCountry(id).subscribe((res) => {
+    this.classification.getAllListByCountry(id).subscribe((res) => {
       let data = res.response;
       this.countCity = data.allOtherGeography.length;
       this.cityList = data.allOtherGeography;
@@ -350,7 +363,7 @@ export class GeoClassificationComponent implements OnInit {
   getregionList(id: any) {
     this.citySelectedItem = id;
     localStorage.setItem('cityId', id);
-    this.calssification.getAllListByCountry(id).subscribe((res) => {
+    this.classification.getAllListByCountry(id).subscribe((res) => {
       let data = res.response;
       this.countRegion = data.allOtherGeography.length;
       this.regionList = data.allOtherGeography;
@@ -366,7 +379,7 @@ export class GeoClassificationComponent implements OnInit {
   getAreaList(id: any) {
     this.regionSelctedItem = id;
     localStorage.setItem('regionId', id);
-    this.calssification.getAllListByCountry(id).subscribe((res) => {
+    this.classification.getAllListByCountry(id).subscribe((res) => {
       let data = res.response;
       this.countArea = data.allOtherGeography.length;
       this.areaList = data.allOtherGeography;
@@ -380,7 +393,7 @@ export class GeoClassificationComponent implements OnInit {
     this.areaselectedItem = id;
     localStorage.setItem('areaId', id);
     this.subAreaSelectedItem = id;
-    this.calssification.getAllListByCountry(id).subscribe((res) => {
+    this.classification.getAllListByCountry(id).subscribe((res) => {
       let data = res.response;
       this.countSubArea = data.allOtherGeography.length;
       this.subAreaList = data.allOtherGeography;
@@ -396,7 +409,7 @@ export class GeoClassificationComponent implements OnInit {
       "CreatedById": this.logedUserId
     };
 
-    this.calssification.addCountryName(data).subscribe((res) => {
+    this.classification.addCountryName(data).subscribe((res) => {
       this.getCountryList();
       this.countryForm.reset();
     })
@@ -412,7 +425,7 @@ export class GeoClassificationComponent implements OnInit {
       "CreatedById": this.logedUserId
     };
 
-    this.calssification.addStateName(data).subscribe((res) => {
+    this.classification.addStateName(data).subscribe((res) => {
       this.stateForm.reset();
       this.getStateList(localStorage.getItem('countryId'));
     })
@@ -428,7 +441,7 @@ export class GeoClassificationComponent implements OnInit {
       "CreatedById": this.logedUserId
     };
 
-    this.calssification.addDistName(data).subscribe((res) => {
+    this.classification.addDistName(data).subscribe((res) => {
       this.districtForm.reset();
       this.getDistrictList(localStorage.getItem("stateId"));
     });
@@ -444,7 +457,7 @@ export class GeoClassificationComponent implements OnInit {
       "CreatedById": this.logedUserId
     };
 
-    this.calssification.addCityName(data).subscribe((res) => {
+    this.classification.addCityName(data).subscribe((res) => {
       this.cityForm.reset();
       this.getCityList(localStorage.getItem("distId"));
     })
@@ -460,7 +473,7 @@ export class GeoClassificationComponent implements OnInit {
       "CreatedById": this.logedUserId
     };
 
-    this.calssification.addZoneName(data).subscribe((res) => {
+    this.classification.addZoneName(data).subscribe((res) => {
       this.regionForm.reset();
       this.getregionList(localStorage.getItem("cityId"));
     })
@@ -476,7 +489,7 @@ export class GeoClassificationComponent implements OnInit {
       "CreatedById": this.logedUserId
     };
 
-    this.calssification.addRegionAreaName(data).subscribe((res) => {
+    this.classification.addRegionAreaName(data).subscribe((res) => {
       this.regionAreaForm.reset();
       this.getAreaList(localStorage.getItem("regionId"));
     })
@@ -492,7 +505,7 @@ export class GeoClassificationComponent implements OnInit {
       "CreatedById": this.logedUserId
     };
 
-    this.calssification.AddSubArea(data).subscribe((res) => {
+    this.classification.AddSubArea(data).subscribe((res) => {
       this.subAreaForm.reset();
       this.getSubAreaList(localStorage.getItem("areaId"));
     })
@@ -568,7 +581,7 @@ export class GeoClassificationComponent implements OnInit {
     }
 
     if (confirm("Are you sure want to delete " + strName + "!") == true) {
-      this.calssification.getDeleteListByCountry(id).subscribe((res) => {
+      this.classification.getDeleteListByCountry(id).subscribe((res) => {
         let data = res.response;
         if (status === 1) {
           this.getCountryList();

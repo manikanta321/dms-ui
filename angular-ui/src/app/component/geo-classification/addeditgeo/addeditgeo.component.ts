@@ -77,12 +77,12 @@ export class AddeditgeoComponent implements OnInit {
     this.spinner.show();
     this.classification.SaveGeography(obj).subscribe({
       next: (res) => {
-        if (res.response.result.indexOf("Succes") != -1 || res.response.result.indexOf("Added") != -1) {
+        if (res.response.flag) {
           this.dialogRef.close({res, result});
-          alert(res.response.result);
+          alert(res.response.resultDetails);
         }else{
           // Show warning message
-          alert(res.response.result);
+          alert(res.response.resultDetails);
         }
         this.spinner.hide();
       },

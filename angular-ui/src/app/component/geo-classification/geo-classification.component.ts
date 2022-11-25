@@ -223,8 +223,9 @@ export class GeoClassificationComponent implements OnInit {
       geoGraphyObj.geographyCode = result.code;
     } else {
       // Need to updated based on the response success
-      let temp = { geographyName: result.name, geographyCode: result.code, geographyId: null }
-      this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.push(temp);
+      // let temp = { geographyName: result.name, geographyCode: result.code, geographyId: null }
+
+      this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.push(apiResponse.response.geography);
     }
   }
 

@@ -66,7 +66,7 @@ export class AddeditgeoComponent implements OnInit {
     obj.GeographyName = result.name;
     obj.GeographyCode = result.code;
     if (result.id) {
-      obj.geographyId = result.id;
+      obj.GeographyId = result.id;
     }
 
     obj.GeographyParentId = this.GeographyParentId; // Need to GeographyParentId

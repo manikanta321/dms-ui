@@ -27,7 +27,7 @@
                                 <div class="geography-item"
                                     [ngStyle]="{'background':item.geographySelected.indexOf(geoItem.geographyId) == -1 ? colorsList[i].secondaryColor.background : colorsList[i].primaryColor.background, 'color':item.geographySelected.indexOf(geoItem.geographyId) == -1 ? colorsList[i].secondaryColor.color : colorsList[i].primaryColor.color,'border': '1px solid ' + colorsList[i].primaryColor.background }"
                                     (click)="geoItem?.isActive ? selectGeoGraphy(geoItem,(i +1)): null" [ngClass]="{'deactivated': !geoItem?.isActive} ">
-                                    <div class="title"> {{geoItem.geographyName}}</div>
+                                    <div class="title"> {{geoItem.geographyName}} ({{geoItem.geographyCode ??''}})</div>
                                     <div class="action-items">
                                         <div class="action-item edit-action" *ngIf="geoItem.isActive" (click)="editGeography($event, geoItem, item.geographyHierarchyName, (i+1))">
                                             <img src="assets/img/pencil.svg" alt="Edit">

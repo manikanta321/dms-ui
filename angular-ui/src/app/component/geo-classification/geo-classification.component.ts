@@ -328,7 +328,7 @@ export class GeoClassificationComponent implements OnInit {
       this.countStates = data.allOtherGeography.length;
       this.stateList = data.allOtherGeography;
       this.stateselectedItem = data.firstGeography.geographyId;
-      this.getDistrictList(data.firstGeography.geographyId)
+      this.getDistrictList(data.firstGeography.geographyId);
 
     })
   }

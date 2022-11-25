@@ -17,6 +17,7 @@
 
 .text-succ {
     padding: 0 10px;
+    max-width: 280px;
 }
 
 .closeImg {

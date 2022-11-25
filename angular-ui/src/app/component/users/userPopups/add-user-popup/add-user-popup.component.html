@@ -19,7 +19,7 @@
           <form #loginForm="ngForm">
             <div class="row">
     <div class="col">
-      <label>User Name<span>*</span></label>
+      <label>Username<span>*</span></label>
       <br>
       <input type="text" id="uname" name="uname" required placeholder="Enter your username" [(ngModel)]="username" #uname="ngModel" style="width: 100%;">
       <p style="margin-bottom:-22px; padding: 0px;" *ngIf="uname.invalid && (uname.dirty || uname.touched)"

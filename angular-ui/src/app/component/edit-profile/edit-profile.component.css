@@ -24,7 +24,7 @@ mat-sidenav-container {
 .edit-heading {
     position: relative;
     font-family: 'Gilroy';
-    font-weight: bold; 
+    font-weight: bold;
     font-size: 30px;
     line-height: 41px;
     display: flex;
@@ -34,13 +34,13 @@ mat-sidenav-container {
     left: 58px;
 }
 
-.edit-heading:after{
+.edit-heading:after {
     content: "";
     display: block;
     width: 205px;
     height: 0.8px;
     background: #686E74;
-   left: 114%;
+    left: 114%;
     top: 50%;
     position: absolute;
     width: 913px;
@@ -185,7 +185,7 @@ mat-sidenav-container {
     /* top: 6%; */
     font-family: 'Gilroy';
     font-size: 16px;
-    
+
     line-height: 106.3%;
     display: flex;
     align-items: center;
@@ -226,7 +226,7 @@ top: 13px; */
 }
 
 .input-2 {
-    
+
     position: relative;
 }
 
@@ -285,7 +285,7 @@ span {
     height: 100vh;
 } */
 
- @media (max-width: 1158px) {
+@media (max-width: 1158px) {
     .edit-div {
         position: absolute;
         margin-left: 38px;
@@ -307,26 +307,78 @@ span {
     .img-div {
         position: relative;
         left: 31% !important;
-       
+
     }
-    .edit-data{
+
+    .edit-data {
         margin-left: 10%;
     }
-    .main{
+
+    .main {
         height: 824px;
     }
-    .button-save-chng{
+
+    .button-save-chng {
         right: 9%;
     }
-    .role-sel{
+
+    .role-sel {
         margin-left: 6%;
     }
 }
+
 @media (max-width: 767px) {
-    .edit-div{
+    .edit-div {
         height: 942px;
     }
-    .edit-data{
+
+    .edit-data {
         height: 580px;
     }
+}
+
+.profilepic__content {
+    position: absolute;
+    top: 17%;
+    right: 0;
+    /* bottom: 24%; */
+    left: -3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+}
+
+.profilepic__icon {
+    color: white;
+    padding-bottom: 25%;
+}
+
+.fas {
+    font-size: 20px;
+}
+
+.profilepic__text {
+    /* text-transform: uppercase; */
+    width: 39%;
+    position: absolute;
+    font-family: 'Gilroy';
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+.prof-hov:hover .profilepic__content {
+    opacity: 1;
+}
+
+.prof-hov:hover .profile-icon {
+    opacity: .5;
 }

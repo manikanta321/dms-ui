@@ -21,17 +21,17 @@
             <!-- Email input -->
             <div class="form-outline mb-4">
               <p style="color:red;" *ngIf="userExist">User does not exist</p>
-              <label class="form-label" for="form3Example3">User Name*</label>
+              <label class="form-label" for="form3Example3">Username</label>
 
               <br>
-              <p *ngIf="usernameReqired" style="color: red;">User Name required</p>
+              <p *ngIf="usernameReqired" style="color: red;">Username required</p>
               
               <input type="text" style="border-radius:10px" placeholder=" Enter your user name" name="username" required [(ngModel)]="usernameofuser" pInputText
                 required/>
             </div>
             <!-- Password input -->
             <div class="form-outline mb-3">
-              <label class="form-label" for="form3Example4">Password *</label>
+              <label class="form-label" for="form3Example4">Password </label>
               <p *ngIf="passwordrequired" style="color: red;">Password required</p>
 
               <input placeholder=" Enter password" style="border-radius:10px" type="password" [type]="showPassword ? 'text' : 'password'" name="password"
@@ -49,7 +49,7 @@
                   <!-- color="primary -->
                   Remember me </mat-slide-toggle> <br />
               </div>
-              <a routerLink="/ForgotPassword" class="forgot-ps">Forgot password?</a>
+              <a routerLink="/ForgotPassword" class="forgot-ps">Forgot password</a>
             </div>
 
             <div class="text-center text-lg-start mt-4 pt-2">

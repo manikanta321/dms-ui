@@ -124,6 +124,10 @@ public changepassword(data){
   return this.http.post<any>(this.userurl + 'UserMgmtApi/UpdatePasswordByAdmin', data);
 }
 
+forgotPassword(data){
+  return this.http.post<any>(this.userurl + 'Account/ForgotPassword',data);
+}
+
 public changePasswordByUser(userChangePasswordData){
 return this.http.post<any>(this.userurl +'UserMgmtApi/UpdatePassword',userChangePasswordData);
 // userId=215&currentPassword=Abc@123&newPassword=Abc@1233

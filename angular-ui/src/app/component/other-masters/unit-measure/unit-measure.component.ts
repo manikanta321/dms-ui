@@ -87,7 +87,6 @@ cellEditorParams: {
 values: ['Active', 'Inactive', 'Invited', 'Locked',],
 
 },
-maxWidth:110,
 cellClass: params => {                      
   return params.value == 'Inactive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
 }

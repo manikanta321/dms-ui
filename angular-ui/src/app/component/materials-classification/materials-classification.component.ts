@@ -9,6 +9,8 @@ import { AddTypesPopupComponent } from '../add-types-popup/add-types-popup.compo
 import { SharedServiceAddSubService } from 'src/app/services/shared-service-add-sub.service';
 import { SharedServiceAddTypesService } from 'src/app/services/shared-service-add-types.service';
 import { DeactivateClassificationPopUpComponent } from '../deactivate-classification-pop-up/deactivate-classification-pop-up.component';
+import { DeactiveSubcategoryCompoComponent } from '../deactive-subcategory-compo/deactive-subcategory-compo.component';
+import { DeactiveTypeCompoComponent } from '../deactive-type-compo/deactive-type-compo.component';
 
 @Component({
   selector: 'app-materials-classification',
@@ -59,7 +61,7 @@ export class MaterialsClassificationComponent implements OnInit {
   ) {
     this.sharedService.listen().subscribe((m: any) => {
       console.log(m)
-this.addcatagory();
+this.getclassification();
     })
     this.sharedServiceaddsub.listen().subscribe((m: any) => {
       console.log(m)
@@ -85,23 +87,49 @@ this.calssification.getclassification().subscribe((res)=>{
   let data=res.response;
   this.coutCatagory=res.totalRecords;
   this.catgname=data.allOtherCats
-  this.catagoryroouting=data.firstCat.catName;
-  this.selectedItem=data.allOtherCats[0];
-  this.subcatRoouting=data.firstCat.subCAts.firstSubCat.subCatName;
-  this.subcatcount=data.firstCat.subCatsCount;
-  this.typecount=data.firstCat.subCAts.firstSubCat.typeCount;
+
+  if(data.firstCat.isActive==true){
+    this.catagoryroouting=data.firstCat.catName;
+    this.selectedItem=data.allOtherCats[0];
+    this.subcatRoouting=data.firstCat.subCAts.firstSubCat.subCatName;
+    this.subcatcount=data.firstCat.subCatsCount;
+    this.typecount=data.firstCat.subCAts.firstSubCat.typeCount;
+    console.log('data',data.firstCat)
+    let char=[]
+    this.subname=data.firstCat.subCAts.allOtherSubCAts;
+    this.selectedsubItem=data.firstCat.subCAts.allOtherSubCAts[0];
+    this.typename=data.firstCat.subCAts.firstSubCat.types;
+    this.selectedtypeItem=data.firstCat.subCAts.firstSubCat.types[0];
+    this.itemId=data.firstCat.catId
+    localStorage.setItem('Catidset',this.itemId)
+  
+    this.subCatId=data.firstCat.subCAts.firstSubCat.subCatId;
+    localStorage.setItem('Subcatidset',this.subCatId)
+
+
+
+  }
+
+  
+else{
+  this.catagoryroouting='';
+  
+  // this.selectedItem=data.allOtherCats[0];
+  this.subcatRoouting='';
+  this.subcatcount=0;
+  this.typecount=0;
   console.log('data',data.firstCat)
   let char=[]
-  this.subname=data.firstCat.subCAts.allOtherSubCAts;
-  this.selectedsubItem=data.firstCat.subCAts.allOtherSubCAts[0];
-  this.typename=data.firstCat.subCAts.firstSubCat.types;
-  this.selectedtypeItem=data.firstCat.subCAts.firstSubCat.types[0];
-  this.itemId=data.firstCat.catId
+  this.subname=[];
+  // this.selectedsubItem=data.firstCat.subCAts.allOtherSubCAts[0];
+  this.typename=[];
+  // this.selectedtypeItem=data.firstCat.subCAts.firstSubCat.types[0];
+  this.itemId=''
   localStorage.setItem('Catidset',this.itemId)
 
-  this.subCatId=data.firstCat.subCAts.firstSubCat.subCatId;
+  this.subCatId='';
   localStorage.setItem('Subcatidset',this.subCatId)
-
+}
  
  console.log('typename',this.typename)
   console.log('char',this.subname);
@@ -141,6 +169,7 @@ this.calssification.getclassification().subscribe((res)=>{
  
 console.log('item to edit',item)
 localStorage.setItem('catsetName',catsetName)
+localStorage.setItem('activeCatId',item.catId);
 
     this.dialog.open(AddCatComponent,{height:'320px'});
 
@@ -180,6 +209,7 @@ localStorage.setItem('catsetName',catsetName)
  
     console.log('item to edit',item)
     localStorage.setItem('subcatsetName',subcatsetName)
+    localStorage.setItem('activeSubCatId',item.subCatId);
     this.dialog.open(AddSubCatComponent,{height:'320px'});
 
   }
@@ -188,6 +218,17 @@ localStorage.setItem('catsetName',catsetName)
     this.addSubButton=false;
 
   }
+
+  deactivate(item){
+    console.log('itemin Subcat',item)
+    localStorage.setItem('activeSubCatId',item.subCatId);
+    localStorage.setItem('activeSubCatName',item.subCatName)
+    localStorage.setItem('activeSubCatIsActive',item.isActive)
+    this.dialog.open(DeactiveSubcategoryCompoComponent);
+
+  }
+
+
   addTypeCategory(){
     let TypeName='Add Types'
       localStorage.setItem('TypeName',TypeName)
@@ -202,9 +243,25 @@ localStorage.setItem('catsetName',catsetName)
   
     console.log('item to edit',item)
     localStorage.setItem('TypeName',TypeName)
+    localStorage.setItem('activeTypeId',item.typeId);
+    localStorage.setItem('activeTypeId',item.typeId);
+
     this.dialog.open(AddTypesPopupComponent,{height:'320px'});
 
   }
+
+  deactivateType(item){
+    console.log('itemin type',item)
+    localStorage.setItem('activeTypeId',item.typeId);
+    localStorage.setItem('activeTypeName',item.typeName)
+    localStorage.setItem('activeTypeIsActive',item.isActive)
+    this.dialog.open(DeactiveTypeCompoComponent);
+    
+
+
+
+  }
+
   removeaddformtype(){
     this.addTypeButton=false;
 
@@ -385,10 +442,14 @@ setTimeout(()=>{                           // <<<---using ()=> syntax
       let data=res.response;
       this.coutCatagory=res.totalRecords;
       this.catgname=data.allOtherCats;
+      if(data.firstCat.isActive == true){
       this.subcatcount=data.firstCat.subCatsCount;
       this.typecount=data.firstCat.subCAts.firstSubCat.typeCount;
       this.selectedItem=data.allOtherCats[0];
+      }
+      else{
 
+      }
     //   console.log('data',data.firstCat)
     //   let char=[]
     //   this.subname=data.firstCat.subCAts.allOtherSubCAts;
@@ -430,7 +491,7 @@ addsubCat(){
       console.log(res)
       let data=res.response;
       this.subname=data.allOtherSubCAts;
-      this.selectedsubItem=data.allOtherSubCAts[0]
+      // this.selectedsubItem=data.allOtherSubCAts[0]
 
       if(data.firstSubCat==null){
         this.typename=[];
@@ -439,13 +500,26 @@ addsubCat(){
       }
       else{
         // this.typename=res.response;
-        this.selectedtypeItem=data.firstSubCat.types[0];
-        this.subcatRoouting=data.firstSubCat.subCatName;
-
-        // this.selectedtypeItem=res.response[0];
-        this.typename=data.firstSubCat.types;
-        this.subcatcount=res.totalRecords;
-        this.typecount=data.firstSubCat.typeCount;
+        if(data.firstSubCat.isActive==true){
+          this.selectedtypeItem=data.firstSubCat.types[0];
+          this.subcatRoouting=data.firstSubCat.subCatName;
+  
+          // this.selectedtypeItem=res.response[0];
+          this.typename=data.firstSubCat.types;
+          this.subcatcount=res.totalRecords;
+          this.typecount=data.firstSubCat.typeCount;
+        }
+        else
+        {
+          // this.selectedtypeItem=data.firstSubCat.types[0];
+          this.subcatRoouting='';
+  
+          this.selectedtypeItem='';
+          this.typename=[];
+          this.subcatcount=res.totalRecords;
+          this.typecount=0;
+        }
+       
         // this.selectedtypeItem=res.response[0];
   
       }
@@ -455,19 +529,6 @@ addsubCat(){
 
 
 addtypes(){
-//   let data={
-//     typeName:this.type,
-//     typeCode:this.typeCode,
-//     subcategoryid:this.subCatId,
-//     CreatedById:this.numberValue
-// };
-// this.calssification.addtypes(data).subscribe((res)=>{
-//   this.type='';
-//   this.typeCode='';
-// })  
-
-
-
 setTimeout(()=>{                          
  
   this.calssification.onclicksubcat(this.subCatId).subscribe((res)=>{
@@ -476,8 +537,15 @@ setTimeout(()=>{
     this.typename=res.response;
     console.log(this.typename)
     this.typecount=res.totalRecords;
-    this.selectedtypeItem=res.response[0];
- 
+    if(res.response[0].isActive==true)
+    {
+      this.selectedtypeItem=res.response[0];
+    }
+ else
+ {
+  this.selectedtypeItem='';
+
+ }
   })
   
 }, 1000);
@@ -494,10 +562,19 @@ oclicksub(item){
   this.calssification.onclicksubcat(this.subCatId).subscribe((res)=>{
     console.log(res)
     let data=res.response;
-    this.typename=res.response;
-    this.selectedtypeItem=res.response[0];
-    this.typecount=res.totalRecords;
-    console.log(this.typename)
+  this.typename=res.response;
+  this.selectedtypeItem=res.response[0];
+  this.typecount=res.totalRecords;
+  console.log(this.typename)
+// }
+//    else{
+//     this.typename=[];
+//     this.selectedtypeItem='';
+//     this.typecount=0;
+//     console.log(this.typename)
+//    }
+
+
 
 
   })
@@ -513,22 +590,46 @@ console.log('item',item)
  this.catagoryroouting=item.catName;
 this.calssification.onclickcat(this.itemId).subscribe((res)=>{
 console.log(res)
-
 let data=res.response;
 this.subcatcount=res.totalRecords;
 this.typecount=data.firstSubCat?.typeCount;
 this.subname=data.allOtherSubCAts;
-this.selectedsubItem=data.allOtherSubCAts[0]
+if(data.firstSubCat.isActive==true){
+  this.selectedsubItem=data.allOtherSubCAts[0]
+}
+
 if(data.firstSubCat==null){
   this.typename=[]
   this.subcatRoouting='No Sub-Category'
 }
 else{
+if(data.firstSubCat.isActive==true){
   this.subCatId=data.firstSubCat.subCatId
   localStorage.setItem('Subcatidset',this.subCatId)
   this.subcatRoouting=data.firstSubCat.subCatName;
-  this.typename=data.firstSubCat.types;
-  this.selectedtypeItem=data.firstSubCat.types[0];
+  if(data.firstSubCat.types[0].isActive==true ){
+    this.typename=data.firstSubCat.types;
+    this.selectedtypeItem=data.firstSubCat.types[0];
+  }
+  else{
+    this.typename=data.firstSubCat.types;
+    this.selectedtypeItem='';
+
+  }
+
+
+}
+ else{
+  
+
+
+  this.subCatId=data.firstSubCat.subCatId
+  localStorage.setItem('Subcatidset',this.subCatId)
+  this.subcatRoouting='';
+  this.typename=[];
+  this.selectedtypeItem=' ';
+ }
+
 }
 });
 

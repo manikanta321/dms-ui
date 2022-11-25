@@ -174,7 +174,49 @@ deactivate(data){
 
 }
 
+deactivateSub(data){
+  return this.http.post<any>(this.classificationurl + 'MaterialApi/ActiveDeactiveSubCategory', data);
 
+}
+
+deactivateType(data){
+  return this.http.post<any>(this.classificationurl + 'MaterialApi/ActiveDeactiveType', data);
+
+}
+
+
+getCatDetailsById(id){
+  return this.http.get<any>(this.classificationurl + 'MaterialApi/GetCategoryById?CategoryId=' + id);
+
+}
+
+getsubCatByID(id){
+  return this.http.get<any>(this.classificationurl + 'MaterialApi/GetSubCategoryById?SubCategoryId=' + id);
+
+}
+
+getTypesById(id){
+  return this.http.get<any>(this.classificationurl + 'MaterialApi/GetTypeById?TypeId=' + id);
+
+}
+
+
+updateCat(data){
+  return this.http.post<any>(this.classificationurl + 'MaterialApi/UpdateCategory', data);
+
+}
+
+updateSubCat(data){
+  return this.http.post<any>(this.classificationurl + 'MaterialApi/UpdateSubCategory', data);
+  
+}
+
+
+
+updateType(data){
+  return this.http.post<any>(this.classificationurl + 'MaterialApi/UpdateType', data);
+
+}
 
 
 }

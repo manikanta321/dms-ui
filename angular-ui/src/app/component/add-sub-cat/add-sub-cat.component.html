@@ -5,7 +5,6 @@
     <div class="actv-user text-center">
         <h1 class="head-text">{{SubcatsetName}}</h1>
     </div>
-    <form #loginForm="ngForm">
     <div>
         <label >Name<span style="color: red;">*</span></label><br>
         <input type="text"id="password" placeholder="Enter sub-category name" 
@@ -15,10 +14,11 @@
         <input type="text" placeholder="Enter sub-category code" [(ngModel)]="sucatnameCode"
       >
      <br>
-        <button class="update-btn" (click)="AddCat()" [disabled]="!sucatname || !sucatnameCode">Add</button>
+        <button class="update-btn" *ngIf="SubcatsetName=='Add Sub-Category'" (click)="AddCat()" [disabled]="!sucatname || !sucatnameCode">Add</button>
+        <button class="update-btn" *ngIf="SubcatsetName=='Edit Sub-Category'"  (click)="edit()" [disabled]="!sucatname || !sucatnameCode">Add</button>
+
         <button class="cancel-btn" (click)="close()">Cancel</button>
     </div>
     <span style="color: red;">*Required fields</span>
-</form>
    
 </div>

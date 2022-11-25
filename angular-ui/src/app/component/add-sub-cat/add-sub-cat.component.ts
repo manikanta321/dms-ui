@@ -23,6 +23,7 @@ export class AddSubCatComponent implements OnInit {
   sucatnameCode:any;
   numberValue:any;
   itemId:any;
+  activeSubCatId:any;
   SubcatsetName:any;
   adminPassword:boolean =false;
   showPassword: boolean = false;
@@ -54,6 +55,14 @@ export class AddSubCatComponent implements OnInit {
     this.userId = localStorage.getItem("userID");
     this.LoginId=localStorage.getItem("logInId");
     this.SubcatsetName=localStorage.getItem("subcatsetName");
+    this.activeSubCatId=localStorage.getItem("activeSubCatId");
+if(this.SubcatsetName=='Edit Sub-Category'){
+  this.calssification.getsubCatByID(this.activeSubCatId).subscribe((res)=>{
+    this.sucatname=res.response.subCategoryName;
+    this.sucatnameCode=res.response.subCategoryCode;
+  })
+
+}
 
   }
  
@@ -73,10 +82,25 @@ export class AddSubCatComponent implements OnInit {
     this.dialogRef.close();
 
     })  
-
-
-
   }
+
+edit(){
+  let data={
+    SubCategoryId:this.activeSubCatId,
+    subCategoryName:this.sucatname,
+    subCategoryCode:this.sucatnameCode,
+    LastModifiedById:this.numberValue
+}
+this.calssification.updateSubCat(data).subscribe((res)=>{
+
+  this.sucatname='';
+  this.sucatnameCode='';
+  this.sharedService.filter('Register click')
+
+  this.dialogRef.close();
+})
+}
+
   close(){
     this.dialogRef.close();
 

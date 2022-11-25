@@ -27,6 +27,7 @@ export class AddTypesPopupComponent implements OnInit {
   TypeName:any;
   adminPassword:boolean =false;
   showPassword: boolean = false;
+  activeTypeId:any;
   constructor( private dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
     private user:UserService,
@@ -39,14 +40,6 @@ export class AddTypesPopupComponent implements OnInit {
    
     }
 
-    passFormControl = new FormControl('', [
-      Validators.required,
-  ]);
-  confirmFormControl = new FormControl('', [
-      Validators.required,
-      ]);
-
-       hide =true;
 
   ngOnInit(): void {
     this.LoginId=localStorage.getItem("logInId");
@@ -56,6 +49,15 @@ export class AddTypesPopupComponent implements OnInit {
     this.LoginId=localStorage.getItem("logInId");
     this.subCatId=localStorage.getItem("Subcatidset");
     this.TypeName=localStorage.getItem("TypeName");
+    this.activeTypeId=localStorage.getItem("activeTypeId");
+
+
+    if(this.TypeName=='Edit Types'){
+      this.calssification.getTypesById(this.activeTypeId).subscribe((res)=>{
+this.type=res.response.typeName;
+this.typeCode=res.response.typeCode;
+      })
+    }
 
   }
  
@@ -81,5 +83,24 @@ export class AddTypesPopupComponent implements OnInit {
 
   }
   
+  editType(){
+    let data={
+
+     TypeId:this.activeTypeId,
+      TypeName:this.type,
+      TypeCode:this.typeCode,
+      LastModifiedById:this.numberValue
+  };
+  this.calssification.updateType(data).subscribe((res)=>{
+    this.type='';
+    this.typeCode='';
+    this.dialogRef.close();
+    this.sharedService.filter('Register click')
+  })
+
+
+  }
+
+
 }
 

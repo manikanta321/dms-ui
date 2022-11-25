@@ -3,7 +3,6 @@
     <div class="actv-user text-center">
         <h1 class="head-text">{{TypeName}}</h1>
     </div>
-    <form #loginForm="ngForm">
     <div>
         <label >Name<span style="color: red;">*</span></label><br>
         <input type="text"id="password" placeholder="Enter Type name" 
@@ -13,10 +12,12 @@
         <input type="text" placeholder="Enter Type code" [(ngModel)]="typeCode"
       >
      <br>
-        <button class="update-btn" (click)="AddCat()" [disabled]="!type || !typeCode">Add</button>
+        <button class="update-btn" *ngIf="TypeName=='Add Types'"  (click)="AddCat()" [disabled]="!type || !typeCode">Add</button>
+        <button class="update-btn" *ngIf="TypeName=='Edit Types'" (click)="editType()" [disabled]="!type || !typeCode">Add</button>
+
         <button class="cancel-btn" (click)="close()">Cancel</button>
     </div>
     <span style="color: red;">*Required fields</span>
-</form>
+
    
 </div>

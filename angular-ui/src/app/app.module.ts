@@ -15,8 +15,8 @@ import { MatInputModule } from '@angular/material/input';
 import { HeadComponent } from './shared-component/head/head.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon'
-import {MatExpansionModule} from '@angular/material/expansion';
-import {BrowserAnimationsModule} from    '@angular/platform-browser/animations';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsersComponent } from './component/users/users.component';
 import { MaterialsComponent } from './component/materials/materials.component';
 import { MaterialsListComponent } from './component/materials-list/materials-list.component';
@@ -29,11 +29,11 @@ import { EditUomPopupComponent } from './component/users/userPopups/edit-uom-pop
 import { AddTaxTemplateComponent } from './component/users/userPopups/add-tax-template/add-tax-template.component';
 import { EditTaxTemplateComponent } from './component/users/userPopups/edit-tax-template/edit-tax-template.component';
 import { AddcurrencyComponent } from './component/users/userPopups/addcurrency/addcurrency.component';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
-import {MatListModule} from '@angular/material/list';
-import { MatMenuModule} from '@angular/material/menu';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MaterialAddEditpopupComponent } from './component/materials-list/material-add-editpopup/material-add-editpopup.component';
 import { OtherMastersComponent } from './component/other-masters/other-masters.component';
 import { DealerComponent } from './component/dealer/dealer.component';
@@ -41,19 +41,19 @@ import { DealersComponent } from './dealers/dealers.component';
 import { AssociationComponent } from './association/association.component';
 import { ReportsComponent } from './reports/reports.component';
 import { GeographiesComponent } from './component/geographies/geographies.component';
-import {MatChipsModule} from '@angular/material/chips';
+import { MatChipsModule } from '@angular/material/chips';
 // import {MatTabsModule} from '@angular/material/tabs';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ImpactedAssociationComponent } from './component/materials-list/impacted-association/impacted-association.component';
 import { AddDealerPopupComponent } from './add-dealer-popup/add-dealer-popup.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AssociationTargetPopupComponent } from './association/association-target-popup/association-target-popup.component';
 import { PromotionsComponent } from './component/promotions/promotions.component';
 import { AddPromotionsComponent } from './component/add-promotions/add-promotions.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import {MatSortModule} from '@angular/material/sort';
+import { MatSortModule } from '@angular/material/sort';
 import { GuiGridModule } from '@generic-ui/ngx-grid';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -67,7 +67,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { DeactivateUserpopupComponent } from './component/users/userPopups/deactivate-userpopup/deactivate-userpopup.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { PopupCellRendererComponent } from './component/popup-cell-renderer/popup-cell-renderer.component';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { RestPwsdUserPopupComponent } from './component/users/userPopups/rest-pwsd-user-popup/rest-pwsd-user-popup.component';
 import { PswResetPopupComponent } from './component/users/userPopups/psw-reset-popup/psw-reset-popup.component';
 import { ActivatepopUpComponent } from './component/users/userPopups/activatepop-up/activatepop-up.component';
@@ -75,14 +75,14 @@ import { ActiveSuccessPopComponent } from './component/users/userPopups/active-s
 import { DeactiveSuccessPopComponent } from './component/users/userPopups/deactive-success-pop/deactive-success-pop.component';
 import { GeographicListComponent } from './component/geographic-list/geographic-list.component';
 import { GeoClassificationComponent } from './component/geo-classification/geo-classification.component';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 import { AddGeolistPopupComponent } from './component/add-geolist-popup/add-geolist-popup.component';
 import { AddIdentifierComponent } from './component/materials-list/add-identifier/add-identifier.component';
 import { SelectProductComponent } from './component/materials-list/select-product/select-product.component';
 import { AddProductGroupComponent } from './component/materials-list/add-product-group/add-product-group.component';
 import { AddProductSubGroupComponent } from './component/materials-list/add-product-sub-group/add-product-sub-group.component';
 
-import{UseractionComponent} from './component/useraction/useraction.component';
+import { UseractionComponent } from './component/useraction/useraction.component';
 import { OrderListComponent } from './component/order-list/order-list.component';
 import { DateRangePickerModule } from '@uiowa/date-range-picker';
 import { AddItemsPromotionComponent } from './component/promotions/add-items-promotion/add-items-promotion.component';
@@ -124,7 +124,7 @@ import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { DateRangeSelectionComponent } from './component/promotions/date-range-selection/date-range-selection.component';
 import { SalesListComponent } from './component/sales-list/sales-list.component';
 import { SalesInventoryComponent } from './component/sales-list/sales-inventory/sales-inventory.component';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SalesUploadsComponent } from './component/sales-list/sales-uploads/sales-uploads.component';
 import { SalesReportsComponent } from './component/sales-list/sales-reports/sales-reports.component';
 import { AddDealerAssociationsComponent } from './component/add-dealer-associations/add-dealer-associations.component';
@@ -154,6 +154,8 @@ import { DeactivateClassificationPopUpComponent } from './component/deactivate-c
 import { AddeditgeoComponent } from './component/geo-classification/addeditgeo/addeditgeo.component';
 import { GeoActivateDeactivateComponent } from './component/geo-classification/geo-activate-deactivate/geo-activate-deactivate.component';
 import { GeoStatusPopComponent } from './component/geo-classification/geo-status-pop/geo-status-pop.component';
+import { DeactiveSubcategoryCompoComponent } from './component/deactive-subcategory-compo/deactive-subcategory-compo.component';
+import { DeactiveTypeCompoComponent } from './component/deactive-type-compo/deactive-type-compo.component';
 
 @NgModule({
   declarations: [
@@ -207,72 +209,74 @@ import { GeoStatusPopComponent } from './component/geo-classification/geo-status
     AddProductGroupComponent,
     AddProductSubGroupComponent,
     UseractionComponent,
-          OrderListComponent,
-          AddItemsPromotionComponent,
+    OrderListComponent,
+    AddItemsPromotionComponent,
     OrderListComponent,
     UomActionComponent,
     DeleteUomPopupComponent,
     DeleteUomSuccessfullPopupComponent,
-          AddorderpromotionsComponent,
-          AddOrderPromotionlistComponent,
-          DeleteUomNewComponent,
-          TaxTempleateActionComponent,
-          ProductGroupAddItemComponent,
-          ProductSubGroupComponent,
-          ProductShortCodeComponent,
-          OrderNonpromotionlistComponent,
-          PopupGridTableComponent,
-          ReactiveCurrencyComponent,
-          DeactiveCurrencyComponent,
-          MakeDefaultComponent,
-          CurrencyDonePopupComponent,
-          CurrencyActionComponent,
-          CurrencyReactivatedComponent,
-          CurrencyDefaultComponent,
-          RemovePromotionItemComponent,
-          RemovePromotionSucessComponent,
-          DeactiveTaxCoponentComponent,
-          ReactiveTaxCoponentComponent,
-          ActiveSuccessTaxTemplateComponent,
-          DeactiveSuccessTaxTemplateComponent,
-          DeactivateTaxCoponentComponent,
-          SuccessDeactivateTaxComponentComponent,
-          EditdealersComponent,
-          PopupPscGridTableComponent,
-          PopupPsubgGridTableComponent,
-          MaterialListActionComponent,
-          OrderlistActionPopupComponent,
-          OrderlistEditPopupComponent,
-          DateRangeSelectionComponent,
-          SalesListComponent,
-          SalesInventoryComponent,
-          SalesUploadsComponent,
-          SalesReportsComponent,
-          AddDealerAssociationsComponent,
-          PramotionActionComponent,
-          EditProfileComponent,
-          AddSalesPopupComponent,
-          SalesBulkDownloadComponent,
-          InvoiceComponent,
-          InvoiceActionComponent,
-          ViewInvoiceComponentComponent,
-          DownloadInvoiceComponentComponent,
-          OrdersShipmentComponent,
-          ShipOrderBulkDownloadComponent,
-          CustomDatePopupComponent,
-          CustomdatepickerComponent,
-          AssosiationActionComponent,
-          BulkEditAssosiationComponent,
-          SalesBulkUploadComponent,
-          AddPromotionGeographiesComponent,
-          DealerTargetComponent,
-          AddCatComponent,
-          AddSubCatComponent,
-          AddTypesPopupComponent,
-          DeactivateClassificationPopUpComponent,
-          AddeditgeoComponent,
-          GeoActivateDeactivateComponent,
-          GeoStatusPopComponent,
+    AddorderpromotionsComponent,
+    AddOrderPromotionlistComponent,
+    DeleteUomNewComponent,
+    TaxTempleateActionComponent,
+    ProductGroupAddItemComponent,
+    ProductSubGroupComponent,
+    ProductShortCodeComponent,
+    OrderNonpromotionlistComponent,
+    PopupGridTableComponent,
+    ReactiveCurrencyComponent,
+    DeactiveCurrencyComponent,
+    MakeDefaultComponent,
+    CurrencyDonePopupComponent,
+    CurrencyActionComponent,
+    CurrencyReactivatedComponent,
+    CurrencyDefaultComponent,
+    RemovePromotionItemComponent,
+    RemovePromotionSucessComponent,
+    DeactiveTaxCoponentComponent,
+    ReactiveTaxCoponentComponent,
+    ActiveSuccessTaxTemplateComponent,
+    DeactiveSuccessTaxTemplateComponent,
+    DeactivateTaxCoponentComponent,
+    SuccessDeactivateTaxComponentComponent,
+    EditdealersComponent,
+    PopupPscGridTableComponent,
+    PopupPsubgGridTableComponent,
+    MaterialListActionComponent,
+    OrderlistActionPopupComponent,
+    OrderlistEditPopupComponent,
+    DateRangeSelectionComponent,
+    SalesListComponent,
+    SalesInventoryComponent,
+    SalesUploadsComponent,
+    SalesReportsComponent,
+    AddDealerAssociationsComponent,
+    PramotionActionComponent,
+    EditProfileComponent,
+    AddSalesPopupComponent,
+    SalesBulkDownloadComponent,
+    InvoiceComponent,
+    InvoiceActionComponent,
+    ViewInvoiceComponentComponent,
+    DownloadInvoiceComponentComponent,
+    OrdersShipmentComponent,
+    ShipOrderBulkDownloadComponent,
+    CustomDatePopupComponent,
+    CustomdatepickerComponent,
+    AssosiationActionComponent,
+    BulkEditAssosiationComponent,
+    SalesBulkUploadComponent,
+    AddPromotionGeographiesComponent,
+    DealerTargetComponent,
+    AddCatComponent,
+    AddSubCatComponent,
+    AddTypesPopupComponent,
+    DeactivateClassificationPopUpComponent,
+    AddeditgeoComponent,
+    GeoActivateDeactivateComponent,
+    GeoStatusPopComponent,
+    DeactiveSubcategoryCompoComponent,
+    DeactiveTypeCompoComponent,
   ],
   imports: [
     FormsModule,
@@ -281,7 +285,7 @@ import { GeoStatusPopComponent } from './component/geo-classification/geo-status
     MatTabsModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
-    MatInputModule ,
+    MatInputModule,
     MatToolbarModule,
     MatIconModule,
     MatExpansionModule,
@@ -309,7 +313,7 @@ import { GeoStatusPopComponent } from './component/geo-classification/geo-status
     MatStepperModule,
     MatChipsModule,
     DateRangePickerModule,
-    NgbModule ,
+    NgbModule,
     NgbDatepickerModule,
     MatAutocompleteModule,
     NgxDaterangepickerMd.forRoot(),
@@ -317,6 +321,6 @@ import { GeoStatusPopComponent } from './component/geo-classification/geo-status
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-  ],  bootstrap: [AppComponent]
+  ], bootstrap: [AppComponent]
 })
 export class AppModule { }

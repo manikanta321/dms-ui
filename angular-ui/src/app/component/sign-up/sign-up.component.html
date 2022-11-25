@@ -6,7 +6,7 @@
     
     <div class="container">
   
-      <div class="loginform-page">
+      <div class="loginform-page" *ngIf="!redirectSuccessMessage">
         <div class="signIn-page d-flex justify-content-center align-items-center h-100">
           
           <div class="login-form "> 
@@ -53,6 +53,31 @@
 
   
       </div>
+
+      <!-- redirect to success message -->
+      <div class="redirectMessage" *ngIf="redirectSuccessMessage">
+        <div class="signIn-page d-flex justify-content-center align-items-center h-100">
+          
+          <div class="login-form_changed "> 
+            <div class="login-head">
+              <h6 class="sign-head" >Password changed</h6>
+            </div>
+            <br>
+            <p class="Message">Your password has been successfully changed.<br>Please, sign in again!</p>
+            <br>
+            <div class="text-center text-lg-start mt-2">
+              <button type="button" class="btn btn-primary btn-block login-btn" style="width: 361px;"
+               (click)="redirect_To_Sign()" >sign in</button>
+              <!-- <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a  routerLink="/ResetPassword"
+                  class="link-danger">Register</a></p> -->
+            </div>
+          </div>
+
+        </div>
+
+  
+      </div>
+
     </div>
   </section>
   <div class="highlitepopup">

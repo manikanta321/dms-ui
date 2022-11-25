@@ -858,8 +858,12 @@ ProductItems(){
   const divelement = document.createElement('div');  
   const element = document.createElement('span');
   const imageElement = document.createElement('img');
+  const tooltip = document.createElement('tooltip');
   imageElement.className = "country-info";
   imageElement.src ='assets/img/countryinfo.png';
+  tooltip.className = 'tooltip';
+  imageElement.classList.add('custom-tooltip');
+  imageElement.innerHTML = '<span class="tooltip">hhhhh</span>'
   element.appendChild(document.createTextNode(params.value));
   element.appendChild(imageElement);
   return element;

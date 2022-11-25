@@ -969,7 +969,13 @@ mat-sidenav {
 .country-info {
   margin-left: 20px !important;
 }
-
+.country-info:hover >.tooltip{
+display: block;
+}
+.tooltip{
+  width: 100px;
+  color: red;
+}
 .dropdown-placeholder {
   background: white;
   color: #808080;

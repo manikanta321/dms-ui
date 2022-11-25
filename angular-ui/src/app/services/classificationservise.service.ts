@@ -99,6 +99,15 @@ export class ClassificationserviseService {
     }
     return this.http.get<any>(this.classificationurl + 'OtherMasterApi/GetGeographies' + parmeter);
   }
+  
+  ActivateDeActivateGeoGraphy(geoGraphyId: number,logedUserId:number, hierarchyIndex:number ) {
+    return this.http.get<any>(this.classificationurl + 'OtherMasterApi/ActDeAct_Geography?id='+geoGraphyId +'&logedUserId=' + logedUserId +'&hid=' + hierarchyIndex);
+  }
+
+  SaveGeography(data: any) {
+    return this.http.post<any>(this.classificationurl + 'OtherMasterApi/AddEditGeography', data);
+  }
+  
   //get country list
   getCountryList() {
     return this.http.get<any>(this.classificationurl + 'OtherMasterApi/GetAllCountries');

@@ -1,9 +1,13 @@
 import { Component, createPlatform, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
+import { AddeditgeoComponent } from './addeditgeo/addeditgeo.component';
+import { GeoActivateDeactivateComponent } from './geo-activate-deactivate/geo-activate-deactivate.component';
+import { GeoStatusPopComponent } from './geo-status-pop/geo-status-pop.component';
 
 @Component({
   selector: 'app-geo-classification',
@@ -33,8 +37,8 @@ export class GeoClassificationComponent implements OnInit {
   selectedItem = null;
 
 
-  LoginId: any;
-  numberValue: any;
+  logedUserId: any;
+  userIdNumber: any;
 
   CountryList: any = [];
   stateList: any = [];
@@ -72,20 +76,23 @@ export class GeoClassificationComponent implements OnInit {
   geoGraphyFullData: any;
 
   colorsList = [
-    { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#000" }, },
-    { primaryColor: { background: '#0C5A3E', color: '#fff' }, secondaryColor: { background: "#E6FFF6", color: "#000" }, },
-    { primaryColor: { background: '#C32F27', color: '#fff' }, secondaryColor: { background: "#FFEDEC", color: "#000" }, },
-    { primaryColor: { background: '#3D1A00', color: '#fff' }, secondaryColor: { background: "#D6C8C3", color: "#000" }, },
-    { primaryColor: { background: '#DC0063', color: '#fff' }, secondaryColor: { background: "#FFE1EE", color: "#000" }, },
-    { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#000" }, },
-    { primaryColor: { background: '#0C5A3E', color: '#fff' }, secondaryColor: { background: "#E6FFF6", color: "#000" }, },
-    { primaryColor: { background: '#C32F27', color: '#fff' }, secondaryColor: { background: "#FFEDEC", color: "#000" }, },
-    { primaryColor: { background: '#3D1A00', color: '#fff' }, secondaryColor: { background: "#D6C8C3", color: "#000" }, },
-    { primaryColor: { background: '#DC0063', color: '#fff' }, secondaryColor: { background: "#FFE1EE", color: "#000" }, },
-  ]
+    { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
+    { primaryColor: { background: '#0C5A3E', color: '#fff' }, secondaryColor: { background: "#E6FFF6", color: "#0C5A3E" }, },
+    { primaryColor: { background: '#C32F27', color: '#fff' }, secondaryColor: { background: "#FFEDEC", color: "#C32F27" }, },
+    { primaryColor: { background: '#3D1A00', color: '#fff' }, secondaryColor: { background: "#D6C8C3", color: "#3D1A00" }, },
+    { primaryColor: { background: '#DC0063', color: '#fff' }, secondaryColor: { background: "#FFE1EE", color: "#DC0063" }, },
+    { primaryColor: { background: '#8000E2', color: '#fff' }, secondaryColor: { background: "#EFDAFF", color: "#8000E2" }, },
+    { primaryColor: { background: '#0E4C6D', color: '#fff' }, secondaryColor: { background: "#D6F1FF", color: "#0E4C6D" }, },
+    { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
+    { primaryColor: { background: '#0C5A3E', color: '#fff' }, secondaryColor: { background: "#E6FFF6", color: "#0C5A3E" }, },
+    { primaryColor: { background: '#C32F27', color: '#fff' }, secondaryColor: { background: "#FFEDEC", color: "#C32F27" }, },
+    { primaryColor: { background: '#3D1A00', color: '#fff' }, secondaryColor: { background: "#D6C8C3", color: "#3D1A00" }, },
+    { primaryColor: { background: '#DC0063', color: '#fff' }, secondaryColor: { background: "#FFE1EE", color: "#DC0063" }, },
+  ];
 
 
   constructor(private fb: FormBuilder, private spinner: NgxSpinnerService,
+    private dialog: MatDialog,
     private calssification: ClassificationserviseService, private sanitizer: DomSanitizer) {
     this.createform();
     this.stateFormValidators();
@@ -97,8 +104,9 @@ export class GeoClassificationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.LoginId = localStorage.getItem("logInId");
-    this.numberValue = Number(this.LoginId);
+    this.logedUserId = localStorage.getItem("logInId");
+    this.userIdNumber = Number(this.logedUserId);
+    console.log(this.userIdNumber);
     // this.getCountryList();
     this.getGeographyHierarchy();
   }
@@ -136,18 +144,21 @@ export class GeoClassificationComponent implements OnInit {
         } else {
           this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.splice(index, 1);
           this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected.splice(index, 1);
+          this.removeOtherGeographiesData(hirerachyIndex);
         }
       }
 
 
     });
   }
+
   removeOtherGeographiesData(hirerachyIndex) {
     for (var i = hirerachyIndex; i < this.geoGraphyFullData.length; i++) {
       this.geoGraphyFullData[i].allOtherGeography = [];
       this.geoGraphyFullData[i].geographySelected = [];
       this.geoGraphyFullData[i].geographyNamesSelected = [];
       this.geoGraphyFullData[i].geographyCount = 0;
+      this.geoGraphyFullData[i].showAddIcon = false;
     }
 
   }
@@ -162,6 +173,7 @@ export class GeoClassificationComponent implements OnInit {
       this.geoGraphyFullData[hirerachyIndex - 1].geographySelected = [];
       this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected = [];
       this.geoGraphyFullData[hirerachyIndex - 1].geographyCount = this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.length;
+      this.geoGraphyFullData[hirerachyIndex - 1].showAddIcon = true;
 
     }, err => {
       console.log(err);
@@ -171,21 +183,114 @@ export class GeoClassificationComponent implements OnInit {
 
   geoGraphyBreadCrumb(index) {
     let breadCrumb = "";
-    for (var i = 0; i <= (index - 1); i++) {
-      if (this.geoGraphyFullData[index - 1] && this.geoGraphyFullData[index].geographyNamesSelected) {
+    for (var i = index - 2; i <= (index - 1); i++) {
+      if (this.geoGraphyFullData[i] && this.geoGraphyFullData[i].geographyNamesSelected) {
         breadCrumb += this.geoGraphyFullData[i].geographyNamesSelected.join(',');
         if (i != (index - 1)) {
           breadCrumb += ' <strong style="color:#000" > &#62; </strong> '
         }
       }
     }
-    console.log(breadCrumb, index)
     return this.sanitizer.bypassSecurityTrustHtml(breadCrumb);
   }
 
+  activateDeactivateGeography(event, geoItem, hirerachyIndex) {
+    event.stopPropagation();
+    console.log(geoItem);
+    const dialogRef = this.dialog.open(GeoActivateDeactivateComponent, { disableClose: true, data: geoItem });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      if (result) this.ActivateDeactivateGeography(geoItem, hirerachyIndex);
+    });
+  }
 
-  addGeographyForm(data) {
-    console.log(data);
+  editGeography(event, geoItem, geographyHierarchyName, hirerachyIndex) {
+    event.stopPropagation();
+    console.log(geoItem);
+    let data = { geography: geoItem, title: geographyHierarchyName, isEdit: true };
+    const dialogRef = this.dialog.open(AddeditgeoComponent, { height: '320px', disableClose: true, data: data });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.AddEditGeography(result, hirerachyIndex);
+    });
+  }
+
+  addGeographyForm(geoGraphyGrid, hirerachyIndex) {
+    // console.log(geoGraphyGrid);
+    let data = { geography: {}, title: geoGraphyGrid.geographyHierarchyName, isEdit: false };
+    const dialogRef = this.dialog.open(AddeditgeoComponent, { height: '320px', disableClose: true, data: data });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      if (result) {
+        this.AddEditGeography(result, hirerachyIndex);
+      }
+    });
+  }
+
+
+  ActivateDeactivateGeography(geoItem, hirerachyIndex) {
+    this.spinner.show();
+    this.calssification.ActivateDeActivateGeoGraphy(geoItem.geographyId, this.userIdNumber, hirerachyIndex).subscribe({
+      next: (res) => {
+        if (res.response.result.indexOf("Successfully") != -1) {
+          let geoGraphyObj = this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.find(x => x.geographyId == geoItem.geographyId);
+          if (geoGraphyObj) {
+            geoGraphyObj.isActive = !geoGraphyObj.isActive;
+            let geoGraphyIndex = this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.indexOf(geoGraphyObj.geographyId);
+            if(geoGraphyIndex != -1){
+              this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.splice(geoGraphyIndex, 1);
+            this.removeOtherGeographiesData(hirerachyIndex);
+            }
+            
+            this.dialog.open(GeoStatusPopComponent, {panelClass:(geoGraphyObj.isActive ? 'activeSuccessPop' :'deactiveSuccessPop'), data:geoGraphyObj});
+
+          }
+        }
+        this.spinner.hide();
+      },
+      error: (e) => {
+        console.error(e)
+        this.spinner.hide();
+      },
+    })
+  }
+
+
+  AddEditGeography(result, hirerachyIndex) {
+    let obj: any = {};
+    obj.CompanyId = 1;
+    obj.GeographyName = result.name;
+    obj.GeographyCode = result.code;
+    if (result.id) {
+      obj.geographyId = result.id;
+    }
+
+    obj.GeographyParentId = this.geoGraphyFullData[hirerachyIndex - 2]?.geographySelected[0]; // Need to GeographyParentId
+    obj.GeographyHierarchyId = hirerachyIndex;
+    obj.logedUserId = this.userIdNumber;
+
+    console.log(obj);
+    this.spinner.show();
+    this.calssification.SaveGeography(obj).subscribe({
+      next: (res) => {
+        if (res.response.result.indexOf("Succes") != -1 || res.response.result.indexOf("Added") != -1) {
+          let geoGraphyObj = this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.find(x => x.geographyId == result.id);
+          if (geoGraphyObj) {
+            geoGraphyObj.geographyName = result.name;
+            geoGraphyObj.geographyCode = result.code;
+          } else {
+            // Need to updated based on the response success
+            let temp = { geographyName: result.name, geographyCode: result.code, geographyId: null }
+            this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.push(temp);
+          }
+        }
+        this.spinner.hide();
+      },
+      error: (e) => {
+        console.error(e)
+        this.spinner.hide();
+      },
+    })
   }
 
   //get Country List
@@ -288,7 +393,7 @@ export class GeoClassificationComponent implements OnInit {
     let data = {
       "GeographyName": this.countryForm.value['countryFormTag'],
       "GeographyDesc": this.countryForm.value['countryCodeTag'],
-      "CreatedById": this.LoginId
+      "CreatedById": this.logedUserId
     };
 
     this.calssification.addCountryName(data).subscribe((res) => {
@@ -304,7 +409,7 @@ export class GeoClassificationComponent implements OnInit {
       "GeographyName": this.stateForm.value['stateFormTag'],
       "GeographyDesc": this.stateForm.value['statecodeFormTag'],
       "GeographyParentId": localStorage.getItem('countryId'),
-      "CreatedById": this.LoginId
+      "CreatedById": this.logedUserId
     };
 
     this.calssification.addStateName(data).subscribe((res) => {
@@ -320,7 +425,7 @@ export class GeoClassificationComponent implements OnInit {
       "GeographyName": this.districtForm.value['distirictFormTag'],
       "GeographyDesc": this.districtForm.value['districtcode'],
       "GeographyParentId": localStorage.getItem('stateId'),
-      "CreatedById": this.LoginId
+      "CreatedById": this.logedUserId
     };
 
     this.calssification.addDistName(data).subscribe((res) => {
@@ -336,7 +441,7 @@ export class GeoClassificationComponent implements OnInit {
       "GeographyName": this.cityForm.value['cityFormTag'],
       "GeographyDesc": this.cityForm.value['citycode'],
       "GeographyParentId": localStorage.getItem('distId'),
-      "CreatedById": this.LoginId
+      "CreatedById": this.logedUserId
     };
 
     this.calssification.addCityName(data).subscribe((res) => {
@@ -352,7 +457,7 @@ export class GeoClassificationComponent implements OnInit {
       "GeographyName": this.regionForm.value['regionFormTag'],
       "GeographyDesc": this.regionForm.value['regionCode'],
       "GeographyParentId": localStorage.getItem('cityId'),
-      "CreatedById": this.LoginId
+      "CreatedById": this.logedUserId
     };
 
     this.calssification.addZoneName(data).subscribe((res) => {
@@ -368,9 +473,8 @@ export class GeoClassificationComponent implements OnInit {
       "GeographyName": this.regionAreaForm.value['areaFormTag'],
       "GeographyDesc": this.regionAreaForm.value['areaCode'],
       "GeographyParentId": localStorage.getItem('regionId'),
-      "CreatedById": this.LoginId
+      "CreatedById": this.logedUserId
     };
-
 
     this.calssification.addRegionAreaName(data).subscribe((res) => {
       this.regionAreaForm.reset();
@@ -385,7 +489,7 @@ export class GeoClassificationComponent implements OnInit {
       "GeographyName": this.subAreaForm.value['subAreaFormTag'],
       "GeographyDesc": this.subAreaForm.value['SubAreaCode'],
       "GeographyParentId": localStorage.getItem('areaId'),
-      "CreatedById": this.LoginId
+      "CreatedById": this.logedUserId
     };
 
     this.calssification.AddSubArea(data).subscribe((res) => {

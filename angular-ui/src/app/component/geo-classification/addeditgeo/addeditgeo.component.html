@@ -1,0 +1,27 @@
+
+
+<div class="container">
+    <mat-icon mat-button class="close-icon" [mat-dialog-close]>close</mat-icon>
+    <div class="actv-user text-center">
+        <h1 class="head-text"> {{isEditModal ? 'Edit':'Add'}} {{geoType}}</h1>
+    </div>
+    <form #loginForm="ngForm">
+    <div>
+        <label >Name<span style="color: red;">*</span></label><br>
+        <input type="text" name="name" id="name" [placeholder]="'Enter ' + geoType + ' Name'" [(ngModel)]="name"
+          required >       
+<br>
+        <label >Code<span style="color: red;">*</span></label><br>
+        <input type="text" name="code" id="code" [placeholder]="'Enter ' + geoType + ' Code'" [(ngModel)]="code"
+      >
+     <br>
+        <div class="action">
+            <button class="save-btn" (click)="SaveData()">{{isEditModal ? 'Save':'Add'}}</button>
+        </div>
+        <div style="color: red;text-align: center;" *ngIf="showWarning">*Required fields</div>
+        
+    </div>
+    
+</form>
+   
+</div>

@@ -1,0 +1,41 @@
+
+.head-text{
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: -27px;
+    }
+    /* .deact
+    {
+        width: 478px;
+        height: 261px;
+    } */
+    .undo{
+        padding: 5px 52px;
+        background: black;
+        color: white;
+        margin-right: 20px;
+        /* border: #000000; */
+        border-radius: 10px;
+        margin-top: 15px;
+        width: 150px;
+        height: 41px;
+        cursor: pointer;
+        }
+    .exit{
+    background: #fff;
+    color: black;
+    padding: 5px 52px;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    height: 41px;
+    width: 150px;
+    cursor: pointer;
+    }
+    .close-icon{
+        left: 100%;
+        position: relative;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    

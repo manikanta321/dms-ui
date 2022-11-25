@@ -151,6 +151,9 @@ import { AddCatComponent } from './component/add-cat/add-cat.component';
 import { AddSubCatComponent } from './component/add-sub-cat/add-sub-cat.component';
 import { AddTypesPopupComponent } from './component/add-types-popup/add-types-popup.component';
 import { DeactivateClassificationPopUpComponent } from './component/deactivate-classification-pop-up/deactivate-classification-pop-up.component';
+import { AddeditgeoComponent } from './component/geo-classification/addeditgeo/addeditgeo.component';
+import { GeoActivateDeactivateComponent } from './component/geo-classification/geo-activate-deactivate/geo-activate-deactivate.component';
+import { GeoStatusPopComponent } from './component/geo-classification/geo-status-pop/geo-status-pop.component';
 
 @NgModule({
   declarations: [
@@ -267,6 +270,9 @@ import { DeactivateClassificationPopUpComponent } from './component/deactivate-c
           AddSubCatComponent,
           AddTypesPopupComponent,
           DeactivateClassificationPopUpComponent,
+          AddeditgeoComponent,
+          GeoActivateDeactivateComponent,
+          GeoStatusPopComponent,
   ],
   imports: [
     FormsModule,

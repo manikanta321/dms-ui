@@ -1,6 +1,4 @@
-
-.section
-{
+.section {
   margin-top: 50px;
 }
 
@@ -14,6 +12,7 @@
       scroll-snap-type: x mandatory;
   scrollbar-width: none; */
 }
+
 /* .horizontal-scroll::-webkit-scrollbar {
   display: none;
 } */
@@ -23,164 +22,166 @@
   scroll-snap-align: start;
 }
 
-.grid-heading{
+.grid-heading {
   padding: 0 20px;
 }
-.geo-classification-crad
-{
 
-}
+.geo-classification-crad {}
 
-.country
-{
-  
+.country {
+
   font-family: 'Gilroy';
-font-size: 16px;
-font-weight: 300;
-line-height: 23.06px;
-letter-spacing: 0em;
-color:  #000000;
-font-style: light;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 23.06px;
+  letter-spacing: 0em;
+  color: #000000;
+  font-style: light;
 }
-.State
-{
-  font-family: 'Gilroy';
-font-size: 16px;
-font-weight: 300;
-line-height: 23.06px;
-font-style: light;
-letter-spacing: 0em;
-color:  #000000;
 
-}
-.District
-{
-  font-family: 'Gilroy';
-font-size: 16px;
-font-weight: 300;
-line-height: 23.06px;
-font-style: light;
-letter-spacing: 0em;
-color:  #000000;
-
-}
-.City
-{
+.State {
   font-family: 'Gilroy';
   font-size: 16px;
   font-weight: 300;
   line-height: 23.06px;
   font-style: light;
   letter-spacing: 0em;
-  color:  #000000;
-}
-.Regions
-{
-  font-family: 'Gilroy';
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 23.06px;
-  font-style: light;
-  letter-spacing: 0em;
-  color:  #000000;
-}
-.Area
-{
-  font-family: 'Gilroy';
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 23.06px;
-  font-style: light;
-  letter-spacing: 0em;
-  color:  #000000;
-}
-.Sub Area
-{
-  font-family: 'Gilroy';
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 23.06px;
-  font-style: light;
-  letter-spacing: 0em;
-  color:  #000000;
+  color: #000000;
+
 }
 
-mat-card{
-    background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-    border-radius: 25px;
-    height: 400px;
+.District {
+  font-family: 'Gilroy';
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 23.06px;
+  font-style: light;
+  letter-spacing: 0em;
+  color: #000000;
+
 }
-.font{
+
+.City {
+  font-family: 'Gilroy';
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 23.06px;
+  font-style: light;
+  letter-spacing: 0em;
+  color: #000000;
+}
+
+.Regions {
+  font-family: 'Gilroy';
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 23.06px;
+  font-style: light;
+  letter-spacing: 0em;
+  color: #000000;
+}
+
+.Area {
+  font-family: 'Gilroy';
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 23.06px;
+  font-style: light;
+  letter-spacing: 0em;
+  color: #000000;
+}
+
+.Sub Area {
+  font-family: 'Gilroy';
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 23.06px;
+  font-style: light;
+  letter-spacing: 0em;
+  color: #000000;
+}
+
+mat-card {
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  height: 400px;
+}
+
+.font {
   font-family: 'Gilroy';
 }
-.catg{
-    background: #EAEEFF;
-    border: 1px solid #00187A;
-    border-radius: 10px;
+
+.catg {
+  background: #EAEEFF;
+  border: 1px solid #00187A;
+  border-radius: 10px;
   margin-bottom: 10px;
   color: #00187A;
   padding: 5px;
-    text-align: center;
+  text-align: center;
 }
+
 div.catg[data-selected] {
-    border: 2px solid #333;
-  }
-.subc{
-    background: #E6FFF6;
-    border: 1px solid #0C5A3E;
-    border-radius: 10px;
-    color: #0C5A3E;
-    font-size: 14px;
-    margin-bottom: 10px;
-    padding: 5px;
-    text-align: center;
+  border: 2px solid #333;
 }
-.dist{
-    background: #FFEDEC;
-    border: 1px solid #C32F27;
-    border-radius: 10px;
-    color: #C32F27;
-    font-size: 14px;
-    margin-bottom: 10px;
-    padding: 5px;
-    text-align: center;
+
+.subc {
+  background: #E6FFF6;
+  border: 1px solid #0C5A3E;
+  border-radius: 10px;
+  color: #0C5A3E;
+  font-size: 14px;
+  margin-bottom: 10px;
+  padding: 5px;
+  text-align: center;
+}
+
+.dist {
+  background: #FFEDEC;
+  border: 1px solid #C32F27;
+  border-radius: 10px;
+  color: #C32F27;
+  font-size: 14px;
+  margin-bottom: 10px;
+  padding: 5px;
+  text-align: center;
 }
 
 .region {
-    background: #FFEDEC;
-    border: 1px solid #72411B;
-    border-radius: 10px;
-    color: #72411B;
-    font-size: 14px;
-    margin-bottom: 10px;
-    padding: 5px;
-    text-align: center;
+  background: #FFEDEC;
+  border: 1px solid #72411B;
+  border-radius: 10px;
+  color: #72411B;
+  font-size: 14px;
+  margin-bottom: 10px;
+  padding: 5px;
+  text-align: center;
 }
 
-li{
-    list-style: none;
+li {
+  list-style: none;
 }
 
-.input-country-cls{
-    background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    margin-right: 10px;
-    font-size: 11px;
-    color: #000000;
-    padding: 8px 16px;
-    /* width: 160px;  */
-    margin-left: -12px;
-    width:140px;
-    height: 43px;
-    /* font-weight: bold; */
-    font-weight: gray;
+.input-country-cls {
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin-right: 10px;
+  font-size: 11px;
+  color: #000000;
+  padding: 8px 16px;
+  /* width: 160px;  */
+  margin-left: -12px;
+  width: 140px;
+  height: 43px;
+  /* font-weight: bold; */
+  font-weight: gray;
 }
 
-.input-district-cls{
+.input-district-cls {
   background: #FFFFFF;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
@@ -195,6 +196,7 @@ li{
   font-weight: gray;
   color: #000000;
 }
+
 .input-region-cls {
   background: #FFFFFF;
   border: 0.5px solid #000000;
@@ -214,21 +216,21 @@ li{
 
 .input-countrycode-cls {
   background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    margin-right: 10px;
-    font-size: 11px;
-    /* font-weight: bold; */
-    font-weight: gray;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin-right: 10px;
+  font-size: 11px;
+  /* font-weight: bold; */
+  font-weight: gray;
   color: #000000;
-    padding: 8px 16px;
-    width:70px;
-    height: 43px;
-    margin-left: 16px;
+  padding: 8px 16px;
+  width: 70px;
+  height: 43px;
+  margin-left: 16px;
 }
-.input-district-cls
-{
+
+.input-district-cls {
   background: #FFFFFF;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
@@ -239,14 +241,14 @@ li{
   padding: 8px 16px;
   /* width: 160px;  */
   margin-left: -12px;
-  width:140px;
+  width: 140px;
   height: 43px;
   /* font-weight: bold; */
   font-weight: gray;
 }
 
 
-.addcode{
+.addcode {
   background: #000;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
@@ -260,57 +262,57 @@ li{
   height: 30px;
 }
 
-.span-subhead{
-    margin-bottom: 10px;
-    display: flex;
-    color: rgba(104, 110, 116, 0.75);
-    font-size: 13px;
+.span-subhead {
+  margin-bottom: 10px;
+  display: flex;
+  color: rgba(104, 110, 116, 0.75);
+  font-size: 13px;
 }
 
 .selected {
-    background-color: #00187A;
-    color: white;
-  }
+  background-color: #00187A;
+  color: white;
+}
 
-  .subselected{
-    background: #0C5A3E;
-    color: white;
-  }
+.subselected {
+  background: #0C5A3E;
+  color: white;
+}
 
-  .typeselected{
-    background:  #C32F27;
-    color: white;
-  }
+.typeselected {
+  background: #C32F27;
+  color: white;
+}
 
-  .cityselected {
-    background:  #C32F27;
-    color: white;
-  }
+.cityselected {
+  background: #C32F27;
+  color: white;
+}
 
-  .regionselected{
-    background:  #3D1A00;
-    color: white;
-  }
+.regionselected {
+  background: #3D1A00;
+  color: white;
+}
 
-  .areaselected{
-    background:  #3D1A00;
-    color: white;
-  }
+.areaselected {
+  background: #3D1A00;
+  color: white;
+}
 
-  .subAreaselected{
-    background:  #3D1A00;
-    color: white;
-  }
+.subAreaselected {
+  background: #3D1A00;
+  color: white;
+}
 
-  /* .regions-column {
+/* .regions-column {
     max-width: 24.5% !important;
   } */
 
-  /* .add-country-cls .col-8 {
+/* .add-country-cls .col-8 {
     max-width : 78% !important;
   } */
 
-  /* .add-country-cls .col-2 {
+/* .add-country-cls .col-2 {
     margin-left : -25px !important;
   } */
 /* 
@@ -318,36 +320,36 @@ li{
     width: 100% !important;
   } */
 
-  .printImg {
-    display: flex;
-    justify-content: flex-end;
-  }
+.printImg {
+  display: flex;
+  justify-content: flex-end;
+}
 
-  .geo-classification-crad .mat-card {
-    height:380px !important;
-  }
+.geo-classification-crad .mat-card {
+  height: 380px !important;
+}
 
-  .geo-classification-crad  {
-    display: -webkit-box !important;
-    /* overflow-x: scroll; */
-    overflow-y: auto;
-    flex-wrap: nowrap !important;
-    /* height: 22em; */
-    
-  }
+.geo-classification-crad {
+  display: -webkit-box !important;
+  /* overflow-x: scroll; */
+  overflow-y: auto;
+  flex-wrap: nowrap !important;
+  /* height: 22em; */
 
-  .row-padding {
-    top:30px;
-  }
+}
 
- /* Let's get this party started */
+.row-padding {
+  top: 30px;
+}
+
+/* Let's get this party started */
 ::-webkit-scrollbar {
   width: 9px !important;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   -webkit-border-radius: 20px;
   border-radius: 20px;
   margin-top: 16px;
@@ -359,19 +361,21 @@ li{
   -webkit-border-radius: 10px;
   border-radius: 20px;
   background: #000000;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
+
 ::-webkit-scrollbar-thumb:window-inactive {
   background: #000000;
 }
 
-   ::-webkit-scrollbar{
-     /* width: 1px; */
-    overflow-x: scroll;
-       height: 0.6em;  
-      border-radius: 20px;
-      /* margin-top: -150px; */
-} 
+::-webkit-scrollbar {
+  /* width: 1px; */
+  overflow-x: scroll;
+  height: 0.6em;
+  border-radius: 20px;
+  /* margin-top: -150px; */
+}
+
 .scroll {
   /* overflow-y: scroll; */
   overflow-y: auto;
@@ -385,15 +389,22 @@ li{
 
 
 
-.geography-item{
+.geography-item {
   display: block;
-    width: 100%;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 5px;
-    display: flex;
-    justify-content: space-between;
-    cursor: pointer;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.geography-item.deactivated {
+  color: #a6a7ad !important;
+  opacity: .6;
+  border: 1px solid #a6a7ad !important;
+  cursor: auto;
 }
 
 /* .geography-item .title{

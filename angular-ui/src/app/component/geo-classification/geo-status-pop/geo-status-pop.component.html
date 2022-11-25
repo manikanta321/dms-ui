@@ -1,0 +1,18 @@
+<div class="container" ngClass="{'active':data?.isActive,'deactive':!data?.isActive} ">
+
+    <div class="rest-pwsd d-flex">
+
+        <div class="tumbsup"><img class="c" src="assets/userImages/carbon_thumbs-up.svg" alt="">
+            <br>
+            <b>Done !</b>
+        </div>
+        <div class="text-succ mt-3">
+            <p> Geography <b>{{data.geographyName}} ({{data.geographyCode ?? ''}})</b> is <b style="color: rgba(23, 177, 92, 1);" *ngIf="data?.isActive">Reactivated</b>
+                <b style="color: red;" *ngIf="!data?.isActive">Deactivated</b>
+            </p>
+        </div>
+       
+        <div class="closeImg" (click)=" closeDialog()"><img src="assets/userImages/user-closeImg.svg" alt=""></div>
+
+    </div>
+</div>

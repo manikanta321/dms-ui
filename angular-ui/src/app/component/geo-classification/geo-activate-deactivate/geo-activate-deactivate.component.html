@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="deact">
+
+
+        <mat-icon mat-button class="close-icon" [mat-dialog-close]>close</mat-icon>
+        <div class="actv-user text-center">
+            <h1 class="head-text">{{geographyItem?.isActive ?'De-Activate' :'Activate'}}</h1>
+            <p>Are you sure you want to <b style="color:red" *ngIf="geographyItem?.isActive">De-Activate</b>
+                <b style="color: rgba(23, 177, 92, 1);" *ngIf="!geographyItem?.isActive">Activate </b><br>
+                <b> {{geographyItem?.geographyName}}?</b>
+            </p>
+            <button class="undo" (click)="updateGeoClick()">Yes</button>
+            <button class="exit" (click)='close()'>Cancel</button>
+        </div>
+    </div>
+</div>

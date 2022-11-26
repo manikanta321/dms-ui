@@ -7,17 +7,17 @@
             <div class="head-t">
                 <h3 class="addU font">{{dealerAction}}: Dealer Name</h3>
                 <br>
-                <img src="assets/img/arrow-left-disable.png"   *ngIf="!basicInfo" class="addMore-icon" style="width: 32px;margin-left: 760px;"
-                    alt="left-arr-btn">
-                    <img src="assets/img/arrow-left-circle-fill.svg"   *ngIf="basicInfo" class="addMore-icons" style="width: 24px;margin-left: 760px;"
-                    alt="left-arr-btn">
-                <img src="assets/img/arrow-right-circle-fill.svg"  (click)="disableBackbutton()"  class="addMore-icon" style="width: 24px; margin-left: 12px;"
-                    alt="right-arr-btn">
+                <img src="assets/img/arrow-left-disable.png" *ngIf="!basicInfo" class="addMore-icon"
+                    style="width: 32px;margin-left: 760px;" alt="left-arr-btn">
+                <img src="assets/img/arrow-left-circle-fill.svg" *ngIf="basicInfo" class="addMore-icons"
+                    style="width: 24px;margin-left: 760px;" alt="left-arr-btn">
+                <img src="assets/img/arrow-right-circle-fill.svg" (click)="disableBackbutton()" class="addMore-icon"
+                    style="width: 24px; margin-left: 12px;" alt="right-arr-btn">
                 <mat-stepper labelPosition="bottom" #stepper>
-                    <mat-step [stepControl]="firstFormGroup"> 
+                    <mat-step [stepControl]="firstFormGroup">
                         <form [formGroup]="addAddressDetailsForm">
                             <ng-template matStepLabel class="font">Basic Information</ng-template>
-                            <div class="headefont"  >
+                            <div class="headefont">
                                 <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'">
                                     <b>Basic
                                         Information</b>
@@ -29,35 +29,41 @@
                                     <div class="col-4 ">
                                         <label>Name<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="dealerName" class="addDelercols" required placeholder="Enter your name">
+                                        <input type="text" formControlName="dealerName" class="addDelercols" required
+                                            placeholder="Enter your name">
                                     </div>
                                     <div class="col-4 ">
                                         <label>Email-ID<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="email" class="addDelercols" required placeholder="Enter your Email ID">
+                                        <input type="text" formControlName="email" class="addDelercols" required
+                                            placeholder="Enter your Email ID">
                                     </div>
                                     <div class="col-4 ">
                                         <label>Code<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="dealerCode" class="addDelercols" required placeholder="Enter your code">
+                                        <input type="text" formControlName="dealerCode" class="addDelercols" required
+                                            placeholder="Enter your code">
                                     </div>
-                                    
+
                                 </div>
                                 <div class="row">
                                     <div class="col-4 ">
                                         <label>Website<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="website"  class="addDelercols" required placeholder="Enter your company website">
+                                        <input type="text" formControlName="website" class="addDelercols" required
+                                            placeholder="Enter your company website">
                                     </div>
                                     <div class="col-4 ">
                                         <label>Phone No<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="phone"  class="addDelercols" required placeholder="Enter phone no">
+                                        <input type="text" formControlName="phone" class="addDelercols" required
+                                            placeholder="Enter phone no">
                                     </div>
                                     <div class="col-4 ">
                                         <label>Company ID<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="companyId"  class="addDelercols" required placeholder="Enter your company ID">
+                                        <input type="text" formControlName="companyId" class="addDelercols" required
+                                            placeholder="Enter your company ID">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -67,7 +73,8 @@
                                     <div class="col-4 ">
                                         <label>Other Identifer<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="identifier"  class="addDelercols" required placeholder="Enter and select">
+                                        <input type="text" formControlName="identifier" class="addDelercols" required
+                                            placeholder="Enter and select">
                                     </div>
                                     <div class="col-4 ">
                                         <!-- <input type="text"> -->
@@ -82,46 +89,52 @@
                                 </h6>
                             </div>
 
-                            
+
                             <div class="col-12">
                                 <div class="row">
                                     <div class="col-4 fontcolor">
                                         <label>User Name<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="userName" class="addDelercols" required placeholder="Enter your name">
+                                        <input type="text" formControlName="userName" class="addDelercols" required
+                                            placeholder="Enter your name">
                                     </div>
                                     <div class="col-4 fontcolor">
                                         <label>Email ID<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="userEmail" class="addDelercols" required placeholder="Enter your email ID">
+                                        <input type="text" formControlName="userEmail" class="addDelercols" required
+                                            placeholder="Enter your email ID">
                                     </div>
                                     <div class="col-4 fontcolor">
                                         <label>Phone No<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="usermobile" class="addDelercols" required placeholder="Enter your phone no">
+                                        <input type="text" formControlName="usermobile" class="addDelercols" required
+                                            placeholder="Enter your phone no">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-4">
                                         <label>First Name<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="firstName" class="addDelercols" required placeholder="Enter your First Name"> 
+                                        <input type="text" formControlName="firstName" class="addDelercols" required
+                                            placeholder="Enter your First Name">
                                     </div>
                                     <div class="col-4">
                                         <label>Last Name<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="lastName" class="addDelercols" required placeholder="Enter your Last Name">
+                                        <input type="text" formControlName="lastName" class="addDelercols" required
+                                            placeholder="Enter your Last Name">
                                     </div>
                                     <div class="col-4">
                                         <label>Status<span>*</span></label>
                                         <br>
-                                        <select class="status-class" formControlName="status" name="status" placeholder="Select Status">
-                                            <option value=""  selected hidden>Select  status</option>                                       
+                                        <select class="status-class" formControlName="status" name="status"
+                                            placeholder="Select Status">
+                                            <option value="" selected hidden>Select status</option>
                                             <option *ngFor="let option of statusList" [value]="option.statusId">
                                                 {{option.statusName}}
                                             </option>
                                         </select>
-    
+
                                     </div>
                                 </div>
                             </div>
@@ -131,90 +144,105 @@
                                 <div class="row">
                                     <div class="col-11">
                                         <div class="headefont">
-                                            <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'">
+                                            <h6
+                                                style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'">
                                                 <b>Addresses</b>
                                             </h6>
                                         </div>
                                     </div>
                                     <div class="col-1">
-                                        <mat-icon class="addMore-icon" (click) =addAddressForm()>add_circle</mat-icon>
+                                        <mat-icon class="addMore-icon" (click)=addAddressForm()>add_circle</mat-icon>
                                     </div>
                                 </div>
-                            
-                              
-                            <div *ngIf="addAddress" formArrayName="quantities">
-                            
-                                <div class="row" *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
-                                <div class="col-1">
-                                    <label *ngIf="i == 0">Type<span>*</span></label>
-                                    <br>
-                                    <select class="addDelercols addtype" formControlName="addType" name="status" placeholder="select">
-                                        <option value=""  selected hidden>Type</option>                                       
-                                        <option value="1">Billing</option>
-                                        <option valiue="2">Shipping</option>
-                                    </select>
-                                
+
+
+                                <div *ngIf="addAddress" formArrayName="quantities">
+
+                                    <div class="row" *ngFor="let quantity of quantities().controls; let i=index"
+                                        [formGroupName]="i">
+                                        <div class="col-1">
+                                            <label *ngIf="i == 0">Type<span>*</span></label>
+                                            <br>
+                                            <select class="addDelercols addtype" formControlName="addType" name="status"
+                                                placeholder="select">
+                                                <option value="" selected hidden>Type</option>
+                                                <option value="1">Billing</option>
+                                                <option value="2">Shipping</option>
+                                            </select>
+
+                                        </div>
+
+                                        <div class="col-2">
+                                            <label *ngIf="i == 0">Consignee Name<span>*</span></label>
+                                            <br>
+                                            <input type="text" placeholder="Enter" formControlName="consigName"
+                                                class="addDelercols addname">
+                                        </div>
+
+                                        <div class="col-1">
+                                            <label *ngIf="i == 0">Tax<span>*</span></label>
+                                            <br>
+                                            <input type="text" placeholder="Select" formControlName="tax"
+                                                class="addDelercols addtax">
+                                        </div>
+
+                                        <div class="col-2">
+                                            <label *ngIf="i == 0">Address Line<span>*</span></label>
+                                            <br>
+                                            <input type="text" placeholder="Enter" formControlName="addressLine1"
+                                                class="addDelercols addadress">
+                                            <input type="text" placeholder="Enter" formControlName="addressLine"
+                                                class="addDelercols addadressLine1">
+                                        </div>
+
+                                        <div class="col-1">
+                                            <label *ngIf="i == 0">Country<span>*</span></label>
+                                            <br>
+                                            <input type="text" placeholder="Enter" formControlName="country"
+                                                class="addDelercols addcountry">
+                                        </div>
+
+                                        <div class="col-1">
+                                            <label *ngIf="i == 0">State<span>*</span></label>
+                                            <br>
+                                            <input type="text" placeholder="Enter" formControlName="state"
+                                                class="addDelercols aastate">
+                                        </div>
+
+                                        <div class="col-2">
+                                            <label *ngIf="i == 0">City & Zip<span>*</span></label>
+                                            <br>
+                                            <input type="text" placeholder="Enter City" formControlName="cityAndZip"
+                                                class="addDelercols addcity">
+                                            <input type="text" placeholder="Enter Zip" formControlName="Zipcode"
+                                                class="addDelercols addzip">
+                                        </div>
+
+                                        <div class="col-1">
+                                            <label *ngIf="i == 0">Phone<span>*</span></label>
+                                            <br>
+                                            <input type="text" placeholder="Enter" formControlName="phoneNo"
+                                                class="addDelercols addphone">
+                                        </div>
+
+
+                                        <div class="col-1">
+                                            <label><span></span></label>
+                                            <mat-icon (click)="removeQuantity(i)"
+                                                class="col-2 remove-mat-icon delete-icon remove-address">remove_circle
+                                            </mat-icon>
+                                        </div>
+
+
+
+                                    </div>
                                 </div>
 
-                                <div class="col-2">
-                                    <label *ngIf="i == 0">Consignee Name<span>*</span></label>
-                                    <br>
-                                    <input type="text" placeholder="Enter" formControlName="consigName" class="addDelercols addname">
-                                </div>
 
-                                <div class="col-1">
-                                    <label *ngIf="i == 0">Tax<span>*</span></label>
-                                    <br>
-                                    <input type="text" placeholder="Select" formControlName="tax" class="addDelercols addtax">
-                                </div>
-
-                                <div class="col-2">
-                                    <label *ngIf="i == 0">Address Line<span>*</span></label>
-                                    <br>
-                                    <input type="text" placeholder="Enter" formControlName="addressLine1" class="addDelercols addadress">
-                                    <input type="text" placeholder="Enter" formControlName="addressLine" class="addDelercols addadressLine1">
-                                </div>
-
-                                <div class="col-1">
-                                    <label *ngIf="i == 0">Country<span>*</span></label>
-                                    <br>
-                                    <input type="text" placeholder="Enter" formControlName="country" class="addDelercols addcountry">
-                                </div>
-
-                                <div class="col-1">
-                                    <label *ngIf="i == 0">State<span>*</span></label>
-                                    <br>
-                                    <input type="text" placeholder="Enter" formControlName="state" class="addDelercols aastate">
-                                </div>
-
-                                <div class="col-2">
-                                    <label *ngIf="i == 0">City & Zip<span>*</span></label>
-                                    <br>
-                                    <input type="text" placeholder="Enter City" formControlName="cityAndZip" class="addDelercols addcity">
-                                    <input type="text" placeholder="Enter Zip" formControlName="Zipcode" class="addDelercols addzip">
-                                </div>
-
-                                <div class="col-1">
-                                    <label *ngIf="i == 0">Phone<span>*</span></label>
-                                    <br>
-                                    <input type="text" placeholder="Enter" formControlName="phoneNo" class="addDelercols addphone">
-                                </div>
-                                
-                    
-                                <div class="col-1" >
-                                    <label><span></span></label>
-                                    <mat-icon (click)="removeQuantity(i)" class="col-2 remove-mat-icon delete-icon remove-address">remove_circle</mat-icon>
-                                </div>
-      
-
-                  
-                            </div>
-                            </div>
-
-
-                            <p id="shiptobilling" class="form-row">
-                                <input type="checkbox" (click) =Checked()> Shipping information is same as billing information
-                              </p>
+                                <p id="shiptobilling" class="form-row">
+                                    <input type="checkbox" (click)=Checked()> Shipping information is same as billing
+                                    information
+                                </p>
 
                             </div>
 
@@ -223,7 +251,8 @@
                                 <div class="col-5">
                                 </div>
                                 <div class="col-2">
-                                    <button (click)="saveDealerData()"  class="btn btn-primary btn-block submitbtn save-btn">Next</button>
+                                    <button (click)="saveDealerData()"
+                                        class="btn btn-primary btn-block submitbtn save-btn">Next</button>
                                 </div>
                                 <div class="col-5">
                                 </div>
@@ -239,17 +268,20 @@
                             <div class="heading">
                                 <h6 class="Geo-headerlabel"><b>Geographies</b></h6>
                             </div>
-                            
+
                             <div class="horizontal-scroll">
-                                <div class="horizontal-scroll__item" *ngFor="let item of geoGraphyFullData1;let i =index; ">
+                                <div class="horizontal-scroll__item"
+                                    *ngFor="let item of geoGraphyFullData;let i =index; ">
                                     <div class="geo-grid">
                                         <div class="row grid-heading">
                                             <div class="col-sm-10">
                                                 <p><span class="country">{{item.geographyHierarchyName}}</span>
                                                     ({{item.geographyCount ?? 0}})
-                                                    <span class="ml-1" *ngIf="item.primaryGeographyAssociation =='Y'"> <img src="assets/img/double-blue-tick.svg" alt="double-blue-tick"> </span>
+                                                    <span class="ml-1" *ngIf="item.primaryGeographyAssociation =='Y'">
+                                                        <img src="assets/img/double-blue-tick.svg"
+                                                            alt="double-blue-tick"> </span>
                                                 </p>
-                                                    
+
                                             </div>
                                             <!-- <div class="col-sm-2" *ngIf="item.showAddIcon">
                                                 <mat-icon (click)="addGeographyForm(item, (i+1))">add_circle</mat-icon>
@@ -257,16 +289,19 @@
                                         </div>
                                         <mat-card class="mat-card mat-focus-indicator mat-card-content scroll">
                                             <mat-card-content class="mat-card-content">
-                        
+
                                                 <div *ngIf="item.allOtherGeography">
                                                     <!-- <div class="bread-crumb-display" *ngIf="item.allOtherGeography.length > 0">
                                                         <div [innerHTML]="geoGraphyBreadCrumb(i)"></div>
                                                     </div> -->
-                                                    <div class="d-flex " *ngFor="let geoItem of item.allOtherGeography; ">
-                                                        <div class="geography-item" 
-                                                         [ngStyle]="{'background':item.geographySelected.indexOf(geoItem.geographyId) == -1 ? colorsList[i].secondaryColor.background : colorsList[i].primaryColor.background, 'color':item.geographySelected.indexOf(geoItem.geographyId) == -1 ? colorsList[i].secondaryColor.color : colorsList[i].primaryColor.color,'border': '1px solid ' + colorsList[i].primaryColor.background }"
-                                                            (click)="geoItem?.isActive ? selectGeoGraphy(geoItem,(i +1)): null" [ngClass]="{'deactivated': !geoItem?.isActive,'backenendcolor':(i+1)==geographyHierarchyId && css} "   >
-                                                            <div class="title"> {{geoItem.geographyName}} ({{geoItem.geographyCode ??''}})</div>
+                                                    <div class="d-flex "
+                                                        *ngFor="let geoItem of item.allOtherGeography; ">
+                                                        <div class="geography-item"
+                                                            [ngStyle]="{'background':item.geographySelected.indexOf(geoItem.geographyId) == -1 ? colorsList[i].secondaryColor.background : colorsList[i].primaryColor.background, 'color':item.geographySelected.indexOf(geoItem.geographyId) == -1 ? colorsList[i].secondaryColor.color : colorsList[i].primaryColor.color,'border': '1px solid ' + colorsList[i].primaryColor.background }"
+                                                            (click)="geoItem?.isActive ? selectGeoGraphy(geoItem,(i +1)): null"
+                                                            [ngClass]="{'deactivated': !geoItem?.isActive} ">
+                                                            <div class="title"> {{geoItem.geographyName}}
+                                                                ({{geoItem.geographyCode ??''}})</div>
                                                             <!-- <div class="action-items">
                                                                 <div class="action-item edit-action" *ngIf="geoItem.isActive" (click)="editGeography($event, geoItem, item.geographyHierarchyName, (i+1))">
                                                                     <img src="assets/img/pencil.svg" alt="Edit">
@@ -278,12 +313,12 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                        
+
                                             </mat-card-content>
                                         </mat-card>
                                     </div>
                                 </div>
-                        
+
                             </div>
 
 
@@ -299,11 +334,12 @@
                                     <div class="row">
                                         <div class="col-1"></div>
                                         <div class="col-5">
-                                            <button class="btn btn-primary btn-block submitbtn save-btn" (click)="saveGeographiesList()" >Save</button>
+                                            <button class="btn btn-primary btn-block submitbtn save-btn"
+                                                (click)="saveGeographiesList()">Save</button>
                                         </div>
                                         <div class="col-5">
-                                            <button
-                                                class="btn btn-primary btn-block submitbtn cancel-btn" [mat-dialog-close]="true">Cancel</button>
+                                            <button class="btn btn-primary btn-block submitbtn cancel-btn"
+                                                [mat-dialog-close]="true">Cancel</button>
                                         </div>
                                     </div>
                                 </div>

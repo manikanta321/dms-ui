@@ -123,6 +123,9 @@ public activeDeavtive(data){
 public changepassword(data){
   return this.http.post<any>(this.userurl + 'UserMgmtApi/UpdatePasswordByAdmin', data);
 }
+public Forgotchangepassword(data){
+  return this.http.post<any>(this.userurl + 'Account/ResetUserPassword', data);
+}
 
 forgotPassword(data){
   return this.http.post<any>(this.userurl + 'Account/ForgotPassword',data);

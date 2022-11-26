@@ -6,7 +6,7 @@
     
     <div class="container">
   
-      <div class="loginform-page" *ngIf="!redirectSuccessMessage">
+      <div class="loginform-page" *ngIf="redirectSuccessMessage">
         <div class="signIn-page d-flex justify-content-center align-items-center h-100">
           
           <div class="login-form "> 
@@ -55,7 +55,7 @@
       </div>
 
       <!-- redirect to success message -->
-      <div class="redirectMessage" *ngIf="redirectSuccessMessage">
+      <div class="redirectMessage" *ngIf="!redirectSuccessMessage">
         <div class="signIn-page d-flex justify-content-center align-items-center h-100">
           
           <div class="login-form_changed "> 

@@ -28,6 +28,7 @@ confirmPassward = new FormControl('', [
     ]);
   snapshotParam: any = '';
   Token: any = '';
+  err: any;
 
   constructor(private user:UserService,
     private route: ActivatedRoute,
@@ -60,7 +61,7 @@ confirmPassward = new FormControl('', [
           token:this.Token,
           Password:this.entersecond,
         }
-        this.user.changepassword(data).subscribe(
+        this.user.Forgotchangepassword(data).subscribe(
           {
             next: (res: any) => {
               if (res) {
@@ -68,8 +69,8 @@ confirmPassward = new FormControl('', [
               }
             },
             error: (err: any) => {
-
-              console.log(err)
+              this.err = err.error
+              
             }
           })
         // this.dialog.open(RestPwsdUserPopupComponent, {panelClass: 'activeSuccessPop'});

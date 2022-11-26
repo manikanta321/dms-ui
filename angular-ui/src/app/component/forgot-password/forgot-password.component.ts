@@ -12,6 +12,7 @@ export class ForgotPasswordComponent implements OnInit {
   userExist:boolean = false;
   username:any = '';
   errorMessage: any;
+  err: any;
   constructor(private user:UserService) { }
 
   ngOnInit(): void {
@@ -29,7 +30,7 @@ export class ForgotPasswordComponent implements OnInit {
           }
         },
         error: (err:any)=>{
-          
+          this.err = err.Error
           console.log(err)
         }
      }
@@ -40,7 +41,6 @@ export class ForgotPasswordComponent implements OnInit {
     // },
     
     // (err: any) => {
-
     //   console.log(err)
     //     this.errorMessage = err.error;
     //     alert(this.errorMessage)

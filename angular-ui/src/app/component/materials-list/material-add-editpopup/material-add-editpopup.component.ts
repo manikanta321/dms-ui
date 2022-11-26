@@ -117,6 +117,11 @@ import { AddMaterialsService } from 'src/app/services/add-materials.service';
   prodId:any;
   editData:boolean = false;
   dropdownSettings: IDropdownSettings = {};
+  selectfld: any = ['mrp','aty'];
+  image1 = 'assets/img/minimize-tag.png';
+  countrySelected = true;
+  RegionExpanded = true;
+  CityExpanded = true;
     constructor(private fb: FormBuilder, public dialog: MatDialog,
       private addMaterials: AddMaterialsService) {}
    firstFormGroup: FormGroup = this.fb.group({firstCtrl: ['']});
@@ -403,6 +408,36 @@ let data ={
   }
   customIdentifier(){
     this.dialog.open(AddIdentifierComponent);
+  }
+  expandGeoInfoDiv(){
+    this.countrySelected = !this.countrySelected;
+
+    if(this.countrySelected === false){
+      this.image1 = 'assets/img/maximize-arrow.png';
+    } else {
+      this.image1 = 'assets/img/minimize-tag.png';
+     
+    }
+  }
+  RegionExpandDiv(){
+    this.RegionExpanded= !this.RegionExpanded;
+
+    if(this.RegionExpanded === false){
+      this.image1 = 'assets/img/maximize-arrow.png';
+    } else {
+      this.image1 = 'assets/img/minimize-tag.png';
+     
+    }
+  }
+  CityExpandDiv(){
+    this.CityExpanded= !this.CityExpanded;
+
+    if(this.CityExpanded === false){
+      this.image1 = 'assets/img/maximize-arrow.png';
+    } else {
+      this.image1 = 'assets/img/minimize-tag.png';
+     
+    }
   }
  }
 

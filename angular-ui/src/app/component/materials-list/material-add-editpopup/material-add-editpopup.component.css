@@ -1,8 +1,4 @@
-.mat-form-field {
-  /* width: 680px; */
-  width: 100%;
-  font-family: 'Gilroy';
-  }
+
   .mat-form-field-label-wrapper {
     left: 10px;
   }
@@ -227,17 +223,12 @@ label {
   margin: 5px;
 }
 
-mat-form-field {
-  width: 246px;
-
-}
-
 .mat-align {
   position: relative;
   bottom: 15px;
 }
 
-::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
+/* ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
   padding: 0em 0 0.7em 0;
   border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 }
@@ -245,7 +236,7 @@ mat-form-field {
 ::ng-deep.mat-dialog-container {
   background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
   ;
-}
+} */
 
 
 .customidentifier {
@@ -916,3 +907,84 @@ li {
   padding-right: 5px;
   display: none;
 }
+.selctn-box{
+  background: #FFFFFF;
+border: 0.5px solid #000000;
+box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+border-radius: 10px;
+width: 343px;
+height: 43px;
+}
+::ng-deep.select-fldd .mat-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-form-field-flex{
+  width: 157px;
+  height: 30px;
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  border-radius: 7px 7px 0px 0px;
+  }
+  ::ng-deep.select-fldd .mat-form-field-appearance-fill .mat-form-field-flex {
+    padding: 2px;
+  }
+  .applybtn{
+    background: #000000;
+    box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    border-radius: 7px;
+    width: 69.34px;
+height: 30px;
+color: white;
+  }
+.enterValu{
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  border-radius: 7px;
+  width: 89px;
+height: 30px;
+  }
+  .countryinput{
+    width: 83px;
+height: 34px;
+border: 0.5px solid #000000;
+box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+border-radius: 10px;
+margin-right: 10px;
+  }
+  .regNuminput{
+    width: 173px;
+height: 34px;
+border: 0.5px solid #000000;
+box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+border-radius: 10px;
+margin-right: 10px;
+  }
+  .expand-arrow {
+    height: 20px;
+    margin-right: 10px;
+  }
+  .addedNum{
+    background: #000000;
+box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+border-radius: 18.5px;
+width: 34px;
+height: 34px;
+color: white;
+padding: 5px;
+  }
+  .geolabelHead{
+    width: 83px;
+    font-weight: 500;
+    margin-right: 10px;
+  }
+  .geoRegnum{
+width: 173px;
+margin-right: 10px;
+font-weight: 500;
+font-size: 12.5px;
+  }
+  .addFeild{
+    color: blue;
+    text-decoration: underline;
+  }
+  .geotagHead{
+    font-weight: 500;
+font-size: 12.5px;
+  }

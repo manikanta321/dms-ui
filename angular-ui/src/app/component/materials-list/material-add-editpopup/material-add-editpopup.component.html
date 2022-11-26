@@ -82,13 +82,13 @@
                   </div>
                   <input (keyup)="onKeyDesc($event)" matInput placeholder="Describe the material" #input
                     class="form-control container materialDesc" id="abc">
-                 
+
                 </div>
                 <div class="col-md-4">
                   <div class="imageofm">
                     <label>Image of Material <span>*</span></label>
                   </div>
-                   <!-- <div placeholder="" #input class="form-control container imagePl">
+                  <!-- <div placeholder="" #input class="form-control container imagePl">
                     <img src="../../../../assets/img/down13.png" class="add-img" alt="add-image=btn" width="60px"
                       height="60px">
                   </div> -->
@@ -314,115 +314,243 @@
 
                 </div>
               </div>
-              <div class="heading">
-                <h6 class="stepperHeader-b"><b>Properties</b>
-                </h6>
+              <div class="row">
+                <div class="heading col-lg-6">
+                  <h6 class="stepperHeader-b"><b>Properties</b>
+                  </h6>
+                </div>
+                <div class="col-lg-6">
+                  <div class="selctn-box d-flex">
+                    <div class="select-fldd">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Select-Feild</mat-label>
+                        <mat-select>
+                          <mat-option *ngFor="let food of selectfld">
+                            {{food}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div class="input-val">
+                      <input type="text" placeholder="Enter Value" class="enterValu">
+                    </div>
+                    <div class="btn-apply">
+                      <button class="btn-btn-primary applybtn">Apply</button>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="bar">
+              <div class="bar mt-5">
+                <div class="row">
+                  <div class="col-lg-2">
+                    <p class="label-cls">Geography</p>
+                  </div>
+                  <div class="col-lg-10 d-flex">
+                    <h5 class="geolabelHead">MRP (INR)</h5>
+                    <h5 class="geolabelHead">Min Order<br> Qty</h5>
+                    <h5 class="geolabelHead">Max Order<br> Qty</h5>
+                    <h5 class="geolabelHead">Margin %</h5>
+                    <h5 class="geolabelHead">Discount %</h5>
+                    <h5 class="geolabelHead">Lead Time <br>(days)</h5>
+                    <h5 class="geoRegnum">Registration Number</h5>
+                    <h5 class="geotagHead">Tags</h5>
+                  </div>
 
-                <div class="geo">
-                  <label>Geography</label>
                 </div>
-                <div class="headergeo">
-                  <div class="row-1 mrp">
-                    <label>MRP (INR)</label>
-                  </div>
-                  <div class="row-1 minorder">
-                    <label>Min Order Qty</label>
-                  </div>
-                  <div class="row-1 max">
-                    <label>Max Order Qty</label>
-                  </div>
-                  <div class="row-1 margin">
-                    <label>Margin %</label>
-                  </div>
-                  <div class="row-1 discount">
-                    <label>Discount %</label>
-                  </div>
-                  <div class="row-1 leadt">
-                    <label>Lead Time (days)</label>
-                  </div>
-                  <div class="row-1 registration">
-                    <label>Registration Number</label>
-                  </div>
-                  <div class="row-1 tags">
-                    <label>Tags</label>
+                <div (click)="expandGeoInfoDiv()" class="collapsible">
+                  <div class="row">
+                    <!-- <div class="col-md-1">
+                      <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                  </div> -->
+                    <div class="col-lg-2 d-flex">
+                      <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                      <p class="label-cls">Malaysia</p>
+                    </div>
+                    <div class="col-lg-10 d-flex">
+                      <input type="text" matInput placeholder="-" #input class="form-control countryinput">
+                      <input type="text" matInput placeholder="-" #input class="form-control countryinput">
+                      <input type="text" matInput placeholder="-" #input class="form-control countryinput">
+                      <input type="text" matInput placeholder="-" #input class="form-control countryinput">
+                      <input type="text" matInput placeholder="-" #input class="form-control countryinput">
+                      <input type="text" matInput placeholder="-" #input class="form-control countryinput">
+                      <input type="text" matInput placeholder="-" #input class="form-control regNuminput">
+                      <p class="addFeild">Add</p>
+                    </div>
+
                   </div>
                 </div>
-                <div class="mala">
-                  Malaysia(71/26)</div>
-                <div class="malainput">
-                  <input matInput placeholder="-" #input class="form-control container mrpP">
-                  <input matInput placeholder="    -" #input class="form-control container min-qP">
-                  <input matInput placeholder="    -" #input class="form-control container maxP">
-                  <input matInput placeholder="    -" #input class="form-control container marginP">
-                  <input matInput placeholder="    -" #input class="form-control container discountP">
-                  <input matInput placeholder="    -" #input class="form-control container leadtimeP">
-                  <input matInput placeholder="   Enter" #input class="form-control container regP">
-                  <div class="addlink">
-                    <a href="url">Add</a>
+                <div class="countrySelect mt-2" *ngIf="!countrySelected">
+                  <div class="row">
+                    <div class="col-lg-2 d-flex">
+                      <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                      <p class="label-cls">Kedah</p>
+                    </div>
+                    <div class="col-lg-10 d-flex">
+                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                      <input type="text" matInput placeholder="Enter" #input class="form-control regNuminput">
+                      <p class="addedNum text-center">2</p>
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-2 d-flex">
+                      <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                      <p class="label-cls">perak(14/26)</p>
+                    </div>
+                    <div class="col-lg-10 d-flex">
+                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                      <input type="text" matInput placeholder="Enter" #input class="form-control regNuminput">
+                      <p class="addedNum text-center">2</p>
+                    </div>
+
+                  </div>
+                  <div (click)="RegionExpandDiv()" class="collapsible mt-2">
+                    <div class="row">
+                      <!-- <div class="col-md-1">
+                    <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                </div> -->
+                      <div class="col-lg-2 d-flex">
+                        <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                        <p class="label-cls">Penang(21/23)</p>
+                      </div>
+                      <div class="col-lg-10 d-flex">
+                        <input type="text" matInput placeholder="-" #input class="form-control countryinput">
+                        <input type="text" matInput placeholder="-" #input class="form-control countryinput">
+                        <input type="text" matInput placeholder="-" #input class="form-control countryinput">
+                        <input type="text" matInput placeholder="-" #input class="form-control countryinput">
+                        <input type="text" matInput placeholder="-" #input class="form-control countryinput">
+                        <input type="text" matInput placeholder="-" #input class="form-control countryinput">
+                        <input type="text" matInput placeholder="-" #input class="form-control regNuminput">
+                        <p class="addFeild">Add</p>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="countrySelect mt-2" *ngIf="!RegionExpanded">
+                    <div class="row">
+                      <div class="col-lg-2 d-flex">
+                        <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                        <p class="label-cls">north(4/4)</p>
+                      </div>
+                      <div class="col-lg-10 d-flex">
+                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                        <input type="text" matInput placeholder="Enter" #input class="form-control regNuminput">
+                        <p class="addedNum text-center">2</p>
+                      </div>
+
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-2 d-flex">
+                        <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                        <p class="label-cls">south(8/8)</p>
+                      </div>
+                      <div class="col-lg-10 d-flex">
+                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                        <input type="text" matInput placeholder="Enter" #input class="form-control regNuminput">
+                        <p class="addedNum text-center">2</p>
+                      </div>
+
+                    </div>
+                    <div (click)="CityExpandDiv()" class="collapsible mt-2">
+                      <div class="row">
+                        <!-- <div class="col-md-1">
+                  <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+              </div> -->
+                        <div class="col-lg-2 d-flex">
+                          <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                          <p class="label-cls">West(3/4)</p>
+                        </div>
+                        <div class="col-lg-10 d-flex">
+                          <input type="text" matInput placeholder="-" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="-" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="-" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="-" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="-" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="-" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="-" #input class="form-control regNuminput">
+                          <p class="addFeild">Add</p>
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="countrySelect mt-2" *ngIf="!CityExpanded">
+                      <div class="row">
+                        <div class="col-lg-2 d-flex">
+                          <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                          <p class="label-cls">George Town</p>
+                        </div>
+                        <div class="col-lg-10 d-flex">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control regNuminput">
+                          <p class="addedNum text-center">2</p>
+                        </div>
+
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-2 d-flex">
+                          <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                          <p class="label-cls">Balik pulau</p>
+                        </div>
+                        <div class="col-lg-10 d-flex">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control regNuminput">
+                          <p class="addedNum text-center">2</p>
+                        </div>
+
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-2 d-flex">
+                          <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                          <p class="label-cls">Batu Refringi</p>
+                        </div>
+                        <div class="col-lg-10 d-flex">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
+                          <input type="text" matInput placeholder="Enter" #input class="form-control regNuminput">
+                          <p class="addedNum text-center">2</p>
+                        </div>
+
+                      </div>
+
+                    </div>
                   </div>
                 </div>
-                <div class="Kedah">
-                  Kedah(36/26)
-                </div>
-                <div class="kedahinput">
-                  <input matInput placeholder="    Enter" #input class="form-control container mrpP">
-                  <input matInput placeholder="    Enter" #input class="form-control container min-qP">
-                  <input matInput placeholder="    Enter" #input class="form-control container maxP">
-                  <input matInput placeholder="    Enter" #input class="form-control container marginP">
-                  <input matInput placeholder="    Enter" #input class="form-control container discountP">
-                  <input matInput placeholder="    Enter" #input class="form-control container leadtimeP">
-                  <input matInput placeholder="    Enter" #input class="form-control container regP">
-                  <div class="addlink">
-                    <a href="url">Add</a>
-                  </div>
-                </div>
-                <div class="Perak">
-                  Perak(14/26)
-                </div>
-                <div class="perakinput">
-                  <input matInput placeholder="    Enter" #input class="form-control container mrpP">
-                  <input matInput placeholder="    Enter" #input class="form-control container min-qP">
-                  <input matInput placeholder="    Enter" #input class="form-control container maxP">
-                  <input matInput placeholder="    Enter" #input class="form-control container marginP">
-                  <input matInput placeholder="    Enter" #input class="form-control container discountP">
-                  <input matInput placeholder="    Enter" #input class="form-control container leadtimeP">
-                  <input matInput placeholder="    Enter" #input class="form-control container regP">
-                  <div class="addlink">
-                    <a href="url">Add</a>
-                  </div>
-                </div>
-                <div class="Penang">
-                  Penang(21/22)
-                </div>
-                <div class="penanginput">
-                  <input matInput placeholder="    -" #input class="form-control container mrpP">
-                  <input matInput placeholder="    -" #input class="form-control container min-qP">
-                  <input matInput placeholder="    -" #input class="form-control container maxP">
-                  <input matInput placeholder="    -" #input class="form-control container marginP">
-                  <input matInput placeholder="    -" #input class="form-control container discountP">
-                  <input matInput placeholder="    -" #input class="form-control container leadtimeP">
-                  <input matInput placeholder="    Enter" #input class="form-control container regP">
-                  <div class="addlink">
-                    <a href="url">Add</a>
-                  </div>
-                </div>
-                <div class="North">
-                  North(4/4)
-                </div>
-                <div class="northinput">
-                  <input matInput placeholder="    Enter" #input class="form-control container mrpP">
-                  <input matInput placeholder="    Enter" #input class="form-control container min-qP">
-                  <input matInput placeholder="    Enter" #input class="form-control container maxP">
-                  <input matInput placeholder="    Enter" #input class="form-control container marginP">
-                  <input matInput placeholder="    Enter" #input class="form-control container discountP">
-                  <input matInput placeholder="    Enter" #input class="form-control container leadtimeP">
-                  <input matInput placeholder="    Enter" #input class="form-control container regP">
-                  <div class="addlink">
-                    <a href="url">Add</a>
-                  </div>
-                </div>
+
+
               </div>
             </div>
             <div class="row">

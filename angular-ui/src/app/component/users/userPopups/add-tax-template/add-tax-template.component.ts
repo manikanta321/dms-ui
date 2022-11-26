@@ -22,7 +22,7 @@ export class AddTaxTemplateComponent implements OnInit {
    taxname:any;
    enteredname:any;
    letter:any='A';
-
+  
   constructor(private dialogRef: MatDialogRef<any>,
     private fb:FormBuilder,
     private sharedService:SharedService,

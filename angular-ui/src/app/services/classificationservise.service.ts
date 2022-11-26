@@ -88,6 +88,13 @@ export class ClassificationserviseService {
   //geoGraphies services
 
 
+getGeographyIndealer(){
+
+  return this.http.get<any>(this.classificationurl + 'CommonApi/GetHeirarchyOfDefaultGeography');
+
+}
+
+
   getGeographyHierarchy() {
     return this.http.get<any>(this.classificationurl + 'OtherMasterApi/GetGeographyHierarchy');
   }

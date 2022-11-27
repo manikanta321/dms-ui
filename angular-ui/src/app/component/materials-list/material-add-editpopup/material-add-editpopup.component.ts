@@ -41,6 +41,8 @@ import { AddProductGroupComponent } from '../add-product-group/add-product-group
 import { AddProductSubGroupComponent } from '../add-product-sub-group/add-product-sub-group.component';
 import { SelectProductComponent } from '../select-product/select-product.component';
 import { AddMaterialsService } from 'src/app/services/add-materials.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
  /**
   * @title Stepper animations
   */
@@ -122,12 +124,43 @@ import { AddMaterialsService } from 'src/app/services/add-materials.service';
   countrySelected = true;
   RegionExpanded = true;
   CityExpanded = true;
-    constructor(private fb: FormBuilder, public dialog: MatDialog,
-      private addMaterials: AddMaterialsService) {}
-   firstFormGroup: FormGroup = this.fb.group({firstCtrl: ['']});
-   secondFormGroup: FormGroup = this.fb.group({secondCtrl: ['']});
+// geograhies related variables
+  gepGraphiesFormGroup!: FormGroup;
+
+   geoGraphyHirerachyData: any;
+   geoGraphyFullData: any;
+
+   geographyHierarchyId: any;
+   aarrayToPush: any[] = [];
+   css: any[] = [];
+   colorsList = [
+     { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
+     { primaryColor: { background: '#0C5A3E', color: '#fff' }, secondaryColor: { background: "#E6FFF6", color: "#0C5A3E" }, },
+     { primaryColor: { background: '#C32F27', color: '#fff' }, secondaryColor: { background: "#FFEDEC", color: "#C32F27" }, },
+     { primaryColor: { background: '#3D1A00', color: '#fff' }, secondaryColor: { background: "#D6C8C3", color: "#3D1A00" }, },
+     { primaryColor: { background: '#DC0063', color: '#fff' }, secondaryColor: { background: "#FFE1EE", color: "#DC0063" }, },
+     { primaryColor: { background: '#8000E2', color: '#fff' }, secondaryColor: { background: "#EFDAFF", color: "#8000E2" }, },
+     { primaryColor: { background: '#0E4C6D', color: '#fff' }, secondaryColor: { background: "#D6F1FF", color: "#0E4C6D" }, },
+     { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
+     { primaryColor: { background: '#0C5A3E', color: '#fff' }, secondaryColor: { background: "#E6FFF6", color: "#0C5A3E" }, },
+     { primaryColor: { background: '#C32F27', color: '#fff' }, secondaryColor: { background: "#FFEDEC", color: "#C32F27" }, },
+     { primaryColor: { background: '#3D1A00', color: '#fff' }, secondaryColor: { background: "#D6C8C3", color: "#3D1A00" }, },
+     { primaryColor: { background: '#DC0063', color: '#fff' }, secondaryColor: { background: "#FFE1EE", color: "#DC0063" }, },
+   ];
+
+   constructor(private fb: FormBuilder, public dialog: MatDialog,
+     private spinner: NgxSpinnerService, private addMaterials: AddMaterialsService,
+     private classification: ClassificationserviseService) { }
+
+
+   firstFormGroup: FormGroup = this.fb.group({ firstCtrl: [''] });
+   secondFormGroup: FormGroup = this.fb.group({ secondCtrl: [''] });
+   thirdformGroup:FormGroup = this.fb.group({ thirdCtrl: [''] });
 
    ngOnInit():void {
+
+    this.getGeographyHierarchy();
+
     this.getProductList();
     this.selectedItems1 = ["Shivam"];
     this.selectedItems2 = [];
@@ -439,6 +472,122 @@ let data ={
      
     }
   }
+
+// geograhies related apis
+
+getGeographyHierarchy() {
+  this.spinner.show();
+  this.geoGraphyHirerachyData = null;
+  this.classification.getGeographyHierarchy().subscribe(res => {
+    // console.log(res);
+    this.spinner.hide();
+    this.geoGraphyHirerachyData = res.response;
+
+    console.log('geoGraphyHirerachyData', this.geoGraphyHirerachyData);
+
+
+    this.geoGraphyFullData = JSON.parse(JSON.stringify(res.response));
+    console.log('geoGraphyFullData', this.geoGraphyFullData);
+    const hdata = this.geoGraphyFullData.find(a => a.primaryGeographyAssociation == 'Y');
+
+    console.log('hdata', hdata)
+
+    this.geographyHierarchyId = hdata.geographyHierarchyId
+    const data = this.geoGraphyFullData.findIndex(a => a.primaryGeographyAssociation == 'Y');
+    this.geoGraphyFullData = this.geoGraphyFullData.slice(0, data + 1)
+
+    console.log('data to console1', this.geoGraphyFullData.slice(0, data + 1))
+
+
+    console.log('geoGraphyFullData', this.geoGraphyFullData);
+
+    this.getGeographiesDataById(null, 1);
+  }, err => {
+    console.log(err);
+    this.spinner.hide();
+  })
+
+}
+
+
+selectGeoGraphy(clickedItem, hirerachyIndex,) {
+
+  console.log(clickedItem, hirerachyIndex);
+
+
+  // if (this.geographyHierarchyId == hirerachyIndex) {
+  //   this.css.push(clickedItem)
+
+  //   const index = this.aarrayToPush.indexOf(clickedItem.geographyId);
+
+  //   if (index !== -1) {
+  //     this.aarrayToPush.splice(index, 1);
+  //   }
+  //   else {
+  //     this.aarrayToPush.push(clickedItem.geographyId);
+
+  //   }
+
+  //   console.log('aarrayToPush', this.aarrayToPush)
+  // }
+  // else {
+  //   this.aarrayToPush = []
+  // }
+
+  this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.forEach(element => {
+    if (element.geographyId == clickedItem.geographyId) {
+      let index = this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.indexOf(element.geographyId);
+      if (index == -1) {
+        if (hirerachyIndex == this.geoGraphyFullData.length) {
+          this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.push(element.geographyId);
+          this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected.push(element.geographyName);
+        } else {
+          this.geoGraphyFullData[hirerachyIndex - 1].geographySelected = [element.geographyId];
+          this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected = [element.geographyName];
+          this.getGeographiesDataById(element.geographyId, (hirerachyIndex + 1));
+          this.removeOtherGeographiesData(hirerachyIndex);
+        }
+      } else {
+        this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.splice(index, 1);
+        this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected.splice(index, 1);
+        this.removeOtherGeographiesData(hirerachyIndex);
+      }
+    }
+
+
+  });
+  console.log(this.geoGraphyFullData);
+}
+
+
+removeOtherGeographiesData(hirerachyIndex) {
+  for (var i = hirerachyIndex; i < this.geoGraphyFullData.length; i++) {
+    this.geoGraphyFullData[i].allOtherGeography = [];
+    this.geoGraphyFullData[i].geographySelected = [];
+    this.geoGraphyFullData[i].geographyNamesSelected = [];
+    this.geoGraphyFullData[i].geographyCount = 0;
+    this.geoGraphyFullData[i].showAddIcon = false;
+  }
+
+}
+getGeographiesDataById(id, hirerachyIndex = 0) {
+  this.spinner.show();
+  console.log(id, hirerachyIndex);
+  this.classification.getGeographiesById(id, hirerachyIndex).subscribe(geographiesRes => {
+    console.log(geographiesRes);
+    this.spinner.hide();
+    this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography = geographiesRes.response.allOtherGeography ?? [];
+    this.geoGraphyFullData[hirerachyIndex - 1].geographySelected = [];
+    this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected = [];
+    this.geoGraphyFullData[hirerachyIndex - 1].geographyCount = this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.length;
+    this.geoGraphyFullData[hirerachyIndex - 1].showAddIcon = true;
+
+  }, err => {
+    console.log(err);
+    this.spinner.hide();
+  })
+}
+
  }
 
  

@@ -235,328 +235,76 @@
               </div>
             </form>
           </mat-step>
+          <!-- geographies -->
 
-          <mat-step class="geoo">
-            <ng-template matStepLabel>Geographies & Properties</ng-template>
-            <div class="geography">
+          <mat-step [stepControl]="thirdformGroup">
+            <form [formGroup]="gepGraphiesFormGroup">
+              <ng-template matStepLabel> Geographies</ng-template>
               <div class="heading">
-                <h6 class="stepperHeader-b">
-                  <b>Geographies</b>
-                </h6>
+                <h6 class="Geo-headerlabel"><b>Geographies</b></h6>
               </div>
-              <div class="material-card row">
-                <div class="col-sm-3">
 
-                  <div class="row">
-                    <p class="col-10 font">Country</p>
-                    <p class="col-2"></p>
-                  </div>
-                  <mat-card class="mat-card-content ">
-                    <mat-card-content class="matcardscroll">
-                      <div class=" d-flex " *ngFor="let catg of countryList">
-                        <p class="col-10 catg" (click)="getStateList(catg.countryId)"
-                          [ngClass]="{ 'selected': catg.countryId == selectedItem }" (click)="onClick(catg)">
-                          {{catg.countryName}}</p>
-                      </div>
-                      <div class="buttn d-flex" *ngIf=addButton>
-                        <div class="col-10">
-                          <button class="btn btn-basic addcat">Add category name</button>
-                          <button class="btn btn-basic addcode">Add code</button>
-                        </div>
-                      </div>
-                    </mat-card-content>
-
-                  </mat-card>
-                </div>
-                <div class="col-sm-3">
-                  <div class="row">
-                    <p class="col-10 font">State</p>
-                    <p class="col-2"></p>
-                  </div>
-                  <mat-card class="mat-card-content1">
-                    <mat-card-content class="matcardscroll">
-                      <div class=" d-flex" *ngFor="let subc of stateList">
-                        <p class="col-10 subc" [ngClass]="{ 'subselected': subc.geographyId == stateselectedItem }"
-                          (click)="onClick(subc)">{{subc.geographyName}}</p>
-                      </div>
-                    </mat-card-content>
-                  </mat-card>
-                </div>
-                <div class="col-sm-3">
-                  <div class="row">
-                    <p class="col-10 font">District</p>
-                    <p class="col-2"> </p>
-                  </div>
-                  <mat-card class="mat-card-content2">
-                    <mat-card-content class="matcardscroll">
-                      <div class=" d-flex" *ngFor="let type of distList">
-                        <p class="col-10 typeg" (click)="onClick(type)"
-                          [ngClass]="{ 'typeselected': type.geographyId == distselectedItem }">{{type.geographyName}}
+              <div class="horizontal-scroll">
+                <div class="horizontal-scroll__item" *ngFor="let item of geoGraphyFullData;let i =index; ">
+                  <div class="geo-grid">
+                    <div class="row grid-heading">
+                      <div class="col-sm-10">
+                        <p><span class="country">{{item.geographyHierarchyName}}</span>
+                          ({{item.geographyCount ?? 0}})
+                          <span class="ml-1" *ngIf="item.primaryGeographyAssociation =='Y'">
+                            <img src="assets/img/double-blue-tick.svg" alt="double-blue-tick"> </span>
                         </p>
-                      </div>
-                    </mat-card-content>
-                  </mat-card>
 
-                </div>
-                <div class="col-sm-3">
-                  <div class="row">
-                    <p class="col-10 font">City</p>
-                    <p class="col-2"> </p>
-                  </div>
-                  <mat-card class="mat-card-content3 ">
-                    <mat-card-content class="matcardscroll">
-                      <div class=" d-flex" *ngFor="let type of cityList">
-                        <p class="col-10 typeg" (click)="onClick(type)"
-                          [ngClass]="{ 'cityselected': type == citySelectedItem }">{{type.geographyName}}</p>
                       </div>
-                    </mat-card-content>
-                  </mat-card>
 
-                </div>
-              </div>
-              <div class="row">
-                <div class="heading col-lg-6">
-                  <h6 class="stepperHeader-b"><b>Properties</b>
-                  </h6>
-                </div>
-                <div class="col-lg-6">
-                  <div class="selctn-box d-flex">
-                    <div class="select-fldd">
-                      <mat-form-field appearance="fill">
-                        <mat-label>Select-Feild</mat-label>
-                        <mat-select>
-                          <mat-option *ngFor="let food of selectfld">
-                            {{food}}
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
                     </div>
-                    <div class="input-val">
-                      <input type="text" placeholder="Enter Value" class="enterValu">
-                    </div>
-                    <div class="btn-apply">
-                      <button class="btn-btn-primary applybtn">Apply</button>
-                    </div>
+                    <mat-card class="mat-card mat-focus-indicator mat-card-content scroll">
+                      <mat-card-content class="mat-card-content">
+                        <div *ngIf="item.allOtherGeography">  
+                          <div class="d-flex " *ngFor="let geoItem of item.allOtherGeography; ">
+                            <div class="geography-item"
+                              [ngStyle]="{'background':item.geographySelected.indexOf(geoItem.geographyId) == -1 ? colorsList[i].secondaryColor.background : colorsList[i].primaryColor.background, 'color':item.geographySelected.indexOf(geoItem.geographyId) == -1 ? colorsList[i].secondaryColor.color : colorsList[i].primaryColor.color,'border': '1px solid ' + colorsList[i].primaryColor.background }"
+                              (click)="geoItem?.isActive ? selectGeoGraphy(geoItem,(i +1)): null"
+                              [ngClass]="{'deactivated': !geoItem?.isActive} ">
+                              <div class="title"> {{geoItem.geographyName}}
+                                ({{geoItem.geographyCode ??''}})</div>
+                            </div>
+                          </div>
+                        </div>
+                      </mat-card-content>
+                    </mat-card>
                   </div>
                 </div>
               </div>
-              <div class="bar mt-5">
-                <div class="row">
-                  <div class="col-lg-2">
-                    <p class="label-cls">Geography</p>
-                  </div>
-                  <div class="col-lg-10 d-flex">
-                    <h5 class="geolabelHead">MRP (INR)</h5>
-                    <h5 class="geolabelHead">Min Order<br> Qty</h5>
-                    <h5 class="geolabelHead">Max Order<br> Qty</h5>
-                    <h5 class="geolabelHead">Margin %</h5>
-                    <h5 class="geolabelHead">Discount %</h5>
-                    <h5 class="geolabelHead">Lead Time <br>(days)</h5>
-                    <h5 class="geoRegnum">Registration Number</h5>
-                    <h5 class="geotagHead">Tags</h5>
-                  </div>
-
-                </div>
-                <div (click)="expandGeoInfoDiv()" class="collapsible">
-                  <div class="row">
-                    <!-- <div class="col-md-1">
-                      <img [src]="image1" class="expand-arrow" alt="add-user-btn">
-                  </div> -->
-                    <div class="col-lg-2 d-flex">
-                      <img [src]="image1" class="expand-arrow" alt="add-user-btn">
-                      <p class="label-cls">Malaysia</p>
-                    </div>
-                    <div class="col-lg-10 d-flex">
-                      <input type="text" matInput placeholder="-" #input class="form-control countryinput">
-                      <input type="text" matInput placeholder="-" #input class="form-control countryinput">
-                      <input type="text" matInput placeholder="-" #input class="form-control countryinput">
-                      <input type="text" matInput placeholder="-" #input class="form-control countryinput">
-                      <input type="text" matInput placeholder="-" #input class="form-control countryinput">
-                      <input type="text" matInput placeholder="-" #input class="form-control countryinput">
-                      <input type="text" matInput placeholder="-" #input class="form-control regNuminput">
-                      <p class="addFeild">Add</p>
-                    </div>
-
-                  </div>
-                </div>
-                <div class="countrySelect mt-2" *ngIf="!countrySelected">
-                  <div class="row">
-                    <div class="col-lg-2 d-flex">
-                      <img [src]="image1" class="expand-arrow" alt="add-user-btn">
-                      <p class="label-cls">Kedah</p>
-                    </div>
-                    <div class="col-lg-10 d-flex">
-                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                      <input type="text" matInput placeholder="Enter" #input class="form-control regNuminput">
-                      <p class="addedNum text-center">2</p>
-                    </div>
-
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-2 d-flex">
-                      <img [src]="image1" class="expand-arrow" alt="add-user-btn">
-                      <p class="label-cls">perak(14/26)</p>
-                    </div>
-                    <div class="col-lg-10 d-flex">
-                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                      <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                      <input type="text" matInput placeholder="Enter" #input class="form-control regNuminput">
-                      <p class="addedNum text-center">2</p>
-                    </div>
-
-                  </div>
-                  <div (click)="RegionExpandDiv()" class="collapsible mt-2">
-                    <div class="row">
-                      <!-- <div class="col-md-1">
-                    <img [src]="image1" class="expand-arrow" alt="add-user-btn">
-                </div> -->
-                      <div class="col-lg-2 d-flex">
-                        <img [src]="image1" class="expand-arrow" alt="add-user-btn">
-                        <p class="label-cls">Penang(21/23)</p>
-                      </div>
-                      <div class="col-lg-10 d-flex">
-                        <input type="text" matInput placeholder="-" #input class="form-control countryinput">
-                        <input type="text" matInput placeholder="-" #input class="form-control countryinput">
-                        <input type="text" matInput placeholder="-" #input class="form-control countryinput">
-                        <input type="text" matInput placeholder="-" #input class="form-control countryinput">
-                        <input type="text" matInput placeholder="-" #input class="form-control countryinput">
-                        <input type="text" matInput placeholder="-" #input class="form-control countryinput">
-                        <input type="text" matInput placeholder="-" #input class="form-control regNuminput">
-                        <p class="addFeild">Add</p>
-                      </div>
-
-                    </div>
-                  </div>
-                  <div class="countrySelect mt-2" *ngIf="!RegionExpanded">
-                    <div class="row">
-                      <div class="col-lg-2 d-flex">
-                        <img [src]="image1" class="expand-arrow" alt="add-user-btn">
-                        <p class="label-cls">north(4/4)</p>
-                      </div>
-                      <div class="col-lg-10 d-flex">
-                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                        <input type="text" matInput placeholder="Enter" #input class="form-control regNuminput">
-                        <p class="addedNum text-center">2</p>
-                      </div>
-
-                    </div>
-                    <div class="row">
-                      <div class="col-lg-2 d-flex">
-                        <img [src]="image1" class="expand-arrow" alt="add-user-btn">
-                        <p class="label-cls">south(8/8)</p>
-                      </div>
-                      <div class="col-lg-10 d-flex">
-                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                        <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                        <input type="text" matInput placeholder="Enter" #input class="form-control regNuminput">
-                        <p class="addedNum text-center">2</p>
-                      </div>
-
-                    </div>
-                    <div (click)="CityExpandDiv()" class="collapsible mt-2">
-                      <div class="row">
-                        <!-- <div class="col-md-1">
-                  <img [src]="image1" class="expand-arrow" alt="add-user-btn">
-              </div> -->
-                        <div class="col-lg-2 d-flex">
-                          <img [src]="image1" class="expand-arrow" alt="add-user-btn">
-                          <p class="label-cls">West(3/4)</p>
-                        </div>
-                        <div class="col-lg-10 d-flex">
-                          <input type="text" matInput placeholder="-" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="-" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="-" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="-" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="-" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="-" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="-" #input class="form-control regNuminput">
-                          <p class="addFeild">Add</p>
-                        </div>
-
-                      </div>
-                    </div>
-                    <div class="countrySelect mt-2" *ngIf="!CityExpanded">
-                      <div class="row">
-                        <div class="col-lg-2 d-flex">
-                          <img [src]="image1" class="expand-arrow" alt="add-user-btn">
-                          <p class="label-cls">George Town</p>
-                        </div>
-                        <div class="col-lg-10 d-flex">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control regNuminput">
-                          <p class="addedNum text-center">2</p>
-                        </div>
-
-                      </div>
-                      <div class="row">
-                        <div class="col-lg-2 d-flex">
-                          <img [src]="image1" class="expand-arrow" alt="add-user-btn">
-                          <p class="label-cls">Balik pulau</p>
-                        </div>
-                        <div class="col-lg-10 d-flex">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control regNuminput">
-                          <p class="addedNum text-center">2</p>
-                        </div>
-
-                      </div>
-                      <div class="row">
-                        <div class="col-lg-2 d-flex">
-                          <img [src]="image1" class="expand-arrow" alt="add-user-btn">
-                          <p class="label-cls">Batu Refringi</p>
-                        </div>
-                        <div class="col-lg-10 d-flex">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control countryinput">
-                          <input type="text" matInput placeholder="Enter" #input class="form-control regNuminput">
-                          <p class="addedNum text-center">2</p>
-                        </div>
-
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
 
 
-              </div>
-            </div>
+            </form>
+         
             <div class="row">
-              <button class="btn btn-primary btn-block submitbtn">Submit</button>
+              <div class="col-3">
+
+              </div>
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-1"></div>
+                  <div class="col-6">
+                    <button class="btn btn-primary btn-block submitbtn save-btn"
+                      >Save</button>
+                      <!-- (click)="saveGeographiesList()" -->
+                  </div>
+                  <div class="col-3">
+                  </div>
+                </div>
+              </div>
+              <div class="col-3">
+
+              </div>
             </div>
+         
           </mat-step>
+
+
+
         </mat-stepper>
       </div>
     </div>

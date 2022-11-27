@@ -228,33 +228,12 @@ label {
   bottom: 15px;
 }
 
-/* ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
-  padding: 0em 0 0.7em 0;
-  border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-}
-
-::ng-deep.mat-dialog-container {
-  background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-  ;
-} */
-
-
-.customidentifier {
-  
-}
 
 .uomp {
   /* margin-left: 499px;
   margin-top: -29px; */
   margin-top: 10px;
 }
-
-.uomdrp {
-  /* margin-left: 499px;
-  margin-top: -65px;
-  width: 207px; */
-}
-
 .brandname {
   /* margin-top: 1px;
   margin-left: -5px; */
@@ -364,9 +343,7 @@ mat-card {
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 25px;
   height: 212px;
-  width: 186px;
-
-  /* font-size: 10px; */
+  width: 15rem;
 }
 
 .catg {
@@ -436,10 +413,6 @@ li {
   display: flex;
   color: rgba(104, 110, 116, 0.75);
   font-size: 13px;
-}
-
-.row {
-  /* width: 767px */
 }
 
 .bar {
@@ -589,7 +562,7 @@ li {
 .submitbtn {
   margin-top: 12px;
   background-color: #000000;
-  width: 66%;
+  width: 20rem;
   position: relative;
   left: 22%;
 }
@@ -801,14 +774,13 @@ li {
 .na-placeholder {
   border: 1px solid !important;
   border-radius: 10px;
-  /* width: 190px; */
-  /* padding-left: 10px; */
+
   height: 32px;
   background-color: white;
   padding: 0 5px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    /* box-sizing: border-box; */
+  -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+
 }
 .stepperHeader-p {
   color: #000000;
@@ -988,3 +960,159 @@ font-size: 12.5px;
     font-weight: 500;
 font-size: 12.5px;
   }
+
+  /* geograhies css */
+
+  .geography-item {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  
+  .geography-item.deactivated {
+    color: #a6a7ad !important;
+    opacity: .6;
+    border: 1px solid #a6a7ad !important;
+    cursor: auto;
+  }
+  .Geo-headerlabel {
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+  }
+
+  .horizontal-scroll {
+    display: flex;
+    gap: 10px;
+    height: 450px;
+    overflow-x: auto;
+
+  }
+  
+  .horizontal-scroll__item {
+    flex: 0 0 249px;
+    scroll-snap-align: start;
+  }
+
+  .grid-heading {
+    padding: 0 20px;
+  }
+.country {
+
+  font-family: 'Gilroy';
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 23.06px;
+  letter-spacing: 0em;
+  color: #000000;
+  font-style: light;
+}
+
+.State {
+  font-family: 'Gilroy';
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 23.06px;
+  font-style: light;
+  letter-spacing: 0em;
+  color: #000000;
+
+}
+
+.District {
+  font-family: 'Gilroy';
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 23.06px;
+  font-style: light;
+  letter-spacing: 0em;
+  color: #000000;
+
+}
+
+.City {
+  font-family: 'Gilroy';
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 23.06px;
+  font-style: light;
+  letter-spacing: 0em;
+  color: #000000;
+}
+
+.Regions {
+  font-family: 'Gilroy';
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 23.06px;
+  font-style: light;
+  letter-spacing: 0em;
+  color: #000000;
+}
+
+.Area {
+  font-family: 'Gilroy';
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 23.06px;
+  font-style: light;
+  letter-spacing: 0em;
+  color: #000000;
+}
+
+.Sub Area {
+  font-family: 'Gilroy';
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 23.06px;
+  font-style: light;
+  letter-spacing: 0em;
+  color: #000000;
+}
+.selected {
+  background-color: #00187A;
+  color: white;
+}
+
+.subselected {
+  background: #0C5A3E;
+  color: white;
+}
+
+.typeselected {
+  background: #C32F27;
+  color: white;
+}
+
+.cityselected {
+  background: #C32F27;
+  color: white;
+}
+
+.regionselected {
+  background: #3D1A00;
+  color: white;
+}
+
+.areaselected {
+  background: #3D1A00;
+  color: white;
+}
+.geo-classification-crad .mat-card {
+  height: 380px !important;
+}
+
+.scroll {
+  overflow-y: auto;
+  overflow-x: auto;
+}

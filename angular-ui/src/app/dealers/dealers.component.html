@@ -21,8 +21,7 @@
         <form [formGroup]="myForms1">
           <ng-multiselect-dropdown class="roless-product" name="city1" [placeholder]="'Product'" formControlName="city1"
             [disabled]="disabled" [settings]="dropdownSettings2" [data]="ProductListArray"
-            (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
-            (onDeSelectAll)="onItemDeSelectOrAll($event)" (onSelectAll)="onItemSelectOrAll($event)">
+            >
           </ng-multiselect-dropdown>
         </form>
         <div class="dropdown-placeholder catty-placeholder">

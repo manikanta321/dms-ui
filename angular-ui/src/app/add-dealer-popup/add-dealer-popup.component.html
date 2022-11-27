@@ -29,7 +29,7 @@
                                     <div class="col-4 ">
                                         <label>Name<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="dealerName" class="addDelercols" required
+                                        <input type="text" formControlName="CustomerName" class="addDelercols" required
                                             placeholder="Enter your name">
                                     </div>
                                     <div class="col-4 ">
@@ -41,7 +41,7 @@
                                     <div class="col-4 ">
                                         <label>Code<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="dealerCode" class="addDelercols" required
+                                        <input type="text" formControlName="Code" class="addDelercols" required
                                             placeholder="Enter your code">
                                     </div>
 
@@ -56,13 +56,13 @@
                                     <div class="col-4 ">
                                         <label>Phone No<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="phone" class="addDelercols" required
+                                        <input type="text" formControlName="Phoneno" class="addDelercols" required
                                             placeholder="Enter phone no">
                                     </div>
                                     <div class="col-4 ">
                                         <label>Company ID<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="companyId" class="addDelercols" required
+                                        <input type="text" formControlName="company_id" class="addDelercols" required
                                             placeholder="Enter your company ID">
                                     </div>
                                 </div>
@@ -73,7 +73,7 @@
                                     <div class="col-4 ">
                                         <label>Other Identifer<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="identifier" class="addDelercols" required
+                                        <input type="text" formControlName="OtherIdentifier" class="addDelercols" required
                                             placeholder="Enter and select">
                                     </div>
                                     <div class="col-4 ">
@@ -95,19 +95,19 @@
                                     <div class="col-4 fontcolor">
                                         <label>User Name<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="userName" class="addDelercols" required
+                                        <input type="text" formControlName="UserName" class="addDelercols" required
                                             placeholder="Enter your name">
                                     </div>
                                     <div class="col-4 fontcolor">
                                         <label>Email ID<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="userEmail" class="addDelercols" required
+                                        <input type="text" formControlName="EmailId" class="addDelercols" required
                                             placeholder="Enter your email ID">
                                     </div>
                                     <div class="col-4 fontcolor">
                                         <label>Phone No<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="usermobile" class="addDelercols" required
+                                        <input type="text" formControlName="Mobile" class="addDelercols" required
                                             placeholder="Enter your phone no">
                                     </div>
                                 </div>
@@ -115,7 +115,7 @@
                                     <div class="col-4">
                                         <label>First Name<span>*</span></label>
                                         <br>
-                                        <input type="text" formControlName="firstName" class="addDelercols" required
+                                        <input type="text" formControlName="FirstName" class="addDelercols" required
                                             placeholder="Enter your First Name">
                                     </div>
                                     <div class="col-4">
@@ -127,7 +127,7 @@
                                     <div class="col-4">
                                         <label>Status<span>*</span></label>
                                         <br>
-                                        <select class="status-class" formControlName="status" name="status"
+                                        <select class="status-class" formControlName="StatusId" name="status"
                                             placeholder="Select Status">
                                             <option value="" selected hidden>Select status</option>
                                             <option *ngFor="let option of statusList" [value]="option.statusId">
@@ -156,18 +156,18 @@
                                 </div>
 
 
-                                <div *ngIf="addAddress" formArrayName="quantities">
+                                <div *ngIf="addAddress" formArrayName="addresscount">
 
-                                    <div class="row" *ngFor="let quantity of quantities().controls; let i=index"
+                                    <div class="row" *ngFor="let quantity of addresscount().controls; let i=index"
                                         [formGroupName]="i">
                                         <div class="col-1">
                                             <label *ngIf="i == 0">Type<span>*</span></label>
                                             <br>
-                                            <select class="addDelercols addtype" formControlName="addType" name="status"
+                                            <select class="addDelercols addtype" formControlName="AddressTypeId" name="status"
                                                 placeholder="select">
                                                 <option value="" selected hidden>Type</option>
-                                                <option value="1">Billing</option>
-                                                <option value="2">Shipping</option>
+                                                <option value="6">Billing</option>
+                                                <option value="7">Shipping</option>
                                             </select>
 
                                         </div>
@@ -175,53 +175,53 @@
                                         <div class="col-2">
                                             <label *ngIf="i == 0">Consignee Name<span>*</span></label>
                                             <br>
-                                            <input type="text" placeholder="Enter" formControlName="consigName"
+                                            <input type="text" placeholder="Enter" formControlName="ConsigneeName"
                                                 class="addDelercols addname">
                                         </div>
 
                                         <div class="col-1">
                                             <label *ngIf="i == 0">Tax<span>*</span></label>
                                             <br>
-                                            <input type="text" placeholder="Select" formControlName="tax"
+                                            <input type="text" placeholder="Select" formControlName="Taxid"
                                                 class="addDelercols addtax">
                                         </div>
 
                                         <div class="col-2">
                                             <label *ngIf="i == 0">Address Line<span>*</span></label>
                                             <br>
-                                            <input type="text" placeholder="Enter" formControlName="addressLine1"
+                                            <input type="text" placeholder="Enter" formControlName="AddressLine1"
                                                 class="addDelercols addadress">
-                                            <input type="text" placeholder="Enter" formControlName="addressLine"
+                                            <input type="text" placeholder="Enter" formControlName="AddressLine2"
                                                 class="addDelercols addadressLine1">
                                         </div>
 
                                         <div class="col-1">
                                             <label *ngIf="i == 0">Country<span>*</span></label>
                                             <br>
-                                            <input type="text" placeholder="Enter" formControlName="country"
+                                            <input type="text" placeholder="Enter" formControlName="CountryName"
                                                 class="addDelercols addcountry">
                                         </div>
 
                                         <div class="col-1">
                                             <label *ngIf="i == 0">State<span>*</span></label>
                                             <br>
-                                            <input type="text" placeholder="Enter" formControlName="state"
+                                            <input type="text" placeholder="Enter" formControlName="StateName"
                                                 class="addDelercols aastate">
                                         </div>
 
                                         <div class="col-2">
                                             <label *ngIf="i == 0">City & Zip<span>*</span></label>
                                             <br>
-                                            <input type="text" placeholder="Enter City" formControlName="cityAndZip"
+                                            <input type="text" placeholder="Enter City" formControlName="CityName"
                                                 class="addDelercols addcity">
-                                            <input type="text" placeholder="Enter Zip" formControlName="Zipcode"
+                                            <input type="text" placeholder="Enter Zip" formControlName="ZipCode"
                                                 class="addDelercols addzip">
                                         </div>
 
                                         <div class="col-1">
                                             <label *ngIf="i == 0">Phone<span>*</span></label>
                                             <br>
-                                            <input type="text" placeholder="Enter" formControlName="phoneNo"
+                                            <input type="text" placeholder="Enter" formControlName="Telephone"
                                                 class="addDelercols addphone">
                                         </div>
 
@@ -247,12 +247,11 @@
                             </div>
 
 
-                            <div class="row">
+               <div class="row">
                                 <div class="col-5">
                                 </div>
                                 <div class="col-2">
-                                    <button (click)="saveDealerData()"
-                                        class="btn btn-primary btn-block submitbtn save-btn">Next</button>
+                                    <button (click)="saveDealerData()" [disabled]="!addAddressDetailsForm.valid"  class="btn btn-primary btn-block submitbtn save-btn">Next</button>
                                 </div>
                                 <div class="col-5">
                                 </div>

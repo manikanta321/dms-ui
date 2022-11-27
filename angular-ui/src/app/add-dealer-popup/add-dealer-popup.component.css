@@ -18,7 +18,7 @@
 } */
 .horizontal-scroll__item {
   /* border: 1px solid black; */
-  flex: 0 0 320px;
+  flex: 0 0 249px;
   scroll-snap-align: start;
 }
 
@@ -107,6 +107,7 @@ mat-card {
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 25px;
   height: 400px;
+  height: 235px;
 }
 
 .font {

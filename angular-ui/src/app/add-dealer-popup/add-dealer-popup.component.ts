@@ -23,7 +23,7 @@ export class AddDealerPopupComponent implements OnInit {
   addAddressDetailsForm!: FormGroup;
   gepGraphiesFormGroup!: FormGroup;
 
-  LoginId: any;
+  CreatedById: any;
   numberValue: any;
   statusList: any;
   addAddress: boolean = false;
@@ -112,10 +112,10 @@ export class AddDealerPopupComponent implements OnInit {
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
 
   ngOnInit(): void {
-    this.LoginId = localStorage.getItem("logInId");
-    this.numberValue = Number(this.LoginId);
-    this.addAddressForm1('1');
-    this.addAddressForm1('2');
+    this.CreatedById= localStorage.getItem("logInId");
+    this.CreatedById= Number(this.CreatedById);
+    this.addAddressForm1('6');
+    this.addAddressForm1('7');
 
     this.statusForm();
     //geographies List
@@ -290,37 +290,37 @@ export class AddDealerPopupComponent implements OnInit {
   }
 
 
-  quantities(): FormArray {
-    return this.addAddressDetailsForm.controls["quantities"] as FormArray
+  addresscount(): FormArray {
+    return this.addAddressDetailsForm.controls["addresscount"] as FormArray
   }
 
   initAddress(defaultType): FormGroup {
     defaultType = defaultType ?? '';
     console.log(defaultType);
     return this._formBuilder.group({
-      addType: [defaultType, [Validators.required]],
-      consigName: ['', [Validators.required]],
-      tax: ['', [Validators.required]],
-      addressLine: ['', [Validators.required]],
-      addressLine1: ['', [Validators.required]],
-      country: ['', [Validators.required]],
-      state: ['', [Validators.required]],
-      cityAndZip: ['', [Validators.required]],
-      Zipcode: ['', [Validators.required]],
-      phoneNo: ['', [Validators.required]],
+      AddressTypeId: [defaultType, [Validators.required]],
+      ConsigneeName: ['', [Validators.required]],
+      Taxid: ['', [Validators.required]],
+      AddressLine1: ['', [Validators.required]],
+      AddressLine2: ['', [Validators.required]],
+      CountryName: ['', [Validators.required]],
+      StateName: ['', [Validators.required]],
+      CityName: ['', [Validators.required]],
+      ZipCode: ['', [Validators.required]],
+      Telephone: ['', [Validators.required]],
     })
   }
 
   addAddressForm() {
     this.addAddress = true;
-    this.quantities().push(this.initAddress(''));
+    this.addresscount().push(this.initAddress(''));
   }
 
   addAddressForm1(defaultType) {
     // this.addType = 1;
 
     this.addAddress = true;
-    this.quantities().push(this.initAddress(defaultType));
+    this.addresscount().push(this.initAddress(defaultType));
   }
 
 
@@ -328,7 +328,7 @@ export class AddDealerPopupComponent implements OnInit {
 
   removeQuantity(i: number) {
     if (i >= 2) {
-      this.quantities().removeAt(i);
+      this.addresscount().removeAt(i);
     }
   }
 
@@ -339,22 +339,27 @@ export class AddDealerPopupComponent implements OnInit {
   }
 
 
+  
+
+
   formReader() {
     this.addAddressDetailsForm = this._formBuilder.group({
-      dealerName: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      dealerCode: ['', [Validators.required]],
+      CreatedById:this.CreatedById,
+
+      CustomerName: ['', [Validators.required]],
+      Email: ['', [Validators.required]],
+      Code: ['', [Validators.required]],
       website: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
-      companyId: ['', [Validators.required]],
-      identifier: ['', [Validators.required]],
-      userName: ['', [Validators.required]],
-      userEmail: ['', [Validators.required]],
-      usermobile: ['', [Validators.required]],
-      firstName: ['', [Validators.required]],
+      Phoneno: ['', [Validators.required]],
+      company_id: ['', [Validators.required]],
+      OtherIdentifier: ['', [Validators.required]],
+      UserName: ['', [Validators.required]],
+      EmailId: ['', [Validators.required]],
+      Mobile: ['', [Validators.required]],
+      FirstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      status: ['', [Validators.required]],
-      quantities: this._formBuilder.array([]),
+      StatusId: ['', [Validators.required]],
+      addresscount: this._formBuilder.array([]),
     });
   }
 
@@ -427,21 +432,29 @@ export class AddDealerPopupComponent implements OnInit {
 
   saveGeographiesList() {
 
+    
+
     let selectedGeographies = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographySelected;
+    let data2={
+      DefalultgeoId:selectedGeographies,
+    }
     if (selectedGeographies.length == 0) {
       alert("Please select default geography grid");
       return;
     }
     console.log(selectedGeographies);
-    let countrydata = {
-      "CountryId": localStorage.getItem('countryId'),
-      "StateId": localStorage.getItem('stateId'),
-      "RegionId": localStorage.getItem('distId'),
-      "CityId": localStorage.getItem('cityId'),
-      "CreatedById": this.LoginId
-    };
+    // let countrydata = {
+    //   "CountryId": localStorage.getItem('countryId'),
+    //   "StateId": localStorage.getItem('stateId'),
+    //   "RegionId": localStorage.getItem('distId'),
+    //   "CityId": localStorage.getItem('cityId'),
+    //   "CreatedById": this.LoginId
+    // };
+    let data3={
+      CreatedById:this.CreatedById
+    }
 
-    let data = Object.assign(this.addAddressDetailsForm.value, countrydata)
+    let data = Object.assign(this.addAddressDetailsForm.value,data2, data3)
 
     console.log(data);
 

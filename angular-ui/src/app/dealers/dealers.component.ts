@@ -110,7 +110,7 @@ export class DealersComponent implements OnInit {
     },
     {
       headerName: "Geography",
-      field: 'geographyName', 
+      field: 'geographyname', 
       cellRenderer: this.daysSunshineRenderer,
       // cellRendererParams: {
       // rendererImage: '', // Complementing the Cell Renderer parameters

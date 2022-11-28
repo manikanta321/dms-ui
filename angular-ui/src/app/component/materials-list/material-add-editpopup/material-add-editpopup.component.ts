@@ -32,7 +32,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
- import {Component,OnInit} from '@angular/core';
+ import {Component,OnInit, ViewChild} from '@angular/core';
  import {FormBuilder, FormGroup, FormControl} from '@angular/forms';
  import { MatDialog } from '@angular/material/dialog';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
@@ -43,6 +43,7 @@ import { SelectProductComponent } from '../select-product/select-product.compone
 import { AddMaterialsService } from 'src/app/services/add-materials.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
+import { MatStepper } from '@angular/material/stepper';
  /**
   * @title Stepper animations
   */
@@ -146,6 +147,7 @@ import { ClassificationserviseService } from 'src/app/services/classificationser
    geographyHierarchyId: any;
    aarrayToPush: any[] = [];
    css: any[] = [];
+   checked: boolean = false
    colorsList = [
      { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
      { primaryColor: { background: '#0C5A3E', color: '#fff' }, secondaryColor: { background: "#E6FFF6", color: "#0C5A3E" }, },
@@ -160,6 +162,7 @@ import { ClassificationserviseService } from 'src/app/services/classificationser
      { primaryColor: { background: '#3D1A00', color: '#fff' }, secondaryColor: { background: "#D6C8C3", color: "#3D1A00" }, },
      { primaryColor: { background: '#DC0063', color: '#fff' }, secondaryColor: { background: "#FFE1EE", color: "#DC0063" }, },
    ];
+   @ViewChild('stepper') private stepper: MatStepper | any;;
 
    constructor(private fb: FormBuilder, public dialog: MatDialog,
      private spinner: NgxSpinnerService, private addMaterials: AddMaterialsService,
@@ -628,6 +631,32 @@ expandCityItemsDiv3(){
   }
   
 }
+// id ptoduct condition
+
+goBack(stepper: MatStepper) {
+  stepper.previous();
+}
+
+
+change(e) {
+
+
+  if (!this.checked) {
+    if (confirm("Are you sure")) {
+      this.checked = !this.checked;
+      this.goBack(this.stepper)
+      console.log("toggle")
+    }
+    else {
+      e.source.checked = true;
+      console.log("toggle should not change if I click the cancel button")
+    }
+  } else {
+    this.checked = !this.checked;
+  }
+}
+
+
  }
 
  

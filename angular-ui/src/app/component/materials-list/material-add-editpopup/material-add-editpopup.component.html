@@ -11,7 +11,8 @@
         <img src="assets/img/arrow-right-circle-fill.svg" class="rightarrow" alt="right-arr-btn">
 
         <mat-stepper labelPosition="bottom" #stepper>
-          <mat-step [stepControl]="firstFormGroup">
+          <!-- basic information -->
+          <mat-step [stepControl]="firstFormGroup" >
             <form [formGroup]="firstFormGroup" name="myBasicInfo">
               <ng-template matStepLabel>Basic Information</ng-template>
               <div class="heading">
@@ -120,18 +121,28 @@
 
 
             </form>
-          </mat-step>
 
-          <mat-step [stepControl]="secondFormGroup">
-            <form [formGroup]="secondFormGroup">
+            <div class="col-6">
+              <div class="row">
+                <div class="col-1"></div>
+                <div class="col-6">
+                  <button class="btn btn-primary btn-block submitbtn save-btn"*ngIf="checked" >Save</button>
+                </div>
+                <div class="col-3">
+                </div>
+              </div>
+            </div>
+            <div class="col-3">
+
+            </div>
+          </mat-step>
+          <!-- product information -->
+          <mat-step [stepControl]="secondFormGroup"  >
+            
+            <form [formGroup]="secondFormGroup" *ngIf="!checked">
 
               <ng-template matStepLabel>Product Information</ng-template>
-
-
-
               <div class="row">
-
-
                 <div class="col-md-6">
                   <div class="heading">
                     <h6 class="stepperHeader-p">
@@ -141,7 +152,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="mat-slide">
-                    <mat-slide-toggle>Is a product?</mat-slide-toggle>
+                    <mat-slide-toggle (change)="change($event)" [checked]="checked" >Is a product?</mat-slide-toggle>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -234,11 +245,12 @@
                 </div>
               </div>
             </form>
+            
           </mat-step>
           <!-- geographies -->
 
-          <mat-step [stepControl]="thirdformGroup">
-            <form [formGroup]="gepGraphiesFormGroup">
+          <mat-step [stepControl]="thirdformGroup" >
+            <form [formGroup]="gepGraphiesFormGroup" *ngIf="!checked">
               <ng-template matStepLabel> Geographies</ng-template>
               <div class="heading">
                 <h6 class="Geo-headerlabel"><b>Geographies</b></h6>
@@ -278,7 +290,7 @@
               </div>
             </form>
             <!-- <div class="row"></div> -->
-            <section class="row propertiesSection">
+            <section class="row propertiesSection" *ngIf="!checked">
             
               <table>
                 <div class="table-padding" >

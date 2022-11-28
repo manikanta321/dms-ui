@@ -107,7 +107,7 @@ import { ClassificationserviseService } from 'src/app/services/classificationser
   uomID:any;
   stateName:any;
   districtName:any;
-  cityName:any=[];
+  
   materialName:string ='';
   description:string ='';
   desc:any;
@@ -127,6 +127,9 @@ import { ClassificationserviseService } from 'src/app/services/classificationser
   dropdownSettings: IDropdownSettings = {};
   selectfld: any = ['mrp','aty'];
   image1 = 'assets/img/minimize-tag.png';
+  image2 = 'assets/img/minimize-tag.png';
+  image3 = 'assets/img/minimize-tag.png';
+  image4 = 'assets/img/minimize-tag.png';
   countrySelected = true;
   RegionExpanded = true;
   CityExpanded = true;
@@ -137,7 +140,9 @@ import { ClassificationserviseService } from 'src/app/services/classificationser
 
    geoGraphyHirerachyData: any;
    geoGraphyFullData: any;
-
+   selectedGeographiesCityNames:any =[];
+   cityCode:any= [];
+   cityName:any=[];
    geographyHierarchyId: any;
    aarrayToPush: any[] = [];
    css: any[] = [];
@@ -450,36 +455,7 @@ let data ={
   customIdentifier(){
     this.dialog.open(AddIdentifierComponent);
   }
-  expandGeoInfoDiv(){
-    this.countrySelected = !this.countrySelected;
-
-    if(this.countrySelected === false){
-      this.image1 = 'assets/img/maximize-arrow.png';
-    } else {
-      this.image1 = 'assets/img/minimize-tag.png';
-     
-    }
-  }
-  RegionExpandDiv(){
-    this.RegionExpanded= !this.RegionExpanded;
-
-    if(this.RegionExpanded === false){
-      this.image1 = 'assets/img/maximize-arrow.png';
-    } else {
-      this.image1 = 'assets/img/minimize-tag.png';
-     
-    }
-  }
-  CityExpandDiv(){
-    this.CityExpanded= !this.CityExpanded;
-
-    if(this.CityExpanded === false){
-      this.image1 = 'assets/img/maximize-arrow.png';
-    } else {
-      this.image1 = 'assets/img/minimize-tag.png';
-     
-    }
-  }
+  
 
 // geograhies related apis
 
@@ -520,7 +496,7 @@ getGeographyHierarchy() {
 
 selectGeoGraphy(clickedItem, hirerachyIndex,) {
   this.showDiv=true;
-  // alert(hirerachyIndex)
+  console.log(hirerachyIndex,"edrtfyu")
   
   if(hirerachyIndex==1){
   let Country = clickedItem.geographyName;
@@ -540,10 +516,12 @@ this.stateName = stateNamee+"("+ stateCode+")";
     this.districtName = districtNamee+"("+ districtCode+")";
   }
   else if(hirerachyIndex==4){
-    let cityNamee:[] = clickedItem.geographyName;
-    let cityCode:[] = clickedItem.geographyCode;
-    this.cityName = cityNamee+"("+ cityCode+")";
-    // this.cityName.push(clickedItem.geographyName);
+    this.selectedGeographiesCityNames = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographyNamesSelected;
+    this.cityCode= this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographyCode;
+    // this.cityName = [...this.selectedGeographiesCityNames,]
+    // this.selectedGeographiesCityNames+"("+ this.cityCode+")";
+    
+    console.log(this.selectedGeographiesCityNames,"selectedGeographies")
   }
 
 
@@ -620,6 +598,7 @@ getGeographiesDataById(id, hirerachyIndex = 0) {
   })
 }
 expandOrderItemsDiv1(){
+  
   this.orderitem1 = !this.orderitem1;
   if(this.orderitem1 === false){
     this.image1 = 'assets/img/maximize-arrow.png';
@@ -632,9 +611,9 @@ expandOrderItemsDiv1(){
 expandDistrictItemsDiv2(){
   this.districtitem1 = !this.districtitem1;
   if(this.districtitem1 === false){
-    this.image1 = 'assets/img/maximize-arrow.png';
+    this.image2 = 'assets/img/maximize-arrow.png';
   } else {
-    this.image1 = 'assets/img/minimize-tag.png';
+    this.image2 = 'assets/img/minimize-tag.png';
    
   }
   
@@ -642,9 +621,9 @@ expandDistrictItemsDiv2(){
 expandCityItemsDiv3(){
   this.cityitem1 = !this.cityitem1;
   if(this.cityitem1 === false){
-    this.image1 = 'assets/img/maximize-arrow.png';
+    this.image3 = 'assets/img/maximize-arrow.png';
   } else {
-    this.image1 = 'assets/img/minimize-tag.png';
+    this.image3 = 'assets/img/minimize-tag.png';
    
   }
   

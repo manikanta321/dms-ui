@@ -93,9 +93,12 @@
                     <img src="../../../../assets/img/down13.png" class="add-img" alt="add-image=btn" width="60px"
                       height="60px">
                   </div> -->
-                  <div placeholder="" #input class="form-control container imagePl">
+                  <label class="form-control container imagePl">
+                  
+                    <input type="file" id="file" style="display:none" (change)="onFileChanged($event)">
                     <img src="assets/img/add-image.png" class="add-img" alt="add-image=btn">
-                  </div>
+                  
+                </label>
                 </div>
                 <div class="col-md-4">
                   <div class="materialci">
@@ -126,7 +129,8 @@
               <div class="row">
                 <div class="col-1"></div>
                 <div class="col-6">
-                  <button class="btn btn-primary btn-block submitbtn save-btn"*ngIf="checked" >Save</button>
+                  <button class="btn btn-primary btn-block submitbtn save-btn"*ngIf="checked" 
+                  (click)="addMaterialIfNotProduct()">Save</button>
                 </div>
                 <div class="col-3">
                 </div>

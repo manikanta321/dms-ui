@@ -1,37 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-// import { MatDialogRef } from '@angular/material/dialog';
-
-// @Component({
-//   selector: 'app-material-add-editpopup',
-//   templateUrl: './material-add-editpopup.component.html',
-//   styleUrls: ['./material-add-editpopup.component.css']
-// })
-// export class MaterialAddEditpopupComponent implements OnInit {
-
-//   constructor(public dialogRef: MatDialogRef<MaterialAddEditpopupComponent>) { }
-//   isExpriySelected:boolean = false;
-
-//   ngOnInit(): void {
-//   }
-
-//   addEditMaterial(){
-//     this.dialogRef.close();
-//   }
-
-//   expiryDateChange(event:any){
-//     console.log(event.target.value);
-//     this.isExpriySelected = event.target.value == "Yes" ? true:false;
-//   }
-// }
-
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-
  import {Component,OnInit, ViewChild} from '@angular/core';
  import {FormBuilder, FormGroup, FormControl} from '@angular/forms';
  import { MatDialog } from '@angular/material/dialog';
@@ -55,6 +21,10 @@ import { MatStepper } from '@angular/material/stepper';
  export class MaterialAddEditpopupComponent {
   disabled = false;
   catgname:any=[];
+  base64textString= "";
+  selecetdFile: any;
+  imagePreview: any;
+  Imgpreview:boolean = false;
   dropdownSettings2: IDropdownSettings = {};
   dropdownSettings3: IDropdownSettings = {};
   toppingList2:  any= []; 
@@ -84,6 +54,7 @@ import { MatStepper } from '@angular/material/stepper';
   selectedItems2: any;
   selectedItems3: any;
   selectedItems4: any;
+  MaterialIdentifier:any;
   selectedItems5: any;
   selectedItems6: any;
   selectedItems7: any;
@@ -138,7 +109,7 @@ import { MatStepper } from '@angular/material/stepper';
   showDiv:boolean =false
 // geograhies related variables
   gepGraphiesFormGroup!: FormGroup;
-
+  UserId: any;
    geoGraphyHirerachyData: any;
    geoGraphyFullData: any;
    selectedGeographiesCityNames:any =[];
@@ -174,6 +145,8 @@ import { MatStepper } from '@angular/material/stepper';
    thirdformGroup:FormGroup = this.fb.group({ thirdCtrl: [''] });
 
    ngOnInit():void {
+    const user = localStorage.getItem("logInId");
+    this.UserId = user
 
     this.getGeographyHierarchy();
 
@@ -271,37 +244,49 @@ this.countryData();
     })
   }
   getMaterialIdentifier(){
-    // this.addMaterials.getMaterialIdentifier().subscribe((res) => {
-    //   let data = res.response;
-    //  this.materialIdentifier =data;
-    // })
-    // this.dialogRef.close(this.form.value);
-    let data:any =localStorage.getItem('session');
-    console.log("Daatatatatatat5",data)
-    this.selectedItems5 = JSON.parse(data);
+    this.MaterialIdentifier = localStorage.getItem('session');
+    console.log("Daatatatatatat5",this.MaterialIdentifier)
+    this.selectedItems5 = JSON.parse(this.MaterialIdentifier);
     console.log("Selected Item 5",this.selectedItems5)
   }
-  addMaterial(){
+
+  addMaterialProduct(){
+    let data ={
+      DoneById:this.UserId,
+      StockItemSubCategoryId:this.subCatId,
+      StockItemTypeId:this.typeId,
+      StockItemName:this.materialName,
+      StockItemDesc:this.description,
+      BaseUoMId:this.uomID,
+      Imageurl:this.base64textString,
+      Materialcustomidentifier:this.selectedItems5,
+      ExpiryPeriod:this.expiryDate,
+      IsProduct:+!this.checked,
+      BrandName:this.BrandName,
+      GlobalCode:this.gloabKey,
+      ProductSKUName:this.Sku,
+      ShortCode:this.shortCode,
+      ManualShortOrder:this.Sort,
+      ProductLink:this.AddSP,
+      ProductSubGroupId:this.selectedItems7,
+      // ProductGeography:
+    }
+  }
+addMaterialIfNotProduct(){
 let data ={
-  StockItemId:this.catId,
+  DoneById:this.UserId,
   StockItemSubCategoryId:this.subCatId,
   StockItemTypeId:this.typeId,
   StockItemName:this.materialName,
   StockItemDesc:this.description,
   BaseUoMId:this.uomID,
+  Imageurl:this.base64textString,
   Materialcustomidentifier:this.selectedItems5,
   ExpiryPeriod:this.expiryDate,
-  BrandName:this.BrandName,
-  GlobalCode:this.gloabKey,
-  ProductSKUName:this.Sku,
-  ShortCode:this.shortCode,
-  ManualShortOrder:this.Sort,
-  ProductLink:this.AddSP,
-  ProductSubGroupId:this.selectedItems7,
-  // ProductCustomIdentifierId:
-  // IsProduct:
+  IsProduct:+!this.checked,
 }
-  }
+console.log(data)
+}
    onSubCategoryAll(items: any) {
     console.log('onSelectAll', items);
   }
@@ -654,6 +639,28 @@ change(e) {
   } else {
     this.checked = !this.checked;
   }
+}
+
+// image uploader and converter to base64
+public onFileChanged(event) {
+  this.selecetdFile = event.target.files[0];
+  if (this.selecetdFile.size <= 1 * 1024 * 1024) {
+  this.handleInputChange(this.selecetdFile); 
+  }
+  else {
+      alert('File size should not be greater than 1MB');
+        }
+}
+handleInputChange(files) {
+  this.imagePreview = files 
+  var reader = new FileReader();
+  reader.onloadend = this.handleReaderLoaded.bind(this);
+  reader.readAsDataURL(this.imagePreview);
+}
+handleReaderLoaded(e) {
+  let reader = e.target;
+  this.base64textString = reader.result.substr(reader.result.indexOf(',') + 1);
+  console.log(this.base64textString,"base64")
 }
 
 

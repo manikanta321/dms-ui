@@ -147,7 +147,7 @@ mat-tab-group{
   }
   ::ng-deep .order-lab .mat-tab-label{
     height: 35px !important;
-    min-width: 187px !important;
+    min-width: 274px !important;
   }
   .order-lab .mat-tab-labels:nth-child(1) {
     width: 50% !important;

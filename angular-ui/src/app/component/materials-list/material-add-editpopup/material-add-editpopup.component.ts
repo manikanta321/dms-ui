@@ -109,6 +109,8 @@ import { SharedServicesMaterialService } from 'src/app/services/shared-services-
   CountryName:any;
   showDiv:boolean =false
 // geograhies related variables
+
+  geoPropertiesList:any
   gepGraphiesFormGroup!: FormGroup;
   UserId: any;
    geoGraphyHirerachyData: any;
@@ -282,7 +284,7 @@ this.countryData();
       Imageurl:this.base64textString,
       Materialcustomidentifier:this.selectedItems5,
       ExpiryPeriod:this.expiryDate,
-      IsProduct:+!this.checked,
+      IsProduct:+this.checked,
       BrandName:this.BrandName,
       GlobalCode:this.gloabKey,
       ProductSKUName:this.Sku,
@@ -292,6 +294,7 @@ this.countryData();
       ProductSubGroupId:this.selectedItems7,
       // ProductGeography:
     }
+    console.log(data)
   }
 addMaterialIfNotProduct(){
 let data ={

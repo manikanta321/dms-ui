@@ -429,7 +429,7 @@
                 </tr>
                 </div>
                 <!-- citys -->
-                <div *ngFor="let index of selectedGeographiesCityNames; let i =index;" class="table-padding">
+                <div *ngFor="let item of selectedGeographiesCityNames; let i =index;" class="table-padding">
                 <tr *ngIf="!cityitem1"  class="table-data-row">
                   <td class="check2" style="width: 18%;">
                     <mat-icon >subdirectory_arrow_right</mat-icon>
@@ -438,25 +438,25 @@
                     {{selectedGeographiesCityNames[i]}}
                   </td>
                   <td style="padding-left: 30px;">
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname">
+                    <input placeholder="Enter" type="text" [(ngModel)]="item.MRP" class="uom-cls" id="MRP" name="MRP" >
                   </td>
                   <td style="padding-left: 18px;">
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname">
+                    <input placeholder="Enter" type="text" [(ngModel)]="item.MinOrderQty" class="uom-cls" id="MinorderQty" name="MinorderQty">
                   </td>
                   <td style="padding-left: 11px;">
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname">
+                    <input placeholder="Enter" type="text" [(ngModel)]="item.MinOrderQty" class="uom-cls" id="MaxorderQty" name="MaxorderQty">
                   </td>
                   <td style="padding-left: 7px;">
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname">
+                    <input placeholder="Enter" type="text" [(ngModel)]="item.MinOrderQty" class="uom-cls" id="Margin" name="Margin">
                   </td>
                   <td>
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname">
+                    <input placeholder="Enter" type="text" [(ngModel)]="item.MinOrderQty" class="uom-cls" id="Discount" name="Discount">
                   </td>
                   <td>
-                    <input type="text" class="uom-cls" id="fname" name="fname">
+                    <input type="text" [(ngModel)]="item.MinOrderQty" class="uom-cls" id="Leadtime" name="Leadtime">
                   </td>
                   <td >
-                    <input style="width: 130px;" type="text" class="uom-cls" id="fname" name="fname">
+                    <input style="width: 130px;" type="text" [(ngModel)]="item.MinOrderQty" class="uom-cls" id="RegistrationNumber" name="RegistrationNumber">
                   </td>
                   <td style="width: 13%;padding-left: 22px;">
                     <a href="">Add</a>

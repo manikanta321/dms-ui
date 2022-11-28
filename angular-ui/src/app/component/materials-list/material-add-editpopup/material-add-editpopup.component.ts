@@ -111,6 +111,7 @@ export class MaterialAddEditpopupComponent {
   // geograhies related variables
 
   geoPropertiesList: any
+  geoProperties:any
   gepGraphiesFormGroup!: FormGroup;
   UserId: any;
   geoGraphyHirerachyData: any;
@@ -274,6 +275,7 @@ export class MaterialAddEditpopupComponent {
   }
 
   addMaterialProduct() {
+    this.saveMaterialList();
     let data = {
       DoneById: this.UserId,
       StockItemSubCategoryId: this.subCatId,
@@ -292,7 +294,8 @@ export class MaterialAddEditpopupComponent {
       ManualShortOrder: this.Sort,
       ProductLink: this.AddSP,
       ProductSubGroupId: this.selectedItems7,
-      // ProductGeography:
+      ProductGeography:this.geoProperties
+
     }
     console.log(data)
   }
@@ -583,12 +586,12 @@ export class MaterialAddEditpopupComponent {
   }
 
   saveMaterialList(){
-    let geoProperties = JSON.parse(JSON.stringify(this.geoGraphyFullData[3].geoProperties));
-    geoProperties = geoProperties.map(item => {
+    this.geoProperties = JSON.parse(JSON.stringify(this.geoGraphyFullData[3].geoProperties));
+    this.geoProperties = this.geoProperties.map(item => {
       delete item.GeographyName;
       return item;
     })
-    console.log(geoProperties);
+    console.log(this.geoProperties);
     
   }
 

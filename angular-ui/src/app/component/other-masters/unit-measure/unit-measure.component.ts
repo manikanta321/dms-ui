@@ -72,11 +72,11 @@ public popupParent: HTMLElement = document.body;
 columnDefs: ColDef[] = [ 
 
   { headerName: "Name", 
-field: 'uoMName' ,type: ['nonEditableColumn'], minWidth:500
+field: 'uoMName' ,type: ['nonEditableColumn'], minWidth:450
 },
 
 {   headerName: "Display Code",
-field: 'uoMShortName',type: ['nonEditableColumn'], minWidth:440 },
+field: 'uoMShortName',type: ['nonEditableColumn'] },
 
 // suppressMovable:true,
 { headerName: "Status",
@@ -106,7 +106,7 @@ headerName: '',
 colId: 'action',
 cellRenderer: UomActionComponent,
 editable: false,
-maxWidth:40
+maxWidth: 75  
 
 
 },
@@ -119,19 +119,12 @@ rowData5=[];
 rowData :any;
 rowData1=[]
 public defaultColDef: ColDef = {
-  // set the default column width
   suppressSizeToFit: true,
-
-  // make every column editable
-  editable: true,
-  // make every column use 'text' filter by default
-  filter: 'agTextColumnFilter',
-  // enable floating filters by default
-  // make columns resizable
-  resizable: true,
-  sortable: true,
-  flex: 1,
-  width:100
+    filter: 'agTextColumnFilter',
+    flex: 1,
+    minWidth: 100,
+    resizable: true,
+    sortable: true,
 
 };
 

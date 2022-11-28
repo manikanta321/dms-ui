@@ -11,8 +11,8 @@
                 <div class="head-t">
           <h3 class="addU font">Business<span>*</span></h3>
         </div>
-        <mat-chip-list>
-            <mat-chip class="peri">Perishable</mat-chip>
+        <mat-chip-list (click)="onSelect()" [ngClass]="{select: isSelected}">
+            <mat-chip (click)="onSelect()" [ngClass]="{select: isSelected}" class="peri">Perishable</mat-chip>
             <mat-chip class="frag">Fragile</mat-chip>
             <mat-chip class="fire">Fire hazard</mat-chip>
             </mat-chip-list>

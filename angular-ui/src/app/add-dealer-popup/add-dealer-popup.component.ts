@@ -344,8 +344,6 @@ export class AddDealerPopupComponent implements OnInit {
 
   formReader() {
     this.addAddressDetailsForm = this._formBuilder.group({
-      CreatedById:this.CreatedById,
-
       CustomerName: ['', [Validators.required]],
       Email: ['', [Validators.required]],
       Code: ['', [Validators.required]],
@@ -459,6 +457,11 @@ export class AddDealerPopupComponent implements OnInit {
     console.log(data);
 
     this.calssification.addDealerData(data).subscribe((res) => {
+
+      if(res.response.result=="Succesfully added"){
+        this.dialogRef.close();
+
+      }
       console.log(res);
     });
 

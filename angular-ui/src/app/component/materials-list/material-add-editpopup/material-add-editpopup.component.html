@@ -308,7 +308,7 @@
                 </tr>
               </div>
               <div>
-                <tr *ngIf="showDiv" class="table-data-row" style="margin-left: 30px;">
+                <tr *ngIf="showDiv" class="table-data-row">
                   <td  style="width: 18%;">
                     <img [src]="image1" class="expand-arrow1" alt="add-user-btn" (click)="expandOrderItemsDiv1()">
                     {{CountryName}}
@@ -337,7 +337,7 @@
                   <td>
                     <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!orderitem1">
                   </td>
-                  <td style="width: 16%;">
+                  <td>
                     <input placeholder="Enter" style="width: 130px;" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!orderitem1">
                   </td>
                   <td style="width: 13%; padding-left: 22px;">
@@ -346,19 +346,19 @@
                 </tr>
                 </div>
                 <div>
-                <tr *ngIf="!orderitem1">
-                  <td class="check" style="width: 17%;">
+                <tr *ngIf="!orderitem1" class="table-data-row">
+                  <td class="check" style="width: 18%;">
                     <img [src]="image2" class="expand-arrow1" alt="add-user-btn" (click)="expandDistrictItemsDiv2()">
 
                     {{stateName}}
                   </td>
-                  <td>
+                  <td style="padding-left: 11px;">
                     <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!districtitem1">
                   </td>
-                  <td>
+                  <td style="padding-left: 6px;">
                     <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!districtitem1">
                   </td>
-                  <td>
+                  <td style="padding-left: 5px;">
                     <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!districtitem1">
                   </td>
                   <td>
@@ -379,19 +379,19 @@
                 </tr>
                 </div>
                 <div>
-                <tr *ngIf="!districtitem1">
+                <tr *ngIf="!districtitem1" class="table-data-row">
                   <td class="check"style="width: 18%;">
                     <img [src]="image3" class="expand-arrow1" alt="add-user-btn" (click)="expandCityItemsDiv3()">
 
                     {{districtName}}
                   </td>
-                  <td>
+                  <td style="padding-left: 11px;">
                     <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!cityitem1">
                   </td>
-                  <td>
+                  <td style="padding-left: 6px;">
                     <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!cityitem1">
                   </td>
-                  <td>
+                  <td style="padding-left: 5px;">
                     <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!cityitem1">
                   </td>
                   <td>
@@ -413,23 +413,23 @@
                 </div>
                 <!-- citys -->
                 <div *ngFor="let index of selectedGeographiesCityNames; let i =index;">
-                <tr *ngIf="!cityitem1"  >
-                  <td class="check2" style="width: 17%;">
+                <tr *ngIf="!cityitem1"  class="table-data-row">
+                  <td class="check2" style="width: 18%;">
                     <mat-icon >subdirectory_arrow_right</mat-icon>
                     <!-- <img [src]="subdirectory_arrow_right" class="expand-arrow1" alt="add-user-btn"> -->
 
                     {{selectedGeographiesCityNames[i]}}
                   </td>
-                  <td>
+                  <td style="padding-left: 30px;">
                     <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname">
                   </td>
-                  <td>
+                  <td style="padding-left: 18px;">
                     <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname">
                   </td>
-                  <td>
+                  <td style="padding-left: 11px;">
                     <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname">
                   </td>
-                  <td>
+                  <td style="padding-left: 7px;">
                     <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname">
                   </td>
                   <td>

@@ -25,7 +25,7 @@
 .geography {
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 450px;
+  /* max-height: 450px; */
 
 }
 .scroll {
@@ -1136,13 +1136,16 @@ font-size: 12.5px;
   border-radius: 7px;
   width: 70px
 }
-.table-header th{
-width: 10%;
-padding-left: 25px;
+.table-data-row{
+  margin-left: 30px;
 }
-.table-data-row {
-  width: 10%;
-  padding-left: 17px;
+.table-header th{
+  width: 13%;
+  padding-left: 27px;
+}
+.table-data-row td{
+  width: 13%;
+  /* padding-left: 27px; */
 }
 .check{
   text-align: -webkit-center;

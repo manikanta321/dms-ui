@@ -10,6 +10,7 @@ import { AddMaterialsService } from 'src/app/services/add-materials.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
 import { MatStepper } from '@angular/material/stepper';
+import { SharedServicesMaterialService } from 'src/app/services/shared-services-material.service';
  /**
   * @title Stepper animations
   */
@@ -137,7 +138,27 @@ import { MatStepper } from '@angular/material/stepper';
 
    constructor(private fb: FormBuilder, public dialog: MatDialog,
      private spinner: NgxSpinnerService, private addMaterials: AddMaterialsService,
-     private classification: ClassificationserviseService) { }
+     private sharedService:SharedServicesMaterialService,
+
+     private classification: ClassificationserviseService) {
+      this.sharedService.listen().subscribe((m: any) => {
+        this.getProductList();
+
+   let item=localStorage.getItem('productId');
+
+   this.addMaterials.getProductSubGroup(item).subscribe((res) => {
+    let subProd = res.response;
+    console.log("subProd", subProd);
+    this.subProduct = subProd;
+    // this.toppings2 = new FormControl(this.typeI);
+  });
+
+        console.log(m)
+  
+      })
+
+
+      }
 
 
    firstFormGroup: FormGroup = this.fb.group({ firstCtrl: [''] });
@@ -318,9 +339,11 @@ console.log(data)
   onProductSelect(item:any){
     // alert(item.productGroupId);
      this.prodId = item.productGroupId;
-    let prodName = item.productGroupName;
+    let prodName = item.productGroupName;localStorage
     sessionStorage.setItem("productId",this.prodId)
     sessionStorage.setItem("productName",prodName);
+    localStorage.setItem("productId",this.prodId)
+    localStorage.setItem("productName",prodName);
     console.log("item.productGroupId",item.productGroupId);
     this.productId = item.productGroupId;
     this.addMaterials.getProductSubGroup(item.productGroupId).subscribe((res) => {

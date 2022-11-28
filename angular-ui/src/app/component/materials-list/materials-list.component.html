@@ -121,6 +121,23 @@
             </div>
           </div>
         </div>
+
+
+<div class="row">
+  <div class="col-4">
+    <mat-checkbox class="example-margin"
+    [checked]="allComplete"
+    [color]="color"
+    (change)="setAll($event.checked)">
+    Show only products
+  </mat-checkbox>
+   
+  </div>
+  <div class="col-4">
+
+  </div>
+</div>
+
         <ag-grid-angular id="gridContainer" style="height: 310px;" class="ag-theme-material gridAlign" [rowHeight]="32"
           [headerHeight]="52" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
           [rowData]="rowData5" [suppressExcelExport]="true" [popupParent]="popupParent"

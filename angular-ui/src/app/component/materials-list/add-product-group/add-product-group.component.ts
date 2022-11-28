@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { AddMaterialsService } from 'src/app/services/add-materials.service';
+import { SharedServicesMaterialService } from 'src/app/services/shared-services-material.service';
 @Component({
   selector: 'app-add-product-group',
   templateUrl: './add-product-group.component.html',
@@ -8,8 +10,13 @@ import { AddMaterialsService } from 'src/app/services/add-materials.service';
 export class AddProductGroupComponent implements OnInit {
   productGroup:any;
   constructor(
-    private addMaterials: AddMaterialsService
-  ) { }
+    private addMaterials: AddMaterialsService,
+    private sharedService:SharedServicesMaterialService,
+    private dialogRef: MatDialogRef<AddProductGroupComponent>,
+
+  ) { 
+    
+  }
 
   ngOnInit(): void {
   }
@@ -27,10 +34,10 @@ export class AddProductGroupComponent implements OnInit {
 
     }
     this.addMaterials.addProductItem(data).subscribe((res) => {
-      alert("heyProd");
       let ProdItem = res;
       console.log("ProdItem", ProdItem);
-
+      this.sharedService.filter('Register click')
+      this.dialogRef.close();
     });
   }
 }

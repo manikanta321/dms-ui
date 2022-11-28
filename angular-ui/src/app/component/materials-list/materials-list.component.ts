@@ -98,6 +98,10 @@ export class MaterialsListComponent implements OnInit {
   stockItemId: any;
   stockItemName: any;
   instancePopup: any = null;
+  allComplete: boolean = true;
+  isproduct:any;
+  color:any='primary';
+
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
   dropdownSettings2: IDropdownSettings = {};
@@ -136,6 +140,15 @@ export class MaterialsListComponent implements OnInit {
     }
 
   ngOnInit(): void {
+
+if(    this.allComplete == true ){
+  this.isproduct=1
+}
+else
+{
+  this.isproduct=0
+
+}
     this.getMaterialList();
     this.getclassification();
     this.getProduct();
@@ -202,6 +215,53 @@ export class MaterialsListComponent implements OnInit {
       product: [this.selectedItems]
     });
   }
+
+
+
+  setAll(completed: boolean) {
+    this.allComplete = completed;
+    if(this.allComplete == true ){
+      this.isproduct=1
+    }
+    else
+    {
+      this.isproduct=0
+    
+    }
+  
+    const data = {
+      Cat: [],
+      Sub_Cat: [],
+      type: [],
+      product: [],
+      status: [],
+      Search: "",
+      isProduct:this.isproduct
+    }
+    this.materialList.getMaterialList(data).subscribe((res) => {
+      console.log("Material List", res);
+      this.rowData5 = res.response;
+      console.log('tableDaaaata', this.rowData5)
+      if (this.rowData5.length >= 1) {
+        this.catgname.forEach((element: { [x: string]: any; }) => {
+          if (element['status'] == 'Active') {
+          }
+          else {
+            element['isActive'] == 'Inactive'
+
+          }
+          console.log('element', element['isActive'])
+        });
+      }
+
+      console.log('row data', this.catgname)
+
+    });
+  
+  
+  }
+
+
   getclassification() {
 
     this.materialList.getclassification().subscribe((res) => {
@@ -275,7 +335,8 @@ export class MaterialsListComponent implements OnInit {
       type: [],
       product: [],
       status: [],
-      Search: ""
+      Search: "",
+      isProduct:this.isproduct
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       console.log("Material List", res);
@@ -338,7 +399,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -365,7 +428,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -409,7 +474,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -427,7 +494,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -452,7 +521,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -483,7 +554,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -508,7 +581,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -524,7 +599,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -539,7 +616,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -557,7 +636,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -587,7 +668,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -601,7 +684,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -616,7 +701,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -636,7 +723,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -652,7 +741,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -673,7 +764,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -689,7 +782,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -705,7 +800,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -718,7 +815,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -732,7 +831,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typesI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -879,7 +980,9 @@ export class MaterialsListComponent implements OnInit {
       type: this.typeI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;

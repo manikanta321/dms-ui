@@ -12,7 +12,7 @@
 
         <mat-stepper labelPosition="bottom" #stepper>
           <!-- basic information -->
-          <mat-step [stepControl]="firstFormGroup" >
+          <mat-step [stepControl]="firstFormGroup">
             <form [formGroup]="firstFormGroup" name="myBasicInfo">
               <ng-template matStepLabel>Basic Information</ng-template>
               <div class="heading">
@@ -94,11 +94,11 @@
                       height="60px">
                   </div> -->
                   <label class="form-control container imagePl">
-                  
+
                     <input type="file" id="file" style="display:none" (change)="onFileChanged($event)">
                     <img src="assets/img/add-image.png" class="add-img" alt="add-image=btn">
-                  
-                </label>
+
+                  </label>
                 </div>
                 <div class="col-md-4">
                   <div class="materialci">
@@ -129,8 +129,8 @@
               <div class="row">
                 <div class="col-1"></div>
                 <div class="col-6">
-                  <button class="btn btn-primary btn-block submitbtn save-btn"*ngIf="checked" 
-                  (click)="addMaterialIfNotProduct()">Save</button>
+                  <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="checked"
+                    (click)="addMaterialIfNotProduct()">Save</button>
                 </div>
                 <div class="col-3">
                 </div>
@@ -141,8 +141,8 @@
             </div>
           </mat-step>
           <!-- product information -->
-          <mat-step [stepControl]="secondFormGroup"  >
-            
+          <mat-step [stepControl]="secondFormGroup">
+
             <form [formGroup]="secondFormGroup" *ngIf="!checked">
 
               <ng-template matStepLabel>Product Information</ng-template>
@@ -156,7 +156,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="mat-slide">
-                    <mat-slide-toggle (change)="change($event)" [checked]="checked" >Is a product?</mat-slide-toggle>
+                    <mat-slide-toggle (change)="change($event)" [checked]="checked">Is a product?</mat-slide-toggle>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -249,11 +249,11 @@
                 </div>
               </div>
             </form>
-            
+
           </mat-step>
           <!-- geographies -->
 
-          <mat-step [stepControl]="thirdformGroup" >
+          <mat-step [stepControl]="thirdformGroup">
             <form [formGroup]="gepGraphiesFormGroup" *ngIf="!checked">
               <ng-template matStepLabel> Geographies</ng-template>
               <div class="heading">
@@ -295,182 +295,207 @@
             </form>
             <!-- <div class="row"></div> -->
             <section class="row propertiesSection" *ngIf="!checked">
-            
+
               <table>
-                <div class="table-padding" >
-                <tr class="table-header">
-                  <th >
-                    Geography
-                  </th>
-                  <th>
-                    MRP(INR)
-                  </th>
-                  <th>
-                    Min order Qty
-                  </th>
-                  <th>
-                    Max order Qty
-                  </th>
-                  <th style="width: 11%;">
-                    Margin %
-                  </th>
-                  <th style="width: 11%;">
-                    Discount %
-                  </th>
-                  <th>
-                    Lead time (Days)
-                  </th>
-                  <th style="width: 16%;">Registration Number</th>
-                  <th style="width: 13%;">Tags</th>
-                </tr>
-              </div>
-              <div class="table-padding">
-                <tr *ngIf="showDiv" class="table-data-row">
-                  <td  style="width: 18%;">
-                    <img [src]="image1" class="expand-arrow1" alt="add-user-btn" (click)="expandOrderItemsDiv1()">
-                    {{CountryName}}
-                  </td>
-
-                  <td>
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!orderitem1">
-                    
-                  </td>
-                  <td>
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!orderitem1">
-                  </td>
-
-                  <td>
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!orderitem1">
-                  </td>
-
-                  <td >
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!orderitem1">
-                  </td>
-
-                  <td >
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!orderitem1">
-                  </td>
-
-                  <td>
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!orderitem1">
-                  </td>
-                  <td>
-                    <input placeholder="Enter" style="width: 130px;" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!orderitem1">
-                  </td>
-                  <td style="width: 13%; padding-left: 22px;">
-                    <a href="" >Add</a>
-                  </td>
-                </tr>
+                <div class="table-padding">
+                  <tr class="table-header">
+                    <th>
+                      Geography
+                    </th>
+                    <th>
+                      MRP(INR)
+                    </th>
+                    <th>
+                      Min order Qty
+                    </th>
+                    <th>
+                      Max order Qty
+                    </th>
+                    <th style="width: 11%;">
+                      Margin %
+                    </th>
+                    <th style="width: 11%;">
+                      Discount %
+                    </th>
+                    <th>
+                      Lead time (Days)
+                    </th>
+                    <th style="width: 16%;">Registration Number</th>
+                    <th style="width: 13%;">Tags</th>
+                  </tr>
                 </div>
                 <div class="table-padding">
-                <tr *ngIf="!orderitem1" class="table-data-row">
-                  <td class="check" style="width: 18%;">
-                    <img [src]="image2" class="expand-arrow1" alt="add-user-btn" (click)="expandDistrictItemsDiv2()">
+                  <tr *ngIf="showDiv" class="table-data-row">
+                    <td style="width: 18%;">
+                      <img [src]="image1" class="expand-arrow1" alt="add-user-btn" (click)="expandOrderItemsDiv1()">
+                      {{CountryName}}
+                    </td>
 
-                    {{stateName}}
-                  </td>
-                  <td style="padding-left: 11px;">
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!districtitem1">
-                  </td>
-                  <td style="padding-left: 6px;">
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!districtitem1">
-                  </td>
-                  <td style="padding-left: 5px;">
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!districtitem1">
-                  </td>
-                  <td>
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!districtitem1">
-                  </td>
-                  <td>
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!districtitem1">
-                  </td>
-                  <td>
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!districtitem1">
-                  </td>
-                  <td >
-                    <input placeholder="Enter" style="width: 130px;" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!districtitem1">
-                  </td>
-                  <td style="width: 13%;padding-left: 22px;">
-                    <a href="">Add</a>
-                  </td>
-                </tr>
+                    <td>
+                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
+                        [disabled]="!orderitem1">
+
+                    </td>
+                    <td>
+                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
+                        [disabled]="!orderitem1">
+                    </td>
+
+                    <td>
+                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
+                        [disabled]="!orderitem1">
+                    </td>
+
+                    <td>
+                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
+                        [disabled]="!orderitem1">
+                    </td>
+
+                    <td>
+                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
+                        [disabled]="!orderitem1">
+                    </td>
+
+                    <td>
+                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
+                        [disabled]="!orderitem1">
+                    </td>
+                    <td>
+                      <input placeholder="Enter" style="width: 130px;" type="text" class="uom-cls" id="fname"
+                        name="fname" [disabled]="!orderitem1">
+                    </td>
+                    <td style="width: 13%; padding-left: 22px;">
+                      <a href="">Add</a>
+                    </td>
+                  </tr>
                 </div>
                 <div class="table-padding">
-                <tr *ngIf="!districtitem1" class="table-data-row">
-                  <td class="check"style="width: 18%;">
-                    <img [src]="image3" class="expand-arrow1" alt="add-user-btn" (click)="expandCityItemsDiv3()">
+                  <tr *ngIf="!orderitem1" class="table-data-row">
+                    <td class="check" style="width: 18%;">
+                      <img [src]="image2" class="expand-arrow1" alt="add-user-btn" (click)="expandDistrictItemsDiv2()">
 
-                    {{districtName}}
-                  </td>
-                  <td style="padding-left: 11px;">
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!cityitem1">
-                  </td>
-                  <td style="padding-left: 6px;">
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!cityitem1">
-                  </td>
-                  <td style="padding-left: 5px;">
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!cityitem1">
-                  </td>
-                  <td>
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!cityitem1">
-                  </td>
-                  <td>
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!cityitem1">
-                  </td>
-                  <td>
-                    <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!cityitem1">
-                  </td>
-                  <td >
-                    <input placeholder="Enter" style="width: 130px;" type="text" class="uom-cls" id="fname" name="fname" [disabled]="!cityitem1">
-                  </td>
-                  <td style="width: 13%;padding-left: 22px;">
-                    <a href="">Add</a>
-                  </td>
-                </tr>
+                      {{stateName}}
+                    </td>
+                    <td style="padding-left: 11px;">
+                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
+                        [disabled]="!districtitem1">
+                    </td>
+                    <td style="padding-left: 6px;">
+                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
+                        [disabled]="!districtitem1">
+                    </td>
+                    <td style="padding-left: 5px;">
+                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
+                        [disabled]="!districtitem1">
+                    </td>
+                    <td>
+                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
+                        [disabled]="!districtitem1">
+                    </td>
+                    <td>
+                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
+                        [disabled]="!districtitem1">
+                    </td>
+                    <td>
+                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
+                        [disabled]="!districtitem1">
+                    </td>
+                    <td>
+                      <input placeholder="Enter" style="width: 130px;" type="text" class="uom-cls" id="fname"
+                        name="fname" [disabled]="!districtitem1">
+                    </td>
+                    <td style="width: 13%;padding-left: 22px;">
+                      <a href="">Add</a>
+                    </td>
+                  </tr>
+                </div>
+                <div class="table-padding">
+                  <tr *ngIf="!districtitem1" class="table-data-row">
+                    <td class="check" style="width: 18%;">
+                      <img [src]="image3" class="expand-arrow1" alt="add-user-btn" (click)="expandCityItemsDiv3()">
+
+                      {{districtName}}
+                    </td>
+                    <td style="padding-left: 11px;">
+                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
+                        [disabled]="!cityitem1">
+                    </td>
+                    <td style="padding-left: 6px;">
+                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
+                        [disabled]="!cityitem1">
+                    </td>
+                    <td style="padding-left: 5px;">
+                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
+                        [disabled]="!cityitem1">
+                    </td>
+                    <td>
+                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
+                        [disabled]="!cityitem1">
+                    </td>
+                    <td>
+                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
+                        [disabled]="!cityitem1">
+                    </td>
+                    <td>
+                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
+                        [disabled]="!cityitem1">
+                    </td>
+                    <td>
+                      <input placeholder="Enter" style="width: 130px;" type="text" class="uom-cls" id="fname"
+                        name="fname" [disabled]="!cityitem1">
+                    </td>
+                    <td style="width: 13%;padding-left: 22px;">
+                      <a href="">Add</a>
+                    </td>
+                  </tr>
                 </div>
                 <!-- citys -->
-                <div *ngFor="let item of selectedGeographiesCityNames; let i =index;" class="table-padding">
-                <tr *ngIf="!cityitem1"  class="table-data-row">
-                  <td class="check2" style="width: 18%;">
-                    <mat-icon >subdirectory_arrow_right</mat-icon>
-                    <!-- <img [src]="subdirectory_arrow_right" class="expand-arrow1" alt="add-user-btn"> -->
-
-                    {{selectedGeographiesCityNames[i]}}
-                  </td>
-                  <td style="padding-left: 30px;">
-                    <input placeholder="Enter" type="text" [(ngModel)]="item.MRP" class="uom-cls" id="MRP" name="MRP" >
-                  </td>
-                  <td style="padding-left: 18px;">
-                    <input placeholder="Enter" type="text" [(ngModel)]="item.MinOrderQty" class="uom-cls" id="MinorderQty" name="MinorderQty">
-                  </td>
-                  <td style="padding-left: 11px;">
-                    <input placeholder="Enter" type="text" [(ngModel)]="item.MinOrderQty" class="uom-cls" id="MaxorderQty" name="MaxorderQty">
-                  </td>
-                  <td style="padding-left: 7px;">
-                    <input placeholder="Enter" type="text" [(ngModel)]="item.MinOrderQty" class="uom-cls" id="Margin" name="Margin">
-                  </td>
-                  <td>
-                    <input placeholder="Enter" type="text" [(ngModel)]="item.MinOrderQty" class="uom-cls" id="Discount" name="Discount">
-                  </td>
-                  <td>
-                    <input type="text" [(ngModel)]="item.MinOrderQty" class="uom-cls" id="Leadtime" name="Leadtime">
-                  </td>
-                  <td >
-                    <input style="width: 130px;" type="text" [(ngModel)]="item.MinOrderQty" class="uom-cls" id="RegistrationNumber" name="RegistrationNumber">
-                  </td>
-                  <td style="width: 13%;padding-left: 22px;">
-                    <a href="">Add</a>
-                  </td>
-                </tr>
+                <div *ngFor="let item of geoGraphyFullData[3]?.geoProperties ?? []; let i =index;" class="table-padding">
+                  <tr *ngIf="!cityitem1" class="table-data-row">
+                    <td class="check2" style="width: 18%;">
+                      <mat-icon>subdirectory_arrow_right</mat-icon>
+                      <!-- <img [src]="subdirectory_arrow_right" class="expand-arrow1" alt="add-user-btn"> -->
+                      {{item.GeographyName}}
+                    </td>
+                    <td style="padding-left: 30px;">
+                      <input placeholder="Enter" type="text" [(ngModel)]="item.MRP" class="uom-cls" id="MRP" name="MRP">
+                    </td>
+                    <td style="padding-left: 18px;">
+                      <input placeholder="Enter" type="text" [(ngModel)]="item.MinOrderQty" class="uom-cls"
+                        id="MinorderQty" name="MinorderQty">
+                    </td>
+                    <td style="padding-left: 11px;">
+                      <input placeholder="Enter" type="text" [(ngModel)]="item.MinOrderQty" class="uom-cls"
+                        id="MaxorderQty" name="MaxorderQty">
+                    </td>
+                    <td style="padding-left: 7px;">
+                      <input placeholder="Enter" type="text" [(ngModel)]="item.MinOrderQty" class="uom-cls" id="Margin"
+                        name="Margin">
+                    </td>
+                    <td>
+                      <input placeholder="Enter" type="text" [(ngModel)]="item.MinOrderQty" class="uom-cls"
+                        id="Discount" name="Discount">
+                    </td>
+                    <td>
+                      <input type="text" [(ngModel)]="item.MinOrderQty" class="uom-cls" id="Leadtime" name="Leadtime">
+                    </td>
+                    <td>
+                      <input style="width: 130px;" type="text" [(ngModel)]="item.MinOrderQty" class="uom-cls"
+                        id="RegistrationNumber" name="RegistrationNumber">
+                    </td>
+                    <td style="width: 13%;padding-left: 22px;">
+                      <a href="">Add</a>
+                    </td>
+                  </tr>
                 </div>
               </table>
-            
-          </section>
+
+            </section>
             <div class="col-6">
               <div class="row">
                 <div class="col-1"></div>
                 <div class="col-6">
-                  <button class="btn btn-primary btn-block submitbtn save-btn">Save</button>
+                  <button class="btn btn-primary btn-block submitbtn save-btn" (click)="saveMaterialList()">Save</button>
                 </div>
                 <div class="col-3">
                 </div>

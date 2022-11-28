@@ -1,6 +1,6 @@
- import {Component,OnInit, ViewChild} from '@angular/core';
- import {FormBuilder, FormGroup, FormControl} from '@angular/forms';
- import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { AddIdentifierComponent } from '../add-identifier/add-identifier.component';
 import { AddProductGroupComponent } from '../add-product-group/add-product-group.component';
@@ -11,94 +11,94 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
 import { MatStepper } from '@angular/material/stepper';
 import { SharedServicesMaterialService } from 'src/app/services/shared-services-material.service';
- /**
-  * @title Stepper animations
-  */
- @Component({
+/**
+ * @title Stepper animations
+ */
+@Component({
   selector: 'app-material-add-editpopup',
   templateUrl: './material-add-editpopup.component.html',
   styleUrls: ['./material-add-editpopup.component.css']
- })
- export class MaterialAddEditpopupComponent {
+})
+export class MaterialAddEditpopupComponent {
   disabled = false;
-  catgname:any=[];
-  base64textString= "";
+  catgname: any = [];
+  base64textString = "";
   selecetdFile: any;
   imagePreview: any;
-  Imgpreview:boolean = false;
+  Imgpreview: boolean = false;
   dropdownSettings2: IDropdownSettings = {};
   dropdownSettings3: IDropdownSettings = {};
-  toppingList2:  any= []; 
-  toppingList3:  any= [];
-  actineLabel:any ; // countryname: string[] = ['Malaysia (71/126)', 'India (178/178)','Philipines (0/135)'];
+  toppingList2: any = [];
+  toppingList3: any = [];
+  actineLabel: any; // countryname: string[] = ['Malaysia (71/126)', 'India (178/178)','Philipines (0/135)'];
   // statename: string[] = ['Johor(0/42)', 'Kedah(36/36','Perak(14/26)','Penang(21/22)'];
-  regionname: string[] = ['North(4/4)', 'South(8/8)', 'East(6/6)','West(3/4)'];
-  cityname:string[] =['George town','Balik Pulau','Batu Refringi','Teluk Bahang'];
-  toprint:boolean=false;
-  addButton:boolean =false;
-  removelist:boolean =false;
-  toggle:boolean=true;
-  selectedItem:any = [];
-  stateselectedItem:any = [];
-  distselectedItem:any =[];
-  citySelectedItem:any =[]
+  regionname: string[] = ['North(4/4)', 'South(8/8)', 'East(6/6)', 'West(3/4)'];
+  cityname: string[] = ['George town', 'Balik Pulau', 'Batu Refringi', 'Teluk Bahang'];
+  toprint: boolean = false;
+  addButton: boolean = false;
+  removelist: boolean = false;
+  toggle: boolean = true;
+  selectedItem: any = [];
+  stateselectedItem: any = [];
+  distselectedItem: any = [];
+  citySelectedItem: any = []
   ShowFilter = false;
-  subCategoryFilter=false;
+  subCategoryFilter = false;
   myForm: any = FormGroup;
   toppings: any = [];
   toppings1: any = [];
   toppings2: any = [];
-  productList:any = [];
-  materialIdentifier:any=[];
+  productList: any = [];
+  materialIdentifier: any = [];
   // selectedItems: any;
   selectedItems1: any;
   selectedItems2: any;
   selectedItems3: any;
   selectedItems4: any;
-  MaterialIdentifier:any;
+  MaterialIdentifier: any;
   selectedItems5: any;
   selectedItems6: any;
   selectedItems7: any;
-  sub_category:any;
-  typeI:any;
-  rowData5:any=[];
-  subProduct:any = [];
-  countryList:any =[];
-  countStates:any;
-  stateList:any =[];
-  countDist:any;
-  distList:any =[];
-  countCity:any;
-  cityList:any =[];
-  session:any;
-  getEditId:any;
-  catId:any;
-  subCatId:any;
-  typeId:any;
-  productId:any;
-  subProductId:any;
-  uomID:any;
-  stateName:any;
-  districtName:any;
-  
-  materialName:string ='';
-  description:string ='';
-  desc:any;
-  nameM:any;
-  expiryDate:string ='';
-  BrandName:string = '';
-  gloabKey:any;
-  Sku:any;
-  shortCode:any;
-  Sort:any;
-  AddSP:any;
-  prodId:any;
-  editData:boolean = false;
-  orderitem1= true
-  districtitem1:boolean =true;
-  cityitem1:boolean = true;
+  sub_category: any;
+  typeI: any;
+  rowData5: any = [];
+  subProduct: any = [];
+  countryList: any = [];
+  countStates: any;
+  stateList: any = [];
+  countDist: any;
+  distList: any = [];
+  countCity: any;
+  cityList: any = [];
+  session: any;
+  getEditId: any;
+  catId: any;
+  subCatId: any;
+  typeId: any;
+  productId: any;
+  subProductId: any;
+  uomID: any;
+  stateName: any;
+  districtName: any;
+
+  materialName: string = '';
+  description: string = '';
+  desc: any;
+  nameM: any;
+  expiryDate: string = '';
+  BrandName: string = '';
+  gloabKey: any;
+  Sku: any;
+  shortCode: any;
+  Sort: any;
+  AddSP: any;
+  prodId: any;
+  editData: boolean = false;
+  orderitem1 = true
+  districtitem1: boolean = true;
+  cityitem1: boolean = true;
   dropdownSettings: IDropdownSettings = {};
-  selectfld: any = ['mrp','aty'];
+  selectfld: any = ['mrp', 'aty'];
   image1 = 'assets/img/minimize-tag.png';
   image2 = 'assets/img/minimize-tag.png';
   image3 = 'assets/img/minimize-tag.png';
@@ -106,68 +106,68 @@ import { SharedServicesMaterialService } from 'src/app/services/shared-services-
   countrySelected = true;
   RegionExpanded = true;
   CityExpanded = true;
-  CountryName:any;
-  showDiv:boolean =false
-// geograhies related variables
+  CountryName: any;
+  showDiv: boolean = false
+  // geograhies related variables
 
-  geoPropertiesList:any
+  geoPropertiesList: any
   gepGraphiesFormGroup!: FormGroup;
   UserId: any;
-   geoGraphyHirerachyData: any;
-   geoGraphyFullData: any;
-   selectedGeographiesCityNames:any =[];
-   cityCode:any= [];
-   cityName:any=[];
-   geographyHierarchyId: any;
-   aarrayToPush: any[] = [];
-   css: any[] = [];
-   checked: boolean = false
-   colorsList = [
-     { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
-     { primaryColor: { background: '#0C5A3E', color: '#fff' }, secondaryColor: { background: "#E6FFF6", color: "#0C5A3E" }, },
-     { primaryColor: { background: '#C32F27', color: '#fff' }, secondaryColor: { background: "#FFEDEC", color: "#C32F27" }, },
-     { primaryColor: { background: '#3D1A00', color: '#fff' }, secondaryColor: { background: "#D6C8C3", color: "#3D1A00" }, },
-     { primaryColor: { background: '#DC0063', color: '#fff' }, secondaryColor: { background: "#FFE1EE", color: "#DC0063" }, },
-     { primaryColor: { background: '#8000E2', color: '#fff' }, secondaryColor: { background: "#EFDAFF", color: "#8000E2" }, },
-     { primaryColor: { background: '#0E4C6D', color: '#fff' }, secondaryColor: { background: "#D6F1FF", color: "#0E4C6D" }, },
-     { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
-     { primaryColor: { background: '#0C5A3E', color: '#fff' }, secondaryColor: { background: "#E6FFF6", color: "#0C5A3E" }, },
-     { primaryColor: { background: '#C32F27', color: '#fff' }, secondaryColor: { background: "#FFEDEC", color: "#C32F27" }, },
-     { primaryColor: { background: '#3D1A00', color: '#fff' }, secondaryColor: { background: "#D6C8C3", color: "#3D1A00" }, },
-     { primaryColor: { background: '#DC0063', color: '#fff' }, secondaryColor: { background: "#FFE1EE", color: "#DC0063" }, },
-   ];
-   @ViewChild('stepper') private stepper: MatStepper | any;;
+  geoGraphyHirerachyData: any;
+  geoGraphyFullData: any;
+  selectedGeographiesCityNames: any = [];
+  cityCode: any = [];
+  cityName: any = [];
+  geographyHierarchyId: any;
+  aarrayToPush: any[] = [];
+  css: any[] = [];
+  checked: boolean = false
+  colorsList = [
+    { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
+    { primaryColor: { background: '#0C5A3E', color: '#fff' }, secondaryColor: { background: "#E6FFF6", color: "#0C5A3E" }, },
+    { primaryColor: { background: '#C32F27', color: '#fff' }, secondaryColor: { background: "#FFEDEC", color: "#C32F27" }, },
+    { primaryColor: { background: '#3D1A00', color: '#fff' }, secondaryColor: { background: "#D6C8C3", color: "#3D1A00" }, },
+    { primaryColor: { background: '#DC0063', color: '#fff' }, secondaryColor: { background: "#FFE1EE", color: "#DC0063" }, },
+    { primaryColor: { background: '#8000E2', color: '#fff' }, secondaryColor: { background: "#EFDAFF", color: "#8000E2" }, },
+    { primaryColor: { background: '#0E4C6D', color: '#fff' }, secondaryColor: { background: "#D6F1FF", color: "#0E4C6D" }, },
+    { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
+    { primaryColor: { background: '#0C5A3E', color: '#fff' }, secondaryColor: { background: "#E6FFF6", color: "#0C5A3E" }, },
+    { primaryColor: { background: '#C32F27', color: '#fff' }, secondaryColor: { background: "#FFEDEC", color: "#C32F27" }, },
+    { primaryColor: { background: '#3D1A00', color: '#fff' }, secondaryColor: { background: "#D6C8C3", color: "#3D1A00" }, },
+    { primaryColor: { background: '#DC0063', color: '#fff' }, secondaryColor: { background: "#FFE1EE", color: "#DC0063" }, },
+  ];
+  @ViewChild('stepper') private stepper: MatStepper | any;;
 
-   constructor(private fb: FormBuilder, public dialog: MatDialog,
-     private spinner: NgxSpinnerService, private addMaterials: AddMaterialsService,
-     private sharedService:SharedServicesMaterialService,
+  constructor(private fb: FormBuilder, public dialog: MatDialog,
+    private spinner: NgxSpinnerService, private addMaterials: AddMaterialsService,
+    private sharedService: SharedServicesMaterialService,
 
-     private classification: ClassificationserviseService) {
-      this.sharedService.listen().subscribe((m: any) => {
-        this.getProductList();
+    private classification: ClassificationserviseService) {
+    this.sharedService.listen().subscribe((m: any) => {
+      this.getProductList();
 
-   let item=localStorage.getItem('productId');
+      let item = localStorage.getItem('productId');
 
-   this.addMaterials.getProductSubGroup(item).subscribe((res) => {
-    let subProd = res.response;
-    console.log("subProd", subProd);
-    this.subProduct = subProd;
-    // this.toppings2 = new FormControl(this.typeI);
-  });
+      this.addMaterials.getProductSubGroup(item).subscribe((res) => {
+        let subProd = res.response;
+        console.log("subProd", subProd);
+        this.subProduct = subProd;
+        // this.toppings2 = new FormControl(this.typeI);
+      });
 
-        console.log(m)
-  
-      })
+      console.log(m)
 
-
-      }
+    })
 
 
-   firstFormGroup: FormGroup = this.fb.group({ firstCtrl: [''] });
-   secondFormGroup: FormGroup = this.fb.group({ secondCtrl: [''] });
-   thirdformGroup:FormGroup = this.fb.group({ thirdCtrl: [''] });
+  }
 
-   ngOnInit():void {
+
+  firstFormGroup: FormGroup = this.fb.group({ firstCtrl: [''] });
+  secondFormGroup: FormGroup = this.fb.group({ secondCtrl: [''] });
+  thirdformGroup: FormGroup = this.fb.group({ thirdCtrl: [''] });
+
+  ngOnInit(): void {
     const user = localStorage.getItem("logInId");
     this.UserId = user
 
@@ -181,75 +181,75 @@ import { SharedServicesMaterialService } from 'src/app/services/shared-services-
     this.selectedItems5 = [];
     this.selectedItems6 = [];
     this.selectedItems7 = [];
-     this.editList()
-this.getclassification();
-this.getAllUom();
-this.getMaterialIdentifier();
-this.countryData();
-   }
-   onKey(event) {
+    this.editList()
+    this.getclassification();
+    this.getAllUom();
+    this.getMaterialIdentifier();
+    this.countryData();
+  }
+  onKey(event) {
     let inputName = event.target.value;
-  this.materialName = inputName;
-  console.log("inputName" ,this.materialName)
+    this.materialName = inputName;
+    console.log("inputName", this.materialName)
   }
   onKeyDesc(event) {
     let inputDesc = event.target.value;
-  this.description =  inputDesc;
-  console.log("description" ,this.description)
+    this.description = inputDesc;
+    console.log("description", this.description)
   }
   onKeyExpry(event) {
     let inputExpry = event.target.value;
-  this.expiryDate =  inputExpry;
-  console.log("expiryDate" ,this.expiryDate)
+    this.expiryDate = inputExpry;
+    console.log("expiryDate", this.expiryDate)
   }
   onKeyBrand(event) {
     let brandName = event.target.value;
-  this.BrandName =  brandName;
-  console.log("BrandName" ,this.BrandName)
+    this.BrandName = brandName;
+    console.log("BrandName", this.BrandName)
   }
   onKeyGloabal(event) {
     let gloabK = event.target.value;
-  this.gloabKey =  gloabK;
-  console.log("gloabKey" ,this.gloabKey)
+    this.gloabKey = gloabK;
+    console.log("gloabKey", this.gloabKey)
   }
   onKeySKU(event) {
     let sku = event.target.value;
-  this.Sku =  sku;
-  console.log("Sku" ,this.Sku)
+    this.Sku = sku;
+    console.log("Sku", this.Sku)
   }
   onKeyShortCode(event) {
     let shortC = event.target.value;
-  this.shortCode =  shortC;
-  console.log("shortCode" ,this.shortCode)
+    this.shortCode = shortC;
+    console.log("shortCode", this.shortCode)
   }
   onKeySort(event) {
     let sort = event.target.value;
-  this.Sort =  sort;
-  console.log("Sort" ,this.Sort)
+    this.Sort = sort;
+    console.log("Sort", this.Sort)
   }
   onKeyAddSP(event) {
     let AddSp = event.target.value;
-  this.AddSP =  AddSp;
-  console.log("AddSP" ,this.AddSP)
+    this.AddSP = AddSp;
+    console.log("AddSP", this.AddSP)
   }
-  editList(){
+  editList() {
     this.getEditId = localStorage.getItem('listData');
-    console.log("ListData",this.getEditId)
-    let editV =localStorage.getItem('Edit');
-    if(editV == 'Edit'){
+    console.log("ListData", this.getEditId)
+    let editV = localStorage.getItem('Edit');
+    if (editV == 'Edit') {
       this.actineLabel = "Edit Material";
       this.addMaterials.onEditList(this.getEditId).subscribe((res) => {
         let data = res.response;
-        console.log("EditData",data);
+        console.log("EditData", data);
         this.editData = true;
       })
     }
-    else{
+    else {
       this.actineLabel = "Add Material";
       this.editData = false;
     }
   }
-   getclassification() {
+  getclassification() {
 
     this.addMaterials.getclassification().subscribe((res) => {
       let data = res.response;
@@ -258,63 +258,63 @@ this.countryData();
       this.selectedItems1 = new FormControl(this.catgname);
     })
   }
-  getProductList(){
+  getProductList() {
     this.addMaterials.getProductGroup().subscribe((res) => {
-      let data =res.response;
-      this.productList =data;
-     let prodG = localStorage.getItem('productG')
-     console.log("prodG",prodG)
+      let data = res.response;
+      this.productList = data;
+      let prodG = localStorage.getItem('productG')
+      console.log("prodG", prodG)
     })
   }
-  getMaterialIdentifier(){
+  getMaterialIdentifier() {
     this.MaterialIdentifier = localStorage.getItem('session');
-    console.log("Daatatatatatat5",this.MaterialIdentifier)
+    console.log("Daatatatatatat5", this.MaterialIdentifier)
     this.selectedItems5 = JSON.parse(this.MaterialIdentifier);
-    console.log("Selected Item 5",this.selectedItems5)
+    console.log("Selected Item 5", this.selectedItems5)
   }
 
-  addMaterialProduct(){
-    let data ={
-      DoneById:this.UserId,
-      StockItemSubCategoryId:this.subCatId,
-      StockItemTypeId:this.typeId,
-      StockItemName:this.materialName,
-      StockItemDesc:this.description,
-      BaseUoMId:this.uomID,
-      Imageurl:this.base64textString,
-      Materialcustomidentifier:this.selectedItems5,
-      ExpiryPeriod:this.expiryDate,
-      IsProduct:+this.checked,
-      BrandName:this.BrandName,
-      GlobalCode:this.gloabKey,
-      ProductSKUName:this.Sku,
-      ShortCode:this.shortCode,
-      ManualShortOrder:this.Sort,
-      ProductLink:this.AddSP,
-      ProductSubGroupId:this.selectedItems7,
+  addMaterialProduct() {
+    let data = {
+      DoneById: this.UserId,
+      StockItemSubCategoryId: this.subCatId,
+      StockItemTypeId: this.typeId,
+      StockItemName: this.materialName,
+      StockItemDesc: this.description,
+      BaseUoMId: this.uomID,
+      Imageurl: this.base64textString,
+      Materialcustomidentifier: this.selectedItems5,
+      ExpiryPeriod: this.expiryDate,
+      IsProduct: +this.checked,
+      BrandName: this.BrandName,
+      GlobalCode: this.gloabKey,
+      ProductSKUName: this.Sku,
+      ShortCode: this.shortCode,
+      ManualShortOrder: this.Sort,
+      ProductLink: this.AddSP,
+      ProductSubGroupId: this.selectedItems7,
       // ProductGeography:
     }
     console.log(data)
   }
-addMaterialIfNotProduct(){
-let data ={
-  DoneById:this.UserId,
-  StockItemSubCategoryId:this.subCatId,
-  StockItemTypeId:this.typeId,
-  StockItemName:this.materialName,
-  StockItemDesc:this.description,
-  BaseUoMId:this.uomID,
-  Imageurl:this.base64textString,
-  Materialcustomidentifier:this.selectedItems5,
-  ExpiryPeriod:this.expiryDate,
-  IsProduct:+!this.checked,
-}
-console.log(data)
-}
-   onSubCategoryAll(items: any) {
+  addMaterialIfNotProduct() {
+    let data = {
+      DoneById: this.UserId,
+      StockItemSubCategoryId: this.subCatId,
+      StockItemTypeId: this.typeId,
+      StockItemName: this.materialName,
+      StockItemDesc: this.description,
+      BaseUoMId: this.uomID,
+      Imageurl: this.base64textString,
+      Materialcustomidentifier: this.selectedItems5,
+      ExpiryPeriod: this.expiryDate,
+      IsProduct: +!this.checked,
+    }
+    console.log(data)
+  }
+  onSubCategoryAll(items: any) {
     console.log('onSelectAll', items);
   }
-  onItemSelect(item:any){
+  onItemSelect(item: any) {
     this.catId = item.catId;
     this.addMaterials.onclickcat(item.catId).subscribe((res) => {
       let subcaty = res.response;
@@ -324,7 +324,7 @@ console.log(data)
       this.toppings1 = new FormControl(this.sub_category);
     });
   }
-  onSubCategorySelect(item:any){
+  onSubCategorySelect(item: any) {
     this.subCatId = item.subCatId;
     this.addMaterials.onclicksubcat(item.subCatId).subscribe((res) => {
       let typs = res.response;
@@ -334,20 +334,20 @@ console.log(data)
       this.toppings2 = new FormControl(this.typeI);
     });
   }
-  onUomSelect(item:any){
-      this.uomID = item.uoMId
-      console.log("this.uomID",this.uomID)
+  onUomSelect(item: any) {
+    this.uomID = item.uoMId
+    console.log("this.uomID", this.uomID)
 
   }
-  onProductSelect(item:any){
+  onProductSelect(item: any) {
     // alert(item.productGroupId);
-     this.prodId = item.productGroupId;
-    let prodName = item.productGroupName;localStorage
-    sessionStorage.setItem("productId",this.prodId)
-    sessionStorage.setItem("productName",prodName);
-    localStorage.setItem("productId",this.prodId)
-    localStorage.setItem("productName",prodName);
-    console.log("item.productGroupId",item.productGroupId);
+    this.prodId = item.productGroupId;
+    let prodName = item.productGroupName; localStorage
+    sessionStorage.setItem("productId", this.prodId)
+    sessionStorage.setItem("productName", prodName);
+    localStorage.setItem("productId", this.prodId)
+    localStorage.setItem("productName", prodName);
+    console.log("item.productGroupId", item.productGroupId);
     this.productId = item.productGroupId;
     this.addMaterials.getProductSubGroup(item.productGroupId).subscribe((res) => {
       let subProd = res.response;
@@ -356,19 +356,19 @@ console.log(data)
       // this.toppings2 = new FormControl(this.typeI);
     });
   }
-  onSubProductSelect(item:any){
+  onSubProductSelect(item: any) {
     // alert(item.productGroupId);
-    console.log("item.productGroupId",item.productGroupId);
+    console.log("item.productGroupId", item.productGroupId);
     this.subProductId = item.productGroupId;
   }
-  countryData(){
+  countryData() {
     this.addMaterials.getCountryList().subscribe((res) => {
       let data = res.response;
-     this.countryList=data.allOtherCountries;
-     console.log("country LIst");
-              //  let firstCountr =data.firstCountr;
-          this.getStateList(data.firstCountr.countryId);
-          this.selectedItem=data.firstCountr.countryId;
+      this.countryList = data.allOtherCountries;
+      console.log("country LIst");
+      //  let firstCountr =data.firstCountr;
+      this.getStateList(data.firstCountr.countryId);
+      this.selectedItem = data.firstCountr.countryId;
     })
   }
   // getCountryList(){
@@ -379,319 +379,329 @@ console.log(data)
   //         this.firstCountr =data.firstCountr;
   //         this.getStateList(data.firstCountr.countryId);
   //         this.selectedItem=data.firstCountr.countryId;
-         
+
   //       })  
   // }
-  getStateList(id:any){
-    localStorage.setItem('countryId',id);
-    this.selectedItem= id;
-    this.addMaterials.getAllListByCountry(id).subscribe((res)=>{
-          let data=res.response;
-          this.countStates=data.allOtherGeography.length;
-          this.stateList=data.allOtherGeography;
-          this.stateselectedItem = data.firstGeography.geographyId;
-          this.getDistrictList(data.firstGeography.geographyId)
-        })
+  getStateList(id: any) {
+    localStorage.setItem('countryId', id);
+    this.selectedItem = id;
+    this.addMaterials.getAllListByCountry(id).subscribe((res) => {
+      let data = res.response;
+      this.countStates = data.allOtherGeography.length;
+      this.stateList = data.allOtherGeography;
+      this.stateselectedItem = data.firstGeography.geographyId;
+      this.getDistrictList(data.firstGeography.geographyId)
+    })
   }
-  getDistrictList(id:any){
+  getDistrictList(id: any) {
     this.stateselectedItem = id;
-    localStorage.setItem("stateId",id);
-    this.addMaterials.getAllListByCountry(id).subscribe((res)=>{
-          let data=res.response;
-          this.countDist=data.allOtherGeography.length;
-          this.distList=data.allOtherGeography;
-          this.distselectedItem = data.firstGeography.geographyId;
-          this.getCityList(data.firstGeography.geographyId);
-        })
+    localStorage.setItem("stateId", id);
+    this.addMaterials.getAllListByCountry(id).subscribe((res) => {
+      let data = res.response;
+      this.countDist = data.allOtherGeography.length;
+      this.distList = data.allOtherGeography;
+      this.distselectedItem = data.firstGeography.geographyId;
+      this.getCityList(data.firstGeography.geographyId);
+    })
   }
-  getCityList(id:any){
+  getCityList(id: any) {
     this.distselectedItem = id;
-    localStorage.setItem('distId',id);
-    this.addMaterials.getAllListByCountry(id).subscribe((res)=>{
-          let data=res.response;
-          this.countCity=data.allOtherGeography.length;
-          this.cityList=data.allOtherGeography;
-          this.citySelectedItem = data.firstGeography.geographyId;
-        })
+    localStorage.setItem('distId', id);
+    this.addMaterials.getAllListByCountry(id).subscribe((res) => {
+      let data = res.response;
+      this.countCity = data.allOtherGeography.length;
+      this.cityList = data.allOtherGeography;
+      this.citySelectedItem = data.firstGeography.geographyId;
+    })
   }
-  getAllUom(){
-    const data={
-      search:"",
+  getAllUom() {
+    const data = {
+      search: "",
     }
     this.addMaterials.getuomDeatils(data).subscribe((res: any) => {
-      console.log('uom list',res.response)
-      
-     this.rowData5=res.response;
+      console.log('uom list', res.response)
+
+      this.rowData5 = res.response;
     });
   }
-  onIdentiSelect(item:any){
-// alert(item.materialCustomName)
+  onIdentiSelect(item: any) {
+    // alert(item.materialCustomName)
   }
   onTypeSelect(item: any) {
     this.typeId = item.typeId;
   }
-  onTypeAll(item:any){
+  onTypeAll(item: any) {
     console.log(item);
   }
-  cname1(cname:string,i:any){
-    
-    if(cname=='Eectronics'){
+  cname1(cname: string, i: any) {
+
+    if (cname == 'Eectronics') {
       // this.Sname= ['mobile', 'earphone','mouse'];
     }
-    if(cname!='Eectronics'){
+    if (cname != 'Eectronics') {
       // this.Sname= ['fan','fridge'];
-    
+
 
     }
   }
-  printvalue(valueofprint:boolean){
-    this.toprint=valueofprint;
+  printvalue(valueofprint: boolean) {
+    this.toprint = valueofprint;
   }
-  addCategory(){
-    this.addButton =true;
+  addCategory() {
+    this.addButton = true;
   }
-  
-    onClick(item) {
+
+  onClick(item) {
     this.selectedItem = item;
   }
-  selectProduct(){
+  selectProduct() {
     this.dialog.open(SelectProductComponent);
     this.getMaterialIdentifier();
   }
-  addproduct(){
+  addproduct() {
     this.dialog.open(AddProductGroupComponent);
-    
+
   }
-  addproductsubgroup(){
+  addproductsubgroup() {
     this.dialog.open(AddProductSubGroupComponent);
-    
+
   }
-  customIdentifier(){
+  customIdentifier() {
     this.dialog.open(AddIdentifierComponent);
   }
-  
-
-// geograhies related apis
-
-getGeographyHierarchy() {
-  this.spinner.show();
-  this.geoGraphyHirerachyData = null;
-  this.classification.getGeographyHierarchy().subscribe(res => {
-    // console.log(res);
-    this.spinner.hide();
-    this.geoGraphyHirerachyData = res.response;
-
-    console.log('geoGraphyHirerachyData', this.geoGraphyHirerachyData);
 
 
-    this.geoGraphyFullData = JSON.parse(JSON.stringify(res.response));
-    console.log('geoGraphyFullData', this.geoGraphyFullData);
-    const hdata = this.geoGraphyFullData.find(a => a.primaryGeographyAssociation == 'Y');
+  // geograhies related apis
 
-    console.log('hdata', hdata)
+  getGeographyHierarchy() {
+    this.spinner.show();
+    this.geoGraphyHirerachyData = null;
+    this.classification.getGeographyHierarchy().subscribe(res => {
+      // console.log(res);
+      this.spinner.hide();
+      this.geoGraphyHirerachyData = res.response;
 
-    this.geographyHierarchyId = hdata.geographyHierarchyId
-    const data = this.geoGraphyFullData.findIndex(a => a.primaryGeographyAssociation == 'Y');
-    this.geoGraphyFullData = this.geoGraphyFullData.slice(0, data + 1)
-
-    console.log('data to console1', this.geoGraphyFullData.slice(0, data + 1))
-
-
-    console.log('geoGraphyFullData', this.geoGraphyFullData);
-
-    this.getGeographiesDataById(null, 1);
-  }, err => {
-    console.log(err);
-    this.spinner.hide();
-  })
-
-}
+      console.log('geoGraphyHirerachyData', this.geoGraphyHirerachyData);
 
 
-selectGeoGraphy(clickedItem, hirerachyIndex,) {
-  this.showDiv=true;
-  console.log(hirerachyIndex,"edrtfyu")
-  
-  if(hirerachyIndex==1){
-  let Country = clickedItem.geographyName;
-  let countryCode = clickedItem.geographyCode;
-this.CountryName = Country+"("+ countryCode+")";
-console.log("CountryNAme",this.CountryName);
-  console.log(clickedItem, hirerachyIndex);
-  }
-  else if(hirerachyIndex==2){
-let stateNamee = clickedItem.geographyName;
-let stateCode = clickedItem.geographyCode;
-this.stateName = stateNamee+"("+ stateCode+")";
-  }
-  else if(hirerachyIndex==3){
-    let districtNamee = clickedItem.geographyName;
-    let districtCode = clickedItem.geographyCode;
-    this.districtName = districtNamee+"("+ districtCode+")";
-  }
-  else if(hirerachyIndex==4){
-    this.selectedGeographiesCityNames = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographyNamesSelected;
-    this.cityCode= this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographyCode;
-    // this.cityName = [...this.selectedGeographiesCityNames,]
-    // this.selectedGeographiesCityNames+"("+ this.cityCode+")";
-    
-    console.log(this.selectedGeographiesCityNames,"selectedGeographies")
+      this.geoGraphyFullData = JSON.parse(JSON.stringify(res.response));
+      console.log('geoGraphyFullData', this.geoGraphyFullData);
+      const hdata = this.geoGraphyFullData.find(a => a.primaryGeographyAssociation == 'Y');
+
+      console.log('hdata', hdata)
+
+      this.geographyHierarchyId = hdata.geographyHierarchyId
+      const data = this.geoGraphyFullData.findIndex(a => a.primaryGeographyAssociation == 'Y');
+      this.geoGraphyFullData = this.geoGraphyFullData.slice(0, data + 1)
+
+      console.log('data to console1', this.geoGraphyFullData.slice(0, data + 1))
+
+
+      console.log('geoGraphyFullData', this.geoGraphyFullData);
+
+      this.getGeographiesDataById(null, 1);
+    }, err => {
+      console.log(err);
+      this.spinner.hide();
+    })
+
   }
 
 
-  // if (this.geographyHierarchyId == hirerachyIndex) {
-  //   this.css.push(clickedItem)
+  selectGeoGraphy(clickedItem, hirerachyIndex,) {
+    this.showDiv = true;
 
-  //   const index = this.aarrayToPush.indexOf(clickedItem.geographyId);
-
-  //   if (index !== -1) {
-  //     this.aarrayToPush.splice(index, 1);
-  //   }
-  //   else {
-  //     this.aarrayToPush.push(clickedItem.geographyId);
-
-  //   }
-
-  //   console.log('aarrayToPush', this.aarrayToPush)
-  // }
-  // else {
-  //   this.aarrayToPush = []
-  // }
-
-  this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.forEach(element => {
-    if (element.geographyId == clickedItem.geographyId) {
-      let index = this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.indexOf(element.geographyId);
-      if (index == -1) {
-        if (hirerachyIndex == this.geoGraphyFullData.length) {
-          this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.push(element.geographyId);
-          this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected.push(element.geographyName);
+    this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.forEach(element => {
+      if (element.geographyId == clickedItem.geographyId) {
+        let index = this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.indexOf(element.geographyId);
+        if (index == -1) {
+          if (hirerachyIndex == this.geoGraphyFullData.length) {
+            this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.push(element.geographyId);
+            this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected.push(element.geographyName);
+            this.geoGraphyFullData[hirerachyIndex - 1].geoProperties.push(this.CreateGeoPropertiesObject({GeographyName:element.geographyName, GeographyId:element.geographyId}))
+          } else {
+            this.geoGraphyFullData[hirerachyIndex - 1].geographySelected = [element.geographyId];
+            this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected = [element.geographyName];
+            this.getGeographiesDataById(element.geographyId, (hirerachyIndex + 1));
+            this.removeOtherGeographiesData(hirerachyIndex);
+          }
         } else {
-          this.geoGraphyFullData[hirerachyIndex - 1].geographySelected = [element.geographyId];
-          this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected = [element.geographyName];
-          this.getGeographiesDataById(element.geographyId, (hirerachyIndex + 1));
+          this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.splice(index, 1);
+          this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected.splice(index, 1);
+          this.geoGraphyFullData[hirerachyIndex - 1].geoProperties.splice(index, 1);
           this.removeOtherGeographiesData(hirerachyIndex);
         }
-      } else {
-        this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.splice(index, 1);
-        this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected.splice(index, 1);
-        this.removeOtherGeographiesData(hirerachyIndex);
       }
+
+
+    });
+
+
+    
+    if (hirerachyIndex == 1) {
+      let Country = clickedItem.geographyName;
+      let countryCode = clickedItem.geographyCode;
+      this.CountryName = Country + "(" + countryCode + ")";
+      console.log("CountryNAme", this.CountryName);
+      console.log(clickedItem, hirerachyIndex);
+    }
+    else if (hirerachyIndex == 2) {
+      let stateNamee = clickedItem.geographyName;
+      let stateCode = clickedItem.geographyCode;
+      this.stateName = stateNamee + "(" + stateCode + ")";
+    }
+    else if (hirerachyIndex == 3) {
+      let districtNamee = clickedItem.geographyName;
+      let districtCode = clickedItem.geographyCode;
+      this.districtName = districtNamee + "(" + districtCode + ")";
+    }
+    else if (hirerachyIndex == 4) {
+     
+      // this.geoPropertiesList = this.CreatePropertiesObject({});
+
+
+      // this.cityCode = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographyCode;
+      // this.cityName = [...this.selectedGeographiesCityNames,]
+      // this.selectedGeographiesCityNames+"("+ this.cityCode+")";
+
+      // console.log(this.selectedGeographiesCityNames, "selectedGeographies")
     }
 
-
-  });
-  console.log(this.geoGraphyFullData);
-}
-
-
-removeOtherGeographiesData(hirerachyIndex) {
-  for (var i = hirerachyIndex; i < this.geoGraphyFullData.length; i++) {
-    this.geoGraphyFullData[i].allOtherGeography = [];
-    this.geoGraphyFullData[i].geographySelected = [];
-    this.geoGraphyFullData[i].geographyNamesSelected = [];
-    this.geoGraphyFullData[i].geographyCount = 0;
-    this.geoGraphyFullData[i].showAddIcon = false;
+    console.log(this.geoGraphyFullData);
   }
 
-}
-getGeographiesDataById(id, hirerachyIndex = 0) {
-  this.spinner.show();
-  console.log(id, hirerachyIndex);
-  this.classification.getGeographiesById(id, hirerachyIndex).subscribe(geographiesRes => {
-    console.log(geographiesRes);
-    this.spinner.hide();
-    this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography = geographiesRes.response.allOtherGeography ?? [];
-    this.geoGraphyFullData[hirerachyIndex - 1].geographySelected = [];
-    this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected = [];
-    this.geoGraphyFullData[hirerachyIndex - 1].geographyCount = this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.length;
-    this.geoGraphyFullData[hirerachyIndex - 1].showAddIcon = true;
-
-  }, err => {
-    console.log(err);
-    this.spinner.hide();
-  })
-}
-expandOrderItemsDiv1(){
-  
-  this.orderitem1 = !this.orderitem1;
-  if(this.orderitem1 === false){
-    this.image1 = 'assets/img/maximize-arrow.png';
-  } else {
-    this.image1 = 'assets/img/minimize-tag.png';
-   
+  CreateGeoPropertiesObject(propertyObj){
+    let obj:any = {};
+    obj.MinOrderQty = propertyObj.MinOrderQty ?? "";
+    obj.MarginPercent = propertyObj.MarginPercent ?? "";
+    obj.MRP = propertyObj.MRP ?? "";
+    obj.LeadTime = propertyObj.LeadTime ?? "";
+    obj.GeographyId = propertyObj.GeographyId ?? "";
+    obj.GeographyName = propertyObj.GeographyName ?? "";
+    obj.RegistrationNumber = propertyObj.RegistrationNumber ?? "";
+    return obj;
   }
-  
-}
-expandDistrictItemsDiv2(){
-  this.districtitem1 = !this.districtitem1;
-  if(this.districtitem1 === false){
-    this.image2 = 'assets/img/maximize-arrow.png';
-  } else {
-    this.image2 = 'assets/img/minimize-tag.png';
-   
+
+  saveMaterialList(){
+    let geoProperties = JSON.parse(JSON.stringify(this.geoGraphyFullData[3].geoProperties));
+    geoProperties = geoProperties.map(item => {
+      delete item.GeographyName;
+      return item;
+    })
+    console.log(geoProperties);
+    
   }
-  
-}
-expandCityItemsDiv3(){
-  this.cityitem1 = !this.cityitem1;
-  if(this.cityitem1 === false){
-    this.image3 = 'assets/img/maximize-arrow.png';
-  } else {
-    this.image3 = 'assets/img/minimize-tag.png';
-   
+
+
+  removeOtherGeographiesData(hirerachyIndex) {
+    for (var i = hirerachyIndex; i < this.geoGraphyFullData.length; i++) {
+      this.geoGraphyFullData[i].allOtherGeography = [];
+      this.geoGraphyFullData[i].geographySelected = [];
+      this.geoGraphyFullData[i].geographyNamesSelected = [];
+      this.geoGraphyFullData[i].geoProperties = [];
+      this.geoGraphyFullData[i].geographyCount = 0;
+      this.geoGraphyFullData[i].showAddIcon = false;
+    }
+
   }
-  
-}
-// id ptoduct condition
+  getGeographiesDataById(id, hirerachyIndex = 0) {
+    this.spinner.show();
+    console.log(id, hirerachyIndex);
+    this.classification.getGeographiesById(id, hirerachyIndex).subscribe(geographiesRes => {
+      console.log(geographiesRes);
+      this.spinner.hide();
+      this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography = geographiesRes.response.allOtherGeography ?? [];
+      this.geoGraphyFullData[hirerachyIndex - 1].geographySelected = [];
+      this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected = [];
+      this.geoGraphyFullData[hirerachyIndex - 1].geographyCount = this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.length;
+      this.geoGraphyFullData[hirerachyIndex - 1].geoProperties = [];
+      this.geoGraphyFullData[hirerachyIndex - 1].showAddIcon = true;
 
-goBack(stepper: MatStepper) {
-  stepper.previous();
-}
+    }, err => {
+      console.log(err);
+      this.spinner.hide();
+    })
+  }
+  expandOrderItemsDiv1() {
+
+    this.orderitem1 = !this.orderitem1;
+    if (this.orderitem1 === false) {
+      this.image1 = 'assets/img/maximize-arrow.png';
+    } else {
+      this.image1 = 'assets/img/minimize-tag.png';
+
+    }
+
+  }
+  expandDistrictItemsDiv2() {
+    this.districtitem1 = !this.districtitem1;
+    if (this.districtitem1 === false) {
+      this.image2 = 'assets/img/maximize-arrow.png';
+    } else {
+      this.image2 = 'assets/img/minimize-tag.png';
+
+    }
+
+  }
+  expandCityItemsDiv3() {
+    this.cityitem1 = !this.cityitem1;
+    if (this.cityitem1 === false) {
+      this.image3 = 'assets/img/maximize-arrow.png';
+    } else {
+      this.image3 = 'assets/img/minimize-tag.png';
+
+    }
+
+  }
+  // id ptoduct condition
+
+  goBack(stepper: MatStepper) {
+    stepper.previous();
+  }
 
 
-change(e) {
+  change(e) {
 
 
-  if (!this.checked) {
-    if (confirm("Are you sure")) {
+    if (!this.checked) {
+      if (confirm("Are you sure")) {
+        this.checked = !this.checked;
+        this.goBack(this.stepper)
+        console.log("toggle")
+      }
+      else {
+        e.source.checked = true;
+        console.log("toggle should not change if I click the cancel button")
+      }
+    } else {
       this.checked = !this.checked;
-      this.goBack(this.stepper)
-      console.log("toggle")
+    }
+  }
+
+  // image uploader and converter to base64
+  public onFileChanged(event) {
+    this.selecetdFile = event.target.files[0];
+    if (this.selecetdFile.size <= 1 * 1024 * 1024) {
+      this.handleInputChange(this.selecetdFile);
     }
     else {
-      e.source.checked = true;
-      console.log("toggle should not change if I click the cancel button")
-    }
-  } else {
-    this.checked = !this.checked;
-  }
-}
-
-// image uploader and converter to base64
-public onFileChanged(event) {
-  this.selecetdFile = event.target.files[0];
-  if (this.selecetdFile.size <= 1 * 1024 * 1024) {
-  this.handleInputChange(this.selecetdFile); 
-  }
-  else {
       alert('File size should not be greater than 1MB');
-        }
-}
-handleInputChange(files) {
-  this.imagePreview = files 
-  var reader = new FileReader();
-  reader.onloadend = this.handleReaderLoaded.bind(this);
-  reader.readAsDataURL(this.imagePreview);
-}
-handleReaderLoaded(e) {
-  let reader = e.target;
-  this.base64textString = reader.result.substr(reader.result.indexOf(',') + 1);
-  console.log(this.base64textString,"base64")
+    }
+  }
+  handleInputChange(files) {
+    this.imagePreview = files
+    var reader = new FileReader();
+    reader.onloadend = this.handleReaderLoaded.bind(this);
+    reader.readAsDataURL(this.imagePreview);
+  }
+  handleReaderLoaded(e) {
+    let reader = e.target;
+    this.base64textString = reader.result.substr(reader.result.indexOf(',') + 1);
+    console.log(this.base64textString, "base64")
+  }
+
+
 }
 
 
- }
 
- 
-  
- 

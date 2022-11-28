@@ -275,32 +275,179 @@
                     </mat-card>
                   </div>
                 </div>
-              </div>
-
-
+              </div> 
             </form>
+            <!-- <div class="row"></div> -->
+            <div  style="margin-top: -17%; overflow-y: scroll;" class="row">
+          <table>
+            <tr class="table-header">
+             <th style='width: 168px'>
+                 Geography
+             </th>
+             <th>
+                 MRP(INR)
+             </th>
+             <th>
+                 Min order Qty
+             </th>
+             <th>
+                 Max order Qty
+             </th>
+             <th style="width: 11%;">
+         Margin %
+             </th>
+             <th style="width: 11%;">
+                 Discount %
+                     </th>
+                     <th>
+                         Lead time (Days)
+                             </th>
+                             <th style="width: 16%;">Registration Number</th>
+                             <th style="width: 13%;">Tags</th>
+            </tr>
+            <tr *ngIf="showDiv" class="table-data-row" style="margin-left: 35px;">
+                <td style="width:15%;">
+                 <img  [src]="image1"class="expand-arrow1" alt="add-user-btn" (click)="expandOrderItemsDiv1()">
+                 {{CountryName}}
+                </td>
+                <td>                                         
+                       <input type="text" class="uom-cls" id="fname" name="fname">
+                </td>
+                <td>                                         
+                 <input type="text" class="uom-cls" id="fname" name="fname">
+             </td>
+              
+             <td>                                         
+             <input type="text" class="uom-cls" id="fname" name="fname">
+            </td>
          
-            <div class="row">
-              <div class="col-3">
-
-              </div>
-              <div class="col-6">
-                <div class="row">
-                  <div class="col-1"></div>
-                  <div class="col-6">
-                    <button class="btn btn-primary btn-block submitbtn save-btn"
-                      >Save</button>
-                      <!-- (click)="saveGeographiesList()" -->
-                  </div>
-                  <div class="col-3">
-                  </div>
+            <td style="width: 11%;">                                         
+             <input type="text" class="uom-cls" id="fname" name="fname">
+           </td>
+         
+           <td style="width: 11%;">                                         
+             <input type="text" class="uom-cls" id="fname" name="fname">
+           </td>
+         
+           <td>                                         
+             <input type="text" class="uom-cls" id="fname" name="fname">
+           </td>
+           <td style="width: 16%;">                                         
+            <input style="width: 130px;" type="text" class="uom-cls" id="fname" name="fname">
+          </td>
+          <td style="width: 13%; padding-left: 22px;">                                         
+            <a href="">Add</a>
+          </td>
+         </tr>
+         <tr *ngIf="!orderitem1">
+          <td class="check">
+           <img [src]="image1" class="expand-arrow1" alt="add-user-btn" (click)="expandDistrictItemsDiv2()">
+        
+           {{stateName}}
+       </td>
+          <td>                                         
+                 <input type="text" class="uom-cls" id="fname" name="fname">
+          </td>
+          <td>                                         
+           <input type="text" class="uom-cls" id="fname" name="fname">
+      </td>
+      <td>                                         
+       <input type="text" class="uom-cls" id="fname" name="fname">
+      </td>
+      <td>                                         
+       <input type="text" class="uom-cls" id="fname" name="fname">
+      </td>
+      <td>                                         
+       <input type="text" class="uom-cls" id="fname" name="fname">
+      </td>
+      <td>                                         
+       <input type="text" class="uom-cls" id="fname" name="fname">
+      </td>
+      <td style="width: 16%;">                                         
+        <input style="width: 130px;" type="text" class="uom-cls" id="fname" name="fname">
+      </td>
+      <td style="width: 13%;padding-left: 22px;">                                         
+        <a href="">Add</a>
+      </td>
+      </tr>
+      <tr *ngIf="!districtitem1">
+        <td class="check">
+         <img [src]="image1" class="expand-arrow1" alt="add-user-btn" (click)="expandCityItemsDiv3()">
+      
+         {{districtName}}
+     </td>
+        <td>                                         
+               <input type="text" class="uom-cls" id="fname" name="fname">
+        </td>
+        <td>                                         
+         <input type="text" class="uom-cls" id="fname" name="fname">
+    </td>
+    <td>                                         
+     <input type="text" class="uom-cls" id="fname" name="fname">
+    </td>
+    <td>                                         
+     <input type="text" class="uom-cls" id="fname" name="fname">
+    </td>
+    <td>                                         
+     <input type="text" class="uom-cls" id="fname" name="fname">
+    </td>
+    <td>                                         
+     <input type="text" class="uom-cls" id="fname" name="fname">
+    </td>
+    <td style="width: 16%;">                                         
+      <input style="width: 130px;" type="text" class="uom-cls" id="fname" name="fname">
+    </td>
+    <td style="width: 13%;padding-left: 22px;">                                         
+      <a href="">Add</a>
+    </td>
+    </tr>
+    <tr *ngIf="!cityitem1">
+      <td class="check2">
+       <img [src]="image1" class="expand-arrow1" alt="add-user-btn">
+    
+       {{cityName}}
+   </td>
+      <td>                                         
+             <input type="text" class="uom-cls" id="fname" name="fname">
+      </td>
+      <td>                                         
+       <input type="text" class="uom-cls" id="fname" name="fname">
+  </td>
+  <td>                                         
+   <input type="text" class="uom-cls" id="fname" name="fname">
+  </td>
+  <td>                                         
+   <input type="text" class="uom-cls" id="fname" name="fname">
+  </td>
+  <td>                                         
+   <input type="text" class="uom-cls" id="fname" name="fname">
+  </td>
+  <td>                                         
+   <input type="text" class="uom-cls" id="fname" name="fname">
+  </td>
+  <td style="width: 16%;">                                         
+    <input style="width: 130px;" type="text" class="uom-cls" id="fname" name="fname">
+  </td>
+  <td style="width: 13%;padding-left: 22px;">                                         
+    <a href="">Add</a>
+  </td>
+  </tr>
+         </table>
+            </div>
+            <div class="col-6">
+              <div class="row">
+                <div class="col-1"></div>
+                <div class="col-6">
+                  <button class="btn btn-primary btn-block submitbtn save-btn"
+                    >Save</button>
+                </div>
+                <div class="col-3">
                 </div>
               </div>
-              <div class="col-3">
-
-              </div>
             </div>
-         
+            <div class="col-3">
+
+            </div>
           </mat-step>
 
 

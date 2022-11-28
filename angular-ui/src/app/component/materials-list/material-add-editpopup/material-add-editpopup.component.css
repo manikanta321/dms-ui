@@ -564,7 +564,7 @@ li {
   background-color: #000000;
   width: 20rem;
   position: relative;
-  left: 22%;
+  left: 125%;
 }
 
 #abc::placeholder {
@@ -973,7 +973,10 @@ font-size: 12.5px;
     justify-content: space-between;
     cursor: pointer;
   }
-  
+  .cdk-overlay-pane{
+    max-width: 75vw !important;
+    position: static;
+  }
   .geography-item.deactivated {
     color: #a6a7ad !important;
     opacity: .6;
@@ -998,7 +1001,13 @@ font-size: 12.5px;
     overflow-x: auto;
 
   }
-  
+  .vertical-scroll {
+    display: flex;
+    gap: 10px;
+    height: 450px;
+    overflow-y: auto;
+
+  }
   .horizontal-scroll__item {
     flex: 0 0 249px;
     scroll-snap-align: start;
@@ -1115,4 +1124,29 @@ font-size: 12.5px;
 .scroll {
   overflow-y: auto;
   overflow-x: auto;
+}
+.expand-arrow1 {
+  width: 8%;
+  height: 9px;
+  right: 26px;
+  top: 4px;
+}
+.uom-cls {
+  border: 0.5px solid #000000;
+  border-radius: 7px;
+  width: 70px
+}
+.table-header th{
+width: 10%;
+padding-left: 17px;
+}
+.table-data-row {
+  width: 10%;
+  padding-left: 17px;
+}
+.check{
+  text-align: -webkit-center;
+}
+.check2{
+  text-align: end;
 }

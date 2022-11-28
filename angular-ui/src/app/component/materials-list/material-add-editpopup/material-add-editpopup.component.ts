@@ -105,6 +105,9 @@ import { ClassificationserviseService } from 'src/app/services/classificationser
   productId:any;
   subProductId:any;
   uomID:any;
+  stateName:any;
+  districtName:any;
+  cityName:any=[];
   materialName:string ='';
   description:string ='';
   desc:any;
@@ -118,12 +121,17 @@ import { ClassificationserviseService } from 'src/app/services/classificationser
   AddSP:any;
   prodId:any;
   editData:boolean = false;
+  orderitem1= true
+  districtitem1:boolean =true;
+  cityitem1:boolean = true;
   dropdownSettings: IDropdownSettings = {};
   selectfld: any = ['mrp','aty'];
   image1 = 'assets/img/minimize-tag.png';
   countrySelected = true;
   RegionExpanded = true;
   CityExpanded = true;
+  CountryName:any;
+  showDiv:boolean =false
 // geograhies related variables
   gepGraphiesFormGroup!: FormGroup;
 
@@ -511,8 +519,32 @@ getGeographyHierarchy() {
 
 
 selectGeoGraphy(clickedItem, hirerachyIndex,) {
-
+  this.showDiv=true;
+  // alert(hirerachyIndex)
+  
+  if(hirerachyIndex==1){
+  let Country = clickedItem.geographyName;
+  let countryCode = clickedItem.geographyCode;
+this.CountryName = Country+"("+ countryCode+")";
+console.log("CountryNAme",this.CountryName);
   console.log(clickedItem, hirerachyIndex);
+  }
+  else if(hirerachyIndex==2){
+let stateNamee = clickedItem.geographyName;
+let stateCode = clickedItem.geographyCode;
+this.stateName = stateNamee+"("+ stateCode+")";
+  }
+  else if(hirerachyIndex==3){
+    let districtNamee = clickedItem.geographyName;
+    let districtCode = clickedItem.geographyCode;
+    this.districtName = districtNamee+"("+ districtCode+")";
+  }
+  else if(hirerachyIndex==4){
+    let cityNamee:[] = clickedItem.geographyName;
+    let cityCode:[] = clickedItem.geographyCode;
+    this.cityName = cityNamee+"("+ cityCode+")";
+    // this.cityName.push(clickedItem.geographyName);
+  }
 
 
   // if (this.geographyHierarchyId == hirerachyIndex) {
@@ -587,7 +619,36 @@ getGeographiesDataById(id, hirerachyIndex = 0) {
     this.spinner.hide();
   })
 }
-
+expandOrderItemsDiv1(){
+  this.orderitem1 = !this.orderitem1;
+  if(this.orderitem1 === false){
+    this.image1 = 'assets/img/maximize-arrow.png';
+  } else {
+    this.image1 = 'assets/img/minimize-tag.png';
+   
+  }
+  
+}
+expandDistrictItemsDiv2(){
+  this.districtitem1 = !this.districtitem1;
+  if(this.districtitem1 === false){
+    this.image1 = 'assets/img/maximize-arrow.png';
+  } else {
+    this.image1 = 'assets/img/minimize-tag.png';
+   
+  }
+  
+}
+expandCityItemsDiv3(){
+  this.cityitem1 = !this.cityitem1;
+  if(this.cityitem1 === false){
+    this.image1 = 'assets/img/maximize-arrow.png';
+  } else {
+    this.image1 = 'assets/img/minimize-tag.png';
+   
+  }
+  
+}
  }
 
  

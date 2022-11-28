@@ -9,6 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
 import { HostListener } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { SharedServicesDealerService } from '../services/shared-services-dealer.service';
 
 //import { ToastrService } from 'ngx-toastr';
 
@@ -102,6 +103,8 @@ export class AddDealerPopupComponent implements OnInit {
     private user: UserService,
     private classification: ClassificationserviseService,
     private calssification: ClassificationserviseService,
+    private sharedService: SharedServicesDealerService,
+
     //private toastrService: ToastrService,
     private dialogRef: MatDialogRef<any>) {
     this.formReader();
@@ -460,6 +463,7 @@ export class AddDealerPopupComponent implements OnInit {
 
       if(res.response.result=="Succesfully added"){
         this.dialogRef.close();
+        this.sharedService.filter('Register click')
 
       }
       console.log(res);

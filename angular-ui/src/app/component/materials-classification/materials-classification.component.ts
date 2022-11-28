@@ -362,10 +362,11 @@ setTimeout(()=>{                           // <<<---using ()=> syntax
         this.subcatcount=res.totalRecords;
 
 
-        if(data.firstSubCat==null){
+        if(res.response.firstSubCat == null){
           this.typename=[];
           this.typecount='0';
           this.subcatRoouting='No Sub-Category';
+          debugger
 
         }
         else{
@@ -594,11 +595,13 @@ let data=res.response;
 this.subcatcount=res.totalRecords;
 this.typecount=data.firstSubCat?.typeCount;
 this.subname=data.allOtherSubCAts;
-if(data.firstSubCat.isActive==true){
+if(data.firstSubCat?.isActive==true){
   this.selectedsubItem=data.allOtherSubCAts[0]
+}else{
+
 }
 
-if(data.firstSubCat==null){
+if(data.firstSubCat == null){
   this.typename=[]
   this.subcatRoouting='No Sub-Category'
 }

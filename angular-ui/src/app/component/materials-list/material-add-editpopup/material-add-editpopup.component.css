@@ -997,7 +997,6 @@ font-size: 12.5px;
   .horizontal-scroll {
     display: flex;
     gap: 10px;
-    height: 450px;
     overflow-x: auto;
 
   }
@@ -1138,6 +1137,10 @@ font-size: 12.5px;
 }
 .table-data-row{
   margin-left: 30px;
+  padding-bottom: 2px;
+}
+.table-padding{
+  padding-bottom: 4px;
 }
 .table-header th{
   width: 13%;
@@ -1152,4 +1155,7 @@ font-size: 12.5px;
 }
 .check2{
   text-align: end;
+}
+.propertiesSection{
+  overflow-y:auto;padding-top: 10px;height: 240px;
 }

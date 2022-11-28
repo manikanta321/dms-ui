@@ -6,12 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-identifier.component.css']
 })
 export class AddIdentifierComponent implements OnInit {
-  isSelected = false;
+  isSelected : any;
   constructor() { }
 
   ngOnInit(): void {
   }
-  onSelect(): void {
-   this.isSelected = true
+  onSelect(item): void {
+    // if(item){
+    //   this.isSelected = true
+    // }
+    // else{
+    //   this. unselect = true
+    // }
+   
     }
+    
 }

@@ -7,6 +7,7 @@ import { AddMaterialsService } from 'src/app/services/add-materials.service';
 })
 export class SelectProductComponent implements OnInit {
   materialIdentifier:any=[];
+  isSelected : boolean = false;
   constructor(private addMaterials: AddMaterialsService) { }
   matData:any=[];
   ngOnInit(): void {
@@ -24,5 +25,14 @@ export class SelectProductComponent implements OnInit {
 this.matData.push(item)
 localStorage.setItem('session',JSON.stringify(this.matData));
 // alert(this.matData)
+this.isSelected = !this.isSelected
+// if(item){
+//   this.isSelected = this.materialIdentifier
+//   this.isSelected= true;
+// }
+// else{
+//   this.isSelected = this.materialIdentifier
+//   this.isSelected= false;
+// }
   }
 }

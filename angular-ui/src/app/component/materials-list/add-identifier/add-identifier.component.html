@@ -11,16 +11,16 @@
                 <div class="head-t">
           <h3 class="addU font">Business<span>*</span></h3>
         </div>
-        <mat-chip-list (click)="onSelect()" [ngClass]="{select: isSelected}">
-            <mat-chip (click)="onSelect()" [ngClass]="{select: isSelected}" class="peri">Perishable</mat-chip>
-            <mat-chip class="frag">Fragile</mat-chip>
+        <mat-chip-list >
+            <mat-chip (click)="isSelected = !isSelected" [ngClass]="{'select': isSelected}" class="peri">Perishable</mat-chip>
+            <mat-chip (click)="isSelected = !isSelected" [ngClass]="{'select': isSelected}" class="frag">Fragile</mat-chip>
             <mat-chip class="fire">Fire hazard</mat-chip>
             </mat-chip-list>
             <mat-chip-list>
             <mat-chip class="cold">Cold Storage</mat-chip>
             <mat-chip class="dangerous">Dangerous goods</mat-chip>
         </mat-chip-list> 
-        <mat-chip-list>
+        <mat-chip-list >
             <mat-chip>Handle with care</mat-chip>
             <mat-chip >Delicate</mat-chip>
         </mat-chip-list>

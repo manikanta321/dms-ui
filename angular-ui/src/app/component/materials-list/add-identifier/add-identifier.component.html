@@ -3,100 +3,88 @@
 
 <div class="font ">
     <div class=" main" width="400%">
-    <div class="container" >
-          <div class="addUserrr">
+        <div class="container">
+            <div class="addUserrr">
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
-              <div class="row">
-                <div class="col">
-                <div class="head-t">
-          <h3 class="addU font">Business<span>*</span></h3>
-        </div>
-        <mat-chip-list >
-            <mat-chip (click)="isSelected = !isSelected" [ngClass]="{'select': isSelected}" class="peri">Perishable</mat-chip>
-            <mat-chip (click)="isSelected = !isSelected" [ngClass]="{'select': isSelected}" class="frag">Fragile</mat-chip>
-            <mat-chip class="fire">Fire hazard</mat-chip>
-            </mat-chip-list>
-            <mat-chip-list>
-            <mat-chip class="cold">Cold Storage</mat-chip>
-            <mat-chip class="dangerous">Dangerous goods</mat-chip>
-        </mat-chip-list> 
-        <mat-chip-list >
-            <mat-chip>Handle with care</mat-chip>
-            <mat-chip >Delicate</mat-chip>
-        </mat-chip-list>
-        <mat-chip-list>
-            <mat-chip>Keep dry</mat-chip>
-            <mat-chip >Hold still</mat-chip>
-            <mat-chip >Heavy goods</mat-chip>
-        </mat-chip-list>
-        <mat-chip-list>
-            <mat-chip>Don't drop</mat-chip>
-            <mat-chip >Don't trample</mat-chip>
-        </mat-chip-list>
-    </div>
-</div>
-    <div class="row">
-    <div class="col">
-        <div class="head-t">
-            <h3 class="addP font">Product<span>*</span></h3>
-          </div>
-          <div class="productidenti">
-          <mat-chip-list>
-              <mat-chip class="peri">Perishable</mat-chip>
-              <mat-chip class="frag">Fragile</mat-chip>
-              <mat-chip class="fire">Fire hazard</mat-chip>
-              </mat-chip-list>
-              <mat-chip-list>
-              <mat-chip class="cold">Cold Storage</mat-chip>
-              <mat-chip class="dangerous">Dangerous goods</mat-chip>
-          </mat-chip-list> 
-          <mat-chip-list>
-              <mat-chip>Handle with care</mat-chip>
-              <mat-chip >Delicate</mat-chip>
-          </mat-chip-list>
-          <mat-chip-list>
-              <mat-chip>Keep dry</mat-chip>
-              <mat-chip >Hold still</mat-chip>
-              <mat-chip >Heavy goods</mat-chip>
-          </mat-chip-list>
-          <mat-chip-list>
-              <mat-chip>Don't drop</mat-chip>
-              <mat-chip >Don't trample</mat-chip>
-          </mat-chip-list>
-        </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="head-t">
-                    <h3 class="addPS font">Product Setting<span>*</span></h3>
-                  </div>
-                  <div class="productsetting">
-                  <mat-chip-list>
-                      <mat-chip class="peri">Perishable</mat-chip>
-                      <mat-chip class="frag">Fragile</mat-chip>
-                      <mat-chip class="fire">Fire hazard</mat-chip>
-                      </mat-chip-list>
-                      <mat-chip-list>
-                      <mat-chip class="cold">Cold Storage</mat-chip>
-                      <mat-chip class="dangerous">Dangerous goods</mat-chip>
-                  </mat-chip-list> 
-                  <mat-chip-list>
-                      <mat-chip>Handle with care</mat-chip>
-                      <mat-chip >Delicate</mat-chip>
-                  </mat-chip-list>
-                  <mat-chip-list>
-                      <mat-chip>Keep dry</mat-chip>
-                      <mat-chip >Hold still</mat-chip>
-                      <mat-chip >Heavy goods</mat-chip>
-                  </mat-chip-list>
-                  <mat-chip-list>
-                      <mat-chip>Don't drop</mat-chip>
-                      <mat-chip >Don't trample</mat-chip>
-                  </mat-chip-list>
+                <div class="row">
+                    <div class="col">
+                        <div class="head-t">
+                            <h3 class="addU font">Business<span>*</span></h3>
+                        </div>
+                        <mat-chip-list>
+                            <mat-chip (click)="isSelected = !isSelected" [ngClass]="{'select': isSelected}"
+                                class="peri">{{productBusinessName}}</mat-chip>
+                        </mat-chip-list>
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="head-t">
+                            <h3 class="addP font">Product<span>*</span></h3>
+                        </div>
+                        <div class="productidenti">
+                            <!-- <mat-chip-list>
+                                <mat-chip class="peri">{{productIndentifier}}</mat-chip>
+                            </mat-chip-list> -->
+                            <mat-chip-list>
+                                <mat-chip class="peri">{{productIndentifier}}</mat-chip>
+                                <mat-chip class="frag">Fragile</mat-chip>
+                                <mat-chip class="fire">Fire hazard</mat-chip>
+                                </mat-chip-list>
+                                <!-- <mat-chip-list>
+                                <mat-chip class="cold">Cold Storage</mat-chip>
+                                <mat-chip class="dangerous">Dangerous goods</mat-chip>
+                            </mat-chip-list>  -->
+                            <!-- <mat-chip-list>
+                                <mat-chip>Handle with care</mat-chip>
+                                <mat-chip >Delicate</mat-chip>
+                            </mat-chip-list>
+                            <mat-chip-list>
+                                <mat-chip>Keep dry</mat-chip>
+                                <mat-chip >Hold still</mat-chip>
+                                <mat-chip >Heavy goods</mat-chip>
+                            </mat-chip-list>
+                            <mat-chip-list>
+                                <mat-chip>Don't drop</mat-chip>
+                                <mat-chip >Don't trample</mat-chip>
+                            </mat-chip-list> -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="head-t">
+                                <h3 class="addPS font">Product Setting<span>*</span></h3>
+                            </div>
+                            <div class="productsetting">
+                                <mat-chip-list>
+                                    <mat-chip class="peri">{{productSettingIdentifier}}</mat-chip>
+                                </mat-chip-list>
+                                <!-- <mat-chip-list>
+                                    <mat-chip class="peri">Perishable</mat-chip>
+                                    <mat-chip class="frag">Fragile</mat-chip>
+                                    <mat-chip class="fire">Fire hazard</mat-chip>
+                                    </mat-chip-list>
+                                    <mat-chip-list>
+                                    <mat-chip class="cold">Cold Storage</mat-chip>
+                                    <mat-chip class="dangerous">Dangerous goods</mat-chip>
+                                </mat-chip-list> 
+                                <mat-chip-list>
+                                    <mat-chip>Handle with care</mat-chip>
+                                    <mat-chip >Delicate</mat-chip>
+                                </mat-chip-list>
+                                <mat-chip-list>
+                                    <mat-chip>Keep dry</mat-chip>
+                                    <mat-chip >Hold still</mat-chip>
+                                    <mat-chip >Heavy goods</mat-chip>
+                                </mat-chip-list>
+                                <mat-chip-list>
+                                    <mat-chip>Don't drop</mat-chip>
+                                    <mat-chip >Don't trample</mat-chip>
+                                </mat-chip-list> -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
     </div>
-      </div>
-    </div>
-  </div>
-</div>

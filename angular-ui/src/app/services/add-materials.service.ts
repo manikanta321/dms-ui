@@ -82,6 +82,9 @@ onclicksubcat(catId:any){
 getMaterialIdentifier(){
   return this.http.get<any>(this.addmaterialsurl + 'MaterialApi/GetMAterialIdentifier');
 }
+getProductCustomIdentifier(){
+  return this.http.get<any>(this.addmaterialsurl + 'MaterialApi/GetProductCustomIdentifier');
+}
 public getuomDeatils(data) : Observable<any>{
   let options = {
     headers: new HttpHeaders().set('Content-Type', 'application/json')

@@ -31,11 +31,12 @@
 .head-t h3 {
     color: #000000;
     text-align: center;
-    margin-top: -18px;
+    margin-top: -47px;
     margin-bottom: 2px;
     text-decoration: underline;
     font-size: 18px;
     font-weight: bold;
+    margin-left: 143px;
 }
 
 .addU {
@@ -54,7 +55,7 @@
     position:relative;
     left: -119px;
     font-size: 12px;
-    top: -188px;
+    /* top: -188px; */
 }
 .addPS{
     position: relative;
@@ -154,7 +155,7 @@ mat-form-field {
     color: black;
 }
 .productidenti{
-    margin-top: -190px;
+    margin-top: 13px;
     margin-left: 327px;
 }
 .productsetting{

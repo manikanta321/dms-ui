@@ -6,7 +6,7 @@
 .horizontal-scroll {
   display: flex;
   gap: 10px;
-  height: 450px;
+  /* height: 450px; */
   overflow-x: auto;
   /* -ms-scroll-snap-type: x mandatory;
       scroll-snap-type: x mandatory;
@@ -758,10 +758,13 @@ border-radius: 10px;
   ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
     width: 767px;
     margin-top: -51px;
+    
   }
   
+
+
   .mat-horizontal-stepper-wrapper {
-    margin-top: -47px;
+    margin-top: -47px; 
   
   }
   
@@ -1253,12 +1256,19 @@ border-radius: 10px;
   }
   
   ::ng-deep.mat-step-text-label {
-    text-overflow: ellipsis;
-    overflow: hidden;
+    /* text-overflow: ellipsis;
+    overflow: hidden; */
     font-size: 12px;
     font-family: 'Gilroy';
+    bottom: 68px;
+    position: absolute;
+    left: 3px;
   }
   
+  ::ng-deep.mat-step-label{
+    min-width: 73px;
+  }
+
   ::ng-deep.datepicker .mat-form-field-appearance-fill .mat-form-field-flex {
     /* padding: .75em .75em 0 .75em; */
     border-radius: 14px;
@@ -1517,7 +1527,7 @@ border-radius: 10px;
   }
 
   .add-dealer-scroll {
-    height:470px;
+    /* height:470px; */
     overflow-x: hidden;
   }
 
@@ -1558,13 +1568,13 @@ border-radius: 10px;
   .remove-address{
     position:relative;
     top:25px;
-
+    /* color: red; */
     cursor: pointer;
   }
   .remove-addresss{
     position:relative;
     top:25px;
-    color: grey;
+    color: red;
     cursor: pointer;
   }
   .addMore-icon {
@@ -1588,6 +1598,10 @@ border-radius: 10px;
     box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
     border-radius: 10px;
     color: grey;
+  }
+
+  .font{
+    font-family: 'Gilroy';
   }
 
   .Geo-headerlabel {
@@ -1628,3 +1642,5 @@ border-radius: 10px;
   .backenendcolor{
     background-color: #000;
   }
+
+ 

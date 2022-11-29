@@ -1,0 +1,11 @@
+.deactiveSuccessPop {
+    background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+    border: 0.5px solid #000000;
+    border-radius: 10px !important;
+    border-left: 10px solid green !important;
+    padding: 10px 20px;
+}
+.left{
+    width: 15px;
+    background: green;
+    }

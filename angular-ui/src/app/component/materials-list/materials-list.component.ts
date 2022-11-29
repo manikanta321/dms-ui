@@ -925,6 +925,7 @@ else
     this.dialog.open(MaterialAddEditpopupComponent, {
       // width: '100vw',
       maxWidth: '70vw',
+      panelClass: 'material-add-edit'
   });
 
   }

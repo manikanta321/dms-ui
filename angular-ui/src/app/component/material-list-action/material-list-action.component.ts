@@ -70,7 +70,11 @@ export class MaterialListActionComponent implements OnInit {
   }
   edit(){
     localStorage.setItem("Edit",'Edit')
-    let dialogRef =this.dialog.open(MaterialAddEditpopupComponent);
+    let dialogRef =this.dialog.open(MaterialAddEditpopupComponent, {
+      // width: '100vw',
+      maxWidth: '70vw',
+      panelClass: 'material-add-edit'
+  });
     this.isOpen = false;
     dialogRef.afterClosed().subscribe((res) => {
 

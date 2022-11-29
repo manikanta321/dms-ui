@@ -47,6 +47,9 @@ getProductSubGroup(subProdId:any){
 addProductItem(ProdItem){
   return this.http.post<any>(`${this.addmaterialsurl}MaterialApi/AddProductGroup`,ProdItem);
 }
+defaultGeoIdProduct(data2){
+  return this.http.post<any>(this.addmaterialsurl +'CommonApi/GetHeirarchyOfDefaultGeography',data2);
+}
 addSubProductItem(ProdItem){
   return this.http.post<any>(`${this.addmaterialsurl}MaterialApi/AddSubProductGroup`,ProdItem);
 }
@@ -72,8 +75,8 @@ onDeactivate(listId:any){
   return this.http.get<any>(`${this.addmaterialsurl}MaterialApi/MaterialDeactivate?StockItemId=${listId}`);
 
 }
-onAddMaterials(){
-  return this.http.get<any>(this.addmaterialsurl + 'MaterialApi/AddMaterial');
+addMaterialProduct(data){
+  return this.http.post<any>(this.addmaterialsurl + 'MaterialApi/AddMaterial',data);
 }
 onclicksubcat(catId:any){
   return this.http.get<any>(`${this.addmaterialsurl}MaterialApi/GetTypes?subCatId=${catId}`);

@@ -303,6 +303,10 @@ this.countryData();
   // }
 
   addMaterialProduct() {
+    let selectedGeographies = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographySelected;
+    let data2={
+      DefalultgeoId:selectedGeographies,
+    }
     this.saveMaterialList();
     let data = {
       DoneById: this.UserId,
@@ -314,18 +318,27 @@ this.countryData();
       Imageurl: this.base64textString,
       Materialcustomidentifier: this.selectedItems5,
       ExpiryPeriod: this.expiryDate,
-      IsProduct: +this.checked,
+      ProductCustomIdentifierId:this.selectedProductId,
+      IsProduct: +!this.checked,
       BrandName: this.BrandName,
       GlobalCode: this.gloabKey,
       ProductSKUName: this.Sku,
       ShortCode: this.shortCode,
       ManualShortOrder: this.Sort,
       ProductLink: this.AddSP,
-      ProductSubGroupId: this.selectedItems7,
+      ProductSubGroupId: this.subProductId,
       ProductGeography:this.geoProperties
 
     }
-    console.log(data)
+    
+    // console.log(data)
+    this.addMaterials.addMaterialProduct(data).subscribe((res)=>{
+      console.log(res,"addmaterialProduct")
+    })
+
+    this.addMaterials.defaultGeoIdProduct(data2).subscribe((res)=>{
+      console.log(res,"defaultGeoID")
+    })
   }
   addMaterialIfNotProduct() {
     let data = {
@@ -338,7 +351,7 @@ this.countryData();
       Imageurl: this.base64textString,
       Materialcustomidentifier: this.selectedItems5,
       ExpiryPeriod: this.expiryDate,
-      IsProduct: +!this.checked,
+      IsProduct: +this.checked,
     }
     console.log(data)
   }
@@ -635,6 +648,7 @@ this.countryData();
       return item;
     })
     console.log(this.geoProperties);
+
     
   }
 

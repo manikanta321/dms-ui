@@ -25,7 +25,7 @@ export class SelectProductComponent implements OnInit {
 this.matData.push(item)
 localStorage.setItem('session',JSON.stringify(this.matData));
 // alert(this.matData)
-this.isSelected = !this.isSelected
+// this.isSelected = !this.isSelected
 // if(item){
 //   this.isSelected = this.materialIdentifier
 //   this.isSelected= true;

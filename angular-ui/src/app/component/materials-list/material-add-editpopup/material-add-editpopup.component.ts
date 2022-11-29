@@ -28,9 +28,10 @@ export class MaterialAddEditpopupComponent {
   Imgpreview: boolean = false;
   dropdownSettings2: IDropdownSettings = {};
   dropdownSettings3: IDropdownSettings = {};
-  toppingList2: any = [];
-  toppingList3: any = [];
-  actineLabel: any; // countryname: string[] = ['Malaysia (71/126)', 'India (178/178)','Philipines (0/135)'];
+  dropdownSettings4: IDropdownSettings = {};
+  toppingList2:  any= []; 
+  toppingList3:  any= [];
+  actineLabel:any ; // countryname: string[] = ['Malaysia (71/126)', 'India (178/178)','Philipines (0/135)'];
   // statename: string[] = ['Johor(0/42)', 'Kedah(36/36','Perak(14/26)','Penang(21/22)'];
   regionname: string[] = ['North(4/4)', 'South(8/8)', 'East(6/6)', 'West(3/4)'];
   cityname: string[] = ['George town', 'Balik Pulau', 'Batu Refringi', 'Teluk Bahang'];
@@ -59,44 +60,45 @@ export class MaterialAddEditpopupComponent {
   selectedItems5: any;
   selectedItems6: any;
   selectedItems7: any;
-  sub_category: any;
-  typeI: any;
-  rowData5: any = [];
-  subProduct: any = [];
-  countryList: any = [];
-  countStates: any;
-  stateList: any = [];
-  countDist: any;
-  distList: any = [];
-  countCity: any;
-  cityList: any = [];
-  session: any;
-  getEditId: any;
-  catId: any;
-  subCatId: any;
-  typeId: any;
-  productId: any;
-  subProductId: any;
-  uomID: any;
-  stateName: any;
-  districtName: any;
-
-  materialName: string = '';
-  description: string = '';
-  desc: any;
-  nameM: any;
-  expiryDate: string = '';
-  BrandName: string = '';
-  gloabKey: any;
-  Sku: any;
-  shortCode: any;
-  Sort: any;
-  AddSP: any;
-  prodId: any;
-  editData: boolean = false;
-  orderitem1 = true
-  districtitem1: boolean = true;
-  cityitem1: boolean = true;
+  sub_category:any;
+  typeI:any;
+  rowData5:any=[];
+  selectId : any =[];
+  subProduct:any = [];
+  countryList:any =[];
+  countStates:any;
+  stateList:any =[];
+  countDist:any;
+  distList:any =[];
+  countCity:any;
+  cityList:any =[];
+  session:any;
+  getEditId:any;
+  catId:any;
+  subCatId:any;
+  typeId:any;
+  productId:any;
+  subProductId:any;
+  uomID:any;
+  stateName:any;
+  districtName:any;
+  
+  materialName:string ='';
+  description:string ='';
+  desc:any;
+  nameM:any;
+  expiryDate:string ='';
+  BrandName:string = '';
+  gloabKey:any;
+  Sku:any;
+  shortCode:any;
+  Sort:any;
+  AddSP:any;
+  prodId:any;
+  editData:boolean = false;
+  orderitem1= true
+  districtitem1:boolean =true;
+  cityitem1:boolean = true;
   dropdownSettings: IDropdownSettings = {};
   selectfld: any = ['mrp', 'aty'];
   image1 = 'assets/img/minimize-tag.png';
@@ -122,6 +124,7 @@ export class MaterialAddEditpopupComponent {
   geographyHierarchyId: any;
   aarrayToPush: any[] = [];
   css: any[] = [];
+  ProductId : any =[]
   checked: boolean = false
   colorsList = [
     { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
@@ -162,16 +165,35 @@ export class MaterialAddEditpopupComponent {
 
 
   }
-
-
   firstFormGroup: FormGroup = this.fb.group({ firstCtrl: [''] });
+
   secondFormGroup: FormGroup = this.fb.group({ secondCtrl: [''] });
+
   thirdformGroup: FormGroup = this.fb.group({ thirdCtrl: [''] });
 
-  ngOnInit(): void {
-    const user = localStorage.getItem("logInId");
-    this.UserId = user
+   ngOnInit():void {
+// this.selectProduct();
+const user = localStorage.getItem("logInId");
 
+this.UserId = user
+this.dropdownSettings4 = {
+  singleSelection: false,
+  idField: 'materilCustomIdentifierId',
+  textField: 'materialCustomName',
+  selectAllText: 'Select All',
+  unSelectAllText: 'UnSelect All',
+  itemsShowLimit: 2,
+  allowSearchFilter: this.ShowFilter
+};
+this.dropdownSettings3 = {
+  singleSelection: false,
+  idField: 'productCustomIdentifierId',
+  textField: 'productCustomName',
+  selectAllText: 'Select All',
+  unSelectAllText: 'UnSelect All',
+  itemsShowLimit: 2,
+  allowSearchFilter: this.ShowFilter
+};
     this.getGeographyHierarchy();
 
     this.getProductList();
@@ -182,13 +204,13 @@ export class MaterialAddEditpopupComponent {
     this.selectedItems5 = [];
     this.selectedItems6 = [];
     this.selectedItems7 = [];
-    this.editList()
-    this.getclassification();
-    this.getAllUom();
-    this.getMaterialIdentifier();
-    this.countryData();
-  }
-  onKey(event) {
+     this.editList()
+this.getclassification();
+this.getAllUom();
+// this.getMaterialIdentifier();
+this.countryData();
+   }
+   onKey(event) {
     let inputName = event.target.value;
     this.materialName = inputName;
     console.log("inputName", this.materialName)
@@ -267,12 +289,12 @@ export class MaterialAddEditpopupComponent {
       console.log("prodG", prodG)
     })
   }
-  getMaterialIdentifier() {
-    this.MaterialIdentifier = localStorage.getItem('session');
-    console.log("Daatatatatatat5", this.MaterialIdentifier)
-    this.selectedItems5 = JSON.parse(this.MaterialIdentifier);
-    console.log("Selected Item 5", this.selectedItems5)
-  }
+  // getMaterialIdentifier() {
+  //   this.MaterialIdentifier = localStorage.getItem('session');
+  //   console.log("Daatatatatatat5", this.MaterialIdentifier)
+  //   this.selectedItems5 = JSON.parse(this.MaterialIdentifier);
+  //   console.log("Selected Item 5", this.selectedItems5)
+  // }
 
   addMaterialProduct() {
     this.saveMaterialList();
@@ -457,9 +479,19 @@ export class MaterialAddEditpopupComponent {
   onClick(item) {
     this.selectedItem = item;
   }
-  selectProduct() {
-    this.dialog.open(SelectProductComponent);
-    this.getMaterialIdentifier();
+  selectProduct(){
+    // this.dialog.open(SelectProductComponent);
+    // this.getMaterialIdentifier();
+    // getMaterialIdentifier(){
+     
+      this.addMaterials.getMaterialIdentifier().subscribe((res) => {
+        this.selectId = res.response;
+      //  this.materialIdentifier =data;
+      // this.selectId =  this.materialIdentifier;
+       console.log("select Product", this.selectId);
+      })
+    // }
+
   }
   addproduct() {
     this.dialog.open(AddProductGroupComponent);
@@ -469,8 +501,13 @@ export class MaterialAddEditpopupComponent {
     this.dialog.open(AddProductSubGroupComponent);
 
   }
-  customIdentifier() {
-    this.dialog.open(AddIdentifierComponent);
+  customIdentifier(){
+    // this.dialog.open(AddIdentifierComponent);
+    this.addMaterials.getProductCustomIdentifier().subscribe((res: any) => {
+
+      this.ProductId = res.response;
+  
+    });
   }
 
 

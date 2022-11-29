@@ -8,8 +8,8 @@
         <div class="head-t">
           <h3 class="addU font">Select Identifier<span>*</span></h3>
         </div>
-        <mat-chip-list *ngFor="let List of materialIdentifier;  let i = index"  [selectable]="true">
-            <mat-chip  (click)="matIdentifier(List)" [ngClass]="{'select': isSelected}" class=" peri">{{List.materialCustomName}}</mat-chip>
+        <mat-chip-list *ngFor="let item of materialIdentifier;  let i = index"  [selectable]="true">
+            <mat-chip  (click)="matIdentifier(item.materialCustomName)" class=" peri">{{item.materialCustomName}}</mat-chip>
             </mat-chip-list>
             <!-- <mat-chip-list>
             <mat-chip class="cold">Cold Storage</mat-chip>

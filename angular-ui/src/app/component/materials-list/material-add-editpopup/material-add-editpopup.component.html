@@ -1,6 +1,6 @@
 <div class="font ">
   <div class=" main" width="900%">
-    <div class="container">
+    <div class="container addMetrial">
       <div class="addUser">
         <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
       </div>
@@ -104,11 +104,15 @@
                   <div class="materialci">
                     <label> Material Custom Identifiers <span>*</span></label>
                   </div>
-                  <div class="customidentifier hide" (click)="selectProduct()">
-                    <ng-select [items]="selectedItems5" [virtualScroll]="true" bindLabel="materialCustomName"
+                  <div class="customidentifier hide">
+                    <!-- <ng-select [items]="selectedItems5" [virtualScroll]="true" bindLabel="materialCustomName"
                       bindValue="materilCustomIdentifierId" [searchable]="true" [clearable]="true"
-                      placeholder="Select Identifier" [(ngModel)]="selectedItems5">
-                    </ng-select>
+                      placeholder="Select Identifier" [(ngModel)]="selectedItems5" data="selectId">
+                    </ng-select> -->
+                    <ng-multiselect-dropdown class="Materialcustomidentifier" name="Materialcustomidentifier" [placeholder]="'Select Identifier'" 
+                    [disabled]="disabled" [settings]="dropdownSettings4" [data]="selectId" (click)="selectProduct()" 
+                   >
+                  </ng-multiselect-dropdown>
                   </div>
 
                   <div class="expiryperiod">
@@ -241,9 +245,9 @@
                   <div class="productci">
                     <label>Product Custom Identifier<span>*</span></label>
                   </div>
-                  <div class="identiersdrp hide" (click)="customIdentifier()">
-                    <ng-multiselect-dropdown name="type" [placeholder]="'Select the identifiers'" formControlName="type"
-                      [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList3">
+                  <div class="identiersdrp hide" >
+                    <ng-multiselect-dropdown name="ProductCustomIdentifierId" class="ProductCustomIdentifierId" [placeholder]="'Select the identifiers'" 
+                      [disabled]="disabled" [settings]="dropdownSettings3" [data]="ProductId" (click)="customIdentifier()">
                     </ng-multiselect-dropdown>
                   </div>
                 </div>

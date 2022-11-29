@@ -28,6 +28,10 @@
   /* max-height: 450px; */
 
 }
+/* .addMetrial{
+  height: 450px;
+  overflow-y: auto;
+} */
 .scroll {
   overflow-y: auto;
   overflow-x: auto;
@@ -297,7 +301,7 @@ label {
 }
 
 
-::ng-deep.hide .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
+/* ::ng-deep.hide .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
    overflow: hidden;
    background-image: url('../../../../assets/img/maximize.png');
   background-size: 13px;
@@ -305,7 +309,7 @@ label {
   height: 300px;
   margin-top: 12px;
   margin-right: -10px;
-}
+} */
 
 .mat-slide {
       color: black;
@@ -1158,4 +1162,17 @@ font-size: 12.5px;
 }
 .propertiesSection{
   overflow-y:auto;padding-top: 10px;height: 240px;
+}
+::ng-deep.Materialcustomidentifier .multiselect-dropdown .dropdown-btn .selected-item{
+  border: 1px solid #337ab7;
+  margin-right: 4px;
+  background: #00187A !important;
+  padding: 0 5px;
+  color: #fff;
+  border-radius: 10px !important;
+  float: left;
+  display: flex;
+  max-width: 170px !important;
+  position: relative;
+  top: 0px !important;
 }

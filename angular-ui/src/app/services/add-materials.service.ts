@@ -93,4 +93,5 @@ public getuomDeatils(data) : Observable<any>{
       return this.http.post<any>(this.addmaterialsurl + 'OtherMasterApi/GetAllUOMs', data);
       
     }
+   
 }

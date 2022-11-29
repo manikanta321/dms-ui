@@ -31,13 +31,8 @@ export class AddIdentifierComponent implements OnInit {
      console.log("select Product",  this.ProductCustomIdentifier);
     })
   }
-  onSelect(item): void {
-    // if(item){
-    //   this.isSelected = true
-    // }
-    // else{
-    //   this. unselect = true
-    // }
+  onSelect(): void {
+   this.isSelected = true;
    
     }
     

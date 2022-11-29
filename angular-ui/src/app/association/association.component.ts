@@ -47,6 +47,7 @@ import { AddDealerPopupComponent } from '../add-dealer-popup/add-dealer-popup.co
 import { AddDealerAssociationsComponent } from '../component/add-dealer-associations/add-dealer-associations.component';
 import { AssosiationActionComponent } from '../component/assosiation-action/assosiation-action.component';
 import { BulkEditAssosiationComponent } from '../component/bulk-edit-assosiation/bulk-edit-assosiation.component';
+import { AssosiationServicesService } from '../services/assosiation-services.service';
 // import { UseractionComponent } from '../useraction/useraction.component';
 
 @Component({
@@ -63,6 +64,8 @@ export class AssociationComponent implements OnInit {
   paginationPageSize = 10;
   myForm: any = FormGroup;
   myForms: any = FormGroup;
+  myForm1: any = FormGroup;
+
   disabled = false;
   ShowFilter = false;
   StatusFilter = false;
@@ -77,6 +80,10 @@ export class AssociationComponent implements OnInit {
   searchText: any;
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
+  dropdownSettings2: IDropdownSettings = {};
+  ProductListArray:any=[];
+  dealerListArray:any=[];
+
 
   gridOptions: GridOptions = {
     defaultColDef: {
@@ -97,12 +104,12 @@ export class AssociationComponent implements OnInit {
 
     {
       headerName: "Product",
-       field: 'customerCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
+       field: 'stockItemName', type: ['nonEditableColumn'], sort: 'desc',maxWidth:160
     },
 
     { headerName: "Dealer",
     minWidth:250,
-    field: 'customerName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
+    field: 'customerName', type: ['nonEditableColumn'], sort: 'desc',maxWidth:150
     },
     {
       headerName: "Geography",
@@ -117,38 +124,43 @@ export class AssociationComponent implements OnInit {
 
     {
       headerName: "MRP",
-      field: "10", 
+      field: "mrp", 
       type: ['nonEditableColumn']
     },
-
+    {
+      headerName: "Min.Order.Qty",
+      field: "minOrder", 
+      type: ['nonEditableColumn']
+    },
     {
       headerName: "Max.Order.Qty",
-      field: "10", 
+      field: "maxOrder", 
       type: ['nonEditableColumn']
     },
     {
       headerName: "Margin",
-      field: "10", 
+      field: "margin", 
+
       type: ['nonEditableColumn']
     },
     {
       headerName: "Discount",
-      field: "10", 
+      field: "discount", 
       type: ['nonEditableColumn']
     },
     {
       headerName: "Lead Time",
-      field: "10", 
+      field: "leadTimeIndays", 
       type: ['nonEditableColumn']
     },
 
-    {
-      headerName: '',
-      colId: 'action',
-      cellRenderer: AssosiationActionComponent,
-      editable: false,
-      maxWidth: 75  
-    },
+    // {
+    //   headerName: '',
+    //   colId: 'action',
+    //   cellRenderer: AssosiationActionComponent,
+    //   editable: false,
+    //   maxWidth: 75  
+    // },
 
 
    
@@ -214,7 +226,9 @@ export class AssociationComponent implements OnInit {
 
 
   toppingList: any = [];
-
+  geographysSelected:any=[];
+  dealerSelected:any=[];
+  productSelected:any=[];
   toppingList1: any = [];
   filterDictionary: any;
   sideBarOpen = true;
@@ -239,6 +253,10 @@ export class AssociationComponent implements OnInit {
   message: boolean = false;
   message1: boolean = true;
   instancePopup:any = null;
+  productAllArray:any[]=[];
+  dealerAllArray:any[]=[];
+
+
 
 
   paginationNumberFormatter: (
@@ -275,6 +293,7 @@ export class AssociationComponent implements OnInit {
     private observer: BreakpointObserver,
     private fb: FormBuilder,
     private sharedService: SharedService,
+    private associationService:AssosiationServicesService,
   ) {
 
     this.sharedService.listen().subscribe((m: any) => {
@@ -315,13 +334,17 @@ export class AssociationComponent implements OnInit {
   ngOnInit() {
     this.getusertabeldata();
     this.roleItems();
-    this.statusItems();
+    this.ProductItems();
+    this.dealerItems();
 
     this.myForm = this.fb.group({
       city: [this.selectedItems]
     });
     this.myForms = this.fb.group({
       citys: [this.selectedItems]
+    });
+    this.myForm1 = this.fb.group({
+      city1: [this.selectedItems]
     });
   }
 
@@ -370,8 +393,21 @@ export class AssociationComponent implements OnInit {
 
   }
 
+  toogleProductFilter() {
+    this.StatusFilter = !this.StatusFilter;
+    this.dropdownSettings2 = Object.assign({}, this.dropdownSettings2, { allowSearchFilter: this.StatusFilter });
+  }
+
+  handleProductSelection() {
+    if (this.statusSelection) {
+      this.dropdownSettings2 = Object.assign({}, this.dropdownSettings2, { statusSelection: 2 });
+    } else {
+      this.dropdownSettings2 = Object.assign({}, this.dropdownSettings2, { statusSelection: null });
+    
+  }
 
 
+  }
   refresh() {
     this.toppings = new FormControl(this.toppingList);
     this.toppings1 = new FormControl(this.toppingList1);
@@ -381,27 +417,37 @@ export class AssociationComponent implements OnInit {
     this.myForms = this.fb.group({
       citys: [this.selectedItems]
     });
-  
-    const data = {
-      userTypes: [],
-      statuss: [],
-      search: '',
+    this.myForm1 = this.fb.group({
+      city1: [this.selectedItems]
+    });
+
+
+    this.geographysSelected=[];
+    this.productSelected=[];
+    this.dealerSelected=[];
+    this.searchText=''
+ const data = {
+      geographys:this.geographysSelected,
+    product:this.productSelected,
+     dealer:this.dealerSelected,
+    Search:this.searchText
 
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
+    this.associationService.getDealersList(data).subscribe((res) => {
       this.rowData5 = res.response;
-    });
-    this.getusertabeldata();
-  }
+  
+
+    });  }
 
   getusertabeldata() {
     const data = {
-      "geographys":[],
-      "statuss":[],
-      "Search":""
-    }
-    this.user.getAllDealerList(data).subscribe((res) => {
+      geographys:this.geographysSelected,
+    product:this.productSelected,
+     dealer:this.dealerSelected,
+    Search:this.searchText
 
+    }
+    this.associationService.getDealersList(data).subscribe((res) => {
       this.rowData5 = res.response;
   
 
@@ -411,7 +457,7 @@ export class AssociationComponent implements OnInit {
   }
 
   roleItems() {
-    this.user.getGographicDropdown().subscribe((res: any) => {
+    this.associationService.getGeographies().subscribe((res: any) => {
       let localdata = res.response;
       // console.log('checkdata', localdata)
 
@@ -444,6 +490,72 @@ export class AssociationComponent implements OnInit {
     });
   }
 
+
+  ProductItems(){
+    this.user.getproductlist().subscribe((res: any) => {
+        let localdata = res.response;
+        // console.log('checkdata', localdata)
+  
+        this.ProductListArray = localdata.map((data: { stockItemId: any; stockItemName: any; }) => {
+          return { stockItemId: data.stockItemId, stockItemName: data.stockItemName };
+        });
+  
+        this.ProductListArray.push()
+        this.ProductListArray.forEach(element => {
+          return this.productAllArray.push(element.stockItemId);
+          // console.log('rolecheck',rolecheck)
+  
+        })                                                                    
+      });
+    
+      this.dropdownSettings2 = {
+        singleSelection: false,
+        idField: 'stockItemId',
+        textField: 'stockItemName',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        itemsShowLimit: 2,
+        allowSearchFilter: this.StatusFilter
+      };
+      this.selectedStatus = [];
+      this.toppings1 = new FormControl(this.toppingList1);
+  }
+
+
+  dealerItems(){
+    this.associationService.getDealers().subscribe((res: any) => {
+        let localdata = res.response;
+        // console.log('checkdata', localdata)
+  
+        this.dealerListArray = localdata.map((data: { customerId: any; customerName: any; }) => {
+          return { customerId: data.customerId, customerName  : data.customerName };
+        });
+
+        this.dealerListArray.push()
+        this.dealerListArray.forEach(element => {
+          return this.dealerAllArray.push(element.customerId);
+          // console.log('rolecheck',rolecheck)
+  
+        })       
+        console.log('dealerAllArray',this.dealerAllArray)                                                    
+      });
+    
+      this.dropdownSettings1 = {
+        singleSelection: false,
+        idField: 'customerId',
+        textField: 'customerName',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        itemsShowLimit: 2,
+        allowSearchFilter: this.StatusFilter
+      };
+      this.selectedStatus = [];
+      this.toppings1 = new FormControl(this.toppingList1);
+  }
+
+
+  
+
   handleRowDataChanged(event) {
     const index = this.messages.length - 1;
     if (this.stayScrolledToEnd) {
@@ -470,33 +582,6 @@ export class AssociationComponent implements OnInit {
   }
 
 
-
-  statusItems() {
-    this.user.dealersStatus().subscribe((res: any) => {
-      this.toppingList1 = res.response;
-      
-      console.log('we have to check here', this.toppingList1)
-      this.toppingList1.forEach(element => {
-        return this.statusArray.push(element.statusId);
-      
-
-      })
-      console.log('statusArray', this.statusArray)
-    
-      this.dropdownSettings1 = {
-        singleSelection: false,
-        idField: 'statusId',
-        textField: 'statusName',
-        selectAllText: 'Select All',
-        unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
-        allowSearchFilter: this.StatusFilter
-      };
-      this.selectedStatus = [];
-      this.toppings1 = new FormControl(this.toppingList1);
-
-    });
-  }
   roleFilter(data: any) {
     console.log('data', data)
     this.roleName = this.toppings.value;
@@ -510,47 +595,248 @@ export class AssociationComponent implements OnInit {
   onItemSelect(item: any) {
 
     // alert(item.roleName)
-    this.userTypes.push(item.roleId);
+    this.geographysSelected.push(item.geographyId);
 
     const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
+      geographys:this.geographysSelected,
+    product:this.productSelected,
+     dealer:this.dealerSelected,
+    Search:this.searchText
 
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
+    this.associationService.getDealersList(data).subscribe((res) => {
       this.rowData5 = res.response;
+  
+
     });
     console.log('rolefilter', this.userTypes)
     console.log('onItemSelect', item);
   }
   onItemSelectOrAll(item: any) {
-    this.userTypes = this.roleArray;
+    this.geographysSelected = this.roleArray;
     const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
+      geographys:this.geographysSelected,
+    product:this.productSelected,
+     dealer:this.dealerSelected,
+    Search:this.searchText
 
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
-      this.rowData5 = res.response;
+    this.associationService.getDealersList(data).subscribe((res) => {
+      this.rowData5 = res.response;  
     });
-    console.log('rolefilter', this.userTypes)
-    console.log('onItemSelect', item);
+
   }
   onItemDeSelectOrAll(item: any) {
+    this.geographysSelected=[];
     const data = {
-      userTypes: this.userTypes,
-      statuss: [],
-      search: this.searchText,
+      geographys:this.geographysSelected,
+    product:this.productSelected,
+     dealer:this.dealerSelected,
+    Search:this.searchText
 
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
+    this.associationService.getDealersList(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
     console.log('rolefilter', this.userTypes)
     console.log('onItemSelect', item);
   }
+
+  onItemDeSelect(item: any) {
+
+    this.geographysSelected.forEach((element, index) => {
+      if (element == item.geographyId) this.geographysSelected.splice(index, 1);
+    });
+    console.log(' this.userTypes', this.userTypes)
+
+    // this.userTypes.pop(item.roleId);
+    const data = {
+      geographys:this.geographysSelected,
+    product:this.productSelected,
+     dealer:this.dealerSelected,
+    Search:this.searchText
+
+    }
+    this.associationService.getDealersList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  
+
+    });
+  }
+
+
+
+  onItemProductSelect(item: any) {
+
+    // alert(item.roleName)
+    this.productSelected.push(item.stockItemId);
+
+    const data = {
+      geographys:this.geographysSelected,
+    product:this.productSelected,
+     dealer:this.dealerSelected,
+    Search:this.searchText
+
+    }
+    this.associationService.getDealersList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  
+
+    });
+    console.log('rolefilter', this.userTypes)
+    console.log('onItemSelect', item);
+  }
+  onItemProductSelectOrAll(item: any) {
+    this.productSelected = this.productAllArray;
+    const data = {
+      geographys:this.geographysSelected,
+    product:this.productSelected,
+     dealer:this.dealerSelected,
+    Search:this.searchText
+
+    }
+    this.associationService.getDealersList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  
+
+    });
+
+  }
+  onItemProductDeSelectOrAll(item: any) {
+    this.productSelected=[];
+    const data = {
+      geographys:this.geographysSelected,
+    product:this.productSelected,
+     dealer:this.dealerSelected,
+    Search:this.searchText
+
+    }
+    this.associationService.getDealersList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  
+
+    });
+    console.log('rolefilter', this.userTypes)
+    console.log('onItemSelect', item);
+  }
+
+  onItemProductDeSelect(item: any) {
+
+    this.productSelected.forEach((element, index) => {
+      if (element == item.stockItemId) this.productSelected.splice(index, 1);
+    });
+    console.log(' this.userTypes', this.userTypes)
+
+    // this.userTypes.pop(item.roleId);
+    const data = {
+      geographys:this.geographysSelected,
+    product:this.productSelected,
+     dealer:this.dealerSelected,
+    Search:this.searchText
+
+    }
+    this.associationService.getDealersList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  
+
+    });
+  }
+
+
+
+
+  
+  onItemDealerSelect(item: any) {
+
+    // alert(item.roleName)
+    this.dealerSelected.push(item.customerId);
+
+    const data = {
+      geographys:this.geographysSelected,
+    product:this.productSelected,
+     dealer:this.dealerSelected,
+    Search:this.searchText
+
+    }
+    this.associationService.getDealersList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  
+
+    });
+    console.log('rolefilter', this.userTypes)
+    console.log('onItemSelect', item);
+  }
+  onItemDealerSelectOrAll(item: any) {
+    this.dealerSelected = this.dealerAllArray;
+    const data = {
+      geographys:this.geographysSelected,
+    product:this.productSelected,
+     dealer:this.dealerSelected,
+    Search:this.searchText
+
+    }
+    this.associationService.getDealersList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  
+
+    });
+
+  }
+  onItemDealerDeSelectOrAll(item: any) {
+    this.dealerSelected=[];
+    const data = {
+      geographys:this.geographysSelected,
+    product:this.productSelected,
+     dealer:this.dealerSelected,
+    Search:this.searchText
+
+    }
+    this.associationService.getDealersList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  
+
+    });
+    console.log('rolefilter', this.userTypes)
+    console.log('onItemSelect', item);
+  }
+
+  onItemDealerDeSelect(item: any) {
+console.log(item)
+    this.dealerSelected.forEach((element, index) => {
+      if (element == item.customerId) this.dealerSelected.splice(index, 1);
+    });
+    console.log(' this.userTypes', this.userTypes)
+
+    // this.userTypes.pop(item.roleId);
+    const data = {
+      geographys:this.geographysSelected,
+    product:this.productSelected,
+     dealer:this.dealerSelected,
+    Search:this.searchText
+
+    }
+    this.associationService.getDealersList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  
+
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -596,25 +882,7 @@ export class AssociationComponent implements OnInit {
 
   }
 
-  onItemDeSelect(item: any) {
-
-    this.userTypes.forEach((element, index) => {
-      if (element == item.roleId) this.userTypes.splice(index, 1);
-    });
-    console.log(' this.userTypes', this.userTypes)
-
-    // this.userTypes.pop(item.roleId);
-    const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
-
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
-      this.rowData5 = res.response;
-    });
-
-  }
+  
 
 
 
@@ -704,14 +972,17 @@ export class AssociationComponent implements OnInit {
     const { target } = $event;
     this.searchText = target.value;
     const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
-      this.rowData5 = res.response;
-    });
+      geographys:this.geographysSelected,
+    product:this.productSelected,
+     dealer:this.dealerSelected,
+    Search:this.searchText
 
+    }
+    this.associationService.getDealersList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  
+
+    });
   }
   onRowValueChanged(event: RowValueChangedEvent) {
     var data = event.data;

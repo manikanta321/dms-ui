@@ -1,7 +1,9 @@
 
    
-    <div class="row" style="position: relative;top: 8%;bottom: 8px; font-family: 'Gilroy'; color: grey;margin-left: 7px;">
-        <div class="col-md-2 col-lg-2 col-sm-2">
+    <div class="row" style="position: relative;top: 8%;bottom: 8px; font-family: 'Gilroy'; color: grey;margin-left: 25px;">
+       
+      
+      <div class="col-md-2 col-lg-2 col-sm-2">
           <form [formGroup]="myForm">
             <ng-multiselect-dropdown class="roless" name="city" [placeholder]="''" formControlName="city"
               [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList"
@@ -18,17 +20,17 @@
         </div>
   
         <div class="col-md-2 col-lg-2 col-sm-2">
-          <form [formGroup]="myForm">
-            <ng-multiselect-dropdown class="roless-product" name="city" [placeholder]="'Product'" formControlName="city"
-              [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList"
-              (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
-              (onDeSelectAll)="onItemDeSelectOrAll($event)" (onSelectAll)="onItemSelectOrAll($event)">
+          <form [formGroup]="myForm1">
+            <ng-multiselect-dropdown class="roless-product" name="city" [placeholder]="'Product'" formControlName="city1"
+              [disabled]="disabled" [settings]="dropdownSettings2" [data]="ProductListArray"
+              (onSelect)="onItemProductSelect($event)" (onDeSelect)="onItemProductDeSelect($event)"
+              (onDeSelectAll)="onItemProductDeSelectOrAll($event)" (onSelectAll)="onItemProductSelectOrAll($event)">
             </ng-multiselect-dropdown>
           </form>
           <div class="dropdown-placeholder catty-placeholder">
-            <span *ngIf="myForm.get('city').value.length == 0">  </span>
-            <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Products selected </span>
-            <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Product(s) selected </span>
+            <span *ngIf="myForm1.get('city1').value.length == 0">  </span>
+            <span *ngIf="myForm1.get('city1').value.length == 1" class="selected-placeholder"> {{myForm1.get('city1').value.length}} Products selected </span>
+            <span *ngIf="myForm1.get('city1').value.length > 1" class="selected-placeholder"> {{myForm1.get('city1').value.length}} Product(s) selected </span>
   
           </div>
         </div>
@@ -36,9 +38,9 @@
         <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;">
           <form [formGroup]="myForms">
             <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Dealer'" formControlName="citys"
-              [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
-              (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
-              (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
+              [disabled]="disabled" [settings]="dropdownSettings1" [data]="dealerListArray"
+              (onSelect)="onItemDealerSelect($event)" (onDeSelect)="onItemDealerDeSelect($event)"
+              (onDeSelectAll)="onItemDealerDeSelectOrAll($event)" (onSelectAll)="onItemDealerSelectOrAll($event)">
             </ng-multiselect-dropdown>
           </form>
           <div class="dropdown-placeholder catty-placeholder">

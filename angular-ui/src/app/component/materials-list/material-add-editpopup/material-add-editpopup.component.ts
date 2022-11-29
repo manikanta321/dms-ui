@@ -327,7 +327,7 @@ this.countryData();
       ManualShortOrder: this.Sort,
       ProductLink: this.AddSP,
       ProductSubGroupId: this.subProductId,
-      ProductGeography:this.geoProperties
+      ProductGeographys:this.geoProperties
 
     }
     

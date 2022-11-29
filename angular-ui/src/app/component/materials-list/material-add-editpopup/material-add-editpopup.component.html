@@ -61,10 +61,8 @@
                   <div class="materialname">
                     <label>Name <span>*</span></label>
                   </div>
-                  <mat-form-field>
-                    <input (keyup)="onKey($event)" matInput placeholder="Enter the name of material" #input
+                    <input type="text" (keyup)="onKey($event)" placeholder="Enter the name of material" 
                       class="form-control container materialname-placeholder">
-                  </mat-form-field>
                 </div>
                 <div class="col-md-4">
                   <div class="uomp">
@@ -147,7 +145,7 @@
             </div>
           </mat-step>
           <!-- product information -->
-          <mat-step [stepControl]="secondFormGroup">
+          <mat-step [stepControl]="secondFormGroup" disabled>
 
             <form [formGroup]="secondFormGroup" *ngIf="!checked">
 

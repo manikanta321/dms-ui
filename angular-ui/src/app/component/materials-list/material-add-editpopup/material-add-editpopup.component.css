@@ -15,7 +15,7 @@
 .materialname {
    font-family: 'Gilroy';
   position: relative;
-  top: 7px;
+  top: 8px;
   }
 .material-card {
   display: -webkit-box !important;
@@ -643,7 +643,7 @@ li {
   
   height: 35px;
   background-color: white;
-  margin-top: -9px;
+  margin-top: 8px;
   /* margin-left: -1px; */
 }
 

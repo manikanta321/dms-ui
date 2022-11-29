@@ -126,6 +126,11 @@ export class MaterialAddEditpopupComponent {
   css: any[] = [];
   ProductId : any =[]
   checked: boolean = false
+  selectAllIdentifier:any=[];
+  selectAllIdentifierProduct:any=[];
+  selectedIdentifierArray:any=[];
+  selectedIdentifierProductArray:any=[];
+  selectedProductId:any=[];
   colorsList = [
     { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
     { primaryColor: { background: '#0C5A3E', color: '#fff' }, secondaryColor: { background: "#E6FFF6", color: "#0C5A3E" }, },
@@ -172,7 +177,8 @@ export class MaterialAddEditpopupComponent {
   thirdformGroup: FormGroup = this.fb.group({ thirdCtrl: [''] });
 
    ngOnInit():void {
-// this.selectProduct();
+this.selectProduct();
+this.customIdentifier()
 const user = localStorage.getItem("logInId");
 
 this.UserId = user
@@ -739,8 +745,71 @@ this.countryData();
     this.base64textString = reader.result.substr(reader.result.indexOf(',') + 1);
     console.log(this.base64textString, "base64")
   }
+  onSelectIdentifier(item:any){
+    this.selectedItems5.push(item.materilCustomIdentifierId)
+console.log("Selecteed Identifier",this.selectedItems5);
+  }
+  onDeSelectIdentifier(item:any){
+    this.selectedItems5.forEach((element, index) => {
+      if (element == item.materilCustomIdentifierId) this.selectedItems5.splice(index, 1);
 
+    });
+    console.log("DeSelecteed Identifier",this.selectedItems5);
+  }
+  onDSelectOrAllIdentifier(event){
+  this.selectedItems5 =[];
+  console.log("Deselected DAta",this.selectedItems5);
+  }
+  onSelectOrAllIdentifier(){
+    this.selectAllIdentifier = this.selectId.map((data: { materilCustomIdentifierId: any; materilCustomName: any; }) => {
+      return { materilCustomIdentifierId: data.materilCustomIdentifierId, materilCustomName: data.materilCustomName };
+    });
 
+    if (!this.selectAllIdentifier?.length) {
+      this.selectAllIdentifier = this.selectId.map((product: { designationName: any; }) => {
+        return product.designationName;
+      });
+    }
+    this.selectAllIdentifier.push()
+    this.selectAllIdentifier.forEach(element => {
+      return this.selectedIdentifierArray.push(element.materilCustomIdentifierId);
+
+    })
+this.selectedItems5 =this.selectedIdentifierArray;
+console.log("All Selected",this.selectedItems5);
+  }
+  onSelectIdentifierProduct(item:any){
+    this.selectedProductId.push(item.productCustomIdentifierId)
+console.log("Selecteed Identifier",this.selectedProductId);
+  }
+  onDeSelectIdentifierProduct(item:any){
+    this.selectedProductId.forEach((element, index) => {
+      if (element == item.productCustomIdentifierId) this.selectedProductId.splice(index, 1);
+    });
+    console.log("DeSelecteed Identifier",this.selectedProductId);
+  }
+  onDSelectOrAllIdentifierProduct(event){
+  this.selectedProductId =[];
+  console.log("Deselected DAta",this.selectedProductId);
+  }
+  onSelectOrAllIdentifierProduct(){
+    this.selectAllIdentifierProduct = this.ProductId.map((data: { productCustomIdentifierId: any; productCustomName: any; }) => {
+      return { productCustomIdentifierId: data.productCustomIdentifierId, materilCustomName: data.productCustomName };
+    });
+
+    if (!this.selectAllIdentifierProduct?.length) {
+      this.selectAllIdentifierProduct = this.ProductId.map((product: { designationName: any; }) => {
+        return product.designationName;
+      });
+    }
+    this.selectAllIdentifierProduct.push()
+    this.selectAllIdentifierProduct.forEach(element => {
+      return this.selectedIdentifierProductArray.push(element.productCustomIdentifierId);
+
+    })
+this.selectedProductId =this.selectedIdentifierProductArray;
+console.log("All Selected",this.selectedProductId);
+  }
 }
 
 

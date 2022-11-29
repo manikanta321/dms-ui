@@ -110,7 +110,9 @@
                       placeholder="Select Identifier" [(ngModel)]="selectedItems5" data="selectId">
                     </ng-select> -->
                     <ng-multiselect-dropdown class="Materialcustomidentifier" name="Materialcustomidentifier" [placeholder]="'Select Identifier'" 
-                    [disabled]="disabled" [settings]="dropdownSettings4" [data]="selectId" (click)="selectProduct()" 
+                    [disabled]="disabled" [settings]="dropdownSettings4" [data]="selectId"
+                    (onSelect)="onSelectIdentifier($event)" (onDeSelect)="onDeSelectIdentifier($event)"
+                (onDeSelectAll)="onDSelectOrAllIdentifier($event)" (onSelectAll)="onSelectOrAllIdentifier()"
                    >
                   </ng-multiselect-dropdown>
                   </div>
@@ -247,7 +249,9 @@
                   </div>
                   <div class="identiersdrp hide" >
                     <ng-multiselect-dropdown name="ProductCustomIdentifierId" class="ProductCustomIdentifierId" [placeholder]="'Select the identifiers'" 
-                      [disabled]="disabled" [settings]="dropdownSettings3" [data]="ProductId" (click)="customIdentifier()">
+                      [disabled]="disabled" [settings]="dropdownSettings3" [data]="ProductId"
+                      (onSelect)="onSelectIdentifierProduct($event)" (onDeSelect)="onDeSelectIdentifierProduct($event)"
+                      (onDeSelectAll)="onDSelectOrAllIdentifierProduct($event)" (onSelectAll)="onSelectOrAllIdentifierProduct()">
                     </ng-multiselect-dropdown>
                   </div>
                 </div>

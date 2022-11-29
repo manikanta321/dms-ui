@@ -332,7 +332,7 @@ this.countryData();
     }
     
     // console.log(data)
-    this.addMaterials.addMaterialProduct(data).subscribe((res)=>{
+    this.addMaterials.addMaterialIfProduct(data).subscribe((res)=>{
       console.log(res,"addmaterialProduct")
     })
 
@@ -351,8 +351,11 @@ this.countryData();
       Imageurl: this.base64textString,
       Materialcustomidentifier: this.selectedItems5,
       ExpiryPeriod: this.expiryDate,
-      IsProduct: +this.checked,
+      IsProduct: +!this.checked
     }
+    this.addMaterials.MaterialIfNotProduct(data).subscribe((res)=>{
+      console.log(res,"addmaterialProduct")
+    })
     console.log(data)
   }
   onSubCategoryAll(items: any) {
@@ -632,6 +635,8 @@ this.countryData();
   CreateGeoPropertiesObject(propertyObj){
     let obj:any = {};
     obj.MinOrderQty = propertyObj.MinOrderQty ?? "";
+    obj.DiscountPercent = propertyObj.DiscountPercent ?? "";
+    obj.MaxOrderQty = propertyObj.MaxOrderQty ?? "";
     obj.MarginPercent = propertyObj.MarginPercent ?? "";
     obj.MRP = propertyObj.MRP ?? "";
     obj.LeadTime = propertyObj.LeadTime ?? "";

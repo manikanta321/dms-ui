@@ -75,7 +75,10 @@ onDeactivate(listId:any){
   return this.http.get<any>(`${this.addmaterialsurl}MaterialApi/MaterialDeactivate?StockItemId=${listId}`);
 
 }
-addMaterialProduct(data){
+addMaterialIfProduct(data){
+  return this.http.post<any>(this.addmaterialsurl + 'MaterialApi/AddMaterial',data);
+}
+MaterialIfNotProduct(data){
   return this.http.post<any>(this.addmaterialsurl + 'MaterialApi/AddMaterial',data);
 }
 onclicksubcat(catId:any){

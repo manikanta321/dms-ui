@@ -24,52 +24,56 @@
                     </div>
                     <div class="content" *ngIf="!dealerInfo">
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="promotiont">
-                                    <label>Dealer <span>*</span></label>
-                                </div>
+                            <div class="col-lg-3">
+                                <div class="dealerr">
+                                    <label class="DealerInfo-label">Dealer <span class="astr">*</span></label>
                                 <input matInput placeholder="Search &  select dealer" #input class="form-control container input-box" >
                                 <img src="assets/img/search.png" class="search-img"  alt="search">
+                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="promotiont">
-                                    <label>Geography <span>*</span></label>
-                                    <ng-multiselect-dropdown name="type"[placeholder]="' Search & select geography'" 
-                                    formControlName="type" [disabled]="disabled" [settings]="dropdownSettings3"
-                                    [data]="toppingList3" (onSelect)="onTypeSelect($event)"
+                            <div class="col-lg-3">
+                                <div class="geographyy">
+                                    <label  class="DealerInfo-label">Geography <span class="astr">*</span></label>
+                                    <ng-multiselect-dropdown class="selectgeo"  name="type"[placeholder]="'Select geography'" 
+                                    formControlName="type" [disabled]="disabled" [settings]="dropdownSettings1"
+                                    [data]="selectgeo" (onSelect)="onTypeSelect($event)"
                                     (onSelectAll)="onTypeAll($event)">
                                 </ng-multiselect-dropdown>
                                 </div>
                             </div>
-                            
-                        </div>
-
-                        <div class="row" style="margin-top:-19px">
                             <div class="col-md-6">
-                                <div class="promotiont">
-                                    <label>Billing Address <span>*</span></label>
-                                </div>
-                                <input matInput placeholder=" Select Billing address" #input class="form-control container input-box" >
+                                <div class="billingAdrs">
+                                    <label  class="DealerInfo-label">Billing Address <span class="astr">*</span></label>
+                                <!-- <input matInput placeholder=" Select Billing address" #input class="form-control container input-box" > -->
+                                <ng-multiselect-dropdown class="billAddress"  name="billAddress"[placeholder]="'Select billing address'" 
+                                formControlName="type" [disabled]="disabled" [settings]="dropdownSettings2"
+                                [data]="selectbillAddress">
+                            </ng-multiselect-dropdown>
                             </div>
-                            <div class="col-md-6">
-                                <div class="promotiont">
-                                    <label>Shipping Address <span>*</span></label>
-                                    <input matInput placeholder="Select shipping address" #input class="form-control container input-box" >
-                                </div>
-                            </div>   
+                            </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="promotiont">
-                                    <label>Dealer Reference No <span>*</span></label>
+                            <div class="col-lg-3">
+                                <div class="dealerReff">
+                                    <label  class="DealerInfo-label">Dealer Reference No <span class="astr">*</span></label>
+                                <input matInput placeholder="Enter" #input class="form-control container input-box" >
                                 </div>
-                                <input matInput placeholder="Enter dealer reference number" #input class="form-control container input-box" >
                             </div>
+                            <div class="col-lg-3">
+                                <div class="companyReff">
+                                    <label  class="DealerInfo-label">Company Reference No <span class="astr">*</span></label>
+                                    <input matInput placeholder="Enter" #input class="form-control container input-box" >
+                                </div>
+                            </div> 
                             <div class="col-md-6">
-                                <div class="promotiont">
-                                    <label>Company Reference No <span>*</span></label>
-                                    <input matInput placeholder="Enter Company reference number" #input class="form-control container input-box" >
+                                <div class="shippingAdrs">
+                                    <label  class="DealerInfo-label">Shipping Address <span class="astr">*</span></label>
+                                    <!-- <input matInput placeholder="Select shipping address" #input class="form-control container input-box" > -->
+                                    <ng-multiselect-dropdown class="shipingAddress"  name="shipingAddress"[placeholder]="'Select billing address'" 
+                                formControlName="type" [disabled]="disabled" [settings]="dropdownSettings3"
+                                [data]="selectShippingAddress">
+                            </ng-multiselect-dropdown>
                                 </div>
                             </div>   
                         </div>
@@ -78,138 +82,130 @@
                     <div class="top-bottom">
                     <div  class="collapsible">
                         <div class="row">
-                            <div class="col-md-5" (click)="expandOrderItemsDiv()">
-                               <p class="label-cls">Order Items</p>
+                            <div class="col-lg-6" (click)="expandOrderItemsDiv()">
+                               <p class="label-cls">Items</p>
                             </div>
-                            <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-md-6">
+                            <div class="col-lg-5">
+                                <div class="addbtns d-flex">
+                                    <div class="addEditPromotion">
                                          <button (click)="addOrderPromotionList()" class="add-edit-promo" [mat-dialog-close]="true">Add/Edit Promo Items</button> 
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="addEditNonPromotion">
                                          <button (click)="addOrderNonPromotionList()"  [mat-dialog-close]="true" class="add-edit-non-promo">Add/Edit Non Promo Items</button>
                                     </div>  
                                 </div>
                             </div>
-                            <div class="col-md-1" (click)="expandOrderItemsDiv()">
+                            <div class="col-lg-1" (click)="expandOrderItemsDiv()">
                                 <img [src]="image2" class="expand-arrow" alt="add-user-btn">
                             </div>
                         </div>
                     </div>
                     <div class="content" *ngIf="!orderitem">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="promotiont">
-                                    <label class="promotions-label">Promotions  <span class="buy-text">Buy(A+B) get (X+Y..)</span></label>
-                                </div>
+                       <div class="section mt-1">
+                        <table>
+                            <tr>
+                                <th>Item</th>
+                                <th>UoM</th>
+                                <th>Order Qty</th>
+                                <th>Stock</th>
+                                <th>Unit Price</th>
+                                <th>Discount</th>
+                                <th>Final Value</th>
+                                <th>Tax</th>
+                                <th>Amount</th>
+                            </tr>
+                            <tr [(ngModel)]="itemremoved">
+                                <td ><p class="itemLeft"><span class="promoItem">p1</span>Lays classic blue cla..</p> </td>
+                                <td >
+                                    <input type="text" placeholder="Boxes" class="IteminputBoxes">
+                                </td>
+                                <td >
+                                    <input type="text" placeholder="5" class="IteminputBoxes">
+                                </td>
+                                <td>
+                                    <input type="text" placeholder="10,000,000" class="IteminputBoxes">
+                                </td>
+                                <td >
+                                    <input type="text" placeholder="20" class="IteminputBoxes">
+                                </td>
+                                <td >
+                                    <input type="text" placeholder="90" class="IteminputBoxes">
+                                </td>
+                                <td>
+                                    <input type="text" placeholder="IGST (18%)" class="IteminputBoxes">
+                                </td>
+                                <td>
+                                    <input type="text" placeholder="106.2" class="IteminputBoxes">
+                                </td>
+                                <td>
+                                    <input type="text" placeholder="Boxes" class="IteminputBoxes">
+                                </td>
+                                <mat-icon class="removeCircle" (click)=removeItem()>
+                                    remove_circle</mat-icon>
+                            </tr>
+                            <tr>
+                                <td ><p class="itemLeft"><span class="promoItem">p1</span>Lays classic blue cla..</p> </td>
+                                <td >
+                                    <input type="text" placeholder="Boxes" class="IteminputBoxes">
+                                </td>
+                                <td >
+                                    <input type="text" placeholder="5" class="IteminputBoxes">
+                                </td>
+                                <td>
+                                    <input type="text" placeholder="10,000,000" class="IteminputBoxes">
+                                </td>
+                                <td >
+                                    <input type="text" placeholder="20" class="IteminputBoxes">
+                                </td>
+                                <td >
+                                    <input type="text" placeholder="90" class="IteminputBoxes">
+                                </td>
+                                <td>
+                                    <input type="text" placeholder="IGST (18%)" class="IteminputBoxes">
+                                </td>
+                                <td>
+                                    <input type="text" placeholder="106.2" class="IteminputBoxes">
+                                </td>
+                                <td>
+                                    <input type="text" placeholder="Boxes" class="IteminputBoxes">
+                                </td>
+                            </tr>
+                        </table>
+                       </div>
+                       <div class="row mt-2">
+                        <div class="totall">
+                        <div class="innerTotal d-flex">
+                            <div class="subitem">
+                               <p class="alltotals">Sub Total</p>
+                               <span>105,000.00</span>
                             </div>
-             
-
-                            <div class="row">
-                                <div class="col-md-1">
-                                    <div class="promotiont">
-                                        <div>
-                                            <label class="promotions-label">Items </label>
-                                        </div>
-                                        <div>
-                                            <label class="promotions-label">Lays Classic </label>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="promotiont">
-                                        <div>
-                                            <label class="promotions-label">UoM </label>
-                                        </div>
-                                        <div>
-                                            <input type="text" class="uom-cls" id="fname" name="fname">
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="promotiont">
-                                        <div>
-                                            <label class="promotions-label">Order Quantity </label>
-                                        </div>
-                                        <div>
-                                            <input type="text" class="qyt-cls" id="fname" name="fname">
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="promotiont">
-                                        <div>
-                                            <label class="promotions-label">Stock </label>
-                                        </div>
-                                        <div>
-                                            <input type="text" class="stack-cls" id="fname" name="fname">
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="promotiont">
-                                        <div>
-                                            <label class="promotions-label">Value </label>
-                                        </div>
-                                        <div>
-                                            <input type="text" class="value-cls" id="fname" name="fname">
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="promotiont">
-                                        <div>
-                                            <label class="promotions-label">Discount </label>
-                                        </div>
-                                        <div>
-                                            <input type="text" class="dis-cls" id="fname" name="fname">
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="promotiont">
-                                        <div>
-                                            <label class="promotions-label">Final Value </label>
-                                        </div>
-                                        <div>
-                                            <input type="text" class="final-cls" id="fname" name="fname">
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="promotiont">
-                                        <div>
-                                            <label class="promotions-label">Tax </label>
-                                        </div>
-                                        <div>
-                                            <input type="text" class="tax-cls" id="fname" name="fname">
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="promotiont">
-                                        <div>
-                                            <label class="promotions-label">Amount </label>
-                                        </div>
-                                        <div>
-                                            <input type="text" class="amt-cls" id="fname" name="fname">
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-
-                            </div>
-                            
-                            
+                            <div class="subitem">
+                                <p class="alltotals">Tax Element 1</p>
+                                <span>10,500.00</span>
+                             </div>
+                             <div class="subitem">
+                                <p class="alltotals">Tax Element 2</p>
+                                <span>10.50</span>
+                             </div>
+                             <div class="subitem">
+                                <p class="alltotals">Tax Element 3</p>
+                                <span>10.50</span>
+                             </div>
+                             <div class="subitem">
+                                <p class="alltotals">Packing Charge</p>
+                                <span>2000</span>
+                             </div>
+                             <div class="subitem">
+                                <p class="alltotals">Shipping Charge</p>
+                                <span>3000</span>
+                             </div>
+                             <div class="subitem">
+                                <p class="alltotals">Total</p>
+                                <span>105,000.00</span>
+                             </div>
                         </div>
+                    </div>
+                       </div>
                     </div>
                 </div>
 
@@ -228,42 +224,25 @@
                     <div class="content" *ngIf="!otherInfo">
                             <div class="row">
                                 
-                                <div class="col-md-6">
-                                    <div class="promotiont">
+                                <div class="col-lg-4">
+                                    <div class="orderDatepicker">
                                         <label class="boldR">Requirement Date </label>
-                                    </div>
-                                    <mat-form-field appearance="fill" class="req-date required-border">
+                                    <mat-form-field appearance="fill" class="datepc">
                                         <mat-label>Select a date</mat-label>
-                                        <input class="req-date" matInput [matDatepicker]="picker">
+                                        <input matInput [matDatepicker]="picker">
                                      <mat-datepicker-toggle matSuffix [for]="picker" class="calicon"></mat-datepicker-toggle> 
                                         <mat-datepicker #picker></mat-datepicker>
                                     </mat-form-field>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
+                                </div>
+                                <div class="col-md-8">
                                     <div class="promotiont">
                                         <label class="delivery1">Delivery Instructions/Extra Information</label>
                                     </div>
-                                    <!-- <mat-form-field  class="text-area">
-                                        <textarea matInput
-                                           placeholder="Please write down if there are any delivery instructions or extra information you want to share">
-                                        
-                                        </textarea>
-                                      </mat-form-field>  -->
-
-                                 
-                                       <textarea class="text-area" style="resize: none;"  placeholder="Please write down if there are any delivery instructions or extra information you want to share" name="w3review" rows="4" cols="50"></textarea>
-                                      
-                            
-
-
-    
-
-                                      
+                                       <textarea class="text-area-extrainfo" style="resize: none;"  placeholder="Please write down if there are any delivery instructions or extra information you want to share" name="w3review" rows="2" cols="65"></textarea>
+                               
                                                              
                                     </div>
-
                             </div>
                     </div>
                 </div>

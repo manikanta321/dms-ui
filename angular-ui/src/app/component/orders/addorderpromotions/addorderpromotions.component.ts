@@ -34,13 +34,21 @@ export class AddorderpromotionsComponent implements OnInit {
   cityname:string[] =['George town','Balik Pulau','Batu Refringi','Teluk Bahang'];
   selectedItem = null;
   addButton:boolean =false;
+  dropdownSettings1: IDropdownSettings = {};
+  dropdownSettings2: IDropdownSettings = {};
   dropdownSettings3: IDropdownSettings = {};
   disabled = false;
-  toppingList3:  any= [];
+  selectgeo:  any= ['country','state'];
+  selectbillAddress :any = ['address1','address2'];
+  selectShippingAddress :any =['shippingAddress1', 'shipping2']
   getgroup : string[]= ["Product Name","Product Name", "Product Name", "Product Name"]
   buygroup : string[]= ["Product Name","Product Name", "Product Name", "Product Name"];
   CustomerSelect : string[] = ['Valiant Distributors', 'Global Movers', 'Somebody Sales']
-
+  public itemremoved: any[] = [{
+    sValue: '',
+    eValue: '',
+    pValue: '',
+  }];
   constructor(private _formBuilder: FormBuilder,
     public dialog: MatDialog) { }
 
@@ -102,5 +110,7 @@ export class AddorderpromotionsComponent implements OnInit {
   addOrderNonPromotionList(){
     this.dialog.open( OrderNonpromotionlistComponent,{width: '1000px',height:'460px'});
   }
-
+  removeItem() {
+    this.itemremoved.splice(0);
+  }
 }

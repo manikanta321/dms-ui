@@ -85,6 +85,9 @@ export class MaterialsListComponent implements OnInit {
   typeArray: any[] = [];
   prodArray: any[] = [];
   catagData: any = [];
+  paginationScrollCount: any;
+  paginationPageSize = 10;
+  stayScrolledToEnd = true;
   userId: any;
   employeeName: any;
   prodData: any = [];
@@ -918,7 +921,22 @@ else
       this.dropdownSettings1 = Object.assign({}, this.dropdownSettings1, { statusSelection: null });
     }
 
-
+  }
+  handleScroll(event) {
+    if(this.instancePopup){
+      this.instancePopup.togglePopup();
+      this.instancePopup = null;
+    }
+    
+    const grid = document.getElementById('gridContainer');
+    if (grid) {
+      const gridBody = grid.querySelector('.ag-body-viewport') as any;
+      const scrollPos = gridBody.offsetHeight+event.top;
+      const scrollDiff = gridBody.scrollHeight - scrollPos;
+      //const api =  this.rowData5;
+      this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
+      this.paginationScrollCount = this.rowData5.length;
+    }
 
   }
   addMaterials() {

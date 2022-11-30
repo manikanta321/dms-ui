@@ -360,7 +360,7 @@
   float: right;
   top: 32px;
   position: relative;
-  left: 142%;
+  left: 128%;
   cursor: pointer;
 }
 
@@ -612,4 +612,12 @@
   font-family: Gilroy;
   position: relative;
   top: 9.5%;
+}
+.pagination {
+  float:right !important;
+}
+
+.pagination-cls {
+  font-size: 14px;
+  font-weight: 900;
 }

@@ -1,467 +1,427 @@
 <div class="font">
-    <div class="main" width="900%">
-        <div class="container promotionpopup-scroll">
-            <div class="addUser">
-                <img  class="print-img" src="../../../assets/material/print-img.svg" alt="">
-                <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
-
-            </div>
-            <div class="head-t">
-                <h3 class="addU font">Add Association</h3>
-                    <div class="row top-bottom">
-                        <div class="row text-center"></div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="promotiont">
-                                <label>Association Direction<span>*</span></label><br>
-                                <select  #teams (change)="selectedValue(teams.value);" class="form-select select-asso" aria-label=".form-select-lg example">
-                                    <!-- <option  selected hidden>Select</option> -->
-                                    <option value="1" selected>Product to Dealer</option>
-                                    <option value="2">Dealer to Product</option>
-                                  </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="promotiont">
-                                <label>Product <span>*</span></label><br>
-                                <select class="form-select select-asso" aria-label=".form-select-lg example">
-                                    <option  selected hidden>Select</option>
-                                    <option value="1">Airtel</option>
-                                    <option value="2">Jio</option>
-                                  </select>
-                            </div>
-                        </div>
-                        
-                    </div>
-<!-- geography -->
-<div class="row heading">
-  <h5 class="geo-head">Geographies</h5>
-</div>
-<div class="row">
-  <div class="col-md-12 slctd-row">
-      <div class="row">
-          <div class="col-md-9 sltd-span">
-              <span class="selectedname" *ngIf="false">Selected Geogrphies</span>
-              <span class="selectedcolor" *ngIf="true">Malasia(3/4)</span>;
-              <span class="selectedclr2">India(15/15)</span>;
-              <span class="astr">Singpore(0/6)</span>;
-              <span class="selectedclr2">Japan(23/23)</span>
-          </div>
-          <div class="col-md-3">
-              <button class="slctd-geo-btn" (click)="geography()"> Selected Geographies</button>
-          </div>
+  <div class="main" width="900%">
+    <div class="container promotionpopup-scroll">
+      <div class="addUser">
+        <img
+          class="print-img"
+          src="../../../assets/material/print-img.svg"
+          alt=""
+        />
+        <mat-icon mat-button class="close-icon" [mat-dialog-close]="true"
+          >close</mat-icon
+        >
       </div>
-  </div>
-</div>
+      <div class="head-t">
+        <h3 class="addU font">Add Association</h3>
+        <div class="row top-bottom">
+          <div class="row text-center"></div>
+        </div>
 
-<div *ngIf="screenValue==1">
-    <label class="dealer-list">Dealers List</label>
-    <br>
-           <div class="row">
-               <div class="col-md-6 promotiont1">
-                   <form [formGroup]="myForm" class="dropdown-form">
-                       <ng-multiselect-dropdown class="promo1"  [placeholder]="'Dealers'" formControlName="city1"
-                         [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList" >
-                       </ng-multiselect-dropdown>
-                     
-           
-                       <div class="dropdown-placeholder promo1-placeholder">
-                           <span *ngIf="myForm.get('city1').value.length == 0" style="color: black;">Select Dealers </span>
-                           <span *ngIf="myForm.get('city1').value.length == 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Dealers selected </span>
-                         <span *ngIf="myForm.get('city1').value.length > 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Dealers selected </span>
-           
-                       </div>
-           
-                     </form>
-               </div>
-               <div class="col-md-6 promotiont1">
-                   <form [formGroup]="myForm" class="dropdown-form">
-                       <ng-multiselect-dropdown class="promo1"  [placeholder]="'Geographies'" formControlName="city1"
-                         [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList" >
-                       </ng-multiselect-dropdown>
-                     
-           
-                       <div class="dropdown-placeholder promo1-placeholder">
-                         <span *ngIf="myForm.get('city1').value.length == 0" style="color: black;">Select Geographies </span>
-                         <span *ngIf="myForm.get('city1').value.length == 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Geographies selected </span>
-                         <span *ngIf="myForm.get('city1').value.length > 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Geographies selected </span>
-           
-                       </div>
-           
-                     </form>
-               </div>
-               
-           </div>
-</div>
-
-<div *ngIf="screenValue==2">
-<div class="row">
-    <div  class="col">
-        <label class="dealer-list">Product List</label>
-    
-    </div>
-    
-    <div class="col">
-        <div class="searchBox d-flex" style=" cursor: pointer">
-            <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
-              placeholder="Type & search for anything">
-            <button class="searchButton" href="#">
-              <i class="material-icons">
-                search
-              </i>
-            </button>
-            <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="promotiont">
+              <label>Association Direction<span>*</span></label
+              ><br />
+              <select
+                #teams
+                (change)="selectedValue(teams.value)"
+                class="form-select select-asso"
+                aria-label=".form-select-lg example"
+              >
+                <!-- <option  selected hidden>Select</option> -->
+                <option value="0" hidden>Select association</option>
+                <option value="1">Product to Dealer</option>
+                <option value="2">Dealer to Product</option>
+              </select>
+            </div>
           </div>
-    </div>
-</div>
-    <br>
-           <div class="row">
-               <div class="col promotiont1">
-                   <form [formGroup]="myForm" class="dropdown-form">
-                       <ng-multiselect-dropdown class="promo1"  [placeholder]="'Dealers'" formControlName="city1"
-                         [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList" >
-                       </ng-multiselect-dropdown>
-                     
-           
-                       <div class="dropdown-placeholder promo1-placeholder">
-                           <span *ngIf="myForm.get('city1').value.length == 0" style="color: black;">Select  category  </span>
-                           <span *ngIf="myForm.get('city1').value.length == 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} category  </span>
-                         <span *ngIf="myForm.get('city1').value.length > 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} category  </span>
-           
-                       </div>
-           
-                     </form>
-               </div>
-               <div class="col promotiont1">
-                   <form [formGroup]="myForm" class="dropdown-form">
-                       <ng-multiselect-dropdown class="promo1"  [placeholder]="'Geographies'" formControlName="city1"
-                         [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList" >
-                       </ng-multiselect-dropdown>
-                     
-           
-                       <div class="dropdown-placeholder promo1-placeholder">
-                         <span *ngIf="myForm.get('city1').value.length == 0" style="color: black;"> Sub-category </span>
-                         <span *ngIf="myForm.get('city1').value.length == 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Sub-category  </span>
-                         <span *ngIf="myForm.get('city1').value.length > 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Sub-category  </span>
-           
-                       </div>
-           
-                     </form>
-               </div>
-               
+          <div class="col-md-6">
+            <div class="promotiont">
+              <label>Product <span>*</span></label
+              ><br />
+              <select
+                class="form-select select-asso"
+                aria-label=".form-select-lg example"
+              >
+                <option selected hidden>Select</option>
+                <option value="1">Airtel</option>
+                <option value="2">Jio</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <!-- geography -->
+        <div class="row heading">
+          <h5 class="geo-head">Geographies</h5>
+        </div>
+        <div class="row">
+          <div class="col-md-12 slctd-row">
+            <div class="row">
+              <div class="col-md-9 sltd-span">
+                <span class="selectedname" *ngIf="false"
+                  >Selected Geogrphies</span
+                >
+                <span class="selectedcolor" *ngIf="true">Malasia(3/4)</span>;
+                <span class="selectedclr2">India(15/15)</span>;
+                <span class="astr">Singpore(0/6)</span>;
+                <span class="selectedclr2">Japan(23/23)</span>
+              </div>
+              <div class="col-md-3">
+                <button class="slctd-geo-btn" (click)="geography()">
+                  Selected Geographies
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Dealer list -->
+        <div>
+          <label class="dealer-list">Dealers List</label>
+          <br />
 
-               <div class="col promotiont1">
-                <form [formGroup]="myForm" class="dropdown-form">
-                    <ng-multiselect-dropdown class="promo1"  [placeholder]="'Geographies'" formControlName="city1"
-                      [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList" >
-                    </ng-multiselect-dropdown>
-                  
-        
-                    <div class="dropdown-placeholder promo1-placeholder">
-                      <span *ngIf="myForm.get('city1').value.length == 0" style="color: black;">Select Type </span>
-                      <span *ngIf="myForm.get('city1').value.length == 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Type  </span>
-                      <span *ngIf="myForm.get('city1').value.length > 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Type  </span>
-        
-                    </div>
-        
-                  </form>
+          <div class="row">
+            <div class="col-12" *ngIf="screenValue == 0">
+              <input type="search" name="" placeholder="Product/dealer not Selected Yet" id="" class="select-asso" disabled>
             </div>
-            <div class="col promotiont1">
-                <form [formGroup]="myForm" class="dropdown-form">
-                    <ng-multiselect-dropdown class="promo1"  [placeholder]="'Geographies'" formControlName="city1"
-                      [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList" >
-                    </ng-multiselect-dropdown>
-                  
-        
-                    <div class="dropdown-placeholder promo1-placeholder">
-                      <span *ngIf="myForm.get('city1').value.length == 0" style="color: black;">Select Product </span>
-                      <span *ngIf="myForm.get('city1').value.length == 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Product  </span>
-                      <span *ngIf="myForm.get('city1').value.length > 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Product  </span>
-        
-                    </div>
-        
-                  </form>
+            <div class="col-6" *ngIf="screenValue == 1 || screenValue ==2 ">
+              <input type="search" name="" id="" class="select-asso">
             </div>
-            <div class="col-1 promotiont1">
-                <div class="icon btnhover refreshbtn1"  style=" cursor: pointer;">
-                    <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;"
-                      alt="refresh">
+          </div>
+          <!-- <div class="row">
+            <div class="col-md-6 promotiont1">
+              <form [formGroup]="myForm" class="dropdown-form">
+                <ng-multiselect-dropdown
+                  class="promo1"
+                  [placeholder]="'Dealers'"
+                  formControlName="city1"
+                  [disabled]="disabled"
+                  [settings]="dropdownSettings3"
+                  [data]="toppingList"
+                >
+                </ng-multiselect-dropdown>
+
+                <div class="dropdown-placeholder promo1-placeholder">
+                  <span
+                    *ngIf="myForm.get('city1').value.length == 0"
+                    style="color: black"
+                    >Select Dealers
+                  </span>
+                  <span
+                    *ngIf="myForm.get('city1').value.length == 1"
+                    class="selected-placeholder"
+                  >
+                    {{ myForm.get("city1").value.length }} Dealers selected
+                  </span>
+                  <span
+                    *ngIf="myForm.get('city1').value.length > 1"
+                    class="selected-placeholder"
+                  >
+                    {{ myForm.get("city1").value.length }} Dealers selected
+                  </span>
                 </div>
+              </form>
             </div>
+            <div class="col-md-6 promotiont1">
+              <form [formGroup]="myForm" class="dropdown-form">
+                <ng-multiselect-dropdown
+                  class="promo1"
+                  [placeholder]="'Geographies'"
+                  formControlName="city1"
+                  [disabled]="disabled"
+                  [settings]="dropdownSettings3"
+                  [data]="toppingList"
+                >
+                </ng-multiselect-dropdown>
 
-           
-           </div>
-           <div class="row">
-            <div class="col-3 promotiont1">
-                <form [formGroup]="myForm" class="dropdown-form">
-                    <ng-multiselect-dropdown class="promo1"  [placeholder]="'Geographies'" formControlName="city1"
-                      [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList" >
-                    </ng-multiselect-dropdown>
-                  
-        
-                    <div class="dropdown-placeholder promo1-placeholder">
-                      <span *ngIf="myForm.get('city1').value.length == 0" style="color: black;">Select Product </span>
-                      <span *ngIf="myForm.get('city1').value.length == 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Product  </span>
-                      <span *ngIf="myForm.get('city1').value.length > 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Product  </span>
-        
-                    </div>
-        
-                  </form>
+                <!-- <div class="dropdown-placeholder promo1-placeholder">
+                  <span
+                    *ngIf="myForm.get('city1').value.length == 0"
+                    style="color: black"
+                    >Select Geographies
+                  </span>
+                  <span
+                    *ngIf="myForm.get('city1').value.length == 1"
+                    class="selected-placeholder"
+                  >
+                    {{ myForm.get("city1").value.length }} Geographies selected
+                  </span>
+                  <span
+                    *ngIf="myForm.get('city1').value.length > 1"
+                    class="selected-placeholder"
+                  >
+                    {{ myForm.get("city1").value.length }} Geographies selected
+                  </span>
+                </div>
+              </form>-->
             </div>
-           </div>
-</div>
-                  
-<div class="row mainclass">
-    <div class="col-md-7">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <p class="p-dealer">No Dealers Selected </p>
-
-     
-         </div>
-    <div class="col-md-3">
-        <div class="searchBox1 d-flex" >
-            <div class="promotiont2">
-                <select class="form-select select-asso" aria-label=".form-select-lg example">
-                    <option  selected hidden>Select</option>
-                    <option value="1">Airtel</option>
-                    <option value="2">Jio</option>
-                  </select>
-            </div>
-            <div class="promotiont3">
-                <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name=""
-                placeholder="Enter value"  >
-            </div>
-            <div class="promotiont3">
-                <button type="button" class="saveas-draft1">Apply </button>  
-       
           </div>
-    </div>
-</div>
-<div class="col-md-1">
-    <div class="icon btnhover refreshbtn"  style=" cursor: pointer;">
-        <img class="refresh" src="assets/img/ultrarefresh.svg" style="position: relative;top: 9px;left: 12px;"
-          alt="refresh">
-    </div>
-    </div>
-</div>
-<br>
-                    <div  class="collapsible">
-                        <div class="row">
-                            <div class="col-md-1">
-                                <input class="form-check-input1" type="checkbox" value="" id="flexCheckDefault">
-
-                            </div>
-                            <div class="col-md-3 check1">
-                                <p class="label-cls">Little hearts</p>
-                            </div>
-                            <div class="col-md-2 check1">
-                                <p class="label-cls">India (0/136)</p>
-                            </div>
-                            <div class="col-md-2 check1">
-                                <p class="label-cls">china (0/124)</p>
-                            </div>
-                            
-                            <div class="col-md-3 check1">
-                                <p class="label-cls">Singapore (0/145)</p>
-                            </div>
-                            <div class="col-md-1" (click)="expandDealerInfoDiv()">
-                                <img [src]="image1" class="expand-arrow" alt="add-user-btn">
-                            </div>
-                         </div>
-                    </div>
+        </div>
 
 
-                    
-                    <div class="content" *ngIf="!dealerInfo">
+      </div>
 
-
-<br>
-
-                        <div class="row mainclass">
-                            <div class="col-md-7">
-                                  
-                        
-                             
-                                 </div>
-                            <div class="col-md-3">
-                                <div class="searchBox1 d-flex" >
-                                    <div class="promotiont2">
-                                        <select class="form-select select-asso" aria-label=".form-select-lg example">
-                                            <option  selected hidden>Select</option>
-                                            <option value="1">Airtel</option>
-                                            <option value="2">Jio</option>
-                                          </select>
-                                    </div>
-                                    <div class="promotiont3">
-                                        <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name=""
-                                        placeholder="Enter value"  >
-                                    </div>
-                                    <div class="promotiont3">
-                                        <button type="button" class="saveas-draft1">Apply </button>  
-                               
-                                  </div>
-                            </div>
-                        </div>
-                        <div class="col-md-1">
-                            <div class="icon btnhover refreshbtn"  style=" cursor: pointer;">
-                                <img class="refresh" src="assets/img/ultrarefresh.svg" style="position: relative;top: 9px;left: 12px;"
-                                  alt="refresh">
-                            </div>
-                            </div>
-                        </div>
-                        <br>
-<table>
-   <tr>
-    <th style='width: 168px'>
-        Geography
-    </th>
-    <th>
-        MrP(INR)
-    </th>
-    <th>
-        Min order Qty
-    </th>
-    <th>
-        Max order Qty
-    </th>
-    <th>
-Margin %
-    </th>
-    <th>
-        Discount %
-            </th>
-            <th>
-                Lead time (Days)
-                    </th>
-   </tr>
-   <tr>
-       <td >
-        <img [src]="image1" class="expand-arrow1" alt="add-user-btn" (click)="expandOrderItemsDiv1()">
-        Malaysia (71/126)
-       </td>
-       <td>                                         
-              <input type="text" class="uom-cls" id="fname" name="fname">
-       </td>
-       <td>                                         
-        <input type="text" class="uom-cls" id="fname" name="fname">
-    </td>
-     
-    <td>                                         
-    <input type="text" class="uom-cls" id="fname" name="fname">
-   </td>
-
-   <td>                                         
-    <input type="text" class="uom-cls" id="fname" name="fname">
-  </td>
-
-  <td>                                         
-    <input type="text" class="uom-cls" id="fname" name="fname">
-  </td>
-
-  <td>                                         
-    <input type="text" class="uom-cls" id="fname" name="fname">
-  </td>
-   
-</tr>
-
-<tr>
-    <td >
-     <img [src]="image1" class="expand-arrow1" alt="add-user-btn" (click)="expandOrderItemsDiv1()">
-     Malaysia (71/126)
-    </td>
-    <td>                                         
-           <input type="text" class="uom-cls" id="fname" name="fname">
-    </td>
-    <td>                                         
-     <input type="text" class="uom-cls" id="fname" name="fname">
- </td>
-  
- <td>                                         
- <input type="text" class="uom-cls" id="fname" name="fname">
-</td>
-
-<td>                                         
- <input type="text" class="uom-cls" id="fname" name="fname">
-</td>
-
-<td>                                         
- <input type="text" class="uom-cls" id="fname" name="fname">
-</td>
-
-<td>                                         
- <input type="text" class="uom-cls" id="fname" name="fname">
-</td>
-
-</tr>
-
-   <tr *ngIf="!orderitem1">
-    <td class="check">
-     <img [src]="image1" class="expand-arrow1" alt="add-user-btn">
-  
-      Kedah (36/36) 
- </td>
-    <td>                                         
-           <input type="text" class="uom-cls" id="fname" name="fname">
-    </td>
-    <td>                                         
-     <input type="text" class="uom-cls" id="fname" name="fname">
-</td>
-<td>                                         
- <input type="text" class="uom-cls" id="fname" name="fname">
-</td>
-<td>                                         
- <input type="text" class="uom-cls" id="fname" name="fname">
-</td>
-<td>                                         
- <input type="text" class="uom-cls" id="fname" name="fname">
-</td>
-<td>                                         
- <input type="text" class="uom-cls" id="fname" name="fname">
-</td>
-</tr>
-<tr *ngIf="!orderitem1" >
-    <td class="check2">
-    george town 
-    </td>
-    <td>                                         
-           <input type="text" class="uom-cls" id="fname" name="fname">
-    </td>
-    <td>                                         
-     <input type="text" class="uom-cls" id="fname" name="fname">
-</td>
-<td>                                         
- <input type="text" class="uom-cls" id="fname" name="fname">
-</td>
-<td>                                         
- <input type="text" class="uom-cls" id="fname" name="fname">
-</td>
-<td>                                         
- <input type="text" class="uom-cls" id="fname" name="fname">
-</td>
-<td>                                         
- <input type="text" class="uom-cls" id="fname" name="fname">
-</td>
-</tr>
-
-</table>
-                        
-
-                    </div>     
+      <div class="row mainclass" *ngIf="screenValue == 1 || screenValue ==2 ">
+        <div class="col-md-7">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+          />
+          <p class="p-dealer">No Dealers Selected</p>
+        </div>
+        <div class="col-md-3">
+          <div class="searchBox1 d-flex">
+            <div class="promotiont2">
+              <select
+                class="form-select select-asso"
+                aria-label=".form-select-lg example"
+              >
+                <option selected hidden>Select</option>
+                <option value="1">Airtel</option>
+                <option value="2">Jio</option>
+              </select>
             </div>
+            <div class="promotiont3">
+              <input
+                class="searchInput1"
+                style="font-family: 'Gilroy'"
+                type="text"
+                name=""
+                placeholder="Enter value"
+              />
+            </div>
+            <div class="promotiont3">
+              <button type="button" class="saveas-draft1">Apply</button>
+            </div>
+          </div>
         </div>
-        
+        <div class="col-md-1">
+          <div class="icon btnhover refreshbtn" style="cursor: pointer">
+            <img
+              class="refresh"
+              src="assets/img/ultrarefresh.svg"
+              style="position: relative; top: 9px; left: 12px"
+              alt="refresh"
+            />
+          </div>
+        </div>
+
+      <br />
+      <div class="collapsible">
+        <div class="row">
+          <div class="col-md-1">
+            <input
+              class="form-check-input1"
+              type="checkbox"
+              value=""
+              id="flexCheckDefault"
+            />
+          </div>
+          <div class="col-md-3 check1">
+            <p class="label-cls">Little hearts</p>
+          </div>
+          <div class="col-md-2 check1">
+            <p class="label-cls">India (0/136)</p>
+          </div>
+          <div class="col-md-2 check1">
+            <p class="label-cls">china (0/124)</p>
+          </div>
+
+          <div class="col-md-3 check1">
+            <p class="label-cls">Singapore (0/145)</p>
+          </div>
+          <div class="col-md-1" (click)="expandDealerInfoDiv()">
+            <img [src]="image1" class="expand-arrow" alt="add-user-btn" />
+          </div>
+        </div>
+      </div>
+
+      <div class="content" *ngIf="!dealerInfo">
+        <br />
+
+        <div class="row mainclass">
+          <div class="col-md-7"></div>
+          <div class="col-md-3">
+            <div class="searchBox1 d-flex">
+              <div class="promotiont2">
+                <select
+                  class="form-select select-asso"
+                  aria-label=".form-select-lg example"
+                >
+                  <option selected hidden>Select</option>
+                  <option value="1">Airtel</option>
+                  <option value="2">Jio</option>
+                </select>
+              </div>
+              <div class="promotiont3">
+                <input
+                  class="searchInput1"
+                  style="font-family: 'Gilroy'"
+                  type="text"
+                  name=""
+                  placeholder="Enter value"
+                />
+              </div>
+              <div class="promotiont3">
+                <button type="button" class="saveas-draft1">Apply</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1">
+            <div class="icon btnhover refreshbtn" style="cursor: pointer">
+              <img
+                class="refresh"
+                src="assets/img/ultrarefresh.svg"
+                style="position: relative; top: 9px; left: 12px"
+                alt="refresh"
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+        <table>
+          <tr>
+            <th style="width: 168px">Geography</th>
+            <th>MrP(INR)</th>
+            <th>Min order Qty</th>
+            <th>Max order Qty</th>
+            <th>Margin %</th>
+            <th>Discount %</th>
+            <th>Lead time (Days)</th>
+          </tr>
+          <tr>
+            <td>
+              <img
+                [src]="image1"
+                class="expand-arrow1"
+                alt="add-user-btn"
+                (click)="expandOrderItemsDiv1()"
+              />
+              Malaysia (71/126)
+            </td>
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <img
+                [src]="image1"
+                class="expand-arrow1"
+                alt="add-user-btn"
+                (click)="expandOrderItemsDiv1()"
+              />
+              Malaysia (71/126)
+            </td>
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+          </tr>
+
+          <tr *ngIf="!orderitem1">
+            <td class="check">
+              <img [src]="image1" class="expand-arrow1" alt="add-user-btn" />
+
+              Kedah (36/36)
+            </td>
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+          </tr>
+          <tr *ngIf="!orderitem1">
+            <td class="check2">george town</td>
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+            <td>
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+              <input type="text" class="uom-cls" id="fname" name="fname" />
+            </td>
+          </tr>
+        </table>
+      </div>
+
     </div>
-    <div class="row footer">
+
+
+      <div class="row footer">
         <div class="col-md-6">
-                <button type="button" class="saveas-draft">Save </button>                       
+          <button type="button" class="saveas-draft">Save</button>
         </div>
-        <div class="col-md-6">                      
-                <button type="button"  [mat-dialog-close]="true"  class="saveas-draft2">Cancel</button>                   
+        <div class="col-md-6">
+          <button type="button" [mat-dialog-close]="true" class="saveas-draft2">
+            Cancel
+          </button>
         </div>
-        <!-- <div class="col-md-5">              
-                <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>                 
+        <!-- <div class="col-md-5">
+                <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
         </div> -->
+      </div>
     </div>
-</div>

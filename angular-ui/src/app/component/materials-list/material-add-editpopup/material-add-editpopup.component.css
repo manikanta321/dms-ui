@@ -69,8 +69,9 @@ form[name="myBasicInfo"]{
 
 .imageofm {
   font-family: 'Gilroy';
+  position: relative;
+  left: 53%;
 }
-
 .expiryperiod {
   font-family: 'Gilroy';
 }
@@ -607,35 +608,57 @@ li {
 
 ::ng-deep.categorydrp .ng-placeholder {
   color: #999;
-  font-size: 12px;
-  font-family: 'Gilroy';
-  font-weight: lighter;
+font-size: 14px;
+line-height: 16px;
+display: flex;
+align-items: center;
+  /* font-weight: lighter; */
 }
 
 ::ng-deep.subcategorydrp .ng-placeholder {
   color: #999;
-  font-size: 12px;
-  font-family: 'Gilroy';
+font-size: 14px;
+line-height: 16px;
+display: flex;
+align-items: center;
 }
 
 ::ng-deep.typedrp .ng-placeholder {
   color: #999;
-  font-size: 12px;
-  font-family: 'Gilroy';
+font-size: 14px;
+line-height: 16px;
+display: flex;
+align-items: center;
 }
 
 ::ng-deep.uomdrp .ng-placeholder {
   color: #999;
-  font-size: 12px;
-  font-family: 'Gilroy';
+font-size: 14px;
+line-height: 16px;
+display: flex;
+align-items: center;
 }
-
-::ng-deep.customidentifier .ng-placeholder {
+::placeholder {
+  color: #999 !important;
+  font-size: 14px !important;
+  line-height: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+/* ::ng-deep.customidentifier label {
+  color: #999 !important;
+font-size: 14px;
+line-height: 16px;
+display: flex;
+align-items: center;
+} */
+::ng-deep.nameplaceholed .ng-placeholder {
   color: #999;
-  font-size: 12px;
-  font-family: 'Gilroy';
+font-size: 14px;
+line-height: 16px;
+display: flex;
+align-items: center;
 }
-
 .materialname-placeholder {
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
@@ -646,7 +669,6 @@ li {
   margin-top: 8px;
   /* margin-left: -1px; */
 }
-
 ::ng-deep.sss .mat-form-field-label {
   color: rgba(104, 110, 116, 0.75);
   font-size: 12px;
@@ -758,21 +780,30 @@ li {
 .materialDesc {
   border: 1px solid !important;
   border-radius: 10px;
-  /* width: 281px; */
-  height: 126px;
+  /* width: 300px;
+  height: 126px; */
+  width: 451px;
+height: 130px;
   background-color: white;
   margin-top: 6px;
   margin-left: 3px;
 }
+textarea {
+  resize: none;
+}
+
 
 .imagePl {
   border: 1px solid !important;
   border-radius: 8px;
-  height: 129px;
+  height: 130px;
+  width: 126px;
   background-color: white;
   display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    left: 53%;
 }
 
 .na-placeholder {

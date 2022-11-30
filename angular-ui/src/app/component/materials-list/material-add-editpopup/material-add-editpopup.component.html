@@ -57,7 +57,7 @@
                   </div>
                 </div>
 
-                <div class="col-md-8">
+                <div class="col-md-8 nameplaceholed">
                   <div class="materialname">
                     <label>Name <span>*</span></label>
                   </div>
@@ -79,9 +79,12 @@
                   <div class="description">
                     <label>Description <span>*</span></label>
                   </div>
-                  <input (keyup)="onKeyDesc($event)" matInput placeholder="Describe the material" #input
-                    class="form-control container materialDesc" id="abc">
+                  <!-- <input (keyup)="onKeyDesc($event)" placeholder="Describe the material" 
+                    class="materialDesc"> -->
+                  <!-- <textarea  placeholder="Describe the material" (keyup)="onKeyDesc($event)" name="" id="" class="materialDesc">
 
+                  </textarea> -->
+                  <textarea id="" placeholder="Describe the material" (keyup)="onKeyDesc($event)" class="materialDesc" name=""></textarea>
                 </div>
                 <div class="col-md-4">
                   <div class="imageofm">
@@ -94,7 +97,7 @@
                   <label class="form-control container imagePl">
 
                     <input type="file" id="file" style="display:none" (change)="onFileChanged($event)">
-                    <img src="assets/img/add-image.png" class="add-img" alt="add-image=btn">
+                    <img src="assets/img/add-image.png"  class="add-img" alt="add-image=btn">
 
                   </label>
                 </div>
@@ -103,11 +106,7 @@
                     <label> Material Custom Identifiers <span>*</span></label>
                   </div>
                   <div class="customidentifier hide">
-                    <!-- <ng-select [items]="selectedItems5" [virtualScroll]="true" bindLabel="materialCustomName"
-                      bindValue="materilCustomIdentifierId" [searchable]="true" [clearable]="true"
-                      placeholder="Select Identifier" [(ngModel)]="selectedItems5" data="selectId">
-                    </ng-select> -->
-                    <ng-multiselect-dropdown class="Materialcustomidentifier" name="Materialcustomidentifier" [placeholder]="'Select Identifier'" 
+                    <ng-multiselect-dropdown class="Materialcustomidentifier" name="Materialcustomidentifier"placeholder="Select Identifier" 
                     [disabled]="disabled" [settings]="dropdownSettings4" [data]="selectId"
                     (onSelect)="onSelectIdentifier($event)" (onDeSelect)="onDeSelectIdentifier($event)"
                 (onDeSelectAll)="onDSelectOrAllIdentifier($event)" (onSelectAll)="onSelectOrAllIdentifier()"

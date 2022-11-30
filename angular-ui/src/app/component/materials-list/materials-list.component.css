@@ -161,10 +161,9 @@
 
 ::ng-deep.catty .multiselect-dropdown .dropdown-btn .selected-item {
   background: #00187A !important;
-  right: 6% !important;
+  /* right: 6% !important; */
   display: block;
 }
-
 /* ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
     background: #D23F00 !important;
     right: 6% !important;
@@ -175,7 +174,7 @@
     } */
 ::ng-deep.subcatty .multiselect-dropdown .dropdown-btn .selected-item {
   background: #0C5A3E !important;
-  right: 71% !important;
+  /* right: 71% !important; */
 }
 
 ::ng-deep .subcatty .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -184,7 +183,7 @@
 
 ::ng-deep.typy .multiselect-dropdown .dropdown-btn .selected-item {
   background: #C32F27 !important;
-  right: 156% !important;
+  /* right: 156% !important; */
 }
 
 ::ng-deep .typy .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -193,7 +192,7 @@
 
 ::ng-deep.producty .multiselect-dropdown .dropdown-btn .selected-item {
   background: #44026C !important;
-  right: 247% !important;
+  /* right: 247% !important; */
 }
 
 ::ng-deep .product .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -202,7 +201,7 @@
 
 ::ng-deep.sttss .multiselect-dropdown .dropdown-btn .selected-item {
   background: #000000 !important;
-  right: 289% !important;
+  /* right: 289% !important; */
 }
 
 ::ng-deep .sttss .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -360,7 +359,7 @@
   float: right;
   top: 32px;
   position: relative;
-  left: 128%;
+  left: 71%;
   cursor: pointer;
 }
 
@@ -369,7 +368,7 @@
 }
 
 .searchBox:hover>.searchButton {
-  display: bolck;
+  display: block;
   color: #000;
   float: left;
   width: 37px;
@@ -381,9 +380,8 @@
   transition: 0.2s;
   background: none;
   position: relative;
-  right: 238px;
+  right: 300px;
   top: 0px;
-
 }
 
 .add-user {
@@ -406,7 +404,7 @@
   border-radius: 5px;
   position: absolute;
   right: 10px;
-  top: 10px;
+  top: 7px;
 }
 
 /* .material-icons
@@ -422,7 +420,7 @@
   float: left;
   padding: 5px 32px 6px;
   border-radius: 10px;
-  font-family: 'Gilroy-medium';
+  font-family: 'Gilroy';
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -589,9 +587,19 @@
 .searchRow {
   margin-left: 88%;
   position: relative;
-  top: 8%;
+  top: 13%;
 }
-
+::ng-deep.dropdown-list {
+  position: absolute;
+  padding-top: 6px;
+  width: 100%;
+  z-index: 9999;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: #fff;
+  margin-top: 0px !important;
+  box-shadow: 0 1px 5px #959595;
+}
 .searchAlign {
   font-family: 'Gilroy';
   position: relative;

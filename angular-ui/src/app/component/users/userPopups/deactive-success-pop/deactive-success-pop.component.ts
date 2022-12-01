@@ -14,8 +14,12 @@ export class DeactiveSuccessPopComponent implements OnInit {
   matValue: boolean = false;
   userName: boolean = false;
   stockNmae: boolean = false;
+  stockSubCatName:boolean = false;
+  stockTypeName:boolean = false;
   activeCatId: any;
   activeCatName: any;
+  activeSubCatName:any;
+  activeTypeName:any;
   constructor(private dialogRef: MatDialogRef<any>,
     private sharedService: SharedService,
   ) { }
@@ -26,8 +30,10 @@ export class DeactiveSuccessPopComponent implements OnInit {
 
     this.activeCatId = localStorage.getItem("activeCatId");
     this.activeCatName = localStorage.getItem("activeCatName");
+    this.activeSubCatName = localStorage.getItem("activeSubCatName");
+    this.activeTypeName=localStorage.getItem("activeTypeName");
     this.employeename = localStorage.getItem("employeeName");
-    this.employeename = localStorage.getItem('Niname');
+    // this.employeename = localStorage.getItem('Niname');
     this.materialListName = localStorage.getItem('listName');
 
     this.materialList();
@@ -46,11 +52,15 @@ export class DeactiveSuccessPopComponent implements OnInit {
       this.userName = true;
       localStorage.setItem('listName', '');
       localStorage.setItem('activeCatName', '');
+      localStorage.setItem("activeSubCatName",'');
+      localStorage.setItem("activeTypeName",'');
     }
     if (this.materialListName !== '') {
       this.matValue = true;
       localStorage.setItem('activeCatName', '');
       localStorage.setItem("employeeName", '');
+      localStorage.setItem("activeSubCatName",'');
+      localStorage.setItem("activeTypeName",'');
     }
     if (this.activeCatName !== '') {
       this.matValue = false;
@@ -58,6 +68,29 @@ export class DeactiveSuccessPopComponent implements OnInit {
       this.stockNmae = true;
       localStorage.setItem('listName', '');
       localStorage.setItem("employeeName", '');
+      localStorage.setItem("activeSubCatName",'');
+      localStorage.setItem("activeTypeName",'');
+    }
+    if (this.activeSubCatName !== '') {
+      this.matValue = false;
+      this.userName = false;
+      this.stockNmae = false;
+      this.stockSubCatName = true;
+      localStorage.setItem('listName', '');
+      localStorage.setItem("employeeName", '');
+      localStorage.setItem('activeCatName', '');
+      localStorage.setItem("activeTypeName",'');
+    }
+    if (this.activeTypeName !== '') {
+      this.matValue = false;
+      this.userName = false;
+      this.stockNmae = false;
+      this.stockSubCatName = false;
+      this.stockTypeName = true;
+      localStorage.setItem('listName', '');
+      localStorage.setItem("employeeName", '');
+      localStorage.setItem('activeCatName', '');
+      localStorage.setItem("activeSubCatName",'');
     }
   }
 

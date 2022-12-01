@@ -129,6 +129,7 @@ export class AddDealerPopupComponent implements OnInit {
 
         for (let detail of res.response[0].addresscount) {
           // alert(detail.taxCodeName)
+          debugger
           let AddressTypeId: FormControl = new FormControl('');
           let ConsigneeName: FormControl = new FormControl('');
           let Taxid: FormControl = new FormControl('');
@@ -140,7 +141,7 @@ export class AddDealerPopupComponent implements OnInit {
           let ZipCode: FormControl = new FormControl('');
           let Telephone: FormControl = new FormControl('');
           AddressTypeId.setValue(detail?.addressTypeId)
-          ConsigneeName.setValue(detail?.ConsigneeName);
+          ConsigneeName.setValue(detail?.consigneeName);
           Taxid.setValue(detail?.taxid);
           AddressLine1.setValue(detail?.addressLine1);
           AddressLine2.setValue(detail?.addressLine2);
@@ -150,52 +151,43 @@ export class AddDealerPopupComponent implements OnInit {
           ZipCode.setValue(detail?.zipCode);
           Telephone.setValue(detail?.telephone);
 
+          
 
-          // this.getFormArray().push(new FormGroup({
-          //   AddressTypeId: AddressTypeId,
-          //   ConsigneeName: ConsigneeName,
-          //   Taxid: Taxid,
-          //   AddressLine1: AddressLine1,
-          //   AddressLine2: AddressLine2,
-          //   CountryName: CountryName,
-          //   StateName: StateName,
-          //   CityName: CityName,
-          //   ZipCode: ZipCode,
-          //   Telephone: Telephone
-          // }));
+          this.getFormArray().push(new FormGroup({
+            AddressTypeId: AddressTypeId,
+            ConsigneeName: ConsigneeName,
+            Taxid: Taxid,
+            AddressLine1: AddressLine1,
+            AddressLine2: AddressLine2,
+            CountryName: CountryName,
+            StateName: StateName,
+            CityName: CityName,
+            ZipCode: ZipCode,
+            Telephone: Telephone
+          }));
 
           console.log('ConsigneeName', this.getFormArray())
+          this.addAddressDetailsForm.patchValue({
+            CustomerName: data?.customerName,
+            Email: data?.email,
+            Code: data?.customerCode,
+            website: data?.website,
+            Phoneno: data?.mobilePhone,
+            company_id: data?.company_id,
+            OtherIdentifier:data?.otherIdentifier,
+            UserName: data?.userName, 
+            EmailId: data?.emailId,
+            Mobile: data?.telephone1, 
+            FirstName: data?.firstName,
+            lastName: data?.lastName,
+            StatusId: data?.user_StatusId,
 
-          this.addAddressDetailsForm = this._formBuilder.group({
-            CustomerName: [data?.customerName, [Validators.required]],
-            Email: [data?.email, [Validators.required]],
-            Code: [data?.customerCode, [Validators.required]],
-            website: [data?.website, [Validators.required]],
-            Phoneno: [data?.mobilePhone, [Validators.required]],
-            company_id: [data?.company_id, [Validators.required]],
-            OtherIdentifier: [data?.otherIdentifier, [Validators.required]],
-            UserName: [data?.userName, [Validators.required]],
-            EmailId: [data?.emailId, [Validators.required]],
-            Mobile: [data?.telephone1, [Validators.required]],
-            FirstName: [data?.firstName, [Validators.required]],
-            lastName: [data?.lastName, [Validators.required]],
-            StatusId: ['', [Validators.required]],
-            addresscount: this._formBuilder.array([
-              new FormGroup({
-                AddressTypeId: AddressTypeId,
-                ConsigneeName: ConsigneeName,
-                Taxid: Taxid,
-                AddressLine1: AddressLine1,
-                AddressLine2: AddressLine2,
-                CountryName: CountryName,
-                StateName: StateName,
-                CityName: CityName,
-                ZipCode: ZipCode,
-                Telephone: Telephone
-              })
-            ]),
 
           });
+          // this.addAddressDetailsForm = this._formBuilder.group({
+          
+
+          // });
         }
 
         console.log('this.getFormArray', this.getFormArray)

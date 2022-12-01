@@ -11,6 +11,10 @@ export class ActiveSuccessPopComponent implements OnInit {
   employeename:any;
   materialListName:any;
   matValue:boolean =false;
+  activeCatId: any;
+  activeCatName:any;
+  userName:boolean =false;
+  stockNmae:boolean =false;
   constructor(private dialogRef: MatDialogRef<any>,
     private elementRef: ElementRef) { }
 //   ngAfterViewInit() {
@@ -18,6 +22,8 @@ export class ActiveSuccessPopComponent implements OnInit {
 //         .borderleft = '10px solid green';
 // }
   ngOnInit(): void {
+    this.activeCatId = localStorage.getItem("activeCatId");
+    this.activeCatName = localStorage.getItem("activeCatName");
     this.employeeId = localStorage.getItem("userID");
     this.employeename=localStorage.getItem("employeeName");
     this.materialListName =localStorage.getItem('listName');
@@ -35,15 +41,28 @@ export class ActiveSuccessPopComponent implements OnInit {
 
 
 
-  materialList(){
-    if(this.materialListName ==''){
-    this.matValue = false;
-    localStorage.setItem('listName','');
+  materialList() {
+
+    if (this.employeename != '') {
+      this.userName = true;
+      localStorage.setItem('listName', '');
+      localStorage.setItem('activeCatName', '');
     }
-    else {
+    if (this.materialListName !== '') {
       this.matValue = true;
+      localStorage.setItem('activeCatName', '');
+      localStorage.setItem("employeeName", '');
+    }
+    if (this.activeCatName !== '') {
+      this.matValue = false;
+      this.userName = false;
+      this.stockNmae = true;
+      localStorage.setItem('listName', '');
+      localStorage.setItem("employeeName", '');
     }
   }
+  
+
   closeDialog(){
     this.dialogRef.close();
   }

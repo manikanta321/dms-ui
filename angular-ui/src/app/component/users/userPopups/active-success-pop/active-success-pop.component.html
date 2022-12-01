@@ -1,15 +1,33 @@
+<div class="container">
 
-<div class="container" >
+    <div class="rest-pwsd d-flex" *ngIf="!stockNmae">
 
-    <div class="rest-pwsd d-flex">
-        
         <div class="tumbsup"><img class="c" src="../../../../../assets/userImages/carbon_thumbs-up.svg" alt="">
             <br>
             <b>Done !</b>
         </div>
-        <div class="text-succ mt-3" *ngIf="!matValue"><p>User <b>{{employeename}}</b> is <b style="color: rgba(23, 177, 92, 1);">Reactivated</b></p></div>
-        <div class="text-succ mt-3" *ngIf="matValue"><p>Material <b>{{materialListName}}</b> is <b style="color: rgba(23, 177, 92, 1);">Reactivated</b></p></div>
-    <div class="closeImg" (click)=" closeDialog()"><img src="../../../../../assets/userImages/user-closeImg.svg" alt=""></div>
+        <div class="text-succ mt-3" *ngIf="!matValue">
+            <p>User <b>{{employeename}}</b> is <b style="color: rgba(23, 177, 92, 1);">Reactivated</b></p>
+        </div>
+        <div class="text-succ mt-3" *ngIf="matValue">
+            <p>Material <b>{{materialListName}}</b> is <b style="color: rgba(23, 177, 92, 1);">Reactivated</b></p>
+        </div>
+        <div class="closeImg" (click)=" closeDialog()"><img src="../../../../../assets/userImages/user-closeImg.svg"
+                alt=""></div>
 
-</div>
+    </div>
+
+    <div class="rest-pwsd d-flex" *ngIf="stockNmae" >
+
+        <div class="tumbsup"><img class="c" src="../../../../../assets/userImages/carbon_thumbs-up.svg" alt="">
+            <br>
+            <b>Done !</b>
+        </div>
+        <div class="text-succ mt-3">
+            <p>activeCatName <b>{{activeCatName}}</b> is <b style="color: rgba(23, 177, 92, 1);">Reactivated</b></p>
+        </div>
+        <div class="closeImg" (click)=" closeDialog()"><img src="../../../../../assets/userImages/user-closeImg.svg"
+                alt=""></div>
+
+    </div>
 </div>

@@ -6,6 +6,8 @@ import { SharedService } from 'src/app/services/shared-services.service';
 import { TaxTemplateServiceService } from 'src/app/services/tax-template-service.service';
 import { UserService } from 'src/app/services/user.service';
 import { SuccessDeactivateTaxComponentComponent } from '../success-deactivate-tax-component/success-deactivate-tax-component.component';
+import { ActiveSuccessPopComponent } from '../users/userPopups/active-success-pop/active-success-pop.component';
+import { DeactiveSuccessPopComponent } from '../users/userPopups/deactive-success-pop/deactive-success-pop.component';
 @Component({
   selector: 'app-deactivate-classification-pop-up',
   templateUrl: './deactivate-classification-pop-up.component.html',
@@ -65,6 +67,10 @@ this.calssification.deactivate(data1).subscribe((res)=>{
   this.sharedService.filter('Register click')
   this.dialogRef.close();
 });
+this.dialog.open(ActiveSuccessPopComponent, {panelClass: 'activeSuccessPop'})
+this.sharedService.filter('Register click')
+;
+this.dialogRef.close();
     }
     else{
       const data1={
@@ -78,7 +84,13 @@ this.calssification.deactivate(data1).subscribe((res)=>{
       this.dialogRef.close();
   
     
-    })
+    });
+    this.sharedService.filter('Register click');
+     
+    
+    this.dialog.open(DeactiveSuccessPopComponent, {panelClass: 'deactiveSuccessPop'});
+    this.sharedService.filter('Register click');
+    this.dialogRef.close()
         }
 
     }

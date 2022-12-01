@@ -45,6 +45,7 @@ mat-tab{
     background: white;
     left: 35%;
     font-size: 15px;
+    /* font-family: 'Gilroy'; */
     
 
 }::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
@@ -104,4 +105,10 @@ mat-tab-group{
    } 
    mat-drawer-content .hideScrollOthermasters{
         overflow: hidden;
+   }
+   .font{
+    font-family: 'Times New Roman';
+   }
+  ::ng-deep.mat-tab-label .mat-tab-label-content{
+    font-family: 'Gilroy';
    }

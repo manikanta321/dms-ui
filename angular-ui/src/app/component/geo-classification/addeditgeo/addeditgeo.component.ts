@@ -15,6 +15,7 @@ export class AddeditgeoComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any, private spinner: NgxSpinnerService,private classification: ClassificationserviseService,) {}
     
     geoType:string = "";
+    geoPlaceholder:any;
     isEditModal:boolean = false;
     name:string | null = null;
     code:string| null = null;
@@ -24,12 +25,15 @@ export class AddeditgeoComponent implements OnInit {
     logedUserId:any;
     hirerachyIndex:any;
   ngOnInit(): void {
+   
     console.log(this.data);
     this.logedUserId = Number(localStorage.getItem("logInId"));
     
     this.showWarning = false;
     this.geoType =  this.data.title;    
-    this.isEditModal = this.data.isEdit;
+    this.geoPlaceholder = this.geoType.toLowerCase();
+   
+     this.isEditModal = this.data.isEdit;
     this.GeographyParentId = this.data.GeographyParentId;
     this.hirerachyIndex = this.data.hirerachyIndex;
     if(this.data.geography){

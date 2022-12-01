@@ -8,11 +8,11 @@
     <form #loginForm="ngForm">
     <div>
         <label >Name<span style="color: red;">*</span></label><br>
-        <input type="text" name="name" id="name" [placeholder]="'Enter ' + geoType + ' Name'" [(ngModel)]="name"
+        <input type="text" name="name" id="name" [placeholder]="'Enter ' + geoPlaceholder + ' name'" [(ngModel)]="name"
           required >       
 <br>
         <label >Code<span style="color: red;">*</span></label><br>
-        <input type="text" name="code" id="code" [placeholder]="'Enter ' + geoType + ' Code'" [(ngModel)]="code"
+        <input type="text" name="code" id="code" [placeholder]="'Enter ' + geoPlaceholder + ' code'" [(ngModel)]="code"
       >
      <br>
         <div class="action">

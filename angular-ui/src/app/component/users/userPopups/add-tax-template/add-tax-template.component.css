@@ -139,7 +139,7 @@ label{
 background:black;
 color: white;
  padding: 2px 30px;
- width: 175px;
+ width: 362px;
  height: 43px;
  border-radius: 10px;
  margin-right: 10px;
@@ -184,4 +184,7 @@ color: white;
 
 td{
     padding: 10px;
+}
+.font{
+    font-family: 'Gilroy';
 }

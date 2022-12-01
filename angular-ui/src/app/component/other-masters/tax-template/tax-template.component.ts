@@ -398,7 +398,7 @@ instancePopup:any = null;
     
     
     onStatusDeSelect(item: any) {
-      alert(item)
+      // alert(item)
       this.statusTypes.forEach((element,index)=>{
         if(element==item.statusId)  this.statusTypes.splice(index,1);
      });

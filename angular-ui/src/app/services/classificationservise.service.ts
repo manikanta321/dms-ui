@@ -226,4 +226,10 @@ updateType(data){
 }
 
 
+
+getDealerDetailsById(id){
+  return this.http.get<any>(this.classificationurl + 'DealerApi/GetDealersToEdit?CustomerId=' + id);
+
+}
+
 }

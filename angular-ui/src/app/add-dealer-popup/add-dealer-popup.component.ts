@@ -104,7 +104,6 @@ export class AddDealerPopupComponent implements OnInit {
     private classification: ClassificationserviseService,
     private calssification: ClassificationserviseService,
     private sharedService: SharedServicesDealerService,
-
     //private toastrService: ToastrService,
     private dialogRef: MatDialogRef<any>) {
     this.formReader();
@@ -115,24 +114,91 @@ export class AddDealerPopupComponent implements OnInit {
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
 
   ngOnInit(): void {
-    this.CreatedById= localStorage.getItem("logInId");
-    this.CreatedById= Number(this.CreatedById);
-    this.addAddressForm1('6');
-    this.addAddressForm1('7');
-
+    this.CreatedById = localStorage.getItem("logInId");
+    this.CreatedById = Number(this.CreatedById);
     this.statusForm();
     //geographies List
     this.getGeographyHierarchy();
     if (localStorage.getItem('edit-dealer') === 'Edit') {
       this.dealerAction = "Edit"
+      let customerId = localStorage.getItem('customerIdOfDealer');
+      this.calssification.getDealerDetailsById(customerId).subscribe((res) => {
+
+        let data = res.response[0]
+        console.log('customerIdOfDealer', data)
+
+        for (let detail of res.response[0].addresscount) {
+          // alert(detail.taxCodeName)
+          debugger
+          let AddressTypeId: FormControl = new FormControl('');
+          let ConsigneeName: FormControl = new FormControl('');
+          let Taxid: FormControl = new FormControl('');
+          let AddressLine1: FormControl = new FormControl('');
+          let AddressLine2: FormControl = new FormControl('');
+          let CountryName: FormControl = new FormControl('');
+          let StateName: FormControl = new FormControl('');
+          let CityName: FormControl = new FormControl('');
+          let ZipCode: FormControl = new FormControl('');
+          let Telephone: FormControl = new FormControl('');
+          AddressTypeId.setValue(detail?.addressTypeId)
+          ConsigneeName.setValue(detail?.ConsigneeName);
+          Taxid.setValue(detail?.taxid);
+          AddressLine1.setValue(detail?.addressLine1);
+          AddressLine2.setValue(detail?.addressLine2);
+          CountryName.setValue(detail?.countryName);
+          StateName.setValue(detail?.stateName);
+          CityName.setValue(detail?.cityName);
+          ZipCode.setValue(detail?.zipCode);
+          Telephone.setValue(detail?.telephone);
+
+
+          this.getFormArray().push(new FormGroup({
+            AddressTypeId: AddressTypeId,
+            ConsigneeName: ConsigneeName,
+            Taxid: Taxid,
+            AddressLine1: AddressLine1,
+            AddressLine2: AddressLine2,
+            CountryName: CountryName,
+            StateName: StateName,
+            CityName: CityName,
+            ZipCode: ZipCode,
+            Telephone: Telephone
+          }));
+
+          console.log('ConsigneeName', this.getFormArray())
+
+          this.addAddressDetailsForm = this._formBuilder.group({
+            CustomerName: [data?.customerName, [Validators.required]],
+            Email: [data?.email, [Validators.required]],
+            Code: [data?.customerCode, [Validators.required]],
+            website: [data?.website, [Validators.required]],
+            Phoneno: [data?.mobilePhone, [Validators.required]],
+            company_id: [data?.company_id, [Validators.required]],
+            OtherIdentifier: [data?.otherIdentifier, [Validators.required]],
+            UserName: [data?.userName, [Validators.required]],
+            EmailId: [data?.emailId, [Validators.required]],
+            Mobile: [data?.telephone1, [Validators.required]],
+            FirstName: [data?.firstName, [Validators.required]],
+            lastName: [data?.lastName, [Validators.required]],
+            StatusId: ['', [Validators.required]],
+            addresscount: this._formBuilder.array([]),
+
+          });
+        }
+
+        console.log('this.getFormArray', this.getFormArray)
+      })
+
     } else {
       this.dealerAction = "Add"
+      this.addAddressForm1('6');
+      this.addAddressForm1('7');
     }
     //  this.ConsigneeName2='';
   }
-
-
-
+  getFormArray(): FormArray {
+    return this.addAddressDetailsForm.get('addresscount') as FormArray;
+  }
 
   getGeographyHierarchy() {
     this.spinner.show();
@@ -230,6 +296,7 @@ export class AddDealerPopupComponent implements OnInit {
 
   }
   getGeographiesDataById(id, hirerachyIndex = 0) {
+
     this.spinner.show();
     console.log(id, hirerachyIndex);
     this.classification.getGeographiesById(id, hirerachyIndex).subscribe(geographiesRes => {
@@ -342,7 +409,7 @@ export class AddDealerPopupComponent implements OnInit {
   }
 
 
-  
+
 
 
   formReader() {
@@ -433,11 +500,11 @@ export class AddDealerPopupComponent implements OnInit {
 
   saveGeographiesList() {
 
-    
+
 
     let selectedGeographies = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographySelected;
-    let data2={
-      DefalultgeoId:selectedGeographies,
+    let data2 = {
+      DefalultgeoId: selectedGeographies,
     }
     if (selectedGeographies.length == 0) {
       alert("Please select default geography grid");
@@ -451,17 +518,17 @@ export class AddDealerPopupComponent implements OnInit {
     //   "CityId": localStorage.getItem('cityId'),
     //   "CreatedById": this.LoginId
     // };
-    let data3={
-      CreatedById:this.CreatedById
+    let data3 = {
+      CreatedById: this.CreatedById
     }
 
-    let data = Object.assign(this.addAddressDetailsForm.value,data2, data3)
+    let data = Object.assign(this.addAddressDetailsForm.value, data2, data3)
 
     console.log(data);
 
     this.calssification.addDealerData(data).subscribe((res) => {
 
-      if(res.response.result=="Succesfully added"){
+      if (res.response.result == "Succesfully added") {
         this.dialogRef.close();
         this.sharedService.filter('Register click')
 

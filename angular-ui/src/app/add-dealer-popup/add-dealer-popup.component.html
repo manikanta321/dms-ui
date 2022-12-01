@@ -154,9 +154,9 @@
                                         <mat-icon class="addMore-icon" (click)=addAddressForm()>add_circle</mat-icon>
                                     </div>
                                 </div>
+                              
 
-
-                                <div *ngIf="addAddress" formArrayName="addresscount">
+                                <div  formArrayName="addresscount">
 
                                     <div class="row" *ngFor="let quantity of addresscount().controls; let i=index"
                                         [formGroupName]="i">

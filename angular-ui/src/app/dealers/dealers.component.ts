@@ -836,7 +836,7 @@ ProductItems(){
     this.employeeName = e.data.customerCode;
     console.log('userID', this.userId);
     localStorage.setItem('employeeNameOfDealer', this.employeeName);
-    localStorage.setItem('customerIdOfDealer', this.customerID);
+    localStorage.setItem('customerIdOfDealer', this.customerID);    
     if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
       const cellRendererInstances = e.api.getCellRendererInstances({
         rowNodes: [e.node],

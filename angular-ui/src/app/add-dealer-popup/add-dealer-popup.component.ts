@@ -129,7 +129,6 @@ export class AddDealerPopupComponent implements OnInit {
 
         for (let detail of res.response[0].addresscount) {
           // alert(detail.taxCodeName)
-          debugger
           let AddressTypeId: FormControl = new FormControl('');
           let ConsigneeName: FormControl = new FormControl('');
           let Taxid: FormControl = new FormControl('');
@@ -152,18 +151,18 @@ export class AddDealerPopupComponent implements OnInit {
           Telephone.setValue(detail?.telephone);
 
 
-          this.getFormArray().push(new FormGroup({
-            AddressTypeId: AddressTypeId,
-            ConsigneeName: ConsigneeName,
-            Taxid: Taxid,
-            AddressLine1: AddressLine1,
-            AddressLine2: AddressLine2,
-            CountryName: CountryName,
-            StateName: StateName,
-            CityName: CityName,
-            ZipCode: ZipCode,
-            Telephone: Telephone
-          }));
+          // this.getFormArray().push(new FormGroup({
+          //   AddressTypeId: AddressTypeId,
+          //   ConsigneeName: ConsigneeName,
+          //   Taxid: Taxid,
+          //   AddressLine1: AddressLine1,
+          //   AddressLine2: AddressLine2,
+          //   CountryName: CountryName,
+          //   StateName: StateName,
+          //   CityName: CityName,
+          //   ZipCode: ZipCode,
+          //   Telephone: Telephone
+          // }));
 
           console.log('ConsigneeName', this.getFormArray())
 
@@ -181,7 +180,20 @@ export class AddDealerPopupComponent implements OnInit {
             FirstName: [data?.firstName, [Validators.required]],
             lastName: [data?.lastName, [Validators.required]],
             StatusId: ['', [Validators.required]],
-            addresscount: this._formBuilder.array([]),
+            addresscount: this._formBuilder.array([
+              new FormGroup({
+                AddressTypeId: AddressTypeId,
+                ConsigneeName: ConsigneeName,
+                Taxid: Taxid,
+                AddressLine1: AddressLine1,
+                AddressLine2: AddressLine2,
+                CountryName: CountryName,
+                StateName: StateName,
+                CityName: CityName,
+                ZipCode: ZipCode,
+                Telephone: Telephone
+              })
+            ]),
 
           });
         }

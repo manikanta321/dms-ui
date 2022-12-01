@@ -11,9 +11,9 @@
             
             <form [formGroup]="productForm" (ngSubmit)="onSubmit()">  
                 
-                <div  class="row">
+                <div  class="row font">
                     <div class="col-8">
-                        <label>Name</label>
+                        <label>Name<span>*</span></label>
                         <br>
                         <input style="height: 43px;width: 220px;border-radius: 10px;border: ' 0.5px solid #000000';" type="text" placeholder="Enter" id="TaxTemplateName" name="TaxTemplateName"  formControlName="TaxTemplateName" >
             
@@ -21,11 +21,11 @@
                     <div class="col">
                         <br>
                         <br>
-                      <p>  Used <b>T</b> for <b>Total</b> in Formula*</p>
+                      <p>  Used <b>T</b> for <b>Total</b> in Formula<span>*</span></p>
                     </div>
                    
                 </div> 
-              <table formArrayName="TaxDetails" >
+              <table formArrayName="TaxDetails" class="font" >
                     <tr>
                         <th></th>
                         <th>Tax item Name</th>
@@ -48,8 +48,8 @@
 
               </form>  
           <div style="text-align: center; padding:20px">
-            <button class="btn E-saveBtn" type="submit" (click)="onSubmit()" [disabled]="TaxTemplateName">Save</button>
-                <button class="btn E-cancelBtn" (click)=" closeDialog()" >Cancel</button>
+            <button class="btn E-saveBtn" type="submit" (click)="onSubmit()" [disabled]="TaxTemplateName">Add</button>
+                <!-- <button class="btn E-cancelBtn" (click)=" closeDialog()" >Cancel</button> -->
             </div>
 
         </div>

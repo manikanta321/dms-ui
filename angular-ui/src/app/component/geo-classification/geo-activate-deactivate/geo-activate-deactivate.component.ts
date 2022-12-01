@@ -13,10 +13,14 @@ export class GeoActivateDeactivateComponent implements OnInit {
   headername:string = "";
   activeCatName:string = "";
   geographyItem:any;
+  
+ 
   ngOnInit(): void {
     console.log(this.data);
     this.geographyItem = this.data;
-  }
+
+
+     }
 
 
   updateGeoClick() {

@@ -2,7 +2,7 @@
     <div class="EditUser-p">
         <mat-icon  mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
         <div class="head-t">
-            <h3 class="addU">Edit Tax Template</h3>
+            <h3 class="addU font">Edit Tax Template</h3>
           </div>
         <!-- <div  class="row">
             <div class="col-8">
@@ -25,9 +25,9 @@
             
             <form [formGroup]="productForm" (ngSubmit)="onSubmit()">  
                 
-                <div  class="row">
+                <div  class="row font">
                     <div class="col-8">
-                        <label>Name</label>
+                        <label>Name<span>*</span></label>
                         <br>
                         <input style="height: 43px;width: 220px;border-radius: 10px;border: ' 0.5px solid #000000';" type="text"   formControlName="TaxTemplateName" value="{{taxItemName}}" >
             
@@ -35,11 +35,11 @@
                     <div class="col">
                         <br>
                         <br>
-                      <p>  Used <b>T</b> for <b>Total</b> in Formula*</p>
+                      <p>  Used <b>T</b> for <b>Total</b> in Formula<span>*</span></p>
                     </div>
                    
                 </div> 
-              <table formArrayName="TaxDetails" >
+              <table formArrayName="TaxDetails" class="font" >
                     <tr>
                         <th></th>
                         <th>Tax item Name</th>

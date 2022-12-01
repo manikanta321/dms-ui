@@ -3,6 +3,45 @@
     border-radius: 21px;
 }
 
+.conver
+{
+    font-family: 'Gilroy-Light';
+font-size: 20px;
+line-height: 23px;
+align-items: center;
+
+color: #000000;
+}
+.name1
+{
+    font-family: 'Gilroy-Medium';
+font-size: 16px;
+line-height: 15px;
+align-items: center;
+font-weight: 400;
+
+color: #000000;
+}
+.dunits
+{
+    font-family: 'Gilroy-Medium';
+    font-size: 16px;
+    line-height: 15px;
+    align-items: center;
+    font-weight: 400;
+    
+    color: #000000;
+}
+.cursionr
+{
+    font-family: 'Gilroy-Medium';
+    font-size: 16px;
+    line-height: 15px;
+    align-items: center;
+    font-weight: 400;
+    
+    color: #000000;
+}
 
 .mat-form-field-flex {
     padding-top: -10px;

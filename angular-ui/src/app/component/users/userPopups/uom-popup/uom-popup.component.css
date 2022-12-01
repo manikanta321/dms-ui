@@ -85,10 +85,15 @@ span{
     font-size: 15px;
     font-weight: 600;
 }
-.requiredF{
+.requiredFF{
     position: relative;
     left: 19px;
-    font-family: 'Gilroy';
+    font-family: 'Gilroy-Light';
+    font-size: 16px;
+    line-height: 14px;
+
+    align-items: center;
+
 }
 /* .addUserForm 
 {

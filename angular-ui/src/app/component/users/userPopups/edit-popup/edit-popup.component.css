@@ -8,6 +8,26 @@
     
     /* background-color: #CED4DA; */
 }
+.BIN
+{
+font-family: 'Gilroy-Light';
+font-size: 20px;
+line-height: 23px;
+align-items: center;
+
+color: #000000;
+
+}
+
+.RSE
+{
+    font-family: 'Gilroy-Light';
+font-size: 20px;
+line-height: 23px;
+align-items: center;
+
+color: #000000;
+}
 .form1:disabled {
     background: #411a1a !important;
 }.main{

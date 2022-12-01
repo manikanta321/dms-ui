@@ -10,6 +10,27 @@ mat-card{
     margin-left: -12px;
 
 } 
+.cate{
+
+font-family: 'Gilroy-Light';
+font-size: 20px;
+line-height: 23px;
+color: #000000;
+}
+.subcate
+{
+  font-family: 'Gilroy-Light';
+font-size: 20px;
+line-height: 23px;
+color: #000000;
+}
+.type1
+{
+  font-family: 'Gilroy-Light';
+font-size: 20px;
+line-height: 23px;
+color: #000000;
+}
 .arrow
 {
   top:10px;
@@ -135,7 +156,7 @@ color: #686E74;
 
 {
 
-  margin-top: 80px;
+  margin-top: 50px;
 
 }
 .addbt.disabled{

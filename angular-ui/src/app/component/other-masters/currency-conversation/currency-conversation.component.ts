@@ -129,6 +129,7 @@ field: 'uomSymbol',type: ['nonEditableColumn']
 // suppressMovable:true,
 { headerName: "Status",
  field: 'statusName', 
+ maxWidth: 109,
  type: ['nonEditableColumn'],
 cellEditor: 'agSelectCellEditor',
 cellEditorParams: {

@@ -6,7 +6,7 @@
             <img src="../../../assets/sidebarImages/sidenav-dashboard.svg" alt="">
             <!-- <mat-icon>dashboard</mat-icon>  -->
             <!-- <mat-icon (click)="close()" class="btnclose">close</mat-icon> -->
-            <span  class="dasb-menu cursor-pointer"
+            <span  style="cursor:pointer ;" class="dasb-menu    cursor-pointer"
                 *ngIf="collapsed">Dashboard</span>
 
         </mat-list-item>
@@ -15,14 +15,14 @@
         <mat-list-item  routerLink="/dashbord/oreders" routerLinkActive="active">
             <img src="../../../assets/sidebarImages/sidenav-orders.svg" alt="">
             <!-- <mat-icon >card_travel</mat-icon>  -->
-            <span *ngIf="collapsed">Orders</span>
+            <span style="cursor:pointer ;"   *ngIf="collapsed">Orders</span>
 
         </mat-list-item>
 
         <mat-list-item routerLink="/dashbord/saleslist" routerLinkActive="active">
             <img src="../../../assets/sidebarImages/sidenav-products.svg" alt="">
             <!-- <mat-icon>store_mall_directory</mat-icon> -->
-            <span *ngIf="collapsed">Sales</span>
+            <span style="cursor:pointer ;" *ngIf="collapsed">Sales</span>
         </mat-list-item>
 
         <!-- <mat-list-item>
@@ -35,7 +35,7 @@
             <img src="../../../assets/sidebarImages/sidenav-dealer.svg" alt="">
             <!-- <mat-icon>people</mat-icon> -->
             <span class="dash-menu" 
-                *ngIf="collapsed">Dealer</span>
+            style="cursor:pointer ;"      *ngIf="collapsed">Dealer</span>
         </mat-list-item>
 
         <mat-accordion>
@@ -49,7 +49,7 @@
                     <mat-panel-title>
                          <img src="../../../assets/sidebarImages/sidenav-settings.svg" alt="">
                         <!-- <mat-icon>settings</mat-icon> -->
-                        <span *ngIf="collapsed">Settings</span>
+                        <span style="cursor:pointer ;"  *ngIf="collapsed">Settings</span>
 
 
 
@@ -93,7 +93,7 @@
         <mat-list-item style="position: relative; top:150px">
             <img src="../../../assets/sidebarImages/sidenav-help.svg" alt="">
             <!-- <mat-icon>help</mat-icon>  -->
-            <span *ngIf="collapsed">Help</span>
+            <span style="cursor:pointer ;" *ngIf="collapsed">Help</span>
 
         </mat-list-item>
 

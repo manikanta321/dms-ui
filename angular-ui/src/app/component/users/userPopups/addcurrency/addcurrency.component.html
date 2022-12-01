@@ -19,19 +19,19 @@
           <!-- <form> -->
             <div class="row">
               <div class="col">
-                  <label>Name <span>*</span></label>
+                  <label class="name1">Name <span>*</span></label>
                   <br>
                   <input type="text" required  (keyup)="onKeyName($event)" placeholder="Enter Name"[(ngModel)]="EUomName" class="imputtext">
                 </div>
                 <div class="col">
-                  <label>Display Units<span>*</span></label>
+                  <label class="dunits">Display Units<span>*</span></label>
                   <br>
                 <input type="text" (keyup)="onKeyShortName($event)" required placeholder="Enter display unit" [(ngModel)]="EuoMShortName" class="imputtext" ></div>
             </div>
                 <br>
               <div class="row">
                 <div class="col">
-                  <label>Conversion Rate<span>*</span></label>
+                  <label class="cursionr">Conversion Rate<span>*</span></label>
                   <br>
                   <input required (keyup)="onKeyConversion($event)" [(ngModel)]="EConversionRate" placeholder="Enter Conversion Rate" class="imputtext" style="width: 100%;">
                 
@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col">
                 
-              <label>Conversion<span>*</span></label>
+              <label class="conver">Conversion<span>*</span></label>
               <br>
               <input type="text" [value]="editedConversion" placeholder="0.011 GBP" [(ngModel)]="EConversionShow" class="imputtext" disabled>
                 

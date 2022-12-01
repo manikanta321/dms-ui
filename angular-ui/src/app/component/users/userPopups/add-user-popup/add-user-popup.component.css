@@ -3,6 +3,24 @@
     border-radius: 21px;
 }
 
+.BI
+{
+    font-family: 'Gilroy-Light';
+font-size: 20px;
+line-height: 23px;
+align-items: center;
+
+color: #000000;
+}
+.rs
+{
+    font-family: 'Gilroy-Light';
+font-size: 20px;
+line-height: 23px;
+align-items: center;
+
+color: #000000;
+}
 select option:hover
 {
     background-color:gray !important;

@@ -75,19 +75,16 @@
           </div>
         </div>
         <!-- Dealer list -->
-        <div>
+        <div *ngIf="screenValue== 0|| screenValue == 1 ">
           <label class="dealer-list">Dealers List</label>
           <br />
-
+        </div>
           <div class="row">
             <div class="col-12" *ngIf="screenValue == 0">
               <input type="search" name="" placeholder="Product/dealer not Selected Yet" id="" class="select-asso" disabled>
             </div>
-            <div class="col-6" *ngIf="screenValue == 1 || screenValue ==2 ">
-              <input type="search" name="" id="" class="select-asso">
-            </div>
-          </div>
-          <!-- <div class="row">
+
+           <div class="row" *ngIf="screenValue == 1">
             <div class="col-md-6 promotiont1">
               <form [formGroup]="myForm" class="dropdown-form">
                 <ng-multiselect-dropdown
@@ -121,7 +118,7 @@
                 </div>
               </form>
             </div>
-            <div class="col-md-6 promotiont1">
+            <!-- <div class="col-md-6 promotiont1">
               <form [formGroup]="myForm" class="dropdown-form">
                 <ng-multiselect-dropdown
                   class="promo1"
@@ -131,7 +128,7 @@
                   [settings]="dropdownSettings3"
                   [data]="toppingList"
                 >
-                </ng-multiselect-dropdown>
+                </ng-multiselect-dropdown> -->
 
                 <!-- <div class="dropdown-placeholder promo1-placeholder">
                   <span
@@ -151,14 +148,137 @@
                   >
                     {{ myForm.get("city1").value.length }} Geographies selected
                   </span>
-                </div>
-              </form>-->
+                </div> -->
+              <!-- </form> -->
             </div>
-          </div>
-        </div>
+          <!-- </div>
+        </div> -->
 
 
       </div>
+
+      <!-- product list -->
+
+      <div *ngIf="screenValue==2">
+        <div class="row">
+            <div  class="col">
+                <label class="dealer-list">Product List</label>
+
+            </div>
+
+
+        </div>
+            <br>
+                   <div class="row">
+                       <div class="col promotiont1">
+                           <form [formGroup]="myForm" class="dropdown-form">
+                               <ng-multiselect-dropdown class="promo1"  [placeholder]="'Dealers'" formControlName="city1"
+                                 [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList" >
+                               </ng-multiselect-dropdown>
+
+
+                               <div class="dropdown-placeholder promo1-placeholder">
+                                   <span *ngIf="myForm.get('city1').value.length == 0" style="color: black;">Select  category  </span>
+                                   <span *ngIf="myForm.get('city1').value.length == 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} category  </span>
+                                 <span *ngIf="myForm.get('city1').value.length > 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} category  </span>
+
+                               </div>
+
+                             </form>
+                       </div>
+                       <div class="col promotiont1">
+                           <form [formGroup]="myForm" class="dropdown-form">
+                               <ng-multiselect-dropdown class="promo1"  [placeholder]="'Geographies'" formControlName="city1"
+                                 [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList" >
+                               </ng-multiselect-dropdown>
+
+
+                               <div class="dropdown-placeholder promo1-placeholder">
+                                 <span *ngIf="myForm.get('city1').value.length == 0" style="color: black;"> Sub-category </span>
+                                 <span *ngIf="myForm.get('city1').value.length == 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Sub-category  </span>
+                                 <span *ngIf="myForm.get('city1').value.length > 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Sub-category  </span>
+
+                               </div>
+
+                             </form>
+                       </div>
+
+
+                       <div class="col promotiont1">
+                        <form [formGroup]="myForm" class="dropdown-form">
+                            <ng-multiselect-dropdown class="promo1"  [placeholder]="'Geographies'" formControlName="city1"
+                              [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList" >
+                            </ng-multiselect-dropdown>
+
+
+                            <div class="dropdown-placeholder promo1-placeholder">
+                              <span *ngIf="myForm.get('city1').value.length == 0" style="color: black;">Select Type </span>
+                              <span *ngIf="myForm.get('city1').value.length == 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Type  </span>
+                              <span *ngIf="myForm.get('city1').value.length > 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Type  </span>
+
+                            </div>
+
+                          </form>
+                    </div>
+                    <div class="col promotiont1">
+                        <form [formGroup]="myForm" class="dropdown-form">
+                            <ng-multiselect-dropdown class="promo1"  [placeholder]="'Geographies'" formControlName="city1"
+                              [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList" >
+                            </ng-multiselect-dropdown>
+
+
+                            <div class="dropdown-placeholder promo1-placeholder">
+                              <span *ngIf="myForm.get('city1').value.length == 0" style="color: black;">Select Product </span>
+                              <span *ngIf="myForm.get('city1').value.length == 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Product  </span>
+                              <span *ngIf="myForm.get('city1').value.length > 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Product  </span>
+
+                            </div>
+
+                          </form>
+                    </div>
+                    <div class="col-1 promotiont1">
+                        <div class="icon btnhover refreshbtn1"  style=" cursor: pointer;">
+                            <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;"
+                              alt="refresh">
+                        </div>
+                    </div>
+
+
+                   </div>
+                   <div class="row">
+                    <div class="col-3 promotiont1">
+                        <form [formGroup]="myForm" class="dropdown-form">
+                            <ng-multiselect-dropdown class="promo1"  [placeholder]="'Geographies'" formControlName="city1"
+                              [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList" >
+                            </ng-multiselect-dropdown>
+
+
+                            <div class="dropdown-placeholder promo1-placeholder">
+                              <span *ngIf="myForm.get('city1').value.length == 0" style="color: black;">Product Identifier </span>
+                              <span *ngIf="myForm.get('city1').value.length == 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Product  </span>
+                              <span *ngIf="myForm.get('city1').value.length > 1" class="selected-placeholder"> {{myForm.get('city1').value.length}} Product  </span>
+
+                            </div>
+
+                          </form>
+                    </div>
+                    <div class="col-9">
+                      <div class="searchBox d-flex" style=" cursor: pointer">
+                          <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+                            placeholder="Type & search for anything">
+                          <button class="searchButton" href="#">
+                            <i class="material-icons">
+                              search
+                            </i>
+                          </button>
+                          <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+                        </div>
+                  </div>
+                   </div>
+
+
+        </div>
+
 
       <div class="row mainclass" *ngIf="screenValue == 1 || screenValue ==2 ">
         <div class="col-md-7">

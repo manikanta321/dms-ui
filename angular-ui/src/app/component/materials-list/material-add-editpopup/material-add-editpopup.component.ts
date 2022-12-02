@@ -29,9 +29,9 @@ export class MaterialAddEditpopupComponent {
   dropdownSettings2: IDropdownSettings = {};
   dropdownSettings3: IDropdownSettings = {};
   dropdownSettings4: IDropdownSettings = {};
-  toppingList2:  any= []; 
-  toppingList3:  any= [];
-  actineLabel:any ; // countryname: string[] = ['Malaysia (71/126)', 'India (178/178)','Philipines (0/135)'];
+  toppingList2: any = [];
+  toppingList3: any = [];
+  actineLabel: any; // countryname: string[] = ['Malaysia (71/126)', 'India (178/178)','Philipines (0/135)'];
   // statename: string[] = ['Johor(0/42)', 'Kedah(36/36','Perak(14/26)','Penang(21/22)'];
   regionname: string[] = ['North(4/4)', 'South(8/8)', 'East(6/6)', 'West(3/4)'];
   cityname: string[] = ['George town', 'Balik Pulau', 'Batu Refringi', 'Teluk Bahang'];
@@ -60,45 +60,45 @@ export class MaterialAddEditpopupComponent {
   selectedItems5: any;
   selectedItems6: any;
   selectedItems7: any;
-  sub_category:any;
-  typeI:any;
-  rowData5:any=[];
-  selectId : any =[];
-  subProduct:any = [];
-  countryList:any =[];
-  countStates:any;
-  stateList:any =[];
-  countDist:any;
-  distList:any =[];
-  countCity:any;
-  cityList:any =[];
-  session:any;
-  getEditId:any;
-  catId:any;
-  subCatId:any;
-  typeId:any;
-  productId:any;
-  subProductId:any;
-  uomID:any;
-  stateName:any;
-  districtName:any;
-  
-  materialName:string ='';
-  description:string ='';
-  desc:any;
-  nameM:any;
-  expiryDate:string ='';
-  BrandName:string = '';
-  gloabKey:any;
-  Sku:any;
-  shortCode:any;
-  Sort:any;
-  AddSP:any;
-  prodId:any;
-  editData:boolean = false;
-  orderitem1= true
-  districtitem1:boolean =true;
-  cityitem1:boolean = true;
+  sub_category: any;
+  typeI: any;
+  rowData5: any = [];
+  selectId: any = [];
+  subProduct: any = [];
+  countryList: any = [];
+  countStates: any;
+  stateList: any = [];
+  countDist: any;
+  distList: any = [];
+  countCity: any;
+  cityList: any = [];
+  session: any;
+  getEditId: any;
+  catId: any;
+  subCatId: any;
+  typeId: any;
+  productId: any;
+  subProductId: any;
+  uomID: any;
+  stateName: any;
+  districtName: any;
+
+  materialName: string = '';
+  description: string = '';
+  desc: any;
+  nameM: any;
+  expiryDate: string = '';
+  BrandName: string = '';
+  gloabKey: any;
+  Sku: any;
+  shortCode: any;
+  Sort: any;
+  AddSP: any;
+  prodId: any;
+  editData: boolean = false;
+  orderitem1 = true
+  districtitem1: boolean = true;
+  cityitem1: boolean = true;
   dropdownSettings: IDropdownSettings = {};
   selectfld: any = ['mrp', 'aty'];
   image1 = 'assets/img/minimize-tag.png';
@@ -113,24 +113,24 @@ export class MaterialAddEditpopupComponent {
   // geograhies related variables
 
   geoPropertiesList: any
-  geoProperties:any
+  geoProperties: any
   gepGraphiesFormGroup!: FormGroup;
   UserId: any;
   geoGraphyHirerachyData: any;
-  geoGraphyFullData: any;
+  geoGraphyFullData: any = [];
   selectedGeographiesCityNames: any = [];
   cityCode: any = [];
   cityName: any = [];
   geographyHierarchyId: any;
   aarrayToPush: any[] = [];
   css: any[] = [];
-  ProductId : any =[]
+  ProductId: any = []
   checked: boolean = false
-  selectAllIdentifier:any=[];
-  selectAllIdentifierProduct:any=[];
-  selectedIdentifierArray:any=[];
-  selectedIdentifierProductArray:any=[];
-  selectedProductId:any=[];
+  selectAllIdentifier: any = [];
+  selectAllIdentifierProduct: any = [];
+  selectedIdentifierArray: any = [];
+  selectedIdentifierProductArray: any = [];
+  selectedProductId: any = [];
   colorsList = [
     { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
     { primaryColor: { background: '#0C5A3E', color: '#fff' }, secondaryColor: { background: "#E6FFF6", color: "#0C5A3E" }, },
@@ -176,31 +176,32 @@ export class MaterialAddEditpopupComponent {
 
   thirdformGroup: FormGroup = this.fb.group({ thirdCtrl: [''] });
 
-   ngOnInit():void {
-this.selectProduct();
-this.customIdentifier()
-const user = localStorage.getItem("logInId");
+  ngOnInit(): void {
+    this.selectProduct();
+    this.customIdentifier()
+    const user = localStorage.getItem("logInId");
 
-this.UserId = user
-this.dropdownSettings4 = {
-  singleSelection: false,
-  idField: 'materilCustomIdentifierId',
-  textField: 'materialCustomName',
-  selectAllText: 'Select All',
-  unSelectAllText: 'UnSelect All',
-  itemsShowLimit: 2,
-  allowSearchFilter: this.ShowFilter
-};
-this.dropdownSettings3 = {
-  singleSelection: false,
-  idField: 'productCustomIdentifierId',
-  textField: 'productCustomName',
-  selectAllText: 'Select All',
-  unSelectAllText: 'UnSelect All',
-  itemsShowLimit: 2,
-  allowSearchFilter: this.ShowFilter
-};
-    this.getGeographyHierarchy();
+    this.UserId = user
+    this.dropdownSettings4 = {
+      singleSelection: false,
+      idField: 'materilCustomIdentifierId',
+      textField: 'materialCustomName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 2,
+      allowSearchFilter: this.ShowFilter
+    };
+    this.dropdownSettings3 = {
+      singleSelection: false,
+      idField: 'productCustomIdentifierId',
+      textField: 'productCustomName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 2,
+      allowSearchFilter: this.ShowFilter
+    };
+    // this.getGeographyHierarchy();
+    this.getGeographyForMaterial(0, 0);
 
     this.getProductList();
     this.selectedItems1 = ["Shivam"];
@@ -210,13 +211,13 @@ this.dropdownSettings3 = {
     this.selectedItems5 = [];
     this.selectedItems6 = [];
     this.selectedItems7 = [];
-     this.editList()
-this.getclassification();
-this.getAllUom();
-// this.getMaterialIdentifier();
-this.countryData();
-   }
-   onKey(event) {
+    this.editList()
+    this.getclassification();
+    this.getAllUom();
+    // this.getMaterialIdentifier();
+    // this.countryData();
+  }
+  onKey(event) {
     let inputName = event.target.value;
     this.materialName = inputName;
     console.log("inputName", this.materialName)
@@ -304,8 +305,8 @@ this.countryData();
 
   addMaterialProduct() {
     let selectedGeographies = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographySelected;
-    let data2={
-      DefalultgeoId:selectedGeographies,
+    let data2 = {
+      DefalultgeoId: selectedGeographies,
     }
     this.saveMaterialList();
     let data = {
@@ -318,7 +319,7 @@ this.countryData();
       Imageurl: this.base64textString,
       Materialcustomidentifier: this.selectedItems5,
       ExpiryPeriod: this.expiryDate,
-      ProductCustomIdentifierId:this.selectedProductId,
+      ProductCustomIdentifierId: this.selectedProductId,
       IsProduct: +!this.checked,
       BrandName: this.BrandName,
       GlobalCode: this.gloabKey,
@@ -327,17 +328,17 @@ this.countryData();
       ManualShortOrder: this.Sort,
       ProductLink: this.AddSP,
       ProductSubGroupId: this.subProductId,
-      ProductGeographys:this.geoProperties
+      ProductGeographys: this.geoProperties
 
     }
-    
+
     // console.log(data)
-    this.addMaterials.addMaterialIfProduct(data).subscribe((res)=>{
-      console.log(res,"addmaterialProduct")
+    this.addMaterials.addMaterialIfProduct(data).subscribe((res) => {
+      console.log(res, "addmaterialProduct")
     })
 
-    this.addMaterials.defaultGeoIdProduct(data2).subscribe((res)=>{
-      console.log(res,"defaultGeoID")
+    this.addMaterials.defaultGeoIdProduct(data2).subscribe((res) => {
+      console.log(res, "defaultGeoID")
     })
   }
   addMaterialIfNotProduct() {
@@ -353,8 +354,8 @@ this.countryData();
       ExpiryPeriod: this.expiryDate,
       IsProduct: +!this.checked
     }
-    this.addMaterials.MaterialIfNotProduct(data).subscribe((res)=>{
-      console.log(res,"addmaterialProduct")
+    this.addMaterials.MaterialIfNotProduct(data).subscribe((res) => {
+      console.log(res, "addmaterialProduct")
     })
     console.log(data)
   }
@@ -501,17 +502,17 @@ this.countryData();
   onClick(item) {
     this.selectedItem = item;
   }
-  selectProduct(){
+  selectProduct() {
     // this.dialog.open(SelectProductComponent);
     // this.getMaterialIdentifier();
     // getMaterialIdentifier(){
-     
-      this.addMaterials.getMaterialIdentifier().subscribe((res) => {
-        this.selectId = res.response;
+
+    this.addMaterials.getMaterialIdentifier().subscribe((res) => {
+      this.selectId = res.response;
       //  this.materialIdentifier =data;
       // this.selectId =  this.materialIdentifier;
-       console.log("select Product", this.selectId);
-      })
+      console.log("select Product", this.selectId);
+    })
     // }
 
   }
@@ -523,18 +524,72 @@ this.countryData();
     this.dialog.open(AddProductSubGroupComponent);
 
   }
-  customIdentifier(){
+  customIdentifier() {
     // this.dialog.open(AddIdentifierComponent);
     this.addMaterials.getProductCustomIdentifier().subscribe((res: any) => {
 
       this.ProductId = res.response;
-  
+
     });
   }
+  geographyFormat(currentObj, stockItemId) {
+    console.log(currentObj["hirearchyLevel"]);
+    if (!Array.isArray(currentObj)) {
+      if (!currentObj.all) return;
+      let obj: any = {};
+      let index = (Number(currentObj["hirearchyLevel"]) - 1);
+      obj.allOtherGeography = currentObj.all;
+      obj.geographyCount = obj.allOtherGeography.length;
+      obj.showAddIcon = false;
+      obj.geographyHierarchyName = "Country Temp";
+      if (currentObj.first) {
+        let copyObject = JSON.parse(JSON.stringify(currentObj.first));
+        delete copyObject.next;
+        obj.geographySelected = [copyObject];
+      }
+      this.removeOtherGeographiesData(Number(currentObj["hirearchyLevel"]));
+      this.geoGraphyFullData[index] = obj;
+      if (currentObj.first.next) {
+        this.geographyFormat(currentObj.first.next, stockItemId);
+      }
+    } else {
+      // For the final defaulted value to append in geography view
+      let objDefaut: any = {}
+      objDefaut.allOtherGeography = currentObj;
 
+      objDefaut.geographySelected = currentObj.filter(x => x.isSelected);
+
+      objDefaut.geographyHierarchyName = "Temp";
+      this.removeOtherGeographiesData(currentObj[0].geographyHierarchyId);
+      this.geoGraphyFullData[currentObj[0].geographyHierarchyId - 1] = objDefaut;
+    }
+  }
 
   // geograhies related apis
+  stockItemId: any;
 
+  getGeographyForMaterial(geographyId, stockItemId) {
+    this.spinner.show();
+
+    this.stockItemId = stockItemId;
+    this.classification.getGeographyForMaterial(geographyId, stockItemId).subscribe(res => {
+      // console.log(res);
+      this.spinner.hide();
+      this.geoGraphyHirerachyData = JSON.parse(JSON.stringify(res.response));
+      this.geographyFormat(res.response, stockItemId);
+      console.log(this.geoGraphyFullData);
+
+      // this.getGeographiesDataById(null, 1);
+    }, err => {
+      console.log(err);
+      this.spinner.hide();
+    })
+  }
+
+  isItemSelected(item, geoItem) {
+    // console.log(item.geographySelected, geoItem.geographyId)
+    return item.geographySelected.findIndex(x => x.geographyId == geoItem.geographyId) == -1;
+  }
   getGeographyHierarchy() {
     this.spinner.show();
     this.geoGraphyHirerachyData = null;
@@ -575,16 +630,17 @@ this.countryData();
 
     this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.forEach(element => {
       if (element.geographyId == clickedItem.geographyId) {
-        let index = this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.indexOf(element.geographyId);
+        let index = this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.findIndex(x => x.geographyId == element.geographyId);
         if (index == -1) {
           if (hirerachyIndex == this.geoGraphyFullData.length) {
             this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.push(element.geographyId);
-            this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected.push(element.geographyName);
-            this.geoGraphyFullData[hirerachyIndex - 1].geoProperties.push(this.CreateGeoPropertiesObject({GeographyName:element.geographyName, GeographyId:element.geographyId}))
+            this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected.push(element);
+            this.geoGraphyFullData[hirerachyIndex - 1].geoProperties.push(this.CreateGeoPropertiesObject({ GeographyName: element.geographyName, GeographyId: element.geographyId }))
           } else {
             this.geoGraphyFullData[hirerachyIndex - 1].geographySelected = [element.geographyId];
             this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected = [element.geographyName];
-            this.getGeographiesDataById(element.geographyId, (hirerachyIndex + 1));
+            this.getGeographyForMaterial(element.geographyId, this.stockItemId);
+            // this.getGeographiesDataById(element.geographyId, (hirerachyIndex + 1));
             this.removeOtherGeographiesData(hirerachyIndex);
           }
         } else {
@@ -599,7 +655,7 @@ this.countryData();
     });
 
 
-    
+
     if (hirerachyIndex == 1) {
       let Country = clickedItem.geographyName;
       let countryCode = clickedItem.geographyCode;
@@ -618,7 +674,7 @@ this.countryData();
       this.districtName = districtNamee + "(" + districtCode + ")";
     }
     else if (hirerachyIndex == 4) {
-     
+
       // this.geoPropertiesList = this.CreatePropertiesObject({});
 
 
@@ -632,8 +688,8 @@ this.countryData();
     console.log(this.geoGraphyFullData);
   }
 
-  CreateGeoPropertiesObject(propertyObj){
-    let obj:any = {};
+  CreateGeoPropertiesObject(propertyObj) {
+    let obj: any = {};
     obj.MinOrderQty = propertyObj.MinOrderQty ?? "";
     obj.DiscountPercent = propertyObj.DiscountPercent ?? "";
     obj.MaxOrderQty = propertyObj.MaxOrderQty ?? "";
@@ -646,7 +702,7 @@ this.countryData();
     return obj;
   }
 
-  saveMaterialList(){
+  saveMaterialList() {
     this.geoProperties = JSON.parse(JSON.stringify(this.geoGraphyFullData[3].geoProperties));
     this.geoProperties = this.geoProperties.map(item => {
       delete item.GeographyName;
@@ -654,7 +710,7 @@ this.countryData();
     })
     console.log(this.geoProperties);
 
-    
+
   }
 
 
@@ -764,22 +820,22 @@ this.countryData();
     this.base64textString = reader.result.substr(reader.result.indexOf(',') + 1);
     console.log(this.base64textString, "base64")
   }
-  onSelectIdentifier(item:any){
+  onSelectIdentifier(item: any) {
     this.selectedItems5.push(item.materilCustomIdentifierId)
-console.log("Selecteed Identifier",this.selectedItems5);
+    console.log("Selecteed Identifier", this.selectedItems5);
   }
-  onDeSelectIdentifier(item:any){
+  onDeSelectIdentifier(item: any) {
     this.selectedItems5.forEach((element, index) => {
       if (element == item.materilCustomIdentifierId) this.selectedItems5.splice(index, 1);
 
     });
-    console.log("DeSelecteed Identifier",this.selectedItems5);
+    console.log("DeSelecteed Identifier", this.selectedItems5);
   }
-  onDSelectOrAllIdentifier(event){
-  this.selectedItems5 =[];
-  console.log("Deselected DAta",this.selectedItems5);
+  onDSelectOrAllIdentifier(event) {
+    this.selectedItems5 = [];
+    console.log("Deselected DAta", this.selectedItems5);
   }
-  onSelectOrAllIdentifier(){
+  onSelectOrAllIdentifier() {
     this.selectAllIdentifier = this.selectId.map((data: { materilCustomIdentifierId: any; materilCustomName: any; }) => {
       return { materilCustomIdentifierId: data.materilCustomIdentifierId, materilCustomName: data.materilCustomName };
     });
@@ -794,24 +850,24 @@ console.log("Selecteed Identifier",this.selectedItems5);
       return this.selectedIdentifierArray.push(element.materilCustomIdentifierId);
 
     })
-this.selectedItems5 =this.selectedIdentifierArray;
-console.log("All Selected",this.selectedItems5);
+    this.selectedItems5 = this.selectedIdentifierArray;
+    console.log("All Selected", this.selectedItems5);
   }
-  onSelectIdentifierProduct(item:any){
+  onSelectIdentifierProduct(item: any) {
     this.selectedProductId.push(item.productCustomIdentifierId)
-console.log("Selecteed Identifier",this.selectedProductId);
+    console.log("Selecteed Identifier", this.selectedProductId);
   }
-  onDeSelectIdentifierProduct(item:any){
+  onDeSelectIdentifierProduct(item: any) {
     this.selectedProductId.forEach((element, index) => {
       if (element == item.productCustomIdentifierId) this.selectedProductId.splice(index, 1);
     });
-    console.log("DeSelecteed Identifier",this.selectedProductId);
+    console.log("DeSelecteed Identifier", this.selectedProductId);
   }
-  onDSelectOrAllIdentifierProduct(event){
-  this.selectedProductId =[];
-  console.log("Deselected DAta",this.selectedProductId);
+  onDSelectOrAllIdentifierProduct(event) {
+    this.selectedProductId = [];
+    console.log("Deselected DAta", this.selectedProductId);
   }
-  onSelectOrAllIdentifierProduct(){
+  onSelectOrAllIdentifierProduct() {
     this.selectAllIdentifierProduct = this.ProductId.map((data: { productCustomIdentifierId: any; productCustomName: any; }) => {
       return { productCustomIdentifierId: data.productCustomIdentifierId, materilCustomName: data.productCustomName };
     });
@@ -826,8 +882,8 @@ console.log("Selecteed Identifier",this.selectedProductId);
       return this.selectedIdentifierProductArray.push(element.productCustomIdentifierId);
 
     })
-this.selectedProductId =this.selectedIdentifierProductArray;
-console.log("All Selected",this.selectedProductId);
+    this.selectedProductId = this.selectedIdentifierProductArray;
+    console.log("All Selected", this.selectedProductId);
   }
 }
 

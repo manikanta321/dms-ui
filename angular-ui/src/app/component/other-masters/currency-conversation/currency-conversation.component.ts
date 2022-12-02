@@ -11,7 +11,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { Sort, MatSort, SortDirection } from '@angular/material/sort';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
 import { IDropdownSettings } from 'ng-multiselect-dropdown'; 
-import {PaginationNumberFormatterParams,} from 'ag-grid-community'; 
+import {ITooltipParams, PaginationNumberFormatterParams,} from 'ag-grid-community'; 
 
 export interface PeriodicElement {
   name: any;
@@ -108,7 +108,7 @@ public popupParent: HTMLElement = document.body;
 columnDefs: ColDef[] = [ 
 
   { headerName: "Name",
-field: 'uoMName' ,type: ['nonEditableColumn'], pinned: 'left',
+field: 'uoMName' ,type: ['nonEditableColumn'], pinned: 'left',minWidth:250
 },
 
 {   headerName: "Display Unit",field: 'uoMShortName',type: ['nonEditableColumn']},
@@ -119,7 +119,18 @@ field: 'uoMName' ,type: ['nonEditableColumn'], pinned: 'left',
 //  field: 'uoMShortName',type: ['nonEditableColumn']},
 
 {   headerName: " Effective Date",
-field: 'effectiveFrom',type: ['nonEditableColumn']},
+field: 'effectiveFrom',type: ['nonEditableColumn'],
+cellRenderer: function dateFormtter(params) {
+  if(params.value==null){
+    return params.value=''
+  }
+   else{
+    return moment(params.value).format('DD MMM YY, HH:mm A')
+
+  }
+},
+tooltipValueGetter:(params: ITooltipParams) => moment(params.value).format('DD MMM YY, HH:mm A'),
+},
 
 {   headerName: "Standard Currency",
 // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },

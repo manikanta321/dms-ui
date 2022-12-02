@@ -31,7 +31,10 @@ export class DeactivateUserpopupComponent implements OnInit {
      this.employeeId = localStorage.getItem("userID");
     this.employeename=localStorage.getItem("employeeName");
     this.employeeCodeSet =localStorage.getItem('employeeCodeSet');
-    this.employeedata= this.employeeCodeSet+"/"+this.employeeId;
+   
+    
+    this.employeedata= this.employeeCodeSet;
+
     
   
     this.LoginId=localStorage.getItem("logInId");

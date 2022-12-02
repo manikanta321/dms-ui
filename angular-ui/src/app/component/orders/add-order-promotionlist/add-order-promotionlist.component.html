@@ -6,71 +6,79 @@
             </div>
             <div class="head-t">
                 <h3 class="addU font">Add Order : <b>Promotions</b></h3>
-                    <div class="row top-bottom">
-                        <div class="row text-center"></div>
-                    </div>
+                <div class="row top-bottom">
+                    <div class="row text-center"></div>
+                </div>
 
-                    <div class="promotion-card">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div>
-                                    <img class="card1" src="assets/img/promo1.svg"  alt="add-user-btn">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div>
-                                    <img class="card2" src="assets/img/promo2.svg" alt="add-user-btn">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div>
-                                    <img class="card3" src="assets/img/promo3.svg" alt="add-user-btn">
-                                </div>
+                <div class="promotion-card">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div>
+                                <img class="card1" src="assets/img/promo1.svg" alt="add-user-btn">
                             </div>
                         </div>
-                    </div> 
-                    
-                    <div class="label-div">
-                        <span class="selected-promotion-label">Selected Promotions</span>
+                        <div class="col-md-4">
+                            <div>
+                                <img class="card2" src="assets/img/promo2.svg" alt="add-user-btn">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <img class="card3" src="assets/img/promo3.svg" alt="add-user-btn">
+                            </div>
+                        </div>
                     </div>
-
-                    <div (click)="orderPromoList()" class="collapsible label-div">
-                        <div class="row">
-                            <div class="col-md-11">
-                                <p class="label-cls">Great Indian Sale</p>
-                            </div>
-                            <div class="col-md-1">
-                                <img [src]="image" class="expand-arrow" alt="add-user-btn">
-                            </div>
-                         </div>
-                    </div>
-
-                    <div class="content" *ngIf="!promoList">
-                        <div class="row label-div">
-                            <div class="col-md-3">
-                               <span class="buy-grp">Buy Group</span>
-                            </div>
-                            <div class="col-md-3" style="text-align: center;">
-                                <span class="total-itemss">Total Items:(20)</span>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="searchButton" href="#">
-                                    <i class="material-icons">
-                                        search
-                                    </i>
-                                </button>
-                                <div class="searchBox d-flex" style=" cursor: pointer">
-                                    <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
-                                        placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
-                                    <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
-                                   
+                </div>
+                <div class="label-div">
+                    <span class="selected-promotion-label">Selected Promotions</span>
+                </div>
+                <div>
+                    <div class="row mt-1">
+                        <div class="col-lg-1">
+                            <p class="p1Tag">p2</p>
+                        </div>
+                        <div class="col-lg-11">
+                            <div (click)="orderPromoList()" class="collapsible label-div">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <p class="label-cls">
+                                            <mat-checkbox></mat-checkbox> Great Indian Sale
+                                        </p>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <img [src]="image" class="expand-arrow" alt="add-user-btn">
+                                    </div>
                                 </div>
                             </div>
-                            
-                        </div>
-                             
-                        <div class="label-div">
-                            <ag-grid-angular
+
+                            <div class="content" *ngIf="!promoList">
+                                <div class="buyGrp">
+                                    <div class="row label-div">
+                                        <div class="col-md-2">
+                                            <span class="buy-grp">Buy Group</span>
+                                        </div>
+                                        <div class="col-md-4" style="text-align: center;">
+                                            <span class="total-itemss">Total Items:(20) (MOQ:15)</span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button class="searchButton" href="#">
+                                                <i class="material-icons">
+                                                    search
+                                                </i>
+                                            </button>
+                                            <div class="searchBox d-flex" style=" cursor: pointer">
+                                                <input class="searchInput" style="font-family: 'Gilroy'" type="text"
+                                                    name="" placeholder="Type & search for anything"
+                                                    (keyup)="onSearchChange($event)">
+                                                <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="label-div">
+                                        <!-- <ag-grid-angular
                             id="OrderPromotionListContainer"
                             style=" height: 386px;border-radius: 20px;background-color: white;font-family: Gilroy"
                             class="ag-theme-material"
@@ -88,21 +96,199 @@
                             (cellClicked)="onCellClicked($event)"
                             (gridReady)="onGridReady($event)"
                             [pagination]="true"
-                            ></ag-grid-angular>
+                            ></ag-grid-angular> -->
+                            <table >
+                                <tr>
+                                    <th data-sortable="true">Product Name</th>
+                                    <th data-sortable="true">SKU</th>
+                                    <th data-sortable="true">Price</th>
+                                    <th data-sortable="false">Tax Templete</th>
+                                    <th data-sortable="false">Quantity</th>
+                                    <th data-sortable="false">Amount</th>
+                                </tr>
+                                <tr class="table-row" *ngFor="let Item of buyGroup">
+                                    <td><input type="checkbox">{{Item.proItem}}</td>
+                                    <td>{{Item.sku}}</td>
+                                    <td>{{Item.price}}</td>
+                                    <td><select class="tax-select" placeholder="select">
+                                            <option val="112">{{Item.taxtemplete}}</option>
+                                            <!-- <option val="2">B</option>
+                            <option val="356" selected>C</option> -->
+                                        </select>
+                                        <img src="assets/img/doubleTickes-default.svg"
+                                            alt="double-blue-tick">
+                                    </td>
+                                    <!-- <td><input type="date" value="2018-07-22"></td> -->
+                                    <td><input type="value" placeholder="5" class="quatity-inp"></td>
+                                    <td>{{Item.amount}}</td>
+                                </tr>
+                                <tr class="bottom-table">
+                                    <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
+                                        quantity entered)</td>
+                                    <td class="btm-total">15</td>
+                                    <td class="btm-total">300</td>
+                                </tr>
+                        </table>
+                                    </div>
+                                </div>
+                                <!-- get group -->
+                                <div class="buyGrp">
+                                    <div class="row label-div">
+                                        <div class="col-md-2">
+                                            <span class="buy-grp">Buy Group</span>
+                                        </div>
+                                        <div class="col-md-4" style="text-align: center;">
+                                            <span class="total-itemss">Total Items:(20) (MOQ:15)</span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button class="searchButton" href="#">
+                                                <i class="material-icons">
+                                                    search
+                                                </i>
+                                            </button>
+                                            <div class="searchBox d-flex" style=" cursor: pointer">
+                                                <input class="searchInput" style="font-family: 'Gilroy'" type="text"
+                                                    name="" placeholder="Type & search for anything"
+                                                    (keyup)="onSearchChange($event)">
+                                                <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="label-div">
+                                        <table >
+                                                <tr>
+                                                    <th data-sortable="true">Product Name</th>
+                                                    <th data-sortable="true">SKU</th>
+                                                    <th data-sortable="true">Price</th>
+                                                    <th data-sortable="false">Tax Templete</th>
+                                                    <th data-sortable="false">Quantity</th>
+                                                    <th data-sortable="false">Amount</th>
+                                                </tr>
+                                                <tr class="table-row" *ngFor="let Item of buyGroup">
+                                                    <td><input type="checkbox">{{Item.proItem}}</td>
+                                                    <td>{{Item.sku}}</td>
+                                                    <td>{{Item.price}}</td>
+                                                    <td><select class="tax-select" placeholder="select">
+                                                            <option val="112">{{Item.taxtemplete}}</option>
+                                                            <!-- <option val="2">B</option>
+                                            <option val="356" selected>C</option> -->
+                                                        </select>
+                                                        <img src="assets/img/doubleTickes-default.svg"
+                                                            alt="double-blue-tick">
+                                                    </td>
+                                                    <!-- <td><input type="date" value="2018-07-22"></td> -->
+                                                    <td><input type="value" placeholder="5" class="quatity-inp"></td>
+                                                    <td>{{Item.amount}}</td>
+                                                </tr>
+                                                <tr class="bottom-table">
+                                                    <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
+                                                        quantity entered)</td>
+                                                    <td class="btm-total">15</td>
+                                                    <td class="btm-total">300</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
-                    </div>   
+                    </div>
+                </div>
+                <!-- diwali bonza -->
+                <div>
+                    <div class="row mt-1">
+                        <div class="col-lg-1">
+                            <p class="p1Tag">p2</p>
+                        </div>
+                        <div class="col-lg-11">
+                            <div (click)="priceDiscount()" class="collapsible label-div">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <p class="label-cls"> <mat-checkbox></mat-checkbox> Diwali Bonanza <span> Price
+                                                Discounts</span></p>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <img [src]="image" class="expand-arrow" alt="add-user-btn">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="content" *ngIf="!priceD">
+                                <div class="buyGrp">
+                                    <div class="row label-div">
+                                        <div class="col-md-2">
+                                            <span class="buy-grp">Buy Group</span>
+                                        </div>
+                                        <div class="col-md-4" style="text-align: center;">
+                                            <span class="total-itemss" *ngIf="false">Total Items:(20)</span>
+                                            <span>
+                                                <mat-icon class="warningicon">warning</mat-icon>Total Items:20 (MOQ:15)
+                                            </span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button class="searchButton" href="#">
+                                                <i class="material-icons">
+                                                    search
+                                                </i>
+                                            </button>
+                                            <div class="searchBox d-flex" style=" cursor: pointer">
+                                                <input class="searchInput" style="font-family: 'Gilroy'" type="text"
+                                                    name="" placeholder="Type & search for anything"
+                                                    (keyup)="onSearchChange($event)">
+                                                <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="label-div">
+                                        <table >
+                                            <tr>
+                                                <th data-sortable="true">Product Name</th>
+                                                <th data-sortable="true">SKU</th>
+                                                <th data-sortable="true">Price</th>
+                                                <th data-sortable="false">Tax Templete</th>
+                                                <th data-sortable="false">Quantity</th>
+                                                <th data-sortable="false">Amount</th>
+                                            </tr>
+                                            <tr class="table-row" *ngFor="let Item of buyGroup">
+                                                <td><input type="checkbox">{{Item.proItem}}</td>
+                                                <td>{{Item.sku}}</td>
+                                                <td>{{Item.price}}</td>
+                                                <td><select class="tax-select" placeholder="select">
+                                                        <option val="112">{{Item.taxtemplete}}</option>
+                                                        <!-- <option val="2">B</option>
+                                        <option val="356" selected>C</option> -->
+                                                    </select>
+                                                    <img src="assets/img/doubleTickes-default.svg"
+                                                        alt="double-blue-tick">
+                                                </td>
+                                                <!-- <td><input type="date" value="2018-07-22"></td> -->
+                                                <td><input type="value" placeholder="5" class="quatity-inp"></td>
+                                                <td>{{Item.amount}}</td>
+                                            </tr>
+                                            <tr class="bottom-table">
+                                                <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
+                                                    quantity entered)</td>
+                                                <td class="btm-total">15</td>
+                                                <td class="btm-total">300</td>
+                                            </tr>
+                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
         </div>
-        
+
+
+        <button type="button" class="saveas-draft1">Add items</button>
     </div>
-    <!-- <div class="row footer">
-         <div class="col-md-5">                          
-        </div> 
-        <div class="col-md-2">                      
-                <button type="button" class="saveas-draft1">Add items</button>                   
-        </div>
-        <div class="col-md-5">                                  
-        </div> 
-    </div> -->
-    <button type="button" class="saveas-draft1">Add items</button> 
 </div>

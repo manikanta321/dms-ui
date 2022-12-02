@@ -787,7 +787,8 @@ export class MaterialAddEditpopupComponent {
     if (!this.checked) {
       if (confirm("Are you sure")) {
         this.checked = !this.checked;
-        this.goBack(this.stepper)
+        this.goBack(this.stepper);
+        
         console.log("toggle")
       }
       else {

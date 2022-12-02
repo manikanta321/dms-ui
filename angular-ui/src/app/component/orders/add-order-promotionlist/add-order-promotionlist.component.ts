@@ -9,10 +9,13 @@ import { CellClickedEvent, CellValueChangedEvent, ColDef, FirstDataRenderedEvent
   styleUrls: ['./add-order-promotionlist.component.css']
 })
 export class AddOrderPromotionlistComponent implements OnInit {
-
+  // taxtemplete :any =['hj','hj'];
+  buyGroup : any = [{proItem: 'Lays IPL edition classic magic masala..', sku:'KA123458AB98764',price:'20' , taxtemplete:['hj','hj'], amount:'0'},
+  {proItem: 'Lays IPL edition classic magic masala..', sku:'KA123458AB98764',price:'20' , taxtemplete:['hj','hj'], amount:'0'},
+  {proItem: 'Lays IPL edition classic magic masala..', sku:'KA123458AB98764',price:'20' , taxtemplete:['hj','hj'], amount:'0'}]
   private gridApi!: GridApi;
   promoList = true;
-
+priceD = true;
   rowData: any;
   columnDefs:any;
   image = 'assets/img/maximize-arrow.png';
@@ -40,11 +43,16 @@ export class AddOrderPromotionlistComponent implements OnInit {
     } else {
       this.image = 'assets/img/maximize-arrow.png';
     }
-
   }
+  priceDiscount(){
+    this.priceD = !this.priceD;
 
-  
-
+    if(this.priceD === false){
+      this.image = 'assets/img/minimize-tag.png';
+    } else {
+      this.image = 'assets/img/maximize-arrow.png';
+    }
+  }
   public rowData5 = [
     {productname:'Republic',sku:'Argentina Republic',price:'100',tax:'10%',quantity:"1",amount:"1000"},
     {productname:'Republic',sku:'Argentina Republic',price:'100',tax:'10%',quantity:"1",amount:"1000"},

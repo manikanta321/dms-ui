@@ -214,6 +214,9 @@ left: 37%
     
     .pagination-cls {
       font-size: 14px;
-      font-weight: 900;
+       font-weight: 900;
+     font-weight: ' Gilroy-Bold'; 
+      font-weight: bold;
+
     }
     

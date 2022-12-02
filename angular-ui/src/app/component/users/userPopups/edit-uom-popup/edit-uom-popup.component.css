@@ -1,4 +1,20 @@
+.name
+{
+    font-family: 'Gilroy-Medium';
+font-size: 16px;
+font-weight: 600;
 
+color: #000000;
+}
+
+.display
+{
+    font-family: 'Gilroy-Medium';
+font-size: 16px;
+font-weight: 600;
+
+color: #000000;
+}
 .head-th{
     /* color: #0091EA; */
     /* text-align: center; */

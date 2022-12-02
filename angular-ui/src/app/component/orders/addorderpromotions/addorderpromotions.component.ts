@@ -104,11 +104,11 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   addOrderPromotionList(){
-    this.dialog.open( AddOrderPromotionlistComponent,{width: '900px',height:'460px'});
+    this.dialog.open( AddOrderPromotionlistComponent,{width: '1043px',height:'900px'});
   }
 
   addOrderNonPromotionList(){
-    this.dialog.open( OrderNonpromotionlistComponent,{width: '1000px',height:'460px'});
+    this.dialog.open( OrderNonpromotionlistComponent,{width: '1043px',height:'663px'});
   }
   removeItem() {
     this.itemremoved.splice(0);

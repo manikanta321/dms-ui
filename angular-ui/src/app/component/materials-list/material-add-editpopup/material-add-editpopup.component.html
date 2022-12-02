@@ -144,9 +144,9 @@
             </div>
           </mat-step>
           <!-- product information -->
-          <mat-step [stepControl]="secondFormGroup" disabled>
+          <mat-step [stepControl]="secondFormGroup" *ngIf="!checked">
 
-            <form [formGroup]="secondFormGroup" *ngIf="!checked">
+            <form [formGroup]="secondFormGroup" >
 
               <ng-template matStepLabel>Product Information</ng-template>
               <div class="row">
@@ -159,7 +159,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="mat-slide">
-                    <mat-slide-toggle (change)="change($event)" [checked]="checked">Is a product?</mat-slide-toggle>
+                    <mat-slide-toggle (change)="change($event)" [checked]="!checked">Is a product?</mat-slide-toggle>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -258,8 +258,8 @@
           </mat-step>
           <!-- geographies -->
 
-          <mat-step [stepControl]="thirdformGroup">
-            <form [formGroup]="gepGraphiesFormGroup" *ngIf="!checked">
+          <mat-step [stepControl]="thirdformGroup" *ngIf="!checked">
+            <form [formGroup]="gepGraphiesFormGroup" >
               <ng-template matStepLabel> Geographies</ng-template>
               <div class="heading">
                 <h6 class="Geo-headerlabel"><b>Geographies</b></h6>
@@ -500,7 +500,7 @@
               <div class="row">
                 <div class="col-1"></div>
                 <div class="col-6">
-                  <button class="btn btn-primary btn-block submitbtn save-btn" (click)="addMaterialProduct();">Save</button>
+                  <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="!checked" (click)="addMaterialProduct();">Save</button>
                 </div>
                 <div class="col-3">
                 </div>

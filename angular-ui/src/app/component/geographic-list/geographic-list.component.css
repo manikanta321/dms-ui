@@ -20,6 +20,10 @@
   margin-right: 24px; */
   
 }
+.TO
+{
+  font-weight: 300;
+}
 
 .pagination-cls22{
   font-size: 14px;
@@ -45,6 +49,8 @@
 .shipButton{
     padding: 1%;
     font-family: 'Gilroy';
+    font-size: 17px;
+    font-weight: 500;
 }
 .editext{
     font-family: 'Gilroy-Bold', sans-serif;

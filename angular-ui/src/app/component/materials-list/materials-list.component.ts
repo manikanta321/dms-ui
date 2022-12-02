@@ -40,6 +40,7 @@ export class MaterialsListComponent implements OnInit {
   selectedStatus: any = [];
   disabled = false;
   ShowFilter = false;
+  flag:boolean=true;
   subCategoryFilter = false;
   typeFilter = false;
   productFilter = false;
@@ -267,7 +268,7 @@ else
 
   getclassification() {
 
-    this.materialList.getclassification().subscribe((res) => {
+    this.materialList.getclassification(this.flag).subscribe((res) => {
       let data = res.response;
       this.coutCatagory = res.totalRecords;
       this.catgname = data.allOtherCats;
@@ -386,7 +387,8 @@ else
     this.itemId = item.catId;
     this.catagoryName = item.catName;
     let Subdata = {
-      catId: this.catergory
+      catId: this.catergory,
+      flag:this.flag
     }
     this.materialList.onclickcat(Subdata).subscribe((res) => {
       let subcaty = res.response;
@@ -509,7 +511,8 @@ else
     console.log(" item Types", item);
     this.sub_categorys.push(item.subCatId);
     let Type = {
-      subCatId: this.sub_categorys
+      subCatId: this.sub_categorys,
+      flag:this.flag
     }
     this.materialList.onclicksubcat(Type).subscribe((res) => {
       let typs = res.response;

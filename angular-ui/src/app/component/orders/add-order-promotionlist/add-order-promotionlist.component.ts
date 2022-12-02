@@ -25,13 +25,14 @@ priceD = true;
     onCellClicked: (event: CellClickedEvent) => console.log('Cell was clicked'),
     rowStyle: { background: 'black' },
 }
+  buygg: any;
 
 
   constructor( private user: UserService,
     private http: HttpClient) { }
 
   ngOnInit(): void {
-
+    this.buygg =localStorage.getItem('buygroupromo');
     this.headerList();
   }
 
@@ -164,6 +165,10 @@ priceD = true;
     onSearchChange($event){
 
     }
-
+    addPromoItems(){
+      console.log(this.buyGroup);
+      // var grid = document.getElementById("Table1");
+      
+    }
 
 }

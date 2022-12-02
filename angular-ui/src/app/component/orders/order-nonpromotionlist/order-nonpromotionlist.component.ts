@@ -192,5 +192,7 @@ export class OrderNonpromotionlistComponent implements OnInit {
       });
      
     }
-
+    addnonPromoItems(){
+      console.log(this.buyGroup)
+    }
 }

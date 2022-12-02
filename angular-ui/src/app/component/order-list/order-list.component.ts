@@ -549,7 +549,7 @@ export class OrderListComponent implements OnInit {
 
   addOrderPromotion(){
  
-    this.dialog.open( AddorderpromotionsComponent,{width: '900px',height:'460px'});
+    this.dialog.open( AddorderpromotionsComponent,{width: '900px',height:'663px'});
   }
 
 

@@ -125,7 +125,7 @@
 
 <div class="row">
   <div class="col-4">
-    <mat-checkbox class="example-margin"
+    <mat-checkbox class="example-margin font"
     [checked]="allComplete"
     [color]="color"
     (change)="setAll($event.checked)">
@@ -144,15 +144,15 @@
           [rowData]="rowData5" [suppressExcelExport]="true" [popupParent]="popupParent"
           (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"
           (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
-          (cellClicked)="onCellClicked($event)" (gridReady)="onGridReady($event)" [paginationPageSize]="paginationPageSize" ></ag-grid-angular>
+          (cellClicked)="onCellClicked($event)" (gridReady)="onGridReady($event)" [paginationPageSize]="paginationPageSize"  (bodyScroll)="handleScroll($event)" ></ag-grid-angular>
         </div>
-          <div class="pagination">
-            <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of
-            <span class="pagination-cls">{{rowData5.length}}</span>
-          </div>
+        <div class="pagination">
+          <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of
+          <span class="pagination-cls">{{rowData5.length}}</span>
+        </div>
       </div>
       
     </div>   
      
-  </div>
+  </div> 
 </div>

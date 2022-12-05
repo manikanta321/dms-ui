@@ -10,6 +10,7 @@ export class AddTargetsComponent implements OnInit {
   rowsTotal: boolean = false;
   disableColumns: boolean = false;
   anuallySelected: boolean = false;
+  allDlrSelected:boolean = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -38,5 +39,8 @@ export class AddTargetsComponent implements OnInit {
       this.image1 = 'assets/img/maximize-arrow.png';
 
     }
+  }
+  allDealerSelected(){
+    this.allDlrSelected = !this.allDlrSelected;
   }
 }

@@ -997,12 +997,13 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
   .stts-placeholder.dropdown-placeholder .selected-placeholder {
     color: #000 !important;
   }
-  .close-icon{
-    left: 100%;
+  .close-icon {
+    left: 98%;
     position: relative;
     font-size: 15px;
     font-weight: 600;
-  }
+    cursor: pointer;
+}
   
   
   .addU{
@@ -1014,14 +1015,14 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
   .addU:after{
     content: "";
     display: block;
-    width: 760px;
+    width: 821px;
     height: 2px;
     background: #686E74;
     right: 0;
     top: 50%;
     height: 0.5px;
     position: absolute;
-    margin-right: 20px;
+    margin-right: 55px;
   }
   
   .footer {
@@ -1037,9 +1038,10 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: right;
-    margin-top: 10px;
+    // margin-top: 10px;
     cursor: pointer;
     width: 168px;
+    height: 43px;
   }
   .saveas-draft {
     color: #fff;
@@ -1047,9 +1049,10 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: right;
-    margin-top: 10px;
+    margin-top: 25px;
     cursor: pointer;
     width: 168px;
+    height: 43px;
   }
   .saveas-draft2 {
     color: black;
@@ -1057,9 +1060,10 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: left;
-    margin-top: 10px;
+    margin-top: 25px;
     cursor: pointer;
     width: 168px;
+    height: 43px;
   }
   
 .footer {
@@ -1076,9 +1080,10 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   float: right;
-  margin-top: 10px;
+  margin-top: 25px;
   cursor: pointer;
   width: 168px;
+  height: 43px;
 }
 .saveas-draft2 {
   color: black;
@@ -1086,9 +1091,10 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   float: left;
-  margin-top: 10px;
+  margin-top: 25px;
   cursor: pointer;
   width: 168px;
+  height: 43px;
 }
 .searchBox1 {
   top: 6px;
@@ -1138,10 +1144,13 @@ border-radius: 10px;
   margin-right: 15px;
   }
   .uom-cls {
-    border: 0.5px solid #000000;
     border-radius: 10px;
-    width: 87px
-  }
+    width: 83px;
+    height: 34px;
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+}
   .main-d{
     background-color: white;
     padding: 10px;

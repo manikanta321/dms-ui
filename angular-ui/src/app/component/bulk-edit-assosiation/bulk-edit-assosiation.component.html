@@ -1,202 +1,208 @@
-
-  <div style="overflow-x: hidden;">
-                  <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
-                  <div class="head-t">
-                    <h3 class="addU font">Bulk Edit Association</h3>
-                  </div>
-
-<div class="d-flex flexcss">
-    <button type="button" class="saveas-draft4" >Download </button>                       
-
+<div style="overflow-x: hidden; min-height: 420px;">
+  <div class="addUser">
+    <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
 </div>
-<br>
-<br>
-<br>
+  <div class="head-t">
+    <h3 class="addU font">Bulk Edit Association</h3>
+  </div>
+
+  <div class="d-flex flexcss">
+    <button type="button" class="saveas-draft4">Download </button>
+
+  </div>
+  <br>
+  <br>
+  <br>
 
 
-                  <div class="drpd d-flex">
-                    <div class="search-d">
-                      <form [formGroup]="myForm" class="dropdown-form">
-                        <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'Geographies'" formControlName="city"
-                          [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList"
-                          (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
-                          (onDeSelectAll)="onItemDeSelectOrAll($event)" (onSelectAll)="onItemSelectOrAll($event)">
-                        </ng-multiselect-dropdown>
-                      </form>
-                      <div class="dropdown-placeholder catty-placeholder">
-                        <span *ngIf="myForm.get('city').value.length == 0"> Geographies </span>
-                        <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Geography selected </span>
-                        <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Geography(s) selected </span>
-            
-                      </div>
-                    </div>
-                    <div class="search-d">
-                      <form [formGroup]="myForm1" class="dropdown-form">
-                        <ng-multiselect-dropdown class="roless-product" name="city" [placeholder]="'Product'" formControlName="city1"
-                          [disabled]="disabled" [settings]="dropdownSettings2" [data]="ProductListArray"
-                          (onSelect)="onItemProductSelect($event)" (onDeSelect)="onItemProductDeSelect($event)"
-                          (onDeSelectAll)="onItemProductDeSelectOrAll($event)" (onSelectAll)="onItemProductSelectOrAll($event)">
-                        </ng-multiselect-dropdown>
-                      </form>
-                      <div class="dropdown-placeholder catty-placeholder">
-                        <span *ngIf="myForm1.get('city1').value.length == 0">  </span>
-                        <span *ngIf="myForm1.get('city1').value.length == 1" class="selected-placeholder"> {{myForm1.get('city1').value.length}} Products selected </span>
-                        <span *ngIf="myForm1.get('city1').value.length > 1" class="selected-placeholder"> {{myForm1.get('city1').value.length}} Product(s) selected </span>
-            
-                      </div>
-                    </div>
-                    <div class="search-d">
-                      <form [formGroup]="myForms" class="dropdown-form">
-                        <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Dealer'" formControlName="citys"
-                          [disabled]="disabled" [settings]="dropdownSettings1" [data]="dealerListArray"
-                          (onSelect)="onItemDealerSelect($event)" (onDeSelect)="onItemDealerDeSelect($event)"
-                          (onDeSelectAll)="onItemDealerDeSelectOrAll($event)" (onSelectAll)="onItemDealerSelectOrAll($event)">
-                        </ng-multiselect-dropdown>
-                      </form>
-                      <div class="dropdown-placeholder catty-placeholder">
-                        <span *ngIf="myForms.get('citys').value.length == 0">  </span>
-                        <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Dealer selected </span>
-                        <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Dealer(s) selected </span>
-            
-                      </div>
-                    </div>
-                    <div class="search-d">
-
-                        </div>
-
-                    <div class="search-d">
-
-
-                        <div class="searchBox1 d-flex" >
-                            <div class="promotiont2">
-                                <select #teams class="form-select select-asso" aria-label=".form-select-lg example"  >
-                                    <option  selected hidden>Select</option>
-                                    <option value="1">MRP</option>
-                                    <option value="2">Jio</option>
-                                  </select>
-                            </div>
-                            <div class="promotiont3">
-                                <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name=""
-                                placeholder="Enter value"  >
-                            </div>
-                            <div class="promotiont3">
-                                <button type="button" class="saveas-draft1">Apply </button>  
-                       
-                          </div>
-                      
-                        
-                    </div>
-                    
-            
-                    </div>
-                    <div class="search-d">
-
-                    <div class="icon btnhover refreshbtn"  style=" cursor: pointer;" (click)="refresh()">
-                        <img class="refresh" src="assets/img/ultrarefresh.svg" style="position: relative;top: 9px;left: 12px;"
-                          alt="refresh">
-                    </div>
-                    </div>
-                  </div>
-<br>
-
-                  <div class="d-flex main-d">
-
-
-                    <form  [formGroup]="addAddressDetailsForm">
-
-                    <table formArrayName="BulkAssociationsCount">
-                    <tr>
-                        <th style='width: 130px'>
-                            Product
-                         </th>
-                     <th style='width: 130px'>
-                         Geography
-                     </th>
-                     <th style='width: 130px'>
-                     Dealer          
-                    </th>
-                    <th style='width: 119px'>
-                        MRP(INR)
-                    </th>
-                  
-                     <th style='width: 119px'>
-                         Min order Qty
-                     </th>
-                     <th style='width: 119px'>
-                         Max order Qty
-                     </th>
-                     <th style='width: 119px'>
-                 Margin %
-                     </th>
-                     <th style='width: 119px'>
-                         Discount %
-                             </th>
-                             <th style='width: 119px'>
-                                 Lead time(days)
-                                     </th>
-                                     <th >
-                                         
-                                     </th>
-                    </tr>
-                   
-                 <tr  *ngFor="let quantity of BulkAssociationsCount().controls; let i=index" [formGroupName]="i">
-                    <td>
-                      <input type="text" class="testcalss" id="fname" name="fname"  formControlName="ProductName" readonly>
-                    </td>
-                        <td >
-                          <input type="text" class="testcalss" id="fname" name="fname"  formControlName="GeographName" readonly>
-                        </td>
-                            <td >
-                              <input type="text" class="testcalss" id="fname" name="fname"  formControlName="DealerName" readonly>
-                            </td>
-                    <td>                                         
-                           <input type="text" class="uom-cls" id="fname" name="fname" formControlName="MRP">
-                    </td>
-                    <td>                                         
-                     <input type="text" class="uom-cls" id="fname" name="fname"  formControlName="MinOrder">
-                 </td>
-                  
-                 <td>                                         
-                 <input type="text" class="uom-cls" formControlName="MaxOrder">
-                </td>
-             
-                <td>                                         
-                 <input type="number" class="uom-cls"  formControlName="Margin">
-               </td>
-             
-               <td>                                         
-                 <input type="text" class="uom-cls"  formControlName="Discount">
-               </td>
-             
-               <td>                                         
-                 <input type="text" class="uom-cls"  formControlName="LeadTimeIndays">
-             
-              
-               </td>
-               <td>
-                <div class="icon btnhover1 refreshbtn"  style=" cursor: pointer;">
-                    <img class="refresh" src="assets/img/ultrarefresh.svg" style="position: relative;top: 9px;left: 12px;"
-                      alt="refresh">
-                </div>  
-               </td>
-             </tr>
-                
-                 
-                   
-                 </table>
-                </form>
-
-                  </div>
-                  
-     <div class="row">
-        <div class="col-md-6">
-                <button type="button" class="saveas-draft" (click)="saveBulkEdit()">save all </button>                       
+  <div class="drpd d-flex">
+    <div class="search-d">
+      <form [formGroup]="myForm1" class="dropdown-form">
+        <ng-multiselect-dropdown class="roless-product" name="city1" [placeholder]="'Product'" formControlName="city1"
+          [disabled]="disabled" [settings]="dropdownSettings2" [data]="ProductListArray"
+          (onSelect)="onItemProductSelect($event)" (onDeSelect)="onItemProductDeSelect($event)"
+          (onDeSelectAll)="onItemProductDeSelectOrAll($event)" (onSelectAll)="onItemProductSelectOrAll($event)">
+        </ng-multiselect-dropdown>
+        <div class="dropdown-placeholder catty-placeholder">
+          <span *ngIf="myForm1.get('city1').value.length == 0">Select Product </span>
+          <span *ngIf="myForm1.get('city1').value.length == 1" class="selected-placeholder">
+            {{myForm1.get('city1').value.length}} Product</span>
+          <span *ngIf="myForm1.get('city1').value.length > 1" class="selected-placeholder">
+            {{myForm1.get('city1').value.length}} Product(s)</span>
+  
         </div>
-        <div class="col-md-6">                      
-                <button type="button"  [mat-dialog-close]="true"  class="saveas-draft2">Discard all</button>                   
+      </form>
+    </div>
+    <div class="search-d">
+      <form [formGroup]="myForm" class="dropdown-form">
+        <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'Geographies'" formControlName="city"
+          [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList" (onSelect)="onItemSelect($event)"
+          (onDeSelect)="onItemDeSelect($event)" (onDeSelectAll)="onItemDeSelectOrAll($event)"
+          (onSelectAll)="onItemSelectOrAll($event)">
+        </ng-multiselect-dropdown>
+        <div class="dropdown-placeholder catty-placeholder">
+          <span *ngIf="myForm.get('city').value.length == 0"> Select Geography</span>
+          <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder">
+            {{myForm.get('city').value.length}} Geography</span>
+          <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder">
+            {{myForm.get('city').value.length}} Geography(s)</span>
+  
         </div>
-        <!-- <div class="col-md-5">              
+      </form>
+    </div>
+    <div class="search-d">
+      <form [formGroup]="myForms" class="dropdown-form">
+        <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Dealer'" formControlName="citys"
+          [disabled]="disabled" [settings]="dropdownSettings1" [data]="dealerListArray"
+          (onSelect)="onItemDealerSelect($event)" (onDeSelect)="onItemDealerDeSelect($event)"
+          (onDeSelectAll)="onItemDealerDeSelectOrAll($event)" (onSelectAll)="onItemDealerSelectOrAll($event)">
+        </ng-multiselect-dropdown>
+        <div class="dropdown-placeholder catty-placeholder">
+          <span *ngIf="myForms.get('citys').value.length == 0">Select Dealer </span>
+          <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder">
+            {{myForms.get('citys').value.length}} Dealer</span>
+          <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder">
+            {{myForms.get('citys').value.length}} Dealer(s)</span>
+  
+        </div>
+      </form>
+    </div>
+    <div class="search-d">
+
+    </div>
+
+    <div class="search-d">
+
+
+      <div class="searchBox1 d-flex">
+        <div class="promotiont2">
+          <select #teams class="form-select select-asso" aria-label=".form-select-lg example">
+            <option selected hidden>Select Field</option>
+            <option value="1">MRP</option>
+            <option value="2">Jio</option>
+          </select>
+        </div>
+        <div class="promotiont3">
+          <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name="" placeholder="Enter">
+        </div>
+        <div class="promotiont3">
+          <button type="button" class="saveas-draft1">Apply </button>
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+    <div class="search-d">
+
+      <div class="icon btnhover refreshbtn" style=" cursor: pointer;" (click)="refresh()">
+        <img class="refresh" src="assets/img/ultrarefresh.svg" style="position: relative;top: 9px;left: 12px;"
+          alt="refresh">
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <div class="d-flex main-d">
+
+
+    <form [formGroup]="addAddressDetailsForm">
+
+      <table formArrayName="BulkAssociationsCount">
+        <tr>
+          <th style='width: 130px'>
+            Product
+          </th>
+          <th style='width: 130px'>
+            Geography
+          </th>
+          <th style='width: 130px'>
+            Dealer
+          </th>
+          <th style='width: 119px'>
+            MRP(INR)
+          </th>
+
+          <th style='width: 119px'>
+            Min Order Qty
+          </th>
+          <th style='width: 119px'>
+            Max Order Qty
+          </th>
+          <th style='width: 119px'>
+            Margin %
+          </th>
+          <th style='width: 119px'>
+            Discount %
+          </th>
+          <th style='width: 119px'>
+            Lead time(days)
+          </th>
+          <th>
+
+          </th>
+        </tr>
+
+        <tr *ngFor="let quantity of BulkAssociationsCount().controls; let i=index" [formGroupName]="i">
+          <td>
+            <input type="text" class="testcalss" id="fname" name="fname" formControlName="ProductName" readonly>
+          </td>
+          <td>
+            <input type="text" class="testcalss" id="fname" name="fname" formControlName="GeographName" readonly>
+          </td>
+          <td>
+            <input type="text" class="testcalss" id="fname" name="fname" formControlName="DealerName" readonly>
+          </td>
+          <td>
+            <input type="text" class="uom-cls" id="fname" name="fname" formControlName="MRP">
+          </td>
+          <td>
+            <input type="text" class="uom-cls" id="fname" name="fname" formControlName="MinOrder">
+          </td>
+
+          <td>
+            <input type="text" class="uom-cls" formControlName="MaxOrder">
+          </td>
+
+          <td>
+            <input type="number" class="uom-cls" formControlName="Margin">
+          </td>
+
+          <td>
+            <input type="text" class="uom-cls" formControlName="Discount">
+          </td>
+
+          <td>
+            <input type="text" class="uom-cls" formControlName="LeadTimeIndays">
+
+
+          </td>
+          <td>
+            <div class="icon btnhover1 refreshbtn" style=" cursor: pointer;">
+              <img class="refresh" src="assets/img/ultrarefresh.svg" style="position: relative;top: 9px;left: 12px;"
+                alt="refresh">
+            </div>
+          </td>
+        </tr>
+
+
+
+      </table>
+    </form>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <button type="button" class="saveas-draft" (click)="saveBulkEdit()">Save All </button>
+    </div>
+    <div class="col-md-6">
+      <button type="button" [mat-dialog-close]="true" class="saveas-draft2">Discard All</button>
+    </div>
+    <!-- <div class="col-md-5">              
                 <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>                 
         </div> -->
-    </div>
+  </div>
 </div>

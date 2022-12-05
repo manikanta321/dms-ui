@@ -20,6 +20,8 @@ export class DeactiveSuccessPopComponent implements OnInit {
   activeCatName: any;
   activeSubCatName:any;
   activeTypeName:any;
+  employeeCodeSet: any;
+  employeedata:any;
   constructor(private dialogRef: MatDialogRef<any>,
     private sharedService: SharedService,
   ) { }
@@ -36,13 +38,16 @@ export class DeactiveSuccessPopComponent implements OnInit {
     // this.employeename = localStorage.getItem('Niname');
     this.materialListName = localStorage.getItem('listName');
 
+    this.employeeCodeSet =localStorage.getItem('employeeCodeSet');
+    
+    this.employeedata= this.employeeCodeSet;
+
     this.materialList();
 
-     setTimeout(() => {
+      setTimeout(() => {
 
-       this.closeDialog()
-
-      }, 5000);
+         this.closeDialog()
+       }, 5000);
 
 
   }

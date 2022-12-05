@@ -8,6 +8,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class ActiveSuccessPopComponent implements OnInit {
   employeeId:any;
+  
   employeename:any;
   materialListName:any;
   matValue:boolean =false;
@@ -19,6 +20,10 @@ export class ActiveSuccessPopComponent implements OnInit {
   stockNmae:boolean =false;
   stockSubCatName:boolean = false;
   stockTypeName:boolean =false;
+
+  employeeCodeSet: any;
+  employeedata:any;
+  
   constructor(private dialogRef: MatDialogRef<any>,
     private elementRef: ElementRef) { }
 //   ngAfterViewInit() {
@@ -33,14 +38,23 @@ export class ActiveSuccessPopComponent implements OnInit {
     this.employeeId = localStorage.getItem("userID");
     this.employeename=localStorage.getItem("employeeName");
     this.materialListName =localStorage.getItem('listName');
+
+    this.employeeCodeSet =localStorage.getItem('employeeCodeSet');
+    
+    this.employeedata= this.employeeCodeSet;
+
+
     this.materialList();
 
 
-    setTimeout(() => {
 
-       this.closeDialog()
 
-     }, 5000);
+
+    //  setTimeout(() => {
+
+    //   this.closeDialog()
+
+    //  }, 5000);
    
   }
      

@@ -7,8 +7,10 @@ margin-top: -37px;
 font-family: 'Gilroy';
 
 color: #000000;
+font-style: normal;
 
 }
+
 /* .deact
 {
     width: 478px;
@@ -25,8 +27,15 @@ color: #000000;
     width: 150px;
     height: 41px;
 
-font-weight: 600;
 
+
+
+    }
+    .are
+    {
+        font-family: 'Gilroy-Medium';
+        color:#36454f;
+        font-size: 16px;
     }
 .exit{
 background: #fff;
@@ -37,6 +46,7 @@ border-radius: 10px;
 height: 41px;
 width: 150px;
 font-weight: 600;
+font-family: 'Gilroy';
 }
 .close-icon{
     left: 100%;

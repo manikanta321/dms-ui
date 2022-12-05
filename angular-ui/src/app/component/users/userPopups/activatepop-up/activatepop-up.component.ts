@@ -33,6 +33,9 @@ export class ActivatepopUpComponent implements OnInit {
     this.employeedata= this.employeeCodeSet;
     this.activateMaterial();
     this.LoginId=localStorage.getItem("logInId");
+
+    
+
   }
   close(){
     this.dialogRef.close()

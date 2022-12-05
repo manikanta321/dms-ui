@@ -2,7 +2,13 @@
   margin-top: 50px;
 }
 
-
+input[type=checkbox] {
+  accent-color: black;
+}
+.removeCircle1
+{
+  background-color: red;
+}
 .horizontal-scroll {
   display: flex;
   gap: 10px;

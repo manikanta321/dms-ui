@@ -13,6 +13,12 @@ color: #000000;
 
 
 }
+.areu
+{
+    font-family: 'Gilroy-Medium';
+ color: #36454f;
+ font-size: 16px;
+}
 .undo{
     padding: 5px 40px;
     background: black;
@@ -23,7 +29,6 @@ color: #000000;
     /* margin-top: 18px; */
      height:41px ;
     width: 150px; 
-    font-weight: 600;
     }
 .exit{
 background: #fff;

@@ -44,6 +44,7 @@ import { UomPopupComponent } from '../users/userPopups/uom-popup/uom-popup.compo
 import { EditPopupComponent } from '../users/userPopups/edit-popup/edit-popup.component';
 import { AddDealerPopupComponent } from 'src/app/add-dealer-popup/add-dealer-popup.component';
 import { EditdealersComponent } from '../users/userPopups/editdealers/editdealers.component';
+import { AddTargetsComponent } from '../add-targets/add-targets.component';
 
 // import { UseractionComponent } from '../useraction/useraction.component';
 
@@ -694,9 +695,8 @@ export class DealerTargetComponent implements OnInit {
     //this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  addUser() {
-    localStorage.setItem('edit-dealer','Add')
-    this.dialog.open(AddDealerPopupComponent,{height:"570px"});
+  addTarget() {
+    this.dialog.open(AddTargetsComponent,);
   }
 
   editUser() {

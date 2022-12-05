@@ -6,13 +6,32 @@ height: 356px;
 
 
 }
+.name
+{
+    font-family: 'Gilroy-Bold';
+font-size: 17px;
+letter-spacing: 0.2px;
+font-weight: 600;
+
+color: #000000;
+}
+.dc
+{
+    
+    font-family: 'Gilroy-Bold';
+font-size: 17px;
+letter-spacing: 0.2px;
+font-weight: 600;
+
+color: #000000;
+}
 
 .adduom{
- position: relative;
- /* font-family: 'Gilroy-Bold';  */
+ position: relative; 
  font-weight: bold;
  font-size: 18px;
  color: black;
+
 }
 .adduom:after
 {

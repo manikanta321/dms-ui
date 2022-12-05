@@ -118,6 +118,7 @@ color: white;
  height: 43px;
  border-radius: 10px;
  margin-right: 10px;
+ font-family: 'Gilroy';
 }
 .E-cancelBtn{
     background: #fff;
@@ -128,6 +129,7 @@ color: white;
     height: 43px;
     border: solid 2px black;
     border-radius: 10px;
+    font-family: 'Gilroy';
 
 }
 .E-saveBtn:hover{

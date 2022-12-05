@@ -61,8 +61,8 @@
                   <div class="materialname">
                     <label>Name <span>*</span></label>
                   </div>
-                    <input type="text" (keyup)="onKey($event)" placeholder="Enter the name of material" 
-                      class="form-control container materialname-placeholder">
+                  <input type="text" (keyup)="onKey($event)" placeholder="Enter the name of material"
+                    class="form-control container materialname-placeholder">
                 </div>
                 <div class="col-md-4">
                   <div class="uomp">
@@ -84,7 +84,8 @@
                   <!-- <textarea  placeholder="Describe the material" (keyup)="onKeyDesc($event)" name="" id="" class="materialDesc">
 
                   </textarea> -->
-                  <textarea id="" placeholder="Describe the material" (keyup)="onKeyDesc($event)" class="materialDesc" name=""></textarea>
+                  <textarea id="" placeholder="Describe the material" (keyup)="onKeyDesc($event)" class="materialDesc"
+                    name=""></textarea>
                 </div>
                 <div class="col-md-4">
                   <div class="imageofm">
@@ -97,7 +98,7 @@
                   <label class="form-control container imagePl">
 
                     <input type="file" id="file" style="display:none" (change)="onFileChanged($event)">
-                    <img src="assets/img/add-image.png"  class="add-img" alt="add-image=btn">
+                    <img src="assets/img/add-image.png" class="add-img" alt="add-image=btn">
 
                   </label>
                 </div>
@@ -106,12 +107,12 @@
                     <label> Material Custom Identifiers <span>*</span></label>
                   </div>
                   <div class="customidentifier hide">
-                    <ng-multiselect-dropdown class="Materialcustomidentifier" name="Materialcustomidentifier"placeholder="Select Identifier" 
-                    [disabled]="disabled" [settings]="dropdownSettings4" [data]="selectId"
-                    (onSelect)="onSelectIdentifier($event)" (onDeSelect)="onDeSelectIdentifier($event)"
-                (onDeSelectAll)="onDSelectOrAllIdentifier($event)" (onSelectAll)="onSelectOrAllIdentifier()"
-                   >
-                  </ng-multiselect-dropdown>
+                    <ng-multiselect-dropdown class="Materialcustomidentifier" name="Materialcustomidentifier"
+                      placeholder="Select Identifier" [disabled]="disabled" [settings]="dropdownSettings4"
+                      [data]="selectId" (onSelect)="onSelectIdentifier($event)"
+                      (onDeSelect)="onDeSelectIdentifier($event)" (onDeSelectAll)="onDSelectOrAllIdentifier($event)"
+                      (onSelectAll)="onSelectOrAllIdentifier()">
+                    </ng-multiselect-dropdown>
                   </div>
 
                   <div class="expiryperiod">
@@ -144,9 +145,9 @@
             </div>
           </mat-step>
           <!-- product information -->
-          <mat-step [stepControl]="secondFormGroup" disabled>
+          <mat-step [stepControl]="secondFormGroup" *ngIf="!checked">
 
-            <form [formGroup]="secondFormGroup" *ngIf="!checked">
+            <form [formGroup]="secondFormGroup" >
 
               <ng-template matStepLabel>Product Information</ng-template>
               <div class="row">
@@ -159,7 +160,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="mat-slide">
-                    <mat-slide-toggle (change)="change($event)" [checked]="checked">Is a product?</mat-slide-toggle>
+                    <mat-slide-toggle (change)="change($event)" [checked]="!checked">Is a product?</mat-slide-toggle>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -244,11 +245,13 @@
                   <div class="productci">
                     <label>Product Custom Identifier<span>*</span></label>
                   </div>
-                  <div class="identiersdrp hide" >
-                    <ng-multiselect-dropdown name="ProductCustomIdentifierId" class="ProductCustomIdentifierId" [placeholder]="'Select the identifiers'" 
-                      [disabled]="disabled" [settings]="dropdownSettings3" [data]="ProductId"
-                      (onSelect)="onSelectIdentifierProduct($event)" (onDeSelect)="onDeSelectIdentifierProduct($event)"
-                      (onDeSelectAll)="onDSelectOrAllIdentifierProduct($event)" (onSelectAll)="onSelectOrAllIdentifierProduct()">
+                  <div class="identiersdrp hide">
+                    <ng-multiselect-dropdown name="ProductCustomIdentifierId" class="ProductCustomIdentifierId"
+                      [placeholder]="'Select the identifiers'" [disabled]="disabled" [settings]="dropdownSettings3"
+                      [data]="ProductId" (onSelect)="onSelectIdentifierProduct($event)"
+                      (onDeSelect)="onDeSelectIdentifierProduct($event)"
+                      (onDeSelectAll)="onDSelectOrAllIdentifierProduct($event)"
+                      (onSelectAll)="onSelectOrAllIdentifierProduct()">
                     </ng-multiselect-dropdown>
                   </div>
                 </div>
@@ -258,8 +261,8 @@
           </mat-step>
           <!-- geographies -->
 
-          <mat-step [stepControl]="thirdformGroup">
-            <form [formGroup]="gepGraphiesFormGroup" *ngIf="!checked">
+          <mat-step [stepControl]="thirdformGroup" *ngIf="!checked">
+            <form [formGroup]="gepGraphiesFormGroup" >
               <ng-template matStepLabel> Geographies</ng-template>
               <div class="heading">
                 <h6 class="Geo-headerlabel"><b>Geographies</b></h6>
@@ -271,7 +274,6 @@
                     <div class="row grid-heading">
                       <div class="col-sm-10">
                         <p><span class="country">{{item.geographyHierarchyName}}</span>
-                          ({{item.geographyCount ?? 0}})
                           <span class="ml-1" *ngIf="item.primaryGeographyAssociation =='Y'">
                             <img src="assets/img/double-blue-tick.svg" alt="double-blue-tick"> </span>
                         </p>
@@ -284,11 +286,10 @@
                         <div *ngIf="item.allOtherGeography">
                           <div class="d-flex " *ngFor="let geoItem of item.allOtherGeography; ">
                             <div class="geography-item"
-                              [ngStyle]="{'background':item.geographySelected.indexOf(geoItem.geographyId) == -1 ? colorsList[i].secondaryColor.background : colorsList[i].primaryColor.background, 'color':item.geographySelected.indexOf(geoItem.geographyId) == -1 ? colorsList[i].secondaryColor.color : colorsList[i].primaryColor.color,'border': '1px solid ' + colorsList[i].primaryColor.background }"
-                              (click)="geoItem?.isActive ? selectGeoGraphy(geoItem,(i +1)): null"
-                              [ngClass]="{'deactivated': !geoItem?.isActive} ">
+                              [ngStyle]="{'background':isItemSelected(item,geoItem) ? colorsList[i].secondaryColor.background : colorsList[i].primaryColor.background, 'color':isItemSelected(item, geoItem) ? colorsList[i].secondaryColor.color : colorsList[i].primaryColor.color,'border': '1px solid ' + colorsList[i].primaryColor.background }"
+                              (click)="selectGeoGraphy(geoItem,(i +1))">
                               <div class="title"> {{geoItem.geographyName}}
-                                ({{geoItem.geographyCode ??''}})</div>
+                                <strong *ngIf="geoItem.selectedCount != null && geoItem.selectedCount != undefined">({{ geoItem.selectedCount}} / {{ geoItem.countOfDefault}})</strong></div>
                             </div>
                           </div>
                         </div>
@@ -299,6 +300,9 @@
               </div>
             </form>
             <!-- <div class="row"></div> -->
+            
+
+
             <section class="row propertiesSection" *ngIf="!checked">
 
               <table>
@@ -455,11 +459,12 @@
                   </tr>
                 </div>
                 <!-- citys -->
-                <div *ngFor="let item of geoGraphyFullData[3]?.geoProperties ?? []; let i =index;" class="table-padding">
+                <div *ngFor="let item of geoGraphyFullData[3]?.geoProperties ?? []; let i =index;"
+                  class="table-padding">
                   <tr *ngIf="!cityitem1" class="table-data-row">
                     <td class="check2" style="width: 18%;">
                       <mat-icon>subdirectory_arrow_right</mat-icon>
-                      <!-- <img [src]="subdirectory_arrow_right" class="expand-arrow1" alt="add-user-btn"> -->
+                      =
                       {{item.GeographyName}}
                     </td>
                     <td style="padding-left: 30px;">
@@ -474,8 +479,8 @@
                         id="MaxOrderQty" name="MaxOrderQty">
                     </td>
                     <td style="padding-left: 7px;">
-                      <input placeholder="Enter" type="text" [(ngModel)]="item.MarginPercent" class="uom-cls" id="MarginPercent"
-                        name="MarginPercent">
+                      <input placeholder="Enter" type="text" [(ngModel)]="item.MarginPercent" class="uom-cls"
+                        id="MarginPercent" name="MarginPercent">
                     </td>
                     <td>
                       <input placeholder="Enter" type="text" [(ngModel)]="item.DiscountPercent" class="uom-cls"
@@ -496,11 +501,17 @@
               </table>
 
             </section>
+
+
+
+
+
+
             <div class="col-6">
               <div class="row">
                 <div class="col-1"></div>
                 <div class="col-6">
-                  <button class="btn btn-primary btn-block submitbtn save-btn" (click)="addMaterialProduct();">Save</button>
+                  <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="!checked" (click)="addMaterialProduct();">Save</button>
                 </div>
                 <div class="col-3">
                 </div>

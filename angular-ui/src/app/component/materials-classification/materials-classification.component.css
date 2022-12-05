@@ -12,22 +12,28 @@ mat-card{
 } 
 .cate{
 
+font-family: 'Gilroy';
+font-size: 19px;
 font-family: 'Gilroy-Light';
-font-size: 20px;
+font-size: 18px;
 line-height: 23px;
 color: #000000;
 }
 .subcate
 {
+  font-family: 'Gilroy';
+font-size: 19px;
   font-family: 'Gilroy-Light';
-font-size: 20px;
+font-size: 18px;
 line-height: 23px;
 color: #000000;
 }
 .type1
 {
+  font-family: 'Gilroy';
+font-size: 19px;
   font-family: 'Gilroy-Light';
-font-size: 20px;
+font-size: 18px;
 line-height: 23px;
 color: #000000;
 }

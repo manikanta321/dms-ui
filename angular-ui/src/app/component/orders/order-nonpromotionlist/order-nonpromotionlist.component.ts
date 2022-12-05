@@ -12,13 +12,20 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
   styleUrls: ['./order-nonpromotionlist.component.css']
 })
 export class OrderNonpromotionlistComponent implements OnInit {
-
+  buyGroup : any = [{proItem: 'Lays IPL edition classic magic masala..', sku:'KA123458AB98764',price:'20' , taxtemplete:['hj','hj'], amount:'0'},
+  {proItem: 'Lays IPL edition classic magic masala..', sku:'KA123458AB98764',price:'20' , taxtemplete:['hj','hj'], amount:'0'},
+  {proItem: 'Lays IPL edition classic magic masala..', sku:'KA123458AB98764',price:'20' , taxtemplete:['hj','hj'], amount:'0'}]
   private gridApi!: GridApi;
   promoList = true;
   myForms!:FormGroup;
-
-  dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
+  dropdownSettings2: IDropdownSettings = {};
+  dropdownSettings3: IDropdownSettings = {};
+  dropdownSettings4: IDropdownSettings = {};
+  category : any = ['cat1','cat2'];
+  subCategory : any =['subcat'];
+  type : any =['type1'];
+  identifier : any =['identifier'];
   rowData: any;
   columnDefs:any;
   image = 'assets/img/maximize-arrow.png';
@@ -185,5 +192,7 @@ export class OrderNonpromotionlistComponent implements OnInit {
       });
      
     }
-
+    addnonPromoItems(){
+      console.log(this.buyGroup)
+    }
 }

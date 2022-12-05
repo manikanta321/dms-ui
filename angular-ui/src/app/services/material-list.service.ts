@@ -29,8 +29,8 @@ else {
   return next.handle(req);
 }
     }
-  getclassification(){
-    return this.http.get<any>(this.classificationurl + 'MaterialApi/GetCategories');
+  getclassification(flag:any){
+    return this.http.get<any>(this.classificationurl + `MaterialApi/GetCategories?flag=${flag}`);
   
   }
   onclickcat(Subdata){

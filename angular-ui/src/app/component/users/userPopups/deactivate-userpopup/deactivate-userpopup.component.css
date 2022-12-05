@@ -3,6 +3,11 @@
 font-size: 20px;
 font-weight: 600;
 margin-top: -37px;
+
+font-family: 'Gilroy';
+
+color: #000000;
+
 }
 /* .deact
 {
@@ -19,6 +24,9 @@ margin-top: -37px;
     margin-top: 15px;
     width: 150px;
     height: 41px;
+
+font-weight: 600;
+
     }
 .exit{
 background: #fff;
@@ -28,6 +36,7 @@ border: 2px solid #000000;
 border-radius: 10px;
 height: 41px;
 width: 150px;
+font-weight: 600;
 }
 .close-icon{
     left: 100%;

@@ -38,11 +38,11 @@ export class DeactiveSuccessPopComponent implements OnInit {
 
     this.materialList();
 
-    setTimeout(() => {
+     setTimeout(() => {
 
-      this.closeDialog()
+       this.closeDialog()
 
-    }, 5000);
+      }, 5000);
 
 
   }

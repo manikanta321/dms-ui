@@ -3,13 +3,21 @@
     border-radius: 21px;
 }
 
+.INFOR
+{
+    font-family: 'Gilroy';
+font-size: 21px;
+line-height: 23px;
+color: #000000;
+font-weight: 300;
+}
 .conver
 {
-    font-family: 'Gilroy-Light';
-font-size: 20px;
+    font-family: 'Gilroy';
+font-size: 21px;
 line-height: 23px;
 align-items: center;
-
+font-weight: 300;
 color: #000000;
 }
 .name1

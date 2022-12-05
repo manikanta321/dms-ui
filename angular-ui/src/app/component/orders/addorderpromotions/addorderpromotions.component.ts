@@ -21,6 +21,7 @@ export class AddorderpromotionsComponent implements OnInit {
   image1 = 'assets/img/minimize-tag.png';
   image2 = 'assets/img/minimize-tag.png';
   image3 = 'assets/img/minimize-tag.png';
+  buygroupromo: any;
 
   //event handler for the select element's change event
   selectChangeHandler (event: any) {
@@ -104,11 +105,12 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   addOrderPromotionList(){
-    this.dialog.open( AddOrderPromotionlistComponent,{width: '900px',height:'460px'});
+    this.dialog.open( AddOrderPromotionlistComponent,{width: '1043px',height:'900px'});
+    localStorage.setItem('buygroupromo','')
   }
 
   addOrderNonPromotionList(){
-    this.dialog.open( OrderNonpromotionlistComponent,{width: '1000px',height:'460px'});
+    this.dialog.open( OrderNonpromotionlistComponent,{width: '1043px',height:'663px'});
   }
   removeItem() {
     this.itemremoved.splice(0);

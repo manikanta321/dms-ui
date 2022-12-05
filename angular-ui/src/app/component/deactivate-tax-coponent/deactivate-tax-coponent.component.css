@@ -3,6 +3,7 @@
     font-size: 20px;
     font-weight: 600;
     margin-top: -27px;
+    font-family: 'Gilroy';
     }
     /* .deact
     {
@@ -35,4 +36,6 @@
         font-size: 15px;
         font-weight: 600;
     }
-    
+    .font{
+        font-family: 'Gilroy';
+    }

@@ -99,6 +99,10 @@ getGeographyIndealer(){
     return this.http.get<any>(this.classificationurl + 'OtherMasterApi/GetGeographyHierarchy');
   }
 
+  getGeographyForMaterial(geographyId, stockItemId) {
+    return this.http.post<any>(this.classificationurl + 'MaterialApi/GetGeographyForMaterial', {stockItemId, geographyId});
+  }
+
   getGeographiesById(id, hierarchyIndex) {
     let parmeter = id ? "?id=" + id : "";
     if(hierarchyIndex != null ){

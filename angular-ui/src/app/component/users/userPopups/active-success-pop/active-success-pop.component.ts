@@ -50,11 +50,11 @@ export class ActiveSuccessPopComponent implements OnInit {
 
 
 
-    //  setTimeout(() => {
+      setTimeout(() => {
 
-    //   this.closeDialog()
+       this.closeDialog()
 
-    //  }, 5000);
+      }, 5000);
    
   }
      

@@ -9,7 +9,6 @@ font-size: 20px;
 font-weight: 600;
 margin-top: -37px;
 font-family: 'Gilroy';
-
 color: #000000;
 
 
@@ -47,4 +46,8 @@ font-weight: 600;
     font-size: 15px;
     font-weight: 600;
     top:-11px
+}
+
+.font{
+    font-family: 'Gilroy';
 }

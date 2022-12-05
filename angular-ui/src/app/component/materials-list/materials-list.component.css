@@ -359,7 +359,7 @@
   float: right;
   top: 32px;
   position: relative;
-  left: 58%;
+  left: 108%;
   cursor: pointer;
 }
 
@@ -391,7 +391,7 @@
   width: 37px;
   height: 37px;
   margin-top: 32px;
-  margin-left: 62%;
+  margin-left: 17px;
   cursor: pointer;
 }
 
@@ -631,4 +631,14 @@
 }
 .font{
   font-family: 'Gilroy';
+}
+
+/* ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background{
+  background: black !important;
+} */
+::ng-deep.mat-checkbox-checked
+  .mat-checkbox-layout
+  .mat-checkbox-inner-container
+  .mat-checkbox-background {
+  background-color: black !important;
 }

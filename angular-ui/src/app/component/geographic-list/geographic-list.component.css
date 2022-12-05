@@ -49,7 +49,7 @@
 .shipButton{
     padding: 1%;
     font-family: 'Gilroy';
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 500;
 }
 .editext{
@@ -58,6 +58,14 @@
 }
 .font{
   font-family: 'Gilroy';
+}
+.pagination {
+  float: right !important;
+}
+.pagination-cls {
+  font-size: 14px;
+  font-weight: 900;
+  font-weight: bold;
 }
 
 .search-grid{

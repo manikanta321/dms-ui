@@ -1013,7 +1013,7 @@ else
   columnDefs: ColDef[] = [
     {
       headerName: "Name",
-      field: 'stockItemName', type: ['nonEditableColumn'], sort: 'desc', minWidth: 200
+      field: 'stockItemName', type: ['nonEditableColumn'], sort: 'desc', minWidth: 270
     },
 
     {
@@ -1027,18 +1027,18 @@ else
     },
     {
       headerName: "Product Group",
-      field: 'productGroupName', type: ['nonEditableColumn'], minWidth: 200
+      field: 'productGroupName', type: ['nonEditableColumn'], minWidth: 250
     },
     {
       headerName: "SKU",
-      field: 'productSKUName', type: ['nonEditableColumn'], minWidth: 130
+      field: 'productSKUName', type: ['nonEditableColumn'], minWidth: 146
     },
     {
       headerName: "Status",
       field: 'statusName',
       type: ['nonEditableColumn'],
       cellEditor: 'agSelectCellEditor',
-      maxWidth: 200,
+      maxWidth:150,
       cellEditorParams: {
         values: ['Active', 'Inactive']
       },
@@ -1052,7 +1052,7 @@ else
       colId: 'action',
       cellRenderer: MaterialListActionComponent,
       editable: false,
-      maxWidth: 60
+      maxWidth: 50
     },
 
   ];

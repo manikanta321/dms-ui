@@ -48,15 +48,13 @@
     [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
     (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
     (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" (gridReady)="onGridReady($event)"
-    [pagination]="false"></ag-grid-angular>
+    [pagination]="false"  (bodyScroll)="handleScroll($event)"></ag-grid-angular>
 
 </div>
 
 
 
-<div class="pagination22">
-  <span class="pagination-cls">1</span> to <span class="pagination-cls">{{rowData5.length}}</span> of <span
-    class="pagination-cls22">{{rowData5.length}}</span>
-  <span class="pagination-cls22">1</span><span class="TO">to</span><span class="pagination-cls">{{rowData5.length}}</span> <span class="TO">of</span> <span
-    class="pagination-cls">{{rowData5.length}}</span>
+<div class="pagination">
+  <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of
+  <span class="pagination-cls">{{rowData5.length}}</span>
 </div>

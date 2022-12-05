@@ -42,6 +42,10 @@ export class GeographicListComponent implements OnInit {
   statusTypes:any=[];
   headerName: any;
   shippingChk:boolean=true;
+  paginationScrollCount: any;
+  paginationPageSize = 10;
+  stayScrolledToEnd = true;
+  instancePopup:any = null;
 
   gridOptions = {
     resizable: true,
@@ -221,6 +225,22 @@ shipPackCharges:any;
       .value;
     this.gridApi.paginationSetPageSize(Number(value));
   }
+  handleScroll(event) {
+    if(this.instancePopup){
+      this.instancePopup.togglePopup();
+      this.instancePopup = null;
+    }
+  const grid = document.getElementById('gridContainer');
+  if (grid) {
+    const gridBody = grid.querySelector('.ag-body-viewport') as any;
+    const scrollPos = gridBody.offsetHeight + event.top;
+    const scrollDiff = gridBody.scrollHeight - scrollPos;
+    //const api =  this.rowData5;
+    this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
+    this.paginationScrollCount = this.rowData5.length;
+  }
+  }
+
   onCellClicked( e: CellClickedEvent): void {
     console.log('cellClicked', e);
     this.userId=e.data.userId;

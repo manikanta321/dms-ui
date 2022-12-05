@@ -1,19 +1,10 @@
 version: 0.0
-os: linux
+os: windows
 files:
-  - source: /
-    destination: /home/ubuntu/app
-permissions:
-   - object: /home/ubuntu/app
-     pattern: "**"
-    
+  - source: \
+    destination:  c:\inetpub
+file_exists_behavior: OVERWRITE
 hooks:
-  BeforeInstall:
-    - location: dependencies.sh
-      timeout: 180
-      runas: root
-   
-  AfterInstall:
-    - location: start.sh
-      timeout: 180
-      runas: root
+ BeforeInstall:
+ - location: \before-install.bat
+   timeout: 900

@@ -1208,3 +1208,20 @@ font-size: 12.5px;
   position: relative;
   top: 0px !important;
 }
+::ng-deep.ProductCustomIdentifierId .multiselect-dropdown .dropdown-btn .selected-item{
+  border: 1px solid #337ab7;
+  margin-right: 4px;
+  background: #00187A !important;
+  padding: 0 5px;
+  color: #fff;
+  border-radius: 10px !important;
+  float: left;
+  display: flex;
+  max-width: 170px !important;
+  position: relative;
+  top: 0px !important;
+}
+.add-img{
+  width: -webkit-fill-available;
+    height: -webkit-fill-available;
+}

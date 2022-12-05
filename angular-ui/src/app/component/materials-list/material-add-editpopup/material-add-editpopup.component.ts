@@ -52,14 +52,14 @@ export class MaterialAddEditpopupComponent {
   productList: any = [];
   materialIdentifier: any = [];
   // selectedItems: any;
-  selectedItems1: any;
-  selectedItems2: any;
-  selectedItems3: any;
-  selectedItems4: any;
+  categeoryData: any;
+  subCategoryData: any;
+  typesData: any;
+  baseUoMData: any;
   MaterialIdentifier: any;
-  selectedItems5: any;
-  selectedItems6: any;
-  selectedItems7: any;
+  MaterialCustomIdentifiers: any;
+  productGroupData: any;
+  subproductGroupData: any;
   sub_category: any;
   typeI: any;
   rowData5: any = [];
@@ -83,11 +83,11 @@ export class MaterialAddEditpopupComponent {
   stateName: any;
   districtName: any;
 
-  materialName: string = '';
-  description: string = '';
+  materialName: any = '';
+  stockItemDesc: string = '';
   desc: any;
   nameM: any;
-  expiryDate: string = '';
+  expiryDate: any = '';
   BrandName: string = '';
   gloabKey: any;
   Sku: any;
@@ -145,7 +145,9 @@ export class MaterialAddEditpopupComponent {
     { primaryColor: { background: '#3D1A00', color: '#fff' }, secondaryColor: { background: "#D6C8C3", color: "#3D1A00" }, },
     { primaryColor: { background: '#DC0063', color: '#fff' }, secondaryColor: { background: "#FFE1EE", color: "#DC0063" }, },
   ];
-  @ViewChild('stepper') private stepper: MatStepper | any;;
+  @ViewChild('stepper') private stepper: MatStepper | any;
+  dataGetById: any = [];
+
 
   constructor(private fb: FormBuilder, public dialog: MatDialog,
     private spinner: NgxSpinnerService, private addMaterials: AddMaterialsService,
@@ -204,13 +206,14 @@ export class MaterialAddEditpopupComponent {
     this.getGeographyForMaterial(0, 0);
 
     this.getProductList();
-    this.selectedItems1 = ["Shivam"];
-    this.selectedItems2 = [];
-    this.selectedItems3 = [];
-    this.selectedItems4 = [];
-    this.selectedItems5 = [];
-    this.selectedItems6 = [];
-    this.selectedItems7 = [];
+    this.categeoryData = [];
+    this.subCategoryData = [];
+    this.typesData = [];
+    this.baseUoMData = [];
+    this.MaterialCustomIdentifiers = [];
+    this.selectedProductId = [];
+    this.productGroupData = [];
+    this.subproductGroupData = [];
     this.editList()
     this.getclassification();
     this.getAllUom();
@@ -224,8 +227,8 @@ export class MaterialAddEditpopupComponent {
   }
   onKeyDesc(event) {
     let inputDesc = event.target.value;
-    this.description = inputDesc;
-    console.log("description", this.description)
+    this.stockItemDesc = inputDesc;
+    console.log("stockItemDesc", this.stockItemDesc)
   }
   onKeyExpry(event) {
     let inputExpry = event.target.value;
@@ -269,9 +272,11 @@ export class MaterialAddEditpopupComponent {
     if (editV == 'Edit') {
       this.actineLabel = "Edit Material";
       this.addMaterials.onEditList(this.getEditId).subscribe((res) => {
-        let data = res.response;
-        console.log("EditData", data);
+        this.dataGetById = res.response;
+        console.log("EditData", this.dataGetById);
+        
         this.editData = true;
+        this.dataPreLoadByID();
       })
     }
     else {
@@ -279,13 +284,65 @@ export class MaterialAddEditpopupComponent {
       this.editData = false;
     }
   }
+
+  dataPreLoadByID(){
+       
+        this.stockItemDesc = this.dataGetById.stockItemDesc
+        this.materialName = this.dataGetById.stockItemName
+        this.base64textString = this.dataGetById.imageurl
+        this.expiryDate = this.dataGetById.expiryPeriod
+        this.MaterialCustomIdentifiers = this.dataGetById.materialcustomidentifier
+        this.categeoryData = this.dataGetById.categoryId
+        if(this.categeoryData != ''){
+          this.addMaterials.onclickcat(this.categeoryData).subscribe((res) => {
+            let subcaty = res.response;
+            console.log("response1", res)
+            console.log("catId", this.catId);
+            this.sub_category = subcaty.allOtherSubCAts;
+            this.toppings1 = new FormControl(this.sub_category);
+          });
+          this.subCategoryData = this.dataGetById.stockItemSubCategoryId
+        }
+
+        if(this.subCategoryData !=''){
+          this.addMaterials.onclicksubcat(this.subCategoryData).subscribe((res) => {
+            let typs = res.response;
+            console.log("subCatId", this.subCatId);
+            this.typeI = typs;
+            console.log("Typess", this.typeI);
+            this.toppings2 = new FormControl(this.typeI);
+          });
+          this.typesData = this.dataGetById.stockItemTypeId
+        }
+        
+       if(this.typesData != ''){
+        this.getAllUom();
+       }
+        this.baseUoMData = this.dataGetById.baseUoMId
+        this.gloabKey = this.dataGetById.globalCode
+        this.Sku = this.dataGetById.productSKUName
+        this.shortCode = this.dataGetById.shortCode
+        this.BrandName = this.dataGetById.brandName
+        this.Sort = this.dataGetById.manualShortOrder
+        this.AddSP = this.dataGetById.productLink
+        this.subproductGroupData = this.dataGetById.productSubGroupId
+        this.selectedProductId = this.dataGetById.productCustomIdentifierId
+
+        
+        
+        // "materialcustomidentifier": null,
+        // "productSubGroupId": 0,
+        // "productGeographys": null
+
+
+  }
   getclassification() {
 
     this.addMaterials.getclassification().subscribe((res) => {
       let data = res.response;
       this.catgname = data.allOtherCats;
       // let dataCat = data.allOtherCats;
-      this.selectedItems1 = new FormControl(this.catgname);
+      // this.categeoryData = new FormControl(this.catgname);
     })
   }
   getProductList() {
@@ -296,12 +353,7 @@ export class MaterialAddEditpopupComponent {
       console.log("prodG", prodG)
     })
   }
-  // getMaterialIdentifier() {
-  //   this.MaterialIdentifier = localStorage.getItem('session');
-  //   console.log("Daatatatatatat5", this.MaterialIdentifier)
-  //   this.selectedItems5 = JSON.parse(this.MaterialIdentifier);
-  //   console.log("Selected Item 5", this.selectedItems5)
-  // }
+
 
   addMaterialProduct() {
     let selectedGeographies = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographySelected;
@@ -314,10 +366,10 @@ export class MaterialAddEditpopupComponent {
       StockItemSubCategoryId: this.subCatId,
       StockItemTypeId: this.typeId,
       StockItemName: this.materialName,
-      StockItemDesc: this.description,
+      StockItemDesc: this.stockItemDesc,
       BaseUoMId: this.uomID,
       Imageurl: this.base64textString,
-      Materialcustomidentifier: this.selectedItems5,
+      Materialcustomidentifier: this.MaterialCustomIdentifiers,
       ExpiryPeriod: this.expiryDate,
       ProductCustomIdentifierId: this.selectedProductId,
       IsProduct: +!this.checked,
@@ -347,10 +399,10 @@ export class MaterialAddEditpopupComponent {
       StockItemSubCategoryId: this.subCatId,
       StockItemTypeId: this.typeId,
       StockItemName: this.materialName,
-      StockItemDesc: this.description,
+      StockItemDesc: this.stockItemDesc,
       BaseUoMId: this.uomID,
       Imageurl: this.base64textString,
-      Materialcustomidentifier: this.selectedItems5,
+      Materialcustomidentifier: this.MaterialCustomIdentifiers,
       ExpiryPeriod: this.expiryDate,
       IsProduct: +!this.checked
     }
@@ -372,6 +424,7 @@ export class MaterialAddEditpopupComponent {
       this.toppings1 = new FormControl(this.sub_category);
     });
   }
+  
   onSubCategorySelect(item: any) {
     this.subCatId = item.subCatId;
     this.addMaterials.onclicksubcat(item.subCatId).subscribe((res) => {
@@ -419,17 +472,7 @@ export class MaterialAddEditpopupComponent {
       this.selectedItem = data.firstCountr.countryId;
     })
   }
-  // getCountryList(){
-  //   this.calssification.getCountryList().subscribe((res)=>{
-  //         let data=res.response;
-  //         this.countCountry=res.response.allOtherCountries.length;
-  //         this.CountryList=data.allOtherCountries;
-  //         this.firstCountr =data.firstCountr;
-  //         this.getStateList(data.firstCountr.countryId);
-  //         this.selectedItem=data.firstCountr.countryId;
 
-  //       })  
-  // }
   getStateList(id: any) {
     localStorage.setItem('countryId', id);
     this.selectedItem = id;
@@ -822,19 +865,19 @@ export class MaterialAddEditpopupComponent {
     console.log(this.base64textString, "base64")
   }
   onSelectIdentifier(item: any) {
-    this.selectedItems5.push(item.materilCustomIdentifierId)
-    console.log("Selecteed Identifier", this.selectedItems5);
+    this.MaterialCustomIdentifiers.push(item.materilCustomIdentifierId)
+    console.log("Selecteed Identifier", this.MaterialCustomIdentifiers);
   }
   onDeSelectIdentifier(item: any) {
-    this.selectedItems5.forEach((element, index) => {
-      if (element == item.materilCustomIdentifierId) this.selectedItems5.splice(index, 1);
+    this.MaterialCustomIdentifiers.forEach((element, index) => {
+      if (element == item.materilCustomIdentifierId) this.MaterialCustomIdentifiers.splice(index, 1);
 
     });
-    console.log("DeSelecteed Identifier", this.selectedItems5);
+    console.log("DeSelecteed Identifier", this.MaterialCustomIdentifiers);
   }
   onDSelectOrAllIdentifier(event) {
-    this.selectedItems5 = [];
-    console.log("Deselected DAta", this.selectedItems5);
+    this.MaterialCustomIdentifiers = [];
+    console.log("Deselected DAta", this.MaterialCustomIdentifiers);
   }
   onSelectOrAllIdentifier() {
     this.selectAllIdentifier = this.selectId.map((data: { materilCustomIdentifierId: any; materilCustomName: any; }) => {
@@ -851,8 +894,8 @@ export class MaterialAddEditpopupComponent {
       return this.selectedIdentifierArray.push(element.materilCustomIdentifierId);
 
     })
-    this.selectedItems5 = this.selectedIdentifierArray;
-    console.log("All Selected", this.selectedItems5);
+    this.MaterialCustomIdentifiers = this.selectedIdentifierArray;
+    console.log("All Selected", this.MaterialCustomIdentifiers);
   }
   onSelectIdentifierProduct(item: any) {
     this.selectedProductId.push(item.productCustomIdentifierId)

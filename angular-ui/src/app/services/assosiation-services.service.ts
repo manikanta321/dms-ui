@@ -53,4 +53,9 @@ public getDealersList(data) {
  }
 
 
+public editbulkdealer(data){
+  return this.http.post<any>(this.userurl + 'DealerApi/UpdateBulkEditAssociations', data);
+}
+
+
 }

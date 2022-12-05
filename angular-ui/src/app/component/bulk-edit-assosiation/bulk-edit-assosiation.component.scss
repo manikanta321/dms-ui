@@ -30,6 +30,10 @@
 /* ::ng-deep.mat-row{
     height: 10px;
 } */
+
+
+
+
 .user-text {
     font-size: 30px;
     line-height: 41px;
@@ -127,18 +131,7 @@
     bottom: 0px;
     top: 48px !important;
   }
-  
-  ::ng-deep.dropdown-multiselect__caret:before {
-    position: relative;
-    right: 0;
-    top: 65%;
-    color: #000000;
-    margin-top: 4px;
-    border-style: solid;
-    border-width: 8px 8px 0 8px;
-    border-color: #000000 transparent !important;
-    content: "";
-  }
+
   
   ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
     box-sizing: content-box;
@@ -356,7 +349,6 @@
     float: left;
     display: flex;
     max-width: 170px !important;
-    position: relative;
     top: 39px !important;
   }
   
@@ -831,7 +823,6 @@
     background: #FFFFFF !important;
     box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05) !important;
     border-radius: 8px !important;
-    position: relative !important;
     transform: translate(29px, 50px) !important;
   }
   
@@ -973,30 +964,35 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
     font-size: 14px;
     font-weight: 900;
   }
+
   
-  .dropdown-form {
-    position: relative;
-  }
-  
-  .dropdown-placeholder {
-    background: white;
-    color: #808080;
-    top: 0;
-    position: absolute;
-    height: 41px;
-    line-height: 41px;
-    left: 1px;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
-    width: 80%;
-    border-radius: 10px 0 0 10px !important;
-    padding-left: 10px;
-    pointer-events: none;
-  }
-  
-  .roles-placeholder.dropdown-placeholder .selected-placeholder {
-     color: #D23F00 !important;
-  }
+.dropdown-form {
+  position: relative;
+}
+
+.dropdown-placeholder {
+  background: white;
+  color: #808080;
+  top: 0;
+  position: absolute;
+  height: 41px;
+  line-height: 41px;
+  left: 1px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  width: 80%;
+  border-radius: 10px 0 0 10px !important;
+  padding-left: 10px;
+  pointer-events: none;
+}
+
+.roles-placeholder.dropdown-placeholder .selected-placeholder {
+   color: #D23F00 !important;
+}
+
+.stts-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #000 !important;
+}
   
   .stts-placeholder.dropdown-placeholder .selected-placeholder {
     color: #000 !important;
@@ -1144,7 +1140,7 @@ border-radius: 10px;
   .uom-cls {
     border: 0.5px solid #000000;
     border-radius: 10px;
-    width: 67px
+    width: 87px
   }
   .main-d{
     background-color: white;
@@ -1156,3 +1152,14 @@ border-radius: 10px;
   .flexcss{
     float: right;
   }
+  .testcalss  {
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    width: 100px;
+    }
+    .dropdown-form {
+      position: relative;
+    }
+    

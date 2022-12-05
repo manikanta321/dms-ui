@@ -48,6 +48,7 @@ import { AddDealerAssociationsComponent } from '../component/add-dealer-associat
 import { AssosiationActionComponent } from '../component/assosiation-action/assosiation-action.component';
 import { BulkEditAssosiationComponent } from '../component/bulk-edit-assosiation/bulk-edit-assosiation.component';
 import { AssosiationServicesService } from '../services/assosiation-services.service';
+import { SharedServicesDealerService } from '../services/shared-services-dealer.service';
 // import { UseractionComponent } from '../useraction/useraction.component';
 
 @Component({
@@ -225,11 +226,11 @@ export class AssociationComponent implements OnInit {
   toppings1 = new FormControl('');
 
 
-  toppingList: any = [];
+  toppingList: any[] = [];
   geographysSelected:any=[];
   dealerSelected:any=[];
   productSelected:any=[];
-  toppingList1: any = [];
+  toppingList1: any[] = [];
   filterDictionary: any;
   sideBarOpen = true;
   scrolledIndex = 0;
@@ -292,8 +293,9 @@ export class AssociationComponent implements OnInit {
     private user: UserService,
     private observer: BreakpointObserver,
     private fb: FormBuilder,
-    private sharedService: SharedService,
     private associationService:AssosiationServicesService,
+    private sharedService: SharedServicesDealerService,
+
   ) {
 
     this.sharedService.listen().subscribe((m: any) => {
@@ -409,8 +411,7 @@ export class AssociationComponent implements OnInit {
 
   }
   refresh() {
-    this.toppings = new FormControl(this.toppingList);
-    this.toppings1 = new FormControl(this.toppingList1);
+   
     this.myForm = this.fb.group({
       city: [this.selectedItems]
     });
@@ -471,10 +472,10 @@ export class AssociationComponent implements OnInit {
         // console.log('rolecheck',rolecheck)
 
       })
-      console.log('rolearray', this.roleArray)
+      console.log('buleditGeo', this.toppingList)
 
       // this.toppingList = res.response;
-      this.toppings = new FormControl(this.toppingList);
+      // this.toppings = new FormControl(this.toppingList);
 
       // console.log('rolelist', this.toppingList)
       this.dropdownSettings = {
@@ -518,7 +519,6 @@ export class AssociationComponent implements OnInit {
         allowSearchFilter: this.StatusFilter
       };
       this.selectedStatus = [];
-      this.toppings1 = new FormControl(this.toppingList1);
   }
 
 
@@ -550,7 +550,6 @@ export class AssociationComponent implements OnInit {
         allowSearchFilter: this.StatusFilter
       };
       this.selectedStatus = [];
-      this.toppings1 = new FormControl(this.toppingList1);
   }
 
 

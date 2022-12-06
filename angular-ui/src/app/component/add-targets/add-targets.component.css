@@ -152,11 +152,12 @@ label {
     bottom: 27px;
 }
 
-.duplicate-tabel {
+.dealers-tabel {
     position: relative;
     width: 99.5%;
     bottom: 22px;
-    height: 357px;
+    /* height: 357px; */
+    min-height: 237px;
     border-width: 0px 1px 1px 1px;
     border-style: solid;
     border-color: #686E74;

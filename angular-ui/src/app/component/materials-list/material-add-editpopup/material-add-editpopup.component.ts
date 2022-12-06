@@ -112,6 +112,7 @@ export class MaterialAddEditpopupComponent {
   CityExpanded = true;
   CountryName: any;
   showDiv: boolean = false
+  updateOrSave:boolean =false
   // geograhies related variables
 
   geoPropertiesList: any
@@ -272,6 +273,7 @@ export class MaterialAddEditpopupComponent {
     let editV = localStorage.getItem('Edit');
     if (editV == 'Edit') {
       this.actineLabel = "Edit Material";
+      this.updateOrSave = !this.updateOrSave
       this.spinner.show();
       this.addMaterials.onEditList(this.getEditId).subscribe((res) => {
         this.dataGetById = res.response;
@@ -285,6 +287,7 @@ export class MaterialAddEditpopupComponent {
     else {
       this.actineLabel = "Add Material";
       this.editData = false;
+      // this.updateOrSave= this.updateOrSave;
       this.dataGetById = {};
       this.getGeographyForMaterial(0, 0);
     }
@@ -369,7 +372,7 @@ export class MaterialAddEditpopupComponent {
     })
   }
 
-
+// productSKUGeographyId
   addMaterialProduct() {
     let selectedGeographies = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographySelected;
     let data2 = {
@@ -382,6 +385,7 @@ export class MaterialAddEditpopupComponent {
     this.geoProperties = JSON.parse(JSON.stringify(this.geoGraphyFullData[3].geoProperties));
     this.geoProperties = this.geoProperties.map(item => {
       delete item.geographyName;
+      delete item.productSKUGeographyId;
       return item;
     })
 
@@ -417,8 +421,70 @@ export class MaterialAddEditpopupComponent {
       console.log(res, "defaultGeoID")
     })
   }
+  addMaterialProductAfterEdit() {
+    
+    if (this.geoGraphyFullData[3].geoProperties.length == 0) {
+      alert("Plz select atleast one city");
+      return;
+    }
+    this.geoProperties = JSON.parse(JSON.stringify(this.geoGraphyFullData[3].geoProperties));
+    this.geoProperties = this.geoProperties.map(item => {
+      delete item.geographyName;
+      return item;
+    })
+
+    let data = {
+      stockItemId:this.stockItemId,
+      DoneById: this.UserId,
+      StockItemSubCategoryId: this.subCatId,
+      StockItemTypeId: this.typeId,
+      StockItemName: this.materialName,
+      StockItemDesc: this.stockItemDesc,
+      BaseUoMId: this.uomID,
+      Imageurl: this.base64textString,
+      Materialcustomidentifier: this.MaterialCustomIdentifiers,
+      ExpiryPeriod: this.expiryDate,
+      ProductCustomIdentifierId: this.selectedProductId,
+      IsProduct: +!this.checked,
+      BrandName: this.BrandName,
+      GlobalCode: this.gloabKey,
+      ProductSKUName: this.Sku,
+      ShortCode: this.shortCode,
+      ManualShortOrder: this.Sort,
+      ProductLink: this.AddSP,
+      ProductSubGroupId: this.subProductId,
+      ProductGeographys: this.geoProperties
+
+    }
+
+    // console.log(data)
+    this.addMaterials.addMaterialIfProduct(data).subscribe((res) => {
+      console.log(res, "addmaterialProduct")
+    })
+
+  }
   addMaterialIfNotProduct() {
     let data = {
+      DoneById: this.UserId,
+      StockItemSubCategoryId: this.subCatId,
+      StockItemTypeId: this.typeId,
+      StockItemName: this.materialName,
+      StockItemDesc: this.stockItemDesc,
+      BaseUoMId: this.uomID,
+      Imageurl: this.base64textString,
+      Materialcustomidentifier: this.MaterialCustomIdentifiers,
+      ExpiryPeriod: this.expiryDate,
+      IsProduct: +!this.checked
+    }
+    this.addMaterials.MaterialIfNotProduct(data).subscribe((res) => {
+      console.log(res, "addmaterialProduct")
+    })
+    console.log(data)
+  }
+
+  addMaterialIfNotProductAfterEdit() {
+    let data = {
+      stockItemId:this.stockItemId,
       DoneById: this.UserId,
       StockItemSubCategoryId: this.subCatId,
       StockItemTypeId: this.typeId,
@@ -784,6 +850,7 @@ export class MaterialAddEditpopupComponent {
 
   CreateGeoPropertiesObject(propertyObj) {
     let obj: any = {};
+    obj.productSKUGeographyId = propertyObj.productSKUGeographyId ?? "";
     obj.minOrderQty = propertyObj.minOrderQty ?? "";
     obj.discountPercent = propertyObj.discountPercent ?? "";
     obj.maxOrderQty = propertyObj.maxOrderQty ?? "";

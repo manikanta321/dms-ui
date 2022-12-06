@@ -58,4 +58,10 @@ public editbulkdealer(data){
 }
 
 
+public getgeo(produId){
+  return this.http.get<any>(`${this.userurl}DealerApi/GetAboveDefaultGeography?stockitemid=${produId}`);
+
+}
+
+
 }

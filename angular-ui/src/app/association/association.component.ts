@@ -334,6 +334,7 @@ export class AssociationComponent implements OnInit {
 
 
   ngOnInit() {
+
     this.getusertabeldata();
     this.roleItems();
     this.ProductItems();

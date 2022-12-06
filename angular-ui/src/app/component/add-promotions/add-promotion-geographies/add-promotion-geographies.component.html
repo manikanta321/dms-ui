@@ -13,23 +13,27 @@
       </div>
     </div>
     <div class="countries-sect">
-      <div class="row mt-3">
+      <div class="row mt-3">     
+         <div *ngFor="let subtask of geodata">
+
         <div class="col-lg-6">
           <mat-checkbox class="example-margin" [checked]="allComplete" [indeterminate]="someComplete()"
-            (change)="setAll($event.checked)">{{task.name}}</mat-checkbox>
+            (change)="setAll($event.checked)">{{subtask.aboveDefaultGeoName}}</mat-checkbox>
         </div>
         <div class="col-lg-6">
           <mat-card class="list-states">
             <!-- <ul> -->
-            <li *ngFor="let subtask of task.subtasks">
+            <li *ngFor="let subtask1 of subtask.defaultGeography">
               <mat-icon>subdirectory_arrow_right</mat-icon>
-              <mat-checkbox [(ngModel)]="subtask.completed" (ngModelChange)="updateAllComplete()">
-                {{subtask.name}}
+              <mat-checkbox       [checked]="subtask1.value" (click)="updateAllComplete(subtask1.defaultGeoName)"  >
+                {{subtask1.defaultGeoName}}
               </mat-checkbox>
             </li>
             <!-- </ul> -->
           </mat-card>
         </div>
+      </div>
+
       </div>
     </div>
     <div class="row footer-btn">

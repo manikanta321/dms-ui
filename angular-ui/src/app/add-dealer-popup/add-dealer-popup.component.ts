@@ -503,9 +503,6 @@ export class AddDealerPopupComponent implements OnInit {
   }
 
   saveGeographiesList() {
-
-
-
     let selectedGeographies = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographySelected;
     let data2 = {
       DefalultgeoId: selectedGeographies,

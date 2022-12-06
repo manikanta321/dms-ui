@@ -265,9 +265,13 @@ border-radius: 10px;
   .promotiont {
     margin-top: 3px;
     margin-bottom: 15px;
-
+     position:relative;
     font-family: 'Gilroy';
   }
+  .img1{
+    position: absolute;
+    left: 325px;
+    top: 41px;  }
   .promo1-dropdown-btn span .ng-star-inserted {
     visibility: hidden;
     position: absolute !important;

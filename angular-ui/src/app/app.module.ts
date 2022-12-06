@@ -162,6 +162,7 @@ import { DealerReactivePopupComponent } from './component/users/userPopups/editd
 import { DealerReactvSuccessComponent } from './component/users/userPopups/editdealers/dealer-reactv-success/dealer-reactv-success.component';
 import { TargetGroupsComponent } from './component/target-groups/target-groups.component';
 import { AddTargetsComponent } from './component/add-targets/add-targets.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -350,6 +351,7 @@ import { AddTargetsComponent } from './component/add-targets/add-targets.compone
           AddTargetsComponent
   ],
   imports: [
+    MatTooltipModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,

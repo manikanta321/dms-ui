@@ -5,6 +5,9 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddOrderPromotionlistComponent } from '../orders/add-order-promotionlist/add-order-promotionlist.component';
 import { OrderNonpromotionlistComponent } from '../orders/order-nonpromotionlist/order-nonpromotionlist.component';
 import { AddPromotionGeographiesComponent } from '../add-promotions/add-promotion-geographies/add-promotion-geographies.component';
+import { UserService } from 'src/app/services/user.service';
+import { AssosiationServicesService } from 'src/app/services/assosiation-services.service';
+import {TooltipPosition} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-add-dealer-associations',
@@ -53,6 +56,9 @@ export class AddDealerAssociationsComponent implements OnInit {
   dropdownSettings3: IDropdownSettings = {};
   disabled = false;
   toppingList3: any = [];
+  ProductListArray:any=[];
+  dealerListArray:any=[];
+
   toppingList: any = [
     'Product Name12',
     'Product Name2',
@@ -84,13 +90,18 @@ export class AddDealerAssociationsComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     public dialog: MatDialog,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private user: UserService,
+    private associationService:AssosiationServicesService,
+
   ) {}
 
   firstFormGroup: FormGroup = this._formBuilder.group({ firstCtrl: [''] });
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
 
   ngOnInit(): void {
+    this.ProductItems();
+    this.dealerItems(); 
     this.dropdownSettings3 = {
       singleSelection: false,
       idField: 'productGroupId',
@@ -102,6 +113,51 @@ export class AddDealerAssociationsComponent implements OnInit {
     this.myForm = this.fb.group({
       city1: [this.selectedItems],
     });
+  }
+
+
+  ProductItems(){
+    this.user.getproductlist().subscribe((res: any) => {
+        let localdata = res.response;
+        // console.log('checkdata', localdata)
+  
+        this.ProductListArray = localdata.map((data: { stockItemId: any; stockItemName: any; }) => {
+          return { stockItemId: data.stockItemId, stockItemName: data.stockItemName };
+        });
+  
+        this.ProductListArray.push()
+        console.log('this.ProductListArray',this.ProductListArray)
+                                                                     
+      });
+  }
+
+
+
+  dealerItems(){
+    this.associationService.getDealers().subscribe((res: any) => {
+        let localdata = res.response;
+        // console.log('checkdata', localdata)
+  
+        this.dealerListArray = localdata.map((data: { customerId: any; customerName: any; }) => {
+          return { customerId: data.customerId, customerName  : data.customerName };
+        });
+
+        this.dealerListArray.push()
+        console.log('dealerListArray',this.dealerListArray)
+                                                   
+      });
+    
+  }
+
+
+
+  selectedProduct(value){
+    let ProductId=value
+    localStorage.setItem('ProductStockItemId', ProductId);  }
+
+  selectedDealer(value){
+    alert(value)
+
   }
 
   onTypeSelect(item: any) {

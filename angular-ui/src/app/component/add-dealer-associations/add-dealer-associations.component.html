@@ -36,16 +36,35 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="promotiont">
+            <div  *ngIf="screenValue== 1 "  class="promotiont">
               <label>Product <span>*</span></label
               ><br />
-              <select
+              <select #teams
                 class="form-select select-asso"
-                aria-label=".form-select-lg example"
+                aria-label=".form-select-lg example" (change)="selectedProduct(teams.value);"
               >
                 <option selected hidden>Select</option>
-                <option value="1">Airtel</option>
-                <option value="2">Jio</option>
+                <option style="height: 900px;"     *ngFor="let product of ProductListArray" [value]="product.stockItemId">{{product.stockItemName}}</option>
+
+              </select>
+
+<img   class="img1"  src="../../../assets/img/i icon.svg"       matTooxltip=""/>
+
+            </div>
+
+
+            <div class="promotiont" *ngIf="screenValue== 2 ">
+              <label>Dealer <span>*</span></label
+              ><br />
+              <select #teams1
+                class="form-select select-asso"
+                aria-label=".form-select-lg example"
+                (change)="selectedDealer(teams1.value);" 
+                oninput='style.class="pink"'
+              >
+                <option selected hidden>Select</option>
+                <option style="height: 900px;"     *ngFor="let dealer of dealerListArray" [value]="dealer.customerId">{{dealer.customerName}} </option>
+
               </select>
             </div>
           </div>

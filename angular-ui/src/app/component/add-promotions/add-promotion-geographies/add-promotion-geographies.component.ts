@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AssosiationServicesService } from 'src/app/services/assosiation-services.service';
 
 
 export interface Task {
@@ -24,13 +25,22 @@ export class AddPromotionGeographiesComponent implements OnInit {
   }
   indtasks: any = ['karnataka','AndhraPradesh','kerala','maharastra']
   allComplete: boolean = false;
-  completed : boolean = false
-  constructor() { }
+  completed : boolean = false;
+  geodata:any=[];
+  constructor(
+ private assoservice:AssosiationServicesService, ) { }
 
   ngOnInit(): void {
+let productId=localStorage.getItem('ProductStockItemId')
+this.assoservice.getgeo(productId).subscribe((res)=>{
+  let data =res.response;
+  this.geodata= data;
+  
+})
   }
-  updateAllComplete() {
-    this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
+  updateAllComplete(event) {
+    console.log('event',event)
+    // this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
   }
 
   someComplete(): boolean {

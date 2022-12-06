@@ -138,7 +138,7 @@
                   <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="checked"
                     (click)="addMaterialIfNotProduct()">Save</button>
                 </div>
-                <div class="col-6" *ngIf="updateOrSave" >
+                <div class="col-6" *ngIf="updateOrSave">
                   <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="checked"
                     (click)="addMaterialIfNotProductAfterEdit()">update</button>
                 </div>
@@ -479,33 +479,36 @@
                         {{item.geographyName}}
                       </div>
                       <div class="col-sm-1">
-                        <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i" [(ngModel)]="item.mrp" class="uom-cls" id="MRP"
-                          name="MRP">
+                        <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                          [(ngModel)]="item.mrp" class="uom-cls" id="MRP" name="MRP">
                       </div>
                       <div class="col-sm-1">
-                        <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i" [(ngModel)]="item.minOrderQty" class="uom-cls"
-                          id="MinorderQty" name="MinorderQty">
+                        <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                          [(ngModel)]="item.minOrderQty" class="uom-cls" id="MinorderQty" name="MinorderQty">
                       </div>
                       <div class="col-sm-1">
-                        <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i" [(ngModel)]="item.maxOrderQty" class="uom-cls"
-                          id="MaxOrderQty" name="MaxOrderQty">
+                        <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                          [(ngModel)]="item.maxOrderQty" class="uom-cls" id="MaxOrderQty" name="MaxOrderQty">
                       </div>
                       <div class="col-sm-1">
-                        <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i" [(ngModel)]="item.marginPercent" class="uom-cls"
-                          id="MarginPercent" name="MarginPercent">
+                        <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                          [(ngModel)]="item.marginPercent" class="uom-cls" id="MarginPercent" name="MarginPercent">
                       </div>
                       <div class="col-sm-1">
-                        <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i" [(ngModel)]="item.discountPercent" class="uom-cls"
-                          id="DiscountPercent" name="DiscountPercent">
+                        <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                          [(ngModel)]="item.discountPercent" class="uom-cls" id="DiscountPercent"
+                          name="DiscountPercent">
                       </div>
 
                       <div class="col-sm-1">
-                        <input type="text" [disabled]="selectedHirerachyIndex > i" [(ngModel)]="item.leadTime" class="uom-cls" id="LeadTime" name="LeadTime">
+                        <input type="text" [disabled]="selectedHirerachyIndex > i" [(ngModel)]="item.leadTime"
+                          class="uom-cls" id="LeadTime" name="LeadTime">
                       </div>
 
                       <div class="col-sm-2">
-                        <input style="width: 130px;" type="text" [disabled]="selectedHirerachyIndex > i" [(ngModel)]="item.registrationNumber" class="uom-cls"
-                          id="RegistrationNumber" name="RegistrationNumber">
+                        <input style="width: 130px;" type="text" [disabled]="selectedHirerachyIndex > i"
+                          [(ngModel)]="item.registrationNumber" class="uom-cls" id="RegistrationNumber"
+                          name="RegistrationNumber">
                       </div>
 
                       <div class="col-sm-1">
@@ -571,7 +574,7 @@
                   <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="!checked"
                     (click)="addMaterialProduct();">Save</button>
                 </div>
-                <div class="col-6"*ngIf="updateOrSave">
+                <div class="col-6" *ngIf="updateOrSave">
                   <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="!checked"
                     (click)="addMaterialProductAfterEdit();">update</button>
                 </div>

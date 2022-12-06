@@ -51,15 +51,15 @@ export class MaterialAddEditpopupComponent {
   toppings2: any = [];
   productList: any = [];
   materialIdentifier: any = [];
-  selectedProductIdEdit:any=[];
+  selectedProductIdEdit: any = [];
   // selectedItems: any;
   categeoryData: any;
   subCategoryData: any;
   typesData: any;
   baseUoMData: any;
   MaterialIdentifier: any;
-  MaterialCustomIdentifiers: any[]=[];
-  MaterialCustomIdentifiersEdit: any[]=[];
+  MaterialCustomIdentifiers: any[] = [];
+  MaterialCustomIdentifiersEdit: any[] = [];
   productGroupData: any;
   subproductGroupData: any;
   sub_category: any;
@@ -112,7 +112,7 @@ export class MaterialAddEditpopupComponent {
   CityExpanded = true;
   CountryName: any;
   showDiv: boolean = false
-  updateOrSave:boolean =false
+  updateOrSave: boolean = false
   // geograhies related variables
 
   geoPropertiesList: any
@@ -151,6 +151,7 @@ export class MaterialAddEditpopupComponent {
   @ViewChild('stepper') private stepper: MatStepper | any;
   dataGetById: any = {};
   selectedHirerachyIndex: number = 0;
+
 
   constructor(private fb: FormBuilder, public dialog: MatDialog,
     private spinner: NgxSpinnerService, private addMaterials: AddMaterialsService,
@@ -277,10 +278,18 @@ export class MaterialAddEditpopupComponent {
       this.spinner.show();
       this.addMaterials.onEditList(this.getEditId).subscribe((res) => {
         this.dataGetById = res.response;
+        let isProduct = this.dataGetById.isProduct
+
+        true
+        true
         console.log("EditData", this.dataGetById);
+
         this.getGeographyForMaterial(0, this.getEditId);
         this.editData = true;
         this.dataPreLoadByID();
+        if (isProduct == 0) {
+          this.checked = !this.checked;
+        }
         this.spinner.hide();
       })
     }
@@ -334,7 +343,7 @@ export class MaterialAddEditpopupComponent {
     this.Sort = this.dataGetById.manualShortOrder
     this.AddSP = this.dataGetById.productLink
     this.productGroupData = this.dataGetById.productGroupId
-    if(this.productGroupData != ''){
+    if (this.productGroupData != '') {
       this.addMaterials.getProductSubGroup(this.productGroupData).subscribe((res) => {
         let subProd = res.response;
         console.log("subProd", subProd);
@@ -343,7 +352,7 @@ export class MaterialAddEditpopupComponent {
       });
       this.subproductGroupData = this.dataGetById.productSubGroupId
     }
-    
+
     this.selectedProductIdEdit = this.dataGetById.productCustomIdentifierId
 
 
@@ -372,7 +381,7 @@ export class MaterialAddEditpopupComponent {
     })
   }
 
-// productSKUGeographyId
+  // productSKUGeographyId
   addMaterialProduct() {
     let selectedGeographies = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographySelected;
     let data2 = {
@@ -422,7 +431,7 @@ export class MaterialAddEditpopupComponent {
     })
   }
   addMaterialProductAfterEdit() {
-    
+
     if (this.geoGraphyFullData[3].geoProperties.length == 0) {
       alert("Plz select atleast one city");
       return;
@@ -434,7 +443,7 @@ export class MaterialAddEditpopupComponent {
     })
 
     let data = {
-      stockItemId:this.stockItemId,
+      stockItemId: this.stockItemId,
       DoneById: this.UserId,
       StockItemSubCategoryId: this.subCategoryData,
       StockItemTypeId: this.typesData,
@@ -484,7 +493,7 @@ export class MaterialAddEditpopupComponent {
 
   addMaterialIfNotProductAfterEdit() {
     let data = {
-      stockItemId:this.stockItemId,
+      stockItemId: this.stockItemId,
       DoneById: this.UserId,
       StockItemSubCategoryId: this.subCatId,
       StockItemTypeId: this.typeId,
@@ -699,25 +708,25 @@ export class MaterialAddEditpopupComponent {
       if (this.dataGetById && this.dataGetById.productGeographys && this.dataGetById.productGeographys.length != 0) {
         this.dataGetById.productGeographys.forEach(item => {
           let selectedCity = currentObj.find(x => x.geographyId == item.geographyId);
-          if(selectedCity){
+          if (selectedCity) {
             objDefaut.geoProperties.push(this.CreateGeoPropertiesObject(item));
             selectedCity.isSelected = true;
           }
         })
         objDefaut.geographySelected = currentObj.filter(x => x.isSelected);
-      }else{
+      } else {
         objDefaut.geographySelected = currentObj.filter(x => x.isSelected);
         objDefaut.geographySelected.map(x => {
           objDefaut.geoProperties.push(this.CreateGeoPropertiesObject({ geographyName: x.geographyName, geographyId: x.geographyId }));
         })
       }
-      
+
       objDefaut.geographyHierarchyName = "City";
       if (objDefaut.geographySelected.length != 0) {
         this.selectedHirerachyIndex = currentObj[0].geographyHierarchyId - 1;
       }
 
-      
+
       this.removeOtherGeographiesData(currentObj[0].geographyHierarchyId);
       this.geoGraphyFullData[currentObj[0].geographyHierarchyId - 1] = objDefaut;
     }

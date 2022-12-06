@@ -62,6 +62,10 @@ public getgeo(produId){
   return this.http.get<any>(`${this.userurl}DealerApi/GetAboveDefaultGeography?stockitemid=${produId}`);
 
 }
-
+public tooltipStockItemDetailList(prodctId){
+  return this.http.get<any>(`${this.userurl}DealerApi/GetStockItemDetailList?ProductSKUId=${prodctId}`);
 
 }
+
+}
+// http://13.126.235.145:801/api/DealerApi/GetStockItemDetailList?ProductSKUId=42

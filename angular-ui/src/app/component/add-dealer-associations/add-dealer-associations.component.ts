@@ -126,6 +126,7 @@ export class AddDealerAssociationsComponent implements OnInit {
   myForm4: any = FormGroup;
   selectedItems: any = [];
   productDlr: boolean = false;
+  tooltipData : any = [];
   constructor(
     private _formBuilder: FormBuilder,
     public dialog: MatDialog,
@@ -141,6 +142,7 @@ export class AddDealerAssociationsComponent implements OnInit {
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
 
   ngOnInit(): void {
+    this.tooltiptable()
     this.ProductItems();
     this.dealerItems();
     this.dropdownSettings1 = {
@@ -611,4 +613,14 @@ export class AddDealerAssociationsComponent implements OnInit {
     this.productID = [];
     this.selectedProductId = [];
   }
+ tooltiptable(){
+     // const data ={
+     // ProductSKUId : ['49']
+     // }
+     let prodctId = ['49']
+     this.associationService.tooltipStockItemDetailList(prodctId).subscribe((res:any) =>{
+ console.log(res.response);
+ this.tooltipData = res.response
+     })
+   }
 }

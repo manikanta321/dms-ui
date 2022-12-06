@@ -314,7 +314,9 @@
             <section class="row propertiesSection" *ngIf="!checked">
               <div class="selection-feild">
                 <div class="dropdown-file">
-                  <select style="width: 100px;" [(ngModel)]="selectedGeoField">
+                  <div style="margin:8px">
+                  <select  class="drpOptions" [(ngModel)]="selectedGeoField">
+                    <option value="" disabled selected>Select Feild</option>
                     <option value="mrp"> MRP</option>
                     <option value="marginPercent"> Margin Percent</option>
                     <option value="maxOrderQty"> Max Order Qty</option>
@@ -324,13 +326,44 @@
                     <option value="registrationNumber"> Registration Number</option>
                   </select>
 
-                  <input type="text" [(ngModel)]="updateGeographyValue">
+                  <input class="inp_field" type="text" placeholder="Enter Value" [(ngModel)]="updateGeographyValue">
 
-                  <button (click)="applySelectedValue()"> Apply</button>
+                  <button  class="Apply_button" (click)="applySelectedValue()"><p style="color:white">Apply</p></button>
+                  </div>
                 </div>
               </div>
               <table>
-                <div class="table-padding">
+                <div class="row m-0 mb-2">
+                  <div class="col-sm-3">
+                    <label><b>Geography</b></label>
+                  </div>
+                  <div class="col-sm-1">
+                    <label><b>MRP(INR)</b></label>
+                  </div>
+                  <div class="col-sm-1">
+                    <label><b>Min order Qty</b></label>
+                  </div>
+                  <div class="col-sm-1">
+                    <label><b>Max order Qt</b></label>
+                  </div>
+                  <div class="col-sm-1">
+                    <label><b>Margin %</b></label>
+                  </div>
+                  <div class="col-sm-1">
+                    <label><b>Discount %</b></label>
+                  </div>
+                  <div class="col-sm-1">
+                    <label><b>Lead time (Days)</b></label>
+                  </div>
+                  <div class="col-sm-1">
+                    <label><b>Registration Number</b></label>
+                  </div>
+                  <div class="col-sm-1">
+                    <label><b>Tags</b></label>
+                  </div>
+
+                </div>
+                <!-- <div class="table-padding">
                   <tr class="table-header">
                     <th>
                       Geography
@@ -356,133 +389,8 @@
                     <th style="width: 16%;">Registration Number</th>
                     <th style="width: 13%;">Tags</th>
                   </tr>
-                </div>
-                <!-- <div class="table-padding">
-                  <tr *ngIf="showDiv" class="table-data-row">
-                    <td style="width: 18%;">
-                      <img [src]="image1" class="expand-arrow1" alt="add-user-btn" (click)="expandOrderItemsDiv1()">
-                      {{CountryName}}
-                    </td>
-
-                    <td>
-                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
-                        [disabled]="!orderitem1">
-
-                    </td>
-                    <td>
-                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
-                        [disabled]="!orderitem1">
-                    </td>
-
-                    <td>
-                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
-                        [disabled]="!orderitem1">
-                    </td>
-
-                    <td>
-                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
-                        [disabled]="!orderitem1">
-                    </td>
-
-                    <td>
-                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
-                        [disabled]="!orderitem1">
-                    </td>
-
-                    <td>
-                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
-                        [disabled]="!orderitem1">
-                    </td>
-                    <td>
-                      <input placeholder="Enter" style="width: 130px;" type="text" class="uom-cls" id="fname"
-                        name="fname" [disabled]="!orderitem1">
-                    </td>
-                    <td style="width: 13%; padding-left: 22px;">
-                      <a href="">Add</a>
-                    </td>
-                  </tr>
-                </div>
-                <div class="table-padding">
-                  <tr *ngIf="!orderitem1" class="table-data-row">
-                    <td class="check" style="width: 18%;">
-                      <img [src]="image2" class="expand-arrow1" alt="add-user-btn" (click)="expandDistrictItemsDiv2()">
-
-                      {{stateName}}
-                    </td>
-                    <td style="padding-left: 11px;">
-                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
-                        [disabled]="!districtitem1">
-                    </td>
-                    <td style="padding-left: 6px;">
-                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
-                        [disabled]="!districtitem1">
-                    </td>
-                    <td style="padding-left: 5px;">
-                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
-                        [disabled]="!districtitem1">
-                    </td>
-                    <td>
-                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
-                        [disabled]="!districtitem1">
-                    </td>
-                    <td>
-                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
-                        [disabled]="!districtitem1">
-                    </td>
-                    <td>
-                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
-                        [disabled]="!districtitem1">
-                    </td>
-                    <td>
-                      <input placeholder="Enter" style="width: 130px;" type="text" class="uom-cls" id="fname"
-                        name="fname" [disabled]="!districtitem1">
-                    </td>
-                    <td style="width: 13%;padding-left: 22px;">
-                      <a href="">Add</a>
-                    </td>
-                  </tr>
-                </div>
-                <div class="table-padding">
-                  <tr *ngIf="!districtitem1" class="table-data-row">
-                    <td class="check" style="width: 18%;">
-                      <img [src]="image3" class="expand-arrow1" alt="add-user-btn" (click)="expandCityItemsDiv3()">
-
-                      {{districtName}}
-                    </td>
-                    <td style="padding-left: 11px;">
-                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
-                        [disabled]="!cityitem1">
-                    </td>
-                    <td style="padding-left: 6px;">
-                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
-                        [disabled]="!cityitem1">
-                    </td>
-                    <td style="padding-left: 5px;">
-                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
-                        [disabled]="!cityitem1">
-                    </td>
-                    <td>
-                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
-                        [disabled]="!cityitem1">
-                    </td>
-                    <td>
-                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
-                        [disabled]="!cityitem1">
-                    </td>
-                    <td>
-                      <input placeholder="Enter" type="text" class="uom-cls" id="fname" name="fname"
-                        [disabled]="!cityitem1">
-                    </td>
-                    <td>
-                      <input placeholder="Enter" style="width: 130px;" type="text" class="uom-cls" id="fname"
-                        name="fname" [disabled]="!cityitem1">
-                    </td>
-                    <td style="width: 13%;padding-left: 22px;">
-                      <a href="">Add</a>
-                    </td>
-                  </tr>
                 </div> -->
-
+                
 
 
                 <div *ngFor="let geoPropertyItemList of geoGraphyFullData; let i=index;">
@@ -534,46 +442,7 @@
                   </div>
                 </div>
 
-                <!-- citys -->
-                <!-- <div *ngFor="let item of geoGraphyFullData[3]?.geoProperties ?? []; let i =index;"
-                  class="table-padding">
-                  <tr *ngIf="!cityitem1" class="table-data-row">
-                    <td class="check2" style="width: 18%;">
-                      <mat-icon>subdirectory_arrow_right</mat-icon>
-                      =
-                      {{item.GeographyName}}
-                    </td>
-                    <td style="padding-left: 30px;">
-                      <input placeholder="Enter" type="text" [(ngModel)]="item.MRP" class="uom-cls" id="MRP" name="MRP">
-                    </td>
-                    <td style="padding-left: 18px;">
-                      <input placeholder="Enter" type="text" [(ngModel)]="item.MinOrderQty" class="uom-cls"
-                        id="MinorderQty" name="MinorderQty">
-                    </td>
-                    <td style="padding-left: 11px;">
-                      <input placeholder="Enter" type="text" [(ngModel)]="item.MaxOrderQty" class="uom-cls"
-                        id="MaxOrderQty" name="MaxOrderQty">
-                    </td>
-                    <td style="padding-left: 7px;">
-                      <input placeholder="Enter" type="text" [(ngModel)]="item.MarginPercent" class="uom-cls"
-                        id="MarginPercent" name="MarginPercent">
-                    </td>
-                    <td>
-                      <input placeholder="Enter" type="text" [(ngModel)]="item.DiscountPercent" class="uom-cls"
-                        id="DiscountPercent" name="DiscountPercent">
-                    </td>
-                    <td>
-                      <input type="text" [(ngModel)]="item.LeadTime" class="uom-cls" id="LeadTime" name="LeadTime">
-                    </td>
-                    <td>
-                      <input style="width: 130px;" type="text" [(ngModel)]="item.RegistrationNumber" class="uom-cls"
-                        id="RegistrationNumber" name="RegistrationNumber">
-                    </td>
-                    <td style="width: 13%;padding-left: 22px;">
-                      <a href="">Add</a>
-                    </td>
-                  </tr>
-                </div> -->
+                
               </table>
 
             </section>

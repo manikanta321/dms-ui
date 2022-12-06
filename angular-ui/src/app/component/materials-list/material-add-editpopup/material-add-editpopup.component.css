@@ -1225,3 +1225,48 @@ font-size: 12.5px;
   width: -webkit-fill-available;
     height: -webkit-fill-available;
 }
+
+.dropdown-file{
+     
+      background: #FFFFFF;
+      border: 0.5px solid #000000;
+      box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+      border-radius: 10px;
+      box-sizing: border-box;
+      /* position: absolute; */
+      width: 371.82px;
+      height: 45px;
+      
+      margin-left: 552px;
+      top: 492px;
+}
+.drpOptions{
+width: 154.63px;
+height: 28.6px;
+left: 617.89px;
+top: 498.67px;
+
+background: #FFFFFF;
+border: 0.5px solid #000000;
+border-radius: 7px;
+}
+.inp_field{
+  width: 87.65px;
+height: 28.6px;
+left: 779.41px;
+top: 498.67px;
+margin-left: 10px;
+background: #FFFFFF;
+border: 0.5px solid #000000;
+border-radius: 7px;
+}
+.Apply_button{
+  width:70.29px;
+height: 28.6px;
+left: 873.66px;
+top: 498.67px;
+margin-left: 10px;
+background: #000000;
+box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+border-radius: 7px;
+}

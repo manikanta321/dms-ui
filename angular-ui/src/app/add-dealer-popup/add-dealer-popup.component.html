@@ -230,7 +230,7 @@
                                             <label><span></span></label>
                                             <mat-icon (click)="removeQuantity(i)"
                                                 class="col-2 remove-mat-icon delete-icon remove-address" 
-                                                  >remove_circle
+                                                [ngClass]="{ 'removeCircle': i>1 ,'removeCircle1': i==3 }"  *ngIf="i >= 0 "                             >remove_circle
                                             </mat-icon>
                                         </div>
 

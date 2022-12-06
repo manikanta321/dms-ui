@@ -5,10 +5,7 @@
 input[type=checkbox] {
   accent-color: black;
 }
-.removeCircle1
-{
-  background-color: red;
-}
+
 .horizontal-scroll {
   display: flex;
   gap: 10px;
@@ -1493,7 +1490,8 @@ border-radius: 10px;
   }
   ::ng-deep.mydatepicker .mat-icon-button {
     background: transparent;
-    color: black;
+    color: black; 
+  
     position: relative;
       right: 8px;
   }
@@ -1576,6 +1574,7 @@ border-radius: 10px;
     top:25px;
     /* color: red; */
     cursor: pointer;
+    color: grey;
   }
   .remove-addresss{
     position:relative;
@@ -1649,4 +1648,22 @@ border-radius: 10px;
     background-color: #000;
   }
 
- 
+
+ .removeCircle{
+    margin-left: 99%;
+    margin-top: 37px;
+    color: red;
+}
+
+.removeCircle1{
+  margin-left: 99%;
+  margin-top: 37px;
+  color: #686E74;
+}
+
+
+.removeCircle{
+  margin-left: 206%;
+  margin-top: 60px;
+  color: red;
+}

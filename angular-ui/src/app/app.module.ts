@@ -163,6 +163,7 @@ import { DealerReactvSuccessComponent } from './component/users/userPopups/editd
 import { TargetGroupsComponent } from './component/target-groups/target-groups.component';
 import { AddTargetsComponent } from './component/add-targets/add-targets.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { MaterialTargetComponent } from './component/material-Target/material-target/material-target.component';
 
 @NgModule({
   declarations: [
@@ -348,7 +349,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
           DeactiveSubcategoryCompoComponent,
           DeactiveTypeCompoComponent,
           TargetGroupsComponent,
-          AddTargetsComponent
+          AddTargetsComponent,
+          MaterialTargetComponent
   ],
   imports: [
     MatTooltipModule,

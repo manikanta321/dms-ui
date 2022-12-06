@@ -137,6 +137,11 @@ mat-tab-group{
     color: black;
 }
 
+.mati1{
+    font-family: 'Gilroy-Medium'; 
+    color: black;
+}
+
 
 ::ng-deep.mat-tab-label{
     height: 35px !important;
@@ -146,8 +151,8 @@ mat-tab-group{
     overflow: hidden;
   }
   ::ng-deep .order-lab .mat-tab-label{
-    height: 35px !important;
-    min-width: 274px !important;
+    height: 31px !important;
+    min-width: 187px !important;
   }
   .order-lab .mat-tab-labels:nth-child(1) {
     width: 50% !important;
@@ -158,13 +163,14 @@ mat-tab-group{
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
-    width: 547px !important;
+    width: 564px !important;
     bottom: 20px;
-    height: 38px;
+    height: 33px;
     font-family: 'Gilroy';
     border-radius: 25px;
     background: white;
-    left: 30%;
+    left: 35%;
+    font-size: 15px;
 
 }::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     display: none !important;

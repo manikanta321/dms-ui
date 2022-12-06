@@ -407,11 +407,11 @@
   top: 7px;
 }
 
-/* .material-icons
+ /* .material-icons
 {
   margin-right: 95px;
   margin-top: 5px;
-} */
+}  */
 .searchBox:hover>.searchInput {
   display: block;
   width: 335px;
@@ -641,4 +641,10 @@
   .mat-checkbox-inner-container
   .mat-checkbox-background {
   background-color: black !important;
+}
+
+.listicon {
+  display: flex;
+  justify-content: end;
+  margin-right: 10px;
 }

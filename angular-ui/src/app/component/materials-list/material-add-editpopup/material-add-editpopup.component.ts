@@ -330,7 +330,17 @@ export class MaterialAddEditpopupComponent {
     this.BrandName = this.dataGetById.brandName
     this.Sort = this.dataGetById.manualShortOrder
     this.AddSP = this.dataGetById.productLink
-    this.subproductGroupData = this.dataGetById.productSubGroupId
+    this.productGroupData = this.dataGetById.productGroupId
+    if(this.productGroupData != ''){
+      this.addMaterials.getProductSubGroup(this.productGroupData).subscribe((res) => {
+        let subProd = res.response;
+        console.log("subProd", subProd);
+        this.subProduct = subProd;
+        // this.toppings2 = new FormControl(this.typeI);
+      });
+      this.subproductGroupData = this.dataGetById.productSubGroupId
+    }
+    
     this.selectedProductIdEdit = this.dataGetById.productCustomIdentifierId
 
 
@@ -371,7 +381,7 @@ export class MaterialAddEditpopupComponent {
     }
     this.geoProperties = JSON.parse(JSON.stringify(this.geoGraphyFullData[3].geoProperties));
     this.geoProperties = this.geoProperties.map(item => {
-      delete item.GeographyName;
+      delete item.geographyName;
       return item;
     })
 

@@ -16,6 +16,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
   private gridApi!: GridApi;
   promoList = true;
 priceD = true;
+buysets = true;
   rowData: any;
   columnDefs:any;
   image = 'assets/img/maximize-arrow.png';
@@ -26,7 +27,8 @@ priceD = true;
     rowStyle: { background: 'black' },
 }
   buygg: any;
-
+  selectedrowList: any= [];
+  ischecked : boolean= false;
 
   constructor( private user: UserService,
     private http: HttpClient) { }
@@ -49,6 +51,15 @@ priceD = true;
     this.priceD = !this.priceD;
 
     if(this.priceD === false){
+      this.image = 'assets/img/minimize-tag.png';
+    } else {
+      this.image = 'assets/img/maximize-arrow.png';
+    }
+  }
+  buysetsGroups(){
+    this.buysets = !this.buysets;
+
+    if(this.buysets === false){
       this.image = 'assets/img/minimize-tag.png';
     } else {
       this.image = 'assets/img/maximize-arrow.png';
@@ -166,9 +177,42 @@ priceD = true;
 
     }
     addPromoItems(){
-      console.log(this.buyGroup);
+      console.log('item',this.selectedrowList);
       // var grid = document.getElementById("Table1");
-      
+    
     }
-
+    // selectrows(proItem:any){
+    //   this.selectedrowList = proItem;
+    //   console.log('rows')
+    // }
+    // clickedList(index){
+    //   if(this.selectedrowList === index.proItem){
+    //     this.selectedrowList = index.proItem;
+    //     return true;
+    //   }
+    //   else
+    //   {
+    //     return false
+    //   }
+    // }
+    RowSelected(item:any):void{
+      // for (var i = 0; i < this.buyGroup.length; i++) {
+      //   this.buyGroup[i].selected = this.selectedrowList;
+      // }
+      console.log(item);
+     if(item.checked ==true){
+      this.selectedrowList = item;
+      console.log('item', this.selectedrowList);
+       // var index = this.selectedrowList.map(function(id){
+      //   return id.item;
+      // }).indexOf(item.id);
+      // if(index == -1){
+      //   this.selectedrowList.push(item)
+      // }
+     }
+     else{
+      this.selectedrowList == 0
+     }
+    }
+    
 }

@@ -999,8 +999,8 @@ input[type="text"]{
       
 font-family: 'Gilroy';
 font-style: normal;
-font-weight: 300;
-font-size: 20px;
+/* font-weight: 300; */
+font-size: 18px;
 line-height: 23px;
 align-items: center;
 
@@ -1083,4 +1083,54 @@ color: red;
 }
 .btm-total{
   padding: 7px;
+}
+.buysetHead{
+  font-size: 15px;
+  text-decoration: underline;
+}
+.getsetHead{
+  font-size: 15px;
+  text-decoration: underline;
+}
+.buysetOR:after {
+  content: "";
+  display: block;
+  width: 317px;
+  height: 1px;
+  background: #686E74;
+  right: 41px;
+  top: 42%;
+  position: absolute;
+}
+
+.buysetOR:before {
+  content: "";
+  display: block;
+  width: 317px;
+  height: 1px;
+  background: #686E74;
+  left: 41px;
+  top: 42%;
+  position: absolute;
+}
+.getsetOR:after {
+  content: "";
+  display: block;
+  width: 317px;
+  height: 1px;
+  background: #686E74;
+  right: 41px;
+  top: 81%;
+  position: absolute;
+}
+
+.getsetOR:before {
+  content: "";
+  display: block;
+  width: 317px;
+  height: 1px;
+  background: #686E74;
+  left: 41px;
+  top: 81%;
+  position: absolute;
 }

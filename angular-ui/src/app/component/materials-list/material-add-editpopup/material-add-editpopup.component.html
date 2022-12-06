@@ -312,7 +312,23 @@
 
 
             <section class="row propertiesSection" *ngIf="!checked">
+              <div class="selection-feild">
+                <div class="dropdown-file">
+                  <select style="width: 100px;" [(ngModel)]="selectedGeoField">
+                    <option value="mrp"> MRP</option>
+                    <option value="marginPercent"> Margin Percent</option>
+                    <option value="maxOrderQty"> Max Order Qty</option>
+                    <option value="minOrderQty"> Min Order Qty</option>
+                    <option value="discountPercent"> Discount Percent</option>
+                    <option value="leadTime"> Lead Time</option>
+                    <option value="registrationNumber"> Registration Number</option>
+                  </select>
 
+                  <input type="text" [(ngModel)]="updateGeographyValue">
+
+                  <button (click)="applySelectedValue()"> Apply</button>
+                </div>
+              </div>
               <table>
                 <div class="table-padding">
                   <tr class="table-header">

@@ -950,7 +950,7 @@ else
       maxWidth: '70vw',
       panelClass: 'material-add-edit'
   });
-
+  localStorage.setItem('Edit', 'Add');
   }
   onCellClicked(e): void {
     console.log('cellClicked', e);

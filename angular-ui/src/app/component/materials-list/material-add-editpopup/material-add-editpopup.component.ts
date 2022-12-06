@@ -182,6 +182,15 @@ export class MaterialAddEditpopupComponent {
 
   thirdformGroup: FormGroup = this.fb.group({ thirdCtrl: [''] });
 
+  selectedGeoField: string = "";
+  updateGeographyValue: string = "";
+  applySelectedValue() {
+    console.log(this.updateGeographyValue, this.selectedGeoField);
+
+    this.geoGraphyFullData[this.selectedHirerachyIndex].geoProperties.map(x => x[this.selectedGeoField] = this.updateGeographyValue);
+
+  }
+
   ngOnInit(): void {
     this.selectProduct();
     this.customIdentifier()
@@ -272,24 +281,22 @@ export class MaterialAddEditpopupComponent {
     this.getEditId = localStorage.getItem('listData');
     console.log("ListData", this.getEditId)
     let editV = localStorage.getItem('Edit');
+    this.checked = false;
     if (editV == 'Edit') {
       this.actineLabel = "Edit Material";
       this.updateOrSave = !this.updateOrSave
       this.spinner.show();
       this.addMaterials.onEditList(this.getEditId).subscribe((res) => {
         this.dataGetById = res.response;
-        let isProduct = this.dataGetById.isProduct
-
-        true
-        true
+        // let isProduct = this.dataGetById.isProduct
         console.log("EditData", this.dataGetById);
 
         this.getGeographyForMaterial(0, this.getEditId);
         this.editData = true;
         this.dataPreLoadByID();
-        if (isProduct == 0) {
-          this.checked = !this.checked;
-        }
+        // if (!isProduct) {
+        //   this.checked = !this.checked;
+        // }
         this.spinner.hide();
       })
     }
@@ -660,7 +667,6 @@ export class MaterialAddEditpopupComponent {
   }
   addproduct() {
     this.dialog.open(AddProductGroupComponent);
-
   }
   addproductsubgroup() {
     this.dialog.open(AddProductSubGroupComponent);

@@ -51,13 +51,15 @@ export class MaterialAddEditpopupComponent {
   toppings2: any = [];
   productList: any = [];
   materialIdentifier: any = [];
+  selectedProductIdEdit:any=[];
   // selectedItems: any;
   categeoryData: any;
   subCategoryData: any;
   typesData: any;
   baseUoMData: any;
   MaterialIdentifier: any;
-  MaterialCustomIdentifiers: any;
+  MaterialCustomIdentifiers: any[]=[];
+  MaterialCustomIdentifiersEdit: any[]=[];
   productGroupData: any;
   subproductGroupData: any;
   sub_category: any;
@@ -294,7 +296,7 @@ export class MaterialAddEditpopupComponent {
     this.materialName = this.dataGetById.stockItemName
     this.base64textString = this.dataGetById.imageurl
     this.expiryDate = this.dataGetById.expiryPeriod
-    this.MaterialCustomIdentifiers = this.dataGetById.materialcustomidentifier
+    this.MaterialCustomIdentifiersEdit = this.dataGetById.materialcustomidentifier
     this.categeoryData = this.dataGetById.categoryId
     if (this.categeoryData != '') {
       this.addMaterials.onclickcat(this.categeoryData).subscribe((res) => {
@@ -329,7 +331,7 @@ export class MaterialAddEditpopupComponent {
     this.Sort = this.dataGetById.manualShortOrder
     this.AddSP = this.dataGetById.productLink
     this.subproductGroupData = this.dataGetById.productSubGroupId
-    this.selectedProductId = this.dataGetById.productCustomIdentifierId
+    this.selectedProductIdEdit = this.dataGetById.productCustomIdentifierId
 
 
 

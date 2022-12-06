@@ -112,7 +112,7 @@
                     placeholder="Select Identifier" [disabled]="disabled" [settings]="dropdownSettings4"
                     [data]="selectId" (onSelect)="onSelectIdentifier($event)"
                     (onDeSelect)="onDeSelectIdentifier($event)" (onDeSelectAll)="onDSelectOrAllIdentifier($event)"
-                    (onSelectAll)="onSelectOrAllIdentifier()" [(ngModel)]="MaterialCustomIdentifiers">
+                    (onSelectAll)="onSelectOrAllIdentifier()" [(ngModel)]="MaterialCustomIdentifiersEdit">
                   </ng-multiselect-dropdown>
                 </div>
 
@@ -253,7 +253,7 @@
                     [data]="ProductId" (onSelect)="onSelectIdentifierProduct($event)"
                     (onDeSelect)="onDeSelectIdentifierProduct($event)"
                     (onDeSelectAll)="onDSelectOrAllIdentifierProduct($event)"
-                    (onSelectAll)="onSelectOrAllIdentifierProduct()" [(ngModel)]="selectedProductId">
+                    (onSelectAll)="onSelectOrAllIdentifierProduct()" [(ngModel)]="selectedProductIdEdit">
                   </ng-multiselect-dropdown>
                 </div>
               </div>

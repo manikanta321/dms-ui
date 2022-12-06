@@ -371,7 +371,9 @@ else
       type: this.typeI,
       product: this.productID,
       status: this.statusTypes,
-      Search: this.searchText
+      Search: this.searchText,
+      isProduct:this.isproduct
+
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;

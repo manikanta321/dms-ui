@@ -436,15 +436,15 @@ export class MaterialAddEditpopupComponent {
     let data = {
       stockItemId:this.stockItemId,
       DoneById: this.UserId,
-      StockItemSubCategoryId: this.subCatId,
-      StockItemTypeId: this.typeId,
+      StockItemSubCategoryId: this.subCategoryData,
+      StockItemTypeId: this.typesData,
       StockItemName: this.materialName,
       StockItemDesc: this.stockItemDesc,
-      BaseUoMId: this.uomID,
+      BaseUoMId: this.baseUoMData,
       Imageurl: this.base64textString,
-      Materialcustomidentifier: this.MaterialCustomIdentifiers,
+      Materialcustomidentifier: this.MaterialCustomIdentifiersEdit,
       ExpiryPeriod: this.expiryDate,
-      ProductCustomIdentifierId: this.selectedProductId,
+      ProductCustomIdentifierId: this.selectedProductIdEdit,
       IsProduct: +!this.checked,
       BrandName: this.BrandName,
       GlobalCode: this.gloabKey,
@@ -452,7 +452,7 @@ export class MaterialAddEditpopupComponent {
       ShortCode: this.shortCode,
       ManualShortOrder: this.Sort,
       ProductLink: this.AddSP,
-      ProductSubGroupId: this.subProductId,
+      ProductSubGroupId: this.subproductGroupData,
       ProductGeographys: this.geoProperties
 
     }

@@ -50,11 +50,13 @@ export class AddDealerAssociationsComponent implements OnInit {
   productID: any = [];
   ProductIdentifier: any = [];
   selectedProductId: any = [];
+  // seletedproduct1 : any;
   selectAllIdentifierProduct: any = [];
   selectedIdentifierProductArray: any = [];
   image1 = 'assets/img/minimize-tag.png';
   image2 = 'assets/img/minimize-tag.png';
   image3 = 'assets/img/minimize-tag.png';
+  selectedProduct1: any;
 
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
@@ -246,7 +248,9 @@ export class AddDealerAssociationsComponent implements OnInit {
 
   selectedProduct(value) {
     let ProductId = value
+    this.selectedProduct1 = ProductId
     localStorage.setItem('ProductStockItemId', ProductId);
+    this.tooltiptable()
   }
 
   selectedDealer(value) {
@@ -617,7 +621,8 @@ export class AddDealerAssociationsComponent implements OnInit {
      // const data ={
      // ProductSKUId : ['49']
      // }
-     let prodctId = ['49']
+    //  let prodctId =  this.selectedProduct1;
+    let prodctId =  [this.selectedProduct1];
      this.associationService.tooltipStockItemDetailList(prodctId).subscribe((res:any) =>{
  console.log(res.response);
  this.tooltipData = res.response

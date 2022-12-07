@@ -11,6 +11,8 @@
   top: 93%;
   left: 7%;
   background: white;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
 }
 .tooltip-text {
   visibility: hidden;
@@ -542,7 +544,7 @@ text-align: center;
 }
 
 ::ng-deep.myDatepicker .mat-form-field {
-  width: 462px;
+  width: 430px;
 height: 43px;
   background: white !important;
   border-radius: 5px;

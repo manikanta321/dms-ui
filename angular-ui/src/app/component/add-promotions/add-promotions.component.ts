@@ -23,14 +23,17 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     current: false,
     next: false
   }
-  showdata = false;
+  // showdata = false;
   public packingCharges: any[] = [{
     sValue: '',
     eValue: '',
     pValue: '',
   }];
   errorMsg: any;
-  
+  buyGroupPlus : any = [{itemss : ''}];
+  addgetgroup : any = [{ getItems: ''}];
+  addbuyset : any = [{setitem: ''}];
+  addgetset : any = [{gset: ''}]
   basicInfo:boolean=false;
   noPromotionSelected:boolean = true;
   buyab: boolean = false;
@@ -295,11 +298,42 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   onClick(item) {
     this.selectedItem = item;
   }
-  displaydata() {
-    this.showdata = true;
+  addbuyGroup() {
+    // this.showdata = true;
+    this.buyGroupPlus.push({
+      itemss: '',
+    });
   }
-  hidedata() {
-    this.showdata = false;
+  removebuyGroup(u: any) {
+    const index = this.buyGroupPlus.findIndex((itemss) => itemss.id === u);
+    this.buyGroupPlus.splice(index, 1);
+  }
+  adddgetGroup(){
+    this.addgetgroup.push({
+      getItems: '',
+    });
+  }
+  removegetGroup(u:any){
+    const index = this.addgetgroup.findIndex((itemss) => itemss.id === u);
+    this.addgetgroup.splice(index, 1);
+  }
+  addbuyAB(){
+this.addbuyset.push({
+  setitem:'',
+})
+  }
+  removeaddbuyAB(u:any){
+    const index = this.addbuyset.findIndex((setitem) => setitem.id === u);
+    this.addbuyset.splice(index, 1);
+  }
+  addgetAB(){
+    this.addgetset.push({
+      gset:'',
+    })
+  }
+  removeaddgetAB(u:any){
+    const index = this.addgetset.findIndex((gset) => gset.id === u);
+    this.addgetset.splice(index, 1);
   }
   ngAfterViewInit() {
     this.totalStepsCount = this.myStepper._steps.length;
@@ -384,7 +418,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   addItems() {
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
     
-    const dialogRef = this.dialog.open(AddItemsPromotionComponent);
+    const dialogRef = this.dialog.open(AddItemsPromotionComponent,{width:'1043px'});
 
     dialogRef.afterClosed().subscribe((res) => {
       console.log(res);

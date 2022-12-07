@@ -159,15 +159,10 @@ height: 43px;
 border-radius: 10px;
 
 } */
-.search-d{
+/* .search-d{
 width: 207.5px;
 margin-right: 15px;
-}
-.search-prodId{
-  width: 207.5px;
-  margin-top: 56px;
-/* margin-right: 15px; */
-}
+} */
 .ref{
   border: 1px solid black;
   border-radius: 10px;
@@ -322,4 +317,11 @@ mat-radio-group{
 } */
 .catag-placeholder.dropdown-placeholder .selected-placeholder {
   color: #D23F00 !important;
+}
+.ag-theme-material{
+  height: 300px;
+  border-radius: 20px;
+  background-color: white;
+  font-family: Gilroy;
+  width: 100%;
 }

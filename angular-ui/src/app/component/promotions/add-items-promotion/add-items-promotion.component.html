@@ -22,8 +22,10 @@
     </div>
     </div>
     </div> -->
-      <div class="drpd d-flex">
-        <div class="search-d">
+      <div class="drpd row">
+        <div class="col-lg-11">
+          <div class="row">
+        <div class="search-d col-lg-3">
           <form [formGroup]="myForm">
             <ng-multiselect-dropdown class="catty"
                 name="city"
@@ -37,15 +39,15 @@
                 (onDeSelectAll)="addItemDeSelectOrAll($event)"
                 (onSelectAll)="addItemSelectOrAll($event)">
             </ng-multiselect-dropdown>
-            <div class="dropdown-placeholder catag-placeholder">
+            <!-- <div class="dropdown-placeholder catag-placeholder">
               <span *ngIf="myForm.get('city').value.length == 0"> Select Category </span>
               <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Category selected </span>
               <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Categories selected </span>
 
-            </div>
+            </div> -->
        </form>
       </div>
-      <div class="search-d">
+      <div class="search-d  col-lg-3">
       <form>
         <ng-multiselect-dropdown class="addsubc" name="city" placeholder="sub-category" formControlName="city"
           [disabled]="disabled" [settings]="dropdownSettings1" [data]="sub_category" 
@@ -55,7 +57,7 @@
         </ng-multiselect-dropdown>
       </form>
     </div>
-    <div class="search-d">
+    <div class="search-d  col-lg-3">
       <form [formGroup]="type">
         <ng-multiselect-dropdown class="typy"
             name="type"
@@ -73,7 +75,7 @@
         </ng-multiselect-dropdown>
       </form>
   </div>
-  <div class="search-d">
+  <div class="search-d  col-lg-3">
     <form [formGroup]="products">
       <ng-multiselect-dropdown class="producty"
           name="product"
@@ -89,11 +91,18 @@
       </ng-multiselect-dropdown>
       </form>
   </div>
-  
-        <div class="ref"><img class="refresh" (click)="addItemRefresh()" src="assets/img/Vector.png" alt="refresh"></div>
+</div>
+</div>
+<div class="col-lg-1">
+        <div class="ref">
+          <img class="refresh" (click)="addItemRefresh()" src="assets/img/Vector.png" alt="refresh">
+        </div>
       </div>
-      <!-- <div class="row"> -->
-      <div class="search-prodId">
+      </div>
+      <div class="row mt-2">
+        <div class="col-11">
+          <div class="row">
+      <div class="col-lg-3 search-prodId">
         <form>
           <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'product Identifier'" formControlName="city"
             [disabled]="disabled" [settings]="dropdownSettings5" [data]="toppingList" 
@@ -104,7 +113,10 @@
           </ng-multiselect-dropdown>
         </form>
       </div>
-      <!-- </div> -->
+    </div>
+        </div>
+        <div class="col-lg-1"></div>
+      </div>
       <div class="srch mt-3" style="margin-bottom:10px">
         <div class="row">
           <div class="col-md-12">
@@ -123,7 +135,6 @@
       </div>
       <div>
         <ag-grid-angular id="gridContainer"
-          style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
           class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
           [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
           [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"

@@ -32,9 +32,9 @@ else {
 
 
 promotionTabledata(data){
-  return this.http.post<any>(this.userurl + 'PromotionsApi/GetPromotionList', data);
+  return this.http.post<any>(`${this.userurl}PromotionsApi/GetPromotionList`, data);
 }
-
+// http://13.126.235.145:801/api/PromotionsApi/GetPromotionList
 promotionlist(){
   return this.http.get<any>(`${this.userurl}PromotionsApi/GetPromotionTypes`);
 

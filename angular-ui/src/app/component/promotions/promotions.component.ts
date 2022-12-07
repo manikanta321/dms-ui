@@ -395,12 +395,20 @@ this.getusertabeldata();
 
   getusertabeldata() {
     const data = { 
-    Ptype:this.promotionSelected,
-    Prodct:this.productSelected,
-    Geo:this.geographySelected,
-    Deler:[],
-    status:this.statusSelected,
-    search:this.searchText
+    // Ptype:this.promotionSelected,
+    // Prodct:this.productSelected,
+    // Geo:this.geographySelected,
+    // Deler:[],
+    // status:this.statusSelected,
+    // search:this.searchText
+    promotiontype : [],
+    product: [],
+    geography: [],
+    dealer: [],
+    status:[],
+    startDate:'',
+    endDate :'',
+    search: ''
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
 

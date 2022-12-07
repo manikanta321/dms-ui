@@ -27,6 +27,8 @@ export class AddPromotionGeographiesComponent implements OnInit {
   allComplete: boolean = false;
   completed : boolean = false;
   geodata:any=[];
+  aarrayToPush:any=[];
+  selectedcount:any=0;
   constructor(
  private assoservice:AssosiationServicesService, ) { }
 
@@ -39,7 +41,20 @@ this.assoservice.getgeo(productId).subscribe((res)=>{
 })
   }
   updateAllComplete(event) {
-    console.log('event',event)
+let productID = event;
+      const index = this.aarrayToPush.indexOf(productID);
+
+      if (index !== -1) {
+        this.aarrayToPush.splice(index, 1);
+        this.selectedcount=this.aarrayToPush.length
+      }
+      else {
+        this.aarrayToPush.push(productID);
+        this.selectedcount=this.aarrayToPush.length
+
+      }
+
+      console.log('aarrayToPush', this.aarrayToPush)
     // this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
   }
 

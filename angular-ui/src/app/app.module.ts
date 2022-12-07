@@ -163,7 +163,6 @@ import { DealerReactvSuccessComponent } from './component/users/userPopups/editd
 import { TargetGroupsComponent } from './component/target-groups/target-groups.component';
 import { AddTargetsComponent } from './component/add-targets/add-targets.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import { MaterialTargetComponent } from './component/material-Target/material-target/material-target.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
@@ -351,7 +350,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
           DeactiveTypeCompoComponent,
           TargetGroupsComponent,
           AddTargetsComponent,
-          MaterialTargetComponent
+          
   ],
   imports: [
     MatTooltipModule,

@@ -214,10 +214,10 @@ export class AddDealerAssociationsComponent implements OnInit {
   ProductItems() {
     this.user.getproductlist().subscribe((res: any) => {
       let localdata = res.response;
-      // console.log('checkdata', localdata)
+      console.log('checkdata', localdata)
 
-      this.ProductListArray = localdata.map((data: { stockItemId: any; stockItemName: any; }) => {
-        return { stockItemId: data.stockItemId, stockItemName: data.stockItemName };
+      this.ProductListArray = localdata.map((data: { productSKUId: any; stockItemName: any; }) => {
+        return { productSKUId: data.productSKUId, stockItemName: data.stockItemName };
       });
 
       this.ProductListArray.push()

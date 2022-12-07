@@ -44,7 +44,7 @@
                 aria-label=".form-select-lg example" (change)="selectedProduct(teams.value);"
               >
                 <option selected hidden>Select</option>
-                <option style="height: 900px;"     *ngFor="let product of ProductListArray" [value]="product.stockItemId">{{product.stockItemName}}</option>
+                <option style="height: 900px;"     *ngFor="let product of ProductListArray" [value]="product.productSKUId">{{product.stockItemName}}</option>
 
               </select>
   <div class="hover-text">

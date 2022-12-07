@@ -164,6 +164,7 @@ import { TargetGroupsComponent } from './component/target-groups/target-groups.c
 import { AddTargetsComponent } from './component/add-targets/add-targets.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { MaterialTargetComponent } from './component/material-Target/material-target/material-target.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -395,6 +396,7 @@ import { MaterialTargetComponent } from './component/material-Target/material-ta
     NgxSpinnerModule
   ],
   providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy},
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ], bootstrap: [AppComponent]
 })

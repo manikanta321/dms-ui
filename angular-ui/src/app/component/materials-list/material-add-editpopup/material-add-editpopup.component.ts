@@ -294,9 +294,6 @@ export class MaterialAddEditpopupComponent {
         this.getGeographyForMaterial(0, this.getEditId);
         this.editData = true;
         this.dataPreLoadByID();
-        // if (!isProduct) {
-        //   this.checked = !this.checked;
-        // }
         this.spinner.hide();
       })
     }

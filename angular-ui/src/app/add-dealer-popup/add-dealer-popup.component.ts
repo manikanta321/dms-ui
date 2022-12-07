@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, NgControl } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
@@ -7,19 +7,29 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { FormArray } from '@angular/forms'
 import { UserService } from 'src/app/services/user.service';
 import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
-import { HostListener } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SharedServicesDealerService } from '../services/shared-services-dealer.service';
+import { Directive, HostListener, Optional, Output, EventEmitter } from '@angular/core';
+import { ConsoleService } from '@ng-select/ng-select/lib/console.service';
 
 //import { ToastrService } from 'ngx-toastr';
-
 
 @Component({
   selector: 'app-add-dealer-popup',
   templateUrl: './add-dealer-popup.component.html',
   styleUrls: ['./add-dealer-popup.component.css']
 })
+
+
+
+// @Directive({
+//   selector: '[appOnClickControl]' // if you want to target specific form control then use custom selector else you use can use input:
+//                                    // selector: 'input' to target all input elements
+// })
+
+
 export class AddDealerPopupComponent implements OnInit {
+  @Output() emitFormControl = new EventEmitter<FormControl>();
 
   addAddressDetailsForm!: FormGroup;
   gepGraphiesFormGroup!: FormGroup;
@@ -29,11 +39,11 @@ export class AddDealerPopupComponent implements OnInit {
   statusList: any;
   addAddress: boolean = false;
   selectedTeam = '';
-  showDiv = {
-    previous: false,
-    current: false,
-    next: false
-  }
+  // showDiv = {
+  //   previous: false,
+  //   current: false,
+  //   next: false
+  // }
   payloadArray = {
     enabled: false
   }
@@ -43,7 +53,6 @@ export class AddDealerPopupComponent implements OnInit {
   basicInfo: boolean = false;
 
   removelist: boolean = false;
-  stateName: string[] = ['State 1', 'State 2',];
 
 
 
@@ -51,7 +60,7 @@ export class AddDealerPopupComponent implements OnInit {
   stateList: any = [];
   distList: any = [];
   cityList: any = [];
-
+  dataGetById: any = {};
   catagoryroouting = '';
   subcatRoouting = '';
   selectedtypeItem = '';
@@ -62,12 +71,17 @@ export class AddDealerPopupComponent implements OnInit {
   stateselectedItem: any;
   distselectedItem: any;
   citySelectedItem: any;
+  showDiv: boolean = false
+  stateName: any;
+  CountryName: any;
 
   selectedItem = null;
   totalStepsCount: number | undefined;
-
+  districtName: any;
+  customerIDofDealer:any;
   dealerAction: any;
   addType: any;
+  selectedItems:any=[];
   geoGraphyHirerachyData: any;
   geoGraphyFullData: any;
   // geoGraphyFullData1: any;
@@ -91,8 +105,8 @@ export class AddDealerPopupComponent implements OnInit {
   ];
 
 
-
   @ViewChild('stepper') private myStepper: MatStepper | any;
+  selectedHirerachyIndex: number = 0;
 
   // CategoryName:any;
   getgroup: string[] = ["Product Name", "Product Name", "Product Name", "Product Name"]
@@ -101,6 +115,7 @@ export class AddDealerPopupComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog, private spinner: NgxSpinnerService,
     private user: UserService,
+    @Optional() private formControl: NgControl,
     private classification: ClassificationserviseService,
     private calssification: ClassificationserviseService,
     private sharedService: SharedServicesDealerService,
@@ -122,14 +137,24 @@ export class AddDealerPopupComponent implements OnInit {
     if (localStorage.getItem('edit-dealer') === 'Edit') {
       this.dealerAction = "Edit"
       let customerId = localStorage.getItem('customerIdOfDealer');
+      this.customerIDofDealer = localStorage.getItem('customerIdOfDealer');
+
+
       this.calssification.getDealerDetailsById(customerId).subscribe((res) => {
 
         let data = res.response[0]
+       let editdealerGeo=data.selectedGeos
         console.log('customerIdOfDealer', data)
 
+        // editdealerGeo.forEach(element => {
+        //   debugger
+        //   return this.selectedItems.push(element.geographyId);
+          
+    
+        // })   
+console.log('selectedItemsselectedItems',this.selectedItems)
         for (let detail of res.response[0].addresscount) {
           // alert(detail.taxCodeName)
-          debugger
           let AddressTypeId: FormControl = new FormControl('');
           let ConsigneeName: FormControl = new FormControl('');
           let Taxid: FormControl = new FormControl('');
@@ -140,6 +165,8 @@ export class AddDealerPopupComponent implements OnInit {
           let CityName: FormControl = new FormControl('');
           let ZipCode: FormControl = new FormControl('');
           let Telephone: FormControl = new FormControl('');
+          let addressAssociationId: FormControl = new FormControl('');
+
           AddressTypeId.setValue(detail?.addressTypeId)
           ConsigneeName.setValue(detail?.consigneeName);
           Taxid.setValue(detail?.taxid);
@@ -150,7 +177,7 @@ export class AddDealerPopupComponent implements OnInit {
           CityName.setValue(detail?.cityName);
           ZipCode.setValue(detail?.zipCode);
           Telephone.setValue(detail?.telephone);
-
+          addressAssociationId.setValue(detail?.addressAssociationId);
           
 
           this.getFormArray().push(new FormGroup({
@@ -163,7 +190,8 @@ export class AddDealerPopupComponent implements OnInit {
             StateName: StateName,
             CityName: CityName,
             ZipCode: ZipCode,
-            Telephone: Telephone
+            Telephone: Telephone,
+            AddressId:addressAssociationId
           }));
 
           console.log('ConsigneeName', this.getFormArray())
@@ -192,11 +220,14 @@ export class AddDealerPopupComponent implements OnInit {
 
         console.log('this.getFormArray', this.getFormArray)
       })
+      this.getGeographyForMaterial(0, this.customerIDofDealer);
 
     } else {
       this.dealerAction = "Add"
       this.addAddressForm1('6');
       this.addAddressForm1('7');
+      this.getGeographyForMaterial(0, 0);
+
     }
     //  this.ConsigneeName2='';
   }
@@ -238,57 +269,174 @@ export class AddDealerPopupComponent implements OnInit {
 
   }
 
+  stockItemId: any;
+
+  geographyFormat(currentObj, stockItemId) {
+    // console.log(currentObj["hirearchyLevel"]);
+    if (!Array.isArray(currentObj)) {
+      if (!currentObj.all) return;
+      let obj: any = {};
+      let index = (Number(currentObj["hirearchyLevel"]) - 1);
+      obj.allOtherGeography = currentObj.all;
+      obj.geographyCount = obj.allOtherGeography.length;
+      obj.showAddIcon = false;
+      obj.geographyHierarchyName = currentObj.hirearchyName;
+      if (currentObj.first) {
+        let copyObject = JSON.parse(JSON.stringify(currentObj.first));
+        delete copyObject.next;
+        obj.geographySelected = [copyObject];
+        obj.geoProperties = [this.CreateGeoPropertiesObject({ geographyName: copyObject.geographyName, geographyId: copyObject.geographyId })];
+      }
+      this.removeOtherGeographiesData(Number(currentObj["hirearchyLevel"]));
+      this.geoGraphyFullData[index] = obj;
+      this.selectedHirerachyIndex = index;
+      if (currentObj.first.next) {
+        this.geographyFormat(currentObj.first.next, stockItemId);
+      }
+    } else {
+      // For the final defaulted value to append in geography view
+      let objDefaut: any = {}
+      objDefaut.allOtherGeography = currentObj;
+
+      objDefaut.geoProperties = [];
+      objDefaut.geographyNamesSelected = [];
+      // Need to check on different conditions
+      if (this.dataGetById && this.dataGetById.productGeographys && this.dataGetById.productGeographys.length != 0) {
+        this.dataGetById.productGeographys.forEach(item => {
+          let selectedCity = currentObj.find(x => x.geographyId == item.geographyId);
+          if(selectedCity){
+            objDefaut.geoProperties.push(this.CreateGeoPropertiesObject(item));
+            selectedCity.isSelected = true;
+          }
+        })
+        objDefaut.geographySelected = currentObj.filter(x => x.isSelected);
+      }else{
+        objDefaut.geographySelected = currentObj.filter(x => x.isSelected);
+        objDefaut.geographySelected.map(x => {
+          objDefaut.geoProperties.push(this.CreateGeoPropertiesObject({ geographyName: x.geographyName, geographyId: x.geographyId }));
+        })
+      }
+      
+      objDefaut.geographyHierarchyName = "City";
+      if (objDefaut.geographySelected.length != 0) {
+        this.selectedHirerachyIndex = currentObj[0].geographyHierarchyId - 1;
+      }
+
+      
+      this.removeOtherGeographiesData(currentObj[0].geographyHierarchyId);
+      this.geoGraphyFullData[currentObj[0].geographyHierarchyId - 1] = objDefaut;
+    }
+  }
+
+  isItemSelected(item, geoItem) {
+    // console.log(item.geographySelected, geoItem.geographyId)
+    return item.geographySelected.findIndex(x => x.geographyId == geoItem.geographyId) == -1;
+  }
+
+  CreateGeoPropertiesObject(propertyObj) {
+    let obj: any = {};
+    obj.minOrderQty = propertyObj.minOrderQty ?? "";
+    obj.discountPercent = propertyObj.discountPercent ?? "";
+    obj.maxOrderQty = propertyObj.maxOrderQty ?? "";
+    obj.marginPercent = propertyObj.marginPercent ?? "";
+    obj.mrp = propertyObj.mrp ?? "";
+    obj.leadTime = propertyObj.leadTime ?? "";
+    obj.geographyId = propertyObj.geographyId ?? "";
+    obj.geographyName = propertyObj.geographyName ?? "";
+    obj.registrationNumber = propertyObj.registrationNumber ?? "";
+    return obj;
+  }
+
+
 
   selectGeoGraphy(clickedItem, hirerachyIndex,) {
-
-    console.log(clickedItem, hirerachyIndex);
-
-
-    // if (this.geographyHierarchyId == hirerachyIndex) {
-    //   this.css.push(clickedItem)
-
-    //   const index = this.aarrayToPush.indexOf(clickedItem.geographyId);
-
-    //   if (index !== -1) {
-    //     this.aarrayToPush.splice(index, 1);
-    //   }
-    //   else {
-    //     this.aarrayToPush.push(clickedItem.geographyId);
-
-    //   }
-
-    //   console.log('aarrayToPush', this.aarrayToPush)
-    // }
-    // else {
-    //   this.aarrayToPush = []
-    // }
-
+    this.selectedItems=[];
+    this.showDiv = true;
+    this.selectedHirerachyIndex = (hirerachyIndex - 1);
     this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.forEach(element => {
       if (element.geographyId == clickedItem.geographyId) {
-        let index = this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.indexOf(element.geographyId);
+        let index = this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.findIndex(x => x.geographyId == element.geographyId);
         if (index == -1) {
           if (hirerachyIndex == this.geoGraphyFullData.length) {
-            this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.push(element.geographyId);
-            this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected.push(element.geographyName);
+            this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.push(element);
+            this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected.push(element);
+            this.geoGraphyFullData[hirerachyIndex - 1].geoProperties.push(this.CreateGeoPropertiesObject({ geographyName: element.geographyName, geographyId: element.geographyId }))
           } else {
-            this.geoGraphyFullData[hirerachyIndex - 1].geographySelected = [element.geographyId];
+            this.geoGraphyFullData[hirerachyIndex - 1].geographySelected = [element];
             this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected = [element.geographyName];
-            this.getGeographiesDataById(element.geographyId, (hirerachyIndex + 1));
+            this.getGeographyForMaterial(element.geographyId, this.stockItemId);
+            this.geoGraphyFullData[hirerachyIndex - 1].geoProperties = [this.CreateGeoPropertiesObject({ geographyName: element.geographyName, geographyId: element.geographyId })];
+            // this.getGeographiesDataById(element.geographyId, (hirerachyIndex + 1));
             this.removeOtherGeographiesData(hirerachyIndex);
           }
         } else {
           this.geoGraphyFullData[hirerachyIndex - 1].geographySelected.splice(index, 1);
           this.geoGraphyFullData[hirerachyIndex - 1].geographyNamesSelected.splice(index, 1);
+          this.geoGraphyFullData[hirerachyIndex - 1].geoProperties.splice(index, 1);
           this.removeOtherGeographiesData(hirerachyIndex);
         }
       }
 
 
     });
+
+
+
+    if (hirerachyIndex == 1) {
+      let Country = clickedItem.geographyName;
+      let countryCode = clickedItem.geographyCode;
+      this.CountryName = Country + "(" + countryCode + ")";
+      console.log("CountryNAme", this.CountryName);
+      console.log(clickedItem, hirerachyIndex);
+    }
+    else if (hirerachyIndex == 2) {
+      let stateNamee = clickedItem.geographyName;
+      let stateCode = clickedItem.geographyCode;
+      this.stateName = stateNamee + "(" + stateCode + ")";
+    }
+    else if (hirerachyIndex == 3) {
+      let districtNamee = clickedItem.geographyName;
+      let districtCode = clickedItem.geographyCode;
+      this.districtName = districtNamee + "(" + districtCode + ")";
+    }
+    else if (hirerachyIndex == 4) {
+
+      // this.geoPropertiesList = this.CreatePropertiesObject({});
+
+
+      // this.cityCode = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographyCode;
+      // this.cityName = [...this.selectedGeographiesCityNames,]
+      // this.selectedGeographiesCityNames+"("+ this.cityCode+")";
+
+      // console.log(this.selectedGeographiesCityNames, "selectedGeographies")
+    }
+
     console.log(this.geoGraphyFullData);
   }
 
+  getGeographyForMaterial(geographyId, stockItemId) {
+    this.spinner.show();
 
+    this.stockItemId = stockItemId;
+    let data={
+      
+        "GeographyId":geographyId,
+        "DealerId":stockItemId
+    
+    }
+    this.classification.getGeographyForDealers(geographyId, stockItemId).subscribe(res => {
+      // console.log(res);
+      this.spinner.hide();
+      this.geoGraphyHirerachyData = JSON.parse(JSON.stringify(res.response));
+      this.geographyFormat(res.response, stockItemId);
+      console.log(this.geoGraphyFullData);
+
+      // this.getGeographiesDataById(null, 1);
+    }, err => {
+      console.log(err);
+      this.spinner.hide();
+    })
+  }
   removeOtherGeographiesData(hirerachyIndex) {
     for (var i = hirerachyIndex; i < this.geoGraphyFullData.length; i++) {
       this.geoGraphyFullData[i].allOtherGeography = [];
@@ -400,12 +548,17 @@ export class AddDealerPopupComponent implements OnInit {
 
 
 
-  removeQuantity(i: number) {
+  removeQuantity(i) {
+    console.log(i)
     if (i >= 2) {
       this.addresscount().removeAt(i);
     }
   }
 
+  @HostListener('click')
+  getFormControl(): void {
+      this.emitFormControl.emit(this.formControl.control as FormControl);
+  }
 
   saveDealerData() {
     this.goForward(this.myStepper);
@@ -504,8 +657,12 @@ export class AddDealerPopupComponent implements OnInit {
 
   saveGeographiesList() {
     let selectedGeographies = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographySelected;
-    let data2 = {
-      DefalultgeoId: selectedGeographies,
+    selectedGeographies.forEach(element => {
+      return this.selectedItems.push(element.geographyId);
+
+    })   
+     let data2 = {
+      DefalultgeoId: this.selectedItems,
     }
     if (selectedGeographies.length == 0) {
       alert("Please select default geography grid");
@@ -539,6 +696,58 @@ export class AddDealerPopupComponent implements OnInit {
 
   }
 
+
+
+
+
+
+
+  EditGeographiesList() {
+    let selectedGeographies = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographySelected;
+    selectedGeographies.forEach(element => {
+
+  
+
+      return this.selectedItems.push(element.geographyId);
+
+    })   
+     let data2 = {
+      DefalultgeoId: this.selectedItems,
+    }
+    if (selectedGeographies.length == 0) {
+      alert("Please select default geography grid");
+      return;
+    }
+    console.log(selectedGeographies);
+    // let countrydata = {
+    //   "CountryId": localStorage.getItem('countryId'),
+    //   "StateId": localStorage.getItem('stateId'),
+    //   "RegionId": localStorage.getItem('distId'),
+    //   "CityId": localStorage.getItem('cityId'),
+    //   "CreatedById": this.LoginId
+    // };
+    let data3 = {
+      CreatedById: this.CreatedById
+    }
+    let data4 = {
+      customerId: this.customerIDofDealer
+    }
+
+    let data = Object.assign(this.addAddressDetailsForm.value, data2,  data3, data4)
+
+    console.log(data);
+
+    this.calssification.addDealerData(data).subscribe((res) => {
+
+      if (res.response.result == "Succesfully updated") {
+        this.dialogRef.close();
+        this.sharedService.filter('Register click')
+
+      }
+      console.log(res);
+    });
+
+  }
 
 
 }

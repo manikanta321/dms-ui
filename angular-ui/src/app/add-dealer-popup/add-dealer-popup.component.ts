@@ -84,6 +84,7 @@ export class AddDealerPopupComponent implements OnInit {
   selectedItems:any=[];
   geoGraphyHirerachyData: any;
   geoGraphyFullData: any;
+  userId:any;
   // geoGraphyFullData1: any;
   geographyHierarchyId: any;
   aarrayToPush: any[] = [];
@@ -144,7 +145,10 @@ export class AddDealerPopupComponent implements OnInit {
 
         let data = res.response[0]
        let editdealerGeo=data.selectedGeos
-        console.log('customerIdOfDealer', data)
+        console.log('customerIdOfDealer', data) 
+
+                      this.userId= data.userId
+
 
         // editdealerGeo.forEach(element => {
         //   debugger
@@ -731,8 +735,10 @@ console.log('selectedItemsselectedItems',this.selectedItems)
     let data4 = {
       customerId: this.customerIDofDealer
     }
-
-    let data = Object.assign(this.addAddressDetailsForm.value, data2,  data3, data4)
+let data5={
+  userId:this.userId
+}
+    let data = Object.assign(this.addAddressDetailsForm.value, data2,  data3, data4,data5)
 
     console.log(data);
 

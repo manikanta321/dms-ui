@@ -221,11 +221,10 @@ console.log('selectedItemsselectedItems',this.selectedItems)
         console.log('this.getFormArray', this.getFormArray)
       })
       this.getGeographyForMaterial(0, this.customerIDofDealer);
-
     } else {
       this.dealerAction = "Add"
-      this.addAddressForm1('6');
       this.addAddressForm1('7');
+      this.addAddressForm1('6');
       this.getGeographyForMaterial(0, 0);
 
     }

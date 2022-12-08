@@ -1136,91 +1136,91 @@ export class MaterialAddEditpopupComponent {
     this.productIdentifierPopup = true;
     this.customIdentifier();
   }
-  isSelected(fruit: any): boolean {
-    const index = this.selctedIdentifier.indexOf(fruit);
+  isSelectedMaterialIdentifier(materialIdentifier: any): boolean {
+    const index = this.selctedIdentifier.indexOf(materialIdentifier);
     return index >= 0;
   }
 
-  selectFruit(fruit: any): void {
-    let index = this.selctedIdentifier.indexOf(fruit);
+  selectMaterialIdentifier(materialIdentifier: any): void {
+    let index = this.selctedIdentifier.indexOf(materialIdentifier);
 
     if (index >= 0) {
       this.selctedIdentifier.splice(index, 1);
-      const MaterialCustomIdentifiersNames = this.selctedIdentifier.map((fruit) => fruit.materialCustomName);
-      this.MaterialCustomIdentifiers = this.selctedIdentifier.map((fruit) => fruit.materilCustomIdentifierId);
+      const MaterialCustomIdentifiersNames = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materialCustomName);
+      this.MaterialCustomIdentifiers = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materilCustomIdentifierId);
       console.log("MaterialCustomIdentifiers", this.MaterialCustomIdentifiers);
       console.log("MaterialCustomIdentifiersNames", MaterialCustomIdentifiersNames);
     } else {
-      this.selctedIdentifier.push(fruit);
-      const MaterialCustomIdentifiersNames = this.selctedIdentifier.map((fruit) => fruit.materialCustomName);
-      this.MaterialCustomIdentifiers = this.selctedIdentifier.map((fruit) => fruit.materilCustomIdentifierId);
+      this.selctedIdentifier.push(materialIdentifier);
+      const MaterialCustomIdentifiersNames = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materialCustomName);
+      this.MaterialCustomIdentifiers = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materilCustomIdentifierId);
       console.log("MaterialCustomIdentifiersNames", MaterialCustomIdentifiersNames);
       console.log("MaterialCustomIdentifiers", this.MaterialCustomIdentifiers);
     }
   }
-  isSelectedBusiness(fruit: any): boolean {
-    const index = this.businessSelctedIdentifier.indexOf(fruit);
+  isSelectedBusiness(businessIdentifier: any): boolean {
+    const index = this.businessSelctedIdentifier.indexOf(businessIdentifier);
     return index >= 0;
   }
 
-  selectBusiness(fruit: any): void {
-    let index = this.businessSelctedIdentifier.indexOf(fruit);
+  selectBusiness(businessIdentifier: any): void {
+    let index = this.businessSelctedIdentifier.indexOf(businessIdentifier);
 
     if (index >= 0) {
       this.businessSelctedIdentifier.splice(index, 1);
-      const ProductIdentifiersNames = this.businessSelctedIdentifier.map((fruit) => fruit.productCustomName);
-      this.bussinessIdentifiers = this.businessSelctedIdentifier.map((fruit) => fruit.productCustomIdentifierId);
+      const businessIdentifiersNames = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomName);
+      this.bussinessIdentifiers = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomIdentifierId);
       console.log("bussinessIdentifiers", this.bussinessIdentifiers);
-      console.log("ProductIdentifiersNames", ProductIdentifiersNames);
+      console.log("businessIdentifiersNames", businessIdentifiersNames);
     } else {
-      this.businessSelctedIdentifier.push(fruit);
-      const ProductIdentifiersNames = this.businessSelctedIdentifier.map((fruit) => fruit.productCustomName);
-      this.bussinessIdentifiers = this.businessSelctedIdentifier.map((fruit) => fruit.productCustomIdentifierId);
-      console.log("ProductIdentifiersNames", ProductIdentifiersNames);
+      this.businessSelctedIdentifier.push(businessIdentifier);
+      const businessIdentifiersNames = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomName);
+      this.bussinessIdentifiers = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomIdentifierId);
+      console.log("businessIdentifiersNames", businessIdentifiersNames);
       console.log("bussinessIdentifiers", this.bussinessIdentifiers);
     }
   }
-  isSelectedProductIdentifier(fruit: any): boolean {
-    const index = this.productSelctedIdentifier.indexOf(fruit);
+  isSelectedProductIdentifier(IdentifierProduct: any): boolean {
+    const index = this.productSelctedIdentifier.indexOf(IdentifierProduct);
     return index >= 0;
   }
 
-  selectProductIdentifier(fruit: any): void {
-    let index = this.productSelctedIdentifier.indexOf(fruit);
+  selectProductIdentifier(IdentifierProduct: any): void {
+    let index = this.productSelctedIdentifier.indexOf(IdentifierProduct);
 
     if (index >= 0) {
       this.productSelctedIdentifier.splice(index, 1);
-      const ProductIdentifiersNames = this.productSelctedIdentifier.map((fruit) => fruit.productCustomName);
-      this.ProductIdentifiersId = this.productSelctedIdentifier.map((fruit) => fruit.productCustomIdentifierId);
+      const ProductIdentifiersNames = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomName);
+      this.ProductIdentifiersId = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomIdentifierId);
       console.log("ProductIdentifiersId", this.ProductIdentifiersId);
       console.log("ProductIdentifiersNames", ProductIdentifiersNames);
     } else {
-      this.productSelctedIdentifier.push(fruit);
-      const ProductIdentifiersNames = this.productSelctedIdentifier.map((fruit) => fruit.productCustomName);
-      this.ProductIdentifiersId = this.productSelctedIdentifier.map((fruit) => fruit.productCustomIdentifierId);
+      this.productSelctedIdentifier.push(IdentifierProduct);
+      const ProductIdentifiersNames = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomName);
+      this.ProductIdentifiersId = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomIdentifierId);
       console.log("ProductIdentifiersNames", ProductIdentifiersNames);
       console.log("ProductIdentifiersId", this.ProductIdentifiersId);
     }
   }
-  isSelectedProductIdentifierSetting(fruit: any): boolean {
-    const index = this.productSettingIdentifier.indexOf(fruit);
+  isSelectedProductIdentifierSetting(IdentifierSetting: any): boolean {
+    const index = this.productSettingIdentifier.indexOf(IdentifierSetting);
     return index >= 0;
   }
 
-  selectProductIdentifierSetting(fruit: any): void {
-    let index = this.productSettingIdentifier.indexOf(fruit);
+  selectProductIdentifierSetting(IdentifierSetting: any): void {
+    let index = this.productSettingIdentifier.indexOf(IdentifierSetting);
 
     if (index >= 0) {
       this.productSettingIdentifier.splice(index, 1);
-      const ProductIdentifiersNames = this.productSettingIdentifier.map((fruit) => fruit.productCustomName);
-      this.ProductIdentifiersSettingId = this.productSettingIdentifier.map((fruit) => fruit.productCustomIdentifierId);
+      const ProductIdentifiersSettingsNames = this.productSettingIdentifier.map((IdentifierSetting) => IdentifierSetting.productCustomName);
+      this.ProductIdentifiersSettingId = this.productSettingIdentifier.map((IdentifierSetting) => IdentifierSetting.productCustomIdentifierId);
       console.log("ProductSettingIdentifiersId", this.ProductIdentifiersSettingId);
-      console.log("ProductSettingIdentifiersNames", ProductIdentifiersNames);
+      console.log("ProductSettingIdentifiersNames", ProductIdentifiersSettingsNames);
     } else {
-      this.productSettingIdentifier.push(fruit);
-      const ProductIdentifiersNames = this.productSettingIdentifier.map((fruit) => fruit.productCustomName);
-      this.ProductIdentifiersSettingId = this.productSettingIdentifier.map((fruit) => fruit.productCustomIdentifierId);
-      console.log("ProductSettingIdentifiersNames", ProductIdentifiersNames);
+      this.productSettingIdentifier.push(IdentifierSetting);
+      const ProductIdentifiersSettingsNames = this.productSettingIdentifier.map((IdentifierSetting) => IdentifierSetting.productCustomName);
+      this.ProductIdentifiersSettingId = this.productSettingIdentifier.map((IdentifierSetting) => IdentifierSetting.productCustomIdentifierId);
+      console.log("ProductSettingIdentifiersNames", ProductIdentifiersSettingsNames);
       console.log("PProductSettingIdentifiersId", this.ProductIdentifiersSettingId);
     }
   }

@@ -11,6 +11,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
 import { MatStepper } from '@angular/material/stepper';
 import { SharedServicesMaterialService } from 'src/app/services/shared-services-material.service';
+import { MatChip, MatChipList } from '@angular/material/chips';
 /**
  * @title Stepper animations
  */
@@ -20,6 +21,7 @@ import { SharedServicesMaterialService } from 'src/app/services/shared-services-
   styleUrls: ['./material-add-editpopup.component.css']
 })
 export class MaterialAddEditpopupComponent {
+  chipControl = new FormControl(new Set());
   disabled = false;
   catgname: any = [];
   base64textString = "";
@@ -128,12 +130,28 @@ export class MaterialAddEditpopupComponent {
   aarrayToPush: any[] = [];
   css: any[] = [];
   ProductId: any = []
+  businessData: any = [];
+  productData: any = [];
+  productSettingData: any = [];
   checked: boolean = false
   selectAllIdentifier: any = [];
   selectAllIdentifierProduct: any = [];
   selectedIdentifierArray: any = [];
   selectedIdentifierProductArray: any = [];
   selectedProductId: any = [];
+  materialIdentifierPopup: boolean = false;
+  selectedData: boolean = false;
+  selctedIdentifier: any = [];
+  businessSelctedIdentifier: any = [];
+  productSelctedIdentifier: any = [];
+  productSettingIdentifier: any = [];
+  productIdentifierPopup: boolean = false;
+  selectable: boolean = true;
+  removable: boolean = true;
+  bussinessIdentifiers: any = [];
+  ProductIdentifiersId: any = [];
+  ProductIdentifiersSettingId: any = [];
+  seletedItem: any = [];
   colorsList = [
     { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
     { primaryColor: { background: '#0C5A3E', color: '#fff' }, secondaryColor: { background: "#E6FFF6", color: "#0C5A3E" }, },
@@ -148,6 +166,9 @@ export class MaterialAddEditpopupComponent {
     { primaryColor: { background: '#3D1A00', color: '#fff' }, secondaryColor: { background: "#D6C8C3", color: "#3D1A00" }, },
     { primaryColor: { background: '#DC0063', color: '#fff' }, secondaryColor: { background: "#FFE1EE", color: "#DC0063" }, },
   ];
+  @ViewChild(MatChipList)
+  chipList!: MatChipList;
+  value: string[] = [];
   @ViewChild('stepper') private stepper: MatStepper | any;
   dataGetById: any = {};
   selectedHirerachyIndex: number = 0;
@@ -655,6 +676,7 @@ export class MaterialAddEditpopupComponent {
 
     this.addMaterials.getMaterialIdentifier().subscribe((res) => {
       this.selectId = res.response;
+      console.log("Selected Data", this.selectId)
       //  this.materialIdentifier =data;
       // this.selectId =  this.materialIdentifier;
       console.log("select Product", this.selectId);
@@ -672,8 +694,15 @@ export class MaterialAddEditpopupComponent {
   customIdentifier() {
     // this.dialog.open(AddIdentifierComponent);
     this.addMaterials.getProductCustomIdentifier().subscribe((res: any) => {
-
       this.ProductId = res.response;
+      console.log("ProductID", this.ProductId);
+      this.businessData = res.response[0].productCustomeIdentifiers;
+      console.log("BusinessIdentifier", this.businessData);
+      this.productData = res.response[1].productCustomeIdentifiers;
+      console.log("ProductIdentifier", this.productData);
+      this.productSettingData = res.response[2].productCustomeIdentifiers;
+      console.log("productSettingData", this.productSettingData)
+
 
     });
   }
@@ -1050,6 +1079,150 @@ export class MaterialAddEditpopupComponent {
     })
     this.selectedProductId = this.selectedIdentifierProductArray;
     console.log("All Selected", this.selectedProductId);
+  }
+  popup() {
+    this.materialIdentifierPopup = true;
+  }
+  closePopup() {
+    this.materialIdentifierPopup = false;
+    this.productIdentifierPopup = false;
+  }
+  // onSelect() {
+  //   this.selectedData = !this.selectedData;
+  //   alert(this.selectedData)
+  // }
+  //   toggleSelection(chip: MatChip) {
+  //     chip.toggleSelected();
+  //     console.log("ChipValue",chip.value);
+  //     this.selctedIdentifier.push(chip.value);
+  //     alert(this.selctedIdentifier);
+  //  }
+  //  toggleBusinessSelection(chip1: MatChip) {
+  //   chip1.toggleSelected();
+  //   this.businessSelctedIdentifier.push(chip1.value);
+  //   alert(this.businessSelctedIdentifier);
+  // }
+  // toggleProductSelection(chip2: MatChip) {
+  //   chip2.toggleSelected();
+  //   this.productSelctedIdentifier.push(chip2.value);
+  //   alert(this.productSelctedIdentifier);
+  // }
+  // toggleProductSettingSelection(chip3: MatChip) {
+  //   chip3.toggleSelected();
+  //   this.productSettingIdentifier.push(chip3.value);
+  //   alert(this.productSettingIdentifier);
+  // }
+  // writeValue(value: string[]): void {
+  //   // When form value set when chips list initialized
+  //   if (this.chipList && value) {
+  //     this.selectChips(value);
+  //     alert(this.value);
+  //   } else if (value) {
+  //     // When chips not initialized
+  //     this.value = value;
+  //   }
+  // }
+
+  // selectChips(value: string[]) {
+  //   this.chipList.chips.forEach((chip) => chip.deselect());
+
+  //   const chipsToSelect = this.chipList.chips.filter((c) =>
+  //     value.includes(c.value)
+  //   );
+
+  //   chipsToSelect.forEach((chip) => chip.select());
+  // }
+  productIdentifier() {
+    this.productIdentifierPopup = true;
+    this.customIdentifier();
+  }
+  isSelected(fruit: any): boolean {
+    const index = this.selctedIdentifier.indexOf(fruit);
+    return index >= 0;
+  }
+
+  selectFruit(fruit: any): void {
+    let index = this.selctedIdentifier.indexOf(fruit);
+
+    if (index >= 0) {
+      this.selctedIdentifier.splice(index, 1);
+      const MaterialCustomIdentifiersNames = this.selctedIdentifier.map((fruit) => fruit.materialCustomName);
+      this.MaterialCustomIdentifiers = this.selctedIdentifier.map((fruit) => fruit.materilCustomIdentifierId);
+      console.log("MaterialCustomIdentifiers", this.MaterialCustomIdentifiers);
+      console.log("MaterialCustomIdentifiersNames", MaterialCustomIdentifiersNames);
+    } else {
+      this.selctedIdentifier.push(fruit);
+      const MaterialCustomIdentifiersNames = this.selctedIdentifier.map((fruit) => fruit.materialCustomName);
+      this.MaterialCustomIdentifiers = this.selctedIdentifier.map((fruit) => fruit.materilCustomIdentifierId);
+      console.log("MaterialCustomIdentifiersNames", MaterialCustomIdentifiersNames);
+      console.log("MaterialCustomIdentifiers", this.MaterialCustomIdentifiers);
+    }
+  }
+  isSelectedBusiness(fruit: any): boolean {
+    const index = this.businessSelctedIdentifier.indexOf(fruit);
+    return index >= 0;
+  }
+
+  selectBusiness(fruit: any): void {
+    let index = this.businessSelctedIdentifier.indexOf(fruit);
+
+    if (index >= 0) {
+      this.businessSelctedIdentifier.splice(index, 1);
+      const ProductIdentifiersNames = this.businessSelctedIdentifier.map((fruit) => fruit.productCustomName);
+      this.bussinessIdentifiers = this.businessSelctedIdentifier.map((fruit) => fruit.productCustomIdentifierId);
+      console.log("bussinessIdentifiers", this.bussinessIdentifiers);
+      console.log("ProductIdentifiersNames", ProductIdentifiersNames);
+    } else {
+      this.businessSelctedIdentifier.push(fruit);
+      const ProductIdentifiersNames = this.businessSelctedIdentifier.map((fruit) => fruit.productCustomName);
+      this.bussinessIdentifiers = this.businessSelctedIdentifier.map((fruit) => fruit.productCustomIdentifierId);
+      console.log("ProductIdentifiersNames", ProductIdentifiersNames);
+      console.log("bussinessIdentifiers", this.bussinessIdentifiers);
+    }
+  }
+  isSelectedProductIdentifier(fruit: any): boolean {
+    const index = this.productSelctedIdentifier.indexOf(fruit);
+    return index >= 0;
+  }
+
+  selectProductIdentifier(fruit: any): void {
+    let index = this.productSelctedIdentifier.indexOf(fruit);
+
+    if (index >= 0) {
+      this.productSelctedIdentifier.splice(index, 1);
+      const ProductIdentifiersNames = this.productSelctedIdentifier.map((fruit) => fruit.productCustomName);
+      this.ProductIdentifiersId = this.productSelctedIdentifier.map((fruit) => fruit.productCustomIdentifierId);
+      console.log("ProductIdentifiersId", this.ProductIdentifiersId);
+      console.log("ProductIdentifiersNames", ProductIdentifiersNames);
+    } else {
+      this.productSelctedIdentifier.push(fruit);
+      const ProductIdentifiersNames = this.productSelctedIdentifier.map((fruit) => fruit.productCustomName);
+      this.ProductIdentifiersId = this.productSelctedIdentifier.map((fruit) => fruit.productCustomIdentifierId);
+      console.log("ProductIdentifiersNames", ProductIdentifiersNames);
+      console.log("ProductIdentifiersId", this.ProductIdentifiersId);
+    }
+  }
+  isSelectedProductIdentifierSetting(fruit: any): boolean {
+    const index = this.productSettingIdentifier.indexOf(fruit);
+    return index >= 0;
+  }
+
+  selectProductIdentifierSetting(fruit: any): void {
+    let index = this.productSettingIdentifier.indexOf(fruit);
+
+    if (index >= 0) {
+      this.productSettingIdentifier.splice(index, 1);
+      const ProductIdentifiersNames = this.productSettingIdentifier.map((fruit) => fruit.productCustomName);
+      this.ProductIdentifiersSettingId = this.productSettingIdentifier.map((fruit) => fruit.productCustomIdentifierId);
+      console.log("ProductSettingIdentifiersId", this.ProductIdentifiersSettingId);
+      console.log("ProductSettingIdentifiersNames", ProductIdentifiersNames);
+    } else {
+      this.productSettingIdentifier.push(fruit);
+      const ProductIdentifiersNames = this.productSettingIdentifier.map((fruit) => fruit.productCustomName);
+      this.ProductIdentifiersSettingId = this.productSettingIdentifier.map((fruit) => fruit.productCustomIdentifierId);
+      console.log("ProductSettingIdentifiersNames", ProductIdentifiersNames);
+      console.log("PProductSettingIdentifiersId", this.ProductIdentifiersSettingId);
+    }
   }
 }
 

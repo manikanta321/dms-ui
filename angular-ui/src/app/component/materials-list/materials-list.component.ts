@@ -442,7 +442,12 @@ else
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
-
+    this.subCategory = this.fb.group({
+      subCategory: [this.selectedItems]
+    });
+    this.type = this.fb.group({
+      type: [this.selectedItems]
+    });
   }
   onItemSelectOrAll(item: any) {
     this.catergory = this.catArray;
@@ -490,6 +495,12 @@ else
     });
   }
   onItemDeSelectOrAll(item: any) {
+    this.subCategory = this.fb.group({
+      subCategory: [this.selectedItems]
+    });
+    this.type = this.fb.group({
+      type: [this.selectedItems]
+    });
     this.catergory = [];
     this.sub_category = [];
     this.sub_categorys = [];
@@ -569,7 +580,9 @@ else
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
-
+    this.type = this.fb.group({
+      type: [this.selectedItems]
+    });
   }
   onSubCategorySelectOrAll() {
     this.sub_categorys = this.subcatArray;
@@ -613,6 +626,9 @@ else
     }
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
+    });
+    this.type = this.fb.group({
+      type: [this.selectedItems]
     });
   }
   onTypeSelect(item: any) {

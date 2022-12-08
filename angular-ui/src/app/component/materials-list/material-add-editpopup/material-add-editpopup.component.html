@@ -107,13 +107,27 @@
                 <div class="materialci">
                   <label> Material Custom Identifiers <span>*</span></label>
                 </div>
-                <div class="customidentifier hide">
+                <div class="customidentifier hide" (click)=popup()>
                   <ng-multiselect-dropdown class="Materialcustomidentifier" name="Materialcustomidentifier"
-                    placeholder="Select Identifier" [disabled]="disabled" [settings]="dropdownSettings4"
-                    [data]="selectId" (onSelect)="onSelectIdentifier($event)"
-                    (onDeSelect)="onDeSelectIdentifier($event)" (onDeSelectAll)="onDSelectOrAllIdentifier($event)"
-                    (onSelectAll)="onSelectOrAllIdentifier()" [(ngModel)]="MaterialCustomIdentifiersEdit">
+                    placeholder="Select Identifier" [disabled]="disabled" [settings]="dropdownSettings4">
                   </ng-multiselect-dropdown>
+                </div>
+                <div class="overlay" *ngIf="materialIdentifierPopup">
+                  <div class="popup">
+                    <h2>Select Identifier<span>*</span></h2>
+
+                    <a class="close" (click)="closePopup()">&times;</a>
+                    <div class="content">
+                      <mat-chip-list selectable multiple [(ngModel)]="selctedIdentifier">
+                        <mat-chip  [value]="data" #identifierId="matChip" *ngFor="let data of selectId" [selectable]="selectable"
+                        [selected]="isSelected(data)"
+                        (focus)="selectFruit(data)" class="cold">
+                          <mat-icon *ngIf="identifierId.selected">check</mat-icon>
+                          {{data.materialCustomName}}
+                        </mat-chip>
+                      </mat-chip-list>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="expiryperiod">
@@ -251,14 +265,66 @@
                 <div class="productci">
                   <label>Product Custom Identifier<span>*</span></label>
                 </div>
-                <div class="identiersdrp hide">
+                <div class="identiersdrp hide" (click)="productIdentifier()">
                   <ng-multiselect-dropdown name="ProductCustomIdentifierId" class="ProductCustomIdentifierId"
-                    [placeholder]="'Select the identifiers'" [disabled]="disabled" [settings]="dropdownSettings3"
-                    [data]="ProductId" (onSelect)="onSelectIdentifierProduct($event)"
-                    (onDeSelect)="onDeSelectIdentifierProduct($event)"
-                    (onDeSelectAll)="onDSelectOrAllIdentifierProduct($event)"
-                    (onSelectAll)="onSelectOrAllIdentifierProduct()" [(ngModel)]="selectedProductIdEdit">
+                    [placeholder]="'Select the identifiers'" [disabled]="disabled" [settings]="dropdownSettings3">
                   </ng-multiselect-dropdown>
+                  <!-- <select name="" id="">
+                    <option multiple selected value="">{{businessSelctedIdentifier}}</option>
+                  </select> -->
+            
+                  <div class="overlay" *ngIf="productIdentifierPopup">
+        
+                    <div class="popup" style="width: 700px; top: 0%;">
+                      <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+                      <div class="col-12">
+                        <div class="row">
+                          <div class="col-4">
+                            <h2>Business<span>*</span></h2>
+                            <div class="content">
+                              <mat-chip-list selectable multiple>
+                                <mat-chip #bd="matChip" [value]="data" *ngFor="let data of businessData" [selectable]="selectable"
+                                [selected]="isSelectedBusiness(data)"
+                                (focus)="selectBusiness(data)" 
+                                  class="cold">
+                                  <mat-icon *ngIf="bd.selected">check</mat-icon>
+                                  {{data.productCustomName}}
+                                </mat-chip>
+                              </mat-chip-list>
+                            </div>
+                          </div>
+                          <div class="col-4">
+                            <h2>Product<span>*</span></h2>
+                            <div class="content">
+                              <mat-chip-list selectable multiple>
+                                <mat-chip #pi="matChip" [value]="data" *ngFor="let data of productData" [selectable]="selectable"
+                                [selected]="isSelectedProductIdentifier(data)"
+                                (focus)="selectProductIdentifier(data)" 
+                                  class="cold">
+                                  <mat-icon *ngIf="pi.selected">check</mat-icon>
+                                  {{data.productCustomName}}
+                                </mat-chip>
+                              </mat-chip-list>
+                            </div>
+                          </div>
+                          <div class="col-4">
+                            <h2>Product Setting<span>*</span></h2>
+                            <div class="content">
+                              <mat-chip-list selectable multiple>
+                                <mat-chip #ps="matChip" *ngFor="let data of productSettingData"[selectable]="selectable"
+                                [selected]="isSelectedProductIdentifierSetting(data)"
+                                (focus)="selectProductIdentifierSetting(data)" 
+                                  class="cold">
+                                  <mat-icon *ngIf="ps.selected">check</mat-icon>
+                                  {{data.productCustomName}}
+                                </mat-chip>
+                              </mat-chip-list>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -315,20 +381,22 @@
               <div class="selection-feild">
                 <div class="dropdown-file">
                   <div style="margin:8px">
-                  <select  class="drpOptions" [(ngModel)]="selectedGeoField">
-                    <option value="" disabled selected>Select Feild</option>
-                    <option value="mrp"> MRP</option>
-                    <option value="marginPercent"> Margin Percent</option>
-                    <option value="maxOrderQty"> Max Order Qty</option>
-                    <option value="minOrderQty"> Min Order Qty</option>
-                    <option value="discountPercent"> Discount Percent</option>
-                    <option value="leadTime"> Lead Time</option>
-                    <option value="registrationNumber"> Registration Number</option>
-                  </select>
+                    <select class="drpOptions" [(ngModel)]="selectedGeoField">
+                      <option value="" disabled selected>Select Feild</option>
+                      <option value="mrp"> MRP</option>
+                      <option value="marginPercent"> Margin Percent</option>
+                      <option value="maxOrderQty"> Max Order Qty</option>
+                      <option value="minOrderQty"> Min Order Qty</option>
+                      <option value="discountPercent"> Discount Percent</option>
+                      <option value="leadTime"> Lead Time</option>
+                      <option value="registrationNumber"> Registration Number</option>
+                    </select>
 
-                  <input class="inp_field" type="text" placeholder="Enter Value" [(ngModel)]="updateGeographyValue">
+                    <input class="inp_field" type="text" placeholder="Enter Value" [(ngModel)]="updateGeographyValue">
 
-                  <button  class="Apply_button" (click)="applySelectedValue()"><p style="color:white">Apply</p></button>
+                    <button class="Apply_button" (click)="applySelectedValue()">
+                      <p style="color:white">Apply</p>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -390,7 +458,7 @@
                     <th style="width: 13%;">Tags</th>
                   </tr>
                 </div> -->
-                
+
 
 
                 <div *ngFor="let geoPropertyItemList of geoGraphyFullData; let i=index;">
@@ -442,7 +510,7 @@
                   </div>
                 </div>
 
-                
+
               </table>
 
             </section>

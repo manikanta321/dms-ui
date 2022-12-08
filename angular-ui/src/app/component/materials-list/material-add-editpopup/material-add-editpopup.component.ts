@@ -22,6 +22,8 @@ import { MatChip, MatChipList } from '@angular/material/chips';
 })
 export class MaterialAddEditpopupComponent {
   chipControl = new FormControl(new Set());
+
+  
   disabled = false;
   catgname: any = [];
   base64textString = "";
@@ -87,6 +89,8 @@ export class MaterialAddEditpopupComponent {
   stateName: any;
   districtName: any;
 
+
+  // basicInfo: boolean = false;
   materialName: any = '';
   stockItemDesc: string = '';
   desc: any;
@@ -116,6 +120,9 @@ export class MaterialAddEditpopupComponent {
   showDiv: boolean = false
   updateOrSave: boolean = false
   // geograhies related variables
+
+
+  
 
   geoPropertiesList: any
   geoProperties: any
@@ -216,7 +223,7 @@ export class MaterialAddEditpopupComponent {
     this.selectProduct();
     this.customIdentifier()
     const user = localStorage.getItem("logInId");
-
+    
     this.UserId = user
     this.dropdownSettings4 = {
       singleSelection: false,
@@ -1224,6 +1231,28 @@ export class MaterialAddEditpopupComponent {
       console.log("PProductSettingIdentifiersId", this.ProductIdentifiersSettingId);
     }
   }
+
+  goForward(stepper: MatStepper) {
+    stepper.next();
+  }
+  gobackward(stepper: MatStepper) {
+    stepper.previous();
+  }
+  
+  nextbutton() {
+    this.goForward(this.stepper);
+    //  this.basicInfo = false;
+    
+  }
+
+  Backbutton() {
+    this.gobackward(this.stepper);
+    //  this.basicInfo = true;
+    console.log("1");
+  
+  }
+ 
+  
 }
 
 

@@ -7,9 +7,16 @@
       <div class="head-t">
         <h3 class="addU font">{{actineLabel}}</h3>
         <br>
-        <img src="assets/img/arrow-left-circle-fill.svg" class="leftarrow" alt="left-arr-btn">
-        <img src="assets/img/arrow-right-circle-fill.svg" class="rightarrow" alt="right-arr-btn">
+     <img src="assets/img/arrow-left-circle-fill.svg" [ngClass]="{'red':!firstFormGroup ,'black':firstFormGroup}" (click)="Backbutton()"   class="leftarrow" alt="left-arr-btn">
 
+       
+
+
+        <img src="assets/img/arrow-right-circle-fill.svg"  (click)="nextbutton()"   class="rightarrow" alt="right-arr-btn"> 
+
+
+
+       
         <mat-stepper labelPosition="bottom" #stepper>
           <!-- basic information -->
           <mat-step [stepControl]="firstFormGroup">

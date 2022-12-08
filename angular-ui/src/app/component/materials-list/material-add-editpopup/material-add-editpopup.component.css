@@ -1355,3 +1355,17 @@ mat-icon {
   font-size: 20px;
   margin-right: 5px;
 }
+.rightarrow
+{
+  cursor: pointer;
+}
+.leftarrow
+{
+  cursor: pointer;
+}
+
+
+.addMore-icons {
+  cursor: pointer;
+  color: grey;
+}

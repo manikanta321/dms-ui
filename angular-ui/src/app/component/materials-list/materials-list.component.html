@@ -100,12 +100,12 @@
             <img src="assets/img/Vector.png" class="imageRefresh" alt="refresh">
           </div>
         </div>
-         <div class="col-md-4 searchRow">
+        <div class="col-md-6 searchRow">
 
            
 
            <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-1">
               <div class="searchBox searchresp d-flex">
                 <input class="searchInput font" type="text" name="" placeholder="Type & search for anything"
                   (keyup)="onSearchChange($event)">
@@ -123,7 +123,17 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> 
+
+
+        
+        
+
+
+
+
+
+
 
 
 <div class="row">
@@ -141,6 +151,7 @@
   </div>
 </div>
 <br>
+
 <div>
         <ag-grid-angular id="gridContainer" style="height: 310px;" class="ag-theme-material gridAlign" [rowHeight]="32"
           [headerHeight]="52" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"

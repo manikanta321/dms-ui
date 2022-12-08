@@ -71,29 +71,22 @@
     box-shadow: 0 1px 5px #959595;
   }
   
-  ::ng-deep.stts .multiselect-dropdown .dropdown-btn .selected-item {
+  ::ng-deep.stts1 .multiselect-dropdown .dropdown-btn .selected-item {
     background: #000000 !important;
     font-size: 12px;
   }
   
-  ::ng-deep .stts .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+  ::ng-deep .stts1 .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
     background: #000000 !important;
   }
+
   
-  ::ng-deep.roless .multiselect-dropdown .dropdown-btn .selected-item {
-    background: #006466 !important;
-    font-size: 12px;
+  .stts1-placeholder.dropdown-placeholder .selected-placeholder {
+    color: black  !important;
   }
   
-  ::ng-deep.roless-product .multiselect-dropdown .dropdown-btn .selected-item {
-    background: #44026C !important;
-    font-size: 12px;
-  }
   
-  ::ng-deep .roless .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
-    // background: #D23F00 !important;
-    background: #006466 !important;
-  }
+  
   
   ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
     border: 2px solid #000000 !important;
@@ -244,11 +237,11 @@
     top: 3px;
   }
   
-  ::ng-deep.roless .multiselect-dropdown .dropdown-btn .selected-item {
+  ::ng-deep.role11 .multiselect-dropdown .dropdown-btn .selected-item {
     right: 6% !important;
   }
   
-  ::ng-deep.stts .multiselect-dropdown .dropdown-btn .selected-item {
+  ::ng-deep.stts1 .multiselect-dropdown .dropdown-btn .selected-item {
     right: 6% !important;
   }
   
@@ -986,6 +979,43 @@
     pointer-events: none;
   }
   
-  .cats-placeholder.dropdown-placeholder .selected-placeholder {
-    color: #00187A !important;
+
+  
+
+
+  ::ng-deep.role11 .multiselect-dropdown .dropdown-btn .selected-item {
+    background: #006466 !important;
+    font-size: 12px;
   }
+
+  .role11-placeholder.dropdown-placeholder .selected-placeholder {
+    color:  #006466 !important;
+  }
+
+  ::ng-deep .role11 .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+    // background: #D23F00 !important;
+    background: #006466 !important;
+  }
+
+
+
+  
+  ::ng-deep.role12-product .multiselect-dropdown .dropdown-btn .selected-item {
+    background: #44026C !important;
+    font-size: 12px;
+  }
+
+
+  
+  .role12-placeholder.dropdown-placeholder .selected-placeholder {
+    color: #44026C  !important;
+  }
+
+  
+  ::ng-deep .role12 .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+    // background: #D23F00 !important;
+    background: #44026C !important;
+  }
+  
+
+  

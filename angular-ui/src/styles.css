@@ -109,21 +109,24 @@ body {
   border-radius: 15px !important;
 }
 
-.activeSuccessPop .mat-dialog-container {
+ .activeSuccessPop .mat-dialog-container {
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
   border: 0.5px solid #000000;
   border-radius: 10px !important;
   border-left: 10px solid green !important;
   padding: 10px 20px;
-}
+} 
+
 
 .deactiveSuccessPop .mat-dialog-container {
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
   border: 0.5px solid #000000;
   border-radius: 10px !important;
-  border-left: 10px solid #FF0000 !important;
+   border-left: 10px solid #FF0000 !important; 
+   
   padding: 10px 20px;
-}
+} 
+
 
 .deactiveSuccessPop {
   position: absolute !important;
@@ -399,3 +402,4 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   max-height: 70vh;
   overflow-y: auto;
 }
+

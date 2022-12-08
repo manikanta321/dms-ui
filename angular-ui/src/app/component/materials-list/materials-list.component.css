@@ -585,9 +585,9 @@
 }
 
 .searchRow {
-  margin-left: 88%;
+  margin-left: 90%;
   position: relative;
-  top: 7%;
+  top: 6%;
 }
 ::ng-deep.dropdown-list {
   position: absolute;

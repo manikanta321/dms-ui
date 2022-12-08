@@ -50,6 +50,8 @@ export class AddDealerAssociationsComponent implements OnInit {
   productID: any = [];
   ProductIdentifier: any = [];
   selectedProductId: any = [];
+  tooltipData : any = [];
+  tooltipDataDealer : any =[];
   // seletedproduct1 : any;
   selectAllIdentifierProduct: any = [];
   selectedIdentifierProductArray: any = [];
@@ -57,6 +59,7 @@ export class AddDealerAssociationsComponent implements OnInit {
   image2 = 'assets/img/minimize-tag.png';
   image3 = 'assets/img/minimize-tag.png';
   selectedProduct1: any;
+  selectedDealer2: any;
 
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
@@ -145,6 +148,7 @@ export class AddDealerAssociationsComponent implements OnInit {
   ngOnInit(): void {
     this.ProductItems();
     this.dealerItems();
+    this.tooltiptable()
     this.dropdownSettings1 = {
       singleSelection: false,
       idField: 'catId',
@@ -252,7 +256,11 @@ export class AddDealerAssociationsComponent implements OnInit {
   }
 
   selectedDealer(value) {
-    alert(value)
+    // alert(value)
+    let ProductId = value
+    this.selectedDealer2 = ProductId
+    localStorage.setItem('ProductStockItemId', ProductId);
+    this.tooltiptable()
 
   }
 
@@ -622,7 +630,14 @@ export class AddDealerAssociationsComponent implements OnInit {
     let prodctId =  [this.selectedProduct1];
      this.associationService.tooltipStockItemDetailList(prodctId).subscribe((res:any) =>{
  console.log(res.response);
-//  this.tooltipData = res.response
+ this.tooltipData = res.response
      })
+   }
+   tooltipDealerTable(){
+    let prodctId =  [this.selectedDealer2];
+    this.associationService.tooltipStockItemDetailList(prodctId).subscribe((res:any) =>{
+      console.log(res.response);
+      this.tooltipDataDealer = res.response;
+          })
    }
 }

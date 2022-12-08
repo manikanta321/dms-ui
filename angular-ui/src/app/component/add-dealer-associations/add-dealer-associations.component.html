@@ -33,9 +33,31 @@
                 <option style="height: 900px;"     *ngFor="let product of ProductListArray" [value]="product.productSKUId">{{product.stockItemName}}</option>
 
               </select>
-
-              <img class="img1" src="../../../assets/img/i icon.svg" matTooxltip="" />
-
+              <div class="hover-text">
+                <img   class="img1"  src="../../../assets/img/i icon.svg"       matTooxltip=""/>
+                <div class="tooltip-text" id="top" >
+                  <table class="tootipTable">
+                    <tr>
+                      <th>Product Name</th>
+                      <th>Classification</th>
+                      <th>SKU</th>
+                      <th>Product Identifier</th>
+                      <th>Product Group</th>
+                      <th>Product Code</th>
+                      <th>Product Short Code</th>
+                    </tr>
+                    <tr *ngFor="let prod of tooltipData">
+                      <td>{{prod.productName}}</td>
+                      <td>{{prod.classification}}</td>
+                      <td>{{prod.sku}}</td>
+                      <td>{{prod.productIdentifier}}</td>
+                      <td>{{prod.productGroup}}</td>
+                      <td>{{prod.productCode}}</td>
+                      <td>{{prod.productShortCode}}</td>
+                    </tr>
+                  </table>
+                </div>
+                </div>
             </div>
 
 
@@ -48,6 +70,32 @@
                   {{dealer.customerName}} </option>
 
               </select>
+              <div class="hover-text">
+                <img   class="img1"  src="../../../assets/img/i icon.svg"       matTooxltip=""/>
+                <div class="tooltip-text" id="top" >
+                  <table class="tootipTable">
+                    <tr>
+                      <th>Product Name</th>
+                      <th>Classification</th>
+                      <th>SKU</th>
+                      <th>Product Identifier</th>
+                      <th>Product Group</th>
+                      <th>Product Code</th>
+                      <th>Product Short Code</th>
+                    </tr>
+                    <tr *ngFor="let prod of tooltipDataDealer">
+                      <td>{{prod.productName}}</td>
+                      <td>{{prod.classification}}</td>
+                      <td>{{prod.sku}}</td>
+                      <td>{{prod.productIdentifier}}</td>
+                      <td>{{prod.productGroup}}</td>
+                      <td>{{prod.productCode}}</td>
+                      <td>{{prod.productShortCode}}</td>
+                    </tr>
+                  </table>
+                </div>
+                </div>
+
             </div>
           </div>
         </div>

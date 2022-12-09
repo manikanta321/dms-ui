@@ -70,7 +70,7 @@ form[name="myBasicInfo"]{
 .imageofm {
   font-family: 'Gilroy';
   position: relative;
-  left: 53%;
+  left: 44%;
 }
 .expiryperiod {
   font-family: 'Gilroy';
@@ -787,8 +787,8 @@ align-items: center;
   border-radius: 10px;
   /* width: 300px;
   height: 126px; */
-  width: 415px;
-height: 130px;
+  width: 333px;
+  height: 130px;
   background-color: white;
   margin-top: 6px;
   margin-left: 3px;
@@ -809,7 +809,7 @@ textarea {
     align-items: center;
     justify-content: center;
     position: relative;
-    left: 53%;
+    left: 43%;
 }
 
 .na-placeholder {
@@ -1041,6 +1041,9 @@ font-size: 12.5px;
     overflow-x: auto;
 
   }
+  .horizontal-scroll::-webkit-scrollbar{
+    height: 5px;
+  }
   .vertical-scroll {
     display: flex;
     gap: 10px;
@@ -1174,7 +1177,7 @@ font-size: 12.5px;
 .uom-cls {
   border: 0.5px solid #000000;
   border-radius: 7px;
-  width: 70px
+  width: 60px
 }
 .table-data-row{
   margin-left: 30px;
@@ -1229,6 +1232,7 @@ font-size: 12.5px;
 .add-img{
   width: -webkit-fill-available;
     height: -webkit-fill-available;
+    margin-left: -29px;
 }
 
 .dropdown-file{

@@ -3,9 +3,10 @@
 <div class="row">
     <div class="col-md-2 col-lg-2 col-sm-2">
         <form [formGroup]="myForm" class="dropdown-form">
-          <ng-multiselect-dropdown class="roles" name="city" [placeholder]="'Dealers'" formControlName="city"
+          <ng-multiselect-dropdown class="Dealers" name="city" [placeholder]="'Dealers'" formControlName="city"
             [disabled]="disabled" [settings]="dropdownSettings" [data]="dealerlist"
-            (onSelect)="orderItemSelect($event)">
+            (onSelect)="DealerorderSelect($event)" (onDeSelect)="DealerDeselect($event)"(onDeSelectAll)="DealerDeselectAll($event)"
+            (onSelectAll)="DealerorderSelectAll($event)">
           </ng-multiselect-dropdown>
           <!-- <div class="dropdown-placeholder roles-placeholder">
             <span *ngIf="myForm.get('city').value.length == 0"> Select Roles </span>
@@ -18,9 +19,10 @@
       </div>
 
       <div class="col-md-2 col-lg-2 col-sm-2">
-        <form [formGroup]="myForm" class="dropdown-form">
-          <ng-multiselect-dropdown class="roles" name="city" [placeholder]="'Geography'" formControlName="city"
-            [disabled]="disabled" [settings]="dropdownSettings" [data]="dealerlist">
+        <form [formGroup]="myForm1" class="dropdown-form">
+          <ng-multiselect-dropdown class="Geography" name="city" [placeholder]="'Geography'" formControlName="geo"
+            [disabled]="disabled" [settings]="dropdownSettings1" [data]="geogropdownlist" (onSelect)="geographyselect($event)"
+            (onDeSelect)="geographyDeselect($event)" (onDeSelectAll)="geographyDeselectAll($event)"(onSelectAll)="geographyselectAll($event)">
           </ng-multiselect-dropdown>
           <!-- <div class="dropdown-placeholder roles-placeholder">
             <span *ngIf="myForm.get('city').value.length == 0"> Select Roles </span>
@@ -41,9 +43,10 @@
         <app-customdatepicker [showInputField]="true" label="Order Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
       </div>
     <div class="col-md-2 col-lg-2 col-sm-2">
-        <form [formGroup]="myForm" class="dropdown-form">
-          <ng-multiselect-dropdown class="roles" name="city" [placeholder]="'Status'" formControlName="city"
-            [disabled]="disabled" [settings]="dropdownSettings" [data]="dealerlist">
+        <form [formGroup]="myForm2" class="dropdown-form">
+          <ng-multiselect-dropdown class="status" name="status" [placeholder]="'Status'" formControlName="status"
+            [disabled]="disabled" [settings]="dropdownSettings2" [data]="statusDropList" (onSelect)="statusdropdownselect($event)"
+            (onDeSelect)="statusDeselect($event)"(onDeSelectAll)="statusDeselectAll($event)"(onSelectAll)="statusselectAll($event)" >
           </ng-multiselect-dropdown>
           <!-- <div class="dropdown-placeholder roles-placeholder">
             <span *ngIf="myForm.get('city').value.length == 0"> Select Roles </span>
@@ -66,8 +69,7 @@
   <div class="col-md-4 srch-hover" >
     
     <div class="searchBox1 d-flex">
-      <input class="searchInput1" type="text" name="" placeholder="Type & search for anything">
-      <!-- (keyup)="onSearchChange($event)" -->
+      <input class="searchInput1" type="text" name="" placeholder="Type & search for anything"(keyup)="onSearchChange($event)">
       <button class="search-btn">Search</button>
       <button class="searchButton" href="#">
         <i class="material-icons">

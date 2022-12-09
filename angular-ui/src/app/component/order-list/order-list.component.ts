@@ -5,7 +5,7 @@ import { AfterViewInit, ViewChild } from '@angular/core';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Sort, MatSort, SortDirection } from '@angular/material/sort';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
 
@@ -68,7 +68,8 @@ export class OrderListComponent implements OnInit {
   private gridApi!: GridApi;
   paginationPageSize = 10;
   myForm: any = FormGroup;
-  myForms: any = FormGroup;
+  myForm1: any = FormGroup;
+  myForm2: any = FormGroup;
   disabled = false;
   ShowFilter = false;
   StatusFilter = false;
@@ -93,6 +94,7 @@ export class OrderListComponent implements OnInit {
   searchText: any;
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
+  dropdownSettings2: IDropdownSettings = {};
   public rowData5 = [];
   
   public rowDatalist =[];
@@ -271,11 +273,21 @@ export class OrderListComponent implements OnInit {
   statusname: any;
   instancePopup:any = null;
   dealerlist : any = [];
+  dealerAllarray :any =[];
   dealerss : any =[]
+  dealerType:any;
+  selectedDealer : any = []
+  geogropdownlist : any =[];
+  geoAllarray : any =[]
+  geogragphies : any = [];
+  statusDropList : any = []
+  statusList : any =[];
+  statusAllarray : any =[]
   constructor(public dialog: MatDialog,
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
     private user: UserService,
+    private fb: FormBuilder,
     private observer: BreakpointObserver
   ) {
     sort: [];
@@ -304,39 +316,49 @@ export class OrderListComponent implements OnInit {
     this.statusItems();
     // this.maxDate.setDate(this.maxDate.getDate() + 20);
     this.orderlistGrid();
-  }
-  refresh() {
-    this.toppings = new FormControl(this.toppingList);
-    this.toppings1 = new FormControl(this.toppingList1);
-
-  
-  }
-  statusItems() {
-    this.user.getstatusDeatils().subscribe((res: any) => {
-
-      let localdata = res.response;
-
-
-      this.toppingList1 = localdata.map((data: { statusId: any; statusname: any; }) => {
-        return { status_id: data.statusId, status_name: data.statusname };
-      });
-
-      if (!this.toppingList1?.length) {
-        this.toppingList1 = localdata.map((status: { statusname: any; }) => {
-          return status.statusname;
-        });
-      }
-      this.toppingList1.push()
-      // this.toppingList = res.response;
-      this.toppings1 = new FormControl(this.toppingList1);
-
-      console.log('status', this.toppingList1)
-
-
+    this.dealerOrder();
+    this.geogrphyOrder();
+    this.myForm = this.fb.group({
+      city: [this.selectedItems]
+    });
+    this.myForm1 = this.fb.group({
+      geo: [this.selectedItems]
+    });
+    this.myForm2 = this.fb.group({
+      status: [this.selectedItems]
     });
   }
+  refresh() {
+   
+    this.myForm = this.fb.group({
+      city: [this.selectedItems]
+    });
+    this.myForm1 = this.fb.group({
+      geo: [this.selectedItems]
+    });
+    this.myForm2 = this.fb.group({
+      status: [this.selectedItems]
+    });
+    this.GeographyId=[];
+    this.StatusId=[];
+    this.DealerId=[];
+    this.searchText=''
+ const data = {
+  StatusId:this.statusList,
+  GeographyId:this.geogragphies,
+  DealerId:this.dealerss,
+    Search:this.searchText
+  //   "StatusId":[],
+  //   "GeographyId":[],
+  //  "DealerId" : [],
+  //   "OrderDate":"",
+  //   "Search":""
+    }
+    this.user.getorderDeatilslist(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  
 
-
+    });  }
   roleFilter(data: any) {
     console.log('data', data)
     this.roleName = this.toppings.value;
@@ -460,60 +482,58 @@ export class OrderListComponent implements OnInit {
     console.log('rolefilter', this.statusTypes)
   }
 
-  onStatusSelect(item: any) {
-    this.statusTypes.push(item.statusId);
+  // onStatusSelect(item: any) {
+  //   this.statusTypes.push(item.statusId);
 
-    const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
-      this.rowData5 = res.response;
-    });
+  //   const data = {
+  //     userTypes: this.userTypes,
+  //     statuss: this.statusTypes,
+  //     search: this.searchText,
+  //   }
+  //   this.user.getuserDeatilsUser(data).subscribe((res) => {
+  //     this.rowData5 = res.response;
+  //   });
 
-  }
+  // }
 
-  onItemDeSelect(item: any) {
+  // onItemDeSelect(item: any) {
 
-    this.userTypes.forEach((element, index) => {
-      if (element == item.roleId) this.userTypes.splice(index, 1);
-    });
-    console.log(' this.userTypes', this.userTypes)
+  //   this.userTypes.forEach((element, index) => {
+  //     if (element == item.roleId) this.userTypes.splice(index, 1);
+  //   });
+  //   console.log(' this.userTypes', this.userTypes)
 
-    // this.userTypes.pop(item.roleId);
-    const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
+  //   // this.userTypes.pop(item.roleId);
+  //   const data = {
+  //     userTypes: this.userTypes,
+  //     statuss: this.statusTypes,
+  //     search: this.searchText,
 
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
-      this.rowData5 = res.response;
-    });
+  //   }
+  //   this.user.getuserDeatilsUser(data).subscribe((res) => {
+  //     this.rowData5 = res.response;
+  //   });
 
-  }
+  // }
 
+  // onStatusDeSelect(item: any) {
+  //   this.statusTypes.forEach((element, index) => {
+  //     if (element == item.statusId) this.statusTypes.splice(index, 1);
+  //   });
+  //   // this.statusTypes.pop(item.statusId);
+  //   console.log(' this.statusTypes', this.userTypes)
+  //   const data = {
+  //     userTypes: this.userTypes,
+  //     statuss: this.statusTypes,
+  //     search: this.searchText,
 
-
-  onStatusDeSelect(item: any) {
-    this.statusTypes.forEach((element, index) => {
-      if (element == item.statusId) this.statusTypes.splice(index, 1);
-    });
-    // this.statusTypes.pop(item.statusId);
-    console.log(' this.statusTypes', this.userTypes)
-    const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
-
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
-      this.rowData5 = res.response;
-    });
-    // console.log('rolefilter', this.userTypes)
-    // console.log('onItemSelect', item);
-  }
+  //   }
+  //   this.user.getuserDeatilsUser(data).subscribe((res) => {
+  //     this.rowData5 = res.response;
+  //   });
+  //   // console.log('rolefilter', this.userTypes)
+  //   // console.log('onItemSelect', item);
+  // }
   applyFilter(event: Event) {
 
 
@@ -612,15 +632,10 @@ export class OrderListComponent implements OnInit {
     // statuss: this.statusTypes,
     // search: this.searchText,
     "StatusId":[],
-
     "GeographyId":[],
-
-    "DealerId":[],
-
+   "DealerId" : [],
     "OrderDate":"",
-
-    "Search":""
-
+    "Search": this.searchText
   }
   this.user.getorderDeatilslist(data).subscribe((res) => {
     this.rowDatalist = res.response;
@@ -634,20 +649,6 @@ orderUpload(){
 selectdays(){
   this.dialog.open(CustomDatePopupComponent,{panelClass:'custmdays'})
   }
-  orderItemSelect(item: any){
-    const data = {
-      // "StatusId":[],
-      // "GeographyId":[],
-      "DealerId":[],
-      // "OrderDate":"",
-      "Search":"",
-      dealerss: this.DealerId
-    }
-    this.user.getorderDeatilslist(data).subscribe((res) => {
-      this.rowDatalist = res.response;
-      this.dealerlist = this.DealerId
-    });
-  }
   selectedDateRange = {
     startDate: '11/11/2022',
     endDate: '11/15/2022',
@@ -657,6 +658,232 @@ selectdays(){
     this.selectedDateRange = eventChange.selectedDate;
     console.log(this.selectedDateRange);
   }
+  dealerOrder(){
+    this.user.dealerDropdownOrderlist().subscribe((res: any) => {
+        let localdata = res.response;
+        this.dealerlist = localdata.map((data: { customerId: any; customerName: any; }) => {
+          return { customerId: data.customerId, customerName  : data.customerName };
+        });
+        this.dealerlist.push()
+        this.dealerlist.forEach(element => {
+          return this.dealerAllarray.push(element.customerId);
+        })       
+        console.log('dealerAllarray',this.dealerAllarray)                                                    
+      });
+      this.dropdownSettings = {
+        singleSelection: false,
+        idField: 'customerId',
+        textField: 'customerName',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        itemsShowLimit: 2,
+        allowSearchFilter: this.StatusFilter
+      };
+      this.selectedStatus = [];
+  }
+  DealerorderSelect(item: any){
+    this.dealerss.push(item.customerId);
+    const data = {
+      // "StatusId":[],
+      // "GeographyId":[],
+      DealerId : this.dealerss,
+      "Search":"",
+    }
+    this.user.getorderDeatilslist(data).subscribe((res) => {
+      this.rowDatalist = res.response;
+    });
+  }
+  DealerDeselect(item:any){
+    console.log(item)
+    this.dealerss.forEach((element, index) => {
+      if (element == item.customerId) this.dealerss.splice(index, 1);
+    });
+    const data = {
+      // "StatusId":[],
+      // "GeographyId":[],
+      DealerId : this.dealerss,
+      // "Search":"",
+    }
+    this.user.getorderDeatilslist(data).subscribe((res) => {
+      this.rowDatalist = res.response;
+    });
+  }
+  DealerDeselectAll(item:any){
+    this.dealerss = [];
+    const data = {
+      // "StatusId":[],
+      // "GeographyId":[],
+      DealerId : this.dealerss,
+      "Search":"",
+    }
+    this.user.getorderDeatilslist(data).subscribe((res) => {
+      this.rowDatalist = res.response;
+    });
+  }
+  DealerorderSelectAll(item:any){
+    this.dealerss = this.dealerAllarray;
+    const data = {
+      // "StatusId":[],
+      // "GeographyId":[],
+      DealerId : this.dealerss,
+      "Search":"",
+    }
+    this.user.getorderDeatilslist(data).subscribe((res) => {
+      this.rowDatalist = res.response;
+    });
+  }
+  geogrphyOrder(){
+    this.user.GeographyDropdownOrderlist().subscribe((res: any) => {
+      let localdata = res.response;
+      this.geogropdownlist = localdata.map((data: { geographyId: any; geographyName: any; }) => {
+        return { geographyId: data.geographyId, geographyName: data.geographyName };
+      });
 
+      this.geogropdownlist.push()
+      this.geogropdownlist.forEach(element => {
+        return this.geoAllarray.push(element.geographyId);
+      })
+      console.log('buleditGeo', this.geoAllarray)
+      this.dropdownSettings1 = {
+        singleSelection: false,
+        idField: 'geographyId',
+        textField: 'geographyName',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        itemsShowLimit: 2,
+        allowSearchFilter: true
+      };
+      this.selectedItems = [];
+    });
+  }
+  geographyselect(item:any){
+    this.geogragphies.push(item.geographyId);
+    const data = {
+      // "StatusId":[],
+      // "GeographyId":[],
+      GeographyId : this.geogragphies,
+      "Search":"",
+    }
+    this.user.getorderDeatilslist(data).subscribe((res) => {
+      this.rowDatalist = res.response;
+    });
+  }
+  geographyDeselect(item: any) {
+    this.geogragphies.forEach((element, index) => {
+      if (element == item.geographyId) this.geogragphies.splice(index, 1);
+    });
+    const data = {
+      geographys:this.geogragphies,
+    }
+    this.user.getorderDeatilslist(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
+  }
+  geographyDeselectAll(item: any) {
+    this.geogragphies=[];
+    const data = {
+      geographys:this.geogragphies,
+    }
+    this.user.getorderDeatilslist(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
+  }
+  geographyselectAll(item: any) {
+    this.geogragphies = this.geoAllarray;
+    const data = {
+      geographys:this.geogragphies,
+    }
+    this.user.getorderDeatilslist(data).subscribe((res) => {
+      this.rowData5 = res.response;  
+    });
+
+  }
+  statusItems() {
+    this.user.statusDropdownOrderlist().subscribe((res: any) => {
+      let localdata = res.response;
+      this.statusDropList = localdata.map((data: { statusId: any; statusName: any; }) => {
+        return { statusId: data.statusId, statusname: data.statusName };
+      });
+      // if (!this.statusDropList?.length) {
+      //   this.statusDropList = localdata.map((status: { statusname: any; }) => {
+      //     return status.statusname;
+      //   });
+      // }
+      this.statusDropList.push()
+      this.statusDropList.forEach(element => {
+        return this.statusAllarray.push(element.statusId);
+      });
+      console.log('buleditGeo', this.statusAllarray)
+      this.dropdownSettings2 = {
+        singleSelection: false,
+        idField: 'statusId',
+        textField: 'statusname',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        itemsShowLimit: 2,
+        allowSearchFilter: true
+      };
+      this.selectedItems = [];
+    });
+  }
+  statusdropdownselect(item:any){
+    this.statusList.push(item.statusId);
+    const data = {
+      // "StatusId":[],
+      // "GeographyId":[],
+      StatusId : this.statusList,
+      // "Search":"",
+    }
+    this.user.getorderDeatilslist(data).subscribe((res) => {
+      this.rowDatalist = res.response;
+    });
+  }
+  statusDeselect(item:any){
+    this.statusList.forEach((element, index) => {
+      if (element == item.statusId) this.statusList.splice(index, 1);
+    });
+    const data = {
+      StatusId : this.statusList,
+    }
+    this.user.getorderDeatilslist(data).subscribe((res) => {
+      this.rowDatalist = res.response;
+    });
+  }
+  statusDeselectAll(item:any){
+    this.statusList = [];
+    const data = {
+      StatusId : this.statusList,
+    }
+    this.user.getorderDeatilslist(data).subscribe((res) => {
+      this.rowDatalist = res.response;
+    });
+  }
+  statusselectAll(item:any){
+    this.statusList = this.statusAllarray
+    const data = {
+      StatusId : this.statusList,
+    }
+    this.user.getorderDeatilslist(data).subscribe((res) => {
+      this.rowDatalist = res.response;
+    });
+  }
+  onSearchChange($event: any, anything?: any) {
+    const { target } = $event;
+    this.searchText = target.value;
+    const data = {
+      GeographyId:this.geogragphies,
+      StatusId:this.statusList,
+      DealerId:this.dealerss,
+      Search:this.searchText
+  //   "StatusId":[],
+  //   "GeographyId":[],
+  //  "DealerId" : [],
+  //   "OrderDate":"",
+  //   "Search":""
+    }
+    this.user.getorderDeatilslist(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
+  }
 }
 

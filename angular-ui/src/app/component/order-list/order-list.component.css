@@ -157,15 +157,20 @@ input {
     background: #000000 !important;
 }
 
-::ng-deep.roless .multiselect-dropdown .dropdown-btn .selected-item {
+/* ::ng-deep.Dealers .multiselect-dropdown .dropdown-btn .selected-item {
     background: #D23F00 !important;
     font-size: 12px;
 }
-
-::ng-deep .roless .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+::ng-deep .Dealers .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
     background: #D23F00 !important;
 }
-
+::ng-deep.Geography .multiselect-dropdown .dropdown-btn .selected-item {
+    background: #D23F00 !important;
+    font-size: 12px;
+}
+::ng-deep .Geography .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+    background: #D23F00 !important;
+} */
 ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
     border: 2px solid #000000 !important;
 }

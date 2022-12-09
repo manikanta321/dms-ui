@@ -89,7 +89,18 @@ GetEditUSer(userID:any){
      
     return this.http.post<any>(this.userurl + 'OrdersApi/GetAllOrders', data);
    }
-
+   public dealerDropdownOrderlist(){
+    return this.http.get<any>(`${this.userurl}DealerApi/GetAssoDealerdrop`);
+  }
+  // http://13.126.235.145:801/api/DealerApi/GetAssoDealerdrop
+  public GeographyDropdownOrderlist(){
+    return this.http.get<any>(`${this.userurl}OrdersApi/GetordergeoDropdown`);
+  }
+  // http://13.126.235.145:801/api/OrdersApi/GetordergeoDropdown
+  public statusDropdownOrderlist(){
+    return this.http.get<any>(`${this.userurl}OrdersApi/GetOredrStatusDropdown`);
+  } 
+  // http://13.126.235.145:801/api/OrdersApi/GetOredrStatusDropdown
 public getroleDetails(){
   return this.http.get<any>(this.userurl + 'UserMgmtApi/GetUserTypes');
 
@@ -167,5 +178,4 @@ public activateDeactivateDealers(data){
 
   return this.http.post<any>(this.userurl + 'DealerApi/ActiveDeactiveDealer', data);
 }
-
 }

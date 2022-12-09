@@ -7,16 +7,17 @@
       <div class="head-t">
         <h3 class="addU font">{{actineLabel}}</h3>
         <br>
-     <img src="assets/img/arrow-left-circle-fill.svg" [ngClass]="{'red':!firstFormGroup ,'black':firstFormGroup}" (click)="Backbutton()"   class="leftarrow" alt="left-arr-btn">
-
-       
-
-
-        <img src="assets/img/arrow-right-circle-fill.svg"  (click)="nextbutton()"   class="rightarrow" alt="right-arr-btn"> 
+        <img src="assets/img/arrow-left-circle-fill.svg" [ngClass]="{'red':!firstFormGroup ,'black':firstFormGroup}"
+          (click)="Backbutton()" class="leftarrow" alt="left-arr-btn">
 
 
 
-       
+
+        <img src="assets/img/arrow-right-circle-fill.svg" (click)="nextbutton()" class="rightarrow" alt="right-arr-btn">
+
+
+
+
         <mat-stepper labelPosition="bottom" #stepper>
           <!-- basic information -->
           <mat-step [stepControl]="firstFormGroup">
@@ -125,10 +126,11 @@
 
                     <a class="close" (click)="closePopup()">&times;</a>
                     <div class="content">
-                      <mat-chip-list selectable multiple [(ngModel)]="selctedIdentifier">
-                        <mat-chip  [value]="data" #identifierId="matChip" *ngFor="let data of selectId" [selectable]="selectable"
-                        [selected]="isSelectedMaterialIdentifier(data)"
-                        (focus)="selectMaterialIdentifier(data)" class="cold">
+                      <mat-chip-list selectable multiple>
+                        <!-- [(ngModel)]="selctedIdentifier" -->
+                        <mat-chip [value]="data" #identifierId="matChip" *ngFor="let data of selectId"
+                          [selected]="isSelectedMaterialIdentifier(data)" (focus)="selectMaterialIdentifier(data)"
+                          class="cold">
                           <mat-icon *ngIf="identifierId.selected">check</mat-icon>
                           {{data.materialCustomName}}
                         </mat-chip>
@@ -279,32 +281,34 @@
                   <!-- <select name="" id="">
                     <option multiple selected value="">{{businessSelctedIdentifier}}</option>
                   </select> -->
-            
-                  <div class="overlay" *ngIf="productIdentifierPopup">
-        
-                    <div class="popup" style="width: 700px; top: 0%;">
-                      <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
-                      <div class="col-12">
-                        <div class="row">
-                          <div class="col-4">
-                            <h2>Business<span>*</span></h2>
-                            <div class="content">
-                              <mat-chip-list selectable multiple>
-                                <mat-chip #bd="matChip" [value]="data" *ngFor="let data of businessData" [selectable]="selectable"
-                                [selected]="isSelectedBusiness(data)"
-                                (focus)="selectBusiness(data)" 
-                                  class="cold">
-                                  <mat-icon *ngIf="bd.selected">check</mat-icon>
-                                  {{data.productCustomName}}
-                                </mat-chip>
-                              </mat-chip-list>
-                            </div>
+                </div>
+
+                <div class="overlay" *ngIf="productIdentifierPopup">
+
+                  <div class="popup" style="width: 700px; top: 0%;">
+                    <!-- <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon> -->
+                    <div class="col-12">
+                      <div class="row">
+                        <div class="col-4">
+                          <h2>Business<span>*</span></h2>
+                          <a class="close" (click)="closePopup()">&times;</a>
+                          <div class="content">
+                            <mat-chip-list  multiple>
+                              <!-- [(ngModel)]="bussinessIdentifiers" -->
+                              <mat-chip #businessdata="matChip" [value]="data"
+                                *ngFor="let data of businessData; let i = index" [selected]="isSelectedBusiness(data)"
+                                (focus)="selectBusinessProduct(data,i)" class="cold">
+                                <mat-icon *ngIf="businessdata.selected">check</mat-icon>
+                                {{data.productCustomName}}
+                              </mat-chip>
+                            </mat-chip-list>
                           </div>
-                          <div class="col-4">
-                            <h2>Product<span>*</span></h2>
-                            <div class="content">
-                              <mat-chip-list selectable multiple>
-                                <mat-chip #pi="matChip" [value]="data" *ngFor="let data of productData" [selectable]="selectable"
+                        </div>
+                        <div class="col-4">
+                          <h2>Product<span>*</span></h2>
+                          <div class="content">
+                              <mat-chip-list  multiple>
+                                <mat-chip #pi="matChip" [value]="data" *ngFor="let data of productData"
                                 [selected]="isSelectedProductIdentifier(data)"
                                 (focus)="selectProductIdentifier(data)" 
                                   class="cold">
@@ -313,12 +317,12 @@
                                 </mat-chip>
                               </mat-chip-list>
                             </div>
-                          </div>
-                          <div class="col-4">
-                            <h2>Product Setting<span>*</span></h2>
-                            <div class="content">
-                              <mat-chip-list selectable multiple>
-                                <mat-chip #ps="matChip" *ngFor="let data of productSettingData"[selectable]="selectable"
+                        </div>
+                        <div class="col-4">
+                          <h2>Product Setting<span>*</span></h2>
+                          <div class="content">
+                            <mat-chip-list  multiple>
+                                <mat-chip #ps="matChip" *ngFor="let data of productSettingData"
                                 [selected]="isSelectedProductIdentifierSetting(data)"
                                 (focus)="selectProductIdentifierSetting(data)" 
                                   class="cold">
@@ -326,13 +330,13 @@
                                   {{data.productCustomName}}
                                 </mat-chip>
                               </mat-chip-list>
-                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
 

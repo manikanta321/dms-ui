@@ -155,9 +155,9 @@ export class MaterialAddEditpopupComponent {
   productIdentifierPopup: boolean = false;
   selectable: boolean = true;
   removable: boolean = true;
-  bussinessIdentifiers: any = [];
-  ProductIdentifiersId: any = [];
-  ProductIdentifiersSettingId: any = [];
+  bussinessIdentifiers: any;
+  ProductIdentifiersId: any;
+  ProductIdentifiersSettingId: any;
   seletedItem: any = [];
   colorsList = [
     { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
@@ -221,7 +221,7 @@ export class MaterialAddEditpopupComponent {
 
   ngOnInit(): void {
     this.selectProduct();
-    this.customIdentifier()
+    // this.customIdentifier()
     const user = localStorage.getItem("logInId");
     
     this.UserId = user
@@ -251,6 +251,9 @@ export class MaterialAddEditpopupComponent {
     this.typesData = [];
     this.baseUoMData = [];
     this.MaterialCustomIdentifiers = [];
+    this.bussinessIdentifiers = [];
+    this.ProductIdentifiersId = [];
+    this.ProductIdentifiersSettingId = [];
     this.selectedProductId = [];
     this.productGroupData = [];
     this.subproductGroupData = [];
@@ -415,6 +418,7 @@ export class MaterialAddEditpopupComponent {
 
   // productSKUGeographyId
   addMaterialProduct() {
+    this.selectedProductId = [...this.bussinessIdentifiers,...this.ProductIdentifiersSettingId,...this.ProductIdentifiersId]
     let selectedGeographies = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographySelected;
     let data2 = {
       DefalultgeoId: selectedGeographies,
@@ -453,14 +457,14 @@ export class MaterialAddEditpopupComponent {
 
     }
 
-    // console.log(data)
-    this.addMaterials.addMaterialIfProduct(data).subscribe((res) => {
-      console.log(res, "addmaterialProduct")
-    })
+    console.log(data)
+    // this.addMaterials.addMaterialIfProduct(data).subscribe((res) => {
+    //   console.log(res, "addmaterialProduct")
+    // })
 
-    this.addMaterials.defaultGeoIdProduct(data2).subscribe((res) => {
-      console.log(res, "defaultGeoID")
-    })
+    // this.addMaterials.defaultGeoIdProduct(data2).subscribe((res) => {
+    //   console.log(res, "defaultGeoID")
+    // })
   }
   addMaterialProductAfterEdit() {
 
@@ -1022,71 +1026,7 @@ export class MaterialAddEditpopupComponent {
     this.base64textString = reader.result.substr(reader.result.indexOf(',') + 1);
     console.log(this.base64textString, "base64")
   }
-  onSelectIdentifier(item: any) {
-    this.MaterialCustomIdentifiers.push(item.materilCustomIdentifierId)
-    console.log("Selecteed Identifier", this.MaterialCustomIdentifiers);
-  }
-  onDeSelectIdentifier(item: any) {
-    this.MaterialCustomIdentifiers.forEach((element, index) => {
-      if (element == item.materilCustomIdentifierId) this.MaterialCustomIdentifiers.splice(index, 1);
-
-    });
-    console.log("DeSelecteed Identifier", this.MaterialCustomIdentifiers);
-  }
-  onDSelectOrAllIdentifier(event) {
-    this.MaterialCustomIdentifiers = [];
-    console.log("Deselected DAta", this.MaterialCustomIdentifiers);
-  }
-  onSelectOrAllIdentifier() {
-    this.selectAllIdentifier = this.selectId.map((data: { materilCustomIdentifierId: any; materilCustomName: any; }) => {
-      return { materilCustomIdentifierId: data.materilCustomIdentifierId, materilCustomName: data.materilCustomName };
-    });
-
-    if (!this.selectAllIdentifier?.length) {
-      this.selectAllIdentifier = this.selectId.map((product: { designationName: any; }) => {
-        return product.designationName;
-      });
-    }
-    this.selectAllIdentifier.push()
-    this.selectAllIdentifier.forEach(element => {
-      return this.selectedIdentifierArray.push(element.materilCustomIdentifierId);
-
-    })
-    this.MaterialCustomIdentifiers = this.selectedIdentifierArray;
-    console.log("All Selected", this.MaterialCustomIdentifiers);
-  }
-  onSelectIdentifierProduct(item: any) {
-    this.selectedProductId.push(item.productCustomIdentifierId)
-    console.log("Selecteed Identifier", this.selectedProductId);
-  }
-  onDeSelectIdentifierProduct(item: any) {
-    this.selectedProductId.forEach((element, index) => {
-      if (element == item.productCustomIdentifierId) this.selectedProductId.splice(index, 1);
-    });
-    console.log("DeSelecteed Identifier", this.selectedProductId);
-  }
-  onDSelectOrAllIdentifierProduct(event) {
-    this.selectedProductId = [];
-    console.log("Deselected DAta", this.selectedProductId);
-  }
-  onSelectOrAllIdentifierProduct() {
-    this.selectAllIdentifierProduct = this.ProductId.map((data: { productCustomIdentifierId: any; productCustomName: any; }) => {
-      return { productCustomIdentifierId: data.productCustomIdentifierId, materilCustomName: data.productCustomName };
-    });
-
-    if (!this.selectAllIdentifierProduct?.length) {
-      this.selectAllIdentifierProduct = this.ProductId.map((product: { designationName: any; }) => {
-        return product.designationName;
-      });
-    }
-    this.selectAllIdentifierProduct.push()
-    this.selectAllIdentifierProduct.forEach(element => {
-      return this.selectedIdentifierProductArray.push(element.productCustomIdentifierId);
-
-    })
-    this.selectedProductId = this.selectedIdentifierProductArray;
-    console.log("All Selected", this.selectedProductId);
-  }
+  
   popup() {
     this.materialIdentifierPopup = true;
   }
@@ -1094,51 +1034,7 @@ export class MaterialAddEditpopupComponent {
     this.materialIdentifierPopup = false;
     this.productIdentifierPopup = false;
   }
-  // onSelect() {
-  //   this.selectedData = !this.selectedData;
-  //   alert(this.selectedData)
-  // }
-  //   toggleSelection(chip: MatChip) {
-  //     chip.toggleSelected();
-  //     console.log("ChipValue",chip.value);
-  //     this.selctedIdentifier.push(chip.value);
-  //     alert(this.selctedIdentifier);
-  //  }
-  //  toggleBusinessSelection(chip1: MatChip) {
-  //   chip1.toggleSelected();
-  //   this.businessSelctedIdentifier.push(chip1.value);
-  //   alert(this.businessSelctedIdentifier);
-  // }
-  // toggleProductSelection(chip2: MatChip) {
-  //   chip2.toggleSelected();
-  //   this.productSelctedIdentifier.push(chip2.value);
-  //   alert(this.productSelctedIdentifier);
-  // }
-  // toggleProductSettingSelection(chip3: MatChip) {
-  //   chip3.toggleSelected();
-  //   this.productSettingIdentifier.push(chip3.value);
-  //   alert(this.productSettingIdentifier);
-  // }
-  // writeValue(value: string[]): void {
-  //   // When form value set when chips list initialized
-  //   if (this.chipList && value) {
-  //     this.selectChips(value);
-  //     alert(this.value);
-  //   } else if (value) {
-  //     // When chips not initialized
-  //     this.value = value;
-  //   }
-  // }
-
-  // selectChips(value: string[]) {
-  //   this.chipList.chips.forEach((chip) => chip.deselect());
-
-  //   const chipsToSelect = this.chipList.chips.filter((c) =>
-  //     value.includes(c.value)
-  //   );
-
-  //   chipsToSelect.forEach((chip) => chip.select());
-  // }
+  
   productIdentifier() {
     this.productIdentifierPopup = true;
     this.customIdentifier();
@@ -1149,8 +1045,8 @@ export class MaterialAddEditpopupComponent {
   }
 
   selectMaterialIdentifier(materialIdentifier: any): void {
-    let index = this.selctedIdentifier.indexOf(materialIdentifier);
-
+    // let index = this.selctedIdentifier.indexOf(materialIdentifier);
+    let index = this.selctedIdentifier.findIndex(x=>x.materilCustomIdentifierId==materialIdentifier.materilCustomIdentifierId)
     if (index >= 0) {
       this.selctedIdentifier.splice(index, 1);
       const MaterialCustomIdentifiersNames = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materialCustomName);
@@ -1170,67 +1066,72 @@ export class MaterialAddEditpopupComponent {
     return index >= 0;
   }
 
-  selectBusiness(businessIdentifier: any): void {
-    let index = this.businessSelctedIdentifier.indexOf(businessIdentifier);
+  selectBusinessProduct(businessIdentifier: any,temp): void {
+    let index = this.businessSelctedIdentifier.findIndex(x=>x.productCustomIdentifierId==businessIdentifier.productCustomIdentifierId);
 
     if (index >= 0) {
       this.businessSelctedIdentifier.splice(index, 1);
-      const businessIdentifiersNames = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomName);
+      // const businessIdentifiersNames = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomName);
       this.bussinessIdentifiers = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomIdentifierId);
       console.log("bussinessIdentifiers", this.bussinessIdentifiers);
-      console.log("businessIdentifiersNames", businessIdentifiersNames);
+      // console.log("businessIdentifiersNames", businessIdentifiersNames);
     } else {
       this.businessSelctedIdentifier.push(businessIdentifier);
-      const businessIdentifiersNames = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomName);
+      // const businessIdentifiersNames = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomName);
       this.bussinessIdentifiers = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomIdentifierId);
-      console.log("businessIdentifiersNames", businessIdentifiersNames);
+      // console.log("businessIdentifiersNames", businessIdentifiersNames);
       console.log("bussinessIdentifiers", this.bussinessIdentifiers);
     }
   }
+
   isSelectedProductIdentifier(IdentifierProduct: any): boolean {
     const index = this.productSelctedIdentifier.indexOf(IdentifierProduct);
     return index >= 0;
   }
 
   selectProductIdentifier(IdentifierProduct: any): void {
-    let index = this.productSelctedIdentifier.indexOf(IdentifierProduct);
+    let index = this.businessSelctedIdentifier.findIndex(x=>x.productCustomIdentifierId==IdentifierProduct.productCustomIdentifierId)
 
     if (index >= 0) {
       this.productSelctedIdentifier.splice(index, 1);
-      const ProductIdentifiersNames = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomName);
+      // const ProductIdentifiersNames = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomName);
       this.ProductIdentifiersId = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomIdentifierId);
       console.log("ProductIdentifiersId", this.ProductIdentifiersId);
-      console.log("ProductIdentifiersNames", ProductIdentifiersNames);
+      // console.log("ProductIdentifiersNames", ProductIdentifiersNames);
     } else {
       this.productSelctedIdentifier.push(IdentifierProduct);
-      const ProductIdentifiersNames = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomName);
+      // const ProductIdentifiersNames = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomName);
       this.ProductIdentifiersId = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomIdentifierId);
-      console.log("ProductIdentifiersNames", ProductIdentifiersNames);
+      // console.log("ProductIdentifiersNames", ProductIdentifiersNames);
       console.log("ProductIdentifiersId", this.ProductIdentifiersId);
     }
   }
+
+
   isSelectedProductIdentifierSetting(IdentifierSetting: any): boolean {
     const index = this.productSettingIdentifier.indexOf(IdentifierSetting);
     return index >= 0;
   }
 
   selectProductIdentifierSetting(IdentifierSetting: any): void {
-    let index = this.productSettingIdentifier.indexOf(IdentifierSetting);
+    let index = this.productSettingIdentifier.findIndex(x=>x.productCustomIdentifierId==IdentifierSetting.productCustomIdentifierId);
 
     if (index >= 0) {
       this.productSettingIdentifier.splice(index, 1);
-      const ProductIdentifiersSettingsNames = this.productSettingIdentifier.map((IdentifierSetting) => IdentifierSetting.productCustomName);
+      // const ProductIdentifiersSettingsNames = this.productSettingIdentifier.map((IdentifierSetting) => IdentifierSetting.productCustomName);
       this.ProductIdentifiersSettingId = this.productSettingIdentifier.map((IdentifierSetting) => IdentifierSetting.productCustomIdentifierId);
       console.log("ProductSettingIdentifiersId", this.ProductIdentifiersSettingId);
-      console.log("ProductSettingIdentifiersNames", ProductIdentifiersSettingsNames);
+      // console.log("ProductSettingIdentifiersNames", ProductIdentifiersSettingsNames);
     } else {
       this.productSettingIdentifier.push(IdentifierSetting);
-      const ProductIdentifiersSettingsNames = this.productSettingIdentifier.map((IdentifierSetting) => IdentifierSetting.productCustomName);
+      // const ProductIdentifiersSettingsNames = this.productSettingIdentifier.map((IdentifierSetting) => IdentifierSetting.productCustomName);
       this.ProductIdentifiersSettingId = this.productSettingIdentifier.map((IdentifierSetting) => IdentifierSetting.productCustomIdentifierId);
-      console.log("ProductSettingIdentifiersNames", ProductIdentifiersSettingsNames);
+      // console.log("ProductSettingIdentifiersNames", ProductIdentifiersSettingsNames);
       console.log("PProductSettingIdentifiersId", this.ProductIdentifiersSettingId);
     }
   }
+  // this.bussinessIdentifiers,this.ProductIdentifiersSettingId,this.ProductIdentifiersId
+ 
 
   goForward(stepper: MatStepper) {
     stepper.next();

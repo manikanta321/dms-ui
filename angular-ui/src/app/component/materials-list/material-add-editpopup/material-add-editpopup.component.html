@@ -291,7 +291,7 @@
                       <div class="row">
                         <div class="col-4">
                           <h2>Business<span>*</span></h2>
-                          <a class="close" (click)="closePopup()">&times;</a>
+                         
                           <div class="content">
                             <mat-chip-list  multiple>
                               <!-- [(ngModel)]="bussinessIdentifiers" -->
@@ -306,6 +306,7 @@
                         </div>
                         <div class="col-4">
                           <h2>Product<span>*</span></h2>
+                          
                           <div class="content">
                               <mat-chip-list  multiple>
                                 <mat-chip #pi="matChip" [value]="data" *ngFor="let data of productData"
@@ -318,7 +319,9 @@
                               </mat-chip-list>
                             </div>
                         </div>
+                        
                         <div class="col-4">
+                          <a class="close-icon" (click)="closePopup()">&times;</a>
                           <h2>Product Setting<span>*</span></h2>
                           <div class="content">
                             <mat-chip-list  multiple>

@@ -222,6 +222,11 @@ span {
   font-size: 15px;
   font-weight: 600;
 }
+.popup .close-icon:hover {
+  color: #06D85F;
+  cursor: pointer;
+}
+
 
 label {
    font-size: 14px;

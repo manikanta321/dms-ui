@@ -9,15 +9,7 @@
         <br>
         <img src="assets/img/arrow-left-circle-fill.svg" [ngClass]="{'red':!firstFormGroup ,'black':firstFormGroup}"
           (click)="Backbutton()" class="leftarrow" alt="left-arr-btn">
-
-
-
-
         <img src="assets/img/arrow-right-circle-fill.svg" (click)="nextbutton()" class="rightarrow" alt="right-arr-btn">
-
-
-
-
         <mat-stepper labelPosition="bottom" #stepper>
           <!-- basic information -->
           <mat-step [stepControl]="firstFormGroup">
@@ -51,17 +43,17 @@
                 <div class="">
                   <label>Sub-Category<span>*</span></label>
                   <div class="subcategorydrp">
-                    <ng-select [items]="sub_category" id="nameSubCat" name="nameSubCat"  required [virtualScroll]="true" bindLabel="subCatName"
-                      bindValue="subCatId" [searchable]="true" [clearable]="false"
+                    <ng-select [items]="sub_category" id="nameSubCat" name="nameSubCat" required [virtualScroll]="true"
+                      bindLabel="subCatName" bindValue="subCatId" [searchable]="true" [clearable]="false"
                       placeholder="search & select sub-category" [(ngModel)]="subCategoryData"
                       (change)="onSubCategorySelect($event)" #nameSubCat="ngModel">
                     </ng-select>
                     <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;"
-                    *ngIf="nameSubCat.invalid && (nameSubCat.dirty || nameSubCat.touched)" class="alert">
-                    <span style="color:red;position: relative;" *ngIf="nameSubCat.errors?.['required']">
-                      *Sub-Category is required.
-                    </span>
-                  </p>
+                      *ngIf="nameSubCat.invalid && (nameSubCat.dirty || nameSubCat.touched)" class="alert">
+                      <span style="color:red;position: relative;" *ngIf="nameSubCat.errors?.['required']">
+                        *Sub-Category is required.
+                      </span>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -70,37 +62,24 @@
                 <div class="type">
                   <label>Type<span>*</span></label>
                   <div class="typedrp">
-                    <ng-select [items]="typeI"  id="nameType" name="nameType"  required [virtualScroll]="true" bindLabel="typeName" bindValue="typeId"
-                      [searchable]="true" [clearable]="false" placeholder="Search & select type" [(ngModel)]="typesData"
-                      (change)="onTypeSelect($event)" #nameType="ngModel">
+                    <ng-select [items]="typeI" id="nameType" name="nameType" required [virtualScroll]="true"
+                      bindLabel="typeName" bindValue="typeId" [searchable]="true" [clearable]="false"
+                      placeholder="Search & select type" [(ngModel)]="typesData" (change)="onTypeSelect($event)"
+                      #nameType="ngModel">
                     </ng-select>
                     <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
-                    *ngIf="nameType.invalid && (nameType.dirty || nameType.touched)" class="alert">
-                    <span style="color:red;position: relative;" *ngIf="nameType.errors?.['required']">
-                      *Type is required.
-                    </span>
-                  </p>
+                      *ngIf="nameType.invalid && (nameType.dirty || nameType.touched)" class="alert">
+                      <span style="color:red;position: relative;" *ngIf="nameType.errors?.['required']">
+                        *Type is required.
+                      </span>
+                    </p>
                   </div>
                 </div>
               </div>
-              
-
-
               <div class="col-md-8 nameplaceholed">
                 <div class="materialname">
                   <label>Name <span>*</span></label>
                 </div>
-                <!-- <input type="text" (keyup)="onKey($event)" placeholder="Enter the name of material"
-                  class="form-control container materialname-placeholder" id="materialName" name="materialName"
-                  [(ngModel)]="materialName" >  
-                <p style="margin-bottom:-22px;padding: 0px;"
-                  *ngIf="materialName.invalid && (materialName.dirty || materialName.touched)" class="alert">
-
-                  <span style="color:red;position: relative;" *ngIf="materialName.errors?.['required']">
-                    *Material Name is required.
-                  </span>
-                </p> -->
-
                 <input type="text" id="matName" name="matName" (keyup)="onKey($event)"
                   class="form-control container materialname-placeholder" required
                   placeholder="Enter the name of material" [(ngModel)]="materialName" #matName="ngModel">
@@ -117,9 +96,10 @@
                   <label>UOM <span>*</span></label>
                 </div>
                 <div class="uomdrp">
-                  <ng-select [items]="rowData5" id="nameUOM" name="nameUOM"    required [virtualScroll]="true" bindLabel="uoMShortName" bindValue="uoMId"
-                    [searchable]="true" [clearable]="false" placeholder="Search & select measuring unit"
-                    [(ngModel)]="baseUoMData" (change)="onUomSelect($event)" #nameUOM="ngModel"> 
+                  <ng-select [items]="rowData5" id="nameUOM" name="nameUOM" required [virtualScroll]="true"
+                    bindLabel="uoMShortName" bindValue="uoMId" [searchable]="true" [clearable]="false"
+                    placeholder="Search & select measuring unit" [(ngModel)]="baseUoMData"
+                    (change)="onUomSelect($event)" #nameUOM="ngModel">
                   </ng-select>
                   <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
                     *ngIf="nameUOM.invalid && (nameUOM.dirty || nameUOM.touched)" class="alert">
@@ -129,49 +109,31 @@
                   </p>
                 </div>
               </div>
-                         <div class="col-md-4">
+              <div class="col-md-4">
                 <div class="description">
                   <label>Description <span>*</span></label>
                 </div>
-                <!-- <input (keyup)="onKeyDesc($event)" placeholder="Describe the material" 
-                    class="materialDesc"> -->
-                <!-- <textarea  placeholder="Describe the material" (keyup)="onKeyDesc($event)" name="" id="" class="materialDesc">
-
-                  </textarea> -->
-                <textarea id="nameDescp" name="nameDescp"  placeholder="Describe the material" (keyup)="onKeyDesc($event)"
-                  class="materialDesc"  [(ngModel)]="stockItemDesc" #nameDescp="ngModel"></textarea>
-                  <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
+                <textarea id="nameDescp" name="nameDescp" placeholder="Describe the material"
+                  (keyup)="onKeyDesc($event)" class="materialDesc" [(ngModel)]="stockItemDesc"
+                  #nameDescp="ngModel"></textarea>
+                <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
                   *ngIf="nameDescp.invalid && (nameDescp.dirty || nameDescp.touched)" class="alert">
                   <span style="color:red;position: relative;" *ngIf="nameDescp.errors?.['required']">
                     *Description is required.
                   </span>
                 </p>
-                  <!-- <input type="text" id="matDesc" name="matDesc" (keyup)="onKeyDesc($event)"
-                  class="materialDesc" required
-                  placeholder="Describe the material" [(ngModel)]="stockItemDesc" #matDesc="ngModel">
-                <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
-                  *ngIf="matDesc.invalid && (matDesc.dirty || matDesc.touched)" class="alert">
-                  <span style="color:red;position: relative;" *ngIf="matDesc.errors?.['required']">
-                    *Description is required.
-                  </span>
-                </p> -->
               </div>
               <div class="col-md-4">
                 <div class="imageofm">
                   <label>Image of Material <span>*</span></label>
                 </div>
-                <!-- <div placeholder="" #input class="form-control container imagePl">
-                    <img src="../../../../assets/img/down13.png" class="add-img" alt="add-image=btn" width="60px"
-                      height="60px">
-                  </div> -->
-                <label class="form-control container imagePl">
-
+                <label class="form-control container imagePl" *ngIf="Imgpreview">
                   <input type="file" id="file" style="display:none" (change)="onFileChanged($event)">
-                  <img src='data:image/jpeg;base64,{{base64textString}}' >
-                  <div>
-                    <img src="../../../../assets/img/add-image-icon.png" class="add-img" alt="add-image=btn">
-                  </div>
-
+                  <img src='data:image/jpeg;base64,{{base64textString}}' class="add-img" alt="add-image=btn">
+                </label>
+                <label class="form-control container imagePl" *ngIf="!Imgpreview">
+                  <input type="file" id="file" style="display:none" (change)="onFileChanged($event)">
+                  <img src="../../../../assets/img/add-image-icon.png" class="add-img" alt="add-image=btn">
                 </label>
               </div>
               <div class="col-md-4">
@@ -205,12 +167,9 @@
                 <div class="expiryperiod">
                   <label> Expiry Period (in months)<span>*</span></label>
                 </div>
-                <!-- <input (keyup)="onKeyExpry($event)" matInput placeholder="NA" #input
-                  class="form-control container na-placeholder" [(ngModel)]="expiryDate" id="expiryDate"
-                  name="expiryDate" > -->
-                  <input type="text" id="matExpiry" name="matExpiry" (keyup)="onKeyExpry($event)"
-                  class="form-control container na-placeholder" required
-                  placeholder="NA" [(ngModel)]="stockItemDesc" #matExpiry="ngModel">
+                <input type="text" id="matExpiry" name="matExpiry" (keyup)="onKeyExpry($event)"
+                  class="form-control container na-placeholder" required placeholder="NA" [(ngModel)]="stockItemDesc"
+                  #matExpiry="ngModel">
                 <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
                   *ngIf="matExpiry.invalid && (matExpiry.dirty || matExpiry.touched)" class="alert">
                   <span style="color:red;position: relative;" *ngIf="matExpiry.errors?.['required']">
@@ -246,9 +205,6 @@
           </mat-step>
           <!-- product information -->
           <mat-step [stepControl]="secondFormGroup" *ngIf="!checked">
-
-
-
             <ng-template matStepLabel>Product Information</ng-template>
             <div class="row">
               <div class="col-md-6">
@@ -267,9 +223,10 @@
                 <div class="brandname">
                   <label>Brand Name<span>*</span></label>
                 </div>
-                <input required (keyup)="onKeyBrand($event)" id="bName" name="bName" matInput placeholder="Enter the name of brand" #input
-                  class="form-control container brand-name" [(ngModel)]="BrandName" #bName="ngModel">
-                  <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
+                <input required (keyup)="onKeyBrand($event)" id="bName" name="bName" matInput
+                  placeholder="Enter the name of brand" #input class="form-control container brand-name"
+                  [(ngModel)]="BrandName" #bName="ngModel">
+                <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
                   *ngIf="bName.invalid && (bName.dirty || bName.touched)" class="alert">
                   <span style="color:red;position: relative;" *ngIf="bName.errors?.['required']">
                     *Brand Name is required.
@@ -280,9 +237,10 @@
                 <div class="globalcode">
                   <label>Global Code<span>*</span></label>
                 </div>
-                <input required (keyup)="onKeyGloabal($event)"   id="globalCode" name="globalCode"    matInput placeholder="Enter product global code" #input
-                  class="form-control container global-codeplaceholder" [(ngModel)]="gloabKey" #globalCode="ngModel">
-                  <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
+                <input required (keyup)="onKeyGloabal($event)" id="globalCode" name="globalCode" matInput
+                  placeholder="Enter product global code" #input class="form-control container global-codeplaceholder"
+                  [(ngModel)]="gloabKey" #globalCode="ngModel">
+                <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
                   *ngIf="globalCode.invalid && (globalCode.dirty || globalCode.touched)" class="alert">
                   <span style="color:red;position: relative;" *ngIf="globalCode.errors?.['required']">
                     *Global Code is required.
@@ -293,9 +251,9 @@
                 <div class="sku">
                   <label>SKU<span>*</span></label>
                 </div>
-                <input required (keyup)="onKeySKU($event)"  id="skuName" name="skuName"   matInput placeholder="Enter SKU" #input
-                  class="form-control container sku-placeholder" [(ngModel)]="Sku" #skuName="ngModel">
-                  <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
+                <input required (keyup)="onKeySKU($event)" id="skuName" name="skuName" matInput placeholder="Enter SKU"
+                  #input class="form-control container sku-placeholder" [(ngModel)]="Sku" #skuName="ngModel">
+                <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
                   *ngIf="skuName.invalid && (skuName.dirty || skuName.touched)" class="alert">
                   <span style="color:red;position: relative;" *ngIf="skuName.errors?.['required']">
                     *SKU is required.
@@ -308,9 +266,10 @@
                   <label>Short Code<span>*</span></label>
                 </div>
 
-                <input required (keyup)="onKeyShortCode($event)" id="sCode" name="sCode"    matInput placeholder="Enter product short code" #input
-                  class="form-control container shortcode-placeholder" [(ngModel)]="shortCode" #sCode="ngModel">
-                  <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
+                <input required (keyup)="onKeyShortCode($event)" id="sCode" name="sCode" matInput
+                  placeholder="Enter product short code" #input class="form-control container shortcode-placeholder"
+                  [(ngModel)]="shortCode" #sCode="ngModel">
+                <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
                   *ngIf="sCode.invalid && (sCode.dirty || sCode.touched)" class="alert">
                   <span style="color:red;position: relative;" *ngIf="sCode.errors?.['required']">
                     *Short Code is required.
@@ -322,35 +281,32 @@
                   <label>Product Group<span>*</span></label>
                 </div>
                 <div class="productdrp productg-align arrowHide">
-                  <!-- <ng-select [items]="productList" id="productGr" name="productGr"   [virtualScroll]="true" bindLabel="productGroupName"
-                    bindValue="productGroupId" [searchable]="true" [clearable]="false"
+
+                  <ng-select [items]="productList" id="productGr" name="productGr" required [virtualScroll]="true"
+                    bindLabel="productGroupName" bindValue="productGroupId" [searchable]="true" [clearable]="false"
                     placeholder="Search & select group" [(ngModel)]="productGroupData"
                     (change)="onProductSelect($event)" #productGr="ngModel">
                   </ng-select>
-                   -->
-                  <ng-select [items]="productList" id="productGr" name="productGr"    required [virtualScroll]="true" bindLabel="productGroupName" bindValue="productGroupId"
-                  [searchable]="true" [clearable]="false" placeholder="Search & select group"
-                  [(ngModel)]="productGroupData" (change)="onProductSelect($event)" #productGr="ngModel"> 
-                </ng-select>
-                <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
-                  *ngIf="productGr.invalid && (productGr.dirty || productGr.touched)" class="alert">
-                  <span style="color:red;position: relative;" *ngIf="productGr.errors?.['required']">
-                    *Product Group is required.
-                  </span>
-                </p>
+                  <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
+                    *ngIf="productGr.invalid && (productGr.dirty || productGr.touched)" class="alert">
+                    <span style="color:red;position: relative;" *ngIf="productGr.errors?.['required']">
+                      *Product Group is required.
+                    </span>
+                  </p>
                   <img src="assets/img/plus.png" style="width: 22px;position: absolute;right: 20px;bottom: 5px;"
                     alt="plus-btn" (click)="addproduct()">
-                    
+
                 </div>
-               
+
               </div>
               <div class="col-md-6">
                 <div class="manualsort">
                   <label>Manual Sort Order<span>*</span></label>
                 </div>
-                <input required (keyup)="onKeySort($event)"  id="manualSorto" name="manualSorto"   matInput placeholder="Enter the sort order" #input
-                  class="form-control container sort-placeh" [(ngModel)]="Sort" #manualSorto="ngModel">
-                  <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
+                <input required (keyup)="onKeySort($event)" id="manualSorto" name="manualSorto" matInput
+                  placeholder="Enter the sort order" #input class="form-control container sort-placeh"
+                  [(ngModel)]="Sort" #manualSorto="ngModel">
+                <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
                   *ngIf="manualSorto.invalid && (manualSorto.dirty || manualSorto.touched)" class="alert">
                   <span style="color:red;position: relative;" *ngIf="manualSorto.errors?.['required']">
                     *Manual Sort order is required.
@@ -362,29 +318,25 @@
                   <label>Product Sub-group<span>*</span></label>
                 </div>
                 <div class="productsdrp productg-align arrowHide">
-                  <!-- <ng-select [items]="subProduct" id="proSub"   name="proSub"  [virtualScroll]="true" bindLabel="productGroupName"
-                    bindValue="productGroupId" [searchable]="true" [clearable]="false"
+                  <ng-select [items]="subProduct" id="proSub" name="proSub" required [virtualScroll]="true"
+                    bindLabel="productGroupName" bindValue="productGroupId" [searchable]="true" [clearable]="false"
                     placeholder="Search & select sub-group" [(ngModel)]="subproductGroupData"
                     (change)="onSubProductSelect($event)" #proSub="ngModel">
-                  </ng-select> -->
-                  <ng-select [items]="subProduct" id="proSub" name="proSub"    required [virtualScroll]="true" bindLabel="productGroupName" bindValue="productGroupId"
-                  [searchable]="true" [clearable]="false" placeholder="Search & select sub-group"
-                  [(ngModel)]="subproductGroupData" (change)="onSubProductSelect($event)" #proSub="ngModel"> 
-                </ng-select>
-                <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
-                  *ngIf="proSub.invalid && (proSub.dirty || proSub.touched)" class="alert">
-                  <span style="color:red;position: relative;" *ngIf="proSub.errors?.['required']">
-                    *Product SubGroup is required.
-                  </span>
-                </p>
-                 
+                  </ng-select>
+                  <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
+                    *ngIf="proSub.invalid && (proSub.dirty || proSub.touched)" class="alert">
+                    <span style="color:red;position: relative;" *ngIf="proSub.errors?.['required']">
+                      *Product SubGroup is required.
+                    </span>
+                  </p>
+
                 </div>
                 <div class="image">
                   <img src="assets/img/plus.png" class="imagePlus"
                     style="width: 22px;position: absolute;right: 20px;bottom: 5px;" alt="plus-btn"
                     (click)="addproductsubgroup()">
                 </div>
-               
+
               </div>
 
               <div class="col-md-6">
@@ -392,9 +344,10 @@
                   <label>Product Link<span>*</span></label>
                 </div>
 
-                <input required (keyup)="onKeyAddSP($event)"  id="productL"  name="productL" matInput placeholder="Paste the link" #input
-                  class="form-control container link-placeh" [(ngModel)]="AddSP" #productL="ngModel">
-                  <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
+                <input required (keyup)="onKeyAddSP($event)" id="productL" name="productL" matInput
+                  placeholder="Paste the link" #input class="form-control container link-placeh" [(ngModel)]="AddSP"
+                  #productL="ngModel">
+                <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
                   *ngIf="productL.invalid && (productL.dirty || productL.touched)" class="alert">
                   <span style="color:red;position: relative;" *ngIf="productL.errors?.['required']">
                     *Product link is required.
@@ -410,22 +363,19 @@
                   <ng-multiselect-dropdown name="ProductCustomIdentifierId" class="ProductCustomIdentifierId"
                     [placeholder]="'Select the identifiers'" [disabled]="disabled" [settings]="dropdownSettings3">
                   </ng-multiselect-dropdown>
-                  <!-- <select name="" id="">
-                    <option multiple selected value="">{{businessSelctedIdentifier}}</option>
-                  </select> -->
                 </div>
 
                 <div class="overlay" *ngIf="productIdentifierPopup">
 
-                  <div class="popup" style="width: 700px; top: 0%;">
+                  <div class="popup" style="width: 1053px; height: 300px; top: 220px;">
                     <!-- <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon> -->
                     <div class="col-12">
                       <div class="row">
                         <div class="col-4">
                           <h2>Business<span>*</span></h2>
-                         
+
                           <div class="content">
-                            <mat-chip-list  multiple>
+                            <mat-chip-list multiple>
                               <!-- [(ngModel)]="bussinessIdentifiers" -->
                               <mat-chip #businessdata="matChip" [value]="data"
                                 *ngFor="let data of businessData; let i = index" [selected]="isSelectedBusiness(data)"
@@ -436,35 +386,34 @@
                             </mat-chip-list>
                           </div>
                         </div>
+                        <div class="vr"  ></div>
                         <div class="col-4">
                           <h2>Product<span>*</span></h2>
-                          
+
                           <div class="content">
-                              <mat-chip-list  multiple>
-                                <mat-chip #pi="matChip" [value]="data" *ngFor="let data of productData"
-                                [selected]="isSelectedProductIdentifier(data)"
-                                (focus)="selectProductIdentifier(data)" 
-                                  class="cold">
-                                  <mat-icon *ngIf="pi.selected">check</mat-icon>
-                                  {{data.productCustomName}}
-                                </mat-chip>
-                              </mat-chip-list>
-                            </div>
+                            <mat-chip-list multiple>
+                              <mat-chip #pi="matChip" [value]="data" *ngFor="let data of productData"
+                                [selected]="isSelectedProductIdentifier(data)" (focus)="selectProductIdentifier(data)"
+                                class="cold">
+                                <mat-icon *ngIf="pi.selected">check</mat-icon>
+                                {{data.productCustomName}}
+                              </mat-chip>
+                            </mat-chip-list>
+                          </div>
                         </div>
-                        
+                        <div class="vr"  ></div>
                         <div class="col-4">
                           <a class="close-icon" (click)="closePopup()">&times;</a>
                           <h2>Product Setting<span>*</span></h2>
                           <div class="content">
-                            <mat-chip-list  multiple>
-                                <mat-chip #ps="matChip" *ngFor="let data of productSettingData"
+                            <mat-chip-list multiple>
+                              <mat-chip #ps="matChip" *ngFor="let data of productSettingData"
                                 [selected]="isSelectedProductIdentifierSetting(data)"
-                                (focus)="selectProductIdentifierSetting(data)" 
-                                  class="cold">
-                                  <mat-icon *ngIf="ps.selected">check</mat-icon>
-                                  {{data.productCustomName}}
-                                </mat-chip>
-                              </mat-chip-list>
+                                (focus)="selectProductIdentifierSetting(data)" class="cold">
+                                <mat-icon *ngIf="ps.selected">check</mat-icon>
+                                {{data.productCustomName}}
+                              </mat-chip>
+                            </mat-chip-list>
                           </div>
                         </div>
                       </div>
@@ -572,39 +521,11 @@
                   <div class="col-sm-1">
                     <label><b>Registration Number</b></label>
                   </div>
-                  <div class="col-sm-1" >
+                  <div class="col-sm-1">
                     <label><b style="padding: 56px;">Tags</b></label>
                   </div>
 
                 </div>
-                <!-- <div class="table-padding">
-                  <tr class="table-header">
-                    <th>
-                      Geography
-                    </th>
-                    <th>
-                      MRP(INR)
-                    </th>
-                    <th>
-                      Min order Qty
-                    </th>
-                    <th>
-                      Max order Qty
-                    </th>
-                    <th style="width: 11%;">
-                      Margin %
-                    </th>
-                    <th style="width: 11%;">
-                      Discount %
-                    </th>
-                    <th>
-                      Lead time (Days)
-                    </th>
-                    <th style="width: 16%;">Registration Number</th>
-                    <th style="width: 13%;">Tags</th>
-                  </tr>
-                </div> -->
-
 
 
                 <div *ngFor="let geoPropertyItemList of geoGraphyFullData; let i=index;">
@@ -649,7 +570,7 @@
                           name="RegistrationNumber">
                       </div>
 
-                      <div class="col-sm-1" >
+                      <div class="col-sm-1">
                         <a href="" style="padding: 9px;">Add</a>
                       </div>
                     </div>
@@ -660,11 +581,6 @@
               </table>
 
             </section>
-
-
-
-
-
 
             <div class="col-6">
               <div class="row">
@@ -682,12 +598,8 @@
               </div>
             </div>
             <div class="col-3">
-
             </div>
           </mat-step>
-
-
-
         </mat-stepper>
       </div>
     </div>

@@ -1232,7 +1232,6 @@ font-size: 12.5px;
 .add-img{
   width: -webkit-fill-available;
     height: -webkit-fill-available;
-    margin-left: -29px;
 }
 
 .dropdown-file{
@@ -1378,3 +1377,11 @@ mat-icon {
   cursor: pointer;
   color: grey;
 }
+
+/* .vr{
+  border-left: 2px solid #080808;
+  height: 190px;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+} */

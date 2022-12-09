@@ -321,10 +321,16 @@ export class MaterialAddEditpopupComponent {
         this.dataGetById = res.response;
         // let isProduct = this.dataGetById.isProduct
         console.log("EditData", this.dataGetById);
+       
 
         this.getGeographyForMaterial(0, this.getEditId);
         this.editData = true;
         this.dataPreLoadByID();
+        if(this.base64textString == " "){
+          this.Imgpreview = false; 
+        }else {
+          this.Imgpreview = true;
+        }
         this.spinner.hide();
       })
     }
@@ -333,6 +339,9 @@ export class MaterialAddEditpopupComponent {
       this.editData = false;
       // this.updateOrSave= this.updateOrSave;
       this.dataGetById = {};
+      
+      this.Imgpreview = false; 
+      
       this.getGeographyForMaterial(0, 0);
     }
   }

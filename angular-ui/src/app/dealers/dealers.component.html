@@ -9,8 +9,8 @@
             (onDeSelectAll)="onItemDeSelectOrAll($event)" (onSelectAll)="onItemSelectOrAll($event)">
           </ng-multiselect-dropdown>
         </form>
-        <div class="dropdown-placeholder role-placeholder">
-          <span *ngIf="myForm.get('city').value.length == 0"> Geographies </span>
+        <div  id="dp" class="dropdown-placeholder role-placeholder">
+          <span *ngIf="myForm.get('city').value.length == 0" id="gp"> Geographies </span>
           <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Geography selected </span>
           <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Geography(s) selected </span>
 

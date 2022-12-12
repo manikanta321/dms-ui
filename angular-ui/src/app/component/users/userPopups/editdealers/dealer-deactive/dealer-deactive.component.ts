@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dealer-deactive',
@@ -7,12 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DealerDeactiveComponent implements OnInit {
   customerName:any
-  constructor() { }
+  constructor(private dialogRef: MatDialogRef<any>,) { }
+
+
+
 
   ngOnInit(): void {
 
     this.customerName=localStorage.getItem("employeeNameOfDealer");
 
+
+    setTimeout(() => {
+
+      this.closeDialog()
+
+    }, 5000);
+   
   }
+
+  closeDialog() {
+
+    this.dialogRef.close();
+ }
 
 }

@@ -123,6 +123,8 @@ export class MaterialAddEditpopupComponent {
 
 
 
+  basicInfo: boolean = false;
+  
 
   geoPropertiesList: any
   geoProperties: any
@@ -1148,17 +1150,21 @@ export class MaterialAddEditpopupComponent {
   // this.bussinessIdentifiers,this.ProductIdentifiersSettingId,this.ProductIdentifiersId
 
 
-  goForward(stepper: MatStepper) {
-    stepper.next();
+   goForward(stepper: MatStepper) {
+     stepper.next();
   }
-  gobackward(stepper: MatStepper) {
+   gobackward(stepper: MatStepper) {
     stepper.previous();
   }
 
+  
   nextbutton() {
     this.goForward(this.stepper);
     //  this.basicInfo = false;
-
+    
+    
+   
+    
   }
 
   Backbutton() {
@@ -1166,6 +1172,9 @@ export class MaterialAddEditpopupComponent {
     //  this.basicInfo = true;
     console.log("1");
 
+    
+    
+  
   }
 
 

@@ -10,6 +10,16 @@
         <img src="assets/img/arrow-left-circle-fill.svg" [ngClass]="{'red':!firstFormGroup ,'black':firstFormGroup}"
           (click)="Backbutton()" class="leftarrow" alt="left-arr-btn">
         <img src="assets/img/arrow-right-circle-fill.svg" (click)="nextbutton()" class="rightarrow" alt="right-arr-btn">
+     <img src="assets/img/arrow-left-circle-fill.svg"   (click)="Backbutton()"   class="leftarrow" alt="left-arr-btn">
+
+       
+
+
+        <img src="assets/img/arrow-right-circle-fill.svg"  (click)="nextbutton()"   class="rightarrow" alt="right-arr-btn"> 
+
+
+
+       
         <mat-stepper labelPosition="bottom" #stepper>
           <!-- basic information -->
           <mat-step [stepControl]="firstFormGroup">

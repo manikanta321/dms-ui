@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
     passwordrequired:boolean=false;
     usernameReqired:boolean=false;
     showPassword: boolean = false;
+    redColor:boolean=false;
   errorMessage: any;
   constructor(
     private router: Router,
@@ -28,6 +29,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
    
+  }
+  closeerror(){
+    this.redColor=false;
+
   }
   signIn(){
     // if(this.usernameofuser==userName && this.passwordofuser=='infi') {
@@ -77,7 +82,20 @@ if(this.PasswordWrong =false){
 
 console.log(err)
   this.errorMessage = err.error;
-  alert(this.errorMessage)
+  this.redColor=true;
+  // alert(this.errorMessage);
+
+if(this.errorMessage =='Wrong Password'){
+  this.errorMessage='Login Failed! Incorrect Username or Password'
+}else {
+  this.errorMessage = err.error;
+
+}
+
+
+
+
+
 }
 
 

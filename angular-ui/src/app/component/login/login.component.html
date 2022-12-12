@@ -14,6 +14,11 @@
         <div class="login-form ">
           
           <form>
+            <div class="d-flex wrong" *ngIf="redColor">
+              <p style="color: red; text-align: center;margin-left: -38px;margin-top: 9px;">{{errorMessage}}</p>
+             <mat-icon mat-button class="close-iconn" (click)="closeerror()" >close</mat-icon >
+</div>
+
             <div class="login-head">
               <h6 class="sign-head" >Sign In</h6>
               <!-- <p>Enter your email and password to sign in</p> -->
@@ -26,7 +31,7 @@
               <br>
               <p *ngIf="usernameReqired" style="color: red;">Username required</p>
               
-              <input type="text" style="border-radius:10px" placeholder=" Enter your user name" name="username" required [(ngModel)]="usernameofuser" pInputText
+              <input type="text" style="border-radius:10px" placeholder=" Enter your username" name="username" required [(ngModel)]="usernameofuser" pInputText
                 required/>
             </div>
             <!-- Password input -->
@@ -39,8 +44,9 @@
               <mat-icon matSuffix (click)="togglePasswordVisibility()">
                 {{showPassword?'visibility':'visibility_off'}}
               </mat-icon>
-              <p style="color:red;" *ngIf="PasswordWrong">Password is wrong</p>
-            </div>
+  <p style="color:red;" *ngIf="PasswordWrong">Password is wrong</p>
+
+          </div>
             <!-- <mat-icon (click)='showHidePassword()'> {{ showPassword ? 'Hide' : 'Show' }} remove_red_eye</mat-icon> -->
             <div class="d-flex justify-content-between align-items-center">
               <!-- Checkbox -->

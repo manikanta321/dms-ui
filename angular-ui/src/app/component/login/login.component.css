@@ -117,10 +117,52 @@ form {
   padding: 11px 0;
 }
 
+.wrong{
+  background-color: #FFDDDD;
+  border: solid red 1.4px;
+  border-radius: 10px;
+
+  justify-content: center;
+  border: solid red 1.4px;
+  border-radius: 10px;
+  width: 368px;
+  text-align: center;
+  height: 43px;
+
+
+
+
+}
+.d-flex
+{
+  margin-top: -2px;
+}
+
+.close-iconn
+{
+    
+    font-weight: bold;
+    color: red;
+    cursor: pointer;
+    font-size: 19px;
+    top: 35px;
+    position: absolute;
+    left: 86%;
+    
+      
+}
+
+
+
 .login-head p {
   color: 000000;
   font-weight: 400;
   font-size: 17px;
+  font-family: 'Gilroy-Medium';
+}
+.login-head
+{
+  margin-top: 11px;
 }
 
 .login-btn {
@@ -171,3 +213,4 @@ mat-icon {
   top: 8px;
   font-size: 21px;
 }
+

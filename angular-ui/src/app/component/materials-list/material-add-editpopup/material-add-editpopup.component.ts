@@ -23,7 +23,7 @@ import { MatChip, MatChipList } from '@angular/material/chips';
 export class MaterialAddEditpopupComponent {
   chipControl = new FormControl(new Set());
 
-  
+
   disabled = false;
   catgname: any = [];
   base64textString = "";
@@ -122,7 +122,7 @@ export class MaterialAddEditpopupComponent {
   // geograhies related variables
 
 
-  
+
 
   geoPropertiesList: any
   geoProperties: any
@@ -223,7 +223,7 @@ export class MaterialAddEditpopupComponent {
     this.selectProduct();
     // this.customIdentifier()
     const user = localStorage.getItem("logInId");
-    
+
     this.UserId = user
     this.dropdownSettings4 = {
       singleSelection: false,
@@ -321,14 +321,14 @@ export class MaterialAddEditpopupComponent {
         this.dataGetById = res.response;
         // let isProduct = this.dataGetById.isProduct
         console.log("EditData", this.dataGetById);
-       
+
 
         this.getGeographyForMaterial(0, this.getEditId);
         this.editData = true;
         this.dataPreLoadByID();
-        if(this.base64textString == " "){
-          this.Imgpreview = false; 
-        }else {
+        if (this.base64textString == " ") {
+          this.Imgpreview = false;
+        } else {
           this.Imgpreview = true;
         }
         this.spinner.hide();
@@ -339,9 +339,11 @@ export class MaterialAddEditpopupComponent {
       this.editData = false;
       // this.updateOrSave= this.updateOrSave;
       this.dataGetById = {};
-      
-      this.Imgpreview = false; 
-      
+      if (this.base64textString == '') {
+        this.Imgpreview = false;
+      }
+
+
       this.getGeographyForMaterial(0, 0);
     }
   }
@@ -351,6 +353,7 @@ export class MaterialAddEditpopupComponent {
     this.stockItemDesc = this.dataGetById.stockItemDesc
     this.materialName = this.dataGetById.stockItemName
     this.base64textString = this.dataGetById.imageurl
+
     this.expiryDate = this.dataGetById.expiryPeriod
     this.MaterialCustomIdentifiersEdit = this.dataGetById.materialcustomidentifier
     this.categeoryData = this.dataGetById.categoryId
@@ -427,7 +430,7 @@ export class MaterialAddEditpopupComponent {
 
   // productSKUGeographyId
   addMaterialProduct() {
-    this.selectedProductId = [...this.bussinessIdentifiers,...this.ProductIdentifiersSettingId,...this.ProductIdentifiersId]
+    this.selectedProductId = [...this.bussinessIdentifiers, ...this.ProductIdentifiersSettingId, ...this.ProductIdentifiersId]
     let selectedGeographies = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographySelected;
     let data2 = {
       DefalultgeoId: selectedGeographies,
@@ -1033,9 +1036,12 @@ export class MaterialAddEditpopupComponent {
   handleReaderLoaded(e) {
     let reader = e.target;
     this.base64textString = reader.result.substr(reader.result.indexOf(',') + 1);
+    if (this.base64textString != '') {
+      this.Imgpreview = true;
+    }
     console.log(this.base64textString, "base64")
   }
-  
+
   popup() {
     this.materialIdentifierPopup = true;
   }
@@ -1043,7 +1049,7 @@ export class MaterialAddEditpopupComponent {
     this.materialIdentifierPopup = false;
     this.productIdentifierPopup = false;
   }
-  
+
   productIdentifier() {
     this.productIdentifierPopup = true;
     this.customIdentifier();
@@ -1055,7 +1061,7 @@ export class MaterialAddEditpopupComponent {
 
   selectMaterialIdentifier(materialIdentifier: any): void {
     // let index = this.selctedIdentifier.indexOf(materialIdentifier);
-    let index = this.selctedIdentifier.findIndex(x=>x.materilCustomIdentifierId==materialIdentifier.materilCustomIdentifierId)
+    let index = this.selctedIdentifier.findIndex(x => x.materilCustomIdentifierId == materialIdentifier.materilCustomIdentifierId)
     if (index >= 0) {
       this.selctedIdentifier.splice(index, 1);
       const MaterialCustomIdentifiersNames = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materialCustomName);
@@ -1075,8 +1081,8 @@ export class MaterialAddEditpopupComponent {
     return index >= 0;
   }
 
-  selectBusinessProduct(businessIdentifier: any,temp): void {
-    let index = this.businessSelctedIdentifier.findIndex(x=>x.productCustomIdentifierId==businessIdentifier.productCustomIdentifierId);
+  selectBusinessProduct(businessIdentifier: any, temp): void {
+    let index = this.businessSelctedIdentifier.findIndex(x => x.productCustomIdentifierId == businessIdentifier.productCustomIdentifierId);
 
     if (index >= 0) {
       this.businessSelctedIdentifier.splice(index, 1);
@@ -1099,7 +1105,7 @@ export class MaterialAddEditpopupComponent {
   }
 
   selectProductIdentifier(IdentifierProduct: any): void {
-    let index = this.businessSelctedIdentifier.findIndex(x=>x.productCustomIdentifierId==IdentifierProduct.productCustomIdentifierId)
+    let index = this.businessSelctedIdentifier.findIndex(x => x.productCustomIdentifierId == IdentifierProduct.productCustomIdentifierId)
 
     if (index >= 0) {
       this.productSelctedIdentifier.splice(index, 1);
@@ -1123,7 +1129,7 @@ export class MaterialAddEditpopupComponent {
   }
 
   selectProductIdentifierSetting(IdentifierSetting: any): void {
-    let index = this.productSettingIdentifier.findIndex(x=>x.productCustomIdentifierId==IdentifierSetting.productCustomIdentifierId);
+    let index = this.productSettingIdentifier.findIndex(x => x.productCustomIdentifierId == IdentifierSetting.productCustomIdentifierId);
 
     if (index >= 0) {
       this.productSettingIdentifier.splice(index, 1);
@@ -1140,7 +1146,7 @@ export class MaterialAddEditpopupComponent {
     }
   }
   // this.bussinessIdentifiers,this.ProductIdentifiersSettingId,this.ProductIdentifiersId
- 
+
 
   goForward(stepper: MatStepper) {
     stepper.next();
@@ -1148,21 +1154,21 @@ export class MaterialAddEditpopupComponent {
   gobackward(stepper: MatStepper) {
     stepper.previous();
   }
-  
+
   nextbutton() {
     this.goForward(this.stepper);
     //  this.basicInfo = false;
-    
+
   }
 
   Backbutton() {
     this.gobackward(this.stepper);
     //  this.basicInfo = true;
     console.log("1");
-  
+
   }
- 
-  
+
+
 }
 
 

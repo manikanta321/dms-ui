@@ -6,8 +6,6 @@ import { SharedService } from 'src/app/services/shared-services.service';
 import { UserService } from 'src/app/services/user.service';
 import { UsersComponent } from '../../users.component';
 
-import { FormsModule } from '@angular/forms';
-
 @Component({
   selector: 'app-add-user-popup',
   templateUrl: './add-user-popup.component.html',
@@ -21,7 +19,7 @@ export class AddUserPopupComponent implements OnInit {
 
   toppingList: any= [];
 
-  toppings = new  (this.toppingList);
+  toppings = new FormControl(this.toppingList);
 
   fullname:any;
   username:any;

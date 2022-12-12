@@ -30,22 +30,10 @@ export class ForgotPasswordComponent implements OnInit {
           }
         },
         error: (err:any)=>{
-          this.err = err.Error
+          this.err = err.error.errors
           console.log(err)
         }
-     }
-    //   (res: any) => {
-    //   if(res){
-    //   this.redirectMessage = !this.redirectMessage;
-    //   }
-    // },
-    
-    // (err: any) => {
-    //   console.log(err)
-    //     this.errorMessage = err.error;
-    //     alert(this.errorMessage)
-    //   }
-      )
+     })
     
   }
 }

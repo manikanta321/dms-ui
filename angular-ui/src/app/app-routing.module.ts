@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'login', pathMatch: 'full',component: LoginComponent },
   { path: 'ResetPassword', pathMatch: 'full',component: ResetPassword  },
   { path: 'ForgotPassword', pathMatch: 'full',component: ForgotPasswordComponent },
-  { path: 'maindashbord', pathMatch: 'full',component: DashbordComponent  },
+  { path: 'maindashbord', pathMatch: 'full',component: DashbordComponent ,canActivate: [AuthGuard]},
   { path: 'dashbord/user', pathMatch: 'full',component: UsersComponent ,canActivate: [AuthGuard] },
   { path: 'dashbord/materials', pathMatch: 'full',component: MaterialsComponent,canActivate: [AuthGuard]  },
   { path: 'dashbord/materials/materials-list', pathMatch: 'full',component:   MaterialsListComponent ,canActivate: [AuthGuard] },

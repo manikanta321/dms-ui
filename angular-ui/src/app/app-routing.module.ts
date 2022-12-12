@@ -16,28 +16,28 @@ import { SalesBulkUploadComponent } from './component/sales-bulk-upload/sales-bu
 import { SalesListComponent } from './component/sales-list/sales-list.component';
 import { ResetPassword } from './component/sign-up/sign-up.component';
 import { UsersComponent } from './component/users/users.component';
+import { AuthGuard } from './services/auth.guard';
 import { DashbordComponent } from './shared-component/dashbord/dashbord.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full',component: LoginComponent },
   { path: 'login', pathMatch: 'full',component: LoginComponent },
-  { path: 'login', pathMatch: 'full',component: LoginComponent },
-  { path: 'ResetPassword', pathMatch: 'full',component: ResetPassword },
+  { path: 'ResetPassword', pathMatch: 'full',component: ResetPassword  },
   { path: 'ForgotPassword', pathMatch: 'full',component: ForgotPasswordComponent },
   { path: 'maindashbord', pathMatch: 'full',component: DashbordComponent  },
-  { path: 'dashbord/user', pathMatch: 'full',component: UsersComponent  },
-  { path: 'dashbord/materials', pathMatch: 'full',component: MaterialsComponent  },
-  { path: 'dashbord/materials/materials-list', pathMatch: 'full',component:   MaterialsListComponent  },
-  { path: 'dashbord/materials/materials-classification', pathMatch: 'full',component: MaterialsClassificationComponent  },
-  { path: 'dashbord/other-masters', pathMatch: 'full',component: OtherMastersComponent  },
-  { path: 'dashbord/dealer', pathMatch: 'full',component: DealerComponent  }
+  { path: 'dashbord/user', pathMatch: 'full',component: UsersComponent ,canActivate: [AuthGuard] },
+  { path: 'dashbord/materials', pathMatch: 'full',component: MaterialsComponent,canActivate: [AuthGuard]  },
+  { path: 'dashbord/materials/materials-list', pathMatch: 'full',component:   MaterialsListComponent ,canActivate: [AuthGuard] },
+  { path: 'dashbord/materials/materials-classification', pathMatch: 'full',component: MaterialsClassificationComponent ,canActivate: [AuthGuard] },
+  { path: 'dashbord/other-masters', pathMatch: 'full',component: OtherMastersComponent ,canActivate: [AuthGuard] },
+  { path: 'dashbord/dealer', pathMatch: 'full',component: DealerComponent ,canActivate: [AuthGuard] }
 ,
-{ path: 'dashbord/orders', pathMatch: 'full',component: OrdersComponent  }
+{ path: 'dashbord/orders', pathMatch: 'full',component: OrdersComponent ,canActivate: [AuthGuard] }
 ,
-  { path: 'dashbord/geographies', pathMatch: 'full',component: GeographiesComponent  },
-  { path: 'dashbord/saleslist', pathMatch:'full', component: SalesListComponent},
+  { path: 'dashbord/geographies', pathMatch: 'full',component: GeographiesComponent ,canActivate: [AuthGuard] },
+  { path: 'dashbord/saleslist', pathMatch:'full', component: SalesListComponent,canActivate: [AuthGuard]},
   
-  { path: 'dashbord/edit-profile', pathMatch: 'full',component: EditProfileComponent  }
+  { path: 'dashbord/edit-profile', pathMatch: 'full',component: EditProfileComponent ,canActivate: [AuthGuard] }
 ];
 
 @NgModule({

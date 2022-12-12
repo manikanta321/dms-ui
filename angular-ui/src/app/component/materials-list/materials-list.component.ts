@@ -234,12 +234,12 @@ else
     }
   
     const data = {
-      Cat: [],
-      Sub_Cat: [],
-      type: [],
-      product: [],
-      status: [],
-      Search: "",
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      product: this.productID,
+      status: this.statusTypes,
+      Search: this.searchText,
       isProduct:this.isproduct
     }
     this.materialList.getMaterialList(data).subscribe((res) => {

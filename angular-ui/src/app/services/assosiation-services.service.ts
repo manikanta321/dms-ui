@@ -65,7 +65,17 @@ public getgeo(produId){
 public tooltipStockItemDetailList(prodctId : any){
   return this.http.get<any>(`${this.userurl}DealerApi/GetStockItemDetailList?ProductSKUId=${prodctId}`);
 
+ 
 }
+public dealerdrop(data){
+  return this.http.post<any>(this.userurl + 'DealerApi/GetDealerBasedonGeog', data);
+
+}
+
+  public getdealerEntireList(data){
+    return this.http.post<any>(this.userurl + 'DealerApi/GetGeographyDetailsForDealer', data);
+  
+  }
 
 }
 // http://13.126.235.145:801/api/DealerApi/GetStockItemDetailList?ProductSKUId=42

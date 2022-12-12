@@ -30,7 +30,7 @@
               <select #teams class="form-select select-asso" aria-label=".form-select-lg example"
                 (change)="selectedProduct(teams.value);">
                 <option selected hidden>Select</option>
-                <option style="height: 900px;"     *ngFor="let product of ProductListArray" [value]="product.productSKUId">{{product.stockItemName}}</option>
+                <option style="height: 900px;"     *ngFor="let product of ProductListArray" value="{{product.productSKUId}} and {{product.stockItemId}}"><p (click)="selectedProduct(teams.value)">{{product.stockItemName}}</p></option>
 
               </select>
               <div class="hover-text">
@@ -109,12 +109,12 @@
               <div class="col-md-9 sltd-span">
                 <span class="selectedname" *ngIf="false">Selected Geogrphies</span>
                 <span class="selectedcolor" *ngIf="true">Malasia(3/4)</span>;
-                <span class="selectedclr2">India(15/15)</span>;
+                <!-- <span class="selectedclr2">India(15/15)</span>;
                 <span class="astr">Singpore(0/6)</span>;
-                <span class="selectedclr2">Japan(23/23)</span>
+                <span class="selectedclr2">Japan(23/23)</span> -->
               </div>
               <div class="col-md-3">
-                <button class="slctd-geo-btn" (click)="geography()">
+                <button class="slctd-geo-btn"    [disabled]="!slectedgeo" (click)="geography()">
                   Selected Geographies
                 </button>
               </div>
@@ -134,9 +134,17 @@
 
           <div class="row" *ngIf="screenValue == 1">
             <div class="col-md-6 promotiont1">
-              <form [formGroup]="myFormDlr" class="dropdown-form">
-                <ng-multiselect-dropdown class="promo1" [placeholder]="'Dealers'" formControlName="city"
-                  [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList">
+              <form [formGroup]="myForm" class="dropdown-form">
+                <ng-multiselect-dropdown
+                  class="promo1"
+                  [placeholder]="'Dealers'"
+                  formControlName="city1"
+                  [disabled]="disabled"
+                  [settings]="dropdownSettings3"
+                  [data]="dealersArray"
+
+                  (onSelect)="onDealerSelect($event)" (onDeSelect)="onDealerDeSelect($event)"
+                >
                 </ng-multiselect-dropdown>
 
                 <div class="dropdown-placeholder promo1-placeholder">
@@ -362,193 +370,194 @@
           </div>
 
           <br />
-          <div class="collapsible">
-            <div class="row">
-              <div class="col-md-1">
-                <input class="form-check-input1" type="checkbox" value="" id="flexCheckDefault" />
-              </div>
-              <div class="col-md-3 check1">
-                <p class="label-cls">Little hearts</p>
-              </div>
-              <div class="col-md-2 check1">
-                <p class="label-cls">India (0/136)</p>
-              </div>
-              <div class="col-md-2 check1">
-                <p class="label-cls">china (0/124)</p>
-              </div>
+       <div *ngFor=" let data of loopingdata" style="width: 100%;"> 
+        <div class="collapsible">
+          <div class="row">
+            <div class="col-md-1">
+              <input class="form-check-input1" type="checkbox" value="" id="flexCheckDefault" />
+            </div>
+            <div class="col-md-3 check1">
+              <p class="label-cls">{{data?.dealerName}}</p>
+            </div>
+            <!-- <div class="col-md-2 check1">
+              <p class="label-cls">India (0/136)</p>
+            </div>
+            <div class="col-md-2 check1">
+              <p class="label-cls">china (0/124)</p>
+            </div>
 
-              <div class="col-md-3 check1">
-                <p class="label-cls">Singapore (0/145)</p>
-              </div>
-              <div class="col-md-1" (click)="expandDealerInfoDiv()">
-                <img [src]="image1" class="expand-arrow" alt="add-user-btn" />
-              </div>
+            <div class="col-md-3 check1">
+              <p class="label-cls">Singapore (0/145)</p>
+            </div> -->
+            <div class="col-md-1" (click)="expandDealerInfoDiv()">
+              <img [src]="image1" class="expand-arrow" alt="add-user-btn" />
             </div>
           </div>
+        </div>
 
-          <div class="content" *ngIf="!dealerInfo">
-            <br />
+        <div class="content" *ngIf="!dealerInfo">
+          <br />
 
-            <div class="row mainclass">
-              <div class="col-md-7"></div>
-              <div class="col-md-3">
-                <div class="searchBox1 d-flex">
-                  <div class="promotiont2">
-                    <select class="form-select select-asso" aria-label=".form-select-lg example">
-                      <option selected hidden>Select</option>
-                      <option value="1">Airtel</option>
-                      <option value="2">Jio</option>
-                    </select>
-                  </div>
-                  <div class="promotiont3">
-                    <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name=""
-                      placeholder="Enter value" />
-                  </div>
-                  <div class="promotiont3">
-                    <button type="button" class="saveas-draft1">Apply</button>
-                  </div>
+          <div class="row mainclass">
+            <div class="col-md-7"></div>
+            <div class="col-md-3">
+              <div class="searchBox1 d-flex">
+                <div class="promotiont2">
+                  <select class="form-select select-asso" aria-label=".form-select-lg example">
+                    <option selected hidden>Select</option>
+                    <option value="1">Airtel</option>
+                    <option value="2">Jio</option>
+                  </select>
                 </div>
-              </div>
-              <div class="col-md-1">
-                <div class="icon btnhover refreshbtn" style="cursor: pointer">
-                  <img class="refresh" src="assets/img/ultrarefresh.svg"
-                    style="position: relative; top: 9px; left: 12px" alt="refresh" />
+                <div class="promotiont3">
+                  <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name=""
+                    placeholder="Enter value" />
+                </div>
+                <div class="promotiont3">
+                  <button type="button" class="saveas-draft1">Apply</button>
                 </div>
               </div>
             </div>
-            <br />
-            <table>
-              <tr>
-                <th style="width: 168px">Geography</th>
-                <th>MrP(INR)</th>
-                <th>Min order Qty</th>
-                <th>Max order Qty</th>
-                <th>Margin %</th>
-                <th>Discount %</th>
-                <th>Lead time (Days)</th>
-              </tr>
-              <tr>
-                <td>
-                  <img [src]="image1" class="expand-arrow1" alt="add-user-btn" (click)="expandOrderItemsDiv1()" />
-                  Malaysia (71/126)
-                </td>
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <img [src]="image1" class="expand-arrow1" alt="add-user-btn" (click)="expandOrderItemsDiv1()" />
-                  Malaysia (71/126)
-                </td>
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-              </tr>
-
-              <tr *ngIf="!orderitem1">
-                <td class="check">
-                  <img [src]="image1" class="expand-arrow1" alt="add-user-btn" />
-
-                  Kedah (36/36)
-                </td>
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-              </tr>
-              <tr *ngIf="!orderitem1">
-                <td class="check2">george town</td>
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-                <td>
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                  <input type="text" class="uom-cls" id="fname" name="fname" />
-                </td>
-              </tr>
-            </table>
+            <div class="col-md-1">
+              <div class="icon btnhover refreshbtn" style="cursor: pointer">
+                <img class="refresh" src="assets/img/ultrarefresh.svg"
+                  style="position: relative; top: 9px; left: 12px" alt="refresh" />
+              </div>
+            </div>
           </div>
+          <br />
+          <table>
+            <tr>
+              <th style="width: 168px">Geography</th>
+              <th style="width: 168px">MrP(INR)</th>
+              <th style="width: 168px">Min order Qty</th>
+              <th style="width: 168px">Max order Qty</th>
+              <th style="width: 168px">Margin %</th>
+              <th style="width: 168px">Discount %</th>
+              <th style="width: 168px">Lead time (Days)</th>
+            </tr>
+            <tr>
+              <td>
+                <img [src]="image1" class="expand-arrow1" alt="add-user-btn" (click)="expandOrderItemsDiv1()" />
+                Malaysia (71/126)
+              </td>
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
 
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <img [src]="image1" class="expand-arrow1" alt="add-user-btn" (click)="expandOrderItemsDiv1()" />
+                Malaysia (71/126)
+              </td>
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+            </tr>
+
+            <tr *ngIf="!orderitem1">
+              <td class="check">
+                <img [src]="image1" class="expand-arrow1" alt="add-user-btn" />
+
+                Kedah (36/36)
+              </td>
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+            </tr>
+            <tr *ngIf="!orderitem1">
+              <td class="check2">george town</td>
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+              <td>
+                <input type="text" class="uom-cls" id="fname" name="fname" />
+              </td>
+            </tr>
+          </table>
+        </div>
+       </div>
+       <div class="row footer">
+        <div class="col-md-6">
+          <button type="button" class="saveas-draft">Save</button>
+        </div>
+        <div class="col-md-6">
+          <button type="button" [mat-dialog-close]="true" class="saveas-draft2">
+            Cancel
+          </button>
+        </div>
+        <!-- <div class="col-md-5">
+              <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
+      </div> -->
+      </div>
         </div>
 
 
-        <div class="row footer">
-          <div class="col-md-6">
-            <button type="button" class="saveas-draft">Save</button>
-          </div>
-          <div class="col-md-6">
-            <button type="button" [mat-dialog-close]="true" class="saveas-draft2">
-              Cancel
-            </button>
-          </div>
-          <!-- <div class="col-md-5">
-                <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
-        </div> -->
-        </div>
+       
       </div>

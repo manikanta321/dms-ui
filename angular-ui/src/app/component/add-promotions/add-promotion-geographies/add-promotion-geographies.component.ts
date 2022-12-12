@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { AssosiationServicesService } from 'src/app/services/assosiation-services.service';
+import { SharedServicesDealerService } from 'src/app/services/shared-services-dealer.service';
 
 
 export interface Task {
@@ -30,7 +32,10 @@ export class AddPromotionGeographiesComponent implements OnInit {
   aarrayToPush:any=[];
   selectedcount:any=0;
   constructor(
- private assoservice:AssosiationServicesService, ) { }
+ private assoservice:AssosiationServicesService,
+ private dialogRef: MatDialogRef<any>,
+ private sharedService:SharedServicesDealerService
+ ) { }
 
   ngOnInit(): void {
 let productId=localStorage.getItem('ProductStockItemId')
@@ -47,6 +52,8 @@ let productID = event;
       if (index !== -1) {
         this.aarrayToPush.splice(index, 1);
         this.selectedcount=this.aarrayToPush.length
+
+
       }
       else {
         this.aarrayToPush.push(productID);
@@ -71,5 +78,11 @@ let productID = event;
       return;
     }
     this.task.subtasks.forEach(t => (t.completed = completed));
+  }
+  saveGeo(){
+    localStorage.setItem("geoAsso", JSON.stringify(this.aarrayToPush));
+    this.sharedService.filter('Register click')
+    this.dialogRef.close();
+
   }
 }

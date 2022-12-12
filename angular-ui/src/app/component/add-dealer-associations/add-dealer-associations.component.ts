@@ -10,6 +10,7 @@ import { AssosiationServicesService } from 'src/app/services/assosiation-service
 import { TooltipPosition } from '@angular/material/tooltip';
 import { MaterialListService } from 'src/app/services/material-list.service';
 import { AddMaterialsService } from 'src/app/services/add-materials.service';
+import { SharedServicesDealerService } from 'src/app/services/shared-services-dealer.service';
 
 @Component({
   selector: 'app-add-dealer-associations',
@@ -35,6 +36,8 @@ export class AddDealerAssociationsComponent implements OnInit {
   catArray: any[] = [];
   subcatArray: any[] = [];
   catergory: any = [];
+  selectedDealerInDropDown: any;
+
   catagoryName: any;
   sub_category: any = [];
   sub_categorys: any = [];
@@ -52,6 +55,7 @@ export class AddDealerAssociationsComponent implements OnInit {
   selectedProductId: any = [];
   tooltipData : any = [];
   tooltipDataDealer : any =[];
+  slectedgeo:boolean = false;
   // seletedproduct1 : any;
   selectAllIdentifierProduct: any = [];
   selectedIdentifierProductArray: any = [];
@@ -60,6 +64,9 @@ export class AddDealerAssociationsComponent implements OnInit {
   image3 = 'assets/img/minimize-tag.png';
   selectedProduct1: any;
   selectedDealer2: any;
+  ProductListArray:any=[]
+  storedNames123:any;
+productSkuId:any;
 
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
@@ -95,7 +102,6 @@ export class AddDealerAssociationsComponent implements OnInit {
   dropdownSettings5: IDropdownSettings = {};
   disabled = false;
   toppingList3: any = [];
-  ProductListArray: any = [];
   dealerListArray: any = [];
 
   toppingList: any = [
@@ -131,6 +137,9 @@ export class AddDealerAssociationsComponent implements OnInit {
   myForm4: any = FormGroup;
   selectedItems: any = [];
   productDlr: boolean = false;
+  dealersArray:any=[];
+  storedName124:any;
+  loopingdata:any=[];
   constructor(
     private _formBuilder: FormBuilder,
     public dialog: MatDialog,
@@ -138,9 +147,15 @@ export class AddDealerAssociationsComponent implements OnInit {
     private user: UserService,
     private associationService: AssosiationServicesService,
     private materialList: MaterialListService,
-    private addMaterials: AddMaterialsService
+    private addMaterials: AddMaterialsService,
+    private sharedService:SharedServicesDealerService
 
-  ) { }
+  ) {
+    this.sharedService.listen().subscribe((m: any) => {
+      console.log(m);
+this.getdealerbasedonGeo()
+    })
+   }
 
   firstFormGroup: FormGroup = this._formBuilder.group({ firstCtrl: [''] });
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
@@ -165,14 +180,7 @@ export class AddDealerAssociationsComponent implements OnInit {
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
     };
-    this.dropdownSettings3 = {
-      singleSelection: false,
-      idField: 'typeId',
-      textField: 'typeName',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 1,
-    };
+
     this.dropdownSettings4 = {
       singleSelection: false,
       idField: 'productGroupId',
@@ -212,14 +220,81 @@ export class AddDealerAssociationsComponent implements OnInit {
     this.customIdentifier();
   }
 
+getdealerbasedonGeo(){
+  
+   this.storedNames123 = localStorage.getItem("geoAsso");
+  var objectsFromStorage = JSON.parse(this.storedNames123)
+alert(objectsFromStorage)
+this.storedName124= objectsFromStorage ;
 
+let data={
+  geoId:objectsFromStorage,
+  search:"",
+}
+
+this.associationService.dealerdrop(data).subscribe((res)=>{
+console.log(res.response);
+
+let localdata =res.response
+this.dealersArray = localdata.map((data: { customerId: any; customerName: any;   }) => {
+  return { customerId: data.customerId, customerName: data.customerName, };
+});
+this.dropdownSettings3 = {
+  singleSelection: false,
+  idField: 'customerId',
+  textField: 'customerName',
+  // selectAllText: 'Select All',
+  // unSelectAllText: 'UnSelect All',
+  itemsShowLimit: 1,
+};
+
+this.dealersArray.push()
+this.dealersArray
+})
+
+}
+
+onDealerSelect(item: any) {
+  this.selectedDealerInDropDown=item.customerId;
+  console.log("Catttyyyyy", item)
+  console.log('item Subcatty', item)
+  this.catagoryName = item.catName;
+  let dealerdata = {
+    ProductId: this.productSkuId,
+    DealerId: this.selectedDealerInDropDown,
+    SelectedGeoIds:this.storedName124,
+  }
+  this.associationService.getdealerEntireList(dealerdata).subscribe((res) => {
+   let data =res.response;
+   debugger
+   this.loopingdata[0] =data;
+   console.log(' this.loopingdata', this.loopingdata)
+  });
+}
+onDealerDeSelect(item: any) {
+  this.catergory.forEach((element, index) => {
+    if (element == item.catId) this.catergory.splice(index, 1);
+
+  });
+  let SubdataD = {
+    catId: this.catergory
+  }
+  this.materialList.onclickcat(SubdataD).subscribe((res) => {
+    let subcaty = res.response;
+    console.log("response1", res)
+    console.log("responseeee", subcaty);
+    this.sub_category = subcaty.allOtherSubCAts;
+  });
+  console.log('this.catergory', this.catergory);
+
+}
   ProductItems() {
     this.user.getproductlist().subscribe((res: any) => {
       let localdata = res.response;
       console.log('checkdata', localdata)
 
-      this.ProductListArray = localdata.map((data: { productSKUId: any; stockItemName: any; }) => {
-        return { productSKUId: data.productSKUId, stockItemName: data.stockItemName };
+      this.ProductListArray = localdata.map((data: { productSKUId: any; stockItemName: any; stockItemId:any;  }) => {
+        return { productSKUId: data.productSKUId, stockItemName: data.stockItemName,stockItemId:data.stockItemId, };
       });
 
       this.ProductListArray.push()
@@ -234,10 +309,18 @@ export class AddDealerAssociationsComponent implements OnInit {
     this.associationService.getDealers().subscribe((res: any) => {
       let localdata = res.response;
       // console.log('checkdata', localdata)
-
       this.dealerListArray = localdata.map((data: { customerId: any; customerName: any; }) => {
         return { customerId: data.customerId, customerName: data.customerName };
       });
+
+      this.dropdownSettings3 = {
+        singleSelection: false,
+        idField: 'customerId',
+        textField: 'customerName',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        itemsShowLimit: 1,
+      };
 
       this.dealerListArray.push()
       console.log('dealerListArray', this.dealerListArray)
@@ -245,14 +328,23 @@ export class AddDealerAssociationsComponent implements OnInit {
     });
 
   }
-
-
-
-  selectedProduct(value) {
-    let ProductId = value
-    this.selectedProduct1 = ProductId
-    localStorage.setItem('ProductStockItemId', ProductId);
+  
+  selectedProduct(event) {
+ 
+     var arry =event.match(/[a-z0-9]+/gi)
+    console.log('value',arry)
+    let ProductId = arry[0];
+    this.productSkuId=ProductId
+    let stockItemId=arry[2];
+    console.log('value',ProductId)
+    this.selectedProduct1 = ProductId;
+    this.slectedgeo=true;
+    localStorage.setItem('ProductStockItemId', stockItemId);
+    
     this.tooltiptable()
+  }
+  selectedProduct11(value){
+    let mani
   }
 
   selectedDealer(value) {

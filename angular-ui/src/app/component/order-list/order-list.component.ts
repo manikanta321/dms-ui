@@ -344,10 +344,10 @@ export class OrderListComponent implements OnInit {
     this.DealerId=[];
     this.searchText=''
  const data = {
-  StatusId:this.statusList,
-  GeographyId:this.geogragphies,
-  DealerId:this.dealerss,
-    Search:this.searchText
+  StatusId : this.statusList,
+      GeographyId:this.geogragphies,
+      DealerId : this.dealerss,
+      Search:this.searchText
   //   "StatusId":[],
   //   "GeographyId":[],
   //  "DealerId" : [],
@@ -421,8 +421,8 @@ export class OrderListComponent implements OnInit {
     this.user.getuserDeatilsUser(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
-    // console.log('rolefilter', this.userTypes)
-    // console.log('onItemSelect', item);
+    console.log('rolefilter', this.userTypes)
+    console.log('onItemSelect', item);
   }
   onItemSelectOrAll(item: any) {
     this.userTypes = this.roleArray;
@@ -684,10 +684,10 @@ selectdays(){
   DealerorderSelect(item: any){
     this.dealerss.push(item.customerId);
     const data = {
-      // "StatusId":[],
-      // "GeographyId":[],
+      StatusId : this.statusList,
+      GeographyId:this.geogragphies,
       DealerId : this.dealerss,
-      "Search":"",
+      Search:this.searchText
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -699,10 +699,10 @@ selectdays(){
       if (element == item.customerId) this.dealerss.splice(index, 1);
     });
     const data = {
-      // "StatusId":[],
-      // "GeographyId":[],
+      StatusId : this.statusList,
+      GeographyId:this.geogragphies,
       DealerId : this.dealerss,
-      // "Search":"",
+      Search:this.searchText
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -711,10 +711,10 @@ selectdays(){
   DealerDeselectAll(item:any){
     this.dealerss = [];
     const data = {
-      // "StatusId":[],
-      // "GeographyId":[],
+      StatusId : this.statusList,
+      GeographyId:this.geogragphies,
       DealerId : this.dealerss,
-      "Search":"",
+      Search:this.searchText
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -723,10 +723,10 @@ selectdays(){
   DealerorderSelectAll(item:any){
     this.dealerss = this.dealerAllarray;
     const data = {
-      // "StatusId":[],
-      // "GeographyId":[],
+      StatusId : this.statusList,
+      GeographyId:this.geogragphies,
       DealerId : this.dealerss,
-      "Search":"",
+      Search:this.searchText
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -759,10 +759,10 @@ selectdays(){
   geographyselect(item:any){
     this.geogragphies.push(item.geographyId);
     const data = {
-      // "StatusId":[],
-      // "GeographyId":[],
-      GeographyId : this.geogragphies,
-      "Search":"",
+      StatusId : this.statusList,
+      GeographyId:this.geogragphies,
+      DealerId : this.dealerss,
+      Search:this.searchText
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -773,16 +773,24 @@ selectdays(){
       if (element == item.geographyId) this.geogragphies.splice(index, 1);
     });
     const data = {
-      geographys:this.geogragphies,
+      StatusId : this.statusList,
+      GeographyId:this.geogragphies,
+      DealerId : this.dealerss,
+      Search:this.searchText
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
+    console.log('rolefilter', this.userTypes)
+    console.log('onItemSelect', item);
   }
   geographyDeselectAll(item: any) {
     this.geogragphies=[];
     const data = {
-      geographys:this.geogragphies,
+      StatusId : this.statusList,
+      GeographyId:this.geogragphies,
+      DealerId : this.dealerss,
+      Search:this.searchText
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -791,12 +799,16 @@ selectdays(){
   geographyselectAll(item: any) {
     this.geogragphies = this.geoAllarray;
     const data = {
-      geographys:this.geogragphies,
+      StatusId : this.statusList,
+      GeographyId:this.geogragphies,
+      DealerId : this.dealerss,
+      Search:this.searchText
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowData5 = res.response;  
     });
-
+    // console.log('rolefilter', this.userTypes)
+    // console.log('onItemSelect', item);
   }
   statusItems() {
     this.user.statusDropdownOrderlist().subscribe((res: any) => {
@@ -829,10 +841,10 @@ selectdays(){
   statusdropdownselect(item:any){
     this.statusList.push(item.statusId);
     const data = {
-      // "StatusId":[],
-      // "GeographyId":[],
       StatusId : this.statusList,
-      // "Search":"",
+      GeographyId:this.geogragphies,
+      DealerId : this.dealerss,
+      Search:this.searchText
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -844,15 +856,23 @@ selectdays(){
     });
     const data = {
       StatusId : this.statusList,
+      GeographyId:this.geogragphies,
+      DealerId : this.dealerss,
+      Search:this.searchText
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
+    console.log('rolefilter', this.userTypes)
+console.log('onItemSelect', item);
   }
   statusDeselectAll(item:any){
     this.statusList = [];
     const data = {
       StatusId : this.statusList,
+      GeographyId:this.geogragphies,
+      DealerId : this.dealerss,
+      Search:this.searchText
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -862,6 +882,9 @@ selectdays(){
     this.statusList = this.statusAllarray
     const data = {
       StatusId : this.statusList,
+      GeographyId:this.geogragphies,
+      DealerId : this.dealerss,
+      Search:this.searchText
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -871,15 +894,10 @@ selectdays(){
     const { target } = $event;
     this.searchText = target.value;
     const data = {
+      StatusId : this.statusList,
       GeographyId:this.geogragphies,
-      StatusId:this.statusList,
-      DealerId:this.dealerss,
+      DealerId : this.dealerss,
       Search:this.searchText
-  //   "StatusId":[],
-  //   "GeographyId":[],
-  //  "DealerId" : [],
-  //   "OrderDate":"",
-  //   "Search":""
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowData5 = res.response;

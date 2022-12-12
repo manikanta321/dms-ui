@@ -7,12 +7,35 @@
     </div>
     <div>
         <label class="addsub1" >Name<span style="color: red;">*</span></label><br>
-        <input type="text"id="password" placeholder="Enter sub-category name" 
-          required [(ngModel)]="sucatname">       
+        <input type="text"id="password" name="password"    placeholder="Enter sub-category name" 
+          required [(ngModel)]="sucatname" #password="ngModel">     
+          <p style="margin-bottom: -29px;
+          padding: 0px;
+          font-size: 11px;
+          position: relative;
+          bottom: 8px;"
+                                        *ngIf="password.invalid && (password.dirty || password.touched)" class="alert">
+                                        <span style="color:red;position: relative;" *ngIf="password.errors?.['required']">
+                                            *Name is required.
+                                        </span>
+                                    </p>  
 <br>
         <label  class="addsub2" >Code<span style="color: red;">*</span></label><br>
-        <input type="text" placeholder="Enter sub-category code" [(ngModel)]="sucatnameCode"
-      >
+        <!-- <input type="text" placeholder="Enter sub-category code" [(ngModel)]="sucatnameCode"
+      > -->
+      <input type="text"id="addCode" name="addCode"    placeholder="Enter sub-category code" 
+          required [(ngModel)]="sucatnameCode" #addCode="ngModel">     
+          <p style="margin-bottom: -31px;
+          padding: 0px;
+          font-size: 11px;
+          position: relative; 
+          
+          bottom: 8px;"
+                                        *ngIf="addCode.invalid && (addCode.dirty || addCode.touched)" class="alert">
+                                        <span style="color:red;position: relative;" *ngIf="addCode.errors?.['required']">
+                                            *Code is required.
+                                        </span>
+                                    </p>  
      <br>
         <button class="update-btn" *ngIf="SubcatsetName=='Add Sub-Category'" (click)="AddCat()" [disabled]="!sucatname || !sucatnameCode">Save</button>
         <button class="update-btn" *ngIf="SubcatsetName=='Edit Sub-Category'"  (click)="edit()" [disabled]="!sucatname || !sucatnameCode">Save</button>

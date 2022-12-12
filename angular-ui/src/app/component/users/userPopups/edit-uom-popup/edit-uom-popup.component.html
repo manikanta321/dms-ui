@@ -12,7 +12,19 @@
                 <label class="name">Name <span>*</span></label>
                 <br>
                 
-        <input type="text" placeholder="Enter your Name" [(ngModel)]="uoMName" >
+        <!-- <input type="text" id="uoMn" name="uoMn"   placeholder="Enter your Name" [(ngModel)]="uoMName" #uoMn="ngModel"> -->
+        <input type="text"id="uoMn" name="uoMn"    placeholder="Enter your Name" 
+          required [(ngModel)]="uoMName" #uoMn="ngModel">     
+          <p style="margin-bottom: -31px;
+          padding: 0px;
+          font-size: 11px;
+          position: relative;
+          bottom: 8px;"
+                                        *ngIf="uoMn.invalid && (uoMn.dirty || uoMn.touched)" class="alert">
+                                        <span style="color:red;position: relative;" *ngIf="uoMn.errors?.['required']">
+                                            *Name is required.
+                                        </span>
+                                    </p>  
         <br>
         <br>
       </div>
@@ -24,8 +36,20 @@
 
                 <label class="display">Display Code<span>*</span></label>
                 <br>
-                <input type="text" placeholder="Enter your Display Code" [(ngModel)]="uoMShortName" >
-        <br>
+                <!-- <input type="text" placeholder="Enter your Display Code" [(ngModel)]="uoMShortName" > -->
+                <input type="text"id="uoMdisplay" name="uoMdisplay"    placeholder="Enter your Name" 
+                required [(ngModel)]="uoMShortName" #uoMdisplay="ngModel">     
+                <p style="margin-bottom: -31px;
+                padding: 0px;
+                font-size: 11px;
+                position: relative;
+                bottom: 8px;"
+                                              *ngIf="uoMdisplay.invalid && (uoMdisplay.dirty || uoMdisplay.touched)" class="alert">
+                                              <span style="color:red;position: relative;" *ngIf="uoMdisplay.errors?.['required']">
+                                                  *Display Code is required.
+                                              </span>
+                                          </p>  
+                <br>
         <br>
       </div>
        </div>

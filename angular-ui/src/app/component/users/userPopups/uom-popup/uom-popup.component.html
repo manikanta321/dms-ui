@@ -13,7 +13,16 @@
           <div class="col">
             <label class="name">Name <span>*</span></label>
             <br />
-            <input type="text" placeholder="Enter  name" [(ngModel)]="name" />
+            <!-- <input type="text" placeholder="Enter  name" [(ngModel)]="name" /> -->
+            <input type="text" id="uomName" name="uomName" class="f-name" required
+                                        placeholder="Enter your name" [(ngModel)]="name" #uomName="ngModel">
+                                    <p style="margin-bottom:-16px; font-size:11px;padding: 0px;"
+                                        *ngIf="uomName.invalid && (uomName.dirty || uomName.touched)" class="alert">
+                                        <span style="color:red;position: relative;" *ngIf="uomName.errors?.['required']">
+                                            *Name is required.
+                                        </span>
+
+                                    </p>
             <br />
             <br />
           </div>
@@ -23,7 +32,16 @@
           <div class="col">
             <label class="dc">Display Code<span>*</span></label>
             <br />
-            <input type="text" placeholder="Enter your Display Code"  [(ngModel)]="DisplayCode"/>
+            <!-- <input type="text" placeholder="Enter your Display Code"  [(ngModel)]="DisplayCode"/> -->
+            <input type="text" id="displayC" name="displayC" required
+            placeholder="Enter your name" [(ngModel)]="DisplayCode" #displayC="ngModel">
+        <p style="margin-bottom:-16px; font-size:11px;padding: 0px;"
+            *ngIf="displayC.invalid && (displayC.dirty || displayC.touched)" class="alert">
+            <span style="color:red;position: relative;" *ngIf="displayC.errors?.['required']">
+                *Display Code is required.
+            </span>
+
+        </p>
           </div>
         </div>
       </form>

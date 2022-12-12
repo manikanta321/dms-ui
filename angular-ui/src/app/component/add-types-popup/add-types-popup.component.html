@@ -8,12 +8,34 @@
     </div>
     <div>
         <label class="addtypes1" >Name<span style="color: red;">*</span></label><br>
-        <input type="text"id="password" placeholder="Enter Type name" 
-          required [(ngModel)]="type">       
+        <input type="text"id="typeName" name="typeName" placeholder="Enter Type name" 
+          required [(ngModel)]="type" #typeName="ngModel">   
+          <p style="margin-bottom: -29px;
+          padding: 0px;
+          font-size: 11px;
+          position: relative;
+          bottom: 8px;"
+          *ngIf="typeName.invalid && (typeName.dirty || typeName.touched)" class="alert">
+          <span style="color:red;position: relative;" *ngIf="typeName.errors?.['required']">
+              *Name is required.
+          </span>
+      </p>   
 <br>
         <label class="addtypes2" >Code<span style="color: red;">*</span></label><br>
-        <input type="text" placeholder="Enter Type code" [(ngModel)]="typeCode"
-      >
+        <!-- <input type="text" placeholder="Enter Type code" [(ngModel)]="typeCode"
+      > -->
+      <input type="text"id="typeC" name="typeC" placeholder="Enter Type code" 
+          required [(ngModel)]="typeCode" #typeC="ngModel">   
+          <p style="margin-bottom: -31px;
+          padding: 0px;
+          font-size: 11px;
+          position: relative;
+          bottom: 8px;"
+          *ngIf="typeC.invalid && (typeC.dirty || typeC.touched)" class="alert">
+          <span style="color:red;position: relative;" *ngIf="typeC.errors?.['required']">
+              *Code is required.
+          </span> 
+      </p>   
      <br>
         <button class="update-btn" *ngIf="TypeName=='Add Types'"  (click)="AddCat()" [disabled]="!type || !typeCode">Save</button>
         <button class="update-btn" *ngIf="TypeName=='Edit Types'" (click)="editType()" [disabled]="!type || !typeCode">Save</button>

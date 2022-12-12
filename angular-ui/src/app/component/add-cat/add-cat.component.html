@@ -7,12 +7,34 @@
     </div>
     <div>
         <label class="addcat" >Name<span style="color: red;">*</span></label><br>
-        <input type="text" placeholder="Enter category name" 
-          required [(ngModel)]="addcat">       
+        <input type="text" placeholder="Enter category name" id="addCategory" name="addCategory"
+          required [(ngModel)]="addcat" #addCategory="ngModel">       
+          <p style="margin-bottom: -29px;
+          padding: 0px;
+          font-size: 11px;
+          position: relative;
+          bottom: 8px;"
+          *ngIf="addCategory.invalid && (addCategory.dirty || addCategory.touched)" class="alert">
+          <span style="color:red;position: relative;" *ngIf="addCategory.errors?.['required']">
+              *Name is required.
+          </span>
+      </p>
 <br>
         <label class="addcat1" >Code<span style="color: red;">*</span></label><br>
-        <input type="text" placeholder="Enter category code" [(ngModel)]="addcatcode"
-      >
+        <!-- <input type="text" placeholder="Enter category code" [(ngModel)]="addcatcode"
+      > -->
+      <input type="text" placeholder="Enter category code" id="codecat" name="codecat"
+          required [(ngModel)]="addcatcode" #codecat="ngModel">       
+          <p style="margin-bottom: -35px;
+          padding: 0px;
+          font-size: 11px;
+          position: relative;
+          bottom: 12px;"
+          *ngIf="codecat.invalid && (codecat.dirty || codecat.touched)" class="alert">
+          <span style="color:red;position: relative;" *ngIf="codecat.errors?.['required']">
+              *Code is required.
+          </span>
+      </p>
      <br>
         <button  *ngIf="catsetName=='Add Category'"   class="update-btn" (click)="AddCat()" [disabled]="!addcat || !addcatcode">Save</button>
         <button *ngIf="catsetName=='Edit Category'" class="update-btn" (click)="editCat()" [disabled]="!addcat || !addcatcode">Save</button>

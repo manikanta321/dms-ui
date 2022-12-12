@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'dashbord/other-masters', pathMatch: 'full',component: OtherMastersComponent  },
   { path: 'dashbord/dealer', pathMatch: 'full',component: DealerComponent  }
 ,
-{ path: 'dashbord/oreders', pathMatch: 'full',component: OrdersComponent  }
+{ path: 'dashbord/orders', pathMatch: 'full',component: OrdersComponent  }
 ,
   { path: 'dashbord/geographies', pathMatch: 'full',component: GeographiesComponent  },
   { path: 'dashbord/saleslist', pathMatch:'full', component: SalesListComponent},

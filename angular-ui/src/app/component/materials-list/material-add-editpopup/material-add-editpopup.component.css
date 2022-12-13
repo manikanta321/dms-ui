@@ -674,6 +674,21 @@ align-items: center;
   margin-top: 8px;
   /* margin-left: -1px; */
 }
+.materialIdentifier {
+font-family: 'Gilroy';
+font-size: 14px;
+line-height: 16px;
+display: flex;
+align-items: center;
+border: 0.5px solid #000000;
+box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+border-radius: 10px;
+height: 35px;
+background-color: white;
+margin-top: 8px;
+color: #000000;
+/* font-weight: bold; */
+}
 ::ng-deep.sss .mat-form-field-label {
   color: rgba(104, 110, 116, 0.75);
   font-size: 12px;
@@ -1395,3 +1410,14 @@ mat-icon {
   left: 50%;
   margin-left: -3px;
 } */
+.expand-materialIdentifier {
+  position: relative;
+  height: 13px;
+  bottom: 27px;
+  left: 90%;
+  /* position: fixed;
+    height: 13px;
+    bottom: 233px;
+    left: 2;
+    left: 79%; */
+}

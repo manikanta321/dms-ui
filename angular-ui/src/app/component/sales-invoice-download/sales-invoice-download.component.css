@@ -1,0 +1,74 @@
+.add-sales {
+    height: 516px;
+    overflow-x: hidden; 
+  }
+  .close-icon {
+    left: 98%;
+    font-size: 18px;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .sales-head{
+    color: #000000;
+    text-align: center;
+    margin-top: -18px;
+    margin-bottom: 2px;
+    cursor: pointer;
+}
+.sales-add {
+    position: relative;
+    /* font-family: 'Gilroy-Bold';  */
+    font-weight: bold;
+    font-size: 20px;
+    right: 37%;
+    font-family: 'Gilroy';
+    font-size: 20px;
+    letter-spacing: 0.2px;
+    
+
+  }
+  
+  .sales-add:after {
+    content: "";
+    display: block;
+    width: 793px;
+    height: 0.5px;
+    background: #686E74;
+    top: 50%;
+    left: 62%;
+    position: absolute;
+  }
+  .saveas-draft {
+    color: #fff;
+    background: #000000;
+    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    float: right;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 280px;
+height: 43px;
+  }
+  .cancel{
+    color: black;
+    background: white;
+    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    float: left;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 280px;
+    height: 43px;
+  }
+  .sales-grid-table {
+    margin-left: 5px;
+  }
+  .pagination {
+    float: right !important;
+  }
+  .pagination-cls {
+    font-size: 14px;
+    font-weight: 900;
+  }

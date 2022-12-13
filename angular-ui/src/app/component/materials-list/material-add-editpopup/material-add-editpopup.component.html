@@ -148,9 +148,14 @@
                   <label> Material Custom Identifiers <span>*</span></label>
                 </div>
                 <div class="customidentifier hide" (click)=popup()>
-                  <ng-multiselect-dropdown class="Materialcustomidentifier" name="Materialcustomidentifier"
+                  <!-- <ng-multiselect-dropdown class="Materialcustomidentifier" name="Materialcustomidentifier"
                     placeholder="Select Identifier" [disabled]="disabled" [settings]="dropdownSettings4">
-                  </ng-multiselect-dropdown>
+                  </ng-multiselect-dropdown> -->
+                  <input type="text" disabled id="matIdentifier" name="matIdentifier" (click)="expandMaterialIdentifier()"
+                  class="form-control container materialIdentifier" required
+                  placeholder="Select Identifier" [(ngModel)]="MaterialCustomIdentifiersNames" #matIdentifier="ngModel">
+                  <img [src]="image1" class="expand-materialIdentifier" alt="add-user-btn" />
+                  
                 </div>
                 <div class="overlay" *ngIf="materialIdentifierPopup">
                   <div class="popup">
@@ -163,7 +168,7 @@
                         <mat-chip [value]="data" #identifierId="matChip" *ngFor="let data of selectId"
                           [selected]="isSelectedMaterialIdentifier(data)" (focus)="selectMaterialIdentifier(data)"
                           class="cold">
-                          <mat-icon *ngIf="identifierId.selected">check</mat-icon>
+                          <!-- <mat-icon *ngIf="identifierId.selected">check</mat-icon> -->
                           {{data.materialCustomName}}
                         </mat-chip>
                       </mat-chip-list>
@@ -367,9 +372,13 @@
                   <label>Product Custom Identifier<span>*</span></label>
                 </div>
                 <div class="identiersdrp hide" (click)="productIdentifier()">
-                  <ng-multiselect-dropdown name="ProductCustomIdentifierId" class="ProductCustomIdentifierId"
+                  <!-- <ng-multiselect-dropdown name="ProductCustomIdentifierId" class="ProductCustomIdentifierId"
                     [placeholder]="'Select the identifiers'" [disabled]="disabled" [settings]="dropdownSettings3">
-                  </ng-multiselect-dropdown>
+                  </ng-multiselect-dropdown> -->
+                  <input type="text" disabled id="prodIdentifier" name="prodIdentifier" (click)="expandMaterialIdentifier()"
+                  class="form-control container materialIdentifier" required
+                  placeholder="Select the identifiers" [(ngModel)]="selectedProductIdentifierData" #prodIdentifier="ngModel">
+                  <img [src]="image1" style="left: 97%;" class="expand-materialIdentifier" alt="add-user-btn" />
                 </div>
 
                 <div class="overlay" *ngIf="productIdentifierPopup">
@@ -387,7 +396,7 @@
                               <mat-chip #businessdata="matChip" [value]="data"
                                 *ngFor="let data of businessData; let i = index" [selected]="isSelectedBusiness(data)"
                                 (focus)="selectBusinessProduct(data,i)" class="cold">
-                                <mat-icon *ngIf="businessdata.selected">check</mat-icon>
+                                <!-- <mat-icon *ngIf="businessdata.selected">check</mat-icon> -->
                                 {{data.productCustomName}}
                               </mat-chip>
                             </mat-chip-list>
@@ -397,12 +406,22 @@
                         <div class="col-4">
                           <h2>Product<span>*</span></h2>
 
+                          <!-- <div class="content">
+                            <mat-chip-list multiple>
+                              <mat-chip #pi="matChip" [value]="data" *ngFor="let data of productData  let i = index"
+                                [selected]="isSelectedProductIdentifier(data)" (focus)="selectProductIdentifier(data,i)"
+                                class="cold">
+                                {{data.productCustomName}}
+                              </mat-chip>
+                            </mat-chip-list>
+                          </div> -->
                           <div class="content">
                             <mat-chip-list multiple>
-                              <mat-chip #pi="matChip" [value]="data" *ngFor="let data of productData"
-                                [selected]="isSelectedProductIdentifier(data)" (focus)="selectProductIdentifier(data)"
-                                class="cold">
-                                <mat-icon *ngIf="pi.selected">check</mat-icon>
+                              <!-- [(ngModel)]="bussinessIdentifiers" -->
+                              <mat-chip #Productdata="matChip" [value]="data"
+                                *ngFor="let data of productData; let i = index" [selected]="isSelectedProductIdentifier(data)"
+                                (focus)="selectProductIdentifier(data,i)" class="cold">
+                                <!-- <mat-icon *ngIf="Productdata.selected">check</mat-icon> -->
                                 {{data.productCustomName}}
                               </mat-chip>
                             </mat-chip-list>
@@ -417,7 +436,7 @@
                               <mat-chip #ps="matChip" *ngFor="let data of productSettingData"
                                 [selected]="isSelectedProductIdentifierSetting(data)"
                                 (focus)="selectProductIdentifierSetting(data)" class="cold">
-                                <mat-icon *ngIf="ps.selected">check</mat-icon>
+                                <!-- <mat-icon *ngIf="ps.selected">check</mat-icon> -->
                                 {{data.productCustomName}}
                               </mat-chip>
                             </mat-chip-list>

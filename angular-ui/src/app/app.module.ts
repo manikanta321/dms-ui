@@ -164,6 +164,8 @@ import { TargetGroupsComponent } from './component/target-groups/target-groups.c
 import { AddTargetsComponent } from './component/add-targets/add-targets.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { UploadSalesActionComponent } from './component/upload-sales-action/upload-sales-action.component';
+import { SalesInvoiceDownloadComponent } from './component/sales-invoice-download/sales-invoice-download.component';
 
 @NgModule({
   declarations: [
@@ -350,6 +352,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
           DeactiveTypeCompoComponent,
           TargetGroupsComponent,
           AddTargetsComponent,
+          UploadSalesActionComponent,
+          SalesInvoiceDownloadComponent,
           
   ],
   imports: [

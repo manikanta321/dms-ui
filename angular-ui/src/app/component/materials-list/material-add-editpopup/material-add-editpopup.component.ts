@@ -161,6 +161,13 @@ export class MaterialAddEditpopupComponent {
   ProductIdentifiersId: any;
   ProductIdentifiersSettingId: any;
   seletedItem: any = [];
+  MaterialCustomIdentifiersNames:any=[];
+  image5 = 'assets/img/minimize-tag.png';
+  materialIdentifierexpand = true;
+  ProductIdentifiersSettingsNames:any=[];
+  ProductIdentifiersNames:any=[];
+  businessIdentifiersNames:any=[];
+  selectedProductIdentifierData:any=[];
   colorsList = [
     { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
     { primaryColor: { background: '#0C5A3E', color: '#fff' }, secondaryColor: { background: "#E6FFF6", color: "#0C5A3E" }, },
@@ -1066,15 +1073,15 @@ export class MaterialAddEditpopupComponent {
     let index = this.selctedIdentifier.findIndex(x => x.materilCustomIdentifierId == materialIdentifier.materilCustomIdentifierId)
     if (index >= 0) {
       this.selctedIdentifier.splice(index, 1);
-      const MaterialCustomIdentifiersNames = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materialCustomName);
+       this.MaterialCustomIdentifiersNames = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materialCustomName);
       this.MaterialCustomIdentifiers = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materilCustomIdentifierId);
       console.log("MaterialCustomIdentifiers", this.MaterialCustomIdentifiers);
-      console.log("MaterialCustomIdentifiersNames", MaterialCustomIdentifiersNames);
+      console.log("MaterialCustomIdentifiersNames", this.MaterialCustomIdentifiersNames);
     } else {
       this.selctedIdentifier.push(materialIdentifier);
-      const MaterialCustomIdentifiersNames = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materialCustomName);
+       this.MaterialCustomIdentifiersNames = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materialCustomName);
       this.MaterialCustomIdentifiers = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materilCustomIdentifierId);
-      console.log("MaterialCustomIdentifiersNames", MaterialCustomIdentifiersNames);
+      console.log("MaterialCustomIdentifiersNames", this.MaterialCustomIdentifiersNames);
       console.log("MaterialCustomIdentifiers", this.MaterialCustomIdentifiers);
     }
   }
@@ -1088,15 +1095,19 @@ export class MaterialAddEditpopupComponent {
 
     if (index >= 0) {
       this.businessSelctedIdentifier.splice(index, 1);
-      // const businessIdentifiersNames = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomName);
+      this.businessIdentifiersNames = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomName);
       this.bussinessIdentifiers = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomIdentifierId);
       console.log("bussinessIdentifiers", this.bussinessIdentifiers);
+  this.selectedProductIdentifierData = this.businessIdentifiersNames+this.ProductIdentifiersNames+this.ProductIdentifiersSettingsNames;
+  console.log("this.selectedProductIdentifierData",this.selectedProductIdentifierData);
       // console.log("businessIdentifiersNames", businessIdentifiersNames);
     } else {
       this.businessSelctedIdentifier.push(businessIdentifier);
-      // const businessIdentifiersNames = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomName);
+      this.businessIdentifiersNames = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomName);
       this.bussinessIdentifiers = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomIdentifierId);
       // console.log("businessIdentifiersNames", businessIdentifiersNames);
+  this.selectedProductIdentifierData = this.businessIdentifiersNames+this.ProductIdentifiersNames+this.ProductIdentifiersSettingsNames;
+  console.log("this.selectedProductIdentifierData",this.selectedProductIdentifierData);
       console.log("bussinessIdentifiers", this.bussinessIdentifiers);
     }
   }
@@ -1106,21 +1117,28 @@ export class MaterialAddEditpopupComponent {
     return index >= 0;
   }
 
-  selectProductIdentifier(IdentifierProduct: any): void {
-    let index = this.businessSelctedIdentifier.findIndex(x => x.productCustomIdentifierId == IdentifierProduct.productCustomIdentifierId)
+  selectProductIdentifier(IdentifierProduct: any,temp): void {
+    debugger
+    let index = this.productSelctedIdentifier.findIndex(x=>x.productCustomIdentifierId==IdentifierProduct.productCustomIdentifierId);
 
     if (index >= 0) {
       this.productSelctedIdentifier.splice(index, 1);
-      // const ProductIdentifiersNames = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomName);
+      this.ProductIdentifiersNames = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomName);
       this.ProductIdentifiersId = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomIdentifierId);
       console.log("ProductIdentifiersId", this.ProductIdentifiersId);
+  this.selectedProductIdentifierData = this.businessIdentifiersNames+this.ProductIdentifiersNames+this.ProductIdentifiersSettingsNames;
+  console.log("this.selectedProductIdentifierData",this.selectedProductIdentifierData);
+
       // console.log("ProductIdentifiersNames", ProductIdentifiersNames);
     } else {
       this.productSelctedIdentifier.push(IdentifierProduct);
-      // const ProductIdentifiersNames = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomName);
+      this.ProductIdentifiersNames = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomName);
       this.ProductIdentifiersId = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomIdentifierId);
       // console.log("ProductIdentifiersNames", ProductIdentifiersNames);
       console.log("ProductIdentifiersId", this.ProductIdentifiersId);
+  this.selectedProductIdentifierData = this.businessIdentifiersNames+this.ProductIdentifiersNames+this.ProductIdentifiersSettingsNames;
+  console.log("this.selectedProductIdentifierData",this.selectedProductIdentifierData);
+
     }
   }
 
@@ -1135,16 +1153,22 @@ export class MaterialAddEditpopupComponent {
 
     if (index >= 0) {
       this.productSettingIdentifier.splice(index, 1);
-      // const ProductIdentifiersSettingsNames = this.productSettingIdentifier.map((IdentifierSetting) => IdentifierSetting.productCustomName);
+      this.ProductIdentifiersSettingsNames = this.productSettingIdentifier.map((IdentifierSetting) => IdentifierSetting.productCustomName);
       this.ProductIdentifiersSettingId = this.productSettingIdentifier.map((IdentifierSetting) => IdentifierSetting.productCustomIdentifierId);
       console.log("ProductSettingIdentifiersId", this.ProductIdentifiersSettingId);
       // console.log("ProductSettingIdentifiersNames", ProductIdentifiersSettingsNames);
+  this.selectedProductIdentifierData = this.businessIdentifiersNames+this.ProductIdentifiersNames+this.ProductIdentifiersSettingsNames;
+  console.log("this.selectedProductIdentifierData",this.selectedProductIdentifierData);
+
     } else {
       this.productSettingIdentifier.push(IdentifierSetting);
-      // const ProductIdentifiersSettingsNames = this.productSettingIdentifier.map((IdentifierSetting) => IdentifierSetting.productCustomName);
+      this.ProductIdentifiersSettingsNames = this.productSettingIdentifier.map((IdentifierSetting) => IdentifierSetting.productCustomName);
       this.ProductIdentifiersSettingId = this.productSettingIdentifier.map((IdentifierSetting) => IdentifierSetting.productCustomIdentifierId);
       // console.log("ProductSettingIdentifiersNames", ProductIdentifiersSettingsNames);
       console.log("PProductSettingIdentifiersId", this.ProductIdentifiersSettingId);
+  this.selectedProductIdentifierData = this.businessIdentifiersNames+this.ProductIdentifiersNames+this.ProductIdentifiersSettingsNames;
+  console.log("this.selectedProductIdentifierData",this.selectedProductIdentifierData);
+
     }
   }
   // this.bussinessIdentifiers,this.ProductIdentifiersSettingId,this.ProductIdentifiersId
@@ -1176,7 +1200,17 @@ export class MaterialAddEditpopupComponent {
     
   
   }
+  expandMaterialIdentifier() {
 
+    this.materialIdentifierexpand = !this.materialIdentifierexpand;
+    if (this.materialIdentifierexpand === false) {
+      this.image1 = 'assets/img/maximize-arrow.png';
+    } else {
+      this.image1 = 'assets/img/minimize-tag.png';
+
+    }
+
+  }
 
 }
 

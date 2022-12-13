@@ -1,1 +1,74 @@
-<p>sales-uploads works!</p>
+<div class="container-fluid sales-container mt-5">
+    <div class="section sales">
+        <div class="sales-search-drop">
+            <div class="row">
+                <div class="shipment mr-3" >
+                    <app-customdatepicker [showInputField]="true" label="Invoice Date" style="height:43px;"
+                        [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)">
+                    </app-customdatepicker>
+                </div>
+                <div class="sales-refreshbtn">
+                    <img class="refresh-img" src="assets/img/Vector.png" alt="refresh">
+                  </div>
+            </div>
+        </div>
+        <div class="row listicon">
+            <div class="col-md-4 srch-hover" >
+              <div class="searchBox1 d-flex">
+                <input class="searchInput1" type="text" name="" placeholder="Type & search for anything">
+                <button class="search-btn">Search</button>
+                <button class="searchButton" href="#">
+                  <i class="material-icons">
+                    search
+                  </i>
+                </button>
+              </div>
+            </div>
+            <!-- <div class="col-md-8">
+                <div class="searchBox1 d-flex" style=" cursor: pointer">
+                  <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name=""
+                    placeholder="Type & search for anything">
+                  <button class="searchButton" href="#">
+                    <i class="material-icons">
+                      search
+                    </i>
+                  </button>
+                  <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+                </div>
+              </div> -->
+          <div class="col-md-0">
+            <div class="sales-download" (click)="addSales()">
+                <img class="dwnld-img" src="assets/img/orderlist-upload.svg" 
+                    alt="add-user-btn">
+            </div>
+          </div>
+          <div class="col-md-0">
+          <div class="sales-upload" >
+              <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
+                  alt="add-user-btn">    
+          </div>
+          </div>
+          <div class="col-md-0">
+          <!-- <div class="sales-dwnld" >
+            <img   class="imgdwnl" src="assets/img/download-btn.png"
+                alt="add-user-btn">    
+          </div> -->
+          <div class="col-1"></div>
+          </div>
+          </div>
+        <div class="sales-grid-table mt-3">
+              <ag-grid-angular id="gridContainer" [tooltipMouseTrack]="true"
+              style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%; margin-left:-4px;"
+              class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
+              [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
+              [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
+              (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
+              (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+              (bodyScroll)="handleScroll($event)"></ag-grid-angular>
+        </div>
+        <div class="pagination">
+            <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{paginationScrollCount}}</span> of 
+            <span class="pagination-cls">{{rowData5.length}}</span>
+          </div>
+    </div>
+</div>

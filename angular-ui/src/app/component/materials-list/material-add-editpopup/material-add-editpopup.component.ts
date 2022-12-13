@@ -24,6 +24,7 @@ export class MaterialAddEditpopupComponent {
   chipControl = new FormControl(new Set());
 
 
+
   disabled = false;
   catgname: any = [];
   base64textString = "";
@@ -1151,9 +1152,11 @@ export class MaterialAddEditpopupComponent {
 
    goForward(stepper: MatStepper) {
      stepper.next();
+     
   }
    gobackward(stepper: MatStepper) {
     stepper.previous();
+    
   }
 
   

@@ -10,7 +10,7 @@
                 <h1>New password</h1>
             </div>
             <label>Latest password <span style="color: red;">*</span></label><br>
-            <input type="password" id="password" placeholder="Enter your password (at least 8 ch)" name="password"
+            <input type="password" id="password" placeholder="Enter your new password (at least 8 ch)" name="password"
             [type]="showPassword ? 'text': 'password'" [(ngModel)]="enterfirst" required>
           <mat-icon matSuffix (click)="PasswordVisibilityLatest()">
             {{showPassword?'visibility':'visibility_off'}}

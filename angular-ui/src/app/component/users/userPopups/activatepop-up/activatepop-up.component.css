@@ -5,11 +5,13 @@
     border-left: 10px solid green !important;
 }
 .head-text{
-font-size: 20px;
+font-size: 23px;
 font-weight: 600;
 margin-top: -37px;
 font-family: 'Gilroy';
 color: #000000;
+font-weight: bold;
+font-family: 'Gilroy-bold';
 
 
 }

@@ -765,14 +765,23 @@ align-items: center;
   border-radius: 10px;
 }
 
-.leftarrow {
+.leftarrow1 {
   width: 24px;
-  margin-left: 728px;
+   margin-right: 9px;
+  cursor: pointer;
+  
 }
 
-.rightarrow {
+.rightarrow2 {
   width: 24px;
-  margin-left: 12px;
+
+   
+  
+  cursor: pointer;
+}
+.d-flex
+{
+  justify-content: right;
 }
 
 .stepperHeader-b {
@@ -787,7 +796,8 @@ align-items: center;
   border-radius: 10px;
   /* width: 300px;
   height: 126px; */
-  width: 333px;
+
+  width: 421px;
   height: 130px;
   background-color: white;
   margin-top: 6px;

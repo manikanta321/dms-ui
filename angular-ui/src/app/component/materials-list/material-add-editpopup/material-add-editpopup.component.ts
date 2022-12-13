@@ -90,7 +90,6 @@ export class MaterialAddEditpopupComponent {
   districtName: any;
 
 
-  // basicInfo: boolean = false;
   materialName: any = '';
   stockItemDesc: string = '';
   desc: any;
@@ -123,7 +122,7 @@ export class MaterialAddEditpopupComponent {
 
 
 
-  basicInfo: boolean = false;
+  
   
 
   geoPropertiesList: any
@@ -1160,7 +1159,7 @@ export class MaterialAddEditpopupComponent {
   
   nextbutton() {
     this.goForward(this.stepper);
-    //  this.basicInfo = false;
+      
     
     
    
@@ -1169,8 +1168,6 @@ export class MaterialAddEditpopupComponent {
 
   Backbutton() {
     this.gobackward(this.stepper);
-    //  this.basicInfo = true;
-    console.log("1");
 
     
     

@@ -36,8 +36,8 @@ export class AddDealerAssociationsComponent implements OnInit {
   catArray: any[] = [];
   subcatArray: any[] = [];
   catergory: any = [];
-  selectedDealerInDropDown: any;
-
+  selectedDealerInDropDown: any=[];
+  mainarray:any;
   catagoryName: any;
   sub_category: any = [];
   sub_categorys: any = [];
@@ -139,7 +139,7 @@ productSkuId:any;
   productDlr: boolean = false;
   dealersArray:any=[];
   storedName124:any;
-  loopingdata:any=[];
+  loopingdata:any;
   constructor(
     private _formBuilder: FormBuilder,
     public dialog: MatDialog,
@@ -254,8 +254,11 @@ this.dealersArray
 
 }
 
+
+
+
 onDealerSelect(item: any) {
-  this.selectedDealerInDropDown=item.customerId;
+  this.selectedDealerInDropDown.push(item.customerId);
   console.log("Catttyyyyy", item)
   console.log('item Subcatty', item)
   this.catagoryName = item.catName;
@@ -267,10 +270,70 @@ onDealerSelect(item: any) {
   this.associationService.getdealerEntireList(dealerdata).subscribe((res) => {
    let data =res.response;
    debugger
-   this.loopingdata[0] =data;
+   this.loopingdata=data;
    console.log(' this.loopingdata', this.loopingdata)
+
+
+this.ourGeoFormt(res.response)
+
+
   });
 }
+
+
+ourGeoFormt(reqObj){
+console.log('req',reqObj);
+for(let items of reqObj){
+  let obj: any = {};
+  obj.dealerId=items.dealerId;
+  obj.dealerName=items.dealerName;
+  obj.defaultHeirarchyLevelId=items.defaultHeirarchyLevelId;
+
+// for(let i=0;i>obj.defaultHeirarchyLevelId;i++){
+// if(items.geoDetails?.child){
+
+// }
+// }
+if( items?.geoDetails){
+  let copyObject = items?.geoDetails;
+  delete copyObject[0].child;
+  obj.geographySelected = [copyObject];
+  obj.geoProperties = [this.CreateGeoPropertiesObject({ geoGraphyName: copyObject.geoGraphyName, geographyId: copyObject.geographyId })];
+}
+
+console.log('obj',obj)
+let obj1:string[]=[];
+obj1[0]=obj
+let result : string[] = [];
+return console.log('mainobj',obj1);
+
+}
+
+if(1!=1){
+
+}else{
+  debugger
+  console.log('obj',this.mainarray);
+
+}
+}
+
+CreateGeoPropertiesObject(propertyObj) {
+  let obj: any = {};
+  obj.productSKUGeographyId = propertyObj.productSKUGeographyId ?? "";
+  obj.minOrderQty = propertyObj.minOrderQty ?? "";
+  obj.discountPercent = propertyObj.discountPercent ?? "";
+  obj.maxOrderQty = propertyObj.maxOrderQty ?? "";
+  obj.marginPercent = propertyObj.marginPercent ?? "";
+  obj.mrp = propertyObj.mrp ?? "";
+  obj.leadTime = propertyObj.leadTime ?? "";
+  obj.geographyId = propertyObj.geographyId ?? "";
+  obj.geographyName = propertyObj.geographyName ?? "";
+  obj.registrationNumber = propertyObj.registrationNumber ?? "";
+  return obj;
+}
+
+
 onDealerDeSelect(item: any) {
   this.catergory.forEach((element, index) => {
     if (element == item.catId) this.catergory.splice(index, 1);

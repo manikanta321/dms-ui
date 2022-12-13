@@ -8,7 +8,6 @@ export class AuthInterceptor implements HttpInterceptor {
         next: HttpHandler): Observable<HttpEvent<any>> {
 
         const idToken = localStorage.getItem("token");
-        console.log('have to check this token', idToken)
         if (idToken) {
             const cloned = req.clone({
                 headers: req.headers.set("Authorization",

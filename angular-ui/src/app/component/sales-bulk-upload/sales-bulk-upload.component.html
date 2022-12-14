@@ -574,12 +574,16 @@
                     </table>
                 </div>
             </div>
-            <div class="row footer">
-                <div class="col-md-6">
-                        <button type="button" class="saveas-draft">Upload</button>                       
+            <div class="button-save-chng row">
+                <div class="save-chng">
+                    <button class="save-text">
+                       Upload
+                    </button>
                 </div>
-                <div class="col-md-6">                      
-                        <button type="button"  [mat-dialog-close]="true"  class="cancel">Cancel</button>                   
+                <div class="discard">
+                    <button class="discard-text" [mat-dialog-close]="true">
+                        Cancel
+                    </button>
                 </div>
             </div>
         </div>

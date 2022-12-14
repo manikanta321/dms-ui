@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ShipOrderBulkDownloadComponent } from '../ship-order-bulk-download/ship-order-bulk-download.component';
 import { CustomDatePopupComponent } from '../custom-date-popup/custom-date-popup.component';
+import { SalesBulkUploadComponent } from '../../sales-bulk-upload/sales-bulk-upload.component';
 
 @Component({
   selector: 'app-orders-shipment',
@@ -261,5 +262,10 @@ export class OrdersShipmentComponent implements OnInit {
     customDatePickerEvent(eventChange){
       this.selectedDateRange = eventChange.selectedDate;
       console.log(this.selectedDateRange);
+    }
+    orderShipmentUpload(){
+      sessionStorage.setItem("sales",'');
+        this.dialog.open(SalesBulkUploadComponent);
+        // this.isOpen = false;
     }
 }

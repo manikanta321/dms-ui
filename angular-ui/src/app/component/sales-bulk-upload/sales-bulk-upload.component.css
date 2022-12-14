@@ -381,3 +381,25 @@ tr {
     top: 56px;
     z-index: 1;
   }
+  .saveas-draft {
+    color: #fff;
+    background: #000000;
+    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    float: right;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 280px;
+height: 43px;
+  }
+  .cancel{
+    color: black;
+    background: white;
+    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    float: left;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 280px;
+    height: 43px;
+  }

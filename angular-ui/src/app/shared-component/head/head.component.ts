@@ -54,6 +54,7 @@ logout() {
 
   localStorage.removeItem("token");
   localStorage.removeItem("expires_at");
+  window.localStorage.clear();
 }
 resetpws(){
   sessionStorage.setItem("admin","adminPassword")

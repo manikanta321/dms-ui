@@ -423,7 +423,6 @@ this.getusertabeldata();
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
       this.rowData5 = res.response;
-      alert("Hellooo")
       console.log("Promotion List",this.rowData5);
      
 

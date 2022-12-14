@@ -1084,6 +1084,8 @@ border-radius: 10px;
     background: #FFFFFF;
     border: 0.5px solid #000000;
     border-radius: 10px;
+    margin-top: 10px;
+    height: 42px;
   }
   
   /* .active, .collapsible:hover {
@@ -1314,7 +1316,7 @@ border-radius: 10px;
     border: 0.5px solid #000000;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 10px;
-    height: 43px;
+    height: 39px;
     padding: 4px;
   }
   .sltd-span{
@@ -1333,7 +1335,7 @@ border-radius: 10px;
     background: #000000;
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
-  height: 33px;
+  height: 28px;
   color: white;
   float: right;
   }
@@ -1341,7 +1343,7 @@ border-radius: 10px;
     background: #bda5a5;
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
-  height: 33px;
+  height: 28px;
   color: white;
   float: right;
   }
@@ -1397,4 +1399,8 @@ width: 100%;
   }
   td{
     font-weight: 600;
+  }
+
+  .example-margin{
+    top:10px
   }

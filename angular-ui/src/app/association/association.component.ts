@@ -335,6 +335,8 @@ export class AssociationComponent implements OnInit {
 
   ngOnInit() {
     this.getusertabeldata();
+    // this.dialog.open(AddDealerAssociationsComponent,{width: '900px',height:'460px'});
+
     this.roleItems();
     this.ProductItems();
     this.dealerItems();

@@ -446,6 +446,7 @@ export class MaterialAddEditpopupComponent {
       alert("Plz select atleast one city");
       return;
     }
+
     this.geoProperties = JSON.parse(JSON.stringify(this.geoGraphyFullData[3].geoProperties));
     this.geoProperties = this.geoProperties.map(item => {
       delete item.geographyName;
@@ -492,6 +493,7 @@ export class MaterialAddEditpopupComponent {
       return;
     }
     this.geoProperties = JSON.parse(JSON.stringify(this.geoGraphyFullData[3].geoProperties));
+    debugger
     this.geoProperties = this.geoProperties.map(item => {
       delete item.geographyName;
       return item;

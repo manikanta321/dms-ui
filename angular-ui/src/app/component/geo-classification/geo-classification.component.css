@@ -1,12 +1,13 @@
 .section {
   margin-top: 50px;
+  padding: 17px;
 }
 
 
 .horizontal-scroll {
   display: flex;
   gap: 10px;
-  height: 450px;
+  height: 450px; 
   overflow-x: auto;
   /* -ms-scroll-snap-type: x mandatory;
       scroll-snap-type: x mandatory;
@@ -437,4 +438,7 @@ li {
   font-size: 18px;
   color: #000;
   font-weight: 600;
+}
+.addC{
+  cursor: pointer;
 }

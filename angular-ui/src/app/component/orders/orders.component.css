@@ -38,7 +38,7 @@ mat-sidenav {
 mat-sidenav-content{
     /* height: calc(100vh - 98px); */
     height: 100vh;
-    border-radius: 10px;
+    border-radius: 35px;  
     padding: 10px;
     background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);
 }
@@ -129,7 +129,7 @@ height: 35px;
 mat-sidenav-content{
     /* height: calc(100vh - 98px); */
     height: 100vh;
-    border-radius: 10px;
+    border-radius: 35px;
     padding: 10px;
     background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);
 }

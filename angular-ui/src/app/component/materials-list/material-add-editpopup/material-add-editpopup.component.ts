@@ -23,8 +23,6 @@ import { MatChip, MatChipList } from '@angular/material/chips';
 export class MaterialAddEditpopupComponent {
   chipControl = new FormControl(new Set());
 
-
-
   disabled = false;
   catgname: any = [];
   base64textString = "";

@@ -54,7 +54,6 @@ export class LoginService {
   userRolesData = [
     {
       key: 'maindashboard',
-      url: '/maindashboard',
       title: 'Dashboard',
       submenulist: [],
       permissions: [
@@ -62,16 +61,16 @@ export class LoginService {
         { action: 'add', status: false },
         { action: 'edit', status: false },
         { action: 'delete', status: false },
+        { action: 'activate_deactivate', status: false },
       ]
     },
     {
       key: 'orderdashboard',
-      url: 'dashbord/orders',
       title: 'Orders',
       submenulist: [
         {
           key: 'order_invoice',
-          url: 'dashbord/orders',
+  
           title: 'Invoice',
           submenulist: [],
           permissions: [
@@ -83,7 +82,7 @@ export class LoginService {
         },
         {
           key: 'order_orderlist',
-          url: 'dashbord/orders',
+  
           title: 'Orders List',
           submenulist: [],
           permissions: [
@@ -95,7 +94,7 @@ export class LoginService {
         },
         {
           key: 'order_shipments',
-          url: 'dashbord/orders',
+  
           title: 'Shipments',
           submenulist: [],
           permissions: [
@@ -115,7 +114,6 @@ export class LoginService {
     },
     {
       key: 'saleslistdashboard',
-      url: 'dashbord/saleslist',
       title: 'Sales',
       submenulist: [],
       permissions: [
@@ -127,7 +125,6 @@ export class LoginService {
     },
     {
       key: 'dealerdashboard',
-      url: 'dashbord/dealer',
       title: 'Dealer',
       submenulist: [],
       permissions: [
@@ -139,7 +136,6 @@ export class LoginService {
     },
     {
       key: 'settingusers',
-      url: 'dashbord/user',
       title: 'Users',
       submenulist: [],
       permissions: [
@@ -151,7 +147,6 @@ export class LoginService {
     },
     {
       key: 'settingmaterials',
-      url: 'dashbord/materials',
       title: 'Materials',
       submenulist: [],
       permissions: [
@@ -163,7 +158,6 @@ export class LoginService {
     },
     {
       key: 'settinggeographies',
-      url: 'dashbord/geographies',
       title: 'Geographies',
       submenulist: [],
       permissions: [
@@ -175,7 +169,6 @@ export class LoginService {
     },
     {
       key: 'settingothermaterials',
-      url: 'dashbord/other-masters',
       title: 'Other Masters',
       submenulist: [],
       permissions: [
@@ -187,7 +180,6 @@ export class LoginService {
     },
     {
       key: 'menuhelp',
-      url: 'help',
       title: 'Help',
       submenulist: [],
       permissions: [

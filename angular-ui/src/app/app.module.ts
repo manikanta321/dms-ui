@@ -167,6 +167,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { UploadSalesActionComponent } from './component/upload-sales-action/upload-sales-action.component';
 import { SalesInvoiceDownloadComponent } from './component/sales-invoice-download/sales-invoice-download.component';
 import { ForbiddenComponent } from './component/forbidden/forbidden.component';
+import { AddTargetGroupComponent } from './component/add-target-group/add-target-group.component';
 
 @NgModule({
   declarations: [
@@ -356,6 +357,7 @@ import { ForbiddenComponent } from './component/forbidden/forbidden.component';
           UploadSalesActionComponent,
           SalesInvoiceDownloadComponent,
           ForbiddenComponent,
+          AddTargetGroupComponent,
           
   ],
   imports: [

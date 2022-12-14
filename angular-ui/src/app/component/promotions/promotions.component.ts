@@ -28,6 +28,7 @@ import { PromotionListService } from 'src/app/services/promotion-list.service';
 import { UseractionComponent } from '../useraction/useraction.component';
 import { DateRangeSelectionComponent } from './date-range-selection/date-range-selection.component';
 import { PramotionActionComponent } from '../pramotion-action/pramotion-action.component';
+import { AssosiationServicesService } from 'src/app/services/assosiation-services.service';
 export interface PeriodicElement {
 
   name: any;
@@ -69,7 +70,7 @@ export class PromotionsComponent implements OnInit {
   myForms2:any= FormGroup;
 
   myForms3:any= FormGroup;
-
+  myForms4:any= FormGroup;
   disabled = false;
   ShowFilter = false;
   StatusFilter = false;
@@ -86,6 +87,7 @@ export class PromotionsComponent implements OnInit {
   dropdownSettings1: IDropdownSettings = {};
   dropdownSettings2: IDropdownSettings = {};
   dropdownSettings3: IDropdownSettings = {};
+  dropdownSettings4: IDropdownSettings = {};
   public rowData5=[];
   public popupParent: HTMLElement = document.body;
   roleArray:any[] = [];
@@ -99,9 +101,9 @@ export class PromotionsComponent implements OnInit {
   statusSelected:any[]=[];
   searchfilter:any='';
   messages: any[] = [];
-
-
-
+  dealerListArray:any[] =[];
+  dealerAllArray:any[]=[];
+  dealerSelected:any =[];
   statusArray:any=[];
   stayScrolledToEnd = true;
   paginationScrollCount:any;
@@ -314,6 +316,7 @@ geoList:any=[]
     public promotionTypes : PromotionService,
     private promotin:PromotionListService,
     private fb: FormBuilder,
+    private associationService:AssosiationServicesService
 
    ) {
       sort:[];
@@ -360,11 +363,15 @@ geoList:any=[]
     this.myForms3 = this.fb.group({ 
       city4: [this.selectedItems]
     });
+    this.myForms4 = this.fb.group({ 
+      city5: [this.selectedItems]
+    });
   this.getusertabeldata();
   this.statusItems();
   this.promotionList();
   this.productList();
   this.geogrophylist();
+  this.dealerItems();
   // this.maxDate.setDate(this.maxDate.getDate() + 20);
   }
   refresh(){
@@ -380,6 +387,9 @@ geoList:any=[]
     });
     this.myForms3 = this.fb.group({ 
       city4: [this.selectedItems]
+    });
+    this.myForms4 = this.fb.group({ 
+      city5: [this.selectedItems]
     });
     this.toppings = new FormControl('');
     this.toppings1 = new FormControl(this.toppingList1);
@@ -413,6 +423,7 @@ this.getusertabeldata();
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
       this.rowData5 = res.response;
+      console.log("Promotion List",this.rowData5);
      
 
     });
@@ -1066,5 +1077,113 @@ handleScroll(event) {
   datep(){
     this.dialog.open( DateRangeSelectionComponent);
   }
+  dealerItems(){
+    this.associationService.getDealers().subscribe((res: any) => {
+        let localdata = res.response;
+        // console.log('checkdata', localdata)
+  
+        this.dealerListArray = localdata.map((data: { customerId: any; customerName: any; }) => {
+          return { customerId: data.customerId, customerName  : data.customerName };
+        });
+
+        this.dealerListArray.push()
+        this.dealerListArray.forEach(element => {
+          return this.dealerAllArray.push(element.customerId);
+          // console.log('rolecheck',rolecheck)
+  
+        })       
+        console.log('dealerAllArray',this.dealerAllArray)                                                    
+      });
+    
+      this.dropdownSettings4 = {
+        singleSelection: false,
+        idField: 'customerId',
+        textField: 'customerName',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        itemsShowLimit: 2,
+        allowSearchFilter: this.StatusFilter
+      };
+      this.selectedStatus = [];
+  }
+  onItemDealerSelect(item: any) {
+
+    // alert(item.roleName)
+    this.dealerSelected.push(item.customerId);
+
+    const data={
+      Ptype:this.promotionSelected,
+      Prodct:this.productSelected,
+      Geo:this.geographySelected,
+      Deler:this.dealerSelected,
+      status:this.statusSelected,
+      search:this.searchText
+    }
+    this.associationService.getDealersList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  
+
+    });
+    console.log('rolefilter', this.userTypes)
+    console.log('onItemSelect', item);
+  }
+//   onItemDealerSelectOrAll(item: any) {
+//     this.dealerSelected = this.dealerAllArray;
+//     const data={
+//       Ptype:this.promotionSelected,
+//       Prodct:this.productSelected,
+//       Geo:this.geographySelected,
+//       Deler:this.dealerSelected,
+//       status:this.statusSelected,
+//       search:this.searchText
+//     }
+//     this.associationService.getDealersList(data).subscribe((res) => {
+//       this.rowData5 = res.response;
+  
+
+//     });
+
+//   }
+//   onItemDealerDeSelectOrAll(item: any) {
+//     this.dealerSelected=[];
+//     const data={
+//       Ptype:this.promotionSelected,
+//       Prodct:this.productSelected,
+//       Geo:this.geographySelected,
+//       Deler:this.dealerSelected,
+//       status:this.statusSelected,
+//       search:this.searchText
+//     }
+//     this.associationService.getDealersList(data).subscribe((res) => {
+//       this.rowData5 = res.response;
+  
+
+//     });
+//     console.log('rolefilter', this.userTypes)
+//     console.log('onItemSelect', item);
+//   }
+
+//   onItemDealerDeSelect(item: any) {
+// console.log(item)
+//     this.dealerSelected.forEach((element, index) => {
+//       if (element == item.customerId) this.dealerSelected.splice(index, 1);
+//     });
+//     console.log(' this.userTypes', this.userTypes)
+
+//     // this.userTypes.pop(item.roleId);
+//     const data={
+//       Ptype:this.promotionSelected,
+//       Prodct:this.productSelected,
+//       Geo:this.geographySelected,
+//       Deler:this.dealerSelected,
+//       status:this.statusSelected,
+//       search:this.searchText
+//     }
+//     this.associationService.getDealersList(data).subscribe((res) => {
+//       this.rowData5 = res.response;
+  
+
+//     });
+//   }
 }
 

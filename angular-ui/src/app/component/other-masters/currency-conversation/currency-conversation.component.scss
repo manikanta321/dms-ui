@@ -80,6 +80,7 @@ background: #D23F00 !important;
 .add-user:hover {
   background-color: grey !important;
   color: white !important;
+  cursor: pointer;
 }
 .download-btn:hover {
   background-color: grey !important;
@@ -148,6 +149,7 @@ background: #D23F00 !important;
   border-radius: 35%;
   position: relative;
   width: 43px;
+  cursor: pointer;
 }
 // ::ng-deep.btnhover:hover,
 // .btnhover:focus {

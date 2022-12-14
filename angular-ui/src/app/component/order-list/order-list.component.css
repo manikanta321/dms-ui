@@ -982,6 +982,7 @@ mat-sidenav {
     width: 37px;
     height: 37px;
     margin-right: 10px;
+    cursor: pointer;
   }
   .imgorder{
     position: relative;
@@ -1017,6 +1018,7 @@ mat-sidenav {
     border-radius: 50%;
     width: 37px;
     height: 37px;
+    cursor: pointer;
   }
   .imgdwnl{
     position: relative;

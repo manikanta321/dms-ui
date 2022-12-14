@@ -115,6 +115,7 @@
   top: 6px;
   margin-top: 39px;
   margin-left: 59%;
+  cursor: pointer;
 }
 
 .download-btn {
@@ -504,6 +505,7 @@
   border-radius: 35%;
   position: relative;
   width: 43px;
+  cursor: pointer;
 }
 
 ::ng-deep.btnhover:hover {

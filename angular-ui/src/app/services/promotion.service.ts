@@ -90,5 +90,9 @@ Image(data: any){
   return this.http.post<any>(this.userurl + 'PromotionsApi/UploadImg', data)
 }
 // http://13.126.235.145:801/api/PromotionsApi/UploadImg
-
+DropDownPromotionType(data: any){
+  return this.http.post<any>(this.userurl + 'PromotionsApi/AddEditBuy_APBGet_XPY', data)
 }
+// http://13.126.235.145:801/api/PromotionsApi/AddEditBuy_APBGet_XPY
+}
+

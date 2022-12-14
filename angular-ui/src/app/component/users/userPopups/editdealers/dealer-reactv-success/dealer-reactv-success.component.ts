@@ -18,11 +18,11 @@ export class DealerReactvSuccessComponent implements OnInit {
   ngOnInit(): void {
     this.customerName=localStorage.getItem("employeeNameOfDealer");
 
-     setTimeout(() => {
+      setTimeout(() => {
 
-      this.closeDialog()
+       this.closeDialog()
 
-    }, 5000);
+     }, 5000);
 
   }
   

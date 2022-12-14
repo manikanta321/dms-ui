@@ -1,0 +1,66 @@
+<!-- <p>add-target-group works!</p> -->
+<div class="font ">
+    <div class=" main" width="600%">
+        <div class="container add-target">
+            <div class="addUser">
+                <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+            </div>
+            <div class="head-t">
+                <h3 class="addU font">Create Target Group</h3>
+                <br>
+                <div class="row">
+                    <div class="col-lg-9"></div>
+                    <div class="col-lg-3">
+                        <label class="targetCode">Target Group Code:<b>ADC1254<span class="errorMark">*</span></b></label>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div>
+                            <label class="targetLabelN">Target Group Name<span class="errorMark">*</span></label>
+                            <br>
+                            <input type="text" id="targetName" name="targetName" placeholder="Enter Target Group Name" class="targetGroupN">
+                        </div>
+                    </div>
+                     <div class="col-lg-6">
+                        <div>
+                        <label class="targetLabelN">Product<span class="errorMark">*</span></label>
+                        <input type="text" id="targetProduct" name="targetProduct" placeholder="Select Products Here" class="targetProduct" disabled>
+                        <img src="../../../assets/img/new-window-arrow.png" alt="new-window-array" class="newWindowA">
+                    </div>
+                    </div> 
+               
+                </div>
+                <br><br><br><br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div>
+                            <label class="selectedPL">Selected Products</label>
+                            <br><br>
+                            <div>
+                            <input type="text" id="targetProduct" name="targetProduct" placeholder="Products not Selected Yet" class="selectedProduct" disabled>
+                        </div>
+                        <br>
+                        <div class="checkboxColor">
+                            <ag-grid-angular id="gridContainer" [tooltipMouseTrack]="true"
+                            style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%; margin-left:-4px;"
+                            class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
+                            [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
+                            [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
+                            (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
+                            (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+                            (bodyScroll)="handleScroll($event)" ></ag-grid-angular>
+                      </div>
+                      <div class="pagination">
+                          <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{paginationScrollCount}}</span> of 
+                          <span class="pagination-cls">{{rowData5.length}}</span>
+                        </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+</div>

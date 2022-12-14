@@ -137,6 +137,7 @@ height: 37px;
 top: 6px;
 margin-top: 5px;
 margin-left: 40%;
+cursor: pointer;
 }
 .searchBox:hover >.search-btn {
 display:block;
@@ -232,6 +233,7 @@ bottom: 2px;
     height: 37px;
     top: 11px;
     left: 129%;
+    cursor: pointer;
   }
   ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
     border: 1px solid #337ab7;

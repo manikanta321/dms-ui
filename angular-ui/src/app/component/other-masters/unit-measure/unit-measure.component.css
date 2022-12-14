@@ -74,6 +74,7 @@
   top: 6px;
   margin-top: 88px;
   margin-left: 102%;
+  cursor: pointer;
 }
 .download-btn {
   border: none;
@@ -219,4 +220,11 @@ left: 37%
       font-weight: bold;
 
     }
+    .m{
+      background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+      border-radius: 19px;
+       height: 676px;
+     
+  
+  }
     

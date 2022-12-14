@@ -1,6 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { LoginService } from 'src/app/services/login.service';
 
 
 interface SideNavToggle {
@@ -13,20 +14,43 @@ interface SideNavToggle {
   styleUrls: ['./sidenav-bar.component.css']
 })
 export class SidenavBarComponent implements OnInit {
-  @Output() onToggleSideNav : EventEmitter<SideNavToggle> = new EventEmitter()
+  @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter()
   mobMuenuStatus = true;
   toggle = true;
   status = "Enable";
   panelOpenState: boolean = true;
   collapsed = false;
 
-screenWidth = 0;
-sideBarOpen = true;
+  screenWidth = 0;
+  sideBarOpen = true;
 
-  constructor( ) { }
+  userRoles;
+  viewMenuList;
 
-  
+  constructor(private loginService: LoginService) { }
+
+
   ngOnInit(): void {
+    if (localStorage.getItem('userroles')) {
+      this.userRoles = JSON.parse(localStorage.getItem('userroles') ??'[]');
+      this.updateUserRoleMenu();
+    } else {
+      this.loginService.userRolesSubject.subscribe(res => {
+        console.log(res);
+        this.userRoles = res;
+        this.updateUserRoleMenu();
+      })
+    }
+
+  }
+  updateUserRoleMenu(){
+    this.viewMenuList = [];
+    this.userRoles.forEach(element => {
+      let currentMenu = element.permissions.find(x => x.action == 'view');
+      if(currentMenu.status){
+        this.viewMenuList.push(element.key);
+      }
+    });
   }
   mobBurgerMenuAction() {
     console.log('g');
@@ -44,12 +68,12 @@ sideBarOpen = true;
   closePanel() {
     this.panelOpenState = true;
   }
-  toogleCollapsed(): void{
- this.collapsed =! this.collapsed;
- this.onToggleSideNav.emit({collapsed:this.collapsed, screenWidth: this.screenWidth});
+  toogleCollapsed(): void {
+    this.collapsed = !this.collapsed;
+    this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
   }
-//   close(): void{
-//  this.collapsed = false;
-//  this.onToggleSideNav.emit({collapsed:this.collapsed, screenWidth: this.screenWidth});
-//   }
+  //   close(): void{
+  //  this.collapsed = false;
+  //  this.onToggleSideNav.emit({collapsed:this.collapsed, screenWidth: this.screenWidth});
+  //   }
 }

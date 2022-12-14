@@ -1,0 +1,20 @@
+mat-sidenav {
+    width: 5rem;
+    border-right: none;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.content {
+    /* height: calc(100vh - 98px); */
+    height: 100vh;
+    border-radius: 10px;
+    padding: 10px;
+    background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);
+}
+
+mat-sidenav-container {
+    /* height: calc(100vh - 65px); */
+    height: 100vh;
+}

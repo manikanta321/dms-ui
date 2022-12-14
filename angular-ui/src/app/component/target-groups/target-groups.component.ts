@@ -45,6 +45,7 @@ import { UserService } from 'src/app/services/user.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import * as moment from 'moment';
+import { AddTargetGroupComponent } from '../add-target-group/add-target-group.component';
 
 
 
@@ -317,6 +318,10 @@ otherstatus(){
 }
 editfn(){
   alert('guru')
+}
+addTarget() {
+  this.dialog.open(AddTargetGroupComponent) 
+ 
 }
 
 

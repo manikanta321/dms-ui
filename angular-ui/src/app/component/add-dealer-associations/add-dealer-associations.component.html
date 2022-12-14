@@ -376,7 +376,7 @@
             <div class="col-md-1">
               <input class="form-check-input1" type="checkbox" value="" id="flexCheckDefault" />
             </div>
-            <div class="col-md-3 check1">
+            <div class="col-md-10 check1">
               <p class="label-cls">{{data?.dealerName}}</p>
             </div>
             <!-- <div class="col-md-2 check1">
@@ -436,8 +436,8 @@
               <th style="width: 168px">Discount %</th>
               <th style="width: 168px">Lead time (Days)</th>
             </tr>
-            <tr>
-              <td>
+            <tr *ngFor=" let childData of data.geoDetails; let i=index ">
+              <td >
                 <img [src]="image1" class="expand-arrow1" alt="add-user-btn" (click)="expandOrderItemsDiv1()" />
                 Malaysia (71/126)
               </td>
@@ -465,7 +465,7 @@
               </td>
             </tr>
 
-            <tr>
+            <!-- <tr>
               <td>
                 <img [src]="image1" class="expand-arrow1" alt="add-user-btn" (click)="expandOrderItemsDiv1()" />
                 Malaysia (71/126)
@@ -518,28 +518,28 @@
               <td>
                 <input type="text" class="uom-cls" id="fname" name="fname" />
               </td>
-            </tr>
-            <tr *ngIf="!orderitem1">
-              <td class="check2">george town</td>
-              <td>
-                <input type="text" class="uom-cls" id="fname" name="fname" />
-              </td>
-              <td>
-                <input type="text" class="uom-cls" id="fname" name="fname" />
-              </td>
-              <td>
-                <input type="text" class="uom-cls" id="fname" name="fname" />
-              </td>
-              <td>
-                <input type="text" class="uom-cls" id="fname" name="fname" />
-              </td>
-              <td>
-                <input type="text" class="uom-cls" id="fname" name="fname" />
-              </td>
-              <td>
-                <input type="text" class="uom-cls" id="fname" name="fname" />
-              </td>
-            </tr>
+            </tr> -->
+              <!-- <tr *ngIf="!orderitem1">
+                <td class="check2">george town</td>
+                <td>
+                  <input type="text" class="uom-cls" id="fname" name="fname" />
+                </td>
+                <td>
+                  <input type="text" class="uom-cls" id="fname" name="fname" />
+                </td>
+                <td>
+                  <input type="text" class="uom-cls" id="fname" name="fname" />
+                </td>
+                <td>
+                  <input type="text" class="uom-cls" id="fname" name="fname" />
+                </td>
+                <td>
+                  <input type="text" class="uom-cls" id="fname" name="fname" />
+                </td>
+                <td>
+                  <input type="text" class="uom-cls" id="fname" name="fname" />
+                </td>
+              </tr> -->
           </table>
         </div>
        </div>

@@ -51,15 +51,19 @@
             </div>
           </form>
         </div>
-        <div class="col-md-2 col-lg-2 col-sm-2">
-          <form [formGroup]="myForms">
-            <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Dealer'" formControlName="citys"
-              [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
-              (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
-              (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
+        <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;">
+          <form [formGroup]="myForms4">
+            <ng-multiselect-dropdown class="stts1" name="citys" [placeholder]="'Dealer'" formControlName="city5"
+              [disabled]="disabled" [settings]="dropdownSettings4" [data]="dealerListArray"
+              (onSelect)="onItemDealerSelect($event)">
             </ng-multiselect-dropdown>
           </form>
-         
+          <div class="dropdown-placeholder stts1-placeholder">
+            <span *ngIf="myForms4.get('city5').value.length == 0"> Dealer </span>
+            <span *ngIf="myForms4.get('city5').value.length == 1" class="selected-placeholder"> {{myForms4.get('city5').value.length}} Dealer selected </span>
+            <span *ngIf="myForms4.get('city5').value.length > 1" class="selected-placeholder"> {{myForms4.get('city5').value.length}} Dealer(s) selected </span>
+
+          </div>
         </div>
         <div class="col-md-2 col-lg-2 col-sm-2">
           <form [formGroup]="myForms3">

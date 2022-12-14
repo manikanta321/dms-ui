@@ -176,6 +176,8 @@ export class ProductShortCodeComponent implements OnInit {
     productGrpChk:boolean=false;
     productSubGChk:boolean=false;
     isRowSelectable : boolean = true;
+    selectedRows: any =[];
+    selectedRowdata : any = [];
   constructor(private _formBuilder: FormBuilder,
     public dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
@@ -183,6 +185,7 @@ export class ProductShortCodeComponent implements OnInit {
 
   ngOnInit(): void {
     this.GetProductShortCodeList();
+    // this.selectedRows=localStorage.getItem("selectedRows");
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -273,13 +276,17 @@ export class ProductShortCodeComponent implements OnInit {
       this.rowData5 = res.response;
     })
   }
-  additems(){
+  additems(item:any){
     console.log('revathi');
     const selectedRows = this.gridApi.getSelectedRows();
     console.log(selectedRows);
+    localStorage.setItem('selectedRows',JSON.stringify(this.selectedRows) )
+    
+    this.dialogRef.close();
   }
   onRowSelect(event) {
-    const selectedRows = this.gridApi.getSelectedRows();
-    console.log(selectedRows);
+    this.selectedRows = this.gridApi.getSelectedRows();
+    console.log(this.selectedRows);
+//  return selectedRows;
   }
 }

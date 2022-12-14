@@ -45,6 +45,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   base64textString= "";
   stateName: string[] = ['State 1', 'State 2',];
   fileupload: any;
+  selectedRows: any;
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
     //update the ui
@@ -210,6 +211,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     productGrpChk:boolean=false;
     productSubGChk:boolean=false;
     isRowSelectable : boolean = true;
+    qtyMaxNum : any = [];
+    MoqMaxNum : any = [];
+    group : any =[];
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
     public promotionTypes: PromotionService) { 
@@ -226,6 +230,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.GetPromotionTypes(Event);
     this.addimg();
+    this.promotionType1();
     // this.toppingList3 = [
     //   { CategoryId: 1, CategoryName: 'Buy(A+B..) get(X+Y..)' },
     //   { CategoryId: 2, CategoryName: 'Buy(A/B..) get(C/D...)' },
@@ -302,7 +307,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     // this.showdata = true;
     this.buyGroupPlus.push({
       itemss: '',
+      qtyMaxNum: '',
+      MoqMaxNum: '',
     });
+    console.log('chec')
   }
   removebuyGroup(u: any) {
     const index = this.buyGroupPlus.findIndex((itemss) => itemss.id === u);
@@ -417,12 +425,15 @@ this.addbuyset.push({
   }
   addItems() {
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
-    
     const dialogRef = this.dialog.open(AddItemsPromotionComponent,{width:'1043px'});
-
     dialogRef.afterClosed().subscribe((res) => {
-      console.log(res);
-localStorage.setItem('additem','1')
+       this.selectedRows=JSON.parse(localStorage.getItem("selectedRows" ) ?? '');
+       console.log('dd',this.selectedRows)
+//       console.log(res);
+// localStorage.setItem('additem','1')
+// let selectedRows = 'selectedRows'
+// localStorage.setItem('selectedRows',selectedRows)
+// console.log(selectedRows)
     })
   }
   addRemoveitem() {
@@ -480,6 +491,47 @@ addimg(){
   }
   geography(){
     this.dialog.open( AddPromotionGeographiesComponent, {width: '654px', height:'743px'})
+  }
+  promotionType1(){
+    const data = {
+      PromotionName : 'Promotion-1',
+      PromotionTypesId :'1',
+      StartDate : '2022-12-12',
+      EndDate : '2022-12-31',
+      DoneById : '327',
+      Imageurl : 'image',
+      BuyGroups : [{
+        StockItemId : this.buyGroupPlus,
+        MaxVolume: this.qtyMaxNum,
+        GroupId : this.group,
+        MOQ : this.MoqMaxNum,
+      },
+      {
+        StockItemId : '',
+        MaxVolume: '',
+        GroupId : '',
+        MOQ : '',
+      }],
+      GetGroups : [{
+        StockItemId : this.addgetgroup,
+        MaxVolume: '',
+        GroupId : '',
+      },
+      {
+        StockItemId : '',
+        MaxVolume: '',
+        GroupId : '',
+      }],
+      EntityInstanceId : [],
+    }
+    this.promotionTypes.DropDownPromotionType(data).subscribe((res) => {
+
+    });
+  }
+  AddPromosaveAndSubmit(){
+    console.log('added items')
+    console.log(this.buyGroupPlus)
+    
   }
 }
 

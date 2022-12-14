@@ -11,6 +11,9 @@ import { ProductSubGroupComponent } from '../product-sub-group/product-sub-group
 import { PromotionService } from 'src/app/services/promotion.service';
 import { AddPromotionsComponent } from '../../add-promotions/add-promotions.component';
 import { MatStepper } from '@angular/material/stepper';
+import { PopupPscGridTableComponent } from '../product-group-add-item/popup-psc-grid-table/popup-psc-grid-table.component';
+import { PopupGridTableComponent } from '../product-group-add-item/popup-grid-table/popup-grid-table.component';
+import { PopupPsubgGridTableComponent } from '../product-group-add-item/popup-psubg-grid-table/popup-psubg-grid-table.component';
 export interface PeriodicElement {
 
   name: any;
@@ -56,29 +59,29 @@ export class AddItemsPromotionComponent implements OnInit {
 
     {
       headerName: "Product Name",
-      field: 'stockItemName', type: ['nonEditableColumn'], pinned: 'left',checkboxSelection: true
+      field: 'productName', type: ['nonEditableColumn'], pinned: 'left',checkboxSelection: true
     },
 
     { headerName: "Classification", field: 'classification', type: ['nonEditableColumn'] },
 
-    { headerName: "SKU", field: 'productSKUName', type: ['nonEditableColumn'] },
+    { headerName: "SKU", field: 'sku', type: ['nonEditableColumn'] },
 
     {
       headerName: "Product Identifier",
-      field: 'productCustomName', type: ['nonEditableColumn']
+      field: 'productIdentifier', type: ['nonEditableColumn']
     },
 
     {
       headerName: "Product Group",
-      field: 'productGroupName', type: ['nonEditableColumn'],
+      field: 'productGroup', type: ['nonEditableColumn'],
     },
     {
       headerName: "Product Code",
-      field: 'globalCode', type: ['nonEditableColumn'],
+      field: 'productCode', type: ['nonEditableColumn'],
     },
     {
       headerName: "Product Shot Code",
-      field: 'shortCode', type: ['nonEditableColumn'],
+      field: 'productShortCode', type: ['nonEditableColumn'],
     },
     {
       headerName: '',
@@ -104,6 +107,112 @@ export class AddItemsPromotionComponent implements OnInit {
     //  },
 
   ];
+  columnDefs1: ColDef[] = [
+
+    {
+      headerName: "Product Shot Code",
+      field: 'productShortCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',  checkboxSelection: true
+    },
+    { headerName: "", field: '', type: ['nonEditableColumn'] },
+    { headerName: "", field: '', type: ['nonEditableColumn'] },
+
+    { headerName: "#of Products", field: 'noofproducts', type: ['nonEditableColumn'],
+    cellStyle: {color: '#017EFA'},
+    cellEditorPopup: true,
+       onCellClicked: (event: CellClickedEvent) => this.dialog.open(PopupPscGridTableComponent, {panelClass: 'pscgrid-popup'})
+   },
+
+    {
+      headerName: '',
+      colId: 'action',
+      // cellRenderer: UseractionComponent,
+      editable: false,
+      maxWidth: 75
+      //    headerName: "",
+      // field: '',  filter: false, sortable: false,width:20,
+      // cellRenderer: function clickNextRendererFunc(){
+      //   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
+      // }, 
+      //  cellEditorPopup: true,
+      //  onCellClicked: (event: CellClickedEvent) => this.dialog.open(DeletecomponentComponent, {panelClass: 'editpopup'})
+      // // onCellClicked: (event: CellClickedEvent) => this.iconDisabled = true
+    },
+
+    // {
+    //   headerName: "Avatar",
+    //   field: "avatar",
+    //   width: 100,
+    //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
+    //  },
+
+  ];
+  columnDefs2: ColDef[] = [
+
+    {
+      headerName: "Product Group",
+      field: 'productGroupName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left', checkboxSelection: true
+    },
+
+    { headerName: "", field: '', type: ['nonEditableColumn'] },
+
+    { headerName: "", field: '', type: ['nonEditableColumn'] },
+
+    {
+      headerName: "",
+      field: '', type: ['nonEditableColumn']
+    },
+
+    {
+      headerName: "#of products",
+      field: 'noofproducts', type: ['nonEditableColumn'],
+      cellStyle: {color: '#017EFA'},
+      cellEditorPopup: true,
+       onCellClicked: (event: CellClickedEvent) => this.dialog.open(PopupGridTableComponent, {panelClass: 'grid-popup'})
+    },
+
+    {
+      headerName: '',
+      colId: 'action',
+      // cellRenderer: UseractionComponent,
+      editable: false,
+      maxWidth: 75
+     
+    },
+  ];
+  columnDefs3: ColDef[] = [
+
+    {
+      headerName: "Product Sub-Group",
+      field: 'productSubGroupName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left', checkboxSelection: true
+    },
+
+    { headerName: "", field: '', type: ['nonEditableColumn'] },
+
+    { headerName: "Product Group", field: 'productGroupName', type: ['nonEditableColumn'] },
+
+    {
+      headerName: "",
+      field: '', type: ['nonEditableColumn']
+    },
+
+    {
+      headerName: "#of Products",
+      field: 'noofproducts', type: ['nonEditableColumn'],
+      cellStyle: {color: '#017EFA'},
+      cellEditorPopup: true,
+       onCellClicked: (event: CellClickedEvent) => this.dialog.open(PopupPsubgGridTableComponent, {panelClass: 'psubgrid-popup'})
+    },  
+
+    // suppressMovable:true,
+    {
+      headerName: '',
+      colId: 'action',
+      // cellRenderer: UseractionComponent,
+      editable: false,
+      maxWidth: 75
+    },
+
+  ];
   gridOptions: GridOptions = {
     defaultColDef: {
       resizable: true,
@@ -112,10 +221,6 @@ export class AddItemsPromotionComponent implements OnInit {
     // set background colour on every row, this is probably bad, should be using CSS classes
     rowStyle: { background: 'black' },
 
-    // set background colour on even rows again, this looks bad, should be using CSS classes
-
-
-    // other grid options ...
   }
   public defaultColDef: ColDef = {
 
@@ -184,6 +289,9 @@ export class AddItemsPromotionComponent implements OnInit {
     defaultPageSize = 12;
     paginationScrollCount: any;
     public rowData5 = [];
+    rowDatashortcode = [];
+    rowDataproductGroup = [];
+    rowDataProductSubG = [];
     public popupParent: HTMLElement = document.body;
     stayScrolledToEnd = true;
     message: boolean = false;
@@ -195,6 +303,7 @@ export class AddItemsPromotionComponent implements OnInit {
     dropdownSettings2: IDropdownSettings = {};
     dropdownSettings3: IDropdownSettings = {};
     dropdownSettings5: IDropdownSettings = {};
+    dropdownSettings6: IDropdownSettings = {};
     productchk:boolean=true;
     prodShtCode:boolean=false;
     productGrpChk:boolean=false;
@@ -238,6 +347,9 @@ export class AddItemsPromotionComponent implements OnInit {
     StatusFilter = false;
     productCustomIdentifierArray:any[]=[]
     @ViewChild('stepper') private myStepper: MatStepper | any;
+    selectedRows: any =[];
+    proshcselectedRows : any =[]
+    searchfeild : boolean = false
   constructor(private _formBuilder: FormBuilder,
     public dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
@@ -249,6 +361,9 @@ export class AddItemsPromotionComponent implements OnInit {
     this.productListtable();
     this. oncatselect();
     this.getProductSelect();
+    this.GetProductShortCodeList();
+    this.AddProductGroupList();
+    this.GetProductSubGroupList1()
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'catId',
@@ -287,6 +402,14 @@ export class AddItemsPromotionComponent implements OnInit {
       singleSelection: false,
       idField: 'productCustomIdentifierId',
       textField: 'productCustomName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+    }
+    this.dropdownSettings6 = {
+      singleSelection: false,
+      idField: 'productGroupId',
+      textField: 'productGroupName',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
@@ -360,31 +483,15 @@ export class AddItemsPromotionComponent implements OnInit {
       }
     }
   }
-  // product(){
-  //   this.dialog.open( AddItemsPromotionComponent,{width:'1043px'});
-  //   this.dialogRef.close()
-  // }
-  // productShotCode(){
-  //   this.dialog.open(  ProductShortCodeComponent,{width:'1043px'});
-  //   this.productchk = true;
-  //   this.dialogRef.close()
-  // }
-  // productGrp(){
-  //   this.dialog.open( ProductGroupAddItemComponent,{width:'1043px'});
-  //   this.dialogRef.close()
-  // }
-  // productSubG(){
-  //   this.dialog.open( ProductSubGroupComponent,{width:'1043px'});
-  //   this.dialogRef.close()
-  // }
+  
   productListtable(){
     const data = {
-      Cat : [],
-      Sub_Cat : [],
+      category : [],
+      subCategory : [],
       type : [],
       productgroup : [],
       productidentifier :[],
-      Search : ''
+      search : ''
     }
     this.promotionTypes.GetProductList(data).subscribe((res) =>{
       console.log('productlist is works', res);
@@ -395,13 +502,12 @@ export class AddItemsPromotionComponent implements OnInit {
     const { target } = $event;
     this.searchText = target.value;
     const data = {
-      Cat : [],
-      Sub_Cat : [],
+      category : [],
+      subCategory : [],
       type : [],
       productgroup : [],
       productidentifier :[],
-      // Search : '',
-      search: this.searchText,
+      search : this.searchText
     }
     this.promotionTypes.GetProductList(data).subscribe((res) =>{
       console.log('search data', res);
@@ -1063,4 +1169,150 @@ handleLimitSelection() {
     this.dropdownSettings = Object.assign({}, this.dropdownSettings, { limitSelection: null });
   }
 }
+GetProductShortCodeList(){
+  const data = {
+     Search : ''
+   }
+   this.promotionTypes.GetProductShortCodeList(data).subscribe((res) =>{
+     console.log('shortcodeworks', res);
+     this.rowDatashortcode = res.response;
+   })
+ }
+ onSearchChangeShortcode($event: any, anything?: any){
+   const { target } = $event;
+   this.searchText = target.value;
+   const data = {
+     search: this.searchText,
+   }
+   this.promotionTypes.GetProductShortCodeList(data).subscribe((res) =>{
+     console.log('shortcodeworks', res);
+     this.rowDatashortcode = res.response;
+   })
+ }
+additemsProductShortCode(item:any){
+  console.log('revathi');
+  const selectedRows = this.gridApi.getSelectedRows();
+  console.log(selectedRows);
+  // localStorage.setItem('selectedRows',JSON.stringify(this.selectedRows) )
+  
+  this.dialogRef.close();
+}
+ProductShortCodeRowSelect(event) {
+  const proshcselectedRows = this.gridApi.getSelectedRows();
+  console.log(proshcselectedRows);
+  console.log('slct');
+}
+// add product group
+addproductGroup(){
+  const selectedRows = this.gridApi.getSelectedRows();
+  console.log(selectedRows);
+}
+AddProductGroupList(){
+  const  data = {
+    Search : ''
+    }
+    this.promotionTypes.GetProductGroupList(data).subscribe ((res) => {
+       console.log('check productGlist', res);
+       this.rowDataproductGroup = res.response;
+    })
+  }
+  onLoad() {
+    const data = {
+      Search : ''
+    }
+    this.promotionTypes.GetProductGroupList(data).subscribe((res) => {
+      this.rowDataproductGroup = res.response;
+    });
+
+  }
+  onSearchChangeProductGroup($event: any, anything?: any) {
+    const { target } = $event;
+    this.searchText = target.value;
+    const data = {
+      search: this.searchText,
+    }
+    this.promotionTypes.GetProductGroupList(data).subscribe((res) => {
+      this.rowDataproductGroup = res.response;
+    });
+
+  }
+  onRowSelectProductGroup(event) {
+    const selectedRows = this.gridApi.getSelectedRows();
+    console.log(selectedRows);
+  }
+  // product SubGroup
+  ProductSubGroupDrpdwn(item: any) {
+    // this.statusTypes.push(item.statusId);
+     this.promotionTypes.GetProductGroupList1().subscribe((res) => {
+      this.Productarr = res.response;
+      console.log('product lis', this.Productarr)
+    });
+
+  }
+  ProductsubGroupDeselect(item: any) {
+    this.statusTypes.forEach((element, index) => {
+      if (element == item.statusId) this.statusTypes.splice(index, 1);
+    });
+    // this.statusTypes.pop(item.statusId);
+    console.log(' this.statusTypes', this.userTypes)
+    const data = {
+     productgroup : []
+    }
+    this.promotionTypes.GetProductSubGroupList(data).subscribe((res) => {
+      this.rowDataProductSubG = res.response;
+    });
+    console.log('products', this.promotionTypes)
+    console.log('onItemSelect', item);
+  }
+  ProductsubGroupDeSelectAll(item: any) {
+    const data = {
+      productgroup : []
+     }
+     this.promotionTypes.GetProductSubGroupList(data).subscribe((res)  => {
+      this.rowDataProductSubG = res.response;
+    });
+    console.log('rolefilter', this.userTypes)
+  }
+  ProductsubGroupSelectAll(item: any) {
+    this.productID = this.prodArray;
+    // console.log("ProdData", this.ProdData);
+    const data = {
+      status: this.statusTypes,
+      Search: this.searchText,
+      productgroup : [],
+    }
+    this.promotionTypes.GetProductSubGroupList(data).subscribe((res) => {
+      this.rowDataProductSubG = res.response;
+    });
+  }
+  GetProductSubGroupList1(){
+    const data = {
+      productgroup : [],
+    }
+    this.promotionTypes.GetProductSubGroupList(data).subscribe((res) =>{
+      console.log('productsubgroup is works', res);
+      this.rowDataProductSubG = res.response;
+    })
+  }
+  ProductSubGroupRowSelect(event) {
+    const selectedRows = this.gridApi.getSelectedRows();
+    console.log(selectedRows);
+  }
+  addItemProductSubG(){
+    const selectedRows = this.gridApi.getSelectedRows();
+    console.log('rowl',selectedRows);
+    localStorage.setItem('selectedRows',JSON.stringify(this.selectedRows) )
+  }
+  matsteptabClick(tab) {
+    // console.log(tab);
+    if (tab.step.matStepLabel == 'productlb'){
+this.searchfeild =false;
+    }
+    else if (tab.tab.matStepLabel == 'productgroup'){
+      this.searchfeild = true;
+          }
+          else if(tab.step == 2){
+            this.searchfeild = true;
+                }
+  }
 }

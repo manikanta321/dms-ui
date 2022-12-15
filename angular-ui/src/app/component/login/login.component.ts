@@ -67,8 +67,8 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('userType', this.loginData.userType)
             localStorage.setItem('lastLoginDate', this.loginData.lastLoginDate);
 
-            this.router.navigate(['../dashbord/user']);
             this.login.CallGetUserRoles();
+            // this.router.navigate(['../dashbord/user']);
           }
           else {
             this.userExist = true;

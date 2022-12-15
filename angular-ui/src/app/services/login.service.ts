@@ -103,9 +103,12 @@ export class LoginService {
       submenulist: [],
       permissions: [
         { action: 'view', status: true },
-        { action: 'add', status: false },
-        { action: 'edit', status: false },
-        { action: 'delete', status: false },
+        { action: 'add', status: true },
+        { action: 'edit', status: true },
+        { action: 'reset', status: true },
+        { action: 'activate', status: true },
+        { action: 'deactivate', status: true },
+        { action: 'usersearch', status: true },
       ]
     },
     {
@@ -160,7 +163,7 @@ export class LoginService {
     let roleId = localStorage.getItem('logInId');
     if (roleId) {
 
-      localStorage.setItem('userroles', JSON.stringify(this.userRolesData));
+      // localStorage.setItem('userroles', JSON.stringify(this.userRolesData));
       if (localStorage.getItem('userroles')) {
 
         localStorage.setItem('userroles', JSON.stringify(this.userRolesData));
@@ -168,10 +171,12 @@ export class LoginService {
 
       } else {
         try {
-          let data = await this.getUserRolesFromAPI(roleId);
+          let data:any = await this.getUserRolesFromAPI(roleId);
 
-          localStorage.setItem('userroles', JSON.stringify(data));
+          // localStorage.setItem('userroles', JSON.stringify(data.response));
+          localStorage.setItem('userroles', JSON.stringify(this.userRolesData));
           this.userRolesSubject.next(data);
+          this.router.navigate(['../dashbord/user']);
         } catch (error) {
           console.log('error', error);
         }
@@ -193,9 +198,9 @@ export class LoginService {
 
   getUserRolesFromAPI(roleId) {
 
-    let body = { roleId: roleId }
+    let body = { roleId: Number(roleId) }
     let options = {
-      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
     };
     return this.http.post(this.loginurl + `UserMgmtApi/GetUserRoles`, body, options).toPromise()
   }

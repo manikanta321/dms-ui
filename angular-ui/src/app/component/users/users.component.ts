@@ -112,40 +112,40 @@ export class UsersComponent implements OnInit {
     {
       headerName: "User ID",
       field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
-      tooltipField:"employeeCode",maxWidth:200,
+      tooltipField: "employeeCode", maxWidth: 200,
 
     },
 
-    { headerName: "Username", field: 'userName', type: ['nonEditableColumn'],tooltipField:"userName", },
+    { headerName: "Username", field: 'userName', type: ['nonEditableColumn'], tooltipField: "userName", },
 
-    { headerName: "Role", field: 'roleName', type: ['nonEditableColumn'], tooltipField:"roleName", },
+    { headerName: "Role", field: 'roleName', type: ['nonEditableColumn'], tooltipField: "roleName", },
 
     {
       headerName: "Email ",
       field: 'email', type: ['nonEditableColumn'],
-      tooltipField:"email",      
+      tooltipField: "email",
       // flex: 1,
     },
 
     {
       headerName: "Phone No",
       field: 'mobile', type: ['nonEditableColumn'],
-      tooltipField:"mobile"
+      tooltipField: "mobile"
     },
 
     {
       headerName: "Last Login",
       field: 'lastLoginDate', type: ['nonEditableColumn'],
       cellRenderer: function dateFormtter(params) {
-        if(params.value==null){
-          return params.value=''
+        if (params.value == null) {
+          return params.value = ''
         }
-         else{
+        else {
           return moment(params.value).format('DD MMM YY, HH:mm A')
 
         }
       },
-      tooltipValueGetter:(params: ITooltipParams) => moment(params.value).format('DD MMM YY, HH:mm A'),
+      tooltipValueGetter: (params: ITooltipParams) => moment(params.value).format('DD MMM YY, HH:mm A'),
     },
 
     // suppressMovable:true,
@@ -156,19 +156,19 @@ export class UsersComponent implements OnInit {
       type: ['nonEditableColumn'],
       cellEditor: 'agSelectCellEditor',
       cellEditorParams: {
-        values: ['Active', 'Inactive', 'Invited', 'Locked',] ,
+        values: ['Active', 'Inactive', 'Invited', 'Locked',],
       },
       cellClass: params => {
         return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
       },
-      tooltipField:"statusName",
+      tooltipField: "statusName",
     },
     {
       headerName: '',
       colId: 'action',
       cellRenderer: UseractionComponent,
       editable: false,
-      maxWidth: 60  
+      maxWidth: 60
     },
 
   ];
@@ -179,8 +179,8 @@ export class UsersComponent implements OnInit {
   employeeName: any;
   public defaultColDef: ColDef = {
     suppressSizeToFit: true,
-    
-    width:400,
+
+    width: 400,
     filter: 'agTextColumnFilter',
     flex: 1,
     resizable: true,
@@ -254,6 +254,9 @@ export class UsersComponent implements OnInit {
   message1: boolean = true;
 
 
+  currentPageName = 'settingusers';
+
+
   paginationNumberFormatter: (
     params: PaginationNumberFormatterParams
   ) => string = (params: PaginationNumberFormatterParams) => {
@@ -280,7 +283,7 @@ export class UsersComponent implements OnInit {
     paginationAutoPageSize: false,
   }
 
-  instancePopup:any = null;
+  instancePopup: any = null;
 
   constructor(public dialog: MatDialog,
     private router: Router,
@@ -302,7 +305,7 @@ export class UsersComponent implements OnInit {
     sort: [];
   }
 
- 
+
   @ViewChild(MatSort)
   sort: MatSort = new MatSort;
 
@@ -326,7 +329,24 @@ export class UsersComponent implements OnInit {
 
 
   ngOnInit(): void {
+    let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
+    let currentPageRoleObj = userRolesData.find(element => element.key == this.currentPageName);
+    let actionColumn = ['edit', 'reset', 'activate', 'deactivate'];
+    let isActionCounterHide = 0;
+    this.columnDefs = this.columnDefs.filter(x => {
+      if (x.colId != 'action' || currentPageRoleObj == undefined || currentPageRoleObj == null) return true;
 
+      currentPageRoleObj.permissions.forEach(item => {
+        if (actionColumn.indexOf(item.action) != -1 && item.status == false) {
+          isActionCounterHide += 1;
+        }
+      })
+      return isActionCounterHide == actionColumn.length ? false :true;
+    })
+
+    console.log(actionColumn.length - isActionCounterHide);
+
+    
     this.getusertabeldata();
     this.roleItems();
     this.statusItems();
@@ -346,7 +366,7 @@ export class UsersComponent implements OnInit {
   editfn() {
     alert('guru')
   }
-  
+
   onSelectAll(items: any) {
     console.log('onSelectAll', items);
   }
@@ -475,11 +495,11 @@ export class UsersComponent implements OnInit {
   }
 
   handleScroll(event) {
-    if(this.instancePopup){
+    if (this.instancePopup) {
       this.instancePopup.togglePopup();
       this.instancePopup = null;
     }
-    
+
     const grid = document.getElementById('gridContainer');
     if (grid) {
       const gridBody = grid.querySelector('.ag-body-viewport') as any;
@@ -499,7 +519,7 @@ export class UsersComponent implements OnInit {
       console.log('we have to check here', this.toppingList1)
       this.toppingList1.forEach(element => {
         return this.statusArray.push(element.statusId);
-      
+
       })
       console.log('statusArray', this.statusArray)
       // this.toppingList = res.response;
@@ -554,7 +574,7 @@ export class UsersComponent implements OnInit {
     this.user.getuserDeatilsUser(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
-  
+
   }
 
   onItemDeSelectOrAll(item: any) {
@@ -682,8 +702,8 @@ export class UsersComponent implements OnInit {
   addCurrency() {
     let dialogRef = this.dialog.open(AddcurrencyComponent);
     dialogRef.afterClosed().subscribe((res) => {
-      localStorage.setItem('headerStatus','')
-      })
+      localStorage.setItem('headerStatus', '')
+    })
   }
   edittaxTempl() {
     this.dialog.open(EditTaxTemplateComponent);
@@ -716,7 +736,7 @@ export class UsersComponent implements OnInit {
     localStorage.setItem('employeeCodeSet', e.data.employeeCode);
 
 
-    if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
+    if (e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action') {
       const cellRendererInstances = e.api.getCellRendererInstances({
         rowNodes: [e.node],
         columns: [e.column],

@@ -67,44 +67,7 @@ export class LoginService {
     {
       key: 'orderdashboard',
       title: 'Orders',
-      submenulist: [
-        {
-          key: 'order_invoice',
-  
-          title: 'Invoice',
-          submenulist: [],
-          permissions: [
-            { action: 'view', status: true },
-            { action: 'add', status: false },
-            { action: 'edit', status: false },
-            { action: 'delete', status: false },
-          ]
-        },
-        {
-          key: 'order_orderlist',
-  
-          title: 'Orders List',
-          submenulist: [],
-          permissions: [
-            { action: 'view', status: true },
-            { action: 'add', status: false },
-            { action: 'edit', status: false },
-            { action: 'delete', status: false },
-          ]
-        },
-        {
-          key: 'order_shipments',
-  
-          title: 'Shipments',
-          submenulist: [],
-          permissions: [
-            { action: 'view', status: true },
-            { action: 'add', status: false },
-            { action: 'edit', status: false },
-            { action: 'delete', status: false },
-          ]
-        },
-      ],
+      submenulist: [],
       permissions: [
         { action: 'view', status: true },
         { action: 'add', status: false },

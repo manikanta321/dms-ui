@@ -168,6 +168,7 @@ import { UploadSalesActionComponent } from './component/upload-sales-action/uplo
 import { SalesInvoiceDownloadComponent } from './component/sales-invoice-download/sales-invoice-download.component';
 import { ForbiddenComponent } from './component/forbidden/forbidden.component';
 import { AddTargetGroupComponent } from './component/add-target-group/add-target-group.component';
+import { UserroledirectiveDirective } from './directives/userroledirective.directive';
 
 @NgModule({
   declarations: [
@@ -358,7 +359,7 @@ import { AddTargetGroupComponent } from './component/add-target-group/add-target
           SalesInvoiceDownloadComponent,
           ForbiddenComponent,
           AddTargetGroupComponent,
-          
+          UserroledirectiveDirective,          
   ],
   imports: [
     MatTooltipModule,

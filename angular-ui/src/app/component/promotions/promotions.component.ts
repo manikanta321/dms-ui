@@ -432,7 +432,7 @@ geoList:any=[]
 
 
 
-this.getusertabeldata();
+// this.getusertabeldata();
   }
 
 
@@ -1114,7 +1114,13 @@ handleScroll(event) {
       height: '583px',
      
     };
-    this.dialog.open( AddPromotionsComponent, config);
+    let addEditPromotionDialog = this.dialog.open( AddPromotionsComponent, config);
+
+    addEditPromotionDialog.afterClosed().subscribe((res) => {
+      if(res == 'success'){
+        this.getusertabeldata();
+      }
+  });
     // this.AddpromotionData = localStorage.getItem("AddpromotionData");
   }
   // handleScroll(event) {

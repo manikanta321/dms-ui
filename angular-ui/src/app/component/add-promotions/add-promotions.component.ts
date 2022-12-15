@@ -94,7 +94,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   dateChange(e) {
     this.minDateToFinish.next(e.value.toString());
     // alert(e.value);
-    console.log("This is the DATE:", e.value);
+    // console.log("This is the DATE:", e.value);
+
+    let selectedStartDate = new Date(e.value).getFullYear() +'/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
+    console.log(selectedStartDate);
     // moment().format("MMM Do YY");
   }
   enddateChange(e){
@@ -239,7 +242,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     GetqtyValue: any;
     selectedPromo : any;
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
-    private dialogRef: MatDialogRef<any>,
+    private dialogRefModal: MatDialogRef<any>,
+    
     private dateAdapter: DateAdapter<Date>,
     public promotionTypes: PromotionService) { 
       this.minDateToFinish.subscribe(r => {
@@ -259,7 +263,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   // });
     this.GetPromotionTypes(Event);
     this.addimg();
-    this.promotionType1();
+    // this.promotionType1();
     this.addpromotionGeoTable();
     // this.toppingList3 = [
     //   { CategoryId: 1, CategoryName: 'Buy(A+B..) get(X+Y..)' },
@@ -552,6 +556,7 @@ addimg(){
     EntityInstanceId : []
     }
     this.promotionTypes.DropDownPromotionType(data).subscribe((res) => {
+      // this.dialogRefModal.close("success");
     });
     console.log('addpro',[this.qtyValue,this.moqValue])
   }
@@ -567,6 +572,7 @@ addimg(){
     // }
     // console.log('dats',AddpromotionData);
     // localStorage.setItem("addpromo", JSON.stringify(AddpromotionData));
+    this.dialogRefModal.close("success");
     this.promotionType1()
   }
   addpromotionGeoTable(){

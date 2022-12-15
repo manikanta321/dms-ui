@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { AgGridAngular } from 'ag-grid-angular';
 import { MatDialog } from '@angular/material/dialog';
+import { AddTargetGroupsProductsComponent } from '../target-groups/add-target-groups-products/add-target-groups-products.component';
 
 @Component({
   selector: 'app-add-target-group',
@@ -61,6 +62,12 @@ export class AddTargetGroupComponent implements OnInit {
       }
     }
   }
+
+  addTProducts() {
+    this.dialog.open(AddTargetGroupsProductsComponent) 
+   
+  } 
+
   handleScroll(event) {
     if(this.instancePopup){
       this.instancePopup.togglePopup();

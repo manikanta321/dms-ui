@@ -77,5 +77,11 @@ public dealerdrop(data){
   
   }
 
+  public addassosiation(data){
+    return this.http.post<any>(this.userurl + 'DealerApi/AddAssociations', data);
+  
+  }
+
+
 }
 // http://13.126.235.145:801/api/DealerApi/GetStockItemDetailList?ProductSKUId=42

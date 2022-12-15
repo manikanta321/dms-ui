@@ -53,14 +53,17 @@ public GetProductList(data : any){
 public GetPGDetailList(){
   return this.http.get<any>(this.userurl + 'PromotionsApi/GetPGDetailList?ProductGroupId=18')
 }
+// http://13.126.235.145:801/api/PromotionsApi/GetPGDetailList?ProductGroupId=18
 // http://52.172.24.161:801/api/PromotionsApi/GetPGDetailList?ProductGroupId=18
 public GetPSGDetailList(){
 return this.http.get<any>(this.userurl + 'PromotionsApi/GetPSGDetailList?ProductGroupId=18&ProductSubGroupId=29')
 }
 // http://52.172.24.161:801/api/PromotionsApi/GetPSGDetailList?ProductGroupId=18&ProductSubGroupId=29
 public GetPSCDetailList(){
-  return this.http.get<any>(this.userurl + 'PromotionsApi/GetPSCDetailList?ProductSKUId=22')
+  // return this.http.get<any>(this.userurl + 'PromotionsApi/GetPSCDetailList?ProductSKUId=22')
+  return this.http.get<any>(this.userurl + 'PromotionsApi/GetPSCDetailList?ProductShortCode=m')
 }
+// http://13.126.235.145:801/api/PromotionsApi/GetPSCDetailList?ProductShortCode=m
 // http://52.172.24.161:801/api/PromotionsApi/GetPSCDetailList?ProductSKUId=22
  GetSUbCAtsOfMultiCats(data : any){
 return this.http.post<any>(this.userurl + 'MaterialApi/GetSUbCAtsOfMultiCats', data)
@@ -94,5 +97,9 @@ DropDownPromotionType(data: any){
   return this.http.post<any>(this.userurl + 'PromotionsApi/AddEditBuy_APBGet_XPY', data)
 }
 // http://13.126.235.145:801/api/PromotionsApi/AddEditBuy_APBGet_XPY
+GetPromotionDealerList(data: any){
+  return this.http.post<any>(this.userurl + 'PromotionsApi/GetPromotionDealerList', data)
+}
+// http://13.126.235.145:801/api/PromotionsApi/GetPromotionDealerList
 }
 

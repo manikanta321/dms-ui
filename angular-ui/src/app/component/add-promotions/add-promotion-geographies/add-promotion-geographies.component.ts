@@ -81,6 +81,12 @@ let productID = event;
   }
   saveGeo(){
     localStorage.setItem("geoAsso", JSON.stringify(this.aarrayToPush));
+    localStorage.setItem("aboveDefaultGeoOfName", JSON.stringify(this.geodata[0].aboveDefaultGeoName));
+    localStorage.setItem("selectedcount", JSON.stringify(this.selectedcount));
+    localStorage.setItem("tottalgeoCount", JSON.stringify(this.geodata[0].geoCount));
+
+
+
     this.sharedService.filter('Register click')
     this.dialogRef.close();
 

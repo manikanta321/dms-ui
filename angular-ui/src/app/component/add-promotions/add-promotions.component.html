@@ -16,7 +16,7 @@
             </div>
             <mat-stepper labelPosition="bottom" #stepper>
                 <mat-step [stepControl]="firstFormGroup">
-                    <form [formGroup]="firstFormGroup">
+                    <form #form = ngForm>
                         <ng-template matStepLabel>Promotion Information</ng-template>
                         <div class="heading">
                             <h5 class="promo-head">Promotion Information </h5>
@@ -24,7 +24,13 @@
                         <div class="row">
                             <div class="col-lg-12 materialname">
                                 <label>Promotion Name <span class="astr">*</span></label>
-                                <input placeholder="Promotion Name" #input class="form-control promo-Name">
+                                <input type="text" id="promoname" name="promoname"  required [(ngModel)]="promoName" #promoname="ngModel" 
+                                placeholder="Promotion Name" class="form-control">
+                            <p *ngIf="promoname.invalid && (promoname.dirty || promoname.touched)">
+                            <span style="color:red;position: relative;" *ngIf="promoname.errors?.['required']">
+                                *User Name is required
+                              </span>
+                            </p>
                             </div>
                         </div>
                         <div class="row">
@@ -36,7 +42,7 @@
                                     <label>Promotion Type <span class="astr">*</span></label>
                                     <ng-select [items]="promotionTypedropdown" placeholder="Select the promotion type"
                                         bindLabel="promotionTypesName" bindValue="promotionTypesId"
-                                        (change)="GetPromotionTypes($event)">
+                                        (change)="GetPromotionTypes($event)" required [(ngModel)]="selectedPromo">
                                     </ng-select>
                                 </div>
                                 <form #myform>
@@ -45,7 +51,7 @@
                                     <mat-form-field class="form-field placeh-align">
                                         <input matInput placeholder="Select the start date" style="padding-bottom:2px;"
                                             [matDatepicker]="picker1" [formControl]="startDate"
-                                            (dateChange)="dateChange($event)">
+                                            (dateChange)="dateChange($event)" [(ngModel)]="startselectDate">
                                         <mat-datepicker-toggle matSuffix [for]="picker1">
                                             <br>
                                             <!-- <mat-icon matDatepickerToggleIcon>
@@ -59,7 +65,8 @@
                                     <label>End Date <span class="astr">*</span></label><br>
                                     <mat-form-field class="form-field placeh-align">
                                         <input matInput placeholder="Select the end date"
-                                        [matDatepicker]="picker2" [min]="startDate.value" [formControl]="endDate">
+                                        [matDatepicker]="picker2" [min]="startDate.value" [formControl]="endDate"
+                                        (dateChange)="enddateChange($event)" [(ngModel)]="selectendDate">
                                         <mat-datepicker-toggle matSuffix [for]="picker2">
                                         </mat-datepicker-toggle>
                                         <mat-datepicker #picker2></mat-datepicker>
@@ -142,16 +149,16 @@
                                                     <mat-card-content class="item-in-box">
                                                         <ul>
                                                             <li *ngFor="let prodtable of selectedRows" >{{prodtable.productGroupName}}</li>
-                                                            
+                                                            <li>Item Information</li>
                                                         </ul>
                                                     </mat-card-content>
                                                 </mat-card>
                                             </div>
                                             <div class="col-2 qtyalign" >
                                                 <label>Qty<span class="astr">*</span></label>
-                                                <input type="value" class="qty-box" placeholder="1" value="{{qtyMaxNum}}">
+                                                <input type="number" class="qty-box" placeholder="1" value="{{qtyMaxNum}}"id=qty name="qty" required max="10" min="0" [(ngModel)]="qtyValue">
                                                 <label>MOQ<span class="astr">*</span></label>
-                                                <input type="value" class="mty-box" placeholder="1" value="{{MoqMaxNum}}">
+                                                <input type="number" class="mty-box" placeholder="1" value="{{MoqMaxNum}}"id=moq name="moq" required max="10" min="0" [(ngModel)]="moqValue">
                                             </div>
                                         </div>
                                     </div>
@@ -196,7 +203,7 @@
                                             </div>
                                             <div class="col-2 qtyalign">
                                                 <label>Qty<span class="astr">*</span></label>
-                                                <div class="qty-box"> 1</div>
+                                                <input type="number" class="qty-box" placeholder="1"  id=Getqty name="Getqty" required max="10" min="0" [(ngModel)]="GetqtyValue">
                                             </div>
                                         </div>
                                     </div>
@@ -268,9 +275,9 @@
                                                 </div>
                                                 <div class="col-2 qtyalign">
                                                     <label>Qty<span class="astr">*</span></label>
-                                                    <div class="qty-box"> 1</div>
+                                                    <input type="number" class="qty-box" placeholder="1" value="{{qtyMaxNum}}"id=qty name="qty" required max="10" min="0" [(ngModel)]="qtyValue">
                                                     <label>mty<span class="astr">*</span></label>
-                                                    <div class="mty-box"> 1</div>
+                                                    <input type="number" class="mty-box" placeholder="1" value="{{MoqMaxNum}}"id=moq name="moq" required max="10" min="0" [(ngModel)]="moqValue">
                                                 </div>
                                             </div>
                                         </div>
@@ -337,7 +344,7 @@
                                             </div>
                                             <div class="col-2 qtyalign">
                                                 <label>Qty<span class="astr">*</span></label>
-                                                <div class="qty-box"> 1</div>
+                                                <input type="number" class="qty-box" placeholder="1" value="{{qtyMaxNum}}"id=qty name="qty" required max="10" min="0" [(ngModel)]="qtyValue">
                                             </div>
                                         </div>
                                     </div>
@@ -516,13 +523,13 @@
                                 <div class="row">
                                     <div class="col-lg-9 sltd-span">
                                         <span class="selectedname" *ngIf="false">Selected Geogrphies</span>
-                                        <span class="selectedcolor" *ngIf="true">Malasia(3/4)</span>;
-                                        <span class="selectedclr2">India(15/15)</span>;
+                                        <span class="selectedcolor" *ngIf="showselectedgeovalue">{{aboveDefaultGeoOfName}}({{selectedcount}}/{{tottalgeoCount}})</span>
+                                        <!-- <span class="selectedclr2">India(15/15)</span>;
                                         <span class="astr">Singpore(0/6)</span>;
-                                        <span class="selectedclr2">Japan(23/23)</span>
+                                        <span class="selectedclr2">Japan(23/23)</span> -->
                                     </div>
                                     <div class="col-lg-3">
-                                        <button class="slctd-geo-btn" (click)="geography()"> Selected
+                                        <button class="slctd-geo-btn" (click)="addgeography()"> Selected
                                             Geographies</button>
                                     </div>
                                 </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { AddOrderPromotionlistComponent } from '../orders/add-order-promotionlist/add-order-promotionlist.component';
 import { OrderNonpromotionlistComponent } from '../orders/order-nonpromotionlist/order-nonpromotionlist.component';
 import { AddPromotionGeographiesComponent } from '../add-promotions/add-promotion-geographies/add-promotion-geographies.component';
@@ -19,9 +19,15 @@ import { SharedServicesDealerService } from 'src/app/services/shared-services-de
 })
 export class AddDealerAssociationsComponent implements OnInit {
   selectedTeam = '';
+  
   selectedDay: string = '';
+  selectedGeoField: string = "";
+  updateGeographyValue: string = "";
 
-  dealerInfo = true;
+  selectedGeoField1: string = "";
+  updateGeographyValue1: string = "";
+
+  dealerInfo :boolean = false;
   orderitem = false;
   orderitem1 = true;
   otherInfo = false;
@@ -56,6 +62,9 @@ export class AddDealerAssociationsComponent implements OnInit {
   tooltipData: any = [];
   tooltipDataDealer: any = [];
   slectedgeo: boolean = false;
+  allComplete: boolean = false;
+  inumber:any;
+
   // seletedproduct1 : any;
   selectAllIdentifierProduct: any = [];
   selectedIdentifierProductArray: any = [];
@@ -67,7 +76,9 @@ export class AddDealerAssociationsComponent implements OnInit {
   ProductListArray: any = []
   storedNames123: any;
   productSkuId: any;
-
+  stockItemsID:any;
+  aboveDefaultGeoOfName:any;
+  tottalgeoCount:any;
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
     //update the ui
@@ -103,6 +114,7 @@ export class AddDealerAssociationsComponent implements OnInit {
   disabled = false;
   toppingList3: any = [];
   dealerListArray: any = [];
+selectedcount:any;
 
   toppingList: any = [
     'Product Name12',
@@ -136,10 +148,16 @@ export class AddDealerAssociationsComponent implements OnInit {
   myForm3: any = FormGroup;
   myForm4: any = FormGroup;
   selectedItems: any = [];
+  showselectedgeovalue:boolean=false;
   productDlr: boolean = false;
   dealersArray: any = [];
   storedName124: any;
   loopingdata: any;
+  geoProperties: any=[];
+  LoginId:any;
+  numberValue:any;
+  color:any='primary';
+
   constructor(
     private _formBuilder: FormBuilder,
     public dialog: MatDialog,
@@ -148,7 +166,9 @@ export class AddDealerAssociationsComponent implements OnInit {
     private associationService: AssosiationServicesService,
     private materialList: MaterialListService,
     private addMaterials: AddMaterialsService,
-    private sharedService: SharedServicesDealerService
+    private sharedService: SharedServicesDealerService,
+    private dialogRef: MatDialogRef<AddDealerAssociationsComponent>,
+
 
   ) {
     this.sharedService.listen().subscribe((m: any) => {
@@ -161,8 +181,11 @@ export class AddDealerAssociationsComponent implements OnInit {
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
   copyDealersEntriesList:any = [];
   dealerList:any = [];
+  aarrayToPush:any=[];
 
   ngOnInit(): void {
+    this.LoginId=localStorage.getItem("logInId");
+    this.numberValue = Number(this.LoginId);
     this.ProductItems();
     this.dealerItems();
     this.tooltiptable();
@@ -224,9 +247,34 @@ export class AddDealerAssociationsComponent implements OnInit {
     this.customIdentifier();
   }
 
-  getdealerbasedonGeo() {
 
+  applySelectedValue(i) {
+    console.log(this.updateGeographyValue, this.selectedGeoField);
+
+    this.dealerList[i].formatedGeoGraphy.map(x => x[this.selectedGeoField] = this.updateGeographyValue);
+    this.selectedGeoField = "";
+   this.updateGeographyValue = "";
+  }
+
+  applySelectedValue1() {
+    debugger
+for(let i=0;i < this.selectedDealerInDropDown.length;i++){
+  this.dealerList[i].formatedGeoGraphy.map(x => x[this.selectedGeoField1] = this.updateGeographyValue1);
+}
+
+this.selectedGeoField1 = "";
+this. updateGeographyValue1 = "";
+  }
+
+
+
+  getdealerbasedonGeo() {
+    this.showselectedgeovalue=true;
     this.storedNames123 = localStorage.getItem("geoAsso");
+    this.aboveDefaultGeoOfName = localStorage.getItem("aboveDefaultGeoOfName");
+    this.selectedcount = localStorage.getItem("selectedcount");
+    this.tottalgeoCount = localStorage.getItem("tottalgeoCount");
+
     var objectsFromStorage = JSON.parse(this.storedNames123)
     alert(objectsFromStorage)
     this.storedName124 = objectsFromStorage;
@@ -290,7 +338,6 @@ export class AddDealerAssociationsComponent implements OnInit {
   GetDealearsData(dealerdata){
     this.associationService.getdealerEntireList(dealerdata).subscribe((res) => {
       let data = res.response;
-      debugger
       this.loopingdata = data;
       console.log(' this.loopingdata', this.loopingdata)
 
@@ -300,6 +347,8 @@ export class AddDealerAssociationsComponent implements OnInit {
 
     });
   }
+
+  
 
   formatGeoDetailsObj(geographyData, heirarchyValue) {
     let formatedGeography: any = [];
@@ -311,7 +360,7 @@ export class AddDealerAssociationsComponent implements OnInit {
         let tempObj = JSON.parse(JSON.stringify(childObj));
         if (tempObj.child) {
           delete tempObj.child;
-          tempObj = { ...tempObj, ... this.CreateGeoPropertiesObject({ geographyName: tempObj.geographyName, geographyId: tempObj.geographyId }, true) };
+          tempObj = { ...tempObj, ... this.CreateGeoPropertiesObject({ geographyName: tempObj.geoGraphyName, geographyId: tempObj.geographyId }, true) };
           formatedGeography.push(tempObj);
         } else {
           delete tempObj.defaultLevels;
@@ -320,7 +369,7 @@ export class AddDealerAssociationsComponent implements OnInit {
         if (childObj.child) {
           childObj = JSON.parse(JSON.stringify(childObj.child[0]));
         } else {
-          tempObj = { ...tempObj, ... this.CreateGeoPropertiesObject({ geographyName: tempObj.geographyName, geographyId: tempObj.geographyId }, true) };
+          tempObj = { ...tempObj, ... this.CreateGeoPropertiesObject({ geographyName: tempObj.geoGraphyName, geographyId: tempObj.geographyId }, true) };
           formatedGeography.push(tempObj);
           formatedGeography = [...formatedGeography, ...childObj.defaultLevels]
           // .push(childObj.defaultLevels);
@@ -343,33 +392,8 @@ export class AddDealerAssociationsComponent implements OnInit {
         this.dealerList.push(item);
       }
 
-      console.log(this.dealerList);
+      console.log('this.dealerList',this.dealerList);
 
-
-
-
-      // let obj: any = {};
-      // obj.dealerId = items.dealerId;
-      // obj.dealerName = items.dealerName;
-      // obj.defaultHeirarchyLevelId = items.defaultHeirarchyLevelId;
-
-      // // for(let i=0;i>obj.defaultHeirarchyLevelId;i++){
-      // // if(items.geoDetails?.child){
-
-      // // }
-      // // }
-      // if (items?.geoDetails) {
-      //   let copyObject = items?.geoDetails;
-      //   delete copyObject[0].child;
-      //   obj.geographySelected = [copyObject];
-      //   obj.geoProperties = [this.CreateGeoPropertiesObject({ geoGraphyName: copyObject.geoGraphyName, geographyId: copyObject.geographyId })];
-      // }
-
-      // console.log('obj', obj)
-      // let obj1: string[] = [];
-      // obj1[0] = obj
-      // let result: string[] = [];
-      // return console.log('mainobj', obj1);
 
     }
   }
@@ -390,7 +414,109 @@ export class AddDealerAssociationsComponent implements OnInit {
     return obj;
   }
 
+  setAll(completed:boolean ,selected:any) {
+    console
+    this.allComplete = completed;
+    if(this.allComplete == true ){
 
+    }
+    else
+    {
+    
+    }
+  }
+  updateAllComplete(event){
+
+    let dealerId = event;
+    const index = this.aarrayToPush.indexOf(dealerId);
+
+    if (index !== -1) {
+      this.aarrayToPush.splice(index, 1);
+      this.selectedcount=this.aarrayToPush.length
+
+
+    }
+    else {
+      this.aarrayToPush.push(dealerId);
+      this.selectedcount=this.aarrayToPush.length
+
+    }
+
+    console.log('aarrayToPush', this.aarrayToPush)
+  }
+
+  saveAssociation(){
+    debugger
+    this.geoProperties=[];
+ 
+    console.log('savedealerlist',this.dealerList);
+      
+   if(this.aarrayToPush.length>0){
+
+
+    this.dealerList.forEach(element => {
+
+for( let i=0;i<this.aarrayToPush.length;i++){
+  if(this.aarrayToPush[i] === element.dealerId){
+
+      
+    let maingeo= JSON.parse(JSON.stringify(element.formatedGeoGraphy));
+    // ✅ only runs if value not in array
+  let obj:any={}
+  obj.DealerId=element.dealerId;
+  let item:any=[]
+  
+  element.formatedGeoGraphy.forEach(element1=>{
+
+
+    if(element.defaultHeirarchyLevelId == element1.geographyHierarchyId){
+      delete element1.registrationNumber;
+      delete element1.geographyName;
+      item.push(JSON.parse(JSON.stringify(element1)))
+    }
+  })
+  console.log('item',item)
+  obj.GeoDetails=item
+  if (!this.geoProperties.includes(obj.DealerId)) {
+    // ✅ only runs if value not in array
+    this.geoProperties.push(obj);
+  }
+  
+  }
+}
+     
+      
+      
+            // let item =;
+        //  this.geoProperties.push(obj) ;
+        //  obj=''
+          })
+      
+          console.log('console of geoproperties',this.geoProperties)
+          let data ={
+            productId:this.stockItemsID,
+            LoggedUserId:this.numberValue,
+            DealerDetails: this.geoProperties,
+          }
+      this.associationService.addassosiation(data).subscribe((res)=>{
+        if(res.response.result=='Successfully Added'){
+          this.sharedService.filter('Register click')
+          this.dialogRef.close();
+
+        }
+        else{
+
+        }
+        console.log(res.response)
+      })
+   }
+      else{
+
+        alert('select any dealer')
+      }
+      
+
+  }
  
   ProductItems() {
     this.user.getproductlist().subscribe((res: any) => {
@@ -416,16 +542,6 @@ export class AddDealerAssociationsComponent implements OnInit {
       this.dealerListArray = localdata.map((data: { customerId: any; customerName: any; }) => {
         return { customerId: data.customerId, customerName: data.customerName };
       });
-
-      this.dropdownSettings3 = {
-        singleSelection: false,
-        idField: 'customerId',
-        textField: 'customerName',
-        selectAllText: 'Select All',
-        unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 1,
-      };
-
       this.dealerListArray.push()
       console.log('dealerListArray', this.dealerListArray)
 
@@ -440,6 +556,7 @@ export class AddDealerAssociationsComponent implements OnInit {
     let ProductId = arry[0];
     this.productSkuId = ProductId
     let stockItemId = arry[2];
+    this.stockItemsID=stockItemId
     console.log('value', ProductId)
     this.selectedProduct1 = ProductId;
     this.slectedgeo = true;
@@ -473,12 +590,16 @@ export class AddDealerAssociationsComponent implements OnInit {
     this.addButton = true;
   }
 
-  expandDealerInfoDiv() {
-    this.dealerInfo = !this.dealerInfo;
+  expandDealerInfoDiv(i) {
+
+    this.inumber=i
 
     if (this.dealerInfo === false) {
+      this.dealerInfo=true;
       this.image1 = 'assets/img/maximize-arrow.png';
+
     } else {
+      this.dealerInfo = false;
       this.image1 = 'assets/img/minimize-tag.png';
     }
   }

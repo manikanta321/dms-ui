@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
@@ -10,6 +10,7 @@ import { Subject } from 'rxjs';
 import { CellClassParams, CellClassRules, CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef, GridApi, GridOptions, ModuleRegistry, ColumnResizedEvent, Grid, } from 'ag-grid-community';
 import { MatTableDataSource } from '@angular/material/table';
 import { AddPromotionGeographiesComponent } from './add-promotion-geographies/add-promotion-geographies.component';
+import { DateAdapter } from '@angular/material/core';
 @Component({
   selector: 'app-add-promotions',
   templateUrl: './add-promotions.component.html',
@@ -29,6 +30,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     eValue: '',
     pValue: '',
   }];
+  promoName : string = '';
   errorMsg: any;
   buyGroupPlus : any = [{itemss : ''}];
   addgetgroup : any = [{ getItems: ''}];
@@ -46,6 +48,15 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   stateName: string[] = ['State 1', 'State 2',];
   fileupload: any;
   selectedRows: any;
+  pGselectedRows : any
+  promotionTypesId: any;
+  saveAndDraft : any = [];
+  storedNames123: any;
+  aboveDefaultGeoOfName: any;
+  selectedcount: any;
+  tottalgeoCount:any;
+  customerId: any;
+  productselectedRows: any;
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
     //update the ui
@@ -69,9 +80,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   ShowFilter = false;
   imagepath :any;
   selecetdFile: any;
-
+  startselectDate : any;
+  selectendDate : any;
   imagePreview: any;
   addImage : any;
+  showselectedgeovalue : boolean=false
   totalStepsCount: number | undefined;
   startDate = new FormControl(new Date());
   endDate = new FormControl(new Date());
@@ -80,6 +93,13 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
   dateChange(e) {
     this.minDateToFinish.next(e.value.toString());
+    // alert(e.value);
+    console.log("This is the DATE:", e.value);
+    // moment().format("MMM Do YY");
+  }
+  enddateChange(e){
+    this.minDateToFinish.next(e.value.toString('dd, MM, yy'));
+    console.log("This is the DATE:", e.value);
   }
   @ViewChild('stepper') private myStepper: MatStepper | any;
 
@@ -93,12 +113,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
     {
       headerName: "Code",
-      field: 'shortCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',  checkboxSelection: true
+      field: 'code', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',  checkboxSelection: true
     },
-    { headerName: "Dealer Name", field: '', type: ['nonEditableColumn'] },
+    { headerName: "Dealer Name", field: 'dealerName', type: ['nonEditableColumn'] },
     { headerName: "", field: '', type: ['nonEditableColumn'] },
 
-    { headerName: "Geography", field: 'noofproducts', type: ['nonEditableColumn'],
+    { headerName: "Geography", field: 'geography', type: ['nonEditableColumn'],
     cellStyle: {color: '#017EFA'},
    },
 
@@ -214,12 +234,18 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     qtyMaxNum : any = [];
     MoqMaxNum : any = [];
     group : any =[];
+    qtyValue :any;
+    moqValue:any;
+    GetqtyValue: any;
+    selectedPromo : any;
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
+    private dateAdapter: DateAdapter<Date>,
     public promotionTypes: PromotionService) { 
       this.minDateToFinish.subscribe(r => {
         this.minDate = new Date(r);
-      })
+      });
+      this.dateAdapter.setLocale('en-GB'); //dd/MM/yyyy
     }
   firstFormGroup: FormGroup = this._formBuilder.group({ firstCtrl: [''] });
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
@@ -228,16 +254,20 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   /* on Select of Dropdown screen change */
 
   ngOnInit(): void {
+  //   this.firstFormGroup = new FormGroup({
+  //     promoname : new FormControl('', [Validators.required]),
+  // });
     this.GetPromotionTypes(Event);
     this.addimg();
     this.promotionType1();
+    this.addpromotionGeoTable();
     // this.toppingList3 = [
     //   { CategoryId: 1, CategoryName: 'Buy(A+B..) get(X+Y..)' },
     //   { CategoryId: 2, CategoryName: 'Buy(A/B..) get(C/D...)' },
     //   { CategoryId: 3, CategoryName: 'Volume Discount' },
     //   { CategoryId: 4, CategoryName: 'Price Discount' },
     // ];
-
+    this.pGselectedRows=JSON.parse(localStorage.getItem("pGselectedRows" ) ?? '');
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -310,7 +340,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       qtyMaxNum: '',
       MoqMaxNum: '',
     });
-    console.log('chec')
+    console.log('chec' ,this.buyGroupPlus)
   }
   removebuyGroup(u: any) {
     const index = this.buyGroupPlus.findIndex((itemss) => itemss.id === u);
@@ -355,7 +385,7 @@ this.addbuyset.push({
     //   promotionTypesName: this.promotionTypesName
     // }
     this.promotionTypes.GetPromotionTypes().subscribe((res) => {
-      // console.log('check promotiontypes', res);
+      console.log('check promotiontypes');
       this.promotionTypedropdown = res.response;
       if (event.promotionTypesName == 'Buy (A+B..) get (X+Y..)') {
         // this.goForward(this.myStepper);
@@ -428,6 +458,7 @@ this.addbuyset.push({
     const dialogRef = this.dialog.open(AddItemsPromotionComponent,{width:'1043px'});
     dialogRef.afterClosed().subscribe((res) => {
        this.selectedRows=JSON.parse(localStorage.getItem("selectedRows" ) ?? '');
+       this.productselectedRows=JSON.parse(localStorage.getItem("selectedRows" ) ?? '');
        console.log('dd',this.selectedRows)
 //       console.log(res);
 // localStorage.setItem('additem','1')
@@ -489,49 +520,68 @@ addimg(){
     const selectedRows = this.gridApi.getSelectedRows();
     console.log(selectedRows);
   }
-  geography(){
+  addgeography(){
     this.dialog.open( AddPromotionGeographiesComponent, {width: '654px', height:'743px'})
+    this.storedNames123 = localStorage.getItem("geoAsso");
+    this.aboveDefaultGeoOfName = localStorage.getItem("aboveDefaultGeoOfName");
+    this.selectedcount = localStorage.getItem("selectedcount");
+    this.tottalgeoCount = localStorage.getItem("tottalgeoCount");
   }
+  
   promotionType1(){
-    const data = {
-      PromotionName : 'Promotion-1',
-      PromotionTypesId :'1',
-      StartDate : '2022-12-12',
-      EndDate : '2022-12-31',
-      DoneById : '327',
-      Imageurl : 'image',
+    const data ={
+      PromotionName : this.promoName,
+      PromotionTypesId : 1,
+      StartDate : "2022-12-12",
+      EndDate :"2022-12-12",
+      DoneById : 327,
+      Imageurl : this.base64textString,
       BuyGroups : [{
-        StockItemId : this.buyGroupPlus,
-        MaxVolume: this.qtyMaxNum,
-        GroupId : this.group,
-        MOQ : this.MoqMaxNum,
-      },
+        StockItemId:[428,430,435],
+        MaxVolume:this.qtyValue,
+        GroupId:1,
+        MOQ:this.moqValue
+    },],
+    GetGroups : [
       {
-        StockItemId : '',
-        MaxVolume: '',
-        GroupId : '',
-        MOQ : '',
-      }],
-      GetGroups : [{
-        StockItemId : this.addgetgroup,
-        MaxVolume: '',
-        GroupId : '',
-      },
-      {
-        StockItemId : '',
-        MaxVolume: '',
-        GroupId : '',
-      }],
-      EntityInstanceId : [],
+        StockItemId:[417,418],
+        MaxVolume:12,
+        GroupId:1
+    }
+    ],
+    EntityInstanceId : []
     }
     this.promotionTypes.DropDownPromotionType(data).subscribe((res) => {
-
     });
+    console.log('addpro',[this.qtyValue,this.moqValue])
   }
   AddPromosaveAndSubmit(){
     console.log('added items')
-    console.log(this.buyGroupPlus)
-    
+    // const AddpromotionData = {
+    //   promotionName : this.promoName,
+    //   PromotionTypesId : this.selectedPromo,
+    //   StartDate : this.startselectDate,
+    //   EndDate : this.selectendDate,
+    //   qty: this.qtyValue,
+    //   mty:this.moqValue,
+    // }
+    // console.log('dats',AddpromotionData);
+    // localStorage.setItem("addpromo", JSON.stringify(AddpromotionData));
+    this.promotionType1()
+  }
+  addpromotionGeoTable(){
+    const data = {
+      Geography : [],
+      Search : '',
+    }
+    this.promotionTypes.GetPromotionDealerList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+      console.log()
+      // let localdata = res.response;
+      // this.custmerid = localdata.map((data: { customerId: any; code: any; dealerName:any,geography:any }) => {
+      //   return { customerId: data.customerId, code: data.code };
+      // });
+    });
   }
 }
 

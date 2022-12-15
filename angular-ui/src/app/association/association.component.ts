@@ -105,7 +105,7 @@ export class AssociationComponent implements OnInit {
 
     {
       headerName: "Product",
-       field: 'stockItemName', type: ['nonEditableColumn'], sort: 'desc',maxWidth:160
+       field: 'stockItemName', type: ['nonEditableColumn'],maxWidth:160
     },
 
     { headerName: "Dealer",
@@ -335,6 +335,8 @@ export class AssociationComponent implements OnInit {
 
   ngOnInit() {
     this.getusertabeldata();
+    // this.dialog.open(AddDealerAssociationsComponent,{width: '900px',height:'460px'});
+
     this.roleItems();
     this.ProductItems();
     this.dealerItems();

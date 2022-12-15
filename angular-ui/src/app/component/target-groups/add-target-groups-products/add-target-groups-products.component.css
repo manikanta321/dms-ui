@@ -107,9 +107,9 @@
     outline: none;
   }
   .close-icon {
-    left: 98%;
+    left: 100%;
     position: relative;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
   }
   
@@ -167,7 +167,7 @@ margin-right: 15px;
   border: 1px solid black;
   border-radius: 10px;
   background: black;
-  margin-left: 15px;
+  margin-left: -5px;
   width: 43px;
   padding: 8px 0px 0px 10px;
   height: 43px;
@@ -289,7 +289,7 @@ mat-radio-group{
 .mat-stepper-horizontal {
   display: inline;
   width: 500px;
-}
+} 
 
 ::ng-deep.add-item.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
   width: 1043px;
@@ -339,34 +339,18 @@ padding: 0 16px;
   position: relative;
   width: 43px;
 }
-.productdrprow{
-/* position: relative;
-left: 60%;
-margin-bottom: -53px; */
-display: flex;
-    justify-content: end;
-}
 .prodSubGDropdwn{
-  margin-bottom: -53px;
+position: relative;
+left: 60%;
+margin-bottom: -53px;
 }
-::ng-deep .pscgrid-popup {
-  width: 999px !important;
-  }
-  ::ng-deep .pscgrid-popup .mat-dialog-container{
-    padding: 0 !important;
-    margin-top: 72px;
-  }
-  ::ng-deep .grid-popup {
-    width: 999px !important;
-    }
-    ::ng-deep .grid-popup .mat-dialog-container{
-      padding: 0 !important;
-      margin-top: 72px;
-    }
-    ::ng-deep .psubgrid-popup {
-      width: 999px !important;
-      }
-      ::ng-deep .psubgrid-popup .mat-dialog-container{
-        padding: 0 !important;
-        margin-top: 72px;
-      }
+
+/* --- */
+.container-target{
+width: 1010px;
+height: 592px;
+padding: 17px;
+}
+.catty{
+  
+}

@@ -55,7 +55,8 @@
           <form [formGroup]="myForms4">
             <ng-multiselect-dropdown class="stts1" name="citys" [placeholder]="'Dealer'" formControlName="city5"
               [disabled]="disabled" [settings]="dropdownSettings4" [data]="dealerListArray"
-              (onSelect)="onItemDealerSelect($event)">
+              (onSelect)="onItemDealerSelect($event)" (onDeSelect)="onItemDealerDeSelect($event)"
+              (onDeSelectAll)="onItemDealerDeSelectOrAll($event)" (onSelectAll)="onItemDealerSelectOrAll($event)">
             </ng-multiselect-dropdown>
           </form>
           <div class="dropdown-placeholder stts1-placeholder">
@@ -93,7 +94,7 @@
             <hr />
           </section> -->
            
-          <div class="ref"><img class="refresh" src="assets/img/Vector.png" alt="refresh"></div>
+          <div class="ref"><img class="refresh" src="assets/img/Vector.png" (click)="refresh()" alt="refresh"></div>
           <!-- <div class="col-1"> -->
           <!-- <div class="icon btnhover refreshbtn" >
       <img class="refresh" src="assets/img/Vector.png"  alt="refresh" >

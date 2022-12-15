@@ -169,6 +169,7 @@ import { SalesInvoiceDownloadComponent } from './component/sales-invoice-downloa
 import { ForbiddenComponent } from './component/forbidden/forbidden.component';
 import { AddTargetGroupComponent } from './component/add-target-group/add-target-group.component';
 import { UserroledirectiveDirective } from './directives/userroledirective.directive';
+import { AddTargetGroupsProductsComponent } from './component/target-groups/add-target-groups-products/add-target-groups-products.component';
 
 @NgModule({
   declarations: [
@@ -360,6 +361,8 @@ import { UserroledirectiveDirective } from './directives/userroledirective.direc
           ForbiddenComponent,
           AddTargetGroupComponent,
           UserroledirectiveDirective,          
+          AddTargetGroupsProductsComponent,
+          
   ],
   imports: [
     MatTooltipModule,

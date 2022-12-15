@@ -105,7 +105,7 @@ export class AssociationComponent implements OnInit {
 
     {
       headerName: "Product",
-       field: 'stockItemName', type: ['nonEditableColumn'], sort: 'desc',maxWidth:160
+       field: 'stockItemName', type: ['nonEditableColumn'],maxWidth:160
     },
 
     { headerName: "Dealer",

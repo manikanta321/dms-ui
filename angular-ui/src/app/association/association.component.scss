@@ -1,3 +1,24 @@
+.add-user1:hover {
+  background-color: grey !important;
+  color: white !important;
+}
+
+.add-user1 {
+  border: none;
+  background: #000000;
+  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+  top: 87px;
+  position: absolute;
+  left: -54%;
+}
+
+     
+
+
+
+
 /* .tableclass{
     background-color: white;
     border-radius: 24px;
@@ -30,6 +51,15 @@
 /* ::ng-deep.mat-row{
     height: 10px;
 } */
+
+#GP
+{
+  margin-left: 10px;
+}
+#DP
+{
+  border-left: 1px solid black;
+}
 .user-text {
     font-size: 22px;
     line-height: 29px;
@@ -893,6 +923,10 @@
     .add-user {
       margin-left: -25px;
     }
+    .add-user1 {
+      margin-left: -25px;
+    }
+
   
     .download-btn {
       margin-left: 30px;

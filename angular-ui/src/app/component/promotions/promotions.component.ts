@@ -107,7 +107,9 @@ export class PromotionsComponent implements OnInit {
   statusArray:any=[];
   stayScrolledToEnd = true;
   paginationScrollCount:any;
- 
+  startDate:any='';
+  endDate:any='';
+  selectedDateRange:any;
 columnDefs: ColDef[] = [
   // { headerName: "User Id",
   //   field: 'employeeCode' , sort: 'desc'},
@@ -119,7 +121,7 @@ columnDefs: ColDef[] = [
 },
 
   {  headerName: "# of Dealers",
-     field: '',      tooltipField:"",
+     field: 'noOfDealers',      tooltipField:"noOfDealers",
     },
 
   {   headerName: "Start Date",
@@ -132,10 +134,10 @@ columnDefs: ColDef[] = [
     field: 'endDate',type: ['nonEditableColumn'],      tooltipField:"endDate",
   },
     {  headerName: "# of orders",
-    field: '',      tooltipField:"",
+    field: 'noOfOrders',      tooltipField:"noOfOrders",
   }, 
     {  headerName: "Invoiced Value",
-    field: '',      tooltipField:"",
+    field: 'invoicedValue',      tooltipField:"invoicedValue",
   }, 
   { headerName: "Status",
      field: 'statusName', 
@@ -337,14 +339,35 @@ geoList:any=[]
     });
   }
 
-  selectedDateRange = {
-    startDate: '11/11/2022',
-    endDate: '11/15/2022',
-  }
+  // selectedDateRange = {
+  //   startDate: '11/11/2022',
+  //   endDate: '11/15/2022',
+  // }
 
   customDatePickerEvent(eventChange){
     this.selectedDateRange = eventChange.selectedDate;
-    console.log(this.selectedDateRange);
+    this.startDate = this.selectedDateRange.startDate;
+    this.endDate = this.selectedDateRange.endDate;
+    console.log("SelectedDateRange",this.selectedDateRange);
+    const data={
+      promotiontype:this.promotionSelected,
+      product:this.productSelected,
+      geography:this.geographySelected,
+      dealer:this.dealerSelected,
+      status:this.statusSelected,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
+      search:this.searchText
+  
+    }
+    console.log("Data", data);
+    this.promotin.promotionTabledata(data).subscribe((res) => {
+
+      this.rowData5 = res.response;
+      console.log("RowData5",this.rowData5)
+     
+
+    });
   }
 
 
@@ -391,6 +414,14 @@ geoList:any=[]
     this.myForms4 = this.fb.group({ 
       city5: [this.selectedItems]
     });
+    this.promotionSelected =[];
+    this.productSelected = [];
+    this.geographySelected = [];
+    this.dealerSelected = [];
+    this.statusSelected = [];
+    this.startDate ='';
+    this.endDate ='';
+    this.searchText ='';
     this.toppings = new FormControl('');
     this.toppings1 = new FormControl(this.toppingList1);
     this.product=new FormControl(this.productLisst);
@@ -433,12 +464,14 @@ this.getusertabeldata();
   onSearchChange($event: any, anything?: any) {
     const { target } = $event;
     this.searchText = target.value;
-    const data = {
-      Ptype:this.promotionSelected,
-      Prodct:this.productSelected,
-      Geo:this.geographySelected,
-      Deler:[],
+    const data={
+      promotiontype:this.promotionSelected,
+      product:this.productSelected,
+      geography:this.geographySelected,
+      dealer:this.dealerSelected,
       status:this.statusSelected,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
       search:this.searchText
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
@@ -495,22 +528,24 @@ this.getusertabeldata();
 
 
   onItemSelect(item: any) {
-
-    // alert(item.roleName)
       this.promotionSelected.push(item.promotionTypesId);
     
       const data={
-        Ptype:this.promotionSelected,
-        Prodct:this.productSelected,
-        Geo:this.geographySelected,
-        Deler:[],
+        promotiontype:this.promotionSelected,
+        product:this.productSelected,
+        geography:this.geographySelected,
+        dealer:this.dealerSelected,
         status:this.statusSelected,
+        StartDate:this.startDate,
+        EndDate:this.endDate,
         search:this.searchText
     
       }
+      console.log("Data", data);
       this.promotin.promotionTabledata(data).subscribe((res) => {
 
         this.rowData5 = res.response;
+        console.log("RowData5",this.rowData5)
        
   
       });
@@ -523,23 +558,23 @@ this.getusertabeldata();
       this.promotionSelected.forEach((element,index)=>{
         if(element==item.promotionTypesId)  this.promotionSelected.splice(index,1);
      });
-     console.log(' this.userTypes', this.userTypes)
-    
-      // this.userTypes.pop(item.roleId);
-      const data={
-        Ptype:this.promotionSelected,
-        Prodct:this.productSelected,
-        Geo:this.geographySelected,
-        Deler:[],
-        status:this.statusSelected,
-        search:this.searchText
-    
-      }
+     console.log('onItemDeselect', this.promotionSelected);
+     const data={
+      promotiontype:this.promotionSelected,
+      product:this.productSelected,
+      geography:this.geographySelected,
+      dealer:this.dealerSelected,
+      status:this.statusSelected,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
+      search:this.searchText
+    }
       this.promotin.promotionTabledata(data).subscribe((res) => {
 
         this.rowData5 = res.response;
+        console.log("onItemDeselectRowData",this.rowData5);
        
-  
+
       });
     
     }
@@ -548,13 +583,14 @@ this.getusertabeldata();
       this.promotionSelected=this.promotionArray;
      
       const data={
-        Ptype:this.promotionSelected,
-        Prodct:this.productSelected,
-        Geo:this.geographySelected,
-        Deler:[],
+        promotiontype:this.promotionSelected,
+        product:this.productSelected,
+        geography:this.geographySelected,
+        dealer:this.dealerSelected,
         status:this.statusSelected,
+        StartDate:this.startDate,
+        EndDate:this.endDate,
         search:this.searchText
-    
       }
       this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -566,14 +602,16 @@ this.getusertabeldata();
       console.log('onItemSelect', item);}
    
       onItemDeSelectOrAll(item:any){
+        this.promotionSelected=[];
         const data={
-          Ptype:[],
-          Prodct:this.productSelected,
-          Geo:this.geographySelected,
-          Deler:[],
+          promotiontype:this.promotionSelected,
+          product:this.productSelected,
+          geography:this.geographySelected,
+          dealer:this.dealerSelected,
           status:this.statusSelected,
+          StartDate:this.startDate,
+          EndDate:this.endDate,
           search:this.searchText
-      
         }
         this.promotin.promotionTabledata(data).subscribe((res) => {
   
@@ -636,13 +674,14 @@ onProductSelect(item: any) {
     this.productSelected.push(item.productGroupId);
   
     const data={
-      Ptype:this.promotionSelected,
-      Prodct:this.productSelected,
-      Geo:this.geographySelected,
-      Deler:[],
+      promotiontype:this.promotionSelected,
+      product:this.productSelected,
+      geography:this.geographySelected,
+      dealer:this.dealerSelected,
       status:this.statusSelected,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
       search:this.searchText
-  
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -663,13 +702,14 @@ onProductSelect(item: any) {
   
     // this.userTypes.pop(item.roleId);
     const data={
-      Ptype:this.promotionSelected,
-      Prodct:this.productSelected,
-      Geo:this.geographySelected,
-      Deler:[],
+      promotiontype:this.promotionSelected,
+      product:this.productSelected,
+      geography:this.geographySelected,
+      dealer:this.dealerSelected,
       status:this.statusSelected,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
       search:this.searchText
-  
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -684,13 +724,14 @@ onProductSelect(item: any) {
     this.productSelected=this.productarray;
    
     const data={
-      Ptype:this.promotionSelected,
-      Prodct:this.productSelected,
-      Geo:this.geographySelected,
-      Deler:[],
+      promotiontype:this.promotionSelected,
+      product:this.productSelected,
+      geography:this.geographySelected,
+      dealer:this.dealerSelected,
       status:this.statusSelected,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
       search:this.searchText
-  
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -702,14 +743,16 @@ onProductSelect(item: any) {
     console.log('onItemSelect', item);}
  
     onItemDeSelectOrAllProduct(item:any){
+      this.productSelected =[];
       const data={
-        Ptype:this.promotionSelected,
-        Prodct:[],
-        Geo:this.geographySelected,
-        Deler:[],
+        promotiontype:this.promotionSelected,
+        product:this.productSelected,
+        geography:this.geographySelected,
+        dealer:this.dealerSelected,
         status:this.statusSelected,
+        StartDate:this.startDate,
+        EndDate:this.endDate,
         search:this.searchText
-    
       }
       this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -764,13 +807,14 @@ onGeoSelect(item: any) {
     this.geographySelected.push(item.geographyId);
   
     const data={
-      Ptype:this.promotionSelected,
-      Prodct:this.productSelected,
-      Geo:this.geographySelected,
-      Deler:[],
+      promotiontype:this.promotionSelected,
+      product:this.productSelected,
+      geography:this.geographySelected,
+      dealer:this.dealerSelected,
       status:this.statusSelected,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
       search:this.searchText
-  
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -791,13 +835,14 @@ onGeoSelect(item: any) {
   
     // this.userTypes.pop(item.roleId);
     const data={
-      Ptype:this.promotionSelected,
-      Prodct:this.productSelected,
-      Geo:this.geographySelected,
-      Deler:[],
+      promotiontype:this.promotionSelected,
+      product:this.productSelected,
+      geography:this.geographySelected,
+      dealer:this.dealerSelected,
       status:this.statusSelected,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
       search:this.searchText
-  
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -812,13 +857,14 @@ onGeoSelect(item: any) {
     this.geographySelected=this.geoArray;
    
     const data={
-      Ptype:this.promotionSelected,
-      Prodct:this.productSelected,
-      Geo:this.geographySelected,
-      Deler:[],
+      promotiontype:this.promotionSelected,
+      product:this.productSelected,
+      geography:this.geographySelected,
+      dealer:this.dealerSelected,
       status:this.statusSelected,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
       search:this.searchText
-  
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -830,14 +876,16 @@ onGeoSelect(item: any) {
     console.log('onItemSelect', item);}
  
     onItemDeSelectOrAllGeo(item:any){
+      this.geographySelected =[];
       const data={
-        Ptype:this.promotionSelected,
-        Prodct:this.productSelected,
-        Geo:[],
-        Deler:[],
+        promotiontype:this.promotionSelected,
+        product:this.productSelected,
+        geography:this.geographySelected,
+        dealer:this.dealerSelected,
         status:this.statusSelected,
+        StartDate:this.startDate,
+        EndDate:this.endDate,
         search:this.searchText
-    
       }
       this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -897,12 +945,15 @@ statusItems(){
 
 
 onItemDeSelectOrAllStatus(item:any){
+  this.statusSelected =[];
   const data={
-    Ptype:this.promotionSelected,
-    Prodct:this.productSelected,
-    Geo:this.geographySelected,
-    Deler:[],
-    status:[],
+    promotiontype:this.promotionSelected,
+    product:this.productSelected,
+    geography:this.geographySelected,
+    dealer:this.dealerSelected,
+    status:this.statusSelected,
+    StartDate:this.startDate,
+    EndDate:this.endDate,
     search:this.searchText
   }
   this.promotin.promotionTabledata(data).subscribe((res) => {
@@ -918,11 +969,13 @@ onItemDeSelectOrAllStatus(item:any){
 onItemSelectOrAllStatus(item:any){
   this.statusSelected=this.statusArray;
   const data={
-    Ptype:this.promotionSelected,
-    Prodct:this.productSelected,
-    Geo:this.geographySelected,
-    Deler:[],
+    promotiontype:this.promotionSelected,
+    product:this.productSelected,
+    geography:this.geographySelected,
+    dealer:this.dealerSelected,
     status:this.statusSelected,
+    StartDate:this.startDate,
+    EndDate:this.endDate,
     search:this.searchText
   }
   this.promotin.promotionTabledata(data).subscribe((res) => {
@@ -938,11 +991,13 @@ onStatusSelect(item: any) {
 this.statusSelected.push(item.statusId);
 
 const data={
-  Ptype:this.promotionSelected,
-  Prodct:this.productSelected,
-  Geo:this.geographySelected,
-  Deler:[],
+  promotiontype:this.promotionSelected,
+  product:this.productSelected,
+  geography:this.geographySelected,
+  dealer:this.dealerSelected,
   status:this.statusSelected,
+  StartDate:this.startDate,
+  EndDate:this.endDate,
   search:this.searchText
 }
 this.promotin.promotionTabledata(data).subscribe((res) => {
@@ -961,11 +1016,13 @@ this.statusSelected.forEach((element,index)=>{
 // this.statusTypes.pop(item.statusId);
 console.log(' this.statusTypes', this.userTypes)
 const data={
-  Ptype:this.promotionSelected,
-  Prodct:this.productSelected,
-  Geo:this.geographySelected,
-  Deler:[],
+  promotiontype:this.promotionSelected,
+  product:this.productSelected,
+  geography:this.geographySelected,
+  dealer:this.dealerSelected,
   status:this.statusSelected,
+  StartDate:this.startDate,
+  EndDate:this.endDate,
   search:this.searchText
 }
 this.promotin.promotionTabledata(data).subscribe((res) => {
@@ -1112,78 +1169,90 @@ handleScroll(event) {
     this.dealerSelected.push(item.customerId);
 
     const data={
-      Ptype:this.promotionSelected,
-      Prodct:this.productSelected,
-      Geo:this.geographySelected,
-      Deler:this.dealerSelected,
+      promotiontype:this.promotionSelected,
+      product:this.productSelected,
+      geography:this.geographySelected,
+      dealer:this.dealerSelected,
       status:this.statusSelected,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
       search:this.searchText
     }
-    this.associationService.getDealersList(data).subscribe((res) => {
-      this.rowData5 = res.response;
-  
+    this.promotin.promotionTabledata(data).subscribe((res) => {
 
+      this.rowData5 = res.response;
+     
+    
     });
     console.log('rolefilter', this.userTypes)
     console.log('onItemSelect', item);
   }
-//   onItemDealerSelectOrAll(item: any) {
-//     this.dealerSelected = this.dealerAllArray;
-//     const data={
-//       Ptype:this.promotionSelected,
-//       Prodct:this.productSelected,
-//       Geo:this.geographySelected,
-//       Deler:this.dealerSelected,
-//       status:this.statusSelected,
-//       search:this.searchText
-//     }
-//     this.associationService.getDealersList(data).subscribe((res) => {
-//       this.rowData5 = res.response;
-  
+  onItemDealerSelectOrAll(item: any) {
+    this.dealerSelected = this.dealerAllArray;
+    const data={
+      promotiontype:this.promotionSelected,
+      product:this.productSelected,
+      geography:this.geographySelected,
+      dealer:this.dealerSelected,
+      status:this.statusSelected,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
+      search:this.searchText
+    }
+    this.promotin.promotionTabledata(data).subscribe((res) => {
 
-//     });
+      this.rowData5 = res.response;
+     
+    
+    });
 
-//   }
-//   onItemDealerDeSelectOrAll(item: any) {
-//     this.dealerSelected=[];
-//     const data={
-//       Ptype:this.promotionSelected,
-//       Prodct:this.productSelected,
-//       Geo:this.geographySelected,
-//       Deler:this.dealerSelected,
-//       status:this.statusSelected,
-//       search:this.searchText
-//     }
-//     this.associationService.getDealersList(data).subscribe((res) => {
-//       this.rowData5 = res.response;
-  
+  }
+  onItemDealerDeSelectOrAll(item: any) {
+    this.dealerSelected=[];
+    const data={
+      promotiontype:this.promotionSelected,
+      product:this.productSelected,
+      geography:this.geographySelected,
+      dealer:this.dealerSelected,
+      status:this.statusSelected,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
+      search:this.searchText
+    }
+    this.promotin.promotionTabledata(data).subscribe((res) => {
 
-//     });
-//     console.log('rolefilter', this.userTypes)
-//     console.log('onItemSelect', item);
-//   }
+      this.rowData5 = res.response;
+     
+    
+    });
+    console.log('rolefilter', this.userTypes)
+    console.log('onItemSelect', item);
+  }
 
-//   onItemDealerDeSelect(item: any) {
-// console.log(item)
-//     this.dealerSelected.forEach((element, index) => {
-//       if (element == item.customerId) this.dealerSelected.splice(index, 1);
-//     });
-//     console.log(' this.userTypes', this.userTypes)
+  onItemDealerDeSelect(item: any) {
+console.log(item)
+    this.dealerSelected.forEach((element, index) => {
+      if (element == item.customerId) this.dealerSelected.splice(index, 1);
+    });
+    console.log(' this.userTypes', this.userTypes)
 
-//     // this.userTypes.pop(item.roleId);
-//     const data={
-//       Ptype:this.promotionSelected,
-//       Prodct:this.productSelected,
-//       Geo:this.geographySelected,
-//       Deler:this.dealerSelected,
-//       status:this.statusSelected,
-//       search:this.searchText
-//     }
-//     this.associationService.getDealersList(data).subscribe((res) => {
-//       this.rowData5 = res.response;
-  
+    // this.userTypes.pop(item.roleId);
+    const data={
+      promotiontype:this.promotionSelected,
+      product:this.productSelected,
+      geography:this.geographySelected,
+      dealer:this.dealerSelected,
+      status:this.statusSelected,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
+      search:this.searchText
+    }
+    this.promotin.promotionTabledata(data).subscribe((res) => {
 
-//     });
-//   }
+      this.rowData5 = res.response;
+     
+    
+    });
+  }
 }
 

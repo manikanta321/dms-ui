@@ -13,49 +13,52 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="input-icons ">
-                                    <form [formGroup]="myForms" class="dropDown-field">
-                                        <ng-multiselect-dropdown class="stts" [placeholder]="'Category'"
-                                            formControlName="citys" [settings]="dropdownSettings1"
-                                            [data]="category"
-                                            (onDeSelect)="onStatusDeSelect($event)"
-                                            (onDeSelectAll)="onItemDeSelectOrAllStatus($event)"
-                                            (onSelectAll)="onItemSelectOrAllStatus($event)">
+                                    <form [formGroup]="categoryForm" class="dropDown-field">
+                                        <ng-multiselect-dropdown class="stts" name="city" [placeholder]="'Category'"
+                                            formControlName="categoryy" [disabled]="disabled"
+                                            [settings]="dropdownSettings1" [data]="catagoryData"
+                                            (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
+                                            (onDeSelectAll)="onItemDeSelectOrAll($event)"
+                                            (onSelectAll)="onItemSelectOrAll($event)">
                                         </ng-multiselect-dropdown>
                                     </form>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="input-icons ">
-                                    <form [formGroup]="myForms" class="dropDown-field">
-                                        <ng-multiselect-dropdown class="stts" [placeholder]="'Sub-Category'"
-                                            formControlName="citys" [settings]="dropdownSettings2" [data]="subCategory"
-                                            (onDeSelect)="onStatusDeSelect($event)">
+                                    <form [formGroup]="subcategoryForm" class="dropDown-field">
+                                        <ng-multiselect-dropdown class="stts" name="subCategory" [placeholder]="''"
+                                            formControlName="subCategory" [disabled]="disabled"
+                                            [settings]="dropdownSettings2" [data]="sub_category"
+                                            (onSelect)="onSubCategorySelect($event)"
+                                            (onDeSelect)="onSubCategoryDeSelect($event)"
+                                            (onDeSelectAll)="onSubCategoryDSelectOrAll($event)"
+                                            (onSelectAll)="onSubCategorySelectOrAll()">
                                         </ng-multiselect-dropdown>
                                     </form>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="input-icons ">
-                                    <form [formGroup]="myForms" class="dropDown-field">
-                                        <ng-multiselect-dropdown class="stts" [placeholder]="'Type'"
-                                            formControlName="citys" [settings]="dropdownSettings3"
-                                            [data]="type"
-                                            (onDeSelect)="onStatusDeSelect($event)"
-                                            (onDeSelectAll)="onItemDeSelectOrAllStatus($event)"
-                                            (onSelectAll)="onItemSelectOrAllStatus($event)">
+                                    <form [formGroup]="type" class="dropDown-field">
+                                        <ng-multiselect-dropdown class="stts" name="type" [placeholder]="'Type'"
+                                            formControlName="type" [disabled]="disabled" [settings]="dropdownSettings3"
+                                            [data]="typeI" (onSelect)="onTypeSelect($event)"
+                                            (onDeSelect)="onTypeDeSelect($event)" (onSelectAll)="onTypeSelectOrAll()"
+                                            (onDeSelectAll)="OnTypeDeselectOrAll()">
                                         </ng-multiselect-dropdown>
                                     </form>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="input-icons ">
-                                    <form [formGroup]="myForms" class="dropDown-field">
+                                    <form [formGroup]="myFormsIdentifier" class="dropDown-field">
                                         <ng-multiselect-dropdown class="stts" [placeholder]="'Identifier'"
-                                            formControlName="citys" [settings]="dropdownSettings4"
-                                            [data]="identifier"
-                                            (onDeSelect)="onStatusDeSelect($event)"
-                                            (onDeSelectAll)="onItemDeSelectOrAllStatus($event)"
-                                            (onSelectAll)="onItemSelectOrAllStatus($event)">
+                                            formControlName="identifiers" [settings]="dropdownSettings4"
+                                            [data]="materialIdentifier" (onSelect)="onMaterialIdentifierSelect($event)"
+                                            (onDeSelect)="onMaterialIdentifierDeSelect($event)"
+                                            (onDeSelectAll)="onMaterialIdentifierDeSelectOrAll()"
+                                            (onSelectAll)="onMaterialIdentifierSelectOrAll()">
                                         </ng-multiselect-dropdown>
                                     </form>
                                 </div>
@@ -64,29 +67,30 @@
                     </div>
                     <div class="col-lg-2">
                         <div class="icon btnhover refreshbtn">
-                            <img src="assets/img/Vector.png" class="refresh-icon" alt="refresh">
+                            <img src="assets/img/Vector.png" (click)="refresh()" class="refresh-icon" alt="refresh">
                         </div>
                     </div>
                 </div>
                 <div class="row mt-5">
                     <div class="col-lg-12 nonpromoSearch">
-                    <div class="col-md-4 srch-hover" >
-                        <div class="searchBox1 d-flex">
-                          <input class="searchInput1" type="text" name="" placeholder="Type & search for anything">
-                          <!-- (keyup)="onSearchChange($event)" -->
-                          <button class="search-btn">Search</button>
-                          <button class="searchButton" href="#">
-                            <i class="material-icons">
-                              search
-                            </i>
-                          </button>
+                        <div class="col-md-4 srch-hover">
+                            <div class="searchBox1 d-flex">
+                                <input class="searchInput1" type="text" name=""
+                                    placeholder="Type & search for anything">
+                                <!-- (keyup)="onSearchChange($event)" -->
+                                <button class="search-btn">Search</button>
+                                <button class="searchButton" href="#">
+                                    <i class="material-icons">
+                                        search
+                                    </i>
+                                </button>
+                            </div>
                         </div>
-                      </div>
                     </div>
                 </div>
 
                 <div class="label-div">
-                    <table >
+                    <table>
                         <tr>
                             <th data-sortable="true">Product Name</th>
                             <th data-sortable="true">SKU</th>
@@ -104,8 +108,7 @@
                                     <!-- <option val="2">B</option>
                     <option val="356" selected>C</option> -->
                                 </select>
-                                <img src="assets/img/doubleTickes-default.svg"
-                                    alt="double-blue-tick">
+                                <img src="assets/img/doubleTickes-default.svg" alt="double-blue-tick">
                             </td>
                             <!-- <td><input type="date" value="2018-07-22"></td> -->
                             <td><input type="value" placeholder="5" class="quatity-inp"></td>
@@ -117,14 +120,14 @@
                             <td class="btm-total">15</td>
                             <td class="btm-total">300</td>
                         </tr>
-                </table>
+                    </table>
                 </div>
             </div>
 
         </div>
 
-<div class="add-itemBtn mt-5">
-    <button type="button" class="saveas-draft1"(click)="addnonPromoItems()">Add items</button>
-</div>
+        <div class="add-itemBtn mt-5">
+            <button type="button" class="saveas-draft1" (click)="addnonPromoItems()">Add items</button>
+        </div>
     </div>
 </div>

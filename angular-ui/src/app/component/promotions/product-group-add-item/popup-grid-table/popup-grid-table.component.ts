@@ -40,29 +40,29 @@ export class PopupGridTableComponent implements OnInit {
 
     {
       headerName: "Product Name",
-      field: 'stockItemName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
+      field: 'productName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
     },
 
     { headerName: "Classification", field: 'classification', type: ['nonEditableColumn'] },
 
-    { headerName: "SKU", field: 'productSKUName', type: ['nonEditableColumn'] },
+    { headerName: "SKU", field: 'sku', type: ['nonEditableColumn'] },
 
     {
       headerName: "Product Identifier",
-      field: 'productCustomName', type: ['nonEditableColumn']
+      field: 'productIdentifier', type: ['nonEditableColumn']
     },
 
     {
       headerName: "Product Group",
-      field: 'productGroupName', type: ['nonEditableColumn'],
+      field: 'productGroup', type: ['nonEditableColumn'],
     },
     {
       headerName: "Product Code",
-      field: 'globalCode', type: ['nonEditableColumn'],
+      field: 'productCode', type: ['nonEditableColumn'],
     },
     {
       headerName: "Product Shot Code",
-      field: 'shortCode', type: ['nonEditableColumn'],
+      field: 'productShortCode', type: ['nonEditableColumn'],
     },
     {
       headerName: '',
@@ -232,6 +232,9 @@ export class PopupGridTableComponent implements OnInit {
     }
   }
   producttable(){
+    // const data ={
+
+    // }
     this.promotionTypes.GetPGDetailList().subscribe((res) => {
       console.log('pg details check', res);
       this.rowData5 = res.response

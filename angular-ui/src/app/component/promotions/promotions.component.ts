@@ -277,6 +277,7 @@ public pivotPanelShow = 'always';
 		columnsManager: true,
 
   };
+  AddpromotionData: any;
   clickNextRendererFunc(){
     alert('hlo');
   }
@@ -372,6 +373,7 @@ geoList:any=[]
 
 
   ngOnInit() {
+    this.AddpromotionData = localStorage.getItem("AddpromotionData");
     this.maxDate.setDate(this.maxDate.getDate() + 20);     
     
     this.myForm = this.fb.group({
@@ -1113,7 +1115,7 @@ handleScroll(event) {
      
     };
     this.dialog.open( AddPromotionsComponent, config);
-
+    // this.AddpromotionData = localStorage.getItem("AddpromotionData");
   }
   // handleScroll(event) {
   //   const grid = document.getElementById('gridContainer');

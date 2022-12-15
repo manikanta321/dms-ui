@@ -119,7 +119,7 @@ export class AddItemsPromotionComponent implements OnInit {
     { headerName: "#of Products", field: 'noofproducts', type: ['nonEditableColumn'],
     cellStyle: {color: '#017EFA'},
     cellEditorPopup: true,
-       onCellClicked: (event: CellClickedEvent) => this.dialog.open(PopupPscGridTableComponent, {panelClass: 'pscgrid-popup'})
+       onCellClicked: (event: CellClickedEvent) => this.dialog.open(PopupPscGridTableComponent, {panelClass: 'pscgrid-popup',width:'999px'})
    },
 
     {
@@ -348,8 +348,10 @@ export class AddItemsPromotionComponent implements OnInit {
     productCustomIdentifierArray:any[]=[]
     @ViewChild('stepper') private myStepper: MatStepper | any;
     selectedRows: any =[];
-    proshcselectedRows : any =[]
-    searchfeild : boolean = false
+    productselectedRows :any= [];
+    pGselectedRows:any =[];
+    proshcselectedRows : any= [];
+    searchfeild : boolean = false;
   constructor(private _formBuilder: FormBuilder,
     public dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
@@ -515,14 +517,18 @@ export class AddItemsPromotionComponent implements OnInit {
       
     })
   }
-  onRowSelect(event) {
-    const selectedRows = this.gridApi.getSelectedRows();
-    console.log(selectedRows);
+  onProductRowSelect(event) {
+    const productselectedRows = this.gridApi.getSelectedRows();
+    console.log(productselectedRows);
+    return productselectedRows;
   }
   addproductitems(){
-    const selectedRows = this.gridApi.getSelectedRows();
-    console.log(selectedRows);
-    this.dialogRef.close(selectedRows);
+    // const selectedRows = this.gridApi.getSelectedRows();
+    // console.log(selectedRows);
+    // this.dialogRef.close(selectedRows);
+    this.productselectedRows = this.gridApi.getSelectedRows();
+    console.log(this.productselectedRows);
+    localStorage.setItem('selectedRows',JSON.stringify(this.productselectedRows) )
   }
   oncatselect(){
     this.promotionTypes.GetCategories().subscribe((res) =>{
@@ -832,14 +838,6 @@ export class AddItemsPromotionComponent implements OnInit {
       this.rowData5 = res.response;
     });
   }
-
-
-
-
-
-
-
-
   onproductIdentifierSelect(item: any) {
     this.productIDentifire.push(item.productCustomIdentifierId);
     console.log(item);
@@ -1193,19 +1191,19 @@ additemsProductShortCode(item:any){
   console.log('revathi');
   const selectedRows = this.gridApi.getSelectedRows();
   console.log(selectedRows);
-  // localStorage.setItem('selectedRows',JSON.stringify(this.selectedRows) )
-  
+  localStorage.setItem('selectedRows',JSON.stringify(this.selectedRows) )
   this.dialogRef.close();
 }
 ProductShortCodeRowSelect(event) {
-  const proshcselectedRows = this.gridApi.getSelectedRows();
-  console.log(proshcselectedRows);
+  this.selectedRows = this.gridApi.getSelectedRows();
+  console.log(this.selectedRows);
   console.log('slct');
 }
 // add product group
 addproductGroup(){
   const selectedRows = this.gridApi.getSelectedRows();
   console.log(selectedRows);
+  localStorage.setItem('selectedRows',JSON.stringify(this.selectedRows) )
 }
 AddProductGroupList(){
   const  data = {
@@ -1295,13 +1293,13 @@ AddProductGroupList(){
     })
   }
   ProductSubGroupRowSelect(event) {
-    const selectedRows = this.gridApi.getSelectedRows();
-    console.log(selectedRows);
+    const pGselectedRows = this.gridApi.getSelectedRows();
+    console.log(pGselectedRows);
   }
   addItemProductSubG(){
-    const selectedRows = this.gridApi.getSelectedRows();
-    console.log('rowl',selectedRows);
-    localStorage.setItem('selectedRows',JSON.stringify(this.selectedRows) )
+    const pGselectedRows = this.gridApi.getSelectedRows();
+    console.log('rowl',pGselectedRows);
+    localStorage.setItem('selectedRows',JSON.stringify(this.pGselectedRows) )
   }
   matsteptabClick(tab) {
     // console.log(tab);

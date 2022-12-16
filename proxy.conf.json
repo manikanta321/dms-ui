@@ -1,0 +1,12 @@
+{
+  "/api/*": {
+      "target": "https://devapi.devinfinitylearn.in",
+      "secure": false,
+      "logLevel": "debug"
+  },
+ "/ip/*":{
+  "target": "https://timezoneapi.io/api/",
+  "secure": false,
+  "logLevel": "debug"
+  }
+}

@@ -1053,3 +1053,66 @@ color: #FFFFFF;
   margin: auto;
   display: flex;
 }
+.dropdown-placeholder {
+  background: white;
+  color: #808080;
+  top: 0;
+  position: absolute;
+  height: 41px;
+  line-height: 41px;
+  left: 1px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  width: 80%;
+  border-radius: 10px 0 0 10px !important;
+  padding-left: 10px;
+  pointer-events: none;
+}
+
+::ng-deep.catty .multiselect-dropdown .dropdown-btn .selected-item {
+  background: #00187A !important;
+  /* right: 6% !important; */
+  display: block;
+}
+.catty-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #00187A !important;
+}
+::ng-deep .catty .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+  background: #00187A !important;
+}
+::ng-deep.subcatty .multiselect-dropdown .dropdown-btn .selected-item {
+  background: #0C5A3E !important;
+  /* right: 6% !important; */
+  display: block;
+}
+::ng-deep .subcatty .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+  background: #0C5A3E !important;
+}
+.subcatty-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #0C5A3E !important;
+}
+::ng-deep.stts .multiselect-dropdown .dropdown-btn .selected-item {
+  background: #C32F27 !important;
+  /* right: 6% !important; */
+  display: block;
+}
+.type-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #C32F27 !important;
+}
+::ng-deep .stts .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+  background: #C32F27 !important;
+}
+::ng-deep.identifier .multiselect-dropdown .dropdown-btn .selected-item {
+  background: #2F8F9E !important;
+  /* right: 6% !important; */
+  display: block;
+}
+.identifier-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #2F8F9E !important;
+}
+::ng-deep .identifier .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+  background: #2F8F9E !important;
+}
+::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
+  border: 2px solid #000000 !important;
+}

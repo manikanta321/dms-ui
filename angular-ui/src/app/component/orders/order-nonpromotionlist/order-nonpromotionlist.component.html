@@ -14,20 +14,25 @@
                             <div class="col-md-3">
                                 <div class="input-icons ">
                                     <form [formGroup]="categoryForm" class="dropDown-field">
-                                        <ng-multiselect-dropdown class="stts" name="city" [placeholder]="'Category'"
+                                        <ng-multiselect-dropdown class="catty" name="city" [placeholder]="'Category'"
                                             formControlName="categoryy" [disabled]="disabled"
                                             [settings]="dropdownSettings1" [data]="catagoryData"
                                             (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
                                             (onDeSelectAll)="onItemDeSelectOrAll($event)"
                                             (onSelectAll)="onItemSelectOrAll($event)">
                                         </ng-multiselect-dropdown>
+                                        <div class="dropdown-placeholder catty-placeholder">
+                                            <span *ngIf="categoryForm.get('categoryy').value.length == 0"style="color:grey;"> Select Category </span>
+                                            <span *ngIf="categoryForm.get('categoryy').value.length == 1" class="selected-placeholder"> {{categoryForm.get('categoryy').value.length}} Category  </span>
+                                            <span *ngIf="categoryForm.get('categoryy').value.length > 1" class="selected-placeholder"> {{categoryForm.get('categoryy').value.length}} Category(s)  </span>                   
+                                          </div>
                                     </form>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="input-icons ">
                                     <form [formGroup]="subcategoryForm" class="dropDown-field">
-                                        <ng-multiselect-dropdown class="stts" name="subCategory" [placeholder]="''"
+                                        <ng-multiselect-dropdown class="subcatty" name="subCategory" [placeholder]="''"
                                             formControlName="subCategory" [disabled]="disabled"
                                             [settings]="dropdownSettings2" [data]="sub_category"
                                             (onSelect)="onSubCategorySelect($event)"
@@ -35,6 +40,12 @@
                                             (onDeSelectAll)="onSubCategoryDSelectOrAll($event)"
                                             (onSelectAll)="onSubCategorySelectOrAll()">
                                         </ng-multiselect-dropdown>
+                                        <div class="dropdown-placeholder subcatty-placeholder">
+                                            <span *ngIf="subcategoryForm.get('subCategory').value.length == 0"style="color:grey;"> Select Subcategory </span>
+                                            <span *ngIf="subcategoryForm.get('subCategory').value.length == 1" class="selected-placeholder"> {{subcategoryForm.get('subCategory').value.length}} subcategory</span>
+                                            <span *ngIf="subcategoryForm.get('subCategory').value.length > 1" class="selected-placeholder"> {{subcategoryForm.get('subCategory').value.length}} subcategory(s) </span>
+                            
+                                          </div>
                                     </form>
                                 </div>
                             </div>
@@ -47,19 +58,31 @@
                                             (onDeSelect)="onTypeDeSelect($event)" (onSelectAll)="onTypeSelectOrAll()"
                                             (onDeSelectAll)="OnTypeDeselectOrAll()">
                                         </ng-multiselect-dropdown>
+                                        <div class="dropdown-placeholder type-placeholder">
+                                            <span *ngIf="type.get('type').value.length == 0"style="color:grey;"> Select Type </span>
+                                            <span *ngIf="type.get('type').value.length == 1" class="selected-placeholder"> {{type.get('type').value.length}} Type selected </span>
+                                            <span *ngIf="type.get('type').value.length > 1" class="selected-placeholder"> {{type.get('type').value.length}} Type(s) selected </span>
+                            
+                                          </div>
                                     </form>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="input-icons ">
                                     <form [formGroup]="myFormsIdentifier" class="dropDown-field">
-                                        <ng-multiselect-dropdown class="stts" [placeholder]="'Identifier'"
+                                        <ng-multiselect-dropdown class="identifier" [placeholder]="'Identifier'"
                                             formControlName="identifiers" [settings]="dropdownSettings4"
                                             [data]="materialIdentifier" (onSelect)="onMaterialIdentifierSelect($event)"
                                             (onDeSelect)="onMaterialIdentifierDeSelect($event)"
                                             (onDeSelectAll)="onMaterialIdentifierDeSelectOrAll()"
                                             (onSelectAll)="onMaterialIdentifierSelectOrAll()">
                                         </ng-multiselect-dropdown>
+                                        <div class="dropdown-placeholder identifier-placeholder">
+                                            <span *ngIf="myFormsIdentifier.get('identifiers').value.length == 0" style="color:grey;"> Select identifiers </span>
+                                            <span *ngIf="myFormsIdentifier.get('identifiers').value.length == 1" class="selected-placeholder"> {{myFormsIdentifier.get('identifiers').value.length}} identifiers selected </span>
+                                            <span *ngIf="myFormsIdentifier.get('identifiers').value.length > 1" class="selected-placeholder"> {{myFormsIdentifier.get('identifiers').value.length}} identifier(s) selected </span>
+                            
+                                          </div>
                                     </form>
                                 </div>
                             </div>

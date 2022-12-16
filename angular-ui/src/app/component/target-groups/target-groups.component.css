@@ -302,7 +302,7 @@ left: 37%
 
 ::ng-deep.ag-theme-material ::-webkit-scrollbar-thumb {
 
-   background: red !important; 
+   background: #000000 !important; 
      border-radius: 10px;    
 
 }

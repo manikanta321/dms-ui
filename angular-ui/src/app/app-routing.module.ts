@@ -28,16 +28,14 @@ const routes: Routes = [
   { path: 'ForgotPassword', pathMatch: 'full', component: ForgotPasswordComponent },
   { path: 'maindashbord', pathMatch: 'full', component: DashbordComponent, canActivate: [AuthGuard], data: { key: 'maindashboard', }, },
   { path: 'dashbord/user', pathMatch: 'full', component: UsersComponent, canActivate: [AuthGuard],  data: { key: 'settingusers', },},
-  { path: 'dashbord/materials', pathMatch: 'full', component: MaterialsComponent, canActivate: [AuthGuard] },
+  { path: 'dashbord/materials', pathMatch: 'full', component: MaterialsComponent, canActivate: [AuthGuard] , data: { key: 'settingmaterials', },},
   { path: 'dashbord/materials/materials-list', pathMatch: 'full', component: MaterialsListComponent, canActivate: [AuthGuard] },
   { path: 'dashbord/materials/materials-classification', pathMatch: 'full', component: MaterialsClassificationComponent, canActivate: [AuthGuard] },
-  { path: 'dashbord/other-masters', pathMatch: 'full', component: OtherMastersComponent, canActivate: [AuthGuard] },
-  { path: 'dashbord/dealer', pathMatch: 'full', component: DealerComponent, canActivate: [AuthGuard] }
-  ,
-  { path: 'dashbord/orders', pathMatch: 'full', component: OrdersComponent, canActivate: [AuthGuard] }
-  ,
+  { path: 'dashbord/other-masters', pathMatch: 'full', component: OtherMastersComponent, canActivate: [AuthGuard], data: { key: 'settingothermaterials', }, },
+  { path: 'dashbord/dealer', pathMatch: 'full', component: DealerComponent, canActivate: [AuthGuard], data: { key: 'dealerdashboard', }, },
+  { path: 'dashbord/orders', pathMatch: 'full', component: OrdersComponent, canActivate: [AuthGuard] , data: { key: 'orderdashboard', },},
   { path: 'dashbord/geographies', pathMatch: 'full', component: GeographiesComponent, canActivate: [AuthGuard], data: { key: 'settinggeographies', }, },
-  { path: 'dashbord/saleslist', pathMatch: 'full', component: SalesListComponent, canActivate: [AuthGuard] },
+  { path: 'dashbord/saleslist', pathMatch: 'full', component: SalesListComponent, canActivate: [AuthGuard], data: { key: 'saleslistdashboard', }, },
 
   { path: 'dashbord/edit-profile', pathMatch: 'full', component: EditProfileComponent, canActivate: [AuthGuard] },
   { path: 'forbidden-error', component: ForbiddenComponent },

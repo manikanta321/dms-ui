@@ -32,7 +32,18 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   }];
   promoName : string = '';
   errorMsg: any;
-  buyGroupPlus : any = [{itemss : ''}];
+  buyGroupPlus : any = [
+    {
+      StockItemId:[],
+      productselectedRows:[],
+      productScselectedRows:[],
+      pGselectedRows:[],
+      productSubGselectedRows:[],
+      MaxVolume:'',
+      GroupId:0,
+      MOQ:0
+  }
+  ];
   addgetgroup : any = [{ getItems: ''}];
   addbuyset : any = [{setitem: ''}];
   addgetset : any = [{gset: ''}]
@@ -341,10 +352,17 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   }
   addbuyGroup(i) {
     // this.showdata = true;
-    this.buyGroupPlus.push({
-      itemss: '',
-      // qtyMaxNum: '',
-      // MoqMaxNum: '',
+    console.log(this.buyGroupPlus);
+    this.buyGroupPlus.push(
+      {
+        StockItemId:[],
+        productselectedRows:[],
+        productScselectedRows:[],
+        pGselectedRows:[],
+        productSubGselectedRows:[],
+        MaxVolume:'',
+        GroupId:this.buyGroupPlus.length,
+        MOQ:0
     });
 		console.log(i);
   }
@@ -463,15 +481,21 @@ this.addbuyset.push({
       pValue: '',
     });
   }
-  addItems() {
+  addItems(index:any = null) {
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
     const dialogRef = this.dialog.open(AddItemsPromotionComponent,{width:'1043px'});
     dialogRef.afterClosed().subscribe((res) => {
-      this.productselectedRows=JSON.parse(localStorage.getItem("productselectedRows" ) ?? '')
-       this.productScselectedRows=JSON.parse(localStorage.getItem("productScselectedRows" ) ?? '');
-       this.pGselectedRows=JSON.parse(localStorage.getItem("pGselectedRows" ) ?? '');
-       this.productSubGselectedRows=JSON.parse(localStorage.getItem("productSubGselectedRows" ) ?? '');
-       console.log('dd',this.productSubGselectedRows)
+      this.productselectedRows=JSON.parse(localStorage.getItem("productselectedRows" ) ?? '[]')
+       this.productScselectedRows=JSON.parse(localStorage.getItem("productScselectedRows" ) ?? '[]');
+       this.pGselectedRows=JSON.parse(localStorage.getItem("pGselectedRows" ) ?? '[]');
+       this.productSubGselectedRows=JSON.parse(localStorage.getItem("productSubGselectedRows" ) ?? '[]');
+       console.log('dd',this.productSubGselectedRows);
+       console.log(this.productselectedRows);
+
+       if(index != null){
+         this.buyGroupPlus[index].productselectedRows = this.productselectedRows;
+      }
+
 //  let localdata = res.response;
 //       this.sltdid = localdata.map((data: { customerId: any; code: any; dealerName:any,geography:any }) => {
 //         return { customerId: data.customerId, code: data.code };
@@ -544,6 +568,8 @@ addimg(){
   }
   
   promotionType1(){
+    let stockItems = this.productselectedRows.map(x => x.stockItemId);
+    
     const data ={
       PromotionName : this.promoName,
       PromotionTypesId : this.selectedPromo,
@@ -552,7 +578,7 @@ addimg(){
       DoneById : this.loggedUserId,
       Imageurl : this.base64textString,
       BuyGroups : [{
-        StockItemId:[428,430,435],
+        StockItemId:stockItems,
         MaxVolume:this.qtyValue,
         GroupId:1,
         MOQ:this.moqValue

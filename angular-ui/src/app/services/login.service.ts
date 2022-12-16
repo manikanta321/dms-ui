@@ -102,7 +102,7 @@ export class LoginService {
       title: 'Users',
       submenulist: [],
       permissions: [
-        { action: 'view', status: true },
+        { action: 'view', status: false },
         { action: 'add', status: true },
         { action: 'edit', status: true },
         { action: 'reset', status: true },

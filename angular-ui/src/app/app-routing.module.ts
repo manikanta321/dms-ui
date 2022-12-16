@@ -13,6 +13,7 @@ import { OrdersComponent } from './component/orders/orders.component';
 import { OtherMastersComponent } from './component/other-masters/other-masters.component';
 import { TaxTemplateComponent } from './component/other-masters/tax-template/tax-template.component';
 import { UnitMeasureComponent } from './component/other-masters/unit-measure/unit-measure.component';
+import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
 import { SalesBulkUploadComponent } from './component/sales-bulk-upload/sales-bulk-upload.component';
 import { SalesListComponent } from './component/sales-list/sales-list.component';
 import { ResetPassword } from './component/sign-up/sign-up.component';
@@ -39,7 +40,9 @@ const routes: Routes = [
   { path: 'dashbord/saleslist', pathMatch: 'full', component: SalesListComponent, canActivate: [AuthGuard] },
 
   { path: 'dashbord/edit-profile', pathMatch: 'full', component: EditProfileComponent, canActivate: [AuthGuard] },
-  { path: 'forbidden-error', component: ForbiddenComponent }
+  { path: 'forbidden-error', component: ForbiddenComponent },
+  { path: 'page-not-found', component: PagenotfoundComponent },
+  {path: '**', redirectTo: '/page-not-found'}
 ];
 
 @NgModule({

@@ -39,11 +39,24 @@ export class AddPromotionGeographiesComponent implements OnInit {
 
   ngOnInit(): void {
 let productId=localStorage.getItem('ProductStockItemId')
-this.assoservice.getgeo(productId).subscribe((res)=>{
-  let data =res.response;
-  this.geodata= data;
-  
-})
+let coustmerId=localStorage.getItem('dealerSelectedcoustmerId')
+let selectedGeoType=localStorage.getItem('selectedtypeasso')
+
+
+if(selectedGeoType=='dealer'){
+  this.assoservice.getgeoOfdealer(coustmerId).subscribe((res)=>{
+    let data =res.response;
+    this.geodata= data;
+    
+  })
+}
+else{
+  this.assoservice.getgeo(productId).subscribe((res)=>{
+    let data =res.response;
+    this.geodata= data;
+    
+  })
+}
   }
   updateAllComplete(event) {
 let productID = event;

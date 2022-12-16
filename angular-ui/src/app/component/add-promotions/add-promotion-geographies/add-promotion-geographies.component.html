@@ -12,8 +12,8 @@
         <input type="text" placeholder="Search for the geography here" class="search-geo">
       </div>
     </div>
-    <div class="countries-sect">
-      <div class="row mt-3">     
+    <div class="countries-sect mainclass">
+      <div class="row mt-3 " >     
          <div *ngFor="let subtask of geodata">
 
         <div class="col-lg-6">
@@ -33,14 +33,17 @@
           </mat-card>
         </div>
       </div>
-
       </div>
     </div>
-    <div class="row footer-btn">
-      <button class="btn btn-light saveGeo" (click)="saveGeo()">Save Geographies</button>
-          </div>
+  
   </div>
+  <div class="row footer-btn">
+    <button class="btn btn-light saveGeo" (click)="saveGeo()">Save Geographies</button>
+        </div>
   </div>
+ 
   <!-- <div class="row footer">
     <button class="btn btn-light saveGeo">Save Geographies</button>
         </div> -->
+
+        

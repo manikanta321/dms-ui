@@ -55,6 +55,13 @@ border-radius: 25px;
 width: 293px;
 height: 228px;
   }
+  .footer-btn{
+    margin-top: 15px;
+  }
+  .mainclass{
+overflow-y: scroll; 
+overflow-x: hidden;
+}
   .add-geopgraphy li{
 list-style: none;
   }

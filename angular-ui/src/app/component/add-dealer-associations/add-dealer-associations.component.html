@@ -30,12 +30,15 @@
               <select #teams class="form-select select-asso" aria-label=".form-select-lg example"
                 (change)="selectedProduct(teams.value);">
                 <option selected hidden>Select</option>
-                <option style="height: 900px;"     *ngFor="let product of ProductListArray" value="{{product.productSKUId}} and {{product.stockItemId}}"><p (click)="selectedProduct(teams.value)">{{product.stockItemName}}</p></option>
+                <option style="height: 900px;" *ngFor="let product of ProductListArray"
+                  value="{{product.productSKUId}} and {{product.stockItemId}}">
+                  <p (click)="selectedProduct(teams.value)">{{product.stockItemName}}</p>
+                </option>
 
               </select>
               <div class="hover-text">
-                <img   class="img1"  src="../../../assets/img/i icon.svg"       matTooxltip=""/>
-                <div class="tooltip-text" id="top" >
+                <img class="img1" src="../../../assets/img/i icon.svg" matTooxltip="" />
+                <div class="tooltip-text" id="top">
                   <table class="tootipTable">
                     <tr>
                       <th>Product Name</th>
@@ -57,7 +60,7 @@
                     </tr>
                   </table>
                 </div>
-                </div>
+              </div>
             </div>
 
 
@@ -71,8 +74,8 @@
 
               </select>
               <div class="hover-text">
-                <img   class="img1"  src="../../../assets/img/i icon.svg"       matTooxltip=""/>
-                <div class="tooltip-text" id="top" >
+                <img class="img1" src="../../../assets/img/i icon.svg" matTooxltip="" />
+                <div class="tooltip-text" id="top">
                   <table class="tootipTable">
                     <tr>
                       <th>Product Name</th>
@@ -94,7 +97,7 @@
                     </tr>
                   </table>
                 </div>
-                </div>
+              </div>
 
             </div>
           </div>
@@ -103,24 +106,52 @@
         <div class="row heading">
           <h5 class="geo-head">Geographies</h5>
         </div>
-        <div class="row">
+        <div class="row" *ngIf="screenValue== 1">
           <div class="col-md-12 slctd-row">
             <div class="row">
               <div class="col-md-9 sltd-span">
                 <span class="selectedname" *ngIf="false">Selected Geogrphies</span>
-                <span class="selectedcolor" *ngIf="showselectedgeovalue">{{aboveDefaultGeoOfName}}({{selectedcount}}/{{tottalgeoCount}})</span>
+                <span class="selectedcolor"
+                  *ngIf="showselectedgeovalue">{{aboveDefaultGeoOfName}}({{selectedcount}}/{{tottalgeoCount}})</span>
                 <!-- <span class="selectedclr2">India(15/15)</span>;
                 <span class="astr">Singpore(0/6)</span>;
                 <span class="selectedclr2">Japan(23/23)</span> -->
               </div>
               <div class="col-md-3">
-                <button class="slctd-geo-btn"    [disabled]="!slectedgeo" (click)="geography()">
+                <button class="slctd-geo-btn" [disabled]="!slectedgeo" (click)="geography('product')">
                   Selected Geographies
                 </button>
               </div>
             </div>
           </div>
         </div>
+
+
+        <!---delers geo  --->
+
+
+        <div class="row" *ngIf="screenValue== 2">
+          <div class="col-md-12 slctd-row">
+            <div class="row">
+              <div class="col-md-9 sltd-span">
+                <span class="selectedname" *ngIf="false">Selected Geogrphies</span>
+                <span class="selectedcolor"
+                  *ngIf="showselectedgeovalue">{{aboveDefaultGeoOfName}}({{selectedcount}}/{{tottalgeoCount}})</span>
+                <!-- <span class="selectedclr2">India(15/15)</span>;
+        <span class="astr">Singpore(0/6)</span>;
+        <span class="selectedclr2">Japan(23/23)</span> -->
+              </div>
+              <div class="col-md-3">
+                <button class="slctd-geo-btn" [disabled]="!slectedgeo1" (click)="geography('dealer')">
+                  Selected Geographies
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
         <!-- Dealer list -->
         <div *ngIf="screenValue== 0|| screenValue == 1 ">
           <label class="dealer-list">Dealers List</label>
@@ -135,16 +166,9 @@
           <div class="row" *ngIf="screenValue == 1">
             <div class="col-md-6 promotiont1">
               <form [formGroup]="myForm" class="dropdown-form">
-                <ng-multiselect-dropdown
-                  class="promo1"
-                  [placeholder]="'Dealers'"
-                  formControlName="city1"
-                  [disabled]="disabled"
-                  [settings]="dropdownSettings3"
-                  [data]="dealersArray"
-
-                  (onSelect)="onDealerSelect($event)" (onDeSelect)="onDealerDeSelect($event)"
-                >
+                <ng-multiselect-dropdown class="promo1" [placeholder]="'Dealers'" formControlName="city1"
+                  [disabled]="disabled" [settings]="dropdownSettings3" [data]="dealersArray"
+                  (onSelect)="onDealerSelect($event)" (onDeSelect)="onDealerDeSelect($event)">
                 </ng-multiselect-dropdown>
 
                 <div class="dropdown-placeholder promo1-placeholder">
@@ -256,7 +280,7 @@
             <div class="col promotiont1">
               <form [formGroup]="myForm2" class="dropdown-form">
                 <ng-multiselect-dropdown class="promo1" name="city3" [placeholder]="'Geographies'"
-                  formControlName="city3" [disabled]="disabled" [settings]="dropdownSettings3" [data]="typeI"
+                  formControlName="city3" [disabled]="disabled" [settings]="dropdownSettings6" [data]="typeI"
                   (onSelect)="onTypeSelect($event)" (onDeSelect)="onTypeDeSelect($event)"
                   (onSelectAll)="onTypeSelectOrAll()" (onDeSelectAll)="OnTypeDeselectOrAll()">
                 </ng-multiselect-dropdown>
@@ -304,10 +328,10 @@
             <div class="col-3 promotiont1">
               <form [formGroup]="myForm4" class="dropdown-form">
                 <ng-multiselect-dropdown name="city5" formControlName="city5" class="promo1" [placeholder]="''"
-                  [disabled]="disabled" [settings]="dropdownSettings5" [data]="ProductIdentifier"
-                  (onSelect)="onSelectIdentifierProduct($event)" (onDeSelect)="onDeSelectIdentifierProduct($event)"
-                  (onDeSelectAll)="onDSelectOrAllIdentifierProduct($event)"
-                  (onSelectAll)="onSelectOrAllIdentifierProduct()" [(ngModel)]="selectedProductId">
+                  [disabled]="disabled" [settings]="dropdownSettings5" [data]="toppingList"
+                  (onSelect)="onproductIdentifierSelect($event)" (onDeSelect)="onproductIdentifierDeSelect($event)"
+                  (onDeSelectAll)="onproductIdentifierDeSelectOrAll($event)"
+                  (onSelectAll)="onproductIdentifierSelectOrAll($event)">
                 </ng-multiselect-dropdown>
 
                 <div class="dropdown-placeholder promo1-placeholder">
@@ -324,7 +348,7 @@
             <div class="col-9">
               <div class="searchBox d-flex" style=" cursor: pointer">
                 <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
-                  placeholder="Type & search for anything">
+                  placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
                 <button class="searchButton" href="#">
                   <i class="material-icons">
                     search
@@ -340,39 +364,72 @@
 
 
         <div class="row mainclass" *ngIf="screenValue == 1 || screenValue ==2 ">
-          <div class="col-md-7" *ngIf="aarrayToPush.length == 0">
-            <p class="p-dealer" style="margin-left: -8px;"><img src="../../../assets/img/nodealer.svg"/>  No Dealers Selected</p>
-          </div>
-          <div class="col-md-7" *ngIf="selectedDealerInDropDown.length == aarrayToPush.length && aarrayToPush.length != 0">
-            
-            <p class="p-dealer" style="margin-left: -8px;" > <img src="../../../assets/img/allselected.svg"/> All Dealers  Selected</p>
+          <div class="col-md-7" *ngIf="aarrayToPush.length == 0 && screenValue == 1">
+            <p class="p-dealer" style="margin-left: -8px;"><img src="../../../assets/img/nodealer.svg" /> No Dealers
+              Selected</p>
           </div>
 
-          <div class="col-md-7" *ngIf="aarrayToPush.length > 0 && selectedDealerInDropDown.length != aarrayToPush.length  ">
-
-            <p class="p-dealer" style="margin-left: -8px;"><img src="../../../assets/img/intermidiate.svg"/> Some Dealers Selected</p>
+          <div class="col-md-7" *ngIf="aarrayToPush1.length == 0 && screenValue == 2">
+            <p class="p-dealer" style="margin-left: -8px;"><img src="../../../assets/img/nodealer.svg" /> No Products
+              Selected</p>
           </div>
+
+          <div class="col-md-7"
+            *ngIf="selectedDealerInDropDown.length == aarrayToPush.length && aarrayToPush.length != 0  && screenValue == 1 ">
+
+            <p class="p-dealer" style="margin-left: -8px;"> <img src="../../../assets/img/allselected.svg" /> All
+              Dealers Selected</p>
+          </div>
+
+
+
+          <div class="col-md-7"
+          *ngIf="dealerList.length == aarrayToPush1.length && aarrayToPush1.length != 0 && screenValue == 2">
+
+          <p class="p-dealer" style="margin-left: -8px;"> <img src="../../../assets/img/allselected.svg" /> All
+            Products Selected</p>
+        </div>
+
+
+          <div class="col-md-7"
+            *ngIf="aarrayToPush.length > 0 && selectedDealerInDropDown.length != aarrayToPush.length && screenValue == 1 ">
+
+            <p class="p-dealer" style="margin-left: -8px;"><img src="../../../assets/img/intermidiate.svg" /> Some
+              Dealers Selected</p>
+          </div>
+
+
+          <div class="col-md-7"
+          *ngIf="aarrayToPush1.length > 0 && dealerList.length != aarrayToPush1.length && screenValue == 2 ">
+
+          <p class="p-dealer" style="margin-left: -8px;"><img src="../../../assets/img/intermidiate.svg" /> Some
+            Product Selected</p>
+        </div>
           <div class="col-md-3">
             <div class="searchBox1 d-flex">
               <div class="promotiont2">
-                <select class="form-select select-asso" aria-label=".form-select-lg example" [(ngModel)]="selectedGeoField1">
+                <select class="form-select select-asso" aria-label=".form-select-lg example"
+                  [(ngModel)]="selectedGeoField1">
                   <option selected hidden>Select</option>
                   <option value="" disabled selected hidden>Select Feild</option>
-                      <option value="mrp"> MRP</option>
-                      <option value="marginPercent"> Margin Percent</option>
-                      <option value="maxOrderQty"> Max Order Qty</option>
-                      <option value="minOrderQty"> Min Order Qty</option>
-                      <option value="discountPercent"> Discount Percent</option>
-                      <option value="leadTime"> Lead Time</option>
-                      <option value="registrationNumber"> Registration Number</option>
+                  <option value="mrp"> MRP</option>
+                  <option value="marginPercent"> Margin Percent</option>
+                  <option value="maxOrderQty"> Max Order Qty</option>
+                  <option value="minOrderQty"> Min Order Qty</option>
+                  <option value="discountPercent"> Discount Percent</option>
+                  <option value="leadTime"> Lead Time</option>
+                  <option value="registrationNumber"> Registration Number</option>
                 </select>
               </div>
               <div class="promotiont3">
-                <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name="" [(ngModel)]="updateGeographyValue1"
-                  placeholder="Enter value" />
+                <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name=""
+                  [(ngModel)]="updateGeographyValue1" placeholder="Enter value" />
               </div>
-              <div class="promotiont3" (click)="applySelectedValue1()">
-                <button type="button" class="saveas-draft1" >Apply</button>
+              <div class="promotiont3" *ngIf="screenValue != 2" (click)="applySelectedValue1()">
+                <button type="button" class="saveas-draft1">Apply</button>
+              </div>
+              <div class="promotiont3" *ngIf="screenValue == 2" (click)="applySelectedValueforDealer()">
+                <button type="button" class="saveas-draft1">Apply</button>
               </div>
             </div>
           </div>
@@ -384,20 +441,20 @@
           </div>
 
           <br />
-       <div *ngFor=" let data of dealerList;let i=index" style="width: 100%;"> 
-        <div class="collapsible">
-          <div class="row">
-            <div class="col-md-1">
-              <mat-checkbox class="example-margin font" 
-              [checked]=""
-              [color]="color"
 
-              (click)="updateAllComplete(data.dealerId)">
-            </mat-checkbox>            </div>
-            <div class="col-md-10 check1">
-              <p class="label-cls">{{data?.dealerName}}</p>
-            </div>
-            <!-- <div class="col-md-2 check1">
+          <div *ngIf="screenValue != 2" style="width: 100%;">
+            <div *ngFor=" let data of dealerList;let i=index" style="width: 100%;">
+              <div class="collapsible">
+                <div class="row">
+                  <div class="col-md-1">
+                    <mat-checkbox class="example-margin font" [checked]="" [color]="color"
+                      (click)="updateAllComplete(data.dealerId)">
+                    </mat-checkbox>
+                  </div>
+                  <div class="col-md-10 check1">
+                    <p class="label-cls">{{data?.dealerName}}</p>
+                  </div>
+                  <!-- <div class="col-md-2 check1">
               <p class="label-cls">India (0/136)</p>
             </div>
             <div class="col-md-2 check1">
@@ -407,89 +464,96 @@
             <div class="col-md-3 check1">
               <p class="label-cls">Singapore (0/145)</p>
             </div> -->
-            <div class="col-md-1" (click)="expandDealerInfoDiv(i)">
-              <img [src]="image1" class="expand-arrow" alt="add-user-btn" />
-            </div>
-          </div>
-        </div>
-
-        <div class="content" *ngIf="dealerInfo  &&  i==inumber ">
-          <br />
-
-          <div class="row mainclass">
-            <div class="col-md-7"></div>
-            <div class="col-md-3">
-              <div class="searchBox1 d-flex">
-                <div class="promotiont2">
-                  <select class="form-select select-asso" aria-label=".form-select-lg example" [(ngModel)]="selectedGeoField">
-                    <option selected hidden>Select</option>
-                    <option value="" disabled selected hidden>Select Feild</option>
-                    <option value="mrp"> MRP</option>
-                    <option value="marginPercent"> Margin Percent</option>
-                    <option value="maxOrderQty"> Max Order Qty</option>
-                    <option value="minOrderQty"> Min Order Qty</option>
-                    <option value="discountPercent"> Discount Percent</option>
-                    <option value="leadTime"> Lead Time</option>
-                    <option value="registrationNumber"> Registration Number</option>
-                  </select>
-                </div>
-                <div class="promotiont3">
-                  <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name="" [(ngModel)]="updateGeographyValue"
-                    placeholder="Enter value" />
-                </div>
-                <div class="promotiont3"  (click)="applySelectedValue(i)" >
-                  <button type="button" class="saveas-draft1">Apply</button>
+                  <div class="col-md-1" (click)="expandDealerInfoDiv(i)">
+                    <img [src]="image1" class="expand-arrow" alt="add-user-btn" />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-1">
-              <div class="icon btnhover refreshbtn" style="cursor: pointer">
-                <img class="refresh" src="assets/img/ultrarefresh.svg"
-                  style="position: relative; top: 9px; left: 12px" alt="refresh" />
-              </div>
-            </div>
-          </div>
-          <br />
-          <table>
-            <tr>
-              <th style="width: 168px">Geography</th>
-              <th style="width: 168px">MrP(INR)</th>
-              <th style="width: 168px">Min order Qty</th>
-              <th style="width: 168px">Max order Qty</th>
-              <th style="width: 168px">Margin %</th>
-              <th style="width: 168px">Discount %</th>
-              <th style="width: 168px">Lead time (Days)</th>
-            </tr>
-            <tr *ngFor=" let item of data.formatedGeoGraphy;   let j=index ">
-              <td >
-                <img [src]="image1" class="expand-arrow1" alt="add-user-btn" (click)="expandOrderItemsDiv1()" />
-                {{item.geographyName}}
-              </td>
-              <td>
-                <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"  [(ngModel)]="item.mrp" class="uom-cls" id="fname" name="fname" />
-              </td>
-              <td>
-                <input type="text"   [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"  [(ngModel)]="item.minOrderQty" class="uom-cls" id="fname" name="fname" />
-              </td>
 
-              <td>
-                <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"  [(ngModel)]="item.maxOrderQty" class="uom-cls" id="fname" name="fname" />
-              </td>
+              <div class="content" *ngIf="dealerInfo  &&  i==inumber ">
+                <br />
 
-              <td>
-                <input type="text"  [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"  [(ngModel)]="item.marginPercent" class="uom-cls" id="fname" name="fname" />
-              </td>
+                <div class="row mainclass">
+                  <div class="col-md-7"></div>
+                  <div class="col-md-3">
+                    <div class="searchBox1 d-flex">
+                      <div class="promotiont2">
+                        <select class="form-select select-asso" aria-label=".form-select-lg example"
+                          [(ngModel)]="selectedGeoField">
+                          <option selected hidden>Select</option>
+                          <option value="" disabled selected hidden>Select Feild</option>
+                          <option value="mrp"> MRP</option>
+                          <option value="marginPercent"> Margin Percent</option>
+                          <option value="maxOrderQty"> Max Order Qty</option>
+                          <option value="minOrderQty"> Min Order Qty</option>
+                          <option value="discountPercent"> Discount Percent</option>
+                          <option value="leadTime"> Lead Time</option>
+                          <option value="registrationNumber"> Registration Number</option>
+                        </select>
+                      </div>
+                      <div class="promotiont3">
+                        <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name=""
+                          [(ngModel)]="updateGeographyValue" placeholder="Enter value" />
+                      </div>
+                      <div class="promotiont3" (click)="applySelectedValue(i)">
+                        <button type="button" class="saveas-draft1">Apply</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-1">
+                    <div class="icon btnhover refreshbtn" style="cursor: pointer">
+                      <img class="refresh" src="assets/img/ultrarefresh.svg"
+                        style="position: relative; top: 9px; left: 12px" alt="refresh" />
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <table>
+                  <tr>
+                    <th style="width: 168px">Geography</th>
+                    <th style="width: 168px">MrP(INR)</th>
+                    <th style="width: 168px">Min order Qty</th>
+                    <th style="width: 168px">Max order Qty</th>
+                    <th style="width: 168px">Margin %</th>
+                    <th style="width: 168px">Discount %</th>
+                    <th style="width: 168px">Lead time (Days)</th>
+                  </tr>
+                  <tr *ngFor=" let item of data.formatedGeoGraphy;   let j=index ">
+                    <td>
+                      <img [src]="image1" class="expand-arrow1" alt="add-user-btn" (click)="expandOrderItemsDiv1()" />
+                      {{item.geographyName}}
+                    </td>
+                    <td>
+                      <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
+                        [(ngModel)]="item.mrp" class="uom-cls" id="fname" name="fname" />
+                    </td>
+                    <td>
+                      <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
+                        [(ngModel)]="item.minOrderQty" class="uom-cls" id="fname" name="fname" />
+                    </td>
 
-              <td>
-                <input type="text"  [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId" [(ngModel)]="item.discountPercent"  class="uom-cls" id="fname" name="fname" />
-              </td>
+                    <td>
+                      <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
+                        [(ngModel)]="item.maxOrderQty" class="uom-cls" id="fname" name="fname" />
+                    </td>
 
-              <td>
-                <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"  [(ngModel)]="item.leadTime" class="uom-cls" id="fname" name="fname" />
-              </td>
-            </tr>
+                    <td>
+                      <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
+                        [(ngModel)]="item.marginPercent" class="uom-cls" id="fname" name="fname" />
+                    </td>
 
-            <!-- <tr>
+                    <td>
+                      <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
+                        [(ngModel)]="item.discountPercent" class="uom-cls" id="fname" name="fname" />
+                    </td>
+
+                    <td>
+                      <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
+                        [(ngModel)]="item.leadTime" class="uom-cls" id="fname" name="fname" />
+                    </td>
+                  </tr>
+
+                  <!-- <tr>
               <td>
                 <img [src]="image1" class="expand-arrow1" alt="add-user-btn" (click)="expandOrderItemsDiv1()" />
                 Malaysia (71/126)
@@ -543,7 +607,7 @@
                 <input type="text" class="uom-cls" id="fname" name="fname" />
               </td>
             </tr> -->
-              <!-- <tr *ngIf="!orderitem1">
+                  <!-- <tr *ngIf="!orderitem1">
                 <td class="check2">george town</td>
                 <td>
                   <input type="text" class="uom-cls" id="fname" name="fname" />
@@ -564,30 +628,181 @@
                   <input type="text" class="uom-cls" id="fname" name="fname" />
                 </td>
               </tr> -->
+                </table>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+
+     <div  style="width: 100%;" *ngIf="screenValue == 2">
+      <div *ngFor=" let data of dealerList;let i=index">
+        <div class="collapsible">
+          <div class="row">
+            <div class="col-md-1">
+              <mat-checkbox class="example-margin font" [color]="color"
+                (click)="updateAllCompleteDealer(data.productIdId)">
+              </mat-checkbox>
+            </div>
+            <div class="col-md-10 check1">
+              <p class="label-cls">{{data?.productName}}</p>
+            </div>
+            <!-- <div class="col-md-2 check1">
+          <p class="label-cls">India (0/136)</p>
+        </div>
+        <div class="col-md-2 check1">
+          <p class="label-cls">china (0/124)</p>
+        </div>
+
+        <div class="col-md-3 check1">
+          <p class="label-cls">Singapore (0/145)</p>
+        </div> -->
+            <div class="col-md-1" (click)="expandDealerInfoDiv(i)">
+              <img [src]="image1" class="expand-arrow" alt="add-user-btn" />
+            </div>
+          </div>
+        </div>
+
+        <div class="content" *ngIf="dealerInfo  &&  i==inumber ">
+          <br />
+
+          <div class="row mainclass">
+            <div class="col-md-7"></div>
+            <div class="col-md-3">
+              <div class="searchBox1 d-flex">
+                <div class="promotiont2">
+                  <select class="form-select select-asso" aria-label=".form-select-lg example"
+                    [(ngModel)]="selectedGeoField">
+                    <option selected hidden>Select</option>
+                    <option value="" disabled selected hidden>Select Feild</option>
+                    <option value="mrp"> MRP</option>
+                    <option value="marginPercent"> Margin Percent</option>
+                    <option value="maxOrderQty"> Max Order Qty</option>
+                    <option value="minOrderQty"> Min Order Qty</option>
+                    <option value="discountPercent"> Discount Percent</option>
+                    <option value="leadTime"> Lead Time</option>
+                    <option value="registrationNumber"> Registration Number</option>
+                  </select>
+                </div>
+                <div class="promotiont3">
+                  <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name=""
+                    [(ngModel)]="updateGeographyValue" placeholder="Enter value" />
+                </div>
+                <div class="promotiont3" (click)="applySelectedValue(i)">
+                  <button type="button" class="saveas-draft1">Apply</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1">
+              <div class="icon btnhover refreshbtn" style="cursor: pointer">
+                <img class="refresh" src="assets/img/ultrarefresh.svg"
+                  style="position: relative; top: 9px; left: 12px" alt="refresh" />
+              </div>
+            </div>
+          </div>
+          <br />
+          <table>
+            <tr>
+              <th style="width: 168px">Geography</th>
+              <th style="width: 168px">MrP(INR)</th>
+              <th style="width: 168px">Min order Qty</th>
+              <th style="width: 168px">Max order Qty</th>
+              <th style="width: 168px">Margin %</th>
+              <th style="width: 168px">Discount %</th>
+              <th style="width: 168px">Lead time (Days)</th>
+            </tr>
+            <tr *ngFor=" let item of data.formatedGeoGraphy;   let j=index ">
+              <td>
+                <img [src]="image1" class="expand-arrow1" alt="add-user-btn" (click)="expandOrderItemsDiv1()" />
+                {{item.geographyName}}
+              </td>
+              <td>
+                <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
+                  [(ngModel)]="item.mrp" class="uom-cls" id="fname" name="fname" />
+              </td>
+              <td>
+                <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
+                  [(ngModel)]="item.minOrderQty" class="uom-cls" id="fname" name="fname" />
+              </td>
+
+              <td>
+                <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
+                  [(ngModel)]="item.maxOrderQty" class="uom-cls" id="fname" name="fname" />
+              </td>
+
+              <td>
+                <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
+                  [(ngModel)]="item.marginPercent" class="uom-cls" id="fname" name="fname" />
+              </td>
+
+              <td>
+                <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
+                  [(ngModel)]="item.discountPercent" class="uom-cls" id="fname" name="fname" />
+              </td>
+
+              <td>
+                <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
+                  [(ngModel)]="item.leadTime" class="uom-cls" id="fname" name="fname" />
+              </td>
+            </tr>
+
+
           </table>
         </div>
-       </div>
+      </div>
 
-<br>
-<br>
-<br>
+     </div>
+
+     <div *ngIf="screenValue == 2">
+       <p *ngIf="dealerList.length==0" class="">No Products Available</p>
+     </div>
+          <br>
+          <br>
+          <br>
 
 
-       <div class="row footer">
-        <div class="col-md-6">
-          <button type="button" class="saveas-draft" (click)="saveAssociation()">Save</button>
-        </div>
-        <div class="col-md-6">
-          <button type="button" [mat-dialog-close]="true" class="saveas-draft2">
-            Cancel
-          </button>
-        </div>
-        <!-- <div class="col-md-5">
+        <div *ngIf="screenValue == 1">
+          <div class="row footer">
+            <div class="col-md-6">
+              <button type="button" class="saveas-draft" (click)="saveAssociation()">Save</button>
+            </div>
+            <div class="col-md-6">
+              <button type="button" [mat-dialog-close]="true" class="saveas-draft2">
+                Cancel
+              </button>
+            </div>
+            <!-- <div class="col-md-5">
               <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
       </div> -->
-      </div>
+          </div>
+        </div>
+
+<div *ngIf="screenValue == 2">
+  <div class="row footer">
+    <div class="col-md-6">
+      <button type="button" class="saveas-draft" (click)="saveAssociationdealer()">Save</button>
+    </div>
+    <div class="col-md-6">
+      <button type="button" [mat-dialog-close]="true" class="saveas-draft2">
+        Cancel
+      </button>
+    </div>
+    <!-- <div class="col-md-5">
+      <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
+</div> -->
+  </div>
+</div>
+
+
+
         </div>
 
 
-       
+
       </div>
+    </div>
+  </div>
+</div>

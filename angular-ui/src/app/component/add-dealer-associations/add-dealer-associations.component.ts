@@ -11,6 +11,7 @@ import { TooltipPosition } from '@angular/material/tooltip';
 import { MaterialListService } from 'src/app/services/material-list.service';
 import { AddMaterialsService } from 'src/app/services/add-materials.service';
 import { SharedServicesDealerService } from 'src/app/services/shared-services-dealer.service';
+import { PromotionService } from 'src/app/services/promotion.service';
 
 @Component({
   selector: 'app-add-dealer-associations',
@@ -19,7 +20,7 @@ import { SharedServicesDealerService } from 'src/app/services/shared-services-de
 })
 export class AddDealerAssociationsComponent implements OnInit {
   selectedTeam = '';
-  
+
   selectedDay: string = '';
   selectedGeoField: string = "";
   updateGeographyValue: string = "";
@@ -27,7 +28,7 @@ export class AddDealerAssociationsComponent implements OnInit {
   selectedGeoField1: string = "";
   updateGeographyValue1: string = "";
 
-  dealerInfo :boolean = false;
+  dealerInfo: boolean = false;
   orderitem = false;
   orderitem1 = true;
   otherInfo = false;
@@ -62,8 +63,10 @@ export class AddDealerAssociationsComponent implements OnInit {
   tooltipData: any = [];
   tooltipDataDealer: any = [];
   slectedgeo: boolean = false;
+  slectedgeo1: boolean = false;
+
   allComplete: boolean = false;
-  inumber:any;
+  inumber: any;
 
   // seletedproduct1 : any;
   selectAllIdentifierProduct: any = [];
@@ -76,9 +79,11 @@ export class AddDealerAssociationsComponent implements OnInit {
   ProductListArray: any = []
   storedNames123: any;
   productSkuId: any;
-  stockItemsID:any;
-  aboveDefaultGeoOfName:any;
-  tottalgeoCount:any;
+  stockItemsID: any;
+  aboveDefaultGeoOfName: any;
+  tottalgeoCount: any;
+  productCustomIdentifierArray: any[] = []
+  selectedtypeasso1:any;
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
     //update the ui
@@ -111,10 +116,11 @@ export class AddDealerAssociationsComponent implements OnInit {
   dropdownSettings3: IDropdownSettings = {};
   dropdownSettings4: IDropdownSettings = {};
   dropdownSettings5: IDropdownSettings = {};
+  dropdownSettings6: IDropdownSettings = {};
   disabled = false;
   toppingList3: any = [];
   dealerListArray: any = [];
-selectedcount:any;
+  selectedcount: any;
 
   toppingList: any = [
     'Product Name12',
@@ -148,17 +154,22 @@ selectedcount:any;
   myForm3: any = FormGroup;
   myForm4: any = FormGroup;
   selectedItems: any = [];
-  showselectedgeovalue:boolean=false;
+  showselectedgeovalue: boolean = false;
   productDlr: boolean = false;
   dealersArray: any = [];
   storedName124: any;
   loopingdata: any;
-  geoProperties: any=[];
-  LoginId:any;
-  numberValue:any;
-  color:any='primary';
+  geoProperties: any = [];
+  LoginId: any;
+  numberValue: any;
+  color: any = 'primary';
+  productIDentifire: any = [];
+  typeTosend: any[] = []
+  statusTypes = [];
+  searchText: any = '';
 
   constructor(
+    public promotionTypes: PromotionService,
     private _formBuilder: FormBuilder,
     public dialog: MatDialog,
     private fb: FormBuilder,
@@ -179,16 +190,20 @@ selectedcount:any;
 
   firstFormGroup: FormGroup = this._formBuilder.group({ firstCtrl: [''] });
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
-  copyDealersEntriesList:any = [];
-  dealerList:any = [];
-  aarrayToPush:any=[];
+  copyDealersEntriesList: any = [];
+  dealerList: any = [];
+  aarrayToPush: any = [];
+  aarrayToPush1: any = [];
+
 
   ngOnInit(): void {
-    this.LoginId=localStorage.getItem("logInId");
+    this.LoginId = localStorage.getItem("logInId");
     this.numberValue = Number(this.LoginId);
+    this.productidentify();
     this.ProductItems();
     this.dealerItems();
     this.tooltiptable();
+    this.customIdentifier()
     this.copyDealersEntriesList = [];
     this.dealerList = [];
     this.dropdownSettings1 = {
@@ -203,6 +218,14 @@ selectedcount:any;
       singleSelection: false,
       idField: 'subCatId',
       textField: 'subCatName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+    };
+    this.dropdownSettings6 = {
+      singleSelection: false,
+      idField: 'typeId',
+      textField: 'typeName',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
@@ -222,8 +245,8 @@ selectedcount:any;
       textField: 'productCustomName',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 2,
-    };
+      itemsShowLimit: 1,
+    }
     this.myFormDlr = this.fb.group({
       city: [this.selectedItems],
     });
@@ -253,23 +276,32 @@ selectedcount:any;
 
     this.dealerList[i].formatedGeoGraphy.map(x => x[this.selectedGeoField] = this.updateGeographyValue);
     this.selectedGeoField = "";
-   this.updateGeographyValue = "";
+    this.updateGeographyValue = "";
   }
 
   applySelectedValue1() {
-    debugger
-for(let i=0;i < this.selectedDealerInDropDown.length;i++){
-  this.dealerList[i].formatedGeoGraphy.map(x => x[this.selectedGeoField1] = this.updateGeographyValue1);
-}
+    
+    for (let i = 0; i < this.selectedDealerInDropDown.length; i++) {
+      this.dealerList[i].formatedGeoGraphy.map(x => x[this.selectedGeoField1] = this.updateGeographyValue1);
+    }
 
-this.selectedGeoField1 = "";
-this. updateGeographyValue1 = "";
+    this.selectedGeoField1 = "";
+    this.updateGeographyValue1 = "";
+  }
+  applySelectedValueforDealer() {
+    alert('aa')
+    
+    for (let i = 0; i < this.dealerList.length; i++) {
+      this.dealerList[i].formatedGeoGraphy.map(x => x[this.selectedGeoField1] = this.updateGeographyValue1);
+    }
+
+    this.selectedGeoField1 = "";
+    this.updateGeographyValue1 = "";
   }
 
 
-
   getdealerbasedonGeo() {
-    this.showselectedgeovalue=true;
+    this.showselectedgeovalue = true;
     this.storedNames123 = localStorage.getItem("geoAsso");
     this.aboveDefaultGeoOfName = localStorage.getItem("aboveDefaultGeoOfName");
     this.selectedcount = localStorage.getItem("selectedcount");
@@ -285,32 +317,41 @@ this. updateGeographyValue1 = "";
       search: "",
     }
 
-    this.associationService.dealerdrop(data).subscribe((res) => {
-      console.log(res.response);
+    if (this.selectedtypeasso1=='product') {
 
-      let localdata = res.response
-      this.dealersArray = localdata.map((data: { customerId: any; customerName: any; }) => {
-        return { customerId: data.customerId, customerName: data.customerName, };
-      });
-      this.dropdownSettings3 = {
-        singleSelection: false,
-        idField: 'customerId',
-        textField: 'customerName',
-        // selectAllText: 'Select All',
-        // unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 1,
-      };
+      this.associationService.dealerdrop(data).subscribe((res) => {
+        console.log(res.response);
 
-      this.dealersArray.push()
-      this.dealersArray
-    })
+        let localdata = res.response
+        this.dealersArray = localdata.map((data: { customerId: any; customerName: any; }) => {
+          return { customerId: data.customerId, customerName: data.customerName, };
+        });
+        this.dropdownSettings3 = {
+          singleSelection: false,
+          idField: 'customerId',
+          textField: 'customerName',
+          // selectAllText: 'Select All',
+          // unSelectAllText: 'UnSelect All',
+          itemsShowLimit: 1,
+        };
+
+        this.dealersArray.push()
+        this.dealersArray
+      })
+
+
+    }
+
+    else{
+      this.productListTable();
+    }
 
   }
 
 
   onDealerDeSelect(item: any) {
-    this.selectedDealerInDropDown.splice(this.selectedDealerInDropDown.indexOf(item.customerId),1);
-    this.dealerList.splice(this.dealerList.findIndex(x=> x.dealerId == item.customerId),1);
+    this.selectedDealerInDropDown.splice(this.selectedDealerInDropDown.indexOf(item.customerId), 1);
+    this.dealerList.splice(this.dealerList.findIndex(x => x.dealerId == item.customerId), 1);
 
     // this.catagoryName = item.catName;
     // let dealerdata = {
@@ -321,7 +362,56 @@ this. updateGeographyValue1 = "";
     // this.GetDealearsData(dealerdata);
   }
 
+  productListTable() {
+
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
+  }
+
+
+  getproductDetails(dealerdata) {
+    this.dealerList=[];
+    this.associationService.getProductEntireList(dealerdata).subscribe((res) => {
+      let data = res.response;
+      this.loopingdata = data;
+      console.log(' this.loopingdata', this.loopingdata)
+
+
+      this.ourGeoFormt1(res.response)
+
+
+    });
+  }
+
+  ourGeoFormt1(reqObj) {
+    console.log('req', reqObj);
+    for (let item of reqObj) {
+      console.log(item);
+      let isDelaerDataAvailable = this.dealerList.some(x => x.productIdId == item.productIdId);
+      if (!isDelaerDataAvailable && item.geoDetails) {
+
+        let formatedGeoObj = this.formatGeoDetailsProductObj(item.geoDetails, item.defaultHeirarchyLevelId);
+        item.formatedGeoGraphy = formatedGeoObj;
+        this.dealerList.push(item);
+      }
+
+      console.log('this.productlist', this.dealerList);
+
+
+    }
+  }
+
   onDealerSelect(item: any) {
+    alert('mani')
     this.selectedDealerInDropDown.push(item.customerId);
     console.log("Catttyyyyy", item)
     console.log('item Subcatty', item)
@@ -334,8 +424,8 @@ this. updateGeographyValue1 = "";
     this.GetDealearsData(dealerdata);
   }
 
-  
-  GetDealearsData(dealerdata){
+
+  GetDealearsData(dealerdata) {
     this.associationService.getdealerEntireList(dealerdata).subscribe((res) => {
       let data = res.response;
       this.loopingdata = data;
@@ -348,9 +438,10 @@ this. updateGeographyValue1 = "";
     });
   }
 
-  
+
 
   formatGeoDetailsObj(geographyData, heirarchyValue) {
+    debugger
     let formatedGeography: any = [];
 
     geographyData.forEach(element => {
@@ -378,10 +469,46 @@ this. updateGeographyValue1 = "";
     });
     return formatedGeography;
   }
-  
+
+
+
+
+
+    formatGeoDetailsProductObj(geographyData, heirarchyValue) {
+    let formatedGeography: any = [];
+if(geographyData[0].geographyId){
+  debugger
+  geographyData.forEach(element => {
+    let copyObject = JSON.parse(JSON.stringify(element));
+    let childObj = JSON.parse(JSON.stringify(element));
+    for (var i = 0; i < heirarchyValue - 1; i++) {
+      let tempObj = JSON.parse(JSON.stringify(childObj));
+      if (tempObj.child) {
+        delete tempObj.child;
+        tempObj = { ...tempObj, ... this.CreateGeoPropertiesObject({ geographyName: tempObj.geoGraphyName, geographyId: tempObj.geographyId }, true) };
+        formatedGeography.push(tempObj);
+      } else {
+        delete tempObj.defaultLevels;
+      }
+      // delete tempObj.child;
+      if (childObj.child) {
+        childObj = JSON.parse(JSON.stringify(childObj.child[0]));
+      } else {
+        tempObj = { ...tempObj, ... this.CreateGeoPropertiesObject({ geographyName: tempObj.geoGraphyName, geographyId: tempObj.geographyId }, true) };
+        formatedGeography.push(tempObj);
+        formatedGeography = [...formatedGeography, ...childObj.defaultLevels]
+        // .push(childObj.defaultLevels);
+      }
+    }
+  });
+  return formatedGeography;
+}
+
+  }
+
   ourGeoFormt(reqObj) {
     console.log('req', reqObj);
-    
+
     for (let item of reqObj) {
       console.log(item);
       let isDelaerDataAvailable = this.dealerList.some(x => x.dealerId == item.dealerId);
@@ -392,7 +519,7 @@ this. updateGeographyValue1 = "";
         this.dealerList.push(item);
       }
 
-      console.log('this.dealerList',this.dealerList);
+      console.log('this.dealerList', this.dealerList);
 
 
     }
@@ -414,110 +541,193 @@ this. updateGeographyValue1 = "";
     return obj;
   }
 
-  setAll(completed:boolean ,selected:any) {
+  setAll(completed: boolean, selected: any) {
     console
     this.allComplete = completed;
-    if(this.allComplete == true ){
+    if (this.allComplete == true) {
 
     }
-    else
-    {
-    
+    else {
+
     }
   }
-  updateAllComplete(event){
+  updateAllComplete(event) {
 
     let dealerId = event;
     const index = this.aarrayToPush.indexOf(dealerId);
 
     if (index !== -1) {
       this.aarrayToPush.splice(index, 1);
-      this.selectedcount=this.aarrayToPush.length
+      this.selectedcount = this.aarrayToPush.length
 
 
     }
     else {
       this.aarrayToPush.push(dealerId);
-      this.selectedcount=this.aarrayToPush.length
+      this.selectedcount = this.aarrayToPush.length
 
     }
 
     console.log('aarrayToPush', this.aarrayToPush)
   }
 
-  saveAssociation(){
-    debugger
-    this.geoProperties=[];
- 
-    console.log('savedealerlist',this.dealerList);
-      
-   if(this.aarrayToPush.length>0){
 
 
-    this.dealerList.forEach(element => {
+  updateAllCompleteDealer(event) {
 
-for( let i=0;i<this.aarrayToPush.length;i++){
-  if(this.aarrayToPush[i] === element.dealerId){
+    let productIdId = event;
+    const index = this.aarrayToPush1.indexOf(productIdId);
 
-      
-    let maingeo= JSON.parse(JSON.stringify(element.formatedGeoGraphy));
-    // ✅ only runs if value not in array
-  let obj:any={}
-  obj.DealerId=element.dealerId;
-  let item:any=[]
-  
-  element.formatedGeoGraphy.forEach(element1=>{
+    if (index !== -1) {
+      this.aarrayToPush1.splice(index, 1);
+      this.selectedcount = this.aarrayToPush.length
 
 
-    if(element.defaultHeirarchyLevelId == element1.geographyHierarchyId){
-      delete element1.registrationNumber;
-      delete element1.geographyName;
-      item.push(JSON.parse(JSON.stringify(element1)))
     }
-  })
-  console.log('item',item)
-  obj.GeoDetails=item
-  if (!this.geoProperties.includes(obj.DealerId)) {
-    // ✅ only runs if value not in array
-    this.geoProperties.push(obj);
+    else {
+      this.aarrayToPush1.push(productIdId);
+      this.selectedcount = this.aarrayToPush.length
+
+    }
+
+    console.log('aarrayToPush', this.aarrayToPush1)
   }
-  
-  }
-}
-     
-      
-      
-            // let item =;
-        //  this.geoProperties.push(obj) ;
-        //  obj=''
-          })
-      
-          console.log('console of geoproperties',this.geoProperties)
-          let data ={
-            productId:this.stockItemsID,
-            LoggedUserId:this.numberValue,
-            DealerDetails: this.geoProperties,
+
+
+
+  saveAssociation() {
+    this.geoProperties = [];
+
+    console.log('savedealerlist', this.dealerList);
+
+    if (this.aarrayToPush.length > 0) {
+
+
+      this.dealerList.forEach(element => {
+
+        for (let i = 0; i < this.aarrayToPush.length; i++) {
+          if (this.aarrayToPush[i] === element.dealerId) {
+
+
+            let maingeo = JSON.parse(JSON.stringify(element.formatedGeoGraphy));
+            // ✅ only runs if value not in array
+            let obj: any = {}
+            obj.DealerId = element.dealerId;
+            let item: any = []
+
+            element.formatedGeoGraphy.forEach(element1 => {
+
+
+              if (element.defaultHeirarchyLevelId == element1.geographyHierarchyId) {
+                delete element1.registrationNumber;
+                delete element1.geographyName;
+                item.push(JSON.parse(JSON.stringify(element1)))
+              }
+            })
+            console.log('item', item)
+            obj.GeoDetails = item
+            if (!this.geoProperties.includes(obj.DealerId)) {
+              // ✅ only runs if value not in array
+              this.geoProperties.push(obj);
+            }
+
           }
-      this.associationService.addassosiation(data).subscribe((res)=>{
-        if(res.response.result=='Successfully Added'){
+        }
+
+      })
+
+      console.log('console of geoproperties', this.geoProperties)
+      let data = {
+        productId: this.stockItemsID,
+        LoggedUserId: this.numberValue,
+        DealerDetails: this.geoProperties,
+      }
+      this.associationService.addassosiation(data).subscribe((res) => {
+        if (res.response.result == 'Successfully Added') {
           this.sharedService.filter('Register click')
           this.dialogRef.close();
 
         }
-        else{
+        else {
 
         }
         console.log(res.response)
       })
-   }
-      else{
+    }
+    else {
 
-        alert('select any dealer')
-      }
-      
+      alert('select any dealer')
+    }
+
 
   }
- 
+  saveAssociationdealer() {
+debugger
+    this.geoProperties = [];
+
+    console.log('savedealerlist', this.dealerList);
+
+    if (this.aarrayToPush1.length > 0) {
+
+
+      this.dealerList.forEach(element => {
+
+        for (let i = 0; i < this.aarrayToPush1.length; i++) {
+          if (this.aarrayToPush1[i] === element.productIdId) {
+
+
+            let maingeo = JSON.parse(JSON.stringify(element.formatedGeoGraphy));
+            // ✅ only runs if value not in array
+            let obj: any = {}
+            obj.productId = element.productIdId;
+            let item: any = []
+
+            element.formatedGeoGraphy.forEach(element1 => {
+
+
+              if (element.defaultHeirarchyLevelId == element1.geographyHierarchyId) {
+                delete element1.registrationNumber;
+                delete element1.geographyName;
+                item.push(JSON.parse(JSON.stringify(element1)))
+              }
+            })
+            console.log('item', item)
+            obj.GeoDetails = item
+            if (!this.geoProperties.includes(obj.productIdId)) {
+              // ✅ only runs if value not in array
+              this.geoProperties.push(obj);
+            }
+
+          }
+        }
+
+      })
+
+      console.log('console of geoproperties', this.geoProperties)
+      let data = {
+        DealerId  : this.selectedDealer2,
+        LoggedUserId: this.numberValue,
+        ProductDetails: this.geoProperties,
+      }
+      this.associationService.addassosiationofproduct(data).subscribe((res) => {
+        if (res.response.result == 'Successfully Added') {
+          this.sharedService.filter('Register click')
+          this.dialogRef.close();
+        }
+        else {
+
+        }
+        console.log(res.response)
+      })
+    }
+    else {
+
+      alert('select any dealer')
+    }
+
+
+  }
+
   ProductItems() {
     this.user.getproductlist().subscribe((res: any) => {
       let localdata = res.response;
@@ -556,7 +766,7 @@ for( let i=0;i<this.aarrayToPush.length;i++){
     let ProductId = arry[0];
     this.productSkuId = ProductId
     let stockItemId = arry[2];
-    this.stockItemsID=stockItemId
+    this.stockItemsID = stockItemId
     console.log('value', ProductId)
     this.selectedProduct1 = ProductId;
     this.slectedgeo = true;
@@ -569,10 +779,11 @@ for( let i=0;i<this.aarrayToPush.length;i++){
   }
 
   selectedDealer(value) {
-    // alert(value)
-    let ProductId = value
-    this.selectedDealer2 = ProductId
-    localStorage.setItem('ProductStockItemId', ProductId);
+    this.slectedgeo1 = true;
+    let dealerId = value
+    let numberDealerId= Number(dealerId)
+    this.selectedDealer2 = value;
+    localStorage.setItem('dealerSelectedcoustmerId', dealerId);
     this.tooltiptable()
 
   }
@@ -592,10 +803,10 @@ for( let i=0;i<this.aarrayToPush.length;i++){
 
   expandDealerInfoDiv(i) {
 
-    this.inumber=i
+    this.inumber = i
 
     if (this.dealerInfo === false) {
-      this.dealerInfo=true;
+      this.dealerInfo = true;
       this.image1 = 'assets/img/maximize-arrow.png';
 
     } else {
@@ -650,10 +861,12 @@ for( let i=0;i<this.aarrayToPush.length;i++){
       height: '460px',
     });
   }
-  geography() {
+  geography(item) {
+    this.selectedtypeasso1=item
+    localStorage.setItem('selectedtypeasso', item);
     this.dialog.open(AddPromotionGeographiesComponent, {
       width: '654px',
-      height: '743px',
+      height: '600px',
     });
   }
   getclassification() {
@@ -681,6 +894,9 @@ for( let i=0;i<this.aarrayToPush.length;i++){
 
       })
     })
+
+
+
   }
   onItemSelect(item: any) {
     this.catergory.push(item.catId);
@@ -699,6 +915,19 @@ for( let i=0;i<this.aarrayToPush.length;i++){
       console.log("SubCategory", this.sub_category);
       this.topping1 = new FormControl(this.sub_category);
     });
+
+
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
   }
   onItemDeSelect(item: any) {
     this.catergory.forEach((element, index) => {
@@ -715,6 +944,17 @@ for( let i=0;i<this.aarrayToPush.length;i++){
       this.sub_category = subcaty.allOtherSubCAts;
     });
     console.log('this.catergory', this.catergory);
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
 
   }
   onItemSelectOrAll(item: any) {
@@ -748,6 +988,18 @@ for( let i=0;i<this.aarrayToPush.length;i++){
       this.topping1 = new FormControl(this.sub_category);
     });
     console.log("catArray", this.catergory)
+
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
   }
   onItemDeSelectOrAll(item: any) {
     this.catergory = [];
@@ -755,6 +1007,18 @@ for( let i=0;i<this.aarrayToPush.length;i++){
     this.sub_categorys = [];
     this.typeI = [];
     this.typesI = [];
+
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
 
   }
   onSubCategorySelect(item: any) {
@@ -771,6 +1035,19 @@ for( let i=0;i<this.aarrayToPush.length;i++){
       console.log("Typess", this.typeI);
       this.topping2 = new FormControl(this.typeI);
     });
+
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
+
   }
   onSubCategoryDeSelect(item: any) {
     this.sub_categorys.forEach((element, index) => {
@@ -780,6 +1057,9 @@ for( let i=0;i<this.aarrayToPush.length;i++){
     let subCat = {
       subCatId: this.sub_categorys
     }
+
+
+
     this.materialList.onclicksubcat(subCat).subscribe((res) => {
       let typs = res.response;
       console.log("types..res", typs);
@@ -788,34 +1068,100 @@ for( let i=0;i<this.aarrayToPush.length;i++){
     });
     console.log(' this.sub_categorys', this.sub_categorys)
 
+
+
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
+
   }
   onSubCategorySelectOrAll() {
     this.sub_categorys = this.subcatArray;
     let Type = {
       subCatId: this.sub_categorys
     }
+
     this.materialList.onclicksubcat(Type).subscribe((res) => {
       let typs = res.response;
       console.log("types..res", typs);
       this.typeI = typs;
       this.topping2 = new FormControl(this.typeI);
     });
+
+
+
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
   }
   onSubCategoryDSelectOrAll(item: any) {
     this.sub_categorys = [];
     this.typeI = []
-    this.typesI = [];
+    this.typeI = [];
+
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
+
   }
   onTypeSelect(item: any) {
-    this.typesData.push(item.typeId);
-    this.typesI = this.typesData;
+    this.typeI.push(item.typeId);
+
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
+
   }
   onTypeDeSelect(item: any) {
 
-    this.typesI.forEach((element, index) => {
-      if (element == item.typeId) this.typesI.splice(index, 1);
+    this.typeI.forEach((element, index) => {
+      if (element == item.typeId) this.typeI.splice(index, 1);
 
     });
+
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
 
   }
   onTypeSelectOrAll() {
@@ -834,10 +1180,34 @@ for( let i=0;i<this.aarrayToPush.length;i++){
       return this.typessArray.push(element.typeId);
 
     })
-    this.typesI = this.typessArray;
+    this.typeI = this.typessArray;
+
+
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
   }
   OnTypeDeselectOrAll() {
-    this.typesI = [];
+    this.typeI = [];
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
   }
   getProduct() {
     this.materialList.getProduct().subscribe((res) => {
@@ -864,18 +1234,76 @@ for( let i=0;i<this.aarrayToPush.length;i++){
   }
   onProductSelect(item: any) {
     this.productID.push(item.productGroupId);
+
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
   }
   onProductDeSelect(item: any) {
     this.productID.forEach((element, index) => {
       if (element == item.productGroupId) this.productID.splice(index, 1);
-
+      const data = {
+        DealerId: this.selectedDealer2,
+        SelectedGeoIds: this.storedName124,
+        Cat: this.catergory,
+        Sub_Cat: this.sub_categorys,
+        type: this.typeI,
+        productGroup: this.productID,
+        productIdentifier: this.productIDentifire,
+        search: this.searchText
+      }
+      this.getproductDetails(data);
     });
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
+
   }
   onProductSelectOrAll(item: any) {
     this.productID = this.prodArray;
+
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
+
   }
   onProductDeSelectOrAll(item: any) {
     this.productID = [];
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
   }
   customIdentifier() {
     this.addMaterials.getProductCustomIdentifier().subscribe((res: any) => {
@@ -883,6 +1311,120 @@ for( let i=0;i<this.aarrayToPush.length;i++){
       console.log("ProductIdentifier", this.ProductIdentifier);
     });
   }
+  productidentify() {
+    this.promotionTypes.GetProductIdentifier().subscribe((res) => {
+      console.log('search data', this.toppingList);
+
+      this.toppingList = res.response;
+
+      this.toppingList.forEach(element => {
+        return this.productCustomIdentifierArray.push(element.productCustomIdentifierId);
+
+      })
+
+      // this.categorydrp = res.response
+    })
+  }
+
+  onproductIdentifierSelect(item: any) {
+    this.productIDentifire.push(item.productCustomIdentifierId);
+    console.log(item);
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
+  }
+
+
+  onproductIdentifierDeSelect(item: any) {
+    this.productIDentifire.forEach((element, index) => {
+      if (element == item.productCustomIdentifierId) this.productIDentifire.splice(index, 1);
+
+    });
+    console.log(' this.catergory', this.catergory)
+
+    // this.userTypes.pop(item.roleId);
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
+
+  }
+  onproductIdentifierDeSelectOrAll(item: any) {
+    this.productIDentifire = [];
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
+  }
+  onproductIdentifierSelectOrAll(item: any) {
+    this.productIDentifire = this.productCustomIdentifierArray;
+    // console.log("ProdData", this.ProdData);
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   onSelectIdentifierProduct(item: any) {
     this.selectedProductId.push(item.productCustomIdentifierId)
     console.log("Selecteed Identifier", this.selectedProductId);
@@ -931,14 +1473,50 @@ for( let i=0;i<this.aarrayToPush.length;i++){
     this.myForm4 = this.fb.group({
       city5: [this.selectedItems],
     });
-    this.catergory = [];
-    this.sub_category = [];
-    this.sub_categorys = [];
-    this.typeI = [];
-    this.typesI = [];
-    this.productID = [];
-    this.selectedProductId = [];
+
+    this.catergory=[];
+    this.sub_categorys=[];
+    this.typeI=[];
+    this.productID=[];
+
+    
+    this.dealerList=[]
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
   }
+
+
+  onSearchChange($event){
+    alert('test')
+    const { target } = $event;
+    this.searchText = target.value;
+    const data = {
+      DealerId: this.selectedDealer2,
+      SelectedGeoIds: this.storedName124,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeI,
+      productGroup: this.productID,
+      productIdentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.getproductDetails(data);
+  }
+  
+
+
+
+
+  
   tooltiptable() {
     // const data ={
     // ProductSKUId : ['49']

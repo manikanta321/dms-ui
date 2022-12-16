@@ -91,7 +91,7 @@ export class OrderListComponent implements OnInit {
 
 
   statusTypes: any = [];
-  searchText: any;
+  searchText: any ='';
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
   dropdownSettings2: IDropdownSettings = {};
@@ -282,7 +282,10 @@ export class OrderListComponent implements OnInit {
   geogragphies : any = [];
   statusDropList : any = []
   statusList : any =[];
-  statusAllarray : any =[]
+  statusAllarray : any =[];
+  selectedDateRange:any;
+  startDate:any ='';
+  endDate:any = '';
   constructor(public dialog: MatDialog,
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
@@ -339,24 +342,30 @@ export class OrderListComponent implements OnInit {
     this.myForm2 = this.fb.group({
       status: [this.selectedItems]
     });
-    this.GeographyId=[];
-    this.StatusId=[];
-    this.DealerId=[];
-    this.searchText=''
+    // this.GeographyId=[];
+    // this.StatusId=[];
+    // this.DealerId=[];
+    this.geogragphies = [];
+    this.dealerss = [];
+    this.statusList =[];
+    this.searchText='';
+    this.startDate ='';
+    this.endDate = '';
  const data = {
   StatusId : this.statusList,
       GeographyId:this.geogragphies,
       DealerId : this.dealerss,
-      Search:this.searchText
-  //   "StatusId":[],
+      Search:this.searchText,
+      startDate:this.startDate,
+      endDate:this.endDate
   //   "GeographyId":[],
   //  "DealerId" : [],
   //   "OrderDate":"",
   //   "Search":""
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
-      this.rowData5 = res.response;
-  
+      this.rowDatalist = res.response;
+  console.log("RefreshData",this.rowDatalist);
 
     });  }
   roleFilter(data: any) {
@@ -563,7 +572,7 @@ export class OrderListComponent implements OnInit {
       const scrollDiff = gridBody.scrollHeight - scrollPos;
       //const api =  this.rowData5;
       this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
-      this.paginationScrollCount = this.rowData5.length;
+      this.paginationScrollCount = this.rowDatalist.length;
     }
   }
 
@@ -649,14 +658,28 @@ orderUpload(){
 selectdays(){
   this.dialog.open(CustomDatePopupComponent,{panelClass:'custmdays'})
   }
-  selectedDateRange = {
-    startDate: '11/11/2022',
-    endDate: '11/15/2022',
-  }
+  // selectedDateRange = {
+  //   startDate: '11/11/2022',
+  //   endDate: '11/15/2022',
+  // }
 
   customDatePickerEvent(eventChange){
+    alert("Helloos")
     this.selectedDateRange = eventChange.selectedDate;
+    this.startDate =this.selectedDateRange.startDate;
+    this.endDate = this.selectedDateRange.endDate;
     console.log(this.selectedDateRange);
+    const data = {
+      StatusId : this.statusList,
+      GeographyId:this.geogragphies,
+      DealerId : this.dealerss,
+      Search:this.searchText,
+      StartDate:this.startDate,
+      EndDate:this.endDate
+    }
+    this.user.getorderDeatilslist(data).subscribe((res) => {
+      this.rowDatalist = res.response;
+    });
   }
   dealerOrder(){
     this.user.dealerDropdownOrderlist().subscribe((res: any) => {
@@ -687,7 +710,9 @@ selectdays(){
       StatusId : this.statusList,
       GeographyId:this.geogragphies,
       DealerId : this.dealerss,
-      Search:this.searchText
+      Search:this.searchText,
+      StartDate:this.startDate,
+      EndDate:this.endDate
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -702,7 +727,9 @@ selectdays(){
       StatusId : this.statusList,
       GeographyId:this.geogragphies,
       DealerId : this.dealerss,
-      Search:this.searchText
+      Search:this.searchText,
+      StartDate:this.startDate,
+      EndDate:this.endDate
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -714,7 +741,9 @@ selectdays(){
       StatusId : this.statusList,
       GeographyId:this.geogragphies,
       DealerId : this.dealerss,
-      Search:this.searchText
+      Search:this.searchText,
+      StartDate:this.startDate,
+      EndDate:this.endDate
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -722,14 +751,18 @@ selectdays(){
   }
   DealerorderSelectAll(item:any){
     this.dealerss = this.dealerAllarray;
+    console.log("AllDealers",this.dealerss);
     const data = {
       StatusId : this.statusList,
       GeographyId:this.geogragphies,
       DealerId : this.dealerss,
-      Search:this.searchText
+      Search:this.searchText,
+      StartDate:this.startDate,
+      EndDate:this.endDate
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
+      console.log("All Dealers",this.rowDatalist )
     });
   }
   geogrphyOrder(){
@@ -758,11 +791,14 @@ selectdays(){
   }
   geographyselect(item:any){
     this.geogragphies.push(item.geographyId);
+    console.log("geographics",this.geogragphies);
     const data = {
       StatusId : this.statusList,
       GeographyId:this.geogragphies,
       DealerId : this.dealerss,
-      Search:this.searchText
+      Search:this.searchText,
+      StartDate:this.startDate,
+      EndDate:this.endDate
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -776,10 +812,12 @@ selectdays(){
       StatusId : this.statusList,
       GeographyId:this.geogragphies,
       DealerId : this.dealerss,
-      Search:this.searchText
+      Search:this.searchText,
+      StartDate:this.startDate,
+      EndDate:this.endDate
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
-      this.rowData5 = res.response;
+      this.rowDatalist = res.response;
     });
     console.log('rolefilter', this.userTypes)
     console.log('onItemSelect', item);
@@ -790,22 +828,29 @@ selectdays(){
       StatusId : this.statusList,
       GeographyId:this.geogragphies,
       DealerId : this.dealerss,
-      Search:this.searchText
+      Search:this.searchText,
+      StartDate:this.startDate,
+      EndDate:this.endDate
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
-      this.rowData5 = res.response;
+      this.rowDatalist = res.response;
+      console.log("GeoSelectALL",this.rowDatalist)
     });
   }
   geographyselectAll(item: any) {
     this.geogragphies = this.geoAllarray;
+    console.log("geographics",this.geogragphies);
     const data = {
       StatusId : this.statusList,
       GeographyId:this.geogragphies,
       DealerId : this.dealerss,
-      Search:this.searchText
+      Search:this.searchText,
+      StartDate:this.startDate,
+      EndDate:this.endDate
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
-      this.rowData5 = res.response;  
+      this.rowDatalist = res.response;  
+      console.log("GeoSelectALL",this.rowDatalist)
     });
     // console.log('rolefilter', this.userTypes)
     // console.log('onItemSelect', item);
@@ -844,7 +889,9 @@ selectdays(){
       StatusId : this.statusList,
       GeographyId:this.geogragphies,
       DealerId : this.dealerss,
-      Search:this.searchText
+      Search:this.searchText,
+      StartDate:this.startDate,
+      EndDate:this.endDate
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -858,7 +905,9 @@ selectdays(){
       StatusId : this.statusList,
       GeographyId:this.geogragphies,
       DealerId : this.dealerss,
-      Search:this.searchText
+      Search:this.searchText,
+      StartDate:this.startDate,
+      EndDate:this.endDate
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -872,7 +921,9 @@ console.log('onItemSelect', item);
       StatusId : this.statusList,
       GeographyId:this.geogragphies,
       DealerId : this.dealerss,
-      Search:this.searchText
+      Search:this.searchText,
+      StartDate:this.startDate,
+      EndDate:this.endDate
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -884,7 +935,9 @@ console.log('onItemSelect', item);
       StatusId : this.statusList,
       GeographyId:this.geogragphies,
       DealerId : this.dealerss,
-      Search:this.searchText
+      Search:this.searchText,
+      StartDate:this.startDate,
+      EndDate:this.endDate
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -897,10 +950,12 @@ console.log('onItemSelect', item);
       StatusId : this.statusList,
       GeographyId:this.geogragphies,
       DealerId : this.dealerss,
-      Search:this.searchText
+      Search:this.searchText,
+      StartDate:this.startDate,
+      EndDate:this.endDate
     }
     this.user.getorderDeatilslist(data).subscribe((res) => {
-      this.rowData5 = res.response;
+      this.rowDatalist = res.response;
     });
   }
 }

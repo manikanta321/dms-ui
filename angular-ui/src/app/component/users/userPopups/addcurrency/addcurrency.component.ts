@@ -49,7 +49,6 @@ export class AddcurrencyComponent implements OnInit {
       this.editFxId = localStorage.getItem('fxRateId');
       this.EUomId = localStorage.getItem('UomId');
       this.editMaterials();
-     alert(this.editFxId)
     } else {
       this.headerName = 'Add Currency';
     }

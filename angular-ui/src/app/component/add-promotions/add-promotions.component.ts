@@ -32,7 +32,18 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   }];
   promoName : string = '';
   errorMsg: any;
-  buyGroupPlus : any = [{itemss : ''}];
+  buyGroupPlus : any = [
+    {
+      StockItemId:[],
+      productselectedRows:[],
+      productScselectedRows:[],
+      pGselectedRows:[],
+      productSubGselectedRows:[],
+      MaxVolume:'',
+      GroupId:0,
+      MOQ:0
+  }
+  ];
   addgetgroup : any = [{ getItems: ''}];
   addbuyset : any = [{setitem: ''}];
   addgetset : any = [{gset: ''}]
@@ -57,6 +68,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   tottalgeoCount:any;
   customerId: any;
   productselectedRows: any;
+  productScselectedRows: any;
+  productSubGselectedRows: any;
+  loginData: any;
+  loggedUserId: any;
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
     //update the ui
@@ -90,19 +105,18 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   endDate = new FormControl(new Date());
   minDateToFinish = new Subject<string>();
   minDate;
-
+  selectedStartDate : any;
+  selectedEndDate : any
   dateChange(e) {
     this.minDateToFinish.next(e.value.toString());
     // alert(e.value);
     // console.log("This is the DATE:", e.value);
-
-    let selectedStartDate = new Date(e.value).getFullYear() +'/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
-    console.log(selectedStartDate);
-    // moment().format("MMM Do YY");
+    this.selectedStartDate = new Date(e.value).getFullYear() +'/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
+    console.log(this.selectedStartDate);
   }
   enddateChange(e){
-    this.minDateToFinish.next(e.value.toString('dd, MM, yy'));
-    console.log("This is the DATE:", e.value);
+    this.selectedEndDate = new Date(e.value).getFullYear() +'/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
+    console.log(this.selectedEndDate);
   }
   @ViewChild('stepper') private myStepper: MatStepper | any;
 
@@ -271,7 +285,6 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     //   { CategoryId: 3, CategoryName: 'Volume Discount' },
     //   { CategoryId: 4, CategoryName: 'Price Discount' },
     // ];
-    this.pGselectedRows=JSON.parse(localStorage.getItem("pGselectedRows" ) ?? '');
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -337,18 +350,29 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   onClick(item) {
     this.selectedItem = item;
   }
-  addbuyGroup() {
+  addbuyGroup(i) {
     // this.showdata = true;
-    this.buyGroupPlus.push({
-      itemss: '',
-      qtyMaxNum: '',
-      MoqMaxNum: '',
+    console.log(this.buyGroupPlus);
+    this.buyGroupPlus.push(
+      {
+        StockItemId:[],
+        productselectedRows:[],
+        productScselectedRows:[],
+        pGselectedRows:[],
+        productSubGselectedRows:[],
+        MaxVolume:'',
+        GroupId:this.buyGroupPlus.length,
+        MOQ:0
     });
-    console.log('chec' ,this.buyGroupPlus)
+		console.log(i);
   }
+  // addplus(){
+  //   const index = this.buyGroupPlus.findIndex((itemss) => itemss.id === u);
+  // }
   removebuyGroup(u: any) {
     const index = this.buyGroupPlus.findIndex((itemss) => itemss.id === u);
     this.buyGroupPlus.splice(index, 1);
+    console.log('remv',index)
   }
   adddgetGroup(){
     this.addgetgroup.push({
@@ -389,7 +413,7 @@ this.addbuyset.push({
     //   promotionTypesName: this.promotionTypesName
     // }
     this.promotionTypes.GetPromotionTypes().subscribe((res) => {
-      console.log('check promotiontypes');
+      console.log('check promotiontypes',this.promotionTypesId);
       this.promotionTypedropdown = res.response;
       if (event.promotionTypesName == 'Buy (A+B..) get (X+Y..)') {
         // this.goForward(this.myStepper);
@@ -457,18 +481,25 @@ this.addbuyset.push({
       pValue: '',
     });
   }
-  addItems() {
+  addItems(index:any = null) {
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
     const dialogRef = this.dialog.open(AddItemsPromotionComponent,{width:'1043px'});
     dialogRef.afterClosed().subscribe((res) => {
-       this.selectedRows=JSON.parse(localStorage.getItem("selectedRows" ) ?? '');
-       this.productselectedRows=JSON.parse(localStorage.getItem("selectedRows" ) ?? '');
-       console.log('dd',this.selectedRows)
-//       console.log(res);
-// localStorage.setItem('additem','1')
-// let selectedRows = 'selectedRows'
-// localStorage.setItem('selectedRows',selectedRows)
-// console.log(selectedRows)
+      this.productselectedRows=JSON.parse(localStorage.getItem("productselectedRows" ) ?? '[]')
+       this.productScselectedRows=JSON.parse(localStorage.getItem("productScselectedRows" ) ?? '[]');
+       this.pGselectedRows=JSON.parse(localStorage.getItem("pGselectedRows" ) ?? '[]');
+       this.productSubGselectedRows=JSON.parse(localStorage.getItem("productSubGselectedRows" ) ?? '[]');
+       console.log('dd',this.productSubGselectedRows);
+       console.log(this.productselectedRows);
+
+       if(index != null){
+         this.buyGroupPlus[index].productselectedRows = this.productselectedRows;
+      }
+
+//  let localdata = res.response;
+//       this.sltdid = localdata.map((data: { customerId: any; code: any; dealerName:any,geography:any }) => {
+//         return { customerId: data.customerId, code: data.code };
+//       });
     })
   }
   addRemoveitem() {
@@ -523,6 +554,10 @@ addimg(){
   onRowSelect(event) {
     const selectedRows = this.gridApi.getSelectedRows();
     console.log(selectedRows);
+  //  const result = selectedRows.map((data : {customerId:any}) =>{
+  //   return {custmId: data.customerId}
+  //  })
+  //  console.log('jj',result)
   }
   addgeography(){
     this.dialog.open( AddPromotionGeographiesComponent, {width: '654px', height:'743px'})
@@ -533,15 +568,17 @@ addimg(){
   }
   
   promotionType1(){
+    let stockItems = this.productselectedRows.map(x => x.stockItemId);
+    
     const data ={
       PromotionName : this.promoName,
-      PromotionTypesId : 1,
-      StartDate : "2022-12-12",
-      EndDate :"2022-12-12",
-      DoneById : 327,
+      PromotionTypesId : this.selectedPromo,
+      StartDate : this.selectedStartDate,
+      EndDate : this.selectedEndDate,
+      DoneById : this.loggedUserId,
       Imageurl : this.base64textString,
       BuyGroups : [{
-        StockItemId:[428,430,435],
+        StockItemId:stockItems,
         MaxVolume:this.qtyValue,
         GroupId:1,
         MOQ:this.moqValue
@@ -549,7 +586,7 @@ addimg(){
     GetGroups : [
       {
         StockItemId:[417,418],
-        MaxVolume:12,
+        MaxVolume:this.GetqtyValue,
         GroupId:1
     }
     ],
@@ -558,7 +595,7 @@ addimg(){
     this.promotionTypes.DropDownPromotionType(data).subscribe((res) => {
       // this.dialogRefModal.close("success");
     });
-    console.log('addpro',[this.qtyValue,this.moqValue])
+    console.log('addpro',[this.qtyValue,this.moqValue]);
   }
   AddPromosaveAndSubmit(){
     console.log('added items')
@@ -573,6 +610,8 @@ addimg(){
     // console.log('dats',AddpromotionData);
     // localStorage.setItem("addpromo", JSON.stringify(AddpromotionData));
     this.dialogRefModal.close("success");
+    this.loggedUserId = localStorage.getItem('logInId')
+    console.log('log',this.loggedUserId)
     this.promotionType1()
   }
   addpromotionGeoTable(){
@@ -588,6 +627,10 @@ addimg(){
       //   return { customerId: data.customerId, code: data.code };
       // });
     });
+  }
+  selectedValue(value: any) {
+    this.promotionTypesId = value;
+    console.log('promcheck',this.promotionTypesId.val,)
   }
 }
 

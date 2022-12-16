@@ -1,19 +1,19 @@
 <div class="orderlist-section mt-3" style="padding:15px;">
 <div class="fiters-sec">
 <div class="row">
-    <div class="col-md-2 col-lg-2 col-sm-2">
+    <div class="col-md-2 col-lg-2 col-sm-2" style="padding-left: 0px;">
         <form [formGroup]="myForm" class="dropdown-form">
           <ng-multiselect-dropdown class="Dealers" name="city" [placeholder]="'Dealers'" formControlName="city"
             [disabled]="disabled" [settings]="dropdownSettings" [data]="dealerlist"
             (onSelect)="DealerorderSelect($event)" (onDeSelect)="DealerDeselect($event)"(onDeSelectAll)="DealerDeselectAll($event)"
             (onSelectAll)="DealerorderSelectAll($event)">
           </ng-multiselect-dropdown>
-          <!-- <div class="dropdown-placeholder roles-placeholder">
-            <span *ngIf="myForm.get('city').value.length == 0"> Select Roles </span>
-            <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Role selected </span>
-            <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Role(s) selected </span>
+          <div class="dropdown-placeholder Dealers-placeholder">
+            <span *ngIf="myForm.get('city').value.length == 0"> Select Dealers </span>
+            <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Dealer selected </span>
+            <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Dealer(s) selected </span>
 
-          </div> -->
+          </div>
 
         </form>
       </div>
@@ -24,12 +24,12 @@
             [disabled]="disabled" [settings]="dropdownSettings1" [data]="geogropdownlist" (onSelect)="geographyselect($event)"
             (onDeSelect)="geographyDeselect($event)" (onDeSelectAll)="geographyDeselectAll($event)"(onSelectAll)="geographyselectAll($event)">
           </ng-multiselect-dropdown>
-          <!-- <div class="dropdown-placeholder roles-placeholder">
-            <span *ngIf="myForm.get('city').value.length == 0"> Select Roles </span>
-            <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Role selected </span>
-            <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Role(s) selected </span>
+          <div class="dropdown-placeholder Geography-placeholder">
+            <span *ngIf="myForm1.get('geo').value.length == 0"> Select Roles </span>
+            <span *ngIf="myForm1.get('geo').value.length == 1" class="selected-placeholder"> {{myForm1.get('geo').value.length}} Role selected </span>
+            <span *ngIf="myForm1.get('geo').value.length > 1" class="selected-placeholder"> {{myForm1.get('geo').value.length}} Role(s) selected </span>
 
-          </div> -->
+          </div>
 
         </form>
       </div>
@@ -42,19 +42,18 @@
         </mat-form-field> -->
         <app-customdatepicker [showInputField]="true" label="Order Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
       </div>
-    <div class="col-md-2 col-lg-2 col-sm-2">
+    <div class="col-md-2 col-lg-2 col-sm-2 stts-dropdown" >
         <form [formGroup]="myForm2" class="dropdown-form">
-          <ng-multiselect-dropdown class="status" name="status" [placeholder]="'Status'" formControlName="status"
+          <ng-multiselect-dropdown class="Status" name="status" [placeholder]="'Status'" formControlName="status"
             [disabled]="disabled" [settings]="dropdownSettings2" [data]="statusDropList" (onSelect)="statusdropdownselect($event)"
             (onDeSelect)="statusDeselect($event)"(onDeSelectAll)="statusDeselectAll($event)"(onSelectAll)="statusselectAll($event)" >
           </ng-multiselect-dropdown>
-          <!-- <div class="dropdown-placeholder roles-placeholder">
-            <span *ngIf="myForm.get('city').value.length == 0"> Select Roles </span>
-            <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Role selected </span>
-            <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Role(s) selected </span>
+          <div class="dropdown-placeholder Status-placeholder">
+            <span *ngIf="myForm2.get('status').value.length == 0"> Select Status </span>
+            <span *ngIf="myForm2.get('status').value.length == 1" class="selected-placeholder"> {{myForm2.get('status').value.length}} status selected </span>
+            <span *ngIf="myForm2.get('status').value.length > 1" class="selected-placeholder"> {{myForm2.get('status').value.length}} status(s) selected </span>
 
-          </div> -->
-
+          </div>
         </form>
       </div>
       <!-- refresh -->

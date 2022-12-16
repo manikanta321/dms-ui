@@ -1114,3 +1114,56 @@ mat-sidenav {
           right: 0px;
           bottom: -3px;
       }
+      .dropdown-placeholder {
+        background: white;
+        color: #808080;
+        top: 0;
+        position: absolute;
+        height: 41px;
+        line-height: 41px;
+        left: 1px;
+        border-top: 1px solid #000;
+        border-bottom: 1px solid #000;
+        width: 80%;
+        border-radius: 10px 0 0 10px !important;
+        padding-left: 10px;
+        pointer-events: none;
+      }
+      
+      .Dealers-placeholder.dropdown-placeholder .selected-placeholder {
+         color: #D23F00 !important;
+      }
+      ::ng-deep.Dealers .multiselect-dropdown .dropdown-btn .selected-item {
+        background: #D23F00 !important;
+        font-size: 12px;
+      }
+      
+      ::ng-deep .Dealers .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+        background: #D23F00 !important;
+      }
+      .Geography-placeholder.dropdown-placeholder .selected-placeholder {
+        color: #006466 !important;
+     }
+     ::ng-deep.Geography .multiselect-dropdown .dropdown-btn .selected-item {
+       background: #006466 !important;
+       font-size: 12px;
+     }
+     
+     ::ng-deep .Geography .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+       background: #006466 !important;
+     }
+     .Status-placeholder.dropdown-placeholder .selected-placeholder {
+        color: #000000 !important;
+     }
+     ::ng-deep.Status .multiselect-dropdown .dropdown-btn .selected-item {
+       background: #000000 !important;
+       font-size: 12px;
+     }
+     
+     ::ng-deep .Status .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+       background: #000000 !important;
+     }
+     .stts-dropdown {
+        padding-left: 0px;
+        margin-left: 15px;
+     }

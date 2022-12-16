@@ -41,7 +41,7 @@
                                 <div class="promotiontypedrp identify promotiondrpalign">
                                     <label>Promotion Type <span class="astr">*</span></label>
                                     <ng-select [items]="promotionTypedropdown" placeholder="Select the promotion type"
-                                        bindLabel="promotionTypesName" bindValue="promotionTypesId"
+                                        bindLabel="promotionTypesName" bindValue="promotionTypesId" #promotype (change)="selectedValue($event)"
                                         (change)="GetPromotionTypes($event)" required [(ngModel)]="selectedPromo">
                                     </ng-select>
                                 </div>
@@ -66,7 +66,7 @@
                                     <mat-form-field class="form-field placeh-align">
                                         <input matInput placeholder="Select the end date"
                                         [matDatepicker]="picker2" [min]="startDate.value" [formControl]="endDate"
-                                        (dateChange)="enddateChange($event)" [(ngModel)]="selectendDate">
+                                        (dateChange)="enddateChange($event)">
                                         <mat-datepicker-toggle matSuffix [for]="picker2">
                                         </mat-datepicker-toggle>
                                         <mat-datepicker #picker2></mat-datepicker>
@@ -121,7 +121,7 @@
                                             <div class="col-10 buyGrp-h">
                                                 <h5 class="item-header"><b>Buy </b>group {{i}}</h5>
                                             </div>
-                                            <div class="col-2 plsImg" (click)="addbuyGroup()" *ngIf="i==0">
+                                            <div class="col-2 plsImg" (click)="addbuyGroup(i)" *ngIf="i==0">
                                                 <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
                                             </div>
                                             <div class="col-2 plsAdd" (click)="removebuyGroup(i)" *ngIf="i >= 1">
@@ -148,8 +148,10 @@
                                                 <mat-card class="list-item">
                                                     <mat-card-content class="item-in-box">
                                                         <ul>
-                                                            <li *ngFor="let prodtable of selectedRows" >{{prodtable.productGroupName}}</li>
-                                                            <li>Item Information</li>
+                                                            <li *ngFor="let producttable of productselectedRows" >{{producttable.productName}}</li>
+                                                            <li *ngFor="let productGrp of productScselectedRows">{{productGrp.productShortCode}}</li>
+                                                            <li *ngFor="let productGrp of pGselectedRows">{{productGrp.productGroupName}}</li>
+                                                            <li *ngFor="let productSubg of productSubGselectedRows">{{productSubg.productSubGroupName}}</li>
                                                         </ul>
                                                     </mat-card-content>
                                                 </mat-card>
@@ -241,7 +243,7 @@
                                                 <div class="col-10 buyGrp-h">
                                                     <h5 class="item-header"><b>Buy </b>group {{i}}</h5>
                                                 </div>
-                                                <div class="col-2 plsImg" (click)="addbuyGroup()" *ngIf="i==0">
+                                                <div class="col-2 plsImg" (click)="addbuyGroup(i)" *ngIf="i==0">
                                                     <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
                                                 </div>
                                                 <div class="col-2 plsAdd" (click)="removebuyGroup(i)" *ngIf="i>=1">

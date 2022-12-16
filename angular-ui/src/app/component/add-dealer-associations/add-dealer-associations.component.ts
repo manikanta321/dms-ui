@@ -288,9 +288,7 @@ export class AddDealerAssociationsComponent implements OnInit {
     this.selectedGeoField1 = "";
     this.updateGeographyValue1 = "";
   }
-  applySelectedValueforDealer() {
-    alert('aa')
-    
+  applySelectedValueforDealer() {    
     for (let i = 0; i < this.dealerList.length; i++) {
       this.dealerList[i].formatedGeoGraphy.map(x => x[this.selectedGeoField1] = this.updateGeographyValue1);
     }
@@ -308,7 +306,6 @@ export class AddDealerAssociationsComponent implements OnInit {
     this.tottalgeoCount = localStorage.getItem("tottalgeoCount");
 
     var objectsFromStorage = JSON.parse(this.storedNames123)
-    alert(objectsFromStorage)
     this.storedName124 = objectsFromStorage;
     this.copyDealersEntriesList = [];
     this.dealerList = [];
@@ -411,7 +408,6 @@ export class AddDealerAssociationsComponent implements OnInit {
   }
 
   onDealerSelect(item: any) {
-    alert('mani')
     this.selectedDealerInDropDown.push(item.customerId);
     console.log("Catttyyyyy", item)
     console.log('item Subcatty', item)
@@ -722,7 +718,7 @@ debugger
     }
     else {
 
-      alert('select any dealer')
+      alert('select any Product')
     }
 
 
@@ -1496,7 +1492,6 @@ debugger
 
 
   onSearchChange($event){
-    alert('test')
     const { target } = $event;
     this.searchText = target.value;
     const data = {

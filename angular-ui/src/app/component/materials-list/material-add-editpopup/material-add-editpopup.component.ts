@@ -485,6 +485,7 @@ export class MaterialAddEditpopupComponent {
     this.addMaterials.defaultGeoIdProduct(data2).subscribe((res) => {
       console.log(res, "defaultGeoID")
     })
+    this.dialog.closeAll()
   }
   addMaterialProductAfterEdit() {
 
@@ -528,6 +529,8 @@ export class MaterialAddEditpopupComponent {
       console.log(res, "addmaterialProduct")
     })
 
+
+
   }
   addMaterialIfNotProduct() {
     let data = {
@@ -545,6 +548,7 @@ export class MaterialAddEditpopupComponent {
     this.addMaterials.MaterialIfNotProduct(data).subscribe((res) => {
       console.log(res, "addmaterialProduct")
     })
+    this.dialog.closeAll()
     console.log(data)
   }
 
@@ -1057,6 +1061,7 @@ export class MaterialAddEditpopupComponent {
   closePopup() {
     this.materialIdentifierPopup = false;
     this.productIdentifierPopup = false;
+
   }
 
   productIdentifier() {

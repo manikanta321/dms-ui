@@ -22,7 +22,7 @@ import { MatChip, MatChipList } from '@angular/material/chips';
 })
 export class MaterialAddEditpopupComponent {
   chipControl = new FormControl(new Set());
-
+  labelPosition:any = 'before';
   disabled = false;
   catgname: any = [];
   base64textString = "";
@@ -478,13 +478,13 @@ export class MaterialAddEditpopupComponent {
     }
 
     console.log(data)
-    // this.addMaterials.addMaterialIfProduct(data).subscribe((res) => {
-    //   console.log(res, "addmaterialProduct")
-    // })
+    this.addMaterials.addMaterialIfProduct(data).subscribe((res) => {
+      console.log(res, "addmaterialProduct")
+    })
 
-    // this.addMaterials.defaultGeoIdProduct(data2).subscribe((res) => {
-    //   console.log(res, "defaultGeoID")
-    // })
+    this.addMaterials.defaultGeoIdProduct(data2).subscribe((res) => {
+      console.log(res, "defaultGeoID")
+    })
   }
   addMaterialProductAfterEdit() {
 

@@ -180,7 +180,7 @@
                   <label> Expiry Period (in months)<span>*</span></label>
                 </div>
                 <input type="text" id="matExpiry" name="matExpiry" (keyup)="onKeyExpry($event)"
-                  class="form-control container na-placeholder" required placeholder="NA" [(ngModel)]="stockItemDesc"
+                  class="form-control container na-placeholder" required placeholder="NA" [(ngModel)]="expiryDate"
                   #matExpiry="ngModel">
                 <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
                   *ngIf="matExpiry.invalid && (matExpiry.dirty || matExpiry.touched)" class="alert">
@@ -228,7 +228,7 @@
               </div>
               <div class="col-md-6">
                 <div class="mat-slide">
-                  <mat-slide-toggle (change)="change($event)" [checked]="!checked">Is a product?</mat-slide-toggle>
+                  <mat-slide-toggle [labelPosition]="labelPosition" [disabled]="disabled" (change)="change($event)" [checked]="!checked">&nbsp;&nbsp;&nbsp;&nbsp; Is a product?</mat-slide-toggle>
                 </div>
               </div>
               <div class="col-md-6">

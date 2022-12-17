@@ -1,27 +1,10 @@
 version: 0.0
-os: linux
+os: windows
 files:
-  - source: /
-    destination: /var/www/html/
-permissions:
-  - object: /var/www/html/
-    pattern: "**"
-    owner: root
-    group: root
-    mode: 777
-
+  - source: \
+    destination:  c:\inetpub
 file_exists_behavior: OVERWRITE
-
 hooks:
-  BeforeInstall:
-    - location: scripts/beforeinstall.sh
-      timeout: 300
-      runas: root
-  ApplicationStop:
-    - location: scripts/stop.sh
-      timeout: 300
-      runas: root
-  ApplicationStart:
-    - location: scripts/start.sh
-      timeout: 300
-      runas: root
+ BeforeInstall:
+ - location: \before-install.bat
+   timeout: 900

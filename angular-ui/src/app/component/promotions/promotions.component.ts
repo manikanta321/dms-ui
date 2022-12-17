@@ -373,6 +373,7 @@ geoList:any=[]
 
 
   ngOnInit() {
+    this.addPromotions()
     this.AddpromotionData = localStorage.getItem("AddpromotionData");
     this.maxDate.setDate(this.maxDate.getDate() + 20);     
     

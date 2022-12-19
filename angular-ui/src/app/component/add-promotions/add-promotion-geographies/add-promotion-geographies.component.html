@@ -17,7 +17,7 @@
          <div *ngFor="let subtask of geodata">
 
         <div class="col-lg-6">
-          <mat-checkbox class="example-margin" [checked]="allComplete" [indeterminate]="someComplete()"
+          <mat-checkbox class="example-margin" [checked]="allComplete" [indeterminate]="someComplete()" 
             (change)="setAll($event.checked)">{{subtask.aboveDefaultGeoName}}({{selectedcount}}/{{subtask.geoCount}}) </mat-checkbox>
         </div>
         <div class="col-lg-6">
@@ -25,7 +25,7 @@
             <!-- <ul> -->
             <li *ngFor="let subtask1 of subtask.defaultGeography">
               <mat-icon>subdirectory_arrow_right</mat-icon>
-              <mat-checkbox       [checked]="subtask1.value" (click)="updateAllComplete(subtask1.defaultGeoId)"  >
+              <mat-checkbox   [indeterminate]="someComplete()"    [checked]="subtask1.value" (click)="updateAllComplete(subtask1.defaultGeoId)"  >
                 {{subtask1.defaultGeoName}}
               </mat-checkbox>
             </li>

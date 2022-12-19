@@ -540,7 +540,8 @@ export class AddItemsPromotionComponent implements OnInit {
     this.productselectedRows = this.gridApi.getSelectedRows();
     console.log(this.productselectedRows);
     localStorage.setItem('productselectedRows',JSON.stringify(this.productselectedRows) )
-    this.dialogRef.close();
+    this.goForward(this.myStepper);
+
     // this.productScselectedRows.map((data:{stockItemId: any;}) => {
     //   return { stockItemId: data.stockItemId};
     // });
@@ -1203,14 +1204,28 @@ GetProductShortCodeList(){
    })
  }
 additemsProductShortCode(item:any){
-  this.productScselectedRows = this.gridApi2.getSelectedRows();
-  console.log(this.productScselectedRows);
+  // this.productScselectedRows = this.gridApi2.getSelectedRows();
+  // console.log(this.productScselectedRows);
   localStorage.setItem('productScselectedRows',JSON.stringify(this.productScselectedRows) )
-  this.dialogRef.close();
+  this.goForward(this.myStepper)
+
+}
+goForward(stepper: MatStepper) {
+  stepper.next();
 }
 ProductShortCodeRowSelect(event) {
   const productScselectedRows = this.gridApi2.getSelectedRows();
   console.log(productScselectedRows);
+  let productShortCodeOfSelected=productScselectedRows.map(x => x.productShortCode);
+  console.log('productShortCodeOfSelected',productShortCodeOfSelected)
+let data={
+  ProductShortCode:productShortCodeOfSelected,
+}
+
+this.promotionTypes.getProductsubgropStockitemID(data).subscribe((res)=>{
+console.log(res.response)
+this.productScselectedRows= res.response
+})
   console.log('slct');
 }
 // add product group
@@ -1245,13 +1260,28 @@ AddProductGroupList(){
   }
   onRowSelectProductGroup(event) {
     const pGselectedRows = this.gridApi3.getSelectedRows();
-    console.log(pGselectedRows);
+    console.log('pGselectedRows',pGselectedRows);
+    let productShortCodeOfSelected=pGselectedRows.map(x => x.productGroupId);
+
+    pGselectedRows
+    let data ={
+      id:productShortCodeOfSelected
+    }
+    this.promotionTypes.getProductGroup(data).subscribe((res)=>{
+      console.log(res.response)
+      this.pGselectedRows=res.response
+      console.log('this.pGselectedRows',this.pGselectedRows)
+    })
+
+
+
   }
   addproductGroup(){
-    this.pGselectedRows = this.gridApi3.getSelectedRows();
-    console.log(this.pGselectedRows);
+    // this.pGselectedRows = this.gridApi3.getSelectedRows();
+    // console.log(this.pGselectedRows);
     localStorage.setItem('pGselectedRows',JSON.stringify(this.pGselectedRows) )
-    this.dialogRef.close();
+    this.goForward(this.myStepper);
+
   }
   // product SubGroup
   ProductSubGroupDrpdwn(item: any) {
@@ -1309,12 +1339,22 @@ AddProductGroupList(){
   }
   ProductSubGroupRowSelect(event) {
     const productSubGselectedRows = this.gridApi4.getSelectedRows();
+
+    let productShortCodeOfSelected=productSubGselectedRows.map(x => x.productSubGroupId);
+
+let data={
+  id:productShortCodeOfSelected
+}
+    this.promotionTypes.getProductSubGroup(data).subscribe((res)=>{
+     this.productSubGselectedRows= res.response
+    })
     console.log(productSubGselectedRows);
   }
   addItemProductSubG(){
-    this.productSubGselectedRows = this.gridApi4.getSelectedRows();
-    console.log('rowl',this.productSubGselectedRows);
-    localStorage.setItem('productSubGselectedRows',JSON.stringify(this.productSubGselectedRows) )
+    // this.productSubGselectedRows = this.gridApi4.getSelectedRows();
+    // console.log('rowl',this.productSubGselectedRows);
+    localStorage.setItem('productSubGselectedRows',JSON.stringify(this.productSubGselectedRows) );
+
     this.dialogRef.close();
   }
   matsteptabClick(tab) {

@@ -6,7 +6,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { PromotionService } from 'src/app/services/promotion.service';
 import { AddItemsPromotionComponent } from '../promotions/add-items-promotion/add-items-promotion.component';
 import { RemovePromotionItemComponent } from './remove-promotion-item/remove-promotion-item.component';
-import { Subject } from 'rxjs';
+import { elementAt, Subject } from 'rxjs';
 import { CellClassParams, CellClassRules, CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef, GridApi, GridOptions, ModuleRegistry, ColumnResizedEvent, Grid, } from 'ag-grid-community';
 import { MatTableDataSource } from '@angular/material/table';
 import { AddPromotionGeographiesComponent } from './add-promotion-geographies/add-promotion-geographies.component';
@@ -30,33 +30,64 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     eValue: '',
     pValue: '',
   }];
-  promoName : string = '';
+  promoName: string = '';
   errorMsg: any;
-  buyGroupPlus : any = [{itemss : ''}];
-  addgetgroup : any = [{ getItems: ''}];
-  addbuyset : any = [{setitem: ''}];
-  addgetset : any = [{gset: ''}]
-  basicInfo:boolean=false;
-  noPromotionSelected:boolean = true;
+  buyGroupPlus: any = [
+    {
+      StockItemId: [],
+      productselectedRows: [],
+      productScselectedRows: [],
+      pGselectedRows: [],
+      productSubGselectedRows: [],
+      MaxVolume: '',
+      GroupId: '',
+      MOQ: ''
+    }
+  ];
+
+
+
+  addgetgroup: any = [{ 
+    
+    StockItemId: [],
+    productselectedRows: [],
+    productScselectedRows: [],
+    pGselectedRows: [],
+    productSubGselectedRows: [],
+    MaxVolume: '',
+    GroupId: '',
+  
+  }];
+
+
+
+  addbuyset: any = [{ setitem: '' }];
+  addgetset: any = [{ gset: '' }]
+  basicInfo: boolean = false;
+  noPromotionSelected: boolean = true;
   buyab: boolean = false;
   volumedc: boolean = false;
   pricedc: boolean = false
   buysets: boolean = false;
   addCountryButton: boolean = false;
   removelist: boolean = false;
-  base64textString= "";
+  base64textString = "";
   stateName: string[] = ['State 1', 'State 2',];
   fileupload: any;
   selectedRows: any;
-  pGselectedRows : any
+  pGselectedRows: any
   promotionTypesId: any;
-  saveAndDraft : any = [];
+  saveAndDraft: any = [];
   storedNames123: any;
   aboveDefaultGeoOfName: any;
   selectedcount: any;
-  tottalgeoCount:any;
+  tottalgeoCount: any;
   customerId: any;
   productselectedRows: any;
+  productScselectedRows: any;
+  productSubGselectedRows: any;
+  loginData: any;
+  loggedUserId: any;
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
     //update the ui
@@ -75,34 +106,34 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   dropdownSettings: IDropdownSettings = {};
   promotionlist: any[] | undefined;
   toppingList3: any = [];
-  promotionTypedropdown :any =[]
+  promotionTypedropdown: any = []
   toppingList: any;
   ShowFilter = false;
-  imagepath :any;
+  imagepath: any;
   selecetdFile: any;
-  startselectDate : any;
-  selectendDate : any;
+  startselectDate: any;
+  EntityInstanceId:any;
+  selectendDate: any;
   imagePreview: any;
-  addImage : any;
-  showselectedgeovalue : boolean=false
+  addImage: any;
+  showselectedgeovalue: boolean = false
   totalStepsCount: number | undefined;
   startDate = new FormControl(new Date());
   endDate = new FormControl(new Date());
   minDateToFinish = new Subject<string>();
   minDate;
-
+  selectedStartDate: any;
+  selectedEndDate: any
   dateChange(e) {
     this.minDateToFinish.next(e.value.toString());
     // alert(e.value);
     // console.log("This is the DATE:", e.value);
-
-    let selectedStartDate = new Date(e.value).getFullYear() +'/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
-    console.log(selectedStartDate);
-    // moment().format("MMM Do YY");
+    this.selectedStartDate = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
+    console.log(this.selectedStartDate);
   }
-  enddateChange(e){
-    this.minDateToFinish.next(e.value.toString('dd, MM, yy'));
-    console.log("This is the DATE:", e.value);
+  enddateChange(e) {
+    this.selectedEndDate = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
+    console.log(this.selectedEndDate);
   }
   @ViewChild('stepper') private myStepper: MatStepper | any;
 
@@ -116,14 +147,15 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
     {
       headerName: "Code",
-      field: 'code', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',  checkboxSelection: true
+      field: 'code', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left', checkboxSelection: true
     },
     { headerName: "Dealer Name", field: 'dealerName', type: ['nonEditableColumn'] },
     { headerName: "", field: '', type: ['nonEditableColumn'] },
 
-    { headerName: "Geography", field: 'geography', type: ['nonEditableColumn'],
-    cellStyle: {color: '#017EFA'},
-   },
+    {
+      headerName: "Geography", field: 'geography', type: ['nonEditableColumn'],
+      cellStyle: { color: '#017EFA' },
+    },
 
     {
       headerName: '',
@@ -170,7 +202,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     flex: 1,
     minWidth: 100,
     resizable: true,
-    
+
   };
   public columnTypes: {
     [key: string]: ColDef;
@@ -204,53 +236,53 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         },
       },
     };
-    public rowGroupPanelShow = 'always';
-    public pivotPanelShow = 'always';
-  
-    displayedColumns: string[] = ['position', 'name', 'symbol', 'email', 'phonenum', 'login', 'status', 'edit'];
-    // dataSource = new MatTableDataSource(ELEMENT_DATA);
-    // toppings = new FormControl('');
-    // toppings1 = new FormControl('');
-  
-    // toppingList: string[] = ['Admin', 'Dealer','Customer'];
-    // toppingList: any = [];
-  
-    toppingList1: any = [];
-    filterDictionary: any;
-    sideBarOpen = true;
-    scrolledIndex = 0;
-    defaultPageSize = 12;
-    paginationScrollCount: any;
-    public rowData5 = [];
-    public popupParent: HTMLElement = document.body;
-    stayScrolledToEnd = true;
-    message: boolean = false;
-    message1: boolean = true;
-    paginationPageSize = 10;
-    // disabled = false;
-    dropdownSettings1: IDropdownSettings = {};
-    productchk:boolean=false;
-    prodShtCode:boolean=true;
-    productGrpChk:boolean=false;
-    productSubGChk:boolean=false;
-    isRowSelectable : boolean = true;
-    qtyMaxNum : any = [];
-    MoqMaxNum : any = [];
-    group : any =[];
-    qtyValue :any;
-    moqValue:any;
-    GetqtyValue: any;
-    selectedPromo : any;
+  public rowGroupPanelShow = 'always';
+  public pivotPanelShow = 'always';
+
+  displayedColumns: string[] = ['position', 'name', 'symbol', 'email', 'phonenum', 'login', 'status', 'edit'];
+  // dataSource = new MatTableDataSource(ELEMENT_DATA);
+  // toppings = new FormControl('');
+  // toppings1 = new FormControl('');
+
+  // toppingList: string[] = ['Admin', 'Dealer','Customer'];
+  // toppingList: any = [];
+
+  toppingList1: any = [];
+  filterDictionary: any;
+  sideBarOpen = true;
+  scrolledIndex = 0;
+  defaultPageSize = 12;
+  paginationScrollCount: any;
+  public rowData5 = [];
+  public popupParent: HTMLElement = document.body;
+  stayScrolledToEnd = true;
+  message: boolean = false;
+  message1: boolean = true;
+  paginationPageSize = 10;
+  // disabled = false;
+  dropdownSettings1: IDropdownSettings = {};
+  productchk: boolean = false;
+  prodShtCode: boolean = true;
+  productGrpChk: boolean = false;
+  productSubGChk: boolean = false;
+  isRowSelectable: boolean = true;
+  qtyMaxNum: any = [];
+  MoqMaxNum: any = [];
+  group: any = [];
+  qtyValue: any;
+  moqValue: any;
+  GetqtyValue: any;
+  selectedPromo: any;
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
     private dialogRefModal: MatDialogRef<any>,
-    
+
     private dateAdapter: DateAdapter<Date>,
-    public promotionTypes: PromotionService) { 
-      this.minDateToFinish.subscribe(r => {
-        this.minDate = new Date(r);
-      });
-      this.dateAdapter.setLocale('en-GB'); //dd/MM/yyyy
-    }
+    public promotionTypes: PromotionService) {
+    this.minDateToFinish.subscribe(r => {
+      this.minDate = new Date(r);
+    });
+    this.dateAdapter.setLocale('en-GB'); //dd/MM/yyyy
+  }
   firstFormGroup: FormGroup = this._formBuilder.group({ firstCtrl: [''] });
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
 
@@ -258,9 +290,14 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   /* on Select of Dropdown screen change */
 
   ngOnInit(): void {
-  //   this.firstFormGroup = new FormGroup({
-  //     promoname : new FormControl('', [Validators.required]),
-  // });
+    localStorage.setItem('pGselectedRows','' )
+    localStorage.setItem('productSubGselectedRows','' );
+    localStorage.setItem('productselectedRows','' )
+    localStorage.setItem('pGselectedRows','')
+
+    //   this.firstFormGroup = new FormGroup({
+    //     promoname : new FormControl('', [Validators.required]),
+    // });
     this.GetPromotionTypes(Event);
     this.addimg();
     // this.promotionType1();
@@ -271,7 +308,6 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     //   { CategoryId: 3, CategoryName: 'Volume Discount' },
     //   { CategoryId: 4, CategoryName: 'Price Discount' },
     // ];
-    this.pGselectedRows=JSON.parse(localStorage.getItem("pGselectedRows" ) ?? '');
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -293,10 +329,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   }
   handleScroll(event) {
     var tippyPopups: NodeListOf<Element> | null | undefined = document.querySelectorAll(".tippy-box[data-theme='user-tippy']");
-    
-      tippyPopups.forEach(element=> {
-        element.parentNode?.removeChild(element)
-      })
+
+    tippyPopups.forEach(element => {
+      element.parentNode?.removeChild(element)
+    })
     const grid = document.getElementById('gridContainer');
     if (grid) {
       const gridBody = grid.querySelector('.ag-body-viewport') as any;
@@ -315,7 +351,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     // localStorage.setItem('userID', this.userId)
     // localStorage.setItem('employeeName', this.employeeName);
 
-    if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
+    if (e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action') {
       const cellRendererInstances = e.api.getCellRendererInstances({
         rowNodes: [e.node],
         columns: [e.column],
@@ -337,43 +373,65 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   onClick(item) {
     this.selectedItem = item;
   }
-  addbuyGroup() {
+  addbuyGroup(i) { 
+    alert(i)
     // this.showdata = true;
-    this.buyGroupPlus.push({
-      itemss: '',
-      qtyMaxNum: '',
-      MoqMaxNum: '',
-    });
-    console.log('chec' ,this.buyGroupPlus)
+    console.log(this.buyGroupPlus);
+    this.buyGroupPlus.push(
+      {
+        StockItemId: [],
+        productselectedRows: [],
+        productScselectedRows: [],
+        pGselectedRows: [],
+        productSubGselectedRows: [],
+        MaxVolume:this.buyGroupPlus.qtyValue,
+        GroupId: this.buyGroupPlus.length==0||''||undefined?0: this.buyGroupPlus.length,
+        MOQ: this.buyGroupPlus.moqValue,
+      });
+    console.log('this.buyGroupPlus.length',this.buyGroupPlus.length);
   }
+
+
+  adddgetGroup(i) {
+    this.addgetgroup.push({
+      StockItemId: [],
+      productselectedRows: [],
+      productScselectedRows: [],
+      pGselectedRows: [],
+      productSubGselectedRows: [],
+      MaxVolume: '',
+      GroupId: i==''?0:i,
+      });
+  }
+
+  // addplus(){
+  //   const index = this.buyGroupPlus.findIndex((itemss) => itemss.id === u);
+  // }
   removebuyGroup(u: any) {
     const index = this.buyGroupPlus.findIndex((itemss) => itemss.id === u);
     this.buyGroupPlus.splice(index, 1);
+    console.log('remv', index)
   }
-  adddgetGroup(){
-    this.addgetgroup.push({
-      getItems: '',
-    });
-  }
-  removegetGroup(u:any){
+ 
+  removegetGroup(u: any) {
     const index = this.addgetgroup.findIndex((itemss) => itemss.id === u);
     this.addgetgroup.splice(index, 1);
   }
-  addbuyAB(){
-this.addbuyset.push({
-  setitem:'',
-})
+  addbuyAB() {
+    this.addbuyset.push({
+      setitem: '',
+    })
   }
-  removeaddbuyAB(u:any){
+  removeaddbuyAB(u: any) {
     const index = this.addbuyset.findIndex((setitem) => setitem.id === u);
     this.addbuyset.splice(index, 1);
   }
-  addgetAB(){
+  addgetAB() {
     this.addgetset.push({
-      gset:'',
+      gset: '',
     })
   }
-  removeaddgetAB(u:any){
+  removeaddgetAB(u: any) {
     const index = this.addgetset.findIndex((gset) => gset.id === u);
     this.addgetset.splice(index, 1);
   }
@@ -389,7 +447,7 @@ this.addbuyset.push({
     //   promotionTypesName: this.promotionTypesName
     // }
     this.promotionTypes.GetPromotionTypes().subscribe((res) => {
-      console.log('check promotiontypes');
+      console.log('check promotiontypes', this.promotionTypesId);
       this.promotionTypedropdown = res.response;
       if (event.promotionTypesName == 'Buy (A+B..) get (X+Y..)') {
         // this.goForward(this.myStepper);
@@ -429,11 +487,11 @@ this.addbuyset.push({
     })
   }
 
-  disableBackbutton(){
+  disableBackbutton() {
     this.goForward(this.myStepper);
-   this.basicInfo=true;
-   // alert(this.basicInfo);
- } 
+    this.basicInfo = true;
+    // alert(this.basicInfo);
+  }
 
   addCategory() {
     this.addButton = true;
@@ -457,20 +515,99 @@ this.addbuyset.push({
       pValue: '',
     });
   }
-  addItems() {
+  addItems(index: any = null) {
+    debugger
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
-    const dialogRef = this.dialog.open(AddItemsPromotionComponent,{width:'1043px'});
+    const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px' });
     dialogRef.afterClosed().subscribe((res) => {
-       this.selectedRows=JSON.parse(localStorage.getItem("selectedRows" ) ?? '');
-       this.productselectedRows=JSON.parse(localStorage.getItem("selectedRows" ) ?? '');
-       console.log('dd',this.selectedRows)
-//       console.log(res);
-// localStorage.setItem('additem','1')
-// let selectedRows = 'selectedRows'
-// localStorage.setItem('selectedRows',selectedRows)
-// console.log(selectedRows)
+      this.productselectedRows = JSON.parse(localStorage.getItem("productselectedRows") ?? '[]')
+      this.productScselectedRows = JSON.parse(localStorage.getItem("productScselectedRows") ?? '[]');
+      this.pGselectedRows = JSON.parse(localStorage.getItem("pGselectedRows") ?? '[]');
+      this.productSubGselectedRows = JSON.parse(localStorage.getItem("productSubGselectedRows") ?? '[]');
+      console.log('dd', this.productSubGselectedRows);
+      console.log(this.productselectedRows);
+
+      if (index != null) {
+       this.buyGroupPlus[index].productselectedRows = this.productselectedRows;
+       this.buyGroupPlus[index].productScselectedRows = this.productScselectedRows;
+       this.buyGroupPlus[index].pGselectedRows = this.pGselectedRows;
+       this.buyGroupPlus[index].productSubGselectedRows = this.productSubGselectedRows;
+
+let productselectedRows =this.productselectedRows.map(x => x.stockItemId);
+let productScselectedRows=this.productScselectedRows.map(x => x.stockItemId);
+let pGselectedRows=this.pGselectedRows.map(x => x.stockItemId);
+let productSubGselectedRows=this.productSubGselectedRows.map(x => x.stockItemId);
+// console.log('araray',)
+let jointarray=[...productselectedRows, ...productScselectedRows,...pGselectedRows,...productSubGselectedRows]
+
+    this.buyGroupPlus[index].StockItemId =jointarray;
+    this.buyGroupPlus[index].GroupId =this.buyGroupPlus.length;
+
+      //  this.buyGroupPlus[index].MaxVolume = this.buyGroupPlus[index].qtyValue.map(x => x.qtyValue);
+       //  this.buyGroupPlus[index].moqValue = this.qtyValue.map(x => x.qtyValue);
+       console.log('this.buygroups', this.buyGroupPlus)
+
+
+      }
+
+      //  let localdata = res.response;
+      //       this.sltdid = localdata.map((data: { customerId: any; code: any; dealerName:any,geography:any }) => {
+      //         return { customerId: data.customerId, code: data.code };
+      //       });
     })
   }
+
+
+
+
+
+
+
+
+
+
+
+  addItemsforGetGroup(index: any = null) {
+    debugger
+    // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
+    const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px' });
+    dialogRef.afterClosed().subscribe((res) => {
+      this.productselectedRows = JSON.parse(localStorage.getItem("productselectedRows") ?? '[]')
+      this.productScselectedRows = JSON.parse(localStorage.getItem("productScselectedRows") ?? '[]');
+      this.pGselectedRows = JSON.parse(localStorage.getItem("pGselectedRows") ?? '[]');
+      this.productSubGselectedRows = JSON.parse(localStorage.getItem("productSubGselectedRows") ?? '[]');
+      console.log('dd', this.productSubGselectedRows);
+      console.log(this.productselectedRows);
+
+      if (index != null) {
+        this.addgetgroup[index].productselectedRows = this.productselectedRows;
+        this.addgetgroup[index].productScselectedRows = this.productScselectedRows;
+        this.addgetgroup[index].pGselectedRows = this.pGselectedRows;
+        this.addgetgroup[index].productSubGselectedRows = this.productSubGselectedRows;
+        let productselectedRows =this.productselectedRows.map(x => x.stockItemId);
+        let productScselectedRows=this.productScselectedRows.map(x => x.stockItemId);
+        let pGselectedRows=this.pGselectedRows.map(x => x.stockItemId);
+        let productSubGselectedRows=this.productSubGselectedRows.map(x => x.stockItemId);
+        // console.log('araray',)
+        let jointarray=[...productselectedRows, ...productScselectedRows,...pGselectedRows,...productSubGselectedRows]
+        
+            this.addgetgroup[index].StockItemId =jointarray;
+            this.addgetgroup[index].GroupId =this.buyGroupPlus.length;
+
+       console.log('this.addgetgroup', this.addgetgroup)
+
+
+      }
+
+      //  let localdata = res.response;
+      //       this.sltdid = localdata.map((data: { customerId: any; code: any; dealerName:any,geography:any }) => {
+      //         return { customerId: data.customerId, code: data.code };
+      //       });
+    })
+  }
+
+
+
   addRemoveitem() {
 
     this.dialog.open(RemovePromotionItemComponent);
@@ -488,29 +625,29 @@ this.addbuyset.push({
   // //   }
   //   this.promotionTypes.Image(this.fileupload).subscribe((res) => {
   // console.log ('image', res)
-  
+
   //   })
   // }
-addimg(){
-  const data ={
-//  const addImage = this.base64textString
+  addimg() {
+    const data = {
+      //  const addImage = this.base64textString
+    }
+    this.promotionTypes.Image(data).subscribe((res) => {
+      console.log('image', res)
+    })
+
   }
-  this.promotionTypes.Image(data).subscribe((res) => {
-    console.log ('image', res)
-      })
-     
-}
   public onFileChanged(event) {
     this.selecetdFile = event.target.files[0];
     if (this.selecetdFile.size <= 1 * 1024 * 1024) {
-    this.handleInputChange(this.selecetdFile); 
+      this.handleInputChange(this.selecetdFile);
     }
     else {
-        alert('File size should not be greater than 1MB');
-          }
+      alert('File size should not be greater than 1MB');
+    }
   }
   handleInputChange(files) {
-    this.imagePreview = files 
+    this.imagePreview = files
     var reader = new FileReader();
     reader.onloadend = this.handleReaderLoaded.bind(this);
     reader.readAsDataURL(this.imagePreview);
@@ -518,67 +655,108 @@ addimg(){
   handleReaderLoaded(e) {
     let reader = e.target;
     this.base64textString = reader.result.substr(reader.result.indexOf(',') + 1);
-    console.log(this.base64textString,"base64")
+    console.log(this.base64textString, "base64")
   }
   onRowSelect(event) {
     const selectedRows = this.gridApi.getSelectedRows();
     console.log(selectedRows);
+    let customerId =selectedRows.map(x=>x.customerId);
+    this.EntityInstanceId=customerId
+    //  const result = selectedRows.map((data : {customerId:any}) =>{
+    //   return {custmId: data.customerId}
+    //  })
+    //  console.log('jj',result)
   }
-  addgeography(){
-    this.dialog.open( AddPromotionGeographiesComponent, {width: '654px', height:'743px'})
+  addgeography() {
+    this.dialog.open(AddPromotionGeographiesComponent, { width: '654px', height: '743px' })
     this.storedNames123 = localStorage.getItem("geoAsso");
     this.aboveDefaultGeoOfName = localStorage.getItem("aboveDefaultGeoOfName");
     this.selectedcount = localStorage.getItem("selectedcount");
     this.tottalgeoCount = localStorage.getItem("tottalgeoCount");
   }
-  
-  promotionType1(){
-    const data ={
-      PromotionName : this.promoName,
-      PromotionTypesId : 1,
-      StartDate : "2022-12-12",
-      EndDate :"2022-12-12",
-      DoneById : 327,
-      Imageurl : this.base64textString,
-      BuyGroups : [{
-        StockItemId:[428,430,435],
-        MaxVolume:this.qtyValue,
-        GroupId:1,
-        MOQ:this.moqValue
-    },],
-    GetGroups : [
-      {
-        StockItemId:[417,418],
-        MaxVolume:12,
-        GroupId:1
-    }
-    ],
-    EntityInstanceId : []
+
+  promotionType1() {
+    let stockItems = this.productselectedRows.map(x => x.stockItemId);
+
+    const data = {
+      PromotionName: this.promoName,
+      PromotionTypesId: this.selectedPromo,
+      StartDate: this.selectedStartDate,
+      EndDate: this.selectedEndDate,
+      DoneById: this.loggedUserId,
+      Imageurl: this.base64textString,
+      BuyGroups: [{
+        StockItemId: stockItems,
+        MaxVolume: this.qtyValue,
+        GroupId: 1,
+        MOQ: this.moqValue
+      },],
+      GetGroups: [
+        {
+          StockItemId: [417, 418],
+          MaxVolume: this.GetqtyValue,
+          GroupId: 1
+        }
+      ],
+      EntityInstanceId: []
     }
     this.promotionTypes.DropDownPromotionType(data).subscribe((res) => {
       // this.dialogRefModal.close("success");
     });
-    console.log('addpro',[this.qtyValue,this.moqValue])
+    console.log('addpro', [this.qtyValue, this.moqValue]);
   }
-  AddPromosaveAndSubmit(){
-    console.log('added items')
-    // const AddpromotionData = {
-    //   promotionName : this.promoName,
-    //   PromotionTypesId : this.selectedPromo,
-    //   StartDate : this.startselectDate,
-    //   EndDate : this.selectendDate,
-    //   qty: this.qtyValue,
-    //   mty:this.moqValue,
-    // }
-    // console.log('dats',AddpromotionData);
-    // localStorage.setItem("addpromo", JSON.stringify(AddpromotionData));
-    this.dialogRefModal.close("success");
-    this.promotionType1()
+
+  
+  AddPromosaveAndSubmit() {
+
+    this.loggedUserId = localStorage.getItem('logInId')
+
+    if(this.selectedPromo=1){
+      console.log('added items', this.buyGroupPlus)
+      console.log('addgetgroup',this.addgetgroup)
+  
+  this.buyGroupPlus.forEach(element=>{
+    delete element.productselectedRows;
+    delete element.productScselectedRows;
+    delete element.pGselectedRows;
+    delete element.productSubGselectedRows;
+  })
+  
+  this.addgetgroup.forEach(element=>{
+    delete element.productselectedRows;
+    delete element.productScselectedRows;
+    delete element.pGselectedRows;
+    delete element.productSubGselectedRows;
+  })
+  
+  
+  
+  let obj:any={
+  
+    PromotionName: this.promoName,
+    PromotionTypesId: this.selectedPromo,
+    StartDate: this.selectedStartDate,
+    EndDate: this.selectedEndDate,
+    DoneById: this.loggedUserId,
+    Imageurl: this.base64textString,
+    BuyGroups:this.buyGroupPlus,
+    GetGroups:this.addgetgroup,
+    EntityInstanceId:this.EntityInstanceId
+  
   }
-  addpromotionGeoTable(){
+  
+
+  this.promotionTypes.firstPromotion(obj).subscribe((res)=>{
+    console.log(res.response)
+  })
+
+    }
+   
+  }
+  addpromotionGeoTable() {
     const data = {
-      Geography : [],
-      Search : '',
+      Geography: [],
+      Search: '',
     }
     this.promotionTypes.GetPromotionDealerList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -588,6 +766,10 @@ addimg(){
       //   return { customerId: data.customerId, code: data.code };
       // });
     });
+  }
+  selectedValue(value: any) {
+    this.promotionTypesId = value;
+    console.log('promcheck', this.promotionTypesId.val,)
   }
 }
 

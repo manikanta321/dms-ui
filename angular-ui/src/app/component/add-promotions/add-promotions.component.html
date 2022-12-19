@@ -41,7 +41,7 @@
                                 <div class="promotiontypedrp identify promotiondrpalign">
                                     <label>Promotion Type <span class="astr">*</span></label>
                                     <ng-select [items]="promotionTypedropdown" placeholder="Select the promotion type"
-                                        bindLabel="promotionTypesName" bindValue="promotionTypesId"
+                                        bindLabel="promotionTypesName" bindValue="promotionTypesId" #promotype (change)="selectedValue($event)"
                                         (change)="GetPromotionTypes($event)" required [(ngModel)]="selectedPromo">
                                     </ng-select>
                                 </div>
@@ -66,7 +66,7 @@
                                     <mat-form-field class="form-field placeh-align">
                                         <input matInput placeholder="Select the end date"
                                         [matDatepicker]="picker2" [min]="startDate.value" [formControl]="endDate"
-                                        (dateChange)="enddateChange($event)" [(ngModel)]="selectendDate">
+                                        (dateChange)="enddateChange($event)">
                                         <mat-datepicker-toggle matSuffix [for]="picker2">
                                         </mat-datepicker-toggle>
                                         <mat-datepicker #picker2></mat-datepicker>
@@ -121,7 +121,7 @@
                                             <div class="col-10 buyGrp-h">
                                                 <h5 class="item-header"><b>Buy </b>group {{i}}</h5>
                                             </div>
-                                            <div class="col-2 plsImg" (click)="addbuyGroup()" *ngIf="i==0">
+                                            <div class="col-2 plsImg" (click)="addbuyGroup(i)" *ngIf="i==0">
                                                 <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
                                             </div>
                                             <div class="col-2 plsAdd" (click)="removebuyGroup(i)" *ngIf="i >= 1">
@@ -131,7 +131,7 @@
                                         <div class="row">
                                             <div class="productlevel col-12">
                                                 <label>Item Level<span class="astr">*</span></label>
-                                                <div class="collapsible" (click)="addItems()">
+                                                <div class="collapsible" (click)="addItems(i)">
                                                     <div class="row">
                                                         <div class="col-10">
                                                             <p class="expn-t">Select the Items</p>
@@ -148,28 +148,35 @@
                                                 <mat-card class="list-item">
                                                     <mat-card-content class="item-in-box">
                                                         <ul>
-                                                            <li *ngFor="let prodtable of selectedRows" >{{prodtable.productGroupName}}</li>
-                                                            <li>Item Information</li>
+                                                            <li *ngFor="let producttable of addbuyg.productselectedRows" >{{producttable.productName}}</li>
+                                                            <li *ngFor="let productGrp of addbuyg.productScselectedRows">{{productGrp.productName}}</li>
+                                                            <li *ngFor="let productGrp of addbuyg.pGselectedRows">{{productGrp.productName}}</li>
+                                                            <li *ngFor="let productSubg of addbuyg.productSubGselectedRows">{{productSubg.productName}}</li>
                                                         </ul>
                                                     </mat-card-content>
                                                 </mat-card>
                                             </div>
                                             <div class="col-2 qtyalign" >
                                                 <label>Qty<span class="astr">*</span></label>
-                                                <input type="number" class="qty-box" placeholder="1" value="{{qtyMaxNum}}"id=qty name="qty" required max="10" min="0" [(ngModel)]="qtyValue">
+                                                {{addbuyg.qtyValue}}
+                                                <input type="number" class="qty-box"  id=qty name="qty" required max="10" min="0" [(ngModel)]="addbuyg.MaxVolume">
                                                 <label>MOQ<span class="astr">*</span></label>
-                                                <input type="number" class="mty-box" placeholder="1" value="{{MoqMaxNum}}"id=moq name="moq" required max="10" min="0" [(ngModel)]="moqValue">
+                                                <input type="number" class="mty-box"  id=moq name="moq" required max="10" min="0" [(ngModel)]="addbuyg.MOQ">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+
+
+
                                 <div class="col-lg-6 GetGroup">
-                                    <div class="get1"  [(ngModel)]="addget.getItems" *ngFor="let addget of addgetgroup; let i=index">
+                                    <div class="get1"  [(ngModel)]="addbuyg.getItems" *ngFor="let addbuyg of addgetgroup; let i=index">
                                         <div class="row">
                                             <div class="col-10 buyGrp-h">
                                                 <h5 class="item-header"><b>Get </b>group {{i}}</h5>
                                             </div>
-                                            <div class="col-2 plsImg" (click)="adddgetGroup()" *ngIf="i==0">
+                                            <div class="col-2 plsImg" (click)="adddgetGroup(i)" *ngIf="i==0">
                                                 <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
                                             </div>
                                             <div class="col-2 plsAdd" (click)="removegetGroup(i)" *ngIf="i>=1">
@@ -179,7 +186,7 @@
                                         <div class="row">
                                             <div class="productlevel col-12">
                                                 <label>Item Level<span class="astr">*</span></label>
-                                                <div class="collapsible" (click)="addItems()">
+                                                <div class="collapsible" (click)="addItemsforGetGroup(i)">
                                                     <div class="row">
                                                         <div class="col-10">
                                                             <p class="expn-t">Select the Items</p>
@@ -196,14 +203,18 @@
                                                 <mat-card class="list-item">
                                                     <mat-card-content class="item-in-box">
                                                         <ul>
-                                                            <li>Item Information</li>
-                                                        </ul>
+                                                            <ul>
+                                                                <li *ngFor="let producttable of addbuyg.productselectedRows" >{{producttable.productName}}</li>
+                                                                <li *ngFor="let productGrp of addbuyg.productScselectedRows">{{productGrp.productName}}</li>
+                                                                <li *ngFor="let productGrp of addbuyg.pGselectedRows">{{productGrp.productName}}</li>
+                                                                <li *ngFor="let productSubg of addbuyg.productSubGselectedRows">{{productSubg.productName}}</li>
+                                                            </ul>                                                        </ul>
                                                     </mat-card-content>
                                                 </mat-card>
                                             </div>
                                             <div class="col-2 qtyalign">
                                                 <label>Qty<span class="astr">*</span></label>
-                                                <input type="number" class="qty-box" placeholder="1"  id=Getqty name="Getqty" required max="10" min="0" [(ngModel)]="GetqtyValue">
+                                                <input type="number" class="qty-box"  id=Getqty name="Getqty" required max="10" min="0" [(ngModel)]="addbuyg.MaxVolume">
                                             </div>
                                         </div>
                                     </div>
@@ -241,7 +252,7 @@
                                                 <div class="col-10 buyGrp-h">
                                                     <h5 class="item-header"><b>Buy </b>group {{i}}</h5>
                                                 </div>
-                                                <div class="col-2 plsImg" (click)="addbuyGroup()" *ngIf="i==0">
+                                                <div class="col-2 plsImg" (click)="addbuyGroup(i)" *ngIf="i==0">
                                                     <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
                                                 </div>
                                                 <div class="col-2 plsAdd" (click)="removebuyGroup(i)" *ngIf="i>=1">
@@ -251,7 +262,7 @@
                                             <div class="row">
                                                 <div class="productlevel col-12">
                                                     <label>Item Level<span class="astr">*</span></label>
-                                                    <div class="collapsible" (click)="addItems()">
+                                                    <div class="collapsible" (click)="addItems(i)">
                                                         <div class="row">
                                                             <div class="col-10">
                                                                 <p class="expn-t">Select the Items</p>
@@ -310,7 +321,7 @@
                                             <div class="col-10 buyGrp-h">
                                                 <h5 class="item-header"><b>Get </b>group {{i}}</h5>
                                             </div>
-                                            <div class="col-2 plsImg" (click)="adddgetGroup()" *ngIf="i==0">
+                                            <div class="col-2 plsImg" (click)="adddgetGroup(i)" *ngIf="i==0">
                                                 <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
                                             </div>
                                             <div class="col-2 plsAdd" (click)="removegetGroup(i)" *ngIf="i>=1">
@@ -320,7 +331,7 @@
                                         <div class="row">
                                             <div class="productlevel col-12">
                                                 <label>Item Level<span class="astr">*</span></label>
-                                                <div class="collapsible" (click)="addItems()">
+                                                <div class="collapsible" (click)="addItems(i)">
                                                     <div class="row">
                                                         <div class="col-10">
                                                             <p class="expn-t">Select the Items</p>

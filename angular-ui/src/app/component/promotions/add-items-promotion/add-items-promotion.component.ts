@@ -54,6 +54,9 @@ export class AddItemsPromotionComponent implements OnInit {
   });
   isLinear = false;
   private gridApi!: GridApi;
+  gridApi2! :GridApi;
+  gridApi3! :GridApi;
+  gridApi4! :GridApi;
   searchText;
   columnDefs: ColDef[] = [
 
@@ -347,10 +350,10 @@ export class AddItemsPromotionComponent implements OnInit {
     StatusFilter = false;
     productCustomIdentifierArray:any[]=[]
     @ViewChild('stepper') private myStepper: MatStepper | any;
-    selectedRows: any =[];
-    productselectedRows :any= [];
+    productselectedRows: any =[];
+    productSubGselectedRows :any= [];
     pGselectedRows:any =[];
-    proshcselectedRows : any= [];
+    productScselectedRows : any= [];
     searchfeild : boolean = false;
   constructor(private _formBuilder: FormBuilder,
     public dialog: MatDialog,
@@ -435,7 +438,18 @@ export class AddItemsPromotionComponent implements OnInit {
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
     params.api.sizeColumnsToFit();
-
+  }
+  onGridReady2(params: GridReadyEvent){
+    this.gridApi2 = params.api;
+    params.api.sizeColumnsToFit();
+  }
+  onGridReady3(params: GridReadyEvent){
+    this.gridApi3 = params.api;
+    params.api.sizeColumnsToFit();
+  }
+  onGridReady4(params: GridReadyEvent){
+    this.gridApi4 = params.api;
+    params.api.sizeColumnsToFit();
   }
   onCellValueChanged(event: CellValueChangedEvent) {
     // alert(event.value)
@@ -523,12 +537,14 @@ export class AddItemsPromotionComponent implements OnInit {
     return productselectedRows;
   }
   addproductitems(){
-    // const selectedRows = this.gridApi.getSelectedRows();
-    // console.log(selectedRows);
-    // this.dialogRef.close(selectedRows);
     this.productselectedRows = this.gridApi.getSelectedRows();
     console.log(this.productselectedRows);
-    localStorage.setItem('selectedRows',JSON.stringify(this.productselectedRows) )
+    localStorage.setItem('productselectedRows',JSON.stringify(this.productselectedRows) )
+    this.goForward(this.myStepper);
+
+    // this.productScselectedRows.map((data:{stockItemId: any;}) => {
+    //   return { stockItemId: data.stockItemId};
+    // });
   }
   oncatselect(){
     this.promotionTypes.GetCategories().subscribe((res) =>{
@@ -1188,23 +1204,31 @@ GetProductShortCodeList(){
    })
  }
 additemsProductShortCode(item:any){
-  console.log('revathi');
-  const selectedRows = this.gridApi.getSelectedRows();
-  console.log(selectedRows);
-  localStorage.setItem('selectedRows',JSON.stringify(this.selectedRows) )
-  this.dialogRef.close();
+  // this.productScselectedRows = this.gridApi2.getSelectedRows();
+  // console.log(this.productScselectedRows);
+  localStorage.setItem('productScselectedRows',JSON.stringify(this.productScselectedRows) )
+  this.goForward(this.myStepper)
+
+}
+goForward(stepper: MatStepper) {
+  stepper.next();
 }
 ProductShortCodeRowSelect(event) {
-  this.selectedRows = this.gridApi.getSelectedRows();
-  console.log(this.selectedRows);
+  const productScselectedRows = this.gridApi2.getSelectedRows();
+  console.log(productScselectedRows);
+  let productShortCodeOfSelected=productScselectedRows.map(x => x.productShortCode);
+  console.log('productShortCodeOfSelected',productShortCodeOfSelected)
+let data={
+  ProductShortCode:productShortCodeOfSelected,
+}
+
+this.promotionTypes.getProductsubgropStockitemID(data).subscribe((res)=>{
+console.log(res.response)
+this.productScselectedRows= res.response
+})
   console.log('slct');
 }
 // add product group
-addproductGroup(){
-  const selectedRows = this.gridApi.getSelectedRows();
-  console.log(selectedRows);
-  localStorage.setItem('selectedRows',JSON.stringify(this.selectedRows) )
-}
 AddProductGroupList(){
   const  data = {
     Search : ''
@@ -1235,8 +1259,29 @@ AddProductGroupList(){
 
   }
   onRowSelectProductGroup(event) {
-    const selectedRows = this.gridApi.getSelectedRows();
-    console.log(selectedRows);
+    const pGselectedRows = this.gridApi3.getSelectedRows();
+    console.log('pGselectedRows',pGselectedRows);
+    let productShortCodeOfSelected=pGselectedRows.map(x => x.productGroupId);
+
+    pGselectedRows
+    let data ={
+      id:productShortCodeOfSelected
+    }
+    this.promotionTypes.getProductGroup(data).subscribe((res)=>{
+      console.log(res.response)
+      this.pGselectedRows=res.response
+      console.log('this.pGselectedRows',this.pGselectedRows)
+    })
+
+
+
+  }
+  addproductGroup(){
+    // this.pGselectedRows = this.gridApi3.getSelectedRows();
+    // console.log(this.pGselectedRows);
+    localStorage.setItem('pGselectedRows',JSON.stringify(this.pGselectedRows) )
+    this.goForward(this.myStepper);
+
   }
   // product SubGroup
   ProductSubGroupDrpdwn(item: any) {
@@ -1293,13 +1338,24 @@ AddProductGroupList(){
     })
   }
   ProductSubGroupRowSelect(event) {
-    const pGselectedRows = this.gridApi.getSelectedRows();
-    console.log(pGselectedRows);
+    const productSubGselectedRows = this.gridApi4.getSelectedRows();
+
+    let productShortCodeOfSelected=productSubGselectedRows.map(x => x.productSubGroupId);
+
+let data={
+  id:productShortCodeOfSelected
+}
+    this.promotionTypes.getProductSubGroup(data).subscribe((res)=>{
+     this.productSubGselectedRows= res.response
+    })
+    console.log(productSubGselectedRows);
   }
   addItemProductSubG(){
-    const pGselectedRows = this.gridApi.getSelectedRows();
-    console.log('rowl',pGselectedRows);
-    localStorage.setItem('selectedRows',JSON.stringify(this.pGselectedRows) )
+    // this.productSubGselectedRows = this.gridApi4.getSelectedRows();
+    // console.log('rowl',this.productSubGselectedRows);
+    localStorage.setItem('productSubGselectedRows',JSON.stringify(this.productSubGselectedRows) );
+
+    this.dialogRef.close();
   }
   matsteptabClick(tab) {
     // console.log(tab);

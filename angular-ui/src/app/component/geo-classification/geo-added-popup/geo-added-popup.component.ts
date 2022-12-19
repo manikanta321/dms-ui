@@ -18,12 +18,19 @@ export class GeoAddedPopupComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.data);
+    sessionStorage.getItem("GeoName");
+    sessionStorage.getItem("GeoCode");
     setTimeout(()=>{
       this.dialogRef.close();
     }, 5*1000);
-    
+    this.geoData();
   }
-  
+  geoData(){
+    let geoName =sessionStorage.getItem("GeoName");
+    let geoCode = sessionStorage.getItem("GeoCode");
+    this.geographyName =geoName;
+    this.geographyCode =geoCode;
+  }
   closeDialog(){
     this.dialogRef.close();
   }

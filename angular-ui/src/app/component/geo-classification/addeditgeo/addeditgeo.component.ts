@@ -58,7 +58,8 @@ export class AddeditgeoComponent implements OnInit {
 
       this.AddEditGeography(saveObj, this.hirerachyIndex);
       
-
+      sessionStorage.setItem("GeoName",this.name);
+      sessionStorage.setItem("GeoCode",this.code);
 
     }else{
       this.showWarning = true;

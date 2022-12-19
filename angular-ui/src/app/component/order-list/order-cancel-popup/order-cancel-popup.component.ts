@@ -8,7 +8,7 @@ import { OrderCancelDonePopupComponent } from '../order-cancel-done-popup/order-
   styleUrls: ['./order-cancel-popup.component.css']
 })
 export class OrderCancelPopupComponent implements OnInit {
-
+  orderNumber:any;
 
 
 
@@ -17,8 +17,17 @@ export class OrderCancelPopupComponent implements OnInit {
    
     ) { }
   ngOnInit(): void {
+   sessionStorage.getItem("orderNumber");
+   this.OrderNumber();
   }
-
+  OrderNumber(){
+let ordernum = sessionStorage.getItem("orderNumber");
+if(ordernum == 'null') {
+  this.orderNumber = '';
+} else {
+  this.orderNumber = ordernum;
+}
+}
 
    yes()
    {

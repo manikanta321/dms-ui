@@ -390,11 +390,12 @@ export class OrderListComponent implements OnInit {
     console.log('cellClicked', e);
     this.UomId=e.data.uoMId;
     this.uomName=e.data.uoMName;
+    let ordernumber = e.data.orderNUmber;
     // this.employeeName=e.data.userName;
     // console.log('userID',this.userId);
     localStorage.setItem('UomId',e.data.uoMId )
     localStorage.setItem('UomName',e.data.uoMName)
-    
+    sessionStorage.setItem("orderNumber",ordernumber);
     localStorage.setItem('niId',e.data.uoMId )
     localStorage.setItem('Niname',e.data.uoMName)
     // localStorage.setItem('employeeName',this.employeeName )

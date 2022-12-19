@@ -547,7 +547,12 @@ text-align: center;
   border-radius: 2px;
   font-family: 'Gilroy';
 }
-
+.addproImg{
+  width: 426px;
+  height: 199px;
+  margin-top: -7px;
+  border-radius: 10px;
+}
 ::ng-deep.myDatepicker .mat-form-field {
   width: 430px;
 height: 43px;

@@ -171,6 +171,7 @@ import { AddTargetGroupComponent } from './component/add-target-group/add-target
 import { UserroledirectiveDirective } from './directives/userroledirective.directive';
 import { AddTargetGroupsProductsComponent } from './component/target-groups/add-target-groups-products/add-target-groups-products.component';
 import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
+import { AddpromoGeographyComponent } from './component/add-promotions/addpromo-geography/addpromo-geography.component';
 
 @NgModule({
   declarations: [
@@ -364,6 +365,7 @@ import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.com
     UserroledirectiveDirective,
     AddTargetGroupsProductsComponent,
     PagenotfoundComponent,
+    AddpromoGeographyComponent,
 
   ],
   imports: [

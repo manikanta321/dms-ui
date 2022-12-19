@@ -11,6 +11,7 @@ import { CellClassParams, CellClassRules, CellClickedEvent, CellValueChangedEven
 import { MatTableDataSource } from '@angular/material/table';
 import { AddPromotionGeographiesComponent } from './add-promotion-geographies/add-promotion-geographies.component';
 import { DateAdapter } from '@angular/material/core';
+import { AddpromoGeographyComponent } from './addpromo-geography/addpromo-geography.component';
 @Component({
   selector: 'app-add-promotions',
   templateUrl: './add-promotions.component.html',
@@ -88,6 +89,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   productSubGselectedRows: any;
   loginData: any;
   loggedUserId: any;
+  geographynameId: any = [];
+  geographyyId: any = [];
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
     //update the ui
@@ -116,12 +119,14 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   selectendDate: any;
   imagePreview: any;
   addImage: any;
+  addImgpreview : boolean= false;
   showselectedgeovalue: boolean = false
   totalStepsCount: number | undefined;
   startDate = new FormControl(new Date());
   endDate = new FormControl(new Date());
   minDateToFinish = new Subject<string>();
-  minDate;
+  // minDate;
+  minDate = new Date();
   selectedStartDate: any;
   selectedEndDate: any
   dateChange(e) {
@@ -641,6 +646,7 @@ let jointarray=[...productselectedRows, ...productScselectedRows,...pGselectedRo
     this.selecetdFile = event.target.files[0];
     if (this.selecetdFile.size <= 1 * 1024 * 1024) {
       this.handleInputChange(this.selecetdFile);
+      this.addImgpreview = true;
     }
     else {
       alert('File size should not be greater than 1MB');
@@ -668,11 +674,11 @@ let jointarray=[...productselectedRows, ...productScselectedRows,...pGselectedRo
     //  console.log('jj',result)
   }
   addgeography() {
-    this.dialog.open(AddPromotionGeographiesComponent, { width: '654px', height: '743px' })
-    this.storedNames123 = localStorage.getItem("geoAsso");
-    this.aboveDefaultGeoOfName = localStorage.getItem("aboveDefaultGeoOfName");
-    this.selectedcount = localStorage.getItem("selectedcount");
-    this.tottalgeoCount = localStorage.getItem("tottalgeoCount");
+    this.dialog.open(AddpromoGeographyComponent, { width: '654px', height: '743px' })
+    this.storedNames123 = localStorage.getItem("geoAssopromo");
+    this.aboveDefaultGeoOfName = localStorage.getItem("aboveDefaultGeoOfNamepromo");
+    this.selectedcount = localStorage.getItem("selectedcountpromo");
+    this.tottalgeoCount = localStorage.getItem("tottalgeoCountpromo");
   }
 
   promotionType1() {
@@ -755,12 +761,19 @@ let jointarray=[...productselectedRows, ...productScselectedRows,...pGselectedRo
   }
   addpromotionGeoTable() {
     const data = {
-      Geography: [],
+      Geography: this.geographyyId,
       Search: '',
     }
     this.promotionTypes.GetPromotionDealerList(data).subscribe((res) => {
       this.rowData5 = res.response;
-      console.log()
+      console.log();
+      this.geographynameId = localStorage.getItem("geopromo");
+      console.log('geochecks',this.geographynameId)
+      this.geographynameId.forEach(element => {
+        return this.geographyyId.push(element.geographynameId);
+        // console.log('rolecheck',rolecheck)
+  
+      })
       // let localdata = res.response;
       // this.custmerid = localdata.map((data: { customerId: any; code: any; dealerName:any,geography:any }) => {
       //   return { customerId: data.customerId, code: data.code };

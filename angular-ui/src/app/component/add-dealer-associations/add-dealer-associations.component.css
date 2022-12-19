@@ -157,7 +157,7 @@ input.form-check-input1 {
     background-color: black;
     height: 41px;
     margin-top: 6px;
-    margin-left: 99px;
+    margin-left: 88px;
 
   }
   .refreshbtn1{
@@ -195,9 +195,10 @@ input.form-check-input1 {
     background-color: white;
     padding-top: -3px;
     padding-bottom: -3px;
-    width: 290px;
+    width: 295px;
     border: solid 1px;
-border-radius: 10px;
+    border-radius: 10px;
+    margin-left: -9px;
     }
     
     
@@ -279,15 +280,16 @@ border-radius: 10px;
     bottom: 10px;
 }
 .searchInput1{
-    width: 121%;
+    width: 124%;
     height: 38px;
     border: solid 0.5px;
     border-radius: 10px;
-    padding: 10px;
+    padding: 7px;
 }
   .promotiont1{
     margin-top: 3px;
     margin-bottom: 53px;
+    margin-left: 16px;
   }
   .promotiont2{
     width: 92%;
@@ -1317,7 +1319,7 @@ border-radius: 10px;
     border: 0.5px solid #000000;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 10px;
-    height: 42px;
+    height: 43px;
     padding: 4px;
     padding-top: 7px;
   }
@@ -1450,4 +1452,7 @@ width: 100%;
 ::ng-deep.productt .multiselect-dropdown .dropdown-btn .selected-item {
   background: #44026C !important;
   right: 0% !important;
+}
+.mainclass {
+  margin-left: 5px;
 }

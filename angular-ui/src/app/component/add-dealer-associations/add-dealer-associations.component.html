@@ -103,24 +103,26 @@
           </div>
         </div>
         <!-- geography -->
-        <div class="row heading">
-          <h5 class="geo-head">Geographies</h5>
-        </div>
-        <div class="row" *ngIf="screenValue== 1">
-          <div class="col-md-12 slctd-row">
-            <div class="row">
-              <div class="col-md-9 sltd-span">
-                <span class="selectedname" *ngIf="false">Selected Geogrphies</span>
-                <span class="selectedcolor"
-                  *ngIf="showselectedgeovalue">{{aboveDefaultGeoOfName}}({{selectedcount}}/{{tottalgeoCount}})</span>
-                <!-- <span class="selectedclr2">India(15/15)</span>;
-                <span class="astr">Singpore(0/6)</span>;
-                <span class="selectedclr2">Japan(23/23)</span> -->
-              </div>
-              <div class="col-md-3">
-                <button class="slctd-geo-btn" [disabled]="!slectedgeo" (click)="geography('product')">
-                  Selected Geographies
-                </button>
+        <div style="margin-left: 16px;">
+          <div class="row heading">
+            <h5 class="geo-head">Geographies</h5>
+          </div>
+          <div class="row" *ngIf="screenValue== 1">
+            <div class="col-md-12 slctd-row">
+              <div class="row">
+                <div class="col-md-9 sltd-span">
+                  <span class="selectedname" *ngIf="false">Selected Geogrphies</span>
+                  <span class="selectedcolor"
+                    *ngIf="showselectedgeovalue">{{aboveDefaultGeoOfName}}({{selectedcount}}/{{tottalgeoCount}})</span>
+                  <!-- <span class="selectedclr2">India(15/15)</span>;
+                  <span class="astr">Singpore(0/6)</span>;
+                  <span class="selectedclr2">Japan(23/23)</span> -->
+                </div>
+                <div class="col-md-3">
+                  <button class="slctd-geo-btn" [disabled]="!slectedgeo" (click)="geography('product')">
+                    Selected Geographies
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -405,40 +407,42 @@
           <p class="p-dealer" style="margin-left: -8px;"><img src="../../../assets/img/intermidiate.svg" /> Some
             Product Selected</p>
         </div>
-          <div class="col-md-3">
-            <div class="searchBox1 d-flex">
-              <div class="promotiont2">
-                <select class="form-select select-asso" aria-label=".form-select-lg example"
-                  [(ngModel)]="selectedGeoField1">
-                  <option selected hidden>Select</option>
-                  <option value="" disabled selected hidden>Select Feild</option>
-                  <option value="mrp"> MRP</option>
-                  <option value="marginPercent"> Margin Percent</option>
-                  <option value="maxOrderQty"> Max Order Qty</option>
-                  <option value="minOrderQty"> Min Order Qty</option>
-                  <option value="discountPercent"> Discount Percent</option>
-                  <option value="leadTime"> Lead Time</option>
-                  <option value="registrationNumber"> Registration Number</option>
-                </select>
-              </div>
-              <div class="promotiont3">
-                <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name=""
-                  [(ngModel)]="updateGeographyValue1" placeholder="Enter value" />
-              </div>
-              <div class="promotiont3" *ngIf="screenValue != 2" (click)="applySelectedValue1()">
-                <button type="button" class="saveas-draft1">Apply</button>
-              </div>
-              <div class="promotiont3" *ngIf="screenValue == 2" (click)="applySelectedValueforDealer()">
-                <button type="button" class="saveas-draft1">Apply</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-1">
-            <div class="icon btnhover refreshbtn" style="cursor: pointer">
-              <img class="refresh" src="assets/img/ultrarefresh.svg" style="position: relative; top: 9px; left: 12px"
-                alt="refresh" />
-            </div>
-          </div>
+
+  <div class="col-md-3">
+    <div class="searchBox1 d-flex">
+      <div class="promotiont2">
+        <select class="form-select select-asso" aria-label=".form-select-lg example"
+          [(ngModel)]="selectedGeoField1">
+          <option selected hidden>Select</option>
+          <option value="" disabled selected hidden>Select Feild</option>
+          <option value="mrp"> MRP</option>
+          <option value="marginPercent"> Margin Percent</option>
+          <option value="maxOrderQty"> Max Order Qty</option>
+          <option value="minOrderQty"> Min Order Qty</option>
+          <option value="discountPercent"> Discount Percent</option>
+          <option value="leadTime"> Lead Time</option>
+          <option value="registrationNumber"> Registration Number</option>
+        </select>
+      </div>
+      <div class="promotiont3">
+        <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name=""
+          [(ngModel)]="updateGeographyValue1" placeholder="Enter value" />
+      </div>
+      <div class="promotiont3" *ngIf="screenValue != 2" (click)="applySelectedValue1()">
+        <button type="button" class="saveas-draft1">Apply</button>
+      </div>
+      <div class="promotiont3" *ngIf="screenValue == 2" (click)="applySelectedValueforDealer()">
+        <button type="button" class="saveas-draft1">Apply</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-1">
+    <div class="icon btnhover refreshbtn" style="cursor: pointer">
+      <img class="refresh" src="assets/img/ultrarefresh.svg" style="position: relative; top: 9px; left: 12px"
+        alt="refresh" />
+    </div>
+  </div>
+
 
           <br />
 

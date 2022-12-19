@@ -25,7 +25,7 @@
             <!-- <ul> -->
             <li *ngFor="let subtask1 of subtask.defaultGeography">
               <mat-icon>subdirectory_arrow_right</mat-icon>
-              <mat-checkbox   [indeterminate]="someComplete()"    [checked]="subtask1.value" (click)="updateAllComplete(subtask1.defaultGeoId)"  >
+              <mat-checkbox      [checked]="subtask1.value" (click)="updateAllComplete(subtask1.defaultGeoId)"  >
                 {{subtask1.defaultGeoName}}
               </mat-checkbox>
             </li>

@@ -1,3 +1,19 @@
+.dropdown-list ul {
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+}
+
+::ng-deep.dropdown-list {
+  
+  overflow: hidden;
+  
+ 
+  
+  
+}
+
 /* .tableclass{
     background-color: white;
     border-radius: 24px;
@@ -1024,8 +1040,10 @@ display: block;
 #gp
 {
   margin-left: 10px;
+  
 }
 #dp
 {
   border-left: 1px solid black;
+  
 }

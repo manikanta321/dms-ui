@@ -1,0 +1,45 @@
+
+   
+.head-text{
+  font-size: 20px;
+  font-weight: 600;
+  }
+  
+  .tumbsup{
+      
+  padding: 0 10px;
+  }
+  .text-succ{
+  padding: 0 10px;
+  }
+  .closeImg{
+      padding: 15px 0 15px 20px;
+  }
+  .closeImg img{
+      width: 20px;
+  }
+  .left{
+  width: 15px;
+  background: green;
+  }
+  
+  .font{
+      font-family: 'Gilroy';
+  }
+  .deletedsu
+  {
+      font-family: 'Gilroy-Medium';
+  font-size: 16px;
+  }
+  
+  .deactiveSuccessPop {
+      position: absolute !important;
+      pointer-events: auto;
+      box-sizing: border-box;
+      z-index: 1000;
+      display: flex;
+      max-width: 100%;
+      max-height: 100%;
+      bottom: 2%;
+      left: 74%;
+  }

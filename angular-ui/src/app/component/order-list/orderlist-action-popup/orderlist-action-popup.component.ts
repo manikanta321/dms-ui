@@ -1,6 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import tippy, { hideAll } from 'tippy.js'; 
+
+import { OrderCancelPopupComponent } from '../order-cancel-popup/order-cancel-popup.component';
 import { OrderlistEditPopupComponent } from '../orderlist-edit-popup/orderlist-edit-popup.component';
 @Component({
   selector: 'app-orderlist-action-popup',
@@ -67,5 +69,20 @@ export class OrderlistActionPopupComponent implements OnInit {
     // localStorage.setItem('edit-dealer','Edit')
     this.dialog.open(OrderlistEditPopupComponent,{height:"570px"});
     this.isOpen = false;
+  }
+  orderReceive()
+  {
+
+  }
+  orderCancel()
+  {
+    this.dialog.open(OrderCancelPopupComponent);
+    this.isOpen=false;
+    
+    
+  }
+  orderShip()
+  {
+
   }
 }

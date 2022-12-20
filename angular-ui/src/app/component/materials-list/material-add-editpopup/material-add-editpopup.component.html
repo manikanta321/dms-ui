@@ -9,14 +9,15 @@
         <br><br><br>
         <div class="d-flex">
 
-          <img src="assets/img/arrow-left-circle-fill.svg"   (click)="Backbutton()"   class="leftarrow1" alt="left-arr-btn">
-          <img src="assets/img/arrow-right-circle-fill.svg"  (click)="nextbutton()"   class="rightarrow2" alt="right-arr-btn"> 
+          <img src="assets/img/arrow-left-circle-fill.svg" (click)="Backbutton()" class="leftarrow1" alt="left-arr-btn">
+          <img src="assets/img/arrow-right-circle-fill.svg" (click)="nextbutton()" class="rightarrow2"
+            alt="right-arr-btn">
         </div>
-    
 
 
 
-       
+
+
         <mat-stepper labelPosition="bottom" #stepper>
           <!-- basic information -->
           <mat-step [stepControl]="firstFormGroup">
@@ -151,11 +152,12 @@
                   <!-- <ng-multiselect-dropdown class="Materialcustomidentifier" name="Materialcustomidentifier"
                     placeholder="Select Identifier" [disabled]="disabled" [settings]="dropdownSettings4">
                   </ng-multiselect-dropdown> -->
-                  <input type="text" disabled id="matIdentifier" name="matIdentifier" (click)="expandMaterialIdentifier()"
-                  class="form-control container materialIdentifier" required
-                  placeholder="Select Identifier" [(ngModel)]="MaterialCustomIdentifiersNames" #matIdentifier="ngModel">
+                  <input type="text" disabled id="matIdentifier" name="matIdentifier"
+                    (click)="expandMaterialIdentifier()" class="form-control container materialIdentifier" required
+                    placeholder="Select Identifier" [(ngModel)]="MaterialCustomIdentifiersNames"
+                    #matIdentifier="ngModel">
                   <img [src]="image1" class="expand-materialIdentifier" alt="add-user-btn" />
-                  
+
                 </div>
                 <div class="overlay" *ngIf="materialIdentifierPopup">
                   <div class="popup">
@@ -228,7 +230,8 @@
               </div>
               <div class="col-md-6">
                 <div class="mat-slide">
-                  <mat-slide-toggle [labelPosition]="labelPosition" [disabled]="disabled" (change)="change($event)" [checked]="!checked">&nbsp;&nbsp;&nbsp;&nbsp; Is a product?</mat-slide-toggle>
+                  <mat-slide-toggle [labelPosition]="labelPosition" [disabled]="disabled" (change)="change($event)"
+                    [checked]="!checked">&nbsp;&nbsp;&nbsp;&nbsp; Is a product?</mat-slide-toggle>
                 </div>
               </div>
               <div class="col-md-6">
@@ -375,9 +378,10 @@
                   <!-- <ng-multiselect-dropdown name="ProductCustomIdentifierId" class="ProductCustomIdentifierId"
                     [placeholder]="'Select the identifiers'" [disabled]="disabled" [settings]="dropdownSettings3">
                   </ng-multiselect-dropdown> -->
-                  <input type="text" disabled id="prodIdentifier" name="prodIdentifier" (click)="expandMaterialIdentifier()"
-                  class="form-control container materialIdentifier" required
-                  placeholder="Select the identifiers" [(ngModel)]="selectedProductIdentifierData" #prodIdentifier="ngModel">
+                  <input type="text" disabled id="prodIdentifier" name="prodIdentifier"
+                    (click)="expandMaterialIdentifier()" class="form-control container materialIdentifier" required
+                    placeholder="Select the identifiers" [(ngModel)]="selectedProductIdentifierData"
+                    #prodIdentifier="ngModel">
                   <img [src]="image1" style="left: 97%;" class="expand-materialIdentifier" alt="add-user-btn" />
                 </div>
 
@@ -419,8 +423,9 @@
                             <mat-chip-list multiple>
                               <!-- [(ngModel)]="bussinessIdentifiers" -->
                               <mat-chip #Productdata="matChip" [value]="data"
-                                *ngFor="let data of productData; let i = index" [selected]="isSelectedProductIdentifier(data)"
-                                (focus)="selectProductIdentifier(data,i)" class="cold">
+                                *ngFor="let data of productData; let i = index"
+                                [selected]="isSelectedProductIdentifier(data)" (focus)="selectProductIdentifier(data,i)"
+                                class="cold">
                                 <!-- <mat-icon *ngIf="Productdata.selected">check</mat-icon> -->
                                 {{data.productCustomName}}
                               </mat-chip>
@@ -514,7 +519,7 @@
                     </select>
 
                     <input class="inp_field" type="text" placeholder="Enter Value" [(ngModel)]="updateGeographyValue">
-
+                    <p (click)="applySelectedValue()">Test</p>
                     <button class="Apply_button" (click)="applySelectedValue()">
                       <p style="color:white">Apply</p>
                     </button>
@@ -548,7 +553,7 @@
                     <label><b>Registration Number</b></label>
                   </div>
                   <div class="col-sm-1">
-                    <label><b style="padding: 56px;">Tags</b></label>
+                    <label><b style="padding:0 56px;">Tags</b></label>
                   </div>
 
                 </div>

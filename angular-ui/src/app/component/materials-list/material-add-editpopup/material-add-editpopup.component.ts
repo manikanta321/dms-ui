@@ -219,6 +219,7 @@ export class MaterialAddEditpopupComponent {
 
   selectedGeoField: string = "";
   updateGeographyValue: string = "";
+  
   applySelectedValue() {
     console.log(this.updateGeographyValue, this.selectedGeoField);
 
@@ -746,6 +747,7 @@ export class MaterialAddEditpopupComponent {
   geographyFormat(currentObj, stockItemId) {
     // console.log(currentObj["hirearchyLevel"]);
     if (!Array.isArray(currentObj)) {
+      if(currentObj.all == undefined && currentObj.next != undefined) this.geographyFormat(currentObj.next, stockItemId);
       if (!currentObj.all) return;
       let obj: any = {};
       let index = (Number(currentObj["hirearchyLevel"]) - 1);

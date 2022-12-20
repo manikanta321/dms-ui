@@ -25,6 +25,7 @@ import { AddorderpromotionsComponent } from '../orders/addorderpromotions/addord
 import { OrderlistActionPopupComponent } from './orderlist-action-popup/orderlist-action-popup.component';
 import { SalesBulkUploadComponent } from '../sales-bulk-upload/sales-bulk-upload.component';
 import { CustomDatePopupComponent } from '../orders/custom-date-popup/custom-date-popup.component';
+import { OrdersApisService } from 'src/app/services/orders-apis.service';
 // import { DateRange } from '@uiowa/date-range-picker';
 
 export interface PeriodicElement {
@@ -297,6 +298,7 @@ export class OrderListComponent implements OnInit {
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
     private user: UserService,
+    public orders:OrdersApisService,
     private fb: FormBuilder,
     private observer: BreakpointObserver
   ) {
@@ -370,7 +372,7 @@ export class OrderListComponent implements OnInit {
   //   "OrderDate":"",
   //   "Search":""
     }
-    this.user.getorderDeatilslist(data).subscribe((res) => {
+    this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
   console.log("RefreshData",this.rowDatalist);
 
@@ -661,7 +663,7 @@ export class OrderListComponent implements OnInit {
     "OrderDate":"",
     "Search": this.searchText
   }
-  this.user.getorderDeatilslist(data).subscribe((res) => {
+  this.orders.getorderDeatilslist(data).subscribe((res) => {
     this.rowDatalist = res.response;
   });
 }
@@ -692,7 +694,7 @@ selectdays(){
       StartDate:this.startDate,
       EndDate:this.endDate
     }
-    this.user.getorderDeatilslist(data).subscribe((res) => {
+    this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
   }
@@ -729,7 +731,7 @@ selectdays(){
       StartDate:this.startDate,
       EndDate:this.endDate
     }
-    this.user.getorderDeatilslist(data).subscribe((res) => {
+    this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
   }
@@ -746,7 +748,7 @@ selectdays(){
       StartDate:this.startDate,
       EndDate:this.endDate
     }
-    this.user.getorderDeatilslist(data).subscribe((res) => {
+    this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
   }
@@ -760,7 +762,7 @@ selectdays(){
       StartDate:this.startDate,
       EndDate:this.endDate
     }
-    this.user.getorderDeatilslist(data).subscribe((res) => {
+    this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
   }
@@ -775,7 +777,7 @@ selectdays(){
       StartDate:this.startDate,
       EndDate:this.endDate
     }
-    this.user.getorderDeatilslist(data).subscribe((res) => {
+    this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
       console.log("All Dealers",this.rowDatalist )
     });
@@ -815,7 +817,7 @@ selectdays(){
       StartDate:this.startDate,
       EndDate:this.endDate
     }
-    this.user.getorderDeatilslist(data).subscribe((res) => {
+    this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
   }
@@ -831,7 +833,7 @@ selectdays(){
       StartDate:this.startDate,
       EndDate:this.endDate
     }
-    this.user.getorderDeatilslist(data).subscribe((res) => {
+    this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
     console.log('rolefilter', this.userTypes)
@@ -847,7 +849,7 @@ selectdays(){
       StartDate:this.startDate,
       EndDate:this.endDate
     }
-    this.user.getorderDeatilslist(data).subscribe((res) => {
+    this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
       console.log("GeoSelectALL",this.rowDatalist)
     });
@@ -863,7 +865,7 @@ selectdays(){
       StartDate:this.startDate,
       EndDate:this.endDate
     }
-    this.user.getorderDeatilslist(data).subscribe((res) => {
+    this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;  
       console.log("GeoSelectALL",this.rowDatalist)
     });
@@ -908,7 +910,7 @@ selectdays(){
       StartDate:this.startDate,
       EndDate:this.endDate
     }
-    this.user.getorderDeatilslist(data).subscribe((res) => {
+    this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
   }
@@ -924,7 +926,7 @@ selectdays(){
       StartDate:this.startDate,
       EndDate:this.endDate
     }
-    this.user.getorderDeatilslist(data).subscribe((res) => {
+    this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
     console.log('rolefilter', this.userTypes)
@@ -940,7 +942,7 @@ console.log('onItemSelect', item);
       StartDate:this.startDate,
       EndDate:this.endDate
     }
-    this.user.getorderDeatilslist(data).subscribe((res) => {
+    this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
   }
@@ -954,7 +956,7 @@ console.log('onItemSelect', item);
       StartDate:this.startDate,
       EndDate:this.endDate
     }
-    this.user.getorderDeatilslist(data).subscribe((res) => {
+    this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
   }
@@ -969,7 +971,7 @@ console.log('onItemSelect', item);
       StartDate:this.startDate,
       EndDate:this.endDate
     }
-    this.user.getorderDeatilslist(data).subscribe((res) => {
+    this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
   }

@@ -73,7 +73,7 @@
                                     <ng-multiselect-dropdown class="shipingAddress"  name="shipingAddress"[placeholder]="'Select billing address'" 
                                 formControlName="type" [disabled]="disabled" [settings]="dropdownSettings3"
                                 [data]="selectShippingAddress">
-                            </ng-multiselect-dropdown>
+                                    </ng-multiselect-dropdown>
                                 </div>
                             </div>   
                         </div>
@@ -263,6 +263,222 @@
         </div>
         <div class="col-md-5">              
                 <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>                 
+        </div>
+    </div>
+</div>
+<!-- non promotions -->
+<div class="overlay" *ngIf="Non_promotions">
+    <div class="popup">
+        <div class="font">
+            <div class="main">
+                <div class="container promotionpopup-scroll">
+                    <div class="addUser">
+                        <a class="close-icon"(click)="closePopup()">&times;</a>
+                        
+                    </div>
+                    <div class="head-t">
+                        <h3 class="addU font">{{actineLabel}} : <b>Non-Promotions</b></h3>
+                        
+                    </div>
+                    <div class="nonpromo">
+                        <div class="row mt-3">
+                            <div class="col-lg-10">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="input-icons ">
+                                            <form [formGroup]="categoryForm" class="dropDown-field">
+                                                <ng-multiselect-dropdown class="catty" name="city"
+                                                    [placeholder]="'Category'" formControlName="categoryy"
+                                                    [disabled]="disabled" [settings]="dropdownSettingscat"
+                                                    [data]="catagoryData" (onSelect)="onItemSelect($event)"
+                                                    (onDeSelect)="onItemDeSelect($event)"
+                                                    (onDeSelectAll)="onItemDeSelectOrAll($event)"
+                                                    (onSelectAll)="onItemSelectOrAll($event)">
+                                                </ng-multiselect-dropdown>
+                                                <div class="dropdown-placeholder catty-placeholder">
+                                                    <span *ngIf="categoryForm.get('categoryy').value.length == 0"
+                                                        style="color:grey;"> Select Category </span>
+                                                    <span *ngIf="categoryForm.get('categoryy').value.length == 1"
+                                                        class="selected-placeholder">
+                                                        {{categoryForm.get('categoryy').value.length}} Category </span>
+                                                    <span *ngIf="categoryForm.get('categoryy').value.length > 1"
+                                                        class="selected-placeholder">
+                                                        {{categoryForm.get('categoryy').value.length}} Category(s)
+                                                    </span>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-3">
+                                        <div class="input-icons ">
+                                            <form [formGroup]="subcategoryForm" class="dropDown-field">
+                                                <ng-multiselect-dropdown class="subcatty" name="subCategory"
+                                                    [placeholder]="''" formControlName="subCategory"
+                                                    [disabled]="disabled" [settings]="dropdownSettingssubcat"
+                                                    [data]="sub_category" (onSelect)="onSubCategorySelect($event)"
+                                                    (onDeSelect)="onSubCategoryDeSelect($event)"
+                                                    (onDeSelectAll)="onSubCategoryDSelectOrAll($event)"
+                                                    (onSelectAll)="onSubCategorySelectOrAll()">
+                                                </ng-multiselect-dropdown>
+                                                <div class="dropdown-placeholder subcatty-placeholder">
+                                                    <span *ngIf="subcategoryForm.get('subCategory').value.length == 0"
+                                                        style="color:grey;"> Select Subcategory </span>
+                                                    <span *ngIf="subcategoryForm.get('subCategory').value.length == 1"
+                                                        class="selected-placeholder">
+                                                        {{subcategoryForm.get('subCategory').value.length}}
+                                                        subcategory</span>
+                                                    <span *ngIf="subcategoryForm.get('subCategory').value.length > 1"
+                                                        class="selected-placeholder">
+                                                        {{subcategoryForm.get('subCategory').value.length}}
+                                                        subcategory(s)
+                                                    </span>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                  <div class="col-md-3">
+                                        <div class="input-icons ">
+                                            <form [formGroup]="type" class="dropDown-field">
+                                                <ng-multiselect-dropdown class="stts" name="type" [placeholder]="'Type'"
+                                                    formControlName="type" [disabled]="disabled"
+                                                    [settings]="dropdownSettingstypeid" [data]="typeI"
+                                                    (onSelect)="onTypeSelect($event)"
+                                                    (onDeSelect)="onTypeDeSelect($event)"
+                                                    (onSelectAll)="onTypeSelectOrAll()"
+                                                    (onDeSelectAll)="OnTypeDeselectOrAll()">
+                                                </ng-multiselect-dropdown>
+                                                <div class="dropdown-placeholder type-placeholder">
+                                                    <span *ngIf="type.get('type').value.length == 0"
+                                                        style="color:grey;"> Select
+                                                        Type </span>
+                                                    <span *ngIf="type.get('type').value.length == 1"
+                                                        class="selected-placeholder"> {{type.get('type').value.length}}
+                                                        Type
+                                                        selected </span>
+                                                    <span *ngIf="type.get('type').value.length > 1"
+                                                        class="selected-placeholder"> {{type.get('type').value.length}}
+                                                        Type(s)
+                                                        selected </span>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                      <div class="col-md-3">
+                                        <div class="input-icons ">
+                                            <form [formGroup]="myFormsIdentifier" class="dropDown-field">
+                                                <ng-multiselect-dropdown class="identifier" [placeholder]="'Identifier'"
+                                                    formControlName="identifiers" [settings]="dropdownSettingsmaterialid"
+                                                    [data]="materialIdentifier"
+                                                    (onSelect)="onMaterialIdentifierSelect($event)"
+                                                    (onDeSelect)="onMaterialIdentifierDeSelect($event)"
+                                                    (onDeSelectAll)="onMaterialIdentifierDeSelectOrAll()"
+                                                    (onSelectAll)="onMaterialIdentifierSelectOrAll()">
+                                                </ng-multiselect-dropdown>
+                                                <div class="dropdown-placeholder identifier-placeholder">
+                                                    <span *ngIf="myFormsIdentifier.get('identifiers').value.length == 0"
+                                                        style="color:grey;"> Select identifiers </span>
+                                                    <span *ngIf="myFormsIdentifier.get('identifiers').value.length == 1"
+                                                        class="selected-placeholder">
+                                                        {{myFormsIdentifier.get('identifiers').value.length}}
+                                                        identifiers
+                                                        selected </span>
+                                                    <span *ngIf="myFormsIdentifier.get('identifiers').value.length > 1"
+                                                        class="selected-placeholder">
+                                                        {{myFormsIdentifier.get('identifiers').value.length}}
+                                                        identifier(s)
+                                                        selected </span>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div class="icon btnhover refreshbtn">
+                                    <img src="assets/img/Vector.png" (click)="refresh()" class="refresh-icon"
+                                        alt="refresh">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-lg-12 nonpromoSearch">
+                                <div class="col-md-4 srch-hover">
+                                    <div class="searchBox1 d-flex">
+                                        <input class="searchInput1" type="text" name=""
+                                            placeholder="Type & search for anything">
+                                        
+                                        <button class="search-btn">Search</button>
+                                        <button class="searchButton" href="#">
+                                            <i class="material-icons">
+                                                search
+                                            </i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="label-div">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th data-sortable="true">Product Name</th>
+                                    <th data-sortable="true">Material identifier</th>
+                                    <th data-sortable="true">classification</th>
+                                    <th data-sortable="true">SKU</th>
+                                    <th data-sortable="true">Price</th>
+                                    <th data-sortable="false">Tax Templete</th>
+                                    <th data-sortable="false">Quantity</th>
+                                    <th data-sortable="false">Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="table-row" *ngFor="let Item of orderNonPromotionsdata">
+                                <td><input type="checkbox">{{Item.stockItemName}}</td>
+                                <td>{{Item.materialCustomName}}</td>
+                                <td>{{Item.classification}}</td>
+                                <td>{{Item.productSKUName}}</td>
+                                <td>{{Item.mrp}}</td>
+
+                                <td >
+                                    <select class="tax-select" placeholder="select" >
+                                        <option value="" selected hidden >Select tax</option>
+                                        <option *ngFor="let option of taxdropdowndata" [value]="option.taxTemplateId">
+                                            {{option.taxTemplateName}}
+                                        </option>
+                                    </select>
+                                    <!-- <ng-select [items]="taxdropdowndata" placeholder="Select Tax"
+                                    bindLabel="taxTemplateName" bindValue="taxTemplateId">
+                                    </ng-select> -->
+                                    <img src="assets/img/doubleTickes-default.svg" alt="double-blue-tick">
+                                </td>
+                    
+                                <td><input type="value" placeholder="5" class="quatity-inp"></td>
+                                <td>{{Item.amount}}</td>
+                            </tr>
+                        </tbody>
+                            <tfoot>
+                                <tr class="bottom-table">
+                                    <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
+                                        quantity entered)</td>
+                                    <td class="btm-total">15</td>
+                                    <td class="btm-total">300</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    </div>
+
+                </div>
+
+                <div class="add-itemBtn mt-5">
+                    <button type="button" class="saveas-draft1" >Add items</button>
+                    <!-- (click)="addnonPromoItems()" -->
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { AddOrderPromotionlistComponent } from '../add-order-promotionlist/add-order-promotionlist.component';
 import { OrderNonpromotionlistComponent } from '../order-nonpromotionlist/order-nonpromotionlist.component';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { HttpClient } from '@angular/common/http';
+import { MaterialListService } from 'src/app/services/material-list.service';
+import { AddMaterialsService } from 'src/app/services/add-materials.service';
+import { GridApi } from 'ag-grid-community';
+import { OrdersApisService } from 'src/app/services/orders-apis.service';
 @Component({
   selector: 'app-addorderpromotions',
   templateUrl: './addorderpromotions.component.html',
@@ -25,6 +30,52 @@ export class AddorderpromotionsComponent implements OnInit {
   actineLabel: any;
   updateOrSave: boolean = false
   editData: boolean = false;
+  // non_promotins
+  orderNonPromotionsdata:any = [];
+  taxdropdowndata:any = [];
+  // buyGroup : any = [{proItem: 'Lays IPL edition classic magic masala..', sku:'KA123458AB98764',price:'20' , taxtemplete:['hj','hj'], amount:'0'},
+  // {proItem: 'Lays IPL edition classic magic masala..', sku:'KA123458AB98764',price:'20' , taxtemplete:['hj','hj'], amount:'0'},
+  // {proItem: 'Lays IPL edition classic magic masala..', sku:'KA123458AB98764',price:'20' , taxtemplete:['hj','hj'], amount:'0'}]
+  
+  dropdownSettingscat: IDropdownSettings = {};
+  dropdownSettingssubcat: IDropdownSettings = {};
+  dropdownSettingstypeid: IDropdownSettings = {};
+  dropdownSettingsmaterialid: IDropdownSettings = {};
+  countCatagory:any;
+  catagoryData:any;
+  toppings: any = [];
+  categoryMapData:any =[];
+  categoryArray:any= [];
+  catergory: any = [];
+  flag:boolean=true;
+  ShowFilter = false;
+  Non_promotions :boolean = false;
+  private gridApi!: GridApi;
+  promoList = true;
+  myForms!:FormGroup;
+  categoryForm: any = FormGroup;
+  subcategoryForm: any = FormGroup;
+  subCategoryFilter = false;
+  typeFilter = false;
+  type : any =[];
+  myFormsIdentifier:any = FormGroup;
+  selectedItems: any = [];
+  sub_category: any = [];
+  sub_categorys : any= [];
+  typesData : any= [];
+  materialIdentifierData: any = [];
+  topping1: any = [];
+  topping2: any = [];
+  subcatagData:any=[];
+  subcatArray:any=[];  
+  disabled = false;
+  typeI:any =[];
+  
+  typesMapData:any=[];
+  typesArray:any=[];
+  materialIdentifier:any = [];
+  materialIdentifierMapData:any=[];
+  materialIdentifierArray:any=[];
 
   //event handler for the select element's change event
   selectChangeHandler (event: any) {
@@ -41,7 +92,6 @@ export class AddorderpromotionsComponent implements OnInit {
   dropdownSettings1: IDropdownSettings = {};
   dropdownSettings2: IDropdownSettings = {};
   dropdownSettings3: IDropdownSettings = {};
-  disabled = false;
   selectgeo:  any= ['country','state'];
   selectbillAddress :any = ['address1','address2'];
   selectShippingAddress :any =['shippingAddress1', 'shipping2']
@@ -54,13 +104,60 @@ export class AddorderpromotionsComponent implements OnInit {
     pValue: '',
   }];
   constructor(private _formBuilder: FormBuilder,private spinner: NgxSpinnerService,
-    public dialog: MatDialog) { }
+    private http: HttpClient,
+    private orders:OrdersApisService,
+    private materialList: MaterialListService,
+    private addMaterials: AddMaterialsService,
+    private fb: FormBuilder,private dialog: MatDialog,
+    private dialogRef: MatDialogRef<any>) { }
 
   firstFormGroup: FormGroup = this._formBuilder.group({firstCtrl: ['']});
   secondFormGroup: FormGroup = this._formBuilder.group({secondCtrl: ['']});
 
   ngOnInit(): void {
-
+    this.orderNonPromotionsList();
+    this.taxdropdown();
+    this.getclassification();
+    this.selectMaterialIdentifier();
+     this.dropdownSettingssubcat = {
+      singleSelection: false,
+      idField: 'subCatId',
+      textField: 'subCatName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+      allowSearchFilter: this.subCategoryFilter
+    };
+    this.dropdownSettingstypeid = {
+      singleSelection: false,
+      idField: 'typeId',
+      textField: 'typeName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+      allowSearchFilter: this.typeFilter
+    };
+    this.dropdownSettingsmaterialid = {
+      singleSelection: false,
+      idField: 'materilCustomIdentifierId',
+      textField: 'materialCustomName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+      allowSearchFilter: this.typeFilter
+    };
+    this.categoryForm = this.fb.group({
+      categoryy: [this.selectedItems]
+    });
+    this.subcategoryForm = this.fb.group({
+      subCategory: [this.selectedItems]
+    });
+    this.type = this.fb.group({
+      type: [this.selectedItems]
+    });
+    this.myFormsIdentifier = this.fb.group({
+      identifiers: [this.selectedItems]
+    });
     let editV = localStorage.getItem('Edit');
     
     if (editV == 'Edit') {
@@ -80,9 +177,7 @@ else {
 
   }
 
-  onTypeSelect(item: any) {
-    console.log(item);
-  }
+  
   onTypeAll(items: any) {
     console.log('onSelectAll', items);
   }
@@ -131,9 +226,313 @@ else {
   }
 
   addOrderNonPromotionList(){
-    this.dialog.open( OrderNonpromotionlistComponent,{width: '1043px',height:'663px'});
+    // this.dialog.open( OrderNonpromotionlistComponent,{width: '1043px',height:'663px'});
+    this.Non_promotions = true;
   }
   removeItem() {
     this.itemremoved.splice(0);
+  }
+// non-prmotions
+
+refresh() {
+  this.categoryForm = this.fb.group({
+    categoryy: [this.selectedItems]
+  });
+  this.subcategoryForm = this.fb.group({
+    subCategory: [this.selectedItems]
+  });
+  this.type = this.fb.group({
+    type: [this.selectedItems]
+  });
+  this.myFormsIdentifier = this.fb.group({
+    identifiers: [this.selectedItems]
+  });
+  this.catergory = [];
+  this.sub_categorys = [];
+  this.typesData = [];
+  this.materialIdentifierData = [];
+}
+  closePopup() {
+    this.Non_promotions = false
+    // this.dialogRef.close();
+  
+  }
+
+  getclassification() {
+
+    this.materialList.getclassification(this.flag).subscribe((res) => {
+      let data = res.response;
+      this.countCatagory = res.totalRecords;
+      this.catagoryData = data.allOtherCats;
+      let dataCat = data.allOtherCats;
+      this.toppings = new FormControl(this.catagoryData);
+      this.categoryMapData = dataCat.map((data: { catId: any; catName: any; }) => {
+        return { catId: data.catId, roleName: data.catName };
+      });
+
+      if (!this.categoryMapData?.length) {
+        this.categoryMapData = dataCat.map((product: { designationName: any; }) => {
+          return product.designationName;
+        });
+      }
+      this.categoryMapData.push()
+      this.categoryMapData.forEach(element => {
+        return this.categoryArray.push(element.catId);
+
+      })
+    })
+    this.dropdownSettingscat = {
+      singleSelection: false,
+      idField: 'catId',
+      textField: 'catName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+      allowSearchFilter: this.ShowFilter
+    };
+  }
+  // cat select
+  onItemSelect(item: any) {
+    // this.selectedItem = item;
+    this.catergory.push(item.catId);
+    console.log("Catttyyyyy", this.catergory)
+    console.log('item Subcatty', item)
+
+    // this.itemId = item.catId;
+    // this.catagoryName = item.catName;
+    let Subdata = {
+      catId: this.catergory,
+      flag:this.flag
+    }
+    this.materialList.onclickcat(Subdata).subscribe((res) => {
+      let subcaty = res.response;
+      console.log("response1", res)
+      console.log("responseeee", subcaty);
+      this.sub_category = subcaty.allOtherSubCAts;
+      console.log("SubCategory", this.sub_category);
+      this.topping1 = new FormControl(this.sub_category);
+    });
+  }
+  onItemDeSelect(item: any) {
+    this.catergory.forEach((element, index) => {
+      if (element == item.catId) this.catergory.splice(index, 1);
+
+    });
+    let SubdataD = {
+      catId: this.catergory
+    }
+    this.materialList.onclickcat(SubdataD).subscribe((res) => {
+      let subcaty = res.response;
+      console.log("response1", res)
+      console.log("responseeee", subcaty);
+      this.sub_category = subcaty.allOtherSubCAts;
+    });
+    console.log('this.catergory', this.catergory);
+    this.subcategoryForm = this.fb.group({
+      subCategory: [this.selectedItems]
+    });
+    this.type = this.fb.group({
+      type: [this.selectedItems]
+    });
+  }
+  onItemSelectOrAll(item: any) {
+    this.catergory = this.categoryArray;
+    let Subdataall = {
+      catId: this.catergory
+    }
+    console.log("Category Array", this.catergory)
+    // this.itemId = item.catId;
+    // this.catagoryName = item.catName;
+    this.materialList.onclickcat(Subdataall).subscribe((res) => {
+      let subcaty = res.response;
+      console.log("responseeee", subcaty);
+      this.sub_category = subcaty.allOtherSubCAts;
+      let allSub_cats = subcaty.allOtherSubCAts;
+      console.log("SubCategory", this.sub_category);
+      this.subcatagData = allSub_cats.map((data: { subCatId: any; subCatName: any; }) => {
+        return { subCatId: data.subCatId, subCatName: data.subCatName };
+      });
+  
+      if (!this.subcatagData?.length) {
+        this.subcatagData = allSub_cats.map((subCatData: { designationName: any; }) => {
+          return subCatData.designationName;
+        });
+      }
+      this.subcatagData.push()
+      this.subcatagData.forEach(element => {
+        return this.subcatArray.push(element.subCatId);
+  
+      })
+      this.topping1 = new FormControl(this.sub_category);
+    });
+    console.log("catArray", this.catergory)
+  }
+  onItemDeSelectOrAll(item: any) {
+    this.subcategoryForm = this.fb.group({
+      subCategory: [this.selectedItems]
+    });
+    this.type = this.fb.group({
+      type: [this.selectedItems]
+    });
+    this.catergory = [];
+    this.sub_category = [];
+    this.sub_categorys = [];
+    this.typeI = [];
+
+  }
+  // sub cat
+  onSubCategorySelect(item:any) {
+    console.log(" item Types", item);
+    this.sub_categorys.push(item.subCatId);
+    let Type = {
+      subCatId: this.sub_categorys,
+      flag:this.flag
+    }
+    this.materialList.onclicksubcat(Type).subscribe((res) => {
+      let typs = res.response;
+      console.log("types..res", typs);
+      this.typeI = typs;
+      this.topping2 = new FormControl(this.typeI);
+    });
+  }
+  onSubCategoryDeSelect(item: any) {
+    this.sub_categorys.forEach((element, index) => {
+      if (element == item.subCatId) this.sub_categorys.splice(index, 1);
+
+    });
+    let subCat = {
+      subCatId: this.sub_categorys
+    }
+    this.materialList.onclicksubcat(subCat).subscribe((res) => {
+      let typs = res.response;
+      console.log("types..res", typs);
+      this.typeI = typs;
+      this.topping2 = new FormControl(this.typeI);
+    });
+    console.log(' this.typeI', this.typeI)
+    this.type = this.fb.group({
+      type: [this.selectedItems]
+    });
+  }
+  onSubCategorySelectOrAll() {
+    this.sub_categorys = this.subcatArray;
+    let Type = {
+      subCatId: this.sub_categorys
+    }
+    this.materialList.onclicksubcat(Type).subscribe((res) => {
+      let typs = res.response;
+      console.log("types..res", typs);
+      this.typeI = typs;
+      this.topping2 = new FormControl(this.typeI);
+    });
+  }
+  onSubCategoryDSelectOrAll(item: any) {
+    this.sub_categorys = [];
+    this.typeI = []
+    this.type = this.fb.group({
+      type: [this.selectedItems]
+    });
+  }
+  // typeselect
+  onTypeSelect(item: any) {
+    this.typesData.push(item.typeId);
+  }
+  onTypeDeSelect(item: any) {
+
+    this.typesData.forEach((element, index) => {
+      if (element == item.typeId) this.typesData.splice(index, 1);
+
+    });
+
+  }
+  onTypeSelectOrAll() {
+
+    this.typesMapData = this.typeI.map((data: { typeId: any; typeName: any; }) => {
+      return { typeId: data.typeId, typeName: data.typeName };
+    });
+
+    if (!this.typesMapData?.length) {
+      this.typesMapData = this.typeI.map((type: { designationName: any; }) => {
+        return type.designationName;
+      });
+    }
+    this.typesMapData.push()
+    this.typesMapData.forEach(element => {
+      return this.typesArray.push(element.typeId);
+
+    })
+    this.typesData = this.typesArray;
+  }
+  OnTypeDeselectOrAll() {
+    this.typesData = [];
+  }
+  // material select
+  selectMaterialIdentifier() {
+    this.addMaterials.getMaterialIdentifier().subscribe((res) => {
+      this.materialIdentifier = res.response;
+      console.log("materialIdentifier", this.materialIdentifier)
+    })
+    // }
+
+  }
+  onMaterialIdentifierSelect(item: any) {
+    this.materialIdentifierData.push(item.materilCustomIdentifierId);
+    console.log("materialIdentifier",this.materialIdentifierData);
+  }
+  onMaterialIdentifierDeSelect(item: any) {
+
+    this.materialIdentifierData.forEach((element, index) => {
+      if (element == item.materilCustomIdentifierId) this.materialIdentifierData.splice(index, 1);
+
+    });
+    console.log("materialIdentifier",this.materialIdentifierData);
+  }
+  onMaterialIdentifierSelectOrAll() {
+
+    this.materialIdentifierMapData = this.materialIdentifier.map((data: { materilCustomIdentifierId: any; materialIdentifierName: any; }) => {
+      return { materilCustomIdentifierId: data.materilCustomIdentifierId, materialIdentifierName: data.materialIdentifierName };
+    });
+
+    if (!this.materialIdentifierMapData?.length) {
+      this.materialIdentifierMapData = this.materialIdentifier.map((type: { designationName: any; }) => {
+        return type.designationName;
+      });
+    }
+    this.materialIdentifierMapData.push()
+    this.materialIdentifierMapData.forEach(element => {
+      return this.materialIdentifierArray.push(element.materilCustomIdentifierId);
+
+    })
+    this.materialIdentifierData = this.materialIdentifierArray;
+    console.log("materialIdentifier",this.materialIdentifierData);
+  }
+  onMaterialIdentifierDeSelectOrAll() {
+    this.materialIdentifierData = [];
+    console.log("materialIdentifier",this.materialIdentifierData);
+  }
+
+
+  // non promotions list table data
+  orderNonPromotionsList(){
+    const data =
+    {
+      "Cat": [],
+      "Sub_Cat": [],
+      "type": [],
+      "MaterialCustomIdentifier": [],
+      "Search": ""
+    }
+    
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      this.orderNonPromotionsdata = res.response;
+    });
+  }
+  
+  taxdropdown(){
+    this.orders.taxtemplatedropdown().subscribe((res) => {
+      this.taxdropdowndata = res.response;
+      console.log(this.taxdropdowndata,"tax data")
+      
+    });
   }
 }

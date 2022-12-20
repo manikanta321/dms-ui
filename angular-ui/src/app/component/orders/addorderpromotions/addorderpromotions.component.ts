@@ -64,14 +64,14 @@ export class AddorderpromotionsComponent implements OnInit {
     let editV = localStorage.getItem('Edit');
     
     if (editV == 'Edit') {
-      this.actineLabel = "Edit Material";
+      this.actineLabel = "Edit order";
       this.updateOrSave = !this.updateOrSave
       // this.spinner.show();
       // this.spinner.hide();
 
 }
 else {
-      this.actineLabel = "Add Material";
+      this.actineLabel = "Add order";
       this.editData = false;
       // this.updateOrSave= this.updateOrSave;
       

@@ -3,10 +3,10 @@
     <div class="actv-user text-center">
         <h1 class="head-text" *ngIf="TypeName=='Edit Types'">Edit Type</h1>
         <h1 class="head-text" *ngIf="TypeName=='Add Types'">Add Type</h1>
-
+        <p style="color: red; text-align: center; font-size: 11px;">{{errorMsg}}</p>
 
     </div>
-    <div>
+    <div class="addTypeDiv">
         <label class="addtypes1" >Name<span style="color: red;">*</span></label><br>
         <input type="text"id="typeName" name="typeName" placeholder="Enter Type name" 
           required [(ngModel)]="type" #typeName="ngModel">   
@@ -37,10 +37,12 @@
           </span> 
       </p>   
      <br>
+     <div class="addTypeButtonDiv">
         <button class="update-btn" *ngIf="TypeName=='Add Types'"  (click)="AddCat()" [disabled]="!type || !typeCode">Save</button>
         <button class="update-btn" *ngIf="TypeName=='Edit Types'" (click)="editType()" [disabled]="!type || !typeCode">Save</button>
 
         <button class="cancel-btn" (click)="close()">Cancel</button>
+    </div>
     </div>
     
 

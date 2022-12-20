@@ -47,7 +47,6 @@ if(selectedGeoType=='dealer'){
   this.assoservice.getgeoOfdealer(coustmerId).subscribe((res)=>{
     let data =res.response;
     this.geodata= data;
-    
   })
 }
 else{
@@ -75,6 +74,14 @@ let productID = event;
       }
 
       console.log('aarrayToPush', this.aarrayToPush)
+      let allgeoItemCount = this.geodata[0].geoCount;
+      let selectedGeoItemCount = this.selectedcount;
+      if(allgeoItemCount == selectedGeoItemCount) {
+        this.allComplete = true;
+      }
+      else {
+        this.allComplete = false;
+      }
     // this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
   }
 

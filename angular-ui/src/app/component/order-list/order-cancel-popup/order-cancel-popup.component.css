@@ -1,0 +1,59 @@
+  
+.head-text{
+    font-size: 23px;
+    margin-top: -37px;
+    
+    font-family: 'Gilroy-bold';
+    
+    color: #000000;
+    font-style: normal;
+    font-family: 'Gilroy';
+    
+    
+    }
+    
+    .undo{
+        padding: 5px 52px;
+        background: black;
+        color: white;
+        margin-right: 20px;
+        
+        border-radius: 10px;
+        margin-top: 15px;
+        width: 150px;
+        height: 41px;
+        cursor: pointer;
+    
+    
+    
+    
+        }
+        .are
+        {
+            font-family: 'Gilroy-Medium';
+            color:#36454f;
+            font-size: 16px;
+        }
+    .exit{
+    background: #fff;
+    color: black;
+    padding: 5px 52px;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    height: 41px;
+    width: 150px;
+    font-weight: 600;
+    font-family: 'Gilroy';
+    cursor: pointer;
+    }
+    .close-icon{
+        left: 100%;
+        position: relative;
+        font-size: 15px;
+        font-weight: 600;
+        top:-12px;
+    }
+    
+    .font{
+        font-family: "Gilroy";
+    }

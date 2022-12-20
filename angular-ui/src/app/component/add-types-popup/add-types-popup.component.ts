@@ -28,6 +28,7 @@ export class AddTypesPopupComponent implements OnInit {
   adminPassword:boolean =false;
   showPassword: boolean = false;
   activeTypeId:any;
+  errorMsg: any;
   constructor( private dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
     private user:UserService,
@@ -70,10 +71,16 @@ this.typeCode=res.response.typeCode;
       CreatedById:this.numberValue
   };
   this.calssification.addtypes(data).subscribe((res)=>{
+    if (res.response.result === 'Success') {
     this.type='';
     this.typeCode='';
-    this.dialogRef.close();
     this.sharedService.filter('Register click')
+    this.dialogRef.close();
+    
+    }
+    else{
+      this.errorMsg=res.response.result;
+    }
   })  
   }
 

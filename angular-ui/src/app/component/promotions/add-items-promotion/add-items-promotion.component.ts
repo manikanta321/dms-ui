@@ -540,7 +540,8 @@ export class AddItemsPromotionComponent implements OnInit {
     this.productselectedRows = this.gridApi.getSelectedRows();
     console.log(this.productselectedRows);
     localStorage.setItem('productselectedRows',JSON.stringify(this.productselectedRows) )
-    this.dialogRef.close();
+    this.goForward(this.myStepper);
+
     // this.productScselectedRows.map((data:{stockItemId: any;}) => {
     //   return { stockItemId: data.stockItemId};
     // });
@@ -583,13 +584,20 @@ export class AddItemsPromotionComponent implements OnInit {
       this.topping1 = new FormControl(this.sub_category);
     });
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      // Cat: this.catergory,
+      // Sub_Cat: this.sub_categorys,
+      // type: this.typeTosend,
+      // productgroup: this.productID,
+      // productidentifier:this.productIDentifire,
+      //  status: this.statusTypes,
+      // Search: this.searchText
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
+      //  status: this.statusTypes,
+       search: this.searchText
     }
     this.promotionTypes.GetProductList(data).subscribe((res) =>{
       console.log('productlist is works', res);
@@ -612,13 +620,13 @@ export class AddItemsPromotionComponent implements OnInit {
     });
     console.log('this.catergory', this.catergory);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
+      //  status: this.statusTypes,
+       search: this.searchText
     }
     this.promotionTypes.GetProductList(data).subscribe((res) =>{
       console.log('productlist is works', res);
@@ -633,12 +641,13 @@ export class AddItemsPromotionComponent implements OnInit {
     this.typeTosend=[];
     this.typeI = [];
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
-      product: this.productID,
-      status: this.statusTypes,
-      Search: this.searchText
+      productgroup: this.productID,
+      productidentifier:this.productIDentifire,
+      //  status: this.statusTypes,
+       search: this.searchText
     }
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -662,13 +671,13 @@ export class AddItemsPromotionComponent implements OnInit {
     console.log("catArray", this.catergory)
     const data = {
 
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
+      //  status: this.statusTypes,
+       search: this.searchText
 
     }
     this.promotionTypes.GetProductList(data).subscribe((res) => {
@@ -679,13 +688,13 @@ export class AddItemsPromotionComponent implements OnInit {
     // alert(this.typeI)
     this.typeTosend.push(item.typeId);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
+      //  status: this.statusTypes,
+       search: this.searchText
     }
     // alert(data)
     console.log("tttttt",data)
@@ -703,13 +712,13 @@ export class AddItemsPromotionComponent implements OnInit {
     });
   
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
+      //  status: this.statusTypes,
+       search: this.searchText
     }
     this.promotionTypes.GetProductList(data).subscribe((res) =>{
       console.log('productlist is works', res);
@@ -722,13 +731,13 @@ export class AddItemsPromotionComponent implements OnInit {
     
     this.typeTosend=[];
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
+      //  status: this.statusTypes,
+       search: this.searchText
     }
     this.promotionTypes.GetProductList(data).subscribe((res) =>{
       console.log('productlist is works', res);
@@ -741,13 +750,13 @@ export class AddItemsPromotionComponent implements OnInit {
     this.typeTosend =this.allTypelist;
     
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
+      //  status: this.statusTypes,
+       search: this.searchText
     }
     this.promotionTypes.GetProductList(data).subscribe((res) =>{
       console.log('productlist is works', res);
@@ -774,13 +783,13 @@ export class AddItemsPromotionComponent implements OnInit {
     this.productID.push(item.productGroupId);
     console.log(item);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
+      //  status: this.statusTypes,
+       search: this.searchText
     }
     this.promotionTypes.GetProductGroupList(data).subscribe((res) => {
       // this.rowData5 = res.response;
@@ -808,13 +817,13 @@ export class AddItemsPromotionComponent implements OnInit {
 
     // this.userTypes.pop(item.roleId);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
+      //  status: this.statusTypes,
+       search: this.searchText
     }
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -824,13 +833,13 @@ export class AddItemsPromotionComponent implements OnInit {
   onProductDeSelectOrAll(item: any) {
     this.productID = [];
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
+      //  status: this.statusTypes,
+       search: this.searchText
     }
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -841,13 +850,13 @@ export class AddItemsPromotionComponent implements OnInit {
     this.productID = this.prodArray;
     // console.log("ProdData", this.ProdData);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
+      //  status: this.statusTypes,
+       search: this.searchText
     }
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -857,13 +866,13 @@ export class AddItemsPromotionComponent implements OnInit {
     this.productIDentifire.push(item.productCustomIdentifierId);
     console.log(item);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
-      product: this.productID,
+      productgroup: this.productID,
       productidentifier:this.productIDentifire,
-      status: this.statusTypes,
-      Search: this.searchText
+      //  status: this.statusTypes,
+       search: this.searchText
     }
     this.promotionTypes.GetProductGroupList(data).subscribe((res) => {
       // this.rowData5 = res.response;
@@ -881,13 +890,13 @@ export class AddItemsPromotionComponent implements OnInit {
 
     // this.userTypes.pop(item.roleId);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier:this.productIDentifire,
-      status: this.statusTypes,
-      Search: this.searchText
+      //  status: this.statusTypes,
+       search: this.searchText
     }
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -897,13 +906,13 @@ export class AddItemsPromotionComponent implements OnInit {
   onproductIdentifierDeSelectOrAll(item: any) {
     this.productIDentifire = [];
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier:this.productIDentifire,
-      status: this.statusTypes,
-      Search: this.searchText
+      //  status: this.statusTypes,
+       search: this.searchText
     }
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -914,13 +923,13 @@ export class AddItemsPromotionComponent implements OnInit {
     this.productIDentifire = this.productCustomIdentifierArray;
     // console.log("ProdData", this.ProdData);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
+      //  status: this.statusTypes,
+       search: this.searchText
     }
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -979,13 +988,13 @@ addSubCategorySelect(item: any) {
   // this.sub_category =[];
   this.sub_categorys.push(item.subCatId);
   const datajson = {
-    Cat: this.catergory,
-    Sub_Cat: this.sub_categorys,
+    category: this.catergory,
+    subCategory: this.sub_categorys,
     type: this.typeTosend,
     productgroup: this.productID,
     productidentifier:this.productIDentifire,
-     status: this.statusTypes,
-    Search: this.searchText
+    //  status: this.statusTypes,
+     search: this.searchText
   }
   this.promotionTypes.GetProductList(datajson).subscribe((res) =>{
     console.log('productlist is works', res);
@@ -1040,13 +1049,13 @@ addSubCategoryDeSelect(item: any) {
   });
   console.log(' this.sub_category', this.sub_category)
   const data = {
-    Cat: this.catergory,
-    Sub_Cat: this.sub_categorys,
+    category: this.catergory,
+    subCategory: this.sub_categorys,
     type: this.typeTosend,
     productgroup: this.productID,
     productidentifier:this.productIDentifire,
-     status: this.statusTypes,
-    Search: this.searchText
+    //  status: this.statusTypes,
+     search: this.searchText
   }
   this.promotionTypes.GetProductList(data).subscribe((res) =>{
     this.rowData5 = res.response;
@@ -1061,13 +1070,13 @@ addSubCategoryDSelectOrAll(item: any) {
   // this.sub_category=[];
   this.type = [];
   const data = {
-    Cat: this.catergory,
-    Sub_Cat: this.sub_categorys,
+    category: this.catergory,
+    subCategory: this.sub_categorys,
     type: this.typeTosend,
     productgroup: this.productID,
     productidentifier:this.productIDentifire,
-     status: this.statusTypes,
-    Search: this.searchText
+    //  status: this.statusTypes,
+     search: this.searchText
   }
   this.promotionTypes.GetProductList(data).subscribe((res) =>{
     console.log('productlist is works', res);
@@ -1112,13 +1121,13 @@ addSubCategorySelectOrAll(item: any) {
   });
   this.sub_categorys = this.subcatArray;
   const data = {
-    Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+    category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
+      //  status: this.statusTypes,
+       search: this.searchText
   }
   this.promotionTypes.GetProductList(data).subscribe((res) =>{
     console.log('productlist is works', res);
@@ -1203,14 +1212,28 @@ GetProductShortCodeList(){
    })
  }
 additemsProductShortCode(item:any){
-  this.productScselectedRows = this.gridApi2.getSelectedRows();
-  console.log(this.productScselectedRows);
+  // this.productScselectedRows = this.gridApi2.getSelectedRows();
+  // console.log(this.productScselectedRows);
   localStorage.setItem('productScselectedRows',JSON.stringify(this.productScselectedRows) )
-  this.dialogRef.close();
+  this.goForward(this.myStepper)
+
+}
+goForward(stepper: MatStepper) {
+  stepper.next();
 }
 ProductShortCodeRowSelect(event) {
   const productScselectedRows = this.gridApi2.getSelectedRows();
   console.log(productScselectedRows);
+  let productShortCodeOfSelected=productScselectedRows.map(x => x.productShortCode);
+  console.log('productShortCodeOfSelected',productShortCodeOfSelected)
+let data={
+  ProductShortCode:productShortCodeOfSelected,
+}
+
+this.promotionTypes.getProductsubgropStockitemID(data).subscribe((res)=>{
+console.log(res.response)
+this.productScselectedRows= res.response
+})
   console.log('slct');
 }
 // add product group
@@ -1245,13 +1268,28 @@ AddProductGroupList(){
   }
   onRowSelectProductGroup(event) {
     const pGselectedRows = this.gridApi3.getSelectedRows();
-    console.log(pGselectedRows);
+    console.log('pGselectedRows',pGselectedRows);
+    let productShortCodeOfSelected=pGselectedRows.map(x => x.productGroupId);
+
+    pGselectedRows
+    let data ={
+      id:productShortCodeOfSelected
+    }
+    this.promotionTypes.getProductGroup(data).subscribe((res)=>{
+      console.log(res.response)
+      this.pGselectedRows=res.response
+      console.log('this.pGselectedRows',this.pGselectedRows)
+    })
+
+
+
   }
   addproductGroup(){
-    this.pGselectedRows = this.gridApi3.getSelectedRows();
-    console.log(this.pGselectedRows);
+    // this.pGselectedRows = this.gridApi3.getSelectedRows();
+    // console.log(this.pGselectedRows);
     localStorage.setItem('pGselectedRows',JSON.stringify(this.pGselectedRows) )
-    this.dialogRef.close();
+    this.goForward(this.myStepper);
+
   }
   // product SubGroup
   ProductSubGroupDrpdwn(item: any) {
@@ -1309,12 +1347,22 @@ AddProductGroupList(){
   }
   ProductSubGroupRowSelect(event) {
     const productSubGselectedRows = this.gridApi4.getSelectedRows();
+
+    let productShortCodeOfSelected=productSubGselectedRows.map(x => x.productSubGroupId);
+
+let data={
+  id:productShortCodeOfSelected
+}
+    this.promotionTypes.getProductSubGroup(data).subscribe((res)=>{
+     this.productSubGselectedRows= res.response
+    })
     console.log(productSubGselectedRows);
   }
   addItemProductSubG(){
-    this.productSubGselectedRows = this.gridApi4.getSelectedRows();
-    console.log('rowl',this.productSubGselectedRows);
-    localStorage.setItem('productSubGselectedRows',JSON.stringify(this.productSubGselectedRows) )
+    // this.productSubGselectedRows = this.gridApi4.getSelectedRows();
+    // console.log('rowl',this.productSubGselectedRows);
+    localStorage.setItem('productSubGselectedRows',JSON.stringify(this.productSubGselectedRows) );
+
     this.dialogRef.close();
   }
   matsteptabClick(tab) {

@@ -4,8 +4,9 @@
     <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
     <div class="actv-user text-center">
         <h1 class="head-text">{{SubcatsetName}}</h1>
+        <p style="color: red; text-align: center;font-size:11px">{{errorMsg}}</p>
     </div>
-    <div>
+    <div class="addSubcatDiv">
         <label class="addsub1" >Name<span style="color: red;">*</span></label><br>
         <input type="text"id="password" name="password"    placeholder="Enter sub-category name" 
           required [(ngModel)]="sucatname" #password="ngModel">     
@@ -37,10 +38,12 @@
                                         </span>
                                     </p>  
      <br>
+     <div class="addSubcatButtonDiv">
         <button class="update-btn" *ngIf="SubcatsetName=='Add Sub-Category'" (click)="AddCat()" [disabled]="!sucatname || !sucatnameCode">Save</button>
         <button class="update-btn" *ngIf="SubcatsetName=='Edit Sub-Category'"  (click)="edit()" [disabled]="!sucatname || !sucatnameCode">Save</button>
 
         <button class="cancel-btn" (click)="close()">Cancel</button>
+    </div>
     </div>
    
    

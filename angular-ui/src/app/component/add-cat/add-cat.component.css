@@ -119,3 +119,10 @@ color: #000000;
         padding: 16px !important;
         padding-top: 2px !important;
     }
+   .buttonDiv{
+    top: 15px;
+    position: relative;
+    }
+   .addCatDiv{
+        margin-top: -31px;
+    }

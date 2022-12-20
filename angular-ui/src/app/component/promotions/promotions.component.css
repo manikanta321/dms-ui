@@ -23,13 +23,19 @@
 }
 
 .promo-placeholder.dropdown-placeholder .selected-placeholder {
-  color: #D23F00 !important;
+  color: #479E00 !important;
 }
 .product-placeholder.dropdown-placeholder .selected-placeholder {
   color: #44026C !important;
 }
 .geog-placeholder.dropdown-placeholder .selected-placeholder {
   color: #006466 !important;
+}
+.geog-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #38405F !important;
+}
+.stts-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #000000 !important;
 }
 .dropdown-form {
   position: relative;
@@ -316,6 +322,14 @@ left: 37%
   
   ::ng-deep .geog .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
     background: #006466 !important;
+  }
+  ::ng-deep.dealr .multiselect-dropdown .dropdown-btn .selected-item {
+    background: #38405F !important;
+    font-size: 12px;
+  }
+  
+  ::ng-deep .dealr .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+    background: #38405F !important;
   }
   ::ng-deep.dropdown-btn span .ng-star-inserted {
     position: absolute !important;

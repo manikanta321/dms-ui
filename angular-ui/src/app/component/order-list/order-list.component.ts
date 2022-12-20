@@ -131,8 +131,15 @@ export class OrderListComponent implements OnInit {
       cellEditor: 'agSelectCellEditor',
       cellEditorParams: {
         values: ['Closed','Approved',],
-      }
+      },
+      cellClass: params => {
+        return params.value == 'Rejected' ? 'myclass1' : params.value == 'Draft' ? 'myclass2' :  params.value == 'Confirmed' ?  'myclass3' :  params.value == 'Ordered' ?  'myclass4' :  params.value == 'Returned' ?  'myclass5'
+        :  params.value == 'Cancelled' ?  'myclass6'  :  params.value == 'Pre-closed' ?  'myclass7'  :  params.value == 'In transit' ?  'myclass8'  :  params.value == 'Fulfilled' ?  'myclass9' :  params.value == 'To ship' ?  'myclass10' :  'myclass11'
+      },
+        
+      tooltipField: "statusName",
     },
+    
     // {
     //   headerName: "",
     //   field: '', filter: false, sortable: false,
@@ -383,11 +390,12 @@ export class OrderListComponent implements OnInit {
     console.log('cellClicked', e);
     this.UomId=e.data.uoMId;
     this.uomName=e.data.uoMName;
+    let ordernumber = e.data.orderNUmber;
     // this.employeeName=e.data.userName;
     // console.log('userID',this.userId);
     localStorage.setItem('UomId',e.data.uoMId )
     localStorage.setItem('UomName',e.data.uoMName)
-    
+    sessionStorage.setItem("orderNumber",ordernumber);
     localStorage.setItem('niId',e.data.uoMId )
     localStorage.setItem('Niname',e.data.uoMName)
     // localStorage.setItem('employeeName',this.employeeName )

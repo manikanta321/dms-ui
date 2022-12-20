@@ -100,6 +100,27 @@ DropDownPromotionType(data: any){
 GetPromotionDealerList(data: any){
   return this.http.post<any>(this.userurl + 'PromotionsApi/GetPromotionDealerList', data)
 }
+
+
+getProductsubgropStockitemID(data: any){
+  return this.http.post<any>(this.userurl + 'PromotionsApi/GetAddProductShortCode', data)
+}
+getProductGroup(data: any){
+  return this.http.post<any>(this.userurl + 'PromotionsApi/GetAddProductGroup', data)
+}
+
+getProductSubGroup(data: any){
+  return this.http.post<any>(this.userurl + 'PromotionsApi/GetAddProductSubGroup', data)
+}
+firstPromotion(data: any){
+  return this.http.post<any>(this.userurl + 'PromotionsApi/AddEditPromotions', data)
+}
+
+public Promogetgeo(){
+  return this.http.get<any>(this.userurl + 'PromotionsApi/GetAboveDefaultGeographyforPromotion')
+
+}
+// http://13.126.235.145:801/api/PromotionsApi/GetAboveDefaultGeographyforPromotion
 // http://13.126.235.145:801/api/PromotionsApi/GetPromotionDealerList
 }
 

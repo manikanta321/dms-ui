@@ -48,12 +48,13 @@
                                 <form #myform>
                                 <div class="myDatepicker ">
                                     <label>Start Date <span class="astr">*</span></label><br>
-                                    <mat-form-field class="form-field placeh-align">
-                                        <input matInput placeholder="Select the start date" style="padding-bottom:2px;"
+                                    <mat-form-field class="placeh-align">
+                                        <mat-label>Select the start date</mat-label>
+                                        <input matInput style="padding-bottom:2px;"
                                         [matDatepicker]="picker1" [formControl]="startDate"
-                                            (dateChange)="dateChange($event)">
+                                            (dateChange)="dateChange($event)" [min]="minDate">
                                         <mat-datepicker-toggle matSuffix [for]="picker1">
-                                            <br>
+                                            <!-- <br> -->
                                             <!-- <mat-icon matDatepickerToggleIcon>
                                             <img src="assets/img/calendar.png" class="calendarToggle">
                                         </mat-icon> -->
@@ -63,7 +64,7 @@
                                 </div>
                                 <div class="myDatepicker">
                                     <label>End Date <span class="astr">*</span></label><br>
-                                    <mat-form-field class="form-field placeh-align">
+                                    <mat-form-field class="placeh-align">
                                         <input matInput placeholder="Select the end date"
                                         [matDatepicker]="picker2" [min]="startDate.value" [formControl]="endDate"
                                         (dateChange)="enddateChange($event)">
@@ -78,17 +79,24 @@
                             <div class="col-12 col-lg-6 imagefield">
                                 <label>Image <span class="astr">*</span></label>
                                 <div class="image text-center">
-                                    <div class="fileadd">
-                                        <label class="uploadlabel">
+                                    <div class="fileadded">
+                                        <label class="uploadlabel-Added" *ngIf="addImgpreview">
                                             <input matInput placeholder="" #input id="file-input"
                                                 class="form-control imgupload" type="file"
                                                 (change)="onFileChanged($event)">
-
-
-                                            <img src="../../../assets/img/down13.png " width="70px" height="70px"
+                                            <img src="data:image/jpeg;base64,{{base64textString}}" class="addproImg"
                                                 type="file" for="file-input" alt="left-arr-btn"
                                                 (change)="onFileChanged($event)"></label>
-                                        <p>Add Image</p>
+                            </div>
+                                    <div class="fileadd">
+                                                <label class="uploadlabel" *ngIf="!addImgpreview">
+                                                    <input matInput placeholder="" #input id="file-input"
+                                                        class="form-control imgupload" type="file"
+                                                        (change)="onFileChanged($event)">
+                                                    <img src="../../../assets/img/down13.png " width="70px" height="70px"
+                                                        type="file" for="file-input" alt="left-arr-btn"
+                                                        (change)="onFileChanged($event)"></label>
+                                        <p *ngIf="!addImgpreview">Add Image</p>
                                     </div>
                                 </div>
                             </div>
@@ -149,9 +157,9 @@
                                                     <mat-card-content class="item-in-box">
                                                         <ul>
                                                             <li *ngFor="let producttable of addbuyg.productselectedRows" >{{producttable.productName}}</li>
-                                                            <li *ngFor="let productGrp of addbuyg.productScselectedRows">{{productGrp.productShortCode}}</li>
-                                                            <li *ngFor="let productGrp of addbuyg.pGselectedRows">{{productGrp.productGroupName}}</li>
-                                                            <li *ngFor="let productSubg of addbuyg.productSubGselectedRows">{{productSubg.productSubGroupName}}</li>
+                                                            <li *ngFor="let productGrp of addbuyg.productScselectedRows">{{productGrp.productName}}</li>
+                                                            <li *ngFor="let productGrp of addbuyg.pGselectedRows">{{productGrp.productName}}</li>
+                                                            <li *ngFor="let productSubg of addbuyg.productSubGselectedRows">{{productSubg.productName}}</li>
                                                         </ul>
                                                     </mat-card-content>
                                                 </mat-card>
@@ -159,20 +167,24 @@
                                             <div class="col-2 qtyalign" >
                                                 <label>Qty<span class="astr">*</span></label>
                                                 {{addbuyg.qtyValue}}
-                                                <input type="number" class="qty-box" placeholder="1" id=qty name="qty" required max="10" min="0" [(ngModel)]="addbuyg.qtyValue">
+                                                <input type="number" class="qty-box"  id=qty name="qty" required max="10" min="0" [(ngModel)]="addbuyg.MaxVolume">
                                                 <label>MOQ<span class="astr">*</span></label>
-                                                <input type="number" class="mty-box" placeholder="1" id=moq name="moq" required max="10" min="0" [(ngModel)]="addbuyg.moqValue">
+                                                <input type="number" class="mty-box"  id=moq name="moq" required max="10" min="0" [(ngModel)]="addbuyg.MOQ">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+
+
+
                                 <div class="col-lg-6 GetGroup">
-                                    <div class="get1"  [(ngModel)]="addget.getItems" *ngFor="let addget of addgetgroup; let i=index">
+                                    <div class="get1"  [(ngModel)]="addbuyg.getItems" *ngFor="let addbuyg of addgetgroup; let i=index">
                                         <div class="row">
                                             <div class="col-10 buyGrp-h">
                                                 <h5 class="item-header"><b>Get </b>group {{i}}</h5>
                                             </div>
-                                            <div class="col-2 plsImg" (click)="adddgetGroup()" *ngIf="i==0">
+                                            <div class="col-2 plsImg" (click)="adddgetGroup(i)" *ngIf="i==0">
                                                 <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
                                             </div>
                                             <div class="col-2 plsAdd" (click)="removegetGroup(i)" *ngIf="i>=1">
@@ -182,7 +194,7 @@
                                         <div class="row">
                                             <div class="productlevel col-12">
                                                 <label>Item Level<span class="astr">*</span></label>
-                                                <div class="collapsible" (click)="addItems(i)">
+                                                <div class="collapsible" (click)="addItemsforGetGroup(i)">
                                                     <div class="row">
                                                         <div class="col-10">
                                                             <p class="expn-t">Select the Items</p>
@@ -199,14 +211,18 @@
                                                 <mat-card class="list-item">
                                                     <mat-card-content class="item-in-box">
                                                         <ul>
-                                                            <li>Item Information</li>
-                                                        </ul>
+                                                            <ul>
+                                                                <li *ngFor="let producttable of addbuyg.productselectedRows" >{{producttable.productName}}</li>
+                                                                <li *ngFor="let productGrp of addbuyg.productScselectedRows">{{productGrp.productName}}</li>
+                                                                <li *ngFor="let productGrp of addbuyg.pGselectedRows">{{productGrp.productName}}</li>
+                                                                <li *ngFor="let productSubg of addbuyg.productSubGselectedRows">{{productSubg.productName}}</li>
+                                                            </ul>                                                        </ul>
                                                     </mat-card-content>
                                                 </mat-card>
                                             </div>
                                             <div class="col-2 qtyalign">
                                                 <label>Qty<span class="astr">*</span></label>
-                                                <input type="number" class="qty-box" placeholder="1"  id=Getqty name="Getqty" required max="10" min="0" [(ngModel)]="GetqtyValue">
+                                                <input type="number" class="qty-box"  id=Getqty name="Getqty" required max="10" min="0" [(ngModel)]="addbuyg.MaxVolume">
                                             </div>
                                         </div>
                                     </div>
@@ -313,7 +329,7 @@
                                             <div class="col-10 buyGrp-h">
                                                 <h5 class="item-header"><b>Get </b>group {{i}}</h5>
                                             </div>
-                                            <div class="col-2 plsImg" (click)="adddgetGroup()" *ngIf="i==0">
+                                            <div class="col-2 plsImg" (click)="adddgetGroup(i)" *ngIf="i==0">
                                                 <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
                                             </div>
                                             <div class="col-2 plsAdd" (click)="removegetGroup(i)" *ngIf="i>=1">

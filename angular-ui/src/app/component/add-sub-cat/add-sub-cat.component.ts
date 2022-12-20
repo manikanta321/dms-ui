@@ -8,6 +8,7 @@ import { RestPwsdUserPopupComponent } from '../users/userPopups/rest-pwsd-user-p
 import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { SharedServiceAddSubService } from 'src/app/services/shared-service-add-sub.service';
+import { MaterialClassificationStatusPopupComponent } from '../material-classification-status-popup/material-classification-status-popup.component';
 @Component({
   selector: 'app-add-sub-cat',
   templateUrl: './add-sub-cat.component.html',
@@ -27,6 +28,7 @@ export class AddSubCatComponent implements OnInit {
   SubcatsetName:any;
   adminPassword:boolean =false;
   showPassword: boolean = false;
+  errorMsg: any;
   constructor( private dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
     private user:UserService,
@@ -75,11 +77,16 @@ if(this.SubcatsetName=='Edit Sub-Category'){
       CreatedById:this.numberValue
   };
   this.calssification.addsubCatagory(data).subscribe((res)=>{
+    if (res.response.result === 'Success') {
     this.sucatname='';
     this.sucatnameCode='';
     this.sharedService.filter('Register click')
-
     this.dialogRef.close();
+    this.dialog.open(MaterialClassificationStatusPopupComponent, {panelClass: 'activeSuccessPop'});
+    }
+    else{
+      this.errorMsg=res.response.result;
+    }
 
     })  
   }

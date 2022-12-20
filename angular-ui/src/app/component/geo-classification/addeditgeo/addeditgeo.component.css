@@ -101,3 +101,7 @@ input {
 .font{
     font-family: 'Gilroy';
 }
+
+::ng-deep.mat-dialog-container{
+    padding: 23px;
+}

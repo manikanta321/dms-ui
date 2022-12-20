@@ -53,13 +53,13 @@
         </div>
         <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;">
           <form [formGroup]="myForms4">
-            <ng-multiselect-dropdown class="stts1" name="citys" [placeholder]="'Dealer'" formControlName="city5"
+            <ng-multiselect-dropdown class="dealr" name="citys" [placeholder]="'Dealer'" formControlName="city5"
               [disabled]="disabled" [settings]="dropdownSettings4" [data]="dealerListArray"
               (onSelect)="onItemDealerSelect($event)" (onDeSelect)="onItemDealerDeSelect($event)"
               (onDeSelectAll)="onItemDealerDeSelectOrAll($event)" (onSelectAll)="onItemDealerSelectOrAll($event)">
             </ng-multiselect-dropdown>
           </form>
-          <div class="dropdown-placeholder stts1-placeholder">
+          <div class="dropdown-placeholder dealr-placeholder">
             <span *ngIf="myForms4.get('city5').value.length == 0"> Dealer </span>
             <span *ngIf="myForms4.get('city5').value.length == 1" class="selected-placeholder"> {{myForms4.get('city5').value.length}} Dealer selected </span>
             <span *ngIf="myForms4.get('city5').value.length > 1" class="selected-placeholder"> {{myForms4.get('city5').value.length}} Dealer(s) selected </span>
@@ -73,7 +73,7 @@
               (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
               (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
             </ng-multiselect-dropdown>
-            <div class="dropdown-placeholder geog-placeholder">
+            <div class="dropdown-placeholder stts-placeholder">
               <span *ngIf="myForms3.get('city4').value.length == 0">Status  </span>
               <span *ngIf="myForms3.get('city4').value.length == 1" class="selected-placeholder"> {{myForms3.get('city4').value.length}} Status selected </span>
               <span *ngIf="myForms3.get('city4').value.length > 1" class="selected-placeholder"> {{myForms3.get('city4').value.length}} Status selected </span>

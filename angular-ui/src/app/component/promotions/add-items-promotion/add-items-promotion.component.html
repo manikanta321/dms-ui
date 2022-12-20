@@ -1,7 +1,7 @@
 <div class="comntainer">
   <div class="add-item addproductpromo">
     <div class="additem">
-      <mat-icon mat-button class="close-icon" (click)="closeicon()">close</mat-icon>
+      <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
     </div>
     <div class="head-t">
       <h3 class="additems-h font">Add Items: <b style="color: black;">Product</b></h3>
@@ -167,6 +167,7 @@
         </div>
       </div>
       <div>
+        <!--- product  --->
         <ag-grid-angular id="gridContainer"
           class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
           [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
@@ -207,6 +208,8 @@
         </div>
       </div> -->
       <div>
+                <!--- product short code  --->
+
         <ag-grid-angular id="gridContainer"
         style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
         class="ag-theme-material" (gridReady)="onGridReady2($event)" [rowHeight]="25" [headerHeight]="48"
@@ -246,6 +249,8 @@
         </div>
       </div> -->
       <div>
+                <!--- product Group  --->
+
         <ag-grid-angular id="gridContainer"
           style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
           class="ag-theme-material" (gridReady)="onGridReady3($event)" [rowHeight]="25" [headerHeight]="48"
@@ -283,6 +288,8 @@
         </div>
       </div> -->
         <div>
+                  <!--- product subgroup  --->
+
           <ag-grid-angular id="gridContainer"
             style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
             class="ag-theme-material" (gridReady)="onGridReady4($event)" [rowHeight]="25" [headerHeight]="48"

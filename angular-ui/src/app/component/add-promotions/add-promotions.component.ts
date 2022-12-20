@@ -122,15 +122,17 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   addImgpreview : boolean= false;
   showselectedgeovalue: boolean = false
   totalStepsCount: number | undefined;
-  startDate = new FormControl(new Date());
-  endDate = new FormControl(new Date());
+  startDate = new FormControl(null);
+  endDate = new FormControl(null);
   minDateToFinish = new Subject<string>();
   // minDate;
   minDate = new Date();
+  endMinDate = new Date();
   selectedStartDate: any;
   selectedEndDate: any
   dateChange(e) {
     this.minDateToFinish.next(e.value.toString());
+    this.endDate = new FormControl(null);
     // alert(e.value);
     // console.log("This is the DATE:", e.value);
     this.selectedStartDate = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
@@ -138,6 +140,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   }
   enddateChange(e) {
     this.selectedEndDate = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
+    this.minDateToFinish.next(e.value.toString());
     console.log(this.selectedEndDate);
   }
   @ViewChild('stepper') private myStepper: MatStepper | any;
@@ -284,7 +287,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     private dateAdapter: DateAdapter<Date>,
     public promotionTypes: PromotionService) {
     this.minDateToFinish.subscribe(r => {
-      this.minDate = new Date(r);
+      // console.log(r);
+      this.endMinDate = new Date(r);
     });
     this.dateAdapter.setLocale('en-GB'); //dd/MM/yyyy
   }

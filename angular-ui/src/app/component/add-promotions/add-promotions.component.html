@@ -46,12 +46,12 @@
                                     </ng-select>
                                 </div>
                                 <form #myform>
-                                <div class="myDatepicker ">
+                                <div class="myDatepicker promotion-datepicker">
                                     <label>Start Date <span class="astr">*</span></label><br>
                                     <mat-form-field class="placeh-align">
                                         <mat-label>Select the start date</mat-label>
                                         <input matInput 
-                                        [matDatepicker]="picker1" 
+                                        [matDatepicker]="picker1"   [formControl]="startDate"
                                             (dateChange)="dateChange($event)" [min]="minDate">
                                         <mat-datepicker-toggle matSuffix [for]="picker1">
                                             <mat-icon matDatepickerToggleIcon>
@@ -61,11 +61,11 @@
                                         <mat-datepicker #picker1></mat-datepicker>
                                     </mat-form-field>
                                 </div>
-                                <div class="myDatepicker">
+                                <div class="myDatepicker  promotion-datepicker">
                                     <label>End Date <span class="astr">*</span></label><br>
                                     <mat-form-field class="placeh-align">
                                         <input matInput placeholder="Select the end date"
-                                        [matDatepicker]="picker2" [min]="startDate.value" 
+                                        [matDatepicker]="picker2" [min]="endMinDate"  [formControl]="endDate"
                                         (dateChange)="enddateChange($event)">
                                         <mat-datepicker-toggle matSuffix [for]="picker2">
                                             <mat-icon matDatepickerToggleIcon>

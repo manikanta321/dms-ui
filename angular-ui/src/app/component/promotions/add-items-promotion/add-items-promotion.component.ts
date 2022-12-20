@@ -349,7 +349,7 @@ export class AddItemsPromotionComponent implements OnInit {
     limitSelection = false;
     StatusFilter = false;
     productCustomIdentifierArray:any[]=[]
-    @ViewChild('stepper') private myStepper: MatStepper | any;
+    @ViewChild('stepper') myStepper: MatStepper | any;
     productselectedRows: any =[];
     productSubGselectedRows :any= [];
     pGselectedRows:any =[];
@@ -1367,7 +1367,7 @@ let data={
     this.dialogRef.close();
   }
   matsteptabClick(tab) {
-    // console.log(tab);
+    
     if (tab.matStepLabel == 'productlb'){
 this.searchfeild =false;
     }

@@ -23,27 +23,28 @@
       </div>
     </div>
     <!-- prod subG dropdwn -->
-    <div class="prodSubGDropdwn mt-3">
-    <div class="row productdrprow">
-      <div class="col-lg-3" style="font-family: 'Gilroy'; color: grey;">
-        <form [formGroup]="myForms">
-          <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'product'" formControlName="citys"
-            [disabled]="disabled" [settings]="dropdownSettings6" [data]="Productarr"
-            (onSelect)="ProductSubGroupDrpdwn($event)" (onDeSelect)="ProductsubGroupDeselect($event)"
-            (onDeSelectAll)="ProductsubGroupDeSelectAll($event)" (onSelectAll)="ProductsubGroupSelectAll($event)">
-          </ng-multiselect-dropdown>
-        </form>
-      </div>
-      <div class="icon btnhover refreshbtn" >
-        <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;" alt="refresh" >
+    <div class="prodSubGDropdwn mt-3" *ngIf="myStepper?.selectedIndex == 3">
+      <div class="row productdrprow" >
+        <div class="col-lg-3" style="font-family: 'Gilroy'; color: grey;">
+          <form [formGroup]="myForms">
+            <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'product'" formControlName="citys"
+              [disabled]="disabled" [settings]="dropdownSettings6" [data]="Productarr"
+              (onSelect)="ProductSubGroupDrpdwn($event)" (onDeSelect)="ProductsubGroupDeselect($event)"
+              (onDeSelectAll)="ProductsubGroupDeSelectAll($event)" (onSelectAll)="ProductsubGroupSelectAll($event)">
+            </ng-multiselect-dropdown>
+          </form>
+        </div>
+        <div class="icon btnhover refreshbtn">
+          <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;"
+            alt="refresh">
+        </div>
       </div>
     </div>
-    </div>
-<mat-stepper [linear]="isLinear" #stepper (click)="matsteptabClick($event)" [selectedIndex]="1">
-  <mat-step label="Step 1" [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel ="productlb" >product</ng-template>
-      <!-- <div class="radio-btn mt-2">
+    <mat-stepper [linear]="isLinear" #stepper (click)="matsteptabClick($event)" [selectedIndex]="1" >
+      <mat-step label="Step 1" [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel="productlb">product</ng-template>
+          <!-- <div class="radio-btn mt-2">
         <div class="row">
           <div class="col-12">
       <mat-radio-group aria-label="Select an option">
@@ -55,143 +56,120 @@
     </div>
     </div>
     </div> -->
-      <div class="drpd row">
-        <div class="col-lg-11">
-          <div class="row">
-        <div class="search-d col-lg-3">
-          <form [formGroup]="myForm">
-            <ng-multiselect-dropdown class="catty"
-                name="city"
-                [placeholder]="'Category'"
-                formControlName="city"
-                [disabled]="disabled"
-                [settings]="dropdownSettings"
-                [data]="catgname"
-                (onSelect)="addItemSelect($event)"
-                (onDeSelect)="addItemDeSelect($event)"
-                (onDeSelectAll)="addItemDeSelectOrAll($event)"
-                (onSelectAll)="addItemSelectOrAll($event)">
-            </ng-multiselect-dropdown>
-            <!-- <div class="dropdown-placeholder catag-placeholder">
+          <div class="drpd row">
+            <div class="col-lg-11">
+              <div class="row">
+                <div class="search-d col-lg-3">
+                  <form [formGroup]="myForm">
+                    <ng-multiselect-dropdown class="catty" name="city" [placeholder]="'Category'" formControlName="city"
+                      [disabled]="disabled" [settings]="dropdownSettings" [data]="catgname"
+                      (onSelect)="addItemSelect($event)" (onDeSelect)="addItemDeSelect($event)"
+                      (onDeSelectAll)="addItemDeSelectOrAll($event)" (onSelectAll)="addItemSelectOrAll($event)">
+                    </ng-multiselect-dropdown>
+                    <!-- <div class="dropdown-placeholder catag-placeholder">
               <span *ngIf="myForm.get('city').value.length == 0"> Select Category </span>
               <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Category selected </span>
               <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Categories selected </span>
 
             </div> -->
-       </form>
-      </div>
-      <div class="search-d  col-lg-3">
-      <form>
-        <ng-multiselect-dropdown class="addsubc" name="city" placeholder="sub-category" formControlName="city"
-          [disabled]="disabled" [settings]="dropdownSettings1" [data]="sub_category" 
-          (onSelect)="addSubCategorySelect($event)" (onDeSelect)="addSubCategoryDeSelect($event)"
-          (onDeSelectAll)="addSubCategoryDSelectOrAll($event)"
-          (onSelectAll)="addSubCategorySelectOrAll($event)">
-        </ng-multiselect-dropdown>
-      </form>
-    </div>
-    <div class="search-d  col-lg-3">
-      <form [formGroup]="type">
-        <ng-multiselect-dropdown class="typy"
-            name="type"
-            [placeholder]="'Type'"
-            formControlName="type"
-            [disabled]="disabled"
-            [settings]="dropdownSettings2"
-            [data]="typeI"
-            (onSelect)="addTypeSelect($event)"
-            (onDeSelect)="addTypeDeSelect($event)"
-            
-            (onDeSelectAll)="addTypeDeSelectOrAll($event)"
-            (onSelectAll)="addTypeSelectOrAll($event)"
-            >
-        </ng-multiselect-dropdown>
-      </form>
-  </div>
-  <div class="search-d  col-lg-3">
-    <form [formGroup]="products">
-      <ng-multiselect-dropdown class="producty"
-          name="product"
-          [placeholder]="'Product'"
-          formControlName="products"
-          [disabled]="disabled"
-          [settings]="dropdownSettings3"
-          [data]="Productarr"
-          (onSelect)="onProductSelect($event)"
-          (onDeSelect)="onProductDeSelect($event)"
-          (onDeSelectAll)="onProductDeSelectOrAll($event)"
-          (onSelectAll)="onProductSelectOrAll($event)">
-      </ng-multiselect-dropdown>
-      </form>
-  </div>
-</div>
-</div>
-<div class="col-lg-1">
-        <div class="ref">
-          <img class="refresh" (click)="addItemRefresh()" src="assets/img/Vector.png" alt="refresh">
-        </div>
-      </div>
-      </div>
-      <div class="row mt-2">
-        <div class="col-11">
-          <div class="row">
-      <div class="col-lg-3 search-prodId">
-        <form>
-          <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'product Identifier'" formControlName="city"
-            [disabled]="disabled" [settings]="dropdownSettings5" [data]="toppingList" 
-            (onSelect)="onproductIdentifierSelect($event)"
-            (onDeSelect)="onproductIdentifierDeSelect($event)"
-            (onDeSelectAll)="onproductIdentifierDeSelectOrAll($event)"
-            (onSelectAll)="onproductIdentifierSelectOrAll($event)">
-          </ng-multiselect-dropdown>
-        </form>
-      </div>
-    </div>
-        </div>
-        <div class="col-lg-1"></div>
-      </div>
-      <div class="srch mt-3" style="margin-bottom:10px">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="searchBox d-flex">
-              <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
-                placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
-              <button class="searchButton" href="#">
-                <i class="material-icons">
-                  search
-                </i>
-              </button>
-              <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+                  </form>
+                </div>
+                <div class="search-d  col-lg-3">
+                  <form>
+                    <ng-multiselect-dropdown class="addsubc" name="city" placeholder="sub-category"
+                      formControlName="city" [disabled]="disabled" [settings]="dropdownSettings1" [data]="sub_category"
+                      (onSelect)="addSubCategorySelect($event)" (onDeSelect)="addSubCategoryDeSelect($event)"
+                      (onDeSelectAll)="addSubCategoryDSelectOrAll($event)"
+                      (onSelectAll)="addSubCategorySelectOrAll($event)">
+                    </ng-multiselect-dropdown>
+                  </form>
+                </div>
+                <div class="search-d  col-lg-3">
+                  <form [formGroup]="type">
+                    <ng-multiselect-dropdown class="typy" name="type" [placeholder]="'Type'" formControlName="type"
+                      [disabled]="disabled" [settings]="dropdownSettings2" [data]="typeI"
+                      (onSelect)="addTypeSelect($event)" (onDeSelect)="addTypeDeSelect($event)"
+                      (onDeSelectAll)="addTypeDeSelectOrAll($event)" (onSelectAll)="addTypeSelectOrAll($event)">
+                    </ng-multiselect-dropdown>
+                  </form>
+                </div>
+                <div class="search-d  col-lg-3">
+                  <form [formGroup]="products">
+                    <ng-multiselect-dropdown class="producty" name="product" [placeholder]="'Product'"
+                      formControlName="products" [disabled]="disabled" [settings]="dropdownSettings3"
+                      [data]="Productarr" (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)"
+                      (onDeSelectAll)="onProductDeSelectOrAll($event)" (onSelectAll)="onProductSelectOrAll($event)">
+                    </ng-multiselect-dropdown>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-1">
+              <div class="ref">
+                <img class="refresh" (click)="addItemRefresh()" src="assets/img/Vector.png" alt="refresh">
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div>
-        <!--- product  --->
-        <ag-grid-angular id="gridContainer"
-          class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
-          [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
-          [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
-          (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
-          (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
-          (bodyScroll)="handleScroll($event)"  [rowSelection]="'multiple'"(rowSelected)="onProductRowSelect($event)"></ag-grid-angular>
-      </div>
-      <div class="pagination">
-        <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
-          class="pagination-cls">{{rowData5.length}}</span>
-      </div>
-      <div class="addbtn mt-3 text-center">
-        <button class="addItem-btn btn-btn-primary" (click)="addproductitems()" >Add items</button>
-      </div>
-    </form>
-  </mat-step>
- 
+          <div class="row mt-2">
+            <div class="col-11">
+              <div class="row">
+                <div class="col-lg-3 search-prodId">
+                  <form>
+                    <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'product Identifier'"
+                      formControlName="city" [disabled]="disabled" [settings]="dropdownSettings5" [data]="toppingList"
+                      (onSelect)="onproductIdentifierSelect($event)" (onDeSelect)="onproductIdentifierDeSelect($event)"
+                      (onDeSelectAll)="onproductIdentifierDeSelectOrAll($event)"
+                      (onSelectAll)="onproductIdentifierSelectOrAll($event)">
+                    </ng-multiselect-dropdown>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-1"></div>
+          </div>
+          <div class="srch mt-3" style="margin-bottom:10px">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="searchBox d-flex">
+                  <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+                    placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
+                  <button class="searchButton" href="#">
+                    <i class="material-icons">
+                      search
+                    </i>
+                  </button>
+                  <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <!--- product  --->
+            <ag-grid-angular id="gridContainer" class="ag-theme-material" (gridReady)="onGridReady($event)"
+              [rowHeight]="25" [headerHeight]="48" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef"
+              [columnTypes]="columnTypes" [rowData]="rowData5" [suppressExcelExport]="true" [popupParent]="popupParent"
+              (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"
+              (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
+              (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+              (bodyScroll)="handleScroll($event)" [rowSelection]="'multiple'"
+              (rowSelected)="onProductRowSelect($event)"></ag-grid-angular>
+          </div>
+          <div class="pagination">
+            <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of
+            <span class="pagination-cls">{{rowData5.length}}</span>
+          </div>
+          <div class="addbtn mt-3 text-center">
+            <button class="addItem-btn btn-btn-primary" (click)="addproductitems()">Add items</button>
+          </div>
+        </form>
+      </mat-step>
 
-  <!-- second -->
-  <mat-step label="Step 2">
-    <ng-template matStepLabel="productgroup">Product Short Code</ng-template>
-    <div class="add-item productShortcd">
-      <!-- <div class="srch mt-3" style="margin-bottom:10px">
+
+      <!-- second -->
+      <mat-step label="Step 2">
+        <ng-template matStepLabel="productgroup">Product Short Code</ng-template>
+        <div class="add-item productShortcd">
+          <!-- <div class="srch mt-3" style="margin-bottom:10px">
         <div class="row">
           <div class="col-md-12">
             <div class="searchBox d-flex">
@@ -207,32 +185,34 @@
           </div>
         </div>
       </div> -->
-      <div>
-                <!--- product short code  --->
+          <div>
+            <!--- product short code  --->
 
-        <ag-grid-angular id="gridContainer"
-        style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
-        class="ag-theme-material" (gridReady)="onGridReady2($event)" [rowHeight]="25" [headerHeight]="48"
-        [columnDefs]="columnDefs1" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowDatashortcode"
-        [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
-        (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
-        (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
-        (bodyScroll)="handleScroll($event)" [rowSelection]="'multiple'"(rowSelected)="ProductShortCodeRowSelect($event)"></ag-grid-angular>
-      </div>
-      <div class="pagination">
-        <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
-          class="pagination-cls">{{rowData5.length}}</span>
-      </div>
-      <div class="addbtn mt-3 text-center">
-        <button class="addItem-btn btn-btn-primary" (click)="additemsProductShortCode($event)">Add items</button>
-      </div>
-    </div>
-  </mat-step>
-  <!-- third -->
-  <mat-step label="Step 3">
-    <ng-template matStepLabel>Product Group</ng-template>
-    <div class="add-item">
-      <!-- <div class="srch mt-3" style="margin-bottom:10px">
+            <ag-grid-angular id="gridContainer"
+              style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
+              class="ag-theme-material" (gridReady)="onGridReady2($event)" [rowHeight]="25" [headerHeight]="48"
+              [columnDefs]="columnDefs1" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
+              [rowData]="rowDatashortcode" [suppressExcelExport]="true" [popupParent]="popupParent"
+              (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"
+              (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
+              (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+              (bodyScroll)="handleScroll($event)" [rowSelection]="'multiple'"
+              (rowSelected)="ProductShortCodeRowSelect($event)"></ag-grid-angular>
+          </div>
+          <div class="pagination">
+            <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of
+            <span class="pagination-cls">{{rowData5.length}}</span>
+          </div>
+          <div class="addbtn mt-3 text-center">
+            <button class="addItem-btn btn-btn-primary" (click)="additemsProductShortCode($event)">Add items</button>
+          </div>
+        </div>
+      </mat-step>
+      <!-- third -->
+      <mat-step label="Step 3">
+        <ng-template matStepLabel>Product Group</ng-template>
+        <div class="add-item">
+          <!-- <div class="srch mt-3" style="margin-bottom:10px">
         <div class="row">
           <div class="col-md-12">
             <div class="searchBox d-flex">
@@ -248,32 +228,34 @@
           </div>
         </div>
       </div> -->
-      <div>
-                <!--- product Group  --->
+          <div>
+            <!--- product Group  --->
 
-        <ag-grid-angular id="gridContainer"
-          style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
-          class="ag-theme-material" (gridReady)="onGridReady3($event)" [rowHeight]="25" [headerHeight]="48"
-          [columnDefs]="columnDefs2" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowDataproductGroup"
-          [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
-          (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
-          (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
-          (bodyScroll)="handleScroll($event)" [rowSelection]="'multiple'"(rowSelected)="onRowSelectProductGroup($event)"></ag-grid-angular>
-      </div>
-      <div class="pagination">
-        <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
-          class="pagination-cls">{{rowData5.length}}</span>
-      </div>
-      <div class="addbtn mt-3 text-center">
-        <button class="addItem-btn btn-btn-primary" (click)="addproductGroup()">Add items</button>
-      </div>
-    </div>
-  </mat-step>
-  <!--  -->
-  <mat-step label="Step 4">
-    <ng-template matStepLabel="showproductfropdown" >Product Sub-Group</ng-template>
-    <div class="add-item">
-      <!-- <div class="d-flex mb-5">
+            <ag-grid-angular id="gridContainer"
+              style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
+              class="ag-theme-material" (gridReady)="onGridReady3($event)" [rowHeight]="25" [headerHeight]="48"
+              [columnDefs]="columnDefs2" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
+              [rowData]="rowDataproductGroup" [suppressExcelExport]="true" [popupParent]="popupParent"
+              (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"
+              (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
+              (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+              (bodyScroll)="handleScroll($event)" [rowSelection]="'multiple'"
+              (rowSelected)="onRowSelectProductGroup($event)"></ag-grid-angular>
+          </div>
+          <div class="pagination">
+            <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of
+            <span class="pagination-cls">{{rowData5.length}}</span>
+          </div>
+          <div class="addbtn mt-3 text-center">
+            <button class="addItem-btn btn-btn-primary" (click)="addproductGroup()">Add items</button>
+          </div>
+        </div>
+      </mat-step>
+      <!--  -->
+      <mat-step label="Step 4">
+        <ng-template matStepLabel="showproductfropdown">Product Sub-Group</ng-template>
+        <div class="add-item">
+          <!-- <div class="d-flex mb-5">
         <div class="col-md-3 col-lg-3 col-sm-2" style="font-family: 'Gilroy'; color: grey;">
           <form [formGroup]="myForms">
             <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'product'" formControlName="citys"
@@ -287,27 +269,29 @@
           <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;" alt="refresh" >
         </div>
       </div> -->
-        <div>
-                  <!--- product subgroup  --->
+          <div>
+            <!--- product subgroup  --->
 
-          <ag-grid-angular id="gridContainer"
-            style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
-            class="ag-theme-material" (gridReady)="onGridReady4($event)" [rowHeight]="25" [headerHeight]="48"
-            [columnDefs]="columnDefs3" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowDataProductSubG"
-            [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
-            (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
-            (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
-            (bodyScroll)="handleScroll($event)"  [rowSelection]="'multiple'"(rowSelected)="ProductSubGroupRowSelect($event)"></ag-grid-angular>
+            <ag-grid-angular id="gridContainer"
+              style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
+              class="ag-theme-material" (gridReady)="onGridReady4($event)" [rowHeight]="25" [headerHeight]="48"
+              [columnDefs]="columnDefs3" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
+              [rowData]="rowDataProductSubG" [suppressExcelExport]="true" [popupParent]="popupParent"
+              (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"
+              (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
+              (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+              (bodyScroll)="handleScroll($event)" [rowSelection]="'multiple'"
+              (rowSelected)="ProductSubGroupRowSelect($event)"></ag-grid-angular>
+          </div>
+          <div class="pagination">
+            <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of
+            <span class="pagination-cls">{{rowData5.length}}</span>
+          </div>
+          <div class="addbtn mt-3 text-center">
+            <button class="addItem-btn btn-btn-primary" (click)="addItemProductSubG()">Add items</button>
+          </div>
         </div>
-        <div class="pagination">
-          <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
-            class="pagination-cls">{{rowData5.length}}</span>
-        </div>
-        <div class="addbtn mt-3 text-center">
-          <button class="addItem-btn btn-btn-primary" (click)="addItemProductSubG()">Add items</button>
-        </div>
-      </div>
-  </mat-step>
-</mat-stepper>
-</div>
+      </mat-step>
+    </mat-stepper>
+  </div>
 </div>

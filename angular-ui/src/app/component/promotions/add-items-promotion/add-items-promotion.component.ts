@@ -354,7 +354,8 @@ export class AddItemsPromotionComponent implements OnInit {
     productSubGselectedRows :any= [];
     pGselectedRows:any =[];
     productScselectedRows : any= [];
-    searchfeild : boolean = false;
+    searchfeild : any;
+    // showproductfropdown : any;
   constructor(private _formBuilder: FormBuilder,
     public dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
@@ -1367,10 +1368,10 @@ let data={
   }
   matsteptabClick(tab) {
     // console.log(tab);
-    if (tab.step.matStepLabel == 'productlb'){
+    if (tab.matStepLabel == 'productlb'){
 this.searchfeild =false;
     }
-    else if (tab.tab.matStepLabel == 'productgroup'){
+    else if (tab.matStepLabel == 'productgroup'){
       this.searchfeild = true;
           }
           else if(tab.step == 2){

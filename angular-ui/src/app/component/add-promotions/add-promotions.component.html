@@ -50,14 +50,13 @@
                                     <label>Start Date <span class="astr">*</span></label><br>
                                     <mat-form-field class="placeh-align">
                                         <mat-label>Select the start date</mat-label>
-                                        <input matInput style="padding-bottom:2px;"
-                                        [matDatepicker]="picker1" [formControl]="startDate"
+                                        <input matInput 
+                                        [matDatepicker]="picker1" 
                                             (dateChange)="dateChange($event)" [min]="minDate">
                                         <mat-datepicker-toggle matSuffix [for]="picker1">
-                                            <!-- <br> -->
-                                            <!-- <mat-icon matDatepickerToggleIcon>
-                                            <img src="assets/img/calendar.png" class="calendarToggle">
-                                        </mat-icon> -->
+                                            <mat-icon matDatepickerToggleIcon>
+                                            <img src="assets/img/calender2.png" class="calendarToggle">
+                                        </mat-icon>
                                         </mat-datepicker-toggle>
                                         <mat-datepicker #picker1></mat-datepicker>
                                     </mat-form-field>
@@ -66,9 +65,12 @@
                                     <label>End Date <span class="astr">*</span></label><br>
                                     <mat-form-field class="placeh-align">
                                         <input matInput placeholder="Select the end date"
-                                        [matDatepicker]="picker2" [min]="startDate.value" [formControl]="endDate"
+                                        [matDatepicker]="picker2" [min]="startDate.value" 
                                         (dateChange)="enddateChange($event)">
                                         <mat-datepicker-toggle matSuffix [for]="picker2">
+                                            <mat-icon matDatepickerToggleIcon>
+                                                <img src="assets/img/calender2.png" class="calendarToggle">
+                                            </mat-icon>
                                         </mat-datepicker-toggle>
                                         <mat-datepicker #picker2></mat-datepicker>
                                     </mat-form-field>

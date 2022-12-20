@@ -65,8 +65,8 @@ export class AddpromoGeographyComponent implements OnInit {
     //       this.geodata =res.response;
     //       // this.geodata= data;
     // });
-    // let promoGeography = this.geodata.map(x => x.aboveDefaultGeoId);
-    // console.log('gepid',promoGeography)
+    let promoGeographyId = this.geodata.map(x => x.aboveDefaultGeoId);
+    console.log('gepid',promoGeographyId)
     this.promotionGeoservc.Promogetgeo().subscribe((res) => {
       this.geodata =res.response;
     });

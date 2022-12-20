@@ -23,7 +23,7 @@
       </div>
     </div>
     <!-- prod subG dropdwn -->
-    <div class="prodSubGDropdwn mt-3" ngif="step == 2">
+    <div class="prodSubGDropdwn mt-3">
     <div class="row productdrprow">
       <div class="col-lg-3" style="font-family: 'Gilroy'; color: grey;">
         <form [formGroup]="myForms">
@@ -39,10 +39,10 @@
       </div>
     </div>
     </div>
-<mat-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
+<mat-stepper [linear]="isLinear" #stepper (click)="matsteptabClick($event)" [selectedIndex]="1">
+  <mat-step label="Step 1" [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel >product</ng-template>
+      <ng-template matStepLabel ="productlb" >product</ng-template>
       <!-- <div class="radio-btn mt-2">
         <div class="row">
           <div class="col-12">
@@ -188,8 +188,8 @@
  
 
   <!-- second -->
-  <mat-step>
-    <ng-template matStepLabel>Product Short Code</ng-template>
+  <mat-step label="Step 2">
+    <ng-template matStepLabel="productgroup">Product Short Code</ng-template>
     <div class="add-item productShortcd">
       <!-- <div class="srch mt-3" style="margin-bottom:10px">
         <div class="row">
@@ -229,7 +229,7 @@
     </div>
   </mat-step>
   <!-- third -->
-  <mat-step>
+  <mat-step label="Step 3">
     <ng-template matStepLabel>Product Group</ng-template>
     <div class="add-item">
       <!-- <div class="srch mt-3" style="margin-bottom:10px">
@@ -270,8 +270,8 @@
     </div>
   </mat-step>
   <!--  -->
-  <mat-step >
-    <ng-template matStepLabel>Product Sub-Group</ng-template>
+  <mat-step label="Step 4">
+    <ng-template matStepLabel="showproductfropdown" >Product Sub-Group</ng-template>
     <div class="add-item">
       <!-- <div class="d-flex mb-5">
         <div class="col-md-3 col-lg-3 col-sm-2" style="font-family: 'Gilroy'; color: grey;">

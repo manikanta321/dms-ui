@@ -748,9 +748,10 @@ height: 43px;
 }
 
 .calendarToggle {
-  position: relative;
-  bottom: 3px;
-  width: 16px;
+  position: absolute;
+  bottom: 4px;
+  width: 20px;
+  right: 10px;
 }
 
 ::ng-deep.mat-icon {

@@ -437,14 +437,14 @@
                             </thead>
                             <tbody>
                             <tr class="table-row" *ngFor="let Item of orderNonPromotionsdata">
-                                <td><input type="checkbox">{{Item.stockItemName}}</td>
+                                <td><input type="checkbox" [checked]="Item.isPromotionSelected" (change)="checkboxChange($event,Item)">{{Item.stockItemName}}</td>
                                 <td>{{Item.materialCustomName}}</td>
                                 <td>{{Item.classification}}</td>
                                 <td>{{Item.productSKUName}}</td>
                                 <td>{{Item.mrp}}</td>
 
                                 <td >
-                                    <select class="tax-select" placeholder="select" >
+                                    <select class="tax-select" placeholder="select" [(ngModel)]="Item.Taxid" >
                                         <option value="" selected hidden >Select tax</option>
                                         <option *ngFor="let option of taxdropdowndata" [value]="option.taxTemplateId">
                                             {{option.taxTemplateName}}
@@ -456,8 +456,8 @@
                                     <img src="assets/img/doubleTickes-default.svg" alt="double-blue-tick">
                                 </td>
                     
-                                <td><input type="value" placeholder="5" class="quatity-inp"></td>
-                                <td>{{Item.amount}}</td>
+                                <td><input type="number" placeholder="5" class="quatity-inp" [(ngModel)]="Item.Quantity"></td>
+                                <td>{{(Item.Quantity ?? 0) * Item.mrp }}</td>
                             </tr>
                         </tbody>
                             <tfoot>
@@ -475,8 +475,8 @@
                 </div>
 
                 <div class="add-itemBtn mt-5">
-                    <button type="button" class="saveas-draft1" >Add items</button>
-                    <!-- (click)="addnonPromoItems()" -->
+                    <button type="button" class="saveas-draft1" (click)="addnonPromoItems()" >Add items</button>
+                    
                 </div>
             </div>
         </div>

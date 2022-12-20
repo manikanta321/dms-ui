@@ -7,6 +7,7 @@ import {FormControl, FormGroupDirective, NgForm, Validators} from
 import { RestPwsdUserPopupComponent } from '../users/userPopups/rest-pwsd-user-popup/rest-pwsd-user-popup.component';
 import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
 import { SharedService } from 'src/app/services/shared-services.service';
+import { MaterialClassificationStatusPopupComponent } from '../material-classification-status-popup/material-classification-status-popup.component';
 @Component({
   selector: 'app-add-cat',
   templateUrl: './add-cat.component.html',
@@ -23,6 +24,7 @@ export class AddCatComponent implements OnInit {
   numberValue:any;
   catsetName:any;
   activeCatId:any;
+  errorMsg: any;
 
   adminPassword:boolean =false;
   showPassword: boolean = false;
@@ -71,10 +73,21 @@ this.addcatcode=res.response.categoryCode;
       CreatedById:this.numberValue
   };
   this.calssification.addCatagory(data).subscribe((res)=>{
-    this.sharedService.filter('Register click')
-    this.addcat='';
-    this.addcatcode='';
-    this.dialogRef.close();
+    // this.sharedService.filter('Register click')
+    // this.addcat='';
+    // this.addcatcode='';
+    // this.dialogRef.close();
+    if (res.response.result === 'Success') {
+      this.sharedService.filter('Register click')
+      this.addcat='';
+      this.addcatcode='';
+      this.dialogRef.close();
+      this.dialog.open(MaterialClassificationStatusPopupComponent, {panelClass: 'activeSuccessPop'});
+
+      }
+    else{
+      this.errorMsg=res.response.result;
+    }
 
   })
 

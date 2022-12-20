@@ -179,9 +179,9 @@ export class OrderlistShipPopupComponent implements OnInit {
     this.dealerInfo = !this.dealerInfo;
 
     if(this.dealerInfo === false){
-      this.image1 = 'assets/img/minimize-arrow.png';
+      this.image1 = 'assets/img/maximize.png';
     } else {
-      this.image1 = 'assets/img/maximize-arrow.png';
+      this.image1 = 'assets/img/minimize-arrow.png';
      
     }
   }

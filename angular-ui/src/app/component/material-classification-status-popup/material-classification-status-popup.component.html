@@ -1,0 +1,22 @@
+<!-- <p>material-classification-status-popup works!</p> -->
+<div class="container font" ngClass="{'active':data?.isActive,'deactive':!data?.isActive} ">
+
+    <div class="rest-pwsd d-flex">
+
+        <div class="tumbsup"><img class="c" src="assets/userImages/carbon_thumbs-up.svg" alt="">
+            <br>
+            <b>Done !</b>
+        </div>
+        <div class="text-succ mt-3">
+            <p> Material
+                <!-- <b>{{data.activeCatId}} ({{data.activeCatName ?? ''}})</b> -->
+                is Successfully Added
+                <!-- <b style="color: rgba(23, 177, 92, 1);" *ngIf="data?.isActive">Reactivated</b> -->
+                <!-- <b style="color: red;" *ngIf="!data?.isActive">Deactivated</b> -->
+            </p>
+        </div>
+       
+        <div class="closeImg" (click)=" closeDialog()"><img src="assets/userImages/user-closeImg.svg" alt=""></div>
+
+    </div>
+</div>

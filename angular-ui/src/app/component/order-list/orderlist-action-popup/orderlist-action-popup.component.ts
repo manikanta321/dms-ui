@@ -4,6 +4,7 @@ import tippy, { hideAll } from 'tippy.js';
 
 import { OrderCancelPopupComponent } from '../order-cancel-popup/order-cancel-popup.component';
 import { OrderlistEditPopupComponent } from '../orderlist-edit-popup/orderlist-edit-popup.component';
+import { OrderlistShipPopupComponent } from '../orderlist-ship-popup/orderlist-ship-popup.component';
 @Component({
   selector: 'app-orderlist-action-popup',
   templateUrl: './orderlist-action-popup.component.html',
@@ -81,8 +82,9 @@ export class OrderlistActionPopupComponent implements OnInit {
     
     
   }
-  orderShip()
-  {
-
-  }
+  
+  orderShip(){
+    this.dialog.open(OrderlistShipPopupComponent,{width:"987px",height:"1461px"});
+ this.isOpen = false;
+}
 }

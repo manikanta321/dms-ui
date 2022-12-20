@@ -174,6 +174,9 @@ import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.com
 import { AddpromoGeographyComponent } from './component/add-promotions/addpromo-geography/addpromo-geography.component';
 import { OrderCancelPopupComponent } from './component/order-list/order-cancel-popup/order-cancel-popup.component';
 import { OrderCancelDonePopupComponent } from './component/order-list/order-cancel-done-popup/order-cancel-done-popup.component';
+import { GeoAddedPopupComponent } from './component/geo-classification/geo-added-popup/geo-added-popup.component';
+import { OrderlistShipPopupComponent } from './component/order-list/orderlist-ship-popup/orderlist-ship-popup.component';
+import { MaterialClassificationStatusPopupComponent } from './component/material-classification-status-popup/material-classification-status-popup.component';
 
 @NgModule({
   declarations: [
@@ -368,6 +371,8 @@ import { OrderCancelDonePopupComponent } from './component/order-list/order-canc
     AddTargetGroupsProductsComponent,
     PagenotfoundComponent,
     AddpromoGeographyComponent,
+    GeoAddedPopupComponent,
+    OrderlistShipPopupComponent,
 
           AddorderpromotionsComponent,
           AddOrderPromotionlistComponent,
@@ -440,6 +445,7 @@ import { OrderCancelDonePopupComponent } from './component/order-list/order-canc
           AddTargetGroupComponent,
           OrderCancelPopupComponent,
           OrderCancelDonePopupComponent,
+          MaterialClassificationStatusPopupComponent,
           
   ],
   imports: [

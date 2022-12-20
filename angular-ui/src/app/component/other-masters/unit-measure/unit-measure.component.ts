@@ -216,6 +216,7 @@ public pivotPanelShow = 'always';
   UomId:any;
   paginationPageSize = 10;
   paginationScrollCount:any;
+  instancePopup:any = null;
   
   gridsOptions = {
     defaultColDef: {
@@ -299,6 +300,22 @@ getusertabeldata(){
   });
 }
 
+handleScroll(event) {
+
+  if (this.instancePopup && this.instancePopup.isOpen) {
+    this.instancePopup.togglePopup();
+    this.instancePopup = null;
+  }
+  const grid = document.getElementById('gridContainer');
+  // if (grid) {
+  //   const gridBody = grid.querySelector('.ag-body-viewport') as any;
+  //   const scrollPos = gridBody.offsetHeight + event.top;
+  //   const scrollDiff = gridBody.scrollHeight - scrollPos;
+  //   //const api =  this.rowData5;
+  //   this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
+  //   this.paginationScrollCount = this.rowData5.length;
+  // }
+}
 onSearchChange($event:any , anything?:any){
   const { target } = $event;
   this.searchText=target.value;
@@ -478,6 +495,7 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
       });
       if (cellRendererInstances.length > 0) {
         const instance = cellRendererInstances[0];
+        this.instancePopup = instance;
         instance.togglePopup();
 
       }

@@ -1046,7 +1046,7 @@ handleRowDataChanged(event) {
 }
 
 handleScroll(event) {
-  if(this.instancePopup){
+  if(this.instancePopup && this.instancePopup.isOpen){
     this.instancePopup.togglePopup();
     this.instancePopup = null;
   }

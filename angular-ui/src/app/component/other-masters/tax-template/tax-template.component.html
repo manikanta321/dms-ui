@@ -81,6 +81,7 @@
   (rowClicked)="openDialog()"
   (cellClicked)="onCellClicked($event)"
   [paginationPageSize]="paginationPageSize"
+  (bodyScroll)="handleScroll($event)"
 
   ></ag-grid-angular>
   <div class="pagination">

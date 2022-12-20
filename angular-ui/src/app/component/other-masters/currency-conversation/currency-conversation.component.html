@@ -1,93 +1,77 @@
-<div >
+<div>
   <div class="UNFAPP-asmnt-rgt-area main" style="padding: 12px; padding-left: 19px;overflow-x: hidden;">
-   
-    <div class="row" style="position: relative;top: 3%;bottom: 8px;margin-top: 30px; font-family: 'Gilroy'; color: grey;">
-     
-    <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;">
-      <form [formGroup]="myForms">
-    <ng-multiselect-dropdown class="stts"
-        name="citys"
-        [placeholder]="'Status'"
-        formControlName="citys"
-        [disabled]="disabled"
-        [settings]="dropdownSettings1"
-        [data]="toppingList1"
-        (onSelect)="onStatusSelect($event)"
-        (onDeSelect)="onStatusDeSelect($event)"
-        (onDeSelectAll)="onItemDeSelectOrAllStatus($event)"
-        (onSelectAll)="onItemSelectOrAllStatus($event)">
-    </ng-multiselect-dropdown>
-</form>
-<div class="dropdown-placeholder stts-placeholder">
-  <span *ngIf="myForms.get('citys').value.length == 0">Select Status</span>
- <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} status selected </span>
-  <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} status(s) selected </span>
-</div>
-  </div>
-  <!-- <button (click)="otherstatus()">bhbh</button> -->
-  <div class="icon btnhover refreshbtn" (click)="refresh()">
-    <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;" alt="refresh" >
-  </div>
-   </div>   
-<div class="row" style="margin-bottom:5px;">
-<!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
-<div class="col-md-4" style="margin-left: 72%;margin-bottom:10px;">
-<div class="row">
-<div class="col-md-8">
-<div class="searchBox d-flex">
-<input class="searchInput" style="font-family: 'Gilroy'" type="text" name="" placeholder="Type & search for anything" 
-(keyup)="onSearchChange($event)">
-<button class="searchButton" href="#"> 
-   <i class="material-icons">
-       search
-   </i>
-</button>
-<button class="search-btn" style="font-family: 'Gilroy'">Search</button>
-</div>
-</div>
-<div class="col-md-2">
-<div class="add-user" (click)="addCurrencyButton()">
-<img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
-</div>
-</div>
-<!-- <div class="col-md-0">
+
+    <div class="row"
+      style="position: relative;top: 3%;bottom: 8px;margin-top: 30px; font-family: 'Gilroy'; color: grey;">
+
+      <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;">
+        <form [formGroup]="myForms">
+          <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Status'" formControlName="citys"
+            [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
+            (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
+            (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
+          </ng-multiselect-dropdown>
+        </form>
+        <div class="dropdown-placeholder stts-placeholder">
+          <span *ngIf="myForms.get('citys').value.length == 0">Select Status</span>
+          <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder">
+            {{myForms.get('citys').value.length}} status selected </span>
+          <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder">
+            {{myForms.get('citys').value.length}} status(s) selected </span>
+        </div>
+      </div>
+      <!-- <button (click)="otherstatus()">bhbh</button> -->
+      <div class="icon btnhover refreshbtn" (click)="refresh()">
+        <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;" alt="refresh">
+      </div>
+    </div>
+    <div class="row" style="margin-bottom:5px;">
+      <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
+      <div class="col-md-4" style="margin-left: 72%;margin-bottom:10px;">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="searchBox d-flex">
+              <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+                placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
+              <button class="searchButton" href="#">
+                <i class="material-icons">
+                  search
+                </i>
+              </button>
+              <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="add-user" (click)="addCurrencyButton()">
+              <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+            </div>
+          </div>
+          <!-- <div class="col-md-0">
 <div class="download-btn" (click)="onBtnExport()">
 <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;" alt="add-user-btn">
 </div>
 </div> -->
-</div>
-</div>
-</div>
+        </div>
+      </div>
+    </div>
 
 
-<div >
-<ag-grid-angular
-id="gridContainer"
-style=" height: 390px;border-radius: 20px;background-color: white;font-family: Gilroy;width:100%;"
-class="ag-theme-material"
-[rowHeight]="25"
-[headerHeight]="48"
-[columnDefs]="columnDefs"
-[defaultColDef]="defaultColDef"
-[columnTypes]="columnTypes"
-[rowData]="rowData5"
-[suppressExcelExport]="true"
-[popupParent]="popupParent"
-(cellValueChanged)="onCellValueChanged($event)"
-(firstDataRendered)="onFirstDataRendered($event)" 
-(firstDataRendered)="onFirstDataRendered($event)"
-(rowClicked)="openDialog()"
-(cellClicked)="onCellClicked($event)"
-(gridReady)="onGridReady($event)"
-[paginationPageSize]="paginationPageSize"
-(bodyScroll)="handleScroll($event)"
+    <div>
+      <ag-grid-angular id="gridContainer"
+        style=" height: 390px;border-radius: 20px;background-color: white;font-family: Gilroy;width:100%;"
+        class="ag-theme-material" [rowHeight]="25" [headerHeight]="48" [columnDefs]="columnDefs"
+        [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5" [suppressExcelExport]="true"
+        [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
+        (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
+        (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" (gridReady)="onGridReady($event)"
+        [paginationPageSize]="paginationPageSize" (bodyScroll)="handleScroll($event)"></ag-grid-angular>
 
-></ag-grid-angular>
+    </div>
+    <div class="pagination">
+      <span class="pagination-cls">1&nbsp;</span> to&nbsp; <span
+        class="pagination-cls">{{paginationScrollCount}}&nbsp;</span> of&nbsp; <span
+        class="pagination-cls">{{rowData5.length}}</span>
+    </div>
 
-</div>
-<div class="pagination">
-<span class="pagination-cls">1&nbsp;</span> to&nbsp; <span class="pagination-cls">{{paginationScrollCount}}&nbsp;</span> of&nbsp; <span class="pagination-cls">{{rowData5.length}}</span>
-</div>
-
-</div>
+  </div>
 </div>

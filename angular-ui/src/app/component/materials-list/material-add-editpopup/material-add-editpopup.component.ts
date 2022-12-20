@@ -759,6 +759,7 @@ export class MaterialAddEditpopupComponent {
         let copyObject = JSON.parse(JSON.stringify(currentObj.first));
         delete copyObject.next;
         obj.geographySelected = [copyObject];
+        obj.geographyNamesSelected = [copyObject.geographyName];
         obj.geoProperties = [this.CreateGeoPropertiesObject({ geographyName: copyObject.geographyName, geographyId: copyObject.geographyId })];
       }
       this.removeOtherGeographiesData(Number(currentObj["hirearchyLevel"]));

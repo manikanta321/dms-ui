@@ -78,6 +78,12 @@ if(this.SubcatsetName=='Edit Sub-Category'){
   };
   this.calssification.addsubCatagory(data).subscribe((res)=>{
     if (res.response.result === 'Success') {
+      sessionStorage.setItem("subCategoryName",this.sucatname);
+      sessionStorage.setItem("subCategoryCode",this.sucatnameCode);
+      sessionStorage.setItem("CategoryName",'');
+      sessionStorage.setItem("CategoryCode",'');
+      sessionStorage.setItem("typeName",'');
+      sessionStorage.setItem("typeCode",'');
     this.sucatname='';
     this.sucatnameCode='';
     this.sharedService.filter('Register click')

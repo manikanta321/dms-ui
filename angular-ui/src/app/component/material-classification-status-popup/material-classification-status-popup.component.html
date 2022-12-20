@@ -7,12 +7,22 @@
             <br>
             <b>Done !</b>
         </div>
-        <div class="text-succ mt-3">
+        <div class="text-succ mt-3" *ngIf="CategoryName!=''">
             <p> Material
-                <!-- <b>{{data.activeCatId}} ({{data.activeCatName ?? ''}})</b> -->
+                <b>{{CategoryName}} ({{CategoryCode ?? ''}})</b>
                 is Successfully Added
-                <!-- <b style="color: rgba(23, 177, 92, 1);" *ngIf="data?.isActive">Reactivated</b> -->
-                <!-- <b style="color: red;" *ngIf="!data?.isActive">Deactivated</b> -->
+            </p>
+        </div>
+        <div class="text-succ mt-3" *ngIf="subCategoryName!=''">
+            <p> Material
+                <b>{{subCategoryName}} ({{subCategoryCode}})</b>
+                is Successfully Added
+            </p>
+        </div>
+        <div class="text-succ mt-3" *ngIf="typeName!=''">
+            <p> Material
+                <b>{{typeName}} ({{typeCode}})</b>
+                is Successfully Added
             </p>
         </div>
        

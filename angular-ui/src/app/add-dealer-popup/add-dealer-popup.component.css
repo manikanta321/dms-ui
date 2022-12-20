@@ -2,18 +2,41 @@
   margin-top: 50px;
 }
 
+
+.search
+{
+  width: 20px;
+  margin-top: -4px;
+  margin-left: -31px;
+}
+  
+
+.d-flex
+
+
+
+{
+
+  justify-content: right;
+
+}
+
+
+
+
 input[type=checkbox] {
   accent-color: black;
 }
 
 .horizontal-scroll {
-  display: flex;
-  gap: 10px;
+   display: flex; 
+   gap: 10px; 
   /* height: 450px; */
   overflow-x: auto;
   /* -ms-scroll-snap-type: x mandatory;
       scroll-snap-type: x mandatory;
   scrollbar-width: none; */
+  
 }
 
 /* .horizontal-scroll::-webkit-scrollbar {
@@ -796,6 +819,13 @@ border-radius: 10px;
     background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
   
   }
+
+.scr
+{
+  height: 350px;
+  overflow-x: hidden;
+  
+}
   
   .font {
     font-family: 'Gilroy';
@@ -1533,6 +1563,7 @@ border-radius: 10px;
   .add-dealer-scroll {
     /* height:470px; */
     overflow-x: hidden;
+    
   }
 
   .addtype {

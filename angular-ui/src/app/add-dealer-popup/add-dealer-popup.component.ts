@@ -11,6 +11,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { SharedServicesDealerService } from '../services/shared-services-dealer.service';
 import { Directive, HostListener, Optional, Output, EventEmitter } from '@angular/core';
 import { ConsoleService } from '@ng-select/ng-select/lib/console.service';
+import { StepperSelectionEvent } from '@angular/cdk/stepper';
 
 //import { ToastrService } from 'ngx-toastr';
 
@@ -51,6 +52,11 @@ export class AddDealerPopupComponent implements OnInit {
   addCountryButton: boolean = false;
 
   basicInfo: boolean = false;
+  basi: boolean=true;
+
+  
+
+  
 
   removelist: boolean = false;
 
@@ -226,7 +232,7 @@ console.log('selectedItemsselectedItems',this.selectedItems)
       })
       this.getGeographyForMaterial(0, this.customerIDofDealer);
     } else {
-      this.dealerAction = "Add"
+       this.dealerAction = ""
       this.addAddressForm1('7');
       this.addAddressForm1('6');
       this.getGeographyForMaterial(0, 0);
@@ -490,15 +496,31 @@ console.log('selectedItemsselectedItems',this.selectedItems)
 
   goForward(stepper: MatStepper) {
     stepper.next();
+   
   }
 
   disableBackbutton() {
     this.goForward(this.myStepper);
     this.basicInfo = true;
-    // alert(this.basicInfo);
+    this.basi=false;
+  
+    
+    
   }
+  goBack(stepper: MatStepper)
+  {
+   this.myStepper.previous();
+  
+  this.basicInfo=false;
+    
+
+    
+  
 
 
+   
+  }
+  
 
 
 

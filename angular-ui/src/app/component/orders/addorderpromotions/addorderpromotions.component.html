@@ -7,7 +7,7 @@
 
             </div>
             <div class="head-t">
-                <h3 class="addU font">Add Order</h3>
+                <h3 class="addU font">{{actineLabel}}</h3>
                     <div class="row top-bottom">
                         <div class="row text-center"></div>
                     </div>
@@ -91,8 +91,9 @@
                                          <button (click)="addOrderPromotionList()" class="add-edit-promo" [mat-dialog-close]="true">Add/Edit Promo Items</button> 
                                     </div>
                                     <div class="addEditNonPromotion">
-                                         <button (click)="addOrderNonPromotionList()"  [mat-dialog-close]="true" class="add-edit-non-promo">Add/Edit Non Promo Items</button>
-                                    </div>  
+                                         <button (click)="addOrderNonPromotionList()"   class="add-edit-non-promo">Add/Edit Non Promo Items</button>
+                                         <!-- [mat-dialog-close]="true" -->
+                                        </div>  
                                 </div>
                             </div>
                             <div class="col-lg-1" (click)="expandOrderItemsDiv()">

@@ -862,7 +862,7 @@ debugger
     localStorage.setItem('selectedtypeasso', item);
     this.dialog.open(AddPromotionGeographiesComponent, {
       width: '654px',
-      height: '600px',
+      height: '520px',
     });
   }
   getclassification() {
@@ -1003,7 +1003,12 @@ debugger
     this.sub_categorys = [];
     this.typeI = [];
     this.typesI = [];
-
+    this.myForm1 = this.fb.group({
+      city2: [this.selectedItems],
+    });
+    this.myForm2 = this.fb.group({
+      city3: [this.selectedItems],
+    });
     const data = {
       DealerId: this.selectedDealer2,
       SelectedGeoIds: this.storedName124,

@@ -6,6 +6,8 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { MaterialListService } from 'src/app/services/material-list.service';
 import { AddMaterialsService } from 'src/app/services/add-materials.service';
+import { AddorderpromotionsComponent } from '../addorderpromotions/addorderpromotions.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-order-nonpromotionlist',
@@ -70,7 +72,8 @@ export class OrderNonpromotionlistComponent implements OnInit {
     private http: HttpClient,
     private materialList: MaterialListService,
     private addMaterials: AddMaterialsService,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,private dialog: MatDialog,
+    private dialogRef: MatDialogRef<any>) { }
 
   ngOnInit(): void {
     this.getclassification();
@@ -535,5 +538,16 @@ export class OrderNonpromotionlistComponent implements OnInit {
       this.sub_categorys = [];
       this.typesData = [];
       this.materialIdentifierData = [];
+    }
+
+    closePopup() {
+    //   this.dialog.open(AddorderpromotionsComponent, {
+    //     // width: '100vw',
+    //     width: '900px',
+    //     height:'663px',
+    //     panelClass: 'material-add-edit'
+    // });
+    this.dialogRef.close();
+  
     }
 }

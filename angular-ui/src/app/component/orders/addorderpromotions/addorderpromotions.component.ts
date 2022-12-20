@@ -4,7 +4,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddOrderPromotionlistComponent } from '../add-order-promotionlist/add-order-promotionlist.component';
 import { OrderNonpromotionlistComponent } from '../order-nonpromotionlist/order-nonpromotionlist.component';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-addorderpromotions',
   templateUrl: './addorderpromotions.component.html',
@@ -22,6 +22,9 @@ export class AddorderpromotionsComponent implements OnInit {
   image2 = 'assets/img/minimize-tag.png';
   image3 = 'assets/img/minimize-tag.png';
   buygroupromo: any;
+  actineLabel: any;
+  updateOrSave: boolean = false
+  editData: boolean = false;
 
   //event handler for the select element's change event
   selectChangeHandler (event: any) {
@@ -50,13 +53,31 @@ export class AddorderpromotionsComponent implements OnInit {
     eValue: '',
     pValue: '',
   }];
-  constructor(private _formBuilder: FormBuilder,
+  constructor(private _formBuilder: FormBuilder,private spinner: NgxSpinnerService,
     public dialog: MatDialog) { }
 
   firstFormGroup: FormGroup = this._formBuilder.group({firstCtrl: ['']});
   secondFormGroup: FormGroup = this._formBuilder.group({secondCtrl: ['']});
 
   ngOnInit(): void {
+
+    let editV = localStorage.getItem('Edit');
+    
+    if (editV == 'Edit') {
+      this.actineLabel = "Edit order";
+      this.updateOrSave = !this.updateOrSave
+      // this.spinner.show();
+      // this.spinner.hide();
+
+}
+else {
+      this.actineLabel = "Add order";
+      this.editData = false;
+      // this.updateOrSave= this.updateOrSave;
+      
+    }
+
+
   }
 
   onTypeSelect(item: any) {

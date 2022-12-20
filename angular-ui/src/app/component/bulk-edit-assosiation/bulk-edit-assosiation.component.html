@@ -76,17 +76,21 @@
 
       <div class="searchBox1 d-flex">
         <div class="promotiont2">
-          <select #teams class="form-select select-asso" aria-label=".form-select-lg example">
-            <option selected hidden>Select Field</option>
-            <option value="1">MRP</option>
-            <option value="2">Jio</option>
+          <select #teams class="form-select select-asso" aria-label=".form-select-lg example"  [(ngModel)]="selectedGeoField">
+            <option value="" disabled selected>Select Feild</option>
+            <option value="MRP"> MRP</option>
+            <option value="MaxOrder"> Max Order Qty</option>
+            <option value="MinOrder"> Min Order Qty</option>
+            <option value="Margin">Margin</option>
+            <option value="Discount"> Discount Percent</option>
+            <option value="LeadTimeIndays"> Lead Time</option>
           </select>
         </div>
         <div class="promotiont3">
-          <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name="" placeholder="Enter">
+          <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name="" placeholder="Enter"  [(ngModel)]="updateGeographyValue">
         </div>
         <div class="promotiont3">
-          <button type="button" class="saveas-draft1">Apply </button>
+          <button type="button" (click)="applySelectedValue()" class="saveas-draft1">Apply </button>
 
         </div>
 
@@ -95,7 +99,7 @@
 
 
     </div>
-    <div class="search-d">
+    <div style="width:100px">
 
       <div class="icon btnhover refreshbtn" style=" cursor: pointer;" (click)="refresh()">
         <img class="refresh" src="assets/img/ultrarefresh.svg" style="position: relative;top: 9px;left: 12px;"
@@ -156,26 +160,26 @@
             <input type="text" class="testcalss" id="fname" name="fname" formControlName="DealerName" readonly>
           </td>
           <td>
-            <input type="text" class="uom-cls" id="fname" name="fname" formControlName="MRP">
+            <input type="text" class="uom-cls" id="fname" name="fname"  formControlName="MRP" [(ngModel)]="addAddressDetailsForm.value.BulkAssociationsCount[i].MRP">
           </td>
           <td>
-            <input type="text" class="uom-cls" id="fname" name="fname" formControlName="MinOrder">
-          </td>
-
-          <td>
-            <input type="text" class="uom-cls" formControlName="MaxOrder">
+            <input type="text" class="uom-cls" id="fname" name="fname" formControlName="MinOrder" [(ngModel)]="addAddressDetailsForm.value.BulkAssociationsCount[i].MinOrder">
           </td>
 
           <td>
-            <input type="number" class="uom-cls" formControlName="Margin">
+            <input type="text" class="uom-cls" formControlName="MaxOrder" [(ngModel)]="addAddressDetailsForm.value.BulkAssociationsCount[i].MaxOrder">
           </td>
 
           <td>
-            <input type="text" class="uom-cls" formControlName="Discount">
+            <input type="number" class="uom-cls" formControlName="Margin"  [(ngModel)]="addAddressDetailsForm.value.BulkAssociationsCount[i].Margin">
           </td>
 
           <td>
-            <input type="text" class="uom-cls" formControlName="LeadTimeIndays">
+            <input type="text" class="uom-cls" formControlName="Discount" [(ngModel)]="addAddressDetailsForm.value.BulkAssociationsCount[i].Discount">
+          </td>
+
+          <td>
+            <input type="text" class="uom-cls" formControlName="LeadTimeIndays" [(ngModel)]="addAddressDetailsForm.value.BulkAssociationsCount[i].LeadTimeIndays">
 
 
           </td>

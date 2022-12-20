@@ -157,7 +157,10 @@ input.form-check-input1 {
     background-color: black;
     height: 41px;
     margin-top: 6px;
-    margin-left: 88px;
+    /* margin-left: 88px; */
+    position: relative;
+    left: 85px;
+
 
   }
   .refreshbtn1{
@@ -165,7 +168,7 @@ input.form-check-input1 {
     border-radius: 10px;
     background-color: black;
     height: 41px;
-    margin-left: 25px;
+    /* margin-left: 25px; */
 
 
   }
@@ -198,7 +201,7 @@ input.form-check-input1 {
     width: 295px;
     border: solid 1px;
     border-radius: 10px;
-    margin-left: -9px;
+    margin-left: -25px;
     }
     
     
@@ -227,6 +230,15 @@ input.form-check-input1 {
   }
   .dropdown-form {
     position: relative;
+    /* left: 17px; */
+  }
+  .dropdown-form-categ {
+    position: relative;
+    width: 156px;
+  }
+  .dropdown-form-dealer {
+    position: relative;
+    left: 16px;
   }
   .promo1-placeholder.dropdown-placeholder .selected-placeholder {
     color: #000000 !important;
@@ -289,7 +301,11 @@ input.form-check-input1 {
   .promotiont1{
     margin-top: 3px;
     margin-bottom: 53px;
-    margin-left: 16px;
+    /* margin-left: 16px; */
+  }
+  .dlr-promotion1 {
+    position: relative;
+    left: 16px;
   }
   .promotiont2{
     width: 92%;
@@ -302,6 +318,9 @@ input.form-check-input1 {
       padding: 10px;
       padding-top: 6px;
       padding-bottom: 5px;
+  }
+  .promotiont3:hover {
+    cursor: pointer !important;
   }
   .dealer-list{
     font-family: 'Gilroy';
@@ -1157,7 +1176,7 @@ input.form-check-input1 {
   }
   
   .promotionpopup-scroll {
-    height: 390px !important;
+    height: 470px !important;
   }
   
   .footer {
@@ -1313,6 +1332,8 @@ input.form-check-input1 {
     font-style: normal;
     font-weight: 300;
     font-size: 20px;
+    position: relative;
+    left: 16px;
   }
   .slctd-row{
     background: #FFFFFF;
@@ -1322,6 +1343,8 @@ input.form-check-input1 {
     height: 43px;
     padding: 4px;
     padding-top: 7px;
+    position: relative;
+    left: 16px;
   }
   .sltd-span{
     margin-top: 6px;

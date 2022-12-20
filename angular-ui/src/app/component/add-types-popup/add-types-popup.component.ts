@@ -69,9 +69,16 @@ this.typeCode=res.response.typeCode;
       typeCode:this.typeCode,
       subcategoryid:this.subCatId,
       CreatedById:this.numberValue
+      
   };
   this.calssification.addtypes(data).subscribe((res)=>{
     if (res.response.result === 'Success') {
+      sessionStorage.setItem("typeName",this.type);
+      sessionStorage.setItem("typeCode",this.typeCode);
+      sessionStorage.setItem("subCategoryName",'');
+      sessionStorage.setItem("subCategoryCode",'');
+      sessionStorage.setItem("CategoryName",'');
+      sessionStorage.setItem("CategoryCode",'');
     this.type='';
     this.typeCode='';
     this.sharedService.filter('Register click')

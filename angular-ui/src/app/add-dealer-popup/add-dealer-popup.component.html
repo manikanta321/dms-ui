@@ -5,18 +5,35 @@
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
             </div>
             <div class="head-t">
-                <h3 class="addU font">{{dealerAction}}: Dealer Name</h3>
+                <h3 class="addU font">{{dealerAction}} Dealer Name</h3>
                 <br>
-                <img src="assets/img/arrow-left-disable.png" *ngIf="!basicInfo" class="addMore-icon"
+                <div class="d-flex">
+                    <img src="assets/img/arrow-left-disable.png" *ngIf="!basicInfo" (click)="disableBackbutton()" class="addMore-icon"
                     style="width: 32px;margin-left: 760px;" alt="left-arr-btn">
-                <img src="assets/img/arrow-left-circle-fill.svg" *ngIf="basicInfo" class="addMore-icons"
-                    style="width: 24px;margin-left: 760px;" alt="left-arr-btn">
-                <img src="assets/img/arrow-right-circle-fill.svg" (click)="disableBackbutton()" class="addMore-icon"
-                    style="width: 24px; margin-left: 12px;" alt="right-arr-btn">
+
+                   
+
+                <img src="assets/img/arrow-left-circle-fill.svg" *ngIf="basicInfo"   class="addMore-icons"
+                    style="width: 24px;margin-left: 760px;" alt="left-arr-btn" (click)= "goBack(stepper)"> 
+
+                    
+
+                <img src="assets/img/arrow-right-circle-fill.svg" (click)="disableBackbutton()"  class="addMore-icon"
+                    style="width: 24px; margin-left: 12px;" alt="right-arr-btn" >
+
+
+           
+
+             
+                   
+              </div>
                 <mat-stepper labelPosition="bottom" #stepper>
                     <mat-step [stepControl]="firstFormGroup">
                         <form [formGroup]="addAddressDetailsForm">
                             <ng-template matStepLabel class="font ">Basic Information</ng-template>
+                            <div class="scr">
+
+                            
                             <div class="headefont">
                                 <h6 style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'">
                                     <b>Basic
@@ -74,7 +91,8 @@
                                         <label>Other Identifer<span>*</span></label>
                                         <br>
                                         <input type="text" formControlName="OtherIdentifier" class="addDelercols" required
-                                            placeholder="Enter and select">
+                                            placeholder="Enter and select" >
+                                            <img src="../assets/img/search.png" class="search">
                                     </div>
                                     <div class="col-4 ">
                                         <!-- <input type="text"> -->
@@ -153,9 +171,8 @@
                                     <div class="col-1">
                                         <mat-icon class="addMore-icon" (click)=addAddressForm()>add_circle</mat-icon>
                                     </div>
-                                </div>
-                              
-
+                                    
+                                   </div>     
                                 <div  formArrayName="addresscount">
 
                                     <div class="row" *ngFor="let quantity of addresscount().controls; let i=index"
@@ -232,37 +249,56 @@
                                                 class="col-2 remove-mat-icon delete-icon remove-address" 
                                                 [ngClass]="{ 'removeCircle': i>1 ,'removeCircle1': i==3 }"  *ngIf="i >= 0 "                             >remove_circle
                                             </mat-icon>
+
+                                            
+                                           
                                         </div>
-
-
+                                        
+                                        
 
                                     </div>
+                                   
                                     
                                 </div>
-
-
-                                <p id="shiptobilling" class="form-row">
+                               
+                                
+                                </div>
+                              
+                                    <p id="shiptobilling" class="form-row" >
                                     <input type="checkbox" (click)=Checked()> Shipping information is same as billing
                                     information
-                                </p>
+                                </p>    
 
-                            </div>
+                            
 
 
                <div class="row">
+              
                                 <div class="col-5">
+                                    
                                 </div>
                                 <div class="col-2">
                                     <button (click)="saveDealerData()" [disabled]="!addAddressDetailsForm.valid"  class="btn btn-primary btn-block submitbtn save-btn">Next</button>
                                 </div>
                                 <div class="col-5">
+                                   
                                 </div>
                             </div>
+                            
+
+                        </div>
+
+                      
                         </form>
+                       
                     </mat-step>
+                    
 
-                    <!-- geography -->
+                     <!-- geography  -->
 
+                   
+
+                     
                     <mat-step [stepControl]="secondFormGroup">
                         <form [formGroup]="gepGraphiesFormGroup">
                             <ng-template matStepLabel> Geographies</ng-template>

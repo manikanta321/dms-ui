@@ -1,9 +1,11 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import tippy, { hideAll } from 'tippy.js'; 
+import { AddOrderPromotionlistComponent } from '../../orders/add-order-promotionlist/add-order-promotionlist.component';
+import { AddorderpromotionsComponent } from '../../orders/addorderpromotions/addorderpromotions.component';
+// import { OrderNonpromotionlistComponent } from '../../orders/order-nonpromotionlist/order-nonpromotionlist.component';
 
 import { OrderCancelPopupComponent } from '../order-cancel-popup/order-cancel-popup.component';
-import { OrderlistEditPopupComponent } from '../orderlist-edit-popup/orderlist-edit-popup.component';
 import { OrderlistShipPopupComponent } from '../orderlist-ship-popup/orderlist-ship-popup.component';
 @Component({
   selector: 'app-orderlist-action-popup',
@@ -68,8 +70,21 @@ export class OrderlistActionPopupComponent implements OnInit {
 
   orderedit(){
     // localStorage.setItem('edit-dealer','Edit')
-    this.dialog.open(OrderlistEditPopupComponent,{height:"570px"});
-    this.isOpen = false;
+    // this.dialog.open(OrderlistEditPopupComponent,{height:"570px"});
+    // this.isOpen = false;
+    
+      localStorage.setItem("Edit",'Edit')
+      let dialogRef =this.dialog.open(AddorderpromotionsComponent, {
+        // width: '100vw',
+        maxWidth: '70vw',
+        panelClass: 'order-add-edit'
+    });
+      this.isOpen = false;
+      dialogRef.afterClosed().subscribe((res) => {
+  
+      localStorage.setItem('Edit','');
+  
+     })
   }
   orderReceive()
   {

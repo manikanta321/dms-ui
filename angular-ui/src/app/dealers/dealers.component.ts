@@ -735,7 +735,7 @@ ProductItems(){
 
   addUser() {
     localStorage.setItem('edit-dealer','Add')
-    this.dialog.open(AddDealerPopupComponent,{height:"570px"});
+    this.dialog.open(AddDealerPopupComponent,{height:"580px",});
   }
 
   editUser() {

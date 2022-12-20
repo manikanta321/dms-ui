@@ -71,12 +71,15 @@ export class BulkEditAssosiationComponent implements OnInit {
   productSelected:any=[];
   toppingList1: any = [];
   searchText: any;
+  selectedGeoField: string = "";
+  updateGeographyValue: string = "";
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
   dropdownSettings2: IDropdownSettings = {};
-
+  geoGraphyFullData: any = [];
   ProductListArray:any=[];
   dealerListArray:any=[];
+  selectedHirerachyIndex: number = 0;
   gridOptions: GridOptions = {
     defaultColDef: {
       resizable: true,
@@ -528,6 +531,9 @@ LoginId.setValue(this.LoginId)
   }
 
   saveBulkEdit(){
+
+
+console.log('this.addAddressDetailsForm.value',this.addAddressDetailsForm.value)
   this.associationService.editbulkdealer(this.addAddressDetailsForm.value).subscribe((res)=>{
 
 if(res.response.result=='successfully updated'){
@@ -1511,8 +1517,22 @@ console.log(item)
 
   }
 
+  applySelectedValue() {
 
+
+
+    console.log(this.updateGeographyValue, this.selectedGeoField);
+    console.log(this.getFormArray())
+    
+    for (let i = 0; i < this.addAddressDetailsForm.value.BulkAssociationsCount.length; i++) {
+      this.addAddressDetailsForm.value.BulkAssociationsCount.map(x => x[this.selectedGeoField] = this.updateGeographyValue);
+    }
+console.log('this.addAddressDetailsForm.value.BulkAssociationsCount',this.addAddressDetailsForm.value.BulkAssociationsCount)
+    this.selectedGeoField = "";
+    this.updateGeographyValue = "";
+  }
 }
+
 
 
 

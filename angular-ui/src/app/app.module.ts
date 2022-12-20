@@ -119,7 +119,6 @@ import { PopupPscGridTableComponent } from './component/promotions/product-group
 import { PopupPsubgGridTableComponent } from './component/promotions/product-group-add-item/popup-psubg-grid-table/popup-psubg-grid-table.component';
 import { MaterialListActionComponent } from './component/material-list-action/material-list-action.component';
 import { OrderlistActionPopupComponent } from './component/order-list/orderlist-action-popup/orderlist-action-popup.component';
-import { OrderlistEditPopupComponent } from './component/order-list/orderlist-edit-popup/orderlist-edit-popup.component';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { DateRangeSelectionComponent } from './component/promotions/date-range-selection/date-range-selection.component';
 import { SalesListComponent } from './component/sales-list/sales-list.component';
@@ -265,7 +264,7 @@ import { MaterialClassificationStatusPopupComponent } from './component/material
     PopupPsubgGridTableComponent,
     MaterialListActionComponent,
     OrderlistActionPopupComponent,
-    OrderlistEditPopupComponent,
+  
     DateRangeSelectionComponent,
     SalesListComponent,
     SalesInventoryComponent,
@@ -327,7 +326,7 @@ import { MaterialClassificationStatusPopupComponent } from './component/material
     PopupPsubgGridTableComponent,
     MaterialListActionComponent,
     OrderlistActionPopupComponent,
-    OrderlistEditPopupComponent,
+  
     DateRangeSelectionComponent,
     SalesListComponent,
     SalesInventoryComponent,
@@ -403,7 +402,7 @@ import { MaterialClassificationStatusPopupComponent } from './component/material
           PopupPsubgGridTableComponent,
           MaterialListActionComponent,
           OrderlistActionPopupComponent,
-          OrderlistEditPopupComponent,
+         
           DateRangeSelectionComponent,
           SalesListComponent,
           SalesInventoryComponent,

@@ -584,9 +584,16 @@ export class OrderListComponent implements OnInit {
     }
   }
 
-  addOrderPromotion(){
- 
-    this.dialog.open( AddorderpromotionsComponent,{width: '900px',height:'663px'});
+
+
+  addOrderPromotion() {
+    this.dialog.open(AddorderpromotionsComponent, {
+      // width: '100vw',
+      width: '900px',
+      height:'663px',
+      panelClass: 'material-add-edit'
+  });
+  localStorage.setItem('Edit', 'Add');
   }
 
 

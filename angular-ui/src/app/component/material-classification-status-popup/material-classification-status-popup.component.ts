@@ -9,9 +9,22 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class MaterialClassificationStatusPopupComponent implements OnInit {
   activeCatId:any;
   activeCatName:any;
+  CategoryName:any;
+  CategoryCode:any;
+  CategoryData:any;
+  subCategoryName:any;
+  subCategoryCode:any;
+  typeName:any;
+  typeCode:any;
   constructor(private dialogRef: MatDialogRef<any>) { }
 
   ngOnInit(): void {
+    this.CategoryName = sessionStorage.getItem("CategoryName");
+    this.CategoryCode =sessionStorage.getItem("CategoryCode");
+    this.subCategoryName = sessionStorage.getItem("subCategoryName");
+    this.subCategoryCode = sessionStorage.getItem("subCategoryCode");
+    this.typeName = sessionStorage.getItem("typeName");
+    this.typeCode = sessionStorage.getItem("typeCode");
   }
   closeDialog(){
     this.dialogRef.close();

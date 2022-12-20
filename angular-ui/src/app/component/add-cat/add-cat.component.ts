@@ -78,6 +78,12 @@ this.addcatcode=res.response.categoryCode;
     // this.addcatcode='';
     // this.dialogRef.close();
     if (res.response.result === 'Success') {
+      sessionStorage.setItem("CategoryName",this.addcat);
+      sessionStorage.setItem("CategoryCode",this.addcatcode);
+      sessionStorage.setItem("subCategoryName",'');
+      sessionStorage.setItem("subCategoryCode",'');
+      sessionStorage.setItem("typeName",'');
+      sessionStorage.setItem("typeCode",'');
       this.sharedService.filter('Register click')
       this.addcat='';
       this.addcatcode='';

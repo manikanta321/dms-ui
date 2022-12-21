@@ -438,6 +438,7 @@ export class AddorderpromotionsComponent implements OnInit {
       // this.orderNonPromotionsdata = res.response;
       let orderNonPromotionsData = res.response;
       this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
     });
   }
   onItemDeSelect(item: any) {
@@ -467,6 +468,7 @@ export class AddorderpromotionsComponent implements OnInit {
       // this.orderNonPromotionsdata = res.response;
       let orderNonPromotionsData = res.response;
       this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
     });
     console.log('this.catergory', this.catergory);
     this.subcategoryForm = this.fb.group({
@@ -504,6 +506,7 @@ export class AddorderpromotionsComponent implements OnInit {
         return this.subcatArray.push(element.subCatId);
 
       })
+      console.log("SubCategoryArrayy",this.subcatArray);
       this.topping1 = new FormControl(this.sub_category);
     });
     const data =
@@ -519,6 +522,7 @@ export class AddorderpromotionsComponent implements OnInit {
       // this.orderNonPromotionsdata = res.response;
       let orderNonPromotionsData = res.response;
       this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
     });
     console.log("catArray", this.catergory)
   }
@@ -532,7 +536,7 @@ export class AddorderpromotionsComponent implements OnInit {
     this.catergory = [];
     this.sub_category = [];
     this.sub_categorys = [];
-    this.typeI = [];
+    this.typesI = [];
     const data =
     {
       Cat: this.catergory,
@@ -546,6 +550,7 @@ export class AddorderpromotionsComponent implements OnInit {
       // this.orderNonPromotionsdata = res.response;
       let orderNonPromotionsData = res.response;
       this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
     });
 
   }
@@ -562,6 +567,21 @@ export class AddorderpromotionsComponent implements OnInit {
       console.log("types..res", typs);
       this.typeI = typs;
       this.topping2 = new FormControl(this.typeI);
+    });
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      Search: this.searchText,
+      GeographyId: this.geographyId
+    }
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
     });
   }
   onSubCategoryDeSelect(item: any) {
@@ -582,9 +602,25 @@ export class AddorderpromotionsComponent implements OnInit {
     this.type = this.fb.group({
       type: [this.selectedItems]
     });
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      Search: this.searchText,
+      GeographyId: this.geographyId
+    }
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
+    });
   }
   onSubCategorySelectOrAll() {
     this.sub_categorys = this.subcatArray;
+    console.log("subCattyyArrayy",this.sub_categorys);
     let Type = {
       subCatId: this.sub_categorys
     }
@@ -594,22 +630,83 @@ export class AddorderpromotionsComponent implements OnInit {
       this.typeI = typs;
       this.topping2 = new FormControl(this.typeI);
     });
+    console.log("subcategoriesssss",this.sub_categorys)
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      Search: this.searchText,
+      GeographyId: this.geographyId
+    }
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
+    });
   }
   onSubCategoryDSelectOrAll(item: any) {
     this.sub_categorys = [];
-    this.typeI = []
+    this.typesI = []
     this.type = this.fb.group({
       type: [this.selectedItems]
+    });
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      Search: this.searchText,
+      GeographyId: this.geographyId
+    }
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
     });
   }
   // typeselect
   onTypeSelect(item: any) {
-    this.typesData.push(item.typeId);
+    this.typesI.push(item.typeId);
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      Search: this.searchText,
+      GeographyId: this.geographyId
+    }
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
+    });
   }
   onTypeDeSelect(item: any) {
 
-    this.typesData.forEach((element, index) => {
-      if (element == item.typeId) this.typesData.splice(index, 1);
+   this.typesI.forEach((element, index) => {
+      if (element == item.typeId)this.typesI.splice(index, 1);
+
+    });
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      Search: this.searchText,
+      GeographyId: this.geographyId
+    }
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
 
     });
 
@@ -630,10 +727,40 @@ export class AddorderpromotionsComponent implements OnInit {
       return this.typesArray.push(element.typeId);
 
     })
-    this.typesData = this.typesArray;
+    this.typesI = this.typesArray;
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      Search: this.searchText,
+      GeographyId: this.geographyId
+    }
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
+    });
   }
   OnTypeDeselectOrAll() {
-    this.typesData = [];
+    this.typesI = [];
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      Search: this.searchText,
+      GeographyId: this.geographyId
+    }
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
+    });
   }
   // material select
   selectMaterialIdentifier() {
@@ -647,6 +774,21 @@ export class AddorderpromotionsComponent implements OnInit {
   onMaterialIdentifierSelect(item: any) {
     this.materialIdentifierData.push(item.materilCustomIdentifierId);
     console.log("materialIdentifier", this.materialIdentifierData);
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      Search: this.searchText,
+      GeographyId: this.geographyId
+    }
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
+    });
   }
   onMaterialIdentifierDeSelect(item: any) {
 
@@ -655,6 +797,21 @@ export class AddorderpromotionsComponent implements OnInit {
 
     });
     console.log("materialIdentifier", this.materialIdentifierData);
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      Search: this.searchText,
+      GeographyId: this.geographyId
+    }
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
+    });
   }
   onMaterialIdentifierSelectOrAll() {
 
@@ -674,10 +831,40 @@ export class AddorderpromotionsComponent implements OnInit {
     })
     this.materialIdentifierData = this.materialIdentifierArray;
     console.log("materialIdentifier", this.materialIdentifierData);
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      Search: this.searchText,
+      GeographyId: this.geographyId
+    }
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
+    });
   }
   onMaterialIdentifierDeSelectOrAll() {
     this.materialIdentifierData = [];
     console.log("materialIdentifier", this.materialIdentifierData);
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      Search: this.searchText,
+      GeographyId: this.geographyId
+    }
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
+    });
   }
 
 

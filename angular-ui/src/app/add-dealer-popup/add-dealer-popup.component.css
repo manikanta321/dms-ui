@@ -52,7 +52,7 @@ input[type=checkbox] {
   padding: 0 20px;
 }
 
-.geo-classification-crad {}
+
 
 .country {
 
@@ -1697,4 +1697,9 @@ border-radius: 10px;
   margin-left: 206%;
   margin-top: 60px;
   color: red;
+}
+
+.error{
+  color: red;
+  font-size: 15px;
 }

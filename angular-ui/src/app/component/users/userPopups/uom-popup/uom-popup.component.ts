@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UomServicesService } from 'src/app/services/uom-services.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SharedService } from 'src/app/services/shared-services.service';
+import { GeoAddedPopupComponent } from 'src/app/component/geo-classification/geo-added-popup/geo-added-popup.component';
 
 @Component({
   selector: 'app-uom-popup',
@@ -15,6 +16,7 @@ export class UomPopupComponent implements OnInit {
     private sharedService:SharedService,
     private uomservise:UomServicesService,
     private dialogRef: MatDialogRef<UomPopupComponent>,
+    private dialog: MatDialog,
 
   ) { }
 
@@ -32,6 +34,8 @@ addUom(){
 
 console.log(res)
 this.dialogRef.close();
+this.dialog.open(GeoAddedPopupComponent, {panelClass: 'activeSuccessPop'});
+
 
   })
 

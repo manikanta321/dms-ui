@@ -34,7 +34,7 @@ export class AddDealerPopupComponent implements OnInit {
 
   addAddressDetailsForm!: FormGroup;
   gepGraphiesFormGroup!: FormGroup;
-
+  formGroup!: FormGroup;
   CreatedById: any;
   numberValue: any;
   statusList: any;
@@ -55,7 +55,19 @@ export class AddDealerPopupComponent implements OnInit {
   basi: boolean=true;
 
   
+  goBack(stepper: MatStepper)
+  {
+   this.myStepper.previous();
+  
+  this.basicInfo=false;
+    
 
+    
+  
+
+
+   
+  }
   
 
   removelist: boolean = false;
@@ -91,6 +103,19 @@ export class AddDealerPopupComponent implements OnInit {
   geoGraphyHirerachyData: any;
   geoGraphyFullData: any;
   userId:any;
+  DealerN:any =" ";
+  dealerName:any;
+  dealerEmail:any;
+  dealerCode:any;
+  dealerWebsite:any;
+  dealerPhone:any;
+  dealerCompany:any;
+  dealerIdentifier:any;
+  dealerUserName:any;
+  dealere:any;
+  dealerp:any;
+  dealerfirst:any;
+  dealerlast:any;
   // geoGraphyFullData1: any;
   geographyHierarchyId: any;
   aarrayToPush: any[] = [];
@@ -136,6 +161,7 @@ export class AddDealerPopupComponent implements OnInit {
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
 
   ngOnInit(): void {
+    // this.createForm();
     this.CreatedById = localStorage.getItem("logInId");
     this.CreatedById = Number(this.CreatedById);
     this.statusForm();
@@ -232,7 +258,7 @@ console.log('selectedItemsselectedItems',this.selectedItems)
       })
       this.getGeographyForMaterial(0, this.customerIDofDealer);
     } else {
-       this.dealerAction = ""
+      this.dealerAction = ""
       this.addAddressForm1('7');
       this.addAddressForm1('6');
       this.getGeographyForMaterial(0, 0);
@@ -283,7 +309,6 @@ console.log('selectedItemsselectedItems',this.selectedItems)
   geographyFormat(currentObj, stockItemId) {
     // console.log(currentObj["hirearchyLevel"]);
     if (!Array.isArray(currentObj)) {
-      if(currentObj.all == undefined && currentObj.next != undefined) this.geographyFormat(currentObj.next, stockItemId);
       if (!currentObj.all) return;
       let obj: any = {};
       let index = (Number(currentObj["hirearchyLevel"]) - 1);
@@ -295,7 +320,6 @@ console.log('selectedItemsselectedItems',this.selectedItems)
         let copyObject = JSON.parse(JSON.stringify(currentObj.first));
         delete copyObject.next;
         obj.geographySelected = [copyObject];
-        obj.geographyNamesSelected = [copyObject.geographyName];
         obj.geoProperties = [this.CreateGeoPropertiesObject({ geographyName: copyObject.geographyName, geographyId: copyObject.geographyId })];
       }
       this.removeOtherGeographiesData(Number(currentObj["hirearchyLevel"]));
@@ -498,31 +522,15 @@ console.log('selectedItemsselectedItems',this.selectedItems)
 
   goForward(stepper: MatStepper) {
     stepper.next();
-   
   }
 
   disableBackbutton() {
     this.goForward(this.myStepper);
     this.basicInfo = true;
-    this.basi=false;
-  
-    
-    
+    // alert(this.basicInfo);
   }
-  goBack(stepper: MatStepper)
-  {
-   this.myStepper.previous();
-  
-  this.basicInfo=false;
-    
-
-    
-  
 
 
-   
-  }
-  
 
 
 
@@ -614,6 +622,128 @@ console.log('selectedItemsselectedItems',this.selectedItems)
       addresscount: this._formBuilder.array([]),
     });
   }
+
+  /*---Validations------*/
+
+      onValidateName(event:any){
+        let name=event.target.value;
+        console.log(name)
+        if(name==''){
+          this.dealerName=true;
+                 }else{
+          this.dealerName=false;
+        }
+      }
+      onValidateEmail(event:any){
+        let email=event.target.value;
+        console.log(email)
+        if(email==''){
+          this.dealerEmail=true;
+                 }else{
+          this.dealerEmail=false;
+        }
+      }
+
+      onValidateCode(event:any){
+        let code=event.target.value;
+        console.log(code)
+        if(code==''){
+          this.dealerCode=true;
+                 }else{
+          this.dealerCode=false;
+        }
+      }
+
+      onValidateWebsite(event:any){
+        let website=event.target.value;
+        console.log(website)
+        if(website==''){
+          this.dealerWebsite=true;
+                 }else{
+          this.dealerWebsite=false;
+        }
+      }
+
+      onValidatePhone(event:any){
+        let phone=event.target.value;
+        console.log(phone)
+        if(phone==''){
+          this.dealerPhone=true;
+                 }else{
+          this.dealerPhone=false;
+        }
+      }
+
+      onValidateCompanyID(event:any){
+        let company=event.target.value;
+        console.log(company)
+        if(company==''){
+          this.dealerCompany=true;
+                 }else{
+          this.dealerCompany=false;
+        }
+      }
+
+      onValidateIdentifier(event:any){
+        let identifer=event.target.value;
+        console.log(identifer)
+        if(identifer==''){
+          this.dealerIdentifier=true;
+                 }else{
+          this.dealerIdentifier=false;
+        }
+      }
+
+      onValidateUserName(event:any){
+        let username=event.target.value;
+        console.log(username)
+        if(username==''){
+          this.dealerUserName=true;
+                 }else{
+          this.dealerUserName=false;
+        }
+      }
+
+      onValidateE(event:any){
+        let emailid=event.target.value;
+        console.log(emailid)
+        if(emailid==''){
+          this.dealere=true;
+                 }else{
+          this.dealere=false;
+        }
+      }
+
+      onValidateP(event:any){
+        let phoneNo=event.target.value;
+        console.log(phoneNo)
+        if(phoneNo==''){
+          this.dealerp=true;
+                 }else{
+          this.dealerp=false;
+        }
+      }
+
+      onValidateFirstName(event:any){
+        let firstname=event.target.value;
+        console.log(firstname)
+        if(firstname==''){
+          this.dealerfirst=true;
+                 }else{
+          this.dealerfirst=false;
+        }
+      }
+
+      onValidateLastName(event:any){
+        let lastname=event.target.value;
+        console.log(lastname)
+        if(lastname==''){
+          this.dealerlast=true;
+                 }else{
+          this.dealerlast=false;
+        }
+      }
+
 
   //get Country List  - geographies
   getCountryList() {

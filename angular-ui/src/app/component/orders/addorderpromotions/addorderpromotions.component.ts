@@ -330,8 +330,8 @@ export class AddorderpromotionsComponent implements OnInit {
       this.dealersbillingAddress = BillingAddress.map((data: { addressId: any; address: any; }) => {
         return { addressId: data.addressId, address  : data.address };
       });
-      console.log(BillingAddress,"shipping address");
-      console.log(this.dealersbillingAddress,"shipping address1");
+      console.log(BillingAddress,"billing address");
+      console.log(this.dealersbillingAddress,"billing address2");
     });
     console.log(this.customerId, "dealrs id")
   }
@@ -342,6 +342,10 @@ export class AddorderpromotionsComponent implements OnInit {
     console.log(this.geographyId, "geographyId")
   }
   onItemSelectshippingAddress(item: any) {
+    this.addressId = item.addressId;
+    console.log(this.addressId, "addressId")
+  }
+  onItemSelectBillingAddress(item: any) {
     this.addressId = item.addressId;
     console.log(this.addressId, "addressId")
   }
@@ -424,8 +428,8 @@ export class AddorderpromotionsComponent implements OnInit {
     const data =
     {
       Cat: this.catergory,
-      Sub_Cat: this.sub_category,
-      type: this.typesData,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
       Search: this.searchText,
       GeographyId: this.geographyId

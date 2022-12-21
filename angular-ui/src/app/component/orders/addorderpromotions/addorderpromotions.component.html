@@ -46,10 +46,10 @@
                             <div class="billingAdrs">
                                 <label class="DealerInfo-label">Billing Address <span class="astr">*</span></label>
                                 <!-- <input matInput placeholder=" Select Billing address" #input class="form-control container input-box" > -->
-                                <ng-select class="shipingAddress" [items]="dealersShippingAddress" 
-                                 id="shipingAddress" name="shipingAddress" required [virtualScroll]="true"
+                                <ng-select class="BillingAddress" [items]="dealersbillingAddress" 
+                                 id="BillingAddress" name="BillingAddress" required [virtualScroll]="true"
                                 bindLabel="address" bindValue="addressId" [searchable]="true" [clearable]="false"
-                                placeholder="select shippingAddress" [(ngModel)]="dealersShippingAddress" (change)="onItemSelectshippingAddress($event)">
+                                placeholder="select shippingAddress" [(ngModel)]="dealersbillingAddress" (change)="onItemSelectBillingAddress($event)">
                                 </ng-select>
                             </div>
                         </div>

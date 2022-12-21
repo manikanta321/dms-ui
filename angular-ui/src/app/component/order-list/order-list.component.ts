@@ -395,6 +395,7 @@ export class OrderListComponent implements OnInit {
     let ordernumber = e.data.orderNUmber;
     // this.employeeName=e.data.userName;
     // console.log('userID',this.userId);
+    sessionStorage.setItem("OrderStatus",e.data.status)
     localStorage.setItem('UomId',e.data.uoMId )
     localStorage.setItem('UomName',e.data.uoMName)
     sessionStorage.setItem("orderNumber",ordernumber);

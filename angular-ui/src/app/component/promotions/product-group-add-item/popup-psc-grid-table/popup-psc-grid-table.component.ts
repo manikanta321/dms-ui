@@ -176,7 +176,7 @@ export class PopupPscGridTableComponent implements OnInit {
     productSubGChk:boolean=false;
   constructor(public promotionTypes : PromotionService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.PscTablegrid();
   }
   onGridReady(params: GridReadyEvent) {

@@ -106,10 +106,10 @@ export class AddpromoGeographyComponent implements OnInit {
         this.task.subtasks.forEach(t => (t.completed = completed));
       }
       saveGeo(){
-        localStorage.setItem("geopromo", JSON.stringify(this.aarrayToPush));
-        localStorage.setItem("aboveDefaultGeoOfNamepromo", JSON.stringify(this.geodata[0].aboveDefaultGeoName));
-        localStorage.setItem("selectedcountpromo", JSON.stringify(this.selectedcount));
-        localStorage.setItem("tottalgeoCountpromo", JSON.stringify(this.geodata[0].geoCount));
+        localStorage.setItem("geopromo1", JSON.stringify(this.aarrayToPush));
+        localStorage.setItem("aboveDefaultGeoOfNamepromo1", JSON.stringify(this.geodata[0].aboveDefaultGeoName));
+        localStorage.setItem("selectedcountpromo1", JSON.stringify(this.selectedcount));
+        localStorage.setItem("tottalgeoCountpromo1", JSON.stringify(this.geodata[0].geoCount));
     
     
     

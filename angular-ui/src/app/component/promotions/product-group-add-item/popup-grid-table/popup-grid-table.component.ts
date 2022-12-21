@@ -175,8 +175,39 @@ export class PopupGridTableComponent implements OnInit {
     productSubGChk:boolean=false;
   constructor(public promotionTypes : PromotionService) { }
 
-  ngOnInit(): void {
-    this.producttable();
+  ngOnInit() {
+    let selectedItemtype =localStorage.getItem('selectedtable')
+    console.log('selectedItemtype',selectedItemtype)
+
+    if(selectedItemtype=='productshortCode'){ 
+      let selectedtableId =localStorage.getItem('selectedtableId')
+
+      this.promotionTypes.GetPGDetailListofShortcode(selectedtableId).subscribe((res) => {
+        console.log('pg details check', res);
+        this.rowData5 = res.response
+      })
+    }
+
+
+    if(selectedItemtype=='productgroup'){
+      let selectedtableId =localStorage.getItem('selectedtableId')
+
+      this.promotionTypes.GetPGDetailListProductGroup(selectedtableId).subscribe((res) => {
+        console.log('pg details check', res);
+        this.rowData5 = res.response
+      })
+    }
+
+    if(selectedItemtype=='productSubgroup'){
+      let selectedtableId =localStorage.getItem('selectedtableId');
+      let selectedtableId2 =localStorage.getItem('selectedtableId2');
+
+      this.promotionTypes.GetPGDetailListofSubGroup(selectedtableId2,selectedtableId).subscribe((res) => {
+        console.log('pg details check', res);
+        this.rowData5 = res.response
+      })
+    }
+
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;

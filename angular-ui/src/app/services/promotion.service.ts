@@ -53,6 +53,22 @@ public GetProductList(data : any){
 public GetPGDetailList(){
   return this.http.get<any>(this.userurl + 'PromotionsApi/GetPGDetailList?ProductGroupId=18')
 }
+public GetPGDetailListofShortcode(id){
+  return this.http.get<any>(this.userurl + 'PromotionsApi/GetPSCDetailList?ProductShortCode='+id)
+}
+
+
+
+public GetPGDetailListProductGroup(id){
+  return this.http.get<any>(this.userurl + 'PromotionsApi/GetPGDetailList?ProductGroupId='+id)
+}
+
+
+public GetPGDetailListofSubGroup(id,id2){
+  return this.http.get<any>(this.userurl + 'PromotionsApi/GetPSGDetailList?ProductGroupId='+ id +'&ProductSubGroupId='+id2)
+}
+
+
 // http://13.126.235.145:801/api/PromotionsApi/GetPGDetailList?ProductGroupId=18
 // http://52.172.24.161:801/api/PromotionsApi/GetPGDetailList?ProductGroupId=18
 public GetPSGDetailList(){

@@ -122,7 +122,7 @@ export class AddItemsPromotionComponent implements OnInit {
     { headerName: "#of Products", field: 'noofproducts', type: ['nonEditableColumn'],
     cellStyle: {color: '#017EFA'},
     cellEditorPopup: true,
-       onCellClicked: (event: CellClickedEvent) => this.dialog.open(PopupPscGridTableComponent, {panelClass: 'pscgrid-popup',width:'999px'})
+       onCellClicked: (event: CellClickedEvent) => this.dialog.open(PopupGridTableComponent, {panelClass: 'pscgrid-popup',width:'999px'})
    },
 
     {
@@ -203,7 +203,7 @@ export class AddItemsPromotionComponent implements OnInit {
       field: 'noofproducts', type: ['nonEditableColumn'],
       cellStyle: {color: '#017EFA'},
       cellEditorPopup: true,
-       onCellClicked: (event: CellClickedEvent) => this.dialog.open(PopupPsubgGridTableComponent, {panelClass: 'psubgrid-popup'})
+       onCellClicked: (event: CellClickedEvent) => this.dialog.open(PopupGridTableComponent, {panelClass: 'psubgrid-popup'})
     },  
 
     // suppressMovable:true,
@@ -481,8 +481,23 @@ export class AddItemsPromotionComponent implements OnInit {
       this.paginationScrollCount = this.rowData5.length;
     }
   }
-  onCellClicked(e): void {
-    console.log('cellClicked', e);
+
+onCellClicked(e): void {
+ console.log('cellClicked', e);
+if(e.data.productShortCode){
+  localStorage.setItem('selectedtable','productshortCode')
+  localStorage.setItem('selectedtableId',e.data.productShortCode);
+  
+}
+if(e.data.productGroupId){
+  localStorage.setItem('selectedtable','productgroup')
+  localStorage.setItem('selectedtableId',e.data.productGroupId)
+}
+if(e.data.productSubGroupId){
+  localStorage.setItem('selectedtable','productSubgroup')
+  localStorage.setItem('selectedtableId',e.data.productSubGroupId)
+  localStorage.setItem('selectedtableId2',e.data.productGroupId)
+}
     // this.userId = e.data.userId;
     // this.employeeName = e.data.userName;
     // console.log('userID', this.userId);
@@ -541,12 +556,41 @@ export class AddItemsPromotionComponent implements OnInit {
     this.productselectedRows = this.gridApi.getSelectedRows();
     console.log(this.productselectedRows);
     localStorage.setItem('productselectedRows',JSON.stringify(this.productselectedRows) )
-    this.goForward(this.myStepper);
+    this.dialogRef.close();
 
     // this.productScselectedRows.map((data:{stockItemId: any;}) => {
     //   return { stockItemId: data.stockItemId};
     // });
   }
+
+  additemsProductShortCode(item:any){
+    // this.productScselectedRows = this.gridApi2.getSelectedRows();
+    // console.log(this.productScselectedRows);
+    localStorage.setItem('productselectedRows',JSON.stringify(this.productScselectedRows) )
+    this.dialogRef.close();
+
+    // this.goForward(this.myStepper)
+  
+  }
+
+  addproductGroup(){
+    // this.pGselectedRows = this.gridApi3.getSelectedRows();
+    // console.log(this.pGselectedRows);
+    localStorage.setItem('productselectedRows',JSON.stringify(this.pGselectedRows) )
+    this.dialogRef.close();
+    
+  }
+
+
+
+  addItemProductSubG(){
+    // this.productSubGselectedRows = this.gridApi4.getSelectedRows();
+    // console.log('rowl',this.productSubGselectedRows);
+    localStorage.setItem('productselectedRows',JSON.stringify(this.productSubGselectedRows) );
+
+    this.dialogRef.close();
+  }
+  
   oncatselect(){
     this.promotionTypes.GetCategories().subscribe((res) =>{
       
@@ -1212,13 +1256,7 @@ GetProductShortCodeList(){
      this.rowDatashortcode = res.response;
    })
  }
-additemsProductShortCode(item:any){
-  // this.productScselectedRows = this.gridApi2.getSelectedRows();
-  // console.log(this.productScselectedRows);
-  localStorage.setItem('productScselectedRows',JSON.stringify(this.productScselectedRows) )
-  this.goForward(this.myStepper)
 
-}
 goForward(stepper: MatStepper) {
   stepper.next();
 }
@@ -1285,13 +1323,7 @@ AddProductGroupList(){
 
 
   }
-  addproductGroup(){
-    // this.pGselectedRows = this.gridApi3.getSelectedRows();
-    // console.log(this.pGselectedRows);
-    localStorage.setItem('pGselectedRows',JSON.stringify(this.pGselectedRows) )
-    this.goForward(this.myStepper);
-
-  }
+  
   // product SubGroup
   ProductSubGroupDrpdwn(item: any) {
     // this.statusTypes.push(item.statusId);
@@ -1359,13 +1391,7 @@ let data={
     })
     console.log(productSubGselectedRows);
   }
-  addItemProductSubG(){
-    // this.productSubGselectedRows = this.gridApi4.getSelectedRows();
-    // console.log('rowl',this.productSubGselectedRows);
-    localStorage.setItem('productSubGselectedRows',JSON.stringify(this.productSubGselectedRows) );
 
-    this.dialogRef.close();
-  }
   matsteptabClick(tab) {
     
     if (tab.matStepLabel == 'productlb'){

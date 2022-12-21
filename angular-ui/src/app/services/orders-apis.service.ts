@@ -47,6 +47,17 @@ export class OrdersApisService {
   public taxtemplatedropdown(){
     return this.http.get<any>(this.userurl + 'DealerApi/GetAddressTaxList')
   }
+  public GetShipingAddress(customerId:any){
+    return this.http.get<any>(this.userurl + `OrdersApi/GetShipingAddress?Customerid=${customerId}`)
+  }
+  public GetBillingAddress(customerId:any){
+    return this.http.get<any>(this.userurl + `OrdersApi/GetBillingAddress?Customerid=${customerId}`)
+  }
+
+  public GetGeoGrapydropdownList(customerId:any){
+    return this.http.get<any>(this.userurl + `OrdersApi/GetordergeoDropdown?Customerid=${customerId}`)
+  }
+  
 }
 
  

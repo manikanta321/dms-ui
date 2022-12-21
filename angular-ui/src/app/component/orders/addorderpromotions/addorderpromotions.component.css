@@ -1081,6 +1081,24 @@ li {
   width: 100%;
   height: 35px;
 }
+::ng-deep.dealerr .ng-select-container {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  height: 30px;
+}
+::ng-deep.selectgeo .ng-select-container {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  height: 30px;
+}
+::ng-deep.shipingAddress .ng-select-container {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  height: 30px;
+}
 
 ::ng-deep.orderDatepicker .mat-form-field-appearance-fill .mat-form-field-flex {
   width: 230px;
@@ -1112,12 +1130,12 @@ li {
   top: 4px;
 }
 
-::ng-deep.selectgeo .multiselect-dropdown .dropdown-btn {
+/* ::ng-deep.selectgeo .multiselect-dropdown .dropdown-btn {
   font-size: 13px;
   padding: 5px 12px !important;
   height: 30px;
   color: rgba(104, 110, 116, 0.75);
-}
+} */
 
 ::ng-deep.billAddress .multiselect-dropdown .dropdown-btn {
   font-size: 13px;

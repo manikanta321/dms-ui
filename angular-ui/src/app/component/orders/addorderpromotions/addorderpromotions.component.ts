@@ -3,13 +3,16 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { AddOrderPromotionlistComponent } from '../add-order-promotionlist/add-order-promotionlist.component';
-import { OrderNonpromotionlistComponent } from '../order-nonpromotionlist/order-nonpromotionlist.component';
+// import { OrderNonpromotionlistComponent } from '../order-nonpromotionlist/order-nonpromotionlist.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { HttpClient } from '@angular/common/http';
 import { MaterialListService } from 'src/app/services/material-list.service';
 import { AddMaterialsService } from 'src/app/services/add-materials.service';
 import { GridApi } from 'ag-grid-community';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
+import { ConsoleEventLogger } from '@generic-ui/hermes/core/infrastructure/logger/event/console.event.logger';
+import { AssosiationServicesService } from 'src/app/services/assosiation-services.service';
+import { SharedServiceMaterialListService } from 'src/app/services/shared-service-material-list.service';
 @Component({
   selector: 'app-addorderpromotions',
   templateUrl: './addorderpromotions.component.html',
@@ -19,7 +22,9 @@ export class AddorderpromotionsComponent implements OnInit {
 
   selectedTeam = '';
   selectedDay: string = '';
-
+  Taxid: any = [];
+  stockItemId: any = [];
+  Quantity: any = [];
   dealerInfo = false;
   orderitem = false;
   otherInfo = false;
@@ -76,6 +81,20 @@ export class AddorderpromotionsComponent implements OnInit {
   materialIdentifier: any = [];
   materialIdentifierMapData: any = [];
   materialIdentifierArray: any = [];
+  datanonpromotions: any = [];
+  datanonpromotion: any = [];
+  dealerListArray: any = [];
+  dealersShippingAddress: any = [];
+  dealerid: any = [];
+  customerId: any = [];
+  addressId: any = [];
+  shippingAddress: any = [];
+  address: any = [];
+  GeoGrapydropdownListdata: any;
+  geographyId: any;
+  searchText: any = " ";
+  typesI: any= [];
+  dealersbillingAddress: any = [];
 
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
@@ -108,14 +127,27 @@ export class AddorderpromotionsComponent implements OnInit {
     private orders: OrdersApisService,
     private materialList: MaterialListService,
     private addMaterials: AddMaterialsService,
+    private dealersList: AssosiationServicesService,
+    private sharedService: SharedServiceMaterialListService,
     private fb: FormBuilder, private dialog: MatDialog,
-    private dialogRef: MatDialogRef<any>) { }
+    private dialogRef: MatDialogRef<any>) {
+    this.sharedService.listen().subscribe((m: any) => {
+      console.log(m)
+      this.orderNonPromotionsList();
+
+    })
+    this.sharedService.getClickEvent().subscribe(() => {
+      this.orderNonPromotionsList();
+    })
+    sort: [];
+  }
 
   firstFormGroup: FormGroup = this._formBuilder.group({ firstCtrl: [''] });
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
 
   ngOnInit(): void {
-    this.orderNonPromotionsList();
+    this.ordersDealers();
+
     this.taxdropdown();
     this.getclassification();
     this.selectMaterialIdentifier();
@@ -177,11 +209,6 @@ export class AddorderpromotionsComponent implements OnInit {
 
   }
 
-
-  checkboxChange(event, changedPromotionObj){
-    console.log(event, changedPromotionObj);
-    changedPromotionObj.isPromotionSelected = event.target.checked;
-  }
 
   onTypeAll(items: any) {
     console.log('onSelectAll', items);
@@ -260,8 +287,85 @@ export class AddorderpromotionsComponent implements OnInit {
   closePopup() {
     this.Non_promotions = false
     // this.dialogRef.close();
+  }
+
+  ordersDealers() {
+    this.dealersList.getDealers().subscribe((res: any) => {
+      let localdata = res.response;
+      console.log('checkdata', localdata)
+
+      this.dealerListArray = localdata.map((data: { customerId: any; customerName: any; }) => {
+        return { customerId: data.customerId, customerName: data.customerName };
+      });
+
+      // this.dealerListArray.push()
+      console.log(this.dealerListArray, "dealersdata")
+    });
+  }
+
+  onItemSelectdealers(item: any) {
+    this.customerId = item.customerId;
+    this.orders.GetGeoGrapydropdownList(this.customerId).subscribe((res) => {
+      let GeoGrapydropdownList = res.response;
+      console.log(GeoGrapydropdownList, "GeoGrapydropdownList")
+      this.GeoGrapydropdownListdata = GeoGrapydropdownList.map((data: { geographyId: any; geographyName: any; }) => {
+        return { geographyId: data.geographyId, geographyName: data.geographyName };
+      });
+      console.log(this.GeoGrapydropdownListdata, "GeoGrapydropdownListdata")
+    });
+    // shipping api
+    this.orders.GetShipingAddress(this.customerId).subscribe((res:any)=>{
+      let shippingAddress = res.response;
+
+      this.dealersShippingAddress = shippingAddress.map((data: { addressId: any; address: any; }) => {
+        return { addressId: data.addressId, address  : data.address };
+      });
+      console.log(shippingAddress,"shipping address");
+      console.log(this.dealersShippingAddress,"shipping address1");
+    });
+     // billing api
+    this.orders.GetBillingAddress(this.customerId).subscribe((res:any)=>{
+      let BillingAddress = res.response;
+
+      this.dealersbillingAddress = BillingAddress.map((data: { addressId: any; address: any; }) => {
+        return { addressId: data.addressId, address  : data.address };
+      });
+      console.log(BillingAddress,"shipping address");
+      console.log(this.dealersbillingAddress,"shipping address1");
+    });
+    console.log(this.customerId, "dealrs id")
+  }
+
+  onItemSelectgeo(item: any) {
+    this.geographyId = item.geographyId;
+    this.orderNonPromotionsList();
+    console.log(this.geographyId, "geographyId")
+  }
+  onItemSelectshippingAddress(item: any) {
+    this.addressId = item.addressId;
+    console.log(this.addressId, "addressId")
+  }
+  // on search 
+  onSearchChange($event: any, anything?: any) {
+    const { target } = $event;
+    this.searchText = target.value;
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_category,
+      type: this.typesData,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      Search: this.searchText,
+      GeographyId: this.geographyId
+    }
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+    });
 
   }
+
 
   getclassification() {
 
@@ -317,6 +421,20 @@ export class AddorderpromotionsComponent implements OnInit {
       console.log("SubCategory", this.sub_category);
       this.topping1 = new FormControl(this.sub_category);
     });
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_category,
+      type: this.typesData,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      Search: this.searchText,
+      GeographyId: this.geographyId
+    }
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+    });
   }
   onItemDeSelect(item: any) {
     this.catergory.forEach((element, index) => {
@@ -331,6 +449,20 @@ export class AddorderpromotionsComponent implements OnInit {
       console.log("response1", res)
       console.log("responseeee", subcaty);
       this.sub_category = subcaty.allOtherSubCAts;
+    });
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      Search: this.searchText,
+      GeographyId: this.geographyId
+    }
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
     });
     console.log('this.catergory', this.catergory);
     this.subcategoryForm = this.fb.group({
@@ -370,6 +502,20 @@ export class AddorderpromotionsComponent implements OnInit {
       })
       this.topping1 = new FormControl(this.sub_category);
     });
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      Search: this.searchText,
+      GeographyId: this.geographyId
+    }
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+    });
     console.log("catArray", this.catergory)
   }
   onItemDeSelectOrAll(item: any) {
@@ -383,6 +529,20 @@ export class AddorderpromotionsComponent implements OnInit {
     this.sub_category = [];
     this.sub_categorys = [];
     this.typeI = [];
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      Search: this.searchText,
+      GeographyId: this.geographyId
+    }
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+    });
 
   }
   // sub cat
@@ -525,7 +685,8 @@ export class AddorderpromotionsComponent implements OnInit {
       "Sub_Cat": [],
       "type": [],
       "MaterialCustomIdentifier": [],
-      "Search": ""
+      "Search": "",
+      "GeographyId": this.geographyId
     }
 
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
@@ -537,16 +698,16 @@ export class AddorderpromotionsComponent implements OnInit {
     });
   }
 
-  orderNonPromotionFormatter(items){
-    let formattedList:any = [];
-    items.forEach( item =>{
-      let obj:any = {}
-      obj.classification = item.calssification; 
+  orderNonPromotionFormatter(items) {
+    let formattedList: any = [];
+    items.forEach(item => {
+      let obj: any = {}
+      obj.classification = item.classification;
       obj.materialCustomName = item.materialCustomName;
-      obj.mrp =item.mrp;
-      obj.productSKUName =item.productSKUName;
-      obj.stockItemId =item.stockItemId;
-      obj.stockItemName =item.stockItemName;
+      obj.mrp = item.mrp;
+      obj.productSKUName = item.productSKUName;
+      obj.stockItemId = item.stockItemId;
+      obj.stockItemName = item.stockItemName;
       obj.isPromotionSelected = false;
       obj.Quantity = null;
       obj.Taxid = null;
@@ -556,9 +717,31 @@ export class AddorderpromotionsComponent implements OnInit {
     return formattedList;
 
   }
-  
-  addnonPromoItems(){
-    console.log(this.orderNonPromotionsdata);
+  checkboxChange(event, changedPromotionObj) {
+    console.log(event, changedPromotionObj);
+    changedPromotionObj.isPromotionSelected = event.target.checked;
+
+
+    this.Taxid = changedPromotionObj.Taxid
+    this.stockItemId = changedPromotionObj.stockItemId
+    this.Quantity = changedPromotionObj.Quantity
+    let nonprmodata = {
+      "Taxid": this.Taxid,
+      "stockItemId": this.stockItemId,
+      "Quantity": this.Quantity,
+    }
+    this.datanonpromotions.push(nonprmodata);
+    // const ids = this.datanonpromotions.map(o => o.stockItemId)
+    // this.datanonpromotion = this.datanonpromotions.filter(({stockItemId}, index) => !ids.includes(stockItemId, index + 1))
+
+    // console.log(filtered)
+    console.log(nonprmodata)
+    console.log(this.datanonpromotions)
+  }
+
+  addnonPromoItems() {
+
+    console.log(this.datanonpromotions, "addnonpromotions");
   }
 
   taxdropdown() {

@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { AddOrderPromotionlistComponent } from '../orders/add-order-promotionlist/add-order-promotionlist.component';
-import { OrderNonpromotionlistComponent } from '../orders/order-nonpromotionlist/order-nonpromotionlist.component';
+// import { OrderNonpromotionlistComponent } from '../orders/order-nonpromotionlist/order-nonpromotionlist.component';
 import { AddPromotionGeographiesComponent } from '../add-promotions/add-promotion-geographies/add-promotion-geographies.component';
 import { UserService } from 'src/app/services/user.service';
 import { AssosiationServicesService } from 'src/app/services/assosiation-services.service';
@@ -844,19 +844,19 @@ debugger
     this.screenValue = value;
   }
 
-  addOrderPromotionList() {
-    this.dialog.open(AddOrderPromotionlistComponent, {
-      width: '900px',
-      height: '460px',
-    });
-  }
+  // addOrderPromotionList() {
+  //   this.dialog.open(AddOrderPromotionlistComponent, {
+  //     width: '900px',
+  //     height: '460px',
+  //   });
+  // }
 
-  addOrderNonPromotionList() {
-    this.dialog.open(OrderNonpromotionlistComponent, {
-      width: '1000px',
-      height: '460px',
-    });
-  }
+  // addOrderNonPromotionList() {
+  //   this.dialog.open(OrderNonpromotionlistComponent, {
+  //     width: '1000px',
+  //     height: '460px',
+  //   });
+  // }
   geography(item) {
     this.selectedtypeasso1=item
     localStorage.setItem('selectedtypeasso', item);

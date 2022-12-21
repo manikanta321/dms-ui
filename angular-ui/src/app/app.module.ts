@@ -97,7 +97,7 @@ import { TaxTempleateActionComponent } from './component/tax-templeate-action/ta
 import { ProductGroupAddItemComponent } from './component/promotions/product-group-add-item/product-group-add-item.component';
 import { ProductSubGroupComponent } from './component/promotions/product-sub-group/product-sub-group.component';
 import { ProductShortCodeComponent } from './component/promotions/product-short-code/product-short-code.component';
-import { OrderNonpromotionlistComponent } from './component/orders/order-nonpromotionlist/order-nonpromotionlist.component';
+// import { OrderNonpromotionlistComponent } from './component/orders/order-nonpromotionlist/order-nonpromotionlist.component';
 import { PopupGridTableComponent } from './component/promotions/product-group-add-item/popup-grid-table/popup-grid-table.component';
 import { ReactiveCurrencyComponent } from './component/other-masters/currency-conversation/reactive-currency/reactive-currency.component';
 import { DeactiveCurrencyComponent } from './component/other-masters/currency-conversation/deactive-currency/deactive-currency.component';
@@ -242,7 +242,7 @@ import { MaterialClassificationStatusPopupComponent } from './component/material
     ProductGroupAddItemComponent,
     ProductSubGroupComponent,
     ProductShortCodeComponent,
-    OrderNonpromotionlistComponent,
+    // OrderNonpromotionlistComponent,
     PopupGridTableComponent,
     ReactiveCurrencyComponent,
     DeactiveCurrencyComponent,
@@ -304,7 +304,7 @@ import { MaterialClassificationStatusPopupComponent } from './component/material
     ProductGroupAddItemComponent,
     ProductSubGroupComponent,
     ProductShortCodeComponent,
-    OrderNonpromotionlistComponent,
+    // OrderNonpromotionlistComponent,
     PopupGridTableComponent,
     ReactiveCurrencyComponent,
     DeactiveCurrencyComponent,
@@ -380,7 +380,7 @@ import { MaterialClassificationStatusPopupComponent } from './component/material
           ProductGroupAddItemComponent,
           ProductSubGroupComponent,
           ProductShortCodeComponent,
-          OrderNonpromotionlistComponent,
+          // OrderNonpromotionlistComponent,
           PopupGridTableComponent,
           ReactiveCurrencyComponent,
           DeactiveCurrencyComponent,

@@ -152,9 +152,11 @@
 }
 
 .refreshbtn:hover {
-  background-color: grey !important;
-  color: white !important;
-}
+   background-color: grey !important;
+   color: white !important;
+
+ }
+ 
 
 // ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
 //   border: 1px solid #337ab7;
@@ -215,7 +217,7 @@
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
   border: none;
   background: #000000;
-  border-radius: 35%;
+  border-radius: 28%;
   position: relative;
   width: 43px;
 }

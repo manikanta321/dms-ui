@@ -116,7 +116,14 @@
   top: 6px;
   margin-top: 5px;
   margin-left: 83%;
+  cursor: pointer;
 }
+.add-user:hover
+{
+  background-color: grey !important;
+  color: white !important;
+}
+
 .download-btn {
   border: none;
   background: #000000;
@@ -498,7 +505,13 @@ left: 37%
           width: 43px;
           padding: 8px 0px 0px 10px;
           height: 43px;
+          cursor: pointer;
           /* margin-top: -33px; */
+        }
+        .ref:hover
+        {
+          background-color: grey !important;
+          color: white !important;
         }
         ::ng-deep.btnhover:hover{
           background: #000000 !important;

@@ -1040,6 +1040,11 @@ mat-sidenav {
     margin-right: 10px;
     cursor: pointer;
   }
+  .sales-add:hover
+  {
+    background-color: grey !important;
+    color: white !important;
+  }
   .imgorder{
     position: relative;
     top: 8px;
@@ -1075,6 +1080,11 @@ mat-sidenav {
     width: 37px;
     height: 37px;
     cursor: pointer;
+  }
+  .sales-dwnld:hover
+  {
+    background-color: grey !important;
+    color: white !important;
   }
   .imgdwnl{
     position: relative;

@@ -7,6 +7,12 @@
     background: black;
     cursor: pointer;
 }
+.cal:hover
+{
+    background-color: grey !important;
+
+    color: white !important;
+}
 
 
 .datepicker-menu-list {

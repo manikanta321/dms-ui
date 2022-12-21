@@ -34,8 +34,13 @@
   background: #000000;
   border-radius: 10px;
   margin-left: 10px;
+  cursor: pointer;
 }
-
+.sales-refreshbtn:hover
+{
+  background-color: grey !important;
+  color: white !important;
+}
 .refresh-img {
   margin-top: 11px;
   margin-left: 11px;
@@ -166,6 +171,12 @@
   width: 37px;
   height: 37px;
   margin-right: 10px;
+  cursor: pointer;
+}
+.sales-download:hover
+{
+  background-color: grey !important;
+   color: white !important;
 }
 .dwnld-img{
   position: relative;
@@ -178,6 +189,12 @@
   width: 37px;
   height: 37px;
   margin-right: 10px;
+  cursor: pointer;
+}
+.sales-upload:hover
+{
+  background-color: grey !important;
+  color: white !important;
 }
 .imgupload{
   position: relative;
@@ -189,6 +206,12 @@
   border-radius: 50%;
   width: 37px;
   height: 37px;
+  cursor: pointer;
+}
+.sales-dwnld:hover
+{
+  background-color: grey !important;
+  color: white !important;
 }
 .imgdwnl{
   position: relative;

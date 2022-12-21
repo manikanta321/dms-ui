@@ -135,6 +135,12 @@
   border-radius: 24%;
   position: relative;
   width: 43px;
+  cursor: pointer;
+}
+.btnhover:hover
+{
+  background-color: grey !important;
+  color: white !important;
 }
 
 ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
@@ -393,6 +399,11 @@
   margin-top: 32px;
   margin-left: 17px;
   cursor: pointer;
+}
+.add-user:hover
+{
+  background-color: grey !important;
+  color: white !important;
 }
 
 .searchBox:hover>.search-btn {

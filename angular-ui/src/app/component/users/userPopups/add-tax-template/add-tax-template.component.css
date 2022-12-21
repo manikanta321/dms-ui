@@ -157,7 +157,8 @@ color: white;
 
 }
 .E-saveBtn:hover{
-    border: 2px solid rgba(250, 63, 63, 1);
+    
+    border: 2px solid black;
    }
 .E-cancelBtn:hover{
     border: 2px solid rgba(250, 63, 63, 1);

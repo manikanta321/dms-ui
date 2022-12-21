@@ -103,7 +103,9 @@ height: 35px;
     position: absolute;
     top: 2%;
     right: 20px;
+    cursor: pointer;
   }
+  
 
   .geo-label .mat-tab-labels:nth-child(1) {
     width: 50% !important;

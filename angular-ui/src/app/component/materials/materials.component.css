@@ -128,6 +128,7 @@ mat-tab-group{
     position: absolute;
     top: 2%;
     right: 42px;
+    cursor: pointer;
   }
 .classi{
     font-family: 'Gilroy-SemiBold';

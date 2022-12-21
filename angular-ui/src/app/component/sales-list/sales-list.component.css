@@ -79,6 +79,7 @@ mat-tab-group{
     position: absolute;
     top: 2%;
     right: 20px;
+    cursor: pointer;
   }
 ::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     display: none !important;

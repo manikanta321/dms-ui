@@ -113,6 +113,7 @@ mat-tab{
     position: absolute;
     top: 2%;
     right: 20px;
+    cursor: pointer;
   }
 
   @media (max-width: 991px){

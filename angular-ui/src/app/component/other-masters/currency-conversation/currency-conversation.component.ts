@@ -58,6 +58,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import * as moment from 'moment';
 import { CurrencyActionComponent } from './currency-action/currency-action.component';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 
 @Component({
   selector: 'app-currency-conversation',
@@ -303,11 +304,14 @@ export class CurrencyConversationComponent implements OnInit {
     private _liveAnnouncer: LiveAnnouncer,
     private user: UserService,
     private observer: BreakpointObserver,
+    private otherMasterService: OtherMasterService,
     private fb: FormBuilder
   ) {
     sort: [];
   }
 
+    // })
+    // }
   //   getRowStyle = params => {
   //     if (params.node.rowIndex % 2 === 0) {
   //         return { background: 'red' };
@@ -847,6 +851,17 @@ export class CurrencyConversationComponent implements OnInit {
 
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     params.api.paginationGoToPage(4);
+
+    params.api.sizeColumnsToFit();
+      
+    this.otherMasterService.listen().subscribe((m: any) => {
+      console.log("RefreshData",m)
+      setTimeout (() => {
+        this.getcurrencylist();
+     }, 2000);
+     
+
+    })
   }
 
   onPageSizeChanged() {

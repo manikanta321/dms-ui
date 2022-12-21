@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CurrencyDonePopupComponent } from '../currency-done-popup/currency-done-popup.component';
 import { UserService } from 'src/app/services/user.service';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 @Component({
   selector: 'app-deactive-currency',
   templateUrl: './deactive-currency.component.html',
@@ -12,6 +13,7 @@ export class DeactiveCurrencyComponent implements OnInit {
   UoMId:any;
   constructor(private dialogRef: MatDialogRef<any>,
     private user:UserService,
+    private otherMasterService:OtherMasterService,
     private dialog : MatDialog) { }
 
   ngOnInit(): void {
@@ -31,7 +33,9 @@ export class DeactiveCurrencyComponent implements OnInit {
    }
     this.user.activeDeavtiveCurrency(data).subscribe((res) => {     
     });
+    this.otherMasterService.filter('Register click');
     this.dialog.open(CurrencyDonePopupComponent, {panelClass: 'deactiveSuccessPop'});
+    this.otherMasterService.filter('Register click');
     this.dialogRef.close();
   }
 }

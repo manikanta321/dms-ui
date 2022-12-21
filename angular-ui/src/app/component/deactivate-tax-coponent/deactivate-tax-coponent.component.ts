@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
-import { SharedService } from 'src/app/services/shared-services.service';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 import { TaxTemplateServiceService } from 'src/app/services/tax-template-service.service';
 import { UserService } from 'src/app/services/user.service';
 import { SuccessDeactivateTaxComponentComponent } from '../success-deactivate-tax-component/success-deactivate-tax-component.component';
@@ -19,7 +19,7 @@ export class DeactivateTaxCoponentComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<any>,
     private dialog: MatDialog,
     private user:UserService,
-    private sharedService:SharedService,
+    private otherMasterService:OtherMasterService,
     private tax:TaxTemplateServiceService,
     ) { }
 
@@ -39,10 +39,10 @@ export class DeactivateTaxCoponentComponent implements OnInit {
    }
    this.tax.deactiveuser(this.taxId).subscribe((res) => {     
   });
-    this.sharedService.filter('Register click');
+    this.otherMasterService.filter('Register click');
 
     this.dialog.open(SuccessDeactivateTaxComponentComponent, {panelClass: 'deactiveSuccessPop'});
-    this.sharedService.filter('Register click');
+    this.otherMasterService.filter('Register click');
     this.dialogRef.close()
   }
 

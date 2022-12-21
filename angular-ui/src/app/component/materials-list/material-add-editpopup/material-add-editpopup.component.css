@@ -1345,7 +1345,7 @@ textarea {
   width: 371.82px;
   height: 45px;
 
-  margin-left: 552px;
+  margin-left: 519px;
   top: 492px;
 }
 
@@ -1508,30 +1508,20 @@ mat-icon {
     left: 2;
     left: 79%; */
 }
-@media (max-width: 991px){
-  ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
-    width: 300px;
-    margin-top: -51px;
-  }
-  .addU:after {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 1px;
-    background: #686E74;
-    right: 0;
-    top: 50%;
-    position: absolute;
-  }
-  
-  .addU:before {
-    content: "";
-    display: block;
-    width: 80px;
-    height: 1px;
-    background: #686E74;
-    left: 0;
-    top: 50%;
-    position: absolute;
-  }
+.refreshbtn:hover {
+  background-color: grey !important;
+  color: white !important;
+}
+.refreshbtn{
+  width: 39px;
+  border-radius: 10px;
+  background-color: black;
+  height: 41px;
+  /* margin-top: 6px; */
+  /* margin-left: 88px; */
+  position: relative;
+  left: 101%;
+  bottom: 42px;
+
+
 }

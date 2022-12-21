@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
-import { SharedService } from 'src/app/services/shared-services.service';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 import { TaxTemplateServiceService } from 'src/app/services/tax-template-service.service';
 import { UserService } from 'src/app/services/user.service';
 import { ActiveSuccessTaxTemplateComponent } from '../active-success-tax-template/active-success-tax-template.component';
@@ -19,7 +19,7 @@ export class ReactiveTaxCoponentComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<any>,
     private user:UserService,
     private dialog: MatDialog,
-    private sharedService:SharedService,
+    private otherMasterService:OtherMasterService,
     private tax:TaxTemplateServiceService,
     ) { }
 
@@ -40,8 +40,9 @@ export class ReactiveTaxCoponentComponent implements OnInit {
   //  }
    this.tax.reactiveuser(this.taxId).subscribe((res) => {     
    });
+   this.otherMasterService.filter('Register click');
    this.dialog.open(ActiveSuccessTaxTemplateComponent, {panelClass: 'activeSuccessPop'})
-   this.sharedService.filter('Register click')
+   this.otherMasterService.filter('Register click');
 ;
    this.dialogRef.close();
   }

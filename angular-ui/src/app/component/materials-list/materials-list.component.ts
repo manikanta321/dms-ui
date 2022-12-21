@@ -130,16 +130,16 @@ export class MaterialsListComponent implements OnInit {
     private user: UserService,
     private fb: FormBuilder,
     private materialList: MaterialListService,
-    private sharedService: SharedServiceMaterialListService) {
+    private materialListService:SharedServiceMaterialListService,) {
 
-      this.sharedService.listen().subscribe((m: any) => {
-        console.log(m)
-        this.getMaterialList();
+      // this.materialListService.listen().subscribe((m: any) => {
+      //   console.log(m)
+      //   this.getMaterialList();
   
-      })
-      this.sharedService.getClickEvent().subscribe(() => {
-        this.getMaterialList();
-      })
+      // })
+      // this.materialListService.getClickEvent().subscribe(() => {
+      //   this.getMaterialList();
+      // })
       sort: [];
     }
 
@@ -1121,6 +1121,13 @@ else
   }
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     params.api.sizeColumnsToFit();
+    this.materialListService.listen().subscribe((m: any) => {
+      console.log("RefreshData",m)
+      setTimeout (() => {
+        this.getMaterialList();
+     }, 2000);
+     
+    })
   }
   openDialog() {
   }

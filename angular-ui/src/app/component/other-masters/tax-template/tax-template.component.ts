@@ -11,7 +11,7 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';  
 import { TaxTemplateServiceService } from 'src/app/services/tax-template-service.service';
 import { TaxTempleateActionComponent } from '../../tax-templeate-action/tax-templeate-action.component';
-import { SharedService } from 'src/app/services/shared-services.service';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 export interface PeriodicElement {
   name: any;
   position: string;
@@ -216,14 +216,17 @@ instancePopup:any = null;
    
     public dialog: MatDialog,
     private fb: FormBuilder,
-    private sharedService: SharedService,
+    private otherMasterService: OtherMasterService,
     private _liveAnnouncer: LiveAnnouncer,) { sort:[];}
     onFirstDataRendered(params: FirstDataRenderedEvent) {
       params.api.sizeColumnsToFit();
       
-    this.sharedService.listen().subscribe((m: any) => {
-      console.log(m)
-      this.getusertabeldata()
+    this.otherMasterService.listen().subscribe((m: any) => {
+      console.log("RefreshData",m)
+      setTimeout (() => {
+        this.getusertabeldata();
+     }, 1000);
+     
 
     })
     }
@@ -425,6 +428,7 @@ instancePopup:any = null;
     this.tax.gettaxlist(data).subscribe((res: any) => {
         
       this.rowData5 = res.response;
+      console.log("RowData5",this.rowData5)
       if (this.rowData.length >= 1) {
       this.rowData.forEach((element: { [x: string]: any; }) => {
       if (element['status']=='Confirmed'){

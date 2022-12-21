@@ -2,12 +2,12 @@
 
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
-import { SharedService } from 'src/app/services/shared-services.service';
 import { UomServicesService } from 'src/app/services/uom-services.service';
 import { UserService } from 'src/app/services/user.service';
 import { DeactiveSuccessPopComponent } from '../users/userPopups/deactive-success-pop/deactive-success-pop.component';
 
 import { interval } from 'rxjs';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 
 @Component({
   selector: 'app-delete-uom-new',
@@ -21,7 +21,7 @@ export class DeleteUomNewComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<any>,
     private dialog: MatDialog,
     private user:UserService,
-    private sharedService:SharedService,
+    private otherMasterService:OtherMasterService,
     private uomservise:UomServicesService,
 
     ) { }
@@ -41,10 +41,10 @@ export class DeleteUomNewComponent implements OnInit {
     
     this.uomservise.deleteUom(this.uomId).subscribe((res) => {     
     });
-    this.sharedService.filter('Register click');
+      this.otherMasterService.filter('Register click');
 
     this.dialog.open(DeactiveSuccessPopComponent, {panelClass: 'deactiveSuccessPop'});
-    this.sharedService.filter('Register click');
+      this.otherMasterService.filter('Register click');
     this.dialogRef.close()
   }
 

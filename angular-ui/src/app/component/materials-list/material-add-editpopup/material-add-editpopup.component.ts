@@ -224,7 +224,8 @@ export class MaterialAddEditpopupComponent {
     console.log(this.updateGeographyValue, this.selectedGeoField);
 
     this.geoGraphyFullData[this.selectedHirerachyIndex].geoProperties.map(x => x[this.selectedGeoField] = this.updateGeographyValue);
-
+    this.selectedGeoField ='';
+    this.updateGeographyValue = '';
   }
 
   ngOnInit(): void {
@@ -1219,7 +1220,10 @@ export class MaterialAddEditpopupComponent {
     }
 
   }
-
+  refresh() {
+    this.selectedGeoField ='';
+    this.updateGeographyValue = '';
+  }
 }
 
 

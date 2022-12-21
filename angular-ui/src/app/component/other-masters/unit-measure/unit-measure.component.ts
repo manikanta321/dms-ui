@@ -55,6 +55,7 @@ import { UomServicesService } from 'src/app/services/uom-services.service';
 import { UseractionComponent } from '../../useraction/useraction.component';
 import { UomActionComponent } from '../../uom-action/uom-action.component';
 import { SharedService } from 'src/app/services/shared-services.service';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 @Component({
   selector: 'app-unit-measure',
   templateUrl: './unit-measure.component.html',
@@ -241,17 +242,25 @@ public pivotPanelShow = 'always';
     private user:UserService,
     private observer: BreakpointObserver,
     private uomservise:UomServicesService,
-    private sharedService:SharedService,
+    private otherMasterService:OtherMasterService,
 
-   ) { this.sharedService.listen().subscribe((m:any)=>{
-    console.log(m)
-    this.getusertabeldata()
+   ) { 
+  //   this.otherMasterService.listen().subscribe((m:any)=>{
+  //   console.log(m)
+  //   this.getusertabeldata();
 
-  })
+  // })
       sort:[];
      }
      onFirstDataRendered(params: FirstDataRenderedEvent) {
       params.api.sizeColumnsToFit();
+      this.otherMasterService.listen().subscribe((m: any) => {
+        console.log("RefreshData",m)
+        setTimeout (() => {
+          this.getusertabeldata();
+       }, 2000);
+       
+      })
     }
   @ViewChild(MatSort)
   sort: MatSort = new MatSort;

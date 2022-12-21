@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 import { UserService } from 'src/app/services/user.service';
 import { CurrencyReactivatedComponent } from '../currency-reactivated/currency-reactivated.component';
 
@@ -13,6 +14,7 @@ export class ReactiveCurrencyComponent implements OnInit {
   UoMId:any;
   constructor(private dialogRef: MatDialogRef<any>,
     private user:UserService,
+    private otherMasterService:OtherMasterService,
     private dialog : MatDialog) { }
 
   ngOnInit(): void {
@@ -32,7 +34,10 @@ export class ReactiveCurrencyComponent implements OnInit {
    }
     this.user.activeDeavtiveCurrency(data).subscribe((res) => {     
     });
+    this.otherMasterService.filter('Register click');
     this.dialog.open(CurrencyReactivatedComponent, {panelClass: 'activeSuccessPop'});
+    this.otherMasterService.filter('Register click');
     this.dialogRef.close();
+
   }
 }

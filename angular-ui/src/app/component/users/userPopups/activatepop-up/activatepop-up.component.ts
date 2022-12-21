@@ -4,6 +4,7 @@ import { SharedService } from 'src/app/services/shared-services.service';
 import { UserService } from 'src/app/services/user.service';
 import { ActiveSuccessPopComponent } from '../active-success-pop/active-success-pop.component';
 import { AddMaterialsService } from 'src/app/services/add-materials.service';
+import { SharedServiceMaterialListService } from 'src/app/services/shared-service-material-list.service';
 @Component({
   selector: 'app-activatepop-up',
   templateUrl: './activatepop-up.component.html',
@@ -24,6 +25,7 @@ export class ActivatepopUpComponent implements OnInit {
     private dialog: MatDialog,
     private addMaterials: AddMaterialsService,
     private sharedService:SharedService,
+    private materialListService:SharedServiceMaterialListService,
     ) { }
 
   ngOnInit() {
@@ -72,8 +74,9 @@ export class ActivatepopUpComponent implements OnInit {
     console.log("LocalData",res.response);
     this.activateData = newData;
   });
+  this.materialListService.filter('Register click');
   this.dialog.open(ActiveSuccessPopComponent, {panelClass: 'activeSuccessPop'})
-  this.sharedService.filter('Register click')
+  this.materialListService.filter('Register click');
 ;
   this.dialogRef.close();
  }

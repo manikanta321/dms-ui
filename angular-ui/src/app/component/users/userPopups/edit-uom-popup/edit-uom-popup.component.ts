@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedService } from 'src/app/services/shared-services.service';
 import { UomServicesService } from 'src/app/services/uom-services.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 
 @Component({
   selector: 'app-edit-uom-popup',
@@ -13,7 +13,7 @@ export class EditUomPopupComponent implements OnInit {
   uoMName:any='';
   uoMShortName:any=''
   constructor(
-    private sharedService:SharedService,
+    private otherMasterService:OtherMasterService,
     private uomservise:UomServicesService,
     private dialogRef: MatDialogRef<EditUomPopupComponent>,
   ) { }
@@ -30,7 +30,7 @@ this.uoMShortName=data.uoMShortName
   }
 
   editUom(){
-    this.sharedService.filter('Register click')
+       this.otherMasterService.filter('Register click');
 
     let data={
       UoMName:this.uoMName,
@@ -39,7 +39,7 @@ this.uoMShortName=data.uoMShortName
     }
     
     this.uomservise.adduom(data).subscribe((res:any)=>{
-      this.sharedService.filter('Register click')
+         this.otherMasterService.filter('Register click');
   
   console.log(res)
   this.dialogRef.close();

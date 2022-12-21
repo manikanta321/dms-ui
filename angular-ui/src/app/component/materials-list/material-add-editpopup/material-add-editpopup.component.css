@@ -73,7 +73,7 @@ form[name="myBasicInfo"] {
 .imageofm {
   font-family: 'Gilroy';
   position: relative;
-  left: 44%;
+  /* left: 44%; */
 }
 
 .expiryperiod {
@@ -117,7 +117,7 @@ form[name="myBasicInfo"] {
 }
 
 ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
-  width: 649px;
+  width: 630px;
   margin-top: -51px;
 }
 
@@ -192,8 +192,8 @@ form[name="myBasicInfo"] {
 .addU:after {
   content: "";
   display: block;
-  width: 280px;
-  height: 2px;
+  width: 250px;
+  height: 1px;
   background: #686E74;
   right: 0;
   top: 50%;
@@ -203,8 +203,8 @@ form[name="myBasicInfo"] {
 .addU:before {
   content: "";
   display: block;
-  width: 280px;
-  height: 2px;
+  width: 250px;
+  height: 1px;
   background: #686E74;
   left: 0;
   top: 50%;
@@ -238,8 +238,9 @@ span {
 
 
 label {
-  font-size: 14px;
+  font-size: 10px;
   margin: 5px;
+  font-weight: 600;
 }
 
 .mat-align {
@@ -847,7 +848,7 @@ align-items: center;
   /* width: 300px;
   height: 126px; */
 
-  width: 421px;
+  width: 100%;
   height: 130px;
   background-color: white;
   margin-top: 6px;
@@ -864,13 +865,13 @@ textarea {
   border: 1px solid !important;
   border-radius: 8px;
   height: 130px;
-  width: 126px;
+  /* width: 126px; */
   background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  left: 43%;
+  /* left: 43%; */
 }
 
 .na-placeholder {
@@ -1506,4 +1507,31 @@ mat-icon {
     bottom: 233px;
     left: 2;
     left: 79%; */
+}
+@media (max-width: 991px){
+  ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
+    width: 300px;
+    margin-top: -51px;
+  }
+  .addU:after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 1px;
+    background: #686E74;
+    right: 0;
+    top: 50%;
+    position: absolute;
+  }
+  
+  .addU:before {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 1px;
+    background: #686E74;
+    left: 0;
+    top: 50%;
+    position: absolute;
+  }
 }

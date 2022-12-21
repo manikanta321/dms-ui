@@ -84,6 +84,8 @@
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="row">
               <div class="col-md-8 nameplaceholed">
                 <div class="materialname">
                   <label>Name <span>*</span></label>
@@ -117,11 +119,13 @@
                   </p>
                 </div>
               </div>
-              <div class="col-md-4">
+            </div>
+              <div class="row">
+              <div class="col-md-6">
                 <div class="description">
                   <label>Description <span>*</span></label>
                 </div>
-                <textarea id="nameDescp" name="nameDescp" placeholder="Describe the material"
+                <textarea  rows="4" cols="32" id="nameDescp" name="nameDescp" placeholder="Describe the material"
                   (keyup)="onKeyDesc($event)" class="materialDesc" [(ngModel)]="stockItemDesc"
                   #nameDescp="ngModel"></textarea>
                 <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
@@ -131,7 +135,7 @@
                   </span>
                 </p>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-2">
                 <div class="imageofm">
                   <label>Image of Material <span>*</span></label>
                 </div>
@@ -192,8 +196,8 @@
                 </p>
 
               </div>
-
             </div>
+          
 
 
 

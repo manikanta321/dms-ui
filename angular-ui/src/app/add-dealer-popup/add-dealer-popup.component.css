@@ -477,10 +477,8 @@ li {
 
 .addDelercols{
 box-sizing: border-box;
-width: 280px;
+/* width: 280px; */
 height: 43px;
-left: 0px;
-top: 78px;
 font-family: 'Gilroy';
 background: #FFFFFF;
 border: 0.5px solid #000000;
@@ -849,7 +847,7 @@ border-radius: 10px;
     content: "";
     display: block;
     width: 380px;
-    height: 2px;
+    height: 1px;
     background: #686E74;
     right: 0;
     top: 50%;
@@ -860,7 +858,7 @@ border-radius: 10px;
     content: "";
     display: block;
     width: 380px;
-    height: 2px;
+    height: 1px;
     background: #686E74;
     left: 0;
     top: 50%;
@@ -1702,4 +1700,27 @@ border-radius: 10px;
 .error{
   color: red;
   font-size: 15px;
+}
+@media only screen and (max-width: 600px){
+  .addU:after {
+    content: "";
+    display: block;
+    width: 230px;
+    height: 1px;
+    background: #686E74;
+    right: 0;
+    top: 50%;
+    position: absolute;
+  }
+  
+  .addU:before {
+    content: "";
+    display: block;
+    width: 230px;
+    height: 1px;
+    background: #686E74;
+    left: 0;
+    top: 50%;
+    position: absolute;
+  }
 }

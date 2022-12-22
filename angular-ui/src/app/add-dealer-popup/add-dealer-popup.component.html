@@ -34,7 +34,7 @@
                                     </h6>
                                 </div>
 
-                                <div class="col-12 fontcolor">
+                                <div class="fontcolor">
                                     <div class="row">
                                         <div class="col-4 ">
                                             <label>Name<span>*</span></label>
@@ -50,7 +50,7 @@
                                         <div class="col-4 ">
                                             <label>Email-ID<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="Email" class="addDelercols" required
+                                            <input type="text" formControlName="Email" class="addDelercols form-control" required
                                                 placeholder="Enter your Email ID" (keyup)="onValidateEmail($event)">
                                             <div *ngIf="dealerEmail">
                                                 <span>Email is required</span>
@@ -59,7 +59,7 @@
                                         <div class="col-4 ">
                                             <label>Code<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="Code" class="addDelercols" required
+                                            <input type="text" formControlName="Code" class="addDelercols form-control" required
                                                 placeholder="Enter your code" (keyup)="onValidateCode($event)">
                                             <div *ngIf="dealerCode">
                                                 <span>Code is required</span>
@@ -72,7 +72,7 @@
                                         <div class="col-4 ">
                                             <label>Website<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="website" class="addDelercols" required
+                                            <input type="text" formControlName="website" class="addDelercols form-control" required
                                                 placeholder="Enter your company website"
                                                 (keyup)="onValidateWebsite($event)">
                                             <div *ngIf="dealerWebsite">
@@ -82,7 +82,7 @@
                                         <div class="col-4 ">
                                             <label>Phone No<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="Phoneno" class="addDelercols" required
+                                            <input type="text" formControlName="Phoneno" class="addDelercols form-control" required
                                                 placeholder="Enter phone no" (keyup)="onValidatePhone($event)">
                                             <div *ngIf="dealerPhone">
                                                 <span>Phone No is required</span>
@@ -91,7 +91,7 @@
                                         <div class="col-4 ">
                                             <label>Company ID<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="company_id" class="addDelercols"
+                                            <input type="text" formControlName="company_id" class="addDelercols form-control"
                                                 required placeholder="Enter your company ID"
                                                 (keyup)="onValidateCompanyID($event)">
                                             <div *ngIf="dealerCompany">
@@ -106,7 +106,7 @@
                                         <div class="col-4 ">
                                             <label>Other Identifer<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="OtherIdentifier" class="addDelercols"
+                                            <input type="text" formControlName="OtherIdentifier" class="addDelercols form-control"
                                                 required placeholder="Enter and select"
                                                 (keyup)="onValidateIdentifier($event)">
                                             <div *ngIf="dealerIdentifier">
@@ -134,7 +134,7 @@
                                         <div class="col-4 fontcolor">
                                             <label>User Name<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="UserName" class="addDelercols" required
+                                            <input type="text" formControlName="UserName" class="addDelercols form-control" required
                                                 placeholder="Enter your name" (keyup)="onValidateUserName($event)">
                                             <div *ngIf="dealerUserName">
                                                 <span>User Name is required</span>
@@ -143,7 +143,7 @@
                                         <div class="col-4 fontcolor">
                                             <label>Email ID<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="EmailId" class="addDelercols" required
+                                            <input type="text" formControlName="EmailId" class="addDelercols form-control" required
                                                 placeholder="Enter your email ID" (keyup)="onValidateE($event)">
                                             <div *ngIf="dealere">
                                                 <span>Email ID is required</span>
@@ -153,7 +153,7 @@
                                         <div class="col-4 fontcolor">
                                             <label>Phone No<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="Mobile" class="addDelercols" required
+                                            <input type="text" formControlName="Mobile" class="addDelercols form-control" required
                                                 placeholder="Enter your phone no" (keyup)="onValidateP($event)">
                                             <div *ngIf="dealerp">
                                                 <span>Phone No is required</span>
@@ -164,7 +164,7 @@
                                         <div class="col-4">
                                             <label>First Name<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="FirstName" class="addDelercols" required
+                                            <input type="text" formControlName="FirstName" class="addDelercols form-control" required
                                                 placeholder="Enter your First Name"
                                                 (keyup)="onValidateFirstName($event)">
                                             <div *ngIf="dealerfirst">
@@ -174,7 +174,7 @@
                                         <div class="col-4">
                                             <label>Last Name<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="lastName" class="addDelercols" required
+                                            <input type="text" formControlName="lastName" class="addDelercols form-control" required
                                                 placeholder="Enter your Last Name" (keyup)="onValidateLastName($event)">
                                             <div *ngIf="dealerlast">
                                                 <span>Last Name is required</span>

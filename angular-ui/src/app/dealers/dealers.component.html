@@ -1,6 +1,6 @@
-
-   
-    <div class="row" style="position: relative;top: 8%;bottom: 8px; font-family: 'Gilroy'; color: grey;margin-left: 22px;">
+<div class="dealerss mt-3">
+   <section>
+    <div class="row ml-3" >
       <div class="col-md-2 col-lg-2 col-sm-2">
         <form [formGroup]="myForm">
           <ng-multiselect-dropdown class="role" name="city" [placeholder]="''" formControlName="city"
@@ -58,23 +58,23 @@
           alt="refresh">
       </div> -->
     </div>
-    <div class="row" style="margin-bottom:90px;">
+    <!-- <div class="row"> -->
       <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
-      <div class="col-md-4" style="margin-left: 65%;margin-bottom:10px">
+      <!-- <div class="col-md-4"> -->
         <div class="row">
-          <div class="col-md-8">
-            <div class="searchBox d-flex" style=" cursor: pointer">
-              <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
-                placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
+          <div class="col-lg-12 listicon">
+            <div class="searchBox d-flex">
+              <input class="searchInput font" type="text" name="" placeholder="Type & search for anything"
+              (keyup)="onSearchChange($event)">
               <button class="searchButton" href="#">
                 <i class="material-icons">
                   search
                 </i>
               </button>
-              <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+              <button class="search-btn searchAlign">Search</button>
             </div>
-          </div>
-          <div class="col-md-1">
+         
+          <div class="col-md-0">
             <div class="add-user" (click)="addUser()" style=" cursor: pointer">
               <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
             </div>
@@ -86,12 +86,13 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
+        </div>
+      <!-- </div> -->
+    <!-- </div> -->
 
 
     <div>
-      <div class="ag-grid-dummy" id="ag-grid-dummy"></div>  
+      <div class="ag-grid-dummy mt-2" id="ag-grid-dummy"></div>  
       <ag-grid-angular id="gridContainer"
         style=" height: 345px;border-radius: 20px;background-color: white;font-family: Gilroy; margin-left: 20px;"
         class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
@@ -106,5 +107,7 @@
       <span class="pagination-cls">1        </span> to  <span class="pagination-cls">{{paginationScrollCount}}</span> of 
       <span class="pagination-cls">{{rowData5.length}}</span>
     </div>
+  </section>
+  </div>
 
  

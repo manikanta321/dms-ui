@@ -9,9 +9,10 @@
   border-radius: 50%;
   width: 37px;
   height: 37px;
-  top: 87px;
-  position: absolute;
-  left: -54%;
+  margin-right: 10px;
+  // top: 87px;
+  // position: absolute;
+  // left: -54%;
 }
 
      
@@ -222,9 +223,7 @@
     align-items: center;
     transition: 0.2s;
     border: none;
-    margin-top: 80px;
   }
-  
   .searchBox:hover>.searchButton,
   .searchBox>.searchInput,
   .search-btn {
@@ -232,40 +231,76 @@
   }
   
   .searchBox {
-    float: right;
-    position: absolute;
-    left: 78%;
-    top: 8px;
+    /* float: right; */
+    /* top: 32px; */
+    position: relative;
+    /* left: 108%; */
+    cursor: pointer;
+    margin-right: 10px;
   }
-  
-  // .searchBox:hover >.searchButton {
-  //   display:bolck;
-  //   color: #000;
-  //   float: left;
-  //   width: 42px;
-  //   height: 42px;
-  //   background: #ffff;
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   transition: 0.2s;
-  //   background: none;
-  //   position: relative;
-  //     right: 239px;
-  //     top: 2px;
-  
-  // }
+  .searchBox:hover>.searchInput {
+    display: block;
+    width: 335px;
+    height: 43px;
+    background: #FFFFFF;
+    float: left;
+    padding: 5px 32px 6px;
+    border-radius: 10px;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: 0.08em;
+    color: #263643;
+    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+    position: absolute;
+    right: 0px;
+    bottom: -3px;
+  }
   
   .searchBox:hover>.searchButton {
     display: block;
-  }
-  
-  .searchBox:hover>.searchButton .material-icons {
-    position: relative;
-    right: 298px;
     color: #000;
+    float: left;
+    width: 37px;
+    height: 37px;
+    background: #ffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s;
+    background: none;
+    position: relative;
+    right: 300px;
+    top: 0px;
+  }
+  .searchBox:hover>.search-btn {
+    display: block;
+    height: 26px;
+    border: none;
+    background: #000000;
+    color: white;
+    border-radius: 5px;
+    position: absolute;
+    right: 10px;
+    top: 7px;
+  }
+  .searchAlign {
+    font-family: 'Gilroy';
+    position: relative;
     top: 3px;
   }
+  // .searchBox:hover>.searchButton {
+  //   display: block;
+  // }
+  
+  // .searchBox:hover>.searchButton .material-icons {
+  //   position: relative;
+  //   right: 298px;
+  //   color: #000;
+  //   top: 3px;
+  // }
   
   ::ng-deep.role11 .multiselect-dropdown .dropdown-btn .selected-item {
     right: 6% !important;
@@ -277,41 +312,6 @@
   
   .multiselect-dropdown .dropdown-btn .dropdown-multiselect--active .dropdown-multiselect__caret {
     transform: rotate(180deg) !important;
-  }
-  
-  .searchBox:hover>.search-btn {
-    display: block;
-    height: 26px;
-    border: none;
-    background: #000000;
-    color: white;
-    border-radius: 5px;
-    position: absolute;
-    right: 10px;
-    top: 84px;
-  }
-  
-  
-  .searchBox:hover>.searchInput {
-    display: block;
-    width: 335px;
-    height: 43px;
-    background: #FFFFFF;
-    float: left;
-    padding: 5px 32px 6px;
-    border-radius: 10px;
-    font-family: 'Gilroy-medium';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 17px;
-    letter-spacing: 0.08em;
-    color: #263643;
-    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
-    // transition: 0.2s  ease-in-out;
-    position: absolute;
-    right: 0px;
-    bottom: -3px;
   }
   
   .addU:before {
@@ -371,11 +371,11 @@
     border: none;
     background: #000000;
     border-radius: 50%;
-    position: relative;
+    // position: relative;
     width: 37px;
     height: 37px;
-    top: 87px;
-    left: -360%;
+    // top: 87px;
+    // left: -360%;
   }
   
   ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
@@ -909,23 +909,23 @@
     //     animation: pulse 1s infinite !important;
     //     transition: .3s !important;
     //   }
-    .searchBox {
-      top: 6px;
-    }
+    // .searchBox {
+    //   top: 6px;
+    // }
   
     //   .UNFAPP-asmnt-rgt-area{
     //   margin-left: 59px;
     //  }
-    .searchButton {
-      margin-left: -108px;
-    }
+    // .searchButton {
+    //   margin-left: -108px;
+    // }
   
     .add-user {
       margin-left: -25px;
     }
-    .add-user1 {
-      margin-left: -25px;
-    }
+    // .add-user1 {
+    //   margin-left: -25px;
+    // }
 
   
     .download-btn {
@@ -1050,6 +1050,10 @@
     // background: #D23F00 !important;
     background: #44026C !important;
   }
-  
+  .listicon {
+    display: flex;
+    justify-content: end;
+    margin-right: 10px;
+  }
 
   

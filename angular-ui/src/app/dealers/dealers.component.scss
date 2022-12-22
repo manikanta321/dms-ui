@@ -229,7 +229,11 @@
 ::ng-deep.btnhover:hover {
   background: #000000 !important;
 }
-
+.searchAlign {
+  font-family: 'Gilroy';
+  position: relative;
+  top: 3px;
+}
 .searchButton {
   display: bolck;
   color: #FFFFFF;
@@ -243,7 +247,6 @@
   align-items: center;
   transition: 0.2s;
   border: none;
-  margin-top: 80px;
 }
 
 .searchBox:hover>.searchButton,
@@ -253,53 +256,29 @@
 }
 
 .searchBox {
-  float: right;
-  position: absolute;
-  left: 106%;
-  top: 8px;
+  /* float: right; */
+  /* top: 32px; */
+  position: relative;
+  /* left: 108%; */
+  cursor: pointer;
+  margin-right: 10px;
 }
-
-// .searchBox:hover >.searchButton {
-//   display:bolck;
-//   color: #000;
-//   float: left;
-//   width: 42px;
-//   height: 42px;
-//   background: #ffff;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   transition: 0.2s;
-//   background: none;
-//   position: relative;
-//     right: 239px;
-//     top: 2px;
-
-// }
-
 .searchBox:hover>.searchButton {
   display: block;
-}
-
-.searchBox:hover>.searchButton .material-icons {
-  position: relative;
-  right: 298px;
   color: #000;
-  top: 3px;
+  float: left;
+  width: 37px;
+  height: 37px;
+  background: #ffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+  background: none;
+  position: relative;
+  right: 300px;
+  top: 0px;
 }
-
-::ng-deep.roless .multiselect-dropdown .dropdown-btn .selected-item {
-  right: 6% !important;
-}
-
-::ng-deep.stts .multiselect-dropdown .dropdown-btn .selected-item {
-  right: 6% !important;
-}
-
-.multiselect-dropdown .dropdown-btn .dropdown-multiselect--active .dropdown-multiselect__caret {
-  transform: rotate(180deg) !important;
-}
-
 .searchBox:hover>.search-btn {
   display: block;
   height: 26px;
@@ -309,9 +288,27 @@
   border-radius: 5px;
   position: absolute;
   right: 10px;
-  top: 84px;
+  top: 7px;
 }
 
+// .searchBox:hover>.searchButton .material-icons {
+//   position: relative;
+//   right: 298px;
+//   color: #000;
+//   top: 3px;
+// }
+
+// ::ng-deep.roless .multiselect-dropdown .dropdown-btn .selected-item {
+//   right: 6% !important;
+// }
+
+::ng-deep.stts .multiselect-dropdown .dropdown-btn .selected-item {
+  right: 6% !important;
+}
+
+.multiselect-dropdown .dropdown-btn .dropdown-multiselect--active .dropdown-multiselect__caret {
+  transform: rotate(180deg) !important;
+}
 
 .searchBox:hover>.searchInput {
   display: block;
@@ -321,7 +318,7 @@
   float: left;
   padding: 5px 32px 6px;
   border-radius: 10px;
-  font-family: 'Gilroy-medium';
+  font-family: 'Gilroy';
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -329,7 +326,6 @@
   letter-spacing: 0.08em;
   color: #263643;
   box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
-  // transition: 0.2s  ease-in-out;
   position: absolute;
   right: 0px;
   bottom: -3px;
@@ -384,8 +380,9 @@
   width: 37px;
   height: 37px;
   top: 87px;
-  position: absolute;
-  left: 169%;
+  margin-right: 10px;
+  // position: absolute;
+  // left: 169%;
 }
 
 .download-btn {
@@ -395,8 +392,8 @@
   position: relative;
   width: 37px;
   height: 37px;
-  top: 87px;
-  left: 192%;
+  // top: 87px;
+  // left: 192%;
 }
 
 ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
@@ -930,16 +927,16 @@ mat-sidenav-container {
   //     animation: pulse 1s infinite !important;
   //     transition: .3s !important;
   //   }
-  .searchBox {
-    top: 6px;
-  }
+  // .searchBox {
+  //   top: 6px;
+  // }
 
   //   .UNFAPP-asmnt-rgt-area{
   //   margin-left: 59px;
   //  }
-  .searchButton {
-    margin-left: -108px;
-  }
+  // .searchButton {
+  //   margin-left: -108px;
+  // }
 
   .add-user {
     margin-left: -25px;
@@ -954,10 +951,6 @@ mat-sidenav-container {
     margin-top: 7px;
     width: 25px;
     height: 28px;
-  }
-
-  .ng-untouched {
-    margin-top: 6px;
   }
 
 
@@ -1048,4 +1041,9 @@ display: block;
 {
   border-left: 1px solid black;
   
+}
+.listicon {
+  display: flex;
+  justify-content: end;
+  margin-right: 10px;
 }

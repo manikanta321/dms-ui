@@ -95,6 +95,9 @@ export class AddorderpromotionsComponent implements OnInit {
   searchText: any = " ";
   typesI: any= [];
   dealersbillingAddress: any = [];
+  quantityadd: any="";
+  mrp: any= [];
+  mrpadd: any="";
 
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
@@ -920,18 +923,25 @@ export class AddorderpromotionsComponent implements OnInit {
     this.Taxid = changedPromotionObj.Taxid
     this.stockItemId = changedPromotionObj.stockItemId
     this.Quantity = changedPromotionObj.Quantity
+    this.mrp = changedPromotionObj.mrp
     let nonprmodata = {
       "Taxid": this.Taxid,
       "stockItemId": this.stockItemId,
       "Quantity": this.Quantity,
+      "mrp":this.mrp
     }
     this.datanonpromotions.push(nonprmodata);
+    
+    this.quantityadd = this.datanonpromotions.reduce((n, {Quantity}) => n + Quantity, 0);
+    console.log(this.quantityadd,"Quantity")
+    // this.mrpadd = this.datanonpromotions.reduce((n, {mrp}) => n + mrp, 0);
+    // console.log(this.mrpadd,"mrp")
     // const ids = this.datanonpromotions.map(o => o.stockItemId)
     // this.datanonpromotion = this.datanonpromotions.filter(({stockItemId}, index) => !ids.includes(stockItemId, index + 1))
 
     // console.log(filtered)
     console.log(nonprmodata)
-    console.log(this.datanonpromotions)
+    console.log(this.datanonpromotions,"datacheck")
   }
 
   addnonPromoItems() {

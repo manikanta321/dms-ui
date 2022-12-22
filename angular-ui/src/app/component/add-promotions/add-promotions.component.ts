@@ -45,8 +45,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   ];
 
 
-  addgetgroup: any = [{ 
-    
+  addgetgroup: any = [{
+
     StockItemId: [],
     productselectedRows: [],
     productScselectedRows: [],
@@ -54,50 +54,52 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     productSubGselectedRows: [],
     MaxVolume: '',
     GroupId: '',
-  
+
   }];
 
 
 
-  
-  addbuyset:any=[{
-    addsubBuy:[{
-      StockItemId:[],
-      MaxVolume:'',
-      GroupId:'',
-      MOQ:'',
-      BuySet:1,
-      productselectedRows:[]},
+
+  addbuyset: any = [{
+    addsubBuy: [{
+      StockItemId: [],
+      MaxVolume: '',
+      GroupId: '',
+      MOQ: '',
+      BuySet: 1,
+      productselectedRows: []
+    },
     ]
-       
-   }
+
+  }
   ];
-  
-  packingCharges:any=[{
-    MinVolume:'',
-    MaxVolume:'',
-    DiscountPercentage:''
+
+  packingCharges: any = [{
+    MinVolume: '',
+    MaxVolume: '',
+    DiscountPercentage: ''
   }]
 
-  packingVolume:any=[{
-    MinVolume:'',
-    MaxVolume:'',
-    MaxPrice:''
+  packingVolume: any = [{
+    MinVolume: '',
+    MaxVolume: '',
+    MaxPrice: ''
   }]
 
 
 
 
-  addgetset:any=[{
-    addsubBuy:[{
-      StockItemId:[],
-      MaxVolume:'',
-      GroupId:'',
-      GetSet:1,
-      productselectedRows:[]},
+  addgetset: any = [{
+    addsubBuy: [{
+      StockItemId: [],
+      MaxVolume: '',
+      GroupId: '',
+      GetSet: 1,
+      productselectedRows: []
+    },
     ]
-       
-   }
+
+  }
   ];
 
 
@@ -132,7 +134,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   loggedUserId: any;
   geographynameId: any = [];
   geographyyId: any = [];
-  minumorderqualityPrice:any='';
+  minumorderqualityPrice: any = '';
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
     //update the ui
@@ -157,11 +159,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   imagepath: any;
   selecetdFile: any;
   startselectDate: any;
-  EntityInstanceId:any;
+  EntityInstanceId: any;
   selectendDate: any;
   imagePreview: any;
   addImage: any;
-  addImgpreview : boolean= false;
+  addImgpreview: boolean = false;
   showselectedgeovalue: boolean = false
   totalStepsCount: number | undefined;
   startDate = new FormControl(null);
@@ -172,7 +174,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   endMinDate = new Date();
   selectedStartDate: any;
   selectedEndDate: any
-  VolumeSttockItemId:any;
+  VolumeSttockItemId: any;
   priceStockItemId
   dateChange(e) {
     this.minDateToFinish.next(e.value.toString());
@@ -298,7 +300,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
   // toppingList: string[] = ['Admin', 'Dealer','Customer'];
   // toppingList: any = [];
-  minimumorderquantity:any='';
+  minimumorderquantity: any = '';
   toppingList1: any = [];
   filterDictionary: any;
   sideBarOpen = true;
@@ -325,9 +327,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   moqValue: any;
   GetqtyValue: any;
   selectedPromo: any;
-  header:any;
+  header: any;
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
-    private sharedService:SharedServicesDealerService,
+    private sharedService: SharedServicesDealerService,
     private dialogRefModal: MatDialogRef<any>,
     private dialogRef: MatDialogRef<AddPromotionsComponent>,
 
@@ -335,11 +337,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     private dateAdapter: DateAdapter<Date>,
     public promotionTypes: PromotionService) {
 
-      this.sharedService.listen().subscribe((m: any) => {
-        console.log(m);
-       this.addpromotionGeoTable1();
+    this.sharedService.listen().subscribe((m: any) => {
+      console.log(m);
+      this.addpromotionGeoTable1();
 
-      })
+    })
 
 
 
@@ -356,29 +358,29 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   /* on Select of Dropdown screen change */
 
   ngOnInit() {
-    let headername=localStorage.getItem('addOrEdit');
-if(headername=='editpromo'){
-this.header='Edit';
-let data
-this.promotionTypes.getPromotionById(data).subscribe((res)=>{
-  console.log('res',res)
-})
+    let headername = localStorage.getItem('addOrEdit');
+    if (headername == 'editpromo') {
+      this.header = 'Edit';
+      let data
+      this.promotionTypes.getPromotionById(data).subscribe((res) => {
+        console.log('res', res)
+      })
 
-}
-else{
-  this.header='Add';
-}
+    }
+    else {
+      this.header = 'Add';
+    }
 
 
-    localStorage.setItem('pGselectedRows','' )
-    localStorage.setItem('productSubGselectedRows','' );
-    localStorage.setItem('productselectedRows','' )
-    localStorage.setItem('pGselectedRows','')
+    localStorage.setItem('pGselectedRows', '')
+    localStorage.setItem('productSubGselectedRows', '');
+    localStorage.setItem('productselectedRows', '')
+    localStorage.setItem('pGselectedRows', '')
 
     //   this.firstFormGroup = new FormGroup({
     //     promoname : new FormControl('', [Validators.required]),
     // });
-    this.GetPromotionTypes(Event);
+    this.GetPromotionTypes();
     this.addimg();
     // this.promotionType1();
     this.addpromotionGeoTable();
@@ -388,7 +390,7 @@ else{
     //   { CategoryId: 3, CategoryName: 'Volume Discount' },
     //   { CategoryId: 4, CategoryName: 'Price Discount' },
     // ];
-    console.log('this.addbuyset',this.addbuyset)
+    console.log('this.addbuyset', this.addbuyset)
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -454,7 +456,7 @@ else{
   onClick(item) {
     this.selectedItem = item;
   }
-  addbuyGroup(i) { 
+  addbuyGroup(i) {
     alert(i)
     // this.showdata = true;
     console.log(this.buyGroupPlus);
@@ -465,11 +467,11 @@ else{
         productScselectedRows: [],
         pGselectedRows: [],
         productSubGselectedRows: [],
-        MaxVolume:this.buyGroupPlus.qtyValue,
-        GroupId: this.buyGroupPlus.length==0||''||undefined?0: this.buyGroupPlus.length,
+        MaxVolume: this.buyGroupPlus.qtyValue,
+        GroupId: this.buyGroupPlus.length == 0 || '' || undefined ? 0 : this.buyGroupPlus.length,
         MOQ: this.buyGroupPlus.moqValue,
       });
-    console.log('this.buyGroupPlus.length',this.buyGroupPlus.length);
+    console.log('this.buyGroupPlus.length', this.buyGroupPlus.length);
   }
 
 
@@ -481,93 +483,95 @@ else{
       pGselectedRows: [],
       productSubGselectedRows: [],
       MaxVolume: '',
-      GroupId: i==''?0:i,
-      });
+      GroupId: i == '' ? 0 : i,
+    });
   }
 
   // addplus(){
   //   const index = this.buyGroupPlus.findIndex((itemss) => itemss.id === u);
   // }
 
- 
+
   removegetGroup(u: any) {
     const index = this.addgetgroup.findIndex((itemss) => itemss.id === u);
     this.addgetgroup.splice(index, 1);
   }
   addbuyAB(i) {
     this.addbuyset.push({
-      
-      addsubBuy:[{
-        StockItemId:[],
-        MaxVolume:'',
-        GroupId:'',
-        MOQ:'',
-        BuySet:this.addbuyset.length+1,
-        productselectedRows:[]},
-      ]  
-        })
 
-        console.log('this.addbuyset',this.addbuyset)
+      addsubBuy: [{
+        StockItemId: [],
+        MaxVolume: '',
+        GroupId: '',
+        MOQ: '',
+        BuySet: this.addbuyset.length + 1,
+        productselectedRows: []
+      },
+      ]
+    })
+
+    console.log('this.addbuyset', this.addbuyset)
   }
 
 
-addsubbuy(i,j){
-  alert(i)
-  console.log('this.addbuyset[i]',this.addbuyset[i])
-  this.addbuyset[i].addsubBuy.push({
+  addsubbuy(i, j) {
+    alert(i)
+    console.log('this.addbuyset[i]', this.addbuyset[i])
+    this.addbuyset[i].addsubBuy.push({
 
-      StockItemId:[],
-      MaxVolume:'',
-      GroupId:'',
-      MOQ:'',
-      BuySet:i+1,
-      productselectedRows:[],
+      StockItemId: [],
+      MaxVolume: '',
+      GroupId: '',
+      MOQ: '',
+      BuySet: i + 1,
+      productselectedRows: [],
 
-  })
-console.log('this.addbuyset',this.addbuyset)
-}
-
-
-addsubGetbuy(i,j){
-  alert(i)
-  console.log('this.addbuyset[i]',this.addbuyset[i])
-  this.addgetset[i].addsubBuy.push({
-
-      StockItemId:[],
-      MaxVolume:'',
-      GroupId:'',
-      GetSet:i+1,
-      productselectedRows:[],
-
-  })
-console.log('this.addbuyset',this.addbuyset)
-}
+    })
+    console.log('this.addbuyset', this.addbuyset)
+  }
 
 
-addgetAB(i) {
-  this.addgetset.push({
-      
-    addsubBuy:[{
-      StockItemId:[],
-      MaxVolume:'',
-      GroupId:'',
-      GetSet:this.addgetset.length+1,
-      productselectedRows:[]},
-    ]  
-      })
-}
+  addsubGetbuy(i, j) {
+    alert(i)
+    console.log('this.addbuyset[i]', this.addbuyset[i])
+    this.addgetset[i].addsubBuy.push({
 
-removeGetGroup(u: any) {
-  const index = this.addgetset[u].addsubBuy.findIndex((itemss) => itemss.id === u);
-  this.addgetset[u].addsubBuy.splice(index, 1);
-  console.log('remv', index)
-}
+      StockItemId: [],
+      MaxVolume: '',
+      GroupId: '',
+      GetSet: i + 1,
+      productselectedRows: [],
 
-removebuyGroup(u: any) {
-  const index = this.addbuyset[u].addsubBuy.findIndex((itemss) => itemss.id === u);
-  this.addbuyset[u].addsubBuy.splice(index, 1);
-  console.log('remv', index)
-}
+    })
+    console.log('this.addbuyset', this.addbuyset)
+  }
+
+
+  addgetAB(i) {
+    this.addgetset.push({
+
+      addsubBuy: [{
+        StockItemId: [],
+        MaxVolume: '',
+        GroupId: '',
+        GetSet: this.addgetset.length + 1,
+        productselectedRows: []
+      },
+      ]
+    })
+  }
+
+  removeGetGroup(u: any) {
+    const index = this.addgetset[u].addsubBuy.findIndex((itemss) => itemss.id === u);
+    this.addgetset[u].addsubBuy.splice(index, 1);
+    console.log('remv', index)
+  }
+
+  removebuyGroup(u: any) {
+    const index = this.addbuyset[u].addsubBuy.findIndex((itemss) => itemss.id === u);
+    this.addbuyset[u].addsubBuy.splice(index, 1);
+    console.log('remv', index)
+  }
 
   removeaddbuyAB(u: any) {
     const index = this.addbuyset.findIndex((setitem) => setitem.id === u);
@@ -584,49 +588,15 @@ removebuyGroup(u: any) {
   goForward(stepper: MatStepper) {
     stepper.next();
   }
-  GetPromotionTypes(event: any) {
+  GetPromotionTypes() {
     //  const data = {
     //   promotionTypesId : this.promotionTypesId,
     //   promotionTypesName: this.promotionTypesName
     // }
+    // this.promotionTypesId = event;
     this.promotionTypes.GetPromotionTypes().subscribe((res) => {
       console.log('check promotiontypes', this.promotionTypesId);
       this.promotionTypedropdown = res.response;
-      if (event.promotionTypesName == 'Buy (A+B..) get (X+Y..)') {
-        // this.goForward(this.myStepper);
-        this.noPromotionSelected = false;
-        this.buyab = true;
-        this.volumedc = false;
-        this.buysets = false;
-        this.pricedc = false;
-      }
-      if (event.promotionTypesName == 'Buy (A or B + C or D..) get (X+Y or Y+Z..)') {
-        this.noPromotionSelected = false;
-        this.buyab = false;
-        this.volumedc = false;
-        this.buysets = true;
-        this.pricedc = false;
-        // this.goForward(this.myStepper);
-
-      }
-      if (event.promotionTypesName == 'Volume Discount') {
-        this.noPromotionSelected = false;
-        this.buyab = false;
-        this.volumedc = true;
-        this.buysets = false;
-        this.pricedc = false;
-        // this.goForward(this.myStepper);
-
-      }
-      if (event.promotionTypesName == 'Price Discount') {
-        this.noPromotionSelected = false;
-        // this.goForward(this.myStepper);
-        this.buyab = false;
-        this.volumedc = false;
-        this.buysets = false;
-        this.pricedc = true;
-      }
-
     })
   }
 
@@ -656,24 +626,24 @@ removebuyGroup(u: any) {
     this.packingVolume.splice(index, 1);
   }
   addFields() {
-   this.packingCharges.push({
-    MinVolume:'',
-    MaxVolume:'',
-    DiscountPercentage:''
+    this.packingCharges.push({
+      MinVolume: '',
+      MaxVolume: '',
+      DiscountPercentage: ''
     });
 
-    console.log('this.packingCharges',this.packingCharges)
+    console.log('this.packingCharges', this.packingCharges)
   }
 
   addFieldsPrice() {
     this.packingVolume.push({
-     MinVolume:'',
-     MaxVolume:'',
-     MaxPrice:''
-     });
- 
-     console.log('this.packingCharges',this.packingCharges)
-   }
+      MinVolume: '',
+      MaxVolume: '',
+      MaxPrice: ''
+    });
+
+    console.log('this.packingCharges', this.packingCharges)
+  }
   addItems(index: any = null) {
     debugger
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
@@ -687,24 +657,24 @@ removebuyGroup(u: any) {
       console.log(this.productselectedRows);
 
       if (index != null) {
-       this.buyGroupPlus[index].productselectedRows = this.productselectedRows;
-      //  this.buyGroupPlus[index].productScselectedRows = this.productScselectedRows;
-      //  this.buyGroupPlus[index].pGselectedRows = this.pGselectedRows;
-      //  this.buyGroupPlus[index].productSubGselectedRows = this.productSubGselectedRows;
+        this.buyGroupPlus[index].productselectedRows = this.productselectedRows;
+        //  this.buyGroupPlus[index].productScselectedRows = this.productScselectedRows;
+        //  this.buyGroupPlus[index].pGselectedRows = this.pGselectedRows;
+        //  this.buyGroupPlus[index].productSubGselectedRows = this.productSubGselectedRows;
 
-let productselectedRows =this.productselectedRows.map(x => x.stockItemId);
-// let productScselectedRows=this.productScselectedRows.map(x => x.stockItemId);
-// let pGselectedRows=this.pGselectedRows.map(x => x.stockItemId);
-// let productSubGselectedRows=this.productSubGselectedRows.map(x => x.stockItemId);
-// console.log('araray',)
-let jointarray=productselectedRows
+        let productselectedRows = this.productselectedRows.map(x => x.stockItemId);
+        // let productScselectedRows=this.productScselectedRows.map(x => x.stockItemId);
+        // let pGselectedRows=this.pGselectedRows.map(x => x.stockItemId);
+        // let productSubGselectedRows=this.productSubGselectedRows.map(x => x.stockItemId);
+        // console.log('araray',)
+        let jointarray = productselectedRows
 
-    this.buyGroupPlus[index].StockItemId =jointarray;
-    this.buyGroupPlus[index].GroupId =this.buyGroupPlus.length;
+        this.buyGroupPlus[index].StockItemId = jointarray;
+        this.buyGroupPlus[index].GroupId = this.buyGroupPlus.length;
 
-      //  this.buyGroupPlus[index].MaxVolume = this.buyGroupPlus[index].qtyValue.map(x => x.qtyValue);
-       //  this.buyGroupPlus[index].moqValue = this.qtyValue.map(x => x.qtyValue);
-       console.log('this.buygroups', this.buyGroupPlus)
+        //  this.buyGroupPlus[index].MaxVolume = this.buyGroupPlus[index].qtyValue.map(x => x.qtyValue);
+        //  this.buyGroupPlus[index].moqValue = this.qtyValue.map(x => x.qtyValue);
+        console.log('this.buygroups', this.buyGroupPlus)
 
 
       }
@@ -718,7 +688,7 @@ let jointarray=productselectedRows
 
 
 
-  addItems1(index: any = null,j:any=null) {
+  addItems1(index: any = null, j: any = null) {
     debugger
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
     const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px' });
@@ -732,23 +702,23 @@ let jointarray=productselectedRows
 
       if (index != null) {
         this.addbuyset[index].addsubBuy[j].productselectedRows = this.productselectedRows;
-      //  this.buyGroupPlus[index].productScselectedRows = this.productScselectedRows;
-      //  this.buyGroupPlus[index].pGselectedRows = this.pGselectedRows;
-      //  this.buyGroupPlus[index].productSubGselectedRows = this.productSubGselectedRows;
+        //  this.buyGroupPlus[index].productScselectedRows = this.productScselectedRows;
+        //  this.buyGroupPlus[index].pGselectedRows = this.pGselectedRows;
+        //  this.buyGroupPlus[index].productSubGselectedRows = this.productSubGselectedRows;
 
-let productselectedRows =this.productselectedRows.map(x => x.stockItemId);
-// let productScselectedRows=this.productScselectedRows.map(x => x.stockItemId);
-// let pGselectedRows=this.pGselectedRows.map(x => x.stockItemId);
-// let productSubGselectedRows=this.productSubGselectedRows.map(x => x.stockItemId);
-// console.log('araray',)
-let jointarray=productselectedRows
+        let productselectedRows = this.productselectedRows.map(x => x.stockItemId);
+        // let productScselectedRows=this.productScselectedRows.map(x => x.stockItemId);
+        // let pGselectedRows=this.pGselectedRows.map(x => x.stockItemId);
+        // let productSubGselectedRows=this.productSubGselectedRows.map(x => x.stockItemId);
+        // console.log('araray',)
+        let jointarray = productselectedRows
 
-    this.addbuyset[index].addsubBuy[j].StockItemId =jointarray;
-    this.addbuyset[index].addsubBuy[j].GroupId =this.addbuyset[index].addsubBuy.length;
+        this.addbuyset[index].addsubBuy[j].StockItemId = jointarray;
+        this.addbuyset[index].addsubBuy[j].GroupId = this.addbuyset[index].addsubBuy.length;
 
-      //  this.buyGroupPlus[index].MaxVolume = this.buyGroupPlus[index].qtyValue.map(x => x.qtyValue);
-       //  this.buyGroupPlus[index].moqValue = this.qtyValue.map(x => x.qtyValue);
-       console.log('this.addbuyset', this.addbuyset)
+        //  this.buyGroupPlus[index].MaxVolume = this.buyGroupPlus[index].qtyValue.map(x => x.qtyValue);
+        //  this.buyGroupPlus[index].moqValue = this.qtyValue.map(x => x.qtyValue);
+        console.log('this.addbuyset', this.addbuyset)
 
 
       }
@@ -760,7 +730,7 @@ let jointarray=productselectedRows
     })
   }
 
-  addItems1forGetGroup(index: any = null,j:any=null) {
+  addItems1forGetGroup(index: any = null, j: any = null) {
     debugger
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
     const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px' });
@@ -774,13 +744,13 @@ let jointarray=productselectedRows
 
       if (index != null) {
         this.addgetset[index].addsubBuy[j].productselectedRows = this.productselectedRows;
-        let productselectedRows =this.productselectedRows.map(x => x.stockItemId);
+        let productselectedRows = this.productselectedRows.map(x => x.stockItemId);
 
-       let jointarray=productselectedRows
+        let jointarray = productselectedRows
 
-        this.addgetset[index].addsubBuy[j].StockItemId =jointarray;
-        this.addgetset[index].addsubBuy[j].GroupId =this.addgetset[index].addsubBuy.length;
-           console.log('this.addbuyset', this.addgetset)
+        this.addgetset[index].addsubBuy[j].StockItemId = jointarray;
+        this.addgetset[index].addsubBuy[j].GroupId = this.addgetset[index].addsubBuy.length;
+        console.log('this.addbuyset', this.addgetset)
 
 
       }
@@ -813,17 +783,17 @@ let jointarray=productselectedRows
         // this.addgetgroup[index].productScselectedRows = this.productScselectedRows;
         // this.addgetgroup[index].pGselectedRows = this.pGselectedRows;
         // this.addgetgroup[index].productSubGselectedRows = this.productSubGselectedRows;
-        let productselectedRows =this.productselectedRows.map(x => x.stockItemId);
+        let productselectedRows = this.productselectedRows.map(x => x.stockItemId);
         // let productScselectedRows=this.productScselectedRows.map(x => x.stockItemId);
         // let pGselectedRows=this.pGselectedRows.map(x => x.stockItemId);
         // let productSubGselectedRows=this.productSubGselectedRows.map(x => x.stockItemId);
         // console.log('araray',)
-        let jointarray=productselectedRows;
-        
-            this.addgetgroup[index].StockItemId =jointarray;
-            this.addgetgroup[index].GroupId =this.addgetgroup.length;
+        let jointarray = productselectedRows;
 
-       console.log('this.addgetgroup', this.addgetgroup)
+        this.addgetgroup[index].StockItemId = jointarray;
+        this.addgetgroup[index].GroupId = this.addgetgroup.length;
+
+        console.log('this.addgetgroup', this.addgetgroup)
 
 
       }
@@ -848,13 +818,13 @@ let jointarray=productselectedRows
       console.log('dd', this.productSubGselectedRows);
       console.log(this.productselectedRows);
 
-     
+
       //  this.buyGroupPlus[index].productselectedRows = this.productselectedRows;
-       let productselectedRows =this.productselectedRows.map(x => x.stockItemId);
-       let jointarray=productselectedRows
-       this.VolumeSttockItemId=jointarray;
-       console.log('productselectedRows', this.productselectedRows)
-      
+      let productselectedRows = this.productselectedRows.map(x => x.stockItemId);
+      let jointarray = productselectedRows
+      this.VolumeSttockItemId = jointarray;
+      console.log('productselectedRows', this.productselectedRows)
+
     })
   }
 
@@ -872,121 +842,121 @@ let jointarray=productselectedRows
       console.log('dd', this.productSubGselectedRows);
       console.log(this.productselectedRows);
 
-     
+
       //  this.buyGroupPlus[index].productselectedRows = this.productselectedRows;
-       let productselectedRows =this.productselectedRows.map(x => x.stockItemId);
-       let jointarray=productselectedRows
-       this.priceStockItemId=jointarray;
-       console.log('productselectedRows', this.productselectedRows)
-      
+      let productselectedRows = this.productselectedRows.map(x => x.stockItemId);
+      let jointarray = productselectedRows
+      this.priceStockItemId = jointarray;
+      console.log('productselectedRows', this.productselectedRows)
+
     })
   }
 
 
-  updateAllComplete(StockItemID,i){
+  updateAllComplete(StockItemID, i) {
 
-let stockitemOfindex=this.buyGroupPlus[i].StockItemId;
-const index = stockitemOfindex.indexOf(StockItemID);
-
-if (index !== -1) {
-  stockitemOfindex.splice(index, 1);
-  this.buyGroupPlus[i].StockItemId= stockitemOfindex
-}
-else {
-  stockitemOfindex.push(StockItemID);
-  this.buyGroupPlus[i].StockItemId=stockitemOfindex
-}
-console.log('this.buyGroupPlus',this.buyGroupPlus) 
- }
- updateAllComplete1(StockItemID,i){
-
-  let stockitemOfindex=this.addgetgroup[i].StockItemId;
-  const index = stockitemOfindex.indexOf(StockItemID);
-  
-  if (index !== -1) {
-    stockitemOfindex.splice(index, 1);
-    this.addgetgroup[i].StockItemId= stockitemOfindex
-  }
-  else {
-    stockitemOfindex.push(StockItemID);
-    this.addgetgroup[i].StockItemId=stockitemOfindex
-  }
-  console.log('this.buyGroupPlus',this.addgetgroup) 
-   }
-
-
-
-
-
-
-   updateAllCompleteforBuyGroup(StockItemID,i,j){
-
-    let stockitemOfindex=this.addbuyset[i].addsubBuy[j].StockItemId;
+    let stockitemOfindex = this.buyGroupPlus[i].StockItemId;
     const index = stockitemOfindex.indexOf(StockItemID);
-    
+
     if (index !== -1) {
       stockitemOfindex.splice(index, 1);
-      this.addbuyset[i].addsubBuy[j].StockItemId= stockitemOfindex
+      this.buyGroupPlus[i].StockItemId = stockitemOfindex
     }
     else {
       stockitemOfindex.push(StockItemID);
-      this.addbuyset[i].addsubBuy[j].StockItemId=stockitemOfindex
+      this.buyGroupPlus[i].StockItemId = stockitemOfindex
     }
-    console.log('this.addbuyset[index].addsubBuy[j].StockItemId',this.addbuyset[i].addsubBuy[j].StockItemId) 
-     }
+    console.log('this.buyGroupPlus', this.buyGroupPlus)
+  }
+  updateAllComplete1(StockItemID, i) {
 
-     updateAllCompleteforGetGroup(StockItemID,i,j){
+    let stockitemOfindex = this.addgetgroup[i].StockItemId;
+    const index = stockitemOfindex.indexOf(StockItemID);
 
-      let stockitemOfindex=this.addgetset[i].addsubBuy[j].StockItemId;
-      const index = stockitemOfindex.indexOf(StockItemID);
-      
-      if (index !== -1) {
-        stockitemOfindex.splice(index, 1);
-        this.addgetset[i].addsubBuy[j].StockItemId= stockitemOfindex
-      }
-      else {
-        stockitemOfindex.push(StockItemID);
-        this.addgetset[i].addsubBuy[j].StockItemId=stockitemOfindex
-      }
-      console.log('this.addgetset[index].addsubBuy[j].StockItemId',this.addgetset[i].addsubBuy[j].StockItemId) 
-       }
-
-
-       updateAllCompleteforGetGroupVolume(StockItemID){
-
-        let stockitemOfindex=this.VolumeSttockItemId;
-        const index = stockitemOfindex.indexOf(StockItemID);
-        
-        if (index !== -1) {
-          stockitemOfindex.splice(index, 1);
-          this.VolumeSttockItemId= stockitemOfindex
-        }
-        else {
-          stockitemOfindex.push(StockItemID);
-         this.VolumeSttockItemId=stockitemOfindex
-        }
-        console.log('VolumeSttockItemId',this.VolumeSttockItemId) 
-         }
+    if (index !== -1) {
+      stockitemOfindex.splice(index, 1);
+      this.addgetgroup[i].StockItemId = stockitemOfindex
+    }
+    else {
+      stockitemOfindex.push(StockItemID);
+      this.addgetgroup[i].StockItemId = stockitemOfindex
+    }
+    console.log('this.buyGroupPlus', this.addgetgroup)
+  }
 
 
 
 
-         updateAllCompleteforGetGroupPrice(StockItemID){
 
-          let stockitemOfindex=this.priceStockItemId;
-          const index = stockitemOfindex.indexOf(StockItemID);
-          
-          if (index !== -1) {
-            stockitemOfindex.splice(index, 1);
-            this.priceStockItemId= stockitemOfindex
-          }
-          else {
-            stockitemOfindex.push(StockItemID);
-           this.priceStockItemId=stockitemOfindex
-          }
-          console.log('priceStockItemId',this.priceStockItemId) 
-           }
-  
+
+  updateAllCompleteforBuyGroup(StockItemID, i, j) {
+
+    let stockitemOfindex = this.addbuyset[i].addsubBuy[j].StockItemId;
+    const index = stockitemOfindex.indexOf(StockItemID);
+
+    if (index !== -1) {
+      stockitemOfindex.splice(index, 1);
+      this.addbuyset[i].addsubBuy[j].StockItemId = stockitemOfindex
+    }
+    else {
+      stockitemOfindex.push(StockItemID);
+      this.addbuyset[i].addsubBuy[j].StockItemId = stockitemOfindex
+    }
+    console.log('this.addbuyset[index].addsubBuy[j].StockItemId', this.addbuyset[i].addsubBuy[j].StockItemId)
+  }
+
+  updateAllCompleteforGetGroup(StockItemID, i, j) {
+
+    let stockitemOfindex = this.addgetset[i].addsubBuy[j].StockItemId;
+    const index = stockitemOfindex.indexOf(StockItemID);
+
+    if (index !== -1) {
+      stockitemOfindex.splice(index, 1);
+      this.addgetset[i].addsubBuy[j].StockItemId = stockitemOfindex
+    }
+    else {
+      stockitemOfindex.push(StockItemID);
+      this.addgetset[i].addsubBuy[j].StockItemId = stockitemOfindex
+    }
+    console.log('this.addgetset[index].addsubBuy[j].StockItemId', this.addgetset[i].addsubBuy[j].StockItemId)
+  }
+
+
+  updateAllCompleteforGetGroupVolume(StockItemID) {
+
+    let stockitemOfindex = this.VolumeSttockItemId;
+    const index = stockitemOfindex.indexOf(StockItemID);
+
+    if (index !== -1) {
+      stockitemOfindex.splice(index, 1);
+      this.VolumeSttockItemId = stockitemOfindex
+    }
+    else {
+      stockitemOfindex.push(StockItemID);
+      this.VolumeSttockItemId = stockitemOfindex
+    }
+    console.log('VolumeSttockItemId', this.VolumeSttockItemId)
+  }
+
+
+
+
+  updateAllCompleteforGetGroupPrice(StockItemID) {
+
+    let stockitemOfindex = this.priceStockItemId;
+    const index = stockitemOfindex.indexOf(StockItemID);
+
+    if (index !== -1) {
+      stockitemOfindex.splice(index, 1);
+      this.priceStockItemId = stockitemOfindex
+    }
+    else {
+      stockitemOfindex.push(StockItemID);
+      this.priceStockItemId = stockitemOfindex
+    }
+    console.log('priceStockItemId', this.priceStockItemId)
+  }
+
 
 
   addRemoveitem() {
@@ -1042,8 +1012,8 @@ console.log('this.buyGroupPlus',this.buyGroupPlus)
   onRowSelect(event) {
     const selectedRows = this.gridApi.getSelectedRows();
     console.log(selectedRows);
-    let customerId =selectedRows.map(x=>x.customerId);
-    this.EntityInstanceId=customerId
+    let customerId = selectedRows.map(x => x.customerId);
+    this.EntityInstanceId = customerId
     //  const result = selectedRows.map((data : {customerId:any}) =>{
     //   return {custmId: data.customerId}
     //  })
@@ -1088,195 +1058,195 @@ console.log('this.buyGroupPlus',this.buyGroupPlus)
     console.log('addpro', [this.qtyValue, this.moqValue]);
   }
 
-  
+
   AddPromosaveAndSubmit() {
- 
+
 
     this.loggedUserId = localStorage.getItem('logInId')
 
-    if(this.selectedPromo == 1){
+    if (this.selectedPromo == 1) {
       console.log('added items', this.buyGroupPlus)
-      console.log('addgetgroup',this.addgetgroup)
-  
-  this.buyGroupPlus.forEach(element=>{
-    delete element.productselectedRows;
-    delete element.productScselectedRows;
-    delete element.pGselectedRows;
-    delete element.productSubGselectedRows;
-  })
-  
-  this.addgetgroup.forEach(element=>{
-    delete element.productselectedRows;
-    delete element.productScselectedRows;
-    delete element.pGselectedRows;
-    delete element.productSubGselectedRows;
-  })
-  
-  
-  
-  let obj:any={
-  
-    PromotionName: this.promoName,
-    PromotionTypesId: this.selectedPromo,
-    StartDate: this.selectedStartDate,
-    EndDate: this.selectedEndDate,
-    DoneById: this.loggedUserId,
-    Imageurl: this.base64textString,
-    BuyGroups:this.buyGroupPlus,
-    GetGroups:this.addgetgroup,
-    EntityInstanceId:this.EntityInstanceId
-  
-  }
-  
+      console.log('addgetgroup', this.addgetgroup)
 
-  this.promotionTypes.firstPromotion(obj).subscribe((res)=>{
-    console.log(res.response)
+      this.buyGroupPlus.forEach(element => {
+        delete element.productselectedRows;
+        delete element.productScselectedRows;
+        delete element.pGselectedRows;
+        delete element.productSubGselectedRows;
+      })
 
-    if(res.response.result == 'Added Succesfully'){
-      alert('Added Succesfully')
-      this.dialogRef.close();
+      this.addgetgroup.forEach(element => {
+        delete element.productselectedRows;
+        delete element.productScselectedRows;
+        delete element.pGselectedRows;
+        delete element.productSubGselectedRows;
+      })
+
+
+
+      let obj: any = {
+
+        PromotionName: this.promoName,
+        PromotionTypesId: this.selectedPromo,
+        StartDate: this.selectedStartDate,
+        EndDate: this.selectedEndDate,
+        DoneById: this.loggedUserId,
+        Imageurl: this.base64textString,
+        BuyGroups: this.buyGroupPlus,
+        GetGroups: this.addgetgroup,
+        EntityInstanceId: this.EntityInstanceId
+
+      }
+
+
+      this.promotionTypes.firstPromotion(obj).subscribe((res) => {
+        console.log(res.response)
+
+        if (res.response.result == 'Added Succesfully') {
+          alert('Added Succesfully')
+          this.dialogRef.close();
+        }
+        else {
+          alert(res.response.result);
+        }
+      })
+
     }
-    else{
-alert(res.response.result);
-    }
-  })
 
-    }
+    if (this.selectedPromo == 2) {
 
-    if(this.selectedPromo == 2 ){
-
-      console.log('addbuyset',this.addbuyset)
-      console.log('addGetset',this.addgetset)
-      let obj:any =[];
-      let obj1:any =[];
+      console.log('addbuyset', this.addbuyset)
+      console.log('addGetset', this.addgetset)
+      let obj: any = [];
+      let obj1: any = [];
 
 
-   for(let i=0; i<this.addbuyset.length;i++){
-    this.addbuyset[i].addsubBuy.forEach(element=>{
-      delete element.productselectedRows;
-      obj.push(element)
-      console.log('finalobject',obj)
+      for (let i = 0; i < this.addbuyset.length; i++) {
+        this.addbuyset[i].addsubBuy.forEach(element => {
+          delete element.productselectedRows;
+          obj.push(element)
+          console.log('finalobject', obj)
 
 
-    })
-    
-   }   
+        })
+
+      }
 
 
-   for(let i=0; i<this.addgetset.length;i++){
-    this.addgetset[i].addsubBuy.forEach(element=>{
-      delete element.productselectedRows;
-      obj1.push(element)
-      console.log('finalobject1',obj1)
-
-  
-    })
-    
-   }
+      for (let i = 0; i < this.addgetset.length; i++) {
+        this.addgetset[i].addsubBuy.forEach(element => {
+          delete element.productselectedRows;
+          obj1.push(element)
+          console.log('finalobject1', obj1)
 
 
-let BuyGroups:any=[]
-let GetGroups:any=[]
-BuyGroups.push(obj);
-GetGroups.push(obj1);
+        })
 
-let mainobj:any={
-  BuyGroups:obj,
-}
-let GetSets:any={
-  GetGroups:obj1
-}
-console.log('mainobj',mainobj)
+      }
 
-  let obj3:any={
-  
-    PromotionName: this.promoName,
-    PromotionTypesId: this.selectedPromo,
-    StartDate: this.selectedStartDate,
-    EndDate: this.selectedEndDate,
-    DoneById: this.loggedUserId,
-    Imageurl: this.base64textString,
-    BuySets:[mainobj],
-    GetSets:[GetSets],
-    EntityInstanceId:this.EntityInstanceId
-  
-  }
-  console.log('object to send opis',obj3)
-            // let BuySets=[{
+
+      let BuyGroups: any = []
+      let GetGroups: any = []
+      BuyGroups.push(obj);
+      GetGroups.push(obj1);
+
+      let mainobj: any = {
+        BuyGroups: obj,
+      }
+      let GetSets: any = {
+        GetGroups: obj1
+      }
+      console.log('mainobj', mainobj)
+
+      let obj3: any = {
+
+        PromotionName: this.promoName,
+        PromotionTypesId: this.selectedPromo,
+        StartDate: this.selectedStartDate,
+        EndDate: this.selectedEndDate,
+        DoneById: this.loggedUserId,
+        Imageurl: this.base64textString,
+        BuySets: [mainobj],
+        GetSets: [GetSets],
+        EntityInstanceId: this.EntityInstanceId
+
+      }
+      console.log('object to send opis', obj3)
+      // let BuySets=[{
       //   BuyGroups:obj
       // }]
-      this.promotionTypes.firstPromotion(obj3).subscribe((res)=>{
+      this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
-        if(res.response.result == 'Added Succesfully'){
+        if (res.response.result == 'Added Succesfully') {
           alert('Added Succesfully')
           this.dialogRef.close();
         }
-        else{
-    alert(res.response.result);
+        else {
+          alert(res.response.result);
         }
       })
-   
+
 
     }
 
-    if(this.selectedPromo == 3){
-      console.log('VolumeSttockItemId',this.VolumeSttockItemId)
-      let obj3:any={
+    if (this.selectedPromo == 3) {
+      console.log('VolumeSttockItemId', this.VolumeSttockItemId)
+      let obj3: any = {
         PromotionName: this.promoName,
         PromotionTypesId: this.selectedPromo,
         StartDate: this.selectedStartDate,
         EndDate: this.selectedEndDate,
         DoneById: this.loggedUserId,
         Imageurl: this.base64textString,
-        MOQ:this.minimumorderquantity,
-        StockItemId:this.VolumeSttockItemId,
-        Volume:this.packingCharges,
-        EntityInstanceId:this.EntityInstanceId,
+        MOQ: this.minimumorderquantity,
+        StockItemId: this.VolumeSttockItemId,
+        Volume: this.packingCharges,
+        EntityInstanceId: this.EntityInstanceId,
 
-      
+
       }
 
-      this.promotionTypes.firstPromotion(obj3).subscribe((res)=>{
+      this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
-        if(res.response.result == 'Added Succesfully'){
+        if (res.response.result == 'Added Succesfully') {
           alert('Added Succesfully')
           this.dialogRef.close();
         }
-        else{
-    alert(res.response.result);
+        else {
+          alert(res.response.result);
         }
       })
-    
+
     }
 
-   
-    if(this.selectedPromo == 4){
-      let obj3:any={
+
+    if (this.selectedPromo == 4) {
+      let obj3: any = {
         PromotionName: this.promoName,
         PromotionTypesId: this.selectedPromo,
         StartDate: this.selectedStartDate,
         EndDate: this.selectedEndDate,
         DoneById: this.loggedUserId,
         Imageurl: this.base64textString,
-        MOQ:this.minumorderqualityPrice,
-        StockItemId:this.priceStockItemId,
-        Price:this.packingVolume,
-        EntityInstanceId:this.EntityInstanceId,
+        MOQ: this.minumorderqualityPrice,
+        StockItemId: this.priceStockItemId,
+        Price: this.packingVolume,
+        EntityInstanceId: this.EntityInstanceId,
 
-      
+
       }
 
-      this.promotionTypes.firstPromotion(obj3).subscribe((res)=>{
+      this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
-        if(res.response.result == 'Added Succesfully'){
+        if (res.response.result == 'Added Succesfully') {
           alert('Added Succesfully')
           this.dialogRef.close();
         }
-        else{
-    alert(res.response.result);
+        else {
+          alert(res.response.result);
         }
       })
-    
+
     }
 
   }
@@ -1292,22 +1262,22 @@ console.log('mainobj',mainobj)
     this.tottalgeoCount = localStorage.getItem("tottalgeoCountpromo1");
 
     var objectsFromStorage = JSON.parse(this.storedNames123)
-     this.geographyyId = objectsFromStorage;
+    this.geographyyId = objectsFromStorage;
 
 
     const data = {
       Geography: this.geographyyId,
-      Search:  this.searchText,
+      Search: this.searchText,
     }
     this.promotionTypes.GetPromotionDealerList(data).subscribe((res) => {
       this.rowData5 = res.response;
       console.log();
       this.geographynameId = localStorage.getItem("geopromo");
-      console.log('geochecks',this.geographynameId)
+      console.log('geochecks', this.geographynameId)
       this.geographynameId.forEach(element => {
         return this.geographyyId.push(element.geographynameId);
         // console.log('rolecheck',rolecheck)
-  
+
       })
       // let localdata = res.response;
       // this.custmerid = localdata.map((data: { customerId: any; code: any; dealerName:any,geography:any }) => {
@@ -1318,22 +1288,22 @@ console.log('mainobj',mainobj)
 
 
 
-  
+
   addpromotionGeoTable() {
 
     const data = {
       Geography: this.geographyyId,
-      Search:  this.searchText,
+      Search: this.searchText,
     }
     this.promotionTypes.GetPromotionDealerList(data).subscribe((res) => {
       this.rowData5 = res.response;
       console.log();
       this.geographynameId = localStorage.getItem("geopromo");
-      console.log('geochecks',this.geographynameId)
+      console.log('geochecks', this.geographynameId)
       this.geographynameId.forEach(element => {
         return this.geographyyId.push(element.geographynameId);
         // console.log('rolecheck',rolecheck)
-  
+
       })
       // let localdata = res.response;
       // this.custmerid = localdata.map((data: { customerId: any; code: any; dealerName:any,geography:any }) => {
@@ -1345,9 +1315,43 @@ console.log('mainobj',mainobj)
 
 
 
-  selectedValue(value: any) {
-    this.promotionTypesId = value;
-    console.log('promcheck', this.promotionTypesId.val,)
+  selectedValue(event: any) {
+    if(event == undefined) return;
+    this.promotionTypesId = event;
+    if (event.promotionTypesName == 'Buy (A+B..) get (X+Y..)') {
+      // this.goForward(this.myStepper);
+      this.noPromotionSelected = false;
+      this.buyab = true;
+      this.volumedc = false;
+      this.buysets = false;
+      this.pricedc = false;
+    }
+    if (event.promotionTypesName == 'Buy (A or B + C or D..) get (X+Y or Y+Z..)') {
+      this.noPromotionSelected = false;
+      this.buyab = false;
+      this.volumedc = false;
+      this.buysets = true;
+      this.pricedc = false;
+      // this.goForward(this.myStepper);
+
+    }
+    if (event.promotionTypesName == 'Volume Discount') {
+      this.noPromotionSelected = false;
+      this.buyab = false;
+      this.volumedc = true;
+      this.buysets = false;
+      this.pricedc = false;
+      // this.goForward(this.myStepper);
+
+    }
+    if (event.promotionTypesName == 'Price Discount') {
+      this.noPromotionSelected = false;
+      // this.goForward(this.myStepper);
+      this.buyab = false;
+      this.volumedc = false;
+      this.buysets = false;
+      this.pricedc = true;
+    }
   }
 
 
@@ -1362,12 +1366,14 @@ console.log('mainobj',mainobj)
       this.rowData5 = res.response;
       console.log();
       this.geographynameId = localStorage.getItem("geopromo");
-      console.log('geochecks',this.geographynameId)
+      console.log('geochecks', this.geographynameId)
+     if(this.geographynameId){
       this.geographynameId.forEach(element => {
         return this.geographyyId.push(element.geographynameId);
         // console.log('rolecheck',rolecheck)
-  
+
       })
+     }
       // let localdata = res.response;
       // this.custmerid = localdata.map((data: { customerId: any; code: any; dealerName:any,geography:any }) => {
       //   return { customerId: data.customerId, code: data.code };

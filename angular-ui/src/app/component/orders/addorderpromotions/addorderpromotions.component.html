@@ -63,13 +63,13 @@
                         <div class="col-lg-3">
                             <div class="dealerReff">
                                 <label class="DealerInfo-label">Dealer Reference No <span class="astr">*</span></label>
-                                <input matInput placeholder="Enter" #input class="form-control container input-box">
+                                <input type="number" placeholder="Dealer Reference No" id="DealerReferenceNo" [(ngModel)]="DealerReferenceNo" class="form-control container input-box">
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="companyReff">
                                 <label class="DealerInfo-label">Company Reference No <span class="astr">*</span></label>
-                                <input matInput placeholder="Enter" #input class="form-control container input-box">
+                                <input type="number" placeholder="Company Reference No" id="CompanyReferenceNo" [(ngModel)]="CompanyReferenceNo" class="form-control container input-box">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -225,7 +225,7 @@
                                     <label class="boldR">Requirement Date </label>
                                     <mat-form-field appearance="fill" class="datepc">
                                         <mat-label>Select a date</mat-label>
-                                        <input matInput [matDatepicker]="picker">
+                                        <input matInput [matDatepicker]="picker"(dateChange)="dateChange($event)" [(ngModel)]="startdate">
                                         <mat-datepicker-toggle matSuffix [for]="picker"
                                             class="calicon"></mat-datepicker-toggle>
                                         <mat-datepicker #picker></mat-datepicker>
@@ -238,7 +238,7 @@
                                 </div>
                                 <textarea class="text-area-extrainfo" style="resize: none;"
                                     placeholder="Please write down if there are any delivery instructions or extra information you want to share"
-                                    name="w3review" rows="2" cols="65"></textarea>
+                                    name="w3review" rows="2" [(ngModel)]="DeliveryInstructions" cols="65"></textarea>
 
 
                             </div>
@@ -254,10 +254,10 @@
     </div>
     <div class="row footer">
         <div class="col-md-5">
-            <button type="button" class="saveas-draft">Save as draft</button>
+            <button type="button" class="saveas-draft" >Save as draft</button>
         </div>
         <div class="col-md-2">
-            <button type="button" class="save-submit">Save & submit</button>
+            <button type="button" class="save-submit" (click)="ordersubmit()">Save & submit</button>
         </div>
         <div class="col-md-5">
             <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>

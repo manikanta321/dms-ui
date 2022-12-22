@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { MaterialListService } from 'src/app/services/material-list.service';
 import { AddMaterialsService } from 'src/app/services/add-materials.service';
 import { GridApi } from 'ag-grid-community';
+import { Subject } from 'rxjs';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { ConsoleEventLogger } from '@generic-ui/hermes/core/infrastructure/logger/event/console.event.logger';
 import { AssosiationServicesService } from 'src/app/services/assosiation-services.service';
@@ -88,6 +89,8 @@ export class AddorderpromotionsComponent implements OnInit {
   dealerid: any = [];
   customerId: any = [];
   addressId: any = [];
+  shippingaddressId:any=[];
+  BillingaddressId:any=[];
   shippingAddress: any = [];
   address: any = [];
   GeoGrapydropdownListdata: any;
@@ -110,6 +113,18 @@ export class AddorderpromotionsComponent implements OnInit {
   finalValue: any;
   taxes: any;
   amount: any;
+  CompanyReferenceNo:any;
+  DealerReferenceNo:any;
+  DeliveryInstructions:any;
+  AddorderNonpromotiondata: any=[];
+  startdate:any;
+  minDate = new Date();
+  selectedStartDate: any;
+  dateChange(e) {
+
+    this.selectedStartDate = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
+    console.log(this.selectedStartDate);
+  }
 
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
@@ -367,12 +382,12 @@ export class AddorderpromotionsComponent implements OnInit {
     console.log(this.geographyId, "geographyId")
   }
   onItemSelectshippingAddress(item: any) {
-    this.addressId = item.addressId;
-    console.log(this.addressId, "addressId")
+    this.shippingaddressId = item.addressId;
+    console.log(this.shippingaddressId, "shippingaddressId")
   }
   onItemSelectBillingAddress(item: any) {
-    this.addressId = item.addressId;
-    console.log(this.addressId, "addressId")
+    this.BillingaddressId = item.addressId;
+    console.log(this.BillingaddressId, "BillingaddressId")
   }
   // on search 
   onSearchChange($event: any, anything?: any) {
@@ -1001,12 +1016,30 @@ export class AddorderpromotionsComponent implements OnInit {
           if (res) {
             console.log(data, "addnonpromotions");
             this.nonpromotionlist = res.response;
+         
             this.nonpromotionlist = this.nonpromotionlist.map((x, i) => {
               x.promotionName = 'NP' + (i+1);
               return x;
             })
+            this.nonpromotionlist.forEach(item=>  {
+              // Promocode: this.promotionName,
+              let obj ={
+              
+              "stockid": item.stockitemid,
+              "uom": item.uomid,
+              "orderqty": item.quantity,
+              "stockqty": item.stock,
+              "price": item.mrp,
+              "discount": item.discount,
+              "finalvalue": item.finalValue,
+              "taxvalue": item.taxes,
+              "amount": item.amount
+              }
+              this.AddorderNonpromotiondata.push(obj)
+            });
             this.Non_promotions = false;
-            console.log(this.nonpromotionlist, "addnonpromotions");
+            console.log(this.nonpromotionlist,'sdgvaFv')
+            console.log(this.AddorderNonpromotiondata, "addnonpromotions123");
           }
         },
         error: (err: any) => {
@@ -1025,5 +1058,24 @@ export class AddorderpromotionsComponent implements OnInit {
       console.log(this.taxdropdowndata, "tax data")
 
     });
+  }
+  
+ 
+  ordersubmit(){
+    let loggedUserId = localStorage.getItem('logInId')
+    console.log(this.startdate,"date")
+    let data = {
+      "CustomerId": this.customerId,
+      "geoid": this.geographyId,
+      "billingaddid": this.BillingaddressId,
+      "dealerrefno": this.DealerReferenceNo,
+      "comrefno": this.CompanyReferenceNo,
+      "shippingaddid": this.shippingaddressId,
+      "deliveryistruction":this.DeliveryInstructions,
+      "requirementdate":this.selectedStartDate,
+      "CreatedById": loggedUserId,
+      "itemcount": this.AddorderNonpromotiondata
+    }
+    console.log(data,"data")
   }
 }

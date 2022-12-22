@@ -280,8 +280,10 @@ export class AddorderpromotionsComponent implements OnInit {
       identifiers: [this.selectedItems]
     });
     this.catergory = [];
+    this.sub_category = [];
     this.sub_categorys = [];
-    this.typesData = [];
+    this.typesI = [];
+    this.typeI = [];
     this.materialIdentifierData = [];
   }
   closePopup() {
@@ -357,7 +359,7 @@ export class AddorderpromotionsComponent implements OnInit {
     {
       Cat: this.catergory,
       Sub_Cat: this.sub_category,
-      type: this.typesData,
+      type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
       Search: this.searchText,
       GeographyId: this.geographyId
@@ -537,6 +539,7 @@ export class AddorderpromotionsComponent implements OnInit {
     this.sub_category = [];
     this.sub_categorys = [];
     this.typesI = [];
+    this.typeI  = [];
     const data =
     {
       Cat: this.catergory,
@@ -649,7 +652,8 @@ export class AddorderpromotionsComponent implements OnInit {
   }
   onSubCategoryDSelectOrAll(item: any) {
     this.sub_categorys = [];
-    this.typesI = []
+    this.typesI = [];
+    this.typeI = [];
     this.type = this.fb.group({
       type: [this.selectedItems]
     });

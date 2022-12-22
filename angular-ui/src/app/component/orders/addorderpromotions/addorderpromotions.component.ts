@@ -89,21 +89,21 @@ export class AddorderpromotionsComponent implements OnInit {
   dealerid: any = [];
   customerId: any = [];
   addressId: any = [];
-  shippingaddressId:any=[];
-  BillingaddressId:any=[];
+  shippingaddressId: any = [];
+  BillingaddressId: any = [];
   shippingAddress: any = [];
   address: any = [];
   GeoGrapydropdownListdata: any;
   geographyId: any;
   searchText: any = " ";
-  typesI: any= [];
+  typesI: any = [];
   dealersbillingAddress: any = [];
-  quantityadd: any=0;
-  mrp: any= [];
-  mrpadd: any="";
+  quantityadd: any = 0;
+  mrp: any = [];
+  mrpadd: any = "";
   price: any = 0;
-  err: any=" ";
-  nonpromotionlist: any=[];
+  err: any = " ";
+  nonpromotionlist: any = [];
   stockitemname: any;
   uomid: any;
   uomname: any;
@@ -113,11 +113,11 @@ export class AddorderpromotionsComponent implements OnInit {
   finalValue: any;
   taxes: any;
   amount: any;
-  CompanyReferenceNo:any;
-  DealerReferenceNo:any;
-  DeliveryInstructions:any;
-  AddorderNonpromotiondata: any=[];
-  startdate:any;
+  CompanyReferenceNo: any;
+  DealerReferenceNo: any;
+  DeliveryInstructions: any;
+  AddorderNonpromotiondata: any = [];
+  startdate: any;
   minDate = new Date();
   selectedStartDate: any;
   dateChange(e) {
@@ -297,7 +297,7 @@ export class AddorderpromotionsComponent implements OnInit {
     this.nonpromotionlist.splice(index, 1);
 
     this.nonpromotionlist = this.nonpromotionlist.map((x, i) => {
-      x.promotionName = 'NP' + (i+1);
+      x.promotionName = 'NP' + (i + 1);
       return x;
     })
     // this.itemremoved.splice(0);
@@ -354,31 +354,31 @@ export class AddorderpromotionsComponent implements OnInit {
       console.log(this.GeoGrapydropdownListdata, "GeoGrapydropdownListdata")
     });
     // shipping api
-    this.orders.GetShipingAddress(this.customerId).subscribe((res:any)=>{
+    this.orders.GetShipingAddress(this.customerId).subscribe((res: any) => {
       let shippingAddress = res.response;
 
       this.dealersShippingAddress = shippingAddress.map((data: { addressId: any; address: any; }) => {
-        return { addressId: data.addressId, address  : data.address };
+        return { addressId: data.addressId, address: data.address };
       });
-      console.log(shippingAddress,"shipping address");
-      console.log(this.dealersShippingAddress,"shipping address1");
+      console.log(shippingAddress, "shipping address");
+      console.log(this.dealersShippingAddress, "shipping address1");
     });
-     // billing api
-    this.orders.GetBillingAddress(this.customerId).subscribe((res:any)=>{
+    // billing api
+    this.orders.GetBillingAddress(this.customerId).subscribe((res: any) => {
       let BillingAddress = res.response;
 
       this.dealersbillingAddress = BillingAddress.map((data: { addressId: any; address: any; }) => {
-        return { addressId: data.addressId, address  : data.address };
+        return { addressId: data.addressId, address: data.address };
       });
-      console.log(BillingAddress,"billing address");
-      console.log(this.dealersbillingAddress,"billing address2");
+      console.log(BillingAddress, "billing address");
+      console.log(this.dealersbillingAddress, "billing address2");
     });
     console.log(this.customerId, "dealrs id")
   }
 
   onItemSelectgeo(item: any) {
     this.geographyId = item.geographyId;
-    
+
     console.log(this.geographyId, "geographyId")
   }
   onItemSelectshippingAddress(item: any) {
@@ -489,10 +489,10 @@ export class AddorderpromotionsComponent implements OnInit {
     let SubdataD = {
       catId: this.catergory
     }
-    if(this.catergory.length == 0) {
-      this.sub_categorys =[];
+    if (this.catergory.length == 0) {
+      this.sub_categorys = [];
       this.sub_category = [];
-      this.typeI =[];
+      this.typeI = [];
       this.typesI = [];
     }
     this.materialList.onclickcat(SubdataD).subscribe((res) => {
@@ -552,7 +552,7 @@ export class AddorderpromotionsComponent implements OnInit {
         return this.subcatArray.push(element.subCatId);
 
       })
-      console.log("SubCategoryArrayy",this.subcatArray);
+      console.log("SubCategoryArrayy", this.subcatArray);
       this.topping1 = new FormControl(this.sub_category);
     });
     const data =
@@ -583,7 +583,7 @@ export class AddorderpromotionsComponent implements OnInit {
     this.sub_category = [];
     this.sub_categorys = [];
     this.typesI = [];
-    this.typeI  = [];
+    this.typeI = [];
     const data =
     {
       Cat: this.catergory,
@@ -639,8 +639,8 @@ export class AddorderpromotionsComponent implements OnInit {
     let subCat = {
       subCatId: this.sub_categorys
     }
-    if(this.sub_categorys.length == 0) {
-      this.typeI =[];
+    if (this.sub_categorys.length == 0) {
+      this.typeI = [];
       this.typesI = [];
     }
     this.materialList.onclicksubcat(subCat).subscribe((res) => {
@@ -671,7 +671,7 @@ export class AddorderpromotionsComponent implements OnInit {
   }
   onSubCategorySelectOrAll() {
     this.sub_categorys = this.subcatArray;
-    console.log("subCattyyArrayy",this.sub_categorys);
+    console.log("subCattyyArrayy", this.sub_categorys);
     let Type = {
       subCatId: this.sub_categorys
     }
@@ -681,7 +681,7 @@ export class AddorderpromotionsComponent implements OnInit {
       this.typeI = typs;
       this.topping2 = new FormControl(this.typeI);
     });
-    console.log("subcategoriesssss",this.sub_categorys)
+    console.log("subcategoriesssss", this.sub_categorys)
     const data =
     {
       Cat: this.catergory,
@@ -742,8 +742,8 @@ export class AddorderpromotionsComponent implements OnInit {
   }
   onTypeDeSelect(item: any) {
 
-   this.typesI.forEach((element, index) => {
-      if (element == item.typeId)this.typesI.splice(index, 1);
+    this.typesI.forEach((element, index) => {
+      if (element == item.typeId) this.typesI.splice(index, 1);
 
     });
     const data =
@@ -946,29 +946,29 @@ export class AddorderpromotionsComponent implements OnInit {
     let formattedList: any = [];
     items.forEach(item => {
       let obj: any = {}
-      let selectedNonPromotionItem =  this.nonpromotionlist.find(x=> x.stockitemid == item.stockItemId);
+      let selectedNonPromotionItem = this.nonpromotionlist.find(x => x.stockitemid == item.stockItemId);
       obj.classification = item.classification;
       obj.materialCustomName = item.materialCustomName;
       obj.mrp = item.mrp;
       obj.productSKUName = item.productSKUName;
       obj.stockItemId = item.stockItemId;
       obj.stockItemName = item.stockItemName;
-      obj.isPromotionSelected = selectedNonPromotionItem == undefined ? false :true;
+      obj.isPromotionSelected = selectedNonPromotionItem == undefined ? false : true;
       obj.Quantity = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.quantity;
       obj.Taxid = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.taxid;
       // obj.price = (item.Quantity ?? 0) * item.mrp
       formattedList.push(obj);
     });
-// (Item.Quantity ?? 0) * Item.mrp
+    // (Item.Quantity ?? 0) * Item.mrp
     return formattedList;
 
   }
 
-  quantityChange(){
+  quantityChange() {
     let quantityadd = 0;
     let price = 0;
-    this.orderNonPromotionsdata.forEach(item=>{
-      if(item.isPromotionSelected){
+    this.orderNonPromotionsdata.forEach(item => {
+      if (item.isPromotionSelected) {
         quantityadd += item.Quantity;
         price += ((item.Quantity ?? 0) * item.mrp);
       }
@@ -985,8 +985,8 @@ export class AddorderpromotionsComponent implements OnInit {
 
     this.quantityadd = 0;
     this.price = 0;
-    this.orderNonPromotionsdata.forEach(item=>{
-      if(item.isPromotionSelected){
+    this.orderNonPromotionsdata.forEach(item => {
+      if (item.isPromotionSelected) {
         this.quantityadd += item.Quantity;
         this.price += ((item.Quantity ?? 0) * item.mrp);
       }
@@ -994,18 +994,18 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   addnonPromoItems() {
-    let selectedNonPromotionData:any  = [];
-     this.orderNonPromotionsdata.forEach(item => {
-      if(item.isPromotionSelected){
+    let selectedNonPromotionData: any = [];
+    this.orderNonPromotionsdata.forEach(item => {
+      if (item.isPromotionSelected) {
         let obj = {
-            "Taxid": item.Taxid,
-            "stockItemId": item.stockItemId,
-            "Quantity": item.Quantity,
-          };
+          "Taxid": item.Taxid,
+          "stockItemId": item.stockItemId,
+          "Quantity": item.Quantity,
+        };
 
-        selectedNonPromotionData.push(obj) 
+        selectedNonPromotionData.push(obj)
       }
-     });
+    });
     let data = {
       "GeographyId": this.geographyId,
       "AddItems": selectedNonPromotionData
@@ -1016,29 +1016,29 @@ export class AddorderpromotionsComponent implements OnInit {
           if (res) {
             console.log(data, "addnonpromotions");
             this.nonpromotionlist = res.response;
-         
+
             this.nonpromotionlist = this.nonpromotionlist.map((x, i) => {
-              x.promotionName = 'NP' + (i+1);
+              x.promotionName = 'NP' + (i + 1);
               return x;
             })
-            this.nonpromotionlist.forEach(item=>  {
+            this.nonpromotionlist.forEach(item => {
               // Promocode: this.promotionName,
-              let obj ={
-              
-              "stockid": item.stockitemid,
-              "uom": item.uomid,
-              "orderqty": item.quantity,
-              "stockqty": item.stock,
-              "price": item.mrp,
-              "discount": item.discount,
-              "finalvalue": item.finalValue,
-              "taxvalue": item.taxes,
-              "amount": item.amount
+              let obj = {
+                "Promocode": item.promotionName,
+                "stockid": item.stockitemid,
+                "uom": item.uomid,
+                "orderqty": item.quantity,
+                "stockqty": item.stock,
+                "price": item.mrp,
+                "discount": item.discount,
+                "finalvalue": item.finalValue,
+                "taxvalue": item.taxes,
+                "amount": item.amount
               }
               this.AddorderNonpromotiondata.push(obj)
             });
             this.Non_promotions = false;
-            console.log(this.nonpromotionlist,'sdgvaFv')
+            console.log(this.nonpromotionlist, 'sdgvaFv')
             console.log(this.AddorderNonpromotiondata, "addnonpromotions123");
           }
         },
@@ -1059,11 +1059,11 @@ export class AddorderpromotionsComponent implements OnInit {
 
     });
   }
-  
- 
-  ordersubmit(){
+
+
+  ordersubmit() {
     let loggedUserId = localStorage.getItem('logInId')
-    console.log(this.startdate,"date")
+    console.log(this.startdate, "date")
     let data = {
       "CustomerId": this.customerId,
       "geoid": this.geographyId,
@@ -1071,11 +1071,14 @@ export class AddorderpromotionsComponent implements OnInit {
       "dealerrefno": this.DealerReferenceNo,
       "comrefno": this.CompanyReferenceNo,
       "shippingaddid": this.shippingaddressId,
-      "deliveryistruction":this.DeliveryInstructions,
-      "requirementdate":this.selectedStartDate,
+      "deliveryistruction": this.DeliveryInstructions,
+      "requirementdate": this.selectedStartDate,
       "CreatedById": loggedUserId,
       "itemcount": this.AddorderNonpromotiondata
     }
-    console.log(data,"data")
+    this.orders.addorderNonPromotions(data).subscribe((res) => {
+
+      console.log(data, "data")
+    });
   }
 }

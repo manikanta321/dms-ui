@@ -61,6 +61,11 @@ export class OrdersApisService {
 
     return this.http.post<any>(this.userurl + 'OrdersApi/GetStockFullDeatils', data);
   }
+  public addorderNonPromotions(data) {
+
+    return this.http.post<any>(this.userurl + 'OrdersApi/AddOrder', data);
+  }
+  
 
 }
 

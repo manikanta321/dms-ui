@@ -99,6 +99,7 @@ export class AddorderpromotionsComponent implements OnInit {
   mrp: any= [];
   mrpadd: any="";
   price: any = 0;
+  err: any=" ";
 
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
@@ -959,18 +960,31 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   addnonPromoItems() {
-   
-    let addnonPromoItemsdata = this.datanonpromotions.map((data: { Taxid: any; stockItemId: any; Quantity:any; mpr:any; price:any}) => {
+
+    let addnonPromoItemsdata = this.datanonpromotions.map((data: { Taxid: any; stockItemId: any; Quantity: any; mpr: any; price: any }) => {
       return { Taxid: data.Taxid, stockItemId: data.stockItemId, Quantity: data.Quantity };
     });
     let data = {
       "GeographyId": this.geographyId,
-    "AddItems":addnonPromoItemsdata
+      "AddItems": addnonPromoItemsdata
     }
-    this.orders.addorderNonPromotionsdata(data).subscribe((res) => {
-      console.log(data, "addnonpromotions");
-    });
-   
+    this.orders.addorderNonPromotionsdata(data).subscribe(
+      {
+        next: (res: any) => {
+          if (res) {
+            console.log(data, "addnonpromotions");
+            let nonpromotionlist = res.response;
+            this.Non_promotions = false;
+            console.log(nonpromotionlist, "addnonpromotions");
+          }
+        },
+        error: (err: any) => {
+          this.Non_promotions = true;
+          this.err = err.error
+
+        }
+      })
+
     console.log(data, "addnonpromotions");
   }
 

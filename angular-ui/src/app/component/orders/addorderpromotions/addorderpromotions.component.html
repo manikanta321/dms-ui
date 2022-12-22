@@ -128,7 +128,7 @@
 
                                 <tr *ngFor="let Item of nonpromotionlist; let i=index;">
                                     <td>
-                                        <p class="itemLeft"><span class="promoItem">Np{{i+1}}</span>{{Item.stockitemname}}</p>
+                                        <p class="itemLeft"><span class="promoItem">{{Item.promotionName}} </span>{{Item.stockitemname}}</p>
                                     </td>
                                     <td>
                                         <input type="text" [(ngModel)]="Item.uomname" placeholder="5"
@@ -162,7 +162,7 @@
                                         <input type="text" [(ngModel)]="Item.amount" placeholder="Boxes"
                                             class="IteminputBoxes">
                                     </td>
-                                    <mat-icon class="removeCircle" (click)=removeItem()>
+                                    <mat-icon class="removeCircle" (click)=removeNonPromotionItem(Item)>
                                         remove_circle</mat-icon>
                                 </tr>
 
@@ -457,7 +457,7 @@
                                         </td>
 
                                         <td><input type="number" placeholder="5" class="quatity-inp"
-                                                [(ngModel)]="Item.Quantity"></td>
+                                                [(ngModel)]="Item.Quantity" (keyup)="quantityChange()"></td>
                                         <td>{{(Item.Quantity ?? 0) * Item.mrp }}</td>
                                     </tr>
                                 </tbody>

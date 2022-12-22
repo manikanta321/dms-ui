@@ -274,10 +274,18 @@ export class AddorderpromotionsComponent implements OnInit {
 
   addOrderNonPromotionList() {
     // this.dialog.open( OrderNonpromotionlistComponent,{width: '1043px',height:'663px'});
+    this.orderNonPromotionsList();
     this.Non_promotions = true;
   }
-  removeItem() {
-    this.itemremoved.splice(0);
+  removeNonPromotionItem(clickedItem) {
+    let index = this.nonpromotionlist.findIndex(x => x.stockItemId == clickedItem.stockItemId);
+    this.nonpromotionlist.splice(index, 1);
+
+    this.nonpromotionlist = this.nonpromotionlist.map((x, i) => {
+      x.promotionName = 'NP' + (i+1);
+      return x;
+    })
+    // this.itemremoved.splice(0);
   }
   // non-prmotions
 
@@ -355,7 +363,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
   onItemSelectgeo(item: any) {
     this.geographyId = item.geographyId;
-    this.orderNonPromotionsList();
+    
     console.log(this.geographyId, "geographyId")
   }
   onItemSelectshippingAddress(item: any) {
@@ -908,13 +916,14 @@ export class AddorderpromotionsComponent implements OnInit {
       "Search": "",
       "GeographyId": this.geographyId
     }
-
+    this.spinner.show();
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
       let orderNonPromotionsData = res.response;
 
       this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
-
+      this.orderNonPromotionsdata.sort((a, b) => b.isPromotionSelected - a.isPromotionSelected);
+      this.spinner.hide();
     });
   }
 
@@ -922,15 +931,16 @@ export class AddorderpromotionsComponent implements OnInit {
     let formattedList: any = [];
     items.forEach(item => {
       let obj: any = {}
+      let selectedNonPromotionItem =  this.nonpromotionlist.find(x=> x.stockitemid == item.stockItemId);
       obj.classification = item.classification;
       obj.materialCustomName = item.materialCustomName;
       obj.mrp = item.mrp;
       obj.productSKUName = item.productSKUName;
       obj.stockItemId = item.stockItemId;
       obj.stockItemName = item.stockItemName;
-      obj.isPromotionSelected = false;
-      obj.Quantity = null;
-      obj.Taxid = null;
+      obj.isPromotionSelected = selectedNonPromotionItem == undefined ? false :true;
+      obj.Quantity = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.quantity;
+      obj.Taxid = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.taxid;
       // obj.price = (item.Quantity ?? 0) * item.mrp
       formattedList.push(obj);
     });
@@ -938,45 +948,52 @@ export class AddorderpromotionsComponent implements OnInit {
     return formattedList;
 
   }
+
+  quantityChange(){
+    let quantityadd = 0;
+    let price = 0;
+    this.orderNonPromotionsdata.forEach(item=>{
+      if(item.isPromotionSelected){
+        quantityadd += item.Quantity;
+        price += ((item.Quantity ?? 0) * item.mrp);
+      }
+    });
+
+    this.quantityadd = quantityadd;
+    this.price = price;
+  }
+
+
   checkboxChange(event, changedPromotionObj) {
     console.log(event, changedPromotionObj);
     changedPromotionObj.isPromotionSelected = event.target.checked;
 
-
-    this.Taxid = changedPromotionObj.Taxid
-    this.stockItemId = changedPromotionObj.stockItemId
-    this.Quantity = changedPromotionObj.Quantity
-    this.mrp = changedPromotionObj.mrp
-    this.price = this.Quantity * this.mrp
-    let nonprmodata = {
-      "Taxid": this.Taxid,
-      "stockItemId": this.stockItemId,
-      "Quantity": this.Quantity,
-      "mrp":this.mrp,
-      "price":this.price
-    }
-    this.datanonpromotions.push(nonprmodata);
-    
-    this.quantityadd = this.datanonpromotions.reduce((n, {Quantity}) => n + Quantity, 0);
-    console.log(this.quantityadd,"Quantity");
-    this.price = this.datanonpromotions.reduce((n, {price}) => n + price, 0);
-    console.log(this.price,"price")
-    // const ids = this.datanonpromotions.map(o => o.stockItemId)
-    // this.datanonpromotion = this.datanonpromotions.filter(({stockItemId}, index) => !ids.includes(stockItemId, index + 1))
-
-    // console.log(filtered)
-    console.log(nonprmodata)
-    console.log(this.datanonpromotions,"datacheck")
+    this.quantityadd = 0;
+    this.price = 0;
+    this.orderNonPromotionsdata.forEach(item=>{
+      if(item.isPromotionSelected){
+        this.quantityadd += item.Quantity;
+        this.price += ((item.Quantity ?? 0) * item.mrp);
+      }
+    });
   }
 
   addnonPromoItems() {
+    let selectedNonPromotionData:any  = [];
+     this.orderNonPromotionsdata.forEach(item => {
+      if(item.isPromotionSelected){
+        let obj = {
+            "Taxid": item.Taxid,
+            "stockItemId": item.stockItemId,
+            "Quantity": item.Quantity,
+          };
 
-    let addnonPromoItemsdata = this.datanonpromotions.map((data: { Taxid: any; stockItemId: any; Quantity: any; mpr: any; price: any }) => {
-      return { Taxid: data.Taxid, stockItemId: data.stockItemId, Quantity: data.Quantity };
-    });
+        selectedNonPromotionData.push(obj) 
+      }
+     });
     let data = {
       "GeographyId": this.geographyId,
-      "AddItems": addnonPromoItemsdata
+      "AddItems": selectedNonPromotionData
     }
     this.orders.addorderNonPromotionsdata(data).subscribe(
       {
@@ -984,18 +1001,10 @@ export class AddorderpromotionsComponent implements OnInit {
           if (res) {
             console.log(data, "addnonpromotions");
             this.nonpromotionlist = res.response;
-            
-            this.stockitemname = this.nonpromotionlist.stockitemname
-            this.uomid = this.nonpromotionlist.uomid
-            this.uomname = this.nonpromotionlist.uomname
-            this.quantity = this.nonpromotionlist.quantity
-            this.stock = this.nonpromotionlist.stock
-            this.mrp = this.nonpromotionlist.mrp
-            this.discount = this.nonpromotionlist.discount
-            this.finalValue = this.nonpromotionlist.finalValue
-            this.taxes = this.nonpromotionlist.taxes
-            this.amount = this.nonpromotionlist.amount
-          
+            this.nonpromotionlist = this.nonpromotionlist.map((x, i) => {
+              x.promotionName = 'NP' + (i+1);
+              return x;
+            })
             this.Non_promotions = false;
             console.log(this.nonpromotionlist, "addnonpromotions");
           }

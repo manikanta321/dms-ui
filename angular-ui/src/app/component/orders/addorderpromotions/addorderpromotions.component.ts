@@ -95,9 +95,10 @@ export class AddorderpromotionsComponent implements OnInit {
   searchText: any = " ";
   typesI: any= [];
   dealersbillingAddress: any = [];
-  quantityadd: any="";
+  quantityadd: any=0;
   mrp: any= [];
   mrpadd: any="";
+  price: any = 0;
 
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
@@ -919,9 +920,10 @@ export class AddorderpromotionsComponent implements OnInit {
       obj.isPromotionSelected = false;
       obj.Quantity = null;
       obj.Taxid = null;
+      // obj.price = (item.Quantity ?? 0) * item.mrp
       formattedList.push(obj);
     });
-
+// (Item.Quantity ?? 0) * Item.mrp
     return formattedList;
 
   }
@@ -934,18 +936,20 @@ export class AddorderpromotionsComponent implements OnInit {
     this.stockItemId = changedPromotionObj.stockItemId
     this.Quantity = changedPromotionObj.Quantity
     this.mrp = changedPromotionObj.mrp
+    this.price = this.Quantity * this.mrp
     let nonprmodata = {
       "Taxid": this.Taxid,
       "stockItemId": this.stockItemId,
       "Quantity": this.Quantity,
-      "mrp":this.mrp
+      "mrp":this.mrp,
+      "price":this.price
     }
     this.datanonpromotions.push(nonprmodata);
     
     this.quantityadd = this.datanonpromotions.reduce((n, {Quantity}) => n + Quantity, 0);
-    console.log(this.quantityadd,"Quantity")
-    // this.mrpadd = this.datanonpromotions.reduce((n, {mrp}) => n + mrp, 0);
-    // console.log(this.mrpadd,"mrp")
+    console.log(this.quantityadd,"Quantity");
+    this.price = this.datanonpromotions.reduce((n, {price}) => n + price, 0);
+    console.log(this.price,"price")
     // const ids = this.datanonpromotions.map(o => o.stockItemId)
     // this.datanonpromotion = this.datanonpromotions.filter(({stockItemId}, index) => !ids.includes(stockItemId, index + 1))
 
@@ -955,8 +959,19 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   addnonPromoItems() {
-
-    console.log(this.datanonpromotions, "addnonpromotions");
+   
+    let addnonPromoItemsdata = this.datanonpromotions.map((data: { Taxid: any; stockItemId: any; Quantity:any; mpr:any; price:any}) => {
+      return { Taxid: data.Taxid, stockItemId: data.stockItemId, Quantity: data.Quantity };
+    });
+    let data = {
+      "GeographyId": this.geographyId,
+    "AddItems":addnonPromoItemsdata
+    }
+    this.orders.addorderNonPromotionsdata(data).subscribe((res) => {
+      console.log(data, "addnonpromotions");
+    });
+   
+    console.log(data, "addnonpromotions");
   }
 
   taxdropdown() {

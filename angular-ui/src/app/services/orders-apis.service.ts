@@ -57,7 +57,11 @@ export class OrdersApisService {
   public GetGeoGrapydropdownList(customerId:any){
     return this.http.get<any>(this.userurl + `OrdersApi/GetordergeoDropdown?Customerid=${customerId}`)
   }
-  
+  public addorderNonPromotionsdata(data) {
+
+    return this.http.post<any>(this.userurl + 'OrdersApi/GetStockFullDeatils', data);
+  }
+
 }
 
  

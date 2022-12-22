@@ -27,18 +27,21 @@
                         <div class="col-lg-3">
                             <div class="dealerr">
                                 <label class="DealerInfo-label">Dealer <span class="astr">*</span></label>
-                                <ng-select [items]="dealerListArray"  id="dealerAllArray" name="dealerAllArray" required [virtualScroll]="true"
-                                    bindLabel="customerName" bindValue="customerId" [searchable]="true" [clearable]="false"
-                                    placeholder=" select dealer" [(ngModel)]="dealerListArray" (change)="onItemSelectdealers($event)">
+                                <ng-select [items]="dealerListArray" id="dealerAllArray" name="dealerAllArray" required
+                                    [virtualScroll]="true" bindLabel="customerName" bindValue="customerId"
+                                    [searchable]="true" [clearable]="false" placeholder=" select dealer"
+                                    [(ngModel)]="dealerListArray" (change)="onItemSelectdealers($event)">
                                 </ng-select>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="geographyy">
                                 <label class="DealerInfo-label">Geography <span class="astr">*</span></label>
-                                <ng-select class="selectgeo" [items]="GeoGrapydropdownListdata"  id="GeoGrapydropdown" name="GeoGrapydropdown" required [virtualScroll]="true"
-                                bindLabel="geographyName" bindValue="geographyId" [searchable]="true" [clearable]="false"
-                                placeholder="select Geography" [(ngModel)]="GeoGrapydropdownListdata" (change)="onItemSelectgeo($event)">
+                                <ng-select class="selectgeo" [items]="GeoGrapydropdownListdata" id="GeoGrapydropdown"
+                                    name="GeoGrapydropdown" required [virtualScroll]="true" bindLabel="geographyName"
+                                    bindValue="geographyId" [searchable]="true" [clearable]="false"
+                                    placeholder="select Geography" [(ngModel)]="GeoGrapydropdownListdata"
+                                    (change)="onItemSelectgeo($event)">
                                 </ng-select>
                             </div>
                         </div>
@@ -46,10 +49,11 @@
                             <div class="billingAdrs">
                                 <label class="DealerInfo-label">Billing Address <span class="astr">*</span></label>
                                 <!-- <input matInput placeholder=" Select Billing address" #input class="form-control container input-box" > -->
-                                <ng-select class="BillingAddress" [items]="dealersbillingAddress" 
-                                 id="BillingAddress" name="BillingAddress" required [virtualScroll]="true"
-                                bindLabel="address" bindValue="addressId" [searchable]="true" [clearable]="false"
-                                placeholder="select shippingAddress" [(ngModel)]="dealersbillingAddress" (change)="onItemSelectBillingAddress($event)">
+                                <ng-select class="BillingAddress" [items]="dealersbillingAddress" id="BillingAddress"
+                                    name="BillingAddress" required [virtualScroll]="true" bindLabel="address"
+                                    bindValue="addressId" [searchable]="true" [clearable]="false"
+                                    placeholder="select shippingAddress" [(ngModel)]="dealersbillingAddress"
+                                    (change)="onItemSelectBillingAddress($event)">
                                 </ng-select>
                             </div>
                         </div>
@@ -72,10 +76,11 @@
                             <div class="shippingAdrs">
                                 <label class="DealerInfo-label">Shipping Address <span class="astr">*</span></label>
                                 <!-- <input matInput placeholder="Select shipping address" #input class="form-control container input-box" > -->
-                                <ng-select class="shipingAddress" [items]="dealersShippingAddress" 
-                                 id="shipingAddress" name="shipingAddress" required [virtualScroll]="true"
-                                bindLabel="address" bindValue="addressId" [searchable]="true" [clearable]="false"
-                                placeholder="select shippingAddress" [(ngModel)]="dealersShippingAddress" (change)="onItemSelectshippingAddress($event)">
+                                <ng-select class="shipingAddress" [items]="dealersShippingAddress" id="shipingAddress"
+                                    name="shipingAddress" required [virtualScroll]="true" bindLabel="address"
+                                    bindValue="addressId" [searchable]="true" [clearable]="false"
+                                    placeholder="select shippingAddress" [(ngModel)]="dealersShippingAddress"
+                                    (change)="onItemSelectshippingAddress($event)">
                                 </ng-select>
                             </div>
                         </div>
@@ -116,70 +121,51 @@
                                     <th>Stock</th>
                                     <th>Unit Price</th>
                                     <th>Discount</th>
-                                    <th>Final Value</th>
                                     <th>Tax</th>
+                                    <th>Final Value</th>
                                     <th>Amount</th>
                                 </tr>
-                                <tr [(ngModel)]="itemremoved">
+
+                                <tr *ngFor="let Item of nonpromotionlist; let i=index;">
                                     <td>
-                                        <p class="itemLeft"><span class="promoItem">p1</span>Lays classic blue cla..</p>
+                                        <p class="itemLeft"><span class="promoItem">Np{{i+1}}</span>{{Item.stockitemname}}</p>
                                     </td>
                                     <td>
-                                        <input type="text" placeholder="Boxes" class="IteminputBoxes">
+                                        <input type="text" [(ngModel)]="Item.uomname" placeholder="5"
+                                            class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" placeholder="5" class="IteminputBoxes">
+                                        <input type="text" [(ngModel)]="Item.quantity" placeholder="5"
+                                            class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" placeholder="10,000,000" class="IteminputBoxes">
+                                        <input type="text" [(ngModel)]="Item.stock" placeholder="10,000,000"
+                                            class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" placeholder="20" class="IteminputBoxes">
+                                        <input type="text" [(ngModel)]="Item.mrp" placeholder="20"
+                                            class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" placeholder="90" class="IteminputBoxes">
+                                        <input type="text" [(ngModel)]="Item.discount" placeholder="90"
+                                            class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" placeholder="IGST (18%)" class="IteminputBoxes">
+                                        <input type="text" [(ngModel)]="Item.taxes" placeholder="IGST (18%)"
+                                            class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" placeholder="106.2" class="IteminputBoxes">
+                                        <input type="text" [(ngModel)]="Item.finalValue" placeholder="106.2"
+                                            class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" placeholder="Boxes" class="IteminputBoxes">
+                                        <input type="text" [(ngModel)]="Item.amount" placeholder="Boxes"
+                                            class="IteminputBoxes">
                                     </td>
                                     <mat-icon class="removeCircle" (click)=removeItem()>
                                         remove_circle</mat-icon>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <p class="itemLeft"><span class="promoItem">p1</span>Lays classic blue cla..</p>
-                                    </td>
-                                    <td>
-                                        <input type="text" placeholder="Boxes" class="IteminputBoxes">
-                                    </td>
-                                    <td>
-                                        <input type="text" placeholder="5" class="IteminputBoxes">
-                                    </td>
-                                    <td>
-                                        <input type="text" placeholder="10,000,000" class="IteminputBoxes">
-                                    </td>
-                                    <td>
-                                        <input type="text" placeholder="20" class="IteminputBoxes">
-                                    </td>
-                                    <td>
-                                        <input type="text" placeholder="90" class="IteminputBoxes">
-                                    </td>
-                                    <td>
-                                        <input type="text" placeholder="IGST (18%)" class="IteminputBoxes">
-                                    </td>
-                                    <td>
-                                        <input type="text" placeholder="106.2" class="IteminputBoxes">
-                                    </td>
-                                    <td>
-                                        <input type="text" placeholder="Boxes" class="IteminputBoxes">
-                                    </td>
-                                </tr>
+
                             </table>
                         </div>
                         <div class="row mt-2">

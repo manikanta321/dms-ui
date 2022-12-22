@@ -100,6 +100,16 @@ export class AddorderpromotionsComponent implements OnInit {
   mrpadd: any="";
   price: any = 0;
   err: any=" ";
+  nonpromotionlist: any=[];
+  stockitemname: any;
+  uomid: any;
+  uomname: any;
+  quantity: any;
+  stock: any;
+  discount: any;
+  finalValue: any;
+  taxes: any;
+  amount: any;
 
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
@@ -973,9 +983,21 @@ export class AddorderpromotionsComponent implements OnInit {
         next: (res: any) => {
           if (res) {
             console.log(data, "addnonpromotions");
-            let nonpromotionlist = res.response;
+            this.nonpromotionlist = res.response;
+            
+            this.stockitemname = this.nonpromotionlist.stockitemname
+            this.uomid = this.nonpromotionlist.uomid
+            this.uomname = this.nonpromotionlist.uomname
+            this.quantity = this.nonpromotionlist.quantity
+            this.stock = this.nonpromotionlist.stock
+            this.mrp = this.nonpromotionlist.mrp
+            this.discount = this.nonpromotionlist.discount
+            this.finalValue = this.nonpromotionlist.finalValue
+            this.taxes = this.nonpromotionlist.taxes
+            this.amount = this.nonpromotionlist.amount
+          
             this.Non_promotions = false;
-            console.log(nonpromotionlist, "addnonpromotions");
+            console.log(this.nonpromotionlist, "addnonpromotions");
           }
         },
         error: (err: any) => {

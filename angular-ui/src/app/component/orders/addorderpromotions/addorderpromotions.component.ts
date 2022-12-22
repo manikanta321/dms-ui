@@ -454,6 +454,12 @@ export class AddorderpromotionsComponent implements OnInit {
     let SubdataD = {
       catId: this.catergory
     }
+    if(this.catergory.length == 0) {
+      this.sub_categorys =[];
+      this.sub_category = [];
+      this.typeI =[];
+      this.typesI = [];
+    }
     this.materialList.onclickcat(SubdataD).subscribe((res) => {
       let subcaty = res.response;
       console.log("response1", res)
@@ -597,6 +603,10 @@ export class AddorderpromotionsComponent implements OnInit {
     });
     let subCat = {
       subCatId: this.sub_categorys
+    }
+    if(this.sub_categorys.length == 0) {
+      this.typeI =[];
+      this.typesI = [];
     }
     this.materialList.onclicksubcat(subCat).subscribe((res) => {
       let typs = res.response;

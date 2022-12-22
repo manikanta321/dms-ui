@@ -373,6 +373,7 @@ geoList:any=[]
 
 
   ngOnInit() {
+    this.addPromotions()
     this.AddpromotionData = localStorage.getItem("AddpromotionData");
     this.maxDate.setDate(this.maxDate.getDate() + 20);     
     
@@ -1065,6 +1066,8 @@ handleScroll(event) {
 
 
   onCellClicked( e): void {
+    console.log(e)
+
     let cellCLickedpromotion = '1'
     localStorage.setItem('cellCLickedpromotion', cellCLickedpromotion)
     if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
@@ -1109,6 +1112,8 @@ handleScroll(event) {
 
   }
   addPromotions(){
+    localStorage.setItem('addOrEdit','Addpromo')
+
     const config: MatDialogConfig = {
       width: '1100px',
       height: '583px',

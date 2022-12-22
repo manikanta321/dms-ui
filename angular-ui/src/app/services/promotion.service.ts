@@ -132,6 +132,10 @@ firstPromotion(data: any){
   return this.http.post<any>(this.userurl + 'PromotionsApi/AddEditPromotions', data)
 }
 
+getPromotionById(data: any){
+  return this.http.get<any>(this.userurl + 'PromotionsApi/GetPromotionByIdToEdit?promotionId='+data);
+}
+
 public Promogetgeo(){
   return this.http.get<any>(this.userurl + 'PromotionsApi/GetAboveDefaultGeographyforPromotion')
 

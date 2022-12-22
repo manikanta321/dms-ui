@@ -5,7 +5,7 @@
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
             </div>
             <div class="head-t">
-                <h3 class="addPromo font">Add Promotions</h3>
+                <h3 class="addPromo font">{{header}} Promotions</h3>
                 <br>
                 <img src="assets/img/arrow-left-disable.png" *ngIf="!basicInfo" class="addMore-icon"
                     style="width: 32px;margin-left: 760px;" alt="left-arr-btn">
@@ -136,7 +136,7 @@
                                         [(ngModel)]="addbuyg.itemss">
                                         <div class="row">
                                             <div class="col-10 buyGrp-h">
-                                                <h5 class="item-header"><b>Buy </b>group {{i}}</h5>
+                                                <h5 class="item-header"><b>Buy </b>group {{i+1}}</h5>
                                             </div>
                                             <div class="col-2 plsImg" (click)="addbuyGroup(i)" *ngIf="i==0">
                                                 <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
@@ -201,7 +201,7 @@
                                         *ngFor="let addbuyg of addgetgroup; let i=index">
                                         <div class="row">
                                             <div class="col-10 buyGrp-h">
-                                                <h5 class="item-header"><b>Get </b>group {{i}}</h5>
+                                                <h5 class="item-header"><b>Get </b>group {{i+1}}</h5>
                                             </div>
                                             <div class="col-2 plsImg" (click)="adddgetGroup(i)" *ngIf="i==0">
                                                 <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">

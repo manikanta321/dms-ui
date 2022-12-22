@@ -1,10 +1,11 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 
-import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
 
 import tippy, { hideAll } from 'tippy.js'; 
+import { AddPromotionsComponent } from '../add-promotions/add-promotions.component';
 import { ActivatepopUpComponent } from '../users/userPopups/activatepop-up/activatepop-up.component';
 import { DeactivateUserpopupComponent } from '../users/userPopups/deactivate-userpopup/deactivate-userpopup.component';
 import { EditPopupComponent } from '../users/userPopups/edit-popup/edit-popup.component';
@@ -50,7 +51,7 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
       interactive: true,
       appendTo: document.body,
       hideOnClick: false,
-      offset: [-100, 200],
+      offset: [-50, 200],
       onShow: (instance) => {
         hideAll({ exclude: instance });
       },
@@ -70,6 +71,17 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
   }
   tickmark(){
     this.selected = true;
+  }
+  editPromo(){
+    localStorage.setItem('addOrEdit','editpromo');
+    
+    const config: MatDialogConfig = {
+      width: '1100px',
+      height: '583px',
+     
+    };
+   this.dialog.open( AddPromotionsComponent, config);
+
   }
   togglePopup() {
     this.isOpen = !this.isOpen;

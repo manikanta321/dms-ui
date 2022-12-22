@@ -325,9 +325,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   moqValue: any;
   GetqtyValue: any;
   selectedPromo: any;
+  header:any;
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
     private sharedService:SharedServicesDealerService,
     private dialogRefModal: MatDialogRef<any>,
+    private dialogRef: MatDialogRef<AddPromotionsComponent>,
+
 
     private dateAdapter: DateAdapter<Date>,
     public promotionTypes: PromotionService) {
@@ -353,6 +356,20 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   /* on Select of Dropdown screen change */
 
   ngOnInit() {
+    let headername=localStorage.getItem('addOrEdit');
+if(headername=='editpromo'){
+this.header='Edit';
+let data
+this.promotionTypes.getPromotionById(data).subscribe((res)=>{
+  console.log('res',res)
+})
+
+}
+else{
+  this.header='Add';
+}
+
+
     localStorage.setItem('pGselectedRows','' )
     localStorage.setItem('productSubGselectedRows','' );
     localStorage.setItem('productselectedRows','' )
@@ -1073,7 +1090,7 @@ console.log('this.buyGroupPlus',this.buyGroupPlus)
 
   
   AddPromosaveAndSubmit() {
-    alert(this.selectedPromo)
+ 
 
     this.loggedUserId = localStorage.getItem('logInId')
 
@@ -1114,12 +1131,20 @@ console.log('this.buyGroupPlus',this.buyGroupPlus)
 
   this.promotionTypes.firstPromotion(obj).subscribe((res)=>{
     console.log(res.response)
+
+    if(res.response.result == 'Added Succesfully'){
+      alert('Added Succesfully')
+      this.dialogRef.close();
+    }
+    else{
+alert(res.response.result);
+    }
   })
 
     }
 
     if(this.selectedPromo == 2 ){
-debugger
+
       console.log('addbuyset',this.addbuyset)
       console.log('addGetset',this.addgetset)
       let obj:any =[];
@@ -1182,6 +1207,13 @@ console.log('mainobj',mainobj)
       // }]
       this.promotionTypes.firstPromotion(obj3).subscribe((res)=>{
         console.log(res.response)
+        if(res.response.result == 'Added Succesfully'){
+          alert('Added Succesfully')
+          this.dialogRef.close();
+        }
+        else{
+    alert(res.response.result);
+        }
       })
    
 
@@ -1206,6 +1238,13 @@ console.log('mainobj',mainobj)
 
       this.promotionTypes.firstPromotion(obj3).subscribe((res)=>{
         console.log(res.response)
+        if(res.response.result == 'Added Succesfully'){
+          alert('Added Succesfully')
+          this.dialogRef.close();
+        }
+        else{
+    alert(res.response.result);
+        }
       })
     
     }
@@ -1229,6 +1268,13 @@ console.log('mainobj',mainobj)
 
       this.promotionTypes.firstPromotion(obj3).subscribe((res)=>{
         console.log(res.response)
+        if(res.response.result == 'Added Succesfully'){
+          alert('Added Succesfully')
+          this.dialogRef.close();
+        }
+        else{
+    alert(res.response.result);
+        }
       })
     
     }

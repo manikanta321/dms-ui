@@ -309,6 +309,7 @@ console.log('selectedItemsselectedItems',this.selectedItems)
   geographyFormat(currentObj, stockItemId) {
     // console.log(currentObj["hirearchyLevel"]);
     if (!Array.isArray(currentObj)) {
+      if(currentObj.all == undefined && currentObj.next != undefined) this.geographyFormat(currentObj.next, stockItemId);
       if (!currentObj.all) return;
       let obj: any = {};
       let index = (Number(currentObj["hirearchyLevel"]) - 1);
@@ -320,6 +321,7 @@ console.log('selectedItemsselectedItems',this.selectedItems)
         let copyObject = JSON.parse(JSON.stringify(currentObj.first));
         delete copyObject.next;
         obj.geographySelected = [copyObject];
+        obj.geographyNamesSelected = [copyObject.geographyName];
         obj.geoProperties = [this.CreateGeoPropertiesObject({ geographyName: copyObject.geographyName, geographyId: copyObject.geographyId })];
       }
       this.removeOtherGeographiesData(Number(currentObj["hirearchyLevel"]));

@@ -172,6 +172,12 @@ input.form-check-input1 {
 
 
   }
+  .refreshbtn1:hover
+  {
+    background-color: grey !important;
+
+  color: white !important;
+  }
  
  ::ng-deep.btnhover:hover{
     background: #000000 !important;

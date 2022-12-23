@@ -123,6 +123,7 @@ span {
     font-weight: 600;
     color: #686E74;
     font-weight:  #686E74;
+    cursor: pointer;
 }
 
 label {

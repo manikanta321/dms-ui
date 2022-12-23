@@ -85,6 +85,7 @@ span {
     font-size: 15px;
     font-weight: 600;
     top:-2px;
+    cursor: pointer;
 }
 
 label {
@@ -132,6 +133,7 @@ mat-form-field {
 
 .addAlign{
     margin-left: 99%;
+    cursor: pointer;
 }
 .addUserForm input {
     border-radius: 10px;

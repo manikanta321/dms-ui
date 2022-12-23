@@ -1,142 +1,117 @@
 <!-- <p>add-target-groups-products works!</p> -->
 <div class="container-target">
-    <div class="add-item addproductpromo">
-      <div class="additem">
-        <mat-icon mat-button class="close-icon" (click)="closeicon()">close</mat-icon>
-      </div>
-      <div class="head-t">
-        <h3 class="additems-h font"><b style="color: black;">Add Products</b></h3>
-      </div>
-      <br><br>
-      <div class="drpd row">
-        <div class="col-lg-11">
-          <div class="row">
-        <div class="search-d col-lg-3">
-          <form [formGroup]="myForm">
-            <ng-multiselect-dropdown class="catty"
-                name="city"
-                [placeholder]="'Category'"
-                formControlName="city"
-                [disabled]="disabled"
-                [settings]="dropdownSettings"
-                [data]="catgname"
-                (onSelect)="addItemSelect($event)"
-                (onDeSelect)="addItemDeSelect($event)"
-                (onDeSelectAll)="addItemDeSelectOrAll($event)"
+  <div class="add-item addproductpromo">
+    <div class="additem">
+      <mat-icon mat-button class="close-icon" (click)="closeicon()">close</mat-icon>
+    </div>
+    <div class="head-t">
+      <h3 class="additems-h font"><b style="color: black;">Add Products</b></h3>
+    </div>
+    <br><br>
+    <div class="drpd row">
+      <div class="col-lg-11">
+        <div class="row">
+          <div class="search-d col-lg-3">
+            <form [formGroup]="myForm">
+              <ng-multiselect-dropdown class="catty" name="city" [placeholder]="'Category'" formControlName="city"
+                [disabled]="disabled" [settings]="category" [data]="catgname" (onSelect)="addItemSelect($event)"
+                (onDeSelect)="addItemDeSelect($event)" (onDeSelectAll)="addItemDeSelectOrAll($event)"
                 (onSelectAll)="addItemSelectOrAll($event)">
-            </ng-multiselect-dropdown>
-              </form>
-      </div>
-      <div class="search-d  col-lg-3">
-        <form>
-          <ng-multiselect-dropdown class="addsubc" name="city" placeholder="sub-category" formControlName="city"
-            [disabled]="disabled" [settings]="dropdownSettings1" [data]="sub_category" 
-            (onSelect)="addSubCategorySelect($event)" (onDeSelect)="addSubCategoryDeSelect($event)"
-            (onDeSelectAll)="addSubCategoryDSelectOrAll($event)"
-            (onSelectAll)="addSubCategorySelectOrAll($event)">
-          </ng-multiselect-dropdown>
-        </form>
-      </div>
-      <div class="search-d  col-lg-3">
-        <form [formGroup]="type">
-          <ng-multiselect-dropdown class="typy"
-              name="type"
-              [placeholder]="'Type'"
-              formControlName="type"
-              [disabled]="disabled"
-              [settings]="dropdownSettings2"
-              [data]="typeI"
-              (onSelect)="addTypeSelect($event)"
-              (onDeSelect)="addTypeDeSelect($event)"
-              
-              (onDeSelectAll)="addTypeDeSelectOrAll($event)"
-              (onSelectAll)="addTypeSelectOrAll($event)"
-              >
-          </ng-multiselect-dropdown>
-        </form>
-    </div>
-    <div class="search-d  col-lg-3">
-      <form [formGroup]="products">
-        <ng-multiselect-dropdown class="producty"
-            name="product"
-            [placeholder]="'Product Group'"
-            formControlName="products"
-            [disabled]="disabled"
-            [settings]="dropdownSettings3"
-            [data]="Productarr"
-            (onSelect)="onProductSelect($event)"
-            (onDeSelect)="onProductDeSelect($event)"
-            (onDeSelectAll)="onProductDeSelectOrAll($event)"
-            (onSelectAll)="onProductSelectOrAll($event)">
-        </ng-multiselect-dropdown>
-        </form>
-    </div>
-  </div>
-</div>
-<div class="col-lg-1">
-  <div class="ref">
-    <img class="refresh" (click)="addItemRefresh()" src="assets/img/Vector.png" alt="refresh">
-  </div>
-</div>
+              </ng-multiselect-dropdown>
+            </form>
           </div>
-          <div class="row mt-2">
-            <div class="col-11">
-              <div class="row">
+          <div class="search-d  col-lg-3">
+            <form>
+              <ng-multiselect-dropdown class="addsubc" name="city" placeholder="sub-category" formControlName="city"
+                [disabled]="disabled" [settings]="subCategorys" [data]="sub_category"
+                (onSelect)="addSubCategorySelect($event)" (onDeSelect)="addSubCategoryDeSelect($event)"
+                (onDeSelectAll)="addSubCategoryDSelectOrAll($event)" (onSelectAll)="addSubCategorySelectOrAll($event)">
+              </ng-multiselect-dropdown>
+            </form>
+          </div>
+          <div class="search-d  col-lg-3">
+            <form [formGroup]="type">
+              <ng-multiselect-dropdown class="typy" name="type" [placeholder]="'Type'" formControlName="type"
+                [disabled]="disabled" [settings]="productType" [data]="typeI" (onSelect)="addTypeSelect($event)"
+                (onDeSelect)="addTypeDeSelect($event)" (onDeSelectAll)="addTypeDeSelectOrAll($event)"
+                (onSelectAll)="addTypeSelectOrAll($event)">
+              </ng-multiselect-dropdown>
+            </form>
+          </div>
+          <div class="search-d  col-lg-3">
+            <form [formGroup]="product">
+              <ng-multiselect-dropdown class="producty" name="product" [placeholder]="'Product Group'"
+                formControlName="product" [disabled]="disabled" [settings]="productGroups" [data]="Product"
+                (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)"
+                (onDeSelectAll)="onProductDeSelectOrAll($event)" (onSelectAll)="onProductSelectOrAll($event)">
+              </ng-multiselect-dropdown>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-1">
+        <div class="ref">
+          <img class="refresh" (click)="addItemRefresh()" src="assets/img/Vector.png" alt="refresh">
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-11">
+        <div class="row">
           <div class="col-lg-3 search-prodId">
             <form>
-              <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'Product Identifier'" formControlName="city"
-                [disabled]="disabled" [settings]="dropdownSettings5" [data]="toppingList" 
-                (onSelect)="onproductIdentifierSelect($event)"
-                (onDeSelect)="onproductIdentifierDeSelect($event)"
+              <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'Product Identifier'"
+                formControlName="city" [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList"
+                (onSelect)="onproductIdentifierSelect($event)" (onDeSelect)="onproductIdentifierDeSelect($event)"
                 (onDeSelectAll)="onproductIdentifierDeSelectOrAll($event)"
                 (onSelectAll)="onproductIdentifierSelectOrAll($event)">
               </ng-multiselect-dropdown>
             </form>
           </div>
         </div>
-            </div>
-            <div class="col-lg-1"></div>
-          </div>
-          <div class="srch mt-3" style="margin-bottom:10px">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="searchBox d-flex">
-                  <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
-                    placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
-                  <button class="searchButton" href="#">
-                    <i class="material-icons">
-                      search
-                    </i>
-                  </button>
-                  <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <ag-grid-angular id="gridContainer"
-              class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
-              [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
-              [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
-              (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
-              (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
-              (bodyScroll)="handleScroll($event)"  [rowSelection]="'multiple'"(rowSelected)="onRowSelect($event)"></ag-grid-angular>
-          </div>
-          <div class="pagination">
-            <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
-              class="pagination-cls">{{rowData5.length}}</span>
-          </div>
-          <div class="addbtn mt-3 text-center">
-            <button class="addItem-btn btn-btn-primary" (click)="addItemProductSubG()">Add items</button>
-          </div>
-
-          
-
-
-
-
-
-
+      </div>
+      <div class="col-lg-1"></div>
     </div>
-</div>
+    <div class="srch mt-3" style="margin-bottom:10px">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="searchBox d-flex">
+            <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+              placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
+            <button class="searchButton" href="#">
+              <i class="material-icons">
+                search
+              </i>
+            </button>
+            <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <ag-grid-angular id="gridContainer" class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
+        [headerHeight]="48" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
+        [rowData]="rowData5" [suppressExcelExport]="true" [popupParent]="popupParent"
+        (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"
+        (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
+        (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+        (bodyScroll)="handleScroll($event)" [rowSelection]="'multiple'"
+        (rowSelected)="onRowSelect($event)"></ag-grid-angular>
+    </div>
+    <div class="pagination">
+      <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
+        class="pagination-cls">{{rowData5.length}}</span>
+    </div>
+    <div class="addbtn mt-3 text-center">
+      <button class="addItem-btn btn-btn-primary" (click)="addItemProductSubG()">Add items</button>
+    </div>
 
+
+
+
+
+
+
+
+  </div>
+</div>

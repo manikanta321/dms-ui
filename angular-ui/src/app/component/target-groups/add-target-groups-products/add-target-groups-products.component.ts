@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { GridReadyEvent, GridApi, ColDef, GridOptions, CellValueChangedEvent, FirstDataRenderedEvent } from 'ag-grid-community';
+import { MaterialListService } from 'src/app/services/material-list.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { PromotionService } from 'src/app/services/promotion.service';
-
+import { TargetListService } from 'src/app/services/target-list.service';
 @Component({
   selector: 'app-add-target-groups-products',
   templateUrl: './add-target-groups-products.component.html',
@@ -12,12 +13,12 @@ import { PromotionService } from 'src/app/services/promotion.service';
 })
 export class AddTargetGroupsProductsComponent implements OnInit {
   closeIcon :boolean = false;
-  dropdownSettings: IDropdownSettings = {};
+  category: IDropdownSettings = {};
     dropdownSettings1: IDropdownSettings = {};
-    dropdownSettings2: IDropdownSettings = {};
-    dropdownSettings3: IDropdownSettings = {};
+    subCategorys: IDropdownSettings = {};
+    productType: IDropdownSettings = {};
     dropdownSettings5: IDropdownSettings = {};
-    dropdownSettings6: IDropdownSettings = {};
+    productGroups: IDropdownSettings = {};
     catgname: any = [];
     statusTypes =[];
     catergory: any = [];
@@ -29,7 +30,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     sub_categorys:any=[];
     productID: any = [];
     productIDentifire:any=[];
-    searchText;
+    searchText = "";
     public rowData5:any =[{productName:444,classification:"test",sku:"sku",productIdentifier:24, productGroup:"acd12", productCode:45}]
     allcatlist : any[] = [];
     typeI: any = [];
@@ -43,9 +44,9 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     itemId1: any;
     types: any;
     type: any = FormGroup;
-    Productarr: any = [];
+    Product: any = [];
     prodArray: any[] = [];
-    products: any = FormGroup;
+    product: any = FormGroup;
     toppingList: any = [];
     myForms: any = FormGroup;
     subCategory: any = FormGroup;
@@ -55,6 +56,12 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     stayScrolledToEnd = true;
     paginationScrollCount: any;
     selectedRows: any =[];
+    ShowFilter = false;
+    flag:boolean=true;
+    subCategoryFilter = false;
+  typeFilter = false;
+  productFilter = false;
+  typesI: any = [];
     
     private gridApi!: GridApi;
     columnDefs: ColDef[] = [
@@ -66,7 +73,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
   
       { headerName: "Classification", field: 'classification', type: ['nonEditableColumn'] },
   
-      { headerName: "SKU", field: 'sku', type: ['nonEditableColumn'], maxWidth:100 },
+      { headerName: "SKU", field: 'classification', type: ['nonEditableColumn'], maxWidth:100 },
   
       {
         headerName: "Product Identifier",
@@ -130,51 +137,140 @@ export class AddTargetGroupsProductsComponent implements OnInit {
           },
         },
       };
+  limitSelection= false;
+  isproduct: any;
+  coutCatagory: any;
+  toppings: any;
+  catagData: any;
+  catArray: any;
+  subCategorySelection= false;
+  topping2: any = [];
+  ProdData:  any = [];
+  ProductList: any = [];
+  prodData: any = [];
+  productSelection =  false;
 
 
   constructor(  public dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
     public promotionTypes : PromotionService,
     private fb: FormBuilder,
+    private targetList : TargetListService,
+    private materialList: MaterialListService,
     ) { }
 
   ngOnInit(): void {
+    this.getclassification();
+    this.getProduct();
+    this.displayTargetGroup();
     this.myForm = this.fb.group({
       city: [this.selectedItems]
     });
+    this.category = {
+      singleSelection: false,
+      idField: 'catId',
+      textField: 'catName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+      allowSearchFilter: this.ShowFilter
+    };
+    this.subCategorys = {
+      singleSelection: false,
+      idField: 'subCatId',
+      textField: 'subCatName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+      allowSearchFilter: this.subCategoryFilter
+    };
+    this.productType = {
+      singleSelection: false,
+      idField: 'typeId',
+      textField: 'typeName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+      allowSearchFilter: this.typeFilter
+    };
+    this.dropdownSettings5 = {
+      singleSelection: false,
+      idField: 'productGroupId',
+      textField: 'productGroupName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+      allowSearchFilter: this.productFilter
+    };
+    this.productGroups = {
+      singleSelection: false,
+      idField: 'productGroupId',
+      textField: 'productGroupName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+      allowSearchFilter: this.productFilter
+    };
   }
   addItemSelect(item: any) {
-    // this.selectedItem = item;
     this.catergory.push(item.catId);
-    console.log("Catttyyyyy",this.catergory)
-    console.log('item Subcatty', item)
-
     this.itemId = item.catId;
     this.catagoryName = item.catName;
     let Subdata = {
-      catId: this.catergory
+      catId: this.catergory,
+      flag:this.flag
     }
-    this.promotionTypes.GetSUbCAtsOfMultiCats(Subdata).subscribe((res) => {
-      this.sub_category = res.response.allOtherSubCAts;
-      console.log("response1", res)
-      // console.log("responseeee", subcaty);
-      // this.sub_category = subcaty.allOtherSubCAts;
-      console.log("SubCategory", this.sub_category);
+    this.materialList.onclickcat(Subdata).subscribe((res) => {
+      let subcaty = res.response;
+      this.sub_category = subcaty.allOtherSubCAts;
       this.topping1 = new FormControl(this.sub_category);
     });
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
-      type: this.typeTosend,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
+      type: this.typesI,
       productgroup: this.productID,
-      productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
+      productidentifier: this.statusTypes,
+      search: this.searchText
+      // isProduct:this.isproduct
+
     }
-    this.promotionTypes.GetProductList(data).subscribe((res) =>{
-      console.log('productlist is works', res);
+    this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
+      
+    });
+  }
+  getclassification() {
+
+    this.materialList.getclassification(this.flag).subscribe((res) => {
+      let data = res.response;
+      this.coutCatagory = res.totalRecords;
+      this.catgname = data.allOtherCats;
+      let dataCat = data.allOtherCats;
+      this.toppings = new FormControl(this.catgname);
+      // this.catNamee = this.catgname.catName;
+      console.log("materialList", this.materialList);
+      console.log("coutCategory", this.coutCatagory);
+      console.log("this.catgname", this.catgname);
+      console.log("this.catnamee", this.catNamee);
+      this.catagData = dataCat.map((data: { catId: any; catName: any; }) => {
+        return { catId: data.catId, roleName: data.catName };
+      });
+
+      if (!this.catagData?.length) {
+        this.catagData = dataCat.map((product: { designationName: any; }) => {
+          return product.designationName;
+        });
+      }
+      this.catagData.push()
+      this.catagData.forEach(element => {
+        return this.catArray?.push(element.catId);
+
+      })
     })
+  }
+  catNamee(arg0: string, catNamee: any) {
+    throw new Error('Method not implemented.');
   }
   addItemSelectOrAll(item: any) {
     this.catergory = this.allcatlist
@@ -184,45 +280,69 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     console.log("Category Array", this.catergory)
     this.itemId = item.catId;
     this.catagoryName = item.catName;
-    this.promotionTypes.GetSUbCAtsOfMultiCats(Subdataall).subscribe((res) => {
+    this.materialList.onclickcat(Subdataall).subscribe((res) => {
       let subcaty = res.response;
       console.log("responseeee", subcaty);
       this.sub_category = subcaty.allOtherSubCAts;
+      let allSub_cats = subcaty.allOtherSubCAts;
       console.log("SubCategory", this.sub_category);
+      this.subcatagData = allSub_cats.map((data: { subCatId: any; subCatName: any; }) => {
+        return { subCatId: data.subCatId, subCatName: data.subCatName };
+      });
+  
+      if (!this.subcatagData?.length) {
+        this.subcatagData = allSub_cats.map((subCatData: { designationName: any; }) => {
+          return subCatData.designationName;
+        });
+      }
+      this.subcatagData.push()
+      this.subcatagData.forEach(element => {
+        return this.subcatArray.push(element.subCatId);
+  
+      })
       this.topping1 = new FormControl(this.sub_category);
     });
     console.log("catArray", this.catergory)
     const data = {
-
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
-      type: this.typeTosend,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
+      type: this.typesI,
       productgroup: this.productID,
-      productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
+      productidentifier: this.statusTypes,
+      search: this.searchText
+      // isProduct:this.isproduct
 
     }
-    this.promotionTypes.GetProductList(data).subscribe((res) => {
+    this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
+      
     });
   }
   addItemDeSelectOrAll(item: any) {
+    this.subCategory = this.fb.group({
+      subCategory: [this.selectedItems]
+    });
+    this.type = this.fb.group({
+      type: [this.selectedItems]
+    });
     this.catergory = [];
     this.sub_category = [];
-    this.sub_categorys=[];
-    this.typeTosend=[];
+    this.sub_categorys = [];
     this.typeI = [];
+    this.typesI = [];
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
-      type: this.typeTosend,
-      product: this.productID,
-      status: this.statusTypes,
-      Search: this.searchText
+      category: this.catergory,
+      subCategory: this.sub_categorys,
+      type: this.typesI,
+      productgroup: this.productID,
+      productidentifier: this.statusTypes,
+      search: this.searchText
+      // isProduct:this.isproduct
+
     }
-    this.promotionTypes.GetProductList(data).subscribe((res) => {
+    this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
+      
     });
   }
   addItemDeSelect(item: any) {
@@ -233,7 +353,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     let SubdataD = {
       catId: this.catergory
     }
-    this.promotionTypes.GetSUbCAtsOfMultiCats(SubdataD).subscribe((res) => {
+    this.materialList.onclickcat(SubdataD).subscribe((res) => {
       let subcaty = res.response;
       console.log("response1", res)
       console.log("responseeee", subcaty);
@@ -241,66 +361,54 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     });
     console.log('this.catergory', this.catergory);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
-      type: this.typeTosend,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
+      type: this.typesI,
       productgroup: this.productID,
-      productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
-    }
-    this.promotionTypes.GetProductList(data).subscribe((res) =>{
-      console.log('productlist is works', res);
-      this.rowData5 = res.response;
-    })
+      productidentifier: this.statusTypes,
+      search: this.searchText
+      // isProduct:this.isproduct
 
+    }
+    this.targetList.getTargetListAll(data).subscribe((res) => {
+      this.rowData5 = res.response;
+      
+    });
+    this.subCategory = this.fb.group({
+      subCategory: [this.selectedItems]
+    });
+    this.type = this.fb.group({
+      type: [this.selectedItems]
+    });
   }
   addSubCategorySelect(item: any) {
     console.log(" item Types", item);
-    // this.sub_category =[];
     this.sub_categorys.push(item.subCatId);
-    const datajson = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
-      type: this.typeTosend,
-      productgroup: this.productID,
-      productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
+    let Type = {
+      subCatId: this.sub_categorys,
+      flag:this.flag
     }
-    this.promotionTypes.GetProductList(datajson).subscribe((res) =>{
-      console.log('productlist is works', res);
-      this.rowData5 = res.response;
-    })
-  
-    let data1 = {
-      subCatId: this.sub_categorys
-    }
-    console.log("Typeess Catttyy",this.subcatArray)
-    this.promotionTypes.GettypesOfMultiSubCats(data1).subscribe((res) => {
+    this.materialList.onclicksubcat(Type).subscribe((res) => {
       let typs = res.response;
       console.log("types..res", typs);
       this.typeI = typs;
-      this.typeI.forEach(element => {
-        return this.allTypelist.push(element.typeId);
-      })
       console.log("Typess", this.typss);
-      // this.topping2 = new FormControl(this.typeI);
+      this.topping2 = new FormControl(this.typeI);
     });
-    this.subcatagData = item.map((data: { subCatId: any; subCatName: any; }) => {
-      return { subCatId: data.subCatId, subCatName: data.subCatName };
-    });
-  
-    if (!this.subcatagData?.length) {
-      this.subcatagData = item.map((subCatData: { designationName: any; }) => {
-        return subCatData.designationName;
-      });
+    const data = {
+      category: this.catergory,
+      subCategory: this.sub_categorys,
+      type: this.typesI,
+      productgroup: this.productID,
+      productidentifier: this.statusTypes,
+      search: this.searchText
+      // isProduct:this.isproduct
+
     }
-    this.subcatagData.push()
-    this.subcatagData.forEach(element => {
-      return this.subcatArray.push(element.subCatId);
-  
-    })
+    this.targetList.getTargetListAll(data).subscribe((res) => {
+      this.rowData5 = res.response;
+      
+    });
   
   }
   addSubCategoryDeSelect(item: any) {
@@ -308,103 +416,86 @@ export class AddTargetGroupsProductsComponent implements OnInit {
       if (element == item.subCatId) this.sub_categorys.splice(index, 1);
   
     });
-    let data1 = {
+    let subCat = {
       subCatId: this.sub_categorys
     }
-    this.promotionTypes.GetSUbCAtsOfMultiCats(data1).subscribe((res) => {
-      let typs = res.response;
-      this.typeI = typs;
-      this.typeI.forEach(element => {
-        return this.allTypelist.push(element.typeId);
-      })
-  
-    });
-    console.log(' this.sub_category', this.sub_category)
-    const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
-      type: this.typeTosend,
-      productgroup: this.productID,
-      productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
-    }
-    this.promotionTypes.GetProductList(data).subscribe((res) =>{
-      this.rowData5 = res.response;
-    })
-  }
-  addSubCategoryDSelectOrAll(item: any) {
-    this.sub_categorys=[];
-    this.typeI=[]
-    this.allTypelist=[]
-  
-    this.typeTosend=[]
-    // this.sub_category=[];
-    // this.type = [];
-    const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
-      type: this.typeTosend,
-      productgroup: this.productID,
-      productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
-    }
-    this.promotionTypes.GetProductList(data).subscribe((res) =>{
-      console.log('productlist is works', res);
-      this.rowData5 = res.response;
-    })
-  }
-  addSubCategorySelectOrAll(item: any) {
-    console.log(" item Types", item);
-    this.sub_category.push(item.subCatId);
-    this.itemId1 = item.subCatId;
-    this.types = item.subCatName;
-    this.subcatagData = item.map((data: { subCatId: any; subCatName: any; }) => {
-      return { subCatId: data.subCatId, subCatName: data.subCatName };
-    });
-  
-    if (!this.subcatagData?.length) {
-      this.subcatagData = item.map((subCatData: { designationName: any; }) => {
-        return subCatData.designationName;
-      });
-    }
-    this.subcatagData.push()
-    this.subcatagData.forEach(element => {
-      return this.subcatArray.push(element.subCatId);
-      // alert(this.subcatArray);
-  
-    })
-  
-    let data1 = {
-      subCatId:  this.subcatArray,
-    }
-    // this.sub_category = this.subcatArray;
-    console.log("Typeess Catttyy",this.subcatArray)
-    this.promotionTypes.GettypesOfMultiSubCats(data1).subscribe((res) => {
+    this.materialList.onclicksubcat(subCat).subscribe((res) => {
       let typs = res.response;
       console.log("types..res", typs);
       this.typeI = typs;
-      this.typeI.forEach(element => {
-        return this.allTypelist.push(element.typeId);
-      })
+      if (this.typeI.length == 0) {
+        this.typesI = [];
+      }
       console.log("Typess", this.typss);
-      // this.topping2 = new FormControl(this.typeI);
+      this.topping2 = new FormControl(this.typeI);
     });
-    this.sub_categorys = this.subcatArray;
+    console.log(' this.sub_categorys', this.sub_categorys)
     const data = {
-      Cat: this.catergory,
-        Sub_Cat: this.sub_categorys,
-        type: this.typeTosend,
-        productgroup: this.productID,
-        productidentifier:this.productIDentifire,
-         status: this.statusTypes,
-        Search: this.searchText
+      category: this.catergory,
+      subCategory: this.sub_categorys,
+      type: this.typesI,
+      productgroup: this.productID,
+      productidentifier: this.statusTypes,
+      search: this.searchText
+      // isProduct:this.isproduct
+
     }
-    this.promotionTypes.GetProductList(data).subscribe((res) =>{
-      console.log('productlist is works', res);
+    this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
-    })
+      
+    });
+    this.type = this.fb.group({
+      type: [this.selectedItems]
+    });
+  }
+  addSubCategoryDSelectOrAll(item: any) {
+    this.sub_categorys = [];
+    this.typesI = [];
+    this.typeI = []
+    const data = {
+      category: this.catergory,
+      subCategory: this.sub_categorys,
+      type: this.typesI,
+      productgroup: this.productID,
+      productidentifier: this.statusTypes,
+      search: this.searchText
+      // isProduct:this.isproduct
+
+    }
+    this.targetList.getTargetListAll(data).subscribe((res) => {
+      this.rowData5 = res.response;
+      
+    });
+    this.type = this.fb.group({
+      type: [this.selectedItems]
+    });
+  }
+  addSubCategorySelectOrAll(item: any) {
+    this.sub_categorys = this.subcatArray;
+    let Type = {
+      subCatId: this.sub_categorys
+    }
+    this.materialList.onclicksubcat(Type).subscribe((res) => {
+      let typs = res.response;
+      console.log("types..res", typs);
+      this.typeI = typs;
+      console.log("Typess", this.typss);
+      this.topping2 = new FormControl(this.typeI);
+    });
+    const data = {
+      category: this.catergory,
+      subCategory: this.sub_categorys,
+      type: this.typesI,
+      productgroup: this.productID,
+      productidentifier: this.statusTypes,
+      search: this.searchText
+      // isProduct:this.isproduct
+
+    }
+    this.targetList.getTargetListAll(data).subscribe((res) => {
+      this.rowData5 = res.response;
+      
+    });
   }
   addTypeSelect(item: any) {
     // alert(this.typeI)
@@ -486,18 +577,18 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     this.productID.push(item.productGroupId);
     console.log(item);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
-      type: this.typeTosend,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
+      type: this.typesI,
       productgroup: this.productID,
-      productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
+      productidentifier: this.statusTypes,
+      search: this.searchText
+      // isProduct:this.isproduct
+
     }
-    this.promotionTypes.GetProductGroupList(data).subscribe((res) => {
-      // this.rowData5 = res.response;
+    this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
-      console.log('product lis', this.Productarr)
+      
     });
   }
   onProductDeSelect(item: any) {
@@ -509,49 +600,62 @@ export class AddTargetGroupsProductsComponent implements OnInit {
 
     // this.userTypes.pop(item.roleId);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
-      type: this.typeTosend,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
+      type: this.typesI,
       productgroup: this.productID,
-      productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
+      productidentifier: this.statusTypes,
+      search: this.searchText
+      // isProduct:this.isproduct
+
     }
-    this.promotionTypes.GetProductList(data).subscribe((res) => {
+    this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
+      
     });
 
   }
   onProductDeSelectOrAll(item: any) {
     this.productID = [];
+    this.productID.forEach((element, index) => {
+      if (element == item.productGroupId) this.productID.splice(index, 1);
+
+    });
+    console.log(' this.productID', this.productID)
+
+    // this.userTypes.pop(item.roleId);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
-      type: this.typeTosend,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
+      type: this.typesI,
       productgroup: this.productID,
-      productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
+      productidentifier: this.statusTypes,
+      search: this.searchText
+      // isProduct:this.isproduct
+
     }
-    this.promotionTypes.GetProductList(data).subscribe((res) => {
+    this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
+      
     });
 
   }
   onProductSelectOrAll(item: any) {
     this.productID = this.prodArray;
-    // console.log("ProdData", this.ProdData);
+    console.log("ProdData", this.ProdData);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
-      type: this.typeTosend,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
+      type: this.typesI,
       productgroup: this.productID,
-      productidentifier:this.productIDentifire,
-       status: this.statusTypes,
-      Search: this.searchText
+      productidentifier: this.statusTypes,
+      search: this.searchText
+      // isProduct:this.isproduct
+
     }
-    this.promotionTypes.GetProductList(data).subscribe((res) => {
+    this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
+      
     });
   }
   addItemRefresh(){
@@ -567,21 +671,21 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     this.type = this.fb.group({
       type: [this.selectedItems]
     });
-    this.Productarr = this.fb.group({
-      Productarr: [this.selectedItems]
+    this.Product = this.fb.group({
+      Product: [this.selectedItems]
     });
     this.catergory = [];
     this.sub_category = [];
     this.sub_categorys =[];
     this.typeI = [];
     // this.typesI = [];
-    this.Productarr = [];
+    this.Product = [];
     this.toppingList = [];
     const data = {
       Cat: this.catergory,
       Sub_Cat: this.sub_category,
       type: this.typeI,
-      Products: this.Productarr,
+      Products: this.Product,
       city: this.toppingList,
       Search: this.searchText
     }
@@ -601,7 +705,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
       this.promotionTypes.GetProductGroupList(data).subscribe((res) => {
         // this.rowData5 = res.response;
         this.rowData5 = res.response;
-        console.log('product lis', this.Productarr)
+        console.log('product lis', this.Product)
       });
     }
     onproductIdentifierDeSelect(item: any) {
@@ -740,5 +844,94 @@ export class AddTargetGroupsProductsComponent implements OnInit {
   closeicon(){
     // this.closeIcon
     this.dialogRef.close();
+  }
+  toogleShowFilter() {
+    this.ShowFilter = !this.ShowFilter;
+    this.category = Object.assign({}, this.category, { allowSearchFilter: this.ShowFilter });
+  }
+
+  handleLimitSelection() {
+    if (this.limitSelection) {
+      this.category = Object.assign({}, this.category, { limitSelection: 2 });
+    } else {
+      this.category = Object.assign({}, this.category, { limitSelection: null });
+    }
+  }
+
+  toogleSubCategoryFilter() {
+    this.subCategoryFilter = !this.subCategoryFilter;
+    this.subCategorys = Object.assign({}, this.subCategorys, { allowSearchFilter: this.subCategoryFilter });
+  }
+
+  handleSubCategorySelection() {
+    if (this.subCategorySelection) {
+      this.subCategorys = Object.assign({}, this.subCategorys, { subCategorySelection: 2 });
+    } else {
+      this.subCategorys = Object.assign({}, this.subCategorys, { subCategorySelection: null });
+    }
+  }
+  getProduct() {
+    this.materialList.getProduct().subscribe((res) => {
+      let data = res.response;
+      let dataProd = res.response
+      console.log("Product Data", data);
+      this.Product = data;
+      this.ProductList = new FormControl(this.Product);
+      this.prodData = dataProd.map((data: { productGroupId: any; productGroupName: any; }) => {
+        return { productGroupId: data.productGroupId, productGroupName: data.productGroupName };
+      });
+
+      if (!this.prodData?.length) {
+        this.prodData = dataProd.map((category: { designationName: any; }) => {
+          return category.designationName;
+        });
+      }
+      this.prodData.push()
+      this.prodData.forEach(element => {
+        return this.prodArray.push(element.productGroupId);
+
+      })
+    })
+  }
+  toogleProductFilter() {
+    this.productFilter = !this.productFilter;
+    this.productGroups = Object.assign({}, this.productGroups, { allowSearchFilter: this.productFilter });
+  }
+
+  handleProductSelection() {
+    if (this.productSelection) {
+      this.productGroups = Object.assign({}, this.productGroups, { productSelection: 2 });
+    } else {
+      this.productGroups = Object.assign({}, this.productGroups, { productSelection: null });
+    }
+  }
+  toogleTypeFilter() {
+    this.typeFilter = !this.typeFilter;
+    this.productType = Object.assign({}, this.productType, { allowSearchFilter: this.typeFilter });
+  }
+
+  handleTypeSelection() {
+    if (this.subCategorySelection) {
+      this.productType = Object.assign({}, this.productType, { subCategorySelection: 2 });
+    } else {
+      this.productType = Object.assign({}, this.productType, { subCategorySelection: null });
+    }
+  }
+
+  displayTargetGroup(){
+    const data = {
+      category: this.catergory,
+      subCategory: this.sub_categorys,
+      type: this.typesI,
+      productgroup: this.productID,
+      productidentifier: this.statusTypes,
+      search: this.searchText
+      // isProduct:this.isproduct
+
+    }
+    this.targetList.getTargetListAll(data).subscribe((res) => {
+      this.rowData5 = res.response;
+      
+    });
   }
 }

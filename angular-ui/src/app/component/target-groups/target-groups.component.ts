@@ -8,7 +8,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { Sort, MatSort, SortDirection } from '@angular/material/sort';
 import { IDropdownSettings } from 'ng-multiselect-dropdown'; 
 import {ITooltipParams, PaginationNumberFormatterParams,} from 'ag-grid-community';
-
+import { TargetListService } from 'src/app/services/target-list.service';
 
 
 export interface PeriodicElement {
@@ -105,31 +105,31 @@ public popupParent: HTMLElement = document.body;
 columnDefs: ColDef[] = [ 
 
   { headerName: "Group Code",
-field: 'uoMName' ,type: ['nonEditableColumn'], pinned: 'left',minWidth:250
+field: 'targetGroupCode' ,type: ['nonEditableColumn'], pinned: 'left',minWidth:250
 },
 
-{   headerName: "Group Name",field: 'uoMShortName',type: ['nonEditableColumn']},
+{   headerName: "Group Name",field: 'targetGroupName',type: ['nonEditableColumn']},
 
-{headerName: "No of Products", field: 'conversionRate', type: ['nonEditableColumn']},
+{headerName: "No of Products", field: 'noOfProducts', type: ['nonEditableColumn']},
 
 
 {   headerName: " No of Dealers",
-field: 'effectiveFrom',type: ['nonEditableColumn'],
-cellRenderer: function dateFormtter(params) {
-  if(params.value==null){
-    return params.value=''
-  }
-   else{
-    return moment(params.value).format('DD MMM YY, HH:mm A')
+field: 'noOfDealers',type: ['nonEditableColumn'],
+// cellRenderer: function dateFormtter(params) {
+//   if(params.value==null){
+//     return params.value=''
+//   }
+//    else{
+//     return moment(params.value).format('DD MMM YY, HH:mm A')
 
-  }
-},
+//   }
+// },
 tooltipValueGetter:(params: ITooltipParams) => moment(params.value).format('DD MMM YY, HH:mm A'),
 },
 
 {   headerName: "No of Geographies",
 
-field: 'uomSymbol',type: ['nonEditableColumn']
+field: 'noOfGeographies',type: ['nonEditableColumn']
 },
 
 
@@ -258,6 +258,7 @@ public pivotPanelShow = 'always';
     pagination: false,
     paginationAutoPageSize: false,
 }
+  target: any;
 
   
   constructor(public dialog: MatDialog,
@@ -265,7 +266,8 @@ public pivotPanelShow = 'always';
     private _liveAnnouncer: LiveAnnouncer,
     private user:UserService,
     private observer: BreakpointObserver,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private targetList: TargetListService
    ) {
       sort:[];
      }
@@ -291,6 +293,7 @@ public pivotPanelShow = 'always';
 
 
   ngOnInit(): void {
+    this.targetListGroup();
  
    
     this.uomId = localStorage.getItem('niId');
@@ -304,6 +307,20 @@ this.myForm = this.fb.group({
 this.myForms = this.fb.group({
   citys: [this.selectedItems]
 });
+
+
+}
+
+targetListGroup(){
+
+    const data={
+      TargetGroup:[16]
+    }
+  this.targetList.getTargetList(data).subscribe((res) => {
+  this.rowData5 = res.response;
+  console.log("check target",this.rowData5);
+  
+  })
 }
 
 scrolledIndexChange(i): void {
@@ -444,10 +461,6 @@ handleScroll(event) {
     );
   }
 
-  onSearchChange($event:any , anything?:any){
-   
-
-  }
   onRowValueChanged(event: RowValueChangedEvent) {
     var data = event.data;
     
@@ -466,7 +479,7 @@ handleScroll(event) {
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
-    this.gridOptions.api!.sizeColumnsToFit();
+    this.gridOptions?.api!?.sizeColumnsToFit();
     
   }
 
@@ -482,8 +495,26 @@ handleScroll(event) {
     this.gridApi.paginationSetPageSize(Number(value));
   }
 
-  
+  onSearchChange($event: any, anything?: any) {
+    const { target } = $event;
+    this.searchText = target.value;
+    // const data = {
+    //   Search: this.searchText,
+    //   isProduct:this.isproduct
 
+    // }
+    // this.materialList.getMaterialList(data).subscribe((res) => {
+    //   this.rowData5 = res.response;
+    // });
+
+    const data={
+      search:this.searchText
+    }
+  this.targetList.getTargetSearch(data).subscribe((res) => {
+  this.rowData5 = res.response;
+});
+
+  }
 
 
 }

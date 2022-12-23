@@ -3,6 +3,7 @@ import { CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridApi, 
 import { AgGridAngular } from 'ag-grid-angular';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTargetGroupsProductsComponent } from '../target-groups/add-target-groups-products/add-target-groups-products.component';
+import { TargetListService } from 'src/app/services/target-list.service';
 
 @Component({
   selector: 'app-add-target-group',
@@ -17,9 +18,13 @@ export class AddTargetGroupComponent implements OnInit {
   paginationScrollCount: any;
   public popupParent: HTMLElement = document.body;
   private gridApi!: GridApi;
-  constructor(public dialog: MatDialog,) { }
+  targetCode: any;
+  constructor(public dialog: MatDialog,
+    private targetList: TargetListService
+    ) { }
 
   ngOnInit(): void {
+    this.getTargetCodeG();
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -151,5 +156,13 @@ export class AddTargetGroupComponent implements OnInit {
       },
     },
   };
+
+  getTargetCodeG(){
+    this.targetList.getTargetCode().subscribe((res) => {
+      this.targetCode = res.response;
+      console.log("code target",this.targetCode);
+      })
+  }
+  
  
 }

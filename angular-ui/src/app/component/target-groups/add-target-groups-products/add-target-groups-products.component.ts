@@ -655,7 +655,6 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
-      
     });
   }
   addItemRefresh(){

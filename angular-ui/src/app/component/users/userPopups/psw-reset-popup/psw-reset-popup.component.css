@@ -75,6 +75,7 @@ margin-right: 35px;
     font-weight: 600;
     top: -3px;
     color: gray;
+    cursor: pointer;
 }
 .actv-user{
 position: relative;

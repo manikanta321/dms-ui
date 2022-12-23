@@ -89,6 +89,7 @@ span{
     position: relative;
     font-size: 15px;
     font-weight: 600;
+        cursor: pointer;
 }
 label{
     /* padding: 2px 0; */

@@ -43,7 +43,8 @@ width: 150px;
     position: relative;
     font-size: 15px;
     font-weight: 600;
-    top:-11px
+    top:-11px;
+    cursor: pointer;
 }
 .font{
     font-family: 'Gilroy';

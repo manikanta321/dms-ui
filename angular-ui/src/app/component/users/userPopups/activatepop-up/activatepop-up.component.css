@@ -50,7 +50,9 @@ font-weight: 600;
     position: relative;
     font-size: 15px;
     font-weight: 600;
-    top:-11px
+    top:-11px;
+    cursor: pointer;
+    
 }
 
 .font{

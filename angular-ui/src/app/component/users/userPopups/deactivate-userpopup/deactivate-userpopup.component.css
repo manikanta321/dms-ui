@@ -49,6 +49,7 @@ font-family: 'Gilroy';
     font-size: 15px;
     font-weight: 600;
     top:-12px;
+    cursor: pointer;
 }
 
 .font{

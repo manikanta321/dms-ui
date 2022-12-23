@@ -358,6 +358,7 @@ border-radius: 10px;
 height: 33px;
 color: white;
 float: right;
+cursor: pointer;
 }
 .sltd-span{
   margin-top: 6px;

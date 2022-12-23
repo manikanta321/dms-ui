@@ -13,6 +13,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AddUserPopupComponent } from '../users/userPopups/add-user-popup/add-user-popup.component';
 import { AddGeolistPopupComponent } from '../add-geolist-popup/add-geolist-popup.component';
 
+import { GeographicListActionComponent } from './geographic-settings-action/geographic-list-action/geographic-list-action.component';
+
 export interface PeriodicElement {
   shippingForm: any;
   shippingTo: string;
@@ -46,6 +48,12 @@ export class GeographicListComponent implements OnInit {
   paginationPageSize = 10;
   stayScrolledToEnd = true;
   instancePopup:any = null;
+  messages: any[] = [];
+
+
+  
+
+ 
 
   gridOptions = {
     resizable: true,
@@ -225,29 +233,55 @@ shipPackCharges:any;
       .value;
     this.gridApi.paginationSetPageSize(Number(value));
   }
-  handleScroll(event) {
-    if(this.instancePopup && this.instancePopup.isOpen){
-      this.instancePopup.togglePopup();
-      this.instancePopup = null;
-    }
-  const grid = document.getElementById('gridContainer');
-  if (grid) {
-    const gridBody = grid.querySelector('.ag-body-viewport') as any;
-    const scrollPos = gridBody.offsetHeight + event.top;
-    const scrollDiff = gridBody.scrollHeight - scrollPos;
-    //const api =  this.rowData5;
-    this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
-    this.paginationScrollCount = this.rowData5.length;
-  }
-  }
+  
 
-  onCellClicked( e: CellClickedEvent): void {
+  onCellClicked( e){
     console.log('cellClicked', e);
     this.userId=e.data.userId;
     this.employeeName=e.data.employeeName
     console.log('userID',this.userId)
     localStorage.setItem('userID',this.userId )
     localStorage.setItem('employeeName',this.employeeName )
+    if (e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action') {
+      const cellRendererInstances = e.api.getCellRendererInstances({
+        rowNodes: [e.node],
+        columns: [e.column],
+      });
+      if (cellRendererInstances.length > 0) {
+        const instance = cellRendererInstances[0];
+        this.instancePopup = instance;
+        instance.togglePopup();
+      }
+    }
+
+
+
+
+  }
+
+
+  
+  handleRowDataChanged(event) {
+    const index = this.messages.length - 1;
+    if (this.stayScrolledToEnd) {
+    }
+  }
+
+  handleScroll(event) {
+    if (this.instancePopup && this.instancePopup.isOpen) {
+      this.instancePopup.togglePopup();
+      this.instancePopup = null;
+    }
+
+    const grid = document.getElementById('gridContainer');
+    if (grid) {
+      const gridBody = grid.querySelector('.ag-body-viewport') as any;
+      const scrollPos = gridBody.offsetHeight + event.top;
+      const scrollDiff = gridBody.scrollHeight - scrollPos;
+      //const api =  this.rowData5;
+      this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
+      this.paginationScrollCount = this.rowData5.length;
+    }
   }
   onSearchChange($event:any , anything?:any){
     const { target } = $event;
@@ -292,13 +326,25 @@ shipPackCharges:any;
    shippingAndPackages(){
     this.columnDefs= [
       {
-        headerName: this.headerName,field: 'shippingForm', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
-        width: 300   },
+        headerName: this.headerName,field: 'shippingForm', type: ['nonEditableColumn'],
+        width: 200   },
   
-      { headerName: this.secondColumn, field: 'shippingTo', type: ['nonEditableColumn'] ,width: 400 },
+      { headerName: this.secondColumn, field: 'shippingTo', type: ['nonEditableColumn'] ,width: 550 },
   
-      { headerName: this.ThirdColumn, field: 'shippingCharges', type: ['nonEditableColumn'] , width: 1100   }, 
+      { headerName: this.ThirdColumn, field: 'shippingCharges', type: ['nonEditableColumn'] , width: 600   }, 
+      
+      {
+        headerName: '',
+      
+        colId: 'action',
+  
+        cellRenderer: GeographicListActionComponent,
+        editable: false,
+        maxWidth: 65  
+      },
       
     ];
+ 
+
    }
 }

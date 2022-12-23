@@ -1028,11 +1028,11 @@ export class AddorderpromotionsComponent implements OnInit {
                 "stockid": item.stockitemid,
                 "uom": item.uomid,
                 "orderqty": item.quantity,
-                "stockqty": item.stock,
+                "stockqty": 0,
                 "price": item.mrp,
                 "discount": item.discount,
                 "finalvalue": item.finalValue,
-                "taxvalue": item.taxes,
+                "taxvalue": item.taxvalue,
                 "amount": item.amount
               }
               this.AddorderNonpromotiondata.push(obj)

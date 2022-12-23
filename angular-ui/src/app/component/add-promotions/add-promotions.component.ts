@@ -1060,8 +1060,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
 
   AddPromosaveAndSubmit() {
-
-
+alert(this.selectedPromo)
     this.loggedUserId = localStorage.getItem('logInId')
 
     if (this.selectedPromo == 1) {
@@ -1316,6 +1315,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
 
   selectedValue(event: any) {
+    console.log(event)
+    this.selectedPromo = event.promotionTypesId;
     if(event == undefined) return;
     this.promotionTypesId = event;
     if (event.promotionTypesName == 'Buy (A+B..) get (X+Y..)') {

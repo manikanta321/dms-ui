@@ -548,3 +548,21 @@ left: 37%
       right: 55px !important;
       color:#000;
     } 
+    ::ng-deep.myclass1 {
+ 
+      color: #17B15C!important;
+       }
+     
+       ::ng-deep.myclass3 {
+         color: #E5009D !important;
+          }
+     
+         
+       ::ng-deep.myclass2 {
+         color: #017EFA !important;
+          } 
+     
+            
+       ::ng-deep.myclass4 {
+         color: #000000 !important;
+          } 

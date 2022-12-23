@@ -107,12 +107,14 @@
     outline: none;
   }
   .close-icon {
-    left: 98%;
+    left: 100%;
     position: relative;
     font-size: 16px;
     font-weight: 600;
   }
-  
+  .close-icon:hover {
+    cursor: pointer;
+  }
   label {
     /* padding: 2px 0; */
     font-size: 14px;
@@ -311,12 +313,80 @@ mat-radio-group{
 /* .mat-horizontal-stepper-header-container ng-tns-c418-7 {
   margin: top -51px;
 }; */
-/* .dropdown-placeholder {
-  position: relative;
-    bottom: 25px;
-} */
+.dropdown-placeholder {
+  background: white;
+  color: #808080;
+  top: 0;
+  position: absolute;
+  height: 41px;
+  line-height: 41px;
+  left: 16px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  /* width: 80%; */
+  border-radius: 10px 0 0 10px !important;
+  padding-left: 10px;
+  pointer-events: none;
+}
+::ng-deep.catty .multiselect-dropdown .dropdown-btn .selected-item {
+  background: #00187A !important;
+  /* right: 6% !important; */
+  display: block;
+}
+::ng-deep .catty .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+  background: #00187A !important;
+}
+::ng-deep.addsubc .multiselect-dropdown .dropdown-btn .selected-item {
+  background: #0C5A3E !important;
+}
+
+::ng-deep .addsubc .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+  background: #0C5A3E !important;
+}
+
+::ng-deep.typy .multiselect-dropdown .dropdown-btn .selected-item {
+  background: #C32F27 !important;
+  /* right: 156% !important; */
+}
+
+::ng-deep .typy .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+  background: #C32F27 !important;
+}
+
+::ng-deep.producty .multiselect-dropdown .dropdown-btn .selected-item {
+  background: #44026C !important;
+  /* right: 247% !important; */
+}
+
+::ng-deep .producty .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+  background: #44026C !important;
+}
+
+::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
+  border: 2px solid #000000 !important;
+}
+::ng-deep.identifier .multiselect-dropdown .dropdown-btn .selected-item {
+  background: #006466 !important;
+  /* right: 156% !important; */
+}
+
+::ng-deep .identifier .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+  background: #006466 !important;
+}
 .catag-placeholder.dropdown-placeholder .selected-placeholder {
-  color: #D23F00 !important;
+  color: #00187A !important;
+}
+.subCatag-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #0C5A3E !important;
+}
+.typy-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #C32F27 !important;
+}
+.producty-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #44026C !important;
+}
+.identifier-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #006466 !important;
 }
 .ag-theme-material{
   height: 300px;
@@ -369,4 +439,7 @@ display: flex;
       ::ng-deep .psubgrid-popup .mat-dialog-container{
         padding: 0 !important;
         margin-top: 72px;
+      }
+      .prod-identifier {
+        margin-top: 28px;
       }

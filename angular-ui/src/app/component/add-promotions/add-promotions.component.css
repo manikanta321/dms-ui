@@ -779,3 +779,28 @@ height: 43px;
   font-family: Gilroy;
   width: 100%;
 }
+::ng-deep.myDatepicker .mat-icon-button {
+  background: transparent;
+  color: black;
+  position: relative;
+  right: 8px;
+  /* border: none;
+  width: 0em !important; */
+}
+/* ::ng-deep.mat-form-field-appearance-legacy .mat-form-field-prefix .mat-icon, .mat-form-field-appearance-legacy .mat-form-field-suffix .mat-icon {
+  width: 0em !important;
+} */
+::ng-deep.mat-form-field-appearance-legacy .mat-form-field-prefix .mat-icon, .mat-form-field-appearance-legacy .mat-form-field-suffix .mat-icon {
+  width: 0em !important;
+  border: none;
+}
+::ng-deep.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: #000000 !important;
+}
+::ng-deep.mat-checkbox-checked
+  .mat-checkbox-layout
+  .mat-checkbox-inner-container
+  .mat-checkbox-background {
+  background-color: #000000 !important;
+}

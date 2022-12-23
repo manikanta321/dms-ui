@@ -143,8 +143,12 @@ columnDefs: ColDef[] = [
      field: 'statusName', 
   cellEditor: 'agSelectCellEditor',
   cellEditorParams: {
-    values: ['Active', 'Inactive', 'Invited', 'Locked',],
-  }
+    values: ['Active', 'Closed', 'Draft'],
+  },
+  cellClass: params => {
+    return params.value == 'Active' ? 'myclass1' : params.value == 'Closed' ? 'myclass2' :  params.value == 'Draft' ?  'myclass3' : 'myclass4'
+  },
+  tooltipField: "statusName",
 },
 {    
   headerName: '',

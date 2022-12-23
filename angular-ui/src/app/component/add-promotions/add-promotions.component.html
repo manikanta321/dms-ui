@@ -26,9 +26,9 @@
                                 <label>Promotion Name <span class="astr">*</span></label>
                                 <input type="text" id="promoname" name="promoname" required [(ngModel)]="promoName"
                                     #promoname="ngModel" placeholder="Promotion Name" class="form-control">
-                                <p *ngIf="promoname.invalid && (promoname.dirty || promoname.touched)">
+                                <p style="margin-bottom: -20px;" *ngIf="promoname.invalid && (promoname.dirty || promoname.touched)">
                                     <span style="color:red;position: relative;" *ngIf="promoname.errors?.['required']">
-                                        *User Name is required
+                                        *Promotion Name is required
                                     </span>
                                 </p>
                             </div>
@@ -42,7 +42,7 @@
                                     <label>Promotion Type <span class="astr">*</span></label>
                                     <ng-select [items]="promotionTypedropdown" placeholder="Select the promotion type"
                                         bindLabel="promotionTypesName" bindValue="promotionTypesId" #promotype
-                                        (change)="selectedValue($event)" required>
+                                        (change)=" GetPromotionTypes($event)" required>
                                     </ng-select>
                                 </div>
                                 <form #myform>

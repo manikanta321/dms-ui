@@ -330,6 +330,7 @@ export class AddItemsPromotionComponent implements OnInit {
     typeI: any = [];
     myForms: any = FormGroup;
     products: any = FormGroup;
+    productidentifier: any = FormGroup;
     Productarr: any = [];
     productID: any = [];
     prodArray: any[] = [];
@@ -355,6 +356,9 @@ export class AddItemsPromotionComponent implements OnInit {
     pGselectedRows:any =[];
     productScselectedRows : any= [];
     searchfeild : any;
+    productData:any = [];
+    ProductList: any = [];
+    productSubGroupDrpdwn = [];
     // showproductfropdown : any;
   constructor(private _formBuilder: FormBuilder,
     public dialog: MatDialog,
@@ -427,13 +431,16 @@ export class AddItemsPromotionComponent implements OnInit {
       citys: [this.selectedItems]
     });
     this.subCategory = this.fb.group({
-      subCategory: [this.selectedItems]
+      subcatty: [this.selectedItems]
     });
     this.type = this.fb.group({
       type: [this.selectedItems]
     });
     this.products = this.fb.group({
       products: [this.selectedItems]
+    });
+    this.productidentifier = this.fb.group({
+      productidentifier: [this.selectedItems]
     });
   }
   onGridReady(params: GridReadyEvent) {
@@ -846,10 +853,26 @@ if(e.data.productSubGroupId){
     this.promotionTypes.GetProductGroupList1().subscribe((res) => {
       // this.rowData5 = res.response;
       this.Productarr = res.response;
- this.subcatagData.forEach(element => {
-    return this.prodArray.push(element.productGroupId);
+//  this.productData.forEach(element => {
+//     return this.prodArray.push(element.productGroupId);
 
-  })
+//   })
+let dataProd = res.response
+this.ProductList = new FormControl(this.Productarr);
+this.productData = dataProd.map((data: { productGroupId: any; productGroupName: any; }) => {
+  return { productGroupId: data.productGroupId, productGroupName: data.productGroupName };
+});
+
+if (!this.productData?.length) {
+  this.productData = dataProd.map((prod: { designationName: any; }) => {
+    return prod.designationName;
+  });
+}
+this.productData.push()
+this.productData.forEach(element => {
+  return this.prodArray.push(element.productGroupId);
+
+})
       console.log('product lis', this.prodArray)
     });
   }
@@ -893,7 +916,7 @@ if(e.data.productSubGroupId){
   }
   onProductSelectOrAll(item: any) {
     this.productID = this.prodArray;
-    // console.log("ProdData", this.ProdData);
+    console.log("ProdData", this.productID);
     const data = {
       category: this.catergory,
       subCategory: this.sub_categorys,
@@ -1196,33 +1219,41 @@ addItemRefresh(){
     citys: [this.selectedItems]
   });
   this.subCategory = this.fb.group({
-    subCategory: [this.selectedItems]
+    subcatty: [this.selectedItems]
   });
   this.type = this.fb.group({
     type: [this.selectedItems]
   });
-  this.Productarr = this.fb.group({
-    Productarr: [this.selectedItems]
+  this.products = this.fb.group({
+    products: [this.selectedItems]
+  });
+  this.productidentifier = this.fb.group({
+    productidentifier: [this.selectedItems]
   });
   this.catergory = [];
   this.sub_category = [];
   this.sub_categorys =[];
   this.typeI = [];
-  // this.typesI = [];
-  this.Productarr = [];
-  this.toppingList = [];
+  this.typesI = [];
+  this.typeTosend =[];
+  // this.Productarr = [];
+  this.productID =[];
+  this.searchText = ''
+  this.productIDentifire =[];
+  // this.productID = [];
   const data = {
-    Cat: this.catergory,
-    Sub_Cat: this.sub_category,
-    type: this.typeI,
-    Products: this.Productarr,
-    city: this.toppingList,
-    Search: this.searchText
+    category: this.catergory,
+      subCategory: this.sub_categorys,
+      type: this.typeTosend,
+      productgroup: this.productID,
+      productidentifier:this.productIDentifire,
+      //  status: this.statusTypes,
+       search: this.searchText
   }
-  // this.promotionTypes.GetProductList(data).subscribe((res) =>{
-  //   console.log('productlist is works', res);
-  //   this.rowData5 = res.response;
-  // })
+  this.promotionTypes.GetProductList(data).subscribe((res) =>{
+    console.log('productlist is works', res);
+    this.rowData5 = res.response;
+  })
 }
 toogleShowFilter() {
   this.ShowFilter = !this.ShowFilter;
@@ -1325,14 +1356,21 @@ AddProductGroupList(){
   }
   
   // product SubGroup
-  ProductSubGroupDrpdwn(item: any) {
-    // this.statusTypes.push(item.statusId);
-     this.promotionTypes.GetProductGroupList1().subscribe((res) => {
-      this.Productarr = res.response;
-      console.log('product lis', this.Productarr)
-    });
+ProductSubGroupDrpdwn(item: any) {
 
-  }
+  // this.statusTypes.push(item.statusId);
+
+   this.promotionTypes.GetProductGroupList1().subscribe((res) => {
+
+    this.Productarr = res.response;
+
+    console.log('product lis', this.Productarr)
+
+  });
+
+
+
+}
   ProductsubGroupDeselect(item: any) {
     this.statusTypes.forEach((element, index) => {
       if (element == item.statusId) this.statusTypes.splice(index, 1);

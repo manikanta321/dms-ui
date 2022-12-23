@@ -645,7 +645,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     console.log('this.packingCharges', this.packingCharges)
   }
   addItems(index: any = null) {
-    debugger
+    // debugger
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
     const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px' });
     dialogRef.afterClosed().subscribe((res) => {

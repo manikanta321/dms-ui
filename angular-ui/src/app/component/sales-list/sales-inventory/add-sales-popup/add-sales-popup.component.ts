@@ -15,6 +15,8 @@ export class AddSalesPopupComponent implements OnInit {
   otherInfo = false;
   receipts = true;
   sales = true;
+  addSalesdropdown: any = [{customId: 'add sale', customText:'sales list'}]
+  AddSales :any =[]
   productCustomIdentifier= true;
   image1 = 'assets/img/minimize-tag.png';
   image2 = 'assets/img/minimize-tag.png';

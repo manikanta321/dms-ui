@@ -357,3 +357,17 @@ height: 43px;
 .grid-table{
   margin: auto;
 }
+.addDealerlabels{
+  font-weight: 600;
+}
+.Astr{
+  color: red;
+}
+.billingAddress{
+  font-family: 'Gilroy-Medium';
+  font-size: 13px;
+  font-weight: 600
+}
+.link{
+  margin-top: 35px;
+}

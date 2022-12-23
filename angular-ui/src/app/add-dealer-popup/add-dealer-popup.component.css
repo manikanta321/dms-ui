@@ -6,8 +6,9 @@
 .search
 {
   width: 20px;
-  margin-top: -4px;
-  margin-left: -31px;
+  position: relative;
+  left: 88%;
+  top: -27px;
 }
   
 

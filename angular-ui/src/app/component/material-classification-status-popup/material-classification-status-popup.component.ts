@@ -25,6 +25,10 @@ export class MaterialClassificationStatusPopupComponent implements OnInit {
     this.subCategoryCode = sessionStorage.getItem("subCategoryCode");
     this.typeName = sessionStorage.getItem("typeName");
     this.typeCode = sessionStorage.getItem("typeCode");
+    setTimeout(() => {
+
+      this.closeDialog();
+     }, 5000);
   }
   closeDialog(){
     this.dialogRef.close();

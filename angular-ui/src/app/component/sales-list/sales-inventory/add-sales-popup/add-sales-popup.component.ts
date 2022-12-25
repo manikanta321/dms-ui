@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridApi, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
+import { SalesServicesService } from 'src/app/services/sales-services.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-sales-popup',
@@ -15,7 +17,11 @@ export class AddSalesPopupComponent implements OnInit {
   otherInfo = false;
   receipts = true;
   sales = true;
-  addSalesdropdown: any = [{customId: 'add sale', customText:'sales list'}]
+  dealerAdressToDisplay:any='';
+  SelectedCoustmerId:any='';
+  addSalesdropdown: any = []
+  addsalesGeoDropDown: any = []
+  productDetails:any=[]
   AddSales :any =[]
   productCustomIdentifier= true;
   image1 = 'assets/img/minimize-tag.png';
@@ -31,6 +37,22 @@ export class AddSalesPopupComponent implements OnInit {
   paginationPageSize = 10;
   stayScrolledToEnd = true;
   paginationScrollCount:any;
+  selectedCoustmerName:any='';
+  showdealerName:boolean=false;
+  visibleProcuct:boolean=false;
+brandname:any;
+productGroupName:any;
+productsubgroupName:any;
+productSKUName:any;
+productLink:any;
+productSelectedId:any;
+productselectedName:any;
+
+SalesObj:any=[{
+  SalesDate:'',
+  Quantity:'',
+  CustomerSpecification :'',
+}]
   columnDefs: ColDef[] = [
     // { headerName: "User Id",
     //   field: 'employeeCode' , sort: 'desc'},
@@ -144,13 +166,60 @@ export class AddSalesPopupComponent implements OnInit {
 		columnsManager: true,
 
   };
+  selectedDealersID: any;
+  slectedGeoId: any;
+  CreatedById:any;
   clickNextRendererFunc(){
     alert('hlo');
   }
-  constructor() { }
+  constructor(
+private salesService:SalesServicesService,
+private dialogRef: MatDialogRef<AddSalesPopupComponent>,
+  ) { }
 
   ngOnInit(): void {
+    this.getDealersDropDown();
+    this.CreatedById = localStorage.getItem("logInId");
+
   }
+
+
+addsalesobj(i){
+this.SalesObj.push(
+  {
+    SalesDate:'',
+    Quantity:'',
+    CustomerSpecification :'',
+}
+)
+}
+
+removeobj(i){
+  console.log(this.SalesObj)
+
+  this.SalesObj.forEach((element, index) => {
+   this.SalesObj.splice(index, 1);
+  });
+
+  console.log(this.SalesObj)
+}
+
+  getDealersDropDown(){
+    this.salesService.getdealersaleDropDown().subscribe((res)=>{
+      console.log(res.response)
+      this.addSalesdropdown=res.response;
+    this.selectedDealersID =this.addSalesdropdown.customerId;
+
+    })
+  }
+
+getdealersGeography(data){
+  this.salesService.getdealerGeoDropDown(data).subscribe((res)=>{
+    console.log(res.response)
+    this.addsalesGeoDropDown=res.response;
+  })
+}
+
   expandDealerInfoDiv(){
     this.dealerInfo = !this.dealerInfo;
 
@@ -197,8 +266,84 @@ export class AddSalesPopupComponent implements OnInit {
     }
   }
   onTypeSelect(item: any) {
+    this.showdealerName=true;
     console.log(item);
+    this.SelectedCoustmerId=item.customerId;
+    this.selectedCoustmerName=item.customerName;
+    this.dealerAdress(this.SelectedCoustmerId);
+
+    this.productDetails=[];
+this.productSelectedId='';
+this.productselectedName='';
+this.visibleProcuct=false;
+this.brandname='';
+this.productGroupName='';
+this.productsubgroupName='';
+this.productSKUName='';
+this.productLink='';
+
+    this.getdealersGeography(this.SelectedCoustmerId);
+
   }
+
+  onGeoSelect(item:any){
+
+    console.log(item)
+    this.slectedGeoId =item.geographyId;
+    this.productDetails=[];
+    this.productSelectedId='';
+    this.productselectedName='';
+    this.visibleProcuct=false;
+    this.brandname='';
+    this.productGroupName='';
+    this.productsubgroupName='';
+    this.productSKUName='';
+    this.productLink='';
+    this.getProductDetalis();
+      }
+  onProductTypeSelect(item: any){
+
+this.productSelectedId=item.stockItemId;
+this.productselectedName=item.stockItemName;
+this.visibleProcuct=true;
+
+
+this.salesService.getProductInfo(this.productSelectedId).subscribe((res)=>{
+  console.log(res.response)
+  this.brandname=res.response.brandName;
+  this.productGroupName=res.response.productGroupName;
+  this.productsubgroupName=res.response.productsubgroupName;
+  this.productSKUName=res.response.productSKUName;
+  this.productLink=res.response.productLink;
+
+})
+
+  }
+dealerAdress(id){
+  this.salesService.getDealerAdress(id).subscribe((res)=>{
+    console.log(res.response);
+    this.dealerAdressToDisplay=res.response[0].address
+  })
+
+}
+
+
+getProductDetalis(){
+  let data={
+    CustomerId:this.SelectedCoustmerId,
+    GeographyId:this.slectedGeoId,
+  }
+this.salesService.getDealerProduct(data).subscribe((res)=>{
+
+  console.log(res.response)
+
+this.productDetails=res.response
+
+})
+}
+
+
+  
   onTypeAll(items: any) {
     console.log('onSelectAll', items);
   }
@@ -234,6 +379,34 @@ export class AddSalesPopupComponent implements OnInit {
       }
     }
   }
+
+
+
+  saveSales(){
+
+let mainobj={
+  CustomerId:this.SelectedCoustmerId,
+  GeographyId:this.slectedGeoId,
+  Productid:this.productSelectedId,
+  items:this.SalesObj,
+  CreatedById:this.CreatedById,
+}
+
+
+
+this.salesService.AddSales(mainobj).subscribe((res)=>{
+  console.log(res.response);
+
+  if(res.response=='Succesfully sales added'){
+    this.dialogRef.close();
+  }
+
+})
+
+console.log(mainobj)
+
+  }
+
   handleScroll(event) {
     if(this.instancePopup && this.instancePopup.isOpen){
       this.instancePopup.togglePopup();

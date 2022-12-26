@@ -7,7 +7,8 @@
       <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;">
         <form [formGroup]="myForms">
           <ng-multiselect-dropdown class="stts1" name="citys" [placeholder]="'Target'" formControlName="citys"
-            [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1">
+            [disabled]="disabled" [settings]="dropdownSettings1" [data]="targetListData"(onSelect)="onTargetGroupSelect($event)" (onDeSelect)="onTargetGroupDeSelect($event)"
+            (onDeSelectAll)="onTargetGroupDeSelectOrAll($event)" (onSelectAll)="onTargetGroupSelectOrAll($event)">
           </ng-multiselect-dropdown>
         </form>
         <div class="dropdown-placeholder stts1-placeholder">

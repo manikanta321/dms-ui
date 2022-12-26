@@ -319,13 +319,6 @@ mat-radio-group{
 /* .mat-horizontal-stepper-header-container ng-tns-c418-7 {
   margin: top -51px;
 }; */
-/* .dropdown-placeholder {
-  position: relative;
-    bottom: 25px;
-} */
-.catag-placeholder.dropdown-placeholder .selected-placeholder {
-  color: #D23F00 !important;
-}
 .ag-theme-material{
   height: 300px;
   border-radius: 20px;
@@ -356,9 +349,71 @@ margin-bottom: -53px;
 /* --- */
 .container-target{
 width: 1010px;
-height: 592px;
+height: 640px !important;
 padding: 17px;
 }
-.catty{
-  
+.dropdown-placeholder {
+  background: white;
+  color: #808080;
+  top: 0;
+  position: absolute;
+  height: 41px;
+  line-height: 41px;
+  left: 16px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  /* width: 80%; */
+  border-radius: 10px 0 0 10px !important;
+  padding-left: 10px;
+  pointer-events: none;
+}
+::ng-deep.catty .multiselect-dropdown .dropdown-btn .selected-item {
+  background: #00187A !important;
+}
+
+::ng-deep .catty .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+  background: #00187A !important;
+}
+::ng-deep.addsubc .multiselect-dropdown .dropdown-btn .selected-item {
+  background: #0C5A3E !important;
+}
+
+::ng-deep .addsubc .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+  background: #0C5A3E !important;
+}
+::ng-deep.typy .multiselect-dropdown .dropdown-btn .selected-item {
+  background: #C32F27 !important;
+}
+
+::ng-deep .typy .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+  background: #C32F27 !important;
+}
+::ng-deep.producty .multiselect-dropdown .dropdown-btn .selected-item {
+  background: #44026C !important;
+}
+
+::ng-deep .producty .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+  background: #44026C !important;
+}
+::ng-deep.identifiers .multiselect-dropdown .dropdown-btn .selected-item {
+  background: #006466 !important;
+}
+
+::ng-deep .identifiers .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+  background: #006466 !important;
+}
+.cats-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #00187A !important;
+}
+.subcats-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #0C5A3E !important;
+}
+.typy-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #C32F27 !important;
+}
+.producty-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #44026C !important;
+}
+.identifiers-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #006466 !important;
 }

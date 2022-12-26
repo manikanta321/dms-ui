@@ -12,159 +12,176 @@ import { TargetListService } from 'src/app/services/target-list.service';
   styleUrls: ['./add-target-groups-products.component.css']
 })
 export class AddTargetGroupsProductsComponent implements OnInit {
-  closeIcon :boolean = false;
+  closeIcon: boolean = false;
   category: IDropdownSettings = {};
-    dropdownSettings1: IDropdownSettings = {};
-    subCategorys: IDropdownSettings = {};
-    productType: IDropdownSettings = {};
-    dropdownSettings5: IDropdownSettings = {};
-    productGroups: IDropdownSettings = {};
-    catgname: any = [];
-    statusTypes =[];
-    catergory: any = [];
-    itemId: any = [];
-    sub_category: any = [];
-    catagoryName: any;
-    topping1: any = [];
-    typeTosend:any[]=[]
-    sub_categorys:any=[];
-    productID: any = [];
-    productIDentifire:any=[];
-    searchText = "";
-    public rowData5:any =[{productName:444,classification:"test",sku:"sku",productIdentifier:24, productGroup:"acd12", productCode:45}]
-    allcatlist : any[] = [];
-    typeI: any = [];
-    disabled = false;
-    myForm: any = FormGroup;
-    selectedItems: any = [];
-    subcatArray: any[] = [];
-    allTypelist:any[]=[];
-    typss: any;
-    subcatagData: any = [];
-    itemId1: any;
-    types: any;
-    type: any = FormGroup;
-    Product: any = [];
-    prodArray: any[] = [];
-    product: any = FormGroup;
-    toppingList: any = [];
-    myForms: any = FormGroup;
-    subCategory: any = FormGroup;
-    productCustomIdentifierArray:any[]=[];
-    public popupParent: HTMLElement = document.body;
-    paginationPageSize = 10;
-    stayScrolledToEnd = true;
-    paginationScrollCount: any;
-    selectedRows: any =[];
-    ShowFilter = false;
-    flag:boolean=true;
-    subCategoryFilter = false;
+  dropdownSettings1: IDropdownSettings = {};
+  subCategorys: IDropdownSettings = {};
+  productType: IDropdownSettings = {};
+  dropdownSettings5: IDropdownSettings = {};
+  productGroups: IDropdownSettings = {};
+  catgname: any = [];
+  statusTypes = [];
+  catergory: any = [];
+  itemId: any = [];
+  sub_category: any = [];
+  catagoryName: any;
+  topping1: any = [];
+  typeTosend: any[] = []
+  sub_categorys: any = [];
+  productID: any = [];
+  productIDentifire: any = [];
+  searchText = "";
+  public rowData5: any = [{ productName: 444, classification: "test", sku: "sku", productIdentifier: 24, productGroup: "acd12", productCode: 45 }]
+  allcatlist: any[] = [];
+  typeI: any = [];
+  disabled = false;
+  myForm: any = FormGroup;
+  subCattyForm: any = FormGroup;
+  selectedItems: any = [];
+  subcatArray: any[] = [];
+  allTypelist: any[] = [];
+  typss: any;
+  subcatagData: any = [];
+  itemId1: any;
+  types: any;
+  typess: any = FormGroup;
+  Product: any = [];
+  prodArray: any[] = [];
+  product: any = FormGroup;
+  toppingList: any = [];
+  myForms: any = FormGroup;
+  subCategory: any = FormGroup;
+  identifier: any = FormGroup;
+  productCustomIdentifierArray: any[] = [];
+  public popupParent: HTMLElement = document.body;
+  paginationPageSize = 10;
+  stayScrolledToEnd = true;
+  paginationScrollCount: any;
+  selectedRows: any = [];
+  ShowFilter = false;
+  flag: boolean = true;
+  subCategoryFilter = false;
   typeFilter = false;
   productFilter = false;
   typesI: any = [];
-    
-    private gridApi!: GridApi;
-    columnDefs: ColDef[] = [
+  typessData: any = [];
+  typessArray: any = [];
+  targetselectedRows: any
+  private gridApi!: GridApi;
+  columnDefs: ColDef[] = [
 
-      {
-        headerName: "Product Name",
-        field: 'productName', type: ['nonEditableColumn'], pinned: 'left',checkboxSelection: true
-      },
-  
-      { headerName: "Classification", field: 'classification', type: ['nonEditableColumn'] },
-  
-      { headerName: "SKU", field: 'classification', type: ['nonEditableColumn'], maxWidth:100 },
-  
-      {
-        headerName: "Product Identifier",
-        field: 'productIdentifier', type: ['nonEditableColumn']
-      },
-  
-      {
-        headerName: "Product Group",
-        field: 'productGroup', type: ['nonEditableColumn'],maxWidth:170
-      },
-      {
-        headerName: "Product Code",
-        field: 'productCode', type: ['nonEditableColumn'],
-      },
-     
-        
-    ];
-    gridOptions: GridOptions = {
-      defaultColDef: {
-        resizable: true,
-      },
-    }
-    public defaultColDef: ColDef = {
-      suppressSizeToFit: true,
-      width: 170,
-       filter: 'agTextColumnFilter',
-         flex: 1,
-      minWidth: 100,
+    {
+      headerName: "Product Name",
+      field: 'productName', type: ['nonEditableColumn'], pinned: 'left', checkboxSelection: true
+    },
+
+    { headerName: "Classification", field: 'classification', type: ['nonEditableColumn'] },
+
+    { headerName: "SKU", field: 'classification', type: ['nonEditableColumn'], maxWidth: 100 },
+
+    {
+      headerName: "Product Identifier",
+      field: 'productIdentifier', type: ['nonEditableColumn']
+    },
+
+    {
+      headerName: "Product Group",
+      field: 'productGroup', type: ['nonEditableColumn'], maxWidth: 170
+    },
+    {
+      headerName: "Product Code",
+      field: 'productCode', type: ['nonEditableColumn'],
+    },
+
+
+  ];
+  gridOptions: GridOptions = {
+    defaultColDef: {
       resizable: true,
-      sortable: true,
-    };
-    public columnTypes: {
-      [key: string]: ColDef;
-    } = {
-        numberColumn: { width: 130, filter: 'agNumberColumnFilter' },
-        medalColumn: { width: 100, columnGroupShow: 'open', filter: false },
-        nonEditableColumn: { editable: false },
-        dateColumn: {
-          // specify we want to use the date filter
-          filter: 'agDateColumnFilter',
-          // add extra parameters for the date filter
-          filterParams: {
-            // provide comparator function
-            comparator: (filterLocalDateAtMidnight: Date, cellValue: string) => {
-              // In the example application, dates are stored as dd/mm/yyyy
-              // We create a Date object for comparison against the filter date
-              const dateParts = cellValue.split('/');
-              const day = Number(dateParts[0]);
-              const month = Number(dateParts[1]) - 1;
-              const year = Number(dateParts[2]);
-              const cellDate = new Date(year, month, day);
-              // Now that both parameters are Date objects, we can compare
-              if (cellDate < filterLocalDateAtMidnight) {
-                return -1;
-              } else if (cellDate > filterLocalDateAtMidnight) {
-                return 1;
-              } else {
-                return 0;
-              }
-            },
+    },
+  }
+  public defaultColDef: ColDef = {
+    suppressSizeToFit: true,
+    width: 170,
+    filter: 'agTextColumnFilter',
+    flex: 1,
+    minWidth: 100,
+    resizable: true,
+    sortable: true,
+  };
+  public columnTypes: {
+    [key: string]: ColDef;
+  } = {
+      numberColumn: { width: 130, filter: 'agNumberColumnFilter' },
+      medalColumn: { width: 100, columnGroupShow: 'open', filter: false },
+      nonEditableColumn: { editable: false },
+      dateColumn: {
+        // specify we want to use the date filter
+        filter: 'agDateColumnFilter',
+        // add extra parameters for the date filter
+        filterParams: {
+          // provide comparator function
+          comparator: (filterLocalDateAtMidnight: Date, cellValue: string) => {
+            // In the example application, dates are stored as dd/mm/yyyy
+            // We create a Date object for comparison against the filter date
+            const dateParts = cellValue.split('/');
+            const day = Number(dateParts[0]);
+            const month = Number(dateParts[1]) - 1;
+            const year = Number(dateParts[2]);
+            const cellDate = new Date(year, month, day);
+            // Now that both parameters are Date objects, we can compare
+            if (cellDate < filterLocalDateAtMidnight) {
+              return -1;
+            } else if (cellDate > filterLocalDateAtMidnight) {
+              return 1;
+            } else {
+              return 0;
+            }
           },
         },
-      };
-  limitSelection= false;
+      },
+    };
+  limitSelection = false;
   isproduct: any;
   coutCatagory: any;
   toppings: any;
   catagData: any;
-  catArray: any;
-  subCategorySelection= false;
+  catArray: any = [];
+  subCategorySelection = false;
   topping2: any = [];
-  ProdData:  any = [];
+  ProdData: any = [];
   ProductList: any = [];
   prodData: any = [];
-  productSelection =  false;
-
-
-  constructor(  public dialog: MatDialog,
+  productSelection = false;
+  targetItemsData: any = [];
+  targetItemsArray: any = [];
+  constructor(public dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
-    public promotionTypes : PromotionService,
+    public promotionTypes: PromotionService,
     private fb: FormBuilder,
-    private targetList : TargetListService,
+    private targetList: TargetListService,
     private materialList: MaterialListService,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.getclassification();
     this.getProduct();
     this.displayTargetGroup();
+    this.productidentify();
     this.myForm = this.fb.group({
       city: [this.selectedItems]
+    });
+    this.subCattyForm = this.fb.group({
+      subcatty: [this.selectedItems]
+    });
+    this.product = this.fb.group({
+      product: [this.selectedItems]
+    });
+    this.identifier = this.fb.group({
+      identifier: [this.selectedItems]
+    });
+    this.typess = this.fb.group({
+      typess: [this.selectedItems]
     });
     this.category = {
       singleSelection: false,
@@ -211,6 +228,14 @@ export class AddTargetGroupsProductsComponent implements OnInit {
       itemsShowLimit: 1,
       allowSearchFilter: this.productFilter
     };
+    this.dropdownSettings1 = {
+      singleSelection: false,
+      idField: 'productCustomIdentifierId',
+      textField: 'productCustomName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+    }
   }
   addItemSelect(item: any) {
     this.catergory.push(item.catId);
@@ -218,7 +243,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     this.catagoryName = item.catName;
     let Subdata = {
       catId: this.catergory,
-      flag:this.flag
+      flag: this.flag
     }
     this.materialList.onclickcat(Subdata).subscribe((res) => {
       let subcaty = res.response;
@@ -228,7 +253,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     const data = {
       category: this.catergory,
       subCategory: this.sub_categorys,
-      type: this.typesI,
+      type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.statusTypes,
       search: this.searchText
@@ -237,7 +262,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
-      
+
     });
   }
   getclassification() {
@@ -247,12 +272,13 @@ export class AddTargetGroupsProductsComponent implements OnInit {
       this.coutCatagory = res.totalRecords;
       this.catgname = data.allOtherCats;
       let dataCat = data.allOtherCats;
+      console.log("DataCat", dataCat)
       this.toppings = new FormControl(this.catgname);
       // this.catNamee = this.catgname.catName;
       console.log("materialList", this.materialList);
       console.log("coutCategory", this.coutCatagory);
       console.log("this.catgname", this.catgname);
-      console.log("this.catnamee", this.catNamee);
+      // console.log("this.catnamee", this.catNamee);
       this.catagData = dataCat.map((data: { catId: any; catName: any; }) => {
         return { catId: data.catId, roleName: data.catName };
       });
@@ -263,17 +289,22 @@ export class AddTargetGroupsProductsComponent implements OnInit {
         });
       }
       this.catagData.push()
+      console.log("catagData", this.catagData)
       this.catagData.forEach(element => {
-        return this.catArray?.push(element.catId);
+        return this.catArray.push(element.catId);
 
       })
     })
+    console.log("hellooo")
+    console.log("Categoryyyyyy", this.catArray)
   }
-  catNamee(arg0: string, catNamee: any) {
-    throw new Error('Method not implemented.');
-  }
+  // catNamee(arg0: string, catNamee: any) {
+  //   throw new Error('Method not implemented.');
+  // }
   addItemSelectOrAll(item: any) {
-    this.catergory = this.allcatlist
+    console.log("categoryArry", this.catArray);
+    console.log("catList", this.allcatlist);
+    this.catergory = this.catArray;
     let Subdataall = {
       catId: this.catergory
     }
@@ -289,7 +320,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
       this.subcatagData = allSub_cats.map((data: { subCatId: any; subCatName: any; }) => {
         return { subCatId: data.subCatId, subCatName: data.subCatName };
       });
-  
+
       if (!this.subcatagData?.length) {
         this.subcatagData = allSub_cats.map((subCatData: { designationName: any; }) => {
           return subCatData.designationName;
@@ -298,7 +329,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
       this.subcatagData.push()
       this.subcatagData.forEach(element => {
         return this.subcatArray.push(element.subCatId);
-  
+
       })
       this.topping1 = new FormControl(this.sub_category);
     });
@@ -306,7 +337,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     const data = {
       category: this.catergory,
       subCategory: this.sub_categorys,
-      type: this.typesI,
+      type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.statusTypes,
       search: this.searchText
@@ -315,25 +346,25 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
-      
+
     });
   }
   addItemDeSelectOrAll(item: any) {
     this.subCategory = this.fb.group({
       subCategory: [this.selectedItems]
     });
-    this.type = this.fb.group({
-      type: [this.selectedItems]
+    this.typess = this.fb.group({
+      typess: [this.selectedItems]
     });
     this.catergory = [];
     this.sub_category = [];
     this.sub_categorys = [];
     this.typeI = [];
-    this.typesI = [];
+    this.typeTosend = [];
     const data = {
       category: this.catergory,
       subCategory: this.sub_categorys,
-      type: this.typesI,
+      type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.statusTypes,
       search: this.searchText
@@ -342,7 +373,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
-      
+
     });
   }
   addItemDeSelect(item: any) {
@@ -363,7 +394,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     const data = {
       category: this.catergory,
       subCategory: this.sub_categorys,
-      type: this.typesI,
+      type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.statusTypes,
       search: this.searchText
@@ -372,13 +403,13 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
-      
+
     });
     this.subCategory = this.fb.group({
       subCategory: [this.selectedItems]
     });
-    this.type = this.fb.group({
-      type: [this.selectedItems]
+    this.typess = this.fb.group({
+      typess: [this.selectedItems]
     });
   }
   addSubCategorySelect(item: any) {
@@ -386,7 +417,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     this.sub_categorys.push(item.subCatId);
     let Type = {
       subCatId: this.sub_categorys,
-      flag:this.flag
+      flag: this.flag
     }
     this.materialList.onclicksubcat(Type).subscribe((res) => {
       let typs = res.response;
@@ -398,7 +429,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     const data = {
       category: this.catergory,
       subCategory: this.sub_categorys,
-      type: this.typesI,
+      type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.statusTypes,
       search: this.searchText
@@ -407,14 +438,14 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
-      
+
     });
-  
+
   }
   addSubCategoryDeSelect(item: any) {
     this.sub_categorys.forEach((element, index) => {
       if (element == item.subCatId) this.sub_categorys.splice(index, 1);
-  
+
     });
     let subCat = {
       subCatId: this.sub_categorys
@@ -424,7 +455,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
       console.log("types..res", typs);
       this.typeI = typs;
       if (this.typeI.length == 0) {
-        this.typesI = [];
+        this.typeTosend = [];
       }
       console.log("Typess", this.typss);
       this.topping2 = new FormControl(this.typeI);
@@ -433,7 +464,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     const data = {
       category: this.catergory,
       subCategory: this.sub_categorys,
-      type: this.typesI,
+      type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.statusTypes,
       search: this.searchText
@@ -442,20 +473,20 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
-      
+
     });
-    this.type = this.fb.group({
-      type: [this.selectedItems]
+    this.typess = this.fb.group({
+      typess: [this.selectedItems]
     });
   }
   addSubCategoryDSelectOrAll(item: any) {
     this.sub_categorys = [];
-    this.typesI = [];
+   this.typeTosend = [];
     this.typeI = []
     const data = {
       category: this.catergory,
       subCategory: this.sub_categorys,
-      type: this.typesI,
+      type:this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.statusTypes,
       search: this.searchText
@@ -464,10 +495,10 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
-      
+
     });
-    this.type = this.fb.group({
-      type: [this.selectedItems]
+    this.typess = this.fb.group({
+      typess: [this.selectedItems]
     });
   }
   addSubCategorySelectOrAll(item: any) {
@@ -485,7 +516,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     const data = {
       category: this.catergory,
       subCategory: this.sub_categorys,
-      type: this.typesI,
+      type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.statusTypes,
       search: this.searchText
@@ -494,7 +525,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
-      
+
     });
   }
   addTypeSelect(item: any) {
@@ -505,15 +536,13 @@ export class AddTargetGroupsProductsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
-      productidentifier:this.productIDentifire,
-       status: this.statusTypes,
+      productidentifier: this.productIDentifire,
       Search: this.searchText
     }
     // alert(data)
-    console.log("tttttt",data)
-    this.promotionTypes.GetProductList(data).subscribe((res) => {
+    console.log("tttttt", data)
+    this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
-      console.log("this TYpe",this.typeI)
     });
     console.log(item);
   }
@@ -523,72 +552,78 @@ export class AddTargetGroupsProductsComponent implements OnInit {
       if (element == item.typeId) this.typeTosend.splice(index, 1);
 
     });
-  
+
     const data = {
       Cat: this.catergory,
       Sub_Cat: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
-      productidentifier:this.productIDentifire,
-       status: this.statusTypes,
+      productidentifier: this.productIDentifire,
       Search: this.searchText
     }
-    this.promotionTypes.GetProductList(data).subscribe((res) =>{
-      console.log('productlist is works', res);
+    this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
-    })
+    });
 
   }
-  addTypeDeSelectOrAll(item:any){
-    
-    this.typeTosend=[];
+  addTypeDeSelectOrAll(item: any) {
+
+    this.typeTosend = [];
     const data = {
       Cat: this.catergory,
       Sub_Cat: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
-      productidentifier:this.productIDentifire,
-       status: this.statusTypes,
+      productidentifier: this.productIDentifire,
       Search: this.searchText
     }
-    this.promotionTypes.GetProductList(data).subscribe((res) =>{
-      console.log('productlist is works', res);
+    this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
-    })
+    });
   }
-  addTypeSelectOrAll(item:any){
-    this.typeTosend =this.allTypelist;
-    
+  addTypeSelectOrAll() {
+
+    this.typessData = this.typeI.map((data: { typeId: any; typeName: any; }) => {
+      return { typeId: data.typeId, typeName: data.typeName };
+    });
+
+    if (!this.typessData?.length) {
+      this.typessData = this.typeI.map((type: { designationName: any; }) => {
+        return type.designationName;
+      });
+    }
+    this.typessData.push()
+    this.typessData.forEach(element => {
+      return this.typessArray.push(element.typeId);
+
+    })
+    this.typeTosend = this.typessArray;
     const data = {
       Cat: this.catergory,
       Sub_Cat: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
-      productidentifier:this.productIDentifire,
-       status: this.statusTypes,
+      productidentifier: this.productIDentifire,
       Search: this.searchText
     }
-    this.promotionTypes.GetProductList(data).subscribe((res) =>{
-      console.log('productlist is works', res);
+    this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
-    })
+    });
   }
   onProductSelect(item: any) {
     this.productID.push(item.productGroupId);
     console.log(item);
     const data = {
-      category: this.catergory,
-      subCategory: this.sub_categorys,
-      type: this.typesI,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeTosend,
       productgroup: this.productID,
-      productidentifier: this.statusTypes,
-      search: this.searchText
-      // isProduct:this.isproduct
-
+      productidentifier: this.productIDentifire,
+      Search: this.searchText
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
-      
+
     });
   }
   onProductDeSelect(item: any) {
@@ -600,18 +635,16 @@ export class AddTargetGroupsProductsComponent implements OnInit {
 
     // this.userTypes.pop(item.roleId);
     const data = {
-      category: this.catergory,
-      subCategory: this.sub_categorys,
-      type: this.typesI,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeTosend,
       productgroup: this.productID,
-      productidentifier: this.statusTypes,
-      search: this.searchText
-      // isProduct:this.isproduct
-
+      productidentifier: this.productIDentifire,
+      Search: this.searchText
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
-      
+
     });
 
   }
@@ -625,18 +658,16 @@ export class AddTargetGroupsProductsComponent implements OnInit {
 
     // this.userTypes.pop(item.roleId);
     const data = {
-      category: this.catergory,
-      subCategory: this.sub_categorys,
-      type: this.typesI,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeTosend,
       productgroup: this.productID,
-      productidentifier: this.statusTypes,
-      search: this.searchText
-      // isProduct:this.isproduct
-
+      productidentifier: this.productIDentifire,
+      Search: this.searchText
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
-      
+
     });
 
   }
@@ -644,204 +675,239 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     this.productID = this.prodArray;
     console.log("ProdData", this.ProdData);
     const data = {
-      category: this.catergory,
-      subCategory: this.sub_categorys,
-      type: this.typesI,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeTosend,
       productgroup: this.productID,
-      productidentifier: this.statusTypes,
-      search: this.searchText
-      // isProduct:this.isproduct
-
+      productidentifier: this.productIDentifire,
+      Search: this.searchText
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
   }
-  addItemRefresh(){
+  addItemRefresh() {
     this.myForm = this.fb.group({
       city: [this.selectedItems]
     });
-    this.myForms = this.fb.group({
-      citys: [this.selectedItems]
+    this.subCattyForm = this.fb.group({
+      subcatty: [this.selectedItems]
     });
-    this.subCategory = this.fb.group({
-      subCategory: [this.selectedItems]
+    this.typess = this.fb.group({
+      typess: [this.selectedItems]
     });
-    this.type = this.fb.group({
-      type: [this.selectedItems]
+    this.product = this.fb.group({
+      product: [this.selectedItems]
     });
-    this.Product = this.fb.group({
-      Product: [this.selectedItems]
+    this.identifier = this.fb.group({
+      identifier: [this.selectedItems]
     });
     this.catergory = [];
     this.sub_category = [];
-    this.sub_categorys =[];
+    this.sub_categorys = [];
     this.typeI = [];
-    // this.typesI = [];
-    this.Product = [];
-    this.toppingList = [];
+    this.typeTosend = [];
+    this.productID = [];
+    this.productIDentifire = [];
+    this.searchText = '';
     const data = {
       Cat: this.catergory,
-      Sub_Cat: this.sub_category,
-      type: this.typeI,
-      Products: this.Product,
-      city: this.toppingList,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeTosend,
+      productgroup: this.productID,
+      productidentifier: this.productIDentifire,
       Search: this.searchText
     }
-     }
-     onproductIdentifierSelect(item: any) {
-      this.productIDentifire.push(item.productCustomIdentifierId);
-      console.log(item);
-      const data = {
-        Cat: this.catergory,
-        Sub_Cat: this.sub_categorys,
-        type: this.typeTosend,
-        product: this.productID,
-        productidentifier:this.productIDentifire,
-        status: this.statusTypes,
-        Search: this.searchText
-      }
-      this.promotionTypes.GetProductGroupList(data).subscribe((res) => {
-        // this.rowData5 = res.response;
-        this.rowData5 = res.response;
-        console.log('product lis', this.Product)
-      });
+    this.targetList.getTargetListAll(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
+  }
+  onproductIdentifierSelect(item: any) {
+    this.productIDentifire.push(item.productCustomIdentifierId);
+    console.log(item);
+    const data = {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeTosend,
+      product: this.productID,
+      productidentifier: this.productIDentifire,
+      Search: this.searchText
     }
-    onproductIdentifierDeSelect(item: any) {
-      this.productIDentifire.forEach((element, index) => {
-        if (element == item.productCustomIdentifierId) this.productIDentifire.splice(index, 1);
-  
-      });
-      console.log(' this.catergory', this.catergory)
-  
-      // this.userTypes.pop(item.roleId);
-      const data = {
-        Cat: this.catergory,
-        Sub_Cat: this.sub_categorys,
-        type: this.typeTosend,
-        productgroup: this.productID,
-        productidentifier:this.productIDentifire,
-        status: this.statusTypes,
-        Search: this.searchText
-      }
-      this.promotionTypes.GetProductList(data).subscribe((res) => {
-        this.rowData5 = res.response;
-      });
-  
+    this.targetList.getTargetListAll(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
+  }
+  onproductIdentifierDeSelect(item: any) {
+    this.productIDentifire.forEach((element, index) => {
+      if (element == item.productCustomIdentifierId) this.productIDentifire.splice(index, 1);
+
+    });
+    console.log(' this.catergory', this.catergory)
+
+    // this.userTypes.pop(item.roleId);
+    const data = {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeTosend,
+      productgroup: this.productID,
+      productidentifier: this.productIDentifire,
+      Search: this.searchText
     }
-    onproductIdentifierDeSelectOrAll(item: any) {
-      this.productIDentifire = [];
-      const data = {
-        Cat: this.catergory,
-        Sub_Cat: this.sub_categorys,
-        type: this.typeTosend,
-        productgroup: this.productID,
-        productidentifier:this.productIDentifire,
-        status: this.statusTypes,
-        Search: this.searchText
-      }
-      this.promotionTypes.GetProductList(data).subscribe((res) => {
-        this.rowData5 = res.response;
-      });
-  
+    this.targetList.getTargetListAll(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
+
+  }
+  onproductIdentifierDeSelectOrAll(item: any) {
+    this.productIDentifire = [];
+    const data = {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeTosend,
+      productgroup: this.productID,
+      productidentifier: this.productIDentifire,
+      Search: this.searchText
     }
-    onproductIdentifierSelectOrAll(item: any) {
-      this.productIDentifire = this.productCustomIdentifierArray;
-      // console.log("ProdData", this.ProdData);
-      const data = {
-        Cat: this.catergory,
-        Sub_Cat: this.sub_categorys,
-        type: this.typeTosend,
-        productgroup: this.productID,
-        productidentifier:this.productIDentifire,
-         status: this.statusTypes,
-        Search: this.searchText
-      }
-      this.promotionTypes.GetProductList(data).subscribe((res) => {
-        this.rowData5 = res.response;
-      });
+    this.targetList.getTargetListAll(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
+
+  }
+  onproductIdentifierSelectOrAll(item: any) {
+    this.productIDentifire = this.productCustomIdentifierArray;
+    // console.log("ProdData", this.ProdData);
+    const data = {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typeTosend,
+      productgroup: this.productID,
+      productidentifier: this.productIDentifire,
+      Search: this.searchText
     }
-    onSearchChange($event: any, anything?: any){
-      const { target } = $event;
-      this.searchText = target.value;
-      const data = {
-        category : [],
-        subCategory : [],
-        type : [],
-        productgroup : [],
-        productidentifier :[],
-        search : this.searchText
-      }
-      this.promotionTypes.GetProductList(data).subscribe((res) =>{
-        console.log('search data', res);
-        this.rowData5 = res.response;
-        
+    this.targetList.getTargetListAll(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
+  }
+  onSearchChange($event: any, anything?: any) {
+    const { target } = $event;
+    this.searchText = target.value;
+    const data = {
+      category: this.catergory,
+      subCategory: this.sub_categorys,
+      type: this.typeTosend,
+      productgroup: this.productID,
+      productidentifier: this.productIDentifire,
+      search: this.searchText
+    }
+    this.targetList.getTargetListAll(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
+  }
+  productidentify() {
+    this.promotionTypes.GetProductIdentifier().subscribe((res) => {
+      console.log('search data', this.toppingList);
+
+      this.toppingList = res.response;
+
+      this.toppingList.forEach(element => {
+        return this.productCustomIdentifierArray.push(element.productCustomIdentifierId);
+
       })
+
+      // this.categorydrp = res.response
+    })
+  }
+  onGridReady(params: GridReadyEvent) {
+    this.gridApi = params.api;
+    params.api.sizeColumnsToFit();
+
+  }
+
+  onTargetRowSelect(event) {
+    const targetselectedRows = this.gridApi.getSelectedRows();
+    console.log(targetselectedRows);
+    return targetselectedRows;
+  }
+  addTargetitemsSelected() {
+    this.targetselectedRows = this.gridApi.getSelectedRows();
+    localStorage.setItem('targetselectedRows',JSON.stringify(this.targetselectedRows) )
+    let targetData = this.targetselectedRows;
+    targetData.forEach(element => {
+      return this.targetItemsArray.push(element.stockItemId);
+
+    })
+    sessionStorage.setItem("stockItemId",JSON.stringify(this.targetItemsArray));
+    console.log("TargetArray", this.targetItemsArray)
+    let data = {
+      Id: this.targetItemsArray
     }
-    onGridReady(params: GridReadyEvent) {
-      this.gridApi = params.api;
-      params.api.sizeColumnsToFit();
-  
-    }
-    onCellValueChanged(event: CellValueChangedEvent) {
-      // alert(event.value)
-      console.log(
-        'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
-      );
-    }
-    onFirstDataRendered(params: FirstDataRenderedEvent) {
-      params.api.paginationGoToPage(4);
-    }
-    openDialog() {
-      // alert('mani')
-  
-    }
-    onCellClicked(e): void {
-      console.log('cellClicked', e);
-       
-      if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
-        const cellRendererInstances = e.api.getCellRendererInstances({
-          rowNodes: [e.node],
-          columns: [e.column],
-        });
-        if (cellRendererInstances.length > 0) {
-          const instance = cellRendererInstances[0];
-          instance.togglePopup();
-        }
+    this.promotionTypes.addTargetGroup(data).subscribe((res) => {
+      const responseTargetData = res.response;
+      console.log("responseTargetData", responseTargetData);
+    })
+    localStorage.setItem('targetselectedRows', JSON.stringify(this.targetselectedRows))
+    this.dialogRef.close();
+  }
+  onCellValueChanged(event: CellValueChangedEvent) {
+    // alert(event.value)
+    console.log(
+      'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
+    );
+  }
+  onFirstDataRendered(params: FirstDataRenderedEvent) {
+    params.api.paginationGoToPage(4);
+  }
+  openDialog() {
+    // alert('mani')
+
+  }
+  onCellClicked(e): void {
+    console.log('cellClicked', e);
+
+    if (e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action') {
+      const cellRendererInstances = e.api.getCellRendererInstances({
+        rowNodes: [e.node],
+        columns: [e.column],
+      });
+      if (cellRendererInstances.length > 0) {
+        const instance = cellRendererInstances[0];
+        instance.togglePopup();
       }
     }
-    handleScroll(event) {
-      var tippyPopups: NodeListOf<Element> | null | undefined = document.querySelectorAll(".tippy-box[data-theme='user-tippy']");
-      
-        tippyPopups.forEach(element=> {
-          element.parentNode?.removeChild(element)
-        })
-      const grid = document.getElementById('gridContainer');
-      if (grid) {
-        const gridBody = grid.querySelector('.ag-body-viewport') as any;
-        const scrollPos = gridBody.offsetHeight + event.top;
-        const scrollDiff = gridBody.scrollHeight - scrollPos;
-        //const api =  this.rowData5;
-        this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
-        this.paginationScrollCount = this.rowData5.length;
-      }
+  }
+  handleScroll(event) {
+    var tippyPopups: NodeListOf<Element> | null | undefined = document.querySelectorAll(".tippy-box[data-theme='user-tippy']");
+
+    tippyPopups.forEach(element => {
+      element.parentNode?.removeChild(element)
+    })
+    const grid = document.getElementById('gridContainer');
+    if (grid) {
+      const gridBody = grid.querySelector('.ag-body-viewport') as any;
+      const scrollPos = gridBody.offsetHeight + event.top;
+      const scrollDiff = gridBody.scrollHeight - scrollPos;
+      //const api =  this.rowData5;
+      this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
+      this.paginationScrollCount = this.rowData5.length;
     }
-    onRowSelect(event) {
-      const selectedRows = this.gridApi.getSelectedRows();
-      console.log(selectedRows);
-    }
-    addproductitems(){
-      const selectedRows = this.gridApi.getSelectedRows();
-      console.log(selectedRows);
-      this.dialogRef.close(selectedRows);
-    }
-    addItemProductSubG(){
-      const selectedRows = this.gridApi.getSelectedRows();
-      console.log('rowl',selectedRows);
-      localStorage.setItem('selectedRows',JSON.stringify(this.selectedRows) )
-    }
-  closeicon(){
+  }
+  // onRowSelect(event) {
+  //   const selectedRows = this.gridApi.getSelectedRows();
+  //   console.log(selectedRows);
+  // }
+  // addproductitems() {
+  //   const selectedRows = this.gridApi.getSelectedRows();
+  //   console.log(selectedRows);
+  //   this.dialogRef.close(selectedRows);
+  // }
+  addItemProductSubG() {
+    const selectedRows = this.gridApi.getSelectedRows();
+    console.log('rowl', selectedRows);
+    localStorage.setItem('selectedRows', JSON.stringify(this.selectedRows))
+  }
+  closeicon() {
     // this.closeIcon
+    localStorage.setItem('targetselectedRows',JSON.stringify(this.targetselectedRows) )
     this.dialogRef.close();
   }
   toogleShowFilter() {
@@ -917,11 +983,11 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     }
   }
 
-  displayTargetGroup(){
+  displayTargetGroup() {
     const data = {
       category: this.catergory,
       subCategory: this.sub_categorys,
-      type: this.typesI,
+      type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.statusTypes,
       search: this.searchText
@@ -930,7 +996,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
-      
+
     });
   }
 }

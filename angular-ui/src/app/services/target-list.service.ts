@@ -32,29 +32,40 @@ export class TargetListService {
     }
   }
 
-  getTargetList(TargetGroup) {
+  getTargetList() {
     //   return this.http.post<any>(`${this.classificationurl}MaterialApi/GetTargetGroup`,TargetGroup);
     // }
 
-    let options = {
-      headers: new HttpHeaders().set('Content-Type', 'application/json')
-    };
-    JSON.stringify(TargetGroup)
-    return this.http.post<any>(this.classificationurl + 'MaterialApi/GetTargetGroup', TargetGroup);
+    // let options = {
+    //   headers: new HttpHeaders().set('Content-Type', 'application/json')
+    // };
+    // JSON.stringify(TargetGroup)
+    // return this.http.post<any>(this.classificationurl + 'MaterialApi/GetTargetGroup', TargetGroup);
+  return this.http.get<any>(this.classificationurl + 'MaterialApi/GetTargetGroupList');
+    
 
   }
-
+// getTargetGrpList(){
+//   return this.http.get<any>(this.classificationurl + 'MaterialApi/GetTargetGroup');
+// }
   getTargetCode() {
     return this.http.get<any>(this.classificationurl + 'MaterialApi/GenerateTargetCode');
 
   }
-
-  getTargetSearch(data): Observable<any> {
+ createTargetGroup(data): Observable<any> {
     let options = {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     };
     JSON.stringify(data)
-    return this.http.post<any>(this.classificationurl + 'MaterialApi/GetTargetGroupList', data);
+    return this.http.post<any>(this.classificationurl + 'MaterialApi/AddEditTargetGroup', data);
+
+  }
+  getTargetSearch(data:any){
+    // let options = {
+    //   headers: new HttpHeaders().set('Content-Type', 'application/json')
+    // };
+    // JSON.stringify(data)
+    return this.http.post<any>(this.classificationurl + 'MaterialApi/GetTargetGroup', data);
 
   }
 

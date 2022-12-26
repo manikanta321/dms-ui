@@ -19,33 +19,64 @@
                 (onSelectAll)="addItemSelectOrAll($event)">
               </ng-multiselect-dropdown>
             </form>
+            <div class="dropdown-placeholder cats-placeholder">
+              <span *ngIf="myForm.get('city').value.length == 0"> Category </span>
+              <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder">
+                {{myForm.get('city').value.length}} category selected </span>
+              <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder">
+                {{myForm.get('city').value.length}} category(s) selected </span>
+
+            </div>
           </div>
           <div class="search-d  col-lg-3">
-            <form>
-              <ng-multiselect-dropdown class="addsubc" name="city" placeholder="sub-category" formControlName="city"
+            <form [formGroup]="subCattyForm">
+              <ng-multiselect-dropdown class="addsubc" name="city" placeholder="" formControlName="subcatty"
                 [disabled]="disabled" [settings]="subCategorys" [data]="sub_category"
                 (onSelect)="addSubCategorySelect($event)" (onDeSelect)="addSubCategoryDeSelect($event)"
                 (onDeSelectAll)="addSubCategoryDSelectOrAll($event)" (onSelectAll)="addSubCategorySelectOrAll($event)">
               </ng-multiselect-dropdown>
             </form>
+            <div class="dropdown-placeholder subcats-placeholder">
+              <span *ngIf="subCattyForm.get('subcatty').value.length == 0"> subCategory </span>
+              <span *ngIf="subCattyForm.get('subcatty').value.length == 1" class="selected-placeholder">
+                {{subCattyForm.get('subcatty').value.length}} subCategory selected </span>
+              <span *ngIf="subCattyForm.get('subcatty').value.length > 1" class="selected-placeholder">
+                {{subCattyForm.get('subcatty').value.length}} subCategory(s) selected </span>
+
+            </div>
           </div>
           <div class="search-d  col-lg-3">
-            <form [formGroup]="type">
-              <ng-multiselect-dropdown class="typy" name="type" [placeholder]="'Type'" formControlName="type"
+            <form [formGroup]="typess">
+              <ng-multiselect-dropdown class="typy" name="type" [placeholder]="''" formControlName="typess"
                 [disabled]="disabled" [settings]="productType" [data]="typeI" (onSelect)="addTypeSelect($event)"
                 (onDeSelect)="addTypeDeSelect($event)" (onDeSelectAll)="addTypeDeSelectOrAll($event)"
-                (onSelectAll)="addTypeSelectOrAll($event)">
+                (onSelectAll)="addTypeSelectOrAll()">
               </ng-multiselect-dropdown>
+              <div class="dropdown-placeholder typy-placeholder">
+                <span *ngIf="typess.get('typess').value.length == 0"> Type </span>
+                <span *ngIf="typess.get('typess').value.length == 1" class="selected-placeholder">
+                  {{typess.get('typess').value.length}} Type selected </span>
+                <span *ngIf="typess.get('typess').value.length > 1" class="selected-placeholder">
+                  {{typess.get('typess').value.length}} Type(s) selected </span>
+  
+              </div>
             </form>
           </div>
           <div class="search-d  col-lg-3">
             <form [formGroup]="product">
-              <ng-multiselect-dropdown class="producty" name="product" [placeholder]="'Product Group'"
+              <ng-multiselect-dropdown class="producty" name="product" [placeholder]="''"
                 formControlName="product" [disabled]="disabled" [settings]="productGroups" [data]="Product"
                 (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)"
                 (onDeSelectAll)="onProductDeSelectOrAll($event)" (onSelectAll)="onProductSelectOrAll($event)">
               </ng-multiselect-dropdown>
             </form>
+            <div class="dropdown-placeholder producty-placeholder">
+              <span *ngIf="product.get('product').value.length == 0"> Product </span>
+              <span *ngIf="product.get('product').value.length == 1" class="selected-placeholder">
+                {{product.get('product').value.length}} Product selected </span>
+              <span *ngIf="product.get('product').value.length > 1" class="selected-placeholder">
+                {{product.get('product').value.length}} Product(s) selected </span>
+            </div>
           </div>
         </div>
       </div>
@@ -55,18 +86,25 @@
         </div>
       </div>
     </div>
-    <div class="row mt-2">
+    <div class="row mt-5">
       <div class="col-11">
         <div class="row">
           <div class="col-lg-3 search-prodId">
-            <form>
-              <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'Product Identifier'"
-                formControlName="city" [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList"
+            <form [formGroup]="identifier">
+              <ng-multiselect-dropdown class="identifiers" name="city" [placeholder]="''"
+                formControlName="identifier" [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList"
                 (onSelect)="onproductIdentifierSelect($event)" (onDeSelect)="onproductIdentifierDeSelect($event)"
                 (onDeSelectAll)="onproductIdentifierDeSelectOrAll($event)"
                 (onSelectAll)="onproductIdentifierSelectOrAll($event)">
               </ng-multiselect-dropdown>
             </form>
+            <div class="dropdown-placeholder identifiers-placeholder">
+              <span *ngIf="identifier.get('identifier').value.length == 0"> Identifier </span>
+              <span *ngIf="identifier.get('identifier').value.length == 1" class="selected-placeholder">
+                {{identifier.get('identifier').value.length}} Identifier selected </span>
+              <span *ngIf="identifier.get('identifier').value.length > 1" class="selected-placeholder">
+                {{identifier.get('identifier').value.length}} Identifier(s) selected </span>
+            </div>
           </div>
         </div>
       </div>
@@ -96,14 +134,14 @@
         (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
         (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
         (bodyScroll)="handleScroll($event)" [rowSelection]="'multiple'"
-        (rowSelected)="onRowSelect($event)"></ag-grid-angular>
+        (rowSelected)="onTargetRowSelect($event)"></ag-grid-angular>
     </div>
     <div class="pagination">
       <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
         class="pagination-cls">{{rowData5.length}}</span>
     </div>
     <div class="addbtn mt-3 text-center">
-      <button class="addItem-btn btn-btn-primary" (click)="addItemProductSubG()">Add items</button>
+      <button class="addItem-btn btn-btn-primary" (click)="addTargetitemsSelected()">Add items</button>
     </div>
 
 

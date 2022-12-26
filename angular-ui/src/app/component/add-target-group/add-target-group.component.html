@@ -20,7 +20,7 @@
                         <div>
                             <label class="targetLabelN">Target Group Name<span class="errorMark">*</span></label>
                             <br>
-                            <input type="text" id="targetName" name="targetName" placeholder="Enter Target Group Name" class="targetGroupN">
+                            <input type="text" id="targetName" name="targetName" required (keyup)="targetName($event)" placeholder="Enter Target Group Name" class="targetGroupN">
                         </div>
                     </div>
                      <div class="col-lg-6">
@@ -40,11 +40,11 @@
                         <div>
                             <label class="selectedPL">Selected Products</label>
                             <br><br>
-                            <div>
+                            <div *ngIf="rowData5.length==0">
                             <input type="text" id="targetProduct" name="targetProduct" placeholder="Products not Selected Yet" class="selectedProduct" disabled>
                         </div>
                         <br>
-                        <div class="checkboxColor">
+                        <div class="checkboxColor" *ngIf="rowData5.length!=0">
                             <ag-grid-angular id="gridContainer" [tooltipMouseTrack]="true"
                             style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%; margin-left:-4px;"
                             class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
@@ -53,11 +53,14 @@
                             (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
                             (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
                             (bodyScroll)="handleScroll($event)" ></ag-grid-angular>
+                            <div class="pagination">
+                                <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{paginationScrollCount}}</span> of 
+                                <span class="pagination-cls">{{rowData5.length}}</span>
+                              </div>
+                              <div class="addbtn mt-3 text-center" >
+                                <button class="addItem-btn btn-btn-primary" (click)="createTarget()">Create</button>
+                              </div>
                       </div>
-                      <div class="pagination">
-                          <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{paginationScrollCount}}</span> of 
-                          <span class="pagination-cls">{{rowData5.length}}</span>
-                        </div>
                         </div>
                        
                     </div>

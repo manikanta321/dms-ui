@@ -88,6 +88,11 @@ return this.http.post<any>(this.userurl + 'MaterialApi/GetSUbCAtsOfMultiCats', d
 GetProductIdentifier(){
   return this.http.get<any>(this.userurl + 'PromotionsApi/GetProductIdentifier')
 }
+// http://13.126.235.145:801/api/PromotionsApi/GetAddProductTG
+
+addTargetGroup(data:any){
+  return this.http.post<any>(this.userurl + 'MaterialApi/GetAddProductTG', data)
+}
 // http://13.126.235.145:801/api/PromotionsApi/GetProductIdentifier
 GetGeographies(){
   return this.http.get<any>(this.userurl + 'PromotionsApi/GetGeographies')

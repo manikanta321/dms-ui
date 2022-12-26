@@ -417,6 +417,16 @@ label {
     .ag-theme-material{
        --ag-material-accent-color: #2e2629;
     }
+    .addItem-btn{
+        width: 106px;
+      height: 39px;
+      border-radius: 8px;
+      align-items: center;
+      text-align: center;
+      background: #000;
+      color: #FFFFFF;
+      margin-left: 21px;
+      }
     /* ::ng-deep.ag-theme-material {
         accent-color: #0c0b0c;
      }  */

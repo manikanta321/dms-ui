@@ -78,10 +78,13 @@ export class TargetGroupsComponent implements OnInit {
   selectedStatus: any = [];
   userTypes:any=[];
   statusTypes:any=[];
-  searchText:any;
+  searchText:any ='';
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
-  
+  targetListData:any=[];
+  tagetGrpId:any = [];
+  targetlistData:any = [];
+  targetlistArray:any = [];
 gridOptions : GridOptions ={
     defaultColDef: {
       resizable: true,
@@ -105,7 +108,7 @@ public popupParent: HTMLElement = document.body;
 columnDefs: ColDef[] = [ 
 
   { headerName: "Group Code",
-field: 'targetGroupCode' ,type: ['nonEditableColumn'], pinned: 'left',minWidth:250
+field: 'targetGroupId' ,type: ['nonEditableColumn'], pinned: 'left',minWidth:250
 },
 
 {   headerName: "Group Name",field: 'targetGroupName',type: ['nonEditableColumn']},
@@ -294,11 +297,9 @@ public pivotPanelShow = 'always';
 
   ngOnInit(): void {
     this.targetListGroup();
- 
-   
+//  this.targetGrpList();
+   this.TargetListData();
     this.uomId = localStorage.getItem('niId');
-
-
   this.otherstatus();
 
 this.myForm = this.fb.group({
@@ -307,30 +308,37 @@ this.myForm = this.fb.group({
 this.myForms = this.fb.group({
   citys: [this.selectedItems]
 });
+
 this.dropdownSettings1 = {
   singleSelection: false,
-  idField: 'statusId',
-  textField: 'statusName',
+  idField: 'targetGroupId',
+  textField: 'targetGroupName',
   selectAllText: 'Select All',
   unSelectAllText: 'UnSelect All',
-  itemsShowLimit: 2,
-  allowSearchFilter: true
+  itemsShowLimit: 1,
+  allowSearchFilter: this.StatusFilter
 };
-
 }
 
 targetListGroup(){
 
-    const data={
-      TargetGroup:[16]
-    }
-  this.targetList.getTargetList(data).subscribe((res) => {
-  this.rowData5 = res.response;
-  console.log("check target",this.rowData5);
+    // const data={
+    //   TargetGroup:[16]
+    // }
+  this.targetList.getTargetList().subscribe((res) => {
+    this.targetListData  = res.response;
+  console.log("check target",this.targetListData );
   
   })
 }
-
+// getTargetGrpList()
+// targetGrpList(){
+//   this.targetList.getTargetGrpList().subscribe((res) => {
+//     this.targetListData = res.response;
+//     console.log("check target",this.targetListData);
+    
+//     })
+// }
 scrolledIndexChange(i): void {
   this.scrolledIndex = i;
 }
@@ -471,7 +479,6 @@ handleScroll(event) {
 
   onRowValueChanged(event: RowValueChangedEvent) {
     var data = event.data;
-    
   }
 
   sideBarToggler(){
@@ -502,27 +509,98 @@ handleScroll(event) {
       .value;
     this.gridApi.paginationSetPageSize(Number(value));
   }
+TargetListData(){
+  const data = {
+    TargetGroup: this.tagetGrpId,
+    Search: this.searchText,
+  }
+this.targetList.getTargetSearch(data).subscribe((res) => {
+this.rowData5 = res.response;
+let dataCat = this.rowData5;
+this.targetlistData = dataCat.map((data: { targetGroupId: any; targetGroupName: any; }) => {
+  return { targetGroupId: data.targetGroupId, roleName: data.targetGroupName };
+});
 
+if (!this.targetlistData?.length) {
+  this.targetlistData = dataCat.map((product: { designationName: any; }) => {
+    return product.designationName;
+  });
+}
+this.targetlistData.push()
+this.targetlistData.forEach(element => {
+  return this.targetlistArray.push(element.targetGroupId);
+
+})
+console.log("targetListData",this.rowData5);
+console.log("targetListArray",this.targetlistArray);
+});
+}
   onSearchChange($event: any, anything?: any) {
     const { target } = $event;
     this.searchText = target.value;
-    // const data = {
-    //   Search: this.searchText,
-    //   isProduct:this.isproduct
-
-    // }
-    // this.materialList.getMaterialList(data).subscribe((res) => {
-    //   this.rowData5 = res.response;
-    // });
-
-    const data={
-      search:this.searchText
+    const data = {
+      TargetGroup: this.tagetGrpId,
+      Search: this.searchText,
     }
   this.targetList.getTargetSearch(data).subscribe((res) => {
   this.rowData5 = res.response;
 });
 
   }
+  onTargetGroupSelect(item: any) {
+    this.tagetGrpId.push(item.targetGroupId);
+    console.log(item);
+    const data = {
+      TargetGroup: this.tagetGrpId,
+      Search: this.searchText,
+    }
+    console.log("Data",data)
+    this.targetList.getTargetSearch(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
+  }
+  onTargetGroupDeSelect(item: any) {
+    this.tagetGrpId.forEach((element, index) => {
+      if (element == item.targetGroupId) this.tagetGrpId.splice(index, 1);
 
+    });
+    console.log(' this.catergory', this.tagetGrpId)
+    const data = {
+      TargetGroup: this.tagetGrpId,
+      Search: this.searchText,
+    }
+    this.targetList.getTargetSearch(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
+
+  }
+  onTargetGroupSelectOrAll(item: any) {
+    this.tagetGrpId = this.targetlistArray;
+    console.log("ProdData", this.tagetGrpId);
+    const data = {
+      TargetGroup: this.tagetGrpId,
+      Search: this.searchText,
+    }
+   console.log("Data",data)
+    this.targetList.getTargetSearch(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
+  }
+  onTargetGroupDeSelectOrAll(item: any) {
+    this.tagetGrpId = [];
+    this.tagetGrpId.forEach((element, index) => {
+      if (element == item.targetGroupId) this.tagetGrpId.splice(index, 1);
+
+    });
+    console.log(' this.tagetGrpId', this.tagetGrpId)
+    const data = {
+      TargetGroup: this.tagetGrpId,
+      Search: this.searchText,
+    }
+    this.targetList.getTargetSearch(data).subscribe((res) => {
+      this.rowData5 = res.response;
+    });
+
+  }
 
 }

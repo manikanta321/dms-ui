@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { AgGridAngular } from 'ag-grid-angular';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddTargetGroupsProductsComponent } from '../target-groups/add-target-groups-products/add-target-groups-products.component';
 import { TargetListService } from 'src/app/services/target-list.service';
 
@@ -14,17 +14,25 @@ export class AddTargetGroupComponent implements OnInit {
   instancePopup:any = null;
   stayScrolledToEnd = true;
   paginationPageSize = 10;
-  rowData5:any= [{productName:444,classification:"test",sku:"sku",productIdentifier:24, productGroup:"acd12"}];
+  rowData5:any= [];
   paginationScrollCount: any;
   public popupParent: HTMLElement = document.body;
   private gridApi!: GridApi;
   targetCode: any;
+  targetGroupName:any ='';
+  CreatedById:any;
+  CreatedByIdValue:any;
+  stockItemId:any =[];
+  createTargetData:any= [];
   constructor(public dialog: MatDialog,
-    private targetList: TargetListService
+    private targetList: TargetListService,
+    private dialogRef: MatDialogRef<any>,
     ) { }
 
   ngOnInit(): void {
     this.getTargetCodeG();
+    this.CreatedById = localStorage.getItem("logInId");
+    this.CreatedByIdValue = Number(this.CreatedById);
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -59,6 +67,7 @@ export class AddTargetGroupComponent implements OnInit {
       const cellRendererInstances = e.api.getCellRendererInstances({
         rowNodes: [e.node],
         columns: [e.column],
+        checkbox: true
       });
       if (cellRendererInstances.length > 0) {
         const instance = cellRendererInstances[0];
@@ -69,10 +78,18 @@ export class AddTargetGroupComponent implements OnInit {
   }
 
   addTProducts() {
-    this.dialog.open(AddTargetGroupsProductsComponent) 
-   
-  } 
+  const dialogRef =  this.dialog.open(AddTargetGroupsProductsComponent) 
+    dialogRef.afterClosed().subscribe((res) => {
+      this.rowData5 = JSON.parse(localStorage.getItem("targetselectedRows") ?? '[]');
+        this.stockItemId =JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]');
 
+      console.log("RowData5",this.rowData5);
+      })
+  } 
+  targetName(event:any){
+this.targetGroupName = event.target.value;
+console.log("targetgrpName",this.targetGroupName);
+  }
   handleScroll(event) {
     if(this.instancePopup && this.instancePopup.isOpen){
       this.instancePopup.togglePopup();
@@ -90,7 +107,7 @@ export class AddTargetGroupComponent implements OnInit {
     }
   }
   columnDefs: ColDef[] = [
-    { headerName:"",checkboxSelection:true , maxWidth:40},
+    { headerName:"",checkboxSelection:true ,maxWidth:40},
     {   headerName: "Product Name",field: 'productName' ,      tooltipField:"productName",type: ['nonEditableColumn']
   },
   
@@ -163,6 +180,19 @@ export class AddTargetGroupComponent implements OnInit {
       console.log("code target",this.targetCode);
       })
   }
-  
+  createTarget() {
+    let data = {
+      TargetGroupName: this.targetGroupName,
+      TargetGroupCode: this.targetCode,
+      CreatedById: this.CreatedByIdValue,
+      StockItemId: this.stockItemId
+    }
+    this.targetList.createTargetGroup(data).subscribe((res) => {
+      this.createTargetData = res.response;
+      console.log("code target",this.createTargetData);
+      // this.dialog.closeAll()
+      this.dialogRef.close();
+      })
+  }
  
 }

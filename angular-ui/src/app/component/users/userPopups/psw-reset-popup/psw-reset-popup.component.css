@@ -41,6 +41,10 @@ margin-top: 5px;
     top: 50%;
     position: absolute;
 } 
+.rp
+{
+    padding-right: 0px;
+}
 input{
     padding: 5px 12px;
     margin-bottom: 10px;
@@ -49,6 +53,7 @@ input{
     border-radius: 10px;
     width: 404px;
     height: 43px;
+     /* margin-left: -21px; */
 }
 .update-btn{
 background: black;

@@ -26,7 +26,8 @@
                                 <label>Promotion Name <span class="astr">*</span></label>
                                 <input type="text" id="promoname" name="promoname" required [(ngModel)]="promoName"
                                     #promoname="ngModel" placeholder="Promotion Name" class="form-control">
-                                <p style="margin-bottom: -20px;" *ngIf="promoname.invalid && (promoname.dirty || promoname.touched)">
+                                <p style="margin-bottom: -20px;"
+                                    *ngIf="promoname.invalid && (promoname.dirty || promoname.touched)">
                                     <span style="color:red;position: relative;" *ngIf="promoname.errors?.['required']">
                                         *Promotion Name is required
                                     </span>
@@ -46,36 +47,36 @@
                                     </ng-select>
                                 </div>
                                 <form #myform>
-                                <div class="myDatepicker promotion-datepicker">
-                                    <label>Start Date <span class="astr">*</span></label><br>
-                                    <mat-form-field class="placeh-align">
-                                        <mat-label>Select the start date</mat-label>
-                                        <input matInput 
-                                        [matDatepicker]="picker1"   [formControl]="startDate" [(ngModel)]="startDate"
-                                            (dateChange)="dateChange($event)" [min]="minDate">
-                                        <mat-datepicker-toggle matSuffix [for]="picker1">
-                                            <mat-icon matDatepickerToggleIcon>
-                                            <img src="assets/img/calender2.png" class="calendarToggle">
-                                        </mat-icon>
-                                        </mat-datepicker-toggle>
-                                        <mat-datepicker #picker1></mat-datepicker>
-                                    </mat-form-field>
-                                </div>
-                                <div class="myDatepicker  promotion-datepicker">
-                                    <label>End Date <span class="astr">*</span></label><br>
-                                    <mat-form-field class="placeh-align">
-                                        <input matInput placeholder=""
-                                        [matDatepicker]="picker2" [min]="endMinDate" [(ngModel)]="endDate"  [formControl]="endDate"
-                                        (dateChange)="enddateChange($event)">
-                                        <mat-datepicker-toggle matSuffix [for]="picker2">
-                                            <mat-icon matDatepickerToggleIcon>
-                                                <img src="assets/img/calender2.png" class="calendarToggle">
-                                            </mat-icon>
-                                        </mat-datepicker-toggle>
-                                        <mat-datepicker #picker2></mat-datepicker>
-                                    </mat-form-field>
-                                </div>
-                            </form>
+                                    <div class="myDatepicker promotion-datepicker">
+                                        <label>Start Date <span class="astr">*</span></label><br>
+                                        <mat-form-field class="placeh-align">
+                                            <mat-label>Select the start date</mat-label>
+                                            <input matInput [matDatepicker]="picker1" [formControl]="startDate"
+                                                [(ngModel)]="startDate" (dateChange)="dateChange($event)"
+                                                [min]="minDate">
+                                            <mat-datepicker-toggle matSuffix [for]="picker1">
+                                                <mat-icon matDatepickerToggleIcon>
+                                                    <img src="assets/img/calender2.png" class="calendarToggle">
+                                                </mat-icon>
+                                            </mat-datepicker-toggle>
+                                            <mat-datepicker #picker1></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="myDatepicker  promotion-datepicker">
+                                        <label>End Date <span class="astr">*</span></label><br>
+                                        <mat-form-field class="placeh-align">
+                                            <input matInput placeholder="" [matDatepicker]="picker2" [min]="endMinDate"
+                                                [(ngModel)]="endDate" [formControl]="endDate"
+                                                (dateChange)="enddateChange($event)">
+                                            <mat-datepicker-toggle matSuffix [for]="picker2">
+                                                <mat-icon matDatepickerToggleIcon>
+                                                    <img src="assets/img/calender2.png" class="calendarToggle">
+                                                </mat-icon>
+                                            </mat-datepicker-toggle>
+                                            <mat-datepicker #picker2></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                </form>
                             </div>
 
                             <div class="col-12 col-lg-6 imagefield">
@@ -373,16 +374,19 @@
                                             </div>
                                         </div>
                                         <div class="buyoneSet">
-                                            <div class="getSet1" *ngFor="let addget of addgetset[i].addsubBuy; let j=index">
+                                            <div class="getSet1"
+                                                *ngFor="let addget of addgetset[i].addsubBuy; let j=index">
                                                 <div class="row">
                                                     <div class="col-10 buyGrp-h">
                                                         <h5 class="item-header"><b>Get </b>group {{j}}</h5>
                                                     </div>
                                                     <div class="col-2 plsImg" (click)="addsubGetbuy(i,j)" *ngIf="j==0">
-                                                        <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
+                                                        <img src="assets/img/plus.png" class="plus-image"
+                                                            alt="plus-btn">
                                                     </div>
                                                     <div class="col-2 plsAdd" (click)="removeGetGroup(i)" *ngIf="j>=1">
-                                                        <img src="assets/img/minus.png" class="plus-image" alt="plus-btn">
+                                                        <img src="assets/img/minus.png" class="plus-image"
+                                                            alt="plus-btn">
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -406,15 +410,15 @@
                                                             <mat-card-content class="item-in-box">
                                                                 <ul>
                                                                     <li
-                                                                    *ngFor="let producttable of addgetset[i].addsubBuy[j].productselectedRows">
-                                                                    <mat-checkbox class="example-margin font"
-                                                                        [checked]="true"
-                                                                        (click)="updateAllCompleteforGetGroup(producttable.stockItemId,i,j)">
-                                                                        {{producttable?.productName}}
-                                                                    </mat-checkbox>
-                                                                </li>
+                                                                        *ngFor="let producttable of addgetset[i].addsubBuy[j].productselectedRows">
+                                                                        <mat-checkbox class="example-margin font"
+                                                                            [checked]="true"
+                                                                            (click)="updateAllCompleteforGetGroup(producttable.stockItemId,i,j)">
+                                                                            {{producttable?.productName}}
+                                                                        </mat-checkbox>
+                                                                    </li>
                                                                 </ul>
-                                                                
+
                                                             </mat-card-content>
                                                         </mat-card>
                                                     </div>
@@ -428,7 +432,7 @@
                                             </div>
                                         </div>
 
-                                       
+
 
                                     </div>
                                     <!-- additional get-g ends -->
@@ -460,21 +464,20 @@
                                     <mat-card class="list-item">
                                         <mat-card-content class="item-in-box">
                                             <ul>
-                                                <li
-                                                *ngFor="let producttable of productselectedRows">
-                                                <mat-checkbox class="example-margin font"
-                                                    [checked]="true"
-                                                    (click)="updateAllCompleteforGetGroupPrice(producttable.stockItemId)">
-                                                    {{producttable?.productName}}
-                                                </mat-checkbox>
-                                            </li>                                            </ul>
+                                                <li *ngFor="let producttable of productselectedRows">
+                                                    <mat-checkbox class="example-margin font" [checked]="true"
+                                                        (click)="updateAllCompleteforGetGroupPrice(producttable.stockItemId)">
+                                                        {{producttable?.productName}}
+                                                    </mat-checkbox>
+                                                </li>
+                                            </ul>
                                         </mat-card-content>
                                     </mat-card>
                                     <br>
                                     <label>Minimum Order Quantity<span class="astr">*</span></label>
                                     <br>
                                     <input class="minimumorderquantity" type="text" id="pValue" name="pValue" required
-                                        placeholder="" [(ngModel)]="minimumorderquantity" >
+                                        placeholder="" [(ngModel)]="minimumorderquantity">
                                 </div>
                                 <div class="col-lg-6 navItems">
                                     <div class="row">
@@ -505,7 +508,8 @@
                                         </div>
                                         <div class="col-3">
                                             <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
-                                                placeholder="" [(ngModel)]="packingCharge.DiscountPercentage" name="street_{{i}}">
+                                                placeholder="" [(ngModel)]="packingCharge.DiscountPercentage"
+                                                name="street_{{i}}">
 
                                         </div>
                                         <div class="col-3">
@@ -540,14 +544,12 @@
                                     <mat-card class="list-item">
                                         <mat-card-content class="item-in-box">
                                             <ul>
-                                                <li
-                                                *ngFor="let producttable of productselectedRows">
-                                                <mat-checkbox class="example-margin font"
-                                                    [checked]="true"
-                                                    (click)="updateAllCompleteforGetGroupPrice(producttable.stockItemId)">
-                                                    {{producttable?.productName}}
-                                                </mat-checkbox>
-                                            </li>  
+                                                <li *ngFor="let producttable of productselectedRows">
+                                                    <mat-checkbox class="example-margin font" [checked]="true"
+                                                        (click)="updateAllCompleteforGetGroupPrice(producttable.stockItemId)">
+                                                        {{producttable?.productName}}
+                                                    </mat-checkbox>
+                                                </li>
                                             </ul>
                                         </mat-card-content>
                                     </mat-card>
@@ -572,7 +574,7 @@
                                             <mat-icon class="" (click)=addFieldsPrice()>add_circle</mat-icon>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row" *ngFor="let packingCharge of packingVolume; let i = index;">
                                         <div class="col-3">
                                             <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
@@ -619,7 +621,7 @@
                                     <div class="col-lg-9 sltd-span">
                                         <span class="selectedname" *ngIf="false">Selected Geogrphies</span>
                                         <span class="selectedcolor"
-                                        *ngIf="showselectedgeovalue">{{aboveDefaultGeoOfName}}({{selectedcount}}/{{tottalgeoCount}})</span>
+                                            *ngIf="showselectedgeovalue">{{aboveDefaultGeoOfName}}({{selectedcount}}/{{tottalgeoCount}})</span>
                                         <!-- <span class="selectedclr2">India(15/15)</span>;
                                         <span class="astr">Singpore(0/6)</span>;
                                         <span class="selectedclr2">Japan(23/23)</span> -->
@@ -635,7 +637,8 @@
                             <h5 class="geo-head">Dealers</h5>
                         </div>
                         <div class="row">
-                            <input type="text" placeholder="Search for the Geography/ Dealers here" class="searchGeo" (keyup)="onSearchChange($event)">
+                            <input type="text" placeholder="Search for the Geography/ Dealers here" class="searchGeo"
+                                (keyup)="onSearchChange($event)">
                         </div>
                         <!-- grid table -->
                         <div class="grid-table mt-2">
@@ -654,13 +657,15 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <label> Additional Remarks</label><br>
-                                <input type="text" placeholder="Enter your remarks here..." class="addtnlRemarks" [(ngModel)]="Remarks">
+                                <input type="text" placeholder="Enter your remarks here..." class="addtnlRemarks"
+                                    [(ngModel)]="Remarks">
                             </div>
                         </div>
                         <!-- footer -->
                         <div class="row">
                             <div class="footer-btns">
-                                <button class="btn btn-light saveDraft" (click)="AddPromosaveAndSubmitDraft()">Save as draft</button>
+                                <button class="btn btn-light saveDraft" (click)="AddPromosaveAndSubmitDraft()">Save as
+                                    draft</button>
                                 <button class="btn btn-light submit" (click)=AddPromosaveAndSubmit()>Save &
                                     Submit</button>
                                 <button class="cancelbtn" [mat-dialog-close]="true">Cancel</button>

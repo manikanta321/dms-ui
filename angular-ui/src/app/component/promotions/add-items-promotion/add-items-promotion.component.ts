@@ -550,11 +550,12 @@ export class AddItemsPromotionComponent implements OnInit {
       
       let rowData = res.response;
 
-      this.rowData5 = rowData.map(x => {
+      rowData = rowData.map(x => {
         let index = this.data.findIndex(y=> y.stockItemId == x.stockItemId)
         x.isProductSelected = index == -1 ?  false : true;
         return x;
       });
+      this.rowData5 = rowData.sort((a, b) => b.isProductSelected - a.isProductSelected);
     })
   }
   onSearchChange($event: any, anything?: any) {
@@ -583,7 +584,7 @@ export class AddItemsPromotionComponent implements OnInit {
     this.productselectedRows = this.gridApi.getSelectedRows();
     console.log(this.productselectedRows);
     localStorage.setItem('productselectedRows', JSON.stringify(this.productselectedRows))
-    this.dialogRef.close();
+    this.dialogRef.close(true);
 
     // this.productScselectedRows.map((data:{stockItemId: any;}) => {
     //   return { stockItemId: data.stockItemId};
@@ -594,7 +595,7 @@ export class AddItemsPromotionComponent implements OnInit {
     // this.productScselectedRows = this.gridApi2.getSelectedRows();
     // console.log(this.productScselectedRows);
     localStorage.setItem('productselectedRows', JSON.stringify(this.productScselectedRows))
-    this.dialogRef.close();
+    this.dialogRef.close(true);
 
     // this.goForward(this.myStepper)
 
@@ -604,7 +605,7 @@ export class AddItemsPromotionComponent implements OnInit {
     // this.pGselectedRows = this.gridApi3.getSelectedRows();
     // console.log(this.pGselectedRows);
     localStorage.setItem('productselectedRows', JSON.stringify(this.pGselectedRows))
-    this.dialogRef.close();
+    this.dialogRef.close(true);
 
   }
 
@@ -615,7 +616,7 @@ export class AddItemsPromotionComponent implements OnInit {
     // console.log('rowl',this.productSubGselectedRows);
     localStorage.setItem('productselectedRows', JSON.stringify(this.productSubGselectedRows));
 
-    this.dialogRef.close();
+    this.dialogRef.close(true);
   }
 
   oncatselect() {
@@ -1284,13 +1285,13 @@ export class AddItemsPromotionComponent implements OnInit {
     }
     this.promotionTypes.GetProductShortCodeList(data).subscribe((res) => {
       console.log('shortcodeworks', res);
-      let rowData = res.response;
+      this.rowDatashortcode = res.response;
 
-      this.rowDatashortcode = rowData.map(x => {
-        let index = this.data.findIndex(y=> y.stockItemId == x.stockItemId)
-        x.isProductSelected = index == -1 ?  false : true;
-        return x;
-      });
+      // this.rowDatashortcode = rowData.map(x => {
+        // let index = this.data.findIndex(y=> y.stockItemId == x.stockItemId)
+        // x.isProductSelected = index == -1 ?  false : true;
+        // return x;
+      // });
     })
   }
   onSearchChangeShortcode($event: any, anything?: any) {

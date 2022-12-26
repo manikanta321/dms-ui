@@ -880,7 +880,7 @@ border-radius: 10px;
   }
   
   .close-icon {
-    left: 100%;
+    left: 99%;
     position: relative;
     font-size: 15px;
     font-weight: 600;
@@ -1614,6 +1614,7 @@ border-radius: 10px;
   }
   .addMore-icon {
     cursor: pointer;
+    margin-left: 13px;
     /* cursor: not-allowed;
     pointer-events: none !important; */
   }

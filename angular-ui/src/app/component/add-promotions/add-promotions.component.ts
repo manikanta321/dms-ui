@@ -177,7 +177,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   VolumeSttockItemId: any;
   priceStockItemId
   dateChange(e) {
+    console.log(e)
     this.minDateToFinish.next(e.value.toString());
+
     this.endDate = new FormControl(null);
     // alert(e.value);
     // console.log("This is the DATE:", e.value);
@@ -327,6 +329,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   moqValue: any;
   GetqtyValue: any;
   selectedPromo: any;
+  Remarks:any='';
   header: any;
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
     private sharedService: SharedServicesDealerService,
@@ -361,9 +364,57 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     let headername = localStorage.getItem('addOrEdit');
     if (headername == 'editpromo') {
       this.header = 'Edit';
-      let data
+      let data =localStorage.getItem('promoclickId')
       this.promotionTypes.getPromotionById(data).subscribe((res) => {
         console.log('res', res)
+        this.promoName= res.response.promotionName;
+        this.selectedPromo=res.response.promotionTypesId;
+        this.addImgpreview=true;
+      this.base64textString=res.response.imageurl;
+      this.startDate.setValue(res.response.startDate)
+      this.endDate.setValue(res.response.startDate)
+
+
+        if (res.response.promotionTypesName == 'Buy (A+B..) get (X+Y..)') {
+          // this.goForward(this.myStepper);
+          this.noPromotionSelected = false;
+          this.buyab = true;
+          this.volumedc = false;
+          this.buysets = false;
+          this.pricedc = false;
+
+
+        }
+        if (res.response.promotionTypesName  == 'Buy (A or B + C or D..) get (X+Y or Y+Z..)') {
+          this.noPromotionSelected = false;
+          this.buyab = false;
+          this.volumedc = false;
+          this.buysets = true;
+          this.pricedc = false;
+          // this.goForward(this.myStepper);
+    
+        }
+        if (res.response.promotionTypesName  == 'Volume Discount') {
+          this.noPromotionSelected = false;
+          this.buyab = false;
+          this.volumedc = true;
+          this.buysets = false;
+          this.pricedc = false;
+          // this.goForward(this.myStepper);
+    
+        }
+        if (res.response.promotionTypesName  == 'Price Discount') {
+          this.noPromotionSelected = false;
+          // this.goForward(this.myStepper);
+          this.buyab = false;
+          this.volumedc = false;
+          this.buysets = false;
+          this.pricedc = true;
+        }
+
+
+
+
       })
 
     }
@@ -689,7 +740,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
 
   addItems1(index: any = null, j: any = null) {
-    debugger
+    
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
     const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px' });
     dialogRef.afterClosed().subscribe((res) => {
@@ -731,7 +782,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   }
 
   addItems1forGetGroup(index: any = null, j: any = null) {
-    debugger
+    
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
     const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px' });
     dialogRef.afterClosed().subscribe((res) => {
@@ -767,7 +818,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
 
   addItemsforGetGroup(index: any = null) {
-    debugger
+    
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
     const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px' });
     dialogRef.afterClosed().subscribe((res) => {
@@ -1093,7 +1144,9 @@ alert(this.selectedPromo)
         Imageurl: this.base64textString,
         BuyGroups: this.buyGroupPlus,
         GetGroups: this.addgetgroup,
-        EntityInstanceId: this.EntityInstanceId
+        EntityInstanceId: this.EntityInstanceId,
+        Status:"Submit",
+        Remarks:this.Remarks
 
       }
 
@@ -1167,8 +1220,9 @@ alert(this.selectedPromo)
         Imageurl: this.base64textString,
         BuySets: [mainobj],
         GetSets: [GetSets],
-        EntityInstanceId: this.EntityInstanceId
-
+        EntityInstanceId: this.EntityInstanceId,
+        Status:"Submit",
+        Remarks:this.Remarks
       }
       console.log('object to send opis', obj3)
       // let BuySets=[{
@@ -1201,7 +1255,8 @@ alert(this.selectedPromo)
         StockItemId: this.VolumeSttockItemId,
         Volume: this.packingCharges,
         EntityInstanceId: this.EntityInstanceId,
-
+        Status:"Submit",
+        Remarks:this.Remarks
 
       }
 
@@ -1231,6 +1286,8 @@ alert(this.selectedPromo)
         StockItemId: this.priceStockItemId,
         Price: this.packingVolume,
         EntityInstanceId: this.EntityInstanceId,
+        Status:"Submit",
+        Remarks:this.Remarks
 
 
       }
@@ -1250,6 +1307,205 @@ alert(this.selectedPromo)
 
   }
 
+
+
+
+  AddPromosaveAndSubmitDraft() {
+    alert(this.selectedPromo)
+        this.loggedUserId = localStorage.getItem('logInId')
+    
+        if (this.selectedPromo == 1) {
+          console.log('added items', this.buyGroupPlus)
+          console.log('addgetgroup', this.addgetgroup)
+    
+          this.buyGroupPlus.forEach(element => {
+            delete element.productselectedRows;
+            delete element.productScselectedRows;
+            delete element.pGselectedRows;
+            delete element.productSubGselectedRows;
+          })
+    
+          this.addgetgroup.forEach(element => {
+            delete element.productselectedRows;
+            delete element.productScselectedRows;
+            delete element.pGselectedRows;
+            delete element.productSubGselectedRows;
+          })
+    
+    
+    
+          let obj: any = {
+    
+            PromotionName: this.promoName,
+            PromotionTypesId: this.selectedPromo,
+            StartDate: this.selectedStartDate,
+            EndDate: this.selectedEndDate,
+            DoneById: this.loggedUserId,
+            Imageurl: this.base64textString,
+            BuyGroups: this.buyGroupPlus,
+            GetGroups: this.addgetgroup,
+            EntityInstanceId: this.EntityInstanceId,
+            Status:"Draft",
+            Remarks:this.Remarks
+    
+          }
+    
+    
+          this.promotionTypes.firstPromotion(obj).subscribe((res) => {
+            console.log(res.response)
+    
+            if (res.response.result == 'Added Succesfully') {
+              alert('Added Succesfully')
+              this.dialogRef.close();
+            }
+            else {
+              alert(res.response.result);
+            }
+          })
+    
+        }
+    
+        if (this.selectedPromo == 2) {
+    
+          console.log('addbuyset', this.addbuyset)
+          console.log('addGetset', this.addgetset)
+          let obj: any = [];
+          let obj1: any = [];
+    
+    
+          for (let i = 0; i < this.addbuyset.length; i++) {
+            this.addbuyset[i].addsubBuy.forEach(element => {
+              delete element.productselectedRows;
+              obj.push(element)
+              console.log('finalobject', obj)
+    
+    
+            })
+    
+          }
+    
+    
+          for (let i = 0; i < this.addgetset.length; i++) {
+            this.addgetset[i].addsubBuy.forEach(element => {
+              delete element.productselectedRows;
+              obj1.push(element)
+              console.log('finalobject1', obj1)
+    
+    
+            })
+    
+          }
+    
+    
+          let BuyGroups: any = []
+          let GetGroups: any = []
+          BuyGroups.push(obj);
+          GetGroups.push(obj1);
+    
+          let mainobj: any = {
+            BuyGroups: obj,
+          }
+          let GetSets: any = {
+            GetGroups: obj1
+          }
+          console.log('mainobj', mainobj)
+    
+          let obj3: any = {
+    
+            PromotionName: this.promoName,
+            PromotionTypesId: this.selectedPromo,
+            StartDate: this.selectedStartDate,
+            EndDate: this.selectedEndDate,
+            DoneById: this.loggedUserId,
+            Imageurl: this.base64textString,
+            BuySets: [mainobj],
+            GetSets: [GetSets],
+            EntityInstanceId: this.EntityInstanceId,
+            Status:"Draft",
+            Remarks:this.Remarks
+          }
+          console.log('object to send opis', obj3)
+          // let BuySets=[{
+          //   BuyGroups:obj
+          // }]
+          this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
+            console.log(res.response)
+            if (res.response.result == 'Added Succesfully') {
+              alert('Added Succesfully')
+              this.dialogRef.close();
+            }
+            else {
+              alert(res.response.result);
+            }
+          })
+    
+    
+        }
+    
+        if (this.selectedPromo == 3) {
+          console.log('VolumeSttockItemId', this.VolumeSttockItemId)
+          let obj3: any = {
+            PromotionName: this.promoName,
+            PromotionTypesId: this.selectedPromo,
+            StartDate: this.selectedStartDate,
+            EndDate: this.selectedEndDate,
+            DoneById: this.loggedUserId,
+            Imageurl: this.base64textString,
+            MOQ: this.minimumorderquantity,
+            StockItemId: this.VolumeSttockItemId,
+            Volume: this.packingCharges,
+            EntityInstanceId: this.EntityInstanceId,
+            Status:"Draft",
+            Remarks:this.Remarks
+    
+          }
+    
+          this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
+            console.log(res.response)
+            if (res.response.result == 'Added Succesfully') {
+              alert('Added Succesfully')
+              this.dialogRef.close();
+            }
+            else {
+              alert(res.response.result);
+            }
+          })
+    
+        }
+    
+    
+        if (this.selectedPromo == 4) {
+          let obj3: any = {
+            PromotionName: this.promoName,
+            PromotionTypesId: this.selectedPromo,
+            StartDate: this.selectedStartDate,
+            EndDate: this.selectedEndDate,
+            DoneById: this.loggedUserId,
+            Imageurl: this.base64textString,
+            MOQ: this.minumorderqualityPrice,
+            StockItemId: this.priceStockItemId,
+            Price: this.packingVolume,
+            EntityInstanceId: this.EntityInstanceId,
+            Status:"Draft",
+            Remarks:this.Remarks
+    
+    
+          }
+    
+          this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
+            console.log(res.response)
+            if (res.response.result == 'Added Succesfully') {
+              alert('Added Succesfully')
+              this.dialogRef.close();
+            }
+            else {
+              alert(res.response.result);
+            }
+          })
+    
+        }
+    
+      }
 
 
   addpromotionGeoTable1() {

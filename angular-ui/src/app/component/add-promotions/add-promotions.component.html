@@ -52,7 +52,7 @@
                                     <mat-form-field class="placeh-align">
                                         <mat-label>Select the start date</mat-label>
                                         <input matInput 
-                                        [matDatepicker]="picker1"   [formControl]="startDate"
+                                        [matDatepicker]="picker1"   [formControl]="startDate" [(ngModel)]="startDate"
                                             (dateChange)="dateChange($event)" [min]="minDate">
                                         <mat-datepicker-toggle matSuffix [for]="picker1">
                                             <mat-icon matDatepickerToggleIcon>
@@ -65,8 +65,8 @@
                                 <div class="myDatepicker  promotion-datepicker">
                                     <label>End Date <span class="astr">*</span></label><br>
                                     <mat-form-field class="placeh-align">
-                                        <input matInput placeholder="Select the end date"
-                                        [matDatepicker]="picker2" [min]="endMinDate"  [formControl]="endDate"
+                                        <input matInput placeholder=""
+                                        [matDatepicker]="picker2" [min]="endMinDate" [(ngModel)]="endDate"  [formControl]="endDate"
                                         (dateChange)="enddateChange($event)">
                                         <mat-datepicker-toggle matSuffix [for]="picker2">
                                             <mat-icon matDatepickerToggleIcon>
@@ -655,13 +655,13 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <label> Additional Remarks</label><br>
-                                <input type="text" placeholder="Enter your remarks here..." class="addtnlRemarks">
+                                <input type="text" placeholder="Enter your remarks here..." class="addtnlRemarks" ([ngModel])="Remarks">
                             </div>
                         </div>
                         <!-- footer -->
                         <div class="row">
                             <div class="footer-btns">
-                                <button class="btn btn-light saveDraft">Save as draft</button>
+                                <button class="btn btn-light saveDraft" (click)="AddPromosaveAndSubmitDraft()">Save as draft</button>
                                 <button class="btn btn-light submit" (click)=AddPromosaveAndSubmit()>Save &
                                     Submit</button>
                                 <button class="cancelbtn" [mat-dialog-close]="true">Cancel</button>

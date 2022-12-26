@@ -402,6 +402,10 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   max-height: 70vh;
   overflow-y: auto;
 }
+.material-add-edit .mat-dialog-container{
+
+  overflow-y: hidden !important;
+}
 
 
 .promotion-datepicker .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,.promotion-datepicker .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label{

@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { AddOrderPromotionlistComponent } from '../add-order-promotionlist/add-order-promotionlist.component';
-// import { OrderNonpromotionlistComponent } from '../order-nonpromotionlist/order-nonpromotionlist.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { HttpClient } from '@angular/common/http';
 import { MaterialListService } from 'src/app/services/material-list.service';
@@ -91,6 +90,7 @@ export class AddorderpromotionsComponent implements OnInit {
   addressId: any = [];
   shippingaddressId: any = [];
   BillingaddressId: any = [];
+  Billingaddress: any = [];
   shippingAddress: any = [];
   address: any = [];
   GeoGrapydropdownListdata: any;
@@ -120,6 +120,9 @@ export class AddorderpromotionsComponent implements OnInit {
   startdate: any;
   minDate = new Date();
   selectedStartDate: any;
+  CustomerPoId: any;
+  editorderbyID: any={};
+
   dateChange(e) {
 
     this.selectedStartDate = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
@@ -177,7 +180,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.ordersDealers();
-
+   
     this.taxdropdown();
     this.getclassification();
     this.selectMaterialIdentifier();
@@ -224,7 +227,11 @@ export class AddorderpromotionsComponent implements OnInit {
 
     if (editV == 'Edit') {
       this.actineLabel = "Edit order";
-      this.updateOrSave = !this.updateOrSave
+      this.updateOrSave = !this.updateOrSave;
+      this.GetOrdersToEdit();
+      if(this.stockItemId != ''){
+      
+      }
       // this.spinner.show();
       // this.spinner.hide();
 
@@ -233,7 +240,7 @@ export class AddorderpromotionsComponent implements OnInit {
       this.actineLabel = "Add order";
       this.editData = false;
       // this.updateOrSave= this.updateOrSave;
-
+      this.editorderbyID = {};
     }
 
 
@@ -288,7 +295,6 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   addOrderNonPromotionList() {
-    // this.dialog.open( OrderNonpromotionlistComponent,{width: '1043px',height:'663px'});
     this.orderNonPromotionsList();
     this.Non_promotions = true;
   }
@@ -368,7 +374,7 @@ export class AddorderpromotionsComponent implements OnInit {
       let BillingAddress = res.response;
 
       this.dealersbillingAddress = BillingAddress.map((data: { addressId: any; address: any; }) => {
-        return { addressId: data.addressId, address: data.address };
+        return { BillingaddressId: data.addressId, Billingaddress: data.address };
       });
       console.log(BillingAddress, "billing address");
       console.log(this.dealersbillingAddress, "billing address2");
@@ -935,6 +941,7 @@ export class AddorderpromotionsComponent implements OnInit {
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
       let orderNonPromotionsData = res.response;
+      console.log(orderNonPromotionsData,"orderNonPromotionsData tockeck");
 
       this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
       this.orderNonPromotionsdata.sort((a, b) => b.isPromotionSelected - a.isPromotionSelected);
@@ -1080,5 +1087,83 @@ export class AddorderpromotionsComponent implements OnInit {
 
       console.log(data, "data")
     });
+  }
+
+  GetOrdersToEdit(){
+    this.CustomerPoId = localStorage.getItem("CustomerPoId");
+    console.log(this.CustomerPoId,'this.CustomerPoId')
+    this.orders.GetOrdersToEdit(this.CustomerPoId).subscribe((res)=>{
+      this.editorderbyID = res.response[0];
+      console.log(res.response,"GetOrdersToEdit")
+      this.datapreloadbyID();
+    })
+    
+  }
+
+  datapreloadbyID(){
+    this.customerId = this.editorderbyID.customerId;
+      
+    if (this.customerId != '') {
+      this.orders.GetGeoGrapydropdownList(this.customerId).subscribe((res) => {
+        let GeoGrapydropdownList = res.response;
+        console.log(GeoGrapydropdownList, "GeoGrapydropdownList")
+        this.GeoGrapydropdownListdata = GeoGrapydropdownList.map((data: { geographyId: any; geographyName: any; }) => {
+          return { geographyId: data.geographyId, geographyName: data.geographyName };
+        });
+        console.log(this.GeoGrapydropdownListdata, "GeoGrapydropdownListdata")
+      });
+      this.geographyId = this.editorderbyID.geographyId;
+     
+      // shipping api
+      this.orders.GetShipingAddress(this.customerId).subscribe((res: any) => {
+        let shippingAddress = res.response;
+  
+        this.dealersShippingAddress = shippingAddress.map((data: { addressId: any; address: any; }) => {
+          return { addressId: data.addressId, address: data.address };
+        });
+        console.log(shippingAddress, "shipping address");
+        console.log(this.dealersShippingAddress, "shipping address1");
+      });
+      this.addressId = this.editorderbyID.shipToAddressId
+
+      // billing api
+      this.orders.GetBillingAddress(this.customerId).subscribe((res: any) => {
+        let BillingAddress = res.response;
+  
+        this.dealersbillingAddress = BillingAddress.map((data: { addressId: any; address: any; }) => {
+          return { BillingaddressId: data.addressId, Billingaddress: data.address };
+        });
+        console.log(BillingAddress, "billing address");
+        console.log(this.dealersbillingAddress, "billing address2");
+      });
+
+      this.BillingaddressId = this.editorderbyID.billToAddressId
+      this.DealerReferenceNo = this.editorderbyID.dealerReferenceNo
+      this.CompanyReferenceNo = this.editorderbyID.companyReferenceNo
+      this.DealerReferenceNo = this.editorderbyID.dealerReferenceNo
+      this.startdate = this.editorderbyID.requirementDate
+      this.DeliveryInstructions = this.editorderbyID.notes
+
+      this.nonpromotionlist = this.editorderbyID.itemcounts
+      this.nonpromotionlist.forEach(item => {
+              // Promocode: this.promotionName,
+              let obj = {
+                "Promocode": item.promotionName,
+                "stockid": item.stockitemid,
+                "uom": item.uomid,
+                "orderqty": item.quantity,
+                "stockqty": 0,
+                "price": item.mrp,
+                "discount": item.discount,
+                "finalvalue": item.finalValue,
+                "taxvalue": item.taxvalue,
+                "amount": item.amount
+              }
+              this.AddorderNonpromotiondata.push(obj)
+            });
+
+    }
+    
+    
   }
 }

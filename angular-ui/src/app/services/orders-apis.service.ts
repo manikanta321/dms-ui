@@ -65,6 +65,11 @@ export class OrdersApisService {
 
     return this.http.post<any>(this.userurl + 'OrdersApi/AddOrder', data);
   }
+
+  public GetOrdersToEdit(CustomerPoId:any){
+    return this.http.get<any>(this.userurl + `OrdersApi/GetOrdersToEdit?CustomerPoId=${CustomerPoId}`)
+  }
+  
   
 
 }

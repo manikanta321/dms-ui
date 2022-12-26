@@ -256,6 +256,7 @@ export class OrderListComponent implements OnInit {
   UomId: any;
   uomId :any;
   uomName: any;
+  CustomerPoId: any;
   clickNextRendererFunc() {
     alert('hlo');
   }
@@ -388,13 +389,16 @@ export class OrderListComponent implements OnInit {
     console.log('rolename', this.rowData)
   }
 
-  onCellClicked( e): void {
+  onCellClicked(e): void {
     console.log('cellClicked', e);
     this.UomId=e.data.uoMId;
     this.uomName=e.data.uoMName;
     let ordernumber = e.data.orderNUmber;
+    this.CustomerPoId =e.data.id
+
     // this.employeeName=e.data.userName;
-    // console.log('userID',this.userId);
+    console.log('CustomerPoId',this.CustomerPoId);
+    localStorage.setItem('CustomerPoId',this.CustomerPoId)
     sessionStorage.setItem("OrderStatus",e.data.status)
     localStorage.setItem('UomId',e.data.uoMId )
     localStorage.setItem('UomName',e.data.uoMName)

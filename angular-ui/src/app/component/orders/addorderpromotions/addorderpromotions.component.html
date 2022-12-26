@@ -30,7 +30,7 @@
                                 <ng-select [items]="dealerListArray" id="dealerAllArray" name="dealerAllArray" required
                                     [virtualScroll]="true" bindLabel="customerName" bindValue="customerId"
                                     [searchable]="true" [clearable]="false" placeholder=" select dealer"
-                                    [(ngModel)]="dealerListArray" (change)="onItemSelectdealers($event)">
+                                    [(ngModel)]="customerId" (change)="onItemSelectdealers($event)">
                                 </ng-select>
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                                 <ng-select class="selectgeo" [items]="GeoGrapydropdownListdata" id="GeoGrapydropdown"
                                     name="GeoGrapydropdown" required [virtualScroll]="true" bindLabel="geographyName"
                                     bindValue="geographyId" [searchable]="true" [clearable]="false"
-                                    placeholder="select Geography" [(ngModel)]="GeoGrapydropdownListdata"
+                                    placeholder="select Geography" [(ngModel)]="geographyId"
                                     (change)="onItemSelectgeo($event)">
                                 </ng-select>
                             </div>
@@ -50,9 +50,9 @@
                                 <label class="DealerInfo-label">Billing Address <span class="astr">*</span></label>
                                 <!-- <input matInput placeholder=" Select Billing address" #input class="form-control container input-box" > -->
                                 <ng-select class="BillingAddress" [items]="dealersbillingAddress" id="BillingAddress"
-                                    name="BillingAddress" required [virtualScroll]="true" bindLabel="address"
-                                    bindValue="addressId" [searchable]="true" [clearable]="false"
-                                    placeholder="select shippingAddress" [(ngModel)]="dealersbillingAddress"
+                                    name="BillingAddress" required [virtualScroll]="true" bindLabel="Billingaddress"
+                                    bindValue="BillingaddressId" [searchable]="true" [clearable]="false"
+                                    placeholder="select shippingAddress" [(ngModel)]="BillingaddressId"
                                     (change)="onItemSelectBillingAddress($event)">
                                 </ng-select>
                             </div>
@@ -79,7 +79,7 @@
                                 <ng-select class="shipingAddress" [items]="dealersShippingAddress" id="shipingAddress"
                                     name="shipingAddress" required [virtualScroll]="true" bindLabel="address"
                                     bindValue="addressId" [searchable]="true" [clearable]="false"
-                                    placeholder="select shippingAddress" [(ngModel)]="dealersShippingAddress"
+                                    placeholder="select shippingAddress" [(ngModel)]="addressId"
                                     (change)="onItemSelectshippingAddress($event)">
                                 </ng-select>
                             </div>

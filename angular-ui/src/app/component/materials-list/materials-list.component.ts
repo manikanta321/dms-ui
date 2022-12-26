@@ -963,7 +963,9 @@ else
   addMaterials() {
     this.dialog.open(MaterialAddEditpopupComponent, {
       // width: '100vw',
-      maxWidth: '70vw',
+      maxWidth: '80vw',
+      maxHeight: '99vh',
+      
       panelClass: 'material-add-edit'
   });
   localStorage.setItem('Edit', 'Add');

@@ -72,7 +72,8 @@ export class MaterialListActionComponent implements OnInit {
     localStorage.setItem("Edit",'Edit')
     let dialogRef =this.dialog.open(MaterialAddEditpopupComponent, {
       // width: '100vw',
-      maxWidth: '70vw',
+      maxWidth: '80vw',
+      maxHeight: '99vh',
       panelClass: 'material-add-edit'
   });
     this.isOpen = false;

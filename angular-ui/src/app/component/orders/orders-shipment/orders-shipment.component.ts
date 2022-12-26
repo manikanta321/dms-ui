@@ -18,6 +18,7 @@ export class OrdersShipmentComponent implements OnInit {
   myForm: any = FormGroup; 
   disabled = false;
   dropdownSettings: IDropdownSettings = {};
+  dropdownSettings2: IDropdownSettings = {};
   dealersdrop: any = ['dealr','d']; 
   shipStatus : any = ['To ship', 'fullfilled']
   startDate = new FormControl(new Date());
@@ -196,6 +197,24 @@ export class OrdersShipmentComponent implements OnInit {
   constructor(public dialog: MatDialog,) { }
 
   ngOnInit(): void {
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'customerId',
+      textField: 'customerName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 2,
+      allowSearchFilter: true
+    };
+    this.dropdownSettings2 = {
+      singleSelection: false,
+      idField: 'customerId',
+      textField: 'customerName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 2,
+      allowSearchFilter: true
+    };
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;

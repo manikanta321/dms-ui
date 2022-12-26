@@ -718,7 +718,7 @@ selectdays(){
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
         itemsShowLimit: 2,
-        allowSearchFilter: this.StatusFilter
+        allowSearchFilter: true
       };
       this.selectedStatus = [];
   }

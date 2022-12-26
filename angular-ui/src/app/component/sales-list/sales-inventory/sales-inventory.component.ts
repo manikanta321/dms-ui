@@ -18,6 +18,8 @@ export class SalesInventoryComponent implements OnInit {
   myForm: any = FormGroup;
   disabled = false;
   dropdownSettings: IDropdownSettings = {};
+  dropdownSettings2: IDropdownSettings = {};
+  dropdownSettings3: IDropdownSettings = {};
   dealersdrop: any = ['dealr','d'];
   private gridApi!: GridApi;
   public rowData5=[];
@@ -198,7 +200,33 @@ export class SalesInventoryComponent implements OnInit {
   constructor(public dialog: MatDialog ) { }
 
   ngOnInit(): void {
-    
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'customerId',
+      textField: 'customerName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 2,
+      allowSearchFilter: true
+    };
+    this.dropdownSettings2 = {
+      singleSelection: false,
+      idField: 'customerId',
+      textField: 'customerName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 2,
+      allowSearchFilter: true
+    };
+    this.dropdownSettings3 = {
+      singleSelection: false,
+      idField: 'customerId',
+      textField: 'customerName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 2,
+      allowSearchFilter: true
+    };
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;

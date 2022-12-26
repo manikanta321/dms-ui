@@ -583,7 +583,7 @@ export class CurrencyConversationComponent implements OnInit {
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
         itemsShowLimit: 2,
-        allowSearchFilter: this.StatusFilter
+        allowSearchFilter: true
       };
       this.selectedStatus = [];
       this.toppings1 = new FormControl(this.toppingList1);

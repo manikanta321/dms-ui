@@ -307,7 +307,15 @@ this.myForm = this.fb.group({
 this.myForms = this.fb.group({
   citys: [this.selectedItems]
 });
-
+this.dropdownSettings1 = {
+  singleSelection: false,
+  idField: 'statusId',
+  textField: 'statusName',
+  selectAllText: 'Select All',
+  unSelectAllText: 'UnSelect All',
+  itemsShowLimit: 2,
+  allowSearchFilter: true
+};
 
 }
 

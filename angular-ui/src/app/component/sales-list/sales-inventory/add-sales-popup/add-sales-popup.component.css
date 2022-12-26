@@ -371,3 +371,21 @@ height: 43px;
 .link{
   margin-top: 35px;
 }
+::ng-deep.addDealerSelection.ng-select .ng-arrow-wrapper .ng-arrow {
+  display: none !important;
+}
+
+::ng-deep.addDealerSelection.ng-select span.ng-arrow-wrapper:before{
+  content: url('../../../../../assets/img/search-icon.svg');
+  display: inline-block;
+  margin-left: -15px;
+}
+::ng-deep.addDealerProduct.ng-select .ng-arrow-wrapper .ng-arrow {
+  display: none !important;
+}
+
+::ng-deep.addDealerProduct.ng-select span.ng-arrow-wrapper:before{
+  content: url('../../../../../assets/img/search-icon.svg');
+  display: inline-block;
+  margin-left: -15px;
+}

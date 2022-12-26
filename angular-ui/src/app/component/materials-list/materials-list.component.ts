@@ -165,7 +165,7 @@ else
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: this.ShowFilter
+      allowSearchFilter: true
     };
     this.dropdownSettings1 = {
       singleSelection: false,
@@ -174,7 +174,7 @@ else
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: this.StatusFilter
+      allowSearchFilter: true
     };
     this.dropdownSettings2 = {
       singleSelection: false,
@@ -183,7 +183,7 @@ else
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: this.subCategoryFilter
+      allowSearchFilter: true
     };
     this.dropdownSettings3 = {
       singleSelection: false,
@@ -192,7 +192,7 @@ else
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: this.typeFilter
+      allowSearchFilter: true
     };
     this.dropdownSettings4 = {
       singleSelection: false,
@@ -201,7 +201,7 @@ else
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: this.productFilter
+      allowSearchFilter: true
     };
     this.myForm = this.fb.group({
       city: [this.selectedItems]

@@ -25,14 +25,14 @@
         <div class="content" *ngIf="!dealerInfo">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="promotiont">
+                    <div class="promotiont addSalesdropdown">
                         <label class="addDealerlabels">Dealer <span class="Astr">*</span></label>
                     </div>
-                    <ng-select [items]="addSalesdropdown" bindValue="customerId" bindLabel="customerName" placeholder="Select the promotion type"
+                    <ng-select [items]="addSalesdropdown" class="addDealerSelection" bindValue="customerId" bindLabel="customerName" placeholder="Select the promotion type"
                     #geoghraphy
                     (change)="onTypeSelect($event)" required>
                   </ng-select>
-                    <img src="assets/img/search.png" class="search-img"  alt="search">
+                    <!-- <img src="assets/img/search.png" class="search-img"  alt="search"> -->
                 </div>
                 <div class="col-md-6">
                     <div class="promotiont">
@@ -103,10 +103,10 @@
         <div class="content" *ngIf="!productInfo">
             <div class="row">
                 <div class="col-lg-5">
-                    <div class="promotiont">
-                        <label class="addDealerlabels">Brand Name <span class="Astr">*</span></label>
+                    <div class="promotiont ">
+                        <label class="addDealerlabels">Product<span class="Astr">*</span></label>
                     </div>
-                    <ng-select [items]="productDetails" bindValue="stockItemId" bindLabel="stockItemName" placeholder="Select the promotion type"
+                    <ng-select [items]="productDetails" class="addDealerProduct" bindValue="stockItemId" bindLabel="stockItemName" placeholder="Select the promotion type"
                   #geoghraphy
                   (change)="onProductTypeSelect($event)" required>
                 </ng-select>

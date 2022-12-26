@@ -24,7 +24,7 @@
     </div>
     <!-- prod subG dropdwn -->
     <div class="prodSubGDropdwn mt-3" *ngIf="myStepper?.selectedIndex == 3">
-      <div class="row productdrprow" >
+      <div class="row productdrprow">
         <div class="col-lg-3" style="font-family: 'Gilroy'; color: grey;">
           <form [formGroup]="myForms">
             <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'product'" formControlName="citys"
@@ -40,7 +40,7 @@
         </div>
       </div>
     </div>
-    <mat-stepper [linear]="isLinear" #stepper (click)="matsteptabClick($event)" [selectedIndex]="1" >
+    <mat-stepper [linear]="isLinear" #stepper (click)="matsteptabClick($event)" [selectedIndex]="0">
       <mat-step label="Step 1" [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
           <ng-template matStepLabel="productlb">product</ng-template>
@@ -69,25 +69,29 @@
                   </form>
                   <div class="dropdown-placeholder catag-placeholder">
                     <span *ngIf="myForm.get('city').value.length == 0"> Select Category </span>
-                    <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Category  </span>
-                    <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Categories </span>
-      
+                    <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder">
+                      {{myForm.get('city').value.length}} Category </span>
+                    <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder">
+                      {{myForm.get('city').value.length}} Categories </span>
+
                   </div>
                 </div>
                 <div class="search-d  col-lg-3">
                   <form [formGroup]="subCategory">
                     <ng-multiselect-dropdown class="addsubc" name="city" placeholder="sub-category"
-                      formControlName="subcatty" [disabled]="disabled" [settings]="dropdownSettings1" [data]="sub_category"
-                      (onSelect)="addSubCategorySelect($event)" (onDeSelect)="addSubCategoryDeSelect($event)"
-                      (onDeSelectAll)="addSubCategoryDSelectOrAll($event)"
+                      formControlName="subcatty" [disabled]="disabled" [settings]="dropdownSettings1"
+                      [data]="sub_category" (onSelect)="addSubCategorySelect($event)"
+                      (onDeSelect)="addSubCategoryDeSelect($event)" (onDeSelectAll)="addSubCategoryDSelectOrAll($event)"
                       (onSelectAll)="addSubCategorySelectOrAll($event)">
                     </ng-multiselect-dropdown>
                   </form>
                   <div class="dropdown-placeholder subCatag-placeholder">
                     <span *ngIf="subCategory.get('subcatty').value.length == 0"> Select SubCategory </span>
-                    <span *ngIf="subCategory.get('subcatty').value.length == 1" class="selected-placeholder"> {{subCategory.get('subcatty').value.length}} SubCategory  </span>
-                    <span *ngIf="subCategory.get('subcatty').value.length > 1" class="selected-placeholder"> {{subCategory.get('subcatty').value.length}} SubCategorys  </span>
-      
+                    <span *ngIf="subCategory.get('subcatty').value.length == 1" class="selected-placeholder">
+                      {{subCategory.get('subcatty').value.length}} SubCategory </span>
+                    <span *ngIf="subCategory.get('subcatty').value.length > 1" class="selected-placeholder">
+                      {{subCategory.get('subcatty').value.length}} SubCategorys </span>
+
                   </div>
                 </div>
                 <div class="search-d  col-lg-3">
@@ -100,9 +104,11 @@
                   </form>
                   <div class="dropdown-placeholder typy-placeholder">
                     <span *ngIf="type.get('type').value.length == 0"> Select Type </span>
-                    <span *ngIf="type.get('type').value.length == 1" class="selected-placeholder"> {{type.get('type').value.length}} Type  </span>
-                    <span *ngIf="type.get('type').value.length > 1" class="selected-placeholder"> {{type.get('type').value.length}} Types  </span>
-      
+                    <span *ngIf="type.get('type').value.length == 1" class="selected-placeholder">
+                      {{type.get('type').value.length}} Type </span>
+                    <span *ngIf="type.get('type').value.length > 1" class="selected-placeholder">
+                      {{type.get('type').value.length}} Types </span>
+
                   </div>
                 </div>
                 <div class="search-d  col-lg-3">
@@ -115,9 +121,11 @@
                   </form>
                   <div class="dropdown-placeholder producty-placeholder">
                     <span *ngIf="products.get('products').value.length == 0"> Select Product </span>
-                    <span *ngIf="products.get('products').value.length == 1" class="selected-placeholder"> {{products.get('products').value.length}} Product  </span>
-                    <span *ngIf="products.get('products').value.length > 1" class="selected-placeholder"> {{products.get('products').value.length}} Products  </span>
-      
+                    <span *ngIf="products.get('products').value.length == 1" class="selected-placeholder">
+                      {{products.get('products').value.length}} Product </span>
+                    <span *ngIf="products.get('products').value.length > 1" class="selected-placeholder">
+                      {{products.get('products').value.length}} Products </span>
+
                   </div>
                 </div>
               </div>
@@ -134,17 +142,23 @@
                 <div class="col-lg-3 search-prodId">
                   <form [formGroup]="productidentifier">
                     <ng-multiselect-dropdown class="identifier" name="city" [placeholder]="''"
-                      formControlName="productidentifier" [disabled]="disabled" [settings]="dropdownSettings5" [data]="toppingList"
-                      (onSelect)="onproductIdentifierSelect($event)" (onDeSelect)="onproductIdentifierDeSelect($event)"
+                      formControlName="productidentifier" [disabled]="disabled" [settings]="dropdownSettings5"
+                      [data]="toppingList" (onSelect)="onproductIdentifierSelect($event)"
+                      (onDeSelect)="onproductIdentifierDeSelect($event)"
                       (onDeSelectAll)="onproductIdentifierDeSelectOrAll($event)"
                       (onSelectAll)="onproductIdentifierSelectOrAll($event)">
                     </ng-multiselect-dropdown>
                   </form>
                   <div class="dropdown-placeholder identifier-placeholder">
-                    <span *ngIf="productidentifier.get('productidentifier').value.length == 0"> Select Identifier </span>
-                    <span *ngIf="productidentifier.get('productidentifier').value.length == 1" class="selected-placeholder"> {{productidentifier.get('productidentifier').value.length}} Identifier  </span>
-                    <span *ngIf="productidentifier.get('productidentifier').value.length > 1" class="selected-placeholder"> {{productidentifier.get('productidentifier').value.length}} Identifiers  </span>
-      
+                    <span *ngIf="productidentifier.get('productidentifier').value.length == 0"> Select Identifier
+                    </span>
+                    <span *ngIf="productidentifier.get('productidentifier').value.length == 1"
+                      class="selected-placeholder"> {{productidentifier.get('productidentifier').value.length}}
+                      Identifier </span>
+                    <span *ngIf="productidentifier.get('productidentifier').value.length > 1"
+                      class="selected-placeholder"> {{productidentifier.get('productidentifier').value.length}}
+                      Identifiers </span>
+
                   </div>
                 </div>
               </div>
@@ -172,8 +186,7 @@
             <ag-grid-angular id="gridContainer" class="ag-theme-material" (gridReady)="onGridReady($event)"
               [rowHeight]="25" [headerHeight]="48" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef"
               [columnTypes]="columnTypes" [rowData]="rowData5" [suppressExcelExport]="true" [popupParent]="popupParent"
-              (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"
-              (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
+              (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
               (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
               (bodyScroll)="handleScroll($event)" [rowSelection]="'multiple'"
               (rowSelected)="onProductRowSelect($event)"></ag-grid-angular>
@@ -217,8 +230,7 @@
               class="ag-theme-material" (gridReady)="onGridReady2($event)" [rowHeight]="25" [headerHeight]="48"
               [columnDefs]="columnDefs1" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
               [rowData]="rowDatashortcode" [suppressExcelExport]="true" [popupParent]="popupParent"
-              (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"
-              (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
+              (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
               (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
               (bodyScroll)="handleScroll($event)" [rowSelection]="'multiple'"
               (rowSelected)="ProductShortCodeRowSelect($event)"></ag-grid-angular>

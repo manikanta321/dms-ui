@@ -127,7 +127,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   selectedcount: any;
   tottalgeoCount: any;
   customerId: any;
-  productselectedRows: any;
+  productselectedRows: any = [];
   productScselectedRows: any;
   productSubGselectedRows: any;
   loginData: any;
@@ -698,7 +698,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   addItems(index: any = null) {
     // debugger
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
-    const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px' });
+    const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px', data: this.productselectedRows });
     dialogRef.afterClosed().subscribe((res) => {
       this.productselectedRows = JSON.parse(localStorage.getItem("productselectedRows") ?? '[]')
       // this.productScselectedRows = JSON.parse(localStorage.getItem("productScselectedRows") ?? '[]');
@@ -1555,11 +1555,13 @@ alert(this.selectedPromo)
       console.log();
       this.geographynameId = localStorage.getItem("geopromo");
       console.log('geochecks', this.geographynameId)
-      this.geographynameId.forEach(element => {
-        return this.geographyyId.push(element.geographynameId);
-        // console.log('rolecheck',rolecheck)
-
-      })
+      if(this.geographynameId){
+        this.geographynameId.forEach(element => {
+          return this.geographyyId.push(element.geographynameId);
+          // console.log('rolecheck',rolecheck)
+  
+        })
+      }
       // let localdata = res.response;
       // this.custmerid = localdata.map((data: { customerId: any; code: any; dealerName:any,geography:any }) => {
       //   return { customerId: data.customerId, code: data.code };

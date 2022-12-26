@@ -42,8 +42,7 @@
                                     <label>Promotion Type <span class="astr">*</span></label>
                                     <ng-select [items]="promotionTypedropdown" placeholder="Select the promotion type"
                                         bindLabel="promotionTypesName" bindValue="promotionTypesId" #promotype
-                                        (change)="selectedValue($event)" required
-                                        [(ngModel)]="selectedPromo">
+                                        (change)="selectedValue($event)" required>
                                     </ng-select>
                                 </div>
                                 <form #myform>

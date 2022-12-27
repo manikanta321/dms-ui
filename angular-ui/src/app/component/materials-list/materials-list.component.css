@@ -663,6 +663,11 @@ top: 9px;
   background-color: black !important;
 }
 
+::ng-deep.example-margin  .mat-checkbox-layout{
+  position: relative;
+  bottom: 25px; 
+}
+
 .listicon {
   display: flex;
   justify-content: end;

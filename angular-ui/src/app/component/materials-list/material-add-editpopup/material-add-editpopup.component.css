@@ -117,7 +117,7 @@ form[name="myBasicInfo"] {
 }
 
 ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
-  width: 630px;
+  width: 799px;
   margin-top: -51px;
 }
 
@@ -239,7 +239,7 @@ span {
 
 
 label {
-  font-size: 10px;
+  font-size: 11px;
   margin: 5px;
   font-weight: 600;
 }
@@ -296,9 +296,9 @@ label {
   margin: 0px 40px 0 0;
 }
 
-::ng-deep.arrow-hide .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
+/* ::ng-deep.arrow-hide .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
   display: none;
-}
+} */
 
 .productsg {
   font-family: 'Gilroy';
@@ -601,6 +601,11 @@ li {
   padding: 0px 0px 0px 0px;
 }
 
+::ng-deep.uomdrp .material-add-edit .mat-horizontal-content-container {
+  max-height: 70vh;
+  overflow-y: hidden;
+}
+
 .submitbtn {
   margin-top: 12px;
   background-color: #000000;
@@ -617,6 +622,30 @@ li {
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
   border-radius: 10px;
+}
+
+::ng-deep.categorydrp .ng-select .ng-arrow-wrapper{
+  display: none;
+}
+
+.searchdrp
+{
+  width: 16px;
+  position: absolute;
+  bottom: 10px;
+  left: 250px;
+}
+
+::ng-deep.subcategorydrp .ng-select .ng-arrow-wrapper{
+  display: none;
+}
+
+::ng-deep.typedrp .ng-select .ng-arrow-wrapper{
+  display: none;
+}
+
+::ng-deep.uomdrp .ng-select .ng-arrow-wrapper{
+  display: none;
 }
 
 ::ng-deep.subcategorydrp .ng-select.ng-select-single .ng-select-container {
@@ -819,6 +848,13 @@ align-items: center;
 
 .leftarrow1 {
   width: 24px;
+  margin-right: 9px;
+  cursor: pointer;
+
+}
+
+.leftarrow-disable {
+  width: 30px;
   margin-right: 9px;
   cursor: pointer;
 
@@ -1257,8 +1293,8 @@ textarea {
 }
 
 .expand-arrow1 {
-  width: 8%;
-  height: 9px;
+  width: 7%;
+  height: px;
   right: 26px;
   top: 4px;
 }
@@ -1407,7 +1443,7 @@ textarea {
   min-height: 263px;
   /* height: auto; */
   /* top: 11%; */
-  top: 7%;
+  top: 22%;
   position: relative;
   transition: all 5s ease-in-out;
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
@@ -1463,6 +1499,12 @@ textarea {
 .cold {
   background-color: white;
   color: black;
+  border: 2px solid;
+}
+
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+  background-color: black;
+  color: white;
 }
 
 .select {
@@ -1526,3 +1568,17 @@ mat-icon {
 
 
 }
+
+::ng-deep.example-margin  .mat-checkbox-layout{
+  position: relative;
+  bottom: 25px; 
+}
+
+.geography-popupsize{
+height: 380px;
+}
+
+.sidentifier{
+  text-decoration: underline;
+}
+

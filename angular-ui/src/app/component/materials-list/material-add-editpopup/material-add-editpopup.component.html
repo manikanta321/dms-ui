@@ -8,10 +8,11 @@
         <h3 class="addU font">{{actineLabel}}</h3>
         <br><br><br>
         <div class="d-flex">
-
-          <img src="assets/img/arrow-left-circle-fill.svg" (click)="Backbutton()" class="leftarrow1" alt="left-arr-btn">
+        
+          <img src="assets/img/arrow-left-circle-fill.svg"  (click)="Backbutton()" class="leftarrow1" alt="left-arr-btn">
           <img src="assets/img/arrow-right-circle-fill.svg" (click)="nextbutton()" class="rightarrow2"
             alt="right-arr-btn">
+         
         </div>
 
 
@@ -44,6 +45,7 @@
                         *Category is required.
                       </span>
                     </p>
+                       <img src="../../../../assets/img/search.png" class="searchdrp">
                   </div>
                 </div>
               </div>
@@ -56,12 +58,13 @@
                       placeholder="search & select sub-category" [(ngModel)]="subCategoryData"
                       (change)="onSubCategorySelect($event)" #nameSubCat="ngModel">
                     </ng-select>
-                    <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;"
+                        <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;"
                       *ngIf="nameSubCat.invalid && (nameSubCat.dirty || nameSubCat.touched)" class="alert">
                       <span style="color:red;position: relative;" *ngIf="nameSubCat.errors?.['required']">
                         *Sub-Category is required.
                       </span>
                     </p>
+                     <img src="../../../../assets/img/search.png" class="searchdrp">
                   </div>
                 </div>
               </div>
@@ -75,12 +78,13 @@
                       placeholder="Search & select type" [(ngModel)]="typesData" (change)="onTypeSelect($event)"
                       #nameType="ngModel">
                     </ng-select>
-                    <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
+                       <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
                       *ngIf="nameType.invalid && (nameType.dirty || nameType.touched)" class="alert">
                       <span style="color:red;position: relative;" *ngIf="nameType.errors?.['required']">
                         *Type is required.
                       </span>
                     </p>
+                       <img src="../../../../assets/img/search.png" class="searchdrp">
                   </div>
                 </div>
               </div>
@@ -111,14 +115,15 @@
                     placeholder="Search & select measuring unit" [(ngModel)]="baseUoMData"
                     (change)="onUomSelect($event)" #nameUOM="ngModel">
                   </ng-select>
-                  <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
+                      <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
                     *ngIf="nameUOM.invalid && (nameUOM.dirty || nameUOM.touched)" class="alert">
                     <span style="color:red;position: relative;" *ngIf="nameUOM.errors?.['required']">
                       *UOM is required.
                     </span>
                   </p>
+                  <img src="../../../../assets/img/search.png" class="searchdrp">
                 </div>
-              </div>
+              </div> 
             </div>
               <div class="row">
               <div class="col-md-6">
@@ -165,11 +170,11 @@
                 </div>
                 <div class="overlay" *ngIf="materialIdentifierPopup">
                   <div class="popup">
-                    <h2>Select Identifier<span>*</span></h2>
+                    <h2 class="sidentifier">Select Identifier<span>*</span></h2>
 
                     <a class="close" (click)="closePopup()">&times;</a>
                     <div class="content">
-                      <mat-chip-list selectable multiple>
+                      <mat-chip-list selectable multiple class="mchip">
                         <!-- [(ngModel)]="selctedIdentifier" -->
                         <mat-chip [value]="data" #identifierId="matChip" *ngFor="let data of selectId"
                           [selected]="isSelectedMaterialIdentifier(data)" (focus)="selectMaterialIdentifier(data)"
@@ -396,7 +401,7 @@
                     <div class="col-12">
                       <div class="row">
                         <div class="col-4">
-                          <h2>Business<span>*</span></h2>
+                          <h2 class="sidentifier">Business<span>*</span></h2>
 
                           <div class="content">
                             <mat-chip-list multiple>
@@ -412,7 +417,7 @@
                         </div>
                         <div class="vr"></div>
                         <div class="col-4">
-                          <h2>Product<span>*</span></h2>
+                          <h2 class="sidentifier">Product<span>*</span></h2>
 
                           <!-- <div class="content">
                             <mat-chip-list multiple>
@@ -439,7 +444,7 @@
                         <div class="vr"></div>
                         <div class="col-4">
                           <a class="close-icon" (click)="closePopup()">&times;</a>
-                          <h2>Product Setting<span>*</span></h2>
+                          <h2 class="sidentifier">Product Setting<span>*</span></h2>
                           <div class="content">
                             <mat-chip-list multiple>
                               <mat-chip #ps="matChip" *ngFor="let data of productSettingData"
@@ -462,8 +467,9 @@
 
           </mat-step>
           <!-- geographies -->
-
+         
           <mat-step [stepControl]="thirdformGroup" *ngIf="!checked">
+            <div class="geography-popupsize">
             <form [formGroup]="gepGraphiesFormGroup">
               <ng-template matStepLabel> Geographies</ng-template>
               <div class="heading">
@@ -503,6 +509,7 @@
                 </div>
               </div>
             </form>
+       
             <!-- <div class="row"></div> -->
 
 
@@ -600,12 +607,12 @@
                       </div>
 
                       <div class="col-sm-1">
-                        <input type="text" [disabled]="selectedHirerachyIndex > i" [(ngModel)]="item.leadTime"
+                        <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i" [(ngModel)]="item.leadTime"
                           class="uom-cls" id="LeadTime" name="LeadTime">
                       </div>
 
                       <div class="col-sm-2">
-                        <input style="width: 130px;" type="text" [disabled]="selectedHirerachyIndex > i"
+                        <input placeholder="Enter" style="width: 130px;" type="text" [disabled]="selectedHirerachyIndex > i"
                           [(ngModel)]="item.registrationNumber" class="uom-cls" id="RegistrationNumber"
                           name="RegistrationNumber">
                       </div>
@@ -639,6 +646,7 @@
             </div>
             <div class="col-3">
             </div>
+          </div>
           </mat-step>
         </mat-stepper>
       </div>

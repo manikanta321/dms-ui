@@ -393,7 +393,7 @@ li {
 .geography-item {
   display: block;
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   border-radius: 10px;
   margin-bottom: 5px;
   display: flex;
@@ -403,9 +403,9 @@ li {
 
 .geography-item.deactivated {
   color: #a6a7ad !important;
-  opacity: .6;
+ 
   border: 1px solid #a6a7ad !important;
-  cursor: auto;
+  cursor: auto;  
 }
 
 /* .geography-item .title{

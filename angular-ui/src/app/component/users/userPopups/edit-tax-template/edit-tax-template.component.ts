@@ -58,7 +58,7 @@ export class EditTaxTemplateComponent implements OnInit {
           // let  TaxTemplateDetailsId=detail.taxTemplateDetailsId;
 
          
-            this.letter=detail.displayOrder
+             this.letter=detail.displayOrder
             debugger
             TaxCodeName.setValue(detail.taxCodeName);
             debugger
@@ -140,10 +140,11 @@ setUpForm(cars: any[] ) {
       let item=this.letter
       item= String.fromCharCode(item.charCodeAt(0));
       this.letter=item
-    } else {
+      
+    } else {  
       let item=this.letter
       item= String.fromCharCode(item.charCodeAt(0) + 1);
-      this.letter=item
+      this.letter=item  
     }
    
    
@@ -152,7 +153,7 @@ setUpForm(cars: any[] ) {
       TaxCodeName: '',  
       PercentageValue: '',  
       Formula:'',
-      DisplayOrder:this.letter,
+       DisplayOrder:this.letter,
 
     })  
   }  

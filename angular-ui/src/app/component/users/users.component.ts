@@ -635,7 +635,8 @@ export class UsersComponent implements OnInit {
 
   }
 
-  onItemDeSelect(item: any) {
+  onItemDeSelect(item: any) 
+  {
 
     this.userTypes.forEach((element, index) => {
       if (element == item.roleId) this.userTypes.splice(index, 1);

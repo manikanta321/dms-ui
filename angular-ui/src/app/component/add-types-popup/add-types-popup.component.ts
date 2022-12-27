@@ -8,6 +8,7 @@ import { RestPwsdUserPopupComponent } from '../users/userPopups/rest-pwsd-user-p
 import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { SharedServiceAddTypesService } from 'src/app/services/shared-service-add-types.service';
+import { AddTypesSuccessfulDonePopupComponent } from './add-types-successful-done-popup/add-types-successful-done-popup.component';
 @Component({
   selector: 'app-add-types-popup',
   templateUrl: './add-types-popup.component.html',
@@ -83,6 +84,9 @@ this.typeCode=res.response.typeCode;
     this.typeCode='';
     this.sharedService.filter('Register click')
     this.dialogRef.close();
+
+    this.dialog.open(AddTypesSuccessfulDonePopupComponent, {panelClass: 'activeSuccessPop'})
+
     
     }
     else{

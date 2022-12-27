@@ -24,7 +24,7 @@ export class AddGeolistPopupComponent implements OnInit {
   }
   removesub(uId: number) {
     const index = this.packingCharges.findIndex((address) => address.id === uId);
-    this.packingCharges.splice(index, 1);
+    this.packingCharges.splice(index, 1); 
   }
   addFields() {
     this.packingCharges.push({

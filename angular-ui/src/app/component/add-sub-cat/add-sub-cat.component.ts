@@ -88,6 +88,7 @@ if(this.SubcatsetName=='Edit Sub-Category'){
     this.sucatnameCode='';
     this.sharedService.filter('Register click')
     this.dialogRef.close();
+    
     this.dialog.open(MaterialClassificationStatusPopupComponent, {panelClass: 'activeSuccessPop'});
     }
     else{

@@ -1,0 +1,26 @@
+
+
+
+
+
+<div class="container font" ngClass="{'active':data?.isActive,'deactive':!data?.isActive} ">
+
+    <div class="rest-pwsd d-flex">
+
+        <div class="tumbsup"><img class="c" src="assets/userImages/carbon_thumbs-up.svg" alt="">
+            <br>
+            <b>Done!</b>
+        </div>
+        <div class="text-succ mt-3" *ngIf="typeName!=''">
+            <p> Material
+                <b>{{typeName}} ({{typeCode}})</b> is Successfully Added
+               
+            </p>
+        </div>
+        
+       
+       
+        <div class="closeImg" (click)=" closeDialog()"><img src="assets/userImages/user-closeImg.svg" alt=""></div>
+
+    </div>
+</div>

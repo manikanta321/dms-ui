@@ -150,8 +150,8 @@ export class UserService {
   public otherstatus(data) {
     return this.http.get<any>(this.userurl + 'OtherMasterApi/GetStatusList', data);
   }
-  public tatemplatestatus(data) {
-    return this.http.get<any>(this.userurl + 'OtherMasterApi/GetTaxTemplateStatus', data);
+  public tatemplatestatus() {
+    return this.http.get<any>(this.userurl + 'OtherMasterApi/GetTaxTemplateStatus');
   }
   public addcurrency(data) {
     return this.http.post<any>(this.userurl + 'OtherMasterApi/AddEditCurrency', data);

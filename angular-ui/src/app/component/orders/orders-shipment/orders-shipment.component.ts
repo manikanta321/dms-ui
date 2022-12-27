@@ -213,7 +213,7 @@ export class OrdersShipmentComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 2,
-      allowSearchFilter: true
+      allowSearchFilter: false
     };
   }
   onGridReady(params: GridReadyEvent) {

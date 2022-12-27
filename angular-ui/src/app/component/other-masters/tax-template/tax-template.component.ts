@@ -171,6 +171,7 @@ export class TaxTemplateComponent implements OnInit {
   statusArray:any=[];
   selectedStatus: any = [];
    search:any='';
+   statusData:any =[];
    paginationPageSize = 10;
   paginationScrollCount:any;
   start: number = 0;
@@ -298,101 +299,45 @@ instancePopup:any = null;
       });
   this.getusertabeldata();
     }
-
-  onStatusAll(items: any) {
-    console.log('onSelectAll', items);
-    }
     onStatusSelect(item: any) {
       this.statusTypes.push(item.statusId);
     
       const data={
         Statuss:this.statusTypes,
         Search:this.searchText,
+        PageNumber:'',
+        PageSize:''
       }
       this.tax.gettaxlist(data).subscribe((res: any) => {
         this.rowData5 = res.response;
       });
       
     }
-    onItemDeSelect(item: any) {
-
-      this.userTypes.forEach((element,index)=>{
-        if(element==item.roleId)  this.userTypes.splice(index,1);
-     });
-     console.log(' this.userTypes', this.userTypes)
-    
-      // this.userTypes.pop(item.roleId);
-      const data={
-        statuss:this.statusTypes,
-        search:this.searchText,
-    
-      }
-      this.tax.gettaxlist(data).subscribe((res: any) => {
-        this.rowData5 = res.response;
-      });
-    
-    }
-    onItemSelect(item: any) {
-
-      // alert(item.roleName)
-        this.userTypes.push(item.roleId);
-      
-        const data={
-          Statuss:this.statusTypes,
-          Search:this.searchText,
-      
-        }
-        this.tax.gettaxlist(data).subscribe((res: any) => {
-          this.rowData5 = res.response;
-        });
-        console.log('rolefilter', this.userTypes)
-        console.log('onItemSelect', item);
-      }
-      onItemSelectOrAll(item:any){
-        this.userTypes=this.roleArray;
-        const data={
-          Statuss:this.statusTypes,
-          Search:this.searchText,
-      
-        }
-        this.tax.gettaxlist(data).subscribe((res: any) => {
-          this.rowData5 = res.response;
-        });
-        console.log('rolefilter', this.userTypes)
-        console.log('onItemSelect', item);}
-      onItemDeSelectOrAll(item:any){
-        const data={
-          Statuss:[],
-          Search:this.searchText,
-      
-        }
-        this.tax.gettaxlist(data).subscribe((res: any) => {
-          this.rowData5 = res.response;
-        });
-        console.log('rolefilter', this.userTypes)
-        console.log('onItemSelect', item);
-      }
       
         onItemDeSelectOrAllStatus(item:any){
+          this.statusTypes =[];
           const data={
-            Statuss:[],
+            Statuss:this.statusTypes,
             Search:this.searchText,
-        
+            PageNumber:'',
+            PageSize:''
           }
           this.tax.gettaxlist(data).subscribe((res: any) => {
             this.rowData5 = res.response;
           });
-          console.log('rolefilter', this.userTypes)
+          console.log('rolefilter',  this.statusTypes)
         }
       
       
         onItemSelectOrAllStatus(item:any){
           this.statusTypes=this.statusArray;
+          console.log("StatusArray",this.statusArray)
           console.log('y this is not coming',this.statusTypes)
           const data={
-            statuss:this.statusTypes,
-            search:this.searchText,
-        
+            Statuss:this.statusTypes,
+            Search:this.searchText,
+            PageNumber:'',
+            PageSize:''
           }
           this.tax.gettaxlist(data).subscribe((res: any) => {
             this.rowData5 = res.response;
@@ -405,13 +350,13 @@ instancePopup:any = null;
       this.statusTypes.forEach((element,index)=>{
         if(element==item.statusId)  this.statusTypes.splice(index,1);
      });
-      // this.statusTypes.pop(item.statusId);
     console.log(' this.statusTypes', this.userTypes)
-      const data={
-        statuss:this.statusTypes,
-        search:this.searchText,
-    
-      }
+    const data={
+      Statuss:this.statusTypes,
+      Search:this.searchText,
+      PageNumber:'',
+      PageSize:''
+    }
       this.tax.gettaxlist(data).subscribe((res: any) => {
         this.rowData5 = res.response;
       });
@@ -464,29 +409,24 @@ onSearchChange($event:any , anything?:any){
 
 
   statusItems(){
-    const data ={
-  
-    }
-    this.user.tatemplatestatus(data).subscribe((res: any) => {
+    this.user.tatemplatestatus().subscribe((res: any) => {
       this.toppingList1=res.response;
-      // this.toppingList1 = localdata.map((data: { status_id: any; status_name: any; }) => {
-      //   return {status_id: data.status_id, status_name: data.status_name };
-      // });
-  
-      // if (!this.toppingList1?.length) {
-      //   this.toppingList1 = localdata.map((status: { status_name: any; }) => {
-      //     return status.status_name;
-      //   });
-      // }
-      // this.toppingList1.push()
-      console.log('we have to check here', this.toppingList1)
-      this.toppingList1.forEach(element=>{
-        return   this.statusArray.push(element.statusId);
-             // console.log('rolecheck',rolecheck)
-     
-         })
-         console.log('statusArray',this.statusArray)
-      // this.toppingList = res.response;
+      let dataCat =  this.toppingList1;
+      this.statusData = dataCat.map((data: { statusId: any; statusName: any; }) => {
+        return { statusId: data.statusId, statusName: data.statusName };
+      });
+
+      if (!this.statusData?.length) {
+        this.statusData = dataCat.map((product: { designationName: any; }) => {
+          return product.designationName;
+        });
+      }
+      this.statusData.push()
+      console.log("StatusData",this.statusData)
+      this.statusData.forEach(element => {
+        return this.statusArray.push(element.statusId);
+      })
+      console.log("statusArray",this.statusArray);
       this.dropdownSettings1 = {
         singleSelection: false,
         idField: 'statusId',
@@ -494,7 +434,7 @@ onSearchChange($event:any , anything?:any){
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
         itemsShowLimit: 2,
-        allowSearchFilter: true
+        allowSearchFilter: false
       };
       this.selectedStatus = [];
       this.toppings1 = new FormControl(this.toppingList1);

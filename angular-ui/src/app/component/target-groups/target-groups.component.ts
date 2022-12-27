@@ -46,6 +46,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import * as moment from 'moment';
 import { AddTargetGroupComponent } from '../add-target-group/add-target-group.component';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 
 
 
@@ -108,7 +109,7 @@ public popupParent: HTMLElement = document.body;
 columnDefs: ColDef[] = [ 
 
   { headerName: "Group Code",
-field: 'targetGroupId' ,type: ['nonEditableColumn'], pinned: 'left',minWidth:250
+field: 'targetGroupCode' ,type: ['nonEditableColumn'], pinned: 'left',minWidth:250
 },
 
 {   headerName: "Group Name",field: 'targetGroupName',type: ['nonEditableColumn']},
@@ -270,7 +271,8 @@ public pivotPanelShow = 'always';
     private user:UserService,
     private observer: BreakpointObserver,
     private fb: FormBuilder,
-    private targetList: TargetListService
+    private targetList: TargetListService,
+    private otherMasterService: OtherMasterService,
    ) {
       sort:[];
      }
@@ -439,7 +441,19 @@ handleScroll(event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 }
-
+refreshTargetGroup() {
+  this.tagetGrpId = [];
+  this.myForms = this.fb.group({
+    citys: [this.selectedItems]
+  });
+  const data = {
+    TargetGroup: this.tagetGrpId,
+    Search: this.searchText,
+  }
+this.targetList.getTargetSearch(data).subscribe((res) => {
+this.rowData5 = res.response;
+});
+}
   announceSortChange(sortState: any) {
  
     if (sortState.direction) {
@@ -502,6 +516,16 @@ handleScroll(event) {
 
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     params.api.paginationGoToPage(4);
+    params.api.sizeColumnsToFit();
+      
+    this.otherMasterService.listen().subscribe((m: any) => {
+      console.log("RefreshData",m)
+      setTimeout (() => {
+        this.TargetListData();
+     }, 2000);
+     
+
+    })
   }
 
   onPageSizeChanged() {

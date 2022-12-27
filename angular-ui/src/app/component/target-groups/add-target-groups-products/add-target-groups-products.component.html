@@ -47,13 +47,13 @@
           </div>
           <div class="search-d  col-lg-3">
             <form [formGroup]="typess">
-              <ng-multiselect-dropdown class="typy" name="type" [placeholder]="''" formControlName="typess"
+              <ng-multiselect-dropdown class="typy" name="type"  formControlName="typess"
                 [disabled]="disabled" [settings]="productType" [data]="typeI" (onSelect)="addTypeSelect($event)"
                 (onDeSelect)="addTypeDeSelect($event)" (onDeSelectAll)="addTypeDeSelectOrAll($event)"
                 (onSelectAll)="addTypeSelectOrAll()">
               </ng-multiselect-dropdown>
               <div class="dropdown-placeholder typy-placeholder">
-                <span *ngIf="typess.get('typess').value.length == 0"> Type </span>
+                <span *ngIf="typess.get('typess').value.length == 0">Select Type </span>
                 <span *ngIf="typess.get('typess').value.length == 1" class="selected-placeholder">
                   {{typess.get('typess').value.length}} Type selected </span>
                 <span *ngIf="typess.get('typess').value.length > 1" class="selected-placeholder">

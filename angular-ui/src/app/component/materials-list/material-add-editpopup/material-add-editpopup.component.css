@@ -117,7 +117,7 @@ form[name="myBasicInfo"] {
 }
 
 ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
-  width: 799px;
+  width: 913px;
   margin-top: -51px;
 }
 
@@ -233,7 +233,7 @@ span {
 }
 
 .popup .close-icon:hover {
-  color: #06D85F;
+  
   cursor: pointer;
 }
 
@@ -602,7 +602,7 @@ li {
 }
 
 ::ng-deep.uomdrp .material-add-edit .mat-horizontal-content-container {
-  max-height: 70vh;
+  max-height: 58vh;
   overflow-y: hidden;
 }
 
@@ -891,6 +891,8 @@ align-items: center;
   margin-top: 6px;
   margin-left: 3px;
   font-family: 'Gilroy';
+  padding-left: 10px;
+    padding-top: 9px;
 }
 
 textarea {
@@ -1293,7 +1295,7 @@ textarea {
 }
 
 .expand-arrow1 {
-  width: 7%;
+  width: 5%;
   height: px;
   right: 26px;
   top: 4px;
@@ -1464,13 +1466,13 @@ textarea {
   position: absolute;
   top: 20px;
   right: 30px;
-  width: 12px;
-  height: 12px;
+  /* width: 12px;
+  height: 12px; */
   transition: all 200ms;
-  font-size: 30px;
+  font-size: 16px;
   font-weight: bold;
-  text-decoration: none;
-  color: #686E74;
+  /* text-decoration: none; */
+  color: black;
 }
 
 .popup .closeProd {
@@ -1487,7 +1489,7 @@ textarea {
 }
 
 .popup .close:hover {
-  color: #06D85F;
+  /* color: #06D85F; */
   cursor: pointer;
 }
 
@@ -1496,8 +1498,13 @@ textarea {
   /* overflow: auto; */
 }
 
+.popup .pContent{
+  position: relative;
+  bottom: 21px;
+}
+
 .cold {
-  background-color: white;
+  background-color: rgba(206, 212, 218, 1), rgba(248, 249, 250, 1);
   color: black;
   border: 2px solid;
 }
@@ -1505,6 +1512,9 @@ textarea {
 .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
   background-color: black;
   color: white;
+}
+.mat-chip .mat-standard-chip{
+  background-color: rgba(206, 212, 218, 1), rgba(248, 249, 250, 1); ;
 }
 
 .select {
@@ -1581,4 +1591,8 @@ height: 380px;
 .sidentifier{
   text-decoration: underline;
 }
-
+.sidentifierp{
+  text-decoration: underline;
+  position: relative;
+  bottom: 21px;
+}

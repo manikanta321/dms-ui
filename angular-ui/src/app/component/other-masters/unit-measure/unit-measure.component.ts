@@ -78,7 +78,7 @@ field: 'uoMName' ,type: ['nonEditableColumn'], maxWidth:600
 },
 
 {   headerName: "Display Code",
-field: 'uoMShortName',type: ['nonEditableColumn'],maxWidth:600 },
+field: 'uoMShortName',type: ['nonEditableColumn']},
 
 // suppressMovable:true,
 { headerName: "Status",
@@ -109,8 +109,7 @@ headerName: '',
 colId: 'action',
 cellRenderer: UomActionComponent,
 editable: false, 
-maxWidth:90
-
+maxWidth: 60
 
 
 },
@@ -126,7 +125,7 @@ public defaultColDef: ColDef = {
   suppressSizeToFit: true,
     filter: 'agTextColumnFilter',
     flex: 1,
-     minWidth: 100,
+    width: 400,
     resizable: true,
     sortable: true,
 
@@ -483,6 +482,8 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
 
   // Example of consuming Grid Event
   onCellClicked( e): void {
+    let cellCLickedpromotion = '0'
+    localStorage.setItem('cellCLickedpromotion', cellCLickedpromotion)
     console.log('cellClicked', e);
     this.UomId=e.data.uoMId;
     this.uomName=e.data.uoMName;
@@ -494,10 +495,7 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
     localStorage.setItem('niId',e.data.uoMId )
     localStorage.setItem('Niname',e.data.uoMName)
     // localStorage.setItem('employeeName',this.employeeName )
-    if (
-      e.event.target.dataset.action == 'toggle' &&
-      e.column.getColId() == 'action'
-    ) {
+    if (e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action') {
       const cellRendererInstances = e.api.getCellRendererInstances({
         rowNodes: [e.node],
         columns: [e.column],

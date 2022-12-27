@@ -152,7 +152,7 @@ export class CurrencyConversationComponent implements OnInit {
         values: ['Active', 'Inactive', 'Invited', 'Locked',],
       },
       cellClass: params => {
-        return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
+        return params.value == 'InActive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
       }
     },
     {
@@ -777,6 +777,8 @@ export class CurrencyConversationComponent implements OnInit {
   // Example of consuming Grid Event
   onCellClicked(e): void {
     console.log('cellClicked', e);
+    let cellCLickedpromotion = '0'
+  localStorage.setItem('cellCLickedpromotion', cellCLickedpromotion)
     this.UomId = e.data.uoMId;
     this.uomName = e.data.uoMName;
     // this.employeeName=e.data.userName;

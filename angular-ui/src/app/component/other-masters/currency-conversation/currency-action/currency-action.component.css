@@ -1,5 +1,4 @@
 
-
   
   .menu-container {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
@@ -57,9 +56,9 @@
     padding-left: 10px;
     padding-top: 5px;
 }
-.hover{
+/* .hover{
     display: none;
-}
+} */
 /* img:hover{
     background-color: red;
 } */
@@ -70,11 +69,3 @@ display:none;
     display: block;
 } */
 .tick:hover .tickmark { display:block;}
-.pagination {
-  float:right !important;
-}
-
-.pagination-cls {
-  font-size: 14px;
-  font-weight: 900;
-}

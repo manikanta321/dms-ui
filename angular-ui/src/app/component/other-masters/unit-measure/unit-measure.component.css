@@ -232,4 +232,16 @@ left: 37%
      
   
   }
+  ::ng-deep.my-class-1 {
+    color: #F5B666 !important;
+  }
+  
+  ::ng-deep.my-class-2 {
+    color: #17B15C !important;
+  }
+  
+  ::ng-deep.my-class-3 {
+    color: #F5B666 !important;
+  }
+  
     

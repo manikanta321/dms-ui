@@ -1425,6 +1425,7 @@ width: 100%;
   th{
     border-bottom: 1px solid grey;
     font-weight: 300;
+    height: 10px;
   }
   th, td{
     padding: 2px;

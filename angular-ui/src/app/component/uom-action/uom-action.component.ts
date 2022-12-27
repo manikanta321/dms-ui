@@ -74,7 +74,7 @@ export class UomActionComponent implements OnInit,  AfterViewInit {
       interactive: true,
       appendTo: document.body,
       hideOnClick: false,
-      offset: [0, 200],
+      offset: [-100, 200],
       onShow: (instance) => {
         hideAll({ exclude: instance });
       },

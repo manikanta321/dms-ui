@@ -1,5 +1,5 @@
 <div class="font ">
-  <div class=" main" width="900%">
+  <div class=" main ">
     <div class="container addMetrial">
       <div class="addUser">
         <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
@@ -34,7 +34,7 @@
                 <div class="">
                   <label>Category<span>*</span></label>
                   <div class="categorydrp">
-                    <ng-select [items]="catgname" id="nameCategory" name="nameCategory" required [virtualScroll]="true"
+                    <ng-select [items]="catgname" class="searchbtnIcon" id="nameCategory" name="nameCategory" required [virtualScroll]="true"
                       bindLabel="catName" bindValue="catId" [searchable]="true" [clearable]="false"
                       placeholder="Search & select category" [(ngModel)]="categeoryData" (change)="onItemSelect($event)"
                       #nameCategory="ngModel">
@@ -45,7 +45,7 @@
                         *Category is required.
                       </span>
                     </p>
-                       <img src="../../../../assets/img/search.png" class="searchdrp">
+                       <!-- <img src="../../../../assets/img/search.png" class="searchdrp"> -->
                   </div>
                 </div>
               </div>
@@ -53,7 +53,7 @@
                 <div class="">
                   <label>Sub-Category<span>*</span></label>
                   <div class="subcategorydrp">
-                    <ng-select [items]="sub_category" id="nameSubCat" name="nameSubCat" required [virtualScroll]="true"
+                    <ng-select [items]="sub_category" class="searchbtnIcon" id="nameSubCat" name="nameSubCat" required [virtualScroll]="true"
                       bindLabel="subCatName" bindValue="subCatId" [searchable]="true" [clearable]="false"
                       placeholder="search & select sub-category" [(ngModel)]="subCategoryData"
                       (change)="onSubCategorySelect($event)" #nameSubCat="ngModel">
@@ -64,7 +64,7 @@
                         *Sub-Category is required.
                       </span>
                     </p>
-                     <img src="../../../../assets/img/search.png" class="searchdrp">
+                     <!-- <img src="../../../../assets/img/search.png" class="searchdrp"> -->
                   </div>
                 </div>
               </div>
@@ -73,7 +73,7 @@
                 <div class="type">
                   <label>Type<span>*</span></label>
                   <div class="typedrp">
-                    <ng-select [items]="typeI" id="nameType" name="nameType" required [virtualScroll]="true"
+                    <ng-select [items]="typeI" class="searchbtnIcon" id="nameType" name="nameType" required [virtualScroll]="true"
                       bindLabel="typeName" bindValue="typeId" [searchable]="true" [clearable]="false"
                       placeholder="Search & select type" [(ngModel)]="typesData" (change)="onTypeSelect($event)"
                       #nameType="ngModel">
@@ -84,7 +84,7 @@
                         *Type is required.
                       </span>
                     </p>
-                       <img src="../../../../assets/img/search.png" class="searchdrp">
+                       <!-- <img src="../../../../assets/img/search.png" class="searchdrp"> -->
                   </div>
                 </div>
               </div>
@@ -110,7 +110,7 @@
                   <label>UOM <span>*</span></label>
                 </div>
                 <div class="uomdrp">
-                  <ng-select [items]="rowData5" id="nameUOM" name="nameUOM" required [virtualScroll]="true"
+                  <ng-select [items]="rowData5" class="searchbtnIcon" id="nameUOM" name="nameUOM" required [virtualScroll]="true"
                     bindLabel="uoMShortName" bindValue="uoMId" [searchable]="true" [clearable]="false"
                     placeholder="Search & select measuring unit" [(ngModel)]="baseUoMData"
                     (change)="onUomSelect($event)" #nameUOM="ngModel">
@@ -121,16 +121,16 @@
                       *UOM is required.
                     </span>
                   </p>
-                  <img src="../../../../assets/img/search.png" class="searchdrp">
+                  <!-- <img src="../../../../assets/img/search.png" class="searchdrp"> -->
                 </div>
               </div> 
             </div>
               <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-5">
                 <div class="description">
                   <label>Description <span>*</span></label>
                 </div>
-                <textarea  rows="4" cols="32" id="nameDescp" name="nameDescp" placeholder="Describe the material"
+                <textarea  rows="4"id="nameDescp" name="nameDescp" placeholder="Describe the material"
                   (keyup)="onKeyDesc($event)" class="materialDesc" [(ngModel)]="stockItemDesc"
                   #nameDescp="ngModel"></textarea>
                 <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
@@ -140,7 +140,7 @@
                   </span>
                 </p>
               </div>
-              <div class="col-md-2">
+              <div class="col-md-3">
                 <div class="imageofm">
                   <label>Image of Material <span>*</span></label>
                 </div>

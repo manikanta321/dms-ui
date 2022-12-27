@@ -490,6 +490,8 @@ handleScroll(event) {
 
 // Example of consuming Grid Event
 onCellClicked( e) {
+  let cellCLickedpromotion = '0'
+  localStorage.setItem('cellCLickedpromotion', cellCLickedpromotion)
   console.log('cellClicked', e);
   this.taxId=e.data.taxTemplateId
   localStorage.setItem('taxId', this.taxId)

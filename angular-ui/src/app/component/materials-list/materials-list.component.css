@@ -662,8 +662,7 @@ top: 9px;
   .mat-checkbox-background {
   background-color: black !important;
 }
-
-::ng-deep.example-margin  .mat-checkbox-layout{
+.example-margin  .mat-checkbox-layout{
   position: relative;
   bottom: 25px; 
 }

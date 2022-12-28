@@ -1414,7 +1414,7 @@ textarea {
   min-height: 263px;
   /* height: auto; */
   /* top: 11%; */
-  top: 7%;
+  top: 26%;
   position: relative;
   transition: all 5s ease-in-out;
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
@@ -1560,4 +1560,8 @@ height: 380px;
   text-decoration: underline;
   position: relative;
   bottom: 21px;
+}
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+  background-color: black;
+  color: white;
 }

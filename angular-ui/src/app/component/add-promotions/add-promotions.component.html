@@ -65,6 +65,8 @@
                                     <div class="myDatepicker  promotion-datepicker">
                                         <label>End Date <span class="astr">*</span></label><br>
                                         <mat-form-field class="placeh-align">
+                                            <mat-label>Select the End date</mat-label>
+
                                             <input matInput placeholder="" [matDatepicker]="picker2" [min]="endMinDate"
                                                  [formControl]="endDate"
                                                 (dateChange)="enddateChange($event)">
@@ -287,7 +289,7 @@
                                         </div>
                                         <div class="buyoneSet">
                                             <div class="buy-set-1"
-                                                *ngFor="let addbuyg1 of addbuyset[i].addsubBuy; let j=index"
+                                                *ngFor="let addbuyg1 of addbuyset[i].BuyGroups; let j=index"
                                                 [(ngModel)]="addbuyg1.itemss">
                                                 <div class="row">
                                                     <div class="col-10 buyGrp-h">
@@ -297,7 +299,7 @@
                                                         <img src="assets/img/plus.png" class="plus-image"
                                                             alt="plus-btn">
                                                     </div>
-                                                    <div class="col-2 plsAdd" (click)="removebuyGroup(i)" *ngIf="j>=1">
+                                                    <div class="col-2 plsAdd" (click)="removebuyGroup1(i)" *ngIf="j>=1">
                                                         <img src="assets/img/minus.png" class="plus-image"
                                                             alt="plus-btn">
                                                     </div>
@@ -323,7 +325,7 @@
                                                             <mat-card-content class="item-in-box">
                                                                 <ul>
                                                                     <li
-                                                                        *ngFor="let producttable of addbuyset[i].addsubBuy[j].productselectedRows">
+                                                                        *ngFor="let producttable of addbuyset[i].BuyGroups[j].productselectedRows">
                                                                         <mat-checkbox class="example-margin font"
                                                                             [checked]="true"
                                                                             (click)="updateAllCompleteforBuyGroup(producttable.stockItemId,i,j)">
@@ -337,12 +339,12 @@
                                                     <div class="col-2 qtyalign">
                                                         <label>Qty<span class="astr">*</span></label>
                                                         <input type="number" class="qty-box" placeholder="1"
-                                                            value="{{qtyMaxNum}}" id=qty name="qty" required max="10"
-                                                            min="0" [(ngModel)]="addbuyset[i].addsubBuy[j].MaxVolume">
+                                                            value="{{qtyMaxNum}}" id=qty name="qty{{j}}" required max="10"
+                                                            min="0" [(ngModel)]="addbuyset[i].BuyGroups[j].MaxVolume">
                                                         <label>mty<span class="astr">*</span></label>
                                                         <input type="number" class="mty-box" placeholder="1"
-                                                            value="{{MoqMaxNum}}" id=moq name="moq" required max="10"
-                                                            min="0" [(ngModel)]="addbuyset[i].addsubBuy[j].MOQ">
+                                                            value="{{MoqMaxNum}}" id=moq name="moq{{j}}" required max="10"
+                                                            min="0" [(ngModel)]="addbuyset[i].BuyGroups[j].MOQ">
                                                     </div>
                                                 </div>
                                             </div>
@@ -375,7 +377,7 @@
                                         </div>
                                         <div class="buyoneSet">
                                             <div class="getSet1"
-                                                *ngFor="let addget of addgetset[i].addsubBuy; let j=index">
+                                                *ngFor="let addget of addgetset[i].GetGroups; let j=index">
                                                 <div class="row">
                                                     <div class="col-10 buyGrp-h">
                                                         <h5 class="item-header"><b>Get </b>group {{j}}</h5>
@@ -410,7 +412,7 @@
                                                             <mat-card-content class="item-in-box">
                                                                 <ul>
                                                                     <li
-                                                                        *ngFor="let producttable of addgetset[i].addsubBuy[j].productselectedRows">
+                                                                        *ngFor="let producttable of addgetset[i].GetGroups[j].productselectedRows">
                                                                         <mat-checkbox class="example-margin font"
                                                                             [checked]="true"
                                                                             (click)="updateAllCompleteforGetGroup(producttable.stockItemId,i,j)">
@@ -425,8 +427,8 @@
                                                     <div class="col-2 qtyalign">
                                                         <label>Qty<span class="astr">*</span></label>
                                                         <input type="number" class="qty-box" placeholder="1"
-                                                            value="{{qtyMaxNum}}" id=qty name="qty" required max="10"
-                                                            min="0" [(ngModel)]="addgetset[i].addsubBuy[j].MaxVolume">
+                                                            value="{{qtyMaxNum}}" id=qty name="qty{{j}}" required max="10"
+                                                            min="0" [(ngModel)]="addgetset[i].GetGroups[j].MaxVolume">
                                                     </div>
                                                 </div>
                                             </div>

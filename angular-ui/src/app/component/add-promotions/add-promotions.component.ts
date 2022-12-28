@@ -61,12 +61,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
 
   addbuyset: any = [{
-    addsubBuy: [{
+    GroupId:1,
+    BuyGroups: [{
       StockItemId: [],
       MaxVolume: '',
-      GroupId: '',
+      Set: '',
       MOQ: '',
-      BuySet: 1,
       productselectedRows: []
     },
     ]
@@ -90,11 +90,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
 
   addgetset: any = [{
-    addsubBuy: [{
+    GroupId:1,
+    GetGroups: [{
       StockItemId: [],
       MaxVolume: '',
-      GroupId: '',
-      GetSet: 1,
+      Set: '',
       productselectedRows: []
     },
     ]
@@ -647,13 +647,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   }
   addbuyAB(i) {
     this.addbuyset.push({
-
-      addsubBuy: [{
+      GroupId:this.addbuyset.length+1,
+      BuyGroups: [{
         StockItemId: [],
         MaxVolume: '',
-        GroupId: '',
+        Set: '',
         MOQ: '',
-        BuySet: this.addbuyset.length + 1,
         productselectedRows: []
       },
       ]
@@ -666,13 +665,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   addsubbuy(i, j) {
     alert(i)
     console.log('this.addbuyset[i]', this.addbuyset[i])
-    this.addbuyset[i].addsubBuy.push({
+    this.addbuyset[i].BuyGroups.push({
 
       StockItemId: [],
       MaxVolume: '',
-      GroupId: '',
+      Set: '',
       MOQ: '',
-      BuySet: i + 1,
       productselectedRows: [],
 
     })
@@ -683,12 +681,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   addsubGetbuy(i, j) {
     alert(i)
     console.log('this.addbuyset[i]', this.addbuyset[i])
-    this.addgetset[i].addsubBuy.push({
+    this.addgetset[i].GetGroups.push({
 
       StockItemId: [],
       MaxVolume: '',
-      GroupId: '',
-      GetSet: i + 1,
+      Set: '',
       productselectedRows: [],
 
     })
@@ -698,12 +695,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
   addgetAB(i) {
     this.addgetset.push({
-
-      addsubBuy: [{
+      GroupId:this.addgetset.length+1,
+      GetGroups: [{
         StockItemId: [],
         MaxVolume: '',
-        GroupId: '',
-        GetSet: this.addgetset.length + 1,
+        Set: '',
         productselectedRows: []
       },
       ]
@@ -711,16 +707,16 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   }
 
   removeGetGroup(u: any) {
-    const index = this.addgetset[u].addsubBuy.findIndex((itemss) => itemss.id === u);
-    this.addgetset[u].addsubBuy.splice(index, 1);
+    const index = this.addgetset[u].GetGroups.findIndex((itemss) => itemss.id === u);
+    this.addgetset[u].GetGroups.splice(index, 1);
     console.log('remv', index)
   }
 
-  // removebuyGroup(u: any) {
-  //   const index = this.addbuyset[u].addsubBuy.findIndex((itemss) => itemss.id === u);
-  //   this.addbuyset[u].addsubBuy.splice(index, 1);
-  //   console.log('remv', index)
-  // }
+  removebuyGroup1(u: any) {
+    const index = this.addbuyset[u].BuyGroups.findIndex((itemss) => itemss.id === u);
+    this.addbuyset[u].BuyGroups.splice(index, 1);
+    console.log('remv', index)
+  }
 
   removeaddbuyAB(u: any) {
     const index = this.addbuyset.findIndex((setitem) => setitem.id === u);
@@ -840,9 +836,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
 
   addItems1(index: any = null, j: any = null) {
-
+    
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
-    const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px', data: this.productselectedRows });
+    const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px', data:  this.addbuyset[index].BuyGroups[j].productselectedRows });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         this.productselectedRows = JSON.parse(localStorage.getItem("productselectedRows") ?? '[]')
@@ -853,7 +849,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         console.log(this.productselectedRows);
 
         if (index != null) {
-          this.addbuyset[index].addsubBuy[j].productselectedRows = this.productselectedRows;
+          this.addbuyset[index].BuyGroups[j].productselectedRows = this.productselectedRows;
           //  this.buyGroupPlus[index].productScselectedRows = this.productScselectedRows;
           //  this.buyGroupPlus[index].pGselectedRows = this.pGselectedRows;
           //  this.buyGroupPlus[index].productSubGselectedRows = this.productSubGselectedRows;
@@ -865,8 +861,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           // console.log('araray',)
           let jointarray = productselectedRows
 
-          this.addbuyset[index].addsubBuy[j].StockItemId = jointarray;
-          this.addbuyset[index].addsubBuy[j].GroupId = this.addbuyset[index].addsubBuy.length;
+          this.addbuyset[index].BuyGroups[j].StockItemId = jointarray;
+          this.addbuyset[index].BuyGroups[j].Set = this.addbuyset[index].BuyGroups.length;
 
           //  this.buyGroupPlus[index].MaxVolume = this.buyGroupPlus[index].qtyValue.map(x => x.qtyValue);
           //  this.buyGroupPlus[index].moqValue = this.qtyValue.map(x => x.qtyValue);
@@ -886,7 +882,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   addItems1forGetGroup(index: any = null, j: any = null) {
 
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
-    const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px', data: this.addgetset[index].addsubBuy[j].productselectedRows ?? [] });
+    const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px', data: this.addgetset[index].GetGroups[j].productselectedRows ?? [] });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         this.productselectedRows = JSON.parse(localStorage.getItem("productselectedRows") ?? '[]')
@@ -897,14 +893,14 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         console.log(this.productselectedRows);
 
         if (index != null) {
-          this.addgetset[index].addsubBuy[j].productselectedRows = this.productselectedRows;
+          this.addgetset[index].GetGroups[j].productselectedRows = this.productselectedRows;
           let productselectedRows = this.productselectedRows.map(x => x.stockItemId);
 
           let jointarray = productselectedRows
 
-          this.addgetset[index].addsubBuy[j].StockItemId = jointarray;
-          this.addgetset[index].addsubBuy[j].GroupId = this.addgetset[index].addsubBuy.length;
-          console.log('this.addbuyset', this.addgetset)
+          this.addgetset[index].GetGroups[j].StockItemId = jointarray;
+          this.addgetset[index].GetGroups[j].Set = this.addgetset[index].GetGroups.length;
+          console.log('this.addgetset', this.addgetset)
 
 
         }
@@ -1052,34 +1048,34 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
   updateAllCompleteforBuyGroup(StockItemID, i, j) {
 
-    let stockitemOfindex = this.addbuyset[i].addsubBuy[j].StockItemId;
+    let stockitemOfindex = this.addbuyset[i].BuyGroups[j].StockItemId;
     const index = stockitemOfindex.indexOf(StockItemID);
 
     if (index !== -1) {
       stockitemOfindex.splice(index, 1);
-      this.addbuyset[i].addsubBuy[j].StockItemId = stockitemOfindex
+      this.addbuyset[i].BuyGroups[j].StockItemId = stockitemOfindex
     }
     else {
       stockitemOfindex.push(StockItemID);
-      this.addbuyset[i].addsubBuy[j].StockItemId = stockitemOfindex
+      this.addbuyset[i].BuyGroups[j].StockItemId = stockitemOfindex
     }
-    console.log('this.addbuyset[index].addsubBuy[j].StockItemId', this.addbuyset[i].addsubBuy[j].StockItemId)
+    console.log('this.addbuyset[index].addsubBuy[j].StockItemId', this.addbuyset[i].BuyGroups[j].StockItemId)
   }
 
   updateAllCompleteforGetGroup(StockItemID, i, j) {
 
-    let stockitemOfindex = this.addgetset[i].addsubBuy[j].StockItemId;
+    let stockitemOfindex = this.addgetset[i].GetGroups[j].StockItemId;
     const index = stockitemOfindex.indexOf(StockItemID);
 
     if (index !== -1) {
       stockitemOfindex.splice(index, 1);
-      this.addgetset[i].addsubBuy[j].StockItemId = stockitemOfindex
+      this.addgetset[i].GetGroups[j].StockItemId = stockitemOfindex
     }
     else {
       stockitemOfindex.push(StockItemID);
-      this.addgetset[i].addsubBuy[j].StockItemId = stockitemOfindex
+      this.addgetset[i].GetGroups[j].StockItemId = stockitemOfindex
     }
-    console.log('this.addgetset[index].addsubBuy[j].StockItemId', this.addgetset[i].addsubBuy[j].StockItemId)
+    console.log('this.addgetset[index].addsubBuy[j].StockItemId', this.addgetset[i].GetGroups[j].StockItemId)
   }
 
 
@@ -1270,6 +1266,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         }
         else {
           alert(res.response.result);
+          this.dialogRef.close();
+
         }
       })
 
@@ -1283,8 +1281,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       let obj1: any = [];
 
 
+
       for (let i = 0; i < this.addbuyset.length; i++) {
-        this.addbuyset[i].addsubBuy.forEach(element => {
+        this.addbuyset[i].BuyGroups.forEach(element => {
           delete element.productselectedRows;
           obj.push(element)
           console.log('finalobject', obj)
@@ -1296,7 +1295,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
 
       for (let i = 0; i < this.addgetset.length; i++) {
-        this.addgetset[i].addsubBuy.forEach(element => {
+        this.addgetset[i].GetGroups.forEach(element => {
           delete element.productselectedRows;
           obj1.push(element)
           console.log('finalobject1', obj1)
@@ -1328,8 +1327,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         EndDate: this.selectedEndDate,
         DoneById: this.loggedUserId,
         Imageurl: this.base64textString,
-        BuySets: [mainobj],
-        GetSets: [GetSets],
+        BuySets: this.addbuyset,
+        GetSets: this.addgetset,
         EntityInstanceId: this.EntityInstanceId,
         Status: "Submit",
         Remarks: this.Remarks
@@ -1346,6 +1345,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         }
         else {
           alert(res.response.result);
+          this.dialogRef.close();
         }
       })
 
@@ -1378,6 +1378,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         }
         else {
           alert(res.response.result);
+          this.dialogRef.close();
+
         }
       })
 
@@ -1410,6 +1412,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         }
         else {
           alert(res.response.result);
+          this.dialogRef.close();
+
         }
       })
 
@@ -1484,7 +1488,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
 
       for (let i = 0; i < this.addbuyset.length; i++) {
-        this.addbuyset[i].addsubBuy.forEach(element => {
+        this.addbuyset[i].BuyGroups.forEach(element => {
           delete element.productselectedRows;
           obj.push(element)
           console.log('finalobject', obj)
@@ -1496,7 +1500,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
 
       for (let i = 0; i < this.addgetset.length; i++) {
-        this.addgetset[i].addsubBuy.forEach(element => {
+        this.addgetset[i].GetGroups.forEach(element => {
           delete element.productselectedRows;
           obj1.push(element)
           console.log('finalobject1', obj1)

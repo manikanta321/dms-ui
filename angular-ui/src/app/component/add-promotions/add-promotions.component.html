@@ -52,7 +52,7 @@
                                         <mat-form-field class="placeh-align">
                                             <mat-label>Select the start date</mat-label>
                                             <input matInput [matDatepicker]="picker1" [formControl]="startDate"
-                                                [(ngModel)]="startDate" (dateChange)="dateChange($event)"
+                                                (dateChange)="dateChange($event)"
                                                 [min]="minDate">
                                             <mat-datepicker-toggle matSuffix [for]="picker1">
                                                 <mat-icon matDatepickerToggleIcon>
@@ -66,7 +66,7 @@
                                         <label>End Date <span class="astr">*</span></label><br>
                                         <mat-form-field class="placeh-align">
                                             <input matInput placeholder="" [matDatepicker]="picker2" [min]="endMinDate"
-                                                [(ngModel)]="endDate" [formControl]="endDate"
+                                                 [formControl]="endDate"
                                                 (dateChange)="enddateChange($event)">
                                             <mat-datepicker-toggle matSuffix [for]="picker2">
                                                 <mat-icon matDatepickerToggleIcon>
@@ -164,8 +164,8 @@
                                                 <label>Items<span class="astr">*</span></label>
                                                 <mat-card class="list-item">
                                                     <mat-card-content class="item-in-box">
+                                                 
                                                         <ul>
-
                                                             <li
                                                                 *ngFor="let producttable of addbuyg.productselectedRows">
                                                                 <mat-checkbox class="example-margin font"
@@ -183,11 +183,11 @@
                                             <div class="col-2 qtyalign">
                                                 <label>Qty<span class="astr">*</span></label>
                                                 {{addbuyg.qtyValue}}
-                                                <input type="number" class="qty-box" id=qty name="qty" required max="10"
-                                                    min="0" [(ngModel)]="addbuyg.MaxVolume">
+                                                <input type="number" class="qty-box" id=qty  name="qty{{i}}" required 
+                                                  [(ngModel)]="addbuyg.MaxVolume">
                                                 <label>MOQ<span class="astr">*</span></label>
-                                                <input type="number" class="mty-box" id=moq name="moq" required max="10"
-                                                    min="0" [(ngModel)]="addbuyg.MOQ">
+                                                <input type="number" class="mty-box" id=moq  name="moq{{i}}" required 
+                                                   [(ngModel)]="addbuyg.MOQ" >
                                             </div>
                                         </div>
                                     </div>
@@ -250,7 +250,7 @@
                                             </div>
                                             <div class="col-2 qtyalign">
                                                 <label>Qty<span class="astr">*</span></label>
-                                                <input type="number" class="qty-box" id=Getqty name="Getqty" required
+                                                <input type="number" class="qty-box" id=Getqty name="Getqty{{i}}" required
                                                     max="10" min="0" [(ngModel)]="addbuyg.MaxVolume">
                                             </div>
                                         </div>
@@ -651,7 +651,7 @@
                                 (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
                                 (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
                                 (bodyScroll)="handleScroll($event)" [rowSelection]="'multiple'"
-                                (rowSelected)="onRowSelect($event)"></ag-grid-angular>
+                                (rowSelected)="onRowSelect($event)" (firstDataRendered)="onFirstDataRendered($event)"></ag-grid-angular>
                         </div>
                         <!-- additional remarks -->
                         <div class="row">

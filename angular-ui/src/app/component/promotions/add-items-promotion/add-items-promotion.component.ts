@@ -546,7 +546,7 @@ export class AddItemsPromotionComponent implements OnInit {
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       console.log('productlist is works', res);
       console.log("*******************");
-      console.log(this.data);
+      console.log('this.data',this.data);
       
       let rowData = res.response;
 
@@ -556,6 +556,7 @@ export class AddItemsPromotionComponent implements OnInit {
         return x;
       });
       this.rowData5 = rowData.sort((a, b) => b.isProductSelected - a.isProductSelected);
+      console.log('  this.rowData5this.rowData5', this.rowData5)
     })
   }
   onSearchChange($event: any, anything?: any) {

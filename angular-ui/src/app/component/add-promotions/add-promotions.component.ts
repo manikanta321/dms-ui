@@ -159,7 +159,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   imagepath: any;
   selecetdFile: any;
   startselectDate: any;
-  EntityInstanceId: any;
+  EntityInstanceId: any=[];
   selectendDate: any;
   imagePreview: any;
   addImage: any;
@@ -169,12 +169,14 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   startDate = new FormControl(null);
   endDate = new FormControl(null);
   minDateToFinish = new Subject<string>();
+  selectedDealers:any;
   // minDate;
   minDate = new Date();
   endMinDate = new Date();
   selectedStartDate: any;
   selectedEndDate: any
   VolumeSttockItemId: any;
+  editlist:boolean=false;
   priceStockItemId
   dateChange(e) {
     console.log(e)
@@ -362,6 +364,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     let headername = localStorage.getItem('addOrEdit');
+
     if (headername == 'editpromo') {
       this.header = 'Edit';
       let data = localStorage.getItem('promoclickId')
@@ -372,16 +375,105 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         this.addImgpreview = true;
         this.base64textString = res.response.imageurl;
         this.startDate.setValue(res.response.startDate)
-        this.endDate.setValue(res.response.startDate)
+        this.selectedStartDate = new Date(res.response.startDate).getFullYear() + '/' + (new Date(res.response.startDate).getMonth() + 1) + '/' + new Date(res.response.startDate).getDate();
 
+        this.endDate.setValue(res.response.startDate)
+        this.selectedEndDate = new Date(res.response.startDate).getFullYear() + '/' + (new Date(res.response.startDate).getMonth() + 1) + '/' + new Date(res.response.startDate).getDate();
+
+        this.promoName= res.response.promotionName;
+        this.selectedPromo=res.response.promotionTypesId;
+        this.addImgpreview=true;
+      this.base64textString=res.response.imageurl;
+      this.startDate.setValue(res.response.startDate);
+      this.endDate.setValue(res.response.startDate);
 
         if (res.response.promotionTypesName == 'Buy (A+B..) get (X+Y..)') {
+          this.buyGroupPlus=[];
+          this.addgetgroup=[];
+          this.editlist =true
           // this.goForward(this.myStepper);
           this.noPromotionSelected = false;
           this.buyab = true;
           this.volumedc = false;
           this.buysets = false;
           this.pricedc = false;
+
+ let mainobjbuyGroups = res.response.promoDetails.buyGroups;
+ this.selectedDealers=res.response.selectedDealers
+
+ this.selectedDealers.forEach(element => {
+   debugger
+  this.EntityInstanceId.push(element.dealerId)
+ });
+
+mainobjbuyGroups.forEach((element)=>{
+let stockItemArraay:any=[]
+element.stockItemId.forEach((element1)=>{
+  stockItemArraay.push(element1.stockItemId)
+})
+
+let obj1:any=[]
+
+element.stockItemId.forEach((element2)=>{
+obj1.push({
+  stockItemId:element2.stockItemId,
+productName:element2.stockItemName
+});
+
+
+})
+
+  let obj:any={}
+  obj.GroupId=element.groupId
+  obj.MaxVolume=element.maxVolume
+  obj.MOQ=element.moq
+  obj.productPromotionDetailsId=element.productPromotionDetailsId
+  obj.productselectedRows=obj1;
+  obj.StockItemId=stockItemArraay
+
+  console.log('modifiedmainobj',obj)
+
+  this.buyGroupPlus.push(obj);
+  console.log('this.buyGroupPlus',this.buyGroupPlus)
+})
+
+
+let mainobjGetGroups = res.response.promoDetails.getGroups;
+
+mainobjGetGroups.forEach((element)=>{
+let stockItemArraay:any=[]
+element.stockItemId.forEach((element1)=>{
+  stockItemArraay.push(element1.stockItemId)
+})
+
+let obj1:any=[]
+
+element.stockItemId.forEach((element2)=>{
+obj1.push({
+  stockItemId:element2.stockItemId,
+productName:element2.stockItemName
+});
+
+
+
+
+})
+
+  let obj:any={}
+  obj.GroupId=element.groupId
+  obj.MaxVolume=element.maxVolume
+  obj.MOQ=element.moq
+  obj.productPromotionDetailsId=element.productPromotionDetailsId
+  obj.productselectedRows=obj1;
+  obj.StockItemId=stockItemArraay
+
+  console.log('modifiedmainobj',obj)
+
+  this.addgetgroup.push(obj);
+  console.log('this.mainobjGetGroups',this.addgetgroup)
+})
+
+
 
 
         }
@@ -434,14 +526,15 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     this.GetPromotionTypes();
     this.addimg();
     // this.promotionType1();
-    this.addpromotionGeoTable();
     // this.toppingList3 = [
     //   { CategoryId: 1, CategoryName: 'Buy(A+B..) get(X+Y..)' },
     //   { CategoryId: 2, CategoryName: 'Buy(A/B..) get(C/D...)' },
     //   { CategoryId: 3, CategoryName: 'Volume Discount' },
     //   { CategoryId: 4, CategoryName: 'Price Discount' },
     // ];
-    console.log('this.addbuyset', this.addbuyset)
+    console.log('this.addbuyset', this.addbuyset);
+    this.addpromotionGeoTable();
+
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -455,7 +548,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     );
   }
   onFirstDataRendered(params: FirstDataRenderedEvent) {
-    params.api.paginationGoToPage(4);
+    // params.api.paginationGoToPage(4);
+    params.api.forEachNode((node) =>
+    node.setSelected(!!node.data && node.data.isProductSelected)
+  );
   }
   openDialog() {
     // alert('mani')
@@ -1563,8 +1659,16 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       Search: this.searchText,
     }
     this.promotionTypes.GetPromotionDealerList(data).subscribe((res) => {
-      this.rowData5 = res.response;
-      console.log();
+
+      let rowData:any =res.response;
+      console.log('DealerowData',rowData)
+      rowData = rowData.map(x => {
+       let index = this.selectedDealers.findIndex(y=> y.dealerId == x.customerId)
+       x.isProductSelected = index == -1 ?  false : true;
+       return x;
+     });
+     this.rowData5 = rowData.sort((a, b) => b.isProductSelected - a.isProductSelected);
+     console.log('this.rowData5',this.rowData5)
       this.geographynameId = localStorage.getItem("geopromo");
       console.log('geochecks', this.geographynameId)
       if (this.geographynameId) {
@@ -1574,11 +1678,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
         })
       }
-      // let localdata = res.response;
-      // this.custmerid = localdata.map((data: { customerId: any; code: any; dealerName:any,geography:any }) => {
-      //   return { customerId: data.customerId, code: data.code };
-      // });
     });
+
+    console.log('EntityInstanceId1',this.EntityInstanceId)
   }
 
 

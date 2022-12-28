@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridApi, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
@@ -8,6 +8,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ShipOrderBulkDownloadComponent } from '../ship-order-bulk-download/ship-order-bulk-download.component';
 import { CustomDatePopupComponent } from '../custom-date-popup/custom-date-popup.component';
 import { SalesBulkUploadComponent } from '../../sales-bulk-upload/sales-bulk-upload.component';
+import { OrdersApisService } from 'src/app/services/orders-apis.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-orders-shipment',
@@ -16,74 +18,56 @@ import { SalesBulkUploadComponent } from '../../sales-bulk-upload/sales-bulk-upl
 })
 export class OrdersShipmentComponent implements OnInit {
   myForm: any = FormGroup; 
+  statusForm:any = FormGroup;
   disabled = false;
-  dropdownSettings: IDropdownSettings = {};
+  dealerSettings: IDropdownSettings = {};
   dropdownSettings2: IDropdownSettings = {};
-  dealersdrop: any = ['dealr','d']; 
-  shipStatus : any = ['To ship', 'fullfilled']
   startDate = new FormControl(new Date());
   minDateToFinish = new Subject<string>();
   invoiceDate :any = ['last 30 days', 'last 60 days','last 90 days','Last 180 Days','This Month','This Quater','This Year','Last Month','Last Quater','Last Year']
   disableSelect = new FormControl(false);
   private gridApi!: GridApi;
-  public rowData5=[];
   public popupParent: HTMLElement = document.body;
   instancePopup:any = null;
   paginationPageSize = 10;
   stayScrolledToEnd = true;
   paginationScrollCount:any;
+  dealerlist:any = [];
+  dealerListData:any = [];
+  dealerListArray:any = [];
+  shipmentDatalist:any =[];
+  dealerss:any = [];
+  dropdownStatusList:any = [];
+  statusDropList:any = [];
+  statusAllarray:any = [];
+  statusList:any = [];
+  selectedItems: any = [];
+  searchText:any ='';
   columnDefs: ColDef[] = [
-    // { headerName: "User Id",
-    //   field: 'employeeCode' , sort: 'desc'},
-  
-    {   headerName: "Shipment No.",field: 'promotionName' ,      tooltipField:"promotionName",
-  },
-  
-    {  headerName: "Shipment D..",field: 'promotionTypesName',      tooltipField:"promotionTypesName",
-  },
-  
     {  headerName: "Order No.",
-       field: '',      tooltipField:"",
+       field: 'orderNUmber',      tooltipField:"orderNUmber",
       },
   
     {   headerName: "Order Date",
-      // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-      field: 'startDate',      tooltipField:"startDate",
+      field: 'orderDate',      tooltipField:"orderDate",
       type: ['nonEditableColumn']},
   
       {   headerName: "Dealer",
-      // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-      field: 'endDate',type: ['nonEditableColumn'],      tooltipField:"endDate",
+      field: 'dealername',type: ['nonEditableColumn'],      tooltipField:"dealername",
     },
       {  headerName: "Invoice No.",
-      field: '',      tooltipField:"",
+      field: 'invoiceNumber',      tooltipField:"invoiceNumber",
     }, 
       {  headerName: "Invoice Date",
-      field: '',      tooltipField:"",
+      field: 'invoiceDate',      tooltipField:"invoiceDate",
     }, 
    
   {  headerName: "Annual Target",
       field: '',      tooltipField:"",
     },
     {  headerName: "Status",
-      field: '',      tooltipField:"",
+      field: 'statusName',      tooltipField:"statusName",
     },
-     
-  // {    
-  //   headerName: '',
-  //   colId: 'action',
-  //   cellRenderer: UseractionComponent,
-  //   editable: false,
-  //   maxWidth: 75  
-  
-  // },
-  // {
-  //   headerName: "Avatar",
-  //   field: "avatar",
-  //   width: 100,
-  //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
-  //  },
-  
   ];
   public defaultColDef: ColDef = {
 
@@ -133,88 +117,25 @@ export class OrdersShipmentComponent implements OnInit {
       },
     },
   };
-  columns: Array<GuiColumn> = [
-		{
-			header: 'Name',
-			field: 'name' 			//source {name: 'T-shirt'}
-		},
-		{
-			header: 'Type',
-			field: 'type' 			//source {type: 'clothes'}
-		},
-		{
-			header: 'Price',
-			field: 'price'			//source {price: '15$'}
-		}];
 
-	source: Array<any> = [
-		{
-			name: 'T-shirt',		//columns {header: 'Name', field: 'name'}
-			type: 'clothes',		//columns {header: 'Type', field: 'type'}
-			price: '15$' 			//columns {header: 'Price', field: 'price'}
-		},
-		{
-			name: 'Shoes',
-			type: 'footwear',
-			price: '100$'
-		},
-		{
-			name: 'Ball cap',
-			type: 'headgear',
-			price: '50$'
-		}];
-
-    sorting: GuiSorting = {
-	    enabled: true
-	};
-
-	paging: GuiPaging = {
-		enabled: true,
-		page: 1,
-		pageSize: 10,
-		pageSizes: [10, 25, 50],
-		pagerTop: true,
-		pagerBottom: true,
-		display: GuiPagingDisplay.BASIC
-	};
-
-	searching: GuiSearching = {
-		enabled: true,
-		placeholder: 'Search heroes'
-	};
-
-  columnMenu: GuiColumnMenu = {
-		enabled: true,
-		sort: true,
-		columnsManager: true,
-
-  };
   clickNextRendererFunc(){
     alert('hlo');
   }
-
-  
-  constructor(public dialog: MatDialog,) { }
+  constructor(public dialog: MatDialog,
+    public orders:OrdersApisService,
+    private user: UserService,
+    private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'customerId',
-      textField: 'customerName',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 2,
-      allowSearchFilter: true
-    };
-    this.dropdownSettings2 = {
-      singleSelection: false,
-      idField: 'customerId',
-      textField: 'customerName',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 2,
-      allowSearchFilter: false
-    };
+    this.myForm = this.fb.group({
+      city: [this.selectedItems]
+    });
+    this.statusForm = this.fb.group({
+      status: [this.selectedItems]
+    });
+    this.shipmentList();
+    this.dealerDropdownData();
+    this.statusItems();
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -259,9 +180,8 @@ export class OrdersShipmentComponent implements OnInit {
       const gridBody = grid.querySelector('.ag-body-viewport') as any;
       const scrollPos = gridBody.offsetHeight + event.top;
       const scrollDiff = gridBody.scrollHeight - scrollPos;
-      //const api =  this.rowData5;
       this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
-      this.paginationScrollCount = this.rowData5.length;
+      this.paginationScrollCount = this.shipmentDatalist.length;
     }
   }
   dateChange(e) {
@@ -286,5 +206,198 @@ export class OrdersShipmentComponent implements OnInit {
       sessionStorage.setItem("sales",'');
         this.dialog.open(SalesBulkUploadComponent);
         // this.isOpen = false;
+    }
+    shipmentList(){
+      let data = {
+      StatusId :[],
+      DealerId : [],
+      StartDate: '',
+      EndDate: '',
+      Search: ''
+      }
+      this.orders.getShipmentList(data).subscribe((res) => {
+        this.shipmentDatalist = res.response;
+        console.log("Response",this.shipmentDatalist)
+      });
+    }
+    dealerDropdownData(){
+      this.user.dealerDropdownOrderlist().subscribe((res: any) => {
+          this.dealerlist =res.response;
+          let localdata = res.response;
+          this.dealerListData = localdata.map((data: { customerId: any; customerName: any; }) => {
+            return { customerId: data.customerId, customerName  : data.customerName };
+          });
+          this.dealerListData.push()
+          this.dealerListData.forEach(element => {
+            return this.dealerListArray.push(element.customerId);
+          })       
+          console.log('dealerAllarray',this.dealerListArray)                                                    
+        });
+        this.dealerSettings = {
+          singleSelection: false,
+          idField: 'customerId',
+          textField: 'customerName',
+          selectAllText: 'Select All',
+          unSelectAllText: 'UnSelect All',
+          itemsShowLimit: 2,
+          allowSearchFilter: true
+        };
+    }
+    DealerorderSelect(item: any){
+      this.dealerss.push(item.customerId);
+      let data = {
+        StatusId :[],
+        DealerId :this.dealerss,
+        StartDate: '',
+        EndDate: '',
+        Search: ''
+        }
+        this.orders.getShipmentList(data).subscribe((res) => {
+          this.shipmentDatalist = res.response;
+          console.log("Response",this.shipmentDatalist)
+        });
+    }
+    DealerDeselect(item:any){
+      console.log(item)
+      this.dealerss.forEach((element, index) => {
+        if (element == item.customerId) this.dealerss.splice(index, 1);
+      });
+      let data = {
+        StatusId :[],
+        DealerId :this.dealerss,
+        StartDate: '',
+        EndDate: '',
+        Search: ''
+        }
+        this.orders.getShipmentList(data).subscribe((res) => {
+          this.shipmentDatalist = res.response;
+          console.log("Response",this.shipmentDatalist)
+        });
+    }
+    DealerDeselectAll(item:any){
+      this.dealerss = [];
+      let data = {
+        StatusId :[],
+        DealerId :this.dealerss,
+        StartDate: '',
+        EndDate: '',
+        Search: ''
+        }
+        this.orders.getShipmentList(data).subscribe((res) => {
+          this.shipmentDatalist = res.response;
+          console.log("Response",this.shipmentDatalist)
+        });
+    }
+    DealerorderSelectAll(item:any){
+      this.dealerss = this.dealerListArray;
+      console.log("AllDealers",this.dealerss);
+      let data = {
+        StatusId :[],
+        DealerId :this.dealerss,
+        StartDate: '',
+        EndDate: '',
+        Search: ''
+        }
+        this.orders.getShipmentList(data).subscribe((res) => {
+          this.shipmentDatalist = res.response;
+          console.log("Response",this.shipmentDatalist)
+        });
+    }
+    statusItems() {
+      this.user.statusDropdownOrderlist().subscribe((res: any) => {
+        this.dropdownStatusList =res.response;
+        console.log("StatusDropdown",this.dropdownStatusList)
+        let localdata = this.dropdownStatusList;
+        this.statusDropList = localdata.map((data: { statusId: any; statusName: any; }) => {
+          return { statusId: data.statusId, statusname: data.statusName };
+        });
+        this.statusDropList.push()
+        this.statusDropList.forEach(element => {
+          return this.statusAllarray.push(element.statusId);
+        });
+        console.log('buleditGeo', this.statusAllarray)
+        this.dropdownSettings2 = {
+          singleSelection: false,
+          idField: 'statusId',
+          textField: 'statusName',
+          selectAllText: 'Select All',
+          unSelectAllText: 'UnSelect All',
+          itemsShowLimit: 2,
+          allowSearchFilter: false
+        };
+      });
+    }
+    statusdropdownselect(item:any){
+      this.statusList.push(item.statusId);
+      let data = {
+        StatusId :this.statusList,
+        DealerId :this.dealerss,
+        StartDate: '',
+        EndDate: '',
+        Search: ''
+        }
+        this.orders.getShipmentList(data).subscribe((res) => {
+          this.shipmentDatalist = res.response;
+          console.log("Response",this.shipmentDatalist)
+        });
+    }
+    statusDeselect(item:any){
+      this.statusList.forEach((element, index) => {
+        if (element == item.statusId) this.statusList.splice(index, 1);
+      });
+      let data = {
+        StatusId :this.statusList,
+        DealerId :this.dealerss,
+        StartDate: '',
+        EndDate: '',
+        Search: ''
+        }
+        this.orders.getShipmentList(data).subscribe((res) => {
+          this.shipmentDatalist = res.response;
+          console.log("Response",this.shipmentDatalist)
+        });
+    }
+    statusDeselectAll(item:any){
+      this.statusList = [];
+      let data = {
+        StatusId :this.statusList,
+        DealerId :this.dealerss,
+        StartDate: '',
+        EndDate: '',
+        Search: ''
+        }
+        this.orders.getShipmentList(data).subscribe((res) => {
+          this.shipmentDatalist = res.response;
+          console.log("Response",this.shipmentDatalist)
+        });
+    }
+    statusselectAll(item:any){
+      this.statusList = this.statusAllarray
+      let data = {
+        StatusId :this.statusList,
+        DealerId :this.dealerss,
+        StartDate: '',
+        EndDate: '',
+        Search: this.searchText
+        }
+        this.orders.getShipmentList(data).subscribe((res) => {
+          this.shipmentDatalist = res.response;
+          console.log("Response",this.shipmentDatalist)
+        });
+    }
+    onSearchChange($event: any, anything?: any) {
+      const { target } = $event;
+      this.searchText = target.value;
+      let data = {
+        StatusId :this.statusList,
+        DealerId :this.dealerss,
+        StartDate: '',
+        EndDate: '',
+        Search: this.searchText
+        }
+        this.orders.getShipmentList(data).subscribe((res) => {
+          this.shipmentDatalist = res.response;
+          console.log("Response",this.shipmentDatalist)
+        });
     }
 }

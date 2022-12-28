@@ -4,26 +4,36 @@
     <div class="col-md-2 col-lg-2 col-sm-2">
         <form [formGroup]="myForm" class="dropdown-form">
           <ng-multiselect-dropdown class="dealer" name="city" [placeholder]="'Dealer'" formControlName="city"
-            [disabled]="disabled" [settings]="dropdownSettings" [data]="dealersdrop" >
+            [disabled]="disabled" [settings]="dealerSettings" [data]="dealerlist"(onSelect)="DealerorderSelect($event)" (onDeSelect)="DealerDeselect($event)"(onDeSelectAll)="DealerDeselectAll($event)"
+            (onSelectAll)="DealerorderSelectAll($event)">
           </ng-multiselect-dropdown>
         </form>
+        <div class="dropdown-placeholder dealer-placeholder">
+          <span *ngIf="myForm.get('city').value.length == 0"> Select Dealers </span>
+          <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Dealer selected </span>
+          <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Dealer(s) selected </span>
+
+        </div>
       </div>
-      <!-- <select name="city"  class="rounded-inputs20 invoice select-select col-md-2">
-        <option >hjhj</option>
-        <option *ngFor="let invoice of invoiceDate">{{invoice}}</option>
-        </select> -->
         <div class="shipment mr-3">
         <app-customdatepicker [showInputField]="true" label="Shipment Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
       </div>
         <div class="invoice">
           <app-customdatepicker [showInputField]="true" label="Invoice Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
       </div>
-      <div class="col-md-2 col-lg-2 col-sm-2">
-        <form [formGroup]="myForm" class="dropdown-form">
-          <ng-multiselect-dropdown class="status" name="city" [placeholder]="'Status'" formControlName="city"
-            [disabled]="disabled" [settings]="dropdownSettings2" [data]="shipStatus" >
+      <div class="col-md-2 col-lg-2 col-sm-2" style="padding-left: 0px !important; margin-left: 16px;">
+        <form [formGroup]="statusForm" class="dropdown-form">
+          <ng-multiselect-dropdown class="Status" name="city" [placeholder]="'Status'" formControlName="status"
+            [disabled]="disabled" [settings]="dropdownSettings2" [data]="dropdownStatusList" (onSelect)="statusdropdownselect($event)"
+            (onDeSelect)="statusDeselect($event)"(onDeSelectAll)="statusDeselectAll($event)"(onSelectAll)="statusselectAll($event)" >
           </ng-multiselect-dropdown>
         </form>
+        <div class="dropdown-placeholder Status-placeholder">
+          <span *ngIf="statusForm.get('status').value.length == 0"> Select Status </span>
+          <span *ngIf="statusForm.get('status').value.length == 1" class="selected-placeholder"> {{statusForm.get('status').value.length}} status selected </span>
+          <span *ngIf="statusForm.get('status').value.length > 1" class="selected-placeholder"> {{statusForm.get('status').value.length}} status(s) selected </span>
+
+        </div>
       </div>
 
       <div class="sales-refreshbtn">
@@ -34,8 +44,7 @@
 <div class="row listicon">
   <div class="col-md-4 srch-hover" >
     <div class="searchBox1 d-flex">
-      <input class="searchInput1" type="text" name="" placeholder="Type & search for anything">
-      <!-- (keyup)="onSearchChange($event)" -->
+      <input class="searchInput1" type="text" name="" placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
       <button class="search-btn">Search</button>
       <button class="searchButton" href="#">
         <i class="material-icons">
@@ -67,14 +76,14 @@
 <div class="sales-grid-table mt-3">
   <ag-grid-angular id="gridContainer" class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
     [headerHeight]="48" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
-    [rowData]="rowData5" [suppressExcelExport]="true" [popupParent]="popupParent"
+    [rowData]="shipmentDatalist" [suppressExcelExport]="true" [popupParent]="popupParent"
     (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"
     (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
     (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
     (bodyScroll)="handleScroll($event)"></ag-grid-angular>
   <div class="pagination">
     <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
-      class="pagination-cls">{{rowData5.length}}</span>
+      class="pagination-cls">{{shipmentDatalist.length}}</span>
   </div>
 </div>
     </div>

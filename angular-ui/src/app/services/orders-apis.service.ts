@@ -70,7 +70,10 @@ export class OrdersApisService {
     return this.http.get<any>(this.userurl + `OrdersApi/GetOrdersToEdit?CustomerPoId=${CustomerPoId}`)
   }
   
-  
+  public getShipmentList(data) {
+
+    return this.http.post<any>(this.userurl + 'OrdersApi/GetAllShipments', data);
+  }
 
 }
 

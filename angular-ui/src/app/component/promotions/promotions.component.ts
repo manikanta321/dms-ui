@@ -939,7 +939,7 @@ statusItems(){
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 2,
-      allowSearchFilter: true
+      allowSearchFilter: false
     };
     this.selectedItems = [];
 

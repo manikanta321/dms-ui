@@ -416,7 +416,20 @@
     ::ng-deep .dealer .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
       background: #006466 !important;
     }
-    
+    .dealer-placeholder.dropdown-placeholder .selected-placeholder {
+      color: #006466 !important;
+   }
+    .Status-placeholder.dropdown-placeholder .selected-placeholder {
+      color: #000000 !important;
+   }
+   ::ng-deep.Status .multiselect-dropdown .dropdown-btn .selected-item {
+     background: #000000 !important;
+     font-size: 12px;
+   }
+   
+   ::ng-deep .Status .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+     background: #000000 !important;
+   }
     ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
       border: 2px solid #000000 !important;
     }

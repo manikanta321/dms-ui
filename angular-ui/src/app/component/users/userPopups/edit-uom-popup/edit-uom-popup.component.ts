@@ -37,7 +37,7 @@ this.uoMShortName=data.uoMShortName
       UoMShortName:this.uoMShortName,
       UoMId:this.uomId
     }
-    
+    this.otherMasterService.filter('Register click');
     this.uomservise.adduom(data).subscribe((res:any)=>{
          this.otherMasterService.filter('Register click');
   

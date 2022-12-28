@@ -4,6 +4,7 @@ import { FormGroup, FormArray, FormControl, Validators, FormBuilder, AbstractCon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
 import { TaxTemplateServiceService } from 'src/app/services/tax-template-service.service';
 import { SharedService } from 'src/app/services/shared-services.service';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 
 @Component({
   selector: 'app-edit-tax-template',
@@ -31,6 +32,7 @@ export class EditTaxTemplateComponent implements OnInit {
     private fb:FormBuilder,
     private sharedService:SharedService,
     private taxservise:TaxTemplateServiceService,
+    private otherMasterService:OtherMasterService,
     ) { 
 
       }
@@ -175,11 +177,11 @@ setUpForm(cars: any[] ) {
   onSubmit() { 
     this.enteredname=this.taxname;
     console.log(this.productForm.value);  
-
+    this.otherMasterService.filter('Register click');
     console.log('checkarray',this.productForm.value)
     this.taxservise.ediTax(this.productForm.value).subscribe((res)=>{
 console.log(res)
-this.sharedService.filter('Register click')
+this.otherMasterService.filter('Register click');
 
 this.dialogRef.close();
 

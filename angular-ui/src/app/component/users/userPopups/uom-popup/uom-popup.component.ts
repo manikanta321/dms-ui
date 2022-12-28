@@ -24,7 +24,10 @@ export class UomPopupComponent implements OnInit {
   }
 addUom(){
   this.sharedService.filter('Register click')
-
+  sessionStorage.setItem("GeoName",'');
+  sessionStorage.setItem("GeoCode",'');
+  sessionStorage.setItem("uomName",this.name);
+  sessionStorage.setItem("uomCode",this.DisplayCode);
   let data={
     UoMName:this.name,
     UoMShortName:this.DisplayCode,

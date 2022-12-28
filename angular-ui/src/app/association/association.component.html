@@ -35,13 +35,13 @@
 
         <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;">
           <form [formGroup]="myForms">
-            <ng-multiselect-dropdown class="stts1" name="citys" [placeholder]="'Dealer'" formControlName="citys"
+            <ng-multiselect-dropdown class="Dealerdrp" name="citys" [placeholder]="'Dealer'" formControlName="citys"
               [disabled]="disabled" [settings]="dropdownSettings1" [data]="dealerListArray"
               (onSelect)="onItemDealerSelect($event)" (onDeSelect)="onItemDealerDeSelect($event)"
               (onDeSelectAll)="onItemDealerDeSelectOrAll($event)" (onSelectAll)="onItemDealerSelectOrAll($event)">
             </ng-multiselect-dropdown>
           </form>
-          <div class="dropdown-placeholder stts1-placeholder">
+          <div class="dropdown-placeholder Dealerdrp-placeholder">
             <span *ngIf="myForms.get('citys').value.length == 0">  </span>
             <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Dealer selected </span>
             <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Dealer(s) selected </span>

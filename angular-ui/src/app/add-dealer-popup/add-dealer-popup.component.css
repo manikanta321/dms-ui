@@ -469,7 +469,16 @@ li {
 
 
 
-
+.addDelercolss{
+  box-sizing: border-box;
+  width: 318px;
+  height: 43px;
+  font-family: 'Gilroy';
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
 
 
 
@@ -781,7 +790,7 @@ border-radius: 10px;
   }
   
   ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
-    width: 767px;
+    width: 974px;
     margin-top: -51px;
     
   }
@@ -1294,7 +1303,7 @@ border-radius: 10px;
     font-family: 'Gilroy';
     bottom: 68px;
     position: absolute;
-    left: 3px;
+    left: 1px;
   }
   
   ::ng-deep.mat-step-label{
@@ -1566,7 +1575,7 @@ border-radius: 10px;
   }
 
   .addtype {
-    width:70px !important;
+    width:82px !important;
   }
 
   .addname {
@@ -1627,7 +1636,7 @@ border-radius: 10px;
   }
   .status-class {
     box-sizing: border-box;
-    width: 280px;
+    width: 318px;
     height: 43px;
     background: #FFFFFF;
     border: 0.5px solid #000000;

@@ -5,7 +5,7 @@
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
             </div>
             <div class="head-t">
-                <h3 class="addU font">{{dealerAction}} Dealer Name</h3>
+                <h3 class="addU font">{{dealerAction}}  Dealer</h3>
                 <br>
                 <div class="d-flex">
                     <img src="assets/img/arrow-left-disable.png" *ngIf="!basicInfo" (click)="disableBackbutton()"
@@ -59,7 +59,7 @@
                                         <div class="col-4 ">
                                             <label>Code<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="Code" class="addDelercols form-control" required
+                                            <input type="text" formControlName="Code" class="addDelercolss form-control" required
                                                 placeholder="Enter your code" (keyup)="onValidateCode($event)">
                                             <div *ngIf="dealerCode">
                                                 <span>Code is required</span>
@@ -91,7 +91,7 @@
                                         <div class="col-4 ">
                                             <label>Company ID<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="company_id" class="addDelercols form-control"
+                                            <input type="text" formControlName="company_id" class="addDelercolss form-control"
                                                 required placeholder="Enter your company ID"
                                                 (keyup)="onValidateCompanyID($event)">
                                             <div *ngIf="dealerCompany">

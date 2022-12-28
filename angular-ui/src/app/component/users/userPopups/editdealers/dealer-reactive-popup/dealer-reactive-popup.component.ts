@@ -39,6 +39,6 @@ export class DealerReactivePopupComponent implements OnInit {
       this.sharedService.filter('Register click');
       this.dialogRef.close();   
     })
-    this.dialog.open(DealerReactvSuccessComponent ,{panelClass: 'deactiveSuccessPop'})
+    this.dialog.open(DealerReactvSuccessComponent ,{panelClass: 'activeSuccessPop'})
    }
 }

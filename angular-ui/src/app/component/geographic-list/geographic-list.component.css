@@ -88,6 +88,7 @@
   border: none;
   position: relative;
   top: -3px;
+  left: 9px;
 }
 .searchBox:hover >.searchButton,
 .searchBox>.searchInput,
@@ -101,17 +102,18 @@ float:right;
 position: relative;
 left: 84%; */
 cursor: pointer;
+
 }
-.searchBox:hover >.searchButton .material-icons {
+/* .searchBox:hover >.searchButton .material-icons {
   position: relative;    
   right: 56px;
   color:#000;
   top: -8px;
-}
+} */
 .add-user{
 margin-left: -35px;
 }
-/* .searchBox:hover >.searchButton {
+.searchBox:hover >.searchButton {
 display:bolck;
  color: #000; 
 float: left;
@@ -124,10 +126,10 @@ align-items: center;
  transition: 0.2s; 
 background: none;
 position: relative;
-right: 188px;
-top: 4px; 
+right: 227px;
+top: -4px; 
 
-} */
+}
 .add-user {
 border: none;
 background: #000000;

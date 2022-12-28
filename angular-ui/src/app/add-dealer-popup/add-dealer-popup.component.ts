@@ -258,7 +258,7 @@ console.log('selectedItemsselectedItems',this.selectedItems)
       })
       this.getGeographyForMaterial(0, this.customerIDofDealer);
     } else {
-      this.dealerAction = ""
+      this.dealerAction = "Add"
       this.addAddressForm1('7');
       this.addAddressForm1('6');
       this.getGeographyForMaterial(0, 0);

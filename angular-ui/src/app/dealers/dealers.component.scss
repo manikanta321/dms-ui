@@ -261,7 +261,8 @@
   position: relative;
   /* left: 108%; */
   cursor: pointer;
-  margin-right: 10px;
+  // margin-right: 10px;
+  left: -9px;
 }
 .searchBox:hover>.searchButton {
   display: block;
@@ -1046,4 +1047,5 @@ display: block;
   display: flex;
   justify-content: end;
   margin-right: 10px;
+  margin-top: 26px;
 }

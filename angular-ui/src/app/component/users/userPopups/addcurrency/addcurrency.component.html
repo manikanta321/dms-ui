@@ -30,6 +30,15 @@
                   *Name is required.
                 </span>
               </p>
+              <div>
+                <p style="position: absolute; bottom:-38px;left:320px;width:138px; font-size: 11px;
+                 padding: 0px;" *ngIf="displayUnit.invalid && (displayUnit.dirty || displayUnit.touched)"
+                class="alert">
+                <span style="color:red;position: relative;" *ngIf="displayUnit.errors?.['required']">
+                  *Display Unit is required.
+                </span>
+              </p>
+              </div>
             </div>
             <div class="col">
               <label class="dunits">Display Units<span>*</span></label>
@@ -37,13 +46,8 @@
               <input type="text" id="displayUnit" name="displayUnit" (keyup)="onKeyShortName($event)" required
                 placeholder="Enter display units" [(ngModel)]="EuoMShortName" class="imputtext" #displayUnit="ngModel">
             </div>
-            <p style="position: relative; font-size: 11px;
-                right: 264px;top: 66px;;padding: 0px;" *ngIf="displayUnit.invalid && (displayUnit.dirty || displayUnit.touched)"
-              class="alert">
-              <span style="color:red;position: relative;" *ngIf="displayUnit.errors?.['required']">
-                *Display Unit is required.
-              </span>
-            </p>
+            
+            
           </div>
           <br>
           <div class="row">

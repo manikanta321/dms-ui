@@ -75,6 +75,17 @@ export class OrdersApisService {
     return this.http.post<any>(this.userurl + 'OrdersApi/GetAllShipments', data);
   }
 
+  public orderpromotionimages(data) {
+
+    return this.http.post<any>(this.userurl + 'OrdersApi/GetPromotionListForOrder', data);
+  }
+  public GetProductsOfPromotionForOrder(data) {
+
+    return this.http.post<any>(this.userurl + 'OrdersApi/GetProductsOfPromotionForOrder', data);
+  }
+  
+
+
 }
 
  

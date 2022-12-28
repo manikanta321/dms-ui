@@ -25,9 +25,9 @@
             (onDeSelect)="geographyDeselect($event)" (onDeSelectAll)="geographyDeselectAll($event)"(onSelectAll)="geographyselectAll($event)">
           </ng-multiselect-dropdown>
           <div class="dropdown-placeholder Geography-placeholder">
-            <span *ngIf="myForm1.get('geo').value.length == 0"> Select Roles </span>
-            <span *ngIf="myForm1.get('geo').value.length == 1" class="selected-placeholder"> {{myForm1.get('geo').value.length}} Role selected </span>
-            <span *ngIf="myForm1.get('geo').value.length > 1" class="selected-placeholder"> {{myForm1.get('geo').value.length}} Role(s) selected </span>
+            <span *ngIf="myForm1.get('geo').value.length == 0"> Select Geography </span>
+            <span *ngIf="myForm1.get('geo').value.length == 1" class="selected-placeholder"> {{myForm1.get('geo').value.length}} Geography selected </span>
+            <span *ngIf="myForm1.get('geo').value.length > 1" class="selected-placeholder"> {{myForm1.get('geo').value.length}} Geography(s) selected </span>
 
           </div>
 

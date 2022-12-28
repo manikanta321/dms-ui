@@ -5,19 +5,20 @@
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
             </div>
             <div class="head-t">
-                <h3 class="addU font">Add Order : <b>Promotions</b></h3>
+                <h3 class="addU font">{{actineLabel}} : <b>Promotions</b></h3>
                 <div class="row top-bottom">
                     <div class="row text-center"></div>
                 </div>
 
                 <div class="promotion-card">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div>
-                                <img class="card1" src="assets/img/promo1.svg" alt="add-user-btn">
+                    <div class="promoimgs">
+                        <div class="col-md-4 img-container" *ngFor="let Item of imagesapis;let i=index;">
+                            <div (click)="getpromotionlistById($event,Item);">
+                                <img class="card1" src="data:image/jpeg;base64,{{Item.imageurl}}"
+                                    alt="image does not exit">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4">
                             <div>
                                 <img class="card2" src="assets/img/promo2.svg" alt="add-user-btn">
                             </div>
@@ -26,23 +27,24 @@
                             <div>
                                 <img class="card3" src="assets/img/promo3.svg" alt="add-user-btn">
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="label-div">
                     <span class="selected-promotion-label">Selected Promotions</span>
                 </div>
-                <div>
+                <div *ngFor="let data of griddatapromotions;let i=index">
                     <div class="row mt-1">
                         <div class="col-lg-1">
                             <p class="p1Tag">p2</p>
                         </div>
-                        <div class="col-lg-11 buygroups" *ngIf="false">
+                        <!-- <div class="col-lg-11 buygroups" *ngIf="false">
                             <div (click)="orderPromoList()" class="collapsible label-div">
                                 <div class="row">
                                     <div class="col-md-11">
                                         <p class="label-cls">
-                                            <mat-checkbox></mat-checkbox> Great Indian Sale   <Span> Buy(A+B..) get (X+Y..)</Span>
+                                            <mat-checkbox></mat-checkbox> Great Indian Sale <Span> Buy(A+B..) get
+                                                (X+Y..)</Span>
                                         </p>
                                     </div>
                                     <div class="col-md-1">
@@ -78,60 +80,41 @@
                                     </div>
 
                                     <div class="label-div">
-                                        <!-- <ag-grid-angular
-                            id="OrderPromotionListContainer"
-                            style=" height: 386px;border-radius: 20px;background-color: white;font-family: Gilroy"
-                            class="ag-theme-material"
-                            [rowHeight]="25"
-                            [headerHeight]="48"
-                            [columnDefs]="columnDefs"
-                            [defaultColDef]="defaultColDef"
-                            [columnTypes]="columnTypes"
-                            [rowData]="rowData5"
-                            [suppressExcelExport]="true"
-                             (cellValueChanged)="onCellValueChanged($event)"
-                            (firstDataRendered)="onFirstDataRendered($event)" 
-                            (firstDataRendered)="onFirstDataRendered($event)"
-                            (rowClicked)="openDialog()"
-                            (cellClicked)="onCellClicked($event)"
-                            (gridReady)="onGridReady($event)"
-                            [pagination]="true"
-                            ></ag-grid-angular> -->
-                            <table id="Table1">
-                                <tr>
-                                    <th data-sortable="true">Product Name</th>
-                                    <th data-sortable="true">SKU</th>
-                                    <th data-sortable="true">Price</th>
-                                    <th data-sortable="false">Tax Templete</th>
-                                    <th data-sortable="false">Quantity</th>
-                                    <th data-sortable="false">Amount</th>
-                                </tr>
-                                <tr class="table-row" *ngFor="let Item of buyGroup">
-                                    <td><input type="checkbox">{{Item.proItem}}</td>
-                                    <td>{{Item.sku}}</td>
-                                    <td>{{Item.price}}</td>
-                                    <td><select class="tax-select" placeholder="select">
-                                            <option val="112">{{Item.taxtemplete}}</option>
-                                            <!-- <option val="2">B</option>
-                            <option val="356" selected>C</option> -->
-                                        </select>
-                                        <img src="assets/img/doubleTickes-default.svg"
-                                            alt="double-blue-tick">
-                                    </td>
-                                    <!-- <td><input type="date" value="2018-07-22"></td> -->
-                                    <td><input type="value" placeholder="5" class="quatity-inp"></td>
-                                    <td>{{Item.amount}}</td>
-                                </tr>
-                                <tr class="bottom-table">
-                                    <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
-                                        quantity entered)</td>
-                                    <td class="btm-total">15</td>
-                                    <td class="btm-total">300</td>
-                                </tr>
-                        </table>
+
+                                        <table id="Table1">
+                                            <tr>
+                                                <th data-sortable="true">Product Name</th>
+                                                <th data-sortable="true">SKU</th>
+                                                <th data-sortable="true">Price</th>
+                                                <th data-sortable="false">Tax Templete</th>
+                                                <th data-sortable="false">Quantity</th>
+                                                <th data-sortable="false">Amount</th>
+                                            </tr>
+                                            <tr class="table-row" *ngFor="let Item of buyGroup">
+                                                <td><input type="checkbox">{{Item.proItem}}</td>
+                                                <td>{{Item.sku}}</td>
+                                                <td>{{Item.price}}</td>
+                                                <td><select class="tax-select" placeholder="select">
+                                                        <option val="112">{{Item.taxtemplete}}</option>
+                                                       >
+                                                    </select>
+                                                    <img src="assets/img/doubleTickes-default.svg"
+                                                        alt="double-blue-tick">
+                                                </td>
+                                                
+                                                <td><input type="value" placeholder="5" class="quatity-inp"></td>
+                                                <td>{{Item.amount}}</td>
+                                            </tr>
+                                            <tr class="bottom-table">
+                                                <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
+                                                    quantity entered)</td>
+                                                <td class="btm-total">15</td>
+                                                <td class="btm-total">300</td>
+                                            </tr>
+                                        </table>
                                     </div>
                                 </div>
-                                <!-- get group -->
+                                
                                 <div class="buyGrp">
                                     <div class="row label-div">
                                         <div class="col-md-2">
@@ -158,51 +141,52 @@
                                     </div>
 
                                     <div class="label-div">
-                                        <table >
-                                                <tr>
-                                                    <th data-sortable="true">Product Name</th>
-                                                    <th data-sortable="true">SKU</th>
-                                                    <th data-sortable="true">Price</th>
-                                                    <th data-sortable="false">Tax Templete</th>
-                                                    <th data-sortable="false">Quantity</th>
-                                                    <th data-sortable="false">Amount</th>
-                                                </tr>
-                                                <tr class="table-row" *ngFor="let Item of buyGroup">
-                                                    <td><input type="checkbox">{{Item.proItem}}</td>
-                                                    <td>{{Item.sku}}</td>
-                                                    <td>{{Item.price}}</td>
-                                                    <td><select class="tax-select" placeholder="select">
-                                                            <option val="112">{{Item.taxtemplete}}</option>
-                                                            <!-- <option val="2">B</option>
-                                            <option val="356" selected>C</option> -->
-                                                        </select>
-                                                        <img src="assets/img/doubleTickes-default.svg"
-                                                            alt="double-blue-tick">
-                                                    </td>
-                                                    <!-- <td><input type="date" value="2018-07-22"></td> -->
-                                                    <td><input type="value" placeholder="5" class="quatity-inp"></td>
-                                                    <td>{{Item.amount}}</td>
-                                                </tr>
-                                                <tr class="bottom-table">
-                                                    <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
-                                                        quantity entered)</td>
-                                                    <td class="btm-total">15</td>
-                                                    <td class="btm-total">300</td>
-                                                </tr>
+                                        <table>
+                                            <tr>
+                                                <th data-sortable="true">Product Name</th>
+                                                <th data-sortable="true">SKU</th>
+                                                <th data-sortable="true">Price</th>
+                                                <th data-sortable="false">Tax Templete</th>
+                                                <th data-sortable="false">Quantity</th>
+                                                <th data-sortable="false">Amount</th>
+                                            </tr>
+                                            <tr class="table-row" *ngFor="let Item of buyGroup">
+                                                <td><input type="checkbox">{{Item.proItem}}</td>
+                                                <td>{{Item.sku}}</td>
+                                                <td>{{Item.price}}</td>
+                                                <td><select class="tax-select" placeholder="select">
+                                                        <option val="112">{{Item.taxtemplete}}</option>
+                                                   
+                                                    </select>
+                                                    <img src="assets/img/doubleTickes-default.svg"
+                                                        alt="double-blue-tick">
+                                                </td>
+                                                
+                                                <td><input type="value" placeholder="5" class="quatity-inp"></td>
+                                                <td>{{Item.amount}}</td>
+                                            </tr>
+                                            <tr class="bottom-table">
+                                                <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
+                                                    quantity entered)</td>
+                                                <td class="btm-total">15</td>
+                                                <td class="btm-total">300</td>
+                                            </tr>
                                         </table>
                                     </div>
                                 </div>
 
                             </div>
-                            
-                        </div>
+
+                        </div> -->
+
+
                         <!-- buysets (a/b +c/d) -->
                         <div class="col-lg-11 buysets" *ngIf="true">
                             <div (click)="buysetsGroups()" class="collapsible label-div">
                                 <div class="row">
                                     <div class="col-md-11">
                                         <p class="label-cls">
-                                            <mat-checkbox></mat-checkbox> Dusshera sale  <span> Buy(A/B + C/D..) get (X+Y or Y+Z..)</span> 
+                                            <mat-checkbox></mat-checkbox> {{data.promotionName}} <span>{{data.promotionTypesName}} </span>
                                         </p>
                                     </div>
                                     <div class="col-md-1">
@@ -210,9 +194,11 @@
                                     </div>
                                 </div>
                             </div>
-                
+
                             <div class="content" *ngIf="!buysets">
-                                    <div class="buysets text-center"><h4 class="buysetHead"><b>BUYSETS</b>  </h4></div>
+                                <div class="buysets text-center">
+                                    <h4 class="buysetHead"><b>BUYSETS</b> </h4>
+                                </div>
                                 <div class="buyGrp 1">
                                     <div class="row label-div">
                                         <div class="col-md-3">
@@ -232,45 +218,42 @@
                                                     name="" placeholder="Type & search for anything"
                                                     (keyup)="onSearchChange($event)">
                                                 <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
-                
+
                                             </div>
                                         </div>
-                
+
                                     </div>
-                
+
                                     <div class="label-div">
-                            <table id="Table1">
-                                <tr>
-                                    <th data-sortable="true">Product Name</th>
-                                    <th data-sortable="true">SKU</th>
-                                    <th data-sortable="true">Price</th>
-                                    <th data-sortable="false">Tax Templete</th>
-                                    <th data-sortable="false">Quantity</th>
-                                    <th data-sortable="false">Amount</th>
-                                </tr>
-                                <tr class="table-row" *ngFor="let Item of buyGroup">
-                                    <td><input type="checkbox">{{Item.proItem}}</td>
-                                    <td>{{Item.sku}}</td>
-                                    <td>{{Item.price}}</td>
-                                    <td><select class="tax-select" placeholder="select">
-                                            <option val="112">{{Item.taxtemplete}}</option>
-                                            <!-- <option val="2">B</option>
-                            <option val="356" selected>C</option> -->
-                                        </select>
-                                        <img src="assets/img/doubleTickes-default.svg"
-                                            alt="double-blue-tick">
-                                    </td>
-                                    <!-- <td><input type="date" value="2018-07-22"></td> -->
-                                    <td><input type="value" placeholder="5" class="quatity-inp"></td>
-                                    <td>{{Item.amount}}</td>
-                                </tr>
-                                <tr class="bottom-table">
-                                    <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
-                                        quantity entered)</td>
-                                    <td class="btm-total">15</td>
-                                    <td class="btm-total">300</td>
-                                </tr>
-                        </table>
+                                        <table id="Table1">
+                                            <tr>
+                                                <th data-sortable="true">Product Name</th>
+                                                <th data-sortable="true">SKU</th>
+                                                <th data-sortable="true">Price</th>
+                                                <th data-sortable="false">Tax Templete</th>
+                                                <th data-sortable="false">Quantity</th>
+                                                <th data-sortable="false">Amount</th>
+                                            </tr>
+                                            <tr class="table-row" *ngFor="let Item of buyGroup">
+                                                <td><input type="checkbox">{{Item.proItem}}</td>
+                                                <td>{{Item.sku}}</td>
+                                                <td>{{Item.price}}</td>
+                                                <td><select class="tax-select" placeholder="select">
+                                                        <option val="112">{{Item.taxtemplete}}</option>
+                                                    </select>
+                                                    <img src="assets/img/doubleTickes-default.svg"
+                                                        alt="double-blue-tick">
+                                                </td>
+                                                <td><input type="value" placeholder="5" class="quatity-inp"></td>
+                                                <td>{{Item.amount}}</td>
+                                            </tr>
+                                            <tr class="bottom-table">
+                                                <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
+                                                    quantity entered)</td>
+                                                <td class="btm-total">15</td>
+                                                <td class="btm-total">300</td>
+                                            </tr>
+                                        </table>
                                     </div>
                                 </div>
                                 <div class="buyGrp 2">
@@ -292,49 +275,48 @@
                                                     name="" placeholder="Type & search for anything"
                                                     (keyup)="onSearchChange($event)">
                                                 <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
-                
+
                                             </div>
                                         </div>
-                
+
                                     </div>
-                
+
                                     <div class="label-div">
-                            <table id="Table1">
-                                <tr>
-                                    <th data-sortable="true">Product Name</th>
-                                    <th data-sortable="true">SKU</th>
-                                    <th data-sortable="true">Price</th>
-                                    <th data-sortable="false">Tax Templete</th>
-                                    <th data-sortable="false">Quantity</th>
-                                    <th data-sortable="false">Amount</th>
-                                </tr>
-                                <tr class="table-row" *ngFor="let Item of buyGroup">
-                                    <td><input type="checkbox">{{Item.proItem}}</td>
-                                    <td>{{Item.sku}}</td>
-                                    <td>{{Item.price}}</td>
-                                    <td><select class="tax-select" placeholder="select">
-                                            <option val="112">{{Item.taxtemplete}}</option>
-                                            <!-- <option val="2">B</option>
-                            <option val="356" selected>C</option> -->
-                                        </select>
-                                        <img src="assets/img/doubleTickes-default.svg"
-                                            alt="double-blue-tick">
-                                    </td>
-                                    <!-- <td><input type="date" value="2018-07-22"></td> -->
-                                    <td><input type="value" placeholder="5" class="quatity-inp"></td>
-                                    <td>{{Item.amount}}</td>
-                                </tr>
-                                <tr class="bottom-table">
-                                    <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
-                                        quantity entered)</td>
-                                    <td class="btm-total">15</td>
-                                    <td class="btm-total">300</td>
-                                </tr>
-                        </table>
+                                        <table id="Table1">
+                                            <tr>
+                                                <th data-sortable="true">Product Name</th>
+                                                <th data-sortable="true">SKU</th>
+                                                <th data-sortable="true">Price</th>
+                                                <th data-sortable="false">Tax Templete</th>
+                                                <th data-sortable="false">Quantity</th>
+                                                <th data-sortable="false">Amount</th>
+                                            </tr>
+                                            <tr class="table-row" *ngFor="let Item of buyGroup">
+                                                <td><input type="checkbox">{{Item.proItem}}</td>
+                                                <td>{{Item.sku}}</td>
+                                                <td>{{Item.price}}</td>
+                                                <td><select class="tax-select" placeholder="select">
+                                                        <option val="112">{{Item.taxtemplete}}</option>
+                                                    </select>
+                                                    <img src="assets/img/doubleTickes-default.svg"
+                                                        alt="double-blue-tick">
+                                                </td>
+                                                <td><input type="value" placeholder="5" class="quatity-inp"></td>
+                                                <td>{{Item.amount}}</td>
+                                            </tr>
+                                            <tr class="bottom-table">
+                                                <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
+                                                    quantity entered)</td>
+                                                <td class="btm-total">15</td>
+                                                <td class="btm-total">300</td>
+                                            </tr>
+                                        </table>
                                     </div>
                                 </div>
                                 <!-- or -->
-                                <div class="orlabel text-center mt-2"><h4 class="buysetOR"><b>(OR)</b></h4></div>
+                                <div class="orlabel text-center mt-2">
+                                    <h4 class="buysetOR"><b>(OR)</b></h4>
+                                </div>
                                 <div class="buyGrp 1">
                                     <div class="row label-div">
                                         <div class="col-md-3">
@@ -354,50 +336,52 @@
                                                     name="" placeholder="Type & search for anything"
                                                     (keyup)="onSearchChange($event)">
                                                 <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
-                
+
                                             </div>
                                         </div>
-                
+
                                     </div>
-                
+
                                     <div class="label-div">
-                            <table id="Table1">
-                                <tr>
-                                    <th data-sortable="true">Product Name</th>
-                                    <th data-sortable="true">SKU</th>
-                                    <th data-sortable="true">Price</th>
-                                    <th data-sortable="false">Tax Templete</th>
-                                    <th data-sortable="false">Quantity</th>
-                                    <th data-sortable="false">Amount</th>
-                                </tr>
-                                <tr class="table-row" *ngFor="let Item of buyGroup">
-                                    <td><input type="checkbox">{{Item.proItem}}</td>
-                                    <td>{{Item.sku}}</td>
-                                    <td>{{Item.price}}</td>
-                                    <td><select class="tax-select" placeholder="select">
-                                            <option val="112">{{Item.taxtemplete}}</option>
-                                            <!-- <option val="2">B</option>
+                                        <table id="Table1">
+                                            <tr>
+                                                <th data-sortable="true">Product Name</th>
+                                                <th data-sortable="true">SKU</th>
+                                                <th data-sortable="true">Price</th>
+                                                <th data-sortable="false">Tax Templete</th>
+                                                <th data-sortable="false">Quantity</th>
+                                                <th data-sortable="false">Amount</th>
+                                            </tr>
+                                            <tr class="table-row" *ngFor="let Item of buyGroup">
+                                                <td><input type="checkbox">{{Item.proItem}}</td>
+                                                <td>{{Item.sku}}</td>
+                                                <td>{{Item.price}}</td>
+                                                <td><select class="tax-select" placeholder="select">
+                                                        <option val="112">{{Item.taxtemplete}}</option>
+                                                        <!-- <option val="2">B</option>
                             <option val="356" selected>C</option> -->
-                                        </select>
-                                        <img src="assets/img/doubleTickes-default.svg"
-                                            alt="double-blue-tick">
-                                    </td>
-                                    <!-- <td><input type="date" value="2018-07-22"></td> -->
-                                    <td><input type="value" placeholder="5" class="quatity-inp"></td>
-                                    <td>{{Item.amount}}</td>
-                                </tr>
-                                <tr class="bottom-table">
-                                    <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
-                                        quantity entered)</td>
-                                    <td class="btm-total">15</td>
-                                    <td class="btm-total">300</td>
-                                </tr>
-                        </table>
+                                                    </select>
+                                                    <img src="assets/img/doubleTickes-default.svg"
+                                                        alt="double-blue-tick">
+                                                </td>
+                                                <!-- <td><input type="date" value="2018-07-22"></td> -->
+                                                <td><input type="value" placeholder="5" class="quatity-inp"></td>
+                                                <td>{{Item.amount}}</td>
+                                            </tr>
+                                            <tr class="bottom-table">
+                                                <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
+                                                    quantity entered)</td>
+                                                <td class="btm-total">15</td>
+                                                <td class="btm-total">300</td>
+                                            </tr>
+                                        </table>
                                     </div>
                                 </div>
                                 <!--buyset get group -->
                                 <div class="buyGrp 1">
-                                    <div class="getsets text-center"><h4 class="getsetHead"><b>GETSETS</b>  </h4></div>
+                                    <div class="getsets text-center">
+                                        <h4 class="getsetHead"><b>GETSETS</b> </h4>
+                                    </div>
                                     <div class="row label-div">
                                         <div class="col-md-3">
                                             <span class="buy-grp"><b>Set-1:</b> Get Group 1</span>
@@ -416,115 +400,117 @@
                                                     name="" placeholder="Type & search for anything"
                                                     (keyup)="onSearchChange($event)">
                                                 <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
-                
+
                                             </div>
                                         </div>
-                
+
                                     </div>
-                
+
                                     <div class="label-div">
-                                        <table >
-                                                <tr>
-                                                    <th data-sortable="true">Product Name</th>
-                                                    <th data-sortable="true">SKU</th>
-                                                    <th data-sortable="true">Price</th>
-                                                    <th data-sortable="false">Tax Templete</th>
-                                                    <th data-sortable="false">Quantity</th>
-                                                    <th data-sortable="false">Amount</th>
-                                                </tr>
-                                                <tr class="table-row" *ngFor="let Item of buyGroup">
-                                                    <td><input type="checkbox">{{Item.proItem}}</td>
-                                                    <td>{{Item.sku}}</td>
-                                                    <td>{{Item.price}}</td>
-                                                    <td><select class="tax-select" placeholder="select">
-                                                            <option val="112">{{Item.taxtemplete}}</option>
-                                                            <!-- <option val="2">B</option>
+                                        <table>
+                                            <tr>
+                                                <th data-sortable="true">Product Name</th>
+                                                <th data-sortable="true">SKU</th>
+                                                <th data-sortable="true">Price</th>
+                                                <th data-sortable="false">Tax Templete</th>
+                                                <th data-sortable="false">Quantity</th>
+                                                <th data-sortable="false">Amount</th>
+                                            </tr>
+                                            <tr class="table-row" *ngFor="let Item of buyGroup">
+                                                <td><input type="checkbox">{{Item.proItem}}</td>
+                                                <td>{{Item.sku}}</td>
+                                                <td>{{Item.price}}</td>
+                                                <td><select class="tax-select" placeholder="select">
+                                                        <option val="112">{{Item.taxtemplete}}</option>
+                                                        <!-- <option val="2">B</option>
                                             <option val="356" selected>C</option> -->
-                                                        </select>
-                                                        <img src="assets/img/doubleTickes-default.svg"
-                                                            alt="double-blue-tick">
-                                                    </td>
-                                                    <!-- <td><input type="date" value="2018-07-22"></td> -->
-                                                    <td><input type="value" placeholder="5" class="quatity-inp"></td>
-                                                    <td>{{Item.amount}}</td>
-                                                </tr>
-                                                <tr class="bottom-table">
-                                                    <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
-                                                        quantity entered)</td>
-                                                    <td class="btm-total">15</td>
-                                                    <td class="btm-total">300</td>
-                                                </tr>
+                                                    </select>
+                                                    <img src="assets/img/doubleTickes-default.svg"
+                                                        alt="double-blue-tick">
+                                                </td>
+                                                <!-- <td><input type="date" value="2018-07-22"></td> -->
+                                                <td><input type="value" placeholder="5" class="quatity-inp"></td>
+                                                <td>{{Item.amount}}</td>
+                                            </tr>
+                                            <tr class="bottom-table">
+                                                <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
+                                                    quantity entered)</td>
+                                                <td class="btm-total">15</td>
+                                                <td class="btm-total">300</td>
+                                            </tr>
                                         </table>
                                     </div>
                                 </div>
-                 <!-- or -->
-                 <div class="orgetlabel text-center mt-2"><h4 class="getsetOR"><b>(OR)</b></h4></div>
-                 <div class="buyGrp 1">
-                    <div class="row label-div">
-                        <div class="col-md-3">
-                            <span class="buy-grp"><b>Set-2:</b> Get Group 1</span>
-                        </div>
-                        <div class="col-md-3" style="text-align: center;">
-                            <span class="total-itemss">Total Items:(20) (MOQ:15)</span>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="searchButton" href="#">
-                                <i class="material-icons">
-                                    search
-                                </i>
-                            </button>
-                            <div class="searchBox d-flex" style=" cursor: pointer">
-                                <input class="searchInput" style="font-family: 'Gilroy'" type="text"
-                                    name="" placeholder="Type & search for anything"
-                                    (keyup)="onSearchChange($event)">
-                                <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+                                <!-- or -->
+                                <div class="orgetlabel text-center mt-2">
+                                    <h4 class="getsetOR"><b>(OR)</b></h4>
+                                </div>
+                                <div class="buyGrp 1">
+                                    <div class="row label-div">
+                                        <div class="col-md-3">
+                                            <span class="buy-grp"><b>Set-2:</b> Get Group 1</span>
+                                        </div>
+                                        <div class="col-md-3" style="text-align: center;">
+                                            <span class="total-itemss">Total Items:(20) (MOQ:15)</span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button class="searchButton" href="#">
+                                                <i class="material-icons">
+                                                    search
+                                                </i>
+                                            </button>
+                                            <div class="searchBox d-flex" style=" cursor: pointer">
+                                                <input class="searchInput" style="font-family: 'Gilroy'" type="text"
+                                                    name="" placeholder="Type & search for anything"
+                                                    (keyup)="onSearchChange($event)">
+                                                <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
 
-                            </div>
-                        </div>
+                                            </div>
+                                        </div>
 
-                    </div>
+                                    </div>
 
-                    <div class="label-div">
-                        <table >
-                                <tr>
-                                    <th data-sortable="true">Product Name</th>
-                                    <th data-sortable="true">SKU</th>
-                                    <th data-sortable="true">Price</th>
-                                    <th data-sortable="false">Tax Templete</th>
-                                    <th data-sortable="false">Quantity</th>
-                                    <th data-sortable="false">Amount</th>
-                                </tr>
-                                <tr class="table-row" *ngFor="let Item of buyGroup">
-                                    <td><input type="checkbox">{{Item.proItem}}</td>
-                                    <td>{{Item.sku}}</td>
-                                    <td>{{Item.price}}</td>
-                                    <td><select class="tax-select" placeholder="select">
-                                            <option val="112">{{Item.taxtemplete}}</option>
-                                            <!-- <option val="2">B</option>
+                                    <div class="label-div">
+                                        <table>
+                                            <tr>
+                                                <th data-sortable="true">Product Name</th>
+                                                <th data-sortable="true">SKU</th>
+                                                <th data-sortable="true">Price</th>
+                                                <th data-sortable="false">Tax Templete</th>
+                                                <th data-sortable="false">Quantity</th>
+                                                <th data-sortable="false">Amount</th>
+                                            </tr>
+                                            <tr class="table-row" *ngFor="let Item of buyGroup">
+                                                <td><input type="checkbox">{{Item.proItem}}</td>
+                                                <td>{{Item.sku}}</td>
+                                                <td>{{Item.price}}</td>
+                                                <td><select class="tax-select" placeholder="select">
+                                                        <option val="112">{{Item.taxtemplete}}</option>
+                                                        <!-- <option val="2">B</option>
                             <option val="356" selected>C</option> -->
-                                        </select>
-                                        <img src="assets/img/doubleTickes-default.svg"
-                                            alt="double-blue-tick">
-                                    </td>
-                                    <!-- <td><input type="date" value="2018-07-22"></td> -->
-                                    <td><input type="value" placeholder="5" class="quatity-inp"></td>
-                                    <td>{{Item.amount}}</td>
-                                </tr>
-                                <tr class="bottom-table">
-                                    <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
-                                        quantity entered)</td>
-                                    <td class="btm-total">15</td>
-                                    <td class="btm-total">300</td>
-                                </tr>
-                        </table>
-                    </div>
-                </div>
+                                                    </select>
+                                                    <img src="assets/img/doubleTickes-default.svg"
+                                                        alt="double-blue-tick">
+                                                </td>
+                                                <!-- <td><input type="date" value="2018-07-22"></td> -->
+                                                <td><input type="value" placeholder="5" class="quatity-inp"></td>
+                                                <td>{{Item.amount}}</td>
+                                            </tr>
+                                            <tr class="bottom-table">
+                                                <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
+                                                    quantity entered)</td>
+                                                <td class="btm-total">15</td>
+                                                <td class="btm-total">300</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- diwali bonza -->
-                <div>
+                <!-- <div>
                     <div class="row mt-1">
                         <div class="col-lg-1">
                             <p class="p1Tag">p2</p>
@@ -586,13 +572,11 @@
                                                 <td>{{item.price}}</td>
                                                 <td><select class="tax-select" placeholder="select">
                                                         <option val="112">{{item.taxtemplete}}</option>
-                                                        <!-- <option val="2">B</option>
-                                        <option val="356" selected>C</option> -->
+                                                       
                                                     </select>
                                                     <img src="assets/img/doubleTickes-default.svg"
                                                         alt="double-blue-tick">
                                                 </td>
-                                                <!-- <td><input type="date" value="2018-07-22"></td> -->
                                                 <td><input type="value" placeholder="5" class="quatity-inp"></td>
                                                 <td>{{item.amount}}</td>
                                             </tr>
@@ -608,7 +592,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
         </div>

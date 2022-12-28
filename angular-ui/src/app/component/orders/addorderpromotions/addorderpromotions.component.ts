@@ -229,9 +229,7 @@ export class AddorderpromotionsComponent implements OnInit {
       this.actineLabel = "Edit order";
       this.updateOrSave = !this.updateOrSave;
       this.GetOrdersToEdit();
-      if(this.stockItemId != ''){
-      
-      }
+     
       // this.spinner.show();
       // this.spinner.hide();
 
@@ -351,6 +349,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
   onItemSelectdealers(item: any) {
     this.customerId = item.customerId;
+    localStorage.setItem("dealerid" ,this.customerId )
     this.orders.GetGeoGrapydropdownList(this.customerId).subscribe((res) => {
       let GeoGrapydropdownList = res.response;
       console.log(GeoGrapydropdownList, "GeoGrapydropdownList")
@@ -384,7 +383,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
   onItemSelectgeo(item: any) {
     this.geographyId = item.geographyId;
-
+    localStorage.setItem("geographyId" ,this.geographyId)
     console.log(this.geographyId, "geographyId")
   }
   onItemSelectshippingAddress(item: any) {

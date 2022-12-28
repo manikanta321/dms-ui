@@ -788,7 +788,7 @@ selectdays(){
     });
   }
   geogrphyOrder(){
-    this.user.GeographyDropdownOrderlist().subscribe((res: any) => {
+    this.user.getGographicDropdown().subscribe((res: any) => {
       let localdata = res.response;
       this.geogropdownlist = localdata.map((data: { geographyId: any; geographyName: any; }) => {
         return { geographyId: data.geographyId, geographyName: data.geographyName };
@@ -808,7 +808,6 @@ selectdays(){
         itemsShowLimit: 2,
         allowSearchFilter: true
       };
-      this.selectedItems = [];
     });
   }
   geographyselect(item:any){

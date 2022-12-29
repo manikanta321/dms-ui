@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridReadyEvent } from 'ag-grid-community';
+import { SalesBulkUploadComponent } from '../../sales-bulk-upload/sales-bulk-upload.component';
 import { SalesInvoiceDownloadComponent } from '../../sales-invoice-download/sales-invoice-download.component';
 import { UploadSalesActionComponent } from '../../upload-sales-action/upload-sales-action.component';
 
@@ -149,5 +150,10 @@ export class SalesUploadsComponent implements OnInit {
   };
   addSales() {
     this.dialog.open(SalesInvoiceDownloadComponent, {width: '1289px'});
+  }
+  salesUpload(){
+    sessionStorage.setItem("sales","salesUpload");
+      this.dialog.open(SalesBulkUploadComponent);
+      // this.isOpen = false;
   }
 }

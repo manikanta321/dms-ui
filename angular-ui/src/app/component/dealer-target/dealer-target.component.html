@@ -4,9 +4,7 @@
         <div class="col-md-2 col-lg-2 col-sm-2">
             <form [formGroup]="myForm">
               <ng-multiselect-dropdown class="roless" name="city" [placeholder]="''" formControlName="city"
-                [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList"
-                (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
-                (onDeSelectAll)="onItemDeSelectOrAll($event)" (onSelectAll)="onItemSelectOrAll($event)">
+                [disabled]="disabled" [settings]="targetSettings" [data]="targetListData">
               </ng-multiselect-dropdown>
             </form>
             <div class="dropdown-placeholder catty-placeholder">
@@ -39,7 +37,7 @@
         <div class="col-md-2 col-lg-2 col-sm-2">
           <form [formGroup]="myForm">
             <ng-multiselect-dropdown class="roless-product" name="city" [placeholder]="'Dealer'" formControlName="city"
-              [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList"
+              [disabled]="disabled" [settings]="dealerDropdownSettings" [data]="dealerListData"
               (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
               (onDeSelectAll)="onItemDeSelectOrAll($event)" (onSelectAll)="onItemSelectOrAll($event)">
             </ng-multiselect-dropdown>

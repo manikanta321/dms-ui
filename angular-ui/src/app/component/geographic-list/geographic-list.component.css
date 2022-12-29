@@ -125,9 +125,9 @@ justify-content: center;
 align-items: center;
  transition: 0.2s; 
 background: none;
-position: relative;
-right: 227px;
-top: -4px; 
+position: absolute;
+top: -4px;
+left: -202px;
 
 }
 .add-user {

@@ -45,6 +45,7 @@ import { EditPopupComponent } from '../users/userPopups/edit-popup/edit-popup.co
 import { AddDealerPopupComponent } from 'src/app/add-dealer-popup/add-dealer-popup.component';
 import { EditdealersComponent } from '../users/userPopups/editdealers/editdealers.component';
 import { AddTargetsComponent } from '../add-targets/add-targets.component';
+import { TargetListService } from 'src/app/services/target-list.service';
 
 // import { UseractionComponent } from '../useraction/useraction.component';
 
@@ -76,7 +77,10 @@ export class DealerTargetComponent implements OnInit {
   searchText: any;
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
-
+  dealerDropdownSettings :IDropdownSettings = {};
+  targetSettings: IDropdownSettings = {};
+  targetListData:any = [];
+  dealerListData:any = [];
   gridOptions: GridOptions = {
     defaultColDef: {
       resizable: true,
@@ -326,6 +330,7 @@ export class DealerTargetComponent implements OnInit {
     private observer: BreakpointObserver,
     private fb: FormBuilder,
     private sharedService: SharedService,
+    private targetList: TargetListService,
   ) {
 
     this.sharedService.listen().subscribe((m: any) => {
@@ -367,7 +372,8 @@ export class DealerTargetComponent implements OnInit {
     this.getusertabeldata();
     this.roleItems();
     this.statusItems();
-
+    this.targetListGroup();
+    this.dealerDropdown();
     this.myForm = this.fb.group({
       city: [this.selectedItems]
     });
@@ -481,7 +487,7 @@ export class DealerTargetComponent implements OnInit {
       // this.toppingList = res.response;
       this.toppings = new FormControl(this.toppingList);
 
-      // console.log('rolelist', this.toppingList)
+      // console.log('rolelist', this.toppingList)geographyId
       this.dropdownSettings = {
         singleSelection: false,
         idField: 'geographyId',
@@ -833,5 +839,36 @@ export class DealerTargetComponent implements OnInit {
   element.appendChild(imageElement);
   return element;
   }
-
+  targetListGroup(){
+    this.targetList.getTargetList().subscribe((res) => {
+      this.targetListData  = res.response;
+    console.log("check target",this.targetListData );
+    
+    })
+    this.targetSettings = {
+      singleSelection: false,
+      idField: 'targetGroupId',
+      textField: 'targetGroupName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+      allowSearchFilter: true
+    };
+  }
+  dealerDropdown(){
+    this.targetList.getDealers().subscribe((res) => {
+      this.dealerListData  = res.response;
+    console.log("check Dealer",this.dealerListData );
+    
+    })
+    this.dealerDropdownSettings = {
+      singleSelection: false,
+      idField: 'customerId',
+      textField: 'customerName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 2,
+      allowSearchFilter: true
+    };
+  }
 }

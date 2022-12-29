@@ -5,9 +5,7 @@ import {startWith, map} from 'rxjs/operators';
 import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridApi, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
 import { AddSalesPopupComponent } from './add-sales-popup/add-sales-popup.component';
-import { SalesBulkDownloadComponent } from './sales-bulk-download/sales-bulk-download.component';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { SalesBulkUploadComponent } from '../../sales-bulk-upload/sales-bulk-upload.component';
 import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-sales-inventory',
@@ -278,13 +276,5 @@ export class SalesInventoryComponent implements OnInit {
   }
   addSales() {
     this.dialog.open(AddSalesPopupComponent, {width: '1043px'});
-  }
-  salesBulkDownload() {
-    this.dialog.open(SalesBulkDownloadComponent, {width: '1289px',});
-  }
-  salesUpload(){
-    sessionStorage.setItem("sales","salesUpload");
-      this.dialog.open(SalesBulkUploadComponent);
-      // this.isOpen = false;
   }
 }

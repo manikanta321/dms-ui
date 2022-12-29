@@ -5,7 +5,7 @@
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
             </div>
             <div class="head-t">
-                <h3 class="addU font">{{dealerAction}}  Dealer</h3>
+                <h3 class="addU font">{{dealerAction}} Dealer</h3>
                 <br>
                 <div class="d-flex">
                     <img src="assets/img/arrow-left-disable.png" *ngIf="!basicInfo" (click)="disableBackbutton()"
@@ -39,31 +39,33 @@
                                         <div class="col-4 ">
                                             <label>Name<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="CustomerName" id="dn"
-                                                class="addDelercols form-control" required placeholder="Enter your name"
-                                                (keyup)="onValidateName($event)">
-                                            <div *ngIf="dealerName">
-                                                <span style="position:relative">Name is required</span>
-                                            </div>
-
+                                            <input type="text" formControlName="CustomerName"
+                                                class="addDelercols form-control" required
+                                                placeholder="Enter your name">
+                                            <span class="text-danger"
+                                                *ngIf="addAddressDetailsFormControl['CustomerName'].touched || submitted && addAddressDetailsFormControl['CustomerName'].errors && addAddressDetailsFormControl['CustomerName'].errors['required']">
+                                                Name is required
+                                            </span>
                                         </div>
                                         <div class="col-4 ">
                                             <label>Email-ID<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="Email" class="addDelercols form-control" required
-                                                placeholder="Enter your Email ID" (keyup)="onValidateEmail($event)">
-                                            <div *ngIf="dealerEmail">
-                                                <span>Email is required</span>
-                                            </div>
+                                            <input type="text" formControlName="Email" class="addDelercols form-control"
+                                                required placeholder="Enter your Email ID">
+                                                <span class="text-danger"
+                                                *ngIf="addAddressDetailsFormControl['Email'].touched || submitted && addAddressDetailsFormControl['Email'].errors && addAddressDetailsFormControl['Email'].errors['required']">
+                                                Email is required
+                                            </span>
                                         </div>
                                         <div class="col-4 ">
                                             <label>Code<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="Code" class="addDelercolss form-control" required
-                                                placeholder="Enter your code" (keyup)="onValidateCode($event)">
-                                            <div *ngIf="dealerCode">
-                                                <span>Code is required</span>
-                                            </div>
+                                            <input type="text" formControlName="Code" class="addDelercolss form-control"
+                                                required placeholder="Enter your code">
+                                                <span class="text-danger"
+                                                *ngIf="addAddressDetailsFormControl['Code'].touched || submitted && addAddressDetailsFormControl['Code'].errors && addAddressDetailsFormControl['Code'].errors['required']">
+                                                Code is required
+                                            </span>
                                         </div>
 
                                     </div>
@@ -72,31 +74,37 @@
                                         <div class="col-4 ">
                                             <label>Website<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="website" class="addDelercols form-control" required
+                                            <input type="text" formControlName="website"
+                                                class="addDelercols form-control" required
                                                 placeholder="Enter your company website"
-                                                (keyup)="onValidateWebsite($event)">
-                                            <div *ngIf="dealerWebsite">
-                                                <span>Website Name is required</span>
-                                            </div>
+                                               >
+                                               <span class="text-danger"
+                                               *ngIf="addAddressDetailsFormControl['website'].touched || submitted && addAddressDetailsFormControl['website'].errors && addAddressDetailsFormControl['website'].errors['required']">
+                                               Website is required
+                                           </span>
                                         </div>
                                         <div class="col-4 ">
                                             <label>Phone No<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="Phoneno" class="addDelercols form-control" required
-                                                placeholder="Enter phone no" (keyup)="onValidatePhone($event)">
-                                            <div *ngIf="dealerPhone">
-                                                <span>Phone No is required</span>
-                                            </div>
+                                            <input type="text" formControlName="Phoneno"
+                                                class="addDelercols form-control" required placeholder="Enter phone no"
+                                               >
+                                               <span class="text-danger"
+                                               *ngIf="addAddressDetailsFormControl['Phoneno'].touched || submitted && addAddressDetailsFormControl['Phoneno'].errors && addAddressDetailsFormControl['Phoneno'].errors['required']">
+                                               Phone No is required
+                                           </span>
                                         </div>
                                         <div class="col-4 ">
                                             <label>Company ID<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="company_id" class="addDelercolss form-control"
-                                                required placeholder="Enter your company ID"
-                                                (keyup)="onValidateCompanyID($event)">
-                                            <div *ngIf="dealerCompany">
-                                                <span>Company ID is required</span>
-                                            </div>
+                                            <input type="text" formControlName="company_id"
+                                                class="addDelercolss form-control" required
+                                                placeholder="Enter your company ID"
+                                                >
+                                                <span class="text-danger"
+                                                *ngIf="addAddressDetailsFormControl['company_id'].touched || submitted && addAddressDetailsFormControl['company_id'].errors && addAddressDetailsFormControl['company_id'].errors['required']">
+                                                Company ID is required
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -106,12 +114,13 @@
                                         <div class="col-4 ">
                                             <label>Other Identifer<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="OtherIdentifier" class="addDelercols form-control"
-                                                required placeholder="Enter and select"
-                                                (keyup)="onValidateIdentifier($event)">
-                                            <div *ngIf="dealerIdentifier">
-                                                <span>Other Identifier is required</span>
-                                            </div>
+                                            <input type="text" formControlName="OtherIdentifier"
+                                                class="addDelercols form-control" required
+                                                placeholder="Enter and select" >
+                                                <span class="text-dangerr"
+                                                *ngIf="addAddressDetailsFormControl['OtherIdentifier'].touched || submitted && addAddressDetailsFormControl['OtherIdentifier'].errors && addAddressDetailsFormControl['OtherIdentifier'].errors['required']">
+                                                Other Identifer is required
+                                            </span>
                                             <img src="../assets/img/search.png" class="search">
                                         </div>
                                         <div class="col-4 ">
@@ -134,51 +143,61 @@
                                         <div class="col-4 fontcolor">
                                             <label>User Name<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="UserName" class="addDelercols form-control" required
-                                                placeholder="Enter your name" (keyup)="onValidateUserName($event)">
-                                            <div *ngIf="dealerUserName">
-                                                <span>User Name is required</span>
-                                            </div>
+                                            <input type="text" formControlName="UserName"
+                                                class="addDelercols form-control" required placeholder="Enter your name"
+                                              >
+                                              <span class="text-danger"
+                                              *ngIf="addAddressDetailsFormControl['UserName'].touched || submitted && addAddressDetailsFormControl['UserName'].errors && addAddressDetailsFormControl['UserName'].errors['required']">
+                                              UserName is required
+                                          </span>
                                         </div>
                                         <div class="col-4 fontcolor">
                                             <label>Email ID<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="EmailId" class="addDelercols form-control" required
-                                                placeholder="Enter your email ID" (keyup)="onValidateE($event)">
-                                            <div *ngIf="dealere">
-                                                <span>Email ID is required</span>
-                                            </div>
+                                            <input type="text" formControlName="EmailId"
+                                                class="addDelercols form-control" required
+                                                placeholder="Enter your email ID">
+                                                <span class="text-danger"
+                                                *ngIf="addAddressDetailsFormControl['EmailId'].touched || submitted && addAddressDetailsFormControl['EmailId'].errors && addAddressDetailsFormControl['EmailId'].errors['required']">
+                                                Email ID is required
+                                            </span>
 
                                         </div>
                                         <div class="col-4 fontcolor">
                                             <label>Phone No<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="Mobile" class="addDelercols form-control" required
-                                                placeholder="Enter your phone no" (keyup)="onValidateP($event)">
-                                            <div *ngIf="dealerp">
-                                                <span>Phone No is required</span>
-                                            </div>
+                                            <input type="text" formControlName="Mobile"
+                                                class="addDelercols form-control" required
+                                                placeholder="Enter your phone no" >
+                                                <span class="text-danger"
+                                                *ngIf="addAddressDetailsFormControl['Mobile'].touched || submitted && addAddressDetailsFormControl['Mobile'].errors && addAddressDetailsFormControl['Mobile'].errors['required']">
+                                                Phone No is required
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-4">
                                             <label>First Name<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="FirstName" class="addDelercols form-control" required
+                                            <input type="text" formControlName="FirstName"
+                                                class="addDelercols form-control" required
                                                 placeholder="Enter your First Name"
-                                                (keyup)="onValidateFirstName($event)">
-                                            <div *ngIf="dealerfirst">
-                                                <span>First Name is required</span>
-                                            </div>
+                                               >
+                                               <span class="text-danger"
+                                               *ngIf="addAddressDetailsFormControl['FirstName'].touched || submitted && addAddressDetailsFormControl['FirstName'].errors && addAddressDetailsFormControl['FirstName'].errors['required']">
+                                               First Name is required
+                                           </span>
                                         </div>
                                         <div class="col-4">
                                             <label>Last Name<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="lastName" class="addDelercols form-control" required
-                                                placeholder="Enter your Last Name" (keyup)="onValidateLastName($event)">
-                                            <div *ngIf="dealerlast">
-                                                <span>Last Name is required</span>
-                                            </div>
+                                            <input type="text" formControlName="lastName"
+                                                class="addDelercols form-control" required
+                                                placeholder="Enter your Last Name" >
+                                                <span class="text-danger"
+                                                *ngIf="addAddressDetailsFormControl['lastName'].touched || submitted && addAddressDetailsFormControl['lastName'].errors && addAddressDetailsFormControl['lastName'].errors['required']">
+                                                Last Name is required
+                                            </span>
                                         </div>
                                         <div class="col-4">
                                             <label>Status<span>*</span></label>
@@ -190,7 +209,10 @@
                                                     {{option.statusName}}
                                                 </option>
                                             </select>
-
+                                            <span class="text-danger"
+                                            *ngIf="addAddressDetailsFormControl['StatusId'].touched || submitted && addAddressDetailsFormControl['StatusId'].errors && addAddressDetailsFormControl['StatusId'].errors['required']">
+                                            Status is required
+                                        </span>
                                         </div>
                                     </div>
                                 </div>

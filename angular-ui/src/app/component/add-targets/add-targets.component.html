@@ -10,12 +10,20 @@
                 <div>
                     <div class="row">
                         <div class="col-lg-3">
-                            <div>
-                                <label class="target-heading">Target Group <span class="astr">*</span></label>
-                                <input matInput placeholder="Select Target Group" #input
-                                    class="form-control container target-grp">
-                                <img src="assets/img/search.png" class="search-img" alt="search">
-                            </div>
+                            <label>Target Group<span>*</span></label>
+                            <div class="targetdrp">
+                                <ng-select [items]="targetListData" class="searchbtnIcon" id="targetName" name="targetName" required [virtualScroll]="true"
+                                  bindLabel="targetGroupName" bindValue="targetGroupId" [searchable]="true" [clearable]="false"
+                                  placeholder="Search & select target" [(ngModel)]="targetId" (change)="onTargetGrpSelect($event)"
+                                  #targetName="ngModel">
+                                </ng-select>
+                                <!-- <p style="margin-bottom:-22px;padding: 0px;font-size: 11px;"
+                                  *ngIf="targetName.invalid && (targetName.dirty || targetName.touched)" class="alert">
+                                  <span style="color:red;position: relative;" *ngIf="targetName.errors?.['required']">
+                                    *Target is required.
+                                  </span>
+                                </p> -->
+                              </div>
                         </div>
                         <div class="col-lg-9">
                             <span class="total-prod">Total products in selected group: <a href="">25</a></span>
@@ -24,20 +32,32 @@
                     <br><br><br>
                     <div class="row">
                         <div class="col-lg-6">
-                            <div>
-                                <label>Dealer List<span class="astr">*</span></label>
-                                <input matInput placeholder="Select for Dealers" #input
-                                    class="form-control container dealr-lst">
-                                <img src="assets/img/search.png" style="left: 79%;" class="search-img" alt="search">
-                            </div>
+                            <form [formGroup]="dealer" class="dropdown-form">
+                                <ng-multiselect-dropdown class="Dealers searchbtnIcon" name="dealer" [placeholder]="'Dealers'" formControlName="dealer"
+                                  [disabled]="disabled" [settings]="dropdownSettings" [data]="dealerListData">
+                                </ng-multiselect-dropdown>
+                                <div class="dropdown-placeholder Dealers-placeholder">
+                                  <span *ngIf="dealer.get('dealer').value.length == 0"> Select Dealers </span>
+                                  <span *ngIf="dealer.get('dealer').value.length == 1" class="selected-placeholder"> {{dealer.get('dealer').value.length}} Dealer selected </span>
+                                  <span *ngIf="dealer.get('dealer').value.length > 1" class="selected-placeholder"> {{dealer.get('dealer').value.length}} Dealer(s) selected </span>
+                      
+                                </div>
+                      
+                              </form>
                         </div>
                         <div class="col-lg-6">
-                            <div>
-                                <input matInput placeholder="Select for Geographies" style="margin-top: 24px;"
-                                    #inputscnd class="form-control container dealr-lst">
-                                <img src="assets/img/search.png" class="search-img" style="top: 28px;left: 94%;"
-                                    alt="search">
-                            </div>
+                            <form [formGroup]="geoForm" class="dropdown-form">
+                                <ng-multiselect-dropdown class="Dealers searchbtnIcon" name="geoForm" [placeholder]="'Dealers'" formControlName="geoForm"
+                                  [disabled]="disabled" [settings]="dropdownSettings1" [data]="geographyList">
+                                </ng-multiselect-dropdown>
+                                <div class="dropdown-placeholder Dealers-placeholder">
+                                  <span *ngIf="geoForm.get('geoForm').value.length == 0"> Select Geography </span>
+                                  <span *ngIf="geoForm.get('geoForm').value.length == 1" class="selected-placeholder"> {{geoForm.get('geoForm').value.length}} Geography selected </span>
+                                  <span *ngIf="geoForm.get('geoForm').value.length > 1" class="selected-placeholder"> {{geoForm.get('geoForm').value.length}} Geography(s) selected </span>
+                      
+                                </div>
+                      
+                              </form>
                         </div>
                     </div>
                     <br><br><br>

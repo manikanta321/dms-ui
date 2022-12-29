@@ -45,6 +45,10 @@ export class TargetListService {
     
 
   }
+  getDealers(){
+    return this.http.get<any>(this.classificationurl + 'DealerApi/GetAssoDealerdrop');
+  
+  }
 // getTargetGrpList(){
 //   return this.http.get<any>(this.classificationurl + 'MaterialApi/GetTargetGroup');
 // }

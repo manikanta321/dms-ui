@@ -43,7 +43,7 @@
                                     <label>Promotion Type <span class="astr">*</span></label>
                                     <ng-select [items]="promotionTypedropdown" placeholder="Select the promotion type"
                                         bindLabel="promotionTypesName" bindValue="promotionTypesId" #promotype
-                                        (change)="selectedValue($event)" required>
+                                   [(ngModel)]="selectedPromo"     (change)="selectedValue($event)"   required>
                                     </ng-select>
                                 </div>
                                 <form #myform>
@@ -498,18 +498,18 @@
                                     </div>
                                     <div class="row" *ngFor="let packingCharge of packingCharges; let i = index;">
                                         <div class="col-3">
-                                            <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
+                                            <input class="qtyOfItems" type="text"  required
                                                 placeholder="" [(ngModel)]="packingCharge.MinVolume"
                                                 name="address_{{i}}">
                                         </div>
                                         <div class="col-3">
-                                            <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
+                                            <input class="qtyOfItems" type="text"   required
                                                 placeholder="" [(ngModel)]="packingCharge.MaxVolume"
                                                 name="street_{{i}}">
 
                                         </div>
                                         <div class="col-3">
-                                            <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
+                                            <input class="qtyOfItems" type="text"  required
                                                 placeholder="" [(ngModel)]="packingCharge.DiscountPercentage"
                                                 name="street_{{i}}">
 
@@ -558,7 +558,7 @@
                                     <br>
                                     <label>Minimum Order Quantity<span class="astr">*</span></label>
                                     <br>
-                                    <input class="minimumorderquantity" type="text" id="pValue" name="pValue" required
+                                    <input class="minimumorderquantity" type="text"  required
                                         placeholder="" [(ngModel)]="minumorderqualityPrice">
                                 </div>
                                 <div class="col-lg-6 navItems">
@@ -579,18 +579,17 @@
 
                                     <div class="row" *ngFor="let packingCharge of packingVolume; let i = index;">
                                         <div class="col-3">
-                                            <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
+                                            <input class="qtyOfItems" type="text" id="pValue" required
                                                 placeholder="" [(ngModel)]="packingCharge.MinVolume"
                                                 name="address_{{i}}">
                                         </div>
                                         <div class="col-3">
-                                            <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
-                                                placeholder="" [(ngModel)]="packingCharge.MaxVolume"
-                                                name="street_{{i}}">
+                                            <input class="qtyOfItems" type="text" id="pValue" 
+                                                name="street_{{i}}" [(ngModel)]="packingCharge.MaxVolume">
 
                                         </div>
                                         <div class="col-3">
-                                            <input class="qtyOfItems" type="text" id="pValue" name="pValue" required
+                                            <input class="qtyOfItems" type="text" id="pValue"  required
                                                 placeholder="" [(ngModel)]="packingCharge.MaxPrice" name="city_{{i}}">
 
                                         </div>
@@ -664,11 +663,23 @@
                             </div>
                         </div>
                         <!-- footer -->
-                        <div class="row">
+                        <div class="row" *ngIf="SaveOrEdit">
                             <div class="footer-btns">
                                 <button class="btn btn-light saveDraft" (click)="AddPromosaveAndSubmitDraft()">Save as
                                     draft</button>
                                 <button class="btn btn-light submit" (click)=AddPromosaveAndSubmit()>Save &
+                                    Submit</button>
+                                <button class="cancelbtn" [mat-dialog-close]="true">Cancel</button>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row" *ngIf="!SaveOrEdit">
+                            <div class="footer-btns">
+                                <button class="btn btn-light saveDraft" (click)="AddPromosaveAndSubmitDraft()">Save as
+                                    draft</button>
+                                <button class="btn btn-light submit" (click)=AddPromosaveAndSubmitEdit()>Save &
                                     Submit</button>
                                 <button class="cancelbtn" [mat-dialog-close]="true">Cancel</button>
                             </div>

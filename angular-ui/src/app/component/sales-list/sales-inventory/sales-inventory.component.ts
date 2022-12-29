@@ -225,6 +225,8 @@ export class SalesInventoryComponent implements OnInit {
       itemsShowLimit: 2,
       allowSearchFilter: true
     };
+    this.dialog.open(AddSalesPopupComponent, {width: '1043px'});
+
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;

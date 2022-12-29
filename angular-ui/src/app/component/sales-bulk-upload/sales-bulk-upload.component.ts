@@ -1,10 +1,12 @@
 import { Component, OnInit} from '@angular/core';
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-sales-bulk-upload',
   templateUrl: './sales-bulk-upload.component.html',
   styleUrls: ['./sales-bulk-upload.component.css']
 })
 export class SalesBulkUploadComponent implements OnInit {
+  arrayBuffer: any;
   constructor() { }
   totalRows:any = "Total rows = 121";
   errorFree:any = "Error free rows = 97";
@@ -123,4 +125,35 @@ export class SalesBulkUploadComponent implements OnInit {
      
     }
   }
+
+  // finctionality to read xlxs sheet and send array of object to api
+  onFileChange(event: any) {
+    /* wire up file reader */
+    const target: DataTransfer = <DataTransfer>(event.target);
+    if (target.files.length !== 1) {
+      throw new Error('Cannot use multiple files');
+    }
+    const reader: FileReader = new FileReader();
+    reader.readAsBinaryString(target.files[0]);
+    reader.onload = (e: any) => {
+      /* create workbook */
+      const binarystr: string = e.target.result;
+      const wb: XLSX.WorkBook = XLSX.read(binarystr, { type: 'binary' });
+      console.log(wb,"wb")
+
+      /* selected the first sheet */
+      const wsname: string = wb.SheetNames[0];
+      console.log(wsname,"wsname")
+      const ws: XLSX.WorkSheet = wb.Sheets[wsname];
+      console.log(ws,"ws")
+
+      /* save data */
+      
+      const data = XLSX.utils.sheet_to_json(ws); // to get 2d array pass 2nd parameter as object {header: 1}
+      console.log(data); // Data will be logged in array format containing objects
+    };
+ }
+
+   
+
 }

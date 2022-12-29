@@ -43,6 +43,7 @@
     "tippy.js": "^6.3.7",
     "tslib": "^2.3.0",
     "url-search-params-polyfill": "^8.1.1",
+    "xlsx": "^0.18.5",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

@@ -12,22 +12,17 @@
             <span class="step1-txt">Step 1:</span>
             <h4 class="up-doc"> Upload document</h4>
         </div>
-        <div class=" row upload-div">
-            <img src="../../../assets/img/upload-icon.png" class="upload-icon" alt="Upload icon">
+        <label class=" row upload-div">
+            <input  type="file" (change)="onFileChange($event)">
+            <img src="../../../assets/img/upload-icon.png"  class="upload-icon" alt="Upload icon">
             <div class="row">
                 <h6 class="upload-doc txt-1">Upload the document</h6>
             </div>
             <div class="row">
                 <h6 class="upload-doc txt-2">after adding all required information related to sales</h6>
             </div>
-            <!-- <img src="../../../assets/img/uploaded-doc.png" class="upload-icon" alt="Uploaded icon">
-         <div class="row">
-            <h6 class="upload-doc txt-3">Document <span class="bold-txt">Sale detail 13 Oct 2022 is</span> </h6>
-        </div>
-        <div class="row">
-            <h6 class="upload-doc txt-4">successfully <span class="bold-txt"> Uploaded!</span></h6>
-        </div> -->
-        </div>
+       
+        </label>
         <!-- <div class="row">
             <h5 class="upload-new-doc">*Upload a new document by clicking <a href="" class="h-link"> here</a></h5>
         </div> -->

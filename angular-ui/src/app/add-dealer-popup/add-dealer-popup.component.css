@@ -8,7 +8,7 @@
   width: 20px;
   position: relative;
   left: 88%;
-  top: -27px;
+  top: -32px;
 }
   
 
@@ -481,7 +481,9 @@ li {
 }
 
 
-
+.text-dangerr{
+  position: absolute;
+}
 
 
 

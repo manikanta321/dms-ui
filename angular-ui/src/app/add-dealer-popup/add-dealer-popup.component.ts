@@ -13,6 +13,7 @@ import { Directive, HostListener, Optional, Output, EventEmitter } from '@angula
 import { ConsoleService } from '@ng-select/ng-select/lib/console.service';
 import { StepperSelectionEvent } from '@angular/cdk/stepper';
 
+
 //import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -33,6 +34,7 @@ export class AddDealerPopupComponent implements OnInit {
   @Output() emitFormControl = new EventEmitter<FormControl>();
 
   addAddressDetailsForm!: FormGroup;
+  submitted = false;
   gepGraphiesFormGroup!: FormGroup;
   formGroup!: FormGroup;
   CreatedById: any;
@@ -104,18 +106,8 @@ export class AddDealerPopupComponent implements OnInit {
   geoGraphyFullData: any;
   userId:any;
   DealerN:any =" ";
-  dealerName:any;
-  dealerEmail:any;
-  dealerCode:any;
-  dealerWebsite:any;
-  dealerPhone:any;
-  dealerCompany:any;
-  dealerIdentifier:any;
-  dealerUserName:any;
-  dealere:any;
-  dealerp:any;
-  dealerfirst:any;
-  dealerlast:any;
+ 
+  
   // geoGraphyFullData1: any;
   geographyHierarchyId: any;
   aarrayToPush: any[] = [];
@@ -151,6 +143,7 @@ export class AddDealerPopupComponent implements OnInit {
     private classification: ClassificationserviseService,
     private calssification: ClassificationserviseService,
     private sharedService: SharedServicesDealerService,
+    private fb: FormBuilder,
     //private toastrService: ToastrService,
     private dialogRef: MatDialogRef<any>) {
     this.formReader();
@@ -625,126 +618,10 @@ console.log('selectedItemsselectedItems',this.selectedItems)
     });
   }
 
-  /*---Validations------*/
 
-      onValidateName(event:any){
-        let name=event.target.value;
-        console.log(name)
-        if(name==''){
-          this.dealerName=true;
-                 }else{
-          this.dealerName=false;
-        }
-      }
-      onValidateEmail(event:any){
-        let email=event.target.value;
-        console.log(email)
-        if(email==''){
-          this.dealerEmail=true;
-                 }else{
-          this.dealerEmail=false;
-        }
-      }
-
-      onValidateCode(event:any){
-        let code=event.target.value;
-        console.log(code)
-        if(code==''){
-          this.dealerCode=true;
-                 }else{
-          this.dealerCode=false;
-        }
-      }
-
-      onValidateWebsite(event:any){
-        let website=event.target.value;
-        console.log(website)
-        if(website==''){
-          this.dealerWebsite=true;
-                 }else{
-          this.dealerWebsite=false;
-        }
-      }
-
-      onValidatePhone(event:any){
-        let phone=event.target.value;
-        console.log(phone)
-        if(phone==''){
-          this.dealerPhone=true;
-                 }else{
-          this.dealerPhone=false;
-        }
-      }
-
-      onValidateCompanyID(event:any){
-        let company=event.target.value;
-        console.log(company)
-        if(company==''){
-          this.dealerCompany=true;
-                 }else{
-          this.dealerCompany=false;
-        }
-      }
-
-      onValidateIdentifier(event:any){
-        let identifer=event.target.value;
-        console.log(identifer)
-        if(identifer==''){
-          this.dealerIdentifier=true;
-                 }else{
-          this.dealerIdentifier=false;
-        }
-      }
-
-      onValidateUserName(event:any){
-        let username=event.target.value;
-        console.log(username)
-        if(username==''){
-          this.dealerUserName=true;
-                 }else{
-          this.dealerUserName=false;
-        }
-      }
-
-      onValidateE(event:any){
-        let emailid=event.target.value;
-        console.log(emailid)
-        if(emailid==''){
-          this.dealere=true;
-                 }else{
-          this.dealere=false;
-        }
-      }
-
-      onValidateP(event:any){
-        let phoneNo=event.target.value;
-        console.log(phoneNo)
-        if(phoneNo==''){
-          this.dealerp=true;
-                 }else{
-          this.dealerp=false;
-        }
-      }
-
-      onValidateFirstName(event:any){
-        let firstname=event.target.value;
-        console.log(firstname)
-        if(firstname==''){
-          this.dealerfirst=true;
-                 }else{
-          this.dealerfirst=false;
-        }
-      }
-
-      onValidateLastName(event:any){
-        let lastname=event.target.value;
-        console.log(lastname)
-        if(lastname==''){
-          this.dealerlast=true;
-                 }else{
-          this.dealerlast=false;
-        }
-      }
+   get addAddressDetailsFormControl(){
+         return this.addAddressDetailsForm.controls;
+  }
 
 
   //get Country List  - geographies

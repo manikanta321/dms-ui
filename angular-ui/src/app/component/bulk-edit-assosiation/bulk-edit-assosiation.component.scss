@@ -1174,4 +1174,48 @@ margin-left: -25px;
     .dropdown-form {
       position: relative;
     }
-    
+    ::ng-deep .roless-product .dropdown-btn span .ng-star-inserted {
+      position: absolute !important;
+      right: -18px !important;
+      bottom: 0px;
+      top: 50px !important;
+      /* width: 51px; */
+      border: 1px solid #337ab7;
+      background: #44026C !important;
+      font-size: 12px;
+      box-shadow: 1px 1px #959595;
+      color: #fff;
+      height: 22px;
+      border-radius: 15px;
+      text-align: center;
+    }
+    ::ng-deep .roless .dropdown-btn span .ng-star-inserted {
+      position: absolute !important;
+      right: -18px !important;
+      bottom: 0px;
+      top: 50px !important;
+      /* width: 51px; */
+      border: 1px solid #337ab7;
+      background: #006466 !important;
+      font-size: 12px;
+      box-shadow: 1px 1px #959595;
+      color: #fff;
+      height: 22px;
+      border-radius: 15px;
+      text-align: center;
+    }
+    ::ng-deep .stts .dropdown-btn span .ng-star-inserted {
+      position: absolute !important;
+      right: -18px !important;
+      bottom: 0px;
+      top: 50px !important;
+      /* width: 51px; */
+      border: 1px solid #337ab7;
+      background: #000000 !important;
+      font-size: 12px;
+      box-shadow: 1px 1px #959595;
+      color: #fff;
+      height: 22px;
+      border-radius: 15px;
+      text-align: center;
+    }

@@ -9,9 +9,9 @@
         <br><br><br>
         <div class="d-flex">
         
-          <img src="assets/img/arrow-left-circle-fill.svg"  (click)="Backbutton()" class="leftarrow1" alt="left-arr-btn">
+          <img src="assets/img/arrow-left-circle-fill.svg"  (click)="Backbutton()" class="leftarrow1" alt="left-arr-btn" *ngIf="!checked">
           <img src="assets/img/arrow-right-circle-fill.svg" (click)="nextbutton()" class="rightarrow2"
-            alt="right-arr-btn">
+            alt="right-arr-btn" *ngIf="!checked">
          
         </div>
 
@@ -350,7 +350,7 @@
                   <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
                     *ngIf="proSub.invalid && (proSub.dirty || proSub.touched)" class="alert">
                     <span style="color:red;position: relative;" *ngIf="proSub.errors?.['required']">
-                      *Product SubGroup is required.
+                      *Product SubGroup   is required.
                     </span>
                   </p>
 

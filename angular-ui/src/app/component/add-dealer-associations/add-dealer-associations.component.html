@@ -113,7 +113,7 @@
                 <div class="col-md-9 sltd-span">
                   <span class="selectedname" *ngIf="false">Selected Geogrphies</span>
                   <span class="selectedcolor"
-                    *ngIf="showselectedgeovalue">{{aboveDefaultGeoOfName}}({{selectedcount}}/{{tottalgeoCount}})</span>
+                    *ngIf="showselectedgeovalue">{{aboveDefaultGeoOfName}}({{selectedcountGeo}}/{{tottalgeoCount}})</span>
                   <!-- <span class="selectedclr2">India(15/15)</span>;
                   <span class="astr">Singpore(0/6)</span>;
                   <span class="selectedclr2">Japan(23/23)</span> -->
@@ -437,7 +437,7 @@
     </div>
   </div>
   <div class="">
-    <div class="icon btnhover refreshbtn" style="cursor: pointer">
+    <div class="icon btnhover refreshbtn" style="cursor: pointer" (click)="resetAll()">
       <img class="refresh" src="assets/img/ultrarefresh.svg" style="position: relative; top: 9px; left: 12px"
         alt="refresh" />
     </div>

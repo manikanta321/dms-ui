@@ -30,7 +30,7 @@ export class AddPromotionGeographiesComponent implements OnInit {
   completed : boolean = false;
   geodata:any=[];
   aarrayToPush:any=[];
-  selectedcount:any=0;
+  selectedcountGeo:any=0;
   constructor(
  private assoservice:AssosiationServicesService,
  private dialogRef: MatDialogRef<any>,
@@ -63,21 +63,22 @@ let productID = event;
 
       if (index !== -1) {
         this.aarrayToPush.splice(index, 1);
-        this.selectedcount=this.aarrayToPush.length
+        this.selectedcountGeo=this.aarrayToPush.length
 
 
       }
       else {
         this.aarrayToPush.push(productID);
-        this.selectedcount=this.aarrayToPush.length
+        this.selectedcountGeo=this.aarrayToPush.length
 
       }
 
       console.log('aarrayToPush', this.aarrayToPush)
       let allgeoItemCount = this.geodata[0].geoCount;
-      let selectedGeoItemCount = this.selectedcount;
+      let selectedGeoItemCount = this.selectedcountGeo;
       if(allgeoItemCount == selectedGeoItemCount) {
         this.allComplete = true;
+        this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
       }
       else {
         this.allComplete = false;
@@ -102,7 +103,7 @@ let productID = event;
   saveGeo(){
     localStorage.setItem("geoAsso", JSON.stringify(this.aarrayToPush));
     localStorage.setItem("aboveDefaultGeoOfName", JSON.stringify(this.geodata[0].aboveDefaultGeoName));
-    localStorage.setItem("selectedcount", JSON.stringify(this.selectedcount));
+    localStorage.setItem("selectedcountGeo", JSON.stringify(this.selectedcountGeo));
     localStorage.setItem("tottalgeoCount", JSON.stringify(this.geodata[0].geoCount));
 
 

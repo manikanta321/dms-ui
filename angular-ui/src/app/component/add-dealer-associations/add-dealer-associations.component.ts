@@ -121,7 +121,7 @@ export class AddDealerAssociationsComponent implements OnInit {
   toppingList3: any = [];
   dealerListArray: any = [];
   selectedcount: any;
-
+  selectedcountGeo : any;
   toppingList: any = [
     'Product Name12',
     'Product Name2',
@@ -302,7 +302,7 @@ export class AddDealerAssociationsComponent implements OnInit {
     this.showselectedgeovalue = true;
     this.storedNames123 = localStorage.getItem("geoAsso");
     this.aboveDefaultGeoOfName = localStorage.getItem("aboveDefaultGeoOfName");
-    this.selectedcount = localStorage.getItem("selectedcount");
+    this.selectedcountGeo = localStorage.getItem("selectedcountGeo");
     this.tottalgeoCount = localStorage.getItem("tottalgeoCount");
 
     var objectsFromStorage = JSON.parse(this.storedNames123)
@@ -437,7 +437,6 @@ export class AddDealerAssociationsComponent implements OnInit {
 
 
   formatGeoDetailsObj(geographyData, heirarchyValue) {
-    debugger
     let formatedGeography: any = [];
 
     geographyData.forEach(element => {
@@ -658,7 +657,6 @@ if(geographyData[0].geographyId){
 
   }
   saveAssociationdealer() {
-debugger
     this.geoProperties = [];
 
     console.log('savedealerlist', this.dealerList);
@@ -1534,5 +1532,8 @@ debugger
       console.log(res.response);
       this.tooltipDataDealer = res.response;
     })
+  }
+  resetAll(){
+ 
   }
 }

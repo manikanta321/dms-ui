@@ -496,7 +496,6 @@ export class MaterialAddEditpopupComponent {
       return;
     }
     this.geoProperties = JSON.parse(JSON.stringify(this.geoGraphyFullData[3].geoProperties));
-    debugger
     this.geoProperties = this.geoProperties.map(item => {
       delete item.geographyName;
       return item;

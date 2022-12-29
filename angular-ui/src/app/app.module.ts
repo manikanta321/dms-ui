@@ -178,6 +178,7 @@ import { OrderlistShipPopupComponent } from './component/order-list/orderlist-sh
 import { MaterialClassificationStatusPopupComponent } from './component/material-classification-status-popup/material-classification-status-popup.component';
 import { GeographicListActionComponent } from './component/geographic-list/geographic-settings-action/geographic-list-action/geographic-list-action.component';
 import { AddTypesSuccessfulDonePopupComponent } from './component/add-types-popup/add-types-successful-done-popup/add-types-successful-done-popup.component';
+import { OrderActionShipmentComponent } from './component/orders/order-action-shipment/order-action-shipment.component';
 
 @NgModule({
   declarations: [
@@ -449,6 +450,7 @@ import { AddTypesSuccessfulDonePopupComponent } from './component/add-types-popu
           MaterialClassificationStatusPopupComponent,
           GeographicListActionComponent,
           AddTypesSuccessfulDonePopupComponent,
+          OrderActionShipmentComponent,
           
   ],
   imports: [

@@ -149,6 +149,7 @@
 .listicon {
   display: flex;
   justify-content: end;
+  margin-right: 7px;
 }
 
 .searchBox1 {

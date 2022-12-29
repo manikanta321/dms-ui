@@ -340,3 +340,50 @@ label {
 .dlr-info {
     padding-left: 24px;
 }
+.dropdown-placeholder {
+    background: white;
+    color: #808080;
+    top: 0;
+    position: absolute;
+    height: 41px;
+    line-height: 41px;
+    left: 1px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    width: 80%;
+    border-radius: 10px 0 0 10px !important;
+    padding-left: 10px;
+    pointer-events: none;
+  }
+::ng-deep.targetdrp .ng-select.ng-select-single .ng-select-container {
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+    border-radius: 10px;
+  }
+  ::ng-deep.targetdrp .ng-placeholder {
+    color: #999;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+  }
+  ::ng-deep.searchbtnIcon.ng-select .ng-arrow-wrapper .ng-arrow {
+    display: none !important;
+  }
+  
+  ::ng-deep.searchbtnIcon.ng-select span.ng-arrow-wrapper:before{
+    content: url(/assets/img/search-icon.svg);
+    display: inline-block;
+    margin-left: -15px;
+  }
+  .Dealers-placeholder.dropdown-placeholder .selected-placeholder {
+    color: #D23F00 !important;
+ }
+ ::ng-deep.Dealers .multiselect-dropdown .dropdown-btn .selected-item {
+   background: #D23F00 !important;
+   font-size: 12px;
+ }
+ 
+ ::ng-deep .Dealers .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+   background: #D23F00 !important;
+ }

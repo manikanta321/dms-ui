@@ -10,6 +10,7 @@ import { CustomDatePopupComponent } from '../custom-date-popup/custom-date-popup
 import { SalesBulkUploadComponent } from '../../sales-bulk-upload/sales-bulk-upload.component';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { UserService } from 'src/app/services/user.service';
+import { OrderActionShipmentComponent } from '../order-action-shipment/order-action-shipment.component';
 
 @Component({
   selector: 'app-orders-shipment',
@@ -67,6 +68,13 @@ export class OrdersShipmentComponent implements OnInit {
     },
     {  headerName: "Status",
       field: 'statusName',      tooltipField:"statusName",
+    },
+    {
+      headerName: '',
+      colId: 'action',
+      cellRenderer: OrderActionShipmentComponent,
+      editable: false,
+      maxWidth: 50
     },
   ];
   public defaultColDef: ColDef = {
@@ -399,5 +407,9 @@ export class OrdersShipmentComponent implements OnInit {
           this.shipmentDatalist = res.response;
           console.log("Response",this.shipmentDatalist)
         });
+    }
+    shipmentDownload() {
+      this.gridApi.exportDataAsCsv();
+  
     }
 }

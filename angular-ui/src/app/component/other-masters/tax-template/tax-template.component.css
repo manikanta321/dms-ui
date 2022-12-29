@@ -47,8 +47,8 @@
 }
 
 .searchBox:hover>.searchButton {
-  display: bolck;
-  color: #000;
+  display: block;
+   color: #000; 
   float: left;
   width: 42px;
   height: 42px;
@@ -56,11 +56,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: 0.2s;
+   transition: 0.2s; 
   background: none;
   position: relative;
   right: 287px;
   top: 2px;
+  
 
 }
 
@@ -68,7 +69,7 @@
   display: block;
   height: 26px;
   border: none;
-  background: #000000;
+   background: #000000; 
   color: white;
   border-radius: 5px;
   position: absolute;
@@ -554,3 +555,4 @@
 .stts-placeholder.dropdown-placeholder .selected-placeholder {
   color: #000 !important;
 }
+

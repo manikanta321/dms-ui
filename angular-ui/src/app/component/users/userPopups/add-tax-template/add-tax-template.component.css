@@ -1,4 +1,38 @@
-
+.taxitems
+{
+    font-family: 'Gilroy';
+    font-weight: 500;
+    position: relative;
+    left: 17px;
+    
+}
+.aligment11
+{
+    position: relative;
+    top:-12px;
+}
+.Optionsin
+{
+    
+    font-family: 'Gilroy';
+    font-weight: 500; 
+    position: relative;
+    left: 17px;
+    
+    
+}
+.formula
+{
+    font-family: 'Gilroy';
+    font-weight: 500;
+    position: relative;
+    left: 17px;
+}
+.name2
+{
+    
+    margin-left: 8px;
+}
 .scroll{
     overflow-y: scroll;
     overflow-x: hidden;

@@ -20,6 +20,7 @@ font-family: 'Gilroy';
     /* margin-top: 18px; */
      height:41px ;
     width: 150px; 
+    cursor: pointer;
     }
 .exit{
 background: #fff;
@@ -30,6 +31,7 @@ border-radius: 10px;
 
 height: 41px;
 width: 150px; 
+cursor: pointer;
 
 
 

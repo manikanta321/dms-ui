@@ -247,11 +247,64 @@ input {
 }
 
 
-::ng-deep.dropdown-btn span .ng-star-inserted {
-    position: absolute !important;
+::ng-deep.dlsr  .dropdown-btn span .ng-star-inserted {
+    /* position: absolute !important;
     right: 20px !important;
-    bottom: 10px;
+    bottom: 10px; */
+
+
+    position: absolute !important;
+  right: 62px !important;
+  bottom: 0px;
+  top: 50px !important;
+
+  
+
+   width: 42px;
+ border: 1px solid #337ab7;
+   background: #D23F00 !important;
+     font-size: 12px;
+     box-shadow: 1px 1px #959595;
+     color: #fff;
+     height: 20px;
+     border-radius: 15px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: -1px;
+
+  padding-left: 5px;
 }
+.orderlistdropdown
+{
+    margin-left: 3px;
+}
+
+::ng-deep .STATUSS1 .dropdown-btn span .ng-star-inserted {
+   
+
+
+    position: absolute !important;
+  right: 60px !important;
+  bottom: 0px;
+  top: 50px !important;
+
+  
+
+   width: 42px;
+ border: 1px solid #337ab7;
+   background: black !important;
+     font-size: 12px;
+     box-shadow: 1px 1px #959595;
+     color: #fff;
+     height: 20px;
+     border-radius: 15px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: -1px;
+
+  padding-left: 5px;
+}
+
 
 ::ng-deep.dropdown-multiselect__caret:before {
     position: relative;

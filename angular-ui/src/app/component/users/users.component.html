@@ -33,12 +33,12 @@
           </div>
           <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;">
             <form [formGroup]="myForms"  class="dropdown-form">
-              <ng-multiselect-dropdown class="stts statuses" name="citys" [placeholder]="'Status'" formControlName="citys"
+              <ng-multiselect-dropdown class="stts statuses111" name="citys" [placeholder]="'Status'" formControlName="citys"
                 [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
                 (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
                 (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
               </ng-multiselect-dropdown>
-              <div class="dropdown-placeholder stts-placeholder">
+              <div class="dropdown-placeholder stts-placeholder" >
                 <span   *ngIf="myForms.get('citys').value.length == 0"> Select Status </span>
               <span    *ngIf="myForms.get('citys').value.length == 1"  class="selected-placeholder"> {{myForms.get('citys').value.length}} Status selected </span>
               <span    *ngIf="myForms.get('citys').value.length > 1"  class="selected-placeholder"> {{myForms.get('citys').value.length}} Status(s) selected </span>

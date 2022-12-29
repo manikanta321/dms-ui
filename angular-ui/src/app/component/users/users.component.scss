@@ -127,34 +127,39 @@
   position: absolute !important;
   right: 15px !important;
   bottom: 0px;
-  top: 48px !important;
+  top: 50px !important;
 
   
 
-   width: 51px;
+   width: 46px;
  border: 1px solid #337ab7;
    background: #D23F00 !important;
      font-size: 12px;
      box-shadow: 1px 1px #959595;
      color: #fff;
-     height: 22px;
+     height: 20px;
      border-radius: 15px;
   text-align: center;
+  margin-left: 10px;
+  margin-right: -1px;
+
+  padding-left: 5px;
 }
-::ng-deep .statuses .dropdown-btn span .ng-star-inserted {
+::ng-deep .statuses111 .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
-  right: 15px !important;
+  right: 76px !important;
   bottom: 0px;
-  top: 48px !important;
-  width: 51px;
+  top: 50px !important;
+  width: 46px;
   border: 1px solid #337ab7;
   background: black !important;
   font-size: 12px;
   box-shadow: 1px 1px #959595;
   color: #fff;
-  height: 22px;
+  height: 20px;
   border-radius: 15px;
   text-align: center;
+  padding-left: 7px;
 }
 ::ng-deep.dropdown-multiselect__caret:before {
   position: relative;
@@ -254,7 +259,7 @@
 }
 
 ::ng-deep.stts .multiselect-dropdown .dropdown-btn .selected-item {
-  right: 27% !important;
+  right: 2% !important;
 }
 
 .multiselect-dropdown .dropdown-btn .dropdown-multiselect--active .dropdown-multiselect__caret {

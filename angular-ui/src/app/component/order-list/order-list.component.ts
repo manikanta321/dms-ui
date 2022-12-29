@@ -721,7 +721,7 @@ selectdays(){
         textField: 'customerName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: true
       };
       this.selectedStatus = [];
@@ -898,7 +898,7 @@ selectdays(){
         textField: 'statusname',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: false
       };
       this.selectedItems = [];

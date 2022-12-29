@@ -21,11 +21,11 @@ export class ActiveSuccessTaxTemplateComponent implements OnInit {
     this.taxId = localStorage.getItem("taxId");
     this.taxTemplateName=localStorage.getItem("taxTemplateName");
 
-    setTimeout(() => {
+     setTimeout(() => {
 
-      this.closeDialog()
+       this.closeDialog()
 
-    }, 5000);
+     }, 5000);
   }
   closeDialog(){
     this.dialogRef.close();

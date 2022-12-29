@@ -20,6 +20,7 @@
         margin-top: 15px;
         width: 150px;
         height: 41px;
+        cursor: pointer;
         }
     .exit{
     background: #fff;
@@ -29,6 +30,7 @@
     border-radius: 10px;
     height: 41px;
     width: 150px;
+    cursor: pointer;
     }
     .close-icon{
         left: 100%;

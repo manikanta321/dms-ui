@@ -27,7 +27,7 @@
                 
                 <div  class="row font">
                     <div class="col-8">
-                        <label>Name<span>*</span></label>
+                        <label class="NAME2">Name<span>*</span></label>
                         <br>
                         <input style="height: 43px;width: 220px;border-radius: 10px;border: ' 0.5px solid #000000';" type="text"   formControlName="TaxTemplateName" value="{{taxItemName}}" >
             
@@ -40,11 +40,11 @@
                    
                 </div> 
               <table formArrayName="TaxDetails" class="font" >
-                    <tr>
+                    <tr >
                         <th></th>
-                        <th>Tax item Name</th>
-                        <th>Options (in %)</th>       
-                        <th>Formula</th>
+                        <th id="TaxitemName2">Tax item Name</th>
+                        <th id="Options2">Options (in %)</th>       
+                    <th id="Formula2">Formula</th>    
                         <td  (click)="addQuantity(0)"><mat-icon  style="cursor: pointer;">add_circle</mat-icon>
                         </td>
     

@@ -480,8 +480,8 @@ export class UsersComponent implements OnInit {
         textField: 'roleName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
-        allowSearchFilter: false
+        itemsShowLimit: 1,
+        allowSearchFilter: true
       };
       this.selectedItems = [];
     });
@@ -529,8 +529,8 @@ export class UsersComponent implements OnInit {
         textField: 'statusName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
-        allowSearchFilter: false
+         itemsShowLimit: 1,
+        allowSearchFilter: true
       };
       this.selectedStatus = [];
       this.toppings1 = new FormControl(this.toppingList1);

@@ -23,11 +23,11 @@ export class SuccessDeactivateTaxComponentComponent implements OnInit {
     this.taxTemplateName=localStorage.getItem("taxTemplateName");
 
 
-    setTimeout(() => {
+     setTimeout(() => {
 
-      this.closeDialog()
+       this.closeDialog()
 
-    }, 5000);
+     }, 5000);
 
   }
   closeDialog(){

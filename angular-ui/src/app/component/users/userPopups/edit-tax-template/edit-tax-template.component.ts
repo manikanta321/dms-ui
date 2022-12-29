@@ -61,9 +61,9 @@ export class EditTaxTemplateComponent implements OnInit {
 
          
              this.letter=detail.displayOrder
-            debugger
+             debugger
             TaxCodeName.setValue(detail.taxCodeName);
-            debugger
+             debugger
             PercentageValue.setValue(detail.percentageValue);
             Formula.setValue(detail.formula);
             DisplayOrder.setValue(detail.displayOrder);

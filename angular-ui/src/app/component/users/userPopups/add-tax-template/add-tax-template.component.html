@@ -13,7 +13,7 @@
                 
                 <div  class="row font">
                     <div class="col-8">
-                        <label>Name<span>*</span></label>
+                        <label class="name2">Name<span>*</span></label>
                         <br>
                         <input style="height: 43px;width: 220px;border-radius: 10px;border: ' 0.5px solid #000000';" type="text" placeholder="Enter" id="TaxTemplateName" name="TaxTemplateName"  formControlName="TaxTemplateName" >
                        
@@ -28,14 +28,14 @@
               <table formArrayName="TaxDetails" class="font" >
                     <tr>
                         <th></th>
-                        <th>Tax item Name</th>
-                        <th>Options (in %)</th>       
-                        <th>Formula</th>
+                        <th class="taxitems">Tax item Name</th>
+                        <th class="Optionsin">Options (in %)</th>       
+                        <th class="formula">Formula</th>
                         <td  (click)="addQuantity(0)"><mat-icon  style="cursor: pointer;">add_circle</mat-icon>
                         </td>
     
                     </tr>
-                    <tr *ngFor="let quantity of TaxDetails().controls; let i=index" [formGroupName]="i">
+                    <tr *ngFor="let quantity of TaxDetails().controls; let i=index" [formGroupName]="i" class="aligment11">
                         <td><input type="text"  class="minus-icon1"  formControlName="DisplayOrder" readonly></td>
                         <td><input type="text" placeholder="Enter" style="width: 160px;height: 43px;border-radius: 10px;border: 0.5px solid #000000;" formControlName="TaxCodeName" ></td>
                         <td><input type="text" placeholder="Enter" style="width: 160px;height: 43px;border-radius: 10px;border: 0.5px solid #000000;"  formControlName="PercentageValue"></td>

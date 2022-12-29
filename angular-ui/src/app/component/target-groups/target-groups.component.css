@@ -1,4 +1,29 @@
+::ng-deep .tgd .dropdown-btn span .ng-star-inserted {
+  
 
+
+  
+
+  position: absolute !important;
+right: 73px !important;
+bottom: 0px;
+top: 50px !important;
+ width: 45px;
+border: 1px solid #337ab7;
+background: #0353A4 !important;
+
+   font-size: 12px;
+   box-shadow: 1px 1px #959595;
+   color: #fff;
+   height: 20px;
+   border-radius: 15px;
+text-align: center;
+margin-left: 10px;
+margin-right: -1px;
+padding-top: 0px;
+
+padding-left: 10px;
+}
 
 /* .tableclass{
     background-color: white;

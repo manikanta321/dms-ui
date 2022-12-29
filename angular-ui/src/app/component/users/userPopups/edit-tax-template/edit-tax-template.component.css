@@ -1,4 +1,40 @@
 
+.NAME2
+{
+    margin-left: 8px;
+}
+#TaxitemName2
+{
+    font-family: 'Gilroy';
+    font-weight: 500;
+     position: relative;
+    top: 13px;
+    left: 20px; 
+    
+    
+}
+#Options2
+{
+    font-family: 'Gilroy';
+     font-weight: 500;
+     position: relative;
+     top: 13px;
+     left: 20px;
+     
+   
+     
+}
+#Formula2
+{
+    font-family: 'Gilroy';
+     font-weight: 500;
+     padding-left: 22px;
+     padding-top: 25px;
+}
+.addiconss
+{
+    background-color: #0091EA;
+}
 .scroll{
     overflow-y: scroll;
     overflow-x: hidden;
@@ -134,10 +170,11 @@ color: white;
 
 }
 .E-saveBtn:hover{
-    border: 2px solid rgba(250, 63, 63, 1);
+    border: 2px solid black;
+    
    }
 .E-cancelBtn:hover{
-    border: 2px solid rgba(250, 63, 63, 1);
+    border: 2px solid black;
    }
    .close-icon{
     left: 100%;

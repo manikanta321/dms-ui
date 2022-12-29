@@ -173,8 +173,8 @@ else
       textField: 'statusName',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 1,
-      allowSearchFilter: true
+      itemsShowLimit: 2,
+      allowSearchFilter: false
     };
     this.dropdownSettings2 = {
       singleSelection: false,

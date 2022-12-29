@@ -1,9 +1,9 @@
 <div class="orderlist-section mt-3" style="padding:15px;">
 <div class="fiters-sec">
-<div class="row">
+<div class="row orderlistdropdown">
     <div class="col-md-2 col-lg-2 col-sm-2" style="padding-left: 0px;">
         <form [formGroup]="myForm" class="dropdown-form">
-          <ng-multiselect-dropdown class="Dealers" name="city" [placeholder]="'Dealers'" formControlName="city"
+          <ng-multiselect-dropdown class="Dealers dlsr" name="city" [placeholder]="'Dealers'" formControlName="city"
             [disabled]="disabled" [settings]="dropdownSettings" [data]="dealerlist"
             (onSelect)="DealerorderSelect($event)" (onDeSelect)="DealerDeselect($event)"(onDeSelectAll)="DealerDeselectAll($event)"
             (onSelectAll)="DealerorderSelectAll($event)">
@@ -44,7 +44,7 @@
       </div>
     <div class="col-md-2 col-lg-2 col-sm-2 stts-dropdown" >
         <form [formGroup]="myForm2" class="dropdown-form">
-          <ng-multiselect-dropdown class="Status" name="status" [placeholder]="'Status'" formControlName="status"
+          <ng-multiselect-dropdown class="Status STATUSS1" name="status" [placeholder]="'Status'" formControlName="status"
             [disabled]="disabled" [settings]="dropdownSettings2" [data]="statusDropList" (onSelect)="statusdropdownselect($event)"
             (onDeSelect)="statusDeselect($event)"(onDeSelectAll)="statusDeselectAll($event)"(onSelectAll)="statusselectAll($event)" >
           </ng-multiselect-dropdown>

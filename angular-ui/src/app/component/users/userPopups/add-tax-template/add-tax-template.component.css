@@ -41,7 +41,10 @@
   .arrow
   {
     
-    margin-top: 14px;
+     margin-top: 14px; 
+    
+    width: 404px;
+    margin-left: -9px;
   }
   
   ::-webkit-scrollbar {
@@ -61,6 +64,7 @@
   }
 .tax-head{
     height: 271px;
+    width: 701px;
 }
 
 .addU {

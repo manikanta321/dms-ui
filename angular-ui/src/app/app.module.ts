@@ -179,6 +179,7 @@ import { MaterialClassificationStatusPopupComponent } from './component/material
 import { GeographicListActionComponent } from './component/geographic-list/geographic-settings-action/geographic-list-action/geographic-list-action.component';
 import { AddTypesSuccessfulDonePopupComponent } from './component/add-types-popup/add-types-successful-done-popup/add-types-successful-done-popup.component';
 import { OrderActionShipmentComponent } from './component/orders/order-action-shipment/order-action-shipment.component';
+import { TargetGroupsActionComponent } from './component/target-groups/target-groups-action/target-groups-action.component';
 
 @NgModule({
   declarations: [
@@ -451,6 +452,7 @@ import { OrderActionShipmentComponent } from './component/orders/order-action-sh
           GeographicListActionComponent,
           AddTypesSuccessfulDonePopupComponent,
           OrderActionShipmentComponent,
+          TargetGroupsActionComponent,
           
   ],
   imports: [

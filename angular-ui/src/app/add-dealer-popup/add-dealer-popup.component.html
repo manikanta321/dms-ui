@@ -43,7 +43,7 @@
                                                 class="addDelercols form-control" required
                                                 placeholder="Enter your name">
                                             <span class="text-danger"
-                                                *ngIf="addAddressDetailsFormControl['CustomerName'].touched || submitted && addAddressDetailsFormControl['CustomerName'].errors && addAddressDetailsFormControl['CustomerName'].errors['required']">
+                                                *ngIf="addAddressDetailsFormControl['CustomerName'].touched  && addAddressDetailsFormControl['CustomerName'].errors && addAddressDetailsFormControl['CustomerName'].errors['required']">
                                                 Name is required
                                             </span>
                                         </div>
@@ -53,7 +53,7 @@
                                             <input type="text" formControlName="Email" class="addDelercols form-control"
                                                 required placeholder="Enter your Email ID">
                                                 <span class="text-danger"
-                                                *ngIf="addAddressDetailsFormControl['Email'].touched || submitted && addAddressDetailsFormControl['Email'].errors && addAddressDetailsFormControl['Email'].errors['required']">
+                                                *ngIf="addAddressDetailsFormControl['Email'].touched  && addAddressDetailsFormControl['Email'].errors && addAddressDetailsFormControl['Email'].errors['required']">
                                                 Email is required
                                             </span>
                                         </div>
@@ -63,7 +63,7 @@
                                             <input type="text" formControlName="Code" class="addDelercolss form-control"
                                                 required placeholder="Enter your code">
                                                 <span class="text-danger"
-                                                *ngIf="addAddressDetailsFormControl['Code'].touched || submitted && addAddressDetailsFormControl['Code'].errors && addAddressDetailsFormControl['Code'].errors['required']">
+                                                *ngIf="addAddressDetailsFormControl['Code'].touched && addAddressDetailsFormControl['Code'].errors && addAddressDetailsFormControl['Code'].errors['required']">
                                                 Code is required
                                             </span>
                                         </div>
@@ -79,7 +79,7 @@
                                                 placeholder="Enter your company website"
                                                >
                                                <span class="text-danger"
-                                               *ngIf="addAddressDetailsFormControl['website'].touched || submitted && addAddressDetailsFormControl['website'].errors && addAddressDetailsFormControl['website'].errors['required']">
+                                               *ngIf="addAddressDetailsFormControl['website'].touched  && addAddressDetailsFormControl['website'].errors && addAddressDetailsFormControl['website'].errors['required']">
                                                Website is required
                                            </span>
                                         </div>
@@ -90,7 +90,7 @@
                                                 class="addDelercols form-control" required placeholder="Enter phone no"
                                                >
                                                <span class="text-danger"
-                                               *ngIf="addAddressDetailsFormControl['Phoneno'].touched || submitted && addAddressDetailsFormControl['Phoneno'].errors && addAddressDetailsFormControl['Phoneno'].errors['required']">
+                                               *ngIf="addAddressDetailsFormControl['Phoneno'].touched  && addAddressDetailsFormControl['Phoneno'].errors && addAddressDetailsFormControl['Phoneno'].errors['required']">
                                                Phone No is required
                                            </span>
                                         </div>
@@ -102,7 +102,7 @@
                                                 placeholder="Enter your company ID"
                                                 >
                                                 <span class="text-danger"
-                                                *ngIf="addAddressDetailsFormControl['company_id'].touched || submitted && addAddressDetailsFormControl['company_id'].errors && addAddressDetailsFormControl['company_id'].errors['required']">
+                                                *ngIf="addAddressDetailsFormControl['company_id'].touched  && addAddressDetailsFormControl['company_id'].errors && addAddressDetailsFormControl['company_id'].errors['required']">
                                                 Company ID is required
                                             </span>
                                         </div>
@@ -118,7 +118,7 @@
                                                 class="addDelercols form-control" required
                                                 placeholder="Enter and select" >
                                                 <span class="text-dangerr"
-                                                *ngIf="addAddressDetailsFormControl['OtherIdentifier'].touched || submitted && addAddressDetailsFormControl['OtherIdentifier'].errors && addAddressDetailsFormControl['OtherIdentifier'].errors['required']">
+                                                *ngIf="addAddressDetailsFormControl['OtherIdentifier'].touched  && addAddressDetailsFormControl['OtherIdentifier'].errors && addAddressDetailsFormControl['OtherIdentifier'].errors['required']">
                                                 Other Identifer is required
                                             </span>
                                             <img src="../assets/img/search.png" class="search">
@@ -147,7 +147,7 @@
                                                 class="addDelercols form-control" required placeholder="Enter your name"
                                               >
                                               <span class="text-danger"
-                                              *ngIf="addAddressDetailsFormControl['UserName'].touched || submitted && addAddressDetailsFormControl['UserName'].errors && addAddressDetailsFormControl['UserName'].errors['required']">
+                                              *ngIf="addAddressDetailsFormControl['UserName'].touched  && addAddressDetailsFormControl['UserName'].errors && addAddressDetailsFormControl['UserName'].errors['required']">
                                               UserName is required
                                           </span>
                                         </div>
@@ -158,7 +158,7 @@
                                                 class="addDelercols form-control" required
                                                 placeholder="Enter your email ID">
                                                 <span class="text-danger"
-                                                *ngIf="addAddressDetailsFormControl['EmailId'].touched || submitted && addAddressDetailsFormControl['EmailId'].errors && addAddressDetailsFormControl['EmailId'].errors['required']">
+                                                *ngIf="addAddressDetailsFormControl['EmailId'].touched  && addAddressDetailsFormControl['EmailId'].errors && addAddressDetailsFormControl['EmailId'].errors['required']">
                                                 Email ID is required
                                             </span>
 
@@ -170,7 +170,7 @@
                                                 class="addDelercols form-control" required
                                                 placeholder="Enter your phone no" >
                                                 <span class="text-danger"
-                                                *ngIf="addAddressDetailsFormControl['Mobile'].touched || submitted && addAddressDetailsFormControl['Mobile'].errors && addAddressDetailsFormControl['Mobile'].errors['required']">
+                                                *ngIf="addAddressDetailsFormControl['Mobile'].touched  && addAddressDetailsFormControl['Mobile'].errors && addAddressDetailsFormControl['Mobile'].errors['required']">
                                                 Phone No is required
                                             </span>
                                         </div>
@@ -184,7 +184,7 @@
                                                 placeholder="Enter your First Name"
                                                >
                                                <span class="text-danger"
-                                               *ngIf="addAddressDetailsFormControl['FirstName'].touched || submitted && addAddressDetailsFormControl['FirstName'].errors && addAddressDetailsFormControl['FirstName'].errors['required']">
+                                               *ngIf="addAddressDetailsFormControl['FirstName'].touched  && addAddressDetailsFormControl['FirstName'].errors && addAddressDetailsFormControl['FirstName'].errors['required']">
                                                First Name is required
                                            </span>
                                         </div>
@@ -195,7 +195,7 @@
                                                 class="addDelercols form-control" required
                                                 placeholder="Enter your Last Name" >
                                                 <span class="text-danger"
-                                                *ngIf="addAddressDetailsFormControl['lastName'].touched || submitted && addAddressDetailsFormControl['lastName'].errors && addAddressDetailsFormControl['lastName'].errors['required']">
+                                                *ngIf="addAddressDetailsFormControl['lastName'].touched  && addAddressDetailsFormControl['lastName'].errors && addAddressDetailsFormControl['lastName'].errors['required']">
                                                 Last Name is required
                                             </span>
                                         </div>
@@ -210,7 +210,7 @@
                                                 </option>
                                             </select>
                                             <span class="text-danger"
-                                            *ngIf="addAddressDetailsFormControl['StatusId'].touched || submitted && addAddressDetailsFormControl['StatusId'].errors && addAddressDetailsFormControl['StatusId'].errors['required']">
+                                            *ngIf="addAddressDetailsFormControl['StatusId'].touched  && addAddressDetailsFormControl['StatusId'].errors && addAddressDetailsFormControl['StatusId'].errors['required']">
                                             Status is required
                                         </span>
                                         </div>

@@ -369,6 +369,7 @@ padding: 17px;
 }
 ::ng-deep.catty .multiselect-dropdown .dropdown-btn .selected-item {
   background: #00187A !important;
+  margin-left:-13px;
 }
 
 ::ng-deep .catty .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -376,6 +377,7 @@ padding: 17px;
 }
 ::ng-deep.addsubc .multiselect-dropdown .dropdown-btn .selected-item {
   background: #0C5A3E !important;
+  margin-left:-10px;
 }
 
 ::ng-deep .addsubc .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -383,6 +385,7 @@ padding: 17px;
 }
 ::ng-deep.typy .multiselect-dropdown .dropdown-btn .selected-item {
   background: #C32F27 !important;
+  margin-left:-9px;
 }
 
 ::ng-deep .typy .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -390,13 +393,16 @@ padding: 17px;
 }
 ::ng-deep.producty .multiselect-dropdown .dropdown-btn .selected-item {
   background: #44026C !important;
+  margin-left:-8px;
 }
 
 ::ng-deep .producty .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
   background: #44026C !important;
 }
+
 ::ng-deep.identifiers .multiselect-dropdown .dropdown-btn .selected-item {
   background: #006466 !important;
+  margin-left:-13px;
 }
 
 ::ng-deep .identifiers .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -416,4 +422,66 @@ padding: 17px;
 }
 .identifiers-placeholder.dropdown-placeholder .selected-placeholder {
   color: #006466 !important;
+}
+
+::ng-deep .prodId .dropdown-btn span .ng-star-inserted {
+  position: absolute !important;
+  right: 2px !important;
+  bottom: 0px;
+  top: 50px !important;
+  width: 42px;
+  border: 1px solid #337ab7;
+  background: #006466 !important;
+  font-size: 12px;
+  box-shadow: 1px 1px #959595;
+  color: #fff;
+  height: 20px;
+  border-radius: 15px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: -1px;
+
+  padding-left: 5px;
+  padding-top: 1px;
+}
+
+::ng-deep .addsubcProd .dropdown-btn span .ng-star-inserted {
+  position: absolute !important;
+  right: -1px !important;
+  bottom: 0px;
+  top: 50px !important;
+  width: 42px;
+  border: 1px solid #337ab7;
+  background: #0C5A3E !important;
+  font-size: 12px;
+  box-shadow: 1px 1px #959595;
+  color: #fff;
+  height: 20px;
+  border-radius: 15px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: -1px;
+
+  padding-left: 5px;
+  padding-top: 1px;
+}
+
+.typyy .dropdown-btn span .ng-star-inserted{
+  position: absolute !important;
+  right: 0px !important;
+  bottom: 0px;
+  top: 50px !important;
+  width: 42px;
+  border: 1px solid #337ab7;
+  background: #0C5A3E !important;
+  font-size: 12px;
+  box-shadow: 1px 1px #959595;
+  color: #fff;
+  height: 20px;
+  border-radius: 15px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: -1px;
+  padding-left: 5px;
+  padding-top: 1px;
 }

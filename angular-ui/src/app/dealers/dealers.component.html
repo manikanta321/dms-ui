@@ -1,9 +1,9 @@
 <div class="dealerss mt-3">
    <section>
-    <div class="row ml-3" >
+    <div class="row ml-3  " >
       <div class="col-md-2 col-lg-2 col-sm-2">
         <form [formGroup]="myForm">
-          <ng-multiselect-dropdown class="role" name="city" [placeholder]="''" formControlName="city"
+          <ng-multiselect-dropdown class="role dealersdropdown" name="city" [placeholder]="''" formControlName="city"
             [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList"
             (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
             (onDeSelectAll)="onItemDeSelectOrAll($event)" (onSelectAll)="onItemSelectOrAll($event)">
@@ -19,7 +19,7 @@
 
       <div class="col-md-2 col-lg-2 col-sm-2">
         <form [formGroup]="myForms1">
-          <ng-multiselect-dropdown class="role1" name="city1" [placeholder]="'Product'" formControlName="city1"
+          <ng-multiselect-dropdown class="role1 productdropdown" name="city1" [placeholder]="'Product'" formControlName="city1"
             [disabled]="disabled" [settings]="dropdownSettings2" [data]="ProductListArray"
             >
           </ng-multiselect-dropdown>
@@ -34,7 +34,7 @@
 
       <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;">
         <form [formGroup]="myForms">
-          <ng-multiselect-dropdown class="stts1" name="citys" [placeholder]="'Status'" formControlName="citys"
+          <ng-multiselect-dropdown class="stts1 statusdropdown" name="citys" [placeholder]="'Status'" formControlName="citys"
             [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
             (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
             (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
@@ -61,7 +61,7 @@
     <!-- <div class="row"> -->
       <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
       <!-- <div class="col-md-4"> -->
-        <div class="row">
+        <div class="row rowdropdown">
           <div class="col-lg-12 listicon">
             <div class="searchBox d-flex">
               <input class="searchInput font" type="text" name="" placeholder="Type & search for anything"

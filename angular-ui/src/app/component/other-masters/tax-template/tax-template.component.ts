@@ -443,7 +443,7 @@ onSearchChange($event:any , anything?:any){
   }
 
 addtaxTempl(){
-  this.dialog.open( AddTaxTemplateComponent,);
+  this.dialog.open( AddTaxTemplateComponent,{width: '760px'});
 }
 applyFilter(event: Event) {
 

@@ -13,6 +13,10 @@
   
   
 }
+.rowdropdown
+{
+  margin-top: 12px;
+}
 
 /* .tableclass{
     background-color: white;
@@ -169,11 +173,85 @@
 //   display: flex;
 //   max-width: 148px !important;
 // }
-::ng-deep.dropdown-btn span .ng-star-inserted {
+::ng-deep .dealersdropdown .dropdown-btn span .ng-star-inserted {
+  
+
+
   position: absolute !important;
-  right: 20px !important;
-  bottom: 10px;
+  right: -28px !important;
+  bottom: 0px;
+  top: 50px !important;
+
+  
+
+   width: 46px;
+ border: 1px solid #337ab7;
+ background: #006466 !important;
+     font-size: 12px;
+     box-shadow: 1px 1px #959595;
+     color: #fff;
+     height: 20px;
+     border-radius: 15px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: -1px;
+
+  padding-left: 5px;
 }
+
+::ng-deep .productdropdown .dropdown-btn span .ng-star-inserted {
+  
+
+
+  position: absolute !important;
+  right: 11px !important;
+  bottom: 0px;
+  top: 50px !important;
+
+  
+
+   width: 46px;
+ border: 1px solid #337ab7;
+ background: #44026C !important;
+     font-size: 12px;
+     box-shadow: 1px 1px #959595;
+     color: #fff;
+     height: 20px;
+     border-radius: 15px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: -1px;
+
+  padding-left: 5px;
+}
+
+::ng-deep .statusdropdown .dropdown-btn span .ng-star-inserted {
+  
+
+
+  position: absolute !important;
+  right: 23px !important;
+  bottom: 0px;
+  top: 50px !important;
+
+  
+
+   width: 46px;
+ border: 1px solid #337ab7;
+ background: black !important;
+     font-size: 12px;
+     box-shadow: 1px 1px #959595;
+     color: #fff;
+     height: 20px;
+     border-radius: 15px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: -1px;
+
+  padding-left: 5px;
+}
+
+
 
 ::ng-deep.dropdown-multiselect__caret:before {
   position: relative;

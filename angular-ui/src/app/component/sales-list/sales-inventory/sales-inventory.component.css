@@ -424,3 +424,42 @@
     ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
       border: 2px solid #000000 !important;
     }
+    ::ng-deep.Dealerdrp .multiselect-dropdown .dropdown-btn .selected-item {
+      background: #38405F !important;
+      font-size: 12px;
+    }
+    
+    ::ng-deep .Dealerdrp .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+      background: #38405F !important;
+    }
+  
+    
+    .Dealerdrp-placeholder.dropdown-placeholder .selected-placeholder {
+      color: #38405F  !important;
+    }
+    ::ng-deep.product .multiselect-dropdown .dropdown-btn .selected-item {
+      background: #44026C !important;
+      font-size: 12px;
+    }
+    
+    ::ng-deep .product .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+      background: #44026C !important;
+    }
+  
+    
+    .product-placeholder.dropdown-placeholder .selected-placeholder {
+      color: #44026C  !important;
+    }
+    ::ng-deep.geography .multiselect-dropdown .dropdown-btn .selected-item {
+      background: #006466 !important;
+      font-size: 12px;
+    }
+    
+    ::ng-deep .geography .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+      background: #006466 !important;
+    }
+  
+    
+    .geography-placeholder.dropdown-placeholder .selected-placeholder {
+      color: #006466  !important;
+    }

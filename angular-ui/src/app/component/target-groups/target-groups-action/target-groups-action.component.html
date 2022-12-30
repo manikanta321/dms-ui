@@ -1,0 +1,14 @@
+<!-- <p>target-groups-action works!</p> -->
+
+<i class="fa fa-ellipsis-v" #trigger  data-action="toggle" style="cursor: pointer;"></i>
+
+<div #content *ngIf="isOpen" class="menu-container">
+ 
+  <div (click)="editUser()" class="menu-item tick" > Edit <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+
+
+  <div (click)="deactive()" class="menu-item tick">Deactivate <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+
+  <div (click)="activate()" class="menu-item tick">Reactivate<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" > </div>
+
+</div>

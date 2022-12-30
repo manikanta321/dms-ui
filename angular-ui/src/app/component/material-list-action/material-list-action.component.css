@@ -15,6 +15,7 @@
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 15px;
+    top: 30px;
   }
   
   .menu-item:hover {
@@ -56,9 +57,9 @@
     padding-left: 10px;
     padding-top: 5px;
 }
-.hover{
+/* .hover{
     display: none;
-}
+} */
 /* img:hover{
     background-color: red;
 } */

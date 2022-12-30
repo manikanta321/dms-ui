@@ -21,7 +21,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
   buysets = true;
   rowData: any;
   columnDefs: any;
-  griddatapromotions:any=[]
+  griddatapromotions: any = []
   actineLabel: any;
   updateOrSave: boolean = false
   editData: boolean = false;
@@ -35,7 +35,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
   dealerid: any;
   arrayOfImages: any = [];
   imagesapis: any = [];
-  imagesid: any=[];
+  imagesid: any = [];
+  taxdropdowndata: any = [];
 
   constructor(private user: UserService,
     private orders: OrdersApisService,
@@ -44,14 +45,13 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
   ngOnInit(): void {
     this.buygg = localStorage.getItem('buygroupromo');
+    this.taxdropdown();
 
     let editV = localStorage.getItem('Edit');
 
     if (editV == 'Edit') {
       this.actineLabel = "Edit order";
       this.updateOrSave = !this.updateOrSave;
-
-
     }
     else {
       this.actineLabel = "Add order";
@@ -86,16 +86,19 @@ export class AddOrderPromotionlistComponent implements OnInit {
       this.image = 'assets/img/maximize-arrow.png';
     }
   }
-  buysetsGroups() {
-    this.buysets = !this.buysets;
-
-    if (this.buysets === false) {
-      this.image = 'assets/img/minimize-tag.png';
-    } else {
-      this.image = 'assets/img/maximize-arrow.png';
-    }
+  buysetsGroups(item) {
+    // this.buysets = !this.buysets;
+    let selectedGrp = this.griddatapromotions.find(x => x.productPromotionsId == item.productPromotionsId);
+    selectedGrp.isShowPromos = !selectedGrp.isShowPromos;
   }
 
+  taxdropdown() {
+    this.orders.taxtemplatedropdown().subscribe((res) => {
+      this.taxdropdowndata = res.response;
+      console.log(this.taxdropdowndata, "tax data")
+
+    });
+  }
 
   onSearchChange($event) {
 
@@ -136,8 +139,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
   getpromotionlistById(e, item) {
     // console.log(e, item);
     this.imagesid.push(item.productPromotionsId);
-    this.imagesid  = this.imagesid.filter((v, i) => this.imagesid.indexOf(v) === this.imagesid.lastIndexOf(v));
-    
+    this.imagesid = this.imagesid.filter((v, i) => this.imagesid.indexOf(v) === this.imagesid.lastIndexOf(v));
+
 
     let data = {
       "ProductPromotionId": this.imagesid,
@@ -146,9 +149,14 @@ export class AddOrderPromotionlistComponent implements OnInit {
     }
 
 
-    console.log(this.imagesid,"listdatapromotionsids")
+    console.log(this.imagesid, "listdatapromotionsids")
     this.orders.GetProductsOfPromotionForOrder(data).subscribe((res: any) => {
-       this.griddatapromotions = res.response;
+      this.griddatapromotions = res.response;
+      this.griddatapromotions.map(item => {
+        item.isShowPromos = false;
+
+        return item
+      })
       console.log(this.griddatapromotions, "griddatapromotions");
     });
   }

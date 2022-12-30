@@ -126,7 +126,7 @@
 
                                 <tr *ngFor="let Item of nonpromotionlist; let i=index;">
                                     <td>
-                                        <p class="itemLeft"><span class="promoItem">{{Item.promotionName}} </span>{{Item.stockitemname}}</p>
+                                        <p class="itemLeft"><span class="promoItem" *ngIf="i == 0"> NP </span>{{Item.stockitemname}}</p>
                                     </td>
                                     <td>
                                         <input type="text" [(ngModel)]="Item.uomname" placeholder="5"
@@ -426,6 +426,7 @@
                                         <th data-sortable="true">classification</th>
                                         <th data-sortable="true">SKU</th>
                                         <th data-sortable="true">Price</th>
+                                        <th data-sortable="true">Stock Qty</th>
                                         <th data-sortable="false">Tax Templete</th>
                                         <th data-sortable="false">Quantity</th>
                                         <th data-sortable="false">Amount</th>
@@ -439,7 +440,7 @@
                                         <td>{{Item.classification}}</td>
                                         <td>{{Item.productSKUName}}</td>
                                         <td>{{Item.mrp}}</td>
-
+                                        <td>{{Item.stockqty}}</td>
                                         <td>
                                             <select class="tax-select" placeholder="select" [(ngModel)]="Item.Taxid">
                                                 <option value="" selected hidden>Select tax</option>

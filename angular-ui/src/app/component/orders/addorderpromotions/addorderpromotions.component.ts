@@ -962,7 +962,6 @@ export class AddorderpromotionsComponent implements OnInit {
       obj.isPromotionSelected = selectedNonPromotionItem == undefined ? false : true;
       obj.Quantity = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.quantity;
       obj.Taxid = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.taxid;
-      // obj.price = (item.Quantity ?? 0) * item.mrp
       formattedList.push(obj);
     });
     // (Item.Quantity ?? 0) * Item.mrp
@@ -1027,6 +1026,7 @@ export class AddorderpromotionsComponent implements OnInit {
               x.promotionName = 'NP' + (i + 1);
               return x;
             })
+            this.AddorderNonpromotiondata = [];
             this.nonpromotionlist.forEach(item => {
               // Promocode: this.promotionName,
               let obj = {
@@ -1039,8 +1039,10 @@ export class AddorderpromotionsComponent implements OnInit {
                 "discount": item.discount,
                 "finalvalue": item.finalValue,
                 "taxvalue": item.taxvalue,
-                "amount": item.amount
+                "amount": item.amount,
+                "taxid": item.taxid,
               }
+              
               this.AddorderNonpromotiondata.push(obj)
             });
             this.Non_promotions = false;
@@ -1070,6 +1072,20 @@ export class AddorderpromotionsComponent implements OnInit {
   ordersubmit() {
     let loggedUserId = localStorage.getItem('logInId')
     console.log(this.startdate, "date")
+    let itemsCount = [];
+
+    // Push Non Promotion data to itemscount variable
+    if(this.AddorderNonpromotiondata && this.AddorderNonpromotiondata.length != 0 ){
+      let sendObj:any = {};
+      sendObj.promotionId = 0;
+      sendObj.promocode = 'NP';
+      sendObj.itemDetails = this.AddorderNonpromotiondata;
+    }
+
+    // Push Promotion data to itemscount variable
+
+
+    
     let data = {
       "CustomerId": this.customerId,
       "geoid": this.geographyId,
@@ -1080,8 +1096,9 @@ export class AddorderpromotionsComponent implements OnInit {
       "deliveryistruction": this.DeliveryInstructions,
       "requirementdate": this.selectedStartDate,
       "CreatedById": loggedUserId,
-      "itemcount": this.AddorderNonpromotiondata
+      "itemcount": itemsCount
     }
+    
     this.orders.addorderNonPromotions(data).subscribe((res) => {
 
       console.log(data, "data")

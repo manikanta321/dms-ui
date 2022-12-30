@@ -120,8 +120,8 @@ background: #D23F00 !important;
 
 ::ng-deep.dropdown-btn span .ng-star-inserted {
   position: absolute !important;
-  right: 20px !important;
-  bottom: 10px;
+  right: -14px !important;
+  bottom: -29px;
 }
 ::ng-deep.dropdown-multiselect__caret:before {
   position: relative;

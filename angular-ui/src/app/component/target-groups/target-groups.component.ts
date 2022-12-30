@@ -47,6 +47,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import * as moment from 'moment';
 import { AddTargetGroupComponent } from '../add-target-group/add-target-group.component';
 import { OtherMasterService } from 'src/app/services/other-master.service';
+import { TargetGroupsActionComponent } from './target-groups-action/target-groups-action.component';
 
 
 
@@ -86,6 +87,7 @@ export class TargetGroupsComponent implements OnInit {
   tagetGrpId:any = [];
   targetlistData:any = [];
   targetlistArray:any = [];
+  instancePopup:any = null;
 gridOptions : GridOptions ={
     defaultColDef: {
       resizable: true,
@@ -133,17 +135,16 @@ tooltipValueGetter:(params: ITooltipParams) => moment(params.value).format('DD M
 
 {   headerName: "No of Geographies",
 
-field: 'noOfGeographies',type: ['nonEditableColumn']
+field: 'noOfGeographies',type: ['nonEditableColumn'], maxWidth:200
 },
 
 
 {
   headerName: '',
   colId: 'action',
-  
-  
+  cellRenderer: TargetGroupsActionComponent,
   editable: false,
-  maxWidth: 75
+  maxWidth: 60
  
 },
 
@@ -425,6 +426,12 @@ handleRowDataChanged(event) {
 }
 
 handleScroll(event) {
+
+  if (this.instancePopup && this.instancePopup.isOpen) {
+    this.instancePopup.togglePopup();
+    this.instancePopup = null;
+  }
+
   const grid = document.getElementById('gridContainer');
   if (grid) {
     const gridBody = grid.querySelector('.ag-body-viewport') as any;

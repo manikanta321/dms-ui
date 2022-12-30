@@ -39,7 +39,22 @@ public getdealersaleDropDown(){
   return this.http.get<any>(`${this.userurl}DealerApi/GetAssoDealerdrop`);
 
 }
+// http://13.126.235.145:801/api/SaleApi/GetSalesList
+getDealers(){
+  return this.http.get<any>(`${this.userurl}DealerApi/GetAssoDealerdrop`);
 
+}
+public getproductlist() {
+  return this.http.get<any>(`${this.userurl}MaterialApi/GetStockList`);
+}
+getGeographies(){
+  return this.http.get<any>(`${this.userurl}DealerApi/GetAssociationGeoDropdown`);
+
+}
+public getDealeList(data){
+  return this.http.post<any>(this.userurl + 'SaleApi/GetSalesList', data);
+
+}
 public getdealerGeoDropDown(data){
   return this.http.get<any>(`${this.userurl}OrdersApi/GetordergeoDropdown?CustomerId=${data}`);
 

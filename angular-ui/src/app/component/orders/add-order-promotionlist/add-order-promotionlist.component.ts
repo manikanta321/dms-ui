@@ -140,6 +140,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
       this.griddatapromotions.map(item => {
         item.isShowPromos = false;
+        item.isProductSelected = false;
         return item;
       });
       this.orderPromotionFormatter();
@@ -163,6 +164,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
     return formatObj;
   }
+
   orderPromotionFormatter() {
 
 
@@ -197,45 +199,45 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
     });
 
-
-
-
-
-
-    // let formattedList: any = [];
-    // items.forEach(item => {
-    //   let obj: any = {}
-    //   let selectedNonPromotionItem = this.griddata.find(x => x.stockitemid == item.stockItemId);
-    //   obj.mrp = item.mrp;
-    //   obj.productSKUName = item.productSKUName;
-    //   obj.stockItemId = item.stockItemId;
-    //   obj.stockItemName = item.stockItemName;
-    //   obj.isPromotionSelected = selectedNonPromotionItem == undefined ? false : true;
-    //   obj.Quantity = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.quantity;
-    //   obj.Taxid = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.taxid;
-    //   // obj.price = (item.Quantity ?? 0) * item.mrp
-    //   formattedList.push(obj);
-    // });
-    // // (Item.Quantity ?? 0) * Item.mrp
-    // return formattedList;
-
   }
 
 
-  // quantityChange() {
-  //   let quantityadd = 0;
-  //   let price = 0;
-  //   this.griddatapromotions.forEach(item => {
-  //     if (item.isPromotionSelected) {
-  //       quantityadd += item.Quantity;
-  //       price += ((item.Quantity ?? 0) * item.mrp);
-  //     }
-  //   });
+  quantityChange(data) {
 
-  //   this.quantityadd = quantityadd;
-  //   this.price = price;
-  // }
+    this.PromotionQtyCalculation(data);
+  }
 
+  PromotionQtyCalculation(item){
+    switch (item.promotionTypesId) {
+      case 1:
+
+        break;
+
+      case 2:
+
+        break;
+
+      case 3:
+        if(item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0){
+          item.promoDetails.totalQuantity = 0;
+          item.promoDetails.totalAmount = 0;
+          item.promoDetails.stockItems.forEach(stockItem=>{
+            if(stockItem.isPromotionSelected){
+              item.promoDetails.totalQuantity += stockItem.Quantity;
+              item.promoDetails.totalAmount += (stockItem.mrp * stockItem.Quantity);
+            }
+          });
+        }
+        break;
+
+      case 4:
+
+        break;
+
+      default:
+        break;
+    }
+  }
   checkboxChange(event, changedPromotionObj, promotionItem) {
     console.log(event, changedPromotionObj, "event, changedPromotionObj");
     changedPromotionObj.isPromotionSelected = event.target.checked;
@@ -243,12 +245,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
     this.quantityadd = 0;
     this.price = 0;
     console.log(this.griddatapromotions);
-    // this.griddatapromotions.forEach(item => {
-    //   if (item.isPromotionSelected) {
-    //     this.quantityadd += item.Quantity;
-    //     this.price += ((item.Quantity ?? 0) * item.mrp);
-    //   }
-    // });
+    this.PromotionQtyCalculation(promotionItem);
   }
 
   addPromoItems() {

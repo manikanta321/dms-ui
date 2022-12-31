@@ -35,7 +35,7 @@
                                 <div class="row">
                                     <div class="col-md-11">
                                         <p class="label-cls">
-                                            <mat-checkbox></mat-checkbox> {{data.promotionName}}
+                                            <mat-checkbox [(ngModel)]="data.isProductSelected" [checked]="data.isProductSelected"></mat-checkbox> {{data.promotionName}}
                                             <span>{{data.promotionTypesName}} </span>
                                         </p>
                                     </div>
@@ -109,7 +109,7 @@
                                                                 alt="double-blue-tick">
                                                         </td>
                                                         <td><input type="number" placeholder="5" class="quatity-inp"
-                                                                [(ngModel)]="Item.Quantity" ></td>
+                                                                [(ngModel)]="Item.Quantity" (keyup)="quantityChange(data)" ></td>
                                                         <td>{{(Item.mrp) * (Item.Quantity)}}</td>
                                                     </tr>
                                                     <tr class="bottom-table">

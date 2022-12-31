@@ -92,7 +92,7 @@
                                                     </tr>
                                                     <tr class="table-row" *ngFor="let Item of data.promoDetails.stockItems">
                                                         <td><input type="checkbox" [checked]="Item.isPromotionSelected"
-                                                            (change)="checkboxChange($event,Item)">{{Item.stockItemName}}</td>
+                                                            (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}</td>
                                                         <td>{{Item.productSKUName}}</td>
                                                         <td>{{Item.mrp}}</td>
                                                         <td>
@@ -109,15 +109,15 @@
                                                                 alt="double-blue-tick">
                                                         </td>
                                                         <td><input type="number" placeholder="5" class="quatity-inp"
-                                                                [(ngModel)]="Item.Quantity" (keyup)="quantityChange()"></td>
+                                                                [(ngModel)]="Item.Quantity" ></td>
                                                         <td>{{(Item.mrp) * (Item.Quantity)}}</td>
                                                     </tr>
                                                     <tr class="bottom-table">
                                                         <td colspan="4" class="btm-total"><b>Total </b>(for selected
                                                             items &
                                                             quantity entered)</td>
-                                                        <td class="btm-total" >{{quantityadd ?? 0}}</td>
-                                                        <td class="btm-total">{{price ?? 0}}</td>
+                                                        <td class="btm-total" >{{data.promoDetails.totalQuantity ?? 0}}</td>
+                                                        <td class="btm-total">{{data.promoDetails.totalAmount ?? 0}}</td>
                                                     </tr>
                                                 </table>
                                             </div>

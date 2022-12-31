@@ -38,9 +38,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
   imagesapis: any = [];
   imagesid: any = [];
   taxdropdowndata: any = [];
-  quantityadd: any= 0;
-  price: any =0;
-  griddata: any =[];
+  quantityadd: any = 0;
+  price: any = 0;
+  griddata: any = [];
 
   constructor(private user: UserService,
     private orders: OrdersApisService,
@@ -73,7 +73,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
     this.getPromotionsImages();
   }
 
- 
+
   buysetsGroups(item) {
     // this.buysets = !this.buysets;
     let selectedGrp = this.griddatapromotions.find(x => x.productPromotionsId == item.productPromotionsId);
@@ -91,7 +91,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
   onSearchChange($event) {
 
   }
-  
+
 
   // promotion 
 
@@ -137,14 +137,12 @@ export class AddOrderPromotionlistComponent implements OnInit {
     console.log(this.imagesid, "listdatapromotionsids")
     this.orders.GetProductsOfPromotionForOrder(data).subscribe((res: any) => {
       this.griddatapromotions = res.response;
-  
+
       this.griddatapromotions.map(item => {
         item.isShowPromos = false;
-
         return item;
-        
-      })
-      
+      });
+      this.orderPromotionFormatter();
       // this.griddata = this.orderNonPromotionFormatter(this.griddatapromotions);
       // this.griddatapromotions.sort((a, b) => b.isPromotionSelected - a.isPromotionSelected);
       this.spinner.hide();
@@ -152,53 +150,105 @@ export class AddOrderPromotionlistComponent implements OnInit {
     });
   }
 
-  orderPromotionFormatter(items) {
-    let formattedList: any = [];
-    items.forEach(item => {
-      let obj: any = {}
-      let selectedNonPromotionItem = this.griddata.find(x => x.stockitemid == item.stockItemId);
-      obj.mrp = item.mrp;
-      obj.productSKUName = item.productSKUName;
-      obj.stockItemId = item.stockItemId;
-      obj.stockItemName = item.stockItemName;
-      obj.isPromotionSelected = selectedNonPromotionItem == undefined ? false : true;
-      obj.Quantity = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.quantity;
-      obj.Taxid = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.taxid;
-      // obj.price = (item.Quantity ?? 0) * item.mrp
-      formattedList.push(obj);
-    });
-    // (Item.Quantity ?? 0) * Item.mrp
-    return formattedList;
+  appendStockItemFields(stockItem){
+    let formatObj:any = {};
+    formatObj.stockItemId = stockItem.stockItemId;
+    formatObj.stockItemName = stockItem.stockItemName;
+    formatObj.productSKUName = stockItem.productSKUName;
+    formatObj.mrp = stockItem.mrp;
 
+    formatObj.isPromotionSelected = stockItem.isPromotionSelected == undefined ? false : stockItem.isPromotionSelected;    
+    formatObj.Quantity = stockItem.quantity == undefined ? null : stockItem.quantity;
+    formatObj.Taxid = stockItem.taxid == undefined ? null : stockItem.taxid;
+
+    return formatObj;
   }
+  orderPromotionFormatter() {
 
 
-  quantityChange() {
-    let quantityadd = 0;
-    let price = 0;
     this.griddatapromotions.forEach(item => {
-      if (item.isPromotionSelected) {
-        quantityadd += item.Quantity;
-        price += ((item.Quantity ?? 0) * item.mrp);
+      switch (item.promotionTypesId) {
+        case 1:
+
+          break;
+
+        case 2:
+
+          break;
+
+        case 3:
+          if(item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0){
+            item.promoDetails.stockItems = item.promoDetails.stockItems.map(stockItem=>{
+              stockItem = this.appendStockItemFields(stockItem);
+              return stockItem
+            });
+            item.promoDetails.totalQuantity = 0;
+            item.promoDetails.totalAmount = 0;
+          }
+          break;
+
+        case 4:
+
+          break;
+
+        default:
+          break;
       }
+
     });
 
-    this.quantityadd = quantityadd;
-    this.price = price;
+
+
+
+
+
+    // let formattedList: any = [];
+    // items.forEach(item => {
+    //   let obj: any = {}
+    //   let selectedNonPromotionItem = this.griddata.find(x => x.stockitemid == item.stockItemId);
+    //   obj.mrp = item.mrp;
+    //   obj.productSKUName = item.productSKUName;
+    //   obj.stockItemId = item.stockItemId;
+    //   obj.stockItemName = item.stockItemName;
+    //   obj.isPromotionSelected = selectedNonPromotionItem == undefined ? false : true;
+    //   obj.Quantity = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.quantity;
+    //   obj.Taxid = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.taxid;
+    //   // obj.price = (item.Quantity ?? 0) * item.mrp
+    //   formattedList.push(obj);
+    // });
+    // // (Item.Quantity ?? 0) * Item.mrp
+    // return formattedList;
+
   }
 
-  checkboxChange(event, changedPromotionObj) {
-    console.log(event, changedPromotionObj,"event, changedPromotionObj");
+
+  // quantityChange() {
+  //   let quantityadd = 0;
+  //   let price = 0;
+  //   this.griddatapromotions.forEach(item => {
+  //     if (item.isPromotionSelected) {
+  //       quantityadd += item.Quantity;
+  //       price += ((item.Quantity ?? 0) * item.mrp);
+  //     }
+  //   });
+
+  //   this.quantityadd = quantityadd;
+  //   this.price = price;
+  // }
+
+  checkboxChange(event, changedPromotionObj, promotionItem) {
+    console.log(event, changedPromotionObj, "event, changedPromotionObj");
     changedPromotionObj.isPromotionSelected = event.target.checked;
 
     this.quantityadd = 0;
     this.price = 0;
-    this.griddatapromotions.forEach(item => {
-      if (item.isPromotionSelected) {
-        this.quantityadd += item.Quantity;
-        this.price += ((item.Quantity ?? 0) * item.mrp);
-      }
-    });
+    console.log(this.griddatapromotions);
+    // this.griddatapromotions.forEach(item => {
+    //   if (item.isPromotionSelected) {
+    //     this.quantityadd += item.Quantity;
+    //     this.price += ((item.Quantity ?? 0) * item.mrp);
+    //   }
+    // });
   }
 
   addPromoItems() {

@@ -121,7 +121,7 @@ export class AddorderpromotionsComponent implements OnInit {
   minDate = new Date();
   selectedStartDate: any;
   CustomerPoId: any;
-  editorderbyID: any={};
+  editorderbyID: any = {};
 
   dateChange(e) {
 
@@ -180,7 +180,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.ordersDealers();
-   
+
     this.taxdropdown();
     this.getclassification();
     this.selectMaterialIdentifier();
@@ -229,7 +229,7 @@ export class AddorderpromotionsComponent implements OnInit {
       this.actineLabel = "Edit order";
       this.updateOrSave = !this.updateOrSave;
       this.GetOrdersToEdit();
-     
+
       // this.spinner.show();
       // this.spinner.hide();
 
@@ -349,7 +349,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
   onItemSelectdealers(item: any) {
     this.customerId = item.customerId;
-    localStorage.setItem("dealerid" ,this.customerId )
+    localStorage.setItem("dealerid", this.customerId)
     this.orders.GetGeoGrapydropdownList(this.customerId).subscribe((res) => {
       let GeoGrapydropdownList = res.response;
       console.log(GeoGrapydropdownList, "GeoGrapydropdownList")
@@ -383,7 +383,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
   onItemSelectgeo(item: any) {
     this.geographyId = item.geographyId;
-    localStorage.setItem("geographyId" ,this.geographyId)
+    localStorage.setItem("geographyId", this.geographyId)
     console.log(this.geographyId, "geographyId")
   }
   onItemSelectshippingAddress(item: any) {
@@ -940,7 +940,7 @@ export class AddorderpromotionsComponent implements OnInit {
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
       let orderNonPromotionsData = res.response;
-      console.log(orderNonPromotionsData,"orderNonPromotionsData tockeck");
+      console.log(orderNonPromotionsData, "orderNonPromotionsData tockeck");
 
       this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
       this.orderNonPromotionsdata.sort((a, b) => b.isPromotionSelected - a.isPromotionSelected);
@@ -1029,21 +1029,23 @@ export class AddorderpromotionsComponent implements OnInit {
             this.AddorderNonpromotiondata = [];
             this.nonpromotionlist.forEach(item => {
               // Promocode: this.promotionName,
-              let obj = {
-                "Promocode": item.promotionName,
-                "stockid": item.stockitemid,
-                "uom": item.uomid,
-                "orderqty": item.quantity,
-                "stockqty": 0,
-                "price": item.mrp,
-                "discount": item.discount,
-                "finalvalue": item.finalValue,
-                "taxvalue": item.taxvalue,
-                "amount": item.amount,
-                "taxid": item.taxid,
+              if (item.isPromotionSelected) {
+                let obj = {
+                  "Promocode": item.promotionName,
+                  "stockid": item.stockitemid,
+                  "uom": item.uomid,
+                  "orderqty": item.quantity,
+                  "stockqty": 0,
+                  "price": item.mrp,
+                  "discount": item.discount,
+                  "finalvalue": item.finalValue,
+                  "taxvalue": item.taxvalue,
+                  "amount": item.amount,
+                  "taxid": item.taxid,
+                }
+
+                this.AddorderNonpromotiondata.push(obj)
               }
-              
-              this.AddorderNonpromotiondata.push(obj)
             });
             this.Non_promotions = false;
             console.log(this.nonpromotionlist, 'sdgvaFv')
@@ -1075,8 +1077,8 @@ export class AddorderpromotionsComponent implements OnInit {
     let itemsCount = [];
 
     // Push Non Promotion data to itemscount variable
-    if(this.AddorderNonpromotiondata && this.AddorderNonpromotiondata.length != 0 ){
-      let sendObj:any = {};
+    if (this.AddorderNonpromotiondata && this.AddorderNonpromotiondata.length != 0) {
+      let sendObj: any = {};
       sendObj.promotionId = 0;
       sendObj.promocode = 'NP';
       sendObj.itemDetails = this.AddorderNonpromotiondata;
@@ -1085,7 +1087,7 @@ export class AddorderpromotionsComponent implements OnInit {
     // Push Promotion data to itemscount variable
 
 
-    
+
     let data = {
       "CustomerId": this.customerId,
       "geoid": this.geographyId,
@@ -1098,27 +1100,27 @@ export class AddorderpromotionsComponent implements OnInit {
       "CreatedById": loggedUserId,
       "itemcount": itemsCount
     }
-    
+
     this.orders.addorderNonPromotions(data).subscribe((res) => {
 
       console.log(data, "data")
     });
   }
 
-  GetOrdersToEdit(){
+  GetOrdersToEdit() {
     this.CustomerPoId = localStorage.getItem("CustomerPoId");
-    console.log(this.CustomerPoId,'this.CustomerPoId')
-    this.orders.GetOrdersToEdit(this.CustomerPoId).subscribe((res)=>{
+    console.log(this.CustomerPoId, 'this.CustomerPoId')
+    this.orders.GetOrdersToEdit(this.CustomerPoId).subscribe((res) => {
       this.editorderbyID = res.response[0];
-      console.log(res.response,"GetOrdersToEdit")
+      console.log(res.response, "GetOrdersToEdit")
       this.datapreloadbyID();
     })
-    
+
   }
 
-  datapreloadbyID(){
+  datapreloadbyID() {
     this.customerId = this.editorderbyID.customerId;
-      
+
     if (this.customerId != '') {
       this.orders.GetGeoGrapydropdownList(this.customerId).subscribe((res) => {
         let GeoGrapydropdownList = res.response;
@@ -1129,11 +1131,11 @@ export class AddorderpromotionsComponent implements OnInit {
         console.log(this.GeoGrapydropdownListdata, "GeoGrapydropdownListdata")
       });
       this.geographyId = this.editorderbyID.geographyId;
-     
+
       // shipping api
       this.orders.GetShipingAddress(this.customerId).subscribe((res: any) => {
         let shippingAddress = res.response;
-  
+
         this.dealersShippingAddress = shippingAddress.map((data: { addressId: any; address: any; }) => {
           return { addressId: data.addressId, address: data.address };
         });
@@ -1145,7 +1147,7 @@ export class AddorderpromotionsComponent implements OnInit {
       // billing api
       this.orders.GetBillingAddress(this.customerId).subscribe((res: any) => {
         let BillingAddress = res.response;
-  
+
         this.dealersbillingAddress = BillingAddress.map((data: { addressId: any; address: any; }) => {
           return { BillingaddressId: data.addressId, Billingaddress: data.address };
         });
@@ -1162,24 +1164,24 @@ export class AddorderpromotionsComponent implements OnInit {
 
       this.nonpromotionlist = this.editorderbyID.itemcounts
       this.nonpromotionlist.forEach(item => {
-              // Promocode: this.promotionName,
-              let obj = {
-                "Promocode": item.promotionName,
-                "stockid": item.stockitemid,
-                "uom": item.uomid,
-                "orderqty": item.quantity,
-                "stockqty": 0,
-                "price": item.mrp,
-                "discount": item.discount,
-                "finalvalue": item.finalValue,
-                "taxvalue": item.taxvalue,
-                "amount": item.amount
-              }
-              this.AddorderNonpromotiondata.push(obj)
-            });
+        // Promocode: this.promotionName,
+        let obj = {
+          "Promocode": item.promotionName,
+          "stockid": item.stockitemid,
+          "uom": item.uomid,
+          "orderqty": item.quantity,
+          "stockqty": 0,
+          "price": item.mrp,
+          "discount": item.discount,
+          "finalvalue": item.finalValue,
+          "taxvalue": item.taxvalue,
+          "amount": item.amount
+        }
+        this.AddorderNonpromotiondata.push(obj);
+      });
 
     }
-    
-    
+
+
   }
 }

@@ -496,6 +496,17 @@
                          </div>
                     </div>
                  </div>
+                 <div class="row ship end">
+                    <div class="col-md-5">
+                        <button type="button" class="saveas-draft" >Save as draft</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="save-submit" >Save & submit</button>
+                    </div>
+                    <div class="col-md-5">
+                        <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
+                    </div>
+                </div>
                 </div>
             </div>
             <div class="top-bottom">
@@ -505,15 +516,15 @@
                            <p class="label-cls">Order History</p>
                         </div>
                          <div class="col-lg-1">
-                            <img [src]="image4" class="expand-arrow" alt="add-user-btn">
+                            <img [src]="image5" class="expand-arrow" alt="add-user-btn">
                         </div>
                     </div>
                 </div>
                 <br>
-                <div class="content" *ngIf="!orderhistory">
+                <div class="content-order" *ngIf="!orderhistory">
                          <div>
                         <ag-grid-angular id="gridContainer"
-                          class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
+                          class="ag-theme-material mt-2" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
                           [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
                           [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
                           (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"

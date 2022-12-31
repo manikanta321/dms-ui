@@ -181,7 +181,7 @@ export class OrderlistShipPopupComponent implements OnInit {
     if(this.dealerInfo === false){
       this.image1 = 'assets/img/maximize.png';
     } else {
-      this.image1 = 'assets/img/minimize-arrow.png';
+      this.image1 = 'assets/img/minimize-tag.png';
      
     }
   }
@@ -189,9 +189,9 @@ export class OrderlistShipPopupComponent implements OnInit {
     this.orderitem = !this.orderitem;
 
     if(this.orderitem === false){
-      this.image2 = 'assets/img/minimize-tag.png';
+      this.image2 = 'assets/img/maximize.png';
     } else {
-      this.image2 = 'assets/img/maximize-arrow.png';
+      this.image2 = 'assets/img/minimize-tag.png';
     }
     
   }
@@ -199,9 +199,9 @@ export class OrderlistShipPopupComponent implements OnInit {
     this.shipmentone = !this.shipmentone;
 
     if(this.shipmentone === false){
-      this.image3 = 'assets/img/minimize-tag.png';
+      this.image3 = 'assets/img/maximize.png';
     } else {
-      this.image3 = 'assets/img/maximize-arrow.png';
+      this.image3 = 'assets/img/minimize-tag.png';
     }
     
   }
@@ -209,9 +209,9 @@ export class OrderlistShipPopupComponent implements OnInit {
     this.shipmenttwo = !this.shipmenttwo;
 
     if(this.shipmenttwo === false){
-      this.image4 = 'assets/img/minimize-tag.png';
+      this.image4 = 'assets/img/maximize.png';
     } else {
-      this.image4 = 'assets/img/maximize-arrow.png';
+      this.image4 = 'assets/img/minimize-tag.png';
     }
     
   }
@@ -219,9 +219,9 @@ export class OrderlistShipPopupComponent implements OnInit {
     this.orderhistory = !this.orderhistory;
 
     if(this.orderhistory === false){
-      this.image5 = 'assets/img/minimize-tag.png';
+      this.image5 = 'assets/img/maximize.png';
     } else {
-      this.image5 = 'assets/img/maximize-arrow.png';
+      this.image5 = 'assets/img/minimize-tag.png';
     }
     
   }

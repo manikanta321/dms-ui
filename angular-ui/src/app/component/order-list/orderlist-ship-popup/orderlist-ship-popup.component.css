@@ -854,7 +854,17 @@ li {
   overflow: auto;
   margin: 0px 10px;
 }
-
+.content-order {
+  padding: 0 18px 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: #686E74;
+  border-radius: 0px 0px 10px 10px;
+  overflow: auto;
+  margin: -20px 10px;
+}
 .content::-webkit-scrollbar{
 height: 5px;
 }
@@ -910,7 +920,7 @@ height: 5px;
 }
 
 .promotionpopup-scroll {
-  height: 500px !important;
+  height: 600px !important;
 }
 
 

@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { HttpClient } from '@angular/common/http';
 import { CellClickedEvent, CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridReadyEvent } from 'ag-grid-community';
 import { MatDialogRef } from '@angular/material/dialog';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
 
 @Component({
@@ -37,9 +38,12 @@ export class AddOrderPromotionlistComponent implements OnInit {
   imagesapis: any = [];
   imagesid: any = [];
   taxdropdowndata: any = [];
+  quantityadd: any;
+  price: any;
 
   constructor(private user: UserService,
     private orders: OrdersApisService,
+    private spinner: NgxSpinnerService,
     private dialogRef: MatDialogRef<any>,
     private http: HttpClient) { }
 
@@ -68,24 +72,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
     this.getPromotionsImages();
   }
 
-  orderPromoList() {
-    this.promoList = !this.promoList;
-
-    if (this.promoList === false) {
-      this.image = 'assets/img/minimize-tag.png';
-    } else {
-      this.image = 'assets/img/maximize-arrow.png';
-    }
-  }
-  priceDiscount() {
-    this.priceD = !this.priceD;
-
-    if (this.priceD === false) {
-      this.image = 'assets/img/minimize-tag.png';
-    } else {
-      this.image = 'assets/img/maximize-arrow.png';
-    }
-  }
+ 
   buysetsGroups(item) {
     // this.buysets = !this.buysets;
     let selectedGrp = this.griddatapromotions.find(x => x.productPromotionsId == item.productPromotionsId);
@@ -108,7 +95,6 @@ export class AddOrderPromotionlistComponent implements OnInit {
   }
 
   // promotion 
-
 
   getPromotionsImages() {
     let data = {
@@ -148,18 +134,62 @@ export class AddOrderPromotionlistComponent implements OnInit {
       "GeographyIdid": this.geographyId
     }
 
-
+    this.spinner.show();
     console.log(this.imagesid, "listdatapromotionsids")
     this.orders.GetProductsOfPromotionForOrder(data).subscribe((res: any) => {
       this.griddatapromotions = res.response;
+      // if(this.griddatapromotions.promotionTypesId == 3){
+      //   console.log(this.griddatapromotions.promoDetails)
+      // }
       this.griddatapromotions.map(item => {
         item.isShowPromos = false;
 
         return item
+        
       })
+      
+      // this.griddatapromotions = this.orderNonPromotionFormatter(this.griddatapromotions);
+      // this.griddatapromotions.sort((a, b) => b.isPromotionSelected - a.isPromotionSelected);
+      this.spinner.hide();
       console.log(this.griddatapromotions, "griddatapromotions");
     });
   }
+
+  orderNonPromotionFormatter(items) {
+    let formattedList: any = [];
+    items.forEach(item => {
+      let obj: any = {}
+      let selectedNonPromotionItem = this.griddatapromotions.find(x => x.stockitemid == item.stockItemId);
+      obj.classification = item.classification;
+      obj.materialCustomName = item.materialCustomName;
+      obj.mrp = item.mrp;
+      obj.productSKUName = item.productSKUName;
+      obj.stockItemId = item.stockItemId;
+      obj.stockItemName = item.stockItemName;
+      obj.isPromotionSelected = selectedNonPromotionItem == undefined ? false : true;
+      obj.Quantity = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.quantity;
+      obj.Taxid = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.taxid;
+      // obj.price = (item.Quantity ?? 0) * item.mrp
+      formattedList.push(obj);
+    });
+    // (Item.Quantity ?? 0) * Item.mrp
+    return formattedList;
+
+  }
+
+  // checkboxChange(event, changedPromotionObj) {
+  //   console.log(event, changedPromotionObj);
+  //   changedPromotionObj.isPromotionSelected = event.target.checked;
+
+  //   this.quantityadd = 0;
+  //   this.price = 0;
+  //   this.griddatapromotions.forEach(item => {
+  //     if (item.isPromotionSelected) {
+  //       this.quantityadd += item.Quantity;
+  //       this.price += ((item.Quantity ?? 0) * item.mrp);
+  //     }
+  //   });
+  // }
 
 
 }

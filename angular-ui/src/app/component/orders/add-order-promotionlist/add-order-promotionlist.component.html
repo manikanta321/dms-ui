@@ -48,160 +48,7 @@
 
                             <div class="content" *ngIf="data.isShowPromos">
                                 <!-- 1st promotions -->
-                                <div *ngIf="data.promotionTypesId==1">
-                                    <div class="buysets text-center">
-                                        <h4 class="buysetHead"><b> {{data.promoDetails.buyGroups.length != 0 ? 'BUYSETS'
-                                                :''}} </b> </h4>
-                                    </div>
-                                    <div *ngFor="let promos of data.promoDetails.buyGroups ">
-                                        <div class="buyGrp 1">
-                                            <!-- headingds for 1st promotions -->
-                                            <div class="row label-div">
-                                                <div class="col-md-3">
-                                                    <span class="buy-grp"> Buy Group {{promos.groupId}}</span>
-                                                </div>
-                                                <div class="col-md-3" style="text-align: center;">
-                                                    <span class="total-itemss">Total Items:({{promos.maxVolume}})
-                                                        (MOQ:{{promos.moq}})</span>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <button class="searchButton" href="#">
-                                                        <i class="material-icons">
-                                                            search
-                                                        </i>
-                                                    </button>
-                                                    <div class="searchBox d-flex" style=" cursor: pointer">
-                                                        <input class="searchInput" style="font-family: 'Gilroy'"
-                                                            type="text" name="" placeholder="Type & search for anything"
-                                                            (keyup)="onSearchChange($event)">
-                                                        <button class="search-btn"
-                                                            style="font-family: 'Gilroy'">Search</button>
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <!-- tabels for 1st promotions -->
-                                            <div class="label-div">
-                                                <table id="Table1">
-                                                    <tr>
-                                                        <th data-sortable="true">Product Name</th>
-                                                        <th data-sortable="true">SKU</th>
-                                                        <th data-sortable="true">Price</th>
-                                                        <th data-sortable="false">Tax Templete</th>
-                                                        <th data-sortable="false">Quantity</th>
-                                                        <th data-sortable="false">Amount</th>
-                                                    </tr>
-                                                    <tr class="table-row" *ngFor="let Item of promos.stockItemId">
-                                                        <td><input type="checkbox">{{Item.stockItemName}}</td>
-                                                        <td>{{Item.productSKUName}}</td>
-                                                        <td>{{Item.mrp}}</td>
-                                                        <td>
-                                                            <select class="tax-select" placeholder="select"
-                                                                [(ngModel)]="Item.Taxid">
-                                                                <option value="" selected hidden>Select tax</option>
-                                                                <option *ngFor="let option of taxdropdowndata"
-                                                                    [value]="option.taxTemplateId">
-                                                                    {{option.taxTemplateName}}
-                                                                </option>
-                                                            </select>
-
-                                                            <img src="assets/img/doubleTickes-default.svg"
-                                                                alt="double-blue-tick">
-                                                        </td>
-                                                        <td><input type="number" placeholder="5" class="quatity-inp"
-                                                                [(ngModel)]="Item.Quantity"></td>
-                                                        <td>{{(Item.Quantity ?? 0) * Item.mrp }}</td>
-                                                    </tr>
-                                                    <tr class="bottom-table">
-                                                        <td colspan="4" class="btm-total"><b>Total </b>(for selected
-                                                            items &
-                                                            quantity entered)</td>
-                                                        <td class="btm-total">15</td>
-                                                        <td class="btm-total">300</td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- set groups -->
-                                    <div *ngFor="let promos of data.promoDetails.getGroups ">
-                                        <div class="buysets text-center">
-                                            <h4 class="buysetHead"><b> {{data.promoDetails.getGroups.length != 0 ?
-                                                    'GETSETS'
-                                                    :''}} </b> </h4>
-                                        </div>
-                                        <div class="buyGrp 1">
-                                            <!-- headingds for 1st promotions -->
-                                            <div class="row label-div">
-                                                <div class="col-md-3">
-                                                    <span class="buy-grp"> Get Group {{promos.groupId}}</span>
-                                                </div>
-                                                <div class="col-md-3" style="text-align: center;">
-                                                    <span class="total-itemss">Total Items:({{promos.maxVolume}})
-                                                        (MOQ:{{promos.moq}})</span>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <button class="searchButton" href="#">
-                                                        <i class="material-icons">
-                                                            search
-                                                        </i>
-                                                    </button>
-                                                    <div class="searchBox d-flex" style=" cursor: pointer">
-                                                        <input class="searchInput" style="font-family: 'Gilroy'"
-                                                            type="text" name="" placeholder="Type & search for anything"
-                                                            (keyup)="onSearchChange($event)">
-                                                        <button class="search-btn"
-                                                            style="font-family: 'Gilroy'">Search</button>
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <!-- tabels for 1st promotions -->
-                                            <div class="label-div">
-                                                <table id="Table1">
-                                                    <tr>
-                                                        <th data-sortable="true">Product Name</th>
-                                                        <th data-sortable="true">SKU</th>
-                                                        <th data-sortable="true">Price</th>
-                                                        <th data-sortable="false">Tax Templete</th>
-                                                        <th data-sortable="false">Quantity</th>
-                                                        <th data-sortable="false">Amount</th>
-                                                    </tr>
-                                                    <tr class="table-row" *ngFor="let Item of promos.stockItemId">
-                                                        <td><input type="checkbox">{{Item.stockItemName}}</td>
-                                                        <td>{{Item.productSKUName}}</td>
-                                                        <td>{{Item.mrp}}</td>
-                                                        <td>
-                                                            <select class="tax-select" placeholder="select"
-                                                                [(ngModel)]="Item.Taxid">
-                                                                <option value="" selected hidden>Select tax</option>
-                                                                <option *ngFor="let option of taxdropdowndata"
-                                                                    [value]="option.taxTemplateId">
-                                                                    {{option.taxTemplateName}}
-                                                                </option>
-                                                            </select>
-
-                                                            <img src="assets/img/doubleTickes-default.svg"
-                                                                alt="double-blue-tick">
-                                                        </td>
-                                                        <td><input type="number" placeholder="5" class="quatity-inp"
-                                                                [(ngModel)]="Item.Quantity"></td>
-                                                        <td>{{(Item.mrp) * (Item.Quantity)}}</td>
-                                                    </tr>
-                                                    <tr class="bottom-table">
-                                                        <td colspan="4" class="btm-total"><b>Total </b>(for selected
-                                                            items &
-                                                            quantity entered)</td>
-                                                        <td class="btm-total">15</td>
-                                                        <td class="btm-total">300</td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
 
                                 <!-- 3rd promotions -->
                                 <div *ngIf="data.promotionTypesId==3">
@@ -244,7 +91,8 @@
                                                         <th data-sortable="false">Amount</th>
                                                     </tr>
                                                     <tr class="table-row" *ngFor="let Item of data.promoDetails.stockItems">
-                                                        <td><input type="checkbox">{{Item.stockItemName}}</td>
+                                                        <td><input type="checkbox" [checked]="Item.isPromotionSelected"
+                                                            (change)="checkboxChange($event,Item)">{{Item.stockItemName}}</td>
                                                         <td>{{Item.productSKUName}}</td>
                                                         <td>{{Item.mrp}}</td>
                                                         <td>
@@ -261,15 +109,15 @@
                                                                 alt="double-blue-tick">
                                                         </td>
                                                         <td><input type="number" placeholder="5" class="quatity-inp"
-                                                                [(ngModel)]="Item.Quantity"></td>
+                                                                [(ngModel)]="Item.Quantity" (keyup)="quantityChange()"></td>
                                                         <td>{{(Item.mrp) * (Item.Quantity)}}</td>
                                                     </tr>
                                                     <tr class="bottom-table">
                                                         <td colspan="4" class="btm-total"><b>Total </b>(for selected
                                                             items &
                                                             quantity entered)</td>
-                                                        <td class="btm-total">15</td>
-                                                        <td class="btm-total">300</td>
+                                                        <td class="btm-total" >{{quantityadd ?? 0}}</td>
+                                                        <td class="btm-total">{{price ?? 0}}</td>
                                                     </tr>
                                                 </table>
                                             </div>

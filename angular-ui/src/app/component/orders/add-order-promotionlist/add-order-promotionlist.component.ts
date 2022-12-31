@@ -38,8 +38,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
   imagesapis: any = [];
   imagesid: any = [];
   taxdropdowndata: any = [];
-  quantityadd: any;
-  price: any;
+  quantityadd: any= 0;
+  price: any =0;
+  griddata: any =[];
 
   constructor(private user: UserService,
     private orders: OrdersApisService,
@@ -90,9 +91,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
   onSearchChange($event) {
 
   }
-  addPromoItems() {
-    console.log('item', this.selectedrowList);
-  }
+  
 
   // promotion 
 
@@ -134,34 +133,30 @@ export class AddOrderPromotionlistComponent implements OnInit {
       "GeographyIdid": this.geographyId
     }
 
-    this.spinner.show();
+    // this.spinner.show();
     console.log(this.imagesid, "listdatapromotionsids")
     this.orders.GetProductsOfPromotionForOrder(data).subscribe((res: any) => {
       this.griddatapromotions = res.response;
-      // if(this.griddatapromotions.promotionTypesId == 3){
-      //   console.log(this.griddatapromotions.promoDetails)
-      // }
+  
       this.griddatapromotions.map(item => {
         item.isShowPromos = false;
 
-        return item
+        return item;
         
       })
       
-      // this.griddatapromotions = this.orderNonPromotionFormatter(this.griddatapromotions);
+      // this.griddata = this.orderNonPromotionFormatter(this.griddatapromotions);
       // this.griddatapromotions.sort((a, b) => b.isPromotionSelected - a.isPromotionSelected);
       this.spinner.hide();
-      console.log(this.griddatapromotions, "griddatapromotions");
+      console.log(this.griddata, "griddata");
     });
   }
 
-  orderNonPromotionFormatter(items) {
+  orderPromotionFormatter(items) {
     let formattedList: any = [];
     items.forEach(item => {
       let obj: any = {}
-      let selectedNonPromotionItem = this.griddatapromotions.find(x => x.stockitemid == item.stockItemId);
-      obj.classification = item.classification;
-      obj.materialCustomName = item.materialCustomName;
+      let selectedNonPromotionItem = this.griddata.find(x => x.stockitemid == item.stockItemId);
       obj.mrp = item.mrp;
       obj.productSKUName = item.productSKUName;
       obj.stockItemId = item.stockItemId;
@@ -177,19 +172,55 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
   }
 
-  // checkboxChange(event, changedPromotionObj) {
-  //   console.log(event, changedPromotionObj);
-  //   changedPromotionObj.isPromotionSelected = event.target.checked;
 
-  //   this.quantityadd = 0;
-  //   this.price = 0;
-  //   this.griddatapromotions.forEach(item => {
-  //     if (item.isPromotionSelected) {
-  //       this.quantityadd += item.Quantity;
-  //       this.price += ((item.Quantity ?? 0) * item.mrp);
-  //     }
-  //   });
-  // }
+  quantityChange() {
+    let quantityadd = 0;
+    let price = 0;
+    this.griddatapromotions.forEach(item => {
+      if (item.isPromotionSelected) {
+        quantityadd += item.Quantity;
+        price += ((item.Quantity ?? 0) * item.mrp);
+      }
+    });
+
+    this.quantityadd = quantityadd;
+    this.price = price;
+  }
+
+  checkboxChange(event, changedPromotionObj) {
+    console.log(event, changedPromotionObj,"event, changedPromotionObj");
+    changedPromotionObj.isPromotionSelected = event.target.checked;
+
+    this.quantityadd = 0;
+    this.price = 0;
+    this.griddatapromotions.forEach(item => {
+      if (item.isPromotionSelected) {
+        this.quantityadd += item.Quantity;
+        this.price += ((item.Quantity ?? 0) * item.mrp);
+      }
+    });
+  }
+
+  addPromoItems() {
+
+    let selectedNonPromotionData: any = [];
+    this.griddata.forEach(item => {
+      if (item.isPromotionSelected) {
+        let obj = {
+          "Taxid": item.Taxid,
+          "stockItemId": item.stockItemId,
+          "Quantity": item.Quantity,
+        };
+
+        selectedNonPromotionData.push(obj)
+      }
+    });
+    let data = {
+      "GeographyId": this.geographyId,
+      "AddItems": selectedNonPromotionData
+    }
+    console.log('data', data);
+  }
 
 
 }

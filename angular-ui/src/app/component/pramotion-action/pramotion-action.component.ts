@@ -81,6 +81,7 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
      
     };
    this.dialog.open( AddPromotionsComponent, config);
+   this.isOpen = false;
 
   }
   togglePopup() {

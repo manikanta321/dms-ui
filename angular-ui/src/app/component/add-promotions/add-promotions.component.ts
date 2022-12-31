@@ -14,6 +14,7 @@ import { DateAdapter } from '@angular/material/core';
 import { AddpromoGeographyComponent } from './addpromo-geography/addpromo-geography.component';
 import { PopupPscGridTableComponent } from '../promotions/product-group-add-item/popup-psc-grid-table/popup-psc-grid-table.component';
 import { SharedServicesDealerService } from 'src/app/services/shared-services-dealer.service';
+import { PromotionSharedServicesService } from 'src/app/services/promotion-shared-services.service';
 @Component({
   selector: 'app-add-promotions',
   templateUrl: './add-promotions.component.html',
@@ -335,12 +336,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   Remarks: any = '';
   header: any;
   SaveOrEdit:boolean=true;
+  private subject = new Subject<any>();
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
-    private sharedService: SharedServicesDealerService,
+    private sharedService: PromotionSharedServicesService,
     private dialogRefModal: MatDialogRef<any>,
     private dialogRef: MatDialogRef<AddPromotionsComponent>,
-
-
     private dateAdapter: DateAdapter<Date>,
     public promotionTypes: PromotionService) {
 
@@ -387,7 +387,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         this.addImgpreview = true;
         this.base64textString = res.response.imageurl;
         this.startDate.setValue(res.response.startDate);
-        this.endDate.setValue(res.response.startDate);
+        this.endDate.setValue(res.response.endDate);
 
 
 
@@ -412,11 +412,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
           mainobjbuyGroups.forEach((element) => {
             let stockItemArraay: any = []
+         
             element.stockItemId.forEach((element1) => {
               stockItemArraay.push(element1.stockItemId)
             })
 
-            let obj1: any = []
+            let obj1: any = [];
 
             element.stockItemId.forEach((element2) => {
               obj1.push({
@@ -428,10 +429,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             })
 
             let obj: any = {}
-            obj.GroupId = element.groupId
-            obj.MaxVolume = element.maxVolume
-            obj.MOQ = element.moq
-            obj.productPromotionDetailsId = element.productPromotionDetailsId
+            obj.GroupId = element?.groupId
+            obj.MaxVolume = element?.maxVolume
+            obj.MOQ = element?.moq
+            obj.productPromotionDetailsId = element?.productPromotionDetailsId
             obj.productselectedRows = obj1;
             obj.StockItemId = stockItemArraay
 
@@ -477,13 +478,87 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             console.log('this.mainobjGetGroups', this.addgetgroup)
           })
         }
-        if (res.response.promotionTypesName == 'Buy (A or B + C or D..) get (X+Y or Y+Z..)') {
+        if (res.response.promotionTypesId == 2) {
+          this.addbuyset=[];
           this.noPromotionSelected = false;
           this.buyab = false;
           this.volumedc = false;
           this.buysets = true;
           this.pricedc = false;
           // this.goForward(this.myStepper);
+          this.selectedDealers = res.response.selectedDealers
+          this.selectedDealers.forEach(element => {
+            this.EntityInstanceId.push(element.dealerId)
+          });
+
+           let mainarray=[]
+           let promo=res.response.promoDetails.buySets;
+           let promo1=res.response.promoDetails.getSets;
+
+           this.productPromotionsId=res.response?.productPromotionsId
+     promo.forEach((element3)=>{
+     let obj: any = {};
+     let bugruparray:any[]=[];
+            element3.buyGroups.forEach((element)=>{
+            let stockItemArraay: any = []
+            element.stockItemId.forEach((element1) => {
+              stockItemArraay.push(element1.stockItemId)
+            })
+            let obj1: any = []
+            element.stockItemId.forEach((element2) => {
+              obj1.push({
+                stockItemId: element2.stockItemId,
+                productName: element2.stockItemName
+              });
+            })
+            obj.MaxVolume = element.maxVolume;
+            obj.MOQ = element.moq;
+            obj.Set=element.set;
+            obj.productselectedRows=obj1;
+            obj.StockItemId=stockItemArraay;
+            obj.productPromotionDetailsId=element.productPromotionDetailsId;
+            bugruparray.push({...obj})
+            console.log('final  bugruparray', bugruparray)
+          })
+
+let apiObj:any={}
+apiObj.GroupId=element3.groupId;
+apiObj.BuyGroups=bugruparray;
+this.addbuyset.push(apiObj);
+console.log('finalfinal', this.addbuyset)
+        })
+this.addgetset=[]
+
+    promo1.forEach((element3)=>{
+     let obj: any = {};
+     let bugruparray:any[]=[];
+            element3.getGroups.forEach((element)=>{
+            let stockItemArraay: any = []
+            element.stockItemId.forEach((element1) => {
+              stockItemArraay.push(element1.stockItemId)
+            })
+            let obj1: any = []
+            element.stockItemId.forEach((element2) => {
+              obj1.push({
+                stockItemId: element2.stockItemId,
+                productName: element2.stockItemName
+              });
+            })
+            obj.MaxVolume = element.maxVolume;
+            obj.Set=element.set;
+            obj.productselectedRows=obj1;
+            obj.StockItemId=stockItemArraay;
+            obj.productPromotionDetailsId=element.productPromotionDetailsId;
+            bugruparray.push({...obj})
+            console.log('final  addgetset', bugruparray)
+          })
+
+let apiObj:any={}
+apiObj.GroupId=element3.groupId;
+apiObj.GetGroups=bugruparray;
+this.addgetset.push(apiObj);
+console.log('addgetset', this.addgetset)
+        })
 
         }
         if (res.response.promotionTypesName == 'Volume Discount') {
@@ -512,7 +587,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             this.packingCharges.push({
               MinVolume: element.minVolume,
               MaxVolume: element.maxVolume,
-              DiscountPercentage: element.productPromotionDetailsId,
+              DiscountPercentage: element.discountPercentage,
               ProductPromotionDetailsId:element.productPromotionDetailsId,
             })
           })
@@ -536,12 +611,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           extractstockItemId.forEach((element) => {
             this.VolumeSttockItemId.push(element.stockItemId)
           })
-console.log('VolumeSttockItemId',this.VolumeSttockItemId)
+    console.log('VolumeSttockItemId',this.VolumeSttockItemId)
         }
         if (res.response.promotionTypesName == 'Price Discount') {
           
           this.productPromotionsId=res.response?.productPromotionsId;
-          alert( this.productPromotionsId)
           this.productselectedRows = [];
 
           this.noPromotionSelected = false;
@@ -689,7 +763,6 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
     this.selectedItem = item;
   }
   addbuyGroup(i) {
-    alert(i)
     // this.showdata = true;
     console.log(this.buyGroupPlus);
     this.buyGroupPlus.push(
@@ -749,7 +822,6 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
 
 
   addsubbuy(i, j) {
-    alert(i)
     console.log('this.addbuyset[i]', this.addbuyset[i])
     this.addbuyset[i].BuyGroups.push({
 
@@ -765,7 +837,6 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
 
 
   addsubGetbuy(i, j) {
-    alert(i)
     console.log('this.addbuyset[i]', this.addbuyset[i])
     this.addgetset[i].GetGroups.push({
 
@@ -1072,7 +1143,6 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
 
 
   addItemsPrice() {
-    alert('price')
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
     const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px', data: this.productselectedRows ?? [] });
     dialogRef.afterClosed().subscribe((res) => {
@@ -1349,10 +1419,14 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
         if (res.response.result == 'Added Succesfully') {
           alert('Added Succesfully')
           this.dialogRef.close();
+          this.sharedService.filter('Register click')
+
         }
         else {
           alert(res.response.result);
           this.dialogRef.close();
+          this.sharedService.filter('Register click')
+
 
         }
       })
@@ -1427,11 +1501,15 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
           alert('Added Succesfully')
+          this.sharedService.filter('Register click')
           this.dialogRef.close();
+
         }
         else {
           alert(res.response.result);
+          this.sharedService.filter('Register click')
           this.dialogRef.close();
+
         }
       })
 
@@ -1460,10 +1538,14 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
           alert('Added Succesfully')
+          this.sharedService.filter('Register click')
+
           this.dialogRef.close();
         }
         else {
           alert(res.response.result);
+          this.sharedService.filter('Register click')
+
           this.dialogRef.close();
 
         }
@@ -1493,11 +1575,15 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
-          alert('Added Succesfully')
+          alert('Added Succesfully');
+          this.sharedService.filter('Register click')
+
           this.dialogRef.close();
         }
         else {
           alert(res.response.result);
+          this.sharedService.filter('Register click')
+
           this.dialogRef.close();
 
         }
@@ -1556,9 +1642,13 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
 
         if (res.response.result == 'Added Succesfully') {
           alert('Added Succesfully')
+          this.sharedService.filter('Register click')
+
           this.dialogRef.close();
         }
         else {
+          this.sharedService.filter('Register click')
+
           alert(res.response.result);
         }
       })
@@ -1632,10 +1722,15 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
           alert('Added Succesfully')
+          this.sharedService.filter('Register click')
+
           this.dialogRef.close();
         }
         else {
+          this.sharedService.filter('Register click')
           alert(res.response.result);
+          this.sharedService.filter('Register click')
+
         }
       })
 
@@ -1664,6 +1759,9 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
           alert('Added Succesfully')
+          this.sharedService.filter('Register click')
+
+          
           this.dialogRef.close();
         }
         else {
@@ -1696,6 +1794,8 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
           alert('Added Succesfully')
+          this.sharedService.filter('Register click')
+
           this.dialogRef.close();
         }
         else {
@@ -1709,7 +1809,6 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
 
 
   AddPromosaveAndSubmitEdit() {
-    alert('vishal')
     this.loggedUserId = localStorage.getItem('logInId')
 
     if (this.selectedPromo == 1) {
@@ -1754,10 +1853,14 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
 
         if (res.response.result == 'Added Succesfully') {
           alert('Added Succesfully')
+          this.sharedService.filter('Register click')
+
           this.dialogRef.close();
         }
         else {
           alert(res.response.result);
+          this.sharedService.filter('Register click')
+
           this.dialogRef.close();
 
         }
@@ -1812,7 +1915,7 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
       console.log('mainobj', mainobj)
 
       let obj3: any = {
-
+        ProductPromotionsId:this.productPromotionsId,
         PromotionName: this.promoName,
         PromotionTypesId: this.selectedPromo,
         StartDate: this.selectedStartDate,
@@ -1833,10 +1936,14 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
           alert('Added Succesfully')
+          this.sharedService.filter('Register click')
+
           this.dialogRef.close();
         }
         else {
           alert(res.response.result);
+          this.sharedService.filter('Register click')
+
           this.dialogRef.close();
         }
       })
@@ -1866,7 +1973,9 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
-          alert('Added Succesfully')
+          alert('Added Succesfully');
+          this.sharedService.filter('Register click')
+
           this.dialogRef.close();
         }
         else {
@@ -1902,11 +2011,14 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
-          alert('Added Succesfully')
+          alert('Added Succesfully');
+          this.sharedService.filter('Register click')
+
           this.dialogRef.close();
         }
         else {
           alert(res.response.result);
+          this.sharedService.filter('Register click');
           this.dialogRef.close();
 
         }
@@ -1944,7 +2056,7 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
 
 
       let obj: any = {
-
+        ProductPromotionsId:this.productPromotionsId,
         PromotionName: this.promoName,
         PromotionTypesId: this.selectedPromo,
         StartDate: this.selectedStartDate,
@@ -1965,9 +2077,12 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
 
         if (res.response.result == 'Added Succesfully') {
           alert('Added Succesfully')
+          this.sharedService.filter('Register click');
+
           this.dialogRef.close();
         }
         else {
+          this.sharedService.filter('Register click');
           alert(res.response.result);
         }
       })
@@ -2020,7 +2135,7 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
       console.log('mainobj', mainobj)
 
       let obj3: any = {
-
+        ProductPromotionsId:this.productPromotionsId,
         PromotionName: this.promoName,
         PromotionTypesId: this.selectedPromo,
         StartDate: this.selectedStartDate,
@@ -2040,10 +2155,13 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
-          alert('Added Succesfully')
+          alert('Added Succesfully');
+          this.sharedService.filter('Register click');
+
           this.dialogRef.close();
         }
         else {
+          this.sharedService.filter('Register click');
           alert(res.response.result);
         }
       })
@@ -2073,10 +2191,13 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
-          alert('Added Succesfully')
+          alert('Added Succesfully');
+          this.sharedService.filter('Register click')
+
           this.dialogRef.close();
         }
         else {
+          this.sharedService.filter('Register click');
           alert(res.response.result);
         }
       })
@@ -2106,10 +2227,13 @@ console.log('VolumeSttockItemId',this.VolumeSttockItemId)
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
-          alert('Added Succesfully')
+          alert('Added Succesfully');
+          this.sharedService.filter('Register click')
+
           this.dialogRef.close();
         }
         else {
+          this.sharedService.filter('Register click');
           alert(res.response.result);
         }
       })

@@ -29,6 +29,7 @@ import { UseractionComponent } from '../useraction/useraction.component';
 import { DateRangeSelectionComponent } from './date-range-selection/date-range-selection.component';
 import { PramotionActionComponent } from '../pramotion-action/pramotion-action.component';
 import { AssosiationServicesService } from 'src/app/services/assosiation-services.service';
+import { PromotionSharedServicesService } from 'src/app/services/promotion-shared-services.service';
 export interface PeriodicElement {
 
   name: any;
@@ -323,10 +324,18 @@ geoList:any=[]
     public promotionTypes : PromotionService,
     private promotin:PromotionListService,
     private fb: FormBuilder,
-    private associationService:AssosiationServicesService
+    private associationService:AssosiationServicesService,
+    private sharedService:PromotionSharedServicesService,
+
 
    ) {
       sort:[];
+      
+      this.sharedService.listen().subscribe((m: any) => {
+        console.log(m)
+        this.getusertabeldata()
+  
+      })
      }
   @ViewChild(MatSort)
   sort: MatSort = new MatSort;
@@ -442,12 +451,6 @@ geoList:any=[]
 
   getusertabeldata() {
     const data = { 
-    // Ptype:this.promotionSelected,
-    // Prodct:this.productSelected,
-    // Geo:this.geographySelected,
-    // Deler:[],
-    // status:this.statusSelected,
-    // search:this.searchText
     promotiontype : [],
     product: [],
     geography: [],

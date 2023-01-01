@@ -147,7 +147,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
       // this.griddata = this.orderNonPromotionFormatter(this.griddatapromotions);
       // this.griddatapromotions.sort((a, b) => b.isPromotionSelected - a.isPromotionSelected);
       this.spinner.hide();
-      console.log(this.griddata, "griddata");
+      console.log(this.griddatapromotions, "griddata");
     });
   }
 
@@ -171,7 +171,42 @@ export class AddOrderPromotionlistComponent implements OnInit {
     this.griddatapromotions.forEach(item => {
       switch (item.promotionTypesId) {
         case 1:
+        
+          if(item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0){
+    
+            item.promoDetails.buyGroups.forEach(stockItem=>{
+              if(stockItem.stockItemId.length !=0){
+                stockItem.stockItemId = stockItem.stockItemId.map(stock=>{
+                  stock = this.appendStockItemFields(stock);
+                  return stock
+                })
+              }
+  
+            });
+            item.promoDetails.buyGroups.totalQuantity = 0;
+            item.promoDetails.buyGroups.totalAmount = 0;
+          }
 
+          // getgroups
+          if(item.promoDetails && item.promoDetails.getGroups && item.promoDetails.getGroups && item.promoDetails.getGroups.length != 0){
+    
+            item.promoDetails.getGroups.forEach(stockItem=>{
+              if(stockItem.stockItemId.length !=0){
+                stockItem.stockItemId = stockItem.stockItemId.map(stock=>{
+                  stock = this.appendStockItemFields(stock);
+                  return stock
+                })
+              }
+  
+            });
+            item.promoDetails.getGroups.totalQuantity = 0;
+            item.promoDetails.getGroups.totalAmount = 0;
+          }
+
+
+
+
+      
           break;
 
         case 2:
@@ -190,7 +225,14 @@ export class AddOrderPromotionlistComponent implements OnInit {
           break;
 
         case 4:
-
+          if(item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0){
+            item.promoDetails.stockItems = item.promoDetails.stockItems.map(stockItem=>{
+              stockItem = this.appendStockItemFields(stockItem);
+              return stockItem
+            });
+            item.promoDetails.totalQuantity = 0;
+            item.promoDetails.totalAmount = 0;
+          }
           break;
 
         default:
@@ -210,7 +252,39 @@ export class AddOrderPromotionlistComponent implements OnInit {
   PromotionQtyCalculation(item){
     switch (item.promotionTypesId) {
       case 1:
+        
+        // buygroups
+        if(item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0){
+          item.promoDetails.buyGroups.totalQuantity = 0;
+          item.promoDetails.buyGroups.totalAmount = 0;
+          item.promoDetails.buyGroups.forEach(stockItem=>{
+            if(stockItem.stockItemId.length !=0){
+              stockItem.stockItemId.forEach(stock=>{
+                if(stock.isPromotionSelected){
+                 item.promoDetails.buyGroups.totalQuantity+= stock.Quantity;
+                 item.promoDetails.buyGroups.totalAmount += (stock.mrp * stock.Quantity);
+                }
+              })
+            }
 
+          });
+        }
+        // getgroups
+        if(item.promoDetails && item.promoDetails.getGroups && item.promoDetails.getGroups && item.promoDetails.getGroups.length != 0){
+          item.promoDetails.getGroups.totalQuantity = 0;
+          item.promoDetails.getGroups.totalAmount = 0;
+          item.promoDetails.getGroups.forEach(stockItem=>{
+            if(stockItem.stockItemId.length !=0){
+              stockItem.stockItemId.forEach(stock=>{
+                if(stock.isPromotionSelected){
+                 item.promoDetails.getGroups.totalQuantity+= stock.Quantity;
+                 item.promoDetails.getGroups.totalAmount += (stock.mrp * stock.Quantity);
+                }
+              })
+            }
+
+          });
+        }
         break;
 
       case 2:
@@ -231,7 +305,16 @@ export class AddOrderPromotionlistComponent implements OnInit {
         break;
 
       case 4:
-
+        if(item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0){
+          item.promoDetails.totalQuantity = 0;
+          item.promoDetails.totalAmount = 0;
+          item.promoDetails.stockItems.forEach(stockItem=>{
+            if(stockItem.isPromotionSelected){
+              item.promoDetails.totalQuantity += stockItem.Quantity;
+              item.promoDetails.totalAmount += (stockItem.mrp * stockItem.Quantity);
+            }
+          });
+        }
         break;
 
       default:
@@ -251,7 +334,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
   addPromoItems() {
 
     let selectedNonPromotionData: any = [];
-    this.griddata.forEach(item => {
+    this.griddatapromotions.forEach(item => {
       if (item.isPromotionSelected) {
         let obj = {
           "Taxid": item.Taxid,

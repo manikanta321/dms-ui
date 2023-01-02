@@ -413,7 +413,7 @@ export class AddDealerAssociationsComponent implements OnInit {
     console.log('item Subcatty', item)
     this.catagoryName = item.catName;
     let dealerdata = {
-      ProductId: this.productSkuId,
+      ProductId: this.stockItemsID,
       DealerId: this.selectedDealerInDropDown,
       SelectedGeoIds: this.storedName124,
     }

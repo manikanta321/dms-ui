@@ -10,6 +10,7 @@ import { ActivatepopUpComponent } from '../users/userPopups/activatepop-up/activ
 import { DeactivateUserpopupComponent } from '../users/userPopups/deactivate-userpopup/deactivate-userpopup.component';
 import { EditPopupComponent } from '../users/userPopups/edit-popup/edit-popup.component';
 import { PswResetPopupComponent } from '../users/userPopups/psw-reset-popup/psw-reset-popup.component';
+import { ClosePopupComponent } from './close-popup/close-popup.component';
 
 @Component({
   selector: 'app-pramotion-action',
@@ -62,8 +63,8 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
     });
   }
   close(){
-    this.isOpen = false;
-
+    // this.isOpen = false;
+    this.dialog.open( ClosePopupComponent);
   }
   resetpws(){
     this.dialog.open(PswResetPopupComponent);
@@ -81,7 +82,6 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
      
     };
    this.dialog.open( AddPromotionsComponent, config);
-   this.isOpen = false;
 
   }
   togglePopup() {

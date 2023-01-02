@@ -11,7 +11,7 @@
         <label >Name<span style="color: red;">*</span></label><br>
         <input type="text" name="countryName" id="countryName" #countryName="ngModel" [placeholder]="'Enter ' + geoPlaceholder + ' name'" [(ngModel)]="name"
           required >      
-          <p style=" margin-bottom: -29px; padding: 0px;font-size: 11px;position: relative; bottom: 8px;" 
+          <p style=" margin-top: -13px; padding: 0px;font-size: 14px;position: absolute;" 
            *ngIf="countryName.invalid && (countryName.dirty || countryName.touched)"
               class="alert">
               <span style="color:red;" *ngIf="countryName.errors?.['required']">
@@ -25,10 +25,10 @@
         <input type="text" name="geoCode" id="geoCode" #geoCode="ngModel"   [placeholder]="'Enter ' + geoPlaceholder + ' code'" [(ngModel)]="code"
       >-->
         
-            <label >Code<span style="color: red;">*</span></label><br>
+            <label style="margin-top:4px">Code<span style="color: red;margin-top: 2px;">*</span></label><br>
         <input type="text" name="cName" id="cName" #cName="ngModel" [placeholder]="'Enter ' + geoPlaceholder + ' name'" [(ngModel)]="code"
           required >      
-          <p style=" margin-bottom: -29px; padding: 0px;font-size: 11px;position: relative; bottom: 8px;" 
+          <p style=" margin-bottom: -29px; padding: 0px;font-size: 14px;position: relative; bottom: 8px;" 
            *ngIf="cName.invalid && (cName.dirty || cName.touched)"
               class="alert">
               <span style="color:red;" *ngIf="cName.errors?.['required']">

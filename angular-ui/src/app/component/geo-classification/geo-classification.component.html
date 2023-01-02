@@ -8,16 +8,20 @@
                     <div class="col-sm-10">
                         <p><span class="country">{{item.geographyHierarchyName}}</span>
                             ({{item.geographyCount ?? 0}})
-                            <span class="ml-1" *ngIf="item.primaryGeographyAssociation =='Y'"> <img src="assets/img/double-blue-tick.svg" alt="double-blue-tick"> </span>
+                            <span class="ml-1" *ngIf="item.primaryGeographyAssociation =='Y'"> <img
+                                    src="assets/img/double-blue-tick.svg" alt="double-blue-tick"> </span>
                         </p>
-                            
+
                     </div>
                     <div class="col-sm-2" *ngIf="item.showAddIcon">
                         <mat-icon (click)="addGeographyForm(item, (i+1))" class="addC">add_circle</mat-icon>
                     </div>
                 </div>
-                <mat-card class="mat-card mat-focus-indicator mat-card-content scroll font">
-                    <mat-card-content class="mat-card-content">
+             
+                <mat-card class="mat-card mat-focus-indicator mat-card-content scroll font"
+                    [ngClass]="{ 'Geo': item.geographyHierarchyName > 6 }">
+                    <!-- <p class="primary">Primary categories</p> -->
+                    <mat-card-content class="mat-card-content"> 
 
                         <div *ngIf="item.allOtherGeography">
                             <div class="bread-crumb-display" *ngIf="item.allOtherGeography.length > 0">
@@ -26,13 +30,16 @@
                             <div class="d-flex " *ngFor="let geoItem of item.allOtherGeography; ">
                                 <div class="geography-item"
                                     [ngStyle]="{'background':item.geographySelected.indexOf(geoItem.geographyId) == -1 ? colorsList[i].secondaryColor.background : colorsList[i].primaryColor.background, 'color':item.geographySelected.indexOf(geoItem.geographyId) == -1 ? colorsList[i].secondaryColor.color : colorsList[i].primaryColor.color,'border': '1px solid ' + colorsList[i].primaryColor.background }"
-                                    (click)="geoItem?.isActive ? selectGeoGraphy(geoItem,(i +1)): null" [ngClass]="{'deactivated': !geoItem?.isActive} ">
+                                    (click)="geoItem?.isActive ? selectGeoGraphy(geoItem,(i +1)): null"
+                                    [ngClass]="{'deactivated': !geoItem?.isActive} ">
                                     <div class="title"> {{geoItem.geographyName}} ({{geoItem.geographyCode ??''}})</div>
                                     <div class="action-items">
-                                        <div class="action-item edit-action" *ngIf="geoItem.isActive" (click)="editGeography($event, geoItem, item.geographyHierarchyName, (i+1))">
+                                        <div class="action-item edit-action" *ngIf="geoItem.isActive"
+                                            (click)="editGeography($event, geoItem, item.geographyHierarchyName, (i+1))">
                                             <img src="assets/img/pencil.svg" alt="Edit">
                                         </div>
-                                        <div class="action-item activate-deactivate-action"  (click)="activateDeactivateGeography($event, geoItem, (i+1) )">
+                                        <div class="action-item activate-deactivate-action"
+                                            (click)="activateDeactivateGeography($event, geoItem, (i+1) )">
                                             <img src="/assets/img/power.svg" alt="activate">
                                         </div>
                                     </div>

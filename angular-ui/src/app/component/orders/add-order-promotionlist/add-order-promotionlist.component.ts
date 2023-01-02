@@ -157,7 +157,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
     formatObj.stockItemName = stockItem.stockItemName;
     formatObj.productSKUName = stockItem.productSKUName;
     formatObj.mrp = stockItem.mrp;
-
+    formatObj.stock =stockItem.stock
     formatObj.isProductSelected = stockItem.isProductSelected == undefined ? false : stockItem.isProductSelected;    
     formatObj.Quantity = stockItem.quantity == undefined ? null : stockItem.quantity;
     formatObj.Taxid = stockItem.taxid == undefined ? null : stockItem.taxid;

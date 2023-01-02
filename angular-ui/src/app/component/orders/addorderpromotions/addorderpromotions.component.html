@@ -440,7 +440,9 @@
                                         <td>{{Item.classification}}</td>
                                         <td>{{Item.productSKUName}}</td>
                                         <td>{{Item.mrp}}</td>
-                                        <td>{{Item.stockqty}}</td>
+                                        <td><input type="number" placeholder="1000" class="quatity-inp"
+                                            [(ngModel)]="Item.stock" ></td>
+                                        <!-- <td>{{Item.stockqty}}</td> -->
                                         <td>
                                             <select class="tax-select" placeholder="select" [(ngModel)]="Item.Taxid">
                                                 <option value="" selected hidden>Select tax</option>

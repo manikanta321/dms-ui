@@ -88,6 +88,7 @@
                                                         <th data-sortable="true">Product Name</th>
                                                         <th data-sortable="true">SKU</th>
                                                         <th data-sortable="true">Price</th>
+                                                        <th data-sortable="true">stock qty</th>
                                                         <th data-sortable="false">Tax Templete</th>
                                                         <th data-sortable="false">Quantity</th>
                                                         <th data-sortable="false">Amount</th>
@@ -97,6 +98,8 @@
                                                             (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}</td>
                                                         <td>{{Item.productSKUName}}</td>
                                                         <td>{{Item.mrp}}</td>
+                                                        <td><input type="number" placeholder="1000" class="quatity-inp"
+                                                            [(ngModel)]="Item.stock" ></td>
                                                         <td>
                                                             <select class="tax-select" placeholder="select"
                                                                 [(ngModel)]="Item.Taxid">
@@ -166,6 +169,7 @@
                                                         <th data-sortable="true">Product Name</th>
                                                         <th data-sortable="true">SKU</th>
                                                         <th data-sortable="true">Price</th>
+                                                        <th data-sortable="true">stock qty</th>
                                                         <th data-sortable="false">Tax Templete</th>
                                                         <th data-sortable="false">Quantity</th>
                                                         <th data-sortable="false">Amount</th>
@@ -175,6 +179,8 @@
                                                             (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}</td>
                                                         <td>{{Item.productSKUName}}</td>
                                                         <td>{{Item.mrp}}</td>
+                                                        <td><input type="number" placeholder="1000" class="quatity-inp"
+                                                            [(ngModel)]="Item.stock" ></td>
                                                         <td>
                                                             <select class="tax-select" placeholder="select"
                                                                 [(ngModel)]="Item.Taxid">
@@ -242,6 +248,7 @@
                                                         <th data-sortable="true">Product Name</th>
                                                         <th data-sortable="true">SKU</th>
                                                         <th data-sortable="true">Price</th>
+                                                        <th data-sortable="true">stock qty</th>
                                                         <th data-sortable="false">Tax Templete</th>
                                                         <th data-sortable="false">Quantity</th>
                                                         <th data-sortable="false">Amount</th>
@@ -251,6 +258,8 @@
                                                             (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}</td>
                                                         <td>{{Item.productSKUName}}</td>
                                                         <td>{{Item.mrp}}</td>
+                                                        <td><input type="number" placeholder="1000" class="quatity-inp"
+                                                            [(ngModel)]="Item.stock" ></td>
                                                         <td>
                                                             <select class="tax-select" placeholder="select"
                                                                 [(ngModel)]="Item.Taxid">
@@ -319,6 +328,7 @@
                                                         <th data-sortable="true">Product Name</th>
                                                         <th data-sortable="true">SKU</th>
                                                         <th data-sortable="true">Price</th>
+                                                        <th data-sortable="true">stock qty</th>
                                                         <th data-sortable="false">Tax Templete</th>
                                                         <th data-sortable="false">Quantity</th>
                                                         <th data-sortable="false">Amount</th>
@@ -328,6 +338,8 @@
                                                             (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}</td>
                                                         <td>{{Item.productSKUName}}</td>
                                                         <td>{{Item.mrp}}</td>
+                                                        <td><input type="number" placeholder="1000" class="quatity-inp"
+                                                            [(ngModel)]="Item.stock" ></td>
                                                         <td>
                                                             <select class="tax-select" placeholder="select"
                                                                 [(ngModel)]="Item.Taxid">

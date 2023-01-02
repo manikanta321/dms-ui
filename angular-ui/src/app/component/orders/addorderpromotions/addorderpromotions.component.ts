@@ -956,6 +956,7 @@ export class AddorderpromotionsComponent implements OnInit {
       obj.classification = item.classification;
       obj.materialCustomName = item.materialCustomName;
       obj.mrp = item.mrp;
+      obj.stock = item.stock
       obj.productSKUName = item.productSKUName;
       obj.stockItemId = item.stockItemId;
       obj.stockItemName = item.stockItemName;
@@ -1035,7 +1036,7 @@ export class AddorderpromotionsComponent implements OnInit {
                   "stockid": item.stockitemid,
                   "uom": item.uomid,
                   "orderqty": item.quantity,
-                  "stockqty": 0,
+                  "stock": item.stock,
                   "price": item.mrp,
                   "discount": item.discount,
                   "finalvalue": item.finalValue,
@@ -1170,7 +1171,7 @@ export class AddorderpromotionsComponent implements OnInit {
           "stockid": item.stockitemid,
           "uom": item.uomid,
           "orderqty": item.quantity,
-          "stockqty": 0,
+          "stock": item.stock,
           "price": item.mrp,
           "discount": item.discount,
           "finalvalue": item.finalValue,

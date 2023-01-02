@@ -41,6 +41,10 @@ export class AddOrderPromotionlistComponent implements OnInit {
   quantityadd: any = 0;
   price: any = 0;
   griddata: any = [];
+  // promotions payloads
+  promotionstype3 :any = [];
+  promotionstype4: any = [];
+  promotionstype1: any = [];
 
   constructor(private user: UserService,
     private orders: OrdersApisService,
@@ -334,37 +338,124 @@ export class AddOrderPromotionlistComponent implements OnInit {
   addPromoItems() {
 
     // payload for 3 and 4th promotions
-    let promotionstype1 :any = [];
-    let selectedNonPromotionData: any = [];
+  
     this.griddatapromotions.forEach(item => {
-      let data ={
-        "PromotionId" : item.productPromotionsId,
-        "AddItems": selectedNonPromotionData
-      }
-      promotionstype1.push(data);
-
-      if(item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0){
-        item.promoDetails.stockItems.forEach(stockItem=>{
-          if(stockItem.isProductSelected){
-            let obj = {
-
-              "Taxid": stockItem.Taxid,
-              "stockItemId": stockItem.stockItemId,
-              "Quantity": stockItem.Quantity,
-
-            };
-            selectedNonPromotionData.push(obj)
-
-            
-            
+      switch (item.promotionTypesId) {
+        case 1:
+          let selectedNonPromotionData1: any = [];
+          let data1 ={
+            "PromotionId" : item.productPromotionsId,
+            "AddItems": selectedNonPromotionData1
           }
-        });
+          this.promotionstype1.push(data1);
+          // buygroups
+        if(item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0){
+          item.promoDetails.buyGroups.forEach(stockItem=>{
+            if(stockItem.stockItemId.length !=0){
+              stockItem.stockItemId.forEach(stock=>{
+                if(stock.isProductSelected){
+                  let obj = {
+      
+                    "Taxid": stock.Taxid,
+                    "stockItemId": stock.stockItemId,
+                    "Quantity": stock.Quantity,
+      
+                  };
+                  selectedNonPromotionData1.push(obj)
+    
+                }
+              })
+            }
+
+          });
+        }
+        // getgroups
+        if(item.promoDetails && item.promoDetails.getGroups && item.promoDetails.getGroups && item.promoDetails.getGroups.length != 0){
+          item.promoDetails.getGroups.forEach(stockItem=>{
+            if(stockItem.stockItemId.length !=0){
+              stockItem.stockItemId.forEach(stock=>{
+                if(stock.isProductSelected){
+                  let obj = {
+      
+                    "Taxid": stock.Taxid,
+                    "stockItemId": stock.stockItemId,
+                    "Quantity": stock.Quantity,
+      
+                  };
+                  selectedNonPromotionData1.push(obj)
+    
+                }
+              })
+            }
+
+          });
+        }
+
+          break;
+        case 2:
+
+          break;
+        case 3:
+          
+          let selectedNonPromotionData: any = [];
+          let data3 ={
+            "PromotionId" : item.productPromotionsId,
+            "AddItems": selectedNonPromotionData
+          }
+          this.promotionstype3.push(data3);
+          if(item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0){
+            item.promoDetails.stockItems.forEach(stockItem=>{
+              if(stockItem.isProductSelected){
+                let obj = {
+    
+                  "Taxid": stockItem.Taxid,
+                  "stockItemId": stockItem.stockItemId,
+                  "Quantity": stockItem.Quantity,
+    
+                };
+                selectedNonPromotionData.push(obj)
+  
+              }
+            });
+          }
+          break;
+        case 4:
+          let selectedNonPromotionData4: any = [];
+          let data4 ={
+            "PromotionId" : item.productPromotionsId,
+            "AddItems": selectedNonPromotionData
+          }
+          this.promotionstype4.push(data4);
+          if(item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0){
+            item.promoDetails.stockItems.forEach(stockItem=>{
+              if(stockItem.isProductSelected){
+                let obj = {
+    
+                  "Taxid": stockItem.Taxid,
+                  "stockItemId": stockItem.stockItemId,
+                  "Quantity": stockItem.Quantity,
+    
+                };
+                selectedNonPromotionData4.push(obj)  
+              }
+            });
+          }
+          break;
+        default:
+          break;
       }
+   
     });
+// to get all promotions in common res
+    let  allopromotions: any =[];
+    allopromotions.push(...this.promotionstype1,...this.promotionstype3)
+
 
     let data = {
       "GeographyId": this.geographyId,
-      "details":promotionstype1
+      "details":allopromotions,
+
+
     }
     console.log('data', data);
   }

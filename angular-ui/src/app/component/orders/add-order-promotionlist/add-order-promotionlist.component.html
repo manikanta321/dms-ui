@@ -35,7 +35,9 @@
                                 <div class="row">
                                     <div class="col-md-11">
                                         <p class="label-cls">
-                                            <mat-checkbox [(ngModel)]="data.isProductSelected" [checked]="data.isProductSelected"></mat-checkbox> {{data.promotionName}}
+                                            <mat-checkbox [(ngModel)]="data.isProductSelected"
+                                                [checked]="data.isProductSelected"></mat-checkbox>
+                                            {{data.promotionName}}
                                             <span>{{data.promotionTypesName}} </span>
                                         </p>
                                     </div>
@@ -94,12 +96,13 @@
                                                         <th data-sortable="false">Amount</th>
                                                     </tr>
                                                     <tr class="table-row" *ngFor="let Item of promos.stockItemId">
-                                                        <td><input type="checkbox"[checked]="Item.isProductSelected"
-                                                            (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}</td>
+                                                        <td><input type="checkbox" [checked]="Item.isProductSelected"
+                                                                (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}
+                                                        </td>
                                                         <td>{{Item.productSKUName}}</td>
                                                         <td>{{Item.mrp}}</td>
                                                         <td><input type="number" placeholder="1000" class="quatity-inp"
-                                                            [(ngModel)]="Item.stock" ></td>
+                                                                [(ngModel)]="Item.stock"></td>
                                                         <td>
                                                             <select class="tax-select" placeholder="select"
                                                                 [(ngModel)]="Item.Taxid">
@@ -114,15 +117,18 @@
                                                                 alt="double-blue-tick">
                                                         </td>
                                                         <td><input type="number" placeholder="5" class="quatity-inp"
-                                                                [(ngModel)]="Item.Quantity" (keyup)="quantityChange(data)"></td>
+                                                                [(ngModel)]="Item.Quantity"
+                                                                (keyup)="quantityChange(data)"></td>
                                                         <td>{{(Item.Quantity ?? 0) * Item.mrp }}</td>
                                                     </tr>
                                                     <tr class="bottom-table">
-                                                        <td colspan="4" class="btm-total"><b>Total  </b>(for selected
+                                                        <td colspan="4" class="btm-total"><b>Total </b>(for selected
                                                             items &
                                                             quantity entered)</td>
-                                                            <td class="btm-total" >{{data.promoDetails.buyGroups.totalQuantity ?? 0}}</td>
-                                                            <td class="btm-total">{{data.promoDetails.buyGroups.totalAmount ?? 0}}</td>
+                                                        <td class="btm-total">
+                                                            {{data.promoDetails.buyGroups.totalQuantity ?? 0}}</td>
+                                                        <td class="btm-total">{{data.promoDetails.buyGroups.totalAmount
+                                                            ?? 0}}</td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -175,12 +181,13 @@
                                                         <th data-sortable="false">Amount</th>
                                                     </tr>
                                                     <tr class="table-row" *ngFor="let Item of promos.stockItemId">
-                                                        <td><input type="checkbox"[checked]="Item.isProductSelected"
-                                                            (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}</td>
+                                                        <td><input type="checkbox" [checked]="Item.isProductSelected"
+                                                                (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}
+                                                        </td>
                                                         <td>{{Item.productSKUName}}</td>
                                                         <td>{{Item.mrp}}</td>
                                                         <td><input type="number" placeholder="1000" class="quatity-inp"
-                                                            [(ngModel)]="Item.stock" ></td>
+                                                                [(ngModel)]="Item.stock"></td>
                                                         <td>
                                                             <select class="tax-select" placeholder="select"
                                                                 [(ngModel)]="Item.Taxid">
@@ -195,16 +202,19 @@
                                                                 alt="double-blue-tick">
                                                         </td>
                                                         <td><input type="number" placeholder="5" class="quatity-inp"
-                                                                [(ngModel)]="Item.Quantity" (keyup)="quantityChange(data)"></td>
+                                                                [(ngModel)]="Item.Quantity"
+                                                                (keyup)="quantityChange(data)"></td>
                                                         <td>{{(Item.mrp) * (Item.Quantity)}}</td>
                                                     </tr>
                                                     <tr class="bottom-table">
-                                                       
+
                                                         <td colspan="4" class="btm-total"><b>Total </b>(for selected
-                                                            items & 
+                                                            items &
                                                             quantity entered)</td>
-                                                            <td class="btm-total" >{{data.promoDetails.getGroups.totalQuantity ?? 0}}</td>
-                                                            <td class="btm-total">{{data.promoDetails.getGroups.totalAmount ?? 0}}</td>
+                                                        <td class="btm-total">
+                                                            {{data.promoDetails.getGroups.totalQuantity ?? 0}}</td>
+                                                        <td class="btm-total">{{data.promoDetails.getGroups.totalAmount
+                                                            ?? 0}}</td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -212,9 +222,198 @@
                                     </div>
                                 </div>
 
+
+                                <!-- 2nd promotions -->
+                                <div *ngIf="data.promotionTypesId==2">
+                                    <div class="buysets text-center">
+                                        <h4 class="buysetHead"><b> {{data.promoDetails.buySets.length != 0 ? 'BUY SETS'
+                                                :''}} </b> </h4>
+                                    </div>
+                                    <div *ngFor="let setItem of data.promoDetails.buySets;let j=index">
+                                        <div *ngFor="let promos of setItem.buyGroups">
+                                            <div class="buyGrp 1">
+                                                <!-- headingds for 1st promotions -->
+                                                <div class="row label-div">
+                                                    <div class="col-md-3">
+                                                        <span class="buy-grp"> Set -{{setItem.groupId}}: Buy Group
+                                                            {{promos.set}}</span>
+                                                    </div>
+                                                    <div class="col-md-3" style="text-align: center;">
+                                                        <span class="total-itemss">Total Items:({{promos.maxVolume}})
+                                                            (MOQ:{{promos.moq}})</span>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <button class="searchButton" href="#">
+                                                            <i class="material-icons">
+                                                                search
+                                                            </i>
+                                                        </button>
+                                                        <div class="searchBox d-flex" style=" cursor: pointer">
+                                                            <input class="searchInput" style="font-family: 'Gilroy'"
+                                                                type="text" name=""
+                                                                placeholder="Type & search for anything"
+                                                                (keyup)="onSearchChange($event)">
+                                                            <button class="search-btn"
+                                                                style="font-family: 'Gilroy'">Search</button>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- tabels for 1st promotions -->
+                                                <div class="label-div">
+                                                    <table id="Table1">
+                                                        <tr>
+                                                            <th data-sortable="true">Product Name</th>
+                                                            <th data-sortable="true">SKU</th>
+                                                            <th data-sortable="true">Price</th>
+                                                            <th data-sortable="true">stock qty</th>
+                                                            <th data-sortable="false">Tax Templete</th>
+                                                            <th data-sortable="false">Quantity</th>
+                                                            <th data-sortable="false">Amount</th>
+                                                        </tr>
+                                                        <tr class="table-row" *ngFor="let Item of promos.stockItemId">
+                                                            <td><input type="checkbox"
+                                                                    [checked]="Item.isProductSelected"
+                                                                    (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}
+                                                            </td>
+                                                            <td>{{Item.productSKUName}}</td>
+                                                            <td>{{Item.mrp}}</td>
+                                                            <td><input type="number" placeholder="1000"
+                                                                    class="quatity-inp" [(ngModel)]="Item.stock"></td>
+                                                            <td>
+                                                                <select class="tax-select" placeholder="select"
+                                                                    [(ngModel)]="Item.Taxid">
+                                                                    <option value="" selected hidden>Select tax</option>
+                                                                    <option *ngFor="let option of taxdropdowndata"
+                                                                        [value]="option.taxTemplateId">
+                                                                        {{option.taxTemplateName}}
+                                                                    </option>
+                                                                </select>
+
+                                                                <img src="assets/img/doubleTickes-default.svg"
+                                                                    alt="double-blue-tick">
+                                                            </td>
+                                                            <td><input type="number" placeholder="5" class="quatity-inp"
+                                                                    [(ngModel)]="Item.Quantity"
+                                                                    (keyup)="quantityChange(data)"></td>
+                                                            <td>{{(Item.Quantity ?? 0) * Item.mrp }}</td>
+                                                        </tr>
+                                                        <tr class="bottom-table">
+                                                            <td colspan="4" class="btm-total"><b>Total </b>(for selected
+                                                                items &
+                                                                quantity entered)</td>
+                                                            <td class="btm-total">
+                                                                {{promos.totalQuantity ?? 0}}</td>
+                                                            <td class="btm-total">
+                                                                {{promos.totalAmount ?? 0}}</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="line-txt" *ngIf="(j +1) != data.promoDetails.buySets.length">
+                                            <span>(OR)</span>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- set groups -->
+                                    <div *ngFor="let setItem of data.promoDetails.getSets;let j=index">
+                                        <div *ngFor="let promos of setItem.getGroups">
+                                            <div class="buyGrp 1">
+                                                <!-- headingds for 1st promotions -->
+                                                <div class="row label-div">
+                                                    <div class="col-md-3">
+                                                        <span class="buy-grp"> Set -{{setItem.groupId}}: Get Group
+                                                            {{promos.set}}</span>
+                                                    </div>
+                                                    <div class="col-md-3" style="text-align: center;">
+                                                        <span class="total-itemss">Total Items:({{promos.maxVolume}})
+                                                            (MOQ:{{promos.moq}})</span>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <button class="searchButton" href="#">
+                                                            <i class="material-icons">
+                                                                search
+                                                            </i>
+                                                        </button>
+                                                        <div class="searchBox d-flex" style=" cursor: pointer">
+                                                            <input class="searchInput" style="font-family: 'Gilroy'"
+                                                                type="text" name=""
+                                                                placeholder="Type & search for anything"
+                                                                (keyup)="onSearchChange($event)">
+                                                            <button class="search-btn"
+                                                                style="font-family: 'Gilroy'">Search</button>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- tabels for 1st promotions -->
+                                                <div class="label-div">
+                                                    <table id="Table1">
+                                                        <tr>
+                                                            <th data-sortable="true">Product Name</th>
+                                                            <th data-sortable="true">SKU</th>
+                                                            <th data-sortable="true">Price</th>
+                                                            <th data-sortable="true">stock qty</th>
+                                                            <th data-sortable="false">Tax Templete</th>
+                                                            <th data-sortable="false">Quantity</th>
+                                                            <th data-sortable="false">Amount</th>
+                                                        </tr>
+                                                        <tr class="table-row" *ngFor="let Item of promos.stockItemId">
+                                                            <td><input type="checkbox"
+                                                                    [checked]="Item.isProductSelected"
+                                                                    (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}
+                                                            </td>
+                                                            <td>{{Item.productSKUName}}</td>
+                                                            <td>{{Item.mrp}}</td>
+                                                            <td><input type="number" placeholder="1000"
+                                                                    class="quatity-inp" [(ngModel)]="Item.stock"></td>
+                                                            <td>
+                                                                <select class="tax-select" placeholder="select"
+                                                                    [(ngModel)]="Item.Taxid">
+                                                                    <option value="" selected hidden>Select tax</option>
+                                                                    <option *ngFor="let option of taxdropdowndata"
+                                                                        [value]="option.taxTemplateId">
+                                                                        {{option.taxTemplateName}}
+                                                                    </option>
+                                                                </select>
+
+                                                                <img src="assets/img/doubleTickes-default.svg"
+                                                                    alt="double-blue-tick">
+                                                            </td>
+                                                            <td><input type="number" placeholder="5" class="quatity-inp"
+                                                                    [(ngModel)]="Item.Quantity"
+                                                                    (keyup)="quantityChange(data)"></td>
+                                                            <td>{{(Item.Quantity ?? 0) * Item.mrp }}</td>
+                                                        </tr>
+                                                        <tr class="bottom-table">
+                                                            <td colspan="4" class="btm-total"><b>Total </b>(for selected
+                                                                items &
+                                                                quantity entered)</td>
+                                                            <td class="btm-total">
+                                                                {{promos.totalQuantity ?? 0}}</td>
+                                                            <td class="btm-total">
+                                                                {{promos.totalAmount ?? 0}}</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="line-txt" *ngIf="(j +1) != data.promoDetails.getSets.length">
+                                            <span>(OR)</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+
                                 <!-- 3rd promotions -->
                                 <div *ngIf="data.promotionTypesId==3">
-                                    <div >
+                                    <div>
                                         <div class="buyGrp 1">
                                             <!-- headingds for 3rd promotions -->
                                             <div class="row label-div">
@@ -242,7 +441,7 @@
 
                                             </div>
                                             <!-- tabels for 3rd promotions -->
-                                            <div class="label-div" >
+                                            <div class="label-div">
                                                 <table id="Table1">
                                                     <tr>
                                                         <th data-sortable="true">Product Name</th>
@@ -253,13 +452,15 @@
                                                         <th data-sortable="false">Quantity</th>
                                                         <th data-sortable="false">Amount</th>
                                                     </tr>
-                                                    <tr class="table-row" *ngFor="let Item of data.promoDetails.stockItems">
+                                                    <tr class="table-row"
+                                                        *ngFor="let Item of data.promoDetails.stockItems">
                                                         <td><input type="checkbox" [checked]="Item.isProductSelected"
-                                                            (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}</td>
+                                                                (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}
+                                                        </td>
                                                         <td>{{Item.productSKUName}}</td>
                                                         <td>{{Item.mrp}}</td>
                                                         <td><input type="number" placeholder="1000" class="quatity-inp"
-                                                            [(ngModel)]="Item.stock" ></td>
+                                                                [(ngModel)]="Item.stock"></td>
                                                         <td>
                                                             <select class="tax-select" placeholder="select"
                                                                 [(ngModel)]="Item.Taxid">
@@ -268,21 +469,24 @@
                                                                     [value]="option.taxTemplateId">
                                                                     {{option.taxTemplateName}}
                                                                 </option>
-                                                            </select> 
+                                                            </select>
 
                                                             <img src="assets/img/doubleTickes-default.svg"
                                                                 alt="double-blue-tick">
                                                         </td>
                                                         <td><input type="number" placeholder="5" class="quatity-inp"
-                                                                [(ngModel)]="Item.Quantity" (keyup)="quantityChange(data)" ></td>
+                                                                [(ngModel)]="Item.Quantity"
+                                                                (keyup)="quantityChange(data)"></td>
                                                         <td>{{(Item.mrp) * (Item.Quantity)}}</td>
                                                     </tr>
                                                     <tr class="bottom-table">
                                                         <td colspan="4" class="btm-total"><b>Total </b>(for selected
                                                             items &
                                                             quantity entered)</td>
-                                                        <td class="btm-total" >{{data.promoDetails.totalQuantity ?? 0}}</td>
-                                                        <td class="btm-total">{{data.promoDetails.totalAmount ?? 0}}</td>
+                                                        <td class="btm-total">{{data.promoDetails.totalQuantity ?? 0}}
+                                                        </td>
+                                                        <td class="btm-total">{{data.promoDetails.totalAmount ?? 0}}
+                                                        </td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -294,7 +498,7 @@
                                 <!-- 4th promotions -->
                                 <div *ngIf="data.promotionTypesId==4">
 
-                                    <div >
+                                    <div>
                                         <div class="buyGrp 1">
                                             <!-- headingds for 4th promotions -->
                                             <div class="row label-div">
@@ -322,7 +526,7 @@
 
                                             </div>
                                             <!-- tabels for 4th promotions -->
-                                            <div class="label-div" >
+                                            <div class="label-div">
                                                 <table id="Table1">
                                                     <tr>
                                                         <th data-sortable="true">Product Name</th>
@@ -333,13 +537,15 @@
                                                         <th data-sortable="false">Quantity</th>
                                                         <th data-sortable="false">Amount</th>
                                                     </tr>
-                                                    <tr class="table-row" *ngFor="let Item of data.promoDetails.stockItems">
+                                                    <tr class="table-row"
+                                                        *ngFor="let Item of data.promoDetails.stockItems">
                                                         <td><input type="checkbox" [checked]="Item.isProductSelected"
-                                                            (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}</td>
+                                                                (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}
+                                                        </td>
                                                         <td>{{Item.productSKUName}}</td>
                                                         <td>{{Item.mrp}}</td>
                                                         <td><input type="number" placeholder="1000" class="quatity-inp"
-                                                            [(ngModel)]="Item.stock" ></td>
+                                                                [(ngModel)]="Item.stock"></td>
                                                         <td>
                                                             <select class="tax-select" placeholder="select"
                                                                 [(ngModel)]="Item.Taxid">
@@ -354,15 +560,18 @@
                                                                 alt="double-blue-tick">
                                                         </td>
                                                         <td><input type="number" placeholder="5" class="quatity-inp"
-                                                                [(ngModel)]="Item.Quantity" (keyup)="quantityChange(data)" ></td>
+                                                                [(ngModel)]="Item.Quantity"
+                                                                (keyup)="quantityChange(data)"></td>
                                                         <td>{{(Item.mrp) * (Item.Quantity)}}</td>
                                                     </tr>
                                                     <tr class="bottom-table">
                                                         <td colspan="4" class="btm-total"><b>Total </b>(for selected
                                                             items &
                                                             quantity entered)</td>
-                                                            <td class="btm-total" >{{data.promoDetails.totalQuantity ?? 0}}</td>
-                                                            <td class="btm-total">{{data.promoDetails.totalAmount ?? 0}}</td>
+                                                        <td class="btm-total">{{data.promoDetails.totalQuantity ?? 0}}
+                                                        </td>
+                                                        <td class="btm-total">{{data.promoDetails.totalAmount ?? 0}}
+                                                        </td>
                                                     </tr>
                                                 </table>
                                             </div>

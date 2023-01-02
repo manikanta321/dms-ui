@@ -72,7 +72,7 @@ export class OrdersApisService {
   }
 
   public GetOrdersToEdit(CustomerPoId:any){
-    return this.http.get<any>(this.userurl + `OrdersApi/GetOrdersToEdit?CustomerPoId=${CustomerPoId}`)
+    return this.http.get<any>(this.userurl + `OrdersApi/GetOrdersToEdit?OrderId=${CustomerPoId}`)
   }
 
 

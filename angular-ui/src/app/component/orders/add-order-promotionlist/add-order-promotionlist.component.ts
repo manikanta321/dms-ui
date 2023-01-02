@@ -42,9 +42,10 @@ export class AddOrderPromotionlistComponent implements OnInit {
   price: any = 0;
   griddata: any = [];
   // promotions payloads
-  promotionstype3 :any = [];
+  promotionstype3: any = [];
   promotionstype4: any = [];
   promotionstype1: any = [];
+  promotionstype2: any = [];
 
   constructor(private user: UserService,
     private orders: OrdersApisService,
@@ -155,14 +156,14 @@ export class AddOrderPromotionlistComponent implements OnInit {
     });
   }
 
-  appendStockItemFields(stockItem){
-    let formatObj:any = {};
+  appendStockItemFields(stockItem) {
+    let formatObj: any = {};
     formatObj.stockItemId = stockItem.stockItemId;
     formatObj.stockItemName = stockItem.stockItemName;
     formatObj.productSKUName = stockItem.productSKUName;
     formatObj.mrp = stockItem.mrp;
-    formatObj.stock =stockItem.stock
-    formatObj.isProductSelected = stockItem.isProductSelected == undefined ? false : stockItem.isProductSelected;    
+    formatObj.stock = stockItem.stock
+    formatObj.isProductSelected = stockItem.isProductSelected == undefined ? false : stockItem.isProductSelected;
     formatObj.Quantity = stockItem.quantity == undefined ? null : stockItem.quantity;
     formatObj.Taxid = stockItem.taxid == undefined ? null : stockItem.taxid;
 
@@ -175,51 +176,77 @@ export class AddOrderPromotionlistComponent implements OnInit {
     this.griddatapromotions.forEach(item => {
       switch (item.promotionTypesId) {
         case 1:
-        
-          if(item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0){
-    
-            item.promoDetails.buyGroups.forEach(stockItem=>{
-              if(stockItem.stockItemId.length !=0){
-                stockItem.stockItemId = stockItem.stockItemId.map(stock=>{
+
+          if (item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0) {
+
+            item.promoDetails.buyGroups.forEach(stockItem => {
+              if (stockItem.stockItemId.length != 0) {
+                stockItem.stockItemId = stockItem.stockItemId.map(stock => {
                   stock = this.appendStockItemFields(stock);
                   return stock
                 })
               }
-  
+
             });
             item.promoDetails.buyGroups.totalQuantity = 0;
             item.promoDetails.buyGroups.totalAmount = 0;
           }
 
           // getgroups
-          if(item.promoDetails && item.promoDetails.getGroups && item.promoDetails.getGroups && item.promoDetails.getGroups.length != 0){
-    
-            item.promoDetails.getGroups.forEach(stockItem=>{
-              if(stockItem.stockItemId.length !=0){
-                stockItem.stockItemId = stockItem.stockItemId.map(stock=>{
+          if (item.promoDetails && item.promoDetails.getGroups && item.promoDetails.getGroups && item.promoDetails.getGroups.length != 0) {
+
+            item.promoDetails.getGroups.forEach(stockItem => {
+              if (stockItem.stockItemId.length != 0) {
+                stockItem.stockItemId = stockItem.stockItemId.map(stock => {
                   stock = this.appendStockItemFields(stock);
                   return stock
                 })
               }
-  
+
             });
             item.promoDetails.getGroups.totalQuantity = 0;
             item.promoDetails.getGroups.totalAmount = 0;
           }
 
-
-
-
-      
           break;
 
         case 2:
 
+          if (item.promoDetails && item.promoDetails.buySets && item.promoDetails.buySets && item.promoDetails.buySets.length != 0) {
+            item.promoDetails.buySets.forEach(setItem => {
+              setItem.buyGroups.forEach(stockItem => {
+                if (stockItem.stockItemId.length != 0) {
+                  stockItem.stockItemId = stockItem.stockItemId.map(stock => {
+                    stock = this.appendStockItemFields(stock);
+                    return stock
+                  })
+                }
+                stockItem.totalQuantity = 0;
+                stockItem.totalAmount = 0;
+              });
+            });
+          }
+
+          if (item.promoDetails && item.promoDetails.getSets && item.promoDetails.getSets && item.promoDetails.getSets.length != 0) {
+            item.promoDetails.getSets.forEach(setItem => {
+              setItem.getGroups.forEach(stockItem => {
+                if (stockItem.stockItemId.length != 0) {
+                  stockItem.stockItemId = stockItem.stockItemId.map(stock => {
+                    stock = this.appendStockItemFields(stock);
+                    return stock
+                  })
+                }
+                stockItem.totalQuantity = 0;
+                stockItem.totalAmount = 0;
+              });
+            });
+          }
+
           break;
 
         case 3:
-          if(item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0){
-            item.promoDetails.stockItems = item.promoDetails.stockItems.map(stockItem=>{
+          if (item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0) {
+            item.promoDetails.stockItems = item.promoDetails.stockItems.map(stockItem => {
               stockItem = this.appendStockItemFields(stockItem);
               return stockItem
             });
@@ -229,8 +256,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
           break;
 
         case 4:
-          if(item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0){
-            item.promoDetails.stockItems = item.promoDetails.stockItems.map(stockItem=>{
+          if (item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0) {
+            item.promoDetails.stockItems = item.promoDetails.stockItems.map(stockItem => {
               stockItem = this.appendStockItemFields(stockItem);
               return stockItem
             });
@@ -253,20 +280,19 @@ export class AddOrderPromotionlistComponent implements OnInit {
     this.PromotionQtyCalculation(data);
   }
 
-  PromotionQtyCalculation(item){
+  PromotionQtyCalculation(item) {
     switch (item.promotionTypesId) {
       case 1:
-        
         // buygroups
-        if(item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0){
+        if (item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0) {
           item.promoDetails.buyGroups.totalQuantity = 0;
           item.promoDetails.buyGroups.totalAmount = 0;
-          item.promoDetails.buyGroups.forEach(stockItem=>{
-            if(stockItem.stockItemId.length !=0){
-              stockItem.stockItemId.forEach(stock=>{
-                if(stock.isProductSelected){
-                 item.promoDetails.buyGroups.totalQuantity+= stock.Quantity;
-                 item.promoDetails.buyGroups.totalAmount += (stock.mrp * stock.Quantity);
+          item.promoDetails.buyGroups.forEach(stockItem => {
+            if (stockItem.stockItemId.length != 0) {
+              stockItem.stockItemId.forEach(stock => {
+                if (stock.isProductSelected) {
+                  item.promoDetails.buyGroups.totalQuantity += stock.Quantity;
+                  item.promoDetails.buyGroups.totalAmount += (stock.mrp * stock.Quantity);
                 }
               })
             }
@@ -274,15 +300,15 @@ export class AddOrderPromotionlistComponent implements OnInit {
           });
         }
         // getgroups
-        if(item.promoDetails && item.promoDetails.getGroups && item.promoDetails.getGroups && item.promoDetails.getGroups.length != 0){
+        if (item.promoDetails && item.promoDetails.getGroups && item.promoDetails.getGroups && item.promoDetails.getGroups.length != 0) {
           item.promoDetails.getGroups.totalQuantity = 0;
           item.promoDetails.getGroups.totalAmount = 0;
-          item.promoDetails.getGroups.forEach(stockItem=>{
-            if(stockItem.stockItemId.length !=0){
-              stockItem.stockItemId.forEach(stock=>{
-                if(stock.isProductSelected){
-                 item.promoDetails.getGroups.totalQuantity+= stock.Quantity;
-                 item.promoDetails.getGroups.totalAmount += (stock.mrp * stock.Quantity);
+          item.promoDetails.getGroups.forEach(stockItem => {
+            if (stockItem.stockItemId.length != 0) {
+              stockItem.stockItemId.forEach(stock => {
+                if (stock.isProductSelected) {
+                  item.promoDetails.getGroups.totalQuantity += stock.Quantity;
+                  item.promoDetails.getGroups.totalAmount += (stock.mrp * stock.Quantity);
                 }
               })
             }
@@ -293,14 +319,52 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
       case 2:
 
+        if (item.promoDetails && item.promoDetails.buySets && item.promoDetails.buySets && item.promoDetails.buySets.length != 0) {
+          item.promoDetails.buySets.forEach(setItem => {
+            setItem.buyGroups.forEach(stockItem => {
+              stockItem.totalAmount = 0;
+              stockItem.totalQuantity = 0;
+              if (stockItem.stockItemId.length != 0) {
+                stockItem.stockItemId.forEach(stock => {
+                  if (stock.isProductSelected) {
+                    stockItem.totalQuantity += stock.Quantity;
+                    stockItem.totalAmount += (stock.mrp * stock.Quantity);
+                  }
+                })
+              }
+            });
+
+          });
+        }
+
+        // getgroups
+
+
+        if (item.promoDetails && item.promoDetails.getSets && item.promoDetails.getSets && item.promoDetails.getSets.length != 0) {
+          item.promoDetails.getSets.forEach(setItem => {
+            setItem.getGroups.forEach(stockItem => {
+              stockItem.totalAmount = 0;
+              stockItem.totalQuantity = 0;
+              if (stockItem.stockItemId.length != 0) {
+                stockItem.stockItemId.forEach(stock => {
+                  if (stock.isProductSelected) {
+                    stockItem.totalQuantity += stock.Quantity;
+                    stockItem.totalAmount += (stock.mrp * stock.Quantity);
+                  }
+                })
+              }
+            });
+
+          });
+        }
         break;
 
       case 3:
-        if(item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0){
+        if (item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0) {
           item.promoDetails.totalQuantity = 0;
           item.promoDetails.totalAmount = 0;
-          item.promoDetails.stockItems.forEach(stockItem=>{
-            if(stockItem.isProductSelected){
+          item.promoDetails.stockItems.forEach(stockItem => {
+            if (stockItem.isProductSelected) {
               item.promoDetails.totalQuantity += stockItem.Quantity;
               item.promoDetails.totalAmount += (stockItem.mrp * stockItem.Quantity);
             }
@@ -309,11 +373,11 @@ export class AddOrderPromotionlistComponent implements OnInit {
         break;
 
       case 4:
-        if(item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0){
+        if (item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0) {
           item.promoDetails.totalQuantity = 0;
           item.promoDetails.totalAmount = 0;
-          item.promoDetails.stockItems.forEach(stockItem=>{
-            if(stockItem.isProductSelected){
+          item.promoDetails.stockItems.forEach(stockItem => {
+            if (stockItem.isProductSelected) {
               item.promoDetails.totalQuantity += stockItem.Quantity;
               item.promoDetails.totalAmount += (stockItem.mrp * stockItem.Quantity);
             }
@@ -331,146 +395,162 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
     this.quantityadd = 0;
     this.price = 0;
-    console.log(this.griddatapromotions,"data after slection");
+    console.log(this.griddatapromotions, "data after slection");
     this.PromotionQtyCalculation(promotionItem);
   }
 
   addPromoItems() {
 
     // payload for 3 and 4th promotions
-  
+
     this.griddatapromotions.forEach(item => {
       switch (item.promotionTypesId) {
         case 1:
           let selectedNonPromotionData1: any = [];
-          let data1 ={
-            "PromotionId" : item.productPromotionsId,
+          this.promotionstype1 = [];
+
+          // buygroups
+          if (item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0) {
+            item.promoDetails.buyGroups.forEach(stockItem => {
+              if (stockItem.stockItemId.length != 0) {
+                stockItem.stockItemId.forEach(stock => {
+                  if (stock.isProductSelected) {
+                    let obj = {
+
+                      "Taxid": stock.Taxid,
+                      "stockItemId": stock.stockItemId,
+                      "Quantity": stock.Quantity,
+
+                    };
+                    selectedNonPromotionData1.push(obj)
+
+                  }
+                })
+              }
+
+            });
+          }
+          // getgroups
+          if (item.promoDetails && item.promoDetails.getGroups && item.promoDetails.getGroups && item.promoDetails.getGroups.length != 0) {
+            item.promoDetails.getGroups.forEach(stockItem => {
+              if (stockItem.stockItemId.length != 0) {
+                stockItem.stockItemId.forEach(stock => {
+                  if (stock.isProductSelected) {
+                    let obj = {
+
+                      "Taxid": stock.Taxid,
+                      "stockItemId": stock.stockItemId,
+                      "Quantity": stock.Quantity,
+
+                    };
+                    selectedNonPromotionData1.push(obj)
+
+                  }
+                })
+              }
+
+            });
+          }
+
+          let data1 = {
+            "PromotionId": item.productPromotionsId,
             "AddItems": selectedNonPromotionData1
           }
           this.promotionstype1.push(data1);
-          // buygroups
-        if(item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0){
-          item.promoDetails.buyGroups.forEach(stockItem=>{
-            if(stockItem.stockItemId.length !=0){
-              stockItem.stockItemId.forEach(stock=>{
-                if(stock.isProductSelected){
-                  let obj = {
-      
-                    "Taxid": stock.Taxid,
-                    "stockItemId": stock.stockItemId,
-                    "Quantity": stock.Quantity,
-      
-                  };
-                  selectedNonPromotionData1.push(obj)
-    
-                }
-              })
-            }
-
-          });
-        }
-        // getgroups
-        if(item.promoDetails && item.promoDetails.getGroups && item.promoDetails.getGroups && item.promoDetails.getGroups.length != 0){
-          item.promoDetails.getGroups.forEach(stockItem=>{
-            if(stockItem.stockItemId.length !=0){
-              stockItem.stockItemId.forEach(stock=>{
-                if(stock.isProductSelected){
-                  let obj = {
-      
-                    "Taxid": stock.Taxid,
-                    "stockItemId": stock.stockItemId,
-                    "Quantity": stock.Quantity,
-      
-                  };
-                  selectedNonPromotionData1.push(obj)
-    
-                }
-              })
-            }
-
-          });
-        }
 
           break;
         case 2:
 
+          let selectedNonPromotionData2: any = [];
+          this.promotionstype2 = [];
+
+          // Write code here
+
+
+          let data2 = {
+            "PromotionId": item.productPromotionsId,
+            "AddItems": selectedNonPromotionData2
+          }
+          this.promotionstype1.push(data2);
           break;
         case 3:
-          
+
           let selectedNonPromotionData: any = [];
-          let data3 ={
-            "PromotionId" : item.productPromotionsId,
+          this.promotionstype3 = [];
+          if (item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0) {
+            item.promoDetails.stockItems.forEach(stockItem => {
+              if (stockItem.isProductSelected) {
+                let obj = {
+
+                  "Taxid": stockItem.Taxid,
+                  "stockItemId": stockItem.stockItemId,
+                  "Quantity": stockItem.Quantity,
+
+                };
+                selectedNonPromotionData.push(obj)
+
+              }
+            });
+          }
+          let data3 = {
+            "PromotionId": item.productPromotionsId,
             "AddItems": selectedNonPromotionData
           }
           this.promotionstype3.push(data3);
-          if(item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0){
-            item.promoDetails.stockItems.forEach(stockItem=>{
-              if(stockItem.isProductSelected){
-                let obj = {
-    
-                  "Taxid": stockItem.Taxid,
-                  "stockItemId": stockItem.stockItemId,
-                  "Quantity": stockItem.Quantity,
-    
-                };
-                selectedNonPromotionData.push(obj)
-  
-              }
-            });
-          }
           break;
         case 4:
           let selectedNonPromotionData4: any = [];
-          let data4 ={
-            "PromotionId" : item.productPromotionsId,
-            "AddItems": selectedNonPromotionData
-          }
-          this.promotionstype4.push(data4);
-          if(item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0){
-            item.promoDetails.stockItems.forEach(stockItem=>{
-              if(stockItem.isProductSelected){
+          this.promotionstype4 = [];
+
+          if (item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0) {
+            item.promoDetails.stockItems.forEach(stockItem => {
+              if (stockItem.isProductSelected) {
                 let obj = {
-    
+
                   "Taxid": stockItem.Taxid,
                   "stockItemId": stockItem.stockItemId,
                   "Quantity": stockItem.Quantity,
-    
+
                 };
-                selectedNonPromotionData4.push(obj)  
+                selectedNonPromotionData4.push(obj)
               }
             });
           }
+          let data4 = {
+            "PromotionId": item.productPromotionsId,
+            "AddItems": selectedNonPromotionData
+          }
+          this.promotionstype4.push(data4);
           break;
         default:
           break;
       }
-   
+
     });
-// to get all promotions in common res
-    let  allopromotions: any =[];
-    allopromotions.push(...this.promotionstype1,...this.promotionstype3)
+    // to get all promotions in common res
+    let allopromotions: any = [...this.promotionstype1, ...this.promotionstype3, ...this.promotionstype4];
 
 
     let data = {
       "GeographyId": this.geographyId,
-      "details":allopromotions,
+      "details": allopromotions,
     }
     console.log('data', data);
 
-    
-    this.orders.addorderPromotionsdata(data).subscribe(
-    {
-      next: (res: any) => {
-        if(res){
-          console.log(res.response,"response after adding item in promotions")
-        }
-      },
-      error: (err: any) => {
 
-      }
-    });
-  }   
-  
+    this.orders.addorderPromotionsdata(data).subscribe(
+      {
+        next: (res: any) => {
+          if (res) {
+            console.log(res.response, "response after adding item in promotions")
+          }
+        },
+        error: (err: any) => {
+
+        }
+      });
+  }
+
 
 
 }

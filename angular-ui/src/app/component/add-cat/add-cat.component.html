@@ -4,7 +4,7 @@
     <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
     <div class="actv-user text-center">
         <h1 class="head-text">{{catsetName}}</h1>
-        <p style="color: red; text-align: center; font-size: 11px;">{{errorMsg}}</p>
+        <p style="color: red; text-align: center; font-size: 13px;">{{errorMsg}}</p>
     </div>
     <div class="addCatDiv">
         <label class="addcat" >Name<span style="color: red;">*</span></label><br>
@@ -16,7 +16,7 @@
           position: relative;
           bottom: 8px;"
           *ngIf="addCategory.invalid && (addCategory.dirty || addCategory.touched)" class="alert">
-          <span style="color:red;position: relative;" *ngIf="addCategory.errors?.['required']">
+          <span class="errorMsg" *ngIf="addCategory.errors?.['required']">
               *Name is required.
           </span>
       </p>
@@ -32,7 +32,7 @@
           position: relative;
           bottom: 12px;"
           *ngIf="codecat.invalid && (codecat.dirty || codecat.touched)" class="alert">
-          <span style="color:red;position: relative;" *ngIf="codecat.errors?.['required']">
+          <span  class="errorMsg" *ngIf="codecat.errors?.['required']">
               *Code is required.
           </span>
       </p>

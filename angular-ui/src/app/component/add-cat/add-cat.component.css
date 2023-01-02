@@ -126,3 +126,8 @@ color: #000000;
    .addCatDiv{
         margin-top: -31px;
     }
+    .errorMsg{
+        color:red;
+        position: relative;
+        font-size: 13px;
+    }

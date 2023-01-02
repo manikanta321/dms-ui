@@ -41,7 +41,7 @@
                     </ng-select>
                     <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;"
                       *ngIf="nameCategory.invalid && (nameCategory.dirty || nameCategory.touched)" class="alert">
-                      <span style="color:red;position: relative;" *ngIf="nameCategory.errors?.['required']">
+                      <span class="errormsg" *ngIf="nameCategory.errors?.['required']">
                         *Category is required.
                       </span>
                     </p>
@@ -60,7 +60,7 @@
                     </ng-select>
                         <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;"
                       *ngIf="nameSubCat.invalid && (nameSubCat.dirty || nameSubCat.touched)" class="alert">
-                      <span style="color:red;position: relative;" *ngIf="nameSubCat.errors?.['required']">
+                      <span  class="errormsg" *ngIf="nameSubCat.errors?.['required']">
                         *Sub-Category is required.
                       </span>
                     </p>
@@ -80,7 +80,7 @@
                     </ng-select>
                        <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
                       *ngIf="nameType.invalid && (nameType.dirty || nameType.touched)" class="alert">
-                      <span style="color:red;position: relative;" *ngIf="nameType.errors?.['required']">
+                      <span class="errormsg" *ngIf="nameType.errors?.['required']">
                         *Type is required.
                       </span>
                     </p>
@@ -99,7 +99,7 @@
                   placeholder="Enter the name of material" [(ngModel)]="materialName" #matName="ngModel">
                 <p style="margin-bottom:-5px;padding: 0px;font-size: 11px"
                   *ngIf="matName.invalid && (matName.dirty || matName.touched)" class="alert">
-                  <span style="color:red;position: relative;" *ngIf="matName.errors?.['required']">
+                  <span  class="errormsg" *ngIf="matName.errors?.['required']">
                     *Material Name is required.
                   </span>
                 </p>
@@ -117,7 +117,7 @@
                   </ng-select>
                       <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
                     *ngIf="nameUOM.invalid && (nameUOM.dirty || nameUOM.touched)" class="alert">
-                    <span style="color:red;position: relative;" *ngIf="nameUOM.errors?.['required']">
+                    <span  class="errormsg" *ngIf="nameUOM.errors?.['required']">
                       *UOM is required.
                     </span>
                   </p>
@@ -195,7 +195,7 @@
                   #matExpiry="ngModel">
                 <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
                   *ngIf="matExpiry.invalid && (matExpiry.dirty || matExpiry.touched)" class="alert">
-                  <span style="color:red;position: relative;" *ngIf="matExpiry.errors?.['required']">
+                  <span  class="errormsg" *ngIf="matExpiry.errors?.['required']">
                     *Expiry period is required.
                   </span>
                 </p>
@@ -252,7 +252,7 @@
                   [(ngModel)]="BrandName" #bName="ngModel">
                 <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
                   *ngIf="bName.invalid && (bName.dirty || bName.touched)" class="alert">
-                  <span style="color:red;position: relative;" *ngIf="bName.errors?.['required']">
+                  <span  class="errormsg" *ngIf="bName.errors?.['required']">
                     *Brand Name is required.
                   </span>
                 </p>
@@ -266,7 +266,7 @@
                   [(ngModel)]="gloabKey" #globalCode="ngModel">
                 <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
                   *ngIf="globalCode.invalid && (globalCode.dirty || globalCode.touched)" class="alert">
-                  <span style="color:red;position: relative;" *ngIf="globalCode.errors?.['required']">
+                  <span  class="errormsg" *ngIf="globalCode.errors?.['required']">
                     *Global Code is required.
                   </span>
                 </p>
@@ -279,7 +279,7 @@
                   #input class="form-control container sku-placeholder" [(ngModel)]="Sku" #skuName="ngModel">
                 <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
                   *ngIf="skuName.invalid && (skuName.dirty || skuName.touched)" class="alert">
-                  <span style="color:red;position: relative;" *ngIf="skuName.errors?.['required']">
+                  <span class="errormsg" *ngIf="skuName.errors?.['required']">
                     *SKU is required.
                   </span>
                 </p>
@@ -295,7 +295,7 @@
                   [(ngModel)]="shortCode" #sCode="ngModel">
                 <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
                   *ngIf="sCode.invalid && (sCode.dirty || sCode.touched)" class="alert">
-                  <span style="color:red;position: relative;" *ngIf="sCode.errors?.['required']">
+                  <span  class="errormsg" *ngIf="sCode.errors?.['required']">
                     *Short Code is required.
                   </span>
                 </p>
@@ -313,7 +313,7 @@
                   </ng-select>
                   <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
                     *ngIf="productGr.invalid && (productGr.dirty || productGr.touched)" class="alert">
-                    <span style="color:red;position: relative;" *ngIf="productGr.errors?.['required']">
+                    <span  class="errormsg" *ngIf="productGr.errors?.['required']">
                       *Product Group is required.
                     </span>
                   </p>
@@ -332,7 +332,7 @@
                   [(ngModel)]="Sort" #manualSorto="ngModel">
                 <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
                   *ngIf="manualSorto.invalid && (manualSorto.dirty || manualSorto.touched)" class="alert">
-                  <span style="color:red;position: relative;" *ngIf="manualSorto.errors?.['required']">
+                  <span  class="errormsg" *ngIf="manualSorto.errors?.['required']">
                     *Manual Sort order is required.
                   </span>
                 </p>
@@ -349,7 +349,7 @@
                   </ng-select>
                   <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
                     *ngIf="proSub.invalid && (proSub.dirty || proSub.touched)" class="alert">
-                    <span style="color:red;position: relative;" *ngIf="proSub.errors?.['required']">
+                    <span  class="errormsg" *ngIf="proSub.errors?.['required']">
                       *Product SubGroup   is required.
                     </span>
                   </p>
@@ -373,7 +373,7 @@
                   #productL="ngModel">
                 <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
                   *ngIf="productL.invalid && (productL.dirty || productL.touched)" class="alert">
-                  <span style="color:red;position: relative;" *ngIf="productL.errors?.['required']">
+                  <span  class="errormsg" *ngIf="productL.errors?.['required']">
                     *Product link is required.
                   </span>
                 </p>

@@ -180,6 +180,8 @@ import { GeographicListActionComponent } from './component/geographic-list/geogr
 import { AddTypesSuccessfulDonePopupComponent } from './component/add-types-popup/add-types-successful-done-popup/add-types-successful-done-popup.component';
 import { OrderActionShipmentComponent } from './component/orders/order-action-shipment/order-action-shipment.component';
 import { TargetGroupsActionComponent } from './component/target-groups/target-groups-action/target-groups-action.component';
+import { ClosePopupComponent } from './component/pramotion-action/close-popup/close-popup.component';
+import { CloseSuccessComponent } from './component/pramotion-action/close-success/close-success.component';
 
 @NgModule({
   declarations: [
@@ -453,6 +455,8 @@ import { TargetGroupsActionComponent } from './component/target-groups/target-gr
           AddTypesSuccessfulDonePopupComponent,
           OrderActionShipmentComponent,
           TargetGroupsActionComponent,
+          ClosePopupComponent,
+          CloseSuccessComponent,
           
   ],
   imports: [

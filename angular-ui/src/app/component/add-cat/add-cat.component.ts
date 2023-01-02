@@ -113,6 +113,7 @@ this.addcatcode=res.response.categoryCode;
       this.addcat='';
       this.addcatcode='';
       this.dialogRef.close();
+      this.dialog.open(MaterialClassificationStatusPopupComponent, {panelClass: 'activeSuccessPop'});
     })
   }
 

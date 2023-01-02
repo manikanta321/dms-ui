@@ -96,7 +96,7 @@
   /* // transition: 0.2s  ease-in-out; */
   position: absolute;
   right: 0px;
-  bottom: -3px;
+  bottom: -18px;
 }
 
 .addU:before {
@@ -137,7 +137,7 @@
 }
 
 .searchButton {
-  display: block;
+   display: block;
   color: #FFFFFF;
   float: left;
   width: 37px;
@@ -148,10 +148,10 @@
   justify-content: center;
   align-items: center;
   transition: 0.2s;
-  border: none;
+  border: none; 
 
-  position: relative;
-  top:-3px;
+   position: relative; 
+  
 }
 
 @media screen and (max-width: 620px) {
@@ -556,3 +556,20 @@
   color: #000 !important;
 }
 
+
+
+
+ .searchBox:hover >.searchButton {
+    display:contents; 
+   
+    
+
+}
+
+
+.searchBox:hover>.searchButton .material-icons {
+  position: relative;
+  right: 298px;
+  color: #000;
+  top: 8px;
+} 

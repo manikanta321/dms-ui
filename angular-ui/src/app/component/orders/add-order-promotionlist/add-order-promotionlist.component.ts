@@ -454,11 +454,23 @@ export class AddOrderPromotionlistComponent implements OnInit {
     let data = {
       "GeographyId": this.geographyId,
       "details":allopromotions,
-
-
     }
     console.log('data', data);
-  }
+
+    
+    this.orders.addorderPromotionsdata(data).subscribe(
+    {
+      next: (res: any) => {
+        if(res){
+          console.log(res.response,"response after adding item in promotions")
+        }
+      },
+      error: (err: any) => {
+
+      }
+    });
+  }   
+  
 
 
 }

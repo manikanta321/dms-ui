@@ -61,6 +61,11 @@ export class OrdersApisService {
 
     return this.http.post<any>(this.userurl + 'OrdersApi/GetStockFullDeatils', data);
   }
+  public addorderPromotionsdata(data) {
+
+    return this.http.post<any>(this.userurl + 'OrdersApi/GetStockFullDeatilsForPromo', data);
+  }
+
   public addorderNonPromotions(data) {
 
     return this.http.post<any>(this.userurl + 'OrdersApi/AddOrder', data);
@@ -69,6 +74,8 @@ export class OrdersApisService {
   public GetOrdersToEdit(CustomerPoId:any){
     return this.http.get<any>(this.userurl + `OrdersApi/GetOrdersToEdit?CustomerPoId=${CustomerPoId}`)
   }
+
+
   
   public getShipmentList(data) {
 

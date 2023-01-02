@@ -145,7 +145,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
       });
       this.orderPromotionFormatter();
       // this.griddata = this.orderNonPromotionFormatter(this.griddatapromotions);
-      // this.griddatapromotions.sort((a, b) => b.isPromotionSelected - a.isPromotionSelected);
+      // this.griddatapromotions.sort((a, b) => b.isProductSelected - a.isProductSelected);
       this.spinner.hide();
       console.log(this.griddatapromotions, "griddata");
     });
@@ -158,7 +158,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
     formatObj.productSKUName = stockItem.productSKUName;
     formatObj.mrp = stockItem.mrp;
 
-    formatObj.isPromotionSelected = stockItem.isPromotionSelected == undefined ? false : stockItem.isPromotionSelected;    
+    formatObj.isProductSelected = stockItem.isProductSelected == undefined ? false : stockItem.isProductSelected;    
     formatObj.Quantity = stockItem.quantity == undefined ? null : stockItem.quantity;
     formatObj.Taxid = stockItem.taxid == undefined ? null : stockItem.taxid;
 
@@ -260,7 +260,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
           item.promoDetails.buyGroups.forEach(stockItem=>{
             if(stockItem.stockItemId.length !=0){
               stockItem.stockItemId.forEach(stock=>{
-                if(stock.isPromotionSelected){
+                if(stock.isProductSelected){
                  item.promoDetails.buyGroups.totalQuantity+= stock.Quantity;
                  item.promoDetails.buyGroups.totalAmount += (stock.mrp * stock.Quantity);
                 }
@@ -276,7 +276,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
           item.promoDetails.getGroups.forEach(stockItem=>{
             if(stockItem.stockItemId.length !=0){
               stockItem.stockItemId.forEach(stock=>{
-                if(stock.isPromotionSelected){
+                if(stock.isProductSelected){
                  item.promoDetails.getGroups.totalQuantity+= stock.Quantity;
                  item.promoDetails.getGroups.totalAmount += (stock.mrp * stock.Quantity);
                 }
@@ -296,7 +296,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
           item.promoDetails.totalQuantity = 0;
           item.promoDetails.totalAmount = 0;
           item.promoDetails.stockItems.forEach(stockItem=>{
-            if(stockItem.isPromotionSelected){
+            if(stockItem.isProductSelected){
               item.promoDetails.totalQuantity += stockItem.Quantity;
               item.promoDetails.totalAmount += (stockItem.mrp * stockItem.Quantity);
             }
@@ -309,7 +309,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
           item.promoDetails.totalQuantity = 0;
           item.promoDetails.totalAmount = 0;
           item.promoDetails.stockItems.forEach(stockItem=>{
-            if(stockItem.isPromotionSelected){
+            if(stockItem.isProductSelected){
               item.promoDetails.totalQuantity += stockItem.Quantity;
               item.promoDetails.totalAmount += (stockItem.mrp * stockItem.Quantity);
             }
@@ -323,31 +323,48 @@ export class AddOrderPromotionlistComponent implements OnInit {
   }
   checkboxChange(event, changedPromotionObj, promotionItem) {
     console.log(event, changedPromotionObj, "event, changedPromotionObj");
-    changedPromotionObj.isPromotionSelected = event.target.checked;
+    changedPromotionObj.isProductSelected = event.target.checked;
 
     this.quantityadd = 0;
     this.price = 0;
-    console.log(this.griddatapromotions);
+    console.log(this.griddatapromotions,"data after slection");
     this.PromotionQtyCalculation(promotionItem);
   }
 
   addPromoItems() {
 
+    // payload for 3 and 4th promotions
+    let promotionstype1 :any = [];
     let selectedNonPromotionData: any = [];
     this.griddatapromotions.forEach(item => {
-      if (item.isPromotionSelected) {
-        let obj = {
-          "Taxid": item.Taxid,
-          "stockItemId": item.stockItemId,
-          "Quantity": item.Quantity,
-        };
+      let data ={
+        "PromotionId" : item.productPromotionsId,
+        "AddItems": selectedNonPromotionData
+      }
+      promotionstype1.push(data);
 
-        selectedNonPromotionData.push(obj)
+      if(item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0){
+        item.promoDetails.stockItems.forEach(stockItem=>{
+          if(stockItem.isProductSelected){
+            let obj = {
+
+              "Taxid": stockItem.Taxid,
+              "stockItemId": stockItem.stockItemId,
+              "Quantity": stockItem.Quantity,
+
+            };
+            selectedNonPromotionData.push(obj)
+
+            
+            
+          }
+        });
       }
     });
+
     let data = {
       "GeographyId": this.geographyId,
-      "AddItems": selectedNonPromotionData
+      "details":promotionstype1
     }
     console.log('data', data);
   }

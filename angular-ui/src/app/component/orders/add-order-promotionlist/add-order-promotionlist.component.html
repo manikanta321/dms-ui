@@ -93,7 +93,7 @@
                                                         <th data-sortable="false">Amount</th>
                                                     </tr>
                                                     <tr class="table-row" *ngFor="let Item of promos.stockItemId">
-                                                        <td><input type="checkbox"[checked]="Item.isPromotionSelected"
+                                                        <td><input type="checkbox"[checked]="Item.isProductSelected"
                                                             (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}</td>
                                                         <td>{{Item.productSKUName}}</td>
                                                         <td>{{Item.mrp}}</td>
@@ -171,7 +171,7 @@
                                                         <th data-sortable="false">Amount</th>
                                                     </tr>
                                                     <tr class="table-row" *ngFor="let Item of promos.stockItemId">
-                                                        <td><input type="checkbox"[checked]="Item.isPromotionSelected"
+                                                        <td><input type="checkbox"[checked]="Item.isProductSelected"
                                                             (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}</td>
                                                         <td>{{Item.productSKUName}}</td>
                                                         <td>{{Item.mrp}}</td>
@@ -247,7 +247,7 @@
                                                         <th data-sortable="false">Amount</th>
                                                     </tr>
                                                     <tr class="table-row" *ngFor="let Item of data.promoDetails.stockItems">
-                                                        <td><input type="checkbox" [checked]="Item.isPromotionSelected"
+                                                        <td><input type="checkbox" [checked]="Item.isProductSelected"
                                                             (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}</td>
                                                         <td>{{Item.productSKUName}}</td>
                                                         <td>{{Item.mrp}}</td>
@@ -324,7 +324,7 @@
                                                         <th data-sortable="false">Amount</th>
                                                     </tr>
                                                     <tr class="table-row" *ngFor="let Item of data.promoDetails.stockItems">
-                                                        <td><input type="checkbox" [checked]="Item.isPromotionSelected"
+                                                        <td><input type="checkbox" [checked]="Item.isProductSelected"
                                                             (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}</td>
                                                         <td>{{Item.productSKUName}}</td>
                                                         <td>{{Item.mrp}}</td>

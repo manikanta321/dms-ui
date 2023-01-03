@@ -428,11 +428,14 @@ export class AddOrderPromotionlistComponent implements OnInit {
       switch (item.promotionTypesId) {
         case 1:
           let selectedNonPromotionData1: any = [];
+          let buysets:any =[];
+          let getsets:any = [];
           this.promotionstype1 = [];
 
           // buygroups
           if (item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0) {
             item.promoDetails.buyGroups.forEach(stockItem => {
+              
               if (stockItem.stockItemId.length != 0) {
                 stockItem.stockItemId.forEach(stock => {
                   if (stock.isProductSelected) {
@@ -448,6 +451,14 @@ export class AddOrderPromotionlistComponent implements OnInit {
                   }
                 })
               }
+
+              let buyGroupdata = {
+                "GroupId":stockItem.groupId,
+                "AddItems":selectedNonPromotionData1
+
+              }
+
+              buysets.push(buyGroupdata)
 
             });
           }
@@ -469,13 +480,18 @@ export class AddOrderPromotionlistComponent implements OnInit {
                   }
                 })
               }
-
+              let getGroupdata = {
+                "GroupId":stockItem.groupId,
+                "AddItems":selectedNonPromotionData1
+              }
+              getsets.push(getGroupdata)             
             });
           }
 
           let data1 = {
             "PromotionId": item.productPromotionsId,
-            "AddItems": selectedNonPromotionData1
+            "BuySets": buysets,
+            "GetSets":getsets
           }
           this.promotionstype1.push(data1);
 
@@ -483,11 +499,17 @@ export class AddOrderPromotionlistComponent implements OnInit {
         case 2:
 
           let selectedNonPromotionData2: any = [];
+          let buysets2:any =[];
+          let gpidandBysets:any =[];
+          let gpidandgetsets:any = [];
+          let getsets2:any = [];
           this.promotionstype2 = [];
 
+     
           // buygrops
           if (item.promoDetails && item.promoDetails.buySets && item.promoDetails.buySets && item.promoDetails.buySets.length != 0) {
             item.promoDetails.buySets.forEach(setItem => {
+          
               setItem.buyGroups.forEach(stockItem => {
              
                 if (stockItem.stockItemId.length != 0) {
@@ -504,12 +526,23 @@ export class AddOrderPromotionlistComponent implements OnInit {
                     }
                   })
                 }
-              });
+
+                let buyGroupdata2 = {
+                  "SetId":stockItem.set,
+                  "AddItems":selectedNonPromotionData2
   
+                }
+  
+                buysets2.push(buyGroupdata2) 
+              });
+              let groupid = {
+                "GroupId": setItem.groupId,
+                "Groups":buysets2
+              }
+              gpidandBysets.push(groupid)
             });
           }
           // getgroups
-
 
         if (item.promoDetails && item.promoDetails.getSets && item.promoDetails.getSets && item.promoDetails.getSets.length != 0) {
           item.promoDetails.getSets.forEach(setItem => {
@@ -529,7 +562,20 @@ export class AddOrderPromotionlistComponent implements OnInit {
                   }
                 })
               }
+              let getGroupdata2 = {
+                "SetId":stockItem.set,
+                "AddItems":selectedNonPromotionData2
+
+              }
+
+              getsets2.push(getGroupdata2)
             });
+
+            let groupid2 = {
+              "GroupId": setItem.groupId,
+              "Groups":getsets2
+            }
+            gpidandgetsets.push(groupid2)
 
           });
         }
@@ -537,8 +583,12 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
           let data2 = {
             "PromotionId": item.productPromotionsId,
-            "AddItems": selectedNonPromotionData2
+            "BuySets":gpidandBysets,
+            "GetSets":gpidandgetsets
+            
           }
+
+                  
           this.promotionstype2.push(data2);
           break;
         case 3:

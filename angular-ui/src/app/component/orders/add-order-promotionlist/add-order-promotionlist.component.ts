@@ -485,14 +485,61 @@ export class AddOrderPromotionlistComponent implements OnInit {
           let selectedNonPromotionData2: any = [];
           this.promotionstype2 = [];
 
-          // Write code here
+          // buygrops
+          if (item.promoDetails && item.promoDetails.buySets && item.promoDetails.buySets && item.promoDetails.buySets.length != 0) {
+            item.promoDetails.buySets.forEach(setItem => {
+              setItem.buyGroups.forEach(stockItem => {
+             
+                if (stockItem.stockItemId.length != 0) {
+                  stockItem.stockItemId.forEach(stock => {
+                    if (stock.isProductSelected) {
+                      let obj = {
+
+                        "Taxid": stock.Taxid,
+                        "stockItemId": stock.stockItemId,
+                        "Quantity": stock.Quantity,
+      
+                      };
+                      selectedNonPromotionData2.push(obj)
+                    }
+                  })
+                }
+              });
+  
+            });
+          }
+          // getgroups
+
+
+        if (item.promoDetails && item.promoDetails.getSets && item.promoDetails.getSets && item.promoDetails.getSets.length != 0) {
+          item.promoDetails.getSets.forEach(setItem => {
+            setItem.getGroups.forEach(stockItem => {
+
+              if (stockItem.stockItemId.length != 0) {
+                stockItem.stockItemId.forEach(stock => {
+                  if (stock.isProductSelected) {
+                    let obj = {
+
+                      "Taxid": stock.Taxid,
+                      "stockItemId": stock.stockItemId,
+                      "Quantity": stock.Quantity,
+    
+                    };
+                    selectedNonPromotionData2.push(obj)
+                  }
+                })
+              }
+            });
+
+          });
+        }
 
 
           let data2 = {
             "PromotionId": item.productPromotionsId,
             "AddItems": selectedNonPromotionData2
           }
-          this.promotionstype1.push(data2);
+          this.promotionstype2.push(data2);
           break;
         case 3:
 
@@ -549,7 +596,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
     });
     // to get all promotions in common res
-    let allopromotions: any = [...this.promotionstype1, ...this.promotionstype3, ...this.promotionstype4];
+    let allopromotions: any = [...this.promotionstype1, ...this.promotionstype2,...this.promotionstype3, ...this.promotionstype4];
 
 
     let data = {

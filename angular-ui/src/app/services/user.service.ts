@@ -166,10 +166,12 @@ export class UserService {
     return this.http.get<any>(`${this.userurl}OtherMasterApi/GetCurrencyDetailsToEdit?FxRateId=${FxID}`);
   }
   //get Dealer list
-  public getAllDealerList(data) {
+  public getAllDealerTarget(data) {
     return this.http.post<any>(this.userurl + 'DealerApi/GetAllDealerTargets', data);
   }
-
+  public getAllDealerList(data) {
+    return this.http.post<any>(this.userurl + 'DealerApi/GetAllDealers', data);
+  }
   public getproductlist() {
     return this.http.get<any>(`${this.userurl}MaterialApi/GetStockList`);
   }

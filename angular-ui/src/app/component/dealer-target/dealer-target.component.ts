@@ -425,7 +425,7 @@ export class DealerTargetComponent implements OnInit {
       year:this.yearSelected,
       Search:this.searchText
     }
-    this.user.getAllDealerList(data).subscribe((res) => {
+    this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
   console.log("TargetTableData",this.rowData5)
 
@@ -440,7 +440,7 @@ export class DealerTargetComponent implements OnInit {
       year:this.yearSelected,
       Search:this.searchText
     }
-    this.user.getAllDealerList(data).subscribe((res) => {
+    this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
   console.log("TargetTableData",this.rowData5)
 
@@ -485,7 +485,7 @@ console.log("SelectedGeo",this.geographySelected)
       year:this.yearSelected,
       Search:this.searchText
     }
-    this.user.getAllDealerList(data).subscribe((res) => {
+    this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
   console.log("TargetTableData",this.rowData5)
 
@@ -500,7 +500,7 @@ console.log("SelectedGeo",this.geographySelected)
       year:this.yearSelected,
       Search:this.searchText
     }
-    this.user.getAllDealerList(data).subscribe((res) => {
+    this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
   console.log("TargetTableData",this.rowData5)
 
@@ -515,7 +515,7 @@ console.log("SelectedGeo",this.geographySelected)
       year:this.yearSelected,
       Search:this.searchText
     }
-    this.user.getAllDealerList(data).subscribe((res) => {
+    this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
   console.log("TargetTableData",this.rowData5)
 
@@ -533,7 +533,7 @@ console.log("SelectedGeo",this.geographySelected)
       year:this.yearSelected,
       Search:this.searchText
     }
-    this.user.getAllDealerList(data).subscribe((res) => {
+    this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
   console.log("TargetTableData",this.rowData5)
 
@@ -604,7 +604,7 @@ console.log("SelectedGeo",this.geographySelected)
       year:this.yearSelected,
       Search:this.searchText
     }
-    this.user.getAllDealerList(data).subscribe((res) => {
+    this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
   console.log("TargetTableData",this.rowData5)
 
@@ -619,7 +619,7 @@ console.log("SelectedGeo",this.geographySelected)
       year:this.yearSelected,
       Search:this.searchText
     }
-    this.user.getAllDealerList(data).subscribe((res) => {//yet to change
+    this.user.getAllDealerTarget(data).subscribe((res) => {//yet to change
       this.rowData5 = res.response;
   console.log("TargetTableData",this.rowData5)
 
@@ -634,7 +634,7 @@ console.log("SelectedGeo",this.geographySelected)
       year:this.yearSelected,
       Search:this.searchText
     }
-    this.user.getAllDealerList(data).subscribe((res) => {//yet to change
+    this.user.getAllDealerTarget(data).subscribe((res) => {//yet to change
       this.rowData5 = res.response;
   console.log("TargetTableData",this.rowData5)
 
@@ -652,7 +652,7 @@ console.log("SelectedGeo",this.geographySelected)
       year:this.yearSelected,
       Search:this.searchText
     }
-    this.user.getAllDealerList(data).subscribe((res) => {
+    this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
   console.log("TargetTableData",this.rowData5)
 
@@ -679,7 +679,7 @@ console.log("SelectedGeo",this.geographySelected)
       year:this.yearSelected,
       Search:this.searchText
     }
-    this.user.getAllDealerList(data).subscribe((res) => {
+    this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
   console.log("TargetTableData",this.rowData5)
 
@@ -694,7 +694,7 @@ console.log("SelectedGeo",this.geographySelected)
       year:this.yearSelected,
       Search:this.searchText
     }
-    this.user.getAllDealerList(data).subscribe((res) => {
+    this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
   console.log("TargetTableData",this.rowData5)
 
@@ -709,7 +709,7 @@ console.log("SelectedGeo",this.geographySelected)
       year:this.yearSelected,
       Search:this.searchText
     }
-    this.user.getAllDealerList(data).subscribe((res) => {
+    this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
   console.log("TargetTableData",this.rowData5)
 
@@ -727,7 +727,7 @@ console.log("SelectedGeo",this.geographySelected)
       year:this.yearSelected,
       Search:this.searchText
     }
-    this.user.getAllDealerList(data).subscribe((res) => {
+    this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
   console.log("TargetTableData",this.rowData5)
 
@@ -803,7 +803,7 @@ console.log("SelectedGeo",this.geographySelected)
       year:this.yearSelected,
       Search:this.searchText
     }
-    this.user.getAllDealerList(data).subscribe((res) => {
+    this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
   console.log("TargetTableData",this.rowData5)
 
@@ -918,7 +918,7 @@ console.log("SelectedGeo",this.geographySelected)
       year:this.yearSelected,
       Search:this.searchText
     }
-    this.user.getAllDealerList(data).subscribe((res) => {
+    this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
   console.log("TargetTableData",this.rowData5)
 
@@ -933,7 +933,7 @@ console.log("SelectedGeo",this.geographySelected)
       year:this.yearSelected,
       Search:this.searchText
     }
-    this.user.getAllDealerList(data).subscribe((res) => {
+    this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
   console.log("TargetTableData",this.rowData5)
 
@@ -948,7 +948,7 @@ console.log("SelectedGeo",this.geographySelected)
       year:this.yearSelected,
       Search:this.searchText
     }
-    this.user.getAllDealerList(data).subscribe((res) => {
+    this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
   console.log("TargetTableData",this.rowData5)
 
@@ -966,7 +966,7 @@ console.log("SelectedGeo",this.geographySelected)
       year:this.yearSelected,
       Search:this.searchText
     }
-    this.user.getAllDealerList(data).subscribe((res) => {
+    this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
   console.log("TargetTableData",this.rowData5)
 

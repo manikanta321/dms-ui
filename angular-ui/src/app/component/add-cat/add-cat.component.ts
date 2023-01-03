@@ -8,6 +8,7 @@ import { RestPwsdUserPopupComponent } from '../users/userPopups/rest-pwsd-user-p
 import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { MaterialClassificationStatusPopupComponent } from '../material-classification-status-popup/material-classification-status-popup.component';
+import { MaterialclassificationEditSuccessComponent } from './materialclassification-edit-success/materialclassification-edit-success.component';
 @Component({
   selector: 'app-add-cat',
   templateUrl: './add-cat.component.html',
@@ -100,6 +101,12 @@ this.addcatcode=res.response.categoryCode;
   }
 
   editCat(){
+    sessionStorage.setItem("CategoryName",this.addcat);
+      sessionStorage.setItem("CategoryCode",this.addcatcode);
+      sessionStorage.setItem("subCategoryName",'');
+      sessionStorage.setItem("subCategoryCode",'');
+      sessionStorage.setItem("typeName",'');
+      sessionStorage.setItem("typeCode",'');
     const data={
             CategoryId:this.activeCatId,
             CategoryName:this.addcat,
@@ -113,7 +120,7 @@ this.addcatcode=res.response.categoryCode;
       this.addcat='';
       this.addcatcode='';
       this.dialogRef.close();
-      this.dialog.open(MaterialClassificationStatusPopupComponent, {panelClass: 'activeSuccessPop'});
+      this.dialog.open(MaterialclassificationEditSuccessComponent, {panelClass: 'activeSuccessPop'});
     })
   }
 

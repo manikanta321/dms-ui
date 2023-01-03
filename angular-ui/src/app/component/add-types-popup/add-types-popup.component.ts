@@ -9,6 +9,7 @@ import { ClassificationserviseService } from 'src/app/services/classificationser
 import { SharedService } from 'src/app/services/shared-services.service';
 import { SharedServiceAddTypesService } from 'src/app/services/shared-service-add-types.service';
 import { AddTypesSuccessfulDonePopupComponent } from './add-types-successful-done-popup/add-types-successful-done-popup.component';
+import { MaterialclassificationEditSuccessComponent } from '../add-cat/materialclassification-edit-success/materialclassification-edit-success.component';
 @Component({
   selector: 'app-add-types-popup',
   templateUrl: './add-types-popup.component.html',
@@ -102,6 +103,12 @@ this.typeCode=res.response.typeCode;
   }
   
   editType(){
+    sessionStorage.setItem("typeName",this.type);
+      sessionStorage.setItem("typeCode",this.typeCode);
+      sessionStorage.setItem("subCategoryName",'');
+      sessionStorage.setItem("subCategoryCode",'');
+      sessionStorage.setItem("CategoryName",'');
+      sessionStorage.setItem("CategoryCode",'');
     let data={
 
      TypeId:this.activeTypeId,
@@ -115,7 +122,7 @@ this.typeCode=res.response.typeCode;
     this.dialogRef.close();
     this.sharedService.filter('Register click')
   })
-
+  this.dialog.open(MaterialclassificationEditSuccessComponent, {panelClass: 'activeSuccessPop'})
 
   }
 

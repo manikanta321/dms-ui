@@ -36,6 +36,7 @@ export class AddeditgeoComponent implements OnInit {
     this.geoPlaceholder = this.geoType.toLowerCase();
    
      this.isEditModal = this.data.isEdit;
+    sessionStorage.setItem("EditModal",JSON.stringify(this.isEditModal));
     this.GeographyParentId = this.data.GeographyParentId;
     this.hirerachyIndex = this.data.hirerachyIndex;
     if(this.data.geography){

@@ -17,6 +17,7 @@ export class GeoAddedPopupComponent implements OnInit {
   uomName:any;
   uomCode:any;
   matValue:boolean =false;
+  EditGeo:boolean = false;
   constructor(public dialogRef: MatDialogRef<GeoAddedPopupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
@@ -27,6 +28,11 @@ export class GeoAddedPopupComponent implements OnInit {
     this.geoData();
   }
   geoData(){
+    let editData = sessionStorage.getItem("EditModal")
+    console.log("editData",editData);
+    if(editData == "true") {
+      this.EditGeo =true;
+    }
     let geoName =sessionStorage.getItem("GeoName");
     let geoCode = sessionStorage.getItem("GeoCode");
     let uomName = sessionStorage.getItem("uomName");

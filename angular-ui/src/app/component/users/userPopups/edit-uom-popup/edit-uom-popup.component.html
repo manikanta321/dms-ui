@@ -15,22 +15,19 @@
         <!-- <input type="text" id="uoMn" name="uoMn"   placeholder="Enter your Name" [(ngModel)]="uoMName" #uoMn="ngModel"> -->
         <input type="text"id="uoMn" name="uoMn"    placeholder="Enter your Name" 
           required [(ngModel)]="uoMName" #uoMn="ngModel">     
-          <p style="margin-bottom: -31px;
+          <p style="margin-bottom: -16px;
           padding: 0px;
-          font-size: 11px;
-          position: relative;
-          bottom: 8px;"
+          
+          ;"
                                         *ngIf="uoMn.invalid && (uoMn.dirty || uoMn.touched)" class="alert">
                                         <span style="color:red;position: relative;" *ngIf="uoMn.errors?.['required']">
                                             *Name is required.
                                         </span>
-                                    </p>  
-        <br>
-        <br>
+                                     </p>  
+       
       </div>
         </div>
-      
-
+            <br>
         <div class="row">
             <div class="col">
 
@@ -41,7 +38,6 @@
                 required [(ngModel)]="uoMShortName" #uoMdisplay="ngModel">     
                 <p style="margin-bottom: -31px;
                 padding: 0px;
-                font-size: 11px;
                 position: relative;
                 bottom: 8px;"
                                               *ngIf="uoMdisplay.invalid && (uoMdisplay.dirty || uoMdisplay.touched)" class="alert">

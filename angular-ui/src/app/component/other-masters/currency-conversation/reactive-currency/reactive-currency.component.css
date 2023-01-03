@@ -25,6 +25,7 @@
     border-radius: 10px;
     width: 115px;
     height: 43px;
+    cursor: pointer;
 }
 
 .exit {
@@ -35,6 +36,7 @@
     border-radius: 10px;
     width: 115px;
     height: 43px;
+    cursor: pointer;
 }
 
 .close-icon {

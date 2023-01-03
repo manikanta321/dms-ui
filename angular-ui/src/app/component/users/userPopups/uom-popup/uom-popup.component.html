@@ -16,18 +16,17 @@
             <!-- <input type="text" placeholder="Enter  name" [(ngModel)]="name" /> -->
             <input type="text" id="uomName" name="uomName" class="f-name" required
                                         placeholder="Enter your name" [(ngModel)]="name" #uomName="ngModel">
-                                    <p style="margin-bottom:-16px; font-size:11px;padding: 0px;"
+                                    <p style="margin-bottom:-16px;"
                                         *ngIf="uomName.invalid && (uomName.dirty || uomName.touched)" class="alert">
                                         <span style="color:red;position: relative;" *ngIf="uomName.errors?.['required']">
                                             *Name is required.
                                         </span>
 
                                     </p>
-            <br />
-            <br />
+           
           </div>
         </div>
-
+              <br>
         <div class="row">
           <div class="col">
             <label class="dc">Display Code<span>*</span></label>
@@ -35,7 +34,7 @@
             <!-- <input type="text" placeholder="Enter your Display Code"  [(ngModel)]="DisplayCode"/> -->
             <input type="text" id="displayC" name="displayC" required
             placeholder="Enter your name" [(ngModel)]="DisplayCode" #displayC="ngModel">
-        <p style="margin-bottom:-16px; font-size:11px;padding: 0px;"
+        <p style="margin-bottom:-16px;"
             *ngIf="displayC.invalid && (displayC.dirty || displayC.touched)" class="alert">
             <span style="color:red;position: relative;" *ngIf="displayC.errors?.['required']">
                 *Display Code is required.
@@ -45,7 +44,9 @@
           </div>
         </div>
       </form>
+      
     </div>
+    
 
     <button class="btn btn-dark uombtn btn-block" [disabled]="!DisplayCode || !name" (click)="addUom()">Add</button>
     <span class="requiredFF">Required fields*</span>

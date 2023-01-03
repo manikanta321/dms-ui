@@ -12,6 +12,7 @@ import { CurrencyReactivatedComponent } from '../currency-reactivated/currency-r
 export class ReactiveCurrencyComponent implements OnInit {
   LoginId:any;
   UoMId:any;
+  uoMName:any;
   constructor(private dialogRef: MatDialogRef<any>,
     private user:UserService,
     private otherMasterService:OtherMasterService,
@@ -20,6 +21,7 @@ export class ReactiveCurrencyComponent implements OnInit {
   ngOnInit(): void {
     this.LoginId=localStorage.getItem("logInId");
     this.UoMId = localStorage.getItem('UomId');
+    this.uoMName =localStorage.getItem('UomName');
   }
   closeDialog(){
     // this.sharedService.filter('Register click');

@@ -8,6 +8,7 @@ import { DeactiveSuccessPopComponent } from '../users/userPopups/deactive-succes
 
 import { interval } from 'rxjs';
 import { OtherMasterService } from 'src/app/services/other-master.service';
+import { DeleteUomSuccessfullPopupComponent } from '../delete-uom-successfull-popup/delete-uom-successfull-popup.component';
 
 @Component({
   selector: 'app-delete-uom-new',
@@ -33,6 +34,10 @@ export class DeleteUomNewComponent implements OnInit {
 
     // this.LoginId=localStorage.getItem("logInId");
 
+
+  }
+  closeDialog() {
+    throw new Error('Method not implemented.');
   }
   close(){
     this.dialogRef.close()
@@ -43,7 +48,8 @@ export class DeleteUomNewComponent implements OnInit {
     });
       this.otherMasterService.filter('Register click');
 
-    this.dialog.open(DeactiveSuccessPopComponent, {panelClass: 'deactiveSuccessPop'});
+
+    this.dialog.open(DeleteUomSuccessfullPopupComponent,{panelClass: 'deactiveSuccessPop'})
       this.otherMasterService.filter('Register click');
     this.dialogRef.close()
   }

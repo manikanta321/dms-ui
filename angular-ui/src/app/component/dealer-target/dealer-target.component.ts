@@ -61,7 +61,9 @@ export class DealerTargetComponent implements OnInit {
 
   private gridApi!: GridApi;
   paginationPageSize = 10;
-  myForm: any = FormGroup;
+  targetForm: any = FormGroup;
+  dealerForm: any = FormGroup;
+  geographyForm: any = FormGroup;
   myForms: any = FormGroup;
   disabled = false;
   ShowFilter = false;
@@ -72,15 +74,22 @@ export class DealerTargetComponent implements OnInit {
   status: any = [];
   selectedItems: any = [];
   selectedStatus: any = [];
-  userTypes: any = [];
+  dealerSelected: any = [];
+  targetSelected:any = [];
   statusTypes: any = [];
-  searchText: any;
+  searchText: any = '';
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
   dealerDropdownSettings :IDropdownSettings = {};
   targetSettings: IDropdownSettings = {};
   targetListData:any = [];
   dealerListData:any = [];
+  dealerList:any = [];
+  dealerArray:any = [];
+  geographySelected:any = [];
+  targetListArray:any = [];
+  targetAllArray:any = [];
+  yearSelected:any = [];
   gridOptions: GridOptions = {
     defaultColDef: {
       resizable: true,
@@ -100,101 +109,55 @@ export class DealerTargetComponent implements OnInit {
 
     {
       headerName: "Target Group",
-       field: 'customerCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
+       field: 'targetGroupName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
     },
 
     { headerName: "Geography",
-    field: 'customerName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
+    field: 'geographyName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
     },
     {
       headerName: "Dealer",
-      field: 'geographyName', 
-      cellRenderer: this.daysSunshineRenderer,
-      // cellRendererParams: {
-      // rendererImage: '', // Complementing the Cell Renderer parameters
-      // },
-      type: ['nonEditableColumn']
+      field: 'customername', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
     },
    
     // suppressMovable:true,
     {
       headerName: "Financial year",
-      field: 'statusName',
+      field: 'year',
       type: ['nonEditableColumn'],
-      cellEditor: 'agSelectCellEditor',
-      cellEditorParams: {
-        values: ['Approved', 'getusertabeldata', 'Invited', 'Locked',],
-      },
-      cellClass: params => {
-        return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
-      }
+      sort: 'desc', pinned: 'left'
     },
 
     {
       headerName: "No of Products",
-      field: 'statusName',
-      type: ['nonEditableColumn'],
-      cellEditor: 'agSelectCellEditor',
-      cellEditorParams: {
-        values: ['Approved', 'getusertabeldata', 'Invited', 'Locked',],
-      },
-      cellClass: params => {
-        return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
-      }
+      field: 'productCount',
+      type: ['nonEditableColumn'],sort: 'desc', pinned: 'left'
     },
     {
       headerName: "Target Total",
-      field: 'statusName',
-      type: ['nonEditableColumn'],
-      cellEditor: 'agSelectCellEditor',
-      cellEditorParams: {
-        values: ['Approved', 'getusertabeldata', 'Invited', 'Locked',],
-      },
-      cellClass: params => {
-        return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
-      }
+      field: 'volumeTotal',
+      type: ['nonEditableColumn'],sort: 'desc', pinned: 'left'
     },
 
     {
       headerName: "Actual PY",
-      field: 'statusName',
-      type: ['nonEditableColumn'],
-      cellEditor: 'agSelectCellEditor',
-      cellEditorParams: {
-        values: ['Approved', 'getusertabeldata', 'Invited', 'Locked',],
-      },
-      cellClass: params => {
-        return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
-      }
+      field: 'actualPy',
+      type: ['nonEditableColumn'],sort: 'desc', pinned: 'left'
     },
 
 
     {
       headerName: "Actual YTD",
-      field: 'statusName',
-      type: ['nonEditableColumn'],
-      cellEditor: 'agSelectCellEditor',
-      cellEditorParams: {
-        values: ['Approved', 'getusertabeldata', 'Invited', 'Locked',],
-      },
-      cellClass: params => {
-        return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
-      }
+      field: 'actualYTD',
+      type: ['nonEditableColumn'],sort: 'desc', pinned: 'left'
     },
 
 
 
     {
       headerName: "% of YTD Target",
-      field: 'statusName',
+      field: 'ytdTarget',
       type: ['nonEditableColumn'],
-      cellEditor: 'agSelectCellEditor',
-      cellEditorParams: {
-        values: ['Approved', 'getusertabeldata', 'Invited', 'Locked',],
-      },
-      cellClass: params => {
-        return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
-      }
     },
 
     {
@@ -268,9 +231,10 @@ export class DealerTargetComponent implements OnInit {
   toppings1 = new FormControl('');
 
 
-  toppingList: any = [];
-
-  toppingList1: any = [];
+  geographyList: any = [];
+  geographyListData:any = [];
+  geographyArray:any = [];
+  toppingList1: any = [2020,2021,2022,2023,2024,2025];
   filterDictionary: any;
   sideBarOpen = true;
   scrolledIndex = 0;
@@ -335,11 +299,11 @@ export class DealerTargetComponent implements OnInit {
 
     this.sharedService.listen().subscribe((m: any) => {
       console.log(m)
-      this.getusertabeldata()
+      this.TargetTabelData();
 
     })
     this.sharedService.getClickEvent().subscribe(() => {
-      this.getusertabeldata()
+      this.TargetTabelData();
     })
     sort: [];
   }
@@ -369,13 +333,19 @@ export class DealerTargetComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getusertabeldata();
-    this.roleItems();
+    this.TargetTabelData();
+    this.Geography();
     this.statusItems();
     this.targetListGroup();
     this.dealerDropdown();
-    this.myForm = this.fb.group({
-      city: [this.selectedItems]
+    this.targetForm = this.fb.group({
+      targetForm: [this.selectedItems]
+    });
+    this.dealerForm = this.fb.group({
+      dealerForm: [this.selectedItems]
+    });
+    this.geographyForm = this.fb.group({
+      geographyForm: [this.selectedItems]
     });
     this.myForms = this.fb.group({
       citys: [this.selectedItems]
@@ -430,64 +400,69 @@ export class DealerTargetComponent implements OnInit {
 
 
   refresh() {
-    this.toppings = new FormControl(this.toppingList);
     this.toppings1 = new FormControl(this.toppingList1);
-    this.myForm = this.fb.group({
-      city: [this.selectedItems]
+    this.targetForm = this.fb.group({
+      targetForm: [this.selectedItems]
+    });
+    this.dealerForm = this.fb.group({
+      dealerForm: [this.selectedItems]
+    });
+    this.geographyForm = this.fb.group({
+      geographyForm: [this.selectedItems]
     });
     this.myForms = this.fb.group({
       citys: [this.selectedItems]
     });
-  
+    this.targetSelected =[];
+    this.geographySelected = [];
+    this.dealerSelected = [];
+    this.yearSelected = [];
+    this.searchText = ''
     const data = {
-      userTypes: [],
-      statuss: [],
-      search: '',
-
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
-      this.rowData5 = res.response;
-    });
-    this.getusertabeldata();
-  }
-
-  getusertabeldata() {
-    const data = {
-      "geographys":[],
-      "statuss":[],
-      "Search":""
+      Targetid:this.targetSelected,
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerSelected,
+      year:this.yearSelected,
+      Search:this.searchText
     }
     this.user.getAllDealerList(data).subscribe((res) => {
-
       this.rowData5 = res.response;
-  
+  console.log("TargetTableData",this.rowData5)
+
+    });
+    // this.TargetTabelData();
+  }
+  TargetTabelData() {
+    const data = {
+      Targetid:this.targetSelected,
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerSelected,
+      year:this.yearSelected,
+      Search:this.searchText
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  console.log("TargetTableData",this.rowData5)
 
     });
   }
   makeCellClicked() {
   }
 
-  roleItems() {
-    this.user.getGographicDropdown().subscribe((res: any) => {
-      let localdata = res.response;
-      // console.log('checkdata', localdata)
-
-      this.toppingList = localdata.map((data: { geographyId: any; geographyName: any; }) => {
+  Geography() {
+    this.user.getGeographies().subscribe((res: any) => {
+      this.geographyList = res.response;
+      let localdata = this.geographyList;
+      this.geographyListData = localdata.map((data: { geographyId: any; geographyName: any; }) => {
         return { geographyId: data.geographyId, geographyName: data.geographyName };
       });
 
-      this.toppingList.push()
-      this.toppingList.forEach(element => {
-        return this.roleArray.push(element.geographyId);
-        // console.log('rolecheck',rolecheck)
-
+      this.geographyListData.push()
+      this.geographyListData.forEach(element => {
+        return this.geographyArray.push(element.geographyId);
       })
-      console.log('rolearray', this.roleArray)
-
-      // this.toppingList = res.response;
-      this.toppings = new FormControl(this.toppingList);
-
-      // console.log('rolelist', this.toppingList)geographyId
+      console.log('geographyArray', this.geographyArray)
+      this.toppings = new FormControl(this.geographyListData);
       this.dropdownSettings = {
         singleSelection: false,
         idField: 'geographyId',
@@ -500,7 +475,71 @@ export class DealerTargetComponent implements OnInit {
       this.selectedItems = [];
     });
   }
+  onGeographyItemSelect(item: any) {
+    this.geographySelected.push(item.geographyId);
+console.log("SelectedGeo",this.geographySelected)
+    const data = {
+      Targetid:this.targetSelected,
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerSelected,
+      year:this.yearSelected,
+      Search:this.searchText
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  console.log("TargetTableData",this.rowData5)
 
+    });
+  }
+  onGeographyItemSelectOrAll(item: any) {
+    this.geographySelected = this.geographyArray;
+    const data = {
+      Targetid:this.targetSelected,
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerSelected,
+      year:this.yearSelected,
+      Search:this.searchText
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  console.log("TargetTableData",this.rowData5)
+
+    });
+  }
+  onGeographyItemDeSelectOrAll(item: any) {
+    this.geographySelected = [];
+    const data = {
+      Targetid:this.targetSelected,
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerSelected,
+      year:this.yearSelected,
+      Search:this.searchText
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  console.log("TargetTableData",this.rowData5)
+
+    });
+  }
+  onGeographyItemDeSelect(item: any) {
+
+    this.geographySelected.forEach((element, index) => {
+      if (element == item.geographyId) this.geographySelected.splice(index, 1);
+    });
+    const data = {
+      Targetid:this.targetSelected,
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerSelected,
+      year:this.yearSelected,
+      Search:this.searchText
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  console.log("TargetTableData",this.rowData5)
+
+    });
+
+  }
   handleRowDataChanged(event) {
     const index = this.messages.length - 1;
     if (this.stayScrolledToEnd) {
@@ -529,16 +568,16 @@ export class DealerTargetComponent implements OnInit {
 
 
   statusItems() {
-    this.user.dealersStatus().subscribe((res: any) => {
-      this.toppingList1 = res.response;
+    // this.user.dealersStatus().subscribe((res: any) => {
+      // this.toppingList1 = res.response;
       
-      console.log('we have to check here', this.toppingList1)
-      this.toppingList1.forEach(element => {
-        return this.statusArray.push(element.statusId);
+      // console.log('we have to check here', this.toppingList1)
+      // this.toppingList1.forEach(element => {
+      //   return this.statusArray.push(element.statusId);
       
 
-      })
-      console.log('statusArray', this.statusArray)
+      // })
+      // console.log('statusArray', this.statusArray)
     
       this.dropdownSettings1 = {
         singleSelection: false,
@@ -552,7 +591,73 @@ export class DealerTargetComponent implements OnInit {
       this.selectedStatus = [];
       this.toppings1 = new FormControl(this.toppingList1);
 
+    // });
+  }
+  onYearSelect(item: any) {
+    // alert(item)
+    this.yearSelected.push(item);//yet to change
+
+    const data = {
+      Targetid:this.targetSelected,
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerSelected,
+      year:this.yearSelected,
+      Search:this.searchText
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  console.log("TargetTableData",this.rowData5)
+
     });
+  }
+  onYearSelectOrAll(item: any) {
+    this.yearSelected = this.toppingList1//yet to change
+    const data = {
+      Targetid:this.targetSelected,
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerSelected,
+      year:this.yearSelected,
+      Search:this.searchText
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {//yet to change
+      this.rowData5 = res.response;
+  console.log("TargetTableData",this.rowData5)
+
+    });
+  }
+  onYearDeSelectOrAll(item: any) {
+    this.yearSelected = [];
+    const data = {
+      Targetid:this.targetSelected,
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerSelected,
+      year:this.yearSelected,
+      Search:this.searchText
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {//yet to change
+      this.rowData5 = res.response;
+  console.log("TargetTableData",this.rowData5)
+
+    });
+  }
+  onYearDeSelect(item: any) {
+
+    this.yearSelected.forEach((element, index) => {
+      if (element == item) this.yearSelected.splice(index, 1);//yet to change
+    });
+    const data = {
+      Targetid:this.targetSelected,
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerSelected,
+      year:this.yearSelected,
+      Search:this.searchText
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  console.log("TargetTableData",this.rowData5)
+
+    });
+
   }
   roleFilter(data: any) {
     console.log('data', data)
@@ -564,136 +669,71 @@ export class DealerTargetComponent implements OnInit {
     });
     console.log('rolename', this.rowData)
   }
-  onItemSelect(item: any) {
-
-    // alert(item.roleName)
-    this.userTypes.push(item.roleId);
+  onDealerItemSelect(item: any) {
+    this.dealerSelected.push(item.customerId);
 
     const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
-
+      Targetid:this.targetSelected,
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerSelected,
+      year:this.yearSelected,
+      Search:this.searchText
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
+    this.user.getAllDealerList(data).subscribe((res) => {
       this.rowData5 = res.response;
+  console.log("TargetTableData",this.rowData5)
+
     });
-    console.log('rolefilter', this.userTypes)
-    console.log('onItemSelect', item);
   }
-  onItemSelectOrAll(item: any) {
-    this.userTypes = this.roleArray;
+  onDealerItemSelectOrAll(item: any) {
+    this.dealerSelected = this.dealerArray;
     const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
-
+      Targetid:this.targetSelected,
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerSelected,
+      year:this.yearSelected,
+      Search:this.searchText
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
+    this.user.getAllDealerList(data).subscribe((res) => {
       this.rowData5 = res.response;
+  console.log("TargetTableData",this.rowData5)
+
     });
-    console.log('rolefilter', this.userTypes)
-    console.log('onItemSelect', item);
   }
-  onItemDeSelectOrAll(item: any) {
+  onDealerItemDeSelectOrAll(item: any) {
+    this.dealerSelected = [];
     const data = {
-      userTypes: this.userTypes,
-      statuss: [],
-      search: this.searchText,
-
+      Targetid:this.targetSelected,
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerSelected,
+      year:this.yearSelected,
+      Search:this.searchText
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
+    this.user.getAllDealerList(data).subscribe((res) => {
       this.rowData5 = res.response;
+  console.log("TargetTableData",this.rowData5)
+
     });
-    console.log('rolefilter', this.userTypes)
-    console.log('onItemSelect', item);
   }
+  onDealerItemDeSelect(item: any) {
 
-
-
-  onItemDeSelectOrAllStatus(item: any) {
-    const data = {
-      userTypes: this.userTypes,
-      statuss: [],
-      search: this.searchText,
-
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
-      this.rowData5 = res.response;
+    this.dealerSelected.forEach((element, index) => {
+      if (element == item.customerId) this.dealerSelected.splice(index, 1);
     });
-    console.log('rolefilter', this.userTypes)
-  }
-
-
-  onItemSelectOrAllStatus(item: any) {
-    this.statusTypes = this.statusArray;
     const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
-
+      Targetid:this.targetSelected,
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerSelected,
+      year:this.yearSelected,
+      Search:this.searchText
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
+    this.user.getAllDealerList(data).subscribe((res) => {
       this.rowData5 = res.response;
-    });
-    console.log('rolefilter', this.statusTypes)
-  }
+  console.log("TargetTableData",this.rowData5)
 
-  onStatusSelect(item: any) {
-    this.statusTypes.push(item.statusId);
-
-    const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
-      this.rowData5 = res.response;
     });
 
   }
-
-  onItemDeSelect(item: any) {
-
-    this.userTypes.forEach((element, index) => {
-      if (element == item.roleId) this.userTypes.splice(index, 1);
-    });
-    console.log(' this.userTypes', this.userTypes)
-
-    // this.userTypes.pop(item.roleId);
-    const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
-
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
-      this.rowData5 = res.response;
-    });
-
-  }
-
-
-
-  onStatusDeSelect(item: any) {
-    this.statusTypes.forEach((element, index) => {
-      if (element == item.statusId) this.statusTypes.splice(index, 1);
-    });
-    // this.statusTypes.pop(item.statusId);
-    console.log(' this.statusTypes', this.userTypes)
-    const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
-
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
-      this.rowData5 = res.response;
-    });
-    console.log('rolefilter', this.userTypes)
-    console.log('onItemSelect', item);
-  }
-
   applyFilter(event: Event) {
 
 
@@ -757,12 +797,16 @@ export class DealerTargetComponent implements OnInit {
     const { target } = $event;
     this.searchText = target.value;
     const data = {
-      userTypes: this.userTypes,
-      statuss: this.statusTypes,
-      search: this.searchText,
+      Targetid:this.targetSelected,
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerSelected,
+      year:this.yearSelected,
+      Search:this.searchText
     }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
+    this.user.getAllDealerList(data).subscribe((res) => {
       this.rowData5 = res.response;
+  console.log("TargetTableData",this.rowData5)
+
     });
 
   }
@@ -780,7 +824,6 @@ export class DealerTargetComponent implements OnInit {
   }
   onBtnExport() {
     this.gridApi.exportDataAsCsv();
-
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -843,6 +886,16 @@ export class DealerTargetComponent implements OnInit {
     this.targetList.getTargetList().subscribe((res) => {
       this.targetListData  = res.response;
     console.log("check target",this.targetListData );
+    let localdata =this.targetListData;
+          this.targetListArray = localdata.map((data: { targetGroupId: any; targetGroupName: any; }) => {
+            return { targetGroupId: data.targetGroupId, targetGroupName: data.targetGroupName };
+          });
+    
+          this.targetListArray.push()
+          this.targetListArray.forEach(element => {
+            return this.targetAllArray.push(element.targetGroupId);
+          })
+          console.log('targetAllArray', this.targetAllArray)
     
     })
     this.targetSettings = {
@@ -855,10 +908,85 @@ export class DealerTargetComponent implements OnInit {
       allowSearchFilter: true
     };
   }
+  onTargetItemSelect(item: any) {
+    this.targetSelected.push(item.targetGroupId);
+
+    const data = {
+      Targetid:this.targetSelected,
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerSelected,
+      year:this.yearSelected,
+      Search:this.searchText
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  console.log("TargetTableData",this.rowData5)
+
+    });
+  }
+  onTargetItemSelectOrAll(item: any) {
+    this.targetSelected = this.targetAllArray;
+    const data = {
+      Targetid:this.targetSelected,
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerSelected,
+      year:this.yearSelected,
+      Search:this.searchText
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  console.log("TargetTableData",this.rowData5)
+
+    });
+  }
+  onTargetItemDeSelectOrAll(item: any) {
+    this.targetSelected = [];
+    const data = {
+      Targetid:this.targetSelected,
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerSelected,
+      year:this.yearSelected,
+      Search:this.searchText
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  console.log("TargetTableData",this.rowData5)
+
+    });
+  }
+  onTargetItemDeSelect(item: any) {
+
+    this.targetSelected.forEach((element, index) => {
+      if (element == item.targetGroupId) this.targetSelected.splice(index, 1);
+    });
+    const data = {
+      Targetid:this.targetSelected,
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerSelected,
+      year:this.yearSelected,
+      Search:this.searchText
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {
+      this.rowData5 = res.response;
+  console.log("TargetTableData",this.rowData5)
+
+    });
+
+  }
   dealerDropdown(){
     this.targetList.getDealers().subscribe((res) => {
       this.dealerListData  = res.response;
+      let localdata = this.dealerListData
     console.log("check Dealer",this.dealerListData );
+          this.dealerList = localdata.map((data: { customerId: any; customerName: any; }) => {
+            return { customerId: data.customerId, customerName: data.customerName };
+          });
+    
+          this.dealerList.push()
+          this.dealerList.forEach(element => {
+            return this.dealerArray.push(element.customerId);
+          })
+          console.log('dealerArray', this.dealerArray)
     
     })
     this.dealerDropdownSettings = {
@@ -870,5 +998,8 @@ export class DealerTargetComponent implements OnInit {
       itemsShowLimit: 2,
       allowSearchFilter: true
     };
+  }
+  targetListTable() {
+
   }
 }

@@ -45,9 +45,25 @@ export class TargetListService {
     
 
   }
+  // http://13.126.235.145:801/api/DealerApi/GetTargetCount?targetgroupid=25
+  public productCountAccordingToDealer(targetID: any) {
+    return this.http.get<any>(`${this.classificationurl}DealerApi/GetTargetCount?targetgroupid=${targetID}`);
+  }
   getDealers(){
     return this.http.get<any>(this.classificationurl + 'DealerApi/GetAssoDealerdrop');
   
+  }
+  // http://13.126.235.145:801/api/DealerApi/GetTargetGeographydrop?CustomerId=3120
+  public geographyDropdown(dealerID: any) {
+    return this.http.post<any>(this.classificationurl + 'DealerApi/GetTargetGeographydrop', dealerID);
+  }
+  // http://13.126.235.145:801/api/Dealerapi/AddTargetSDealer
+  addTargetData(data:any){
+    return this.http.post<any>(this.classificationurl + 'DealerApi/AddTargetSDealer', data);
+  }
+  // http://13.126.235.145:801/api/DealerApi/GetProductGeoCount
+  getProductCount(data:any){
+    return this.http.post<any>(this.classificationurl + 'DealerApi/GetProductGeoCount', data);
   }
 // getTargetGrpList(){
 //   return this.http.get<any>(this.classificationurl + 'MaterialApi/GetTargetGroup');

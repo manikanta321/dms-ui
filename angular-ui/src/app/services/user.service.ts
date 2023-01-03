@@ -106,7 +106,10 @@ export class UserService {
   public getGographicDropdown() {
     return this.http.get<any>(this.userurl + 'DealerApi/GetGeographyListdrop')
   }
-
+  getGeographies(){
+    return this.http.get<any>(`${this.userurl}DealerApi/GetAssociationGeoDropdown`);
+  
+  }
   public getstatusDeatils() {
     return this.http.get<any>(this.userurl + 'UserMgmtApi/GetUserStatusList');
   }
@@ -164,7 +167,7 @@ export class UserService {
   }
   //get Dealer list
   public getAllDealerList(data) {
-    return this.http.post<any>(this.userurl + 'DealerApi/GetAllDealers', data);
+    return this.http.post<any>(this.userurl + 'DealerApi/GetAllDealerTargets', data);
   }
 
   public getproductlist() {

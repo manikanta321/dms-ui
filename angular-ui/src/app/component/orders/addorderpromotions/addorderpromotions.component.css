@@ -1611,3 +1611,8 @@ table thead, table tbody tr {
 ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
   border: 2px solid #000000 !important;
 }
+
+
+.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret{
+  right: -2px;
+}

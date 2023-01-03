@@ -423,6 +423,10 @@ export class AddOrderPromotionlistComponent implements OnInit {
   addPromoItems() {
 
     // payload for 3 and 4th promotions
+    this.promotionstype1 = [];
+    this.promotionstype2 = [];
+    this.promotionstype3 = [];
+    this.promotionstype4 = [];
 
     this.griddatapromotions.forEach(item => {
       switch (item.promotionTypesId) {
@@ -430,7 +434,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
           let selectedNonPromotionData1: any = [];
           let buysets:any =[];
           let getsets:any = [];
-          this.promotionstype1 = [];
+          
 
           // buygroups
           if (item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0) {
@@ -503,7 +507,6 @@ export class AddOrderPromotionlistComponent implements OnInit {
           let gpidandBysets:any =[];
           let gpidandgetsets:any = [];
           let getsets2:any = [];
-          this.promotionstype2 = [];
 
      
           // buygrops
@@ -594,7 +597,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
         case 3:
 
           let selectedNonPromotionData: any = [];
-          this.promotionstype3 = [];
+
           if (item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0) {
             item.promoDetails.stockItems.forEach(stockItem => {
               if (stockItem.isProductSelected) {
@@ -618,7 +621,6 @@ export class AddOrderPromotionlistComponent implements OnInit {
           break;
         case 4:
           let selectedNonPromotionData4: any = [];
-          this.promotionstype4 = [];
 
           if (item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0) {
             item.promoDetails.stockItems.forEach(stockItem => {
@@ -660,7 +662,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
       {
         next: (res: any) => {
           if (res) {
-            console.log(res.response, "response after adding item in promotions")
+            console.log(res.response, "response after adding item in promotions");
+
+            this.dialogRef.close(res.response);
           }
         },
         error: (err: any) => {

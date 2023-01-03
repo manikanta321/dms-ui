@@ -75,7 +75,7 @@ export class TaxTempleateActionComponent implements OnInit,  AfterViewInit {
       interactive: true,
       appendTo: document.body,
       hideOnClick: false,
-      offset: [-100, 200],
+      offset: [-80, 190],   
       onShow: (instance) => {
         hideAll({ exclude: instance });
       },

@@ -2,7 +2,7 @@
 {
     position: relative;
 width: 500px;
-height: 356px;
+  height: 356px;
 
 
 }
@@ -90,7 +90,7 @@ span{
    background: black;
    color: white;
    padding: 5px;
-   margin-top: 20px;
+   margin-top: 31px;
    border-radius: 3px;
    border-radius: 10px;
    border: 1px solid black;

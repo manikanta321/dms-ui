@@ -24,18 +24,18 @@
               <br>
               <input type="text" id="currencyName" name="currencyName" required (keyup)="onKeyName($event)"
                 placeholder="Enter Name" [(ngModel)]="EUomName" class="imputtext" #currencyName="ngModel">
-              <p style="margin-bottom:-22px;padding: 0px; font-size: 11px;"
+              <p style="margin-bottom:-22px;padding: 0px;"
                 *ngIf="currencyName.invalid && (currencyName.dirty || currencyName.touched)" class="alert">
                 <span style="color:red;position: relative;" *ngIf="currencyName.errors?.['required']">
                   *Name is required.
                 </span>
               </p>
               <div>
-                <p style="position: absolute; bottom:-38px;left:320px;width:138px; font-size: 11px;
+                <p style="position: absolute; bottom:-38px;left:320px;width:158px;
                  padding: 0px;" *ngIf="displayUnit.invalid && (displayUnit.dirty || displayUnit.touched)"
                 class="alert">
                 <span style="color:red;position: relative;" *ngIf="displayUnit.errors?.['required']">
-                  *Display Unit is required.
+        *Display Unit is required.
                 </span>
               </p>
               </div>
@@ -56,7 +56,7 @@
               <br>
               <input required (keyup)="onKeyConversion($event)"  id="conversionR"  name="conversionR"  [(ngModel)]="EConversionRate"
                 placeholder="Enter Conversion Rate" class="imputtext" style="width: 100%;"   #conversionR="ngModel">
-                <p style="margin-bottom:-22px;padding: 0px; font-size: 11px;"
+                <p style="margin-bottom:-22px;padding: 0px;"
                 *ngIf="conversionR.invalid && (conversionR.dirty || conversionR.touched)" class="alert">
                 <span style="color:red;position: relative;" *ngIf="conversionR.errors?.['required']">
                   *Conversion Rate is required.

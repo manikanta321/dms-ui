@@ -516,7 +516,7 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
     );
   }
   AddUomPopup(){
-    this.dialog.open(UomPopupComponent,);
+    this.dialog.open(UomPopupComponent);
   }
 
   onRowValueChanged(event: RowValueChangedEvent) {

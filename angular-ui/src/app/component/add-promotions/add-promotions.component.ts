@@ -66,7 +66,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     BuyGroups: [{
       StockItemId: [],
       MaxVolume: '',
-      Set: '',
+      Set: 1,
       MOQ: '',
       productselectedRows: []
     },
@@ -95,7 +95,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     GetGroups: [{
       StockItemId: [],
       MaxVolume: '',
-      Set: '',
+      Set: 1,
       productselectedRows: []
     },
     ]
@@ -335,6 +335,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   selectedPromo: any;
   Remarks: any = '';
   header: any;
+  myForm1: any = FormGroup;
+
   SaveOrEdit:boolean=true;
   private subject = new Subject<any>();
   constructor(private _formBuilder: FormBuilder, public dialog: MatDialog,
@@ -810,7 +812,7 @@ console.log('addgetset', this.addgetset)
       BuyGroups: [{
         StockItemId: [],
         MaxVolume: '',
-        Set: '',
+        Set: 1,
         MOQ: '',
         productselectedRows: []
       },
@@ -827,7 +829,7 @@ console.log('addgetset', this.addgetset)
 
       StockItemId: [],
       MaxVolume: '',
-      Set: '',
+      Set: this.addbuyset[i].BuyGroups.length+1,
       MOQ: '',
       productselectedRows: [],
 
@@ -842,7 +844,7 @@ console.log('addgetset', this.addgetset)
 
       StockItemId: [],
       MaxVolume: '',
-      Set: '',
+      Set: this.addgetset[i].GetGroups.length+1,
       productselectedRows: [],
 
     })
@@ -856,7 +858,7 @@ console.log('addgetset', this.addgetset)
       GetGroups: [{
         StockItemId: [],
         MaxVolume: '',
-        Set: '',
+        Set: 1,
         productselectedRows: []
       },
       ]
@@ -1019,7 +1021,7 @@ console.log('addgetset', this.addgetset)
           let jointarray = productselectedRows
 
           this.addbuyset[index].BuyGroups[j].StockItemId = jointarray;
-          this.addbuyset[index].BuyGroups[j].Set = this.addbuyset[index].BuyGroups.length;
+          // this.addbuyset[index].BuyGroups[j].Set = this.addbuyset[index].BuyGroups.length;
 
           //  this.buyGroupPlus[index].MaxVolume = this.buyGroupPlus[index].qtyValue.map(x => x.qtyValue);
           //  this.buyGroupPlus[index].moqValue = this.qtyValue.map(x => x.qtyValue);
@@ -1056,7 +1058,7 @@ console.log('addgetset', this.addgetset)
           let jointarray = productselectedRows
 
           this.addgetset[index].GetGroups[j].StockItemId = jointarray;
-          this.addgetset[index].GetGroups[j].Set = this.addgetset[index].GetGroups.length;
+          // this.addgetset[index].GetGroups[j].Set = this.addgetset[index].GetGroups.length;
           console.log('this.addgetset', this.addgetset)
 
 

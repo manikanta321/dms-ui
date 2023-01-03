@@ -1737,3 +1737,8 @@ border-radius: 10px;
     position: absolute;
   }
 }
+
+::ng-deep.mat-dialog-container{
+  padding: 9px;
+
+}

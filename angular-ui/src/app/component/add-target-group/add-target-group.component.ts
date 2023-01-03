@@ -5,6 +5,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddTargetGroupsProductsComponent } from '../target-groups/add-target-groups-products/add-target-groups-products.component';
 import { TargetListService } from 'src/app/services/target-list.service';
 
+
 @Component({
   selector: 'app-add-target-group',
   templateUrl: './add-target-group.component.html',
@@ -37,6 +38,7 @@ export class AddTargetGroupComponent implements OnInit {
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
     params.api.sizeColumnsToFit();
+    
     
   }
   selectedDateRange = {
@@ -107,7 +109,8 @@ console.log("targetgrpName",this.targetGroupName);
     }
   }
   columnDefs: ColDef[] = [
-    { headerName:"",checkboxSelection:true ,maxWidth:40},
+    { headerName:"",checkboxSelection:true , maxWidth:40, },
+   
     {   headerName: "Product Name",field: 'productName' ,      tooltipField:"productName",type: ['nonEditableColumn']
   },
   
@@ -141,6 +144,8 @@ console.log("targetgrpName",this.targetGroupName);
     resizable: true,
     sortable: true,
   };
+  
+
   public columnTypes: {
     [key: string]: ColDef;
   } = {
@@ -194,5 +199,7 @@ console.log("targetgrpName",this.targetGroupName);
       this.dialogRef.close();
       })
   }
- 
+  closeDialog() {
+    this.dialogRef.close(); 
+  }
 }

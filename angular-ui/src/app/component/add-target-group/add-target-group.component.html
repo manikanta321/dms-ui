@@ -8,7 +8,7 @@
             <div class="head-t">
                 <h3 class="addU font">Create Target Group</h3>
                 <br>
-                <div class="row">
+                <div class="row ">
                     <div class="col-lg-9"></div>
                     <div class="col-lg-3">
                         <label class="targetCode">Target Group Code:<b>{{targetCode}}<span class="errorMark">*</span></b></label>
@@ -59,6 +59,7 @@
                               </div>
                               <div class="addbtn mt-3 text-center">
                                 <button class="addItem-btn btn-btn-primary" [disabled]="rowData5.length==0 || targetGroupName.length==0" (click)="createTarget()">Create</button>
+                                <button class="cancelItem-btn btn-btn-primary" (click)="closeDialog()">Cancel</button>
                               </div>
                       </div>
                         </div>

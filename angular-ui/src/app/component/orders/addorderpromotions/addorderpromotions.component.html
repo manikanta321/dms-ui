@@ -124,40 +124,40 @@
                                     <th>Amount</th>
                                 </tr>
 
-                                <tr *ngFor="let Item of nonpromotionlist; let i=index;">
+                                <tr *ngFor="let Item of AddorderNonpromotiondata?.itemDetails; let i=index;">
                                     <td>
                                         <p class="itemLeft"><span class="promoItem" *ngIf="i == 0"> NP </span>{{Item.stockitemname}}</p>
                                     </td>
                                     <td>
-                                        <input type="text" [(ngModel)]="Item.uomname" placeholder="5"
+                                        <input type="text" disabled [(ngModel)]="Item.uomname"
                                             class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" [(ngModel)]="Item.quantity" placeholder="5"
+                                        <input type="text" disabled [(ngModel)]="Item.quantity"
                                             class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" [(ngModel)]="Item.stock" placeholder="10,000,000"
+                                        <input type="text" disabled [(ngModel)]="Item.stock"
                                             class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" [(ngModel)]="Item.mrp" placeholder="20"
+                                        <input type="text" disabled [(ngModel)]="Item.mrp"
                                             class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" [(ngModel)]="Item.discount" placeholder="90"
+                                        <input type="text" disabled [(ngModel)]="Item.discount"
                                             class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" [(ngModel)]="Item.taxes" placeholder="IGST (18%)"
+                                        <input type="text" disabled [(ngModel)]="Item.taxvalue"
                                             class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" [(ngModel)]="Item.finalValue" placeholder="106.2"
+                                        <input type="text" disabled [(ngModel)]="Item.finalValue"
                                             class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" [(ngModel)]="Item.amount" placeholder="Boxes"
+                                        <input type="text" disabled [(ngModel)]="Item.amount"
                                             class="IteminputBoxes">
                                     </td>
                                     <mat-icon class="removeCircle" (click)=removeNonPromotionItem(Item)>

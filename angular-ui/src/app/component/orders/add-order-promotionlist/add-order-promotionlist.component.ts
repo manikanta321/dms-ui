@@ -22,7 +22,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
   buysets = true;
   rowData: any;
   columnDefs: any;
-  griddatapromotions: any = []
+  griddatapromotions: any = [];
+  copyGridPromotions:any = [];
   actineLabel: any;
   updateOrSave: boolean = false
   editData: boolean = false;
@@ -106,11 +107,12 @@ export class AddOrderPromotionlistComponent implements OnInit {
       "GeographyIdid": this.geographyId
     }
     console.log(data, "dealer and ge data");
+    this.spinner.show();
     this.orders.orderpromotionimages(data).subscribe((res: any) => {
       this.imagesapis = res.response
       console.log(this.imagesapis, "imagesres");
       this.imagesapis.forEach(item => {
-
+        this.spinner.hide();
         let obj = {
 
           "productPromotionsId": item.productPromotionsId,
@@ -128,32 +130,38 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
   getpromotionlistById(e, item) {
     // console.log(e, item);
-    this.imagesid.push(item.productPromotionsId);
-    this.imagesid = this.imagesid.filter((v, i) => this.imagesid.indexOf(v) === this.imagesid.lastIndexOf(v));
+    if(this.imagesid.indexOf(item.productPromotionsId) == -1){
+      this.imagesid.push(item.productPromotionsId);
 
+      let data = {
+        "ProductPromotionId": this.imagesid,
+        "Dealerid": this.dealerid,
+        "GeographyIdid": this.geographyId
+      }
+  
+      // this.spinner.show();
+      console.log(this.imagesid, "listdatapromotionsids")
+      this.orders.GetProductsOfPromotionForOrder(data).subscribe((res: any) => {
+        // this.griddatapromotions = res.response;
+  
+        // this.griddatapromotions.map(item => {
+        //   item.isShowPromos = false;
+        //   item.isProductSelected = false;
+        //   return item;
+        // });
+        this.orderPromotionFormatter(res.response);
+        // this.griddata = this.orderNonPromotionFormatter(this.griddatapromotions);
+        // this.griddatapromotions.sort((a, b) => b.isProductSelected - a.isProductSelected);
+        this.spinner.hide();
+        console.log(this.griddatapromotions, "griddata");
+      });
+    }else{
 
-    let data = {
-      "ProductPromotionId": this.imagesid,
-      "Dealerid": this.dealerid,
-      "GeographyIdid": this.geographyId
+      this.imagesid.splice(this.imagesid.indexOf(item.productPromotionsId), 1);
+      this.griddatapromotions.splice(this.griddatapromotions.findIndex(x => x.productPromotionsId == item.productPromotionsId), 1);
     }
 
-    // this.spinner.show();
-    console.log(this.imagesid, "listdatapromotionsids")
-    this.orders.GetProductsOfPromotionForOrder(data).subscribe((res: any) => {
-      this.griddatapromotions = res.response;
 
-      this.griddatapromotions.map(item => {
-        item.isShowPromos = false;
-        item.isProductSelected = false;
-        return item;
-      });
-      this.orderPromotionFormatter();
-      // this.griddata = this.orderNonPromotionFormatter(this.griddatapromotions);
-      // this.griddatapromotions.sort((a, b) => b.isProductSelected - a.isProductSelected);
-      this.spinner.hide();
-      console.log(this.griddatapromotions, "griddata");
-    });
   }
 
   appendStockItemFields(stockItem) {
@@ -170,107 +178,120 @@ export class AddOrderPromotionlistComponent implements OnInit {
     return formatObj;
   }
 
-  orderPromotionFormatter() {
+  orderPromotionFormatter(promotionList) {
 
+    promotionList.forEach(item => {
 
-    this.griddatapromotions.forEach(item => {
-      switch (item.promotionTypesId) {
-        case 1:
+      let exisitPromotion =  this.griddatapromotions.find(x => x.productPromotionsId === item.productPromotionsId);
 
-          if (item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0) {
-
-            item.promoDetails.buyGroups.forEach(stockItem => {
-              if (stockItem.stockItemId.length != 0) {
-                stockItem.stockItemId = stockItem.stockItemId.map(stock => {
-                  stock = this.appendStockItemFields(stock);
-                  return stock
-                })
-              }
-
-            });
-            item.promoDetails.buyGroups.totalQuantity = 0;
-            item.promoDetails.buyGroups.totalAmount = 0;
-          }
-
-          // getgroups
-          if (item.promoDetails && item.promoDetails.getGroups && item.promoDetails.getGroups && item.promoDetails.getGroups.length != 0) {
-
-            item.promoDetails.getGroups.forEach(stockItem => {
-              if (stockItem.stockItemId.length != 0) {
-                stockItem.stockItemId = stockItem.stockItemId.map(stock => {
-                  stock = this.appendStockItemFields(stock);
-                  return stock
-                })
-              }
-
-            });
-            item.promoDetails.getGroups.totalQuantity = 0;
-            item.promoDetails.getGroups.totalAmount = 0;
-          }
-
-          break;
-
-        case 2:
-
-          if (item.promoDetails && item.promoDetails.buySets && item.promoDetails.buySets && item.promoDetails.buySets.length != 0) {
-            item.promoDetails.buySets.forEach(setItem => {
-              setItem.buyGroups.forEach(stockItem => {
+      if(!exisitPromotion){
+        switch (item.promotionTypesId) {
+          case 1:
+  
+            if (item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0) {
+  
+              item.promoDetails.buyGroups.forEach(stockItem => {
                 if (stockItem.stockItemId.length != 0) {
                   stockItem.stockItemId = stockItem.stockItemId.map(stock => {
                     stock = this.appendStockItemFields(stock);
                     return stock
                   })
                 }
-                stockItem.totalQuantity = 0;
-                stockItem.totalAmount = 0;
+  
               });
-            });
-          }
-
-          if (item.promoDetails && item.promoDetails.getSets && item.promoDetails.getSets && item.promoDetails.getSets.length != 0) {
-            item.promoDetails.getSets.forEach(setItem => {
-              setItem.getGroups.forEach(stockItem => {
+              item.promoDetails.buyGroups.totalQuantity = 0;
+              item.promoDetails.buyGroups.totalAmount = 0;
+            }
+  
+            // getgroups
+            if (item.promoDetails && item.promoDetails.getGroups && item.promoDetails.getGroups && item.promoDetails.getGroups.length != 0) {
+  
+              item.promoDetails.getGroups.forEach(stockItem => {
                 if (stockItem.stockItemId.length != 0) {
                   stockItem.stockItemId = stockItem.stockItemId.map(stock => {
                     stock = this.appendStockItemFields(stock);
                     return stock
                   })
                 }
-                stockItem.totalQuantity = 0;
-                stockItem.totalAmount = 0;
+  
               });
-            });
-          }
+              item.promoDetails.getGroups.totalQuantity = 0;
+              item.promoDetails.getGroups.totalAmount = 0;
+            }
+  
+            break;
+  
+          case 2:
+  
+            if (item.promoDetails && item.promoDetails.buySets && item.promoDetails.buySets && item.promoDetails.buySets.length != 0) {
+              item.promoDetails.buySets.forEach(setItem => {
+                setItem.buyGroups.forEach(stockItem => {
+                  if (stockItem.stockItemId.length != 0) {
+                    stockItem.stockItemId = stockItem.stockItemId.map(stock => {
+                      stock = this.appendStockItemFields(stock);
+                      return stock
+                    })
+                  }
+                  stockItem.totalQuantity = 0;
+                  stockItem.totalAmount = 0;
+                });
+              });
+            }
+  
+            if (item.promoDetails && item.promoDetails.getSets && item.promoDetails.getSets && item.promoDetails.getSets.length != 0) {
+              item.promoDetails.getSets.forEach(setItem => {
+                setItem.getGroups.forEach(stockItem => {
+                  if (stockItem.stockItemId.length != 0) {
+                    stockItem.stockItemId = stockItem.stockItemId.map(stock => {
+                      stock = this.appendStockItemFields(stock);
+                      return stock
+                    })
+                  }
+                  stockItem.totalQuantity = 0;
+                  stockItem.totalAmount = 0;
+                });
+              });
+            }
+  
+            break;
+  
+          case 3:
+            if (item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0) {
+              item.promoDetails.stockItems = item.promoDetails.stockItems.map(stockItem => {
+                stockItem = this.appendStockItemFields(stockItem);
+                return stockItem
+              });
+              item.promoDetails.totalQuantity = 0;
+              item.promoDetails.totalAmount = 0;
+            }
+            break;
+  
+          case 4:
+            if (item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0) {
+              item.promoDetails.stockItems = item.promoDetails.stockItems.map(stockItem => {
+                stockItem = this.appendStockItemFields(stockItem);
+                return stockItem
+              });
+              item.promoDetails.totalQuantity = 0;
+              item.promoDetails.totalAmount = 0;
+            }
+            break;
+  
+          default:
+            break;
+        }
 
-          break;
-
-        case 3:
-          if (item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0) {
-            item.promoDetails.stockItems = item.promoDetails.stockItems.map(stockItem => {
-              stockItem = this.appendStockItemFields(stockItem);
-              return stockItem
-            });
-            item.promoDetails.totalQuantity = 0;
-            item.promoDetails.totalAmount = 0;
-          }
-          break;
-
-        case 4:
-          if (item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0) {
-            item.promoDetails.stockItems = item.promoDetails.stockItems.map(stockItem => {
-              stockItem = this.appendStockItemFields(stockItem);
-              return stockItem
-            });
-            item.promoDetails.totalQuantity = 0;
-            item.promoDetails.totalAmount = 0;
-          }
-          break;
-
-        default:
-          break;
+        item.isShowPromos = false;
+        item.isProductSelected = false;
+        this.griddatapromotions.push(item);
       }
 
+      
+
     });
+
+
+    this.copyGridPromotions = JSON.parse(JSON.stringify(this.griddatapromotions));
 
   }
 

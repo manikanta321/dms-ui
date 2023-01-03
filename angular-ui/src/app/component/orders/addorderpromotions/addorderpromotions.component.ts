@@ -116,7 +116,7 @@ export class AddorderpromotionsComponent implements OnInit {
   CompanyReferenceNo: any;
   DealerReferenceNo: any;
   DeliveryInstructions: any;
-  AddorderNonpromotiondata: any = [];
+  AddorderNonpromotiondata: any = {};
   startdate: any;
   minDate = new Date();
   selectedStartDate: any;
@@ -303,7 +303,8 @@ export class AddorderpromotionsComponent implements OnInit {
     this.nonpromotionlist = this.nonpromotionlist.map((x, i) => {
       x.promotionName = 'NP' + (i + 1);
       return x;
-    })
+    });
+    this.AddorderNonpromotiondata.itemDetails = this.nonpromotionlist;
     // this.itemremoved.splice(0);
   }
   // non-prmotions
@@ -1023,30 +1024,29 @@ export class AddorderpromotionsComponent implements OnInit {
             console.log(data, "addnonpromotions");
             this.nonpromotionlist = res.response;
 
-            this.nonpromotionlist = this.nonpromotionlist.map((x, i) => {
-              x.promotionName = 'NP' + (i + 1);
-              return x;
-            })
-            this.AddorderNonpromotiondata = [];
+            // this.nonpromotionlist = this.nonpromotionlist.map((x, i) => {
+            //   x.promotionName = 'NP' + (i + 1);
+            //   return x;
+            // })
+            this.AddorderNonpromotiondata = { itemDetails: [], promocode: 'NP', promotionId: 0 };
             this.nonpromotionlist.forEach(item => {
               // Promocode: this.promotionName,
-              if (item.isPromotionSelected) {
-                let obj = {
-                  "Promocode": item.promotionName,
-                  "stockid": item.stockitemid,
-                  "uom": item.uomid,
-                  "orderqty": item.quantity,
-                  "stock": item.stock,
-                  "price": item.mrp,
-                  "discount": item.discount,
-                  "finalvalue": item.finalValue,
-                  "taxvalue": item.taxvalue,
-                  "amount": item.amount,
-                  "taxid": item.taxid,
-                }
-
-                this.AddorderNonpromotiondata.push(obj)
+              let obj = {
+                "Promocode": item.promotionName,
+                "stockid": item.stockitemid,
+                "stockitemname": item.stockitemname,
+                "uom": item.uomid,
+                "uomname": item.uomname,
+                "quantity": item.quantity,
+                "stock": item.stock,
+                "mrp": item.mrp,
+                "discount": item.discount,
+                "finalValue": item.finalValue,
+                "taxvalue": item.taxvalue,
+                "amount": item.amount,
+                "taxid": item.taxid,
               }
+              this.AddorderNonpromotiondata.itemDetails.push(obj);
             });
             this.Non_promotions = false;
             console.log(this.nonpromotionlist, 'sdgvaFv')
@@ -1075,15 +1075,14 @@ export class AddorderpromotionsComponent implements OnInit {
   ordersubmit() {
     let loggedUserId = localStorage.getItem('logInId')
     console.log(this.startdate, "date")
-    let itemsCount = [];
+    let itemsCount: any = [];
 
     // Push Non Promotion data to itemscount variable
-    if (this.AddorderNonpromotiondata && this.AddorderNonpromotiondata.length != 0) {
-      let sendObj: any = {};
-      sendObj.promotionId = 0;
-      sendObj.promocode = 'NP';
-      sendObj.itemDetails = this.AddorderNonpromotiondata;
+    if (this.AddorderNonpromotiondata) {
+
+      itemsCount.push(this.AddorderNonpromotiondata);
     }
+
 
     // Push Promotion data to itemscount variable
 
@@ -1112,7 +1111,7 @@ export class AddorderpromotionsComponent implements OnInit {
     this.CustomerPoId = localStorage.getItem("CustomerPoId");
     console.log(this.CustomerPoId, 'this.CustomerPoId')
     this.orders.GetOrdersToEdit(this.CustomerPoId).subscribe((res) => {
-      this.editorderbyID = res.response[0];
+      this.editorderbyID = res.response;
       console.log(res.response, "GetOrdersToEdit")
       this.datapreloadbyID();
     })
@@ -1163,22 +1162,25 @@ export class AddorderpromotionsComponent implements OnInit {
       this.startdate = this.editorderbyID.requirementDate
       this.DeliveryInstructions = this.editorderbyID.notes
 
-      this.nonpromotionlist = this.editorderbyID.itemcounts
+      this.nonpromotionlist = this.editorderbyID.itemcount.filter(x => x.promocode.toLowerCase().indexOf('np') != -1).map(x => x.itemDetails[0]);
+      this.AddorderNonpromotiondata = { itemDetails: [], promocode: 'NP', promotionId: 0 };
       this.nonpromotionlist.forEach(item => {
         // Promocode: this.promotionName,
         let obj = {
           "Promocode": item.promotionName,
           "stockid": item.stockitemid,
+          "stockitemname": item.stockitemname,
           "uom": item.uomid,
-          "orderqty": item.quantity,
+          "uomname": item.uomname,
+          "quantity": item.quantity,
           "stock": item.stock,
-          "price": item.mrp,
+          "mrp": item.mrp,
           "discount": item.discount,
-          "finalvalue": item.finalValue,
+          "finalValue": item.finalValue,
           "taxvalue": item.taxvalue,
           "amount": item.amount
         }
-        this.AddorderNonpromotiondata.push(obj);
+        this.AddorderNonpromotiondata.itemDetails.push(obj);
       });
 
     }

@@ -11,6 +11,12 @@ export class RestPwsdUserPopupComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<any>,) { }
 
   ngOnInit(): void {
+
+    setTimeout(() => {
+
+      this.closeDialog()
+
+    }, 5000);
   }
   closeDialog(){
     this.dialogRef.close();

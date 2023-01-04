@@ -8,7 +8,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class AddcurrencySuccessfullyPopupComponent implements OnInit {
 
-  Addoreditcurrency:boolean=true; 
+  editOrAdd:boolean=true; 
 
   
   constructor(private dialogRef: MatDialogRef<any>) { }
@@ -18,12 +18,12 @@ export class AddcurrencySuccessfullyPopupComponent implements OnInit {
 
     
 
-    let isitem =localStorage.getItem('AddoreditcurrencyC')
+    let isitem =localStorage.getItem('Addoreditcurrency')
 
     if(isitem=='edit'){
-      this.Addoreditcurrency=false;
+      this.editOrAdd=false;
     }else{
-      this.Addoreditcurrency=true;
+      this.editOrAdd=true;
     
     }
 

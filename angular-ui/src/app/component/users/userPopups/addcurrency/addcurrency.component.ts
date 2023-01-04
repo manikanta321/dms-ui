@@ -109,6 +109,10 @@ this.uomShortName = shortName;
     }
     this.user.addcurrency(data).subscribe((res) => {    
       this.currencyForm.reset(); 
+      
+       localStorage.setItem('Addoreditcurrency','edit');
+     
+
       // console.log(res,"123456987654")
     });
   }else{
@@ -123,12 +127,18 @@ this.uomShortName = shortName;
     }
       this.user.addcurrency(data2).subscribe((res) => {   
         this.editUomData = res;
+        
+        
+         localStorage.setItem('Addoreditcurrency','Add');
+      
+
+
         console.log("editUomData",this.editUomData);
       });
   }
-  this.dialog.open(AddcurrencySuccessfullyPopupComponent , {panelClass: 'deactiveSuccessPop'});
+  this.dialog.open(AddcurrencySuccessfullyPopupComponent , {panelClass: 'activeSuccessPop'});
 
-  this.closeDialog();
+   this.closeDialog();
   }
   currencyConverteredValue(data:any){
     // alert("suceccy key finction")

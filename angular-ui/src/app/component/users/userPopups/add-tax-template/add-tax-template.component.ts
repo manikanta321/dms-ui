@@ -128,7 +128,7 @@ console.log(res)
 this.sharedService.filter('Register click')
 localStorage.setItem('AddOrEditTax','add');
 
-this.dialog.open(AddtaxTemplateSuccessfulPopupComponent , {panelClass: 'deactiveSuccessPop'});
+this.dialog.open(AddtaxTemplateSuccessfulPopupComponent , {panelClass: 'activeSuccessPop'});
 
 
 

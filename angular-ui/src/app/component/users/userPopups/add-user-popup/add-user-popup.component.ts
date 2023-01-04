@@ -1,10 +1,11 @@
 import { Component, OnInit,Output, EventEmitter,ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { UserService } from 'src/app/services/user.service';
 import { UsersComponent } from '../../users.component';
+import { AdduserSuccessfulPopupComponent } from './adduser-successful-popup/adduser-successful-popup.component';
 
 @Component({
   selector: 'app-add-user-popup',
@@ -37,6 +38,7 @@ export class AddUserPopupComponent implements OnInit {
     private router: Router,
 
     private dialogRef: MatDialogRef<AddUserPopupComponent>,
+    private dialog: MatDialog,
     private sharedService:SharedService,
     private user:UserService,
 
@@ -73,8 +75,14 @@ export class AddUserPopupComponent implements OnInit {
     
     this.user.AddUser(data).subscribe((res: any) => {
       console.log('response',res.response.result)
-      if (res.response.result === 'Success') {
+     
+      if (res.response.result === 'Success')
+        
+      {
         this.sharedService.filter('Register click')
+                localStorage.setItem('addorEditUser','Add');
+                this.dialog.open(AdduserSuccessfulPopupComponent , {panelClass: 'activeSuccessPop'});
+
 
         this.dialogRef.close();
     

@@ -4,6 +4,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 import { UserService } from 'src/app/services/user.service';
 import { SharedService } from 'src/app/services/shared-services.service';
+import { AdduserSuccessfulPopupComponent } from '../add-user-popup/adduser-successful-popup/adduser-successful-popup.component';
 
 @Component({
   selector: 'app-edit-popup',
@@ -36,6 +37,7 @@ export class EditPopupComponent implements OnInit {
     private user: UserService,
     private sharedService: SharedService,
     private fb: FormBuilder,
+    private dialog: MatDialog,
 
 
   ) {
@@ -141,7 +143,17 @@ export class EditPopupComponent implements OnInit {
       // this.dialogRef.close()
 
       if (res.response.result == 'successfully updated') {
+
+        
+        localStorage.setItem('addorEditUser','edit');
+
+
+        this.dialog.open(AdduserSuccessfulPopupComponent , {panelClass: 'activeSuccessPop'});
         this.sharedService.filter('Register click')
+
+        
+
+        
 
         this.dialogRef.close()
       }

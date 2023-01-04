@@ -184,7 +184,7 @@ setUpForm(cars: any[] ) {
     this.taxservise.ediTax(this.productForm.value).subscribe((res)=>{
 console.log(res);
 localStorage.setItem('AddOrEditTax','edit');
-this.dialog.open(AddtaxTemplateSuccessfulPopupComponent , {panelClass: 'deactiveSuccessPop'});
+this.dialog.open(AddtaxTemplateSuccessfulPopupComponent , {panelClass: 'activeSuccessPop'});
 this.otherMasterService.filter('Register click');
 
 this.dialogRef.close();

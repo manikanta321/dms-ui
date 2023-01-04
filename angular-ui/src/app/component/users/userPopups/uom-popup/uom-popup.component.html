@@ -16,7 +16,7 @@
             <!-- <input type="text" placeholder="Enter  name" [(ngModel)]="name" /> -->
             <input type="text" id="uomName" name="uomName" class="f-name" required
                                         placeholder="Enter your name" [(ngModel)]="name" #uomName="ngModel">
-                                    <p style="margin-bottom:-16px;"
+                                    <p style="margin-bottom:-16px; padding: 1px;"
                                         *ngIf="uomName.invalid && (uomName.dirty || uomName.touched)" class="alert">
                                         <span style="color:red;position: relative;" *ngIf="uomName.errors?.['required']">
                                             *Name is required.
@@ -34,7 +34,7 @@
             <!-- <input type="text" placeholder="Enter your Display Code"  [(ngModel)]="DisplayCode"/> -->
             <input type="text" id="displayC" name="displayC" required
             placeholder="Enter your name" [(ngModel)]="DisplayCode" #displayC="ngModel">
-        <p style="margin-bottom:-16px;"
+        <p style="margin-bottom:-16px; padding: 1px;"
             *ngIf="displayC.invalid && (displayC.dirty || displayC.touched)" class="alert">
             <span style="color:red;position: relative;" *ngIf="displayC.errors?.['required']">
                 *Display Code is required.

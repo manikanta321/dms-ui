@@ -81,25 +81,25 @@ export class OrderListComponent implements OnInit {
   selectedItems: any = [];
   selectedStatus: any = [];
   userTypes: any = [];
-  
-  StatusId:any=[];
 
-  GeographyId:any=[];
+  StatusId: any = [];
 
-  DealerId:any=[];
+  GeographyId: any = [];
 
-  OrderDate:any = "";
+  DealerId: any = [];
+
+  OrderDate: any = "";
 
 
   statusTypes: any = [];
-  searchText: any ='';
+  searchText: any = '';
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
   dropdownSettings2: IDropdownSettings = {};
   public rowData5 = [];
-  
-  public rowDatalist =[];
-  
+
+  public rowDatalist = [];
+
   public popupParent: HTMLElement = document.body;
   roleArray: any[] = [];
   statusArray: any = [];
@@ -128,19 +128,19 @@ export class OrderListComponent implements OnInit {
     {
       headerName: "Status",
       field: 'status',
-      maxWidth:120,
+      maxWidth: 120,
       cellEditor: 'agSelectCellEditor',
       cellEditorParams: {
-        values: ['Closed','Approved',],
+        values: ['Closed', 'Approved',],
       },
       cellClass: params => {
-        return params.value == 'Rejected' ? 'myclass1' : params.value == 'Draft' ? 'myclass2' :  params.value == 'Confirmed' ?  'myclass3' :  params.value == 'Ordered' ?  'myclass4' :  params.value == 'Returned' ?  'myclass5'
-        :  params.value == 'Cancelled' ?  'myclass6'  :  params.value == 'Pre-closed' ?  'myclass7'  :  params.value == 'In transit' ?  'myclass8'  :  params.value == 'Fulfilled' ?  'myclass9' :  params.value == 'To ship' ?  'myclass10' :  'myclass11'
+        return params.value == 'Rejected' ? 'myclass1' : params.value == 'Draft' ? 'myclass2' : params.value == 'Confirmed' ? 'myclass3' : params.value == 'Ordered' ? 'myclass4' : params.value == 'Returned' ? 'myclass5'
+          : params.value == 'Cancelled' ? 'myclass6' : params.value == 'Pre-closed' ? 'myclass7' : params.value == 'In transit' ? 'myclass8' : params.value == 'Fulfilled' ? 'myclass9' : params.value == 'To ship' ? 'myclass10' : 'myclass11'
       },
-        
+
       tooltipField: "statusName",
     },
-    
+
     // {
     //   headerName: "",
     //   field: '', filter: false, sortable: false,
@@ -150,12 +150,12 @@ export class OrderListComponent implements OnInit {
     // },
     {
       headerName: '',
-    
+
       colId: 'action',
 
       cellRenderer: OrderlistActionPopupComponent,
       editable: false,
-      maxWidth: 70  
+      maxWidth: 70
     },
     // {
     //   headerName: "Avatar",
@@ -169,7 +169,7 @@ export class OrderListComponent implements OnInit {
   rowData: any;
   rowData1 = []
   public defaultColDef: ColDef = {
-     
+
     suppressSizeToFit: true,
     width: 170,
     filter: 'agTextColumnFilter',
@@ -177,7 +177,7 @@ export class OrderListComponent implements OnInit {
     minWidth: 100,
     resizable: true,
     sortable: true,
-    
+
   };
 
   // public defaultColDef: ColDef = {
@@ -254,7 +254,7 @@ export class OrderListComponent implements OnInit {
 
   };
   UomId: any;
-  uomId :any;
+  uomId: any;
   uomName: any;
   CustomerPoId: any;
   clickNextRendererFunc() {
@@ -280,26 +280,26 @@ export class OrderListComponent implements OnInit {
   sidenav!: MatSidenav;
   roleName: any;
   statusname: any;
-  instancePopup:any = null;
-  dealerlist : any = [];
-  dealerAllarray :any =[];
-  dealerss : any =[]
-  dealerType:any;
-  selectedDealer : any = []
-  geogropdownlist : any =[];
-  geoAllarray : any =[]
-  geogragphies : any = [];
-  statusDropList : any = []
-  statusList : any =[];
-  statusAllarray : any =[];
-  selectedDateRange:any;
-  startDate:any ='';
-  endDate:any = '';
+  instancePopup: any = null;
+  dealerlist: any = [];
+  dealerAllarray: any = [];
+  dealerss: any = []
+  dealerType: any;
+  selectedDealer: any = []
+  geogropdownlist: any = [];
+  geoAllarray: any = []
+  geogragphies: any = [];
+  statusDropList: any = []
+  statusList: any = [];
+  statusAllarray: any = [];
+  selectedDateRange: any;
+  startDate: any = '';
+  endDate: any = '';
   constructor(public dialog: MatDialog,
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
     private user: UserService,
-    public orders:OrdersApisService,
+    public orders: OrdersApisService,
     private fb: FormBuilder,
     private observer: BreakpointObserver
   ) {
@@ -342,7 +342,7 @@ export class OrderListComponent implements OnInit {
     });
   }
   refresh() {
-   
+
     this.myForm = this.fb.group({
       city: [this.selectedItems]
     });
@@ -357,27 +357,28 @@ export class OrderListComponent implements OnInit {
     // this.DealerId=[];
     this.geogragphies = [];
     this.dealerss = [];
-    this.statusList =[];
-    this.searchText='';
-    this.startDate ='';
+    this.statusList = [];
+    this.searchText = '';
+    this.startDate = '';
     this.endDate = '';
- const data = {
-  StatusId : this.statusList,
-      GeographyId:this.geogragphies,
-      DealerId : this.dealerss,
-      Search:this.searchText,
-      startDate:this.startDate,
-      endDate:this.endDate
-  //   "GeographyId":[],
-  //  "DealerId" : [],
-  //   "OrderDate":"",
-  //   "Search":""
+    const data = {
+      StatusId: this.statusList,
+      GeographyId: this.geogragphies,
+      DealerId: this.dealerss,
+      Search: this.searchText,
+      startDate: this.startDate,
+      endDate: this.endDate
+      //   "GeographyId":[],
+      //  "DealerId" : [],
+      //   "OrderDate":"",
+      //   "Search":""
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
-  console.log("RefreshData",this.rowDatalist);
+      console.log("RefreshData", this.rowDatalist);
 
-    });  }
+    });
+  }
   roleFilter(data: any) {
     console.log('data', data)
     this.roleName = this.toppings.value;
@@ -391,20 +392,20 @@ export class OrderListComponent implements OnInit {
 
   onCellClicked(e): void {
     console.log('cellClicked', e);
-    this.UomId=e.data.uoMId;
-    this.uomName=e.data.uoMName;
+    this.UomId = e.data.uoMId;
+    this.uomName = e.data.uoMName;
     let ordernumber = e.data.orderNUmber;
-    this.CustomerPoId =e.data.id
+    this.CustomerPoId = e.data.id
 
     // this.employeeName=e.data.userName;
-    console.log('CustomerPoId',this.CustomerPoId);
-    localStorage.setItem('CustomerPoId',this.CustomerPoId)
-    sessionStorage.setItem("OrderStatus",e.data.status)
-    localStorage.setItem('UomId',e.data.uoMId )
-    localStorage.setItem('UomName',e.data.uoMName)
-    sessionStorage.setItem("orderNumber",ordernumber);
-    localStorage.setItem('niId',e.data.uoMId )
-    localStorage.setItem('Niname',e.data.uoMName)
+    console.log('CustomerPoId', this.CustomerPoId);
+    localStorage.setItem('CustomerPoId', this.CustomerPoId)
+    sessionStorage.setItem("OrderStatus", e.data.status)
+    localStorage.setItem('UomId', e.data.uoMId)
+    localStorage.setItem('UomName', e.data.uoMName)
+    sessionStorage.setItem("orderNumber", ordernumber);
+    localStorage.setItem('niId', e.data.uoMId)
+    localStorage.setItem('Niname', e.data.uoMName)
     // localStorage.setItem('employeeName',this.employeeName )
     if (
       e.event.target.dataset.action == 'toggle' &&
@@ -576,7 +577,7 @@ export class OrderListComponent implements OnInit {
 
   }
   handleScroll(event) {
-    if(this.instancePopup && this.instancePopup.isOpen){
+    if (this.instancePopup && this.instancePopup.isOpen) {
       this.instancePopup.togglePopup();
       this.instancePopup = null;
     }
@@ -594,19 +595,25 @@ export class OrderListComponent implements OnInit {
 
 
   addOrderPromotion() {
-    this.dialog.open(AddorderpromotionsComponent, {
+    const dialogRef = this.dialog.open(AddorderpromotionsComponent, {
       // width: '100vw',
       width: '900px',
-      height:'663px',
+      height: '663px',
       panelClass: 'material-add-edit'
-  });
-  localStorage.setItem('Edit', 'Add');
+    });
+    localStorage.setItem('Edit', 'Add');
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        this.orderlistGrid();
+      }
+    })
+
   }
 
 
   // ORDER SEARCH SELECT
 
-  onSearchChangeGEO($event: any, anything?: any){
+  onSearchChangeGEO($event: any, anything?: any) {
     // const { target } = $event;
     // this.searchText = target.value;
     // const data = {
@@ -653,141 +660,141 @@ export class OrderListComponent implements OnInit {
 
 
 
-  onSearchChangeDEAL($event: any, anything?: any){
+  onSearchChangeDEAL($event: any, anything?: any) {
 
   }
 
- orderlistGrid(){
-  const data = {
-    // userTypes: this.userTypes,
-    // statuss: this.statusTypes,
-    // search: this.searchText,
-    "StatusId":[],
-    "GeographyId":[],
-   "DealerId" : [],
-    "OrderDate":"",
-    "Search": this.searchText
+  orderlistGrid() {
+    const data = {
+      // userTypes: this.userTypes,
+      // statuss: this.statusTypes,
+      // search: this.searchText,
+      "StatusId": [],
+      "GeographyId": [],
+      "DealerId": [],
+      "OrderDate": "",
+      "Search": this.searchText
+    }
+    this.orders.getorderDeatilslist(data).subscribe((res) => {
+      this.rowDatalist = res.response;
+    });
   }
-  this.orders.getorderDeatilslist(data).subscribe((res) => {
-    this.rowDatalist = res.response;
-  });
-}
-orderUpload(){
-  
-  sessionStorage.setItem('sales','');
-  this.dialog.open(SalesBulkUploadComponent);
-}
-selectdays(){
-  this.dialog.open(CustomDatePopupComponent,{panelClass:'custmdays'})
+  orderUpload() {
+
+    sessionStorage.setItem('sales', '');
+    this.dialog.open(SalesBulkUploadComponent);
+  }
+  selectdays() {
+    this.dialog.open(CustomDatePopupComponent, { panelClass: 'custmdays' })
   }
   // selectedDateRange = {
   //   startDate: '11/11/2022',
   //   endDate: '11/15/2022',
   // }
 
-  customDatePickerEvent(eventChange){
+  customDatePickerEvent(eventChange) {
     alert("Helloos")
     this.selectedDateRange = eventChange.selectedDate;
-    this.startDate =this.selectedDateRange.startDate;
+    this.startDate = this.selectedDateRange.startDate;
     this.endDate = this.selectedDateRange.endDate;
     console.log(this.selectedDateRange);
     const data = {
-      StatusId : this.statusList,
-      GeographyId:this.geogragphies,
-      DealerId : this.dealerss,
-      Search:this.searchText,
-      StartDate:this.startDate,
-      EndDate:this.endDate
+      StatusId: this.statusList,
+      GeographyId: this.geogragphies,
+      DealerId: this.dealerss,
+      Search: this.searchText,
+      StartDate: this.startDate,
+      EndDate: this.endDate
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
   }
-  dealerOrder(){
+  dealerOrder() {
     this.user.dealerDropdownOrderlist().subscribe((res: any) => {
-        let localdata = res.response;
-        this.dealerlist = localdata.map((data: { customerId: any; customerName: any; }) => {
-          return { customerId: data.customerId, customerName  : data.customerName };
-        });
-        this.dealerlist.push()
-        this.dealerlist.forEach(element => {
-          return this.dealerAllarray.push(element.customerId);
-        })       
-        console.log('dealerAllarray',this.dealerAllarray)                                                    
+      let localdata = res.response;
+      this.dealerlist = localdata.map((data: { customerId: any; customerName: any; }) => {
+        return { customerId: data.customerId, customerName: data.customerName };
       });
-      this.dropdownSettings = {
-        singleSelection: false,
-        idField: 'customerId',
-        textField: 'customerName',
-        selectAllText: 'Select All',
-        unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 1,
-        allowSearchFilter: true
-      };
-      this.selectedStatus = [];
+      this.dealerlist.push()
+      this.dealerlist.forEach(element => {
+        return this.dealerAllarray.push(element.customerId);
+      })
+      console.log('dealerAllarray', this.dealerAllarray)
+    });
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'customerId',
+      textField: 'customerName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+      allowSearchFilter: true
+    };
+    this.selectedStatus = [];
   }
-  DealerorderSelect(item: any){
+  DealerorderSelect(item: any) {
     this.dealerss.push(item.customerId);
     const data = {
-      StatusId : this.statusList,
-      GeographyId:this.geogragphies,
-      DealerId : this.dealerss,
-      Search:this.searchText,
-      StartDate:this.startDate,
-      EndDate:this.endDate
+      StatusId: this.statusList,
+      GeographyId: this.geogragphies,
+      DealerId: this.dealerss,
+      Search: this.searchText,
+      StartDate: this.startDate,
+      EndDate: this.endDate
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
   }
-  DealerDeselect(item:any){
+  DealerDeselect(item: any) {
     console.log(item)
     this.dealerss.forEach((element, index) => {
       if (element == item.customerId) this.dealerss.splice(index, 1);
     });
     const data = {
-      StatusId : this.statusList,
-      GeographyId:this.geogragphies,
-      DealerId : this.dealerss,
-      Search:this.searchText,
-      StartDate:this.startDate,
-      EndDate:this.endDate
+      StatusId: this.statusList,
+      GeographyId: this.geogragphies,
+      DealerId: this.dealerss,
+      Search: this.searchText,
+      StartDate: this.startDate,
+      EndDate: this.endDate
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
   }
-  DealerDeselectAll(item:any){
+  DealerDeselectAll(item: any) {
     this.dealerss = [];
     const data = {
-      StatusId : this.statusList,
-      GeographyId:this.geogragphies,
-      DealerId : this.dealerss,
-      Search:this.searchText,
-      StartDate:this.startDate,
-      EndDate:this.endDate
+      StatusId: this.statusList,
+      GeographyId: this.geogragphies,
+      DealerId: this.dealerss,
+      Search: this.searchText,
+      StartDate: this.startDate,
+      EndDate: this.endDate
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
   }
-  DealerorderSelectAll(item:any){
+  DealerorderSelectAll(item: any) {
     this.dealerss = this.dealerAllarray;
-    console.log("AllDealers",this.dealerss);
+    console.log("AllDealers", this.dealerss);
     const data = {
-      StatusId : this.statusList,
-      GeographyId:this.geogragphies,
-      DealerId : this.dealerss,
-      Search:this.searchText,
-      StartDate:this.startDate,
-      EndDate:this.endDate
+      StatusId: this.statusList,
+      GeographyId: this.geogragphies,
+      DealerId: this.dealerss,
+      Search: this.searchText,
+      StartDate: this.startDate,
+      EndDate: this.endDate
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
-      console.log("All Dealers",this.rowDatalist )
+      console.log("All Dealers", this.rowDatalist)
     });
   }
-  geogrphyOrder(){
+  geogrphyOrder() {
     this.user.getGographicDropdown().subscribe((res: any) => {
       let localdata = res.response;
       this.geogropdownlist = localdata.map((data: { geographyId: any; geographyName: any; }) => {
@@ -810,16 +817,16 @@ selectdays(){
       };
     });
   }
-  geographyselect(item:any){
+  geographyselect(item: any) {
     this.geogragphies.push(item.geographyId);
-    console.log("geographics",this.geogragphies);
+    console.log("geographics", this.geogragphies);
     const data = {
-      StatusId : this.statusList,
-      GeographyId:this.geogragphies,
-      DealerId : this.dealerss,
-      Search:this.searchText,
-      StartDate:this.startDate,
-      EndDate:this.endDate
+      StatusId: this.statusList,
+      GeographyId: this.geogragphies,
+      DealerId: this.dealerss,
+      Search: this.searchText,
+      StartDate: this.startDate,
+      EndDate: this.endDate
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -830,12 +837,12 @@ selectdays(){
       if (element == item.geographyId) this.geogragphies.splice(index, 1);
     });
     const data = {
-      StatusId : this.statusList,
-      GeographyId:this.geogragphies,
-      DealerId : this.dealerss,
-      Search:this.searchText,
-      StartDate:this.startDate,
-      EndDate:this.endDate
+      StatusId: this.statusList,
+      GeographyId: this.geogragphies,
+      DealerId: this.dealerss,
+      Search: this.searchText,
+      StartDate: this.startDate,
+      EndDate: this.endDate
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -844,34 +851,34 @@ selectdays(){
     console.log('onItemSelect', item);
   }
   geographyDeselectAll(item: any) {
-    this.geogragphies=[];
+    this.geogragphies = [];
     const data = {
-      StatusId : this.statusList,
-      GeographyId:this.geogragphies,
-      DealerId : this.dealerss,
-      Search:this.searchText,
-      StartDate:this.startDate,
-      EndDate:this.endDate
+      StatusId: this.statusList,
+      GeographyId: this.geogragphies,
+      DealerId: this.dealerss,
+      Search: this.searchText,
+      StartDate: this.startDate,
+      EndDate: this.endDate
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
-      console.log("GeoSelectALL",this.rowDatalist)
+      console.log("GeoSelectALL", this.rowDatalist)
     });
   }
   geographyselectAll(item: any) {
     this.geogragphies = this.geoAllarray;
-    console.log("geographics",this.geogragphies);
+    console.log("geographics", this.geogragphies);
     const data = {
-      StatusId : this.statusList,
-      GeographyId:this.geogragphies,
-      DealerId : this.dealerss,
-      Search:this.searchText,
-      StartDate:this.startDate,
-      EndDate:this.endDate
+      StatusId: this.statusList,
+      GeographyId: this.geogragphies,
+      DealerId: this.dealerss,
+      Search: this.searchText,
+      StartDate: this.startDate,
+      EndDate: this.endDate
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
-      this.rowDatalist = res.response;  
-      console.log("GeoSelectALL",this.rowDatalist)
+      this.rowDatalist = res.response;
+      console.log("GeoSelectALL", this.rowDatalist)
     });
     // console.log('rolefilter', this.userTypes)
     // console.log('onItemSelect', item);
@@ -904,61 +911,61 @@ selectdays(){
       this.selectedItems = [];
     });
   }
-  statusdropdownselect(item:any){
+  statusdropdownselect(item: any) {
     this.statusList.push(item.statusId);
     const data = {
-      StatusId : this.statusList,
-      GeographyId:this.geogragphies,
-      DealerId : this.dealerss,
-      Search:this.searchText,
-      StartDate:this.startDate,
-      EndDate:this.endDate
+      StatusId: this.statusList,
+      GeographyId: this.geogragphies,
+      DealerId: this.dealerss,
+      Search: this.searchText,
+      StartDate: this.startDate,
+      EndDate: this.endDate
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
   }
-  statusDeselect(item:any){
+  statusDeselect(item: any) {
     this.statusList.forEach((element, index) => {
       if (element == item.statusId) this.statusList.splice(index, 1);
     });
     const data = {
-      StatusId : this.statusList,
-      GeographyId:this.geogragphies,
-      DealerId : this.dealerss,
-      Search:this.searchText,
-      StartDate:this.startDate,
-      EndDate:this.endDate
+      StatusId: this.statusList,
+      GeographyId: this.geogragphies,
+      DealerId: this.dealerss,
+      Search: this.searchText,
+      StartDate: this.startDate,
+      EndDate: this.endDate
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
     console.log('rolefilter', this.userTypes)
-console.log('onItemSelect', item);
+    console.log('onItemSelect', item);
   }
-  statusDeselectAll(item:any){
+  statusDeselectAll(item: any) {
     this.statusList = [];
     const data = {
-      StatusId : this.statusList,
-      GeographyId:this.geogragphies,
-      DealerId : this.dealerss,
-      Search:this.searchText,
-      StartDate:this.startDate,
-      EndDate:this.endDate
+      StatusId: this.statusList,
+      GeographyId: this.geogragphies,
+      DealerId: this.dealerss,
+      Search: this.searchText,
+      StartDate: this.startDate,
+      EndDate: this.endDate
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
     });
   }
-  statusselectAll(item:any){
+  statusselectAll(item: any) {
     this.statusList = this.statusAllarray
     const data = {
-      StatusId : this.statusList,
-      GeographyId:this.geogragphies,
-      DealerId : this.dealerss,
-      Search:this.searchText,
-      StartDate:this.startDate,
-      EndDate:this.endDate
+      StatusId: this.statusList,
+      GeographyId: this.geogragphies,
+      DealerId: this.dealerss,
+      Search: this.searchText,
+      StartDate: this.startDate,
+      EndDate: this.endDate
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -968,12 +975,12 @@ console.log('onItemSelect', item);
     const { target } = $event;
     this.searchText = target.value;
     const data = {
-      StatusId : this.statusList,
-      GeographyId:this.geogragphies,
-      DealerId : this.dealerss,
-      Search:this.searchText,
-      StartDate:this.startDate,
-      EndDate:this.endDate
+      StatusId: this.statusList,
+      GeographyId: this.geogragphies,
+      DealerId: this.dealerss,
+      Search: this.searchText,
+      StartDate: this.startDate,
+      EndDate: this.endDate
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;

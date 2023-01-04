@@ -3,7 +3,7 @@
         <div class="container promotionpopup-scroll">
             <div class="addUser">
                 <img class="print-img" src="../../../assets/material/print-img.svg" alt="">
-                <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+                <mat-icon mat-button class="close-icon" [mat-dialog-close]="false">close</mat-icon>
 
             </div>
             <div class="head-t">
@@ -47,7 +47,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="billingAdrs">
-                                <label class="DealerInfo-label">Billing Address <span class="astr">*</span></label>
+                                <label class="DealerInfo-label">Billing Address   {{BillingaddressId}} <span class="astr">*</span></label>
                                 <!-- <input matInput placeholder=" Select Billing address" #input class="form-control container input-box" > -->
                                 <ng-select class="BillingAddress" [items]="dealersbillingAddress" id="BillingAddress"
                                     name="BillingAddress" required [virtualScroll]="true" bindLabel="Billingaddress"
@@ -130,8 +130,8 @@
                                 <ng-container *ngFor="let PromotionObj of AddOrderPromotionData; let i=index;">
                                     <tr *ngFor="let Item of PromotionObj.prodDetails; let j=index;">
                                         <td>
-                                            <p class="itemLeft"><span class="promoItem"> P <span
-                                                        *ngIf="j==0" style="color: #fff;">{{i + 1}}</span>
+                                            <p class="itemLeft"><span class="promoItem"><span
+                                                        *ngIf="j==0" style="color: #fff;"> P {{i + 1}}</span>
                                                 </span>{{Item.stockitemname}}</p>
                                         </td>
                                         <td>
@@ -298,7 +298,7 @@
             <button type="button" class="save-submit" (click)="ordersubmit()">Save & submit</button>
         </div>
         <div class="col-md-5">
-            <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
+            <button type="button" [mat-dialog-close]="false" class="cancel">Cancel</button>
         </div>
     </div>
 </div>

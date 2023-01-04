@@ -433,8 +433,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
     this.griddatapromotions.forEach(item => {
       switch (item.promotionTypesId) {
         case 1:
-          let selectedPromotionDatabuyset: any = [];
-          let selectedPromotionDatagetset: any = [];
+          
+          
           let buysets:any =[];
           let getsets:any = [];
           
@@ -442,7 +442,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
           // buygroups
           if (item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0) {
             item.promoDetails.buyGroups.forEach(stockItem => {
-              
+              let selectedPromotionDatabuyset: any = [];
               if (stockItem.stockItemId.length != 0) {
                 stockItem.stockItemId.forEach(stock => {
                   if (stock.isProductSelected) {
@@ -473,11 +473,11 @@ export class AddOrderPromotionlistComponent implements OnInit {
           // getgroups
           if (item.promoDetails && item.promoDetails.getGroups && item.promoDetails.getGroups && item.promoDetails.getGroups.length != 0) {
             item.promoDetails.getGroups.forEach(stockItem => {
+              let selectedPromotionDatagetset: any = [];
               if (stockItem.stockItemId.length != 0) {
                 stockItem.stockItemId.forEach(stock => {
                   if (stock.isProductSelected) {
                     let obj = {
-
                       "Taxid": stock.Taxid,
                       "stockItemId": stock.stockItemId,
                       "Quantity": stock.Quantity,
@@ -506,31 +506,23 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
           break;
         case 2:
-
-          let selectedPromotionDatabuyset2: any = [];
-          let selectedPromotionDatagetset2: any = [];
-          let buysets2:any =[];
           let gpidandBysets:any =[];
           let gpidandgetsets:any = [];
-          let getsets2:any = [];
 
-     
           // buygrops
           if (item.promoDetails && item.promoDetails.buySets && item.promoDetails.buySets && item.promoDetails.buySets.length != 0) {
             item.promoDetails.buySets.forEach(setItem => {
-          
+              let buysets2:any =[];
               setItem.buyGroups.forEach(stockItem => {
-             
+                let selectedPromotionDatabuyset2: any = [];
                 if (stockItem.stockItemId.length != 0) {
                   stockItem.stockItemId.forEach(stock => {
                     if (stock.isProductSelected) {
                       let obj = {
-
                         "Taxid": stock.Taxid,
                         "stockItemId": stock.stockItemId,
                         "Quantity": stock.Quantity,
                         "stock":stock.stock
-      
                       };
                       selectedPromotionDatabuyset2.push(obj)
                     }
@@ -545,6 +537,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
   
                 buysets2.push(buyGroupdata2) 
               });
+
               let groupid = {
                 "GroupId": setItem.groupId,
                 "Groups":buysets2
@@ -556,8 +549,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
         if (item.promoDetails && item.promoDetails.getSets && item.promoDetails.getSets && item.promoDetails.getSets.length != 0) {
           item.promoDetails.getSets.forEach(setItem => {
+            let getsets2:any = [];
             setItem.getGroups.forEach(stockItem => {
-
+              let selectedPromotionDatagetset2: any = [];
               if (stockItem.stockItemId.length != 0) {
                 stockItem.stockItemId.forEach(stock => {
                   if (stock.isProductSelected) {
@@ -590,8 +584,6 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
           });
         }
-
-
           let data2 = {
             "PromotionId": item.productPromotionsId,
             "BuySets":gpidandBysets,
@@ -599,7 +591,6 @@ export class AddOrderPromotionlistComponent implements OnInit {
             
           }
 
-                  
           this.promotionstype2.push(data2);
           break;
         case 3:

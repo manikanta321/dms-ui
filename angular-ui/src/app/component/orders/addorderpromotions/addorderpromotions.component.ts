@@ -83,8 +83,8 @@ export class AddorderpromotionsComponent implements OnInit {
   dealersShippingAddress: any = [];
   dealerid: any = [];
   customerId: any = [];
-  addressId: any = [];
-  shippingaddressId: any = [];
+  addressId: any;
+  shippingaddressId: any;
   BillingaddressId: any = [];
   Billingaddress: any = [];
   shippingAddress: any = [];
@@ -112,7 +112,7 @@ export class AddorderpromotionsComponent implements OnInit {
   DealerReferenceNo: any;
   DeliveryInstructions: any;
   AddorderNonpromotiondata: any = {};
-  AddOrderPromotionData:any = [];
+  AddOrderPromotionData: any = [];
   startdate: any;
   minDate = new Date();
   selectedStartDate: any;
@@ -297,9 +297,9 @@ export class AddorderpromotionsComponent implements OnInit {
     this.orderNonPromotionsList();
     this.Non_promotions = true;
   }
-  removePromotionItem(clickedItem,promotionId){
+  removePromotionItem(clickedItem, promotionId) {
     let ClickedPromotionObj = this.AddOrderPromotionData.find(x => x.promotionId == promotionId);
-    if(ClickedPromotionObj){
+    if (ClickedPromotionObj) {
       let index = ClickedPromotionObj.prodDetails.findIndex(x => x.stockItemId == clickedItem.stockItemId);
       ClickedPromotionObj.prodDetails.splice(index, 1);
     }
@@ -401,7 +401,7 @@ export class AddorderpromotionsComponent implements OnInit {
     console.log(this.shippingaddressId, "shippingaddressId")
   }
   onItemSelectBillingAddress(item: any) {
-    this.BillingaddressId = item.addressId;
+    this.BillingaddressId = item.BillingaddressId;
     console.log(this.BillingaddressId, "BillingaddressId")
   }
   // on search 
@@ -1026,7 +1026,7 @@ export class AddorderpromotionsComponent implements OnInit {
           "Taxid": item.taxid,
           "stockItemId": item.stockItemId,
           "Quantity": item.quantity,
-          "stock":item.stock
+          "stock": item.stock
         };
 
         selectedNonPromotionData.push(obj)
@@ -1097,9 +1097,19 @@ export class AddorderpromotionsComponent implements OnInit {
     let itemsCount: any = [];
 
     // Push Non Promotion data to itemscount variable
-    if (this.AddorderNonpromotiondata) {
-
+    if (this.AddorderNonpromotiondata && this.AddorderNonpromotiondata.itemDetails && this.AddorderNonpromotiondata.itemDetails.length != 0) {
+      
       itemsCount.push(this.AddorderNonpromotiondata);
+    }
+
+    if (this.AddOrderPromotionData) {
+      this.AddOrderPromotionData.forEach( x =>{
+        let obj:any = {};
+        obj.promotionId = x.promotionId;
+        obj.itemDetails = x.prodDetails;
+        obj.promocode = x.promocode ?? 'P3';
+        itemsCount.push(obj);
+      })
     }
 
 
@@ -1113,7 +1123,7 @@ export class AddorderpromotionsComponent implements OnInit {
       "billingaddid": this.BillingaddressId,
       "dealerrefno": this.DealerReferenceNo,
       "comrefno": this.CompanyReferenceNo,
-      "shippingaddid": this.shippingaddressId,
+      "shippingaddid": this.addressId,
       "deliveryistruction": this.DeliveryInstructions,
       "requirementdate": this.selectedStartDate,
       "CreatedById": loggedUserId,
@@ -1122,7 +1132,9 @@ export class AddorderpromotionsComponent implements OnInit {
 
     this.orders.addorderNonPromotions(data).subscribe((res) => {
 
-      console.log(data, "data")
+      console.log(data, "data");
+
+      this.dialogRef.close(true);
     });
   }
 
@@ -1173,7 +1185,7 @@ export class AddorderpromotionsComponent implements OnInit {
         console.log(BillingAddress, "billing address");
         console.log(this.dealersbillingAddress, "billing address2");
       });
-      this.BillingaddressId = this.editorderbyID.billingaddid
+      this.BillingaddressId = this.editorderbyID.billingaddid; 
 
       this.DealerReferenceNo = this.editorderbyID.dealerrefno
       this.CompanyReferenceNo = this.editorderbyID.comrefno
@@ -1181,16 +1193,13 @@ export class AddorderpromotionsComponent implements OnInit {
       this.startdate = this.editorderbyID.requirementdate
       this.DeliveryInstructions = this.editorderbyID.deliveryistruction
 
-      
-      
-
       this.nonpromotionlist = this.editorderbyID.itemcount.filter(x => x.promocode.toLowerCase().indexOf('np') != -1).map(x => x.itemDetails[0]);
       this.AddorderNonpromotiondata = { itemDetails: [], promocode: 'NP', promotionId: 0 };
       this.nonpromotionlist.forEach(item => {
         // Promocode: this.promotionName,
         let obj = {
           // "Promocode": item.promotionName,
-          
+
           "stockid": item.stockid,
           "stockitemname": item.stockitemname,
           "uom": item.uom,

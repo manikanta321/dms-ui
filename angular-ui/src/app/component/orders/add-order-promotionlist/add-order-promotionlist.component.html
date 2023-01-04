@@ -318,7 +318,10 @@
                                         </div>
 
                                     </div>
-
+                                    <div class="buysets text-center">
+                                        <h4 class="buysetHead"><b> {{data.promoDetails.getSets.length != 0 ? 'GET SETS'
+                                                :''}} </b> </h4>
+                                    </div>
                                     <!-- set groups -->
                                     <div *ngFor="let setItem of data.promoDetails.getSets;let j=index">
                                         <div *ngFor="let promos of setItem.getGroups">

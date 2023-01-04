@@ -84,13 +84,13 @@ export class AddeditgeoComponent implements OnInit {
 
     console.log(obj);
     this.dialogRef.close();
-    // this.dialog.open(GeoAddedPopupComponent, {panelClass: 'activeSuccessPop'});
+    this.dialog.open(GeoAddedPopupComponent, {panelClass: 'activeSuccessPop'});
     this.spinner.show();
     this.classification.SaveGeography(obj).subscribe({
       next: (res) => {
         if (res.response.flag) {
           this.dialogRef.close({res, result});
-          this.dialog.open(GeoAddedPopupComponent, {panelClass: 'activeSuccessPop'});
+          // this.dialog.open(GeoAddedPopupComponent, {panelClass: 'activeSuccessPop'});
           // alert(res.response.resultDetails);
         }else{
           // Show warning message

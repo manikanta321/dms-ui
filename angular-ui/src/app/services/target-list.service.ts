@@ -109,5 +109,11 @@ export class TargetListService {
     return this.http.post<any>(this.classificationurl + 'PromotionsApi/GetProductList', data);
 
   }
+// http://13.126.235.145:801/api/DealerApi/GetFinancialYear
+
+financialYear() {
+  return this.http.get<any>(this.classificationurl + 'DealerApi/GetFinancialYear');
+
+}
 
 }

@@ -48,6 +48,8 @@ export class MaterialsClassificationComponent implements OnInit {
   selectedtypeItem = '';
   subcatcount: any;
   typecount: any;
+  CattyName:any;
+  SubCattyName:any;
   // clData: string[] = ['Type TP 1', 'Type TP 2', 'Type TP 3','Type TP 4'];
   // subcat: string[] = ['sub category', 'sub category 2',];
   constructor(
@@ -91,8 +93,12 @@ export class MaterialsClassificationComponent implements OnInit {
 
       if (data.firstCat.isActive == true) {
         this.catagoryroouting = data.firstCat.catName;
+        console.log("CAtegory",this.catagoryroouting.split(/[()]/)[0])
+        this.CattyName = this.catagoryroouting.split(/[()]/)[0]
         this.selectedItem = data.allOtherCats[0];
         this.subcatRoouting = data.firstCat.subCAts.firstSubCat.subCatName;
+        console.log("SubCAtegory",this.subcatRoouting.split(/[()]/)[0])
+        this.SubCattyName = this.subcatRoouting.split(/[()]/)[0]
         this.subcatcount = data.firstCat.subCatsCount;
         this.typecount = data.firstCat.subCAts.firstSubCat.typeCount;
         console.log('data', data.firstCat)
@@ -114,9 +120,10 @@ export class MaterialsClassificationComponent implements OnInit {
 
       else {
         this.catagoryroouting = '';
-
+        this.CattyName = '';
         // this.selectedItem=data.allOtherCats[0];
         this.subcatRoouting = '';
+        this.SubCattyName = '';
         this.subcatcount = 0;
         this.typecount = 0;
         console.log('data', data.firstCat)
@@ -286,8 +293,12 @@ export class MaterialsClassificationComponent implements OnInit {
         this.coutCatagory = res.totalRecords;
         this.catgname = data.allOtherCats
         this.catagoryroouting = data.firstCat;
+        console.log("SubCAtegory",this.catagoryroouting.split(/[()]/)[0])
+        this.CattyName = this.catagoryroouting.split(/[()]/)[0]
         this.selectedItem = data.allOtherCats[0];
         this.subcatRoouting = data.firstCat.subCAts.firstSubCat.subCatName;
+        console.log("SubCAtegory",this.subcatRoouting.split(/[()]/)[0])
+        this.SubCattyName = this.subcatRoouting.split(/[()]/)[0]
         this.subcatcount = data.firstCat.subCatsCount;
         this.typecount = data.firstCat.subCAts.firstSubCat.typeCount;
         console.log('data', data.firstCat)
@@ -367,11 +378,14 @@ export class MaterialsClassificationComponent implements OnInit {
           this.typename = [];
           this.typecount = '0';
           this.subcatRoouting = 'No Sub-Category';
+          this.SubCattyName = 'No Sub-Category'
           debugger
 
         }
         else {
           this.subcatRoouting = data.firstSubCat.subCatName;
+          console.log("SubCAtegory",this.subcatRoouting.split(/[()]/)[0])
+          this.SubCattyName = this.subcatRoouting.split(/[()]/)[0]
           this.selectedtypeItem = data.firstSubCat.types[0];
           this.typename = data.firstSubCat.types;
           this.subcatcount = res.totalRecords;
@@ -505,7 +519,8 @@ export class MaterialsClassificationComponent implements OnInit {
           if (data.firstSubCat.isActive == true) {
             this.selectedtypeItem = data.firstSubCat.types[0];
             this.subcatRoouting = data.firstSubCat.subCatName;
-
+            console.log("SubCAtegory",this.subcatRoouting.split(/[()]/)[0])
+            this.SubCattyName = this.subcatRoouting.split(/[()]/)[0]
             // this.selectedtypeItem=res.response[0];
             this.typename = data.firstSubCat.types;
             this.subcatcount = res.totalRecords;
@@ -514,7 +529,7 @@ export class MaterialsClassificationComponent implements OnInit {
           else {
             // this.selectedtypeItem=data.firstSubCat.types[0];
             this.subcatRoouting = '';
-
+            this.SubCattyName = '';
             this.selectedtypeItem = '';
             this.typename = [];
             this.subcatcount = res.totalRecords;
@@ -559,6 +574,8 @@ export class MaterialsClassificationComponent implements OnInit {
     this.subCatId = item.subCatId;
     localStorage.setItem('Subcatidset', this.subCatId);
     this.subcatRoouting = item.subCatName;
+    console.log("SubCAtegory",this.subcatRoouting.split(/[()]/)[0])
+    this.SubCattyName = this.subcatRoouting.split(/[()]/)[0]
     this.spinner.show();
     this.calssification.onclicksubcat(this.subCatId).subscribe((res) => {
       console.log(res);
@@ -590,6 +607,8 @@ export class MaterialsClassificationComponent implements OnInit {
     this.itemId = item.catId;
     localStorage.setItem('Catidset', this.itemId)
     this.catagoryroouting = item.catName;
+    console.log("SubCAtegory",this.catagoryroouting.split(/[()]/)[0])
+    this.CattyName = this.catagoryroouting.split(/[()]/)[0]
     this.calssification.onclickcat(this.itemId).subscribe((res) => {
       console.log(res)
       this.spinner.hide();
@@ -606,12 +625,15 @@ export class MaterialsClassificationComponent implements OnInit {
       if (data.firstSubCat == null) {
         this.typename = [];
         this.subcatRoouting = 'No Sub-Category'
+        this.SubCattyName = 'No Sub-Category'
       }
       else {
         if (data.firstSubCat.isActive == true) {
           this.subCatId = data.firstSubCat.subCatId
           localStorage.setItem('Subcatidset', this.subCatId)
           this.subcatRoouting = data.firstSubCat.subCatName;
+          console.log("SubCAtegory",this.subcatRoouting.split(/[()]/)[0])
+          this.SubCattyName = this.subcatRoouting.split(/[()]/)[0]
           if (data.firstSubCat.types && data.firstSubCat.types[0] && data.firstSubCat.types[0].isActive == true) {
             this.typename = data.firstSubCat.types;
             this.selectedtypeItem = data.firstSubCat.types[0];
@@ -625,6 +647,7 @@ export class MaterialsClassificationComponent implements OnInit {
           this.subCatId = data.firstSubCat.subCatId
           localStorage.setItem('Subcatidset', this.subCatId)
           this.subcatRoouting = '';
+          this.SubCattyName = '';
           this.typename = [];
           this.selectedtypeItem = ' ';
         }

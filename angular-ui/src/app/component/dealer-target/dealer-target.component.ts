@@ -234,7 +234,7 @@ export class DealerTargetComponent implements OnInit {
   geographyList: any = [];
   geographyListData:any = [];
   geographyArray:any = [];
-  toppingList1: any = [2020,2021,2022,2023,2024,2025];
+  toppingList1: any = [];
   filterDictionary: any;
   sideBarOpen = true;
   scrolledIndex = 0;
@@ -568,16 +568,15 @@ console.log("SelectedGeo",this.geographySelected)
 
 
   statusItems() {
-    // this.user.dealersStatus().subscribe((res: any) => {
-      // this.toppingList1 = res.response;
+    this.targetList.financialYear().subscribe((res: any) => {
+      this.toppingList1 = res.response;
       
-      // console.log('we have to check here', this.toppingList1)
-      // this.toppingList1.forEach(element => {
-      //   return this.statusArray.push(element.statusId);
+      console.log('New Year', this.toppingList1)
+      this.toppingList1.forEach(element => {
+        return this.statusArray.push(element.statusId);
       
 
-      // })
-      // console.log('statusArray', this.statusArray)
+      })
     
       this.dropdownSettings1 = {
         singleSelection: false,
@@ -591,7 +590,7 @@ console.log("SelectedGeo",this.geographySelected)
       this.selectedStatus = [];
       this.toppings1 = new FormControl(this.toppingList1);
 
-    // });
+    });
   }
   onYearSelect(item: any) {
     // alert(item)

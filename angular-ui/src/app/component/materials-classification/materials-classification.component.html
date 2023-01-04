@@ -56,7 +56,7 @@
       <!-- sub category -->
       <mat-card class="scroll"  [ngClass]="{ 'scroll': subcatcount > 6 }">
         <mat-card-content>
-          <div class="span-subhead"><span>{{catagoryroouting}}</span>
+          <div class="span-subhead"><span>{{CattyName}}</span>
             <!-- <mat-icon>arrow_drop_down</mat-icon> -->
           </div>
           <div class=" d-flex" *ngFor="let subc of subname">
@@ -93,8 +93,8 @@
       <!-- type -->
       <mat-card   [ngClass]="{ 'scroll': typecount > 6 }">
         <mat-card-content>
-          <div class="span-subhead1"><span style="padding-bottom: 10px;" >{{catagoryroouting}}</span>
-            <mat-icon class="arrow">keyboard_arrow_right</mat-icon><span>{{subcatRoouting}}</span>
+          <div class="span-subhead1"><span style="padding-bottom: 10px;" >{{CattyName}}</span>
+            <mat-icon class="arrow">keyboard_arrow_right</mat-icon><span>{{SubCattyName}}</span>
             <!-- <mat-icon>arrow_drop_down</mat-icon> -->
           </div>
           <!-- <li class="type" *ngFor="let type of typename" >{{type}}<mat-icon>add_circle</mat-icon></li> -->

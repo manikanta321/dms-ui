@@ -5,7 +5,7 @@
     <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
     <div class="actv-user text-center">
         <h1 class="head-text" >{{headername}}</h1>
-        <p class="auswd">Are you sure you want to <b style="color:red;font-size: 17px;">{{headername}}</b><br>
+        <p class="auswd">Are you sure you want to <b  [ngStyle]="activeTypeIsActive == 'false'? {'color': '#17B15C'}:{'color':'red'}">{{headername}}</b><br>
         <b> {{activeTypeName}}?</b></p>
         <button class="undo" (click)="deactive()">Yes</button>
         <button class="exit"(click)='close()'>Cancel</button>

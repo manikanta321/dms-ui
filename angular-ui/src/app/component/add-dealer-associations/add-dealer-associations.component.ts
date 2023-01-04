@@ -12,6 +12,8 @@ import { MaterialListService } from 'src/app/services/material-list.service';
 import { AddMaterialsService } from 'src/app/services/add-materials.service';
 import { SharedServicesDealerService } from 'src/app/services/shared-services-dealer.service';
 import { PromotionService } from 'src/app/services/promotion.service';
+import { MaterialaddedSuccessPopComponent } from '../materials-list/material-add-editpopup/materialadded-success-pop/materialadded-success-pop.component';
+import { DealerSuccessPopupComponent } from './dealer-success-popup/dealer-success-popup.component';
 
 @Component({
   selector: 'app-add-dealer-associations',
@@ -641,7 +643,6 @@ if(geographyData[0].geographyId){
         if (res.response.result == 'Successfully Added') {
           this.sharedService.filter('Register click')
           this.dialogRef.close();
-
         }
         else {
 
@@ -653,8 +654,7 @@ if(geographyData[0].geographyId){
 
       alert('select any dealer')
     }
-
-
+    this.dialog.open(DealerSuccessPopupComponent, {panelClass: 'activeSuccessPop'})
   }
   saveAssociationdealer() {
     this.geoProperties = [];
@@ -718,7 +718,7 @@ if(geographyData[0].geographyId){
 
       alert('select any Product')
     }
-
+    this.dialog.open(DealerSuccessPopupComponent, {panelClass: 'activeSuccessPop'})
 
   }
 

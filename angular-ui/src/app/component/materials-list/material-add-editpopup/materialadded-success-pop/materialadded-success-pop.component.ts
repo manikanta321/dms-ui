@@ -7,10 +7,23 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./materialadded-success-pop.component.css']
 })
 export class MaterialaddedSuccessPopComponent implements OnInit {
-
+  updatesave:boolean=false;
+  saveMaterial : any;
+  saveProduct :boolean= false;
+  success : boolean = false;
+  saveAssociationbtn: any;
   constructor(private dialogRef: MatDialogRef<any>) { }
 
   ngOnInit(): void {
+    let AddEdit = localStorage.getItem('updateAddEdit')
+    
+    if(AddEdit == 'edit'){
+      this.updatesave = true;
+    }
+    else{
+      this.updatesave = false;
+    }
+
     setTimeout(() => {
 
       this.closeDialog();

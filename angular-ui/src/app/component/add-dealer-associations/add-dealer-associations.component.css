@@ -1487,3 +1487,18 @@ width: 100%;
 .mainclass {
   margin-left: 5px;
 }
+::ng-deep .promo1 .dropdown-btn span .ng-star-inserted {
+  position: absolute !important;
+  /* right: -12px !important; */
+  bottom: 0px;
+  top: 50px !important;
+  /* width: 51px; */
+  border: 1px solid #337ab7;
+  background: #00187A !important;
+  font-size: 12px;
+  box-shadow: 1px 1px #959595;
+  color: #fff;
+  height: 22px;
+  border-radius: 15px;
+  text-align: center;
+}

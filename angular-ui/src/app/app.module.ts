@@ -187,6 +187,7 @@ import { MaterialclassificationEditSuccessComponent } from './component/add-cat/
 import { AddtaxTemplateSuccessfulPopupComponent } from './component/users/userPopups/add-tax-template/addtax-template-successful-popup/addtax-template-successful-popup.component';
 import { AddcurrencySuccessfullyPopupComponent } from './component/users/userPopups/addcurrency/addcurrency-successfully-popup/addcurrency-successfully-popup.component';
 import { AdduserSuccessfulPopupComponent } from './component/users/userPopups/add-user-popup/adduser-successful-popup/adduser-successful-popup.component';
+import { DealerSuccessPopupComponent } from './component/add-dealer-associations/dealer-success-popup/dealer-success-popup.component';
 
 @NgModule({
   declarations: [
@@ -467,6 +468,7 @@ import { AdduserSuccessfulPopupComponent } from './component/users/userPopups/ad
           AddtaxTemplateSuccessfulPopupComponent,
           AddcurrencySuccessfullyPopupComponent,
           AdduserSuccessfulPopupComponent,
+          DealerSuccessPopupComponent,
           
   ],
   imports: [

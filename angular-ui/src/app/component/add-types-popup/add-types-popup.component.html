@@ -3,7 +3,7 @@
     <div class="actv-user text-center">
         <h1 class="head-text" *ngIf="TypeName=='Edit Types'">Edit Type</h1>
         <h1 class="head-text" *ngIf="TypeName=='Add Types'">Add Type</h1>
-        <p style="color: red; text-align: center; font-size: 11px;">{{errorMsg}}</p>
+        <p class="errormsg">{{errorMsg}}</p>
 
     </div>
     <div class="addTypeDiv">
@@ -16,7 +16,7 @@
           position: relative;
           bottom: 8px;"
           *ngIf="typeName.invalid && (typeName.dirty || typeName.touched)" class="alert">
-          <span style="color:red;position: relative;" *ngIf="typeName.errors?.['required']">
+          <span class="errormsg" *ngIf="typeName.errors?.['required']">
               *Name is required.
           </span>
       </p>   
@@ -32,7 +32,7 @@
           position: relative;
           bottom: 8px;"
           *ngIf="typeC.invalid && (typeC.dirty || typeC.touched)" class="alert">
-          <span style="color:red;position: relative;" *ngIf="typeC.errors?.['required']">
+          <span class="errormsg" *ngIf="typeC.errors?.['required']">
               *Code is required.
           </span> 
       </p>   

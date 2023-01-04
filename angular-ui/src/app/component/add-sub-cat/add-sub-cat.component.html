@@ -16,7 +16,7 @@
           position: relative;
           bottom: 8px;"
                                         *ngIf="password.invalid && (password.dirty || password.touched)" class="alert">
-                                        <span style="color:red;position: relative;" *ngIf="password.errors?.['required']">
+                                        <span class="errormsg"  *ngIf="password.errors?.['required']">
                                             *Name is required.
                                         </span>
                                     </p>  
@@ -33,7 +33,7 @@
           
           bottom: 8px;"
                                         *ngIf="addCode.invalid && (addCode.dirty || addCode.touched)" class="alert">
-                                        <span style="color:red;position: relative;" *ngIf="addCode.errors?.['required']">
+                                        <span class="errormsg" *ngIf="addCode.errors?.['required']">
                                             *Code is required.
                                         </span>
                                     </p>  

@@ -187,6 +187,8 @@ export class MaterialAddEditpopupComponent {
   @ViewChild('stepper') private stepper: MatStepper | any;
   dataGetById: any = {};
   selectedHirerachyIndex: number = 0;
+  updatesave: any;
+  saveMaterial: any;
 
 
   constructor(private fb: FormBuilder, public dialog: MatDialog,
@@ -440,6 +442,8 @@ export class MaterialAddEditpopupComponent {
 
   // productSKUGeographyId
   addMaterialProduct() {
+    // this.saveMaterial = localStorage.getItem('saveMaterials');
+    localStorage.setItem("updateAddEdit",'add');
     this.selectedProductId = [...this.bussinessIdentifiers, ...this.ProductIdentifiersSettingId, ...this.ProductIdentifiersId]
     let selectedGeographies = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographySelected;
     let data2 = {
@@ -492,7 +496,7 @@ export class MaterialAddEditpopupComponent {
     this.dialog.open(MaterialaddedSuccessPopComponent, {panelClass: 'activeSuccessPop'})
   }
   addMaterialProductAfterEdit() {
-
+    localStorage.setItem("updateAddEdit",'edit');
     if (this.geoGraphyFullData[3].geoProperties.length == 0) {
       alert("Plz select atleast one city");
       return;

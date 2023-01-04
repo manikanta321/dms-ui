@@ -106,3 +106,8 @@
             top: 15px;
             position: relative;
         }
+        .errormsg{
+            color: red;
+             text-align: center; 
+             font-size: 13px;
+        }

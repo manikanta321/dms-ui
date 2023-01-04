@@ -115,3 +115,8 @@ input {
 .addSubcatDiv{
     margin-top: -14px;
 }
+.errormsg{
+    color:red;
+    position: relative;
+    font-size: 13px;
+}

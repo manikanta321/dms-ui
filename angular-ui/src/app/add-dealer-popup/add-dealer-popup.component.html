@@ -344,7 +344,7 @@
                                     </div>
                                     <div class="col-2">
                                         <button (click)="saveDealerData()" 
-                                            class="btn btn-primary btn-block submitbtn save-btn">Next</button>
+                                            class="btn btn-primary btn-block submitbtn save-btn" [disabled]="!addAddressDetailsForm.valid">Next</button>
                                     </div>
                                     <div class="col-5">
                                     </div>

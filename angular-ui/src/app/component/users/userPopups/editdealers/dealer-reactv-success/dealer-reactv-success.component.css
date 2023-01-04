@@ -1,30 +1,33 @@
- .deactiveSuccessPop {
-    background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
-    border: 0.5px solid #000000;
-    border-radius: 10px !important;
-    border-left: 10px solid green !important;
-    padding: 10px 20px;
-}
 
-.deactiveSuccessPop .mat-dialog-container { 
-    background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
-   border: 0.5px solid #000000;
-   border-radius: 10px !important;
-    
-   border-left: 10px solid green !important;
-   padding: 10px 20px;
-
-} 
-
-
-.left{
+.head-text{
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Gilroy';
+    }
+    /* .close-icon{
+        left: 100%;
+        position: relative;
+        font-size: 15px;
+        font-weight: 600;
+    } */
+    .tumbsup{
+        /* width: 32px;
+    height: 32px; */
+    padding: 0 10px;
+    }
+    .text-succ{
+    padding: 0 10px;
+    }
+    .closeImg{
+        padding: 15px 0 15px 20px;
+    }
+    .closeImg img{
+        width: 20px;
+    }
+    .left{
     width: 15px;
     background: green;
     }
     .font{
         font-family: 'Gilroy';
-    }
-    .rr
-    {
-        background: #000000;
     }

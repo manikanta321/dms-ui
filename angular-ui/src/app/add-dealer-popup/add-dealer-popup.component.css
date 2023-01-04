@@ -1742,3 +1742,7 @@ border-radius: 10px;
   padding: 9px;
 
 }
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: black !important;
+}

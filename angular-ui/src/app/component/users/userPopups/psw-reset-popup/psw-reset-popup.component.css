@@ -97,3 +97,14 @@ mat-icon {
     top: 8px;
     font-size: 21px;
   }
+
+  .btnDiv{
+    position:relative;
+    top: 15px;
+  }
+  .renter{
+    margin-top: 6px;
+  }
+  .repsrd{
+    margin-top: 6px;
+  }

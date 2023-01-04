@@ -116,6 +116,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
         let obj = {
 
           "productPromotionsId": item.productPromotionsId,
+          // shd kep is selected as flase
+          // 'isSelected':item.isSelected
           "promotionTypesId": item.promotionTypesId,
           "promotionName": item.promotionName,
           "imageurl": item.imageurl
@@ -151,7 +153,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
         // });
         this.orderPromotionFormatter(res.response);
         // this.griddata = this.orderNonPromotionFormatter(this.griddatapromotions);
-        // this.griddatapromotions.sort((a, b) => b.isProductSelected - a.isProductSelected);
+        // this.griddatapromotions.sort((a, b) => b.isProductSelected - a.isProductSelected   );
         this.spinner.hide();
         console.log(this.griddatapromotions, "griddata");
       });
@@ -431,7 +433,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
     this.griddatapromotions.forEach(item => {
       switch (item.promotionTypesId) {
         case 1:
-          let selectedNonPromotionData1: any = [];
+          let selectedPromotionDatabuyset: any = [];
+          let selectedPromotionDatagetset: any = [];
           let buysets:any =[];
           let getsets:any = [];
           
@@ -448,9 +451,10 @@ export class AddOrderPromotionlistComponent implements OnInit {
                       "Taxid": stock.Taxid,
                       "stockItemId": stock.stockItemId,
                       "Quantity": stock.Quantity,
+                      "stock":stock.stock
 
                     };
-                    selectedNonPromotionData1.push(obj)
+                    selectedPromotionDatabuyset.push(obj)
 
                   }
                 })
@@ -458,7 +462,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
               let buyGroupdata = {
                 "GroupId":stockItem.groupId,
-                "AddItems":selectedNonPromotionData1
+                "AddItems":selectedPromotionDatabuyset
 
               }
 
@@ -477,16 +481,17 @@ export class AddOrderPromotionlistComponent implements OnInit {
                       "Taxid": stock.Taxid,
                       "stockItemId": stock.stockItemId,
                       "Quantity": stock.Quantity,
+                      "stock":stock.stock
 
                     };
-                    selectedNonPromotionData1.push(obj)
+                    selectedPromotionDatagetset.push(obj)
 
                   }
                 })
               }
               let getGroupdata = {
                 "GroupId":stockItem.groupId,
-                "AddItems":selectedNonPromotionData1
+                "AddItems":selectedPromotionDatagetset
               }
               getsets.push(getGroupdata)             
             });
@@ -494,15 +499,16 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
           let data1 = {
             "PromotionId": item.productPromotionsId,
-            "BuySets": buysets,
-            "GetSets":getsets
+            "buySet": buysets,
+            "getSet":getsets
           }
           this.promotionstype1.push(data1);
 
           break;
         case 2:
 
-          let selectedNonPromotionData2: any = [];
+          let selectedPromotionDatabuyset2: any = [];
+          let selectedPromotionDatagetset2: any = [];
           let buysets2:any =[];
           let gpidandBysets:any =[];
           let gpidandgetsets:any = [];
@@ -523,16 +529,17 @@ export class AddOrderPromotionlistComponent implements OnInit {
                         "Taxid": stock.Taxid,
                         "stockItemId": stock.stockItemId,
                         "Quantity": stock.Quantity,
+                        "stock":stock.stock
       
                       };
-                      selectedNonPromotionData2.push(obj)
+                      selectedPromotionDatabuyset2.push(obj)
                     }
                   })
                 }
 
                 let buyGroupdata2 = {
                   "SetId":stockItem.set,
-                  "AddItems":selectedNonPromotionData2
+                  "AddItems":selectedPromotionDatabuyset2
   
                 }
   
@@ -559,15 +566,16 @@ export class AddOrderPromotionlistComponent implements OnInit {
                       "Taxid": stock.Taxid,
                       "stockItemId": stock.stockItemId,
                       "Quantity": stock.Quantity,
+                      "stock":stock.stock
     
                     };
-                    selectedNonPromotionData2.push(obj)
+                    selectedPromotionDatagetset2.push(obj)
                   }
                 })
               }
               let getGroupdata2 = {
                 "SetId":stockItem.set,
-                "AddItems":selectedNonPromotionData2
+                "AddItems":selectedPromotionDatagetset2
 
               }
 
@@ -596,7 +604,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
           break;
         case 3:
 
-          let selectedNonPromotionData: any = [];
+          let selectedPromotionData3: any = [];
 
           if (item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0) {
             item.promoDetails.stockItems.forEach(stockItem => {
@@ -606,21 +614,22 @@ export class AddOrderPromotionlistComponent implements OnInit {
                   "Taxid": stockItem.Taxid,
                   "stockItemId": stockItem.stockItemId,
                   "Quantity": stockItem.Quantity,
+                  "stock":stockItem.stock
 
                 };
-                selectedNonPromotionData.push(obj)
+                selectedPromotionData3.push(obj)
 
               }
             });
           }
           let data3 = {
             "PromotionId": item.productPromotionsId,
-            "AddItems": selectedNonPromotionData
+            "AddItems": selectedPromotionData3
           }
           this.promotionstype3.push(data3);
           break;
         case 4:
-          let selectedNonPromotionData4: any = [];
+          let selectedPromotionData4: any = [];
 
           if (item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0) {
             item.promoDetails.stockItems.forEach(stockItem => {
@@ -630,15 +639,16 @@ export class AddOrderPromotionlistComponent implements OnInit {
                   "Taxid": stockItem.Taxid,
                   "stockItemId": stockItem.stockItemId,
                   "Quantity": stockItem.Quantity,
+                  "stock":stockItem.stock
 
                 };
-                selectedNonPromotionData4.push(obj)
+                selectedPromotionData4.push(obj)
               }
             });
           }
           let data4 = {
             "PromotionId": item.productPromotionsId,
-            "AddItems": selectedNonPromotionData
+            "AddItems": selectedPromotionData4
           }
           this.promotionstype4.push(data4);
           break;

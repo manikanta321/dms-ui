@@ -126,6 +126,7 @@
                                     <th>Final Value</th>
                                     <th>Amount</th>
                                 </tr>
+                                <!-- promotion list view -->
                                 <ng-container *ngFor="let PromotionObj of AddOrderPromotionData; let i=index;">
                                     <tr *ngFor="let Item of PromotionObj.prodDetails; let j=index;">
                                         <td>
@@ -167,8 +168,8 @@
                                             remove_circle</mat-icon>
                                     </tr>
                                 </ng-container>
-
-                                <tr *ngFor="let Item of AddorderNonpromotiondata?.itemDetails; let i=index;">
+                                <!-- nonpromotions list view -->
+                                <tr *ngFor="let Item of AddorderNonpromotiondata.itemDetails; let i=index;">
                                     <td>
                                         <p class="itemLeft"><span class="promoItem" *ngIf="i == 0"> NP
                                             </span>{{Item.stockitemname}}</p>
@@ -499,7 +500,7 @@
 
                                         <td><input type="number" placeholder="5" class="quatity-inp"
                                                 [(ngModel)]="Item.quantity" (keyup)="quantityChange()"></td>
-                                        <td>{{(Item.Quantity ?? 0) * Item.mrp }}</td>
+                                        <td>{{(Item.quantity ?? 0) * Item.mrp }}</td>
                                     </tr>
                                 </tbody>
                                 <tfoot>

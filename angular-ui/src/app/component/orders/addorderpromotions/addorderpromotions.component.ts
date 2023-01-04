@@ -38,10 +38,6 @@ export class AddorderpromotionsComponent implements OnInit {
   // non_promotins
   orderNonPromotionsdata: any = [];
   taxdropdowndata: any = [];
-  // buyGroup : any = [{proItem: 'Lays IPL edition classic magic masala..', sku:'KA123458AB98764',price:'20' , taxtemplete:['hj','hj'], amount:'0'},
-  // {proItem: 'Lays IPL edition classic magic masala..', sku:'KA123458AB98764',price:'20' , taxtemplete:['hj','hj'], amount:'0'},
-  // {proItem: 'Lays IPL edition classic magic masala..', sku:'KA123458AB98764',price:'20' , taxtemplete:['hj','hj'], amount:'0'}]
-
   dropdownSettingscat: IDropdownSettings = {};
   dropdownSettingssubcat: IDropdownSettings = {};
   dropdownSettingstypeid: IDropdownSettings = {};
@@ -1030,6 +1026,7 @@ export class AddorderpromotionsComponent implements OnInit {
           "Taxid": item.taxid,
           "stockItemId": item.stockItemId,
           "Quantity": item.quantity,
+          "stock":item.stock
         };
 
         selectedNonPromotionData.push(obj)
@@ -1054,8 +1051,8 @@ export class AddorderpromotionsComponent implements OnInit {
             this.nonpromotionlist.forEach(item => {
               // Promocode: this.promotionName,
               let obj = {
-                "Promocode": item.promotionName,
-                "stockid": item.stockItemId,
+                // "Promocode": item.promotionName,
+                "stockid": item.stockitemid,
                 "stockitemname": item.stockitemname,
                 "uom": item.uomid,
                 "uomname": item.uomname,
@@ -1141,7 +1138,7 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   datapreloadbyID() {
-    this.customerId = this.editorderbyID.customerId;
+    this.customerId = this.editorderbyID.customerid;
 
     if (this.customerId != '') {
       this.orders.GetGeoGrapydropdownList(this.customerId).subscribe((res) => {
@@ -1152,7 +1149,7 @@ export class AddorderpromotionsComponent implements OnInit {
         });
         console.log(this.GeoGrapydropdownListdata, "GeoGrapydropdownListdata")
       });
-      this.geographyId = this.editorderbyID.geographyId;
+      this.geographyId = this.editorderbyID.geoid;
 
       // shipping api
       this.orders.GetShipingAddress(this.customerId).subscribe((res: any) => {
@@ -1164,7 +1161,7 @@ export class AddorderpromotionsComponent implements OnInit {
         console.log(shippingAddress, "shipping address");
         console.log(this.dealersShippingAddress, "shipping address1");
       });
-      this.addressId = this.editorderbyID.shipToAddressId
+      this.addressId = this.editorderbyID.shippingaddid
 
       // billing api
       this.orders.GetBillingAddress(this.customerId).subscribe((res: any) => {
@@ -1176,29 +1173,33 @@ export class AddorderpromotionsComponent implements OnInit {
         console.log(BillingAddress, "billing address");
         console.log(this.dealersbillingAddress, "billing address2");
       });
+      this.BillingaddressId = this.editorderbyID.billingaddid
 
-      this.BillingaddressId = this.editorderbyID.billToAddressId
-      this.DealerReferenceNo = this.editorderbyID.dealerReferenceNo
-      this.CompanyReferenceNo = this.editorderbyID.companyReferenceNo
-      this.DealerReferenceNo = this.editorderbyID.dealerReferenceNo
-      this.startdate = this.editorderbyID.requirementDate
-      this.DeliveryInstructions = this.editorderbyID.notes
+      this.DealerReferenceNo = this.editorderbyID.dealerrefno
+      this.CompanyReferenceNo = this.editorderbyID.comrefno
+      // this.DealerReferenceNo = this.editorderbyID.dealerReferenceNo
+      this.startdate = this.editorderbyID.requirementdate
+      this.DeliveryInstructions = this.editorderbyID.deliveryistruction
+
+      
+      
 
       this.nonpromotionlist = this.editorderbyID.itemcount.filter(x => x.promocode.toLowerCase().indexOf('np') != -1).map(x => x.itemDetails[0]);
       this.AddorderNonpromotiondata = { itemDetails: [], promocode: 'NP', promotionId: 0 };
       this.nonpromotionlist.forEach(item => {
         // Promocode: this.promotionName,
         let obj = {
-          "Promocode": item.promotionName,
-          "stockid": item.stockItemId,
+          // "Promocode": item.promotionName,
+          
+          "stockid": item.stockid,
           "stockitemname": item.stockitemname,
-          "uom": item.uomid,
+          "uom": item.uom,
           "uomname": item.uomname,
           "quantity": item.quantity,
           "stock": item.stock,
-          "mrp": item.mrp,
+          "mrp": item.price,
           "discount": item.discount,
-          "finalValue": item.finalValue,
+          "finalValue": item.finalvalue,
           "taxvalue": item.taxvalue,
           "amount": item.amount
         }

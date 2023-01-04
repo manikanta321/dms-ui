@@ -20,6 +20,11 @@ export class DeleteUomSuccessfullPopupComponent implements OnInit {
   ngOnInit(): void {
     this.UomName = localStorage.getItem('UomName');
     let UomId = localStorage.getItem('UomId');
+
+    setTimeout(() => {
+
+      this.closeDialog()
+     }, 5000);
   }
   closeDialog(){
     this.sharedService.filter('Register click');

@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
+ import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 import { FormGroup, FormArray, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
 import { TaxTemplateServiceService } from 'src/app/services/tax-template-service.service';
 import { SharedService } from 'src/app/services/shared-services.service';
+import { AddtaxTemplateSuccessfulPopupComponent } from './addtax-template-successful-popup/addtax-template-successful-popup.component';
+
+
+
 
 @Component({
   selector: 'app-add-tax-template',
@@ -23,7 +27,9 @@ export class AddTaxTemplateComponent implements OnInit {
    enteredname:any;
    letter:any='A';
   
+  
   constructor(private dialogRef: MatDialogRef<any>,
+    private dialog: MatDialog,
     private fb:FormBuilder,
     private sharedService:SharedService,
     private taxservise:TaxTemplateServiceService,
@@ -52,7 +58,9 @@ setUpForm(cars: any[] ) {
 
 
   closeDialog(){
-    this.dialogRef.close();
+   
+     this.dialogRef.close();
+
   }
   get carsFormArray() {
     return (this.carsForm.get('FormArray') as FormArray);
@@ -109,6 +117,8 @@ setUpForm(cars: any[] ) {
   }  
      
   onSubmit() { 
+    
+    
     this.enteredname=this.taxname;
     console.log(this.productForm.value);  
 
@@ -116,11 +126,17 @@ setUpForm(cars: any[] ) {
     this.taxservise.addtax(this.productForm.value).subscribe((res)=>{
 console.log(res)
 this.sharedService.filter('Register click')
+localStorage.setItem('AddOrEditTax','add');
 
-this.dialogRef.close();
+this.dialog.open(AddtaxTemplateSuccessfulPopupComponent , {panelClass: 'deactiveSuccessPop'});
 
-    })
+
+
+   this.dialogRef.close();
+
+});
+
   }  
 
-
+  
 }

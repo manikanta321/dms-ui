@@ -9,8 +9,11 @@ import { OtherMasterService } from 'src/app/services/other-master.service';
   styleUrls: ['./deactive-currency.component.css']
 })
 export class DeactiveCurrencyComponent implements OnInit {
-  LoginId:any;
-  UoMId:any;
+   LoginId:any;
+   UoMId:any;
+   uoMName:any;
+   UomName:any;
+
   constructor(private dialogRef: MatDialogRef<any>,
     private user:UserService,
     private otherMasterService:OtherMasterService,
@@ -19,6 +22,7 @@ export class DeactiveCurrencyComponent implements OnInit {
   ngOnInit(): void {
     this.LoginId=localStorage.getItem("logInId");
     this.UoMId = localStorage.getItem('UomId');
+    this.uoMName = localStorage.getItem('UomName');
   }
   closeDialog(){
     // this.sharedService.filter('Register click');

@@ -191,7 +191,7 @@ background: #000000 !important;
 .searchBox {
   float:right;
   position: absolute;
-  right: 13px;
+  right: -11px;
   top: 5px;
 }
 
@@ -272,7 +272,7 @@ left: 37%
   height: 37px; 
   top: 6px;
   margin-top: 5px;
-  margin-left: -34%;
+  margin-left: 9%;
 }
 .download-btn {
   border: none;

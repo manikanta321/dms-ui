@@ -32,7 +32,7 @@ import { StepperSelectionEvent } from '@angular/cdk/stepper';
 
 export class AddDealerPopupComponent implements OnInit {
   @Output() emitFormControl = new EventEmitter<FormControl>();
-
+  completed:boolean= false;
   addAddressDetailsForm!: FormGroup;
   submitted = false;
   gepGraphiesFormGroup!: FormGroup;
@@ -52,7 +52,6 @@ export class AddDealerPopupComponent implements OnInit {
   }
   errorMsg: any;
   addCountryButton: boolean = false;
-
   basicInfo: boolean = false;
   basi: boolean=true;
 
@@ -106,7 +105,7 @@ export class AddDealerPopupComponent implements OnInit {
   geoGraphyFullData: any;
   userId:any;
   DealerN:any =" ";
- 
+  taslistArray:any=[];
   
   // geoGraphyFullData1: any;
   geographyHierarchyId: any;
@@ -154,7 +153,7 @@ export class AddDealerPopupComponent implements OnInit {
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
 
   ngOnInit(): void {
-    // this.createForm();
+    this.taxListArray();
     this.CreatedById = localStorage.getItem("logInId");
     this.CreatedById = Number(this.CreatedById);
     this.statusForm();
@@ -238,12 +237,8 @@ console.log('selectedItemsselectedItems',this.selectedItems)
             FirstName: data?.firstName,
             lastName: data?.lastName,
             StatusId: data?.user_StatusId,
-
-
           });
           // this.addAddressDetailsForm = this._formBuilder.group({
-          
-
           // });
         }
 
@@ -259,6 +254,44 @@ console.log('selectedItemsselectedItems',this.selectedItems)
     }
     //  this.ConsigneeName2='';
   }
+  selectedTax($event){
+console.log($event)
+  }
+
+  taxListArray(){
+    this.classification.taxListInDealer().subscribe((res)=>{
+      console.log(res);
+      this.taslistArray=res.response
+      
+    })
+  }
+
+  addAddressForm2(defaultType) {
+    // this.addType = 1;
+
+    this.addAddress = true;
+    this.addresscount().push(this.initAddress1(defaultType));
+  }
+
+
+
+  initAddress1(defaultType): FormGroup {
+    defaultType = defaultType ?? '';
+    console.log(defaultType);
+    return this._formBuilder.group({
+      AddressTypeId: [defaultType, [Validators.required]],
+      ConsigneeName: ['', [Validators.required]],
+      Taxid: ['', [Validators.required]],
+      AddressLine1: ['', [Validators.required]],
+      AddressLine2: ['', [Validators.required]],
+      CountryName: ['', [Validators.required]],
+      StateName: ['', [Validators.required]],
+      CityName: ['', [Validators.required]],
+      ZipCode: ['', [Validators.required]],
+      Telephone: ['', [Validators.required]],
+    })
+  }
+
   getFormArray(): FormArray {
     return this.addAddressDetailsForm.get('addresscount') as FormArray;
   }
@@ -502,8 +535,81 @@ console.log('selectedItemsselectedItems',this.selectedItems)
     this.ConsigneeName1 = event.target.value;
   }
   Checked() {
-    this.ConsigneeName2 = this.ConsigneeName1;
-  }
+if(this.completed==false){
+  this.completed=true;
+// this.addAddressDetailsForm.value.addresscount[1]=this.addAddressDetailsForm.value.addresscount[0];
+// this.addAddressDetailsForm.value.addresscount[1].AddressTypeId.setValue('7');
+let i: number = 0;
+this.addAddressDetailsForm.value.addresscount[1] = [];
+
+
+
+// for(let i=0;i<10;i++){
+//   this.addAddressDetailsForm.value.addresscount[1]=this.addAddressDetailsForm.value.addresscount[0]
+
+// }
+this.addresscount().removeAt(1);
+
+let defaultType={ 
+  AddressTypeId: '6',
+  ConsigneeName:this.addAddressDetailsForm.value.addresscount[0]?.ConsigneeName,
+  Taxid:this.addAddressDetailsForm.value.addresscount[0]?.Taxid,
+  AddressLine1: this.addAddressDetailsForm.value.addresscount[0]?.AddressLine1,
+  AddressLine2: this.addAddressDetailsForm.value.addresscount[0]?.AddressLine2,
+  CountryName:this.addAddressDetailsForm.value.addresscount[0]?.CountryName,
+  StateName:this.addAddressDetailsForm.value.addresscount[0]?.StateName,
+  CityName: this.addAddressDetailsForm.value.addresscount[0]?.CityName,
+  ZipCode:this.addAddressDetailsForm.value.addresscount[0]?.ZipCode,
+  Telephone: this.addAddressDetailsForm.value.addresscount[0]?.Telephone,
+}
+console.log('defaultType',defaultType)
+this.addresscount().push(this.initAddress2(defaultType));
+
+// this.addAddressDetailsForm.value.addresscount[1].ConsigneeName=this.addAddressDetailsForm.value.addresscount[0]?.ConsigneeName
+// this.addAddressDetailsForm.value.addresscount[1].Taxid=this.addAddressDetailsForm.value.addresscount[0]?.Taxid
+// this.addAddressDetailsForm.value.addresscount[1].AddressLine1=this.addAddressDetailsForm.value.addresscount[0]?.AddressLine1
+// this.addAddressDetailsForm.value.addresscount[1].AddressLine2=this.addAddressDetailsForm.value.addresscount[0]?.AddressLine2
+// this.addAddressDetailsForm.value.addresscount[1].CountryName=this.addAddressDetailsForm.value.addresscount[0]?.CountryName
+// this.addAddressDetailsForm.value.addresscount[1].StateName=this.addAddressDetailsForm.value.addresscount[0]?.StateName
+// this.addAddressDetailsForm.value.addresscount[1].CityName=this.addAddressDetailsForm.value.addresscount[0]?.CityName
+// this.addAddressDetailsForm.value.addresscount[1].ZipCode=this.addAddressDetailsForm.value.addresscount[0]?.ZipCode
+// this.addAddressDetailsForm.value.addresscount[1].Telephone=this.addAddressDetailsForm.value.addresscount[0]?.Telephone
+
+
+
+// this.addAddressDetailsForm.value.addresscount[1].push({
+//   ConsigneeName:this.addAddressDetailsForm.value.addresscount[0]?.ConsigneeName,
+//   Taxid:this.addAddressDetailsForm.value.addresscount[0]?.Taxid,
+//   AddressLine1:this.addAddressDetailsForm.value.addresscount[0]?.AddressLine1,
+//  })
+
+ console.log('this.addAddressDetailsForm.value.addresscount[1]',this.addAddressDetailsForm.value.addresscount[1])
+
+} else{
+  this.completed=false;
+
+}}
+
+
+
+initAddress2(defaultType): FormGroup {
+  defaultType = defaultType ?? '';
+  console.log(defaultType);
+  return this._formBuilder.group({
+    AddressTypeId:defaultType.AddressTypeId,
+    ConsigneeName: defaultType.ConsigneeName,
+    Taxid:defaultType.Taxid,
+    AddressLine1: defaultType.AddressLine1,
+    AddressLine2: defaultType.AddressLine2,
+    CountryName:defaultType.CountryName,
+    StateName: defaultType.StateName,
+    CityName: defaultType.CityName,
+    ZipCode: defaultType.ZipCode,
+    Telephone: defaultType.Telephone,
+  })
+}
+
+
   statusForm() {
     this.user.getstatusDeatils().subscribe((res: any) => {
       this.statusList = res.response;

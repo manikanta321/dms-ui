@@ -9,6 +9,7 @@ import { ClassificationserviseService } from 'src/app/services/classificationser
 import { SharedService } from 'src/app/services/shared-services.service';
 import { SharedServiceAddSubService } from 'src/app/services/shared-service-add-sub.service';
 import { MaterialClassificationStatusPopupComponent } from '../material-classification-status-popup/material-classification-status-popup.component';
+import { MaterialclassificationEditSuccessComponent } from '../add-cat/materialclassification-edit-success/materialclassification-edit-success.component';
 @Component({
   selector: 'app-add-sub-cat',
   templateUrl: './add-sub-cat.component.html',
@@ -99,6 +100,12 @@ if(this.SubcatsetName=='Edit Sub-Category'){
   }
 
 edit(){
+  sessionStorage.setItem("subCategoryName",this.sucatname);
+      sessionStorage.setItem("subCategoryCode",this.sucatnameCode);
+      sessionStorage.setItem("CategoryName",'');
+      sessionStorage.setItem("CategoryCode",'');
+      sessionStorage.setItem("typeName",'');
+      sessionStorage.setItem("typeCode",'');
   let data={
     SubCategoryId:this.activeSubCatId,
     subCategoryName:this.sucatname,
@@ -112,6 +119,7 @@ this.calssification.updateSubCat(data).subscribe((res)=>{
   this.sharedService.filter('Register click')
 
   this.dialogRef.close();
+  this.dialog.open(MaterialclassificationEditSuccessComponent, {panelClass: 'activeSuccessPop'});
 })
 }
 

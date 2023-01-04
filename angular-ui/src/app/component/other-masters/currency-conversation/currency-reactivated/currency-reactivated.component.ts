@@ -10,8 +10,12 @@ export class CurrencyReactivatedComponent implements OnInit {
 
   constructor(private dialogRef: MatDialogRef<any>,) { }
 
+  uoMName:any;
   ngOnInit(): void {
 
+
+    this.uoMName = localStorage.getItem('UomName');
+   
     setTimeout(() => {
 
       this.closeDialog()

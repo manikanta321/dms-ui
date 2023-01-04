@@ -11,7 +11,7 @@
                 <div class="row top-bottom">
                     <div class="row text-center"></div>
                 </div>
-                   
+
                 <div (click)="expandDealerInfoDiv()" class="collapsible">
                     <div class="row">
                         <div class="col-md-11">
@@ -63,13 +63,15 @@
                         <div class="col-lg-3">
                             <div class="dealerReff">
                                 <label class="DealerInfo-label">Dealer Reference No <span class="astr">*</span></label>
-                                <input type="number" placeholder="Dealer Reference No" id="DealerReferenceNo" [(ngModel)]="DealerReferenceNo" class="form-control container input-box">
+                                <input type="number" placeholder="Dealer Reference No" id="DealerReferenceNo"
+                                    [(ngModel)]="DealerReferenceNo" class="form-control container input-box">
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="companyReff">
                                 <label class="DealerInfo-label">Company Reference No <span class="astr">*</span></label>
-                                <input type="number" placeholder="Company Reference No" id="CompanyReferenceNo" [(ngModel)]="CompanyReferenceNo" class="form-control container input-box">
+                                <input type="number" placeholder="Company Reference No" id="CompanyReferenceNo"
+                                    [(ngModel)]="CompanyReferenceNo" class="form-control container input-box">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -96,7 +98,8 @@
                             <div class="col-lg-5">
                                 <div class="addbtns d-flex">
                                     <div class="addEditPromotion">
-                                        <button (click)="addOrderPromotionList()" class="add-edit-promo">Add/Edit Promo Items</button>
+                                        <button (click)="addOrderPromotionList()" class="add-edit-promo">Add/Edit Promo
+                                            Items</button>
                                     </div>
                                     <div class="addEditNonPromotion">
                                         <button (click)="addOrderNonPromotionList()" class="add-edit-non-promo">Add/Edit
@@ -123,42 +126,77 @@
                                     <th>Final Value</th>
                                     <th>Amount</th>
                                 </tr>
+                                <ng-container *ngFor="let PromotionObj of AddOrderPromotionData; let i=index;">
+                                    <tr *ngFor="let Item of PromotionObj.prodDetails; let j=index;">
+                                        <td>
+                                            <p class="itemLeft"><span class="promoItem"> P <span
+                                                        *ngIf="j==0" style="color: #fff;">{{i + 1}}</span>
+                                                </span>{{Item.stockitemname}}</p>
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled [(ngModel)]="Item.uomname"
+                                                class="IteminputBoxes">
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled [(ngModel)]="Item.quantity"
+                                                class="IteminputBoxes">
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled [(ngModel)]="Item.stock" class="IteminputBoxes">
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled [(ngModel)]="Item.mrp" class="IteminputBoxes">
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled [(ngModel)]="Item.discount"
+                                                class="IteminputBoxes">
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled [(ngModel)]="Item.taxvalue"
+                                                class="IteminputBoxes">
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled [(ngModel)]="Item.finalValue"
+                                                class="IteminputBoxes">
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled [(ngModel)]="Item.amount"
+                                                class="IteminputBoxes">
+                                        </td>
+                                        <mat-icon class="removeCircle" (click)="removePromotionItem(Item, PromotionObj.promotionId)">
+                                            remove_circle</mat-icon>
+                                    </tr>
+                                </ng-container>
 
                                 <tr *ngFor="let Item of AddorderNonpromotiondata?.itemDetails; let i=index;">
                                     <td>
-                                        <p class="itemLeft"><span class="promoItem" *ngIf="i == 0"> NP </span>{{Item.stockitemname}}</p>
+                                        <p class="itemLeft"><span class="promoItem" *ngIf="i == 0"> NP
+                                            </span>{{Item.stockitemname}}</p>
                                     </td>
                                     <td>
-                                        <input type="text" disabled [(ngModel)]="Item.uomname"
-                                            class="IteminputBoxes">
+                                        <input type="text" disabled [(ngModel)]="Item.uomname" class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" disabled [(ngModel)]="Item.quantity"
-                                            class="IteminputBoxes">
+                                        <input type="text" disabled [(ngModel)]="Item.quantity" class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" disabled [(ngModel)]="Item.stock"
-                                            class="IteminputBoxes">
+                                        <input type="text" disabled [(ngModel)]="Item.stock" class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" disabled [(ngModel)]="Item.mrp"
-                                            class="IteminputBoxes">
+                                        <input type="text" disabled [(ngModel)]="Item.mrp" class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" disabled [(ngModel)]="Item.discount"
-                                            class="IteminputBoxes">
+                                        <input type="text" disabled [(ngModel)]="Item.discount" class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" disabled [(ngModel)]="Item.taxvalue"
-                                            class="IteminputBoxes">
+                                        <input type="text" disabled [(ngModel)]="Item.taxvalue" class="IteminputBoxes">
                                     </td>
                                     <td>
                                         <input type="text" disabled [(ngModel)]="Item.finalValue"
                                             class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" disabled [(ngModel)]="Item.amount"
-                                            class="IteminputBoxes">
+                                        <input type="text" disabled [(ngModel)]="Item.amount" class="IteminputBoxes">
                                     </td>
                                     <mat-icon class="removeCircle" (click)=removeNonPromotionItem(Item)>
                                         remove_circle</mat-icon>
@@ -223,7 +261,8 @@
                                     <label class="boldR">Requirement Date </label>
                                     <mat-form-field appearance="fill" class="datepc">
                                         <mat-label>Select a date</mat-label>
-                                        <input matInput [matDatepicker]="picker"(dateChange)="dateChange($event)" [(ngModel)]="startdate">
+                                        <input matInput [matDatepicker]="picker" (dateChange)="dateChange($event)"
+                                            [(ngModel)]="startdate">
                                         <mat-datepicker-toggle matSuffix [for]="picker"
                                             class="calicon"></mat-datepicker-toggle>
                                         <mat-datepicker #picker></mat-datepicker>
@@ -252,7 +291,7 @@
     </div>
     <div class="row footer">
         <div class="col-md-5">
-            <button type="button" class="saveas-draft" >Save as draft</button>
+            <button type="button" class="saveas-draft">Save as draft</button>
         </div>
         <div class="col-md-2">
             <button type="button" class="save-submit" (click)="ordersubmit()">Save & submit</button>
@@ -441,10 +480,10 @@
                                         <td>{{Item.productSKUName}}</td>
                                         <td>{{Item.mrp}}</td>
                                         <td><input type="number" placeholder="1000" class="quatity-inp"
-                                            [(ngModel)]="Item.stock" ></td>
+                                                [(ngModel)]="Item.stock"></td>
                                         <!-- <td>{{Item.stockqty}}</td> -->
-                                        <td>
-                                            <select class="tax-select" placeholder="select" [(ngModel)]="Item.Taxid">
+                                        <td style="width:110px;">
+                                            <select class="tax-select" placeholder="select" [(ngModel)]="Item.taxid">
                                                 <option value="" selected hidden>Select tax</option>
                                                 <option *ngFor="let option of taxdropdowndata"
                                                     [value]="option.taxTemplateId">
@@ -454,11 +493,12 @@
                                             <!-- <ng-select [items]="taxdropdowndata" placeholder="Select Tax"
                                     bindLabel="taxTemplateName" bindValue="taxTemplateId">
                                     </ng-select> -->
-                                            <img src="assets/img/doubleTickes-default.svg" alt="double-blue-tick">
+                                            <img src="assets/img/doubleTickes-default.svg" alt="double-blue-tick"
+                                                style="margin-left: 5px;">
                                         </td>
 
                                         <td><input type="number" placeholder="5" class="quatity-inp"
-                                                [(ngModel)]="Item.Quantity" (keyup)="quantityChange()"></td>
+                                                [(ngModel)]="Item.quantity" (keyup)="quantityChange()"></td>
                                         <td>{{(Item.Quantity ?? 0) * Item.mrp }}</td>
                                     </tr>
                                 </tbody>

@@ -22,9 +22,9 @@ export class AddorderpromotionsComponent implements OnInit {
 
   selectedTeam = '';
   selectedDay: string = '';
-  Taxid: any = [];
+  taxid: any = [];
   stockItemId: any = [];
-  Quantity: any = [];
+  quantity: any = [];
   dealerInfo = false;
   orderitem = false;
   otherInfo = false;
@@ -107,7 +107,6 @@ export class AddorderpromotionsComponent implements OnInit {
   stockitemname: any;
   uomid: any;
   uomname: any;
-  quantity: any;
   stock: any;
   discount: any;
   finalValue: any;
@@ -117,6 +116,7 @@ export class AddorderpromotionsComponent implements OnInit {
   DealerReferenceNo: any;
   DeliveryInstructions: any;
   AddorderNonpromotiondata: any = {};
+  AddOrderPromotionData:any = [];
   startdate: any;
   minDate = new Date();
   selectedStartDate: any;
@@ -288,13 +288,26 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   addOrderPromotionList() {
-    this.dialog.open(AddOrderPromotionlistComponent, { width: '1043px', height: '900px' });
-    localStorage.setItem('buygroupromo', '')
+    const dialogRef = this.dialog.open(AddOrderPromotionlistComponent, { width: '1043px', height: '900px' });
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) {
+        this.AddOrderPromotionData = res;
+      }
+    })
+    // localStorage.setItem('buygroupromo', '')
   }
 
   addOrderNonPromotionList() {
     this.orderNonPromotionsList();
     this.Non_promotions = true;
+  }
+  removePromotionItem(clickedItem,promotionId){
+    let ClickedPromotionObj = this.AddOrderPromotionData.find(x => x.promotionId == promotionId);
+    if(ClickedPromotionObj){
+      let index = ClickedPromotionObj.prodDetails.findIndex(x => x.stockItemId == clickedItem.stockItemId);
+      ClickedPromotionObj.prodDetails.splice(index, 1);
+    }
+
   }
   removeNonPromotionItem(clickedItem) {
     let index = this.nonpromotionlist.findIndex(x => x.stockItemId == clickedItem.stockItemId);
@@ -304,7 +317,7 @@ export class AddorderpromotionsComponent implements OnInit {
       x.promotionName = 'NP' + (i + 1);
       return x;
     });
-    this.AddorderNonpromotiondata.itemDetails = this.nonpromotionlist;
+    // this.AddorderNonpromotiondata.itemDetails = this.nonpromotionlist;
     // this.itemremoved.splice(0);
   }
   // non-prmotions
@@ -944,7 +957,6 @@ export class AddorderpromotionsComponent implements OnInit {
       console.log(orderNonPromotionsData, "orderNonPromotionsData tockeck");
 
       this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
-      this.orderNonPromotionsdata.sort((a, b) => b.isPromotionSelected - a.isPromotionSelected);
       this.spinner.hide();
     });
   }
@@ -953,20 +965,21 @@ export class AddorderpromotionsComponent implements OnInit {
     let formattedList: any = [];
     items.forEach(item => {
       let obj: any = {}
-      let selectedNonPromotionItem = this.nonpromotionlist.find(x => x.stockitemid == item.stockItemId);
+      let selectedNonPromotionItem = this.nonpromotionlist.find(x => x.stockItemId == item.stockItemId);
       obj.classification = item.classification;
       obj.materialCustomName = item.materialCustomName;
       obj.mrp = item.mrp;
-      obj.stock = item.stock
+      obj.stock = selectedNonPromotionItem == undefined ? item.stock : selectedNonPromotionItem.quantity;
       obj.productSKUName = item.productSKUName;
       obj.stockItemId = item.stockItemId;
       obj.stockItemName = item.stockItemName;
       obj.isPromotionSelected = selectedNonPromotionItem == undefined ? false : true;
-      obj.Quantity = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.quantity;
-      obj.Taxid = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.taxid;
+      obj.quantity = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.quantity;
+      obj.taxid = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.taxid;
       formattedList.push(obj);
     });
-    // (Item.Quantity ?? 0) * Item.mrp
+
+    formattedList.sort((a, b) => b.isPromotionSelected - a.isPromotionSelected);
     return formattedList;
 
   }
@@ -976,8 +989,8 @@ export class AddorderpromotionsComponent implements OnInit {
     let price = 0;
     this.orderNonPromotionsdata.forEach(item => {
       if (item.isPromotionSelected) {
-        quantityadd += item.Quantity;
-        price += ((item.Quantity ?? 0) * item.mrp);
+        quantityadd += item.quantity;
+        price += ((item.quantity ?? 0) * item.mrp);
       }
     });
 
@@ -994,10 +1007,19 @@ export class AddorderpromotionsComponent implements OnInit {
     this.price = 0;
     this.orderNonPromotionsdata.forEach(item => {
       if (item.isPromotionSelected) {
-        this.quantityadd += item.Quantity;
-        this.price += ((item.Quantity ?? 0) * item.mrp);
+        this.quantityadd += item.quantity;
+        this.price += ((item.quantity ?? 0) * item.mrp);
       }
     });
+
+    let index = this.nonpromotionlist.findIndex(x => x.stockItemId == changedPromotionObj.stockItemId);
+
+    if (index == -1) {
+      this.nonpromotionlist.push(changedPromotionObj);
+    } else {
+      this.nonpromotionlist.splice(index, 1);
+    }
+
   }
 
   addnonPromoItems() {
@@ -1005,9 +1027,9 @@ export class AddorderpromotionsComponent implements OnInit {
     this.orderNonPromotionsdata.forEach(item => {
       if (item.isPromotionSelected) {
         let obj = {
-          "Taxid": item.Taxid,
+          "Taxid": item.taxid,
           "stockItemId": item.stockItemId,
-          "Quantity": item.Quantity,
+          "Quantity": item.quantity,
         };
 
         selectedNonPromotionData.push(obj)
@@ -1033,7 +1055,7 @@ export class AddorderpromotionsComponent implements OnInit {
               // Promocode: this.promotionName,
               let obj = {
                 "Promocode": item.promotionName,
-                "stockid": item.stockitemid,
+                "stockid": item.stockItemId,
                 "stockitemname": item.stockitemname,
                 "uom": item.uomid,
                 "uomname": item.uomname,
@@ -1168,7 +1190,7 @@ export class AddorderpromotionsComponent implements OnInit {
         // Promocode: this.promotionName,
         let obj = {
           "Promocode": item.promotionName,
-          "stockid": item.stockitemid,
+          "stockid": item.stockItemId,
           "stockitemname": item.stockitemname,
           "uom": item.uomid,
           "uomname": item.uomname,

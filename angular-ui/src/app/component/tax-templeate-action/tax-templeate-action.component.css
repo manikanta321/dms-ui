@@ -6,7 +6,7 @@
     position: absolute;
     z-index: 1000;
     min-width: 12rem;
-    padding: 0.5rem 0;
+     padding: 0.5rem 0;  
     margin: 0;
     font-size: 1rem;
     text-align: left;
@@ -15,7 +15,8 @@
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 15px;
-    
+    right:-183px;
+    top:8px;
   }
   
   .menu-item:hover {
@@ -46,10 +47,11 @@
     /* background: red; */
     width: 10px;
     height: 10px;
-    right: -10px;
     border-top: 5px solid transparent;
     border-left: 10px solid #555;
     border-bottom: 5px solid transparent;
+    right: -10px;
+    top: 63px;
 }
   img{
     float: right;

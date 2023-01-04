@@ -12,6 +12,7 @@ import { ClassificationserviseService } from 'src/app/services/classificationser
 import { MatStepper } from '@angular/material/stepper';
 import { SharedServicesMaterialService } from 'src/app/services/shared-services-material.service';
 import { MatChip, MatChipList } from '@angular/material/chips';
+import { MaterialaddedSuccessPopComponent } from './materialadded-success-pop/materialadded-success-pop.component';
 /**
  * @title Stepper animations
  */
@@ -486,8 +487,9 @@ export class MaterialAddEditpopupComponent {
 
     this.addMaterials.defaultGeoIdProduct(data2).subscribe((res) => {
       console.log(res, "defaultGeoID")
-    })
+    });
     this.dialog.closeAll()
+    this.dialog.open(MaterialaddedSuccessPopComponent, {panelClass: 'activeSuccessPop'})
   }
   addMaterialProductAfterEdit() {
 
@@ -529,7 +531,8 @@ export class MaterialAddEditpopupComponent {
     this.addMaterials.addMaterialIfProduct(data).subscribe((res) => {
       console.log(res, "addmaterialProduct")
     })
-
+    this.dialog.closeAll()
+    this.dialog.open(MaterialaddedSuccessPopComponent, {panelClass: 'activeSuccessPop'})
 
 
   }

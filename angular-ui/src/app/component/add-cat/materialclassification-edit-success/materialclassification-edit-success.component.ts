@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-material-classification-status-popup',
-  templateUrl: './material-classification-status-popup.component.html',
-  styleUrls: ['./material-classification-status-popup.component.css']
+  selector: 'app-materialclassification-edit-success',
+  templateUrl: './materialclassification-edit-success.component.html',
+  styleUrls: ['./materialclassification-edit-success.component.css']
 })
-export class MaterialClassificationStatusPopupComponent implements OnInit {
+export class MaterialclassificationEditSuccessComponent implements OnInit {
   activeCatId:any;
   activeCatName:any;
   CategoryName:any;
@@ -34,4 +34,5 @@ export class MaterialClassificationStatusPopupComponent implements OnInit {
   closeDialog(){
     this.dialogRef.close();
   }
+
 }

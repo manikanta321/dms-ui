@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 import { UserService } from 'src/app/services/user.service';
+import { AddcurrencySuccessfullyPopupComponent } from './addcurrency-successfully-popup/addcurrency-successfully-popup.component';
 @Component({
   selector: 'app-addcurrency',
   templateUrl: './addcurrency.component.html',
@@ -30,6 +31,7 @@ export class AddcurrencyComponent implements OnInit {
     editButton:boolean=false;
     uomShortName:any;
   constructor(private dialogRef: MatDialogRef<any>,
+    private dialog: MatDialog,
     private user:UserService,) {
       this.currencyForm = new FormGroup({
         currencyName: new FormControl(	'',	[Validators.required]),
@@ -124,6 +126,8 @@ this.uomShortName = shortName;
         console.log("editUomData",this.editUomData);
       });
   }
+  this.dialog.open(AddcurrencySuccessfullyPopupComponent , {panelClass: 'deactiveSuccessPop'});
+
   this.closeDialog();
   }
   currencyConverteredValue(data:any){

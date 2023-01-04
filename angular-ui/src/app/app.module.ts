@@ -182,6 +182,10 @@ import { OrderActionShipmentComponent } from './component/orders/order-action-sh
 import { TargetGroupsActionComponent } from './component/target-groups/target-groups-action/target-groups-action.component';
 import { ClosePopupComponent } from './component/pramotion-action/close-popup/close-popup.component';
 import { CloseSuccessComponent } from './component/pramotion-action/close-success/close-success.component';
+import { MaterialaddedSuccessPopComponent } from './component/materials-list/material-add-editpopup/materialadded-success-pop/materialadded-success-pop.component';
+import { MaterialclassificationEditSuccessComponent } from './component/add-cat/materialclassification-edit-success/materialclassification-edit-success.component';
+import { AddtaxTemplateSuccessfulPopupComponent } from './component/users/userPopups/add-tax-template/addtax-template-successful-popup/addtax-template-successful-popup.component';
+import { AddcurrencySuccessfullyPopupComponent } from './component/users/userPopups/addcurrency/addcurrency-successfully-popup/addcurrency-successfully-popup.component';
 
 @NgModule({
   declarations: [
@@ -457,6 +461,10 @@ import { CloseSuccessComponent } from './component/pramotion-action/close-succes
           TargetGroupsActionComponent,
           ClosePopupComponent,
           CloseSuccessComponent,
+          MaterialaddedSuccessPopComponent,
+          MaterialclassificationEditSuccessComponent,
+          AddtaxTemplateSuccessfulPopupComponent,
+          AddcurrencySuccessfullyPopupComponent,
           
   ],
   imports: [

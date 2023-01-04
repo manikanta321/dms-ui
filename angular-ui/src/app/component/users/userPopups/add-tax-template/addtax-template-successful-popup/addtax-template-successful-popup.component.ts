@@ -9,7 +9,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class AddtaxTemplateSuccessfulPopupComponent implements OnInit {
   editOrAdd:boolean=true; 
-  taxTemplateName:any;
+  
  
    
 
@@ -18,7 +18,7 @@ export class AddtaxTemplateSuccessfulPopupComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.taxTemplateName = localStorage.getItem("taxTemplateName");
+  
     
 let isitem =localStorage.getItem('AddOrEditTax')
 
@@ -29,11 +29,11 @@ if(isitem=='edit'){
 
 }
 
-    //  setTimeout(() => {
+      setTimeout(() => {
 
-    //     this.closeDialog()
+        this.closeDialog()
 
-    //    }, 5000);
+        }, 5000);
   
   }
   

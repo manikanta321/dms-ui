@@ -18,7 +18,7 @@ export class AddcurrencySuccessfullyPopupComponent implements OnInit {
 
     
 
-    let isitem =localStorage.getItem('Addoreditcurrency')
+    let isitem =localStorage.getItem('AddoreditcurrencyC')
 
     if(isitem=='edit'){
       this.Addoreditcurrency=false;

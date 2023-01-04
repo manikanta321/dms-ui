@@ -243,4 +243,10 @@ getDealerDetailsById(id){
 
 }
 
+
+taxListInDealer(){
+  return this.http.get<any>(this.classificationurl + 'DealerApi/GetAddressTaxList');
+
+}
+
 }

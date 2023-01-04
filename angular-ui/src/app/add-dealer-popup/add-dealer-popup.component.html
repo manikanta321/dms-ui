@@ -254,53 +254,60 @@
                                             <div class="col-2">
                                                 <label *ngIf="i == 0">Consignee Name<span>*</span></label>
                                                 <br>
-                                                <input type="text" placeholder="Enter" formControlName="ConsigneeName"
+                                                <input type="text" placeholder="Enter" formControlName="ConsigneeName" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].ConsigneeName"
                                                     class="addDelercols addname">
                                             </div>
 
                                             <div class="col-1">
                                                 <label *ngIf="i == 0">Tax<span>*</span></label>
                                                 <br>
-                                                <input type="text" placeholder="Select" formControlName="Taxid"
-                                                    class="addDelercols addtax">
+                                                <select #teams  class="addDelercols addtax" aria-label=".form-select-lg example" formControlName="Taxid"    [(ngModel)]="addAddressDetailsForm.value.addresscount[i].Taxid"
+                                                
+                (change)="selectedTax(teams.value);">
+                <option selected hidden>Select</option>
+                <option style="height: 900px;" *ngFor="let product of taslistArray" 
+                  value="{{product.taxTemplateId}}">
+                  <p>{{product.taxTemplateName}}</p>
+                </option>
+                                                </select>
                                             </div>
 
                                             <div class="col-2">
                                                 <label *ngIf="i == 0">Address Line<span>*</span></label>
                                                 <br>
                                                 <input type="text" placeholder="Enter" formControlName="AddressLine1"
-                                                    class="addDelercols addadress">
+                                                    class="addDelercols addadress" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].AddressLine1">
                                                 <input type="text" placeholder="Enter" formControlName="AddressLine2"
-                                                    class="addDelercols addadressLine1">
+                                                    class="addDelercols addadressLine1" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].AddressLine2">
                                             </div>
 
                                             <div class="col-1">
                                                 <label *ngIf="i == 0">Country<span>*</span></label>
                                                 <br>
-                                                <input type="text" placeholder="Enter" formControlName="CountryName"
+                                                <input type="text" placeholder="Enter" formControlName="CountryName" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].CountryName"
                                                     class="addDelercols addcountry">
                                             </div>
 
                                             <div class="col-1">
                                                 <label *ngIf="i == 0">State<span>*</span></label>
                                                 <br>
-                                                <input type="text" placeholder="Enter" formControlName="StateName"
+                                                <input type="text" placeholder="Enter" formControlName="StateName" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].StateName"
                                                     class="addDelercols aastate">
                                             </div>
 
                                             <div class="col-2">
                                                 <label *ngIf="i == 0">City & Zip<span>*</span></label>
                                                 <br>
-                                                <input type="text" placeholder="Enter City" formControlName="CityName"
+                                                <input type="text" placeholder="Enter City" formControlName="CityName" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].CityName"
                                                     class="addDelercols addcity">
-                                                <input type="text" placeholder="Enter Zip" formControlName="ZipCode"
+                                                <input type="text" placeholder="Enter Zip" formControlName="ZipCode" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].ZipCode"
                                                     class="addDelercols addzip">
                                             </div>
 
                                             <div class="col-1">
                                                 <label *ngIf="i == 0">Phone<span>*</span></label>
                                                 <br>
-                                                <input type="text" placeholder="Enter" formControlName="Telephone"
+                                                <input type="text" placeholder="Enter" formControlName="Telephone" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].Telephone"
                                                     class="addDelercols addphone">
                                             </div>
 
@@ -321,10 +328,12 @@
                                     </div>
 
 
-                                    <p id="shiptobilling" class="form-row">
-                                        <input type="checkbox" (click)=Checked()> Shipping information is same as
-                                        billing
-                                        information
+                                    <p  class="form-row">
+
+                                        <mat-checkbox      [checked]="completed" (click)=Checked() >
+                                            Shipping information is same as
+                                            billing
+                                            information </mat-checkbox>
                                     </p>
 
                                 </div>
@@ -334,7 +343,7 @@
                                     <div class="col-5">
                                     </div>
                                     <div class="col-2">
-                                        <button (click)="saveDealerData()" [disabled]="!addAddressDetailsForm.valid"
+                                        <button (click)="saveDealerData()" 
                                             class="btn btn-primary btn-block submitbtn save-btn">Next</button>
                                     </div>
                                     <div class="col-5">

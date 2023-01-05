@@ -55,6 +55,16 @@ public getDealeList(data){
   return this.http.post<any>(this.userurl + 'SaleApi/GetSalesList', data);
 
 }
+// http://13.126.235.145:801/api/SaleApi/GetSalesUploadList
+public getSalesUploadList(data){
+  return this.http.post<any>(this.userurl + 'SaleApi/GetSalesUploadList', data);
+
+}
+// http://13.126.235.145:801/api/SaleApi/GetSalesUploadDetail
+public getSalesBulkUploadList(data){
+  return this.http.post<any>(this.userurl + 'SaleApi/GetSalesUploadDetail', data);
+
+}
 public getdealerGeoDropDown(data){
   return this.http.get<any>(`${this.userurl}OrdersApi/GetordergeoDropdown?CustomerId=${data}`);
 

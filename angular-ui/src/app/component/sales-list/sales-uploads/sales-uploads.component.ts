@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridReadyEvent } from 'ag-grid-community';
+import { SalesServicesService } from 'src/app/services/sales-services.service';
 import { SalesBulkUploadComponent } from '../../sales-bulk-upload/sales-bulk-upload.component';
 import { SalesInvoiceDownloadComponent } from '../../sales-invoice-download/sales-invoice-download.component';
 import { UploadSalesActionComponent } from '../../upload-sales-action/upload-sales-action.component';
@@ -14,44 +15,92 @@ export class SalesUploadsComponent implements OnInit {
   instancePopup:any = null;
   stayScrolledToEnd = true;
   paginationPageSize = 10;
-  rowData5:any= [{uploadSalesBatchId:1234,uploadedName:"Shivam",uploadedOn:"13:12:2022",totalItems:24}];
   paginationScrollCount: any;
+  selectedDateRange:any;
+  StartDate:any = '';
+  salesUploadList:any = [];
   public popupParent: HTMLElement = document.body;
   private gridApi!: GridApi;
-  constructor(public dialog: MatDialog,) { }
+  constructor(public dialog: MatDialog,
+    private salesService:SalesServicesService) { }
 
   ngOnInit(): void {
+    this.SalesUpload();
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
     params.api.sizeColumnsToFit();
     
   }
-  selectedDateRange = {
-    startDate: '11/11/2022',
-    endDate: '11/15/2022',
-  }
+  // selectedDateRange = {
+  //   startDate: '11/11/2022',
+  //   endDate: '11/15/2022',
+  // }
 
   customDatePickerEvent(eventChange){
     this.selectedDateRange = eventChange.selectedDate;
+    this.StartDate = this.selectedDateRange.startDate
     console.log(this.selectedDateRange);
+    const data = {
+      InvoiceDate:this.StartDate
+
+    }
+    this.salesService.getSalesUploadList(data).subscribe((res)=>{
+      console.log(res.response)
+      this.salesUploadList=res.response;
+
+    })
+  }
+  SalesUpload() {
+    this.StartDate = '';
+    const data = {
+      InvoiceDate:this.StartDate
+
+    }
+    this.salesService.getSalesUploadList(data).subscribe((res)=>{
+      console.log(res.response)
+      this.salesUploadList=res.response;
+      console.log("SalesUploadList",this.salesUploadList);
+
+    })
   }
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     params.api.paginationGoToPage(4);
   }
-  onCellValueChanged(event: CellValueChangedEvent) {
-    alert(event.value)
-    console.log(
-      'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
-    );
-  }
+  // onCellValueChanged(event: CellValueChangedEvent) {
+  //   alert(event.value)
+  //   console.log(
+  //     'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
+  //   );
+  // }
   openDialog(){
 
   }
-  onCellClicked( e): void {
-    let cellCLickedpromotion = '1'
+  // onCellClicked( e): void {
+  //   let cellCLickedpromotion = '1'
+  //   localStorage.setItem('cellCLickedpromotion', cellCLickedpromotion)
+  //   if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
+  //     const cellRendererInstances = e.api.getCellRendererInstances({
+  //       rowNodes: [e.node],
+  //       columns: [e.column],
+  //     });
+  //     if (cellRendererInstances.length > 0) {
+  //       const instance = cellRendererInstances[0];
+  //       this.instancePopup = instance;
+  //       instance.togglePopup();
+  //     }
+  //   }
+  // }
+  onCellClicked(e): void {
+    let cellCLickedpromotion = '0'
     localStorage.setItem('cellCLickedpromotion', cellCLickedpromotion)
-    if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
+
+    console.log('cellClicked', e);
+    let batchId = e.data.batchId;
+console.log("batchId",batchId)
+sessionStorage.setItem("BatchId",batchId );
+
+    if (e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action') {
       const cellRendererInstances = e.api.getCellRendererInstances({
         rowNodes: [e.node],
         columns: [e.column],
@@ -62,6 +111,13 @@ export class SalesUploadsComponent implements OnInit {
         instance.togglePopup();
       }
     }
+  }
+
+  onCellValueChanged(event: CellValueChangedEvent) {
+    // alert(event.value)
+    console.log(
+      'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
+    );
   }
   handleScroll(event) {
     if(this.instancePopup && this.instancePopup.isOpen){
@@ -76,14 +132,14 @@ export class SalesUploadsComponent implements OnInit {
       const scrollDiff = gridBody.scrollHeight - scrollPos;
       //const api =  this.rowData5;
       this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
-      // this.paginationScrollCount = this.rowData5.length;
+      this.paginationScrollCount = this.salesUploadList.length;
     }
   }
   columnDefs: ColDef[] = [
-    {   headerName: "BatchId",field: 'uploadSalesBatchId' ,      tooltipField:"uploadSalesBatchId",type: ['nonEditableColumn']
+    {   headerName: "BatchId",field: 'batchId' ,      tooltipField:"batchId",type: ['nonEditableColumn']
   },
   
-    {  headerName: "Uploaded By",field: 'uploadedName',      tooltipField:"uploadedName   ",type: ['nonEditableColumn']
+    {  headerName: "Uploaded By",field: 'createBy',      tooltipField:"createBy   ",type: ['nonEditableColumn']
   },     
   
     {  headerName: "Upload On",
@@ -149,11 +205,41 @@ export class SalesUploadsComponent implements OnInit {
     },
   };
   addSales() {
+     sessionStorage.setItem("batchID","0");
+      sessionStorage.setItem("viewData",'');
     this.dialog.open(SalesInvoiceDownloadComponent, {width: '1289px'});
   }
   salesUpload(){
     sessionStorage.setItem("sales","salesUpload");
       this.dialog.open(SalesBulkUploadComponent);
       // this.isOpen = false;
+  }
+  refresh() {
+    this.StartDate = '';
+    const data = {
+      InvoiceDate:this.StartDate
+
+    }
+    this.salesService.getSalesUploadList(data).subscribe((res)=>{
+      console.log(res.response)
+      this.salesUploadList=res.response;
+      console.log("SalesUploadList",this.salesUploadList);
+
+    })
+  }
+  onSearchChange($event: any, anything?: any) {
+    // const { target } = $event;
+    // this.searchText = target.value;
+    // const data = {
+    //   InvoiceDate:this.StartDate
+
+    // }
+    // this.salesService.getSalesUploadList(data).subscribe((res)=>{
+    //   console.log(res.response)
+    //   this.salesUploadList=res.response;
+    //   console.log("SalesUploadList",this.salesUploadList);
+
+    // })
+
   }
 }

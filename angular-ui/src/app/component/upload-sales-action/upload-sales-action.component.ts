@@ -7,6 +7,7 @@ import { ActivatepopUpComponent } from '../users/userPopups/activatepop-up/activ
 import { DeactivateUserpopupComponent } from '../users/userPopups/deactivate-userpopup/deactivate-userpopup.component';
 import { MaterialAddEditpopupComponent } from '../materials-list/material-add-editpopup/material-add-editpopup.component';
 import tippy, { hideAll } from 'tippy.js'; 
+import { SalesInvoiceDownloadComponent } from '../sales-invoice-download/sales-invoice-download.component';
 
 @Component({
   selector: 'app-upload-sales-action',
@@ -18,6 +19,7 @@ export class UploadSalesActionComponent implements OnInit {
   public isOpen = false;
   private tippyInstance;
   unActiveList:any;
+  batchId:any;
   constructor(private changeDetector: ChangeDetectorRef,private dialog: MatDialog) {}
 
   ngAfterViewInit(): void {
@@ -30,6 +32,19 @@ export class UploadSalesActionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // this.batchId = sessionStorage.getItem("BatchId");
+  }
+  viewShipment() {
+    this.batchId = sessionStorage.getItem("BatchId");
+sessionStorage.setItem("batchID",this.batchId);
+sessionStorage.setItem("viewData","View");
+this.dialog.open(SalesInvoiceDownloadComponent, {width: '1289px'});
+  }
+  downloadShipment() {
+    this.batchId = sessionStorage.getItem("BatchId");
+    sessionStorage.setItem("batchID",this.batchId);
+    sessionStorage.setItem("viewData"," ");
+    this.dialog.open(SalesInvoiceDownloadComponent, {width: '1289px'});
   }
   @ViewChild('content') container;
 

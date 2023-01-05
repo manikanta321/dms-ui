@@ -3,7 +3,7 @@
   </div>
   
   <div #content *ngIf="isOpen" class="menu-container">
-    <div class="menu-item tick"> View <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
-    <div class="menu-item tick">Download<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark"></div>
+    <div class="menu-item tick" (click)="viewShipment()"> View <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+    <div class="menu-item tick"(click)="downloadShipment()" >Download<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark"></div>
   </div>
   

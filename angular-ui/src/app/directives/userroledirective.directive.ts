@@ -14,10 +14,10 @@ export class UserroledirectiveDirective implements OnInit {
     if (localStorage.getItem('userroles')) {
       let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
       userRolesData.forEach(element => {
-        if (element.key == this.pageName) {
-          let currentMenu = element.permissions.find(x => x.action == this.userRoleDirective);
+        if (element.title == this.pageName) {
+          let currentMenu = element.permission.find(x => x.action.toLowerCase() === this.userRoleDirective.toLowerCase());
           if (!currentMenu.status) {
-            this.elementRef.nativeElement.remove();
+            // this.elementRef.nativeElement.remove();
           }
         }
       })

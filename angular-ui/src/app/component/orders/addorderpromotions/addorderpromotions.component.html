@@ -129,7 +129,7 @@
                                 </tr>
                                 <!-- promotion list view -->
                                 <ng-container *ngFor="let PromotionObj of AddOrderPromotionData; let i=index;">
-                                    <tr *ngFor="let Item of PromotionObj.prodDetails; let j=index;">
+                                    <tr *ngFor="let Item of PromotionObj.itemDetails; let j=index;">
                                         <td>
                                             <p class="itemLeft"><span class="promoItem" style="color: #fff;"
                                                     *ngIf="j==0"> P {{i + 1}}</span>
@@ -208,35 +208,27 @@
                             </table>
                         </div>
                         <div class="row mt-2">
-                            <div class="totall">
+                            <div class="totall" *ngIf="shippingPackingchargeDetails">
                                 <div class="innerTotal d-flex">
                                     <div class="subitem">
                                         <p class="alltotals">Sub Total</p>
-                                        <span>105,000.00</span>
+                                        <span>{{shippingPackingchargeDetails.subTotal}}</span>
                                     </div>
                                     <div class="subitem">
-                                        <p class="alltotals">Tax Element 1</p>
-                                        <span>10,500.00</span>
-                                    </div>
-                                    <div class="subitem">
-                                        <p class="alltotals">Tax Element 2</p>
-                                        <span>10.50</span>
-                                    </div>
-                                    <div class="subitem">
-                                        <p class="alltotals">Tax Element 3</p>
-                                        <span>10.50</span>
+                                        <p class="alltotals">Tax Element</p>
+                                        <span>{{shippingPackingchargeDetails.taxElement}}</span>
                                     </div>
                                     <div class="subitem">
                                         <p class="alltotals">Packing Charge</p>
-                                        <span>2000</span>
+                                        <span>{{shippingPackingchargeDetails.packingCharges}}</span>
                                     </div>
                                     <div class="subitem">
                                         <p class="alltotals">Shipping Charge</p>
-                                        <span>3000</span>
+                                        <span>{{shippingPackingchargeDetails.shippingCharges}}</span>
                                     </div>
                                     <div class="subitem">
                                         <p class="alltotals">Total</p>
-                                        <span>105,000.00</span>
+                                        <span>{{shippingPackingchargeDetails.total}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -294,10 +286,10 @@
     </div>
     <div class="row footer">
         <div class="col-md-5">
-            <button type="button" class="saveas-draft">Save as draft</button>
+            <button type="button" class="saveas-draft"  (click)="ordersubmit('draft')">Save as draft</button>
         </div>
         <div class="col-md-2">
-            <button type="button" class="save-submit" (click)="ordersubmit()">Save & submit</button>
+            <button type="button" class="save-submit" (click)="ordersubmit('save')">Save & submit</button>
         </div>
         <div class="col-md-5">
             <button type="button" [mat-dialog-close]="false" class="cancel">Cancel</button>

@@ -55,7 +55,7 @@
           <div class="col-md-4" style="margin-left: 68%;margin-bottom:10px">
             <div class="row">
               <div class="col-md-8" >
-                <div class="searchBox d-flex" style=" cursor: pointer" userRoleDirective="usersearch" [pageName]="currentPageName">
+                <div class="searchBox d-flex" style=" cursor: pointer" userRoleDirective="SEARCH_USER" [pageName]="currentPageName">
                   <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
                     placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
                   <button class="searchButton" href="#">
@@ -66,7 +66,7 @@
                   <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
                 </div>
               </div>
-              <div class="col-md-1" userRoleDirective="add" [pageName]="currentPageName">
+              <div class="col-md-1" userRoleDirective="ADD" [pageName]="currentPageName">
                 <div class="add-user"   (click)="addUser()" style=" cursor: pointer">
                   <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
                 </div>

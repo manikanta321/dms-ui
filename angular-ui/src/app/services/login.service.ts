@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Subject, zip } from 'rxjs';
 // import 'url-search-params-polyfill';
 @Injectable({
   providedIn: 'root'
@@ -50,112 +50,7 @@ export class LoginService {
     // return this.http.get(this.loginurl + `/Account/GetToken`,body.toString(), options);
 
   }
-  // userRolesData = [];
-  userRolesData = [
-    {
-      key: 'maindashboard',
-      title: 'Dashboard',
-      submenulist: [],
-      permissions: [
-        { action: 'view', status: true },
-        { action: 'add', status: false },
-        { action: 'edit', status: false },
-        { action: 'delete', status: false },
-        { action: 'activate_deactivate', status: false },
-      ]
-    },
-    {
-      key: 'orderdashboard',
-      title: 'Orders',
-      submenulist: [],
-      permissions: [
-        { action: 'view', status: true },
-        { action: 'add', status: false },
-        { action: 'edit', status: false },
-        { action: 'delete', status: false },
-      ]
-    },
-    {
-      key: 'saleslistdashboard',
-      title: 'Sales',
-      submenulist: [],
-      permissions: [
-        { action: 'view', status: true },
-        { action: 'add', status: false },
-        { action: 'edit', status: false },
-        { action: 'delete', status: false },
-      ]
-    },
-    {
-      key: 'dealerdashboard',
-      title: 'Dealer',
-      submenulist: [],
-      permissions: [
-        { action: 'view', status: true },
-        { action: 'add', status: false },
-        { action: 'edit', status: false },
-        { action: 'delete', status: false },
-      ]
-    },
-    {
-      key: 'settingusers',
-      title: 'Users',
-      submenulist: [],
-      permissions: [
-        { action: 'view', status: true },
-        { action: 'add', status: true },
-        { action: 'edit', status: true },
-        { action: 'reset', status: true },
-        { action: 'activate', status: true },
-        { action: 'deactivate', status: true },
-        { action: 'usersearch', status: true },
-      ]
-    },
-    {
-      key: 'settingmaterials',
-      title: 'Materials',
-      submenulist: [],
-      permissions: [
-        { action: 'view', status: true },
-        { action: 'add', status: false },
-        { action: 'edit', status: false },
-        { action: 'delete', status: false },
-      ]
-    },
-    {
-      key: 'settinggeographies',
-      title: 'Geographies',
-      submenulist: [],
-      permissions: [
-        { action: 'view', status: true },
-        { action: 'add', status: false },
-        { action: 'edit', status: false },
-        { action: 'delete', status: false },
-      ]
-    },
-    {
-      key: 'settingothermaterials',
-      title: 'Other Masters',
-      submenulist: [],
-      permissions: [
-        { action: 'view', status: true },
-        { action: 'add', status: false },
-        { action: 'edit', status: false },
-        { action: 'delete', status: false },
-      ]
-    },
-    {
-      key: 'menuhelp',
-      title: 'Help',
-      submenulist: [],
-      permissions: [
-        { action: 'view', status: true },
-        { action: 'add', status: false },
-        { action: 'edit', status: false },
-        { action: 'delete', status: false },
-      ]
-    },
-  ]
+  userRolesData = [];
 
 
   userRolesSubject: Subject<any> = new Subject();
@@ -171,24 +66,33 @@ export class LoginService {
 
       } else {
         try {
-          let data:any = await this.getUserRolesFromAPI(roleId);
+          let data: any = await this.getUserRolesFromAPI(roleId);
 
+          let formattedData = data.response.map(x => {
+            x.title = x.title.toLowerCase();
+            if (x.permission.length == 0) {
+              x.viewPage = true;
+            } else {
+              let status = false;      
+              x.permission.forEach(y => {
+                if (y.action.toLowerCase().indexOf('view') != -1 && y.status) {
+                    status = true;
+                }
+              })
+              x.viewPage = status;
+            }
+
+            return x;
+          });
+
+          console.log(formattedData);
+          localStorage.setItem('userroles', JSON.stringify(formattedData));
+          this.userRolesSubject.next(formattedData);
           // localStorage.setItem('userroles', JSON.stringify(data.response));
-          localStorage.setItem('userroles', JSON.stringify(this.userRolesData));
-          this.userRolesSubject.next(data);
           this.router.navigate(['../dashbord/user']);
         } catch (error) {
           console.log('error', error);
         }
-        // this.getUserRolesFromAPI(roleId).subscribe({
-        //   next: (data) => {
-        //     console.log('data', data);
-        //     localStorage.setItem('userroles', JSON.stringify(this.userRolesData));
-        //     this.userRolesSubject.next(this.userRolesData);
-        //   },
-        //   error: (err) => console.log('error', err),
-        //   complete: () => console.log('complete')
-        // })
       }
     } else {
       this.router.navigate(['/login']);

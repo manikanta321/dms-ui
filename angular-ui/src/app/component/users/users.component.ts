@@ -330,13 +330,13 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
-    let currentPageRoleObj = userRolesData.find(element => element.key == this.currentPageName);
+    let currentPageRoleObj = userRolesData.find(element => element.title == this.currentPageName);
     let actionColumn = ['edit', 'reset', 'activate', 'deactivate'];
     let isActionCounterHide = 0;
     this.columnDefs = this.columnDefs.filter(x => {
       if (x.colId != 'action' || currentPageRoleObj == undefined || currentPageRoleObj == null) return true;
 
-      currentPageRoleObj.permissions.forEach(item => {
+      currentPageRoleObj.permission.forEach(item => {
         if (actionColumn.indexOf(item.action) != -1 && item.status == false) {
           isActionCounterHide += 1;
         }

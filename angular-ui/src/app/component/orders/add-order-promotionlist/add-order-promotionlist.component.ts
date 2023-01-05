@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { HttpClient } from '@angular/common/http';
 import { CellClickedEvent, CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridReadyEvent } from 'ag-grid-community';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
 
@@ -45,12 +45,14 @@ export class AddOrderPromotionlistComponent implements OnInit {
   promotionstype4: any = [];
   promotionstype1: any = [];
   promotionstype2: any = [];
+  currentSelectedPromos:any = [];
 
   constructor(private user: UserService,
     private orders: OrdersApisService,
     private spinner: NgxSpinnerService,
     private dialogRef: MatDialogRef<any>,
-    private http: HttpClient) { }
+    private http: HttpClient,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
     this.taxdropdown();
@@ -73,6 +75,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
     console.log(this.geographyId, "this.geographyId")
     this.dealerid = localStorage.getItem("dealerid");
     console.log(this.dealerid, "this.this.dealerid")
+    this.currentSelectedPromos = this.data ?? [];
     this.getPromotionsImages();
   }
 
@@ -110,15 +113,15 @@ export class AddOrderPromotionlistComponent implements OnInit {
       console.log(this.imagesapis, "imagesres");
       this.imagesapis.forEach(item => {
         this.spinner.hide();
+        console.log(this.currentSelectedPromos);
+        let index = this.currentSelectedPromos.findIndex(x=> x.promotionId == item.promotionId);
         let obj = {
-
           "productPromotionsId": item.productPromotionsId,
           // shd kep is selected as flase
-          // 'isSelected':item.isSelected
+          "isSelected":index !== -1 ? true:false,
           "promotionTypesId": item.promotionTypesId,
           "promotionName": item.promotionName,
           "imageurl": item.imageurl
-
         }
         this.arrayOfImages.push(obj);
         console.log(this.arrayOfImages, "arrayofimagesg");
@@ -165,8 +168,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
   appendStockItemFields(stockItem) {
     let formatObj: any = {};
-    formatObj.stockItemId = stockItem.stockItemId;
-    formatObj.stockItemName = stockItem.stockItemName;
+    formatObj.stockitemid = stockItem.stockitemid;
+    formatObj.stockitemname = stockItem.stockitemname;
     formatObj.productSKUName = stockItem.productSKUName;
     formatObj.price = stockItem.price;
     formatObj.stock = stockItem.stock
@@ -190,8 +193,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
             if (item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0) {
   
               item.promoDetails.buyGroups.forEach(stockItem => {
-                if (stockItem.stockItemId.length != 0) {
-                  stockItem.stockItemId = stockItem.stockItemId.map(stock => {
+                if (stockItem.stockitemid.length != 0) {
+                  stockItem.stockitemid = stockItem.stockitemid.map(stock => {
                     stock = this.appendStockItemFields(stock);
                     return stock
                   })
@@ -206,8 +209,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
             if (item.promoDetails && item.promoDetails.getGroups && item.promoDetails.getGroups && item.promoDetails.getGroups.length != 0) {
   
               item.promoDetails.getGroups.forEach(stockItem => {
-                if (stockItem.stockItemId.length != 0) {
-                  stockItem.stockItemId = stockItem.stockItemId.map(stock => {
+                if (stockItem.stockitemid.length != 0) {
+                  stockItem.stockitemid = stockItem.stockitemid.map(stock => {
                     stock = this.appendStockItemFields(stock);
                     return stock
                   })
@@ -225,8 +228,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
             if (item.promoDetails && item.promoDetails.buySets && item.promoDetails.buySets && item.promoDetails.buySets.length != 0) {
               item.promoDetails.buySets.forEach(setItem => {
                 setItem.buyGroups.forEach(stockItem => {
-                  if (stockItem.stockItemId.length != 0) {
-                    stockItem.stockItemId = stockItem.stockItemId.map(stock => {
+                  if (stockItem.stockitemid.length != 0) {
+                    stockItem.stockitemid = stockItem.stockitemid.map(stock => {
                       stock = this.appendStockItemFields(stock);
                       return stock
                     })
@@ -240,8 +243,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
             if (item.promoDetails && item.promoDetails.getSets && item.promoDetails.getSets && item.promoDetails.getSets.length != 0) {
               item.promoDetails.getSets.forEach(setItem => {
                 setItem.getGroups.forEach(stockItem => {
-                  if (stockItem.stockItemId.length != 0) {
-                    stockItem.stockItemId = stockItem.stockItemId.map(stock => {
+                  if (stockItem.stockitemid.length != 0) {
+                    stockItem.stockitemid = stockItem.stockitemid.map(stock => {
                       stock = this.appendStockItemFields(stock);
                       return stock
                     })
@@ -308,8 +311,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
           item.promoDetails.buyGroups.totalQuantity = 0;
           item.promoDetails.buyGroups.totalAmount = 0;
           item.promoDetails.buyGroups.forEach(stockItem => {
-            if (stockItem.stockItemId.length != 0) {
-              stockItem.stockItemId.forEach(stock => {
+            if (stockItem.stockitemid.length != 0) {
+              stockItem.stockitemid.forEach(stock => {
                 if (stock.isProductSelected) {
                   item.promoDetails.buyGroups.totalQuantity += stock.Quantity;
                   item.promoDetails.buyGroups.totalAmount += (stock.price * stock.Quantity);
@@ -324,8 +327,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
           item.promoDetails.getGroups.totalQuantity = 0;
           item.promoDetails.getGroups.totalAmount = 0;
           item.promoDetails.getGroups.forEach(stockItem => {
-            if (stockItem.stockItemId.length != 0) {
-              stockItem.stockItemId.forEach(stock => {
+            if (stockItem.stockitemid.length != 0) {
+              stockItem.stockitemid.forEach(stock => {
                 if (stock.isProductSelected) {
                   item.promoDetails.getGroups.totalQuantity += stock.Quantity;
                   item.promoDetails.getGroups.totalAmount += (stock.price * stock.Quantity);
@@ -344,8 +347,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
             setItem.buyGroups.forEach(stockItem => {
               stockItem.totalAmount = 0;
               stockItem.totalQuantity = 0;
-              if (stockItem.stockItemId.length != 0) {
-                stockItem.stockItemId.forEach(stock => {
+              if (stockItem.stockitemid.length != 0) {
+                stockItem.stockitemid.forEach(stock => {
                   if (stock.isProductSelected) {
                     stockItem.totalQuantity += stock.Quantity;
                     stockItem.totalAmount += (stock.price * stock.Quantity);
@@ -365,8 +368,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
             setItem.getGroups.forEach(stockItem => {
               stockItem.totalAmount = 0;
               stockItem.totalQuantity = 0;
-              if (stockItem.stockItemId.length != 0) {
-                stockItem.stockItemId.forEach(stock => {
+              if (stockItem.stockitemid.length != 0) {
+                stockItem.stockitemid.forEach(stock => {
                   if (stock.isProductSelected) {
                     stockItem.totalQuantity += stock.Quantity;
                     stockItem.totalAmount += (stock.price * stock.Quantity);
@@ -440,13 +443,13 @@ export class AddOrderPromotionlistComponent implements OnInit {
           if (item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0) {
             item.promoDetails.buyGroups.forEach(stockItem => {
               let selectedPromotionDatabuyset: any = [];
-              if (stockItem.stockItemId.length != 0) {
-                stockItem.stockItemId.forEach(stock => {
+              if (stockItem.stockitemid.length != 0) {
+                stockItem.stockitemid.forEach(stock => {
                   if (stock.isProductSelected) {
                     let obj = {
 
                       "Taxid": stock.Taxid,
-                      "stockItemId": stock.stockItemId,
+                      "stockitemid": stock.stockitemid,
                       "Quantity": stock.Quantity,
                       "stock":stock.stock
 
@@ -471,12 +474,12 @@ export class AddOrderPromotionlistComponent implements OnInit {
           if (item.promoDetails && item.promoDetails.getGroups && item.promoDetails.getGroups && item.promoDetails.getGroups.length != 0) {
             item.promoDetails.getGroups.forEach(stockItem => {
               let selectedPromotionDatagetset: any = [];
-              if (stockItem.stockItemId.length != 0) {
-                stockItem.stockItemId.forEach(stock => {
+              if (stockItem.stockitemid.length != 0) {
+                stockItem.stockitemid.forEach(stock => {
                   if (stock.isProductSelected) {
                     let obj = {
                       "Taxid": stock.Taxid,
-                      "stockItemId": stock.stockItemId,
+                      "stockitemid": stock.stockitemid,
                       "Quantity": stock.Quantity,
                       "stock":stock.stock
 
@@ -512,12 +515,12 @@ export class AddOrderPromotionlistComponent implements OnInit {
               let buysets2:any =[];
               setItem.buyGroups.forEach(stockItem => {
                 let selectedPromotionDatabuyset2: any = [];
-                if (stockItem.stockItemId.length != 0) {
-                  stockItem.stockItemId.forEach(stock => {
+                if (stockItem.stockitemid.length != 0) {
+                  stockItem.stockitemid.forEach(stock => {
                     if (stock.isProductSelected) {
                       let obj = {
                         "Taxid": stock.Taxid,
-                        "stockItemId": stock.stockItemId,
+                        "stockitemid": stock.stockitemid,
                         "Quantity": stock.Quantity,
                         "stock":stock.stock
                       };
@@ -549,13 +552,13 @@ export class AddOrderPromotionlistComponent implements OnInit {
             let getsets2:any = [];
             setItem.getGroups.forEach(stockItem => {
               let selectedPromotionDatagetset2: any = [];
-              if (stockItem.stockItemId.length != 0) {
-                stockItem.stockItemId.forEach(stock => {
+              if (stockItem.stockitemid.length != 0) {
+                stockItem.stockitemid.forEach(stock => {
                   if (stock.isProductSelected) {
                     let obj = {
 
                       "Taxid": stock.Taxid,
-                      "stockItemId": stock.stockItemId,
+                      "stockitemid": stock.stockitemid,
                       "Quantity": stock.Quantity,
                       "stock":stock.stock
     
@@ -600,7 +603,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
                 let obj = {
 
                   "Taxid": stockItem.Taxid,
-                  "stockItemId": stockItem.stockItemId,
+                  "stockitemid": stockItem.stockitemid,
                   "Quantity": stockItem.Quantity,
                   "stock":stockItem.stock
 
@@ -625,7 +628,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
                 let obj = {
 
                   "Taxid": stockItem.Taxid,
-                  "stockItemId": stockItem.stockItemId,
+                  "stockitemid": stockItem.stockitemid,
                   "Quantity": stockItem.Quantity,
                   "stock":stockItem.stock
 

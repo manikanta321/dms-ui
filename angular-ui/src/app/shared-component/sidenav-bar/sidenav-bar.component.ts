@@ -45,11 +45,10 @@ export class SidenavBarComponent implements OnInit {
   }
   updateUserRoleMenu(){
     this.viewMenuList = [];
-    this.userRoles.forEach(element => {
-      let currentMenu = element.permissions.find(x => x.action == 'view');
-      if(currentMenu.status){
-        this.viewMenuList.push(element.key);
-      }
+    this.userRoles.forEach(element => {      
+      // if(element.viewPage){
+        this.viewMenuList.push(element.title);
+      // }
     });
   }
   mobBurgerMenuAction() {

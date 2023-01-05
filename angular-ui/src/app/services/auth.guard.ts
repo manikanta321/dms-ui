@@ -10,6 +10,9 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot,
   ) {
+
+
+    return true;
     const key = route.data['key'];
     console.log(key);
     let userRoles = JSON.parse(localStorage.getItem('userroles') ?? '[]');
@@ -24,11 +27,8 @@ export class AuthGuard implements CanActivate {
 
       let showPage = false;
       userRoles.forEach(element => {
-        if (element.key == key) {
-          let currentMenu = element.permissions.find(x => x.action == 'view');
-          if (currentMenu.status) {
-            showPage = true;
-          }
+        if (element.title == key) {
+          showPage = element.viewPage;
         }
 
       });

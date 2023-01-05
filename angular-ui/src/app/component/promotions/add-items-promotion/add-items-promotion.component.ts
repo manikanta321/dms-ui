@@ -389,7 +389,7 @@ export class AddItemsPromotionComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: this.StatusFilter
+      allowSearchFilter: true
     };
     this.dropdownSettings1 = {
       singleSelection: false,
@@ -398,7 +398,7 @@ export class AddItemsPromotionComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      // allowSearchFilter: this.StatusFilter
+      allowSearchFilter: true
     };
     this.dropdownSettings2 = {
       singleSelection: false,
@@ -407,6 +407,7 @@ export class AddItemsPromotionComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
+      allowSearchFilter: true
     }
     this.dropdownSettings3 = {
       singleSelection: false,
@@ -415,6 +416,7 @@ export class AddItemsPromotionComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
+      allowSearchFilter: true
     }
     this.dropdownSettings5 = {
       singleSelection: false,
@@ -423,6 +425,7 @@ export class AddItemsPromotionComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
+      allowSearchFilter: true
     }
     this.dropdownSettings6 = {
       singleSelection: false,
@@ -431,6 +434,7 @@ export class AddItemsPromotionComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
+      allowSearchFilter: true
     }
     this.myForm = this.fb.group({
       city: [this.selectedItems]

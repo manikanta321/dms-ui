@@ -15,6 +15,7 @@ import { AddpromoGeographyComponent } from './addpromo-geography/addpromo-geogra
 import { PopupPscGridTableComponent } from '../promotions/product-group-add-item/popup-psc-grid-table/popup-psc-grid-table.component';
 import { SharedServicesDealerService } from 'src/app/services/shared-services-dealer.service';
 import { PromotionSharedServicesService } from 'src/app/services/promotion-shared-services.service';
+import { MaterialaddedSuccessPopComponent } from '../materials-list/material-add-editpopup/materialadded-success-pop/materialadded-success-pop.component';
 @Component({
   selector: 'app-add-promotions',
   templateUrl: './add-promotions.component.html',
@@ -214,7 +215,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
     {
       headerName: "Geography", field: 'geography', type: ['nonEditableColumn'],
-      cellStyle: { color: '#017EFA' },
+      // cellStyle: { color: '#017EFA' },
     },
 
     {
@@ -892,6 +893,9 @@ console.log('addgetset', this.addgetset)
   goForward(stepper: MatStepper) {
     stepper.next();
   }
+  goBack(stepper: MatStepper){
+   stepper.previous();
+  }
   GetPromotionTypes() {
     //  const data = {
     //   promotionTypesId : this.promotionTypesId,
@@ -907,9 +911,13 @@ console.log('addgetset', this.addgetset)
   disableBackbutton() {
     this.goForward(this.myStepper);
     this.basicInfo = true;
+
     // alert(this.basicInfo);
   }
-
+  prevStepper(){
+    this.goBack(this.myStepper);
+    this.basicInfo = false;
+  }
   addCategory() {
     this.addButton = true;
   }
@@ -1335,7 +1343,7 @@ console.log('addgetset', this.addgetset)
     //  console.log('jj',result)
   }
   addgeography() {
-    this.dialog.open(AddpromoGeographyComponent, { width: '654px', height: '743px' })
+    this.dialog.open(AddpromoGeographyComponent, { width: '654px', height: '650px' })
     this.storedNames123 = localStorage.getItem("geoAssopromo");
     this.aboveDefaultGeoOfName = localStorage.getItem("aboveDefaultGeoOfNamepromo");
     this.selectedcount = localStorage.getItem("selectedcountpromo");
@@ -1654,7 +1662,7 @@ console.log('addgetset', this.addgetset)
           alert(res.response.result);
         }
       })
-
+     
     }
 
     if (this.selectedPromo == 2) {
@@ -1858,7 +1866,9 @@ console.log('addgetset', this.addgetset)
           this.sharedService.filter('Register click')
 
           this.dialogRef.close();
+      
         }
+        
         else {
           alert(res.response.result);
           this.sharedService.filter('Register click')
@@ -1867,7 +1877,7 @@ console.log('addgetset', this.addgetset)
 
         }
       })
-
+    
     }
 
     if (this.selectedPromo == 2) {

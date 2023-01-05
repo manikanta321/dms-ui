@@ -91,8 +91,11 @@ export class OrdersApisService {
     return this.http.post<any>(this.userurl + 'OrdersApi/GetProductsOfPromotionForOrder', data);
   }
   
+  public getShippingandPackingcharges(data) {
 
-
+    return this.http.post<any>(this.userurl + 'OrdersApi/GetShippingAndPackingCharges', data);
+  }
+  
 }
 
  

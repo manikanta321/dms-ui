@@ -171,7 +171,7 @@
                                     </tr>
                                 </ng-container>
                                 <!-- nonpromotions list view -->
-                                <tr *ngFor="let Item of AddorderNonpromotiondata.itemDetails; let i=index;">
+                                <tr *ngFor="let Item of AddorderNonpromotiondata?.itemDetails; let i=index;">
                                     <td>
                                         <p class="itemLeft"><span class="promoItem" *ngIf="i == 0"> NP
                                             </span>{{Item.stockItemName}}</p>

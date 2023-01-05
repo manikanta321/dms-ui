@@ -1215,6 +1215,7 @@ export class AddorderpromotionsComponent implements OnInit {
           "discount": item.discount,
           "finalValue": item.finalvalue,
           "taxvalue": item.taxvalue,
+          "taxid":item.taxid,
           "amount": item.amount
         }
         this.AddorderNonpromotiondata.itemDetails.push(obj);
@@ -1224,4 +1225,17 @@ export class AddorderpromotionsComponent implements OnInit {
 
 
   }
+
+
+  // getShippingandPackingcharges() {
+  //   let finalvalu={
+  //     "TaxTemplateId":item.taxid,
+  //     "finalValue":item.finalvalue
+  //   }
+  //   let data = {
+  //     "GeographyId": this.geographyId,
+  //     "EachModel":finalvalu
+  //   }
+  // }
+
 }

@@ -72,30 +72,54 @@
     box-shadow: 0 1px 5px #959595;
   }
   
-  ::ng-deep.stts .multiselect-dropdown .dropdown-btn .selected-item {
-    background: #000000 !important;
+  ::ng-deep.year .multiselect-dropdown .dropdown-btn .selected-item {
+    background: #B43E8F !important;
+    font-size: 12px;
+  }
+  ::ng-deep .year .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+    // background: #D23F00 !important;
+    background: #B43E8F !important;
+  }
+  ::ng-deep.year-placeholder .multiselect-dropdown .dropdown-btn .selected-item {
+    background: #B43E8F !important;
     font-size: 12px;
   }
   
-  ::ng-deep .stts .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
-    background: #000000 !important;
+  ::ng-deep.target .multiselect-dropdown .dropdown-btn .selected-item {
+    background: #0353A4 !important;
+    font-size: 12px;
   }
-  
-  ::ng-deep.roless .multiselect-dropdown .dropdown-btn .selected-item {
+  ::ng-deep .target .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+    // background: #D23F00 !important;
+    background: #0353A4 !important;
+  }
+  ::ng-deep.target-placeholder .multiselect-dropdown .dropdown-btn .selected-item {
+    color: #0353A4 !important;
+    font-size: 12px;
+  }
+  ::ng-deep.geography .multiselect-dropdown .dropdown-btn .selected-item {
     background: #006466 !important;
     font-size: 12px;
   }
-  
-  ::ng-deep.roless-product .multiselect-dropdown .dropdown-btn .selected-item {
-    background: #44026C !important;
+  ::ng-deep.geography-placeholder .multiselect-dropdown .dropdown-btn .selected-item {
+    background: #006466 !important;
     font-size: 12px;
   }
-  
-  ::ng-deep .roless .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+  ::ng-deep .geography .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
     // background: #D23F00 !important;
     background: #006466 !important;
   }
-  
+  ::ng-deep.dealer .multiselect-dropdown .dropdown-btn .selected-item {
+    background:  #38405F !important;
+    font-size: 12px;
+  }
+  ::ng-deep.dealer-placeholder .multiselect-dropdown .dropdown-btn .selected-item {
+    background: #38405F !important;
+    font-size: 12px;
+  }
+  ::ng-deep .dealer .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+    background: #38405F !important;
+  }
   ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
     border: 2px solid #000000 !important;
   }
@@ -253,14 +277,18 @@
     top: 3px;
   }
   
-  ::ng-deep.roless .multiselect-dropdown .dropdown-btn .selected-item {
+  ::ng-deep.target .multiselect-dropdown .dropdown-btn .selected-item {
     right: 6% !important;
   }
-  
-  ::ng-deep.stts .multiselect-dropdown .dropdown-btn .selected-item {
+  ::ng-deep.geography .multiselect-dropdown .dropdown-btn .selected-item {
     right: 6% !important;
   }
-  
+  ::ng-deep.dealer .multiselect-dropdown .dropdown-btn .selected-item {
+    right: 6% !important;
+  }
+  ::ng-deep.year .multiselect-dropdown .dropdown-btn .selected-item {
+    right: 6% !important;
+  }
   .multiselect-dropdown .dropdown-btn .dropdown-multiselect--active .dropdown-multiselect__caret {
     transform: rotate(180deg) !important;
   }
@@ -997,4 +1025,80 @@
   
   .cats-placeholder.dropdown-placeholder .selected-placeholder {
     color: #00187A !important;
+  }
+  ::ng-deep .target-select .dropdown-btn span .ng-star-inserted {
+    position: absolute !important;
+    right: 15px !important;
+    bottom: 0px;
+    top: 50px !important;
+     width: 46px;
+     border: 1px solid #0353A4;
+     background: #0353A4 !important;
+       font-size: 12px;
+       box-shadow: 1px 1px #959595;
+       color: #fff;
+       height: 20px;
+       border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: -1px;
+  
+    padding-left: 5px;
+  }
+  ::ng-deep .geograph .dropdown-btn span .ng-star-inserted {
+    position: absolute !important;
+    right: 15px !important;
+    bottom: 0px;
+    top: 50px !important;
+     width: 46px;
+     border: 1px solid #006466;
+     background: #006466 !important;
+       font-size: 12px;
+       box-shadow: 1px 1px #959595;
+       color: #fff;
+       height: 20px;
+       border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: -1px;
+  
+    padding-left: 5px;
+  }
+  ::ng-deep .deal .dropdown-btn span .ng-star-inserted {
+    position: absolute !important;
+    right: 15px !important;
+    bottom: 0px;
+    top: 50px !important;
+     width: 46px;
+     border: 1px solid #38405F;
+     background: #38405F !important;
+       font-size: 12px;
+       box-shadow: 1px 1px #959595;
+       color: #fff;
+       height: 20px;
+       border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: -1px;
+  
+    padding-left: 5px;
+  }
+  ::ng-deep .fyear .dropdown-btn span .ng-star-inserted {
+    position: absolute !important;
+    right: 15px !important;
+    bottom: 0px;
+    top: 50px !important;
+     width: 46px;
+     border: 1px solid #B43E8F;
+     background: #B43E8F !important;
+       font-size: 12px;
+       box-shadow: 1px 1px #959595;
+       color: #fff;
+       height: 20px;
+       border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: -1px;
+  
+    padding-left: 5px;
   }

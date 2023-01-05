@@ -43,9 +43,9 @@ import { EditUomPopupComponent } from '../users/userPopups/edit-uom-popup/edit-u
 import { UomPopupComponent } from '../users/userPopups/uom-popup/uom-popup.component';
 import { EditPopupComponent } from '../users/userPopups/edit-popup/edit-popup.component';
 import { AddDealerPopupComponent } from 'src/app/add-dealer-popup/add-dealer-popup.component';
-import { EditdealersComponent } from '../users/userPopups/editdealers/editdealers.component';
 import { AddTargetsComponent } from '../add-targets/add-targets.component';
 import { TargetListService } from 'src/app/services/target-list.service';
+import { DealerTargetActionComponent } from '../dealer-target-action/dealer-target-action.component';
 
 // import { UseractionComponent } from '../useraction/useraction.component';
 
@@ -109,15 +109,15 @@ export class DealerTargetComponent implements OnInit {
 
     {
       headerName: "Target Group",
-       field: 'targetGroupName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
+       field: 'targetGroupName', type: ['nonEditableColumn']
     },
 
     { headerName: "Geography",
-    field: 'geographyName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
+    field: 'geographyName', type: ['nonEditableColumn']
     },
     {
       headerName: "Dealer",
-      field: 'customername', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
+      field: 'customername', type: ['nonEditableColumn']
     },
    
     // suppressMovable:true,
@@ -125,31 +125,30 @@ export class DealerTargetComponent implements OnInit {
       headerName: "Financial year",
       field: 'year',
       type: ['nonEditableColumn'],
-      sort: 'desc', pinned: 'left'
     },
 
     {
       headerName: "No of Products",
       field: 'productCount',
-      type: ['nonEditableColumn'],sort: 'desc', pinned: 'left'
+      type: ['nonEditableColumn']
     },
     {
       headerName: "Target Total",
       field: 'volumeTotal',
-      type: ['nonEditableColumn'],sort: 'desc', pinned: 'left'
+      type: ['nonEditableColumn']
     },
 
     {
       headerName: "Actual PY",
       field: 'actualPy',
-      type: ['nonEditableColumn'],sort: 'desc', pinned: 'left'
+      type: ['nonEditableColumn']
     },
 
 
     {
       headerName: "Actual YTD",
       field: 'actualYTD',
-      type: ['nonEditableColumn'],sort: 'desc', pinned: 'left'
+      type: ['nonEditableColumn']
     },
 
 
@@ -163,7 +162,7 @@ export class DealerTargetComponent implements OnInit {
     {
       headerName: '',
       colId: 'action',
-      cellRenderer: EditdealersComponent,
+      cellRenderer: DealerTargetActionComponent,
       editable: false,
       maxWidth: 75  
     },
@@ -469,7 +468,7 @@ export class DealerTargetComponent implements OnInit {
         textField: 'geographyName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: true
       };
       this.selectedItems = [];
@@ -584,8 +583,8 @@ console.log("SelectedGeo",this.geographySelected)
         textField: 'statusName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
-        allowSearchFilter: true
+        itemsShowLimit: 1,
+        allowSearchFilter: false
       };
       this.selectedStatus = [];
       this.toppings1 = new FormControl(this.toppingList1);
@@ -994,7 +993,7 @@ console.log("SelectedGeo",this.geographySelected)
       textField: 'customerName',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 2,
+      itemsShowLimit: 1,
       allowSearchFilter: true
     };
   }

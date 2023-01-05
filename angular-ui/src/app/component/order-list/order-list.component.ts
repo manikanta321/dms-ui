@@ -693,7 +693,6 @@ export class OrderListComponent implements OnInit {
   // }
 
   customDatePickerEvent(eventChange) {
-    alert("Helloos")
     this.selectedDateRange = eventChange.selectedDate;
     this.startDate = this.selectedDateRange.startDate;
     this.endDate = this.selectedDateRange.endDate;

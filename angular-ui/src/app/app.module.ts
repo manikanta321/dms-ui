@@ -188,6 +188,7 @@ import { AddtaxTemplateSuccessfulPopupComponent } from './component/users/userPo
 import { AddcurrencySuccessfullyPopupComponent } from './component/users/userPopups/addcurrency/addcurrency-successfully-popup/addcurrency-successfully-popup.component';
 import { AdduserSuccessfulPopupComponent } from './component/users/userPopups/add-user-popup/adduser-successful-popup/adduser-successful-popup.component';
 import { DealerSuccessPopupComponent } from './component/add-dealer-associations/dealer-success-popup/dealer-success-popup.component';
+import { DealerTargetActionComponent } from './component/dealer-target-action/dealer-target-action.component';
 
 @NgModule({
   declarations: [
@@ -469,6 +470,7 @@ import { DealerSuccessPopupComponent } from './component/add-dealer-associations
           AddcurrencySuccessfullyPopupComponent,
           AdduserSuccessfulPopupComponent,
           DealerSuccessPopupComponent,
+          DealerTargetActionComponent,
           
   ],
   imports: [

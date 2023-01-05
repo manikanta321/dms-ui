@@ -44,7 +44,18 @@ export class OrdersShipmentComponent implements OnInit {
   statusList:any = [];
   selectedItems: any = [];
   searchText:any ='';
+  startDateShip:any = '';
+  endDateShip:any = '';
+  startDateInvoice:any = '';
+  endDateInvoice:any = '';
+  selectedDateRange:any;
   columnDefs: ColDef[] = [
+    {  headerName: "Shipment No.",
+    field: 'shipmentNumber',      tooltipField:"shipmentNumber",
+   },
+   {  headerName: "Shipment Date",
+   field: 'shipmentDate',      tooltipField:"shipmentDate",
+  },
     {  headerName: "Order No.",
        field: 'orderNUmber',      tooltipField:"orderNUmber",
       },
@@ -201,14 +212,48 @@ export class OrdersShipmentComponent implements OnInit {
   selectdays(){
     this.dialog.open(CustomDatePopupComponent,{panelClass:'custmdays'})
     }
-    selectedDateRange = {
-      startDate: '11/11/2022',
-      endDate: '11/15/2022',
-    }
+    // selectedDateRange = {
+    //   startDate: '11/11/2022',
+    //   endDate: '11/15/2022',
+    // }
   
-    customDatePickerEvent(eventChange){
+    customShipDatePickerEvent(eventChange){
       this.selectedDateRange = eventChange.selectedDate;
+      this.startDateShip = this.selectedDateRange.startDate;
+      this.endDateShip = this.selectedDateRange.endDate;
       console.log(this.selectedDateRange);
+      let data = {
+        StatusId:[],
+        DealerId:this.dealerss,
+        StartDateship:this.startDateShip,
+        EndDateship:this.endDateShip,
+        StartDateinvoice:"",
+        EndDateinvoice:"",
+        Search:""
+      }
+      this.orders.getShipmentList(data).subscribe((res) => {
+        this.shipmentDatalist = res.response;
+        console.log("Response",this.shipmentDatalist)
+      });
+    }
+    customInvoiceDatePickerEvent(eventChange){
+      this.selectedDateRange = eventChange.selectedDate;
+      this.startDateInvoice = this.selectedDateRange.startDate;
+      this.endDateInvoice = this.selectedDateRange.endDate;
+      console.log(this.selectedDateRange);
+      let data = {
+        StatusId:[],
+        DealerId:this.dealerss,
+        StartDateship:this.startDateShip,
+        EndDateship:this.endDateShip,
+        StartDateinvoice:this.startDateInvoice,
+        EndDateinvoice:this.endDateInvoice,
+        Search:""
+      }
+      this.orders.getShipmentList(data).subscribe((res) => {
+        this.shipmentDatalist = res.response;
+        console.log("Response",this.shipmentDatalist)
+      });
     }
     orderShipmentUpload(){
       sessionStorage.setItem("sales",'');
@@ -217,11 +262,13 @@ export class OrdersShipmentComponent implements OnInit {
     }
     shipmentList(){
       let data = {
-      StatusId :[],
-      DealerId : [],
-      StartDate: '',
-      EndDate: '',
-      Search: ''
+        StatusId:[],
+        DealerId:[],
+        StartDateship:"",
+        EndDateship:"",
+        StartDateinvoice:"",
+        EndDateinvoice:"",
+        Search:""
       }
       this.orders.getShipmentList(data).subscribe((res) => {
         this.shipmentDatalist = res.response;
@@ -247,23 +294,25 @@ export class OrdersShipmentComponent implements OnInit {
           textField: 'customerName',
           selectAllText: 'Select All',
           unSelectAllText: 'UnSelect All',
-          itemsShowLimit: 2,
+          itemsShowLimit: 1,
           allowSearchFilter: true
         };
     }
     DealerorderSelect(item: any){
       this.dealerss.push(item.customerId);
       let data = {
-        StatusId :[],
-        DealerId :this.dealerss,
-        StartDate: '',
-        EndDate: '',
-        Search: ''
-        }
-        this.orders.getShipmentList(data).subscribe((res) => {
-          this.shipmentDatalist = res.response;
-          console.log("Response",this.shipmentDatalist)
-        });
+        StatusId:this.statusList,
+        DealerId:this.dealerss,
+        StartDateship:this.startDateShip,
+        EndDateship:this.endDateShip,
+        StartDateinvoice:this.startDateInvoice,
+        EndDateinvoice:this.endDateInvoice,
+        Search:this.searchText
+      }
+      this.orders.getShipmentList(data).subscribe((res) => {
+        this.shipmentDatalist = res.response;
+        console.log("Response",this.shipmentDatalist)
+      });
     }
     DealerDeselect(item:any){
       console.log(item)
@@ -271,45 +320,51 @@ export class OrdersShipmentComponent implements OnInit {
         if (element == item.customerId) this.dealerss.splice(index, 1);
       });
       let data = {
-        StatusId :[],
-        DealerId :this.dealerss,
-        StartDate: '',
-        EndDate: '',
-        Search: ''
-        }
-        this.orders.getShipmentList(data).subscribe((res) => {
-          this.shipmentDatalist = res.response;
-          console.log("Response",this.shipmentDatalist)
-        });
+        StatusId:this.statusList,
+        DealerId:this.dealerss,
+        StartDateship:this.startDateShip,
+        EndDateship:this.endDateShip,
+        StartDateinvoice:this.startDateInvoice,
+        EndDateinvoice:this.endDateInvoice,
+        Search:this.searchText
+      }
+      this.orders.getShipmentList(data).subscribe((res) => {
+        this.shipmentDatalist = res.response;
+        console.log("Response",this.shipmentDatalist)
+      });
     }
     DealerDeselectAll(item:any){
       this.dealerss = [];
       let data = {
-        StatusId :[],
-        DealerId :this.dealerss,
-        StartDate: '',
-        EndDate: '',
-        Search: ''
-        }
-        this.orders.getShipmentList(data).subscribe((res) => {
-          this.shipmentDatalist = res.response;
-          console.log("Response",this.shipmentDatalist)
-        });
+        StatusId:this.statusList,
+        DealerId:this.dealerss,
+        StartDateship:this.startDateShip,
+        EndDateship:this.endDateShip,
+        StartDateinvoice:this.startDateInvoice,
+        EndDateinvoice:this.endDateInvoice,
+        Search:this.searchText
+      }
+      this.orders.getShipmentList(data).subscribe((res) => {
+        this.shipmentDatalist = res.response;
+        console.log("Response",this.shipmentDatalist)
+      });
     }
     DealerorderSelectAll(item:any){
       this.dealerss = this.dealerListArray;
       console.log("AllDealers",this.dealerss);
       let data = {
-        StatusId :[],
-        DealerId :this.dealerss,
-        StartDate: '',
-        EndDate: '',
-        Search: ''
-        }
-        this.orders.getShipmentList(data).subscribe((res) => {
-          this.shipmentDatalist = res.response;
-          console.log("Response",this.shipmentDatalist)
-        });
+        StatusId:this.statusList,
+        DealerId:this.dealerss,
+        StartDateship:this.startDateShip,
+        EndDateship:this.endDateShip,
+        StartDateinvoice:this.startDateInvoice,
+        EndDateinvoice:this.endDateInvoice,
+        Search:this.searchText
+      }
+      this.orders.getShipmentList(data).subscribe((res) => {
+        this.shipmentDatalist = res.response;
+        console.log("Response",this.shipmentDatalist)
+      });
     }
     statusItems() {
       this.user.statusDropdownOrderlist().subscribe((res: any) => {
@@ -330,7 +385,7 @@ export class OrdersShipmentComponent implements OnInit {
           textField: 'statusName',
           selectAllText: 'Select All',
           unSelectAllText: 'UnSelect All',
-          itemsShowLimit: 2,
+          itemsShowLimit: 1,
           allowSearchFilter: false
         };
       });
@@ -338,70 +393,80 @@ export class OrdersShipmentComponent implements OnInit {
     statusdropdownselect(item:any){
       this.statusList.push(item.statusId);
       let data = {
-        StatusId :this.statusList,
-        DealerId :this.dealerss,
-        StartDate: '',
-        EndDate: '',
-        Search: ''
-        }
-        this.orders.getShipmentList(data).subscribe((res) => {
-          this.shipmentDatalist = res.response;
-          console.log("Response",this.shipmentDatalist)
-        });
+        StatusId:this.statusList,
+        DealerId:this.dealerss,
+        StartDateship:this.startDateShip,
+        EndDateship:this.endDateShip,
+        StartDateinvoice:this.startDateInvoice,
+        EndDateinvoice:this.endDateInvoice,
+        Search:this.searchText
+      }
+      this.orders.getShipmentList(data).subscribe((res) => {
+        this.shipmentDatalist = res.response;
+        console.log("Response",this.shipmentDatalist)
+      });
     }
     statusDeselect(item:any){
       this.statusList.forEach((element, index) => {
         if (element == item.statusId) this.statusList.splice(index, 1);
       });
       let data = {
-        StatusId :this.statusList,
-        DealerId :this.dealerss,
-        StartDate: '',
-        EndDate: '',
-        Search: ''
-        }
-        this.orders.getShipmentList(data).subscribe((res) => {
-          this.shipmentDatalist = res.response;
-          console.log("Response",this.shipmentDatalist)
-        });
+        StatusId:this.statusList,
+        DealerId:this.dealerss,
+        StartDateship:this.startDateShip,
+        EndDateship:this.endDateShip,
+        StartDateinvoice:this.startDateInvoice,
+        EndDateinvoice:this.endDateInvoice,
+        Search:this.searchText
+      }
+      this.orders.getShipmentList(data).subscribe((res) => {
+        this.shipmentDatalist = res.response;
+        console.log("Response",this.shipmentDatalist)
+      });
     }
     statusDeselectAll(item:any){
       this.statusList = [];
       let data = {
-        StatusId :this.statusList,
-        DealerId :this.dealerss,
-        StartDate: '',
-        EndDate: '',
-        Search: ''
-        }
-        this.orders.getShipmentList(data).subscribe((res) => {
-          this.shipmentDatalist = res.response;
-          console.log("Response",this.shipmentDatalist)
-        });
+        StatusId:this.statusList,
+        DealerId:this.dealerss,
+        StartDateship:this.startDateShip,
+        EndDateship:this.endDateShip,
+        StartDateinvoice:this.startDateInvoice,
+        EndDateinvoice:this.endDateInvoice,
+        Search:this.searchText
+      }
+      this.orders.getShipmentList(data).subscribe((res) => {
+        this.shipmentDatalist = res.response;
+        console.log("Response",this.shipmentDatalist)
+      });
     }
     statusselectAll(item:any){
       this.statusList = this.statusAllarray
       let data = {
-        StatusId :this.statusList,
-        DealerId :this.dealerss,
-        StartDate: '',
-        EndDate: '',
-        Search: this.searchText
-        }
-        this.orders.getShipmentList(data).subscribe((res) => {
-          this.shipmentDatalist = res.response;
-          console.log("Response",this.shipmentDatalist)
-        });
+        StatusId:this.statusList,
+        DealerId:this.dealerss,
+        StartDateship:this.startDateShip,
+        EndDateship:this.endDateShip,
+        StartDateinvoice:this.startDateInvoice,
+        EndDateinvoice:this.endDateInvoice,
+        Search:this.searchText
+      }
+      this.orders.getShipmentList(data).subscribe((res) => {
+        this.shipmentDatalist = res.response;
+        console.log("Response",this.shipmentDatalist)
+      });
     }
     onSearchChange($event: any, anything?: any) {
       const { target } = $event;
       this.searchText = target.value;
-      let data = {
-        StatusId :this.statusList,
-        DealerId :this.dealerss,
-        StartDate: '',
-        EndDate: '',
-        Search: this.searchText
+        let data = {
+          StatusId:this.statusList,
+          DealerId:this.dealerss,
+          StartDateship:this.startDateShip,
+          EndDateship:this.endDateShip,
+          StartDateinvoice:this.startDateInvoice,
+          EndDateinvoice:this.endDateInvoice,
+          Search:this.searchText
         }
         this.orders.getShipmentList(data).subscribe((res) => {
           this.shipmentDatalist = res.response;
@@ -411,5 +476,33 @@ export class OrdersShipmentComponent implements OnInit {
     shipmentDownload() {
       this.gridApi.exportDataAsCsv();
   
+    }
+    refresh() {
+      this.myForm = this.fb.group({
+        city: [this.selectedItems]
+      });
+      this.statusForm = this.fb.group({
+        status: [this.selectedItems]
+      });
+      this.statusList = [];
+      this.dealerss = [];
+      this.startDateShip = '';
+      this.endDateShip = '';
+      this.startDateInvoice = '';
+      this.endDateInvoice = '';
+      this.searchText = '';
+      let data = {
+        StatusId:this.statusList,
+        DealerId:this.dealerss,
+        StartDateship:this.startDateShip,
+        EndDateship:this.endDateShip,
+        StartDateinvoice:this.startDateInvoice,
+        EndDateinvoice:this.endDateInvoice,
+        Search:this.searchText
+      }
+      this.orders.getShipmentList(data).subscribe((res) => {
+        this.shipmentDatalist = res.response;
+        console.log("Response",this.shipmentDatalist)
+      });
     }
 }

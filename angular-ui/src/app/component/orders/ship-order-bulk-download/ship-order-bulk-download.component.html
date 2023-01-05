@@ -27,32 +27,48 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-3 col-lg-3 col-sm-2">
-        <form [formGroup]="myForm" class="dropdown-form">
-          <ng-multiselect-dropdown class="dealer" name="city" [placeholder]="'Dealer'" formControlName="city"
-            [disabled]="disabled" [settings]="dropdownSettings" [data]="dealersdrop"
+    <div class="col-md-3 ml-3 col-lg-3 col-sm-2">
+        <form [formGroup]="dealerForm" class="dropdown-form">
+          <ng-multiselect-dropdown class="dealer dlsr" name="city" [placeholder]="'Dealer'" formControlName="dealer"
+            [disabled]="disabled" [settings]="dealerSettings" [data]="dealerListData"(onSelect)="DealerorderSelect($event)" (onDeSelect)="DealerDeselect($event)"(onDeSelectAll)="DealerDeselectAll($event)"
+            (onSelectAll)="DealerorderSelectAll($event)"
            >
           </ng-multiselect-dropdown>
         </form>
+        <div class="dropdown-placeholder dealer-placeholder"id="DP">
+          <span *ngIf="dealerForm.get('dealer').value.length == 0" id="GP"> Dealers </span>
+          <span *ngIf="dealerForm.get('dealer').value.length == 1" class="selected-placeholder"> {{dealerForm.get('dealer').value.length}} Dealer selected </span>
+          <span *ngIf="dealerForm.get('dealer').value.length > 1" class="selected-placeholder"> {{dealerForm.get('dealer').value.length}} Dealer(s) selected </span>
+
+        </div>
       </div>
       <div class="col-md-3 col-lg-3 col-sm-2">
-        <form [formGroup]="myForm" class="dropdown-form">
+        <!-- <form [formGroup]="myForm" class="dropdown-form">
           <ng-multiselect-dropdown class="order" name="city" [placeholder]="'Order Date'" formControlName="city"
-            [disabled]="disabled" [settings]="dropdownSettings" [data]="dealersdrop"
+            [disabled]="disabled" [settings]="geographySettings" [data]="dealersdrop"
            >
           </ng-multiselect-dropdown>
-        </form>
+        </form> -->
+        <app-customdatepicker [showInputField]="true" label="Order Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
+
       </div>
       <div class="col-md-3 col-lg-3 col-sm-2">
-        <form [formGroup]="myForm" class="dropdown-form">
-          <ng-multiselect-dropdown class="geography" name="city" [placeholder]="'Geography'" formControlName="city"
-            [disabled]="disabled" [settings]="dropdownSettings" [data]="dealersdrop"
+        <form [formGroup]="geographyForm" >
+          <ng-multiselect-dropdown class="geography geograph" name="city" [placeholder]="'Geography'" formControlName="geography"
+            [disabled]="disabled" [settings]="geographySettings" [data]="geographyData" (onSelect)="geographyselect($event)"
+            (onDeSelect)="geographyDeselect($event)" (onDeSelectAll)="geographyDeselectAll($event)"(onSelectAll)="geographyselectAll($event)"
            >
           </ng-multiselect-dropdown>
         </form>
+        <div class="dropdown-placeholder geography-placeholder"id="DP">
+          <span *ngIf="geographyForm.get('geography').value.length == 0" id="GP"> Geographies </span>
+          <span *ngIf="geographyForm.get('geography').value.length == 1" class="selected-placeholder"> {{geographyForm.get('geography').value.length}} Geography selected </span>
+          <span *ngIf="geographyForm.get('geography').value.length > 1" class="selected-placeholder"> {{geographyForm.get('geography').value.length}} Geography(s) selected </span>
+
+        </div>
       </div>
       <!-- refresh -->
-      <div class=" refreshbtn" style=" cursor: pointer">
+      <div class=" refreshbtn" style=" cursor: pointer" (click)="refresh()">
         <img class="refresh-img" src="assets/img/Vector.png" alt="refresh">
       </div>
 </div>
@@ -60,19 +76,19 @@
  <div class="grid-table mt-5">
     <ag-grid-angular id="gridContainer" class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
       [headerHeight]="48" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
-      [rowData]="rowData5" [suppressExcelExport]="true" [popupParent]="popupParent"
+      [rowData]="shipmentDatalist" [suppressExcelExport]="true" [popupParent]="popupParent"
       (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"
       (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
       (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
       (bodyScroll)="handleScroll($event)"></ag-grid-angular>
     <div class="pagination">
       <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
-        class="pagination-cls">{{rowData5.length}}</span>
+        class="pagination-cls">{{shipmentDatalist.length}}</span>
     </div>
   </div>
   <!-- footer -->
   <div class="row footer">
-    <div class="col-md-6">
+    <div class="col-md-6" (click)="shipmentDownload()">
             <button type="button" class="download-csv">Download CSV </button>                       
     </div>
     <div class="col-md-6">                      

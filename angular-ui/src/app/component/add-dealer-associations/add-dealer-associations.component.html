@@ -37,6 +37,14 @@
                 </option>
 
               </select>
+              <!-- <div class="dealerr">
+                <label class="DealerInfo-label">Product <span class="astr">*</span></label>
+                <ng-select [items]="ProductListArray" id="dealerAllArray" name="dealerAllArray" required
+                    [virtualScroll]="true" bindLabel="stockItemName" bindValue="stockItemId"
+                    [searchable]="true" [clearable]="false" placeholder=" select dealer"
+                     (change)="selectedProduct($event)">
+                </ng-select>
+            </div> -->
               <div class="hover-text">
                 <img class="img1" src="../../../assets/img/i icon.svg" matTooxltip="" />
                 <div class="tooltip-text" id="top">
@@ -65,14 +73,22 @@
             </div>
             <div class="promotiont" *ngIf="screenValue== 2 ">
               <img class="right-arrow" src="../../../assets/img/right-arrow.png" alt="">
-              <label>Dealer <span>*</span></label><br />
-              <select #teams1 class="form-select select-asso" aria-label=".form-select-lg example"
+              <!-- <label>Dealer <span>*</span></label><br />
+              <select #teams1  class="form-select select-asso" aria-label=".form-select-lg example"
                 (change)="selectedDealer(teams1.value);" oninput='style.class="pink"'>
                 <option selected hidden>Select</option>
                 <option style="height: 900px;" *ngFor="let dealer of dealerListArray" [value]="dealer.customerId">
                   {{dealer.customerName}} </option>
 
-              </select>
+              </select> -->
+              <div class="dealerr">
+                <label class="DealerInfo-label">Dealer <span class="astr">*</span></label>
+                <ng-select [items]="dealerListArray" id="dealerAllArray" name="dealerAllArray" required
+                    [virtualScroll]="true" bindLabel="customerName" bindValue="customerId"
+                    [searchable]="true" [clearable]="false" placeholder=" select dealer"
+                     (change)="selectedDealer($event)">
+                </ng-select>
+            </div>
               <div class="hover-text">
                 <!-- <img class="img1" src="../../../assets/img/i icon.svg" matTooxltip="" /> -->
                 <div class="tooltip-text" id="top">

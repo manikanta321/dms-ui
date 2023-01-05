@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-md-2 col-lg-2 col-sm-2">
         <form [formGroup]="myForm" class="dropdown-form">
-          <ng-multiselect-dropdown class="dealer" name="city" [placeholder]="'Dealer'" formControlName="city"
+          <ng-multiselect-dropdown class="dealer dlsr" name="city" [placeholder]="'Dealer'" formControlName="city"
             [disabled]="disabled" [settings]="dealerSettings" [data]="dealerlist"(onSelect)="DealerorderSelect($event)" (onDeSelect)="DealerDeselect($event)"(onDeSelectAll)="DealerDeselectAll($event)"
             (onSelectAll)="DealerorderSelectAll($event)">
           </ng-multiselect-dropdown>
@@ -16,14 +16,14 @@
         </div>
       </div>
         <div class="shipment mr-3">
-        <app-customdatepicker [showInputField]="true" label="Shipment Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
+        <app-customdatepicker [showInputField]="true" label="Shipment Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customShipDatePickerEvent($event)"></app-customdatepicker>
       </div>
         <div class="invoice">
-          <app-customdatepicker [showInputField]="true" label="Invoice Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
+          <app-customdatepicker [showInputField]="true" label="Invoice Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customInvoiceDatePickerEvent($event)"></app-customdatepicker>
       </div>
       <div class="col-md-2 col-lg-2 col-sm-2" style="padding-left: 0px !important; margin-left: 16px;">
         <form [formGroup]="statusForm" class="dropdown-form">
-          <ng-multiselect-dropdown class="Status" name="city" [placeholder]="'Status'" formControlName="status"
+          <ng-multiselect-dropdown class="Status stts" name="city" [placeholder]="'Status'" formControlName="status"
             [disabled]="disabled" [settings]="dropdownSettings2" [data]="dropdownStatusList" (onSelect)="statusdropdownselect($event)"
             (onDeSelect)="statusDeselect($event)"(onDeSelectAll)="statusDeselectAll($event)"(onSelectAll)="statusselectAll($event)" >
           </ng-multiselect-dropdown>
@@ -36,7 +36,7 @@
         </div>
       </div>
 
-      <div class="sales-refreshbtn">
+      <div class="sales-refreshbtn" (click)="refresh()">
         <img class="refresh-img" src="assets/img/Vector.png" alt="refresh">
       </div>
 </div>

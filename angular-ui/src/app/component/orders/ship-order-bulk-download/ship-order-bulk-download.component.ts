@@ -1,77 +1,66 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridApi, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
+import { UserService } from 'src/app/services/user.service';
+import { OrdersApisService } from 'src/app/services/orders-apis.service';
 @Component({
   selector: 'app-ship-order-bulk-download',
   templateUrl: './ship-order-bulk-download.component.html',
   styleUrls: ['./ship-order-bulk-download.component.css']
 })
 export class ShipOrderBulkDownloadComponent implements OnInit {
-  myForm: any = FormGroup;
+  dealerForm: any = FormGroup;
+  geographyForm: any = FormGroup;
   disabled = false;
-  dropdownSettings: IDropdownSettings = {};
+  dealerSettings: IDropdownSettings = {};
+  geographySettings: IDropdownSettings = {};
   dealersdrop: any = ['dealr','d'];
 
   private gridApi!: GridApi;
-  public rowData5=[];
   public popupParent: HTMLElement = document.body;
   instancePopup:any = null;
   paginationPageSize = 10;
   stayScrolledToEnd = true;
+  dealerListData:any = [];
+  dealerlist:any = [];
+  dealerAllArray:any = [];
+  geographyData:any = [];
+  geogropdownlist:any = [];
   paginationScrollCount:any;
+  geoAllarray:any  = [];
+  selectedDateRange: any;
+  startDate: any = '';
+  endDate: any = '';
+  geographySelected:any = [];
+  dealerss:any = [];
+  shipmentDatalist:any = [];
+  selectedItems: any = [];
   columnDefs: ColDef[] = [
-    // { headerName: "User Id",
-    //   field: 'employeeCode' , sort: 'desc'},
-  
-    {   headerName: "Shipment No.",field: 'promotionName' ,      tooltipField:"promotionName",
-  },
-  
-    {  headerName: "Shipment D..",field: 'promotionTypesName',      tooltipField:"promotionTypesName",
-  },
-  
     {  headerName: "Order No.",
-       field: '',      tooltipField:"",
+       field: 'orderNUmber',      tooltipField:"orderNUmber",type: ['nonEditableColumn']
       },
   
     {   headerName: "Order Date",
       // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-      field: 'startDate',      tooltipField:"startDate",
+      field: 'orderDate',      tooltipField:"orderDate",
       type: ['nonEditableColumn']},
   
       {   headerName: "Dealer",
       // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-      field: 'endDate',type: ['nonEditableColumn'],      tooltipField:"endDate",
+      field: 'dealerName',type: ['nonEditableColumn'],tooltipField:"dealerName",
     },
-      {  headerName: "Invoice No.",
-      field: '',      tooltipField:"",
-    }, 
-      {  headerName: "Invoice Date",
-      field: '',      tooltipField:"",
+      {  headerName: "Geography",
+      field: 'geographyName',      tooltipField:"geographyName",type: ['nonEditableColumn']
+  },
+      {  headerName: "Total Value",
+      field: 'totalValue',      tooltipField:"totalValue",type: ['nonEditableColumn']
     }, 
    
-  {  headerName: "Annual Target",
-      field: '',      tooltipField:"",
+  {  headerName: "Completed Value",
+      field: 'compleatedValue',      tooltipField:"compleatedValue",type: ['nonEditableColumn']
     },
-    {  headerName: "Status",
-      field: '',      tooltipField:"",
-    },
-     
-  // {    
-  //   headerName: '',
-  //   colId: 'action',
-  //   cellRenderer: UseractionComponent,
-  //   editable: false,
-  //   maxWidth: 75  
-  
-  // },
-  // {
-  //   headerName: "Avatar",
-  //   field: "avatar",
-  //   width: 100,
-  //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
-  //  },
   
   ];
   public defaultColDef: ColDef = {
@@ -181,9 +170,20 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
   clickNextRendererFunc(){
     alert('hlo');
   }
-  constructor() { }
+  constructor(private user: UserService,
+    public orders:OrdersApisService,
+    private fb: FormBuilder,) { }
 
   ngOnInit(): void {
+    this.dealerForm = this.fb.group({
+      dealer: [this.selectedItems]
+    });
+    this.geographyForm = this.fb.group({
+      geography: [this.selectedItems]
+    });
+    this.dealerOrder();
+    this.geogrphyOrder();
+    this.getDownloadBulkUpload();
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -228,9 +228,225 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
       const gridBody = grid.querySelector('.ag-body-viewport') as any;
       const scrollPos = gridBody.offsetHeight + event.top;
       const scrollDiff = gridBody.scrollHeight - scrollPos;
-      //const api =  this.rowData5;
       this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
-      this.paginationScrollCount = this.rowData5.length;
+      this.paginationScrollCount = this.shipmentDatalist.length;
     }
+  }
+  getDownloadBulkUpload() {
+    let data = {
+      GeographyId:[],
+      DealerId:[],
+      StartDate:"",
+      EndDate:""
+    }
+    this.orders.getDownloadShipmentList(data).subscribe((res) => {
+      this.shipmentDatalist = res.response;
+      console.log("Response Data",this.shipmentDatalist)
+    });
+  }
+  customDatePickerEvent(eventChange) {
+    this.selectedDateRange = eventChange.selectedDate;
+    this.startDate = this.selectedDateRange.startDate;
+    this.endDate = this.selectedDateRange.endDate;
+    console.log(this.selectedDateRange);
+    let data = {
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerss,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
+    }
+    this.orders.getDownloadShipmentList(data).subscribe((res) => {
+      this.shipmentDatalist = res.response;
+      console.log("Response Data",this.shipmentDatalist)
+    });
+  }
+  dealerOrder(){
+    this.user.dealerDropdownOrderlist().subscribe((res: any) => {
+        this.dealerListData = res.response;
+        let localdata = res.response;
+        this.dealerlist = localdata.map((data: { customerId: any; customerName: any; }) => {
+          return { customerId: data.customerId, customerName  : data.customerName };
+        });
+        this.dealerlist.push()
+        this.dealerlist.forEach(element => {
+          return this.dealerAllArray.push(element.customerId);
+        })       
+        console.log('dealerAllarray',this.dealerAllArray)                                                    
+      });
+      this.dealerSettings = {
+        singleSelection: false,
+        idField: 'customerId',
+        textField: 'customerName',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        itemsShowLimit: 1,
+        allowSearchFilter: true
+      };
+  }
+  DealerorderSelect(item: any){
+    this.dealerss.push(item.customerId);
+    let data = {
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerss,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
+    }
+    this.orders.getDownloadShipmentList(data).subscribe((res) => {
+      this.shipmentDatalist = res.response;
+      console.log("Response Data",this.shipmentDatalist)
+    });
+  }
+  DealerDeselect(item:any){
+    console.log(item)
+    this.dealerss.forEach((element, index) => {
+      if (element == item.customerId) this.dealerss.splice(index, 1);
+    });
+    let data = {
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerss,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
+    }
+    this.orders.getDownloadShipmentList(data).subscribe((res) => {
+      this.shipmentDatalist = res.response;
+      console.log("Response Data",this.shipmentDatalist)
+    });
+  }
+  DealerDeselectAll(item:any){
+    this.dealerss = [];
+    let data = {
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerss,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
+    }
+    this.orders.getDownloadShipmentList(data).subscribe((res) => {
+      this.shipmentDatalist = res.response;
+      console.log("Response Data",this.shipmentDatalist)
+    });
+  }
+  DealerorderSelectAll(item:any){
+    this.dealerss = this.dealerAllArray;
+    console.log("AllDealers",this.dealerss);
+    let data = {
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerss,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
+    }
+    this.orders.getDownloadShipmentList(data).subscribe((res) => {
+      this.shipmentDatalist = res.response;
+      console.log("Response Data",this.shipmentDatalist)
+    });
+  }
+
+
+  geogrphyOrder(){
+    this.user.getGeographies().subscribe((res: any) => {
+      let localdata = res.response;
+      this.geographyData = res.response;
+      this.geogropdownlist = localdata.map((data: { geographyId: any; geographyName: any; }) => {
+        return { geographyId: data.geographyId, geographyName: data.geographyName };
+      });
+
+      this.geogropdownlist.push()
+      this.geogropdownlist.forEach(element => {
+        return this.geoAllarray.push(element.geographyId);
+      })
+      console.log('buleditGeo', this.geoAllarray)
+      this.geographySettings = {
+        singleSelection: false,
+        idField: 'geographyId',
+        textField: 'geographyName',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        itemsShowLimit: 1,
+        allowSearchFilter: true
+      };
+    });
+  }
+  geographyselect(item:any){
+    this.geographySelected.push(item.geographyId);
+    console.log("geographics",this.geographySelected);
+    let data = {
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerss,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
+    }
+    this.orders.getDownloadShipmentList(data).subscribe((res) => {
+      this.shipmentDatalist = res.response;
+      console.log("Response Data",this.shipmentDatalist)
+    });
+  }
+  geographyDeselect(item: any) {
+    this.geographySelected.forEach((element, index) => {
+      if (element == item.geographyId) this.geographySelected.splice(index, 1);
+    });
+    let data = {
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerss,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
+    }
+    this.orders.getDownloadShipmentList(data).subscribe((res) => {
+      this.shipmentDatalist = res.response;
+      console.log("Response Data",this.shipmentDatalist)
+    });
+    console.log('onItemSelect', item);
+  }
+  geographyDeselectAll(item: any) {
+    this.geographySelected=[];
+    let data = {
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerss,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
+    }
+    this.orders.getDownloadShipmentList(data).subscribe((res) => {
+      this.shipmentDatalist = res.response;
+      console.log("Response Data",this.shipmentDatalist)
+    });
+  }
+  geographyselectAll(item: any) {
+    this.geographySelected = this.geoAllarray;
+    let data = {
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerss,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
+    }
+    this.orders.getDownloadShipmentList(data).subscribe((res) => {
+      this.shipmentDatalist = res.response;
+      console.log("Response Data",this.shipmentDatalist)
+    });
+    // console.log('rolefilter', this.userTypes)
+    // console.log('onItemSelect', item);
+  }
+  refresh() {
+    this.dealerForm = this.fb.group({
+      dealer: [this.selectedItems]
+    });
+    this.geographyForm = this.fb.group({
+      geography: [this.selectedItems]
+    });
+    this.dealerss = [];
+    this.geographySelected = [];
+    this.startDate = '';
+    this.endDate = '';
+    let data = {
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerss,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
+    }
+    this.orders.getDownloadShipmentList(data).subscribe((res) => {
+      this.shipmentDatalist = res.response;
+      console.log("Response Data",this.shipmentDatalist)
+    });
+  }
+  shipmentDownload() {
+    this.gridApi.exportDataAsCsv();
+
   }
 }

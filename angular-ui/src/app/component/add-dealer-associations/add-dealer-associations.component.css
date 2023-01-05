@@ -283,7 +283,7 @@ input.form-check-input1 {
   
   .promotiont {
     margin-top: 3px;
-    margin-bottom: 15px;
+    /* margin-bottom: -21px; */
      position:relative;
     font-family: 'Gilroy';
   }
@@ -1501,4 +1501,14 @@ width: 100%;
   height: 22px;
   border-radius: 15px;
   text-align: center;
+}
+::ng-deep.dealerr .ng-select-container {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  height: 30px;
+}
+.dealerr {
+  position: relative;
+  bottom:21px;
 }

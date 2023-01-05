@@ -174,7 +174,7 @@
                                 <tr *ngFor="let Item of AddorderNonpromotiondata?.itemDetails; let i=index;">
                                     <td>
                                         <p class="itemLeft"><span class="promoItem" *ngIf="i == 0"> NP
-                                            </span>{{Item.stockItemName}}</p>
+                                            </span>{{Item.stockitemname}}</p>
                                     </td>
                                     <td>
                                         <input type="text" disabled [(ngModel)]="Item.uomname" class="IteminputBoxes">
@@ -477,7 +477,7 @@
                                 <tbody>
                                     <tr class="table-row" *ngFor="let Item of orderNonPromotionsdata">
                                         <td><input type="checkbox" [checked]="Item.isPromotionSelected"
-                                                (change)="checkboxChange($event,Item)">{{Item.stockItemName}}</td>
+                                                (change)="checkboxChange($event,Item)">{{Item.stockitemname}}</td>
                                         <td>{{Item.materialCustomName}}</td>
                                         <td>{{Item.classification}}</td>
                                         <td>{{Item.productSKUName}}</td>

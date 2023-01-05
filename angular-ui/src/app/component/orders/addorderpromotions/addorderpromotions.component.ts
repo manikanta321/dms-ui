@@ -100,7 +100,7 @@ export class AddorderpromotionsComponent implements OnInit {
   price: any = 0;
   err: any = " ";
   nonpromotionlist: any = [];
-  stockItemName: any;
+  stockitemname: any;
   uomid: any;
   uomname: any;
   stock: any;
@@ -968,7 +968,7 @@ export class AddorderpromotionsComponent implements OnInit {
       obj.stock = selectedNonPromotionItem == undefined ? item.stock : selectedNonPromotionItem.quantity;
       obj.productSKUName = item.productSKUName;
       obj.stockItemId = item.stockItemId;
-      obj.stockItemName = item.stockItemName;
+      obj.stockitemname = item.stockitemname;
       obj.isPromotionSelected = selectedNonPromotionItem == undefined ? false : true;
       obj.quantity = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.quantity;
       obj.taxid = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.taxid;
@@ -1053,7 +1053,7 @@ export class AddorderpromotionsComponent implements OnInit {
               let obj = {
                 // "Promocode": item.promotionName,
                 "stockid": item.stockitemid,
-                "stockItemName": item.stockItemName,
+                "stockitemname": item.stockitemname,
                 "uom": item.uomid,
                 "uomname": item.uomname,
                 "quantity": item.quantity,
@@ -1206,7 +1206,7 @@ export class AddorderpromotionsComponent implements OnInit {
           // "customerPOProductId":item.customerPOProductId,
 
           "stockid": item.stockid,
-          "stockItemName": item.stockItemName,
+          "stockitemname": item.stockitemname,
           "uom": item.uom,
           "uomname": item.uomname,
           "quantity": item.quantity,

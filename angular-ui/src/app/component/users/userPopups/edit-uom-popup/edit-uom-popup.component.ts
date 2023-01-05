@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UomServicesService } from 'src/app/services/uom-services.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { OtherMasterService } from 'src/app/services/other-master.service';
+import { EdituomSuccessfulpopupComponent } from './edituom-successfulpopup/edituom-successfulpopup.component';
 
 @Component({
   selector: 'app-edit-uom-popup',
@@ -16,6 +17,7 @@ export class EditUomPopupComponent implements OnInit {
     private otherMasterService:OtherMasterService,
     private uomservise:UomServicesService,
     private dialogRef: MatDialogRef<EditUomPopupComponent>,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +33,9 @@ this.uoMShortName=data.uoMShortName
 
   editUom(){
        this.otherMasterService.filter('Register click');
-
+       
+       this.dialog.open(EdituomSuccessfulpopupComponent , {panelClass: 'activeSuccessPop'});
+          
     let data={
       UoMName:this.uoMName,
       UoMShortName:this.uoMShortName,

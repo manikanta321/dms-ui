@@ -339,3 +339,75 @@ height: 43px;
   width: 280px;
   height: 43px;
 }
+::ng-deep.geography .multiselect-dropdown .dropdown-btn .selected-item {
+  background: #006466 !important;
+  font-size: 12px;
+}
+
+.geography-placeholder.dropdown-placeholder .selected-placeholder {
+  color:  #006466 !important;
+}
+
+::ng-deep .geography .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+  background: #006466 !important;
+}
+::ng-deep.dealer .multiselect-dropdown .dropdown-btn .selected-item {
+  background: #D23F00 !important;
+  font-size: 12px;
+}
+
+.dealer-placeholder.dropdown-placeholder .selected-placeholder {
+  color:  #D23F00 !important;
+}
+
+::ng-deep .dealer .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+  background: #D23F00 !important;
+}
+#DP
+{
+  border-left: 1px solid black;
+}
+::ng-deep.dlsr  .dropdown-btn span .ng-star-inserted {
+  position: absolute !important;
+right: 62px !important;
+bottom: 0px;
+top: 50px !important;
+
+
+
+ width: 42px;
+border: 1px solid #337ab7;
+ background: #D23F00 !important;
+   font-size: 12px;
+   box-shadow: 1px 1px #959595;
+   color: #fff;
+   height: 20px;
+   border-radius: 15px;
+text-align: center;
+margin-left: 10px;
+margin-right: -1px;
+
+padding-left: 5px;
+}
+::ng-deep.geograph  .dropdown-btn span .ng-star-inserted {
+  position: absolute !important;
+right: 62px !important;
+bottom: 0px;
+top: 50px !important;
+
+
+
+ width: 42px;
+border: 1px solid #337ab7;
+ background: #006466 !important;
+   font-size: 12px;
+   box-shadow: 1px 1px #959595;
+   color: #fff;
+   height: 20px;
+   border-radius: 15px;
+text-align: center;
+margin-left: 10px;
+margin-right: -1px;
+
+padding-left: 5px;
+}

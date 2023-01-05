@@ -1,3 +1,14 @@
+ 
+
+ ::ng-deep  .catty .dropdown-list ul
+ {
+  
+  overflow-x: hidden;
+  
+  
+ }
+ 
+ 
  ::ng-deep .catty22 .dropdown-btn span .ng-star-inserted {
   
 
@@ -23,6 +34,12 @@ margin-right: -1px;
 padding-left: 5px;
 padding-top: 1px;
 }
+ .materialscrollbar
+{
+  overflow-y: hidden;
+} 
+
+
 
 
 ::ng-deep .sub2 .dropdown-btn span .ng-star-inserted {
@@ -729,6 +746,7 @@ padding-left: 11px;
 
 .containerf {
   padding-left: 0px;
+
 }
 
 .screen-width {

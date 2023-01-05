@@ -414,7 +414,9 @@ export class MaterialAddEditpopupComponent {
 
     this.selectedProductIdEdit = this.dataGetById.productCustomIdentifierId
 
+    this.MaterialCustomIdentifiersNames = this.dataGetById.materialcustomidentifier
 
+    this.selectedProductIdentifierData = this.dataGetById.productCustomIdentifierId
 
     // "materialcustomidentifier": null,
     // "productSubGroupId": 0,

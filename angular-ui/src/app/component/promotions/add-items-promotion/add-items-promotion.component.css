@@ -402,7 +402,7 @@ mat-radio-group{
   width: 100%;
 }
 ::ng-deep.addproductpromo .mat-horizontal-stepper-header-container {
-  width: 60%;
+  width: 62%;
 }
 ::ng-deep.addproductpromo .mat-horizontal-stepper-header {
 padding: 0 16px;
@@ -421,6 +421,7 @@ left: 60%;
 margin-bottom: -53px; */
 display: flex;
     justify-content: end;
+    margin-right: 20px;
 }
 .prodSubGDropdwn{
   margin-bottom: -53px;
@@ -448,4 +449,8 @@ display: flex;
       }
       .prod-identifier {
         margin-top: 28px;
+      }
+      .scrollone{
+        overflow-x: hidden;
+        height: 530px;
       }

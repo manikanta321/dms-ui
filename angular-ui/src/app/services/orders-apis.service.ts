@@ -81,7 +81,12 @@ export class OrdersApisService {
 
     return this.http.post<any>(this.userurl + 'OrdersApi/GetAllShipments', data);
   }
+  // http://13.126.235.145:801/api/OrdersApi/GetShipUploadList
 
+  public getDownloadShipmentList(data) {
+
+    return this.http.post<any>(this.userurl + 'OrdersApi/GetShipUploadList', data);
+  }
   public orderpromotionimages(data) {
 
     return this.http.post<any>(this.userurl + 'OrdersApi/GetPromotionListForOrder', data);

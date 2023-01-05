@@ -462,3 +462,47 @@
   padding: 5px !important;
   background: white;
 }
+::ng-deep.dlsr  .dropdown-btn span .ng-star-inserted {
+  position: absolute !important;
+right: 62px !important;
+bottom: 0px;
+top: 50px !important;
+
+
+
+ width: 42px;
+border: 1px solid #337ab7;
+ background: #D23F00 !important;
+   font-size: 12px;
+   box-shadow: 1px 1px #959595;
+   color: #fff;
+   height: 20px;
+   border-radius: 15px;
+text-align: center;
+margin-left: 10px;
+margin-right: -1px;
+
+padding-left: 5px;
+}
+::ng-deep.stts  .dropdown-btn span .ng-star-inserted {
+  position: absolute !important;
+right: 62px !important;
+bottom: 0px;
+top: 50px !important;
+
+
+
+ width: 42px;
+border: 1px solid #337ab7;
+ background: #000000 !important;
+   font-size: 12px;
+   box-shadow: 1px 1px #959595;
+   color: #fff;
+   height: 20px;
+   border-radius: 15px;
+text-align: center;
+margin-left: 10px;
+margin-right: -1px;
+
+padding-left: 5px;
+}

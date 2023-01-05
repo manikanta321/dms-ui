@@ -1,4 +1,5 @@
 <div class="container" style="height: 580px;">
+  <div class="main">
   <div class="add-item addproductpromo">
     <div class="additem" mat-dialog-close>
       <mat-icon mat-button class="close-icon" mat-dialog-close>close</mat-icon>
@@ -40,6 +41,7 @@
         </div>
       </div>
     </div>
+    <div class="scrollone">
     <mat-stepper [linear]="isLinear" #stepper (click)="matsteptabClick($event)" [selectedIndex]="0">
       <mat-step label="Step 1" [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
@@ -330,4 +332,6 @@
       </mat-step>
     </mat-stepper>
   </div>
+  </div>
+</div>
 </div>

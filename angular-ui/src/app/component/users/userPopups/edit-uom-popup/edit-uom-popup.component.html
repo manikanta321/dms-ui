@@ -1,67 +1,65 @@
-
 <div class="container">
     <div class="addUser">
-        <mat-icon  mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+        <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
         <div class="head-th">
-        <h3 class="edituom">Edit UoM</h3>
-    </div>
-    <div class="addUserForm">
-        <div class="row">
+            <h3 class="edituom">Edit UoM</h3>
+        </div>
+        <div class="addUserForm">
+            <div class="row">
 
-            <div class="col">
-                <label class="name">Name <span>*</span></label>
-                <br>
-                
-        <!-- <input type="text" id="uoMn" name="uoMn"   placeholder="Enter your Name" [(ngModel)]="uoMName" #uoMn="ngModel"> -->
-        <input type="text"id="uoMn" name="uoMn"    placeholder="Enter your Name" 
-          required [(ngModel)]="uoMName" #uoMn="ngModel">     
-          <p style="margin-bottom: -16px;
+                <div class="col">
+                    <label class="name">Name <span>*</span></label>
+                    <br>
+
+                    <!-- <input type="text" id="uoMn" name="uoMn"   placeholder="Enter your Name" [(ngModel)]="uoMName" #uoMn="ngModel"> -->
+                    <input type="text" id="uoMn" name="uoMn" placeholder="Enter your Name" required
+                        [(ngModel)]="uoMName" #uoMn="ngModel">
+                    <p style="margin-bottom: -16px;
           padding: 0px;
           
-          ;"
-                                        *ngIf="uoMn.invalid && (uoMn.dirty || uoMn.touched)" class="alert">
-                                        <span style="color:red;position: relative;" *ngIf="uoMn.errors?.['required']">
-                                            *Name is required.
-                                        </span>
-                                     </p>  
-       
-      </div>
-        </div>
-            <br>
-        <div class="row">
-            <div class="col">
+          ;" *ngIf="uoMn.invalid && (uoMn.dirty || uoMn.touched)" class="alert">
+                        <span style="color:red;position: relative;" *ngIf="uoMn.errors?.['required']">
+                            *Name is required.
+                        </span>
+                    </p>
 
-                <label class="display">Display Code<span>*</span></label>
-                <br>
-                <!-- <input type="text" placeholder="Enter your Display Code" [(ngModel)]="uoMShortName" > -->
-                <input type="text"id="uoMdisplay" name="uoMdisplay"    placeholder="Enter your Name" 
-                required [(ngModel)]="uoMShortName" #uoMdisplay="ngModel">     
-                <p style="margin-bottom: -31px;
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+
+                    <label class="display">Display Code<span>*</span></label>
+                    <br>
+                    <!-- <input type="text" placeholder="Enter your Display Code" [(ngModel)]="uoMShortName" > -->
+                    <input type="text" id="uoMdisplay" name="uoMdisplay" placeholder="Enter your Name" required
+                        [(ngModel)]="uoMShortName" #uoMdisplay="ngModel">
+                    <p style="margin-bottom: -31px;
                 padding: 0px;
                 position: relative;
-                bottom: 8px;"
-                                              *ngIf="uoMdisplay.invalid && (uoMdisplay.dirty || uoMdisplay.touched)" class="alert">
-                                              <span style="color:red;position: relative;" *ngIf="uoMdisplay.errors?.['required']">
-                                                  *Display Code is required.
-                                              </span>
-                                          </p>  
-                <br>
-        <br>
-      </div>
-       </div>
-        
-     
-    </div>
-    <div class="row">
-        <div class="col-6">
-            <button class="btn btn-light uombtnn btn-block" [disabled]="!uoMShortName || !uoMName" (click)="editUom()">Save</button>
-            <span class="requiredFFF">Required fields*</span>
-        </div>
-        <div class="col-6">
-            <button class="btn btn-light uombtnnn btn-block"  (click)=" closeDialog()">Cancel</button>
-        </div>
-       </div>
+                bottom: 8px;" *ngIf="uoMdisplay.invalid && (uoMdisplay.dirty || uoMdisplay.touched)" class="alert">
+                        <span style="color:red;position: relative;" *ngIf="uoMdisplay.errors?.['required']">
+                            *Display Code is required.
+                        </span>
+                    </p>
+                    <br>
+                    <br>
+                </div>
+            </div>
 
-       
-</div>
+
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <button class="btn btn-light uombtnn btn-block" [disabled]="!uoMShortName || !uoMName"
+                    (click)="editUom()">Save</button>
+                <span class="requiredFFF">Required fields*</span>
+            </div>
+            <div class="col-6">
+                <button class="btn btn-light uombtnnn btn-block" (click)=" closeDialog()">Cancel</button>
+            </div>
+        </div>
+
+
     </div>
+</div>

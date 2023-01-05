@@ -4,11 +4,9 @@
 
 <div #content *ngIf="isOpen" class="menu-container">
  
+  <div class="menu-item tick">View <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
   <div (click)="editUser()" class="menu-item tick" > Edit <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
 
-
-  <div (click)="deactive()" class="menu-item tick">Deactivate <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
-
-  <div (click)="activate()" class="menu-item tick">Reactivate<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" > </div>
+  <!-- <div (click)="activate()" class="menu-item tick">Reactivate<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" > </div> -->
 
 </div>

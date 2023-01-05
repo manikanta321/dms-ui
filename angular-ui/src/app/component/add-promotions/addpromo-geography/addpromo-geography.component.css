@@ -66,7 +66,9 @@ overflow-x: hidden;
 list-style: none;
   }
   .countries-sect{
-    height: 300px;
+ overflow-x: hidden;
+    height: 400px;
+    overflow-y: auto;
   }
   .saveGeo{
     background: #000000;
@@ -82,4 +84,8 @@ margin: auto;
 }
 ::ng-deep.add-geopgraphy .mat-checkbox-checked.mat-accent .mat-checkbox-background{
   background-color: black !important;
+}
+.cardList{
+  height: 200px;
+  overflow-y: auto;
 }

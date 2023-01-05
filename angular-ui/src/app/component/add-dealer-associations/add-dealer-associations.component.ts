@@ -215,6 +215,7 @@ export class AddDealerAssociationsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
+      allowSearchFilter: true
     };
     this.dropdownSettings2 = {
       singleSelection: false,
@@ -223,6 +224,7 @@ export class AddDealerAssociationsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
+      allowSearchFilter: true
     };
     this.dropdownSettings6 = {
       singleSelection: false,
@@ -231,6 +233,7 @@ export class AddDealerAssociationsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
+      allowSearchFilter: true
     };
 
     this.dropdownSettings4 = {
@@ -240,6 +243,7 @@ export class AddDealerAssociationsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
+      allowSearchFilter: true
     };
     this.dropdownSettings5 = {
       singleSelection: false,
@@ -248,6 +252,7 @@ export class AddDealerAssociationsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
+      allowSearchFilter: true
     }
     this.myFormDlr = this.fb.group({
       city: [this.selectedItems],
@@ -332,6 +337,7 @@ export class AddDealerAssociationsComponent implements OnInit {
           // selectAllText: 'Select All',
           // unSelectAllText: 'UnSelect All',
           itemsShowLimit: 1,
+          allowSearchFilter: true
         };
 
         this.dealersArray.push()
@@ -753,8 +759,8 @@ if(geographyData[0].geographyId){
 
   }
 
-  selectedProduct(event) {
-
+  selectedProduct(event:any) {
+console.log("Event",event)
     var arry = event.match(/[a-z0-9]+/gi)
     console.log('value', arry)
     let ProductId = arry[0];
@@ -772,16 +778,27 @@ if(geographyData[0].geographyId){
     let mani
   }
 
-  selectedDealer(value) {
+  // selectedDealer(value) {
+  //   this.slectedgeo1 = true;
+  //   let dealerId = value
+  //   console.log("DealereId",dealerId)
+  //   let numberDealerId= Number(dealerId)
+  //   this.selectedDealer2 = value;
+  //   localStorage.setItem('dealerSelectedcoustmerId', dealerId);
+  //   this.tooltiptable()
+
+  // }
+  selectedDealer(event:any) {
+    console.log("EVENT",event)
     this.slectedgeo1 = true;
-    let dealerId = value
+    let dealerId = event.customerId;
+    console.log("DealereId",dealerId)
     let numberDealerId= Number(dealerId)
-    this.selectedDealer2 = value;
+    this.selectedDealer2 = event.customerId;
     localStorage.setItem('dealerSelectedcoustmerId', dealerId);
     this.tooltiptable()
 
   }
-
   // onTypeSelect(item: any) {
   //   console.log(item);
   // }

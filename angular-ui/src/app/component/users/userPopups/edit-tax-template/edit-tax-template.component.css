@@ -36,7 +36,7 @@
     background-color: #0091EA;
 }
 .scroll{
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     width: 100%;
   }
@@ -60,7 +60,7 @@
       overflow: hidden !important;
   }
 .tax-head{
-    height: 250px;
+    height: 270px;
 }
 
 .head-t h3{

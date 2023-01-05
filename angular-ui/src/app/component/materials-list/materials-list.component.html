@@ -1,11 +1,11 @@
 <div class="container-fluid containerf">
   <div class="row d-flex">
   </div>
-  <div class="row d-flex">
+  <div class="row d-flex materialscrollbar">
     <div class="col-xl-12 col-md-12 ACVTY-no-pad screen-width">
       <div class="UNFAPP-asmnt-rgt-area screen-h">
-        <div class="row">
-          <div class="col-md-2 col-lg-2 col-6">
+        <div class="row ">
+          <div class="col-md-2 col-lg-2 col-6" >
             <form [formGroup]="myForm">
               <ng-multiselect-dropdown class="catty catty22" name="city" [placeholder]="'Category'" formControlName="city"
                 [disabled]="disabled" [settings]="dropdownSettings" [data]="catgname" (onSelect)="onItemSelect($event)"

@@ -319,7 +319,7 @@ this.dropdownSettings1 = {
   selectAllText: 'Select All',
   unSelectAllText: 'UnSelect All',
   itemsShowLimit: 1,
-  allowSearchFilter: this.StatusFilter
+  allowSearchFilter: true,
 };
 }
 

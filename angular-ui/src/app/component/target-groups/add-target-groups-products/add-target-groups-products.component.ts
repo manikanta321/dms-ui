@@ -88,10 +88,10 @@ export class AddTargetGroupsProductsComponent implements OnInit {
       headerName: "Product Group",
       field: 'productGroup', type: ['nonEditableColumn'], maxWidth: 170
     },
-    {
-      headerName: "Product Code",
-      field: 'productCode', type: ['nonEditableColumn'],
-    },
+    // {
+    //   headerName: "Product Code",
+    //   field: 'productCode', type: ['nonEditableColumn'],
+    // },
 
 
   ];

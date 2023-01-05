@@ -1053,7 +1053,7 @@ export class AddorderpromotionsComponent implements OnInit {
                 // "Promocode": item.promotionName,
                 "stockitemid": item.stockitemid,
                 "stockitemname": item.stockitemname,
-                "uom": item.uomid,
+                "uomid": item.uomid,
                 "uomname": item.uomname,
                 "quantity": item.quantity,
                 "stock": item.stock,
@@ -1217,7 +1217,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
           "stockitemid": item.stockitemid,
           "stockitemname": item.stockitemname,
-          "uom": item.uom,
+          "uomid": item.uomid,
           "uomname": item.uomname,
           "quantity": item.quantity,
           "stock": item.stock,

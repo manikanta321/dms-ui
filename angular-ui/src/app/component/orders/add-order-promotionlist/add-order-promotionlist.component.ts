@@ -13,7 +13,7 @@ import { OrdersApisService } from 'src/app/services/orders-apis.service';
 })
 export class AddOrderPromotionlistComponent implements OnInit {
   // taxtemplete :any =['hj','hj'];
- 
+
   private gridApi!: GridApi;
   promoList = true;
   priceD = true;
@@ -21,7 +21,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
   rowData: any;
   columnDefs: any;
   griddatapromotions: any = [];
-  copyGridPromotions:any = [];
+  copyGridPromotions: any = [];
   actineLabel: any;
   updateOrSave: boolean = false
   editData: boolean = false;
@@ -45,7 +45,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
   promotionstype4: any = [];
   promotionstype1: any = [];
   promotionstype2: any = [];
-  currentSelectedPromos:any = [];
+  currentSelectedPromos: any = [];
 
   constructor(private user: UserService,
     private orders: OrdersApisService,
@@ -114,61 +114,71 @@ export class AddOrderPromotionlistComponent implements OnInit {
       this.imagesapis.forEach(item => {
         this.spinner.hide();
         console.log(this.currentSelectedPromos);
-        let index = this.currentSelectedPromos.findIndex(x=> x.promotionId == item.promotionId);
+        let index = this.currentSelectedPromos.findIndex(x => (x.promotionId == item.promotionId || x.promotionId == item.productPromotionsId));
         let obj = {
           "productPromotionsId": item.productPromotionsId,
           // shd kep is selected as flase
-          "isSelected":index !== -1 ? true:false,
+          "isSelected": index !== -1 ? true : false,
           "promotionTypesId": item.promotionTypesId,
           "promotionName": item.promotionName,
           "imageurl": item.imageurl
         }
         this.arrayOfImages.push(obj);
-        console.log(this.arrayOfImages, "arrayofimagesg");
       });
+
+      // let previousSelectedPromos = []
+      this.arrayOfImages.forEach(x => {
+        if(x.isSelected) this.imagesid.push(x.productPromotionsId);
+      })
+      if (this.imagesid.length > 0)
+        this.getProductsOfPromotionForOrder();
+
     });
   }
 
 
   getpromotionlistById(e, item) {
     // console.log(e, item);
-    
-    if(this.imagesid.indexOf(item.productPromotionsId) == -1){
+
+    if (this.imagesid.indexOf(item.productPromotionsId) == -1) {
       item.isSelected = true;
       this.imagesid.push(item.productPromotionsId);
-      let data = {
-        "ProductPromotionId": this.imagesid,
-        "Dealerid": this.dealerid,
-        "GeographyIdid": this.geographyId
-      }
-  
-      // this.spinner.show();
-      console.log(this.imagesid, "listdatapromotionsids")
-      this.orders.GetProductsOfPromotionForOrder(data).subscribe((res: any) => {
-        // this.griddatapromotions = res.response;
-  
-        // this.griddatapromotions.map(item => {
-        //   item.isShowPromos = false;
-        //   item.isProductSelected = false;
-        //   return item;
-        // });
-        this.orderPromotionFormatter(res.response);
-        // this.griddata = this.orderNonPromotionFormatter(this.griddatapromotions);
-        // this.griddatapromotions.sort((a, b) => b.isProductSelected - a.isProductSelected   );
-        this.spinner.hide();
-        console.log(this.griddatapromotions, "griddata");
-      });
-    }else{
+      this.getProductsOfPromotionForOrder();
+    } else {
       item.isSelected = false;
       this.imagesid.splice(this.imagesid.indexOf(item.productPromotionsId), 1);
       this.griddatapromotions.splice(this.griddatapromotions.findIndex(x => x.productPromotionsId == item.productPromotionsId), 1);
     }
+  }
 
+  getProductsOfPromotionForOrder() {
+    let data = {
+      "ProductPromotionId": this.imagesid,
+      "Dealerid": this.dealerid,
+      "GeographyIdid": this.geographyId
+    }
 
+    // this.spinner.show();
+    console.log(this.imagesid, "listdatapromotionsids")
+    this.orders.GetProductsOfPromotionForOrder(data).subscribe((res: any) => {
+      // this.griddatapromotions = res.response;
+
+      // this.griddatapromotions.map(item => {
+      //   item.isShowPromos = false;
+      //   item.isProductSelected = false;
+      //   return item;
+      // });
+      this.orderPromotionFormatter(res.response);
+      // this.griddata = this.orderNonPromotionFormatter(this.griddatapromotions);
+      // this.griddatapromotions.sort((a, b) => b.isProductSelected - a.isProductSelected   );
+      this.spinner.hide();
+      console.log(this.griddatapromotions, "griddata");
+    });
   }
 
   appendStockItemFields(stockItem) {
     let formatObj: any = {};
+    // console.log(this.currentSelectedPromos);
     formatObj.stockitemid = stockItem.stockitemid;
     formatObj.stockitemname = stockItem.stockitemname;
     formatObj.productSKUName = stockItem.productSKUName;
@@ -185,14 +195,14 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
     promotionList.forEach(item => {
 
-      let exisitPromotion =  this.griddatapromotions.find(x => x.productPromotionsId === item.productPromotionsId);
+      let exisitPromotion = this.griddatapromotions.find(x => x.productPromotionsId === item.productPromotionsId);
 
-      if(!exisitPromotion){
+      if (!exisitPromotion) {
         switch (item.promotionTypesId) {
           case 1:
-  
+
             if (item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0) {
-  
+
               item.promoDetails.buyGroups.forEach(stockItem => {
                 if (stockItem.stockitemid.length != 0) {
                   stockItem.stockitemid = stockItem.stockitemid.map(stock => {
@@ -200,15 +210,15 @@ export class AddOrderPromotionlistComponent implements OnInit {
                     return stock
                   })
                 }
-  
+
               });
               item.promoDetails.buyGroups.totalQuantity = 0;
               item.promoDetails.buyGroups.totalAmount = 0;
             }
-  
+
             // getgroups
             if (item.promoDetails && item.promoDetails.getGroups && item.promoDetails.getGroups && item.promoDetails.getGroups.length != 0) {
-  
+
               item.promoDetails.getGroups.forEach(stockItem => {
                 if (stockItem.stockitemid.length != 0) {
                   stockItem.stockitemid = stockItem.stockitemid.map(stock => {
@@ -216,16 +226,16 @@ export class AddOrderPromotionlistComponent implements OnInit {
                     return stock
                   })
                 }
-  
+
               });
               item.promoDetails.getGroups.totalQuantity = 0;
               item.promoDetails.getGroups.totalAmount = 0;
             }
-  
+
             break;
-  
+
           case 2:
-  
+
             if (item.promoDetails && item.promoDetails.buySets && item.promoDetails.buySets && item.promoDetails.buySets.length != 0) {
               item.promoDetails.buySets.forEach(setItem => {
                 setItem.buyGroups.forEach(stockItem => {
@@ -240,7 +250,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
                 });
               });
             }
-  
+
             if (item.promoDetails && item.promoDetails.getSets && item.promoDetails.getSets && item.promoDetails.getSets.length != 0) {
               item.promoDetails.getSets.forEach(setItem => {
                 setItem.getGroups.forEach(stockItem => {
@@ -255,9 +265,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
                 });
               });
             }
-  
+
             break;
-  
+
           case 3:
             if (item.promoDetails && item.promoDetails.stockitems && item.promoDetails.stockitems.length != 0) {
               item.promoDetails.stockitems = item.promoDetails.stockitems.map(stockItem => {
@@ -268,7 +278,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
               item.promoDetails.totalAmount = 0;
             }
             break;
-  
+
           case 4:
             if (item.promoDetails && item.promoDetails.stockitems && item.promoDetails.stockitems.length != 0) {
               item.promoDetails.stockitems = item.promoDetails.stockitems.map(stockItem => {
@@ -279,7 +289,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
               item.promoDetails.totalAmount = 0;
             }
             break;
-  
+
           default:
             break;
         }
@@ -289,7 +299,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
         this.griddatapromotions.push(item);
       }
 
-      
+
 
     });
 
@@ -434,11 +444,11 @@ export class AddOrderPromotionlistComponent implements OnInit {
     this.griddatapromotions.forEach(item => {
       switch (item.promotionTypesId) {
         case 1:
-          
-          
-          let buysets:any =[];
-          let getsets:any = [];
-          
+
+
+          let buysets: any = [];
+          let getsets: any = [];
+
 
           // buygroups
           if (item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0) {
@@ -452,7 +462,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
                       "Taxid": stock.Taxid,
                       "stockitemid": stock.stockitemid,
                       "Quantity": stock.Quantity,
-                      "stock":stock.stock
+                      "stock": stock.stock
 
                     };
                     selectedPromotionDatabuyset.push(obj)
@@ -462,8 +472,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
               }
 
               let buyGroupdata = {
-                "GroupId":stockItem.groupId,
-                "AddItems":selectedPromotionDatabuyset
+                "GroupId": stockItem.groupId,
+                "AddItems": selectedPromotionDatabuyset
 
               }
 
@@ -482,7 +492,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
                       "Taxid": stock.Taxid,
                       "stockitemid": stock.stockitemid,
                       "Quantity": stock.Quantity,
-                      "stock":stock.stock
+                      "stock": stock.stock
 
                     };
                     selectedPromotionDatagetset.push(obj)
@@ -491,29 +501,29 @@ export class AddOrderPromotionlistComponent implements OnInit {
                 })
               }
               let getGroupdata = {
-                "GroupId":stockItem.groupId,
-                "AddItems":selectedPromotionDatagetset
+                "GroupId": stockItem.groupId,
+                "AddItems": selectedPromotionDatagetset
               }
-              getsets.push(getGroupdata)             
+              getsets.push(getGroupdata)
             });
           }
 
           let data1 = {
             "PromotionId": item.productPromotionsId,
             "buySet": buysets,
-            "getSet":getsets
+            "getSet": getsets
           }
           this.promotionstype1.push(data1);
 
           break;
         case 2:
-          let gpidandBysets:any =[];
-          let gpidandgetsets:any = [];
+          let gpidandBysets: any = [];
+          let gpidandgetsets: any = [];
 
           // buygrops
           if (item.promoDetails && item.promoDetails.buySets && item.promoDetails.buySets && item.promoDetails.buySets.length != 0) {
             item.promoDetails.buySets.forEach(setItem => {
-              let buysets2:any =[];
+              let buysets2: any = [];
               setItem.buyGroups.forEach(stockItem => {
                 let selectedPromotionDatabuyset2: any = [];
                 if (stockItem.stockitemid.length != 0) {
@@ -523,7 +533,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
                         "Taxid": stock.Taxid,
                         "stockitemid": stock.stockitemid,
                         "Quantity": stock.Quantity,
-                        "stock":stock.stock
+                        "stock": stock.stock
                       };
                       selectedPromotionDatabuyset2.push(obj)
                     }
@@ -531,65 +541,65 @@ export class AddOrderPromotionlistComponent implements OnInit {
                 }
 
                 let buyGroupdata2 = {
-                  "SetId":stockItem.set,
-                  "AddItems":selectedPromotionDatabuyset2
-  
+                  "SetId": stockItem.set,
+                  "AddItems": selectedPromotionDatabuyset2
+
                 }
-  
-                buysets2.push(buyGroupdata2) 
+
+                buysets2.push(buyGroupdata2)
               });
 
               let groupid = {
                 "GroupId": setItem.groupId,
-                "Groups":buysets2
+                "Groups": buysets2
               }
               gpidandBysets.push(groupid)
             });
           }
           // getgroups
 
-        if (item.promoDetails && item.promoDetails.getSets && item.promoDetails.getSets && item.promoDetails.getSets.length != 0) {
-          item.promoDetails.getSets.forEach(setItem => {
-            let getsets2:any = [];
-            setItem.getGroups.forEach(stockItem => {
-              let selectedPromotionDatagetset2: any = [];
-              if (stockItem.stockitemid.length != 0) {
-                stockItem.stockitemid.forEach(stock => {
-                  if (stock.isProductSelected) {
-                    let obj = {
+          if (item.promoDetails && item.promoDetails.getSets && item.promoDetails.getSets && item.promoDetails.getSets.length != 0) {
+            item.promoDetails.getSets.forEach(setItem => {
+              let getsets2: any = [];
+              setItem.getGroups.forEach(stockItem => {
+                let selectedPromotionDatagetset2: any = [];
+                if (stockItem.stockitemid.length != 0) {
+                  stockItem.stockitemid.forEach(stock => {
+                    if (stock.isProductSelected) {
+                      let obj = {
 
-                      "Taxid": stock.Taxid,
-                      "stockitemid": stock.stockitemid,
-                      "Quantity": stock.Quantity,
-                      "stock":stock.stock
-    
-                    };
-                    selectedPromotionDatagetset2.push(obj)
-                  }
-                })
+                        "Taxid": stock.Taxid,
+                        "stockitemid": stock.stockitemid,
+                        "Quantity": stock.Quantity,
+                        "stock": stock.stock
+
+                      };
+                      selectedPromotionDatagetset2.push(obj)
+                    }
+                  })
+                }
+                let getGroupdata2 = {
+                  "SetId": stockItem.set,
+                  "AddItems": selectedPromotionDatagetset2
+
+                }
+
+                getsets2.push(getGroupdata2)
+              });
+
+              let groupid2 = {
+                "GroupId": setItem.groupId,
+                "Groups": getsets2
               }
-              let getGroupdata2 = {
-                "SetId":stockItem.set,
-                "AddItems":selectedPromotionDatagetset2
+              gpidandgetsets.push(groupid2)
 
-              }
-
-              getsets2.push(getGroupdata2)
             });
-
-            let groupid2 = {
-              "GroupId": setItem.groupId,
-              "Groups":getsets2
-            }
-            gpidandgetsets.push(groupid2)
-
-          });
-        }
+          }
           let data2 = {
             "PromotionId": item.productPromotionsId,
-            "BuySets":gpidandBysets,
-            "GetSets":gpidandgetsets
-            
+            "BuySets": gpidandBysets,
+            "GetSets": gpidandgetsets
+
           }
 
           this.promotionstype2.push(data2);
@@ -606,7 +616,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
                   "Taxid": stockItem.Taxid,
                   "stockitemid": stockItem.stockitemid,
                   "Quantity": stockItem.Quantity,
-                  "stock":stockItem.stock
+                  "stock": stockItem.stock
 
                 };
                 selectedPromotionData3.push(obj)
@@ -631,7 +641,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
                   "Taxid": stockItem.Taxid,
                   "stockitemid": stockItem.stockitemid,
                   "Quantity": stockItem.Quantity,
-                  "stock":stockItem.stock
+                  "stock": stockItem.stock
 
                 };
                 selectedPromotionData4.push(obj)
@@ -650,7 +660,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
     });
     // to get all promotions in common res
-    let allopromotions: any = [...this.promotionstype1, ...this.promotionstype2,...this.promotionstype3, ...this.promotionstype4];
+    let allopromotions: any = [...this.promotionstype1, ...this.promotionstype2, ...this.promotionstype3, ...this.promotionstype4];
 
 
     let data = {

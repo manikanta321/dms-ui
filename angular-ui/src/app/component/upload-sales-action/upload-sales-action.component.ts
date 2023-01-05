@@ -35,12 +35,14 @@ export class UploadSalesActionComponent implements OnInit {
     // this.batchId = sessionStorage.getItem("BatchId");
   }
   viewShipment() {
+    this.isOpen = false;
     this.batchId = sessionStorage.getItem("BatchId");
 sessionStorage.setItem("batchID",this.batchId);
 sessionStorage.setItem("viewData","View");
 this.dialog.open(SalesInvoiceDownloadComponent, {width: '1289px'});
   }
   downloadShipment() {
+    this.isOpen = false;
     this.batchId = sessionStorage.getItem("BatchId");
     sessionStorage.setItem("batchID",this.batchId);
     sessionStorage.setItem("viewData"," ");

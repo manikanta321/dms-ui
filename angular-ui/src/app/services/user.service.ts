@@ -89,6 +89,11 @@ export class UserService {
   public dealerDropdownOrderlist() {
     return this.http.get<any>(`${this.userurl}DealerApi/GetAssoDealerdrop`);
   }
+
+  public dealerDropdownOrderlist1() {
+    debugger
+    return this.http.get<any>(`${this.userurl}DealerApi/GettargetDealerdropdown`);
+  }
   // http://13.126.235.145:801/api/DealerApi/GetAssoDealerdrop
   public GeographyDropdownOrderlist() {
     return this.http.get<any>(`${this.userurl}OrdersApi/GetordergeoDropdown`);

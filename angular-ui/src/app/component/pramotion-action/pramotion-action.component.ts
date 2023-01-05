@@ -3,6 +3,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
+import { PromotionSharedServicesService } from 'src/app/services/promotion-shared-services.service';
 
 import tippy, { hideAll } from 'tippy.js'; 
 import { AddPromotionsComponent } from '../add-promotions/add-promotions.component';
@@ -28,7 +29,10 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
 
   @ViewChild('trigger') button;
 
-  constructor(private changeDetector: ChangeDetectorRef,private dialog: MatDialog) {}
+  constructor(private changeDetector: ChangeDetectorRef,private dialog: MatDialog,
+    ) {
+
+    }
 
   ngAfterViewInit(): void {
     this.tippyInstance = tippy(this.button.nativeElement);

@@ -1023,6 +1023,9 @@ li {
 .print-img {
   float: right;
   width: 8%;
+  position: relative;
+  z-index: 1;
+  top: 5px;
 }
 
 .uom-cls {

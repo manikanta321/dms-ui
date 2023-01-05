@@ -47,7 +47,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="billingAdrs">
-                                <label class="DealerInfo-label">Billing Address   {{BillingaddressId}} <span class="astr">*</span></label>
+                                <label class="DealerInfo-label">Billing Address {{BillingaddressId}} <span
+                                        class="astr">*</span></label>
                                 <!-- <input matInput placeholder=" Select Billing address" #input class="form-control container input-box" > -->
                                 <ng-select class="BillingAddress" [items]="dealersbillingAddress" id="BillingAddress"
                                     name="BillingAddress" required [virtualScroll]="true" bindLabel="Billingaddress"
@@ -130,9 +131,9 @@
                                 <ng-container *ngFor="let PromotionObj of AddOrderPromotionData; let i=index;">
                                     <tr *ngFor="let Item of PromotionObj.prodDetails; let j=index;">
                                         <td>
-                                            <p class="itemLeft"><span class="promoItem"><span
-                                                        *ngIf="j==0" style="color: #fff;"> P {{i + 1}}</span>
-                                                </span>{{Item.stockitemname}}</p>
+                                            <p class="itemLeft"><span class="promoItem" style="color: #fff;"
+                                                    *ngIf="j==0"> P {{i + 1}}</span>
+                                                {{Item.stockitemname}}</p>
                                         </td>
                                         <td>
                                             <input type="text" disabled [(ngModel)]="Item.uomname"
@@ -146,7 +147,7 @@
                                             <input type="text" disabled [(ngModel)]="Item.stock" class="IteminputBoxes">
                                         </td>
                                         <td>
-                                            <input type="text" disabled [(ngModel)]="Item.mrp" class="IteminputBoxes">
+                                            <input type="text" disabled [(ngModel)]="Item.price" class="IteminputBoxes">
                                         </td>
                                         <td>
                                             <input type="text" disabled [(ngModel)]="Item.discount"
@@ -164,7 +165,8 @@
                                             <input type="text" disabled [(ngModel)]="Item.amount"
                                                 class="IteminputBoxes">
                                         </td>
-                                        <mat-icon class="removeCircle" (click)="removePromotionItem(Item, PromotionObj.promotionId)">
+                                        <mat-icon class="removeCircle"
+                                            (click)="removePromotionItem(Item, PromotionObj.promotionId)">
                                             remove_circle</mat-icon>
                                     </tr>
                                 </ng-container>
@@ -184,7 +186,7 @@
                                         <input type="text" disabled [(ngModel)]="Item.stock" class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" disabled [(ngModel)]="Item.mrp" class="IteminputBoxes">
+                                        <input type="text" disabled [(ngModel)]="Item.price" class="IteminputBoxes">
                                     </td>
                                     <td>
                                         <input type="text" disabled [(ngModel)]="Item.discount" class="IteminputBoxes">
@@ -479,7 +481,7 @@
                                         <td>{{Item.materialCustomName}}</td>
                                         <td>{{Item.classification}}</td>
                                         <td>{{Item.productSKUName}}</td>
-                                        <td>{{Item.mrp}}</td>
+                                        <td>{{Item.price}}</td>
                                         <td><input type="number" placeholder="1000" class="quatity-inp"
                                                 [(ngModel)]="Item.stock"></td>
                                         <!-- <td>{{Item.stockqty}}</td> -->
@@ -500,7 +502,7 @@
 
                                         <td><input type="number" placeholder="5" class="quatity-inp"
                                                 [(ngModel)]="Item.quantity" (keyup)="quantityChange()"></td>
-                                        <td>{{(Item.quantity ?? 0) * Item.mrp }}</td>
+                                        <td>{{(Item.quantity ?? 0) * Item.price }}</td>
                                     </tr>
                                 </tbody>
                                 <tfoot>

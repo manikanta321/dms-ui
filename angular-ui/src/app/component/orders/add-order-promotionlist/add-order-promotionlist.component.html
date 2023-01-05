@@ -100,7 +100,7 @@
                                                                 (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}
                                                         </td>
                                                         <td>{{Item.productSKUName}}</td>
-                                                        <td>{{Item.mrp}}</td>
+                                                        <td>{{Item.price}}</td>
                                                         <td><input type="number" placeholder="1000" class="quatity-inp"
                                                                 [(ngModel)]="Item.stock"></td>
                                                         <td>
@@ -119,7 +119,7 @@
                                                         <td><input type="number" placeholder="5" class="quatity-inp"
                                                                 [(ngModel)]="Item.Quantity"
                                                                 (keyup)="quantityChange(data)"></td>
-                                                        <td>{{(Item.Quantity ?? 0) * Item.mrp }}</td>
+                                                        <td>{{(Item.Quantity ?? 0) * Item.price }}</td>
                                                     </tr>
                                                     <tr class="bottom-table">
                                                         <td colspan="4" class="btm-total"><b>Total </b>(for selected
@@ -185,7 +185,7 @@
                                                                 (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}
                                                         </td>
                                                         <td>{{Item.productSKUName}}</td>
-                                                        <td>{{Item.mrp}}</td>
+                                                        <td>{{Item.price}}</td>
                                                         <td><input type="number" placeholder="1000" class="quatity-inp"
                                                                 [(ngModel)]="Item.stock"></td>
                                                         <td>
@@ -204,7 +204,7 @@
                                                         <td><input type="number" placeholder="5" class="quatity-inp"
                                                                 [(ngModel)]="Item.Quantity"
                                                                 (keyup)="quantityChange(data)"></td>
-                                                        <td>{{(Item.mrp) * (Item.Quantity)}}</td>
+                                                        <td>{{(Item.price) * (Item.Quantity)}}</td>
                                                     </tr>
                                                     <tr class="bottom-table">
 
@@ -278,7 +278,7 @@
                                                                     (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}
                                                             </td>
                                                             <td>{{Item.productSKUName}}</td>
-                                                            <td>{{Item.mrp}}</td>
+                                                            <td>{{Item.price}}</td>
                                                             <td><input type="number" placeholder="1000"
                                                                     class="quatity-inp" [(ngModel)]="Item.stock"></td>
                                                             <td>
@@ -297,7 +297,7 @@
                                                             <td><input type="number" placeholder="5" class="quatity-inp"
                                                                     [(ngModel)]="Item.Quantity"
                                                                     (keyup)="quantityChange(data)"></td>
-                                                            <td>{{(Item.Quantity ?? 0) * Item.mrp }}</td>
+                                                            <td>{{(Item.Quantity ?? 0) * Item.price }}</td>
                                                         </tr>
                                                         <tr class="bottom-table">
                                                             <td colspan="4" class="btm-total"><b>Total </b>(for selected
@@ -369,7 +369,7 @@
                                                                     (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}
                                                             </td>
                                                             <td>{{Item.productSKUName}}</td>
-                                                            <td>{{Item.mrp}}</td>
+                                                            <td>{{Item.price}}</td>
                                                             <td><input type="number" placeholder="1000"
                                                                     class="quatity-inp" [(ngModel)]="Item.stock"></td>
                                                             <td>
@@ -388,7 +388,7 @@
                                                             <td><input type="number" placeholder="5" class="quatity-inp"
                                                                     [(ngModel)]="Item.Quantity"
                                                                     (keyup)="quantityChange(data)"></td>
-                                                            <td>{{(Item.Quantity ?? 0) * Item.mrp }}</td>
+                                                            <td>{{(Item.Quantity ?? 0) * Item.price }}</td>
                                                         </tr>
                                                         <tr class="bottom-table">
                                                             <td colspan="4" class="btm-total"><b>Total </b>(for selected
@@ -458,7 +458,7 @@
                                                                 (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}
                                                         </td>
                                                         <td>{{Item.productSKUName}}</td>
-                                                        <td>{{Item.mrp}}</td>
+                                                        <td>{{Item.price}}</td>
                                                         <td><input type="number" placeholder="1000" class="quatity-inp"
                                                                 [(ngModel)]="Item.stock"></td>
                                                         <td>
@@ -477,7 +477,7 @@
                                                         <td><input type="number" placeholder="5" class="quatity-inp"
                                                                 [(ngModel)]="Item.Quantity"
                                                                 (keyup)="quantityChange(data)"></td>
-                                                        <td>{{(Item.mrp) * (Item.Quantity)}}</td>
+                                                        <td>{{(Item.price) * (Item.Quantity)}}</td>
                                                     </tr>
                                                     <tr class="bottom-table">
                                                         <td colspan="4" class="btm-total"><b>Total </b>(for selected
@@ -543,7 +543,7 @@
                                                                 (change)="checkboxChange($event,Item, data)">{{Item.stockItemName}}
                                                         </td>
                                                         <td>{{Item.productSKUName}}</td>
-                                                        <td>{{Item.mrp}}</td>
+                                                        <td>{{Item.price}}</td>
                                                         <td><input type="number" placeholder="1000" class="quatity-inp"
                                                                 [(ngModel)]="Item.stock"></td>
                                                         <td>
@@ -562,7 +562,7 @@
                                                         <td><input type="number" placeholder="5" class="quatity-inp"
                                                                 [(ngModel)]="Item.Quantity"
                                                                 (keyup)="quantityChange(data)"></td>
-                                                        <td>{{(Item.mrp) * (Item.Quantity)}}</td>
+                                                        <td>{{(Item.price) * (Item.Quantity)}}</td>
                                                     </tr>
                                                     <tr class="bottom-table">
                                                         <td colspan="4" class="btm-total"><b>Total </b>(for selected

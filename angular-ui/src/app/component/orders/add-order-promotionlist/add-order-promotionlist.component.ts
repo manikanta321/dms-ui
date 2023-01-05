@@ -55,7 +55,6 @@ export class AddOrderPromotionlistComponent implements OnInit {
     private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.buygg = localStorage.getItem('buygroupromo');
     this.taxdropdown();
 
     let editV = localStorage.getItem('Edit');
@@ -171,7 +170,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
     formatObj.stockItemId = stockItem.stockItemId;
     formatObj.stockItemName = stockItem.stockItemName;
     formatObj.productSKUName = stockItem.productSKUName;
-    formatObj.mrp = stockItem.mrp;
+    formatObj.price = stockItem.price;
     formatObj.stock = stockItem.stock
     formatObj.isProductSelected = stockItem.isProductSelected == undefined ? false : stockItem.isProductSelected;
     formatObj.Quantity = stockItem.quantity == undefined ? null : stockItem.quantity;
@@ -315,7 +314,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
               stockItem.stockItemId.forEach(stock => {
                 if (stock.isProductSelected) {
                   item.promoDetails.buyGroups.totalQuantity += stock.Quantity;
-                  item.promoDetails.buyGroups.totalAmount += (stock.mrp * stock.Quantity);
+                  item.promoDetails.buyGroups.totalAmount += (stock.price * stock.Quantity);
                 }
               })
             }
@@ -331,7 +330,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
               stockItem.stockItemId.forEach(stock => {
                 if (stock.isProductSelected) {
                   item.promoDetails.getGroups.totalQuantity += stock.Quantity;
-                  item.promoDetails.getGroups.totalAmount += (stock.mrp * stock.Quantity);
+                  item.promoDetails.getGroups.totalAmount += (stock.price * stock.Quantity);
                 }
               })
             }
@@ -351,7 +350,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
                 stockItem.stockItemId.forEach(stock => {
                   if (stock.isProductSelected) {
                     stockItem.totalQuantity += stock.Quantity;
-                    stockItem.totalAmount += (stock.mrp * stock.Quantity);
+                    stockItem.totalAmount += (stock.price * stock.Quantity);
                   }
                 })
               }
@@ -372,7 +371,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
                 stockItem.stockItemId.forEach(stock => {
                   if (stock.isProductSelected) {
                     stockItem.totalQuantity += stock.Quantity;
-                    stockItem.totalAmount += (stock.mrp * stock.Quantity);
+                    stockItem.totalAmount += (stock.price * stock.Quantity);
                   }
                 })
               }
@@ -389,7 +388,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
           item.promoDetails.stockItems.forEach(stockItem => {
             if (stockItem.isProductSelected) {
               item.promoDetails.totalQuantity += stockItem.Quantity;
-              item.promoDetails.totalAmount += (stockItem.mrp * stockItem.Quantity);
+              item.promoDetails.totalAmount += (stockItem.price * stockItem.Quantity);
             }
           });
         }
@@ -402,7 +401,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
           item.promoDetails.stockItems.forEach(stockItem => {
             if (stockItem.isProductSelected) {
               item.promoDetails.totalQuantity += stockItem.Quantity;
-              item.promoDetails.totalAmount += (stockItem.mrp * stockItem.Quantity);
+              item.promoDetails.totalAmount += (stockItem.price * stockItem.Quantity);
             }
           });
         }

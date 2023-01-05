@@ -964,7 +964,7 @@ export class AddorderpromotionsComponent implements OnInit {
       let selectedNonPromotionItem = this.nonpromotionlist.find(x => x.stockItemId == item.stockItemId);
       obj.classification = item.classification;
       obj.materialCustomName = item.materialCustomName;
-      obj.mrp = item.mrp;
+      obj.price = item.price;
       obj.stock = selectedNonPromotionItem == undefined ? item.stock : selectedNonPromotionItem.quantity;
       obj.productSKUName = item.productSKUName;
       obj.stockItemId = item.stockItemId;
@@ -986,7 +986,7 @@ export class AddorderpromotionsComponent implements OnInit {
     this.orderNonPromotionsdata.forEach(item => {
       if (item.isPromotionSelected) {
         quantityadd += item.quantity;
-        price += ((item.quantity ?? 0) * item.mrp);
+        price += ((item.quantity ?? 0) * item.price);
       }
     });
 
@@ -1004,7 +1004,7 @@ export class AddorderpromotionsComponent implements OnInit {
     this.orderNonPromotionsdata.forEach(item => {
       if (item.isPromotionSelected) {
         this.quantityadd += item.quantity;
-        this.price += ((item.quantity ?? 0) * item.mrp);
+        this.price += ((item.quantity ?? 0) * item.price);
       }
     });
 
@@ -1058,7 +1058,7 @@ export class AddorderpromotionsComponent implements OnInit {
                 "uomname": item.uomname,
                 "quantity": item.quantity,
                 "stock": item.stock,
-                "mrp": item.mrp,
+                "price": item.price,
                 "discount": item.discount,
                 "finalValue": item.finalValue,
                 "taxvalue": item.taxvalue,
@@ -1103,11 +1103,11 @@ export class AddorderpromotionsComponent implements OnInit {
     }
 
     if (this.AddOrderPromotionData) {
-      this.AddOrderPromotionData.forEach( x =>{
+      this.AddOrderPromotionData.forEach( (x, index) =>{
         let obj:any = {};
         obj.promotionId = x.promotionId;
         obj.itemDetails = x.prodDetails;
-        obj.promocode = x.promocode ?? 'P3';
+        obj.promocode = 'P' +(index + 1);
         itemsCount.push(obj);
       })
     }
@@ -1135,6 +1135,10 @@ export class AddorderpromotionsComponent implements OnInit {
       console.log(data, "data");
 
       this.dialogRef.close(true);
+
+      // localStorage.removeItem('geographyId');
+      localStorage.removeItem('dealerid');
+      // localStorage.removeItem('buygroupromo');
     });
   }
 
@@ -1206,7 +1210,7 @@ export class AddorderpromotionsComponent implements OnInit {
           "uomname": item.uomname,
           "quantity": item.quantity,
           "stock": item.stock,
-          "mrp": item.price,
+          "price": item.price,
           "discount": item.discount,
           "finalValue": item.finalvalue,
           "taxvalue": item.taxvalue,

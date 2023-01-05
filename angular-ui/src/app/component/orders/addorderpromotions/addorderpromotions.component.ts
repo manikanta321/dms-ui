@@ -1197,7 +1197,7 @@ export class AddorderpromotionsComponent implements OnInit {
       this.startdate = this.editorderbyID.requirementdate
       this.DeliveryInstructions = this.editorderbyID.deliveryistruction
 
-      this.nonpromotionlist = this.editorderbyID.itemcount.filter(x => x.promocode.toLowerCase().indexOf('np') != -1).map(x => x.itemDetails);
+      this.nonpromotionlist = this.editorderbyID.itemcount.filter(x => x.promocode.toLowerCase().indexOf('np') != -1).map(x => x.itemDetails[0]);
       this.AddorderNonpromotiondata = { itemDetails: [], promocode: 'NP', promotionId: 0 };
       this.nonpromotionlist.forEach(item => {
         // Promocode: this.promotionName,

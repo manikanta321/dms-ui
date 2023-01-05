@@ -596,9 +596,6 @@ export class OrderListComponent implements OnInit {
 
   addOrderPromotion() {
     const dialogRef = this.dialog.open(AddorderpromotionsComponent, {
-      // width: '100vw',
-      width: '900px',
-      height: '663px',
       panelClass: 'material-add-edit'
     });
     localStorage.setItem('Edit', 'Add');

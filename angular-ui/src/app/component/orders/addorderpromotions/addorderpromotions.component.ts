@@ -116,7 +116,7 @@ export class AddorderpromotionsComponent implements OnInit {
   startdate: any;
   minDate = new Date();
   selectedStartDate: any;
-  CustomerPoId: any = null;
+  CustomerPoId: any = 0;
   editorderbyID: any = {};
   shippingPackingchargeDetails:any = {};
 

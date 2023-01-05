@@ -132,9 +132,10 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
   getpromotionlistById(e, item) {
     // console.log(e, item);
+    
     if(this.imagesid.indexOf(item.productPromotionsId) == -1){
+      item.isSelected = true;
       this.imagesid.push(item.productPromotionsId);
-
       let data = {
         "ProductPromotionId": this.imagesid,
         "Dealerid": this.dealerid,
@@ -158,7 +159,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
         console.log(this.griddatapromotions, "griddata");
       });
     }else{
-
+      item.isSelected = false;
       this.imagesid.splice(this.imagesid.indexOf(item.productPromotionsId), 1);
       this.griddatapromotions.splice(this.griddatapromotions.findIndex(x => x.productPromotionsId == item.productPromotionsId), 1);
     }
@@ -258,8 +259,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
             break;
   
           case 3:
-            if (item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0) {
-              item.promoDetails.stockItems = item.promoDetails.stockItems.map(stockItem => {
+            if (item.promoDetails && item.promoDetails.stockitems && item.promoDetails.stockitems.length != 0) {
+              item.promoDetails.stockitems = item.promoDetails.stockitems.map(stockItem => {
                 stockItem = this.appendStockItemFields(stockItem);
                 return stockItem
               });
@@ -269,8 +270,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
             break;
   
           case 4:
-            if (item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0) {
-              item.promoDetails.stockItems = item.promoDetails.stockItems.map(stockItem => {
+            if (item.promoDetails && item.promoDetails.stockitems && item.promoDetails.stockitems.length != 0) {
+              item.promoDetails.stockitems = item.promoDetails.stockitems.map(stockItem => {
                 stockItem = this.appendStockItemFields(stockItem);
                 return stockItem
               });
@@ -383,10 +384,10 @@ export class AddOrderPromotionlistComponent implements OnInit {
         break;
 
       case 3:
-        if (item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0) {
+        if (item.promoDetails && item.promoDetails.stockitems && item.promoDetails.stockitems.length != 0) {
           item.promoDetails.totalQuantity = 0;
           item.promoDetails.totalAmount = 0;
-          item.promoDetails.stockItems.forEach(stockItem => {
+          item.promoDetails.stockitems.forEach(stockItem => {
             if (stockItem.isProductSelected) {
               item.promoDetails.totalQuantity += stockItem.Quantity;
               item.promoDetails.totalAmount += (stockItem.price * stockItem.Quantity);
@@ -396,10 +397,10 @@ export class AddOrderPromotionlistComponent implements OnInit {
         break;
 
       case 4:
-        if (item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0) {
+        if (item.promoDetails && item.promoDetails.stockitems && item.promoDetails.stockitems.length != 0) {
           item.promoDetails.totalQuantity = 0;
           item.promoDetails.totalAmount = 0;
-          item.promoDetails.stockItems.forEach(stockItem => {
+          item.promoDetails.stockitems.forEach(stockItem => {
             if (stockItem.isProductSelected) {
               item.promoDetails.totalQuantity += stockItem.Quantity;
               item.promoDetails.totalAmount += (stockItem.price * stockItem.Quantity);
@@ -597,8 +598,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
           let selectedPromotionData3: any = [];
 
-          if (item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0) {
-            item.promoDetails.stockItems.forEach(stockItem => {
+          if (item.promoDetails && item.promoDetails.stockitems && item.promoDetails.stockitems.length != 0) {
+            item.promoDetails.stockitems.forEach(stockItem => {
               if (stockItem.isProductSelected) {
                 let obj = {
 
@@ -622,8 +623,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
         case 4:
           let selectedPromotionData4: any = [];
 
-          if (item.promoDetails && item.promoDetails.stockItems && item.promoDetails.stockItems.length != 0) {
-            item.promoDetails.stockItems.forEach(stockItem => {
+          if (item.promoDetails && item.promoDetails.stockitems && item.promoDetails.stockitems.length != 0) {
+            item.promoDetails.stockitems.forEach(stockItem => {
               if (stockItem.isProductSelected) {
                 let obj = {
 

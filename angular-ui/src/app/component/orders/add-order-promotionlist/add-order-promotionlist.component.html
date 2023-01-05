@@ -14,7 +14,7 @@
                     <div class="promoimgs">
                         <div class="col-md-4 img-container" *ngFor="let Item of arrayOfImages;let i=index;">
                             <div (click)="getpromotionlistById($event,Item);" >
-                                <img class="card1" src="data:image/jpeg;base64,{{Item.imageurl}}"
+                                <img class="card1" src="data:image/jpeg;base64,{{Item.imageurl}}" [ngClass]="{ 'selected': Item.isSelected }"
                                     alt="image does not exit">
                             </div>
                         </div>
@@ -456,7 +456,7 @@
                                                         <th data-sortable="false">Amount</th>
                                                     </tr>
                                                     <tr class="table-row"
-                                                        *ngFor="let Item of data.promoDetails.stockItems">
+                                                        *ngFor="let Item of data.promoDetails.stockitems">
                                                         <td><input type="checkbox" [checked]="Item.isProductSelected"
                                                                 (change)="checkboxChange($event,Item, data)">{{Item.stockitemname}}
                                                         </td>
@@ -541,7 +541,7 @@
                                                         <th data-sortable="false">Amount</th>
                                                     </tr>
                                                     <tr class="table-row"
-                                                        *ngFor="let Item of data.promoDetails.stockItems">
+                                                        *ngFor="let Item of data.promoDetails.stockitems">
                                                         <td><input type="checkbox" [checked]="Item.isProductSelected"
                                                                 (change)="checkboxChange($event,Item, data)">{{Item.stockitemname}}
                                                         </td>

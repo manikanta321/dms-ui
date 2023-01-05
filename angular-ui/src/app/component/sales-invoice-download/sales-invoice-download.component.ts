@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridReadyEvent } from 'ag-grid-community';
+import { SalesServicesService } from 'src/app/services/sales-services.service';
 
 @Component({
   selector: 'app-sales-invoice-download',
@@ -9,14 +10,21 @@ import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridRea
 export class SalesInvoiceDownloadComponent implements OnInit {
   private gridApi!: GridApi;
   instancePopup:any = null;
-  rowData5:any= [{uploadSalesBatchId:25,uploadDate:"25 Aug 22",productName:"Samsung M32 prime edition 2022 (128 gb)",productCode:"PR123456",totalItems:20,dealer:"MINH PHUONG TRADE SERVICES MEDICAL-DENTISTRY CO. LTD"}];
   paginationScrollCount: any;
   paginationPageSize = 10;
   stayScrolledToEnd = true;
+  batchId:any;
+  viewData:any;
+  salesUploadList:any = [];
+  viewUploadList:any = [];
   public popupParent: HTMLElement = document.body;
-  constructor() { }
+  constructor(private salesService:SalesServicesService) { }
 
   ngOnInit(): void {
+    this.SalesInvoiceList();
+    this.batchId = (sessionStorage.getItem("batchID"));
+    this.viewData = sessionStorage.getItem("viewData");
+    this.ViewInvoiceList();
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -24,7 +32,7 @@ export class SalesInvoiceDownloadComponent implements OnInit {
     
   }
   columnDefs: ColDef[] = [
-    {   headerName: "BatchId",field: 'uploadSalesBatchId' ,      tooltipField:"uploadSalesBatchId",type: ['nonEditableColumn']
+    {   headerName: "BatchId",field: 'batchId' ,      tooltipField:"batchId",type: ['nonEditableColumn']
   },
   
     {  headerName: "Upload Date",field: 'uploadDate',      tooltipField:"uploadDate   ",type: ['nonEditableColumn']
@@ -38,7 +46,7 @@ export class SalesInvoiceDownloadComponent implements OnInit {
      },
   
     {   headerName: "Total Items",
-      field: 'totalItems',      tooltipField:"totalItems",
+      field: 'saleQty',      tooltipField:"saleQty",
       type: ['nonEditableColumn']},
       {   headerName: "Dealer",
       field: 'dealer',      tooltipField:"dealer",
@@ -91,13 +99,13 @@ export class SalesInvoiceDownloadComponent implements OnInit {
       },
     },
   };
-  onCellValueChanged(event: CellValueChangedEvent) {
-    alert(event.value)
-    console.log(
-      'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
-    );
+  // onCellValueChanged(event: CellValueChangedEvent) {
+  //   alert(event.value)
+  //   console.log(
+  //     'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
+  //   );
 
-  }
+  // }
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     params.api.paginationGoToPage(4);
   }
@@ -117,13 +125,31 @@ export class SalesInvoiceDownloadComponent implements OnInit {
       const scrollDiff = gridBody.scrollHeight - scrollPos;
       //const api =  this.rowData5;
       this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
-      // this.paginationScrollCount = this.rowData5.length;
+      this.paginationScrollCount = this.salesUploadList.length;
     }
   }
-  onCellClicked( e): void {
-    let cellCLickedpromotion = '1'
+  // onCellClicked( e): void {
+  //   let cellCLickedpromotion = '1'
+  //   localStorage.setItem('cellCLickedpromotion', cellCLickedpromotion)
+  //   if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
+  //     const cellRendererInstances = e.api.getCellRendererInstances({
+  //       rowNodes: [e.node],
+  //       columns: [e.column],
+  //     });
+  //     if (cellRendererInstances.length > 0) {
+  //       const instance = cellRendererInstances[0];
+  //       this.instancePopup = instance;
+  //       instance.togglePopup();
+  //     }
+  //   }
+  // }
+  onCellClicked(e): void {
+    let cellCLickedpromotion = '0'
     localStorage.setItem('cellCLickedpromotion', cellCLickedpromotion)
-    if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
+
+    console.log('cellClicked', e);
+console.log("BatchId",e.data.batchId)
+    if (e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action') {
       const cellRendererInstances = e.api.getCellRendererInstances({
         rowNodes: [e.node],
         columns: [e.column],
@@ -134,5 +160,40 @@ export class SalesInvoiceDownloadComponent implements OnInit {
         instance.togglePopup();
       }
     }
+  }
+
+  onCellValueChanged(event: CellValueChangedEvent) {
+    // alert(event.value)
+    console.log(
+      'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
+    );
+  }
+  SalesInvoiceList() {
+    this.batchId = 0;
+    const data = {
+      BatchId:this.batchId
+
+    }
+    this.salesService.getSalesBulkUploadList(data).subscribe((res)=>{
+      console.log(res.response)
+      this.salesUploadList=res.response;
+      console.log("SalesInvoiceList",this.salesUploadList);
+
+    })
+  }
+  ViewInvoiceList() {
+    const data = {
+      BatchId:this.batchId
+
+    }
+    this.salesService.getSalesBulkUploadList(data).subscribe((res)=>{
+      console.log(res.response)
+      this.viewUploadList=res.response;
+      console.log("SalesInvoiceList",this.salesUploadList);
+
+    })
+  }
+  onBtnExport() {
+    this.gridApi.exportDataAsCsv();
   }
 }

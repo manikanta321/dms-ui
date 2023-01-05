@@ -1,13 +1,13 @@
 <div class="container-fluid sales-container mt-5">
     <div class="section sales">
-        <div class="sales-search-drop">
+        <div class="sales-search-drop ml-2">
             <div class="row">
-                <div class="shipment mr-3" >
+                <div class="shipment ml-4">
                     <app-customdatepicker [showInputField]="true" label="Invoice Date" style="height:43px;"
                         [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)">
                     </app-customdatepicker>
                 </div>
-                <div class="sales-refreshbtn">
+                <div class="sales-refreshbtn" (click)="refresh()">
                     <img class="refresh-img" src="assets/img/Vector.png" alt="refresh">
                   </div>
             </div>
@@ -15,7 +15,7 @@
         <div class="row listicon">
             <div class="col-md-4 srch-hover" >
               <div class="searchBox1 d-flex">
-                <input class="searchInput1" type="text" name="" placeholder="Type & search for anything">
+                <input class="searchInput1" type="text" name="" placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
                 <button class="search-btn">Search</button>
                 <button class="searchButton" href="#">
                   <i class="material-icons">
@@ -56,11 +56,11 @@
           <div class="col-1"></div>
           </div>
           </div>
-        <div class="sales-grid-table mt-3">
+        <div class="sales-grid-table ml-3 mt-3">
               <ag-grid-angular id="gridContainer" [tooltipMouseTrack]="true"
               style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%; margin-left:-4px;"
               class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
-              [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
+              [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="salesUploadList"
               [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
               (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
               (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
@@ -68,7 +68,7 @@
         </div>
         <div class="pagination">
             <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{paginationScrollCount}}</span> of 
-            <span class="pagination-cls">{{rowData5.length}}</span>
+            <span class="pagination-cls">{{salesUploadList.length}}</span>
           </div>
     </div>
 </div>

@@ -12,6 +12,7 @@ import { SharedServicesDealerService } from '../services/shared-services-dealer.
 import { Directive, HostListener, Optional, Output, EventEmitter } from '@angular/core';
 import { ConsoleService } from '@ng-select/ng-select/lib/console.service';
 import { StepperSelectionEvent } from '@angular/cdk/stepper';
+import { AddDealerSuccessfulPopupComponent } from './add-dealer-successful-popup/add-dealer-successful-popup.component';
 
 
 //import { ToastrService } from 'ngx-toastr';
@@ -798,6 +799,7 @@ initAddress2(defaultType): FormGroup {
   }
 
   saveGeographiesList() {
+    localStorage.setItem("updateAddEdit",'add');
     let selectedGeographies = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographySelected;
     selectedGeographies.forEach(element => {
       return this.selectedItems.push(element.geographyId);
@@ -829,7 +831,9 @@ initAddress2(defaultType): FormGroup {
     this.calssification.addDealerData(data).subscribe((res) => {
 
       if (res.response.result == "Succesfully added") {
+       
         this.dialogRef.close();
+        this.dialog.open(AddDealerSuccessfulPopupComponent, {panelClass: 'activeSuccessPop'})
         this.sharedService.filter('Register click')
 
       }
@@ -845,6 +849,7 @@ initAddress2(defaultType): FormGroup {
 
 
   EditGeographiesList() {
+    localStorage.setItem("updateAddEdit",'edit');
     let selectedGeographies = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographySelected;
     selectedGeographies.forEach(element => {
 
@@ -886,7 +891,7 @@ let data5={
       if (res.response.result == "Succesfully updated") {
         this.dialogRef.close();
         this.sharedService.filter('Register click')
-
+        this.dialog.open(AddDealerSuccessfulPopupComponent, {panelClass: 'activeSuccessPop'})
       }
       console.log(res);
     });

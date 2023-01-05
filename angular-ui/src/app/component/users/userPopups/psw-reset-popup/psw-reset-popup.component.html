@@ -11,7 +11,7 @@
             </div>
             <label>Latest password <span style="color: red;">*</span></label><br>
             <input type="password" id="latestpassword" placeholder="Enter your new password (at least 8 ch)" name="latestpassword"
-            [type]="showPassword ? 'text': 'password'" [(ngModel)]="enterfirst" required #latestpassword="ngModel">
+            [type]="showPassword ? 'text': 'password'" [(ngModel)]="enterfirst" required #latestpassword="ngModel" minlength="8">
             
           <mat-icon matSuffix (click)="PasswordVisibilityLatest()">
             {{showPassword?'visibility':'visibility_off'}}
@@ -21,6 +21,9 @@
                 <span style="color:red;position: absolute; bottom:-8px;font-size: 13px;" *ngIf="latestpassword.errors?.['required']">
                   *Latest Password is required.
                 </span>
+                <span *ngIf="latestpassword.errors?.['minlength']"  style="color:red;font-size: 13px;position: absolute; bottom:-8px;">
+                  Password must be at least 8 characters long.
+                </span> 
                 </p>
             <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 
             'visibility_off'}}</mat-icon> -->
@@ -28,7 +31,7 @@
             <br>
             <label class="renter">Re-enter password <span style="color: red;">*</span></label><br>
              <input type="text" placeholder="Re-enter your new password (at least 8 ch)" id="rp" name="rp"
-            [type]="showre_Password ? 'text': 'password'" [(ngModel)]="entersecond" required #rp="ngModel">
+            [type]="showre_Password ? 'text': 'password'" [(ngModel)]="entersecond" required #rp="ngModel" minlength="8">
             
             <mat-icon matSuffix (click)="PasswordVisibilityreenter()">
                 {{showre_Password?'visibility':'visibility_off'}}
@@ -38,6 +41,9 @@
                 <span style="color:red;position: absolute;bottom: -9px;
                 font-size: 13px;" *ngIf="rp.errors?.['required']">
                   *Re-Enter Password is required.
+                </span> 
+                <span *ngIf="rp.errors?.['minlength']"  style="color:red;font-size: 13px;position: absolute; bottom:-8px;">
+                  Password must be at least 8 characters long.
                 </span> 
                 </p>
             <!-- <p style="color: red;position: relative;position: relative;padding: 0px;height: 0px;top: -6px;">{{error}}
@@ -69,7 +75,7 @@
             </div>
             <label>current password <span style="color: red;">*</span></label><br>
             <input type="password" id=" oldPasswords" placeholder="Enter your old  password (at least 8 ch)"
-            [type]="showoldPassword? 'text': 'password'"  name="oldPasswords" [(ngModel)]="oldPassword" required #oldPasswords="ngModel">
+            [type]="showoldPassword? 'text': 'password'"  name="oldPasswords" [(ngModel)]="oldPassword" required #oldPasswords="ngModel" minlength="8">
             <mat-icon matSuffix (click)="PasswordVisibilityold()">
                 {{showoldPassword?'visibility':'visibility_off'}}
             </mat-icon>
@@ -79,6 +85,9 @@
                 font-size: 13px;" *ngIf="oldPasswords.errors?.['required']">
                   *Current Password is required.
                 </span> 
+                <span *ngIf="oldPasswords.errors?.['minlength']"  style="color:red;font-size: 13px;position: absolute; bottom:-8px;">
+                  Password must be at least 8 characters long.
+                </span> 
                 </p>
             <br><br>
 
@@ -87,7 +96,7 @@
             </div>
             <label>Latest password <span style="color: red;">*</span></label><br>
             <input type="password" id="latestPasswords" placeholder="Enter your password (at least 8 ch)"
-            [type]="showPassword? 'text': 'password'" name="latestPasswords" [(ngModel)]="latestPassword" required #latestPasswords="ngModel">
+            [type]="showPassword? 'text': 'password'" name="latestPasswords" [(ngModel)]="latestPassword" required #latestPasswords="ngModel" minlength="8">
             <mat-icon matSuffix (click)="PasswordVisibilityLatest()" >
                 {{showPassword?'visibility':'visibility_off'}}
               </mat-icon>
@@ -97,12 +106,15 @@
                 font-size: 13px;" *ngIf="latestPasswords.errors?.['required']">
                   *Latest Password is required.
                 </span> 
+                <span *ngIf="latestPasswords.errors?.['minlength']"  style="color:red;font-size: 13px;position: absolute; bottom:-8px;">
+                  Password must be at least 8 characters long.
+                </span> 
                 </p>
             <br>
 
             <label class="repsrd">Re-enter password <span style="color: red;">*</span></label><br>
             <input type="password"  id="relatestpasswords" placeholder="Re-enter your new password (at least 8 ch)" 
-            [type]="showre_Password? 'text': 'password'" name="relatestpasswords" [(ngModel)]="relatestpassword" required #relatestpasswords="ngModel">
+            [type]="showre_Password? 'text': 'password'" name="relatestpasswords" [(ngModel)]="relatestpassword" required #relatestpasswords="ngModel" minlength="8">
             <mat-icon matSuffix (click)="PasswordVisibilityreenter()">
                 {{showre_Password?'visibility':'visibility_off'}}
               </mat-icon>
@@ -111,6 +123,9 @@
                 <span style="color:red;position: absolute;bottom: -9px;
                 font-size: 13px;" *ngIf="relatestpasswords.errors?.['required']">
                   *Re-Enter Password is required.
+                </span> 
+                <span *ngIf="relatestpasswords.errors?.['minlength']"  style="color:red;font-size: 13px;position: absolute; bottom:-8px;">
+                  Password must be at least 8 characters long.
                 </span> 
                 </p>
             <p style="color: red;position: relative;position: relative;padding: 0px;height: 0px;top: -6px;">{{error}}

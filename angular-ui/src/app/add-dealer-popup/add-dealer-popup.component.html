@@ -112,7 +112,7 @@
                                             <!-- <input type="text"> -->
                                         </div>
                                         <div class="col-4 ">
-                                            <label>Other Identifer<span>*</span></label>
+                                            <label class="otherId">Other Identifer<span>*</span></label>
                                             <br>
                                             <input type="text" formControlName="OtherIdentifier"
                                                 class="addDelercols form-control" required
@@ -175,8 +175,8 @@
                                             </span>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-4">
+                                    <div class="row secondDiv">
+                                        <div class="col-4 " >
                                             <label>First Name<span>*</span></label>
                                             <br>
                                             <input type="text" formControlName="FirstName"
@@ -209,7 +209,7 @@
                                                     {{option.statusName}}
                                                 </option>
                                             </select>
-                                            <span class="text-danger"
+                                            <span class="text-dangers"
                                             *ngIf="addAddressDetailsFormControl['StatusId'].touched  && addAddressDetailsFormControl['StatusId'].errors && addAddressDetailsFormControl['StatusId'].errors['required']">
                                             Status is required
                                         </span>

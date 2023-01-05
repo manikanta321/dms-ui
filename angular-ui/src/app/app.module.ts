@@ -189,6 +189,7 @@ import { AddcurrencySuccessfullyPopupComponent } from './component/users/userPop
 import { AdduserSuccessfulPopupComponent } from './component/users/userPopups/add-user-popup/adduser-successful-popup/adduser-successful-popup.component';
 import { DealerSuccessPopupComponent } from './component/add-dealer-associations/dealer-success-popup/dealer-success-popup.component';
 import { DealerTargetActionComponent } from './component/dealer-target-action/dealer-target-action.component';
+import { AddDealerSuccessfulPopupComponent } from './add-dealer-popup/add-dealer-successful-popup/add-dealer-successful-popup.component';
 import { EdituomSuccessfulpopupComponent } from './component/users/userPopups/edit-uom-popup/edituom-successfulpopup/edituom-successfulpopup.component';
 
 @NgModule({
@@ -472,6 +473,7 @@ import { EdituomSuccessfulpopupComponent } from './component/users/userPopups/ed
           AdduserSuccessfulPopupComponent,
           DealerSuccessPopupComponent,
           DealerTargetActionComponent,
+          AddDealerSuccessfulPopupComponent,
           EdituomSuccessfulpopupComponent,
           
   ],

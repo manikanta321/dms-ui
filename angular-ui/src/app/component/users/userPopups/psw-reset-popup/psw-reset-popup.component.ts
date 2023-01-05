@@ -80,7 +80,9 @@ export class PswResetPopupComponent implements OnInit {
       }
       this.user.changePasswordByUser(userChangePasswordData).subscribe((res: any) => {
 
-        alert('passwrodhaschanged' )
+        // alert('passwrodhaschanged' )
+        this.dialogRef.close();
+        this.dialog.open(RestPwsdUserPopupComponent, {panelClass: 'activeSuccessPop'});
       })
 
     }else{

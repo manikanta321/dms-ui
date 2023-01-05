@@ -791,7 +791,7 @@ export class OrderListComponent implements OnInit {
     });
   }
   geogrphyOrder() {
-    this.user.getGographicDropdown().subscribe((res: any) => {
+    this.user.getGeographies().subscribe((res: any) => {
       let localdata = res.response;
       this.geogropdownlist = localdata.map((data: { geographyId: any; geographyName: any; }) => {
         return { geographyId: data.geographyId, geographyName: data.geographyName };

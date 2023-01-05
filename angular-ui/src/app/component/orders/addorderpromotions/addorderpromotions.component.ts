@@ -100,7 +100,7 @@ export class AddorderpromotionsComponent implements OnInit {
   price: any = 0;
   err: any = " ";
   nonpromotionlist: any = [];
-  stockitemname: any;
+  stockItemName: any;
   uomid: any;
   uomname: any;
   stock: any;
@@ -1053,7 +1053,7 @@ export class AddorderpromotionsComponent implements OnInit {
               let obj = {
                 // "Promocode": item.promotionName,
                 "stockid": item.stockitemid,
-                "stockitemname": item.stockitemname,
+                "stockItemName": item.stockItemName,
                 "uom": item.uomid,
                 "uomname": item.uomname,
                 "quantity": item.quantity,
@@ -1197,15 +1197,16 @@ export class AddorderpromotionsComponent implements OnInit {
       this.startdate = this.editorderbyID.requirementdate
       this.DeliveryInstructions = this.editorderbyID.deliveryistruction
 
-      this.nonpromotionlist = this.editorderbyID.itemcount.filter(x => x.promocode.toLowerCase().indexOf('np') != -1).map(x => x.itemDetails[0]);
+      this.nonpromotionlist = this.editorderbyID.itemcount.filter(x => x.promocode.toLowerCase().indexOf('np') != -1).map(x => x.itemDetails);
       this.AddorderNonpromotiondata = { itemDetails: [], promocode: 'NP', promotionId: 0 };
       this.nonpromotionlist.forEach(item => {
         // Promocode: this.promotionName,
         let obj = {
           // "Promocode": item.promotionName,
+          // "customerPOProductId":item.customerPOProductId,
 
           "stockid": item.stockid,
-          "stockitemname": item.stockitemname,
+          "stockItemName": item.stockItemName,
           "uom": item.uom,
           "uomname": item.uomname,
           "quantity": item.quantity,

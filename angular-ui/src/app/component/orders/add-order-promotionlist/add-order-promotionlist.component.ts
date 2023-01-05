@@ -13,9 +13,7 @@ import { OrdersApisService } from 'src/app/services/orders-apis.service';
 })
 export class AddOrderPromotionlistComponent implements OnInit {
   // taxtemplete :any =['hj','hj'];
-  buyGroup: any = [{ proItem: 'Lays IPL edition classic magic masala..', sku: 'KA123458AB98764', price: '20', taxtemplete: ['hj', 'hj'], amount: '0' },
-  { proItem: 'Lays IPL edition classic magic masala..', sku: 'KA123458AB98764', price: '20', taxtemplete: ['hj', 'hj'], amount: '0' },
-  { proItem: 'Lays IPL edition classic magic masala..', sku: 'KA123458AB98764', price: '20', taxtemplete: ['hj', 'hj'], amount: '0' }]
+ 
   private gridApi!: GridApi;
   promoList = true;
   priceD = true;

@@ -174,7 +174,7 @@
                                 <tr *ngFor="let Item of AddorderNonpromotiondata.itemDetails; let i=index;">
                                     <td>
                                         <p class="itemLeft"><span class="promoItem" *ngIf="i == 0"> NP
-                                            </span>{{Item.stockitemname}}</p>
+                                            </span>{{Item.stockItemName}}</p>
                                     </td>
                                     <td>
                                         <input type="text" disabled [(ngModel)]="Item.uomname" class="IteminputBoxes">

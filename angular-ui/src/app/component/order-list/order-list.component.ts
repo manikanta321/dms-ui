@@ -379,6 +379,9 @@ export class OrderListComponent implements OnInit {
 
     });
   }
+  onBtnExport() {
+    this.gridApi.exportDataAsCsv();
+  }
   roleFilter(data: any) {
     console.log('data', data)
     this.roleName = this.toppings.value;

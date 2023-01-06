@@ -59,10 +59,15 @@ export class TargetListService {
   }
   // http://13.126.235.145:801/api/Dealerapi/AddTargetSDealer
   addTargetData(data:any){
-    return this.http.post<any>(this.classificationurl + 'DealerApi/AddTargetSDealer', data);
+    return this.http.post<any>(this.classificationurl + 'Dealerapi/AddTargetSDealer', data);
   }
   // http://13.126.235.145:801/api/DealerApi/GetProductGeoCount
   getProductCount(data:any){
+    return this.http.post<any>(this.classificationurl + 'DealerApi/GetProductGeoCount', data);
+  }
+
+
+  getDealerDetails(data:any){
     return this.http.post<any>(this.classificationurl + 'DealerApi/GetProductGeoCount', data);
   }
 // getTargetGrpList(){

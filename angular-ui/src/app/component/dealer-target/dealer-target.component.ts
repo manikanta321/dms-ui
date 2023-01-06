@@ -332,6 +332,7 @@ export class DealerTargetComponent implements OnInit {
 
 
   ngOnInit(): void {
+
     this.TargetTabelData();
     this.Geography();
     this.statusItems();
@@ -740,7 +741,7 @@ console.log("SelectedGeo",this.geographySelected)
   }
 
   addTarget() {
-    this.dialog.open(AddTargetsComponent,);
+    this.dialog.open(AddTargetsComponent,{ width: '1700px',});
   }
 
   editUser() {

@@ -165,7 +165,7 @@
                                             <input type="text" disabled [(ngModel)]="Item.amount"
                                                 class="IteminputBoxes">
                                         </td>
-                                        <mat-icon class="removeCircle"
+                                        <mat-icon class="removeCircle" *ngIf="j==0"
                                             (click)="removePromotionItem(Item, PromotionObj.promotionId)">
                                             remove_circle</mat-icon>
                                     </tr>

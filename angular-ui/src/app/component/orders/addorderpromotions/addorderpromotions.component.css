@@ -1618,3 +1618,7 @@ table thead, table tbody tr {
 .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret{
   right: -2px;
 }
+
+.removeCircle{
+  cursor: pointer;
+}

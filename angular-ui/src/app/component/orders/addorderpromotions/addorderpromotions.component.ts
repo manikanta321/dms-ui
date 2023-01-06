@@ -297,12 +297,13 @@ export class AddorderpromotionsComponent implements OnInit {
     this.Non_promotions = true;
   }
   removePromotionItem(clickedItem, promotionId) {
-    let ClickedPromotionObj = this.AddOrderPromotionData.find(x => x.promotionId == promotionId);
-    if (ClickedPromotionObj) {
-      let index = ClickedPromotionObj.itemDetails.findIndex(x => x.stockitemid == clickedItem.stockitemid);
-      ClickedPromotionObj.itemDetails.splice(index, 1);
-    }
-
+    // let ClickedPromotionObj = this.AddOrderPromotionData.find(x => x.promotionId == promotionId);
+    let index = this.AddOrderPromotionData.findIndex(x => x.promotionId == promotionId);
+    this.AddOrderPromotionData.splice(index, 1);
+    // if (ClickedPromotionObj) {
+    //   let index = ClickedPromotionObj.itemDetails.findIndex(x => x.stockitemid == clickedItem.stockitemid);
+    // }
+    this.getShippingandPackingcharges();
   }
   removeNonPromotionItem(clickedItem) {
     let index = this.nonpromotionlist.findIndex(x => x.stockitemid == clickedItem.stockitemid);
@@ -312,8 +313,9 @@ export class AddorderpromotionsComponent implements OnInit {
       x.promotionName = 'NP' + (i + 1);
       return x;
     });
-    // this.AddorderNonpromotiondata.itemDetails = this.nonpromotionlist;
-    // this.itemremoved.splice(0);
+
+    this.AddorderNonpromotiondata.itemDetails = this.nonpromotionlist;
+    this.getShippingandPackingcharges();
   }
   // non-prmotions
 
@@ -1042,10 +1044,6 @@ export class AddorderpromotionsComponent implements OnInit {
             console.log(data, "addnonpromotions");
             this.nonpromotionlist = res.response;
 
-            // this.nonpromotionlist = this.nonpromotionlist.map((x, i) => {
-            //   x.promotionName = 'NP' + (i + 1);
-            //   return x;
-            // })
             this.AddorderNonpromotiondata = { itemDetails: [], promocode: 'NP', promotionId: 0 };
             this.nonpromotionlist.forEach(item => {
               // Promocode: this.promotionName,
@@ -1123,7 +1121,7 @@ export class AddorderpromotionsComponent implements OnInit {
       "comrefno": this.CompanyReferenceNo,
       "shippingaddid": this.addressId,
       "deliveryistruction": this.DeliveryInstructions,
-      "requirementdate": this.startdate,
+      "requirementdate": new Date(this.startdate).toLocaleDateString('en-US'),
       "CreatedById": loggedUserId,
       "itemcount": itemsCount,
       "AddType":submitType,
@@ -1196,7 +1194,9 @@ export class AddorderpromotionsComponent implements OnInit {
       this.DealerReferenceNo = this.editorderbyID.dealerrefno
       this.CompanyReferenceNo = this.editorderbyID.comrefno
       // this.DealerReferenceNo = this.editorderbyID.dealerReferenceNo
-      this.startdate = this.editorderbyID.requirementdate;
+      if(this.editorderbyID.requirementdate){
+        this.startdate = new Date(this.editorderbyID.requirementdate)
+      }
       this.DeliveryInstructions = this.editorderbyID.deliveryistruction
 
       this.AddOrderPromotionData = this.editorderbyID.itemcount.filter(x => x.promocode.toLowerCase().indexOf('np') == -1);
@@ -1223,7 +1223,7 @@ export class AddorderpromotionsComponent implements OnInit {
           "stock": item.stock,
           "price": item.price,
           "discount": item.discount,
-          "finalValue": item.finalvalue,
+          "finalValue": item.finalValue,
           "taxvalue": item.taxvalue,
           "taxid": item.taxid,
           "amount": item.amount

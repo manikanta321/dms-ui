@@ -23,7 +23,7 @@ import { MaterialaddedSuccessPopComponent } from './materialadded-success-pop/ma
 })
 export class MaterialAddEditpopupComponent {
   chipControl = new FormControl(new Set());
-  labelPosition:any = 'before';
+  labelPosition: any = 'before';
   disabled = false;
   catgname: any = [];
   base64textString = "";
@@ -122,8 +122,8 @@ export class MaterialAddEditpopupComponent {
 
 
 
-  
-  
+
+
 
   geoPropertiesList: any
   geoProperties: any
@@ -160,13 +160,13 @@ export class MaterialAddEditpopupComponent {
   ProductIdentifiersId: any;
   ProductIdentifiersSettingId: any;
   seletedItem: any = [];
-  MaterialCustomIdentifiersNames:any=[];
+  MaterialCustomIdentifiersNames: any = [];
   image5 = 'assets/img/minimize-tag.png';
   materialIdentifierexpand = true;
-  ProductIdentifiersSettingsNames:any=[];
-  ProductIdentifiersNames:any=[];
-  businessIdentifiersNames:any=[];
-  selectedProductIdentifierData:any=[];
+  ProductIdentifiersSettingsNames: any = [];
+  ProductIdentifiersNames: any = [];
+  businessIdentifiersNames: any = [];
+  selectedProductIdentifierData: any = [];
   colorsList = [
     { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
     { primaryColor: { background: '#0C5A3E', color: '#fff' }, secondaryColor: { background: "#E6FFF6", color: "#0C5A3E" }, },
@@ -222,12 +222,12 @@ export class MaterialAddEditpopupComponent {
 
   selectedGeoField: string = "";
   updateGeographyValue: string = "";
-  
+
   applySelectedValue() {
     console.log(this.updateGeographyValue, this.selectedGeoField);
 
     this.geoGraphyFullData[this.selectedHirerachyIndex].geoProperties.map(x => x[this.selectedGeoField] = this.updateGeographyValue);
-    this.selectedGeoField ='';
+    this.selectedGeoField = '';
     this.updateGeographyValue = '';
   }
 
@@ -413,14 +413,15 @@ export class MaterialAddEditpopupComponent {
     }
 
     this.selectedProductIdEdit = this.dataGetById.productCustomIdentifierId
-
-    this.MaterialCustomIdentifiersNames = this.dataGetById.materialcustomidentifier
-
-    this.selectedProductIdentifierData = this.dataGetById.productCustomIdentifierId
-
-    // "materialcustomidentifier": null,
-    // "productSubGroupId": 0,
-    // "productGeographys": null
+    let data = this.dataGetById.materialcustomidentifier;
+    this.MaterialCustomIdentifiersNames = data.map(item => {
+      return item.materialCustomName;
+    });
+    console.log("MaterialIdentifier", this.MaterialCustomIdentifiersNames)
+    let datas = this.dataGetById.productCustomIdentifierId;
+    this.selectedProductIdentifierData = datas.map(item => {
+      return item.productCustomName;
+    });
 
 
   }
@@ -445,7 +446,7 @@ export class MaterialAddEditpopupComponent {
   // productSKUGeographyId
   addMaterialProduct() {
     // this.saveMaterial = localStorage.getItem('saveMaterials');
-    localStorage.setItem("updateAddEdit",'add');
+    localStorage.setItem("updateAddEdit", 'add');
     this.selectedProductId = [...this.bussinessIdentifiers, ...this.ProductIdentifiersSettingId, ...this.ProductIdentifiersId]
     let selectedGeographies = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographySelected;
     let data2 = {
@@ -495,10 +496,10 @@ export class MaterialAddEditpopupComponent {
       console.log(res, "defaultGeoID")
     });
     this.dialog.closeAll()
-    this.dialog.open(MaterialaddedSuccessPopComponent, {panelClass: 'activeSuccessPop'})
+    this.dialog.open(MaterialaddedSuccessPopComponent, { panelClass: 'activeSuccessPop' })
   }
   addMaterialProductAfterEdit() {
-    localStorage.setItem("updateAddEdit",'edit');
+    localStorage.setItem("updateAddEdit", 'edit');
     if (this.geoGraphyFullData[3].geoProperties.length == 0) {
       alert("Plz select atleast one city");
       return;
@@ -538,7 +539,7 @@ export class MaterialAddEditpopupComponent {
       console.log(res, "addmaterialProduct")
     })
     this.dialog.closeAll()
-    this.dialog.open(MaterialaddedSuccessPopComponent, {panelClass: 'activeSuccessPop'})
+    this.dialog.open(MaterialaddedSuccessPopComponent, { panelClass: 'activeSuccessPop' })
 
 
   }
@@ -756,7 +757,7 @@ export class MaterialAddEditpopupComponent {
   geographyFormat(currentObj, stockItemId) {
     // console.log(currentObj["hirearchyLevel"]);
     if (!Array.isArray(currentObj)) {
-      if(currentObj.all == undefined && currentObj.next != undefined) this.geographyFormat(currentObj.next, stockItemId);
+      if (currentObj.all == undefined && currentObj.next != undefined) this.geographyFormat(currentObj.next, stockItemId);
       if (!currentObj.all) return;
       let obj: any = {};
       let index = (Number(currentObj["hirearchyLevel"]) - 1);
@@ -1090,13 +1091,13 @@ export class MaterialAddEditpopupComponent {
     let index = this.selctedIdentifier.findIndex(x => x.materilCustomIdentifierId == materialIdentifier.materilCustomIdentifierId)
     if (index >= 0) {
       this.selctedIdentifier.splice(index, 1);
-       this.MaterialCustomIdentifiersNames = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materialCustomName);
+      this.MaterialCustomIdentifiersNames = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materialCustomName);
       this.MaterialCustomIdentifiers = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materilCustomIdentifierId);
       console.log("MaterialCustomIdentifiers", this.MaterialCustomIdentifiers);
       console.log("MaterialCustomIdentifiersNames", this.MaterialCustomIdentifiersNames);
     } else {
       this.selctedIdentifier.push(materialIdentifier);
-       this.MaterialCustomIdentifiersNames = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materialCustomName);
+      this.MaterialCustomIdentifiersNames = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materialCustomName);
       this.MaterialCustomIdentifiers = this.selctedIdentifier.map((materialIdentifier) => materialIdentifier.materilCustomIdentifierId);
       console.log("MaterialCustomIdentifiersNames", this.MaterialCustomIdentifiersNames);
       console.log("MaterialCustomIdentifiers", this.MaterialCustomIdentifiers);
@@ -1115,16 +1116,16 @@ export class MaterialAddEditpopupComponent {
       this.businessIdentifiersNames = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomName);
       this.bussinessIdentifiers = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomIdentifierId);
       console.log("bussinessIdentifiers", this.bussinessIdentifiers);
-  this.selectedProductIdentifierData = this.businessIdentifiersNames+this.ProductIdentifiersNames+this.ProductIdentifiersSettingsNames;
-  console.log("this.selectedProductIdentifierData",this.selectedProductIdentifierData);
+      this.selectedProductIdentifierData = this.businessIdentifiersNames + this.ProductIdentifiersNames + this.ProductIdentifiersSettingsNames;
+      console.log("this.selectedProductIdentifierData", this.selectedProductIdentifierData);
       // console.log("businessIdentifiersNames", businessIdentifiersNames);
     } else {
       this.businessSelctedIdentifier.push(businessIdentifier);
       this.businessIdentifiersNames = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomName);
       this.bussinessIdentifiers = this.businessSelctedIdentifier.map((businessIdentifier) => businessIdentifier.productCustomIdentifierId);
       // console.log("businessIdentifiersNames", businessIdentifiersNames);
-  this.selectedProductIdentifierData = this.businessIdentifiersNames+this.ProductIdentifiersNames+this.ProductIdentifiersSettingsNames;
-  console.log("this.selectedProductIdentifierData",this.selectedProductIdentifierData);
+      this.selectedProductIdentifierData = this.businessIdentifiersNames + this.ProductIdentifiersNames + this.ProductIdentifiersSettingsNames;
+      console.log("this.selectedProductIdentifierData", this.selectedProductIdentifierData);
       console.log("bussinessIdentifiers", this.bussinessIdentifiers);
     }
   }
@@ -1134,17 +1135,17 @@ export class MaterialAddEditpopupComponent {
     return index >= 0;
   }
 
-  selectProductIdentifier(IdentifierProduct: any,temp): void {
+  selectProductIdentifier(IdentifierProduct: any, temp): void {
     debugger
-    let index = this.productSelctedIdentifier.findIndex(x=>x.productCustomIdentifierId==IdentifierProduct.productCustomIdentifierId);
+    let index = this.productSelctedIdentifier.findIndex(x => x.productCustomIdentifierId == IdentifierProduct.productCustomIdentifierId);
 
     if (index >= 0) {
       this.productSelctedIdentifier.splice(index, 1);
       this.ProductIdentifiersNames = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomName);
       this.ProductIdentifiersId = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomIdentifierId);
       console.log("ProductIdentifiersId", this.ProductIdentifiersId);
-  this.selectedProductIdentifierData = this.businessIdentifiersNames+this.ProductIdentifiersNames+this.ProductIdentifiersSettingsNames;
-  console.log("this.selectedProductIdentifierData",this.selectedProductIdentifierData);
+      this.selectedProductIdentifierData = this.businessIdentifiersNames + this.ProductIdentifiersNames + this.ProductIdentifiersSettingsNames;
+      console.log("this.selectedProductIdentifierData", this.selectedProductIdentifierData);
 
       // console.log("ProductIdentifiersNames", ProductIdentifiersNames);
     } else {
@@ -1153,8 +1154,8 @@ export class MaterialAddEditpopupComponent {
       this.ProductIdentifiersId = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomIdentifierId);
       // console.log("ProductIdentifiersNames", ProductIdentifiersNames);
       console.log("ProductIdentifiersId", this.ProductIdentifiersId);
-  this.selectedProductIdentifierData = this.businessIdentifiersNames+this.ProductIdentifiersNames+this.ProductIdentifiersSettingsNames;
-  console.log("this.selectedProductIdentifierData",this.selectedProductIdentifierData);
+      this.selectedProductIdentifierData = this.businessIdentifiersNames + this.ProductIdentifiersNames + this.ProductIdentifiersSettingsNames;
+      console.log("this.selectedProductIdentifierData", this.selectedProductIdentifierData);
 
     }
   }
@@ -1174,8 +1175,8 @@ export class MaterialAddEditpopupComponent {
       this.ProductIdentifiersSettingId = this.productSettingIdentifier.map((IdentifierSetting) => IdentifierSetting.productCustomIdentifierId);
       console.log("ProductSettingIdentifiersId", this.ProductIdentifiersSettingId);
       // console.log("ProductSettingIdentifiersNames", ProductIdentifiersSettingsNames);
-  this.selectedProductIdentifierData = this.businessIdentifiersNames+this.ProductIdentifiersNames+this.ProductIdentifiersSettingsNames;
-  console.log("this.selectedProductIdentifierData",this.selectedProductIdentifierData);
+      this.selectedProductIdentifierData = this.businessIdentifiersNames + this.ProductIdentifiersNames + this.ProductIdentifiersSettingsNames;
+      console.log("this.selectedProductIdentifierData", this.selectedProductIdentifierData);
 
     } else {
       this.productSettingIdentifier.push(IdentifierSetting);
@@ -1183,39 +1184,39 @@ export class MaterialAddEditpopupComponent {
       this.ProductIdentifiersSettingId = this.productSettingIdentifier.map((IdentifierSetting) => IdentifierSetting.productCustomIdentifierId);
       // console.log("ProductSettingIdentifiersNames", ProductIdentifiersSettingsNames);
       console.log("PProductSettingIdentifiersId", this.ProductIdentifiersSettingId);
-  this.selectedProductIdentifierData = this.businessIdentifiersNames+this.ProductIdentifiersNames+this.ProductIdentifiersSettingsNames;
-  console.log("this.selectedProductIdentifierData",this.selectedProductIdentifierData);
+      this.selectedProductIdentifierData = this.businessIdentifiersNames + this.ProductIdentifiersNames + this.ProductIdentifiersSettingsNames;
+      console.log("this.selectedProductIdentifierData", this.selectedProductIdentifierData);
 
     }
   }
   // this.bussinessIdentifiers,this.ProductIdentifiersSettingId,this.ProductIdentifiersId
 
 
-   goForward(stepper: MatStepper) {
-     stepper.next();
-     
+  goForward(stepper: MatStepper) {
+    stepper.next();
+
   }
-   gobackward(stepper: MatStepper) {
+  gobackward(stepper: MatStepper) {
     stepper.previous();
-    
+
   }
 
-  
+
   nextbutton() {
     this.goForward(this.stepper);
-      
-    
-    
-   
-    
+
+
+
+
+
   }
 
   Backbutton() {
     this.gobackward(this.stepper);
 
-    
-    
-  
+
+
+
   }
   expandMaterialIdentifier() {
 
@@ -1229,7 +1230,7 @@ export class MaterialAddEditpopupComponent {
 
   }
   refresh() {
-    this.selectedGeoField ='';
+    this.selectedGeoField = '';
     this.updateGeographyValue = '';
   }
 }

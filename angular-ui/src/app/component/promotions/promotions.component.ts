@@ -1074,6 +1074,8 @@ handleScroll(event) {
   onCellClicked( e): void {
     console.log(e)
    localStorage.setItem('promoclickId',e.data.productPromotionsId)
+   localStorage.setItem('promoclickName',e.data.promotionName)
+
     let cellCLickedpromotion = '1'
     localStorage.setItem('cellCLickedpromotion', cellCLickedpromotion)
     if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {

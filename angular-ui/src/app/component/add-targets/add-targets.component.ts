@@ -131,6 +131,8 @@ export class AddTargetsComponent implements OnInit {
     if (this.allDlrSelected == true) {
       this.selectedDealer = this.dealersArray
       this.allDlrSelected1 = true;
+      this.allDlrSelected1 = !this.allDlrSelected1;
+
     }
     else {
       this.selectedDealer = [];

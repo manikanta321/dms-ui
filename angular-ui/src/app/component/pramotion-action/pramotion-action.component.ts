@@ -68,7 +68,10 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
   }
   close(){
     // this.isOpen = false;
+    this.isOpen = false;
+
     this.dialog.open( ClosePopupComponent);
+
   }
   resetpws(){
     this.dialog.open(PswResetPopupComponent);
@@ -85,6 +88,8 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
       height: '583px',
      
     };
+    this.isOpen = false;
+
    this.dialog.open( AddPromotionsComponent, config);
 
   }

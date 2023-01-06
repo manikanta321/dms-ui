@@ -53,6 +53,11 @@ public GetProductList(data : any){
 public GetPGDetailList(){
   return this.http.get<any>(this.userurl + 'PromotionsApi/GetPGDetailList?ProductGroupId=18')
 }
+
+public closePromotion(id){
+  return this.http.get<any>(this.userurl + 'PromotionsApi/PromotionClose?ProductPromotionsId='+id)
+}
+
 public GetPGDetailListofShortcode(id){
   return this.http.get<any>(this.userurl + 'PromotionsApi/GetPSCDetailList?ProductShortCode='+id)
 }

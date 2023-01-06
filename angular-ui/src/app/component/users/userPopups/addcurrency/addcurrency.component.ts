@@ -98,6 +98,7 @@ this.uomShortName = shortName;
   }
   addcurncy(){
     if(this.editButton ==false){
+      localStorage.setItem('Addoreditcurrency','Add');
     const data={
       UoMName:this.Name,
       UoMShortName:this.uomShortName,
@@ -109,13 +110,11 @@ this.uomShortName = shortName;
     }
     this.user.addcurrency(data).subscribe((res) => {    
       this.currencyForm.reset(); 
-      
-       localStorage.setItem('Addoreditcurrency','edit');
-     
-
       // console.log(res,"123456987654")
     });
   }else{
+  localStorage.setItem('Addoreditcurrency','edit');
+
     const data2={
       UoMName:this.EUomName,
       UoMShortName:this.EuoMShortName,
@@ -126,17 +125,11 @@ this.uomShortName = shortName;
       
     }
       this.user.addcurrency(data2).subscribe((res) => {   
-        this.editUomData = res;
-        
-        
-         localStorage.setItem('Addoreditcurrency','Add');
-      
-
-
-        console.log("editUomData",this.editUomData);
+        this.editUomData = res;      
+ console.log("editUomData",this.editUomData);
       });
   }
-  this.dialog.open(AddcurrencySuccessfullyPopupComponent , {panelClass: 'activeSuccessPop'});
+ this.dialog.open(AddcurrencySuccessfullyPopupComponent , {panelClass: 'activeSuccessPop'});
 
    this.closeDialog();
   }

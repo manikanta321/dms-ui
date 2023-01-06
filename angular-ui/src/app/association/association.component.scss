@@ -1109,3 +1109,20 @@
     border-radius: 15px;
     text-align: center;
   }
+
+
+
+   .searchBox:hover >.searchButton {
+     display:contents; 
+   
+    
+
+ }
+
+
+ .searchBox:hover>.searchButton .material-icons {
+  position: relative;
+  right: 298px;
+  color: #000;
+   top: 8px;
+} 

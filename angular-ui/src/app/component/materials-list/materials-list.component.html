@@ -7,13 +7,13 @@
         <div class="row ">
           <div class="col-md-2 col-lg-2 col-6" >
             <form [formGroup]="myForm">
-              <ng-multiselect-dropdown class="catty catty22" name="city" [placeholder]="'Category'" formControlName="city"
+              <ng-multiselect-dropdown class="catty catty22" name="city" [placeholder]="'Categor'" formControlName="city"
                 [disabled]="disabled" [settings]="dropdownSettings" [data]="catgname" (onSelect)="onItemSelect($event)"
                 (onDeSelect)="onItemDeSelect($event)" (onDeSelectAll)="onItemDeSelectOrAll($event)"
                 (onSelectAll)="onItemSelectOrAll($event)">
               </ng-multiselect-dropdown>
               <div class="dropdown-placeholder cats-placeholder">
-                <span *ngIf="myForm.get('city').value.length == 0"> Category </span>
+                <span *ngIf="myForm.get('city').value.length == 0">Category </span>
                 <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder">
                  {{myForm.get('city').value.length}} category selected </span>
                 

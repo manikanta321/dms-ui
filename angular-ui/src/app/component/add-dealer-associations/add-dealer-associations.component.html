@@ -255,7 +255,7 @@
           <div class="row">
             <div class="col promotiont1">
               <form [formGroup]="myForm" class="dropdown-form-categ">
-                <ng-multiselect-dropdown class="categoryy" name="city1" [placeholder]="'Category'" formControlName="city1"
+                <ng-multiselect-dropdown class="categoryy adddealerbubbles" name="city1" [placeholder]="'Category'" formControlName="city1"
                   [disabled]="disabled" [settings]="dropdownSettings1" [data]="catgname"
                   (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
                   (onDeSelectAll)="onItemDeSelectOrAll($event)" (onSelectAll)="onItemSelectOrAll($event)">
@@ -275,7 +275,7 @@
             </div>
             <div class="col promotiont1">
               <form [formGroup]="myForm1" class="dropdown-form-categ">
-                <ng-multiselect-dropdown class="subCategoryy" name="city2" [placeholder]="'Geographies'"
+                <ng-multiselect-dropdown class="subCategoryy subcatbubbles" name="city2" [placeholder]="'Geographies'"
                   formControlName="city2" [disabled]="disabled" [settings]="dropdownSettings2" [data]="sub_category"
                   (onSelect)="onSubCategorySelect($event)" (onDeSelect)="onSubCategoryDeSelect($event)"
                   (onDeSelectAll)="onSubCategoryDSelectOrAll($event)" (onSelectAll)="onSubCategorySelectOrAll()">
@@ -287,7 +287,7 @@
                   <span *ngIf="myForm1.get('city2').value.length == 1" class="selected-placeholder">
                     {{myForm1.get('city2').value.length}} Sub-category </span>
                   <span *ngIf="myForm1.get('city2').value.length > 1" class="selected-placeholder">
-                    {{myForm1.get('city2').value.length}} Sub-category(s) </span>
+                    {{myForm1.get('city2').value.length}} Sub-cats </span>
 
                 </div>
 
@@ -297,7 +297,7 @@
 
             <div class="col promotiont1">
               <form [formGroup]="myForm2" class="dropdown-form-categ">
-                <ng-multiselect-dropdown class="typess" name="city3" [placeholder]="'Geographies'"
+                <ng-multiselect-dropdown class="typess selecttypes" name="city3" [placeholder]="'Geographies'"
                   formControlName="city3" [disabled]="disabled" [settings]="dropdownSettings6" [data]="typeI"
                   (onSelect)="onTypeSelect($event)" (onDeSelect)="onTypeDeSelect($event)"
                   (onSelectAll)="onTypeSelectOrAll()" (onDeSelectAll)="OnTypeDeselectOrAll()">
@@ -317,7 +317,7 @@
             <div class="col promotiont1">
               <form [formGroup]="myForm3" class="dropdown-form-categ">
 
-                <ng-multiselect-dropdown class="productt" name="city4" [placeholder]="''" formControlName="city4"
+                <ng-multiselect-dropdown class="productt selectprodectss" name="city4" [placeholder]="''" formControlName="city4"
                   [disabled]="disabled" [settings]="dropdownSettings4" [data]="Product"
                   (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)"
                   (onDeSelectAll)="onProductDeSelectOrAll($event)" (onSelectAll)="onProductSelectOrAll($event)">

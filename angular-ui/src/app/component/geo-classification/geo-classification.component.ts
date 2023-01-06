@@ -208,7 +208,7 @@ export class GeoClassificationComponent implements OnInit {
     event.stopPropagation();
     console.log(geoItem);
     let data = { geography: geoItem, title: geographyHierarchyName, isEdit: true, GeographyParentId: this.geoGraphyFullData[hirerachyIndex - 2]?.geographySelected[0], hirerachyIndex: hirerachyIndex };
-    const dialogRef = this.dialog.open(AddeditgeoComponent, { height: '320px', disableClose: true, data: data });
+    const dialogRef = this.dialog.open(AddeditgeoComponent, { height: '338px', disableClose: true, data: data });
     dialogRef.afterClosed().subscribe(({ res, result }) => {
       console.log(result);
       this.addEditapiResponse(res,result,hirerachyIndex);
@@ -232,7 +232,7 @@ export class GeoClassificationComponent implements OnInit {
   addGeographyForm(geoGraphyGrid, hirerachyIndex) {
     // console.log(geoGraphyGrid);
     let data = { geography: {}, title: geoGraphyGrid.geographyHierarchyName, isEdit: false, GeographyParentId: this.geoGraphyFullData[hirerachyIndex - 2]?.geographySelected[0], hirerachyIndex: hirerachyIndex  };
-    const dialogRef = this.dialog.open(AddeditgeoComponent, { height: '320px', disableClose: true, data: data });
+    const dialogRef = this.dialog.open(AddeditgeoComponent, { height: '338px', disableClose: true, data: data });
     dialogRef.afterClosed().subscribe(({ res, result }) => {
       console.log(result);
       this.addEditapiResponse(res,result,hirerachyIndex);

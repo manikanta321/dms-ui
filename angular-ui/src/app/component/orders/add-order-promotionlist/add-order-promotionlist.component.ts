@@ -128,7 +128,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
       // let previousSelectedPromos = []
       this.arrayOfImages.forEach(x => {
-        if(x.isSelected) this.imagesid.push(x.productPromotionsId);
+        if (x.isSelected) this.imagesid.push(x.productPromotionsId);
       })
       if (this.imagesid.length > 0)
         this.getProductsOfPromotionForOrder();
@@ -150,7 +150,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
       this.griddatapromotions.splice(this.griddatapromotions.findIndex(x => x.productPromotionsId == item.productPromotionsId), 1);
     }
   }
-
+  ProductPromotionOrderList: any[] = [];
   getProductsOfPromotionForOrder() {
     let data = {
       "ProductPromotionId": this.imagesid,
@@ -168,7 +168,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
       //   item.isProductSelected = false;
       //   return item;
       // });
-      this.orderPromotionFormatter(res.response);
+
+      this.ProductPromotionOrderList = res.response;
+      this.orderPromotionFormatter(this.ProductPromotionOrderList);
       // this.griddata = this.orderNonPromotionFormatter(this.griddatapromotions);
       // this.griddatapromotions.sort((a, b) => b.isProductSelected - a.isProductSelected   );
       this.spinner.hide();
@@ -176,9 +178,21 @@ export class AddOrderPromotionlistComponent implements OnInit {
     });
   }
 
-  appendStockItemFields(stockItem) {
+  appendStockItemFields(stockItem, productPromotions) {
     let formatObj: any = {};
-    // console.log(this.currentSelectedPromos);
+    console.log(this.currentSelectedPromos);
+    let promotion = this.currentSelectedPromos.find(x => x.promotionId == productPromotions.productPromotionsId);
+    if (promotion) {
+      let exisistItem = promotion.itemDetails.find(y => y.stockitemid == stockItem.stockitemid);
+      if (exisistItem) {
+        stockItem = JSON.parse(JSON.stringify(exisistItem));
+        stockItem.isProductSelected = true;
+        productPromotions.isShowPromos = true;
+      }
+    }
+
+  
+    formatObj.customerPOProductId = stockItem.customerPOProductId ?? 0; 
     formatObj.stockitemid = stockItem.stockitemid;
     formatObj.stockitemname = stockItem.stockitemname;
     formatObj.productSKUName = stockItem.productSKUName;
@@ -198,6 +212,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
       let exisitPromotion = this.griddatapromotions.find(x => x.productPromotionsId === item.productPromotionsId);
 
       if (!exisitPromotion) {
+        item.isShowPromos = false;
+        item.isProductSelected = false;
+
         switch (item.promotionTypesId) {
           case 1:
 
@@ -206,7 +223,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
               item.promoDetails.buyGroups.forEach(stockItem => {
                 if (stockItem.stockitemid.length != 0) {
                   stockItem.stockitemid = stockItem.stockitemid.map(stock => {
-                    stock = this.appendStockItemFields(stock);
+                    stock = this.appendStockItemFields(stock, item);
                     return stock
                   })
                 }
@@ -222,7 +239,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
               item.promoDetails.getGroups.forEach(stockItem => {
                 if (stockItem.stockitemid.length != 0) {
                   stockItem.stockitemid = stockItem.stockitemid.map(stock => {
-                    stock = this.appendStockItemFields(stock);
+                    stock = this.appendStockItemFields(stock, item);
                     return stock
                   })
                 }
@@ -241,7 +258,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
                 setItem.buyGroups.forEach(stockItem => {
                   if (stockItem.stockitemid.length != 0) {
                     stockItem.stockitemid = stockItem.stockitemid.map(stock => {
-                      stock = this.appendStockItemFields(stock);
+                      stock = this.appendStockItemFields(stock, item);
                       return stock
                     })
                   }
@@ -256,7 +273,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
                 setItem.getGroups.forEach(stockItem => {
                   if (stockItem.stockitemid.length != 0) {
                     stockItem.stockitemid = stockItem.stockitemid.map(stock => {
-                      stock = this.appendStockItemFields(stock);
+                      stock = this.appendStockItemFields(stock, item);
                       return stock
                     })
                   }
@@ -271,7 +288,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
           case 3:
             if (item.promoDetails && item.promoDetails.stockitems && item.promoDetails.stockitems.length != 0) {
               item.promoDetails.stockitems = item.promoDetails.stockitems.map(stockItem => {
-                stockItem = this.appendStockItemFields(stockItem);
+                stockItem = this.appendStockItemFields(stockItem, item);
                 return stockItem
               });
               item.promoDetails.totalQuantity = 0;
@@ -282,7 +299,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
           case 4:
             if (item.promoDetails && item.promoDetails.stockitems && item.promoDetails.stockitems.length != 0) {
               item.promoDetails.stockitems = item.promoDetails.stockitems.map(stockItem => {
-                stockItem = this.appendStockItemFields(stockItem);
+                stockItem = this.appendStockItemFields(stockItem, item);
                 return stockItem
               });
               item.promoDetails.totalQuantity = 0;
@@ -294,8 +311,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
             break;
         }
 
-        item.isShowPromos = false;
-        item.isProductSelected = false;
+       
         this.griddatapromotions.push(item);
       }
 

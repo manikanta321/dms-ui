@@ -118,7 +118,8 @@ export class AddorderpromotionsComponent implements OnInit {
   selectedStartDate: any;
   CustomerPoId: any = 0;
   editorderbyID: any = {};
-  shippingPackingchargeDetails:any = {};
+  copyEditOrderById: any;
+  shippingPackingchargeDetails: any = {};
 
   dateChange(e) {
 
@@ -1092,17 +1093,36 @@ export class AddorderpromotionsComponent implements OnInit {
     console.log(this.startdate, "date")
     let itemsCount: any = [];
 
+    let copyItemsData = this.copyEditOrderById.itemcount;
     // Push Non Promotion data to itemscount variable
     if (this.AddorderNonpromotiondata && this.AddorderNonpromotiondata.itemDetails && this.AddorderNonpromotiondata.itemDetails.length != 0) {
+      let tempObj = JSON.parse(JSON.stringify(this.AddorderNonpromotiondata));
+      let previousObj = copyItemsData.find(x => x.promotionId == tempObj.promotionId);
 
-      itemsCount.push(this.AddorderNonpromotiondata);
+      tempObj.itemDetails.map(x => {
+        let previousValue = previousObj.itemDetails.find(y => y.stockitemid == x.stockitemid);
+        if (previousValue) {
+          x.customerPOProductId = previousValue.customerPOProductId;
+        }
+      })
+
+      itemsCount.push(tempObj);
     }
 
     if (this.AddOrderPromotionData) {
-      this.AddOrderPromotionData.forEach((x, index) => {
+      this.AddOrderPromotionData.forEach((promoObj, index) => {
+        let tempObj = JSON.parse(JSON.stringify(promoObj));
+        let previousObj = copyItemsData.find(x => x.promotionId == tempObj.promotionId);
+
+        tempObj.itemDetails.map(x => {
+          let previousValue = previousObj.itemDetails.find(y => y.stockitemid == x.stockitemid);
+          if (previousValue) {
+            x.customerPOProductId = previousValue.customerPOProductId;
+          }
+        })
         let obj: any = {};
-        obj.promotionId = x.promotionId;
-        obj.itemDetails = x.itemDetails;
+        obj.promotionId = tempObj.promotionId;
+        obj.itemDetails = tempObj.itemDetails;
         obj.promocode = 'P' + (index + 1);
         itemsCount.push(obj);
       })
@@ -1124,8 +1144,8 @@ export class AddorderpromotionsComponent implements OnInit {
       "requirementdate": new Date(this.startdate).toLocaleDateString('en-US'),
       "CreatedById": loggedUserId,
       "itemcount": itemsCount,
-      "AddType":submitType,
-      "CustomerPOId":this.CustomerPoId 
+      "AddType": submitType,
+      "CustomerPOId": this.CustomerPoId
     }
 
     this.orders.addorderNonPromotions(data).subscribe((res) => {
@@ -1143,8 +1163,10 @@ export class AddorderpromotionsComponent implements OnInit {
   GetOrdersToEdit() {
     this.CustomerPoId = localStorage.getItem("CustomerPoId");
     console.log(this.CustomerPoId, 'this.CustomerPoId')
+    this.copyEditOrderById = null;
     this.orders.GetOrdersToEdit(this.CustomerPoId).subscribe((res) => {
       this.editorderbyID = res.response;
+      this.copyEditOrderById = res.response;
       console.log(res.response, "GetOrdersToEdit")
       this.datapreloadbyID();
       this.getShippingandPackingcharges();
@@ -1194,7 +1216,7 @@ export class AddorderpromotionsComponent implements OnInit {
       this.DealerReferenceNo = this.editorderbyID.dealerrefno
       this.CompanyReferenceNo = this.editorderbyID.comrefno
       // this.DealerReferenceNo = this.editorderbyID.dealerReferenceNo
-      if(this.editorderbyID.requirementdate){
+      if (this.editorderbyID.requirementdate) {
         this.startdate = new Date(this.editorderbyID.requirementdate)
       }
       this.DeliveryInstructions = this.editorderbyID.deliveryistruction
@@ -1204,17 +1226,17 @@ export class AddorderpromotionsComponent implements OnInit {
 
       this.nonpromotionlist = [];
       this.editorderbyID.itemcount.filter(x => x.promocode.toLowerCase().indexOf('np') != -1).forEach(y => {
-          this.nonpromotionlist = this.nonpromotionlist.concat(y.itemDetails);
+        this.nonpromotionlist = this.nonpromotionlist.concat(y.itemDetails);
       })
-      
+
       console.log(this.nonpromotionlist);
       this.AddorderNonpromotiondata = { itemDetails: [], promocode: 'NP', promotionId: 0 };
       this.nonpromotionlist.forEach(item => {
         // Promocode: this.promotionName,
         let obj = {
           // "Promocode": item.promotionName,
-          // "customerPOProductId":item.customerPOProductId,
 
+          "customerPOProductId": item.customerPOProductId,
           "stockitemid": item.stockitemid,
           "stockitemname": item.stockitemname,
           "uomid": item.uomid,
@@ -1236,37 +1258,37 @@ export class AddorderpromotionsComponent implements OnInit {
 
   }
 
-  
+
   getShippingandPackingcharges() {
 
-    let payload:any = {};
+    let payload: any = {};
 
     payload.GeographyId = this.geographyId;
     payload.EachModel = [];
 
     console.log(this.AddOrderPromotionData);
     console.log(this.AddorderNonpromotiondata);
-    if(this.AddOrderPromotionData && this.AddOrderPromotionData.length != 0){
+    if (this.AddOrderPromotionData && this.AddOrderPromotionData.length != 0) {
       this.AddOrderPromotionData.forEach(element => {
-        element.itemDetails.forEach(prod=>{
-          let obj:any = {};
+        element.itemDetails.forEach(prod => {
+          let obj: any = {};
           obj.TaxTemplateId = prod.taxid;
           obj.finalValue = prod.finalValue;
           payload.EachModel.push(obj);
         });
       });
     }
-    
-    if(this.AddorderNonpromotiondata && this.AddorderNonpromotiondata.itemDetails){
+
+    if (this.AddorderNonpromotiondata && this.AddorderNonpromotiondata.itemDetails) {
       this.AddorderNonpromotiondata.itemDetails.forEach(element => {
-        let obj:any = {};
+        let obj: any = {};
         obj.TaxTemplateId = element.taxid;
         obj.finalValue = element.finalValue;
         payload.EachModel.push(obj);
-    });
+      });
     }
-    
-    
+
+
 
     this.spinner.show();
     this.orders.getShippingandPackingcharges(payload).subscribe((res: any) => {

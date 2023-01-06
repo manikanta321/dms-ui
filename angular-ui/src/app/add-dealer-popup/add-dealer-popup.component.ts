@@ -632,7 +632,10 @@ initAddress2(defaultType): FormGroup {
     // alert(this.basicInfo);
   }
 
-
+  prevStepper(){
+    this.goBack(this.myStepper);
+    this.basicInfo = false;
+  }
 
 
 

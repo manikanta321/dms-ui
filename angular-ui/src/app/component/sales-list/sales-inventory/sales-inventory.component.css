@@ -463,3 +463,49 @@
     .geography-placeholder.dropdown-placeholder .selected-placeholder {
       color: #006466  !important;
     }
+    ::ng-deep .Dealerdrp .dropdown-btn span .ng-star-inserted {
+      position: absolute !important;
+      right: -18px !important;
+      bottom: 0px;
+      top: 50px !important;
+      /* width: 51px; */
+      border: 1px solid #337ab7;
+      background: #38405F  !important;
+      font-size: 12px;
+      box-shadow: 1px 1px #959595;
+      color: #fff;
+      height: 22px;
+      border-radius: 15px;
+      text-align: center;
+    }
+    ::ng-deep .product .dropdown-btn span .ng-star-inserted {
+      position: absolute !important;
+      right: -18px !important;
+      bottom: 0px;
+      top: 50px !important;
+      /* width: 51px; */
+      border: 1px solid #337ab7;
+      background: #44026C  !important;
+      font-size: 12px;
+      box-shadow: 1px 1px #959595;
+      color: #fff;
+      height: 22px;
+      border-radius: 15px;
+      text-align: center;
+    }
+    ::ng-deep .geography .dropdown-btn span .ng-star-inserted {
+      position: absolute !important;
+      right: -18px !important;
+      bottom: 0px;
+      top: 50px !important;
+      /* width: 51px; */
+      border: 1px solid #337ab7;
+      background: #006466 !important;
+      font-size: 12px;
+      box-shadow: 1px 1px #959595;
+      color: #fff;
+      height: 22px;
+      border-radius: 15px;
+      text-align: center;
+    }
+    

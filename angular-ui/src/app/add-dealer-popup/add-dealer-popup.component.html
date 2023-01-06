@@ -8,13 +8,13 @@
                 <h3 class="addU font">{{dealerAction}} Dealer</h3>
                 <br>
                 <div class="d-flex">
-                    <img src="assets/img/arrow-left-disable.png" *ngIf="!basicInfo" (click)="disableBackbutton()"
-                        class="addMore-icon" style="width: 32px;margin-left: 760px;" alt="left-arr-btn">
+                    <img src="assets/img/arrow-left-circle-fill.svg"  (click)="prevStepper()"
+                        class="addMore-icon" style="width: 24px;margin-left: 760px;" alt="left-arr-btn">
 
 
 
-                    <img src="assets/img/arrow-left-circle-fill.svg" *ngIf="basicInfo" class="addMore-icons"
-                        style="width: 24px;margin-left: 760px;" alt="left-arr-btn" (click)="goBack(stepper)">
+                    <!-- <img src="assets/img/arrow-left-circle-fill.svg" *ngIf="basicInfo" class="addMore-icons"
+                        style="width: 24px;margin-left: 760px;" alt="left-arr-btn" (click)="goBack(stepper)"> -->
 
                     <img src="assets/img/arrow-right-circle-fill.svg" (click)="disableBackbutton()" class="addMore-icon"
                         style="width: 24px; margin-left: 12px;" alt="right-arr-btn">

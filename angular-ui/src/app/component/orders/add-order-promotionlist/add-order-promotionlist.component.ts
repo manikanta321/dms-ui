@@ -110,9 +110,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
     this.spinner.show();
     this.orders.orderpromotionimages(data).subscribe((res: any) => {
       this.imagesapis = res.response
+      this.spinner.hide();
       console.log(this.imagesapis, "imagesres");
       this.imagesapis.forEach(item => {
-        this.spinner.hide();
         console.log(this.currentSelectedPromos);
         let index = this.currentSelectedPromos.findIndex(x => (x.promotionId == item.promotionId || x.promotionId == item.productPromotionsId));
         let obj = {

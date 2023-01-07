@@ -362,6 +362,8 @@ export class AddorderpromotionsComponent implements OnInit {
   onItemSelectdealers(item: any) {
     this.customerId = item.customerId;
     localStorage.setItem("dealerid", this.customerId);
+    localStorage.removeItem("geographyId");
+    this.geographyId = null;
     this.orders.GetGeoGrapydropdownList(this.customerId).subscribe((res) => {
       let GeoGrapydropdownList = res.response;
       console.log(GeoGrapydropdownList, "GeoGrapydropdownList")
@@ -1093,18 +1095,20 @@ export class AddorderpromotionsComponent implements OnInit {
     console.log(this.startdate, "date")
     let itemsCount: any = [];
 
-    let copyItemsData = this.copyEditOrderById.itemcount;
+    let copyItemsData = this.copyEditOrderById?.itemcount ?? [];
     // Push Non Promotion data to itemscount variable
     if (this.AddorderNonpromotiondata && this.AddorderNonpromotiondata.itemDetails && this.AddorderNonpromotiondata.itemDetails.length != 0) {
       let tempObj = JSON.parse(JSON.stringify(this.AddorderNonpromotiondata));
       let previousObj = copyItemsData.find(x => x.promotionId == tempObj.promotionId);
+      if (previousObj) {
+        tempObj.itemDetails.map(x => {
+          let previousValue = previousObj.itemDetails.find(y => y.stockitemid == x.stockitemid);
+          if (previousValue) {
+            x.customerPOProductId = previousValue.customerPOProductId;
+          }
+        })
 
-      tempObj.itemDetails.map(x => {
-        let previousValue = previousObj.itemDetails.find(y => y.stockitemid == x.stockitemid);
-        if (previousValue) {
-          x.customerPOProductId = previousValue.customerPOProductId;
-        }
-      })
+      }
 
       itemsCount.push(tempObj);
     }
@@ -1113,13 +1117,15 @@ export class AddorderpromotionsComponent implements OnInit {
       this.AddOrderPromotionData.forEach((promoObj, index) => {
         let tempObj = JSON.parse(JSON.stringify(promoObj));
         let previousObj = copyItemsData.find(x => x.promotionId == tempObj.promotionId);
+        if (previousObj) {
 
-        tempObj.itemDetails.map(x => {
-          let previousValue = previousObj.itemDetails.find(y => y.stockitemid == x.stockitemid);
-          if (previousValue) {
-            x.customerPOProductId = previousValue.customerPOProductId;
-          }
-        })
+          tempObj.itemDetails.map(x => {
+            let previousValue = previousObj.itemDetails.find(y => y.stockitemid == x.stockitemid);
+            if (previousValue) {
+              x.customerPOProductId = previousValue.customerPOProductId;
+            }
+          })
+        }
         let obj: any = {};
         obj.promotionId = tempObj.promotionId;
         obj.itemDetails = tempObj.itemDetails;

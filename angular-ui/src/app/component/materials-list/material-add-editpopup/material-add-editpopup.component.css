@@ -233,7 +233,7 @@ span {
 }
 
 .popup .close-icon:hover {
-  
+
   cursor: pointer;
 }
 
@@ -358,12 +358,14 @@ label {
 ::ng-deep.mat-slide-toggle-bar {
   margin-left: 20px;
 }
+
 ::ng-deep.mat-slide-toggle-content {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   padding-left: 30px;
 }
+
 .city {
   margin-left: 608px;
   margin-top: -30px;
@@ -861,7 +863,7 @@ align-items: center;
   margin-left: 3px;
   font-family: 'Gilroy';
   padding-left: 10px;
-    padding-top: 9px;
+  padding-top: 9px;
 }
 
 textarea {
@@ -1467,7 +1469,7 @@ textarea {
   /* overflow: auto; */
 }
 
-.popup .pContent{
+.popup .pContent {
   position: relative;
   bottom: 21px;
 }
@@ -1476,8 +1478,10 @@ textarea {
   background-color: rgba(206, 212, 218, 1), rgba(248, 249, 250, 1);
   color: black;
 }
-.mat-chip .mat-standard-chip{
-  background-color: rgba(206, 212, 218, 1), rgba(248, 249, 250, 1); ;
+
+.mat-chip .mat-standard-chip {
+  background-color: rgba(206, 212, 218, 1), rgba(248, 249, 250, 1);
+  ;
 }
 
 .select {
@@ -1524,11 +1528,13 @@ mat-icon {
     left: 2;
     left: 79%; */
 }
+
 .refreshbtn:hover {
   background-color: grey !important;
   color: white !important;
 }
-.refreshbtn{
+
+.refreshbtn {
   width: 39px;
   border-radius: 10px;
   background-color: black;
@@ -1539,34 +1545,44 @@ mat-icon {
   left: 101%;
   bottom: 42px;
 }
+
 ::ng-deep.searchbtnIcon.ng-select .ng-arrow-wrapper .ng-arrow {
   display: none !important;
 }
 
-::ng-deep.searchbtnIcon.ng-select span.ng-arrow-wrapper:before{
+::ng-deep.searchbtnIcon.ng-select span.ng-arrow-wrapper:before {
   content: url(/assets/img/search-icon.svg);
   display: inline-block;
   margin-left: -15px;
 }
 
-.geography-popupsize{
-height: 380px;
+.geography-popupsize {
+  height: 380px;
 }
 
-.sidentifier{
+.sidentifier {
   text-decoration: underline;
 }
-.sidentifierp{
+
+.sidentifierp {
   text-decoration: underline;
   position: relative;
   bottom: 21px;
 }
+
 .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
   background-color: black;
   color: white;
 }
-.errormsg{
-  color:red;
+
+.errormsg {
+  color: red;
   position: relative;
+  font-size: 13px;
+}
+
+.patternValidation {
+  position: absolute;
+
   font-size: 13px;
 }

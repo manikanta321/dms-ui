@@ -191,14 +191,21 @@
                   <label> Expiry Period (in months)<span>*</span></label>
                 </div>
                 <input type="text" id="matExpiry" name="matExpiry" (keyup)="onKeyExpry($event)"
-                  class="form-control container na-placeholder" required placeholder="NA" [(ngModel)]="expiryDate"
+                  class="form-control container na-placeholder" required placeholder="NA" [(ngModel)]="expiryDate" pattern="^[0-9]*$"
                   #matExpiry="ngModel">
                 <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
                   *ngIf="matExpiry.invalid && (matExpiry.dirty || matExpiry.touched)" class="alert">
                   <span  class="errormsg" *ngIf="matExpiry.errors?.['required']">
                     *Expiry period is required.
                   </span>
+                  <span *ngIf="matExpiry.errors?.['pattern']" class="patternValidation">
+                    *Only Numbers allowed 
+                  </span> 
                 </p>
+                  <!-- <div *ngIf="matExpiry.errors?.['pattern']">
+                    <span class="patternValidation">Only Numbers allowed </span>
+                  </div> -->
+                
 
               </div>
             </div>

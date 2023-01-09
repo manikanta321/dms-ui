@@ -191,6 +191,7 @@ import { DealerSuccessPopupComponent } from './component/add-dealer-associations
 import { DealerTargetActionComponent } from './component/dealer-target-action/dealer-target-action.component';
 import { AddDealerSuccessfulPopupComponent } from './add-dealer-popup/add-dealer-successful-popup/add-dealer-successful-popup.component';
 import { EdituomSuccessfulpopupComponent } from './component/users/userPopups/edit-uom-popup/edituom-successfulpopup/edituom-successfulpopup.component';
+import { AddPromotionSuccessfulPopupComponent } from './component/add-promotions/add-promotion-successful-popup/add-promotion-successful-popup.component';
 
 @NgModule({
   declarations: [
@@ -475,6 +476,7 @@ import { EdituomSuccessfulpopupComponent } from './component/users/userPopups/ed
           DealerTargetActionComponent,
           AddDealerSuccessfulPopupComponent,
           EdituomSuccessfulpopupComponent,
+          AddPromotionSuccessfulPopupComponent,
           
   ],
   imports: [

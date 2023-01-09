@@ -7,6 +7,7 @@
   top: -113px;
   left: 175px;
 }
+
 #top::before {
   top: 93%;
   left: 7%;
@@ -14,11 +15,13 @@
   border-bottom: 1px solid black;
   border-right: 1px solid black;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 .tooltip-text {
   visibility: hidden;
   position: absolute;
@@ -32,6 +35,7 @@ input::-webkit-inner-spin-button {
   padding: 10px 15px 10px 15px;
   border: 1px solid black;
 }
+
 .tooltip-text::before {
   content: "";
   position: absolute;
@@ -40,32 +44,39 @@ input::-webkit-inner-spin-button {
   padding: 7px;
   z-index: 1;
 }
-.hover-text:hover >.tooltip-text {
+
+.hover-text:hover>.tooltip-text {
   visibility: visible;
 }
+
 .hover-text {
   display: inline-block;
 }
-.indexImg{
-margin-left: 10px;
-margin-bottom: 10px;
-position: relative;
-display: inline-block;
+
+.indexImg {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
 }
-.buyoneSet{
+
+.buyoneSet {
   background: #CED4DA;
-border: 1px solid #000000;
-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-border-radius: 10px;
-padding: 10px;
+  border: 1px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 10px;
 }
-.getSet1,.additionalGetset-2{
+
+.getSet1,
+.additionalGetset-2 {
   background: #CED4DA;
-/* border: 1px solid #000000;
+  /* border: 1px solid #000000;
 box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
 border-radius: 10px; */
-padding: 10px;
+  padding: 10px;
 }
+
 /* .mat-form-field::placeholder {
   bottom: 2px;
 
@@ -74,10 +85,12 @@ padding: 10px;
   cursor: pointer;
   color: grey;
 }
-.labelname{
+
+.labelname {
   margin: 15px 5px 5px;
   font-size: 13px;
 }
+
 .category {
   margin-top: 18px;
   font-family: 'Gilroy';
@@ -103,14 +116,16 @@ padding: 10px;
   width: 443px;
   height: 217px;
   background: #FFFFFF;
-border: 0.5px solid #000000;
-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-border-radius: 10px;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
 }
-.promoItem{
+
+.promoItem {
   font-weight: 300;
-font-size: 20px;
+  font-size: 20px;
 }
+
 /* .geography {
   overflow-y: auto;
   overflow-x: hidden;
@@ -140,6 +155,7 @@ font-size: 20px;
 .listStyleOfItems li {
   padding: 0 60px 0px 0px;
 }
+
 .qtyOfItems {
   width: 100px;
   height: 43px;
@@ -153,6 +169,7 @@ font-size: 20px;
 .addAlign {
   margin-left: 40px;
 }
+
 /* .qtyOfItems .firstInputOfItems {
   width: 100px;   
   height: 43px;
@@ -218,6 +235,7 @@ font-size: 20px;
   margin-bottom: 16px;
   margin-left: 20px;
 }
+
 /* .type {
   margin-top: -30px;
   margin-left: 496px;
@@ -248,6 +266,11 @@ font-size: 20px;
   margin-top: -47px;
 
 }
+
+::ng-deep.addPromotionsHeader .mat-step-header{
+  width: 133px;
+}
+
 
 /* .mat-horizontal-stepper-header-container ng-tns-c418-7 {
     margin: top -51px;
@@ -318,7 +341,8 @@ font-size: 20px;
   font-weight: 300;
   font-size: 20px;
 }
-.geo-head{
+
+.geo-head {
   font-style: normal;
   font-weight: 300;
   font-size: 20px;
@@ -327,8 +351,8 @@ font-size: 20px;
 .promo-Name {
   height: 43px;
   font-weight: 300;
-font-size: 14px;
-color: rgba(104, 110, 116, 0.75);
+  font-size: 14px;
+  color: rgba(104, 110, 116, 0.75);
   background-color: white;
   border-radius: 10px;
   border: 1px solid black;
@@ -343,7 +367,7 @@ color: rgba(104, 110, 116, 0.75);
   font-size: 14px;
   outline: none;
 } */
-.slctd-row{
+.slctd-row {
   background: #FFFFFF;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
@@ -351,27 +375,33 @@ color: rgba(104, 110, 116, 0.75);
   height: 43px;
   padding: 4px;
 }
-.slctd-geo-btn{
+
+.slctd-geo-btn {
   background: #000000;
-box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
-border-radius: 10px;
-height: 33px;
-color: white;
-float: right;
-cursor: pointer;
+  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  height: 33px;
+  color: white;
+  float: right;
+  cursor: pointer;
 }
-.sltd-span{
+
+.sltd-span {
   margin-top: 6px;
 }
+
 .astr {
   color: #FF0000;
 }
-.selectedcolor{
+
+.selectedcolor {
   color: #DBB802;
 }
-.selectedclr2{
+
+.selectedclr2 {
   color: #009B63;
 }
+
 .close-icon {
   left: 100%;
   position: relative;
@@ -379,45 +409,51 @@ cursor: pointer;
   font-weight: 600;
   cursor: pointer;
 }
-.searchGeo{
+
+.searchGeo {
   background: #FFFFFF;
-border: 0.5px solid #000000;
-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-border-radius: 10px;
-height: 43px;
-width: 456px;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  height: 43px;
+  width: 456px;
 }
-.addtnlRemarks{
+
+.addtnlRemarks {
   background: #FFFFFF;
-border: 0.5px solid #000000;
-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-border-radius: 10px;
-height: 43px;
-width: 873px;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  height: 43px;
+  width: 873px;
 }
-.saveDraft{
+
+.saveDraft {
   background: #000000;
-box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
-border-radius: 10px;
-width: 168px;
-height: 43px;
-color: white ;
-margin-right: 15px;
+  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  width: 168px;
+  height: 43px;
+  color: white;
+  margin-right: 15px;
 }
-.submit{
+
+.submit {
   background: #FFFFFF;
-border: 2px solid #000000;
-box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
-border-radius: 10px;
-width: 168px;
-height: 43px;
-color: #000000;
-margin-right: 15px;
+  border: 2px solid #000000;
+  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  width: 168px;
+  height: 43px;
+  color: #000000;
+  margin-right: 15px;
 }
-.footer-btns{
+
+.footer-btns {
   margin: auto;
   margin-top: 20px;
 }
+
 label {
   /* padding: 2px 0; */
   font-size: 14px;
@@ -437,6 +473,7 @@ label {
   margin-top: 2px;
   font-family: 'Gilroy';
 }
+
 /* 
 ::ng-deep.matcard-dealers .mat-card {
   width: 373px;
@@ -450,6 +487,7 @@ div.catg[data-selected] {
 li {
   list-style: none;
 }
+
 /* ::ng-deep.mat-horizontal-content-container {
   overflow: hidden;
   padding: 0px 0px 0px 0px;
@@ -458,7 +496,12 @@ li {
   text-overflow: ellipsis;
   overflow: hidden;
   font-size: 12px;
+  bottom: 68px;
+  position: absolute;
+  width: 138px;
+  left: 1px;
 }
+
 /* .mat-card-subtitle:before {
   content: "";
   display: block;
@@ -484,37 +527,42 @@ li {
   margin-top: 12px;
   margin-right: -7px;
 } */
-.expsion-img{
-height: 18px;
+.expsion-img {
+  height: 18px;
 }
-.collapsible{
+
+.collapsible {
   background: white;
   border: 1px solid black;
   border-radius: 10px;
   padding: 10px;
   height: 43px;
 }
-.qty-box{
+
+.qty-box {
   background: #FFFFFF;
-border: 0.5px solid #000000;
-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-border-radius: 10px;
-width: 48px;
-height: 43px;
-text-align: center;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  width: 48px;
+  height: 43px;
+  text-align: center;
 }
-.mty-box{
+
+.mty-box {
   background: #FFFFFF;
-border: 0.5px solid #000000;
-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-border-radius: 10px;
-width: 48px;
-height: 43px;
-text-align: center;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  width: 48px;
+  height: 43px;
+  text-align: center;
 }
-.expn-t{
+
+.expn-t {
   margin: 2px;
 }
+
 .productdrpdown {
   width: 365px;
   position: relative;
@@ -549,26 +597,30 @@ text-align: center;
   border-radius: 2px;
   font-family: 'Gilroy';
 }
-.addproImg{
+
+.addproImg {
   width: 426px;
   height: 199px;
   margin-top: -7px;
   border-radius: 10px;
 }
+
 ::ng-deep.myDatepicker .mat-form-field {
   width: 415px;
-height: 43px;
+  height: 43px;
   background: white !important;
   border-radius: 5px;
   padding-left: 10px;
 
 }
-.fileadd{
+
+.fileadd {
   position: relative;
-    top: 17%;
+  top: 17%;
 }
-.imgupload{
-display: none;
+
+.imgupload {
+  display: none;
 }
 
 ::ng-deep.myDatepicker .mat-icon-button {
@@ -577,6 +629,7 @@ display: none;
   position: relative;
   right: 8px;
 }
+
 /* .getset-matcard {
   background: #FFFFFF;
   border: 0.5px solid #000000;
@@ -624,17 +677,19 @@ display: none;
   top: 509px;
   left: 17px;
 } */
-.list-item{
+.list-item {
   background: #FFFFFF;
   border: 0.5px solid #000000;
-/* width: 401px; */
-height: 130px;
-border-radius: 10px;
+  /* width: 401px; */
+  height: 130px;
+  border-radius: 10px;
 }
-.item-in-box{
-      height: 98px;
-    overflow-y: auto;
+
+.item-in-box {
+  height: 98px;
+  overflow-y: auto;
 }
+
 .plus-image {
   width: 22px;
   position: relative;
@@ -696,14 +751,16 @@ border-radius: 10px;
   position: relative;
   right: 17px;
 }
-.slct-items{
+
+.slct-items {
   background: #FFFFFF;
-border: 0.5px solid #000000;
-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-border-radius: 10px;
-width: 456px;
-height: 43px;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  width: 456px;
+  height: 43px;
 }
+
 .cancel-image {
   position: relative;
   bottom: 126px;
@@ -723,9 +780,11 @@ height: 43px;
   border-radius: 10px;
   height: 43px;
 }
+
 ::ng-deep.promotiontypedrp .ng-select.ng-select-single .ng-select-container {
   height: 43px;
 }
+
 .itemsList {
   border: 0.5px solid #000000;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -766,19 +825,22 @@ height: 43px;
   border-radius: 10px;
   /* margin-top: 10px; */
 }
-.cancelbtn{
+
+.cancelbtn {
   border: none;
   background: none;
   text-decoration: underline;
   font-size: 15px;
 }
-.ag-theme-material{
+
+.ag-theme-material {
   height: 360px;
   border-radius: 20px;
   background-color: white;
   font-family: Gilroy;
   width: 100%;
 }
+
 ::ng-deep.myDatepicker .mat-icon-button {
   background: transparent;
   color: black;
@@ -787,40 +849,58 @@ height: 43px;
   /* border: none;
   width: 0em !important; */
 }
+
 /* ::ng-deep.mat-form-field-appearance-legacy .mat-form-field-prefix .mat-icon, .mat-form-field-appearance-legacy .mat-form-field-suffix .mat-icon {
   width: 0em !important;
 } */
-::ng-deep.mat-form-field-appearance-legacy .mat-form-field-prefix .mat-icon, .mat-form-field-appearance-legacy .mat-form-field-suffix .mat-icon {
+::ng-deep.mat-form-field-appearance-legacy .mat-form-field-prefix .mat-icon,
+.mat-form-field-appearance-legacy .mat-form-field-suffix .mat-icon {
   width: 0em !important;
   border: none;
 }
+
 ::ng-deep.mat-checkbox-checked.mat-accent .mat-checkbox-background,
 .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
   background-color: #000000 !important;
 }
-::ng-deep.mat-checkbox-checked
-  .mat-checkbox-layout
-  .mat-checkbox-inner-container
-  .mat-checkbox-background {
+
+::ng-deep.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background {
   background-color: #000000 !important;
 }
-.promoNameInput{
+
+.promoNameInput {
   background: #FFFFFF;
-border: 0.5px solid #000000;
-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-border-radius: 10px;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
 }
+
 ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
   border: 2px solid #000000 !important;
 }
+
 .ag-theme-material .ag-checkbox-input-wrapper.ag-checked::after {
-  color: black!important;
+  color: black !important;
 }
-.row{
-      margin-right: 0px;
-     margin-left: 0px;
+
+.row {
+  margin-right: 0px;
+  margin-left: 0px;
 }
-::ng-deep.promotion-datepicker .mat-form-field-appearance-legacy .mat-form-field-infix{
+
+::ng-deep.promotion-datepicker .mat-form-field-appearance-legacy .mat-form-field-infix {
   padding: 0.4375em 0;
-    margin-top: -4px !important;
+  margin-top: -4px !important;
+}
+
+::ng-deep.ag-theme-material .ag-checkbox-input-wrapper.ag-checked::after {
+  color: black !important;
+}
+
+.item-header {
+  font-size: 18px;
+}
+
+.placeholderText {
+  border: none;
 }

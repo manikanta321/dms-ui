@@ -127,13 +127,15 @@
                 <span *ngIf="relatestpasswords.errors?.['minlength']"  style="color:red;font-size: 13px;position: absolute; bottom:-8px;">
                   Password must be at least 8 characters long.
                 </span> 
+                <span style="color: red;position: relative;position: relative;padding: 0px;height: 0px;top: -6px;font-size: 13px;">{{error}} </span>
                 </p>
-            <p style="color: red;position: relative;position: relative;padding: 0px;height: 0px;top: -6px;">{{error}}
-            </p>
-            <br>
+            <!-- <p style="color: red;position: relative;position: relative;padding: 0px;height: 0px;top: -6px;">{{error}}
+            </p> -->
+            <br> <br>
 
             <button class="update-btn" (click)="changeUserPassword()">Update Password</button>
             <button class="cancel-btn" [mat-dialog-close]="true">Cancel</button>
+          
         </div>
         <span style="color: red;">*Required fields</span>
     

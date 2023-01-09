@@ -14,10 +14,10 @@
                 <img src="assets/img/arrow-right-circle-fill.svg" (click)="disableBackbutton()" class="addMore-icon"
                     style="width: 24px; margin-left: 12px;" alt="right-arr-btn">
             </div>
-            <mat-stepper labelPosition="bottom" #stepper>
-                <mat-step [stepControl]="firstFormGroup">
-                    <form #form=ngForm>
-                        <ng-template matStepLabel>Promotion Information</ng-template>
+            <mat-stepper labelPosition="bottom" #stepper ngClass="addPromotionsHeader"  >
+                <mat-step [stepControl]="firstFormGroup"> 
+                    <form #form=ngForm >
+                        <ng-template matStepLabel >Promotion Information</ng-template>
                         <div class="heading">
                             <h5 class="promo-head">Promotion Information </h5>
                         </div>
@@ -165,11 +165,11 @@
                                             <div class="col-10">
                                                 <label>Items<span class="astr">*</span></label>
                                                 <mat-card class="list-item">
-                                                    <mat-card-content class="item-in-box">
-                                                 
-                                                        <ul>
+                                                   
+                                                    <mat-card-content class="item-in-box" >
+                                                         <ul>
                                                             <li
-                                                                *ngFor="let producttable of addbuyg.productselectedRows">
+                                                                *ngFor="let producttable of addbuyg.productselectedRows" aria-placeholder="Items">
                                                                 <mat-checkbox class="example-margin font"
                                                                     [checked]="true"
                                                                     (click)="updateAllComplete(producttable.stockItemId,i)">
@@ -465,6 +465,7 @@
                                     <label>Items<span class="astr">*</span></label>
                                     <mat-card class="list-item">
                                         <mat-card-content class="item-in-box">
+                                          
                                             <ul>
                                                 <li *ngFor="let producttable of productselectedRows">
                                                     <mat-checkbox class="example-margin font" [checked]="true"

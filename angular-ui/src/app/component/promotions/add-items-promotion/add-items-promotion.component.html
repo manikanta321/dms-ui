@@ -28,12 +28,20 @@
       <div class="row productdrprow">
         <div class="col-lg-3" style="font-family: 'Gilroy'; color: grey;">
           <form [formGroup]="myForms">
-            <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'product'" formControlName="citys"
+            <ng-multiselect-dropdown class="productdrp productdrpbubble " name="citys" [placeholder]="'Product'" formControlName="citys"
               [disabled]="disabled" [settings]="dropdownSettings6" [data]="Productarr"
               (onSelect)="ProductSubGroupDrpdwn($event)" (onDeSelect)="ProductsubGroupDeselect($event)"
               (onDeSelectAll)="ProductsubGroupDeSelectAll($event)" (onSelectAll)="ProductsubGroupSelectAll($event)">
             </ng-multiselect-dropdown>
           </form>
+          <div class="dropdown-placeholder catag-placeholder">
+            <span *ngIf="myForms.get('citys').value.length == 0"> Select Products </span>
+            <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder">
+              {{myForms.get('citys').value.length}} Category </span>
+            <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder">
+              {{myForms.get('citys').value.length}} product groups selected </span>
+
+          </div>
         </div>
         <div class="icon btnhover refreshbtn">
           <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;"
@@ -42,10 +50,10 @@
       </div>
     </div>
     <div class="scrollone">
-    <mat-stepper [linear]="isLinear" #stepper (click)="matsteptabClick($event)" [selectedIndex]="0">
-      <mat-step label="Step 1" [stepControl]="firstFormGroup">
+    <mat-stepper [linear]="isLinear" #stepper (click)="matsteptabClick($event)" [selectedIndex]="0" ngClass="addItemsHeader">
+      <mat-step label="Step 1" [stepControl]="firstFormGroup" >
         <form [formGroup]="firstFormGroup">
-          <ng-template matStepLabel="productlb">product</ng-template>
+          <ng-template matStepLabel="productlb">Product</ng-template>
           <!-- <div class="radio-btn mt-2">
         <div class="row">
           <div class="col-12">
@@ -63,7 +71,7 @@
               <div class="row">
                 <div class="search-d col-lg-3">
                   <form [formGroup]="myForm">
-                    <ng-multiselect-dropdown class="catty" name="city" [placeholder]="'Category'" formControlName="city"
+                    <ng-multiselect-dropdown class="catty cattybubble" name="city" [placeholder]="'Category'" formControlName="city"
                       [disabled]="disabled" [settings]="dropdownSettings" [data]="catgname"
                       (onSelect)="addItemSelect($event)" (onDeSelect)="addItemDeSelect($event)"
                       (onDeSelectAll)="addItemDeSelectOrAll($event)" (onSelectAll)="addItemSelectOrAll($event)">
@@ -80,14 +88,14 @@
                 </div>
                 <div class="search-d  col-lg-3">
                   <form [formGroup]="subCategory">
-                    <ng-multiselect-dropdown class="addsubc" name="city" placeholder="sub-category"
+                    <ng-multiselect-dropdown class="addsubc addsubcat" name="city" placeholder="sub-category"
                       formControlName="subcatty" [disabled]="disabled" [settings]="dropdownSettings1"
                       [data]="sub_category" (onSelect)="addSubCategorySelect($event)"
                       (onDeSelect)="addSubCategoryDeSelect($event)" (onDeSelectAll)="addSubCategoryDSelectOrAll($event)"
                       (onSelectAll)="addSubCategorySelectOrAll($event)">
                     </ng-multiselect-dropdown>
                   </form>
-                  <div class="dropdown-placeholder subCatag-placeholder">
+                  <div class="dropdown-placeholder product-placeholder">
                     <span *ngIf="subCategory.get('subcatty').value.length == 0"> Select SubCategory </span>
                     <span *ngIf="subCategory.get('subcatty').value.length == 1" class="selected-placeholder">
                       {{subCategory.get('subcatty').value.length}} SubCategory </span>
@@ -98,7 +106,7 @@
                 </div>
                 <div class="search-d  col-lg-3">
                   <form [formGroup]="type">
-                    <ng-multiselect-dropdown class="typy" name="type" [placeholder]="'Type'" formControlName="type"
+                    <ng-multiselect-dropdown class="typy typecat" name="type" [placeholder]="'Type'" formControlName="type"
                       [disabled]="disabled" [settings]="dropdownSettings2" [data]="typeI"
                       (onSelect)="addTypeSelect($event)" (onDeSelect)="addTypeDeSelect($event)"
                       (onDeSelectAll)="addTypeDeSelectOrAll($event)" (onSelectAll)="addTypeSelectOrAll($event)">
@@ -115,7 +123,7 @@
                 </div>
                 <div class="search-d  col-lg-3">
                   <form [formGroup]="products">
-                    <ng-multiselect-dropdown class="producty" name="product" [placeholder]="'Product'"
+                    <ng-multiselect-dropdown class="producty productcat" name="product" [placeholder]="'Product'"
                       formControlName="products" [disabled]="disabled" [settings]="dropdownSettings3"
                       [data]="Productarr" (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)"
                       (onDeSelectAll)="onProductDeSelectOrAll($event)" (onSelectAll)="onProductSelectOrAll($event)">
@@ -143,7 +151,7 @@
               <div class="row prod-identifier">
                 <div class="col-lg-3 search-prodId">
                   <form [formGroup]="productidentifier">
-                    <ng-multiselect-dropdown class="identifier" name="city" [placeholder]="''"
+                    <ng-multiselect-dropdown class="identifier identifiercat" name="city" [placeholder]="''"
                       formControlName="productidentifier" [disabled]="disabled" [settings]="dropdownSettings5"
                       [data]="toppingList" (onSelect)="onproductIdentifierSelect($event)"
                       (onDeSelect)="onproductIdentifierDeSelect($event)"

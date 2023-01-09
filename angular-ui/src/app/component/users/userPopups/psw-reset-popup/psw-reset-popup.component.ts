@@ -86,7 +86,7 @@ export class PswResetPopupComponent implements OnInit {
       })
 
     }else{
-   this.error="*Entered fields doesn’t match"
+   this.error="Entered fields doesn’t match"
   }
   }
   confrmPWS(){

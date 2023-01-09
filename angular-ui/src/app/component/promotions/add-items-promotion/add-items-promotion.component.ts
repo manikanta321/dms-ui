@@ -126,7 +126,7 @@ export class AddItemsPromotionComponent implements OnInit {
     { headerName: "", field: '', type: ['nonEditableColumn'] },
 
     {
-      headerName: "#of Products", field: 'noofproducts', type: ['nonEditableColumn'],
+      headerName: "# of Products", field: 'noofproducts', type: ['nonEditableColumn'],
       cellStyle: { color: '#017EFA' },
       cellEditorPopup: true,
       onCellClicked: (event: CellClickedEvent) => this.dialog.open(PopupGridTableComponent, { panelClass: 'pscgrid-popup', width: '999px' })
@@ -173,7 +173,7 @@ export class AddItemsPromotionComponent implements OnInit {
     },
 
     {
-      headerName: "#of products",
+      headerName: "# of products",
       field: 'noofproducts', type: ['nonEditableColumn'],
       cellStyle: { color: '#017EFA' },
       cellEditorPopup: true,
@@ -206,7 +206,7 @@ export class AddItemsPromotionComponent implements OnInit {
     },
 
     {
-      headerName: "#of Products",
+      headerName: "# of Products",
       field: 'noofproducts', type: ['nonEditableColumn'],
       cellStyle: { color: '#017EFA' },
       cellEditorPopup: true,

@@ -46,6 +46,7 @@ import { AddDealerPopupComponent } from 'src/app/add-dealer-popup/add-dealer-pop
 import { AddTargetsComponent } from '../add-targets/add-targets.component';
 import { TargetListService } from 'src/app/services/target-list.service';
 import { DealerTargetActionComponent } from '../dealer-target-action/dealer-target-action.component';
+import { DealerTargetSharedServicesService } from 'src/app/services/dealer-target-shared-services.service';
 
 // import { UseractionComponent } from '../useraction/useraction.component';
 
@@ -292,7 +293,7 @@ export class DealerTargetComponent implements OnInit {
     private user: UserService,
     private observer: BreakpointObserver,
     private fb: FormBuilder,
-    private sharedService: SharedService,
+    private sharedService: DealerTargetSharedServicesService,
     private targetList: TargetListService,
   ) {
 
@@ -741,7 +742,7 @@ console.log("SelectedGeo",this.geographySelected)
   }
 
   addTarget() {
-    this.dialog.open(AddTargetsComponent,{ width: '1700px',});
+    this.dialog.open(AddTargetsComponent,{ width: '1900px',});
   }
 
   editUser() {

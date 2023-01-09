@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { DealerTargetSharedServicesService } from 'src/app/services/dealer-target-shared-services.service';
 import { TargetListService } from 'src/app/services/target-list.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -81,8 +82,11 @@ export class AddTargetsComponent implements OnInit {
     private fb: FormBuilder,
     private user: UserService,
     private dialogRef: MatDialogRef<AddTargetsComponent>,
+    private sharedService: DealerTargetSharedServicesService,
 
-  ) { }
+  ) { 
+
+  }
   ngOnInit(): void {
     console.log('mainadd', this.mainadd)
     this.targetListGroup();
@@ -749,9 +753,10 @@ export class AddTargetsComponent implements OnInit {
 
         this.targetList.addTargetData(obj).subscribe((res) => {
           console.log("Added TargetData ", this.addedTargetData);
-          if(res.response=='successfully addres DealerTargets'){
+          if(res.response == 'successfully addres DealerTargets'){
             this.dialogRef.close();
             alert('added')
+            this.sharedService.filter('Register click')
 
           }
         })

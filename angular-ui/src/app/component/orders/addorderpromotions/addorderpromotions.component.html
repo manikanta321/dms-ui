@@ -22,8 +22,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="content" *ngIf="!dealerInfo">
-                    <div class="row">
+                <div class="content contentscrobar  "  *ngIf="!dealerInfo">
+                    <div class="row ">
                         <div class="col-lg-3">
                             <div class="dealerr">
                                 <label class="DealerInfo-label">Dealer <span class="astr">*</span></label>
@@ -500,8 +500,8 @@
                                 <tfoot>
                                     <tr class="bottom-table">
                                         <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
-                                            quantity entered)</td>
-                                        <td class="btm-total">{{quantityadd ?? 0}}</td>
+                                            quantity entered)</td>     
+                                        <td class="btm-total " >{{quantityadd ?? 0}}</td>
                                         <td class="btm-total">{{price ?? 0}}</td>
                                     </tr>
                                 </tfoot>

@@ -1,4 +1,4 @@
-<div class="orderlist-section mt-3" style="padding:15px;">
+<div class="orderlist-section mt-3 scrollbarorderlist" style="padding:15px;">
 <div class="fiters-sec">
 <div class="row orderlistdropdown">
     <div class="col-md-2 col-lg-2 col-sm-2" style="padding-left: 0px;">
@@ -20,7 +20,7 @@
 
       <div class="col-md-2 col-lg-2 col-sm-2">
         <form [formGroup]="myForm1" class="dropdown-form">
-          <ng-multiselect-dropdown class="Geography" name="city" [placeholder]="'Geography'" formControlName="geo"
+          <ng-multiselect-dropdown class="Geography geographybubbles" name="city" [placeholder]="'Geography'" formControlName="geo"
             [disabled]="disabled" [settings]="dropdownSettings1" [data]="geogropdownlist" (onSelect)="geographyselect($event)"
             (onDeSelect)="geographyDeselect($event)" (onDeSelectAll)="geographyDeselectAll($event)"(onSelectAll)="geographyselectAll($event)">
           </ng-multiselect-dropdown>
@@ -106,7 +106,7 @@
 
 <div >
     <ag-grid-angular
- id="gridContainer"
+ id="gridContainer" style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
  class="ag-theme-material mt-3"
  (gridReady)="onGridReady($event)"
  [rowHeight]="25"

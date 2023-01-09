@@ -4,6 +4,12 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+.contentscrobar
+{
+   
+   height: 200px;
+ }
+
 
 /* Firefox */
 input[type=number] {
@@ -219,6 +225,7 @@ input[type=number] {
   margin-top: -18px;
   margin-bottom: 2px;
  cursor: pointer;
+ font-size: 20px;
 }
 .addU {
   position: relative;
@@ -229,10 +236,14 @@ input[type=number] {
 .addU:after {
   content: "";
   display: block;
-  width: 360px;
+   width: 360px; 
+   left: 650px;
   height: 2px;
-  background: #686E74;
+   background: #686E74; 
+  
   right: 4px;
+   left:650px;
+   
   top: 50%;
   position: absolute;
 }
@@ -242,7 +253,7 @@ input[type=number] {
   display: block;
   width: 360px;
   height: 2px;
-  background: #686E74;
+   background: #686E74; 
   left: 0;
   top: 50%;
   position: absolute;
@@ -868,8 +879,10 @@ li {
   border-style: solid;
   border-color: #686E74;
   border-radius: 0px 0px 10px 10px;
-  overflow: auto;
+   overflow: auto; 
+  
   margin: 0px 10px;
+  
 }
 .top-bottom {
   margin-top: 25px;
@@ -920,6 +933,7 @@ li {
 
 .promotionpopup-scroll {
   height: 500px !important;
+  
 }
 
 .footer {
@@ -927,6 +941,7 @@ li {
   border-radius: 0px 0px 25px 25px;
   height: 50px;
   width: 860px !important;
+  margin: auto;
 
 }
 .save-submit {
@@ -1226,7 +1241,7 @@ li {
   border-radius: 21px;
   padding: 5px;
   font-size: 13px;
-  margin-left: 13px;
+  margin: auto;
 }
 
 .subitem {
@@ -1503,6 +1518,7 @@ table thead, table tbody tr {
     text-align: left;
 
 }
+
 
 .tax-select {
   width: 75px;

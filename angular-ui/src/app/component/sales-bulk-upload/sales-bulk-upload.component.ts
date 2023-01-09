@@ -199,14 +199,15 @@ export class SalesBulkUploadComponent implements OnInit {
         console.log("this.salesUploadList",this.salesUploadList);
         this.incorrectRows = this.salesUploadList.incorrectData;
         this.Incorrect = "Incorrect Data = " + this.incorrectRows.length;
-                const SalesUploadData = this.salesUploadList
+        const SalesUploadData = res.response.allRows;
+        console.log("SalesUploadData",SalesUploadData)
         this.batchId = SalesUploadData.map(({ batchId }) => batchId);
       })
     };
  }
  UploadSales() {
   const uploadedFile = {
-    BatchId:this.batchId,
+    BatchId:this.batchId[0],
     action:''
   }
   console.log("Daaataaa",uploadedFile); 

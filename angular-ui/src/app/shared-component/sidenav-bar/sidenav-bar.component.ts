@@ -25,30 +25,30 @@ export class SidenavBarComponent implements OnInit {
   sideBarOpen = true;
 
   userRoles;
-  viewMenuList;
+  viewMenuList:any = [];
 
   constructor(private loginService: LoginService) { }
 
 
   ngOnInit(): void {
     if (localStorage.getItem('userroles')) {
-      this.userRoles = JSON.parse(localStorage.getItem('userroles') ??'[]');
+      this.userRoles = JSON.parse(localStorage.getItem('userroles') ?? '[]');
       this.updateUserRoleMenu();
-    } else {
-      this.loginService.userRolesSubject.subscribe(res => {
-        console.log(res);
-        this.userRoles = res;
-        this.updateUserRoleMenu();
-      })
     }
+    this.loginService.userRolesSubject.subscribe(res => {
+      // console.log(res);
+      this.userRoles = res;
+      this.updateUserRoleMenu();
+    })
+
 
   }
-  updateUserRoleMenu(){
+  updateUserRoleMenu() {
     this.viewMenuList = [];
-    this.userRoles.forEach(element => {      
-      // if(element.viewPage){
+    this.userRoles.forEach(element => {
+      if (element.viewPage) {
         this.viewMenuList.push(element.title);
-      // }
+      }
     });
   }
   mobBurgerMenuAction() {

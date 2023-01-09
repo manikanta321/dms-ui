@@ -11,8 +11,7 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot,
   ) {
 
-
-    return true;
+    // return true;
     const key = route.data['key'];
     console.log(key);
     let userRoles = JSON.parse(localStorage.getItem('userroles') ?? '[]');
@@ -21,7 +20,7 @@ export class AuthGuard implements CanActivate {
     if (localStorage.getItem('token')) {
       // logged in so return true
       // return true;
-      if(key == undefined){
+      if (key == undefined) {
         return true;
       }
 
@@ -30,18 +29,17 @@ export class AuthGuard implements CanActivate {
         if (element.title == key) {
           showPage = element.viewPage;
         }
-
       });
 
-      if(!showPage) {
-        this.router.navigate(['/page-not-found']);    
+      if (!showPage) {
+        this.router.navigate(['/page-not-found']);
       }
       return showPage;
 
+    } else {
+      // not logged in so redirect to login page with the return url
+      this.router.navigate(['/login']);
     }
-
-    // not logged in so redirect to login page with the return url
-    this.router.navigate(['/login']);
     return false;
   }
 }

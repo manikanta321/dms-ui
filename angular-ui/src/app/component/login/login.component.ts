@@ -66,6 +66,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('userName', this.loginData.userName)
             localStorage.setItem('userType', this.loginData.userType)
             localStorage.setItem('lastLoginDate', this.loginData.lastLoginDate);
+            localStorage.setItem('roleId', this.loginData.roleId);
 
             this.login.CallGetUserRoles();
             // this.router.navigate(['../dashbord/user']);

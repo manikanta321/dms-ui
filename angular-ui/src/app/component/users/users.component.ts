@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AddUserPopupComponent } from './userPopups/add-user-popup/add-user-popup.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
@@ -254,7 +254,7 @@ export class UsersComponent implements OnInit {
   message1: boolean = true;
 
 
-  currentPageName = 'settingusers';
+  currentPageName;
 
 
   paginationNumberFormatter: (
@@ -287,13 +287,20 @@ export class UsersComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
     private router: Router,
+    private route: ActivatedRoute,
     private _liveAnnouncer: LiveAnnouncer,
     private user: UserService,
     private observer: BreakpointObserver,
     private fb: FormBuilder,
     private sharedService: SharedService,
   ) {
-
+    this.route
+      .data
+      .subscribe(v => {
+        this.currentPageName = v['key'];
+        console.log(this.currentPageName);
+      });
+      
     this.sharedService.listen().subscribe((m: any) => {
       console.log(m)
       this.getusertabeldata()
@@ -331,21 +338,18 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
     let currentPageRoleObj = userRolesData.find(element => element.title == this.currentPageName);
-    let actionColumn = ['edit', 'reset', 'activate', 'deactivate'];
+    let actionColumn = [ 'edit','reset_password', 'deactivate', 'activate'];
     let isActionCounterHide = 0;
     this.columnDefs = this.columnDefs.filter(x => {
       if (x.colId != 'action' || currentPageRoleObj == undefined || currentPageRoleObj == null) return true;
 
       currentPageRoleObj.permission.forEach(item => {
-        if (actionColumn.indexOf(item.action) != -1 && item.status == false) {
+        if (actionColumn.indexOf(item.action.toLowerCase()) != -1 && item.status == false) {
           isActionCounterHide += 1;
         }
       })
-      return isActionCounterHide == actionColumn.length ? false :true;
+      return isActionCounterHide == actionColumn.length ? false : true;
     })
-
-    console.log(actionColumn.length - isActionCounterHide);
-
     
     this.getusertabeldata();
     this.roleItems();
@@ -429,20 +433,7 @@ export class UsersComponent implements OnInit {
     this.user.getuserDeatilsUser(data).subscribe((res) => {
 
       this.rowData5 = res.response;
-      console.log('tableDaaaata', this.rowData5)
-      if (this.rowData5.length >= 1) {
-        this.rowData.forEach((element: { [x: string]: any; }) => {
-          if (element['status'] == 'Confirmed') {
-          }
-          else {
-            element['isActive'] == 'Inactive'
 
-          }
-          console.log('element', element['isActive'])
-        });
-      }
-
-      console.log('row data', this.rowData1)
 
     });
   }
@@ -529,7 +520,7 @@ export class UsersComponent implements OnInit {
         textField: 'statusName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-         itemsShowLimit: 1,
+        itemsShowLimit: 1,
         allowSearchFilter: false
       };
       this.selectedStatus = [];
@@ -635,8 +626,7 @@ export class UsersComponent implements OnInit {
 
   }
 
-  onItemDeSelect(item: any) 
-  {
+  onItemDeSelect(item: any) {
 
     this.userTypes.forEach((element, index) => {
       if (element == item.roleId) this.userTypes.splice(index, 1);

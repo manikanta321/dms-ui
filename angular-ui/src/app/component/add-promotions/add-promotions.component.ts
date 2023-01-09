@@ -382,15 +382,14 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         this.startDate.setValue(res.response.startDate);
         this.selectedStartDate = new Date(res.response.startDate).getFullYear() + '/' + (new Date(res.response.startDate).getMonth() + 1) + '/' + new Date(res.response.startDate).getDate();
 
-        this.endDate.setValue(res.response.startDate)
-        this.selectedEndDate = new Date(res.response.startDate).getFullYear() + '/' + (new Date(res.response.startDate).getMonth() + 1) + '/' + new Date(res.response.startDate).getDate();
-
+        this.endDate.setValue(res.response.endDate)
+        this.selectedEndDate = new Date(res.response.endDate).getFullYear() + '/' + (new Date(res.response.endDate).getMonth() + 1) + '/' + new Date(res.response.endDate).getDate();
+alert(this.selectedEndDate)
         this.promoName = res.response.promotionName;
         this.selectedPromo = res.response.promotionTypesId;
         this.addImgpreview = true;
         this.base64textString = res.response.imageurl;
         this.startDate.setValue(res.response.startDate);
-        this.endDate.setValue(res.response.endDate);
 
 
 

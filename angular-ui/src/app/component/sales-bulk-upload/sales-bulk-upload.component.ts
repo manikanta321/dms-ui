@@ -1,4 +1,6 @@
 import { Component, OnInit} from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { SalesServicesService } from 'src/app/services/sales-services.service';
 import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-sales-bulk-upload',
@@ -7,24 +9,39 @@ import * as XLSX from 'xlsx';
 })
 export class SalesBulkUploadComponent implements OnInit {
   arrayBuffer: any;
-  constructor() { }
-  totalRows:any = "Total rows = 121";
-  errorFree:any = "Error free rows = 97";
-  duplicateEntry:any = "Duplicate entries = 1";
+  constructor(
+    private salesService:SalesServicesService,
+    private dialogRef: MatDialogRef<SalesBulkUploadComponent>,
+    private dialog: MatDialog,
+  ) { }
+  totalRows:any;
+  errorFree:any;
+  duplicateEntry:any;
   qtyExceed:any = "Quantity exceeds available stock = 3";
   prodGeo:any = "Product & geography not found = 2";
   incorrectFormating:any = "Incorrect formatting = 4";
+  Incorrect:any;
   partialData:any = "Partial data = 3";
   zeroValue:any = "Zero value data = 2";
   uploadSales:boolean = false;
   duplicate:boolean = false;  
   zeroVal:boolean = false; 
+  incorrectData:boolean = false;
   partialD:boolean = false;
   formating:boolean = false;
   product:boolean = false;
   exceedQty:boolean = false;
   ErrorFree:boolean = false;
   rowsTotal:boolean = false;
+  CreatedById:any;
+  salesUploadList:any = [];
+  uploadedData:any = [];
+  TotalRows:any = [];
+  duplicateEntryy:any=[];
+  errorfreeRows:any =[];
+  incorrectRows:any = [];
+  showTable:boolean = false;
+  batchId:any;
   image1 = 'assets/img/minimize-tag.png';
   image2 = 'assets/img/minimize-tag.png';
   image3 = 'assets/img/maximize-arrow.png';
@@ -35,6 +52,8 @@ export class SalesBulkUploadComponent implements OnInit {
   image8 = 'assets/img/maximize-arrow.png';
   ngOnInit(): void {
     this.uploadSaless();
+    let Created = localStorage.getItem("logInId");
+    this.CreatedById = Number(Created)
   }
   uploadSaless(){
     let upload =sessionStorage.getItem('sales')
@@ -79,6 +98,16 @@ export class SalesBulkUploadComponent implements OnInit {
     this.zeroVal = !this.zeroVal;
 
     if(this.zeroVal === false){
+      this.image4 = 'assets/img/maximize-arrow.png';
+    } else {
+      this.image4 = 'assets/img/minimize-tag.png';
+     
+    }
+  }
+  IncorrectDataValue(){
+    this.incorrectData = !this.incorrectData;
+
+    if(this.incorrectData === false){
       this.image4 = 'assets/img/maximize-arrow.png';
     } else {
       this.image4 = 'assets/img/minimize-tag.png';
@@ -138,7 +167,7 @@ export class SalesBulkUploadComponent implements OnInit {
     reader.onload = (e: any) => {
       /* create workbook */
       const binarystr: string = e.target.result;
-      const wb: XLSX.WorkBook = XLSX.read(binarystr, { type: 'binary' });
+      const wb: XLSX.WorkBook = XLSX.read(binarystr, { type: 'binary',cellDates: true });
       console.log(wb,"wb")
 
       /* selected the first sheet */
@@ -149,11 +178,44 @@ export class SalesBulkUploadComponent implements OnInit {
 
       /* save data */
       
-      const data = XLSX.utils.sheet_to_json(ws); // to get 2d array pass 2nd parameter as object {header: 1}
-      console.log(data); // Data will be logged in array format containing objects
+       this.uploadedData = XLSX.utils.sheet_to_json(ws); // to get 2d array pass 2nd parameter as object {header: 1}
+      console.log("New Dataaaa",this.uploadedData); // Data will be logged in array format containing objects
+      const uploadedFile = {
+        CreateById:this.CreatedById,
+        BulkSales:this.uploadedData
+      }
+      console.log("Daaataaa",uploadedFile); 
+      this.salesService.getBulkSalesUpload(uploadedFile).subscribe((res)=>{
+        if(res.succeded = true) {
+          this.showTable =true;
+        }
+        this.salesUploadList=res.response;
+        this.TotalRows = this.salesUploadList.allRows;
+        this.totalRows = "Total rows = "+ this.TotalRows.length
+      this.duplicateEntryy =this.salesUploadList.duplicateEntries
+      this.duplicateEntry = "Duplicate entries = "+this.duplicateEntryy.length;
+      this.errorfreeRows = this.salesUploadList.errorFreeRows
+      this.errorFree = "Error free rows = "+ this.errorfreeRows.length;
+        console.log("this.salesUploadList",this.salesUploadList);
+        this.incorrectRows = this.salesUploadList.incorrectData;
+        this.Incorrect = "Incorrect Data = " + this.incorrectRows.length;
+                const SalesUploadData = this.salesUploadList
+        this.batchId = SalesUploadData.map(({ batchId }) => batchId);
+      })
     };
  }
-
+ UploadSales() {
+  const uploadedFile = {
+    BatchId:this.batchId,
+    action:''
+  }
+  console.log("Daaataaa",uploadedFile); 
+  this.salesService.SaveBulkSalesUpload(uploadedFile).subscribe((res)=>{
+    const uploadedData = res.response;
+    
+    this.dialogRef.close();
+  })
+ }
    
 
 }

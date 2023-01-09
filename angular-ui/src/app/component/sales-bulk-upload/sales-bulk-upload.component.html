@@ -32,239 +32,153 @@
         <!-- <div class="row ">
             <input type="text" class="total-rows no-doc col-md-11" placeholder="No document uploaded yet" disabled>
         </div> -->
-        <div class="step-2-filled">
+        <div class="step-2-filled" *ngIf="showTable">
             <div class="row step2">
                 <span class="step1-txt">Step 2:</span>
                 <h4 class="up-doc">Analyzing Uploaded document</h4>
             </div>
-            <div class="row " (click)="expandTotalRows()">
-                <input type="text" [(ngModel)]="totalRows" class="total-rows total-bg col-md-11" disabled>
-                <div class="col-md-1 total-style">
-                    <img [src]="image1" class="expand-arrow" alt="add-user-btn">
-                </div>
-            </div>
-            <div class="row " (click)="expandErrorFree()">
-                <input type="text" [(ngModel)]="errorFree" class="total-rows error-txt col-md-11" disabled>
-                <div class="col-md-1 error-style">
-                    <img [src]="image2" class="expand-arrow" alt="add-user-btn">
-                </div>
-            </div>
-            <div>
-                <div class="row " (click)="expandDuplicateEntry()">
-                    <input type="text" [(ngModel)]="duplicateEntry" class="total-rows duplicate-txt col-md-11" disabled>
+            <div (click)="expandTotalRows()">
+                <div class="row">
+                    <input type="text" [(ngModel)]="totalRows" style="margin-bottom:36px ;" class="total-rows duplicate-txt col-md-11" disabled>
                     <div class="col-md-1 expand-style">
-                        <img [src]="image3" class="expand-arrow" alt="add-user-btn">
+                        <img [src]="image4" class="expand-arrow" alt="add-user-btn">
                     </div>
                 </div>
-                <div  *ngIf = "!duplicate" class="row duplicate-tabel">
+                <div  *ngIf = "!rowsTotal && TotalRows.length>0" class="row ">
                     <table matSort  class="class_table">
                         <tr class="table-header-row">
                             <th style="padding-left:20px;">Row No</th>
                             <th >Product Code</th>
                             <th>Product Name</th>
-                            <th>Product Name</th>
+                            <th>Geography</th>
                             <th>Current stock</th>
                             <th>Sale Date</th>
                             <th>Sale Qty</th>
                             <th>Customer Reference</th>
                             <th ></th>
                         </tr>
-                        <tr>
+                        <tr *ngFor="let dupicateData of TotalRows">
             
-                            <td title="" style="padding-left: 21px;">{{"23"}}</td>
+                            <td title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
                             <td title="" class="elipsis-2line">
-                                {{"P12345"}}</td>
-                            <td title="">{{"Samsung M32 prime edition 20.."}}</td>
-                              <td title="">{{"Bubaneshwar, Chennai, Kochi,.."}}</td>
-                            <td>{{"50,000 boxes"}}</td>
-                            <td>{{"21 Aug 22"}}</td>
-                            <td>{{"2000 boxes"}}</td>
-                            <td >{{"Nandanlal Superm.."}}</td>
+                                {{dupicateData.productCode}}</td>
+                            <td title="">{{dupicateData.productName}}</td>
+                              <td title="">{{dupicateData.geography}}</td>
+                            <td>{{""}}</td>
+                            <td>{{dupicateData.saleDate}}</td>
+                            <td>{{dupicateData.saleQuantity}}</td>
+                            <td >{{dupicateData.customerReference}}</td>
                             <td></td>
             
                         </tr>
                     </table>
                 </div>
             </div>
-            <div class="topmargin" (click)="expandZeroValue()">
+            <div (click)="expandErrorFree()">
+                <div class="row ">
+                    <input type="text" [(ngModel)]="errorFree" class="total-rows error-txt col-md-11" disabled>
+                    <div class="col-md-1 error-style">
+                        <img [src]="image2" class="expand-arrow" alt="add-user-btn">
+                    </div>
+                </div>
+                <div  *ngIf = "ErrorFree && errorfreeRows.length>0" class="row">
+                    <table matSort  class="class_table">
+                        <tr class="table-header-row">
+                            <th style="padding-left:20px;">Row No</th>
+                            <th >Product Code</th>
+                            <th>Product Name</th>
+                            <th>Geography</th>
+                            <th>Current stock</th>
+                            <th>Sale Date</th>
+                            <th>Sale Qty</th>
+                            <th>Customer Reference</th>
+                            <th ></th>
+                        </tr>
+                        <tr *ngFor="let dupicateData of errorfreeRows">
+            
+                            <td title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
+                            <td title="" class="elipsis-2line">
+                                {{dupicateData.productCode}}</td>
+                            <td title="">{{dupicateData.productName}}</td>
+                              <td title="">{{dupicateData.geography}}</td>
+                            <td>{{""}}</td>
+                            <td>{{dupicateData.saleDate}}</td>
+                            <td>{{dupicateData.saleQuantity}}</td>
+                            <td >{{dupicateData.customerReference}}</td>
+                            <td></td>
+            
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div (click)="expandDuplicateEntry()">
+                <div class="row ">
+                    <input type="text" [(ngModel)]="duplicateEntry" class="total-rows duplicate-txt col-md-11" disabled>
+                    <div class="col-md-1 expand-style">
+                        <img [src]="image3" class="expand-arrow" alt="add-user-btn">
+                    </div>
+                </div>
+                <div  *ngIf = "!duplicate && duplicateEntryy.length>0" class="row duplicate-tabel">
+                    <table matSort  class="class_table">
+                        <tr class="table-header-row">
+                            <th style="padding-left:20px;">Row No</th>
+                            <th >Product Code</th>
+                            <th>Product Name</th>
+                            <th>Geography</th>
+                            <th>Current stock</th>
+                            <th>Sale Date</th>
+                            <th>Sale Qty</th>
+                            <th>Customer Reference</th>
+                            <th ></th>
+                        </tr>
+                        <tr *ngFor="let dupicateData of duplicateEntryy">
+            
+                            <td title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
+                            <td title="" class="elipsis-2line">
+                                {{dupicateData.productCode}}</td>
+                            <td title="">{{dupicateData.productName}}</td>
+                              <td title="">{{dupicateData.geography}}</td>
+                            <td>{{""}}</td>
+                            <td>{{dupicateData.saleDate}}</td>
+                            <td>{{dupicateData.saleQuantity}}</td>
+                            <td >{{dupicateData.customerReference}}</td>
+                            <td></td>
+            
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div (click)="IncorrectDataValue()" style="margin-top:20px;">
                 <div class="row">
-                    <input type="text" [(ngModel)]="zeroValue" class="total-rows duplicate-txt col-md-11" disabled>
+                    <input type="text" [(ngModel)]="Incorrect" class="total-rows duplicate-txt col-md-11" disabled>
                     <div class="col-md-1 expand-style">
                         <img [src]="image4" class="expand-arrow" alt="add-user-btn">
                     </div>
                 </div>
-                <div *ngIf="!zeroVal" class="row duplicate-tabel">
+                <div  *ngIf = "!incorrectData && incorrectRows.length>0" class="row">
                     <table matSort  class="class_table">
                         <tr class="table-header-row">
                             <th style="padding-left:20px;">Row No</th>
-                            <th style="width: 15%;">Product Code</th>
-                            <th style="width: 15%;">Product Name</th>
+                            <th >Product Code</th>
                             <th>Product Name</th>
+                            <th>Geography</th>
                             <th>Current stock</th>
                             <th>Sale Date</th>
                             <th>Sale Qty</th>
                             <th>Customer Reference</th>
                             <th ></th>
                         </tr>
-                        <tr>
+                        <tr *ngFor="let dupicateData of incorrectRows">
             
-                            <td title="" style="padding-left: 21px;">{{"23"}}</td>
+                            <td title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
                             <td title="" class="elipsis-2line">
-                                {{"P12345"}}</td>
-                            <td title="">{{"Samsung M32 prime edition 20.."}}</td>
-                              <td title="">{{"Bubaneshwar, Chennai, Kochi,.."}}</td>
-                            <td>{{"50,000 boxes"}}</td>
-                            <td>{{"21 Aug 22"}}</td>
-                            <td>{{"2000 boxes"}}</td>
-                            <td >{{"Nandanlal Superm.."}}</td>
-                            <td></td>
-            
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="topmargin" (click)="expandpartialData()">
-                <div class="row ">
-                    <input type="text" [(ngModel)]="partialData" class="total-rows duplicate-txt col-md-11" disabled>
-                    <div class="col-md-1 expand-style">
-                        <img [src]="image5" class="expand-arrow" alt="add-user-btn">
-                    </div>
-                </div>
-                <div *ngIf="!partialD" class="row duplicate-tabel">
-                    <table matSort  class="class_table">
-                        <tr class="table-header-row">
-                            <th style="padding-left:20px;">Row No</th>
-                            <th style="width: 15%;">Product Code</th>
-                            <th style="width: 15%;">Product Name</th>
-                            <th>Product Name</th>
-                            <th>Current stock</th>
-                            <th>Sale Date</th>
-                            <th>Sale Qty</th>
-                            <th>Customer Reference</th>
-                            <th ></th>
-                        </tr>
-                        <tr>
-            
-                            <td title="" style="padding-left: 21px;">{{"23"}}</td>
-                            <td title="" class="elipsis-2line">
-                                {{"P12345"}}</td>
-                            <td title="">{{"Samsung M32 prime edition 20.."}}</td>
-                              <td title="">{{"Bubaneshwar, Chennai, Kochi,.."}}</td>
-                            <td>{{"50,000 boxes"}}</td>
-                            <td>{{"21 Aug 22"}}</td>
-                            <td>{{"2000 boxes"}}</td>
-                            <td >{{"Nandanlal Superm.."}}</td>
-                            <td></td>
-            
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="topmargin" (click)="expandFormating()">
-                <div class="row ">
-                    <input type="text" [(ngModel)]="incorrectFormating" class="total-rows duplicate-txt col-md-11" disabled>
-                    <div class="col-md-1 expand-style">
-                        <img [src]="image6" class="expand-arrow" alt="add-user-btn">
-                    </div>
-                </div>
-                <div *ngIf="!formating" class="row duplicate-tabel">
-                    <table matSort  class="class_table">
-                        <tr class="table-header-row">
-                            <th style="padding-left:20px;">Row No</th>
-                            <th style="width: 15%;">Product Code</th>
-                            <th style="width: 15%;">Product Name</th>
-                            <th>Product Name</th>
-                            <th>Current stock</th>
-                            <th>Sale Date</th>
-                            <th>Sale Qty</th>
-                            <th>Customer Reference</th>
-                            <th ></th>
-                        </tr>
-                        <tr>
-            
-                            <td title="" style="padding-left: 21px;">{{"23"}}</td>
-                            <td title="" class="elipsis-2line">
-                                {{"P12345"}}</td>
-                            <td title="">{{"Samsung M32 prime edition 20.."}}</td>
-                              <td title="">{{"Bubaneshwar, Chennai, Kochi,.."}}</td>
-                            <td>{{"50,000 boxes"}}</td>
-                            <td>{{"21 Aug 22"}}</td>
-                            <td>{{"2000 boxes"}}</td>
-                            <td >{{"Nandanlal Superm.."}}</td>
-                            <td></td>
-            
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="topmargin" (click)="expandprodGeo()">
-                <div class="row ">
-                    <input type="text" [(ngModel)]="prodGeo" class="total-rows duplicate-txt col-md-11" disabled>
-                    <div class="col-md-1 expand-style">
-                        <img [src]="image7" class="expand-arrow" alt="add-user-btn">
-                    </div>
-                </div>
-                <div *ngIf="!product" class="row duplicate-tabel">
-                    <table matSort  class="class_table">
-                        <tr class="table-header-row">
-                            <th style="padding-left:20px;">Row No</th>
-                            <th style="width: 15%;">Product Code</th>
-                            <th style="width: 15%;">Product Name</th>
-                            <th>Product Name</th>
-                            <th>Current stock</th>
-                            <th>Sale Date</th>
-                            <th>Sale Qty</th>
-                            <th>Customer Reference</th>
-                            <th ></th>
-                        </tr>
-                        <tr>
-            
-                            <td title="" style="padding-left: 21px;">{{"23"}}</td>
-                            <td title="" class="elipsis-2line">
-                                {{"P12345"}}</td>
-                            <td title="">{{"Samsung M32 prime edition 20.."}}</td>
-                              <td title="">{{"Bubaneshwar, Chennai, Kochi,.."}}</td>
-                            <td>{{"50,000 boxes"}}</td>
-                            <td>{{"21 Aug 22"}}</td>
-                            <td>{{"2000 boxes"}}</td>
-                            <td >{{"Nandanlal Superm.."}}</td>
-                            <td></td>
-            
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="topmargin" (click)="expandExceedQty()">
-                <div class="row ">
-                    <input type="text" [(ngModel)]="qtyExceed" class="total-rows duplicate-txt col-md-11" disabled>
-                    <div class="col-md-1 expand-style">
-                        <img [src]="image8" class="expand-arrow" alt="add-user-btn">
-                    </div>
-                </div>
-                <div *ngIf="!exceedQty" class="row duplicate-tabel">
-                    <table matSort  class="class_table">
-                        <tr class="table-header-row">
-                            <th style="padding-left:20px;">Row No</th>
-                            <th style="width: 15%;">Product Code</th>
-                            <th style="width: 15%;">Product Name</th>
-                            <th>Product Name</th>
-                            <th>Current stock</th>
-                            <th>Sale Date</th>
-                            <th>Sale Qty</th>
-                            <th>Customer Reference</th>
-                            <th ></th>
-                        </tr>
-                        <tr>
-            
-                            <td title="" style="padding-left: 21px;">{{"23"}}</td>
-                            <td title="" class="elipsis-2line">
-                                {{"P12345"}}</td>
-                            <td title="">{{"Samsung M32 prime edition 20.."}}</td>
-                              <td title="">{{"Bubaneshwar, Chennai, Kochi,.."}}</td>
-                            <td>{{"50,000 boxes"}}</td>
-                            <td>{{"21 Aug 22"}}</td>
-                            <td>{{"2000 boxes"}}</td>
-                            <td >{{"Nandanlal Superm.."}}</td>
+                                {{dupicateData.productCode}}</td>
+                            <td title="">{{dupicateData.productName}}</td>
+                              <td title="">{{dupicateData.geography}}</td>
+                            <td>{{""}}</td>
+                            <td>{{dupicateData.saleDate}}</td>
+                            <td>{{dupicateData.saleQuantity}}</td>
+                            <td >{{dupicateData.customerReference}}</td>
                             <td></td>
             
                         </tr>
@@ -272,7 +186,7 @@
                 </div>
             </div>
             <div class="button-save-chng row">
-                <div class="save-chng">
+                <div class="save-chng" (click)="UploadSales()">
                     <button class="save-text">
                        Upload
                     </button>

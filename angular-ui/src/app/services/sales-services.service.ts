@@ -60,6 +60,16 @@ public getSalesUploadList(data){
   return this.http.post<any>(this.userurl + 'SaleApi/GetSalesUploadList', data);
 
 }
+// http://13.126.235.145:801/api/SaleApi/AddBulkSaleOrder
+public getBulkSalesUpload(data){
+  return this.http.post<any>(this.userurl + 'SaleApi/AddBulkSaleOrder', data);
+
+}
+// http://13.126.235.145:801/api/SaleApi/SaveBulkSaleOrder 
+public SaveBulkSalesUpload(data){
+  return this.http.post<any>(this.userurl + 'SaleApi/SaveBulkSaleOrder', data);
+
+}
 // http://13.126.235.145:801/api/SaleApi/GetSalesUploadDetail
 public getSalesBulkUploadList(data){
   return this.http.post<any>(this.userurl + 'SaleApi/GetSalesUploadDetail', data);

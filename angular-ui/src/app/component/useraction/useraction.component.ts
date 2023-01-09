@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
 
@@ -27,45 +28,43 @@ export class UseractionComponent implements OnInit, AfterViewInit {
 
   @ViewChild('trigger') button;
 
-  constructor(private changeDetector: ChangeDetectorRef, private dialog: MatDialog) {
-    let menuList = [ 'edit','reset_password', 'deactivate', 'activate'];
-    let showCaseMenuList: string[] = [];
-    let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
-    userRolesData.forEach(element => {
-      if (element.title == 'settingusers') {
-        element.permission.forEach(item => {
-          if (menuList.indexOf(item.action.toLowerCase()) !== -1 && item.status) {
-            showCaseMenuList.push(item.action);
+  constructor(private changeDetector: ChangeDetectorRef,
+    private route: ActivatedRoute, private dialog: MatDialog) {
+
+    this.route
+      .data
+      .subscribe(v => {
+        let menuList = v['usersMenuList'];
+        let showCaseMenuList: string[] = [];
+        let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
+        userRolesData.forEach(element => {
+          if (element.title == v['key']) {
+            element.permission.forEach(item => {
+              if (menuList.indexOf(item.action.toLowerCase()) !== -1 && item.status) {
+                showCaseMenuList.push(item.action);
+              }
+            })
           }
-
         })
+        switch (showCaseMenuList.length) {
+          case 4:
+            this.offsetValue = [-100, 200];
+            break;
+          case 3:
+            this.offsetValue = [-72, 200];
+            break;
+          case 2:
+            this.offsetValue = [-42, 200];
+            break;
+          case 1:
+            this.offsetValue = [-15, 200];
+            break;
 
-      }
-    })
-    console.log(showCaseMenuList.length);
-    switch (showCaseMenuList.length) {
-      case 4:
-        this.offsetValue = [-100, 200];
-        break;
-      case 3:
-        // translate(-272.222px, 192.222px) 220 250
-        this.offsetValue = [-72, 200];
-        break;
-      case 2:
-        // translate(-272.222px, 192.222px) 220 250 277
-        this.offsetValue = [-42, 200];
-        break;
-        case 1:
-          // translate(-272.222px, 192.222px) 220 250 277
-          this.offsetValue = [-15, 200];
-          break;
-
-      default:
-        this.offsetValue = [-100, 200];
-        break;
-    }
-
-
+          default:
+            this.offsetValue = [-100, 200];
+            break;
+        }
+      });
 
   }
 

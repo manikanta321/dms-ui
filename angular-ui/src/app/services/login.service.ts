@@ -64,7 +64,7 @@ export class LoginService {
   //       },
   //       {
   //         "action": "CLS_ADD",
-  //         "status": true
+  //         "status": false
   //       },
   //       {
   //         "action": "MAT_VIEW",
@@ -72,7 +72,7 @@ export class LoginService {
   //       },
   //       {
   //         "action": "MAT_ADD",
-  //         "status": true
+  //         "status": false
   //       },
   //       {
   //         "action": "MAT_ACT",
@@ -191,7 +191,7 @@ export class LoginService {
   //       },
   //       {
   //         "action": "ACTIVATE",
-  //         "status": false
+  //         "status": true
   //       },
   //       {
   //         "action": "DEACTIVATE",
@@ -199,7 +199,7 @@ export class LoginService {
   //       },
   //       {
   //         "action": "SEARCH_USER",
-  //         "status": false
+  //         "status": true
   //       }
   //     ],
   //     "viewPage": true

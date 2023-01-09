@@ -5,18 +5,18 @@
     <div class="col-xl-12 col-md-12 ACVTY-no-pad screen-width">
       <div class="UNFAPP-asmnt-rgt-area screen-h">
         <div class="row ">
-          <div class="col-md-2 col-lg-2 col-6" >
+          <div class="col-md-2 col-lg-2 col-6">
             <form [formGroup]="myForm">
-              <ng-multiselect-dropdown class="catty catty22" name="city" [placeholder]="'Categor'" formControlName="city"
-                [disabled]="disabled" [settings]="dropdownSettings" [data]="catgname" (onSelect)="onItemSelect($event)"
-                (onDeSelect)="onItemDeSelect($event)" (onDeSelectAll)="onItemDeSelectOrAll($event)"
-                (onSelectAll)="onItemSelectOrAll($event)">
+              <ng-multiselect-dropdown class="catty catty22" name="city" [placeholder]="'Categor'"
+                formControlName="city" [disabled]="disabled" [settings]="dropdownSettings" [data]="catgname"
+                (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
+                (onDeSelectAll)="onItemDeSelectOrAll($event)" (onSelectAll)="onItemSelectOrAll($event)">
               </ng-multiselect-dropdown>
               <div class="dropdown-placeholder cats-placeholder">
                 <span *ngIf="myForm.get('city').value.length == 0">Category </span>
                 <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder">
-                 {{myForm.get('city').value.length}} category selected </span>
-                
+                  {{myForm.get('city').value.length}} category selected </span>
+
                 <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder">
                   {{myForm.get('city').value.length}} category(s) </span>
 
@@ -39,7 +39,7 @@
               <span *ngIf="subCategory.get('subCategory').value.length == 1" class="selected-placeholder">
                 {{subCategory.get('subCategory').value.length}} subcategory selected </span>
               <span *ngIf="subCategory.get('subCategory').value.length > 1" class="selected-placeholder">
-                {{subCategory.get('subCategory').value.length}} subcategory(s)  </span> 
+                {{subCategory.get('subCategory').value.length}} subcategory(s) </span>
 
             </div>
           </div>
@@ -59,14 +59,14 @@
               <span *ngIf="type.get('type').value.length == 1" class="selected-placeholder">
                 {{type.get('type').value.length}} type selected </span>
               <span *ngIf="type.get('type').value.length > 1" class="selected-placeholder">
-                {{type.get('type').value.length}} type(s)  </span>
+                {{type.get('type').value.length}} type(s) </span>
 
             </div>
           </div>
           <div class="col-md-2 col-lg-2 col-6">
             <form [formGroup]="product">
-              <ng-multiselect-dropdown class="producty producty22 " name="product" [placeholder]="''" formControlName="product"
-                [disabled]="disabled" [settings]="dropdownSettings4" [data]="Product"
+              <ng-multiselect-dropdown class="producty producty22 " name="product" [placeholder]="''"
+                formControlName="product" [disabled]="disabled" [settings]="dropdownSettings4" [data]="Product"
                 (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)"
                 (onDeSelectAll)="onProductDeSelectOrAll($event)" (onSelectAll)="onProductSelectOrAll($event)">
               </ng-multiselect-dropdown>
@@ -76,14 +76,14 @@
               <span *ngIf="product.get('product').value.length == 1" class="selected-placeholder">
                 {{product.get('product').value.length}} product group selected </span>
               <span *ngIf="product.get('product').value.length > 1" class="selected-placeholder">
-                {{product.get('product').value.length}} product group(s)  </span>
+                {{product.get('product').value.length}} product group(s) </span>
 
             </div>
           </div>
           <div class="col-md-2 col-lg-2 col-6">
             <form [formGroup]="myForms">
-              <ng-multiselect-dropdown class="sttss sttss22" name="citys" [placeholder]="'Status'" formControlName="citys"
-                [disabled]="disabled" [settings]="dropdownSettings1" [data]="statusList"
+              <ng-multiselect-dropdown class="sttss sttss22" name="citys" [placeholder]="'Status'"
+                formControlName="citys" [disabled]="disabled" [settings]="dropdownSettings1" [data]="statusList"
                 (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
                 (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
               </ng-multiselect-dropdown>
@@ -93,65 +93,64 @@
               <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder">
                 {{myForms.get('citys').value.length}} status selected </span>
               <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder">
-                {{myForms.get('citys').value.length}} status(s)  </span>
+                {{myForms.get('citys').value.length}} status(s) </span>
 
             </div>
           </div>
           <div class="col-lg-2 col-6">
-          <div class="icon btnhover refreshbtn" (click)="refresh()">
-            <img src="assets/img/Vector.png" class="imageRefresh" alt="refresh">
+            <div class="icon btnhover refreshbtn" (click)="refresh()">
+              <img src="assets/img/Vector.png" class="imageRefresh" alt="refresh">
+            </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-lg-12 listicon">
+            <div class="searchBox d-flex">
+              <input class="searchInput font" type="text" name="" placeholder="Type & search for anything"
+                (keyup)="onSearchChange($event)">
+              <button class="searchButton" href="#">
+                <i class="material-icons">
+                  search
+                </i>
+              </button>
+              <button class="search-btn searchAlign">Search</button>
+            </div>
+            <div class="add-user" (click)="addMaterials()"  userRoleDirective="MAT_ADD" pageName="settingmaterials">
+              <img src="assets/img/add-btn.png" class="addImage" alt="add-user-btn">
+            </div>
+          </div>
         </div>
-           <div class="row">
-         <div class="col-lg-12 listicon">
-          <div class="searchBox d-flex">
-            <input class="searchInput font" type="text" name="" placeholder="Type & search for anything"
-              (keyup)="onSearchChange($event)">
-            <button class="searchButton" href="#">
-              <i class="material-icons">
-                search
-              </i>
-            </button>
-            <button class="search-btn searchAlign">Search</button>
-          </div>
-          <div class="add-user" (click)="addMaterials()">
-            <img src="assets/img/add-btn.png" class="addImage" alt="add-user-btn">
-          </div>
-         </div>
-          </div>
-         
-<div class="row">
-  <div class="col-4">
-    <mat-checkbox class="example-margin font"
-    [checked]="allComplete"
-    [color]="color"
-    (change)="setAll($event.checked)">
-    Show only products
-  </mat-checkbox>
-   
-  </div>
-  <div class="col-4">
 
-  </div>
-</div>
-<!-- <br> -->
+        <div class="row">
+          <div class="col-4">
+            <mat-checkbox class="example-margin font" [checked]="allComplete" [color]="color"
+              (change)="setAll($event.checked)">
+              Show only products
+            </mat-checkbox>
 
-<div>
-        <ag-grid-angular id="gridContainer" style="height: 400px;" class="ag-theme-material gridAlign" [rowHeight]="25"
-          [headerHeight]="48" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
-          [rowData]="rowData5" [suppressExcelExport]="true" [popupParent]="popupParent"
-          (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"
-          (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
-          (cellClicked)="onCellClicked($event)" (gridReady)="onGridReady($event)" [paginationPageSize]="paginationPageSize"  (bodyScroll)="handleScroll($event)" ></ag-grid-angular>
+          </div>
+          <div class="col-4">
+
+          </div>
+        </div>
+        <!-- <br> -->
+
+        <div>
+          <ag-grid-angular id="gridContainer" style="height: 400px;" class="ag-theme-material gridAlign"
+            [rowHeight]="25" [headerHeight]="48" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef"
+            [columnTypes]="columnTypes" [rowData]="rowData5" [suppressExcelExport]="true" [popupParent]="popupParent"
+            (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"
+            (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
+            (cellClicked)="onCellClicked($event)" (gridReady)="onGridReady($event)"
+            [paginationPageSize]="paginationPageSize" (bodyScroll)="handleScroll($event)"></ag-grid-angular>
         </div>
         <div class="pagination">
           <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of
           <span class="pagination-cls">{{rowData5.length}}</span>
         </div>
       </div>
-      
-    </div>   
-     
-  </div> 
+
+    </div>
+
+  </div>
 </div>

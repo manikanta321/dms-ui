@@ -12,6 +12,7 @@ import { DeactivateClassificationPopUpComponent } from '../deactivate-classifica
 import { DeactiveSubcategoryCompoComponent } from '../deactive-subcategory-compo/deactive-subcategory-compo.component';
 import { DeactiveTypeCompoComponent } from '../deactive-type-compo/deactive-type-compo.component';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-materials-classification',
@@ -48,8 +49,9 @@ export class MaterialsClassificationComponent implements OnInit {
   selectedtypeItem = '';
   subcatcount: any;
   typecount: any;
-  CattyName:any;
-  SubCattyName:any;
+  CattyName: any;
+  SubCattyName: any;
+  currentPageName: string = "";
   // clData: string[] = ['Type TP 1', 'Type TP 2', 'Type TP 3','Type TP 4'];
   // subcat: string[] = ['sub category', 'sub category 2',];
   constructor(
@@ -59,9 +61,12 @@ export class MaterialsClassificationComponent implements OnInit {
     private sharedServiceaddsub: SharedServiceAddSubService,
     private sharedServiceaddtype: SharedServiceAddTypesService,
     private spinner: NgxSpinnerService,
-
+    private route: ActivatedRoute,
 
   ) {
+    this.route.data.subscribe(v => {
+      this.currentPageName = v['key'];
+    });
     this.sharedService.listen().subscribe((m: any) => {
       console.log(m)
       this.getclassification();
@@ -93,11 +98,11 @@ export class MaterialsClassificationComponent implements OnInit {
 
       if (data.firstCat.isActive == true) {
         this.catagoryroouting = data.firstCat.catName;
-        console.log("CAtegory",this.catagoryroouting.split(/[()]/)[0])
+        console.log("CAtegory", this.catagoryroouting.split(/[()]/)[0])
         this.CattyName = this.catagoryroouting.split(/[()]/)[0]
         this.selectedItem = data.allOtherCats[0];
         this.subcatRoouting = data.firstCat.subCAts.firstSubCat.subCatName;
-        console.log("SubCAtegory",this.subcatRoouting.split(/[()]/)[0])
+        console.log("SubCAtegory", this.subcatRoouting.split(/[()]/)[0])
         this.SubCattyName = this.subcatRoouting.split(/[()]/)[0]
         this.subcatcount = data.firstCat.subCatsCount;
         this.typecount = data.firstCat.subCAts.firstSubCat.typeCount;
@@ -293,11 +298,11 @@ export class MaterialsClassificationComponent implements OnInit {
         this.coutCatagory = res.totalRecords;
         this.catgname = data.allOtherCats
         this.catagoryroouting = data.firstCat;
-        console.log("SubCAtegory",this.catagoryroouting.split(/[()]/)[0])
+        console.log("SubCAtegory", this.catagoryroouting.split(/[()]/)[0])
         this.CattyName = this.catagoryroouting.split(/[()]/)[0]
         this.selectedItem = data.allOtherCats[0];
         this.subcatRoouting = data.firstCat.subCAts.firstSubCat.subCatName;
-        console.log("SubCAtegory",this.subcatRoouting.split(/[()]/)[0])
+        console.log("SubCAtegory", this.subcatRoouting.split(/[()]/)[0])
         this.SubCattyName = this.subcatRoouting.split(/[()]/)[0]
         this.subcatcount = data.firstCat.subCatsCount;
         this.typecount = data.firstCat.subCAts.firstSubCat.typeCount;
@@ -384,7 +389,7 @@ export class MaterialsClassificationComponent implements OnInit {
         }
         else {
           this.subcatRoouting = data.firstSubCat.subCatName;
-          console.log("SubCAtegory",this.subcatRoouting.split(/[()]/)[0])
+          console.log("SubCAtegory", this.subcatRoouting.split(/[()]/)[0])
           this.SubCattyName = this.subcatRoouting.split(/[()]/)[0]
           this.selectedtypeItem = data.firstSubCat.types[0];
           this.typename = data.firstSubCat.types;
@@ -519,7 +524,7 @@ export class MaterialsClassificationComponent implements OnInit {
           if (data.firstSubCat.isActive == true) {
             this.selectedtypeItem = data.firstSubCat.types[0];
             this.subcatRoouting = data.firstSubCat.subCatName;
-            console.log("SubCAtegory",this.subcatRoouting.split(/[()]/)[0])
+            console.log("SubCAtegory", this.subcatRoouting.split(/[()]/)[0])
             this.SubCattyName = this.subcatRoouting.split(/[()]/)[0]
             // this.selectedtypeItem=res.response[0];
             this.typename = data.firstSubCat.types;
@@ -574,7 +579,7 @@ export class MaterialsClassificationComponent implements OnInit {
     this.subCatId = item.subCatId;
     localStorage.setItem('Subcatidset', this.subCatId);
     this.subcatRoouting = item.subCatName;
-    console.log("SubCAtegory",this.subcatRoouting.split(/[()]/)[0])
+    console.log("SubCAtegory", this.subcatRoouting.split(/[()]/)[0])
     this.SubCattyName = this.subcatRoouting.split(/[()]/)[0]
     this.spinner.show();
     this.calssification.onclicksubcat(this.subCatId).subscribe((res) => {
@@ -607,7 +612,7 @@ export class MaterialsClassificationComponent implements OnInit {
     this.itemId = item.catId;
     localStorage.setItem('Catidset', this.itemId)
     this.catagoryroouting = item.catName;
-    console.log("SubCAtegory",this.catagoryroouting.split(/[()]/)[0])
+    console.log("SubCAtegory", this.catagoryroouting.split(/[()]/)[0])
     this.CattyName = this.catagoryroouting.split(/[()]/)[0]
     this.calssification.onclickcat(this.itemId).subscribe((res) => {
       console.log(res)
@@ -632,7 +637,7 @@ export class MaterialsClassificationComponent implements OnInit {
           this.subCatId = data.firstSubCat.subCatId
           localStorage.setItem('Subcatidset', this.subCatId)
           this.subcatRoouting = data.firstSubCat.subCatName;
-          console.log("SubCAtegory",this.subcatRoouting.split(/[()]/)[0])
+          console.log("SubCAtegory", this.subcatRoouting.split(/[()]/)[0])
           this.SubCattyName = this.subcatRoouting.split(/[()]/)[0]
           if (data.firstSubCat.types && data.firstSubCat.types[0] && data.firstSubCat.types[0].isActive == true) {
             this.typename = data.firstSubCat.types;

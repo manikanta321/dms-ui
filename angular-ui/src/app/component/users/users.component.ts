@@ -294,17 +294,33 @@ export class UsersComponent implements OnInit {
     private fb: FormBuilder,
     private sharedService: SharedService,
   ) {
-    this.route
-      .data
-      .subscribe(v => {
-        this.currentPageName = v['key'];
-        console.log(this.currentPageName);
-      });
-      
-    this.sharedService.listen().subscribe((m: any) => {
-      console.log(m)
-      this.getusertabeldata()
+    this.route.data.subscribe(v => {
+      this.currentPageName = v['key'];
+      let actionColumn = v['usersMenuList'];
+      let showCaseMenuList: string[] = [];
+      let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
 
+      userRolesData.forEach(element => {
+        if (element.title == this.currentPageName) {
+          this.columnDefs = this.columnDefs.filter(x => {
+            if (x.colId != 'action' || element == undefined || element == null) return true;
+
+            element.permission.forEach(item => {
+              if (actionColumn.indexOf(item.action.toLowerCase()) !== -1 && item.status) {
+                showCaseMenuList.push(item.action);
+              }
+            })
+            return showCaseMenuList.length !== 0;
+          });
+        }
+      })
+      console.log("showCaseMenuList.length", showCaseMenuList.length);
+      
+    })
+
+    this.sharedService.listen().subscribe((m: any) => {
+      // console.log(m)
+      this.getusertabeldata();
     })
     this.sharedService.getClickEvent().subscribe(() => {
       this.getusertabeldata()
@@ -329,28 +345,14 @@ export class UsersComponent implements OnInit {
         this.sidenav.open();
       }
     });
-    this.message = this.child.message
+    this.message = this.child?.message
     console.log('parent is working', this.message)
   }
 
 
 
   ngOnInit(): void {
-    let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
-    let currentPageRoleObj = userRolesData.find(element => element.title == this.currentPageName);
-    let actionColumn = [ 'edit','reset_password', 'deactivate', 'activate'];
-    let isActionCounterHide = 0;
-    this.columnDefs = this.columnDefs.filter(x => {
-      if (x.colId != 'action' || currentPageRoleObj == undefined || currentPageRoleObj == null) return true;
 
-      currentPageRoleObj.permission.forEach(item => {
-        if (actionColumn.indexOf(item.action.toLowerCase()) != -1 && item.status == false) {
-          isActionCounterHide += 1;
-        }
-      })
-      return isActionCounterHide == actionColumn.length ? false : true;
-    })
-    
     this.getusertabeldata();
     this.roleItems();
     this.statusItems();

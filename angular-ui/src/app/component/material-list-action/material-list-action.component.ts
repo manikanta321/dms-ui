@@ -6,7 +6,8 @@ import { ICellRendererParams } from 'ag-grid-community';
 import { ActivatepopUpComponent } from '../users/userPopups/activatepop-up/activatepop-up.component';
 import { DeactivateUserpopupComponent } from '../users/userPopups/deactivate-userpopup/deactivate-userpopup.component';
 import { MaterialAddEditpopupComponent } from '../materials-list/material-add-editpopup/material-add-editpopup.component';
-import tippy, { hideAll } from 'tippy.js'; 
+import tippy, { hideAll } from 'tippy.js';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-material-list-action',
@@ -17,8 +18,47 @@ export class MaterialListActionComponent implements OnInit {
   private params;
   public isOpen = false;
   private tippyInstance;
-  unActiveList:any;
-  constructor(private changeDetector: ChangeDetectorRef,private dialog: MatDialog) {}
+  unActiveList: any;
+  offsetValue: number[] = [];
+  constructor(private changeDetector: ChangeDetectorRef, private route: ActivatedRoute, private dialog: MatDialog) {
+
+    this.route
+      .data
+      .subscribe(v => {
+        let menuList = v['materialMenuList'];
+        let showCaseMenuList: string[] = [];
+        let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
+        userRolesData.forEach(element => {
+          if (element.title == v['key']) {
+            element.permission.forEach(item => {
+
+              if (menuList && menuList.indexOf(item.action.toLowerCase()) !== -1 && item.status) {
+                showCaseMenuList.push(item.action);
+              }
+            })
+          }
+        })
+        console.log(showCaseMenuList.length);
+        switch (showCaseMenuList.length) {
+          case 4:
+            this.offsetValue = [-100, 200];
+            break;
+          case 3: //223.333px 
+            this.offsetValue = [-100, 200];
+            break;
+          case 2: // 252
+            this.offsetValue = [-73, 200];
+            break;
+          case 1:
+            this.offsetValue = [-44, 200];
+            break;
+
+          default:
+            this.offsetValue = [-100, 200];
+            break;
+        }
+      });
+  }
 
   ngAfterViewInit(): void {
     this.tippyInstance = tippy(this.button.nativeElement);
@@ -46,7 +86,7 @@ export class MaterialListActionComponent implements OnInit {
       interactive: true,
       appendTo: document.body,
       hideOnClick: false,
-      offset: [-100, 200],
+      offset: this.offsetValue,
       onShow: (instance) => {
         hideAll({ exclude: instance });
       },
@@ -60,7 +100,7 @@ export class MaterialListActionComponent implements OnInit {
     this.isOpen = !this.isOpen;
     this.changeDetector.detectChanges();
     if (this.isOpen) {
-      this.unActiveList ="MaterialList"
+      this.unActiveList = "MaterialList"
       localStorage.setItem('session', this.unActiveList);
       this.configureTippyInstance();
       this.tippyInstance.setContent(this.container.nativeElement);
@@ -68,27 +108,27 @@ export class MaterialListActionComponent implements OnInit {
       this.tippyInstance.unmount();
     }
   }
-  edit(){
-    localStorage.setItem("Edit",'Edit')
-    let dialogRef =this.dialog.open(MaterialAddEditpopupComponent, {
+  edit() {
+    localStorage.setItem("Edit", 'Edit')
+    let dialogRef = this.dialog.open(MaterialAddEditpopupComponent, {
       // width: '100vw',
       maxWidth: '80vw',
       maxHeight: '99vh',
       panelClass: 'material-add-edit'
-  });
+    });
     this.isOpen = false;
     dialogRef.afterClosed().subscribe((res) => {
 
-    localStorage.setItem('Edit','');
+      localStorage.setItem('Edit', '');
 
-   })
+    })
   }
-  deactive(){
+  deactive() {
     this.dialog.open(DeactivateUserpopupComponent);
     this.isOpen = false;
   }
 
-  activate(){
+  activate() {
     this.dialog.open(ActivatepopUpComponent);
     this.isOpen = false;
   }

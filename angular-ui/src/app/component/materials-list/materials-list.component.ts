@@ -11,6 +11,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { MaterialListService } from 'src/app/services/material-list.service';
 import { MaterialListActionComponent } from '../material-list-action/material-list-action.component';
 import { SharedServiceMaterialListService } from 'src/app/services/shared-service-material-list.service';
+import { ActivatedRoute } from '@angular/router';
 // import { ButtonRendererComponent } from './renderer/button-renderer.component';
 
 export interface PeriodicElement {
@@ -125,22 +126,37 @@ export class MaterialsListComponent implements OnInit {
     resizable: true,
     sortable: true,
   };
+  currentPageName:string = "";
 
   constructor(public dialog: MatDialog,
     private user: UserService,
     private fb: FormBuilder,
+    private route: ActivatedRoute,
     private materialList: MaterialListService,
     private materialListService:SharedServiceMaterialListService,) {
-
-      // this.materialListService.listen().subscribe((m: any) => {
-      //   console.log(m)
-      //   this.getMaterialList();
+      this.route.data.subscribe(v => {
+        this.currentPageName = v['key'];
+        let actionColumn = v['materialMenuList'];
+        let showCaseMenuList: string[] = [];
+        let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
   
-      // })
-      // this.materialListService.getClickEvent().subscribe(() => {
-      //   this.getMaterialList();
-      // })
-      sort: [];
+        userRolesData.forEach(element => {
+          if (element.title == this.currentPageName) {
+            this.columnDefs = this.columnDefs.filter(x => {
+              if (x.colId != 'action' || element == undefined || element == null) return true;
+  
+              element.permission.forEach(item => {
+                if (actionColumn.indexOf(item.action.toLowerCase()) !== -1 && item.status) {
+                  showCaseMenuList.push(item.action);
+                }
+              })
+              return showCaseMenuList.length !== 0;
+            });
+          }
+        })
+        console.log("showCaseMenuList.length", showCaseMenuList.length);
+        
+      })
     }
 
   ngOnInit(): void {
@@ -345,20 +361,20 @@ else
     this.materialList.getMaterialList(data).subscribe((res) => {
       console.log("Material List", res);
       this.rowData5 = res.response;
-      console.log('tableDaaaata', this.rowData5)
-      if (this.rowData5.length >= 1) {
-        this.catgname.forEach((element: { [x: string]: any; }) => {
-          if (element['status'] == 'Active') {
-          }
-          else {
-            element['isActive'] == 'Inactive'
+      // console.log('tableDaaaata', this.rowData5)
+      // if (this.rowData5.length >= 1) {
+      //   this.catgname.forEach((element: { [x: string]: any; }) => {
+      //     if (element['status'] == 'Active') {
+      //     }
+      //     else {
+      //       element['isActive'] == 'Inactive'
 
-          }
-          console.log('element', element['isActive'])
-        });
-      }
+      //     }
+      //     console.log('element', element['isActive'])
+      //   });
+      // }
 
-      console.log('row data', this.catgname)
+      // console.log('row data', this.catgname)
 
     });
   }

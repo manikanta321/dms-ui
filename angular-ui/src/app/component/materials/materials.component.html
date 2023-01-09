@@ -6,20 +6,22 @@
     </mat-sidenav>
     <mat-sidenav-content>
         <h1 class="header-text">Materials</h1>
-        <img  class="print-img" src="../../../assets/material/print-img.svg" alt="">
+        <img class="print-img" src="../../../assets/material/print-img.svg" alt="">
         <!-- <div class="dash-content" > -->
-                    <div class="UNFAPP-asmnt-rgt-area main" style="padding: 15px;">
-                        <!-- <div class="col-lg-12"> -->
-                            <mat-tab-group class="order-lab">
-                                <mat-tab class="classi"  label="Classification"><app-materials-classification></app-materials-classification>  
-                                                          </mat-tab>
-                                <mat-tab class="mati"  label="Material"><app-materials-list></app-materials-list></mat-tab>
+        <div class="UNFAPP-asmnt-rgt-area main" style="padding: 15px;">
+            <!-- <div class="col-lg-12"> -->
+                
+            <mat-tab-group class="order-lab">
+                    <mat-tab class="classi" *ngIf="tabList.indexOf('cls_view') !== -1"
+                        label="Classification"><app-materials-classification></app-materials-classification>
+                    </mat-tab>
+                <mat-tab class="mati" label="Material" *ngIf="tabList.indexOf('mat_view') !== -1"
+                ><app-materials-list></app-materials-list></mat-tab>
 
-                                <mat-tab class="mati1"  label="Target Groups"><app-target-groups></app-target-groups></mat-tab>
-                            </mat-tab-group>
-                        <!-- </div> -->
-       </div>
+                <mat-tab class="mati1" label="Target Groups"><app-target-groups></app-target-groups></mat-tab>
+            </mat-tab-group>
+            <!-- </div> -->
+        </div>
         <!-- </div> -->
     </mat-sidenav-content>
 </mat-sidenav-container>
-   

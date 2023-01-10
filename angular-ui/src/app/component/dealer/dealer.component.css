@@ -55,15 +55,15 @@ mat-tab{
 }
 
 ::ng-deep .mat-tab-header{
-    display: flex;
-    overflow: hidden;
-    position: relative;
-    flex-shrink: 0;
-     width: 378px !important; 
-    border-radius: 25px;
-    background: white;
-    left: 35%;
-
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  width: 378px !important;
+  border-radius: 25px;
+  background: white;
+  left: 30%;
+  font-size: 15px;
 }
 ::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     display: none !important;
@@ -75,9 +75,33 @@ mat-tab{
     opacity: 1;
 }
 
- .geo-label .mat-tab-labels:nth-child(1) {
-    width: 50% !important;
-  }
+::ng-deep .order1-lab .mat-tab-label{
+  height: 31px !important;
+  min-width: 165px !important;
+}
+.order1-lab .mat-tab-labels:nth-child(1) {
+  width: 50% !important;
+}
+
+::ng-deep.order1-lab .mat-tab-header{
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  width: 804px !important;
+  bottom: 20px;
+  height: 33px;
+  font-family: 'Gilroy';
+  border-radius: 25px;
+  background: white;
+  left: 23%;
+  font-size: 15px;
+
+}
+
+:ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+  display: none !important;
+}
 
   .header-text{
     font-family: 'Gilroy-Bold';

@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'dashbord/materials/materials-list', pathMatch: 'full', component: MaterialsListComponent, canActivate: [AuthGuard] },
   { path: 'dashbord/materials/materials-classification', pathMatch: 'full', component: MaterialsClassificationComponent, canActivate: [AuthGuard] },
   { path: 'dashbord/other-masters', pathMatch: 'full', component: OtherMastersComponent, canActivate: [AuthGuard], data: { key: 'settingothermaterials', }, },
-  { path: 'dashbord/dealer', pathMatch: 'full', component: DealerComponent, canActivate: [AuthGuard], data: { key: 'dealerdashboard', }, },
+  { path: 'dashbord/dealer', pathMatch: 'full', component: DealerComponent, canActivate: [AuthGuard], data: { key: 'dealerdashboard', DealerMenuList:[ 'edit_dealer','act_dealer', 'deact_dealer'],  promotionList:[ 'edit_promotion','close_promotion'],targetList:[ 'edit_targets',],   }, },
   { path: 'dashbord/orders', pathMatch: 'full', component: OrdersComponent, canActivate: [AuthGuard] , data: { key: 'orderdashboard', },},
   { path: 'dashbord/geographies', pathMatch: 'full', component: GeographiesComponent, canActivate: [AuthGuard], data: { key: 'settinggeographies', }, },
   { path: 'dashbord/saleslist', pathMatch: 'full', component: SalesListComponent, canActivate: [AuthGuard], data: { key: 'saleslistdashboard', }, },

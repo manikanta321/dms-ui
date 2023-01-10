@@ -120,5 +120,8 @@ financialYear() {
   return this.http.get<any>(this.classificationurl + 'DealerApi/GetFinancialYear');
 
 }
+getTargetById(data) {
+  return this.http.post<any>(this.classificationurl + 'Dealerapi/GetDealerTargetDataById', data);
 
+}
 }

@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
 import { PromotionSharedServicesService } from 'src/app/services/promotion-shared-services.service';
@@ -23,6 +24,7 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
   public isOpen = false;
   private tippyInstance;
   selected:boolean=false;
+  offsetValue: number[] = [];
 
   ngOnInit(){}
   @ViewChild('content') container;
@@ -30,8 +32,42 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
   @ViewChild('trigger') button;
 
   constructor(private changeDetector: ChangeDetectorRef,private dialog: MatDialog,
-    ) {
+    private route: ActivatedRoute,  ) {
+      this.route
+      .data
+      .subscribe(v => {
+        console.log('v',v)
+        let menuList = v['promotionList'];
+        let showCaseMenuList: string[] = [];
+        let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
+        userRolesData.forEach(element => {
+          if (element.title == v['key']) {
+            element.permission.forEach(item => {
+              if (menuList.indexOf(item.action.toLowerCase()) !== -1 && item.status) {
+                showCaseMenuList.push(item.action);
+              }
+            })
+          }
+        })
+        switch (showCaseMenuList.length) {
+          case 4:
+            this.offsetValue = [-100, 200];
+            break;
+          case 3:
+            this.offsetValue = [-72, 200];
+            break;
+          case 2:
+            this.offsetValue = [-42, 200];
+            break;
+          case 1:
+            this.offsetValue = [-15, 200];
+            break;
 
+          default:
+            this.offsetValue = [-100, 200];
+            break;
+        }
+      });
     }
 
   ngAfterViewInit(): void {
@@ -56,7 +92,7 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
       interactive: true,
       appendTo: document.body,
       hideOnClick: false,
-      offset: [-50, 200],
+      offset: this.offsetValue,
       onShow: (instance) => {
         hideAll({ exclude: instance });
       },

@@ -75,12 +75,12 @@
             </div>
          
           <div class="col-md-0">
-            <div class="add-user" (click)="addUser()" style=" cursor: pointer">
+            <div class="add-user" (click)="addUser()" style=" cursor: pointer" userRoleDirective="ADD_DEALER" [pageName]="currentPageName">
               <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
             </div>
           </div>
-          <div class="col-md-0">
-            <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer">
+          <div class="col-md-0" userRoleDirective="DOWNLOAD_DEALER" [pageName]="currentPageName">
+            <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer" >
               <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;"
                 alt="add-user-btn">
             </div>

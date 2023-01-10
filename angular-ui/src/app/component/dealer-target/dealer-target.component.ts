@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { AddUserPopupComponent } from './userPopups/add-user-popup/add-user-popup.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
@@ -285,7 +285,7 @@ export class DealerTargetComponent implements OnInit {
     pagination: false,
     paginationAutoPageSize: false,
   }
-
+  currentPageName:string='';
 
   constructor(public dialog: MatDialog,
     private router: Router,
@@ -295,8 +295,33 @@ export class DealerTargetComponent implements OnInit {
     private fb: FormBuilder,
     private sharedService: DealerTargetSharedServicesService,
     private targetList: TargetListService,
-  ) {
+    private route: ActivatedRoute,
 
+  ) {
+    this.route.data.subscribe(v => {
+      this.currentPageName = v['key'];
+      let actionColumn = v['targetList'];
+      let showCaseMenuList: string[] = [];
+      let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
+
+      userRolesData.forEach(element => {
+        if (element.title == this.currentPageName) {
+          this.columnDefs = this.columnDefs.filter(x => {
+            if (x.colId != 'action' || element == undefined || element == null) return true;
+
+            element.permission.forEach(item => {
+              if (actionColumn.indexOf(item.action.toLowerCase()) !== -1 && item.status) {
+                showCaseMenuList.push(item.action);
+              }
+            })
+            return showCaseMenuList.length !== 0;
+          });
+        }
+      })
+      console.log("showCaseMenuList.length", showCaseMenuList.length);
+      
+    }
+    )
     this.sharedService.listen().subscribe((m: any) => {
       console.log(m)
       this.TargetTabelData();
@@ -853,12 +878,10 @@ console.log("SelectedGeo",this.geographySelected)
 
   onCellClicked(e): void {
     console.log('cellClicked', e);
-    this.userId = e.data.userId;
+    this.userId = e.data.targetAssociationId;
     this.employeeName = e.data.userName;
     console.log('userID', this.userId);
-    localStorage.setItem('userID', this.userId)
-    localStorage.setItem('employeeName', this.employeeName);
-
+    localStorage.setItem('editOrAddTarget', this.userId)
     if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
       const cellRendererInstances = e.api.getCellRendererInstances({
         rowNodes: [e.node],

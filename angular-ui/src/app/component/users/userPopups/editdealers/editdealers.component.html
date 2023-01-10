@@ -3,7 +3,7 @@
   </div>
   
   <div #content *ngIf="isOpen" class="menu-container">
-    <div (click)="editDealer()" class="menu-item tick"> Edit <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
-    <div  (click)="deaActivate()" class="menu-item tick">Deactivate <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
-    <div  (click)="reActivate()" class="menu-item tick">Reactivate <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark"></div>
+    <div (click)="editDealer()" class="menu-item tick" userRoleDirective="edit_dealer" pageName="dealerdashboard"> Edit <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+    <div  (click)="deaActivate()" class="menu-item tick" userRoleDirective="act_dealer" pageName="dealerdashboard">Deactivate <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+    <div  (click)="reActivate()" class="menu-item tick " userRoleDirective="deact_dealer" pageName="dealerdashboard">Reactivate <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark"></div>
   </div>

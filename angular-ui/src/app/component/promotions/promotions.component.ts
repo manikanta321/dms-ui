@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {AfterViewInit, ViewChild} from '@angular/core';
 
 import {MatPaginator} from '@angular/material/paginator';
@@ -303,7 +303,9 @@ public pivotPanelShow = 'always';
 
   toppingList1:  any= [];
   productLisst:  any= [];
-geoList:any=[]
+geoList:any=[];
+  offsetValue: number[] = [];
+
   filterDictionary: any;
   sideBarOpen = true;
   @ViewChild(MatSidenav)
@@ -315,7 +317,7 @@ geoList:any=[]
   maxDate = new Date();
   dateRange1 =  DateRange.nextMonth();
   // date: Date;
-
+  currentPageName:string=''
   constructor(public dialog: MatDialog,
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
@@ -326,11 +328,35 @@ geoList:any=[]
     private fb: FormBuilder,
     private associationService:AssosiationServicesService,
     private sharedService:PromotionSharedServicesService,
+    private route: ActivatedRoute,
 
 
    ) {
       sort:[];
-      
+      this.route.data.subscribe(v => {
+        this.currentPageName = v['key'];
+        let actionColumn = v['promotionList'];
+        let showCaseMenuList: string[] = [];
+        let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
+  
+        userRolesData.forEach(element => {
+          if (element.title == this.currentPageName) {
+            this.columnDefs = this.columnDefs.filter(x => {
+              if (x.colId != 'action' || element == undefined || element == null) return true;
+  
+              element.permission.forEach(item => {
+                if (actionColumn.indexOf(item.action.toLowerCase()) !== -1 && item.status) {
+                  showCaseMenuList.push(item.action);
+                }
+              })
+              return showCaseMenuList.length !== 0;
+            });
+          }
+        })
+        console.log("showCaseMenuList.length", showCaseMenuList.length);
+        
+      }
+      )
       this.sharedService.listen().subscribe((m: any) => {
         console.log(m)
         this.getusertabeldata()

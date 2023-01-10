@@ -121,8 +121,8 @@
               <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
             </div>
           </div>
-          <div class="">
-            <div class="add-user" (click)="addPromotions()">
+          <div class="" >
+            <div class="add-user" (click)="addPromotions()"userRoleDirective="ADD_ASSOCIATION" [pageName]="currentPageName">
               <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
             </div>
           </div>
@@ -135,6 +135,8 @@
       </div>
     </section>
     <div>
+      <br>
+      <br>
       <ag-grid-angular id="gridContainer"
         style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;margin-left: 20px;"
         class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"

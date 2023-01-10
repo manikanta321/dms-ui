@@ -1,0 +1,391 @@
+.main {
+    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+    overflow-x: hidden !important;
+}
+
+.add-target {
+    overflow-x: hidden;
+    width: 100%;
+    height: 530px;
+}
+
+.head-t h3 {
+    color: #000000;
+    text-align: center;
+    margin-top: -18px;
+    margin-bottom: 2px;
+}
+
+.close-icon {
+    left: 100%;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.addU {
+    position: relative;
+    /* font-family: 'Gilroy-Bold';  */
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.addU:after {
+    content: "";
+    display: block;
+    width: 380px;
+    height: 2px;
+    background: #686E74;
+    right: 0;
+    top: 50%;
+    position: absolute;
+}
+
+.addU:before {
+    content: "";
+    display: block;
+    width: 380px;
+    height: 2px;
+    background: #686E74;
+    left: 0;
+    top: 50%;
+    position: absolute;
+}
+
+.font {
+    font-family: 'Gilroy';
+}
+
+label {
+    /* padding: 2px 0; */
+    font-size: 14px;
+    line-height: 16px;
+    margin: 5px;
+    font-family: 'Gilroy';
+}
+
+.target-heading {
+    font-weight: bold;
+}
+
+.target-grp {
+    box-sizing: border-box;
+    position: absolute;
+    width: 262px;
+    height: 30px;
+    font-family: 'Gilroy';
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+.target-grp-nt-sel {
+    box-sizing: border-box;
+    position: absolute;
+    width: 1035px;
+    height: 35.03px;
+    font-family: 'Gilroy';
+    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+.dealr-lst {
+    box-sizing: border-box;
+    position: absolute;
+    width: 500px;
+    height: 30px;
+    font-family: 'Gilroy';
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+.DealerInfo-label {
+    margin: 5px;
+    font-size: 12.5px;
+    align-items: center;
+    font-weight: 500;
+}
+
+.astr {
+    color: red;
+}
+
+.search-img {
+    width: 17px;
+    position: relative;
+    top: 26px;
+    left: 142px;
+}
+
+.total-rows {
+    box-sizing: border-box;
+    position: relative;
+    width: 1168px;
+    height: 35.03px;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    font-family: 'Gilroy';
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+}
+
+.total-bg {
+    /* top: 45px; */
+    background: #FFFFFF;
+    color: #000000;
+}
+
+.expand-arrow {
+    position: relative;
+    width: 14px;
+    left: 97%;
+    bottom: 27px;
+}
+
+.dealers-tabel {
+    position: relative;
+    width: 99.5%;
+    bottom: 22px;
+    /* height: 357px; */
+    min-height: 237px;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: #686E74;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.IteminputBoxes {
+    width: 51px;
+    height: 30px;
+    background: none;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 12.5px;
+    margin: 3px;
+    background: #FFFFFF;
+}
+
+.IteminputBoxesDisable {
+    width: 62px;
+    height: 30px;
+    background: none;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 12.5px;
+    margin: 3px;
+    background: none;
+}
+
+.IteminputBoxesfrstData {
+    width: 115px;
+    height: 30px;
+    background: none;
+    font-size: 12.5px;
+    font-family: 'Gilroy';
+    font-size: 13px;
+    line-height: 15px;
+    display: flex;
+    align-items: center;
+    color: #006466;
+    margin: 3px;
+}
+
+.IteminputBoxesscndData {
+    width: 40px;
+    height: 30px;
+    background: none;
+    font-size: 12.5px;
+    font-family: 'Gilroy';
+    font-size: 13px;
+    line-height: 15px;
+    /* display: flex; */
+    align-items: center;
+    color: #44026C;
+    margin: 3px;
+}
+
+.IteminputBoxesthrdData {
+    width: 42px;
+    height: 30px;
+    background: none;
+    font-size: 12.5px;
+    font-family: 'Gilroy';
+    font-size: 13px;
+    line-height: 15px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    font-weight: bold;
+    margin: 3px;
+}
+
+.promotiont2 {
+    width: 45%;
+    padding: 10px;
+    padding-top: 6px;
+    padding-bottom: 3px;
+    padding-right: 0px;
+}
+
+.select-asso {
+    /* width: 100%;
+    height: 38px;
+    border-radius: 12px; */
+    width: 130px;
+    height: 30px;
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    font-family: 'Gilroy';
+}
+
+.finacial-target {
+    margin-left: 69%;
+}
+
+label {
+    margin: 5px;
+    font-size: 12.5px;
+    align-items: center;
+}
+
+.total-prod {
+    position: relative;
+    top: 33px;
+    left: 10px;
+    font-family: 'Gilroy';
+    font-size: 13px;
+    line-height: 15px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+
+.save-cncl-btn {
+    margin-left: 40px;
+}
+
+.btn-save {
+    width: 168px;
+    height: 43px;
+    background: #000000;
+    box-sizing: border-box;
+    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    font-family: 'Gilroy';
+    font-size: 15px;
+    line-height: 18px;
+    /* display: flex; */
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.btn-cancel {
+    width: 168px;
+    height: 43px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    font-family: 'Gilroy';
+    font-size: 15px;
+    line-height: 18px;
+    /* display: flex; */
+    align-items: center;
+    text-align: center;
+
+}
+
+.label-cls {
+    padding-left: 4px;
+    padding-top: 9px;
+}
+
+.dealer-cntry {
+    position: relative;
+    top: 30px;
+    z-index: 1;
+    font-family: 'Gilroy';
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+}
+
+.all-dlr {
+    position: relative;
+    top: 20px;
+    right: 6px;
+    font-family: 'Gilroy';
+}
+
+.dlr-name {
+    padding-left: 5px;
+    font-family: 'Gilroy';
+}
+
+.dlr-info {
+    padding-left: 24px;
+}
+.dropdown-placeholder {
+    background: white;
+    color: #808080;
+    top: 0;
+    position: absolute;
+    height: 41px;
+    line-height: 41px;
+    left: 1px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    width: 80%;
+    border-radius: 10px 0 0 10px !important;
+    padding-left: 10px;
+    pointer-events: none;
+  }
+::ng-deep.targetdrp .ng-select.ng-select-single .ng-select-container {
+    border: 0.5px solid #000000;
+    border-radius: 10px;
+    background-color: transparent;
+  }
+  ::ng-deep.targetdrp .ng-placeholder {
+    color: #999;
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    background-color: ;
+  }
+  ::ng-deep.searchbtnIcon.ng-select .ng-arrow-wrapper .ng-arrow {
+    display: none !important;
+  }
+  .searchbtnIcon:disabled{
+    background-color: #000 ;
+  }
+  
+  ::ng-deep.searchbtnIcon.ng-select span.ng-arrow-wrapper:before{
+    content: url(/assets/img/search-icon.svg);
+    display: inline-block;
+    margin-left: -15px;
+  }
+  .Dealers-placeholder.dropdown-placeholder .selected-placeholder {
+    color: #D23F00 !important;
+ }
+ ::ng-deep.Dealers .multiselect-dropdown .dropdown-btn .selected-item {
+   background: #D23F00 !important;
+   font-size: 12px;
+ }
+ 
+ ::ng-deep .Dealers .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+   background: #D23F00 !important;
+ }

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
 import { AddeditgeoComponent } from './addeditgeo/addeditgeo.component';
@@ -89,11 +90,15 @@ export class GeoClassificationComponent implements OnInit {
     { primaryColor: { background: '#3D1A00', color: '#fff' }, secondaryColor: { background: "#D6C8C3", color: "#3D1A00" }, },
     { primaryColor: { background: '#DC0063', color: '#fff' }, secondaryColor: { background: "#FFE1EE", color: "#DC0063" }, },
   ];
+  currentPageName: any;
 
 
   constructor(private fb: FormBuilder, private spinner: NgxSpinnerService,
-    private dialog: MatDialog,
+    private dialog: MatDialog, private route: ActivatedRoute,
     private classification: ClassificationserviseService, private sanitizer: DomSanitizer) {
+    this.route.data.subscribe(v => {
+      this.currentPageName = v['key'];
+    });
     this.createform();
     this.stateFormValidators();
     this.districtFormValidator();
@@ -211,12 +216,12 @@ export class GeoClassificationComponent implements OnInit {
     const dialogRef = this.dialog.open(AddeditgeoComponent, { height: '338px', disableClose: true, data: data });
     dialogRef.afterClosed().subscribe(({ res, result }) => {
       console.log(result);
-      this.addEditapiResponse(res,result,hirerachyIndex);
-      
+      this.addEditapiResponse(res, result, hirerachyIndex);
+
       // this.AddEditGeography(result, hirerachyIndex);
     });
   }
-  addEditapiResponse(apiResponse, result,hirerachyIndex){
+  addEditapiResponse(apiResponse, result, hirerachyIndex) {
     let geoGraphyObj = this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.find(x => x.geographyId == result.id);
     if (geoGraphyObj) {
       geoGraphyObj.geographyName = result.name;
@@ -231,12 +236,12 @@ export class GeoClassificationComponent implements OnInit {
 
   addGeographyForm(geoGraphyGrid, hirerachyIndex) {
     // console.log(geoGraphyGrid);
-    let data = { geography: {}, title: geoGraphyGrid.geographyHierarchyName, isEdit: false, GeographyParentId: this.geoGraphyFullData[hirerachyIndex - 2]?.geographySelected[0], hirerachyIndex: hirerachyIndex  };
+    let data = { geography: {}, title: geoGraphyGrid.geographyHierarchyName, isEdit: false, GeographyParentId: this.geoGraphyFullData[hirerachyIndex - 2]?.geographySelected[0], hirerachyIndex: hirerachyIndex };
     const dialogRef = this.dialog.open(AddeditgeoComponent, { height: '338px', disableClose: true, data: data });
     dialogRef.afterClosed().subscribe(({ res, result }) => {
       console.log(result);
-      this.addEditapiResponse(res,result,hirerachyIndex);
-      
+      this.addEditapiResponse(res, result, hirerachyIndex);
+
       // this.AddEditGeography(result, hirerachyIndex);
     });
   }

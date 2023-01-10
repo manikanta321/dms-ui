@@ -13,7 +13,7 @@
                         </p>
 
                     </div>
-                    <div class="col-sm-2" *ngIf="item.showAddIcon">
+                    <div class="col-sm-2" *ngIf="item.showAddIcon"  userRoleDirective="add_geography" [pageName]="currentPageName">
                         <mat-icon (click)="addGeographyForm(item, (i+1))" class="addC">add_circle</mat-icon>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                                     [ngClass]="{'deactivated': !geoItem?.isActive} ">
                                     <div class="title"> {{geoItem.geographyName}} ({{geoItem.geographyCode ??''}})</div>
                                     <div class="action-items">
-                                        <div class="action-item edit-action" *ngIf="geoItem.isActive"
+                                        <div class="action-item edit-action" *ngIf="geoItem.isActive"  userRoleDirective="edit_geography" [pageName]="currentPageName"
                                             (click)="editGeography($event, geoItem, item.geographyHierarchyName, (i+1))">
                                             <img src="assets/img/pencil.svg" alt="Edit">
                                         </div>

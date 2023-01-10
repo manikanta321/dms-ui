@@ -169,7 +169,8 @@ export class AddDealerAssociationsComponent implements OnInit {
   typeTosend: any[] = []
   statusTypes = [];
   searchText: any = '';
-
+  dealerListArr:any = [];
+  selectedData:boolean = false;
   constructor(
     public promotionTypes: PromotionService,
     private _formBuilder: FormBuilder,
@@ -330,6 +331,12 @@ export class AddDealerAssociationsComponent implements OnInit {
         this.dealersArray = localdata.map((data: { customerId: any; customerName: any; }) => {
           return { customerId: data.customerId, customerName: data.customerName, };
         });
+        this.dealersArray.push()
+        this.dealersArray.forEach(element => {
+          return this.dealerListArr.push(element.customerId);
+          // console.log('rolecheck',rolecheck)
+  
+        })   
         this.dropdownSettings3 = {
           singleSelection: false,
           idField: 'customerId',
@@ -596,7 +603,12 @@ if(geographyData[0].geographyId){
     console.log('aarrayToPush', this.aarrayToPush1)
   }
 
-
+  DealerSelected() {
+    this.aarrayToPush.length = this.selectedDealerInDropDown.length
+   this.selectedData = !this.selectedData;
+    // this.selectedDealerInDropDown = this.dealerList.length;
+    console.log("SelectedDealer",this.selectedData)
+  }
 
   saveAssociation() {
     this.geoProperties = [];
@@ -788,6 +800,26 @@ console.log("Event",event)
   //   this.tooltiptable()
 
   // }
+  onItemDealerSelectOrAll(item: any) {
+    this.selectedDealerInDropDown =  this.dealerListArr;
+    let dealerdata = {
+      ProductId: this.stockItemsID,
+      DealerId: this.selectedDealerInDropDown,
+      SelectedGeoIds: this.storedName124,
+    }
+    this.GetDealearsData(dealerdata);
+
+  }
+  onItemDealerDeSelectOrAll(item: any) {
+    this.selectedDealerInDropDown=[];
+    this.dealerList =[];
+    let dealerdata = {
+      ProductId: this.stockItemsID,
+      DealerId: this.selectedDealerInDropDown,
+      SelectedGeoIds: this.storedName124,
+    }
+    this.GetDealearsData(dealerdata);
+  }
   selectedDealer(event:any) {
     console.log("EVENT",event)
     this.slectedgeo1 = true;

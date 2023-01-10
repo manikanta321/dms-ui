@@ -186,7 +186,7 @@
               <form [formGroup]="myForm" class="dropdown-form-dealer">
                 <ng-multiselect-dropdown class="promo1" [placeholder]="'Dealers'" formControlName="city1"
                   [disabled]="disabled" [settings]="dropdownSettings3" [data]="dealersArray"
-                  (onSelect)="onDealerSelect($event)" (onDeSelect)="onDealerDeSelect($event)">
+                  (onSelect)="onDealerSelect($event)" (onDeSelect)="onDealerDeSelect($event)" (onDeSelectAll)="onItemDealerDeSelectOrAll($event)" (onSelectAll)="onItemDealerSelectOrAll($event)">
                 </ng-multiselect-dropdown>
 
                 <div class="dropdown-placeholder promo1-placeholder">
@@ -467,7 +467,7 @@
               <div class="collapsible">
                 <div class="row">
                   <div class="col-md-1">
-                    <mat-checkbox class="example-margin font" [checked]="" [color]="color"
+                    <mat-checkbox class="example-margin font" [color]="color"
                       (click)="updateAllComplete(data.dealerId)">
                     </mat-checkbox>
                   </div>
@@ -663,7 +663,7 @@
         <div class="collapsible">
           <div class="row">
             <div class="col-md-1">
-              <mat-checkbox class="example-margin font" [color]="color"
+              <mat-checkbox  class="example-margin font" [color]="color"
                 (click)="updateAllCompleteDealer(data.productIdId)">
               </mat-checkbox>
             </div>

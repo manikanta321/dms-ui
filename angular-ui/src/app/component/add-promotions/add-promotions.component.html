@@ -41,9 +41,9 @@
                                 <!-- </div> -->
                                 <div class="promotiontypedrp identify promotiondrpalign">
                                     <label>Promotion Type <span class="astr">*</span></label>
-                                    <ng-select [items]="promotionTypedropdown" placeholder="Select the promotion type"
-                                        bindLabel="promotionTypesName" bindValue="promotionTypesId" #promotype
-                                      (change)="selectedValue($event)"   required>
+                                    <ng-select [items]="promotionTypedropdown" placeholder="Select the promotion type" id="promotype" name="promotype"
+                                        bindLabel="promotionTypesName" bindValue="promotionTypesId" [(ngModel)]="selectedPromo"
+                                      (change)="selectedValue($event)" required #promotype="ngModel">
                                     </ng-select>
                                 </div>
                                 <form #myform>

@@ -200,7 +200,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
     formatObj.stock = stockItem.stock
     formatObj.isProductSelected = stockItem.isProductSelected == undefined ? false : stockItem.isProductSelected;
     formatObj.Quantity = stockItem.quantity == undefined ? null : stockItem.quantity;
-    formatObj.Taxid = stockItem.taxid == undefined ? null : stockItem.taxid;
+    formatObj.Taxid = stockItem.taxid;
 
     return formatObj;
   }

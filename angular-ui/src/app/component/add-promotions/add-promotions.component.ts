@@ -375,7 +375,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       this.header = 'Edit';
       let data = localStorage.getItem('promoclickId')
       this.promotionTypes.getPromotionById(data).subscribe((res) => {
-        console.log('res', res)
+        console.log('response EditPromotion', res)
         this.promoName = res.response.promotionName;
         this.selectedPromo = res.response.promotionTypesId;
         this.addImgpreview = true;
@@ -385,9 +385,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
         this.endDate.setValue(res.response.endDate)
         this.selectedEndDate = new Date(res.response.endDate).getFullYear() + '/' + (new Date(res.response.endDate).getMonth() + 1) + '/' + new Date(res.response.endDate).getDate();
-alert(this.selectedEndDate)
+// alert(this.selectedEndDate)
         this.promoName = res.response.promotionName;
         this.selectedPromo = res.response.promotionTypesId;
+        // alert(this.selectedPromo)
         this.addImgpreview = true;
         this.base64textString = res.response.imageurl;
         this.startDate.setValue(res.response.startDate);

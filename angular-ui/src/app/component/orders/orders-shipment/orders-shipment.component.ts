@@ -11,6 +11,7 @@ import { SalesBulkUploadComponent } from '../../sales-bulk-upload/sales-bulk-upl
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { UserService } from 'src/app/services/user.service';
 import { OrderActionShipmentComponent } from '../order-action-shipment/order-action-shipment.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-orders-shipment',
@@ -136,6 +137,7 @@ export class OrdersShipmentComponent implements OnInit {
       },
     },
   };
+  currentPageName:string="";
 
   clickNextRendererFunc(){
     alert('hlo');
@@ -143,7 +145,32 @@ export class OrdersShipmentComponent implements OnInit {
   constructor(public dialog: MatDialog,
     public orders:OrdersApisService,
     private user: UserService,
-    private fb: FormBuilder) { }
+    private route: ActivatedRoute,
+
+    private fb: FormBuilder) { 
+      this.route.data.subscribe(v => {
+        this.currentPageName = v['key'];
+        let actionColumn = v['orderList'];
+        let showCaseMenuList: string[] = [];
+        let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
+  
+        userRolesData.forEach(element => {
+          if (element.title == this.currentPageName) {
+            this.columnDefs = this.columnDefs.filter(x => {
+              if (x.colId != 'action' || element == undefined || element == null) return true;
+  
+              element.permission.forEach(item => {
+                if (actionColumn.indexOf(item.action.toLowerCase()) !== -1 && item.status) {
+                  showCaseMenuList.push(item.action);
+                }
+              })
+              return showCaseMenuList.length !== 0;
+            });
+          }
+        })
+    })
+
+    }
 
   ngOnInit(): void {
     this.myForm = this.fb.group({

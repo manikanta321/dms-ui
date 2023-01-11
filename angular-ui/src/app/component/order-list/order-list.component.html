@@ -78,7 +78,7 @@
     </div>
   </div>
   <div class="col-md-0">
-    <div class="sales-add" (click)="addOrderPromotion()">
+    <div class="sales-add" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName">
         <img class="imgorder" src="assets/img/add-btn.png"
             alt="add">
     </div>
@@ -96,7 +96,7 @@
 </div>
 </div> -->
 <div class="col-md-0">
-<div class="sales-dwnld" (click)="onBtnExport()">
+<div class="sales-dwnld" (click)="onBtnExport()" userRoleDirective="DOWNLOAD_ORDER" [pageName]="currentPageName" >
   <img   class="imgdwnl" src="assets/img/download-btn.png"
       alt="add-user-btn">    
 </div>

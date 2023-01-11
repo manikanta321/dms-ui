@@ -16,26 +16,27 @@
      
                 <div class="UNFAPP-asmnt-rgt-area main othersmastermenutab">
                     <!-- <div class="col-lg-12"> -->
-                        <mat-tab-group class="order-lab">
-                            <mat-tab label="Order list">
-                               
-                            <app-order-list></app-order-list>
+                        <mat-tab-group class="order-lab" mat-stretch-tabs="false">
+                            <mat-tab class="classi" *ngIf="tabList.indexOf('view') !== -1"
+                                label="Order list">                         
+                                   <app-order-list></app-order-list>
+        
                             </mat-tab>
-                            <mat-tab label="Shipments">
-                                <app-orders-shipment></app-orders-shipment>
-                                
-                            </mat-tab>
-                            <mat-tab label="Invoice">
-
-<app-invoice>
-    
-</app-invoice>
-
-                            </mat-tab>
-                        </mat-tab-group>
+                        <mat-tab c label="Shipments" *ngIf="tabList.indexOf('view_shipment') !== -1">
+                <app-orders-shipment></app-orders-shipment>
+                    </mat-tab>
+        
+                        <mat-tab class="mati1" label="Invoice"  *ngIf="tabList.indexOf('view_invoice') !== -1">
+                            <app-invoice>
+            
+                        </app-invoice></mat-tab>
+                    </mat-tab-group>
                        
                     <!-- </div> -->
                 </div>
+
+
+          
                 
     <!--</div> -->
 

@@ -193,6 +193,7 @@ import { AddDealerSuccessfulPopupComponent } from './add-dealer-popup/add-dealer
 import { EdituomSuccessfulpopupComponent } from './component/users/userPopups/edit-uom-popup/edituom-successfulpopup/edituom-successfulpopup.component';
 import { AddPromotionSuccessfulPopupComponent } from './component/add-promotions/add-promotion-successful-popup/add-promotion-successful-popup.component';
 import { EditDealerTargetComponent } from './component/edit-dealer-target/edit-dealer-target.component';
+import { OrdersReceiptsComponent } from './orders-receipts/orders-receipts.component';
 
 @NgModule({
   declarations: [
@@ -478,7 +479,6 @@ import { EditDealerTargetComponent } from './component/edit-dealer-target/edit-d
           AddDealerSuccessfulPopupComponent,
           EdituomSuccessfulpopupComponent,
           AddPromotionSuccessfulPopupComponent,
-          EditDealerTargetComponent,
           
   ],
   imports: [

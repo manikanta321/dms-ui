@@ -13,14 +13,14 @@
          
                     <div class="UNFAPP-asmnt-rgt-area main othersmastermenutab ">
                         <!-- <div class="col-lg-12"> -->
-                            <mat-tab-group class="other-label " (selectedTabChange)="tabClick($event)">
-                                <mat-tab label="Unit of Measure">
+                            <mat-tab-group class="other-label "  mat-stretch-tabs="false" (selectedTabChange)="tabClick($event)">
+                                <mat-tab label="Unit of Measure"  *ngIf="tabList.indexOf('view_uom') !== -1">
                                    <app-unit-measure></app-unit-measure>
                                 </mat-tab>
-                                <mat-tab label="Tax Templates" >
+                                <mat-tab label="Tax Templates"  *ngIf="tabList.indexOf('view_tax') !== -1">
                                     <app-tax-template></app-tax-template>
                                 </mat-tab>
-                                <mat-tab label="Currency Conversion" >
+                                <mat-tab label="Currency Conversion" *ngIf="tabList.indexOf('view_currency') !== -1" >
                                   <app-currency-conversation></app-currency-conversation>
                               </mat-tab>
                             </mat-tab-group>

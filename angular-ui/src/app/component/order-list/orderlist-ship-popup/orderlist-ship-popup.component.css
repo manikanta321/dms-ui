@@ -214,7 +214,23 @@
   font-weight: bold;
   font-size: 20px;
 }
-
+.addView{
+  position: relative;
+  /* font-family: 'Gilroy-Bold';  */
+  font-weight: bold;
+  font-size: 20px;
+  right: 30%;
+}
+.addView:after {
+  content: "";
+  display: block;
+  width: 535px;
+  height: 2px;
+  background: #686E74;
+  left: 555px;
+  top: 50%;
+  position: absolute;
+}
 .addU:after {
   content: "";
   display: block;

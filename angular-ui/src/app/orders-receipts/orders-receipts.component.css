@@ -358,7 +358,7 @@
       ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
         border: 1px solid #337ab7;
         margin-right: 4px;
-        background: #00187A !important;
+        /* background: #00187A !important; */
         padding: 0 5px;
         color: #fff;
         border-radius: 10px !important;
@@ -413,16 +413,19 @@
         animation: borderscale .2s ease-in;
         background: #00187A !important;
       }
-      ::ng-deep.dealer .multiselect-dropdown .dropdown-btn .selected-item {
-        background: #006466 !important;
+      ::ng-deep.dealers .multiselect-dropdown .dropdown-btn .selected-item {
+        background: #D23F00 !important;
         font-size: 12px;
       }
-      
-      ::ng-deep .dealer .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
-        background: #006466 !important;
+      .dealers .multiselect-dropdown .dropdown-btn .selected-item {
+        background: #D23F00 !important;
+        font-size: 12px;
+    }
+      ::ng-deep .dealers .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+        background: #D23F00 !important;
       }
-      .dealer-placeholder.dropdown-placeholder .selected-placeholder {
-        color: #006466 !important;
+      .dealers-placeholder.dropdown-placeholder .selected-placeholder {
+        color: #D23F00 !important;
      }
       .Status-placeholder.dropdown-placeholder .selected-placeholder {
         color: #000000 !important;
@@ -512,7 +515,7 @@
   padding-left: 5px;
   }
 
- ::ng-deep.dealer .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
+ ::ng-deep.dealers .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
 display: none;
   }
 

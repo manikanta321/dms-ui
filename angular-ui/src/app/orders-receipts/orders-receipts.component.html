@@ -2,15 +2,15 @@
 
 <div class="container-fluid mt-5">
     <div class="section reciepts">
-<div class="row">
-    <div class="col-md-2 col-lg-2 col-sm-2">
+<div class="row ml-2">
+    <div class="col-md-2 col-lg-2 col-sm-2" style="padding-left: 0px;">
         <form [formGroup]="myForm" class="dropdown-form">
-          <ng-multiselect-dropdown class="dealer dlsr" name="city" [placeholder]="'Dealer'" formControlName="city"
+          <ng-multiselect-dropdown class="dealers dlsr" name="city" [placeholder]="'Dealer'" formControlName="city"
             [disabled]="disabled" [settings]="dealerSettings" [data]="dealerlist"(onSelect)="DealerorderSelect($event)" (onDeSelect)="DealerDeselect($event)"(onDeSelectAll)="DealerDeselectAll($event)"
             (onSelectAll)="DealerorderSelectAll($event)">
           </ng-multiselect-dropdown>
         </form>
-        <div class="dropdown-placeholder dealer-placeholder">
+        <div class="dropdown-placeholder dealers-placeholder">
           <span *ngIf="myForm.get('city').value.length == 0">  Dealers </span>
           <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Dealer selected </span>
           <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Dealer(s) selected </span>
@@ -65,14 +65,14 @@
     <ag-grid-angular id="gridContainer"  style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
     class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
       [headerHeight]="48" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
-      [rowData]="shipmentDatalist" [suppressExcelExport]="true" [popupParent]="popupParent"
+      [rowData]="receiptDatalist" [suppressExcelExport]="true" [popupParent]="popupParent"
       (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"
       (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
       (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
       (bodyScroll)="handleScroll($event)"></ag-grid-angular>
     <div class="pagination">
       <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
-        class="pagination-cls">{{shipmentDatalist.length}}</span>
+        class="pagination-cls">{{receiptDatalist.length}}</span>
     </div>
   </div>
 

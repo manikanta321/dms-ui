@@ -70,7 +70,7 @@ export class OrdersReceiptsComponent implements OnInit {
       field: 'invoiceDate',      tooltipField:"invoiceDate",
     }, 
    
-  {  headerName: "Total Items", 
+  {  headerName: "Total Items ", 
   field:"totalitems",tooltipField:"totalitems", resizable:true,
           children:[
         { field: 'In Order',  tooltipField:"inorder",    minWidth:50, resizable:true},

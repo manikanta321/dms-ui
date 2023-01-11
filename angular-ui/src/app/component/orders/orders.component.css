@@ -160,11 +160,11 @@ mat-tab{
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
-    width: 547px !important;
+    width: 656px !important;
 
     border-radius: 25px;
     background: white;
-    left: 35%;
+    left: 23%;
 
 }::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     display: none !important;
@@ -214,7 +214,7 @@ mat-tab{
 
 ::ng-deep .order-lab .mat-tab-label{
     height: 35px !important;
-    min-width: 187px !important;
+    min-width: 161px !important;
   }
 
 

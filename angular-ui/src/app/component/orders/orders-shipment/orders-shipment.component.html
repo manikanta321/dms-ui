@@ -54,7 +54,7 @@
     </div>
   </div>
 <div class="col-md-0">
-  <div class="sales-download" (click)="bulkDownload()">
+  <div class="sales-download" (click)="bulkDownload()" userRoleDirective="UPLOAD_SHIPMENT" [pageName]="currentPageName">
       <img class="dwnld-img" src="assets/img/orderlist-upload.svg" 
           alt="add-user-btn">
   </div>

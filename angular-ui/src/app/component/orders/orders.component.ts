@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatSort } from '@angular/material/sort';
+import { ActivatedRoute } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { AddUserPopupComponent } from '../users/userPopups/add-user-popup/add-user-popup.component';
 
@@ -16,9 +17,38 @@ export class OrdersComponent implements OnInit {
   @ViewChild(AddUserPopupComponent) child; 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
+  currentPageName:string="";
+  tabList:string[] = [];
 
+  constructor(private observer: BreakpointObserver,
+    private route: ActivatedRoute,) { this.route.data.subscribe(v => {
+    this.currentPageName = v['key'];
+    
+    // let actionColumn = v['usersMenuList'];
+    let showCaseTabList: string[] = [];
+    let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
 
-  constructor(private observer: BreakpointObserver,) { }
+    userRolesData.forEach(element => {
+      if (element.title == this.currentPageName) {
+        // this.columnDefs = this.columnDefs.filter(x => {
+        //   if (x.colId != 'action' || element == undefined || element == null) return true;
+
+          element.permission.forEach(item => {
+            if(item.status){
+              this.tabList.push(item.action.toLowerCase());
+            }
+            // if (actionColumn.indexOf(item.action.toLowerCase()) !== -1 && item.status) {
+            //   showCaseMenuList.push(item.action);
+            // }
+          // })
+          // return showCaseMenuList.length !== 0;
+        });
+      }
+    })
+    // console.log("showCaseMenuList.length", showCaseMenuList.length);
+    
+  }
+)}
 
   
   @ViewChild(MatSort)

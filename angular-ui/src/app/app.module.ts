@@ -479,6 +479,8 @@ import { OrdersReceiptsComponent } from './orders-receipts/orders-receipts.compo
           AddDealerSuccessfulPopupComponent,
           EdituomSuccessfulpopupComponent,
           AddPromotionSuccessfulPopupComponent,
+          EditDealerTargetComponent,
+          OrdersReceiptsComponent,
           
   ],
   imports: [

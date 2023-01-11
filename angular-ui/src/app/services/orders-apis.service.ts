@@ -75,7 +75,9 @@ export class OrdersApisService {
     return this.http.get<any>(this.userurl + `OrdersApi/GetOrdersToEdit?OrderId=${CustomerPoId}`)
   }
 
-
+  public GetConfirmOrder(data){
+    return this.http.post<any>(this.userurl + 'OrdersApi/OrderConfirmReject', data);
+  }
   
   public getShipmentList(data) {
 

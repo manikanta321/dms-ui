@@ -110,7 +110,7 @@ export class OrderlistActionPopupComponent implements OnInit {
     // localStorage.setItem('edit-dealer','Edit')
     // this.dialog.open(OrderlistEditPopupComponent,{height:"570px"});
     // this.isOpen = false;
-    
+    sessionStorage.setItem("Confirm","");
       localStorage.setItem("Edit",'Edit')
       let dialogRef =this.dialog.open(AddorderpromotionsComponent, {
         // width: '100vw',
@@ -135,9 +135,27 @@ export class OrderlistActionPopupComponent implements OnInit {
     
     
   }
-  
+  viewOrder() {
+    sessionStorage.setItem("viewOrder","View");
+    this.dialog.open(OrderlistShipPopupComponent,{width:"987px",height:"1461px"});
+    this.isOpen = false;
+  }
   orderShip(){
+    sessionStorage.setItem("viewOrder","")
     this.dialog.open(OrderlistShipPopupComponent,{width:"987px",height:"1461px"});
  this.isOpen = false;
+}
+confirmOrder() {
+  localStorage.setItem("Edit",'')
+  sessionStorage.setItem("Confirm","Confirm");
+  let dialogRef =this.dialog.open(AddorderpromotionsComponent, {
+    // width: '100vw',
+    maxWidth: '70vw',
+    panelClass: 'order-add-edit'
+});
+  this.isOpen = false;
+  dialogRef.afterClosed().subscribe((res) => {
+  sessionStorage.setItem("Confirm","");
+ })
 }
 }

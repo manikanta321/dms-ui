@@ -1,5 +1,5 @@
 <!-- <p>orderlist-ship-popup works!</p> -->
-<div class="font">
+<div *ngIf="!viewList" class="font">
     <div class="main">
         <div class="container promotionpopup-scroll">
             <div class="addUser">
@@ -545,6 +545,566 @@
         <div class="col-lg-5"></div>
                 <div class="col-lg-4">
                 <button type="button" class="cancelButton">Cancel</button>         
+             </div>
+            <div class="col-lg-3"></div>
+    </div>
+</div>
+<div *ngIf="viewList" class="font">
+    <div class="main">
+        <div class="container promotionpopup-scroll">
+            <div class="addUser">
+                <img class="print-img" src="../../../assets/material/print-img.svg" alt="">
+                <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+
+            </div>
+            <div class="head-t">
+                <h3 class="addU font">Ship Order</h3>
+                <div class="row top-bottom">
+                    <div class="row text-center"></div>
+                </div>
+                <div (click)="expandDealerInfoDiv()" class="collapsible">
+                    <div class="row">
+                        <div class="col-md-11">
+                            <p class="label-cls">Dealer Information</p>
+                        </div>
+                        <div class="col-md-1">
+                            <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                        </div>
+                     </div>
+                </div>
+                <div class="content" *ngIf="!dealerInfo">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="dealerr">
+                                <label class="DealerInfo-label">Dealer <span class="astr">*</span></label>
+                            <label class="DescInfo-label">Mobile worlds pvt ltd</label>
+                             </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="geographyy">
+                                <label  class="DealerInfo-label">Geography <span class="astr">*</span></label>
+                                <br>
+                                <label class="DescInfo-label">Chennai</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="billingAdrs">
+                                <label  class="DealerInfo-label">Billing Address <span class="astr">*</span></label>
+                                <label class="DescInfo-label">Building No.2, 6th street, 2nd cross, Gandhi Nagar street 101, Chennai-670089</label>                 
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="dealerReff">
+                                <label  class="DealerInfo-label">Dealer Reference No <span class="astr">*</span></label>
+                                <label class="DescInfo-label">345678909876</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="companyReff">
+                                <label  class="DealerInfo-label">Company Reference No <span class="astr">*</span></label>
+                                <label class="DescInfo-label">97253738374</label>
+                            </div>
+                        </div> 
+                        <div class="col-md-6">
+                            <div class="shippingAdrs">
+                                <label  class="DealerInfo-label">Shipping Address <span class="astr">*</span></label>
+                                    <label class="DescInfo-label">Building No.2, 6th street, 2nd cross, Gandhi Nagar street 101, Chennai-670089</label>                       
+                            </div>
+                        </div>   
+                    </div>
+                </div>
+                <div class="top-bottom  {
+                    height: 500px !important;
+                  }" >
+                    <div  class="collapsible" (click)="expandOrderItemsDiv()">
+                        <div class="row">
+                            <div class="col-lg-11" >
+                               <p class="label-cls">Items</p>
+                            </div>
+                               <div class="col-lg-1">
+                                <img [src]="image2" class="expand-arrow" alt="add-user-btn">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content " *ngIf="!orderitem">
+                       <div class="section mt-1">
+                        <table>
+                            <tr>
+                                <th>Item</th>
+                                <th>UoM</th>
+                                <th>Order Qty</th>
+                                <th>Stock</th>
+                                <th>Unit Price</th>
+                                <th>Discount</th>
+                                <th>Final Value</th>
+                                <th>Tax</th>
+                                <th>Amount</th>
+                            </tr>
+                            <tr [(ngModel)]="itemremoved">
+                                <td ><p class="itemLeft"><span class="promoItem">p1</span>Lays classic blue cla..</p> </td>
+                                <td >
+                                    <label class="IteminputBoxes">Boxes</label>
+                                </td>
+                                <td >
+                                    <label class="IteminputBoxes">5</label>
+                                </td>
+                                <td>
+                                    <label class="IteminputBoxes">10,000,000</label>
+                                </td>
+                                <td >
+                                    <label class="IteminputBoxes">20</label>
+                                </td>
+                                <td >
+                                    <label class="IteminputBoxes">10%</label>
+                                </td>
+                                <td>
+                                    <label class="IteminputBoxes">90</label>
+                                </td>
+                                <td>
+                                    <label class="IteminputBoxes">IGST (18%)</label>
+                                </td>
+                                <td>
+                                    <label class="IteminputBoxes">106.2</label>
+                                </td>
+                                <!-- <mat-icon class="removeCircle" (click)=removeItem()>
+                                    remove_circle</mat-icon> -->
+                            </tr>
+                            <tr>
+                                <td ><p class="itemLeft1">Little hearts</p> </td>
+                                <td >
+                                    <label class="IteminputBoxes">Boxes</label>
+                                </td>
+                                <td >
+                                    <label class="IteminputBoxes">3</label>
+                                </td>
+                                <td>
+                                    <label class="IteminputBoxes">10,000,000</label>
+                                </td>
+                                <td >
+                                    <label class="IteminputBoxes">20</label>
+                                </td>
+                                <td >
+                                    <label class="IteminputBoxes">100%</label>
+                                </td>
+                                <td>
+                                    <label class="IteminputBoxes">0</label>
+                                </td>
+                                <td>
+                                    <label class="IteminputBoxes">-</label>
+                                </td>
+                                <td>
+                                    <label class="IteminputBoxes">0</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td ><p class="itemLeft"><span class="promoItem">p2</span>Lays classic blue cla..</p> </td>
+                                <td >
+                                    <label class="IteminputBoxes">Boxes</label>
+                                </td>
+                                <td >
+                                    <label class="IteminputBoxes">3</label>
+                                </td>
+                                <td>
+                                    <label class="IteminputBoxes">10,000,000</label>
+                                </td>
+                                <td >
+                                    <label class="IteminputBoxes">20</label>
+                                </td>
+                                <td >
+                                    <label class="IteminputBoxes">100%</label>
+                                </td>
+                                <td>
+                                    <label class="IteminputBoxes">0</label>
+                                </td>
+                                <td>
+                                    <label class="IteminputBoxes">-</label>
+                                </td>
+                                <td>
+                                    <label class="IteminputBoxes">0</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td ><p class="itemLeft"><span class="promoItem">NP</span>5 star.</p> </td>
+                                <td >
+                                    <label class="IteminputBoxes">Boxes</label>
+                                </td>
+                                <td >
+                                    <label class="IteminputBoxes">3</label>
+                                </td>
+                                <td>
+                                    <label class="IteminputBoxes">10,000,000</label>
+                                </td>
+                                <td >
+                                    <label class="IteminputBoxes">20</label>
+                                </td>
+                                <td >
+                                    <label class="IteminputBoxes">100%</label>
+                                </td>
+                                <td>
+                                    <label class="IteminputBoxes">0</label>
+                                </td>
+                                <td>
+                                    <label class="IteminputBoxes">-</label>
+                                </td>
+                                <td>
+                                    <label class="IteminputBoxes">0</label>
+                                </td>
+                            </tr>
+                        </table>
+                       </div>
+                       <div class="row mt-2">
+                        <div class="totall">
+                        <div class="innerTotal d-flex">
+                            <div class="subitem">
+                               <p class="alltotals">Sub Total</p>
+                               <span>105,000.00</span>
+                            </div>
+                            <div class="subitem">
+                                <p class="alltotals">Tax Element 1</p>
+                                <span>10,500.00</span>
+                             </div>
+                             <div class="subitem">
+                                <p class="alltotals">Tax Element 2</p>
+                                <span>10.50</span>
+                             </div>
+                             <div class="subitem">
+                                <p class="alltotals">Tax Element 3</p>
+                                <span>10.50</span>
+                             </div>
+                             <div class="subitem">
+                                <p class="alltotals">Packing Charge</p>
+                                <span>2000</span>
+                             </div>
+                             <div class="subitem">
+                                <p class="alltotals">Shipping Charge</p>
+                                <span>3000</span>
+                             </div>
+                             <div class="subitem">
+                                <p class="alltotals">Total</p>
+                                <span>105,000.00</span>
+                             </div>
+                        </div>
+                    </div>
+                       </div>
+                    </div>
+                </div>
+                <div class="top-bottom">
+                <div  class="collapsible"  (click)="expandShipmentOneDiv()">
+                    <div class="row">
+                        <div class="col-lg-5">
+                           <p class="label-cls">Shipment 1</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <p class="label-cls">Invoice no: 23AB567</p>
+                        </div>
+                           <div class="col-lg-1">
+                            <img [src]="image3" class="expand-arrow" alt="add-user-btn">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top-bottom">
+                <div  class="collapsible" (click)="expandShipmentTwoDiv()">
+                    <div class="row">
+                        <div class="col-lg-5" >
+                           <p class="label-cls">Shipment 2</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <p class="label-cls">Invoice no:</p>
+                         </div>
+                           <div class="col-lg-1">
+                            <img [src]="image4" class="expand-arrow" alt="add-user-btn">
+                        </div>
+                    </div>
+                </div>
+                <div class="content-shp-3" *ngIf="!shipmenttwo">
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <label>Invoice No.<span class="astr">*</span></label>
+                            <div class="input-datepicker mr-3">
+                                <app-customdatepicker [showInputField]="true" label="Enter" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
+                              </div>
+                            <!-- <app-customdatepicker [showInputField]="true" class="input-datepicker" label="Enter" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"><span class="astr">*</span></app-customdatepicker> -->
+                            <!-- <input matInput placeholder="Enter" #input class="form-control container input-box" > -->
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Invoice Date.<span class="astr">*</span></label>
+                            <div class="input-datepicker mr-3">
+                                <app-customdatepicker [showInputField]="true" label="Select" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
+                              </div>
+                            <!-- <input matInput placeholder="Select" #input class="form-control container input-box" > -->
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Shipping Date<span class="astr">*</span></label>
+                            <div class="input-datepicker mr-3">
+                                <app-customdatepicker [showInputField]="true" label="Select" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
+                              </div>
+                            <!-- <input matInput placeholder="Select" #input class="form-control container input-box" > -->
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Receive Date<span class="astr">*</span></label>
+                            <div class="input-datepicker mr-3">
+                                <app-customdatepicker [showInputField]="true" label="Select" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
+                              </div>
+                            <!-- <input matInput placeholder="Select" #input class="form-control container input-box" > -->
+                        </div>
+                    </div>
+                       <div class="section mt-1">
+                    <table>
+                        <tr>
+                            <th>Item</th>
+                            <th>UoM</th>
+                            <th>Order Qty</th>
+                            <th>Stock</th>
+                            <th>Unit Price</th>
+                            <th>Discount</th>
+                            <th>Final Value</th>
+                            <th>Tax</th>
+                            <th>Amount</th>
+                            <th>Shipped Till</th>
+                            <th>Shipped Now</th>
+                        </tr>
+                        <tr [(ngModel)]="itemremoved">
+                            <td ><p class="itemLeft"><span class="promoItem">p1</span>Lays classic blue cla..</p> </td>
+                            <td >
+                                <label class="IteminputBoxes">Boxes</label>
+                            </td>
+                            <td >
+                                <label class="IteminputBoxes">5</label>
+                            </td>
+                            <td>
+                                <label class="IteminputBoxes">10,000,000</label>
+                            </td>
+                            <td >
+                                <label class="IteminputBoxes">20</label>
+                            </td>
+                            <td >
+                                <label class="IteminputBoxes">10%</label>
+                            </td>
+                            <td>
+                                <label class="IteminputBoxes">90</label>
+                            </td>
+                            <td>
+                                <label class="IteminputBoxes">IGST (18%)</label>
+                            </td>
+                            <td>
+                                <label class="IteminputBoxes">106.2</label>
+                            </td>
+                            <!-- <mat-icon class="removeCircle" (click)=removeItem()>
+                                remove_circle</mat-icon> -->
+                        </tr>
+                        <tr>
+                            <td ><p class="itemLeft1">Little hearts</p> </td>
+                            <td >
+                                <label class="IteminputBoxes">Boxes</label>
+                            </td>
+                            <td >
+                                <label class="IteminputBoxes">3</label>
+                            </td>
+                            <td>
+                                <label class="IteminputBoxes">10,000,000</label>
+                            </td>
+                            <td >
+                                <label class="IteminputBoxes">20</label>
+                            </td>
+                            <td >
+                                <label class="IteminputBoxes">100%</label>
+                            </td>
+                            <td>
+                                <label class="IteminputBoxes">0</label>
+                            </td>
+                            <td>
+                                <label class="IteminputBoxes">-</label>
+                            </td>
+                            <td>
+                                <label class="IteminputBoxes">0</label>
+                            </td>
+                            <td>
+                                <input type="text" placeholder="300" class="ShipmentinputBoxes" disabled>
+                            </td>
+                            <td>
+                                <input type="text" placeholder="Enter Quantity" class="ShipmentinputBoxes1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td ><p class="itemLeft"><span class="promoItem">p2</span>Lays classic blue cla..</p> </td>
+                            <td >
+                                <label class="IteminputBoxes">Boxes</label>
+                            </td>
+                            <td >
+                                <label class="IteminputBoxes">3</label>
+                            </td>
+                            <td>
+                                <label class="IteminputBoxes">10,000,000</label>
+                            </td>
+                            <td >
+                                <label class="IteminputBoxes">20</label>
+                            </td>
+                            <td >
+                                <label class="IteminputBoxes">100%</label>
+                            </td>
+                            <td>
+                                <label class="IteminputBoxes">0</label>
+                            </td>
+                            <td>
+                                <label class="IteminputBoxes">-</label>
+                            </td>
+                            <td>
+                                <label class="IteminputBoxes">0</label>
+                            </td>
+                            <td>
+                                <input type="text" placeholder="300" class="ShipmentinputBoxes" disabled>
+                            </td>
+                            <td>
+                                <input type="text" placeholder="Enter Quantity" class="ShipmentinputBoxes1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td ><p class="itemLeft"><span class="promoItem">NP</span>5 star.</p> </td>
+                            <td >
+                                <label class="IteminputBoxes">Boxes</label>
+                            </td>
+                            <td >
+                                <label class="IteminputBoxes">3</label>
+                            </td>
+                            <td>
+                                <label class="IteminputBoxes">10,000,000</label>
+                            </td>
+                            <td >
+                                <label class="IteminputBoxes">20</label>
+                            </td>
+                            <td >
+                                <label class="IteminputBoxes">100%</label>
+                            </td>
+                            <td>
+                                <label class="IteminputBoxes">0</label>
+                            </td>
+                            <td>
+                                <label class="IteminputBoxes">-</label>
+                            </td>
+                            <td>
+                                <label class="IteminputBoxes">0</label>
+                            </td>
+                            <td>
+                                <input type="text" placeholder="300" class="ShipmentinputBoxes" disabled>
+                            </td>
+                            <td>
+                                <input type="text" placeholder="Enter Quantity" class="ShipmentinputBoxes1">
+                            </td>
+                        </tr>
+                    </table>
+                   </div>
+                   <div class="row mt-2">
+                    <div class="totall">
+                    <div class="innerTotal d-flex">
+                        <div class="subitem">
+                           <p class="alltotals">Sub Total</p>
+                           <span>105,000.00</span>
+                        </div>
+                        <div class="subitem">
+                            <p class="alltotals">Tax Element 1</p>
+                            <span>10,500.00</span>
+                         </div>
+                         <div class="subitem">
+                            <p class="alltotals">Tax Element 2</p>
+                            <span>10.50</span>
+                         </div>
+                         <div class="subitem">
+                            <p class="alltotals">Tax Element 3</p>
+                            <span>10.50</span>
+                         </div>
+                         <div class="subitem">
+                            <p class="alltotals">Packing Charge</p>
+                            <input type="text" placeholder="300" class="subtotalBox">
+                            <!-- <span>2000</span> -->
+                         </div>
+                         <div class="subitem">
+                            <p class="alltotals">Shipping Charge</p>
+                            <input type="text" placeholder="300" class="subtotalBox">
+                            <!-- <span>3000</span> -->
+                         </div>
+                         <div class="subitem">
+                            <p class="alltotals">Total</p>
+                             <span>3000</span>
+                             </div>
+                                                        
+                    </div>
+                </div>
+                   </div>
+                   <br>
+                   <div class="row">
+                    <!-- <div class="col-lg-1"></div> -->
+                    <div class="col-lg-11">
+                        <div>
+                            <label>Dispatch Comment</label>
+                            <br>
+                            <input type="text" placeholder="Enter any comments" class="dispatchComments">
+                         </div>
+                    </div>
+                 </div>
+                 <div class="row">
+                    <!-- <div class="col-lg-1"></div> -->
+                    <div class="col-lg-11">
+                        <div>
+                            <label>Receipt Comment</label>
+                            <br>
+                            <input type="text" placeholder="Enter any comments" class="dispatchComments">
+                         </div>
+                    </div>
+                 </div>
+                 <!-- <div class="row ship end">
+                    <div class="col-md-5">
+                        <button type="button" class="saveas-draft" >Save as draft</button>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="save-submit" >Save & submit</button>
+                    </div>
+                    <div class="col-md-5">
+                        <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
+                    </div>
+                </div> -->
+                </div>
+            </div>
+            <div class="top-bottom">
+                <div  class="collapsible" (click)="expandOrderHistoryDiv()">
+                    <div class="row">
+                        <div class="col-lg-11" >
+                           <p class="label-cls">Order History</p>
+                        </div>
+                         <div class="col-lg-1">
+                            <img [src]="image5" class="expand-arrow" alt="add-user-btn">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="content-order" *ngIf="!orderhistory">
+                         <div>
+                        <ag-grid-angular id="gridContainer"
+                          class="ag-theme-material mt-2" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
+                          [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
+                          [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
+                          (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
+                          (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+                          (bodyScroll)="handleScroll($event)"  [rowSelection]="'multiple'"(rowSelected)="onRowSelect($event)"></ag-grid-angular>
+                      </div>
+                   
+                </div>
+
+                </div> 
+               
+            </div>
+            
+        </div>
+      
+    </div>
+    <div class="row">
+        <div class="col-lg-5"></div>
+                <div class="col-lg-4">
+                <button type="button" class="cancelButton">Close</button>         
              </div>
             <div class="col-lg-3"></div>
     </div>

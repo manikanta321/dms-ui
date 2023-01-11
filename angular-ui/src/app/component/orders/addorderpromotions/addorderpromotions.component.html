@@ -1,4 +1,299 @@
-<div class="font">
+<div *ngIf="confirmOrder!=''" class="font">
+    <div class="main">
+        <div class="container promotionpopup-scroll">
+            <div class="addUser">
+                <img class="print-img" src="../../../assets/material/print-img.svg" alt="">
+                <mat-icon mat-button class="close-icon" [mat-dialog-close]="false">close</mat-icon>
+
+            </div>
+            <div class="head-t">
+                <h3 class="addU font">{{"Confirm Order"}}</h3>
+                <div class="row top-bottom">
+                    <div class="row text-center"></div>
+                </div>
+
+                <div (click)="expandDealerInfoDiv()" class="collapsible">
+                    <div class="row">
+                        <div class="col-md-11">
+                            <p class="label-cls">Dealer Information</p>
+                        </div>
+                        <div class="col-md-1">
+                            <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                        </div>
+                    </div>
+                </div>
+                <div class="content contentscrobar  "  *ngIf="!dealerInfo">
+                    <div class="row ">
+                        <div class="col-lg-3">
+                            <div class="dealerr">
+                                <label class="DealerInfo-label">Dealer <span class="astr">*</span></label>
+                                <ng-select disabled [items]="dealerListArray" id="dealerAllArray" name="dealerAllArray" required
+                                    [virtualScroll]="true" bindLabel="customerName" bindValue="customerId"
+                                    [searchable]="true" [clearable]="false" placeholder=" select dealer"
+                                    [(ngModel)]="customerId" (change)="onItemSelectdealers($event)">
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="geographyy">
+                                <label class="DealerInfo-label">Geography <span class="astr">*</span></label>
+                                <ng-select disabled class="selectgeo" [items]="GeoGrapydropdownListdata" id="GeoGrapydropdown"
+                                    name="GeoGrapydropdown" required [virtualScroll]="true" bindLabel="geographyName"
+                                    bindValue="geographyId" [searchable]="true" [clearable]="false"
+                                    placeholder="select Geography" [(ngModel)]="geographyId"
+                                    (change)="onItemSelectgeo($event)">
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="billingAdrs">
+                                <label class="DealerInfo-label">Billing Address {{BillingaddressId}} <span
+                                        class="astr">*</span></label>
+                                <!-- <input matInput placeholder=" Select Billing address" #input class="form-control container input-box" > -->
+                                <ng-select disabled class="BillingAddress" [items]="dealersbillingAddress" id="BillingAddress"
+                                    name="BillingAddress" required [virtualScroll]="true" bindLabel="Billingaddress"
+                                    bindValue="BillingaddressId" [searchable]="true" [clearable]="false"
+                                    placeholder="select shippingAddress" [(ngModel)]="BillingaddressId"
+                                    (change)="onItemSelectBillingAddress($event)">
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="dealerReff">
+                                <label class="DealerInfo-label">Dealer Reference No <span class="astr">*</span></label>
+                                <input disabled type="number" placeholder="Dealer Reference No" id="DealerReferenceNo"
+                                    [(ngModel)]="DealerReferenceNo" class="form-control container input-box">
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="companyReff">
+                                <label class="DealerInfo-label">Company Reference No <span class="astr">*</span></label>
+                                <input disabled type="number" placeholder="Company Reference No" id="CompanyReferenceNo"
+                                    [(ngModel)]="CompanyReferenceNo" class="form-control container input-box">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="shippingAdrs">
+                                <label class="DealerInfo-label">Shipping Address <span class="astr">*</span></label>
+                                <!-- <input matInput placeholder="Select shipping address" #input class="form-control container input-box" > -->
+                                <ng-select disabled class="shipingAddress" [items]="dealersShippingAddress" id="shipingAddress"
+                                    name="shipingAddress" required [virtualScroll]="true" bindLabel="address"
+                                    bindValue="addressId" [searchable]="true" [clearable]="false"
+                                    placeholder="select shippingAddress" [(ngModel)]="addressId"
+                                    (change)="onItemSelectshippingAddress($event)">
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="top-bottom">
+                    <div class="collapsible">
+                        <div class="row">
+                            <div class="col-lg-6" (click)="expandOrderItemsDiv()">
+                                <p class="label-cls">Items</p>
+                            </div>
+                            <!-- <div class="col-lg-5">
+                                <div class="addbtns d-flex">
+                                    <div class="addEditPromotion">
+                                        <button (click)="addOrderPromotionList()" class="add-edit-promo">Add/Edit Promo
+                                            Items</button>
+                                    </div>
+                                    <div class="addEditNonPromotion">
+                                        <button (click)="addOrderNonPromotionList()" class="add-edit-non-promo">Add/Edit
+                                            Non Promo Items</button>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="col-lg-1" (click)="expandOrderItemsDiv()">
+                                <img [src]="image2" class="expand-arrows" alt="add-user-btn">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content" *ngIf="!orderitem">
+                        <div class="section mt-1">
+                            <table>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>UoM</th>
+                                    <th>Order Qty</th>
+                                    <th>Stock</th>
+                                    <th>Unit Price</th>
+                                    <th>Discount</th>
+                                    <th>Tax</th>
+                                    <th>Final Value</th>
+                                    <th>Amount</th>
+                                </tr>
+                                <!-- promotion list view -->
+                                <ng-container *ngFor="let PromotionObj of AddOrderPromotionData; let i=index;">
+                                    <tr *ngFor="let Item of PromotionObj.itemDetails; let j=index;">
+                                        <td>
+                                            <p class="itemLeft"><span class="promoItem" style="color: #fff;"
+                                                    *ngIf="j==0"> P {{i + 1}}</span>
+                                                {{Item.stockitemname}}</p>
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled [(ngModel)]="Item.uomname"
+                                                class="IteminputBoxes">
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled [(ngModel)]="Item.quantity"
+                                                class="IteminputBoxes">
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled [(ngModel)]="Item.stock" class="IteminputBoxes">
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled [(ngModel)]="Item.price" class="IteminputBoxes">
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled [(ngModel)]="Item.discount"
+                                                class="IteminputBoxes">
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled [(ngModel)]="Item.taxvalue"
+                                                class="IteminputBoxes">
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled [(ngModel)]="Item.finalValue"
+                                                class="IteminputBoxes">
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled [(ngModel)]="Item.amount"
+                                                class="IteminputBoxes">
+                                        </td>
+                                        <mat-icon class="removeCircle" *ngIf="j==0"
+                                            (click)="removePromotionItem(Item, PromotionObj.promotionId)">
+                                            remove_circle</mat-icon>
+                                    </tr>
+                                </ng-container>
+                                <!-- nonpromotions list view -->
+                                <tr *ngFor="let Item of AddorderNonpromotiondata?.itemDetails; let i=index;">
+                                    <td>
+                                        <p class="itemLeft"><span class="promoItem" *ngIf="i == 0"> NP
+                                            </span>{{Item.stockitemname}}</p>
+                                    </td>
+                                    <td>
+                                        <input type="text" disabled [(ngModel)]="Item.uomname" class="IteminputBoxes">
+                                    </td>
+                                    <td>
+                                        <input type="text" disabled [(ngModel)]="Item.quantity" class="IteminputBoxes">
+                                    </td>
+                                    <td>
+                                        <input type="text" disabled [(ngModel)]="Item.stock" class="IteminputBoxes">
+                                    </td>
+                                    <td>
+                                        <input type="text" disabled [(ngModel)]="Item.price" class="IteminputBoxes">
+                                    </td>
+                                    <td>
+                                        <input type="text" disabled [(ngModel)]="Item.discount" class="IteminputBoxes">
+                                    </td>
+                                    <td>
+                                        <input type="text" disabled [(ngModel)]="Item.taxvalue" class="IteminputBoxes">
+                                    </td>
+                                    <td>
+                                        <input type="text" disabled [(ngModel)]="Item.finalValue"
+                                            class="IteminputBoxes">
+                                    </td>
+                                    <td>
+                                        <input type="text" disabled [(ngModel)]="Item.amount" class="IteminputBoxes">
+                                    </td>
+                                    <mat-icon class="removeCircle" (click)=removeNonPromotionItem(Item)>
+                                        remove_circle</mat-icon>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="totall" *ngIf="shippingPackingchargeDetails">
+                                <div class="innerTotal d-flex">
+                                    <div class="subitem">
+                                        <p class="alltotals">Sub Total</p>
+                                        <span>{{shippingPackingchargeDetails.subTotal}}</span>
+                                    </div>
+                                    <div class="subitem">
+                                        <p class="alltotals">Tax Element</p>
+                                        <span>{{shippingPackingchargeDetails.taxElement}}</span>
+                                    </div>
+                                    <div class="subitem">
+                                        <p class="alltotals">Packing Charge</p>
+                                        <span>{{shippingPackingchargeDetails.packingCharges}}</span>
+                                    </div>
+                                    <div class="subitem">
+                                        <p class="alltotals">Shipping Charge</p>
+                                        <span>{{shippingPackingchargeDetails.shippingCharges}}</span>
+                                    </div>
+                                    <div class="subitem">
+                                        <p class="alltotals">Total</p>
+                                        <span>{{shippingPackingchargeDetails.total}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="top-bottom">
+                    <div (click)="expandOtherInfoDiv()" class="collapsible">
+                        <div class="row">
+                            <div class="col-md-11">
+                                <p class="label-cls">Other Information</p>
+                            </div>
+                            <div class="col-md-1">
+                                <img [src]="image3" class="expand-arrow" alt="add-user-btn">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content" *ngIf="!otherInfo">
+                        <div class="row">
+
+                            <div class="col-lg-4">
+                                <div class="orderDatepicker">
+                                    <label class="boldR">Requirement Date </label>
+                                    <mat-form-field disabled appearance="fill" class="datepc">
+                                        <mat-label>Select a date</mat-label>
+                                        <input matInput disabled [matDatepicker]="picker" (dateChange)="dateChange($event)"
+                                            [(ngModel)]="startdate">
+                                        <mat-datepicker-toggle disabled matSuffix [for]="picker"
+                                            class="calicon"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="promotiont">
+                                    <label class="delivery1">Delivery Instructions/Extra Information</label>
+                                </div>
+                                <textarea disabled class="text-area-extrainfo" style="resize: none;"
+                                    placeholder="Please write down if there are any delivery instructions or extra information you want to share"
+                                    name="w3review" rows="2" [(ngModel)]="DeliveryInstructions" cols="65"></textarea>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+    <div class="row footers">
+        <div class="col-md-5">
+            <button type="button" class="saveas-draft"  (click)="GetConfirmOrders()">Confirm</button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="save-submit" (click)="GetRejectOrders()">Reject</button>
+        </div>
+    </div>
+</div>
+<div *ngIf="confirmOrder==''" class="font">
     <div class="main">
         <div class="container promotionpopup-scroll">
             <div class="addUser">
@@ -64,7 +359,7 @@
                         <div class="col-lg-3">
                             <div class="dealerReff">
                                 <label class="DealerInfo-label">Dealer Reference No <span class="astr">*</span></label>
-                                <input type="number" placeholder="Dealer Reference No" id="DealerReferenceNo"
+                                <input type="text" placeholder="Dealer Reference No" id="DealerReferenceNo"
                                     [(ngModel)]="DealerReferenceNo" class="form-control container input-box">
                             </div>
                         </div>
@@ -297,7 +592,7 @@
     </div>
 </div>
 <!-- non promotions -->
-<div class="overlay" *ngIf="Non_promotions">
+<div class="overlay" *ngIf="Non_promotions && confirmOrder ==''">
     <div class="popup">
         <div class="font">
             <div class="main">

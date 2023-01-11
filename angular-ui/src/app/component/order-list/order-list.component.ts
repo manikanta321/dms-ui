@@ -26,6 +26,7 @@ import { OrderlistActionPopupComponent } from './orderlist-action-popup/orderlis
 import { SalesBulkUploadComponent } from '../sales-bulk-upload/sales-bulk-upload.component';
 import { CustomDatePopupComponent } from '../orders/custom-date-popup/custom-date-popup.component';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
+import { SharedServiceMaterialListService } from 'src/app/services/shared-service-material-list.service';
 // import { DateRange } from '@uiowa/date-range-picker';
 
 export interface PeriodicElement {
@@ -305,6 +306,7 @@ export class OrderListComponent implements OnInit {
     private observer: BreakpointObserver,
     private route: ActivatedRoute,
 
+    private materialListService:SharedServiceMaterialListService
   ) {
     sort: [];
     this.route.data.subscribe(v => {
@@ -600,6 +602,13 @@ export class OrderListComponent implements OnInit {
   }
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     params.api.paginationGoToPage(4);
+    this.materialListService.listen().subscribe((m: any) => {
+      console.log("RefreshData",m)
+      setTimeout (() => {
+        this.orderlistGrid();
+     }, 2000);
+     
+    })
   }
   openDialog() {
 

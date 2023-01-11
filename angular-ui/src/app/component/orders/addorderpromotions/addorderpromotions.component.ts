@@ -120,7 +120,7 @@ export class AddorderpromotionsComponent implements OnInit {
   editorderbyID: any = {};
   copyEditOrderById: any;
   shippingPackingchargeDetails: any = {};
-
+  confirmOrder:any;
   dateChange(e) {
 
     this.selectedStartDate = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
@@ -223,7 +223,12 @@ export class AddorderpromotionsComponent implements OnInit {
       identifiers: [this.selectedItems]
     });
     let editV = localStorage.getItem('Edit');
-
+this.confirmOrder = sessionStorage.getItem("Confirm") 
+if(this.confirmOrder == "Confirm") {
+  this.actineLabel = "Confirm order";
+  this.updateOrSave = !this.updateOrSave;
+  this.GetOrdersToEdit();
+}
     if (editV == 'Edit') {
       this.actineLabel = "Edit order";
       this.updateOrSave = !this.updateOrSave;
@@ -1168,6 +1173,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
   GetOrdersToEdit() {
     this.CustomerPoId = localStorage.getItem("CustomerPoId");
+    // alert(this.CustomerPoId)
     console.log(this.CustomerPoId, 'this.CustomerPoId')
     this.copyEditOrderById = null;
     this.orders.GetOrdersToEdit(this.CustomerPoId).subscribe((res) => {
@@ -1177,9 +1183,34 @@ export class AddorderpromotionsComponent implements OnInit {
       this.datapreloadbyID();
       this.getShippingandPackingcharges();
     })
-
+    this.sharedService.filter('Register click');
   }
-
+  GetConfirmOrders() {
+    this.CustomerPoId = localStorage.getItem("CustomerPoId");
+    console.log(this.CustomerPoId, 'this.CustomerPoId');
+    let data = {
+      OrderId:this.CustomerPoId,
+      flag:"Confirmed"
+    }
+    this.orders.GetConfirmOrder(data).subscribe((res) => {
+      console.log(res.response, "GetConfirmOrdersToEdit")
+    })
+    this.dialogRef.close(true);
+    this.sharedService.filter('Register click');
+  }
+  GetRejectOrders() {
+    this.CustomerPoId = localStorage.getItem("CustomerPoId");
+    console.log(this.CustomerPoId, 'this.CustomerPoId');
+    let data = {
+      OrderId:this.CustomerPoId,
+      flag:"Rejected"
+    }
+    this.orders.GetConfirmOrder(data).subscribe((res) => {
+      console.log(res.response, "GetConfirmOrdersToEdit")
+    })
+    this.dialogRef.close(true);
+    this.sharedService.filter('Register click');
+  }
   datapreloadbyID() {
     this.customerId = this.editorderbyID.customerid;
 

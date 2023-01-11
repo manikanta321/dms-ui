@@ -15,6 +15,7 @@ export class OrderlistShipPopupComponent implements OnInit {
   shipmentone=false;
   shipmenttwo=false;
   orderhistory=false;
+  viewList:boolean =false;
   image1 = 'assets/img/minimize-tag.png';
   image2 = 'assets/img/minimize-tag.png';
   image3 = 'assets/img/minimize-tag.png';
@@ -54,9 +55,9 @@ export class OrderlistShipPopupComponent implements OnInit {
       headerName: "Comments",
       field: 'comments', type: ['nonEditableColumn'], maxWidth:150
     },
-    {
-      headerName:"",  cellRenderer: this.daysSunshineRenderer
-    }
+    // {
+    //   headerName:"",  cellRenderer: this.daysSunshineRenderer
+    // }
      
   ];
   gridOptions: GridOptions = {
@@ -108,6 +109,17 @@ export class OrderlistShipPopupComponent implements OnInit {
   constructor(public dialog: MatDialog,) { }
 
   ngOnInit(): void {
+    this.viewOrderData();
+  }
+  viewOrderData() {
+    let viewData = sessionStorage.getItem("viewOrder");
+    console.log("ViewOrder",viewData);
+    if(viewData =="View") {
+      this.viewList = true;
+    }
+    else {
+      this.viewList =false
+    }
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;

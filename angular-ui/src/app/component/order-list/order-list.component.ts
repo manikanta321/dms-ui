@@ -635,6 +635,7 @@ export class OrderListComponent implements OnInit {
     const dialogRef = this.dialog.open(AddorderpromotionsComponent, {
       panelClass: 'material-add-edit'
     });
+    sessionStorage.setItem("Confirm",'')
     localStorage.setItem('Edit', 'Add');
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {

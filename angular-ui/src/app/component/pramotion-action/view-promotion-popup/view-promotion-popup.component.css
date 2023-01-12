@@ -1,0 +1,982 @@
+.view-dealer-promotion-cls {
+    overflow-x: hidden;
+    height: 530px;
+}
+
+.close-icon {
+    left: 100%;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.head-t h3 {
+    /* color: #000000; */
+    text-align: left;
+    margin-top: -18px;
+    margin-bottom: 2px;
+    font-family: 'Gilroy';
+}
+
+.viewPromo {
+    position: relative;
+    font-weight: lighter;
+    font-size: 20px;
+    color: #686E74;
+}
+
+.viewPromo:after {
+    content: "";
+    display: block;
+    width: 651px;
+    height: 1px;
+    background: #686E74;
+    right: 93px;
+    top: 50%;
+    position: absolute;
+}
+
+.viewPromohead {
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+}
+
+.print-img-viewpromo {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 12%;
+    right: 274px;
+    cursor: pointer;
+}
+
+.promoInfoHeading {
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.view-promoName{
+    font-weight: bold;
+    font-size: 14px;
+    font-family: 'Gilroy';
+}
+.mandatoryField{
+    color: red;
+}
+.input-label-view{
+    font-size: 13px;
+    font-family: 'Gilroy';
+}
+
+.promoSection{
+    margin-left: 10px;
+}
+.promoSectiontwo{
+    margin-left: 10px;
+    margin-top: -30px
+
+}
+.viewpromoItem {
+    font-weight: 300;
+    font-size: 18px;
+  }
+  .plus-image {
+    width: 22px;
+    position: relative;
+    left: 14px;
+  }
+  .expsion-img {
+    height: 18px;
+  }
+  .itemsProductOne{
+    position: relative;
+  bottom: 21px;
+  }
+  .itemSelectedSection{
+    position: relative;
+    bottom: 30px;
+  }
+
+.selectedRowSection{
+  position: relative;
+  left: 17px;
+  width: 1008px
+}
+
+::ng-deep.view-checkbox .mat-checkbox-inner-container-no-side-margin{
+margin-left: -34px;  
+}
+
+  /*old css*/
+  
+#top {
+    top: -113px;
+    left: 175px;
+  }
+  
+  #top::before {
+    top: 93%;
+    left: 7%;
+    background: white;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+  }
+  
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  .tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    z-index: 2;
+    width: 421px;
+    /* height: 69px; */
+    color: black;
+    font-size: 12px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 15px 10px 15px;
+    border: 1px solid black;
+  }
+  
+  .tooltip-text::before {
+    content: "";
+    position: absolute;
+    transform: rotate(45deg);
+    background-color: #192733;
+    padding: 7px;
+    z-index: 1;
+  }
+  
+  .hover-text:hover>.tooltip-text {
+    visibility: visible;
+  }
+  
+  .hover-text {
+    display: inline-block;
+  }
+  
+  .indexImg {
+    margin-left: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .buyoneSet {
+    background: #CED4DA;
+    border: 1px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 10px;
+  }
+  
+  .getSet1,
+  .additionalGetset-2 {
+    background: #CED4DA;
+    /* border: 1px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px; */
+    padding: 10px;
+  }
+  
+  /* .mat-form-field::placeholder {
+    bottom: 2px;
+  
+  } */
+  .addMore-icons {
+    cursor: pointer;
+    color: grey;
+  }
+  
+  .labelname {
+    margin: 15px 5px 5px;
+    font-size: 13px;
+  }
+  
+  .category {
+    margin-top: 18px;
+    font-family: 'Gilroy';
+  }
+  
+  .materialname {
+    font-family: 'Gilroy';
+  }
+  
+  .additional {
+    margin-top: -10px;
+    font-family: 'Gilroy';
+    margin-left: -4px;
+  }
+  
+  /* .promotiont {
+    margin-top: 9px;
+    font-family: 'Gilroy';
+    margin-left: -2px;
+  } */
+  
+  .image {
+    width: 443px;
+    height: 217px;
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+  }
+  
+  .promoItem {
+    font-weight: 300;
+    font-size: 20px;
+  }
+  
+  /* .geography {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 450px;
+  
+  } */
+  
+  /* .itemSize {
+    width: 517px;
+    height: 130px;
+    border: 0.5px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  } */
+  
+  .removeCircle {
+    color: grey;
+  }
+  
+  .listStyleOfItems {
+    list-style: none;
+    display: flex;
+    /* padding: 25px 0px 0px 0px; */
+  
+  }
+  
+  .listStyleOfItems li {
+    padding: 0 60px 0px 0px;
+  }
+  
+  .qtyOfItems {
+    width: 100px;
+    height: 43px;
+    background: linear-gradient(90deg, #CED4DA -5%, #F8F9FA 86%);
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+  
+  .addAlign {
+    margin-left: 40px;
+  }
+  
+  /* .qtyOfItems .firstInputOfItems {
+    width: 100px;   
+    height: 43px;
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    margin: 26px 0px 5px 105px;
+  
+  } */
+  
+  /* .qtyOfItems .secondInputOfItems{
+    width: 100px;   
+    height: 43px;
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+  } */
+  
+  /* .qtyOfItems .thirdInputOfItems{
+    width: 100px;   
+    height: 43px;
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    
+  } */
+  .productSize {
+    width: 949px;
+    height: 43px;
+    border: 0.5px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  }
+  
+  .minimumorderquantity {
+    width: 461px;
+    height: 43px;
+    border: 0.5px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  }
+  
+  .scroll {
+    overflow-y: auto;
+    overflow-x: auto;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 25px;
+    /* background: #b3b3bc; */
+  }
+  
+  ::-webkit-scrollbar-track {
+    border-radius: 20px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    margin-left: 20px;
+  }
+  
+  /* .type {
+    margin-top: -30px;
+    margin-left: 496px;
+    font-family: 'Gilroy';
+  } */
+  
+  .font {
+    font-family: 'Gilroy';
+  }
+  
+  .heading {
+    margin-top: 8px;
+    font-family: 'Gilroy';
+  }
+  
+  ::ng-deep.mat-stepper-vertical,
+  .mat-stepper-horizontal {
+    display: inline;
+    width: 500px;
+  }
+  
+  ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
+    width: 767px;
+    margin-top: -51px;
+  }
+  
+  .mat-horizontal-stepper-wrapper {
+    margin-top: -47px;
+  
+  }
+  
+  ::ng-deep.addPromotionsHeader .mat-step-header{
+    width: 133px;
+  }
+  
+  
+   
+  .main {
+    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+  
+  }
+  
+  .font {
+    font-family: 'Gilroy';
+  }
+  
+  
+  
+  .addPromo {
+    position: relative;
+    /* font-family: 'Gilroy-Bold';  */
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .addPromo:after {
+    content: "";
+    display: block;
+    width: 330px;
+    height: 1px;
+    background: #686E74;
+    right: 0;
+    top: 50%;
+    position: absolute;
+  }
+  
+  .addPromo:before {
+    content: "";
+    display: block;
+    width: 330px;
+    height: 1px;
+    background: #686E74;
+    left: 0;
+    top: 50%;
+    position: absolute;
+  }
+  
+  .promo-head {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+  }
+  
+  .geo-head {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+  }
+  
+  .promo-Name {
+    height: 43px;
+    font-weight: 300;
+    font-size: 14px;
+    color: rgba(104, 110, 116, 0.75);
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 0 10px;
+  }
+  
+  /* .addUserForm input {
+    border-radius: 5px;
+    border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+    padding: 5px 5px;
+    width: 250px;
+    font-size: 14px;
+    outline: none;
+  } */
+  .slctd-row {
+    background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    height: 43px;
+    padding: 4px;
+  }
+  
+  .slctd-geo-btn {
+    background: #000000;
+    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    height: 33px;
+    color: white;
+    float: right;
+    cursor: pointer;
+  }
+  
+  .sltd-span {
+    margin-top: 6px;
+  }
+  
+  .astr {
+    color: #FF0000;
+  }
+  
+  .selectedcolor {
+    color: #DBB802;
+  }
+  
+  .selectedclr2 {
+    color: #009B63;
+  }
+  
+  .close-icon {
+    left: 100%;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .searchGeo {
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    height: 43px;
+    width: 456px;
+  }
+  
+  .addtnlRemarks {
+    background:  linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    height: 43px;
+    width: 941px;
+  }
+  
+  .saveDraft {
+    background: #000000;
+    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    width: 168px;
+    height: 43px;
+    color: white;
+    margin-right: 15px;
+  }
+  
+  .submit {
+    background: #FFFFFF;
+    border: 2px solid #000000;
+    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    width: 168px;
+    height: 43px;
+    color: #000000;
+    margin-right: 15px;
+  }
+  
+  .footer-btns {
+    margin: auto;
+    margin-top: 20px;
+  }
+  
+  label {
+    /* padding: 2px 0; */
+    font-size: 14px;
+    margin: 15px 5px 5px;
+  }
+  
+  /* mat-form-field {
+    width: 246px;
+  
+  } */
+  
+  /* ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0em 0 0.7em 0;
+    border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+  } */
+  .promotiontypedrp {
+    margin-top: 2px;
+    font-family: 'Gilroy';
+  }
+  
+  /* 
+  ::ng-deep.matcard-dealers .mat-card {
+    width: 373px;
+    height: 218px;
+  } */
+  
+  div.catg[data-selected] {
+    border: 2px solid #333;
+  }
+  
+  li {
+    list-style: none;
+  }
+  
+  /* ::ng-deep.mat-horizontal-content-container {
+    overflow: hidden;
+    padding: 0px 0px 0px 0px;
+  } */
+  ::ng-deep.mat-step-text-label {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 12px;
+    bottom: 68px;
+    position: absolute;
+    width: 138px;
+    left: 1px;
+  }
+  
+  /* .mat-card-subtitle:before {
+    content: "";
+    display: block;
+    width: 372px;
+    height: 1px;
+    background: lightgrey;
+    right: 0;
+    top: 17%;
+    position: absolute;
+  }
+  
+  .mat-card-subtitle {
+    font-weight: bold;
+    font-family: 'Gilroy';
+  } */
+  
+  /* ::ng-deep.identify .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
+    overflow: hidden;
+    background-image: url('../../../assets/img/maximize.png') !important;
+    background-size: 13px;
+    background-repeat: no-repeat;
+    height: 122px;
+    margin-top: 12px;
+    margin-right: -7px;
+  } */
+  .expsion-img {
+    height: 18px;
+  }
+  
+  .collapsible {
+    background: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    height: 43px;
+  }
+  
+  .qty-box {
+    background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    width: 48px;
+    height: 43px;
+    text-align: center;
+  }
+  
+  .mty-box {
+    background:  linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    width: 48px;
+    height: 43px;
+    text-align: center;
+  }
+  
+  .expn-t {
+    margin: 2px;
+  }
+  
+  .productdrpdown {
+    width: 365px;
+    position: relative;
+    bottom: 89px;
+  }
+  
+  .productdrpdowntwo {
+    width: 365px;
+    position: relative;
+    bottom: 160px;
+    left: 414px;
+  }
+  
+  .buyg {
+    bottom: 554px;
+    position: relative;
+  }
+  
+  .buys {
+    position: relative;
+    top: 25px;
+    left: 18px;
+  }
+  
+  .getg {
+    position: relative;
+    bottom: 627px;
+    left: 424px;
+  }
+  
+  .myDatepicker {
+    border-radius: 2px;
+    font-family: 'Gilroy';
+  }
+  
+  .addproImg {
+    width: 426px;
+    height: 199px;
+    margin-top: -7px;
+    border-radius: 10px;
+  }
+  
+  ::ng-deep.myDatepicker .mat-form-field {
+    width: 415px;
+    height: 43px;
+    background: white !important;
+    border-radius: 5px;
+    padding-left: 10px;
+  
+  }
+  
+  .fileadd {
+    position: relative;
+    top: 17%;
+  }
+  
+  .imgupload {
+    display: none;
+  }
+  
+  ::ng-deep.myDatepicker .mat-icon-button {
+    background: transparent;
+    color: black;
+    position: relative;
+    right: 8px;
+  }
+  
+  
+  .list-item-view {
+    background: linear-gradient(90deg, #CED4DA 101%, #F8F9FA 86%);
+    border: 0.5px solid #000000;
+    /* width: 401px; */
+    height: 173px;
+    border-radius: 10px;
+  }
+  
+  .item-in-box-view {
+    height: 132px;
+    overflow-y: auto;
+  }
+  
+  .plus-image {
+    width: 22px;
+    position: relative;
+    left: 14px;
+  }
+  
+  .plus-imageone {
+    width: 22px;
+    position: relative;
+    left: 15px;
+  }
+  
+  .item-promotion {
+    position: relative;
+    top: 30px;
+  }
+  
+  /* .itemspone {
+    width: 333px;
+    height: 130px;
+    border: 0.5px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  } */
+  
+  /* .itemsptwo {
+    width: 333px;
+    height: 130px;
+    border: 0.5px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  } */
+  
+  /* .qty-items {
+    width: 48px;
+    height: 43px;
+    position: absolute;
+    left: 76px;
+    border: 0.5px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  } */
+  
+  /* .qty-items-text {
+    width: 48px;
+    height: 43px;
+    position: absolute;
+    left: 75px;
+    border: 0.5px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  } */
+  .add-dealer-promotion-cls {
+    overflow-x: hidden;
+    height: 530px;
+  }
+  
+  .qtyalign {
+    position: relative;
+    right: 17px;
+  }
+  
+  .slct-items {
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    width: 456px;
+    height: 43px;
+  }
+  
+  .cancel-image {
+    position: relative;
+    bottom: 126px;
+    width: 14px;
+    left: 309px;
+  }
+  
+  .placeh-align {
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+  }
+  
+  ::ng-deep.promotiondrpalign .ng-select-container {
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    height: 43px;
+  }
+  
+  ::ng-deep.promotiontypedrp .ng-select.ng-select-single .ng-select-container {
+    height: 43px;
+  }
+  
+  .itemsList {
+    border: 0.5px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 336px;
+    background-color: white;
+    padding-left: 12px;
+    padding-top: 7px;
+    height: 129px;
+    overflow-y: scroll;
+  }
+  
+  ::ng-deep.toggleIcon .mat-datepicker-toggle-default-icon {
+    width: 1em;
+    overflow: hidden;
+    /* background-image: url('../../../assets/img/Calendar.svg') !important; */
+    background-size: 13px;
+    background-repeat: no-repeat;
+    height: 122px;
+    /* margin-top: 12px;
+    margin-right: -7px; */
+  }
+  
+  .calendarToggle {
+    position: absolute;
+    bottom: 4px;
+    width: 20px;
+    right: 10px;
+  }
+  
+  ::ng-deep.mat-icon {
+    width: 2em;
+    color: grey;
+  }
+  
+  .itempromtion {
+    border: 1px solid black;
+    padding: 8px;
+    border-radius: 10px;
+    /* margin-top: 10px; */
+  }
+  
+  .cancelbtn {
+    border: none;
+    background: none;
+    text-decoration: underline;
+    font-size: 15px;
+  }
+  
+  .ag-theme-material {
+    height: 211px;
+    border-radius: 20px;
+    background-color: white;
+    font-family: Gilroy;
+    width: 100%;
+  }
+  
+  ::ng-deep.myDatepicker .mat-icon-button {
+    background: transparent;
+    color: black;
+    position: relative;
+    right: 8px;
+    /* border: none;
+    width: 0em !important; */
+  }
+  
+  /* ::ng-deep.mat-form-field-appearance-legacy .mat-form-field-prefix .mat-icon, .mat-form-field-appearance-legacy .mat-form-field-suffix .mat-icon {
+    width: 0em !important;
+  } */
+  ::ng-deep.mat-form-field-appearance-legacy .mat-form-field-prefix .mat-icon,
+  .mat-form-field-appearance-legacy .mat-form-field-suffix .mat-icon {
+    width: 0em !important;
+    border: none;
+  }
+  
+  ::ng-deep.view-checkbox.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: grey !important;
+  }
+  
+  ::ng-deep.view-checkbox.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background {
+    background-color: #686E74!important;
+  }
+  
+  .promoNameInput {
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+  }
+  
+  ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
+    border: 2px solid #000000 !important;
+  }
+  
+  .ag-theme-material .ag-checkbox-input-wrapper.ag-checked::after {
+    color: black !important;
+  }
+  
+  .row {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+  
+  ::ng-deep.promotion-datepicker .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 0.4375em 0;
+    margin-top: -4px !important;
+  }
+  
+  ::ng-deep.ag-theme-material .ag-checkbox-input-wrapper.ag-checked::after {
+    color: black !important;
+  }
+  
+  .item-header {
+    font-size: 18px;
+  }
+  .item-header1{
+    font-size: 18px;
+    margin-left: 19px;
+  }
+  .item-header2{
+    font-size: 18px;
+    margin-left: 0px;
+  }
+
+  .itemsProductTwo{
+    position: relative;
+    bottom: -22px;
+    right: 193px;
+  }
+  .itemsProductThree{
+    position: relative;
+    bottom: -22px;
+    right: 81px;
+  }
+
+  .itemsProductfour{
+    position: relative;
+    bottom: 18px;
+    right: 51px;
+  }
+
+  .itemlevelPromoTwo{
+    position: relative;
+    right: 116px;
+    top: 4px;
+  }
+
+  .secondPromoDiv{
+    margin-top: 20px;
+  }
+  
+  .placeholderText {
+    border: none;
+  }
+  /*end old css*/

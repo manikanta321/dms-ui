@@ -95,16 +95,12 @@
                                            </span>
                                         </div>
                                         <div class="col-4 ">
-                                            <label>Company ID<span>*</span></label>
+                                            <label>Company ID</label>
                                             <br>
                                             <input type="text" formControlName="company_id"
-                                                class="addDelercolss form-control" required
+                                                class="addDelercolss form-control"
                                                 placeholder="Enter your company ID"
                                                 >
-                                                <span class="text-danger"
-                                                *ngIf="addAddressDetailsFormControl['company_id'].touched  && addAddressDetailsFormControl['company_id'].errors && addAddressDetailsFormControl['company_id'].errors['required']">
-                                                Company ID is required
-                                            </span>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -112,15 +108,11 @@
                                             <!-- <input type="text"> -->
                                         </div>
                                         <div class="col-4 ">
-                                            <label class="otherId">Other Identifer<span>*</span></label>
+                                            <label class="otherId">Other Identifer</label>
                                             <br>
                                             <input type="text" formControlName="OtherIdentifier"
-                                                class="addDelercols form-control" required
+                                                class="addDelercols form-control"
                                                 placeholder="Enter and select" >
-                                                <span class="text-dangerr"
-                                                *ngIf="addAddressDetailsFormControl['OtherIdentifier'].touched  && addAddressDetailsFormControl['OtherIdentifier'].errors && addAddressDetailsFormControl['OtherIdentifier'].errors['required']">
-                                                Other Identifer is required
-                                            </span>
                                             <img src="../assets/img/search.png" class="search">
                                         </div>
                                         <div class="col-4 ">

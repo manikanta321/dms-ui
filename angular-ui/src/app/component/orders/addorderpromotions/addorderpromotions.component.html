@@ -504,28 +504,28 @@
                         </div>
                         <div class="row mt-2">
                             <div class="totall" *ngIf="shippingPackingchargeDetails">
-                                <div class="innerTotal d-flex">
+                                  <div class="innerTotal d-flex">
                                     <div class="subitem">
-                                        <p class="alltotals">Sub Total</p>
-                                        <span>{{shippingPackingchargeDetails.subTotal}}</span>
+                                        <p class="alltotals sub_totallss">Sub Total</p>
+                                        <span id="totallsss">{{shippingPackingchargeDetails.subTotal}}</span>
                                     </div>
                                     <div class="subitem">
-                                        <p class="alltotals">Tax Element</p>
+                                        <p class="alltotals tax_element">Tax Element</p>
                                         <span>{{shippingPackingchargeDetails.taxElement}}</span>
                                     </div>
                                     <div class="subitem">
-                                        <p class="alltotals">Packing Charge</p>
+                                        <p class="alltotals packing_Charges">Packing Charge</p>
                                         <span>{{shippingPackingchargeDetails.packingCharges}}</span>
                                     </div>
                                     <div class="subitem">
-                                        <p class="alltotals">Shipping Charge</p>
-                                        <span>{{shippingPackingchargeDetails.shippingCharges}}</span>
+                                        <p class="alltotals shipping_charges">Shipping Charge</p>
+                                        <span id="Shippinggg">{{shippingPackingchargeDetails.shippingCharges}}</span>
                                     </div>
-                                    <div class="subitem">
-                                        <p class="alltotals">Total</p>
-                                        <span>{{shippingPackingchargeDetails.total}}</span>
+                                    <div class="subitem total_total">
+                                        <p class="alltotals totaltotal ">Total</p>
+                                        <span id="totallsss">{{shippingPackingchargeDetails.total}}</span>
                                     </div>
-                                </div>
+                                </div> 
                             </div>
                         </div>
                     </div>
@@ -612,7 +612,7 @@
                                     <div class="col-md-3">
                                         <div class="input-icons ">
                                             <form [formGroup]="categoryForm" class="dropDown-field">
-                                                <ng-multiselect-dropdown class="catty" name="city"
+                                                <ng-multiselect-dropdown class="catty select_category" name="city"
                                                     [placeholder]="'Category'" formControlName="categoryy"
                                                     [disabled]="disabled" [settings]="dropdownSettingscat"
                                                     [data]="catagoryData" (onSelect)="onItemSelect($event)"
@@ -637,7 +637,7 @@
                                     <div class="col-md-3">
                                         <div class="input-icons ">
                                             <form [formGroup]="subcategoryForm" class="dropDown-field">
-                                                <ng-multiselect-dropdown class="subcatty" name="subCategory"
+                                                <ng-multiselect-dropdown class="subcatty sub_category" name="subCategory"
                                                     [placeholder]="''" formControlName="subCategory"
                                                     [disabled]="disabled" [settings]="dropdownSettingssubcat"
                                                     [data]="sub_category" (onSelect)="onSubCategorySelect($event)"
@@ -665,7 +665,7 @@
                                     <div class="col-md-3">
                                         <div class="input-icons ">
                                             <form [formGroup]="type" class="dropDown-field">
-                                                <ng-multiselect-dropdown class="stts" name="type" [placeholder]="'Type'"
+                                                <ng-multiselect-dropdown class="stts stts_typeselected" name="type" [placeholder]="'Type'"
                                                     formControlName="type" [disabled]="disabled"
                                                     [settings]="dropdownSettingstypeid" [data]="typeI"
                                                     (onSelect)="onTypeSelect($event)"
@@ -693,7 +693,7 @@
                                     <div class="col-md-3">
                                         <div class="input-icons ">
                                             <form [formGroup]="myFormsIdentifier" class="dropDown-field">
-                                                <ng-multiselect-dropdown class="identifier" [placeholder]="'Identifier'"
+                                                <ng-multiselect-dropdown class="identifier identi_fier" [placeholder]="'Identifier'"
                                                     formControlName="identifiers"
                                                     [settings]="dropdownSettingsmaterialid" [data]="materialIdentifier"
                                                     (onSelect)="onMaterialIdentifierSelect($event)"
@@ -708,12 +708,12 @@
                                                         class="selected-placeholder">
                                                         {{myFormsIdentifier.get('identifiers').value.length}}
                                                         identifiers
-                                                        selected </span>
+                                                         </span>
                                                     <span *ngIf="myFormsIdentifier.get('identifiers').value.length > 1"
                                                         class="selected-placeholder">
                                                         {{myFormsIdentifier.get('identifiers').value.length}}
                                                         identifier(s)
-                                                        selected </span>
+                                                         </span>
 
                                                 </div>
                                             </form>
@@ -796,7 +796,7 @@
                                     <tr class="bottom-table">
                                         <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
                                             quantity entered)</td>     
-                                        <td class="btm-total " >{{quantityadd ?? 0}}</td>
+                                        <td class="btm-total" >{{quantityadd ?? 0}}</td>
                                         <td class="btm-total">{{price ?? 0}}</td>
                                     </tr>
                                 </tfoot>

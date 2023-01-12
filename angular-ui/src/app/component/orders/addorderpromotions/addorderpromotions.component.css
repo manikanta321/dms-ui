@@ -1,3 +1,100 @@
+
+::ng-deep .select_category .dropdown-btn span .ng-star-inserted 
+{
+  position: absolute !important;
+  right: -26px !important;
+  bottom: 0px;
+  top: 50px !important;
+ width: 39px;
+ border: 1px solid #337ab7;
+ background: #00187A !important;
+ font-size: 12px;
+ box-shadow: 1px 1px #959595;
+ color: #fff;
+ height: 20px;
+ border-radius: 15px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: -1px;
+
+  padding-left: 5px;
+}
+   
+     
+     
+::ng-deep .sub_category .dropdown-btn span .ng-star-inserted 
+{
+  position: absolute !important;
+  right: -27px !important;
+  bottom: 0px;
+  top: 50px !important;
+ width: 39px;
+ border: 1px solid #337ab7;
+ background: #0C5A3E !important;
+ font-size: 12px;
+ box-shadow: 1px 1px #959595;
+ color: #fff;
+ height: 20px;
+ border-radius: 15px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: -1px;
+
+  padding-left: 5px;
+}
+
+
+
+::ng-deep .stts_typeselected .dropdown-btn span .ng-star-inserted 
+{
+  position: absolute !important;
+  right: 7px !important;
+  bottom: 0px;
+  top: 50px !important;
+ width: 39px;
+ border: 1px solid #337ab7;
+ background: #C32F27 !important;
+ font-size: 12px;
+ box-shadow: 1px 1px #959595;
+ color: #fff;
+ height: 20px;
+ border-radius: 15px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: -1px;
+
+  padding-left: 5px;
+}
+  
+
+
+::ng-deep .identi_fier .dropdown-btn span .ng-star-inserted 
+{
+  position: absolute !important;
+  right: -16px !important;
+  bottom: 0px;
+  top: 50px !important;
+ width: 39px;
+ border: 1px solid #337ab7;
+ background: #2F8F9E !important;
+ font-size: 12px;
+ box-shadow: 1px 1px #959595;
+ color: #fff;
+ height: 20px;
+ border-radius: 15px;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: -1px;
+
+  padding-left: 5px;
+}
+  
+
+
+
+
+
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -26,11 +123,13 @@ input[type=number] {
   bottom: 2px;
 }
 .delivery1 {
-  font-weight: bold;
+  font-weight: 600;  
+  font-family: 'Gilroy';
 }
 
 .boldR {
-  font-weight: bold;
+    font-weight: 600;  
+   font-family: 'Gilroy';
 }
 
 .form-control::placeholder {
@@ -1234,6 +1333,10 @@ left: 456px;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 8px;
+  font-size: 13px;
+  font-weight: 'Gilroy';
+  color: #686E74BF;
+
 }
 
 .promoItem {
@@ -1246,7 +1349,7 @@ left: 456px;
 }
 
 .totall {
-  width: 750px;
+  width: 662px;
   height: 53px;
   background: #FFFFFF;
   border: 0.5px solid #000000;
@@ -1258,7 +1361,7 @@ left: 456px;
 
 .subitem {
   font-size: 13px;
-  width: 108px;
+  width: 132px;
 }
 
 .innerTotal {
@@ -1267,9 +1370,31 @@ left: 456px;
 
 .alltotals {
   margin-bottom: 1px;
+} 
+.total_total
+{
+  
+width: 129px;
+height: 52px;
+margin-right: -6px;
+
+background: #686E74;
+border-radius: 0px 21.2px 21.2px 0px;
+margin-top: -5px;
+}
+.totaltotal
+{
+  margin-top: 4px;
+  margin-left: 12px;
+
+}
+#totallsss
+{
+  margin-left: 12px;
 }
 
-/* non promotions */
+
+
 .overlay {
   position: fixed;
   top: 0;

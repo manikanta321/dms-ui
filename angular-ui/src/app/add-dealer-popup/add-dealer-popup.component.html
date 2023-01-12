@@ -334,11 +334,12 @@
                                 <div class="row">
                                     <div class="col-5">
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-3">
                                         <button (click)="saveDealerData()" 
                                             class="btn btn-primary btn-block submitbtn save-btn" [disabled]="!addAddressDetailsForm.valid">Next</button>
+                                            <span *ngIf="!addAddressDetailsForm.valid">*Please fill required fields</span>
                                     </div>
-                                    <div class="col-5">
+                                    <div class="col-4">
                                     </div>
                                 </div>
                             </div>
@@ -406,12 +407,13 @@
                                     <div class="row">
                                         <div class="col-1"></div>
                                         <div class="col-5">
-                                            <button class="btn btn-primary btn-block submitbtn save-btn"
+                                            <button [disabled]="!addAddressDetailsForm.valid" class="btn btn-primary btn-block submitbtn save-btn"
                                                 *ngIf="dealerAction!=='Edit'"
                                                 (click)="saveGeographiesList()">Save</button>
                                             <button *ngIf="dealerAction == 'Edit'"
                                                 class="btn btn-primary btn-block submitbtn save-btn"
                                                 (click)="EditGeographiesList()">Save</button>
+                                                <span *ngIf="!addAddressDetailsForm.valid">*Please fill required fields</span>
                                         </div>
                                         <div class="col-5">
                                             <button class="btn btn-primary btn-block submitbtn cancel-btn"

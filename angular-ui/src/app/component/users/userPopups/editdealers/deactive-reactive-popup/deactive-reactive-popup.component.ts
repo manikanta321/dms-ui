@@ -34,6 +34,7 @@ export class DeactiveReactivePopupComponent implements OnInit {
 
 
   dectrv(){
+    sessionStorage.setItem("Response",'')
    this.dialog.open(DealerDeactiveComponent ,{panelClass: 'deactiveSuccessPop'});
    this.dialogRef.close();
    let data={

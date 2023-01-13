@@ -8,14 +8,22 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class DealerDeactiveComponent implements OnInit {
   customerName:any
+  responseResult:boolean =false;
+  responseData:any;
   constructor(private dialogRef: MatDialogRef<any>,) { }
 
 
 
 
   ngOnInit(): void {
-
-    this.customerName=localStorage.getItem("employeeNameOfDealer");
+    this.responseData =  sessionStorage.getItem("Response");
+    if(this.responseData != ''){
+     this.responseResult =true;
+    }
+    else {
+     this.responseResult =false;
+     this.customerName=localStorage.getItem("employeeNameOfDealer");
+    }
 
 
     setTimeout(() => {

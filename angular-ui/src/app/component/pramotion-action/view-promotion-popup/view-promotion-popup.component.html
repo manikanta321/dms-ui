@@ -1,0 +1,640 @@
+<!-- <p>view-promotion-popup works!</p> -->
+<div class="font">
+    <div class=" main">
+        <div class="container view-dealer-promotion-cls">
+            <div class="addPromotion">
+                <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+            </div>
+
+            <div class="head-t">
+                <h3 class="viewPromo">View: <b class="viewPromohead">Add Promotions</b></h3>
+                <img class="print-img-viewpromo" src="../../../assets/material/print-img.svg" alt="">
+                <br><br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label class="promoInfoHeading">Promotion Information</label>
+                    </div>
+                </div>
+                <div class="row promoSection">
+                    <div class="col-lg-4">
+                        <label class="view-promoName">Promotion Name <span class="mandatoryField">*</span></label><br>
+                        <label class="input-label-view">Diwali Bonanza Sale</label>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="view-promoName">Start Date<span class="mandatoryField">*</span></label><br>
+                        <label class="input-label-view">12-Dec-2022</label>
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="../../../../assets/img/dummy-image.png">
+                    </div>
+                </div>
+                <div class="row promoSectiontwo">
+                    <div class="col-lg-4">
+                        <label class="view-promoName">Promotion Type <span class="mandatoryField">*</span></label><br>
+                        <label class="input-label-view">Buy (A+B..) get(X+Y..)</label>
+                    </div>
+                    <div class="col-lg-4">
+                        <label class="view-promoName">End Date<span class="mandatoryField">*</span></label><br>
+                        <label class="input-label-view">20-Dec-2022</label>
+                    </div>
+
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h5 class="viewpromoItem"> Items in Promotions </h5>
+                    </div>
+                </div>
+                <!--first buy group section-->
+                <!-- <div *ngIf="buyab"> -->
+                <div class="row">
+                    <div class="col-lg-6 BuyGroup">
+                        <div class="buy1">
+                            <div class="row">
+                                <div class="col-10 buyGrp-h">
+                                    <h5 class="item-header"><b>Buy </b>group 1</h5>
+                                </div>
+                                <div class="col-2 plsImg">
+                                    <img src="assets/img/plus-disabled.png" class="plus-image" alt="plus-btn">
+                                </div>
+                                <!-- <div class="col-2 plsAdd">
+                                    <img src="assets/img/minus.png" class="plus-image" alt="plus-btn">
+                                </div> -->
+                            </div>
+                            <div class="row">
+                                <div class="productlevel col-12">
+                                    <label>Item Level<span class="astr">*</span></label><br>
+                                    <label class="itemsProductOne">Product</label>
+                                </div>
+                            </div>
+                            <div class="row itemSelectedSection">
+                                <div class="col-10">
+                                    <label>Items<span class="astr">*</span></label>
+                                    <mat-card class="list-item-view">
+
+                                        <mat-card-content class="item-in-box-view">
+                                            <ul>
+                                                <li aria-placeholder="Items">
+                                                    <mat-checkbox class="view-checkbox font" [checked]="true">
+                                                    </mat-checkbox>
+                                                    Little hearts classic edition 100 gm (PO01254)
+                                                </li>
+                                                <li aria-placeholder="Items">
+                                                    <mat-checkbox class="view-checkbox font" [checked]="true">
+                                                    </mat-checkbox>
+                                                    Little hearts classic edition 100 gm (PO01254)
+                                                </li>
+                                                <li aria-placeholder="Items">
+                                                    <mat-checkbox class="view-checkbox font" [checked]="true">
+                                                    </mat-checkbox>
+                                                    Little hearts classic edition 100 gm (PO01254)
+                                                </li>
+                                                <li aria-placeholder="Items">
+                                                    <mat-checkbox class="view-checkbox font" [checked]="true">
+                                                    </mat-checkbox>
+                                                    Little hearts classic edition 100 gm (PO01254)
+                                                </li>
+                                            </ul>
+                                        </mat-card-content>
+                                    </mat-card>
+                                </div>
+                                <div class="col-2 qtyalign">
+                                    <label>Qty<span class="astr">*</span></label>
+
+                                    <input type="number" placeholder="1" class="qty-box" id=qty name="qty" required>
+                                    <label>MOQ<span class="astr">*</span></label>
+                                    <input type="number" placeholder="1" class="mty-box" id=moq name="moq" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 GetGroup">
+                        <div class="get1">
+                            <div class="row">
+                                <div class="col-10 buyGrp-h">
+                                    <h5 class="item-header"><b>Get </b>group 1</h5>
+                                </div>
+                                <div class="col-2 plsImg">
+                                    <img src="assets/img/plus-disabled.png" class="plus-image" alt="plus-btn">
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="productlevel col-12">
+                                    <label>Item Level<span class="astr">*</span></label><br>
+                                    <label class="itemsProductOne">Product</label>
+                                </div>
+                            </div>
+                            <div class="row itemSelectedSection">
+                                <div class="col-10">
+                                    <label>Items<span class="astr">*</span></label>
+                                    <mat-card class="list-item-view">
+
+                                        <mat-card-content class="item-in-box-view">
+                                            <ul>
+                                                <li aria-placeholder="Items">
+                                                    <mat-checkbox class="view-checkbox font" [checked]="true">
+                                                    </mat-checkbox>
+                                                    Little hearts classic edition 100 gm (PO01254)
+                                                </li>
+                                                <li aria-placeholder="Items">
+                                                    <mat-checkbox class="view-checkbox font" [checked]="true">
+                                                    </mat-checkbox>
+                                                    Little hearts classic edition 100 gm (PO01254)
+                                                </li>
+                                                <li aria-placeholder="Items">
+                                                    <mat-checkbox class="view-checkbox font" [checked]="true">
+                                                    </mat-checkbox>
+                                                    Little hearts classic edition 100 gm (PO01254)
+                                                </li>
+                                                <li aria-placeholder="Items">
+                                                    <mat-checkbox class="view-checkbox font" [checked]="true">
+                                                    </mat-checkbox>
+                                                    Little hearts classic edition 100 gm (PO01254)
+                                                </li>
+                                            </ul>
+                                        </mat-card-content>
+                                    </mat-card>
+                                </div>
+                                <div class="col-2 qtyalign">
+                                    <label>Qty<span class="astr">*</span></label>
+                                    <input type="number" placeholder="1" class="qty-box" id=qty name="qty" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--second buy group section-->
+                <div class="row">
+                    <div class="col-lg-6 BuyGroup">
+                        <div class="buy1">
+                            <div class="row">
+                                <div class="col-10 buyGrp-h">
+                                    <h5 class="item-header"><b>Buy </b>group 2</h5>
+                                </div>
+                                <div class="col-2 plsImg">
+                                    <img src="assets/img/plus-disabled.png" class="plus-image" alt="plus-btn">
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="productlevel col-12">
+                                    <label>Item Level<span class="astr">*</span></label><br>
+                                    <label class="itemsProductOne">Product</label>
+                                </div>
+                            </div>
+                            <div class="row itemSelectedSection">
+                                <div class="col-10">
+                                    <label>Items<span class="astr">*</span></label>
+                                    <mat-card class="list-item-view">
+
+                                        <mat-card-content class="item-in-box-view">
+                                            <ul>
+                                                <li aria-placeholder="Items">
+                                                    <mat-checkbox class="view-checkbox font" [checked]="true">
+                                                    </mat-checkbox>
+                                                    Little hearts classic edition 100 gm (PO01254)
+                                                </li>
+                                                <li aria-placeholder="Items">
+                                                    <mat-checkbox class="view-checkbox font" [checked]="true">
+                                                    </mat-checkbox>
+                                                    Little hearts classic edition 100 gm (PO01254)
+                                                </li>
+                                                <li aria-placeholder="Items">
+                                                    <mat-checkbox class="view-checkbox font" [checked]="true">
+                                                    </mat-checkbox>
+                                                    Little hearts classic edition 100 gm (PO01254)
+                                                </li>
+                                                <li aria-placeholder="Items">
+                                                    <mat-checkbox class="view-checkbox font" [checked]="true">
+                                                    </mat-checkbox>
+                                                    Little hearts classic edition 100 gm (PO01254)
+                                                </li>
+                                            </ul>
+                                        </mat-card-content>
+                                    </mat-card>
+                                </div>
+                                <div class="col-2 qtyalign">
+                                    <label>Qty<span class="astr">*</span></label>
+
+                                    <input type="number" placeholder="1" class="qty-box" id=qty name="qty" required>
+                                    <label>MOQ<span class="astr">*</span></label>
+                                    <input type="number" placeholder="1" class="mty-box" id=moq name="moq" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 GetGroup">
+                        <div class="get1">
+                            <div class="row">
+                                <div class="col-10 buyGrp-h">
+                                    <h5 class="item-header"><b>Get </b>group 2</h5>
+                                </div>
+                                <div class="col-2 plsImg">
+                                    <img src="assets/img/plus-disabled.png" class="plus-image" alt="plus-btn">
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="productlevel col-12">
+                                    <label>Item Level<span class="astr">*</span></label><br>
+                                    <label class="itemsProductOne">Product</label>
+                                </div>
+                            </div>
+                            <div class="row itemSelectedSection">
+                                <div class="col-10">
+                                    <label>Items<span class="astr">*</span></label>
+                                    <mat-card class="list-item-view">
+
+                                        <mat-card-content class="item-in-box-view">
+                                            <ul>
+                                                <li aria-placeholder="Items">
+                                                    <mat-checkbox class="view-checkbox font" [checked]="true">
+                                                    </mat-checkbox>
+                                                    Little hearts classic edition 100 gm (PO01254)
+                                                </li>
+                                                <li aria-placeholder="Items">
+                                                    <mat-checkbox class="view-checkbox font" [checked]="true">
+                                                    </mat-checkbox>
+                                                    Little hearts classic edition 100 gm (PO01254)
+                                                </li>
+                                                <li aria-placeholder="Items">
+                                                    <mat-checkbox class="view-checkbox font" [checked]="true">
+                                                    </mat-checkbox>
+                                                    Little hearts classic edition 100 gm (PO01254)
+                                                </li>
+                                                <li aria-placeholder="Items">
+                                                    <mat-checkbox class="view-checkbox font" [checked]="true">
+                                                    </mat-checkbox>
+                                                    Little hearts classic edition 100 gm (PO01254)
+                                                </li>
+                                            </ul>
+                                        </mat-card-content>
+                                    </mat-card>
+                                </div>
+                                <div class="col-2 qtyalign">
+                                    <label>Qty<span class="astr">*</span></label>
+                                    <input type="number" placeholder="1" class="qty-box" id=qty name="qty" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- </div> -->
+                <!-- <div *ngIf="buysets"> -->
+                <div class="row">
+                    <div class="col-lg-6 BuySets">
+
+                        <div class="set1">
+
+                            <div class="row">
+                                <div class="col-10 buyGrp-h">
+                                    <h5 class="item-header"><b>Buy </b>Sets</h5>
+                                </div>
+                                <div class="col-2 plsImg">
+                                    <img src="assets/img/plus-disabled.png" class="plus-image" alt="plus-btn">
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="buy-set-1">
+                                    <div class="row">
+                                        <div class="col-10 buyGrp-h">
+                                            <h5 class="item-header2"><b>Buy </b>group 1</h5>
+                                        </div>
+                                        <div class="col-2 plsImg">
+                                            <img src="assets/img/plus-disabled.png" class="plus-image" alt="plus-btn">
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="productlevel col-12">
+                                            <label>Item Level<span class="astr">*</span></label>
+                                            <label class="itemsProductThree">Product</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <label>Items<span class="astr">*</span></label>
+                                            <mat-card class="list-item-view">
+                                                <mat-card-content class="item-in-box-view">
+                                                    <ul>
+                                                        <li>
+                                                            <mat-checkbox class="view-checkbox font" [checked]="true">
+
+                                                            </mat-checkbox>
+                                                            Little hearts classic edition 100 gm (PO01254)
+                                                        </li>
+                                                        <li>
+                                                            <mat-checkbox class="view-checkbox font" [checked]="true">
+
+                                                            </mat-checkbox>
+                                                            Little hearts classic edition 100 gm (PO01254)
+                                                        </li>
+                                                        <li>
+                                                            <mat-checkbox class="view-checkbox font" [checked]="true">
+
+                                                            </mat-checkbox>
+                                                            Little hearts classic edition 100 gm (PO01254)
+                                                        </li>
+                                                    </ul>
+                                                </mat-card-content>
+                                            </mat-card>
+                                        </div>
+                                        <div class="col-2 qtyalign">
+                                            <label>Qty<span class="astr">*</span></label>
+                                            <input type="number" class="qty-box" value="" id=qty min="0">
+                                            <label>moq<span class="astr">*</span></label>
+                                            <input type="number" class="mty-box" value="" id=moq name="moq" name="qty1"
+                                                min="0">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- additional buy-g ends -->
+                    </div>
+
+                    <div class="col-lg-6 GetGroup">
+
+                        <div class="set1">
+                            <div class="row">
+                                <div class="col-10 buyGrp-h">
+                                    <h5 class="item-header"><b>Get </b>Sets</h5>
+                                </div>
+                                <div class="col-2 plsImg">
+                                    <img src="assets/img/plus-disabled.png" class="plus-image" alt="plus-btn">
+                                </div>
+                                <h5 class="item-header1"><b>Get </b>group 1</h5>
+                                <div class="row secondPromoDiv">
+                                    <div class="productlevel col-12">
+                                        <label class="itemlevelPromoTwo">Item Level<span class="astr">*</span></label>
+                                        <label class="itemsProductTwo">Product</label>
+
+                                    </div>
+                                </div>
+
+                                <div class="">
+                                    <!-- <div class="getSet1"> -->
+
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <label>Items<span class="astr">*</span></label>
+                                            <mat-card class="list-item-view">
+                                                <mat-card-content class="item-in-box-view">
+                                                    <ul>
+                                                        <li>
+                                                            <mat-checkbox class="view-checkbox font" [checked]="true">
+
+                                                            </mat-checkbox>
+                                                            Little hearts classic edition 100 gm (PO01254)
+                                                        </li>
+                                                        <li>
+                                                            <mat-checkbox class="view-checkbox font" [checked]="true">
+
+                                                            </mat-checkbox>
+                                                            Little hearts classic edition 100 gm (PO01254)
+                                                        </li>
+                                                        <li>
+                                                            <mat-checkbox class="view-checkbox font" [checked]="true">
+
+                                                            </mat-checkbox>
+                                                            Little hearts classic edition 100 gm (PO01254)
+                                                        </li>
+                                                    </ul>
+
+                                                </mat-card-content>
+                                            </mat-card>
+                                        </div>
+                                        <div class="col-2 qtyalign">
+                                            <label>Qty<span class="astr">*</span></label>
+                                            <input type="number" class="qty-box" placeholder="1" id=qty name="qty1"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <!-- </div> -->
+                                </div>
+
+
+
+                            </div>
+                            <!-- additional get-g ends -->
+                        </div>
+
+                    </div>
+                    <!-- </div> -->
+                </div>
+                <!-- <div *ngIf="volumedc"> -->
+                <div class="volume discount">
+                    <div class="row">
+                        <div class="col-12">
+                            <label>Item Level<span class="astr">*</span></label>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 inlineNav">
+                            <label>Items<span class="astr">*</span></label>
+                            <label class="itemsProductfour">Product</label>
+                            <mat-card class="list-item-view">
+                                <mat-card-content class="item-in-box-view">
+
+                                    <ul>
+                                        <li>
+                                            <mat-checkbox class="view-checkbox font" [checked]="true">
+                                            </mat-checkbox>
+                                            Little hearts classic edition 100 gm (PO01254)
+                                        </li>
+                                        <li>
+                                            <mat-checkbox class="view-checkbox font" [checked]="true">
+                                            </mat-checkbox>
+                                            Little hearts classic edition 100 gm (PO01254)
+                                        </li>
+                                        <li>
+                                            <mat-checkbox class="view-checkbox font" [checked]="true">
+                                            </mat-checkbox>
+                                            Little hearts classic edition 100 gm (PO01254)
+                                        </li>
+                                    </ul>
+                                </mat-card-content>
+                            </mat-card>
+                            <br>
+                            <label>Minimum Order Quantity<span class="astr">*</span></label>
+                            <br>
+                            <input class="minimumorderquantity" type="text" id="pValue" name="pValue" required
+                                placeholder="240" disabled>
+                        </div>
+                        <div class="col-lg-6 navItems">
+                            <div class="row">
+                                <div class="col-3">
+                                    <h5 class="labelname">Qty From</h5>
+                                </div>
+                                <div class="col-3">
+                                    <h5 class="labelname">Qty To</h5>
+                                </div>
+                                <div class="col-3">
+                                    <h5 class="labelname">Discount</h5>
+                                </div>
+                                <div class="col-3">
+                                    <mat-icon class="">add_circle</mat-icon>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <input class="qtyOfItems" type="text" required placeholder="100" disabled>
+                                </div>
+                                <div class="col-3">
+                                    <input class="qtyOfItems" type="text" required placeholder="999" disabled>
+
+                                </div>
+                                <div class="col-3">
+                                    <input class="qtyOfItems" type="text" required placeholder="500" disabled>
+
+                                </div>
+                                <div class="col-3">
+                                    <mat-icon class="removeCircle">
+                                        remove_circle</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- </div> -->
+                <!-- <div *ngIf="pricedc"> -->
+                <div class="price discount">
+                    <div class="row">
+                        <div class="col-12">
+                            <label>Item Level<span class="astr">*</span></label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 inlineNav">
+                            <label>Items<span class="astr">*</span></label>
+                            <mat-card class="list-item-view">
+                                <mat-card-content class="item-in-box-view">
+                                    <ul>
+                                        <li>
+                                            <mat-checkbox class="view-checkbox font" [checked]="true">
+                                            </mat-checkbox>
+                                            Little hearts classic edition 100 gm (PO01254)
+                                        </li>
+                                        <li>
+                                            <mat-checkbox class="view-checkbox font" [checked]="true">
+                                            </mat-checkbox>
+                                            Little hearts classic edition 100 gm (PO01254)
+                                        </li>
+                                        <li>
+                                            <mat-checkbox class="view-checkbox font" [checked]="true">
+                                            </mat-checkbox>
+                                            Little hearts classic edition 100 gm (PO01254)
+                                        </li>
+                                    </ul>
+                                </mat-card-content>
+                            </mat-card>
+                            <br>
+                            <label>Minimum Order Quantity<span class="astr">*</span></label>
+                            <br>
+                            <input class="minimumorderquantity" type="text" required placeholder="240" disabled
+                               >
+                        </div>
+                        <div class="col-lg-6 navItems">
+                            <div class="row">
+                                <div class="col-3">
+                                    <h5 class="labelname">Qty From</h5>
+                                </div>
+                                <div class="col-3">
+                                    <h5 class="labelname">Qty To</h5>
+                                </div>
+                                <div class="col-3">
+                                    <h5 class="labelname">Price</h5>
+                                </div>
+                                <div class="col-3">
+                                    <mat-icon class="" >add_circle</mat-icon>
+                                </div>
+                            </div>
+
+                            <div class="row" >
+                                <div class="col-3">
+                                    <input class="qtyOfItems" type="text" id="pValue" required placeholder="100"
+                                       >
+                                </div>
+                                <div class="col-3">
+                                    <input class="qtyOfItems" type="text" id="pValue" name="" placeholder="999" disabled
+                                       >
+
+                                </div>
+                                <div class="col-3">
+                                    <input class="qtyOfItems" type="text" id="pValue" required placeholder="500" disabled
+                                       >
+
+                                </div>
+                                <div class="col-3">
+                                    <mat-icon class="removeCircle" >
+                                        remove_circle</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- </div> -->
+
+                <br>
+                <!--geographies section -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h5 class="viewpromoItem"> Geographies </h5>
+                    </div>
+                </div>
+                <div class="row selectedRowSection">
+                    <div class="col-lg-11 slctd-row">
+                        <div class="row">
+                            <div class="col-lg-9 sltd-span">
+                                <span class="selectedname">Malaysia (3/5) ; India (15/15) ; Singapore (0/6) ; Japan
+                                    (23/23)</span>
+                                <span class="selectedcolor"></span>
+                            </div>
+                            <div class="col-lg-3">
+                                <button class="slctd-geo-btn"> Show
+                                    Geographies</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h5 class="viewpromoItem"> Dealers </h5>
+                    </div>
+                </div>
+                <!--grid-->
+                <div class="grid-table mt-2">
+                    <ag-grid-angular id="gridContainer" class="ag-theme-material" (gridReady)="onGridReady($event)"
+                        [rowHeight]="25" [headerHeight]="48" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef"
+                        [columnTypes]="columnTypes" [rowData]="rowData5" [suppressExcelExport]="true"
+                        [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
+                        (firstDataRendered)="onFirstDataRendered($event)"
+                        (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
+                        (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+                        (bodyScroll)="handleScroll($event)" [rowSelection]="'multiple'"
+                        (rowSelected)="onRowSelect($event)"
+                        (firstDataRendered)="onFirstDataRendered($event)"></ag-grid-angular>
+                </div>
+                <!-- additional remarks -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label> Additional Remarks</label><br>
+                        <input type="text" disabled
+                            placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim "
+                            class="addtnlRemarks">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>

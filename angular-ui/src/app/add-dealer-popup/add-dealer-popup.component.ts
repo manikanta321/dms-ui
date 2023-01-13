@@ -13,6 +13,7 @@ import { Directive, HostListener, Optional, Output, EventEmitter } from '@angula
 import { ConsoleService } from '@ng-select/ng-select/lib/console.service';
 import { StepperSelectionEvent } from '@angular/cdk/stepper';
 import { AddDealerSuccessfulPopupComponent } from './add-dealer-successful-popup/add-dealer-successful-popup.component';
+import { DealerDeactiveComponent } from '../component/users/userPopups/editdealers/dealer-deactive/dealer-deactive.component';
 
 
 //import { ToastrService } from 'ngx-toastr';
@@ -716,8 +717,8 @@ initAddress2(defaultType): FormGroup {
       Code: ['', [Validators.required]],
       website: ['', [Validators.required]],
       Phoneno: ['', [Validators.required]],
-      company_id: ['', [Validators.required]],
-      OtherIdentifier: ['', [Validators.required]],
+      company_id: [''],
+      OtherIdentifier: [''],
       UserName: ['', [Validators.required]],
       EmailId: ['', [Validators.required]],
       Mobile: ['', [Validators.required]],
@@ -803,6 +804,7 @@ initAddress2(defaultType): FormGroup {
 
   saveGeographiesList() {
     localStorage.setItem("updateAddEdit",'add');
+    console.log("SaveDataa",this.addAddressDetailsForm)
     let selectedGeographies = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographySelected;
     selectedGeographies.forEach(element => {
       return this.selectedItems.push(element.geographyId);
@@ -811,8 +813,15 @@ initAddress2(defaultType): FormGroup {
      let data2 = {
       DefalultgeoId: this.selectedItems,
     }
+    if (this.addAddressDetailsForm.status != 'VALID') {
+      sessionStorage.setItem("Response","Please Fill Required fields")
+      this.dialog.open(DealerDeactiveComponent ,{panelClass: 'deactiveSuccessPop'});
+      return;
+    }
     if (selectedGeographies.length == 0) {
-      alert("Please select default geography grid");
+      localStorage.setItem("employeeNameOfDealer",'');
+      sessionStorage.setItem("Response","Please select default geography grid")
+      this.dialog.open(DealerDeactiveComponent ,{panelClass: 'deactiveSuccessPop'});
       return;
     }
     console.log(selectedGeographies);
@@ -832,9 +841,13 @@ initAddress2(defaultType): FormGroup {
     console.log(data);
 
     this.calssification.addDealerData(data).subscribe((res) => {
-
+      if (res.response.result != "Succesfully added") {
+        localStorage.setItem("employeeNameOfDealer",'');
+        sessionStorage.setItem("Response",res.response.result)
+        this.dialog.open(DealerDeactiveComponent ,{panelClass: 'deactiveSuccessPop'});
+      }
       if (res.response.result == "Succesfully added") {
-       
+        sessionStorage.setItem("Response",'')
         this.dialogRef.close();
         this.dialog.open(AddDealerSuccessfulPopupComponent, {panelClass: 'activeSuccessPop'})
         this.sharedService.filter('Register click')
@@ -853,6 +866,7 @@ initAddress2(defaultType): FormGroup {
 
   EditGeographiesList() {
     localStorage.setItem("updateAddEdit",'edit');
+    sessionStorage.setItem("Response",'')
     let selectedGeographies = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographySelected;
     selectedGeographies.forEach(element => {
 

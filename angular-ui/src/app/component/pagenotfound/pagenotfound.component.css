@@ -9,7 +9,8 @@ mat-sidenav {
 .content {
     /* height: calc(100vh - 98px); */
     height: 100vh;
-    border-radius: 10px;
+    border-top-left-radius:75px;
+    border-bottom-left-radius:100px;
     padding: 10px;
     background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);
 }
@@ -18,3 +19,97 @@ mat-sidenav-container {
     /* height: calc(100vh - 65px); */
     height: 100vh;
 }
+
+.heading_oops
+{
+    
+
+left: 70px;
+margin-top: 167px;
+
+
+font-size: 80px;
+
+letter-spacing: -0.015em;
+
+color: #000000;
+}
+.smw
+{
+
+
+
+font-size: 22px;
+
+margin-top: 18px;
+margin-left: 28px;
+
+
+
+
+
+
+
+color: #000000;
+}
+.subheading
+{
+    margin-left: 10px;
+}
+
+
+.BacktoDashboard {
+    width: 200px;
+    height: 35px;
+    font-family: 'Gilroy-SemiBold';
+    font-size: 15px;
+    line-height: 18px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    background: #000000;
+    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    border:  1px solid black;
+    margin-top: 75px;
+    
+    
+  }
+  .pnf
+  {
+    margin-left: 49px;
+    
+
+  }
+  .img_img
+  {
+    width: 650px;
+     float: right;
+     margin-top: -325px;
+
+  }
+  .cure
+  {
+    margin: auto;
+    width: 55%;
+    height: 12px;
+    margin-top: -5px;
+  }
+  .react
+  {
+     margin-left: -65px;
+    margin-top: 33px; 
+
+  }
+
+    
+  .z-index
+  {
+
+    position: absolute;
+    left: 66px;
+    
+    z-index: 1;
+  }
+
+ 

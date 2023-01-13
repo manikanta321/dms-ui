@@ -267,7 +267,7 @@ border-radius: 10px; */
 
 }
 
-::ng-deep.addPromotionsHeader .mat-step-header{
+::ng-deep.addPromotionsHeader .mat-step-header {
   width: 133px;
 }
 
@@ -903,4 +903,19 @@ li {
 
 .placeholderText {
   border: none;
+}
+
+.input-error {
+  border: 1px solid red !important;
+  outline: red;
+}
+
+.buy1,
+.get1,.buy-set-1, 
+.set1 {
+  margin-top: 15px;
+}
+
+.set1 > .row{
+  margin-bottom: 5px;
 }

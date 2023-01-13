@@ -31,6 +31,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     next: false
   }
   // showdata = false;
+  isDataValidToSubmit: boolean = false;
 
   promoName: string = '';
   errorMsg: any;
@@ -43,7 +44,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       productSubGselectedRows: [],
       MaxVolume: '',
       GroupId: '',
-      MOQ: ''
+      MOQ: '',
+      isDataValid: true
     }
   ];
 
@@ -57,7 +59,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     productSubGselectedRows: [],
     MaxVolume: '',
     GroupId: '',
-
+    isDataValid: true
   }];
 
 
@@ -70,7 +72,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       MaxVolume: '',
       Set: 1,
       MOQ: '',
-      productselectedRows: []
+      productselectedRows: [],
+      isDataValid: true
     },
     ]
 
@@ -80,13 +83,16 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   packingCharges: any = [{
     MinVolume: '',
     MaxVolume: '',
-    DiscountPercentage: ''
+    DiscountPercentage: '',
+    isDataValid: true
   }]
+
 
   packingVolume: any = [{
     MinVolume: '',
     MaxVolume: '',
-    MaxPrice: ''
+    MaxPrice: '',
+    isDataValid: true
   }]
 
 
@@ -98,7 +104,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       StockItemId: [],
       MaxVolume: '',
       Set: 1,
-      productselectedRows: []
+      productselectedRows: [],
+      isDataValid: true
     },
     ]
 
@@ -385,7 +392,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
         this.endDate.setValue(res.response.endDate)
         this.selectedEndDate = new Date(res.response.endDate).getFullYear() + '/' + (new Date(res.response.endDate).getMonth() + 1) + '/' + new Date(res.response.endDate).getDate();
-// alert(this.selectedEndDate)
+        // alert(this.selectedEndDate)
         this.promoName = res.response.promotionName;
         this.selectedPromo = res.response.promotionTypesId;
         // alert(this.selectedPromo)
@@ -393,7 +400,16 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         this.base64textString = res.response.imageurl;
         this.startDate.setValue(res.response.startDate);
 
+        this.Remarks = res.response.remarks;
+        this.EntityInstanceId = [];
+        this.selectedDealers = res.response.selectedDealers
 
+        this.selectedDealers.forEach(element => {
+          this.EntityInstanceId.push(element.dealerId)
+        });
+
+        console.log('this.addbuyset', this.addbuyset);
+        this.addpromotionGeoTable();
 
         if (res.response.promotionTypesName == 'Buy (A+B..) get (X+Y..)') {
           this.productPromotionsId = res.response.productPromotionsId
@@ -408,11 +424,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           this.pricedc = false;
 
           let mainobjbuyGroups = res.response.promoDetails.buyGroups;
-          this.selectedDealers = res.response.selectedDealers
-
-          this.selectedDealers.forEach(element => {
-            this.EntityInstanceId.push(element.dealerId)
-          });
+          
 
           mainobjbuyGroups.forEach((element) => {
             let stockItemArraay: any = []
@@ -438,8 +450,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             obj.MOQ = element?.moq
             obj.productPromotionDetailsId = element?.productPromotionDetailsId
             obj.productselectedRows = obj1;
-            obj.StockItemId = stockItemArraay
-
+            obj.StockItemId = stockItemArraay;
+            obj.isDataValid = true;
             console.log('modifiedmainobj', obj)
 
             this.buyGroupPlus.push(obj);
@@ -474,7 +486,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             obj.MOQ = element.moq
             obj.productPromotionDetailsId = element.productPromotionDetailsId
             obj.productselectedRows = obj1;
-            obj.StockItemId = stockItemArraay
+            obj.StockItemId = stockItemArraay;
+            obj.isDataValid = true;
+
 
             console.log('modifiedmainobj', obj)
 
@@ -490,10 +504,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           this.buysets = true;
           this.pricedc = false;
           // this.goForward(this.myStepper);
-          this.selectedDealers = res.response.selectedDealers
-          this.selectedDealers.forEach(element => {
-            this.EntityInstanceId.push(element.dealerId)
-          });
+          // this.selectedDealers = res.response.selectedDealers
+          // this.selectedDealers.forEach(element => {
+          //   this.EntityInstanceId.push(element.dealerId)
+          // });
 
           let mainarray = []
           let promo = res.response.promoDetails.buySets;
@@ -521,6 +535,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
               obj.productselectedRows = obj1;
               obj.StockItemId = stockItemArraay;
               obj.productPromotionDetailsId = element.productPromotionDetailsId;
+              obj.isDataValid = true;
               bugruparray.push({ ...obj })
               console.log('final  bugruparray', bugruparray)
             })
@@ -553,6 +568,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
               obj.productselectedRows = obj1;
               obj.StockItemId = stockItemArraay;
               obj.productPromotionDetailsId = element.productPromotionDetailsId;
+              obj.isDataValid = true;
               bugruparray.push({ ...obj })
               console.log('final  addgetset', bugruparray)
             })
@@ -574,11 +590,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           this.buysets = false;
           this.pricedc = false;
           // this.goForward(this.myStepper);
-          this.selectedDealers = res.response.selectedDealers
+          // this.selectedDealers = res.response.selectedDealers
 
-          this.selectedDealers.forEach(element => {
-            this.EntityInstanceId.push(element.dealerId)
-          });
+          // this.selectedDealers.forEach(element => {
+          //   this.EntityInstanceId.push(element.dealerId)
+          // });
           console.log('this.selectedDealers', this.selectedDealers)
 
           this.minimumorderquantity = res.response.promoDetails.moq;
@@ -593,6 +609,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
               MaxVolume: element.maxVolume,
               DiscountPercentage: element.discountPercentage,
               ProductPromotionDetailsId: element.productPromotionDetailsId,
+              isDataValid:true
             })
           })
 
@@ -629,10 +646,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           this.buysets = false;
           this.pricedc = true;
 
-          this.selectedDealers = res.response.selectedDealers;
-          this.selectedDealers.forEach(element => {
-            this.EntityInstanceId.push(element.dealerId)
-          });
+          // this.selectedDealers = res.response.selectedDealers;
+          // this.selectedDealers.forEach(element => {
+          //   this.EntityInstanceId.push(element.dealerId)
+          // });
           this.minumorderqualityPrice = res.response.promoDetails.moq;
 
           let volume: any = res.response.promoDetails.prices;
@@ -644,6 +661,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
               MaxVolume: element.maxVolume,
               MaxPrice: element.maxPrice,
               productPromotionDetailsId: element.productPromotionDetailsId,
+              isDataValid:true
             })
           })
 
@@ -675,6 +693,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     }
     else {
       this.header = 'Add';
+      console.log('this.addbuyset', this.addbuyset);
+      this.addpromotionGeoTable();
     }
 
 
@@ -687,7 +707,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     //     promoname : new FormControl('', [Validators.required]),
     // });
     this.GetPromotionTypes();
-    this.addimg();
+    // this.addimg();
     // this.promotionType1();
     // this.toppingList3 = [
     //   { CategoryId: 1, CategoryName: 'Buy(A+B..) get(X+Y..)' },
@@ -695,10 +715,136 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     //   { CategoryId: 3, CategoryName: 'Volume Discount' },
     //   { CategoryId: 4, CategoryName: 'Price Discount' },
     // ];
-    console.log('this.addbuyset', this.addbuyset);
-    this.addpromotionGeoTable();
+    // console.log('this.addbuyset', this.addbuyset);
+    // this.addpromotionGeoTable();
 
   }
+
+  isMOQValid = true;
+  isPromotionTypeDataValid = true;
+  isPromotionTypeDataValid2 = true;
+
+
+  moqChange3() {
+    this.isMOQValid = false;
+    let packingCharge = this.packingCharges[0];
+    if ((packingCharge.MinVolume && packingCharge.MaxVolume  && packingCharge.MinVolume <= this.minimumorderquantity && packingCharge.MaxVolume >= this.minimumorderquantity ) && this.VolumeSttockItemId && this.VolumeSttockItemId.length !== 0) {
+      this.isMOQValid = true;
+    }
+  }
+
+  moqChange4() {
+    this.isMOQValid = false;
+    let packingCharge = this.packingVolume[0];
+    if ((packingCharge.MinVolume && packingCharge.MaxVolume  && packingCharge.MinVolume <= this.minumorderqualityPrice && packingCharge.MaxVolume >= this.minumorderqualityPrice) && this.priceStockItemId && this.priceStockItemId.length !== 0) {
+      this.isMOQValid = true;
+    }
+  }
+
+  promotionABSetChange() {
+    this.isPromotionTypeDataValid = true;
+    console.log(this.addbuyset);
+    this.addbuyset.forEach(item => {
+      item.BuyGroups.forEach(element => {
+        element.isDataValid = true;
+        if (element.MaxVolume == '' || element.MOQ == '' || element.MaxVolume > element.MOQ || !element.StockItemId || element.StockItemId.length == 0) {
+          element.isDataValid = false;
+          this.isPromotionTypeDataValid = false;
+        }
+      });
+    });
+  }
+
+  promotionABGetChange(){
+    this.isPromotionTypeDataValid2 = true;
+    this.addgetset.forEach(item => {
+      item.GetGroups.forEach(element => {
+        element.isDataValid = true;
+        if (!element.MaxVolume || !element.StockItemId || element.StockItemId.length == 0) {
+          element.isDataValid = false;
+          this.isPromotionTypeDataValid2 = false;
+        }
+      });
+    });
+  }
+
+  promotionBuyGet1() {
+    this.isPromotionTypeDataValid = true;
+    this.buyGroupPlus.forEach(element => {
+      element.isDataValid = true;
+      console.log(element.MaxVolume, element.MOQ);
+      if (element.MaxVolume == '' || element.MOQ == '' || element.MaxVolume > element.MOQ|| !element.StockItemId || element.StockItemId.length == 0) {
+        element.isDataValid = false;
+        this.isPromotionTypeDataValid = false;
+      }
+    });
+  }
+
+  promotionBuyGet2() {
+    this.isPromotionTypeDataValid2 = true;
+    this.addgetgroup.forEach(element => {
+      element.isDataValid = true;
+
+      if (!element.MaxVolume || !element.StockItemId || element.StockItemId.length == 0) {
+        element.isDataValid = false;
+        this.isPromotionTypeDataValid2 = false;
+      }
+    });
+  }
+
+  PackingPriceChange() {
+    this.isPromotionTypeDataValid = true;
+
+    this.packingVolume.forEach((element, index) => {
+      console.log(element);
+
+      if (element.MinVolume && element.MaxVolume && element.MaxPrice) {
+        element.isDataValid = true;
+        if (Number(element.MinVolume) > Number(element.MaxVolume)) {
+          element.isDataValid = false;
+          this.isPromotionTypeDataValid = false;
+        }
+        else if ((this.packingVolume[index - 1] && element.MinVolume <= this.packingVolume[index - 1].MaxVolume)) {
+          element.isDataValid = false;
+          this.isPromotionTypeDataValid = false;
+        }
+      } else {
+        element.isDataValid = false;
+        this.isPromotionTypeDataValid = false;
+      }
+
+    });
+    this.moqChange4();
+  }
+
+  packingChargeChange() {
+    this.isPromotionTypeDataValid = true;
+
+    this.packingCharges.forEach((element, index) => {
+      console.log(element);
+
+      if ((element.MinVolume && element.MaxVolume && element.DiscountPercentage )) {
+        element.isDataValid = true;
+        if (Number(element.MinVolume) > Number(element.MaxVolume)) {
+          element.isDataValid = false;
+          this.isPromotionTypeDataValid = false;
+        }
+        else if ((this.packingCharges[index - 1] && element.MinVolume <= this.packingCharges[index - 1].MaxVolume) ) {
+          element.isDataValid = false;
+          this.isPromotionTypeDataValid = false;
+        }
+      } else {
+        element.isDataValid = false;
+        this.isPromotionTypeDataValid = false;
+      }
+
+    });
+    this.moqChange3();
+  }
+
+
+
+
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
     params.api.sizeColumnsToFit();
@@ -779,6 +925,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         MaxVolume: this.buyGroupPlus.qtyValue,
         GroupId: this.buyGroupPlus.length == 0 || '' || undefined ? 0 : this.buyGroupPlus.length,
         MOQ: this.buyGroupPlus.moqValue,
+        isDataValid: true,
       });
     console.log('this.buyGroupPlus.length', this.buyGroupPlus.length);
   }
@@ -793,6 +940,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       productSubGselectedRows: [],
       MaxVolume: '',
       GroupId: i == '' ? 0 : i,
+      isDataValid: true
     });
   }
 
@@ -801,12 +949,13 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   // }
 
   removebuyGroup(u: any) {
-    const index = this.buyGroupPlus.findIndex((itemss) => itemss.id === u);
-    this.buyGroupPlus.splice(index, 1);
+    // const index = this.buyGroupPlus.findIndex((itemss) => itemss.id === u);
+    this.buyGroupPlus.splice(u, 1);
+    this.promotionBuyGet1();
   }
   removegetGroup(u: any) {
-    const index = this.addgetgroup.findIndex((itemss) => itemss.id === u);
-    this.addgetgroup.splice(index, 1);
+    this.addgetgroup.splice(u, 1);
+    this.promotionBuyGet2();
   }
   addbuyAB(i) {
     this.addbuyset.push({
@@ -816,7 +965,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         MaxVolume: '',
         Set: 1,
         MOQ: '',
-        productselectedRows: []
+        productselectedRows: [],
+        isDataValid: true
       },
       ]
     })
@@ -834,7 +984,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       Set: this.addbuyset[i].BuyGroups.length + 1,
       MOQ: '',
       productselectedRows: [],
-
+      isDataValid: true
     })
     console.log('this.addbuyset', this.addbuyset)
   }
@@ -843,12 +993,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   addsubGetbuy(i, j) {
     console.log('this.addbuyset[i]', this.addbuyset[i])
     this.addgetset[i].GetGroups.push({
-
       StockItemId: [],
       MaxVolume: '',
       Set: this.addgetset[i].GetGroups.length + 1,
       productselectedRows: [],
-
+      isDataValid: true
     })
     console.log('this.addbuyset', this.addbuyset)
   }
@@ -861,32 +1010,36 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         StockItemId: [],
         MaxVolume: '',
         Set: 1,
-        productselectedRows: []
+        productselectedRows: [],
+        isDataValid: true
       },
       ]
     })
   }
 
-  removeGetGroup(u: any) {
-    const index = this.addgetset[u].GetGroups.findIndex((itemss) => itemss.id === u);
-    this.addgetset[u].GetGroups.splice(index, 1);
-    console.log('remv', index)
+  removeGetGroup(i: any, u: any) {
+    // const index = this.addgetset[u].GetGroups.findIndex((itemss) => itemss.id === u);
+    this.addgetset[i].GetGroups.splice(u, 1);
+    this.promotionABGetChange();
+    // console.log('remv', index)
   }
 
-  removebuyGroup1(u: any) {
-    const index = this.addbuyset[u].BuyGroups.findIndex((itemss) => itemss.id === u);
-    this.addbuyset[u].BuyGroups.splice(index, 1);
-    console.log('remv', index)
+  removebuyGroup1(i: any, u: any) {
+    // const index = this.addbuyset[u].BuyGroups.findIndex((itemss) => itemss.id === u);
+    this.addbuyset[i].BuyGroups.splice(u, 1);
+    this.promotionABSetChange();
   }
 
   removeaddbuyAB(u: any) {
-    const index = this.addbuyset.findIndex((setitem) => setitem.id === u);
-    this.addbuyset.splice(index, 1);
+    // const index = this.addbuyset.findIndex((setitem) => setitem.id === u);
+    this.addbuyset.splice(u, 1);
+    this.promotionABSetChange();
   }
 
   removeaddgetAB(u: any) {
-    const index = this.addgetset.findIndex((gset) => gset.id === u);
-    this.addgetset.splice(index, 1);
+    // const index = this.addgetset.findIndex((gset) => gset.id === u);
+    this.addgetset.splice(u, 1);
+    this.promotionABGetChange();
   }
   ngAfterViewInit() {
     this.totalStepsCount = this.myStepper._steps.length;
@@ -931,18 +1084,23 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     this.addCountryButton = true;
   }
   removesub(uId: number) {
-    const index = this.packingCharges.findIndex((address) => address.id === uId);
-    this.packingCharges.splice(index, 1);
+    // const index = this.packingCharges.findIndex((address) => address.id === uId);
+    this.packingCharges.splice(uId, 1);
+    this.packingChargeChange();
+    this.moqChange3();
   }
   removesubOfPrice(uId: number) {
-    const index = this.packingVolume.findIndex((address) => address.id === uId);
-    this.packingVolume.splice(index, 1);
+    // const index = this.packingVolume.findIndex((address) => address.id === uId);
+    this.packingVolume.splice(uId, 1);
+    this.PackingPriceChange();
+    this.moqChange4();
   }
   addFields() {
     this.packingCharges.push({
       MinVolume: '',
       MaxVolume: '',
-      DiscountPercentage: ''
+      DiscountPercentage: '',
+      isDataValid: true
     });
 
     console.log('this.packingCharges', this.packingCharges)
@@ -952,7 +1110,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     this.packingVolume.push({
       MinVolume: '',
       MaxVolume: '',
-      MaxPrice: ''
+      MaxPrice: '',
+      isDataValid: true
     });
 
     console.log('this.packingCharges', this.packingCharges)
@@ -992,6 +1151,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
 
         }
+
+        this.promotionBuyGet1();
 
       }
       //  let localdata = res.response;
@@ -1036,7 +1197,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           //  this.buyGroupPlus[index].moqValue = this.qtyValue.map(x => x.qtyValue);
           console.log('this.addbuyset', this.addbuyset)
         }
-
+        this.promotionABSetChange();
 
       }
 
@@ -1072,6 +1233,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
 
         }
+        this.promotionABGetChange();
       }
 
       //  let localdata = res.response;
@@ -1117,6 +1279,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
 
         }
+        this.promotionBuyGet2();
       }
 
       //  let localdata = res.response;
@@ -1146,6 +1309,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         let jointarray = productselectedRows
         this.VolumeSttockItemId = jointarray;
         console.log('productselectedRows', this.productselectedRows)
+        this.moqChange3();
       }
 
     })
@@ -1170,7 +1334,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         let productselectedRows = this.productselectedRows.map(x => x.stockItemId);
         let jointarray = productselectedRows
         this.priceStockItemId = jointarray;
-        console.log('productselectedRows', this.productselectedRows)
+        // console.log('productselectedRows', this.productselectedRows)
+        this.moqChange4();
       }
 
     })
@@ -1337,7 +1502,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     const selectedRows = this.gridApi.getSelectedRows();
     console.log(selectedRows);
     let customerId = selectedRows.map(x => x.customerId);
-    this.EntityInstanceId = customerId
+    this.EntityInstanceId = customerId;
+    this.selectedDealers = this.EntityInstanceId.map(x => {
+      return {dealerId : x}
+    });
     //  const result = selectedRows.map((data : {customerId:any}) =>{
     //   return {custmId: data.customerId}
     //  })
@@ -1382,11 +1550,15 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     console.log('addpro', [this.qtyValue, this.moqValue]);
   }
 
+  remarksChange(){
+    console.log(this.Remarks);
+  }
 
-  AddPromosaveAndSubmit() {
+  AddPromosaveAndSubmit(type) {
     // alert(this.selectedPromo)
-    localStorage.setItem("updatePromotionPopup",'add');
+    localStorage.setItem("updatePromotionPopup", 'add');
     this.loggedUserId = localStorage.getItem('logInId')
+    if (!this.checkValidation(this.selectedPromo)) return;
 
     if (this.selectedPromo == 1) {
       console.log('added items', this.buyGroupPlus)
@@ -1419,12 +1591,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         BuyGroups: this.buyGroupPlus,
         GetGroups: this.addgetgroup,
         EntityInstanceId: this.EntityInstanceId,
-        Status: "Submit",
-        Remarks: this.Remarks
+        Status: type,
+        Remarks: this.Remarks ?? ''
 
       }
 
-
+      
       this.promotionTypes.firstPromotion(obj).subscribe((res) => {
         console.log(res.response)
 
@@ -1505,21 +1677,22 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         BuySets: this.addbuyset,
         GetSets: this.addgetset,
         EntityInstanceId: this.EntityInstanceId,
-        Status: "Submit",
-        Remarks: this.Remarks
+        Status: type,
+        Remarks: this.Remarks ?? ''
       }
       console.log('object to send opis', obj3)
       // let BuySets=[{
       //   BuyGroups:obj
       // }]
+      
+      
+
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
           alert('Added Succesfully')
           this.sharedService.filter('Register click')
           this.dialogRef.close();
-         
-
         }
         else {
           // alert(res.response.result);
@@ -1545,11 +1718,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         StockItemId: this.VolumeSttockItemId,
         Volume: this.packingCharges,
         EntityInstanceId: this.EntityInstanceId,
-        Status: "Submit",
-        Remarks: this.Remarks
+        Status: type,
+        Remarks: this.Remarks ?? ''
 
       }
 
+      
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
@@ -1582,12 +1756,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         StockItemId: this.priceStockItemId,
         Price: this.packingVolume,
         EntityInstanceId: this.EntityInstanceId,
-        Status: "Submit",
-        Remarks: this.Remarks
+        Status: type,
+        Remarks: this.Remarks ?? ''
 
 
       }
-
+      
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
@@ -1612,226 +1786,55 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
 
 
-  AddPromosaveAndSubmitDraft() {
-    // alert(this.selectedPromo)
-    localStorage.setItem("updateSaveDraft",'add');
+  checkValidation(type) {
 
-    this.loggedUserId = localStorage.getItem('logInId')
+    let isDataValid = true;
+
+    if(!this.EntityInstanceId || this.EntityInstanceId.length == 0){
+      isDataValid = false;
+    }
+
     
-
-    if (this.selectedPromo == 1) {
-      console.log('added items', this.buyGroupPlus)
-      console.log('addgetgroup', this.addgetgroup)
-
-      this.buyGroupPlus.forEach(element => {
-        delete element.productselectedRows;
-        delete element.productScselectedRows;
-        delete element.pGselectedRows;
-        delete element.productSubGselectedRows;
-      })
-
-      this.addgetgroup.forEach(element => {
-        delete element.productselectedRows;
-        delete element.productScselectedRows;
-        delete element.pGselectedRows;
-        delete element.productSubGselectedRows;
-      })
-
-
-
-      let obj: any = {
-
-        PromotionName: this.promoName,
-        PromotionTypesId: this.selectedPromo,
-        StartDate: this.selectedStartDate,
-        EndDate: this.selectedEndDate,
-        DoneById: this.loggedUserId,
-        Imageurl: this.base64textString,
-        BuyGroups: this.buyGroupPlus,
-        GetGroups: this.addgetgroup,
-        EntityInstanceId: this.EntityInstanceId,
-        Status: "Draft",
-        Remarks: this.Remarks
-
-      }
-
-
-      this.promotionTypes.firstPromotion(obj).subscribe((res) => {
-        console.log(res.response)
-
-        if (res.response.result == 'Added Succesfully') {
-          // alert('Added Succesfully')
-
-          this.dialogRef.close();
-          this.sharedService.filter('Register click')
-        }
-        else {
-          this.sharedService.filter('Register click')
-          this.dialog.open(AddPromotionSuccessfulPopupComponent, { panelClass: 'activeSuccessPop' })
-          this.dialogRef.close();
-          // alert(res.response.result);
-        }
-      })
-
+    if (type == 3) {
+      this.isPromotionTypeDataValid2 = true;
+      this.packingChargeChange();
     }
 
-    if (this.selectedPromo == 2) {
-
-      console.log('addbuyset', this.addbuyset)
-      console.log('addGetset', this.addgetset)
-      let obj: any = [];
-      let obj1: any = [];
-
-
-      for (let i = 0; i < this.addbuyset.length; i++) {
-        this.addbuyset[i].BuyGroups.forEach(element => {
-          delete element.productselectedRows;
-          obj.push(element)
-          console.log('finalobject', obj)
-
-
-        })
-
-      }
-
-
-      for (let i = 0; i < this.addgetset.length; i++) {
-        this.addgetset[i].GetGroups.forEach(element => {
-          delete element.productselectedRows;
-          obj1.push(element)
-          console.log('finalobject1', obj1)
-
-
-        })
-
-      }
-
-
-      let BuyGroups: any = []
-      let GetGroups: any = []
-      BuyGroups.push(obj);
-      GetGroups.push(obj1);
-
-      let mainobj: any = {
-        BuyGroups: obj,
-      }
-      let GetSets: any = {
-        GetGroups: obj1
-      }
-      console.log('mainobj', mainobj)
-
-      let obj3: any = {
-
-        PromotionName: this.promoName,
-        PromotionTypesId: this.selectedPromo,
-        StartDate: this.selectedStartDate,
-        EndDate: this.selectedEndDate,
-        DoneById: this.loggedUserId,
-        Imageurl: this.base64textString,
-        BuySets: [mainobj],
-        GetSets: [GetSets],
-        EntityInstanceId: this.EntityInstanceId,
-        Status: "Draft",
-        Remarks: this.Remarks
-      }
-      console.log('object to send opis', obj3)
-      // let BuySets=[{
-      //   BuyGroups:obj
-      // }]
-      this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
-        console.log(res.response)
-        if (res.response.result == 'Added Succesfully') {
-          alert('Added Succesfully')
-          this.sharedService.filter('Register click')
-
-          this.dialogRef.close();
-        }
-        else {
-          this.sharedService.filter('Register click')
-          alert(res.response.result);
-          this.sharedService.filter('Register click')
-
-        }
-      })
-
-
+    if (type == 4) {
+      this.isPromotionTypeDataValid2 = true;
+      this.PackingPriceChange();
     }
 
-    if (this.selectedPromo == 3) {
-      console.log('VolumeSttockItemId', this.VolumeSttockItemId)
-      let obj3: any = {
-        PromotionName: this.promoName,
-        PromotionTypesId: this.selectedPromo,
-        StartDate: this.selectedStartDate,
-        EndDate: this.selectedEndDate,
-        DoneById: this.loggedUserId,
-        Imageurl: this.base64textString,
-        MOQ: this.minimumorderquantity,
-        StockItemId: this.VolumeSttockItemId,
-        Volume: this.packingCharges,
-        EntityInstanceId: this.EntityInstanceId,
-        Status: "Draft",
-        Remarks: this.Remarks
+    if (type == 1) {
+      this.isMOQValid = true;
+      this.promotionBuyGet1();
+      this.promotionBuyGet2();
+    }
 
-      }
-
-      this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
-        console.log(res.response)
-        if (res.response.result == 'Added Succesfully') {
-          alert('Added Succesfully')
-          this.sharedService.filter('Register click')
-
-
-          this.dialogRef.close();
-        }
-        else {
-          alert(res.response.result);
-        }
-      })
-
+    if(type == 2){
+      this.isMOQValid = true;
+      this.promotionABGetChange();
+      this.promotionABSetChange();
     }
 
 
-    if (this.selectedPromo == 4) {
-      let obj3: any = {
-        PromotionName: this.promoName,
-        PromotionTypesId: this.selectedPromo,
-        StartDate: this.selectedStartDate,
-        EndDate: this.selectedEndDate,
-        DoneById: this.loggedUserId,
-        Imageurl: this.base64textString,
-        MOQ: this.minumorderqualityPrice,
-        StockItemId: this.priceStockItemId,
-        Price: this.packingVolume,
-        EntityInstanceId: this.EntityInstanceId,
-        Status: "Draft",
-        Remarks: this.Remarks
 
 
-      }
-
-      this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
-        console.log(res.response)
-        if (res.response.result == 'Added Succesfully') {
-          alert('Added Succesfully')
-          this.sharedService.filter('Register click')
-
-          this.dialogRef.close();
-        }
-        else {
-          alert(res.response.result);
-        }
-      })
-
+    if ( !(isDataValid) || !(this.base64textString) || !(this.selectedStartDate) || !(this.selectedEndDate) || !(this.promoName) || !type ||!this.isMOQValid || !this.isPromotionTypeDataValid || !this.isPromotionTypeDataValid2) {
+      alert("Required data is missing");
+      return false;
     }
 
+    return true;
   }
 
 
-  AddPromosaveAndSubmitEdit() {
+  AddPromosaveAndSubmitEdit(type) {
     // alert('error');
-    localStorage.setItem("updatePromotionPopup",'edit');
+    localStorage.setItem("updatePromotionPopup", 'edit');
     this.loggedUserId = localStorage.getItem('logInId')
+
+    if (!this.checkValidation(this.selectedPromo)) return;
 
     if (this.selectedPromo == 1) {
       console.log('added items', this.buyGroupPlus)
@@ -1864,12 +1867,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         BuyGroups: this.buyGroupPlus,
         GetGroups: this.addgetgroup,
         EntityInstanceId: this.EntityInstanceId,
-        Status: "Submit",
-        Remarks: this.Remarks
+        Status: type,
+        Remarks: this.Remarks ?? ''
 
       }
 
-
+      
       this.promotionTypes.firstPromotion(obj).subscribe((res) => {
         console.log(res.response)
 
@@ -1949,8 +1952,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         BuySets: this.addbuyset,
         GetSets: this.addgetset,
         EntityInstanceId: this.EntityInstanceId,
-        Status: "Submit",
-        Remarks: this.Remarks
+        Status: type,
+        Remarks: this.Remarks ?? ''
       }
       console.log('object to send opis', obj3)
       // let BuySets=[{
@@ -1990,8 +1993,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         StockItemId: this.VolumeSttockItemId,
         Volume: this.packingCharges,
         EntityInstanceId: this.EntityInstanceId,
-        Status: "Submit",
-        Remarks: this.Remarks
+        Status: type,
+        Remarks: this.Remarks ?? ''
 
       }
 
@@ -2028,10 +2031,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         StockItemId: this.priceStockItemId,
         Price: this.packingVolume,
         EntityInstanceId: this.EntityInstanceId,
-        Status: "Submit",
-        Remarks: this.Remarks
-
-
+        Status: type,
+        Remarks: this.Remarks ?? ''
       }
 
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
@@ -2050,241 +2051,220 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
         }
       })
-
     }
-
   }
 
 
+  // AddPromosaveAndSubmitDraftEdit() {
+  //   alert(this.selectedPromo)
+  //   this.loggedUserId = localStorage.getItem('logInId')
 
+  //   if (this.selectedPromo == 1) {
+  //     console.log('added items', this.buyGroupPlus)
+  //     console.log('addgetgroup', this.addgetgroup)
 
-  AddPromosaveAndSubmitDraftEdit() {
-    alert(this.selectedPromo)
-    this.loggedUserId = localStorage.getItem('logInId')
+  //     this.buyGroupPlus.forEach(element => {
+  //       delete element.productselectedRows;
+  //       delete element.productScselectedRows;
+  //       delete element.pGselectedRows;
+  //       delete element.productSubGselectedRows;
+  //     })
 
-    if (this.selectedPromo == 1) {
-      console.log('added items', this.buyGroupPlus)
-      console.log('addgetgroup', this.addgetgroup)
-
-      this.buyGroupPlus.forEach(element => {
-        delete element.productselectedRows;
-        delete element.productScselectedRows;
-        delete element.pGselectedRows;
-        delete element.productSubGselectedRows;
-      })
-
-      this.addgetgroup.forEach(element => {
-        delete element.productselectedRows;
-        delete element.productScselectedRows;
-        delete element.pGselectedRows;
-        delete element.productSubGselectedRows;
-      })
-
-
-
-      let obj: any = {
-        ProductPromotionsId: this.productPromotionsId,
-        PromotionName: this.promoName,
-        PromotionTypesId: this.selectedPromo,
-        StartDate: this.selectedStartDate,
-        EndDate: this.selectedEndDate,
-        DoneById: this.loggedUserId,
-        Imageurl: this.base64textString,
-        BuyGroups: this.buyGroupPlus,
-        GetGroups: this.addgetgroup,
-        EntityInstanceId: this.EntityInstanceId,
-        Status: "Draft",
-        Remarks: this.Remarks
-
-      }
-
-
-      this.promotionTypes.firstPromotion(obj).subscribe((res) => {
-        console.log(res.response)
-
-        if (res.response.result == 'Added Succesfully') {
-          alert('Added Succesfully')
-          this.sharedService.filter('Register click');
-
-          this.dialogRef.close();
-        }
-        else {
-          this.sharedService.filter('Register click');
-          alert(res.response.result);
-        }
-      })
-
-    }
-
-    if (this.selectedPromo == 2) {
-
-      console.log('addbuyset', this.addbuyset)
-      console.log('addGetset', this.addgetset)
-      let obj: any = [];
-      let obj1: any = [];
-
-
-      for (let i = 0; i < this.addbuyset.length; i++) {
-        this.addbuyset[i].BuyGroups.forEach(element => {
-          delete element.productselectedRows;
-          obj.push(element)
-          console.log('finalobject', obj)
-
-
-        })
-
-      }
-
-
-      for (let i = 0; i < this.addgetset.length; i++) {
-        this.addgetset[i].GetGroups.forEach(element => {
-          delete element.productselectedRows;
-          obj1.push(element)
-          console.log('finalobject1', obj1)
-
-
-        })
-
-      }
-
-
-      let BuyGroups: any = []
-      let GetGroups: any = []
-      BuyGroups.push(obj);
-      GetGroups.push(obj1);
-
-      let mainobj: any = {
-        BuyGroups: obj,
-      }
-      let GetSets: any = {
-        GetGroups: obj1
-      }
-      console.log('mainobj', mainobj)
-
-      let obj3: any = {
-        ProductPromotionsId: this.productPromotionsId,
-        PromotionName: this.promoName,
-        PromotionTypesId: this.selectedPromo,
-        StartDate: this.selectedStartDate,
-        EndDate: this.selectedEndDate,
-        DoneById: this.loggedUserId,
-        Imageurl: this.base64textString,
-        BuySets: [mainobj],
-        GetSets: [GetSets],
-        EntityInstanceId: this.EntityInstanceId,
-        Status: "Draft",
-        Remarks: this.Remarks
-      }
-      console.log('object to send opis', obj3)
-      // let BuySets=[{
-      //   BuyGroups:obj
-      // }]
-      this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
-        console.log(res.response)
-        if (res.response.result == 'Added Succesfully') {
-          alert('Added Succesfully');
-          this.sharedService.filter('Register click');
-
-          this.dialogRef.close();
-        }
-        else {
-          this.sharedService.filter('Register click');
-          alert(res.response.result);
-        }
-      })
-
-
-    }
-
-    if (this.selectedPromo == 3) {
-      console.log('VolumeSttockItemId', this.VolumeSttockItemId)
-      let obj3: any = {
-        ProductPromotionsId: this.productPromotionsId,
-        PromotionName: this.promoName,
-        PromotionTypesId: this.selectedPromo,
-        StartDate: this.selectedStartDate,
-        EndDate: this.selectedEndDate,
-        DoneById: this.loggedUserId,
-        Imageurl: this.base64textString,
-        MOQ: this.minimumorderquantity,
-        StockItemId: this.VolumeSttockItemId,
-        Volume: this.packingCharges,
-        EntityInstanceId: this.EntityInstanceId,
-        Status: "Draft",
-        Remarks: this.Remarks
-
-      }
-
-      this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
-        console.log(res.response)
-        if (res.response.result == 'Added Succesfully') {
-          alert('Added Succesfully');
-          this.sharedService.filter('Register click')
-
-          this.dialogRef.close();
-        }
-        else {
-          this.sharedService.filter('Register click');
-          alert(res.response.result);
-        }
-      })
-
-    }
-
-
-    if (this.selectedPromo == 4) {
-      let obj3: any = {
-        ProductPromotionsId: this.productPromotionsId,
-        PromotionName: this.promoName,
-        PromotionTypesId: this.selectedPromo,
-        StartDate: this.selectedStartDate,
-        EndDate: this.selectedEndDate,
-        DoneById: this.loggedUserId,
-        Imageurl: this.base64textString,
-        MOQ: this.minumorderqualityPrice,
-        StockItemId: this.priceStockItemId,
-        Price: this.packingVolume,
-        EntityInstanceId: this.EntityInstanceId,
-        Status: "Draft",
-        Remarks: this.Remarks
-
-
-      }
-
-      this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
-        console.log(res.response)
-        if (res.response.result == 'Added Succesfully') {
-          alert('Added Succesfully');
-          this.sharedService.filter('Register click')
-
-          this.dialogRef.close();
-        }
-        else {
-          this.sharedService.filter('Register click');
-          alert(res.response.result);
-        }
-      })
-
-    }
-
-  }
+  //     this.addgetgroup.forEach(element => {
+  //       delete element.productselectedRows;
+  //       delete element.productScselectedRows;
+  //       delete element.pGselectedRows;
+  //       delete element.productSubGselectedRows;
+  //     })
 
 
 
+  //     let obj: any = {
+  //       ProductPromotionsId: this.productPromotionsId,
+  //       PromotionName: this.promoName,
+  //       PromotionTypesId: this.selectedPromo,
+  //       StartDate: this.selectedStartDate,
+  //       EndDate: this.selectedEndDate,
+  //       DoneById: this.loggedUserId,
+  //       Imageurl: this.base64textString,
+  //       BuyGroups: this.buyGroupPlus,
+  //       GetGroups: this.addgetgroup,
+  //       EntityInstanceId: this.EntityInstanceId,
+  //       Status: "Draft",
+  //       Remarks: this.Remarks ?? ''
+
+  //     }
 
 
+  //     this.promotionTypes.firstPromotion(obj).subscribe((res) => {
+  //       console.log(res.response)
+
+  //       if (res.response.result == 'Added Succesfully') {
+  //         alert('Added Succesfully')
+  //         this.sharedService.filter('Register click');
+
+  //         this.dialogRef.close();
+  //       }
+  //       else {
+  //         this.sharedService.filter('Register click');
+  //         alert(res.response.result);
+  //       }
+  //     })
+
+  //   }
+
+  //   if (this.selectedPromo == 2) {
+
+  //     console.log('addbuyset', this.addbuyset)
+  //     console.log('addGetset', this.addgetset)
+  //     let obj: any = [];
+  //     let obj1: any = [];
 
 
+  //     for (let i = 0; i < this.addbuyset.length; i++) {
+  //       this.addbuyset[i].BuyGroups.forEach(element => {
+  //         delete element.productselectedRows;
+  //         obj.push(element)
+  //         console.log('finalobject', obj)
 
 
+  //       })
+
+  //     }
 
 
+  //     for (let i = 0; i < this.addgetset.length; i++) {
+  //       this.addgetset[i].GetGroups.forEach(element => {
+  //         delete element.productselectedRows;
+  //         obj1.push(element)
+  //         console.log('finalobject1', obj1)
 
 
+  //       })
+
+  //     }
 
 
+  //     let BuyGroups: any = []
+  //     let GetGroups: any = []
+  //     BuyGroups.push(obj);
+  //     GetGroups.push(obj1);
+
+  //     let mainobj: any = {
+  //       BuyGroups: obj,
+  //     }
+  //     let GetSets: any = {
+  //       GetGroups: obj1
+  //     }
+  //     console.log('mainobj', mainobj)
+
+  //     let obj3: any = {
+  //       ProductPromotionsId: this.productPromotionsId,
+  //       PromotionName: this.promoName,
+  //       PromotionTypesId: this.selectedPromo,
+  //       StartDate: this.selectedStartDate,
+  //       EndDate: this.selectedEndDate,
+  //       DoneById: this.loggedUserId,
+  //       Imageurl: this.base64textString,
+  //       BuySets: [mainobj],
+  //       GetSets: [GetSets],
+  //       EntityInstanceId: this.EntityInstanceId,
+  //       Status: "Draft",
+  //       Remarks: this.Remarks ?? ''
+  //     }
+  //     console.log('object to send opis', obj3)
+  //     // let BuySets=[{
+  //     //   BuyGroups:obj
+  //     // }]
+  //     this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
+  //       console.log(res.response)
+  //       if (res.response.result == 'Added Succesfully') {
+  //         alert('Added Succesfully');
+  //         this.sharedService.filter('Register click');
+
+  //         this.dialogRef.close();
+  //       }
+  //       else {
+  //         this.sharedService.filter('Register click');
+  //         alert(res.response.result);
+  //       }
+  //     })
 
 
+  //   }
+
+  //   if (this.selectedPromo == 3) {
+  //     console.log('VolumeSttockItemId', this.VolumeSttockItemId)
+  //     let obj3: any = {
+  //       ProductPromotionsId: this.productPromotionsId,
+  //       PromotionName: this.promoName,
+  //       PromotionTypesId: this.selectedPromo,
+  //       StartDate: this.selectedStartDate,
+  //       EndDate: this.selectedEndDate,
+  //       DoneById: this.loggedUserId,
+  //       Imageurl: this.base64textString,
+  //       MOQ: this.minimumorderquantity,
+  //       StockItemId: this.VolumeSttockItemId,
+  //       Volume: this.packingCharges,
+  //       EntityInstanceId: this.EntityInstanceId,
+  //       Status: "Draft",
+  //       Remarks: this.Remarks ?? ''
+
+  //     }
+
+  //     this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
+  //       console.log(res.response)
+  //       if (res.response.result == 'Added Succesfully') {
+  //         alert('Added Succesfully');
+  //         this.sharedService.filter('Register click')
+
+  //         this.dialogRef.close();
+  //       }
+  //       else {
+  //         this.sharedService.filter('Register click');
+  //         alert(res.response.result);
+  //       }
+  //     })
+
+  //   }
+
+
+  //   if (this.selectedPromo == 4) {
+  //     let obj3: any = {
+  //       ProductPromotionsId: this.productPromotionsId,
+  //       PromotionName: this.promoName,
+  //       PromotionTypesId: this.selectedPromo,
+  //       StartDate: this.selectedStartDate,
+  //       EndDate: this.selectedEndDate,
+  //       DoneById: this.loggedUserId,
+  //       Imageurl: this.base64textString,
+  //       MOQ: this.minumorderqualityPrice,
+  //       StockItemId: this.priceStockItemId,
+  //       Price: this.packingVolume,
+  //       EntityInstanceId: this.EntityInstanceId,
+  //       Status: "Draft",
+  //       Remarks: this.Remarks ?? ''
+
+
+  //     }
+
+  //     this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
+  //       console.log(res.response)
+  //       if (res.response.result == 'Added Succesfully') {
+  //         alert('Added Succesfully');
+  //         this.sharedService.filter('Register click')
+
+  //         this.dialogRef.close();
+  //       }
+  //       else {
+  //         this.sharedService.filter('Register click');
+  //         alert(res.response.result);
+  //       }
+  //     })
+
+  //   }
+
+  // }
 
 
 
@@ -2303,26 +2283,28 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     var objectsFromStorage = JSON.parse(this.storedNames123)
     this.geographyyId = objectsFromStorage;
 
+    this.addpromotionGeoTable();
+    // const data = {
+    //   Geography: this.geographyyId,
+    //   Search: this.searchText,
+    // }
+    
 
-    const data = {
-      Geography: this.geographyyId,
-      Search: this.searchText,
-    }
-    this.promotionTypes.GetPromotionDealerList(data).subscribe((res) => {
-      this.rowData5 = res.response;
-      console.log();
-      this.geographynameId = localStorage.getItem("geopromo");
-      console.log('geochecks', this.geographynameId)
-      this.geographynameId.forEach(element => {
-        return this.geographyyId.push(element.geographynameId);
-        // console.log('rolecheck',rolecheck)
+    // this.promotionTypes.GetPromotionDealerList(data).subscribe((res) => {
+    //   this.rowData5 = res.response;
+    //   console.log();
+    //   this.geographynameId = localStorage.getItem("geopromo");
+    //   console.log('geochecks', this.geographynameId)
+    //   this.geographynameId.forEach(element => {
+    //     return this.geographyyId.push(element.geographynameId);
+    //     // console.log('rolecheck',rolecheck)
 
-      })
-      // let localdata = res.response;
-      // this.custmerid = localdata.map((data: { customerId: any; code: any; dealerName:any,geography:any }) => {
-      //   return { customerId: data.customerId, code: data.code };
-      // });
-    });
+    //   })
+    //   // let localdata = res.response;
+    //   // this.custmerid = localdata.map((data: { customerId: any; code: any; dealerName:any,geography:any }) => {
+    //   //   return { customerId: data.customerId, code: data.code };
+    //   // });
+    // });
   }
 
 
@@ -2367,6 +2349,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     this.selectedPromo = event.promotionTypesId;
     if (event == undefined) return;
     this.promotionTypesId = event;
+    console.log(this.buyGroupPlus);
     if (event.promotionTypesName == 'Buy (A+B..) get (X+Y..)') {
       // this.goForward(this.myStepper);
       this.noPromotionSelected = false;
@@ -2411,23 +2394,25 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       Geography: this.geographyyId,
       Search: this.searchText,
     }
-    this.promotionTypes.GetPromotionDealerList(data).subscribe((res) => {
-      this.rowData5 = res.response;
-      console.log();
-      this.geographynameId = localStorage.getItem("geopromo");
-      console.log('geochecks', this.geographynameId)
-      if (this.geographynameId) {
-        this.geographynameId.forEach(element => {
-          return this.geographyyId.push(element.geographynameId);
-          // console.log('rolecheck',rolecheck)
+    this.addpromotionGeoTable();
 
-        })
-      }
-      // let localdata = res.response;
-      // this.custmerid = localdata.map((data: { customerId: any; code: any; dealerName:any,geography:any }) => {
-      //   return { customerId: data.customerId, code: data.code };
-      // });
-    });
+    // this.promotionTypes.GetPromotionDealerList(data).subscribe((res) => {
+    //   this.rowData5 = res.response;
+    //   console.log();
+    //   this.geographynameId = localStorage.getItem("geopromo");
+    //   console.log('geochecks', this.geographynameId)
+    //   if (this.geographynameId) {
+    //     this.geographynameId.forEach(element => {
+    //       return this.geographyyId.push(element.geographynameId);
+    //       // console.log('rolecheck',rolecheck)
+
+    //     })
+    //   }
+    //   // let localdata = res.response;
+    //   // this.custmerid = localdata.map((data: { customerId: any; code: any; dealerName:any,geography:any }) => {
+    //   //   return { customerId: data.customerId, code: data.code };
+    //   // });
+    // });
 
   }
 }

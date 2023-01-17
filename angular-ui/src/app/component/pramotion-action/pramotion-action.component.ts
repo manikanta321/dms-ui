@@ -13,6 +13,7 @@ import { DeactivateUserpopupComponent } from '../users/userPopups/deactivate-use
 import { EditPopupComponent } from '../users/userPopups/edit-popup/edit-popup.component';
 import { PswResetPopupComponent } from '../users/userPopups/psw-reset-popup/psw-reset-popup.component';
 import { ClosePopupComponent } from './close-popup/close-popup.component';
+import { ViewPromotionPopupComponent } from './view-promotion-popup/view-promotion-popup.component';
 
 @Component({
   selector: 'app-pramotion-action',
@@ -129,6 +130,17 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
    this.dialog.open( AddPromotionsComponent, config);
 
   }
+
+  viewPromo(){
+    const config: MatDialogConfig = {
+      width: '1043px',
+    
+     
+    };
+    this.isOpen = false;
+    this.dialog.open( ViewPromotionPopupComponent, config);
+  }
+
   togglePopup() {
     this.isOpen = !this.isOpen;
     this.changeDetector.detectChanges();

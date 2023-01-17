@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 import { UserService } from 'src/app/services/user.service';
 import { AddcurrencySuccessfullyPopupComponent } from './addcurrency-successfully-popup/addcurrency-successfully-popup.component';
 @Component({
@@ -32,7 +33,8 @@ export class AddcurrencyComponent implements OnInit {
     uomShortName:any;
   constructor(private dialogRef: MatDialogRef<any>,
     private dialog: MatDialog,
-    private user:UserService,) {
+    private user:UserService,
+    private otherMasterService:OtherMasterService,) {
       this.currencyForm = new FormGroup({
         currencyName: new FormControl(	'',	[Validators.required]),
         displayUnits: new FormControl(  '',  [Validators.required]),
@@ -97,6 +99,8 @@ this.uomShortName = shortName;
   }
   }
   addcurncy(){
+    this.otherMasterService.filter('Register click');
+
     if(this.editButton ==false){
       localStorage.setItem('Addoreditcurrency','Add');
     const data={
@@ -109,6 +113,8 @@ this.uomShortName = shortName;
       
     }
     this.user.addcurrency(data).subscribe((res) => {    
+      this.otherMasterService.filter('Register click');
+
       this.currencyForm.reset(); 
       // console.log(res,"123456987654")
     });

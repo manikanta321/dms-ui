@@ -83,6 +83,10 @@ export class OrdersApisService {
 
     return this.http.post<any>(this.userurl + 'OrdersApi/GetAllShipments', data);
   }
+  public getOrderReceiptList(data) {
+
+    return this.http.post<any>(this.userurl + 'OrdersApi/GetOrderReceiptList', data);
+  }
   // http://13.126.235.145:801/api/OrdersApi/GetShipUploadList
 
   public getDownloadShipmentList(data) {
@@ -102,7 +106,22 @@ export class OrdersApisService {
 
     return this.http.post<any>(this.userurl + 'OrdersApi/GetShippingAndPackingCharges', data);
   }
-  
-}
 
+
+  public shipOrder(data) {
+
+    return this.http.get<any>(this.userurl + `OrdersApi/GetOrderByship?orderId=${data}`)
+  }  
+
+  public saveShipOrder(data) {
+    return this.http.post<any>(this.userurl + 'OrdersApi/AddShipOrder', data);
+  }
+
+  
+  public calculateTotal(data) {
+    return this.http.post<any>(this.userurl + 'OrdersApi/GetShippingAndPackingChargesforship', data);
+  }
+
+
+}
  

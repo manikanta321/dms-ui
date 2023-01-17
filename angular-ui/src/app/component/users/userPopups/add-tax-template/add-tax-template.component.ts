@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TaxTemplateServiceService } from 'src/app/services/tax-template-service.service';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { AddtaxTemplateSuccessfulPopupComponent } from './addtax-template-successful-popup/addtax-template-successful-popup.component';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 
 
 
@@ -33,6 +34,7 @@ export class AddTaxTemplateComponent implements OnInit {
     private fb:FormBuilder,
     private sharedService:SharedService,
     private taxservise:TaxTemplateServiceService,
+    private otherMasterService:OtherMasterService,
     ) { 
       }
 
@@ -117,19 +119,18 @@ setUpForm(cars: any[] ) {
   }  
      
   onSubmit() { 
-    
-    
+ 
     this.enteredname=this.taxname;
     console.log(this.productForm.value);  
-
+    this.otherMasterService.filter('Register click');
     console.log('checkarray',this.productForm.value)
     this.taxservise.addtax(this.productForm.value).subscribe((res)=>{
 console.log(res)
-this.sharedService.filter('Register click')
+// this.sharedService.filter('Register click')
 localStorage.setItem('AddOrEditTax','add');
 
 this.dialog.open(AddtaxTemplateSuccessfulPopupComponent , {panelClass: 'activeSuccessPop'});
-
+this.otherMasterService.filter('Register click');
 
 
    this.dialogRef.close();

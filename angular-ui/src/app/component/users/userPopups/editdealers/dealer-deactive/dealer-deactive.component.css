@@ -18,6 +18,10 @@
     .text-succ{
     padding: 0 10px;
     }
+    .text-success{
+        padding: 0 10px;
+        width: 200px;
+        }
     .closeImg{
         padding: 15px 0 15px 20px;
     }

@@ -27,6 +27,7 @@ import { SalesBulkUploadComponent } from '../sales-bulk-upload/sales-bulk-upload
 import { CustomDatePopupComponent } from '../orders/custom-date-popup/custom-date-popup.component';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { SharedServiceMaterialListService } from 'src/app/services/shared-service-material-list.service';
+import { OrderlistShipPopupComponent } from './orderlist-ship-popup/orderlist-ship-popup.component';
 // import { DateRange } from '@uiowa/date-range-picker';
 
 export interface PeriodicElement {
@@ -635,6 +636,7 @@ export class OrderListComponent implements OnInit {
     const dialogRef = this.dialog.open(AddorderpromotionsComponent, {
       panelClass: 'material-add-edit'
     });
+    sessionStorage.setItem("Confirm",'')
     localStorage.setItem('Edit', 'Add');
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {

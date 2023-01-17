@@ -214,7 +214,23 @@
   font-weight: bold;
   font-size: 20px;
 }
-
+.addView{
+  position: relative;
+  /* font-family: 'Gilroy-Bold';  */
+  font-weight: bold;
+  font-size: 20px;
+  right: 30%;
+}
+.addView:after {
+  content: "";
+  display: block;
+  width: 535px;
+  height: 2px;
+  background: #686E74;
+  left: 555px;
+  top: 50%;
+  position: absolute;
+}
 .addU:after {
   content: "";
   display: block;
@@ -920,7 +936,7 @@ height: 5px;
 }
 
 .promotionpopup-scroll {
-  height: 600px !important;
+  height: 711px !important;
 }
 
 
@@ -1196,7 +1212,7 @@ height: 5px;
 
 .subitem {
   font-size: 13px;
-  width: 108px;
+  width: 179px;
 }
 
 .innerTotal {
@@ -1237,7 +1253,7 @@ height: 5px;
   height: 5px;
 }
 .ShipmentinputBoxes {
-  width: 100px;
+  width: 70px;
   height: 30px;
   background: none;
   border-radius: 10px;
@@ -1246,7 +1262,7 @@ height: 5px;
 }
 
 .ShipmentinputBoxes1 {
-  width: 100px;
+  width: 70px;
   height: 30px;
   background: none;
   border-radius: 10px;
@@ -1350,4 +1366,42 @@ td {
 }
 ::ng-deep.ag-theme-material .ag-checkbox-input-wrapper.ag-checked::after {
   color: black!important;
+}
+.invoice{
+  border-radius: 10px;
+  padding: 3px;
+  background: white !important;
+  width: 183px;
+  border: 1px black solid;
+  height: 35px;
+}
+::ng-deep.promotion-datepicker .mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding: 0.4375em 0;
+  margin-top: -4px !important;
+}
+.placeh-align {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border-radius: 10px;
+  height: 41px;
+  background-color: white;
+  
+}
+.calendarToggle {
+  position: absolute;
+  bottom: 4px;
+  width: 20px;
+  right: 10px;
+}
+.calendarToggle1 {
+  position: absolute;
+  bottom: 4px;
+  width: 20px;
+  right: 10px;
+}
+.calendarToggle2 {
+  position: absolute;
+  bottom: 4px;
+  width: 20px;
+  right: 10px;
 }

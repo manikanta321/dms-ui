@@ -130,7 +130,7 @@
                                 <!-- promotion list view -->
                                 <ng-container *ngFor="let PromotionObj of AddOrderPromotionData; let i=index;">
                                     <tr *ngFor="let Item of PromotionObj.itemDetails; let j=index;">
-                                        <td>
+                                        <td disabled>
                                             <p class="itemLeft"><span class="promoItem" style="color: #fff;"
                                                     *ngIf="j==0"> P {{i + 1}}</span>
                                                 {{Item.stockitemname}}</p>
@@ -165,8 +165,7 @@
                                             <input type="text" disabled [(ngModel)]="Item.amount"
                                                 class="IteminputBoxes">
                                         </td>
-                                        <mat-icon class="removeCircle" *ngIf="j==0"
-                                            (click)="removePromotionItem(Item, PromotionObj.promotionId)">
+                                        <mat-icon class="removeCircle" *ngIf="j==0">
                                             remove_circle</mat-icon>
                                     </tr>
                                 </ng-container>

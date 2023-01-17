@@ -13,6 +13,9 @@
     
     
 }
+.removeCircle{
+    color: red;
+}
 #Options2
 {
     font-family: 'Gilroy';
@@ -187,6 +190,7 @@ color: white;
  padding: 1px 10px;
   border-radius: 50%;
   cursor: pointer;
+  color: white;
 }
 .minus-icon1{
     background: #0091EA;

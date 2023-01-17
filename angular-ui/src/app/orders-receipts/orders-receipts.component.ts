@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 import { CustomDatePopupComponent } from '../component/orders/custom-date-popup/custom-date-popup.component';
 import { OrdersApisService } from '../services/orders-apis.service';
 import { UserService } from '../services/user.service';
+import { OrderReceiptsBulkUploadComponent } from './order-receipts-bulk-upload/order-receipts-bulk-upload.component';
 
 @Component({
   selector: 'app-orders-receipts',
@@ -256,10 +257,10 @@ export class OrdersReceiptsComponent implements OnInit {
         console.log("Response",this.receiptDatalist)
       });
     }
-    orderShipmentUpload(){
-      sessionStorage.setItem("sales",'');
-        // this.dialog.open(SalesBulkUploadComponent);
-        // this.isOpen = false;
+    orderReceiptsBulkUpload(){
+      // sessionStorage.setItem("sales",'');
+        this.dialog.open(OrderReceiptsBulkUploadComponent);
+        
     }
     receiptList(){
       let data = {

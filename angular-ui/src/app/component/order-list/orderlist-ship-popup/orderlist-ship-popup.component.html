@@ -193,43 +193,41 @@
                                     <th>Shipped Now</th>
 
                                 </tr>
-                                <tr [(ngModel)]="itemremoved" *ngFor="let data1 of data?.promodetails;let j =index">   
-                                                             <td>
+                                <tr [(ngModel)]="itemremoved" *ngFor="let data1 of data?.promodetails;let j =index">
+                                    <td>
                                         <p class="itemLeft"><span
                                                 class="promoItem">{{data?.promodetails[0]?.promocode}}</span>{{data1.stockitemname}}
                                         </p>
-                                    </td>                             <td>                                 <label
-                                            class="IteminputBoxes">{{data1?.itemDetailsship[0].uomname}}</label>       
-                                                             </td>                             <td>                     
-                                                   <label
-                                            class="IteminputBoxes">{{data1?.itemDetailsship[0].quantity}}</label>       
-                                                             </td>                             <td>                     
-                                                   <label
-                                            class="IteminputBoxes">{{data1?.itemDetailsship[0].stock}}</label>         
-                                                           </td>                             <td>                       
-                                                 <label
-                                            class="IteminputBoxes">{{data1?.itemDetailsship[0].price}}</label>         
-                                                           </td>                             <td>                       
-                                                 <label
-                                            class="IteminputBoxes">{{data1?.itemDetailsship[0].discount}}</label>       
-                                                             </td>                             <td>                     
-                                                   <label
-                                            class="IteminputBoxes">{{data1?.itemDetailsship[0].finalValue}}</label>     
-                                                               </td>                             <td>                   
-                                                     <label
-                                            class="IteminputBoxes">{{data1?.itemDetailsship[0].taxvalue}}</label>       
-                                                             </td>                             <td>                     
-                                                   <label
-                                            class="IteminputBoxes">{{data1?.itemDetailsship[0].amount}}</label>         
-                                                           </td>                             <td>                       
-                                                <label
-                                            class="IteminputBoxes">{{data1?.itemDetailsship[0].shipedTill}}</label>     
-                                                              </td>                            <td>                     
-                                                  <label
-                                            class="IteminputBoxes">{{data1?.itemDetailsship[0].shipingNow}}</label>     
-                                                              </td>                           
-                                     <!-- <mat-icon class="removeCircle" (click)=removeItem()>                                 remove_circle</mat-icon> --> 
-                                                           </tr>
+                                    </td><td><label
+                                            class="IteminputBoxes">{{data1?.itemDetailsship[0].uomname}}</label>
+                                        </td><td>
+                                        <label
+                                            class="IteminputBoxes">{{data1?.itemDetailsship[0].quantity}}</label>
+                                        </td><td>
+                                        <label
+                                            class="IteminputBoxes">{{data1?.itemDetailsship[0].stock}}</label>
+                                        </td><td>
+                                        <label
+                                            class="IteminputBoxes">{{data1?.itemDetailsship[0].price}}</label>
+                                       </td><td>
+                                       <label
+                                            class="IteminputBoxes">{{data1?.itemDetailsship[0].discount}}</label></td><td>
+                                        <label
+                                            class="IteminputBoxes">{{data1?.itemDetailsship[0].finalValue}}</label>
+                                        </td><td>
+                                        <label
+                                            class="IteminputBoxes">{{data1?.itemDetailsship[0].taxvalue}}</label>
+                                        </td><td>
+                                        <label
+                                            class="IteminputBoxes">{{data1?.itemDetailsship[0].amount}}</label>
+                                        </td><td>
+                                       <label
+                                            class="IteminputBoxes">{{data1?.itemDetailsship[0].shipedTill}}</label>
+                                         </td><td>
+                                         <label
+                                            class="IteminputBoxes">{{data1?.itemDetailsship[0].shipingNow}}</label>
+                                         </td>
+                                    </tr>
 
 
                             </table>

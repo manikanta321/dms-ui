@@ -142,7 +142,8 @@ export class OrderlistActionPopupComponent implements OnInit {
   }
   orderShip(){
     sessionStorage.setItem("viewOrder","")
-    this.dialog.open(OrderlistShipPopupComponent,{width:"987px",height:"1461px"});
+ 
+    this.dialog.open(OrderlistShipPopupComponent,{width:"1587px",height:"1661px"});
  this.isOpen = false;
 }
 confirmOrder() {

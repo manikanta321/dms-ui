@@ -27,7 +27,7 @@ export class AddDealerSuccessfulPopupComponent implements OnInit {
     setTimeout(() => {
 
       this.closeDialog();
-     }, 50*5000);
+     },5000);
   }
   closeDialog(){
     this.dialogRef.close()

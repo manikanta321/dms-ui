@@ -379,7 +379,7 @@ input[type=number] {
 }
 
 .astr {
-  color: red;
+   color: red; 
 }
 span {
   color: red;
@@ -1386,6 +1386,7 @@ margin-top: -5px;
 {
   margin-top: 4px;
   margin-left: 12px;
+  color: white;
 
 }
 #totallsss

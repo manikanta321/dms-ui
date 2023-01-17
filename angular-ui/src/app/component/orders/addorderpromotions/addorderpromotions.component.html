@@ -70,14 +70,14 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="companyReff">
-                                <label class="DealerInfo-label">Company Reference No <span class="astr">*</span></label>
+                                <label class="DealerInfo-label">Company Reference No <span class="astr"></span></label>
                                 <input disabled type="number" placeholder="Company Reference No" id="CompanyReferenceNo"
                                     [(ngModel)]="CompanyReferenceNo" class="form-control container input-box">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="shippingAdrs">
-                                <label class="DealerInfo-label">Shipping Address <span class="astr">*</span></label>
+                                <label class="DealerInfo-label">Shipping Address <span class="astr"></span></label>
                                 <!-- <input matInput placeholder="Select shipping address" #input class="form-control container input-box" > -->
                                 <ng-select disabled class="shipingAddress" [items]="dealersShippingAddress" id="shipingAddress"
                                     name="shipingAddress" required [virtualScroll]="true" bindLabel="address"

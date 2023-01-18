@@ -94,7 +94,7 @@ export class MaterialAddEditpopupComponent {
   stockItemDesc: string = '';
   desc: any;
   nameM: any;
-  expiryDate: any = '';
+  expiryDate:any ='0';
   BrandName: string = '';
   gloabKey: any;
   Sku: any;
@@ -473,15 +473,15 @@ export class MaterialAddEditpopupComponent {
       BaseUoMId: this.uomID,
       Imageurl: this.base64textString,
       Materialcustomidentifier: this.MaterialCustomIdentifiers,
-      ExpiryPeriod: this.expiryDate,
+      ExpiryPeriod: this.expiryDate ?? '0',
       ProductCustomIdentifierId: this.selectedProductId,
       IsProduct: +!this.checked,
       BrandName: this.BrandName,
-      GlobalCode: this.gloabKey,
+      GlobalCode: this.gloabKey ?? '0',
       ProductSKUName: this.Sku,
-      ShortCode: this.shortCode,
-      ManualShortOrder: this.Sort,
-      ProductLink: this.AddSP,
+      ShortCode: this.shortCode ?? '0',
+      ManualShortOrder: this.Sort ?? '0',
+      ProductLink: this.AddSP ?? '',
       ProductSubGroupId: this.subProductId,
       ProductGeographys: this.geoProperties
 
@@ -520,15 +520,15 @@ export class MaterialAddEditpopupComponent {
       BaseUoMId: this.baseUoMData,
       Imageurl: this.base64textString,
       Materialcustomidentifier: this.MaterialCustomIdentifiersEdit,
-      ExpiryPeriod: this.expiryDate,
+      ExpiryPeriod: this.expiryDate ?? '0',
       ProductCustomIdentifierId: this.selectedProductIdEdit,
       IsProduct: +!this.checked,
-      BrandName: this.BrandName,
-      GlobalCode: this.gloabKey,
+      BrandName: this.BrandName ,
+      GlobalCode: this.gloabKey  ?? '0',
       ProductSKUName: this.Sku,
-      ShortCode: this.shortCode,
-      ManualShortOrder: this.Sort,
-      ProductLink: this.AddSP,
+      ShortCode: this.shortCode ?? '0',
+      ManualShortOrder: this.Sort  ?? '0',
+      ProductLink: this.AddSP ?? '',
       ProductSubGroupId: this.subproductGroupData,
       ProductGeographys: this.geoProperties
 
@@ -553,7 +553,7 @@ export class MaterialAddEditpopupComponent {
       BaseUoMId: this.uomID,
       Imageurl: this.base64textString,
       Materialcustomidentifier: this.MaterialCustomIdentifiers,
-      ExpiryPeriod: this.expiryDate,
+      ExpiryPeriod: this.expiryDate ?? '0',
       IsProduct: +!this.checked
     }
     this.addMaterials.MaterialIfNotProduct(data).subscribe((res) => {
@@ -574,7 +574,7 @@ export class MaterialAddEditpopupComponent {
       BaseUoMId: this.uomID,
       Imageurl: this.base64textString,
       Materialcustomidentifier: this.MaterialCustomIdentifiers,
-      ExpiryPeriod: this.expiryDate,
+      ExpiryPeriod: this.expiryDate ?? '0',
       IsProduct: +!this.checked
     }
     this.addMaterials.MaterialIfNotProduct(data).subscribe((res) => {

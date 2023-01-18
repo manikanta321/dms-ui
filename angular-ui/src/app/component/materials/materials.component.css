@@ -170,7 +170,7 @@ mat-tab-group{
     font-family: 'Gilroy';
     border-radius: 25px;
     background: white;
-    left: 35%;
+    left: 21%;
     font-size: 15px;
 
 }::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {

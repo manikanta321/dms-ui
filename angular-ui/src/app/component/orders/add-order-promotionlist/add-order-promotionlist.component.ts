@@ -47,6 +47,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
   promotionstype2: any = [];
   currentSelectedPromos: any = [];
 
+  isOrderPromotionValid: boolean = false;
+
   constructor(private user: UserService,
     private orders: OrdersApisService,
     private spinner: NgxSpinnerService,
@@ -158,7 +160,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
       "GeographyIdid": this.geographyId
     }
 
-    // this.spinner.show();
+    this.spinner.show();
     console.log(this.imagesid, "listdatapromotionsids")
     this.orders.GetProductsOfPromotionForOrder(data).subscribe((res: any) => {
       // this.griddatapromotions = res.response;
@@ -191,8 +193,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
       }
     }
 
-  
-    formatObj.customerPOProductId = stockItem.customerPOProductId ?? 0; 
+    formatObj.customerPOProductId = stockItem.customerPOProductId ?? 0;
     formatObj.stockitemid = stockItem.stockitemid;
     formatObj.stockitemname = stockItem.stockitemname;
     formatObj.productSKUName = stockItem.productSKUName;
@@ -311,7 +312,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
             break;
         }
 
-       
+
         this.griddatapromotions.push(item);
       }
 
@@ -324,9 +325,33 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
   }
 
+  updateEnableStatus(item) {
+    item.promoDetails.buySets.forEach(setItem => {
+      setItem.buyGroups.forEach(stockItem => {
+        stockItem.isEnable = false;
+        stockItem.stockitemid.forEach(stock => {
+          if (stock.isProductSelected) {
+            stockItem.isEnable = true;
+          }
+        });
+
+      });
+    });
+
+    item.promoDetails.getSets.forEach(setItem => {
+      setItem.getGroups.forEach(stockItem => {
+        stockItem.isEnable = false;
+        stockItem.stockitemid.forEach(stock => {
+          if (stock.isProductSelected) {
+            stockItem.isEnable = true;
+          }
+        });
+
+      });
+    });
+  }
 
   quantityChange(data) {
-
     this.PromotionQtyCalculation(data);
   }
 
@@ -334,35 +359,56 @@ export class AddOrderPromotionlistComponent implements OnInit {
     switch (item.promotionTypesId) {
       case 1:
         // buygroups
+        item.promoDetails.isItemValid = true;
         if (item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0) {
-          item.promoDetails.buyGroups.totalQuantity = 0;
-          item.promoDetails.buyGroups.totalAmount = 0;
+          item.promoDetails.buyGroupsQty = 0;
+          item.promoDetails.requiredGetGroupsQty = 0;
           item.promoDetails.buyGroups.forEach(stockItem => {
+            stockItem.totalQuantity = 0;
+            stockItem.totalAmount = 0;
+            stockItem.isItemValid = true;
             if (stockItem.stockitemid.length != 0) {
               stockItem.stockitemid.forEach(stock => {
                 if (stock.isProductSelected) {
-                  item.promoDetails.buyGroups.totalQuantity += stock.Quantity;
-                  item.promoDetails.buyGroups.totalAmount += (stock.price * stock.Quantity);
+                  stockItem.totalQuantity += stock.Quantity;
+                  stockItem.totalAmount += (stock.price * stock.Quantity);
                 }
               })
+
+              if (stockItem.maxVolume) {
+                item.promoDetails.buyGroupsQty += Math.floor(stockItem.totalQuantity / stockItem.maxVolume);
+              }
+              if (stockItem.totalQuantity < stockItem.moq) {
+                stockItem.isItemValid = false;
+                item.promoDetails.isItemValid = false;
+              }
             }
 
           });
         }
         // getgroups
+        item.promoDetails.getGroupsQty = 0;
         if (item.promoDetails && item.promoDetails.getGroups && item.promoDetails.getGroups && item.promoDetails.getGroups.length != 0) {
-          item.promoDetails.getGroups.totalQuantity = 0;
-          item.promoDetails.getGroups.totalAmount = 0;
           item.promoDetails.getGroups.forEach(stockItem => {
+            stockItem.totalQuantity = 0;
+            stockItem.totalAmount = 0;
             if (stockItem.stockitemid.length != 0) {
               stockItem.stockitemid.forEach(stock => {
                 if (stock.isProductSelected) {
-                  item.promoDetails.getGroups.totalQuantity += stock.Quantity;
-                  item.promoDetails.getGroups.totalAmount += (stock.price * stock.Quantity);
+                  stockItem.totalQuantity += stock.Quantity;
+                  stockItem.totalAmount += (stock.price * stock.Quantity);
                 }
               })
             }
 
+            if (stockItem.maxVolume) {
+              item.promoDetails.getGroupsQty += Math.floor(stockItem.totalQuantity / stockItem.maxVolume);
+            }
+
+            if (item.promoDetails.buyGroupsQty !== item.promoDetails.getGroupsQty) {
+              stockItem.isItemValid = false;
+              item.promoDetails.isItemValid = false;
+            }
           });
         }
         break;
@@ -370,7 +416,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
       case 2:
 
         if (item.promoDetails && item.promoDetails.buySets && item.promoDetails.buySets && item.promoDetails.buySets.length != 0) {
+          item.promoDetails.buyGroupsQty = 0;
           item.promoDetails.buySets.forEach(setItem => {
+            setItem.isValuesEnabled = false;
             setItem.buyGroups.forEach(stockItem => {
               stockItem.totalAmount = 0;
               stockItem.totalQuantity = 0;
@@ -391,7 +439,10 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
 
         if (item.promoDetails && item.promoDetails.getSets && item.promoDetails.getSets && item.promoDetails.getSets.length != 0) {
+          item.promoDetails.getGroupsQty = 0;
+
           item.promoDetails.getSets.forEach(setItem => {
+
             setItem.getGroups.forEach(stockItem => {
               stockItem.totalAmount = 0;
               stockItem.totalQuantity = 0;
@@ -407,18 +458,24 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
           });
         }
+
+        this.updateEnableStatus(item);
         break;
 
       case 3:
         if (item.promoDetails && item.promoDetails.stockitems && item.promoDetails.stockitems.length != 0) {
           item.promoDetails.totalQuantity = 0;
           item.promoDetails.totalAmount = 0;
+          item.promoDetails.isItemValid = true;
           item.promoDetails.stockitems.forEach(stockItem => {
             if (stockItem.isProductSelected) {
               item.promoDetails.totalQuantity += stockItem.Quantity;
               item.promoDetails.totalAmount += (stockItem.price * stockItem.Quantity);
             }
           });
+          if (item.promoDetails.totalQuantity < item.promoDetails.moq) {
+            item.promoDetails.isItemValid = false;
+          }
         }
         break;
 
@@ -426,12 +483,16 @@ export class AddOrderPromotionlistComponent implements OnInit {
         if (item.promoDetails && item.promoDetails.stockitems && item.promoDetails.stockitems.length != 0) {
           item.promoDetails.totalQuantity = 0;
           item.promoDetails.totalAmount = 0;
+          item.promoDetails.isItemValid = true;
           item.promoDetails.stockitems.forEach(stockItem => {
             if (stockItem.isProductSelected) {
               item.promoDetails.totalQuantity += stockItem.Quantity;
               item.promoDetails.totalAmount += (stockItem.price * stockItem.Quantity);
             }
           });
+          if (item.promoDetails.totalQuantity < item.promoDetails.moq) {
+            item.promoDetails.isItemValid = false;
+          }
         }
         break;
 
@@ -447,6 +508,16 @@ export class AddOrderPromotionlistComponent implements OnInit {
     this.price = 0;
     console.log(this.griddatapromotions, "data after slection");
     this.PromotionQtyCalculation(promotionItem);
+  }
+
+  doubleClick(itemList, taxId) {
+    if (taxId) {
+      itemList.forEach(element => {
+        if (element.isProductSelected) {
+          element.Taxid = taxId;
+        }
+      });
+    }
   }
 
   addPromoItems() {

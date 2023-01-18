@@ -13,9 +13,9 @@
                 <div class="promotion-card">
                     <div class="promoimgs">
                         <div class="col-md-4 img-container" *ngFor="let Item of arrayOfImages;let i=index;">
-                            <div (click)="getpromotionlistById($event,Item);" >
-                                <img class="card1" src="data:image/jpeg;base64,{{Item.imageurl}}" [ngClass]="{ 'selected': Item.isSelected }"
-                                    alt="image does not exit">
+                            <div (click)="getpromotionlistById($event,Item);">
+                                <img class="card1" src="data:image/jpeg;base64,{{Item.imageurl}}"
+                                    [ngClass]="{ 'selected': Item.isSelected }" alt="image does not exit">
                             </div>
                         </div>
 
@@ -62,11 +62,14 @@
                                                 <div class="col-md-3">
                                                     <span class="buy-grp"> Buy Group {{promos.groupId}}</span>
                                                 </div>
-                                                <div class="col-md-3" style="text-align: center;">
+                                                <div class="col-md-6" style="text-align: center;">
                                                     <span class="total-itemss">Total Items:({{promos.maxVolume}})
+                                                        {{data.promoDetails.buyGroupsQty}}
                                                         (MOQ:{{promos.moq}})</span>
+                                                    <span class="txt-error" *ngIf="!(promos.isItemValid)">Total Qty is
+                                                        less than MOQ</span>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <!-- <div class="col-md-6">
                                                     <button class="searchButton" href="#">
                                                         <i class="material-icons">
                                                             search
@@ -80,7 +83,7 @@
                                                             style="font-family: 'Gilroy'">Search</button>
 
                                                     </div>
-                                                </div>
+                                                </div> -->
 
                                             </div>
                                             <!-- tabels for 1st promotions -->
@@ -114,6 +117,7 @@
                                                             </select>
 
                                                             <img src="assets/img/doubleTickes-default.svg"
+                                                                (click)="doubleClick(promos.stockitemid, Item.Taxid)"
                                                                 alt="double-blue-tick">
                                                         </td>
                                                         <td><input type="number" placeholder="5" class="quatity-inp"
@@ -126,9 +130,8 @@
                                                             items &
                                                             quantity entered)</td>
                                                         <td class="btm-total">
-                                                            &nbsp;&nbsp; &nbsp;&nbsp;  {{data.promoDetails.buyGroups.totalQuantity ?? 0}}</td>
-                                                        <td class="btm-total">&nbsp;{{data.promoDetails.buyGroups.totalAmount
-                                                            ?? 0}}</td>
+                                                            &nbsp;&nbsp; &nbsp;&nbsp; {{promos.totalQuantity ?? 0}}</td>
+                                                        <td class="btm-total">&nbsp;{{promos.totalAmount ?? 0}}</td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -140,6 +143,10 @@
                                             <h4 class="buysetHead"><b> {{data.promoDetails.getGroups.length != 0 ?
                                                     'GETSETS'
                                                     :''}} </b> </h4>
+                                            <div class="text-center" *ngIf="data.promoDetails.getGroupsQty"
+                                                [ngClass]="{ 'txt-error': data.promoDetails.getGroupsQty != data.promoDetails.buyGroupsQty }">
+                                                Total Selected qty {{data.promoDetails.getGroupsQty}}
+                                                ({{data.promoDetails.buyGroupsQty}}) </div>
                                         </div>
                                         <div class="buyGrp 1">
                                             <!-- headingds for 1st promotions -->
@@ -147,11 +154,10 @@
                                                 <div class="col-md-3">
                                                     <span class="buy-grp"> Get Group {{promos.groupId}}</span>
                                                 </div>
-                                                <div class="col-md-3" style="text-align: center;">
-                                                    <span class="total-itemss">Total Items:({{promos.maxVolume}})
-                                                        (MOQ:{{promos.moq}})</span>
+                                                <div class="col-md-6" style="text-align: center;">
+                                                    <span class="total-itemss">Total Items:({{promos.maxVolume}})</span>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <!-- <div class="col-md-6">
                                                     <button class="searchButton" href="#">
                                                         <i class="material-icons">
                                                             search
@@ -165,7 +171,7 @@
                                                             style="font-family: 'Gilroy'">Search</button>
 
                                                     </div>
-                                                </div>
+                                                </div> -->
 
                                             </div>
                                             <!-- tabels for 1st promotions -->
@@ -212,9 +218,8 @@
                                                             items &
                                                             quantity entered)</td>
                                                         <td class="btm-total">
-                                                            &nbsp;&nbsp; &nbsp;&nbsp;    {{data.promoDetails.getGroups.totalQuantity ?? 0}}</td>
-                                                        <td class="btm-total">&nbsp;{{data.promoDetails.getGroups.totalAmount
-                                                            ?? 0}}</td>
+                                                            &nbsp;&nbsp; &nbsp;&nbsp; {{promos.totalQuantity ?? 0}}</td>
+                                                        <td class="btm-total">&nbsp;{{promos.totalAmount ?? 0}}</td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -238,11 +243,11 @@
                                                         <span class="buy-grp"> Set -{{setItem.groupId}}: Buy Group
                                                             {{promos.set}}</span>
                                                     </div>
-                                                    <div class="col-md-3" style="text-align: center;">
+                                                    <div class="col-md-6" style="text-align: center;">
                                                         <span class="total-itemss">Total Items:({{promos.maxVolume}})
                                                             (MOQ:{{promos.moq}})</span>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <!-- <div class="col-md-6">
                                                         <button class="searchButton" href="#">
                                                             <i class="material-icons">
                                                                 search
@@ -257,7 +262,7 @@
                                                                 style="font-family: 'Gilroy'">Search</button>
 
                                                         </div>
-                                                    </div>
+                                                    </div> -->
 
                                                 </div>
                                                 <!-- tabels for 1st promotions -->
@@ -279,10 +284,10 @@
                                                             </td>
                                                             <td>{{Item.productSKUName}}</td>
                                                             <td>{{Item.price}}</td>
-                                                            <td><input type="number" placeholder="1000"
+                                                            <td><input type="number" placeholder="1000" [disabled]="!promos.isEnable"
                                                                     class="quatity-inp" [(ngModel)]="Item.stock"></td>
                                                             <td>
-                                                                <select class="tax-select" placeholder="select"
+                                                                <select class="tax-select" placeholder="select" [disabled]="!promos.isEnable"
                                                                     [(ngModel)]="Item.Taxid">
                                                                     <option value="" selected hidden>Select tax</option>
                                                                     <option *ngFor="let option of taxdropdowndata"
@@ -291,11 +296,11 @@
                                                                     </option>
                                                                 </select>
 
-                                                                <img src="assets/img/doubleTickes-default.svg"
+                                                                <img src="assets/img/doubleTickes-default.svg" (click)="doubleClick(promos.stockitemid, Item.Taxid)"
                                                                     alt="double-blue-tick">
                                                             </td>
                                                             <td><input type="number" placeholder="5" class="quatity-inp"
-                                                                    [(ngModel)]="Item.Quantity"
+                                                                    [(ngModel)]="Item.Quantity" [disabled]="!promos.isEnable"
                                                                     (keyup)="quantityChange(data)"></td>
                                                             <td>{{(Item.Quantity ?? 0) * Item.price }}</td>
                                                         </tr>
@@ -304,7 +309,8 @@
                                                                 items &
                                                                 quantity entered)</td>
                                                             <td class="btm-total">
-                                                                &nbsp;&nbsp; &nbsp;&nbsp;    {{promos.totalQuantity ?? 0}}</td>
+                                                                &nbsp;&nbsp; &nbsp;&nbsp; {{promos.totalQuantity ?? 0}}
+                                                            </td>
                                                             <td class="btm-total">
                                                                 &nbsp;{{promos.totalAmount ?? 0}}</td>
                                                         </tr>
@@ -332,11 +338,11 @@
                                                         <span class="buy-grp"> Set -{{setItem.groupId}}: Get Group
                                                             {{promos.set}}</span>
                                                     </div>
-                                                    <div class="col-md-3" style="text-align: center;">
+                                                    <div class="col-md-6" style="text-align: center;">
                                                         <span class="total-itemss">Total Items:({{promos.maxVolume}})
                                                             (MOQ:{{promos.moq}})</span>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <!-- <div class="col-md-6">
                                                         <button class="searchButton" href="#">
                                                             <i class="material-icons">
                                                                 search
@@ -351,7 +357,7 @@
                                                                 style="font-family: 'Gilroy'">Search</button>
 
                                                         </div>
-                                                    </div>
+                                                    </div> -->
 
                                                 </div>
                                                 <!-- tabels for 1st promotions -->
@@ -373,10 +379,10 @@
                                                             </td>
                                                             <td>{{Item.productSKUName}}</td>
                                                             <td>{{Item.price}}</td>
-                                                            <td><input type="number" placeholder="1000"
+                                                            <td><input type="number" placeholder="1000" [disabled]="!promos.isEnable"
                                                                     class="quatity-inp" [(ngModel)]="Item.stock"></td>
                                                             <td>
-                                                                <select class="tax-select" placeholder="select"
+                                                                <select class="tax-select" placeholder="select" [disabled]="!promos.isEnable"
                                                                     [(ngModel)]="Item.Taxid">
                                                                     <option value="" selected hidden>Select tax</option>
                                                                     <option *ngFor="let option of taxdropdowndata"
@@ -385,10 +391,10 @@
                                                                     </option>
                                                                 </select>
 
-                                                                <img src="assets/img/doubleTickes-default.svg"
+                                                                <img src="assets/img/doubleTickes-default.svg" (click)="doubleClick(promos.stockitemid, Item.Taxid)"
                                                                     alt="double-blue-tick">
                                                             </td>
-                                                            <td><input type="number" placeholder="5" class="quatity-inp"
+                                                            <td><input type="number" placeholder="5" class="quatity-inp" [disabled]="!promos.isEnable"
                                                                     [(ngModel)]="Item.Quantity"
                                                                     (keyup)="quantityChange(data)"></td>
                                                             <td>{{(Item.Quantity ?? 0) * Item.price }}</td>
@@ -398,7 +404,8 @@
                                                                 items &
                                                                 quantity entered)</td>
                                                             <td class="btm-total">
-                                                                &nbsp;&nbsp; &nbsp;&nbsp;{{promos.totalQuantity ?? 0}}</td>
+                                                                &nbsp;&nbsp; &nbsp;&nbsp;{{promos.totalQuantity ?? 0}}
+                                                            </td>
                                                             <td class="btm-total">
                                                                 &nbsp;{{promos.totalAmount ?? 0}}</td>
                                                         </tr>
@@ -423,10 +430,13 @@
                                                 <div class="col-md-3">
                                                     <span class="buy-grp"> Buy Group</span>
                                                 </div>
-                                                <div class="col-md-3" style="text-align: center;">
+                                                <div class="col-md-6" style="text-align: center;">
                                                     <span class="total-itemss">(MOQ:{{data.promoDetails.moq}})</span>
+                                                    <span class="txt-error"
+                                                        *ngIf="!(data.promoDetails.isItemValid)">Total Qty is less than
+                                                        MOQ</span>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <!-- <div class="col-md-6">
                                                     <button class="searchButton" href="#">
                                                         <i class="material-icons">
                                                             search
@@ -440,7 +450,7 @@
                                                             style="font-family: 'Gilroy'">Search</button>
 
                                                     </div>
-                                                </div>
+                                                </div> -->
 
                                             </div>
                                             <!-- tabels for 3rd promotions -->
@@ -475,6 +485,8 @@
                                                             </select>
 
                                                             <img src="assets/img/doubleTickes-default.svg"
+                                                                class="double-tick"
+                                                                (click)="doubleClick(data.promoDetails.stockitems, Item.Taxid)"
                                                                 alt="double-blue-tick">
                                                         </td>
                                                         <td><input type="number" placeholder="5" class="quatity-inp"
@@ -486,9 +498,11 @@
                                                         <td colspan="5" class="btm-total"><b>Total </b>(for selected
                                                             items &
                                                             quantity entered)</td>
-                                                        <td class="btm-total">&nbsp;&nbsp; &nbsp;&nbsp;{{data.promoDetails.totalQuantity ?? 0}}
+                                                        <td class="btm-total">&nbsp;&nbsp;
+                                                            &nbsp;&nbsp;{{data.promoDetails.totalQuantity ?? 0}}
                                                         </td>
-                                                        <td class="btm-total">&nbsp;{{data.promoDetails.totalAmount ?? 0}}
+                                                        <td class="btm-total">&nbsp;{{data.promoDetails.totalAmount ??
+                                                            0}}
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -508,10 +522,13 @@
                                                 <div class="col-md-3">
                                                     <span class="buy-grp"> Buy Group</span>
                                                 </div>
-                                                <div class="col-md-3" style="text-align: center;">
+                                                <div class="col-md-6" style="text-align: center;">
                                                     <span class="total-itemss">(MOQ:{{data.promoDetails.moq}})</span>
+                                                    <span class="txt-error"
+                                                        *ngIf="!(data.promoDetails.isItemValid)">Total Qty is less than
+                                                        MOQ</span>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <!-- <div class="col-md-6">
                                                     <button class="searchButton" href="#">
                                                         <i class="material-icons">
                                                             search
@@ -525,7 +542,7 @@
                                                             style="font-family: 'Gilroy'">Search</button>
 
                                                     </div>
-                                                </div>
+                                                </div> -->
 
                                             </div>
                                             <!-- tabels for 4th promotions -->
@@ -560,7 +577,10 @@
                                                             </select>
 
                                                             <img src="assets/img/doubleTickes-default.svg"
+                                                                class="double-tick"
+                                                                (click)="doubleClick(data.promoDetails.stockitems, Item.Taxid)"
                                                                 alt="double-blue-tick">
+
                                                         </td>
                                                         <td><input type="number" placeholder="5" class="quatity-inp"
                                                                 [(ngModel)]="Item.Quantity"
@@ -571,10 +591,13 @@
                                                         <td colspan="5" class="btm-total"><b>Total </b>(for selected
                                                             items &
                                                             quantity entered)</td>
-                                                           
-                                                        <td class="btm-total ">&nbsp;&nbsp;&nbsp;&nbsp;{{data.promoDetails.totalQuantity ?? 0}}
+
+                                                        <td class="btm-total ">
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;{{data.promoDetails.totalQuantity ??
+                                                            0}}
                                                         </td>
-                                                        <td class="btm-total">&nbsp;{{data.promoDetails.totalAmount ?? 0}}
+                                                        <td class="btm-total">&nbsp;{{data.promoDetails.totalAmount ??
+                                                            0}}
                                                         </td>
                                                         <td></td>
                                                     </tr>
@@ -596,6 +619,7 @@
         </div>
 
 
-        <button type="button" class="saveas-draft1" (click)="addPromoItems()">Add items</button>
+        <button type="button" class="saveas-draft1" [disabled]="isOrderPromotionValid" (click)="addPromoItems()">Add
+            items</button>
     </div>
 </div>

@@ -26,10 +26,12 @@
                     <div class="row ">
                         <div class="col-lg-3">
                             <div class="dealerr">
-                                <label class="DealerInfo-label">Dealer <span class="astr">*</span></label>
+                                <label class="DealerInfo-label">Dealer  <span class="astr">*</span></label>
                                 <ng-select disabled [items]="dealerListArray" id="dealerAllArray" name="dealerAllArray" required
                                     [virtualScroll]="true" bindLabel="customerName" bindValue="customerId"
-                                    [searchable]="true" [clearable]="false" placeholder=" select dealer"
+                                    [searchable]="true" [clearable]="false"
+                                     placeholder=" Search & select dealer" 
+                                    
                                     [(ngModel)]="customerId" (change)="onItemSelectdealers($event)">
                                 </ng-select>
                             </div>
@@ -40,7 +42,7 @@
                                 <ng-select disabled class="selectgeo" [items]="GeoGrapydropdownListdata" id="GeoGrapydropdown"
                                     name="GeoGrapydropdown" required [virtualScroll]="true" bindLabel="geographyName"
                                     bindValue="geographyId" [searchable]="true" [clearable]="false"
-                                    placeholder="select Geography" [(ngModel)]="geographyId"
+                                    placeholder="Select geography" [(ngModel)]="geographyId"
                                     (change)="onItemSelectgeo($event)">
                                 </ng-select>
                             </div>
@@ -53,7 +55,7 @@
                                 <ng-select disabled class="BillingAddress" [items]="dealersbillingAddress" id="BillingAddress"
                                     name="BillingAddress" required [virtualScroll]="true" bindLabel="Billingaddress"
                                     bindValue="BillingaddressId" [searchable]="true" [clearable]="false"
-                                    placeholder="select shippingAddress" [(ngModel)]="BillingaddressId"
+                                    placeholder="Select  billing address" [(ngModel)]="BillingaddressId"
                                     (change)="onItemSelectBillingAddress($event)">
                                 </ng-select>
                             </div>
@@ -64,14 +66,14 @@
                         <div class="col-lg-3">
                             <div class="dealerReff">
                                 <label class="DealerInfo-label">Dealer Reference No <span class="astr">*</span></label>
-                                <input disabled type="number" placeholder="Dealer Reference No" id="DealerReferenceNo"
+                                <input disabled type="number" placeholder="Enter" id="DealerReferenceNo"
                                     [(ngModel)]="DealerReferenceNo" class="form-control container input-box">
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="companyReff">
                                 <label class="DealerInfo-label">Company Reference No <span class="astr"></span></label>
-                                <input disabled type="number" placeholder="Company Reference No" id="CompanyReferenceNo"
+                                <input disabled type="number" placeholder="Enter" id="CompanyReferenceNo"
                                     [(ngModel)]="CompanyReferenceNo" class="form-control container input-box">
                             </div>
                         </div>
@@ -79,10 +81,10 @@
                             <div class="shippingAdrs">
                                 <label class="DealerInfo-label">Shipping Address <span class="astr"></span></label>
                                 <!-- <input matInput placeholder="Select shipping address" #input class="form-control container input-box" > -->
-                                <ng-select disabled class="shipingAddress" [items]="dealersShippingAddress" id="shipingAddress"
+                                <ng-select disabled class=" Select shiping address" [items]="dealersShippingAddress" id="shipingAddress"
                                     name="shipingAddress" required [virtualScroll]="true" bindLabel="address"
                                     bindValue="addressId" [searchable]="true" [clearable]="false"
-                                    placeholder="select shippingAddress" [(ngModel)]="addressId"
+                                    placeholder="Select  shipping address" [(ngModel)]="addressId"
                                     (change)="onItemSelectshippingAddress($event)">
                                 </ng-select>
                             </div>
@@ -323,7 +325,7 @@
                                 <label class="DealerInfo-label">Dealer <span class="astr">*</span></label>
                                 <ng-select [items]="dealerListArray" id="dealerAllArray" name="dealerAllArray" required
                                     [virtualScroll]="true" bindLabel="customerName" bindValue="customerId"
-                                    [searchable]="true" [clearable]="false" placeholder=" select dealer"
+                                    [searchable]="true" [clearable]="false" placeholder=" Search & select dealer"
                                     [(ngModel)]="customerId" (change)="onItemSelectdealers($event)">
                                 </ng-select>
                             </div>
@@ -334,7 +336,7 @@
                                 <ng-select class="selectgeo" [items]="GeoGrapydropdownListdata" id="GeoGrapydropdown"
                                     name="GeoGrapydropdown" required [virtualScroll]="true" bindLabel="geographyName"
                                     bindValue="geographyId" [searchable]="true" [clearable]="false"
-                                    placeholder="select Geography" [(ngModel)]="geographyId"
+                                    placeholder="Select geography" [(ngModel)]="geographyId"
                                     (change)="onItemSelectgeo($event)">
                                 </ng-select>
                             </div>
@@ -347,7 +349,7 @@
                                 <ng-select class="BillingAddress" [items]="dealersbillingAddress" id="BillingAddress"
                                     name="BillingAddress" required [virtualScroll]="true" bindLabel="Billingaddress"
                                     bindValue="BillingaddressId" [searchable]="true" [clearable]="false"
-                                    placeholder="select shippingAddress" [(ngModel)]="BillingaddressId"
+                                    placeholder="Select  billing address" [(ngModel)]="BillingaddressId"
                                     (change)="onItemSelectBillingAddress($event)">
                                 </ng-select>
                             </div>
@@ -358,14 +360,14 @@
                         <div class="col-lg-3">
                             <div class="dealerReff">
                                 <label class="DealerInfo-label">Dealer Reference No</label>
-                                <input type="text" placeholder="Dealer Reference No" id="DealerReferenceNo"
+                                <input type="text" placeholder="Enter" id="DealerReferenceNo"
                                     [(ngModel)]="DealerReferenceNo" class="form-control container input-box">
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="companyReff">
                                 <label class="DealerInfo-label">Company Reference No</label>
-                                <input type="number" placeholder="Company Reference No" id="CompanyReferenceNo"
+                                <input type="number" placeholder="Enter" id="CompanyReferenceNo"
                                     [(ngModel)]="CompanyReferenceNo" class="form-control container input-box">
                             </div>
                         </div>
@@ -376,7 +378,7 @@
                                 <ng-select class="shipingAddress" [items]="dealersShippingAddress" id="shipingAddress"
                                     name="shipingAddress" required [virtualScroll]="true" bindLabel="address"
                                     bindValue="addressId" [searchable]="true" [clearable]="false"
-                                    placeholder="select shippingAddress" [(ngModel)]="addressId"
+                                    placeholder="Select shipping address" [(ngModel)]="addressId"
                                     (change)="onItemSelectshippingAddress($event)">
                                 </ng-select>
                             </div>
@@ -604,11 +606,11 @@
                         <h3 class="addU font">{{actineLabel}} : <b>Non-Promotions</b></h3>
 
                     </div>
-                    <div class="nonpromo">
-                        <div class="row mt-3">
-                            <div class="col-lg-10">
-                                <div class="row">
-                                    <div class="col-md-3">
+                    <div class="nonpromo ">
+                        <div class="row  mt-3  spacedropdown ">
+                            <div class="col-lg-10 ">
+                                <div class="row  ">
+                                    <div class="col-md-3  dropdownborder">
                                         <div class="input-icons ">
                                             <form [formGroup]="categoryForm" class="dropDown-field">
                                                 <ng-multiselect-dropdown class="catty select_category" name="city"
@@ -633,7 +635,7 @@
                                             </form>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 dropdownborder">
                                         <div class="input-icons ">
                                             <form [formGroup]="subcategoryForm" class="dropDown-field">
                                                 <ng-multiselect-dropdown class="subcatty sub_category" name="subCategory"
@@ -661,7 +663,7 @@
                                             </form>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 dropdownborder">
                                         <div class="input-icons ">
                                             <form [formGroup]="type" class="dropDown-field">
                                                 <ng-multiselect-dropdown class="stts stts_typeselected" name="type" [placeholder]="'Type'"
@@ -689,7 +691,7 @@
                                             </form>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 dropdownborder">
                                         <div class="input-icons ">
                                             <form [formGroup]="myFormsIdentifier" class="dropDown-field">
                                                 <ng-multiselect-dropdown class="identifier identi_fier" [placeholder]="'Identifier'"
@@ -768,11 +770,11 @@
                                         <td>{{Item.classification}}</td>
                                         <td>{{Item.productSKUName}}</td>
                                         <td>{{Item.price}}</td>
-                                        <td><input type="number" placeholder="1000" class="quatity-inp"
+                                        <td><input type="text"   placeholder="Enter" class="quatity-inp"
                                                 [(ngModel)]="Item.stock"></td>
                                         <!-- <td>{{Item.stockqty}}</td> -->
                                         <td style="width:110px;">
-                                            <select class="tax-select" placeholder="select" [(ngModel)]="Item.taxid">
+                                            <select class="tax-select"  [(ngModel)]="Item.taxid">
                                                 <option value="" selected hidden>Select tax</option>
                                                 <option *ngFor="let option of taxdropdowndata"
                                                     [value]="option.taxTemplateId">
@@ -786,7 +788,7 @@
                                                 style="margin-left: 5px;">
                                         </td>
 
-                                        <td><input type="number" placeholder="5" class="quatity-inp"
+                                        <td><input type="number" placeholder="Enter" class="quatity-inp"
                                                 [(ngModel)]="Item.quantity" (keyup)="quantityChange()"></td>
                                         <td>{{(Item.quantity ?? 0) * Item.price }}</td>
                                     </tr>

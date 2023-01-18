@@ -190,7 +190,8 @@ export class AddorderpromotionsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: this.subCategoryFilter
+      // 1  allowSearchFilter: this.subCategoryFilter,
+      allowSearchFilter: true
     };
     this.dropdownSettingstypeid = {
       singleSelection: false,
@@ -199,7 +200,8 @@ export class AddorderpromotionsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: this.typeFilter
+      //2  allowSearchFilter: this.typeFilter
+      allowSearchFilter: true
     };
     this.dropdownSettingsmaterialid = {
       singleSelection: false,
@@ -465,7 +467,8 @@ if(this.confirmOrder == "Confirm") {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: this.ShowFilter
+      // 3 allowSearchFilter: this.ShowFilter
+      allowSearchFilter: true
     };
   }
   // cat select

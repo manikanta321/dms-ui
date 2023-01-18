@@ -85,6 +85,7 @@
                                             </div>
                                             <!-- tabels for 1st promotions -->
                                             <div class="label-div">
+                                                <p>sssssssdfvfghj</p>
                                                 <table id="Table1">
                                                     <tr>
                                                         <th data-sortable="true">Product Name</th>
@@ -104,19 +105,19 @@
                                                         <td><input type="number" placeholder="1000" class="quatity-inp"
                                                                 [(ngModel)]="Item.stock"></td>
                                                         <td>
-                                                            <select class="tax-select" placeholder="select"
+                                                            <select class="tax-select" placeholder="select" 
                                                                 [(ngModel)]="Item.Taxid">
-                                                                <option value="" selected hidden>Select tax</option>
-                                                                <option *ngFor="let option of taxdropdowndata"
+                                                                 <option value="" selected hidden>Select tax</option> 
+                                                                 <option *ngFor="let option of taxdropdowndata"
                                                                     [value]="option.taxTemplateId">
                                                                     {{option.taxTemplateName}}
-                                                                </option>
+                                                                </option> 
                                                             </select>
 
                                                             <img src="assets/img/doubleTickes-default.svg"
                                                                 alt="double-blue-tick">
                                                         </td>
-                                                        <td><input type="number" placeholder="5" class="quatity-inp"
+                                                        <td><input type="number" placeholder="Enter" class="quatity-inp"
                                                                 [(ngModel)]="Item.Quantity"
                                                                 (keyup)="quantityChange(data)"></td>
                                                         <td>{{(Item.Quantity ?? 0) * Item.price }}</td>
@@ -201,7 +202,7 @@
                                                             <img src="assets/img/doubleTickes-default.svg"
                                                                 alt="double-blue-tick">
                                                         </td>
-                                                        <td><input type="number" placeholder="5" class="quatity-inp"
+                                                        <td><input type="number" placeholder="Enter" class="quatity-inp"
                                                                 [(ngModel)]="Item.Quantity"
                                                                 (keyup)="quantityChange(data)"></td>
                                                         <td>{{(Item.price) * (Item.Quantity)}}</td>
@@ -294,7 +295,7 @@
                                                                 <img src="assets/img/doubleTickes-default.svg"
                                                                     alt="double-blue-tick">
                                                             </td>
-                                                            <td><input type="number" placeholder="5" class="quatity-inp"
+                                                            <td><input type="number" placeholder="Enter" class="quatity-inp"
                                                                     [(ngModel)]="Item.Quantity"
                                                                     (keyup)="quantityChange(data)"></td>
                                                             <td>{{(Item.Quantity ?? 0) * Item.price }}</td>
@@ -388,7 +389,7 @@
                                                                 <img src="assets/img/doubleTickes-default.svg"
                                                                     alt="double-blue-tick">
                                                             </td>
-                                                            <td><input type="number" placeholder="5" class="quatity-inp"
+                                                            <td><input type="number" placeholder="Enter" class="quatity-inp"
                                                                     [(ngModel)]="Item.Quantity"
                                                                     (keyup)="quantityChange(data)"></td>
                                                             <td>{{(Item.Quantity ?? 0) * Item.price }}</td>
@@ -477,7 +478,7 @@
                                                             <img src="assets/img/doubleTickes-default.svg"
                                                                 alt="double-blue-tick">
                                                         </td>
-                                                        <td><input type="number" placeholder="5" class="quatity-inp"
+                                                        <td><input type="number" placeholder="Enter" class="quatity-inp"
                                                                 [(ngModel)]="Item.Quantity"
                                                                 (keyup)="quantityChange(data)"></td>
                                                         <td>{{(Item.price) * (Item.Quantity)}}</td>
@@ -562,7 +563,7 @@
                                                             <img src="assets/img/doubleTickes-default.svg"
                                                                 alt="double-blue-tick">
                                                         </td>
-                                                        <td><input type="number" placeholder="5" class="quatity-inp"
+                                                        <td><input type="number" placeholder="Enter" class="quatity-inp"
                                                                 [(ngModel)]="Item.Quantity"
                                                                 (keyup)="quantityChange(data)"></td>
                                                         <td>{{(Item.price) * (Item.Quantity)}}</td>

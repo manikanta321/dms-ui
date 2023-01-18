@@ -1259,7 +1259,7 @@ mat-sidenav {
           box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
           /* // transition: 0.2s  ease-in-out; */
           position: absolute;
-          right: 0px;
+          right: 4px;
           bottom: -3px;
       }
       .dropdown-placeholder {

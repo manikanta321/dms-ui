@@ -36,7 +36,7 @@
 
                                 <div class="fontcolor">
                                     <div class="row">
-                                        <div class="col-4 ">
+                                        <div class="col-3 ">
                                             <label>Name<span>*</span></label>
                                             <br>
                                             <input type="text" formControlName="CustomerName"
@@ -47,7 +47,7 @@
                                                 Name is required
                                             </span>
                                         </div>
-                                        <div class="col-4 ">
+                                        <div class="col-3 ">
                                             <label>Email-ID<span>*</span></label>
                                             <br>
                                             <input type="text" formControlName="Email" class="addDelercols form-control"
@@ -57,7 +57,7 @@
                                                 Email is required
                                             </span>
                                         </div>
-                                        <div class="col-4 ">
+                                        <div class="col-3 ">
                                             <label>Code<span>*</span></label>
                                             <br>
                                             <input type="text" formControlName="Code" class="addDelercolss form-control"
@@ -67,11 +67,7 @@
                                                 Code is required
                                             </span>
                                         </div>
-
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-4 ">
+                                        <div class="col-3 " style="margin-left: -6px;">
                                             <label>Website<span>*</span></label>
                                             <br>
                                             <input type="text" formControlName="website"
@@ -83,7 +79,10 @@
                                                Website is required
                                            </span>
                                         </div>
-                                        <div class="col-4 ">
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-3">
                                             <label>Phone No<span>*</span></label>
                                             <br>
                                             <input type="text" formControlName="Phoneno"
@@ -94,7 +93,7 @@
                                                Phone No is required
                                            </span>
                                         </div>
-                                        <div class="col-4 ">
+                                        <div class="col-3">
                                             <label>Company ID</label>
                                             <br>
                                             <input type="text" formControlName="company_id"
@@ -102,10 +101,17 @@
                                                 placeholder="Enter your company ID"
                                                 >
                                         </div>
+                                        <div class="col-6 " style="bottom:13px;right: 6px;">
+                                            <label class="otherId">Other Identifer</label>
+                                            <br>
+                                            <input type="text" formControlName="OtherIdentifier"
+                                                class="addDelercols form-control"
+                                                placeholder="Enter and select" >
+                                            <img src="../assets/img/search.png" class="search">
+                                        </div>
                                     </div>
-                                    <div class="row">
+                                    <!-- <div class="row">
                                         <div class="col-4">
-                                            <!-- <input type="text"> -->
                                         </div>
                                         <div class="col-4 ">
                                             <label class="otherId">Other Identifer</label>
@@ -116,9 +122,8 @@
                                             <img src="../assets/img/search.png" class="search">
                                         </div>
                                         <div class="col-4 ">
-                                            <!-- <input type="text"> -->
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!-- AdminUser -->
                                 <ng-template matStepLabel>AdminUser</ng-template>

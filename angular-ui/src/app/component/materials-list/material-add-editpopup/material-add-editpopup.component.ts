@@ -116,7 +116,7 @@ export class MaterialAddEditpopupComponent {
   RegionExpanded = true;
   CityExpanded = true;
   CountryName: any;
-  showDiv: boolean = false
+  showDiv: boolean = true;
   updateOrSave: boolean = false
   // geograhies related variables
 

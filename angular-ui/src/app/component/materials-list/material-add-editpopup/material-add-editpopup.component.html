@@ -128,17 +128,17 @@
               <div class="row">
               <div class="col-md-5">
                 <div class="description">
-                  <label>Description <span>*</span></label>
+                  <label>Description</label>
                 </div>
                 <textarea  rows="4"id="nameDescp" name="nameDescp" placeholder="Describe the material"
                   (keyup)="onKeyDesc($event)" class="materialDesc" [(ngModel)]="stockItemDesc"
                   #nameDescp="ngModel"></textarea>
-                <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
+                <!-- <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
                   *ngIf="nameDescp.invalid && (nameDescp.dirty || nameDescp.touched)" class="alert">
                   <span style="color:red;position: relative;" *ngIf="nameDescp.errors?.['required']">
                     *Description is required.
                   </span>
-                </p>
+                </p> -->
               </div>
               <div class="col-md-3">
                 <div class="imageofm">
@@ -188,12 +188,12 @@
                 </div>
 
                 <div class="expiryperiod">
-                  <label> Expiry Period (in months)<span>*</span></label>
+                  <label> Expiry Period (in months)</label>
                 </div>
                 <input type="text" id="matExpiry" name="matExpiry" (keyup)="onKeyExpry($event)"
                   class="form-control container na-placeholder" required placeholder="NA" [(ngModel)]="expiryDate" pattern="^[0-9]*$"
                   #matExpiry="ngModel">
-                <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
+                <!-- <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
                   *ngIf="matExpiry.invalid && (matExpiry.dirty || matExpiry.touched)" class="alert">
                   <span  class="errormsg" *ngIf="matExpiry.errors?.['required']">
                     *Expiry period is required.
@@ -201,7 +201,7 @@
                   <span *ngIf="matExpiry.errors?.['pattern']" class="patternValidation">
                     *Only Numbers allowed 
                   </span> 
-                </p>
+                </p> -->
                   <!-- <div *ngIf="matExpiry.errors?.['pattern']">
                     <span class="patternValidation">Only Numbers allowed </span>
                   </div> -->
@@ -266,17 +266,17 @@
               </div>
               <div class="col-md-6">
                 <div class="globalcode">
-                  <label>Global Code<span>*</span></label>
+                  <label>Global Code</label>
                 </div>
                 <input required (keyup)="onKeyGloabal($event)" id="globalCode" name="globalCode" matInput
                   placeholder="Enter product global code" #input class="form-control container global-codeplaceholder"
                   [(ngModel)]="gloabKey" #globalCode="ngModel">
-                <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
+                <!-- <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
                   *ngIf="globalCode.invalid && (globalCode.dirty || globalCode.touched)" class="alert">
                   <span  class="errormsg" *ngIf="globalCode.errors?.['required']">
                     *Global Code is required.
                   </span>
-                </p>
+                </p> -->
               </div>
               <div class="col-md-6">
                 <div class="sku">
@@ -294,18 +294,18 @@
               <div class="col-md-6">
 
                 <div class="shortcode">
-                  <label>Short Code<span>*</span></label>
+                  <label>Short Code</label>
                 </div>
 
                 <input required (keyup)="onKeyShortCode($event)" id="sCode" name="sCode" matInput
                   placeholder="Enter product short code" #input class="form-control container shortcode-placeholder"
                   [(ngModel)]="shortCode" #sCode="ngModel">
-                <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
+                <!-- <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
                   *ngIf="sCode.invalid && (sCode.dirty || sCode.touched)" class="alert">
                   <span  class="errormsg" *ngIf="sCode.errors?.['required']">
                     *Short Code is required.
                   </span>
-                </p>
+                </p> -->
               </div>
               <div class="col-md-6">
                 <div class="productg">
@@ -332,17 +332,17 @@
               </div>
               <div class="col-md-6">
                 <div class="manualsort">
-                  <label>Manual Sort Order<span>*</span></label>
+                  <label>Manual Sort Order</label>
                 </div>
                 <input required (keyup)="onKeySort($event)" id="manualSorto" name="manualSorto" matInput
                   placeholder="Enter the sort order" #input class="form-control container sort-placeh"
                   [(ngModel)]="Sort" #manualSorto="ngModel">
-                <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
+                <!-- <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
                   *ngIf="manualSorto.invalid && (manualSorto.dirty || manualSorto.touched)" class="alert">
                   <span  class="errormsg" *ngIf="manualSorto.errors?.['required']">
                     *Manual Sort order is required.
                   </span>
-                </p>
+                </p> -->
               </div>
               <div class="col-md-6">
                 <div class="productsg">
@@ -372,18 +372,18 @@
 
               <div class="col-md-6">
                 <div class="productlink">
-                  <label>Product Link<span>*</span></label>
+                  <label>Product Link</label>
                 </div>
 
                 <input required (keyup)="onKeyAddSP($event)" id="productL" name="productL" matInput
                   placeholder="Paste the link" #input class="form-control container link-placeh" [(ngModel)]="AddSP"
                   #productL="ngModel">
-                <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
+                <!-- <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
                   *ngIf="productL.invalid && (productL.dirty || productL.touched)" class="alert">
                   <span  class="errormsg" *ngIf="productL.errors?.['required']">
                     *Product link is required.
                   </span>
-                </p>
+                </p> -->
               </div>
 
               <div class="col-md-12">

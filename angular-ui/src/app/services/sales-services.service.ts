@@ -65,6 +65,12 @@ public getBulkSalesUpload(data){
   return this.http.post<any>(this.userurl + 'SaleApi/AddBulkSaleOrder', data);
 
 }
+
+  // http://13.126.235.145:801/api/OrdersApi/AddBulkShipOrder
+  public getShipmentBulkUpload(data){
+    return this.http.post<any>(this.userurl + 'OrdersApi/AddBulkShipOrder', data);
+
+  }
 // http://13.126.235.145:801/api/SaleApi/SaveBulkSaleOrder 
 public SaveBulkSalesUpload(data){
   return this.http.post<any>(this.userurl + 'SaleApi/SaveBulkSaleOrder', data);

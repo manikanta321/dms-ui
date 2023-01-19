@@ -411,3 +411,62 @@ margin-right: -1px;
 
 padding-left: 5px;
 }
+::ng-deep.dealers .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
+  display: none;
+    }
+::ng-deep.dealers .multiselect-dropdown .dropdown-btn .selected-item {
+  background: #D23F00 !important;
+  font-size: 12px;
+}
+.dealers .multiselect-dropdown .dropdown-btn .selected-item {
+  background: #D23F00 !important;
+  font-size: 12px;
+}
+::ng-deep .dealers .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+  background: #D23F00 !important;
+}
+.dealers-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #D23F00 !important;
+}
+::ng-deep.dlsr  .dropdown-btn span .ng-star-inserted {
+  position: absolute !important;
+right: 62px !important;
+bottom: 0px;
+top: 50px !important;
+
+
+
+ width: 42px;
+border: 1px solid #337ab7;
+ background: #D23F00 !important;
+   font-size: 12px;
+   box-shadow: 1px 1px #959595;
+   color: #fff;
+   height: 20px;
+   border-radius: 15px;
+text-align: center;
+margin-left: 10px;
+margin-right: -1px;
+
+padding-left: 5px;
+}
+::ng-deep.shipment .mat-form-field-appearance-fill .mat-form-field-flex{
+  border-radius: 10px;
+ /* padding: .75em .75em 0 .75em;  */
+ padding: 5px;
+ background: white !important;
+ border: 1px black solid;
+}
+::ng-deep.invoice .mat-form-field-appearance-fill .mat-form-field-flex{
+  border-radius: 10px;
+ /* padding: .75em .75em 0 .75em;  */
+ padding: 5px;
+ background: white !important;
+ border: 1px black solid;
+}
+.searchReceipts{
+  width: 17px;
+  position: relative;
+  left: 80%;
+  top: -2px;
+  }

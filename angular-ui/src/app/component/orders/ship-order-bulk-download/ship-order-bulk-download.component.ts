@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridApi, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
+import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridApi, GridReadyEvent, RowValueChangedEvent, SideBarDef, ColGroupDef } from 'ag-grid-community';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
 import { UserService } from 'src/app/services/user.service';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
@@ -37,6 +37,15 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
   dealerss:any = [];
   shipmentDatalist:any = [];
   selectedItems: any = [];
+  shipmentData:any;
+  receiptData:any;
+  shipDownload:boolean = false;
+  receiptDownload:boolean = false;
+  startDateShip:any = '';
+  endDateShip:any = '';
+  startDateInvoice:any = '';
+  endDateInvoice:any = '';
+  receiptDatalist:any = [];
   columnDefs: ColDef[] = [
     {  headerName: "Order No.",
        field: 'orderNUmber',      tooltipField:"orderNUmber",type: ['nonEditableColumn']
@@ -61,6 +70,42 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
   {  headerName: "Completed Value",
       field: 'compleatedValue',      tooltipField:"compleatedValue",type: ['nonEditableColumn']
     },
+  
+  ];
+  columnReceiptDefs: (ColDef| ColGroupDef)[] = [
+    {  headerName: "Shipment No.",minWidth:160,
+    field: 'shipmentNumber',      tooltipField:"shipmentNumber",
+   },
+   {  headerName: "Shipment Date",minWidth:160,
+   field: 'shipmentDate',      tooltipField:"shipmentDate",
+  },
+    {  headerName: "Order No.",minWidth:160,
+       field: 'customerPONumber',      tooltipField:"customerPONumber",
+      },
+  
+    {   headerName: "Order Date",minWidth:160,
+      field: 'orderDate',      tooltipField:"orderDate",
+      type: ['nonEditableColumn']},
+  
+      {   headerName: "Dealer",minWidth:160,
+      field: 'dealer',type: ['nonEditableColumn'],      tooltipField:"dealer",
+    },
+      {  headerName: "Invoice No.",minWidth:160,
+      field: 'invoiceNumber',      tooltipField:"invoiceNumber",
+    }, 
+      {  headerName: "Invoice Date",minWidth:160,
+      field: 'invoiceDate',      tooltipField:"invoiceDate",
+    }, 
+   
+    {  headerName: "Total Items ",
+    field:"totalitems",tooltipField:"totalitems", resizable:true,
+            children:[
+          {headerName: "In Order", field: 'poQty',  tooltipField:"poQty",    minWidth:50, resizable:true},
+          {headerName: "In Shipment", field: 'shipQty',      tooltipField:"shipQty",minWidth:50, resizable:true},
+          {headerName: "Received", field: 'received',      tooltipField:"received",minWidth:50, resizable:true},
+        ]
+    
+      },
   
   ];
   public defaultColDef: ColDef = {
@@ -184,6 +229,8 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
     this.dealerOrder();
     this.geogrphyOrder();
     this.getDownloadBulkUpload();
+    this.OrderDownload();
+    this.receiptList();
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -232,6 +279,21 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
       this.paginationScrollCount = this.shipmentDatalist.length;
     }
   }
+  handleScrollReceipt(event) {
+    if(this.instancePopup && this.instancePopup.isOpen){
+      this.instancePopup.togglePopup();
+      this.instancePopup = null;
+    }
+    
+    const grid = document.getElementById('gridContainer');
+    if (grid) {
+      const gridBody = grid.querySelector('.ag-body-viewport') as any;
+      const scrollPos = gridBody.offsetHeight + event.top;
+      const scrollDiff = gridBody.scrollHeight - scrollPos;
+      this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
+      this.paginationScrollCount = this.receiptDatalist.length;
+    }
+  }
   getDownloadBulkUpload() {
     let data = {
       GeographyId:[],
@@ -242,6 +304,20 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
     this.orders.getDownloadShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
       console.log("Response Data",this.shipmentDatalist)
+    });
+  }
+  receiptList(){
+    let data = {
+      DealerId:[],
+      ShipmentStartDate:"",
+      ShipmentEndDate:"",
+      InvoiceStartDate:"",
+      InvoiceEndDate:"",
+      search:""
+    }
+    this.orders.getOrderReceiptList(data).subscribe((res) => {
+      this.receiptDatalist = res.response;
+      console.log("Response Receipt",this.receiptDatalist)
     });
   }
   customDatePickerEvent(eventChange) {
@@ -258,6 +334,44 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
     this.orders.getDownloadShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
       console.log("Response Data",this.shipmentDatalist)
+    });
+  }
+  customShipDatePickerEvent(eventChange){
+    this.selectedDateRange = eventChange.selectedDate;
+    this.startDateShip = this.selectedDateRange.startDate;
+    this.endDateShip = this.selectedDateRange.endDate;
+    console.log(this.selectedDateRange);
+    let data = {
+      DealerId:this.dealerss,
+      GeographyId:this.geographySelected,
+      ShipmentStartDate:this.startDateShip,
+      ShipmentEndDate:this.endDateShip,
+      InvoiceStartDate:this.startDateInvoice,
+      InvoiceEndDate:this.endDateInvoice,
+      search:''
+    }
+    this.orders.getOrderReceiptList(data).subscribe((res) => {
+      this.receiptDatalist = res.response;
+      console.log("Response",this.receiptDatalist)
+    });
+  }
+  customInvoiceDatePickerEvent(eventChange){
+    this.selectedDateRange = eventChange.selectedDate;
+    this.startDateInvoice = this.selectedDateRange.startDate;
+    this.endDateInvoice = this.selectedDateRange.endDate;
+    console.log(this.selectedDateRange);
+    let data = {
+      DealerId:this.dealerss,
+      GeographyId:this.geographySelected,
+      ShipmentStartDate:this.startDateShip,
+      ShipmentEndDate:this.endDateShip,
+      InvoiceStartDate:this.startDateInvoice,
+      InvoiceEndDate:this.endDateInvoice,
+      search:''
+    }
+    this.orders.getOrderReceiptList(data).subscribe((res) => {
+      this.receiptDatalist = res.response;
+      console.log("Response",this.receiptDatalist)
     });
   }
   dealerOrder(){
@@ -282,6 +396,18 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
         itemsShowLimit: 1,
         allowSearchFilter: true
       };
+  }
+  OrderDownload() {
+    this.shipmentData = sessionStorage.getItem("bulkShipDownload");
+    if(this.shipmentData != '') {
+      this.shipDownload =true;
+      this.receiptDownload = false;
+    }
+   this.receiptData = sessionStorage.getItem("OrderReceiptDownload");
+   if(this.receiptData != '') {
+    this.shipDownload = false;
+    this.receiptDownload = true;
+  }
   }
   DealerorderSelect(item: any){
     this.dealerss.push(item.customerId);
@@ -339,7 +465,138 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
       console.log("Response Data",this.shipmentDatalist)
     });
   }
-
+  DealerorderReceiptSelect(item: any){
+    this.dealerss.push(item.customerId);
+    let data = {
+      DealerId:this.dealerss,
+      ShipmentStartDate:this.startDateShip,
+      ShipmentEndDate:this.endDateShip,
+      InvoiceStartDate:this.startDateInvoice,
+      InvoiceEndDate:this.endDateInvoice,
+      search: ''
+    }
+    this.orders.getOrderReceiptList(data).subscribe((res) => {
+      this.receiptDatalist = res.response;
+      console.log("Response",this.receiptDatalist)
+    });
+  }
+  DealerReceiptDeselect(item:any){
+    console.log(item)
+    this.dealerss.forEach((element, index) => {
+      if (element == item.customerId) this.dealerss.splice(index, 1);
+    });
+    let data = {
+      DealerId:this.dealerss,
+      ShipmentStartDate:this.startDateShip,
+      ShipmentEndDate:this.endDateShip,
+      InvoiceStartDate:this.startDateInvoice,
+      InvoiceEndDate:this.endDateInvoice,
+      search: ''
+    }
+    this.orders.getOrderReceiptList(data).subscribe((res) => {
+      this.receiptDatalist = res.response;
+      console.log("Response",this.receiptDatalist)
+    });
+  }
+  DealerReceiptDeselectAll(item:any){
+    this.dealerss = [];
+    let data = {
+      DealerId:this.dealerss,
+      ShipmentStartDate:this.startDateShip,
+      ShipmentEndDate:this.endDateShip,
+      InvoiceStartDate:this.startDateInvoice,
+      InvoiceEndDate:this.endDateInvoice,
+      search: ''
+    }
+    this.orders.getOrderReceiptList(data).subscribe((res) => {
+      this.receiptDatalist = res.response;
+      console.log("Response",this.receiptDatalist)
+    });
+  }
+  DealerorderReceiptSelectAll(item:any){
+    this.dealerss = this.dealerAllArray;
+    console.log("AllDealers",this.dealerss);
+    let data = {
+      DealerId:this.dealerss,
+      ShipmentStartDate:this.startDateShip,
+      ShipmentEndDate:this.endDateShip,
+      InvoiceStartDate:this.startDateInvoice,
+      InvoiceEndDate:this.endDateInvoice,
+      search: ''
+    }
+    this.orders.getOrderReceiptList(data).subscribe((res) => {
+      this.receiptDatalist = res.response;
+      console.log("Response",this.receiptDatalist)
+    });
+  }
+  geographyReceiptselect(item: any) {
+    this.geographySelected.push(item.geographyId);
+    console.log("geographics", this.geographySelected);
+    let data = {
+      DealerId:this.dealerss,
+      GeographyId:this.geographySelected,
+      ShipmentStartDate:this.startDateShip,
+      ShipmentEndDate:this.endDateShip,
+      InvoiceStartDate:this.startDateInvoice,
+      InvoiceEndDate:this.endDateInvoice,
+      search: ''
+    }
+    this.orders.getOrderReceiptList(data).subscribe((res) => {
+      this.receiptDatalist = res.response;
+      console.log("Response",this.receiptDatalist)
+    });
+  }
+  geographyReceiptDeselect(item: any) {
+    this.geographySelected.forEach((element, index) => {
+      if (element == item.geographyId) this.geographySelected.splice(index, 1);
+    });
+    let data = {
+      DealerId:this.dealerss,
+      GeographyId:this.geographySelected,
+      ShipmentStartDate:this.startDateShip,
+      ShipmentEndDate:this.endDateShip,
+      InvoiceStartDate:this.startDateInvoice,
+      InvoiceEndDate:this.endDateInvoice,
+      search: ''
+    }
+    this.orders.getOrderReceiptList(data).subscribe((res) => {
+      this.receiptDatalist = res.response;
+      console.log("Response",this.receiptDatalist)
+    });
+  }
+  geographyReceiptDeselectAll(item: any) {
+    this.geographySelected = [];
+    let data = {
+      DealerId:this.dealerss,
+      GeographyId:this.geographySelected,
+      ShipmentStartDate:this.startDateShip,
+      ShipmentEndDate:this.endDateShip,
+      InvoiceStartDate:this.startDateInvoice,
+      InvoiceEndDate:this.endDateInvoice,
+      search: ''
+    }
+    this.orders.getOrderReceiptList(data).subscribe((res) => {
+      this.receiptDatalist = res.response;
+      console.log("Response",this.receiptDatalist)
+    });
+  }
+  geographyReceiptselectAll(item: any) {
+    this.geographySelected = this.geoAllarray;
+    console.log("geographics", this.geographySelected);
+    let data = {
+      DealerId:this.dealerss,
+      GeographyId:this.geographySelected,
+      ShipmentStartDate:this.startDateShip,
+      ShipmentEndDate:this.endDateShip,
+      InvoiceStartDate:this.startDateInvoice,
+      InvoiceEndDate:this.endDateInvoice,
+      search: ''
+    }
+    this.orders.getOrderReceiptList(data).subscribe((res) => {
+      this.receiptDatalist = res.response;
+      console.log("Response",this.receiptDatalist)
+    });
+  }
 
   geogrphyOrder(){
     this.user.getGeographies().subscribe((res: any) => {
@@ -423,6 +680,33 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
     // console.log('rolefilter', this.userTypes)
     // console.log('onItemSelect', item);
   }
+  Receiptrefresh() {
+    this.dealerForm = this.fb.group({
+      dealer: [this.selectedItems]
+    });
+    this.geographyForm = this.fb.group({
+      geography: [this.selectedItems]
+    });
+    this.dealerss = [];
+    this.geographySelected = [];
+    this.startDateShip = '';
+    this.endDateShip = '';
+    this.startDateInvoice = '';
+    this.endDateInvoice = '';
+    let data = {
+      DealerId:this.dealerss,
+      GeographyId:this.geographySelected,
+      ShipmentStartDate:this.startDateShip,
+      ShipmentEndDate:this.endDateShip,
+      InvoiceStartDate:this.startDateInvoice,
+      InvoiceEndDate:this.endDateInvoice,
+      search: ''
+    }
+    this.orders.getOrderReceiptList(data).subscribe((res) => {
+      this.receiptDatalist = res.response;
+      console.log("Response",this.receiptDatalist)
+    });
+  }
   refresh() {
     this.dealerForm = this.fb.group({
       dealer: [this.selectedItems]
@@ -445,8 +729,7 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
       console.log("Response Data",this.shipmentDatalist)
     });
   }
-  shipmentDownload() {
+  bulkDownload() {
     this.gridApi.exportDataAsCsv();
-
   }
 }

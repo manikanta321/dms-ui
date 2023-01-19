@@ -64,9 +64,10 @@
                                                 </div>
                                                 <div class="col-md-6" style="text-align: center;">
                                                     <span class="total-itemss">Total Items:({{promos.maxVolume}})
-                                                        {{data.promoDetails.buyGroupsQty}}
                                                         (MOQ:{{promos.moq}})</span>
-                                                    <span class="txt-error" *ngIf="!(promos.isItemValid)">Total Qty is
+                                                    <span class="txt-error"
+                                                        *ngIf="!(promos.isItemValid) && data.showWarningMsg">Total Qty
+                                                        is
                                                         less than MOQ</span>
                                                 </div>
                                                 <!-- <div class="col-md-6">
@@ -88,7 +89,7 @@
                                             </div>
                                             <!-- tabels for 1st promotions -->
                                             <div class="label-div">
-                                                <p>sssssssdfvfghj</p>
+                                                <!-- <p>sssssssdfvfghj</p> -->
                                                 <table id="Table1">
                                                     <tr>
                                                         <th data-sortable="true">Product Name</th>
@@ -108,13 +109,13 @@
                                                         <td><input type="number" placeholder="1000" class="quatity-inp"
                                                                 [(ngModel)]="Item.stock"></td>
                                                         <td>
-                                                            <select class="tax-select" placeholder="select" 
+                                                            <select class="tax-select" placeholder="select"
                                                                 [(ngModel)]="Item.Taxid">
-                                                                 <option value="" selected hidden>Select tax</option> 
-                                                                 <option *ngFor="let option of taxdropdowndata"
+                                                                <option value="" selected hidden>Select tax</option>
+                                                                <option *ngFor="let option of taxdropdowndata"
                                                                     [value]="option.taxTemplateId">
                                                                     {{option.taxTemplateName}}
-                                                                </option> 
+                                                                </option>
                                                             </select>
 
                                                             <img src="assets/img/doubleTickes-default.svg"
@@ -123,7 +124,7 @@
                                                         </td>
                                                         <td><input type="number" placeholder="Enter" class="quatity-inp"
                                                                 [(ngModel)]="Item.Quantity"
-                                                                (keyup)="quantityChange(data)"></td>
+                                                                (keyup)="quantityChange(data, Item)"></td>
                                                         <td>{{(Item.Quantity ?? 0) * Item.price }}</td>
                                                     </tr>
                                                     <tr class="bottom-table">
@@ -140,14 +141,14 @@
                                     </div>
                                     <!-- set groups -->
                                     <div *ngFor="let promos of data.promoDetails.getGroups ">
-                                        <div class="buysets text-center">
+                                        <div class="buysets text-center sub-heading">
                                             <h4 class="buysetHead"><b> {{data.promoDetails.getGroups.length != 0 ?
                                                     'GETSETS'
                                                     :''}} </b> </h4>
-                                            <div class="text-center" *ngIf="data.promoDetails.getGroupsQty"
+                                            <div class="text-error-qty "
+                                                *ngIf="data.promoDetails.getGroupsQty || data.promoDetails.buyGroupsQty"
                                                 [ngClass]="{ 'txt-error': data.promoDetails.getGroupsQty != data.promoDetails.buyGroupsQty }">
-                                                Total Selected qty {{data.promoDetails.getGroupsQty}}
-                                                ({{data.promoDetails.buyGroupsQty}}) </div>
+                                                (Total Get Qty {{data.promoDetails.getGroupsQty}}) </div>
                                         </div>
                                         <div class="buyGrp 1">
                                             <!-- headingds for 1st promotions -->
@@ -156,7 +157,9 @@
                                                     <span class="buy-grp"> Get Group {{promos.groupId}}</span>
                                                 </div>
                                                 <div class="col-md-6" style="text-align: center;">
-                                                    <span class="total-itemss">Total Items:({{promos.maxVolume}})</span>
+                                                    <span class="total-itemss">Total Items:({{promos.maxVolume}}) <span
+                                                            class="ml-1" style="color: #000;">(FOC
+                                                            {{data.promoDetails.buyGroupsQty}})</span></span>
                                                 </div>
                                                 <!-- <div class="col-md-6">
                                                     <button class="searchButton" href="#">
@@ -210,7 +213,7 @@
                                                         </td>
                                                         <td><input type="number" placeholder="Enter" class="quatity-inp"
                                                                 [(ngModel)]="Item.Quantity"
-                                                                (keyup)="quantityChange(data)"></td>
+                                                                (keyup)="quantityChange(data, Item)"></td>
                                                         <td>{{(Item.price) * (Item.Quantity)}}</td>
                                                     </tr>
                                                     <tr class="bottom-table">
@@ -247,6 +250,9 @@
                                                     <div class="col-md-6" style="text-align: center;">
                                                         <span class="total-itemss">Total Items:({{promos.maxVolume}})
                                                             (MOQ:{{promos.moq}})</span>
+                                                        <span class="txt-error" *ngIf="!(promos.isItemValid)">Total Qty
+                                                            is
+                                                            less than MOQ</span>
                                                     </div>
                                                     <!-- <div class="col-md-6">
                                                         <button class="searchButton" href="#">
@@ -281,14 +287,17 @@
                                                         <tr class="table-row" *ngFor="let Item of promos.stockitemid">
                                                             <td><input type="checkbox"
                                                                     [checked]="Item.isProductSelected"
+                                                                    [disabled]="!promos.isEnable"
                                                                     (change)="checkboxChange($event,Item, data)">{{Item.stockitemname}}
                                                             </td>
                                                             <td>{{Item.productSKUName}}</td>
                                                             <td>{{Item.price}}</td>
-                                                            <td><input type="number" placeholder="1000" [disabled]="!promos.isEnable"
-                                                                    class="quatity-inp" [(ngModel)]="Item.stock"></td>
+                                                            <td><input type="number" placeholder="1000"
+                                                                    [disabled]="!promos.isEnable" class="quatity-inp"
+                                                                    [(ngModel)]="Item.stock"></td>
                                                             <td>
-                                                                <select class="tax-select" placeholder="select" [disabled]="!promos.isEnable"
+                                                                <select class="tax-select" placeholder="select"
+                                                                    [disabled]="!promos.isEnable"
                                                                     [(ngModel)]="Item.Taxid">
                                                                     <option value="" selected hidden>Select tax</option>
                                                                     <option *ngFor="let option of taxdropdowndata"
@@ -297,12 +306,14 @@
                                                                     </option>
                                                                 </select>
 
-                                                                <img src="assets/img/doubleTickes-default.svg" (click)="doubleClick(promos.stockitemid, Item.Taxid)"
+                                                                <img src="assets/img/doubleTickes-default.svg"
+                                                                    (click)="doubleClick(promos.stockitemid, Item.Taxid)"
                                                                     alt="double-blue-tick">
                                                             </td>
                                                             <td><input type="number" placeholder="5" class="quatity-inp"
-                                                                    [(ngModel)]="Item.Quantity" [disabled]="!promos.isEnable"
-                                                                    (keyup)="quantityChange(data)"></td>
+                                                                    [(ngModel)]="Item.Quantity"
+                                                                    [disabled]="!promos.isEnable"
+                                                                    (keyup)="quantityChange(data, Item)"></td>
                                                             <td>{{(Item.Quantity ?? 0) * Item.price }}</td>
                                                         </tr>
                                                         <tr class="bottom-table">
@@ -325,9 +336,13 @@
                                         </div>
 
                                     </div>
-                                    <div class="buysets text-center">
+                                    <div class="buysets text-center sub-heading">
                                         <h4 class="buysetHead"><b> {{data.promoDetails.getSets.length != 0 ? 'GET SETS'
                                                 :''}} </b> </h4>
+                                        <div class="text-error-qty "
+                                            *ngIf="data.promoDetails.getGroupsQty || data.promoDetails.buyGroupsQty"
+                                            [ngClass]="{ 'txt-error': data.promoDetails.getGroupsQty != data.promoDetails.buyGroupsQty }">
+                                            (Total Get Qty {{data.promoDetails.getGroupsQty}}) </div>
                                     </div>
                                     <!-- set groups -->
                                     <div *ngFor="let setItem of data.promoDetails.getSets;let j=index">
@@ -341,7 +356,8 @@
                                                     </div>
                                                     <div class="col-md-6" style="text-align: center;">
                                                         <span class="total-itemss">Total Items:({{promos.maxVolume}})
-                                                            (MOQ:{{promos.moq}})</span>
+                                                            <span class="ml-1">(FOC
+                                                                {{data.promoDetails.buyGroupsQty}})</span></span>
                                                     </div>
                                                     <!-- <div class="col-md-6">
                                                         <button class="searchButton" href="#">
@@ -374,16 +390,18 @@
                                                             <th data-sortable="false">Amount</th>
                                                         </tr>
                                                         <tr class="table-row" *ngFor="let Item of promos.stockitemid">
-                                                            <td><input type="checkbox"
+                                                            <td><input type="checkbox" [disabled]="!promos.isEnable"
                                                                     [checked]="Item.isProductSelected"
                                                                     (change)="checkboxChange($event,Item, data)">{{Item.stockitemname}}
                                                             </td>
                                                             <td>{{Item.productSKUName}}</td>
                                                             <td>{{Item.price}}</td>
-                                                            <td><input type="number" placeholder="1000" [disabled]="!promos.isEnable"
-                                                                    class="quatity-inp" [(ngModel)]="Item.stock"></td>
+                                                            <td><input type="number" placeholder="1000"
+                                                                    [disabled]="!promos.isEnable" class="quatity-inp"
+                                                                    [(ngModel)]="Item.stock"></td>
                                                             <td>
-                                                                <select class="tax-select" placeholder="select" [disabled]="!promos.isEnable"
+                                                                <select class="tax-select" placeholder="select"
+                                                                    [disabled]="!promos.isEnable"
                                                                     [(ngModel)]="Item.Taxid">
                                                                     <option value="" selected hidden>Select tax</option>
                                                                     <option *ngFor="let option of taxdropdowndata"
@@ -392,12 +410,14 @@
                                                                     </option>
                                                                 </select>
 
-                                                                <img src="assets/img/doubleTickes-default.svg" (click)="doubleClick(promos.stockitemid, Item.Taxid)"
+                                                                <img src="assets/img/doubleTickes-default.svg"
+                                                                    (click)="doubleClick(promos.stockitemid, Item.Taxid)"
                                                                     alt="double-blue-tick">
                                                             </td>
-                                                            <td><input type="number" placeholder="5" class="quatity-inp" [disabled]="!promos.isEnable"
+                                                            <td><input type="number" placeholder="5" class="quatity-inp"
+                                                                    [disabled]="!promos.isEnable"
                                                                     [(ngModel)]="Item.Quantity"
-                                                                    (keyup)="quantityChange(data)"></td>
+                                                                    (keyup)="quantityChange(data, Item)"></td>
                                                             <td>{{(Item.Quantity ?? 0) * Item.price }}</td>
                                                         </tr>
                                                         <tr class="bottom-table">
@@ -434,7 +454,8 @@
                                                 <div class="col-md-6" style="text-align: center;">
                                                     <span class="total-itemss">(MOQ:{{data.promoDetails.moq}})</span>
                                                     <span class="txt-error"
-                                                        *ngIf="!(data.promoDetails.isItemValid)">Total Qty is less than
+                                                        *ngIf="!(data.promoDetails.isItemValid) && data.showWarningMsg">Total
+                                                        Qty is less than
                                                         MOQ</span>
                                                 </div>
                                                 <!-- <div class="col-md-6">
@@ -492,7 +513,7 @@
                                                         </td>
                                                         <td><input type="number" placeholder="Enter" class="quatity-inp"
                                                                 [(ngModel)]="Item.Quantity"
-                                                                (keyup)="quantityChange(data)"></td>
+                                                                (keyup)="quantityChange(data, Item)"></td>
                                                         <td>{{(Item.price) * (Item.Quantity)}}</td>
                                                     </tr>
                                                     <tr class="bottom-table">
@@ -526,7 +547,8 @@
                                                 <div class="col-md-6" style="text-align: center;">
                                                     <span class="total-itemss">(MOQ:{{data.promoDetails.moq}})</span>
                                                     <span class="txt-error"
-                                                        *ngIf="!(data.promoDetails.isItemValid)">Total Qty is less than
+                                                        *ngIf="!(data.promoDetails.isItemValid) && data.showWarningMsg">Total
+                                                        Qty is less than
                                                         MOQ</span>
                                                 </div>
                                                 <!-- <div class="col-md-6">
@@ -585,7 +607,7 @@
                                                         </td>
                                                         <td><input type="number" placeholder="Enter" class="quatity-inp"
                                                                 [(ngModel)]="Item.Quantity"
-                                                                (keyup)="quantityChange(data)"></td>
+                                                                (keyup)="quantityChange(data, Item)"></td>
                                                         <td>{{(Item.price) * (Item.Quantity)}}</td>
                                                     </tr>
                                                     <tr class="bottom-table">
@@ -620,7 +642,7 @@
         </div>
 
 
-        <button type="button" class="saveas-draft1" [disabled]="isOrderPromotionValid" (click)="addPromoItems()">Add
+        <button type="button" class="saveas-draft1" [disabled]="!isOrderPromotionValid" (click)="addPromoItems()">Add
             items</button>
     </div>
 </div>

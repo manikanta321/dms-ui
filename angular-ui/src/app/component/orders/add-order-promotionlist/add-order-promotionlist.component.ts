@@ -150,6 +150,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
       item.isSelected = false;
       this.imagesid.splice(this.imagesid.indexOf(item.productPromotionsId), 1);
       this.griddatapromotions.splice(this.griddatapromotions.findIndex(x => x.productPromotionsId == item.productPromotionsId), 1);
+      this.orderPromotionEnableValidate();
     }
   }
   ProductPromotionOrderList: any[] = [];
@@ -215,12 +216,12 @@ export class AddOrderPromotionlistComponent implements OnInit {
       if (!exisitPromotion) {
         item.isShowPromos = false;
         item.isProductSelected = false;
+        item.showWarningMsg = false;
 
         switch (item.promotionTypesId) {
           case 1:
 
             if (item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0) {
-
               item.promoDetails.buyGroups.forEach(stockItem => {
                 if (stockItem.stockitemid.length != 0) {
                   stockItem.stockitemid = stockItem.stockitemid.map(stock => {
@@ -317,7 +318,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
       }
 
 
-
+      this.PromotionQtyCalculation(item);
     });
 
 
@@ -325,12 +326,13 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
   }
 
-  updateEnableStatus(item) {
+  updateInputEnableStatus(item) {
+
     item.promoDetails.buySets.forEach(setItem => {
       setItem.buyGroups.forEach(stockItem => {
         stockItem.isEnable = false;
         stockItem.stockitemid.forEach(stock => {
-          if (stock.isProductSelected) {
+          if (setItem.isInputEnable || !(item.promoDetails.isBuyItemSelected)) {
             stockItem.isEnable = true;
           }
         });
@@ -342,7 +344,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
       setItem.getGroups.forEach(stockItem => {
         stockItem.isEnable = false;
         stockItem.stockitemid.forEach(stock => {
-          if (stock.isProductSelected) {
+          if (setItem.isInputEnable || !(item.promoDetails.isGetItemSelected)) {
             stockItem.isEnable = true;
           }
         });
@@ -351,10 +353,32 @@ export class AddOrderPromotionlistComponent implements OnInit {
     });
   }
 
-  quantityChange(data) {
+  quantityChange(data, updatedItem) {
+    if(!updatedItem.isProductSelected){
+      updatedItem.isProductSelected = true;
+    }
+    data.showWarningMsg = true;
     this.PromotionQtyCalculation(data);
   }
 
+  orderPromotionEnableValidate() {
+    console.log(this.griddatapromotions);
+    this.isOrderPromotionValid = true;
+    this.griddatapromotions.forEach(x => {
+      if(x.promotionTypesId == 3 || x.promotionTypesId== 4 || x.promotionTypesId == 1){
+        if (!x.promoDetails.isItemValid) {
+          this.isOrderPromotionValid = false;
+        }
+      }
+
+      if(x.promotionTypesId == 2){
+        if (!x.promoDetails.isGetItemValid || !x.promoDetails.isBuyItemValid ) {
+          this.isOrderPromotionValid = false;
+        }
+      }
+
+    })
+  }
   PromotionQtyCalculation(item) {
     switch (item.promotionTypesId) {
       case 1:
@@ -392,6 +416,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
           item.promoDetails.getGroups.forEach(stockItem => {
             stockItem.totalQuantity = 0;
             stockItem.totalAmount = 0;
+            stockItem.isItemValid = true;
             if (stockItem.stockitemid.length != 0) {
               stockItem.stockitemid.forEach(stock => {
                 if (stock.isProductSelected) {
@@ -405,7 +430,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
               item.promoDetails.getGroupsQty += Math.floor(stockItem.totalQuantity / stockItem.maxVolume);
             }
 
-            if (item.promoDetails.buyGroupsQty !== item.promoDetails.getGroupsQty) {
+            if (item.promoDetails.buyGroupsQty && item.promoDetails.buyGroupsQty !== item.promoDetails.getGroupsQty) {
               stockItem.isItemValid = false;
               item.promoDetails.isItemValid = false;
             }
@@ -416,19 +441,33 @@ export class AddOrderPromotionlistComponent implements OnInit {
       case 2:
 
         if (item.promoDetails && item.promoDetails.buySets && item.promoDetails.buySets && item.promoDetails.buySets.length != 0) {
+          item.promoDetails.isBuyItemValid = true;
+          item.promoDetails.isBuyItemSelected = false;
           item.promoDetails.buyGroupsQty = 0;
           item.promoDetails.buySets.forEach(setItem => {
-            setItem.isValuesEnabled = false;
+            setItem.isInputEnable = false;
             setItem.buyGroups.forEach(stockItem => {
               stockItem.totalAmount = 0;
               stockItem.totalQuantity = 0;
+              stockItem.isItemValid = true;
               if (stockItem.stockitemid.length != 0) {
                 stockItem.stockitemid.forEach(stock => {
                   if (stock.isProductSelected) {
+                    item.promoDetails.isBuyItemSelected = true;
+                    setItem.isInputEnable = true;
                     stockItem.totalQuantity += stock.Quantity;
                     stockItem.totalAmount += (stock.price * stock.Quantity);
                   }
                 })
+
+                if (stockItem.maxVolume && stockItem.totalQuantity) {
+                  item.promoDetails.buyGroupsQty += Math.floor(stockItem.totalQuantity / stockItem.maxVolume);
+                }
+
+                if (setItem.isInputEnable && stockItem.totalQuantity < stockItem.moq) {
+                  stockItem.isItemValid = false;
+                  item.promoDetails.isBuyItemValid = false;
+                }
               }
             });
 
@@ -436,30 +475,43 @@ export class AddOrderPromotionlistComponent implements OnInit {
         }
 
         // getgroups
-
-
         if (item.promoDetails && item.promoDetails.getSets && item.promoDetails.getSets && item.promoDetails.getSets.length != 0) {
           item.promoDetails.getGroupsQty = 0;
-
+          item.promoDetails.isGetItemValid = true;
+          item.promoDetails.isGetItemSelected = false;
           item.promoDetails.getSets.forEach(setItem => {
-
+            setItem.isInputEnable = false;
             setItem.getGroups.forEach(stockItem => {
               stockItem.totalAmount = 0;
               stockItem.totalQuantity = 0;
+              stockItem.isItemValid = true;
               if (stockItem.stockitemid.length != 0) {
                 stockItem.stockitemid.forEach(stock => {
                   if (stock.isProductSelected) {
+                    item.promoDetails.isGetItemSelected = true;
+                    setItem.isInputEnable = true;
                     stockItem.totalQuantity += stock.Quantity;
                     stockItem.totalAmount += (stock.price * stock.Quantity);
                   }
                 })
+
+                if (stockItem.maxVolume && stockItem.totalQuantity) {
+                  item.promoDetails.getGroupsQty += Math.floor(stockItem.totalQuantity / stockItem.maxVolume);
+                }
+                if (setItem.isInputEnable &&  item.promoDetails.buyGroupsQty !== item.promoDetails.getGroupsQty) {
+                  stockItem.isItemValid = false;
+                  item.promoDetails.isGetItemValid = false;
+                }else if(setItem.isInputEnable &&  item.promoDetails.buyGroupsQty == item.promoDetails.getGroupsQty) {
+                  stockItem.isItemValid = true;
+                  item.promoDetails.isGetItemValid = true;
+                }
               }
             });
 
           });
         }
 
-        this.updateEnableStatus(item);
+        this.updateInputEnableStatus(item);
         break;
 
       case 3:
@@ -499,6 +551,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
       default:
         break;
     }
+
+    this.orderPromotionEnableValidate();
   }
   checkboxChange(event, changedPromotionObj, promotionItem) {
     console.log(event, changedPromotionObj, "event, changedPromotionObj");
@@ -507,6 +561,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
     this.quantityadd = 0;
     this.price = 0;
     console.log(this.griddatapromotions, "data after slection");
+    promotionItem.showWarningMsg = true;
     this.PromotionQtyCalculation(promotionItem);
   }
 

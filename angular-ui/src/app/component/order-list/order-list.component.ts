@@ -712,7 +712,9 @@ export class OrderListComponent implements OnInit {
       "GeographyId": [],
       "DealerId": [],
       "OrderDate": "",
-      "Search": this.searchText
+      "Search": this.searchText,
+      CurrentUserId:this.loggedUserId,
+
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;

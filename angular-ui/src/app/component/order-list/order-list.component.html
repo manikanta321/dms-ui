@@ -1,7 +1,7 @@
 <div class="orderlist-section mt-3 scrollbarorderlist" style="padding:15px;">
 <div class="fiters-sec">
 <div class="row orderlistdropdown">
-    <div class="col-md-2 col-lg-2 col-sm-2" style="padding-left: 0px;">
+    <div class="col-md-2 col-lg-2 col-sm-2 "  style="padding-left: 0px;">
         <form [formGroup]="myForm" class="dropdown-form">
           <ng-multiselect-dropdown class="Dealers dlsr" name="city" [placeholder]="'Dealers'" formControlName="city"
             [disabled]="disabled" [settings]="dropdownSettings" [data]="dealerlist"
@@ -18,7 +18,7 @@
         </form>
       </div>
 
-      <div class="col-md-2 col-lg-2 col-sm-2">
+      <div class="col-md-2 col-lg-2 col-sm-2 border">
         <form [formGroup]="myForm1" class="dropdown-form">
           <ng-multiselect-dropdown class="Geography geographybubbles" name="city" [placeholder]="'Geography'" formControlName="geo"
             [disabled]="disabled" [settings]="dropdownSettings1" [data]="geogropdownlist" (onSelect)="geographyselect($event)"

@@ -119,7 +119,7 @@
                         <div class="section mt-1">
                             <table>
                                 <tr>
-                                    <th>Item</th>
+                                    <th>Item </th>
                                     <th>UoM</th>
                                     <th>Order Qty</th>
                                     <th>Stock</th>
@@ -155,14 +155,19 @@
                                             <input type="text" disabled [(ngModel)]="Item.discount"
                                                 class="IteminputBoxes">
                                         </td>
+
+                                       
+
+
                                         <td>
                                             <input type="text" disabled [(ngModel)]="Item.taxvalue"
                                                 class="IteminputBoxes">
                                         </td>
-                                        <td>
+
+                                         <td>
                                             <input type="text" disabled [(ngModel)]="Item.finalValue"
                                                 class="IteminputBoxes">
-                                        </td>
+                                        </td> 
                                         <td>
                                             <input type="text" disabled [(ngModel)]="Item.amount"
                                                 class="IteminputBoxes">
@@ -256,7 +261,7 @@
                                 <div class="orderDatepicker">
                                     <label class="boldR">Requirement Date </label>
                                     <mat-form-field disabled appearance="fill" class="datepc">
-                                        <mat-label>Select a date</mat-label>
+                                        <mat-label>Select a date </mat-label>
                                         <input matInput disabled [matDatepicker]="picker" (dateChange)="dateChange($event)"
                                             [(ngModel)]="startdate">
                                         <mat-datepicker-toggle disabled matSuffix [for]="picker"
@@ -332,6 +337,7 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="geographyy">
+                             
                                 <label class="DealerInfo-label">Geography <span class="astr">*</span></label>
                                 <ng-select class="selectgeo" [items]="GeoGrapydropdownListdata" id="GeoGrapydropdown"
                                     name="GeoGrapydropdown" required [virtualScroll]="true" bindLabel="geographyName"
@@ -419,9 +425,11 @@
                                     <th>Stock</th>
                                     <th>Unit Price</th>
                                     <th>Discount</th>
-                                    <th>Tax</th>
+
                                     <th>Final Value</th>
-                                    <th>Amount</th>
+                                    <th>Tax</th>
+                                   
+                                    <th>Amount </th>
                                 </tr>
                                 <!-- promotion list view -->
                                 <ng-container *ngFor="let PromotionObj of AddOrderPromotionData; let i=index;">
@@ -449,14 +457,18 @@
                                             <input type="text" disabled [(ngModel)]="Item.discount"
                                                 class="IteminputBoxes">
                                         </td>
-                                        <td>
-                                            <input type="text" disabled [(ngModel)]="Item.taxvalue"
-                                                class="IteminputBoxes">
-                                        </td>
+                                       
+
                                         <td>
                                             <input type="text" disabled [(ngModel)]="Item.finalValue"
                                                 class="IteminputBoxes">
                                         </td>
+
+                                        <td>
+                                            <input type="text" disabled [(ngModel)]="Item.taxvalue"
+                                                class="IteminputBoxes">
+                                        </td>
+                                       
                                         <td>
                                             <input type="text" disabled [(ngModel)]="Item.amount"
                                                 class="IteminputBoxes">
@@ -504,6 +516,7 @@
                             </table>
                         </div>
                         <div class="row mt-2">
+                            
                             <div class="totall" *ngIf="shippingPackingchargeDetails">
                                   <div class="innerTotal d-flex">
                                     <div class="subitem">
@@ -512,11 +525,11 @@
                                     </div>
                                     <div class="subitem">
                                         <p class="alltotals tax_element">Tax Element</p>
-                                        <span>{{shippingPackingchargeDetails.taxElement}}</span>
+                                        <span  id="tax_color">{{shippingPackingchargeDetails.taxElement}}</span>
                                     </div>
                                     <div class="subitem">
                                         <p class="alltotals packing_Charges">Packing Charge</p>
-                                        <span>{{shippingPackingchargeDetails.packingCharges}}</span>
+                                        <span id="pkcharger">{{shippingPackingchargeDetails.packingCharges}}</span>
                                     </div>
                                     <div class="subitem">
                                         <p class="alltotals shipping_charges">Shipping Charge</p>
@@ -524,7 +537,7 @@
                                     </div>
                                     <div class="subitem total_total">
                                         <p class="alltotals totaltotal ">Total</p>
-                                        <span id="totallsss">{{shippingPackingchargeDetails.total}}</span>
+                                        <span id="totallssss">{{shippingPackingchargeDetails.total}}</span>
                                     </div>
                                 </div> 
                             </div>
@@ -549,15 +562,22 @@
 
                             <div class="col-lg-4">
                                 <div class="orderDatepicker">
-                                    <label class="boldR">Requirement Date </label>
-                                    <mat-form-field appearance="fill" class="datepc">
-                                        <mat-label>Select a date</mat-label>
-                                        <input matInput [matDatepicker]="picker" (dateChange)="dateChange($event)"
+
+                                    <label class="boldR">Requirement Date  </label>
+                                     <mat-form-field appearance="fill" class="datepc">
+                                        
+                                        <input matInput [matDatepicker]="picker"  placeholder="Select a date" (dateChange)="dateChange($event)"
                                             [(ngModel)]="startdate">
                                         <mat-datepicker-toggle matSuffix [for]="picker"
                                             class="calicon"></mat-datepicker-toggle>
                                         <mat-datepicker #picker></mat-datepicker>
-                                    </mat-form-field>
+                                    </mat-form-field>  
+
+                                   
+
+                                    
+
+
                                 </div>
                             </div>
                             <div class="col-md-8">
@@ -611,8 +631,8 @@
                             <div class="col-lg-10 ">
                                 <div class="row  ">
                                     <div class="col-md-3  dropdownborder">
-                                        <div class="input-icons ">
-                                            <form [formGroup]="categoryForm" class="dropDown-field">
+                                        <div class="input-icons " >
+                                            <form [formGroup]="categoryForm" class="dropDown-field" style="width: 104%;">
                                                 <ng-multiselect-dropdown class="catty select_category" name="city"
                                                     [placeholder]="'Category'" formControlName="categoryy"
                                                     [disabled]="disabled" [settings]="dropdownSettingscat"
@@ -797,8 +817,8 @@
                                     <tr class="bottom-table">
                                         <td colspan="4" class="btm-total"><b>Total </b>(for selected items &
                                             quantity entered)</td>     
-                                        <td class="btm-total" >{{quantityadd ?? 0}}</td>
-                                        <td class="btm-total">{{price ?? 0}}</td>
+                                        <td class="btm-total tota_al" >{{quantityadd ?? 0}}</td>
+                                        <td class="btm-total amount_t" >{{price ?? 0}}</td>
                                     </tr>
                                 </tfoot>
                             </table>

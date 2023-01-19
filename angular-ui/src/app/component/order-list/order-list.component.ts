@@ -137,7 +137,7 @@ export class OrderListComponent implements OnInit {
       },
       cellClass: params => {
         return params.value == 'Rejected' ? 'myclass1' : params.value == 'Draft' ? 'myclass2' : params.value == 'Confirmed' ? 'myclass3' : params.value == 'Ordered' ? 'myclass4' : params.value == 'Returned' ? 'myclass5'
-          : params.value == 'Cancelled' ? 'myclass6' : params.value == 'Pre-closed' ? 'myclass7' : params.value == 'In transit' ? 'myclass8' : params.value == 'Fulfilled' ? 'myclass9' : params.value == 'To ship' ? 'myclass10' : 'myclass11'
+          : params.value == 'Cancelled' ? 'myclass6' : params.value == 'Pre-closed' ? 'myclass7' : params.value == 'In-Transit' ? 'myclass8' : params.value == 'Fulfilled' ? 'myclass9' : params.value == 'ToShip' ? 'myclass10' : 'myclass11'
       },
 
       tooltipField: "statusName",
@@ -636,7 +636,7 @@ export class OrderListComponent implements OnInit {
 
 
   addOrderPromotion() {
-    const dialogRef = this.dialog.open(AddorderpromotionsComponent, {
+    const dialogRef = this.dialog.open(AddorderpromotionsComponent,  {
       panelClass: 'material-add-edit'
     });
     sessionStorage.setItem("Confirm",'')

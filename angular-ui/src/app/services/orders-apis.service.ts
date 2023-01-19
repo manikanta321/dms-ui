@@ -121,7 +121,5 @@ export class OrdersApisService {
   public calculateTotal(data) {
     return this.http.post<any>(this.userurl + 'OrdersApi/GetShippingAndPackingChargesforship', data);
   }
-
-
 }
  

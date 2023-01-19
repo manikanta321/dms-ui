@@ -5,6 +5,8 @@ import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridRea
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Subject } from 'rxjs';
 import { CustomDatePopupComponent } from '../component/orders/custom-date-popup/custom-date-popup.component';
+import { ShipOrderBulkDownloadComponent } from '../component/orders/ship-order-bulk-download/ship-order-bulk-download.component';
+import { SalesBulkUploadComponent } from '../component/sales-bulk-upload/sales-bulk-upload.component';
 import { OrdersApisService } from '../services/orders-apis.service';
 import { UserService } from '../services/user.service';
 import { OrderReceiptsBulkUploadComponent } from './order-receipts-bulk-upload/order-receipts-bulk-upload.component';
@@ -16,6 +18,7 @@ import { OrderReceiptsBulkUploadComponent } from './order-receipts-bulk-upload/o
 })
 export class OrdersReceiptsComponent implements OnInit {
   myForm: any = FormGroup; 
+  myForm1: any = FormGroup; 
   disabled = false;
   dealerSettings: IDropdownSettings = {};
   dropdownSettings2: IDropdownSettings = {};
@@ -41,6 +44,10 @@ export class OrdersReceiptsComponent implements OnInit {
   startDateInvoice:any = '';
   endDateInvoice:any = '';
   selectedDateRange:any;
+  geogropdownlist:any = [];
+  geoAllarray:any  = [];
+  geogragphies:any = [];
+  dropdownSettings1: IDropdownSettings = {};
   columnDefs: (ColDef| ColGroupDef)[] = [
     {  headerName: "Shipment No.",
     field: 'shipmentNumber',      tooltipField:"shipmentNumber",
@@ -144,7 +151,11 @@ export class OrdersReceiptsComponent implements OnInit {
     this.myForm = this.fb.group({
       city: [this.selectedItems]
     });
+    this.myForm1 = this.fb.group({
+      geo: [this.selectedItems]
+    });
     this.receiptList();
+    this.geogrphyOrder();
     this.dealerDropdownData();
   }
   onGridReady(params: GridReadyEvent) {
@@ -198,7 +209,9 @@ export class OrdersReceiptsComponent implements OnInit {
     this.minDateToFinish.next(e.value.toString());
   }
  bulkDownload(){
-  // this.dialog.open(ShipOrderBulkDownloadComponent, {width:'1043px'})
+  sessionStorage.setItem("bulkShipDownload","");
+  sessionStorage.setItem("OrderReceiptDownload","ReceiptDownload");
+  this.dialog.open(ShipOrderBulkDownloadComponent, {width:'80%'})
   }
   selectdays(){
     this.dialog.open(CustomDatePopupComponent,{panelClass:'custmdays'})
@@ -228,6 +241,7 @@ export class OrdersReceiptsComponent implements OnInit {
       // });
       let data = {
         DealerId:this.dealerss,
+        GeographyId:this.geogragphies,
         ShipmentStartDate:this.startDateShip,
         ShipmentEndDate:this.endDateShip,
         InvoiceStartDate:this.startDateInvoice,
@@ -246,6 +260,7 @@ export class OrdersReceiptsComponent implements OnInit {
       console.log(this.selectedDateRange);
       let data = {
         DealerId:this.dealerss,
+        GeographyId:this.geogragphies,
         ShipmentStartDate:this.startDateShip,
         ShipmentEndDate:this.endDateShip,
         InvoiceStartDate:this.startDateInvoice,
@@ -258,9 +273,106 @@ export class OrdersReceiptsComponent implements OnInit {
       });
     }
     orderReceiptsBulkUpload(){
-      // sessionStorage.setItem("sales",'');
         this.dialog.open(OrderReceiptsBulkUploadComponent);
-        
+    }
+    orderShipmentUpload(){
+      sessionStorage.setItem("sales",'');
+      sessionStorage.setItem("orderReceipt",'Receipt');
+      sessionStorage.setItem("orderShipment",'');
+      this.dialog.open(SalesBulkUploadComponent);
+        // this.dialog.open(SalesBulkUploadComponent);
+        // this.isOpen = false;
+    }
+    geogrphyOrder() {
+      this.user.getGeographies().subscribe((res: any) => {
+        let localdata = res.response;
+        this.geogropdownlist = localdata.map((data: { geographyId: any; geographyName: any; }) => {
+          return { geographyId: data.geographyId, geographyName: data.geographyName };
+        });
+  
+        this.geogropdownlist.push()
+        this.geogropdownlist.forEach(element => {
+          return this.geoAllarray.push(element.geographyId);
+        })
+        console.log('buleditGeo', this.geoAllarray)
+        this.dropdownSettings1 = {
+          singleSelection: false,
+          idField: 'geographyId',
+          textField: 'geographyName',
+          selectAllText: 'Select All',
+          unSelectAllText: 'UnSelect All',
+          itemsShowLimit: 2,
+          allowSearchFilter: true
+        };
+      });
+    }
+    geographyselect(item: any) {
+      this.geogragphies.push(item.geographyId);
+      console.log("geographics", this.geogragphies);
+      let data = {
+        DealerId:this.dealerss,
+        GeographyId:this.geogragphies,
+        ShipmentStartDate:this.startDateShip,
+        ShipmentEndDate:this.endDateShip,
+        InvoiceStartDate:this.startDateInvoice,
+        InvoiceEndDate:this.endDateInvoice,
+        search:this.searchText
+      }
+      this.orders.getOrderReceiptList(data).subscribe((res) => {
+        this.receiptDatalist = res.response;
+        console.log("Response",this.receiptDatalist)
+      });
+    }
+    geographyDeselect(item: any) {
+      this.geogragphies.forEach((element, index) => {
+        if (element == item.geographyId) this.geogragphies.splice(index, 1);
+      });
+      let data = {
+        DealerId:this.dealerss,
+        GeographyId:this.geogragphies,
+        ShipmentStartDate:this.startDateShip,
+        ShipmentEndDate:this.endDateShip,
+        InvoiceStartDate:this.startDateInvoice,
+        InvoiceEndDate:this.endDateInvoice,
+        search:this.searchText
+      }
+      this.orders.getOrderReceiptList(data).subscribe((res) => {
+        this.receiptDatalist = res.response;
+        console.log("Response",this.receiptDatalist)
+      });
+    }
+    geographyDeselectAll(item: any) {
+      this.geogragphies = [];
+      let data = {
+        DealerId:this.dealerss,
+        GeographyId:this.geogragphies,
+        ShipmentStartDate:this.startDateShip,
+        ShipmentEndDate:this.endDateShip,
+        InvoiceStartDate:this.startDateInvoice,
+        InvoiceEndDate:this.endDateInvoice,
+        search:this.searchText
+      }
+      this.orders.getOrderReceiptList(data).subscribe((res) => {
+        this.receiptDatalist = res.response;
+        console.log("Response",this.receiptDatalist)
+      });
+    }
+    geographyselectAll(item: any) {
+      this.geogragphies = this.geoAllarray;
+      console.log("geographics", this.geogragphies);
+      let data = {
+        DealerId:this.dealerss,
+        GeographyId:this.geogragphies,
+        ShipmentStartDate:this.startDateShip,
+        ShipmentEndDate:this.endDateShip,
+        InvoiceStartDate:this.startDateInvoice,
+        InvoiceEndDate:this.endDateInvoice,
+        search:this.searchText
+      }
+      this.orders.getOrderReceiptList(data).subscribe((res) => {
+        this.receiptDatalist = res.response;
+        console.log("Response",this.receiptDatalist)
+      });
     }
     receiptList(){
       let data = {
@@ -303,6 +415,7 @@ export class OrdersReceiptsComponent implements OnInit {
       this.dealerss.push(item.customerId);
       let data = {
         DealerId:this.dealerss,
+        GeographyId:this.geogragphies,
         ShipmentStartDate:this.startDateShip,
         ShipmentEndDate:this.endDateShip,
         InvoiceStartDate:this.startDateInvoice,
@@ -321,6 +434,7 @@ export class OrdersReceiptsComponent implements OnInit {
       });
       let data = {
         DealerId:this.dealerss,
+        GeographyId:this.geogragphies,
         ShipmentStartDate:this.startDateShip,
         ShipmentEndDate:this.endDateShip,
         InvoiceStartDate:this.startDateInvoice,
@@ -336,6 +450,7 @@ export class OrdersReceiptsComponent implements OnInit {
       this.dealerss = [];
       let data = {
         DealerId:this.dealerss,
+        GeographyId:this.geogragphies,
         ShipmentStartDate:this.startDateShip,
         ShipmentEndDate:this.endDateShip,
         InvoiceStartDate:this.startDateInvoice,
@@ -352,6 +467,7 @@ export class OrdersReceiptsComponent implements OnInit {
       console.log("AllDealers",this.dealerss);
       let data = {
         DealerId:this.dealerss,
+        GeographyId:this.geogragphies,
         ShipmentStartDate:this.startDateShip,
         ShipmentEndDate:this.endDateShip,
         InvoiceStartDate:this.startDateInvoice,
@@ -368,6 +484,7 @@ export class OrdersReceiptsComponent implements OnInit {
       this.searchText = target.value;
       let data = {
         DealerId:this.dealerss,
+        GeographyId:this.geogragphies,
         ShipmentStartDate:this.startDateShip,
         ShipmentEndDate:this.endDateShip,
         InvoiceStartDate:this.startDateInvoice,
@@ -387,6 +504,10 @@ export class OrdersReceiptsComponent implements OnInit {
       this.myForm = this.fb.group({
         city: [this.selectedItems]
       });
+      this.myForm1 = this.fb.group({
+        geo: [this.selectedItems]
+      });
+      this.geogragphies = [];
       this.dealerss = [];
       this.startDateShip = '';
       this.endDateShip = '';
@@ -395,6 +516,7 @@ export class OrdersReceiptsComponent implements OnInit {
       this.searchText = '';
       let data = {
         DealerId:this.dealerss,
+        GeographyId:this.geogragphies,
         ShipmentStartDate:this.startDateShip,
         ShipmentEndDate:this.endDateShip,
         InvoiceStartDate:this.startDateInvoice,

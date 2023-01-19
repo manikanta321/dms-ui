@@ -106,7 +106,6 @@ export class UsersComponent implements OnInit {
   // Data that gets displayed in the grid
   public rowData5 = [];
   public popupParent: HTMLElement = document.body;
-
   columnDefs: ColDef[] = [
 
     {
@@ -161,6 +160,7 @@ export class UsersComponent implements OnInit {
       cellClass: params => {
         return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
       },
+      
       tooltipField: "statusName",
     },
     {

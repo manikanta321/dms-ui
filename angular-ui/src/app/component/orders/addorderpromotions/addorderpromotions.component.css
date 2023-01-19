@@ -1,3 +1,44 @@
+
+
+
+input.mat-input-element {
+  
+  
+  position: absolute;
+  
+  margin-top: -11px;
+}
+#tax_color
+{
+  color: black;
+    font-weight: 700;
+}
+#pkcharger
+{
+  color: black;
+  font-weight: 700;
+}
+#Shippinggg
+{
+  color: black;
+  font-weight: 700;
+}
+.tota_al
+{
+  
+    position: relative;
+    right:160px;
+}
+.amount_t
+{
+  position: relative;
+  left: -77px;
+   
+}
+
+
+
+
 .dropdownborder
 {
   border-left:  1px  solid #000000 !important;
@@ -979,7 +1020,7 @@ li {
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   /* width: 260px; */
-  height: 30px;
+  height: 36px;
   font-size: 13px;
   padding: 0 7px;
 }
@@ -1262,13 +1303,15 @@ li {
 }
 
 ::ng-deep.orderDatepicker .mat-form-field-appearance-fill .mat-form-field-flex {
-  width: 230px;
+   width: 230px;
+  
   height: 30px;
   background: #FFFFFF;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   padding: 0 5px;
+  
 
 }
 
@@ -1367,7 +1410,8 @@ left: 456px;
   border-radius: 8px;
   font-size: 13px;
   font-weight: 'Gilroy';
-  color: #686E74BF;
+  color:#000000;
+  
 
 }
 
@@ -1424,6 +1468,14 @@ margin-top: -5px;
 #totallsss
 {
   margin-left: 12px;
+  color: #000000;
+  font-weight: bolder;
+}
+#totallssss
+{
+  margin-left: 12px;
+  color:whitesmoke;
+  font-weight: bolder;
 }
 
 
@@ -1664,7 +1716,7 @@ tbody{
  tbody {
   display: block;
   max-height: 227px;
-  overflow-y: scroll;
+
 }
 
 table thead, table tbody tr {

@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="shipDownload" class="container">
     <div class="bulk-dwnld ">
         <div class="B-download">
             <img  class="print-img" src="../../../assets/material/print-img.svg" alt="">
@@ -88,7 +88,7 @@
   </div>
   <!-- footer -->
   <div class="row footer">
-    <div class="col-md-6" (click)="shipmentDownload()">
+    <div class="col-md-6" (click)="bulkDownload()">
             <button type="button" class="download-csv">Download CSV </button>                       
     </div>
     <div class="col-md-6">                      
@@ -96,4 +96,98 @@
     </div>
 </div>
     </div>
+</div>
+<div *ngIf="receiptDownload" class="container">
+  <div class="bulk-dwnld ">
+      <div class="B-download">
+          <img  class="print-img" src="../../../assets/material/print-img.svg" alt="">
+          <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+      </div>
+      <div class="bulk-d">
+          <h3 class="bulk-head font">Receipt: <b>Bulk Download</b></h3>
+      </div>
+<div class="bulk-Dcontent">
+  <p>Bulk Download of Receipts</p>
+  <p><b>Option 1:</b> Download <b>empty</b> template</p>
+</div>
+<div class="row">
+  <div class="dowload" (click)="bulkDownload()">
+      <div class="bulk-download">
+          <img class="dwnld-img" src="assets/img/orderlist-upload.svg" 
+              alt="add-user-btn">
+      </div>
+     <p class="dwnload-text"> Download the attached sheet that contains all the <br>
+      open shipments or invoices</p>
+  </div>
+</div>
+<div class="row opt2">
+  <div class="col-6 ml-2">
+      <p><b> Step 2:</b> Download Template with <b>Filtered</b> Data</p>
+  </div>
+</div>
+<div class="row ml-2">
+  <div class="col-md-3 col-lg-3 col-sm-2" style="padding-left: 0px;">
+    <form [formGroup]="dealerForm" class="dropdown-form">
+      <ng-multiselect-dropdown class="dealers dlsr" name="city" [placeholder]="'Dealer'" formControlName="city"
+      [disabled]="disabled" [settings]="dealerSettings" [data]="dealerlist"(onSelect)="DealerorderReceiptSelect($event)" (onDeSelect)="DealerReceiptDeselect($event)"(onDeSelectAll)="DealerReceiptDeselectAll($event)"
+      (onSelectAll)="DealerorderReceiptSelectAll($event)">
+    </ng-multiselect-dropdown>
+    </form>
+    <div class="dropdown-placeholder dealers-placeholder">
+      <span *ngIf="dealerForm.get('dealer').value.length == 0">  Dealers </span>
+      <span *ngIf="dealerForm.get('dealer').value.length == 1" class="selected-placeholder"> {{dealerForm.get('dealer').value.length}} Dealer selected </span>
+      <span *ngIf="dealerForm.get('dealer').value.length > 1" class="selected-placeholder"> {{dealerForm.get('dealer').value.length}} Dealer(s) selected </span>
+      <img src="../assets/img/search.png" class="searchReceipts">
+    </div>
+    
+  </div>
+  <div class="col-md-3 col-lg-3 col-sm-2">
+    <form [formGroup]="geographyForm" >
+      <ng-multiselect-dropdown class="Geography geographybubbles" name="city" [placeholder]="'Geography'" formControlName="geo"
+      [disabled]="disabled" [settings]="geographySettings" [data]="geogropdownlist" (onSelect)="geographyReceiptselect($event)"
+      (onDeSelect)="geographyReceiptDeselect($event)" (onDeSelectAll)="geographyReceiptDeselectAll($event)"(onSelectAll)="geographyReceiptselectAll($event)">
+    </ng-multiselect-dropdown>
+    </form>
+    <div class="dropdown-placeholder geography-placeholder"id="DP">
+      <span *ngIf="geographyForm.get('geography').value.length == 0" id="GP"> Geographies </span>
+      <span *ngIf="geographyForm.get('geography').value.length == 1" class="selected-placeholder"> {{geographyForm.get('geography').value.length}} Geography selected </span>
+      <span *ngIf="geographyForm.get('geography').value.length > 1" class="selected-placeholder"> {{geographyForm.get('geography').value.length}} Geography(s) selected </span>
+
+    </div>
+  </div>
+  <div class="shipment mr-3">
+    <app-customdatepicker [showInputField]="true" label="Shipment Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customShipDatePickerEvent($event)"></app-customdatepicker>
+  </div>
+    <div class="invoice">
+      <app-customdatepicker [showInputField]="true" label="Invoice Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customInvoiceDatePickerEvent($event)"></app-customdatepicker>
+  </div>
+    <!-- refresh -->
+    <div class=" refreshbtn" style=" cursor: pointer" (click)="Receiptrefresh()">
+      <img class="refresh-img" src="assets/img/Vector.png" alt="refresh">
+    </div>
+</div>
+<!-- grid -->
+<div class="grid-table mt-5">
+  <ag-grid-angular id="gridContainer" class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
+    [headerHeight]="48" [columnDefs]="columnReceiptDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
+    [rowData]="receiptDatalist" [suppressExcelExport]="true" [popupParent]="popupParent"
+    (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"
+    (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
+    (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+    (bodyScroll)="handleScrollReceipt($event)"></ag-grid-angular>
+  <div class="pagination">
+    <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
+      class="pagination-cls">{{receiptDatalist.length}}</span>
+  </div>
+</div>
+<!-- footer -->
+<div class="row footer">
+  <div class="col-md-6" (click)="bulkDownload()">
+          <button type="button" class="download-csv">Download CSV </button>                       
+  </div>
+  <div class="col-md-6">                      
+          <button type="button"  [mat-dialog-close]="true"  class="cancel">Cancel</button>                   
+  </div>
+</div>
+  </div>
 </div>

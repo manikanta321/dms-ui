@@ -234,6 +234,8 @@ export class OrdersShipmentComponent implements OnInit {
     this.minDateToFinish.next(e.value.toString());
   }
  bulkDownload(){
+  sessionStorage.setItem("bulkShipDownload","ShipmentDownload");
+  sessionStorage.setItem("OrderReceiptDownload",'');
   this.dialog.open(ShipOrderBulkDownloadComponent, {width:'1043px'})
   }
   selectdays(){
@@ -284,6 +286,8 @@ export class OrdersShipmentComponent implements OnInit {
     }
     orderShipmentUpload(){
       sessionStorage.setItem("sales",'');
+      sessionStorage.setItem("orderReceipt",'');
+      sessionStorage.setItem("orderShipment",'shipment');
         this.dialog.open(SalesBulkUploadComponent);
         // this.isOpen = false;
     }

@@ -4,6 +4,12 @@
     margin-left: 68%;
 
 }    */
+.border
+{
+    border-left:1px solid #000000 !important; 
+    border-radius: 14px;
+    height: 41px;
+}
 .scrollbarorderlist
 {
     
@@ -305,7 +311,7 @@ input {
 }
 .orderlistdropdown
 {
-    margin-left: 3px;
+    margin-left: 3px; 
 }
 
 ::ng-deep .STATUSS1 .dropdown-btn span .ng-star-inserted {

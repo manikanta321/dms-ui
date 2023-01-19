@@ -397,7 +397,8 @@ export class OrderListComponent implements OnInit {
       DealerId: this.dealerss,
       Search: this.searchText,
       startDate: this.startDate,
-      endDate: this.endDate
+      endDate: this.endDate,
+      CurrentUserId:this.loggedUserId,
       //   "GeographyId":[],
       //  "DealerId" : [],
       //   "OrderDate":"",

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AssosiationServicesService } from 'src/app/services/assosiation-services.service';
+import { PromotionSharedServicesService } from 'src/app/services/promotion-shared-services.service';
 import { PromotionService } from 'src/app/services/promotion.service';
 import { SharedServicesDealerService } from 'src/app/services/shared-services-dealer.service';
 export interface Task {
@@ -32,7 +33,7 @@ export class AddpromoGeographyComponent implements OnInit {
   selectedcount:any=0;
   constructor(private assoservice:AssosiationServicesService,
     private dialogRef: MatDialogRef<any>,
-    private sharedService:SharedServicesDealerService,
+    private sharedService:PromotionSharedServicesService,
     public promotionGeoservc: PromotionService) { }
 
   ngOnInit(): void {

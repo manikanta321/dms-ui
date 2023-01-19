@@ -238,7 +238,7 @@
                                                                     *ngFor="let producttable of addbuyg?.productselectedRows">
                                                                     <mat-checkbox class="example-margin font"
                                                                         [checked]="true"
-                                                                        (click)="updateAllComplete(producttable.stockItemId,i)">
+                                                                        (click)="updateAllComplete1(producttable.stockItemId,i)">
                                                                         {{producttable?.productName}}</mat-checkbox>
                                                                 </li>
                                                                 <!-- <li *ngFor="let productGrp of addbuyg?.productScselectedRows">{{productGrp?.productName}}</li>
@@ -479,7 +479,7 @@
                                             <ul>
                                                 <li *ngFor="let producttable of productselectedRows">
                                                     <mat-checkbox class="example-margin font" [checked]="true"
-                                                        (click)="updateAllCompleteforGetGroupPrice(producttable.stockItemId)">
+                                                        (click)="updateAllCompleteforGetGroupVolume(producttable.stockItemId)">
                                                         {{producttable?.productName}}
                                                     </mat-checkbox>
                                                 </li>

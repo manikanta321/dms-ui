@@ -70,6 +70,18 @@ border-style: solid;
 border-color: #686E74;
 border-radius: 0px 0px 10px 10px
   }
+  .duplicate-tabel-shipment {
+    position: relative;
+    width: 92%;
+    left: 12px;
+    /* height: 183px; */
+    margin-bottom: 30px;
+    top: 79px;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: #686E74;
+    border-radius: 0px 0px 10px 10px
+      }
   .no-doc {
     background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
   }
@@ -241,6 +253,17 @@ color: #000000;
     border: none;
     border-radius: 12px !important;
 }
+.class_table_shipment {
+  width: 100%;
+  /* margin-top: 92px;
+  margin-bottom: -20px;
+  margin-left: 9px;
+  margin-right: 9px; */
+  background: #FFFFFF !important;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1) !important;
+  border: none;
+  border-radius: 12px !important;
+}
 
 .class_table th td {
     width: 12%;
@@ -381,3 +404,15 @@ tr {
     top: 56px;
     z-index: 1;
   }
+  .selectedProductReceipts {
+    width: 958px;
+    height: 43px;
+    /* background: #FFFFFF; */
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding-left: 12px;
+    font-size: 14px;
+    color: black;
+    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+}

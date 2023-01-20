@@ -40,31 +40,35 @@
                         <img [src]="image4" class="expand-arrow" alt="add-user-btn">
                     </div>
                 </div>
-                <div  *ngIf = "ErrorFree && errorfreeRows.length>0" class="row">
+                <div  *ngIf = "rowsTotal && TotalRows.length>0" class="row">
                     <table matSort  class="class_table">
                         <tr class="table-header-row">
                             <th style="padding-left:20px;">Row No</th>
-                            <th >Product Code</th>
+                            <th >Order No</th>
                             <th>Product Name</th>
-                            <th>Geography</th>
-                            <th>Current stock</th>
-                            <th>Sale Date</th>
-                            <th>Sale Qty</th>
-                            <th>Customer Reference</th>
-                            <th ></th>
+                            <th>Product Code</th>
+                            <th>Disp. Qty</th>
+                            <th>Disp. Date</th>
+                            <th>Invoice Date</th>
+                            <th>Invoice No.</th>
+                            <th>Receipt Date</th>
+                            <th>Receipt Qty</th>
+                            <th>Uploaded Date</th>
                         </tr>
-                        <tr *ngFor="let dupicateData of errorfreeRows">
+                        <tr *ngFor="let dupicateData of TotalRows">
             
                             <td title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
                             <td title="" class="elipsis-2line">
-                                {{dupicateData.productCode}}</td>
+                                {{dupicateData.orderNo}}</td>
                             <td title="">{{dupicateData.productName}}</td>
-                              <td title="">{{dupicateData.geography}}</td>
-                            <td>{{""}}</td>
-                            <td>{{dupicateData.saleDate}}</td>
-                            <td>{{dupicateData.saleQuantity}}</td>
-                            <td >{{dupicateData.customerReference}}</td>
-                            <td></td>
+                              <td title="">{{dupicateData.productCode}}</td>
+                            <td>{{"dupicateData.dispatchQty"}}</td>
+                            <td>{{dupicateData.dispatchDate}}</td>
+                            <td>{{dupicateData.invoiceDate}}</td>
+                            <td >{{dupicateData.invoiceNo}}</td>
+                            <td>{{dupicateData.receiptDate}}</td>
+                            <td>{{dupicateData.receiptQty}}</td>
+                            <td>{{dupicateData.uploadedDate}}</td>
             
                         </tr>
                     </table>
@@ -77,31 +81,35 @@
                     <img [src]="image4" class="expand-arrow" alt="add-user-btn">
                 </div>
             </div>
-            <div  *ngIf = "ErrorFree && errorfreeRows.length>0" class="row">
+            <div  *ngIf = "rowsemptyTotal && EmptyRows.length>0" class="row">
                 <table matSort  class="class_table">
                     <tr class="table-header-row">
                         <th style="padding-left:20px;">Row No</th>
-                        <th >Product Code</th>
+                        <th >Order No</th>
                         <th>Product Name</th>
-                        <th>Geography</th>
-                        <th>Current stock</th>
-                        <th>Sale Date</th>
-                        <th>Sale Qty</th>
-                        <th>Customer Reference</th>
-                        <th ></th>
+                        <th>Product Code</th>
+                        <th>Disp. Qty</th>
+                        <th>Disp. Date</th>
+                        <th>Invoice Date</th>
+                        <th>Invoice No.</th>
+                        <th>Receipt Date</th>
+                        <th>Receipt Qty</th>
+                        <th>Uploaded Date</th>
                     </tr>
-                    <tr *ngFor="let dupicateData of errorfreeRows">
+                    <tr *ngFor="let dupicateData of EmptyRows">
         
                         <td title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
                         <td title="" class="elipsis-2line">
-                            {{dupicateData.productCode}}</td>
+                            {{dupicateData.orderNo}}</td>
                         <td title="">{{dupicateData.productName}}</td>
-                          <td title="">{{dupicateData.geography}}</td>
-                        <td>{{""}}</td>
-                        <td>{{dupicateData.saleDate}}</td>
-                        <td>{{dupicateData.saleQuantity}}</td>
-                        <td >{{dupicateData.customerReference}}</td>
-                        <td></td>
+                          <td title="">{{dupicateData.productCode}}</td>
+                        <td>{{"dupicateData.dispatchQty"}}</td>
+                        <td>{{dupicateData.dispatchDate}}</td>
+                        <td>{{dupicateData.invoiceDate}}</td>
+                        <td >{{dupicateData.invoiceNo}}</td>
+                        <td>{{dupicateData.receiptDate}}</td>
+                        <td>{{dupicateData.receiptQty}}</td>
+                        <td>{{dupicateData.uploadedDate}}</td>
         
                     </tr>
                 </table>
@@ -118,27 +126,31 @@
                 <table matSort  class="class_table">
                     <tr class="table-header-row">
                         <th style="padding-left:20px;">Row No</th>
-                        <th >Product Code</th>
+                        <th >Order No</th>
                         <th>Product Name</th>
-                        <th>Geography</th>
-                        <th>Current stock</th>
-                        <th>Sale Date</th>
-                        <th>Sale Qty</th>
-                        <th>Customer Reference</th>
-                        <th ></th>
+                        <th>Product Code</th>
+                        <th>Disp. Qty</th>
+                        <th>Disp. Date</th>
+                        <th>Invoice Date</th>
+                        <th>Invoice No.</th>
+                        <th>Receipt Date</th>
+                        <th>Receipt Qty</th>
+                        <th>Uploaded Date</th>
                     </tr>
                     <tr *ngFor="let dupicateData of errorfreeRows">
         
                         <td title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
                         <td title="" class="elipsis-2line">
-                            {{dupicateData.productCode}}</td>
+                            {{dupicateData.orderNo}}</td>
                         <td title="">{{dupicateData.productName}}</td>
-                          <td title="">{{dupicateData.geography}}</td>
-                        <td>{{""}}</td>
-                        <td>{{dupicateData.saleDate}}</td>
-                        <td>{{dupicateData.saleQuantity}}</td>
-                        <td >{{dupicateData.customerReference}}</td>
-                        <td></td>
+                          <td title="">{{dupicateData.productCode}}</td>
+                        <td>{{"dupicateData.dispatchQty"}}</td>
+                        <td>{{dupicateData.dispatchDate}}</td>
+                        <td>{{dupicateData.invoiceDate}}</td>
+                        <td >{{dupicateData.invoiceNo}}</td>
+                        <td>{{dupicateData.receiptDate}}</td>
+                        <td>{{dupicateData.receiptQty}}</td>
+                        <td>{{dupicateData.uploadedDate}}</td>
         
                     </tr>
                 </table>
@@ -155,27 +167,31 @@
                 <table matSort  class="class_table">
                     <tr class="table-header-row">
                         <th style="padding-left:20px;">Row No</th>
-                        <th >Product Code</th>
+                        <th >Order No</th>
                         <th>Product Name</th>
-                        <th>Geography</th>
-                        <th>Current stock</th>
-                        <th>Sale Date</th>
-                        <th>Sale Qty</th>
-                        <th>Customer Reference</th>
-                        <th ></th>
+                        <th>Product Code</th>
+                        <th>Disp. Qty</th>
+                        <th>Disp. Date</th>
+                        <th>Invoice Date</th>
+                        <th>Invoice No.</th>
+                        <th>Receipt Date</th>
+                        <th>Receipt Qty</th>
+                        <th>Uploaded Date</th>
                     </tr>
                     <tr *ngFor="let dupicateData of duplicateEntryy">
         
                         <td title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
                         <td title="" class="elipsis-2line">
-                            {{dupicateData.productCode}}</td>
+                            {{dupicateData.orderNo}}</td>
                         <td title="">{{dupicateData.productName}}</td>
-                          <td title="">{{dupicateData.geography}}</td>
-                        <td>{{""}}</td>
-                        <td>{{dupicateData.saleDate}}</td>
-                        <td>{{dupicateData.saleQuantity}}</td>
-                        <td >{{dupicateData.customerReference}}</td>
-                        <td></td>
+                          <td title="">{{dupicateData.productCode}}</td>
+                        <td>{{"dupicateData.dispatchQty"}}</td>
+                        <td>{{dupicateData.dispatchDate}}</td>
+                        <td>{{dupicateData.invoiceDate}}</td>
+                        <td >{{dupicateData.invoiceNo}}</td>
+                        <td>{{dupicateData.receiptDate}}</td>
+                        <td>{{dupicateData.receiptQty}}</td>
+                        <td>{{dupicateData.uploadedDate}}</td>
         
                     </tr>
                 </table>
@@ -192,34 +208,38 @@
                 <table matSort  class="class_table">
                     <tr class="table-header-row">
                         <th style="padding-left:20px;">Row No</th>
-                        <th >Product Code</th>
+                        <th >Order No</th>
                         <th>Product Name</th>
-                        <th>Geography</th>
-                        <th>Current stock</th>
-                        <th>Sale Date</th>
-                        <th>Sale Qty</th>
-                        <th>Customer Reference</th>
-                        <th ></th>
+                        <th>Product Code</th>
+                        <th>Disp. Qty</th>
+                        <th>Disp. Date</th>
+                        <th>Invoice Date</th>
+                        <th>Invoice No.</th>
+                        <th>Receipt Date</th>
+                        <th>Receipt Qty</th>
+                        <th>Uploaded Date</th>
                     </tr>
                     <tr *ngFor="let dupicateData of incorrectRows">
         
                         <td title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
                         <td title="" class="elipsis-2line">
-                            {{dupicateData.productCode}}</td>
+                            {{dupicateData.orderNo}}</td>
                         <td title="">{{dupicateData.productName}}</td>
-                          <td title="">{{dupicateData.geography}}</td>
-                        <td>{{""}}</td>
-                        <td>{{dupicateData.saleDate}}</td>
-                        <td>{{dupicateData.saleQuantity}}</td>
-                        <td >{{dupicateData.customerReference}}</td>
-                        <td></td>
+                          <td title="">{{dupicateData.productCode}}</td>
+                        <td>{{"dupicateData.dispatchQty"}}</td>
+                        <td>{{dupicateData.dispatchDate}}</td>
+                        <td>{{dupicateData.invoiceDate}}</td>
+                        <td >{{dupicateData.invoiceNo}}</td>
+                        <td>{{dupicateData.receiptDate}}</td>
+                        <td>{{dupicateData.receiptQty}}</td>
+                        <td>{{dupicateData.uploadedDate}}</td>
         
                     </tr>
                 </table>
             </div>
         </div>
         <div class="button-save-chng-receipts row">
-            <div class="save-chng" (click)="UploadSales()">
+            <div class="save-chng" (click)="UploadReceipt()">
                 <button class="save-text">
                    Upload
                 </button>

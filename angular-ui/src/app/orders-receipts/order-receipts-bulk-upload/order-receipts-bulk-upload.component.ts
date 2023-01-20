@@ -67,10 +67,10 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
       console.log("New Dataaaa",this.uploadedData); // Data will be logged in array format containing objects
       const uploadedFile = {
         CreateById:this.CreatedById,
-        BulkSales:this.uploadedData
+        bulkOrderReceipts:this.uploadedData
       }
       console.log("Daaataaa",uploadedFile); 
-      this.salesService.getBulkSalesUpload(uploadedFile).subscribe((res)=>{
+      this.salesService.getReceiptBulkUpload(uploadedFile).subscribe((res)=>{
         if(res.succeded = true) {
           this.showTable =true;
         }
@@ -104,9 +104,9 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
     }
   }
   expandEmptyRows(){
-    this.rowsemptyTotal = !this.rowsTotal;
+    this.rowsemptyTotal = !this.rowsemptyTotal;
 
-    if(this.rowsTotal === false){
+    if(this.rowsemptyTotal === false){
       this.image5 = 'assets/img/minimize-tag.png';
     } else {
       this.image5 = 'assets/img/maximize-arrow.png';
@@ -153,15 +153,15 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
      
     }
   }
-  UploadSales() {
+  UploadReceipt() {
     const uploadedFile = {
       BatchId:this.batchId[0],
-      action:''
+      action:'PROCESS'
     }
     console.log("Daaataaa",uploadedFile); 
-    this.salesService.SaveBulkSalesUpload(uploadedFile).subscribe((res)=>{
+    this.salesService.saveBulkUploadReceipt(uploadedFile).subscribe((res)=>{
       const uploadedData = res.response;
-      
+      console.log("SaveReceipt",uploadedData)
       this.dialogRef.close();
     })
    }

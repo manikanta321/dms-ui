@@ -26,6 +26,7 @@ export class SalesBulkUploadComponent implements OnInit {
   uploadSales:boolean = false;
   duplicate:boolean = false;  
   zeroVal:boolean = false; 
+  totalVal:boolean = false;
   incorrectData:boolean = false;
   partialD:boolean = false;
   formating:boolean = false;
@@ -33,6 +34,9 @@ export class SalesBulkUploadComponent implements OnInit {
   exceedQty:boolean = false;
   ErrorFree:boolean = false;
   rowsTotal:boolean = false;
+  rowsEmpty:boolean = false;
+  orderReceipt:boolean = false;
+  shipment:boolean = false;
   CreatedById:any;
   salesUploadList:any = [];
   uploadedData:any = [];
@@ -56,18 +60,43 @@ export class SalesBulkUploadComponent implements OnInit {
     this.CreatedById = Number(Created)
   }
   uploadSaless(){
-    let upload =sessionStorage.getItem('sales')
+    const receipt = sessionStorage.getItem("orderReceipt");
+    let upload =sessionStorage.getItem('sales');
+    const Shipment = sessionStorage.getItem("orderShipment");
     if(upload !== ''){
       this.uploadSales = true;
+      this.orderReceipt = false;
+      this.shipment =false ;
+      sessionStorage.setItem("orderReceipt",'');
     }
-    else{
+    if (receipt!= '') {
+      this.orderReceipt = true;
       this.uploadSales = false;
+      this.shipment =false ;
     }
+    if (Shipment!= '') {
+      this.shipment =true ;
+      this.uploadSales = false;
+      this.orderReceipt = false;
+    }
+    // else{
+    //   this.uploadSales = false;
+    // }
   }
   expandTotalRows(){
     this.rowsTotal = !this.rowsTotal;
 
     if(this.rowsTotal === false){
+      this.image1 = 'assets/img/minimize-tag.png';
+    } else {
+      this.image1 = 'assets/img/maximize-arrow.png';
+     
+    }
+  }
+  expandEmptyRows(){
+    this.rowsEmpty = !this.rowsEmpty;
+
+    if(this.rowsEmpty === false){
       this.image1 = 'assets/img/minimize-tag.png';
     } else {
       this.image1 = 'assets/img/maximize-arrow.png';
@@ -98,6 +127,16 @@ export class SalesBulkUploadComponent implements OnInit {
     this.zeroVal = !this.zeroVal;
 
     if(this.zeroVal === false){
+      this.image4 = 'assets/img/maximize-arrow.png';
+    } else {
+      this.image4 = 'assets/img/minimize-tag.png';
+     
+    }
+  }
+  expandTotalValue(){
+    this.totalVal = !this.totalVal;
+
+    if(this.totalVal === false){
       this.image4 = 'assets/img/maximize-arrow.png';
     } else {
       this.image4 = 'assets/img/minimize-tag.png';
@@ -205,6 +244,58 @@ export class SalesBulkUploadComponent implements OnInit {
       })
     };
  }
+ onUploadFile(event: any) {
+  /* wire up file reader */
+  const target: DataTransfer = <DataTransfer>(event.target);
+  if (target.files.length !== 1) {
+    throw new Error('Cannot use multiple files');
+  }
+  const reader: FileReader = new FileReader();
+  reader.readAsBinaryString(target.files[0]);
+  reader.onload = (e: any) => {
+    /* create workbook */
+    const binarystr: string = e.target.result;
+    const wb: XLSX.WorkBook = XLSX.read(binarystr, { type: 'binary',cellDates: true });
+    console.log(wb,"wb")
+
+    /* selected the first sheet */
+    const wsname: string = wb.SheetNames[0];
+    console.log(wsname,"wsname")
+    const ws: XLSX.WorkSheet = wb.Sheets[wsname];
+    console.log(ws,"ws")
+
+    /* save data */
+    
+     this.uploadedData = XLSX.utils.sheet_to_json(ws); // to get 2d array pass 2nd parameter as object {header: 1}
+    console.log("New Dataaaa",this.uploadedData); // Data will be logged in array format containing objects
+    const uploadedFile = {
+      CreateById:this.CreatedById,
+      bulkShipmentAdd:this.uploadedData
+    }
+    console.log("Daaataaa",uploadedFile); 
+    // getShipmentBulkUpload
+    this.salesService.getShipmentBulkUpload(uploadedFile).subscribe((res)=>{
+      if(res.succeded = true) {
+        this.showTable =true;
+      }
+      const orderShipment =res.response;
+      console.log("orderShipment",orderShipment);
+      this.TotalRows = orderShipment.totalRows;
+      this.totalRows = "Total rows = "+ this.TotalRows.length
+    this.duplicateEntryy =orderShipment.duplicateRecords;
+    this.duplicateEntry = "Duplicate entries = "+this.duplicateEntryy.length;
+    this.errorfreeRows = orderShipment.errorFreeRecords;
+    this.errorFree = "Error free rows = "+ this.errorfreeRows.length;
+      console.log("orderShipment",orderShipment);
+      this.incorrectRows = orderShipment.productGeographyNotFound;
+      this.Incorrect = "Incorrect Data = " + this.incorrectRows.length;
+      const UploadData = res.response.totalRows;
+      console.log("SalesUploadData",UploadData)
+      this.batchId = UploadData.map(({ guid }) => guid);
+      console.log("GUId",this.batchId )
+    })
+  };
+}
  UploadSales() {
   const uploadedFile = {
     BatchId:this.batchId[0],
@@ -217,6 +308,16 @@ export class SalesBulkUploadComponent implements OnInit {
     this.dialogRef.close();
   })
  }
-   
+ uploadFile() {
+  const uploadedFile = {
+    guid:this.batchId[0]
+  }
+  console.log("Daaataaa",uploadedFile); 
+  this.salesService.SaveBulkShipmentUpload(uploadedFile).subscribe((res)=>{
+    const uploadedData = res.response;
+    
+    this.dialogRef.close();
+  })
+ } 
 
 }

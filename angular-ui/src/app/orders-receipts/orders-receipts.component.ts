@@ -275,14 +275,12 @@ export class OrdersReceiptsComponent implements OnInit {
     orderReceiptsBulkUpload(){
         this.dialog.open(OrderReceiptsBulkUploadComponent);
     }
-    orderShipmentUpload(){
-      sessionStorage.setItem("sales",'');
-      sessionStorage.setItem("orderReceipt",'Receipt');
-      sessionStorage.setItem("orderShipment",'');
-      this.dialog.open(SalesBulkUploadComponent);
-        // this.dialog.open(SalesBulkUploadComponent);
-        // this.isOpen = false;
-    }
+    // orderReceiptsBulkUpload(){
+    //   sessionStorage.setItem("sales",'');
+    //   sessionStorage.setItem("orderReceipt",'Receipt');
+    //   sessionStorage.setItem("orderShipment",'');
+    //   this.dialog.open(SalesBulkUploadComponent);
+    // }
     geogrphyOrder() {
       this.user.getGeographies().subscribe((res: any) => {
         let localdata = res.response;

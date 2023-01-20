@@ -424,6 +424,7 @@
                                     <th>Order Qty</th>
                                     <th>Stock</th>
                                     <th>Unit Price</th>
+                                    <th>Final Price</th>                                    
                                     <th>Discount</th>
 
                                     <th>Final Value</th>
@@ -452,6 +453,9 @@
                                         </td>
                                         <td>
                                             <input type="text" disabled [(ngModel)]="Item.price" class="IteminputBoxes">
+                                        </td>
+                                        <td>
+                                            <input type="text" disabled [(ngModel)]="Item.finalPrice" class="IteminputBoxes">
                                         </td>
                                         <td>
                                             <input type="text" disabled [(ngModel)]="Item.discount"
@@ -495,6 +499,9 @@
                                     </td>
                                     <td>
                                         <input type="text" disabled [(ngModel)]="Item.price" class="IteminputBoxes">
+                                    </td>
+                                    <td>
+                                        <input type="text" disabled [(ngModel)]="Item.finalPrice" class="IteminputBoxes">
                                     </td>
                                     <td>
                                         <input type="text" disabled [(ngModel)]="Item.discount" class="IteminputBoxes">

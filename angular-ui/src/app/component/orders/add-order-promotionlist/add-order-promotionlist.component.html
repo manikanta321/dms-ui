@@ -140,16 +140,17 @@
                                         </div>
                                     </div>
                                     <!-- set groups -->
-                                    <div *ngFor="let promos of data.promoDetails.getGroups ">
-                                        <div class="buysets text-center sub-heading">
-                                            <h4 class="buysetHead"><b> {{data.promoDetails.getGroups.length != 0 ?
-                                                    'GETSETS'
-                                                    :''}} </b> </h4>
-                                            <div class="text-error-qty "
-                                                *ngIf="data.promoDetails.getGroupsQty || data.promoDetails.buyGroupsQty"
-                                                [ngClass]="{ 'txt-error': data.promoDetails.getGroupsQty != data.promoDetails.buyGroupsQty }">
-                                                (Total Get Qty {{data.promoDetails.getGroupsQty}}) </div>
-                                        </div>
+
+                                    <div class="buysets text-center sub-heading">
+                                        <h4 class="buysetHead"><b> {{data.promoDetails.getGroups.length != 0 ?
+                                                'GETSETS'
+                                                :''}} </b> </h4>
+                                        <div class="text-error-qty "
+                                            *ngIf="data.promoDetails.getGroupsQty || data.promoDetails.buyGroupsQty"
+                                            [ngClass]="{ 'txt-error': data.promoDetails.getGroupsQty != data.promoDetails.buyGroupsQty }">
+                                            (Total Get Qty {{data.promoDetails.getGroupsQty}}) </div>
+                                    </div>
+                                    <div *ngFor="let promos of data.promoDetails.getGroups">
                                         <div class="buyGrp 1">
                                             <!-- headingds for 1st promotions -->
                                             <div class="row label-div">
@@ -486,6 +487,7 @@
                                                         <th data-sortable="false">Tax Templete</th>
                                                         <th data-sortable="false">Quantity</th>
                                                         <th data-sortable="false">Amount</th>
+                                                        <th data-sortable="false">Discount Amount</th>
                                                     </tr>
                                                     <tr class="table-row"
                                                         *ngFor="let Item of data.promoDetails.stockitems">
@@ -515,6 +517,7 @@
                                                                 [(ngModel)]="Item.Quantity"
                                                                 (keyup)="quantityChange(data, Item)"></td>
                                                         <td>{{(Item.price) * (Item.Quantity)}}</td>
+                                                        <td>{{Item.DiscountAmount ?? 0 | currency:'':''}}</td>
                                                     </tr>
                                                     <tr class="bottom-table">
                                                         <td colspan="5" class="btm-total"><b>Total </b>(for selected
@@ -579,6 +582,8 @@
                                                         <th data-sortable="false">Tax Templete</th>
                                                         <th data-sortable="false">Quantity</th>
                                                         <th data-sortable="false">Amount</th>
+                                                        <th data-sortable="false">Discount Amount</th>
+
                                                     </tr>
                                                     <tr class="table-row"
                                                         *ngFor="let Item of data.promoDetails.stockitems">
@@ -609,6 +614,8 @@
                                                                 [(ngModel)]="Item.Quantity"
                                                                 (keyup)="quantityChange(data, Item)"></td>
                                                         <td>{{(Item.price) * (Item.Quantity)}}</td>
+
+                                                        <td>{{Item.DiscountAmount ?? 0}}</td>
                                                     </tr>
                                                     <tr class="bottom-table">
                                                         <td colspan="5" class="btm-total"><b>Total </b>(for selected

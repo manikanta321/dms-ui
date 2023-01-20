@@ -354,7 +354,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
   }
 
   quantityChange(data, updatedItem) {
-    if(!updatedItem.isProductSelected){
+    if (!updatedItem.isProductSelected) {
       updatedItem.isProductSelected = true;
     }
     data.showWarningMsg = true;
@@ -365,19 +365,45 @@ export class AddOrderPromotionlistComponent implements OnInit {
     console.log(this.griddatapromotions);
     this.isOrderPromotionValid = true;
     this.griddatapromotions.forEach(x => {
-      if(x.promotionTypesId == 3 || x.promotionTypesId== 4 || x.promotionTypesId == 1){
+      if (x.promotionTypesId == 3 || x.promotionTypesId == 4 || x.promotionTypesId == 1) {
         if (!x.promoDetails.isItemValid) {
           this.isOrderPromotionValid = false;
         }
       }
 
-      if(x.promotionTypesId == 2){
-        if (!x.promoDetails.isGetItemValid || !x.promoDetails.isBuyItemValid ) {
+      if (x.promotionTypesId == 2) {
+        if (!x.promoDetails.isGetItemValid || !x.promoDetails.isBuyItemValid) {
           this.isOrderPromotionValid = false;
         }
       }
 
     })
+  }
+
+  calculateDiscountVolumeAmount(item) {
+    item.promoDetails.stockitems.forEach(stockItem => {
+      stockItem.DiscountAmount = 0;
+      if (stockItem.isProductSelected) {
+        item.promoDetails.volumes.forEach(element => {
+          if (element.minVolume <= item.promoDetails.totalQuantity && element.maxVolume >= item.promoDetails.totalQuantity) {
+            stockItem.DiscountAmount = (stockItem.Quantity) * (stockItem.price) * (100 - element.discountPercentage) / 100;
+          }
+        });
+      }
+    });
+  }
+
+  calculateDiscountAmount(item) {
+    item.promoDetails.stockitems.forEach(stockItem => {
+      stockItem.DiscountAmount = 0;
+      if (stockItem.isProductSelected) {
+        item.promoDetails.prices.forEach(element => {
+          if (element.minVolume <= item.promoDetails.totalQuantity && element.maxVolume >= item.promoDetails.totalQuantity) {
+            stockItem.DiscountAmount = (stockItem.Quantity) * (element.maxPrice);
+          }
+        });
+      }
+    });
   }
   PromotionQtyCalculation(item) {
     switch (item.promotionTypesId) {
@@ -498,10 +524,10 @@ export class AddOrderPromotionlistComponent implements OnInit {
                 if (stockItem.maxVolume && stockItem.totalQuantity) {
                   item.promoDetails.getGroupsQty += Math.floor(stockItem.totalQuantity / stockItem.maxVolume);
                 }
-                if (setItem.isInputEnable &&  item.promoDetails.buyGroupsQty !== item.promoDetails.getGroupsQty) {
+                if (setItem.isInputEnable && item.promoDetails.buyGroupsQty !== item.promoDetails.getGroupsQty) {
                   stockItem.isItemValid = false;
                   item.promoDetails.isGetItemValid = false;
-                }else if(setItem.isInputEnable &&  item.promoDetails.buyGroupsQty == item.promoDetails.getGroupsQty) {
+                } else if (setItem.isInputEnable && item.promoDetails.buyGroupsQty == item.promoDetails.getGroupsQty) {
                   stockItem.isItemValid = true;
                   item.promoDetails.isGetItemValid = true;
                 }
@@ -529,6 +555,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
             item.promoDetails.isItemValid = false;
           }
         }
+        this.calculateDiscountVolumeAmount(item);
         break;
 
       case 4:
@@ -540,11 +567,13 @@ export class AddOrderPromotionlistComponent implements OnInit {
             if (stockItem.isProductSelected) {
               item.promoDetails.totalQuantity += stockItem.Quantity;
               item.promoDetails.totalAmount += (stockItem.price * stockItem.Quantity);
+              // stockItem.DiscountAmount = this.calculateDiscountAmount(item.promoDetails.prices, stockItem)
             }
           });
           if (item.promoDetails.totalQuantity < item.promoDetails.moq) {
             item.promoDetails.isItemValid = false;
           }
+          this.calculateDiscountAmount(item);
         }
         break;
 
@@ -808,6 +837,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
     let data = {
       "GeographyId": this.geographyId,
       "details": allopromotions,
+      "Dealerid": this.dealerid,
     }
     console.log('data', data);
 

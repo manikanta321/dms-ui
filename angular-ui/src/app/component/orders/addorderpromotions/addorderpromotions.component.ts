@@ -973,7 +973,8 @@ if(this.confirmOrder == "Confirm") {
       "type": [],
       "MaterialCustomIdentifier": [],
       "Search": "",
-      "GeographyId": this.geographyId
+      "GeographyId": this.geographyId,
+      "Dealerid": this.customerId,
     }
     this.spinner.show();
     
@@ -1064,7 +1065,8 @@ if(this.confirmOrder == "Confirm") {
     });
     let data = {
       "GeographyId": this.geographyId,
-      "AddItems": selectedNonPromotionData
+      "AddItems": selectedNonPromotionData,
+      "Dealerid": this.customerId,
     }
     this.orders.addorderNonPromotionsdata(data).subscribe(
       {

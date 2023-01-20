@@ -256,7 +256,7 @@ export class AssociationComponent implements OnInit {
   instancePopup:any = null;
   productAllArray:any[]=[];
   dealerAllArray:any[]=[];
-
+  loggedUserId:any;
 
 
 
@@ -357,6 +357,7 @@ export class AssociationComponent implements OnInit {
 
 
   ngOnInit() {
+    this.loggedUserId = localStorage.getItem('logInId');
     this.getusertabeldata();
     // this.dialog.open(AddDealerAssociationsComponent,{width: '900px',height:'460px'});
 
@@ -456,8 +457,8 @@ export class AssociationComponent implements OnInit {
       geographys:this.geographysSelected,
     product:this.productSelected,
      dealer:this.dealerSelected,
-    Search:this.searchText
-
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId
     }
     this.associationService.getDealersList(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -470,7 +471,9 @@ export class AssociationComponent implements OnInit {
       geographys:this.geographysSelected,
     product:this.productSelected,
      dealer:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId
+
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
@@ -625,7 +628,9 @@ export class AssociationComponent implements OnInit {
       geographys:this.geographysSelected,
     product:this.productSelected,
      dealer:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId
+
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
@@ -642,7 +647,9 @@ export class AssociationComponent implements OnInit {
       geographys:this.geographysSelected,
     product:this.productSelected,
      dealer:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId
+
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
@@ -656,7 +663,9 @@ export class AssociationComponent implements OnInit {
       geographys:this.geographysSelected,
     product:this.productSelected,
      dealer:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId
+
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
@@ -678,7 +687,9 @@ export class AssociationComponent implements OnInit {
       geographys:this.geographysSelected,
     product:this.productSelected,
      dealer:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId
+
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
@@ -699,7 +710,9 @@ export class AssociationComponent implements OnInit {
       geographys:this.geographysSelected,
     product:this.productSelected,
      dealer:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId
+
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
@@ -716,7 +729,9 @@ export class AssociationComponent implements OnInit {
       geographys:this.geographysSelected,
     product:this.productSelected,
      dealer:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId
+
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
@@ -732,7 +747,9 @@ export class AssociationComponent implements OnInit {
       geographys:this.geographysSelected,
     product:this.productSelected,
      dealer:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId
+
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
@@ -756,7 +773,9 @@ export class AssociationComponent implements OnInit {
       geographys:this.geographysSelected,
     product:this.productSelected,
      dealer:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId
+
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
@@ -779,7 +798,9 @@ export class AssociationComponent implements OnInit {
       geographys:this.geographysSelected,
     product:this.productSelected,
      dealer:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId
+
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
@@ -796,7 +817,9 @@ export class AssociationComponent implements OnInit {
       geographys:this.geographysSelected,
     product:this.productSelected,
      dealer:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId
+
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
@@ -812,7 +835,9 @@ export class AssociationComponent implements OnInit {
       geographys:this.geographysSelected,
     product:this.productSelected,
      dealer:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId
+
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
@@ -836,7 +861,9 @@ console.log(item)
       geographys:this.geographysSelected,
     product:this.productSelected,
      dealer:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId
+
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {
@@ -999,7 +1026,9 @@ console.log(item)
       geographys:this.geographysSelected,
     product:this.productSelected,
      dealer:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId
+
 
     }
     this.associationService.getDealersList(data).subscribe((res) => {

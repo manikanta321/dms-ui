@@ -305,7 +305,7 @@ public pivotPanelShow = 'always';
   productLisst:  any= [];
 geoList:any=[];
   offsetValue: number[] = [];
-
+  loggedUserId:any='';
   filterDictionary: any;
   sideBarOpen = true;
   @ViewChild(MatSidenav)
@@ -397,8 +397,8 @@ geoList:any=[];
       status:this.statusSelected,
       StartDate:this.startDate,
       EndDate:this.endDate,
-      search:this.searchText
-  
+      search:this.searchText,
+      CurrentUserId:this.loggedUserId,
     }
     console.log("Data", data);
     this.promotin.promotionTabledata(data).subscribe((res) => {
@@ -412,6 +412,7 @@ geoList:any=[];
 
 
   ngOnInit() {
+    this.loggedUserId = localStorage.getItem('logInId');
     this.AddpromotionData = localStorage.getItem("AddpromotionData");
     this.maxDate.setDate(this.maxDate.getDate() + 20);     
     
@@ -484,7 +485,9 @@ geoList:any=[];
     status:[],
     startDate:'',
     endDate :'',
-    search: ''
+    search: '',
+    CurrentUserId:this.loggedUserId,
+
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -507,7 +510,9 @@ geoList:any=[];
       status:this.statusSelected,
       StartDate:this.startDate,
       EndDate:this.endDate,
-      search:this.searchText
+      search:this.searchText,
+      CurrentUserId:this.loggedUserId,
+
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -573,7 +578,9 @@ geoList:any=[];
         status:this.statusSelected,
         StartDate:this.startDate,
         EndDate:this.endDate,
-        search:this.searchText
+        search:this.searchText,
+        CurrentUserId:this.loggedUserId,
+
     
       }
       console.log("Data", data);
@@ -602,7 +609,9 @@ geoList:any=[];
       status:this.statusSelected,
       StartDate:this.startDate,
       EndDate:this.endDate,
-      search:this.searchText
+      search:this.searchText,
+      CurrentUserId:this.loggedUserId,
+
     }
       this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -625,7 +634,9 @@ geoList:any=[];
         status:this.statusSelected,
         StartDate:this.startDate,
         EndDate:this.endDate,
-        search:this.searchText
+        search:this.searchText,
+        CurrentUserId:this.loggedUserId,
+
       }
       this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -646,7 +657,9 @@ geoList:any=[];
           status:this.statusSelected,
           StartDate:this.startDate,
           EndDate:this.endDate,
-          search:this.searchText
+          search:this.searchText,
+          CurrentUserId:this.loggedUserId,
+
         }
         this.promotin.promotionTabledata(data).subscribe((res) => {
   
@@ -716,7 +729,9 @@ onProductSelect(item: any) {
       status:this.statusSelected,
       StartDate:this.startDate,
       EndDate:this.endDate,
-      search:this.searchText
+      search:this.searchText,
+      CurrentUserId:this.loggedUserId,
+
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -744,7 +759,9 @@ onProductSelect(item: any) {
       status:this.statusSelected,
       StartDate:this.startDate,
       EndDate:this.endDate,
-      search:this.searchText
+      search:this.searchText,
+      CurrentUserId:this.loggedUserId,
+
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -766,7 +783,9 @@ onProductSelect(item: any) {
       status:this.statusSelected,
       StartDate:this.startDate,
       EndDate:this.endDate,
-      search:this.searchText
+      search:this.searchText,
+      CurrentUserId:this.loggedUserId,
+
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -787,7 +806,9 @@ onProductSelect(item: any) {
         status:this.statusSelected,
         StartDate:this.startDate,
         EndDate:this.endDate,
-        search:this.searchText
+        search:this.searchText,
+        CurrentUserId:this.loggedUserId,
+
       }
       this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -849,7 +870,9 @@ onGeoSelect(item: any) {
       status:this.statusSelected,
       StartDate:this.startDate,
       EndDate:this.endDate,
-      search:this.searchText
+      search:this.searchText,
+      CurrentUserId:this.loggedUserId,
+
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -877,7 +900,9 @@ onGeoSelect(item: any) {
       status:this.statusSelected,
       StartDate:this.startDate,
       EndDate:this.endDate,
-      search:this.searchText
+      search:this.searchText,
+      CurrentUserId:this.loggedUserId,
+
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -899,7 +924,9 @@ onGeoSelect(item: any) {
       status:this.statusSelected,
       StartDate:this.startDate,
       EndDate:this.endDate,
-      search:this.searchText
+      search:this.searchText,
+      CurrentUserId:this.loggedUserId,
+
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -920,7 +947,9 @@ onGeoSelect(item: any) {
         status:this.statusSelected,
         StartDate:this.startDate,
         EndDate:this.endDate,
-        search:this.searchText
+        search:this.searchText,
+        CurrentUserId:this.loggedUserId,
+
       }
       this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -989,7 +1018,9 @@ onItemDeSelectOrAllStatus(item:any){
     status:this.statusSelected,
     StartDate:this.startDate,
     EndDate:this.endDate,
-    search:this.searchText
+    search:this.searchText,
+    CurrentUserId:this.loggedUserId,
+
   }
   this.promotin.promotionTabledata(data).subscribe((res) => {
   
@@ -1011,7 +1042,9 @@ onItemSelectOrAllStatus(item:any){
     status:this.statusSelected,
     StartDate:this.startDate,
     EndDate:this.endDate,
-    search:this.searchText
+    search:this.searchText,
+    CurrentUserId:this.loggedUserId,
+
   }
   this.promotin.promotionTabledata(data).subscribe((res) => {
   
@@ -1033,7 +1066,9 @@ const data={
   status:this.statusSelected,
   StartDate:this.startDate,
   EndDate:this.endDate,
-  search:this.searchText
+  search:this.searchText,
+  CurrentUserId:this.loggedUserId,
+
 }
 this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -1058,7 +1093,9 @@ const data={
   status:this.statusSelected,
   StartDate:this.startDate,
   EndDate:this.endDate,
-  search:this.searchText
+  search:this.searchText,
+  CurrentUserId:this.loggedUserId,
+
 }
 this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -1223,7 +1260,9 @@ handleScroll(event) {
       status:this.statusSelected,
       StartDate:this.startDate,
       EndDate:this.endDate,
-      search:this.searchText
+      search:this.searchText,
+      CurrentUserId:this.loggedUserId,
+
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -1244,7 +1283,9 @@ handleScroll(event) {
       status:this.statusSelected,
       StartDate:this.startDate,
       EndDate:this.endDate,
-      search:this.searchText
+      search:this.searchText,
+      CurrentUserId:this.loggedUserId,
+
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -1264,7 +1305,9 @@ handleScroll(event) {
       status:this.statusSelected,
       StartDate:this.startDate,
       EndDate:this.endDate,
-      search:this.searchText
+      search:this.searchText,
+      CurrentUserId:this.loggedUserId,
+
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
@@ -1292,7 +1335,9 @@ console.log(item)
       status:this.statusSelected,
       StartDate:this.startDate,
       EndDate:this.endDate,
-      search:this.searchText
+      search:this.searchText,
+      CurrentUserId:this.loggedUserId,
+
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
 

@@ -258,7 +258,7 @@ export class DealerTargetComponent implements OnInit {
   message: boolean = false;
   message1: boolean = true;
   instancePopup:any = null;
-
+  loggedUserId:any;
 
   paginationNumberFormatter: (
     params: PaginationNumberFormatterParams
@@ -358,7 +358,7 @@ export class DealerTargetComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    this.loggedUserId = localStorage.getItem('logInId');
     this.TargetTabelData();
     this.Geography();
     this.statusItems();
@@ -449,7 +449,8 @@ export class DealerTargetComponent implements OnInit {
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
       year:this.yearSelected,
-      Search:this.searchText
+      Search:this.searchText,
+      CurrentUserId:this.loggedUserId
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -464,7 +465,9 @@ export class DealerTargetComponent implements OnInit {
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
       year:this.yearSelected,
-      Search:this.searchText
+      Search:this.searchText,
+      CurrentUserId:this.loggedUserId
+
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -509,7 +512,9 @@ console.log("SelectedGeo",this.geographySelected)
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
       year:this.yearSelected,
-      Search:this.searchText
+      Search:this.searchText,
+      CurrentUserId:this.loggedUserId
+
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -524,7 +529,9 @@ console.log("SelectedGeo",this.geographySelected)
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
       year:this.yearSelected,
-      Search:this.searchText
+      Search:this.searchText,
+      CurrentUserId:this.loggedUserId
+
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -539,7 +546,9 @@ console.log("SelectedGeo",this.geographySelected)
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
       year:this.yearSelected,
-      Search:this.searchText
+      Search:this.searchText,
+      CurrentUserId:this.loggedUserId
+
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -557,7 +566,9 @@ console.log("SelectedGeo",this.geographySelected)
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
       year:this.yearSelected,
-      Search:this.searchText
+      Search:this.searchText,
+      CurrentUserId:this.loggedUserId
+
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -627,7 +638,9 @@ console.log("SelectedGeo",this.geographySelected)
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
       year:this.yearSelected,
-      Search:this.searchText
+      Search:this.searchText,
+      CurrentUserId:this.loggedUserId
+
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -642,7 +655,9 @@ console.log("SelectedGeo",this.geographySelected)
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
       year:this.yearSelected,
-      Search:this.searchText
+      Search:this.searchText,
+      CurrentUserId:this.loggedUserId
+
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {//yet to change
       this.rowData5 = res.response;
@@ -657,7 +672,9 @@ console.log("SelectedGeo",this.geographySelected)
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
       year:this.yearSelected,
-      Search:this.searchText
+      Search:this.searchText,
+      CurrentUserId:this.loggedUserId
+
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {//yet to change
       this.rowData5 = res.response;
@@ -675,7 +692,9 @@ console.log("SelectedGeo",this.geographySelected)
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
       year:this.yearSelected,
-      Search:this.searchText
+      Search:this.searchText,
+      CurrentUserId:this.loggedUserId
+
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -702,7 +721,9 @@ console.log("SelectedGeo",this.geographySelected)
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
       year:this.yearSelected,
-      Search:this.searchText
+      Search:this.searchText,
+      CurrentUserId:this.loggedUserId
+
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -717,7 +738,9 @@ console.log("SelectedGeo",this.geographySelected)
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
       year:this.yearSelected,
-      Search:this.searchText
+      Search:this.searchText,
+      CurrentUserId:this.loggedUserId
+
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -732,7 +755,9 @@ console.log("SelectedGeo",this.geographySelected)
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
       year:this.yearSelected,
-      Search:this.searchText
+      Search:this.searchText,
+      CurrentUserId:this.loggedUserId
+
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -750,7 +775,9 @@ console.log("SelectedGeo",this.geographySelected)
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
       year:this.yearSelected,
-      Search:this.searchText
+      Search:this.searchText,
+      CurrentUserId:this.loggedUserId
+
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -826,7 +853,9 @@ console.log("SelectedGeo",this.geographySelected)
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
       year:this.yearSelected,
-      Search:this.searchText
+      Search:this.searchText,
+      CurrentUserId:this.loggedUserId
+
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -939,7 +968,9 @@ console.log("SelectedGeo",this.geographySelected)
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
       year:this.yearSelected,
-      Search:this.searchText
+      Search:this.searchText,
+      CurrentUserId:this.loggedUserId
+
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -954,7 +985,9 @@ console.log("SelectedGeo",this.geographySelected)
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
       year:this.yearSelected,
-      Search:this.searchText
+      Search:this.searchText,
+      CurrentUserId:this.loggedUserId
+
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -969,7 +1002,9 @@ console.log("SelectedGeo",this.geographySelected)
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
       year:this.yearSelected,
-      Search:this.searchText
+      Search:this.searchText,
+      CurrentUserId:this.loggedUserId
+
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
@@ -987,7 +1022,9 @@ console.log("SelectedGeo",this.geographySelected)
       GeographyId:this.geographySelected,
       DealerId:this.dealerSelected,
       year:this.yearSelected,
-      Search:this.searchText
+      Search:this.searchText,
+      CurrentUserId:this.loggedUserId
+
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;

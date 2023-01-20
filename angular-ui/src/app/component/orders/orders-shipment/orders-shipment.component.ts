@@ -50,6 +50,7 @@ export class OrdersShipmentComponent implements OnInit {
   startDateInvoice:any = '';
   endDateInvoice:any = '';
   selectedDateRange:any;
+  loggedUserId:any;
   columnDefs: ColDef[] = [
     {  headerName: "Shipment No.",minWidth:200,
     field: 'shipmentNumber',      tooltipField:"shipmentNumber",
@@ -173,6 +174,8 @@ export class OrdersShipmentComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.loggedUserId = localStorage.getItem('logInId');
+
     this.myForm = this.fb.group({
       city: [this.selectedItems]
     });
@@ -258,7 +261,8 @@ export class OrdersShipmentComponent implements OnInit {
         EndDateship:this.endDateShip,
         StartDateinvoice:"",
         EndDateinvoice:"",
-        Search:""
+        Search:"",
+        CurrentUserId:this.loggedUserId
       }
       this.orders.getShipmentList(data).subscribe((res) => {
         this.shipmentDatalist = res.response;
@@ -277,7 +281,9 @@ export class OrdersShipmentComponent implements OnInit {
         EndDateship:this.endDateShip,
         StartDateinvoice:this.startDateInvoice,
         EndDateinvoice:this.endDateInvoice,
-        Search:""
+        Search:"",
+        CurrentUserId:this.loggedUserId
+
       }
       this.orders.getShipmentList(data).subscribe((res) => {
         this.shipmentDatalist = res.response;
@@ -299,7 +305,9 @@ export class OrdersShipmentComponent implements OnInit {
         EndDateship:"",
         StartDateinvoice:"",
         EndDateinvoice:"",
-        Search:""
+        Search:"",
+        CurrentUserId:this.loggedUserId
+
       }
       this.orders.getShipmentList(data).subscribe((res) => {
         this.shipmentDatalist = res.response;
@@ -338,7 +346,9 @@ export class OrdersShipmentComponent implements OnInit {
         EndDateship:this.endDateShip,
         StartDateinvoice:this.startDateInvoice,
         EndDateinvoice:this.endDateInvoice,
-        Search:this.searchText
+        Search:this.searchText,
+        CurrentUserId:this.loggedUserId
+
       }
       this.orders.getShipmentList(data).subscribe((res) => {
         this.shipmentDatalist = res.response;
@@ -357,7 +367,9 @@ export class OrdersShipmentComponent implements OnInit {
         EndDateship:this.endDateShip,
         StartDateinvoice:this.startDateInvoice,
         EndDateinvoice:this.endDateInvoice,
-        Search:this.searchText
+        Search:this.searchText,
+        CurrentUserId:this.loggedUserId
+
       }
       this.orders.getShipmentList(data).subscribe((res) => {
         this.shipmentDatalist = res.response;
@@ -373,7 +385,9 @@ export class OrdersShipmentComponent implements OnInit {
         EndDateship:this.endDateShip,
         StartDateinvoice:this.startDateInvoice,
         EndDateinvoice:this.endDateInvoice,
-        Search:this.searchText
+        Search:this.searchText,
+        CurrentUserId:this.loggedUserId
+
       }
       this.orders.getShipmentList(data).subscribe((res) => {
         this.shipmentDatalist = res.response;
@@ -390,7 +404,9 @@ export class OrdersShipmentComponent implements OnInit {
         EndDateship:this.endDateShip,
         StartDateinvoice:this.startDateInvoice,
         EndDateinvoice:this.endDateInvoice,
-        Search:this.searchText
+        Search:this.searchText,
+        CurrentUserId:this.loggedUserId
+
       }
       this.orders.getShipmentList(data).subscribe((res) => {
         this.shipmentDatalist = res.response;
@@ -430,7 +446,9 @@ export class OrdersShipmentComponent implements OnInit {
         EndDateship:this.endDateShip,
         StartDateinvoice:this.startDateInvoice,
         EndDateinvoice:this.endDateInvoice,
-        Search:this.searchText
+        Search:this.searchText,
+        CurrentUserId:this.loggedUserId
+
       }
       this.orders.getShipmentList(data).subscribe((res) => {
         this.shipmentDatalist = res.response;
@@ -448,7 +466,9 @@ export class OrdersShipmentComponent implements OnInit {
         EndDateship:this.endDateShip,
         StartDateinvoice:this.startDateInvoice,
         EndDateinvoice:this.endDateInvoice,
-        Search:this.searchText
+        Search:this.searchText,
+        CurrentUserId:this.loggedUserId
+
       }
       this.orders.getShipmentList(data).subscribe((res) => {
         this.shipmentDatalist = res.response;
@@ -464,7 +484,9 @@ export class OrdersShipmentComponent implements OnInit {
         EndDateship:this.endDateShip,
         StartDateinvoice:this.startDateInvoice,
         EndDateinvoice:this.endDateInvoice,
-        Search:this.searchText
+        Search:this.searchText,
+        CurrentUserId:this.loggedUserId
+
       }
       this.orders.getShipmentList(data).subscribe((res) => {
         this.shipmentDatalist = res.response;
@@ -480,7 +502,9 @@ export class OrdersShipmentComponent implements OnInit {
         EndDateship:this.endDateShip,
         StartDateinvoice:this.startDateInvoice,
         EndDateinvoice:this.endDateInvoice,
-        Search:this.searchText
+        Search:this.searchText,
+        CurrentUserId:this.loggedUserId
+
       }
       this.orders.getShipmentList(data).subscribe((res) => {
         this.shipmentDatalist = res.response;
@@ -497,7 +521,9 @@ export class OrdersShipmentComponent implements OnInit {
           EndDateship:this.endDateShip,
           StartDateinvoice:this.startDateInvoice,
           EndDateinvoice:this.endDateInvoice,
-          Search:this.searchText
+          Search:this.searchText,
+          CurrentUserId:this.loggedUserId
+
         }
         this.orders.getShipmentList(data).subscribe((res) => {
           this.shipmentDatalist = res.response;
@@ -529,7 +555,9 @@ export class OrdersShipmentComponent implements OnInit {
         EndDateship:this.endDateShip,
         StartDateinvoice:this.startDateInvoice,
         EndDateinvoice:this.endDateInvoice,
-        Search:this.searchText
+        Search:this.searchText,
+        CurrentUserId:this.loggedUserId
+
       }
       this.orders.getShipmentList(data).subscribe((res) => {
         this.shipmentDatalist = res.response;

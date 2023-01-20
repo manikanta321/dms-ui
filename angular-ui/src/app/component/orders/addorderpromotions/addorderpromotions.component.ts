@@ -290,6 +290,15 @@ if(this.confirmOrder == "Confirm") {
   }
 
   addOrderPromotionList() {
+
+    localStorage.setItem("geographyId", this.geographyId);
+    localStorage.setItem("dealerid", this.customerId);
+
+    if(this.geographyId == null || this.customerId == null){
+      alert("Plz select geography and dealer");
+      return;
+    }
+
     const dialogRef = this.dialog.open(AddOrderPromotionlistComponent, { width: '1043px', height: '900px', data: this.AddOrderPromotionData });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
@@ -301,6 +310,14 @@ if(this.confirmOrder == "Confirm") {
   }
 
   addOrderNonPromotionList() {
+
+    localStorage.setItem("geographyId", this.geographyId);
+    localStorage.setItem("dealerid", this.customerId);
+
+    if(this.geographyId == null || this.customerId == null){
+      alert("Plz select geography and dealer");
+      return;
+    }
     this.orderNonPromotionsList();
     this.Non_promotions = true;
   }
@@ -959,6 +976,7 @@ if(this.confirmOrder == "Confirm") {
       "GeographyId": this.geographyId
     }
     this.spinner.show();
+    
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
       let orderNonPromotionsData = res.response;

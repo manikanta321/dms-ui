@@ -3,6 +3,8 @@ import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import tippy, { hideAll } from 'tippy.js'; 
 
+import { OrdersReceiveShipmentComponent } from '../../orders-receive-shipment/orders-receive-shipment.component';
+
 @Component({
   selector: 'app-order-action-shipment',
   templateUrl: './order-action-shipment.component.html',
@@ -59,5 +61,10 @@ export class OrderActionShipmentComponent implements OnInit {
     } else {
       this.tippyInstance.unmount();
     }
+  }
+  orderReceive()
+  {
+    this.dialog.open(OrdersReceiveShipmentComponent, {width:"1587px",height:"1661px"});
+    this.isOpen=false;
   }
 }

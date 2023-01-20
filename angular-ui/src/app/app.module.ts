@@ -196,6 +196,7 @@ import { EditDealerTargetComponent } from './component/edit-dealer-target/edit-d
 import { OrdersReceiptsComponent } from './orders-receipts/orders-receipts.component';
 import { ViewPromotionPopupComponent } from './component/pramotion-action/view-promotion-popup/view-promotion-popup.component';
 import { OrderReceiptsBulkUploadComponent } from './orders-receipts/order-receipts-bulk-upload/order-receipts-bulk-upload.component';
+import { OrdersReceiveShipmentComponent } from './component/orders-receive-shipment/orders-receive-shipment.component';
 
 @NgModule({
   declarations: [
@@ -485,6 +486,7 @@ import { OrderReceiptsBulkUploadComponent } from './orders-receipts/order-receip
           OrdersReceiptsComponent,
           ViewPromotionPopupComponent,
           OrderReceiptsBulkUploadComponent,
+          OrdersReceiveShipmentComponent,
           
   ],
   imports: [

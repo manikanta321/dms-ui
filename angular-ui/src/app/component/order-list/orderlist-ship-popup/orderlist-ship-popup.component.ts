@@ -43,7 +43,7 @@ export class OrderlistShipPopupComponent implements OnInit {
   ShippingCharge:any;
   Total:any;
   viewList:boolean=false;
-
+  itemsArray:any=[]
   currentShipment: any = [];
   public popupParent: HTMLElement = document.body;
   public rowData5: any = [{ date: "14-Oct-22", createdBy: "Bruce Wayne", action: "Creation", subAction: "Save Draft", invoiceNo: "23AB67", comments: "Lorem ipsum dsjh sdhsujdi " }]
@@ -150,6 +150,35 @@ export class OrderlistShipPopupComponent implements OnInit {
     this.orders.shipOrder(data).subscribe((res) => {
       console.log(res)
       this.shipmentArray = res.response;
+      
+    this.shipmentArray.itemcount.forEach(element=>{
+      element.itemDetails.forEach(element1=>{
+let arraybj:any=[]
+arraybj.push(element1)
+let obj:any={
+  promo:element.promocode,
+    "customerPOProductId": element1.customerPOProductId,
+    "stockitemid":  element1.customerPOProductId,
+    "stockitemname": element1.stockitemname,
+    "productSKUName": element1.productSKUName,
+    "uomid": element1.uomid,
+    "uomname": element1.uomname,
+    "quantity": element1.quantity,
+    "stock": element1.stock,
+    "price": element1.price,
+    "discount": element1.discount,
+    "finalPrice": element1.finalPrice,
+    "finalValue": element1.finalValue,
+    "taxvalue": element1.taxvalue,
+    "amount": element1.amount,
+    "taxid": element1.taxid
+}
+        this.itemsArray.push(obj);
+      
+      })
+      console.log('element1',this.itemsArray)
+      
+          })
       console.log('shipmentArray', this.shipmentArray);
     
 this.subtotal=Number(this.shipmentArray.currentshipDetails.subTotal);
@@ -195,6 +224,7 @@ let mainArray:any=[];
 
     })
     console.log('currentShipment', this.currentShipment)
+    debugger
 
   }
   viewOrderData() {

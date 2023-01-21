@@ -26,21 +26,21 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="dealerr">
-                                <label class="DealerInfo-label">Dealer <span class="astr">*</span></label>
+                                <label class="DealerInfo-label">Dealer <span class="astr"></span></label>
                                 <br>
                                 <label class="DescInfo-label">{{shipmentArray.customername}}</label>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="geographyy">
-                                <label class="DealerInfo-label">Geography <span class="astr">*</span></label>
+                                <label class="DealerInfo-label">Geography <span class="astr"></span></label>
                                 <br>
                                 <label class="DescInfo-label">{{shipmentArray.geographyName}}</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="billingAdrs">
-                                <label class="DealerInfo-label">Billing Address <span class="astr">*</span></label>
+                                <label class="DealerInfo-label">Billing Address <span class="astr"></span></label>
                                 <label class="DescInfo-label">{{shipmentArray.billngAddress}}</label>
                             </div>
                         </div>
@@ -49,21 +49,21 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="dealerReff">
-                                <label class="DealerInfo-label">Dealer Reference No <span class="astr">*</span></label>
+                                <label class="DealerInfo-label">Dealer Reference No <span class="astr"></span></label>
                                 <br>
                                 <label class="DescInfo-label">{{shipmentArray.dealerrefno}}</label>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="companyReff">
-                                <label class="DealerInfo-label">Company Reference No <span class="astr">*</span></label>
+                                <label class="DealerInfo-label">Company Reference No <span class="astr"></span></label>
                                 <br>
                                 <label class="DescInfo-label">{{shipmentArray.comrefno}}</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="shippingAdrs">
-                                <label class="DealerInfo-label">Shipping Address <span class="astr">*</span></label>
+                                <label class="DealerInfo-label">Shipping Address <span class="astr"></span></label>
                                 <label class="DescInfo-label">{{shipmentArray.shippingAddress}}</label>
                             </div>
                         </div>
@@ -96,35 +96,35 @@
                                     <th>Tax</th>
                                     <th>Amount</th>
                                 </tr>
-                                <tr [(ngModel)]="itemremoved" *ngFor="let data of shipmentArray.itemcount ">
+                                <tr [(ngModel)]="itemremoved" *ngFor="let data of itemsArray ">
                                     <td>
                                         <p class="itemLeft"><span
-                                                class="promoItem">{{data.promocode}}</span>{{data.promotionName?data.promotionName:''}}
+                                                class="promoItem">{{data.promo}}</span>{{data.stockitemname?data.stockitemname:''}}
                                         </p>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.itemDetails[0].uomname}}</label>
+                                        <label class="IteminputBoxes">{{data.uomname}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.itemDetails[0].quantity}}</label>
+                                        <label class="IteminputBoxes">{{data.quantity}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.itemDetails[0].stock}}</label>
+                                        <label class="IteminputBoxes">{{data.stock}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.itemDetails[0].price}}</label>
+                                        <label class="IteminputBoxes">{{data.price}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.itemDetails[0].discount}}</label>
+                                        <label class="IteminputBoxes">{{data.discount}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.itemDetails[0].finalValue}}</label>
+                                        <label class="IteminputBoxes">{{data.finalValue}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.itemDetails[0].taxvalue}}</label>
+                                        <label class="IteminputBoxes">{{data.taxvalue}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.itemDetails[0].amount}}</label>
+                                        <label class="IteminputBoxes">{{data.amount}}</label>
                                     </td>
                                     <!-- <mat-icon class="removeCircle" (click)=removeItem()>
                                     remove_circle</mat-icon> -->
@@ -321,7 +321,7 @@
                                 <!-- <input matInput placeholder="Select" #input class="form-control container input-box" > -->
                             </div>
                             <div class="col-lg-3">
-                                <div class="myDatepicker promotion-datepicker">
+                                <!-- <div class="myDatepicker promotion-datepicker">
                                     <label>Receive Date<span class="astr">*</span></label><br>
                                     <mat-form-field class="placeh-align">
                                         <mat-label> Receive date</mat-label>
@@ -334,7 +334,7 @@
                                         </mat-datepicker-toggle>
                                         <mat-datepicker #picker3></mat-datepicker>
                                     </mat-form-field>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="section mt-1">
@@ -454,7 +454,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="top-bottom">
+                <!-- <div class="top-bottom">
                     <div class="collapsible" (click)="expandOrderHistoryDiv()">
                         <div class="row">
                             <div class="col-lg-11">
@@ -482,7 +482,7 @@
 
                     </div>
 
-                </div>
+                </div> -->
 
             </div>
 

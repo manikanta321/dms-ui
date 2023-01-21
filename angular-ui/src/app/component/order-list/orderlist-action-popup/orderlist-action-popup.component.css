@@ -78,3 +78,7 @@ display:none;
   font-size: 14px;
   font-weight: 900;
 }
+
+.single.menu-container:after{
+  bottom: 25px;
+}

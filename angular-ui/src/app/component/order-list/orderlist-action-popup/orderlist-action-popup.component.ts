@@ -1,7 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import tippy, { hideAll } from 'tippy.js'; 
+import tippy, { hideAll } from 'tippy.js';
+import { OrdersReceiveShipmentComponent } from '../../orders-receive-shipment/orders-receive-shipment.component';
 import { AddOrderPromotionlistComponent } from '../../orders/add-order-promotionlist/add-order-promotionlist.component';
 import { AddorderpromotionsComponent } from '../../orders/addorderpromotions/addorderpromotions.component';
 // import { OrderNonpromotionlistComponent } from '../../orders/order-nonpromotionlist/order-nonpromotionlist.component';
@@ -17,49 +18,65 @@ export class OrderlistActionPopupComponent implements OnInit {
   private params;
   public isOpen = false;
   private tippyInstance;
-  selected:boolean=false;
+  selected: boolean = false;
   offsetValue: number[] = [];
+  currentActionMenu: string[] = [];
 
   @ViewChild('content') container;
 
-  @ViewChild('trigger') button
-  constructor(private changeDetector: ChangeDetectorRef,private dialog: MatDialog,
-    private route: ActivatedRoute, ) { 
+  @ViewChild('trigger') button;
+
+  orderStatusAction = {
+    'ordered': ['confirm_order', 'cancel_order'], // done
+    'returned': ['edit_order', 'cancel_order'], // NA
+    'rejected': [], // done
+    'confirmed': ['ship_order', 'close'], // done
+    'cancelled': [], // need to check
+    'preclosed': [], // NA
+    'in-transit': ['ship_order', 'close'], //done
+    'draft': ['edit_order', 'cancel_order'], //done
+    'fulfilled': [], // Spelling check
+    'to-ship': ['ship_order', 'close'],
+    'received': [], // done
+  }
+  showCaseMenuList:string[] = [];
+  constructor(private changeDetector: ChangeDetectorRef, private dialog: MatDialog,
+    private route: ActivatedRoute,) {
     this.route
       .data
       .subscribe(v => {
         let menuList = v['orderList'];
-        let showCaseMenuList: string[] = [];
+        this.showCaseMenuList = [];
         let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
         userRolesData.forEach(element => {
           if (element.title == v['key']) {
             element.permission.forEach(item => {
               if (menuList.indexOf(item.action.toLowerCase()) !== -1 && item.status) {
-                showCaseMenuList.push(item.action);
+                this.showCaseMenuList.push(item.action.toLowerCase());
               }
             })
           }
         })
-        switch (showCaseMenuList.length) {
-          case 4:
-            this.offsetValue = [-100, 200];
-            break;
-          case 3:
-            this.offsetValue = [-72, 200];
-            break;
-          case 2:
-            this.offsetValue = [-42, 200];
-            break;
-          case 1:
-            this.offsetValue = [-15, 200];
-            break;
+        // switch (showCaseMenuList.length) {
+        //   case 4:
+        //     this.offsetValue = [-100, 200];
+        //     break;
+        //   case 3:
+        //     this.offsetValue = [-72, 200];
+        //     break;
+        //   case 2:
+        //     this.offsetValue = [-42, 200];
+        //     break;
+        //   case 1:
+        //     this.offsetValue = [-15, 200];
+        //     break;
 
-          default:
-            this.offsetValue = [-100, 200];
-            break;
-        }
+        //   default:
+        //     this.offsetValue = [-100, 200];
+        //     break;
+        // }
       });
-}
+  }
 
   ngOnInit(): void {
   }
@@ -70,6 +87,43 @@ export class OrderlistActionPopupComponent implements OnInit {
 
   agInit(params) {
     this.params = params;
+    let menu = [];
+    if(this.params?.data?.status){
+      menu = this.orderStatusAction[this.params?.data?.status?.toLowerCase()] ?? [];
+    }else if(this.params?.data?.statusName){
+      menu = this.orderStatusAction[this.params?.data?.statusName?.toLowerCase()] ?? [];
+    }
+
+    let ignoreMenus = ['close', 'cancel_order'];
+
+    console.log("menu", menu);
+    this.currentActionMenu = menu.filter(x => this.showCaseMenuList.indexOf(x) !== -1 || ignoreMenus.indexOf(x) !== -1);
+
+    this.currentActionMenu.push('view');
+    console.log(this.currentActionMenu.length);
+
+    switch (this.currentActionMenu.length) {
+      case 5:
+        this.offsetValue = [-100, 200];
+        break;
+      case 4:
+        this.offsetValue = [-72, 200];
+        break;
+      case 3:
+        this.offsetValue = [-42, 200];
+        break;
+      case 2:
+        this.offsetValue = [-15, 200];
+        break;
+
+      case 1:
+        this.offsetValue = [-15, 200];
+        break;
+
+      default:
+        this.offsetValue = [-100, 200];
+        break;
+    }
   }
 
   configureTippyInstance() {
@@ -106,57 +160,56 @@ export class OrderlistActionPopupComponent implements OnInit {
     }
   }
 
-  orderedit(){
+  orderedit() {
     // localStorage.setItem('edit-dealer','Edit')
     // this.dialog.open(OrderlistEditPopupComponent,{height:"570px"});
     // this.isOpen = false;
-    sessionStorage.setItem("Confirm","");
-      localStorage.setItem("Edit",'Edit')
-      let dialogRef =this.dialog.open(AddorderpromotionsComponent, {
-        // width: '100vw',
-        maxWidth: '78vw',
-        panelClass: 'order-add-edit'
+    sessionStorage.setItem("Confirm", "");
+    localStorage.setItem("Edit", 'Edit')
+    let dialogRef = this.dialog.open(AddorderpromotionsComponent, {
+      // width: '100vw',
+      maxWidth: '78vw',
+      panelClass: 'order-add-edit'
     });
-      this.isOpen = false;
-      dialogRef.afterClosed().subscribe((res) => {
-  
-      localStorage.setItem('Edit','');
-  
-     })
-  }
-  orderReceive()
-  {
+    this.isOpen = false;
+    dialogRef.afterClosed().subscribe((res) => {
 
+      localStorage.setItem('Edit', '');
+
+    })
   }
-  orderCancel()
-  {
+  orderCancel() {
     this.dialog.open(OrderCancelPopupComponent);
-    this.isOpen=false;
-    
-    
-  }
-  viewOrder() {
-    sessionStorage.setItem("viewOrder","View");
-    this.dialog.open(OrderlistShipPopupComponent,{width:"987px",height:"1461px"});
     this.isOpen = false;
   }
-  orderShip(){
-    sessionStorage.setItem("viewOrder","")
- 
-    this.dialog.open(OrderlistShipPopupComponent,{width:"1587px",height:"1661px"});
- this.isOpen = false;
-}
-confirmOrder() {
-  localStorage.setItem("Edit",'')
-  sessionStorage.setItem("Confirm","Confirm");
-  let dialogRef =this.dialog.open(AddorderpromotionsComponent, {
-    // width: '100vw',
-    maxWidth: '70vw',
-    panelClass: 'order-add-edit'
-});
-  this.isOpen = false;
-  dialogRef.afterClosed().subscribe((res) => {
-  sessionStorage.setItem("Confirm","");
- })
-}
+
+  viewOrder() {
+    sessionStorage.setItem("viewOrder", "View");
+    this.dialog.open(OrderlistShipPopupComponent, { width: "987px", height: "1461px" });
+    this.isOpen = false;
+  }
+  orderShip() {
+    sessionStorage.setItem("viewOrder", "")
+
+    this.dialog.open(OrderlistShipPopupComponent, { width: "1587px", height: "1661px" });
+    this.isOpen = false;
+  }
+
+  orderReceive() {
+    this.dialog.open(OrdersReceiveShipmentComponent, { width: "1587px", height: "1661px" });
+    this.isOpen = false;
+  }
+  confirmOrder() {
+    localStorage.setItem("Edit", '')
+    sessionStorage.setItem("Confirm", "Confirm");
+    let dialogRef = this.dialog.open(AddorderpromotionsComponent, {
+      // width: '100vw',
+      maxWidth: '70vw',
+      panelClass: 'order-add-edit'
+    });
+    this.isOpen = false;
+    dialogRef.afterClosed().subscribe((res) => {
+      sessionStorage.setItem("Confirm", "");
+    })
+  }
 }

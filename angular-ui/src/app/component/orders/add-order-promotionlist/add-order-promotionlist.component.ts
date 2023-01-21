@@ -459,6 +459,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
             if (item.promoDetails.buyGroupsQty && item.promoDetails.buyGroupsQty !== item.promoDetails.getGroupsQty) {
               stockItem.isItemValid = false;
               item.promoDetails.isItemValid = false;
+            }else{
+              stockItem.isItemValid = true;
+              item.promoDetails.isItemValid = true;
             }
           });
         }

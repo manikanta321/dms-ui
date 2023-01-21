@@ -12,6 +12,7 @@ import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { UserService } from 'src/app/services/user.service';
 import { OrderActionShipmentComponent } from '../order-action-shipment/order-action-shipment.component';
 import { ActivatedRoute } from '@angular/router';
+import { OrderlistActionPopupComponent } from '../../order-list/orderlist-action-popup/orderlist-action-popup.component';
 
 @Component({
   selector: 'app-orders-shipment',
@@ -85,9 +86,9 @@ export class OrdersShipmentComponent implements OnInit {
     {
       headerName: '',
       colId: 'action',
-      cellRenderer: OrderActionShipmentComponent,
+      cellRenderer: OrderlistActionPopupComponent,
       editable: false,
-      maxWidth: 50
+      maxWidth: 70
     },
   ];
   public defaultColDef: ColDef = {

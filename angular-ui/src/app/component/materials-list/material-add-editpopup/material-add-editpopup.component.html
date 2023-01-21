@@ -39,7 +39,7 @@
                       placeholder="Search & select category" [(ngModel)]="categeoryData" (change)="onItemSelect($event)"
                       #nameCategory="ngModel">
                     </ng-select>
-                    <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;"
+                    <p style="margin-bottom:-14px;padding: 0px;font-size: 11px; position: absolute;"
                       *ngIf="nameCategory.invalid && (nameCategory.dirty || nameCategory.touched)" class="alert">
                       <span class="errormsg" *ngIf="nameCategory.errors?.['required']">
                         *Category is required.
@@ -58,7 +58,7 @@
                       placeholder="search & select sub-category" [(ngModel)]="subCategoryData"
                       (change)="onSubCategorySelect($event)" #nameSubCat="ngModel">
                     </ng-select>
-                        <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;"
+                        <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;position: absolute"
                       *ngIf="nameSubCat.invalid && (nameSubCat.dirty || nameSubCat.touched)" class="alert">
                       <span  class="errormsg" *ngIf="nameSubCat.errors?.['required']">
                         *Sub-Category is required.
@@ -78,7 +78,7 @@
                       placeholder="Search & select type" [(ngModel)]="typesData" (change)="onTypeSelect($event)"
                       #nameType="ngModel">
                     </ng-select>
-                       <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
+                       <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;position: absolute"
                       *ngIf="nameType.invalid && (nameType.dirty || nameType.touched)" class="alert">
                       <span class="errormsg" *ngIf="nameType.errors?.['required']">
                         *Type is required.
@@ -97,7 +97,7 @@
                 <input type="text" id="matName" name="matName" (keyup)="onKey($event)"
                   class="form-control container materialname-placeholder" required
                   placeholder="Enter the name of material" [(ngModel)]="materialName" #matName="ngModel">
-                <p style="margin-bottom:-5px;padding: 0px;font-size: 11px"
+                <p style="margin-bottom:-5px;padding: 0px;font-size: 11px;position: absolute"
                   *ngIf="matName.invalid && (matName.dirty || matName.touched)" class="alert">
                   <span  class="errormsg" *ngIf="matName.errors?.['required']">
                     *Material Name is required.
@@ -115,7 +115,7 @@
                     placeholder="Search & select measuring unit" [(ngModel)]="baseUoMData"
                     (change)="onUomSelect($event)" #nameUOM="ngModel">
                   </ng-select>
-                      <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
+                      <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;position: absolute;"
                     *ngIf="nameUOM.invalid && (nameUOM.dirty || nameUOM.touched)" class="alert">
                     <span  class="errormsg" *ngIf="nameUOM.errors?.['required']">
                       *UOM is required.
@@ -126,7 +126,7 @@
               </div> 
             </div>
               <div class="row">
-              <div class="col-md-5">
+              <div class="col-md-5" style="margin-top:5px;">
                 <div class="description">
                   <label>Description</label>
                 </div>
@@ -257,7 +257,7 @@
                 <input required (keyup)="onKeyBrand($event)" id="bName" name="bName" matInput
                   placeholder="Enter the name of brand" #input class="form-control container brand-name"
                   [(ngModel)]="BrandName" #bName="ngModel">
-                <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
+                <p style="bottom:-30px;padding: 0px;font-size: 6px;position: absolute;"
                   *ngIf="bName.invalid && (bName.dirty || bName.touched)" class="alert">
                   <span  class="errormsg" *ngIf="bName.errors?.['required']">
                     *Brand Name is required.
@@ -278,13 +278,13 @@
                   </span>
                 </p> -->
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6" >
                 <div class="sku">
                   <label>SKU<span>*</span></label>
                 </div>
                 <input required (keyup)="onKeySKU($event)" id="skuName" name="skuName" matInput placeholder="Enter SKU"
                   #input class="form-control container sku-placeholder" [(ngModel)]="Sku" #skuName="ngModel">
-                <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
+                <p style="bottom:-30px;padding: 0px;font-size: 11px;position: absolute;"
                   *ngIf="skuName.invalid && (skuName.dirty || skuName.touched)" class="alert">
                   <span class="errormsg" *ngIf="skuName.errors?.['required']">
                     *SKU is required.
@@ -318,7 +318,7 @@
                     placeholder="Search & select group" [(ngModel)]="productGroupData"
                     (change)="onProductSelect($event)" #productGr="ngModel">
                   </ng-select>
-                  <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
+                  <p style="bottom:-30px;padding: 0px;font-size: 11px;position: absolute;"
                     *ngIf="productGr.invalid && (productGr.dirty || productGr.touched)" class="alert">
                     <span  class="errormsg" *ngIf="productGr.errors?.['required']">
                       *Product Group is required.
@@ -354,7 +354,7 @@
                     placeholder="Search & select sub-group" [(ngModel)]="subproductGroupData"
                     (change)="onSubProductSelect($event)" #proSub="ngModel">
                   </ng-select>
-                  <p style="margin-bottom:-7px;padding: 0px;font-size: 11px"
+                  <p style="bottom:-30px;padding: 0px;font-size: 11px;position:absolute;"
                     *ngIf="proSub.invalid && (proSub.dirty || proSub.touched)" class="alert">
                     <span  class="errormsg" *ngIf="proSub.errors?.['required']">
                       *Product SubGroup   is required.

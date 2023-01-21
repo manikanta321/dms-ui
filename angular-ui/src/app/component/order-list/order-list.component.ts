@@ -28,6 +28,7 @@ import { CustomDatePopupComponent } from '../orders/custom-date-popup/custom-dat
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { SharedServiceMaterialListService } from 'src/app/services/shared-service-material-list.service';
 import { OrderlistShipPopupComponent } from './orderlist-ship-popup/orderlist-ship-popup.component';
+import { OrdersReceiveShipmentComponent } from '../orders-receive-shipment/orders-receive-shipment.component';
 // import { DateRange } from '@uiowa/date-range-picker';
 
 export interface PeriodicElement {
@@ -112,7 +113,10 @@ export class OrderListComponent implements OnInit {
     // { headerName: "User Id",
     //   field: 'employeeCode' , sort: 'desc'},
 
-    { headerName: "Order No.", field: 'orderNUmber' },
+    { headerName: "Order No.", field: 'orderNUmber' ,
+    cellEditorPopup: true,
+    onCellClicked: (event: CellClickedEvent) => this.dialog.open(OrdersReceiveShipmentComponent, {width:"1587px",height:"1661px"})
+  },
 
     { headerName: "Order Date", field: 'orderDate', },
 

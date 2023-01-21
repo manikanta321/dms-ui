@@ -273,22 +273,22 @@ label {
 }
 
 .sku {
-
+margin-top: 9px;
   font-family: 'Gilroy';
 }
 
 .shortcode {
-
+  margin-top: 9px;
   font-family: 'Gilroy';
 }
 
 .productg {
-
+  margin-top: 9px;
   font-family: 'Gilroy';
 }
 
 .manualsort {
-
+  margin-top: 9px;
   font-family: 'Gilroy';
 }
 
@@ -301,10 +301,12 @@ label {
 }
 
 .productsg {
+  margin-top: 9px;
   font-family: 'Gilroy';
 }
 
 .productlink {
+  margin-top: 9px;
   font-family: 'Gilroy';
 }
 

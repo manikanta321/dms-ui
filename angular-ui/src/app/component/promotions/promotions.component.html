@@ -51,12 +51,12 @@
               <span *ngIf="myForms2.get('city3').value.length == 1" class="selected-placeholder">
                 {{myForms2.get('city3').value.length}} Geography selected </span>
               <span *ngIf="myForms2.get('city3').value.length > 1" class="selected-placeholder">
-                {{myForms2.get('city3').value.length}} Geographies selected </span>
+                {{myForms2.get('city3').value.length}} Geography selected </span>
 
             </div>
           </form>
         </div>
-        <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;">
+        <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;margin-left: 9px;">
           <form [formGroup]="myForms4" class="dropdown-formdealer">
             <ng-multiselect-dropdown class="dealr" name="citys" [placeholder]="'Dealer'" formControlName="city5"
               [disabled]="disabled" [settings]="dropdownSettings4" [data]="dealerListArray"
@@ -73,7 +73,7 @@
 
           </div>
         </div>
-        <div class="col-md-2 col-lg-2 col-sm-2">
+        <div class="col-md-2 col-lg-2 col-sm-2" style="margin-left:-9px">
           <form [formGroup]="myForms3" class="dropdown-form">
             <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Status'" formControlName="city4"
               [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList1"

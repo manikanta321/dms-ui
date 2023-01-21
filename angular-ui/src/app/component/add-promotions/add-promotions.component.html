@@ -25,7 +25,7 @@
                             <div class="col-lg-12 materialname">
                                 <label>Promotion Name <span class="astr">*</span></label>
                                 <input type="text" id="promoname" name="promoname" required [(ngModel)]="promoName"
-                                    #promoname="ngModel" placeholder="Promotion Name"
+                                    #promoname="ngModel" placeholder="Promotion name"
                                     class="form-control promoNameInput">
                                 <p style="margin-bottom: -20px;"
                                     *ngIf="promoname.invalid && (promoname.dirty || promoname.touched)">
@@ -42,11 +42,13 @@
                                 <!-- </div> -->
                                 <div class="promotiontypedrp identify promotiondrpalign">
                                     <label>Promotion Type <span class="astr">*</span></label>
-                                    <ng-select [items]="promotionTypedropdown" placeholder="Select the promotion type"
+                                    <ng-select [items]="promotionTypedropdown" placeholder="Select the Promotion type" class="tick menu-item"
                                         id="promotype" name="promotype" bindLabel="promotionTypesName"
                                         bindValue="promotionTypesId" [(ngModel)]="selectedPromo"
                                         (change)="selectedValue($event)" required #promotype="ngModel">
+                                        <img src="../../../assets/userImages/done-tick.svg" class="imgtick tickmark">
                                     </ng-select>
+                                   
                                 </div>
                                 <form #myform>
                                     <div class="myDatepicker promotion-datepicker">
@@ -66,7 +68,7 @@
                                     <div class="myDatepicker  promotion-datepicker">
                                         <label>End Date <span class="astr">*</span></label><br>
                                         <mat-form-field class="placeh-align">
-                                            <mat-label>Select the End date</mat-label>
+                                            <mat-label>Select the end date</mat-label>
 
                                             <input matInput placeholder="" [matDatepicker]="picker2" [min]="endMinDate"
                                                 [formControl]="endDate" (dateChange)="enddateChange($event)">

@@ -919,3 +919,28 @@ li {
 .set1 > .row{
   margin-bottom: 5px;
 }
+
+.imgtick{
+  float: right;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+.menu-item:hover {
+  cursor: pointer;
+  background: rgb(240, 240, 240);
+}
+.tickmark{
+  display:none;
+  }
+  .tick:hover .tickmark { display:block;}
+
+  ::ng-deep.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked:hover{
+     /* background-color: #f5faff; */
+     background-image: url("../../../assets/userImages/done-tick.svg");
+     background-position: right;
+     background-repeat: no-repeat;
+    color: #333;
+  
+  
+  }

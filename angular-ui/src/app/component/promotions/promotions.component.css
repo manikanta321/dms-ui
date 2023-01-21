@@ -52,11 +52,12 @@
 
 .dropdown-form {
   position: relative;
+  width: 221px;
 }
 
 .dropdown-formdealer {
   position: relative;
-  width: 223px;
+  width: 219px;
   margin-left: -15px;
 }
 

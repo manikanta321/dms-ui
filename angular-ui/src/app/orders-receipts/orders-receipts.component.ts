@@ -375,6 +375,7 @@ export class OrdersReceiptsComponent implements OnInit {
     receiptList(){
       let data = {
         DealerId:[],
+        GeographyId:[],
         ShipmentStartDate:"",
         ShipmentEndDate:"",
         InvoiceStartDate:"",

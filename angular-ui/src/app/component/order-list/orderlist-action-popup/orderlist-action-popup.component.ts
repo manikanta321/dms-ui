@@ -39,6 +39,20 @@ export class OrderlistActionPopupComponent implements OnInit {
     'to-ship': ['ship_order', 'close'],
     'received': [], // done
   }
+
+  shipmentStatusAction = {
+    'ordered': ['confirm_order', 'cancel_order'], // done
+    'returned': ['edit_order', 'cancel_order'], // NA
+    'rejected': [], // done
+    'confirmed': ['ship_order', 'close'], // done
+    'cancelled': [], // need to check
+    'preclosed': [], // NA
+    'in-transit': ['receive_shipment'], //done
+    'draft': ['edit_order', 'cancel_order'], //done
+    'fulfilled': [], // Spelling check
+    'to-ship': ['ship_order', 'close'],
+    'received': [], // done
+  }
   showCaseMenuList:string[] = [];
   constructor(private changeDetector: ChangeDetectorRef, private dialog: MatDialog,
     private route: ActivatedRoute,) {
@@ -91,7 +105,7 @@ export class OrderlistActionPopupComponent implements OnInit {
     if(this.params?.data?.status){
       menu = this.orderStatusAction[this.params?.data?.status?.toLowerCase()] ?? [];
     }else if(this.params?.data?.statusName){
-      menu = this.orderStatusAction[this.params?.data?.statusName?.toLowerCase()] ?? [];
+      menu = this.shipmentStatusAction[this.params?.data?.statusName?.toLowerCase()] ?? [];
     }
 
     let ignoreMenus = ['close', 'cancel_order'];
@@ -196,7 +210,11 @@ export class OrderlistActionPopupComponent implements OnInit {
   }
 
   orderReceive() {
-    this.dialog.open(OrdersReceiveShipmentComponent, { width: "1587px", height: "1661px" });
+    this.dialog.open(OrdersReceiveShipmentComponent, {width:"1587px",height:"1661px"});
+    this.isOpen = false;
+  }
+  ReceiveShipment() {
+    this.dialog.open(OrdersReceiveShipmentComponent, {width:"1587px",height:"1661px"});
     this.isOpen = false;
   }
   confirmOrder() {

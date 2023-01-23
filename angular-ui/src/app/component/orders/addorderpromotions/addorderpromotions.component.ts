@@ -13,6 +13,7 @@ import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { ConsoleEventLogger } from '@generic-ui/hermes/core/infrastructure/logger/event/console.event.logger';
 import { AssosiationServicesService } from 'src/app/services/assosiation-services.service';
 import { SharedServiceMaterialListService } from 'src/app/services/shared-service-material-list.service';
+import { AddorderproSuccessPopupComponent } from './addorderpro-success-popup/addorderpro-success-popup.component';
 @Component({
   selector: 'app-addorderpromotions',
   templateUrl: './addorderpromotions.component.html',
@@ -1123,6 +1124,8 @@ if(this.confirmOrder == "Confirm") {
     console.log(this.startdate, "date")
     let itemsCount: any = [];
 
+    
+
     let copyItemsData = this.copyEditOrderById?.itemcount ?? [];
     // Push Non Promotion data to itemscount variable
     if (this.AddorderNonpromotiondata && this.AddorderNonpromotiondata.itemDetails && this.AddorderNonpromotiondata.itemDetails.length != 0) {
@@ -1137,7 +1140,7 @@ if(this.confirmOrder == "Confirm") {
         })
 
       }
-
+     
       itemsCount.push(tempObj);
     }
 
@@ -1151,8 +1154,11 @@ if(this.confirmOrder == "Confirm") {
             let previousValue = previousObj.itemDetails.find(y => y.stockitemid == x.stockitemid);
             if (previousValue) {
               x.customerPOProductId = previousValue.customerPOProductId;
+
+              
             }
-          })
+            
+})    
         }
         let obj: any = {};
         obj.promotionId = tempObj.promotionId;
@@ -1163,9 +1169,10 @@ if(this.confirmOrder == "Confirm") {
     }
 
 
+
     // Push Promotion data to itemscount variable
 
-
+   
 
     let data = {
       "CustomerId": this.customerId,
@@ -1181,9 +1188,18 @@ if(this.confirmOrder == "Confirm") {
       "AddType": submitType,
       "CustomerPOId": this.CustomerPoId
     }
+    
 
     this.orders.addorderNonPromotions(data).subscribe((res) => {
 
+     
+      
+      
+    this.dialog.open(AddorderproSuccessPopupComponent, {panelClass: 'activeSuccessPop'});
+    
+
+
+      
       console.log(data, "data");
 
       this.dialogRef.close(true);
@@ -1192,6 +1208,8 @@ if(this.confirmOrder == "Confirm") {
       localStorage.removeItem('dealerid');
       // localStorage.removeItem('buygroupromo');
     });
+   
+
   }
 
   GetOrdersToEdit() {
@@ -1200,12 +1218,17 @@ if(this.confirmOrder == "Confirm") {
     console.log(this.CustomerPoId, 'this.CustomerPoId')
     this.copyEditOrderById = null;
     this.orders.GetOrdersToEdit(this.CustomerPoId).subscribe((res) => {
+
+   
       this.editorderbyID = res.response;
       this.copyEditOrderById = res.response;
       console.log(res.response, "GetOrdersToEdit")
+
+   
       this.datapreloadbyID();
       this.getShippingandPackingcharges();
     })
+      localStorage.setItem('AddorEditpro','edit');
     this.sharedService.filter('Register click');
   }
   GetConfirmOrders() {
@@ -1217,9 +1240,14 @@ if(this.confirmOrder == "Confirm") {
     }
     this.orders.GetConfirmOrder(data).subscribe((res) => {
       console.log(res.response, "GetConfirmOrdersToEdit")
+
+      
+
     })
     this.dialogRef.close(true);
     this.sharedService.filter('Register click');
+    
+   
   }
   GetRejectOrders() {
     this.CustomerPoId = localStorage.getItem("CustomerPoId");

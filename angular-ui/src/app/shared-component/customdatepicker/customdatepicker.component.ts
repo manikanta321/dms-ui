@@ -9,10 +9,12 @@ import dayjs from 'dayjs/esm';
   styleUrls: ['./customdatepicker.component.css'],
 })
 export class CustomdatepickerComponent implements OnInit {
-
+ 
   @ViewChild('datepickerBtn') datePickerTrigger;
   @ViewChild('datepickerBtn2') datePickerTrigger2;
   selected: any;
+   date: boolean = true;
+
   menuDateValues: any = [
     {
       title: 'Custom',
@@ -40,7 +42,7 @@ export class CustomdatepickerComponent implements OnInit {
     },
     {
       title: 'This Quater',
-      range: [dayjs(moment().startOf('quarter').format('MM/DD/YYYY')), dayjs(moment().endOf('quarter').format('MM/DD/YYYY'))],
+      range: [dayjs(moment().startOf('quarter').format('DD MMM YY')), dayjs(moment().endOf('quarter').format('DD MMM YY'))],
     },
     {
       title: 'This Year',
@@ -52,7 +54,7 @@ export class CustomdatepickerComponent implements OnInit {
     },
     {
       title: 'Last Quater',
-      range: [dayjs(moment().subtract(1, 'quarter').startOf('quarter').format('MM/DD/YYYY')), dayjs(moment().subtract(1, 'quarter').endOf('quarter').format('MM/DD/YYYY'))],
+      range: [dayjs(moment().subtract(1, 'quarter').startOf('quarter').format('DD MMM YY')), dayjs(moment().subtract(1, 'quarter').endOf('quarter').format('DD MMM YY'))],
     },
     {
       title: 'Last Year',
@@ -76,6 +78,10 @@ export class CustomdatepickerComponent implements OnInit {
     console.log(this.selectedDate);
 
   }
+  close() {
+    this.date = false;
+
+  }
 
   ngOnChanges(change) {
     console.log(change);
@@ -93,13 +99,13 @@ export class CustomdatepickerComponent implements OnInit {
 
     if (e.startDate && e.endDate) {
       
-      this.selectedDate = { startDate: dayjs(e.startDate).format('MM/DD/YYYY'), endDate: dayjs(e.endDate).format('MM/DD/YYYY') }
+      this.selectedDate = { startDate: dayjs(e.startDate).format('DD MMM YY'), endDate: dayjs(e.endDate).format('DD MMM YY') }
       console.log(this.selectedDate);
       if (this.datePickerTrigger2.isOpen()) {
         this.datePickerTrigger2.close();
       }
     } else {
-      this.selectedDate = { startDate: dayjs(new Date()).format('MM/DD/YYYY'), endDate: dayjs(new Date()).format('MM/DD/YYYY') }
+      this.selectedDate = { startDate: dayjs(new Date()).format('DD MMM YY'), endDate: dayjs(new Date()).format('DD MMM YY') }
     }
 
     this.customDatePickerEvent.emit({ selectedDate: this.selectedDate });
@@ -114,7 +120,8 @@ export class CustomdatepickerComponent implements OnInit {
       } else {
         let selectedMenu = this.menuDateValues.find(item => item.title == clickedItem);
         if (selectedMenu) {
-          this.selectedDate = { startDate: dayjs(selectedMenu.range[0]).format('MM/DD/YYYY'), endDate: dayjs(selectedMenu.range[1]).format('MM/DD/YYYY') }
+          this.selectedDate = { startDate: dayjs(selectedMenu.range[0]).format('DD MMM YY'), endDate: dayjs(selectedMenu.range[1]).format('DD MMM YY') }
+          this.label = this.selectedDate.startDate;
           this.customDatePickerEvent.emit({ selectedDate: this.selectedDate });
         }
       }

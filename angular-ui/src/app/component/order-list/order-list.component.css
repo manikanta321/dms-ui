@@ -1,4 +1,16 @@
 
+ 
+
+
+.dateplaceholder
+{
+     color: rgba(104, 110, 116, 0.75); 
+     color: grey!important; 
+     
+    
+    font-size: 15px;
+}
+
  /* .allicons{    
         margin-bottom:10px;
     margin-left: 68%;
@@ -55,7 +67,7 @@
      } 
 
        
-  ::ng-deep.myclass4 {
+  ::ng-deep .myclassss {
     color: #B6440F !important;
      } 
 
@@ -82,7 +94,7 @@
          } 
 
          
-  ::ng-deep.myclass9 {
+  ::ng-deep.Mmyclass {
     
     color: #0D8662 !important;
      } 
@@ -666,7 +678,7 @@ mat-sidenav-container {
 }
 
 .ag-header-cell-label {
-    color: blue !important;
+     color: blue !important; 
     font-weight: bold;
 }
 
@@ -733,7 +745,7 @@ mat-sidenav-container {
 }
 
 ::ng-deep.mat-select-trigger {
-    height: 2.125em;
+    height: 23px;
 }
 
 ::ng-deep.mat-row:nth-child(even) {

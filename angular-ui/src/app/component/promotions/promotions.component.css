@@ -2,16 +2,18 @@
   margin-left: 7px;
   margin-top: 35px;
 }
+
 .listicon {
   display: flex;
   justify-content: end;
   margin-right: 10px;
   margin-top: 26px;
 }
-.rowdropdown
-{
+
+.rowdropdown {
   margin-top: 12px;
 }
+
 .dropdown-placeholder {
   background: white;
   color: #808080;
@@ -50,6 +52,13 @@
 
 .dropdown-form {
   position: relative;
+  width: 221px;
+}
+
+.dropdown-formdealer {
+  position: relative;
+  width: 219px;
+  margin-left: -15px;
 }
 
 .searchBox:hover>.searchButton,
@@ -645,9 +654,11 @@
 ::ng-deep.myclass4 {
   color: #000000 !important;
 }
-::ng-deep.dropdown-list ul{
+
+::ng-deep.dropdown-list ul {
   overflow-x: hidden !important;
 }
+
 ::ng-deep.geog .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
   right: -18px !important;
@@ -655,7 +666,7 @@
   top: 50px !important;
   /* width: 51px; */
   border: 1px solid #337ab7;
-  background: #006466  !important;
+  background: #006466 !important;
   font-size: 12px;
   box-shadow: 1px 1px #959595;
   color: #fff;
@@ -663,6 +674,7 @@
   border-radius: 15px;
   text-align: center;
 }
+
 ::ng-deep.promo .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
   right: -18px !important;
@@ -678,6 +690,7 @@
   border-radius: 15px;
   text-align: center;
 }
+
 ::ng-deep.product .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
   right: -18px !important;
@@ -693,6 +706,7 @@
   border-radius: 15px;
   text-align: center;
 }
+
 ::ng-deep.dealr .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
   right: -18px !important;
@@ -708,6 +722,7 @@
   border-radius: 15px;
   text-align: center;
 }
+
 ::ng-deep.stts .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
   right: -18px !important;

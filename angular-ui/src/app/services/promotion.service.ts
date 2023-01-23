@@ -141,6 +141,9 @@ getProductSubGroup(data: any){
 firstPromotion(data: any){
   return this.http.post<any>(this.userurl + 'PromotionsApi/AddEditPromotions', data)
 }
+viewPromotion(data: any){
+  return this.http.post<any>(this.userurl + 'PromotionsApi/GetPromotionByIdToView', data)
+}
 
 getPromotionById(data: any){
   return this.http.get<any>(this.userurl + 'PromotionsApi/GetPromotionByIdToEdit?promotionId='+data);

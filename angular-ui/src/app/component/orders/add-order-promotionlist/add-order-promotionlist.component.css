@@ -4,6 +4,16 @@
   background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+
+
+
 .mat-form-field::placeholder {
   bottom: 2px;
 }
@@ -1191,6 +1201,39 @@ tr:nth-child(even) {
   color: #000;
 }
 
-.card1.selected{
+.card1.selected {
   border: 5px solid #187ddd;
+}
+
+.txt-error {
+  color: red;
+  display: block;
+}
+
+.double-tick {
+  margin-left: 0.25rem;
+  cursor: pointer;
+}
+
+.quatity-inp[disabled],
+.tax-select[disabled] {
+  background: #ddd;
+  cursor: not-allowed;
+}
+
+.saveas-draft1[disabled] {
+  background: #ccc;
+  color: #eee;
+  cursor: not-allowed;
+}
+
+.text-error-qty {
+  text-decoration: dotted !important;
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
+
+.sub-heading{
+  position: relative;
 }

@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
+
 import { GeoAddedPopupComponent } from '../geo-added-popup/geo-added-popup.component';
 
 @Component({
@@ -84,7 +85,7 @@ export class AddeditgeoComponent implements OnInit {
 
     console.log(obj);
     this.dialogRef.close();
-    this.dialog.open(GeoAddedPopupComponent, {panelClass: 'activeSuccessPop'});
+     this.dialog.open(GeoAddedPopupComponent, {panelClass: 'activeSuccessPop'});
     this.spinner.show();
     this.classification.SaveGeography(obj).subscribe({
       next: (res) => {
@@ -92,7 +93,7 @@ export class AddeditgeoComponent implements OnInit {
           this.dialogRef.close({res, result});
           // this.dialog.open(GeoAddedPopupComponent, {panelClass: 'activeSuccessPop'});
           // alert(res.response.resultDetails);
-        }else{
+        }else{   
           // Show warning message
           // this.dialogRef.close({res, result});
           alert(res.response.resultDetails);

@@ -1,13 +1,22 @@
-<i class="fa fa-ellipsis-v" #trigger  data-action="toggle" style="cursor: pointer;"></i>
+<i class="fa fa-ellipsis-v" #trigger data-action="toggle" style="cursor: pointer;"></i>
 
-<div #content *ngIf="isOpen" class="menu-container">
- 
-  <div (click)="orderedit()" class="menu-item tick" > Edit <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
-  <div  (click)="viewOrder()" class="menu-item tick">View<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div> 
-  <div  (click)="confirmOrder()" class="menu-item tick">Confirm<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div> 
-     <div  (click)="orderReceive()" class="menu-item tick">Receive<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div> 
-   <div (click)="orderCancel()" class="menu-item tick" > Cancel<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div> 
-    <div  (click)="orderShip()" class="menu-item tick">Ship<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div> 
+<div #content *ngIf="isOpen" class="menu-container" [ngClass]="{'single' : currentActionMenu.length == 1 }">
 
- 
+  <div (click)="orderedit()" class="menu-item tick" *ngIf="currentActionMenu.indexOf('edit_order') !== -1"> Edit <img
+      src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
+
+  <div (click)="confirmOrder()" class="menu-item tick" *ngIf="currentActionMenu.indexOf('confirm_order') !== -1">
+    Confirm<img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
+  <div (click)="orderReceive()" class="menu-item tick" *ngIf="currentActionMenu.indexOf('receive_order') !== -1">
+    Receive<img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
+
+  <div (click)="orderShip()" class="menu-item tick" *ngIf="currentActionMenu.indexOf('ship_order') !== -1">Ship<img
+      src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
+  <div (click)="viewOrder()" class="menu-item tick" *ngIf="currentActionMenu.indexOf('view') !== -1">View<img
+      src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
+  <div  (click)="ReceiveShipment()" class="menu-item tick"  *ngIf="currentActionMenu.indexOf('receive_shipment') !== -1">Receive<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+  <div (click)="orderCancel()" class="menu-item tick" *ngIf="currentActionMenu.indexOf('cancel_order') !== -1">
+    Cancel<img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
+  <div class="menu-item tick" *ngIf="currentActionMenu.indexOf('close') !== -1">Close<img
+      src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
 </div>

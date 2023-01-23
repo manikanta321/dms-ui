@@ -525,5 +525,38 @@ display: none;
   left: 69%;
   top: -2px;
   }
+  .Geography-placeholder.dropdown-placeholder .selected-placeholder {
+    color: #006466 !important;
+ }
+ ::ng-deep.Geography .multiselect-dropdown .dropdown-btn .selected-item {
+   background: #006466 !important;
+   font-size: 12px;
+ }
+ 
+ ::ng-deep .Geography .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+   background: #006466 !important;
+ }
+ ::ng-deep.geographybubbles .dropdown-btn span .ng-star-inserted
+{
+    position: absolute !important;
+    right: -28px !important;
+    bottom: 0px;
+    top: 48px !important;
+    background: #006466 !important;
 
+    
+
+   width: 42px;
+   border: 1px solid #337ab7;
+       font-size: 12px;
+       box-shadow: 1px 1px #959595;
+       color: #fff;
+       height: 20px;
+       border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: -1px;
+  
+    padding-left: 5px;
+}
  

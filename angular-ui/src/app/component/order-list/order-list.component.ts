@@ -28,6 +28,7 @@ import { CustomDatePopupComponent } from '../orders/custom-date-popup/custom-dat
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { SharedServiceMaterialListService } from 'src/app/services/shared-service-material-list.service';
 import { OrderlistShipPopupComponent } from './orderlist-ship-popup/orderlist-ship-popup.component';
+import { OrdersReceiveShipmentComponent } from '../orders-receive-shipment/orders-receive-shipment.component';
 // import { DateRange } from '@uiowa/date-range-picker';
 
 export interface PeriodicElement {
@@ -112,7 +113,10 @@ export class OrderListComponent implements OnInit {
     // { headerName: "User Id",
     //   field: 'employeeCode' , sort: 'desc'},
 
-    { headerName: "Order No.", field: 'orderNUmber' },
+    { headerName: "Order No.", field: 'orderNUmber' ,
+    cellEditorPopup: true,
+    onCellClicked: (event: CellClickedEvent) => this.dialog.open(OrdersReceiveShipmentComponent, {width:"1587px",height:"1661px"})
+  },
 
     { headerName: "Order Date", field: 'orderDate', },
 
@@ -137,7 +141,7 @@ export class OrderListComponent implements OnInit {
       },
       cellClass: params => {
         return params.value == 'Rejected' ? 'myclass1' : params.value == 'Draft' ? 'myclass2' : params.value == 'Confirmed' ? 'myclass3' : params.value == 'Ordered' ? 'myclass4' : params.value == 'Returned' ? 'myclass5'
-          : params.value == 'Cancelled' ? 'myclass6' : params.value == 'Pre-closed' ? 'myclass7' : params.value == 'In transit' ? 'myclass8' : params.value == 'Fulfilled' ? 'myclass9' : params.value == 'To ship' ? 'myclass10' : 'myclass11'
+          : params.value == 'Cancelled' ? 'myclass6' : params.value == 'Pre-closed' ? 'myclass7' : params.value == 'In-Transit' ? 'myclass8' : params.value == 'Fulfilled' ? 'myclass9' : params.value == 'ToShip' ? 'myclass10' : 'myclass11'
       },
 
       tooltipField: "statusName",
@@ -298,6 +302,7 @@ export class OrderListComponent implements OnInit {
   startDate: any = '';
   endDate: any = '';
   currentPageName:string="";
+  loggedUserId:any;
   constructor(public dialog: MatDialog,
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
@@ -352,6 +357,7 @@ export class OrderListComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.loggedUserId = localStorage.getItem('logInId')
     this.uomId = localStorage.getItem('niId');
     // this.roleItems();
     this.statusItems();
@@ -395,7 +401,8 @@ export class OrderListComponent implements OnInit {
       DealerId: this.dealerss,
       Search: this.searchText,
       startDate: this.startDate,
-      endDate: this.endDate
+      endDate: this.endDate,
+      CurrentUserId:this.loggedUserId,
       //   "GeographyId":[],
       //  "DealerId" : [],
       //   "OrderDate":"",
@@ -633,7 +640,7 @@ export class OrderListComponent implements OnInit {
 
 
   addOrderPromotion() {
-    const dialogRef = this.dialog.open(AddorderpromotionsComponent, {
+    const dialogRef = this.dialog.open(AddorderpromotionsComponent,  {
       panelClass: 'material-add-edit'
     });
     sessionStorage.setItem("Confirm",'')
@@ -709,7 +716,9 @@ export class OrderListComponent implements OnInit {
       "GeographyId": [],
       "DealerId": [],
       "OrderDate": "",
-      "Search": this.searchText
+      "Search": this.searchText,
+      CurrentUserId:this.loggedUserId,
+
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -739,7 +748,8 @@ export class OrderListComponent implements OnInit {
       DealerId: this.dealerss,
       Search: this.searchText,
       StartDate: this.startDate,
-      EndDate: this.endDate
+      EndDate: this.endDate,
+      CurrentUserId:this.loggedUserId,
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -776,7 +786,8 @@ export class OrderListComponent implements OnInit {
       DealerId: this.dealerss,
       Search: this.searchText,
       StartDate: this.startDate,
-      EndDate: this.endDate
+      EndDate: this.endDate,
+      CurrentUserId:this.loggedUserId,
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -793,7 +804,8 @@ export class OrderListComponent implements OnInit {
       DealerId: this.dealerss,
       Search: this.searchText,
       StartDate: this.startDate,
-      EndDate: this.endDate
+      EndDate: this.endDate,
+      CurrentUserId:this.loggedUserId,
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -807,7 +819,8 @@ export class OrderListComponent implements OnInit {
       DealerId: this.dealerss,
       Search: this.searchText,
       StartDate: this.startDate,
-      EndDate: this.endDate
+      EndDate: this.endDate,
+      CurrentUserId:this.loggedUserId,
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -822,7 +835,8 @@ export class OrderListComponent implements OnInit {
       DealerId: this.dealerss,
       Search: this.searchText,
       StartDate: this.startDate,
-      EndDate: this.endDate
+      EndDate: this.endDate,
+      CurrentUserId:this.loggedUserId,
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -861,7 +875,8 @@ export class OrderListComponent implements OnInit {
       DealerId: this.dealerss,
       Search: this.searchText,
       StartDate: this.startDate,
-      EndDate: this.endDate
+      EndDate: this.endDate,
+      CurrentUserId:this.loggedUserId,
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -877,7 +892,8 @@ export class OrderListComponent implements OnInit {
       DealerId: this.dealerss,
       Search: this.searchText,
       StartDate: this.startDate,
-      EndDate: this.endDate
+      EndDate: this.endDate,
+      CurrentUserId:this.loggedUserId,
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -893,7 +909,8 @@ export class OrderListComponent implements OnInit {
       DealerId: this.dealerss,
       Search: this.searchText,
       StartDate: this.startDate,
-      EndDate: this.endDate
+      EndDate: this.endDate,
+      CurrentUserId:this.loggedUserId,
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -909,7 +926,8 @@ export class OrderListComponent implements OnInit {
       DealerId: this.dealerss,
       Search: this.searchText,
       StartDate: this.startDate,
-      EndDate: this.endDate
+      EndDate: this.endDate,
+      CurrentUserId:this.loggedUserId,
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -954,7 +972,8 @@ export class OrderListComponent implements OnInit {
       DealerId: this.dealerss,
       Search: this.searchText,
       StartDate: this.startDate,
-      EndDate: this.endDate
+      EndDate: this.endDate,
+      CurrentUserId:this.loggedUserId,
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -970,7 +989,8 @@ export class OrderListComponent implements OnInit {
       DealerId: this.dealerss,
       Search: this.searchText,
       StartDate: this.startDate,
-      EndDate: this.endDate
+      EndDate: this.endDate,
+      CurrentUserId:this.loggedUserId,
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -986,7 +1006,8 @@ export class OrderListComponent implements OnInit {
       DealerId: this.dealerss,
       Search: this.searchText,
       StartDate: this.startDate,
-      EndDate: this.endDate
+      EndDate: this.endDate,
+      CurrentUserId:this.loggedUserId,
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -1000,7 +1021,8 @@ export class OrderListComponent implements OnInit {
       DealerId: this.dealerss,
       Search: this.searchText,
       StartDate: this.startDate,
-      EndDate: this.endDate
+      EndDate: this.endDate,
+      CurrentUserId:this.loggedUserId,
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
@@ -1015,7 +1037,8 @@ export class OrderListComponent implements OnInit {
       DealerId: this.dealerss,
       Search: this.searchText,
       StartDate: this.startDate,
-      EndDate: this.endDate
+      EndDate: this.endDate,
+      CurrentUserId:this.loggedUserId,
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;

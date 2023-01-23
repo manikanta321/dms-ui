@@ -102,7 +102,8 @@
 .selectedRowSection{
   position: relative;
   left: 17px;
-  width: 1008px
+  width: 1008px;
+  height: auto;
 }
 
 ::ng-deep.view-checkbox .mat-checkbox-inner-container-no-side-margin{
@@ -353,6 +354,17 @@ margin-left: -34px;
   .font {
     font-family: 'Gilroy';
   }
+  .example-margin{
+    height: 0px;
+
+  }
+  :disabled.mat-checkbox{
+    color: rgb(19, 16, 16);
+  }
+  .pinside{
+    color: black;
+    margin-top: 10px;
+  }
   
   .heading {
     margin-top: 8px;
@@ -457,9 +469,16 @@ margin-left: -34px;
     border: 0.5px solid #000000;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 10px;
-    height: 43px;
+    height: auto;
     padding: 4px;
   }
+
+  .ag-row-selected{
+    .ag-cell .ag-cell-wrapper .ag-selection-checkbox .ag-icon-checkbox-checked {
+        pointer-events: none !important;
+    }
+}
+
   
   .slctd-geo-btn {
     background: #000000;
@@ -684,8 +703,8 @@ margin-left: -34px;
   }
   
   .addproImg {
-    width: 426px;
-    height: 199px;
+    width: 207px;
+    height: 108px;
     margin-top: -7px;
     border-radius: 10px;
   }

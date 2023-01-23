@@ -18,6 +18,21 @@
         </div>
         
       </div>
+      <div class="col-md-2 col-lg-2 col-sm-2">
+        <form [formGroup]="myForm1" class="dropdown-form">
+          <ng-multiselect-dropdown class="Geography geographybubbles" name="city" [placeholder]="'Geography'" formControlName="geo"
+            [disabled]="disabled" [settings]="dropdownSettings1" [data]="geogropdownlist" (onSelect)="geographyselect($event)"
+            (onDeSelect)="geographyDeselect($event)" (onDeSelectAll)="geographyDeselectAll($event)"(onSelectAll)="geographyselectAll($event)">
+          </ng-multiselect-dropdown>
+          <div class="dropdown-placeholder Geography-placeholder">
+            <span *ngIf="myForm1.get('geo').value.length == 0"> Select Geography </span>
+            <span *ngIf="myForm1.get('geo').value.length == 1" class="selected-placeholder"> {{myForm1.get('geo').value.length}} Geography selected </span>
+            <span *ngIf="myForm1.get('geo').value.length > 1" class="selected-placeholder"> {{myForm1.get('geo').value.length}} Geography(s) selected </span>
+
+          </div>
+
+        </form>
+      </div>
         <div class="shipment mr-3">
         <app-customdatepicker [showInputField]="true" label="Shipment Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customShipDatePickerEvent($event)"></app-customdatepicker>
       </div>
@@ -48,7 +63,7 @@
     </div>
   </div>
   <div class="col-md-0">
-  <div class="sales-upload" (click)="orderShipmentUpload()">
+  <div class="sales-upload" (click)="orderReceiptsBulkUpload()">
       <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
           alt="add-user-btn">    
   </div>

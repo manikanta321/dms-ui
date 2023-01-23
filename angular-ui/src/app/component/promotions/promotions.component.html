@@ -22,7 +22,7 @@
           </form>
         </div>
         <div class="col-md-2 col-lg-2 col-sm-2">
-          <form [formGroup]="myForms">
+          <form [formGroup]="myForms" class="dropdown-form">
             <ng-multiselect-dropdown class="product" name="citys" [placeholder]="'Product'" formControlName="city2"
               [disabled]="disabled" [settings]="dropdownSettings1" [data]="productLisst"
               (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)"
@@ -40,7 +40,7 @@
           </form>
         </div>
         <div class="col-md-2 col-lg-2 col-sm-2">
-          <form [formGroup]="myForms2">
+          <form [formGroup]="myForms2" class="dropdown-form">
             <ng-multiselect-dropdown class="geog" name="citys" [placeholder]="'Geography'" formControlName="city3"
               [disabled]="disabled" [settings]="dropdownSettings2" [data]="geoList" (onSelect)="onGeoSelect($event)"
               (onDeSelect)="onGeoDeSelect($event)" (onDeSelectAll)="onItemDeSelectOrAllGeo($event)"
@@ -51,13 +51,13 @@
               <span *ngIf="myForms2.get('city3').value.length == 1" class="selected-placeholder">
                 {{myForms2.get('city3').value.length}} Geography selected </span>
               <span *ngIf="myForms2.get('city3').value.length > 1" class="selected-placeholder">
-                {{myForms2.get('city3').value.length}} Geographies selected </span>
+                {{myForms2.get('city3').value.length}} Geography selected </span>
 
             </div>
           </form>
         </div>
-        <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;">
-          <form [formGroup]="myForms4">
+        <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;margin-left: 9px;">
+          <form [formGroup]="myForms4" class="dropdown-formdealer">
             <ng-multiselect-dropdown class="dealr" name="citys" [placeholder]="'Dealer'" formControlName="city5"
               [disabled]="disabled" [settings]="dropdownSettings4" [data]="dealerListArray"
               (onSelect)="onItemDealerSelect($event)" (onDeSelect)="onItemDealerDeSelect($event)"
@@ -73,8 +73,8 @@
 
           </div>
         </div>
-        <div class="col-md-2 col-lg-2 col-sm-2">
-          <form [formGroup]="myForms3">
+        <div class="col-md-2 col-lg-2 col-sm-2" style="margin-left:-9px">
+          <form [formGroup]="myForms3" class="dropdown-form">
             <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Status'" formControlName="city4"
               [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList1"
               (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
@@ -145,7 +145,7 @@
 </div>
 <br>
   <ag-grid-angular id="gridContainer"
-  style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;margin-left: 20px;"
+  style=" height: 376px;border-radius: 20px;background-color: white;font-family: Gilroy;margin-left: 20px; margin-top: -26px;"
   class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
   [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
   [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"

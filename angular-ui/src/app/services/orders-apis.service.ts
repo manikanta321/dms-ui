@@ -113,15 +113,20 @@ export class OrdersApisService {
     return this.http.get<any>(this.userurl + `OrdersApi/GetOrderByship?orderId=${data}`)
   }  
 
+  public reciveshipment(data) {
+    return this.http.post<any>(this.userurl + 'OrdersApi/GetOrderByshipReceive', data);
+  }  
+
   public saveShipOrder(data) {
     return this.http.post<any>(this.userurl + 'OrdersApi/AddShipOrder', data);
+  }
+  public saveReciveShipment(data) {
+    return this.http.post<any>(this.userurl + 'OrdersApi/AddReceiveShipOrder', data);
   }
 
   
   public calculateTotal(data) {
     return this.http.post<any>(this.userurl + 'OrdersApi/GetShippingAndPackingChargesforship', data);
   }
-
-
 }
  

@@ -190,7 +190,8 @@ export class AddorderpromotionsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: this.subCategoryFilter
+      // 1  allowSearchFilter: this.subCategoryFilter,
+      allowSearchFilter: true
     };
     this.dropdownSettingstypeid = {
       singleSelection: false,
@@ -199,7 +200,8 @@ export class AddorderpromotionsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: this.typeFilter
+      //2  allowSearchFilter: this.typeFilter
+      allowSearchFilter: true
     };
     this.dropdownSettingsmaterialid = {
       singleSelection: false,
@@ -288,6 +290,15 @@ if(this.confirmOrder == "Confirm") {
   }
 
   addOrderPromotionList() {
+
+    localStorage.setItem("geographyId", this.geographyId);
+    localStorage.setItem("dealerid", this.customerId);
+
+    if(this.geographyId == null || this.customerId == null){
+      alert("Plz select geography and dealer");
+      return;
+    }
+
     const dialogRef = this.dialog.open(AddOrderPromotionlistComponent, { width: '1043px', height: '900px', data: this.AddOrderPromotionData });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
@@ -299,6 +310,14 @@ if(this.confirmOrder == "Confirm") {
   }
 
   addOrderNonPromotionList() {
+
+    localStorage.setItem("geographyId", this.geographyId);
+    localStorage.setItem("dealerid", this.customerId);
+
+    if(this.geographyId == null || this.customerId == null){
+      alert("Plz select geography and dealer");
+      return;
+    }
     this.orderNonPromotionsList();
     this.Non_promotions = true;
   }
@@ -465,7 +484,8 @@ if(this.confirmOrder == "Confirm") {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: this.ShowFilter
+      // 3 allowSearchFilter: this.ShowFilter
+      allowSearchFilter: true
     };
   }
   // cat select
@@ -953,9 +973,11 @@ if(this.confirmOrder == "Confirm") {
       "type": [],
       "MaterialCustomIdentifier": [],
       "Search": "",
-      "GeographyId": this.geographyId
+      "GeographyId": this.geographyId,
+      "Dealerid": this.customerId,
     }
     this.spinner.show();
+    
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
       let orderNonPromotionsData = res.response;
@@ -1043,7 +1065,8 @@ if(this.confirmOrder == "Confirm") {
     });
     let data = {
       "GeographyId": this.geographyId,
-      "AddItems": selectedNonPromotionData
+      "AddItems": selectedNonPromotionData,
+      "Dealerid": this.customerId,
     }
     this.orders.addorderNonPromotionsdata(data).subscribe(
       {

@@ -36,7 +36,7 @@
 
                                 <div class="fontcolor">
                                     <div class="row">
-                                        <div class="col-4 ">
+                                        <div class="col-3 ">
                                             <label>Name<span>*</span></label>
                                             <br>
                                             <input type="text" formControlName="CustomerName"
@@ -47,17 +47,17 @@
                                                 Name is required
                                             </span>
                                         </div>
-                                        <div class="col-4 ">
+                                        <div class="col-3 ">
                                             <label>Email-ID<span>*</span></label>
                                             <br>
                                             <input type="text" formControlName="Email" class="addDelercols form-control"
-                                                required placeholder="Enter your Email ID">
+                                                required placeholder="Enter your email id">
                                                 <span class="text-danger"
                                                 *ngIf="addAddressDetailsFormControl['Email'].touched  && addAddressDetailsFormControl['Email'].errors && addAddressDetailsFormControl['Email'].errors['required']">
                                                 Email is required
                                             </span>
                                         </div>
-                                        <div class="col-4 ">
+                                        <div class="col-3 ">
                                             <label>Code<span>*</span></label>
                                             <br>
                                             <input type="text" formControlName="Code" class="addDelercolss form-control"
@@ -67,11 +67,7 @@
                                                 Code is required
                                             </span>
                                         </div>
-
-                                    </div>
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-4 ">
+                                        <div class="col-3 " style="margin-left: -6px;">
                                             <label>Website<span>*</span></label>
                                             <br>
                                             <input type="text" formControlName="website"
@@ -83,7 +79,10 @@
                                                Website is required
                                            </span>
                                         </div>
-                                        <div class="col-4 ">
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-3">
                                             <label>Phone No<span>*</span></label>
                                             <br>
                                             <input type="text" formControlName="Phoneno"
@@ -94,18 +93,25 @@
                                                Phone No is required
                                            </span>
                                         </div>
-                                        <div class="col-4 ">
+                                        <div class="col-3">
                                             <label>Company ID</label>
                                             <br>
                                             <input type="text" formControlName="company_id"
                                                 class="addDelercolss form-control"
-                                                placeholder="Enter your company ID"
+                                                placeholder="Enter your company id"
                                                 >
                                         </div>
+                                        <div class="col-6 " style="bottom:13px;right: 6px;">
+                                            <label class="otherId">Other Identifer</label>
+                                            <br>
+                                            <input type="text" formControlName="OtherIdentifier"
+                                                class="addDelercols form-control"
+                                                placeholder="Enter and select" >
+                                            <img src="../assets/img/search.png" class="search">
+                                        </div>
                                     </div>
-                                    <div class="row">
+                                    <!-- <div class="row">
                                         <div class="col-4">
-                                            <!-- <input type="text"> -->
                                         </div>
                                         <div class="col-4 ">
                                             <label class="otherId">Other Identifer</label>
@@ -116,9 +122,8 @@
                                             <img src="../assets/img/search.png" class="search">
                                         </div>
                                         <div class="col-4 ">
-                                            <!-- <input type="text"> -->
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!-- AdminUser -->
                                 <ng-template matStepLabel>AdminUser</ng-template>
@@ -148,7 +153,7 @@
                                             <br>
                                             <input type="text" formControlName="EmailId"
                                                 class="addDelercols form-control" required
-                                                placeholder="Enter your email ID">
+                                                placeholder="Enter your email id">
                                                 <span class="text-danger"
                                                 *ngIf="addAddressDetailsFormControl['EmailId'].touched  && addAddressDetailsFormControl['EmailId'].errors && addAddressDetailsFormControl['EmailId'].errors['required']">
                                                 Email ID is required
@@ -185,7 +190,7 @@
                                             <br>
                                             <input type="text" formControlName="lastName"
                                                 class="addDelercols form-control" required
-                                                placeholder="Enter your Last Name" >
+                                                placeholder="Enter your last name" >
                                                 <span class="text-danger"
                                                 *ngIf="addAddressDetailsFormControl['lastName'].touched  && addAddressDetailsFormControl['lastName'].errors && addAddressDetailsFormControl['lastName'].errors['required']">
                                                 Last Name is required

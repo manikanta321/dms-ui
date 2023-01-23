@@ -1,4 +1,71 @@
 
+
+
+input.mat-input-element {
+  
+  
+  position: absolute;
+  
+  margin-top: -11px;
+}
+#tax_color
+{
+  color: black;
+    font-weight: 700;
+}
+#pkcharger
+{
+  color: black;
+  font-weight: 700;
+}
+#Shippinggg
+{
+  color: black;
+  font-weight: 700;
+}
+.tota_al
+{
+  
+    position: relative;
+    right:160px;
+}
+.amount_t
+{
+  position: relative;
+  left: -77px;
+   
+}
+
+
+
+
+.dropdownborder
+{
+  border-left:  1px  solid #000000 !important;
+  border-radius: 13px;
+}
+::ng-deep.dropdown-list ul {
+  
+  
+  overflow-x: hidden;
+  
+}
+
+::ng-deep.dropdown-list   {
+  
+  overflow: hidden;
+}
+.spacedropdown
+{
+     margin-left: 1px;
+}
+
+.catty
+{
+  background-color: #2F8F9E;
+}
+
+
 ::ng-deep .select_category .dropdown-btn span .ng-star-inserted 
 {
   position: absolute !important;
@@ -123,13 +190,17 @@ input[type=number] {
   bottom: 2px;
 }
 .delivery1 {
-  font-weight: 600;  
+  font-weight: bold; 
   font-family: 'Gilroy';
+  color: #000000;
+  font-size: 15px;
 }
 
 .boldR {
-    font-weight: 600;  
+    font-weight: bold;  
    font-family: 'Gilroy';
+   color: #000000;
+   font-size: 14px;
 }
 
 .form-control::placeholder {
@@ -335,7 +406,7 @@ input[type=number] {
 .addU:after {
   content: "";
   display: block;
-   width: 360px; 
+   width: 256px; 
    left: 650px;
   height: 2px;
    background: #686E74; 
@@ -350,7 +421,8 @@ input[type=number] {
 .addU:before {
   content: "";
   display: block;
-  width: 360px;
+  
+  width: 301px;
   height: 2px;
    background: #686E74; 
   left: 0;
@@ -379,7 +451,7 @@ input[type=number] {
 }
 
 .astr {
-  color: red;
+   color: red; 
 }
 span {
   color: red;
@@ -402,7 +474,8 @@ label {
   margin: 5px;
   font-size: 12.5px;
   align-items: center;
-  font-weight: 500;
+  font-weight: bold;
+  color: #000000;
 }
 mat-form-field {
   width: 246px;
@@ -947,7 +1020,7 @@ li {
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   /* width: 260px; */
-  height: 30px;
+  height: 36px;
   font-size: 13px;
   padding: 0 7px;
 }
@@ -1230,13 +1303,15 @@ li {
 }
 
 ::ng-deep.orderDatepicker .mat-form-field-appearance-fill .mat-form-field-flex {
-  width: 230px;
+   width: 230px;
+  
   height: 30px;
   background: #FFFFFF;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   padding: 0 5px;
+  
 
 }
 
@@ -1335,7 +1410,8 @@ left: 456px;
   border-radius: 8px;
   font-size: 13px;
   font-weight: 'Gilroy';
-  color: #686E74BF;
+  color:#000000;
+  
 
 }
 
@@ -1386,11 +1462,20 @@ margin-top: -5px;
 {
   margin-top: 4px;
   margin-left: 12px;
+  color: white;
 
 }
 #totallsss
 {
   margin-left: 12px;
+  color: #000000;
+  font-weight: bolder;
+}
+#totallssss
+{
+  margin-left: 12px;
+  color:whitesmoke;
+  font-weight: bolder;
 }
 
 
@@ -1437,7 +1522,7 @@ margin-top: -5px;
 }
 
 .input-icons {
-  width: 100%;
+  width: 103%;
   margin-bottom: 10px;
   margin: 0 5px;
 
@@ -1463,11 +1548,18 @@ margin-top: -5px;
   margin-top: 1px;
   background: #000000;
   border-radius: 20%;
+  margin-left: 54px;
 }
 
 .refreshbtn .refresh-icon {
   margin-top: 10px;
   margin-left: 10px;
+}
+.refreshbtn:hover
+{
+  background-color:grey !important;
+  color: white !important;
+  cursor: pointer;
 }
 
 .searchButton {
@@ -1624,7 +1716,7 @@ tbody{
  tbody {
   display: block;
   max-height: 227px;
-  overflow-y: scroll;
+
 }
 
 table thead, table tbody tr {

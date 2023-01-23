@@ -43,6 +43,7 @@ export class SalesInventoryComponent implements OnInit {
   geographyListData:any = [];
   geographyListArray:any = [];
   selectedItems: any = [];
+  loggedUserId:any;
   columnDefs: ColDef[] = [
     // { headerName: "User Id",
     //   field: 'employeeCode' , sort: 'desc'},
@@ -211,6 +212,8 @@ export class SalesInventoryComponent implements OnInit {
     private fb: FormBuilder,) { }
 
   ngOnInit(): void {
+    this.loggedUserId = localStorage.getItem('logInId');
+
     this.ProductItems();
     this.GeographyItems();
     this.dealerItems();
@@ -307,7 +310,8 @@ export class SalesInventoryComponent implements OnInit {
       GeographyId:this.geographysSelected,
       ProductId:this.productSelected,
       DealerId:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId,
 
     }
     this.salesService.getDealeList(data).subscribe((res)=>{
@@ -322,7 +326,9 @@ export class SalesInventoryComponent implements OnInit {
       GeographyId:this.geographysSelected,
       ProductId:this.productSelected,
       DealerId:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId,
+
 
     }
     this.salesService.getDealeList(data).subscribe((res)=>{
@@ -338,7 +344,9 @@ export class SalesInventoryComponent implements OnInit {
       GeographyId:this.geographysSelected,
       ProductId:this.productSelected,
       DealerId:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId,
+
 
     }
     this.salesService.getDealeList(data).subscribe((res)=>{
@@ -356,7 +364,9 @@ export class SalesInventoryComponent implements OnInit {
       GeographyId:this.geographysSelected,
       ProductId:this.productSelected,
       DealerId:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId,
+
 
     }
     this.salesService.getDealeList(data).subscribe((res)=>{
@@ -396,7 +406,9 @@ export class SalesInventoryComponent implements OnInit {
       GeographyId:this.geographysSelected,
       ProductId:this.productSelected,
       DealerId:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId,
+
 
     }
     this.salesService.getDealeList(data).subscribe((res)=>{
@@ -411,7 +423,9 @@ export class SalesInventoryComponent implements OnInit {
       GeographyId:this.geographysSelected,
       ProductId:this.productSelected,
       DealerId:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId,
+
 
     }
     this.salesService.getDealeList(data).subscribe((res)=>{
@@ -427,7 +441,9 @@ export class SalesInventoryComponent implements OnInit {
       GeographyId:this.geographysSelected,
       ProductId:this.productSelected,
       DealerId:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId,
+
 
     }
     this.salesService.getDealeList(data).subscribe((res)=>{
@@ -446,7 +462,9 @@ export class SalesInventoryComponent implements OnInit {
       GeographyId:this.geographysSelected,
       ProductId:this.productSelected,
       DealerId:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId,
+
 
     }
     this.salesService.getDealeList(data).subscribe((res)=>{
@@ -486,7 +504,9 @@ export class SalesInventoryComponent implements OnInit {
       GeographyId:this.geographysSelected,
       ProductId:this.productSelected,
       DealerId:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId,
+
 
     }
     this.salesService.getDealeList(data).subscribe((res)=>{
@@ -501,7 +521,9 @@ export class SalesInventoryComponent implements OnInit {
       GeographyId:this.geographysSelected,
       ProductId:this.productSelected,
       DealerId:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId,
+
 
     }
     this.salesService.getDealeList(data).subscribe((res)=>{
@@ -517,7 +539,9 @@ export class SalesInventoryComponent implements OnInit {
       GeographyId:this.geographysSelected,
       ProductId:this.productSelected,
       DealerId:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId,
+
 
     }
     this.salesService.getDealeList(data).subscribe((res)=>{
@@ -536,7 +560,9 @@ export class SalesInventoryComponent implements OnInit {
       GeographyId:this.geographysSelected,
       ProductId:this.productSelected,
       DealerId:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId,
+
 
     }
     this.salesService.getDealeList(data).subscribe((res)=>{
@@ -550,7 +576,9 @@ export class SalesInventoryComponent implements OnInit {
       GeographyId: [],
       ProductId: [],
       DealerId: [],
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId,
+
 
     }
     this.salesService.getDealeList(data).subscribe((res)=>{
@@ -566,7 +594,9 @@ console.log("SalesList",this.salesListData)
       GeographyId:this.geographysSelected,
       ProductId:this.productSelected,
       DealerId:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId,
+
 
     }
     this.salesService.getDealeList(data).subscribe((res)=>{
@@ -584,7 +614,9 @@ console.log("SalesList",this.salesListData)
       GeographyId:this.geographysSelected,
       ProductId:this.productSelected,
       DealerId:this.dealerSelected,
-    Search:this.searchText
+    Search:this.searchText,
+    CurrentUserId:this.loggedUserId,
+
 
     }
     this.salesService.getDealeList(data).subscribe((res)=>{

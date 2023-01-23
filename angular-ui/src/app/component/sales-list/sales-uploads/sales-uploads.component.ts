@@ -211,6 +211,8 @@ sessionStorage.setItem("BatchId",batchId );
   }
   salesUpload(){
     sessionStorage.setItem("sales","salesUpload");
+    sessionStorage.setItem("orderReceipt",'');
+    sessionStorage.setItem("orderShipment",'');
       this.dialog.open(SalesBulkUploadComponent);
       // this.isOpen = false;
   }

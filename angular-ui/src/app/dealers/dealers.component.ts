@@ -75,7 +75,7 @@ export class DealersComponent implements OnInit {
   userTypes: any = [];
   geoTypes: any = [];
   statusTytpes:any=[];
-
+  productSelected:any = [];
   statusTypes: any = [];
   searchText: any;
   customerID:any;
@@ -420,23 +420,32 @@ this.ProductItems() ;
     this.geoTypes=[];
     this.statusTytpes=[];
     this.searchText='';
+    this.productSelected = [];
     const data = {
       geographys:this.geoTypes,
+      Products:this.productSelected,
       statuss:this.statusTytpes,
       Search:this.searchText,
     }
     this.user.getAllDealerList(data).subscribe((res) => {
+
       this.rowData5 = res.response;
   
+
     });
     this.getusertabeldata();
   }
 
   getusertabeldata() {
+    this.geoTypes=[];
+    this.statusTytpes=[];
+    this.searchText='';
+    this.productSelected = [];
     const data = {
-      "geographys":[],
-      "statuss":[],
-      "Search":""
+      geographys:this.geoTypes,
+      Products:this.productSelected,
+      statuss:this.statusTytpes,
+      Search:this.searchText,
     }
     this.user.getAllDealerList(data).subscribe((res) => {
 
@@ -543,7 +552,81 @@ ProductItems(){
     }
   }
 
+  onItemProductSelect(item: any) {
 
+    // alert(item.roleName)
+    this.productSelected.push(item.stockItemId);
+
+    const data = {
+      geographys:this.geoTypes,
+      Products:this.productSelected,
+      statuss:this.statusTytpes,
+      Search:this.searchText,
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {
+
+      this.rowData5 = res.response;
+  
+
+    });
+    console.log('rolefilter', this.userTypes)
+    console.log('onItemSelect', item);
+  }
+  onItemProductSelectOrAll(item: any) {
+    this.productSelected = this.productAllArray;
+    const data = {
+      geographys:this.geoTypes,
+      Products:this.productSelected,
+      statuss:this.statusTytpes,
+      Search:this.searchText,
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {
+
+      this.rowData5 = res.response;
+  
+
+    });
+
+  }
+  onItemProductDeSelectOrAll(item: any) {
+    this.productSelected=[];
+    const data = {
+      geographys:this.geoTypes,
+      Products:this.productSelected,
+      statuss:this.statusTytpes,
+      Search:this.searchText,
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {
+
+      this.rowData5 = res.response;
+  
+
+    });
+    console.log('rolefilter', this.userTypes)
+    console.log('onItemSelect', item);
+  }
+
+  onItemProductDeSelect(item: any) {
+
+    this.productSelected.forEach((element, index) => {
+      if (element == item.stockItemId) this.productSelected.splice(index, 1);
+    });
+    console.log(' this.userTypes', this.userTypes)
+
+    // this.userTypes.pop(item.roleId);
+    const data = {
+      geographys:this.geoTypes,
+      Products:this.productSelected,
+      statuss:this.statusTytpes,
+      Search:this.searchText,
+    }
+    this.user.getAllDealerList(data).subscribe((res) => {
+
+      this.rowData5 = res.response;
+  
+
+    });
+  }
 
   statusItems() {
     this.user.dealersStatus().subscribe((res: any) => {
@@ -574,17 +657,15 @@ ProductItems(){
 
     // alert(item.roleName)
     this.geoTypes.push(item.geographyId);
-
     const data = {
       geographys:this.geoTypes,
+      Products:this.productSelected,
       statuss:this.statusTytpes,
       Search:this.searchText,
     }
     this.user.getAllDealerList(data).subscribe((res) => {
 
       this.rowData5 = res.response;
-  
-
     });
     
   }
@@ -601,14 +682,13 @@ ProductItems(){
 
     const data = {
       geographys:this.geoTypes,
+      Products:this.productSelected,
       statuss:this.statusTytpes,
       Search:this.searchText,
     }
     this.user.getAllDealerList(data).subscribe((res) => {
 
       this.rowData5 = res.response;
-  
-
     });
 
   }
@@ -620,14 +700,13 @@ ProductItems(){
   
     const data = {
       geographys:this.geoTypes,
+      Products:this.productSelected,
       statuss:this.statusTytpes,
       Search:this.searchText,
     }
     this.user.getAllDealerList(data).subscribe((res) => {
 
       this.rowData5 = res.response;
-  
-
     });
 
     console.log('rolefilter', this.userTypes)
@@ -638,6 +717,7 @@ ProductItems(){
     this.geoTypes=[];
     const data = {
       geographys:this.geoTypes,
+      Products:this.productSelected,
       statuss:this.statusTytpes,
       Search:this.searchText,
     }
@@ -661,6 +741,7 @@ ProductItems(){
 
     const data = {
       geographys:this.geoTypes,
+      Products:this.productSelected,
       statuss:this.statusTytpes,
       Search:this.searchText,
     }
@@ -685,6 +766,7 @@ ProductItems(){
     console.log(' this.statusTypes', this.userTypes)
     const data = {
       geographys:this.geoTypes,
+      Products:this.productSelected,
       statuss:this.statusTytpes,
       Search:this.searchText,
     }
@@ -705,6 +787,7 @@ ProductItems(){
     this.statusTytpes=[];
     const data = {
       geographys:this.geoTypes,
+      Products:this.productSelected,
       statuss:this.statusTytpes,
       Search:this.searchText,
     }
@@ -722,6 +805,7 @@ ProductItems(){
     this.statusTytpes = this.statusArray;
     const data = {
       geographys:this.geoTypes,
+      Products:this.productSelected,
       statuss:this.statusTytpes,
       Search:this.searchText,
     }
@@ -739,6 +823,7 @@ ProductItems(){
     this.searchText = target.value;
     const data = {
       geographys:this.geoTypes,
+      Products:this.productSelected,
       statuss:this.statusTytpes,
       Search:this.searchText,
     }

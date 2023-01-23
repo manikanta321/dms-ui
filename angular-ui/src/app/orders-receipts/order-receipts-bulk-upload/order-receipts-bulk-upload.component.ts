@@ -77,7 +77,7 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
         this.receiptsUploadList=res.response;
         this.TotalRows = this.receiptsUploadList.allRows;
         this.totalRows = "Total Rows = "+ this.TotalRows.length
-        this.EmptyRows = this.receiptsUploadList.allRows;
+        this.EmptyRows = this.receiptsUploadList.emptyRows;
         this.emptyRows = "Empty Rows = "+ this.EmptyRows.length
       this.duplicateEntryy =this.receiptsUploadList.duplicateEntries
       this.duplicateEntry = "Duplicate Entries = "+this.duplicateEntryy.length;

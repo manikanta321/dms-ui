@@ -1,3 +1,20 @@
+.close-iconn
+{
+    
+    font-weight: bold;
+    color: whitesmoke;
+    cursor: pointer;
+    font-size: 17px;
+    top: 5px;
+    position: absolute;
+    left: 62%;
+    width: 97px;
+    height: 17px;
+    
+      
+}
+
+
 .cal {
     width: 43px;
     height: 43px;
@@ -32,6 +49,7 @@
 
 .datepicker-menu-list li:hover {
     background: #DEE2E6;
+    width: 188px;
 }
 
 
@@ -56,12 +74,12 @@
 
 .custom-day.range,
 .custom-day:hover {
-    background-color: rgb(2, 117, 216);
+     background-color: rgb(2, 117, 216);
     color: white;
 }
 
 .custom-day.faded {
-    background-color: rgba(2, 117, 216, 0.5);
+     background-color: rgba(2, 117, 216, 0.5); 
 }
 
 
@@ -82,12 +100,12 @@ custom-day {
 
 .custom-day.range,
 .custom-day:hover {
-    background-color: rgb(2, 117, 216);
+     background-color: rgb(2, 117, 216); 
     color: white;
 }
 
 .custom-day.faded {
-    background-color: rgba(2, 117, 216, 0.5);
+     background-color: rgba(2, 117, 216, 0.5);
 }
 
 .custom-day.weekend {
@@ -142,3 +160,44 @@ svg {
     margin-left:2px !important;
     width: 190px;
 }
+
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+     color: #655356!important;
+   }
+  ::ng-deep .mat-form-field-label {
+    /*change color of label*/
+     color: #655356!important; 
+    
+   }
+  mat-datepicker-toggle {
+    color: #655356!important;
+  }
+  
+   .datepicker
+{
+    position: absolute !important;
+    
+    background: #655356 !important;
+    border-radius: 10px;
+
+    color : whitesmoke;
+
+    
+   width: 169px;
+   border: 1px solid #337ab7;
+       font-size: 12px;
+       box-shadow: 1px 1px #959595;
+       top:55px;
+       height: 29px;
+       padding-right: 18px;
+       
+    text-align: center;
+    padding-top: 3px;
+    left: 16px;
+} 
+
+
+
+

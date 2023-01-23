@@ -247,7 +247,7 @@
                     <div (click)="expandOtherInfoDiv()" class="collapsible">
                         <div class="row">
                             <div class="col-md-11">
-                                <p class="label-cls">Other Information</p>
+                                <p class="label-cls">Other Information </p>
                             </div>
                             <div class="col-md-1">
                                 <img [src]="image3" class="expand-arrow" alt="add-user-btn">
@@ -557,7 +557,7 @@
                     <div (click)="expandOtherInfoDiv()" class="collapsible">
                         <div class="row">
                             <div class="col-md-11">
-                                <p class="label-cls">Other Information</p>
+                                <p class="label-cls">Other Information </p>
                             </div>
                             <div class="col-md-1">
                                 <img [src]="image3" class="expand-arrow" alt="add-user-btn">
@@ -639,7 +639,7 @@
                                 <div class="row  ">
                                     <div class="col-md-3  dropdownborder">
                                         <div class="input-icons " >
-                                            <form [formGroup]="categoryForm" class="dropDown-field" style="width: 104%;">
+                                            <form [formGroup]="categoryForm" class="dropDown-field dropdown_list" style="width: 100%;">
                                                 <ng-multiselect-dropdown class="catty select_category" name="city"
                                                     [placeholder]="'Category'" formControlName="categoryy"
                                                     [disabled]="disabled" [settings]="dropdownSettingscat"
@@ -664,7 +664,7 @@
                                     </div>
                                     <div class="col-md-3 dropdownborder">
                                         <div class="input-icons ">
-                                            <form [formGroup]="subcategoryForm" class="dropDown-field">
+                                            <form [formGroup]="subcategoryForm" class="dropDown-field dropdown_list">
                                                 <ng-multiselect-dropdown class="subcatty sub_category" name="subCategory"
                                                     [placeholder]="''" formControlName="subCategory"
                                                     [disabled]="disabled" [settings]="dropdownSettingssubcat"
@@ -692,7 +692,7 @@
                                     </div>
                                     <div class="col-md-3 dropdownborder">
                                         <div class="input-icons ">
-                                            <form [formGroup]="type" class="dropDown-field">
+                                            <form [formGroup]="type" class="dropDown-field dropdown_list">
                                                 <ng-multiselect-dropdown class="stts stts_typeselected" name="type" [placeholder]="'Type'"
                                                     formControlName="type" [disabled]="disabled"
                                                     [settings]="dropdownSettingstypeid" [data]="typeI"
@@ -720,7 +720,7 @@
                                     </div>
                                     <div class="col-md-3 dropdownborder">
                                         <div class="input-icons ">
-                                            <form [formGroup]="myFormsIdentifier" class="dropDown-field">
+                                            <form [formGroup]="myFormsIdentifier" class="dropDown-field dropdown_list">
                                                 <ng-multiselect-dropdown class="identifier identi_fier" [placeholder]="'Identifier'"
                                                     formControlName="identifiers"
                                                     [settings]="dropdownSettingsmaterialid" [data]="materialIdentifier"

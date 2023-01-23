@@ -4,7 +4,8 @@
             <div class="invoice" *ngIf="showInputField" [ngbPopover]="popContent" [placement]="['bottom','bottom-start','left-top','right-top']"
             [autoClose]="'outside'" #datepickerBtn="ngbPopover" popoverClass="datepicker-menu">
                 <mat-form-field appearance="fill" >
-                  <mat-label>{{label}}</mat-label>
+                  <mat-label *ngIf="!(selectedDate &&selectedDate.startDate)">{{label}}</mat-label>
+                  <mat-label  *ngIf="selectedDate && selectedDate.startDate">{{selectedDate.startDate}} - {{selectedDate.endDate}}</mat-label>
                   <mat-select >
                   </mat-select>
                 </mat-form-field>
@@ -20,8 +21,13 @@
             #datepickerBtn2="ngbPopover" [positionTarget]="calendarSection" popoverClass="datepicker-popover">
             <!-- <img src="assets/img/calenderImage.svg" alt=""> -->
         </div>
+            <div *ngIf="date">
+        <div class="datepicker"   *ngIf="selectedDate && selectedDate.startDate"> {{selectedDate.startDate}} - {{selectedDate.endDate}}
+           <mat-icon mat-button class="close-iconn" (click)="close()" >close</mat-icon>
+        </div>
     </div>
-   
+    </div>
+    
 
     <ng-template #popContent>
         <ul class="datepicker-menu-list">

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 import { SalesServicesService } from 'src/app/services/sales-services.service';
 import * as XLSX from 'xlsx';
 
@@ -36,6 +37,7 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
   duplicate:boolean = false;  
   incorrectData:boolean = false;
   constructor(private salesService:SalesServicesService,
+    private otherMasterService:OtherMasterService,
     private dialogRef: MatDialogRef<OrderReceiptsBulkUploadComponent>,) { }
 
   ngOnInit(): void {
@@ -77,7 +79,7 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
         this.receiptsUploadList=res.response;
         this.TotalRows = this.receiptsUploadList.allRows;
         this.totalRows = "Total Rows = "+ this.TotalRows.length
-        this.EmptyRows = this.receiptsUploadList.allRows;
+        this.EmptyRows = this.receiptsUploadList.emptyRows;
         this.emptyRows = "Empty Rows = "+ this.EmptyRows.length
       this.duplicateEntryy =this.receiptsUploadList.duplicateEntries
       this.duplicateEntry = "Duplicate Entries = "+this.duplicateEntryy.length;
@@ -160,6 +162,7 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
     }
     console.log("Daaataaa",uploadedFile); 
     this.salesService.saveBulkUploadReceipt(uploadedFile).subscribe((res)=>{
+      this.otherMasterService.filter('Register click');
       const uploadedData = res.response;
       console.log("SaveReceipt",uploadedData)
       this.dialogRef.close();

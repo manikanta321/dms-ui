@@ -64,7 +64,19 @@ input.mat-input-element {
 {
   background-color: #2F8F9E;
 }
-
+::ng-deep .dropdown_list .dropdown-list  {
+  position: absolute;
+  padding-top: 6px;
+  width: 105%;
+  z-index: 9999;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: #fff;
+  margin-top: 0px !important;
+  box-shadow: 0 1px 5px #959595;
+  margin-left: -12px;
+  
+}
 
 ::ng-deep .select_category .dropdown-btn span .ng-star-inserted 
 {
@@ -396,6 +408,7 @@ input[type=number] {
   margin-bottom: 2px;
  cursor: pointer;
  font-size: 20px;
+ 
 }
 .addU {
   position: relative;
@@ -406,13 +419,12 @@ input[type=number] {
 .addU:after {
   content: "";
   display: block;
-   width: 256px; 
-   left: 650px;
+   width: 265px; 
+  
   height: 2px;
    background: #686E74; 
   
-  right: 4px;
-   left:650px;
+margin-left: 67%;
    
   top: 50%;
   position: absolute;
@@ -422,7 +434,7 @@ input[type=number] {
   content: "";
   display: block;
   
-  width: 301px;
+  width: 265px;
   height: 2px;
    background: #686E74; 
   left: 0;
@@ -1028,7 +1040,7 @@ li {
 .collapsible {
   cursor: pointer;
   padding: 5px;
-  width: 100%;
+   width: 100%;
   border: none;
   text-align: left;
   outline: none;
@@ -1408,7 +1420,7 @@ left: 456px;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 'Gilroy';
   color:#000000;
   

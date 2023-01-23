@@ -941,15 +941,15 @@ export class MaterialAddEditpopupComponent {
   CreateGeoPropertiesObject(propertyObj) {
     let obj: any = {};
     obj.productSKUGeographyId = propertyObj.productSKUGeographyId ?? "";
-    obj.minOrderQty = propertyObj.minOrderQty ?? "";
-    obj.discountPercent = propertyObj.discountPercent ?? "";
-    obj.maxOrderQty = propertyObj.maxOrderQty ?? "";
-    obj.marginPercent = propertyObj.marginPercent ?? "";
-    obj.mrp = propertyObj.mrp ?? "";
-    obj.leadTime = propertyObj.leadTime ?? "";
+    obj.minOrderQty = propertyObj.minOrderQty ?? "0";
+    obj.discountPercent = propertyObj.discountPercent ?? "0";
+    obj.maxOrderQty = propertyObj.maxOrderQty ?? "0";
+    obj.marginPercent = propertyObj.marginPercent ?? "0";
+    obj.mrp = propertyObj.mrp ?? "0";
+    obj.leadTime = propertyObj.leadTime ?? "0";
     obj.geographyId = propertyObj.geographyId ?? "";
     obj.geographyName = propertyObj.geographyName ?? "";
-    obj.registrationNumber = propertyObj.registrationNumber ?? "";
+    obj.registrationNumber = propertyObj.registrationNumber ?? "0";
     return obj;
   }
 

@@ -197,6 +197,7 @@ import { OrdersReceiptsComponent } from './orders-receipts/orders-receipts.compo
 import { ViewPromotionPopupComponent } from './component/pramotion-action/view-promotion-popup/view-promotion-popup.component';
 import { OrderReceiptsBulkUploadComponent } from './orders-receipts/order-receipts-bulk-upload/order-receipts-bulk-upload.component';
 import { OrdersReceiveShipmentComponent } from './component/orders-receive-shipment/orders-receive-shipment.component';
+import { AddorderproSuccessPopupComponent } from './component/orders/addorderpromotions/addorderpro-success-popup/addorderpro-success-popup.component';
 
 @NgModule({
   declarations: [
@@ -487,6 +488,7 @@ import { OrdersReceiveShipmentComponent } from './component/orders-receive-shipm
           ViewPromotionPopupComponent,
           OrderReceiptsBulkUploadComponent,
           OrdersReceiveShipmentComponent,
+          AddorderproSuccessPopupComponent,
           
   ],
   imports: [

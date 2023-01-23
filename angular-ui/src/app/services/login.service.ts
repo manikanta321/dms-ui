@@ -454,7 +454,7 @@ export class LoginService {
         }
 
         // localStorage.setItem('userroles', JSON.stringify(data.response));
-        this.router.navigate(['../dashbord/user']);
+        this.router.navigate(['/maindashbord']);
       } catch (error) {
         console.log('error', error);
       }

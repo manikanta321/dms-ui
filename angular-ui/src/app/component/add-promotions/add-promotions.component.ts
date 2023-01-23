@@ -345,7 +345,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   Remarks: any = '';
   header: any;
   myForm1: any = FormGroup;
-  productIdtoFilters:any=[]
+  productIdtoFilters: any = []
 
   SaveOrEdit: boolean = true;
   private subject = new Subject<any>();
@@ -425,7 +425,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           this.pricedc = false;
 
           let mainobjbuyGroups = res.response.promoDetails.buyGroups;
-          
+
 
           mainobjbuyGroups.forEach((element) => {
             let stockItemArraay: any = []
@@ -610,7 +610,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
               MaxVolume: element.maxVolume,
               DiscountPercentage: element.discountPercentage,
               ProductPromotionDetailsId: element.productPromotionDetailsId,
-              isDataValid:true
+              isDataValid: true
             })
           })
 
@@ -662,7 +662,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
               MaxVolume: element.maxVolume,
               MaxPrice: element.maxPrice,
               productPromotionDetailsId: element.productPromotionDetailsId,
-              isDataValid:true
+              isDataValid: true
             })
           })
 
@@ -729,7 +729,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   moqChange3() {
     this.isMOQValid = false;
     let packingCharge = this.packingCharges[0];
-    if ((packingCharge.MinVolume && packingCharge.MaxVolume  && packingCharge.MinVolume <= this.minimumorderquantity && packingCharge.MaxVolume >= this.minimumorderquantity ) && this.VolumeSttockItemId && this.VolumeSttockItemId.length !== 0) {
+    if ((packingCharge.MinVolume && packingCharge.MaxVolume && packingCharge.MinVolume <= this.minimumorderquantity && packingCharge.MaxVolume >= this.minimumorderquantity) && this.VolumeSttockItemId && this.VolumeSttockItemId.length !== 0) {
       this.isMOQValid = true;
     }
   }
@@ -737,7 +737,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   moqChange4() {
     this.isMOQValid = false;
     let packingCharge = this.packingVolume[0];
-    if ((packingCharge.MinVolume && packingCharge.MaxVolume  && packingCharge.MinVolume <= this.minumorderqualityPrice && packingCharge.MaxVolume >= this.minumorderqualityPrice) && this.priceStockItemId && this.priceStockItemId.length !== 0) {
+    if ((packingCharge.MinVolume && packingCharge.MaxVolume && packingCharge.MinVolume <= this.minumorderqualityPrice && packingCharge.MaxVolume >= this.minumorderqualityPrice) && this.priceStockItemId && this.priceStockItemId.length !== 0) {
       this.isMOQValid = true;
     }
   }
@@ -748,7 +748,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     this.addbuyset.forEach(item => {
       item.BuyGroups.forEach(element => {
         element.isDataValid = true;
-        if (element.MaxVolume == '' || element.MOQ == '' || element.MaxVolume > element.MOQ || !element.StockItemId || element.StockItemId.length == 0) {
+        if (!element.MaxVolume || !element.MOQ  || element.MaxVolume > element.MOQ || !element.StockItemId || element.StockItemId.length == 0) {
           element.isDataValid = false;
           this.isPromotionTypeDataValid = false;
         }
@@ -756,7 +756,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     });
   }
 
-  promotionABGetChange(){
+  promotionABGetChange() {
     this.isPromotionTypeDataValid2 = true;
     this.addgetset.forEach(item => {
       item.GetGroups.forEach(element => {
@@ -774,7 +774,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     this.buyGroupPlus.forEach(element => {
       element.isDataValid = true;
       console.log(element.MaxVolume, element.MOQ);
-      if (element.MaxVolume == '' || element.MOQ == '' || element.MaxVolume > element.MOQ|| !element.StockItemId || element.StockItemId.length == 0) {
+      if (!element.MaxVolume|| !element.MOQ  || element.MaxVolume > element.MOQ || !element.StockItemId || element.StockItemId.length == 0) {
         element.isDataValid = false;
         this.isPromotionTypeDataValid = false;
       }
@@ -824,13 +824,13 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     this.packingCharges.forEach((element, index) => {
       console.log(element);
 
-      if ((element.MinVolume && element.MaxVolume && element.DiscountPercentage )) {
+      if ((element.MinVolume && element.MaxVolume && element.DiscountPercentage)) {
         element.isDataValid = true;
         if (Number(element.MinVolume) > Number(element.MaxVolume)) {
           element.isDataValid = false;
           this.isPromotionTypeDataValid = false;
         }
-        else if ((this.packingCharges[index - 1] && element.MinVolume <= this.packingCharges[index - 1].MaxVolume) ) {
+        else if ((this.packingCharges[index - 1] && element.MinVolume <= this.packingCharges[index - 1].MaxVolume)) {
           element.isDataValid = false;
           this.isPromotionTypeDataValid = false;
         }
@@ -1118,7 +1118,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     console.log('this.packingCharges', this.packingCharges)
   }
   addItems(index: any = null) {
-    this.productIdtoFilters=[];
+    this.productIdtoFilters = [];
 
     // debugger
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
@@ -1139,10 +1139,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           //  this.buyGroupPlus[index].productSubGselectedRows = this.productSubGselectedRows;
 
           let productselectedRows = this.productselectedRows.map(x => x.stockItemId);
-          console.log('row',this.productIdtoFilters)
+          console.log('row', this.productIdtoFilters)
 
 
-    
+
 
           // let productScselectedRows=this.productScselectedRows.map(x => x.stockItemId);
           // let pGselectedRows=this.pGselectedRows.map(x => x.stockItemId);
@@ -1159,27 +1159,27 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
 
 
-          this.buyGroupPlus.forEach(element=>{
-            for(let i = 0; i < element.StockItemId.length ; i++){
-              if(this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1) {
+          this.buyGroupPlus.forEach(element => {
+            for (let i = 0; i < element.StockItemId.length; i++) {
+              if (this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1) {
                 this.productIdtoFilters.push(element.StockItemId[i]);
               } else {
                 console.log(`${element.StockItemId[i]} is already pushed into array`);
               }
             }
           })
-          
-          this.addgetgroup.forEach(element=>{
-            for(let i = 0; i < element.StockItemId.length ; i++){
-              if(this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1) {
+
+          this.addgetgroup.forEach(element => {
+            for (let i = 0; i < element.StockItemId.length; i++) {
+              if (this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1) {
                 this.productIdtoFilters.push(element.StockItemId[i]);
               } else {
                 console.log(`${element.StockItemId[i]} is already pushed into array`);
               }
             }
           })
-this.addpromotionGeoTable();
-console.log('this.productIdtoFilters',this.productIdtoFilters)
+          this.addpromotionGeoTable();
+          console.log('this.productIdtoFilters', this.productIdtoFilters)
 
         }
 
@@ -1196,7 +1196,7 @@ console.log('this.productIdtoFilters',this.productIdtoFilters)
 
 
   addItems1(index: any = null, j: any = null) {
-this.productIdtoFilters=[];
+    this.productIdtoFilters = [];
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
     const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px', data: this.addbuyset[index].BuyGroups[j].productselectedRows });
     dialogRef.afterClosed().subscribe((res) => {
@@ -1229,10 +1229,10 @@ this.productIdtoFilters=[];
           console.log('this.addbuyset', this.addbuyset)
 
 
-          this.addbuyset.forEach(element=>{
-            element.BuyGroups.forEach(element1=>{
-              for(let i = 0; i < element1.StockItemId.length ; i++){
-                if(this.productIdtoFilters.indexOf(element1.StockItemId[i]) === -1) {
+          this.addbuyset.forEach(element => {
+            element.BuyGroups.forEach(element1 => {
+              for (let i = 0; i < element1.StockItemId.length; i++) {
+                if (this.productIdtoFilters.indexOf(element1.StockItemId[i]) === -1) {
                   this.productIdtoFilters.push(element1.StockItemId[i]);
                 } else {
                   console.log(`${element1.StockItemId[i]} is already pushed into array`);
@@ -1242,10 +1242,10 @@ this.productIdtoFilters=[];
           })
 
 
-          this.addgetset.forEach(element=>{
-            element.GetGroups.forEach(element1=>{
-              for(let i = 0; i < element1.StockItemId.length ; i++){
-                if(this.productIdtoFilters.indexOf(element1.StockItemId[i]) === -1) {
+          this.addgetset.forEach(element => {
+            element.GetGroups.forEach(element1 => {
+              for (let i = 0; i < element1.StockItemId.length; i++) {
+                if (this.productIdtoFilters.indexOf(element1.StockItemId[i]) === -1) {
                   this.productIdtoFilters.push(element1.StockItemId[i]);
                 } else {
                   console.log(`${element1.StockItemId[i]} is already pushed into array`);
@@ -1257,7 +1257,7 @@ this.productIdtoFilters=[];
           this.addpromotionGeoTable();
 
 
-console.log('this.productIdtoFilters',this.productIdtoFilters)
+          console.log('this.productIdtoFilters', this.productIdtoFilters)
 
 
 
@@ -1295,12 +1295,12 @@ console.log('this.productIdtoFilters',this.productIdtoFilters)
           this.addgetset[index].GetGroups[j].StockItemId = jointarray;
           // this.addgetset[index].GetGroups[j].Set = this.addgetset[index].GetGroups.length;
           console.log('this.addgetset', this.addgetset)
-        
-        
-          this.addbuyset.forEach(element=>{
-            element.BuyGroups.forEach(element1=>{
-              for(let i = 0; i < element1.StockItemId.length ; i++){
-                if(this.productIdtoFilters.indexOf(element1.StockItemId[i]) === -1) {
+
+
+          this.addbuyset.forEach(element => {
+            element.BuyGroups.forEach(element1 => {
+              for (let i = 0; i < element1.StockItemId.length; i++) {
+                if (this.productIdtoFilters.indexOf(element1.StockItemId[i]) === -1) {
                   this.productIdtoFilters.push(element1.StockItemId[i]);
                 } else {
                   console.log(`${element1.StockItemId[i]} is already pushed into array`);
@@ -1309,11 +1309,11 @@ console.log('this.productIdtoFilters',this.productIdtoFilters)
             })
           })
 
-        
-          this.addgetset.forEach(element=>{
-            element.GetGroups.forEach(element1=>{
-              for(let i = 0; i < element1.StockItemId.length ; i++){
-                if(this.productIdtoFilters.indexOf(element1.StockItemId[i]) === -1) {
+
+          this.addgetset.forEach(element => {
+            element.GetGroups.forEach(element1 => {
+              for (let i = 0; i < element1.StockItemId.length; i++) {
+                if (this.productIdtoFilters.indexOf(element1.StockItemId[i]) === -1) {
                   this.productIdtoFilters.push(element1.StockItemId[i]);
                 } else {
                   console.log(`${element1.StockItemId[i]} is already pushed into array`);
@@ -1342,7 +1342,7 @@ console.log('this.productIdtoFilters',this.productIdtoFilters)
 
 
   addItemsforGetGroup(index: any = null) {
-    this.productIdtoFilters=[];
+    this.productIdtoFilters = [];
 
     console.log(this.addgetgroup);
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
@@ -1376,10 +1376,10 @@ console.log('this.productIdtoFilters',this.productIdtoFilters)
 
 
 
-          
-          this.buyGroupPlus.forEach(element=>{
-            for(let i = 0; i < element.StockItemId.length ; i++){
-              if(this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1) {
+
+          this.buyGroupPlus.forEach(element => {
+            for (let i = 0; i < element.StockItemId.length; i++) {
+              if (this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1) {
                 this.productIdtoFilters.push(element.StockItemId[i]);
               } else {
                 console.log(`${element.StockItemId[i]} is already pushed into array`);
@@ -1387,16 +1387,16 @@ console.log('this.productIdtoFilters',this.productIdtoFilters)
             }
           })
 
-          this.addgetgroup.forEach(element=>{
-            for(let i = 0; i < element.StockItemId.length ; i++){
-              if(this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1) {
+          this.addgetgroup.forEach(element => {
+            for (let i = 0; i < element.StockItemId.length; i++) {
+              if (this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1) {
                 this.productIdtoFilters.push(element.StockItemId[i]);
               } else {
                 console.log(`${element.StockItemId[i]} is already pushed into array`);
               }
             }
           })
-this.addpromotionGeoTable();
+          this.addpromotionGeoTable();
 
         }
         this.promotionBuyGet2();
@@ -1411,7 +1411,7 @@ this.addpromotionGeoTable();
 
 
   addItemsVolume() {
-    this.productIdtoFilters=[]
+    this.productIdtoFilters = []
     // alert('volume')
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
     const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px', data: this.productselectedRows ?? [] });
@@ -1427,7 +1427,7 @@ this.addpromotionGeoTable();
 
         //  this.buyGroupPlus[index].productselectedRows = this.productselectedRows;
         let productselectedRows = this.productselectedRows.map(x => x.stockItemId);
-        this.productIdtoFilters=productselectedRows;
+        this.productIdtoFilters = productselectedRows;
         this.addpromotionGeoTable();
 
         let jointarray = productselectedRows
@@ -1442,7 +1442,7 @@ this.addpromotionGeoTable();
 
 
   addItemsPrice() {
-    this.productIdtoFilters=[]
+    this.productIdtoFilters = []
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
     const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px', data: this.productselectedRows ?? [] });
     dialogRef.afterClosed().subscribe((res) => {
@@ -1459,7 +1459,7 @@ this.addpromotionGeoTable();
         let productselectedRows = this.productselectedRows.map(x => x.stockItemId);
         let jointarray = productselectedRows
         this.priceStockItemId = jointarray;
-        this.productIdtoFilters=this.priceStockItemId;
+        this.productIdtoFilters = this.priceStockItemId;
         this.addpromotionGeoTable();
         // console.log('productselectedRows', this.productselectedRows)
         this.moqChange4();
@@ -1470,7 +1470,7 @@ this.addpromotionGeoTable();
 
 
   updateAllComplete(StockItemID, i) {
-this.productIdtoFilters=[]
+    this.productIdtoFilters = []
     let stockitemOfindex = this.buyGroupPlus[i].StockItemId;
     const index = stockitemOfindex.indexOf(StockItemID);
 
@@ -1483,32 +1483,32 @@ this.productIdtoFilters=[]
       this.buyGroupPlus[i].StockItemId = stockitemOfindex
     }
 
-    this.buyGroupPlus.forEach(element=>{
-      for(let i = 0; i < element.StockItemId.length ; i++){
-        if(this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1) {
+    this.buyGroupPlus.forEach(element => {
+      for (let i = 0; i < element.StockItemId.length; i++) {
+        if (this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1) {
           this.productIdtoFilters.push(element.StockItemId[i]);
         } else {
           console.log(`${element.StockItemId[i]} is already pushed into array`);
         }
       }
     })
-    
-    this.addgetgroup.forEach(element=>{
-      for(let i = 0; i < element.StockItemId.length ; i++){
-        if(this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1) {
+
+    this.addgetgroup.forEach(element => {
+      for (let i = 0; i < element.StockItemId.length; i++) {
+        if (this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1) {
           this.productIdtoFilters.push(element.StockItemId[i]);
         } else {
           console.log(`${element.StockItemId[i]} is already pushed into array`);
         }
       }
     })
-this.addpromotionGeoTable();
-console.log('this.productIdtoFilters',this.productIdtoFilters)
+    this.addpromotionGeoTable();
+    console.log('this.productIdtoFilters', this.productIdtoFilters)
 
     console.log('this.buyGroupPlus', this.buyGroupPlus)
   }
   updateAllComplete1(StockItemID, i) {
-    this.productIdtoFilters=[]
+    this.productIdtoFilters = []
 
     let stockitemOfindex = this.addgetgroup[i].StockItemId;
     const index = stockitemOfindex.indexOf(StockItemID);
@@ -1523,27 +1523,27 @@ console.log('this.productIdtoFilters',this.productIdtoFilters)
     }
 
 
-    this.buyGroupPlus.forEach(element=>{
-      for(let i = 0; i < element.StockItemId.length ; i++){
-        if(this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1) {
+    this.buyGroupPlus.forEach(element => {
+      for (let i = 0; i < element.StockItemId.length; i++) {
+        if (this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1) {
           this.productIdtoFilters.push(element.StockItemId[i]);
         } else {
           console.log(`${element.StockItemId[i]} is already pushed into array`);
         }
       }
     })
-    
-    this.addgetgroup.forEach(element=>{
-      for(let i = 0; i < element.StockItemId.length ; i++){
-        if(this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1) {
+
+    this.addgetgroup.forEach(element => {
+      for (let i = 0; i < element.StockItemId.length; i++) {
+        if (this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1) {
           this.productIdtoFilters.push(element.StockItemId[i]);
         } else {
           console.log(`${element.StockItemId[i]} is already pushed into array`);
         }
       }
     })
-this.addpromotionGeoTable();
-console.log('this.productIdtoFilters',this.productIdtoFilters)
+    this.addpromotionGeoTable();
+    console.log('this.productIdtoFilters', this.productIdtoFilters)
 
     console.log('this.buyGroupPlus', this.addgetgroup)
   }
@@ -1554,7 +1554,7 @@ console.log('this.productIdtoFilters',this.productIdtoFilters)
 
 
   updateAllCompleteforBuyGroup(StockItemID, i, j) {
-this.productIdtoFilters=[]
+    this.productIdtoFilters = []
     let stockitemOfindex = this.addbuyset[i].BuyGroups[j].StockItemId;
     const index = stockitemOfindex.indexOf(StockItemID);
 
@@ -1569,10 +1569,10 @@ this.productIdtoFilters=[]
 
 
 
-    this.addbuyset.forEach(element=>{
-      element.BuyGroups.forEach(element1=>{
-        for(let i = 0; i < element1.StockItemId.length ; i++){
-          if(this.productIdtoFilters.indexOf(element1.StockItemId[i]) === -1) {
+    this.addbuyset.forEach(element => {
+      element.BuyGroups.forEach(element1 => {
+        for (let i = 0; i < element1.StockItemId.length; i++) {
+          if (this.productIdtoFilters.indexOf(element1.StockItemId[i]) === -1) {
             this.productIdtoFilters.push(element1.StockItemId[i]);
           } else {
             console.log(`${element1.StockItemId[i]} is already pushed into array`);
@@ -1582,10 +1582,10 @@ this.productIdtoFilters=[]
     })
 
 
-    this.addgetset.forEach(element=>{
-      element.GetGroups.forEach(element1=>{
-        for(let i = 0; i < element1.StockItemId.length ; i++){
-          if(this.productIdtoFilters.indexOf(element1.StockItemId[i]) === -1) {
+    this.addgetset.forEach(element => {
+      element.GetGroups.forEach(element1 => {
+        for (let i = 0; i < element1.StockItemId.length; i++) {
+          if (this.productIdtoFilters.indexOf(element1.StockItemId[i]) === -1) {
             this.productIdtoFilters.push(element1.StockItemId[i]);
           } else {
             console.log(`${element1.StockItemId[i]} is already pushed into array`);
@@ -1599,7 +1599,7 @@ this.productIdtoFilters=[]
   }
 
   updateAllCompleteforGetGroup(StockItemID, i, j) {
-    this.productIdtoFilters=[]
+    this.productIdtoFilters = []
 
     let stockitemOfindex = this.addgetset[i].GetGroups[j].StockItemId;
     const index = stockitemOfindex.indexOf(StockItemID);
@@ -1615,10 +1615,10 @@ this.productIdtoFilters=[]
 
 
 
-    this.addbuyset.forEach(element=>{
-      element.BuyGroups.forEach(element1=>{
-        for(let i = 0; i < element1.StockItemId.length ; i++){
-          if(this.productIdtoFilters.indexOf(element1.StockItemId[i]) === -1) {
+    this.addbuyset.forEach(element => {
+      element.BuyGroups.forEach(element1 => {
+        for (let i = 0; i < element1.StockItemId.length; i++) {
+          if (this.productIdtoFilters.indexOf(element1.StockItemId[i]) === -1) {
             this.productIdtoFilters.push(element1.StockItemId[i]);
           } else {
             console.log(`${element1.StockItemId[i]} is already pushed into array`);
@@ -1628,10 +1628,10 @@ this.productIdtoFilters=[]
     })
 
 
-    this.addgetset.forEach(element=>{
-      element.GetGroups.forEach(element1=>{
-        for(let i = 0; i < element1.StockItemId.length ; i++){
-          if(this.productIdtoFilters.indexOf(element1.StockItemId[i]) === -1) {
+    this.addgetset.forEach(element => {
+      element.GetGroups.forEach(element1 => {
+        for (let i = 0; i < element1.StockItemId.length; i++) {
+          if (this.productIdtoFilters.indexOf(element1.StockItemId[i]) === -1) {
             this.productIdtoFilters.push(element1.StockItemId[i]);
           } else {
             console.log(`${element1.StockItemId[i]} is already pushed into array`);
@@ -1646,7 +1646,7 @@ this.productIdtoFilters=[]
 
 
   updateAllCompleteforGetGroupVolume(StockItemID) {
-    this.productIdtoFilters=[]
+    this.productIdtoFilters = []
     let stockitemOfindex = this.VolumeSttockItemId;
     const index = stockitemOfindex.indexOf(StockItemID);
 
@@ -1658,7 +1658,7 @@ this.productIdtoFilters=[]
       stockitemOfindex.push(StockItemID);
       this.VolumeSttockItemId = stockitemOfindex
     }
-    this.productIdtoFilters=this.VolumeSttockItemId;
+    this.productIdtoFilters = this.VolumeSttockItemId;
     this.addpromotionGeoTable();
 
     console.log('VolumeSttockItemId', this.VolumeSttockItemId)
@@ -1668,7 +1668,7 @@ this.productIdtoFilters=[]
 
 
   updateAllCompleteforGetGroupPrice(StockItemID) {
-    this.productIdtoFilters=[]
+    this.productIdtoFilters = []
 
     let stockitemOfindex = this.priceStockItemId;
     const index = stockitemOfindex.indexOf(StockItemID);
@@ -1681,7 +1681,7 @@ this.productIdtoFilters=[]
       stockitemOfindex.push(StockItemID);
       this.priceStockItemId = stockitemOfindex
     }
-    this.productIdtoFilters=this.priceStockItemId;
+    this.productIdtoFilters = this.priceStockItemId;
     this.addpromotionGeoTable();
     console.log('priceStockItemId', this.priceStockItemId)
   }
@@ -1744,7 +1744,7 @@ this.productIdtoFilters=[]
     let customerId = selectedRows.map(x => x.customerId);
     this.EntityInstanceId = customerId;
     this.selectedDealers = this.EntityInstanceId.map(x => {
-      return {dealerId : x}
+      return { dealerId: x }
     });
     //  const result = selectedRows.map((data : {customerId:any}) =>{
     //   return {custmId: data.customerId}
@@ -1790,7 +1790,7 @@ this.productIdtoFilters=[]
     console.log('addpro', [this.qtyValue, this.moqValue]);
   }
 
-  remarksChange(){
+  remarksChange() {
     console.log(this.Remarks);
   }
 
@@ -1804,19 +1804,23 @@ this.productIdtoFilters=[]
       console.log('added items', this.buyGroupPlus)
       console.log('addgetgroup', this.addgetgroup)
 
-      this.buyGroupPlus.forEach(element => {
+      this.buyGroupPlus.forEach((element,index) => {
+        element.GroupId = (index + 1);
         delete element.productselectedRows;
         delete element.productScselectedRows;
         delete element.pGselectedRows;
         delete element.productSubGselectedRows;
       })
 
-      this.addgetgroup.forEach(element => {
+      this.addgetgroup.forEach((element,index) => {
+        element.GroupId = (index + 1);
         delete element.productselectedRows;
         delete element.productScselectedRows;
         delete element.pGselectedRows;
         delete element.productSubGselectedRows;
       })
+
+
 
 
 
@@ -1836,7 +1840,7 @@ this.productIdtoFilters=[]
 
       }
 
-      
+
       this.promotionTypes.firstPromotion(obj).subscribe((res) => {
         console.log(res.response)
 
@@ -1924,8 +1928,8 @@ this.productIdtoFilters=[]
       // let BuySets=[{
       //   BuyGroups:obj
       // }]
-      
-      
+
+
 
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
@@ -1963,7 +1967,7 @@ this.productIdtoFilters=[]
 
       }
 
-      
+
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
@@ -2001,7 +2005,7 @@ this.productIdtoFilters=[]
 
 
       }
-      
+
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
@@ -2030,11 +2034,11 @@ this.productIdtoFilters=[]
 
     let isDataValid = true;
 
-    if(!this.EntityInstanceId || this.EntityInstanceId.length == 0){
+    if (!this.EntityInstanceId || this.EntityInstanceId.length == 0) {
       isDataValid = false;
     }
 
-    
+
     if (type == 3) {
       this.isPromotionTypeDataValid2 = true;
       this.packingChargeChange();
@@ -2051,7 +2055,7 @@ this.productIdtoFilters=[]
       this.promotionBuyGet2();
     }
 
-    if(type == 2){
+    if (type == 2) {
       this.isMOQValid = true;
       this.promotionABGetChange();
       this.promotionABSetChange();
@@ -2060,7 +2064,7 @@ this.productIdtoFilters=[]
 
 
 
-    if ( !(isDataValid) || !(this.base64textString) || !(this.selectedStartDate) || !(this.selectedEndDate) || !(this.promoName) || !type ||!this.isMOQValid || !this.isPromotionTypeDataValid || !this.isPromotionTypeDataValid2) {
+    if (!(isDataValid) || !(this.base64textString) || !(this.selectedStartDate) || !(this.selectedEndDate) || !(this.promoName) || !type || !this.isMOQValid || !this.isPromotionTypeDataValid || !this.isPromotionTypeDataValid2) {
       alert("Required data is missing");
       return false;
     }
@@ -2080,14 +2084,16 @@ this.productIdtoFilters=[]
       console.log('added items', this.buyGroupPlus)
       console.log('addgetgroup', this.addgetgroup)
 
-      this.buyGroupPlus.forEach(element => {
+      this.buyGroupPlus.forEach((element,index) => {
+        element.GroupId = (index + 1);
         delete element.productselectedRows;
         delete element.productScselectedRows;
         delete element.pGselectedRows;
         delete element.productSubGselectedRows;
       })
 
-      this.addgetgroup.forEach(element => {
+      this.addgetgroup.forEach((element,index) => {
+        element.GroupId = (index + 1);
         delete element.productselectedRows;
         delete element.productScselectedRows;
         delete element.pGselectedRows;
@@ -2109,10 +2115,8 @@ this.productIdtoFilters=[]
         EntityInstanceId: this.EntityInstanceId,
         Status: type,
         Remarks: this.Remarks ?? ''
-
       }
 
-      
       this.promotionTypes.firstPromotion(obj).subscribe((res) => {
         console.log(res.response)
 
@@ -2528,7 +2532,7 @@ this.productIdtoFilters=[]
     //   Geography: this.geographyyId,
     //   Search: this.searchText,
     // }
-    
+
 
     // this.promotionTypes.GetPromotionDealerList(data).subscribe((res) => {
     //   this.rowData5 = res.response;
@@ -2555,7 +2559,7 @@ this.productIdtoFilters=[]
     const data = {
       Geography: this.geographyyId,
       Search: this.searchText,
-      StockItemIds:this.productIdtoFilters,
+      StockItemIds: this.productIdtoFilters,
     }
     this.promotionTypes.GetPromotionDealerList(data).subscribe((res) => {
 
@@ -2634,7 +2638,7 @@ this.productIdtoFilters=[]
     const data = {
       Geography: this.geographyyId,
       Search: this.searchText,
-      StockItemIds:this.productIdtoFilters,
+      StockItemIds: this.productIdtoFilters,
 
     }
     this.addpromotionGeoTable();

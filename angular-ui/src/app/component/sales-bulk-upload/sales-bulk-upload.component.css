@@ -106,7 +106,9 @@ align-items: center;
     left: 47px;
     position: relative;
   }
-  
+  .addUser {
+    margin-bottom: 8px !important;
+  }
   .addUser:before {
     content: "";
     display: block;

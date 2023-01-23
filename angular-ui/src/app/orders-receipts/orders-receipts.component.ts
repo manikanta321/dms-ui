@@ -8,6 +8,7 @@ import { CustomDatePopupComponent } from '../component/orders/custom-date-popup/
 import { ShipOrderBulkDownloadComponent } from '../component/orders/ship-order-bulk-download/ship-order-bulk-download.component';
 import { SalesBulkUploadComponent } from '../component/sales-bulk-upload/sales-bulk-upload.component';
 import { OrdersApisService } from '../services/orders-apis.service';
+import { OtherMasterService } from '../services/other-master.service';
 import { UserService } from '../services/user.service';
 import { OrderReceiptsBulkUploadComponent } from './order-receipts-bulk-upload/order-receipts-bulk-upload.component';
 
@@ -144,6 +145,7 @@ export class OrdersReceiptsComponent implements OnInit {
   }
   constructor(public dialog: MatDialog,
     public orders:OrdersApisService,
+    private otherMasterService:OtherMasterService,
     private user: UserService,
     private fb: FormBuilder) { }
 
@@ -165,6 +167,14 @@ export class OrdersReceiptsComponent implements OnInit {
   }
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     params.api.paginationGoToPage(4);
+    this.otherMasterService.listen().subscribe((m: any) => {
+      console.log("RefreshData",m)
+      setTimeout (() => {
+        this.receiptList();
+     }, 2000);
+     
+
+    })
   }
   onCellValueChanged(event: CellValueChangedEvent) {
     alert(event.value)

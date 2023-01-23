@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 import { SalesServicesService } from 'src/app/services/sales-services.service';
 import * as XLSX from 'xlsx';
 
@@ -36,6 +37,7 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
   duplicate:boolean = false;  
   incorrectData:boolean = false;
   constructor(private salesService:SalesServicesService,
+    private otherMasterService:OtherMasterService,
     private dialogRef: MatDialogRef<OrderReceiptsBulkUploadComponent>,) { }
 
   ngOnInit(): void {
@@ -160,6 +162,7 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
     }
     console.log("Daaataaa",uploadedFile); 
     this.salesService.saveBulkUploadReceipt(uploadedFile).subscribe((res)=>{
+      this.otherMasterService.filter('Register click');
       const uploadedData = res.response;
       console.log("SaveReceipt",uploadedData)
       this.dialogRef.close();

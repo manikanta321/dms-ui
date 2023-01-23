@@ -1728,6 +1728,7 @@ tbody{
  tbody {
   display: block;
   max-height: 227px;
+  overflow-y: scroll;
 
 }
 

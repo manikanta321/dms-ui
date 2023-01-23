@@ -17,6 +17,8 @@
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 15px;
   }
+
+  
   
   .menu-item:hover {
     cursor: pointer;
@@ -51,6 +53,18 @@
     border-top: 5px solid transparent;
     border-left: 10px solid #555;
     border-bottom: 5px solid transparent;
+}
+.menu-container1:after {
+  content: '';
+  position: absolute;
+  /* background: red; */
+  bottom: 5px;
+  width: 10px;
+  height: 10px;
+  right: -10px;
+  border-top: 5px solid transparent;
+  border-left: 10px solid #555;
+  border-bottom: 5px solid transparent;
 }
   img{
     float: right;

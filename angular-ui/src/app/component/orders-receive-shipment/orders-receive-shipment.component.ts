@@ -4,6 +4,7 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dial
 import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridOptions, GridReadyEvent } from 'ag-grid-community';
 import { Subject } from 'rxjs';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
+import { SharedShipmentServicesService } from 'src/app/services/shared-shipment-services.service';
 import { CustomDatePopupComponent } from '../orders/custom-date-popup/custom-date-popup.component';
 
 
@@ -143,6 +144,7 @@ export class OrdersReceiveShipmentComponent implements OnInit {
   userId:any;
   constructor(public dialog: MatDialog,
     public orders: OrdersApisService,
+    public sharedService:SharedShipmentServicesService,
     private dialogRef: MatDialogRef<OrdersReceiveShipmentComponent>,) { }
 
   ngOnInit(): void {
@@ -413,11 +415,13 @@ if(item=='save'){
     console.log(res.response)
     if(res.response.result =='Succesfully Receiveship order added'){
       alert('Succesfully added');
+      this.sharedService.filter('Register click')
+
       this.dialogRef.close();
     
     }
     else{
-    
+      alert(res.response.result)
     }
     })
   console.log('objshipment',obj)
@@ -437,6 +441,8 @@ this.orders.saveReciveShipment(obj).subscribe((res)=>{
   if(res.response.result =='Succesfully Receiveship order added'){
     alert('Succesfully added');
     this.dialogRef.close();
+    this.sharedService.filter('Register click')
+
   
   }
   else{

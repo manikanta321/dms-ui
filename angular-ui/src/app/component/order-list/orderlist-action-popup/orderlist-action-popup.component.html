@@ -1,6 +1,6 @@
 <i class="fa fa-ellipsis-v" #trigger data-action="toggle" style="cursor: pointer;"></i>
 
-<div #content *ngIf="isOpen" class="menu-container" [ngClass]="{'single' : currentActionMenu.length == 1 }">
+<div #content *ngIf="isOpen" class="menu-container" [ngClass]="currentActionMenu.length == 1?'single':'menu-container1'">
 
   <div (click)="orderedit()" class="menu-item tick" *ngIf="currentActionMenu.indexOf('edit_order') !== -1"> Edit <img
       src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>

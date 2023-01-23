@@ -113,7 +113,11 @@ export class OrderlistActionPopupComponent implements OnInit {
     console.log("menu", menu);
     this.currentActionMenu = menu.filter(x => this.showCaseMenuList.indexOf(x) !== -1 || ignoreMenus.indexOf(x) !== -1);
 
-    this.currentActionMenu.push('view');
+    if(this.params?.data?.status){
+      this.currentActionMenu.push('view');
+    }
+
+    
     console.log(this.currentActionMenu.length);
 
     switch (this.currentActionMenu.length) {
@@ -133,6 +137,13 @@ export class OrderlistActionPopupComponent implements OnInit {
       case 1:
         this.offsetValue = [-15, 200];
         break;
+
+        case 0:
+          this.isOpen=false
+          this.offsetValue = [0, 200];
+          break;
+  
+
 
       default:
         this.offsetValue = [-100, 200];

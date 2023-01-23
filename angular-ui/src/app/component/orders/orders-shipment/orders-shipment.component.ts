@@ -13,6 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 import { OrderActionShipmentComponent } from '../order-action-shipment/order-action-shipment.component';
 import { ActivatedRoute } from '@angular/router';
 import { OrderlistActionPopupComponent } from '../../order-list/orderlist-action-popup/orderlist-action-popup.component';
+import { SharedShipmentServicesService } from 'src/app/services/shared-shipment-services.service';
 
 @Component({
   selector: 'app-orders-shipment',
@@ -148,8 +149,12 @@ export class OrdersShipmentComponent implements OnInit {
     public orders:OrdersApisService,
     private user: UserService,
     private route: ActivatedRoute,
-
+    public sharedService:SharedShipmentServicesService,
     private fb: FormBuilder) { 
+      this.sharedService.listen().subscribe((m: any) => {
+        // console.log(m)
+        this.shipmentList ();
+      })
       this.route.data.subscribe(v => {
         this.currentPageName = v['key'];
         let actionColumn = v['orderList'];
@@ -223,7 +228,7 @@ export class OrdersShipmentComponent implements OnInit {
   }
   handleScroll(event) {
     if(this.instancePopup && this.instancePopup.isOpen){
-      this.instancePopup.togglePopup();
+      // this.instancePopup.togglePopup();
       this.instancePopup = null;
     }
     

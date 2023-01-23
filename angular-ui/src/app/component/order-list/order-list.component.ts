@@ -29,6 +29,7 @@ import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { SharedServiceMaterialListService } from 'src/app/services/shared-service-material-list.service';
 import { OrderlistShipPopupComponent } from './orderlist-ship-popup/orderlist-ship-popup.component';
 import { OrdersReceiveShipmentComponent } from '../orders-receive-shipment/orders-receive-shipment.component';
+import moment from 'moment';
 // import { DateRange } from '@uiowa/date-range-picker';
 
 export interface PeriodicElement {
@@ -118,7 +119,11 @@ export class OrderListComponent implements OnInit {
     onCellClicked: (event: CellClickedEvent) => this.dialog.open(OrdersReceiveShipmentComponent, {width:"1587px",height:"1661px"})
   },
 
-    { headerName: "Order Date", field: 'orderDate', },
+    { headerName: "Order Date", field: 'orderDate',       cellRenderer: (data) => {
+
+      return moment(data.orderDate).format('DD-MMM-YY')
+
+  } },
 
     {
       headerName: "Dealer",
@@ -140,8 +145,8 @@ export class OrderListComponent implements OnInit {
         values: ['Closed', 'Approved',],
       },
       cellClass: params => {
-        return params.value == 'Rejected' ? 'myclass1' : params.value == 'Draft' ? 'myclass2' : params.value == 'Confirmed' ? 'myclass3' : params.value == 'Ordered' ? 'myclass4' : params.value == 'Returned' ? 'myclass5'
-          : params.value == 'Cancelled' ? 'myclass6' : params.value == 'Pre-closed' ? 'myclass7' : params.value == 'In-Transit' ? 'myclass8' : params.value == 'Fulfilled' ? 'myclass9' : params.value == 'ToShip' ? 'myclass10' : 'myclass11'
+        return params.value == 'Rejected' ? 'myclass1' : params.value == 'Draft' ? 'myclass2' : params.value == 'Confirmed' ? 'myclass3' : params.value == 'Ordered' ? 'myclassss' : params.value == 'Returned' ? 'myclass5'
+          : params.value == 'Cancelled' ? 'myclass6' : params.value == 'Pre-closed' ? 'myclass7' : params.value == 'In-Transit' ? 'myclass8' : params.value == 'Fulfilled' ? 'Mmyclass' : params.value == 'ToShip' ? 'myclass10' : 'myclass11'
       },
 
       tooltipField: "statusName",
@@ -210,10 +215,14 @@ export class OrderListComponent implements OnInit {
             // In the example application, dates are stored as dd/mm/yyyy
             // We create a Date object for comparison against the filter date
             const dateParts = cellValue.split('/');
-            const day = Number(dateParts[0]);
-            const month = Number(dateParts[1]) - 1;
-            const year = Number(dateParts[2]);
-            const cellDate = new Date(year, month, day);
+             const day = Number(dateParts[0]);
+             const month = Number(dateParts[1]) - 1;
+             const year = Number(dateParts[2]);
+
+           
+             const cellDate = new Date(year, month, day);
+           
+
             // Now that both parameters are Date objects, we can compare
             if (cellDate < filterLocalDateAtMidnight) {
               return -1;
@@ -640,7 +649,7 @@ export class OrderListComponent implements OnInit {
 
 
   addOrderPromotion() {
-    const dialogRef = this.dialog.open(AddorderpromotionsComponent,  {
+    const dialogRef = this.dialog.open(AddorderpromotionsComponent,{width:'100%',  
       panelClass: 'material-add-edit'
     });
     sessionStorage.setItem("Confirm",'')

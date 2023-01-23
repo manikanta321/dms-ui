@@ -40,7 +40,10 @@
           
           </mat-select>
         </mat-form-field> -->
-        <app-customdatepicker [showInputField]="true" label="Order Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
+        
+          
+        
+        <app-customdatepicker class="dateplaceholder" [showInputField]="true" label="Order Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker> 
       </div>
     <div class="col-md-2 col-lg-2 col-sm-2 stts-dropdown" >
         <form [formGroup]="myForm2" class="dropdown-form">

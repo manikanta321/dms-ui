@@ -205,18 +205,18 @@ export class OrderlistActionPopupComponent implements OnInit {
   orderShip() {
     sessionStorage.setItem("viewOrder", "")
 
-    this.dialog.open(OrderlistShipPopupComponent, { width: "1587px", height: "1661px" });
+    this.dialog.open(OrderlistShipPopupComponent, { width: "1900px"});
     this.isOpen = false;
   }
 
   orderReceive() {
-    this.dialog.open(OrdersReceiveShipmentComponent, {width:"1587px",height:"1661px"});
+    this.dialog.open(OrdersReceiveShipmentComponent, {width:"2087px",height:"1661px"});
     this.isOpen = false;
   }
   ReceiveShipment() {
     localStorage.setItem('ViewOrReceive', 'Receive');
     localStorage.setItem('orderOrShipmentOrRecipt','shipment')
-    this.dialog.open(OrdersReceiveShipmentComponent, {width:"1587px",height:"1661px"});
+    this.dialog.open(OrdersReceiveShipmentComponent, {      maxWidth: '95vw'    ,height:"95vh"});
     this.isOpen = false;
   }
   confirmOrder() {

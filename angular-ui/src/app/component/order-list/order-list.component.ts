@@ -30,7 +30,6 @@ import { SharedServiceMaterialListService } from 'src/app/services/shared-servic
 import { OrderlistShipPopupComponent } from './orderlist-ship-popup/orderlist-ship-popup.component';
 import { OrdersReceiveShipmentComponent } from '../orders-receive-shipment/orders-receive-shipment.component';
 import moment from 'moment';
-
 // import { DateRange } from '@uiowa/date-range-picker';
 
 export interface PeriodicElement {
@@ -119,7 +118,7 @@ export class OrderListComponent implements OnInit {
     { headerName: "Order No.", field: 'orderNUmber' ,
     cellStyle: { color: '#017EFA' },
     cellEditorPopup: true,
-    onCellClicked: (event: CellClickedEvent) => this.dialog.open(OrdersReceiveShipmentComponent, {width:"1587px",height:"1661px"})
+    onCellClicked: (event: CellClickedEvent) => this.dialog.open(OrdersReceiveShipmentComponent, {      maxWidth: '95vw'    ,height:"95vh"})
   },
 
     { headerName: "Order Date", field: 'orderDate',       cellRenderer: (data) => {
@@ -138,7 +137,14 @@ export class OrderListComponent implements OnInit {
       field: 'geographyName',
     },
 
-
+    {
+      headerName: "Total Value",
+      field: 'totalValue',
+    },
+    {
+      headerName: "Completed Value",
+      field: 'compleatedValue',
+    },
     {
       headerName: "Status",
       field: 'status',
@@ -369,6 +375,7 @@ export class OrderListComponent implements OnInit {
 
 
   ngOnInit(): void {
+      
     this.loggedUserId = localStorage.getItem('logInId')
     this.uomId = localStorage.getItem('niId');
     // this.roleItems();
@@ -447,9 +454,9 @@ export class OrderListComponent implements OnInit {
     this.uomName = e.data.uoMName;
     let ordernumber = e.data.orderNUmber;
     this.CustomerPoId = e.data.id
-   localStorage.setItem('ViewOrReceive', 'View')
-   localStorage.setItem('customerPOIdForShipment',e.data.id)
-   localStorage.setItem('orderOrShipmentOrRecipt','order')
+    localStorage.setItem('ViewOrReceive', 'View')
+    localStorage.setItem('customerPOIdForShipment',e.data.id)
+    localStorage.setItem('orderOrShipmentOrRecipt','order')
     // this.employeeName=e.data.userName;
     console.log('CustomerPoId', this.CustomerPoId);
     localStorage.setItem('CustomerPoId', this.CustomerPoId)

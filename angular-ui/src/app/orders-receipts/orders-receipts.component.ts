@@ -61,7 +61,7 @@ export class OrdersReceiptsComponent implements OnInit {
        field: 'customerPONumber',      tooltipField:"customerPONumber",
        cellStyle: { color: '#017EFA' },
        cellEditorPopup: true,
-       onCellClicked: (event: CellClickedEvent) => this.dialog.open(OrdersReceiveShipmentComponent, {width:"1587px",height:"1661px"})
+       onCellClicked: (event: CellClickedEvent) => this.dialog.open(OrdersReceiveShipmentComponent,{      maxWidth: '95vw'    ,height:"95vh"})
       },
   
     {   headerName: "Order Date",

@@ -137,7 +137,14 @@ export class OrderListComponent implements OnInit {
       field: 'geographyName',
     },
 
-
+    {
+      headerName: "Total Value",
+      field: 'totalValue',
+    },
+    {
+      headerName: "Completed Value",
+      field: 'compleatedValue',
+    },
     {
       headerName: "Status",
       field: 'status',

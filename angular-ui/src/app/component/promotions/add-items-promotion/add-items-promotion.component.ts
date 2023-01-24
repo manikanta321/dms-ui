@@ -46,13 +46,19 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./add-items-promotion.component.css']
 })
 export class AddItemsPromotionComponent implements OnInit {
+
+  
+
+  
+
+
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
   });
-  isLinear = false;
+   isLinear = false;
   private gridApi!: GridApi;
   gridApi2!: GridApi;
   gridApi3!: GridApi;
@@ -1454,7 +1460,8 @@ export class AddItemsPromotionComponent implements OnInit {
   }
 
   matsteptabClick(tab) {
-
+     
+   
     if (tab.matStepLabel == 'productlb') {
       this.searchfeild = false;
     }

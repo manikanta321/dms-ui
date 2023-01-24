@@ -102,7 +102,8 @@ export class OrderListComponent implements OnInit {
   dropdownSettings2: IDropdownSettings = {};
   public rowData5 = [];
 
-  public rowDatalist = [];
+  public rowDatalist:any = [];
+
 
   public popupParent: HTMLElement = document.body;
   roleArray: any[] = [];
@@ -372,6 +373,7 @@ export class OrderListComponent implements OnInit {
     this.statusItems();
     // this.maxDate.setDate(this.maxDate.getDate() + 20);
     this.orderlistGrid();
+
     this.dealerOrder();
     this.geogrphyOrder();
     this.myForm = this.fb.group({
@@ -717,6 +719,7 @@ export class OrderListComponent implements OnInit {
   }
 
   orderlistGrid() {
+
     const data = {
       // userTypes: this.userTypes,
       // statuss: this.statusTypes,
@@ -725,12 +728,19 @@ export class OrderListComponent implements OnInit {
       "GeographyId": [],
       "DealerId": [],
       "OrderDate": "",
+
       "Search": this.searchText,
       CurrentUserId:this.loggedUserId,
+      
 
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
+      this.rowDatalist.forEach(element=>{
+        element.orderDate=moment(element.orderDate).format('DD-MMM-YY')
+        
+      })
+
     });
   }
   orderUpload() {

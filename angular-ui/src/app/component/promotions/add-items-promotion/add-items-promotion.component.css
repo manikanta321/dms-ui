@@ -3,6 +3,10 @@
   font-family: 'Gilroy';
   background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 }
+.rr
+{
+  margin-top: 25px;
+}
 
 .mat-form-field::placeholder {
   bottom: 2px;
@@ -176,7 +180,7 @@ margin-right: 15px;
   border: 1px solid black;
   border-radius: 10px;
   background: black;
-  margin-left: 15px;
+  margin-left: -2px;
   width: 43px;
   padding: 8px 0px 0px 10px;
   height: 43px;
@@ -491,7 +495,7 @@ margin-bottom: -53px; */
 }
 
 .prod-identifier {
-  margin-top: 28px;
+  margin-top: 25px;
 }
 
 .scrollone {
@@ -507,7 +511,7 @@ margin-bottom: -53px; */
 
 ::ng-deep .cattybubble .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
-  right: -1px !important;
+  right: -29px !important;
   bottom: 0px;
   top: 50px !important;
   width: 42px;
@@ -528,7 +532,7 @@ margin-bottom: -53px; */
 
 ::ng-deep .addsubcat .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
-  right: -1px !important;
+  right: -16px !important;
   bottom: 0px;
   top: 50px !important;
   width: 42px;
@@ -540,16 +544,16 @@ margin-bottom: -53px; */
   height: 20px;
   border-radius: 15px;
   text-align: center;
-  margin-left: 10px;
+  margin-left: -1px;
   margin-right: -1px;
 
-  padding-left: 5px;
-  padding-top: 1px;
+  padding-left: 8px;
+  padding-top: 0px;
 }
 
 ::ng-deep .typecat .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
-  right: -1px !important;
+  right: -33px !important;
   bottom: 0px;
   top: 50px !important;
   width: 42px;
@@ -591,7 +595,7 @@ margin-bottom: -53px; */
 
 ::ng-deep .identifiercat .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
-  right: -1px !important;
+  right: -3px !important;
   bottom: 0px;
   top: 50px !important;
   width: 42px;

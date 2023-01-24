@@ -1,12 +1,85 @@
 
+.input-box::placeholder
+{
+  
+  color: #999;
+
+}
+
+
+.my_Datepicker {
+  border-radius: 2px;
+  font-family: 'Gilroy';
+}
+
+::ng-deep.my_Datepicker .mat-form-field {
+  width: 415px;
+  height: 43px;
+  background: white !important;
+  border-radius: 5px;
+  padding-left: 10px;
+
+}
+::ng-deep.my_Datepicker .mat-icon-button {
+  background: transparent;
+  color: black;
+  position: relative;
+  right: 8px;
+}
+::ng-deep.my_Datepicker .mat-icon-button {
+  background: transparent;
+  color: black;
+  position: relative;
+  right: 8px;
+  /* border: none;
+  width: 0em !important; */
+}
+::ng-deep.promotion-datepicker .mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding: 0.4375em 0;
+  margin-top: -4px !important;
+}
+
+.placeh-align {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+.calendarToggle {
+  position: absolute;
+  bottom: 4px;
+  width: 20px;
+  right: 10px;
+}
+::ng-deep.my_Datepicker .mat-form-field {
+  width: 415px;
+  height: 43px;
+  background: white !important;
+  border-radius: 5px;
+  padding-left: 10px;
+
+}
+::ng-deep.mat-form-field-appearance-legacy .mat-form-field-prefix .mat-icon,
+.mat-form-field-appearance-legacy .mat-form-field-suffix .mat-icon {
+  width: 0em !important;
+  border: none;
+}
+::ng-deep.promotion-datepicker .mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding: 0.4375em 0;
+  margin-top: -4px !important;
+}
+
+ .mat-form-field::placeholder {
+  bottom: 2px;
+
+} 
 
 
 input.mat-input-element {
   
   
-  position: absolute;
   
-  margin-top: -11px;
+  
+  margin-top: -3px;
 }
 #tax_color
 {
@@ -193,9 +266,11 @@ input[type=number] {
 }
 
 .mat-form-field {
-  width: 680px;
+  width: 229px;
+  height: 38px;
+  border-radius: 10px;
   font-family: 'Gilroy';
-  background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+  
 }
 
 .mat-form-field::placeholder {

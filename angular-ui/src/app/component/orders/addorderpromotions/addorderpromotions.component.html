@@ -568,24 +568,32 @@
                         <div class="row">
 
                             <div class="col-lg-4">
-                                <div class="orderDatepicker">
+                               
 
-                                    <label class="boldR">Requirement Date  </label>
-                                     <mat-form-field appearance="fill" class="datepc">
-                                        
-                                        <input matInput [matDatepicker]="picker"  placeholder="Select a date" (dateChange)="dateChange($event)"
-                                            [(ngModel)]="startdate">
-                                        <mat-datepicker-toggle matSuffix [for]="picker"
-                                            class="calicon"></mat-datepicker-toggle>
+                                <div class="my_Datepicker promotion-datepicker">
+                                    <label class="boldR">Requirement Date</label><br>
+                                    <mat-form-field class="placeh-align">
+                                        <mat-label>Select a  date</mat-label>
+                                        <input matInput [matDatepicker]="picker"
+                                            (dateChange)="dateChange($event)" [min]="minDate"  [(ngModel)]="startdate">
+                                        <mat-datepicker-toggle matSuffix [for]="picker">
+                                            <mat-icon matDatepickerToggleIcon>
+                                                <img src="assets/img/calender2.png" class="calendarToggle">
+                                            </mat-icon>
+                                        </mat-datepicker-toggle>
                                         <mat-datepicker #picker></mat-datepicker>
-                                    </mat-form-field>  
-
-                                   
-
-                                    
-
-
+                                    </mat-form-field>
                                 </div>
+
+
+
+
+
+
+
+
+
+
                             </div>
                             <div class="col-md-8">
                                 <div class="promotiont">

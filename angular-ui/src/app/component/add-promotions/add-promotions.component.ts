@@ -384,6 +384,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       let data = localStorage.getItem('promoclickId')
       this.promotionTypes.getPromotionById(data).subscribe((res) => {
         console.log('response EditPromotion', res)
+
         this.promoName = res.response.promotionName;
         this.selectedPromo = res.response.promotionTypesId;
         this.addImgpreview = true;
@@ -410,7 +411,6 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         });
 
         console.log('this.addbuyset', this.addbuyset);
-        this.addpromotionGeoTable();
 
         if (res.response.promotionTypesName == 'Buy (A+B..) get (X+Y..)') {
           this.productPromotionsId = res.response.productPromotionsId
@@ -494,6 +494,33 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             console.log('modifiedmainobj', obj)
 
             this.addgetgroup.push(obj);
+
+console.log('buyGroupPlus',this.buyGroupPlus);
+console.log('addgetgroup',this.addgetgroup);
+
+
+
+            this.buyGroupPlus.forEach(element=>{
+              for(let i = 0; i < element.StockItemId.length ; i++){
+                if(this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1) {
+                  this.productIdtoFilters.push(element.StockItemId[i]);
+                } else {
+                  console.log(`${element.StockItemId[i]} is already pushed into array`);
+                }
+              }
+            })
+            
+            this.addgetgroup.forEach(element=>{
+              for(let i = 0; i < element.StockItemId.length ; i++){
+                if(this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1) {
+                  this.productIdtoFilters.push(element.StockItemId[i]);
+                } else {
+                  console.log(`${element.StockItemId[i]} is already pushed into array`);
+                }
+              }
+            })
+  this.addpromotionGeoTable();
+
             console.log('this.mainobjGetGroups', this.addgetgroup)
           })
         }
@@ -579,7 +606,37 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             apiObj.GetGroups = bugruparray;
             this.addgetset.push(apiObj);
             console.log('addgetset', this.addgetset)
+            this.addbuyset.forEach(element=>{
+              element.BuyGroups.forEach(element1=>{
+                for(let i = 0; i < element1.StockItemId.length ; i++){
+                  if(this.productIdtoFilters.indexOf(element1.StockItemId[i]) === -1) {
+                    this.productIdtoFilters.push(element1.StockItemId[i]);
+                  } else {
+                    console.log(`${element1.StockItemId[i]} is already pushed into array`);
+                  }
+                }
+              })
+            })
+  
+          
+            this.addgetset.forEach(element=>{
+              element.GetGroups.forEach(element1=>{
+                for(let i = 0; i < element1.StockItemId.length ; i++){
+                  if(this.productIdtoFilters.indexOf(element1.StockItemId[i]) === -1) {
+                    this.productIdtoFilters.push(element1.StockItemId[i]);
+                  } else {
+                    console.log(`${element1.StockItemId[i]} is already pushed into array`);
+                  }
+                }
+              })
+            })
+  
+  
+  
+            this.addpromotionGeoTable();
           })
+       
+     
 
         }
         if (res.response.promotionTypesName == 'Volume Discount') {
@@ -633,6 +690,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           extractstockItemId.forEach((element) => {
             this.VolumeSttockItemId.push(element.stockItemId)
           })
+          this.productIdtoFilters=[];
+          this.productIdtoFilters=this.VolumeSttockItemId;
+        this.addpromotionGeoTable();
           console.log('VolumeSttockItemId', this.VolumeSttockItemId)
         }
         if (res.response.promotionTypesName == 'Price Discount') {
@@ -681,7 +741,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           extractstockItemId.forEach((element) => {
             this.priceStockItemId.push(element.stockItemId)
           })
-
+          this.productIdtoFilters=[];
+          this.productIdtoFilters=this.priceStockItemId;
+        this.addpromotionGeoTable();
 
         }
 

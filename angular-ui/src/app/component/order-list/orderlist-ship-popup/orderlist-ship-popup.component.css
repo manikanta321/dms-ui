@@ -931,12 +931,12 @@ height: 5px;
 
 .main {
   overflow-x: hidden !important;
-
-
 }
 
 .promotionpopup-scroll {
-  height: 711px !important;
+  height: 659px !important;
+  /* width: 3000px !important; */
+  /* max-width: 97vw !important; */
 }
 
 

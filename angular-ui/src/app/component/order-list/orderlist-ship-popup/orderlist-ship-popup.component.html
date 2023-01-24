@@ -1,7 +1,7 @@
 <!-- <p>orderlist-ship-popup works!</p> -->
 <div *ngIf="!viewList" class="font">
     <div class="main">
-        <div class="container promotionpopup-scroll" style="max-width: 1346px;">
+        <div class="container promotionpopup-scroll">
             <div class="addUser">
                 <img class="print-img" src="../../../assets/material/print-img.svg" alt="">
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
@@ -282,7 +282,10 @@
                             <div class="col-lg-3">
                                 <label>Invoice No.<span class="astr">*</span></label>
                                 <div class="input-datepicker mr-3">
-                                    <input type="text" [(ngModel)]="invoice" class="invoice" />
+                                    <input id="invoiceNo" name="invoiceNo" type="text" [(ngModel)]="invoice" #invoiceNo="ngModel" class="invoice" />
+                                    <span style="color:red;position: relative; top: 12px;"*ngIf="invoiceNo.invalid && (invoiceNo.dirty || invoiceNo.touched)">
+                                        *Invoice No. is required 
+                                     </span>
                                 </div>
                                 <!-- <app-customdatepicker [showInputField]="true" class="input-datepicker" label="Enter" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"><span class="astr">*</span></app-customdatepicker> -->
                                 <!-- <input matInput placeholder="Enter" #input class="form-control container input-box" > -->
@@ -292,8 +295,13 @@
                                     <label>Invoice Date <span class="astr">*</span></label><br>
                                     <mat-form-field class="placeh-align">
                                         <mat-label> Invoice date</mat-label>
-                                        <input matInput [matDatepicker]="picker1" [min]="minDate" [max]="maxDate"  [formControl]="startDate"
+                                        <input matInput id="invoiceDate" name="invoiceDate" required [matDatepicker]="picker1" [max]="maxDate"  [(ngModel)]="invoicedateChange1" #invoiceDate="ngModel"
                                             (dateChange)="invoicedateChange($event)">
+                                            <!-- <p  style="margin-bottom:-22px;padding: 0px;" *ngIf="invoiceDate.invalid && (invoiceDate.dirty || invoiceDate.touched)"
+                                            class="alert"> -->
+                                            <span style="color:red;position: relative; top: 12px;" *ngIf="invoiceDate.invalid && (invoiceDate.dirty || invoiceDate.touched)">
+                                                *Invoice date is required 
+                                             </span>
                                         <mat-datepicker-toggle matSuffix [for]="picker1">
                                             <mat-icon matDatepickerToggleIcon style="margin-left: 0px;">
                                                 <img src="assets/img/calender2.png" class="calendarToggle">
@@ -308,8 +316,11 @@
                                     <label>Shipping Date<span class="astr">*</span></label><br>
                                     <mat-form-field class="placeh-align">
                                         <mat-label> Shipping date</mat-label>
-                                        <input matInput [matDatepicker]="picker2" [min]="minDate" [max]="maxDate"  [formControl]="shippingDate"
-                                            (dateChange)="shippingDatechange($event)">
+                                        <input id="shippingDate" name="shippingDate" required matInput [matDatepicker]="picker2" [max]="maxDate"
+                                            (dateChange)="shippingDatechange($event)"[(ngModel)]="shippingDateChange" #shippingDate="ngModel">
+                                            <span style="color:red;position: relative; top: 12px;"*ngIf="shippingDate.invalid && (shippingDate.dirty || shippingDate.touched)">
+                                                *Shipping date is required 
+                                             </span>
                                         <mat-datepicker-toggle matSuffix [for]="picker2">
                                             <mat-icon matDatepickerToggleIcon style="margin-left: 0px;">
                                                 <img src="assets/img/calender2.png" class="calendarToggle">
@@ -441,12 +452,12 @@
                         </div>
                         <div class="row ship end">
                             <div class="col-md-4">
-                                
+                                 
                              <!-- <button type="button" class="saveas-draft" (click)="saveShipment('draft')">Save as
                                     draft</button> -->
                             </div> 
                             <div class="col-md-2">
-                                <button type="button" class="save-submit" (click)="saveShipment('save')">Save &
+                                <button type="button"[disabled]="!invoice || !invoicedateChange1 || !shippingDateChange" class="save-submit" (click)="saveShipment('save')">Save &
                                     submit</button>
                             </div>
                                 <div class="col-md-2">

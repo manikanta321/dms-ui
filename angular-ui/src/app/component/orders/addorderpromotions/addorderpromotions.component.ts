@@ -109,6 +109,7 @@ export class AddorderpromotionsComponent implements OnInit {
   finalValue: any;
   taxes: any;
   amount: any;
+  userType:any
   CompanyReferenceNo: any;
   DealerReferenceNo: any;
   DeliveryInstructions: any;
@@ -122,6 +123,7 @@ export class AddorderpromotionsComponent implements OnInit {
   copyEditOrderById: any;
   shippingPackingchargeDetails: any = {};
   confirmOrder:any;
+  dealerDisabled:boolean=false
   dateChange(e) {
 
     this.selectedStartDate = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
@@ -179,6 +181,21 @@ export class AddorderpromotionsComponent implements OnInit {
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
 
   ngOnInit(): void {
+    this.userType=localStorage.getItem("userType");
+    let loginid=localStorage.getItem("logInId");
+    if(this.userType=='Dealer Admin'){
+      this.orders.dealersDetails(loginid).subscribe((res)=>{
+        console.log(res.response)
+        this.customerId=res.response.dealerId;
+      let obj:any={
+        customerId: this.customerId
+
+      }
+        this.onItemSelectdealers(obj)
+        this.dealerDisabled=true
+
+      })
+    }
     this.ordersDealers();
 
     this.taxdropdown();

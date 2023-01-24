@@ -329,7 +329,7 @@
                             <div class="dealerr">
                                 <label class="DealerInfo-label">Dealer <span class="astr">*</span></label>
                                 <ng-select [items]="dealerListArray" id="dealerAllArray" name="dealerAllArray" required
-                                    [virtualScroll]="true" bindLabel="customerName" bindValue="customerId"
+                                  [disabled]="dealerDisabled"  [virtualScroll]="true" bindLabel="customerName" bindValue="customerId"
                                     [searchable]="true" [clearable]="false" placeholder=" Search & select dealer"
                                     [(ngModel)]="customerId" (change)="onItemSelectdealers($event)">
                                 </ng-select>

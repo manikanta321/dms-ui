@@ -196,7 +196,7 @@
                                 <tr [(ngModel)]="itemremoved" *ngFor="let data1 of data?.promodetails[0].itemDetailsship;let j =index">
                                     <td>
                                         <p class="itemLeft"><span
-                                                class="promoItem">{{data?.promodetails[0]?.promocode}}</span>{{data1?.itemDetailsship[0].stockitemname}}
+                                                class="promoItem">{{data?.promodetails[0]?.promocode}}</span>{{data1.stockitemname}}
                                         </p>
                                     </td><td><label
                                             class="IteminputBoxes">{{data1?.uomname}}</label>
@@ -292,7 +292,7 @@
                                     <label>Invoice Date <span class="astr">*</span></label><br>
                                     <mat-form-field class="placeh-align">
                                         <mat-label> Invoice date</mat-label>
-                                        <input matInput [matDatepicker]="picker1"   [min]="minDate" [max]="maxDate" [formControl]="startDate"
+                                        <input matInput [matDatepicker]="picker1" [min]="minDate" [max]="maxDate"  [formControl]="startDate"
                                             (dateChange)="invoicedateChange($event)">
                                         <mat-datepicker-toggle matSuffix [for]="picker1">
                                             <mat-icon matDatepickerToggleIcon style="margin-left: 0px;">
@@ -308,7 +308,7 @@
                                     <label>Shipping Date<span class="astr">*</span></label><br>
                                     <mat-form-field class="placeh-align">
                                         <mat-label> Shipping date</mat-label>
-                                        <input matInput [matDatepicker]="picker2" [min]="minDate" [max]="maxDate" [formControl]="shippingDate"
+                                        <input matInput [matDatepicker]="picker2" [min]="minDate" [max]="maxDate"  [formControl]="shippingDate"
                                             (dateChange)="shippingDatechange($event)">
                                         <mat-datepicker-toggle matSuffix [for]="picker2">
                                             <mat-icon matDatepickerToggleIcon style="margin-left: 0px;">
@@ -451,7 +451,7 @@
                             </div>
                                 <div class="col-md-2">
                                     <button type="button" [mat-dialog-close]="true" class="cancelButton">Cancel</button>
-                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -490,6 +490,13 @@
         </div>
 
     </div>
+    <!-- <div class="row">
+        <div class="col-lg-5"></div>
+        <div class="col-lg-4">
+            <button type="button" class="cancelButton">Cancel</button>
+        </div>
+        <div class="col-lg-3"></div>
+    </div> -->
 </div>
 <div *ngIf="viewList" class="font">
     <div class="main">

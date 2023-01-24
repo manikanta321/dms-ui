@@ -198,6 +198,7 @@ import { ViewPromotionPopupComponent } from './component/pramotion-action/view-p
 import { OrderReceiptsBulkUploadComponent } from './orders-receipts/order-receipts-bulk-upload/order-receipts-bulk-upload.component';
 import { OrdersReceiveShipmentComponent } from './component/orders-receive-shipment/orders-receive-shipment.component';
 import { AddorderproSuccessPopupComponent } from './component/orders/addorderpromotions/addorderpro-success-popup/addorderpro-success-popup.component';
+import { IconHoverComponent } from './component/icon-hover/icon-hover.component';
 
 @NgModule({
   declarations: [
@@ -489,6 +490,7 @@ import { AddorderproSuccessPopupComponent } from './component/orders/addorderpro
           OrderReceiptsBulkUploadComponent,
           OrdersReceiveShipmentComponent,
           AddorderproSuccessPopupComponent,
+          IconHoverComponent,
           
   ],
   imports: [

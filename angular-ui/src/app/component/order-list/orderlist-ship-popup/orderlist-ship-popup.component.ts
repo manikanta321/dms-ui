@@ -45,6 +45,8 @@ export class OrderlistShipPopupComponent implements OnInit {
   viewList:boolean=false;
   itemsArray:any=[]
   currentShipment: any = [];
+  minDate = new Date();
+  maxDate = new Date();
   public popupParent: HTMLElement = document.body;
   public rowData5: any = [{ date: "14-Oct-22", createdBy: "Bruce Wayne", action: "Creation", subAction: "Save Draft", invoiceNo: "23AB67", comments: "Lorem ipsum dsjh sdhsujdi " }]
   public itemremoved: any[] = [{
@@ -224,7 +226,7 @@ let mainArray:any=[];
 
     })
     console.log('currentShipment', this.currentShipment)
-    debugger
+    // debugger
 
   }
   viewOrderData() {
@@ -396,7 +398,7 @@ if(item=='save'){
       
       }
       else{
-      
+      alert(res.response.result)
       }
       })
       

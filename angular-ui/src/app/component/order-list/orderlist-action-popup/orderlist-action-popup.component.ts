@@ -214,6 +214,8 @@ export class OrderlistActionPopupComponent implements OnInit {
     this.isOpen = false;
   }
   ReceiveShipment() {
+    localStorage.setItem('ViewOrReceive', 'Receive');
+    localStorage.setItem('orderOrShipmentOrRecipt','shipment')
     this.dialog.open(OrdersReceiveShipmentComponent, {width:"1587px",height:"1661px"});
     this.isOpen = false;
   }

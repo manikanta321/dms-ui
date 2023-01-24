@@ -13,6 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 import { OrderActionShipmentComponent } from '../order-action-shipment/order-action-shipment.component';
 import { ActivatedRoute } from '@angular/router';
 import { OrderlistActionPopupComponent } from '../../order-list/orderlist-action-popup/orderlist-action-popup.component';
+import { OrdersReceiveShipmentComponent } from '../../orders-receive-shipment/orders-receive-shipment.component';
 
 @Component({
   selector: 'app-orders-shipment',
@@ -61,6 +62,9 @@ export class OrdersShipmentComponent implements OnInit {
   },
     {  headerName: "Order No.",
        field: 'orderNUmber',      tooltipField:"orderNUmber",
+       cellStyle: { color: '#017EFA' },
+       cellEditorPopup: true,
+       onCellClicked: (event: CellClickedEvent) => this.dialog.open(OrdersReceiveShipmentComponent, {width:"1587px",height:"1661px"})
       },
   
     {   headerName: "Order Date",
@@ -205,8 +209,10 @@ export class OrdersShipmentComponent implements OnInit {
 
   }
   onCellClicked( e): void {
+    localStorage.setItem('ViewOrReceive', 'View')
     console.log(e)
     localStorage.setItem('customerPOIdForShipment',e.data.invoiceId)
+    localStorage.setItem('orderOrShipmentOrRecipt','shipment')
     let cellCLickedpromotion = '1'
     localStorage.setItem('cellCLickedpromotion', cellCLickedpromotion)
     if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {

@@ -30,6 +30,7 @@ import { SharedServiceMaterialListService } from 'src/app/services/shared-servic
 import { OrderlistShipPopupComponent } from './orderlist-ship-popup/orderlist-ship-popup.component';
 import { OrdersReceiveShipmentComponent } from '../orders-receive-shipment/orders-receive-shipment.component';
 import moment from 'moment';
+
 // import { DateRange } from '@uiowa/date-range-picker';
 
 export interface PeriodicElement {
@@ -116,6 +117,7 @@ export class OrderListComponent implements OnInit {
     //   field: 'employeeCode' , sort: 'desc'},
 
     { headerName: "Order No.", field: 'orderNUmber' ,
+    cellStyle: { color: '#017EFA' },
     cellEditorPopup: true,
     onCellClicked: (event: CellClickedEvent) => this.dialog.open(OrdersReceiveShipmentComponent, {width:"1587px",height:"1661px"})
   },
@@ -445,7 +447,9 @@ export class OrderListComponent implements OnInit {
     this.uomName = e.data.uoMName;
     let ordernumber = e.data.orderNUmber;
     this.CustomerPoId = e.data.id
-
+   localStorage.setItem('ViewOrReceive', 'View')
+   localStorage.setItem('customerPOIdForShipment',e.data.id)
+   localStorage.setItem('orderOrShipmentOrRecipt','order')
     // this.employeeName=e.data.userName;
     console.log('CustomerPoId', this.CustomerPoId);
     localStorage.setItem('CustomerPoId', this.CustomerPoId)

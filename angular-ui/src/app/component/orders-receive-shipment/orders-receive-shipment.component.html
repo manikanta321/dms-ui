@@ -287,7 +287,7 @@
                         <div class="col-lg-3">
                             <label>Invoice No.<span class="astr">*</span></label>
                             <div class="input-datepicker mr-3">
-                                <input type="text"  [(ngModel)]="data.invoiceno" class="invoice" />
+                                <input type="text"  [(ngModel)]="data.invoiceno" class="invoice" disabled/>
                             </div>
                             <!-- <app-customdatepicker [showInputField]="true" class="input-datepicker" label="Enter" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"><span class="astr">*</span></app-customdatepicker> -->
                             <!-- <input matInput placeholder="Enter" #input class="form-control container input-box" > -->
@@ -308,19 +308,19 @@
                             </div> -->
                             <label>Invoice Date <span class="astr">*</span></label><br>
                             <div class="input-datepicker mr-3">
-                                <input type="text"  [(ngModel)]="data.invoiceDate" class="invoice" />
+                                <input type="text"  [(ngModel)]="data.invoiceDate" class="invoice" disabled/>
                             </div>
                         </div>
                         <div class="col-lg-3">
                          
                             <label>Shipping Date<span class="astr">*</span></label><br>
                             <div class="input-datepicker mr-3">
-                                <input type="text"  [(ngModel)]="data.invoiceDate" class="invoice" />
+                                <input type="text"  [(ngModel)]="data.invoiceDate" class="invoice" disabled />
                             </div>
                             <!-- <input matInput placeholder="Select" #input class="form-control container input-box" > -->
                         </div>
                         <div class="col-lg-3">
-                            <div class="myDatepicker promotion-datepicker" *ngIf="data.currentReceiveshipment">
+                            <div class="myDatepicker promotion-datepicker" *ngIf="data.currentReceiveshipment && ViewOrReceive">
                                 <label>Receive Date<span class="astr">*</span></label><br>
                                 <mat-form-field class="placeh-align">
                                     <mat-label> Receive date</mat-label>
@@ -335,9 +335,9 @@
                                 </mat-form-field>
                             </div>
 
-                            <label *ngIf="data.currentReceiveshipment==false">Receive date<span class="astr">*</span></label><br>
-                            <div class="input-datepicker mr-3" *ngIf="data.currentReceiveshipment==false">
-                                <input type="text"  [(ngModel)]="data.shipmentDate" class="invoice" />
+                            <label *ngIf="data.currentReceiveshipment==false || ViewOrReceive==false">Receive date<span class="astr">*</span></label><br>
+                            <div class="input-datepicker mr-3" *ngIf="data.currentReceiveshipment==false || ViewOrReceive==false">
+                                <input type="text"  [(ngModel)]="data.shipmentDate" class="invoice" disabled />
                             </div>
 
                         </div>
@@ -355,7 +355,7 @@
                                 <th>Tax</th>
                                 <th>Amount</th>
                                 <th>Shipped Qty</th>
-                                <th>Received Qty</th>
+                                <th >Received Qty</th>
                                 <th>Lost/ Damaged</th>
                             </tr>
                             <tr [(ngModel)]="itemremoved" *ngFor="let items of data.arrayIside;let j=index">
@@ -394,11 +394,11 @@
                                 <td>
                                     <input type="number" [(ngModel)]="currentShipArray[i].arrayIside[j].ReceivedQty"
                                         placeholder="Enter Quantity" 
-                                    [disabled]="data.currentReceiveshipment==false"  [ngClass]="data.currentReceiveshipment==false?'ShipmentinputBoxes':'ShipmentinputBoxes1'"  (keyup)="shipingNow()">
+                                    [disabled]="data.currentReceiveshipment==false  ||  ViewOrReceive==false"  [ngClass]="data.currentReceiveshipment==false?'ShipmentinputBoxes':'ShipmentinputBoxes1' "  (keyup)="shipingNow()">
                                 </td>
                                 <td>
-                                    <input type="number" [(ngModel)]="currentShipArray[i].arrayIside[j].LostDamaged"
-                                    [ngClass]="data.currentReceiveshipment==false?'ShipmentinputBoxes':'ShipmentinputBoxes1'" [disabled]="data.currentReceiveshipment==false">
+                                    <input type="number" [(ngModel)]="currentShipArray[i].arrayIside[j].LostDamaged" 
+                                    [ngClass]="data.currentReceiveshipment==false?'ShipmentinputBoxes':'ShipmentinputBoxes1' " [disabled]="data.currentReceiveshipment==false  ||  ViewOrReceive==false ">
                                 </td>
                                 <!-- <mat-icon class="removeCircle" (click)=removeItem()>
                             remove_circle</mat-icon> -->
@@ -456,12 +456,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row ship end" *ngIf="data.currentReceiveshipment">
+                    <div class="row ship end" *ngIf="data.currentReceiveshipment &&  ViewOrReceive">
                         <div class="col-md-5">
                             <button type="button" class="saveas-draft" (click)="saveShipment('save')">Save</button>
                         </div>
 
-                        <div class="col-md-5">
+                        <div class="col-md-5" >
                             <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
                         </div>
                     </div>

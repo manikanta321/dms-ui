@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridReadyEvent , ColGroupDef} from 'ag-grid-community';
+import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridReadyEvent , ColGroupDef, CellClickedEvent} from 'ag-grid-community';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Subject } from 'rxjs';
+import { OrdersReceiveShipmentComponent } from '../component/orders-receive-shipment/orders-receive-shipment.component';
 import { CustomDatePopupComponent } from '../component/orders/custom-date-popup/custom-date-popup.component';
 import { ShipOrderBulkDownloadComponent } from '../component/orders/ship-order-bulk-download/ship-order-bulk-download.component';
 import { SalesBulkUploadComponent } from '../component/sales-bulk-upload/sales-bulk-upload.component';
@@ -58,6 +59,9 @@ export class OrdersReceiptsComponent implements OnInit {
   },
     {  headerName: "Order No.",
        field: 'customerPONumber',      tooltipField:"customerPONumber",
+       cellStyle: { color: '#017EFA' },
+       cellEditorPopup: true,
+       onCellClicked: (event: CellClickedEvent) => this.dialog.open(OrdersReceiveShipmentComponent, {width:"1587px",height:"1661px"})
       },
   
     {   headerName: "Order Date",
@@ -185,7 +189,13 @@ export class OrdersReceiptsComponent implements OnInit {
   openDialog(){
 
   }
-  onCellClicked( e): void {
+  onCellClicked( e) {
+    console.log(e)
+    // alert(e.data.customerPOId)
+    localStorage.setItem('customerPOIdForShipment',e.data.customerPOId)
+    localStorage.setItem('ViewOrReceive', 'View')
+    localStorage.setItem('orderOrShipmentOrRecipt','receipts')
+   
     let cellCLickedpromotion = '1'
     localStorage.setItem('cellCLickedpromotion', cellCLickedpromotion)
     if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {

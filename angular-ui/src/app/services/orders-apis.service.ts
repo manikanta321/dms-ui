@@ -117,6 +117,11 @@ export class OrdersApisService {
     return this.http.post<any>(this.userurl + 'OrdersApi/GetOrderByshipReceive', data);
   }  
 
+  
+  public reciveshipmentfororder(data) {
+    return this.http.post<any>(this.userurl + 'OrdersApi/GetOrderToView', data);
+  }  
+
   public saveShipOrder(data) {
     return this.http.post<any>(this.userurl + 'OrdersApi/AddShipOrder', data);
   }

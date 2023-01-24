@@ -62,17 +62,19 @@ form[name="myBasicInfo"] {
 
 .description {
   font-family: 'Gilroy';
+  margin-top: 7px;
   /* margin-top: 21px; */
 }
 
 .materialci {
   font-family: 'Gilroy';
-
+  margin-top: 7px;
 }
 
 .imageofm {
   font-family: 'Gilroy';
   position: relative;
+  margin-top: 7px;
   /* left: 44%; */
 }
 

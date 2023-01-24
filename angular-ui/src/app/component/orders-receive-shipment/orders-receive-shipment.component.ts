@@ -49,6 +49,8 @@ export class OrdersReceiveShipmentComponent implements OnInit {
   itemsArray:any=[];
   currentShipArray:any=[]
   currentShipment: any = [];
+  ViewOrReceive:boolean=false;
+  LostOrDamage:boolean=false;
   public popupParent: HTMLElement = document.body;
   public rowData5: any = [{ date: "14-Oct-22", createdBy: "Bruce Wayne", action: "Creation", subAction: "Save Draft", invoiceNo: "23AB67", comments: "Lorem ipsum dsjh sdhsujdi " }]
   public itemremoved: any[] = [{
@@ -146,9 +148,134 @@ export class OrdersReceiveShipmentComponent implements OnInit {
     private dialogRef: MatDialogRef<OrdersReceiveShipmentComponent>,) { }
 
   ngOnInit(): void {
-    this.viewOrderData();
     this.userId = localStorage.getItem("logInId");
+    let item=localStorage.getItem("ViewOrReceive");
+    if(item=='Receive'){
+      this.ViewOrReceive=true;
+    }else{
+      this.ViewOrReceive=false;
+    }
 
+   let identifier=localStorage.getItem("orderOrShipmentOrRecipt");
+   if(identifier=='order'){
+    // alert('order');
+    
+    let data = localStorage.getItem('customerPOIdForShipment');
+    this.InvoiceId=data;
+    let obj={
+      orderId:Number(data),
+      CurrentUserId: this.userId 
+    }
+    this.orders.reciveshipmentfororder(obj).subscribe((res) => {
+      console.log(res)
+      this.shipmentArray = res.response;
+
+      this.shipmentArray.itemcount.forEach(element=>{
+        element.itemDetails.forEach(element1=>{
+  let arraybj:any=[]
+  arraybj.push(element1)
+  let obj:any={
+    promo:element.promocode,
+      "customerPOProductId": element1.customerPOProductId,
+      "stockitemid":  element1.customerPOProductId,
+      "stockitemname": element1.stockitemname,
+      "productSKUName": element1.productSKUName,
+      "uomid": element1.uomid,
+      "uomname": element1.uomname,
+      "quantity": element1.quantity,
+      "stock": element1.stock,
+      "price": element1.price,
+      "discount": element1.discount,
+      "finalPrice": element1.finalPrice,
+      "finalValue": element1.finalValue,
+      "taxvalue": element1.taxvalue,
+      "amount": element1.amount,
+      "taxid": element1.taxid
+  }
+          this.itemsArray.push(obj);
+        
+        })
+        console.log('element1',this.itemsArray)
+        
+            })
+      console.log('shipmentArray', this.shipmentArray);
+    
+// this.subtotal=Number(this.shipmentArray.currentshipDetails.subTotal);
+// this.taxElement=Number(this.shipmentArray.currentshipDetails.taxElement);
+// this.PackingCharge=Number(this.shipmentArray.currentshipDetails.pakingCharge);
+// this.ShippingCharge=Number(this.shipmentArray.currentshipDetails.shipingcharge);
+// this.Total=Number(this.shipmentArray.currentshipDetails.total);
+
+
+
+
+
+      this.shipmentArray.previousshipRecieveDetails.forEach(element => {
+        
+        let internalArray:any=[]
+
+        element.promodetails[0].itemDetailsshipReceive.forEach(element1=>{
+          debugger
+let obj={
+                           'promocode':element.promodetails[0].promocode,
+                           "InvoiceCPOProductId":element1.invoiceCPOProductId,
+                           "ReceivedQty":element1.receivedQty,
+                           "LostDamaged":element1.lostDamaged,
+                            "stockitemid": element1.stockitemid,
+                            "stockitemname": element1.stockitemname,
+                            "promotioncode": element1.promotioncode,
+                            "productSKUName": element.productSKUName,
+                            "uomid": element1.uomid,
+                            "uomname":element1.uomname,
+                            "quantity": element1.quantity,
+                            "stock": element1.stock,
+                            "price": element1.price,
+                            "discount": element1.discount,
+                            "finalValue": element1.finalValue,
+                            "taxvalue": element1.taxvalue,
+                            "amount": element1.amount,
+                            "taxid": element1.taxid,
+                            "shipedTill": element1.shipedTill,
+                            "shipedQty": element1.shipedQty,
+}
+
+
+       internalArray.push(obj);
+
+        })
+        let obj2:any={
+          "shipName": element.shipName,
+          "id": element.id,
+          "invoiceno": element.invoiceno,
+          "invoiceDate":new Date(element.invoiceDate).getFullYear() + '/' + (new Date(element.invoiceDate).getMonth() + 1) + '/' + new Date(element.invoiceDate).getDate(),
+          "invoiceReceivedDate":new Date(element.invoiceReceivedDate).getFullYear() + '/' + (new Date(element.invoiceReceivedDate).getMonth() + 1) + '/' + new Date(element.invoiceReceivedDate).getDate(),
+          "shipmentDate": new Date(element.shipmentDate).getFullYear() + '/' + (new Date(element.shipmentDate).getMonth() + 1) + '/' + new Date(element.shipmentDate).getDate(),
+          "shipmentNumber": element.shipmentNumber,
+          "subTotal": element.subTotal,
+          "taxElement": element.taxElement,
+          "pakingCharge": element.pakingCharge,
+          "shipingcharge": element.shipingcharge,
+          "total": element.total,
+          "invoiceComments": element.invoiceComments,
+          "currentReceiveshipment": element.currentReceiveshipment,
+          "arrayIside":internalArray,
+          
+        }
+        // obj2.invoiceDate.setValue(obj2.invoiceDate);
+        // obj2.invoiceReceivedDate.setValue(obj2.invoiceReceivedDate);
+        // obj2.shipmentDate.setValue(obj2.shipmentDate);
+
+
+        this.currentShipArray.push(obj2)
+      })
+
+
+      console.log('currentShipArray', this.currentShipArray)
+
+    })
+   }else if(identifier=='shipment'){
+    // alert('shipment');
+    
     let data = localStorage.getItem('customerPOIdForShipment');
     this.InvoiceId=data;
     let obj={
@@ -262,6 +389,127 @@ let obj={
       console.log('currentShipArray', this.currentShipArray)
 
     })
+   }else if(identifier=='receipts'){
+    // alert('receipts');
+    
+    let data = localStorage.getItem('customerPOIdForShipment');
+    this.InvoiceId=data;
+    let obj={
+      orderId:Number(data),
+      CurrentUserId: this.userId 
+    }
+    this.orders.reciveshipmentfororder(obj).subscribe((res) => {
+      console.log(res)
+      this.shipmentArray = res.response;
+
+      this.shipmentArray.itemcount.forEach(element=>{
+        element.itemDetails.forEach(element1=>{
+  let arraybj:any=[]
+  arraybj.push(element1)
+  let obj:any={
+    promo:element.promocode,
+      "customerPOProductId": element1.customerPOProductId,
+      "stockitemid":  element1.customerPOProductId,
+      "stockitemname": element1.stockitemname,
+      "productSKUName": element1.productSKUName,
+      "uomid": element1.uomid,
+      "uomname": element1.uomname,
+      "quantity": element1.quantity,
+      "stock": element1.stock,
+      "price": element1.price,
+      "discount": element1.discount,
+      "finalPrice": element1.finalPrice,
+      "finalValue": element1.finalValue,
+      "taxvalue": element1.taxvalue,
+      "amount": element1.amount,
+      "taxid": element1.taxid
+  }
+          this.itemsArray.push(obj);
+        
+        })
+        console.log('element1',this.itemsArray)
+        
+            })
+      console.log('shipmentArray', this.shipmentArray);
+    
+// this.subtotal=Number(this.shipmentArray.currentshipDetails.subTotal);
+// this.taxElement=Number(this.shipmentArray.currentshipDetails.taxElement);
+// this.PackingCharge=Number(this.shipmentArray.currentshipDetails.pakingCharge);
+// this.ShippingCharge=Number(this.shipmentArray.currentshipDetails.shipingcharge);
+// this.Total=Number(this.shipmentArray.currentshipDetails.total);
+
+
+
+
+
+      this.shipmentArray.previousshipRecieveDetails.forEach(element => {
+        
+        let internalArray:any=[]
+
+        element.promodetails[0].itemDetailsshipReceive.forEach(element1=>{
+          debugger
+let obj={
+                           'promocode':element.promodetails[0].promocode,
+                           "InvoiceCPOProductId":element1.invoiceCPOProductId,
+                           "ReceivedQty":element1.receivedQty,
+                           "LostDamaged":element1.lostDamaged,
+                            "stockitemid": element1.stockitemid,
+                            "stockitemname": element1.stockitemname,
+                            "promotioncode": element1.promotioncode,
+                            "productSKUName": element.productSKUName,
+                            "uomid": element1.uomid,
+                            "uomname":element1.uomname,
+                            "quantity": element1.quantity,
+                            "stock": element1.stock,
+                            "price": element1.price,
+                            "discount": element1.discount,
+                            "finalValue": element1.finalValue,
+                            "taxvalue": element1.taxvalue,
+                            "amount": element1.amount,
+                            "taxid": element1.taxid,
+                            "shipedTill": element1.shipedTill,
+                            "shipedQty": element1.shipedQty,
+}
+
+
+       internalArray.push(obj);
+
+        })
+        let obj2:any={
+          "shipName": element.shipName,
+          "id": element.id,
+          "invoiceno": element.invoiceno,
+          "invoiceDate":new Date(element.invoiceDate).getFullYear() + '/' + (new Date(element.invoiceDate).getMonth() + 1) + '/' + new Date(element.invoiceDate).getDate(),
+          "invoiceReceivedDate":new Date(element.invoiceReceivedDate).getFullYear() + '/' + (new Date(element.invoiceReceivedDate).getMonth() + 1) + '/' + new Date(element.invoiceReceivedDate).getDate(),
+          "shipmentDate": new Date(element.shipmentDate).getFullYear() + '/' + (new Date(element.shipmentDate).getMonth() + 1) + '/' + new Date(element.shipmentDate).getDate(),
+          "shipmentNumber": element.shipmentNumber,
+          "subTotal": element.subTotal,
+          "taxElement": element.taxElement,
+          "pakingCharge": element.pakingCharge,
+          "shipingcharge": element.shipingcharge,
+          "total": element.total,
+          "invoiceComments": element.invoiceComments,
+          "currentReceiveshipment": element.currentReceiveshipment,
+          "arrayIside":internalArray,
+          
+        }
+        // obj2.invoiceDate.setValue(obj2.invoiceDate);
+        // obj2.invoiceReceivedDate.setValue(obj2.invoiceReceivedDate);
+        // obj2.shipmentDate.setValue(obj2.shipmentDate);
+
+
+        this.currentShipArray.push(obj2)
+      })
+
+
+      console.log('currentShipArray', this.currentShipArray)
+
+    })
+   }
+
+    this.viewOrderData();
+    
+
   }
   viewOrderData() {
 
@@ -560,6 +808,7 @@ let obj:any={
 console.log('savedship',this.currentShipment)
   }
   onCellClicked(e): void {
+    
     console.log('cellClicked', e);
 
     if (e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action') {

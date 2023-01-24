@@ -1,6 +1,6 @@
 <!-- <p>orders-receive-shipment works!</p> -->
 <div class="main">
-    <div class="container promotionpopup-scroll" style="max-width: 1346px;">
+    <div class="container promotionpopup-scroll" style="max-width: 95vw;">
         <div class="addUser">
             <img class="print-img" src="../../../assets/material/print-img.svg" alt="">
             <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
@@ -323,7 +323,7 @@
                             <div class="myDatepicker promotion-datepicker" *ngIf="data.currentReceiveshipment && ViewOrReceive">
                                 <label>Receive Date<span class="astr">*</span></label><br>
                                 <mat-form-field class="placeh-align">
-                                    <mat-label> Receive date</mat-label>
+                                    <mat-label> Received Date</mat-label>
                                     <input matInput [matDatepicker]="picker3" [formControl]="recivedate"
                                     [min]="minDate"  (dateChange)="ReciveDateChange($event)">
                                     <mat-datepicker-toggle matSuffix [for]="picker3">
@@ -502,10 +502,10 @@
     </div>
 
 </div>
-<div class="row">
+<!-- <div class="row">
     <div class="col-lg-5"></div>
     <div class="col-lg-4">
         <button type="button" class="cancelButton">Cancel</button>
     </div>
     <div class="col-lg-3"></div>
-</div>
+</div> -->

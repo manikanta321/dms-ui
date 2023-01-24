@@ -161,7 +161,7 @@
   }
   
   ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
-    width: 767px;
+    max-width: 100vw;
     margin-top: -51px;
   }
   
@@ -237,7 +237,7 @@
     width: 300px;
     height: 2px;
     background: #686E74;
-    right: 76px;
+    right: 111px;
     top: 50%;
     position: absolute;
   }
@@ -302,7 +302,7 @@
   ::ng-deep.mat-dialog-container {
     background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
     overflow: auto;
-  
+  max-width: 95vw;
   
   }
   
@@ -936,7 +936,7 @@
   }
   
   .promotionpopup-scroll {
-    height: 711px !important;
+    height: 601px !important;
   }
   
   
@@ -1108,7 +1108,7 @@
   
   
   .expand-arrow {
-    width: 40%;
+    width: 24%;
     position: relative;
     right: -28px;
     top: 4px;

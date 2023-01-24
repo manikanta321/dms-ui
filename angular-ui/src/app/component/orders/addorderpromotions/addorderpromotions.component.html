@@ -787,8 +787,8 @@
                                 <thead>
                                     <tr>
                                         <th data-sortable="true">Product Name</th>
-                                        <th data-sortable="true">Material identifier</th>
-                                        <th data-sortable="true">classification</th>
+                                        <!-- <th data-sortable="true">Material identifier</th>
+                                        <th data-sortable="true">classification</th> -->
                                         <th data-sortable="true">SKU</th>
                                         <th data-sortable="true">Price</th>
                                         <th data-sortable="true">Stock Qty</th>
@@ -801,8 +801,8 @@
                                     <tr class="table-row" *ngFor="let Item of orderNonPromotionsdata">
                                         <td><input type="checkbox" [checked]="Item.isPromotionSelected"
                                                 (change)="checkboxChange($event,Item)">{{Item.stockitemname}}</td>
-                                        <td>{{Item.materialCustomName}}</td>
-                                        <td>{{Item.classification}}</td>
+                                        <!-- <td>{{Item.materialCustomName}}</td>
+                                        <td>{{Item.classification}}</td> -->
                                         <td>{{Item.productSKUName}}</td>
                                         <td>{{Item.price}}</td>
                                         <td><input type="text"   placeholder="Enter" class="quatity-inp"

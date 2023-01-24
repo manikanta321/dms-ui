@@ -368,7 +368,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
     this.isOrderPromotionValid = true;
     this.griddatapromotions.forEach(x => {
       if (x.promotionTypesId == 3 || x.promotionTypesId == 4) {
-        if (!x.promoDetails.isItemValid) {
+        if (!x.promoDetails.isItemValid || !x.promoDetails.isDiscountItemValid) {
           this.isOrderPromotionValid = false;
         }
       }
@@ -382,12 +382,21 @@ export class AddOrderPromotionlistComponent implements OnInit {
   }
 
   calculateDiscountVolumeAmount(item) {
+    item.promoDetails.isDiscountItemValid = false;
+    item.promoDetails.DiscountAmount = 0;
+    item.promoDetails.DiscountPercentage = 0;
     item.promoDetails.stockitems.forEach(stockItem => {
       stockItem.DiscountAmount = 0;
+      stockItem.finalPrice = 0;
+
       if (stockItem.isProductSelected) {
         item.promoDetails.volumes.forEach(element => {
           if (element.minVolume <= item.promoDetails.totalQuantity && element.maxVolume >= item.promoDetails.totalQuantity) {
-            stockItem.DiscountAmount = (stockItem.Quantity) * (stockItem.price) * (100 - element.discountPercentage) / 100;
+            stockItem.finalPrice = (stockItem.price) * (100 - element.discountPercentage) / 100;
+            stockItem.DiscountAmount = (stockItem.Quantity) * stockItem.finalPrice;
+            item.promoDetails.isDiscountItemValid = true;
+            item.promoDetails.DiscountAmount += stockItem.DiscountAmount;
+            item.promoDetails.DiscountPercentage = element.discountPercentage;
           }
         });
       }
@@ -395,12 +404,18 @@ export class AddOrderPromotionlistComponent implements OnInit {
   }
 
   calculateDiscountAmount(item) {
+    item.promoDetails.isDiscountItemValid = false;
+    item.promoDetails.DiscountAmount = 0;
     item.promoDetails.stockitems.forEach(stockItem => {
       stockItem.DiscountAmount = 0;
+      stockItem.finalPrice = 0;
       if (stockItem.isProductSelected) {
         item.promoDetails.prices.forEach(element => {
           if (element.minVolume <= item.promoDetails.totalQuantity && element.maxVolume >= item.promoDetails.totalQuantity) {
-            stockItem.DiscountAmount = (stockItem.Quantity) * (element.maxPrice);
+            stockItem.finalPrice = (stockItem.Quantity) * (element.maxPrice);
+            stockItem.DiscountAmount = element.maxPrice;
+            item.promoDetails.isDiscountItemValid = true;
+            item.promoDetails.DiscountAmount += stockItem.finalPrice;
           }
         });
       }
@@ -445,6 +460,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
             stockItem.totalQuantity = 0;
             stockItem.totalAmount = 0;
             stockItem.isItemValid = true;
+            stockItem.foc = item.promoDetails.buyGroupsQty * stockItem.maxVolume;
             if (stockItem.stockitemid.length != 0) {
               stockItem.stockitemid.forEach(stock => {
                 if (stock.isProductSelected) {
@@ -452,19 +468,25 @@ export class AddOrderPromotionlistComponent implements OnInit {
                   stockItem.totalAmount += (stock.price * stock.Quantity);
                 }
               })
+
+              if (stockItem.totalQuantity !== stockItem.foc) {
+                stockItem.isItemValid = false;
+                item.promoDetails.isGetItemValid = false;
+              }
+
             }
 
-            if (stockItem.maxVolume) {
-              item.promoDetails.getGroupsQty += Math.floor(stockItem.totalQuantity / stockItem.maxVolume);
-            }
+            // if (stockItem.maxVolume) {
+            //   item.promoDetails.getGroupsQty += Math.floor(stockItem.totalQuantity / stockItem.maxVolume);
+            // }
 
-            if (!(item.promoDetails.buyGroupsQty) || item.promoDetails.buyGroupsQty !== item.promoDetails.getGroupsQty) {
-              stockItem.isItemValid = false;
-              item.promoDetails.isGetItemValid = false;
-            } else if (item.promoDetails.buyGroupsQty && item.promoDetails.buyGroupsQty === item.promoDetails.getGroupsQty) {
-              stockItem.isItemValid = true;
-              item.promoDetails.isGetItemValid = true;
-            }
+            // if (!(item.promoDetails.buyGroupsQty) || item.promoDetails.buyGroupsQty !== item.promoDetails.getGroupsQty) {
+            //   stockItem.isItemValid = false;
+            //   item.promoDetails.isGetItemValid = false;
+            // } else if (item.promoDetails.buyGroupsQty && item.promoDetails.buyGroupsQty === item.promoDetails.getGroupsQty) {
+            //   stockItem.isItemValid = true;
+            //   item.promoDetails.isGetItemValid = true;
+            // }
           });
         }
         break;
@@ -516,6 +538,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
               stockItem.totalAmount = 0;
               stockItem.totalQuantity = 0;
               stockItem.isItemValid = true;
+              stockItem.foc = item.promoDetails.buyGroupsQty * stockItem.maxVolume;
+              stockItem.isInputEnable = false;
               if (stockItem.stockitemid.length != 0) {
                 stockItem.stockitemid.forEach(stock => {
                   if (stock.isProductSelected) {
@@ -523,19 +547,28 @@ export class AddOrderPromotionlistComponent implements OnInit {
                     setItem.isInputEnable = true;
                     stockItem.totalQuantity += stock.Quantity;
                     stockItem.totalAmount += (stock.price * stock.Quantity);
+                    // if(setItem.isInputEnable){
+                    //   stockItem.isInputEnable = true;
+                    // }
                   }
                 })
 
-                if (stockItem.maxVolume && stockItem.totalQuantity) {
-                  item.promoDetails.getGroupsQty += Math.floor(stockItem.totalQuantity / stockItem.maxVolume);
-                }
-                if (setItem.isInputEnable && item.promoDetails.buyGroupsQty !== item.promoDetails.getGroupsQty) {
+
+                if (setItem.isInputEnable && stockItem.totalQuantity !== stockItem.foc) {
                   stockItem.isItemValid = false;
                   item.promoDetails.isGetItemValid = false;
-                } else if (setItem.isInputEnable && item.promoDetails.buyGroupsQty == item.promoDetails.getGroupsQty) {
-                  stockItem.isItemValid = true;
-                  item.promoDetails.isGetItemValid = true;
                 }
+
+                // if (stockItem.maxVolume && stockItem.totalQuantity) {
+                //   item.promoDetails.getGroupsQty += Math.floor(stockItem.totalQuantity / stockItem.maxVolume);
+                // }
+                // if (setItem.isInputEnable && item.promoDetails.buyGroupsQty !== item.promoDetails.getGroupsQty) {
+                //   stockItem.isItemValid = false;
+                //   item.promoDetails.isGetItemValid = false;
+                // } else if (setItem.isInputEnable && item.promoDetails.buyGroupsQty == item.promoDetails.getGroupsQty) {
+                //   stockItem.isItemValid = true;
+                //   item.promoDetails.isGetItemValid = true;
+                // }
               }
             });
 

@@ -1237,3 +1237,7 @@ tr:nth-child(even) {
 .sub-heading{
   position: relative;
 }
+
+.txt-error-span{
+  color: red !important;
+}

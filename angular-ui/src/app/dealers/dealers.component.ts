@@ -74,11 +74,11 @@ export class DealersComponent implements OnInit {
   selectedStatus: any = [];
   userTypes: any = [];
   geoTypes: any = [];
-  statusTytpes:any=[];
-  productSelected:any = [];
+  statusTytpes: any = [];
+  productSelected: any = [];
   statusTypes: any = [];
   searchText: any;
-  customerID:any;
+  customerID: any;
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
   dropdownSettings2: IDropdownSettings = {};
@@ -101,23 +101,24 @@ export class DealersComponent implements OnInit {
 
     {
       headerName: "Code",
-       field: 'customerCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
+      field: 'customerCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
     },
 
-    { headerName: "Name",
-    minWidth:450,
-    field: 'customerName', type: ['nonEditableColumn'], pinned: 'left',
+    {
+      headerName: "Name",
+      minWidth: 450,
+      field: 'customerName', type: ['nonEditableColumn'], pinned: 'left',
     },
     {
       headerName: "Geography",
-      field: 'geographyname', 
+      field: 'geographyname',
       cellRenderer: this.daysSunshineRenderer,
       // cellRendererParams: {
       // rendererImage: '', // Complementing the Cell Renderer parameters
       // },
       type: ['nonEditableColumn']
     },
-   
+
     // suppressMovable:true,
     {
       headerName: "Status",
@@ -126,7 +127,7 @@ export class DealersComponent implements OnInit {
       cellEditor: 'agSelectCellEditor',
       cellEditorParams: {
         values: ['Approved', 'getusertabeldata', 'Invited', 'Locked',],
-      },maxWidth:150,
+      }, maxWidth: 150,
       cellClass: params => {
         return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
       }
@@ -137,11 +138,11 @@ export class DealersComponent implements OnInit {
       colId: 'action',
       cellRenderer: EditdealersComponent,
       editable: false,
-      maxWidth: 75  
+      maxWidth: 75
     },
 
 
-   
+
   ];
 
 
@@ -198,13 +199,13 @@ export class DealersComponent implements OnInit {
   public pivotPanelShow = 'always';
 
   displayedColumns: string[] = ['position', 'name', 'symbol', 'email', 'phonenum', 'login', 'status', 'edit'];
-;
+  ;
   toppings = new FormControl('');
   toppings1 = new FormControl('');
 
 
   toppingList: any = [];
-  ProductListArray:any=[];
+  ProductListArray: any = [];
 
   toppingList1: any = [];
   filterDictionary: any;
@@ -224,13 +225,13 @@ export class DealersComponent implements OnInit {
   msg: any;
   userId: any;
   roleArray: any[] = [];
-  productAllArray:any[]=[]
+  productAllArray: any[] = []
   statusArray: any = [];
   messages: any[] = [];
   stayScrolledToEnd = true;
   message: boolean = false;
   message1: boolean = true;
-  instancePopup:any = null;
+  instancePopup: any = null;
 
 
   paginationNumberFormatter: (
@@ -292,7 +293,7 @@ export class DealersComponent implements OnInit {
         }
       })
       console.log("showCaseMenuList.length", showCaseMenuList.length);
-      
+
     })
     this.sharedService.listen().subscribe((m: any) => {
       console.log(m)
@@ -310,7 +311,7 @@ export class DealersComponent implements OnInit {
   ngAfterViewInit() {
 
 
-   // this.dataSource.sort = this.sort;
+    // this.dataSource.sort = this.sort;
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
       if (res.matches) {
         this.sidenav.mode = 'over';
@@ -330,8 +331,8 @@ export class DealersComponent implements OnInit {
     this.getusertabeldata();
     this.roleItems();
     this.statusItems();
-this.ProductItems() ;
-   this.myForm = this.fb.group({
+    this.ProductItems();
+    this.myForm = this.fb.group({
       city: [this.selectedItems]
     });
     this.myForms = this.fb.group({
@@ -397,7 +398,7 @@ this.ProductItems() ;
     if (this.statusSelection) {
       this.dropdownSettings2 = Object.assign({}, this.dropdownSettings2, { statusSelection: 2 });
     } else {
-      this.dropdownSettings2 = Object.assign({}, this.dropdownSettings2 , { statusSelection: null });
+      this.dropdownSettings2 = Object.assign({}, this.dropdownSettings2, { statusSelection: null });
     }
 
   }
@@ -416,41 +417,41 @@ this.ProductItems() ;
     this.myForms1 = this.fb.group({
       city1: [this.selectedItems]
     });
-  
-    this.geoTypes=[];
-    this.statusTytpes=[];
-    this.searchText='';
+
+    this.geoTypes = [];
+    this.statusTytpes = [];
+    this.searchText = '';
     this.productSelected = [];
     const data = {
-      geographys:this.geoTypes,
-      Products:this.productSelected,
-      statuss:this.statusTytpes,
-      Search:this.searchText,
+      geographys: this.geoTypes,
+      Products: this.productSelected,
+      statuss: this.statusTytpes,
+      Search: this.searchText,
     }
     this.user.getAllDealerList(data).subscribe((res) => {
 
       this.rowData5 = res.response;
-  
+
 
     });
     this.getusertabeldata();
   }
 
   getusertabeldata() {
-    this.geoTypes=[];
-    this.statusTytpes=[];
-    this.searchText='';
+    this.geoTypes = [];
+    this.statusTytpes = [];
+    this.searchText = '';
     this.productSelected = [];
     const data = {
-      geographys:this.geoTypes,
-      Products:this.productSelected,
-      statuss:this.statusTytpes,
-      Search:this.searchText,
+      geographys: this.geoTypes,
+      Products: this.productSelected,
+      statuss: this.statusTytpes,
+      Search: this.searchText,
     }
     this.user.getAllDealerList(data).subscribe((res) => {
 
       this.rowData5 = res.response;
-  
+
 
     });
   }
@@ -478,12 +479,12 @@ this.ProductItems() ;
       this.toppings = new FormControl(this.toppingList);
 
       // console.log('rolelist', this.toppingList)
-                                                                    
+
     });
 
 
-    
-    this.dropdownSettings= {
+
+    this.dropdownSettings = {
       singleSelection: false,
       idField: 'geographyId',
       textField: 'geographyName',
@@ -496,8 +497,8 @@ this.ProductItems() ;
   }
 
 
-ProductItems(){
-  this.user.getproductlist().subscribe((res: any) => {
+  ProductItems() {
+    this.user.getproductlist().subscribe((res: any) => {
       let localdata = res.response;
       // console.log('checkdata', localdata)
 
@@ -510,9 +511,9 @@ ProductItems(){
         return this.productAllArray.push(element.stockItemId);
         // console.log('rolecheck',rolecheck)
 
-      })                                                                    
+      })
     });
-  
+
     this.dropdownSettings2 = {
       singleSelection: false,
       idField: 'stockItemId',
@@ -524,7 +525,7 @@ ProductItems(){
     };
     this.selectedStatus = [];
     this.toppings1 = new FormControl(this.toppingList1);
-}
+  }
 
 
   handleRowDataChanged(event) {
@@ -536,7 +537,7 @@ ProductItems(){
 
   handleScroll(event) {
 
-    if(this.instancePopup && this.instancePopup.isOpen){
+    if (this.instancePopup && this.instancePopup.isOpen) {
       this.instancePopup.togglePopup();
       this.instancePopup = null;
     }
@@ -558,15 +559,15 @@ ProductItems(){
     this.productSelected.push(item.stockItemId);
 
     const data = {
-      geographys:this.geoTypes,
-      Products:this.productSelected,
-      statuss:this.statusTytpes,
-      Search:this.searchText,
+      geographys: this.geoTypes,
+      Products: this.productSelected,
+      statuss: this.statusTytpes,
+      Search: this.searchText,
     }
     this.user.getAllDealerList(data).subscribe((res) => {
 
       this.rowData5 = res.response;
-  
+
 
     });
     console.log('rolefilter', this.userTypes)
@@ -575,31 +576,31 @@ ProductItems(){
   onItemProductSelectOrAll(item: any) {
     this.productSelected = this.productAllArray;
     const data = {
-      geographys:this.geoTypes,
-      Products:this.productSelected,
-      statuss:this.statusTytpes,
-      Search:this.searchText,
+      geographys: this.geoTypes,
+      Products: this.productSelected,
+      statuss: this.statusTytpes,
+      Search: this.searchText,
     }
     this.user.getAllDealerList(data).subscribe((res) => {
 
       this.rowData5 = res.response;
-  
+
 
     });
 
   }
   onItemProductDeSelectOrAll(item: any) {
-    this.productSelected=[];
+    this.productSelected = [];
     const data = {
-      geographys:this.geoTypes,
-      Products:this.productSelected,
-      statuss:this.statusTytpes,
-      Search:this.searchText,
+      geographys: this.geoTypes,
+      Products: this.productSelected,
+      statuss: this.statusTytpes,
+      Search: this.searchText,
     }
     this.user.getAllDealerList(data).subscribe((res) => {
 
       this.rowData5 = res.response;
-  
+
 
     });
     console.log('rolefilter', this.userTypes)
@@ -615,15 +616,15 @@ ProductItems(){
 
     // this.userTypes.pop(item.roleId);
     const data = {
-      geographys:this.geoTypes,
-      Products:this.productSelected,
-      statuss:this.statusTytpes,
-      Search:this.searchText,
+      geographys: this.geoTypes,
+      Products: this.productSelected,
+      statuss: this.statusTytpes,
+      Search: this.searchText,
     }
     this.user.getAllDealerList(data).subscribe((res) => {
 
       this.rowData5 = res.response;
-  
+
 
     });
   }
@@ -631,13 +632,13 @@ ProductItems(){
   statusItems() {
     this.user.dealersStatus().subscribe((res: any) => {
       this.toppingList1 = res.response;
-      
+
       console.log('we have to check here', this.toppingList1)
       this.toppingList1.forEach(element => {
         return this.statusArray.push(element.statusId);
       })
       console.log('statusArray', this.statusArray)
-    
+
       this.dropdownSettings1 = {
         singleSelection: false,
         idField: 'statusId',
@@ -652,22 +653,22 @@ ProductItems(){
 
     });
   }
- 
+
   onItemSelect(item: any) {
 
     // alert(item.roleName)
     this.geoTypes.push(item.geographyId);
     const data = {
-      geographys:this.geoTypes,
-      Products:this.productSelected,
-      statuss:this.statusTytpes,
-      Search:this.searchText,
+      geographys: this.geoTypes,
+      Products: this.productSelected,
+      statuss: this.statusTytpes,
+      Search: this.searchText,
     }
     this.user.getAllDealerList(data).subscribe((res) => {
 
       this.rowData5 = res.response;
     });
-    
+
   }
 
 
@@ -681,10 +682,10 @@ ProductItems(){
     console.log(' this.userTypes', this.userTypes)
 
     const data = {
-      geographys:this.geoTypes,
-      Products:this.productSelected,
-      statuss:this.statusTytpes,
-      Search:this.searchText,
+      geographys: this.geoTypes,
+      Products: this.productSelected,
+      statuss: this.statusTytpes,
+      Search: this.searchText,
     }
     this.user.getAllDealerList(data).subscribe((res) => {
 
@@ -697,12 +698,12 @@ ProductItems(){
 
   onItemSelectOrAll(item: any) {
     this.geoTypes = this.roleArray;
-  
+
     const data = {
-      geographys:this.geoTypes,
-      Products:this.productSelected,
-      statuss:this.statusTytpes,
-      Search:this.searchText,
+      geographys: this.geoTypes,
+      Products: this.productSelected,
+      statuss: this.statusTytpes,
+      Search: this.searchText,
     }
     this.user.getAllDealerList(data).subscribe((res) => {
 
@@ -714,17 +715,17 @@ ProductItems(){
   }
   onItemDeSelectOrAll(item: any) {
 
-    this.geoTypes=[];
+    this.geoTypes = [];
     const data = {
-      geographys:this.geoTypes,
-      Products:this.productSelected,
-      statuss:this.statusTytpes,
-      Search:this.searchText,
+      geographys: this.geoTypes,
+      Products: this.productSelected,
+      statuss: this.statusTytpes,
+      Search: this.searchText,
     }
     this.user.getAllDealerList(data).subscribe((res) => {
 
       this.rowData5 = res.response;
-  
+
 
     });
 
@@ -735,26 +736,26 @@ ProductItems(){
 
 
 
-  
+
   onStatusSelect(item: any) {
     this.statusTytpes.push(item.statusId);
 
     const data = {
-      geographys:this.geoTypes,
-      Products:this.productSelected,
-      statuss:this.statusTytpes,
-      Search:this.searchText,
+      geographys: this.geoTypes,
+      Products: this.productSelected,
+      statuss: this.statusTytpes,
+      Search: this.searchText,
     }
     this.user.getAllDealerList(data).subscribe((res) => {
 
       this.rowData5 = res.response;
-  
+
 
     });
 
   }
 
-  
+
 
 
 
@@ -765,36 +766,36 @@ ProductItems(){
     // this.statusTypes.pop(item.statusId);
     console.log(' this.statusTypes', this.userTypes)
     const data = {
-      geographys:this.geoTypes,
-      Products:this.productSelected,
-      statuss:this.statusTytpes,
-      Search:this.searchText,
+      geographys: this.geoTypes,
+      Products: this.productSelected,
+      statuss: this.statusTytpes,
+      Search: this.searchText,
     }
     this.user.getAllDealerList(data).subscribe((res) => {
 
       this.rowData5 = res.response;
-  
+
 
     });
-   
+
   }
 
 
 
 
-  
+
   onItemDeSelectOrAllStatus(item: any) {
-    this.statusTytpes=[];
+    this.statusTytpes = [];
     const data = {
-      geographys:this.geoTypes,
-      Products:this.productSelected,
-      statuss:this.statusTytpes,
-      Search:this.searchText,
+      geographys: this.geoTypes,
+      Products: this.productSelected,
+      statuss: this.statusTytpes,
+      Search: this.searchText,
     }
     this.user.getAllDealerList(data).subscribe((res) => {
 
       this.rowData5 = res.response;
-  
+
 
     });
 
@@ -804,15 +805,15 @@ ProductItems(){
   onItemSelectOrAllStatus(item: any) {
     this.statusTytpes = this.statusArray;
     const data = {
-      geographys:this.geoTypes,
-      Products:this.productSelected,
-      statuss:this.statusTytpes,
-      Search:this.searchText,
+      geographys: this.geoTypes,
+      Products: this.productSelected,
+      statuss: this.statusTytpes,
+      Search: this.searchText,
     }
     this.user.getAllDealerList(data).subscribe((res) => {
 
       this.rowData5 = res.response;
-  
+
 
     });
     console.log('rolefilter', this.statusTypes)
@@ -822,15 +823,15 @@ ProductItems(){
     const { target } = $event;
     this.searchText = target.value;
     const data = {
-      geographys:this.geoTypes,
-      Products:this.productSelected,
-      statuss:this.statusTytpes,
-      Search:this.searchText,
+      geographys: this.geoTypes,
+      Products: this.productSelected,
+      statuss: this.statusTytpes,
+      Search: this.searchText,
     }
     this.user.getAllDealerList(data).subscribe((res) => {
 
       this.rowData5 = res.response;
-  
+
 
     });
 
@@ -844,8 +845,8 @@ ProductItems(){
   }
 
   addUser() {
-    localStorage.setItem('edit-dealer','Add')
-    this.dialog.open(AddDealerPopupComponent,{height:"590px"});
+    localStorage.setItem('edit-dealer', 'Add')
+    this.dialog.open(AddDealerPopupComponent, { height: "590px" });
   }
 
   editUser() {
@@ -867,8 +868,8 @@ ProductItems(){
   addCurrency() {
     let dialogRef = this.dialog.open(AddcurrencyComponent);
     dialogRef.afterClosed().subscribe((res) => {
-      localStorage.setItem('headerStatus','')
-      })
+      localStorage.setItem('headerStatus', '')
+    })
   }
 
   edittaxTempl() {
@@ -896,7 +897,7 @@ ProductItems(){
     );
   }
 
- 
+
   onRowValueChanged(event: RowValueChangedEvent) {
     var data = event.data;
 
@@ -942,12 +943,12 @@ ProductItems(){
   onCellClicked(e): void {
     console.log('cellClicked', e);
     this.userId = e.data.userId;
-     this.customerID = e.data.customerId;
+    this.customerID = e.data.customerId;
     this.employeeName = e.data.customerCode;
     console.log('userID', this.userId);
     localStorage.setItem('employeeNameOfDealer', this.employeeName);
-    localStorage.setItem('customerIdOfDealer', this.customerID);    
-    if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
+    localStorage.setItem('customerIdOfDealer', this.customerID);
+    if (e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action') {
       const cellRendererInstances = e.api.getCellRendererInstances({
         rowNodes: [e.node],
         columns: [e.column],
@@ -961,18 +962,18 @@ ProductItems(){
   }
 
   daysSunshineRenderer(params) {
-  const divelement = document.createElement('div');  
-  const element = document.createElement('span');
-  const imageElement = document.createElement('img');
-  const tooltip = document.createElement('tooltip');
-  imageElement.className = "country-info";
-  imageElement.src ='assets/img/countryinfo.png';
-  tooltip.className = 'tooltip';
-  imageElement.classList.add('custom-tooltip');
-  imageElement.innerHTML = '<span class="tooltip">hhhhh</span>'
-  element.appendChild(document.createTextNode(params.value));
-  element.appendChild(imageElement);
-  return element;
+    const divelement = document.createElement('div');
+    const element = document.createElement('span');
+    const imageElement = document.createElement('img');
+    const tooltip = document.createElement('tooltip');
+    imageElement.className = "country-info";
+    imageElement.src = 'assets/img/countryinfo.png';
+    tooltip.className = 'tooltip';
+    imageElement.classList.add('custom-tooltip');
+    imageElement.innerHTML = '<span class="tooltip">hhhhh</span>'
+    element.appendChild(document.createTextNode(params.value));
+    element.appendChild(imageElement);
+    return element;
   }
 
 }

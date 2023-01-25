@@ -102,19 +102,24 @@ export class OrderlistActionPopupComponent implements OnInit {
   agInit(params) {
     this.params = params;
     let menu = [];
+    let ignoreMenus = ['close', 'cancel_order'];
     if(this.params?.data?.status){
       menu = this.orderStatusAction[this.params?.data?.status?.toLowerCase()] ?? [];
+      
+    // this.currentActionMenu.push('view');
     }else if(this.params?.data?.statusName){
       menu = this.shipmentStatusAction[this.params?.data?.statusName?.toLowerCase()] ?? [];
+
+    // this.currentActionMenu.push('view');
     }
 
-    let ignoreMenus = ['close', 'cancel_order'];
+    
 
-    console.log("menu", menu);
+    // console.log("menu", menu);
     this.currentActionMenu = menu.filter(x => this.showCaseMenuList.indexOf(x) !== -1 || ignoreMenus.indexOf(x) !== -1);
 
-    this.currentActionMenu.push('view');
-    console.log(this.currentActionMenu.length);
+    // this.currentActionMenu.push('view');
+    // console.log(this.currentActionMenu.length);
 
     switch (this.currentActionMenu.length) {
       case 5:

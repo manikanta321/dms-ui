@@ -948,7 +948,7 @@
   }
   
   .promotionpopup-scroll {
-    height: 601px !important;
+    min-height: 601px !important;
   }
   
   

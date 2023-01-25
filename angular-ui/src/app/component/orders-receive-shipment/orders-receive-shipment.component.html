@@ -95,11 +95,13 @@
                                 <th>Tax</th>
                                 <th>Amount</th>
                             </tr>
-                            <tr [(ngModel)]="itemremoved" *ngFor="let data of itemsArray;let i=index ">
+                            <tr  *ngFor="let data of itemsArray;let i=index ">
                                 <td>
-                                    <p class="itemLeft"><span
-                                        *ngIf=" i>=1? data.promo != itemsArray[i-1].promo:i==0"   class="promoItem">{{data.promo}}</span><span style="color: transparent;">..</span>
-                                        <span   style="color: transparent;"  *ngIf=" i>=1? data.promo == itemsArray[i-1].promo:''">......</span>
+                                    <p class="itemLeft"><span *ngIf=" i>=1? data.promo != itemsArray[i-1].promo:i==0"
+                                            class="promoItem">{{data.promo}}</span><span
+                                            style="color: transparent;">..</span>
+                                        <span style="color: transparent;"
+                                            *ngIf=" i>=1? data.promo == itemsArray[i-1].promo:''">......</span>
                                         {{data.stockitemname?data.stockitemname:''}}
                                     </p>
                                 </td>
@@ -162,114 +164,8 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="top-bottom" *ngFor="let data of shipmentArray.previousshipDetails;let i =index">
-                <div class="collapsible" (click)="expandShipmentOneDiv()">
-                    <div class="row">
-                        <div class="col-lg-5">
-                            <p class="label-cls">{{data.shipName}}</p>
-                        </div>
-                        <div class="col-lg-6">
-                            <p class="label-cls">Invoice no: {{data.invoiceno}}</p>
-                        </div>
-                        <div class="col-lg-1">
-                            <img [src]="image3" class="expand-arrow" alt="add-user-btn">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="content " *ngIf="!shipmentone">
-                    <div class="section mt-1">
-                        <table>
-                            <tr>
-                                <th>Item</th>
-                                <th>UoM</th>
-                                <th>Order Qty</th>
-                                <th>Stock</th>
-                                <th>Unit Price</th>
-                                <th>Discount</th>
-                                <th>Final Value</th>
-                                <th>Tax</th>
-                                <th>Amount</th>
-                                <th>Shipped Qty</th>
-                                <th>Received Qty</th>
-                                <th>Lost/ Damaged</th>
-
-                            </tr>
-                            <tr [(ngModel)]="itemremoved" *ngFor="let data1 of data?.promodetails;let j =index">
-                                <td>
-                                    <p class="itemLeft"><span
-                                            class="promoItem">{{data?.promodetails[0]?.promocode}}</span>{{data1.stockitemname}}
-                                    </p>
-                                </td><td><label
-                                        class="IteminputBoxes">{{data1?.itemDetailsship[0].uomname}}</label>
-                                    </td><td>
-                                    <label
-                                        class="IteminputBoxes">{{data1?.itemDetailsship[0].quantity}}</label>
-                                    </td><td>
-                                    <label
-                                        class="IteminputBoxes">{{data1?.itemDetailsship[0].stock}}</label>
-                                    </td><td>
-                                    <label
-                                        class="IteminputBoxes">{{data1?.itemDetailsship[0].price}}</label>
-                                   </td><td>
-                                   <label
-                                        class="IteminputBoxes">{{data1?.itemDetailsship[0].discount}}</label></td><td>
-                                    <label
-                                        class="IteminputBoxes">{{data1?.itemDetailsship[0].finalValue}}</label>
-                                    </td><td>
-                                    <label
-                                        class="IteminputBoxes">{{data1?.itemDetailsship[0].taxvalue}}</label>
-                                    </td><td>
-                                    <label
-                                        class="IteminputBoxes">{{data1?.itemDetailsship[0].amount}}</label>
-                                    </td><td>
-                                   <label
-                                        class="IteminputBoxes">{{data1?.itemDetailsship[0].shipedTill}}</label>
-                                     </td>
-                                     <td>
-                                     <label
-                                        class="IteminputBoxes">{{data1?.itemDetailsship[0].shipingNow}}</label>
-                                     </td>
-                                     <td>
-                                        <label
-                                           class="IteminputBoxes">{{data1?.itemDetailsship[0].shipingNow}}</label>
-                                        </td>
-                                </tr>
-
-
-                        </table>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="totall">
-                            <div class="innerTotal d-flex">
-                                <div class="subitem">
-                                    <p class="alltotals">Sub Total</p>
-                                    <span>{{data.subTotal}}</span>
-                                </div>
-
-
-                                <div class="subitem">
-                                    <p class="alltotals">Tax Element</p>
-                                    <span>{{data.taxElement}}</span>
-                                </div>
-                                <div class="subitem">
-                                    <p class="alltotals">Packing Charge</p>
-                                    <span>{{data.pakingCharge}}</span>
-                                </div>
-                                <div class="subitem">
-                                    <p class="alltotals">Shipping Charge</p>
-                                    <span>{{shipmentArray.shipingcharge}}</span>
-                                </div>
-                                <div class="subitem">
-                                    <p class="alltotals">Total</p>
-                                    <span>{{shipmentArray.total}}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            <div class="top-bottom"  *ngFor="let data of currentShipArray;let i =index"  >
+          
+            <div class="top-bottom" *ngFor="let data of currentShipArray;let i =index">
                 <div class="collapsible" (click)="expandShipmentTwoDiv()">
                     <div class="row">
                         <div class="col-lg-5">
@@ -289,7 +185,7 @@
                         <div class="col-lg-3">
                             <label>Invoice No.<span class="astr">*</span></label>
                             <div class="input-datepicker mr-3">
-                                <input type="text"  [(ngModel)]="data.invoiceno" class="invoice" disabled/>
+                                <input type="text" [(ngModel)]="data.invoiceno" class="invoice" disabled />
                             </div>
                             <!-- <app-customdatepicker [showInputField]="true" class="input-datepicker" label="Enter" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"><span class="astr">*</span></app-customdatepicker> -->
                             <!-- <input matInput placeholder="Enter" #input class="form-control container input-box" > -->
@@ -310,24 +206,26 @@
                             </div> -->
                             <label>Invoice Date <span class="astr">*</span></label><br>
                             <div class="input-datepicker mr-3">
-                                <input type="text"  [(ngModel)]="data.invoiceDate" class="invoice" disabled/>
+                                <input type="text" [(ngModel)]="data.invoiceDate" class="invoice" disabled />
                             </div>
                         </div>
                         <div class="col-lg-3">
-                         
+
                             <label>Shipping Date<span class="astr">*</span></label><br>
                             <div class="input-datepicker mr-3">
-                                <input type="text"  [(ngModel)]="data.invoiceDate" class="invoice" disabled />
+                                <input type="text" [(ngModel)]="data.shipmentDate" class="invoice" disabled />
                             </div>
                             <!-- <input matInput placeholder="Select" #input class="form-control container input-box" > -->
                         </div>
                         <div class="col-lg-3">
-                            <div class="myDatepicker promotion-datepicker" *ngIf="data.currentReceiveshipment && ViewOrReceive">
+                            
+                            <div class="myDatepicker promotion-datepicker"
+                                *ngIf="data.currentReceiveshipment && ViewOrReceive">
                                 <label>Receive Date<span class="astr">*</span></label><br>
                                 <mat-form-field class="placeh-align">
                                     <mat-label> Received Date</mat-label>
-                                    <input matInput [matDatepicker]="picker3" [formControl]="recivedate"
-                                    [min]="minDate"  (dateChange)="ReciveDateChange($event)">
+                                    <input matInput [matDatepicker]="picker3" [formControl]="recivedate" [min]="convertDateFormat(data.shipmentDate)" [max]="minDate"
+                                        (dateChange)="ReciveDateChange($event)" >
                                     <mat-datepicker-toggle matSuffix [for]="picker3">
                                         <mat-icon matDatepickerToggleIcon style="margin-left: 0px;">
                                             <img src="assets/img/calender2.png" class="calendarToggle">
@@ -337,13 +235,16 @@
                                 </mat-form-field>
                             </div>
 
-                            <label *ngIf="data.currentReceiveshipment==false || ViewOrReceive==false">Receive date<span class="astr">*</span></label><br>
-                            <div class="input-datepicker mr-3" *ngIf="data.currentReceiveshipment==false || ViewOrReceive==false">
-                                <input type="text"  [(ngModel)]="data.shipmentDate" class="invoice" disabled />
+                            <label *ngIf="data.currentReceiveshipment==false || ViewOrReceive==false">Receive date<span
+                                    class="astr">*</span></label><br>
+                            <div class="input-datepicker mr-3"
+                                *ngIf="data.currentReceiveshipment==false || ViewOrReceive==false">
+                                <input type="text" [(ngModel)]="data.shipmentDate" class="invoice" disabled />
                             </div>
 
                         </div>
                     </div>
+                    
                     <div class="section mt-1">
                         <table>
                             <tr>
@@ -357,14 +258,18 @@
                                 <th>Tax</th>
                                 <th>Amount</th>
                                 <th>Shipped Qty</th>
-                                <th >Received Qty</th>
+                                <th>Received Qty</th>
                                 <th>Lost/ Damaged</th>
                             </tr>
-                            <tr [(ngModel)]="itemremoved" *ngFor="let items of data.arrayIside;let j=index">
+                            <tr  *ngFor="let items of data.arrayIside;let j=index">
                                 <td>
                                     <p class="itemLeft"><span
-                                        *ngIf="j>=1? items?.promocode !=  data?.arrayIside[j-1]?.promocode:j==0"        class="promoItem">{{items.promocode}}</span> <span style="color: transparent;">..</span>
-                                        <span   style="color: transparent;" *ngIf="j>=1? items?.promocode ==  data?.arrayIside[j-1]?.promocode:''">......</span>{{items.stockitemname}}</p>
+                                            *ngIf="j>=1? items?.promocode !=  data?.arrayIside[j-1]?.promocode:j==0"
+                                            class="promoItem">{{items.promocode}}</span> <span
+                                            style="color: transparent;">..</span>
+                                        <span style="color: transparent;"
+                                            *ngIf="j>=1? items?.promocode ==  data?.arrayIside[j-1]?.promocode:''">......</span>{{items.stockitemname}}
+                                    </p>
                                 </td>
                                 <td>
                                     <label class="IteminputBoxes">{{items.uomname}}</label>
@@ -396,12 +301,13 @@
                                 </td>
                                 <td>
                                     <input type="number" [(ngModel)]="currentShipArray[i].arrayIside[j].ReceivedQty"
-                                        placeholder="Enter Quantity" 
-                                    [disabled]="data.currentReceiveshipment==false  ||  ViewOrReceive==false"  [ngClass]="data.currentReceiveshipment==false?'ShipmentinputBoxes':'ShipmentinputBoxes1' "  (keyup)="shipingNow()">
+                                        placeholder="Enter Quantity"
+                                        [disabled]="data.currentReceiveshipment==false  ||  ViewOrReceive==false"
+                                        [ngClass]="data.currentReceiveshipment==false?'ShipmentinputBoxes':'ShipmentinputBoxes1' "
+                                        (keyup)="shipingNow()">
                                 </td>
                                 <td>
-                                    <input type="number" [(ngModel)]="currentShipArray[i].arrayIside[j].LostDamaged" 
-                                    [ngClass]="data.currentReceiveshipment==false?'ShipmentinputBoxes':'ShipmentinputBoxes1' " [disabled]="data.currentReceiveshipment==false  ||  ViewOrReceive==false ">
+                                    <input type="number" class="ShipmentinputBoxes" [(ngModel)]="currentShipArray[i].arrayIside[j].LostDamaged" disabled>
                                 </td>
                                 <!-- <mat-icon class="removeCircle" (click)=removeItem()>
                             remove_circle</mat-icon> -->
@@ -444,7 +350,7 @@
                             <div>
                                 <label>Dispatch Comment</label>
                                 <br>
-                              <p>{{data.invoiceComments}}</p>
+                                <p>{{data.invoiceComments}}</p>
                             </div>
                         </div>
                     </div>
@@ -464,7 +370,7 @@
                             <button type="button" class="saveas-draft" (click)="saveShipment('save')">Save</button>
                         </div>
 
-                        <div class="col-md-5" >
+                        <div class="col-md-5">
                             <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
                         </div>
                     </div>

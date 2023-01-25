@@ -1,5 +1,4 @@
-<i class="fa fa-ellipsis-v" #trigger data-action="toggle" style="cursor: pointer;"></i>
-
+<i class="fa fa-ellipsis-v" #trigger data-action="toggle" style="cursor: pointer;" [ngClass]="{'no-display' : currentActionMenu.length == 0}"></i>
 <div #content *ngIf="isOpen" class="menu-container" [ngClass]="{'single' : currentActionMenu.length == 1 }">
 
   <div (click)="orderedit()" class="menu-item tick" *ngIf="currentActionMenu.indexOf('edit_order') !== -1"> Edit <img

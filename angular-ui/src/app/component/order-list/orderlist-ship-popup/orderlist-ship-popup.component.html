@@ -96,7 +96,7 @@
                                     <th>Tax</th>
                                     <th>Amount</th>
                                 </tr>
-                                <tr [(ngModel)]="itemremoved" *ngFor="let data of itemsArray;let i=index">
+                                <tr *ngFor="let data of itemsArray;let i=index">
                                     <td>
                                         <p class="itemLeft"><span
                                                 class="promoItem" *ngIf=" i>=1? data.promo != itemsArray[i-1].promo:i==0">{{data.promo}}</span><span style="color: transparent;">..</span>
@@ -198,7 +198,7 @@
                                     <th>Shipped Now</th>
 
                                 </tr>
-                                <tr [(ngModel)]="itemremoved" *ngFor="let data1 of data?.firstShipmentarray;let j=index">
+                                <tr  *ngFor="let data1 of data?.firstShipmentarray;let j=index">
                                     <td>
                                         <p class="itemLeft">
                                             <span
@@ -375,7 +375,7 @@
                                     <th>Shipped Till</th>
                                     <th>Shipped Now</th>
                                 </tr>
-                                <tr [(ngModel)]="itemremoved" *ngFor="let data of currentShipment;let i=index">
+                                <tr *ngFor="let data of currentShipment;let i=index">
                                     <td>
                                         <!-- <p class="itemLeft"><span
                                                 class="promoItem">{{data.promocode}}</span>{{data.stockitemname}}</p>
@@ -629,7 +629,7 @@
                                     <th>Tax</th>
                                     <th>Amount</th>
                                 </tr>
-                                <tr [(ngModel)]="itemremoved">
+                                <tr>
                                     <td>
                                         <p class="itemLeft"><span class="promoItem">p1</span>Lays classic blue cla..</p>
                                     </td>
@@ -870,7 +870,7 @@
                                     <th>Shipped Till</th>
                                     <th>Shipped Now</th>
                                 </tr>
-                                <tr [(ngModel)]="itemremoved">
+                                <tr>
                                     <td>
                                         <p class="itemLeft"><span class="promoItem">p1</span>Lays classic blue cla..</p>
                                     </td>

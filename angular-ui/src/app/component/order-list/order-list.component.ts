@@ -30,6 +30,7 @@ import { SharedServiceMaterialListService } from 'src/app/services/shared-servic
 import { OrderlistShipPopupComponent } from './orderlist-ship-popup/orderlist-ship-popup.component';
 import { OrdersReceiveShipmentComponent } from '../orders-receive-shipment/orders-receive-shipment.component';
 import moment from 'moment';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 // import { DateRange } from '@uiowa/date-range-picker';
 
 export interface PeriodicElement {
@@ -323,6 +324,7 @@ export class OrderListComponent implements OnInit {
   loggedUserId:any;
   constructor(public dialog: MatDialog,
     private router: Router,
+    private otherMasterService:OtherMasterService,
     private _liveAnnouncer: LiveAnnouncer,
     private user: UserService,
     public orders: OrdersApisService,
@@ -637,6 +639,13 @@ export class OrderListComponent implements OnInit {
       setTimeout (() => {
         this.orderlistGrid();
      }, 2000);
+     this.otherMasterService.listen().subscribe((m: any) => {
+      console.log("RefreshData",m)
+      setTimeout (() => {
+        this.orderlistGrid();
+     }, 2000);
+     
+    })
      
     })
   }

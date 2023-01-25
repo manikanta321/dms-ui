@@ -4,6 +4,8 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dial
 import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridOptions, GridReadyEvent } from 'ag-grid-community';
 import { Subject } from 'rxjs';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
+import { OtherMasterService } from 'src/app/services/other-master.service';
+import { SharedServiceMaterialListService } from 'src/app/services/shared-service-material-list.service';
 import { ShipOrderSuccessPopupComponent } from 'src/app/ship-order-success-popup/ship-order-success-popup.component';
 import { CustomDatePopupComponent } from '../../orders/custom-date-popup/custom-date-popup.component';
 
@@ -143,6 +145,8 @@ export class OrderlistShipPopupComponent implements OnInit {
   userId: any;
   constructor(public dialog: MatDialog,
     public orders: OrdersApisService,
+    private otherMasterService:OtherMasterService,
+    private materialListService:SharedServiceMaterialListService,
     private dialogRef: MatDialogRef<OrderlistShipPopupComponent>,
 
   ) { }
@@ -411,9 +415,10 @@ export class OrderlistShipPopupComponent implements OnInit {
     // alert('mani')
 
   }
-  saveShipment(item) {
-    localStorage.setItem('AddShipment', 'Add');
-    let filterArray: any = []
+  saveShipment(item){
+    this.materialListService.filter('Register click')
+    localStorage.setItem('AddShipment','Add');
+let filterArray:any=[]
 
     this.currentShipment.forEach(element => {
       let filterobj: any = {
@@ -439,40 +444,42 @@ export class OrderlistShipPopupComponent implements OnInit {
 
     if (item == 'save') {
 
-      let obj: any = {
-        "CustomerPOId": this.shipmentArray.customerPOId,
-
-        "DispachComments": this.DispachComments,
-
-        "CreatedById": this.userId,
-
-        "InvoiceNo": this.invoice,
-
-        "InvoiceDate": this.invoicedateChange1,
-
-        "shipingDate": this.shippingDateChange,
-
-        "InvoiceReceivedDate": this.reciveDateChange,
-        "shipcount": filterArray,
-        "subtotal": this.subtotal,
-        "taxelement": this.taxElement,
-        "packingcharges": this.PackingCharge,
-        "shipingcharges": this.ShippingCharge,
-        "total": this.Total,
-        "AddType": "save",
+  let obj:any={
+    "CustomerPOId":this.shipmentArray.customerPOId,
+    
+    "DispachComments":this.DispachComments,
+    
+    "CreatedById":this.userId,
+    
+    "InvoiceNo":this.invoice,
+    
+    "InvoiceDate":this.invoicedateChange1,
+    
+    "shipingDate":this.shippingDateChange,
+    
+    "InvoiceReceivedDate":this.reciveDateChange,
+    "shipcount":filterArray,
+    "subtotal":this.subtotal,
+    "taxelement":this.taxElement,
+    "packingcharges":this.PackingCharge,
+    "shipingcharges":this.ShippingCharge,
+    "total": this.Total,
+    "AddType":"save",
+    }
+    this.orders.saveShipOrder(obj).subscribe((res)=>{
+      console.log(res.response)
+      this.materialListService.filter('Register click')
+      if(res.response.result =='Succesfully added'){
+        this.materialListService.filter('Register click')
+        // alert('Succesfully added');
+        this.dialog.open(ShipOrderSuccessPopupComponent , {panelClass: 'activeSuccessPop'});
+        this.dialogRef.close();
+      
       }
-      this.orders.saveShipOrder(obj).subscribe((res) => {
-        console.log(res.response)
-        if (res.response.result == 'Succesfully added') {
-          // alert('Succesfully added');
-          this.dialog.open(ShipOrderSuccessPopupComponent, { panelClass: 'activeSuccessPop' });
-          this.dialogRef.close();
-
-        }
-        else {
-
-          alert(res.response.result)
-        }
+      else{
+        
+      alert(res.response.result)
+      }
       })
 
     }

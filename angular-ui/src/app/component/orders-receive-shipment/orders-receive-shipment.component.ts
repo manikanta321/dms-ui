@@ -4,6 +4,7 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dial
 import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridOptions, GridReadyEvent } from 'ag-grid-community';
 import { Subject } from 'rxjs';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 import { ShipOrderSuccessPopupComponent } from 'src/app/ship-order-success-popup/ship-order-success-popup.component';
 import { CustomDatePopupComponent } from '../orders/custom-date-popup/custom-date-popup.component';
 
@@ -146,6 +147,7 @@ export class OrdersReceiveShipmentComponent implements OnInit {
   userId: any;
   constructor(public dialog: MatDialog,
     public orders: OrdersApisService,
+    private otherMasterService:OtherMasterService,
     private dialogRef: MatDialogRef<OrdersReceiveShipmentComponent>,) { }
 
   ngOnInit(): void {
@@ -692,53 +694,52 @@ export class OrdersReceiveShipmentComponent implements OnInit {
 
     if (item == 'save') {
 
-      if (this.checkSaveValid()) {
-        let obj: any = {
-          "Id": Number(this.InvoiceId),
-          "InvoiceReceivedDate": this.reciveDateChange,
-          "ReceiptComments": this.ReceiptComments,
-          "AddType": "save",
-          "CreatedById": this.userId,
-          "Receiveship": Receiveship
-        }
-        this.orders.saveReciveShipment(obj).subscribe((res) => {
-          console.log(res.response)
-          if (res.response.result == 'Succesfully Receiveship order added') {
-            // alert('Succesfully added');
-            this.dialog.open(ShipOrderSuccessPopupComponent, { panelClass: 'activeSuccessPop' });
-            this.dialogRef.close();
-
-          }
-          else {
-
-          }
-        })
-        console.log('objshipment', obj)
-      }
-
+  let obj:any={
+    "Id":Number(this.InvoiceId),
+  "InvoiceReceivedDate":this.reciveDateChange,
+  "ReceiptComments":this.ReceiptComments,
+  "AddType":"save",
+  "CreatedById":this.userId,
+  "Receiveship":Receiveship
+  }
+  this.orders.saveReciveShipment(obj).subscribe((res)=>{
+    console.log(res.response)
+    if(res.response.result =='Succesfully Receiveship order added'){
+      this.otherMasterService.filter('Register click')
+      // alert('Succesfully added');
+      this.dialog.open(ShipOrderSuccessPopupComponent , {panelClass: 'activeSuccessPop'});
+      this.dialogRef.close();
+    
     }
-    else {
-
-      let obj: any = {
-        "Id": Number(this.InvoiceId),
-        "InvoiceReceivedDate": this.reciveDateChange,
-        "ReceiptComments": this.ReceiptComments,
-        "AddType": "complete",
-        "CreatedById": this.userId,
-        "Receiveship": Receiveship
-      }
-      this.orders.saveReciveShipment(obj).subscribe((res) => {
-        console.log(res.response)
-        if (res.response.result == 'Succesfully Receiveship order added') {
-          alert('Succesfully added');
-          this.dialog.open(ShipOrderSuccessPopupComponent, { panelClass: 'activeSuccessPop' });
-          this.dialogRef.close();
-
-        }
-        else {
-
-          alert(res.response.result)
-          this.boxalert = true
+    else{
+    
+    }
+    })
+  console.log('objshipment',obj)
+}
+else{
+  
+let obj:any={
+  "Id":Number(this.InvoiceId),
+"InvoiceReceivedDate":this.reciveDateChange,
+"ReceiptComments":this.ReceiptComments,
+"AddType":"complete",
+"CreatedById":this.userId,
+"Receiveship":Receiveship
+}
+this.orders.saveReciveShipment(obj).subscribe((res)=>{
+  console.log(res.response)
+  if(res.response.result =='Succesfully Receiveship order added'){
+    alert('Succesfully added');
+    this.otherMasterService.filter('Register click')
+    this.dialog.open(ShipOrderSuccessPopupComponent , {panelClass: 'activeSuccessPop'});
+    this.dialogRef.close();
+  
+  }
+  else{
+  
+    alert(res.response.result)
+this.boxalert=true
 
         }
       })

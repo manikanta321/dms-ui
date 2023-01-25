@@ -4,6 +4,7 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dial
 import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridOptions, GridReadyEvent } from 'ag-grid-community';
 import { Subject } from 'rxjs';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 import { ShipOrderSuccessPopupComponent } from 'src/app/ship-order-success-popup/ship-order-success-popup.component';
 import { CustomDatePopupComponent } from '../../orders/custom-date-popup/custom-date-popup.component';
 
@@ -143,6 +144,7 @@ export class OrderlistShipPopupComponent implements OnInit {
   userId:any;
   constructor(public dialog: MatDialog,
     public orders: OrdersApisService,
+    private otherMasterService:OtherMasterService,
     private dialogRef: MatDialogRef<OrderlistShipPopupComponent>,
 
   ) { }
@@ -463,6 +465,7 @@ if(item=='save'){
     this.orders.saveShipOrder(obj).subscribe((res)=>{
       console.log(res.response)
       if(res.response.result =='Succesfully added'){
+        this.otherMasterService.filter('Register click')
         // alert('Succesfully added');
         this.dialog.open(ShipOrderSuccessPopupComponent , {panelClass: 'activeSuccessPop'});
         this.dialogRef.close();

@@ -165,6 +165,18 @@
     margin-top: -51px;
   }
   
+
+
+  td {
+    text-align: right;
+    padding: 3px 0 0 10px;
+  }
+  th{
+    text-align: right;
+    padding: 3px 0 0 10px;
+  }
+  
+  
   .mat-horizontal-stepper-wrapper {
     margin-top: -47px;
   
@@ -1171,14 +1183,14 @@
   }
   
   .itemLeft {
-    width: 150px;
     font-size: 12.5px;
+    text-align: left;
   }
   
   .itemLeft1 {
-    width: 150px;
     font-size: 12.5px;
     margin-left: 22px;
+    text-align: left;
   }
   
   
@@ -1324,14 +1336,7 @@
   tr:nth-child(even) {
     background-color: #dddddd;
   } */
-  th {
-    padding: 10px;
-  }
-  
-  td {
-    text-align: left;
-    padding: 3px 0 0 10px;
-  }
+
   
   .u {
     content: "";

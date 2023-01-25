@@ -95,10 +95,12 @@
                                 <th>Tax</th>
                                 <th>Amount</th>
                             </tr>
-                            <tr [(ngModel)]="itemremoved" *ngFor="let data of itemsArray ">
+                            <tr [(ngModel)]="itemremoved" *ngFor="let data of itemsArray;let i=index ">
                                 <td>
                                     <p class="itemLeft"><span
-                                            class="promoItem">{{data.promo}}</span>{{data.stockitemname?data.stockitemname:''}}
+                                        *ngIf=" i>=1? data.promo != itemsArray[i-1].promo:i==0"   class="promoItem">{{data.promo}}</span><span style="color: transparent;">..</span>
+                                        <span   style="color: transparent;"  *ngIf=" i>=1? data.promo == itemsArray[i-1].promo:''">......</span>
+                                        {{data.stockitemname?data.stockitemname:''}}
                                     </p>
                                 </td>
                                 <td>
@@ -160,7 +162,7 @@
                     </div>
                 </div>
             </div>
-            <div class="top-bottom" *ngFor="let data of shipmentArray.previousshipDetails;let i =index">
+            <!-- <div class="top-bottom" *ngFor="let data of shipmentArray.previousshipDetails;let i =index">
                 <div class="collapsible" (click)="expandShipmentOneDiv()">
                     <div class="row">
                         <div class="col-lg-5">
@@ -266,7 +268,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="top-bottom"  *ngFor="let data of currentShipArray;let i =index"  >
                 <div class="collapsible" (click)="expandShipmentTwoDiv()">
                     <div class="row">
@@ -361,7 +363,8 @@
                             <tr [(ngModel)]="itemremoved" *ngFor="let items of data.arrayIside;let j=index">
                                 <td>
                                     <p class="itemLeft"><span
-                                            class="promoItem">{{items.promocode}}</span>{{items.stockitemname}}</p>
+                                        *ngIf="j>=1? items?.promocode !=  data?.arrayIside[j-1]?.promocode:j==0"        class="promoItem">{{items.promocode}}</span> <span style="color: transparent;">..</span>
+                                        <span   style="color: transparent;" *ngIf="j>=1? items?.promocode ==  data?.arrayIside[j-1]?.promocode:''">......</span>{{items.stockitemname}}</p>
                                 </td>
                                 <td>
                                     <label class="IteminputBoxes">{{items.uomname}}</label>

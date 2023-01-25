@@ -575,7 +575,16 @@
                                     <mat-form-field class="placeh-align">
                                         <mat-label>Select a  date</mat-label>
                                         <input matInput [matDatepicker]="picker"
-                                            (dateChange)="dateChange($event)" [min]="minDate"  [(ngModel)]="startdate">
+                                            (dateChange)="dateChange($event)" [min]="minDate"  [(ngModel)]="startdate" name="requireDate" #requireDate="ngModel"
+                                            [(ngModel)]="startdate" required>
+                                        <p style="padding: 0px;"
+                                            *ngIf="requireDate.invalid && (requireDate.dirty || requireDate.touched)" class="alert">
+
+                                            <span style="color:red;position: absolute;margin-top: 7px;"
+                                                *ngIf="requireDate.errors?.['required']">
+                                                *Requirement Date is required
+                                            </span>
+                                        </p>
                                         <mat-datepicker-toggle matSuffix [for]="picker">
                                             <mat-icon matDatepickerToggleIcon>
                                                 <img src="assets/img/calender2.png" class="calendarToggle">

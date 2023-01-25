@@ -5,8 +5,12 @@
   color: #999;
 
 }
-
-
+.errormsg{
+  color:red;
+  position: relative;
+  font-size: 13px;
+  bottom: 11px;
+}
 .my_Datepicker {
   border-radius: 2px;
   font-family: 'Gilroy';

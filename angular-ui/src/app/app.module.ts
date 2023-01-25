@@ -199,6 +199,7 @@ import { OrderReceiptsBulkUploadComponent } from './orders-receipts/order-receip
 import { OrdersReceiveShipmentComponent } from './component/orders-receive-shipment/orders-receive-shipment.component';
 import { AddorderproSuccessPopupComponent } from './component/orders/addorderpromotions/addorderpro-success-popup/addorderpro-success-popup.component';
 import { IconHoverComponent } from './component/icon-hover/icon-hover.component';
+import { ShipOrderSuccessPopupComponent } from './ship-order-success-popup/ship-order-success-popup.component';
 
 @NgModule({
   declarations: [
@@ -491,6 +492,7 @@ import { IconHoverComponent } from './component/icon-hover/icon-hover.component'
           OrdersReceiveShipmentComponent,
           AddorderproSuccessPopupComponent,
           IconHoverComponent,
+          ShipOrderSuccessPopupComponent,
           
   ],
   imports: [

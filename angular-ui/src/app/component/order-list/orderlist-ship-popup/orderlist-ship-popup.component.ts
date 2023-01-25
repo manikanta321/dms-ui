@@ -4,6 +4,7 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dial
 import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridOptions, GridReadyEvent } from 'ag-grid-community';
 import { Subject } from 'rxjs';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
+import { ShipOrderSuccessPopupComponent } from 'src/app/ship-order-success-popup/ship-order-success-popup.component';
 import { CustomDatePopupComponent } from '../../orders/custom-date-popup/custom-date-popup.component';
 
 
@@ -341,7 +342,7 @@ console.log('this.currentShipment', this.currentShipment)
 
   }
   saveShipment(item){
-
+    localStorage.setItem('AddShipment','Add');
 let filterArray:any=[]
 
 this.currentShipment.forEach(element=>{
@@ -393,11 +394,13 @@ if(item=='save'){
     this.orders.saveShipOrder(obj).subscribe((res)=>{
       console.log(res.response)
       if(res.response.result =='Succesfully added'){
-        alert('Succesfully added');
+        // alert('Succesfully added');
+        this.dialog.open(ShipOrderSuccessPopupComponent , {panelClass: 'activeSuccessPop'});
         this.dialogRef.close();
       
       }
       else{
+        
       alert(res.response.result)
       }
       })
@@ -405,7 +408,7 @@ if(item=='save'){
 }
 else{
 
-  
+
 let obj:any={
   "CustomerPOId":this.shipmentArray.customerPOId,
   
@@ -432,6 +435,7 @@ let obj:any={
     console.log(res.response)
     if(res.response.result =='Succesfully added'){
       alert('Succesfully added');
+ 
       this.dialogRef.close();
     
     }

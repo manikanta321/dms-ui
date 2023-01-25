@@ -4,6 +4,7 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dial
 import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridOptions, GridReadyEvent } from 'ag-grid-community';
 import { Subject } from 'rxjs';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
+import { ShipOrderSuccessPopupComponent } from 'src/app/ship-order-success-popup/ship-order-success-popup.component';
 import { CustomDatePopupComponent } from '../orders/custom-date-popup/custom-date-popup.component';
 
 
@@ -623,7 +624,7 @@ console.log('this.currentShipment', this.currentShipment)
 
   }
   saveShipment(item){
-
+    localStorage.setItem('AddShipment','edit');
 let Receiveship:any=[]
 
 
@@ -660,7 +661,8 @@ if(item=='save'){
   this.orders.saveReciveShipment(obj).subscribe((res)=>{
     console.log(res.response)
     if(res.response.result =='Succesfully Receiveship order added'){
-      alert('Succesfully added');
+      // alert('Succesfully added');
+      this.dialog.open(ShipOrderSuccessPopupComponent , {panelClass: 'activeSuccessPop'});
       this.dialogRef.close();
     
     }
@@ -684,6 +686,7 @@ this.orders.saveReciveShipment(obj).subscribe((res)=>{
   console.log(res.response)
   if(res.response.result =='Succesfully Receiveship order added'){
     alert('Succesfully added');
+    this.dialog.open(ShipOrderSuccessPopupComponent , {panelClass: 'activeSuccessPop'});
     this.dialogRef.close();
   
   }

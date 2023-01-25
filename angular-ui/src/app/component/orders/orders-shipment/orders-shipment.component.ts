@@ -14,6 +14,7 @@ import { OrderActionShipmentComponent } from '../order-action-shipment/order-act
 import { ActivatedRoute } from '@angular/router';
 import { OrderlistActionPopupComponent } from '../../order-list/orderlist-action-popup/orderlist-action-popup.component';
 import { OrdersReceiveShipmentComponent } from '../../orders-receive-shipment/orders-receive-shipment.component';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 
 @Component({
   selector: 'app-orders-shipment',
@@ -155,7 +156,7 @@ export class OrdersShipmentComponent implements OnInit {
     public orders:OrdersApisService,
     private user: UserService,
     private route: ActivatedRoute,
-
+    private otherMasterService:OtherMasterService,
     private fb: FormBuilder) { 
       this.route.data.subscribe(v => {
         this.currentPageName = v['key'];
@@ -200,6 +201,13 @@ export class OrdersShipmentComponent implements OnInit {
     
   }
   onFirstDataRendered(params: FirstDataRenderedEvent) {
+    this.otherMasterService.listen().subscribe((m: any) => {
+      console.log("RefreshData",m)
+      setTimeout (() => {
+        this.shipmentList();
+     }, 2000);
+     
+    })
     params.api.paginationGoToPage(4);
   }
   onCellValueChanged(event: CellValueChangedEvent) {

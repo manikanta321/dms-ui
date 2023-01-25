@@ -47,6 +47,8 @@ export class OrderlistShipPopupComponent implements OnInit {
   itemsArray:any=[]
   currentShipment: any = [];
   // minDate = new Date();
+  previousshipDetailsArray:any=[]
+  minDate = new Date();
   maxDate = new Date();
   public popupParent: HTMLElement = document.body;
   public rowData5: any = [{ date: "14-Oct-22", createdBy: "Bruce Wayne", action: "Creation", subAction: "Save Draft", invoiceNo: "23AB67", comments: "Lorem ipsum dsjh sdhsujdi " }]
@@ -182,7 +184,7 @@ let obj:any={
       console.log('element1',this.itemsArray)
       
           })
-      console.log('shipmentArray', this.shipmentArray);
+      console.log('element1', this.itemsArray);
     
 this.subtotal=Number(this.shipmentArray.currentshipDetails.subTotal);
 this.taxElement=Number(this.shipmentArray.currentshipDetails.taxElement);
@@ -225,7 +227,74 @@ let mainArray:any=[];
 
       })
 
+
+
+      this.shipmentArray.previousshipDetails.forEach(element=>{
+
+
+element.promodetails.forEach(element1=>{
+    let firstShipmentarray:any=[]
+
+  element1.itemDetailsship.forEach(element2=>{
+
+
+let shipmentObj:any=
+  {
+    "customerPOProductId": element2.customerPOProductId,
+    "stockitemid":  element2.stockitemid,
+    "stockitemname":  element2.stockitemname,
+    "promotioncode":  element2.promotioncode==null?'': element2.promotioncode,
+    "productSKUName": element2.productSKUName==null?'': element2.productSKUName,
+    "uomid": element2.uomid==null?'': element2.uomid,
+    "uomname": element2.uomname==null?'': element2.uomname,
+    "quantity": element2.quantity==null?'': element2.quantity,
+    "stock": element2.customerPOProductId==null?'': element2.customerPOProductId,
+    "price": element2.price==null?'': element2.price,
+    "discount": element2.discount==null?'': element2.discount,
+    "finalPrice": element2.finalPrice==null?'': element2.finalPrice,
+    "finalValue": element2.finalValue==null?'': element2.finalValue,
+    "taxvalue": element2.taxvalue==null?'': element2.taxvalue,
+    "amount": element2.amount==null?'': element2.amount,
+    "taxid": element2.taxid==null?'': element2.taxid,
+    "shipedTill": element2.shipedTill==null?'': element2.shipedTill,
+    "shipingNow": element2.shipingNow==null?'': element2.shipingNow,
+    "promocode":element1.promocode,
+
+}
+
+
+firstShipmentarray.push(shipmentObj)
+console.log('firstShipmentarray',firstShipmentarray);
+  })
+ let object1:any={
+
+  "shipName":element.shipName,
+  "invoiceno":element.invoiceno,
+  "firstShipmentarray":firstShipmentarray,
+  "pakingCharge":element.pakingCharge,
+   "shipingcharge":element.shipingcharge,
+   "subTotal":element.subTotal,
+   "taxElement":element.taxElement,
+   "total":element.total,
+
+}
+
+  this.previousshipDetailsArray.push(object1)
+
+})
+
+      })
+
+      
+
+
+
+
+
+
+
     })
+console.log('oldshipment',this.previousshipDetailsArray)
     console.log('currentShipment', this.currentShipment)
     // debugger
 

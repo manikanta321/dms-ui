@@ -1,7 +1,7 @@
 <!-- <p>orderlist-ship-popup works!</p> -->
 <div *ngIf="!viewList" class="font">
-    <div class="main">
-        <div class="container promotionpopup-scroll">
+    <div class="main" style="max-width: 95vw;" >
+        <div class="promotionpopup-scroll">
             <div class="addUser">
                 <img class="print-img" src="../../../assets/material/print-img.svg" alt="">
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
@@ -86,7 +86,7 @@
                         <div class="section mt-1">
                             <table>
                                 <tr>
-                                    <th>Item</th>
+                                    <th class="items1">Item</th>
                                     <th>UoM</th>
                                     <th>Order Qty</th>
                                     <th>Stock</th>
@@ -96,10 +96,15 @@
                                     <th>Tax</th>
                                     <th>Amount</th>
                                 </tr>
-                                <tr [(ngModel)]="itemremoved" *ngFor="let data of itemsArray ">
+                                <tr [(ngModel)]="itemremoved" *ngFor="let data of itemsArray;let i=index">
                                     <td>
                                         <p class="itemLeft"><span
-                                                class="promoItem">{{data.promo}}</span>{{data.stockitemname?data.stockitemname:''}}
+                                                class="promoItem" *ngIf=" i>=1? data.promo != itemsArray[i-1].promo:i==0">{{data.promo}}</span><span style="color: transparent;">..</span>
+                                                <!-- <span
+                                                class="promoItem" *ngIf="i==0">{{data.promo}}</span> -->
+                                                <span   style="color: transparent;"  *ngIf=" i>=1? data.promo == itemsArray[i-1].promo:''">......</span>
+                                                
+                                                {{data.stockitemname?data.stockitemname:''}}
                                         </p>
                                     </td>
                                     <td>
@@ -161,7 +166,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="top-bottom" *ngFor="let data of shipmentArray.previousshipDetails;let i =index">
+                <div class="top-bottom" *ngFor="let data of previousshipDetailsArray;let i =index">
                     <div class="collapsible" (click)="expandShipmentOneDiv()">
                         <div class="row">
                             <div class="col-lg-5">
@@ -180,7 +185,7 @@
                         <div class="section mt-1">
                             <table>
                                 <tr>
-                                    <th>Item</th>
+                                    <th class="items1">Item</th>
                                     <th>UoM</th>
                                     <th>Order Qty</th>
                                     <th>Stock</th>
@@ -193,11 +198,18 @@
                                     <th>Shipped Now</th>
 
                                 </tr>
-                                <tr [(ngModel)]="itemremoved" *ngFor="let data1 of data?.promodetails[0].itemDetailsship;let j =index">
+                                <tr [(ngModel)]="itemremoved" *ngFor="let data1 of data?.firstShipmentarray;let j=index">
                                     <td>
-                                        <p class="itemLeft"><span
-                                                class="promoItem">{{data?.promodetails[0]?.promocode}}</span>{{data1.stockitemname}}
+                                        <p class="itemLeft">
+                                            <span
+                                                class="promoItem" *ngIf=" j>=1? data1.promocode != data.firstShipmentarray[j-1].promocode:j==0" >{{data1?.promocode}}</span>
+                                                <span   style="color: transparent;"  *ngIf=" j>=1? data1.promocode == data.firstShipmentarray[j-1].promocode:''">......</span>
+                                            
+                                            {{data1.stockitemname}}
                                         </p>
+
+
+                                        
                                     </td><td><label
                                             class="IteminputBoxes">{{data1?.uomname}}</label>
                                         </td><td>
@@ -351,7 +363,7 @@
                         <div class="section mt-1">
                             <table>
                                 <tr>
-                                    <th>Item</th>
+                                    <th class="items1">Item</th>
                                     <th>UoM</th>
                                     <th>Order Qty</th>
                                     <th>Stock</th>
@@ -365,8 +377,19 @@
                                 </tr>
                                 <tr [(ngModel)]="itemremoved" *ngFor="let data of currentShipment;let i=index">
                                     <td>
-                                        <p class="itemLeft"><span
+                                        <!-- <p class="itemLeft"><span
                                                 class="promoItem">{{data.promocode}}</span>{{data.stockitemname}}</p>
+
+ -->
+
+                                                <p class="itemLeft"><span
+                                                    class="promoItem" *ngIf=" i>=1? data.promocode != currentShipment[i-1].promocode:i==0">{{data.promocode}}</span><span style="color: transparent;">..</span>
+                                                    <!-- <span
+                                                    class="promoItem" *ngIf="i==0">{{data.promo}}</span> -->
+                                                    <span   style="color: transparent;"  *ngIf=" i>=1? data.promocode == currentShipment[i-1].promocode:''">........</span>
+                                                    
+                                                    {{data.stockitemname?data.stockitemname:''}}
+                                            </p>
                                     </td>
                                     <td>
                                         <label class="IteminputBoxes">{{data.uomname}}</label>

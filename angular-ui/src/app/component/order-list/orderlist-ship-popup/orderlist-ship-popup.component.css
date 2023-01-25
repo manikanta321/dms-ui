@@ -6,7 +6,7 @@
 
 .items1{
   position: relative;
-  right: 30px;
+  right: 41px;
 }
 
 .mat-form-field::placeholder {
@@ -1179,6 +1179,7 @@ height: 5px;
 
 .itemLeft {
   font-size: 12.5px;
+  text-align: left;
 }
 
 .itemLeft1 {

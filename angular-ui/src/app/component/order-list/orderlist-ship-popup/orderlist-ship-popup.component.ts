@@ -5,6 +5,7 @@ import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridOpt
 import { Subject } from 'rxjs';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { OtherMasterService } from 'src/app/services/other-master.service';
+import { SharedServiceMaterialListService } from 'src/app/services/shared-service-material-list.service';
 import { ShipOrderSuccessPopupComponent } from 'src/app/ship-order-success-popup/ship-order-success-popup.component';
 import { CustomDatePopupComponent } from '../../orders/custom-date-popup/custom-date-popup.component';
 
@@ -145,6 +146,7 @@ export class OrderlistShipPopupComponent implements OnInit {
   constructor(public dialog: MatDialog,
     public orders: OrdersApisService,
     private otherMasterService:OtherMasterService,
+    private materialListService:SharedServiceMaterialListService,
     private dialogRef: MatDialogRef<OrderlistShipPopupComponent>,
 
   ) { }
@@ -413,6 +415,7 @@ console.log('this.currentShipment', this.currentShipment)
 
   }
   saveShipment(item){
+    this.materialListService.filter('Register click')
     localStorage.setItem('AddShipment','Add');
 let filterArray:any=[]
 
@@ -464,8 +467,9 @@ if(item=='save'){
     }
     this.orders.saveShipOrder(obj).subscribe((res)=>{
       console.log(res.response)
+      this.materialListService.filter('Register click')
       if(res.response.result =='Succesfully added'){
-        this.otherMasterService.filter('Register click')
+        this.materialListService.filter('Register click')
         // alert('Succesfully added');
         this.dialog.open(ShipOrderSuccessPopupComponent , {panelClass: 'activeSuccessPop'});
         this.dialogRef.close();

@@ -50,6 +50,7 @@ export class OrdersReceiptsComponent implements OnInit {
   geoAllarray:any  = [];
   geogragphies:any = [];
   dropdownSettings1: IDropdownSettings = {};
+  loggedUserId:any;
   columnDefs: (ColDef| ColGroupDef)[] = [
     {  headerName: "Shipment No.",
     field: 'shipmentNumber',      tooltipField:"shipmentNumber",
@@ -154,6 +155,8 @@ export class OrdersReceiptsComponent implements OnInit {
     private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.loggedUserId = localStorage.getItem('logInId');
+
     this.myForm = this.fb.group({
       city: [this.selectedItems]
     });
@@ -266,7 +269,8 @@ export class OrdersReceiptsComponent implements OnInit {
         ShipmentEndDate:this.endDateShip,
         InvoiceStartDate:this.startDateInvoice,
         InvoiceEndDate:this.endDateInvoice,
-        search:this.searchText
+        search:this.searchText,
+        currentuserId:this.loggedUserId
       }
       this.orders.getOrderReceiptList(data).subscribe((res) => {
         this.receiptDatalist = res.response;
@@ -285,7 +289,8 @@ export class OrdersReceiptsComponent implements OnInit {
         ShipmentEndDate:this.endDateShip,
         InvoiceStartDate:this.startDateInvoice,
         InvoiceEndDate:this.endDateInvoice,
-        search:this.searchText
+        search:this.searchText,
+        currentuserId:this.loggedUserId
       }
       this.orders.getOrderReceiptList(data).subscribe((res) => {
         this.receiptDatalist = res.response;
@@ -334,7 +339,8 @@ export class OrdersReceiptsComponent implements OnInit {
         ShipmentEndDate:this.endDateShip,
         InvoiceStartDate:this.startDateInvoice,
         InvoiceEndDate:this.endDateInvoice,
-        search:this.searchText
+        search:this.searchText,
+        currentuserId:this.loggedUserId
       }
       this.orders.getOrderReceiptList(data).subscribe((res) => {
         this.receiptDatalist = res.response;
@@ -352,7 +358,8 @@ export class OrdersReceiptsComponent implements OnInit {
         ShipmentEndDate:this.endDateShip,
         InvoiceStartDate:this.startDateInvoice,
         InvoiceEndDate:this.endDateInvoice,
-        search:this.searchText
+        search:this.searchText,
+        currentuserId:this.loggedUserId
       }
       this.orders.getOrderReceiptList(data).subscribe((res) => {
         this.receiptDatalist = res.response;
@@ -368,7 +375,8 @@ export class OrdersReceiptsComponent implements OnInit {
         ShipmentEndDate:this.endDateShip,
         InvoiceStartDate:this.startDateInvoice,
         InvoiceEndDate:this.endDateInvoice,
-        search:this.searchText
+        search:this.searchText,
+        currentuserId:this.loggedUserId
       }
       this.orders.getOrderReceiptList(data).subscribe((res) => {
         this.receiptDatalist = res.response;
@@ -385,7 +393,8 @@ export class OrdersReceiptsComponent implements OnInit {
         ShipmentEndDate:this.endDateShip,
         InvoiceStartDate:this.startDateInvoice,
         InvoiceEndDate:this.endDateInvoice,
-        search:this.searchText
+        search:this.searchText,
+        currentuserId:this.loggedUserId
       }
       this.orders.getOrderReceiptList(data).subscribe((res) => {
         this.receiptDatalist = res.response;
@@ -400,7 +409,8 @@ export class OrdersReceiptsComponent implements OnInit {
         ShipmentEndDate:"",
         InvoiceStartDate:"",
         InvoiceEndDate:"",
-        search:""
+        search:"",
+        currentuserId:this.loggedUserId
       }
       this.orders.getOrderReceiptList(data).subscribe((res) => {
         this.receiptDatalist = res.response;
@@ -439,7 +449,8 @@ export class OrdersReceiptsComponent implements OnInit {
         ShipmentEndDate:this.endDateShip,
         InvoiceStartDate:this.startDateInvoice,
         InvoiceEndDate:this.endDateInvoice,
-        search:this.searchText
+        search:this.searchText,
+        currentuserId:this.loggedUserId
       }
       this.orders.getOrderReceiptList(data).subscribe((res) => {
         this.receiptDatalist = res.response;
@@ -458,7 +469,8 @@ export class OrdersReceiptsComponent implements OnInit {
         ShipmentEndDate:this.endDateShip,
         InvoiceStartDate:this.startDateInvoice,
         InvoiceEndDate:this.endDateInvoice,
-        search:this.searchText
+        search:this.searchText,
+        currentuserId:this.loggedUserId
       }
       this.orders.getOrderReceiptList(data).subscribe((res) => {
         this.receiptDatalist = res.response;
@@ -474,7 +486,8 @@ export class OrdersReceiptsComponent implements OnInit {
         ShipmentEndDate:this.endDateShip,
         InvoiceStartDate:this.startDateInvoice,
         InvoiceEndDate:this.endDateInvoice,
-        search:this.searchText
+        search:this.searchText,
+        currentuserId:this.loggedUserId
       }
       this.orders.getOrderReceiptList(data).subscribe((res) => {
         this.receiptDatalist = res.response;
@@ -491,7 +504,8 @@ export class OrdersReceiptsComponent implements OnInit {
         ShipmentEndDate:this.endDateShip,
         InvoiceStartDate:this.startDateInvoice,
         InvoiceEndDate:this.endDateInvoice,
-        search:this.searchText
+        search:this.searchText,
+        currentuserId:this.loggedUserId
       }
       this.orders.getOrderReceiptList(data).subscribe((res) => {
         this.receiptDatalist = res.response;
@@ -508,7 +522,8 @@ export class OrdersReceiptsComponent implements OnInit {
         ShipmentEndDate:this.endDateShip,
         InvoiceStartDate:this.startDateInvoice,
         InvoiceEndDate:this.endDateInvoice,
-        search:this.searchText
+        search:this.searchText,
+        currentuserId:this.loggedUserId
       }
       this.orders.getOrderReceiptList(data).subscribe((res) => {
         this.receiptDatalist = res.response;
@@ -540,7 +555,8 @@ export class OrdersReceiptsComponent implements OnInit {
         ShipmentEndDate:this.endDateShip,
         InvoiceStartDate:this.startDateInvoice,
         InvoiceEndDate:this.endDateInvoice,
-        search:this.searchText
+        search:this.searchText,
+        currentuserId:this.loggedUserId
       }
       this.orders.getOrderReceiptList(data).subscribe((res) => {
         this.receiptDatalist = res.response;

@@ -1,7 +1,7 @@
 <!-- <p>orderlist-ship-popup works!</p> -->
 <div *ngIf="!viewList" class="font">
-    <div class="main">
-        <div class="container promotionpopup-scroll" style="max-width: 1346px;">
+    <div class="main" style="max-width: 95vw;" >
+        <div class="promotionpopup-scroll">
             <div class="addUser">
                 <img class="print-img" src="../../../assets/material/print-img.svg" alt="">
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
@@ -28,20 +28,20 @@
                             <div class="dealerr">
                                 <label class="DealerInfo-label">Dealer <span class="astr"></span></label>
                                 <br>
-                                <label class="DescInfo-label">{{shipmentArray.customername}}</label>
+                                <label class="DescInfo-label">{{shipmentArray?.customername}}</label>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="geographyy">
                                 <label class="DealerInfo-label">Geography <span class="astr"></span></label>
                                 <br>
-                                <label class="DescInfo-label">{{shipmentArray.geographyName}}</label>
+                                <label class="DescInfo-label">{{shipmentArray?.geographyName}}</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="billingAdrs">
                                 <label class="DealerInfo-label">Billing Address <span class="astr"></span></label>
-                                <label class="DescInfo-label">{{shipmentArray.billngAddress}}</label>
+                                <label class="DescInfo-label">{{shipmentArray?.billngAddress}}</label>
                             </div>
                         </div>
                     </div>
@@ -51,20 +51,20 @@
                             <div class="dealerReff">
                                 <label class="DealerInfo-label">Dealer Reference No <span class="astr"></span></label>
                                 <br>
-                                <label class="DescInfo-label">{{shipmentArray.dealerrefno}}</label>
+                                <label class="DescInfo-label">{{shipmentArray?.dealerrefno}}</label>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="companyReff">
                                 <label class="DealerInfo-label">Company Reference No <span class="astr"></span></label>
                                 <br>
-                                <label class="DescInfo-label">{{shipmentArray.comrefno}}</label>
+                                <label class="DescInfo-label">{{shipmentArray?.comrefno}}</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="shippingAdrs">
                                 <label class="DealerInfo-label">Shipping Address <span class="astr"></span></label>
-                                <label class="DescInfo-label">{{shipmentArray.shippingAddress}}</label>
+                                <label class="DescInfo-label">{{shipmentArray?.shippingAddress}}</label>
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                         <div class="section mt-1">
                             <table>
                                 <tr>
-                                    <th>Item</th>
+                                    <th class="items1">Item</th>
                                     <th>UoM</th>
                                     <th>Order Qty</th>
                                     <th>Stock</th>
@@ -96,35 +96,40 @@
                                     <th>Tax</th>
                                     <th>Amount</th>
                                 </tr>
-                                <tr [(ngModel)]="itemremoved" *ngFor="let data of itemsArray ">
+                                <tr *ngFor="let data of itemsArray;let i=index">
                                     <td>
                                         <p class="itemLeft"><span
-                                                class="promoItem">{{data.promo}}</span>{{data.stockitemname?data.stockitemname:''}}
+                                                class="promoItem" *ngIf=" i>=1? data.promo != itemsArray[i-1].promo:i==0">{{data.promo}}</span><span style="color: transparent;">..</span>
+                                                <!-- <span
+                                                class="promoItem" *ngIf="i==0">{{data.promo}}</span> -->
+                                                <span   style="color: transparent;"  *ngIf=" i>=1? data.promo == itemsArray[i-1].promo:''">......</span>
+                                                
+                                                {{data.stockitemname?data.stockitemname:''}}
                                         </p>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.uomname}}</label>
+                                        <label class="IteminputBoxes">{{data?.uomname}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.quantity}}</label>
+                                        <label class="IteminputBoxes">{{data?.quantity}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.stock}}</label>
+                                        <label class="IteminputBoxes">{{data?.stock}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.price}}</label>
+                                        <label class="IteminputBoxes">{{data?.price}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.discount}}</label>
+                                        <label class="IteminputBoxes">{{data?.discount}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.finalValue}}</label>
+                                        <label class="IteminputBoxes">{{data?.finalValue}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.taxvalue}}</label>
+                                        <label class="IteminputBoxes">{{data?.taxvalue}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.amount}}</label>
+                                        <label class="IteminputBoxes">{{data?.amount}}</label>
                                     </td>
                                     <!-- <mat-icon class="removeCircle" (click)=removeItem()>
                                     remove_circle</mat-icon> -->
@@ -138,37 +143,37 @@
                                 <div class="innerTotal d-flex">
                                     <div class="subitem">
                                         <p class="alltotals">Sub Total</p>
-                                        <span>{{shipmentArray.subTotal}}</span>
+                                        <span>{{shipmentArray?.subTotal}}</span>
                                     </div>
                                     <div class="subitem">
                                         <p class="alltotals">Tax Element</p>
-                                        <span>{{shipmentArray.taxElement}}</span>
+                                        <span>{{shipmentArray?.taxElement}}</span>
                                     </div>
                                     <div class="subitem">
                                         <p class="alltotals">Packing Charge</p>
-                                        <span>{{shipmentArray.pakingCharge}}</span>
+                                        <span>{{shipmentArray?.pakingCharge}}</span>
                                     </div>
                                     <div class="subitem">
                                         <p class="alltotals">Shipping Charge</p>
-                                        <span>{{shipmentArray.shipingcharge}}</span>
+                                        <span>{{shipmentArray?.shipingcharge}}</span>
                                     </div>
                                     <div class="subitem">
                                         <p class="alltotals">Total</p>
-                                        <span>{{shipmentArray.total}}</span>
+                                        <span>{{shipmentArray?.total}}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="top-bottom" *ngFor="let data of shipmentArray.previousshipDetails;let i =index">
+                <div class="top-bottom" *ngFor="let data of previousshipDetailsArray;let i =index">
                     <div class="collapsible" (click)="expandShipmentOneDiv()">
                         <div class="row">
                             <div class="col-lg-5">
-                                <p class="label-cls">{{data.shipName}}</p>
+                                <p class="label-cls">{{data?.shipName}}</p>
                             </div>
                             <div class="col-lg-6">
-                                <p class="label-cls">Invoice no: {{data.invoiceno}}</p>
+                                <p class="label-cls">Invoice no: {{data?.invoiceno}}</p>
                             </div>
                             <div class="col-lg-1">
                                 <img [src]="image3" class="expand-arrow" alt="add-user-btn">
@@ -180,7 +185,7 @@
                         <div class="section mt-1">
                             <table>
                                 <tr>
-                                    <th>Item</th>
+                                    <th class="items1">Item</th>
                                     <th>UoM</th>
                                     <th>Order Qty</th>
                                     <th>Stock</th>
@@ -193,11 +198,18 @@
                                     <th>Shipped Now</th>
 
                                 </tr>
-                                <tr [(ngModel)]="itemremoved" *ngFor="let data1 of data?.promodetails[0]?.itemDetailsship;let j =index">
+                                <tr  *ngFor="let data1 of data?.firstShipmentarray;let j=index">
                                     <td>
-                                        <p class="itemLeft"><span
-                                                class="promoItem">{{data?.promodetails[0]?.promocode}}</span>{{data1?.stockitemname}}
+                                        <p class="itemLeft">
+                                            <span
+                                                class="promoItem" *ngIf=" j>=1? data1.promocode != data.firstShipmentarray[j-1].promocode:j==0" >{{data1?.promocode}}</span>
+                                                <span   style="color: transparent;"  *ngIf=" j>=1? data1.promocode == data.firstShipmentarray[j-1].promocode:''">......</span>
+                                            
+                                            {{data1.stockitemname}}
                                         </p>
+
+
+                                        
                                     </td><td><label
                                             class="IteminputBoxes">{{data1?.uomname}}</label>
                                         </td><td>
@@ -243,19 +255,19 @@
 
                                     <div class="subitem">
                                         <p class="alltotals">Tax Element</p>
-                                        <span>{{data.taxElement}}</span>
+                                        <span>{{data?.taxElement}}</span>
                                     </div>
                                     <div class="subitem">
                                         <p class="alltotals">Packing Charge</p>
-                                        <span>{{data.pakingCharge}}</span>
+                                        <span>{{data?.pakingCharge}}</span>
                                     </div>
                                     <div class="subitem">
                                         <p class="alltotals">Shipping Charge</p>
-                                        <span>{{shipmentArray.shipingcharge}}</span>
+                                        <span>{{shipmentArray?.shipingcharge}}</span>
                                     </div>
                                     <div class="subitem">
                                         <p class="alltotals">Total</p>
-                                        <span>{{shipmentArray.total}}</span>
+                                        <span>{{shipmentArray?.total}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -282,7 +294,10 @@
                             <div class="col-lg-3">
                                 <label>Invoice No.<span class="astr">*</span></label>
                                 <div class="input-datepicker mr-3">
-                                    <input type="text" [(ngModel)]="invoice" class="invoice" />
+                                    <input id="invoiceNo" name="invoiceNo" type="text" [(ngModel)]="invoice" #invoiceNo="ngModel" class="invoice" />
+                                    <span style="color:red;position: relative; top: 12px;"*ngIf="invoiceNo.invalid && (invoiceNo.dirty || invoiceNo.touched)">
+                                        *Invoice No. is required 
+                                     </span>
                                 </div>
                                 <!-- <app-customdatepicker [showInputField]="true" class="input-datepicker" label="Enter" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"><span class="astr">*</span></app-customdatepicker> -->
                                 <!-- <input matInput placeholder="Enter" #input class="form-control container input-box" > -->
@@ -292,8 +307,13 @@
                                     <label>Invoice Date <span class="astr">*</span></label><br>
                                     <mat-form-field class="placeh-align">
                                         <mat-label> Invoice date</mat-label>
-                                        <input matInput [matDatepicker]="picker1" [formControl]="startDate"
+                                        <input matInput id="invoiceDate" name="invoiceDate" required placeholder="Invoice Date" [matDatepicker]="picker1" [max]="maxDate"  [(ngModel)]="startDate" #invoiceDate="ngModel"
                                             (dateChange)="invoicedateChange($event)">
+                                            <!-- <p  style="margin-bottom:-22px;padding: 0px;" *ngIf="invoiceDate.invalid && (invoiceDate.dirty || invoiceDate.touched)"
+                                            class="alert"> -->
+                                            <span style="color:red;position: relative; top: 12px;" *ngIf="invoiceDate.invalid && (invoiceDate.dirty || invoiceDate.touched)">
+                                                *Invoice date is required 
+                                             </span>
                                         <mat-datepicker-toggle matSuffix [for]="picker1">
                                             <mat-icon matDatepickerToggleIcon style="margin-left: 0px;">
                                                 <img src="assets/img/calender2.png" class="calendarToggle">
@@ -307,9 +327,12 @@
                                 <div class="myDatepicker promotion-datepicker">
                                     <label>Shipping Date<span class="astr">*</span></label><br>
                                     <mat-form-field class="placeh-align">
-                                        <mat-label> Shipping date</mat-label>
-                                        <input matInput [matDatepicker]="picker2" [formControl]="shippingDate"
-                                            (dateChange)="shippingDatechange($event)">
+                                        <!-- <mat-label> Shipping date</mat-label> -->
+                                        <input id="shippingDates" name="shippingDates" placeholder="Shipping date" required matInput [matDatepicker]="picker2" [max]="maxDate"
+                                            (dateChange)="shippingDatechange($event)"[(ngModel)]="shippingDate" #shippingDates="ngModel">
+                                            <span style="color:red;position: relative; top: 12px;"*ngIf="shippingDates.invalid && (shippingDates.dirty || shippingDates.touched)">
+                                                *Shipping date is required 
+                                             </span>
                                         <mat-datepicker-toggle matSuffix [for]="picker2">
                                             <mat-icon matDatepickerToggleIcon style="margin-left: 0px;">
                                                 <img src="assets/img/calender2.png" class="calendarToggle">
@@ -340,7 +363,7 @@
                         <div class="section mt-1">
                             <table>
                                 <tr>
-                                    <th>Item</th>
+                                    <th class="items1">Item</th>
                                     <th>UoM</th>
                                     <th>Order Qty</th>
                                     <th>Stock</th>
@@ -352,34 +375,45 @@
                                     <th>Shipped Till</th>
                                     <th>Shipped Now</th>
                                 </tr>
-                                <tr [(ngModel)]="itemremoved" *ngFor="let data of currentShipment;let i=index">
+                                <tr *ngFor="let data of currentShipment;let i=index">
                                     <td>
-                                        <p class="itemLeft"><span
+                                        <!-- <p class="itemLeft"><span
                                                 class="promoItem">{{data.promocode}}</span>{{data.stockitemname}}</p>
+
+ -->
+
+                                                <p class="itemLeft"><span
+                                                    class="promoItem" *ngIf=" i>=1? data.promocode != currentShipment[i-1].promocode:i==0">{{data.promocode}}</span><span style="color: transparent;">..</span>
+                                                    <!-- <span
+                                                    class="promoItem" *ngIf="i==0">{{data.promo}}</span> -->
+                                                    <span   style="color: transparent;"  *ngIf=" i>=1? data.promocode == currentShipment[i-1].promocode:''">........</span>
+                                                    
+                                                    {{data.stockitemname?data.stockitemname:''}}
+                                            </p>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.uomname}}</label>
+                                        <label class="IteminputBoxes">{{data?.uomname}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.quantity}}</label>
+                                        <label class="IteminputBoxes">{{data?.quantity}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.stock}}</label>
+                                        <label class="IteminputBoxes">{{data?.stock}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.price}}</label>
+                                        <label class="IteminputBoxes">{{data?.price}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.discount}}</label>
+                                        <label class="IteminputBoxes">{{data?.discount}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.finalValue}}</label>
+                                        <label class="IteminputBoxes">{{data?.finalValue}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.taxvalue}}</label>
+                                        <label class="IteminputBoxes">{{data?.taxvalue}}</label>
                                     </td>
                                     <td>
-                                        <label class="IteminputBoxes">{{data.amount}}</label>
+                                        <label class="IteminputBoxes">{{data?.amount}}</label>
                                     </td>
                                     <td>
                                         <input type="number" [(ngModel)]="currentShipment[i].shipedTill"
@@ -441,16 +475,16 @@
                         </div>
                         <div class="row ship end">
                             <div class="col-md-4">
-                                
+                                 
                              <!-- <button type="button" class="saveas-draft" (click)="saveShipment('draft')">Save as
                                     draft</button> -->
                             </div> 
                             <div class="col-md-2">
-                                <button type="button" class="save-submit" (click)="saveShipment('save')">Save &
+                                <button type="button"[disabled]="!invoice || !invoicedateChange1 || !shippingDateChange" class="save-submit" (click)="saveShipment('save')">Save &
                                     submit</button>
                             </div>
-                            <div class="col-md-6">
-                                <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
+                                <div class="col-md-2">
+                                    <button type="button" [mat-dialog-close]="true" class="cancelButton">Cancel</button>
                             </div>
                         </div>
                     </div>
@@ -490,13 +524,13 @@
         </div>
 
     </div>
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-lg-5"></div>
         <div class="col-lg-4">
             <button type="button" class="cancelButton">Cancel</button>
         </div>
         <div class="col-lg-3"></div>
-    </div>
+    </div> -->
 </div>
 <div *ngIf="viewList" class="font">
     <div class="main">
@@ -595,7 +629,7 @@
                                     <th>Tax</th>
                                     <th>Amount</th>
                                 </tr>
-                                <tr [(ngModel)]="itemremoved">
+                                <tr>
                                     <td>
                                         <p class="itemLeft"><span class="promoItem">p1</span>Lays classic blue cla..</p>
                                     </td>
@@ -836,7 +870,7 @@
                                     <th>Shipped Till</th>
                                     <th>Shipped Now</th>
                                 </tr>
-                                <tr [(ngModel)]="itemremoved">
+                                <tr>
                                     <td>
                                         <p class="itemLeft"><span class="promoItem">p1</span>Lays classic blue cla..</p>
                                     </td>

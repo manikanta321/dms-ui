@@ -926,6 +926,7 @@ li {
   padding-top: 5px;
 }
 
+
 .menu-item:hover {
   cursor: pointer;
   background: rgb(240, 240, 240);
@@ -937,10 +938,13 @@ li {
 
   ::ng-deep.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked:hover{
      /* background-color: #f5faff; */
-     background-image: url("../../../assets/userImages/done-tick.svg");
-     background-position: right;
+      background-image: url("../../../assets/userImages/done-tick.svg" );
+     
+     background-position: center right 13px;
+
      background-repeat: no-repeat;
     color: #333;
+    
   
   
   }

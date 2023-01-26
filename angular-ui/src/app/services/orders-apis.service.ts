@@ -117,6 +117,11 @@ export class OrdersApisService {
     return this.http.post<any>(this.userurl + 'OrdersApi/GetOrderByshipReceive', data);
   }  
 
+  
+  public reciveshipmentfororder(data) {
+    return this.http.post<any>(this.userurl + 'OrdersApi/GetOrderToView', data);
+  }  
+
   public saveShipOrder(data) {
     return this.http.post<any>(this.userurl + 'OrdersApi/AddShipOrder', data);
   }
@@ -127,6 +132,10 @@ export class OrdersApisService {
   
   public calculateTotal(data) {
     return this.http.post<any>(this.userurl + 'OrdersApi/GetShippingAndPackingChargesforship', data);
+  }
+    
+  public dealersDetails(data) {
+    return this.http.get<any>(this.userurl + `CommonApi/GetDealerId?CurrentUserId=${data}`)
   }
 }
  

@@ -30,6 +30,7 @@ import { SharedServiceMaterialListService } from 'src/app/services/shared-servic
 import { OrderlistShipPopupComponent } from './orderlist-ship-popup/orderlist-ship-popup.component';
 import { OrdersReceiveShipmentComponent } from '../orders-receive-shipment/orders-receive-shipment.component';
 import moment from 'moment';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 // import { DateRange } from '@uiowa/date-range-picker';
 
 export interface PeriodicElement {
@@ -102,7 +103,8 @@ export class OrderListComponent implements OnInit {
   dropdownSettings2: IDropdownSettings = {};
   public rowData5 = [];
 
-  public rowDatalist = [];
+  public rowDatalist:any = [];
+
 
   public popupParent: HTMLElement = document.body;
   roleArray: any[] = [];
@@ -115,8 +117,9 @@ export class OrderListComponent implements OnInit {
     //   field: 'employeeCode' , sort: 'desc'},
 
     { headerName: "Order No.", field: 'orderNUmber' ,
+    cellStyle: { color: '#017EFA' },
     cellEditorPopup: true,
-    onCellClicked: (event: CellClickedEvent) => this.dialog.open(OrdersReceiveShipmentComponent, {width:"1587px",height:"1661px"})
+    onCellClicked: (event: CellClickedEvent) => this.dialog.open(OrdersReceiveShipmentComponent, {      maxWidth: '95vw'    ,height:"95vh"})
   },
 
     { headerName: "Order Date", field: 'orderDate',       cellRenderer: (data) => {
@@ -135,7 +138,14 @@ export class OrderListComponent implements OnInit {
       field: 'geographyName',
     },
 
-
+    {
+      headerName: "Total Value",
+      field: 'totalValue',
+    },
+    {
+      headerName: "Completed Value",
+      field: 'compleatedValue',
+    },
     {
       headerName: "Status",
       field: 'status',
@@ -314,6 +324,7 @@ export class OrderListComponent implements OnInit {
   loggedUserId:any;
   constructor(public dialog: MatDialog,
     private router: Router,
+    private otherMasterService:OtherMasterService,
     private _liveAnnouncer: LiveAnnouncer,
     private user: UserService,
     public orders: OrdersApisService,
@@ -366,12 +377,14 @@ export class OrderListComponent implements OnInit {
 
 
   ngOnInit(): void {
+      
     this.loggedUserId = localStorage.getItem('logInId')
     this.uomId = localStorage.getItem('niId');
     // this.roleItems();
     this.statusItems();
     // this.maxDate.setDate(this.maxDate.getDate() + 20);
     this.orderlistGrid();
+
     this.dealerOrder();
     this.geogrphyOrder();
     this.myForm = this.fb.group({
@@ -443,7 +456,9 @@ export class OrderListComponent implements OnInit {
     this.uomName = e.data.uoMName;
     let ordernumber = e.data.orderNUmber;
     this.CustomerPoId = e.data.id
-
+    localStorage.setItem('ViewOrReceive', 'View')
+    localStorage.setItem('customerPOIdForShipment',e.data.id)
+    localStorage.setItem('orderOrShipmentOrRecipt','order')
     // this.employeeName=e.data.userName;
     console.log('CustomerPoId', this.CustomerPoId);
     localStorage.setItem('CustomerPoId', this.CustomerPoId)
@@ -624,6 +639,13 @@ export class OrderListComponent implements OnInit {
       setTimeout (() => {
         this.orderlistGrid();
      }, 2000);
+     this.otherMasterService.listen().subscribe((m: any) => {
+      console.log("RefreshData",m)
+      setTimeout (() => {
+        this.orderlistGrid();
+     }, 2000);
+     
+    })
      
     })
   }
@@ -717,6 +739,7 @@ export class OrderListComponent implements OnInit {
   }
 
   orderlistGrid() {
+
     const data = {
       // userTypes: this.userTypes,
       // statuss: this.statusTypes,
@@ -725,12 +748,19 @@ export class OrderListComponent implements OnInit {
       "GeographyId": [],
       "DealerId": [],
       "OrderDate": "",
+
       "Search": this.searchText,
       CurrentUserId:this.loggedUserId,
+      
 
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
+      this.rowDatalist.forEach(element=>{
+        element.orderDate=moment(element.orderDate).format('DD-MMM-YY')
+        
+      })
+
     });
   }
   orderUpload() {

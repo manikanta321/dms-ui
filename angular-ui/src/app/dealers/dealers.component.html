@@ -20,7 +20,8 @@
       <div class="col-md-2 col-lg-2 col-sm-2">
         <form [formGroup]="myForms1">
           <ng-multiselect-dropdown class="role1 productdropdown" name="city1" [placeholder]="'Product'" formControlName="city1"
-            [disabled]="disabled" [settings]="dropdownSettings2" [data]="ProductListArray"
+            [disabled]="disabled" [settings]="dropdownSettings2" [data]="ProductListArray" (onSelect)="onItemProductSelect($event)" (onDeSelect)="onItemProductDeSelect($event)"
+            (onDeSelectAll)="onItemProductDeSelectOrAll($event)" (onSelectAll)="onItemProductSelectOrAll($event)"
             >
           </ng-multiselect-dropdown>
         </form>
@@ -31,7 +32,6 @@
 
         </div>
       </div>
-
       <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;">
         <form [formGroup]="myForms">
           <ng-multiselect-dropdown class="stts1 statusdropdown" name="citys" [placeholder]="'Status'" formControlName="citys"

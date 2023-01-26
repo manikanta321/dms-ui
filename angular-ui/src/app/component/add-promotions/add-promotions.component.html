@@ -21,7 +21,7 @@
                         <div class="heading">
                             <h5 class="promo-head">Promotion Information </h5>
                         </div>
-                        <div class="row">
+                        <div class="row ">
                             <div class="col-lg-12 materialname">
                                 <label>Promotion Name <span class="astr">*</span></label>
                                 <input type="text" id="promoname" name="promoname" required [(ngModel)]="promoName"
@@ -41,13 +41,16 @@
                                 <!-- <label>Promotion Type <span>*</span></label> -->
                                 <!-- </div> -->
                                 <div class="promotiontypedrp identify promotiondrpalign">
-                                    <label>Promotion Type <span class="astr">*</span></label>
+                                    <label>Promotion Type  <span class="astr">*</span></label>
                                     <ng-select [items]="promotionTypedropdown" placeholder="Select the Promotion type" class="tick menu-item"
                                         id="promotype" name="promotype" bindLabel="promotionTypesName"
                                         bindValue="promotionTypesId" [(ngModel)]="selectedPromo"
                                         (change)="selectedValue($event)" required #promotype="ngModel">
-                                        <img src="../../../assets/userImages/done-tick.svg" class="imgtick tickmark">
+                                         <img src="../../../assets/userImages/done-tick.svg" class="imgtick tickmark">
+                                         
                                     </ng-select>
+                                    
+                                    
                                    
                                 </div>
                                 <form #myform>

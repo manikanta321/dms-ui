@@ -41,6 +41,8 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
     private dialogRef: MatDialogRef<OrderReceiptsBulkUploadComponent>,) { }
 
   ngOnInit(): void {
+    this.CreatedById = localStorage.getItem("logInId");
+    this.CreatedById = Number(this.CreatedById);
   }
 
   onFileChange(event: any) {
@@ -71,6 +73,7 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
         CreateById:this.CreatedById,
         bulkOrderReceipts:this.uploadedData
       }
+      alert(this.CreatedById)
       console.log("Daaataaa",uploadedFile); 
       this.salesService.getReceiptBulkUpload(uploadedFile).subscribe((res)=>{
         if(res.succeded = true) {

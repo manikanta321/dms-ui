@@ -329,7 +329,7 @@
                             <div class="dealerr">
                                 <label class="DealerInfo-label">Dealer <span class="astr">*</span></label>
                                 <ng-select [items]="dealerListArray" id="dealerAllArray" name="dealerAllArray" required
-                                    [virtualScroll]="true" bindLabel="customerName" bindValue="customerId"
+                                  [disabled]="dealerDisabled"  [virtualScroll]="true" bindLabel="customerName" bindValue="customerId"
                                     [searchable]="true" [clearable]="false" placeholder=" Search & select dealer"
                                     [(ngModel)]="customerId" (change)="onItemSelectdealers($event)">
                                 </ng-select>
@@ -568,24 +568,41 @@
                         <div class="row">
 
                             <div class="col-lg-4">
-                                <div class="orderDatepicker">
+                               
 
-                                    <label class="boldR">Requirement Date  </label>
-                                     <mat-form-field appearance="fill" class="datepc">
-                                        
-                                        <input matInput [matDatepicker]="picker"  placeholder="Select a date" (dateChange)="dateChange($event)"
-                                            [(ngModel)]="startdate">
-                                        <mat-datepicker-toggle matSuffix [for]="picker"
-                                            class="calicon"></mat-datepicker-toggle>
+                                <div class="my_Datepicker promotion-datepicker">
+                                    <label class="boldR">Requirement Date</label><br>
+                                    <mat-form-field class="placeh-align">
+                                        <mat-label>Select a  date</mat-label>
+                                        <input matInput [matDatepicker]="picker"
+                                            (dateChange)="dateChange($event)" [min]="minDate"  [(ngModel)]="startdate" name="requireDate" #requireDate="ngModel"
+                                            [(ngModel)]="startdate" required>
+                                        <p style="padding: 0px;"
+                                            *ngIf="requireDate.invalid && (requireDate.dirty || requireDate.touched)" class="alert">
+
+                                            <span style="color:red;position: absolute;margin-top: 7px;"
+                                                *ngIf="requireDate.errors?.['required']">
+                                                *Requirement Date is required
+                                            </span>
+                                        </p>
+                                        <mat-datepicker-toggle matSuffix [for]="picker">
+                                            <mat-icon matDatepickerToggleIcon>
+                                                <img src="assets/img/calender2.png" class="calendarToggle">
+                                            </mat-icon>
+                                        </mat-datepicker-toggle>
                                         <mat-datepicker #picker></mat-datepicker>
-                                    </mat-form-field>  
-
-                                   
-
-                                    
-
-
+                                    </mat-form-field>
                                 </div>
+
+
+
+
+
+
+
+
+
+
                             </div>
                             <div class="col-md-8">
                                 <div class="promotiont">
@@ -779,8 +796,8 @@
                                 <thead>
                                     <tr>
                                         <th data-sortable="true">Product Name</th>
-                                        <th data-sortable="true">Material identifier</th>
-                                        <th data-sortable="true">classification</th>
+                                        <!-- <th data-sortable="true">Material identifier</th>
+                                        <th data-sortable="true">classification</th> -->
                                         <th data-sortable="true">SKU</th>
                                         <th data-sortable="true">Price</th>
                                         <th data-sortable="true">Stock Qty</th>
@@ -793,8 +810,8 @@
                                     <tr class="table-row" *ngFor="let Item of orderNonPromotionsdata">
                                         <td><input type="checkbox" [checked]="Item.isPromotionSelected"
                                                 (change)="checkboxChange($event,Item)">{{Item.stockitemname}}</td>
-                                        <td>{{Item.materialCustomName}}</td>
-                                        <td>{{Item.classification}}</td>
+                                        <!-- <td>{{Item.materialCustomName}}</td>
+                                        <td>{{Item.classification}}</td> -->
                                         <td>{{Item.productSKUName}}</td>
                                         <td>{{Item.price}}</td>
                                         <td><input type="text"   placeholder="Enter" class="quatity-inp"

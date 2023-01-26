@@ -43,6 +43,7 @@
 
           </div>
         </div>
+       
         <div class="icon btnhover refreshbtn">
           <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;"
             alt="refresh">
@@ -51,9 +52,9 @@
     </div>
     <div class="scrollone">
     <mat-stepper [linear]="isLinear" #stepper (click)="matsteptabClick($event)" [selectedIndex]="0" ngClass="addItemsHeader">
-      <mat-step label="Step 1" [stepControl]="firstFormGroup" >
+      <mat-step label="Step 1"  [stepControl]="firstFormGroup" >
         <form [formGroup]="firstFormGroup">
-          <ng-template matStepLabel="productlb">Product</ng-template>
+          <ng-template matStepLabel="productlb"  >Product</ng-template>
           <!-- <div class="radio-btn mt-2">
         <div class="row">
           <div class="col-12">
@@ -71,7 +72,7 @@
               <div class="row">
                 <div class="search-d col-lg-3">
                   <form [formGroup]="myForm">
-                    <ng-multiselect-dropdown class="catty cattybubble" name="city" [placeholder]="'Category'" formControlName="city"
+                    <ng-multiselect-dropdown class="catty cattybubble" name="city" [placeholder]="'Category'" formControlName="city"matStepperIcon="edit"
                       [disabled]="disabled" [settings]="dropdownSettings" [data]="catgname"
                       (onSelect)="addItemSelect($event)" (onDeSelect)="addItemDeSelect($event)"
                       (onDeSelectAll)="addItemDeSelectOrAll($event)" (onSelectAll)="addItemSelectOrAll($event)">
@@ -146,7 +147,7 @@
               </div>
             </div>
           </div>
-          <div class="row mt-2">
+          <div class="row rr">
             <div class="col-11">
               <div class="row prod-identifier">
                 <div class="col-lg-3 search-prodId">
@@ -256,7 +257,7 @@
       </mat-step>
       <!-- third -->
       <mat-step label="Step 3">
-        <ng-template matStepLabel>Product Group</ng-template>
+        <ng-template matStepLabel>Product Group </ng-template>
         <div class="add-item">
           <!-- <div class="srch mt-3" style="margin-bottom:10px">
         <div class="row">

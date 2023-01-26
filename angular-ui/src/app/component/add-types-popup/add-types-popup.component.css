@@ -109,5 +109,7 @@
         .errormsg{
             color: red;
              text-align: center; 
+             position: relative;
              font-size: 13px;
+             bottom: 11px;
         }

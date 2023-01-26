@@ -4,6 +4,9 @@ import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dial
 import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridOptions, GridReadyEvent } from 'ag-grid-community';
 import { Subject } from 'rxjs';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
+import { OtherMasterService } from 'src/app/services/other-master.service';
+import { SharedServiceMaterialListService } from 'src/app/services/shared-service-material-list.service';
+import { ShipOrderSuccessPopupComponent } from 'src/app/ship-order-success-popup/ship-order-success-popup.component';
 import { CustomDatePopupComponent } from '../../orders/custom-date-popup/custom-date-popup.component';
 
 
@@ -33,18 +36,22 @@ export class OrderlistShipPopupComponent implements OnInit {
   startDate = new FormControl(null);
   minDateToFinish = new Subject<string>();
   selectedStartDate: any;
-  Invoicedate:any;
-  shippingDateChange:any;
-  reciveDateChange:any;
-  invoicedateChange1:any;
-  subtotal:any;
-  taxElement:any;
-  PackingCharge:any;
-  ShippingCharge:any;
-  Total:any;
-  viewList:boolean=false;
-  itemsArray:any=[]
+  Invoicedate: any;
+  shippingDateChange: any;
+  reciveDateChange: any;
+  invoicedateChange1: any;
+  subtotal: any;
+  taxElement: any;
+  PackingCharge: any;
+  ShippingCharge: any;
+  Total: any;
+  viewList: boolean = false;
+  itemsArray: any = []
   currentShipment: any = [];
+  // minDate = new Date();
+  previousshipDetailsArray: any = []
+  minDate = new Date();
+  maxDate = new Date();
   public popupParent: HTMLElement = document.body;
   public rowData5: any = [{ date: "14-Oct-22", createdBy: "Bruce Wayne", action: "Creation", subAction: "Save Draft", invoiceNo: "23AB67", comments: "Lorem ipsum dsjh sdhsujdi " }]
   public itemremoved: any[] = [{
@@ -80,13 +87,13 @@ export class OrderlistShipPopupComponent implements OnInit {
     // {
     //   headerName:"",  cellRenderer: this.daysSunshineRenderer
     // }
-     
+
     {
       headerName: "", cellRenderer: this.daysSunshineRenderer
     }
 
   ];
-  currentshipmentname:any='';
+  currentshipmentname: any = '';
   gridOptions: GridOptions = {
     defaultColDef: {
       resizable: true,
@@ -133,11 +140,13 @@ export class OrderlistShipPopupComponent implements OnInit {
         },
       },
     };
-    invoice:any;
-  DispachComments: any='';
-  userId:any;
+  invoice: any;
+  DispachComments: any = '';
+  userId: any;
   constructor(public dialog: MatDialog,
     public orders: OrdersApisService,
+    private otherMasterService:OtherMasterService,
+    private materialListService:SharedServiceMaterialListService,
     private dialogRef: MatDialogRef<OrderlistShipPopupComponent>,
 
   ) { }
@@ -150,49 +159,49 @@ export class OrderlistShipPopupComponent implements OnInit {
     this.orders.shipOrder(data).subscribe((res) => {
       console.log(res)
       this.shipmentArray = res.response;
-      
-    this.shipmentArray.itemcount.forEach(element=>{
-      element.itemDetails.forEach(element1=>{
-let arraybj:any=[]
-arraybj.push(element1)
-let obj:any={
-  promo:element.promocode,
-    "customerPOProductId": element1.customerPOProductId,
-    "stockitemid":  element1.customerPOProductId,
-    "stockitemname": element1.stockitemname,
-    "productSKUName": element1.productSKUName,
-    "uomid": element1.uomid,
-    "uomname": element1.uomname,
-    "quantity": element1.quantity,
-    "stock": element1.stock,
-    "price": element1.price,
-    "discount": element1.discount,
-    "finalPrice": element1.finalPrice,
-    "finalValue": element1.finalValue,
-    "taxvalue": element1.taxvalue,
-    "amount": element1.amount,
-    "taxid": element1.taxid
-}
-        this.itemsArray.push(obj);
-      
+
+      this.shipmentArray.itemcount.forEach(element => {
+        element.itemDetails.forEach(element1 => {
+          let arraybj: any = []
+          arraybj.push(element1)
+          let obj: any = {
+            promo: element.promocode,
+            "customerPOProductId": element1.customerPOProductId,
+            "stockitemid": element1.customerPOProductId,
+            "stockitemname": element1.stockitemname,
+            "productSKUName": element1.productSKUName,
+            "uomid": element1.uomid,
+            "uomname": element1.uomname,
+            "quantity": element1.quantity,
+            "stock": element1.stock,
+            "price": element1.price,
+            "discount": element1.discount,
+            "finalPrice": element1.finalPrice,
+            "finalValue": element1.finalValue,
+            "taxvalue": element1.taxvalue,
+            "amount": element1.amount,
+            "taxid": element1.taxid
+          }
+          this.itemsArray.push(obj);
+
+        })
+        console.log('element1', this.itemsArray)
+
       })
-      console.log('element1',this.itemsArray)
-      
-          })
-      console.log('shipmentArray', this.shipmentArray);
-    
-this.subtotal=Number(this.shipmentArray.currentshipDetails.subTotal);
-this.taxElement=Number(this.shipmentArray.currentshipDetails.taxElement);
-this.PackingCharge=Number(this.shipmentArray.currentshipDetails.pakingCharge);
-this.ShippingCharge=Number(this.shipmentArray.currentshipDetails.shipingcharge);
-this.Total=Number(this.shipmentArray.currentshipDetails.total);
+      console.log('element1', this.itemsArray);
+
+      this.subtotal = Number(this.shipmentArray.currentshipDetails.subTotal);
+      this.taxElement = Number(this.shipmentArray.currentshipDetails.taxElement);
+      this.PackingCharge = Number(this.shipmentArray.currentshipDetails.pakingCharge);
+      this.ShippingCharge = Number(this.shipmentArray.currentshipDetails.shipingcharge);
+      this.Total = Number(this.shipmentArray.currentshipDetails.total);
 
 
 
-      this.invoice= this.shipmentArray.currentshipDetails.invoiceno; 
-      this.currentshipmentname= this.shipmentArray.currentshipDetails.shipName
+      this.invoice = this.shipmentArray.currentshipDetails.invoiceno;
+      this.currentshipmentname = this.shipmentArray.currentshipDetails.shipName
       this.shipmentArray.currentshipDetails.promodetails.forEach(element => {
-let mainArray:any=[];
+        let mainArray: any = [];
         element.itemDetailsship.forEach(element1 => {
           let obj: any = {
             promotionName: element.promotionName,
@@ -222,18 +231,85 @@ let mainArray:any=[];
 
       })
 
+
+
+      this.shipmentArray.previousshipDetails.forEach(element => {
+
+
+        element.promodetails.forEach(element1 => {
+          let firstShipmentarray: any = []
+
+          element1.itemDetailsship.forEach(element2 => {
+
+
+            let shipmentObj: any =
+            {
+              "customerPOProductId": element2.customerPOProductId,
+              "stockitemid": element2.stockitemid,
+              "stockitemname": element2.stockitemname,
+              "promotioncode": element2.promotioncode == null ? '' : element2.promotioncode,
+              "productSKUName": element2.productSKUName == null ? '' : element2.productSKUName,
+              "uomid": element2.uomid == null ? '' : element2.uomid,
+              "uomname": element2.uomname == null ? '' : element2.uomname,
+              "quantity": element2.quantity == null ? '' : element2.quantity,
+              "stock": element2.customerPOProductId == null ? '' : element2.customerPOProductId,
+              "price": element2.price == null ? '' : element2.price,
+              "discount": element2.discount == null ? '' : element2.discount,
+              "finalPrice": element2.finalPrice == null ? '' : element2.finalPrice,
+              "finalValue": element2.finalValue == null ? '' : element2.finalValue,
+              "taxvalue": element2.taxvalue == null ? '' : element2.taxvalue,
+              "amount": element2.amount == null ? '' : element2.amount,
+              "taxid": element2.taxid == null ? '' : element2.taxid,
+              "shipedTill": element2.shipedTill == null ? '' : element2.shipedTill,
+              "shipingNow": element2.shipingNow == null ? '' : element2.shipingNow,
+              "promocode": element1.promocode,
+
+            }
+
+
+            firstShipmentarray.push(shipmentObj)
+            console.log('firstShipmentarray', firstShipmentarray);
+          })
+          let object1: any = {
+
+            "shipName": element.shipName,
+            "invoiceno": element.invoiceno,
+            "firstShipmentarray": firstShipmentarray,
+            "pakingCharge": element.pakingCharge,
+            "shipingcharge": element.shipingcharge,
+            "subTotal": element.subTotal,
+            "taxElement": element.taxElement,
+            "total": element.total,
+
+          }
+
+          this.previousshipDetailsArray.push(object1)
+
+        })
+
+      })
+
+
+
+
+
+
+
+
+
     })
+    console.log('oldshipment', this.previousshipDetailsArray)
     console.log('currentShipment', this.currentShipment)
-    debugger
+    // debugger
 
   }
   viewOrderData() {
 
     let viewData = sessionStorage.getItem("viewOrder");
 
-    console.log("ViewOrder",viewData);
+    console.log("ViewOrder", viewData);
 
-    if(viewData =="View") {
+    if (viewData == "View") {
 
       this.viewList = true;
 
@@ -241,52 +317,53 @@ let mainArray:any=[];
 
     else {
 
-      this.viewList =false
+      this.viewList = false
 
     }
 
   }
-  addTotal(){
-    this.Total= this.subtotal + this.taxElement + this.PackingCharge + this.ShippingCharge;
+  addTotal() {
+    this.Total = this.subtotal + this.taxElement + this.PackingCharge + this.ShippingCharge;
 
   }
 
-  shipingNow(){
-    let objarray:any=[]
-this.currentShipment.forEach(element=>{
+  shipingNow() {
+    let objarray: any = []
+    this.currentShipment.forEach(element => {
 
-  let obj:any={
-    "unitprice":element.price,
-    "TaxTemplateId":element.taxid,
-    "shipingNow":element.shipingNow != null?element.shipingNow:0
-  }
-  objarray.push(obj)
-}
-
-
-
-
-)
+      let obj: any = {
+        "unitprice": element.price,
+        "TaxTemplateId": element.taxid,
+        "shipingNow": element.shipingNow != null ? element.shipingNow : 0,
+        "discount":element.discount
+      }
+      objarray.push(obj)
+    }
 
 
-let data:any={
-  OrderId:this.shipmentArray.customerPOId,
-  EachModel:objarray
-}
-this.orders.calculateTotal(data).subscribe((res)=>{
-
-this.subtotal=res.response.subTotal;
-this.taxElement=res.response.taxElement;
-this.PackingCharge=res.response.packingCharges;
-this.ShippingCharge=res.response.shippingCharges;
-
-this.addTotal();
 
 
-})
-console.log('obj',objarray)
+    )
 
-console.log('this.currentShipment', this.currentShipment)
+
+    let data: any = {
+      OrderId: this.shipmentArray.customerPOId,
+      EachModel: objarray
+    }
+    this.orders.calculateTotal(data).subscribe((res) => {
+
+      this.subtotal = res.response.subTotal;
+      this.taxElement = res.response.taxElement;
+      this.PackingCharge = res.response.packingCharges;
+      this.ShippingCharge = res.response.shippingCharges;
+
+      this.addTotal();
+
+
+    })
+    console.log('obj', objarray)
+
+    console.log('this.currentShipment', this.currentShipment)
   }
 
   invoicedateChange(e) {
@@ -299,7 +376,7 @@ console.log('this.currentShipment', this.currentShipment)
     this.invoicedateChange1 = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
     console.log(this.Invoicedate);
   }
- shippingDatechange(e) {
+  shippingDatechange(e) {
     console.log(e)
     this.minDateToFinish.next(e.value.toString());
 
@@ -319,7 +396,7 @@ console.log('this.currentShipment', this.currentShipment)
     // console.log("This is the DATE:", e.value);
     this.reciveDateChange = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
     console.log(this.reciveDateChange);
-  } 
+  }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
     params.api.sizeColumnsToFit();
@@ -339,32 +416,33 @@ console.log('this.currentShipment', this.currentShipment)
 
   }
   saveShipment(item){
-
+    this.materialListService.filter('Register click')
+    localStorage.setItem('AddShipment','Add');
 let filterArray:any=[]
 
-this.currentShipment.forEach(element=>{
-let filterobj:any={
-  "CustomerPOProductId":element.customerPOProductId,
+    this.currentShipment.forEach(element => {
+      let filterobj: any = {
+        "CustomerPOProductId": element.customerPOProductId,
 
-  "qty":element.quantity,
-  
-  "UnitPrice":element.price,
-  
-  "TaxTemplatedId":element.taxid,
-  
-  "total":element.amount,
-  
-  "shipedTill":element.shipedTill,
-  
-  "shipingNow":element.shipingNow,
-}
-filterArray.push(filterobj)
+        "qty": element.quantity,
 
-})
+        "UnitPrice": element.price,
+
+        "TaxTemplatedId": element.taxid,
+
+        "total": element.amount,
+
+        "shipedTill": element.shipedTill,
+
+        "shipingNow": element.shipingNow,
+      }
+      filterArray.push(filterobj)
+
+    })
 
 
 
-if(item=='save'){
+    if (item == 'save') {
 
   let obj:any={
     "CustomerPOId":this.shipmentArray.customerPOId,
@@ -390,61 +468,66 @@ if(item=='save'){
     }
     this.orders.saveShipOrder(obj).subscribe((res)=>{
       console.log(res.response)
+      this.materialListService.filter('Register click')
       if(res.response.result =='Succesfully added'){
-        alert('Succesfully added');
+        this.materialListService.filter('Register click')
+        // alert('Succesfully added');
+        this.dialog.open(ShipOrderSuccessPopupComponent , {panelClass: 'activeSuccessPop'});
         this.dialogRef.close();
       
       }
       else{
-      
+        
+      alert(res.response.result)
       }
       })
-      
-}
-else{
 
-  
-let obj:any={
-  "CustomerPOId":this.shipmentArray.customerPOId,
-  
-  "DispachComments":this.DispachComments,
-  
-  "CreatedById":this.userId,
-  
-  "InvoiceNo":this.invoice,
-  
-  "InvoiceDate":this.invoicedateChange1,
-  
-  "shipingDate":this.shippingDateChange,
-  
-  "InvoiceReceivedDate":this.reciveDateChange,
-  "shipcount":filterArray,
-  "subtotal":this.subtotal,
-  "taxelement":this.taxElement,
-  "packingcharges":this.PackingCharge,
-  "shipingcharges":this.ShippingCharge,
-  "total": this.Total,
-  "AddType":"draft",
-  }
-  this.orders.saveShipOrder(obj).subscribe((res)=>{
-    console.log(res.response)
-    if(res.response.result =='Succesfully added'){
-      alert('Succesfully added');
-      this.dialogRef.close();
-    
     }
-    else{
-    
+    else {
+
+
+      let obj: any = {
+        "CustomerPOId": this.shipmentArray.customerPOId,
+
+        "DispachComments": this.DispachComments,
+
+        "CreatedById": this.userId,
+
+        "InvoiceNo": this.invoice,
+
+        "InvoiceDate": this.invoicedateChange1,
+
+        "shipingDate": this.shippingDateChange,
+
+        "InvoiceReceivedDate": this.reciveDateChange,
+        "shipcount": filterArray,
+        "subtotal": this.subtotal,
+        "taxelement": this.taxElement,
+        "packingcharges": this.PackingCharge,
+        "shipingcharges": this.ShippingCharge,
+        "total": this.Total,
+        "AddType": "draft",
+      }
+      this.orders.saveShipOrder(obj).subscribe((res) => {
+        console.log(res.response)
+        if (res.response.result == 'Succesfully added') {
+          alert('Succesfully added');
+
+          this.dialogRef.close();
+
+        }
+        else {
+
+        }
+      })
+
     }
-    })
-    
-}
 
 
 
 
 
-console.log('savedship',this.currentShipment)
+    console.log('savedship', this.currentShipment)
   }
   onCellClicked(e): void {
     console.log('cellClicked', e);

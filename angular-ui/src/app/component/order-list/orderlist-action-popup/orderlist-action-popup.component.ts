@@ -102,15 +102,20 @@ export class OrderlistActionPopupComponent implements OnInit {
   agInit(params) {
     this.params = params;
     let menu = [];
+    let ignoreMenus = ['close', 'cancel_order'];
     if(this.params?.data?.status){
       menu = this.orderStatusAction[this.params?.data?.status?.toLowerCase()] ?? [];
+      
+    // this.currentActionMenu.push('view');
     }else if(this.params?.data?.statusName){
       menu = this.shipmentStatusAction[this.params?.data?.statusName?.toLowerCase()] ?? [];
+
+    // this.currentActionMenu.push('view');
     }
 
-    let ignoreMenus = ['close', 'cancel_order'];
+    
 
-    console.log("menu", menu);
+    // console.log("menu", menu);
     this.currentActionMenu = menu.filter(x => this.showCaseMenuList.indexOf(x) !== -1 || ignoreMenus.indexOf(x) !== -1);
 
     if(this.params?.data?.status){
@@ -216,16 +221,18 @@ export class OrderlistActionPopupComponent implements OnInit {
   orderShip() {
     sessionStorage.setItem("viewOrder", "")
 
-    this.dialog.open(OrderlistShipPopupComponent, { width: "1587px", height: "1661px" });
+    this.dialog.open(OrderlistShipPopupComponent, {minWidth: '98vw',height:"95vh" });
     this.isOpen = false;
   }
 
   orderReceive() {
-    this.dialog.open(OrdersReceiveShipmentComponent, {width:"1587px",height:"1661px"});
+    this.dialog.open(OrdersReceiveShipmentComponent, {width:"2087px",height:"1661px"});
     this.isOpen = false;
   }
   ReceiveShipment() {
-    this.dialog.open(OrdersReceiveShipmentComponent, {width:"1587px",height:"1661px"});
+    localStorage.setItem('ViewOrReceive', 'Receive');
+    localStorage.setItem('orderOrShipmentOrRecipt','shipment')
+    this.dialog.open(OrdersReceiveShipmentComponent, {maxWidth: '95vw',height:"95vh"});
     this.isOpen = false;
   }
   confirmOrder() {

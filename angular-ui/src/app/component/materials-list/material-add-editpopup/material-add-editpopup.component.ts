@@ -461,12 +461,12 @@ export class MaterialAddEditpopupComponent {
     let data2 = {
       DefalultgeoId: selectedGeographies,
     }
-    if (this.geoGraphyFullData[3].geoProperties.length == 0) {
+    if (this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geoProperties.length == 0) {
       alert("Plz select atleast one city");
       return;
     }
 
-    this.geoProperties = JSON.parse(JSON.stringify(this.geoGraphyFullData[3].geoProperties));
+    this.geoProperties = JSON.parse(JSON.stringify(this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geoProperties));
     this.geoProperties = this.geoProperties.map(item => {
       delete item.geographyName;
       delete item.productSKUGeographyId;
@@ -508,15 +508,14 @@ export class MaterialAddEditpopupComponent {
   }
   addMaterialProductAfterEdit() {
     localStorage.setItem("updateAddEdit", 'edit');
-    if (this.geoGraphyFullData[3].geoProperties.length == 0) {
+    if (this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geoProperties.length == 0) {
       alert("Plz select atleast one city");
       return;
     }
-    this.geoProperties = JSON.parse(JSON.stringify(this.geoGraphyFullData[3].geoProperties));
+    this.geoProperties = JSON.parse(JSON.stringify(this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geoProperties));
     this.geoProperties = this.geoProperties.map(item => {
       console.log("Geoproperties",this.geoProperties)
       delete item.geographyName;
-      delete item.productSKUGeographyId;
       return item;
     })
 
@@ -812,7 +811,7 @@ export class MaterialAddEditpopupComponent {
         })
       }
 
-      objDefaut.geographyHierarchyName = "City";
+      objDefaut.geographyHierarchyName = "Country";
       if (objDefaut.geographySelected.length != 0) {
         this.selectedHirerachyIndex = currentObj[0].geographyHierarchyId - 1;
       }
@@ -1147,7 +1146,7 @@ export class MaterialAddEditpopupComponent {
   }
 
   selectProductIdentifier(IdentifierProduct: any, temp): void {
-    debugger
+    
     let index = this.productSelctedIdentifier.findIndex(x => x.productCustomIdentifierId == IdentifierProduct.productCustomIdentifierId);
 
     if (index >= 0) {

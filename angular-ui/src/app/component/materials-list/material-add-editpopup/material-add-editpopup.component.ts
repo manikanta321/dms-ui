@@ -367,7 +367,12 @@ export class MaterialAddEditpopupComponent {
     this.base64textString = this.dataGetById.imageurl
 
     this.expiryDate = this.dataGetById.expiryPeriod
-    this.MaterialCustomIdentifiersEdit = this.dataGetById.materialcustomidentifier
+    // this.MaterialCustomIdentifiersEdit = this.dataGetById.materialcustomidentifier
+    let materialData = this.dataGetById.materialcustomidentifier
+    this.MaterialCustomIdentifiersEdit = materialData.map(item => {
+      return item.materilCustomIdentifierId;
+    });
+    console.log("MaterialIdentifier",this.MaterialCustomIdentifiersEdit)
     this.categeoryData = this.dataGetById.categoryId
     if (this.categeoryData != '') {
       this.addMaterials.onclickcat(this.categeoryData).subscribe((res) => {
@@ -412,7 +417,11 @@ export class MaterialAddEditpopupComponent {
       this.subproductGroupData = this.dataGetById.productSubGroupId
     }
 
-    this.selectedProductIdEdit = this.dataGetById.productCustomIdentifierId
+    // this.selectedProductIdEdit = this.dataGetById.productCustomIdentifierId
+    let productData = this.dataGetById.productCustomIdentifierId
+    this.selectedProductIdEdit = productData.map(item => {
+      return item.productCustomIdentifierId;
+    });
     let data = this.dataGetById.materialcustomidentifier;
     this.MaterialCustomIdentifiersNames = data.map(item => {
       return item.materialCustomName;
@@ -463,7 +472,6 @@ export class MaterialAddEditpopupComponent {
       delete item.productSKUGeographyId;
       return item;
     })
-
     let data = {
       DoneById: this.UserId,
       StockItemSubCategoryId: this.subCatId,
@@ -506,7 +514,9 @@ export class MaterialAddEditpopupComponent {
     }
     this.geoProperties = JSON.parse(JSON.stringify(this.geoGraphyFullData[3].geoProperties));
     this.geoProperties = this.geoProperties.map(item => {
+      console.log("Geoproperties",this.geoProperties)
       delete item.geographyName;
+      delete item.productSKUGeographyId;
       return item;
     })
 
@@ -1104,6 +1114,7 @@ export class MaterialAddEditpopupComponent {
     }
   }
   isSelectedBusiness(businessIdentifier: any): boolean {
+    console.log("SelectedIdentifier",businessIdentifier);
     const index = this.businessSelctedIdentifier.indexOf(businessIdentifier);
     return index >= 0;
   }

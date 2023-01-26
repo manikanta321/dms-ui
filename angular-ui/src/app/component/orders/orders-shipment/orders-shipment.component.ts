@@ -90,7 +90,10 @@ export class OrdersShipmentComponent implements OnInit {
   },
     {  headerName: "Status",
       field: 'statusName',      tooltipField:"statusName",
+      cellEditorParams: {
+        values: ['In-Transit', 'Received'],
     },
+  },
     {
       headerName: '',
       colId: 'action',

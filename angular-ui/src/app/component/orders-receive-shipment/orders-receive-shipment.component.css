@@ -951,8 +951,33 @@
     min-height: 601px !important;
   }
   
+  .total_total
+{
   
-  
+width: 129px;
+height: 52px;
+margin-right: -6px;
+
+background: #686E74;
+border-radius: 0px 21.2px 21.2px 0px;
+margin-top: -5px;
+}
+.totaltotal
+{
+  margin-top: 4px;
+  margin-left: 12px;
+  color: white;
+
+}
+#totallssss
+{
+  margin-left: 12px;
+  color:whitesmoke;
+  font-weight: bolder;
+}
+.dispatchC{
+  font-weight: bold;
+}
   .footer {
     /* position: fixed; */
     border-radius: 0px 0px 25px 25px;

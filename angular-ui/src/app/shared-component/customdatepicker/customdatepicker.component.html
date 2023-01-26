@@ -21,11 +21,11 @@
             #datepickerBtn2="ngbPopover" [positionTarget]="calendarSection" popoverClass="datepicker-popover">
             <!-- <img src="assets/img/calenderImage.svg" alt=""> -->
         </div>
-            <div *ngIf="date">
+         <div *ngIf="date">
         <div class="datepicker"   *ngIf="selectedDate && selectedDate.startDate"> {{selectedDate.startDate}} - {{selectedDate.endDate}}
            <mat-icon mat-button class="close-iconn" (click)="close()" >close</mat-icon>
         </div>
-    </div>
+    </div> 
     </div>
     
 

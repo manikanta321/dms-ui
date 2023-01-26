@@ -14,7 +14,7 @@ export class CustomdatepickerComponent implements OnInit {
   @ViewChild('datepickerBtn2') datePickerTrigger2;
   selected: any;
    date: boolean = true;
-
+   
   menuDateValues: any = [
     {
       title: 'Custom',
@@ -80,6 +80,9 @@ export class CustomdatepickerComponent implements OnInit {
   }
   close() {
     this.date = false;
+    this.selectedDate=false;
+    
+    
 
   }
 

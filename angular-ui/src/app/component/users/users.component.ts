@@ -140,11 +140,11 @@ export class UsersComponent implements OnInit {
           return params.value = ''
         }
         else {
-          return moment(params.value).format('DD MMM YY, HH:mm A')
+          return moment(params.value).format('DD-MMM -YY')
 
         }
       },
-      tooltipValueGetter: (params: ITooltipParams) => moment(params.value).format('DD MMM YY, HH:mm A'),
+      tooltipValueGetter: (params: ITooltipParams) => moment(params.value).format('DD-MMM-YY'),
     },
 
     // suppressMovable:true,

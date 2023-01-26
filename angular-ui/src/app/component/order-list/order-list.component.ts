@@ -31,6 +31,7 @@ import { OrderlistShipPopupComponent } from './orderlist-ship-popup/orderlist-sh
 import { OrdersReceiveShipmentComponent } from '../orders-receive-shipment/orders-receive-shipment.component';
 import moment from 'moment';
 import { OtherMasterService } from 'src/app/services/other-master.service';
+import { SharedService } from 'src/app/services/shared-services.service';
 // import { DateRange } from '@uiowa/date-range-picker';
 
 export interface PeriodicElement {
@@ -122,11 +123,14 @@ export class OrderListComponent implements OnInit {
     onCellClicked: (event: CellClickedEvent) => this.dialog.open(OrdersReceiveShipmentComponent, {      maxWidth: '95vw'    ,height:"95vh"})
   },
 
-    { headerName: "Order Date", field: 'orderDate',       cellRenderer: (data) => {
+    { headerName: "Order Date", field: 'orderDate',       
 
-      return moment(data.orderDate).format('DD-MMM-YY')
 
-  } },
+  cellRenderer: (data) => 
+  { return this.sharedService.dateformat(data.value);
+  },
+  tooltipField:"orderDate",
+ },
 
     {
       headerName: "Dealer",
@@ -323,6 +327,7 @@ export class OrderListComponent implements OnInit {
   currentPageName:string="";
   loggedUserId:any;
   constructor(public dialog: MatDialog,
+    private sharedService :SharedService,
     private router: Router,
     private otherMasterService:OtherMasterService,
     private _liveAnnouncer: LiveAnnouncer,
@@ -671,7 +676,7 @@ export class OrderListComponent implements OnInit {
 
 
   addOrderPromotion() {
-    const dialogRef = this.dialog.open(AddorderpromotionsComponent,{width:'100%',  
+    const dialogRef = this.dialog.open(AddorderpromotionsComponent,{width:'100%', 
       panelClass: 'material-add-edit'
     });
     sessionStorage.setItem("Confirm",'')
@@ -756,10 +761,10 @@ export class OrderListComponent implements OnInit {
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
-      this.rowDatalist.forEach(element=>{
-        element.orderDate=moment(element.orderDate).format('DD-MMM-YY')
-        
-      })
+       this.rowDatalist.forEach(element=>{
+         element.orderDate= this.sharedService.dateformat
+         (element.orderDate);
+         })
 
     });
   }
@@ -975,7 +980,8 @@ export class OrderListComponent implements OnInit {
     // console.log('rolefilter', this.userTypes)
     // console.log('onItemSelect', item);
   }
-  statusItems() {
+  statusItems()
+   {
     this.user.statusDropdownOrderlist().subscribe((res: any) => {
       let localdata = res.response;
       this.statusDropList = localdata.map((data: { statusId: any; statusName: any; }) => {
@@ -1015,7 +1021,7 @@ export class OrderListComponent implements OnInit {
       CurrentUserId:this.loggedUserId,
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
-      this.rowDatalist = res.response;
+      this.rowDatalist = res.response;  
     });
   }
   statusDeselect(item: any) {

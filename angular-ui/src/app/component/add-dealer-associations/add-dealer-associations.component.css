@@ -1,6 +1,9 @@
 
 
-
+.pr_omo
+{
+  margin-top: 27px;
+}
 ::ng-deep .adddealerbubbles .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
   
@@ -1626,7 +1629,7 @@ width: 100%;
 }
 ::ng-deep .categoryy .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
-  right: -18px !important;
+  right: -36px !important;
   bottom: 0px;
   top: 50px !important;
   /* width: 51px; */
@@ -1656,7 +1659,7 @@ width: 100%;
 }
 ::ng-deep .typess .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
-  right: -18px !important;
+  right: -35px !important;
   bottom: 0px;
   top: 50px !important;
   /* width: 51px; */

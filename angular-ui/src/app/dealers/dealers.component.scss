@@ -1,3 +1,17 @@
+
+
+
+
+
+::ng-deep.mat-tab-group .mat-tab-header, .mat-tab-nav-bar .mat-tab-header
+{
+  border-bottom: none;
+}
+
+::ng-deep.mat-tab-group .mat-ink-bar, .mat-tab-nav-bar .mat-ink-bar{
+  display: none !important;
+}
+
 .dropdown-list ul {
 
   overflow-x: auto;
@@ -1086,8 +1100,11 @@ mat-sidenav {
   font-weight: 900;
 }
 
-.country-info {
+::ng-deep .country-info {
   margin-left: 20px !important;
+  
+  font-size: 300px;
+  
 }
 .country-info:hover >.tooltip{
 display: block;

@@ -1,3 +1,14 @@
+::-webkit-scrollbar {
+  
+  height: 18px;  
+}
+
+::-webkit-scrollbar { 
+   overflow-x: scroll;
+    height: 0.4em;
+    border-radius: 20px;
+}
+
 
 .input-box::placeholder
 {

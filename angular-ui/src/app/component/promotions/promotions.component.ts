@@ -30,6 +30,9 @@ import { DateRangeSelectionComponent } from './date-range-selection/date-range-s
 import { PramotionActionComponent } from '../pramotion-action/pramotion-action.component';
 import { AssosiationServicesService } from 'src/app/services/assosiation-services.service';
 import { PromotionSharedServicesService } from 'src/app/services/promotion-shared-services.service';
+import moment from 'moment';
+
+import { SharedService } from 'src/app/services/shared-services.service';
 export interface PeriodicElement {
 
   name: any;
@@ -61,7 +64,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./promotions.component.css']
 })
 export class PromotionsComponent implements OnInit {
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource(ELEMENT_DATA); 
   private gridApi!: GridApi;
   paginationPageSize = 10;
   myForm:any= FormGroup;
@@ -122,17 +125,29 @@ columnDefs: ColDef[] = [
 },
 
   {  headerName: "# of Dealers",
-     field: 'noOfDealers',      tooltipField:"noOfDealers",
+     field: 'noOfDealers',      tooltipField:"noOfDealers",type: 'rightAligned',
     },
 
   {   headerName: "Start Date",
     // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
     field: 'startDate',      tooltipField:"startDate",
+
+ cellRenderer: (data) => 
+   { return this.sharedServices.dateformat(data.value);
+   },
+  
     type: ['nonEditableColumn']},
 
     {   headerName: "End Date",
     // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
     field: 'endDate',type: ['nonEditableColumn'],      tooltipField:"endDate",
+
+  
+       
+   cellRenderer: (data) => 
+   { return this.sharedServices.dateformat(data.value);
+   },
+
   },
     {  headerName: "# of orders",
     field: 'noOfOrders',      tooltipField:"noOfOrders",
@@ -319,6 +334,9 @@ geoList:any=[];
   // date: Date;
   currentPageName:string=''
   constructor(public dialog: MatDialog,
+
+       private sharedServices :SharedService,
+     
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
     private user:UserService,
@@ -404,7 +422,9 @@ geoList:any=[];
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
       this.rowData5 = res.response;
-      console.log("RowData5",this.rowData5)
+      console.log("RowData5",this.rowData5);
+
+
      
 
     });
@@ -493,9 +513,10 @@ geoList:any=[];
 
       this.rowData5 = res.response;
       console.log("Promotion List",this.rowData5);
-     
+
 
     });
+    
   }
 
 
@@ -517,6 +538,8 @@ geoList:any=[];
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
       this.rowData5 = res.response;
+
+      
      
 
     });
@@ -526,7 +549,7 @@ geoList:any=[];
   promotionList(){
     this.promotin.promotionlist().subscribe((res)=>{
       let localdata=res.response;
-
+    
 
     this.toppingList = localdata.map((data: { promotionTypesId: any; promotionTypesName: any; }) => {
       return { promotionTypesId: data.promotionTypesId, promotionTypesName: data.promotionTypesName };
@@ -736,6 +759,8 @@ onProductSelect(item: any) {
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
       this.rowData5 = res.response;
+
+     
      
 
     });
@@ -1341,7 +1366,7 @@ console.log(item)
     }
     this.promotin.promotionTabledata(data).subscribe((res) => {
 
-      this.rowData5 = res.response;
+      this.rowData5 = res.response;  
      
     
     });

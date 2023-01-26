@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridReadyEvent } from 'ag-grid-community';
+import moment from 'moment';
 import { SalesServicesService } from 'src/app/services/sales-services.service';
+import { SharedService } from 'src/app/services/shared-services.service';
 import { SalesBulkUploadComponent } from '../../sales-bulk-upload/sales-bulk-upload.component';
 import { SalesInvoiceDownloadComponent } from '../../sales-invoice-download/sales-invoice-download.component';
 import { UploadSalesActionComponent } from '../../upload-sales-action/upload-sales-action.component';
@@ -22,6 +24,7 @@ export class SalesUploadsComponent implements OnInit {
   public popupParent: HTMLElement = document.body;
   private gridApi!: GridApi;
   constructor(public dialog: MatDialog,
+    private sharedService :SharedService, 
     private salesService:SalesServicesService) { }
 
   ngOnInit(): void {
@@ -61,6 +64,17 @@ export class SalesUploadsComponent implements OnInit {
       console.log(res.response)
       this.salesUploadList=res.response;
       console.log("SalesUploadList",this.salesUploadList);
+
+
+      
+      this.salesUploadList.forEach(element=>{
+      
+
+        element.uploadedOn= this.sharedService.dateformat
+        (element.uploadedOn);
+
+
+      })
 
     })
   }
@@ -143,7 +157,16 @@ sessionStorage.setItem("BatchId",batchId );
   },     
   
     {  headerName: "Upload On",
-       field: 'uploadedOn',      tooltipField:"uploadedOn",type: ['nonEditableColumn']
+       field: 'uploadedOn',      tooltipField:"uploadedOn",
+
+     
+
+      
+  cellRenderer: (data) => 
+  { return this.sharedService.dateformat(data.value);
+  },
+
+       type: ['nonEditableColumn']
       },
   
     {   headerName: "Total Items",

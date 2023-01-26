@@ -1105,7 +1105,7 @@ console.log(item)
   const element = document.createElement('span');
   const imageElement = document.createElement('img');
   imageElement.className = "country-info";
-  imageElement.src ='assets/img/countryinfo.png';
+  // imageElement.src ='assets/img/countryinfo.png';
   element.appendChild(document.createTextNode(params.value));
   element.appendChild(imageElement);
   return element;

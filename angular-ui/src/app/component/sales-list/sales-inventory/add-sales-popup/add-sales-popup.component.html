@@ -1,7 +1,7 @@
 <div class="container">
 <div class="add-sales ">
     <div class="addSales">
-        <img  class="print-img" src="../../../assets/material/print-img.svg" alt="">
+        <!-- <img  class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
         <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
     </div>
     <div class="sales-head">
@@ -28,7 +28,7 @@
                     <div class="promotiont addSalesdropdown">
                         <label class="addDealerlabels">Dealer <span class="Astr">*</span></label>
                     </div>
-                    <ng-select [items]="addSalesdropdown" class="addDealerSelection" bindValue="customerId" bindLabel="customerName" placeholder="Select the promotion type"
+                    <ng-select [items]="addSalesdropdown" class="addDealerSelection" bindValue="customerId" bindLabel="customerName" placeholder="Select the dealer"
                     #geoghraphy
                     (change)="onTypeSelect($event)" required>
                   </ng-select>
@@ -42,7 +42,7 @@
                         [data]="toppingList3" (onSelect)="onTypeSelect($event)"
                         (onSelectAll)="onTypeAll($event)">
                     </ng-multiselect-dropdown> -->
-                    <ng-select [items]="addsalesGeoDropDown" bindValue="geographyId" bindLabel="geographyName" placeholder="Select the promotion type"
+                    <ng-select [items]="addsalesGeoDropDown" bindValue="geographyId" bindLabel="geographyName" placeholder="Select the geography"
                   #geoghraphy
                   (change)="onGeoSelect($event)" required>
                 </ng-select>
@@ -106,7 +106,7 @@
                     <div class="promotiont ">
                         <label class="addDealerlabels">Product<span class="Astr">*</span></label>
                     </div>
-                    <ng-select [items]="productDetails" class="addDealerProduct" bindValue="stockItemId" bindLabel="stockItemName" placeholder="Select the promotion type"
+                    <ng-select [items]="productDetails" class="addDealerProduct" bindValue="stockItemId" bindLabel="stockItemName" placeholder="Select the product"
                   #geoghraphy
                   (change)="onProductTypeSelect($event)" required>
                 </ng-select>

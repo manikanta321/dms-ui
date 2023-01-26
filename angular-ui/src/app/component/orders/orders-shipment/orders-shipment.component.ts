@@ -72,7 +72,7 @@ export class OrdersShipmentComponent implements OnInit {
 
   
   cellRenderer: (data) => 
-  { return this.sharedService.dateformat(data.value);
+  { return this.sharedService1.dateformat(data.value);
   },
 
   },
@@ -175,7 +175,7 @@ export class OrdersShipmentComponent implements OnInit {
     alert('hlo');
   }
   constructor(public dialog: MatDialog,
-    private sharedService :SharedService,
+    private sharedService1 :SharedService,
     public orders:OrdersApisService,
     private user: UserService,
     private route: ActivatedRoute,
@@ -368,14 +368,14 @@ export class OrdersShipmentComponent implements OnInit {
         this.shipmentDatalist.forEach(element=>{
           
 
-          element.shipmentDate= this.sharedService.dateformat
+          element.shipmentDate= this.sharedService1.dateformat
           (element.shipmentDate);
 
 
           this.shipmentDatalist.forEach(element=>{
         
 
-            element.orderDate= this.sharedService.dateformat
+            element.orderDate= this.sharedService1.dateformat
             (element.orderDate);
            })
 
@@ -383,7 +383,7 @@ export class OrdersShipmentComponent implements OnInit {
           
 
             
-            element.invoiceDate= this.sharedService.dateformat
+            element.invoiceDate= this.sharedService1.dateformat
             (element.invoiceDate);
            })
            

@@ -157,7 +157,7 @@
                                         <p class="alltotals">Shipping Charge</p>
                                         <span>{{shipmentArray?.shipingcharge}}</span>
                                     </div>
-                                    <div class="subitem">
+                                    <div class="subitem total_total">
                                         <p class="alltotals">Total</p>
                                         <span>{{shipmentArray?.total}}</span>
                                     </div>
@@ -265,7 +265,7 @@
                                         <p class="alltotals">Shipping Charge</p>
                                         <span>{{shipmentArray?.shipingcharge}}</span>
                                     </div>
-                                    <div class="subitem">
+                                    <div class="subitem total_total">
                                         <p class="alltotals">Total</p>
                                         <span>{{shipmentArray?.total}}</span>
                                     </div>
@@ -453,7 +453,7 @@
                                             [(ngModel)]="ShippingCharge" (keyup)="addTotal()">
                                         <!-- <span>3000</span> -->
                                     </div>
-                                    <div class="subitem">
+                                    <div class="subitem total_total">
                                         <p class="alltotals">Total</p>
                                         <span>{{Total}}</span>
                                     </div>
@@ -466,7 +466,7 @@
                             <!-- <div class="col-lg-1"></div> -->
                             <div class="col-lg-11">
                                 <div>
-                                    <label>Dispatch Comment</label>
+                                    <label class="dispatchC">Dispatch Comment</label>
                                     <br>
                                     <input type="text" placeholder="Enter any comments" class="dispatchComments"
                                         [(ngModel)]="DispachComments">
@@ -776,9 +776,9 @@
                                         <p class="alltotals">Shipping Charge</p>
                                         <span>3000</span>
                                     </div>
-                                    <div class="subitem">
-                                        <p class="alltotals">Total</p>
-                                        <span>105,000.00</span>
+                                    <div class="subitem  total_subitem">
+                                        <p class="alltotalss totaltotalL">Total</p>
+                                        <span  id="tot">105,000.00</span>
                                     </div>
                                 </div>
                             </div>
@@ -1033,13 +1033,15 @@
                                         <!-- <span>2000</span> -->
                                     </div>
                                     <div class="subitem">
-                                        <p class="alltotals">Shipping Charge</p>
+                                        <p class="alltotals totaltotal">Shipping Charge</p>
                                         <input type="text" placeholder="300" class="subtotalBox">
                                         <!-- <span>3000</span> -->
                                     </div>
-                                    <div class="subitem">
-                                        <p class="alltotals">Total</p>
-                                        <span>3000</span>
+
+
+                                    <div class="subitem subitem1">
+                                        <p class="alltotals alltotals1">Total </p>
+                                        <span id="tot1">3000</span>
                                     </div>
 
                                 </div>
@@ -1050,7 +1052,7 @@
                             <!-- <div class="col-lg-1"></div> -->
                             <div class="col-lg-11">
                                 <div>
-                                    <label>Dispatch Comment</label>
+                                    <label class="dispatchC">Dispatch Comment</label>
                                     <br>
                                     <input type="text" placeholder="Enter any comments" class="dispatchComments">
                                 </div>
@@ -1060,7 +1062,7 @@
                             <!-- <div class="col-lg-1"></div> -->
                             <div class="col-lg-11">
                                 <div>
-                                    <label>Receipt Comment</label>
+                                    <label class="dispatchC">Receipt Comment</label>
                                     <br>
                                     <input type="text" placeholder="Enter any comments" class="dispatchComments">
                                 </div>

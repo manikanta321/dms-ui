@@ -1,3 +1,14 @@
+::-webkit-scrollbar {
+  
+  height: 18px;  
+}
+
+::-webkit-scrollbar { 
+   overflow-x: scroll;
+    height: 0.4em;
+    border-radius: 20px;
+}
+
 
 .input-box::placeholder
 {
@@ -1486,6 +1497,15 @@ left: 456px;
   border-radius: 10px;
   border: 1px solid black;
   font-size: 12.5px;
+}
+.IteminputBoxesD {
+  width: 100px;
+  height: 30px;
+  background: none;
+  border-radius: 10px;
+  border: 1px solid black;
+  font-size: 12.5px;
+  color: green;
 }
 
 .itemLeft {

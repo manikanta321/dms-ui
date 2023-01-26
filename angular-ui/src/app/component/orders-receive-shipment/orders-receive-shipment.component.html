@@ -153,10 +153,10 @@
                                 </div>
                                 <div class="subitem">
                                     <p class="alltotals">Shipping Charge</p>
-                                    <span>{{shipmentArray.shipingcharge}}</span>
+                                    <span id="totallssss">{{shipmentArray.shipingcharge}}</span>
                                 </div>
-                                <div class="subitem">
-                                    <p class="alltotals">Total</p>
+                                <div class="subitem total_total">
+                                    <p class="alltotals totaltotal">Total</p>
                                     <span>{{shipmentArray.total}}</span>
                                 </div>
                             </div>
@@ -336,9 +336,9 @@
                                     <p class="alltotals">Shipping Charge</p>
                                     <span>{{shipmentArray.shipingcharge}}</span>
                                 </div>
-                                <div class="subitem">
-                                    <p class="alltotals">Total</p>
-                                    <span>{{shipmentArray.total}}</span>
+                                <div class="subitem total_total">
+                                    <p class="alltotals totaltotal">Total</p>
+                                    <span id ="totallssss">{{shipmentArray.total}}</span>
                                 </div>
                             </div>
                         </div>
@@ -348,7 +348,7 @@
                         <!-- <div class="col-lg-1"></div> -->
                         <div class="col-lg-11">
                             <div>
-                                <label>Dispatch Comment</label>
+                                <label class="dispatchC">Dispatch Comment</label>
                                 <br>
                                 <p>{{data.invoiceComments}}</p>
                             </div>
@@ -358,7 +358,7 @@
                         <!-- <div class="col-lg-1"></div> -->
                         <div class="col-lg-11" *ngIf="data.currentReceiveshipment">
                             <div>
-                                <label>Receipt Comment</label>
+                                <label class="dispatchC">Receipt Comment</label>
                                 <br>
                                 <input type="text" placeholder="Enter any comments" class="dispatchComments"
                                     [(ngModel)]="ReceiptComments">

@@ -59,6 +59,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import * as moment from 'moment';
 import { CurrencyActionComponent } from './currency-action/currency-action.component';
 import { OtherMasterService } from 'src/app/services/other-master.service';
+import { SharedService } from 'src/app/services/shared-services.service';
 
 @Component({
   selector: 'app-currency-conversation',
@@ -123,16 +124,23 @@ export class CurrencyConversationComponent implements OnInit {
     {
       headerName: " Effective Date",
       field: 'effectiveFrom', type: ['nonEditableColumn'],
-      cellRenderer: function dateFormtter(params) {
+      cellRenderer: function dateFormtter(params)
+{
+        
         if (params.value == null) {
-          return params.value = ''
+          return params.value = ''    
         }
         else {
-          return moment(params.value).format('DD MMM YY, HH:mm A')
+          
+           return moment(params.value).format('DD-MMM-YY');
+         
 
         }
       },
-      tooltipValueGetter: (params: ITooltipParams) => moment(params.value).format('DD MMM YY, HH:mm A'),
+      
+      tooltipValueGetter: (params: ITooltipParams) => moment(params.value).format('DD-MMM-YY'),
+
+      
     },
 
     {
@@ -301,6 +309,8 @@ export class CurrencyConversationComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
     private router: Router,
+    
+    private sharedService :SharedService,
     private _liveAnnouncer: LiveAnnouncer,
     private user: UserService,
     private observer: BreakpointObserver,

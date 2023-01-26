@@ -9,6 +9,65 @@
   right: 41px;
 }
 
+.total_subitem
+{
+  width: 129px;
+  height: 52px;
+  margin-right: -6px;
+  background: #686E74;
+  border-radius: 0px 21.2px 21.2px 0px;
+  margin-top: -5px;
+}
+
+#tot{
+   margin-left: 12px;
+    color:whitesmoke;
+    font-weight: bolder;
+  }
+
+  .alltotalss
+  {
+    margin-bottom: 1px;
+  }
+
+  .totaltotalL
+{
+  margin-top: 4px;
+  margin-left: 12px;
+  color: white;
+
+}
+
+
+.subitem1
+{
+  width: 129px;
+  height: 52px;
+  margin-right: -6px;
+  background: #686E74;
+  border-radius: 0px 21.2px 21.2px 0px;
+  margin-top: -5px;
+}
+
+.alltotals1
+{
+  margin-top: 4px;
+  margin-left: 12px;
+  color: white;
+
+}
+#tot1{
+  margin-left: 12px;
+   color:whitesmoke;
+   font-weight: bolder;
+ }
+
+
+  
+
+
+
+
 .mat-form-field::placeholder {
   bottom: 2px;
 }
@@ -312,8 +371,27 @@
 
 }
 
+.total_total
+{
+  
+width: 129px;
+height: 52px;
+margin-right: -6px;
+background: #686E74;
+border-radius: 0px 21.2px 21.2px 0px;
+margin-top: -5px;
+}
 
+.totaltotal
+{
+  margin-top: 4px;
+  margin-left: 12px;
+  color: white;
 
+}
+.dispatchC{
+  font-weight: bold;
+}
 .categorydrp {
   width: 205px;
 }
@@ -1215,6 +1293,7 @@ height: 5px;
   padding: 5px;
   font-size: 13px;
   margin-left: 308px;
+  margin: auto;
 }
 
 .subitem {

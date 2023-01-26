@@ -16,6 +16,8 @@ import { OrderlistActionPopupComponent } from '../../order-list/orderlist-action
 import { SharedShipmentServicesService } from 'src/app/services/shared-shipment-services.service';
 import { OrdersReceiveShipmentComponent } from '../../orders-receive-shipment/orders-receive-shipment.component';
 import { OtherMasterService } from 'src/app/services/other-master.service';
+import moment from 'moment';
+import { SharedService } from 'src/app/services/shared-services.service';
 
 @Component({
   selector: 'app-orders-shipment',
@@ -24,6 +26,10 @@ import { OtherMasterService } from 'src/app/services/other-master.service';
 })
 export class OrdersShipmentComponent implements OnInit {
   myForm: any = FormGroup; 
+
+  date: boolean = true;
+
+   selectedDate: any;
   statusForm:any = FormGroup;
   disabled = false;
   dealerSettings: IDropdownSettings = {};
@@ -60,19 +66,27 @@ export class OrdersShipmentComponent implements OnInit {
     field: 'shipmentNumber',      tooltipField:"shipmentNumber",
    },
    {  headerName: "Shipment Date",minWidth:200,
-   field: 'shipmentDate',      tooltipField:"shipmentDate",
+   field: 'shipmentDate',     
+   tooltipField:"shipmentDate",
+  
+
+  
+  cellRenderer: (data) => 
+  { return this.sharedService.dateformat(data.value);
+  },
+
   },
     {  headerName: "Order No.",
        field: 'orderNUmber',      tooltipField:"orderNUmber",
        cellStyle: { color: '#017EFA' },
        cellEditorPopup: true,
-       onCellClicked: (event: CellClickedEvent) =>this.dialog.open(OrdersReceiveShipmentComponent, {      maxWidth: '95vw'    ,height:"95vh"})
+       onCellClicked: (event: CellClickedEvent) =>this.dialog.open(OrdersReceiveShipmentComponent, {      maxWidth: '95vw'    ,height:"95vh"}),
+      
       },
   
     {   headerName: "Order Date",
       field: 'orderDate',      tooltipField:"orderDate",
       type: ['nonEditableColumn']},
-  
       {   headerName: "Dealer",
       field: 'dealername',type: ['nonEditableColumn'],      tooltipField:"dealername",
     },
@@ -91,7 +105,15 @@ export class OrdersShipmentComponent implements OnInit {
   },
     {  headerName: "Status",
       field: 'statusName',      tooltipField:"statusName",
+      cellEditorParams: {
+        values: ['In-Transit', 'Received'],
+
+      cellClass: params => {
+        return params.value == 'Received' ? 'M_MYCLASS' : params.value == 'In-Transit' ? 'MYCLASS' :  ''
+
+      },
     },
+  },
     {
       headerName: '',
       colId: 'action',
@@ -101,7 +123,6 @@ export class OrdersShipmentComponent implements OnInit {
     },
   ];
   public defaultColDef: ColDef = {
-
     suppressSizeToFit: true,
     // set the default column width
     // make every column editable
@@ -154,6 +175,7 @@ export class OrdersShipmentComponent implements OnInit {
     alert('hlo');
   }
   constructor(public dialog: MatDialog,
+    private sharedService :SharedService,
     public orders:OrdersApisService,
     private user: UserService,
     private route: ActivatedRoute,
@@ -276,7 +298,8 @@ export class OrdersShipmentComponent implements OnInit {
     // }
   
     customShipDatePickerEvent(eventChange){
-      this.selectedDateRange = eventChange.selectedDate;
+      
+        this.selectedDateRange = eventChange.selectedDate;
       this.startDateShip = this.selectedDateRange.startDate;
       this.endDateShip = this.selectedDateRange.endDate;
       console.log(this.selectedDateRange);
@@ -293,10 +316,13 @@ export class OrdersShipmentComponent implements OnInit {
       this.orders.getShipmentList(data).subscribe((res) => {
         this.shipmentDatalist = res.response;
         console.log("Response",this.shipmentDatalist)
+
+
+
       });
     }
     customInvoiceDatePickerEvent(eventChange){
-      this.selectedDateRange = eventChange.selectedDate;
+        this.selectedDateRange = eventChange.selectedDate;
       this.startDateInvoice = this.selectedDateRange.startDate;
       this.endDateInvoice = this.selectedDateRange.endDate;
       console.log(this.selectedDateRange);
@@ -311,9 +337,10 @@ export class OrdersShipmentComponent implements OnInit {
         CurrentUserId:this.loggedUserId
 
       }
+      
       this.orders.getShipmentList(data).subscribe((res) => {
         this.shipmentDatalist = res.response;
-        console.log("Response",this.shipmentDatalist)
+        console.log("Response",this.shipmentDatalist)   
       });
     }
     orderShipmentUpload(){
@@ -338,6 +365,31 @@ export class OrdersShipmentComponent implements OnInit {
       this.orders.getShipmentList(data).subscribe((res) => {
         this.shipmentDatalist = res.response;
         console.log("Response",this.shipmentDatalist)
+        this.shipmentDatalist.forEach(element=>{
+          
+
+          element.shipmentDate= this.sharedService.dateformat
+          (element.shipmentDate);
+
+
+          this.shipmentDatalist.forEach(element=>{
+        
+
+            element.orderDate= this.sharedService.dateformat
+            (element.orderDate);
+           })
+
+           this.shipmentDatalist.forEach(element=>{
+          
+
+            
+            element.invoiceDate= this.sharedService.dateformat
+            (element.invoiceDate);
+           })
+           
+           
+         
+        })
       });
     }
     dealerDropdownData(){
@@ -443,13 +495,13 @@ export class OrdersShipmentComponent implements OnInit {
       this.user.statusDropdownOrderlist().subscribe((res: any) => {
         this.dropdownStatusList =res.response;
         console.log("StatusDropdown",this.dropdownStatusList)
-        let localdata = this.dropdownStatusList;
+        let localdata = this.dropdownStatusList; 
         this.statusDropList = localdata.map((data: { statusId: any; statusName: any; }) => {
-          return { statusId: data.statusId, statusname: data.statusName };
+          return { statusId: data.statusId, statusname: data.statusName }; 
         });
-        this.statusDropList.push()
+        this.statusDropList.push() 
         this.statusDropList.forEach(element => {
-          return this.statusAllarray.push(element.statusId);
+          return this.statusAllarray.push(element.statusId);  
         });
         console.log('buleditGeo', this.statusAllarray)
         this.dropdownSettings2 = {
@@ -588,6 +640,13 @@ export class OrdersShipmentComponent implements OnInit {
       this.orders.getShipmentList(data).subscribe((res) => {
         this.shipmentDatalist = res.response;
         console.log("Response",this.shipmentDatalist)
+
+        
       });
     }
+
+    close() {
+      this.date = false;
+      this.selectedDate=false;
+        }
 }

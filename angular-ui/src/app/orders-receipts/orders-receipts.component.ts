@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridReadyEvent , ColGroupDef, CellClickedEvent} from 'ag-grid-community';
+import moment from 'moment';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Subject } from 'rxjs';
 import { OrdersReceiveShipmentComponent } from '../component/orders-receive-shipment/orders-receive-shipment.component';
@@ -10,6 +11,7 @@ import { ShipOrderBulkDownloadComponent } from '../component/orders/ship-order-b
 import { SalesBulkUploadComponent } from '../component/sales-bulk-upload/sales-bulk-upload.component';
 import { OrdersApisService } from '../services/orders-apis.service';
 import { OtherMasterService } from '../services/other-master.service';
+import { SharedService } from '../services/shared-services.service';
 import { UserService } from '../services/user.service';
 import { OrderReceiptsBulkUploadComponent } from './order-receipts-bulk-upload/order-receipts-bulk-upload.component';
 
@@ -57,17 +59,27 @@ export class OrdersReceiptsComponent implements OnInit {
    },
    {  headerName: "Shipment Date",
    field: 'shipmentDate',      tooltipField:"shipmentDate",
+  cellRenderer: (data) => 
+  { return this.sharedService.dateformat(data.value);
+  },
+
   },
     {  headerName: "Order No.",
        field: 'customerPONumber',      tooltipField:"customerPONumber",
        cellStyle: { color: '#017EFA' },
        cellEditorPopup: true,
-       onCellClicked: (event: CellClickedEvent) => this.dialog.open(OrdersReceiveShipmentComponent,{      maxWidth: '95vw'    ,height:"95vh"})
+       onCellClicked: (event: CellClickedEvent) => this.dialog.open(OrdersReceiveShipmentComponent,{      maxWidth: '95vw'    ,height:"95vh"}),
       },
   
     {   headerName: "Order Date",
-      field: 'orderDate',      tooltipField:"orderDate",
-      type: ['nonEditableColumn']},
+   
+    
+  cellRenderer: (data) => 
+  { return this.sharedService.dateformat(data.value);
+  },
+  
+      type: ['nonEditableColumn'],
+    },
   
       {   headerName: "Dealer",
       field: 'dealer',type: ['nonEditableColumn'],      tooltipField:"dealer",
@@ -77,14 +89,22 @@ export class OrdersReceiptsComponent implements OnInit {
     }, 
       {  headerName: "Invoice Date",
       field: 'invoiceDate',      tooltipField:"invoiceDate",
+
+
+      
+  cellRenderer: (data) => 
+  { return this.sharedService.dateformat(data.value);
+  },
+
     }, 
    
   {  headerName: "Total Items ", 
   field:"totalitems",tooltipField:"totalitems", resizable:true,
+  
           children:[
-        {headerName: "In Order", field: 'poQty',  tooltipField:"poQty",    minWidth:50, resizable:true},
-        {headerName: "In Shipment", field: 'shipQty',      tooltipField:"shipQty",minWidth:50, resizable:true},
-        {headerName: "Received", field: 'received',      tooltipField:"received",minWidth:50, resizable:true},
+        {headerName: "In Order", field: 'poQty',  tooltipField:"poQty",    minWidth:50, resizable:true,type: 'rightAligned'},
+        {headerName: "In Shipment", field: 'shipQty',      tooltipField:"shipQty",minWidth:50, resizable:true,type: 'rightAligned',},
+        {headerName: "Received", field: 'received',      tooltipField:"received",minWidth:50, resizable:true,type: 'rightAligned',},
       ]
   
     },
@@ -149,6 +169,7 @@ export class OrdersReceiptsComponent implements OnInit {
     alert('hlo');
   }
   constructor(public dialog: MatDialog,
+    private sharedService :SharedService,
     public orders:OrdersApisService,
     private otherMasterService:OtherMasterService,
     private user: UserService,
@@ -415,6 +436,42 @@ export class OrdersReceiptsComponent implements OnInit {
       this.orders.getOrderReceiptList(data).subscribe((res) => {
         this.receiptDatalist = res.response;
         console.log("Response Receipt",this.receiptDatalist)
+
+
+        this.receiptDatalist.forEach(element=>{
+
+        
+          
+
+          element.shipmentDate= this.sharedService.dateformat
+          (element.shipmentDate);
+         
+      }),
+
+
+      this.receiptDatalist.forEach(element=>{
+        
+
+        
+        element.orderDate= this.sharedService.dateformat
+        (element.orderDate);
+
+        
+    })
+
+    
+    this.receiptDatalist.forEach(element=>{
+      
+
+        
+      element.invoiceDate= this.sharedService.dateformat
+      (element.invoiceDate);
+  })
+
+
+
+
+
       });
     }
     dealerDropdownData(){

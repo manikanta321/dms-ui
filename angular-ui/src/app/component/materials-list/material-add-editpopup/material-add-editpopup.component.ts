@@ -786,7 +786,7 @@ export class MaterialAddEditpopupComponent {
       this.removeOtherGeographiesData(Number(currentObj["hirearchyLevel"]));
       this.geoGraphyFullData[index] = obj;
       this.selectedHirerachyIndex = index;
-      if (currentObj.first.next) {
+      if (currentObj.first?.next) {
         this.geographyFormat(currentObj.first.next, stockItemId);
       }
     } else {
@@ -813,14 +813,16 @@ export class MaterialAddEditpopupComponent {
         })
       }
 
-      objDefaut.geographyHierarchyName = "Country";
+      objDefaut.geographyHierarchyName = currentObj[0]?.hierarchyName ?? "City"; // Need to ask Viswesh to send city name to make dynamic
       if (objDefaut.geographySelected.length != 0) {
         this.selectedHirerachyIndex = currentObj[0].geographyHierarchyId - 1;
       }
 
-
-      this.removeOtherGeographiesData(currentObj[0].geographyHierarchyId);
+      if(currentObj[0]){
+        this.removeOtherGeographiesData(currentObj[0].geographyHierarchyId);
       this.geoGraphyFullData[currentObj[0].geographyHierarchyId - 1] = objDefaut;
+      }
+      
     }
   }
 

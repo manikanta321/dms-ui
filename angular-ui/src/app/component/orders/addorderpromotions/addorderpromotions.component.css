@@ -1206,8 +1206,7 @@ li {
 }
 
 .promotionpopup-scroll {
-  height: 500px !important;
-  
+  max-height: 500px !important;
 }
 
 .footer {
@@ -1272,9 +1271,9 @@ li {
 
   color: #FFFFFF;
 }
-.label-div {
+.tabel-div {
   margin-top: 15px;
-  height: 321px;
+  max-height: 321px;
   /* overflow-x: hidden !important; */
 }
 .buy-grp {
@@ -1533,6 +1532,7 @@ left: 456px;
   border-radius: 68%;
   color: white;
   padding: 3px 5px;
+  display: block;
 }
 
 .totall {
@@ -1811,7 +1811,7 @@ tr:nth-child(even) {
 
 .bottom-table {
   background: #686E74;
-  border-radius: 0px 0px 24.5px 24.5px;
+  /* border-radius: 0px 0px 24.5px 24.5px; */
   height: 34px;
   color: white;
   
@@ -1978,4 +1978,10 @@ table thead, table tbody tr {
 
 .removeCircle{
   cursor: pointer;
+}
+
+
+.txt-right{
+  text-align: right;
+  padding-right: 15px;
 }

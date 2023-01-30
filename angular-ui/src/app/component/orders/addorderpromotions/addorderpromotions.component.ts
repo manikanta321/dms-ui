@@ -109,7 +109,7 @@ export class AddorderpromotionsComponent implements OnInit {
   finalValue: any;
   taxes: any;
   amount: any;
-  userType:any
+  userType: any
   CompanyReferenceNo: any;
   DealerReferenceNo: any;
   DeliveryInstructions: any;
@@ -122,8 +122,8 @@ export class AddorderpromotionsComponent implements OnInit {
   editorderbyID: any = {};
   copyEditOrderById: any;
   shippingPackingchargeDetails: any = {};
-  confirmOrder:any;
-  dealerDisabled:boolean=false
+  confirmOrder: any;
+  dealerDisabled: boolean = false
   dateChange(e) {
 
     this.selectedStartDate = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
@@ -181,18 +181,18 @@ export class AddorderpromotionsComponent implements OnInit {
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
 
   ngOnInit(): void {
-    this.userType=localStorage.getItem("userType");
-    let loginid=localStorage.getItem("logInId");
-    if(this.userType=='Dealer Admin'){
-      this.orders.dealersDetails(loginid).subscribe((res)=>{
+    this.userType = localStorage.getItem("userType");
+    let loginid = localStorage.getItem("logInId");
+    if (this.userType == 'Dealer Admin') {
+      this.orders.dealersDetails(loginid).subscribe((res) => {
         console.log(res.response)
-        this.customerId=res.response.dealerId;
-      let obj:any={
-        customerId: this.customerId
+        this.customerId = res.response.dealerId;
+        let obj: any = {
+          customerId: this.customerId
 
-      }
+        }
         this.onItemSelectdealers(obj)
-        this.dealerDisabled=true
+        this.dealerDisabled = true
 
       })
     }
@@ -243,12 +243,12 @@ export class AddorderpromotionsComponent implements OnInit {
       identifiers: [this.selectedItems]
     });
     let editV = localStorage.getItem('Edit');
-this.confirmOrder = sessionStorage.getItem("Confirm") 
-if(this.confirmOrder == "Confirm") {
-  this.actineLabel = "Confirm order";
-  this.updateOrSave = !this.updateOrSave;
-  this.GetOrdersToEdit();
-}
+    this.confirmOrder = sessionStorage.getItem("Confirm")
+    if (this.confirmOrder == "Confirm") {
+      this.actineLabel = "Confirm order";
+      this.updateOrSave = !this.updateOrSave;
+      this.GetOrdersToEdit();
+    }
     if (editV == 'Edit') {
       this.actineLabel = "Edit order";
       this.updateOrSave = !this.updateOrSave;
@@ -312,7 +312,7 @@ if(this.confirmOrder == "Confirm") {
     localStorage.setItem("geographyId", this.geographyId);
     localStorage.setItem("dealerid", this.customerId);
 
-    if(this.geographyId == null || this.customerId == null){
+    if (this.geographyId == null || this.customerId == null) {
       alert("Plz select geography and dealer");
       return;
     }
@@ -332,7 +332,7 @@ if(this.confirmOrder == "Confirm") {
     localStorage.setItem("geographyId", this.geographyId);
     localStorage.setItem("dealerid", this.customerId);
 
-    if(this.geographyId == null || this.customerId == null){
+    if (this.geographyId == null || this.customerId == null) {
       alert("Plz select geography and dealer");
       return;
     }
@@ -995,7 +995,7 @@ if(this.confirmOrder == "Confirm") {
       "Dealerid": this.customerId,
     }
     this.spinner.show();
-    
+
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
       let orderNonPromotionsData = res.response;
@@ -1029,25 +1029,41 @@ if(this.confirmOrder == "Confirm") {
 
   }
 
-  quantityChange() {
-    let quantityadd = 0;
-    let price = 0;
-    this.orderNonPromotionsdata.forEach(item => {
-      if (item.isPromotionSelected) {
-        quantityadd += item.quantity;
-        price += ((item.quantity ?? 0) * item.price);
-      }
-    });
+  quantityChange(updatedItem) {
 
-    this.quantityadd = quantityadd;
-    this.price = price;
+
+    if (!updatedItem.isPromotionSelected) {
+      updatedItem.isPromotionSelected = true;
+    } else if (!updatedItem.quantity) {
+      updatedItem.isPromotionSelected = false;
+    }
+    this.nonPromotionCalculation(updatedItem);
+
+    // let quantityadd = 0;
+    // let price = 0;
+    // this.orderNonPromotionsdata.forEach(item => {
+    //   if (item.isPromotionSelected) {
+    //     quantityadd += item.quantity;
+    //     price += ((item.quantity ?? 0) * item.price);
+    //   }
+    // });
+
+    // this.quantityadd = quantityadd;
+    // this.price = price;
   }
 
+  
+  doubleClick(taxId) {
+    if (taxId) {
+      this.orderNonPromotionsdata.forEach(element => {
+        if (element.isPromotionSelected) {
+          element.taxid = taxId;
+        }
+      });
+    }
+  }
 
-  checkboxChange(event, changedPromotionObj) {
-    console.log(event, changedPromotionObj);
-    changedPromotionObj.isPromotionSelected = event.target.checked;
-
+  nonPromotionCalculation(changedPromotionObj) {
     this.quantityadd = 0;
     this.price = 0;
     this.orderNonPromotionsdata.forEach(item => {
@@ -1064,6 +1080,30 @@ if(this.confirmOrder == "Confirm") {
     } else {
       this.nonpromotionlist.splice(index, 1);
     }
+  }
+
+
+  checkboxChange(event, changedPromotionObj) {
+    console.log(event, changedPromotionObj);
+    changedPromotionObj.isPromotionSelected = event.target.checked;
+
+    this.nonPromotionCalculation(changedPromotionObj);
+    // this.quantityadd = 0;
+    // this.price = 0;
+    // this.orderNonPromotionsdata.forEach(item => {
+    //   if (item.isPromotionSelected) {
+    //     this.quantityadd += item.quantity;
+    //     this.price += ((item.quantity ?? 0) * item.price);
+    //   }
+    // });
+
+    // let index = this.nonpromotionlist.findIndex(x => x.stockitemid == changedPromotionObj.stockitemid);
+
+    // if (index == -1) {
+    //   this.nonpromotionlist.push(changedPromotionObj);
+    // } else {
+    //   this.nonpromotionlist.splice(index, 1);
+    // }
 
   }
 
@@ -1141,7 +1181,7 @@ if(this.confirmOrder == "Confirm") {
     console.log(this.startdate, "date")
     let itemsCount: any = [];
 
-    
+
 
     let copyItemsData = this.copyEditOrderById?.itemcount ?? [];
     // Push Non Promotion data to itemscount variable
@@ -1157,7 +1197,7 @@ if(this.confirmOrder == "Confirm") {
         })
 
       }
-     
+
       itemsCount.push(tempObj);
     }
 
@@ -1172,10 +1212,10 @@ if(this.confirmOrder == "Confirm") {
             if (previousValue) {
               x.customerPOProductId = previousValue.customerPOProductId;
 
-              
+
             }
-            
-})    
+
+          })
         }
         let obj: any = {};
         obj.promotionId = tempObj.promotionId;
@@ -1189,7 +1229,7 @@ if(this.confirmOrder == "Confirm") {
 
     // Push Promotion data to itemscount variable
 
-   
+
 
     let data = {
       "CustomerId": this.customerId,
@@ -1205,18 +1245,18 @@ if(this.confirmOrder == "Confirm") {
       "AddType": submitType,
       "CustomerPOId": this.CustomerPoId
     }
-    
+
 
     this.orders.addorderNonPromotions(data).subscribe((res) => {
 
-     
-      
-      
-    this.dialog.open(AddorderproSuccessPopupComponent, {panelClass: 'activeSuccessPop'});
-    
 
 
-      
+
+      this.dialog.open(AddorderproSuccessPopupComponent, { panelClass: 'activeSuccessPop' });
+
+
+
+
       console.log(data, "data");
 
       this.dialogRef.close(true);
@@ -1225,7 +1265,7 @@ if(this.confirmOrder == "Confirm") {
       localStorage.removeItem('dealerid');
       // localStorage.removeItem('buygroupromo');
     });
-   
+
 
   }
 
@@ -1236,42 +1276,42 @@ if(this.confirmOrder == "Confirm") {
     this.copyEditOrderById = null;
     this.orders.GetOrdersToEdit(this.CustomerPoId).subscribe((res) => {
 
-   
+
       this.editorderbyID = res.response;
       this.copyEditOrderById = res.response;
       console.log(res.response, "GetOrdersToEdit")
 
-   
+
       this.datapreloadbyID();
       this.getShippingandPackingcharges();
     })
-      localStorage.setItem('AddorEditpro','edit');
+    localStorage.setItem('AddorEditpro', 'edit');
     this.sharedService.filter('Register click');
   }
   GetConfirmOrders() {
     this.CustomerPoId = localStorage.getItem("CustomerPoId");
     console.log(this.CustomerPoId, 'this.CustomerPoId');
     let data = {
-      OrderId:this.CustomerPoId,
-      flag:"Confirmed"
+      OrderId: this.CustomerPoId,
+      flag: "Confirmed"
     }
     this.orders.GetConfirmOrder(data).subscribe((res) => {
       console.log(res.response, "GetConfirmOrdersToEdit")
 
-      
+
 
     })
     this.dialogRef.close(true);
     this.sharedService.filter('Register click');
-    
-   
+
+
   }
   GetRejectOrders() {
     this.CustomerPoId = localStorage.getItem("CustomerPoId");
     console.log(this.CustomerPoId, 'this.CustomerPoId');
     let data = {
-      OrderId:this.CustomerPoId,
-      flag:"Rejected"
+      OrderId: this.CustomerPoId,
+      flag: "Rejected"
     }
     this.orders.GetConfirmOrder(data).subscribe((res) => {
       console.log(res.response, "GetConfirmOrdersToEdit")

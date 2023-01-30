@@ -93,6 +93,66 @@ export class BulkEditAssosiationComponent implements OnInit {
 
   // Data that gets displayed in the grid
   public rowData5 = [];
+  columnDefs: ColDef[] = [
+   
+    {
+      headerName: "ProductName",
+      field: 'stockItemName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
+    },
+
+    {
+      headerName: "GeographName",
+      minWidth: 450,
+      field: 'geographyName', type: ['nonEditableColumn'], pinned: 'left',
+    },
+    {
+      headerName: "DealerName",
+      field: 'customerName',
+      // cellRendererParams: {
+      // rendererImage: '', // Complementing the Cell Renderer parameters
+      // },
+      type: ['nonEditableColumn']
+    },
+
+    // suppressMovable:true,
+    {
+      headerName: "MRP",
+      field: 'mrp',
+    
+    },
+
+    {
+      headerName: 'MinOrder',
+      field: 'minOrder',
+
+    
+    },
+
+    {
+      headerName: 'MaxOrder',
+      field: 'maxOrder',
+
+    
+    },  {
+      headerName: 'Margin',
+      field: 'margin',
+
+    
+    },
+    {
+      headerName: 'Discount',
+      field: 'discount',
+
+    
+    },
+    {
+      headerName: 'LeadTimeIndays',
+      field: 'leadTimeIndays',
+
+    
+    },
+
+  ];
   public popupParent: HTMLElement = document.body;
 
   rowData: any;
@@ -281,10 +341,20 @@ export class BulkEditAssosiationComponent implements OnInit {
 
           });
   }
+  
+  
+  
+  onBtnExport(){
+    this.gridApi.exportDataAsCsv();
+  }
 
 
 
+  onGridReady(params: GridReadyEvent) {
+    this.gridApi = params.api;
+    params.api.sizeColumnsToFit();
 
+  }
 
 
 

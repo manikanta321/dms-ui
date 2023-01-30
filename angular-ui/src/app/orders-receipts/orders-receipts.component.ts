@@ -11,6 +11,7 @@ import { ShipOrderBulkDownloadComponent } from '../component/orders/ship-order-b
 import { SalesBulkUploadComponent } from '../component/sales-bulk-upload/sales-bulk-upload.component';
 import { OrdersApisService } from '../services/orders-apis.service';
 import { OtherMasterService } from '../services/other-master.service';
+import { SharedServicesShipmentService } from '../services/shared-services-shipment.service';
 import { SharedService } from '../services/shared-services.service';
 import { UserService } from '../services/user.service';
 import { OrderReceiptsBulkUploadComponent } from './order-receipts-bulk-upload/order-receipts-bulk-upload.component';
@@ -173,7 +174,16 @@ export class OrdersReceiptsComponent implements OnInit {
     public orders:OrdersApisService,
     private otherMasterService:OtherMasterService,
     private user: UserService,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private sharedserviceForshipment:SharedServicesShipmentService,
+    ) { 
+
+
+      this.sharedserviceForshipment.listen().subscribe((m: any) => {
+        console.log(m)
+        this.receiptList();
+      })
+    }
 
   ngOnInit(): void {
     this.loggedUserId = localStorage.getItem('logInId');
@@ -219,6 +229,8 @@ export class OrdersReceiptsComponent implements OnInit {
     localStorage.setItem('customerPOIdForShipment',e.data.customerPOId)
     localStorage.setItem('ViewOrReceive', 'View')
     localStorage.setItem('orderOrShipmentOrRecipt','receipts')
+    localStorage.setItem('OrderNumberToShow',e.data.customerPONumber)
+
    
     let cellCLickedpromotion = '1'
     localStorage.setItem('cellCLickedpromotion', cellCLickedpromotion)

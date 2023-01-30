@@ -5,6 +5,7 @@ import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridOpt
 import { Subject } from 'rxjs';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { OtherMasterService } from 'src/app/services/other-master.service';
+import { SharedServicesShipmentService } from 'src/app/services/shared-services-shipment.service';
 import { ShipOrderSuccessPopupComponent } from 'src/app/ship-order-success-popup/ship-order-success-popup.component';
 import { CustomDatePopupComponent } from '../orders/custom-date-popup/custom-date-popup.component';
 
@@ -53,6 +54,8 @@ export class OrdersReceiveShipmentComponent implements OnInit {
   currentShipment: any = [];
   ViewOrReceive: boolean = false;
   LostOrDamage: boolean = false;
+  orderNUmber:any='';
+  headerName:any;
   public popupParent: HTMLElement = document.body;
   public rowData5: any = [{ date: "14-Oct-22", createdBy: "Bruce Wayne", action: "Creation", subAction: "Save Draft", invoiceNo: "23AB67", comments: "Lorem ipsum dsjh sdhsujdi " }]
   public itemremoved: any[] = [{
@@ -148,15 +151,21 @@ export class OrdersReceiveShipmentComponent implements OnInit {
   constructor(public dialog: MatDialog,
     public orders: OrdersApisService,
     private otherMasterService:OtherMasterService,
-    private dialogRef: MatDialogRef<OrdersReceiveShipmentComponent>,) { }
+    private dialogRef: MatDialogRef<OrdersReceiveShipmentComponent>,
+    private sharedserviceForshipment:SharedServicesShipmentService,
+    ) { }
 
   ngOnInit(): void {
     this.userId = localStorage.getItem("logInId");
     let item = localStorage.getItem("ViewOrReceive");
     if (item == 'Receive') {
       this.ViewOrReceive = true;
+      this.headerName='Receive Shipment'
     } else {
+      this.orderNUmber=localStorage.getItem('OrderNumberToShow')
       this.ViewOrReceive = false;
+      this.headerName='View Order'
+
     }
 
     let identifier = localStorage.getItem("orderOrShipmentOrRecipt");
@@ -705,14 +714,15 @@ export class OrdersReceiveShipmentComponent implements OnInit {
   this.orders.saveReciveShipment(obj).subscribe((res)=>{
     console.log(res.response)
     if(res.response.result =='Succesfully Receiveship order added'){
-      this.otherMasterService.filter('Register click')
+      this.sharedserviceForshipment.filter('Register click')
+
       // alert('Succesfully added');
       this.dialog.open(ShipOrderSuccessPopupComponent , {panelClass: 'activeSuccessPop'});
       this.dialogRef.close();
     
     }
     else{
-    
+    alert('Please enter correct values')
     }
     })
   console.log('objshipment',obj)

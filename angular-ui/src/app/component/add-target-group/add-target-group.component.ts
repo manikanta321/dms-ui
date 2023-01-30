@@ -109,7 +109,7 @@ console.log("targetgrpName",this.targetGroupName);
     }
   }
   columnDefs: ColDef[] = [
-    { headerName:"",checkboxSelection:true , maxWidth:40, },
+    // { headerName:"",checkboxSelection:true , maxWidth:40, },
    
     {   headerName: "Product Name",field: 'productName' ,      tooltipField:"productName",type: ['nonEditableColumn']
   },

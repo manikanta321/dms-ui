@@ -402,13 +402,13 @@
                 </div>
 
                 <div class="overlay" *ngIf="productIdentifierPopup">
-
-                  <div class="popup" style="width: 1053px; height: 300px; top: 220px;">
+                  <div class="popup" style="min-width: 700px; height: 320px; top: 200px;">
                     <!-- <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon> -->
+                    <a class="closes" (click)="closePopup()">&times;</a>
                     <div class="col-12">
                       <div class="row">
-                        <div class="col-4">
-                          <h2 class="sidentifier">Business<span>*</span></h2>
+                        <div class="col-6">
+                          <h2 class="sidentifier">Business Category<span>*</span></h2>
 
                           <div class="content">
                             <mat-chip-list multiple>
@@ -423,8 +423,8 @@
                           </div>
                         </div>
                         <div class="vr"></div>
-                        <div class="col-4">
-                          <h2 class="sidentifier">Product<span>*</span></h2>
+                        <div class="col-6">
+                          <h2 class="sidentifier">Product Clasification<span>*</span></h2>
 
                           <!-- <div class="content">
                             <mat-chip-list multiple>
@@ -448,8 +448,8 @@
                             </mat-chip-list>
                           </div>
                         </div>
-                        <div class="vr"></div>
-                        <div class="col-4">
+                        <!-- <div class="vr"></div> -->
+                        <!-- <div class="col-4">
                           <a class="close-icon" (click)="closePopup()">&times;</a>
                           <h2 class="sidentifierp">Product Setting<span>*</span></h2>
                           <div class="content pContent">
@@ -457,12 +457,11 @@
                               <mat-chip #ps="matChip" *ngFor="let data of productSettingData"
                                 [selected]="isSelectedProductIdentifierSetting(data)"
                                 (focus)="selectProductIdentifierSetting(data)" class="cold">
-                                <!-- <mat-icon *ngIf="ps.selected">check</mat-icon> -->
                                 {{data.productCustomName}}
                               </mat-chip>
                             </mat-chip-list>
                           </div>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                   </div>

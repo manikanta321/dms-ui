@@ -1449,7 +1449,18 @@ textarea {
   /* text-decoration: none; */
   color: black;
 }
-
+.popup .closes {
+  position: absolute;
+  top: 10px;
+  right: 34px;
+  /* width: 12px;
+  height: 12px; */
+  transition: all 200ms;
+  font-size: 16px;
+  font-weight: bold;
+  /* text-decoration: none; */
+  color: black;
+}
 .popup .closeProd {
   position: absolute;
   top: 2px;
@@ -1467,7 +1478,10 @@ textarea {
   /* color: #06D85F; */
   cursor: pointer;
 }
-
+.popup .closes:hover {
+  /* color: #06D85F; */
+  cursor: pointer;
+}
 .popup .content {
   max-height: 100%;
   /* overflow: auto; */

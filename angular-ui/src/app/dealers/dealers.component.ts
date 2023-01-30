@@ -45,6 +45,7 @@ import { EditTaxTemplateComponent } from '../component/users/userPopups/edit-tax
 import { AddUserPopupComponent } from '../component/users/userPopups/add-user-popup/add-user-popup.component';
 import { AddDealerPopupComponent } from '../add-dealer-popup/add-dealer-popup.component';
 import { SharedServicesDealerService } from '../services/shared-services-dealer.service';
+import { IconHoverComponent } from '../component/icon-hover/icon-hover.component';
 // import { UseractionComponent } from '../useraction/useraction.component';
 
 @Component({
@@ -112,10 +113,11 @@ export class DealersComponent implements OnInit {
     {
       headerName: "Geography",
       field: 'geographyname',
-      cellRenderer: this.daysSunshineRenderer,
+     // cellRenderer: this.daysSunshineRenderer,
       // cellRendererParams: {
       // rendererImage: '', // Complementing the Cell Renderer parameters
       // },
+      cellRenderer: IconHoverComponent,
       type: ['nonEditableColumn']
     },
 

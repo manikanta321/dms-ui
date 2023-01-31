@@ -964,7 +964,7 @@ console.log(item)
   }
 
   addUser() {
-    this.dialog.open(AddDealerAssociationsComponent,{width: '1100px',height:'590px'}); 
+    this.dialog.open(AddDealerAssociationsComponent,{width: '900px',height:'530px'});
   }
   editBulk(){
     this.dialog.open(BulkEditAssosiationComponent,{width: '1300px'});
@@ -1105,7 +1105,7 @@ console.log(item)
   const element = document.createElement('span');
   const imageElement = document.createElement('img');
   imageElement.className = "country-info";
-  // imageElement.src ='assets/img/countryinfo.png';
+  imageElement.src ='assets/img/countryinfo.png';
   element.appendChild(document.createTextNode(params.value));
   element.appendChild(imageElement);
   return element;

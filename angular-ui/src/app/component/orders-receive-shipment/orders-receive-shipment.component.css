@@ -980,13 +980,15 @@
   .total_total
 {
   
-width: 129px;
-height: 52px;
-margin-right: -6px;
-
-background: #686E74;
-border-radius: 0px 21.2px 21.2px 0px;
-margin-top: -5px;
+  width: 129px;
+  height: 52px;
+  margin-right: -6px;
+  background: #686E74;
+  border-radius: 0px 21.2px 21.2px 0px;
+  margin-top: -5px;
+  color: white;
+  text-align:left;
+padding-left: 20px;
 }
 .totaltotal
 {
@@ -998,8 +1000,13 @@ margin-top: -5px;
 #totallssss
 {
   margin-left: 12px;
-  color:black;
-  font-weight: bolder;
+ 
+}
+#totallssss1
+{
+  margin-left: 12px;
+  color: black;
+ 
 }
 .dispatchC{
   font-weight: bold;

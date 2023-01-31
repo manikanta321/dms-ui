@@ -318,20 +318,20 @@
                                                 </mat-icon>
                                             </div>
 
+                                            <p  class="form-row" *ngIf="i==1">
 
+                                                <mat-checkbox      [checked]="completed" (click)=Checked() >
+                                                    Shipping information is same as
+                                                    billing
+                                                    information </mat-checkbox>
+                                            </p>
 
                                         </div>
 
                                     </div>
 
 
-                                    <p  class="form-row">
-
-                                        <mat-checkbox      [checked]="completed" (click)=Checked() >
-                                            Shipping information is same as
-                                            billing
-                                            information </mat-checkbox>
-                                    </p>
+                               
 
                                 </div>
 

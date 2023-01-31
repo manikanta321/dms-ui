@@ -380,6 +380,9 @@ margin-right: -6px;
 background: #686E74;
 border-radius: 0px 21.2px 21.2px 0px;
 margin-top: -5px;
+color: white;
+text-align:left;
+padding-left: 20px;
 }
 
 .totaltotal
@@ -1322,7 +1325,10 @@ height: 5px;
   cursor: pointer;
   height: 37px;
 }
-
+.mat-form-field::placeholder { 
+  color: red !important;
+  opacity: 1; /* Firefox */
+}
 .content-shp-3 {
   padding: 0 0px 10px;
   overflow: hidden;
@@ -1475,8 +1481,10 @@ th{
   border-radius: 10px;
   height: 41px;
   background-color: white;
+  color: red;
   
 }
+
 .calendarToggle {
   position: absolute;
   bottom: 4px;

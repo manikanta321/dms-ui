@@ -307,12 +307,12 @@
                                     <label>Invoice Date <span class="astr">*</span></label><br>
                                     <mat-form-field class="placeh-align">
                                         <mat-label> Invoice date</mat-label>
-                                        <input matInput id="invoiceDate" name="invoiceDate" required placeholder="Invoice Date" [matDatepicker]="picker1" [max]="maxDate"  [(ngModel)]="startDate" #invoiceDate="ngModel"
+                                        <input matInput id="invoiceDate" name="invoiceDate"  placeholder="Invoice Date" [matDatepicker]="picker1" [max]="maxDate"  [(ngModel)]="startDate" #invoiceDate="ngModel"
                                             (dateChange)="invoicedateChange($event)">
                                             <!-- <p  style="margin-bottom:-22px;padding: 0px;" *ngIf="invoiceDate.invalid && (invoiceDate.dirty || invoiceDate.touched)"
                                             class="alert"> -->
                                             <span style="color:red;position: relative; top: 12px;" *ngIf="invoiceDate.invalid && (invoiceDate.dirty || invoiceDate.touched)">
-                                                *Invoice date is required 
+                                                Invoice date is required 
                                              </span>
                                         <mat-datepicker-toggle matSuffix [for]="picker1">
                                             <mat-icon matDatepickerToggleIcon style="margin-left: 0px;">
@@ -328,10 +328,10 @@
                                     <label>Shipping Date<span class="astr">*</span></label><br>
                                     <mat-form-field class="placeh-align">
                                         <!-- <mat-label> Shipping date</mat-label> -->
-                                        <input id="shippingDates" name="shippingDates" placeholder="Shipping date" required matInput [matDatepicker]="picker2" [max]="maxDate"
+                                        <input id="shippingDates" name="shippingDates" placeholder="Shipping date"  matInput [matDatepicker]="picker2" [max]="maxDate"
                                             (dateChange)="shippingDatechange($event)"[(ngModel)]="shippingDate" #shippingDates="ngModel">
                                             <span style="color:red;position: relative; top: 12px;"*ngIf="shippingDates.invalid && (shippingDates.dirty || shippingDates.touched)">
-                                                *Shipping date is required 
+                                                Shipping date is required 
                                              </span>
                                         <mat-datepicker-toggle matSuffix [for]="picker2">
                                             <mat-icon matDatepickerToggleIcon style="margin-left: 0px;">
@@ -360,6 +360,7 @@
                                 </div> -->
                             </div>
                         </div>
+                        <br>
                         <div class="section mt-1">
                             <table>
                                 <tr>

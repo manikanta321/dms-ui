@@ -106,12 +106,12 @@ export class OrdersShipmentComponent implements OnInit {
       field: 'statusName',      tooltipField:"statusName",
       cellEditorParams: {
         values: ['In-Transit', 'Received'],
-
-      cellClass: params => {
-        return params.value == 'Received' ? 'M_MYCLASS' : params.value == 'In-Transit' ? 'MYCLASS' :  ''
-
       },
-    },
+       cellClass: params => {
+        return params.value == 'Received' ? 'received' : params.value == 'In-Transit' ? 'Transit' :  ''
+
+       }
+    
   },
     {
       headerName: '',
@@ -169,6 +169,7 @@ export class OrdersShipmentComponent implements OnInit {
     },
   };
   currentPageName:string="";
+  statusDropDown: any;
 
   clickNextRendererFunc(){
     alert('hlo');
@@ -488,7 +489,10 @@ export class OrdersShipmentComponent implements OnInit {
     statusItems() {
       this.user.statusDropdownOrderlist().subscribe((res: any) => {
         this.dropdownStatusList =res.response;
-        console.log("StatusDropdown",this.dropdownStatusList)
+
+        this.statusDropDown = this.dropdownStatusList.filter((element) => element.statusName == 'In-Transit' || element.statusName == 'Received')
+
+        console.log("StatusDropdown");
         let localdata = this.dropdownStatusList; 
         this.statusDropList = localdata.map((data: { statusId: any; statusName: any; }) => {
           return { statusId: data.statusId, statusname: data.statusName }; 

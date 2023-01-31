@@ -46,9 +46,11 @@ color: #000000;
 }
 .addU{
     position: relative;
-     /* font-family: 'Gilroy-Bold';  */
-     font-weight: bold;
+      font-family: 'Gilroy'; 
+     
      font-size: 20px;
+     color: #000000;
+     font-weight: 700;
 }
 .addU:after{
     content: "";

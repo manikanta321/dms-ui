@@ -24,7 +24,7 @@
       <div class="col-md-2 col-lg-2 col-sm-2" style="padding-left: 0px !important; margin-left: 16px;">
         <form [formGroup]="statusForm" class="dropdown-form">
           <ng-multiselect-dropdown class="Status stts" name="city" [placeholder]="'Status'" formControlName="status"
-            [disabled]="disabled" [settings]="dropdownSettings2" [data]="dropdownStatusList" (onSelect)="statusdropdownselect($event)"
+            [disabled]="disabled" [settings]="dropdownSettings2" [data]="statusDropDown" (onSelect)="statusdropdownselect($event)"
             (onDeSelect)="statusDeselect($event)"(onDeSelectAll)="statusDeselectAll($event)"(onSelectAll)="statusselectAll($event)" >
           </ng-multiselect-dropdown>
         </form>

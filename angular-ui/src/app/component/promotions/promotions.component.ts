@@ -1211,11 +1211,12 @@ handleScroll(event) {
     localStorage.setItem('addOrEdit','Addpromo')
 
     const config: MatDialogConfig = {
-      width: '1043px',
-      height: '583px',
+        width: '100vw',
+      
+        height: '583px',
      
     };
-    let addEditPromotionDialog = this.dialog.open( AddPromotionsComponent, config);
+    let addEditPromotionDialog = this.dialog.open( AddPromotionsComponent ,config);
 
     addEditPromotionDialog.afterClosed().subscribe((res) => {
       if(res == 'success'){

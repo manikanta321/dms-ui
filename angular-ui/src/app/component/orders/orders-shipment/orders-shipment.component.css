@@ -1,13 +1,15 @@
-::ng-deep.MYCLASS {
+::ng-deep.received {
     
-  color: #0D4C86 !important;
+  
+  color: #09BC8A!important;
 }
 
 
-::ng-deep.M_MYCLASS {
-    
-   color: #09BC8A!important;
+::ng-deep.Transit{
+  color: #0D4C86 !important;
+  
        }
+
 .sales-example-form {
   min-width: 150px;
   max-width: 500px;

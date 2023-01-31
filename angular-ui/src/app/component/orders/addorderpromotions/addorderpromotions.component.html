@@ -1,8 +1,8 @@
 <div *ngIf="confirmOrder!=''" class="font">
     <div class="main">
-        <div class="container promotionpopup-scroll">
+        <div class=" promotionpopup-scroll">
             <div class="addUser">
-                 <img class="print-img" src="../../../assets/material/print-img.svg" alt="">
+                 <!-- <img class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="false">close</mat-icon>
 
             </div>
@@ -218,23 +218,23 @@
                                 <div class="innerTotal d-flex">
                                     <div class="subitem">
                                         <p class="alltotals">Sub Total</p>
-                                        <span>{{shippingPackingchargeDetails.subTotal}}</span>
+                                        <span id="color">{{shippingPackingchargeDetails.subTotal}}</span>
                                     </div>
                                     <div class="subitem">
                                         <p class="alltotals">Tax Element</p>
-                                        <span>{{shippingPackingchargeDetails.taxElement}}</span>
+                                        <span id="color">{{shippingPackingchargeDetails.taxElement}}</span>
                                     </div>
                                     <div class="subitem">
                                         <p class="alltotals">Packing Charge</p>
-                                        <span>{{shippingPackingchargeDetails.packingCharges}}</span>
+                                        <span id="color">{{shippingPackingchargeDetails.packingCharges}}</span>
                                     </div>
                                     <div class="subitem">
                                         <p class="alltotals">Shipping Charge</p>
-                                        <span>{{shippingPackingchargeDetails.shippingCharges}}</span>
+                                        <span id="color">{{shippingPackingchargeDetails.shippingCharges}}</span>
                                     </div>
-                                    <div class="subitem">
-                                        <p class="alltotals">Total</p>
-                                        <span>{{shippingPackingchargeDetails.total}}</span>
+                                    <div class="subitem sub-confirom">
+                                        <p class="alltotals sub-confiromtot">Total </p>
+                                        <span id="colorr">{{shippingPackingchargeDetails.total}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -258,24 +258,26 @@
                         <div class="row">
 
                             <div class="col-lg-4">
-                                <div class="orderDatepicker">
-                                    <label class="boldR">Requirement Date </label>
-                                    <mat-form-field disabled appearance="fill" class="datepc">
-                                        <mat-label>Select a date </mat-label>
-                                        <input matInput disabled [matDatepicker]="picker" (dateChange)="dateChange($event)"
-                                            [(ngModel)]="startdate">
-                                        <mat-datepicker-toggle disabled matSuffix [for]="picker"
-                                            class="calicon"></mat-datepicker-toggle>
-                                        <mat-datepicker #picker></mat-datepicker>
-                                    </mat-form-field>
-                                </div>
-                            </div>
+                              <div class="orderDatepicker">
+                            <label class="boldR">Requirement Date  </label>
+                            <div>
+                                   
+                                <mat-form-field disabled appearance="fill" class="datepc">
+                                    
+                                    <input matInput disabled  [matDatepicker]="picker" (dateChange)="dateChange($event)" 
+                                           [(ngModel)]="startdate">
+                                       <mat-datepicker-toggle disabled matSuffix [for]="picker"
+                                           class="calicon"></mat-datepicker-toggle>
+                                       <mat-datepicker #picker></mat-datepicker>
+                                   </mat-form-field>
+                               </div> 
+                            </div> </div>
                             <div class="col-md-8">
                                 <div class="promotiont">
                                     <label class="delivery1">Delivery Instructions/Extra Information</label>
                                 </div>
                                 <textarea disabled class="text-area-extrainfo" style="resize: none;"
-                                    placeholder="Please write down if there are any delivery instructions or extra information you want to share"
+                                    placeholder=""
                                     name="w3review" rows="2" [(ngModel)]="DeliveryInstructions" cols="65"></textarea>
 
 
@@ -301,7 +303,7 @@
 </div>
 <div *ngIf="confirmOrder==''" class="font">
     <div class="main">
-        <div class="container promotionpopup-scroll">
+        <div class=" promotionpopup-scroll">
             <div class="addUser">
                 <!-- <img class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="false">close</mat-icon>
@@ -642,7 +644,7 @@
     <div class="popup">
         <div class="font">
             <div class="main">
-                <div class="container promotionpopup-scroll">
+                <div class=" promotionpopup-scroll">
                     <div class="addUser">
                         <a class="close-icon" (click)="closePopup()">&times;</a>
 

@@ -3,6 +3,56 @@
   height: 18px;  
 }
 
+#color
+{
+  color: #000;
+  font-weight: bolder;
+}
+#colorr
+{
+  color: whitesmoke;
+  font-weight: bolder;
+  margin-left: 12px;
+}
+
+.sub-confirom
+{
+  
+width: 129px;
+height: 52px;
+margin-right: -6px;
+
+background: #686E74;
+border-radius: 0px 21.2px 21.2px 0px;
+margin-top: -5px;
+}
+
+
+
+.sub-confiromtot
+{
+  margin-top: 4px;
+  margin-left: 12px;
+  color: white;
+
+}
+
+
+.matformfield {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
 ::-webkit-scrollbar { 
    overflow-x: scroll;
     height: 0.4em;
@@ -1404,10 +1454,10 @@ li {
   height: 30px;
 }
 
-::ng-deep.orderDatepicker .mat-form-field-appearance-fill .mat-form-field-flex {
+ ::ng-deep.orderDatepicker .mat-form-field-appearance-fill .mat-form-field-flex {
    width: 230px;
   
-  height: 30px;
+  height: 40px;
   background: #FFFFFF;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
@@ -1430,15 +1480,15 @@ li {
 
 
 .expand-arrow {
-  width: 40%;
+  width: 30%;
   position: relative;
   right: -28px;
   top: 4px;
 }
 .expand-arrows {
-  width: 35%;
+  width: 30%;
   position: relative;
-left: 456px;
+right: -572px;
   top: 5px;
 }
 /* ::ng-deep.selectgeo .multiselect-dropdown .dropdown-btn {
@@ -1626,7 +1676,7 @@ margin-top: -5px;
   border-radius: 25px;
 }
 .expand-arrow {
-  width: 40%;
+  width: 30%;
   position: relative;
   right: -28px;
   top: 4px;

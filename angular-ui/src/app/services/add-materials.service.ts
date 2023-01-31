@@ -32,8 +32,8 @@ else {
   return next.handle(req);
 }
 }
-getclassification(){
-  return this.http.get<any>(this.addmaterialsurl + 'MaterialApi/GetCategories');
+getclassification(flag:any){
+  return this.http.get<any>(this.addmaterialsurl + `MaterialApi/GetCategories?flag=${flag}`);
 }
 getUploadImage(){
   return this.http.get<any>(this.addmaterialsurl + 'MaterialApi/UploadImg');

@@ -167,6 +167,7 @@ export class MaterialAddEditpopupComponent {
   ProductIdentifiersSettingsNames: any = [];
   ProductIdentifiersNames: any = [];
   businessIdentifiersNames: any = [];
+  flag:boolean = true;
   selectedProductIdentifierData: any = [];
   colorsList = [
     { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
@@ -437,7 +438,7 @@ export class MaterialAddEditpopupComponent {
   }
   getclassification() {
 
-    this.addMaterials.getclassification().subscribe((res) => {
+    this.addMaterials.getclassification(this.flag).subscribe((res) => {
       let data = res.response;
       this.catgname = data.allOtherCats;
       // let dataCat = data.allOtherCats;

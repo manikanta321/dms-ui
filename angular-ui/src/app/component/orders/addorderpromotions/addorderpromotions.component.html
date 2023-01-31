@@ -640,13 +640,14 @@
             <button type="button" class="save-submit11" (click)="ordersubmit('save')">Submit</button>
         </div>
         <div class="col-md-2">
-            <button type="button" class="saveas-draft22" (click)="ordersubmit('draft')">Save as Draft</button>
-            <!-- <button type="button" class="save-submit" (click)="ordersubmit('save')">Submit</button> -->
+            <button [disabled]="!startdate || !customerId || !geographyId || !BillingaddressId || !shippingaddressId" type="button" class="save-submit" (click)="ordersubmit('save')">Save & submit</button>
         </div>
         <div class="col-md-5">
             <button type="button" [mat-dialog-close]="false" class="cancel">Cancel</button>
         </div>
+        <span *ngIf="!startdate || !customerId || !geographyId || !BillingaddressId || !shippingaddressId" style="left: 178px; margin-top: -3px;position: relative;">*please fill required fields</span>
     </div>
+
 </div>
 <!-- non promotions -->
 <div class="overlay" *ngIf="Non_promotions && confirmOrder ==''">

@@ -128,7 +128,8 @@ export class AddorderpromotionsComponent implements OnInit {
 
     this.selectedStartDate = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
     console.log(this.selectedStartDate);
-    // this.startdate = this.selectedStartDate;
+    // this.startdate = new Date(this.selectedStartDate).toLocaleDateString('en-US')
+    // console.log(this.startdate);
   }
 
   //event handler for the select element's change event
@@ -1229,7 +1230,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
     // Push Promotion data to itemscount variable
 
-
+   this.startdate = new Date(this.selectedStartDate).toLocaleDateString('en-US');
 
     let data = {
       "CustomerId": this.customerId,
@@ -1239,7 +1240,7 @@ export class AddorderpromotionsComponent implements OnInit {
       "comrefno": this.CompanyReferenceNo,
       "shippingaddid": this.addressId,
       "deliveryistruction": this.DeliveryInstructions,
-      "requirementdate": new Date(this.startdate).toLocaleDateString('en-US'),
+      "requirementdate": this.startdate ,
       "CreatedById": loggedUserId,
       "itemcount": itemsCount,
       "AddType": submitType,

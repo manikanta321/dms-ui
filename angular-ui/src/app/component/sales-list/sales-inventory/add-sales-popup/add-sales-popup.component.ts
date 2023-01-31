@@ -4,6 +4,7 @@ import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRender
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
 import { SalesServicesService } from 'src/app/services/sales-services.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { OrdersApisService } from 'src/app/services/orders-apis.service';
 
 @Component({
   selector: 'app-add-sales-popup',
@@ -169,15 +170,41 @@ SalesObj:any=[{
   selectedDealersID: any;
   slectedGeoId: any;
   CreatedById:any;
+  userType: any;
+  customerId: any;
+  geographyId:any;
+  GeoGrapydropdownListdata: any;
+  dealersShippingAddress: any;
+  dealersbillingAddress: any;
+  dealerDisabled: boolean = false;
   clickNextRendererFunc(){
     alert('hlo');
   }
   constructor(
 private salesService:SalesServicesService,
 private dialogRef: MatDialogRef<AddSalesPopupComponent>,
+private orders: OrdersApisService,
   ) { }
 
   ngOnInit(): void {
+    this.userType =localStorage.getItem("userType");
+    let loginid=localStorage.getItem("logInId");
+    if(this.userType=='Dealer Admin'){
+      this.orders.dealersDetails(loginid).subscribe((res)=>{
+        console.log(res.response);
+        this.customerId =res.response.dealerId;
+       this.dealerInfo =  false;
+       this.productInfo = false;
+       this.sales= false;
+      let obj:any={
+        customerId: this.customerId
+
+      }
+        this.onItemSelectdealers(obj);
+        this.dealerDisabled=true
+
+      })
+    }
     this.getDealersDropDown();
     this.CreatedById = localStorage.getItem("logInId");
 
@@ -222,7 +249,6 @@ getdealersGeography(data){
 
   expandDealerInfoDiv(){
     this.dealerInfo = !this.dealerInfo;
-
     if(this.dealerInfo === false){
       this.image1 = 'assets/img/maximize-arrow.png';
     } else {
@@ -265,26 +291,26 @@ getdealersGeography(data){
      
     }
   }
-  onTypeSelect(item: any) {
-    this.showdealerName=true;
-    console.log(item);
-    this.SelectedCoustmerId=item.customerId;
-    this.selectedCoustmerName=item.customerName;
-    this.dealerAdress(this.SelectedCoustmerId);
+//   onTypeSelect(item: any) {
+//     this.showdealerName=true;
+//     console.log(item);
+//     this.SelectedCoustmerId=item.customerId;
+//     this.selectedCoustmerName=item.customerName;
+//     this.dealerAdress(this.SelectedCoustmerId);
 
-    this.productDetails=[];
-this.productSelectedId='';
-this.productselectedName='';
-this.visibleProcuct=false;
-this.brandname='';
-this.productGroupName='';
-this.productsubgroupName='';
-this.productSKUName='';
-this.productLink='';
+//     this.productDetails=[];
+// this.productSelectedId='';
+// this.productselectedName='';
+// this.visibleProcuct=false;
+// this.brandname='';
+// this.productGroupName='';
+// this.productsubgroupName='';
+// this.productSKUName='';
+// this.productLink='';
 
-    this.getdealersGeography(this.SelectedCoustmerId);
-
-  }
+//     this.getdealersGeography(this.SelectedCoustmerId);
+//     this.getProductDetalis();
+//   }
 
   onGeoSelect(item:any){
 
@@ -330,7 +356,7 @@ dealerAdress(id){
 
 getProductDetalis(){
   let data={
-    CustomerId:this.SelectedCoustmerId,
+    CustomerId:this.customerId,
     GeographyId:this.slectedGeoId,
   }
 this.salesService.getDealerProduct(data).subscribe((res)=>{
@@ -422,5 +448,33 @@ console.log(mainobj)
       this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
       this.paginationScrollCount = this.rowData5.length;
     }
+  }
+  expandOrderItemsDiv() {
+    this.orderitem = !this.orderitem;
+
+    if (this.orderitem === false) {
+      this.image2 = 'assets/img/minimize-tag.png';
+    } else {
+      this.image2 = 'assets/img/maximize-arrow.png';
+    }
+
+  }
+  onItemSelectdealers(item: any) {
+    this.customerId = item.customerId;
+    localStorage.setItem("dealerid", this.customerId);
+    localStorage.removeItem("geographyId");
+    this.geographyId = null;
+    this.orders.GetGeoGrapydropdownList(this.customerId).subscribe((res) => {
+      let GeoGrapydropdownList = res.response;
+      console.log(GeoGrapydropdownList, "GeoGrapydropdownList")
+      this.GeoGrapydropdownListdata = GeoGrapydropdownList.map((ele) => ele.geographyName); this.GeoGrapydropdownListdata = GeoGrapydropdownList.map((data: { geographyId: any; geographyName: any; }) => {
+        return { geographyId: data.geographyId, geographyName: data.geographyName };
+      });
+      });
+    // billing api
+    this.orders.GetBillingAddress(this.customerId).subscribe((res: any) => {
+      let BillingAddress = res.response;
+      this.dealersbillingAddress = BillingAddress.map((ele) => ele.address);
+    });
   }
 }

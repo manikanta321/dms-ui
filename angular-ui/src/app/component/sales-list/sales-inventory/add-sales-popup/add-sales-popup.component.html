@@ -17,7 +17,7 @@
                 <div class="col-md-8 check1">
                     <p  *ngIf="showdealerName" class="label-cls"><b>Dealer Name:</b> {{selectedCoustmerName}} ;  <b>Dealer Code:</b> 123456789</p>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-1" (click)="expandOrderItemsDiv()">
                     <img [src]="image1" class="expand-arrow" alt="add-user-btn">
                 </div>
              </div>
@@ -28,9 +28,10 @@
                     <div class="promotiont addSalesdropdown">
                         <label class="addDealerlabels">Dealer <span class="Astr">*</span></label>
                     </div>
-                    <ng-select [items]="addSalesdropdown" class="addDealerSelection" bindValue="customerId" bindLabel="customerName" placeholder="Select the dealer"
-                    #geoghraphy
-                    (change)="onTypeSelect($event)" required>
+                    <ng-select [items]="addSalesdropdown" class="addDealerSelection" 
+                    bindValue="customerId" bindLabel="customerName" placeholder="Select the dealer"
+                    [disabled]="dealerDisabled"  [(ngModel)]="customerId"
+                    required>
                   </ng-select>
                     <!-- <img src="assets/img/search.png" class="search-img"  alt="search"> -->
                 </div>
@@ -42,7 +43,7 @@
                         [data]="toppingList3" (onSelect)="onTypeSelect($event)"
                         (onSelectAll)="onTypeAll($event)">
                     </ng-multiselect-dropdown> -->
-                    <ng-select [items]="addsalesGeoDropDown" bindValue="geographyId" bindLabel="geographyName" placeholder="Select the geography"
+                    <ng-select [items]="GeoGrapydropdownListdata"  [(ngModel)]="geographyId" bindValue="geographyId" bindLabel="geographyName" placeholder="Select the geography"
                   #geoghraphy
                   (change)="onGeoSelect($event)" required>
                 </ng-select>

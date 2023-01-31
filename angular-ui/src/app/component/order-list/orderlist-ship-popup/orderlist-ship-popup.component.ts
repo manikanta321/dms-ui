@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { OtherMasterService } from 'src/app/services/other-master.service';
 import { SharedServiceMaterialListService } from 'src/app/services/shared-service-material-list.service';
+import { SharedServicesShipmentService } from 'src/app/services/shared-services-shipment.service';
 import { ShipOrderSuccessPopupComponent } from 'src/app/ship-order-success-popup/ship-order-success-popup.component';
 import { CustomDatePopupComponent } from '../../orders/custom-date-popup/custom-date-popup.component';
 
@@ -148,6 +149,8 @@ export class OrderlistShipPopupComponent implements OnInit {
     private otherMasterService:OtherMasterService,
     private materialListService:SharedServiceMaterialListService,
     private dialogRef: MatDialogRef<OrderlistShipPopupComponent>,
+    private sharedserviceForshipment:SharedServicesShipmentService,
+
 
   ) { }
 
@@ -416,7 +419,6 @@ export class OrderlistShipPopupComponent implements OnInit {
 
   }
   saveShipment(item){
-    this.materialListService.filter('Register click')
     localStorage.setItem('AddShipment','Add');
 let filterArray:any=[]
 
@@ -468,9 +470,8 @@ let filterArray:any=[]
     }
     this.orders.saveShipOrder(obj).subscribe((res)=>{
       console.log(res.response)
-      this.materialListService.filter('Register click')
       if(res.response.result =='Succesfully added'){
-        this.materialListService.filter('Register click')
+        this.sharedserviceForshipment.filter('Register click')
         // alert('Succesfully added');
         this.dialog.open(ShipOrderSuccessPopupComponent , {panelClass: 'activeSuccessPop'});
         this.dialogRef.close();
@@ -510,6 +511,8 @@ let filterArray:any=[]
       }
       this.orders.saveShipOrder(obj).subscribe((res) => {
         console.log(res.response)
+        this.materialListService.filter('Register click')
+
         if (res.response.result == 'Succesfully added') {
           alert('Succesfully added');
 

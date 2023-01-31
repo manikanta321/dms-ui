@@ -321,27 +321,27 @@
                     <table matSort  class="class_table_shipment">
                         <tr class="table-header-row">
                             <th style="padding-left:20px;">Row No</th>
-                            <th >Product Code</th>
+                            <th>Order No</th>
                             <th>Product Name</th>
-                            <th>Geography</th>
-                            <th>Current stock</th>
-                            <th>Sale Date</th>
-                            <th>Sale Qty</th>
-                            <th>Customer Reference</th>
-                            <th ></th>
+                            <th>Product Code</th>
+                            <th>Dispatch Qty</th>
+                            <th>Dispatch Date</th>
+                            <th>Invoice Date</th>
+                            <th>Invoice No.</th>
+                            <th >Uploaded Date</th>
                         </tr>
-                        <tr *ngFor="let dupicateData of duplicateEntryy">
+                        <tr *ngFor="let shipData of duplicateEntryy">
             
-                            <td title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
+                            <td title="" style="padding-left: 21px;">{{shipData.orderNo}}</td>
                             <td title="" class="elipsis-2line">
-                                {{dupicateData.productCode}}</td>
-                            <td title="">{{dupicateData.productName}}</td>
-                              <td title="">{{dupicateData.geography}}</td>
-                            <td>{{""}}</td>
-                            <td>{{dupicateData.saleDate}}</td>
-                            <td>{{dupicateData.saleQuantity}}</td>
-                            <td >{{dupicateData.customerReference}}</td>
-                            <td></td>
+                                {{shipData.orderNo}}</td>
+                            <td title="">{{shipData.productName}}</td>
+                              <td title="">{{shipData.productCode}}</td>
+                            <td>{{shipData.dispatchQty}}</td>
+                            <td>{{shipData.dispatchDate}}</td>
+                            <td>{{shipData.invoiceDate}}</td>
+                            <td >{{shipData.invoiceNo}}</td>
+                            <td>{{shipData.uploadedDate}}</td>
             
                         </tr>
                     </table>
@@ -358,30 +358,31 @@
                     <table matSort  class="class_table_shipment">
                         <tr class="table-header-row">
                             <th style="padding-left:20px;">Row No</th>
-                            <th >Product Code</th>
+                            <th>Order No</th>
                             <th>Product Name</th>
-                            <th>Geography</th>
-                            <th>Current stock</th>
-                            <th>Sale Date</th>
-                            <th>Sale Qty</th>
-                            <th>Customer Reference</th>
-                            <th ></th>
+                            <th>Product Code</th>
+                            <th>Dispatch Qty</th>
+                            <th>Dispatch Date</th>
+                            <th>Invoice Date</th>
+                            <th>Invoice No.</th>
+                            <th >Uploaded Date</th>
                         </tr>
-                        <tr *ngFor="let dupicateData of incorrectRows">
+                        <tr *ngFor="let shipData of incorrectRows">
             
-                            <td title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
-                            <td title="" class="elipsis-2line">
-                                {{dupicateData.productCode}}</td>
-                            <td title="">{{dupicateData.productName}}</td>
-                              <td title="">{{dupicateData.geography}}</td>
-                            <td>{{""}}</td>
-                            <td>{{dupicateData.saleDate}}</td>
-                            <td>{{dupicateData.saleQuantity}}</td>
-                            <td >{{dupicateData.customerReference}}</td>
-                            <td></td>
+                            <td  title="" style="padding-left: 21px;">{{shipData.orderNo}}</td>
+                            <td  title="" class="elipsis-2line">
+                                {{shipData.orderNo}}</td>
+                            <td title="">{{shipData.productName}}</td>
+                              <td title="">{{shipData.productCode}}</td>
+                            <td>{{shipData.dispatchQty}}</td>
+                            <td>{{shipData.dispatchDate}}</td>
+                            <td>{{shipData.invoiceDate}}</td>
+                            <td >{{shipData.invoiceNo}}</td>
+                            <td>{{shipData.uploadedDate}}</td>
             
                         </tr>
                     </table>
+                    
                 </div>
             </div>
             <div class="button-save-chng row">

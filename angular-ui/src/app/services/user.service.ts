@@ -155,6 +155,9 @@ export class UserService {
   public getcurrencylist(data) {
     return this.http.post<any>(this.userurl + 'OtherMasterApi/GetCurrencyList', data);
   }
+  public getDistrictLevelDataOnMouseOver(data) {
+    return this.http.post<any>(this.userurl + 'DealerApi/GetDealergeonames', data);
+  }
   public otherstatus(data) {
     return this.http.get<any>(this.userurl + 'OtherMasterApi/GetStatusList', data);
   }

@@ -222,6 +222,12 @@
     margin-bottom: 2px;
     cursor: pointer;
   }
+  .head-t1 h3 {
+    color: #000000;
+    margin-top: -18px;
+    margin-bottom: 2px;
+    cursor: pointer;
+  }
   
   .addU {
     position: relative;
@@ -229,6 +235,23 @@
     font-weight: bold;
     font-size: 20px;
   }
+  .addU12 {
+    position: relative;
+    /* font-family: 'Gilroy-Bold';  */
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .addU12:after {
+    content: "";
+    display: block;
+    width: 1012px;
+    height: 2px;
+    background: #686E74;
+    right: 83px;
+    top: 50%;
+    position: absolute;
+}
   .addView{
     position: relative;
     /* font-family: 'Gilroy-Bold';  */
@@ -1311,6 +1334,17 @@ margin-top: -5px;
     background-color: white;
     color: black;
   }
+  .ShipmentinputBoxes3 {
+    width: 70px;
+    height: 30px;
+    background: none;
+    border-radius: 10px;
+    border: 1px solid red;
+    font-size: 12.5px;
+    background-color: white;
+    color: black;
+  }
+  
   .ShipmentinputBoxes2 {
     width: 70px;
     height: 30px;

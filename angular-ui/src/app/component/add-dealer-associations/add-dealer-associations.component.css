@@ -232,7 +232,7 @@
     font-size: 16px;
     line-height: 19px;
     margin-left: 29px;
-    margin-top: 8px;
+    margin-top: 32px;
 
 }
 input.form-check-input {
@@ -408,7 +408,7 @@ input.form-check-input1 {
   }
   .img1{
     position: absolute;
-    left: 325px;
+    left: 440px;
     top: 41px;  }
   .promo1-dropdown-btn span .ng-star-inserted {
     visibility: hidden;
@@ -1732,3 +1732,12 @@ width: 100%;
   
   background: #44026C !important;
 }
+.checkboxStyle{
+  margin-top: 36px;
+    margin-left: -9px;
+
+}
+.contentStyle{
+  color: #000000;
+}
+

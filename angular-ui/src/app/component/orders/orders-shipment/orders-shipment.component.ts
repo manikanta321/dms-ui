@@ -17,6 +17,7 @@ import { OrdersReceiveShipmentComponent } from '../../orders-receive-shipment/or
 import { OtherMasterService } from 'src/app/services/other-master.service';
 import moment from 'moment';
 import { SharedService } from 'src/app/services/shared-services.service';
+import { SharedServicesShipmentService } from 'src/app/services/shared-services-shipment.service';
 
 @Component({
   selector: 'app-orders-shipment',
@@ -176,11 +177,18 @@ export class OrdersShipmentComponent implements OnInit {
   }
   constructor(public dialog: MatDialog,
     private sharedService :SharedService,
+    private sharedserviceForshipment:SharedServicesShipmentService,
     public orders:OrdersApisService,
     private user: UserService,
     private route: ActivatedRoute,
     private otherMasterService:OtherMasterService,
     private fb: FormBuilder) { 
+
+      this.sharedserviceForshipment.listen().subscribe((m: any) => {
+        console.log(m)
+        this.shipmentList();  
+      })
+
       this.route.data.subscribe(v => {
         this.currentPageName = v['key'];
         let actionColumn = v['orderList'];
@@ -245,7 +253,9 @@ export class OrdersShipmentComponent implements OnInit {
   onCellClicked( e): void {
     localStorage.setItem('ViewOrReceive', 'View')
     console.log(e)
-    localStorage.setItem('customerPOIdForShipment',e.data.invoiceId)
+    localStorage.setItem('customerPOIdForShipment',e.data.invoiceId);
+    localStorage.setItem('OrderNumberToShow',e.data.orderNUmber)
+
     localStorage.setItem('orderOrShipmentOrRecipt','shipment')
     let cellCLickedpromotion = '1'
     localStorage.setItem('cellCLickedpromotion', cellCLickedpromotion)

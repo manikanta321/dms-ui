@@ -1,0 +1,38 @@
+.e-tooltip-wrap {
+  border: 2px solid black;
+  padding: 10px;
+  border-radius: 25px;
+  white-space: nowrap;
+}
+.e-tooltip-wrap.e-popup {
+    background-color: #fff;
+    border: 2px solid #000;
+    height: auto;
+    max-width: 100%;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+/* .e-tooltip-wrap .e-tip-content {
+  display: flow-root;
+ } */
+.tooltipRed{
+  color: red;
+  font-size: 16px;
+}
+.tooltipBlue{
+  color: green;
+  font-size: 16px;
+}
+.bulletDesign{
+  vertical-align: middle;
+  list-style-position: outside;
+  font-size: 30 rem;
+  }
+ul.contentStyle{
+  column-count: 2;
+  column-gap: 40px;
+  padding-left: 10px;
+}
+ul::marker{
+  display: none;
+}

@@ -8,11 +8,12 @@
         <h3 class="addU font">{{actineLabel}}</h3>
         <br><br><br>
         <div class="d-flex">
-        
-          <img src="assets/img/arrow-left-circle-fill.svg"  (click)="Backbutton()" class="leftarrow1" alt="left-arr-btn" *ngIf="!checked">
+
+          <img src="assets/img/arrow-left-circle-fill.svg" (click)="Backbutton()" class="leftarrow1" alt="left-arr-btn"
+            *ngIf="!checked">
           <img src="assets/img/arrow-right-circle-fill.svg" (click)="nextbutton()" class="rightarrow2"
             alt="right-arr-btn" *ngIf="!checked">
-         
+
         </div>
 
 
@@ -34,10 +35,10 @@
                 <div class="">
                   <label>Category<span>*</span></label>
                   <div class="categorydrp">
-                    <ng-select [items]="catgname" class="searchbtnIcon" id="nameCategory" name="nameCategory" required [virtualScroll]="true"
-                      bindLabel="catName" bindValue="catId" [searchable]="true" [clearable]="false"
-                      placeholder="Search & select category" [(ngModel)]="categeoryData" (change)="onItemSelect($event)"
-                      #nameCategory="ngModel">
+                    <ng-select [items]="catgname" class="searchbtnIcon" id="nameCategory" name="nameCategory" required
+                      [virtualScroll]="true" bindLabel="catName" bindValue="catId" [searchable]="true"
+                      [clearable]="false" placeholder="Search & select category" [(ngModel)]="categeoryData"
+                      (change)="onItemSelect($event)" #nameCategory="ngModel">
                     </ng-select>
                     <p style="margin-bottom:-14px;padding: 0px;font-size: 11px; position: absolute;"
                       *ngIf="nameCategory.invalid && (nameCategory.dirty || nameCategory.touched)" class="alert">
@@ -45,7 +46,7 @@
                         *Category is required.
                       </span>
                     </p>
-                       <!-- <img src="../../../../assets/img/search.png" class="searchdrp"> -->
+                    <!-- <img src="../../../../assets/img/search.png" class="searchdrp"> -->
                   </div>
                 </div>
               </div>
@@ -53,18 +54,18 @@
                 <div class="">
                   <label>Sub-Category<span>*</span></label>
                   <div class="subcategorydrp">
-                    <ng-select [items]="sub_category" class="searchbtnIcon" id="nameSubCat" name="nameSubCat" required [virtualScroll]="true"
-                      bindLabel="subCatName" bindValue="subCatId" [searchable]="true" [clearable]="false"
-                      placeholder="search & select sub-category" [(ngModel)]="subCategoryData"
+                    <ng-select [items]="sub_category" class="searchbtnIcon" id="nameSubCat" name="nameSubCat" required
+                      [virtualScroll]="true" bindLabel="subCatName" bindValue="subCatId" [searchable]="true"
+                      [clearable]="false" placeholder="search & select sub-category" [(ngModel)]="subCategoryData"
                       (change)="onSubCategorySelect($event)" #nameSubCat="ngModel">
                     </ng-select>
-                        <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;position: absolute"
+                    <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;position: absolute"
                       *ngIf="nameSubCat.invalid && (nameSubCat.dirty || nameSubCat.touched)" class="alert">
-                      <span  class="errormsg" *ngIf="nameSubCat.errors?.['required']">
+                      <span class="errormsg" *ngIf="nameSubCat.errors?.['required']">
                         *Sub-Category is required.
                       </span>
                     </p>
-                     <!-- <img src="../../../../assets/img/search.png" class="searchdrp"> -->
+                    <!-- <img src="../../../../assets/img/search.png" class="searchdrp"> -->
                   </div>
                 </div>
               </div>
@@ -73,18 +74,18 @@
                 <div class="type">
                   <label>Type<span>*</span></label>
                   <div class="typedrp">
-                    <ng-select [items]="typeI" class="searchbtnIcon" id="nameType" name="nameType" required [virtualScroll]="true"
-                      bindLabel="typeName" bindValue="typeId" [searchable]="true" [clearable]="false"
-                      placeholder="Search & select type" [(ngModel)]="typesData" (change)="onTypeSelect($event)"
-                      #nameType="ngModel">
+                    <ng-select [items]="typeI" class="searchbtnIcon" id="nameType" name="nameType" required
+                      [virtualScroll]="true" bindLabel="typeName" bindValue="typeId" [searchable]="true"
+                      [clearable]="false" placeholder="Search & select type" [(ngModel)]="typesData"
+                      (change)="onTypeSelect($event)" #nameType="ngModel">
                     </ng-select>
-                       <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;position: absolute"
+                    <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;position: absolute"
                       *ngIf="nameType.invalid && (nameType.dirty || nameType.touched)" class="alert">
                       <span class="errormsg" *ngIf="nameType.errors?.['required']">
                         *Type is required.
                       </span>
                     </p>
-                       <!-- <img src="../../../../assets/img/search.png" class="searchdrp"> -->
+                    <!-- <img src="../../../../assets/img/search.png" class="searchdrp"> -->
                   </div>
                 </div>
               </div>
@@ -99,7 +100,7 @@
                   placeholder="Enter the name of material" [(ngModel)]="materialName" #matName="ngModel">
                 <p style="margin-bottom:-5px;padding: 0px;font-size: 11px;position: absolute"
                   *ngIf="matName.invalid && (matName.dirty || matName.touched)" class="alert">
-                  <span  class="errormsg" *ngIf="matName.errors?.['required']">
+                  <span class="errormsg" *ngIf="matName.errors?.['required']">
                     *Material Name is required.
                   </span>
                 </p>
@@ -110,27 +111,27 @@
                   <label>UOM <span>*</span></label>
                 </div>
                 <div class="uomdrp">
-                  <ng-select [items]="rowData5" class="searchbtnIcon" id="nameUOM" name="nameUOM" required [virtualScroll]="true"
-                    bindLabel="uoMShortName" bindValue="uoMId" [searchable]="true" [clearable]="false"
-                    placeholder="Search & select measuring unit" [(ngModel)]="baseUoMData"
+                  <ng-select [items]="rowData5" class="searchbtnIcon" id="nameUOM" name="nameUOM" required
+                    [virtualScroll]="true" bindLabel="uoMShortName" bindValue="uoMId" [searchable]="true"
+                    [clearable]="false" placeholder="Search & select measuring unit" [(ngModel)]="baseUoMData"
                     (change)="onUomSelect($event)" #nameUOM="ngModel">
                   </ng-select>
-                      <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;position: absolute;"
+                  <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;position: absolute;"
                     *ngIf="nameUOM.invalid && (nameUOM.dirty || nameUOM.touched)" class="alert">
-                    <span  class="errormsg" *ngIf="nameUOM.errors?.['required']">
+                    <span class="errormsg" *ngIf="nameUOM.errors?.['required']">
                       *UOM is required.
                     </span>
                   </p>
                   <!-- <img src="../../../../assets/img/search.png" class="searchdrp"> -->
                 </div>
-              </div> 
+              </div>
             </div>
-              <div class="row">
+            <div class="row">
               <div class="col-md-5" style="margin-top:5px;">
                 <div class="description">
                   <label>Description</label>
                 </div>
-                <textarea  rows="4"id="nameDescp" name="nameDescp" placeholder="Describe the material"
+                <textarea rows="4" id="nameDescp" name="nameDescp" placeholder="Describe the material"
                   (keyup)="onKeyDesc($event)" class="materialDesc" [(ngModel)]="stockItemDesc"
                   #nameDescp="ngModel"></textarea>
                 <!-- <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
@@ -191,8 +192,8 @@
                   <label> Expiry Period (in months)</label>
                 </div>
                 <input type="text" id="matExpiry" name="matExpiry" (keyup)="onKeyExpry($event)"
-                  class="form-control container na-placeholder" required placeholder="NA" [(ngModel)]="expiryDate" pattern="^[0-9]*$"
-                  #matExpiry="ngModel">
+                  class="form-control container na-placeholder" required placeholder="NA" [(ngModel)]="expiryDate"
+                  pattern="^[0-9]*$" #matExpiry="ngModel">
                 <!-- <p style="margin-bottom:-14px;padding: 0px;font-size: 11px"
                   *ngIf="matExpiry.invalid && (matExpiry.dirty || matExpiry.touched)" class="alert">
                   <span  class="errormsg" *ngIf="matExpiry.errors?.['required']">
@@ -202,14 +203,14 @@
                     *Only Numbers allowed 
                   </span> 
                 </p> -->
-                  <!-- <div *ngIf="matExpiry.errors?.['pattern']">
+                <!-- <div *ngIf="matExpiry.errors?.['pattern']">
                     <span class="patternValidation">Only Numbers allowed </span>
                   </div> -->
-                
+
 
               </div>
             </div>
-          
+
 
 
 
@@ -259,7 +260,7 @@
                   [(ngModel)]="BrandName" #bName="ngModel">
                 <p style="bottom:-30px;padding: 0px;font-size: 6px;position: absolute;"
                   *ngIf="bName.invalid && (bName.dirty || bName.touched)" class="alert">
-                  <span  class="errormsg" *ngIf="bName.errors?.['required']">
+                  <span class="errormsg" *ngIf="bName.errors?.['required']">
                     *Brand Name is required.
                   </span>
                 </p>
@@ -278,7 +279,7 @@
                   </span>
                 </p> -->
               </div>
-              <div class="col-md-6" >
+              <div class="col-md-6">
                 <div class="sku">
                   <label>SKU<span>*</span></label>
                 </div>
@@ -320,7 +321,7 @@
                   </ng-select>
                   <p style="bottom:-30px;padding: 0px;font-size: 11px;position: absolute;"
                     *ngIf="productGr.invalid && (productGr.dirty || productGr.touched)" class="alert">
-                    <span  class="errormsg" *ngIf="productGr.errors?.['required']">
+                    <span class="errormsg" *ngIf="productGr.errors?.['required']">
                       *Product Group is required.
                     </span>
                   </p>
@@ -356,8 +357,8 @@
                   </ng-select>
                   <p style="bottom:-30px;padding: 0px;font-size: 11px;position:absolute;"
                     *ngIf="proSub.invalid && (proSub.dirty || proSub.touched)" class="alert">
-                    <span  class="errormsg" *ngIf="proSub.errors?.['required']">
-                      *Product SubGroup   is required.
+                    <span class="errormsg" *ngIf="proSub.errors?.['required']">
+                      *Product SubGroup is required.
                     </span>
                   </p>
 
@@ -402,13 +403,13 @@
                 </div>
 
                 <div class="overlay" *ngIf="productIdentifierPopup">
-
-                  <div class="popup" style="width: 1053px; height: 300px; top: 220px;">
+                  <div class="popup" style="min-width: 700px; height: 320px; top: 200px;">
                     <!-- <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon> -->
+                    <a class="closes" (click)="closePopup()">&times;</a>
                     <div class="col-12">
                       <div class="row">
-                        <div class="col-4">
-                          <h2 class="sidentifier">Business<span>*</span></h2>
+                        <div class="col-6">
+                          <h2 class="sidentifier">Business Category<span>*</span></h2>
 
                           <div class="content">
                             <mat-chip-list multiple>
@@ -423,8 +424,8 @@
                           </div>
                         </div>
                         <div class="vr"></div>
-                        <div class="col-4">
-                          <h2 class="sidentifier">Product<span>*</span></h2>
+                        <div class="col-6">
+                          <h2 class="sidentifier">Product Clasification<span>*</span></h2>
 
                           <!-- <div class="content">
                             <mat-chip-list multiple>
@@ -448,8 +449,8 @@
                             </mat-chip-list>
                           </div>
                         </div>
-                        <div class="vr"></div>
-                        <div class="col-4">
+                        <!-- <div class="vr"></div> -->
+                        <!-- <div class="col-4">
                           <a class="close-icon" (click)="closePopup()">&times;</a>
                           <h2 class="sidentifierp">Product Setting<span>*</span></h2>
                           <div class="content pContent">
@@ -457,12 +458,11 @@
                               <mat-chip #ps="matChip" *ngFor="let data of productSettingData"
                                 [selected]="isSelectedProductIdentifierSetting(data)"
                                 (focus)="selectProductIdentifierSetting(data)" class="cold">
-                                <!-- <mat-icon *ngIf="ps.selected">check</mat-icon> -->
                                 {{data.productCustomName}}
                               </mat-chip>
                             </mat-chip-list>
                           </div>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                   </div>
@@ -474,186 +474,188 @@
 
           </mat-step>
           <!-- geographies -->
-         
+
           <mat-step [stepControl]="thirdformGroup" *ngIf="!checked">
             <div class="geography-popupsize">
-            <form [formGroup]="gepGraphiesFormGroup">
-              <ng-template matStepLabel> Geographies</ng-template>
-              <div class="heading">
-                <h6 class="Geo-headerlabel"><b>Geographies</b></h6>
-              </div>
+              <form [formGroup]="gepGraphiesFormGroup">
+                <ng-template matStepLabel> Geographies</ng-template>
+                <div class="heading">
+                  <h6 class="Geo-headerlabel"><b>Geographies</b></h6>
+                </div>
 
-              <div class="horizontal-scroll">
-                <div class="horizontal-scroll__item" *ngFor="let item of geoGraphyFullData;let i =index; ">
-                  <div class="geo-grid">
-                    <div class="row grid-heading">
-                      <div class="col-sm-10">
-                        <p><span class="country">{{item.geographyHierarchyName}}</span>
-                          <span class="ml-1" *ngIf="item.primaryGeographyAssociation =='Y'">
-                            <img src="assets/img/double-blue-tick.svg" alt="double-blue-tick"> </span>
-                        </p>
+                <div class="horizontal-scroll">
+                  <div class="horizontal-scroll__item" *ngFor="let item of geoGraphyFullData;let i =index; ">
+                    <div class="geo-grid">
+                      <div class="row grid-heading">
+                        <div class="col-sm-10">
+                          <p><span class="country">{{item.geographyHierarchyName}}</span>
+                            <span class="ml-1" *ngIf="item.primaryGeographyAssociation =='Y'">
+                              <img src="assets/img/double-blue-tick.svg" alt="double-blue-tick"> </span>
+                          </p>
+
+                        </div>
 
                       </div>
-
-                    </div>
-                    <mat-card class="mat-card mat-focus-indicator mat-card-content scroll">
-                      <mat-card-content class="mat-card-content">
-                        <div *ngIf="item.allOtherGeography">
-                          <div class="d-flex " *ngFor="let geoItem of item.allOtherGeography; ">
-                            <div class="geography-item"
-                              [ngStyle]="{'background':isItemSelected(item,geoItem) ? colorsList[i].secondaryColor.background : colorsList[i].primaryColor.background, 'color':isItemSelected(item, geoItem) ? colorsList[i].secondaryColor.color : colorsList[i].primaryColor.color,'border': '1px solid ' + colorsList[i].primaryColor.background }"
-                              (click)="selectGeoGraphy(geoItem,(i +1))">
-                              <div class="title"> {{geoItem.geographyName}}
-                                <strong *ngIf="geoItem.selectedCount != null && geoItem.selectedCount != undefined">({{
-                                  geoItem.selectedCount}} / {{ geoItem.countOfDefault}})</strong>
+                      <mat-card class="mat-card mat-focus-indicator mat-card-content scroll">
+                        <mat-card-content class="mat-card-content">
+                          <div *ngIf="item.allOtherGeography">
+                            <div class="d-flex " *ngFor="let geoItem of item.allOtherGeography; ">
+                              <div class="geography-item"
+                                [ngStyle]="{'background':isItemSelected(item,geoItem) ? colorsList[i].secondaryColor.background : colorsList[i].primaryColor.background, 'color':isItemSelected(item, geoItem) ? colorsList[i].secondaryColor.color : colorsList[i].primaryColor.color,'border': '1px solid ' + colorsList[i].primaryColor.background }"
+                                (click)="selectGeoGraphy(geoItem,(i +1))">
+                                <div class="title"> {{geoItem.geographyName}}
+                                  <strong
+                                    *ngIf="geoItem.selectedCount != null && geoItem.selectedCount != undefined">({{
+                                    geoItem.selectedCount}} / {{ geoItem.countOfDefault}})</strong>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </mat-card-content>
-                    </mat-card>
-                  </div>
-                </div>
-              </div>
-            </form>
-       
-            <!-- <div class="row"></div> -->
-
-
-
-            <section class="row propertiesSection" *ngIf="!checked">
-              <div class="selection-feild">
-                <div class="dropdown-file">
-                  <div style="margin:8px">
-                    <select class="drpOptions" [(ngModel)]="selectedGeoField">
-                      <option value="" disabled selected>Select Feild</option>
-                      <option value="mrp"> MRP</option>
-                      <option value="marginPercent"> Margin Percent</option>
-                      <option value="maxOrderQty"> Max Order Qty</option>
-                      <option value="minOrderQty"> Min Order Qty</option>
-                      <option value="discountPercent"> Discount Percent</option>
-                      <option value="leadTime"> Lead Time</option>
-                      <option value="registrationNumber"> Registration Number</option>
-                    </select>
-
-                    <input class="inp_field" type="text" placeholder="Enter Value" [(ngModel)]="updateGeographyValue">
-                    <button class="Apply_button" (click)="applySelectedValue()">
-                      <p style="color:white">Apply</p>
-                    </button>
-                  </div>
-                </div>
-                <div>
-                  <div class="icon btnhover refreshbtn" style="cursor: pointer" (click)="refresh()">
-                    <img class="refresh" src="assets/img/ultrarefresh.svg"
-                      style="position: relative; top: 9px; left: 12px" alt="refresh" />
-                  </div>
-                </div>
-              </div>
-              <table>
-                <div class="row m-0 mb-2">
-                  <div class="col-sm-3">
-                    <label><b>Geography</b></label>
-                  </div>
-                  <div class="col-sm-1">
-                    <label><b>MRP(INR)</b></label>
-                  </div>
-                  <div class="col-sm-1">
-                    <label><b>Min Order Qty</b></label>
-                  </div>
-                  <div class="col-sm-1">
-                    <label><b>Max Order Qt</b></label>
-                  </div>
-                  <div class="col-sm-1">
-                    <label><b>Margin %</b></label>
-                  </div>
-                  <div class="col-sm-1">
-                    <label><b>Discount %</b></label>
-                  </div>
-                  <div class="col-sm-1">
-                    <label><b>Lead time (Days)</b></label>
-                  </div>
-                  <div class="col-sm-1">
-                    <label><b>Registration Number</b></label>
-                  </div>
-                  <div class="col-sm-1">
-                    <label><b style="padding:0 56px;">Tags</b></label>
-                  </div>
-
-                </div>
-
-
-                <div *ngFor="let geoPropertyItemList of geoGraphyFullData; let i=index;">
-                  <div *ngFor="let item of geoPropertyItemList.geoProperties">
-                    <div class="row m-0 mb-2">
-                      <div class="col-sm-3">
-                        <img [src]="selectedHirerachyIndex > i ? maxImage : minImage" class="expand-arrow1"
-                          alt="add-user-btn">
-                        {{CountryName}}
-                        {{item.geographyName}}
-                      </div>
-                      <div class="col-sm-1">
-                        <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
-                          [(ngModel)]="item.mrp" class="uom-cls" id="MRP" name="MRP">
-                      </div>
-                      <div class="col-sm-1">
-                        <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
-                          [(ngModel)]="item.minOrderQty" class="uom-cls" id="MinorderQty" name="MinorderQty">
-                      </div>
-                      <div class="col-sm-1">
-                        <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
-                          [(ngModel)]="item.maxOrderQty" class="uom-cls" id="MaxOrderQty" name="MaxOrderQty">
-                      </div>
-                      <div class="col-sm-1">
-                        <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
-                          [(ngModel)]="item.marginPercent" class="uom-cls" id="MarginPercent" name="MarginPercent">
-                      </div>
-                      <div class="col-sm-1">
-                        <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
-                          [(ngModel)]="item.discountPercent" class="uom-cls" id="DiscountPercent"
-                          name="DiscountPercent">
-                      </div>
-
-                      <div class="col-sm-1">
-                        <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i" [(ngModel)]="item.leadTime"
-                          class="uom-cls" id="LeadTime" name="LeadTime">
-                      </div>
-
-                      <div class="col-sm-2">
-                        <input placeholder="Enter" style="width: 130px;" type="text" [disabled]="selectedHirerachyIndex > i"
-                          [(ngModel)]="item.registrationNumber" class="uom-cls" id="RegistrationNumber"
-                          name="RegistrationNumber">
-                      </div>
-
-                      <div class="col-sm-1">
-                        <a href="" style="padding: 9px;">Add</a>
-                      </div>
+                        </mat-card-content>
+                      </mat-card>
                     </div>
                   </div>
                 </div>
+              </form>
+
+              <!-- <div class="row"></div> -->
 
 
-              </table>
 
-            </section>
+              <section class="row propertiesSection" *ngIf="!checked">
+                <div class="selection-feild">
+                  <div class="dropdown-file">
+                    <div style="margin:8px">
+                      <select class="drpOptions" [(ngModel)]="selectedGeoField">
+                        <option value="" disabled selected>Select Feild</option>
+                        <option value="mrp"> MRP</option>
+                        <option value="marginPercent"> Margin Percent</option>
+                        <option value="maxOrderQty"> Max Order Qty</option>
+                        <option value="minOrderQty"> Min Order Qty</option>
+                        <option value="discountPercent"> Discount Percent</option>
+                        <option value="leadTime"> Lead Time</option>
+                        <option value="registrationNumber"> Registration Number</option>
+                      </select>
 
-            <div class="col-6">
-              <div class="row">
-                <div class="col-1"></div>
-                <div class="col-6" *ngIf="!updateOrSave">
-                  <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="!checked"
-                    (click)="addMaterialProduct();">Save</button>
+                      <input class="inp_field" type="text" placeholder="Enter Value" [(ngModel)]="updateGeographyValue">
+                      <button class="Apply_button" (click)="applySelectedValue()">
+                        <p style="color:white">Apply</p>
+                      </button>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="icon btnhover refreshbtn" style="cursor: pointer" (click)="refresh()">
+                      <img class="refresh" src="assets/img/ultrarefresh.svg"
+                        style="position: relative; top: 9px; left: 12px" alt="refresh" />
+                    </div>
+                  </div>
                 </div>
-                <div class="col-6" *ngIf="updateOrSave">
-                  <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="!checked"
-                    (click)="addMaterialProductAfterEdit();">update</button>
-                </div>
-                <div class="col-3">
+                <table>
+                  <div class="row m-0 mb-2">
+                    <div class="col-sm-3">
+                      <label><b>Geography</b></label>
+                    </div>
+                    <div class="col-sm-1">
+                      <label><b>MRP(INR)</b></label>
+                    </div>
+                    <div class="col-sm-1">
+                      <label><b>Min Order Qty</b></label>
+                    </div>
+                    <div class="col-sm-1">
+                      <label><b>Max Order Qt</b></label>
+                    </div>
+                    <div class="col-sm-1">
+                      <label><b>Margin %</b></label>
+                    </div>
+                    <div class="col-sm-1">
+                      <label><b>Discount %</b></label>
+                    </div>
+                    <div class="col-sm-1">
+                      <label><b>Lead time (Days)</b></label>
+                    </div>
+                    <div class="col-sm-1">
+                      <label><b>Registration Number</b></label>
+                    </div>
+                    <div class="col-sm-1">
+                      <label><b style="padding:0 56px;">Tags</b></label>
+                    </div>
+
+                  </div>
+
+
+                  <div *ngFor="let geoPropertyItemList of geoGraphyFullData; let i=index;">
+                    <div *ngFor="let item of geoPropertyItemList.geoProperties">
+                      <div class="row m-0 mb-2">
+                        <div class="col-sm-3" [ngStyle]="{'padding-left':  (i * 10 )+ 'px'}">
+                          <img [src]="selectedHirerachyIndex > i ? maxImage : minImage" class="expand-arrow1"
+                            alt="add-user-btn">
+                          <!-- {{CountryName}} -->
+                          {{item.geographyName}}
+                          
+                        </div>
+                        <div class="col-sm-1">
+                          <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                            [(ngModel)]="item.mrp" class="uom-cls" id="MRP" name="MRP">
+                        </div>
+                        <div class="col-sm-1">
+                          <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                            [(ngModel)]="item.minOrderQty" class="uom-cls" id="MinorderQty" name="MinorderQty">
+                        </div>
+                        <div class="col-sm-1">
+                          <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                            [(ngModel)]="item.maxOrderQty" class="uom-cls" id="MaxOrderQty" name="MaxOrderQty">
+                        </div>
+                        <div class="col-sm-1">
+                          <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                            [(ngModel)]="item.marginPercent" class="uom-cls" id="MarginPercent" name="MarginPercent">
+                        </div>
+                        <div class="col-sm-1">
+                          <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                            [(ngModel)]="item.discountPercent" class="uom-cls" id="DiscountPercent"
+                            name="DiscountPercent">
+                        </div>
+
+                        <div class="col-sm-1">
+                          <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                            [(ngModel)]="item.leadTime" class="uom-cls" id="LeadTime" name="LeadTime">
+                        </div>
+
+                        <div class="col-sm-2">
+                          <input placeholder="Enter" style="width: 130px;" type="text"
+                            [disabled]="selectedHirerachyIndex > i" [(ngModel)]="item.registrationNumber"
+                            class="uom-cls" id="RegistrationNumber" name="RegistrationNumber">
+                        </div>
+
+                        <div class="col-sm-1">
+                          <a href="" style="padding: 9px;">Add</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </table>
+
+              </section>
+
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-1"></div>
+                  <div class="col-6" *ngIf="!updateOrSave">
+                    <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="!checked"
+                      (click)="addMaterialProduct();">Save</button>
+                  </div>
+                  <div class="col-6" *ngIf="updateOrSave">
+                    <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="!checked"
+                      (click)="addMaterialProductAfterEdit();">update</button>
+                  </div>
+                  <div class="col-3">
+                  </div>
                 </div>
               </div>
+              <div class="col-3">
+              </div>
             </div>
-            <div class="col-3">
-            </div>
-          </div>
           </mat-step>
         </mat-stepper>
       </div>

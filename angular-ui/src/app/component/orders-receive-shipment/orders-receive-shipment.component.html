@@ -6,8 +6,10 @@
             <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
 
         </div>
-        <div class="head-t">
-            <h3 class="addU font">Receive Shipment</h3>
+        <div [ngClass]="ViewOrReceive?'head-t':'head-t1'" >
+            <h3 class="addU font" *ngIf="ViewOrReceive">{{headerName}}</h3>
+            <h3 class="addU12 font" *ngIf="!ViewOrReceive">{{headerName}}:{{orderNUmber}}</h3>
+
             <div class="row top-bottom">
                 <div class="row text-center"></div>
             </div>
@@ -303,7 +305,7 @@
                                     <input type="number" [(ngModel)]="currentShipArray[i].arrayIside[j].ReceivedQty"
                                         placeholder="Enter Quantity"
                                         [disabled]="data.currentReceiveshipment==false  ||  ViewOrReceive==false"
-                                        [ngClass]="data.currentReceiveshipment==false?'ShipmentinputBoxes':'ShipmentinputBoxes1' "
+                                        [ngClass]="[data.currentReceiveshipment==false?'ShipmentinputBoxes':'ShipmentinputBoxes1', currentShipArray[i].arrayIside[j].ReceivedQty>currentShipArray[i].arrayIside[j].shipedQty ?'ShipmentinputBoxes3':'ShipmentinputBoxes1']" 
                                         (keyup)="shipingNow()">
                                 </td>
                                 <td>
@@ -312,6 +314,8 @@
                                 <!-- <mat-icon class="removeCircle" (click)=removeItem()>
                             remove_circle</mat-icon> -->
                             </tr>
+
+                           
 
                         </table>
                     </div>
@@ -334,11 +338,11 @@
                                 </div>
                                 <div class="subitem">
                                     <p class="alltotals">Shipping Charge</p>
-                                    <span>{{shipmentArray.shipingcharge}}</span>
+                                    <span>{{data.shipingcharge}}</span>
                                 </div>
                                 <div class="subitem total_total">
                                     <p class="alltotals totaltotal">Total</p>
-                                    <span id ="totallssss">{{shipmentArray.total}}</span>
+                                    <span id ="totallssss">{{data.total}}</span>
                                 </div>
                             </div>
                         </div>

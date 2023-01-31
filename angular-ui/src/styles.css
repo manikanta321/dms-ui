@@ -7,7 +7,8 @@
 @import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 /* @import url('./assets/fonts/gilroy/Gilroy-Black.ttf'); */
 @import 'ag-grid-community/dist/styles/ag-theme-material.css';
-
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-angular-popups/styles/material.css';
 
 
 html,

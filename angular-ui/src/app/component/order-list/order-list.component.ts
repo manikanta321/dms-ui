@@ -463,6 +463,8 @@ export class OrderListComponent implements OnInit {
     this.CustomerPoId = e.data.id
     localStorage.setItem('ViewOrReceive', 'View')
     localStorage.setItem('customerPOIdForShipment',e.data.id)
+    localStorage.setItem('OrderNumberToShow',e.data.orderNUmber)
+
     localStorage.setItem('orderOrShipmentOrRecipt','order')
     // this.employeeName=e.data.userName;
     console.log('CustomerPoId', this.CustomerPoId);

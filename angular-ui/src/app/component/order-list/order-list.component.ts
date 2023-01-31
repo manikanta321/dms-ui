@@ -32,6 +32,7 @@ import { OrdersReceiveShipmentComponent } from '../orders-receive-shipment/order
 import moment from 'moment';
 import { OtherMasterService } from 'src/app/services/other-master.service';
 import { SharedService } from 'src/app/services/shared-services.service';
+import { SharedServicesShipmentService } from 'src/app/services/shared-services-shipment.service';
 // import { DateRange } from '@uiowa/date-range-picker';
 
 export interface PeriodicElement {
@@ -336,9 +337,17 @@ export class OrderListComponent implements OnInit {
     private fb: FormBuilder,
     private observer: BreakpointObserver,
     private route: ActivatedRoute,
+    private sharedserviceForshipment:SharedServicesShipmentService,
 
     private materialListService:SharedServiceMaterialListService
   ) {
+
+
+    
+    this.sharedserviceForshipment.listen().subscribe((m: any) => {
+      console.log(m)
+      this.orderlistGrid();  
+    })
     sort: [];
     this.route.data.subscribe(v => {
       this.currentPageName = v['key'];

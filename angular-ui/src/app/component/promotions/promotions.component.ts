@@ -1211,7 +1211,8 @@ handleScroll(event) {
     localStorage.setItem('addOrEdit','Addpromo')
 
     const config: MatDialogConfig = {
-        width: '100vw',
+        maxWidth: '87vw',
+        width:'1584px',
       
         height: '583px',
      

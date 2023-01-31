@@ -256,18 +256,20 @@
                         <div class="row">
 
                             <div class="col-lg-4">
-                                <div class="orderDatepicker">
-                                    <label class="boldR">Requirement Date </label>
-                                    <mat-form-field disabled appearance="fill" class="datepc">
-                                        <mat-label>Select a date </mat-label>
-                                        <input matInput disabled [matDatepicker]="picker"
-                                            (dateChange)="dateChange($event)" [(ngModel)]="startdate">
-                                        <mat-datepicker-toggle disabled matSuffix [for]="picker"
-                                            class="calicon"></mat-datepicker-toggle>
-                                        <mat-datepicker #picker></mat-datepicker>
-                                    </mat-form-field>
-                                </div>
-                            </div>
+                              <div class="orderDatepicker">
+                            <label class="boldR">Requirement Date  </label>
+                            <div>
+                                   
+                                <mat-form-field disabled appearance="fill" class="datepc">
+                                    
+                                    <input matInput disabled  [matDatepicker]="picker" (dateChange)="dateChange($event)" 
+                                           [(ngModel)]="startdate">
+                                       <mat-datepicker-toggle disabled matSuffix [for]="picker"
+                                           class="calicon"></mat-datepicker-toggle>
+                                       <mat-datepicker #picker></mat-datepicker>
+                                   </mat-form-field>
+                               </div> 
+                            </div> </div>
                             <div class="col-md-8">
                                 <div class="promotiont">
                                     <label class="delivery1">Delivery Instructions/Extra Information</label>
@@ -633,10 +635,13 @@
     </div>
     <div class="row footer">
         <div class="col-md-5">
-            <button type="button" class="saveas-draft" (click)="ordersubmit('draft')">Save as draft</button>
+
+            <!-- <button type="button" class="saveas-draft" (click)="ordersubmit('draft')">Save as Draft</button> -->
+            <button type="button" class="save-submit11" (click)="ordersubmit('save')">Submit</button>
         </div>
         <div class="col-md-2">
-            <button type="button" class="save-submit" (click)="ordersubmit('save')">Save & submit</button>
+            <button type="button" class="saveas-draft22" (click)="ordersubmit('draft')">Save as Draft</button>
+            <!-- <button type="button" class="save-submit" (click)="ordersubmit('save')">Submit</button> -->
         </div>
         <div class="col-md-5">
             <button type="button" [mat-dialog-close]="false" class="cancel">Cancel</button>

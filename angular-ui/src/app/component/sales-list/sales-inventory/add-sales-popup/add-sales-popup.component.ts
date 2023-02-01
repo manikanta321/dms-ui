@@ -5,6 +5,7 @@ import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, Gu
 import { SalesServicesService } from 'src/app/services/sales-services.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
+import { SharedServiceAddsalesService } from 'src/app/services/shared-service-addsales.service';
 
 @Component({
   selector: 'app-add-sales-popup',
@@ -184,6 +185,7 @@ SalesObj:any=[{
 private salesService:SalesServicesService,
 private dialogRef: MatDialogRef<AddSalesPopupComponent>,
 private orders: OrdersApisService,
+private shared :SharedServiceAddsalesService,
   ) { }
 
   ngOnInit(): void {
@@ -245,6 +247,7 @@ getdealersGeography(data){
   this.salesService.getdealerGeoDropDown(data).subscribe((res)=>{
     console.log(res.response)
     this.addsalesGeoDropDown=res.response;
+    this.GeoGrapydropdownListdata=res.response
   })
 }
 
@@ -292,26 +295,26 @@ getdealersGeography(data){
      
     }
   }
-//   onTypeSelect(item: any) {
-//     this.showdealerName=true;
-//     console.log(item);
-//     this.SelectedCoustmerId=item.customerId;
-//     this.selectedCoustmerName=item.customerName;
-//     this.dealerAdress(this.SelectedCoustmerId);
+  onTypeSelect(item: any) {
+    this.showdealerName=true;
+    console.log(item);
+    this.SelectedCoustmerId=item.customerId;
+    this.selectedCoustmerName=item.customerName;
+    this.dealerAdress(this.SelectedCoustmerId);
 
-//     this.productDetails=[];
-// this.productSelectedId='';
-// this.productselectedName='';
-// this.visibleProcuct=false;
-// this.brandname='';
-// this.productGroupName='';
-// this.productsubgroupName='';
-// this.productSKUName='';
-// this.productLink='';
+    this.productDetails=[];
+this.productSelectedId='';
+this.productselectedName='';
+this.visibleProcuct=false;
+this.brandname='';
+this.productGroupName='';
+this.productsubgroupName='';
+this.productSKUName='';
+this.productLink='';
 
-//     this.getdealersGeography(this.SelectedCoustmerId);
-//     this.getProductDetalis();
-//   }
+    this.getdealersGeography(this.SelectedCoustmerId);
+    this.getProductDetalis();
+  }
 
   onGeoSelect(item:any){
 
@@ -426,6 +429,8 @@ this.salesService.AddSales(mainobj).subscribe((res)=>{
 
   if(res.response.result=='Succesfully sales added'){
     this.dialogRef.close();
+    this.shared.filter('Register click')
+
   }
 
 })
@@ -462,6 +467,8 @@ console.log(mainobj)
   }
   onItemSelectdealers(item: any) {
     this.customerId = item.customerId;
+
+
     localStorage.setItem("dealerid", this.customerId);
     localStorage.removeItem("geographyId");
     this.geographyId = null;

@@ -8,6 +8,7 @@ import { AddSalesPopupComponent } from './add-sales-popup/add-sales-popup.compon
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { MatDialog } from '@angular/material/dialog';
 import { SalesServicesService } from 'src/app/services/sales-services.service';
+import { SharedServiceAddsalesService } from 'src/app/services/shared-service-addsales.service';
 @Component({
   selector: 'app-sales-inventory',
   templateUrl: './sales-inventory.component.html',
@@ -209,7 +210,15 @@ export class SalesInventoryComponent implements OnInit {
   
   constructor(public dialog: MatDialog,
     private salesService:SalesServicesService,
-    private fb: FormBuilder,) { }
+    private fb: FormBuilder,
+    private sharedService: SharedServiceAddsalesService,
+    ) { 
+      this.sharedService.listen().subscribe((m: any) => {
+        console.log(m)
+        this.DealerListData()
+  
+      })
+    }
 
   ngOnInit(): void {
     this.loggedUserId = localStorage.getItem('logInId');

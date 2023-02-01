@@ -305,7 +305,7 @@
                                     <input type="number" [(ngModel)]="currentShipArray[i].arrayIside[j].ReceivedQty"
                                         placeholder="Enter Quantity"
                                         [disabled]="data.currentReceiveshipment==false  ||  ViewOrReceive==false"
-                                        [ngClass]="[currentShipArray[i].arrayIside[j].ReceivedQty>currentShipArray[i].arrayIside[j].shipedQty && data.currentReceiveshipment==true?'ShipmentinputBoxes3':'ShipmentinputBoxes1',data.currentReceiveshipment==false?'ShipmentinputBoxes4':'ShipmentinputBoxes1']" 
+                                        [ngClass]="[currentShipArray[i].arrayIside[j].ReceivedQty>currentShipArray[i].arrayIside[j].shipedQty && data.currentReceiveshipment==true?'ShipmentinputBoxes3':'ShipmentinputBoxes1',data.currentReceiveshipment==false || ViewOrReceive==false?'ShipmentinputBoxes4':'ShipmentinputBoxes1']" 
                                         (keyup)="shipingNow()">
                                 </td>
                                 <td>
@@ -360,7 +360,7 @@
                     </div>
                     <div class="row">
                         <!-- <div class="col-lg-1"></div> -->
-                        <div class="col-lg-11" *ngIf="ViewOrReceive">
+                        <div class="col-lg-11" *ngIf="ViewOrReceive && data.currentReceiveshipment">
                             <div>
                                 <label class="dispatchC">Receipt Comment</label>
                                 <br>

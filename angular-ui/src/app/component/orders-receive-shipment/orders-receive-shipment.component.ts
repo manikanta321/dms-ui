@@ -226,29 +226,29 @@ export class OrdersReceiveShipmentComponent implements OnInit {
 
           let internalArray: any = []
 
-          element.promodetails[0].itemDetailsshipReceive.forEach(element1 => {
+          element.promodetails.forEach(element1 => {
 
             let obj = {
-              'promocode': element.promodetails[0].promocode,
-              "InvoiceCPOProductId": element1.invoiceCPOProductId,
-              "ReceivedQty": element1.receivedQty,
-              "LostDamaged": element1.lostDamaged,
-              "stockitemid": element1.stockitemid,
-              "stockitemname": element1.stockitemname,
-              "promotioncode": element1.promotioncode,
-              "productSKUName": element.productSKUName,
-              "uomid": element1.uomid,
-              "uomname": element1.uomname,
-              "quantity": element1.quantity,
-              "stock": element1.stock,
-              "price": element1.price,
-              "discount": element1.discount,
+              'promocode': element1.promocode,
+              "InvoiceCPOProductId": element1.itemDetailsshipReceive[0].invoiceCPOProductId,
+              "ReceivedQty": element1.itemDetailsshipReceive[0].receivedQty,
+              "LostDamaged": element1.itemDetailsshipReceive[0].lostDamaged,
+              "stockitemid": element1.itemDetailsshipReceive[0].stockitemid,
+              "stockitemname": element1.itemDetailsshipReceive[0].stockitemname,
+              "promotioncode": element1.itemDetailsshipReceive[0].promotioncode,
+              "productSKUName": element1.itemDetailsshipReceive[0].productSKUName,
+              "uomid": element1.itemDetailsshipReceive[0].uomid,
+              "uomname": element1.itemDetailsshipReceive[0].uomname,
+              "quantity": element1.itemDetailsshipReceive[0].quantity,
+              "stock": element1.itemDetailsshipReceive[0].stock,
+              "price": element1.itemDetailsshipReceive[0].price,
+              "discount": element1.itemDetailsshipReceive[0].discount,
               "finalValue": element1.finalValue,
-              "taxvalue": element1.taxvalue,
-              "amount": element1.amount,
-              "taxid": element1.taxid,
-              "shipedTill": element1.shipedTill,
-              "shipedQty": element1.shipedQty,
+              "taxvalue": element1.itemDetailsshipReceive[0].taxvalue,
+              "amount": element1.itemDetailsshipReceive[0].amount,
+              "taxid": element1.itemDetailsshipReceive[0].taxid,
+              "shipedTill": element1.itemDetailsshipReceive[0].shipedTill,
+              "shipedQty":element1.itemDetailsshipReceive[0].shipedQty,
             }
 
 
@@ -284,6 +284,7 @@ export class OrdersReceiveShipmentComponent implements OnInit {
         console.log('currentShipArray', this.currentShipArray)
 
       })
+      
     } else if (identifier == 'shipment') {
       // alert('shipment');
 
@@ -293,6 +294,7 @@ export class OrdersReceiveShipmentComponent implements OnInit {
         InvoiceId: data,
         CurrentUserId: this.userId
       }
+
       this.orders.reciveshipment(obj).subscribe((res) => {
         console.log(res)
         this.shipmentArray = res.response;
@@ -341,34 +343,33 @@ export class OrdersReceiveShipmentComponent implements OnInit {
 
           let internalArray: any = []
 
-          element.promodetails[0].itemDetailsshipReceive.forEach(element1 => {
+          element.promodetails.forEach(element1 => {
 
             let obj = {
-              'promocode': element.promodetails[0].promocode,
-              "InvoiceCPOProductId": element1.invoiceCPOProductId,
-              "ReceivedQty": element1.receivedQty,
-              "LostDamaged": element1.lostDamaged,
-              "stockitemid": element1.stockitemid,
-              "stockitemname": element1.stockitemname,
-              "promotioncode": element1.promotioncode,
-              "productSKUName": element.productSKUName,
-              "uomid": element1.uomid,
-              "uomname": element1.uomname,
-              "quantity": element1.quantity,
-              "stock": element1.stock,
-              "price": element1.price,
-              "discount": element1.discount,
+              'promocode': element1.promocode,
+              "InvoiceCPOProductId": element1.itemDetailsshipReceive[0].invoiceCPOProductId,
+              "ReceivedQty": element1.itemDetailsshipReceive[0].receivedQty,
+              "LostDamaged": element1.itemDetailsshipReceive[0].lostDamaged,
+              "stockitemid": element1.itemDetailsshipReceive[0].stockitemid,
+              "stockitemname": element1.itemDetailsshipReceive[0].stockitemname,
+              "promotioncode": element1.itemDetailsshipReceive[0].promotioncode,
+              "productSKUName": element1.itemDetailsshipReceive[0].productSKUName,
+              "uomid": element1.itemDetailsshipReceive[0].uomid,
+              "uomname": element1.itemDetailsshipReceive[0].uomname,
+              "quantity": element1.itemDetailsshipReceive[0].quantity,
+              "stock": element1.itemDetailsshipReceive[0].stock,
+              "price": element1.itemDetailsshipReceive[0].price,
+              "discount": element1.itemDetailsshipReceive[0].discount,
               "finalValue": element1.finalValue,
-              "taxvalue": element1.taxvalue,
-              "amount": element1.amount,
-              "taxid": element1.taxid,
-              "shipedTill": element1.shipedTill,
-              "shipedQty": element1.shipedQty,
+              "taxvalue": element1.itemDetailsshipReceive[0].taxvalue,
+              "amount": element1.itemDetailsshipReceive[0].amount,
+              "taxid": element1.itemDetailsshipReceive[0].taxid,
+              "shipedTill": element1.itemDetailsshipReceive[0].shipedTill,
+              "shipedQty":element1.itemDetailsshipReceive[0].shipedQty,
             }
 
 
             internalArray.push(obj);
-
           })
           let obj2: any = {
             "shipName": element.shipName,
@@ -409,6 +410,10 @@ export class OrdersReceiveShipmentComponent implements OnInit {
         orderId: Number(data),
         CurrentUserId: this.userId
       }
+  
+
+
+      
       this.orders.reciveshipmentfororder(obj).subscribe((res) => {
         console.log(res)
         this.shipmentArray = res.response;
@@ -457,41 +462,40 @@ export class OrdersReceiveShipmentComponent implements OnInit {
 
           let internalArray: any = []
 
-          element.promodetails[0].itemDetailsshipReceive.forEach(element1 => {
+          element.promodetails.forEach(element1 => {
 
             let obj = {
-              'promocode': element.promodetails[0].promocode,
-              "InvoiceCPOProductId": element1.invoiceCPOProductId,
-              "ReceivedQty": element1.receivedQty,
-              "LostDamaged": element1.lostDamaged,
-              "stockitemid": element1.stockitemid,
-              "stockitemname": element1.stockitemname,
-              "promotioncode": element1.promotioncode,
-              "productSKUName": element.productSKUName,
-              "uomid": element1.uomid,
-              "uomname": element1.uomname,
-              "quantity": element1.quantity,
-              "stock": element1.stock,
-              "price": element1.price,
-              "discount": element1.discount,
+              'promocode': element1.promocode,
+              "InvoiceCPOProductId": element1.itemDetailsshipReceive[0].invoiceCPOProductId,
+              "ReceivedQty": element1.itemDetailsshipReceive[0].receivedQty,
+              "LostDamaged": element1.itemDetailsshipReceive[0].lostDamaged,
+              "stockitemid": element1.itemDetailsshipReceive[0].stockitemid,
+              "stockitemname": element1.itemDetailsshipReceive[0].stockitemname,
+              "promotioncode": element1.itemDetailsshipReceive[0].promotioncode,
+              "productSKUName": element1.itemDetailsshipReceive[0].productSKUName,
+              "uomid": element1.itemDetailsshipReceive[0].uomid,
+              "uomname": element1.itemDetailsshipReceive[0].uomname,
+              "quantity": element1.itemDetailsshipReceive[0].quantity,
+              "stock": element1.itemDetailsshipReceive[0].stock,
+              "price": element1.itemDetailsshipReceive[0].price,
+              "discount": element1.itemDetailsshipReceive[0].discount,
               "finalValue": element1.finalValue,
-              "taxvalue": element1.taxvalue,
-              "amount": element1.amount,
-              "taxid": element1.taxid,
-              "shipedTill": element1.shipedTill,
-              "shipedQty": element1.shipedQty,
+              "taxvalue": element1.itemDetailsshipReceive[0].taxvalue,
+              "amount": element1.itemDetailsshipReceive[0].amount,
+              "taxid": element1.itemDetailsshipReceive[0].taxid,
+              "shipedTill": element1.itemDetailsshipReceive[0].shipedTill,
+              "shipedQty":element1.itemDetailsshipReceive[0].shipedQty,
             }
 
 
             internalArray.push(obj);
-
           })
           let obj2: any = {
             "shipName": element.shipName,
             "id": element.id,
             "invoiceno": element.invoiceno,
             "invoiceDate": new Date(element.invoiceDate).getFullYear() + '/' + (new Date(element.invoiceDate).getMonth() + 1) + '/' + new Date(element.invoiceDate).getDate(),
-            "invoiceReceivedDate": new Date(element.invoiceReceivedDate==null?'':element.invoiceReceivedDate).getFullYear() + '/' + (new Date(element.invoiceReceivedDate==null?'':element.invoiceReceivedDate).getMonth() + 1) + '/' + new Date(element.invoiceReceivedDate==null?'':element.invoiceReceivedDate).getDate(),
+            "invoiceReceivedDate":element.invoiceReceivedDate==null?'': new Date(element.invoiceReceivedDate).getFullYear() + '/' + (new Date(element.invoiceReceivedDate).getMonth() + 1) + '/' + new Date(element.invoiceReceivedDate).getDate(),
             "shipmentDate": new Date(element.shipmentDate).getFullYear() + '/' + (new Date(element.shipmentDate).getMonth() + 1) + '/' + new Date(element.shipmentDate).getDate(),
             "shipmentNumber": element.shipmentNumber,
             "subTotal": element.subTotal,

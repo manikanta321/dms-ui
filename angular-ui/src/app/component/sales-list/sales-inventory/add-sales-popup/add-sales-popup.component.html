@@ -31,7 +31,7 @@
                     <ng-select [items]="addSalesdropdown" class="addDealerSelection" 
                     bindValue="customerId" bindLabel="customerName" placeholder="Select the dealer"
                     [disabled]="dealerDisabled"  [(ngModel)]="customerId"
-                    required>
+                    required  (change)="onTypeSelect($event)">
                   </ng-select>
                     <!-- <img src="assets/img/search.png" class="search-img"  alt="search"> -->
                 </div>

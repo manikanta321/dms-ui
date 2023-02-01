@@ -193,6 +193,7 @@ private orders: OrdersApisService,
       this.orders.dealersDetails(loginid).subscribe((res)=>{
         console.log(res.response);
         this.customerId =res.response.dealerId;
+        this.SelectedCoustmerId=res.response.dealerId;
        this.dealerInfo =  false;
        this.productInfo = false;
        this.sales= false;
@@ -423,7 +424,7 @@ let mainobj={
 this.salesService.AddSales(mainobj).subscribe((res)=>{
   console.log(res.response);
 
-  if(res.response=='Succesfully sales added'){
+  if(res.response.result=='Succesfully sales added'){
     this.dialogRef.close();
   }
 

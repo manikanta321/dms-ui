@@ -1341,6 +1341,16 @@ padding-left: 20px;
     background-color: white;
     color: black;
   }
+  .ShipmentinputBoxes4 {
+    width: 70px;
+    height: 30px;
+    background: none;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 12.5px;
+    background-color: transparent;
+    color: black;
+  }
   .ShipmentinputBoxes3 {
     width: 70px;
     height: 30px;

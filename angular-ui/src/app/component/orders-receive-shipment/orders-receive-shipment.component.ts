@@ -253,14 +253,13 @@ export class OrdersReceiveShipmentComponent implements OnInit {
 
 
             internalArray.push(obj);
-
           })
           let obj2: any = {
             "shipName": element.shipName,
             "id": element.id,
             "invoiceno": element.invoiceno,
             "invoiceDate": new Date(element.invoiceDate).getFullYear() + '/' + (new Date(element.invoiceDate).getMonth() + 1) + '/' + new Date(element.invoiceDate).getDate(),
-            "invoiceReceivedDate": new Date(element.invoiceReceivedDate).getFullYear() + '/' + (new Date(element.invoiceReceivedDate).getMonth() + 1) + '/' + new Date(element.invoiceReceivedDate).getDate(),
+            "invoiceReceivedDate":element.invoiceReceivedDate==null?'': new Date(element.invoiceReceivedDate).getFullYear() + '/' + (new Date(element.invoiceReceivedDate).getMonth() + 1) + '/' + new Date(element.invoiceReceivedDate).getDate(),
             "shipmentDate": new Date(element.shipmentDate).getFullYear() + '/' + (new Date(element.shipmentDate).getMonth() + 1) + '/' + new Date(element.shipmentDate).getDate(),
             "shipmentNumber": element.shipmentNumber,
             "subTotal": element.subTotal,
@@ -376,7 +375,7 @@ export class OrdersReceiveShipmentComponent implements OnInit {
             "id": element.id,
             "invoiceno": element.invoiceno,
             "invoiceDate": new Date(element.invoiceDate).getFullYear() + '/' + (new Date(element.invoiceDate).getMonth() + 1) + '/' + new Date(element.invoiceDate).getDate(),
-            "invoiceReceivedDate": new Date(element.invoiceReceivedDate).getFullYear() + '/' + (new Date(element.invoiceReceivedDate).getMonth() + 1) + '/' + new Date(element.invoiceReceivedDate).getDate(),
+            "invoiceReceivedDate":element.invoiceReceivedDate==null?'': new Date(element.invoiceReceivedDate).getFullYear() + '/' + (new Date(element.invoiceReceivedDate).getMonth() + 1) + '/' + new Date(element.invoiceReceivedDate).getDate(),
             "shipmentDate": new Date(element.shipmentDate).getFullYear() + '/' + (new Date(element.shipmentDate).getMonth() + 1) + '/' + new Date(element.shipmentDate).getDate(),
             "shipmentNumber": element.shipmentNumber,
             "subTotal": element.subTotal,
@@ -487,12 +486,13 @@ export class OrdersReceiveShipmentComponent implements OnInit {
             internalArray.push(obj);
 
           })
+          alert(element.invoiceReceivedDate)
           let obj2: any = {
             "shipName": element.shipName,
             "id": element.id,
             "invoiceno": element.invoiceno,
             "invoiceDate": new Date(element.invoiceDate).getFullYear() + '/' + (new Date(element.invoiceDate).getMonth() + 1) + '/' + new Date(element.invoiceDate).getDate(),
-            "invoiceReceivedDate": new Date(element.invoiceReceivedDate).getFullYear() + '/' + (new Date(element.invoiceReceivedDate).getMonth() + 1) + '/' + new Date(element.invoiceReceivedDate).getDate(),
+            "invoiceReceivedDate": new Date(element.invoiceReceivedDate==null?'':element.invoiceReceivedDate).getFullYear() + '/' + (new Date(element.invoiceReceivedDate==null?'':element.invoiceReceivedDate).getMonth() + 1) + '/' + new Date(element.invoiceReceivedDate==null?'':element.invoiceReceivedDate).getDate(),
             "shipmentDate": new Date(element.shipmentDate).getFullYear() + '/' + (new Date(element.shipmentDate).getMonth() + 1) + '/' + new Date(element.shipmentDate).getDate(),
             "shipmentNumber": element.shipmentNumber,
             "subTotal": element.subTotal,

@@ -486,7 +486,6 @@ export class OrdersReceiveShipmentComponent implements OnInit {
             internalArray.push(obj);
 
           })
-          alert(element.invoiceReceivedDate)
           let obj2: any = {
             "shipName": element.shipName,
             "id": element.id,

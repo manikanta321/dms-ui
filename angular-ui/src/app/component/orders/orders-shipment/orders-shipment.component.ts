@@ -62,10 +62,10 @@ export class OrdersShipmentComponent implements OnInit {
   selectedDateRange:any;
   loggedUserId:any;
   columnDefs: ColDef[] = [
-    {  headerName: "Shipment No.",minWidth:200,
+    {  headerName: "Shipment No.",
     field: 'shipmentNumber',      tooltipField:"shipmentNumber",
    },
-   {  headerName: "Shipment Date",minWidth:200,
+   {  headerName: "Shipment Date",
    field: 'shipmentDate',     
    tooltipField:"shipmentDate",
   

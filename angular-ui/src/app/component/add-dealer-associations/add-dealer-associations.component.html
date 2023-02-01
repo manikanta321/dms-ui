@@ -184,12 +184,12 @@
           <div class="row" *ngIf="screenValue == 1">
             <div class="col-md-6 dlr-promotiont1">
               <form [formGroup]="myForm" class="dropdown-form-dealer">
-                <ng-multiselect-dropdown class="promo1" [placeholder]="'Dealers'" formControlName="city1"
+                <ng-multiselect-dropdown class="promo_1" [placeholder]="'Dealers'" formControlName="city1"
                   [disabled]="disabled" [settings]="dropdownSettings3" [data]="dealersArray"
                   (onSelect)="onDealerSelect($event)" (onDeSelect)="onDealerDeSelect($event)" (onDeSelectAll)="onItemDealerDeSelectOrAll($event)" (onSelectAll)="onItemDealerSelectOrAll($event)">
                 </ng-multiselect-dropdown>
 
-                <div class="dropdown-placeholder promo1-placeholder">
+                <div class="dropdown-placeholder promo_1-placeholder">
                   <span *ngIf="myFormDlr.get('city').value.length == 0" style="color: black">Select Dealers
                   </span>
                   <span *ngIf="myFormDlr.get('city').value.length == 1" class="selected-placeholder">
@@ -382,7 +382,7 @@
 
 
         <div class="row mainclass" *ngIf="screenValue == 1 || screenValue ==2 ">
-          <div class="col-md-7" *ngIf="screenValue == 1 && dealerList.length > 0 " >
+          <div class="col-md-7 bubbless" *ngIf="screenValue == 1 && dealerList.length > 0 " >
             <mat-checkbox class="checkboxStyle" aria-label="Select All" 
             [checked]="isChecked()" [indeterminate]="isIndeterminate()" (change)="$event ? toggleAll($event) : null">
              <span *ngIf="aarrayToPush.length == 0" class="contentStyle">NO Dealers Selected </span>
@@ -432,7 +432,14 @@
             Product Selected</p>
         </div> -->
 
-  <div class="col-md-3">
+        <div class="row">
+          <div class="col-9">
+            
+          </div>
+
+        
+
+   <div class="col-md-3">
     <div class="searchBox1 d-flex">
       <div class="promotiont2">
         <select class="form-select select-asso" aria-label=".form-select-lg example"
@@ -460,14 +467,20 @@
       </div>
     </div>
   </div>
-  <div class="">
-    <div class="icon btnhover refreshbtn" style="cursor: pointer" (click)="resetAll()">
-      <img class="refresh" src="assets/img/ultrarefresh.svg" style="position: relative; top: 9px; left: 12px"
-        alt="refresh" />
+  
+  <div class="row">
+    <div class="col-9"></div>
+    <div class="col-3">
+      <div class="icon btnhover refreshbtn2" style="cursor: pointer" (click)="resetAll()">
+        <img class="refresh" src="assets/img/ultrarefresh.svg" style="position: relative; top: 9px; left: 12px"
+          alt="refresh" />
+      
     </div>
+    </div>
+    
+
   </div>
-
-
+</div>
           <br />
 
           <div *ngIf="screenValue != 2" style="width: 100%;">
@@ -504,7 +517,7 @@
                 <div class="row mainclass">
                   <div class="col-md-7"></div>
                   <div class="col-md-3">
-                    <div class="searchBox1 d-flex">
+                    <div class="searchBox2 d-flex">
                       <div class="promotiont2">
                         <select class="form-select select-asso" aria-label=".form-select-lg example"
                           [(ngModel)]="selectedGeoField">
@@ -529,7 +542,7 @@
                     </div>
                   </div>
                   <div class="">
-                    <div class="icon btnhover refreshbtn" style="cursor: pointer; left: 97px;">
+                    <div class="icon btnhover refreshbtn3" style="cursor: pointer; left: 97px;">
                       <img class="refresh" src="assets/img/ultrarefresh.svg"
                         style="position: relative; top: 9px; left: 12px" alt="refresh" />
                     </div>
@@ -700,7 +713,7 @@
           <div class="row mainclass">
             <div class="col-md-7"></div>
             <div class="col-md-3">
-              <div class="searchBox1 d-flex">
+              <div class="searchBox3 d-flex">
                 <div class="promotiont2">
                   <select class="form-select select-asso" aria-label=".form-select-lg example"
                     [(ngModel)]="selectedGeoField">
@@ -724,12 +737,12 @@
                 </div>
               </div>
             </div>
-            <div class="">
-              <div class="icon btnhover refreshbtn" style="cursor: pointer; left: 97px;">
+             <div class="">
+              <div class="icon btnhover refreshbtn4" style="cursor: pointer; left: 97px;">
                 <img class="refresh" src="assets/img/ultrarefresh.svg"
                   style="position: relative; top: 9px; left: 12px" alt="refresh" />
               </div>
-            </div>
+            </div> 
           </div>
           <br />
           <table>
@@ -792,30 +805,40 @@
           <br>
 
 
-        <div *ngIf="screenValue == 1">
-          <div class="row footer">
-            <div class="col-md-6">
+        <div *ngIf="screenValue == 1" style="margin: auto;">
+           
+         
+           <div class="row footer">
+            
+
+           
+            <div class="col">
               <button type="button" class="saveas-draft" (click)="saveAssociation()">Save</button>
             </div>
-            <div class="col-md-6">
+            <div class="col">
               <button type="button" [mat-dialog-close]="true" class="saveas-draft2">
-                Cancel
+                Cancel 
               </button>
-            </div>
+            </div> 
+
+
+          
             <!-- <div class="col-md-5">
               <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
       </div> -->
+       
           </div>
-        </div>
+        </div> 
 
-<div *ngIf="screenValue == 2">
+<div *ngIf="screenValue == 2" >
+  
   <div class="row footer">
-    <div class="col-md-6">
+    <div class="col">
       <button type="button" class="saveas-draft" (click)="saveAssociationdealer()">Save</button>
     </div>
-    <div class="col-md-6">
+    <div class="col">
       <button type="button" [mat-dialog-close]="true" class="saveas-draft2">
-        Cancel
+        Cancel 
       </button>
     </div>
     <!-- <div class="col-md-5">

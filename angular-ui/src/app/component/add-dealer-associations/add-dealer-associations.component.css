@@ -1,3 +1,8 @@
+.bubbless
+{
+  margin-top: 40px;
+  
+}
 
 
 .pr_omo
@@ -90,7 +95,7 @@
 
   top: 50px !important;
   border: 1px solid #337ab7;
-  background: #00187A !important;
+  background:#006466 !important;
   font-size: 12px;
   box-shadow: 1px 1px #959595;
   color: #fff;
@@ -266,10 +271,10 @@ input.form-check-input1 {
     border-radius: 10px;
     background-color: black;
     height: 41px;
-    margin-top: 6px;
+    margin-top: -90px;
     /* margin-left: 88px; */
     position: relative;
-    left: 85px;
+    left: 222px;
 
 
   }
@@ -288,6 +293,66 @@ input.form-check-input1 {
 
   color: white !important;
   }
+
+  .refreshbtn2{
+    width: 39px;
+    border-radius: 10px;
+    background-color: black;
+    height: 41px;
+    margin-top: -90px;
+    /* margin-left: 88px; */
+    position: relative;
+    left: 222px;
+
+
+  }
+  .refreshbtn2:hover
+  {
+    background-color: grey !important;
+
+  color: white !important;
+  }
+
+  .refreshbtn3:hover {
+    background-color: grey !important;
+    color: white !important;
+  }
+  .refreshbtn3{
+    width: 39px;
+    border-radius: 10px;
+    background-color: black;
+    height: 41px;
+    
+    margin-left: 18px;
+    position: relative;
+    margin-top: 3px;
+
+
+  }
+
+
+  .refreshbtn4:hover {
+    background-color: grey !important;
+    color: white !important;
+  }
+  .refreshbtn4{
+    width: 39px;
+    border-radius: 10px;
+    background-color: black;
+    height: 41px;
+    margin-top: -90px;
+    /* margin-left: 88px; */
+    position: relative;
+    left: 222px;
+
+
+  }
+  
+
+
+
+
+
  
  ::ng-deep.btnhover:hover{
     background: #000000 !important;
@@ -310,15 +375,41 @@ input.form-check-input1 {
 
     
     .searchBox1 {
-    top: 6px;
+    top: -43px;
     background-color: white;
     padding-top: -3px;
     padding-bottom: -3px;
     width: 295px;
     border: solid 1px;
     border-radius: 10px;
-    margin-left: -25px;
+    position: relative;
+    left: -107px;
     }
+
+    .searchBox2 {
+      
+      background-color: white;
+      padding-top: -3px;
+      padding-bottom: -3px;
+      width: 295px;
+      border: solid 1px;
+      border-radius: 10px;
+      position: relative;
+      left: 56px;
+      }
+      .searchBox3 {
+        top: -43px;
+        background-color: white;
+        padding-top: -3px;
+        padding-bottom: -3px;
+        width: 295px;
+        border: solid 1px;
+        border-radius: 10px;
+        position: relative;
+        left: -107px;
+        }
+        
+      
     
     
 
@@ -350,13 +441,18 @@ input.form-check-input1 {
   }
   .dropdown-form-categ {
     position: relative;
-    width: 156px;
+    /* width: 156px; */
   }
   .dropdown-form-dealer {
     position: relative;
     left: 16px;
   }
   .promo1-placeholder.dropdown-placeholder .selected-placeholder {
+    color: #006466 !important;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .promo_1-placeholder.dropdown-placeholder .selected-placeholder {
     color: #006466 !important;
     font-size: 12px;
     font-weight: 600;
@@ -368,6 +464,13 @@ input.form-check-input1 {
     right: 0% !important;
     color:white !important;
   }
+  ::ng-deep.promo_1 .multiselect-dropdown .dropdown-btn .selected-item {
+    background: #006466 !important;  
+   
+  
+  right: 0% !important;
+  color:white !important;
+}
 .select-asso{
     width: 100%;
     height: 38px;
@@ -1687,9 +1790,9 @@ width: 100%;
   border-radius: 15px;
   text-align: center;
 }
-::ng-deep .promo1 .dropdown-btn span .ng-star-inserted {
+::ng-deep .promo_1 .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
-  right: -18px !important;
+  right: 279px !important;
   bottom: 0px;
   top: 50px !important;
   /* width: 51px; */
@@ -1700,6 +1803,8 @@ width: 100%;
   color: #fff;
   height: 22px;
   border-radius: 15px;
+  padding-left: 7px;
+  padding-top: 1px;
   text-align: center;
 }
 
@@ -1721,6 +1826,10 @@ width: 100%;
 
 
 ::ng-deep .promo1 .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+
+  background: #006466 !important;
+}
+::ng-deep .promo_1 .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
 
   background: #006466 !important;
 }

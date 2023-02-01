@@ -1322,7 +1322,32 @@ li {
   color: #FFFFFF;
 }
 .save-submit {
-  background: white;
+   background: #000000;
+  border: 2px solid #000000;
+  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+
+  margin-top: 15px;
+  cursor: pointer;
+  width: 168px;
+  height: 43px;
+
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: center;
+  font-family: 'Gilroy-SemiBold';
+  font-size: 15px;
+  line-height: 18px;
+  align-items: center;
+  text-align: center;
+
+  color: #FFFFFF;
+
+
+}
+.save-submi_t
+{
+  background: #FFFFFF;
   border: 2px solid #000000;
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;

@@ -295,7 +295,7 @@
             <button type="button" class="saveas-draft" (click)="GetConfirmOrders()">Confirm</button>
         </div>
         <div class="col-md-2">
-            <button type="button" class="save-submit" (click)="GetRejectOrders()">Reject</button>
+            <button type="button" class="save-submi_t" (click)="GetRejectOrders()">Reject</button>
         </div>
     </div>
 </div>
@@ -641,7 +641,7 @@
          
         </div>
         <div class="col-md-2">
-            <button [disabled]="!startdate || !customerId || !geographyId || !BillingaddressId || !shippingaddressId" type="button" class="save-submit" (click)="ordersubmit('save')">Save & submit</button>
+            <button [disabled]="!startdate || !customerId || !geographyId || !BillingaddressId || !shippingaddressId" type="button" class="save-submit" (click)="ordersubmit('save')">Save & Draft</button>
         </div>
         <div class="col-md-5">
             <button type="button" [mat-dialog-close]="false" class="cancel">Cancel</button>

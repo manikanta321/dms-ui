@@ -52,7 +52,7 @@
     </div>
     <div class="scrollone">
     <mat-stepper [linear]="isLinear" #stepper (click)="matsteptabClick($event)" [selectedIndex]="0" ngClass="addItemsHeader">
-      <mat-step label="Step 1"  [stepControl]="firstFormGroup" >
+      <mat-step label="Step 1" >
         <form [formGroup]="firstFormGroup">
           <ng-template matStepLabel="productlb"  >Product</ng-template>
           <!-- <div class="radio-btn mt-2">

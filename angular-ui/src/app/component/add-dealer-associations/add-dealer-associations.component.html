@@ -11,7 +11,7 @@
           <div class="row text-center"></div>
         </div>
 
-        <div class="row">
+        <div class="row" style="width: 103%;">
           <div class="col-md-6">
             <div class="promotiont">
               <label>Association Direction<span>*</span></label><br />
@@ -24,10 +24,13 @@
               </select>
             </div>
           </div>
+          
           <div class="col-md-6">
-            <div *ngIf="screenValue== 1 " class="promotiont">
+            
+            <div *ngIf="screenValue== 1 " class="promotiont"> 
+              
               <img class="right-arrow" src="../../../assets/img/right-arrow.png" alt="">
-              <label>Product <span>*</span></label><br />
+              <label>Product <span>*</span></label><br />          
               <select #teams class="form-select select-asso" aria-label=".form-select-lg example"
                 (change)="selectedProduct(teams.value);">
                 <option selected hidden>Select</option>
@@ -37,6 +40,7 @@
                 </option>
 
               </select>
+             
               <!-- <div class="dealerr">
                 <label class="DealerInfo-label">Product <span class="astr">*</span></label>
                 <ng-select [items]="ProductListArray" id="dealerAllArray" name="dealerAllArray" required
@@ -834,7 +838,7 @@
           </div>
         </div> 
 
-<div *ngIf="screenValue == 2" >
+<div *ngIf="screenValue == 2" style="margin: auto;" >
   
   <div class="row footer">
     <div class="col">

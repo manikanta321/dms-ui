@@ -1255,9 +1255,17 @@ li {
 
 }
 
-.promotionpopup-scroll {
-  max-height: 500px !important;
+.promotionpopup-scroll1 {
+  max-height: 530px !important;
 }
+.promotionpopup-scroll2 {
+  max-height: 530px !important;
+}
+
+.promotionpopup-scroll3 {
+  max-height: 530px !important;
+}
+
 
 .footer {
   /* position: fixed; */

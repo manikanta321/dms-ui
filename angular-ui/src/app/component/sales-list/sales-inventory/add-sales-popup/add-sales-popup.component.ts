@@ -14,7 +14,7 @@ import { SharedServiceAddsalesService } from 'src/app/services/shared-service-ad
 })
 export class AddSalesPopupComponent implements OnInit {
   dealerInfo = true;
-  orderitem = false;
+  orderitem = true;
   productInfo= true
   otherInfo = false;
   receipts = true;
@@ -196,8 +196,8 @@ private shared :SharedServiceAddsalesService,
         console.log(res.response);
         this.customerId =res.response.dealerId;
         this.SelectedCoustmerId=res.response.dealerId;
-       this.dealerInfo =  false;
-       this.productInfo = false;
+       //this.dealerInfo =  false;
+       //this.productInfo = false;
        this.sales= false;
       let obj:any={
         customerId: this.customerId
@@ -457,7 +457,6 @@ console.log(mainobj)
   }
   expandOrderItemsDiv() {
     this.orderitem = !this.orderitem;
-
     if (this.orderitem === false) {
       this.image2 = 'assets/img/minimize-tag.png';
     } else {

@@ -16,6 +16,10 @@ export class SalesBulkUploadComponent implements OnInit {
   ) { }
   totalRows:any;
   errorFree:any;
+  array: any;
+  invoice: any;
+  duplicateArray: any;
+  anotherArray: any;
   duplicateEntry:any;
   qtyExceed:any = "Quantity exceeds available stock = 3";
   prodGeo:any = "Product & geography not found = 2";
@@ -42,6 +46,7 @@ export class SalesBulkUploadComponent implements OnInit {
   uploadedData:any = [];
   TotalRows:any = [];
   duplicateEntryy:any=[];
+  index : any = 1;
   errorfreeRows:any =[];
   incorrectRows:any = [];
   showTable:boolean = false;
@@ -288,6 +293,12 @@ export class SalesBulkUploadComponent implements OnInit {
     this.errorFree = "Error free rows = "+ this.errorfreeRows.length;
       console.log("orderShipment",orderShipment);
       this.incorrectRows = orderShipment.productGeographyNotFound;
+      this.incorrectRows.map((ele)=>{
+        ele.remarks = ele.remarks.split(":")[1].toLowerCase();
+        console.log("dfdfd" , ele.remarks);
+        return ele;
+      });
+      console.log("incoreectggggggggggggggggggggggg" , this.incorrectRows);
       this.Incorrect = "Incorrect Data = " + this.incorrectRows.length;
       const UploadData = res.response.totalRows;
       console.log("SalesUploadData",UploadData)
@@ -319,5 +330,41 @@ export class SalesBulkUploadComponent implements OnInit {
     this.dialogRef.close();
   })
  } 
+//  getColor(data: any) {
+//   var variable = data.remarks.split(":")[1];
+//   for(let i = 0; i < this.incorrectRows.length ; i++){
+//     // if(data.rownumber == 2){
+//     //   if(variable.trim() === "OrderNo") {
+//     //     const element1 : any = document.getElementById("orderNo");
+//     //     element1.style.color  = "red";
+//     //     this.index = this.index +1;
+//     //   }
+//     //   else if(variable.trim() === "InvoiceNo"){
+//     //     const element2 : any = document.getElementById("invoiceNo");
+//     //     element2.style.color  = "red";
+//     //     this.index = this.index +1;
+//     //   }
+//     }
+  //}
+    
+  //var table:any = document.getElementsByTagName("tr");
+  // for (var i = 0; i< table.length ;i++) {
+  //      switch(variable.trim()){
+  //   case "OrderNo" :
+  //     const el : any = document.getElementById("orderNo");
+  //        el.style.color  = "red";
+  //        break;
+  //   case "InvoiceNo":
+  //     const ele : any = document.getElementById("invoiceNo");
+  //       ele.style.color  = "red";
+  //       break;
+  // }
 
+
+
+  // }
+ 
+  
 }
+
+

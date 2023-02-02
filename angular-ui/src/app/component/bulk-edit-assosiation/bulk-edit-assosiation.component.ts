@@ -70,6 +70,7 @@ export class BulkEditAssosiationComponent implements OnInit {
   dealerSelected:any=[];
   productSelected:any=[];
   toppingList1: any = [];
+  ProductName:any='mani'
   searchText: any;
   selectedGeoField: string = "";
   updateGeographyValue: string = "";
@@ -347,7 +348,9 @@ export class BulkEditAssosiationComponent implements OnInit {
   onBtnExport(){
     this.gridApi.exportDataAsCsv();
   }
-
+  change(i){
+    // this.addAddressDetailsForm.value.BulkAssociationsCount[i].LeadTimeIndays=
+  }
 
 
   onGridReady(params: GridReadyEvent) {
@@ -601,7 +604,6 @@ LoginId.setValue(this.LoginId)
   }
 
   saveBulkEdit(){
-
 
 console.log('this.addAddressDetailsForm.value',this.addAddressDetailsForm.value)
   this.associationService.editbulkdealer(this.addAddressDetailsForm.value).subscribe((res)=>{

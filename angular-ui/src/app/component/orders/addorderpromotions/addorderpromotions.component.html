@@ -641,7 +641,7 @@
          
         </div>
         <div class="col-md-2">
-            <button [disabled]="!startdate || !customerId || !geographyId || !BillingaddressId || !shippingaddressId" type="button" class="save-submit" (click)="ordersubmit('save')">Save & Draft</button>
+            <button [disabled]="!startdate || !customerId || !geographyId || !BillingaddressId || !shippingaddressId" type="button" class="save-submit" (click)="ordersubmit('draft')">Save & Draft</button>
         </div>
         <div class="col-md-5">
             <button type="button" [mat-dialog-close]="false" class="cancel">Cancel</button>

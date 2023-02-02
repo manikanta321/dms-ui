@@ -5,11 +5,16 @@
         <br>
         <b>Done!</b>
     </div>
-     <div class="text-succ mt-3" *ngIf="AddorEditpro">
+     <div class="text-succ mt-3" *ngIf="itemIs=='save'">
         
         <p > Order <b></b> is  Added <b style="color: rgba(23, 177, 92, 1);"> Successfully</b></p>
 
            </div>
+           <div class="text-succ mt-3" *ngIf="itemIs=='draft'">
+        
+            <p > Order <b></b> is  saved as Draft <b style="color: rgba(23, 177, 92, 1);"> Successfully</b></p>
+    
+               </div>
      <div class="text-succ mt-3" *ngIf="!AddorEditpro">
         
         <p>Order   <b></b> is Updated <b style="color: rgba(23, 177, 92, 1);"> Successfully</b></p>

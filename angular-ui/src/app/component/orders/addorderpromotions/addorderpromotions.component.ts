@@ -182,6 +182,9 @@ export class AddorderpromotionsComponent implements OnInit {
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
 
   ngOnInit(): void {
+    localStorage.setItem('AddorEditpro', '');
+    localStorage.setItem('AddorEditpro1', '');
+
     this.userType = localStorage.getItem("userType");
     let loginid = localStorage.getItem("logInId");
     if (this.userType == 'Dealer Admin') {
@@ -1178,6 +1181,11 @@ export class AddorderpromotionsComponent implements OnInit {
 
 
   ordersubmit(submitType) {
+    if(localStorage.getItem('AddorEditpro')!='edit'){
+      localStorage.setItem('AddorEditpro1', submitType);
+
+    }
+
     let loggedUserId = localStorage.getItem('logInId')
     console.log(this.startdate, "date")
     let itemsCount: any = [];

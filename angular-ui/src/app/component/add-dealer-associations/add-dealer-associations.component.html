@@ -506,12 +506,14 @@
               <p class="label-cls">Singapore (0/145)</p>
             </div> -->
                   <div class="col-md-1" (click)="expandDealerInfoDiv(i)">
-                    <img [src]="image1" class="expand-arrow" alt="add-user-btn" />
+                    <img *ngIf="this.dealerList[i].flagforopen" [src]="image2" class="expand-arrow" alt="add-user-btn" />
+              <img *ngIf="!this.dealerList[i].flagforopen" [src]="image1" class="expand-arrow" alt="add-user-btn" />
+
                   </div>
                 </div>
               </div>
 
-              <div class="content" *ngIf="dealerInfo  &&  i==inumber ">
+              <div class="content" *ngIf="this.dealerList[i].flagforopen">
                 <br />
 
                 <div class="row mainclass">
@@ -702,12 +704,14 @@
           <p class="label-cls">Singapore (0/145)</p>
         </div> -->
             <div class="col-md-1" (click)="expandDealerInfoDiv(i)">
-              <img [src]="image1" class="expand-arrow" alt="add-user-btn" />
+              <img *ngIf="this.dealerList[i].flagforopen" [src]="image2" class="expand-arrow" alt="add-user-btn" />
+              <img *ngIf="!this.dealerList[i].flagforopen" [src]="image1" class="expand-arrow" alt="add-user-btn" />
+
             </div>
           </div>
         </div>
 
-        <div class="content" *ngIf="dealerInfo  &&  i==inumber ">
+        <div class="content" *ngIf="this.dealerList[i].flagforopen">
           <br />
 
           <div class="row mainclass">

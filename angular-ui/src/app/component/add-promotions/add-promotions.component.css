@@ -406,10 +406,10 @@ border-radius: 10px; */
 }
 
 .close-icon {
-  left: 100%;
+  left: 99%;
   position: relative;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 600; 
   cursor: pointer;
 }
 

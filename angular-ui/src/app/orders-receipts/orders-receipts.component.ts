@@ -49,6 +49,7 @@ export class OrdersReceiptsComponent implements OnInit {
   startDateInvoice:any = '';
   endDateInvoice:any = '';
   selectedDateRange:any;
+  selectedDateRanges:any;
   geogropdownlist:any = [];
   geoAllarray:any  = [];
   geogragphies:any = [];
@@ -311,10 +312,10 @@ export class OrdersReceiptsComponent implements OnInit {
       });
     }
     customInvoiceDatePickerEvent(eventChange){
-      this.selectedDateRange = eventChange.selectedDate;
-      this.startDateInvoice = this.selectedDateRange.startDate;
-      this.endDateInvoice = this.selectedDateRange.endDate;
-      console.log(this.selectedDateRange);
+      this.selectedDateRanges = eventChange.selectedDate;
+      this.startDateInvoice = this.selectedDateRanges.startDate;
+      this.endDateInvoice = this.selectedDateRanges.endDate;
+      console.log(this.selectedDateRanges);
       let data = {
         DealerId:this.dealerss,
         GeographyId:this.geogragphies,

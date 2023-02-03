@@ -3,7 +3,9 @@ import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output, ViewChild }
 import { MatDialog } from '@angular/material/dialog';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
+import { FirstDataRenderedEvent } from 'ag-grid-community';
 import { PswResetPopupComponent } from 'src/app/component/users/userPopups/psw-reset-popup/psw-reset-popup.component';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 
 @Component({
   selector: 'app-head',
@@ -16,6 +18,7 @@ export class HeadComponent implements OnInit {
 sideBarOpen = true;
 userType:any;
 userName:any;
+ProfileImage:any;
 public isOpen = false;
 @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
@@ -33,13 +36,27 @@ ngAfterViewInit() {
   }, 1);
  }
   constructor(private observer: BreakpointObserver,
+    private otherMasterService: OtherMasterService,
     private router: Router,private dialog: MatDialog) { }
 
   ngOnInit(): void {
-
+    let Image = sessionStorage.getItem("profileImage");
+    this.ProfileImage = sessionStorage.getItem("profileImage")
+    console.log("ProfileImage",this.ProfileImage);
     this.userName = localStorage.getItem("userName");
     this.userType=localStorage.getItem("userType");
     
+  }
+  onFirstDataRendered(params: FirstDataRenderedEvent) {
+      
+    // this.otherMasterService.listen().subscribe((m: any) => {
+    //   console.log("RefreshData",m)
+    //   setTimeout (() => {
+    //     this.ngOnInit();
+    //  }, 2000);
+     
+
+    // })
   }
 // togglesidebar(){
 //   this.ToggleSideNav.emit();

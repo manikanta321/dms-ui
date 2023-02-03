@@ -507,7 +507,9 @@
                                   <strong
                                     *ngIf="geoItem.selectedCount != null && geoItem.selectedCount != undefined">({{
                                     geoItem.selectedCount}} / {{ geoItem.countOfDefault}})</strong>
+                                    
                                 </div>
+                                <img src="assets/img/geography-all.svg" *ngIf="geoGraphyFullData.length === (i+2) && !isItemSelected(item,geoItem)" (click)="geographySelectAll($event,geoItem, i)"/>
                               </div>
                             </div>
                           </div>
@@ -585,49 +587,59 @@
 
                   <div *ngFor="let geoPropertyItemList of geoGraphyFullData; let i=index;">
                     <div *ngFor="let item of geoPropertyItemList.geoProperties">
-                      <div class="row m-0 mb-2">
-                        <div class="col-sm-3" [ngStyle]="{'padding-left':  (i * 10 )+ 'px'}">
-                          <img [src]="selectedHirerachyIndex > i ? maxImage : minImage" class="expand-arrow1"
-                            alt="add-user-btn">
-                          <!-- {{CountryName}} -->
-                          {{item.geographyName}}
-                          
-                        </div>
-                        <div class="col-sm-1">
-                          <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
-                            [(ngModel)]="item.mrp" class="uom-cls" id="MRP" name="MRP">
-                        </div>
-                        <div class="col-sm-1">
-                          <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
-                            [(ngModel)]="item.minOrderQty" class="uom-cls" id="MinorderQty" name="MinorderQty">
-                        </div>
-                        <div class="col-sm-1">
-                          <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
-                            [(ngModel)]="item.maxOrderQty" class="uom-cls" id="MaxOrderQty" name="MaxOrderQty">
-                        </div>
-                        <div class="col-sm-1">
-                          <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
-                            [(ngModel)]="item.marginPercent" class="uom-cls" id="MarginPercent" name="MarginPercent">
-                        </div>
-                        <div class="col-sm-1">
-                          <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
-                            [(ngModel)]="item.discountPercent" class="uom-cls" id="DiscountPercent"
-                            name="DiscountPercent">
-                        </div>
+                        <!-- <div > -->
+                          <div *ngIf="item.showArrayExtension">
+                        <div class="row m-0 mb-2">
+                          <div class="col-sm-3" [ngStyle]="{'padding-left':  (i * 10 )+ 'px'}">
+                            
+                            <img [src]="item.imageExtensionType == 'maxImage' ? maxImage : minImage" class="expand-arrow1"
+                              alt="add-user-btn" *ngIf="geoGraphyFullData.length !== (i + 1)"
+                              (click)="materialGeographyArrayClick(item,i)">
+                            
+                            {{item.geographyName}}
 
-                        <div class="col-sm-1">
-                          <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
-                            [(ngModel)]="item.leadTime" class="uom-cls" id="LeadTime" name="LeadTime">
-                        </div>
+                          </div>
+                          <div class="col-sm-1">
+                            <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                              [(ngModel)]="item.mrp" class="uom-cls" id="MRP" name="MRP">
+                          </div>
+                          <div class="col-sm-1">
+                            <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                              [(ngModel)]="item.minOrderQty" class="uom-cls" id="MinorderQty" name="MinorderQty">
+                          </div>
+                          <div class="col-sm-1">
+                            <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                              [(ngModel)]="item.maxOrderQty" class="uom-cls" id="MaxOrderQty" name="MaxOrderQty">
+                          </div>
+                          <div class="col-sm-1">
+                            <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                              [(ngModel)]="item.marginPercent" class="uom-cls" id="MarginPercent" name="MarginPercent">
+                          </div>
+                          <div class="col-sm-1">
+                            <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                              [(ngModel)]="item.discountPercent" class="uom-cls" id="DiscountPercent"
+                              name="DiscountPercent">
+                          </div>
 
-                        <div class="col-sm-2">
-                          <input placeholder="Enter" style="width: 130px;" type="text"
-                            [disabled]="selectedHirerachyIndex > i" [(ngModel)]="item.registrationNumber"
-                            class="uom-cls" id="RegistrationNumber" name="RegistrationNumber">
-                        </div>
+                          <div class="col-sm-1">
+                            <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                              [(ngModel)]="item.leadTime" class="uom-cls" id="LeadTime" name="LeadTime">
+                          </div>
 
-                        <div class="col-sm-1">
-                          <a href="" style="padding: 9px;">Add</a>
+                          <div class="col-sm-2">
+                            <input placeholder="Enter" style="width: 130px;" type="text"
+                              [disabled]="selectedHirerachyIndex > i" [(ngModel)]="item.registrationNumber"
+                              class="uom-cls" id="RegistrationNumber" name="RegistrationNumber">
+                          </div>
+
+                          <div class="col-sm-1">
+                            <a class="add-geo-identifier"
+                              *ngIf="selectedHirerachyIndex == i && item.geographyIdentifiers.length == 0"
+                              (click)="AddGeographyIdentifier(item)">Add</a>
+                            <a class="count-geo-identifier "
+                              *ngIf="selectedHirerachyIndex == i && item.geographyIdentifiers.length !== 0"
+                              (click)="AddGeographyIdentifier(item)">{{item.geographyIdentifiers.length}}</a>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -655,6 +667,24 @@
               </div>
               <div class="col-3">
               </div>
+
+              <div class="overlay" *ngIf="geographyIdentifierPopup">
+                <div class="popup">
+                  <h2 class="sidentifier">Select Identifier<span>*</span></h2>
+
+                  <a class="close" (click)="closeGeographyIdentifierPopup()">&times;</a>
+                  <div class="content">
+                    <mat-chip-list selectable multiple class="mchip">
+                      <mat-chip [value]="data" #identifierId="matChip" *ngFor="let data of geoGraphyIdentifierList"
+                        [selected]="isSelectedGeographyIdentifer(data.geographyIdentiferid)"
+                        (focus)="selectGeographyIdentifier(data.geographyIdentiferid)" class="cold">
+                        {{data.geographyIdentifierName}}
+                      </mat-chip>
+                    </mat-chip-list>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </mat-step>
         </mat-stepper>

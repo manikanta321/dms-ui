@@ -95,7 +95,7 @@ export class MaterialAddEditpopupComponent {
   stockItemDesc: string = '';
   desc: any;
   nameM: any;
-  expiryDate:any ='0';
+  expiryDate: any = '0';
   BrandName: string = '';
   gloabKey: any;
   Sku: any;
@@ -167,7 +167,7 @@ export class MaterialAddEditpopupComponent {
   ProductIdentifiersSettingsNames: any = [];
   ProductIdentifiersNames: any = [];
   businessIdentifiersNames: any = [];
-  flag:boolean = true;
+  flag: boolean = true;
   selectedProductIdentifierData: any = [];
   colorsList = [
     { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
@@ -189,14 +189,16 @@ export class MaterialAddEditpopupComponent {
   @ViewChild('stepper') private stepper: MatStepper | any;
   dataGetById: any = {};
   selectedHirerachyIndex: number = 0;
+  stockItemId: any;
   updatesave: any;
   saveMaterial: any;
 
+  geographyIdentifierPopup: boolean = false;
 
   constructor(private fb: FormBuilder, public dialog: MatDialog,
     private spinner: NgxSpinnerService, private addMaterials: AddMaterialsService,
     private sharedService: SharedServicesMaterialService,
-    private materialListService:SharedServiceMaterialListService,
+    private materialListService: SharedServiceMaterialListService,
     private classification: ClassificationserviseService) {
     this.sharedService.listen().subscribe((m: any) => {
       this.getProductList();
@@ -274,6 +276,7 @@ export class MaterialAddEditpopupComponent {
     this.editList()
     this.getclassification();
     this.getAllUom();
+    this.getGeoGraphyIdentifier();
     // this.getMaterialIdentifier();
     // this.countryData();
   }
@@ -374,7 +377,7 @@ export class MaterialAddEditpopupComponent {
     this.MaterialCustomIdentifiersEdit = materialData.map(item => {
       return item.materilCustomIdentifierId;
     });
-    console.log("MaterialIdentifier",this.MaterialCustomIdentifiersEdit)
+    console.log("MaterialIdentifier", this.MaterialCustomIdentifiersEdit)
     this.categeoryData = this.dataGetById.categoryId
     if (this.categeoryData != '') {
       this.addMaterials.onclickcat(this.categeoryData).subscribe((res) => {
@@ -464,7 +467,7 @@ export class MaterialAddEditpopupComponent {
       DefalultgeoId: selectedGeographies,
     }
     if (this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geoProperties.length == 0) {
-      alert("Plz select atleast one city");
+      alert("Plz select the last geography grid");
       return;
     }
 
@@ -500,14 +503,18 @@ export class MaterialAddEditpopupComponent {
     console.log(data)
     this.addMaterials.addMaterialIfProduct(data).subscribe((res) => {
       console.log(res, "addmaterialProduct")
+      if (res.response.status == false) {
+        alert(res.response.result)
+      } else {
+        this.addMaterials.defaultGeoIdProduct(data2).subscribe((res) => {
+          console.log(res, "defaultGeoID")
+        });
+        this.dialog.closeAll()
+        this.materialListService.filter('Register click');
+        this.dialog.open(MaterialaddedSuccessPopComponent, { panelClass: 'activeSuccessPop' })
+      }
     })
 
-    this.addMaterials.defaultGeoIdProduct(data2).subscribe((res) => {
-      console.log(res, "defaultGeoID")
-    });
-    this.dialog.closeAll()
-    this.materialListService.filter('Register click');
-    this.dialog.open(MaterialaddedSuccessPopComponent, { panelClass: 'activeSuccessPop' })
   }
   addMaterialProductAfterEdit() {
     localStorage.setItem("updateAddEdit", 'edit');
@@ -517,7 +524,7 @@ export class MaterialAddEditpopupComponent {
     }
     this.geoProperties = JSON.parse(JSON.stringify(this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geoProperties));
     this.geoProperties = this.geoProperties.map(item => {
-      console.log("Geoproperties",this.geoProperties)
+      console.log("Geoproperties", this.geoProperties)
       delete item.geographyName;
       return item;
     })
@@ -535,11 +542,11 @@ export class MaterialAddEditpopupComponent {
       ExpiryPeriod: this.expiryDate ?? '0',
       ProductCustomIdentifierId: this.selectedProductIdEdit,
       IsProduct: +!this.checked,
-      BrandName: this.BrandName ,
-      GlobalCode: this.gloabKey  ?? '0',
+      BrandName: this.BrandName,
+      GlobalCode: this.gloabKey ?? '0',
       ProductSKUName: this.Sku,
       ShortCode: this.shortCode ?? '0',
-      ManualShortOrder: this.Sort  ?? '0',
+      ManualShortOrder: this.Sort ?? '0',
       ProductLink: this.AddSP ?? '',
       ProductSubGroupId: this.subproductGroupData,
       ProductGeographys: this.geoProperties
@@ -549,9 +556,17 @@ export class MaterialAddEditpopupComponent {
     // console.log(data)
     this.addMaterials.addMaterialIfProduct(data).subscribe((res) => {
       console.log(res, "addmaterialProduct")
+      if (res.response.status == false) {
+        alert(res.response.result)
+      } else {
+
+        this.dialog.closeAll()
+
+        this.dialog.open(MaterialaddedSuccessPopComponent, { panelClass: 'activeSuccessPop' })
+      }
     })
-    this.dialog.closeAll()
-    this.dialog.open(MaterialaddedSuccessPopComponent, { panelClass: 'activeSuccessPop' })
+    // this.dialog.closeAll()
+    // this.dialog.open(MaterialaddedSuccessPopComponent, { panelClass: 'activeSuccessPop' })
 
 
   }
@@ -570,9 +585,17 @@ export class MaterialAddEditpopupComponent {
     }
     this.addMaterials.MaterialIfNotProduct(data).subscribe((res) => {
       console.log(res, "addmaterialProduct")
+      if (res.response.status == false) {
+        alert(res.response.result)
+      } else {
+
+        this.dialog.closeAll()
+
+        // this.dialog.open(MaterialaddedSuccessPopComponent, { panelClass: 'activeSuccessPop' })
+      }
     })
-    this.dialog.closeAll()
-    console.log(data)
+    // this.dialog.closeAll()
+    // console.log(data)
   }
 
   addMaterialIfNotProductAfterEdit() {
@@ -591,6 +614,11 @@ export class MaterialAddEditpopupComponent {
     }
     this.addMaterials.MaterialIfNotProduct(data).subscribe((res) => {
       console.log(res, "addmaterialProduct")
+      if (res.response.status == false) {
+        alert(res.response.result)
+      } else {
+        // this.dialog.closeAll()
+      }
     })
     console.log(data)
   }
@@ -766,6 +794,7 @@ export class MaterialAddEditpopupComponent {
     });
   }
 
+
   geographyFormat(currentObj, stockItemId) {
     // console.log(currentObj["hirearchyLevel"]);
     if (!Array.isArray(currentObj)) {
@@ -797,6 +826,7 @@ export class MaterialAddEditpopupComponent {
 
       objDefaut.geoProperties = [];
       objDefaut.geographyNamesSelected = [];
+
       // Need to check on different conditions
       if (this.dataGetById && this.dataGetById.productGeographys && this.dataGetById.productGeographys.length != 0) {
         this.dataGetById.productGeographys.forEach(item => {
@@ -814,21 +844,51 @@ export class MaterialAddEditpopupComponent {
         })
       }
 
-      objDefaut.geographyHierarchyName = currentObj[0]?.hierarchyName ?? "City"; // Need to ask Viswesh to send city name to make dynamic
+      objDefaut.geographyHierarchyName = currentObj[0]?.hierarchyName ?? "Country"; // Need to ask Viswesh to send city name to make dynamic
       if (objDefaut.geographySelected.length != 0) {
         this.selectedHirerachyIndex = currentObj[0].geographyHierarchyId - 1;
       }
 
-      if(currentObj[0]){
+      if (currentObj[0]) {
         this.removeOtherGeographiesData(currentObj[0].geographyHierarchyId);
-      this.geoGraphyFullData[currentObj[0].geographyHierarchyId - 1] = objDefaut;
+        this.geoGraphyFullData[currentObj[0].geographyHierarchyId - 1] = objDefaut;
       }
-      
+
     }
   }
 
+  geographySelectAll(event,item, clickedIndex){
+    event.stopPropagation();
+    console.log(item, clickedIndex);
+    this.geoGraphyFullData[clickedIndex + 1].geographySelected = [];
+    this.geoGraphyFullData[clickedIndex + 1].allOtherGeography.forEach(element => {
+      if(this.geoGraphyFullData[clickedIndex + 1].geographySelected.findIndex(x => x.geographyId == element.geographyId) == -1){
+        this.selectGeoGraphy(element, (clickedIndex +2));
+      }
+      // this.geoGraphyFullData[clickedIndex + 1].geographySelected.push(element);
+    });
+  }
+
+  materialGeographyArrayClick(currentItem, clickedindex) {
+    console.log(currentItem, clickedindex);
+    this.geoGraphyFullData.forEach((element, index) => {
+      element.geoProperties.forEach(element2 => {
+        if (clickedindex >= index) {
+          element2.showArrayExtension = true;
+        } else if ((clickedindex +1) == (index)) {
+          element2.showArrayExtension = !element2.showArrayExtension;
+          element2.imageExtensionType = 'minImage';
+        } else {
+          element2.showArrayExtension = false;
+          element2.imageExtensionType = 'minImage';
+        }
+      });
+    });
+    currentItem.imageExtensionType = currentItem.imageExtensionType == 'minImage' ? 'maxImage' : 'minImage';
+    
+  }
+
   // geograhies related apis
-  stockItemId: any;
 
   getGeographyForMaterial(geographyId, stockItemId) {
     this.spinner.show();
@@ -889,6 +949,7 @@ export class MaterialAddEditpopupComponent {
 
 
   selectGeoGraphy(clickedItem, hirerachyIndex,) {
+    console.log(clickedItem, hirerachyIndex);
     this.showDiv = true;
     this.selectedHirerachyIndex = (hirerachyIndex - 1);
     this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.forEach(element => {
@@ -964,6 +1025,9 @@ export class MaterialAddEditpopupComponent {
     obj.geographyId = propertyObj.geographyId ?? "";
     obj.geographyName = propertyObj.geographyName ?? "";
     obj.registrationNumber = propertyObj.registrationNumber ?? "0";
+    obj.geographyIdentifiers = propertyObj.geographyIdentifiers ?? [];
+    obj.showArrayExtension = true;
+    obj.imageExtensionType = 'maxImage';
     return obj;
   }
 
@@ -1091,6 +1155,45 @@ export class MaterialAddEditpopupComponent {
 
   }
 
+  getGeoGraphyIdentifier() {
+    this.addMaterials.getGeographyIdentifier(this.UserId).subscribe(res => {
+      this.geoGraphyIdentifierList = res.response;
+
+    });
+  }
+  selctedGeographyIdentifier: any = [];
+  geoGraphyIdentifierList: any = [];
+  clickedGeography: any;
+
+  closeGeographyIdentifierPopup() {
+    this.geographyIdentifierPopup = false;
+    this.clickedGeography.geographyIdentifiers = this.selctedGeographyIdentifier;
+    console.log(this.geoGraphyFullData);
+  }
+
+  AddGeographyIdentifier(item) {
+    this.geographyIdentifierPopup = true;
+
+    this.selctedGeographyIdentifier = item.geographyIdentifiers;
+    this.clickedGeography = item;
+  }
+
+  isSelectedGeographyIdentifer(itemId) {
+    const index = this.selctedGeographyIdentifier.indexOf(itemId);
+    return index >= 0;
+  }
+
+  selectGeographyIdentifier(itemId: any): void {
+    let index = this.selctedGeographyIdentifier.indexOf(itemId);
+    if (index >= 0) {
+      this.selctedGeographyIdentifier.splice(index, 1);
+    } else {
+      this.selctedGeographyIdentifier.push(itemId);
+    }
+
+    this.clickedGeography.geographyIdentifiers = this.selctedGeographyIdentifier;
+  }
+
   productIdentifier() {
     this.productIdentifierPopup = true;
     this.customIdentifier();
@@ -1117,8 +1220,9 @@ export class MaterialAddEditpopupComponent {
       console.log("MaterialCustomIdentifiers", this.MaterialCustomIdentifiers);
     }
   }
+
   isSelectedBusiness(businessIdentifier: any): boolean {
-    console.log("SelectedIdentifier",businessIdentifier);
+    console.log("SelectedIdentifier", businessIdentifier);
     const index = this.businessSelctedIdentifier.indexOf(businessIdentifier);
     return index >= 0;
   }
@@ -1151,7 +1255,7 @@ export class MaterialAddEditpopupComponent {
   }
 
   selectProductIdentifier(IdentifierProduct: any, temp): void {
-    
+
     let index = this.productSelctedIdentifier.findIndex(x => x.productCustomIdentifierId == IdentifierProduct.productCustomIdentifierId);
 
     if (index >= 0) {
@@ -1159,7 +1263,7 @@ export class MaterialAddEditpopupComponent {
       this.ProductIdentifiersNames = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomName);
       this.ProductIdentifiersId = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomIdentifierId);
       console.log("ProductIdentifiersId", this.ProductIdentifiersId);
-      this.selectedProductIdentifierData = this.businessIdentifiersNames +","+ this.ProductIdentifiersNames;
+      this.selectedProductIdentifierData = this.businessIdentifiersNames + "," + this.ProductIdentifiersNames;
       console.log("this.selectedProductIdentifierData", this.selectedProductIdentifierData);
 
       // console.log("ProductIdentifiersNames", ProductIdentifiersNames);
@@ -1169,7 +1273,7 @@ export class MaterialAddEditpopupComponent {
       this.ProductIdentifiersId = this.productSelctedIdentifier.map((IdentifierProduct) => IdentifierProduct.productCustomIdentifierId);
       // console.log("ProductIdentifiersNames", ProductIdentifiersNames);
       console.log("ProductIdentifiersId", this.ProductIdentifiersId);
-      this.selectedProductIdentifierData = this.businessIdentifiersNames +","+ this.ProductIdentifiersNames;
+      this.selectedProductIdentifierData = this.businessIdentifiersNames + "," + this.ProductIdentifiersNames;
       console.log("this.selectedProductIdentifierData", this.selectedProductIdentifierData);
 
     }

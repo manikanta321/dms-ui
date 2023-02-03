@@ -1604,3 +1604,18 @@ mat-icon {
 
   font-size: 13px;
 }
+
+.add-geo-identifier{
+  color: #007bff !important;
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+
+.count-geo-identifier{
+  padding: 3px 10px;
+  background: #000;
+  border-radius: 50%;
+  color: #fff !important;
+  cursor: pointer;
+  margin-bottom: 2px;
+}

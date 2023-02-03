@@ -91,6 +91,10 @@ getMaterialIdentifier(){
 getProductCustomIdentifier(){
   return this.http.get<any>(this.addmaterialsurl + 'MaterialApi/GetProductCustomIdentifier');
 }
+
+getGeographyIdentifier(userId){
+  return this.http.get<any>(this.addmaterialsurl + 'MaterialApi/GetGeographyIdentifiers?CurrentUserId=' + userId);
+}
 public getuomDeatils(data) : Observable<any>{
   let options = {
     headers: new HttpHeaders().set('Content-Type', 'application/json')

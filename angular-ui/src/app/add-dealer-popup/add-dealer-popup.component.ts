@@ -336,7 +336,7 @@ console.log($event)
 
   geographyFormat(currentObj, stockItemId) {
     // console.log(currentObj["hirearchyLevel"]);
-    if (!Array.isArray(currentObj)) {
+    if (!currentObj.final) {
       if(currentObj.all == undefined && currentObj.next != undefined) this.geographyFormat(currentObj.next, stockItemId);
       if (!currentObj.all) return;
       let obj: any = {};
@@ -361,36 +361,50 @@ console.log($event)
     } else {
       // For the final defaulted value to append in geography view
       let objDefaut: any = {}
-      objDefaut.allOtherGeography = currentObj;
+      objDefaut.allOtherGeography = currentObj.final;
 
       objDefaut.geoProperties = [];
       objDefaut.geographyNamesSelected = [];
       // Need to check on different conditions
       if (this.dataGetById && this.dataGetById.productGeographys && this.dataGetById.productGeographys.length != 0) {
         this.dataGetById.productGeographys.forEach(item => {
-          let selectedCity = currentObj.find(x => x.geographyId == item.geographyId);
+          let selectedCity = currentObj.final.find(x => x.geographyId == item.geographyId);
           if(selectedCity){
             objDefaut.geoProperties.push(this.CreateGeoPropertiesObject(item));
             selectedCity.isSelected = true;
           }
         })
-        objDefaut.geographySelected = currentObj.filter(x => x.isSelected);
+        objDefaut.geographySelected = currentObj.final.filter(x => x.isSelected);
       }else{
-        objDefaut.geographySelected = currentObj.filter(x => x.isSelected);
+        objDefaut.geographySelected = currentObj.final.filter(x => x.isSelected);
         objDefaut.geographySelected.map(x => {
           objDefaut.geoProperties.push(this.CreateGeoPropertiesObject({ geographyName: x.geographyName, geographyId: x.geographyId }));
         })
       }
       
-      objDefaut.geographyHierarchyName = "City";
-      if (objDefaut.geographySelected.length != 0) {
-        this.selectedHirerachyIndex = currentObj[0].geographyHierarchyId - 1;
-      }
+      objDefaut.geographyHierarchyName = currentObj?.hirearchyName ?? "City";
+      // if (objDefaut.geographySelected.length != 0) {
+      //   this.selectedHirerachyIndex = currentObj[0].geographyHierarchyId - 1;
+      // }
 
+      this.selectedHirerachyIndex = (Number(currentObj["hirearchyLevel"]) - 1);
       
-      this.removeOtherGeographiesData(currentObj[0].geographyHierarchyId);
-      this.geoGraphyFullData[currentObj[0].geographyHierarchyId - 1] = objDefaut;
+      this.removeOtherGeographiesData(this.selectedHirerachyIndex);
+      this.geoGraphyFullData[this.selectedHirerachyIndex] = objDefaut;
     }
+  }
+
+  
+  geographySelectAll(event, item, clickedIndex) {
+    event.stopPropagation();
+    console.log(item, clickedIndex);
+    this.geoGraphyFullData[clickedIndex + 1].geographySelected = [];
+    this.geoGraphyFullData[clickedIndex + 1].allOtherGeography.forEach(element => {
+      if (this.geoGraphyFullData[clickedIndex + 1].geographySelected.findIndex(x => x.geographyId == element.geographyId) == -1) {
+        this.selectGeoGraphy(element, (clickedIndex + 2));
+      }
+      // this.geoGraphyFullData[clickedIndex + 1].geographySelected.push(element);
+    });
   }
 
   isItemSelected(item, geoItem) {

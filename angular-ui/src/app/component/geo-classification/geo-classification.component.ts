@@ -231,6 +231,7 @@ export class GeoClassificationComponent implements OnInit {
       // let temp = { geographyName: result.name, geographyCode: result.code, geographyId: null }
 
       this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.push(apiResponse.response.geography);
+      this.geoGraphyFullData[hirerachyIndex - 1].geographyCount = this.geoGraphyFullData[hirerachyIndex - 1].allOtherGeography.length; 
     }
   }
 

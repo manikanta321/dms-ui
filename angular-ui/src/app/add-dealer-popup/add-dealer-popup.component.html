@@ -389,6 +389,7 @@
                                                                     geoItem.selectedCount}} / {{
                                                                     geoItem.countOfDefault}})</strong>
                                                             </div>
+                                                            <img src="assets/img/geography-all.svg" *ngIf="geoGraphyFullData.length === (i+2) && !isItemSelected(item,geoItem)" (click)="geographySelectAll($event,geoItem, i)"/>
                                                         </div>
                                                     </div>
                                                 </div>

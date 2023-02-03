@@ -1179,7 +1179,9 @@ export class AddorderpromotionsComponent implements OnInit {
     });
   }
 
-
+  close(){
+this.Non_promotions=false;
+  }
   ordersubmit(submitType) {
     if(localStorage.getItem('AddorEditpro')!='edit'){
       localStorage.setItem('AddorEditpro1', submitType);

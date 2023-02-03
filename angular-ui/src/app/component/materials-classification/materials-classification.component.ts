@@ -36,7 +36,7 @@ export class MaterialsClassificationComponent implements OnInit {
   addSubButton: boolean = false;
   removelist: boolean = false;
   toggle: boolean = true;
-  selectedItem = null;
+  selectedItem :any;
   selectedsubItem = null;
   selected: boolean = false;
   LoginId: any;
@@ -51,6 +51,7 @@ export class MaterialsClassificationComponent implements OnInit {
   typecount: any;
   CattyName: any;
   SubCattyName: any;
+  num:any;
   currentPageName: string = "";
   // clData: string[] = ['Type TP 1', 'Type TP 2', 'Type TP 3','Type TP 4'];
   // subcat: string[] = ['sub category', 'sub category 2',];
@@ -70,6 +71,12 @@ export class MaterialsClassificationComponent implements OnInit {
     this.sharedService.listen().subscribe((m: any) => {
       console.log(m)
       this.getclassification();
+      let retrievedObject :any = localStorage.getItem('storingSelectedCatObject');
+
+      console.log('retrievedObject: ', JSON.parse(retrievedObject));   
+      this.num =JSON.parse(retrievedObject)
+      this.selectedItem =   this.num ;
+
     })
     this.sharedServiceaddsub.listen().subscribe((m: any) => {
       console.log(m)
@@ -84,6 +91,7 @@ export class MaterialsClassificationComponent implements OnInit {
   }
 
   ngOnInit() {
+    localStorage.setItem('catsetName', '')
     this.LoginId = localStorage.getItem("logInId");
     this.numberValue = Number(this.LoginId);
     this.getclassification()
@@ -153,7 +161,19 @@ export class MaterialsClassificationComponent implements OnInit {
       //   console.log('subname',this.subname)
 
       // });
+
+      // localStorage.setItem('catsetName', catsetName)
+      debugger
+if(item=='Edit Category'){
+  this.onClick(this.num);
+}
+
     })
+    let item = localStorage.getItem('catsetName')
+
+    if(item=='Edit Category'){
+this.selectedItem=this.num
+    }
   }
 
   cname1(cname: string, i: any) {
@@ -606,6 +626,7 @@ export class MaterialsClassificationComponent implements OnInit {
   }
 
   onClick(item) {
+        localStorage.setItem('storingSelectedCatObject', JSON.stringify(item));
     this.selectedItem = item;
     console.log('item', item)
     this.spinner.show();

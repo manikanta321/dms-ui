@@ -18,7 +18,7 @@
         <p class="primary">Primary categories</p>
         <mat-card-content>
           <div class=" d-flex" *ngFor="let catg of catgname">
-            <p class="col-11 catg cursor-pointer" (click)="catg.isActive==true ?  onClick(catg) : false" [ngClass]="{ 'selected': catg == selectedItem ,'selectedInactive': catg.isActive==false }" style="cursor: pointer;">{{catg.catName}} 
+            <p class="col-11 catg cursor-pointer" (click)="catg.isActive==true ?  onClick(catg) : false" [ngClass]="{ 'selected': catg.catId == selectedItem.catId ,'selectedInactive': catg.isActive==false }" style="cursor: pointer;">{{catg.catName}} 
               
 
                <img src="../../../assets/img/power.svg"  alt="" class="tickmark" (click)="deativateCat(catg)" >

@@ -228,31 +228,35 @@ export class OrdersReceiveShipmentComponent implements OnInit {
 
           element.promodetails.forEach(element1 => {
 
-            let obj = {
-              'promocode': element1.promocode,
-              "InvoiceCPOProductId": element1.itemDetailsshipReceive[0].invoiceCPOProductId,
-              "ReceivedQty": element1.itemDetailsshipReceive[0].receivedQty,
-              "LostDamaged": element1.itemDetailsshipReceive[0].lostDamaged,
-              "stockitemid": element1.itemDetailsshipReceive[0].stockitemid,
-              "stockitemname": element1.itemDetailsshipReceive[0].stockitemname,
-              "promotioncode": element1.itemDetailsshipReceive[0].promotioncode,
-              "productSKUName": element1.itemDetailsshipReceive[0].productSKUName,
-              "uomid": element1.itemDetailsshipReceive[0].uomid,
-              "uomname": element1.itemDetailsshipReceive[0].uomname,
-              "quantity": element1.itemDetailsshipReceive[0].quantity,
-              "stock": element1.itemDetailsshipReceive[0].stock,
-              "price": element1.itemDetailsshipReceive[0].price,
-              "discount": element1.itemDetailsshipReceive[0].discount,
-              "finalValue": element1.finalValue,
-              "taxvalue": element1.itemDetailsshipReceive[0].taxvalue,
-              "amount": element1.itemDetailsshipReceive[0].amount,
-              "taxid": element1.itemDetailsshipReceive[0].taxid,
-              "shipedTill": element1.itemDetailsshipReceive[0].shipedTill,
-              "shipedQty":element1.itemDetailsshipReceive[0].shipedQty,
-            }
+element1.itemDetailsshipReceive.forEach(element2=>{
 
 
-            internalArray.push(obj);
+  let obj = {
+    'promocode': element1.promocode,
+    "InvoiceCPOProductId": element2.invoiceCPOProductId,
+    "ReceivedQty": element2.receivedQty,
+    "LostDamaged":element2.lostDamaged,
+    "stockitemid": element2.stockitemid,
+    "stockitemname": element2.stockitemname,
+    "promotioncode": element2.promotioncode,
+    "productSKUName":element2.productSKUName,
+    "uomid":element2.uomid,
+    "uomname": element2.uomname,
+    "quantity": element2.quantity,
+    "stock": element2.stock,
+    "price":element2.price,
+    "discount":element2.discount,
+    "finalValue": element1.finalValue,
+    "taxvalue": element2.taxvalue,
+    "amount": element2.amount,
+    "taxid": element2.taxid,
+    "shipedTill": element2.shipedTill,
+    "shipedQty":element2.shipedQty,
+  }
+  internalArray.push(obj);
+})
+
+         
           })
           let obj2: any = {
             "shipName": element.shipName,

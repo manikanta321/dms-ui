@@ -8,17 +8,18 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class AddorderproSuccessPopupComponent implements OnInit {
 
-  AddorEditpro:boolean=true
+  AddorEditpro:boolean=true;
+  itemIs:any;
   constructor(private dialogRef: MatDialogRef<any>) { }
 
   ngOnInit(): void {
 
 
-    let isitem =localStorage.getItem('AddorEditpro')
-
+    let isitem =localStorage.getItem('AddorEditpro');
  if(isitem=='edit'){
    this.AddorEditpro=false;
  }else{
+  this.itemIs=localStorage.getItem('AddorEditpro1');
   this.AddorEditpro=true;
 
  }

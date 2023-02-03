@@ -245,10 +245,10 @@
   .addU12:after {
     content: "";
     display: block;
-    width: 1012px;
+    width: 800px;
     height: 2px;
     background: #686E74;
-    right: 83px;
+     right: 12%;
     top: 50%;
     position: absolute;
 }

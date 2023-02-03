@@ -368,17 +368,15 @@
                             <th >Uploaded Date</th>
                         </tr>
                         <tr *ngFor="let shipData of incorrectRows">
-            
-                            <td  title="" style="padding-left: 21px;">{{shipData.orderNo}}</td>
-                            <td  title="" class="elipsis-2line">
-                                {{shipData.orderNo}}</td>
-                            <td title="">{{shipData.productName}}</td>
-                              <td title="">{{shipData.productCode}}</td>
-                            <td>{{shipData.dispatchQty}}</td>
-                            <td>{{shipData.dispatchDate}}</td>
-                            <td>{{shipData.invoiceDate}}</td>
-                            <td >{{shipData.invoiceNo}}</td>
-                            <td>{{shipData.uploadedDate}}</td>
+                            <td  title="" style="padding-left: 21px;">{{shipData.rownumber}}</td>
+                            <td  [ngClass] ="{'errorText': shipData.remarks == 'orderno'}">{{shipData.orderNo}}</td>
+                            <td  [ngClass]="{'errorText': shipData.remarks == 'productname'}">{{shipData.productName}}</td>
+                            <td  [ngClass]="{'errorText': shipData.remarks == 'productcode'}">{{shipData.productCode}}</td>
+                            <td  [ngClass]="{'errorText': shipData.remarks == 'dispatchqty'}">{{shipData.dispatchQty}}</td>
+                            <td  [ngClass]="{'errorText': shipData.remarks == 'dispatchdate'}">{{shipData.dispatchDate}}</td>
+                            <td  [ngClass]="{'errorText': shipData.remarks == 'invoicedate'}">{{shipData.invoiceDate}}</td>
+                            <td   [ngClass]="{'errorText': shipData.remarks == 'invoiceno'}" >{{shipData.invoiceNo}}</td>
+                            <td  [ngClass]="{'errorText': shipData.remarks == 'uploaddate'}">{{shipData.uploadedDate}}</td>
             
                         </tr>
                     </table>

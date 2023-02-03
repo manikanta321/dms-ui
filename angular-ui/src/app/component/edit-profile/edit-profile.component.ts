@@ -1,8 +1,10 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 import { MatSidenav } from '@angular/material/sidenav';
 import moment from 'moment';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { UserService } from 'src/app/services/user.service';
 @Component({
@@ -34,9 +36,11 @@ export class EditProfileComponent implements OnInit {
   Imgpreview:boolean = false;
 
   constructor(private observer: BreakpointObserver,
-
     private user: UserService,
-    private sharedService: SharedService,) { 
+    // public dialog: MatDialog,
+    // private dialogRef: MatDialogRef<any>,
+    private sharedService: SharedService,
+    private otherMasterService: OtherMasterService) { 
 
     }
   ngAfterViewInit() {
@@ -59,7 +63,8 @@ export class EditProfileComponent implements OnInit {
 
     this.getUserProfileDetails();
     const userRoleId = localStorage.getItem("RoleId");
-    this.RoleId = userRoleId
+    this.RoleId = localStorage.getItem("RoleId");
+    console.log("RoleId",this.RoleId)
   }
 
   getUserProfileDetails(){
@@ -83,7 +88,6 @@ export class EditProfileComponent implements OnInit {
     this.rolename = this.data.roleName;
     this.base64textString = this.data.imageUrl;     
   }
-
   editUser() {
     let profileObj = {
       userId: this.UserId,
@@ -94,13 +98,17 @@ export class EditProfileComponent implements OnInit {
       RoleId: this.RoleId,
       imageUrl: this.base64textString
     }
+    console.log("EditUser",profileObj)
     this.user.EditUserProfile(profileObj).subscribe((res: any) => {
+      console.log("EditUser",profileObj)
       // this.dialogRef.close()
 
       if (res.response.result == 'successfully updated') {
-        // this.sharedService.filter('Register click')
+        sessionStorage.setItem("profileImage",this.base64textString);
+        console.log("SetImage",JSON.stringify(this.base64textString));
         // this.getUserProfileDetails();
         // this.dialogRef.close()
+        // this.dialogRef.close();
       }
       else {
         this.errorMsg = res.response.result;
@@ -133,6 +141,7 @@ export class EditProfileComponent implements OnInit {
   handleReaderLoaded(e) {
     let reader = e.target;
     this.base64textString = reader.result.substr(reader.result.indexOf(',') + 1);
+
     console.log(this.base64textString,"base64")
   }
 

@@ -340,10 +340,10 @@ input.form-check-input1 {
     border-radius: 10px;
     background-color: black;
     height: 41px;
-    margin-top: -90px;
-    /* margin-left: 88px; */
+    margin-top: 3px;
+    margin-left: 26px;
+    
     position: relative;
-    left: 222px;
 
 
   }
@@ -398,7 +398,8 @@ input.form-check-input1 {
       left: 56px;
       }
       .searchBox3 {
-        top: -43px;
+        
+
         background-color: white;
         padding-top: -3px;
         padding-bottom: -3px;
@@ -406,7 +407,8 @@ input.form-check-input1 {
         border: solid 1px;
         border-radius: 10px;
         position: relative;
-        left: -107px;
+        
+        left: 63px;
         }
         
       
@@ -511,7 +513,7 @@ input.form-check-input1 {
   }
   .img1{
     position: absolute;
-    left: 440px;
+    left: 493px;
     top: 41px;  }
   .promo1-dropdown-btn span .ng-star-inserted {
     visibility: hidden;
@@ -1408,10 +1410,11 @@ input.form-check-input1 {
   }
   
   .footer {
-    margin-top: 20px;
+    
     border-radius: 0px 0px 25px 25px;
     height: 50px;
-    width: 860px !important;
+    margin: auto;
+
   
   }
   

@@ -187,7 +187,7 @@ export class OrderlistActionPopupComponent implements OnInit {
     localStorage.setItem("Edit", 'Edit')
     let dialogRef = this.dialog.open(AddorderpromotionsComponent, {
        minWidth: '90vw',
-       height: '80vh',
+       height: '93vh',
       
       panelClass: 'order-add-edit'
     });
@@ -231,7 +231,7 @@ export class OrderlistActionPopupComponent implements OnInit {
     let dialogRef = this.dialog.open(AddorderpromotionsComponent, {
       
       minWidth: '90vw',
-      height: '80vh',
+      height: '93vh',
       
       panelClass: 'order-add-edit'
     });

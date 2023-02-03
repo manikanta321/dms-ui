@@ -37,7 +37,7 @@
         <app-customdatepicker [showInputField]="true" label="Shipment Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customShipDatePickerEvent($event)"></app-customdatepicker>
       </div>
         <div class="invoice">
-          <app-customdatepicker [showInputField]="true" label="Invoice Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customInvoiceDatePickerEvent($event)"></app-customdatepicker>
+          <app-customdatepicker [showInputField]="true" label="Invoice Date" [selectedDate]="selectedDateRanges" (customDatePickerEvent)="customInvoiceDatePickerEvent($event)"></app-customdatepicker>
       </div>
         <div class="sales-refreshbtn" (click)="refresh()">
         <img class="refresh-img" src="assets/img/Vector.png" alt="refresh">

@@ -1,6 +1,6 @@
 <div *ngIf="confirmOrder!=''" class="font">
     <div class="main">
-        <div class=" promotionpopup-scroll">
+        <div class=" promotionpopup-scroll1">
             <div class="addUser">
                  <!-- <img class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
@@ -301,7 +301,7 @@
 </div>
 <div *ngIf="confirmOrder==''" class="font">
     <div class="main">
-        <div class=" promotionpopup-scroll">
+        <div class=" promotionpopup-scroll2">
             <div class="addUser">
                 <!-- <img class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
@@ -641,7 +641,7 @@
          
         </div>
         <div class="col-md-2">
-            <button [disabled]="!startdate || !customerId || !geographyId || !BillingaddressId || !shippingaddressId" type="button" class="save-submit" (click)="ordersubmit('save')">Save & Draft</button>
+            <button [disabled]="!startdate || !customerId || !geographyId || !BillingaddressId || !shippingaddressId" type="button" class="save-submit" (click)="ordersubmit('draft')">Save & Draft</button>
         </div>
         <div class="col-md-5">
             <button type="button" [mat-dialog-close]="false" class="cancel">Cancel</button>
@@ -655,10 +655,9 @@
     <div class="popup">
         <div class="font">
             <div class="main">
-                <div class=" promotionpopup-scroll">
+                <div class=" promotionpopup-scroll3">
                     <div class="addUser">
-                        <!-- <a class="close-icon" (click)="closePopup()">&times;</a> -->
-                        <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+                        <mat-icon mat-button class="close-icon" (click)="close()" >close</mat-icon>
                     </div>
                     <div class="head-t">
                         <h3 class="addU font">{{actineLabel}} : <b>Non-Promotions</b></h3>

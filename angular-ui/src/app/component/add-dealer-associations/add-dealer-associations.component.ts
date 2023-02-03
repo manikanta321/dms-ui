@@ -75,7 +75,7 @@ export class AddDealerAssociationsComponent implements OnInit {
   selectAllIdentifierProduct: any = [];
   selectedIdentifierProductArray: any = [];
   image1 = 'assets/img/minimize-tag.png';
-  image2 = 'assets/img/minimize-tag.png';
+  image2 = 'assets/img/maximize-arrow.png';
   image3 = 'assets/img/minimize-tag.png';
   selectedProduct1: any;
   selectedDealer2: any;
@@ -410,6 +410,7 @@ export class AddDealerAssociationsComponent implements OnInit {
     console.log('req', reqObj);
     for (let item of reqObj) {
       console.log(item);
+      item.flagforopen=false;
       let isDelaerDataAvailable = this.dealerList.some(x => x.productIdId == item.productIdId);
       if (!isDelaerDataAvailable && item.geoDetails) {
 
@@ -489,7 +490,7 @@ export class AddDealerAssociationsComponent implements OnInit {
   formatGeoDetailsProductObj(geographyData, heirarchyValue) {
     let formatedGeography: any = [];
     if (geographyData[0].geographyId) {
-      debugger
+      
       geographyData.forEach(element => {
         let copyObject = JSON.parse(JSON.stringify(element));
         let childObj = JSON.parse(JSON.stringify(element));
@@ -522,6 +523,7 @@ export class AddDealerAssociationsComponent implements OnInit {
     console.log('req', reqObj);
 
     for (let item of reqObj) {
+      item.flagforopen=false;
       console.log(item);
       let isDelaerDataAvailable = this.dealerList.some(x => x.dealerId == item.dealerId);
       if (!isDelaerDataAvailable && item.geoDetails) {
@@ -668,7 +670,7 @@ export class AddDealerAssociationsComponent implements OnInit {
         DealerDetails: this.geoProperties,
       }
       this.associationService.addassosiation(data).subscribe((res) => {
-        if (res.response.result == 'Successfully Added') {
+        if (res.response.result == 'Successfully Added' ||  res.response.result =='Successfully Updated') {
           this.sharedService.filter('Register click')
           this.dialogRef.close();
         }
@@ -732,7 +734,7 @@ export class AddDealerAssociationsComponent implements OnInit {
         ProductDetails: this.geoProperties,
       }
       this.associationService.addassosiationofproduct(data).subscribe((res) => {
-        if (res.response.result == 'Successfully Added') {
+        if (res.response.result == 'Successfully Added' || res.response.result =='Successfully Updated') {
           this.sharedService.filter('Register click')
           this.dialogRef.close();
         }
@@ -858,13 +860,11 @@ export class AddDealerAssociationsComponent implements OnInit {
 
     this.inumber = i
 
-    if (this.dealerInfo === false) {
-      this.dealerInfo = true;
-      this.image1 = 'assets/img/maximize-arrow.png';
+    if (this.dealerList[i].flagforopen === false) {
+      this.dealerList[i].flagforopen = true;
 
     } else {
-      this.dealerInfo = false;
-      this.image1 = 'assets/img/minimize-tag.png';
+      this.dealerList[i].flagforopen = false;
     }
   }
 

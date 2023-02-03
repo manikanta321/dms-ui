@@ -89,6 +89,8 @@
   .add-sales {
     height:470px;
     overflow-x: hidden; 
+    padding-right: 7px;
+
   }
   ::-webkit-scrollbar {
     width: 8px;
@@ -129,7 +131,7 @@
     margin-left: 498px;
   }
   .expand-arrow {
-    width: 40%;
+    width: 23%;
     position: relative;
     right: -28px;
     top: 4px;

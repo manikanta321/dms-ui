@@ -1180,7 +1180,7 @@ li {
 .collapsible {
   cursor: pointer;
   padding: 5px;
-   width: 100%;
+   width: 99%;
   border: none;
   text-align: left;
   outline: none;
@@ -1205,7 +1205,7 @@ li {
   border-radius: 0px 0px 10px 10px;
    overflow: auto; 
   
-  margin: 0px 10px;
+  margin: 0px 18px;
   
 }
 .top-bottom {
@@ -1255,9 +1255,17 @@ li {
 
 }
 
-.promotionpopup-scroll {
-  max-height: 500px !important;
+.promotionpopup-scroll1 {
+  max-height: 530px !important;
 }
+.promotionpopup-scroll2 {
+  max-height: 530px !important;
+}
+
+.promotionpopup-scroll3 {
+  max-height: 530px !important;
+}
+
 
 .footer {
   /* position: fixed; */
@@ -1552,7 +1560,7 @@ li {
 .expand-arrow {
   width: 30%;
   position: relative;
-  right: -28px;
+  left: 72px;
   top: 4px;
 }
 .expand-arrows {

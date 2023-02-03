@@ -242,26 +242,28 @@ export class OrderlistShipPopupComponent implements OnInit {
 
         element.promodetails.forEach(element1 => {
 
+
+          element1.itemDetailsship.forEach(element2 => {
             let shipmentObj: any =
             {
-              "customerPOProductId":element1.itemDetailsship[0].customerPOProductId,
-              "stockitemid": element1.itemDetailsship[0].stockitemid,
-              "stockitemname": element1.itemDetailsship[0].stockitemname,
-              "promotioncode": element1.itemDetailsship[0].promotioncode == null ? '' : element1.itemDetailsship[0].promotioncode,
-              "productSKUName": element1.itemDetailsship[0].productSKUName == null ? '' : element1.itemDetailsship[0].productSKUName,
-              "uomid": element1.itemDetailsship[0].uomid == null ? '' : element1.itemDetailsship[0].uomid,
-              "uomname": element1.itemDetailsship[0].uomname == null ? '' : element1.itemDetailsship[0].uomname,
-              "quantity": element1.itemDetailsship[0].quantity == null ? '' : element1.itemDetailsship[0].quantity,
-              "stock": element1.itemDetailsship[0].customerPOProductId == null ? '' : element1.itemDetailsship[0].customerPOProductId,
-              "price": element1.itemDetailsship[0].price == null ? '' : element1.itemDetailsship[0].price,
-              "discount": element1.itemDetailsship[0].discount == null ? '' : element1.itemDetailsship[0].discount,
-              "finalPrice": element1.itemDetailsship[0].finalPrice == null ? '' : element1.itemDetailsship[0].finalPrice,
-              "finalValue": element1.itemDetailsship[0].finalValue == null ? '' : element1.itemDetailsship[0].finalValue,
-              "taxvalue": element1.itemDetailsship[0].taxvalue == null ? '' : element1.itemDetailsship[0].taxvalue,
-              "amount": element1.itemDetailsship[0].amount == null ? '' : element1.itemDetailsship[0].amount,
-              "taxid": element1.itemDetailsship[0].taxid == null ? '' : element1.itemDetailsship[0].taxid,
-              "shipedTill": element1.itemDetailsship[0].shipedTill == null ? '' : element1.itemDetailsship[0].shipedTill,
-              "shipingNow":element1.itemDetailsship[0].shipingNow == null ? '' : element1.itemDetailsship[0].shipingNow,
+              "customerPOProductId":element2.customerPOProductId,
+              "stockitemid": element2.stockitemid,
+              "stockitemname": element2.stockitemname,
+              "promotioncode": element2.promotioncode == null ? '' : element2.promotioncode,
+              "productSKUName": element2.productSKUName == null ? '' : element2.productSKUName,
+              "uomid": element2.uomid == null ? '' : element2.uomid,
+              "uomname": element2.uomname == null ? '' :element2.uomname,
+              "quantity": element2.quantity == null ? '' : element2.quantity,
+              "stock": element2.customerPOProductId == null ? '' : element2.customerPOProductId,
+              "price": element2.price == null ? '' : element2.price,
+              "discount": element2.discount == null ? '' : element2.discount,
+              "finalPrice": element2.finalPrice == null ? '' : element2.finalPrice,
+              "finalValue": element2.finalValue == null ? '' : element2.finalValue,
+              "taxvalue": element2.taxvalue == null ? '' :element2.taxvalue,
+              "amount": element2.amount == null ? '' : element2.amount,
+              "taxid": element2.taxid == null ? '' : element2.taxid,
+              "shipedTill": element2.shipedTill == null ? '' : element2.shipedTill,
+              "shipingNow":element2.shipingNow == null ? '' :element2.shipingNow,
               "promocode": element1.promocode,
 
             }
@@ -270,6 +272,9 @@ export class OrderlistShipPopupComponent implements OnInit {
             firstShipmentarray.push(shipmentObj)
             console.log('firstShipmentarray', firstShipmentarray);
   
+          })
+
+          
 
         })
       

@@ -1,4 +1,4 @@
-<div class="container">
+<div style="padding: 35px;">
 <div class="add-sales ">
     <div class="addSales">
         <!-- <img  class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
@@ -22,7 +22,7 @@
                 </div>
              </div>
         </div>
-        <div class="content" *ngIf="!dealerInfo">
+        <div class="content" *ngIf="dealerInfo">
             <div class="row">
                 <div class="col-md-6">
                     <div class="promotiont addSalesdropdown">
@@ -101,7 +101,7 @@
                 </div>
              </div>
         </div>
-        <div class="content" *ngIf="!productInfo">
+        <div class="content" *ngIf="productInfo">
             <div class="row">
                 <div class="col-lg-5">
                     <div class="promotiont ">
@@ -174,7 +174,7 @@
                 </div>
              </div>
         </div>
-       <div  *ngIf="!sales">
+       <div  *ngIf="sales">
         <div   class="content">
            <div  *ngFor="let data of SalesObj; let i index">
             <div class="row">

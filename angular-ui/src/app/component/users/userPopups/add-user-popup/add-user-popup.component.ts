@@ -30,9 +30,10 @@ export class AddUserPopupComponent implements OnInit {
   userType: string[] = ['Admin', 'Business Manager', 'Order Manager', 'Viewer', 'Business Manager', 'Order Manager', 'Viewer'];
   role = new FormControl('');
   errorMsg: any;
-  message: any;
-  message1: boolean = true;
-
+  message :any;
+  message1 :boolean=true;
+  roleName: any;
+  
   // toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
   constructor(
     private router: Router,
@@ -99,12 +100,16 @@ export class AddUserPopupComponent implements OnInit {
 
   roleItems() {
     this.user.getroleDetails().subscribe((res: any) => {
-      let localdata = res.response;
-      console.log('checkdata', localdata)
+      let localdata=res.response;
+  console.log('checkdata',localdata)
 
       this.toppingList = localdata.map((data: { roleId: any; roleName: any; }) => {
         return { roleId: data.roleId, roleName: data.roleName };
       });
+
+
+        this.toppingList = this.toppingList.filter(topping => topping.roleName !== 'Dealer Admin');
+  
 
       if (!this.toppingList?.length) {
         this.toppingList = localdata.map((role: { designationName: any; }) => {

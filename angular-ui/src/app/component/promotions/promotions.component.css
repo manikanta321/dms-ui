@@ -1,7 +1,12 @@
-.row {
-  margin-left: 7px;
+ .promainclass
+{
+   height: 630px; 
+  overflow-x: hidden;
+  overflow-y: auto;
+} 
+ .row { 
   margin-top: 35px;
-}
+} 
 
 .listicon {
   display: flex;
@@ -52,12 +57,12 @@
 
 .dropdown-form {
   position: relative;
-  width: 221px;
+  
 }
 
 .dropdown-formdealer {
   position: relative;
-  width: 219px;
+  
   margin-left: -15px;
 }
 

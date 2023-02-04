@@ -1,3 +1,11 @@
+.sales-container
+{
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 630px;
+}
+
+
 /* .sales .fa-search {
     color: rgba(104, 110, 116, 0.75);
     font-size: 20px;

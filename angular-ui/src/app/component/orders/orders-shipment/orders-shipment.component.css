@@ -1,3 +1,9 @@
+.container-fluid
+{
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 610px;
+}
 ::ng-deep.received {
     
   

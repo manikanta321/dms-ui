@@ -91,7 +91,7 @@
             [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
             (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
             (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
-            (bodyScroll)="handleScroll($event)"></ag-grid-angular>
+            (bodyScroll)="handleScroll($event)"  ></ag-grid-angular>
         </div>
         <div class="pagination">
           <span class="pagination-cls">1&nbsp;  </span> to&nbsp;  <span class="pagination-cls">{{paginationScrollCount}}&nbsp;</span>of&nbsp;

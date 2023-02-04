@@ -1,3 +1,11 @@
+.mainclass
+{
+  height: 700px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+}
+
 ::ng-deep .tgd .dropdown-btn span .ng-star-inserted {
   
 

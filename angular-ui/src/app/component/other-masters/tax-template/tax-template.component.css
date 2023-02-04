@@ -1,4 +1,10 @@
 
+.main_class
+{
+  height: 700px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 .d-flex
 {
   margin-top: 15px;

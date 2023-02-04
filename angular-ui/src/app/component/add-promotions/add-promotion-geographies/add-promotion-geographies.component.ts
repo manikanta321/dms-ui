@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { TitleStrategy } from '@angular/router';
 import { AssosiationServicesService } from 'src/app/services/assosiation-services.service';
 import { SharedServicesDealerService } from 'src/app/services/shared-services-dealer.service';
 
@@ -57,28 +58,22 @@ else{
   })
 }
   }
-  updateAllComplete(event) {
-let productID = event;
+  clickOnGeography(event) {
+      let productID = event;
       const index = this.aarrayToPush.indexOf(productID);
-
       if (index !== -1) {
         this.aarrayToPush.splice(index, 1);
         this.selectedcountGeo=this.aarrayToPush.length
-
-
       }
       else {
         this.aarrayToPush.push(productID);
         this.selectedcountGeo=this.aarrayToPush.length
-
       }
-
       console.log('aarrayToPush', this.aarrayToPush)
       let allgeoItemCount = this.geodata[0].geoCount;
       let selectedGeoItemCount = this.selectedcountGeo;
       if(allgeoItemCount == selectedGeoItemCount) {
         this.allComplete = true;
-        this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
       }
       else {
         this.allComplete = false;
@@ -99,6 +94,18 @@ let productID = event;
       return;
     }
     this.task.subtasks.forEach(t => (t.completed = completed));
+    if(this.allComplete == true){
+      this.geodata[0].defaultGeography.forEach(row => {
+        this.aarrayToPush.push(row.defaultGeoId);
+        this.selectedcountGeo = this.geodata[0].geoCount;
+      });
+    }
+      else{
+        this.aarrayToPush.length = 0;
+        this.selectedcountGeo =0;
+      }
+    
+    
   }
   saveGeo(){
     localStorage.setItem("geoAsso", JSON.stringify(this.aarrayToPush));
@@ -112,4 +119,7 @@ let productID = event;
     this.dialogRef.close();
 
   }
+  exists(item) {
+    return this.aarrayToPush.indexOf(item) > -1;
+  };
 }

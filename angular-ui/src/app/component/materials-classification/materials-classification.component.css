@@ -197,6 +197,16 @@ color: #686E74;
     background-color: #00187A;
     color: white;
   }
+  .editIconLogo {
+    background-color: red;
+    -webkit-mask: url(../../../assets/img/power.svg) no-repeat center;
+    mask: url(../../../assets/img/power.svg) no-repeat center;
+  }
+  .powerIconLogo {
+    background-color: red;
+    -webkit-mask: url(../../../assets/img/pencil.svg) no-repeat center;
+    mask: url(../../../assets/img/pencil.svg) no-repeat center;
+  }
   .subselected{
     background: #0C5A3E;
     color: white;
@@ -221,7 +231,8 @@ color: #686E74;
 display:none;
 }
 
-.catg:hover .tickmark { display:block;}
+.catg:hover .tickmark { display:block;
+}
 
 .subc:hover .tickmark { display:block;}
 

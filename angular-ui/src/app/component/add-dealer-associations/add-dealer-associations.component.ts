@@ -588,10 +588,8 @@ export class AddDealerAssociationsComponent implements OnInit {
 
 
   updateAllCompleteDealer(event) {
-
     let productIdId = event;
     const index = this.aarrayToPush1.indexOf(productIdId);
-
     if (index !== -1) {
       this.aarrayToPush1.splice(index, 1);
       this.selectedcount = this.aarrayToPush.length

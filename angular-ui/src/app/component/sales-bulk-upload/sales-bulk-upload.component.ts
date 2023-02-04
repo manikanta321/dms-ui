@@ -294,7 +294,7 @@ export class SalesBulkUploadComponent implements OnInit {
       console.log("orderShipment",orderShipment);
       this.incorrectRows = orderShipment.productGeographyNotFound;
       this.incorrectRows.map((ele)=>{
-        ele.remarks = ele.remarks.split(":")[1].toLowerCase();
+        ele.remarks = ele.remarks.split(":")[1].toLowerCase().trim();
         console.log("dfdfd" , ele.remarks);
         return ele;
       });

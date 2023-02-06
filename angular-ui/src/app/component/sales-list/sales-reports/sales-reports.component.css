@@ -662,7 +662,7 @@
     border: 0.5px solid #000000;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 10px;
-    height: 30px;
+    height: 40px;
   }
   .DealerInfo-label {
     margin: 5px;
@@ -688,8 +688,7 @@
     border: 0.5px solid #000000;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 10px;
-    height: 30px;
-    width: 99%;
+    
   }
   ::ng-deep.selectgeo .ng-select-container {
     border: 0.5px solid #000000;
@@ -701,7 +700,9 @@
   /* ::ng-deep.dealerr .ng-select-single .ng-select-container{
     width: 99%;
   } */
- 
+ ::ng-deep.ng-select-container {
+  height: 40px;
+}
   ::ng-deep.shipingAddress .ng-select-container {
     border: 0.5px solid #000000;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);

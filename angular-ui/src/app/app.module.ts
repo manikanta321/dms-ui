@@ -201,6 +201,7 @@ import { AddorderproSuccessPopupComponent } from './component/orders/addorderpro
 import { IconHoverComponent } from './component/icon-hover/icon-hover.component';
 import { ShipOrderSuccessPopupComponent } from './ship-order-success-popup/ship-order-success-popup.component';
 import { TooltipModule } from 'ng2-tooltip-directive';
+import { AdvancedFilterComponent } from './component/sales-list/advanced-filter/advanced-filter.component';
 
 
 @NgModule({
@@ -495,7 +496,8 @@ import { TooltipModule } from 'ng2-tooltip-directive';
           AddorderproSuccessPopupComponent,
           IconHoverComponent,
           ShipOrderSuccessPopupComponent,
-          IconHoverComponent
+          IconHoverComponent,
+          AdvancedFilterComponent
           
   ],
   imports: [

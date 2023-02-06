@@ -32,6 +32,7 @@ import { PromotionSharedServicesService } from 'src/app/services/promotion-share
 import moment from 'moment';
 
 import { SharedService } from 'src/app/services/shared-services.service';
+import { AdvancedFilterComponent } from '../advanced-filter/advanced-filter.component';
 export interface PeriodicElement {
 
   name: any;
@@ -1353,6 +1354,9 @@ console.log(item)
      
     
     });
+  }
+  onClickAdvancedFilter(){
+     this.dialog.open(AdvancedFilterComponent,{ width: '600px', height:'500px'});
   }
   }
 

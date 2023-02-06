@@ -9,13 +9,14 @@
     <mat-sidenav-content>
         <!--<div class="dash-content" > -->
                 <h2 class="sales-header-text">Sales </h2>
-                <div *ngIf="print"><img  class="print-img" src="../../../assets/material/print-img.svg" alt="" ></div>
+                
          
                     <div class="UNFAPP-asmnt-rgt-area main othersmastermenutab">
                         <!-- <div class="col-lg-12"> -->
                             <mat-tab-group class="sales-label" (selectedTabChange)="tabClick($event)">
                                 <mat-tab label="Inventory" >
                                    <app-sales-inventory></app-sales-inventory>
+                                   <div *ngIf="print"><img  class="print-img" src="../../../assets/material/print-img.svg" alt="" ></div>
                                 </mat-tab>
                                 <mat-tab label="Sales Uploads" >
                                     <app-sales-uploads></app-sales-uploads>

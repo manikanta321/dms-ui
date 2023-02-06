@@ -1,1 +1,150 @@
-<p>sales-reports works!</p>
+<!-- <p>sales-reports works!</p> -->
+<div>
+    <div class="row">
+    <div class="col-md-1 col-lg-1 col-sm-1">
+        <button  class="btn  btn-block submitbtn save-btn" [disabled]="!isDownload"
+                                               >Download</button>
+    </div>
+</div>
+    
+       
+            <div class="row ">
+                <div class="col-lg-2">
+                    <div class="dealerr">
+                        
+                        <ng-select disabled [items]="dealerListArray" id="dealerAllArray" name="dealerAllArray"
+                            required [virtualScroll]="true" bindLabel="customerName" bindValue="customerId"
+                            [searchable]="true" [clearable]="false" placeholder=" Select Type of Report" 
+                           (change)="onItemSelectreports($event)" >
+                        </ng-select>
+                        
+                        
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="dealerr">
+                        
+                        <ng-select 
+                            id="GeoGrapydrop" name="GeoGrapydrop" required [virtualScroll]="true"
+                            bindLabel="geographyName" bindValue="geographyId" [searchable]="true"
+                            [clearable]="false" placeholder="Dealer"
+                          >
+                        </ng-select>
+                        
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="dealerr">
+                                            
+                        <ng-select 
+                            id="BillingAddress" name="BillingAddress" required [virtualScroll]="true"
+                            bindLabel="Billingaddress" bindValue="BillingaddressId" [searchable]="true"
+                            [clearable]="false" placeholder="Product"
+                         >
+                        </ng-select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="dealerr">
+                        
+                           
+                       
+                        <ng-select 
+                            id="BillingAddress" name="BillingAddress" required [virtualScroll]="true"
+                            bindLabel="Billingaddress" bindValue="BillingaddressId" [searchable]="true"
+                            [clearable]="false" placeholder="Geography"
+                         >
+                        </ng-select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="dealerr">
+                       
+                       
+                        <ng-select 
+                            id="BillingAddress" name="BillingAddress" required [virtualScroll]="true"
+                            bindLabel="Billingaddress" bindValue="BillingaddressId" [searchable]="true"
+                            [clearable]="false" placeholder="Sale Order Status"
+                         >
+                        </ng-select>
+                    </div>
+                </div>
+                <!-- calender -->
+          <div class="col-md-2 col-lg-2 col-sm-2 d-flex">
+            <app-customdatepicker [selectedDate]="selectedDateRange"
+              (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
+            <!-- <div class="cal" (click)="datep()">
+             <img src="assets/img/calenderImage.svg" alt="">
+            </div> -->
+            <!-- <section data-cy="regular-date-range" class="col-12 col-sm-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     col-lg-4">
+              <date-range-picker [(dateRange)]="dateRange1"
+              [maxDate]="maxDate">
+              </date-range-picker>
+              <hr />
+            </section> -->
+            
+            <div class="advance-filter"><img class="" src="assets/img/advance-filter-icon.png"  alt="refresh"></div>
+
+            <div class="ref"><img class="refresh" src="assets/img/Vector.png" (click)="refresh()" alt="refresh"></div>
+            <!-- <div class="col-1"> -->
+            <!-- <div class="icon btnhover refreshbtn" >
+        <img class="refresh" src="assets/img/Vector.png"  alt="refresh" >
+      </div> -->
+          </div>
+            </div>
+                
+          <!-- </div> -->
+      
+        <!-- <button (click)="datep()">date</button>
+    <date-range-picker [(dateRange)]="dateRange1" class="ngb-dp-header">
+              </date-range-picker> -->
+  
+        <!-- search -->
+  
+        
+  
+  <!-- <div class="col-md-4 mt-3 mb-4" style="margin-left: 68%;margin-bottom:10px">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="searchBox d-flex">
+          <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+            (keyup)="onSearchChange($event)" placeholder="Type & search for anything">
+          <button class="searchButton" href="#">
+            <i class="material-icons">
+              search
+            </i>
+          </button>
+          <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+        </div>
+      </div>
+      <div class="">
+        <div class="add-user" (click)="addPromotions()" userRoleDirective="ADD_PROMOTION"
+          [pageName]="currentPageName">
+          <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+        </div>
+      </div>
+  
+    </div>
+  </div> -->
+  <br>
+  <div class="row">
+    <div class="col-md-1 col-lg-1 col-sm-1">
+        <button class="btn btn-block submitbtn view-btn"  [disabled]="!isDownload"
+                                               >View Report</button>
+    </div>
+</div>
+<!-- <br> -->
+    <ag-grid-angular id="gridContainer"
+    style=" height: 406px;border-radius: 20px;background-color: white;font-family: Gilroy;margin-left: 20px; margin-top: 12px;"
+    class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
+    [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
+    [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
+    (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
+    (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+    (bodyScroll)="handleScroll($event)"></ag-grid-angular>
+  
+  <!-- <div class="pagination">
+  <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
+    class="pagination-cls">{{rowData5.length}}</span>
+  </div> -->
+  </div>

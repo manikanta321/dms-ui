@@ -116,7 +116,7 @@ export class AssociationComponent implements OnInit {
       headerName: "Geography",
       minWidth:250,
       field: 'geographyName', 
-      cellRenderer: this.daysSunshineRenderer,
+      // ellRenderer: this.daysSunshineRenderer,
       // cellRendererParams: {
       // rendererImage: '', // Complementing the Cell Renderer parameters
       // },

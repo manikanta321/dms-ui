@@ -133,7 +133,10 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
 
   viewPromo(){
     const config: MatDialogConfig = {
-      width: '1043px',
+    
+
+       minWidth: '78vw',
+       height: '87vh',
     
      
     };

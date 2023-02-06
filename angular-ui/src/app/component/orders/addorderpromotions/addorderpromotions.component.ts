@@ -21,6 +21,8 @@ import { AddorderproSuccessPopupComponent } from './addorderpro-success-popup/ad
 })
 export class AddorderpromotionsComponent implements OnInit {
 
+  confirm_Order:boolean=true;
+
   selectedTeam = '';
   selectedDay: string = '';
   taxid: any = [];
@@ -1181,6 +1183,11 @@ export class AddorderpromotionsComponent implements OnInit {
 
   close(){
 this.Non_promotions=false;
+  
+  }
+  closeconfirmorder()
+  {
+    this.confirm_Order=false;
   }
   ordersubmit(submitType) {
     if(localStorage.getItem('AddorEditpro')!='edit'){

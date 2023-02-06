@@ -1,9 +1,9 @@
 <div *ngIf="confirmOrder!=''" class="font">
-    <div class="main">
+    <div class="main" *ngIf="confirm_Order">
         <div class=" promotionpopup-scroll1">
             <div class="addUser">
                  <!-- <img class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
-                <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+                <mat-icon  mat-button class="close-icon" [mat-dialog-close]="true" (click)="closeconfirmorder()">close</mat-icon>
 
             </div>
             <div class="head-t">
@@ -681,7 +681,7 @@
                                                 </ng-multiselect-dropdown>
                                                 <div class="dropdown-placeholder catty-placeholder">
                                                     <span *ngIf="categoryForm.get('categoryy').value.length == 0"
-                                                        style="color:grey;"> Select Category </span>
+                                                        style="color:grey;"> Select Category  </span>
                                                     <span *ngIf="categoryForm.get('categoryy').value.length == 1"
                                                         class="selected-placeholder">
                                                         {{categoryForm.get('categoryy').value.length}} Category </span>

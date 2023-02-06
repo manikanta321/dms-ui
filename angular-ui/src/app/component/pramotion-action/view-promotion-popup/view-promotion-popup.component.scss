@@ -1,6 +1,9 @@
+
+
 .view-dealer-promotion-cls {
     overflow-x: hidden;
-    height: 530px;
+    height: 535px;
+    max-width: 1539px;
 }
 
 .close-icon {
@@ -44,11 +47,10 @@
 }
 
 .print-img-viewpromo {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    top: 12%;
-    right: 274px;
+   
+   margin-top: -50px;
+    right: 15%;
+    float: right;
     cursor: pointer;
 }
 

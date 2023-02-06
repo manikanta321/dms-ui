@@ -33,14 +33,26 @@
                                     (click)="geoItem?.isActive ? selectGeoGraphy(geoItem,(i +1)): null"
                                     [ngClass]="{'deactivated': !geoItem?.isActive} ">
                                     <div class="title"> {{geoItem.geographyName}} ({{geoItem.geographyCode ??''}})</div>
-                                    <div class="action-items">
+                                    <div class="action-items" *ngIf="item.geographySelected.indexOf(geoItem.geographyId) == -1">
                                         <div class="action-item edit-action" *ngIf="geoItem.isActive"  userRoleDirective="edit_geography" [pageName]="currentPageName"
                                             (click)="editGeography($event, geoItem, item.geographyHierarchyName, (i+1))">
                                             <img src="assets/img/pencil.svg" alt="Edit">
                                         </div>
+                                        
                                         <div class="action-item activate-deactivate-action"
                                             (click)="activateDeactivateGeography($event, geoItem, (i+1) )">
                                             <img src="/assets/img/power.svg" alt="activate">
+                                        </div>
+                                    </div>
+                                    <div class="action-items" *ngIf="item.geographySelected.indexOf(geoItem.geographyId) !== -1">
+                                        <div class="action-item edit-action" *ngIf="geoItem.isActive"  userRoleDirective="edit_geography" [pageName]="currentPageName"
+                                            (click)="editGeography($event, geoItem, item.geographyHierarchyName, (i+1))">
+                                            <img src="assets/img/editMeterial.svg" alt="Edit">
+                                        </div>
+                                        
+                                        <div class="action-item activate-deactivate-action"
+                                            (click)="activateDeactivateGeography($event, geoItem, (i+1) )">
+                                            <img src="/assets/img/Group.svg" alt="activate">
                                         </div>
                                     </div>
                                 </div>

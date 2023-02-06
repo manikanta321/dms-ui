@@ -200,7 +200,8 @@ import { OrdersReceiveShipmentComponent } from './component/orders-receive-shipm
 import { AddorderproSuccessPopupComponent } from './component/orders/addorderpromotions/addorderpro-success-popup/addorderpro-success-popup.component';
 import { IconHoverComponent } from './component/icon-hover/icon-hover.component';
 import { ShipOrderSuccessPopupComponent } from './ship-order-success-popup/ship-order-success-popup.component';
-import { TooltipModule } from '@syncfusion/ej2-angular-popups';
+import { TooltipModule } from 'ng2-tooltip-directive';
+
 
 @NgModule({
   declarations: [

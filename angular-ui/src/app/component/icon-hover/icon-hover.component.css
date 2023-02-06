@@ -1,4 +1,4 @@
-.e-tooltip-wrap {
+/* .e-tooltip-wrap {
   border: 2px solid black;
   padding: 10px;
   border-radius: 25px;
@@ -11,10 +11,19 @@
     max-width: 100%;
     border-radius: 10px;
     white-space: nowrap;
-}
+} */
 /* .e-tooltip-wrap .e-tip-content {
   display: flow-root;
  } */
+ .ngTemplateTips {
+  background-color: #fff !important;
+  border: 1px solid #000;
+  white-space: nowrap;
+  height: auto;
+  display: inline-block;
+ word-wrap: break-all !important;
+ 
+}
 .tooltipRed{
   color: red;
   font-size: 16px;
@@ -30,9 +39,12 @@
   }
 ul.contentStyle{
   column-count: 2;
-  column-gap: 40px;
-  padding-left: 10px;
+  column-gap: 35px;
+  word-break: break-word;
+  
+  
 }
 ul::marker{
   display: none;
 }
+

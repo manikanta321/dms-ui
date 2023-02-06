@@ -16,94 +16,92 @@ export class AssosiationServicesService {
   intercept(req: HttpRequest<any>,
     next: HttpHandler): Observable<HttpEvent<any>> {
 
-const idToken = localStorage.getItem("token");
-debugger
-console.log('idtoken',idToken)
-alert(idToken)
+    const idToken = localStorage.getItem("token");
+    debugger
+    console.log('idtoken', idToken)
+    alert(idToken)
 
-if (idToken) {
-  const cloned = req.clone({
-      headers: req.headers.set("Authorization",
+    if (idToken) {
+      const cloned = req.clone({
+        headers: req.headers.set("Authorization",
           "Bearer " + idToken)
-  });
+      });
 
-  return next.handle(cloned);
-}
-else {
-  return next.handle(req);
-}
-}
-
-
-getGeographies(){
-  return this.http.get<any>(`${this.userurl}DealerApi/GetAssociationGeoDropdown`);
-
-}
+      return next.handle(cloned);
+    }
+    else {
+      return next.handle(req);
+    }
+  }
 
 
-getDealers(){
-  return this.http.get<any>(`${this.userurl}DealerApi/GetAssoDealerdrop`);
-
-}
-
-
-public getDealersList(data) {
-     
-  return this.http.post<any>(this.userurl + 'DealerApi/GetAllDealerAssociation', data);
- }
+  getGeographies() {
+    return this.http.get<any>(`${this.userurl}DealerApi/GetAssociationGeoDropdown`);
+  }
 
 
-public editbulkdealer(data){
-  return this.http.post<any>(this.userurl + 'DealerApi/UpdateBulkEditAssociations', data);
-}
+  getDealers() {
+    return this.http.get<any>(`${this.userurl}DealerApi/GetAssoDealerdrop`);
+  }
 
 
-public getgeo(produId){
-  return this.http.get<any>(`${this.userurl}DealerApi/GetAboveDefaultGeography?stockitemid=${produId}`);
+  public getDealersList(data) {
 
-}
-public getgeoOfdealer(DealerId){
-  return this.http.get<any>(`${this.userurl}DealerApi/GetAboveDefaultGeographyBasedOnDealer?dealerId=${DealerId}`);
+    return this.http.post<any>(this.userurl + 'DealerApi/GetAllDealerAssociation', data);
+  }
 
-}
 
-public tooltipStockItemDetailList(prodctId : any){
-  return this.http.get<any>(`${this.userurl}DealerApi/GetStockItemDetailList?ProductSKUId=${prodctId}`);
+  public editbulkdealer(data) {
+    return this.http.post<any>(this.userurl + 'DealerApi/UpdateBulkEditAssociations', data);
+  }
 
- 
-}
-public dealerdrop(data){
-  return this.http.post<any>(this.userurl + 'DealerApi/GetDealerBasedonGeog', data);
 
-}
+  public getgeo(produId) {
+    return this.http.get<any>(`${this.userurl}DealerApi/GetAboveDefaultGeography?stockitemid=${produId}`);
 
-  public getdealerEntireList(data){
+  }
+  public getgeoOfdealer(DealerId) {
+    return this.http.get<any>(`${this.userurl}DealerApi/GetAboveDefaultGeographyBasedOnDealer?dealerId=${DealerId}`);
+
+  }
+
+  public tooltipStockItemDetailList(prodctId: any) {
+    return this.http.get<any>(`${this.userurl}DealerApi/GetStockItemDetailList?ProductSKUId=${prodctId}`);
+
+
+  }
+  public dealerdrop(data) {
+    return this.http.post<any>(this.userurl + 'DealerApi/GetDealerBasedonGeog', data);
+
+  }
+
+  public getdealerEntireList(data) {
     return this.http.post<any>(this.userurl + 'DealerApi/GetGeographyDetailsForDealer', data);
-  
+
   }
 
 
 
-  public getProductEntireList(data){
+  public getProductEntireList(data) {
     return this.http.post<any>(this.userurl + 'DealerApi/GetGeographyDetailsForProductInAssociation', data);
-  
+
   }
 
 
-  public addassosiation(data){
+  public addassosiation(data) {
     return this.http.post<any>(this.userurl + 'DealerApi/AddAssociations', data);
-  
+
   }
 
 
 
-  public addassosiationofproduct(data){
+  public addassosiationofproduct(data) {
     return this.http.post<any>(this.userurl + 'DealerApi/AddAssociationProducts', data);
-  
+
   }
 
 
- 
+
 
 }
 // http://13.126.235.145:801/api/DealerApi/GetStockItemDetailList?ProductSKUId=42

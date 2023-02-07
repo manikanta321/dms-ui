@@ -5,6 +5,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddTargetGroupsProductsComponent } from '../target-groups/add-target-groups-products/add-target-groups-products.component';
 import { TargetListService } from 'src/app/services/target-list.service';
 import { AddTargetGroupSuccessPopupComponent } from '../add-target-group-success-popup/add-target-group-success-popup.component';
+import { TargetGroupServiceService } from 'src/app/services/target-group-service.service';
 
 
 @Component({
@@ -40,6 +41,7 @@ export class AddTargetGroupComponent implements OnInit {
   constructor(public dialog: MatDialog,
     private targetList: TargetListService,
     private dialogRef: MatDialogRef<any>,
+    private targetGroupService:TargetGroupServiceService
     ) { }
 
   ngOnInit(): void {
@@ -215,6 +217,14 @@ console.log("targetgrpName",this.targetGroupName);
       this.createTargetData = res.response;
       console.log("code target",this.createTargetData);
       // this.dialog.closeAll()
+      if(this.createTargetData.result == 'Added Succesfully') {
+        sessionStorage.setItem("AddTargetGrp","TargetAdded");
+        sessionStorage.setItem("EditTargetGrp","");
+        this.dialog.open(AddTargetGroupSuccessPopupComponent, {panelClass: 'activeSuccessPop'});
+        console.log("code target",this.createTargetData);
+        this.targetGroupService.filter('Register click');
+        this.dialogRef.close();
+      }
       this.dialogRef.close();
       })
   }
@@ -231,7 +241,8 @@ console.log("targetgrpName",this.targetGroupName);
       console.log("response",this.createTargetData);
       console.log("response Result",res.response.result);
       if(this.createTargetData.result == 'Updated Succesfully') {
-        sessionStorage.setItem("AddTargetGrp","TargetAdded");
+        sessionStorage.setItem("AddTargetGrp","");
+        sessionStorage.setItem("EditTargetGrp","EditedTarget")
         this.dialog.open(AddTargetGroupSuccessPopupComponent, {panelClass: 'activeSuccessPop'});
         console.log("code target",this.createTargetData);
         this.dialogRef.close();

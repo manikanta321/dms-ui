@@ -8,10 +8,12 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class AddTargetGroupSuccessPopupComponent implements OnInit {
   addTargetGrp:any;
+  editTargetGrp:any;
   constructor(private dialogRef: MatDialogRef<any>) { }
 
   ngOnInit(): void {
     this.addTargetGrp = sessionStorage.getItem("AddTargetGrp");
+    this.editTargetGrp =sessionStorage.getItem("EditTargetGrp");
     setTimeout(() => {
 
       this.closeDialog();

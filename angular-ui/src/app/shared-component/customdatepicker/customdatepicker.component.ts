@@ -80,9 +80,9 @@ export class CustomdatepickerComponent implements OnInit {
   }
   close() {
     this.date = false;
-    this.selectedDate=false;
+    this.selectedDate={ startDate: '', endDate: ''};
     
-    
+    this.customDatePickerEvent.emit({ selectedDate: this.selectedDate });
 
   }
 
@@ -115,6 +115,7 @@ export class CustomdatepickerComponent implements OnInit {
   }
 
   DateOptionClicked( clickedItem) {
+    this.date = true;
     if (this.datePickerTrigger.isOpen()) {
       this.datePickerTrigger.close();
       console.log(clickedItem);

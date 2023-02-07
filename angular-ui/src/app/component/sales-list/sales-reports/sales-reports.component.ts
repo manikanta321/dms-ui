@@ -121,52 +121,27 @@ export class SalesReportsComponent implements OnInit {
     // { headerName: "User Id",
     //   field: 'employeeCode' , sort: 'desc'},
 
-    {
-      headerName: "Name",
-      field: 'noOfOrders', tooltipField: "noOfOrders", minWidth: 300
-    },
-    {
-      headerName: "Classification",
-      field: 'invoicedValue', tooltipField: "invoicedValue", minWidth: 300
-    },
-    {
-      headerName: "UoM",
-      field: 'invoicedValue', tooltipField: "invoicedValue", minWidth: 200
-    },
-    {
-      headerName: "Product Group",
-      field: 'invoicedValue', tooltipField: "invoicedValue", minWidth: 200
-    },
-    {
-      headerName: "SKU",
-      field: 'invoicedValue', tooltipField: "invoicedValue", minWidth: 160
-    },
-    {
-      headerName: "Status",
-      field: 'statusName',
-      cellEditor: 'agSelectCellEditor',
-      cellEditorParams: {
-        values: ['Active', 'Closed', 'Draft'],
-      },
-      cellClass: params => {
-        return params.value == 'Active' ? 'myclass1' : params.value == 'Closed' ? 'myclass2' : params.value == 'Draft' ? 'myclass3' : 'myclass4'
-      },
-      tooltipField: "statusName",
-    },
-    {
-      headerName: '',
-      colId: 'action',
-
-      editable: false,
-      maxWidth: 75
-
-    },
     // {
-    //   headerName: "Avatar",
-    //   field: "avatar",
-    //   width: 100,
-    //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
-    //  },
+    //   headerName: "Name",
+    //   field: 'noOfOrders', tooltipField: "noOfOrders", minWidth: 300
+    // },
+    // {
+    //   headerName: "Classification",
+    //   field: 'invoicedValue', tooltipField: "invoicedValue", minWidth: 300
+    // },
+    // {
+    //   headerName: "UoM",
+    //   field: 'invoicedValue', tooltipField: "invoicedValue", minWidth: 200
+    // },
+    // {
+    //   headerName: "Product Group",
+    //   field: 'invoicedValue', tooltipField: "invoicedValue", minWidth: 200
+    // },
+    // {
+    //   headerName: "SKU",
+    //   field: 'invoicedValue', tooltipField: "invoicedValue", minWidth: 160
+    // },
+    
 
   ];
 
@@ -180,12 +155,15 @@ export class SalesReportsComponent implements OnInit {
     // editable: true,
     // make every column use 'text' filter by default
     filter: 'agTextColumnFilter',
-    // enable floating filters by default
-    // make columns resizable
+    // // enable floating filters by default
+    // // make columns resizable
     flex: 1,
     minWidth: 100,
     resizable: true,
     sortable: true,
+
+
+
   };
 
   public columnTypes: {
@@ -361,7 +339,7 @@ export class SalesReportsComponent implements OnInit {
     )
     this.sharedService.listen().subscribe((m: any) => {
       console.log(m)
-      this.getusertabeldata()
+      // this.getusertabeldata()
 
     })
   }
@@ -419,14 +397,14 @@ export class SalesReportsComponent implements OnInit {
     this.getInvoicetranscationDropdownData();
     this.getDealersDropdownData();
 
-    this.getusertabeldata();
+    // this.getusertabeldata();
     this.statusItems();
     this.promotionList();
     // this.productList();
     // this.geogrophylist();
     this.dealerItems();
-    this.getProductData();
-    this.geographyData();
+    // this.getProductData();
+    // this.geographyData();
     // this.maxDate.setDate(this.maxDate.getDate() + 20);
   }
 
@@ -456,6 +434,7 @@ export class SalesReportsComponent implements OnInit {
     receiptEnddate: ""
   }
 
+  selectedReportType:string | null =null;
   dropdownSettings11 = {
     singleSelection: false,
     idField: 'customerid',
@@ -465,7 +444,37 @@ export class SalesReportsComponent implements OnInit {
     itemsShowLimit: 2,
     allowSearchFilter: true
   };
+  salesReportData:any = [];
+  reportResData:any = [];
+  showGridData:boolean = false;
+  getReportList(){
+    this.salesReportData = [];
+    this.reportResData = [];
+    this.showGridData = false;
+    this.reportsService.getSalesReportList(this.selectedFilters).subscribe((res) => {
+      this.salesReportData = res.response;
+      var columnDefs:any = [];
+      this.showGridData = true;
 
+      this.salesReportData.headders.forEach((x,i) =>{
+        // x.headerName = this.salesReportData.headders[i].headderName;
+        let obj:any = {};
+        obj.headerName = x.headderName;
+        obj.field = x.headderCode;
+        obj.tooltipField = x.headderCode;
+        // obj.minWidth = 300;
+        
+        columnDefs.push(obj);
+
+      })
+
+      this.reportResData = this.salesReportData.gridData; 
+
+      this.columnDefs = columnDefs;
+      
+      console.log(res.response);
+    });
+  }
 
   geographyData() {
     this.geoGraphyList = [];
@@ -476,13 +485,6 @@ export class SalesReportsComponent implements OnInit {
     this.reportsService.getGeoDataBasedOnDealer(req).subscribe((res) => {
       console.log(res.response);
       this.geoGraphyList = res.response;
-      // this.dealersList = res.response.map(x => {
-      //   x.id = x.customerid;
-      //   x.itemName = x.customername
-      //   return x;
-      // });
-
-      // console.log(this.dealersList);
     });
   }
   getProductData() {
@@ -536,20 +538,22 @@ export class SalesReportsComponent implements OnInit {
   refresh() {
 
     this.myForm = this.fb.group({
-      city1: [this.selectedItems]
+      city1: [[]]
     });
     this.myForms = this.fb.group({
-      city2: [this.selectedItems]
+      city2: [[]]
     });
     this.myForms2 = this.fb.group({
-      city3: [this.selectedItems]
+      city3: [[]]
     });
     this.myForms3 = this.fb.group({
-      city4: [this.selectedItems]
+      city4: [[]]
     });
     this.myForms4 = this.fb.group({
-      city5: [this.selectedItems]
+      city5: [[]]
     });
+
+    this.selectedReportType = null;
     this.promotionSelected = [];
     this.productSelected = [];
     this.geographySelected = [];
@@ -558,40 +562,39 @@ export class SalesReportsComponent implements OnInit {
     this.startDate = '';
     this.endDate = '';
     this.searchText = '';
-    this.toppings = new FormControl('');
-    this.toppings1 = new FormControl(this.toppingList1);
-    this.product = new FormControl(this.productLisst);
-    this.geo = new FormControl(this.geoList);
-    this.getusertabeldata();
-
-
-
+    this.productListData = [];
+    // this.reportList = [];
+    this.selectedDateRange = null;
+    this.showGridData = false;
+    this.salesReportData = [];
+    this.geoGraphyList = [];
+    
     // this.getusertabeldata();
   }
 
 
-  getusertabeldata() {
-    const data = {
-      promotiontype: [],
-      product: [],
-      geography: [],
-      dealer: [],
-      status: [],
-      startDate: '',
-      endDate: '',
-      search: '',
-      CurrentUserId: this.loggedUserId,
+  // getusertabeldata() {
+  //   const data = {
+  //     promotiontype: [],
+  //     product: [],
+  //     geography: [],
+  //     dealer: [],
+  //     status: [],
+  //     startDate: '',
+  //     endDate: '',
+  //     search: '',
+  //     CurrentUserId: this.loggedUserId,
 
-    }
-    this.promotin.promotionTabledata(data).subscribe((res) => {
+  //   }
+  //   this.promotin.promotionTabledata(data).subscribe((res) => {
 
-      this.rowData5 = res.response;
-      console.log("Promotion List", this.rowData5);
+  //     this.rowData5 = res.response;
+  //     console.log("Promotion List", this.rowData5);
 
 
-    });
+  //   });
 
-  }
+  // }
 
 
   onSearchChange($event: any, anything?: any) {
@@ -822,14 +825,14 @@ export class SalesReportsComponent implements OnInit {
         this.selectedFilters.productIds = [];
         this.selectedFilters.dealerIds.push(item.customerid);
         this.myForms4.get('city5').setValue([]);
-        this.myForms4.get('city3').setValue([]);
+        this.myForms2.get('city3').setValue([]);
         this.geographyData();
         break;
       }
       case 'geography': {
         this.selectedFilters.productIds = [];
         this.selectedFilters.geographieIds.push(item.geographyId);
-        this.myForms4.get('city3').setValue([]);
+        this.myForms2.get('city3').setValue([]);
         this.getProductData();
         break;
       }
@@ -850,7 +853,7 @@ export class SalesReportsComponent implements OnInit {
         this.selectedFilters.geographieIds = [];
         this.selectedFilters.productIds = [];
         this.myForms4.get('city5').setValue([]);
-        this.myForms4.get('city3').setValue([]);
+        this.myForms2.get('city3').setValue([]);
         let index = this.selectedFilters.dealerIds.indexOf(item.customerid);
         if (index != -1) this.selectedFilters.dealerIds.splice(index, 1);
         this.geographyData();
@@ -860,7 +863,7 @@ export class SalesReportsComponent implements OnInit {
         this.selectedFilters.productIds = [];
         let index = this.selectedFilters.geographieIds.indexOf(item.geographyId);
         if (index != -1) this.selectedFilters.geographieIds.splice(index, 1);
-        this.myForms4.get('city3').setValue([]);
+        this.myForms2.get('city3').setValue([]);
         this.getProductData();
         break;
       }
@@ -884,7 +887,7 @@ export class SalesReportsComponent implements OnInit {
         this.selectedFilters.productIds = [];
         this.selectedFilters.dealerIds = items.map(x => x.customerid);
         this.myForms4.get('city5').setValue([]);
-        this.myForms4.get('city3').setValue([]);
+        this.myForms2.get('city3').setValue([]);
         this.geographyData();
         break;
       }
@@ -892,7 +895,7 @@ export class SalesReportsComponent implements OnInit {
 
         this.selectedFilters.productIds = [];
         this.selectedFilters.geographieIds = items.map(x => x.geographyId);
-        this.myForms4.get('city3').setValue([]);
+        this.myForms2.get('city3').setValue([]);
         this.getProductData();
         break;
       }
@@ -910,14 +913,14 @@ export class SalesReportsComponent implements OnInit {
         this.selectedFilters.productIds = [];
         this.selectedFilters.dealerIds = [];
         this.myForms4.get('city5').setValue([]);
-        this.myForms4.get('city3').setValue([]);
+        this.myForms2.get('city3').setValue([]);
         this.geographyData();
         break;
       }
       case 'geography': {
         this.selectedFilters.geographieIds = [];
         this.selectedFilters.productIds = [];
-        this.myForms4.get('city3').setValue([]);
+        this.myForms2.get('city3').setValue([]);
         this.getProductData();
         break;
       }
@@ -930,6 +933,7 @@ export class SalesReportsComponent implements OnInit {
 
   getReportDetails() {
     console.log(this.selectedFilters);
+    this.getReportList();
   }
 
 

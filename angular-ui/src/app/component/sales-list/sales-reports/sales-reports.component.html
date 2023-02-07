@@ -1,5 +1,5 @@
 <!-- <p>sales-reports works!</p> -->
-<div>
+<div style="min-height:50vh">
   <div class="row">
     <div class="col-md-1 col-lg-1 col-sm-1">
       <button class="btn  btn-block submitbtn save-btn" [disabled]="!isDownload">Download</button>
@@ -12,7 +12,7 @@
       <div class="dealerr">
         <ng-select [items]="reportList" id="dealerAllArray" name="dealerAllArray" class="dropdown-form"
           required [virtualScroll]="true" bindLabel="reportName" bindValue="reportCode" [searchable]="true"
-          [clearable]="false" placeholder=" Select Type of Report" (change)="onItemSelectreports($event)">
+          [(ngModel)]="selectedReportType"  [clearable]="false" placeholder=" Select Type of Report" (change)="onItemSelectreports($event)">
         </ng-select>
       </div>
     </div>
@@ -149,19 +149,22 @@
   <br>
   <div class="row">
     <div class="col-md-1 col-lg-1 col-sm-1">
-      <button class="btn btn-block submitbtn view-btn" (click)="getReportDetails()" >View Report</button>
+      <button class="btn btn-block submitbtn view-btn" [disabled]="!selectedReportType" (click)="getReportDetails()" >View Report</button>
     </div>
   </div>
   <!-- <br> -->
-  <ag-grid-angular id="gridContainer"
-    style=" height: 406px;border-radius: 20px;background-color: white;font-family: Gilroy;margin-left: 20px; margin-top: 12px;"
+  <!-- <div style=""></div>  -->
+  <div *ngIf="showGridData">
+    <ag-grid-angular id="gridContainer"
+    style=" margin-bottom: 100px;height: 406px;border-radius: 20px;background-color: white;font-family: Gilroy;margin-left: 20px; margin-top: 12px;"
     class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
-    [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
+    [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="reportResData"
     [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
     (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
     (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
     (bodyScroll)="handleScroll($event)"></ag-grid-angular>
 
+  </div>
   <!-- <div class="pagination">
   <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
     class="pagination-cls">{{rowData5.length}}</span>

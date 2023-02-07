@@ -45,7 +45,11 @@ export class ReportsService {
   postMProductdropbyDealeridGeoid(data) {
     return this.http.post<any>(`${this.apiUrl}SaleApi/GetMProductdropbyDealeridGeoid`, data);
   }
-
+  
+  getSalesReportList(data) {
+    return this.http.post<any>(`${this.apiUrl}SaleApi/SalesReportLists`, data);
+  }
+  
   
   getGeoDataBasedOnDealer(data) {
     return this.http.post<any>(`${this.apiUrl}SaleApi/Getgeobasedondealer`, data);

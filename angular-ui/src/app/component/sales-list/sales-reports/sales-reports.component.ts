@@ -1474,7 +1474,7 @@ export class SalesReportsComponent implements OnInit {
     });
   }
   onClickAdvancedFilter() {
-    this.dialog.open(AdvancedFilterComponent, { width: '600px', height: '500px' });
+    this.dialog.open(AdvancedFilterComponent, { width: '650px', height: '623px' });
   }
 }
 

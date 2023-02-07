@@ -1,1 +1,74 @@
-<p>advanced-filter works!</p>
+<!-- <p>advanced-filter works!</p> -->
+<div class="font ">
+    <div class=" main" width="400%">
+    <div class="container" >
+          <div class="addUser">
+                <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+        <div class="head-t">
+          <h3 class="addU font" style="color: #000000;">Advance Filters</h3>
+        </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-lg-12">
+                <h6 class="BIN">Filter Selection</h6>
+            </div>
+          </div>
+<div class="row">
+    <div class="col-lg-3">
+        <div #trigger  data-action="toggle" style="cursor: pointer;">
+                   </div>
+                   <div  class="menu-container">
+            <div  class="menu-item tick"   > Target Group <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+            <div  class="menu-item tick"  > Geography Tags <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+            <div  class="menu-item tick" >Product Custom Identifier <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+            <div  class="menu-item tick" >Category <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+            <div  class="menu-item tick" >Sub-Category <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+            <div  class="menu-item tick" >Type<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+            <div  class="menu-item tick" >Shipment Date<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+            <div  class="menu-item tick" >Receipt Date <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+            </div>
+    </div>
+    <div class="col-lg-4">
+        <div  class="menu-container1">
+            <div class="searchBox d-flex">
+                <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+                  placeholder="Type & search ">
+                         </div>
+                         <div class="row searchCheckBoxes">
+                            <ul>
+                          <mat-checkbox></mat-checkbox>&nbsp; Smartphone<br>
+                          <mat-checkbox></mat-checkbox>&nbsp; Snacks<br>
+                          <mat-checkbox></mat-checkbox>&nbsp; Fruits<br>
+                          <mat-checkbox></mat-checkbox>&nbsp; Smartphone<br>
+                          <mat-checkbox></mat-checkbox>&nbsp; Electronics<br>
+                          <mat-checkbox></mat-checkbox>&nbsp; Smartphone<br>
+                          <mat-checkbox></mat-checkbox>&nbsp; Smartphone<br>
+                          
+                          
+                               
+                            </ul>
+                         </div>
+        </div>
+    </div>
+</div>
+
+<div class="row selectedF">
+    <div class="col-lg-12">
+        <h6 class="BIN"> Selected Filter</h6>
+        <input type="text" required  placeholder=""  class=" selectedFilterInput">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <button class="btn btn-primary btn-block applyBtn" >Apply</button>
+    </div>
+    <div class="col-lg-6">
+        <button class="btn btn-primary btn-block clearAllBtn" >Clear All</button>
+    </div>
+</div>
+
+    </div>
+    </div>
+</div>

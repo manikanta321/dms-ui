@@ -1,7 +1,7 @@
 <!-- <p>add-target-group works!</p> -->
 <div class="font ">
     <div class=" main" width="600%">
-        <div class="container add-target">
+        <div *ngIf="addTargetGrp" class="container add-target">
             <div class="addUser">
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
             </div>
@@ -60,6 +60,140 @@
                               <div class="addbtn mt-3 text-center">
                                 <button class="addItem-btn btn-btn-primary" [disabled]="rowData5.length==0 || targetGroupName.length==0" (click)="createTarget()">Create</button>
                                 <button class="cancelItem-btn btn-btn-primary" (click)="closeDialog()">Cancel</button>
+                              </div>
+                      </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="editTargetGrp" class="container add-target">
+            <div class="addUser">
+                <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+            </div>
+            <div class="head-t">
+                <h3 class="addU font">Edit Target Group</h3>
+                <br>
+                <div class="row ">
+                    <div class="col-lg-9"></div>
+                    <div class="col-lg-3">
+                        <label class="targetCode">Target Group Code:<b>{{editTargetCode}}<span class="errorMark">*</span></b></label>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div>
+                            <label class="targetLabelN">Target Group Name<span class="errorMark">*</span></label>
+                            <br>
+                            <input type="text" id="targetName" name="targetName" required (keyup)="targetName($event)" placeholder="Enter Target Group Name" class="targetGroupN" [(ngModel)]="targetGrpName">
+                        </div>
+                    </div>
+                     <div class="col-lg-6">
+                        <div>
+                        <label class="targetLabelN">Product<span class="errorMark">*</span></label>
+                        <input type="text" id="targetProduct" name="targetProduct" placeholder="Select Products Here" class="targetProduct" [(ngModel)]="selectedProductCount" disabled>
+                        <div (click)="addTProducts()">
+                        <img src="../../../assets/img/new-window-arrow.png" alt="new-window-array" class="newWindowA" >
+                    </div>
+                    </div>
+                    </div> 
+               
+                </div>
+                <br><br><br><br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div>
+                            <label class="selectedPL">Selected Products</label>
+                            <br><br>
+                            <div *ngIf="selectedProducts.length==0">
+                            <input type="text" id="targetProduct" name="targetProduct" placeholder="Products not Selected Yet" class="selectedProduct" disabled>
+                        </div>
+                        <br>
+                        <div class="checkboxColor" *ngIf="selectedProducts.length!=0">
+                            <ag-grid-angular id="gridContainer" [tooltipMouseTrack]="true"
+                            style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%; margin-left:-4px;"
+                            class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
+                            [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="selectedProducts"
+                            [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
+                            (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
+                            (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+                            (bodyScroll)="handleScroll($event)" ></ag-grid-angular>
+                            <div class="pagination">
+                                <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{paginationScrollCount}}</span> of 
+                                <span class="pagination-cls">{{selectedProducts.length}}</span>
+                              </div>
+                              <div class="addbtn mt-3 text-center">
+                                <button class="addItem-btn btn-btn-primary" [disabled]="selectedProducts.length==0 || targetGrpName.length==0" (click)="editTarget()">Create</button>
+                                <button class="cancelItem-btn btn-btn-primary" (click)="closeDialog()">Cancel</button>
+                              </div>
+                      </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="viewTargetGrp" class="container add-target">
+            <div class="addUser">
+                <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+            </div>
+            <div class="head-t">
+                <h3 class="addU font">View Target Group</h3>
+                <br>
+                <div class="row ">
+                    <div class="col-lg-9"></div>
+                    <div class="col-lg-3">
+                        <label class="targetCode">Target Group Code:<b>{{editTargetCode}}<span class="errorMark">*</span></b></label>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div>
+                            <label class="targetLabelN">Target Group Name<span class="errorMark">*</span></label>
+                            <br>
+                            <input disabled type="text" id="targetName" name="targetName" required (keyup)="targetName($event)" placeholder="Enter Target Group Name" class="targetGroupN" [(ngModel)]="targetGrpName">
+                        </div>
+                    </div>
+                     <div class="col-lg-6">
+                        <div>
+                        <label class="targetLabelN">Product<span class="errorMark">*</span></label>
+                        <input type="text" id="targetProduct" name="targetProduct" placeholder="Select Products Here" class="targetProduct" [(ngModel)]="selectedProductCount" disabled>
+                        <div>
+                        <img src="../../../assets/img/new-window-arrow.png" alt="new-window-array" class="newWindowA" >
+                    </div>
+                    </div>
+                    </div> 
+               
+                </div>
+                <br><br><br><br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div>
+                            <label class="selectedPL">Selected Products</label>
+                            <br><br>
+                            <div *ngIf="selectedProducts.length==0">
+                            <input type="text" id="targetProduct" name="targetProduct" placeholder="Products not Selected Yet" class="selectedProduct" disabled>
+                        </div>
+                        <br>
+                        <div class="checkboxColor" *ngIf="selectedProducts.length!=0">
+                            <ag-grid-angular id="gridContainer" [tooltipMouseTrack]="true"
+                            style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%; margin-left:-4px;"
+                            class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
+                            [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="selectedProducts"
+                            [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
+                            (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
+                            (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+                            (bodyScroll)="handleScroll($event)" ></ag-grid-angular>
+                            <div class="pagination">
+                                <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{paginationScrollCount}}</span> of 
+                                <span class="pagination-cls">{{selectedProducts.length}}</span>
+                              </div>
+                              <div class="addbtn mt-3 text-center">
+                                <!-- <button class="addItem-btn btn-btn-primary" [disabled]="true" (click)="editTarget()">Create</button> -->
+                                <button class="cancelItem-btn btn-btn-primary" (click)="closeDialog()">Close</button>
                               </div>
                       </div>
                         </div>

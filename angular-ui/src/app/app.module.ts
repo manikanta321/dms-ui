@@ -202,7 +202,7 @@ import { IconHoverComponent } from './component/icon-hover/icon-hover.component'
 import { ShipOrderSuccessPopupComponent } from './ship-order-success-popup/ship-order-success-popup.component';
 import { TooltipModule } from 'ng2-tooltip-directive';
 import { AdvancedFilterComponent } from './component/sales-list/advanced-filter/advanced-filter.component';
-
+import { AddTargetGroupSuccessPopupComponent } from './component/add-target-group-success-popup/add-target-group-success-popup.component';
 
 @NgModule({
   declarations: [
@@ -497,7 +497,8 @@ import { AdvancedFilterComponent } from './component/sales-list/advanced-filter/
           IconHoverComponent,
           ShipOrderSuccessPopupComponent,
           IconHoverComponent,
-          AdvancedFilterComponent
+          AdvancedFilterComponent,
+          AddTargetGroupSuccessPopupComponent
           
   ],
   imports: [

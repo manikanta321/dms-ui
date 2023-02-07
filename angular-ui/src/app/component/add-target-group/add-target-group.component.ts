@@ -4,6 +4,7 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddTargetGroupsProductsComponent } from '../target-groups/add-target-groups-products/add-target-groups-products.component';
 import { TargetListService } from 'src/app/services/target-list.service';
+import { AddTargetGroupSuccessPopupComponent } from '../add-target-group-success-popup/add-target-group-success-popup.component';
 
 
 @Component({
@@ -25,15 +26,32 @@ export class AddTargetGroupComponent implements OnInit {
   CreatedByIdValue:any;
   stockItemId:any =[];
   createTargetData:any= [];
+  addTargetGrp:any;
+  viewTargetGrp:any;
+  editTargetGrp:any;
+  targetGrpId:any;
+  TargetGrpData:any =[];
+  editTargetCode:any;
+  selectedProducts:any = [];
+  targetGrpName:any;
+  selectedProductCount:any;
+  targetItemsArray:any = [];
+  editStockItemId:any =[];
   constructor(public dialog: MatDialog,
     private targetList: TargetListService,
     private dialogRef: MatDialogRef<any>,
     ) { }
 
   ngOnInit(): void {
+    this.targetGrpId = sessionStorage.getItem("targetGrpId");
+   console.log("SessionData",this.targetGrpId);
+    this.addTargetGrp  = sessionStorage.getItem("AddTarget");
+    this.viewTargetGrp = sessionStorage.getItem("viewTarget");
+    this.editTargetGrp = sessionStorage.getItem("EditTarget");
     this.getTargetCodeG();
     this.CreatedById = localStorage.getItem("logInId");
     this.CreatedByIdValue = Number(this.CreatedById);
+    this.editTargetData();
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -84,7 +102,8 @@ export class AddTargetGroupComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res) => {
       this.rowData5 = JSON.parse(localStorage.getItem("targetselectedRows") ?? '[]');
         this.stockItemId =JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]');
-
+        this.editStockItemId =JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]').concat(this.targetItemsArray?this.targetItemsArray:'[]');
+        this.selectedProducts = this.TargetGrpData.selectedproducts.concat(this.rowData5);
       console.log("RowData5",this.rowData5);
       })
   } 
@@ -190,7 +209,7 @@ console.log("targetgrpName",this.targetGroupName);
       TargetGroupName: this.targetGroupName,
       TargetGroupCode: this.targetCode,
       CreatedById: this.CreatedByIdValue,
-      StockItemId: this.stockItemId
+      StockItemId: this.stockItemId,
     }
     this.targetList.createTargetGroup(data).subscribe((res) => {
       this.createTargetData = res.response;
@@ -199,7 +218,50 @@ console.log("targetgrpName",this.targetGroupName);
       this.dialogRef.close();
       })
   }
+  editTarget() {
+    let data = {
+      TargetGroupName: this.targetGroupName?this.targetGroupName:this.targetGrpName,
+      TargetGroupCode: this.editTargetCode,
+      CreatedById: this.CreatedByIdValue,
+      StockItemId: this.editStockItemId,
+      TargetGroupId: this.targetGrpId,
+    }
+    this.targetList.createTargetGroup(data).subscribe((res:any) => {
+      this.createTargetData = res.response;
+      console.log("response",this.createTargetData);
+      console.log("response Result",res.response.result);
+      if(this.createTargetData.result == 'Updated Succesfully') {
+        sessionStorage.setItem("AddTargetGrp","TargetAdded");
+        this.dialog.open(AddTargetGroupSuccessPopupComponent, {panelClass: 'activeSuccessPop'});
+        console.log("code target",this.createTargetData);
+        this.dialogRef.close();
+      }
+      else {
+        alert(res.response.result);
+      }
+      })
+  }
   closeDialog() {
     this.dialogRef.close(); 
+  }
+  editTargetData() {
+    let data = {
+      TargetGroupId: this.targetGrpId,
+      CurrentUserId: this.CreatedByIdValue
+    }
+    this.targetList.editTargetGroup(data).subscribe((res) => {
+      this.TargetGrpData = res.response;
+      this.editTargetCode = this.TargetGrpData.targetGroupCode;
+      this.targetGrpName =this.TargetGrpData.targetGroupName
+      this.selectedProducts = this.TargetGrpData.selectedproducts.concat(this.rowData5);
+      console.log("Selected Rows", this.selectedProducts);
+      let targetData = this.selectedProducts;
+      targetData.forEach(element => {
+        return this.targetItemsArray.push(element.stockItemId);
+  
+      })
+      this.selectedProductCount = this.selectedProducts.length + " products selected";
+      console.log("Edit target",this.TargetGrpData);
+      })
   }
 }

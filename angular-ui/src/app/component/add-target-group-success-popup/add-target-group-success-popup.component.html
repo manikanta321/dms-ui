@@ -1,0 +1,20 @@
+<!-- <p>material-classification-status-popup works!</p> -->
+<div class="container font" ngClass="{'active':data?.isActive,'deactive':!data?.isActive} ">
+
+    <div class="rest-pwsd d-flex">
+
+        <div class="tumbsup"><img class="c" src="assets/userImages/carbon_thumbs-up.svg" alt="">
+            <br>
+            <b>Done!</b>
+        </div>
+        <div class="text-succ mt-3" *ngIf="addTargetGrp!=''">
+            <p>
+                <b>Target Group</b>
+                is  Added Successfully
+            </p>
+        </div>
+        <div class="closeImg" (click)=" closeDialog()"><img src="assets/userImages/user-closeImg.svg" alt=""></div>
+
+    </div>
+   
+</div>

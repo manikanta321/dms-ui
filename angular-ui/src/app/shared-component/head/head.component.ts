@@ -5,7 +5,6 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { FirstDataRenderedEvent } from 'ag-grid-community';
 import { PswResetPopupComponent } from 'src/app/component/users/userPopups/psw-reset-popup/psw-reset-popup.component';
-import { OtherMasterService } from 'src/app/services/other-master.service';
 
 @Component({
   selector: 'app-head',
@@ -27,17 +26,20 @@ ngAfterViewInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
       if (res.matches) {
         this.sidenav.mode = 'over';
+        this.ProfileImage = sessionStorage.getItem("profileImage")
+        console.log("ProfileImage",this.ProfileImage);
         this.sidenav.close();
       } else {
         this.sidenav.mode = 'side';
         this.sidenav.open();
+        this.ProfileImage = sessionStorage.getItem("profileImage")
+        console.log("ProfileImage",this.ProfileImage);
       }
     });
   }, 1);
  }
   constructor(private observer: BreakpointObserver,
-    private otherMasterService: OtherMasterService,
-    private router: Router,private dialog: MatDialog) { }
+    private router: Router,private dialog: MatDialog,) { }
 
   ngOnInit(): void {
     let Image = sessionStorage.getItem("profileImage");
@@ -48,21 +50,14 @@ ngAfterViewInit() {
     
   }
   onFirstDataRendered(params: FirstDataRenderedEvent) {
-      
-    // this.otherMasterService.listen().subscribe((m: any) => {
+    // this.TargetGroupService.listen().subscribe((m: any) => {
     //   console.log("RefreshData",m)
     //   setTimeout (() => {
     //     this.ngOnInit();
     //  }, 2000);
      
-
     // })
   }
-// togglesidebar(){
-//   this.ToggleSideNav.emit();
- 
-  
-// }
 sidenavtoggle(){
   this.ToggleSideNav.emit();
 }

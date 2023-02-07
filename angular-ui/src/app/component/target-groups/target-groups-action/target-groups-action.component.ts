@@ -3,6 +3,7 @@ import {  MatDialog, MatDialogModule, MatDialogRef  } from '@angular/material/di
 import tippy, { hideAll } from 'tippy.js';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { ICellRendererParams } from 'ag-grid-community';
+import { AddTargetGroupComponent } from '../../add-target-group/add-target-group.component';
 
 @Component({
   selector: 'app-target-groups-action',
@@ -72,7 +73,18 @@ export class TargetGroupsActionComponent implements OnInit {
   }
 
   editUser(){
-   
+    sessionStorage.setItem("AddTarget","");
+    sessionStorage.setItem("viewTarget","");
+    sessionStorage.setItem("EditTarget","EditTarget");
+    this.dialog.open(AddTargetGroupComponent) 
+    
+    this.isOpen = false;
+  }
+  ViewTarget() {
+    sessionStorage.setItem("AddTarget","");
+    sessionStorage.setItem("viewTarget","viewTarget");
+    sessionStorage.setItem("EditTarget","");
+    this.dialog.open(AddTargetGroupComponent) 
     
     this.isOpen = false;
   }

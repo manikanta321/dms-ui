@@ -356,6 +356,9 @@ editfn(){
   alert('guru')
 }
 addTarget() {
+  sessionStorage.setItem("AddTarget","AddTarget");
+  sessionStorage.setItem("EditTarget","");
+  sessionStorage.setItem("viewTarget","");
   this.dialog.open(AddTargetGroupComponent) 
  
 }
@@ -474,6 +477,8 @@ this.rowData5 = res.response;
   // Example of consuming Grid Event
   onCellClicked( e): void {
     console.log('cellClicked', e);
+    sessionStorage.setItem("targetGrpId",e.data.targetGroupId);
+    console.log("targetGrpId",e.data.targetGroupId);
     if (
       e.event.target.dataset.action == 'toggle' &&
       e.column.getColId() == 'action'

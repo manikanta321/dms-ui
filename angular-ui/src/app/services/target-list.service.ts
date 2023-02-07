@@ -77,12 +77,15 @@ export class TargetListService {
     return this.http.get<any>(this.classificationurl + 'MaterialApi/GenerateTargetCode');
 
   }
- createTargetGroup(data): Observable<any> {
+ createTargetGroup(data){
+    return this.http.post<any>(this.classificationurl + 'MaterialApi/AddEditTargetGroup', data)
+  }
+  editTargetGroup(data): Observable<any> {
     let options = {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
     };
     JSON.stringify(data)
-    return this.http.post<any>(this.classificationurl + 'MaterialApi/AddEditTargetGroup', data);
+    return this.http.post<any>(this.classificationurl + 'MaterialApi/GetTargetById', data);
 
   }
   getTargetSearch(data:any){

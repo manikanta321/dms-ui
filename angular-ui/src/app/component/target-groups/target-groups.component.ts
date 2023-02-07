@@ -46,8 +46,8 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import * as moment from 'moment';
 import { AddTargetGroupComponent } from '../add-target-group/add-target-group.component';
-import { OtherMasterService } from 'src/app/services/other-master.service';
 import { TargetGroupsActionComponent } from './target-groups-action/target-groups-action.component';
+import { TargetGroupServiceService } from 'src/app/services/target-group-service.service';
 
 
 
@@ -273,7 +273,7 @@ public pivotPanelShow = 'always';
     private observer: BreakpointObserver,
     private fb: FormBuilder,
     private targetList: TargetListService,
-    private otherMasterService: OtherMasterService,
+    private targetGroupService: TargetGroupServiceService,
    ) {
       sort:[];
      }
@@ -530,7 +530,7 @@ this.rowData5 = res.response;
     params.api.paginationGoToPage(4);
     params.api.sizeColumnsToFit();
       
-    this.otherMasterService.listen().subscribe((m: any) => {
+    this.targetGroupService.listen().subscribe((m: any) => {
       console.log("RefreshData",m)
       setTimeout (() => {
         this.TargetListData();

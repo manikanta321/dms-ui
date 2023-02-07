@@ -190,7 +190,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: this.ShowFilter
+      allowSearchFilter: true
     };
     this.subCategorys = {
       singleSelection: false,
@@ -199,7 +199,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: this.subCategoryFilter
+      allowSearchFilter: true
     };
     this.productType = {
       singleSelection: false,
@@ -208,7 +208,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: this.typeFilter
+      allowSearchFilter: true
     };
     this.dropdownSettings5 = {
       singleSelection: false,
@@ -217,7 +217,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: this.productFilter
+      allowSearchFilter: true
     };
     this.productGroups = {
       singleSelection: false,
@@ -226,7 +226,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: this.productFilter
+      allowSearchFilter:true
     };
     this.dropdownSettings1 = {
       singleSelection: false,
@@ -235,6 +235,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
+      allowSearchFilter:true
     }
   }
   addItemSelect(item: any) {

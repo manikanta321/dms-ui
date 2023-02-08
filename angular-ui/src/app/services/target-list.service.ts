@@ -61,6 +61,11 @@ export class TargetListService {
   addTargetData(data:any){
     return this.http.post<any>(this.classificationurl + 'Dealerapi/AddTargetSDealer', data);
   }
+
+  updateTargetData(data:any){
+    return this.http.post<any>(this.classificationurl + 'Dealerapi/UpdateDealerTarget', data);
+
+  }
   // http://13.126.235.145:801/api/DealerApi/GetProductGeoCount
   getProductCount(data:any){
     return this.http.post<any>(this.classificationurl + 'DealerApi/GetProductGeoCount', data);
@@ -124,7 +129,7 @@ financialYear() {
 
 }
 getTargetById(data) {
-  return this.http.post<any>(this.classificationurl + 'Dealerapi/GetDealerTargetDataById', data);
+  return this.http.post<any>(this.classificationurl + 'Dealerapi/GetDealerTargetDataByIdRow', data);
 
 }
 }

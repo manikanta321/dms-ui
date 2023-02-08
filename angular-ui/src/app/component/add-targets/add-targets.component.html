@@ -76,17 +76,31 @@
                     <!-- When Target Group Is Selected -->
                     <div>
                         <div>
+
+                      
                             <div *ngIf="mainadd.length>=1" class="col-12 all-dlr">
-                                <input type="checkbox" (click)="allDealerSelected()"> <span class="label-cls">All Dealers Selected</span>
+                                <!-- <input type="checkbox" (click)="allDealerSelected()"> <span class="label-cls">All Dealers Selected</span> -->
+                                <mat-checkbox class="checkboxStyle" aria-label="Select All" 
+                                (change)="$event ? toggleAll($event) : null" [color]="color">
+                                 <span *ngIf="selectedDealer.length == 0" class="contentStyle">NO Dealers Selected </span>
+                                 <span  *ngIf="selectedDealer.length ==  mainadd[0].dealers?.length && mainadd[0].dealers.length>1" class="contentStyle">All Dealers Selected </span>
+                                 <span *ngIf="selectedDealer.length > 0 && mainadd[0].dealers?.length != selectedDealer?.length && selectedDealer == 1" class="contentStyle"> Some Dealers Selected</span>
+                               </mat-checkbox>
+                        
                             </div>
                         <div  *ngFor="let dealer of mainadd[0].dealers;let i=index">
                         <div>
                             <div class="row dealer-cntry">
                                 <div class="col-md-3 dlr-info">
-                                    <input type="checkbox" [checked]="allDlrSelected1[i]" (click)="custmer1(dealer.CustomerId)"> <span class="dlr-name">{{dealer.CustomerName}}</span>
+                                    <mat-checkbox class="example-margin font" (click)="$event.stopPropagation()" [color]="color" (change)="$event ? toggle(dealer.CustomerId, $event) : null"
+                                    [checked]="exists(dealer.CustomerId)">
+                                  
+                                    <span class="dlr-name">{{dealer.CustomerName}}</span>
+                                </mat-checkbox>
                                 </div>
-                                <div class="col-md-2" *ngFor="let Country of geographySelectedName">
-                                    <p><b>{{Country}}</b>
+                                
+                                <div class="col-md-2">
+                                    <p><b>{{dealer.targets[0].GeographyName}}</b>
                                 </div>
                                 <!-- <div class="col-md-2">
                                     <p><b>Malaysia(0/124)</b>
@@ -116,7 +130,7 @@
                                     </div>
                                     <div class="promotiont2">
                                         <label>Set Target<span>*</span></label>
-                                        <select (change)="onSelectTarget($event)" class="form-select select-asso"
+                                        <select (change)="onSelectTarget($event,i,j)" class="form-select select-asso"
                                             style="width: 150px;" aria-label=".form-select-lg example" [(ngModel)]="mainadd[0].dealers[i].targets[j].setTarget">
                                            
                                             <option value="Monthly" selected>Monthly</option>
@@ -151,65 +165,65 @@
                                         <td class="IteminputBoxesthrdData">Value</td>
                                         <td>
                                             <input type="text"(keyup)="janUnit1($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].volume.jan"
-                                                [ngClass]="{'IteminputBoxes':!disableColumns && !anuallySelected, 'IteminputBoxesDisable':disableColumns || anuallySelected}"
-                                                [disabled]="disableColumns || anuallySelected" placeholder="Enter">
+                                                [ngClass]="{'IteminputBoxes':! this.mainadd[0].dealers[i].targets[j].disableColumns && !this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable': this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                [disabled]=" this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected" placeholder="Enter">
                                         </td>
                                         <td>
                                             <input type="text" (keyup)="janUnit1($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].volume.feb"
-                                                [ngClass]="{'IteminputBoxes':!disableColumns && !anuallySelected, 'IteminputBoxesDisable':disableColumns || anuallySelected}"
-                                                [disabled]="disableColumns || anuallySelected" placeholder="Enter">
+                                                [ngClass]="{'IteminputBoxes':! this.mainadd[0].dealers[i].targets[j].disableColumns && !this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable': this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                [disabled]=" this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected" placeholder="Enter">
                                         </td>
                                         <td>
                                             <input type="text" (keyup)="janUnit1($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].volume.mar"
-                                                [ngClass]="{'IteminputBoxes':!anuallySelected, 'IteminputBoxesDisable':anuallySelected}"
-                                                placeholder="Enter" class="IteminputBoxes" [disabled]="anuallySelected">
+                                                [ngClass]="{'IteminputBoxes':!this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable':this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                placeholder="Enter" class="IteminputBoxes" [disabled]="this.mainadd[0].dealers[i].targets[j].anuallySelected">
                                         </td>
                                         <td>
                                             <input type="text" (keyup)="janUnit1($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].volume.apr"
-                                                [ngClass]="{'IteminputBoxes':!disableColumns && !anuallySelected, 'IteminputBoxesDisable':disableColumns || anuallySelected}"
-                                                [disabled]="disableColumns || anuallySelected" placeholder="Enter">
+                                                [ngClass]="{'IteminputBoxes':! this.mainadd[0].dealers[i].targets[j].disableColumns && !this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable': this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                [disabled]=" this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected" placeholder="Enter">
                                         </td>
                                         <td>
                                             <input type="text" (keyup)="janUnit1($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].volume.may"
-                                                [ngClass]="{'IteminputBoxes':!disableColumns && !anuallySelected, 'IteminputBoxesDisable':disableColumns || anuallySelected}"
-                                                [disabled]="disableColumns || anuallySelected" placeholder="Enter">
+                                                [ngClass]="{'IteminputBoxes':! this.mainadd[0].dealers[i].targets[j].disableColumns && !this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable': this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                [disabled]=" this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected" placeholder="Enter">
                                         </td>
                                         <td>
-                                            <input type="text" (keyup)="janUnit1($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].volume.jun"
-                                                [ngClass]="{'IteminputBoxes':!anuallySelected, 'IteminputBoxesDisable':anuallySelected}"
-                                                placeholder="Enter" class="IteminputBoxes" [disabled]="anuallySelected">
+                                            <input type="text" (keyup)="janUnit1($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].volume.june"
+                                                [ngClass]="{'IteminputBoxes':!this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable':this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                placeholder="Enter" class="IteminputBoxes" [disabled]="this.mainadd[0].dealers[i].targets[j].anuallySelected">
                                         </td>
                                         <td>
-                                            <input type="text" (keyup)="janUnit1($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].volume.jul"
-                                                [ngClass]="{'IteminputBoxes':!disableColumns && !anuallySelected, 'IteminputBoxesDisable':disableColumns || anuallySelected}"
-                                                [disabled]="disableColumns || anuallySelected" placeholder="Enter">
+                                            <input type="text" (keyup)="janUnit1($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].volume.july"
+                                                [ngClass]="{'IteminputBoxes':! this.mainadd[0].dealers[i].targets[j].disableColumns && !this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable': this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                [disabled]=" this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected" placeholder="Enter">
                                         </td>
                                         <td>
                                             <input type="text" (keyup)="janUnit1($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].volume.aug"
-                                                [ngClass]="{'IteminputBoxes':!disableColumns && !anuallySelected, 'IteminputBoxesDisable':disableColumns || anuallySelected}"
-                                                [disabled]="disableColumns || anuallySelected" placeholder="Enter">
+                                                [ngClass]="{'IteminputBoxes':! this.mainadd[0].dealers[i].targets[j].disableColumns && !this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable': this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                [disabled]=" this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected" placeholder="Enter">
                                         </td>
                                         <td>
                                             <input type="text" (keyup)="janUnit1($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].volume.sep"
-                                                [ngClass]="{'IteminputBoxes':!anuallySelected, 'IteminputBoxesDisable':anuallySelected}"
-                                                placeholder="Enter" class="IteminputBoxes" [disabled]="anuallySelected">
+                                                [ngClass]="{'IteminputBoxes':!this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable':this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                placeholder="Enter" class="IteminputBoxes" [disabled]="this.mainadd[0].dealers[i].targets[j].anuallySelected">
                                         </td>
                                         <td>
                                             <input type="text" (keyup)="janUnit1($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].volume.oct"
-                                                [ngClass]="{'IteminputBoxes':!disableColumns && !anuallySelected, 'IteminputBoxesDisable':disableColumns || anuallySelected}"
-                                                [disabled]="disableColumns || anuallySelected" placeholder="Enter">
+                                                [ngClass]="{'IteminputBoxes':! this.mainadd[0].dealers[i].targets[j].disableColumns && !this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable': this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                [disabled]=" this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected" placeholder="Enter">
                                         </td>
                                         <td>
                                             <input type="text" (keyup)="janUnit1($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].volume.nov"
-                                                [ngClass]="{'IteminputBoxes':!disableColumns && !anuallySelected, 'IteminputBoxesDisable':disableColumns || anuallySelected}"
-                                                [disabled]="disableColumns || anuallySelected  && !disableColumns"
+                                                [ngClass]="{'IteminputBoxes':! this.mainadd[0].dealers[i].targets[j].disableColumns && !this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable': this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                [disabled]=" this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected  && ! this.mainadd[0].dealers[i].targets[j].disableColumns"
                                                 placeholder="Enter">
                                         </td>
                                         <td>
                                             <input type="text" (keyup)="janUnit1($event,i,j)" placeholder="Enter" class="IteminputBoxes" [(ngModel)]="mainadd[0].dealers[i].targets[j].volume.dec">
                                         </td>
                                         <td>
-                                            <input (keyup)="TotalValue($event)" type="text" placeholder="Enter" class="IteminputBoxes" [(ngModel)]="mainadd[0].dealers[i].targets[j].vtotal">
+                                            <input (keyup)="TotalValue($event)" type="text" placeholder="Enter" class="IteminputBoxes" [(ngModel)]="mainadd[0].dealers[i].targets[j].vtotal" disabled>
                                         </td>
                                     </tr>
                                     <tr>
@@ -218,58 +232,58 @@
                                         <td class="IteminputBoxesthrdData">Units</td>
                                         <td>
                                             <input type="text" (keyup)="janUnit($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].units.jan"
-                                                [ngClass]="{'IteminputBoxes':!disableColumns && !anuallySelected, 'IteminputBoxesDisable':disableColumns || anuallySelected}"
-                                                [disabled]="disableColumns || anuallySelected" placeholder="Enter">
+                                                [ngClass]="{'IteminputBoxes':! this.mainadd[0].dealers[i].targets[j].disableColumns && !this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable': this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                [disabled]=" this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected" placeholder="Enter">
                                         </td>
                                         <td>
                                             <input type="text" (keyup)="janUnit($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].units.feb"
-                                                [ngClass]="{'IteminputBoxes':!disableColumns && !anuallySelected, 'IteminputBoxesDisable':disableColumns || anuallySelected}"
-                                                [disabled]="disableColumns || anuallySelected" placeholder="Enter">
+                                                [ngClass]="{'IteminputBoxes':! this.mainadd[0].dealers[i].targets[j].disableColumns && !this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable': this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                [disabled]=" this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected" placeholder="Enter">
                                         </td>
                                         <td>
                                             <input type="text" (keyup)="janUnit($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].units.mar"
-                                                [ngClass]="{'IteminputBoxes':!anuallySelected, 'IteminputBoxesDisable':anuallySelected}"
-                                                placeholder="Enter" class="IteminputBoxes" [disabled]="anuallySelected">
+                                                [ngClass]="{'IteminputBoxes':!this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable':this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                placeholder="Enter" class="IteminputBoxes" [disabled]="this.mainadd[0].dealers[i].targets[j].anuallySelected">
                                         </td>
                                         <td>
                                             <input type="text" (keyup)="janUnit($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].units.apr"
-                                                [ngClass]="{'IteminputBoxes':!disableColumns && !anuallySelected, 'IteminputBoxesDisable':disableColumns || anuallySelected}"
-                                                [disabled]="disableColumns || anuallySelected" placeholder="Enter">
+                                                [ngClass]="{'IteminputBoxes':! this.mainadd[0].dealers[i].targets[j].disableColumns && !this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable': this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                [disabled]=" this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected" placeholder="Enter">
                                         </td>
                                         <td>
                                             <input type="text" (keyup)="janUnit($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].units.may"
-                                                [ngClass]="{'IteminputBoxes':!disableColumns && !anuallySelected, 'IteminputBoxesDisable':disableColumns || anuallySelected}"
-                                                [disabled]="disableColumns || anuallySelected" placeholder="Enter">
+                                                [ngClass]="{'IteminputBoxes':! this.mainadd[0].dealers[i].targets[j].disableColumns && !this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable': this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                [disabled]=" this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected" placeholder="Enter">
                                         </td>
                                         <td>
-                                            <input type="text" (keyup)="janUnit($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].units.jun"
-                                                [ngClass]="{'IteminputBoxes':!anuallySelected, 'IteminputBoxesDisable':anuallySelected}"
-                                                placeholder="Enter" class="IteminputBoxes" [disabled]="anuallySelected">
+                                            <input type="text" (keyup)="janUnit($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].units.june"
+                                                [ngClass]="{'IteminputBoxes':!this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable':this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                placeholder="Enter" class="IteminputBoxes" [disabled]="this.mainadd[0].dealers[i].targets[j].anuallySelected">
                                         </td>
                                         <td>
-                                            <input type="text" (keyup)="janUnit($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].units.jul"
-                                                [ngClass]="{'IteminputBoxes':!disableColumns && !anuallySelected, 'IteminputBoxesDisable':disableColumns || anuallySelected}"
-                                                [disabled]="disableColumns || anuallySelected" placeholder="Enter">
+                                            <input type="text" (keyup)="janUnit($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].units.july"
+                                                [ngClass]="{'IteminputBoxes':! this.mainadd[0].dealers[i].targets[j].disableColumns && !this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable': this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                [disabled]=" this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected" placeholder="Enter">
                                         </td>
                                         <td>
                                             <input type="text" (keyup)="janUnit($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].units.aug"
-                                                [ngClass]="{'IteminputBoxes':!disableColumns && !anuallySelected, 'IteminputBoxesDisable':disableColumns || anuallySelected}"
-                                                [disabled]="disableColumns || anuallySelected" placeholder="Enter">
+                                                [ngClass]="{'IteminputBoxes':! this.mainadd[0].dealers[i].targets[j].disableColumns && !this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable': this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                [disabled]=" this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected" placeholder="Enter">
                                         </td>
                                         <td>
                                             <input type="text" (keyup)="janUnit($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].units.sep"
-                                                [ngClass]="{'IteminputBoxes':!anuallySelected, 'IteminputBoxesDisable':anuallySelected}"
-                                                placeholder="Enter" class="IteminputBoxes" [disabled]="anuallySelected">
+                                                [ngClass]="{'IteminputBoxes':!this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable':this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                placeholder="Enter" class="IteminputBoxes" [disabled]="this.mainadd[0].dealers[i].targets[j].anuallySelected">
                                         </td>
                                         <td>
                                             <input type="text" (keyup)="janUnit($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].units.oct"
-                                                [ngClass]="{'IteminputBoxes':!disableColumns && !anuallySelected, 'IteminputBoxesDisable':disableColumns || anuallySelected}"
-                                                [disabled]="disableColumns || anuallySelected" placeholder="Enter">
+                                                [ngClass]="{'IteminputBoxes':! this.mainadd[0].dealers[i].targets[j].disableColumns && !this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable': this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                [disabled]=" this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected" placeholder="Enter">
                                         </td>
                                         <td>
                                             <input type="text" (keyup)="janUnit($event,i,j)" [(ngModel)]="mainadd[0].dealers[i].targets[j].units.nov"
-                                                [ngClass]="{'IteminputBoxes':!disableColumns && !anuallySelected, 'IteminputBoxesDisable':disableColumns || anuallySelected}"
-                                                [disabled]="disableColumns || anuallySelected  && !disableColumns"
+                                                [ngClass]="{'IteminputBoxes':! this.mainadd[0].dealers[i].targets[j].disableColumns && !this.mainadd[0].dealers[i].targets[j].anuallySelected, 'IteminputBoxesDisable': this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected}"
+                                                [disabled]=" this.mainadd[0].dealers[i].targets[j].disableColumns || this.mainadd[0].dealers[i].targets[j].anuallySelected  && ! this.mainadd[0].dealers[i].targets[j].disableColumns"
                                                 placeholder="Enter">
                                         </td>
                                         <td>

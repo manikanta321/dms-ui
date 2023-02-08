@@ -222,7 +222,7 @@ export class BulkEditAssosiationComponent implements OnInit {
   paginationScrollCount: any;
 
   @ViewChild(MatSidenav)
-
+  arrayToStore:any;
 
   sidenav!: MatSidenav;
   roleName: any;
@@ -349,6 +349,19 @@ export class BulkEditAssosiationComponent implements OnInit {
     this.gridApi.exportDataAsCsv();
   }
   change(i){
+
+  this.addAddressDetailsForm.value.BulkAssociationsCount[i].MRP = this.arrayToStore.BulkAssociationsCount[i].MRP;
+  this.addAddressDetailsForm.value.BulkAssociationsCount[i].MinOrder = this.arrayToStore.BulkAssociationsCount[i].MinOrder
+
+  this.addAddressDetailsForm.value.BulkAssociationsCount[i].MaxOrder = this.arrayToStore.BulkAssociationsCount[i].MaxOrder
+
+  this.addAddressDetailsForm.value.BulkAssociationsCount[i].Margin = this.arrayToStore.BulkAssociationsCount[i].Margin
+
+  this.addAddressDetailsForm.value.BulkAssociationsCount[i].Discount = this.arrayToStore.BulkAssociationsCount[i].Discount
+
+  this.addAddressDetailsForm.value.BulkAssociationsCount[i].LeadTimeIndays = this.arrayToStore.BulkAssociationsCount[i].LeadTimeIndays
+
+
     // this.addAddressDetailsForm.value.BulkAssociationsCount[i].LeadTimeIndays=
   }
 
@@ -502,6 +515,7 @@ export class BulkEditAssosiationComponent implements OnInit {
           ProductSKUGeographyId:ProductSKUGeographyId,
           donebyid:LoginId
         }));
+
 }
 
 
@@ -564,8 +578,11 @@ LoginId.setValue(this.LoginId)
 }
 
     });
+
   }
   getFormArray(): FormArray {
+    this.arrayToStore=this.addAddressDetailsForm.value;
+    console.log('arrayvalue',this.arrayToStore)
     return this.addAddressDetailsForm.get('BulkAssociationsCount') as FormArray;
   }
   makeCellClicked() {

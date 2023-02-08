@@ -98,9 +98,14 @@ export class DealerTargetActionComponent implements OnInit {
 edit(){
   this.dialog.open(EditDealerTargetComponent,{ width: '1900px',});
   this.isOpen = false;
+localStorage.setItem('dealerTargetSetItem','edit')
 
 }
-
+view(){
+  this.dialog.open(EditDealerTargetComponent,{ width: '1900px',});
+  this.isOpen = false;
+localStorage.setItem('dealerTargetSetItem','view')
+}
 
   togglePopup() {
     this.isOpen = !this.isOpen;

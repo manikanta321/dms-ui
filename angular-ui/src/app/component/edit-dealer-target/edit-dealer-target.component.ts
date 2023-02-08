@@ -71,6 +71,10 @@ export class EditDealerTargetComponent implements OnInit {
   ProductCount: any;
   dealersArray: any = [];
   selectedDealer: any = [];
+  TargetAssociationId:any;
+  LoginId:any;
+  dealerTargetSetItem:any;
+  targetGroupId:any;
   mainadd: any = [{
   }]
 
@@ -88,23 +92,25 @@ export class EditDealerTargetComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    this.LoginId=localStorage.getItem("logInId");
+
     let id = localStorage.getItem('editOrAddTarget');
+    this.TargetAssociationId=id;
+    this.dealerTargetSetItem=localStorage.getItem('dealerTargetSetItem')
+
     let data = {
-      TargetAssociationId: Number(id),
+      "TargetAssociationId":Number(id),
+      "CurrentUserId":this.LoginId
     }
     this.targetList.getTargetById(data).subscribe((res) => {
       console.log(res.response);
       this.targetId = res.response.targetGroupId;
-      this.productCount = res.response.totalProductCount;
-
-
-
-      this.mainadd[0].geography = []
+      this.productCount = res.response.productCount;
+      this.mainadd[0].geography = [];
+      this.targetGroupId=res.response.targetGroupId
       this.mainadd[0].targetGroupId = res.response.targetGroupId;
       this.mainadd[0].targetGroupName = res.response.targetGroupName;
-
       this.mainadd[0].customerId = res.response.customerId;
-
       this.mainadd[0].customerName = res.response.customerName;
 
       this.mainadd[0].CreatedById = this.userId;
@@ -112,47 +118,45 @@ export class EditDealerTargetComponent implements OnInit {
       let geographyobj: any = {}
       let geographyobj1: any = []
 
-      res.response.geography.forEach((element) => {
-        geographyobj.geographyId = element.geographyId;
+        geographyobj.geographyId = res.response.geographyid;
 
-        geographyobj.geographyName = element.geographyName;
+        geographyobj.geographyName = res.response.geographyName;
 
-        geographyobj.productCount = element.productCount;
+        geographyobj.productCount = res.response.productCount;
 
-        geographyobj.year = element.year;
+        geographyobj.year = res.response.year;
 
-        geographyobj.settarget = element.settarget;
+geographyobj.utotal=res.response.utotal
+geographyobj.vtotal  =res.response.vtotal
+        geographyobj.settarget = res.response.settarget;
 
         let mainobj: any = [];
 
         let mainobj1: any = {}
 
-        element.targets.forEach((res1) => {
-          mainobj1.targetMonthNo = res1.targetMonthNo;
-            mainobj1.targetMonth = res1.targetMonth;
-            mainobj1.targetValue = res1.targetValue;
-            mainobj1.targetUnit = res1.targetUnit;
-
+          // mainobj1.targetMonthNo = element.settarget;
+            mainobj1.targetValue = res.response.volume;
+            mainobj1.targetUnit = res.response.units;
             mainobj.push(mainobj1)
-
-
-
-                   });
-
-                   geographyobj.targets=mainobj
-                   geographyobj1.push(geographyobj)
-
+            geographyobj.targets=mainobj;
+           this.mainadd[0].geography= [geographyobj];
+           if (res.response.settarget == "Quaterly") {
+            this.disableColumns = true;
+            this.anuallySelected = false;
+          }
+          if (res.response.settarget == "Monthly") {
+            this.disableColumns = false;
+            this.anuallySelected = false;
+          }
+          if (res.response.settarget == "Annualy") {
+            this.disableColumns = false;
+            this.anuallySelected = true;
+          }
       });
       
-      this.mainadd[0].geography= geographyobj1;
 
 
       console.log('object for edit', this.mainadd[0])
-})
-
-
-
-
 
 
     console.log('mainadd', this.mainadd)
@@ -168,9 +172,16 @@ export class EditDealerTargetComponent implements OnInit {
     this.userId = localStorage.getItem("logInId");
   }
   onSelectFinancialYear(event: any) {
-    this.financialYear = event.target.value;
+    alert(event.target.value)
+    this.mainadd[0].geography[0].year = event.target.value;
   }
+
+
+  
   onSelectTarget(event: any) {
+    this.mainadd[0].geography[0].utotal = this.mainadd[0].geography[0].targets[0].targetUnit.jan = this.mainadd[0].geography[0].targets[0].targetUnit.feb =this.mainadd[0].geography[0].targets[0].targetUnit.mar=this.mainadd[0].geography[0].targets[0].targetUnit.apr = this.mainadd[0].geography[0].targets[0].targetUnit.may =this.mainadd[0].geography[0].targets[0].targetUnit.june =this.mainadd[0].geography[0].targets[0].targetUnit.july = this.mainadd[0].geography[0].targets[0].targetUnit.aug = this.mainadd[0].geography[0].targets[0].targetUnit.sep =this.mainadd[0].geography[0].targets[0].targetUnit.oct =this.mainadd[0].geography[0].targets[0].targetUnit.nov =this.mainadd[0].geography[0].targets[0].targetUnit.dec=0
+    this.mainadd[0].geography[0].vtotal = this.mainadd[0].geography[0].targets[0].targetValue.jan = this.mainadd[0].geography[0].targets[0].targetValue.feb =this.mainadd[0].geography[0].targets[0].targetValue.mar=this.mainadd[0].geography[0].targets[0].targetValue.apr = this.mainadd[0].geography[0].targets[0].targetValue.may =this.mainadd[0].geography[0].targets[0].targetValue.june =this.mainadd[0].geography[0].targets[0].targetValue.july = this.mainadd[0].geography[0].targets[0].targetValue.aug = this.mainadd[0].geography[0].targets[0].targetValue.sep =this.mainadd[0].geography[0].targets[0].targetValue.oct =this.mainadd[0].geography[0].targets[0].targetValue.nov =this.mainadd[0].geography[0].targets[0].targetValue.dec=0
+
     this.targetSelected = event.target.value;
     let data = event.target.value;
     if (data == "Quaterly") {
@@ -596,7 +607,7 @@ export class EditDealerTargetComponent implements OnInit {
   }
   janUnit(event: any, i, j) {
     //  this.mainadd[0].dealers[i].targets[j].units.jan + this.mainadd[0].dealers[i].targets[j].units.feb
-    this.mainadd[0].dealers[i].targets[j].utotal = Number(this.mainadd[0].dealers[i].targets[j].units.jan) + Number(this.mainadd[0].dealers[i].targets[j].units.feb) + Number(this.mainadd[0].dealers[i].targets[j].units.mar) + Number(this.mainadd[0].dealers[i].targets[j].units.apr) + Number(this.mainadd[0].dealers[i].targets[j].units.may) + Number(this.mainadd[0].dealers[i].targets[j].units.jun) + Number(this.mainadd[0].dealers[i].targets[j].units.jul) + Number(this.mainadd[0].dealers[i].targets[j].units.aug) + Number(this.mainadd[0].dealers[i].targets[j].units.sep) + Number(this.mainadd[0].dealers[i].targets[j].units.oct) + Number(this.mainadd[0].dealers[i].targets[j].units.nov) + Number(this.mainadd[0].dealers[i].targets[j].units.dec)
+    this.mainadd[0].geography[0].utotal = Number(this.mainadd[0].geography[0].targets[0].targetUnit.jan) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.feb) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.mar) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.apr) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.may) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.june) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.july) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.aug) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.sep) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.oct) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.nov) + Number(this.mainadd[0].geography[0].targets[0].targetUnit.dec)
     // alert(this.mainadd[0].dealers[i].targets[j].units)
 
     // this.janUnitValue =event.target.value;
@@ -605,10 +616,9 @@ export class EditDealerTargetComponent implements OnInit {
 
 
   janUnit1(event: any, i, j) {
-    //  this.mainadd[0].dealers[i].targets[j].units.jan + this.mainadd[0].dealers[i].targets[j].units.feb
-    this.mainadd[0].dealers[i].targets[j].vtotal = Number(this.mainadd[0].dealers[i].targets[j].volume.jan) + Number(this.mainadd[0].dealers[i].targets[j].volume.feb) + Number(this.mainadd[0].dealers[i].targets[j].volume.mar) + Number(this.mainadd[0].dealers[i].targets[j].volume.apr) + Number(this.mainadd[0].dealers[i].targets[j].volume.may) + Number(this.mainadd[0].dealers[i].targets[j].volume.jun) + Number(this.mainadd[0].dealers[i].targets[j].volume.jul) + Number(this.mainadd[0].dealers[i].targets[j].volume.aug) + Number(this.mainadd[0].dealers[i].targets[j].volume.sep) + Number(this.mainadd[0].dealers[i].targets[j].volume.oct) + Number(this.mainadd[0].dealers[i].targets[j].volume.nov) + Number(this.mainadd[0].dealers[i].targets[j].volume.dec)
+    this.mainadd[0].geography[0].vtotal = Number(this.mainadd[0].geography[0].targets[0].targetValue.jan) + Number(this.mainadd[0].geography[0].targets[0].targetValue.feb) + Number(this.mainadd[0].geography[0].targets[0].targetValue.mar) + Number(this.mainadd[0].geography[0].targets[0].targetValue.apr) + Number(this.mainadd[0].geography[0].targets[0].targetValue.may) + Number(this.mainadd[0].geography[0].targets[0].targetValue.june) + Number(this.mainadd[0].geography[0].targets[0].targetValue.july) + Number(this.mainadd[0].geography[0].targets[0].targetValue.aug) + Number(this.mainadd[0].geography[0].targets[0].targetValue.sep) + Number(this.mainadd[0].geography[0].targets[0].targetValue.oct) + Number(this.mainadd[0].geography[0].targets[0].targetValue.nov) + Number(this.mainadd[0].geography[0].targets[0].targetValue.dec)
     // alert(this.mainadd[0].dealers[i].targets[j].units)
-
+    
     // this.janUnitValue =event.target.value;
     console.log("janUnit", this.janUnitValue);
   }
@@ -722,91 +732,95 @@ export class EditDealerTargetComponent implements OnInit {
     console.log('mm saveTargetData', this.mainadd);
     let obj: any;
     if (this.selectedDealer.length >= 1) {
-      this.mainadd[0].dealers.forEach(element => {
+      this.mainadd[0].geography.forEach(element => {
         let dealers: any = [];
         for (let i = 0; i < this.selectedDealer.length; i++) {
           if (this.selectedDealer[i] === element.CustomerId) {
-            debugger
+            
             element.targets.forEach(element1 => {
-              debugger
-              if (element1.units.jan == "") {
-                element1.units.jan = 0;
+              
+              if (element1.targetUnit.jan == "") {
+                element1.targetUnit.jan = 0;
               }
-              if (element1.units.feb == "") {
-                element1.units.feb = 0;
+              if (element1.targetUnit.feb == "") {
+                element1.targetUnit.feb = 0;
               }
-              if (element1.units.mar == "") {
-                element1.units.mar = 0;
+              if (element1.targetUnit.mar == "") {
+                element1.targetUnit.mar = 0;
               }
-              if (element1.units.apr == "") {
-                element1.units.apr = 0;
+              if (element1.targetUnit.apr == "") {
+                element1.targetUnit.apr = 0;
               }
-              if (element1.units.may == "") {
-                element1.units.may = 0;
+              if (element1.targetUnit.may == "") {
+                element1.targetUnit.may = 0;
               }
-              if (element1.units.jun == "") {
-                element1.units.jun = 0;
+              if (element1.targetUnit.june == "") {
+                element1.targetUnit.june = 0;
               }
-              if (element1.units.jul == "") {
-                element1.units.jul = 0;
+              if (element1.targetUnit.july == "") {
+                element1.targetUnit.july = 0;
               }
-              if (element1.units.aug == "") {
-                element1.units.aug = 0;
+              if (element1.targetUnit.aug == "") {
+                element1.targetUnit.aug = 0;
               }
-              if (element1.units.sep == "") {
-                element1.units.sep = 0;
+              if (element1.targetUnit.sep == "") {
+                element1.targetUnit.sep = 0;
               }
-              if (element1.units.oct == "") {
-                element1.units.oct = 0;
+              if (element1.targetUnit.oct == "") {
+                element1.targetUnit.oct = 0;
               }
-              if (element1.units.nov == "") {
-                element1.units.nov = 0;
+              if (element1.targetUnit.nov == "") {
+                element1.targetUnit.nov = 0;
               }
-              if (element1.units.dec == "") {
-                element1.units.dec = 0;
+              if (element1.targetUnit.dec == "") {
+                element1.targetUnit.dec = 0;
               }
 
 
-              if (element1.volume.jan == "") {
-                element1.volume.jan = 0;
+              if (element1.targetValue.jan == "") {
+                element1.targetValue.jan = 0;
               }
-              if (element1.volume.feb == "") {
-                element1.volume.feb = 0;
+              if (element1.targetValue.feb == "") {
+                element1.targetValue.feb = 0;
               }
-              if (element1.volume.mar == "") {
-                element1.volume.mar = 0;
+              if (element1.targetValue.mar == "") {
+                element1.targetValue.mar = 0;
               }
-              if (element1.volume.apr == "") {
-                element1.volume.apr = 0;
+              if (element1.targetValue.apr == "") {
+                element1.targetValue.apr = 0;
               }
-              if (element1.volume.may == "") {
-                element1.volume.may = 0;
+              if (element1.targetValue.may == "") {
+                element1.targetValue.may = 0;
               }
-              if (element1.volume.jun == "") {
-                element1.volume.jun = 0;
+              if (element1.targetValue.june == "") {
+                element1.targetValue.june = 0;
               }
-              if (element1.volume.jul == "") {
-                element1.volume.jul = 0;
+              if (element1.targetValue.july == "") {
+                element1.targetValue.july = 0;
               }
-              if (element1.volume.aug == "") {
-                element1.volume.aug = 0;
+              if (element1.targetValue.aug == "") {
+                element1.targetValue.aug = 0;
               }
-              if (element1.volume.sep == "") {
-                element1.volume.sep = 0;
+              if (element1.targetValue.sep == "") {
+                element1.targetValue.sep = 0;
               }
-              if (element1.volume.oct == "") {
-                element1.volume.oct = 0;
+              if (element1.targetValue.oct == "") {
+                element1.targetValue.oct = 0;
               }
-              if (element1.volume.nov == "") {
-                element1.volume.nov = 0;
+              if (element1.targetValue.nov == "") {
+                element1.targetValue.nov = 0;
               }
-              if (element1.volume.dec == "") {
-                element1.volume.dec = 0;
+              if (element1.targetValue.dec == "") {
+                element1.targetValue.dec = 0;
               }
 
             })
             dealers.push(element);
           }
+
+
+
+          
           obj = {
             TargetGroupId: this.targetId,
             CreatedById: this.userId,
@@ -817,11 +831,23 @@ export class EditDealerTargetComponent implements OnInit {
           console.log('objectisnotworking', obj)
         }
 
-        this.targetList.addTargetData(obj).subscribe((res) => {
+        let obj1:any={
+"TargetAssociationId":this.TargetAssociationId,
+"TargetGroupId":this.targetGroupId,
+"year":Number(this.mainadd[0].geography[0].year),
+"setTarget":this.mainadd[0].geography[0].settarget,
+"volume":this.mainadd[0].geography[0].targets[0].targetValue,
+"units":this.mainadd[0].geography[0].targets[0].targetUnit,
+"vtotal":this.mainadd[0].geography[0].vtotal,
+"utotal":this.mainadd[0].geography[0].utotal,
+"CreatedById":this.userId
+        }
+console.log('obj1obj1obj1',obj1)
+        this.targetList.updateTargetData(obj1).subscribe((res) => {
           console.log("Added TargetData ", this.addedTargetData);
-          if (res.response == 'successfully addres DealerTargets') {
+          if (res.response.result == 'DealerTargets Update Successfully') {
             this.dialogRef.close();
-            alert('added')
+            alert('Dealer Targets Update Successfully')
             this.sharedService.filter('Register click')
 
           }
@@ -832,6 +858,12 @@ export class EditDealerTargetComponent implements OnInit {
     else {
       alert('select any dealer')
     }
+  }
+
+
+  cancel(){
+    this.dialogRef.close();
+
   }
   getproductCount() {
     let data = {

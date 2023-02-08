@@ -5,6 +5,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { DealerTargetSharedServicesService } from 'src/app/services/dealer-target-shared-services.service';
 import { TargetListService } from 'src/app/services/target-list.service';
 import { UserService } from 'src/app/services/user.service';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-add-targets',
@@ -53,6 +54,8 @@ export class AddTargetsComponent implements OnInit {
   decValue: any;
   totalValue: any;
   janUnitValue: any;
+  color: any = 'primary';
+
   febUnitValue: any;
   marUnitValue: any;
   aprlUnitValue: any;
@@ -103,20 +106,23 @@ export class AddTargetsComponent implements OnInit {
   onSelectFinancialYear(event: any) {
     this.financialYear = event.target.value;
   }
-  onSelectTarget(event: any) {
-    this.targetSelected = event.target.value;
+  onSelectTarget(event: any,i,j) {
+    this.mainadd[0].dealers[i].targets[j].vtotal = this.mainadd[0].dealers[i].targets[j].volume.jan=this.mainadd[0].dealers[i].targets[j].volume.feb=this.mainadd[0].dealers[i].targets[j].volume.mar =this.mainadd[0].dealers[i].targets[j].volume.apr=this.mainadd[0].dealers[i].targets[j].volume.may=this.mainadd[0].dealers[i].targets[j].volume.june=this.mainadd[0].dealers[i].targets[j].volume.july=this.mainadd[0].dealers[i].targets[j].volume.aug=this.mainadd[0].dealers[i].targets[j].volume.sep=this.mainadd[0].dealers[i].targets[j].volume.oct =this.mainadd[0].dealers[i].targets[j].volume.nov=this.mainadd[0].dealers[i].targets[j].volume.dec=''
+    this.mainadd[0].dealers[i].targets[j].utotal = this.mainadd[0].dealers[i].targets[j].units.jan=this.mainadd[0].dealers[i].targets[j].units.feb=this.mainadd[0].dealers[i].targets[j].units.mar=this.mainadd[0].dealers[i].targets[j].units.apr=this.mainadd[0].dealers[i].targets[j].units.may=this.mainadd[0].dealers[i].targets[j].units.june=this.mainadd[0].dealers[i].targets[j].units.july=this.mainadd[0].dealers[i].targets[j].units.aug=this.mainadd[0].dealers[i].targets[j].units.sep=this.mainadd[0].dealers[i].targets[j].units.oct=this.mainadd[0].dealers[i].targets[j].units.nov=this.mainadd[0].dealers[i].targets[j].units.dec=''
+
+    this.mainadd[0].dealers[i].targets[j].setTarget = event.target.value;
     let data = event.target.value;
     if (data == "Quaterly") {
-      this.disableColumns = true;
-      this.anuallySelected = false;
+      this.mainadd[0].dealers[i].targets[j].disableColumns = true;
+      this.mainadd[0].dealers[i].targets[j].anuallySelected = false;
     }
     if (data == "Monthly") {
-      this.disableColumns = false;
-      this.anuallySelected = false;
+      this.mainadd[0].dealers[i].targets[j].disableColumns = false;
+      this.mainadd[0].dealers[i].targets[j].anuallySelected = false;
     }
     if (data == "Annualy") {
-      this.disableColumns = false;
-      this.anuallySelected = true;
+      this.mainadd[0].dealers[i].targets[j].disableColumns = false;
+      this.mainadd[0].dealers[i].targets[j].anuallySelected = true;
     }
     console.log("TargetSelected", this.targetSelected)
   }
@@ -193,11 +199,27 @@ export class AddTargetsComponent implements OnInit {
     this.targetList.productCountAccordingToDealer(this.targetId).subscribe((res) => {
       this.productCount = res.response.totalProductSelectedGroup;
       console.log("check Product Count ", this.productCount);
+      this.dealerOrder()
     })
+    this.dealerlist=[];
+     this.geographyList=[];
+     this.dealer = this.fb.group({
+      dealer: [this.selectedItems]
+    });
+    this.geoForm = this.fb.group({
+      geoForm: [this.selectedItems]
+    });
+      this.mainadd[0]=[]
+
   }
   // geographyDropdown
   dealerOrder() {
-    this.user.dealerDropdownOrderlist1().subscribe((res: any) => {
+    
+    let data:any={
+      "TargetGroupId":this.targetId ,
+      "CurrentUserId":this.userId,
+    }
+    this.user.dealerDropdownOrderlist2(data).subscribe((res: any) => {
       this.dealerListData = res.response;
       let localdata = this.dealerListData;
       this.dealerlist = localdata.map((data: { customerId: any; customerName: any; }) => {
@@ -221,6 +243,8 @@ export class AddTargetsComponent implements OnInit {
       itemsShowLimit: 2,
       allowSearchFilter: true
     };
+    this.mainadd[0]=[]
+
   }
   Geography() {
     // this.targetList.geographyDropdown(this.targetId).subscribe((res) => {
@@ -250,6 +274,8 @@ export class AddTargetsComponent implements OnInit {
     };
   }
   onDealerItemSelect(item: any) {
+    this.geographyArray=[]
+
     this.dealerSelect.push(item.customerId);
     this.dealerSelectedName.push(item.customerName);
     let datas = {
@@ -259,15 +285,19 @@ export class AddTargetsComponent implements OnInit {
     this.targetList.geographyDropdown(datas).subscribe((res) => {
       this.geographyList = res.response;
       console.log("check Geography ", this.geographyList);
+      let localdata = this.geographyList;
+      this.geographyListData = localdata.map((data: { geographyId: any; geographyName: any; }) => {
+        return { geographyId: data.geographyId, geographyName: data.geographyName };
+      });
+      this.geographyListData.push()
+      this.geographyList.forEach(element => {
+        return this.geographyArray.push(element.geographyId);
+
+
+      })
+      console.log('wholearray',this.geographyArray)
     })
-    let localdata = this.geographyList;
-    this.geographyListData = localdata.map((data: { geographyId: any; geographyName: any; }) => {
-      return { geographyId: data.geographyId, geographyName: data.geographyName };
-    });
-    this.geographyListData.push()
-    this.geographyListData.forEach(element => {
-      return this.geographyArray.push(element.geographyId);
-    })
+ 
     this.geographyListData.forEach(element => {
       return this.geographyNameArray.push(element.geographyName);
     })
@@ -276,6 +306,8 @@ export class AddTargetsComponent implements OnInit {
     // });
   }
   onDealerItemSelectOrAll(item: any) {
+    this.geographyArray=[]
+
     this.dealerSelect = this.dealerAllarray;
     this.dealerSelectedName = this.dealerAllName;
     let datas = {
@@ -285,15 +317,18 @@ export class AddTargetsComponent implements OnInit {
     this.targetList.geographyDropdown(datas).subscribe((res) => {
       this.geographyList = res.response;
       console.log("check Geography ", this.geographyList);
+      this.geographyList.forEach(element => {
+        return this.geographyArray.push(element.geographyId);
+
+
+      })
     })
     let localdata = this.geographyList;
     this.geographyListData = localdata.map((data: { geographyId: any; geographyName: any; }) => {
       return { geographyId: data.geographyId, geographyName: data.geographyName };
     });
     this.geographyListData.push()
-    this.geographyListData.forEach(element => {
-      return this.geographyArray.push(element.geographyId);
-    })
+
     this.geographyListData.forEach(element => {
       return this.geographyNameArray.push(element.geographyName);
     })
@@ -306,6 +341,7 @@ export class AddTargetsComponent implements OnInit {
 
   }
   onDealerItemDeSelectOrAll(item: any) {
+    this.geographyArray=[]
     this.dealerSelect = [];
     this.dealerSelectedName = [];
     let datas = {
@@ -315,15 +351,18 @@ export class AddTargetsComponent implements OnInit {
     this.targetList.geographyDropdown(datas).subscribe((res) => {
       this.geographyList = res.response;
       console.log("check Geography ", this.geographyList);
+      this.geographyList.forEach(element => {
+        return this.geographyArray.push(element.geographyId);
+
+
+      })
     })
     let localdata = this.geographyList;
     this.geographyListData = localdata.map((data: { geographyId: any; geographyName: any; }) => {
       return { geographyId: data.geographyId, geographyName: data.geographyName };
     });
     this.geographyListData.push()
-    this.geographyListData.forEach(element => {
-      return this.geographyArray.push(element.geographyId);
-    })
+
     this.geographyListData.forEach(element => {
       return this.geographyNameArray.push(element.geographyName);
     })
@@ -332,7 +371,7 @@ export class AddTargetsComponent implements OnInit {
     });
   }
   onDealerItemDeSelect(item: any) {
-
+this.geographyArray=[];
     this.dealerSelect.forEach((element, index) => {
       if (element == item.customerId) this.dealerSelect.splice(index, 1);
     });
@@ -346,15 +385,18 @@ export class AddTargetsComponent implements OnInit {
     this.targetList.geographyDropdown(datas).subscribe((res) => {
       this.geographyList = res.response;
       console.log("check Geography ", this.geographyList);
+      this.geographyList.forEach(element => {
+        return this.geographyArray.push(element.geographyId);
+
+
+      })
     })
     let localdata = this.geographyList;
     this.geographyListData = localdata.map((data: { geographyId: any; geographyName: any; }) => {
       return { geographyId: data.geographyId, geographyName: data.geographyName };
     });
     this.geographyListData.push()
-    this.geographyListData.forEach(element => {
-      return this.geographyArray.push(element.geographyId);
-    })
+   
     this.geographyListData.forEach(element => {
       return this.geographyNameArray.push(element.geographyName);
     })
@@ -400,6 +442,8 @@ export class AddTargetsComponent implements OnInit {
       let arrayOfGeo: any = []
       element.geos.forEach(element1 => {
         let objgeo: any = {
+          disableColumns:false,
+          anuallySelected:false,
           GeographyId: element1.geographyId,
           GeographyName: element1.geographyName,
           ProductCount: element1.productcount,
@@ -413,8 +457,8 @@ export class AddTargetsComponent implements OnInit {
             apr: '',
 
             may: '',
-            jun: '',
-            jul: '',
+            june: '',
+            july: '',
             aug: '',
             sep: '',
             oct: '',
@@ -430,8 +474,8 @@ export class AddTargetsComponent implements OnInit {
             apr: '',
 
             may: '',
-            jun: '',
-            jul: '',
+            june: '',
+            july: '',
             aug: '',
             sep: '',
             oct: '',
@@ -459,7 +503,33 @@ export class AddTargetsComponent implements OnInit {
 
 
   }
+  isChecked() {
+    return this.selectedDealer.length === this.mainadd[0].dealers.length;
+  };
+  toggleAll(event: MatCheckboxChange) {
+    if (event.checked) {
+      this.mainadd[0].dealers.forEach(row => {
+        this.selectedDealer.push(row.CustomerId);
+      });
+    } else {
+      this.selectedDealer.length = 0;
+    }
+  }
 
+  toggle(item, event: MatCheckboxChange) {
+    let dealerId = item;
+    const index = this.selectedDealer.indexOf(dealerId);
+    if (index !== -1) {
+      this.selectedDealer.splice(index, 1);
+    }
+    else {
+      this.selectedDealer.push(dealerId);
+    }
+
+  }
+  exists(item) {
+    return this.selectedDealer.indexOf(item) > -1;
+  };
   onGeographyItemSelectOrAll(item: any) {
     this.geographySelected = this.geographyArray;
     this.geographySelectedName = this.geographyNameArray;
@@ -530,7 +600,7 @@ export class AddTargetsComponent implements OnInit {
   }
   janUnit(event: any, i, j) {
     //  this.mainadd[0].dealers[i].targets[j].units.jan + this.mainadd[0].dealers[i].targets[j].units.feb
-    this.mainadd[0].dealers[i].targets[j].utotal = Number(this.mainadd[0].dealers[i].targets[j].units.jan) + Number(this.mainadd[0].dealers[i].targets[j].units.feb) + Number(this.mainadd[0].dealers[i].targets[j].units.mar) + Number(this.mainadd[0].dealers[i].targets[j].units.apr) + Number(this.mainadd[0].dealers[i].targets[j].units.may) + Number(this.mainadd[0].dealers[i].targets[j].units.jun) + Number(this.mainadd[0].dealers[i].targets[j].units.jul) + Number(this.mainadd[0].dealers[i].targets[j].units.aug) + Number(this.mainadd[0].dealers[i].targets[j].units.sep) + Number(this.mainadd[0].dealers[i].targets[j].units.oct) + Number(this.mainadd[0].dealers[i].targets[j].units.nov) + Number(this.mainadd[0].dealers[i].targets[j].units.dec)
+    this.mainadd[0].dealers[i].targets[j].utotal = Number(this.mainadd[0].dealers[i].targets[j].units.jan) + Number(this.mainadd[0].dealers[i].targets[j].units.feb) + Number(this.mainadd[0].dealers[i].targets[j].units.mar) + Number(this.mainadd[0].dealers[i].targets[j].units.apr) + Number(this.mainadd[0].dealers[i].targets[j].units.may) + Number(this.mainadd[0].dealers[i].targets[j].units.june) + Number(this.mainadd[0].dealers[i].targets[j].units.july) + Number(this.mainadd[0].dealers[i].targets[j].units.aug) + Number(this.mainadd[0].dealers[i].targets[j].units.sep) + Number(this.mainadd[0].dealers[i].targets[j].units.oct) + Number(this.mainadd[0].dealers[i].targets[j].units.nov) + Number(this.mainadd[0].dealers[i].targets[j].units.dec)
     // alert(this.mainadd[0].dealers[i].targets[j].units)
 
     // this.janUnitValue =event.target.value;
@@ -540,7 +610,7 @@ export class AddTargetsComponent implements OnInit {
 
   janUnit1(event: any, i, j) {
     //  this.mainadd[0].dealers[i].targets[j].units.jan + this.mainadd[0].dealers[i].targets[j].units.feb
-    this.mainadd[0].dealers[i].targets[j].vtotal = Number(this.mainadd[0].dealers[i].targets[j].volume.jan) + Number(this.mainadd[0].dealers[i].targets[j].volume.feb) + Number(this.mainadd[0].dealers[i].targets[j].volume.mar) + Number(this.mainadd[0].dealers[i].targets[j].volume.apr) + Number(this.mainadd[0].dealers[i].targets[j].volume.may) + Number(this.mainadd[0].dealers[i].targets[j].volume.jun) + Number(this.mainadd[0].dealers[i].targets[j].volume.jul) + Number(this.mainadd[0].dealers[i].targets[j].volume.aug) + Number(this.mainadd[0].dealers[i].targets[j].volume.sep) + Number(this.mainadd[0].dealers[i].targets[j].volume.oct) + Number(this.mainadd[0].dealers[i].targets[j].volume.nov) + Number(this.mainadd[0].dealers[i].targets[j].volume.dec)
+    this.mainadd[0].dealers[i].targets[j].vtotal = Number(this.mainadd[0].dealers[i].targets[j].volume.jan) + Number(this.mainadd[0].dealers[i].targets[j].volume.feb) + Number(this.mainadd[0].dealers[i].targets[j].volume.mar) + Number(this.mainadd[0].dealers[i].targets[j].volume.apr) + Number(this.mainadd[0].dealers[i].targets[j].volume.may) + Number(this.mainadd[0].dealers[i].targets[j].volume.june) + Number(this.mainadd[0].dealers[i].targets[j].volume.july) + Number(this.mainadd[0].dealers[i].targets[j].volume.aug) + Number(this.mainadd[0].dealers[i].targets[j].volume.sep) + Number(this.mainadd[0].dealers[i].targets[j].volume.oct) + Number(this.mainadd[0].dealers[i].targets[j].volume.nov) + Number(this.mainadd[0].dealers[i].targets[j].volume.dec)
     // alert(this.mainadd[0].dealers[i].targets[j].units)
 
     // this.janUnitValue =event.target.value;
@@ -654,15 +724,15 @@ export class AddTargetsComponent implements OnInit {
 
   saveTargetData() {
     console.log('mm saveTargetData', this.mainadd);
+    console.log('selectedDealer',this.selectedDealer)
     let obj:any;
     if (this.selectedDealer.length >=1) {
+      let dealers: any = [];
+
       this.mainadd[0].dealers.forEach(element => {
-        let dealers: any = [];
         for (let i = 0; i < this.selectedDealer.length; i++) {
-          if (this.selectedDealer[i] === element.CustomerId) {
-            debugger
+          if (this.selectedDealer[i] == element.CustomerId) {
             element.targets.forEach(element1=>{
-              debugger
             if(element1.units.jan==""){
               element1.units.jan=0;
             }
@@ -678,11 +748,11 @@ export class AddTargetsComponent implements OnInit {
              if(element1.units.may==""){
               element1.units.may=0;
             }
-             if(element1.units.jun==""){
-              element1.units.jun=0;
+             if(element1.units.june==""){
+              element1.units.june=0;
             }
-            if(element1.units.jul==""){
-              element1.units.jul=0;
+            if(element1.units.july==""){
+              element1.units.july=0;
             }
             if(element1.units.aug==""){
               element1.units.aug=0;
@@ -716,11 +786,11 @@ export class AddTargetsComponent implements OnInit {
              if(element1.volume.may==""){
               element1.volume.may=0;
             }
-             if(element1.volume.jun==""){
-              element1.volume.jun=0;
+             if(element1.volume.june==""){
+              element1.volume.june=0;
             }
-            if(element1.volume.jul==""){
-              element1.volume.jul=0;
+            if(element1.volume.july==""){
+              element1.volume.july=0;
             }
             if(element1.volume.aug==""){
               element1.volume.aug=0;
@@ -741,27 +811,29 @@ export class AddTargetsComponent implements OnInit {
             })
               dealers.push(element);
           }    
-           obj={
-            TargetGroupId: this.targetId,
-            CreatedById:this.userId,
-            dealers:dealers
-          }
-    
+       
 
-          console.log('objectisnotworking',obj)
         }
-
-        this.targetList.addTargetData(obj).subscribe((res) => {
-          console.log("Added TargetData ", this.addedTargetData);
-          if(res.response == 'successfully addres DealerTargets'){
-            this.dialogRef.close();
-            alert('added')
-            this.sharedService.filter('Register click')
-
-          }
-        })
+      
       
       });
+      obj={
+        TargetGroupId: this.targetId,
+        CreatedById:this.userId,
+        dealers:dealers
+      }
+      console.log('objectisnotworking',obj)
+
+
+      this.targetList.addTargetData(obj).subscribe((res) => {
+        console.log("Added TargetData ", this.addedTargetData);
+        if(res.response.result == 'successfully addres DealerTargets'){
+          this.dialogRef.close();
+          alert('added')
+          this.sharedService.filter('Register click')
+
+        }
+      })
     }
     else{
       alert('select any dealer')

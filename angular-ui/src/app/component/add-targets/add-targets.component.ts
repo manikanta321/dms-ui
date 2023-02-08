@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { DealerTargetPopupGridComponent } from 'src/app/dealer-target-popup-grid/dealer-target-popup-grid.component';
 import { DealerTargetSharedServicesService } from 'src/app/services/dealer-target-shared-services.service';
 import { TargetListService } from 'src/app/services/target-list.service';
 import { UserService } from 'src/app/services/user.service';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { AddTargetGroupComponent } from '../add-target-group/add-target-group.component';
 
 @Component({
   selector: 'app-add-targets',
@@ -86,7 +88,7 @@ export class AddTargetsComponent implements OnInit {
     private user: UserService,
     private dialogRef: MatDialogRef<AddTargetsComponent>,
     private sharedService: DealerTargetSharedServicesService,
-
+    public dialog: MatDialog,
   ) { 
 
   }
@@ -196,6 +198,7 @@ export class AddTargetsComponent implements OnInit {
   }
   onTargetGrpSelect(item: any) {
     this.targetId = item.targetGroupId;
+    localStorage.setItem("targetId", this.targetId)
     this.targetList.productCountAccordingToDealer(this.targetId).subscribe((res) => {
       this.productCount = res.response.totalProductSelectedGroup;
       console.log("check Product Count ", this.productCount);
@@ -720,7 +723,10 @@ this.geographyArray=[];
     console.log("totalVAlue", this.totalValue);
   }
 
-
+  productPopup() {
+    this.dialog.open(DealerTargetPopupGridComponent,  { panelClass: 'psubgrid-popup' }) 
+   
+  }
 
   saveTargetData() {
     console.log('mm saveTargetData', this.mainadd);

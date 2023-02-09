@@ -579,7 +579,7 @@
 
 
                                 <div class="my_Datepicker promotion-datepicker">
-                                    <label class="boldR">Requirement Date</label><br>
+                                    <label class="boldR">Requirement Date<span class="astr">*</span></label><br>
                                     <mat-form-field class="placeh-align">
                                         <mat-label>Select a date</mat-label>
                                         <input matInput [matDatepicker]="picker" (dateChange)="dateChange($event)"
@@ -637,11 +637,11 @@
         <div class="col-md-5">
 
             <!-- <button type="button" class="saveas-draft" (click)="ordersubmit('draft')">Save as Draft</button> -->
-            <button  type="button" class="save-submit11" (click)="ordersubmit('save')" id="submitbt" name="submitbt">Submit</button>
+            <button    type="button" class="save-submit11" (click)="ordersubmit('save')" id="submitbt" name="submitbt">Submit</button>
          
         </div>
         <div class="col-md-2">
-            <button [disabled]="!startdate || !customerId || !geographyId || !BillingaddressId || !shippingaddressId" type="button" class="save-submit" (click)="ordersubmit('draft')">Save & Draft</button>
+            <button [disabled]="!startdate || !customerId || !geographyId || !BillingaddressId || !shippingaddressId"  type="button" class="save-submit" (click)="ordersubmit('draft')">Save & Draft </button>
         </div>
         <div class="col-md-5">
             <button type="button" [mat-dialog-close]="false" class="cancel">Cancel</button>

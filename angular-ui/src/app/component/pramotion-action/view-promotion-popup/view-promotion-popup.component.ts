@@ -5,6 +5,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { elementAt, Subject } from 'rxjs';
 import { PromotionSharedServicesService } from 'src/app/services/promotion-shared-services.service';
 import { PromotionService } from 'src/app/services/promotion.service';
+import { SharedService } from 'src/app/services/shared-services.service';
 
 
 @Component({
@@ -252,8 +253,9 @@ export class ViewPromotionPopupComponent implements OnInit {
     {
       headerName: "Code",
       field: 'code', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',   
-      checkboxSelection :true,
+       checkboxSelection :true,
       showDisabledCheckboxes: true,
+      
 
     },
     { headerName: "Dealer Name", field: 'dealerName', type: ['nonEditableColumn'] },
@@ -331,7 +333,8 @@ export class ViewPromotionPopupComponent implements OnInit {
         },
       },
     };
-  constructor(public promotionTypes: PromotionService) { }
+  constructor(public promotionTypes: PromotionService,
+    private sharedServices :SharedService) { }
 
   ngOnInit(): void {
     let data = localStorage.getItem('promoclickId');
@@ -354,9 +357,10 @@ export class ViewPromotionPopupComponent implements OnInit {
           this.base64textString = res.response.imageurl;
           this.geoGraphiesList=res.response.geographySection;
           this.startDate.setValue(res.response.startDate);
-          this.selectedStartDate = new Date(res.response.startDate).getFullYear() + '/' + (new Date(res.response.startDate).getMonth() + 1) + '/' + new Date(res.response.startDate).getDate();
-  this.Additional=res.response.remarks;
+          this.selectedStartDate = this.sharedServices.dateformat(res.response.startDate);
+          
           this.endDate.setValue(res.response.endDate)
+          
           this.selectedEndDate = new Date(res.response.endDate).getFullYear() + '/' + (new Date(res.response.endDate).getMonth() + 1) + '/' + new Date(res.response.endDate).getDate();
           // alert(this.selectedEndDate)
           this.promoName = res.response.promotionName;
@@ -366,6 +370,8 @@ export class ViewPromotionPopupComponent implements OnInit {
           this.addImgpreview = true;
           this.base64textString = res.response.imageurl;
           this.startDate.setValue(res.response.startDate);
+
+           this.selectedEndDate = this.sharedServices.dateformat(res.response.startDate);
   this.promotionTypesName=res.response.promotionTypesName
           this.Remarks = res.response.remarks;
           this.EntityInstanceId = [];

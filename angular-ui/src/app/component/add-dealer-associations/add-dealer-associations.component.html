@@ -389,7 +389,7 @@
           <div class="col-md-7 bubbless" *ngIf="screenValue == 1 && dealerList.length > 0 " >
             <mat-checkbox class="checkboxStyle" aria-label="Select All" 
             [checked]="isChecked()" [indeterminate]="isIndeterminate()" (change)="$event ? toggleAll($event) : null">
-             <span *ngIf="aarrayToPush.length == 0" class="contentStyle">NO Dealers Selected </span>
+             <span *ngIf="aarrayToPush.length == 0" class="contentStyle">No Dealers Selected </span>
              <span  *ngIf="aarrayToPush.length == selectedDealerInDropDown.length" class="contentStyle">All Dealers Selected </span>
              <span *ngIf="aarrayToPush.length > 0 && selectedDealerInDropDown.length != aarrayToPush.length && screenValue == 1" class="contentStyle"> Some Dealers Selected</span>
            </mat-checkbox>

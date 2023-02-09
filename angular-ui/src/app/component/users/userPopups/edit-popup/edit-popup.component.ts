@@ -11,7 +11,7 @@ import { AdduserSuccessfulPopupComponent } from '../add-user-popup/adduser-succe
   templateUrl: './edit-popup.component.html',
   styleUrls: ['./edit-popup.component.css']
 })
-export class EditPopupComponent implements OnInit {
+export class EditPopupComponent implements OnInit { 
   panelOpenState = true;
   fullname: any = '';
   username: any = '';
@@ -107,10 +107,15 @@ export class EditPopupComponent implements OnInit {
   roleItems() {
     this.user.getroleDetails().subscribe((res: any) => {
       let localdata = res.response;
+
+      
+
       console.log('checkdata', localdata)
       this.toppingList = localdata.map((data: { roleId: any; roleName: any; }) => {
         return { roleId: data.roleId, roleName: data.roleName };
       });
+
+      this.toppingList = this.toppingList.filter(topping => topping.roleName !== 'Dealer Admin');
 
       if (!this.toppingList?.length) {
         this.toppingList = localdata.map((role: { designationName: any; }) => {

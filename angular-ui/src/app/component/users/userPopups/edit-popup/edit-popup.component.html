@@ -100,7 +100,9 @@
               <div class="col">
                   <label>Role<span>*</span></label>
                 <br>
-                <select  #teams class="form-select form-select-lg mb-8"    (change)="selectedValue(teams.value);" placeholder="Select your Role" aria-label=".form-select-lg example" style="height: 35px;border-radius: 6px;width: 100%;">
+
+
+                <select      [disabled]="role123 == 'Dealer Admin'"    #teams class="form-select form-select-lg mb-8"    (change)="selectedValue(teams.value);" placeholder="Select your Role" aria-label=".form-select-lg example" style="height: 35px;border-radius: 6px;width: 100%;">
                   <option value="" disabled selected hidden>{{role123}}</option>
 
                   <option style="height: 900px;"  *ngFor="let topping of toppingList" [value]="topping.roleId">{{topping.roleName}}</option>

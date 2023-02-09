@@ -18,6 +18,37 @@
     color: #000000;
 
 }
+.name{
+margin: 7px 0;
+padding-left: 10px;
+}
+input[type=text] {
+    width: 100%;
+    padding: 10px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    border-radius:10px;
+  }
+  
+  input[type=text]:focus {
+    border: 3px solid #555;
+  }
+.heroes {
+    margin: 0 0 2em 0;
+    list-style-type: none;
+    padding: 0;
+    width: 15em;
+  }
+  .heroes li {
+    display: flex;
+  }
+  .heroes .name {
+    align-self: center;
+  }
 
 .RSE {
     font-family: 'Gilroy-Light';
@@ -91,9 +122,9 @@
     border: 1px solid black;
 }
 
-span {
+/* span {
     color: red;
-}
+} */
 
 .close-icon {
     left: 100%;
@@ -173,6 +204,10 @@ mat-form-field {
     border-radius: 10px;
     margin-left: 78px;
     height: 247px;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .selectedFilterInput {
@@ -215,7 +250,7 @@ mat-form-field {
     /* // transition: 0.2s  ease-in-out; */
     position: absolute;
     right: 55px;
-    bottom: -32px;
+    margin-bottom: 10px;
 }
 
 .searchBox>.search-btn {
@@ -290,6 +325,29 @@ img {
 .hover {
     display: none;
 }
+.datepicker
+{
+    position: absolute !important;
+    
+    background: #655356 !important;
+    border-radius: 10px;
+
+    color : whitesmoke;
+
+    
+   width: 169px;
+   border: 1px solid #337ab7;
+       font-size: 12px;
+       box-shadow: 1px 1px #959595;
+       top:55px;
+       height: 29px;
+       padding-right: 18px;
+       
+    text-align: center;
+    padding-top: 3px;
+    left: 16px;
+} 
+
 
 /* img:hover{
     background-color: red;
@@ -331,4 +389,52 @@ img {
 .selectedF{
     position: relative; 
     top:253px
+}
+.other {
+color: #e7e7e7;
+background-color: black;
+border: 1px solid black;
+height: 35px;
+width: 355px;
+display: flex;
+margin-top: 10px;
+}
+.label {
+    color: white;
+    padding: 8px;
+    font-family: Arial;
+  }
+
+.containerElement {
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+z-index: 1000;
+min-width: 30rem;
+padding: 0.5rem 0;
+margin: 0;
+font-size: 1rem;
+list-style: none;
+background-color: #fff;
+background-clip: padding-box;
+border: 1px solid rgba(0, 0, 0, 0.15);
+border-radius: 10px;
+border: 0.5px solid #000000;
+height: 188px;
+width: 100%;
+  }
+  .custom{
+    height: max-content;
+    width: max-content;
+    background: lightskyblue;
+    color: white;
+    border: 0px solid;
+    border-radius: 34px;
+    padding: 7px;
+    display: flex;
+    align-items: center;
+  }  
+.eleStyle{
+    
+    padding-left: 16px;
+    margin-top: 12px;
 }

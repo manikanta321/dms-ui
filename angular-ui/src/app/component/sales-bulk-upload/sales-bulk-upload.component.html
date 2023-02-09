@@ -249,8 +249,11 @@
                         <tr class="table-header-row">
                             <th style="padding-left:20px;">Row No</th>
                             <th>Order No</th>
+                            <th>Order Date</th>
                             <th>Product Name</th>
                             <th>Product Code</th>
+                            <th>Order Qty</th>
+                            <th>Shipped Till Qty</th>
                             <th>Dispatch Qty</th>
                             <th>Dispatch Date</th>
                             <th>Invoice Date</th>
@@ -258,12 +261,14 @@
                             <th >Uploaded Date</th>
                         </tr>
                         <tr *ngFor="let shipData of TotalRows">
-            
-                            <td title="" style="padding-left: 21px;">{{shipData.orderNo}}</td>
+                            <td title="" style="padding-left: 21px;">{{shipData.rownumber}}</td>
                             <td title="" class="elipsis-2line">
                                 {{shipData.orderNo}}</td>
+                            <td>{{shipData.orderDate}}</td>
                             <td title="">{{shipData.productName}}</td>
-                              <td title="">{{shipData.productCode}}</td>
+                            <td title="">{{shipData.productCode}}</td>
+                            <td>{{shipData.orderQty}}</td>
+                            <td>{{shipData.shipTillQty}}</td>
                             <td>{{shipData.dispatchQty}}</td>
                             <td>{{shipData.dispatchDate}}</td>
                             <td>{{shipData.invoiceDate}}</td>
@@ -332,7 +337,7 @@
                         </tr>
                         <tr *ngFor="let shipData of duplicateEntryy">
             
-                            <td title="" style="padding-left: 21px;">{{shipData.orderNo}}</td>
+                            <td title="" style="padding-left: 21px;">{{shipData.rownumber}}</td>
                             <td title="" class="elipsis-2line">
                                 {{shipData.orderNo}}</td>
                             <td title="">{{shipData.productName}}</td>

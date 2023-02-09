@@ -5,6 +5,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { FirstDataRenderedEvent } from 'ag-grid-community';
 import { PswResetPopupComponent } from 'src/app/component/users/userPopups/psw-reset-popup/psw-reset-popup.component';
+import { SharedServicesProfilePicService } from 'src/app/services/shared-services-profile-pic.service';
 
 @Component({
   selector: 'app-head',
@@ -17,8 +18,9 @@ export class HeadComponent implements OnInit {
 sideBarOpen = true;
 userType:any;
 userName:any;
-ProfileImage:any;
+ProfileImage:any='';
 public isOpen = false;
+image:any=''
 @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
 ngAfterViewInit() {
@@ -26,27 +28,29 @@ ngAfterViewInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
       if (res.matches) {
         this.sidenav.mode = 'over';
-        this.ProfileImage = sessionStorage.getItem("profileImage")
-        console.log("ProfileImage",this.ProfileImage);
         this.sidenav.close();
       } else {
         this.sidenav.mode = 'side';
         this.sidenav.open();
-        this.ProfileImage = sessionStorage.getItem("profileImage")
-        console.log("ProfileImage",this.ProfileImage);
       }
     });
   }, 1);
  }
   constructor(private observer: BreakpointObserver,
-    private router: Router,private dialog: MatDialog,) { }
+    private router: Router,private dialog: MatDialog,
+    private sharedService: SharedServicesProfilePicService,
+    ) {     this.sharedService.listen().subscribe((m: any) => {
+      // console.log(m)
+      this.ProfileImage = localStorage.getItem("logInImage")
+    })}
 
   ngOnInit(): void {
     let Image = sessionStorage.getItem("profileImage");
-    this.ProfileImage = sessionStorage.getItem("profileImage")
+    this.ProfileImage = localStorage.getItem("logInImage")
     console.log("ProfileImage",this.ProfileImage);
     this.userName = localStorage.getItem("userName");
     this.userType=localStorage.getItem("userType");
+    this.image=localStorage.getItem("logInImage");
     
   }
   onFirstDataRendered(params: FirstDataRenderedEvent) {

@@ -5,6 +5,7 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angu
 import { MatSidenav } from '@angular/material/sidenav';
 import moment from 'moment';
 import { OtherMasterService } from 'src/app/services/other-master.service';
+import { SharedServicesProfilePicService } from 'src/app/services/shared-services-profile-pic.service';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { UserService } from 'src/app/services/user.service';
 @Component({
@@ -40,6 +41,8 @@ export class EditProfileComponent implements OnInit {
     // public dialog: MatDialog,
     // private dialogRef: MatDialogRef<any>,
     private sharedService: SharedService,
+    private sharedService1: SharedServicesProfilePicService,
+
     private otherMasterService: OtherMasterService) { 
 
     }
@@ -106,6 +109,9 @@ export class EditProfileComponent implements OnInit {
       if (res.response.result == 'successfully updated') {
         sessionStorage.setItem("profileImage",this.base64textString);
         console.log("SetImage",JSON.stringify(this.base64textString));
+        localStorage.setItem('logInImage', this.base64textString)
+
+        this.sharedService1.filter('Register click');
         // this.getUserProfileDetails();
         // this.dialogRef.close()
         // this.dialogRef.close();

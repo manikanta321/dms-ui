@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import * as moment from "moment";
+import { SharedServicesProfilePicService } from 'src/app/services/shared-services-profile-pic.service';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private login: LoginService,
+    private sharedService: SharedServicesProfilePicService,
+
   ) {
     localStorage.clear();
 
@@ -63,6 +66,9 @@ export class LoginComponent implements OnInit {
             this.setSession(this.loginData.token)
             console.log("LoginData", this.loginData);
             localStorage.setItem('logInId', this.loginData.id)
+            localStorage.setItem('logInImage', this.loginData.image)
+            this.sharedService.filter('Register click')
+
             localStorage.setItem('userName', this.loginData.userName)
             localStorage.setItem('userType', this.loginData.userType)
             localStorage.setItem('lastLoginDate', this.loginData.lastLoginDate);

@@ -1,0 +1,11 @@
+.close-icon {
+    left: 97%;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+    color: #686E74;
+    font-weight:  #686E74;
+}
+.close-icon:hover {
+    cursor: pointer;
+}

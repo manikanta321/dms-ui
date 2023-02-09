@@ -15,7 +15,9 @@
     margin-top: -18px;
     margin-bottom: 2px;
 }
-
+.productCountpopup{
+    color: blue;
+}
 .close-icon {
     left: 100%;
     position: relative;
@@ -30,7 +32,14 @@
     font-weight: bold;
     font-size: 20px;
 }
-
+::ng-deep .psubgrid-popup {
+    width: 999px !important;
+  }
+  
+  ::ng-deep .psubgrid-popup .mat-dialog-container {
+    padding: 0 !important;
+    margin-top: 72px;
+  }
 .addU:after {
     content: "";
     display: block;

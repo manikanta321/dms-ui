@@ -19,44 +19,94 @@
         <div #trigger  data-action="toggle" style="cursor: pointer;">
                    </div>
                    <div  class="menu-container">
-            <div  class="menu-item tick"   > Target Group <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
-            <div  class="menu-item tick"  > Geography Tags <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
-            <div  class="menu-item tick" >Product Custom Identifier <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
-            <div  class="menu-item tick" >Category <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
-            <div  class="menu-item tick" >Sub-Category <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
-            <div  class="menu-item tick" >Type<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
-            <div  class="menu-item tick" >Shipment Date<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
-            <div  class="menu-item tick" >Receipt Date <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
+            <div  class="menu-item tick" (click)=addTargetGroupElements() > Target Group 
+                <img *ngIf="isTargetGroupSelected" src="../../../assets/userImages/done-tick.svg"  alt="" >
+            </div>
+
+            <div  class="menu-item tick"  (click) = getGeoGraphyIdentifier()> Geography Tags 
+                <img *ngIf="isgeoGraphyIdentifierSelected" src="../../../assets/userImages/done-tick.svg">
+            </div>
+            <div  class="menu-item tick" (click) = getProductCustomIdentifier() >Product Custom Identifier 
+                <img *ngIf="isProductCustomIdentifierSelected" src="../../../assets/userImages/done-tick.svg">
+            </div>
+            <div  class="menu-item tick"  (click) = getCategory() >Category 
+                <img *ngIf="isCategorySelected" src="../../../assets/userImages/done-tick.svg">
+            </div>
+            <div  class="menu-item tick" (click) = getSubCategory() >Sub-Category 
+                <img *ngIf="isSubCategorySelected"  src="../../../assets/userImages/done-tick.svg"></div>
+            <div  class="menu-item tick" (click) = getType()>Type
+                <img *ngIf="typeSelected" src="../../../assets/userImages/done-tick.svg">
+            </div>
+            <div  class="menu-item tick" (click) = getShipmentDate()>Shipment Date
+                <img *ngIf="isShipmentDateSelected" src="../../../assets/userImages/done-tick.svg"></div>
+            <div  class="menu-item tick" (click) = getReceiptDate()>Receipt Date 
+                <img *ngIf="isReceiptDateSelected"  src="../../../assets/userImages/done-tick.svg" ></div>
             </div>
     </div>
     <div class="col-lg-4">
         <div  class="menu-container1">
-            <div class="searchBox d-flex">
-                <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
-                  placeholder="Type & search ">
-                         </div>
-                         <div class="row searchCheckBoxes">
-                            <ul>
-                          <mat-checkbox></mat-checkbox>&nbsp; Smartphone<br>
-                          <mat-checkbox></mat-checkbox>&nbsp; Snacks<br>
-                          <mat-checkbox></mat-checkbox>&nbsp; Fruits<br>
-                          <mat-checkbox></mat-checkbox>&nbsp; Smartphone<br>
-                          <mat-checkbox></mat-checkbox>&nbsp; Electronics<br>
-                          <mat-checkbox></mat-checkbox>&nbsp; Smartphone<br>
-                          <mat-checkbox></mat-checkbox>&nbsp; Smartphone<br>
-                          
-                          
-                               
-                            </ul>
-                         </div>
+        <input *ngIf="isTargetGroupSelected || isCategorySelected" class="" style="font-family: 'Gilroy'" type="text"   placeholder="Type & search">
+            <ul class="heroes" *ngIf="isTargetGroupSelected">
+                <li *ngFor="let item of targetGroupList" (click)="onItemClick(item?.targetGroupName)" id="list">
+                    <span class="name">{{item?.targetGroupName}}</span>
+                </li>
+              </ul>
+              <ul class="heroes" *ngIf="isgeoGraphyIdentifierSelected">
+                <li *ngFor="let Geography of geoGraphyIdentifierList">
+                    <input type="checkbox"><span>{{Geography?.geographyIdentifierName}}</span>
+                </li>
+              </ul>
+              <div *ngIf="isProductCustomIdentifierSelected">
+                <li *ngFor="let item of ProductCustomIdentifierList">
+                    <span class="label other">{{item.headingName}}</span>
+                    <div *ngFor="let pCIdentifier of item.productCustomeIdentifiers">
+                    <input type="checkbox">
+                    <span>
+                    {{pCIdentifier.productCustomName}}
+                    </span>
+                </div>
+                </li>
+              </div>
+              <div *ngIf="isCategorySelected">
+                <li *ngFor="let category of categoryList?.allOtherCats">
+                    <input type="checkbox"><span>{{category.catName}}</span>
+                </li>
+              </div>
+              <div *ngIf="isSubCategorySelected">
+                <li *ngFor="let subcat of subcaty?.allOtherSubCAts">
+                    <input type="checkbox"><span>{{subcat.subCatName}}</span>
+                </li>
+              </div>
+              <div *ngIf="typeSelected">
+                <li *ngFor="let type of typeList">
+                    <input type="checkbox"><span>{{type.typeName}}</span>
+                </li>
+              </div>
+              <div *ngIf="isShipmentDateSelected">
+                <li *ngFor="let item of menuDateValues">
+                    {{item.title}}
+                </li>
+              </div>
+              <div *ngIf="isReceiptDateSelected">
+                <li *ngFor="let item of menuDateValues">
+                    {{item.title}}
+                </li>
+              </div>
+              
+
+             </div>
+                         
         </div>
-    </div>
 </div>
 
 <div class="row selectedF">
     <div class="col-lg-12">
         <h6 class="BIN"> Selected Filter</h6>
-        <input type="text" required  placeholder=""  class=" selectedFilterInput">
+        <div class="containerElement">
+        <div  *ngFor="let item of values;let i =index;">
+           <div class="eleStyle"><span class="custom">{{item}}<mat-icon mat-button class="close-iconn">close</mat-icon></span></div>
+            </div>
+        </div>
     </div>
 </div>
 

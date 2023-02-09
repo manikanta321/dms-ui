@@ -132,4 +132,9 @@ getTargetById(data) {
   return this.http.post<any>(this.classificationurl + 'Dealerapi/GetDealerTargetDataByIdRow', data);
 
 }
+getTargetProductList(targetProduct) {
+
+  return this.http.get<any>(`${this.classificationurl}DealerApi/GetProductListforCount?targetgroupid=${targetProduct}`);
+
+}
 }

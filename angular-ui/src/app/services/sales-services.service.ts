@@ -116,4 +116,16 @@ public AddSales(data){
   return this.http.post<any>(this.userurl + 'SaleApi/AddSaleOrder', data);
 
 }
+// sales reports api calls
+getTargetList() {
+return this.http.get<any>(this.userurl + 'MaterialApi/GetTargetGroupList');
+}
+onClickSubCat(data:any){
+  return this.http.get<any>(`${this.userurl}MaterialApi/GetSUbCAts?catId=${data.catId}&flag=${data.flag}`);
+
+}
+onclickType(data:any){
+  return this.http.get<any>(`${this.userurl}MaterialApi/GetTypes?subCatId=${data.subCatId}&flag=${data.flag}`);
+
+}
 }

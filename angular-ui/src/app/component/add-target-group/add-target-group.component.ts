@@ -36,6 +36,7 @@ export class AddTargetGroupComponent implements OnInit {
   selectedProducts:any = [];
   targetGrpName:any;
   selectedProductCount:any;
+  selectedProductCounts:any;
   targetItemsArray:any = [];
   editStockItemId:any =[];
   constructor(public dialog: MatDialog,
@@ -97,15 +98,75 @@ export class AddTargetGroupComponent implements OnInit {
         instance.togglePopup();
       }
     }
-  }
+}
+editProducts() {
+  sessionStorage.setItem("addTProducts","");
+  if(this.targetItemsArray.length == 0) {
+    this.editStockItemId =JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]')
+    console.log("Target",this.targetItemsArray.length)
+  } 
+  else {
+    const stockId =  sessionStorage.getItem("stockItemId");
+    if(stockId == "[]"){
+      this.editStockItemId = JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]').concat(this.targetItemsArray?this.targetItemsArray:'[]');
+      console.log("this.editStockItemId",this.editStockItemId.length)
+      console.log("this.selectedProductCount",this.selectedProductCount)
+    }
+    else {
+    this.editStockItemId =JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]');
 
+    }
+    // this.editStockItemId =(this.targetItemsArray?this.targetItemsArray:'[]').concat(JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]'));
+    // this.editStockItemId =JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]');
+    console.log("stockItemId",sessionStorage.getItem("stockItemId"));
+    console.log("targetItemsArray",this.targetItemsArray)
+  // this.editStockItemId = JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]').concat(this.targetItemsArray?this.targetItemsArray:'[]');
+
+    // this.editStockItemId =(this.targetItemsArray?this.targetItemsArray:'[]')
+    // alert("Helloo");
+    console.log("Target",this.editStockItemId)
+  }
+  // this.editStockItemId = JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]').concat(this.targetItemsArray?this.targetItemsArray:'[]');
+    sessionStorage.setItem("addTProducts","");
+const dialogRef =  this.dialog.open(AddTargetGroupsProductsComponent,{data: this.editStockItemId }) 
+console.log("SelectedID1",this.editStockItemId)
+  dialogRef.afterClosed().subscribe((res) => {
+
+    this.editStockItemId =JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]');
+    console.log("SelectedID2",this.editStockItemId)
+    this.rowData5 = JSON.parse(localStorage.getItem("targetselectedRows") ?? '[]');
+      // this.stockItemId =JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]');
+      this.editStockItemId =JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]');
+      this.selectedProductCount = this.editStockItemId.length+ " products selected";
+      console.log("SelectedID3",this.editStockItemId)
+      this.selectedProducts = this.rowData5;
+    console.log("RowData5",this.rowData5);
+    })
+} 
   addTProducts() {
+    sessionStorage.setItem("addTProducts","addTProducts");
+    if(this.targetItemsArray.length == 0) {
+      this.editStockItemId =JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]')
+      // alert("Helloo");
+      console.log("Target",this.targetItemsArray.length)
+    } 
+    else {
+      this.editStockItemId =(this.targetItemsArray?this.targetItemsArray:'[]');
+
+      // alert("Helloo");
+      console.log("Target",this.targetItemsArray.length)
+    }
+    // this.editStockItemId = JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]').concat(this.targetItemsArray?this.targetItemsArray:'[]');
   const dialogRef =  this.dialog.open(AddTargetGroupsProductsComponent) 
+  console.log("SelectedID1",this.editStockItemId)
     dialogRef.afterClosed().subscribe((res) => {
+      console.log("SelectedID2",this.editStockItemId)
       this.rowData5 = JSON.parse(localStorage.getItem("targetselectedRows") ?? '[]');
         this.stockItemId =JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]');
-        this.editStockItemId =JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]').concat(this.targetItemsArray?this.targetItemsArray:'[]');
-        this.selectedProducts = this.TargetGrpData.selectedproducts.concat(this.rowData5);
+        this.editStockItemId =JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]');
+        console.log("SelectedID3",this.editStockItemId)
+        this.selectedProducts = this.rowData5;
+       this.selectedProductCounts = this.rowData5.length + " Products selected"
       console.log("RowData5",this.rowData5);
       })
   } 
@@ -126,7 +187,12 @@ console.log("targetgrpName",this.targetGroupName);
       const scrollDiff = gridBody.scrollHeight - scrollPos;
       //const api =  this.rowData5;
       this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
-      // this.paginationScrollCount = this.rowData5.length;
+      if(this.editStockItemId.length == 0) {
+        this.paginationScrollCount = this.selectedProducts.length;
+      }
+      else {
+        this.paginationScrollCount = this.editStockItemId.length;
+      }
     }
   }
   columnDefs: ColDef[] = [
@@ -228,7 +294,33 @@ console.log("targetgrpName",this.targetGroupName);
       this.dialogRef.close();
       })
   }
+  // editTarget() {
+  //   sessionStorage.setItem("stockItemId","[]")
+  //   let data = {
+  //     TargetGroupName: this.targetGroupName?this.targetGroupName:this.targetGrpName,
+  //     TargetGroupCode: this.editTargetCode,
+  //     CreatedById: this.CreatedByIdValue,
+  //     StockItemId: this.editStockItemId,
+  //     TargetGroupId: this.targetGrpId,
+  //   }
+  //   this.targetList.createTargetGroup(data).subscribe((res:any) => {
+  //     this.createTargetData = res.response;
+  //     console.log("response",this.createTargetData);
+  //     console.log("response Result",res.response.result);
+  //     if(this.createTargetData.result == 'Updated Succesfully') {
+  //       sessionStorage.setItem("AddTargetGrp","");
+  //       sessionStorage.setItem("EditTargetGrp","EditedTarget")
+  //       this.dialog.open(AddTargetGroupSuccessPopupComponent, {panelClass: 'activeSuccessPop'});
+  //       console.log("code target",this.createTargetData);
+  //       this.dialogRef.close();
+  //     }
+  //     else {
+  //       alert(res.response.result);
+  //     }
+  //     })
+  // }
   editTarget() {
+    // sessionStorage.setItem("stockItemId","[]")
     let data = {
       TargetGroupName: this.targetGroupName?this.targetGroupName:this.targetGrpName,
       TargetGroupCode: this.editTargetCode,
@@ -256,15 +348,18 @@ console.log("targetgrpName",this.targetGroupName);
     this.dialogRef.close(); 
   }
   editTargetData() {
+    // this.rowData5 = []
+    sessionStorage.setItem("stockItemId","[]")
     let data = {
       TargetGroupId: this.targetGrpId,
       CurrentUserId: this.CreatedByIdValue
     }
+    // sessionStorage.setItem("stockItemId","[]");
     this.targetList.editTargetGroup(data).subscribe((res) => {
       this.TargetGrpData = res.response;
       this.editTargetCode = this.TargetGrpData.targetGroupCode;
-      this.targetGrpName =this.TargetGrpData.targetGroupName
-      this.selectedProducts = this.TargetGrpData.selectedproducts.concat(this.rowData5);
+      this.targetGrpName =this.TargetGrpData.targetGroupName;
+        this.selectedProducts = this.TargetGrpData.selectedproducts.concat(this.rowData5);
       console.log("Selected Rows", this.selectedProducts);
       let targetData = this.selectedProducts;
       targetData.forEach(element => {

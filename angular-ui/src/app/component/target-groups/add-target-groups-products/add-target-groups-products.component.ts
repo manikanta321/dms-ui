@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { MatDialogRef, MatDialog } from '@angular/material/dialog';
+import { MatDialogRef, MatDialog , MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { GridReadyEvent, GridApi, ColDef, GridOptions, CellValueChangedEvent, FirstDataRenderedEvent } from 'ag-grid-community';
 import { MaterialListService } from 'src/app/services/material-list.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
@@ -31,7 +31,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
   productID: any = [];
   productIDentifire: any = [];
   searchText = "";
-  public rowData5: any = [{ productName: 444, classification: "test", sku: "sku", productIdentifier: 24, productGroup: "acd12", productCode: 45 }]
+  public rowData5: any = [];
   allcatlist: any[] = [];
   typeI: any = [];
   disabled = false;
@@ -155,18 +155,24 @@ export class AddTargetGroupsProductsComponent implements OnInit {
   productSelection = false;
   targetItemsData: any = [];
   targetItemsArray: any = [];
+  selectedData:any;
   constructor(public dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
     public promotionTypes: PromotionService,
     private fb: FormBuilder,
     private targetList: TargetListService,
     private materialList: MaterialListService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    // @Inject(MAT_DIALOG_DATA) public datas: any
   ) { }
 
   ngOnInit(): void {
+    this.selectedData = sessionStorage.getItem("addTProducts");
+    console.log("This.selectedRows",this.selectedData)
+    console.log("Datataaa",this.data);
+    this.displayTargetGroup();
     this.getclassification();
     this.getProduct();
-    this.displayTargetGroup();
     this.productidentify();
     this.myForm = this.fb.group({
       city: [this.selectedItems]
@@ -831,12 +837,15 @@ export class AddTargetGroupsProductsComponent implements OnInit {
   }
   addTargetitemsSelected() {
     this.targetselectedRows = this.gridApi.getSelectedRows();
-    localStorage.setItem('targetselectedRows',JSON.stringify(this.targetselectedRows) )
+    console.log("SelectedRowsss",this.targetselectedRows)
+    // localStorage.getItem("targetselectedRows")
+    localStorage.setItem('targetselectedRows', JSON.stringify(this.targetselectedRows))
     let targetData = this.targetselectedRows;
     targetData.forEach(element => {
       return this.targetItemsArray.push(element.stockItemId);
 
     })
+    console.log("TargetDataaaa",targetData)
     sessionStorage.setItem("stockItemId",JSON.stringify(this.targetItemsArray));
     console.log("TargetArray", this.targetItemsArray)
     let data = {
@@ -844,9 +853,9 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     }
     this.promotionTypes.addTargetGroup(data).subscribe((res) => {
       const responseTargetData = res.response;
+      // localStorage.setItem('targetselectedRows', JSON.stringify(this.targetselectedRows))
       console.log("responseTargetData", responseTargetData);
     })
-    localStorage.setItem('targetselectedRows', JSON.stringify(this.targetselectedRows))
     this.dialogRef.close();
   }
   onCellValueChanged(event: CellValueChangedEvent) {
@@ -857,6 +866,9 @@ export class AddTargetGroupsProductsComponent implements OnInit {
   }
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     params.api.paginationGoToPage(4);
+    params.api.forEachNode((node) =>
+    node.setSelected(!!node.data && node.data.isProductSelected)
+  );
   }
   openDialog() {
     // alert('mani')
@@ -986,17 +998,33 @@ export class AddTargetGroupsProductsComponent implements OnInit {
 
   displayTargetGroup() {
     const data = {
-      category: this.catergory,
-      subCategory: this.sub_categorys,
-      type: this.typeTosend,
-      productgroup: this.productID,
-      productidentifier: this.statusTypes,
-      search: this.searchText
+      category: [],
+      subCategory: [],
+      type: [],
+      productgroup: [],
+      productidentifier: [],
+      search: ''
       // isProduct:this.isproduct
 
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
+
+      if(this.selectedData != '') {
       this.rowData5 = res.response;
+
+      }
+      else {
+        let rowData = res.response;
+        rowData = rowData.map(x => {
+          let index = this.data.indexOf(x.stockItemId)
+          x.isProductSelected = index == -1 ?  false : true;
+          // console.log("XXXX",x)
+          return x;
+        });
+        this.rowData5 = rowData.sort((a, b) => b.isProductSelected - a.isProductSelected);
+        console.log('  this.rowData5this.rowData5', this.rowData5)
+        console.log("RowwwData5", this.rowData5)
+      }
 
     });
   }

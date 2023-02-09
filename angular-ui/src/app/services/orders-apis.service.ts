@@ -137,5 +137,11 @@ export class OrdersApisService {
   public dealersDetails(data) {
     return this.http.get<any>(this.userurl + `CommonApi/GetDealerId?CurrentUserId=${data}`)
   }
+
+  
+getStatusDrodownData(data){
+  return this.http.post<any>(this.userurl + 'OrdersApi/GetAllStatusdrop', data);  
+}
+  
 }
  

@@ -2,7 +2,7 @@
 <div style="min-height:50vh">
   <div class="row">
     <div class="col-md-1 col-lg-1 col-sm-1">
-      <button class="btn  btn-block submitbtn save-btn" [disabled]="!isDownload">Download</button>
+      <button class="btn  btn-block submitbtn save-btn" (click)="downloadReports()" [disabled]="!isDownload">Download</button>
     </div>
   </div>
 
@@ -74,12 +74,12 @@
     <div class="col-md-2 col-lg-2 col-sm-2" style="margin-left:-9px">
       <form [formGroup]="myForms3" class="dropdown-form">
         <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Status'" formControlName="city4"
-          [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList1" (onSelect)="onStatusSelect($event)"
-          (onDeSelect)="onStatusDeSelect($event)" (onDeSelectAll)="onItemDeSelectOrAllStatus($event)"
-          (onSelectAll)="onItemSelectOrAllStatus($event)">
+          [disabled]="disabled" [settings]="dropdownSettings3" [data]="statusList" 
+          (onSelect)="onItemSelected($event, 'status')" (onDeSelect)="onItemDeSelected($event,'status')"
+          (onDeSelectAll)="onItemDeSelectOrAllProduct($event,'status')" (onSelectAll)="onItemSelectOrAllProduct($event,'status')">
         </ng-multiselect-dropdown>
         <div class="dropdown-placeholder stts-placeholder">
-          <span *ngIf="myForms3.get('city4').value.length == 0">Sale Order Status </span>
+          <span *ngIf="myForms3.get('city4').value.length == 0"> Status Selected</span>
           <span *ngIf="myForms3.get('city4').value.length == 1" class="selected-placeholder">
             {{myForms3.get('city4').value.length}} Status selected </span>
           <span *ngIf="myForms3.get('city4').value.length > 1" class="selected-placeholder">
@@ -87,6 +87,12 @@
 
         </div>
       </form>
+
+      <!-- <ng-select [items]="statusList" id="dealerAllArray" name="dealerAllArray" class="dropdown-form"
+          required [virtualScroll]="true" bindLabel="statusName" bindValue="statusId" [searchable]="true"
+          [(ngModel)]="statusListType"  [clearable]="false" placeholder=" Select Type of Report" (change)="onItemSelectStatus($event)">
+        </ng-select> -->
+
     </div>
     <!-- calender -->
     <div class="col-md-2 col-lg-2 col-sm-2 d-flex">
@@ -102,8 +108,8 @@
               <hr />
             </section> -->
 
-      <div class="advance-filter"><img class="" src="assets/img/advance-filter-icon.png"
-          (click)="onClickAdvancedFilter()" alt="refresh"></div>
+      <div class="advance-filter" (click)="onClickAdvancedFilter()"><img class="" src="assets/img/advance-filter-icon.png"
+           alt="refresh"></div>
 
       <div class="ref"><img class="refresh" src="assets/img/Vector.png" (click)="refresh()" alt="refresh"></div>
       <!-- <div class="col-1"> -->

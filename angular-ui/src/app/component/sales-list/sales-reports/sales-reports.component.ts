@@ -34,6 +34,7 @@ import moment from 'moment';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { AdvancedFilterComponent } from '../advanced-filter/advanced-filter.component';
 import { ReportsService } from 'src/app/services/reports.service';
+import { OrdersApisService } from 'src/app/services/orders-apis.service';
 export interface PeriodicElement {
 
   name: any;
@@ -91,7 +92,7 @@ export class SalesReportsComponent implements OnInit {
   dropdownSettings: IDropdownSettings = {};
   dealerSetting: IDropdownSettings = {};
   dropdownSettings2: IDropdownSettings = {};
-  dropdownSettings3: IDropdownSettings = {};
+  // dropdownSettings3: IDropdownSettings = {};
   dropdownSettings4: IDropdownSettings = {};
   public rowData5 = [];
   public popupParent: HTMLElement = document.body;
@@ -141,7 +142,7 @@ export class SalesReportsComponent implements OnInit {
     //   headerName: "SKU",
     //   field: 'invoicedValue', tooltipField: "invoicedValue", minWidth: 160
     // },
-    
+
 
   ];
 
@@ -301,7 +302,7 @@ export class SalesReportsComponent implements OnInit {
   constructor(public dialog: MatDialog,
 
     private sharedServices: SharedService,
-
+    public orders: OrdersApisService,
     private router: Router,
     private _liveAnnouncer: LiveAnnouncer,
     private user: UserService,
@@ -396,6 +397,7 @@ export class SalesReportsComponent implements OnInit {
 
     this.getInvoicetranscationDropdownData();
     this.getDealersDropdownData();
+    this.getStatusDrodown();
 
     // this.getusertabeldata();
     this.statusItems();
@@ -412,6 +414,7 @@ export class SalesReportsComponent implements OnInit {
   dealersList: any = [];
   geoGraphyList: any = [];
   productListData: any = [];
+  statusList: any = [];
   // productList:any = [];
 
   selectedFilters: any = {
@@ -434,7 +437,8 @@ export class SalesReportsComponent implements OnInit {
     receiptEnddate: ""
   }
 
-  selectedReportType:string | null =null;
+  selectedReportType: string | null = null;
+  statusListType: string | null = null;
   dropdownSettings11 = {
     singleSelection: false,
     idField: 'customerid',
@@ -444,34 +448,50 @@ export class SalesReportsComponent implements OnInit {
     itemsShowLimit: 2,
     allowSearchFilter: true
   };
-  salesReportData:any = [];
-  reportResData:any = [];
-  showGridData:boolean = false;
-  getReportList(){
+  salesReportData: any = [];
+  reportResData: any = [];
+  showGridData: boolean = false;
+
+  convertedDateFormat() {
+    var x = new Date();
+    var y = x.getFullYear().toString();
+    var m = (x.getMonth() + 1).toString();
+    var d = x.getDate().toString();
+    (d.length == 1) && (d = '0' + d);
+    (m.length == 1) && (m = '0' + m);
+    return d + m + y;
+  }
+
+  downloadReports() {
+    this.gridApi.exportDataAsCsv({ fileName: 'salesReport_' + this.convertedDateFormat() });
+  }
+
+  getReportList() {
     this.salesReportData = [];
     this.reportResData = [];
     this.showGridData = false;
+    this.isDownload = false;
     this.reportsService.getSalesReportList(this.selectedFilters).subscribe((res) => {
       this.salesReportData = res.response;
-      var columnDefs:any = [];
+      var columnDefs: any = [];
       this.showGridData = true;
-
-      this.salesReportData.headders.forEach((x,i) =>{
+      this.isDownload = true;
+      this.salesReportData.headders.forEach((x, i) => {
         // x.headerName = this.salesReportData.headders[i].headderName;
-        let obj:any = {};
+        let obj: any = {};
         obj.headerName = x.headderName;
         obj.field = x.headderCode;
         obj.tooltipField = x.headderCode;
         // obj.minWidth = 300;
-        
+
         columnDefs.push(obj);
 
       })
 
-      this.reportResData = this.salesReportData.gridData; 
+      this.reportResData = this.salesReportData.gridData;
 
       this.columnDefs = columnDefs;
-      
+
       console.log(res.response);
     });
   }
@@ -505,6 +525,17 @@ export class SalesReportsComponent implements OnInit {
     });
   }
 
+
+
+  getStatusDrodown() {
+    let obj = { "CurrentUserId": this.loggedUserId, "ModuleName": "Reports" }
+    this.statusList = [];
+    this.orders.getStatusDrodownData(obj).subscribe(res => {
+      console.log(res);
+      this.statusList = res.response;
+    })
+  }
+
   getDealersDropdownData() {
     this.dealersList = [];
     this.reportsService.getDealersDropdown(this.loggedUserId).subscribe((res) => {
@@ -533,7 +564,10 @@ export class SalesReportsComponent implements OnInit {
     this.selectedFilters.reporttypeId = item.reportCode;
   }
 
-
+  // onItemSelectStatus(item:any){
+  //   console.log(item);
+  //   this.selectedFilters.statusIds = [item.statusId];
+  // }
 
   refresh() {
 
@@ -554,6 +588,7 @@ export class SalesReportsComponent implements OnInit {
     });
 
     this.selectedReportType = null;
+    this.statusListType = null;
     this.promotionSelected = [];
     this.productSelected = [];
     this.geographySelected = [];
@@ -568,7 +603,7 @@ export class SalesReportsComponent implements OnInit {
     this.showGridData = false;
     this.salesReportData = [];
     this.geoGraphyList = [];
-    
+
     // this.getusertabeldata();
   }
 
@@ -843,6 +878,11 @@ export class SalesReportsComponent implements OnInit {
 
         break;
       }
+
+      case 'status': {
+        this.selectedFilters.statusIds.push(item.statusId);
+        break;
+      }
     }
   }
 
@@ -870,6 +910,12 @@ export class SalesReportsComponent implements OnInit {
       case 'product': {
         let index = this.selectedFilters.productIds.indexOf(item.stockItemId);
         if (index != -1) this.selectedFilters.productIds.splice(index, 1);
+
+        break;
+      }
+      case 'status': {
+        let index = this.selectedFilters.statusIds.indexOf(item.statusId);
+        if (index != -1) this.selectedFilters.statusIds.splice(index, 1);
 
         break;
       }
@@ -903,6 +949,10 @@ export class SalesReportsComponent implements OnInit {
         this.selectedFilters.productIds = items.map(x => x.stockItemId);
         break;
       }
+      case 'status': {
+        this.selectedFilters.statusIds = items.map(x => x.statusId);
+        break;
+      }
     }
   }
 
@@ -926,6 +976,10 @@ export class SalesReportsComponent implements OnInit {
       }
       case 'product': {
         this.selectedFilters.productIds = [];
+        break;
+      }
+      case 'status': {
+        this.selectedFilters.statusIds = [];
         break;
       }
     }
@@ -1116,21 +1170,21 @@ export class SalesReportsComponent implements OnInit {
       this.toppings1 = new FormControl(this.toppingList1);
 
 
-      this.dropdownSettings3 = {
-        singleSelection: false,
-        idField: 'statusId',
-        textField: 'statusName',
-        selectAllText: 'Select All',
-        unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
-        allowSearchFilter: false
-      };
+
       this.selectedItems = [];
 
     });
   }
 
-
+  dropdownSettings3 = {
+    singleSelection: false,
+    idField: 'statusId',
+    textField: 'statusName',
+    selectAllText: 'Select All',
+    unSelectAllText: 'UnSelect All',
+    itemsShowLimit: 2,
+    allowSearchFilter: false
+  };
 
 
 
@@ -1346,6 +1400,9 @@ export class SalesReportsComponent implements OnInit {
   // datep(){
   //   this.dialog.open( DateRangeSelectionComponent);
   // }
+
+
+
   dealerItems() {
     this.associationService.getDealers().subscribe((res: any) => {
       let localdata = res.response;

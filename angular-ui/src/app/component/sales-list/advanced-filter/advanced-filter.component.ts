@@ -40,6 +40,11 @@ export class AdvancedFilterComponent implements OnInit {
   values: any = [];
   checkedCount : number = 0;
   searchText;
+  startDate: any;
+  endDate: any;
+  statusList: any;
+  targetItem:boolean=false;
+  geograpItem: boolean = false;
 
   constructor(private salesService:SalesServicesService,
     private addMaterials: AddMaterialsService,
@@ -60,6 +65,7 @@ export class AdvancedFilterComponent implements OnInit {
     this.isShipmentDateSelected = false;
     this.isReceiptDateSelected = false;
     this.isTargetGroupSelected = true;
+    this.targetItem = true;
     this.salesService.getTargetList().subscribe((res) => {
       this.targetGroupList = res.response;
       console.log("check target", this.targetGroupList);
@@ -210,6 +216,16 @@ getReceiptDate(){
   this.isReceiptDateSelected = true;
   this.getListOfdatesTypes();
 }
+onItemClickOfTargetGroup(item : any){
+  this.targetItem = true;
+  this.geograpItem = false;
+  if(!(this.isCheckedForProduct(item))){
+  this.values.push(item);
+  }
+  else if(this.isCheckedForProduct(item)){
+    this.values.pop(item);
+  }
+}
 onItemClick(item : any){
   if(!(this.isCheckedForProduct(item))){
   this.values.push(item);
@@ -218,6 +234,17 @@ onItemClick(item : any){
     this.values.pop(item);
   }
 }
+onItemClickOfGeograpy(item : any){
+  this.targetItem = true;
+  this.geograpItem = true;
+  if(!(this.isCheckedForProduct(item))){
+  this.values.push(item);
+  }
+  else if(this.isCheckedForProduct(item)){
+    this.values.pop(item);
+  }
+}
+
 onItemClickOfCategory(category : any){
   localStorage.removeItem("category");
   if(!(this.isCheckedForProduct(category.catName))){
@@ -277,6 +304,13 @@ isCheckedForProduct(item:any){
 clearAll(){
   this.values.length = 0;
   this.checkedCount = 0;
+}
+
+customDatePickerEvent(eventChange) {
+  this.selectedDateRange = eventChange.selectedDate;
+  this.startDate = this.selectedDateRange.startDate;
+  this.endDate = this.selectedDateRange.endDate;
+  console.log("dfdfdfdfdfd",this.selectedDateRange);
 }
 }
 

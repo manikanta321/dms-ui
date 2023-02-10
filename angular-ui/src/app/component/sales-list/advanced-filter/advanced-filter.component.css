@@ -604,8 +604,7 @@ display: flex;
   .custom{
     height: max-content;
     width: max-content;
-    background: lightskyblue;
-    color: white;
+    color: black;
     border: 0px solid;
     border-radius: 34px;
     padding: 7px;
@@ -616,4 +615,10 @@ display: flex;
     
     padding-left: 16px;
     margin-top: 12px;
+}
+.targetColor{
+    background-color:#0353A4;
+}
+.geoColor{
+    background-color: red;
 }

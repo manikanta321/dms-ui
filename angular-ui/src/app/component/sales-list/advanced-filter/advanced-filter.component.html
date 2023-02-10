@@ -51,12 +51,12 @@
                             class="search" alt="search">  
         <ul class="heroes" *ngIf="isTargetGroupSelected">
                 <li *ngFor="let item of targetGroupList | filter:searchText">
-                    <mat-checkbox [(ngModel)]="item.targetGroupName.selected" (change)="onItemClick(item?.targetGroupName);updateCount($event);"  [checked]="isCheckedForProduct(item.targetGroupName)">{{item.targetGroupName}}</mat-checkbox>
+                    <mat-checkbox  *ngIf="targetItem" [(ngModel)]="item.targetGroupName.selected" (change)="onItemClickOfTargetGroup(item?.targetGroupName);updateCount($event);"  [checked]="isCheckedForProduct(item.targetGroupName)">{{item.targetGroupName}}</mat-checkbox>
                 </li>
               </ul>
               <ul class="heroes1" *ngIf="isgeoGraphyIdentifierSelected">
                 <li *ngFor="let Geography of geoGraphyIdentifierList">
-                    <mat-checkbox [(ngModel)]="Geography?.geographyIdentifierName.selected" (change)="onItemClick(Geography?.geographyIdentifierName);updateCount($event)"  [checked]="isCheckedForProduct(Geography?.geographyIdentifierName)">{{Geography?.geographyIdentifierName}}</mat-checkbox>
+                    <mat-checkbox *ngIf="geograpItem" [(ngModel)]="Geography?.geographyIdentifierName.selected" (change)="onItemClickOfGeograpy(Geography?.geographyIdentifierName);updateCount($event)"  [checked]="isCheckedForProduct(Geography?.geographyIdentifierName)">{{Geography?.geographyIdentifierName}}</mat-checkbox>
                 </li>
               </ul>
               <div *ngIf="isProductCustomIdentifierSelected" class="heroes2">
@@ -69,20 +69,19 @@
                 </li>
               </div>
               <div *ngIf="isCategorySelected"  class="heroes3">
-                <li *ngFor="let category of categoryList?.allOtherCats">
-                    <mat-checkbox class="productC"  [(ngModel)]="category.catName.selected" (change)="onItemClick(category);updateCount($event)"  [checked]="isCheckedForProduct(category.catName)">{{category.catName}}</mat-checkbox>
+                <li *ngFor="let category of categoryList?.allOtherCats | filter:searchText">
+                    <mat-checkbox class="productC"  [(ngModel)]="category.catName.selected" (change)="onItemClickOfCategory(category);updateCount($event)"  [checked]="isCheckedForProduct(category.catName)">{{category.catName}}</mat-checkbox>
 
                 </li>
               </div>
               <div *ngIf="isSubCategorySelected" class="heroes4">
-                <li *ngFor="let subcat of subcaty?.allOtherSubCAts">
-                    <input type="checkbox"><span>{{subcat.subCatName}}</span>
-                    <mat-checkbox  class="productC" [(ngModel)]="subcat.subCatName.selected" (change)="onItemClick(subcat);updateCount($event)" [checked]="isCheckedForProduct(subcat.s)">{{subcat.subCatName}}</mat-checkbox>
+                <li *ngFor="let subcat of subcaty?.allOtherSubCAts | filter:searchText">
+                    <mat-checkbox  class="productC" [(ngModel)]="subcat.subCatName.selected" (change)="onItemClickOfSubCategory(subcat);updateCount($event)" [checked]="isCheckedForProduct(subcat.subCatName)">{{subcat.subCatName}}</mat-checkbox>
 
                             </li>
                         </div>
                         <div *ngIf="typeSelected">
-                            <li *ngFor="let type of typeList">
+                            <li *ngFor="let type of typeList | filter:searchText">
                                 <mat-checkbox class="productC" [(ngModel)]="type.typeName.selected"
                                     (change)="onItemClickOfType(type);updateCount($event);"
                                     [checked]="isCheckedForProduct(type.typeName)">{{type.typeName}}</mat-checkbox>
@@ -94,15 +93,19 @@
                                 class="tickmark">
                             <li *ngFor="let item of menuDateValues">
                                 {{item.title}}
- 
                             </li>
                         </div>
+                       
                         <div *ngIf="isReceiptDateSelected" class="heroes5 menu-itemm tick" >
                             <img *ngIf="isReceiptDateSelected" src="../../../assets/userImages/done-tick.svg"
                                 class="tickmark">
                             <li *ngFor="let item of menuDateValues">
                                 {{item.title}}
                             </li>
+                            <div class="invoice"  ngIf="item.title == 'Custom'">
+                                <ngx-daterangepicker-material >
+                                </ngx-daterangepicker-material>
+                            </div>
                         </div>
 
 
@@ -116,7 +119,7 @@
                     <h6 class="BIN"> Selected Filter</h6>
                     <div class="containerElement">
                         <div *ngFor="let item of values;let i =index;">
-                            <div class="eleStyle"><span class="custom">{{item}}<mat-icon mat-button class="close-iconn"
+                            <div class="eleStyle"><span class="custom" [ngClass] ="{'targetColor': targetItem , 'geoColor' : geograpItem}">{{item}}<mat-icon mat-button class="close-iconn"
                                         (click)="removeItem(item)">close</mat-icon></span></div>
                         </div>
                     </div>

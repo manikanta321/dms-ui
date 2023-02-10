@@ -8,6 +8,12 @@
 
     /* background-color: #CED4DA; */
 }
+.close-iconn{
+   cursor: pointer;
+}
+.selected .tick {
+    display: inline;
+  }
 
 .BIN {
     font-family: 'Gilroy-Light';
@@ -421,6 +427,8 @@ border-radius: 10px;
 border: 0.5px solid #000000;
 height: 188px;
 width: 100%;
+overflow: auto;
+display: flex;
   }
   .custom{
     height: max-content;

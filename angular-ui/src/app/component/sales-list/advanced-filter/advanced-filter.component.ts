@@ -34,6 +34,7 @@ export class AdvancedFilterComponent implements OnInit {
   shipmentDatalist: any;
   menuDateValues:any;
   isReceiptDateSelected: boolean =false;
+  isTargetGroupNameSelected:boolean = false;
   selectedItem: any;
   selectedItemsList : string[] = [];
   values: any = [];
@@ -205,12 +206,23 @@ getReceiptDate(){
   this.getListOfdatesTypes();
 }
 onItemClick(item : any){
+  if(!(this.isCheckedForProduct(item))){
+  this.isTargetGroupNameSelected =true;
   this.values.push(item);
+  }
 }
-
-
-
-
+removeItem(item) {
+  const index = this.values.indexOf(item);
+  this.values.splice(index, 1);
+}
+isCheckedForProduct(item:any){
+  if(this.values.includes(item)){
+    return true;
+  }
+  else{
+   return false
+  }
+}
 }
 
 

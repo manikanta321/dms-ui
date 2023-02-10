@@ -47,39 +47,41 @@
         <div  class="menu-container1">
         <input *ngIf="isTargetGroupSelected || isCategorySelected" class="" style="font-family: 'Gilroy'" type="text"   placeholder="Type & search">
             <ul class="heroes" *ngIf="isTargetGroupSelected">
-                <li *ngFor="let item of targetGroupList" (click)="onItemClick(item?.targetGroupName)" id="list">
-                    <span class="name">{{item?.targetGroupName}}</span>
+                <li *ngFor="let item of targetGroupList">
+                    <mat-checkbox [(ngModel)]="item.targetGroupName.selected" (change)="onItemClick(item?.targetGroupName)"  [checked]="isCheckedForProduct(item.targetGroupName)">{{item.targetGroupName}}</mat-checkbox>
                 </li>
               </ul>
               <ul class="heroes" *ngIf="isgeoGraphyIdentifierSelected">
                 <li *ngFor="let Geography of geoGraphyIdentifierList">
-                    <input type="checkbox"><span>{{Geography?.geographyIdentifierName}}</span>
+                    <mat-checkbox [(ngModel)]="Geography?.geographyIdentifierName.selected" (change)="onItemClick(Geography?.geographyIdentifierName)"  [checked]="isCheckedForProduct(Geography?.geographyIdentifierName)">{{Geography?.geographyIdentifierName}}</mat-checkbox>
                 </li>
               </ul>
               <div *ngIf="isProductCustomIdentifierSelected">
-                <li *ngFor="let item of ProductCustomIdentifierList">
+                <li *ngFor="let item of ProductCustomIdentifierList" >
                     <span class="label other">{{item.headingName}}</span>
                     <div *ngFor="let pCIdentifier of item.productCustomeIdentifiers">
-                    <input type="checkbox">
-                    <span>
-                    {{pCIdentifier.productCustomName}}
-                    </span>
+                    <mat-checkbox [(ngModel)]="pCIdentifier.productCustomName.selected" (change)="onItemClick(pCIdentifier.productCustomName)"  [checked]="isCheckedForProduct(pCIdentifier.productCustomName)">{{pCIdentifier.productCustomName}}</mat-checkbox>
+          
                 </div>
                 </li>
               </div>
               <div *ngIf="isCategorySelected">
                 <li *ngFor="let category of categoryList?.allOtherCats">
-                    <input type="checkbox"><span>{{category.catName}}</span>
+                    <mat-checkbox [(ngModel)]="category.catName.selected" (change)="onItemClick(category.catName)"  [checked]="isCheckedForProduct(category.catName)">{{category.catName}}</mat-checkbox>
+
                 </li>
               </div>
               <div *ngIf="isSubCategorySelected">
                 <li *ngFor="let subcat of subcaty?.allOtherSubCAts">
                     <input type="checkbox"><span>{{subcat.subCatName}}</span>
+                    <mat-checkbox [(ngModel)]="subcat.subCatName.selected" (change)="onItemClick(subcat.subCatName)">{{subcat.subCatName}}</mat-checkbox>
+
                 </li>
               </div>
               <div *ngIf="typeSelected">
                 <li *ngFor="let type of typeList">
-                    <input type="checkbox"><span>{{type.typeName}}</span>
+                    <mat-checkbox [(ngModel)]="type.typeName.selected" (change)="onItemClick(type.typeName)"  [checked]="isCheckedForProduct(type.typeName)">{{type.typeName}}</mat-checkbox>
+
                 </li>
               </div>
               <div *ngIf="isShipmentDateSelected">
@@ -104,7 +106,7 @@
         <h6 class="BIN"> Selected Filter</h6>
         <div class="containerElement">
         <div  *ngFor="let item of values;let i =index;">
-           <div class="eleStyle"><span class="custom">{{item}}<mat-icon mat-button class="close-iconn">close</mat-icon></span></div>
+           <div class="eleStyle"><span class="custom">{{item}}<mat-icon mat-button class="close-iconn" (click)="removeItem(item)">close</mat-icon></span></div>
             </div>
         </div>
     </div>

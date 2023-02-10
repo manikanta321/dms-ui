@@ -30,7 +30,7 @@
             <div  class="menu-item tick menu-item-prodCustomId" (click) = getProductCustomIdentifier() >Product Custom Identifier <span *ngIf="isProductCustomIdentifierSelected">({{checkedCount}})</span>
                 <img *ngIf="isProductCustomIdentifierSelected" src="../../../assets/userImages/done-tick.svg">
             </div>
-            <div  class="menu-item tick menu-item-categO"  (click) = getCategory() >Category <span *ngIf="typeSelected">({{checkedCount}})</span>
+            <div  class="menu-item tick menu-item-categO"  (click) = getCategory() >Category <span *ngIf="isCategorySelected">({{checkedCount}})</span>
                 <img *ngIf="isCategorySelected" src="../../../assets/userImages/done-tick.svg">
             </div>
             <div  class="menu-item tick menu-item-subCategO" (click) = getSubCategory() >Sub-Category <span *ngIf="isSubCategorySelected">({{checkedCount}})</span>
@@ -51,33 +51,33 @@
                             class="search" alt="search">  
         <ul class="heroes" *ngIf="isTargetGroupSelected">
                 <li *ngFor="let item of targetGroupList | filter:searchText">
-                    <mat-checkbox [(ngModel)]="item.targetGroupName.selected" (change)="onItemClick(item?.targetGroupName)"  [checked]="isCheckedForProduct(item.targetGroupName);;updateCount($event);">{{item.targetGroupName}}</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="item.targetGroupName.selected" (change)="onItemClick(item?.targetGroupName);updateCount($event)"  [checked]="isCheckedForProduct(item.targetGroupName);updateCount($event);">{{item.targetGroupName}}</mat-checkbox>
                 </li>
               </ul>
               <ul class="heroes1" *ngIf="isgeoGraphyIdentifierSelected">
                 <li *ngFor="let Geography of geoGraphyIdentifierList">
-                    <mat-checkbox [(ngModel)]="Geography?.geographyIdentifierName.selected" (change)="onItemClick(Geography?.geographyIdentifierName)"  [checked]="isCheckedForProduct(Geography?.geographyIdentifierName)">{{Geography?.geographyIdentifierName}}</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="Geography?.geographyIdentifierName.selected" (change)="onItemClick(Geography?.geographyIdentifierName);updateCount($event)"  [checked]="isCheckedForProduct(Geography?.geographyIdentifierName)">{{Geography?.geographyIdentifierName}}</mat-checkbox>
                 </li>
               </ul>
               <div *ngIf="isProductCustomIdentifierSelected" class="heroes2">
                 <li *ngFor="let item of ProductCustomIdentifierList" >
                     <span class="label other">{{item.headingName}}</span>
                     <div *ngFor="let pCIdentifier of item.productCustomeIdentifiers">
-                    <mat-checkbox  class="productC"  [(ngModel)]="pCIdentifier.productCustomName.selected" (change)="onItemClick(pCIdentifier.productCustomName)"  [checked]="isCheckedForProduct(pCIdentifier.productCustomName)">{{pCIdentifier.productCustomName}}</mat-checkbox>
+                    <mat-checkbox  class="productC"  [(ngModel)]="pCIdentifier.productCustomName.selected" (change)="onItemClick(pCIdentifier.productCustomName);updateCount($event)"  [checked]="isCheckedForProduct(pCIdentifier.productCustomName)">{{pCIdentifier.productCustomName}}</mat-checkbox>
           
                 </div>
                 </li>
               </div>
               <div *ngIf="isCategorySelected"  class="heroes3">
                 <li *ngFor="let category of categoryList?.allOtherCats">
-                    <mat-checkbox class="productC"  [(ngModel)]="category.catName.selected" (change)="onItemClick(category.catName)"  [checked]="isCheckedForProduct(category.catName)">{{category.catName}}</mat-checkbox>
+                    <mat-checkbox class="productC"  [(ngModel)]="category.catName.selected" (change)="onItemClick(category);updateCount($event)"  [checked]="isCheckedForProduct(category.catName)">{{category.catName}}</mat-checkbox>
 
                 </li>
               </div>
               <div *ngIf="isSubCategorySelected" class="heroes4">
                 <li *ngFor="let subcat of subcaty?.allOtherSubCAts">
                     <input type="checkbox"><span>{{subcat.subCatName}}</span>
-                    <mat-checkbox  class="productC" [(ngModel)]="subcat.subCatName.selected" (change)="onItemClick(subcat.subCatName)">{{subcat.subCatName}}</mat-checkbox>
+                    <mat-checkbox  class="productC" [(ngModel)]="subcat.subCatName.selected" (change)="onItemClick(subcat);updateCount($event)">{{subcat.subCatName}}</mat-checkbox>
 
                             </li>
                         </div>

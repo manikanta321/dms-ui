@@ -38,6 +38,8 @@ export class AdvancedFilterComponent implements OnInit {
   selectedItem: any;
   selectedItemsList : string[] = [];
   values: any = [];
+  checkedCount : number = 0;
+  searchText;
 
   constructor(private salesService:SalesServicesService,
     private addMaterials: AddMaterialsService,
@@ -45,6 +47,9 @@ export class AdvancedFilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.UserId = localStorage.getItem("logInId");
+    localStorage.removeItem("category");
+    localStorage.removeItem("subcategory");
+
   }
   addTargetGroupElements(){
     this.isgeoGraphyIdentifierSelected = false;
@@ -110,7 +115,7 @@ getSubCategory(){
   this.isReceiptDateSelected = false;
   this.isSubCategorySelected = true;
     let Subdata = {
-     catId: "129",
+     catId: localStorage.getItem("category"),
      flag:true
     }
     this.salesService.onClickSubCat(Subdata).subscribe((res) => {
@@ -127,7 +132,7 @@ getType(){
   this.isReceiptDateSelected = false;
   this.typeSelected = true;
     let Subdata = {
-      subCatId: "77",
+      subCatId: localStorage.getItem("subcategory"),
       flag:false
     }
     this.salesService.onclickType(Subdata).subscribe((res) => {
@@ -207,13 +212,59 @@ getReceiptDate(){
 }
 onItemClick(item : any){
   if(!(this.isCheckedForProduct(item))){
-  this.isTargetGroupNameSelected =true;
   this.values.push(item);
+  }
+  else if(this.isCheckedForProduct(item)){
+    this.values.pop(item);
+  }
+}
+onItemClickOfCategory(category : any){
+  localStorage.removeItem("category");
+  if(!(this.isCheckedForProduct(category.catName))){
+    this.values.push(category.catName);
+    }
+    else if(this.isCheckedForProduct(category.catName)){
+      this.values.pop(category.catName);
+    }
+    if(this.isCategorySelected){
+      localStorage.setItem("category" , category.catId);
+    }
+
+}
+onItemClickOfSubCategory(subcat : any){
+  localStorage.removeItem("subcategory");
+  if(!(this.isCheckedForProduct(subcat.subCatName))){
+    this.values.push(subcat.subCatName);
+    }
+    else if(this.isCheckedForProduct(subcat.subCatName)){
+      this.values.pop(subcat.subCatName);
+    }
+  if(this.isSubCategorySelected){
+      localStorage.setItem("subcategory" , subcat.subCatId);
+    }
+
+}
+onItemClickOfType(type: any){
+    if(!(this.isCheckedForProduct(type.typeName))){
+      this.values.push(type.typeName);
+      }
+      else if(this.isCheckedForProduct(type.typeName)){
+        this.values.pop(type.typeName);
+      }
+    
+
+}
+updateCount(event) {
+  if (event.checked) {
+    this.checkedCount++;
+  } else {
+    this.checkedCount--;
   }
 }
 removeItem(item) {
   const index = this.values.indexOf(item);
   this.values.splice(index, 1);
+  this.checkedCount--;
 }
 isCheckedForProduct(item:any){
   if(this.values.includes(item)){
@@ -222,6 +273,10 @@ isCheckedForProduct(item:any){
   else{
    return false
   }
+}
+clearAll(){
+  this.values.length = 0;
+  this.checkedCount = 0;
 }
 }
 

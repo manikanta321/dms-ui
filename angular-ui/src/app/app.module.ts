@@ -204,6 +204,7 @@ import { TooltipModule } from 'ng2-tooltip-directive';
 import { AdvancedFilterComponent } from './component/sales-list/advanced-filter/advanced-filter.component';
 import { AddTargetGroupSuccessPopupComponent } from './component/add-target-group-success-popup/add-target-group-success-popup.component';
 import { DealerTargetPopupGridComponent } from './dealer-target-popup-grid/dealer-target-popup-grid.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -505,6 +506,7 @@ import { DealerTargetPopupGridComponent } from './dealer-target-popup-grid/deale
           
   ],
   imports: [
+    Ng2SearchPipeModule,
     MatTooltipModule,
     FormsModule,
     BrowserModule,

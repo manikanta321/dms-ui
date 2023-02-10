@@ -252,12 +252,20 @@ export class ViewPromotionPopupComponent implements OnInit {
 
     {
       headerName: "Code",
-      field: 'code', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',   
-       checkboxSelection :true,
-      showDisabledCheckboxes: true,
+      field: 'code', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
+      
+        checkboxSelection: (params) => { 
+        
+        return params.node.data.isEnabled
+      },
+      
+        showDisabledCheckboxes: true,
+
+      
       
 
     },
+   
     { headerName: "Dealer Name", field: 'dealerName', type: ['nonEditableColumn'] },
     { headerName: "", field: '', type: ['nonEditableColumn'] },
 
@@ -281,6 +289,8 @@ export class ViewPromotionPopupComponent implements OnInit {
       //  onCellClicked: (event: CellClickedEvent) => this.dialog.open(DeletecomponentComponent, {panelClass: 'editpopup'})
       // // onCellClicked: (event: CellClickedEvent) => this.iconDisabled = true
     },
+
+    
 
     // {
     //   headerName: "Avatar",
@@ -783,6 +793,7 @@ export class ViewPromotionPopupComponent implements OnInit {
     //   return {custmId: data.customerId}
     //  })
     //  console.log('jj',result)
+    
   }
 
 

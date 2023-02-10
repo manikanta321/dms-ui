@@ -46,6 +46,7 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
   startDateInvoice:any = '';
   endDateInvoice:any = '';
   receiptDatalist:any = [];
+  emptyDownloadArray:any = [];
   columnDefs: ColDef[] = [
     {  headerName: "Order No.",
        field: 'orderNo',      tooltipField:"orderNo",type: ['nonEditableColumn']
@@ -746,5 +747,10 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
   }
   bulkDownload() {
     this.gridApi.exportDataAsCsv();
+  }
+  emptyDownload(){
+this.emptyDownloadArray = this.shipmentDatalist;
+this.emptyDownloadArray = [];
+    this.gridApi.exportDataAsCsv(this.emptyDownloadArray);
   }
 }

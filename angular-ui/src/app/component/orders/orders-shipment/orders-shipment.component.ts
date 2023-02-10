@@ -14,10 +14,10 @@ import { OrderActionShipmentComponent } from '../order-action-shipment/order-act
 import { ActivatedRoute } from '@angular/router';
 import { OrderlistActionPopupComponent } from '../../order-list/orderlist-action-popup/orderlist-action-popup.component';
 import { OrdersReceiveShipmentComponent } from '../../orders-receive-shipment/orders-receive-shipment.component';
-import { OtherMasterService } from 'src/app/services/other-master.service';
 import moment from 'moment';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { SharedServicesShipmentService } from 'src/app/services/shared-services-shipment.service';
+import { OrderShipmentService } from 'src/app/services/order-shipment.service';
 
 @Component({
   selector: 'app-orders-shipment',
@@ -182,7 +182,8 @@ export class OrdersShipmentComponent implements OnInit {
     public orders:OrdersApisService,
     private user: UserService,
     private route: ActivatedRoute,
-    private otherMasterService:OtherMasterService,
+    private orderShipment:OrderShipmentService,
+    
     private fb: FormBuilder) { 
 
       this.sharedserviceForshipment.listen().subscribe((m: any) => {
@@ -233,12 +234,28 @@ export class OrdersShipmentComponent implements OnInit {
     
   }
   onFirstDataRendered(params: FirstDataRenderedEvent) {
-    this.otherMasterService.listen().subscribe((m: any) => {
+    // this.otherMasterService.listen().subscribe((m: any) => {
+    //   console.log("RefreshData",m)
+    //   setTimeout (() => {
+    //     this.shipmentList();
+    //  }, 2000);
+     
+    // })
+    // this.targetGroupService.listen().subscribe((m: any) => {
+    //   console.log("RefreshData",m)
+    //   setTimeout (() => {
+    //     this.shipmentList();
+    //  }, 2000);
+     
+
+    // })
+    this.orderShipment.listen().subscribe((m: any) => {
       console.log("RefreshData",m)
       setTimeout (() => {
         this.shipmentList();
      }, 2000);
      
+
     })
     params.api.paginationGoToPage(4);
   }
@@ -293,7 +310,7 @@ export class OrdersShipmentComponent implements OnInit {
  bulkDownload(){
   sessionStorage.setItem("bulkShipDownload","ShipmentDownload");
   sessionStorage.setItem("OrderReceiptDownload",'');
-  this.dialog.open(ShipOrderBulkDownloadComponent, {width:'2000px',maxWidth:'98vw'})
+  this.dialog.open(ShipOrderBulkDownloadComponent, {width:'1500px',maxWidth:'98vw'})
   }
   selectdays(){
     this.dialog.open(CustomDatePopupComponent,{panelClass:'custmdays'})
@@ -353,7 +370,7 @@ export class OrdersShipmentComponent implements OnInit {
       sessionStorage.setItem("sales",'');
       sessionStorage.setItem("orderReceipt",'');
       sessionStorage.setItem("orderShipment",'shipment');
-        this.dialog.open(SalesBulkUploadComponent,{maxWidth:'100vw'});
+        this.dialog.open(SalesBulkUploadComponent,{maxWidth:'97vw'});
         // this.isOpen = false;
     }
     shipmentList(){

@@ -16,7 +16,7 @@ border-radius: 25px;
 }
 .sales-containers {
   position: relative;
-  min-width: 1600px !important;
+  min-width: 1400px !important;
   height: 620px;
   left: 0px;
   top: 0px;
@@ -127,7 +127,7 @@ align-items: center;
   .addUsers::after {
     content: "";
     display: block;
-    width: 716px;
+    width: 602px;
     height: 1px;
     background: #686E74;
     right: 41px;
@@ -157,7 +157,7 @@ align-items: center;
   .addUsers:before {
     content: "";
     display: block;
-    width: 544px;
+    width: 476px;
     height: 1px;
     background: #686E74;
     left: 45px;
@@ -187,7 +187,7 @@ align-items: center;
     color: #000000;
   }
   .shipBulks{
-    left: -1.57%;
+    left: -0.57%;
     top: -71px;
     right: 38.51%;
     font-weight: bold;

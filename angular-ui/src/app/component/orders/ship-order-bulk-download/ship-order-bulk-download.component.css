@@ -26,7 +26,7 @@
   .bulk-head :after {
     content: "";
     display: block;
-    width: 660px;
+    width: 578px;
     height: 0.5px;
     background: #686E74;
     right: 74px;
@@ -37,7 +37,7 @@
   .bulk-head :before {
     content: "";
     display: block;
-    width: 631px;
+    width: 565px;
     height: 0.5px;
     background: #686E74;
     left: 0;
@@ -301,10 +301,10 @@ text-align: center;
   overflow-x: hidden; 
 }
 .bulk-dwnlds  {
-  height:720px;
-  width: 1622px;
+  height:672px;
+  width: 1466px;
   overflow-x: hidden;
-  margin-left: -240px; 
+  margin-left: -166px; 
 }
 /* .scroll {
   overflow-y: auto;

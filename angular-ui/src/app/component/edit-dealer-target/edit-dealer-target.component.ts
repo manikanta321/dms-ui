@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { DealerTargetPopupGridComponent } from 'src/app/dealer-target-popup-grid/dealer-target-popup-grid.component';
+import { DealerTargetSuccessPopupComponent } from 'src/app/dealer-target-success-popup/dealer-target-success-popup.component';
 import { DealerTargetSharedServicesService } from 'src/app/services/dealer-target-shared-services.service';
 import { TargetListService } from 'src/app/services/target-list.service';
 import { UserService } from 'src/app/services/user.service';
@@ -87,11 +89,15 @@ export class EditDealerTargetComponent implements OnInit {
     private user: UserService,
     private dialogRef: MatDialogRef<EditDealerTargetComponent>,
     private sharedService: DealerTargetSharedServicesService,
+    public dialog: MatDialog,
 
   ) {
 
   }
   ngOnInit(): void {
+ 
+
+
     this.LoginId=localStorage.getItem("logInId");
 
     let id = localStorage.getItem('editOrAddTarget');
@@ -104,7 +110,9 @@ export class EditDealerTargetComponent implements OnInit {
     }
     this.targetList.getTargetById(data).subscribe((res) => {
       console.log(res.response);
+      
       this.targetId = res.response.targetGroupId;
+      localStorage.setItem("targetId", this.targetId)
       this.productCount = res.response.productCount;
       this.mainadd[0].geography = [];
       this.targetGroupId=res.response.targetGroupId
@@ -176,7 +184,10 @@ geographyobj.vtotal  =res.response.vtotal
     this.mainadd[0].geography[0].year = event.target.value;
   }
 
-
+  productPopup() {
+    this.dialog.open(DealerTargetPopupGridComponent,  { panelClass: 'psubgrid-popup' }) 
+   
+  }
   
   onSelectTarget(event: any) {
     this.mainadd[0].geography[0].utotal = this.mainadd[0].geography[0].targets[0].targetUnit.jan = this.mainadd[0].geography[0].targets[0].targetUnit.feb =this.mainadd[0].geography[0].targets[0].targetUnit.mar=this.mainadd[0].geography[0].targets[0].targetUnit.apr = this.mainadd[0].geography[0].targets[0].targetUnit.may =this.mainadd[0].geography[0].targets[0].targetUnit.june =this.mainadd[0].geography[0].targets[0].targetUnit.july = this.mainadd[0].geography[0].targets[0].targetUnit.aug = this.mainadd[0].geography[0].targets[0].targetUnit.sep =this.mainadd[0].geography[0].targets[0].targetUnit.oct =this.mainadd[0].geography[0].targets[0].targetUnit.nov =this.mainadd[0].geography[0].targets[0].targetUnit.dec=0
@@ -268,9 +279,11 @@ geographyobj.vtotal  =res.response.vtotal
   }
   onTargetGrpSelect(item: any) {
     this.targetId = item.targetGroupId;
+    localStorage.setItem("targetId", this.targetId)
     this.targetList.productCountAccordingToDealer(this.targetId).subscribe((res) => {
       this.productCount = res.response.totalProductSelectedGroup;
       console.log("check Product Count ", this.productCount);
+     
     })
   }
   // geographyDropdown
@@ -729,6 +742,7 @@ geographyobj.vtotal  =res.response.vtotal
 
 
   saveTargetData() {
+
     console.log('mm saveTargetData', this.mainadd);
     let obj: any;
     if (this.selectedDealer.length >= 1) {
@@ -847,7 +861,8 @@ console.log('obj1obj1obj1',obj1)
           console.log("Added TargetData ", this.addedTargetData);
           if (res.response.result == 'DealerTargets Update Successfully') {
             this.dialogRef.close();
-            alert('Dealer Targets Update Successfully')
+            this.dialog.open(DealerTargetSuccessPopupComponent, {panelClass: 'activeSuccessPop'})
+            // alert('Dealer Targets Update Successfully')
             this.sharedService.filter('Register click')
 
           }

@@ -15,6 +15,9 @@
     margin-top: -18px;
     margin-bottom: 2px;
 }
+.productCountpopup{
+    color: blue;
+}
 
 .close-icon {
     left: 100%;
@@ -382,13 +385,16 @@ label {
     line-height: 16px;
     display: flex;
     align-items: center;
-    background-color: ;
+   
   }
   ::ng-deep.searchbtnIcon.ng-select .ng-arrow-wrapper .ng-arrow {
     display: none !important;
-  }
+  }      
   .searchbtnIcon:disabled{
     background-color: #000 ;
+  }
+  ::ng-deep .psubgrid-popup {
+    width: 999px !important;
   }
   
   ::ng-deep.searchbtnIcon.ng-select span.ng-arrow-wrapper:before{

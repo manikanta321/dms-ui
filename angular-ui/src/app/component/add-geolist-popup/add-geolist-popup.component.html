@@ -8,7 +8,28 @@
         <div class="head-t">
           <h3 class="addU font"> Add Charges</h3>
         </div>
+        <br>
+<div class="row">
+      <div class="col-md-12 col-lg-12 col-sm-12">
+      <form [formGroup]="myForms" class="dropdown-form-packing">
+        <ng-multiselect-dropdown class="product" name="citys" [placeholder]="'Select Destinations'" formControlName="city2"
+          [disabled]="disabled" [settings]="dropdownSettings1" [data]="productLisst"
+          (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)"
+          (onDeSelectAll)="onItemDeSelectOrAllProduct($event)" (onSelectAll)="onItemSelectOrAllProduct($event)">
+        </ng-multiselect-dropdown>
 
+        <div class="dropdown-placeholder product-placeholder">
+          <span *ngIf="myForms.get('city2').value.length == 0"></span>
+          <span *ngIf="myForms.get('city2').value.length == 1" class="selected-placeholder">
+            {{myForms.get('city2').value.length}} Products selected </span>
+          <span *ngIf="myForms.get('city2').value.length > 1" class="selected-placeholder">
+            {{myForms.get('city2').value.length}} Products selected </span>
+
+        </div>
+      </form>
+    </div>
+  
+</div>
         <div class="row bothDown">
           <div class="col-9">
             <h6 class="packingText"><b>Packing Charges</b></h6>

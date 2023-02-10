@@ -26,7 +26,10 @@
               </div>
             </div>
             <div class="col-md-1">
-              <div class="add-user" (click)="addUser()">
+              <div class="add-user" (click)="addGeoShipping()" >
+                <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+              </div>
+              <div *ngIf="!shippingBtn"  class="add-user" (click)="addUser()">
                 <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
               </div>
             </div>

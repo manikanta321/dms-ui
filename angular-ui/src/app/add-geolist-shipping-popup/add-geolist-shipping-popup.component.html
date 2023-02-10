@@ -1,0 +1,107 @@
+<div class="font">
+    <div class="main">
+      <div class="container popup-srcoll">
+        <div class="addUser">
+          <mat-icon mat-button class="close-icon" [mat-dialog-close]="true"
+            >close</mat-icon
+          >
+          <div class="head-t">
+            <h3 class="addU font"> Add Charges</h3>
+          </div>
+          <br>
+  <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12">
+        <form [formGroup]="myForms" class="dropdown-form-packing">
+          <ng-multiselect-dropdown class="product" name="citys" [placeholder]="'Select Destinations'" formControlName="city2"
+            [disabled]="disabled" [settings]="dropdownSettings1" [data]="productLisst"
+            (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)"
+            (onDeSelectAll)="onItemDeSelectOrAllProduct($event)" (onSelectAll)="onItemSelectOrAllProduct($event)">
+          </ng-multiselect-dropdown>
+  
+          <div class="dropdown-placeholder product-placeholder">
+            <span *ngIf="myForms.get('city2').value.length == 0"></span>
+            <span *ngIf="myForms.get('city2').value.length == 1" class="selected-placeholder">
+              {{myForms.get('city2').value.length}} Products selected </span>
+            <span *ngIf="myForms.get('city2').value.length > 1" class="selected-placeholder">
+              {{myForms.get('city2').value.length}} Products selected </span>
+  
+          </div>
+        </form>
+      </div>
+    
+  </div>
+          <div class="row bothDown">
+            <div class="col-9">
+              <h6 class="packingText"><b>Shipping Charges</b></h6>
+              <p class="colorText">{{ errorMsg }}</p>
+            </div>
+            <div class="col-2">
+              <mat-icon class="addAlign" (click)="addFields()"
+                >add_circle</mat-icon
+              >
+            </div>
+          </div>
+  
+          <div
+            class="row addUserForm mb-4"
+            *ngFor="let packingCharge of packingCharges; let i = index"
+          >
+            <div class="col-3">
+              <label>Start Value</label>
+              <input
+                type="text"
+                id="sValue"
+                name="sValue"
+                required
+                placeholder="Enter"
+                [(ngModel)]="packingCharge.address"
+                name="address_{{ i }}"
+              />
+            </div>
+            <div class="col-3">
+              <label>End Value</label>
+              <input
+                type="text"
+                id="eValue"
+                name="eValue"
+                required
+                placeholder="Enter"
+                [(ngModel)]="packingCharge.eValue"
+                name="street_{{ i }}"
+              />
+            </div>
+            <div class="col-3">
+              <label>Shipping Cost</label>
+              <input
+                style="width: 225px"
+                type="text"
+                id="pValue"
+                name="pValue"
+                required
+                placeholder="Enter"
+                [(ngModel)]="packingCharge.pValue"
+                name="city_{{ i }}"
+              />
+           
+                 <!-- <p class="minus-icon10" >-</p> -->
+            </div>
+            <div class="col-2">
+              <mat-icon [ngClass]="{ 'removeCircle': i>0 ,'removeCircle1': i==0 }"  *ngIf="i >= 0 " (click)="removesub(i)" >remove_circle</mat-icon>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="row">
+              <div class="col-4"></div>
+              <div class="col-4">
+                <button class="btn btn-primary btn-block submitbtn save-btn">
+                  Add
+                </button>
+              </div>
+              <div class="col-4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  

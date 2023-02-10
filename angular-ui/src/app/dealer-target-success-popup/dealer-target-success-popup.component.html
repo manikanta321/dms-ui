@@ -1,0 +1,25 @@
+<!-- <p>dealer-target-success-popup works!</p> -->
+
+<div class="container font">
+
+    <div class="rest-pwsd row" >
+
+        <div class="tumbsup col-3"><img class="c" src="assets/userImages/carbon_thumbs-up.svg" alt="">
+            <br>
+            <b>Done !</b>
+        </div>
+        <div class="text-succ mt-3 col-7">
+            <p  class="pHead"    *ngIf="!updatesaveTarget">Target is  Added<b style="color: rgba(23, 177, 92, 1);">&nbsp; Successfully</b>
+            </p>
+            <p class="pHead"   *ngIf="updatesaveTarget">Target is  Updated<b style="color: rgba(23, 177, 92, 1);">&nbsp;Successfully</b>
+            </p>
+            
+        </div>
+       
+        <div class="closeImg col-2" (click)=" closeDialog()" ><img src="assets/userImages/user-closeImg.svg" alt=""></div>
+
+    </div>
+
+    
+  
+</div>

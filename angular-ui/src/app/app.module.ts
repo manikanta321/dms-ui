@@ -205,6 +205,8 @@ import { AdvancedFilterComponent } from './component/sales-list/advanced-filter/
 import { AddTargetGroupSuccessPopupComponent } from './component/add-target-group-success-popup/add-target-group-success-popup.component';
 import { DealerTargetPopupGridComponent } from './dealer-target-popup-grid/dealer-target-popup-grid.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { DealerTargetSuccessPopupComponent } from './dealer-target-success-popup/dealer-target-success-popup.component';
+import { AddGeolistShippingPopupComponent } from './add-geolist-shipping-popup/add-geolist-shipping-popup.component';
 
 
 @NgModule({
@@ -502,7 +504,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
           IconHoverComponent,
           AdvancedFilterComponent,
           AddTargetGroupSuccessPopupComponent,
-          DealerTargetPopupGridComponent
+          DealerTargetPopupGridComponent,
+          DealerTargetSuccessPopupComponent,
+          AddGeolistShippingPopupComponent
           
   ],
   imports: [

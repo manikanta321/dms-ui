@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { PromotionListService } from 'src/app/services/promotion-list.service';
-
 @Component({
-  selector: 'app-add-geolist-popup',
-  templateUrl: './add-geolist-popup.component.html',
-  styleUrls: ['./add-geolist-popup.component.css']
+  selector: 'app-add-geolist-shipping-popup',
+  templateUrl: './add-geolist-shipping-popup.component.html',
+  styleUrls: ['./add-geolist-shipping-popup.component.css']
 })
-export class AddGeolistPopupComponent implements OnInit {
+export class AddGeolistShippingPopupComponent implements OnInit {
   public packingCharges: any[] = [{
     sValue: '',
     eValue: '',
@@ -30,11 +29,10 @@ export class AddGeolistPopupComponent implements OnInit {
   selectedItems: any = [];
   dropdownSettings1: IDropdownSettings = {};
   disabled = false;
-  constructor(   private promotin:PromotionListService,
+  constructor( private promotin:PromotionListService,
     private fb: FormBuilder,) { }
 
   ngOnInit(): void {
-    
     this.myForms = this.fb.group({
       city2: [this.selectedItems]
     });
@@ -136,3 +134,7 @@ export class AddGeolistPopupComponent implements OnInit {
     console.log('rolefilter', this.userTypes)
     console.log('onItemSelect', item);}
 }
+
+  
+
+

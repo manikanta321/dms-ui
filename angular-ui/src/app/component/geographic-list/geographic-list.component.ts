@@ -14,6 +14,7 @@ import { AddUserPopupComponent } from '../users/userPopups/add-user-popup/add-us
 import { AddGeolistPopupComponent } from '../add-geolist-popup/add-geolist-popup.component';
 
 import { GeographicListActionComponent } from './geographic-settings-action/geographic-list-action/geographic-list-action.component';
+import { AddGeolistShippingPopupComponent } from 'src/app/add-geolist-shipping-popup/add-geolist-shipping-popup.component';
 
 export interface PeriodicElement {
   shippingForm: any;
@@ -43,6 +44,7 @@ export class GeographicListComponent implements OnInit {
   userTypes:any=[];
   statusTypes:any=[];
   headerName: any;
+  shippingBtn:any;
   shippingChk:boolean=true;
   paginationScrollCount: any;
   paginationPageSize = 10;
@@ -80,7 +82,10 @@ shipPackCharges:any;
   ) { }
 
   ngOnInit(): void {
+    
     this.shipClick('Shipping')
+   
+
   }
   public popupParent: HTMLElement = document.body;
   public rowData5 = [
@@ -297,10 +302,21 @@ shipPackCharges:any;
 
   }
   addUser(){
+
     this.dialog.open( AddGeolistPopupComponent,{
       width: '700px', //sets width of dialog
       height:'450px',
     });
+
+   }
+
+   addGeoShipping(){
+
+    this.dialog.open( AddGeolistShippingPopupComponent,{
+      width: '700px', //sets width of dialog
+      height:'450px',
+    });
+
    }
 
    shipClick(event:any){
@@ -312,6 +328,8 @@ shipPackCharges:any;
         this.ThirdColumn = "Shipping Charges"
         this.shippingChk = true;
         this.packageChk = false;
+        this.shippingBtn=true;
+       
        
       }else{
         this.headerName ="Shipping From";
@@ -319,6 +337,7 @@ shipPackCharges:any;
         this.ThirdColumn = "Packing Charges"
         this.shippingChk = false;
         this.packageChk = true;
+        this.shippingBtn=false;
       }
       this.shippingAndPackages();
    }

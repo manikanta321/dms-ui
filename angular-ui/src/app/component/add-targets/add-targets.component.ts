@@ -8,6 +8,7 @@ import { TargetListService } from 'src/app/services/target-list.service';
 import { UserService } from 'src/app/services/user.service';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { AddTargetGroupComponent } from '../add-target-group/add-target-group.component';
+import { DealerTargetSuccessPopupComponent } from 'src/app/dealer-target-success-popup/dealer-target-success-popup.component';
 
 @Component({
   selector: 'app-add-targets',
@@ -729,6 +730,7 @@ this.geographyArray=[];
   }
 
   saveTargetData() {
+    localStorage.setItem("updateAddEditTarget",'add');
     console.log('mm saveTargetData', this.mainadd);
     console.log('selectedDealer',this.selectedDealer)
     let obj:any;
@@ -835,7 +837,8 @@ this.geographyArray=[];
         console.log("Added TargetData ", this.addedTargetData);
         if(res.response.result == 'successfully addres DealerTargets'){
           this.dialogRef.close();
-          alert('added')
+          this.dialog.open(DealerTargetSuccessPopupComponent, {panelClass: 'activeSuccessPop'})
+          // alert('added')
           this.sharedService.filter('Register click')
 
         }

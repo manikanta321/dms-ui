@@ -747,4 +747,21 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
   bulkDownload() {
     this.gridApi.exportDataAsCsv();
   }
+  emptyDownload(){
+    this.dealerss = [];
+    this.geographySelected = [];
+    this.startDate = '';
+    this.endDate = '';
+    let data = {
+      GeographyId:this.geographySelected,
+      DealerId:this.dealerss,
+      StartDate:this.startDate,
+      EndDate:this.endDate,
+    }
+    this.orders.getDownloadShipmentList(data).subscribe((res) => {
+      this.shipmentDatalist = res.response;
+      console.log("Response Data",this.shipmentDatalist)
+    });
+    this.gridApi.exportDataAsCsv();
+  }
 }

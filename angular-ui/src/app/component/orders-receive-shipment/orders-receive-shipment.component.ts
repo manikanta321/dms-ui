@@ -254,7 +254,7 @@ element1.itemDetailsshipReceive.forEach(element2=>{
     "shipedQty":element2.shipedQty,
   }
   internalArray.push(obj);
-})
+})  
 
          
           })
@@ -646,6 +646,7 @@ element1.itemDetailsshipReceive.forEach(element2=>{
   }
 
   ReciveDateChange(e) {
+    this.reciveDateChange = null;
     console.log(e)
     this.minDateToFinish.next(e.value.toString());
 
@@ -690,8 +691,6 @@ element1.itemDetailsshipReceive.forEach(element2=>{
     localStorage.setItem('AddShipment', 'edit');
     let Receiveship: any = []
 
-
-
     this.currentShipArray.forEach(element => {
       if (element.currentReceiveshipment == true) {
         element.arrayIside.forEach(element1 => {
@@ -701,7 +700,6 @@ element1.itemDetailsshipReceive.forEach(element2=>{
             "ReceivedQty": element1.ReceivedQty,
             "LostDamaged": element1.LostDamaged
           }
-
           Receiveship.push(obj)
         })
 
@@ -709,7 +707,7 @@ element1.itemDetailsshipReceive.forEach(element2=>{
 
 
     })
-
+    
 
     if (item == 'save') {
 
@@ -731,9 +729,16 @@ element1.itemDetailsshipReceive.forEach(element2=>{
       this.dialogRef.close();
     
     }
-    else{
-    alert('Please enter correct values')
+    if(this.reciveDateChange == null){
+    alert('Please enter Received Date')
     }
+    Receiveship.map((ele) => ele.receivedQty);
+    console.log("dfdfdfd",Receiveship)
+    Receiveship.forEach(element => {
+    if(element.ReceivedQty == 0){
+      alert('Please enter Received Quantity');
+    }
+    })
     })
   console.log('objshipment',obj)
 }

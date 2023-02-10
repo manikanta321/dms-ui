@@ -6,7 +6,7 @@ color: #000000 !important;
 }
 .sales-container {
 position: relative;
-width: 1289px;
+/* min-width: 1600px !important; */
 height: 620px;
 left: 0px;
 top: 0px;
@@ -14,6 +14,16 @@ background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
 overflow-x: hidden;
 border-radius: 25px;
 }
+.sales-containers {
+  position: relative;
+  min-width: 1600px !important;
+  height: 620px;
+  left: 0px;
+  top: 0px;
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
+  overflow-x: hidden;
+  border-radius: 25px;
+  }
 .close-icon {
     left: 99%;
     position: relative;
@@ -82,6 +92,18 @@ border-radius: 0px 0px 10px 10px
     border-color: #686E74;
     border-radius: 0px 0px 10px 10px
       }
+      .duplicate-tabel-shipments {
+        position: relative;
+        width: 92%;
+        left: 12px;
+        /* height: 183px; */
+        margin-bottom: 30px;
+        top: 79px;
+        border-width: 0px 1px 1px 1px;
+        border-style: solid;
+        border-color: #686E74;
+        border-radius: 0px 0px 10px 10px
+          }
   .no-doc {
     background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
   }
@@ -102,6 +124,16 @@ align-items: center;
     top: 4%;
     position: absolute;
   }
+  .addUsers::after {
+    content: "";
+    display: block;
+    width: 716px;
+    height: 1px;
+    background: #686E74;
+    right: 41px;
+    top: 4%;
+    position: absolute;
+  }
   .sales {
     left: 47px;
     position: relative;
@@ -109,10 +141,23 @@ align-items: center;
   .addUser {
     margin-bottom: 8px !important;
   }
+  .addUsers {
+    margin-bottom: 8px !important;
+  }
   .addUser:before {
     content: "";
     display: block;
     width: 366px;
+    height: 1px;
+    background: #686E74;
+    left: 45px;
+    top: 4%;
+    position: absolute;
+  }
+  .addUsers:before {
+    content: "";
+    display: block;
+    width: 544px;
     height: 1px;
     background: #686E74;
     left: 45px;
@@ -136,6 +181,13 @@ align-items: center;
   }
   .shipBulk{
     left: 3.43%;
+    top: -71px;
+    right: 38.51%;
+    font-weight: bold;
+    color: #000000;
+  }
+  .shipBulks{
+    left: -1.57%;
     top: -71px;
     right: 38.51%;
     font-weight: bold;
@@ -175,6 +227,7 @@ color: #000000;
     color: #000000;
     position: relative;
     left: 8px;
+    bottom: 2px;
 }
 .upload-div{
 box-sizing: border-box;

@@ -200,12 +200,12 @@
         </div>
     </div>
 </div>
-<div *ngIf="shipment" class="container sales-container">
-    <div class="addUser">
+<div *ngIf="shipment" class="container sales-containers">
+    <div class="addUsers">
         <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
     </div>
     <span class="ship shipO">Ship Order:</span>
-    <h1 class="ship shipBulk">Bulk Upload</h1>
+    <h1 class="ship shipBulks">Bulk Upload</h1>
     <div class="sales">
         <div class="row">
             <h4 class="bulk-txt">Bulk upload of invoices & shipment data</h4>
@@ -228,8 +228,8 @@
         <div class="step-2-filled" *ngIf="!showTable">
             <div class="row step2">
                 <span class="step-txt">Step 2:</span>
-                <h4 class="up-doc">Analyzing Uploaded document</h4>
-                <div>
+                <h4 class="up-doc" style="bottom: 6px;">Analyzing Uploaded document</h4>
+                <div style="position: relative;top: 45px;right: 300px;">
                     <input type="text"  placeholder="No document uploaded yet" class="selectedProductReceipts" disabled>
                 </div>
             </div>
@@ -244,7 +244,7 @@
                 <div class="col-md-1 total-style">
                     <img [src]="image1" class="expand-arrow" alt="add-user-btn">
                 </div>
-                <div *ngIf="!totalVal && TotalRows.length>0" class="row duplicate-tabel-shipment">
+                <div *ngIf="!totalVal && TotalRows.length>0" class="row duplicate-tabel-shipments">
                     <table matSort  class="class_table_shipment">
                         <tr class="table-header-row">
                             <th style="padding-left:20px;">Row No</th>
@@ -267,8 +267,8 @@
                             <td>{{shipData.orderDate}}</td>
                             <td title="">{{shipData.productName}}</td>
                             <td title="">{{shipData.productCode}}</td>
-                            <td>{{shipData.orderQty}}</td>
-                            <td>{{shipData.shipTillQty}}</td>
+                            <td>{{shipData.orderedQty}}</td>
+                            <td>{{shipData.shippedTillQty}}</td>
                             <td>{{shipData.dispatchQty}}</td>
                             <td>{{shipData.dispatchDate}}</td>
                             <td>{{shipData.invoiceDate}}</td>
@@ -290,8 +290,11 @@
                         <tr class="table-header-row">
                             <th style="padding-left:20px;">Row No</th>
                             <th>Order No</th>
+                            <th>Order Date</th>
                             <th>Product Name</th>
                             <th>Product Code</th>
+                            <th>Order Qty</th>
+                            <th>Shipped Till Qty</th>
                             <th>Dispatch Qty</th>
                             <th>Dispatch Date</th>
                             <th>Invoice Date</th>
@@ -300,11 +303,14 @@
                         </tr>
                         <tr *ngFor="let shipData of errorfreeRows">
             
-                            <td title="" style="padding-left: 21px;">{{shipData.orderNo}}</td>
+                            <td title="" style="padding-left: 21px;">{{shipData.rownumber}}</td>
                             <td title="" class="elipsis-2line">
                                 {{shipData.orderNo}}</td>
+                            <td>{{shipData.orderDate}}</td>
                             <td title="">{{shipData.productName}}</td>
-                              <td title="">{{shipData.productCode}}</td>
+                            <td title="">{{shipData.productCode}}</td>
+                            <td>{{shipData.orderedQty}}</td>
+                            <td>{{shipData.shippedTillQty}}</td>
                             <td>{{shipData.dispatchQty}}</td>
                             <td>{{shipData.dispatchDate}}</td>
                             <td>{{shipData.invoiceDate}}</td>
@@ -327,8 +333,11 @@
                         <tr class="table-header-row">
                             <th style="padding-left:20px;">Row No</th>
                             <th>Order No</th>
+                            <th>Order Date</th>
                             <th>Product Name</th>
                             <th>Product Code</th>
+                            <th>Order Qty</th>
+                            <th>Shipped Till Qty</th>
                             <th>Dispatch Qty</th>
                             <th>Dispatch Date</th>
                             <th>Invoice Date</th>
@@ -340,8 +349,11 @@
                             <td title="" style="padding-left: 21px;">{{shipData.rownumber}}</td>
                             <td title="" class="elipsis-2line">
                                 {{shipData.orderNo}}</td>
+                            <td>{{shipData.orderDate}}</td>
                             <td title="">{{shipData.productName}}</td>
-                              <td title="">{{shipData.productCode}}</td>
+                            <td title="">{{shipData.productCode}}</td>
+                            <td>{{shipData.orderedQty}}</td>
+                            <td>{{shipData.shippedTillQty}}</td>
                             <td>{{shipData.dispatchQty}}</td>
                             <td>{{shipData.dispatchDate}}</td>
                             <td>{{shipData.invoiceDate}}</td>
@@ -364,8 +376,11 @@
                         <tr class="table-header-row">
                             <th style="padding-left:20px;">Row No</th>
                             <th>Order No</th>
+                            <th>Order Date</th>
                             <th>Product Name</th>
                             <th>Product Code</th>
+                            <th>Order Qty</th>
+                            <th>Shipped Till Qty</th>
                             <th>Dispatch Qty</th>
                             <th>Dispatch Date</th>
                             <th>Invoice Date</th>
@@ -375,8 +390,11 @@
                         <tr *ngFor="let shipData of incorrectRows">
                             <td  title="" style="padding-left: 21px;">{{shipData.rownumber}}</td>
                             <td  [ngClass] ="{'errorText': shipData.remarks == 'orderno'}">{{shipData.orderNo}}</td>
+                            <td [ngClass] ="{'errorText': shipData.remarks == 'orderDate'}">{{shipData.orderDate}}</td>
                             <td  [ngClass]="{'errorText': shipData.remarks == 'productname'}">{{shipData.productName}}</td>
                             <td  [ngClass]="{'errorText': shipData.remarks == 'productcode'}">{{shipData.productCode}}</td>
+                            <td [ngClass]="{'errorText': shipData.remarks == 'orderedQty'}">{{shipData.orderedQty}}</td>
+                            <td [ngClass]="{'errorText': shipData.remarks == 'shippedTillQty'}">{{shipData.shippedTillQty}}</td>
                             <td  [ngClass]="{'errorText': shipData.remarks == 'dispatchqty'}">{{shipData.dispatchQty}}</td>
                             <td  [ngClass]="{'errorText': shipData.remarks == 'dispatchdate'}">{{shipData.dispatchDate}}</td>
                             <td  [ngClass]="{'errorText': shipData.remarks == 'invoicedate'}">{{shipData.invoiceDate}}</td>

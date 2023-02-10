@@ -71,7 +71,7 @@ public getReceiptBulkUpload(data){
 }
   // http://13.126.235.145:801/api/OrdersApi/AddBulkShipOrder
   public getShipmentBulkUpload(data){
-    return this.http.post<any>(this.userurl + 'OrdersApi/AddBulkShipOrder', data);
+    return this.http.post<any>(this.userurl + 'OrdersApi/AddBulkShipmentNew', data);
 
   }
   public saveBulkUploadReceipt(data){

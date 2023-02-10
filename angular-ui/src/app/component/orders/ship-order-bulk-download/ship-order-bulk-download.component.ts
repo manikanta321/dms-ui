@@ -48,28 +48,43 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
   receiptDatalist:any = [];
   columnDefs: ColDef[] = [
     {  headerName: "Order No.",
-       field: 'orderNUmber',      tooltipField:"orderNUmber",type: ['nonEditableColumn']
+       field: 'orderNo',      tooltipField:"orderNo",type: ['nonEditableColumn']
       },
   
     {   headerName: "Order Date",
       // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
       field: 'orderDate',      tooltipField:"orderDate",
       type: ['nonEditableColumn']},
-  
-      {   headerName: "Dealer",
-      // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-      field: 'dealerName',type: ['nonEditableColumn'],tooltipField:"dealerName",
+      {  headerName: "Product Name",
+      field: 'productName',      tooltipField:"productName",type: ['nonEditableColumn']
+     },
+     {  headerName: "Product Code",
+     field: 'productCode',      tooltipField:"productCode",type: ['nonEditableColumn']
     },
-      {  headerName: "Geography",
-      field: 'geographyName',      tooltipField:"geographyName",type: ['nonEditableColumn']
+  
+      {   headerName: "Order Qty",
+      // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
+      field: 'orderQty',type: ['nonEditableColumn'],tooltipField:"orderQty",
+    },
+      {  headerName: "Shipped Till Qty",
+      field: 'shippedTillQty',      tooltipField:"shippedTillQty",type: ['nonEditableColumn']
   },
-      {  headerName: "Total Value",
-      field: 'totalValue',      tooltipField:"totalValue",type: ['nonEditableColumn']
+      {  headerName: "Dispatch Qty",
+      field: 'dispatchQty',      tooltipField:"dispatchQty",type: ['nonEditableColumn']
     }, 
    
-  {  headerName: "Completed Value",
-      field: 'compleatedValue',      tooltipField:"compleatedValue",type: ['nonEditableColumn']
+  {  headerName: "Dispatch Date",
+      field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColumn']
     },
+    {  headerName: "Invoice Date",
+    field: 'invoiceDate',      tooltipField:"invoiceDate",type: ['nonEditableColumn']
+  },
+  {  headerName: "Invoice No.",
+  field: 'invoiceNo',      tooltipField:"invoiceNo",type: ['nonEditableColumn']
+},
+{  headerName: "Uploaded Date",
+field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColumn']
+},
   
   ];
   columnReceiptDefs: (ColDef| ColGroupDef)[] = [

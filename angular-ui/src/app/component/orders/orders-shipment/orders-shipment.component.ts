@@ -293,7 +293,7 @@ export class OrdersShipmentComponent implements OnInit {
  bulkDownload(){
   sessionStorage.setItem("bulkShipDownload","ShipmentDownload");
   sessionStorage.setItem("OrderReceiptDownload",'');
-  this.dialog.open(ShipOrderBulkDownloadComponent, {width:'1043px'})
+  this.dialog.open(ShipOrderBulkDownloadComponent, {width:'2000px',maxWidth:'98vw'})
   }
   selectdays(){
     this.dialog.open(CustomDatePopupComponent,{panelClass:'custmdays'})
@@ -353,7 +353,7 @@ export class OrdersShipmentComponent implements OnInit {
       sessionStorage.setItem("sales",'');
       sessionStorage.setItem("orderReceipt",'');
       sessionStorage.setItem("orderShipment",'shipment');
-        this.dialog.open(SalesBulkUploadComponent);
+        this.dialog.open(SalesBulkUploadComponent,{maxWidth:'100vw'});
         // this.isOpen = false;
     }
     shipmentList(){

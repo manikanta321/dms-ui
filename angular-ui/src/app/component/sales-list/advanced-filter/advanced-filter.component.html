@@ -51,7 +51,7 @@
                             class="search" alt="search">  
         <ul class="heroes" *ngIf="isTargetGroupSelected">
                 <li *ngFor="let item of targetGroupList | filter:searchText">
-                    <mat-checkbox [(ngModel)]="item.targetGroupName.selected" (change)="onItemClick(item?.targetGroupName);updateCount($event)"  [checked]="isCheckedForProduct(item.targetGroupName);updateCount($event);">{{item.targetGroupName}}</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="item.targetGroupName.selected" (change)="onItemClick(item?.targetGroupName);updateCount($event);"  [checked]="isCheckedForProduct(item.targetGroupName)">{{item.targetGroupName}}</mat-checkbox>
                 </li>
               </ul>
               <ul class="heroes1" *ngIf="isgeoGraphyIdentifierSelected">
@@ -77,7 +77,7 @@
               <div *ngIf="isSubCategorySelected" class="heroes4">
                 <li *ngFor="let subcat of subcaty?.allOtherSubCAts">
                     <input type="checkbox"><span>{{subcat.subCatName}}</span>
-                    <mat-checkbox  class="productC" [(ngModel)]="subcat.subCatName.selected" (change)="onItemClick(subcat);updateCount($event)">{{subcat.subCatName}}</mat-checkbox>
+                    <mat-checkbox  class="productC" [(ngModel)]="subcat.subCatName.selected" (change)="onItemClick(subcat);updateCount($event)" [checked]="isCheckedForProduct(subcat.s)">{{subcat.subCatName}}</mat-checkbox>
 
                             </li>
                         </div>

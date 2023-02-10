@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SalesServicesService } from 'src/app/services/sales-services.service';
+import { TargetGroupServiceService } from 'src/app/services/target-group-service.service';
 import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-sales-bulk-upload',
@@ -13,6 +14,7 @@ export class SalesBulkUploadComponent implements OnInit {
     private salesService:SalesServicesService,
     private dialogRef: MatDialogRef<SalesBulkUploadComponent>,
     private dialog: MatDialog,
+    private targetGroupService:TargetGroupServiceService
   ) { }
   totalRows:any;
   errorFree:any;
@@ -326,6 +328,7 @@ export class SalesBulkUploadComponent implements OnInit {
   console.log("Daaataaa",uploadedFile); 
   this.salesService.SaveBulkShipmentUpload(uploadedFile).subscribe((res)=>{
     const uploadedData = res.response;
+    this.targetGroupService.filter('Register click');
     
     this.dialogRef.close();
   })

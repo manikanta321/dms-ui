@@ -18,6 +18,7 @@ import { OtherMasterService } from 'src/app/services/other-master.service';
 import moment from 'moment';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { SharedServicesShipmentService } from 'src/app/services/shared-services-shipment.service';
+import { TargetGroupServiceService } from 'src/app/services/target-group-service.service';
 
 @Component({
   selector: 'app-orders-shipment',
@@ -182,7 +183,9 @@ export class OrdersShipmentComponent implements OnInit {
     public orders:OrdersApisService,
     private user: UserService,
     private route: ActivatedRoute,
+    private targetGroupService:TargetGroupServiceService,
     private otherMasterService:OtherMasterService,
+    
     private fb: FormBuilder) { 
 
       this.sharedserviceForshipment.listen().subscribe((m: any) => {
@@ -233,12 +236,20 @@ export class OrdersShipmentComponent implements OnInit {
     
   }
   onFirstDataRendered(params: FirstDataRenderedEvent) {
-    this.otherMasterService.listen().subscribe((m: any) => {
+    // this.otherMasterService.listen().subscribe((m: any) => {
+    //   console.log("RefreshData",m)
+    //   setTimeout (() => {
+    //     this.shipmentList();
+    //  }, 2000);
+     
+    // })
+    this.targetGroupService.listen().subscribe((m: any) => {
       console.log("RefreshData",m)
       setTimeout (() => {
         this.shipmentList();
      }, 2000);
      
+
     })
     params.api.paginationGoToPage(4);
   }

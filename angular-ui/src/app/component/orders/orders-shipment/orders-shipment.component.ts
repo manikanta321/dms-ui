@@ -14,11 +14,10 @@ import { OrderActionShipmentComponent } from '../order-action-shipment/order-act
 import { ActivatedRoute } from '@angular/router';
 import { OrderlistActionPopupComponent } from '../../order-list/orderlist-action-popup/orderlist-action-popup.component';
 import { OrdersReceiveShipmentComponent } from '../../orders-receive-shipment/orders-receive-shipment.component';
-import { OtherMasterService } from 'src/app/services/other-master.service';
 import moment from 'moment';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { SharedServicesShipmentService } from 'src/app/services/shared-services-shipment.service';
-import { TargetGroupServiceService } from 'src/app/services/target-group-service.service';
+import { OrderShipmentService } from 'src/app/services/order-shipment.service';
 
 @Component({
   selector: 'app-orders-shipment',
@@ -183,8 +182,7 @@ export class OrdersShipmentComponent implements OnInit {
     public orders:OrdersApisService,
     private user: UserService,
     private route: ActivatedRoute,
-    private targetGroupService:TargetGroupServiceService,
-    private otherMasterService:OtherMasterService,
+    private orderShipment:OrderShipmentService,
     
     private fb: FormBuilder) { 
 
@@ -243,7 +241,15 @@ export class OrdersShipmentComponent implements OnInit {
     //  }, 2000);
      
     // })
-    this.targetGroupService.listen().subscribe((m: any) => {
+    // this.targetGroupService.listen().subscribe((m: any) => {
+    //   console.log("RefreshData",m)
+    //   setTimeout (() => {
+    //     this.shipmentList();
+    //  }, 2000);
+     
+
+    // })
+    this.orderShipment.listen().subscribe((m: any) => {
       console.log("RefreshData",m)
       setTimeout (() => {
         this.shipmentList();

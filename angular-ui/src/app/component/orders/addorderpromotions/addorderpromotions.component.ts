@@ -154,7 +154,8 @@ export class AddorderpromotionsComponent implements OnInit {
   selectShippingAddress: any = ['shippingAddress1', 'shipping2']
   getgroup: string[] = ["Product Name", "Product Name", "Product Name", "Product Name"]
   buygroup: string[] = ["Product Name", "Product Name", "Product Name", "Product Name"];
-  CustomerSelect: string[] = ['Valiant Distributors', 'Global Movers', 'Somebody Sales']
+  CustomerSelect: string[] = ['Valiant Distributors', 'Global Movers', 'Somebody Sales'];
+  loginid:any;
   public itemremoved: any[] = [{
     sValue: '',
     eValue: '',
@@ -189,6 +190,8 @@ export class AddorderpromotionsComponent implements OnInit {
 
     this.userType = localStorage.getItem("userType");
     let loginid = localStorage.getItem("logInId");
+    this.loginid = localStorage.getItem("logInId");
+
     if (this.userType == 'Dealer Admin') {
       this.orders.dealersDetails(loginid).subscribe((res) => {
         console.log(res.response)
@@ -467,7 +470,9 @@ export class AddorderpromotionsComponent implements OnInit {
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
       Search: this.searchText,
-      GeographyId: this.geographyId
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId,
+      CurrentUserId:this.loginid
     }
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;

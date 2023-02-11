@@ -204,8 +204,9 @@ export class OrderlistShipPopupComponent implements OnInit {
       this.invoice = this.shipmentArray.currentshipDetails.invoiceno;
       this.currentshipmentname = this.shipmentArray.currentshipDetails.shipName
       this.shipmentArray.currentshipDetails.promodetails.forEach(element => {
+        
         let mainArray: any = [];
-        element.itemDetailsship.forEach(element1 => {
+        element.itemDetailsship==null? this.currentShipment = [] :  element.itemDetailsship.forEach(element1 => {
           let obj: any = {
             promotionName: element.promotionName,
             promocode: element.promocode,
@@ -241,9 +242,10 @@ export class OrderlistShipPopupComponent implements OnInit {
 
 
         element.promodetails.forEach(element1 => {
-
+          
 
           element1.itemDetailsship.forEach(element2 => {
+            
             let shipmentObj: any =
             {
               "customerPOProductId":element2.customerPOProductId,

@@ -163,14 +163,14 @@
                         </tr>
                         <tr *ngFor="let dupicateData of incorrectRows">
             
-                            <td title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
-                            <td style="width: 130px;" title="" class="elipsis-2line">
+                            <td [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'batchid'}" title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
+                            <td style="width: 130px;" title=""  [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'productcode'}">
                                 {{dupicateData.productCode}}</td>
-                            <td style="width: 150px;" title="">{{dupicateData.productName}}</td>
-                              <td title="">{{dupicateData.geography}}</td>
-                            <td>{{dupicateData.saleDate}}</td>
-                            <td>{{dupicateData.saleQuantity}}</td>
-                            <td style="width: 135px;">{{dupicateData.customerReference}}</td>
+                            <td [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'productname'}" style="width: 150px;" title="">{{dupicateData.productName}}</td>
+                              <td title=""[ngClass] ="{'errorText': dupicateData.incorrectColumn == 'geography'}">{{dupicateData.geography}}</td>
+                            <td [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'saledate'}">{{dupicateData.saleDate}}</td>
+                            <td [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'salequantity'}">{{dupicateData.saleQuantity}}</td>
+                            <td [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'customerreference'}" style="width: 135px;">{{dupicateData.customerReference}}</td>
                             <td></td>
             
                         </tr>

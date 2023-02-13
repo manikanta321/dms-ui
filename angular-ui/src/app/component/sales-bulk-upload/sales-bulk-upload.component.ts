@@ -244,6 +244,12 @@ export class SalesBulkUploadComponent implements OnInit {
       this.errorFree = "Error free rows = "+ this.errorfreeRows.length;
         console.log("this.salesUploadList",this.salesUploadList);
         this.incorrectRows = this.salesUploadList.incorrectData;
+        this.incorrectRows.map((ele)=>{
+          ele.incorrectColumn = ele.incorrectColumn.split(":")[1].toLowerCase().trim();
+          console.log("dfdfd" , ele.incorrectColumn);
+          return ele;
+        });
+        console.log("incoreectggggggggggggggggggggggg" , this.incorrectRows);
         this.Incorrect = "Incorrect Data = " + this.incorrectRows.length;
         const SalesUploadData = res.response.allRows;
         console.log("SalesUploadData",SalesUploadData)

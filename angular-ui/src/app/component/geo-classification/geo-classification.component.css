@@ -1,3 +1,4 @@
+
 .section {
   margin-top: 50px;
   padding: 17px;
@@ -7,8 +8,19 @@
 .horizontal-scroll {
   display: flex;
   gap: 10px;
-  height: 450px; 
-  overflow-x: auto;
+   height: 450px;  
+    overflow-x: auto;  
+}
+
+.horizontal-scroll 
+{
+    scrollbar-width: 8px; 
+ 
+overflow-y: auto;
+ height: 460px; 
+
+
+   
   /* -ms-scroll-snap-type: x mandatory;
       scroll-snap-type: x mandatory;
   scrollbar-width: none; */

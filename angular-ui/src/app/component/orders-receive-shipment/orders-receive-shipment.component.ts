@@ -732,13 +732,6 @@ element1.itemDetailsshipReceive.forEach(element2=>{
     if(this.reciveDateChange == null){
     alert('Please enter Received Date')
     }
-    Receiveship.map((ele) => ele.receivedQty);
-    console.log("dfdfdfd",Receiveship)
-    Receiveship.forEach(element => {
-    if(element.ReceivedQty == 0){
-      alert('Please enter Received Quantity');
-    }
-    })
     })
   console.log('objshipment',obj)
 }

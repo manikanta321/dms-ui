@@ -5,6 +5,7 @@ import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { SalesServicesService } from 'src/app/services/sales-services.service';
 import * as moment from 'moment';
 import dayjs from 'dayjs/esm';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-advanced-filter',
@@ -39,16 +40,24 @@ export class AdvancedFilterComponent implements OnInit {
   selectedItemsList : string[] = [];
   values: any = [];
   checkedCount : number = 0;
+  GeoCheckedCount : number = 0;
   searchText;
   startDate: any;
   endDate: any;
   statusList: any;
-  targetItem:boolean=false;
-  geograpItem: boolean = false;
+  targetLists: any = [];
+  itemOfgeogrphy: any = [];
+  ProductCustomIdentifierElements: any = [];
+  categoryItems: any = [];
+  subcatItems: any = [];
+  typeItems: any=[];
+  PCICheckedCount: number = 0;
+  categorycheckedCount:  number = 0;
 
   constructor(private salesService:SalesServicesService,
     private addMaterials: AddMaterialsService,
-    public orders:OrdersApisService,) { }
+    public orders:OrdersApisService,
+    private dialogRef: MatDialogRef<any>,) { }
 
   ngOnInit(): void {
     this.UserId = localStorage.getItem("logInId");
@@ -65,12 +74,14 @@ export class AdvancedFilterComponent implements OnInit {
     this.isShipmentDateSelected = false;
     this.isReceiptDateSelected = false;
     this.isTargetGroupSelected = true;
-    this.targetItem = true;
     this.salesService.getTargetList().subscribe((res) => {
       this.targetGroupList = res.response;
-      console.log("check target", this.targetGroupList);
+      this.targetGroupList.map((ele) => {
+       console.log( this.isCheckedForProduct(ele.targetGroupName));
+      })
   });
 }
+  
 getGeoGraphyIdentifier() {
   this.isTargetGroupSelected = false;
   this.isProductCustomIdentifierSelected = false;
@@ -217,54 +228,62 @@ getReceiptDate(){
   this.getListOfdatesTypes();
 }
 onItemClickOfTargetGroup(item : any){
-  this.targetItem = true;
-  this.geograpItem = false;
-  if(!(this.isCheckedForProduct(item))){
-  this.values.push(item);
+  if(!(this.isCheckedForProduct(item.targetGroupName))){
+  this.values.push(item.targetGroupName);
+  this.targetLists.push(item.targetGroupId);
   }
-  else if(this.isCheckedForProduct(item)){
-    this.values.pop(item);
+  else if(this.isCheckedForProduct(item.targetGroupName)){
+    this.values.pop(item.targetGroupName);
+    this.targetLists.pop(item.targetGroupId);
   }
+  
 }
 onItemClick(item : any){
-  if(!(this.isCheckedForProduct(item))){
-  this.values.push(item);
+  if(!(this.isCheckedForProduct(item.productCustomName))){
+  this.values.push(item.productCustomName);
+  this.ProductCustomIdentifierElements.push(item.productCustomId);
   }
-  else if(this.isCheckedForProduct(item)){
-    this.values.pop(item);
+  else if(this.isCheckedForProduct(item.productCustomName)){
+    this.values.pop(item.productCustomName);
+    this.ProductCustomIdentifierElements.pop(item.productCustomId)
   }
 }
 onItemClickOfGeograpy(item : any){
-  this.targetItem = true;
-  this.geograpItem = true;
-  if(!(this.isCheckedForProduct(item))){
-  this.values.push(item);
+  if(!(this.isCheckedForProduct(item?.geographyIdentifierName))){
+  this.values.push(item?.geographyIdentifierName);
+  this.itemOfgeogrphy.push(item.geographyIdentifierId);
   }
-  else if(this.isCheckedForProduct(item)){
-    this.values.pop(item);
+  else if(this.isCheckedForProduct(item?.geographyIdentifierName)){
+    this.values.pop(item?.geographyIdentifierName);
+    this.itemOfgeogrphy.pop(item.geographyIdentifierId);
   }
+
 }
 
 onItemClickOfCategory(category : any){
   localStorage.removeItem("category");
   if(!(this.isCheckedForProduct(category.catName))){
     this.values.push(category.catName);
+    this.categoryItems.push(category.catId);
     }
     else if(this.isCheckedForProduct(category.catName)){
       this.values.pop(category.catName);
+      this.categoryItems.pop(category.catId);
     }
     if(this.isCategorySelected){
       localStorage.setItem("category" , category.catId);
     }
-
+    
 }
 onItemClickOfSubCategory(subcat : any){
   localStorage.removeItem("subcategory");
   if(!(this.isCheckedForProduct(subcat.subCatName))){
     this.values.push(subcat.subCatName);
+    this.subcatItems.push(subcat.subCatId);
     }
     else if(this.isCheckedForProduct(subcat.subCatName)){
       this.values.pop(subcat.subCatName);
+      this.subcatItems.pop(subcat.subCatId);
     }
   if(this.isSubCategorySelected){
       localStorage.setItem("subcategory" , subcat.subCatId);
@@ -274,24 +293,75 @@ onItemClickOfSubCategory(subcat : any){
 onItemClickOfType(type: any){
     if(!(this.isCheckedForProduct(type.typeName))){
       this.values.push(type.typeName);
+      this.typeItems.push(type.typeId);
       }
       else if(this.isCheckedForProduct(type.typeName)){
         this.values.pop(type.typeName);
+        this.typeItems.pop(type.typeId);
       }
     
 
 }
 updateCount(event) {
-  if (event.checked) {
+    if(this.isTargetGroupSelected){
+      if (event.checked) {
     this.checkedCount++;
-  } else {
-    this.checkedCount--;
+    }
+    else if(this.checkedCount > 0){
+      this.checkedCount--;
+    }
   }
+  //  ||  || isSubCategorySelected || typeSelected"
 }
+updateCountForGeo(event:any){
+ if(this.isgeoGraphyIdentifierSelected){
+  if (event.checked) {
+    this.GeoCheckedCount++;
+    }
+    else if(this.GeoCheckedCount > 0){
+      this.GeoCheckedCount--;
+     }
+}
+}
+updateCountForPCI(event:any){
+   if(this.isProductCustomIdentifierSelected){
+  if (event.checked) {
+    this.PCICheckedCount++;
+    }
+    else if(this.PCICheckedCount > 0){
+      this.PCICheckedCount--;
+     }
+}
+
+}
+updateCountForCategory(event:any){
+  if(this.isCategorySelected){
+ if (event.checked) {
+   this.categorycheckedCount++;
+   }
+   else if(this.categorycheckedCount > 0){
+     this.categorycheckedCount--;
+    }
+}
+
+}
+
+
 removeItem(item) {
   const index = this.values.indexOf(item);
   this.values.splice(index, 1);
+  if(this.checkedCount > 0){
   this.checkedCount--;
+  }
+  if(this.GeoCheckedCount > 0){
+  this.GeoCheckedCount--;
+  }
+  if(this.PCICheckedCount > 0){
+    this.PCICheckedCount--;
+  }
+  if(this.categorycheckedCount > 0){
+    this.categorycheckedCount--;
+  }
 }
 isCheckedForProduct(item:any){
   if(this.values.includes(item)){
@@ -305,7 +375,33 @@ clearAll(){
   this.values.length = 0;
   this.checkedCount = 0;
 }
+applyAll(){
+  this.dialogRef.close();
 
+
+}
+getBackgroundColor(item) {
+ if(this.targetGroupList.some(target => target['targetGroupName'] === item)) {
+    return '#0353A4';
+  }
+  else  if(this.geoGraphyIdentifierList.some(vendor => vendor['geographyIdentifierName'] === item)){
+    return '#F72585';
+  }
+  else  if(this.ProductCustomIdentifierList.some(PCI => PCI.productCustomeIdentifiers.some((ele) => ele.productCustomName === item))){
+    return '#017EFA';
+  }
+  else  if(this.categoryList.allOtherCats.some(category => category['catName'] === item)){
+    return '#00187A';
+  }
+  else  if(this.subcaty?.allOtherSubCAts.some(subcategory => subcategory['subCatName'] === item)){
+    return '#0C5A3E';
+  }
+  else  if(this.typeList.some(types => types['typeName'] === item)){
+    return '#C32F27';
+  }
+  
+
+}
 customDatePickerEvent(eventChange) {
   this.selectedDateRange = eventChange.selectedDate;
   this.startDate = this.selectedDateRange.startDate;

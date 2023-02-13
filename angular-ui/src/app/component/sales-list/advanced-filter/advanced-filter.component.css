@@ -10,6 +10,7 @@
 }
 .close-iconn{
    cursor: pointer;
+   margin-bottom: -6px;
 }
 .selected .tick {
     display: inline;
@@ -589,6 +590,7 @@ z-index: 1000;
 min-width: 30rem;
 padding: 0.5rem 0;
 margin: 0;
+padding-left: 10px;
 font-size: 1rem;
 list-style: none;
 background-color: #fff;
@@ -604,12 +606,13 @@ display: flex;
   .custom{
     height: max-content;
     width: max-content;
-    color: black;
+    color: white;
     border: 0px solid;
     border-radius: 34px;
     padding: 7px;
     display: flex;
     align-items: center;
+    padding-left: 15px;
   }  
 .eleStyle{
     

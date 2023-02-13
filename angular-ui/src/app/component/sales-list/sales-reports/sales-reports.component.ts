@@ -1535,7 +1535,11 @@ export class SalesReportsComponent implements OnInit {
     });
   }
   onClickAdvancedFilter() {
-    this.dialog.open(AdvancedFilterComponent, { width: '643px', height: '686px' });
+    debugger;
+    const dialogRef = this.dialog.open(AdvancedFilterComponent, { width: '643px', height: '686px' });
+    dialogRef.afterClosed().subscribe((res) => {
+      console.log("ggggggggggggg", res)
+    })
   }
 }
 

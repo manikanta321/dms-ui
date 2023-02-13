@@ -76,9 +76,9 @@ export class AdvancedFilterComponent implements OnInit {
     this.isTargetGroupSelected = true;
     this.salesService.getTargetList().subscribe((res) => {
       this.targetGroupList = res.response;
-      this.targetGroupList.map((ele) => {
-       console.log( this.isCheckedForProduct(ele.targetGroupName));
-      })
+      // this.targetGroupList.map((ele) => {
+      //  console.log( this.isCheckedForProduct(ele.targetGroupName));
+      // })
   });
 }
   
@@ -228,32 +228,32 @@ getReceiptDate(){
   this.getListOfdatesTypes();
 }
 onItemClickOfTargetGroup(item : any){
-  if(!(this.isCheckedForProduct(item.targetGroupName))){
+  if(!(this.isCheckedForProduct(item.targetGroupName, 'target'))){
   this.values.push(item.targetGroupName);
   this.targetLists.push(item.targetGroupId);
   }
-  else if(this.isCheckedForProduct(item.targetGroupName)){
+  else if(this.isCheckedForProduct(item.targetGroupName, 'target')){
     this.values.pop(item.targetGroupName);
     this.targetLists.pop(item.targetGroupId);
   }
   
 }
 onItemClick(item : any){
-  if(!(this.isCheckedForProduct(item.productCustomName))){
+  if(!(this.isCheckedForProduct(item.productCustomName, 'product'))){
   this.values.push(item.productCustomName);
   this.ProductCustomIdentifierElements.push(item.productCustomId);
   }
-  else if(this.isCheckedForProduct(item.productCustomName)){
+  else if(this.isCheckedForProduct(item.productCustomName, 'product')){
     this.values.pop(item.productCustomName);
     this.ProductCustomIdentifierElements.pop(item.productCustomId)
   }
 }
 onItemClickOfGeograpy(item : any){
-  if(!(this.isCheckedForProduct(item?.geographyIdentifierName))){
+  if(!(this.isCheckedForProduct(item?.geographyIdentifierName,'geo'))){
   this.values.push(item?.geographyIdentifierName);
   this.itemOfgeogrphy.push(item.geographyIdentifierId);
   }
-  else if(this.isCheckedForProduct(item?.geographyIdentifierName)){
+  else if(this.isCheckedForProduct(item?.geographyIdentifierName,'geo')){
     this.values.pop(item?.geographyIdentifierName);
     this.itemOfgeogrphy.pop(item.geographyIdentifierId);
   }
@@ -262,11 +262,11 @@ onItemClickOfGeograpy(item : any){
 
 onItemClickOfCategory(category : any){
   localStorage.removeItem("category");
-  if(!(this.isCheckedForProduct(category.catName))){
+  if(!(this.isCheckedForProduct(category.catName, 'category'))){
     this.values.push(category.catName);
     this.categoryItems.push(category.catId);
     }
-    else if(this.isCheckedForProduct(category.catName)){
+    else if(this.isCheckedForProduct(category.catName, 'category')){
       this.values.pop(category.catName);
       this.categoryItems.pop(category.catId);
     }
@@ -277,11 +277,11 @@ onItemClickOfCategory(category : any){
 }
 onItemClickOfSubCategory(subcat : any){
   localStorage.removeItem("subcategory");
-  if(!(this.isCheckedForProduct(subcat.subCatName))){
+  if(!(this.isCheckedForProduct(subcat.subCatName,'subcategory'))){
     this.values.push(subcat.subCatName);
     this.subcatItems.push(subcat.subCatId);
     }
-    else if(this.isCheckedForProduct(subcat.subCatName)){
+    else if(this.isCheckedForProduct(subcat.subCatName,'subcategory')){
       this.values.pop(subcat.subCatName);
       this.subcatItems.pop(subcat.subCatId);
     }
@@ -291,11 +291,11 @@ onItemClickOfSubCategory(subcat : any){
 
 }
 onItemClickOfType(type: any){
-    if(!(this.isCheckedForProduct(type.typeName))){
+    if(!(this.isCheckedForProduct(type.typeName, 'type'))){
       this.values.push(type.typeName);
       this.typeItems.push(type.typeId);
       }
-      else if(this.isCheckedForProduct(type.typeName)){
+      else if(this.isCheckedForProduct(type.typeName, 'type')){
         this.values.pop(type.typeName);
         this.typeItems.pop(type.typeId);
       }
@@ -363,8 +363,41 @@ removeItem(item) {
     this.categorycheckedCount--;
   }
 }
-isCheckedForProduct(item:any){
-  if(this.values.includes(item)){
+isCheckedForProduct(item:any, type){
+  let productIdsList;
+  switch (type ){
+    case 'target': {
+      productIdsList = this.targetLists;
+      break;
+    }
+    case 'geo':{
+      productIdsList = this.itemOfgeogrphy;
+      break;
+    }
+    case 'product':{
+      productIdsList = this.ProductCustomIdentifierElements;
+      break;
+    }
+    case 'category':{
+      productIdsList = this.categoryItems;
+      break;
+    }
+    case 'subcategory':{
+      productIdsList = this.subcatItems;
+      break;
+    }
+    case 'type':{
+      productIdsList = this.typeItems;
+      break;
+    }
+
+    default:{
+      productIdsList : []
+    }
+
+
+  }
+  if(productIdsList.includes(item)){
     return true;
   }
   else{
@@ -376,8 +409,16 @@ clearAll(){
   this.checkedCount = 0;
 }
 applyAll(){
-  this.dialogRef.close();
-
+  let selectedFilters = {
+    targetGroupIds: this.targetLists,
+    GeographyIdentifierIds: this.itemOfgeogrphy,
+    productIdentifierIds: this.ProductCustomIdentifierElements,
+    catogoryIds: this.categoryItems,
+    subCategoryIds: this.subcatItems,    
+    typeIds: this.typeItems
+  }
+  console.log(selectedFilters);
+  this.dialogRef.close(selectedFilters);
 
 }
 getBackgroundColor(item) {
@@ -399,8 +440,6 @@ getBackgroundColor(item) {
   else  if(this.typeList.some(types => types['typeName'] === item)){
     return '#C32F27';
   }
-  
-
 }
 customDatePickerEvent(eventChange) {
   this.selectedDateRange = eventChange.selectedDate;

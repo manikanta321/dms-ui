@@ -2,7 +2,7 @@
     <div class="addUser">
         <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
     </div>
-    <span class="ship shipO">Ship Order:</span>
+    <span class="ship shipO">Add Sale:</span>
     <h1 class="ship shipBulk">Bulk Upload</h1>
     <div class="sales">
         <div class="row">
@@ -51,7 +51,6 @@
                             <th >Product Code</th>
                             <th>Product Name</th>
                             <th>Geography</th>
-                            <th>Current stock</th>
                             <th>Sale Date</th>
                             <th>Sale Qty</th>
                             <th>Customer Reference</th>
@@ -60,14 +59,13 @@
                         <tr *ngFor="let dupicateData of TotalRows">
             
                             <td title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
-                            <td title="" class="elipsis-2line">
+                            <td style="width: 130px;" title="" class="elipsis-2line">
                                 {{dupicateData.productCode}}</td>
-                            <td title="">{{dupicateData.productName}}</td>
+                            <td style="width: 150px;" title="">{{dupicateData.productName}}</td>
                               <td title="">{{dupicateData.geography}}</td>
-                            <td>{{""}}</td>
                             <td>{{dupicateData.saleDate}}</td>
                             <td>{{dupicateData.saleQuantity}}</td>
-                            <td >{{dupicateData.customerReference}}</td>
+                            <td style="width: 135px;">{{dupicateData.customerReference}}</td>
                             <td></td>
             
                         </tr>
@@ -88,7 +86,6 @@
                             <th >Product Code</th>
                             <th>Product Name</th>
                             <th>Geography</th>
-                            <th>Current stock</th>
                             <th>Sale Date</th>
                             <th>Sale Qty</th>
                             <th>Customer Reference</th>
@@ -97,14 +94,13 @@
                         <tr *ngFor="let dupicateData of errorfreeRows">
             
                             <td title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
-                            <td title="" class="elipsis-2line">
+                            <td style="width: 130px;" title="" class="elipsis-2line">
                                 {{dupicateData.productCode}}</td>
-                            <td title="">{{dupicateData.productName}}</td>
+                            <td style="width: 150px;" title="">{{dupicateData.productName}}</td>
                               <td title="">{{dupicateData.geography}}</td>
-                            <td>{{""}}</td>
                             <td>{{dupicateData.saleDate}}</td>
                             <td>{{dupicateData.saleQuantity}}</td>
-                            <td >{{dupicateData.customerReference}}</td>
+                            <td style="width: 135px;">{{dupicateData.customerReference}}</td>
                             <td></td>
             
                         </tr>
@@ -125,7 +121,6 @@
                             <th >Product Code</th>
                             <th>Product Name</th>
                             <th>Geography</th>
-                            <th>Current stock</th>
                             <th>Sale Date</th>
                             <th>Sale Qty</th>
                             <th>Customer Reference</th>
@@ -134,14 +129,13 @@
                         <tr *ngFor="let dupicateData of duplicateEntryy">
             
                             <td title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
-                            <td title="" class="elipsis-2line">
+                            <td  style="width: 130px;"title="" class="elipsis-2line">
                                 {{dupicateData.productCode}}</td>
-                            <td title="">{{dupicateData.productName}}</td>
+                            <td style="width: 150px;" title="">{{dupicateData.productName}}</td>
                               <td title="">{{dupicateData.geography}}</td>
-                            <td>{{""}}</td>
                             <td>{{dupicateData.saleDate}}</td>
                             <td>{{dupicateData.saleQuantity}}</td>
-                            <td >{{dupicateData.customerReference}}</td>
+                            <td style="width: 135px;">{{dupicateData.customerReference}}</td>
                             <td></td>
             
                         </tr>
@@ -162,7 +156,6 @@
                             <th >Product Code</th>
                             <th>Product Name</th>
                             <th>Geography</th>
-                            <th>Current stock</th>
                             <th>Sale Date</th>
                             <th>Sale Qty</th>
                             <th>Customer Reference</th>
@@ -171,14 +164,13 @@
                         <tr *ngFor="let dupicateData of incorrectRows">
             
                             <td title="" style="padding-left: 21px;">{{dupicateData.batchId}}</td>
-                            <td title="" class="elipsis-2line">
+                            <td style="width: 130px;" title="" class="elipsis-2line">
                                 {{dupicateData.productCode}}</td>
-                            <td title="">{{dupicateData.productName}}</td>
+                            <td style="width: 150px;" title="">{{dupicateData.productName}}</td>
                               <td title="">{{dupicateData.geography}}</td>
-                            <td>{{""}}</td>
                             <td>{{dupicateData.saleDate}}</td>
                             <td>{{dupicateData.saleQuantity}}</td>
-                            <td >{{dupicateData.customerReference}}</td>
+                            <td style="width: 135px;">{{dupicateData.customerReference}}</td>
                             <td></td>
             
                         </tr>
@@ -191,7 +183,7 @@
                        Upload
                     </button>
                 </div>
-                <div class="discard">
+                <div class="discard"  [mat-dialog-close]="true">
                     <button class="discard-text">
                         Cancel
                     </button>

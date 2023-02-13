@@ -25,7 +25,7 @@ border-radius: 25px;
   border-radius: 25px;
   }
 .close-icon {
-    left: 99%;
+    left: 99.3%;
     position: relative;
     font-size: 15px;
     font-weight: 600;
@@ -117,7 +117,7 @@ align-items: center;
 .addUser:after {
     content: "";
     display: block;
-    width: 416px;
+    width: 463px;
     height: 1px;
     background: #686E74;
     right: 33px;
@@ -180,7 +180,7 @@ align-items: center;
     right: 38.51%;
   }
   .shipBulk{
-    left: 3.43%;
+    left: 1.20%;
     top: -71px;
     right: 38.51%;
     font-weight: bold;

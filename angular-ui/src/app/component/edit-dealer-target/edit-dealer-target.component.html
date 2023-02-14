@@ -82,7 +82,7 @@
                         <div  *ngFor="let dealer of mainadd;let i=index">
                         <div>
                             <div class="row dealer-cntry">
-                                <div class="col-md-3 dlr-info">
+                                <div class="col-md-4 dlr-info">
                                     <input type="checkbox" [checked]="dealerTargetSetItem =='view'?true:''" [disabled]="dealerTargetSetItem =='view'" (click)="custmer1(dealer.customerId)"> <span class="dlr-name">{{mainadd[0]?.customerName}}</span>
                                 </div>
                                 <div class="col-md-2" *ngFor="let Country of dealer?.geography">

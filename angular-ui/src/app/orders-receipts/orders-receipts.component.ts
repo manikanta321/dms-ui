@@ -11,6 +11,7 @@ import { ShipOrderBulkDownloadComponent } from '../component/orders/ship-order-b
 import { SalesBulkUploadComponent } from '../component/sales-bulk-upload/sales-bulk-upload.component';
 import { OrdersApisService } from '../services/orders-apis.service';
 import { OtherMasterService } from '../services/other-master.service';
+import { SharedServiceCalendarService } from '../services/shared-service-calendar.service';
 import { SharedServicesShipmentService } from '../services/shared-services-shipment.service';
 import { SharedService } from '../services/shared-services.service';
 import { UserService } from '../services/user.service';
@@ -177,6 +178,7 @@ export class OrdersReceiptsComponent implements OnInit {
     private user: UserService,
     private fb: FormBuilder,
     private sharedserviceForshipment:SharedServicesShipmentService,
+    private sharedServiceCalendar:SharedServiceCalendarService,
     ) { 
 
 
@@ -632,5 +634,6 @@ export class OrdersReceiptsComponent implements OnInit {
         this.receiptDatalist = res.response;
         console.log("Response",this.receiptDatalist)
       });
+      this.sharedServiceCalendar.filter('Register click')
     }
 }

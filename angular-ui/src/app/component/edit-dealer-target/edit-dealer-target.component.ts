@@ -742,7 +742,7 @@ geographyobj.vtotal  =res.response.vtotal
 
 
   saveTargetData() {
-
+    localStorage.setItem("updateAddEditTarget",'edit');
     console.log('mm saveTargetData', this.mainadd);
     let obj: any;
     if (this.selectedDealer.length >= 1) {

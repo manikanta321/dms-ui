@@ -18,6 +18,7 @@ import moment from 'moment';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { SharedServicesShipmentService } from 'src/app/services/shared-services-shipment.service';
 import { OrderShipmentService } from 'src/app/services/order-shipment.service';
+import { SharedServiceCalendarService } from 'src/app/services/shared-service-calendar.service';
 
 @Component({
   selector: 'app-orders-shipment',
@@ -184,6 +185,8 @@ export class OrdersShipmentComponent implements OnInit {
     private route: ActivatedRoute,
     private orderShipment:OrderShipmentService,
     
+    private otherMasterService:OtherMasterService,
+    private sharedServiceCalendar:SharedServiceCalendarService,
     private fb: FormBuilder) { 
 
       this.sharedserviceForshipment.listen().subscribe((m: any) => {
@@ -666,9 +669,9 @@ export class OrdersShipmentComponent implements OnInit {
       this.orders.getShipmentList(data).subscribe((res) => {
         this.shipmentDatalist = res.response;
         console.log("Response",this.shipmentDatalist)
-
-        
+               
       });
+      this.sharedServiceCalendar.filter('Register click')
     }
 
     close() {

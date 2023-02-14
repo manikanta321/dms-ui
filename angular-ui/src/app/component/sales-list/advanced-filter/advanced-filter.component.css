@@ -300,7 +300,9 @@ mat-form-field {
     right: -45px;
     top: 10px;
 }
-
+::ng-deep.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background {
+    background-color: black !important;
+  }
 .searchBox>.searchInput {
     display: block;
     width: 295px;

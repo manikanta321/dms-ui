@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit,  } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AfterViewInit, ViewChild } from '@angular/core';
@@ -33,6 +33,7 @@ import moment from 'moment';
 import { OtherMasterService } from 'src/app/services/other-master.service';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { SharedServicesShipmentService } from 'src/app/services/shared-services-shipment.service';
+import { SharedServiceCalendarService } from 'src/app/services/shared-service-calendar.service';
 // import { DateRange } from '@uiowa/date-range-picker';
 
 export interface PeriodicElement {
@@ -78,6 +79,7 @@ export class OrderListComponent implements OnInit {
   myForm: any = FormGroup;
   myForm1: any = FormGroup;
   myForm2: any = FormGroup;
+
   disabled = false;
   ShowFilter = false;
   StatusFilter = false;
@@ -338,6 +340,7 @@ export class OrderListComponent implements OnInit {
     private observer: BreakpointObserver,
     private route: ActivatedRoute,
     private sharedserviceForshipment:SharedServicesShipmentService,
+    private sharedServiceCalendar:SharedServiceCalendarService,
 
     private materialListService:SharedServiceMaterialListService
   ) {
@@ -410,6 +413,7 @@ export class OrderListComponent implements OnInit {
     this.myForm2 = this.fb.group({
       status: [this.selectedItems]
     });
+ 
   }
   refresh() {
 
@@ -422,6 +426,7 @@ export class OrderListComponent implements OnInit {
     this.myForm2 = this.fb.group({
       status: [this.selectedItems]
     });
+ 
     // this.GeographyId=[];
     // this.StatusId=[];
     // this.DealerId=[];
@@ -447,8 +452,9 @@ export class OrderListComponent implements OnInit {
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
       console.log("RefreshData", this.rowDatalist);
-
+   
     });
+    this.sharedServiceCalendar.filter('Register click')
   }
   onBtnExport() {
     this.gridApi.exportDataAsCsv();
@@ -764,6 +770,7 @@ export class OrderListComponent implements OnInit {
       "GeographyId": [],
       "DealerId": [],
       "OrderDate": "",
+     
 
       "Search": this.searchText,
       CurrentUserId:this.loggedUserId,

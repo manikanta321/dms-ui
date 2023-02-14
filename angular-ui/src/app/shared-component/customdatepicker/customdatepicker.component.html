@@ -24,11 +24,9 @@
             [positionTarget]="calendarSection" popoverClass="datepicker-popover">
             <!-- <img src="assets/img/calenderImage.svg" alt=""> -->
         </div>
-        <div *ngIf="date">
-            <div class="datepicker" *ngIf="selectedDate && selectedDate.startDate"> {{selectedDate.startDate}} -
-                {{selectedDate.endDate}}
-                <mat-icon mat-button class="close-iconn" (click)="close()">close</mat-icon>
-            </div>
+         <div *ngIf="date">
+        <div class="datepicker"   *ngIf="selectedDate && selectedDate.startDate"> {{selectedDate.startDate}} - {{selectedDate.endDate}}
+           <mat-icon mat-button class="close-iconn" (click)="close()"    >close</mat-icon>
         </div>
     </div>
     <ng-template #popContent>
@@ -38,10 +36,12 @@
             </li>
         </ul>
     </ng-template>
-    <ng-template #popContent2>
-        <ngx-daterangepicker-material (choosedDate)="chosenDate($event)" [showDropdowns]="true"
-            [startDate]="selected?.startDate" [endDate]="selected?.endDate" [showClearButton]="true"
-            [locale]="{applyLabel: 'Done', clearLabel:'Reset'}">
+    <ng-template #popContent2 >
+        <ngx-daterangepicker-material  (choosedDate)="chosenDate($event)" [showDropdowns]="true"
+            [startDate]="selected?.startDate" [endDate]="selected?.endDate"  [showClearButton]="true"
+            [locale]="{applyLabel: 'Done', clearLabel:'Reset'}"  
+                   
+          >
         </ngx-daterangepicker-material>
     </ng-template>
 </div>

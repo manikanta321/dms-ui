@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import * as moment from 'moment';
 import dayjs from 'dayjs/esm';
+import { SharedServiceCalendarService } from 'src/app/services/shared-service-calendar.service';
 
 
 @Component({
@@ -69,12 +70,14 @@ export class CustomdatepickerComponent implements OnInit {
   @Input() selectedMenu:string = "";
   @Output() customDatePickerEvent: EventEmitter<any> = new EventEmitter();
 
-
-  constructor() {
+  constructor(private sharedServiceCalendar:SharedServiceCalendarService,
+    ) {
     this.selected = {
       startDate: dayjs(new Date()),
       endDate: dayjs(new Date())
     };
+    this.sharedServiceCalendar.listen().subscribe((m: any) => {
+    this.close();   })
   }
 
   ngOnInit() {

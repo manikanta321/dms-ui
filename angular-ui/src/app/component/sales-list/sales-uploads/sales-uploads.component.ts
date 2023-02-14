@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridReadyEvent } from 'ag-grid-community';
 import moment from 'moment';
 import { SalesServicesService } from 'src/app/services/sales-services.service';
+import { SharedServiceCalendarService } from 'src/app/services/shared-service-calendar.service';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { SalesBulkUploadComponent } from '../../sales-bulk-upload/sales-bulk-upload.component';
 import { SalesInvoiceDownloadComponent } from '../../sales-invoice-download/sales-invoice-download.component';
@@ -25,7 +26,8 @@ export class SalesUploadsComponent implements OnInit {
   private gridApi!: GridApi;
   constructor(public dialog: MatDialog,
     private sharedService :SharedService, 
-    private salesService:SalesServicesService) { }
+    private salesService:SalesServicesService,
+    private sharedServiceCalendar:SharedServiceCalendarService,) { }
 
   ngOnInit(): void {
     this.SalesUpload();
@@ -251,6 +253,7 @@ sessionStorage.setItem("BatchId",batchId );
       console.log("SalesUploadList",this.salesUploadList);
 
     })
+    this.sharedServiceCalendar.filter('Register click')
   }
   onSearchChange($event: any, anything?: any) {
     // const { target } = $event;

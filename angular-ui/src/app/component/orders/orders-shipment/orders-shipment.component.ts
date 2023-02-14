@@ -19,6 +19,7 @@ import { SharedService } from 'src/app/services/shared-services.service';
 import { SharedServicesShipmentService } from 'src/app/services/shared-services-shipment.service';
 import { OrderShipmentService } from 'src/app/services/order-shipment.service';
 import { SharedServiceCalendarService } from 'src/app/services/shared-service-calendar.service';
+import { OtherMasterService } from 'src/app/services/other-master.service';
 
 @Component({
   selector: 'app-orders-shipment',

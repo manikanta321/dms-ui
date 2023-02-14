@@ -9,8 +9,18 @@
     /* background-color: #CED4DA; */
 }
 .close-iconn{
+   
    cursor: pointer;
-   margin-bottom: -6px;
+    position: relative;
+    bottom: 14px;
+    left: 54px;
+    font-size: 12px;
+    font-weight: bold;
+   
+}
+.itemSelectedFilter{
+    position: relative;
+    bottom: -3px;
 }
 .selected .tick {
     display: inline;
@@ -300,9 +310,7 @@ mat-form-field {
     right: -45px;
     top: 10px;
 }
-::ng-deep.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background {
-    background-color: black !important;
-  }
+
 .searchBox>.searchInput {
     display: block;
     width: 295px;
@@ -611,15 +619,16 @@ overflow: auto;
 display: flex;
   }
   .custom{
-    height: max-content;
-    width: max-content;
+    height: 26px;
+    width: 89px;
     color: white;
     border: 0px solid;
     border-radius: 34px;
-    padding: 7px;
+    padding: 15px;
     display: flex;
     align-items: center;
-    padding-left: 15px;
+    padding-left: 0px;
+    padding-top: 18px;
   }  
 .eleStyle{
     

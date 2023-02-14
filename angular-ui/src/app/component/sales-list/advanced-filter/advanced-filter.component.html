@@ -22,37 +22,37 @@
                     <div class="menu-container">
                         <div class="menu-item tick menu-item-targetG" (click)=addTargetGroupElements()> Target Group
                             <span *ngIf="checkedCount > 0">({{checkedCount}})</span>
-                            <img *ngIf="isTargetGroupSelected" src="../../../assets/userImages/done-tick.svg" alt="">
+                            <img *ngIf="isTargetGroupSelected" src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark">
                         </div>
 
                         <div class="menu-item tick menu-item-GeoTags" (click)=getGeoGraphyIdentifier()> Geography Tags
                             <span *ngIf="GeoCheckedCount > 0">({{GeoCheckedCount}})</span>
-                            <img *ngIf="isgeoGraphyIdentifierSelected" src="../../../assets/userImages/done-tick.svg">
+                            <img *ngIf="isgeoGraphyIdentifierSelected" src="../../../assets/userImages/done-tick.svg" class="tickmark">
                         </div>
                         <div class="menu-item tick menu-item-prodCustomId" (click)=getProductCustomIdentifier()>Product
                             Custom Identifier <span *ngIf="PCICheckedCount > 0">({{PCICheckedCount}})</span>
                             <img *ngIf="isProductCustomIdentifierSelected"
-                                src="../../../assets/userImages/done-tick.svg">
+                                src="../../../assets/userImages/done-tick.svg" class="tickmark">
                         </div>
                         <div class="menu-item tick menu-item-categO" (click)=getCategory()>Category <span
                                 *ngIf="categorycheckedCount > 0">({{categorycheckedCount}})</span>
-                            <img *ngIf="isCategorySelected" src="../../../assets/userImages/done-tick.svg">
+                            <img *ngIf="isCategorySelected" src="../../../assets/userImages/done-tick.svg" class="tickmark">
                         </div>
                         <div class="menu-item tick menu-item-subCategO" (click)=getSubCategory()>Sub-Category <span
                                 *ngIf="subcategoryCheckedCount > 0">({{subcategoryCheckedCount}})</span>
-                            <img *ngIf="isSubCategorySelected" src="../../../assets/userImages/done-tick.svg">
+                            <img *ngIf="isSubCategorySelected" src="../../../assets/userImages/done-tick.svg" class="tickmark">
                         </div>
                         <div class="menu-item tick menu-item-typeO" (click)=getType()>Type <span
                                 *ngIf=" typeCount > 0">({{typeCount}})</span>
-                            <img *ngIf="typeSelected" src="../../../assets/userImages/done-tick.svg">
+                            <img *ngIf="typeSelected" src="../../../assets/userImages/done-tick.svg" class="tickmark">
                         </div>
                         <div class="menu-item tick menu-item-shipDate" (click)=getShipmentDate()>Shipment Date <span
                                 *ngIf="shipmentcheckedCount > 0">({{shipmentcheckedCount}})</span>
-                            <img *ngIf="isShipmentDateSelected" src="../../../assets/userImages/done-tick.svg">
+                            <img *ngIf="isShipmentDateSelected" src="../../../assets/userImages/done-tick.svg" class="tickmark">
                         </div>
                         <div class="menu-item tick menu-item-receiptDate" (click)=getReceiptDate()>Receipt Date <span
                                 *ngIf="receiptcheckedCount > 0">({{receiptcheckedCount}})</span>
-                            <img *ngIf="isReceiptDateSelected" src="../../../assets/userImages/done-tick.svg">
+                            <img *ngIf="isReceiptDateSelected" src="../../../assets/userImages/done-tick.svg" class="tickmark">
                         </div>
                     </div>
                 </div>
@@ -168,7 +168,7 @@
                         <div *ngIf="this.targetLists.length > 0">
                             <div *ngFor="let item of targetLists;let i =index;" class="custom"
                                 [ngStyle]="{'background-color': getBackgroundColor(item.targetGroupName)}">
-                                <div class="eleStyle"><span>{{item.targetGroupName}}<mat-icon mat-button
+                                <div class="eleStyle"><span class="itemSelectedFilter">{{item.targetGroupName}}<mat-icon mat-button
                                             class="close-iconn"
                                             (click)="removeItem(item.targetGroupId)">close</mat-icon></span></div>
                             </div>
@@ -177,7 +177,7 @@
                         <div *ngIf="this.itemOfgeogrphy.length > 0">
                             <div *ngFor="let item of itemOfgeogrphy;let i =index;" class="custom"
                                 [ngStyle]="{'background-color': getBackgroundColor(item.geographyIdentifierName)}">
-                                <div class="eleStyle"><span>{{item.geographyIdentifierName}}<mat-icon mat-button
+                                <div class="eleStyle"><span class="itemSelectedFilter">{{item.geographyIdentifierName}}<mat-icon mat-button
                                             class="close-iconn"
                                             (click)="removeItem(item.geographyIdentiferid)">close</mat-icon></span>
                                 </div>
@@ -186,7 +186,7 @@
                         <div *ngIf="this.ProductCustomIdentifierElements.length > 0">
                             <div *ngFor="let pciElemets of ProductCustomIdentifierElements;let i =index;" class="custom"
                                 [ngStyle]="{'background-color': getBackgroundColor(pciElemets.productCustomName)}">
-                                <div class="eleStyle"><span>{{pciElemets.productCustomName}}<mat-icon mat-button
+                                <div class="eleStyle"><span class="itemSelectedFilter">{{pciElemets.productCustomName}}<mat-icon mat-button
                                             class="close-iconn"
                                             (click)="removeItem(pciElemets.productCustomIdentifierId)">close</mat-icon></span>
                                 </div>
@@ -195,14 +195,14 @@
                         <div *ngIf="this.categoryItems.length > 0">
                             <div *ngFor="let category of categoryItems;let i =index;" class="custom"
                                 [ngStyle]="{'background-color': getBackgroundColor(category.catName)}">
-                                <div class="eleStyle"><span>{{category.catName}}<mat-icon mat-button class="close-iconn"
+                                <div class="eleStyle"><span class="itemSelectedFilter">{{category.catName}}<mat-icon mat-button class="close-iconn"
                                             (click)="removeItem(category.catId)">close</mat-icon></span></div>
                             </div>
                         </div>
                         <div *ngIf="this.subcatItems.length > 0">
                             <div *ngFor="let subcat of subcatItems;let i =index;" class="custom"
                                 [ngStyle]="{'background-color': getBackgroundColor(subcat.subCatName)}">
-                                <div class="eleStyle"><span>{{subcat.subCatName}}<mat-icon mat-button
+                                <div class="eleStyle"><span class="itemSelectedFilter">{{subcat.subCatName}}<mat-icon mat-button
                                             class="close-iconn"
                                             (click)="removeItem(subcat.subCatId)">close</mat-icon></span></div>
                             </div>
@@ -210,7 +210,7 @@
                         <div *ngIf="this.typeItems.length > 0">
                             <div *ngFor="let type of typeItems;let i =index;" class="custom"
                                 [ngStyle]="{'background-color': getBackgroundColor(type.typeName)}">
-                                <div class="eleStyle"><span>{{type.typeName}}<mat-icon mat-button class="close-iconn"
+                                <div class="eleStyle"><span class="itemSelectedFilter">{{type.typeName}}<mat-icon mat-button class="close-iconn"
                                             (click)="removeItem(type.typeId)">close</mat-icon></span></div>
                             </div>
                         </div>

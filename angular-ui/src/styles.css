@@ -399,6 +399,16 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   display: none;
 }
 
+
+.menu-datepicker ngx-daterangepicker-material .md-drppicker .btn{
+  position: relative;
+  top: -30px;
+}
+
+.menu-datepicker ngx-daterangepicker-material .md-drppicker .btn.btn-default{
+  display: block;
+  top: 10px;
+}
 .material-add-edit .mat-horizontal-content-container{
   max-height: 70vh;
   overflow-y: auto;

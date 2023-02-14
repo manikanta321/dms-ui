@@ -113,23 +113,21 @@
                             </li>
                         </div>
                         <div *ngIf="isShipmentDateSelected" class="heroes5 menu-itemm tick">
-                            <img *ngIf="isShipmentDateSelected" src="../../../assets/userImages/done-tick.svg"
-                                class="tickmark">
-                            <li *ngFor="let item of menuDateValues">
-                                {{item.title}}
-                            </li>
+                            <app-customdatepicker class="dateplaceholder" [showDirectMenu]="true" [selectedMenu]="shipmentselectedMenu" [selectedDate]="shipmentSelectedDateRange" (customDatePickerEvent)="shipmentCustomDatePickerEvent($event)"></app-customdatepicker>
                         </div>
 
-                        <div *ngIf="isReceiptDateSelected" class="heroes5 menu-itemm tick">
-                            <img *ngIf="isReceiptDateSelected" src="../../../assets/userImages/done-tick.svg"
+                        <div *ngIf="isReceiptDateSelected" class="heroes5 menu-datepicker menu-itemm tick">
+                            <!-- <img *ngIf="isReceiptDateSelected" src="../../../assets/userImages/done-tick.svg"
                                 class="tickmark">
                             <li *ngFor="let item of menuDateValues">
                                 {{item.title}}
                             </li>
                             <div class="invoice" ngIf="item.title == 'Custom'">
-                                <ngx-daterangepicker-material>
+                                 <ngx-daterangepicker-material>
                                 </ngx-daterangepicker-material>
-                            </div>
+                            </div> -->
+
+                            <app-customdatepicker class="dateplaceholder" [showDirectMenu]="true" [selectedMenu]="reciptselectedMenu" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
                         </div>
 
 

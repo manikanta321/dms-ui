@@ -54,6 +54,11 @@ export class AdvancedFilterComponent implements OnInit {
   PCICheckedCount: number = 0;
   categorycheckedCount: number = 0;
 
+  
+  reciptselectedMenu:string="";
+  shipmentselectedMenu:string="";
+  shipmentSelectedDateRange: any;
+
   constructor(private salesService: SalesServicesService,
     private addMaterials: AddMaterialsService,
     public orders: OrdersApisService,
@@ -441,11 +446,21 @@ export class AdvancedFilterComponent implements OnInit {
       return '#C32F27';
     }
   }
+
   customDatePickerEvent(eventChange) {
     this.selectedDateRange = eventChange.selectedDate;
     this.startDate = this.selectedDateRange.startDate;
     this.endDate = this.selectedDateRange.endDate;
-    console.log("dfdfdfdfdfd", this.selectedDateRange);
+    this.reciptselectedMenu = eventChange.selectedMenu;
+    console.log("dfdfdfdfdfd", this.selectedDateRange, this.reciptselectedMenu);
+  }
+
+  shipmentCustomDatePickerEvent(eventChange) {
+    this.shipmentSelectedDateRange = eventChange.selectedDate;
+    this.startDate = this.shipmentSelectedDateRange.startDate;
+    this.endDate = this.shipmentSelectedDateRange.endDate;
+    this.shipmentselectedMenu = eventChange.selectedMenu;
+    console.log("dfdfdfdfdfd", this.shipmentSelectedDateRange, this.reciptselectedMenu);
   }
 }
 

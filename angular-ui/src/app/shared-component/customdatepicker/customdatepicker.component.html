@@ -1,31 +1,35 @@
-<div class="row">
+<div class="row" *ngIf="!showDirectMenu">
     <div class="col-md-12">
         <div class="calendar-btn-section" #calendarSection>
-            <div class="invoice" *ngIf="showInputField" [ngbPopover]="popContent" [placement]="['bottom','bottom-start','left-top','right-top']"
-            [autoClose]="'outside'" #datepickerBtn="ngbPopover" popoverClass="datepicker-menu">
-                <mat-form-field appearance="fill" >
-                  <mat-label *ngIf="!(selectedDate &&selectedDate.startDate)">{{label}}</mat-label>
-                  <mat-label  *ngIf="selectedDate && selectedDate.startDate">{{selectedDate.startDate}} - {{selectedDate.endDate}}</mat-label>
-                  <mat-select >
-                  </mat-select>
+            <div class="invoice" *ngIf="showInputField" [ngbPopover]="popContent"
+                [placement]="['bottom','bottom-start','left-top','right-top']" [autoClose]="'outside'"
+                #datepickerBtn="ngbPopover" popoverClass="datepicker-menu">
+                <mat-form-field appearance="fill">
+                    <mat-label *ngIf="!(selectedDate &&selectedDate.startDate)">{{label}}</mat-label>
+                    <mat-label *ngIf="selectedDate && selectedDate.startDate">{{selectedDate.startDate}} -
+                        {{selectedDate.endDate}}</mat-label>
+                    <mat-select>
+                    </mat-select>
                 </mat-form-field>
-              </div>
-            <div class="cal" *ngIf="!showInputField"  [ngbPopover]="popContent" [placement]="['bottom','bottom-start','left-top','right-top']"
-                [autoClose]="'outside'" #datepickerBtn="ngbPopover" popoverClass="datepicker-menu">
+            </div>
+            <div class="cal" *ngIf="!showInputField" [ngbPopover]="popContent"
+                [placement]="['bottom','bottom-start','left-top','right-top']" [autoClose]="'outside'"
+                #datepickerBtn="ngbPopover" popoverClass="datepicker-menu">
                 <img src="assets/img/calenderImage.svg" alt="">
             </div>
         </div>
 
         <div class="cal" style="display:none;" [ngbPopover]="popContent2"
-            [placement]="['bottom','left-top','right-top']" [autoClose]="'outside'"
-            #datepickerBtn2="ngbPopover" [positionTarget]="calendarSection" popoverClass="datepicker-popover">
+            [placement]="['bottom','left-top','right-top']" [autoClose]="'outside'" #datepickerBtn2="ngbPopover"
+            [positionTarget]="calendarSection" popoverClass="datepicker-popover">
             <!-- <img src="assets/img/calenderImage.svg" alt=""> -->
         </div>
-         <div *ngIf="date">
-        <div class="datepicker"   *ngIf="selectedDate && selectedDate.startDate"> {{selectedDate.startDate}} - {{selectedDate.endDate}}
-           <mat-icon mat-button class="close-iconn" (click)="close()" >close</mat-icon>
+        <div *ngIf="date">
+            <div class="datepicker" *ngIf="selectedDate && selectedDate.startDate"> {{selectedDate.startDate}} -
+                {{selectedDate.endDate}}
+                <mat-icon mat-button class="close-iconn" (click)="close()">close</mat-icon>
+            </div>
         </div>
-    </div> 
     </div>
     <ng-template #popContent>
         <ul class="datepicker-menu-list">
@@ -35,9 +39,31 @@
         </ul>
     </ng-template>
     <ng-template #popContent2>
-        <ngx-daterangepicker-material  (choosedDate)="chosenDate($event)" [showDropdowns]="true"
-            [startDate]="selected?.startDate" [endDate]="selected?.endDate"  [showClearButton]="true"
-            [locale]="{applyLabel: 'Done', clearLabel:'Reset'}"    >
+        <ngx-daterangepicker-material (choosedDate)="chosenDate($event)" [showDropdowns]="true"
+            [startDate]="selected?.startDate" [endDate]="selected?.endDate" [showClearButton]="true"
+            [locale]="{applyLabel: 'Done', clearLabel:'Reset'}">
         </ngx-daterangepicker-material>
     </ng-template>
+</div>
+
+<div class="row" *ngIf="showDirectMenu">
+    <div class="col-md-12">
+        <ul class="datepicker-menu-list direct-menu" *ngIf="!showMenuDatePicker">
+            <li *ngFor="let item of menuDateValues" [ngClass]="this.selectedMenu == item.title ? 'selected-menu':''"
+                (click)="DateOptionMenuClicked(item.title )">
+                {{item.title}}
+                <img *ngIf="this.selectedMenu == item.title" src="/assets/userImages/done-tick.svg" class="tickmark">
+                <!-- <img *ngIf="this.selectedMenu == item.title" src="../../../assets/userImages/done-tick.svg" class="tickmark"> -->
+            </li>
+        </ul>
+
+        <div class="menu-datepicker" *ngIf="showMenuDatePicker">
+            <div class="menu-datepicker-overlay" (click)="showMenuDatePicker = false"></div>
+            <ngx-daterangepicker-material (choosedDate)="chosenDate($event)" [showDropdowns]="true"
+                [startDate]="selected?.startDate" [endDate]="selected?.endDate" [showClearButton]="true"
+                [locale]="{applyLabel: 'Done', clearLabel:'Reset'}">
+            </ngx-daterangepicker-material>
+        </div>
+    </div>
+
 </div>

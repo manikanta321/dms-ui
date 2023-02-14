@@ -65,7 +65,10 @@ export class CustomdatepickerComponent implements OnInit {
   @Input() showInputField: boolean = false;
   @Input() showInputShipment: boolean = false;
   @Input() label: any;
+  @Input() showDirectMenu:boolean = false;
+  @Input() selectedMenu:string = "";
   @Output() customDatePickerEvent: EventEmitter<any> = new EventEmitter();
+
 
   constructor() {
     this.selected = {
@@ -101,7 +104,7 @@ export class CustomdatepickerComponent implements OnInit {
           endDate: dayjs(new Date())
         }
       }
-
+      
     }
   }
 
@@ -112,14 +115,16 @@ export class CustomdatepickerComponent implements OnInit {
 
       this.selectedDate = { startDate: dayjs(e.startDate).format('DD MMM YY'), endDate: dayjs(e.endDate).format('DD MMM YY') }
       console.log(this.selectedDate);
-      if (this.datePickerTrigger2.isOpen()) {
+      if (!this.showDirectMenu && this.datePickerTrigger2.isOpen()) {
         this.datePickerTrigger2.close();
+      }else if(this.showDirectMenu){
+        this.showMenuDatePicker = false;
       }
     } else {
       this.selectedDate = { startDate: dayjs(new Date()).format('DD MMM YY'), endDate: dayjs(new Date()).format('DD MMM YY') }
     }
 
-    this.customDatePickerEvent.emit({ selectedDate: this.selectedDate });
+    this.customDatePickerEvent.emit({ selectedDate: this.selectedDate, selectedMenu:this.selectedMenu });
   }
 
   DateOptionClicked(clickedItem) {
@@ -141,9 +146,35 @@ export class CustomdatepickerComponent implements OnInit {
         if (selectedMenu) {
           this.selectedDate = { startDate: dayjs(selectedMenu.range[0]).format('DD MMM YY'), endDate: dayjs(selectedMenu.range[1]).format('DD MMM YY') }
           // this.label = this.selectedDate.startDate;
-          this.customDatePickerEvent.emit({ selectedDate: this.selectedDate });
+          this.customDatePickerEvent.emit({ selectedDate: this.selectedDate ,selectedMenu:this.selectedMenu});
         }
       }
     }
+  }
+
+  showMenuDatePicker:boolean = false;
+ 
+
+  DateOptionMenuClicked(clickedItem){
+    this.date = true;
+    this.selectedMenu = clickedItem;
+    if (clickedItem == 'Custom') {
+      if (!this.selected.startDate) {
+        this.selected = {
+          startDate: dayjs((this.selectedDate.startDate)),
+          endDate: dayjs((this.selectedDate.endDate))
+        }
+      }
+      console.log("ssssssssss");
+      this.showMenuDatePicker = !this.showMenuDatePicker;
+    } else {
+      let selectedMenuDate = this.menuDateValues.find(item => item.title == clickedItem);
+      if (selectedMenuDate) {
+        this.selectedDate = { startDate: dayjs(selectedMenuDate.range[0]).format('DD MMM YY'), endDate: dayjs(selectedMenuDate.range[1]).format('DD MMM YY') }
+        // this.label = this.selectedDate.startDate;
+        this.customDatePickerEvent.emit({ selectedDate: this.selectedDate, selectedMenu:this.selectedMenu });
+      }
+    }
+
   }
 }

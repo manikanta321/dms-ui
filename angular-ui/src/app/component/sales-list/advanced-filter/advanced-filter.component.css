@@ -98,6 +98,11 @@ input[type=text] {
     overflow-y: scroll;
     overflow-x: hidden;
   }
+
+  /* .menu-datepicker{
+    overflow: inherit;
+    position: absolute;
+  } */
  
 
   .heroes li {

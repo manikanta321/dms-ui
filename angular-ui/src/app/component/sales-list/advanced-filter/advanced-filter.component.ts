@@ -53,11 +53,20 @@ export class AdvancedFilterComponent implements OnInit {
   typeItems: any = [];
   PCICheckedCount: number = 0;
   categorycheckedCount: number = 0;
-
-  
+  subcategoryCheckedCount : number = 0;
+  typeCount : number = 0;
+  shipmentcheckedCount : number = 0;
+  receiptcheckedCount : number = 0;
   reciptselectedMenu:string="";
   shipmentselectedMenu:string="";
   shipmentSelectedDateRange: any;
+  removeItemOfTarget: boolean = false;
+  groupId: any =[];
+  geoIds: any = [];
+  pcIElementIds: any = [];
+  categoryIds: any = [];
+  subCatIds: any = [];
+  typeIds: any = [];
 
   constructor(private salesService: SalesServicesService,
     private addMaterials: AddMaterialsService,
@@ -232,47 +241,48 @@ export class AdvancedFilterComponent implements OnInit {
     this.isReceiptDateSelected = true;
     this.getListOfdatesTypes();
   }
-  onItemClickOfTargetGroup(item: any) {
-    if (!(this.isCheckedForProduct(item.targetGroupName, 'target'))) {
-      this.values.push(item.targetGroupName);
-      this.targetLists.push(item.targetGroupId);
-    }
-    else if (this.isCheckedForProduct(item.targetGroupName, 'target')) {
-      this.values.pop(item.targetGroupName);
-      this.targetLists.pop(item.targetGroupId);
-    }
 
-  }
-  onItemClick(item: any) {
-    if (!(this.isCheckedForProduct(item.productCustomName, 'product'))) {
-      this.values.push(item.productCustomName);
-      this.ProductCustomIdentifierElements.push(item.productCustomId);
+  onItemClickOfTargetGroup( item: any) {
+    if (!(this.isCheckedForProduct(item.targetGroupId, 'target'))) {
+      this.targetLists.push(item);
     }
-    else if (this.isCheckedForProduct(item.productCustomName, 'product')) {
-      this.values.pop(item.productCustomName);
-      this.ProductCustomIdentifierElements.pop(item.productCustomId)
-    }
-  }
-  onItemClickOfGeograpy(item: any) {
-    if (!(this.isCheckedForProduct(item?.geographyIdentifierName, 'geo'))) {
-      this.values.push(item?.geographyIdentifierName);
-      this.itemOfgeogrphy.push(item.geographyIdentifierId);
-    }
-    else if (this.isCheckedForProduct(item?.geographyIdentifierName, 'geo')) {
-      this.values.pop(item?.geographyIdentifierName);
-      this.itemOfgeogrphy.pop(item.geographyIdentifierId);
+    else if (this.isCheckedForProduct(item.targetGroupId, 'target')) {
+      //this.values.pop(item.targetGroupName);
+      this.targetLists.pop(item);
     }
 
   }
 
-  onItemClickOfCategory(category: any) {
+  onItemClickOfGeograpy(item: any , event:any) {
+    if (!(this.isCheckedForProduct(item?.geographyIdentiferid, 'geo' ))) {
+      //this.values.push(item?.geographyIdentifierName);
+      this.itemOfgeogrphy.push(item);
+    }
+    else if (this.isCheckedForProduct(item?.geographyIdentiferid, 'geo')) {
+      //this.values.pop(item?.geographyIdentifierName);
+      this.itemOfgeogrphy.pop(item);
+    }
+
+  }
+
+  onItemClick(item: any, event:any) {
+    if (!(this.isCheckedForProduct(item.productCustomIdentifierId, 'product' ))) {
+      //this.values.push(item.productCustomName);
+      this.ProductCustomIdentifierElements.push(item);
+    }
+    else if (this.isCheckedForProduct(item.productCustomIdentifierId, 'product')) {
+      //this.values.pop(item.productCustomName);
+      this.ProductCustomIdentifierElements.pop(item);
+    }
+  }
+  onItemClickOfCategory(category: any , event:any) {
     localStorage.removeItem("category");
-    if (!(this.isCheckedForProduct(category.catName, 'category'))) {
-      this.values.push(category.catName);
-      this.categoryItems.push(category.catId);
+    if (!(this.isCheckedForProduct(category.catId, 'category' ))) {
+      //this.values.push(category.catName);
+      this.categoryItems.push(category);
     }
-    else if (this.isCheckedForProduct(category.catName, 'category')) {
-      this.values.pop(category.catName);
+    else if (this.isCheckedForProduct(category, 'category')) {
+      //this.values.pop(category.catName);
       this.categoryItems.pop(category.catId);
     }
     if (this.isCategorySelected) {
@@ -280,29 +290,29 @@ export class AdvancedFilterComponent implements OnInit {
     }
 
   }
-  onItemClickOfSubCategory(subcat: any) {
+  onItemClickOfSubCategory(subcat: any , event:any) {
     localStorage.removeItem("subcategory");
-    if (!(this.isCheckedForProduct(subcat.subCatName, 'subcategory'))) {
-      this.values.push(subcat.subCatName);
-      this.subcatItems.push(subcat.subCatId);
+    if (!(this.isCheckedForProduct(subcat.subCatId, 'subcategory'))) {
+      //this.values.push(subcat.subCatName);
+      this.subcatItems.push(subcat);
     }
-    else if (this.isCheckedForProduct(subcat.subCatName, 'subcategory')) {
-      this.values.pop(subcat.subCatName);
-      this.subcatItems.pop(subcat.subCatId);
+    else if (this.isCheckedForProduct(subcat.subCatId, 'subcategory')) {
+      //this.values.pop(subcat.subCatName);
+      this.subcatItems.pop(subcat);
     }
     if (this.isSubCategorySelected) {
       localStorage.setItem("subcategory", subcat.subCatId);
     }
 
   }
-  onItemClickOfType(type: any) {
-    if (!(this.isCheckedForProduct(type.typeName, 'type'))) {
-      this.values.push(type.typeName);
-      this.typeItems.push(type.typeId);
+  onItemClickOfType(type: any ,  event:any) {
+    if (!(this.isCheckedForProduct(type.typeId, 'type'))) {
+      //this.values.push(type.typeName);
+      this.typeItems.push(type);
     }
-    else if (this.isCheckedForProduct(type.typeName, 'type')) {
-      this.values.pop(type.typeName);
-      this.typeItems.pop(type.typeId);
+    else if (this.isCheckedForProduct(type.typeId, 'type')) {
+      //this.values.pop(type.typeName);
+      this.typeItems.pop(type);
     }
 
 
@@ -350,11 +360,67 @@ export class AdvancedFilterComponent implements OnInit {
     }
 
   }
+  updateCountForSubCAT(event : any){
+    if (this.isSubCategorySelected) {
+      if (event.checked) {
+        this.subcategoryCheckedCount++;
+      }
+      else if (this.subcategoryCheckedCount > 0) {
+        this.subcategoryCheckedCount--;
+      }
+    }
 
+  }
+  updateCountForType(event : any){
+    if (this.typeSelected) {
+      if (event.checked) {
+        this.typeCount++;
+      }
+      else if (this.typeCount > 0) {
+        this.typeCount--;
+      }
+    }
 
-  removeItem(item) {
-    const index = this.values.indexOf(item);
-    this.values.splice(index, 1);
+  }
+  updateCountForShipment(event : any){
+    if (this.isShipmentDateSelected) {
+      if (event.checked) {
+        this.shipmentcheckedCount++;
+      }
+      else if (this.shipmentcheckedCount > 0) {
+        this.shipmentcheckedCount--;
+      }
+    }
+  }
+    updateCountForReceipt(event : any){
+      if (this.isReceiptDateSelected) {
+        if (event.checked) {
+          this.receiptcheckedCount++;
+        }
+        else if (this.receiptcheckedCount > 0) {
+          this.receiptcheckedCount--;
+        }
+      }
+  
+    }
+    removeItem(item) {
+    let taregetIndex = this.targetLists.findIndex(obj => obj.targetGroupId === item);
+    this.targetLists.splice(taregetIndex , 1);
+
+    const geoIndex = this.itemOfgeogrphy.indexOf(item);
+    this.itemOfgeogrphy.splice(geoIndex, 1);
+    
+    const PCIElement = this.ProductCustomIdentifierElements.indexOf(item);
+    this.ProductCustomIdentifierElements.splice(PCIElement,1);
+
+    const catIndex = this.categoryItems.indexOf(item);
+    this.categoryItems.splice(catIndex, 1);
+
+    const subCatItem = this.subcatItems.indexOf(item);
+    this.subcatItems.splice(subCatItem , 1);
+
+    const typeItem = this.typeItems.indexOf(item);
+    this.typeItems.splice(typeItem , 1);
     if (this.checkedCount > 0) {
       this.checkedCount--;
     }
@@ -367,7 +433,28 @@ export class AdvancedFilterComponent implements OnInit {
     if (this.categorycheckedCount > 0) {
       this.categorycheckedCount--;
     }
+    if (this.subcategoryCheckedCount > 0) {
+      this.subcategoryCheckedCount--;
+    }
+    if (this.typeCount > 0) {
+      this.typeCount--;
+    }
+    if(this.shipmentcheckedCount > 0){
+      this.shipmentcheckedCount--;
+    }
+    if(this.receiptcheckedCount > 0){
+      this.receiptcheckedCount--;
+    }
+  
+     
+     this.isCheckedForProduct(item ,'target');
+    // this.isCheckedForProduct(item ,'geo' , '');
+    // this.isCheckedForProduct(item ,'product' , '');
+    // this.isCheckedForProduct(item ,'category' , '');
+    // this.isCheckedForProduct(item ,'subcategory' , '');
+    // this.isCheckedForProduct(item ,'type' , '');
   }
+ 
   isCheckedForProduct(item: any, type) {
     let productIdsList;
     switch (type) {
@@ -399,30 +486,89 @@ export class AdvancedFilterComponent implements OnInit {
       default: {
         productIdsList: []
       }
-
-
     }
-    if (productIdsList.includes(item)) {
-      return true;
+    if(productIdsList == this.targetLists){
+    this.groupId = this.targetLists.map(element => element.targetGroupId);
+    if (this.groupId.includes(item)) {
+     return true;
     }
     else {
       return false
     }
+  }else if(productIdsList == this.itemOfgeogrphy){
+    this.geoIds = this.itemOfgeogrphy.map(element => element.geographyIdentiferid);
+    if (this.geoIds.includes(item)) {
+     return true;
+    }
+    else {
+      return false;
+    }
+  }
+  else if(productIdsList == this.ProductCustomIdentifierElements){
+    this.pcIElementIds = this.ProductCustomIdentifierElements.map(element => element.productCustomIdentifierId);
+    if (this.pcIElementIds.includes(item)) {
+     return true;
+    }
+    else {
+      return false;
+    }
+  }
+  else if(productIdsList == this.categoryItems){
+    this.categoryIds = this.categoryItems.map(element => element.catId);
+    if (this.categoryIds.includes(item)) {
+     return true;
+    }
+    else {
+      return false;
+    }
+  }
+  else if(productIdsList == this.subcatItems){
+    this.subCatIds = this.subcatItems.map(element => element.subCatId);
+    if (this.subCatIds.includes(item)) {
+     return true;
+    }
+    else {
+      return false;
+    }
+  }
+  else if(productIdsList == this.typeItems){
+    this.typeIds = this.typeItems.map(element => element.typeId);
+    if (this.typeIds.includes(item)) {
+     return true;
+    }
+    else {
+      return false;
+    }
+  }
+  
   }
   clearAll() {
-    this.values.length = 0;
+    this.targetLists.length = 0;
+    this.itemOfgeogrphy.length = 0;
+    this.ProductCustomIdentifierElements.length = 0;
+    this.categoryItems.length = 0;
+    this.subcatItems.length = 0;
+    this.typeItems.length = 0;
     this.checkedCount = 0;
+     this.GeoCheckedCount = 0;
+      this.PCICheckedCount = 0;
+       this.categorycheckedCount = 0;
+       this.subcategoryCheckedCount = 0;
+       this.typeCount = 0;
+       this.shipmentcheckedCount = 0;
+       this.receiptcheckedCount =0;
+
   }
   applyAll() {
     let selectedFilters = {
-      targetGroupIds: this.targetLists,
-      GeographyIdentifierIds: this.itemOfgeogrphy,
-      productIdentifierIds: this.ProductCustomIdentifierElements,
-      catogoryIds: this.categoryItems,
-      subCategoryIds: this.subcatItems,
-      typeIds: this.typeItems
+      targetGroupIds: this.groupId,
+      GeographyIdentifierIds: this.geoIds,
+      productIdentifierIds: this.pcIElementIds,
+      catogoryIds: this.categoryIds,
+      subCategoryIds: this.subCatIds,
+      typeIds: this.typeIds
     }
-    console.log(selectedFilters);
+    console.log("ssdsdsdsdsds" , selectedFilters);
     this.dialogRef.close(selectedFilters);
 
   }
@@ -462,6 +608,7 @@ export class AdvancedFilterComponent implements OnInit {
     this.shipmentselectedMenu = eventChange.selectedMenu;
     console.log("dfdfdfdfdfd", this.shipmentSelectedDateRange, this.reciptselectedMenu);
   }
+  
 }
 
 

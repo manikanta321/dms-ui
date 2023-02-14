@@ -78,103 +78,126 @@
                 <div class="col-lg-3">
                     <div #trigger data-action="toggle" style="cursor: pointer;">
                     </div>
+                    <!----------------- filter section  ---------------------->
                     <div class="menu-container">
                         <div class="menu-item tick menu-item-targetG" (click)=addTargetGroupElements()> Target Group
-                            <span *ngIf="isTargetGroupSelected">({{checkedCount}})</span>
+                            <span *ngIf="checkedCount > 0">({{checkedCount}})</span>
                             <img *ngIf="isTargetGroupSelected" src="../../../assets/userImages/done-tick.svg" alt="">
                         </div>
 
                         <div class="menu-item tick menu-item-GeoTags" (click)=getGeoGraphyIdentifier()> Geography Tags
-                            <span *ngIf="isgeoGraphyIdentifierSelected">({{GeoCheckedCount}})</span>
+                            <span *ngIf="GeoCheckedCount > 0">({{GeoCheckedCount}})</span>
                             <img *ngIf="isgeoGraphyIdentifierSelected" src="../../../assets/userImages/done-tick.svg">
                         </div>
                         <div class="menu-item tick menu-item-prodCustomId" (click)=getProductCustomIdentifier()>Product
-                            Custom Identifier <span
-                                *ngIf="isProductCustomIdentifierSelected">({{PCICheckedCount}})</span>
+                            Custom Identifier <span *ngIf="PCICheckedCount > 0">({{PCICheckedCount}})</span>
                             <img *ngIf="isProductCustomIdentifierSelected"
                                 src="../../../assets/userImages/done-tick.svg">
                         </div>
                         <div class="menu-item tick menu-item-categO" (click)=getCategory()>Category <span
-                                *ngIf="isCategorySelected">({{categorycheckedCount}})</span>
+                                *ngIf="categorycheckedCount > 0">({{categorycheckedCount}})</span>
                             <img *ngIf="isCategorySelected" src="../../../assets/userImages/done-tick.svg">
                         </div>
                         <div class="menu-item tick menu-item-subCategO" (click)=getSubCategory()>Sub-Category <span
-                                *ngIf="isSubCategorySelected">({{checkedCount}})</span>
+                                *ngIf="subcategoryCheckedCount > 0">({{subcategoryCheckedCount}})</span>
                             <img *ngIf="isSubCategorySelected" src="../../../assets/userImages/done-tick.svg">
                         </div>
                         <div class="menu-item tick menu-item-typeO" (click)=getType()>Type <span
-                                *ngIf="typeSelected">({{checkedCount}})</span>
+                                *ngIf=" typeCount > 0">({{typeCount}})</span>
                             <img *ngIf="typeSelected" src="../../../assets/userImages/done-tick.svg">
                         </div>
                         <div class="menu-item tick menu-item-shipDate" (click)=getShipmentDate()>Shipment Date <span
-                                *ngIf="isShipmentDateSelected">({{checkedCount}})</span>
+                                *ngIf="shipmentcheckedCount > 0">({{shipmentcheckedCount}})</span>
                             <img *ngIf="isShipmentDateSelected" src="../../../assets/userImages/done-tick.svg">
                         </div>
                         <div class="menu-item tick menu-item-receiptDate" (click)=getReceiptDate()>Receipt Date <span
-                                *ngIf="isReceiptDateSelected">({{checkedCount}})</span>
+                                *ngIf="receiptcheckedCount > 0">({{receiptcheckedCount}})</span>
                             <img *ngIf="isReceiptDateSelected" src="../../../assets/userImages/done-tick.svg">
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="menu-container1">
+                        <!-- input search field display depends on conditions -->
                         <input
-                            *ngIf="isTargetGroupSelected || isCategorySelected || isSubCategorySelected || typeSelected"
+                            *ngIf="isTargetGroupSelected || isCategorySelected || this.categoryItems.length > 0 || this.subcatItems.length > 0"
                             [(ngModel)]="searchText" class="" style="font-family: 'Gilroy'" type="text"
                             placeholder="Type & search">
                         <img *ngIf="isTargetGroupSelected || isCategorySelected" src="assets/img/search.png"
                             class="search" alt="search">
+                        <!------------     target group   ------------>
+
                         <ul class="heroes" *ngIf="isTargetGroupSelected">
                             <li *ngFor="let item of targetGroupList | filter:searchText">
                                 <mat-checkbox (change)="onItemClickOfTargetGroup(item);updateCount($event);"
                                     [checked]="isCheckedForProduct(item.targetGroupId, 'target')">{{item.targetGroupName}}</mat-checkbox>
                             </li>
                         </ul>
+                        <!--------   geo graphy identifiers  --------------->
+
                         <ul class="heroes1" *ngIf="isgeoGraphyIdentifierSelected">
                             <li *ngFor="let Geography of geoGraphyIdentifierList">
-                                <mat-checkbox [(ngModel)]="Geography?.geographyIdentifierName.selected"
-                                    (change)="onItemClickOfGeograpy(Geography);updateCountForGeo($event)"
-                                    [checked]="isCheckedForProduct(Geography?.geographyIdentifierName,'geo')">{{Geography?.geographyIdentifierName}}</mat-checkbox>
+                                <mat-checkbox
+                                    (change)="onItemClickOfGeograpy(Geography , $event);updateCountForGeo($event)"
+                                    [checked]="isCheckedForProduct(Geography?.geographyIdentiferid,'geo')">{{Geography?.geographyIdentifierName}}</mat-checkbox>
                             </li>
                         </ul>
+                        <!--------  product custom Identifiers  --------------->
+
                         <div *ngIf="isProductCustomIdentifierSelected" class="heroes2">
                             <li *ngFor="let item of ProductCustomIdentifierList">
                                 <span class="label other">{{item.headingName}}</span>
                                 <div *ngFor="let pCIdentifier of item.productCustomeIdentifiers">
-                                    <mat-checkbox class="productC" [(ngModel)]="pCIdentifier.productCustomName.selected"
-                                        (change)="onItemClick(pCIdentifier);updateCountForPCI($event)"
-                                        [checked]="isCheckedForProduct(pCIdentifier.productCustomName, 'product')">{{pCIdentifier.productCustomName}}</mat-checkbox>
+                                    <mat-checkbox class="productC"
+                                        (change)="onItemClick(pCIdentifier , $event);updateCountForPCI($event)"
+                                        [checked]="isCheckedForProduct(pCIdentifier.productCustomIdentifierId, 'product')">{{pCIdentifier.productCustomName}}</mat-checkbox>
 
                                 </div>
                             </li>
                         </div>
+                        <!-------- category   ---------------------->
                         <div *ngIf="isCategorySelected" class="heroes3">
                             <li *ngFor="let category of categoryList?.allOtherCats | filter:searchText">
-                                <mat-checkbox class="productC" [(ngModel)]="category.catName.selected"
-                                    (change)="onItemClickOfCategory(category);updateCount($event)"
+                                <mat-checkbox class="productC"
+                                    (change)="onItemClickOfCategory(category , $event);updateCountForCategory($event)"
                                     [checked]="isCheckedForProduct(category.catId, 'category')">{{category.catName}}</mat-checkbox>
 
                             </li>
                         </div>
+                        <!-------- SUB category   ---------------------->
+
                         <div *ngIf="isSubCategorySelected" class="heroes4">
                             <li *ngFor="let subcat of subcaty?.allOtherSubCAts | filter:searchText">
-                                <mat-checkbox class="productC" [(ngModel)]="subcat.subCatName.selected"
-                                    (change)="onItemClickOfSubCategory(subcat);updateCount($event)"
+                                <mat-checkbox class="productC"
+                                    (change)="onItemClickOfSubCategory(subcat , $event);updateCountForSubCAT($event)"
                                     [checked]="isCheckedForProduct(subcat.subCatId, 'subcategory')">{{subcat.subCatName}}</mat-checkbox>
 
                             </li>
+                            <div *ngIf="this.categoryItems.length == 0">
+                                <p class="errorMessage">*First select a ‘Category’ in order to see the respective
+                                    sub-categories</p>
+                            </div>
                         </div>
+                       
+                        <!-------------------   type   ---------------------->
                         <div *ngIf="typeSelected">
                             <li *ngFor="let type of typeList | filter:searchText">
-                                <mat-checkbox class="productC" [(ngModel)]="type.typeName.selected"
-                                    (change)="onItemClickOfType(type);updateCount($event);"
+                                <mat-checkbox class="productC"
+                                    (change)="onItemClickOfType(type , $event);updateCountForType($event);"
                                     [checked]="isCheckedForProduct(type.typeId, 'type')">{{type.typeName}}</mat-checkbox>
 
                             </li>
+                            <div *ngIf="this.subcatItems.length == 0 || this.categoryItems.length == 0 ">
+                                <p class="errorMessage">*First select a ‘Category’ & ‘Sub-category’ in order to see the respective types</p>
+                            </div>
                         </div>
+                        <!----------------- shipment date   ---------------------->
                         <div *ngIf="isShipmentDateSelected" class="heroes5 menu-itemm tick">
-                            <app-customdatepicker class="dateplaceholder" [showDirectMenu]="true" [selectedMenu]="shipmentselectedMenu" [selectedDate]="shipmentSelectedDateRange" (customDatePickerEvent)="shipmentCustomDatePickerEvent($event)"></app-customdatepicker>
+                            <app-customdatepicker class="dateplaceholder" [showDirectMenu]="true"
+                                [selectedMenu]="shipmentselectedMenu" [selectedDate]="shipmentSelectedDateRange"
+                                (customDatePickerEvent)="shipmentCustomDatePickerEvent($event)"></app-customdatepicker>
                         </div>
+                        <!----------------- receipt date   ---------------------->
 
                         <div *ngIf="isReceiptDateSelected" class="heroes5 menu-datepicker menu-itemm tick">
                             <!-- <img *ngIf="isReceiptDateSelected" src="../../../assets/userImages/done-tick.svg"
@@ -187,7 +210,9 @@
                                 </ngx-daterangepicker-material>
                             </div> -->
 
-                            <app-customdatepicker class="dateplaceholder" [showDirectMenu]="true" [selectedMenu]="reciptselectedMenu" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
+                            <app-customdatepicker class="dateplaceholder" [showDirectMenu]="true"
+                                [selectedMenu]="reciptselectedMenu" [selectedDate]="selectedDateRange"
+                                (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
                         </div>
 
 
@@ -195,20 +220,65 @@
 
                 </div>
             </div>
-
+            <!----------------- selected filter   ---------------------->
             <div class="row selectedF">
                 <div class="col-lg-12">
                     <h6 class="BIN"> Selected Filter</h6>
                     <div class="containerElement">
-                        <div *ngFor="let item of values;let i =index;" class="custom"
-                            [ngStyle]="{'background-color': getBackgroundColor(item)}">
-                            <div class="eleStyle"><span>{{item}}<mat-icon mat-button class="close-iconn"
-                                        (click)="removeItem(item)">close</mat-icon></span></div>
+                        <div *ngIf="this.targetLists.length > 0">
+                            <div *ngFor="let item of targetLists;let i =index;" class="custom"
+                                [ngStyle]="{'background-color': getBackgroundColor(item.targetGroupName)}">
+                                <div class="eleStyle"><span>{{item.targetGroupName}}<mat-icon mat-button
+                                            class="close-iconn"
+                                            (click)="removeItem(item.targetGroupId)">close</mat-icon></span></div>
+                            </div>
                         </div>
+
+                        <div *ngIf="this.itemOfgeogrphy.length > 0">
+                            <div *ngFor="let item of itemOfgeogrphy;let i =index;" class="custom"
+                                [ngStyle]="{'background-color': getBackgroundColor(item.geographyIdentifierName)}">
+                                <div class="eleStyle"><span>{{item.geographyIdentifierName}}<mat-icon mat-button
+                                            class="close-iconn"
+                                            (click)="removeItem(item.geographyIdentiferid)">close</mat-icon></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="this.ProductCustomIdentifierElements.length > 0">
+                            <div *ngFor="let pciElemets of ProductCustomIdentifierElements;let i =index;" class="custom"
+                                [ngStyle]="{'background-color': getBackgroundColor(pciElemets.productCustomName)}">
+                                <div class="eleStyle"><span>{{pciElemets.productCustomName}}<mat-icon mat-button
+                                            class="close-iconn"
+                                            (click)="removeItem(pciElemets.productCustomIdentifierId)">close</mat-icon></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="this.categoryItems.length > 0">
+                            <div *ngFor="let category of categoryItems;let i =index;" class="custom"
+                                [ngStyle]="{'background-color': getBackgroundColor(category.catName)}">
+                                <div class="eleStyle"><span>{{category.catName}}<mat-icon mat-button class="close-iconn"
+                                            (click)="removeItem(category.catId)">close</mat-icon></span></div>
+                            </div>
+                        </div>
+                        <div *ngIf="this.subcatItems.length > 0">
+                            <div *ngFor="let subcat of subcatItems;let i =index;" class="custom"
+                                [ngStyle]="{'background-color': getBackgroundColor(subcat.subCatName)}">
+                                <div class="eleStyle"><span>{{subcat.subCatName}}<mat-icon mat-button
+                                            class="close-iconn"
+                                            (click)="removeItem(subcat.subCatId)">close</mat-icon></span></div>
+                            </div>
+                        </div>
+                        <div *ngIf="this.typeItems.length > 0">
+                            <div *ngFor="let type of typeItems;let i =index;" class="custom"
+                                [ngStyle]="{'background-color': getBackgroundColor(type.typeName)}">
+                                <div class="eleStyle"><span>{{type.typeName}}<mat-icon mat-button class="close-iconn"
+                                            (click)="removeItem(type.typeId)">close</mat-icon></span></div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
-
+            <!--------------- apply and clear all   ---------------------->
             <div class="row">
                 <div class="col-lg-6">
                     <button class="btn btn-primary btn-block applyBtn" (click)="applyAll()">Apply</button>

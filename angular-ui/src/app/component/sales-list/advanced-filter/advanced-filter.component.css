@@ -632,3 +632,11 @@ display: flex;
 .geoColor{
     background-color: red;
 }
+.errorMessage{
+color: red;
+font-family: Gilroy-Medium;
+font-size: 13px;
+line-height: 15px;
+letter-spacing: 0em;
+margin-top: 10px;
+}

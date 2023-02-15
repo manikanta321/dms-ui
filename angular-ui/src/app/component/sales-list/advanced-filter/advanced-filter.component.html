@@ -215,17 +215,21 @@
                                             (click)="removeItem(type.typeId)">close</mat-icon></span></div>
                             </div>
                         </div>
-                        <div  *ngIf="shipmentSelectedDateRange && shipmentSelectedDateRange.startDate">
-                        <div class="eleStyle"><span class="itemSelectedFilter">{{startDate}} - {{endDate}}<mat-icon
+                        <div  class="targetElement">
+                        <div  *ngIf="shipmentSelectedDateRange && shipmentSelectedDateRange.startDate"  class="customShipping">
+                        <div class="eleStyles"><span class="itemSelectedFilterShip">{{startDate}} - {{endDate}}<mat-icon
                                     mat-button class="close-iconn">close</mat-icon></span>
                         </div>
                     </div>
-                    <div  *ngIf="selectedDateRange && selectedDateRange.startDate">
-                        <div class="eleStyle"><span class="itemSelectedFilter">{{startDate}} - {{endDate}}<mat-icon
+                </div>
+                <div  class="targetElement">
+                    <div  *ngIf="selectedDateRange && selectedDateRange.startDate" class="customShipping">
+                        <div class="eleStyles"><span class="itemSelectedFilterShip">{{startDate}} - {{endDate}}<mat-icon
                                     mat-button class="close-iconn">close</mat-icon></span>
                         </div>
                     </div>
-                    </div>
+                </div>
+                    </div> 
                 </div>
             </div>
             <!--------------- apply and clear all   ---------------------->

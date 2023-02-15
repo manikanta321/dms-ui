@@ -27,6 +27,11 @@
     position: relative;
     bottom: 10px;
 }
+.itemSelectedFilterShip{
+    position: relative;
+    bottom: -2px;
+}
+
 .selected .tick {
     display: inline;
   }
@@ -714,6 +719,23 @@ display: flex;
     left: 9px;
   }
 
+  .customShipping{
+    height: 26px;
+    width: max-content;
+    color: white;
+    border: 0px solid;
+    border-radius: 34px;
+    /* padding: 15px; */
+    display: flex;
+    align-items: center;
+    /* padding-left: 0px;
+    padding-top: 18px; */
+    position: relative;
+    bottom: 2px;
+    left: 9px;
+    background-color: #655356
+  }
+
   .targetElement{
     display: flex;
     column-gap: 3px;
@@ -724,6 +746,12 @@ display: flex;
     padding-left: 16px;
     margin-top: 12px;
 }
+.eleStyles{
+    
+    padding-left: 16px;
+    margin-top: -11px;
+}
+
 .targetColor{
     background-color:#0353A4;
 }

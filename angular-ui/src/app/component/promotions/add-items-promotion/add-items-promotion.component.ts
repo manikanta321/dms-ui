@@ -875,11 +875,9 @@ export class AddItemsPromotionComponent implements OnInit {
       //  status: this.statusTypes,
       search: this.searchText
     }
-    this.promotionTypes.GetProductGroupList(data).subscribe((res) => {
-      // this.rowData5 = res.response;
+    this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
-      console.log('product lis', this.Productarr)
-    });
+    })
   }
   getProductSelect() {
     this.promotionTypes.GetProductGroupList1().subscribe((res) => {
@@ -927,7 +925,7 @@ export class AddItemsPromotionComponent implements OnInit {
     }
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       this.rowData5 = res.response;
-    });
+    })
 
   }
   onProductDeSelectOrAll(item: any) {

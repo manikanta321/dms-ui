@@ -74,6 +74,7 @@ export class AdvancedFilterComponent implements OnInit {
     private dialogRef: MatDialogRef<any>,) { }
 
   ngOnInit(): void {
+    this.addTargetGroupElements();
     this.UserId = localStorage.getItem("logInId");
     localStorage.removeItem("category");
     localStorage.removeItem("subcategory");

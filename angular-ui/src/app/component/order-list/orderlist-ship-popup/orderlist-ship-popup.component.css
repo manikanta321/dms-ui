@@ -642,7 +642,8 @@ li {
 }
 
 .row {
-  width: 100%;
+  width: 99%;
+  margin-left: 2px;
 }
 
 .bar {
@@ -1034,7 +1035,7 @@ height: 5px;
 
 .promotionpopup-scroll {
   height: 659px !important;
-  padding-right: 20px;
+  padding-right: 4px;
   /* width: 3000px !important; */
   /* max-width: 97vw !important; */
 }

@@ -821,7 +821,10 @@ padding-left: 11px;
 .font {
   font-family: 'Gilroy';
 }
-
+.showOnlyCheckbox{
+  position: relative;
+    bottom: 33px;
+}
 /* ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background{
   background: black !important;
 } */

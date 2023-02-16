@@ -118,11 +118,12 @@
             <div class="add-user" (click)="addMaterials()"  userRoleDirective="MAT_ADD" pageName="settingmaterials">
               <img src="assets/img/add-btn.png" class="addImage" alt="add-user-btn">
             </div>
+            
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-4">
+        <div class="row ">
+          <div class="col-4 showOnlyCheckbox">
             <mat-checkbox class="example-margin font" [checked]="allComplete" [color]="color"
               (change)="setAll($event.checked)">
               Show only products

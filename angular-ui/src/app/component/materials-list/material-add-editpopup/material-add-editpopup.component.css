@@ -119,8 +119,8 @@ form[name="myBasicInfo"] {
 }
 
 ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
-  width: 900px;
-  margin-top: -51px;
+  width: 1026px;
+  margin-top: -103px;
 }
 
 .mat-horizontal-stepper-wrapper {
@@ -354,7 +354,7 @@ margin-top: 9px;
 }
 
 ::ng-deep.mat-slide .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
-  background-color: #212529;
+  background-color: green;
   position: fixed;
 
 }
@@ -845,7 +845,20 @@ align-items: center;
 
 .d-flex {
   justify-content: right;
+  position: relative;
+  bottom: 52px;
 }
+.rowFirst{
+  margin-top :27px
+}
+.rowSecond{
+  margin-top: 8px;
+}
+.rowThird{
+  margin-top :3px
+}
+
+
 
 .stepperHeader-b {
   color: #000000;
@@ -1575,7 +1588,7 @@ mat-icon {
 }
 
 .geography-popupsize {
-  height: 380px;
+  height: 401px;
 }
 
 .sidentifier {

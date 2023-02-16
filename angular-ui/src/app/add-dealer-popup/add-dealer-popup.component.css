@@ -2,6 +2,13 @@
   margin-top: 50px;
 }
 
+.container
+{
+  min-width: 85vw;
+  
+
+}
+
 
 .search {
   width: 20px;
@@ -810,7 +817,7 @@ li {
 }
 
 ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
-  width: 974px;
+  width: 1197px;
   margin-top: -51px;
 
 }
@@ -849,8 +856,10 @@ li {
 }
 
 .scr {
-  height: 350px;
-  overflow-x: hidden;
+  
+   overflow-x: hidden; 
+  height: 500px;
+  overflow-y: auto;
 
 }
 

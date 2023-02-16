@@ -31,8 +31,16 @@
     height: 10px;
 } */
 
-
-
+.mainclass
+{
+   height: 634px;
+  overflow: hidden;
+  overflow-y: hidden;
+}
+.savebtnall
+{
+  margin-top: -10px;
+}
 
 .user-text {
     font-size: 30px;
@@ -1026,7 +1034,7 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
   }
   
   .footer {
-    position: fixed;
+     position: fixed;
     border-radius: 0px 0px 25px 25px;
     height: 50px;
     width: 860px !important;
@@ -1146,6 +1154,9 @@ margin-left: -25px;
   }
   .uom-cls {
     border-radius: 10px;
+    
+    text-align: center;
+    align-items: center;
     width: 83px;
     height: 34px;
     background: #FFFFFF;
@@ -1157,7 +1168,7 @@ margin-left: -25px;
     padding: 10px;
     border: solid 1px black;
     border-radius: 10px;
-    height: 360px;
+     height: 412px;
     overflow-y: scroll;
 
   }
@@ -1170,6 +1181,7 @@ margin-left: -25px;
     resize: none;
     outline: none;
     width: 100px;
+   
     }
     .dropdown-form {
       position: relative;

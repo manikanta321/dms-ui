@@ -21,7 +21,7 @@ import { AddorderproSuccessPopupComponent } from './addorderpro-success-popup/ad
 })
 export class AddorderpromotionsComponent implements OnInit {
 
-  confirm_Order:boolean=true;
+  confirm_Order: boolean = true;
 
   selectedTeam = '';
   selectedDay: string = '';
@@ -155,7 +155,7 @@ export class AddorderpromotionsComponent implements OnInit {
   getgroup: string[] = ["Product Name", "Product Name", "Product Name", "Product Name"]
   buygroup: string[] = ["Product Name", "Product Name", "Product Name", "Product Name"];
   CustomerSelect: string[] = ['Valiant Distributors', 'Global Movers', 'Somebody Sales'];
-  loginid:any;
+  loginid: any;
   public itemremoved: any[] = [{
     sValue: '',
     eValue: '',
@@ -421,6 +421,10 @@ export class AddorderpromotionsComponent implements OnInit {
       this.GeoGrapydropdownListdata = GeoGrapydropdownList.map((data: { geographyId: any; geographyName: any; }) => {
         return { geographyId: data.geographyId, geographyName: data.geographyName };
       });
+
+      if (this.GeoGrapydropdownListdata.length != 0) {
+        this.onItemSelectgeo(this.GeoGrapydropdownListdata[0]);
+      }
       console.log(this.GeoGrapydropdownListdata, "GeoGrapydropdownListdata")
     });
     // shipping api
@@ -430,6 +434,10 @@ export class AddorderpromotionsComponent implements OnInit {
       this.dealersShippingAddress = shippingAddress.map((data: { addressId: any; address: any; }) => {
         return { addressId: data.addressId, address: data.address };
       });
+
+      if (this.dealersShippingAddress.length != 0) {
+        this.onItemSelectshippingAddress(this.dealersShippingAddress[0]);
+      }
       console.log(shippingAddress, "shipping address");
       console.log(this.dealersShippingAddress, "shipping address1");
     });
@@ -440,6 +448,10 @@ export class AddorderpromotionsComponent implements OnInit {
       this.dealersbillingAddress = BillingAddress.map((data: { addressId: any; address: any; }) => {
         return { BillingaddressId: data.addressId, Billingaddress: data.address };
       });
+
+      if (this.dealersbillingAddress.length != 0) {
+        this.onItemSelectBillingAddress(this.dealersbillingAddress[0]);
+      }
       console.log(BillingAddress, "billing address");
       console.log(this.dealersbillingAddress, "billing address2");
     });
@@ -452,8 +464,8 @@ export class AddorderpromotionsComponent implements OnInit {
     console.log(this.geographyId, "geographyId")
   }
   onItemSelectshippingAddress(item: any) {
-    this.shippingaddressId = item.addressId;
-    console.log(this.shippingaddressId, "shippingaddressId")
+    this.addressId = item.addressId;
+    // console.log(this.shippingaddressId, "shippingaddressId")
   }
   onItemSelectBillingAddress(item: any) {
     this.BillingaddressId = item.BillingaddressId;
@@ -472,7 +484,7 @@ export class AddorderpromotionsComponent implements OnInit {
       Search: this.searchText,
       GeographyId: this.geographyId,
       Dealerid: this.customerId,
-      CurrentUserId:this.loginid
+      CurrentUserId: this.loginid
     }
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
@@ -1063,7 +1075,7 @@ export class AddorderpromotionsComponent implements OnInit {
     // this.price = price;
   }
 
-  
+
   doubleClick(taxId) {
     if (taxId) {
       this.orderNonPromotionsdata.forEach(element => {
@@ -1186,16 +1198,15 @@ export class AddorderpromotionsComponent implements OnInit {
     });
   }
 
-  close(){
-this.Non_promotions=false;
-  
+  close() {
+    this.Non_promotions = false;
+
   }
-  closeconfirmorder()
-  {
-    this.confirm_Order=false;
+  closeconfirmorder() {
+    this.confirm_Order = false;
   }
   ordersubmit(submitType) {
-    if(localStorage.getItem('AddorEditpro')!='edit'){
+    if (localStorage.getItem('AddorEditpro') != 'edit') {
       localStorage.setItem('AddorEditpro1', submitType);
 
     }
@@ -1252,7 +1263,9 @@ this.Non_promotions=false;
 
     // Push Promotion data to itemscount variable
 
-   this.startdate = new Date(this.selectedStartDate).toLocaleDateString('en-US');
+    if (this.selectedStartDate) {
+      this.startdate = new Date(this.selectedStartDate).toLocaleDateString('en-US');
+    }
 
     let data = {
       "CustomerId": this.customerId,
@@ -1262,7 +1275,7 @@ this.Non_promotions=false;
       "comrefno": this.CompanyReferenceNo,
       "shippingaddid": this.addressId,
       "deliveryistruction": this.DeliveryInstructions,
-      "requirementdate": this.startdate ,
+      "requirementdate": this.startdate,
       "CreatedById": loggedUserId,
       "itemcount": itemsCount,
       "AddType": submitType,
@@ -1273,20 +1286,21 @@ this.Non_promotions=false;
     this.orders.addorderNonPromotions(data).subscribe((res) => {
 
 
+      if (res.response.result.toLowerCase().indexOf('succesfully') == -1) {
+        // if (res.response.status == false) {
+        alert(res.response.result)
+      } else {
 
+        this.dialog.open(AddorderproSuccessPopupComponent, { panelClass: 'activeSuccessPop' });
 
-      this.dialog.open(AddorderproSuccessPopupComponent, { panelClass: 'activeSuccessPop' });
+        console.log(data, "data");
 
+        this.dialogRef.close(true);
 
-
-
-      console.log(data, "data");
-
-      this.dialogRef.close(true);
-
-      // localStorage.removeItem('geographyId');
-      localStorage.removeItem('dealerid');
-      // localStorage.removeItem('buygroupromo');
+        // localStorage.removeItem('geographyId');
+        localStorage.removeItem('dealerid');
+        // localStorage.removeItem('buygroupromo');
+      }
     });
 
 

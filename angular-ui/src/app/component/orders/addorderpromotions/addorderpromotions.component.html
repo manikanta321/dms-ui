@@ -641,12 +641,12 @@
          
         </div>
         <div class="col-md-2">
-            <button [disabled]=" !customerId || !geographyId || !BillingaddressId || !shippingaddressId"  type="button" class="save-submit" (click)="ordersubmit('draft')">Save & Draft </button>
+            <button [disabled]=" !customerId || !geographyId || !BillingaddressId || !addressId"  type="button" class="save-submit" (click)="ordersubmit('draft')">Save & Draft </button>
         </div>
         <div class="col-md-5">
             <button type="button" [mat-dialog-close]="false" class="cancel">Cancel</button>
         </div>
-        <span *ngIf=" !customerId || !geographyId || !BillingaddressId || !shippingaddressId" style="left: 178px; margin-top: -3px;position: relative;">*please fill required fields</span>
+        <span *ngIf=" !customerId || !geographyId || !BillingaddressId || !addressId" style="left: 178px; margin-top: -3px;position: relative;">*please fill required fields</span>
     </div>
 
 </div>

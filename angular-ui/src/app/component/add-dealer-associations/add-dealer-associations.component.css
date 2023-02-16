@@ -4,6 +4,11 @@
   
 }
 
+.container
+{
+  min-width: 80vw;
+}
+
 
 .pr_omo
 {
@@ -513,7 +518,7 @@ input.form-check-input1 {
   }
   .img1{
     position: absolute;
-    left: 493px;
+    left: 537px;
     top: 41px;  }
   .promo1-dropdown-btn span .ng-star-inserted {
     visibility: hidden;
@@ -1406,7 +1411,7 @@ input.form-check-input1 {
   }
   
   .promotionpopup-scroll {
-    height: 470px !important;
+    /* height: 470px !important; */
   }
   
   .footer {

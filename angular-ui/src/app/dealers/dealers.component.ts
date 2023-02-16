@@ -848,7 +848,8 @@ export class DealersComponent implements OnInit {
 
   addUser() {
     localStorage.setItem('edit-dealer', 'Add')
-    this.dialog.open(AddDealerPopupComponent, { height: "590px" });
+     this.dialog.open(AddDealerPopupComponent, { minWidth :'88vw',height:'670px' });
+    
   }
 
   editUser() {

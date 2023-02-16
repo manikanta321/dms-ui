@@ -1184,7 +1184,7 @@ console.log('addgetgroup',this.addgetgroup);
 
     // debugger
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
-    const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px', data: this.buyGroupPlus[index].productselectedRows });
+    const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1240px', data: this.buyGroupPlus[index].productselectedRows });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         this.productselectedRows = JSON.parse(localStorage.getItem("productselectedRows") ?? '[]')

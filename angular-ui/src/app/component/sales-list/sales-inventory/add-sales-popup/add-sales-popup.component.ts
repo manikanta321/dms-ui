@@ -49,7 +49,9 @@ productSKUName:any;
 productLink:any;
 productSelectedId:any;
 productselectedName:any;
-
+selectedDateRanges:any
+startDateInvoice:any = '';
+endDateInvoice:any = '';
 SalesObj:any=[{
   SalesDate:'',
   Quantity:'',
@@ -223,7 +225,28 @@ this.SalesObj.push(
 }
 )
 }
+customInvoiceDatePickerEvent(eventChange){
+  this.selectedDateRanges = eventChange.selectedDate;
+this.startDateInvoice = this.selectedDateRanges.startDate;
+this.endDateInvoice = this.selectedDateRanges.endDate;
+console.log(this.selectedDateRanges);
+// let data = {
+//   StatusId:[],
+//   DealerId:this.dealerss,
+//   StartDateship:this.startDateShip,
+//   EndDateship:this.endDateShip,
+//   StartDateinvoice:this.startDateInvoice,
+//   EndDateinvoice:this.endDateInvoice,
+//   Search:"",
+//   CurrentUserId:this.loggedUserId
 
+// }
+
+// this.orders.getShipmentList(data).subscribe((res) => {
+//   this.shipmentDatalist = res.response;
+//   console.log("Response",this.shipmentDatalist)   
+// });
+}
 removeobj(i){
   console.log(this.SalesObj)
 

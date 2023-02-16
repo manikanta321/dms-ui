@@ -30,8 +30,8 @@
                         </div>
                     </div>
                     <br><br><br>
-                    <div class="row">
-                        <div class="col-lg-6">
+                    <div class="row targetstyle" >
+                        <div class="col-lg-6" style="padding-left: 0px;">
                             <form [formGroup]="dealer" class="dropdown-form">
                                 <ng-multiselect-dropdown class="Dealers searchbtnIcon" name="dealer" [placeholder]="'Dealers'" formControlName="dealer"
                                   [disabled]="disabled" [settings]="dropdownSettings" [data]="dealerListData" (onSelect)="onDealerItemSelect($event)" (onDeSelect)="onDealerItemDeSelect($event)"
@@ -46,7 +46,7 @@
                       
                               </form>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6" style="padding-left: 0px;">
                             <form [formGroup]="geoForm" class="dropdown-form">
                                 <ng-multiselect-dropdown class="Dealers searchbtnIcon" name="geoForm" [placeholder]="'Dealers'" formControlName="geoForm"
                                   [disabled]="disabled" [settings]="dropdownSettings1" [data]="geographyList" (onSelect)="onGeographyItemSelect($event)" (onDeSelect)="onGeographyItemDeSelect($event)"
@@ -82,7 +82,7 @@
                                 <!-- <input type="checkbox" (click)="allDealerSelected()"> <span class="label-cls">All Dealers Selected</span> -->
                                 <mat-checkbox class="checkboxStyle" aria-label="Select All" 
                                 (change)="$event ? toggleAll($event) : null" [color]="color">
-                                 <span *ngIf="selectedDealer.length == 0" class="contentStyle">NO Dealers Selected </span>
+                                 <span *ngIf="selectedDealer.length == 0" class="contentStyle">No Dealers Selected </span>
                                  <span  *ngIf="selectedDealer.length ==  mainadd[0].dealers?.length && mainadd[0].dealers.length>1" class="contentStyle">All Dealers Selected </span>
                                  <span *ngIf="selectedDealer.length > 0 && mainadd[0].dealers?.length != selectedDealer?.length && selectedDealer == 1" class="contentStyle"> Some Dealers Selected</span>
                                </mat-checkbox>
@@ -118,7 +118,7 @@
                             <div  *ngFor="let dealer of dealer.targets;let j=index">
                                 <div class="row finacial-target">
                                     <div class="promotiont2">
-                                        <label>Financial<span>*</span></label>
+                                        <label>Financial Year<span>*</span></label>
                                         <select (change)="onSelectFinancialYear($event)" class="form-select select-asso" aria-label=".form-select-lg example" [(ngModel)]="mainadd[0].dealers[i].targets[j].year">
                                             <option value="2019">2019</option>
                                             <option value="2020">2020</option>
@@ -303,7 +303,7 @@
 
                 <!-- Save and Cancel Button -->
 
-                <div class="col-12">
+                <div class="col-12" style="position: relative;top: 100px;">
                     <div class="row">
                         <div class="col-4"></div>
                         <div (click)="saveTargetData()">

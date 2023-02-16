@@ -8,6 +8,7 @@ import { OtherMasterService } from 'src/app/services/other-master.service';
 import { SharedServicesProfilePicService } from 'src/app/services/shared-services-profile-pic.service';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { UserService } from 'src/app/services/user.service';
+import { RestPwsdUserPopupComponent } from '../users/userPopups/rest-pwsd-user-popup/rest-pwsd-user-popup.component';
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
@@ -42,7 +43,6 @@ export class EditProfileComponent implements OnInit {
     // private dialogRef: MatDialogRef<any>,
     private sharedService: SharedService,
     private sharedService1: SharedServicesProfilePicService,
-
     private otherMasterService: OtherMasterService) { 
 
     }
@@ -65,9 +65,10 @@ export class EditProfileComponent implements OnInit {
     this.lastLogin = moment(lastLoginDate).format('DD MMM YYYY, HH:mm A');
 
     this.getUserProfileDetails();
-    const userRoleId = localStorage.getItem("RoleId");
-    this.RoleId = localStorage.getItem("RoleId");
-    console.log("RoleId",this.RoleId)
+    // const userRoleId = localStorage.getItem("RoleId");
+    // this.RoleId = localStorage.getItem("RoleId");
+    // alert(this.RoleId);
+    // console.log("RoleId",this.RoleId)
   }
 
   getUserProfileDetails(){
@@ -78,7 +79,9 @@ export class EditProfileComponent implements OnInit {
     }else {
       this.Imgpreview = true;
     }
+    this.RoleId = this.data.roleId;
     localStorage.setItem('RoleId',this.data.roleId)
+    alert(this.data.roleId)
     this.patchValue()
   })
 }
@@ -123,7 +126,9 @@ export class EditProfileComponent implements OnInit {
     })
     
   }
-
+discardProfile() {
+        // this.dialogRef.close();
+}
   ToggleSideNav(value:any){
     this.sidenav.toggle()
   }

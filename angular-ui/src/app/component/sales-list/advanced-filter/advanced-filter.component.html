@@ -66,7 +66,7 @@
                     <div class="menu-container1">
                         <!-- input search field display depends on conditions -->
                         <input
-                            *ngIf="isTargetGroupSelected || isCategorySelected || this.categoryItems.length > 0 || this.subcatItems.length > 0"
+                            *ngIf="isTargetGroupSelected || isCategorySelected || this.categoryItems.length > 0 || this.subcatItems.length > 0 "
                             [(ngModel)]="searchText" class="" style="font-family: 'Gilroy'" type="text"
                             placeholder="Type & search">
                         <img *ngIf="isTargetGroupSelected || isCategorySelected" src="assets/img/search.png"
@@ -113,12 +113,14 @@
                         <!-------- SUB category   ---------------------->
 
                         <div *ngIf="isSubCategorySelected" class="heroes4">
-                            <li *ngFor="let subcat of subcaty?.allOtherSubCAts | filter:searchText">
-                                <mat-checkbox class="productC"
-                                    (change)="onItemClickOfSubCategory(subcat , $event);updateCountForSubCAT($event)"
-                                    [checked]="isCheckedForProduct(subcat.subCatId, 'subcategory')">{{subcat.subCatName}}</mat-checkbox>
-
-                            </li>
+                            <div *ngIf="this.categoryItems.length > 0">
+                                <li *ngFor="let subcat of subcaty?.allOtherSubCAts | filter:searchText">
+                                    <mat-checkbox class="productC"
+                                        (change)="onItemClickOfSubCategory(subcat , $event);updateCountForSubCAT($event)"
+                                        [checked]="isCheckedForProduct(subcat.subCatId, 'subcategory')">{{subcat.subCatName}}</mat-checkbox>
+                        
+                                </li>
+                            </div>
                             <div *ngIf="this.categoryItems.length == 0">
                                 <p class="errorMessage">*First select a ‘Category’ in order to see the respective
                                     sub-categories</p>
@@ -127,17 +129,20 @@
 
                         <!-------------------   type   ---------------------->
                         <div *ngIf="typeSelected">
+                            <div *ngIf="this.subcatItems.length > 0">
                             <li *ngFor="let type of typeList | filter:searchText">
                                 <mat-checkbox class="productC"
                                     (change)="onItemClickOfType(type , $event);updateCountForType($event);"
                                     [checked]="isCheckedForProduct(type.typeId, 'type')">{{type.typeName}}</mat-checkbox>
 
                             </li>
-                            <div *ngIf="this.subcatItems.length == 0 || this.categoryItems.length == 0 ">
-                                <p class="errorMessage">*First select a ‘Category’ & ‘Sub-category’ in order to see the
-                                    respective types</p>
-                            </div>
                         </div>
+                        <div *ngIf="this.subcatItems.length == 0 || this.categoryItems.length == 0 ">
+                            <p class="errorMessage">*First select a ‘Category’ & ‘Sub-category’ in order to see the
+                                respective types</p>
+                        </div>
+                        </div>
+                        
                         <!----------------- shipment date   ---------------------->
                         <div *ngIf="isShipmentDateSelected" class="heroes5 menu-itemm tick">
                             <app-customdatepicker class="dateplaceholder" [showDirectMenu]="true"
@@ -181,6 +186,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div *ngIf="this.ProductCustomIdentifierElements.length > 0"  class="targetElement">
                             <div *ngFor="let pciElemets of ProductCustomIdentifierElements;let i =index;" class="customIdenti"
                                 [ngStyle]="{'background-color': getBackgroundColor(pciElemets.productCustomName)}">
@@ -191,6 +197,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div *ngIf="this.categoryItems.length > 0"  class="targetElement">
                             <div *ngFor="let category of categoryItems;let i =index;" class="customCateg"
                                 [ngStyle]="{'background-color': getBackgroundColor(category.catName)}">
@@ -218,7 +225,7 @@
                         <div  class="targetElement">
                         <div  *ngIf="shipmentSelectedDateRange && shipmentSelectedDateRange.startDate"  class="customShipping">
                         <div class="eleStyles"><span class="itemSelectedFilterShip">{{startDate}} - {{endDate}}<mat-icon
-                                    mat-button class="close-iconn">close</mat-icon></span>
+                                    mat-button class="close-iconn" (click)="close()">close</mat-icon></span>
                         </div>
                     </div>
                 </div>

@@ -282,9 +282,9 @@ export class AdvancedFilterComponent implements OnInit {
       //this.values.push(category.catName);
       this.categoryItems.push(category);
     }
-    else if (this.isCheckedForProduct(category, 'category')) {
+    else if (this.isCheckedForProduct(category.catId, 'category')) {
       //this.values.pop(category.catName);
-      this.categoryItems.pop(category.catId);
+      this.categoryItems.pop(category);
     }
     if (this.isCategorySelected) {
       localStorage.setItem("category", category.catId);
@@ -422,6 +422,7 @@ export class AdvancedFilterComponent implements OnInit {
 
     const typeItem = this.typeItems.indexOf(item);
     this.typeItems.splice(typeItem , 1);
+    
     if (this.checkedCount > 0) {
       this.checkedCount--;
     }
@@ -447,13 +448,9 @@ export class AdvancedFilterComponent implements OnInit {
       this.receiptcheckedCount--;
     }
   
-     
-     this.isCheckedForProduct(item ,'target');
-    // this.isCheckedForProduct(item ,'geo' , '');
-    // this.isCheckedForProduct(item ,'product' , '');
-    // this.isCheckedForProduct(item ,'category' , '');
-    // this.isCheckedForProduct(item ,'subcategory' , '');
-    // this.isCheckedForProduct(item ,'type' , '');
+  }
+  close(){
+    this.shipmentSelectedDateRange = { startDate: '', endDate: '' };
   }
  
   isCheckedForProduct(item: any, type) {
@@ -574,22 +571,22 @@ export class AdvancedFilterComponent implements OnInit {
 
   }
   getBackgroundColor(item) {
-    if (this.targetGroupList.some(target => target['targetGroupName'] === item)) {
+    if (this.targetGroupList?.some(target => target['targetGroupName'] === item)) {
       return '#0353A4';
     }
-    else if (this.geoGraphyIdentifierList.some(vendor => vendor['geographyIdentifierName'] === item)) {
+    else if (this.geoGraphyIdentifierList?.some(vendor => vendor['geographyIdentifierName'] === item)) {
       return '#F72585';
     }
-    else if (this.ProductCustomIdentifierList.some(PCI => PCI.productCustomeIdentifiers.some((ele) => ele.productCustomName === item))) {
+    else if (this.ProductCustomIdentifierList?.some(PCI => PCI.productCustomeIdentifiers.some((ele) => ele.productCustomName === item))) {
       return '#017EFA';
     }
-    else if (this.categoryList.allOtherCats.some(category => category['catName'] === item)) {
+    else if (this.categoryList?.allOtherCats?.some(category => category['catName'] === item)) {
       return '#00187A';
     }
-    else if (this.subcaty?.allOtherSubCAts.some(subcategory => subcategory['subCatName'] === item)) {
+    else if (this.subcaty?.allOtherSubCAts?.some(subcategory => subcategory['subCatName'] === item)) {
       return '#0C5A3E';
     }
-    else if (this.typeList.some(types => types['typeName'] === item)) {
+    else if (this.typeList?.some(types => types['typeName'] === item)) {
       return '#C32F27';
     }
   }

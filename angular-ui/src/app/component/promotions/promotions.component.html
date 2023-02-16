@@ -3,7 +3,7 @@
       <div class="row" style="margin-left: 4px;">
         <div class="col-md-2 col-lg-2 col-sm-2">
           <form [formGroup]="myForm" class="dropdown-form">
-            <ng-multiselect-dropdown class="promo" [placeholder]="'Promotions'" formControlName="city1"
+            <ng-multiselect-dropdown class="promo" formControlName="city1"
               [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList" (onSelect)="onItemSelect($event)"
               (onDeSelect)="onItemDeSelect($event)" (onDeSelectAll)="onItemDeSelectOrAll($event)"
               (onSelectAll)="onItemSelectOrAll($event)">
@@ -15,10 +15,9 @@
               <span *ngIf="myForm.get('city1').value.length == 1" class="selected-placeholder">
                 {{myForm.get('city1').value.length}} Promotions selected </span>
               <span *ngIf="myForm.get('city1').value.length > 1" class="selected-placeholder">
-                {{myForm.get('city1').value.length}} Promotions selected </span>
+                {{myForm.get('city1').value.length}}  selected </span>
 
             </div>
-
           </form>
         </div>
         <div class="col-md-2 col-lg-2 col-sm-2">

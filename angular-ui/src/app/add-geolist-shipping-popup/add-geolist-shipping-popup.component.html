@@ -32,7 +32,7 @@
   </div>
           <div class="row bothDown">
             <div class="col-9">
-              <h6 class="packingText"><b>Shipping Charges</b></h6>
+              <h6 class="packingText"><b>{{this.header}}</b></h6>
               <p class="colorText">{{ errorMsg }}</p>
             </div>
             <div class="col-2">
@@ -47,39 +47,39 @@
             *ngFor="let packingCharge of packingCharges; let i = index"
           >
             <div class="col-3">
-              <label>Start Value</label>
+              <label *ngIf="i==0">Start Value</label>
               <input
                 type="text"
-                id="sValue"
-                name="sValue"
+                id="startvalue"
+                name="startvalue"
                 required
                 placeholder="Enter"
-                [(ngModel)]="packingCharge.address"
+                [(ngModel)]="packingCharge.startvalue"
                 name="address_{{ i }}"
               />
             </div>
             <div class="col-3">
-              <label>End Value</label>
+              <label *ngIf="i==0">End Value</label>
               <input
                 type="text"
-                id="eValue"
-                name="eValue"
+                id="endvalue"
+                name="endvalue"
                 required
                 placeholder="Enter"
-                [(ngModel)]="packingCharge.eValue"
+                [(ngModel)]="packingCharge.endvalue"
                 name="street_{{ i }}"
               />
             </div>
             <div class="col-3">
-              <label>Shipping Cost</label>
+              <label *ngIf="i==0">Shipping Cost</label>
               <input
                 style="width: 225px"
                 type="text"
-                id="pValue"
-                name="pValue"
+                id="cost"
+                name="cost"
                 required
                 placeholder="Enter"
-                [(ngModel)]="packingCharge.pValue"
+                [(ngModel)]="packingCharge.cost"
                 name="city_{{ i }}"
               />
            
@@ -92,7 +92,7 @@
           <div class="col-12">
             <div class="row">
               <div class="col-4"></div>
-              <div class="col-4">
+              <div class="col-4" (click)="finalAddVAlue()">
                 <button class="btn btn-primary btn-block submitbtn save-btn">
                   Add
                 </button>

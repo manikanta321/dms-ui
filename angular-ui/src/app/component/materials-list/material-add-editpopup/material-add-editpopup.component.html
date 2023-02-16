@@ -23,14 +23,14 @@
         <mat-stepper labelPosition="bottom" #stepper>
           <!-- basic information -->
           <mat-step [stepControl]="firstFormGroup">
-
+            <div class="geography-popupsize">
             <ng-template matStepLabel>Basic Information</ng-template>
             <div class="heading">
               <h6 class="stepperHeader-b"><b>Basic
                   Information</b></h6>
             </div>
 
-            <div class="row">
+            <div class="row rowFirst">
               <div class="col-md-4">
                 <div class="">
                   <label>Category<span>*</span></label>
@@ -90,7 +90,7 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row rowSecond">
               <div class="col-md-8 nameplaceholed">
                 <div class="materialname">
                   <label>Name <span>*</span></label>
@@ -126,7 +126,7 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row rowThird">
               <div class="col-md-5" style="margin-top:5px;">
                 <div class="description">
                   <label>Description</label>
@@ -233,9 +233,11 @@
             <div class="col-3">
 
             </div>
+            </div>
           </mat-step>
           <!-- product information -->
           <mat-step [stepControl]="secondFormGroup" *ngIf="!checked">
+            <div class="geography-popupsize">
             <ng-template matStepLabel>Product Information</ng-template>
             <div class="row">
               <div class="col-md-6">
@@ -450,7 +452,9 @@
             </div>
 
 
+            </div>
           </mat-step>
+        
           <!-- geographies -->
 
           <mat-step [stepControl]="thirdformGroup" *ngIf="!checked">

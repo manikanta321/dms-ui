@@ -15,6 +15,8 @@ import { AddGeolistPopupComponent } from '../add-geolist-popup/add-geolist-popup
 
 import { GeographicListActionComponent } from './geographic-settings-action/geographic-list-action/geographic-list-action.component';
 import { AddGeolistShippingPopupComponent } from 'src/app/add-geolist-shipping-popup/add-geolist-shipping-popup.component';
+import { UseractionComponent } from '../useraction/useraction.component';
+import { GeographySettingSharedService } from 'src/app/services/geography-setting-shared.service';
 
 export interface PeriodicElement {
   shippingForm: any;
@@ -66,7 +68,6 @@ export class GeographicListComponent implements OnInit {
 
 shipPackCharges:any;
   shippingHeader: any;
-  columnDefs:any;
   secondColumn: any;
   ThirdColumn: any;
   packageChk: boolean = false;
@@ -78,44 +79,94 @@ shipPackCharges:any;
     private _liveAnnouncer: LiveAnnouncer,
     private user: UserService,
     private observer: BreakpointObserver,
-    private fb: FormBuilder
-  ) { }
+    private fb: FormBuilder,
+    private sharedService:GeographySettingSharedService,
+  ) {
+       this.sharedService.listen().subscribe((m: any) => {
+      // console.log(m)
+      this.getusertabeldata();
+    })
+   }
 
   ngOnInit(): void {
-    
+   this.getusertabeldata();
     this.shipClick('Shipping')
    
 
   }
+
+  public rowData5 = [];
+  public rowData6 = [];
+
   public popupParent: HTMLElement = document.body;
-  public rowData5 = [
-    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
-    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
-    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
-    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
-    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
-    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
-    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
-    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
-    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
-    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
-    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
-    {shippingTo:'Argentina Republic',shippingForm:'Argentina Republic',shippingCharges:' 100-500 (2000); 501-1000 (2500); 1001-1500 (3000); 1501-2000 (3500); 2001-2500 (4000); 2501-...'},
-    ];
- 
-  
+  columnDefs: ColDef[] = []
+  columnDefs1: ColDef[] = []
+
+  // columnDefs: ColDef[] = [
+
+  //   {
+  //     headerName: "User ID",
+  //     field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
+  //     tooltipField: "employeeCode", maxWidth: 200,
+
+  //   },
+
+  //   { headerName: "Username", field: 'userName', type: ['nonEditableColumn'], tooltipField: "userName", },
+
+  //   { headerName: "Role", field: 'roleName', type: ['nonEditableColumn'], tooltipField: "roleName", },
+
+  //   {
+  //     headerName: "Email ",
+  //     field: 'email', type: ['nonEditableColumn'],
+  //     tooltipField: "email",
+  //     // flex: 1,
+  //   },
+
+  //   {
+  //     headerName: "Phone No",
+  //     field: 'mobile', type: ['nonEditableColumn'],
+  //     tooltipField: "mobile"
+  //   },
+
+  //   // suppressMovable:true,
+  //   {
+  //     headerName: "Status",
+  //     field: 'statusName',
+  //     maxWidth: 109,
+  //     type: ['nonEditableColumn'],
+  //     cellEditor: 'agSelectCellEditor',
+  //     cellEditorParams: {
+  //       values: ['Active', 'Inactive', 'Invited', 'Locked',],
+  //     },
+  //     cellClass: params => {
+  //       return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
+  //     },
+      
+  //     tooltipField: "statusName",
+  //   },
+  //   {
+  //     headerName: '',
+  //     colId: 'action',
+  //     cellRenderer: UseractionComponent,
+  //     editable: false,
+  //     maxWidth: 60
+  //   },
+
+  // ];
+
+
+
   public defaultColDef: ColDef = {
-    // set the default column width
-    width: 170,
-    // make every column editable
-    editable: true,
-    // make every column use 'text' filter by default
+    suppressSizeToFit: true,
+
+    width: 400,
     filter: 'agTextColumnFilter',
-    // enable floating filters by default
-    // make columns resizable
+    flex: 1,
     resizable: true,
     sortable: true,
   };
+
+
   public columnTypes: {
     [key: string]: ColDef;
   } = {
@@ -175,42 +226,37 @@ shipPackCharges:any;
     // ageFilterComponent.setModel(null);
     // this.gridApi.onFilterChanged();
     const data = {
-      userTypes: [],
-      statuss: [],
-      search: '',
-
+        "search":"",
+        "shipping":true
     }
     
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
+    this.user.getGeography(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
+
+
+    const data1 = {
+      "search":"",
+      "shipping":false
+  }
+  
+  this.user.getGeography(data1).subscribe((res) => {
+    this.rowData6 = res.response;
+  });
     this.getusertabeldata();
   }
   getusertabeldata() {
-
     const data = {
-      userTypes: [],
-      statuss: [],
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {
+      "search":"",
+      "shipping":true
+  }
+  
+  this.user.getGeography(data).subscribe((res) => {
+    this.rowData5 = res.response;
+  });
 
-      this.rowData5 = res.response;
-      console.log('tableDaaaata', this.rowData5)
-      if (this.rowData5.length >= 1) {
-        this.rowData.forEach((element: { [x: string]: any; }) => {
-          if (element['status'] == 'Confirmed') {
-          }
-          else {
-            element['isActive'] == 'Inactive'
 
-          }
-          console.log('element', element['isActive'])
-        });
-      }
 
-      console.log('row data', this.rowData1)
-
-    });
   }
   onCellValueChanged(event: CellValueChangedEvent) {
     // alert(event.value)
@@ -291,19 +337,34 @@ shipPackCharges:any;
   onSearchChange($event:any , anything?:any){
     const { target } = $event;
     this.searchText=target.value;
-    const data={
-      userTypes:this.userTypes,
-      statuss:this.statusTypes,
-      search:this.searchText,
-    }
-    this.user.getuserDeatilsUser(data).subscribe((res) => {     
-      this.rowData5 = res.response;
-    });
+    const data = {
+      "search":this.searchText,
+      "shipping":true
+  }
+  
+  this.user.getGeography(data).subscribe((res) => {
+    this.rowData5 = res.response;
+  });
+
+
+  const data1 = {
+    "search":this.searchText,
+    "shipping":false
+}
+
+this.user.getGeography(data1).subscribe((res) => {
+  this.rowData6 = res.response;
+});
 
   }
   addUser(){
+if(this.shippingChk == true){
+localStorage.setItem('packingChargeOrShipingCharge','shippingCharge')
+}else{
+  localStorage.setItem('packingChargeOrShipingCharge','PackingCharge')
 
-    this.dialog.open( AddGeolistPopupComponent,{
+}
+    this.dialog.open( AddGeolistShippingPopupComponent,{
       width: '700px', //sets width of dialog
       height:'450px',
     });
@@ -320,50 +381,75 @@ shipPackCharges:any;
    }
 
    shipClick(event:any){
-      
+      alert(event)
       // this.fieldName = "Shipping Form";
       if(event == 'Shipping'){
-        this.headerName ="Shipping From";
-        this.secondColumn = "Shipping To"
-        this.ThirdColumn = "Shipping Charges"
+
         this.shippingChk = true;
-        this.packageChk = false;
-        this.shippingBtn=true;
+        this.columnDefs= [
+          {
+            headerName:'Destination',field: 'geographyName', type: ['nonEditableColumn'],
+            width: 200   },
+      
+          { headerName: 'Shipping Charge', field: 'charges', type: ['nonEditableColumn'] , },
+      
+          
+          {
+            headerName: '',
+          
+            colId: 'action',
+      
+            cellRenderer: GeographicListActionComponent,
+            editable: false,
+            maxWidth: 65  
+          },
+          
+        ];
        
        
       }else{
-        this.headerName ="Shipping From";
-        this.secondColumn = "Shipping To"
-        this.ThirdColumn = "Packing Charges"
+ 
+        const data1 = {
+          "search":"",
+          "shipping":false
+      }
+      
+      this.user.getGeography(data1).subscribe((res) => {
+        this.rowData6 = res.response;
+      });
+        this.columnDefs1= [
+          {
+            headerName:'Destination',field: 'geographyName', type: ['nonEditableColumn'],
+            width: 200   },
+      
+          { headerName: 'Packing Charge', field: 'charges', type: ['nonEditableColumn'] , },
+      
+          
+          {
+            headerName: '',
+          
+            colId: 'action',
+      
+            cellRenderer: GeographicListActionComponent,
+            editable: false,
+            maxWidth: 65  
+          },
+          
+        ];
+     
+    
+    
         this.shippingChk = false;
-        this.packageChk = true;
-        this.shippingBtn=false;
+  
       }
       this.shippingAndPackages();
    }
 
    shippingAndPackages(){
-    this.columnDefs= [
-      {
-        headerName: this.headerName,field: 'shippingForm', type: ['nonEditableColumn'],
-        width: 200   },
-  
-      { headerName: this.secondColumn, field: 'shippingTo', type: ['nonEditableColumn'] ,width: 500 },
-  
-      { headerName: this.ThirdColumn, field: 'shippingCharges', type: ['nonEditableColumn'] , width: 600   }, 
-      
-      {
-        headerName: '',
-      
-        colId: 'action',
-  
-        cellRenderer: GeographicListActionComponent,
-        editable: false,
-        maxWidth: 65  
-      },
-      
-    ];
- 
+   
 
-   }
+
+  }
+
+   
 }

@@ -69,7 +69,7 @@ export class AddcurrencyComponent implements OnInit {
       this.EConversionRate = this.editUomData.conversionRate;
       this.EuomSymbol = this.editUomData.uomSymbol;
       let convo = 1/(this.EConversionRate);
-      let conversion = convo.toFixed(3);
+      let conversion = convo.toFixed(5);
       this.EConversionShow = conversion+" "+this.EuoMShortName;
       this.EConversion = conversion;
       console.log("editUomData",this.editUomData);
@@ -91,7 +91,7 @@ this.uomShortName = shortName;
   this.conversionRates = keyConversion;
   if(this.conversionRates>=1){
     let convo = 1/(this.conversionRates);
-    this.conversion = convo.toFixed(3);
+    this.conversion = convo.toFixed(5);
     this.editedConversion = this.conversion +" "+this.currencyForm.value['displayUnits'];
   }
   else{

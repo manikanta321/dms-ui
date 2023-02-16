@@ -248,8 +248,10 @@ export class AdvancedFilterComponent implements OnInit {
       this.targetLists.push(item);
     }
     else if (this.isCheckedForProduct(item.targetGroupId, 'target')) {
-      //this.values.pop(item.targetGroupName);
-      this.targetLists.pop(item);
+      let index = this.targetLists.indexOf(item);
+      if (index > -1) {
+      this.targetLists.splice(index, 1);
+      }
     }
 
   }
@@ -260,8 +262,10 @@ export class AdvancedFilterComponent implements OnInit {
       this.itemOfgeogrphy.push(item);
     }
     else if (this.isCheckedForProduct(item?.geographyIdentiferid, 'geo')) {
-      //this.values.pop(item?.geographyIdentifierName);
-      this.itemOfgeogrphy.pop(item);
+       let index = this.itemOfgeogrphy.indexOf(item);
+      if (index > -1) {
+      this.itemOfgeogrphy.splice(index, 1);
+      }
     }
 
   }
@@ -272,8 +276,10 @@ export class AdvancedFilterComponent implements OnInit {
       this.ProductCustomIdentifierElements.push(item);
     }
     else if (this.isCheckedForProduct(item.productCustomIdentifierId, 'product')) {
-      //this.values.pop(item.productCustomName);
-      this.ProductCustomIdentifierElements.pop(item);
+      let index = this.ProductCustomIdentifierElements.indexOf(item);
+      if (index > -1) {
+      this.ProductCustomIdentifierElements.splice(index, 1);
+      }
     }
   }
   onItemClickOfCategory(category: any , event:any) {
@@ -282,9 +288,21 @@ export class AdvancedFilterComponent implements OnInit {
       //this.values.push(category.catName);
       this.categoryItems.push(category);
     }
-    else if (this.isCheckedForProduct(category, 'category')) {
-      //this.values.pop(category.catName);
-      this.categoryItems.pop(category.catId);
+    else if (this.isCheckedForProduct(category.catId, 'category')) {
+      this.categoryItems.pop(category);
+      if(this.categoryItems.length == 0){
+        this.isSubCategorySelected = false;
+        this.typeSelected = false;
+        this.subcatItems.length = 0;
+        this.typeItems.length = 0;
+        this.subcategoryCheckedCount = 0;
+        this.typeCount = 0;
+       
+      }
+      else{
+        this.isSubCategorySelected = true;
+      }
+    
     }
     if (this.isCategorySelected) {
       localStorage.setItem("category", category.catId);
@@ -385,7 +403,7 @@ export class AdvancedFilterComponent implements OnInit {
   }
   updateCountForShipment(event : any){
     if (this.isShipmentDateSelected) {
-      if (event.checked) {
+      if (event.isTrusted) {
         this.shipmentcheckedCount++;
       }
       else if (this.shipmentcheckedCount > 0) {
@@ -395,7 +413,7 @@ export class AdvancedFilterComponent implements OnInit {
   }
     updateCountForReceipt(event : any){
       if (this.isReceiptDateSelected) {
-        if (event.checked) {
+        if (event.isTrusted) {
           this.receiptcheckedCount++;
         }
         else if (this.receiptcheckedCount > 0) {
@@ -422,6 +440,7 @@ export class AdvancedFilterComponent implements OnInit {
 
     const typeItem = this.typeItems.indexOf(item);
     this.typeItems.splice(typeItem , 1);
+    
     if (this.checkedCount > 0) {
       this.checkedCount--;
     }
@@ -440,20 +459,21 @@ export class AdvancedFilterComponent implements OnInit {
     if (this.typeCount > 0) {
       this.typeCount--;
     }
+  
+  
+  }
+  close(){
+    this.shipmentSelectedDateRange = { startDate: '', endDate: '' };
     if(this.shipmentcheckedCount > 0){
       this.shipmentcheckedCount--;
     }
+   
+  }
+  closeDate(){
+    this.selectedDateRange = { startDate: '', endDate: '' };
     if(this.receiptcheckedCount > 0){
       this.receiptcheckedCount--;
     }
-  
-     
-     this.isCheckedForProduct(item ,'target');
-    // this.isCheckedForProduct(item ,'geo' , '');
-    // this.isCheckedForProduct(item ,'product' , '');
-    // this.isCheckedForProduct(item ,'category' , '');
-    // this.isCheckedForProduct(item ,'subcategory' , '');
-    // this.isCheckedForProduct(item ,'type' , '');
   }
  
   isCheckedForProduct(item: any, type) {
@@ -489,8 +509,8 @@ export class AdvancedFilterComponent implements OnInit {
       }
     }
     if(productIdsList == this.targetLists){
-    this.groupId = this.targetLists.map(element => element.targetGroupId);
-    if (this.groupId.includes(item)) {
+      this.groupId = this.targetLists.map(element => element.targetGroupId);
+    if(this.targetLists.find(element => element.targetGroupId == item)){
      return true;
     }
     else {
@@ -498,7 +518,7 @@ export class AdvancedFilterComponent implements OnInit {
     }
   }else if(productIdsList == this.itemOfgeogrphy){
     this.geoIds = this.itemOfgeogrphy.map(element => element.geographyIdentiferid);
-    if (this.geoIds.includes(item)) {
+    if (this.itemOfgeogrphy.find(element => element.geographyIdentiferid == item)) {
      return true;
     }
     else {
@@ -507,16 +527,17 @@ export class AdvancedFilterComponent implements OnInit {
   }
   else if(productIdsList == this.ProductCustomIdentifierElements){
     this.pcIElementIds = this.ProductCustomIdentifierElements.map(element => element.productCustomIdentifierId);
-    if (this.pcIElementIds.includes(item)) {
+    if (this.ProductCustomIdentifierElements.find(element => element.productCustomIdentifierId == item)) {
      return true;
     }
     else {
       return false;
     }
   }
+  
   else if(productIdsList == this.categoryItems){
     this.categoryIds = this.categoryItems.map(element => element.catId);
-    if (this.categoryIds.includes(item)) {
+    if (this.categoryItems.find(element => element.catId == item)) {
      return true;
     }
     else {
@@ -550,6 +571,10 @@ export class AdvancedFilterComponent implements OnInit {
     this.categoryItems.length = 0;
     this.subcatItems.length = 0;
     this.typeItems.length = 0;
+    this.shipmentSelectedDateRange.startDate = '';
+    this.shipmentSelectedDateRange.endDate = '';
+    this.selectedDateRange.startDate = '';
+    this.selectedDateRange.endDate = '';
     this.checkedCount = 0;
      this.GeoCheckedCount = 0;
       this.PCICheckedCount = 0;
@@ -567,29 +592,33 @@ export class AdvancedFilterComponent implements OnInit {
       productIdentifierIds: this.pcIElementIds,
       catogoryIds: this.categoryIds,
       subCategoryIds: this.subCatIds,
-      typeIds: this.typeIds
+      typeIds: this.typeIds,
+      shipmentStartdate:this.shipmentSelectedDateRange.startDate ,
+      shipmentEnddate: this.shipmentSelectedDateRange.endDate,
+      receiptStartdate: this.selectedDateRange.startDate,
+      receiptEnddate: this.selectedDateRange.endDate,
     }
     console.log("ssdsdsdsdsds" , selectedFilters);
     this.dialogRef.close(selectedFilters);
 
   }
   getBackgroundColor(item) {
-    if (this.targetGroupList.some(target => target['targetGroupName'] === item)) {
+    if (this.targetGroupList?.some(target => target['targetGroupName'] === item)) {
       return '#0353A4';
     }
-    else if (this.geoGraphyIdentifierList.some(vendor => vendor['geographyIdentifierName'] === item)) {
+    else if (this.geoGraphyIdentifierList?.some(vendor => vendor['geographyIdentifierName'] === item)) {
       return '#F72585';
     }
-    else if (this.ProductCustomIdentifierList.some(PCI => PCI.productCustomeIdentifiers.some((ele) => ele.productCustomName === item))) {
+    else if (this.ProductCustomIdentifierList?.some(PCI => PCI.productCustomeIdentifiers.some((ele) => ele.productCustomName === item))) {
       return '#017EFA';
     }
-    else if (this.categoryList.allOtherCats.some(category => category['catName'] === item)) {
+    else if (this.categoryList?.allOtherCats?.some(category => category['catName'] === item)) {
       return '#00187A';
     }
-    else if (this.subcaty?.allOtherSubCAts.some(subcategory => subcategory['subCatName'] === item)) {
+    else if (this.subcaty?.allOtherSubCAts?.some(subcategory => subcategory['subCatName'] === item)) {
       return '#0C5A3E';
     }
-    else if (this.typeList.some(types => types['typeName'] === item)) {
+    else if (this.typeList?.some(types => types['typeName'] === item)) {
       return '#C32F27';
     }
   }

@@ -579,13 +579,13 @@
 
 
                                 <div class="my_Datepicker promotion-datepicker">
-                                    <label class="boldR">Requirement Date<span class="astr">*</span></label><br>
+                                    <label class="boldR">Requirement Date</label><br>
                                     <mat-form-field class="placeh-align">
                                         <mat-label>Select a date</mat-label>
                                         <input matInput [matDatepicker]="picker" (dateChange)="dateChange($event)"
                                             [min]="minDate" [(ngModel)]="startdate" name="requireDate"
-                                            #requireDate="ngModel" required >
-                                        <p style="padding: 0px;"
+                                            #requireDate="ngModel" >
+                                        <!-- <p style="padding: 0px;"
                                             *ngIf="requireDate.invalid && (requireDate.dirty || requireDate.touched)"
                                             class="alert">
 
@@ -593,7 +593,7 @@
                                                 *ngIf="requireDate.errors?.['required']">
                                                 *Requirement Date is required
                                             </span>
-                                        </p>
+                                        </p> -->
                                         <mat-datepicker-toggle matSuffix [for]="picker">
                                             <mat-icon matDatepickerToggleIcon>
                                                 <img src="assets/img/calender2.png" class="calendarToggle">
@@ -641,12 +641,12 @@
          
         </div>
         <div class="col-md-2">
-            <button [disabled]="!startdate || !customerId || !geographyId || !BillingaddressId || !shippingaddressId"  type="button" class="save-submit" (click)="ordersubmit('draft')">Save & Draft </button>
+            <button [disabled]=" !customerId || !geographyId || !BillingaddressId || !shippingaddressId"  type="button" class="save-submit" (click)="ordersubmit('draft')">Save & Draft </button>
         </div>
         <div class="col-md-5">
             <button type="button" [mat-dialog-close]="false" class="cancel">Cancel</button>
         </div>
-        <span *ngIf="!startdate || !customerId || !geographyId || !BillingaddressId || !shippingaddressId" style="left: 178px; margin-top: -3px;position: relative;">*please fill required fields</span>
+        <span *ngIf=" !customerId || !geographyId || !BillingaddressId || !shippingaddressId" style="left: 178px; margin-top: -3px;position: relative;">*please fill required fields</span>
     </div>
 
 </div>

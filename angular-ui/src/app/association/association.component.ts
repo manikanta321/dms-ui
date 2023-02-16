@@ -964,10 +964,10 @@ console.log(item)
   }
 
   addUser() {
-    this.dialog.open(AddDealerAssociationsComponent,{width: '1300px',height:'600px'});
+    this.dialog.open(AddDealerAssociationsComponent,{minWidth :'88vw',height:'670px'});
   }
   editBulk(){
-    this.dialog.open(BulkEditAssosiationComponent,{maxWidth :'106vw'});
+    this.dialog.open(BulkEditAssosiationComponent,{minWidth :'88vw',height:'684px'});
 
   }
 

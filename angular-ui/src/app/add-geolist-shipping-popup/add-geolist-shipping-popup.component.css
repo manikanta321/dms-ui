@@ -44,21 +44,20 @@
     color: grey;
     font-size: 14px;
   }
-  /* .dropdown-placeholder {
-    background: white;
+  .dropdown-placeholder {
+    background: transparent;
     color: #808080;
     top: 0;
     position: absolute;
-    height: 41px;
+    height: 37px;
     line-height: 41px;
-    left: 1px;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
-    width: 80%;
+    left: 15px;
+
+    width: 88%;
     border-radius: 10px 0 0 10px !important;
     padding-left: 10px;
     pointer-events: none;
-  } */
+  }
   .product-placeholder.dropdown-placeholder .selected-placeholder {
     color: #44026C !important;
   }  
@@ -198,7 +197,7 @@ mat-form-field {
 
 .removeCircle{
     margin-left: 99%;
-    margin-top: 37px;
+    margin-top: 7px;
     color: red;
     cursor: pointer;
 }

@@ -321,7 +321,7 @@ input::-webkit-inner-spin-button {
 .contentscrobar
 {
    
-   height: 200px;
+   height: 180px;
  }
 
 
@@ -1743,9 +1743,9 @@ margin-top: -5px;
   padding: 20px;
   background: #fff;
   border-radius: 5px;
-  width: 65%;
-  /* height: 263px; */
-  min-height: 263px;
+  width: 70%;
+  height: 626px;
+  /* min-height: 263px; */
   /* height: auto; */
   /* top: 11%; */
   /* top: 7%; */

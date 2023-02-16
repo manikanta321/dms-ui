@@ -210,9 +210,14 @@ color: white;
 }
 .minus-icon{
  background: red;
- padding: 1px 10px;
-  border-radius: 50%;
+ padding-left: 3px;
+  border-radius: 16px;
   cursor: pointer;
+  color:#f5f5f5;
+  font-size: 32px;
+  height: 22px;
+  width: 22px;
+  
 }
 
 .minus-icon1{

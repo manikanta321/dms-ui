@@ -33,21 +33,31 @@
                 <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
               </div>
             </div>
-            <div class="col-md-0">
+            <!-- <div class="col-md-0">
               <div class="download-btn" (click)="onBtnExport()">
                 <img src="../../../assets/img/dwnld-edit.svg" style="position: relative;top: 8px;left: 12px;"
                   alt="add-user-btn">
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
     </div>
   </section>
-  <ag-grid-angular id="gridContainer"
+  <ag-grid-angular id="gridContainer" *ngIf="shippingChk"
     style=" height: 400px;margin-left:17px;  overflow: hidden;    border-radius: 20px;background-color: white;font-family: Gilroy"
     class="ag-theme-material" [rowHeight]="25" [headerHeight]="48" [columnDefs]="columnDefs"
     [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5" [suppressExcelExport]="true"
+    [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
+    (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
+    (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" (gridReady)="onGridReady($event)"
+    [pagination]="false"  (bodyScroll)="handleScroll($event)"></ag-grid-angular>
+
+
+    <ag-grid-angular id="gridContainer" *ngIf="!shippingChk"
+    style=" height: 400px;margin-left:17px;  overflow: hidden;    border-radius: 20px;background-color: white;font-family: Gilroy"
+    class="ag-theme-material" [rowHeight]="25" [headerHeight]="48" [columnDefs]="columnDefs1"
+    [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData6" [suppressExcelExport]="true"
     [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
     (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
     (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" (gridReady)="onGridReady($event)"
@@ -57,7 +67,11 @@
 
 
 
-<div class="pagination">
-  <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of
+<div class="pagination" *ngIf="shippingChk">
+  <span class="pagination-cls">1</span> to <span class="pagination-cls">{{rowData5.length}}</span> of
   <span class="pagination-cls">{{rowData5.length}}</span>
+</div>
+<div class="pagination" *ngIf="!shippingChk">
+  <span class="pagination-cls">1</span> to <span class="pagination-cls">{{rowData6.length}}</span> of
+  <span class="pagination-cls">{{rowData6.length}}</span>
 </div>

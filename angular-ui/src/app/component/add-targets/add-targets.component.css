@@ -25,7 +25,11 @@
     font-weight: 600;
     cursor: pointer;
 }
-
+.targetstyle {
+    position: relative;
+    bottom: 33px;
+    left: 12px;
+}
 .addU {
     position: relative;
     /* font-family: 'Gilroy-Bold';  */
@@ -334,7 +338,7 @@ label {
 
 .all-dlr {
     position: relative;
-    top: 20px;
+    top: -20px;
     right: 6px;
     font-family: 'Gilroy';
 }

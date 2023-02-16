@@ -66,7 +66,7 @@
                     <div class="menu-container1">
                         <!-- input search field display depends on conditions -->
                         <input
-                            *ngIf="isTargetGroupSelected || isCategorySelected || this.categoryItems.length > 0 || this.subcatItems.length > 0 "
+                            *ngIf="isTargetGroupSelected || isCategorySelected || (this.isSubCategorySelected && this.categoryItems.length > 0 )|| (typeSelected && this.subcatItems.length > 0) "
                             [(ngModel)]="searchText" class="" style="font-family: 'Gilroy'" type="text"
                             placeholder="Type & search">
                         <img *ngIf="isTargetGroupSelected || isCategorySelected" src="assets/img/search.png"
@@ -118,14 +118,15 @@
                                     <mat-checkbox class="productC"
                                         (change)="onItemClickOfSubCategory(subcat , $event);updateCountForSubCAT($event)"
                                         [checked]="isCheckedForProduct(subcat.subCatId, 'subcategory')">{{subcat.subCatName}}</mat-checkbox>
-                        
                                 </li>
                             </div>
-                            <div *ngIf="this.categoryItems.length == 0">
+                        
+                            <div *ngIf="this.categoryItems.length == 0 && isSubCategorySelected">
                                 <p class="errorMessage">*First select a ‘Category’ in order to see the respective
                                     sub-categories</p>
                             </div>
                         </div>
+                       
 
                         <!-------------------   type   ---------------------->
                         <div *ngIf="typeSelected">
@@ -137,21 +138,21 @@
 
                             </li>
                         </div>
-                        <div *ngIf="this.subcatItems.length == 0 || this.categoryItems.length == 0 ">
+                        <div *ngIf="this.subcatItems.length == 0 || (this.categoryItems.length == 0 && isSubCategorySelected)">
                             <p class="errorMessage">*First select a ‘Category’ & ‘Sub-category’ in order to see the
                                 respective types</p>
                         </div>
                         </div>
                         
                         <!----------------- shipment date   ---------------------->
-                        <div *ngIf="isShipmentDateSelected" class="heroes5 menu-itemm tick">
+                        <div *ngIf="isShipmentDateSelected" class="heroes5 menu-itemm tick" (click) = updateCountForShipment($event)>
                             <app-customdatepicker class="dateplaceholder" [showDirectMenu]="true"
                                 [selectedMenu]="shipmentselectedMenu" [selectedDate]="shipmentSelectedDateRange"
                                 (customDatePickerEvent)="shipmentCustomDatePickerEvent($event)"></app-customdatepicker>
                         </div>
                         <!----------------- receipt date   ---------------------->
 
-                        <div *ngIf="isReceiptDateSelected" class="heroes5 menu-datepicker menu-itemm tick">
+                        <div *ngIf="isReceiptDateSelected" class="heroes5 menu-datepicker menu-itemm tick" (click) = updateCountForReceipt($event)>
                             <app-customdatepicker class="dateplaceholder" [showDirectMenu]="true"
                                 [selectedMenu]="reciptselectedMenu" [selectedDate]="selectedDateRange"
                                 (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
@@ -232,7 +233,7 @@
                 <div  class="targetElement">
                     <div  *ngIf="selectedDateRange && selectedDateRange.startDate" class="customShipping">
                         <div class="eleStyles"><span class="itemSelectedFilterShip">{{startDate}} - {{endDate}}<mat-icon
-                                    mat-button class="close-iconn">close</mat-icon></span>
+                                    mat-button class="close-iconn" (click)="closeDate()">close</mat-icon></span>
                         </div>
                     </div>
                 </div>

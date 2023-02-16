@@ -408,47 +408,25 @@
                     <a class="closes" (click)="closePopup()">&times;</a>
                     <div class="col-12">
                       <div class="row">
-                        <div class="col-6">
-                          <h2 class="sidentifier">Business Category<span>*</span></h2>
+
+                        <div class="col-md-6" *ngFor="let item of customIdentifierData">
+                          <h2 class="sidentifier">{{item.headingName}}<span>*</span></h2>
 
                           <div class="content">
                             <mat-chip-list multiple>
                               <!-- [(ngModel)]="bussinessIdentifiers" -->
                               <mat-chip #businessdata="matChip" [value]="data"
-                                *ngFor="let data of businessData; let i = index" [selected]="isSelectedBusiness(data)"
-                                (focus)="selectBusinessProduct(data,i)" class="cold">
+                                *ngFor="let data of item.productCustomeIdentifiers; let i = index" [selected]="isSelectedBusiness(data)"
+                                (focus)="selectBusinessProduct(data)" class="cold">
                                 <!-- <mat-icon *ngIf="businessdata.selected">check</mat-icon> -->
                                 {{data.productCustomName}}
                               </mat-chip>
                             </mat-chip-list>
                           </div>
                         </div>
-                        <div class="vr"></div>
-                        <div class="col-6">
-                          <h2 class="sidentifier">Product Clasification<span>*</span></h2>
 
-                          <!-- <div class="content">
-                            <mat-chip-list multiple>
-                              <mat-chip #pi="matChip" [value]="data" *ngFor="let data of productData  let i = index"
-                                [selected]="isSelectedProductIdentifier(data)" (focus)="selectProductIdentifier(data,i)"
-                                class="cold">
-                                {{data.productCustomName}}
-                              </mat-chip>
-                            </mat-chip-list>
-                          </div> -->
-                          <div class="content">
-                            <mat-chip-list multiple>
-                              <!-- [(ngModel)]="bussinessIdentifiers" -->
-                              <mat-chip #Productdata="matChip" [value]="data"
-                                *ngFor="let data of productData; let i = index"
-                                [selected]="isSelectedProductIdentifier(data)" (focus)="selectProductIdentifier(data,i)"
-                                class="cold">
-                                <!-- <mat-icon *ngIf="Productdata.selected">check</mat-icon> -->
-                                {{data.productCustomName}}
-                              </mat-chip>
-                            </mat-chip-list>
-                          </div>
-                        </div>
+
+                        
                         <!-- <div class="vr"></div> -->
                         <!-- <div class="col-4">
                           <a class="close-icon" (click)="closePopup()">&times;</a>
@@ -507,9 +485,11 @@
                                   <strong
                                     *ngIf="geoItem.selectedCount != null && geoItem.selectedCount != undefined">({{
                                     geoItem.selectedCount}} / {{ geoItem.countOfDefault}})</strong>
-                                    
+
                                 </div>
-                                <img src="assets/img/geography-all.svg" *ngIf="geoGraphyFullData.length === (i+2) && !isItemSelected(item,geoItem)" (click)="geographySelectAll($event,geoItem, i)"/>
+                                <img src="assets/img/geography-all.svg"
+                                  *ngIf="geoGraphyFullData.length === (i+2) && !isItemSelected(item,geoItem)"
+                                  (click)="geographySelectAll($event,geoItem, i)" />
                               </div>
                             </div>
                           </div>
@@ -587,15 +567,15 @@
 
                   <div *ngFor="let geoPropertyItemList of geoGraphyFullData; let i=index;">
                     <div *ngFor="let item of geoPropertyItemList.geoProperties">
-                        <!-- <div > -->
-                          <div *ngIf="item.showArrayExtension">
+                      <!-- <div > -->
+                      <div *ngIf="item.showArrayExtension">
                         <div class="row m-0 mb-2">
                           <div class="col-sm-3" [ngStyle]="{'padding-left':  (i * 10 )+ 'px'}">
-                            
-                            <img [src]="item.imageExtensionType == 'maxImage' ? maxImage : minImage" class="expand-arrow1"
-                              alt="add-user-btn" *ngIf="geoGraphyFullData.length !== (i + 1)"
+
+                            <img [src]="item.imageExtensionType == 'maxImage' ? maxImage : minImage"
+                              class="expand-arrow1" alt="add-user-btn" *ngIf="geoGraphyFullData.length !== (i + 1)"
                               (click)="materialGeographyArrayClick(item,i)">
-                            
+
                             {{item.geographyName}}
 
                           </div>

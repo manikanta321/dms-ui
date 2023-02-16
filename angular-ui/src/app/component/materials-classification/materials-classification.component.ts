@@ -163,7 +163,7 @@ export class MaterialsClassificationComponent implements OnInit {
       // });
 
       // localStorage.setItem('catsetName', catsetName)
-      debugger
+      // debugger
 if(item=='Edit Category'){
   this.onClick(this.num);
 }

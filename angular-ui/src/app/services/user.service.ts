@@ -84,7 +84,10 @@ export class UserService {
 
     return this.http.post<any>(this.userurl + 'UserMgmtApi/GetAllUsers', data);
   }
+  public getGeography(data) {
 
+    return this.http.post<any>(this.userurl + 'MaterialApi/GetShippingPackingChargesList', data);
+  }
 
   public dealerDropdownOrderlist() {
     return this.http.get<any>(`${this.userurl}DealerApi/GetAssoDealerdrop`);
@@ -123,6 +126,15 @@ export class UserService {
     return this.http.get<any>(this.userurl + 'UserMgmtApi/GetUserStatusList');
   }
 
+  public GetGeoDetailsForGeographySettings(id) {
+    return this.http.get<any>(this.userurl + 'MaterialApi/GetDefaultGeographydrop?CurrentUserId='+id);
+  }
+  public addStockPrice(data) {
+    return this.http.post<any>(this.userurl + 'MaterialApi/AddShippingCharges', data);
+  }
+  public addPackingCharge(data) {
+    return this.http.post<any>(this.userurl + 'MaterialApi/AddPackingCharges', data);
+  }
   public dealersStatus() {
     return this.http.get<any>(this.userurl + 'DealerApi/GetDealerStatusdrop');
   }

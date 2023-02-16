@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { PromotionListService } from 'src/app/services/promotion-list.service';
+import { GeographySettingSharedService } from '../services/geography-setting-shared.service';
+import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-add-geolist-shipping-popup',
   templateUrl: './add-geolist-shipping-popup.component.html',
@@ -9,9 +12,9 @@ import { PromotionListService } from 'src/app/services/promotion-list.service';
 })
 export class AddGeolistShippingPopupComponent implements OnInit {
   public packingCharges: any[] = [{
-    sValue: '',
-    eValue: '',
-    pValue: '',
+    startvalue: '',
+    endvalue: '',
+    cost: '',
   }];
   errorMsg: any;
   addCountryButton: boolean = false;
@@ -27,12 +30,22 @@ export class AddGeolistShippingPopupComponent implements OnInit {
   productarray:any[]=[];
   myForms:any= FormGroup;
   selectedItems: any = [];
+  statusArray:any=[];
+  userId:any;
+  header:any=''
   dropdownSettings1: IDropdownSettings = {};
   disabled = false;
-  constructor( private promotin:PromotionListService,
+  constructor(
+     private promotin:PromotionListService,
+     private dialogRef: MatDialogRef<AddGeolistShippingPopupComponent>,
+     private sharedService:GeographySettingSharedService,
+
+    private user: UserService,
     private fb: FormBuilder,) { }
 
   ngOnInit(): void {
+    this.userId = localStorage.getItem("logInId");
+
     this.myForms = this.fb.group({
       city2: [this.selectedItems]
     });
@@ -40,6 +53,40 @@ export class AddGeolistShippingPopupComponent implements OnInit {
     this.productSelected = [];
     this.promotionSelected =[];
     this.geographySelected = [];
+    this.getGeo()
+
+
+    let item=localStorage.getItem('packingChargeOrShipingCharge')
+
+    if(item=='shippingCharge'){
+this.header='Shipping Charge'
+    }else{
+      this.header='Packing Charge'
+
+    }
+  }
+
+  getGeo(){
+    this.user.GetGeoDetailsForGeographySettings(this.userId).subscribe((res: any) => {
+      this.productLisst = res.response;
+      console.log('we have to check here', this.productLisst)
+      this.productLisst.forEach(element => {
+        return this.statusArray.push(element.geographyId);
+
+      })
+      console.log('statusArray', this.statusArray)
+      // this.toppingList = res.response;
+      this.dropdownSettings1 = {
+        singleSelection: false,
+        idField: 'geographyId',
+        textField: 'geographyName',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        itemsShowLimit: 1,
+        allowSearchFilter: false
+      };
+
+    });
   }
   addCountry() {
     this.addCountryButton = true;
@@ -50,91 +97,92 @@ export class AddGeolistShippingPopupComponent implements OnInit {
   }
   addFields() {
     this.packingCharges.push({
-      sValue: '',
-      eValue: '',
-      pValue: '',
+      startvalue: '',
+      endvalue: '',
+      cost: '',
     });
   }
   onProductSelect(item: any) {
 
     // alert(item.roleName)
-      this.productSelected.push(item.productGroupId);
+      this.productSelected.push(item.geographyId);
     
-      const data={
-        promotiontype:this.promotionSelected,
-        product:this.productSelected,
-        geography:this.geographySelected,
-       
-  
-      }
-      this.promotin.promotionTabledata(data).subscribe((res) => {
-  
-        this.rowData5 = res.response;
-  
-       
-       
-  
-      });
-     
+     console.log('productSelected',this.productSelected)
     }
   
     onProductDeSelect(item: any) {
   
       this.productSelected.forEach((element,index)=>{
-        if(element==item.productGroupId)  this.productSelected.splice(index,1);
+        if(element==item.geographyId)  this.productSelected.splice(index,1);
      });
      console.log(' this.userTypes', this.userTypes)
     
       // this.userTypes.pop(item.roleId);
-      const data={
-        promotiontype:this.promotionSelected,
-        product:this.productSelected,
-        geography:this.geographySelected,
-         
-      }
-      this.promotin.promotionTabledata(data).subscribe((res) => {
-  
-        this.rowData5 = res.response;
-       
-  
-      });
-    
+      console.log('productSelected',this.productSelected)
+
+
     }
     onItemDeSelectOrAllProduct(item:any){
       this.productSelected =[];
-      const data={
-        promotiontype:this.promotionSelected,
-        product:this.productSelected,
-        geography:this.geographySelected,
-       
-      }
-      this.promotin.promotionTabledata(data).subscribe((res) => {
-
-        this.rowData5 = res.response;
-       
-  
-      });
-    console.log('rolefilter', this.userTypes)
-    console.log('onItemSelect', item);
-  }
-  onItemSelectOrAllProduct(item:any){
-    this.productSelected=this.productarray;
    
-    const data={
-      promotiontype:this.promotionSelected,
-      product:this.productSelected,
-      geography:this.geographySelected,
-          }
-    this.promotin.promotionTabledata(data).subscribe((res) => {
+      console.log('productSelected',this.productSelected)
 
-      this.rowData5 = res.response;
-     
+  }
+  finalAddVAlue(){
 
-    });
-    console.log('rolefilter', this.userTypes)
-    console.log('onItemSelect', item);}
+
+    let item=localStorage.getItem('packingChargeOrShipingCharge')
+
+    if(item=='shippingCharge'){
+
+      let data:any= {
+        "geographyids":this.productSelected,
+        "CurrentUserId":this.userId,
+        "AddCharges":this.packingCharges
+    }
+  
+  this.user.addStockPrice(data).subscribe((res)=>{
+  if(res.response.result=='Successfully shipping charges added'){
+    alert('Successfully shipping charges added');
+    this.sharedService.filter('Register click');
+    this.dialogRef.close();
+
+  }else{
+    alert('Enter all the values')
+  }
+  
+  })
+    console.log('packingCharges',this.packingCharges)
+      }else{
+
+        let data:any= {
+          "geographyids":this.productSelected,
+          "CurrentUserId":this.userId,
+          "AddCharges":this.packingCharges
+      }
+    
+    this.user.addPackingCharge(data).subscribe((res)=>{
+    if(res.response.result=='Successfully packing charges added'){
+      alert('Successfully packing charges added');
+      this.sharedService.filter('Register click');
+      this.dialogRef.close();
+
+    }else{
+      alert('Enter all the values')
+    }
+    
+    })
+      console.log('packingCharges',this.packingCharges)
+    
+    }
+
+}
+  onItemSelectOrAllProduct(item:any){
+    this.productSelected=this.statusArray;
+    console.log('productSelected',this.productSelected)
+
 }
 
-  
+}
 
 

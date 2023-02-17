@@ -571,10 +571,8 @@ export class AdvancedFilterComponent implements OnInit {
     this.categoryItems.length = 0;
     this.subcatItems.length = 0;
     this.typeItems.length = 0;
-    this.shipmentSelectedDateRange.startDate = '';
-    this.shipmentSelectedDateRange.endDate = '';
-    this.selectedDateRange.startDate = '';
-    this.selectedDateRange.endDate = '';
+    this.startDate = '';
+    this.endDate = '';
     this.checkedCount = 0;
      this.GeoCheckedCount = 0;
       this.PCICheckedCount = 0;

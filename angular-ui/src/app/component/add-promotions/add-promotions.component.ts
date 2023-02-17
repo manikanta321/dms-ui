@@ -1260,7 +1260,7 @@ console.log('addgetgroup',this.addgetgroup);
   addItems1(index: any = null, j: any = null) {
     this.productIdtoFilters = [];
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
-    const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px', data: this.addbuyset[index].BuyGroups[j].productselectedRows });
+    const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '2140px', data: this.addbuyset[index].BuyGroups[j].productselectedRows });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         this.productselectedRows = JSON.parse(localStorage.getItem("productselectedRows") ?? '[]')
@@ -1338,7 +1338,7 @@ console.log('addgetgroup',this.addgetgroup);
   addItems1forGetGroup(index: any = null, j: any = null) {
 
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
-    const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px', data: this.addgetset[index].GetGroups[j].productselectedRows ?? [] });
+    const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '2140px', data: this.addgetset[index].GetGroups[j].productselectedRows ?? [] });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         this.productselectedRows = JSON.parse(localStorage.getItem("productselectedRows") ?? '[]')
@@ -1408,7 +1408,7 @@ console.log('addgetgroup',this.addgetgroup);
 
     console.log(this.addgetgroup);
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
-    const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px', data: this.addgetgroup[index].productselectedRows ?? [] });
+    const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '2140px', data: this.addgetgroup[index].productselectedRows ?? [] });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         this.productselectedRows = JSON.parse(localStorage.getItem("productselectedRows") ?? '[]')
@@ -1476,7 +1476,7 @@ console.log('addgetgroup',this.addgetgroup);
     this.productIdtoFilters = []
     // alert('volume')
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
-    const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px', data: this.productselectedRows ?? [] });
+    const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '2140px', data: this.productselectedRows ?? [] });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         this.productselectedRows = JSON.parse(localStorage.getItem("productselectedRows") ?? '[]')
@@ -1506,7 +1506,7 @@ console.log('addgetgroup',this.addgetgroup);
   addItemsPrice() {
     this.productIdtoFilters = []
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
-    const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '1043px', data: this.productselectedRows ?? [] });
+    const dialogRef = this.dialog.open(AddItemsPromotionComponent, { width: '2140px', data: this.productselectedRows ?? [] });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         this.productselectedRows = JSON.parse(localStorage.getItem("productselectedRows") ?? '[]')

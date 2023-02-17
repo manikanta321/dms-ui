@@ -62,7 +62,12 @@ export class EditProfileComponent implements OnInit {
     const user = localStorage.getItem("logInId");
     this.UserId = user
     const lastLoginDate = localStorage.getItem("lastLoginDate");
-    this.lastLogin = moment(lastLoginDate).format('DD MMM YYYY, HH:mm A');
+    if (lastLoginDate == null) {
+      this.lastLogin = '';
+    }
+    else {
+      this.lastLogin = moment(lastLoginDate).format('DD MMM YYYY, HH:mm A');
+    }
 
     this.getUserProfileDetails();
     // const userRoleId = localStorage.getItem("RoleId");
@@ -81,7 +86,7 @@ export class EditProfileComponent implements OnInit {
     }
     this.RoleId = this.data.roleId;
     localStorage.setItem('RoleId',this.data.roleId)
-    alert(this.data.roleId)
+    // alert(this.data.roleId)
     this.patchValue()
   })
 }

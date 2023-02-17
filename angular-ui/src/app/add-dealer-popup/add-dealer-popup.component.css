@@ -36,7 +36,7 @@ input[type=checkbox] {
 .horizontal-scroll {
   display: flex;
   gap: 10px;
-  /* height: 450px; */
+   height: 393px; 
   overflow-x: auto;
   /* -ms-scroll-snap-type: x mandatory;
       scroll-snap-type: x mandatory;
@@ -475,7 +475,7 @@ li {
 
 .addDelercolss {
   box-sizing: border-box;
-  width: 242px;
+  width: 281px;
   height: 43px;
   font-family: 'Gilroy';
   background: #FFFFFF;
@@ -1574,6 +1574,9 @@ li {
 .showdatascroll {
   overflow-x: auto;
 }
+.rr{
+  margin-top: 98px;
+}
 
 .save-btn {
   width: 168px;
@@ -1588,6 +1591,12 @@ li {
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   border-color: black;
+  margin-left: 52px;
+  
+}
+.errormsg
+{
+  margin-left: 50px;
 }
 
 .cancel-btn {
@@ -1672,7 +1681,7 @@ li {
 
 .status-class {
   box-sizing: border-box;
-  width: 318px;
+  width: 372px;
   height: 43px;
   background: #FFFFFF;
   border: 0.5px solid #000000;

@@ -964,7 +964,7 @@ console.log(item)
   }
 
   addUser() {
-    this.dialog.open(AddDealerAssociationsComponent,{minWidth :'88vw',height:'670px'});
+    this.dialog.open(AddDealerAssociationsComponent,{minWidth :'88vw',height:'700px'});
   }
   editBulk(){
     this.dialog.open(BulkEditAssosiationComponent,{minWidth :'88vw',height:'684px'});

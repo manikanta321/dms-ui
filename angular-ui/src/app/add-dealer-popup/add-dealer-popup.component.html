@@ -409,7 +409,7 @@
                                 <div class="col-3">
 
                                 </div>
-                                <div class="col-6">
+                                <div class="col-6 ">
                                     <div class="row">
                                         <div class="col-1"></div>
                                         <div class="col-5">
@@ -419,7 +419,7 @@
                                             <button *ngIf="dealerAction == 'Edit'"
                                                 class="btn btn-primary btn-block submitbtn save-btn"
                                                 (click)="EditGeographiesList()">Save</button>
-                                                <span *ngIf="!addAddressDetailsForm.valid">*Please fill required fields</span>
+                                                <span *ngIf="!addAddressDetailsForm.valid" class="errormsg">*Please fill required fields</span>
                                         </div>
                                         <div class="col-5">
                                             <button class="btn btn-primary btn-block submitbtn cancel-btn"
@@ -427,7 +427,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-3">
+                                 <div class="col-3">
 
                                 </div>
                             </div>

@@ -367,7 +367,7 @@
 
               </form>
             </div>
-            <div class="col-9">
+            <!-- <div class="col-9">
               <div class="searchBox d-flex" style=" cursor: pointer">
                 <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
                   placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
@@ -378,7 +378,7 @@
                 </button>
                 <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
               </div>
-            </div>
+            </div> -->
           </div>
 
 
@@ -399,7 +399,7 @@
           <div class="col-md-7" *ngIf="screenValue == 2 && dealerList.length > 0 " >
             <mat-checkbox class="checkboxStyle" aria-label="Select All" 
             [checked]="isCheckedForProduct()" [indeterminate]="isIndeterminateForProduct()" (change)="$event ? toggleProductAll($event) : null">
-             <span *ngIf="aarrayToPush1.length == 0" class="contentStyle">NO Products Selected </span>
+             <span *ngIf="aarrayToPush1.length == 0" class="contentStyle">No Products Selected </span>
              <span  *ngIf="dealerList.length == aarrayToPush1.length" class="contentStyle">All Products Selected </span>
              <span  *ngIf="aarrayToPush1.length > 0 && dealerList.length != aarrayToPush1.length && screenValue == 2 " class="contentStyle"> Some Products Selected</span>
            </mat-checkbox>

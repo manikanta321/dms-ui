@@ -307,7 +307,7 @@ input.form-check-input1 {
     margin-top: -90px;
     /* margin-left: 88px; */
     position: relative;
-    left: 222px;
+    left: 262px;
 
 
   }
@@ -328,7 +328,7 @@ input.form-check-input1 {
     background-color: black;
     height: 41px;
     
-    margin-left: 18px;
+    margin-left: 57px;
     position: relative;
     margin-top: 3px;
 
@@ -346,7 +346,7 @@ input.form-check-input1 {
     background-color: black;
     height: 41px;
     margin-top: 3px;
-    margin-left: 26px;
+    margin-left: 57px;
     
     position: relative;
 
@@ -388,7 +388,7 @@ input.form-check-input1 {
     border: solid 1px;
     border-radius: 10px;
     position: relative;
-    left: -107px;
+    left: -64px;
     }
 
     .searchBox2 {
@@ -400,7 +400,7 @@ input.form-check-input1 {
       border: solid 1px;
       border-radius: 10px;
       position: relative;
-      left: 56px;
+      left: 115px;
       }
       .searchBox3 {
         
@@ -413,7 +413,7 @@ input.form-check-input1 {
         border-radius: 10px;
         position: relative;
         
-        left: 63px;
+        left: 117px;
         }
         
       
@@ -480,7 +480,7 @@ input.form-check-input1 {
 }
 .select-asso{
     width: 100%;
-    height: 38px;
+     height: 38px; 
     border-radius: 12px;
 }
 .mat-form-field {
@@ -667,7 +667,7 @@ input.form-check-input1 {
   }
   
   ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
-    width: 767px;
+    /* width: 767px; */
     margin-top: -51px;
   }
   
@@ -1584,7 +1584,7 @@ input.form-check-input1 {
     padding: 4px;
     padding-top: 7px;
     position: relative;
-    left: 16px;
+    left: 20px;
   }
   .sltd-span{
     margin-top: 6px;

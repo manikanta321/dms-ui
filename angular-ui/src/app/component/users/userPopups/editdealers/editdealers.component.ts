@@ -111,7 +111,7 @@ deactv :any = ['name', 'dfdfdd'];
 
   editDealer(){
     localStorage.setItem('edit-dealer','Edit')
-    this.dialog.open(AddDealerPopupComponent,{height:"570px"});
+    this.dialog.open(AddDealerPopupComponent,{ minWidth :'88vw',height:'670px' });
     this.isOpen = false;
   }
 

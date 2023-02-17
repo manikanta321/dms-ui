@@ -6,14 +6,8 @@
 .add-target {
     overflow-x: hidden;
     width: 1170px;
-   height: 589px;
-    /* height: 300px; */
-}
-.add-targets {
-    overflow-x: hidden;
-    width: 1170px;
-   height: 350px;
-    /* height: 300px; */
+    min-height: 350px;
+    max-height: 652px;
 }
 .head-t h3 {
     color: #000000;

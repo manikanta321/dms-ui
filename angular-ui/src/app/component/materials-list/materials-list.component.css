@@ -186,6 +186,9 @@ padding-left: 11px;
   --ag-background-color: white;
 }
 
+.searchRoww{
+  margin-top: -37px;
+}
 .ag-header-row ag-header-row-column {
   --ag-background-color: white;
 }
@@ -772,7 +775,7 @@ padding-left: 11px;
 .searchRow {
   margin-left: 90%;
   position: relative;
-  top: 6%;
+  top: 0%;
 }
 
 ::ng-deep.dropdown-list {

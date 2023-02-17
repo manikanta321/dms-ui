@@ -111,6 +111,9 @@ form[name="myBasicInfo"] {
   margin-top: 8px;
   font-family: 'Gilroy';
 }
+.mcContent{
+  margin-top: 48px;
+}
 
 ::ng-deep.mat-stepper-vertical,
 .mat-stepper-horizontal {

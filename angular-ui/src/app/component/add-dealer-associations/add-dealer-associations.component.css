@@ -789,7 +789,9 @@ input.form-check-input1 {
   
   ::ng-deep.mat-dialog-container {
     background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-    ;
+    height: 80%;
+    padding-top: 56px;
+    
   }
   
   .categorydrp {
@@ -1408,6 +1410,8 @@ input.form-check-input1 {
   
   .main {
     overflow-x: hidden !important;
+    height: 450px;
+    overflow-y: auto;
   }
   
   .promotionpopup-scroll {

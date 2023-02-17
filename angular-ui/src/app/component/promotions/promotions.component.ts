@@ -117,9 +117,9 @@ export class PromotionsComponent implements OnInit {
 columnDefs: ColDef[] = [
   // { headerName: "User Id",
   //   field: 'employeeCode' , sort: 'desc'},
+  {   headerName: "Promotion Code",field: 'promoCode' ,      tooltipField:"promoCode",},
 
-  {   headerName: "Name",field: 'promotionName' ,      tooltipField:"promotionName",
-},
+  {   headerName: "Name",field: 'promotionName' ,      tooltipField:"promotionName",},
 
   {  headerName: "Type",field: 'promotionTypesName',      tooltipField:"promotionTypesName",
 },

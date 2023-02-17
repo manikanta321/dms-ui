@@ -38,11 +38,8 @@
   }
 ul.contentStyle{
   column-count: 2;
-  column-gap:120px;
-  width: auto;
-  column-rule-style: none;
-  column-rule-style: none;
-  word-break: break-word;
+  column-gap:30px;
+  width: fit-content;
   padding-left: 12px;
   
   

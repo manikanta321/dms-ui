@@ -176,7 +176,7 @@
   }
   th{
     text-align: right;
-    padding: 3px 0 0 10px;
+    padding: 1px 0 0 18px;
   }
   
   
@@ -340,12 +340,18 @@
   ::ng-deep.mat-dialog-container {
     background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: hidden;
   max-width: 95vw;
+  height: 100%;
   
   }
   
-  
+  .shipmentOnes{
+    width: 94%;
+  }
+  .shipmentTwo{
+    width: 98%;
+  }
   
   .categorydrp {
     width: 205px;
@@ -1243,11 +1249,13 @@ padding-left: 20px;
     height: 30px;
     background: none;
     font-size: 12.5px;
+    /* text-align: center; */
   }
   
   .itemLeft {
     font-size: 12.5px;
     text-align: left;
+    margin-right: -39px;
   }
   
   .itemLeft1 {
@@ -1334,6 +1342,7 @@ padding-left: 20px;
     border-radius: 10px;
     border: 1px solid black;
     font-size: 12.5px;
+    /* text-align: center; */
   }
   
   .ShipmentinputBoxes1 {
@@ -1355,6 +1364,7 @@ padding-left: 20px;
     font-size: 12.5px;
     background-color: transparent;
     color: black;
+    /* text-align: center; */
   }
   .ShipmentinputBoxes3 {
     width: 70px;

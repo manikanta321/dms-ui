@@ -1744,7 +1744,7 @@ margin-top: -5px;
   background: #fff;
   border-radius: 5px;
   width: 70%;
-  height: 626px;
+  height: 600px;
   /* min-height: 263px; */
   /* height: auto; */
   /* top: 11%; */
@@ -2021,7 +2021,8 @@ table thead, table tbody tr {
 }
 
 .add-itemBtn {
-  margin: auto;
+  margin: 28px;
+  margin-bottom: 21px;
   display: flex;
 }
 

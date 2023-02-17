@@ -6,7 +6,7 @@
 
 .items1{
   position: relative;
-  right: 41px;
+  right: 166px;
 }
 
 .total_subitem
@@ -337,7 +337,7 @@
 }
 
 .close-icon {
-  left: 100%;
+  left: 99%;
   position: relative;
   font-size: 15px;
   font-weight: 600;
@@ -345,7 +345,12 @@
   margin-top: 11px;
 
 }
-
+.shipmentOnes{
+  width: 94%;
+}
+.shipmentTwo{
+  width: 98%;
+}
 .DealerInfo-label {
   margin: 3px;
   font-size: 14px;

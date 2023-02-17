@@ -1,10 +1,9 @@
 ::ng-deep.mat-dialog-container {
-    
+
     border-radius: 21px;
 }
 
-.btn
-{
+.btn {
     background-color: #000000;
     color: whitesmoke;
     border-radius: 10px;
@@ -14,16 +13,19 @@
 
 .product-placeholder.dropdown-placeholder .selected-placeholder {
     color: #44026C !important;
-  }
-  ::ng-deep.product .multiselect-dropdown .dropdown-btn .selected-item {
+}
+
+::ng-deep.product .multiselect-dropdown .dropdown-btn .selected-item {
     background: #44026C !important;
     font-size: 12px;
-  }
-  ::ng-deep.product .multiselect-dropdown{
+}
+
+::ng-deep.product .multiselect-dropdown {
     border: 1px solid black;
     border-radius: 6px;
-  }
-  ::ng-deep.product .dropdown-btn span .ng-star-inserted {
+}
+
+::ng-deep.product .dropdown-btn span .ng-star-inserted {
     position: absolute !important;
     right: -18px !important;
     bottom: 0px;
@@ -37,14 +39,16 @@
     height: 22px;
     border-radius: 15px;
     text-align: center;
-  }
-  .dropdown-form-packing{
+}
+
+.dropdown-form-packing {
     background-color: white;
     border-radius: 12px;
     color: grey;
     font-size: 14px;
-  }
-  .dropdown-placeholder {
+}
+
+.dropdown-placeholder {
     background: transparent;
     color: #808080;
     top: 0;
@@ -57,10 +61,12 @@
     border-radius: 10px 0 0 10px !important;
     padding-left: 10px;
     pointer-events: none;
-  }
-  .product-placeholder.dropdown-placeholder .selected-placeholder {
+}
+
+.product-placeholder.dropdown-placeholder .selected-placeholder {
     color: #44026C !important;
-  }  
+}
+
 .mat-form-field-flex {
     padding-top: -10px;
     display: inline-flex;
@@ -122,7 +128,8 @@
     font-size: 14px;
     outline: none !important;
 }
-.addUserForm1  input{
+
+.addUserForm1 input {
     border-radius: 5px;
     border: red 1px solid !important;
     padding: 5px 5px;
@@ -140,7 +147,7 @@ span {
     position: relative;
     font-size: 15px;
     font-weight: 600;
-    top:-2px;
+    top: -2px;
     cursor: pointer;
 }
 
@@ -160,8 +167,8 @@ mat-form-field {
     background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
     ;
     /* height: 300px; */
-     overflow: auto;
-    
+    overflow: auto;
+
 }
 
 .btn-primary:disabled {
@@ -169,28 +176,31 @@ mat-form-field {
     background-color: black;
     width: 100%;
     /* margin-left: 79px; */
-    margin-top: -12px;
-    width:66%;justify-content: center;margin-left: 71px;
+    /* margin-top: -12px;
+    width:66%;justify-content: center;margin-left: 71px; */
 }
 
 /* Packing Charges text */
 
-.packingText{
+.packingText {
     color: #000000;
-    font-size:20px;
+    font-size: 20px;
     font-weight: lighter;
 }
-.bothDown{
-    margin-top: 31px;
+
+.bothDown {
+    margin-top: 45px;
 }
-.colorText{
+
+.colorText {
     color: red;
 }
 
-.addAlign{
+.addAlign {
     margin-left: 99%;
     cursor: pointer;
 }
+
 .addUserForm input {
     border-radius: 10px;
     /* border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
@@ -203,25 +213,25 @@ mat-form-field {
     margin-bottom: 5px;
 }
 
-.removeCircle{
+.removeCircle {
     margin-left: 99%;
     margin-top: 7px;
     color: red;
     cursor: pointer;
 }
-.classborder{
+
+.classborder {
     border: red;
 }
 
-.removeCircle1{
+.removeCircle1 {
     margin-left: 99%;
     margin-top: 37px;
     color: #686E74;
     cursor: pointer;
 }
 
- .minus-icon10
-{
+.minus-icon10 {
     background-color: #686E74;
     margin-left: 243px;
     margin-top: -36px;
@@ -229,10 +239,11 @@ mat-form-field {
     text-align: center;
     border-radius: 90%;
     width: 20px !important;
-    
-    
-} 
-.searchBox[_ngcontent-hbx-c448]:hover > .searchInput[_ngcontent-hbx-c448] {
+
+
+}
+
+.searchBox[_ngcontent-hbx-c448]:hover>.searchInput[_ngcontent-hbx-c448] {
     width: 230px;
     padding: 0 47px;
     left: -295%;
@@ -247,7 +258,7 @@ mat-form-field {
         width: 100px !important;
     }
 
-    .removeCircle{
+    .removeCircle {
         margin-left: 206%;
         margin-top: 60px;
         color: red;
@@ -257,9 +268,9 @@ mat-form-field {
         width: 64px;
         left: 0px;
     }
-    
+
     .addU:after {
-        width: 69px; 
+        width: 69px;
         right: -7px;
     }
 }
@@ -272,22 +283,22 @@ mat-form-field {
 .scroll {
     overflow-y: auto;
     overflow-x: auto;
-  }
+}
 
-  ::-webkit-scrollbar {
+::-webkit-scrollbar {
     width: 8px;
-  }
-  
-  ::-webkit-scrollbar-thumb {
+}
+
+::-webkit-scrollbar-thumb {
     border-radius: 25px;
-  }
-  
-  ::-webkit-scrollbar-track {
+}
+
+::-webkit-scrollbar-track {
     border-radius: 20px;
     margin-top: 16px;
     margin-bottom: 16px;
     margin-left: 20px;
-  }
+}
 
 .save-btn {
     width: 168;
@@ -302,5 +313,18 @@ mat-form-field {
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 10px;
     margin-left: -15px;
-  }
+}
 
+.input-error {
+    border: 1px solid red !important;
+    outline: red;
+}
+
+::ng-deep.dropdown-list {
+    height: 178px;
+    overflow-y: auto;
+}
+
+::ng-deep.dropdown-list .item2{
+    max-height: inherit !important;
+}

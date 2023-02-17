@@ -41,32 +41,32 @@ export class GeographicListComponent implements OnInit {
   rowData1 = [];
   rowData: any;
   userId: any;
-  employeeName:any;
-  searchText:any;
-  userTypes:any=[];
-  statusTypes:any=[];
+  employeeName: any;
+  searchText: any;
+  userTypes: any = [];
+  statusTypes: any = [];
   headerName: any;
-  shippingBtn:any;
-  shippingChk:boolean=true;
+  shippingBtn: any;
+  shippingChk: boolean = true;
   paginationScrollCount: any;
   paginationPageSize = 10;
   stayScrolledToEnd = true;
-  instancePopup:any = null;
+  instancePopup: any = null;
   messages: any[] = [];
 
 
-  
 
- 
+
+
 
   gridOptions = {
     resizable: true,
     onCellClicked: (event: CellClickedEvent) => console.log('Cell was clicked'),
     rowStyle: { background: 'black' },
-}
+  }
 
 
-shipPackCharges:any;
+  shipPackCharges: any;
   shippingHeader: any;
   secondColumn: any;
   ThirdColumn: any;
@@ -80,25 +80,25 @@ shipPackCharges:any;
     private user: UserService,
     private observer: BreakpointObserver,
     private fb: FormBuilder,
-    private sharedService:GeographySettingSharedService,
+    private sharedService: GeographySettingSharedService,
   ) {
-       this.sharedService.listen().subscribe((m: any) => {
+    this.sharedService.listen().subscribe((m: any) => {
       // console.log(m)
-      if(this.shippingChk==true){
+      if (this.shippingChk == true) {
         this.shipClick('Shipping')
 
-      }else{
+      } else {
         this.shipClick('Packing')
       }
       this.getusertabeldata();
     })
-   }
+  }
 
   ngOnInit(): void {
-   this.getusertabeldata();
-   
+    this.getusertabeldata();
+
     this.shipClick('Shipping')
-   
+
 
   }
 
@@ -148,7 +148,7 @@ shipPackCharges:any;
   //     cellClass: params => {
   //       return params.value == 'Inactive' ? 'my-class-1' : params.value == 'Active' ? 'my-class-2' : params.value == 'Invited' ? 'my-class-3' : 'my-class-4'
   //     },
-      
+
   //     tooltipField: "statusName",
   //   },
   //   {
@@ -200,7 +200,7 @@ shipPackCharges:any;
             } else if (cellDate > filterLocalDateAtMidnight) {
               return 1;
             } else {
-              return 0;                                                                       
+              return 0;
             }
           },
         },
@@ -233,23 +233,23 @@ shipPackCharges:any;
     // ageFilterComponent.setModel(null);
     // this.gridApi.onFilterChanged();
     const data = {
-        "search":"",
-        "shipping":true
+      "search": "",
+      "shipping": true
     }
-    
+
     this.user.getGeography(data).subscribe((res) => {
       this.rowData5 = res.response;
     });
 
 
     const data1 = {
-      "search":"",
-      "shipping":false
-  }
-  
-  this.user.getGeography(data1).subscribe((res) => {
-    this.rowData6 = res.response;
-  });
+      "search": "",
+      "shipping": false
+    }
+
+    this.user.getGeography(data1).subscribe((res) => {
+      this.rowData6 = res.response;
+    });
     this.getusertabeldata();
   }
   getusertabeldata() {
@@ -274,7 +274,7 @@ shipPackCharges:any;
     this.gridApi = params.api;
 
   }
-  onBtnExport(){
+  onBtnExport() {
     this.gridApi.exportDataAsCsv();
 
   }
@@ -283,17 +283,17 @@ shipPackCharges:any;
       .value;
     this.gridApi.paginationSetPageSize(Number(value));
   }
-  
 
-  onCellClicked( e){
+
+  onCellClicked(e) {
     console.log('cellClicked', e);
-    this.userId=e.data.userId;
-    this.employeeName=e.data.employeeName;
-    localStorage.setItem('GeoSettingUniqueKey',e.data.uniquekey)
+    this.userId = e.data.userId;
+    this.employeeName = e.data.employeeName;
+    localStorage.setItem('GeoSettingUniqueKey', e.data.uniquekey)
 
-    console.log('userID',this.userId)
-    localStorage.setItem('userID',this.userId )
-    localStorage.setItem('employeeName',this.employeeName )
+    console.log('userID', this.userId)
+    localStorage.setItem('userID', this.userId)
+    localStorage.setItem('employeeName', this.employeeName)
     if (e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action') {
       const cellRendererInstances = e.api.getCellRendererInstances({
         rowNodes: [e.node],
@@ -312,7 +312,7 @@ shipPackCharges:any;
   }
 
 
-  
+
   handleRowDataChanged(event) {
     const index = this.messages.length - 1;
     if (this.stayScrolledToEnd) {
@@ -335,147 +335,149 @@ shipPackCharges:any;
       this.paginationScrollCount = this.rowData5.length;
     }
   }
-  onSearchChange($event:any , anything?:any){
+  onSearchChange($event: any, anything?: any) {
     const { target } = $event;
-    this.searchText=target.value;
+    this.searchText = target.value;
     const data = {
-      "search":this.searchText,
-      "shipping":true
-  }
-  
-  this.user.getGeography(data).subscribe((res) => {
-    this.rowData5 = res.response;
-  });
+      "search": this.searchText,
+      "shipping": true
+    }
 
-
-  const data1 = {
-    "search":this.searchText,
-    "shipping":false
-}
-
-this.user.getGeography(data1).subscribe((res) => {
-  this.rowData6 = res.response;
-});
-
-  }
-  addUser(){
-if(this.shippingChk == true){
-localStorage.setItem('packingChargeOrShipingCharge','shippingCharge')
-}else{
-  localStorage.setItem('packingChargeOrShipingCharge','PackingCharge')
-
-}
-localStorage.setItem('addOreditGeoGraphySettings','add')
-
-    this.dialog.open( AddGeolistShippingPopupComponent,{
-      width: '700px', //sets width of dialog
-      height:'450px',
+    this.user.getGeography(data).subscribe((res) => {
+      this.rowData5 = res.response;
     });
 
-   }
 
-   addGeoShipping(){
-    if(this.shippingChk == true){
-      localStorage.setItem('packingChargeOrShipingCharge','shippingCharge')
-      }else{
-        localStorage.setItem('packingChargeOrShipingCharge','PackingCharge')
-      
-      }
-    this.dialog.open( AddGeolistShippingPopupComponent,{
-      width: '700px', //sets width of dialog
-      height:'450px',
+    const data1 = {
+      "search": this.searchText,
+      "shipping": false
+    }
+
+    this.user.getGeography(data1).subscribe((res) => {
+      this.rowData6 = res.response;
     });
 
-   }
+  }
+  addUser() {
+    if (this.shippingChk == true) {
+      localStorage.setItem('packingChargeOrShipingCharge', 'shippingCharge')
+    } else {
+      localStorage.setItem('packingChargeOrShipingCharge', 'PackingCharge')
 
-   shipClick(event:any){
-      // this.fieldName = "Shipping Form";
-      if(event == 'Shipping'){
+    }
+    localStorage.setItem('addOreditGeoGraphySettings', 'add')
+
+    this.dialog.open(AddGeolistShippingPopupComponent, {
+      width: '700px', //sets width of dialog
+      height: '450px',
+    });
+
+  }
+
+  addGeoShipping() {
+    if (this.shippingChk == true) {
+      localStorage.setItem('packingChargeOrShipingCharge', 'shippingCharge')
+    } else {
+      localStorage.setItem('packingChargeOrShipingCharge', 'PackingCharge')
+
+    }
+    this.dialog.open(AddGeolistShippingPopupComponent, {
+      width: '700px', //sets width of dialog
+      height: '450px',
+    });
+
+  }
+
+  shipClick(event: any) {
+    // this.fieldName = "Shipping Form";
+    if (event == 'Shipping') {
 
 
-        const data = {
-          "search":"",
-          "shipping":true
+      const data = {
+        "search": "",
+        "shipping": true
       }
-      
+
       this.user.getGeography(data).subscribe((res) => {
         this.rowData5 = res.response;
       });
-    
 
 
-        this.shippingChk = true;
-        this.columnDefs= [
-          {
-            headerName:'Destination',field: 'geographyName', type: ['nonEditableColumn'],
-            width: 200   },
-      
-          { headerName: 'Shipping Charge', field: 'charges', type: ['nonEditableColumn'] , },
-      
-          
-          {
-            headerName: '',
-          
-            colId: 'action',
-      
-            cellRenderer: GeographicListActionComponent,
-            editable: false,
-            maxWidth: 65  
-          },
-          
-        ];
-       
-       
+
+      this.shippingChk = true;
+      this.columnDefs = [
+        {
+          headerName: 'Destination', field: 'geographyName', type: ['nonEditableColumn'],
+          width: 200
+        },
+
+        { headerName: 'Shipping Charge', field: 'charges', type: ['nonEditableColumn'], },
+
+
+        {
+          headerName: '',
+
+          colId: 'action',
+
+          cellRenderer: GeographicListActionComponent,
+          editable: false,
+          maxWidth: 65
+        },
+
+      ];
+
+
+    }
+    else {
+
+      const data1 = {
+        "search": "",
+        "shipping": false
       }
-      else{
- 
-        const data1 = {
-          "search":"",
-          "shipping":false
-      }
-      
+
       this.user.getGeography(data1).subscribe((res) => {
         this.rowData6 = res.response;
       });
-        this.columnDefs1= [
-          {
-            headerName:'Destination',field: 'geographyName', type: ['nonEditableColumn'],
-            width: 200   },
-      
-          { headerName: 'Packing Charge', field: 'charges', type: ['nonEditableColumn'] , },
-      
-          
-          {
-            headerName: '',
-          
-            colId: 'action',
-      
-            cellRenderer: GeographicListActionComponent,
-            editable: false,
-            maxWidth: 65  
-          },
-          
-        ];
-     
-    
-    
-        this.shippingChk = false;
-  
-      }
-      if(this.shippingChk == true){
-        localStorage.setItem('packingChargeOrShipingCharge','shippingCharge')
-        }else{
-          localStorage.setItem('packingChargeOrShipingCharge','PackingCharge')
-        
-        }
-      this.shippingAndPackages();
-   }
+      this.columnDefs1 = [
+        {
+          headerName: 'Destination', field: 'geographyName', type: ['nonEditableColumn'],
+          width: 200
+        },
 
-   shippingAndPackages(){
-   
+        { headerName: 'Packing Charge', field: 'charges', type: ['nonEditableColumn'], },
+
+
+        {
+          headerName: '',
+
+          colId: 'action',
+
+          cellRenderer: GeographicListActionComponent,
+          editable: false,
+          maxWidth: 65
+        },
+
+      ];
+
+
+
+      this.shippingChk = false;
+
+    }
+    if (this.shippingChk == true) {
+      localStorage.setItem('packingChargeOrShipingCharge', 'shippingCharge')
+    } else {
+      localStorage.setItem('packingChargeOrShipingCharge', 'PackingCharge')
+
+    }
+    this.shippingAndPackages();
+  }
+
+  shippingAndPackages() {
+
 
 
   }
 
-   
+
 }

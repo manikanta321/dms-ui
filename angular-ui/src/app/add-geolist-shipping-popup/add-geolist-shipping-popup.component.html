@@ -1,113 +1,87 @@
 <div class="font">
-    <div class="main">
-      <div class="container popup-srcoll">
-        <div class="addUser">
-          <mat-icon mat-button class="close-icon" [mat-dialog-close]="true"
-            >close</mat-icon
-          >
-          <div class="head-t">
-            <h3 class="addU font"> {{heading}}</h3>
-          </div>
-          <br>
-  <div class="row">
-        <div class="col-md-12 col-lg-12 col-sm-12">
-        <form [formGroup]="myForms" class="dropdown-form-packing">
-          <ng-multiselect-dropdown class="product" name="citys" [placeholder]="''" formControlName="city2"
-            [disabled]="disabled" [settings]="dropdownSettings1" [data]="productLisst"
-            (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)" 
-           (onDeSelectAll)="onItemDeSelectOrAllProduct($event)" (onSelectAll)="onItemSelectOrAllProduct($event)">
-          </ng-multiselect-dropdown>
-  
-          <div class="dropdown-placeholder product-placeholder">
-            <span *ngIf="myForms.get('city2').value.length == 0"></span>
-            <span *ngIf="myForms.get('city2').value.length == 1" class="selected-placeholder">
-              {{myForms.get('city2').value.length}} Products selected </span>
-            <span *ngIf="myForms.get('city2').value.length > 1" class="selected-placeholder">
-              {{myForms.get('city2').value.length}} Products selected </span>
-  
-          </div>
-        </form>
-      </div>
-    
-  </div>
-          <div class="row bothDown">
-            <div class="col-9">
-              <h6 class="packingText"><b>{{this.header}}</b></h6>
-              <p class="colorText">{{ errorMsg }}</p>
-            </div>
-            <div class="col-2">
-              <mat-icon class="addAlign" (click)="addFields()"
-                >add_circle</mat-icon
-              >
-            </div>
-          </div>
-  
-          <div
-            class="row addUserForm mb-4"
-            *ngFor="let packingCharge of packingCharges; let i = index"
-          >
-            <div class="col-3">
-              <label *ngIf="i==0">Start Value</label>
-              <input
-                type="text"
-                id="startvalue"
-                name="startvalue"
-                required
-                placeholder="Enter"
-                [(ngModel)]="packingCharge.startvalue"
-                name="address_{{ i }}"
-              />
-            </div>
-            <div class="col-3">
-              <label *ngIf="i==0">End Value</label>
-              <input
-                type="text"
-                id="endvalue"
-                name="endvalue"
-                required
-                placeholder="Enter"
-                [ngClass]="{ 'addUserForm1': packingCharge.startvalue > packingCharge.endvalue}"
-                [(ngModel)]="packingCharge.endvalue"
-                name="street_{{ i }}"
-              />
-            </div>
-            <div class="col-3">
-              <label *ngIf="i==0">Shipping Cost</label>
-              <input
-                style="width: 225px"
-                type="text"
-                id="cost"
-                name="cost"
-                required
-                placeholder="Enter"
-                [(ngModel)]="packingCharge.cost"
-                name="city_{{ i }}"
-              />
-           
-                 <!-- <p class="minus-icon10" >-</p> -->
-            </div>
-            <div class="col-2">
-              <mat-icon [ngClass]="{ 'removeCircle': i>0 ,'removeCircle1': i==0 }"  *ngIf="i >= 0 " (click)="removesub(i)" >remove_circle</mat-icon>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="row">
-              <div class="col-4"></div>
-              <div class="col-4" (click)="finalAddVAlue()" *ngIf="addOrAdit">
-                <button class="btn btn-primary btn-block submitbtn save-btn">
-                  Add
-                </button>
+  <div class="main">
+    <div class="container popup-srcoll">
+      <div class="addUser">
+        <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+        <div class="head-t">
+          <h3 class="addU font"> {{heading}}</h3>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-12 col-lg-12 col-sm-12">
+            <form [formGroup]="myForms" class="dropdown-form-packing">
+              <ng-multiselect-dropdown class="product" name="citys" [placeholder]="''"
+                formControlName="city2" [disabled]="disabled" [settings]="dropdownSettings1" [data]="productLisst"
+                (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)"
+                (onDeSelectAll)="onItemDeSelectOrAllProduct($event)" (onSelectAll)="onItemSelectOrAllProduct($event)">
+              </ng-multiselect-dropdown>
+
+              <div class="dropdown-placeholder product-placeholder">
+                <span *ngIf="myForms.get('city2').value.length == 0"></span>
+                <span *ngIf="myForms.get('city2').value.length == 1" class="selected-placeholder">
+                  {{myForms.get('city2').value.length}} Geography selected </span>
+                <span *ngIf="myForms.get('city2').value.length > 1" class="selected-placeholder">
+                  {{myForms.get('city2').value.length}} Geographies selected </span>
+
               </div>
-              <div class="col-4" (click)="finalAddVAlue1()" *ngIf="!addOrAdit">
-                <button class="btn btn-primary btn-block submitbtn save-btn">
-                  Add
-                </button>
-              </div>
-              <div class="col-4"></div>
+            </form>
+          </div>
+
+        </div>
+        <div class="row bothDown">
+          <div class="col-9">
+            <h6 class="packingText"><b>{{this.header}}</b></h6>
+            <p class="colorText">{{ errorMsg }}</p>
+          </div>
+          <div class="col-2">
+            <mat-icon class="addAlign" (click)="addFields()">add_circle</mat-icon>
+          </div>
+        </div>
+
+        <div class="row addUserForm mb-4" *ngFor="let packingCharge of packingCharges; let i = index">
+          <div class="col-3">
+            <label *ngIf="i==0">Start Value</label>
+            <input type="number" id="startvalue" (keyup)="PackingPriceChange()" name="startvalue" required
+              placeholder="Enter" [ngClass]="{ 'input-error': !packingCharge.isDataValid && isDataModified}"
+              [(ngModel)]="packingCharge.startvalue" name="address_{{ i }}" />
+          </div>
+          <div class="col-3">
+            <label *ngIf="i==0">End Value</label>
+            <input type="number" id="endvalue" (keyup)="PackingPriceChange()" name="endvalue" required
+              placeholder="Enter" [ngClass]="{ 'input-error': !packingCharge.isDataValid && isDataModified}"
+              [(ngModel)]="packingCharge.endvalue" name="street_{{ i }}" />
+          </div>
+          <div class="col-3">
+            <label *ngIf="i==0">Shipping Cost</label>
+            <input style="width: 225px" type="text" (keyup)="PackingPriceChange()" id="cost" name="cost" required
+              placeholder="Enter" [ngClass]="{ 'input-error': !packingCharge.isDataValid && isDataModified}"
+              [(ngModel)]="packingCharge.cost" name="city_{{ i }}" />
+
+            <!-- <p class="minus-icon10" >-</p> -->
+          </div>
+          <div class="col-2">
+            <mat-icon [ngClass]="{ 'removeCircle': i>0 ,'removeCircle1': i==0 }" *ngIf="i >= 0 "
+              (click)="removesub(i)">remove_circle</mat-icon>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4" *ngIf="addOrAdit">
+              <button class="btn btn-primary btn-block submitbtn save-btn" (click)="finalAddVAlue()"
+                [disabled]="!packingPriceChargeValid || !isDataModified">
+                Add
+              </button>
             </div>
+            <div class="col-4" *ngIf="!addOrAdit">
+              <button class="btn btn-primary btn-block submitbtn save-btn" (click)="finalAddVAlue1()"
+                [disabled]="!packingPriceChargeValid || !isDataModified">
+                Update
+              </button>
+            </div>
+            <div class="col-4"></div>
           </div>
         </div>
       </div>
     </div>
-  
-  
+  </div>

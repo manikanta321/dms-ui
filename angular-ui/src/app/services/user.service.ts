@@ -135,6 +135,16 @@ export class UserService {
   public addPackingCharge(data) {
     return this.http.post<any>(this.userurl + 'MaterialApi/AddPackingCharges', data);
   }
+
+  public UpdateStockPrice(data) {
+    return this.http.post<any>(this.userurl + 'MaterialApi/UpdateShippingCharges', data);
+  }
+  public UpdatePackingCharge(data) {
+    return this.http.post<any>(this.userurl + 'MaterialApi/UpdatePackingCharges', data);
+  }
+  public editById(data) {
+    return this.http.post<any>(this.userurl + 'MaterialApi/GetPackingShippingChargesByID', data);
+  }
   public dealersStatus() {
     return this.http.get<any>(this.userurl + 'DealerApi/GetDealerStatusdrop');
   }

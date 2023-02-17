@@ -6,16 +6,16 @@
             >close</mat-icon
           >
           <div class="head-t">
-            <h3 class="addU font"> Add Charges</h3>
+            <h3 class="addU font"> {{heading}}</h3>
           </div>
           <br>
   <div class="row">
         <div class="col-md-12 col-lg-12 col-sm-12">
         <form [formGroup]="myForms" class="dropdown-form-packing">
-          <ng-multiselect-dropdown class="product" name="citys" [placeholder]="'Select Destinations'" formControlName="city2"
+          <ng-multiselect-dropdown class="product" name="citys" [placeholder]="''" formControlName="city2"
             [disabled]="disabled" [settings]="dropdownSettings1" [data]="productLisst"
-            (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)"
-            (onDeSelectAll)="onItemDeSelectOrAllProduct($event)" (onSelectAll)="onItemSelectOrAllProduct($event)">
+            (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)" 
+           (onDeSelectAll)="onItemDeSelectOrAllProduct($event)" (onSelectAll)="onItemSelectOrAllProduct($event)">
           </ng-multiselect-dropdown>
   
           <div class="dropdown-placeholder product-placeholder">
@@ -66,6 +66,7 @@
                 name="endvalue"
                 required
                 placeholder="Enter"
+                [ngClass]="{ 'addUserForm1': packingCharge.startvalue > packingCharge.endvalue}"
                 [(ngModel)]="packingCharge.endvalue"
                 name="street_{{ i }}"
               />
@@ -92,7 +93,12 @@
           <div class="col-12">
             <div class="row">
               <div class="col-4"></div>
-              <div class="col-4" (click)="finalAddVAlue()">
+              <div class="col-4" (click)="finalAddVAlue()" *ngIf="addOrAdit">
+                <button class="btn btn-primary btn-block submitbtn save-btn">
+                  Add
+                </button>
+              </div>
+              <div class="col-4" (click)="finalAddVAlue1()" *ngIf="!addOrAdit">
                 <button class="btn btn-primary btn-block submitbtn save-btn">
                   Add
                 </button>

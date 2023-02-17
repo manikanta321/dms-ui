@@ -12,6 +12,7 @@
       <div class="col-6" id="icons11">
         <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
         <div class="col-md-4" id="allicons">
+
           <div class="row">
             <div class="col-md-4 search-grid">
               <div class="searchBox d-flex">
@@ -26,20 +27,18 @@
               </div>
             </div>
             <div class="col-md-1">
-              <div class="add-user" (click)="addGeoShipping()" >
-                <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
-              </div>
+         
               <div *ngIf="!shippingBtn"  class="add-user" (click)="addUser()">
                 <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
               </div>
             </div>
-            <!-- <div class="col-md-0">
-              <div class="download-btn" (click)="onBtnExport()">
-                <img src="../../../assets/img/dwnld-edit.svg" style="position: relative;top: 8px;left: 12px;"
-                  alt="add-user-btn">
-              </div>
-            </div> -->
+
+            
+      
           </div>
+
+
+
         </div>
       </div>
     </div>
@@ -68,10 +67,10 @@
 
 
 <div class="pagination" *ngIf="shippingChk">
-  <span class="pagination-cls">1</span> to <span class="pagination-cls">{{rowData5.length}}</span> of
+  <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of
   <span class="pagination-cls">{{rowData5.length}}</span>
 </div>
 <div class="pagination" *ngIf="!shippingChk">
-  <span class="pagination-cls">1</span> to <span class="pagination-cls">{{rowData6.length}}</span> of
+  <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of
   <span class="pagination-cls">{{rowData6.length}}</span>
 </div>

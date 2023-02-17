@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { AddGeolistShippingPopupComponent } from 'src/app/add-geolist-shipping-popup/add-geolist-shipping-popup.component';
 
 
 import tippy, { hideAll } from 'tippy.js';
@@ -74,5 +75,13 @@ export class GeographicListActionComponent implements OnInit {
     this.isOpen=false;
   }
  
+  edit(){
+    this.isOpen=false;
+    localStorage.setItem('addOreditGeoGraphySettings','edit')
+    this.dialog.open( AddGeolistShippingPopupComponent,{
+      width: '700px', //sets width of dialog
+      height:'450px',
+    });
+  }
 
 }

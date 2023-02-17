@@ -84,12 +84,19 @@ shipPackCharges:any;
   ) {
        this.sharedService.listen().subscribe((m: any) => {
       // console.log(m)
+      if(this.shippingChk==true){
+        this.shipClick('Shipping')
+
+      }else{
+        this.shipClick('Packing')
+      }
       this.getusertabeldata();
     })
    }
 
   ngOnInit(): void {
    this.getusertabeldata();
+   
     this.shipClick('Shipping')
    
 
@@ -246,14 +253,6 @@ shipPackCharges:any;
     this.getusertabeldata();
   }
   getusertabeldata() {
-    const data = {
-      "search":"",
-      "shipping":true
-  }
-  
-  this.user.getGeography(data).subscribe((res) => {
-    this.rowData5 = res.response;
-  });
 
 
 
@@ -289,7 +288,9 @@ shipPackCharges:any;
   onCellClicked( e){
     console.log('cellClicked', e);
     this.userId=e.data.userId;
-    this.employeeName=e.data.employeeName
+    this.employeeName=e.data.employeeName;
+    localStorage.setItem('GeoSettingUniqueKey',e.data.uniquekey)
+
     console.log('userID',this.userId)
     localStorage.setItem('userID',this.userId )
     localStorage.setItem('employeeName',this.employeeName )
@@ -364,6 +365,8 @@ localStorage.setItem('packingChargeOrShipingCharge','shippingCharge')
   localStorage.setItem('packingChargeOrShipingCharge','PackingCharge')
 
 }
+localStorage.setItem('addOreditGeoGraphySettings','add')
+
     this.dialog.open( AddGeolistShippingPopupComponent,{
       width: '700px', //sets width of dialog
       height:'450px',
@@ -372,7 +375,12 @@ localStorage.setItem('packingChargeOrShipingCharge','shippingCharge')
    }
 
    addGeoShipping(){
-
+    if(this.shippingChk == true){
+      localStorage.setItem('packingChargeOrShipingCharge','shippingCharge')
+      }else{
+        localStorage.setItem('packingChargeOrShipingCharge','PackingCharge')
+      
+      }
     this.dialog.open( AddGeolistShippingPopupComponent,{
       width: '700px', //sets width of dialog
       height:'450px',
@@ -381,9 +389,20 @@ localStorage.setItem('packingChargeOrShipingCharge','shippingCharge')
    }
 
    shipClick(event:any){
-      alert(event)
       // this.fieldName = "Shipping Form";
       if(event == 'Shipping'){
+
+
+        const data = {
+          "search":"",
+          "shipping":true
+      }
+      
+      this.user.getGeography(data).subscribe((res) => {
+        this.rowData5 = res.response;
+      });
+    
+
 
         this.shippingChk = true;
         this.columnDefs= [
@@ -407,7 +426,8 @@ localStorage.setItem('packingChargeOrShipingCharge','shippingCharge')
         ];
        
        
-      }else{
+      }
+      else{
  
         const data1 = {
           "search":"",
@@ -442,6 +462,12 @@ localStorage.setItem('packingChargeOrShipingCharge','shippingCharge')
         this.shippingChk = false;
   
       }
+      if(this.shippingChk == true){
+        localStorage.setItem('packingChargeOrShipingCharge','shippingCharge')
+        }else{
+          localStorage.setItem('packingChargeOrShipingCharge','PackingCharge')
+        
+        }
       this.shippingAndPackages();
    }
 

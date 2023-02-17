@@ -122,6 +122,14 @@
     font-size: 14px;
     outline: none !important;
 }
+.addUserForm1  input{
+    border-radius: 5px;
+    border: red 1px solid !important;
+    padding: 5px 5px;
+    width: 250px;
+    font-size: 14px;
+    outline: none !important;
+}
 
 span {
     color: red;
@@ -201,7 +209,9 @@ mat-form-field {
     color: red;
     cursor: pointer;
 }
-
+.classborder{
+    border: red;
+}
 
 .removeCircle1{
     margin-left: 99%;

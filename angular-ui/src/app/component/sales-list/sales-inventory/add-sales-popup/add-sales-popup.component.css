@@ -391,3 +391,34 @@ height: 43px;
   display: inline-block;
   margin-left: -15px;
 }
+
+.sales-popup-datepicker mat-form-field{
+  background: #fff;
+}
+
+.sales-popup-datepicker .mat-form-field-appearance-legacy ::ng-deep.mat-form-field-wrapper{
+  padding-bottom: 0;
+}
+
+
+.placeh-align {
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+/* ::ng-deep.mat-form-field-appearance-legacy .mat-form-field-prefix .mat-icon,
+.mat-form-field-appearance-legacy .mat-form-field-suffix .mat-icon {
+  width: 0em !important;
+  border: none;
+} */
+
+.sales-popup-datepicker ::ng-deep.mat-focus-indicator{
+  font-size: 32px;
+  top:-10px;
+}
+
+
+.sales-popup-datepicker .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float ::ng-deep.mat-form-field-label,.sales-popup-datepicker .mat-form-field-appearance-legacy.mat-form-field-can-float ::ng-deep.mat-input-server:focus + .mat-form-field-label-wrapper ::ng-deep.mat-form-field-label{
+  display: none;
+}

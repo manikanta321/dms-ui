@@ -574,7 +574,7 @@
                       <!-- <div > -->
                       <div *ngIf="item.showArrayExtension">
                         <div class="row m-0 mb-2">
-                          <div class="col-sm-3" [ngStyle]="{'padding-left':  (i * 10 )+ 'px'}">
+                          <div class="col-sm-3" [ngStyle]="{'padding-left':  (i * 10 + 10 )+ 'px'}">
 
                             <img [src]="item.imageExtensionType == 'maxImage' ? maxImage : minImage"
                               class="expand-arrow1" alt="add-user-btn" *ngIf="geoGraphyFullData.length !== (i + 1)"
@@ -584,36 +584,35 @@
 
                           </div>
                           <div class="col-sm-1">
-                            <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                            <input placeholder="Enter" type="text"  (change)="geoPropertyChange(item,'mrp', i)"
                               [(ngModel)]="item.mrp" class="uom-cls" id="MRP" name="MRP">
                           </div>
                           <div class="col-sm-1">
-                            <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                            <input placeholder="Enter" type="text" (change)="geoPropertyChange(item,'minOrderQty', i)"
                               [(ngModel)]="item.minOrderQty" class="uom-cls" id="MinorderQty" name="MinorderQty">
                           </div>
                           <div class="col-sm-1">
-                            <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                            <input placeholder="Enter" type="text" (change)="geoPropertyChange(item,'maxOrderQty', i)"
                               [(ngModel)]="item.maxOrderQty" class="uom-cls" id="MaxOrderQty" name="MaxOrderQty">
                           </div>
                           <div class="col-sm-1">
-                            <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                            <input placeholder="Enter" type="text" (change)="geoPropertyChange(item,'marginPercent', i)"
                               [(ngModel)]="item.marginPercent" class="uom-cls" id="MarginPercent" name="MarginPercent">
                           </div>
                           <div class="col-sm-1">
-                            <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                            <input placeholder="Enter" type="text" (change)="geoPropertyChange(item,'discountPercent', i)"
                               [(ngModel)]="item.discountPercent" class="uom-cls" id="DiscountPercent"
                               name="DiscountPercent">
                           </div>
 
                           <div class="col-sm-1">
-                            <input placeholder="Enter" type="text" [disabled]="selectedHirerachyIndex > i"
+                            <input placeholder="Enter" type="text" (change)="geoPropertyChange(item,'leadTime', i)"
                               [(ngModel)]="item.leadTime" class="uom-cls" id="LeadTime" name="LeadTime">
                           </div>
 
                           <div class="col-sm-2">
-                            <input placeholder="Enter" style="width: 130px;" type="text"
-                              [disabled]="selectedHirerachyIndex > i" [(ngModel)]="item.registrationNumber"
-                              class="uom-cls" id="RegistrationNumber" name="RegistrationNumber">
+                            <input placeholder="Enter" style="width: 130px;" type="text" (change)="geoPropertyChange(item,'registrationNumber', i)"
+                             [(ngModel)]="item.registrationNumber" class="uom-cls" id="RegistrationNumber" name="RegistrationNumber">
                           </div>
 
                           <div class="col-sm-1">

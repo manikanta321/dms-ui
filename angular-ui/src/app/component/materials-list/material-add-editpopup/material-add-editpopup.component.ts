@@ -451,6 +451,17 @@ export class MaterialAddEditpopupComponent {
       // this.categeoryData = new FormControl(this.catgname);
     })
   }
+
+  geoPropertyChange(geoObj, type, index){
+    if(this.selectedHirerachyIndex != index){
+      for(var i=index; i<this.geoGraphyFullData.length;i++){
+        let geoPropertyItemList = this.geoGraphyFullData[i];
+        geoPropertyItemList.geoProperties.forEach(x=>{
+          x[type]= geoObj[type];
+        })
+      }
+    }
+  }
   getProductList() {
     this.addMaterials.getProductGroup().subscribe((res) => {
       let data = res.response;

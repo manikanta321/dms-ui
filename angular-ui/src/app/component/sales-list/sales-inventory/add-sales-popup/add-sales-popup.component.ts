@@ -189,6 +189,16 @@ private dialogRef: MatDialogRef<AddSalesPopupComponent>,
 private orders: OrdersApisService,
 private shared :SharedServiceAddsalesService,
   ) { }
+  selectedSalesDate:any;
+  selectedSalesDateRaw:any;
+  salesDateChange(e, item) {
+
+    this.selectedSalesDate = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
+    console.log(this.selectedSalesDate);
+    item.SalesDate = this.selectedSalesDate;
+    // this.startdate = new Date(this.selectedStartDate).toLocaleDateString('en-US')
+    // console.log(this.startdate);
+  }
 
   ngOnInit(): void {
     this.userType =localStorage.getItem("userType");
@@ -216,7 +226,7 @@ private shared :SharedServiceAddsalesService,
   }
 
 
-addsalesobj(i){
+addsalesobj(){
 this.SalesObj.push(
   {
     SalesDate:'',

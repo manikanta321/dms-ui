@@ -1,63 +1,64 @@
 <div style="padding: 35px;">
-<div class="add-sales ">
-    <div class="addSales">
-        <!-- <img  class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
-        <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
-    </div>
-    <div class="sales-head">
-        <h3 class="sales-add font">Add Sales</h3>
-    </div>
-    <!-- expension   -->
-    <div class="slaes-expension">
-        <div (click)="expandDealerInfoDiv()" class="collapsible">
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="label-cls">Dealer Information</p>
-                </div>
-                <div class="col-md-8 check1">
-                    <p  *ngIf="showdealerName" class="label-cls"><b>Dealer Name:</b> {{selectedCoustmerName}} ;  <b>Dealer Code:</b> 123456789</p>
-                </div>
-                <div class="col-md-1" (click)="expandOrderItemsDiv()">
-                    <img [src]="image1" class="expand-arrow" alt="add-user-btn">
-                </div>
-             </div>
+    <div class="add-sales ">
+        <div class="addSales">
+            <!-- <img  class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
+            <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
         </div>
-        <div class="content" *ngIf="dealerInfo">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="promotiont addSalesdropdown">
-                        <label class="addDealerlabels">Dealer <span class="Astr">*</span></label>
+        <div class="sales-head">
+            <h3 class="sales-add font">Add Sales</h3>
+        </div>
+        <!-- expension   -->
+        <div class="slaes-expension">
+            <div (click)="expandDealerInfoDiv()" class="collapsible">
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="label-cls">Dealer Information</p>
                     </div>
-                    <ng-select [items]="addSalesdropdown" class="addDealerSelection" 
-                    bindValue="customerId" bindLabel="customerName" placeholder="Select the dealer"
-                    [disabled]="dealerDisabled"  [(ngModel)]="customerId"
-                    required  (change)="onTypeSelect($event)">
-                  </ng-select>
-                    <!-- <img src="assets/img/search.png" class="search-img"  alt="search"> -->
+                    <div class="col-md-8 check1">
+                        <p *ngIf="showdealerName" class="label-cls"><b>Dealer Name:</b> {{selectedCoustmerName}} ;
+                            <b>Dealer Code:</b> 123456789
+                        </p>
+                    </div>
+                    <div class="col-md-1" (click)="expandOrderItemsDiv()">
+                        <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="promotiont">
-                        <label class="addDealerlabels">Geography <span class="Astr">*</span></label>
-                        <!-- <ng-multiselect-dropdown name="type" [placeholder]="'Select the promotion type'"
+            </div>
+            <div class="content" *ngIf="dealerInfo">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="promotiont addSalesdropdown">
+                            <label class="addDealerlabels">Dealer <span class="Astr">*</span></label>
+                        </div>
+                        <ng-select [items]="addSalesdropdown" class="addDealerSelection" bindValue="customerId"
+                            bindLabel="customerName" placeholder="Select the dealer" [disabled]="dealerDisabled"
+                            [(ngModel)]="customerId" required (change)="onTypeSelect($event)">
+                        </ng-select>
+                        <!-- <img src="assets/img/search.png" class="search-img"  alt="search"> -->
+                    </div>
+                    <div class="col-md-6">
+                        <div class="promotiont">
+                            <label class="addDealerlabels">Geography <span class="Astr">*</span></label>
+                            <!-- <ng-multiselect-dropdown name="type" [placeholder]="'Select the promotion type'"
                         formControlName="type" [disabled]="disabled" [settings]="dropdownSettings3"
                         [data]="toppingList3" (onSelect)="onTypeSelect($event)"
                         (onSelectAll)="onTypeAll($event)">
                     </ng-multiselect-dropdown> -->
-                    <ng-select [items]="GeoGrapydropdownListdata"  [(ngModel)]="geographyId" bindValue="geographyId" bindLabel="geographyName" placeholder="Select the geography"
-                  #geoghraphy
-                  (change)="onGeoSelect($event)" required>
-                </ng-select>
+                            <ng-select [items]="GeoGrapydropdownListdata" [(ngModel)]="geographyId"
+                                bindValue="geographyId" bindLabel="geographyName" placeholder="Select the geography"
+                                #geoghraphy (change)="onGeoSelect($event)" required>
+                            </ng-select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label class="addDealerlabels">Billing Address <span class="Astr">*</span></label>
+                        <p class="billingAddress">{{dealerAdressToDisplay}}</p>
                     </div>
                 </div>
-                
-            </div>
-<div class="row">
-    <div class="col-lg-12">
-        <label class="addDealerlabels">Billing Address <span class="Astr">*</span></label>
-        <p class="billingAddress">{{dealerAdressToDisplay}}</p>
-    </div>
-</div>
-            <!-- <div class="row" style="margin-top:-19px">
+                <!-- <div class="row" style="margin-top:-19px">
                 <div class="col-md-6">
                     <div class="promotiont">
                         <label>Billing Address <span>*</span></label>
@@ -86,66 +87,68 @@
                     </div>
                 </div>   
             </div> -->
-        </div>
-        
-        <div (click)="expandDealerInfoDiv1()" class="collapsible mt-3">
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="label-cls">Product information</p>
-                </div>
-                <div class="col-md-8 check1">
-                    <p class="label-cls" *ngIf="visibleProcuct"><b>Product Name:</b> {{productselectedName}}  ;  <b>Product Code:</b> 123456789</p>
-                </div>
-                <div class="col-md-1">
-                    <img [src]="image1" class="expand-arrow" alt="add-user-btn">
-                </div>
-             </div>
-        </div>
-        <div class="content" *ngIf="productInfo">
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="promotiont ">
-                        <label class="addDealerlabels">Product<span class="Astr">*</span></label>
+            </div>
+
+            <div (click)="expandDealerInfoDiv1()" class="collapsible mt-3">
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="label-cls">Product information</p>
                     </div>
-                    <ng-select [items]="productDetails" class="addDealerProduct" bindValue="stockItemId" bindLabel="stockItemName" placeholder="Select the product"
-                  #geoghraphy
-                  (change)="onProductTypeSelect($event)" required>
-                </ng-select>
-                    <!-- <img src="assets/img/search.png" class="search-img"  alt="search"> -->
+                    <div class="col-md-8 check1">
+                        <p class="label-cls" *ngIf="visibleProcuct"><b>Product Name:</b> {{productselectedName}} ;
+                            <b>Product Code:</b> 123456789
+                        </p>
+                    </div>
+                    <div class="col-md-1">
+                        <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                    </div>
+                </div>
+            </div>
+            <div class="content" *ngIf="productInfo">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="promotiont ">
+                            <label class="addDealerlabels">Product<span class="Astr">*</span></label>
+                        </div>
+                        <ng-select [items]="productDetails" class="addDealerProduct" bindValue="stockItemId"
+                            bindLabel="stockItemName" placeholder="Select the product" #geoghraphy
+                            (change)="onProductTypeSelect($event)" required>
+                        </ng-select>
+                        <!-- <img src="assets/img/search.png" class="search-img"  alt="search"> -->
+
+                    </div>
+                    <div class="col-lg-7 link">
+                        <a href="">{{productLink}}</a>
+                    </div>
 
                 </div>
-                <div class="col-lg-7 link" >
-                    <a href="">{{productLink}}</a>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label class="addDealerlabels">SKU</label>
+                        <p>{{productSKUName}}</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="addDealerlabels">Brand Name</label>
+                        <p>{{brandname}}</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="addDealerlabels">Product Group</label>
+                        <p>{{productGroupName}}</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="addDealerlabels">Product Sub-Group</label>
+                        <p>{{productsubgroupName}}</p>
+                    </div>
                 </div>
-                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label class="addDealerlabels">Billing Address <span class="Astr">*</span></label>
+                        <p class="billingAddress">{{dealerAdressToDisplay}}</p>
+                    </div>
+                </div>
+
             </div>
-<div class="row">
-    <div class="col-lg-3">
-        <label class="addDealerlabels">SKU</label>
-        <p>{{productSKUName}}</p>
-    </div>
-    <div class="col-lg-3">
-        <label class="addDealerlabels">Brand Name</label>
-        <p>{{brandname}}</p>
-    </div>
-    <div class="col-lg-3">
-        <label class="addDealerlabels">Product Group</label>
-        <p>{{productGroupName}}</p>
-    </div>
-    <div class="col-lg-3">
-        <label class="addDealerlabels">Product Sub-Group</label>
-        <p>{{productsubgroupName}}</p>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        <label class="addDealerlabels">Billing Address <span class="Astr">*</span></label>
-        <p class="billingAddress">{{dealerAdressToDisplay}}</p>
-    </div>
-</div>
-            
-        </div>
-<!-- 
+            <!-- 
         <div (click)="expandDealerInfoDiv3()" class="collapsible mt-3">
             <div class="row">
                 <div class="col-md-3">
@@ -161,63 +164,84 @@
         </div> -->
 
 
-        <div (click)="expandDealerInfoDiv4()" class="collapsible mt-3">
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="label-cls">Sales</p>
+            <div (click)="expandDealerInfoDiv4()" class="collapsible mt-3">
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="label-cls">Sales</p>
+                    </div>
+                    <div class="col-md-8 check1">
+                        <!-- <p class="label-cls"><b>Stock:</b> 1000 boxes  ;  <b>Sales:</b> boxes</p> -->
+                    </div>
+                    <div class="col-md-1">
+                        <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                    </div>
                 </div>
-                <div class="col-md-8 check1">
-                    <!-- <p class="label-cls"><b>Stock:</b> 1000 boxes  ;  <b>Sales:</b> boxes</p> -->
-                </div>
-                <div class="col-md-1">
-                    <img [src]="image1" class="expand-arrow" alt="add-user-btn">
-                </div>
-             </div>
-        </div>
-       <div  *ngIf="sales">
-        <div   class="content">
-           <div  *ngFor="let data of SalesObj; let i index">
-            <div class="row">
-                <div class="col-2">
-                 <p>Date</p>
-                </div>
-                <div class="col-2">
-                  <p>Quantity</p>
-                  </div>
-                  <div class="col-7">
-                    <p>Customer Reference</p>
-                  </div>
-                <div class="col-1" (click)="addsalesobj(i)">
-                  <mat-icon class="addAlign">add_circle</mat-icon>
-                </div>
-              </div>
-              <div class="row" >
-                <div class="col-2 Dquantity" >
-                    <input type="text" placeholder="2022-12-24" [(ngModel)]="data.SalesDate">
-                  </div>
-                  <div class="col-2 Dquantity">
-                    <input type="text" placeholder="2000" [(ngModel)]="data.Quantity">
-                  </div>
-                  <div class="col-7 custmRef">
-                    <input type="text" placeholder="nandhanal supermarket" [(ngModel)]="data.CustomerSpecification"/>
-                  </div>
-                  <div class="col-1 rmvicon" > 
-                    <mat-icon class="removeCircle" (click)="removeobj(i)" *ngIf="SalesObj.length>=2" >remove_circle</mat-icon>
-                  </div>
             </div>
-           </div>
-            
-           
+            <div *ngIf="sales">
+                <div class="content">
+                    <div class="col-12" style="text-align: end; margin-top: 15px;" (click)="addsalesobj()">
+                        <mat-icon class="addAlign">add_circle</mat-icon>
+                    </div>
+                    <div *ngFor="let data of SalesObj; let i index">
+                        <div class="row">
+                            <div class="col-3">
+                                <p>Date</p>
+                            </div>
+                            <div class="col-2">
+                                <p>Quantity</p>
+                            </div>
+                            <div class="col-6">
+                                <p>Customer Reference</p>
+                            </div>
+                            <div class="col-1" >
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="sales-popup-datepicker">
+
+                                    <mat-form-field class="placeh-align">
+                                        <mat-label>Select the date</mat-label>
+
+                                        <input matInput placeholder="" [matDatepicker]="picker2"
+                                            [(ngModel)]="data.selectedSalesDateRaw"
+                                            (dateChange)="salesDateChange($event, data)">
+                                        <mat-datepicker-toggle matSuffix [for]="picker2">
+                                            <mat-icon matDatepickerToggleIcon>
+                                                <img src="assets/img/calender2.png" class="calendarToggle">
+                                            </mat-icon>
+                                        </mat-datepicker-toggle>
+                                        <mat-datepicker #picker2></mat-datepicker>
+                                    </mat-form-field>
+
+                                </div>
+                            </div>
+                            <div class="col-2 Dquantity">
+                                <input type="text" placeholder="2000" [(ngModel)]="data.Quantity">
+                            </div>
+                            <div class="col-6 custmRef">
+                                <input type="text" placeholder="nandhanal supermarket"
+                                    [(ngModel)]="data.CustomerSpecification" />
+                            </div>
+                            <div class="col-1 rmvicon">
+                                <mat-icon class="removeCircle" (click)="removeobj(i)"
+                                    *ngIf="SalesObj.length>=2">remove_circle</mat-icon>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
         </div>
-       </div>
+        <div class="row footer">
+            <div class="col-md-6">
+                <button type="button" class="saveas-draft" (click)="saveSales()">Save </button>
+            </div>
+            <div class="col-md-6">
+                <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
+            </div>
+        </div>
     </div>
-    <div class="row footer">
-        <div class="col-md-6">
-                <button type="button" class="saveas-draft" (click)="saveSales()">Save </button>                       
-        </div>
-        <div class="col-md-6">                      
-                <button type="button"  [mat-dialog-close]="true"  class="cancel">Cancel</button>                   
-        </div>
-    </div>
-</div>
 </div>

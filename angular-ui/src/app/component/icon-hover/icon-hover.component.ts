@@ -30,7 +30,7 @@ export class IconHoverComponent implements OnInit,ICellRendererAngularComp {
   agInit(params: any): void {
     this.cellValue = params.value;
     this.rowData = params.data;
-    this.getDataFromApi(params);
+    //this.getDataFromApi(params);
   }
   refresh(params : any): boolean {
     throw new Error('Method not implemented.');

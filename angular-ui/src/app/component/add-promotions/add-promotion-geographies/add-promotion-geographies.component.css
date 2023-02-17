@@ -59,7 +59,7 @@ height: 228px;
     margin-top: 15px;
   }
   .mainclass{
-overflow-y: scroll; 
+/* overflow-y: scroll;  */
 overflow-x: hidden;
 }
   .add-geopgraphy li{

@@ -518,7 +518,7 @@ input.form-check-input1 {
   }
   .img1{
     position: absolute;
-    left: 537px;
+    left: 93%;
     top: 41px;  }
   .promo1-dropdown-btn span .ng-star-inserted {
     visibility: hidden;
@@ -790,7 +790,7 @@ input.form-check-input1 {
   ::ng-deep.mat-dialog-container {
     background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
     height: 80%;
-    padding-top: 56px;
+    /* padding-top: 56px; */
     
   }
   
@@ -1556,9 +1556,9 @@ input.form-check-input1 {
   
   
   .expand-arrow {
-    width: 40%;
+    width: 29%;
     position: relative;
-    right: -28px;
+    right: -50px;
     top: 4px;
   }
 

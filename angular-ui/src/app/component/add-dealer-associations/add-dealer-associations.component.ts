@@ -916,8 +916,8 @@ export class AddDealerAssociationsComponent implements OnInit {
     this.selectedtypeasso1 = item
     localStorage.setItem('selectedtypeasso', item);
     this.dialog.open(AddPromotionGeographiesComponent, {
-      width: '654px',
-      height: '520px',
+       width: '654px',
+       height: '650px',
     });
   }
   getclassification() {

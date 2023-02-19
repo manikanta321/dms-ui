@@ -1,14 +1,16 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
+// import { FormBuilder, FormControl } from '@angular/forms';
+import { MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { MatSidenav } from '@angular/material/sidenav';
+import { FirstDataRenderedEvent } from 'ag-grid-community';
 import moment from 'moment';
 import { OtherMasterService } from 'src/app/services/other-master.service';
 import { SharedServicesProfilePicService } from 'src/app/services/shared-services-profile-pic.service';
 import { SharedService } from 'src/app/services/shared-services.service';
 import { UserService } from 'src/app/services/user.service';
-import { RestPwsdUserPopupComponent } from '../users/userPopups/rest-pwsd-user-popup/rest-pwsd-user-popup.component';
+import { EditProfilePopupComponent } from '../edit-profile-popup/edit-profile-popup.component';
+// import { RestPwsdUserPopupComponent } from '../users/userPopups/rest-pwsd-user-popup/rest-pwsd-user-popup.component';
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
@@ -39,11 +41,12 @@ export class EditProfileComponent implements OnInit {
 
   constructor(private observer: BreakpointObserver,
     private user: UserService,
-    // public dialog: MatDialog,
+    public dialog: MatDialog,
     // private dialogRef: MatDialogRef<any>,
     private sharedService: SharedService,
     private sharedService1: SharedServicesProfilePicService,
-    private otherMasterService: OtherMasterService) { 
+    // private otherMasterService: OtherMasterService,
+    ) { 
 
     }
   ngAfterViewInit() {
@@ -112,7 +115,7 @@ export class EditProfileComponent implements OnInit {
     console.log("EditUser",profileObj)
     this.user.EditUserProfile(profileObj).subscribe((res: any) => {
       console.log("EditUser",profileObj)
-      // this.dialogRef.close()
+      // this.dialogRef.close();
 
       if (res.response.result == 'successfully updated') {
         sessionStorage.setItem("profileImage",this.base64textString);
@@ -121,7 +124,7 @@ export class EditProfileComponent implements OnInit {
 
         this.sharedService1.filter('Register click');
         // this.getUserProfileDetails();
-        // this.dialogRef.close()
+        // this.dialogRef.close();
         // this.dialogRef.close();
       }
       else {
@@ -131,13 +134,17 @@ export class EditProfileComponent implements OnInit {
     })
     
   }
-discardProfile() {
-        // this.dialogRef.close();
-}
+  discard() {
+    this.dialog.open(EditProfilePopupComponent);
+    // this.isOpen = false;
+  }
   ToggleSideNav(value:any){
     this.sidenav.toggle()
   }
-
+  onFirstDataRendered(params: FirstDataRenderedEvent) {
+    params.api.paginationGoToPage(4);
+    this.getUserProfileDetails();
+  }
 // image uploader and converter to base64
   public onFileChanged(event) {
     this.selecetdFile = event.target.files[0];

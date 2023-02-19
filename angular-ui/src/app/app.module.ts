@@ -207,6 +207,7 @@ import { DealerTargetPopupGridComponent } from './dealer-target-popup-grid/deale
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DealerTargetSuccessPopupComponent } from './dealer-target-success-popup/dealer-target-success-popup.component';
 import { AddGeolistShippingPopupComponent } from './add-geolist-shipping-popup/add-geolist-shipping-popup.component';
+import { EditProfilePopupComponent } from './component/edit-profile-popup/edit-profile-popup.component';
 
 
 @NgModule({
@@ -506,7 +507,8 @@ import { AddGeolistShippingPopupComponent } from './add-geolist-shipping-popup/a
           AddTargetGroupSuccessPopupComponent,
           DealerTargetPopupGridComponent,
           DealerTargetSuccessPopupComponent,
-          AddGeolistShippingPopupComponent
+          AddGeolistShippingPopupComponent,
+          EditProfilePopupComponent
           
   ],
   imports: [

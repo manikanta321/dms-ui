@@ -1,0 +1,14 @@
+<div class="container font">
+    <div class="deact">
+
+
+        <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+        <div class="actv-user text-center">
+            <h1 class="head-text">Discard</h1>
+            <p>Are you sure you want to <b style="color:red">discard</b><br>
+                changes to your <b>Profile?</b></p>
+            <button class="undo" (click)="discard()">Yes</button>
+            <button class="exit" (click)='close()'>Cancel</button>
+        </div>
+    </div>
+</div>

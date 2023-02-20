@@ -6,6 +6,7 @@ import { SalesServicesService } from 'src/app/services/sales-services.service';
 import * as moment from 'moment';
 import dayjs from 'dayjs/esm';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MaterialListService } from 'src/app/services/material-list.service';
 
 @Component({
   selector: 'app-advanced-filter',
@@ -25,7 +26,7 @@ export class AdvancedFilterComponent implements OnInit {
   categoryList: any;
   isCategorySelected: boolean = false;
   isSubCategorySelected: boolean = false;
-  subcaty: any;
+  subcaty: any = [];
   typeSelected: boolean = false;
   typeList: any;
   isShipmentDateSelected: boolean = false;
@@ -41,7 +42,7 @@ export class AdvancedFilterComponent implements OnInit {
   values: any = [];
   checkedCount: number = 0;
   GeoCheckedCount: number = 0;
-  searchText;
+  searchText = '';
   startDate: any;
   endDate: any;
   statusList: any;
@@ -67,11 +68,15 @@ export class AdvancedFilterComponent implements OnInit {
   categoryIds: any = [];
   subCatIds: any = [];
   typeIds: any = [];
+  categoryItemsList: any = [];
+  startDateOfShipment: any;
+  endDateOfShipment: any;
 
   constructor(private salesService: SalesServicesService,
     private addMaterials: AddMaterialsService,
     public orders: OrdersApisService,
-    private dialogRef: MatDialogRef<any>,) { }
+    private dialogRef: MatDialogRef<any>,
+    private materialList: MaterialListService) { }
 
   ngOnInit(): void {
     this.addTargetGroupElements();
@@ -136,6 +141,7 @@ export class AdvancedFilterComponent implements OnInit {
     this.addMaterials.getclassification(true).subscribe((res: any) => {
       this.categoryList = res.response;
     });
+    this.searchText = '';
   }
   getSubCategory() {
     this.isTargetGroupSelected = false;
@@ -146,31 +152,38 @@ export class AdvancedFilterComponent implements OnInit {
     this.isShipmentDateSelected = false;
     this.isReceiptDateSelected = false;
     this.isSubCategorySelected = true;
-    let Subdata = {
-      catId: localStorage.getItem("category"),
-      flag: true
-    }
-    this.salesService.onClickSubCat(Subdata).subscribe((res) => {
-      this.subcaty = res.response;
-    });
+   var subcategory =  JSON.parse(localStorage.getItem('category') ?? '[]');
+   this.categoryItemsList = subcategory.map((ele) => ele.catId);
+   let Subdata = {
+    catId: this.categoryItemsList,
+    flag: true
   }
+  this.materialList.onclickcat(Subdata).subscribe((res) => {
+    this.subcaty = res.response;
+    console.log("SubCategory", this.subcaty);
+  });
+  this.searchText = '';
+  }
+   
   getType() {
     this.isTargetGroupSelected = false;
     this.isgeoGraphyIdentifierSelected = false;
     this.isProductCustomIdentifierSelected = false;
     this.isCategorySelected = false;
     this.isSubCategorySelected = false;
-    this.isShipmentDateSelected = false;
+    this.isShipmentDateSelected = false;  
     this.isReceiptDateSelected = false;
     this.typeSelected = true;
-    let Subdata = {
-      subCatId: localStorage.getItem("subcategory"),
-      flag: false
+    var type =  JSON.parse(localStorage.getItem('subcategory') ?? '[]');
+    this.typeItems = type.map((ele) => ele.subCatId);
+    let Type = {  
+      subCatId:  this.typeItems
     }
-    this.salesService.onclickType(Subdata).subscribe((res) => {
+    this.materialList.onclicksubcat(Type).subscribe((res) => {
       this.typeList = res.response;
-      console.log("fff", this.typeList)
+      
     });
+    
   }
   getShipmentDate() {
     this.isTargetGroupSelected = false;
@@ -287,9 +300,18 @@ export class AdvancedFilterComponent implements OnInit {
     if (!(this.isCheckedForProduct(category.catId, 'category' ))) {
       //this.values.push(category.catName);
       this.categoryItems.push(category);
+      localStorage.setItem("category", JSON.stringify(this.categoryItems));
     }
     else if (this.isCheckedForProduct(category.catId, 'category')) {
-      this.categoryItems.pop(category);
+
+      // let index = this.categoryItems.indexOf(category);
+      // if (index > -1) {
+      // this.categoryItems.splice(index, 1);
+      // }
+      this.categoryItems = this.categoryItems.filter(function(el){
+        return el.catId !== category.catId;
+      });
+      
       if(this.categoryItems.length == 0){
         this.isSubCategorySelected = false;
         this.typeSelected = false;
@@ -304,9 +326,6 @@ export class AdvancedFilterComponent implements OnInit {
       }
     
     }
-    if (this.isCategorySelected) {
-      localStorage.setItem("category", category.catId);
-    }
 
   }
   onItemClickOfSubCategory(subcat: any , event:any) {
@@ -314,14 +333,15 @@ export class AdvancedFilterComponent implements OnInit {
     if (!(this.isCheckedForProduct(subcat.subCatId, 'subcategory'))) {
       //this.values.push(subcat.subCatName);
       this.subcatItems.push(subcat);
+      localStorage.setItem("subcategory", JSON.stringify(this.subcatItems));
     }
     else if (this.isCheckedForProduct(subcat.subCatId, 'subcategory')) {
       //this.values.pop(subcat.subCatName);
-      this.subcatItems.pop(subcat);
+      this.subcatItems = this.subcatItems.filter(function(el){
+        return el.subCatId !== subcat.subCatId;
+      });
     }
-    if (this.isSubCategorySelected) {
-      localStorage.setItem("subcategory", subcat.subCatId);
-    }
+   
 
   }
   onItemClickOfType(type: any ,  event:any) {
@@ -404,7 +424,7 @@ export class AdvancedFilterComponent implements OnInit {
   updateCountForShipment(event : any){
     if (this.isShipmentDateSelected) {
       if (event.isTrusted) {
-        this.shipmentcheckedCount++;
+        this.shipmentcheckedCount = 1;
       }
       else if (this.shipmentcheckedCount > 0) {
         this.shipmentcheckedCount--;
@@ -414,7 +434,7 @@ export class AdvancedFilterComponent implements OnInit {
     updateCountForReceipt(event : any){
       if (this.isReceiptDateSelected) {
         if (event.isTrusted) {
-          this.receiptcheckedCount++;
+          this.receiptcheckedCount = 1;
         }
         else if (this.receiptcheckedCount > 0) {
           this.receiptcheckedCount--;
@@ -571,8 +591,8 @@ export class AdvancedFilterComponent implements OnInit {
     this.categoryItems.length = 0;
     this.subcatItems.length = 0;
     this.typeItems.length = 0;
-    this.startDate = '';
-    this.endDate = '';
+    this.shipmentSelectedDateRange = '';
+    this.selectedDateRange = '';
     this.checkedCount = 0;
      this.GeoCheckedCount = 0;
       this.PCICheckedCount = 0;
@@ -591,10 +611,10 @@ export class AdvancedFilterComponent implements OnInit {
       catogoryIds: this.categoryIds,
       subCategoryIds: this.subCatIds,
       typeIds: this.typeIds,
-      shipmentStartdate:this.shipmentSelectedDateRange.startDate ,
-      shipmentEnddate: this.shipmentSelectedDateRange.endDate,
-      receiptStartdate: this.selectedDateRange.startDate,
-      receiptEnddate: this.selectedDateRange.endDate,
+      shipmentStartdate:this.shipmentSelectedDateRange?.startDate ,
+      shipmentEnddate: this.shipmentSelectedDateRange?.endDate,
+      receiptStartdate: this.selectedDateRange?.startDate,
+      receiptEnddate: this.selectedDateRange?.endDate,
     }
     console.log("ssdsdsdsdsds" , selectedFilters);
     this.dialogRef.close(selectedFilters);
@@ -631,8 +651,8 @@ export class AdvancedFilterComponent implements OnInit {
 
   shipmentCustomDatePickerEvent(eventChange) {
     this.shipmentSelectedDateRange = eventChange.selectedDate;
-    this.startDate = this.shipmentSelectedDateRange.startDate;
-    this.endDate = this.shipmentSelectedDateRange.endDate;
+    this.startDateOfShipment = this.shipmentSelectedDateRange.startDate;
+    this.endDateOfShipment = this.shipmentSelectedDateRange.endDate;
     this.shipmentselectedMenu = eventChange.selectedMenu;
     console.log("dfdfdfdfdfd", this.shipmentSelectedDateRange, this.reciptselectedMenu);
   }

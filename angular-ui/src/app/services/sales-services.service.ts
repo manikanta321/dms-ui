@@ -121,7 +121,7 @@ getTargetList() {
 return this.http.get<any>(this.userurl + 'MaterialApi/GetTargetGroupList');
 }
 onClickSubCat(data:any){
-  return this.http.get<any>(`${this.userurl}MaterialApi/GetSUbCAts?catId=${data.catId}&flag=${data.flag}`);
+  return this.http.get<any>(this.userurl + 'MaterialApi/GetSUbCAtsOfMultiCats', data);
 
 }
 onclickType(data:any){

@@ -68,7 +68,7 @@ mat-sidenav-container {
 .edit-data {
     position: relative;
     /* width: 691px; */
-    height: 480px;
+    /* height: 480px; */
     /* left: 281px; */
     /* top: 0px; */
 
@@ -153,8 +153,8 @@ mat-sidenav-container {
     font-size: 25px;
     line-height: 29px;
     font-weight: 600;
-    display: flex;
-    align-items: center;
+    /* display: flex;
+    align-items: center; */
     text-align: center;
     /* left: 27%; */
     color: #000000;
@@ -300,7 +300,7 @@ span {
     }
 
     .edit-data {
-        width: 600px;
+        /* width: 600px; */
     }
 
 }
@@ -335,7 +335,7 @@ span {
     }
 
     .edit-data {
-        height: 580px;
+        /* height: 580px; */
     }
 }
 

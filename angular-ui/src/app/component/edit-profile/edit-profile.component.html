@@ -16,7 +16,8 @@
                             <input type="file" id="file" style="display:none" (change)="onFileChanged($event)">
                             <img class="profile-icon" src='data:image/jpeg;base64,{{base64textString}}'>
                             <div class="profilepic__content">
-                                <span class="profilepic__icon"><img class="fas" src="../../../assets/img/camera-icon.png"></span>
+                                <span class="profilepic__icon"><img class="fas"
+                                        src="../../../assets/img/camera-icon.png"></span>
                                 <span class="profilepic__text">Change profile picture</span>
                             </div>
                         </label>
@@ -28,7 +29,7 @@
 
                         <div class="user_names">
                             <h2 class="profile-name">{{EmployeeName}}</h2>
-                            <span class="prof-s">@{{userName}}</span>
+                            <span class="prof-s">@{{constUserName}}</span>
                         </div>
 
                         <div class="row">
@@ -43,22 +44,42 @@
                         <div class=" col-lg-12  col-sm-12 fontcolor">
                             <div class="row d-flex">
                                 <div class="col-lg-6 col-md-6 col-sm-12 ">
-                                    <label class="f-label">Full Name <span>*</span></label>
+                                    <label class="f-label">First Name <span>*</span></label>
                                     <br>
                                     <input type="text" id="fname" name="fname" class="f-name" required
-                                        placeholder="Enter your full name" [(ngModel)]="EmployeeName" #fname="ngModel">
+                                        placeholder="Enter your full name" [(ngModel)]="FirstName" #fname="ngModel">
                                     <p style="margin-bottom:-22px;padding: 0px;"
                                         *ngIf="fname.invalid && (fname.dirty || fname.touched)" class="alert">
 
                                         <span style="color:red;position: relative;" *ngIf="fname.errors?.['required']">
 
-                                            *Full Name is required.
+                                            *First Name is required.
+
+                                        </span>
+
+                                    </p>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 ">
+                                    <label class="f-label">Last Name <span>*</span></label>
+                                    <br>
+                                    <input type="text" id="lname" name="lname" class="f-name" required
+                                        placeholder="Enter your full name" [(ngModel)]="LastName" #lname="ngModel">
+                                    <p style="margin-bottom:-22px;padding: 0px;"
+                                        *ngIf="lname.invalid && (lname.dirty || lname.touched)" class="alert">
+
+                                        <span style="color:red;position: relative;" *ngIf="lname.errors?.['required']">
+
+                                            *Last Name is required.
 
                                         </span>
 
                                     </p>
                                 </div>
 
+
+                            </div>
+                            <br>
+                            <div class="row div-2 d-flex">
                                 <div class="col-lg-6 col-md-6 col-sm-12 ">
                                     <label class="user-label">Username<span>*</span></label>
                                     <br>
@@ -77,9 +98,7 @@
 
                                     </p>
                                 </div>
-                            </div>
-                            <br>
-                            <div class="row div-2 d-flex">
+
                                 <div class="col-lg-6 col-md-6 col-sm-12 ">
                                     <label class="f-label">Email<span>*</span></label>
                                     <br>
@@ -98,6 +117,10 @@
                                         </span>
                                     </p>
                                 </div>
+
+                            </div>
+                            <br />
+                            <div class="row d-flex role-sel">
                                 <div class="col-lg-6 col-md-6 col-sm-12 ">
                                     <label class="user-label">Phone No<span>*</span></label>
                                     <br>
@@ -144,12 +167,14 @@
 
                         </div>
 
+                        <br/>
+                        <br/>
                     </div>
                     <!-- <div class="col-sm-1"></div> -->
                 </div>
-                <div class="row">
+                <div class="row" style=" margin-bottom: 85px; ">
                     <div class="col-3"></div>
-                    <div class="  button-save-chng row ">
+                    <div class="button-save-chng row ">
                         <div class=" save-chng">
                             <button class="save-text" (click)="editUser()">
                                 Save changes

@@ -26,6 +26,8 @@ image:any=''
 ngAfterViewInit() {
   setTimeout(() => {
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
+    
+    if(this.sidenav){
       if (res.matches) {
         this.sidenav.mode = 'over';
         this.sidenav.close();
@@ -33,6 +35,7 @@ ngAfterViewInit() {
         this.sidenav.mode = 'side';
         this.sidenav.open();
       }
+    } 
     });
   }, 1);
  }
@@ -42,12 +45,13 @@ ngAfterViewInit() {
     ) {     this.sharedService.listen().subscribe((m: any) => {
       // console.log(m)
       this.ProfileImage = localStorage.getItem("logInImage")
+      this.userName = localStorage.getItem("userName");
     })}
 
   ngOnInit(): void {
     let Image = sessionStorage.getItem("profileImage");
     this.ProfileImage = localStorage.getItem("logInImage")
-    console.log("ProfileImage",this.ProfileImage);
+    // console.log("ProfileImage",this.ProfileImage);
     this.userName = localStorage.getItem("userName");
     this.userType=localStorage.getItem("userType");
     this.image=localStorage.getItem("logInImage");

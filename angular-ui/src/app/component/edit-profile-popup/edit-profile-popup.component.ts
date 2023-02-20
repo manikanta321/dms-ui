@@ -19,11 +19,11 @@ export class EditProfilePopupComponent implements OnInit {
   }
   discard() {
     this.sharedService1.filter('Register click');
-    this.dialogRef.close()
+    this.dialogRef.close(true)
     sessionStorage.setItem("Close","Close");
   }
   close(){
-    this.dialogRef.close()
+    this.dialogRef.close(false)
     sessionStorage.setItem("Close","");
   }
 }

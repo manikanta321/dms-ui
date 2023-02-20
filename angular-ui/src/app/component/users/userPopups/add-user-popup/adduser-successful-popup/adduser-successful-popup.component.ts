@@ -7,33 +7,32 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./adduser-successful-popup.component.css']
 })
 export class AdduserSuccessfulPopupComponent implements OnInit {
- 
-  editOrAdd:boolean=true; 
+
+  editOrAdd: boolean = true;
   constructor(private dialogRef: MatDialogRef<any>) { }
 
   ngOnInit(): void {
 
 
-    let isitem =localStorage.getItem('addorEditUser')
+    let isitem = localStorage.getItem('addorEditUser')
 
-if(isitem=='edit'){
-  this.editOrAdd=false;
-}else{
-  this.editOrAdd=true;
+    if (isitem == 'edit') {
+      this.editOrAdd = false;
+    } else {
+      this.editOrAdd = true;
 
-}
+    }
 
-        setTimeout(() => {
+    setTimeout(() => {
 
-          this.closeDialog()
+      this.closeDialog()
 
-         }, 5000);
-  
- 
+    }, 5000);
+
+
   }
 
-  closeDialog()
-  {
+  closeDialog() {
     this.dialogRef.close();
   }
 }

@@ -836,7 +836,7 @@ this.geographyArray=[];
       this.targetList.addTargetData(obj).subscribe((res) => {
         console.log("Added TargetData ", this.addedTargetData);
         if(res.response.result == 'successfully addres DealerTargets'){
-          this.dialogRef.close();
+           this.dialogRef.close();
           this.dialog.open(DealerTargetSuccessPopupComponent, {panelClass: 'activeSuccessPop'})
           // alert('added')
           this.sharedService.filter('Register click')
@@ -848,6 +848,7 @@ this.geographyArray=[];
       alert('select any dealer')
     }
   }
+
   getproductCount() {
     let data = {
       TargetGroupId: this.targetId,
@@ -859,5 +860,9 @@ this.geographyArray=[];
       this.ProductCount = res.response;
       console.log("this.ProductCount ", this.ProductCount);
     })
+  }
+   closepopup()
+  {
+     this.dialogRef.close();
   }
 }

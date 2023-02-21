@@ -173,7 +173,7 @@
                                 [ngStyle]="{'background-color': getBackgroundColor(item.targetGroupName)}">
                                 <div class="eleStyle"><span class="itemSelectedFilter">{{item.targetGroupName}}<mat-icon
                                             mat-button class="close-iconn"
-                                            (click)="removeItem(item.targetGroupId)">close</mat-icon></span></div>
+                                            (click)="removeItem(item.targetGroupId , 'target')">close</mat-icon></span></div>
                             </div>
                         </div>
 
@@ -183,7 +183,7 @@
                                 <div class="eleStyle"><span
                                         class="itemSelectedFilter">{{item.geographyIdentifierName}}<mat-icon mat-button
                                             class="close-iconn"
-                                            (click)="removeItem(item.geographyIdentiferid)">close</mat-icon></span>
+                                            (click)="removeItem(item.geographyIdentiferid , 'geo')">close</mat-icon></span>
                                 </div>
                             </div>
                         </div>
@@ -194,7 +194,7 @@
                                 <div class="eleStyle"><span
                                         class="itemSelectedFilter">{{pciElemets.productCustomName}}<mat-icon mat-button
                                             class="close-iconn"
-                                            (click)="removeItem(pciElemets.productCustomIdentifierId)">close</mat-icon></span>
+                                            (click)="removeItem(pciElemets.productCustomIdentifierId , 'product')">close</mat-icon></span>
                                 </div>
                             </div>
                         </div>
@@ -204,7 +204,7 @@
                                 [ngStyle]="{'background-color': getBackgroundColor(category.catName)}">
                                 <div class="eleStyle"><span class="itemSelectedFilter">{{category.catName}}<mat-icon
                                             mat-button class="close-iconn"
-                                            (click)="removeItem(category.catId)">close</mat-icon></span></div>
+                                            (click)="removeItem(category.catId , 'category')">close</mat-icon></span></div>
                             </div>
                         </div>
                         <div *ngIf="this.subcatItems.length > 0"  class="targetElement">
@@ -212,7 +212,7 @@
                                 [ngStyle]="{'background-color': getBackgroundColor(subcat.subCatName)}">
                                 <div class="eleStyle"><span class="itemSelectedFilter">{{subcat.subCatName}}<mat-icon
                                             mat-button class="close-iconn"
-                                            (click)="removeItem(subcat.subCatId)">close</mat-icon></span></div>
+                                            (click)="removeItem(subcat.subCatId , 'subcategory')">close</mat-icon></span></div>
                             </div>
                         </div>
                         <div *ngIf="this.typeItems.length > 0"  class="targetElement">
@@ -220,7 +220,7 @@
                                 [ngStyle]="{'background-color': getBackgroundColor(type.typeName)}">
                                 <div class="eleStyle"><span class="itemSelectedFilter">{{type.typeName}}<mat-icon
                                             mat-button class="close-iconn"
-                                            (click)="removeItem(type.typeId)">close</mat-icon></span></div>
+                                            (click)="removeItem(type.typeId , 'type')">close</mat-icon></span></div>
                             </div>
                         </div>
                         <div  class="targetElement">

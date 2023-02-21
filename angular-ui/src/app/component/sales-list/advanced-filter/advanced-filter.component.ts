@@ -442,44 +442,63 @@ export class AdvancedFilterComponent implements OnInit {
       }
   
     }
-    removeItem(item) {
-    let taregetIndex = this.targetLists.findIndex(obj => obj.targetGroupId === item);
-    this.targetLists.splice(taregetIndex , 1);
-
-    const geoIndex = this.itemOfgeogrphy.indexOf(item);
-    this.itemOfgeogrphy.splice(geoIndex, 1);
-    
-    const PCIElement = this.ProductCustomIdentifierElements.indexOf(item);
-    this.ProductCustomIdentifierElements.splice(PCIElement,1);
-
-    const catIndex = this.categoryItems.indexOf(item);
-    this.categoryItems.splice(catIndex, 1);
-
-    const subCatItem = this.subcatItems.indexOf(item);
-    this.subcatItems.splice(subCatItem , 1);
-
-    const typeItem = this.typeItems.indexOf(item);
-    this.typeItems.splice(typeItem , 1);
-    
-    if (this.checkedCount > 0) {
-      this.checkedCount--;
-    }
-    if (this.GeoCheckedCount > 0) {
-      this.GeoCheckedCount--;
-    }
-    if (this.PCICheckedCount > 0) {
-      this.PCICheckedCount--;
-    }
-    if (this.categorycheckedCount > 0) {
-      this.categorycheckedCount--;
-    }
-    if (this.subcategoryCheckedCount > 0) {
-      this.subcategoryCheckedCount--;
-    }
-    if (this.typeCount > 0) {
-      this.typeCount--;
-    }
+    removeItem(item , type) {
+      
+      switch (type) {
+        case 'target': {
+            let taregetIndex = this.targetLists.findIndex(obj => obj.targetGroupId === item);
+            this.targetLists.splice(taregetIndex , 1);
+            if (this.checkedCount > 0) {
+              this.checkedCount--;
+          }
+          break;
+        }
+      
+        case 'geo': {
+          const geoIndex = this.itemOfgeogrphy.indexOf(item);
+          this.itemOfgeogrphy.splice(geoIndex, 1);
+          if (this.GeoCheckedCount > 0) {
+            this.GeoCheckedCount--;
+          }
+        }
+        break;
+        case 'product': {
+          const PCIElement = this.ProductCustomIdentifierElements.indexOf(item);
+          this.ProductCustomIdentifierElements.splice(PCIElement,1);
+          if (this.PCICheckedCount > 0) {
+            this.PCICheckedCount--;
+          }
+          break;
+        }
+        case 'category': {
+          const catIndex = this.categoryItems.indexOf(item);
+          this.categoryItems.splice(catIndex, 1);
+          if (this.categorycheckedCount > 0) {
+            this.categorycheckedCount--;
+          }
+          break;
+        }
+        case 'subcategory': {
+          const subCatItem = this.subcatItems.indexOf(item);
+          this.subcatItems.splice(subCatItem , 1);
+          if (this.subcategoryCheckedCount > 0) {
+            this.subcategoryCheckedCount--;
+          }
+          break;
+        }
+        case 'type': {
+          const typeItem = this.typeItems.indexOf(item);
+          this.typeItems.splice(typeItem , 1);
+          if (this.typeCount > 0) {
+            this.typeCount--;
+          }
+          break;
+        }
   
+        default: {
+          break;
+        }
+      }
   
   }
   close(){

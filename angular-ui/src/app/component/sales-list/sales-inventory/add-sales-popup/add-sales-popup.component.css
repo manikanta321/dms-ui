@@ -1,4 +1,40 @@
 
+
+::ng-deep.ng-select.addDealerSelection .ng-select-container {
+  
+  border-radius: 10px !important;
+}
+
+::ng-deep.ng-select.geographyclass .ng-select-container {
+  
+  border-radius: 10px !important;
+}
+
+
+::ng-deep.ng-select.addDealerProduct .ng-select-container {
+  
+  border-radius: 10px !important;
+}
+
+.selectdate
+{
+  margin-left: 10px;
+}
+.dateleft
+{
+  margin-left: 4px;
+}
+.addAlign
+{
+  cursor: pointer;
+}
+.removeCircle
+{
+  cursor: pointer;
+}
+
+
+
 .sales-head{
     color: #000000;
     text-align: center;
@@ -87,7 +123,7 @@
     overflow-y: auto;
   }
   .add-sales {
-    height:470px;
+    height:549px;
     overflow-x: hidden; 
     padding-right: 7px;
 
@@ -360,7 +396,7 @@ height: 43px;
   margin: auto;
 }
 .addDealerlabels{
-  font-weight: 600;
+  font-family: 'Gilroy';
 }
 .Astr{
   color: red;

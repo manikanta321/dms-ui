@@ -1,163 +1,161 @@
+.dateplaceholder {
+    color: rgba(104, 110, 116, 0.75);
+    color: grey !important;
 
- 
 
-
-.dateplaceholder
-{
-     color: rgba(104, 110, 116, 0.75); 
-     color: grey!important; 
-     
-    
     font-size: 15px;
 }
 
- /* .allicons{    
+/* .allicons{    
         margin-bottom:10px;
     margin-left: 68%;
 
 }    */
-.border
-{
-    border-left:1px solid #000000 !important; 
+.border {
+    border-left: 1px solid #000000 !important;
     border-radius: 14px;
     height: 41px;
 }
-.scrollbarorderlist
-{
-    
+
+.scrollbarorderlist {
+
     overflow: hidden;
 }
-::ng-deep.geographybubbles .dropdown-btn span .ng-star-inserted
-{
+
+::ng-deep.geographybubbles .dropdown-btn span .ng-star-inserted {
     position: absolute !important;
     right: -28px !important;
     bottom: 0px;
     top: 48px !important;
     background: #006466 !important;
 
-    
 
-   width: 42px;
-   border: 1px solid #337ab7;
-       font-size: 12px;
-       box-shadow: 1px 1px #959595;
-       color: #fff;
-       height: 20px;
-       border-radius: 15px;
+
+    width: 42px;
+    border: 1px solid #337ab7;
+    font-size: 12px;
+    box-shadow: 1px 1px #959595;
+    color: #fff;
+    height: 20px;
+    border-radius: 15px;
     text-align: center;
     margin-left: 10px;
     margin-right: -1px;
-  
+
     padding-left: 5px;
 }
 
 
 ::ng-deep.myclass1 {
- 
- color: #0027F4!important;
-  }
 
-  ::ng-deep.myclass2 {
+    color: #0027F4 !important;
+}
+
+::ng-deep.myclass2 {
     color: #E5009D !important;
-     }
+}
 
-    
-  ::ng-deep.myclass3 {
+
+::ng-deep.myclass3 {
     color: #A5DF00 !important;
-     } 
+}
 
-       
-  ::ng-deep .myclassss {
+
+::ng-deep .myclassss {
     color: #B6440F !important;
-     } 
+}
 
-          
-  ::ng-deep.myclass5 {
+
+::ng-deep.myclass5 {
     color: #FF5C00 !important;
-     } 
+}
 
-              
-  ::ng-deep.myclass6 {
-    
+
+::ng-deep.myclass6 {
+
     color: #FF0000 !important;
-     } 
+}
 
-                 
-  ::ng-deep.myclass7 {
-    
+
+::ng-deep.myclass7 {
+
     color: #FFC24B !important;
-     } 
+}
 
-  ::ng-deep.myclass8 {
-    
+::ng-deep.myclass8 {
+
     color: #0D4C86 !important;
-         } 
+}
 
-         
-  ::ng-deep.Mmyclass {
-    
+
+::ng-deep.Mmyclass {
+
     color: green !important;
-     } 
+}
 
-            
-  ::ng-deep.myclass10 {
-    
+.ordersss {
+    height: 600px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+::ng-deep.myclass10 {
+
     color: #9819FF !important;
-     } 
+}
 
 
 
-.searchInput1
-{
+.searchInput1 {
     font-family: 'Gilroy';
 }
-.imgorder
-{
+
+.imgorder {
     position: relative;
     top: 8px;
     left: 10px;
 }
-.IMGorder
-{
-    position: relative;
-    top: 7px;
-    left: 9px;
-}
-.imgOrder3
-{
+
+.IMGorder {
     position: relative;
     top: 7px;
     left: 9px;
 }
 
-.imgOrder4
-{
+.imgOrder3 {
+    position: relative;
+    top: 7px;
+    left: 9px;
+}
+
+.imgOrder4 {
     position: relative;
     top: 8px;
     left: 12px;
 }
 
-.refresh1
-{
+.refresh1 {
     position: relative;
-    top:-8px;
+    top: -8px;
     left: -4px;
 }
-.refreshbtn1{
+
+.refreshbtn1 {
     /* width: 36px;
     height: 36px;
     margin-top: 6px;
     margin-left: 10px; */
     cursor: pointer;
 
-  }
+}
 
 .refreshbtn1:hover {
     background-color: grey !important;
     color: white !important;
-  }
+}
 
-  /* .input-field[type="text"]::placeholder
+/* .input-field[type="text"]::placeholder
   {
        text-align: left; 
        cursor:left; 
@@ -171,7 +169,7 @@
     margin-top: 1px;
 } */
 
-::ng-deep.weekday .weekdays{
+::ng-deep.weekday .weekdays {
     font-style: normal !important;
 }
 
@@ -193,13 +191,15 @@
 
 input {
     text-align: left;
-  }
+}
+
 ::-webkit-input-placeholder {
     text-align: left;
-  }
+}
+
 :-moz-placeholder {
     text-align: left;
-  }
+}
 
 .dropDown-field {
     width: 215px;
@@ -294,62 +294,62 @@ input {
 }
 
 
-::ng-deep.dlsr  .dropdown-btn span .ng-star-inserted {
+::ng-deep.dlsr .dropdown-btn span .ng-star-inserted {
     /* position: absolute !important;
     right: 20px !important;
     bottom: 10px; */
 
 
     position: absolute !important;
-  right: 62px !important;
-  bottom: 0px;
-  top: 50px !important;
+    right: 62px !important;
+    bottom: 0px;
+    top: 50px !important;
 
-  
 
-   width: 42px;
- border: 1px solid #337ab7;
-   background: #D23F00 !important;
-     font-size: 12px;
-     box-shadow: 1px 1px #959595;
-     color: #fff;
-     height: 20px;
-     border-radius: 15px;
-  text-align: center;
-  margin-left: 10px;
-  margin-right: -1px;
 
-  padding-left: 5px;
+    width: 42px;
+    border: 1px solid #337ab7;
+    background: #D23F00 !important;
+    font-size: 12px;
+    box-shadow: 1px 1px #959595;
+    color: #fff;
+    height: 20px;
+    border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: -1px;
+
+    padding-left: 5px;
 }
-.orderlistdropdown
-{
-    margin-left: 3px; 
+
+.orderlistdropdown {
+    margin-left: 3px;
 }
 
 ::ng-deep .STATUSS1 .dropdown-btn span .ng-star-inserted {
-   
+
 
 
     position: absolute !important;
-  right: 60px !important;
-  bottom: 0px;
-  top: 50px !important;
+    right: 60px !important;
+    bottom: 0px;
+    top: 50px !important;
 
-  
 
-   width: 42px;
- border: 1px solid #337ab7;
-   background: black !important;
-     font-size: 12px;
-     box-shadow: 1px 1px #959595;
-     color: #fff;
-     height: 20px;
-     border-radius: 15px;
-  text-align: center;
-  margin-left: 10px;
-  margin-right: -1px;
 
-  padding-left: 5px;
+    width: 42px;
+    border: 1px solid #337ab7;
+    background: black !important;
+    font-size: 12px;
+    box-shadow: 1px 1px #959595;
+    color: #fff;
+    height: 20px;
+    border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: -1px;
+
+    padding-left: 5px;
 }
 
 
@@ -396,13 +396,14 @@ input {
     height: 41px;
     margin-top: 1px;
     margin-left: 24px;
-    
+
 }
 
 
 ::ng-deep.btnhover1:hover {
     background: #000000 !important;
 }
+
 ::ng-deep.roless .multiselect-dropdown .dropdown-btn .selected-item {
     right: 6% !important;
 }
@@ -413,6 +414,13 @@ input {
 
 .multiselect-dropdown .dropdown-btn .dropdown-multiselect--active .dropdown-multiselect__caret {
     transform: rotate(180deg) !important;
+    /* width: 0px; 
+    right: -2px; */
+}
+
+::ng-deep.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
+    width: 0px;
+    right: 13px;
 }
 
 
@@ -480,6 +488,7 @@ input {
     left: 210%;
     cursor: pointer;
 }
+
 .download-btn2 {
     border: none;
     background: #000000;
@@ -491,7 +500,8 @@ input {
     left: 135%;
     cursor: pointer;
 }
-.download-btn3{
+
+.download-btn3 {
     border: none;
     background: #000000;
     border-radius: 50%;
@@ -649,12 +659,13 @@ mat-sidenav-container {
     border-radius: 25px !important;
 
 }
+
 .ag-theme-material {
     height: 350px;
     border-radius: 20px;
     background-color: white;
     font-family: Gilroy;
-  }
+}
 
 /* ::ng-deep.ag-root-wrapper {
     --ag-border: solid;
@@ -678,7 +689,7 @@ mat-sidenav-container {
 }
 
 .ag-header-cell-label {
-     color: blue !important; 
+    color: blue !important;
     font-weight: bold;
 }
 
@@ -1107,7 +1118,7 @@ mat-sidenav {
     border-radius: 10px;
     padding: 10px;
     background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);
-    
+
 }
 
 #gridContainer .ag-paging-page-summary-panel {
@@ -1123,213 +1134,236 @@ mat-sidenav {
     font-size: 14px;
     font-weight: 900;
 }
+
 .listicon {
     display: flex;
     justify-content: end;
     margin-right: 10px;
-  }
-  
-  .searchBox1 {
+}
+
+.searchBox1 {
     float: right;
-  }
-  .sales-add{
+}
+
+.sales-add {
     background: #000000;
     border-radius: 50%;
     width: 37px;
     height: 37px;
     margin-right: 10px;
     cursor: pointer;
-  }
-  .sales-add:hover
-  {
+}
+
+.sales-add:hover {
     background-color: grey !important;
     color: white !important;
-  }
-  .imgorder{
+}
+
+.imgorder {
     position: relative;
     top: 8px;
     left: 10px;
-  }
-  .sales-download{
+}
+
+.sales-download {
     background: #000000;
     border-radius: 50%;
     width: 37px;
     height: 37px;
     margin-right: 10px;
-  }
-  .dwnld-img{
+}
+
+.dwnld-img {
     position: relative;
     top: 8px;
     left: 10px;
-  }
-  .sales-upload{
+}
+
+.sales-upload {
     background: #000000;
     border-radius: 50%;
     width: 37px;
     height: 37px;
     margin-right: 10px;
-  }
-  .imgupload{
+}
+
+.imgupload {
     position: relative;
     top: 8px;
     left: 10px;
-  }
-  .sales-dwnld{
+}
+
+.sales-dwnld {
     background: #000000;
     border-radius: 50%;
     width: 37px;
     height: 37px;
     cursor: pointer;
-  }
-  .sales-dwnld:hover
-  {
+}
+
+.sales-dwnld:hover {
     background-color: grey !important;
     color: white !important;
-  }
-  .imgdwnl{
+}
+
+.imgdwnl {
     position: relative;
     top: 8px;
     left: 10px;
-  }
-  .searchButton {
-          display:block;
-          color: #FFFFFF;
-          width: 37px;
-          height: 37px;
-          border-radius: 50%;
-          background: #000000;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          transition: 0.2s;
-          border: none;
-        }
-  
-  .searchBox:hover >.searchButton,
-        .searchBox>.searchInput,
-        .search-btn {
-          display:none;
-        }
-  
-  /* .searchBox {
+}
+
+.searchButton {
+    display: block;
+    color: #FFFFFF;
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+    background: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s;
+    border: none;
+}
+
+.searchBox:hover>.searchButton,
+.searchBox>.searchInput,
+.search-btn {
+    display: none;
+}
+
+/* .searchBox {
           float:right;
           position: absolute;
         left: 94%;
           top: 6px;
         } */
-        .searchBox:hover >.searchButton {
-          display:block;
-        }
-        .searchBox:hover>.searchButton {
-          /* right: 190px !important; */
-          background: transparent !important;
-        }
-        .searchInput1{
-          display: none;
-        }
-        .searchInput1 :hover{
-          display: block;
-        }
-        .searchBox1:hover >.searchButton .material-icons {
-          position: relative;    
-          right: 282px;
-          color:#000;
-          top: 3px;
-        }
-        .searchBox:hover >.search-btn {
-          display:block;
-          height: 26px;
-          border: none;
-          background: #000000;
-          color: white;
-          border-radius: 5px;
-          position: absolute;
-          right: 10px;
-          top:84px;
-        }
-  
-        .searchBox1:hover>.search-btn {
-          display: block;
-          height: 26px;
-          border: none;
-          background: #000000;
-          color: white;
-          border-radius: 5px;
-          position: absolute;
-          right: 10px;
-          top: 6px;
-      }
-      .searchBox1:hover>.searchInput1 {
-          display: block;
-          width: 335px;
-          height: 43px;
-          background: #FFFFFF;
-          float: left;
-          padding: 5px 32px 6px;
-          border-radius: 10px;
-          font-family: 'Gilroy';
-          font-style: normal;
-          font-weight: 500;
-          font-size: 12px;
-          line-height: 17px;
-          letter-spacing: 0.08em;
-          color: #263643;
-          box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
-          /* // transition: 0.2s  ease-in-out; */
-          position: absolute;
-          right: 4px;
-          bottom: -3px;
-      }
-      .dropdown-placeholder {
-        background: white;
-        color: #808080;
-        top: 0;
-        position: absolute;
-        height: 41px;
-        line-height: 41px;
-        left: 1px;
-        border-top: 1px solid #000;
-        border-bottom: 1px solid #000;
-        width: 80%;
-        border-radius: 10px 0 0 10px !important;
-        padding-left: 10px;
-        pointer-events: none;
-      }
-      
-      .Dealers-placeholder.dropdown-placeholder .selected-placeholder {
-         color: #D23F00 !important;
-      }
-      ::ng-deep.Dealers .multiselect-dropdown .dropdown-btn .selected-item {
-        background: #D23F00 !important;
-        font-size: 12px;
-      }
-      
-      ::ng-deep .Dealers .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
-        background: #D23F00 !important;
-      }
-      .Geography-placeholder.dropdown-placeholder .selected-placeholder {
-        color: #006466 !important;
-     }
-     ::ng-deep.Geography .multiselect-dropdown .dropdown-btn .selected-item {
-       background: #006466 !important;
-       font-size: 12px;
-     }
-     
-     ::ng-deep .Geography .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
-       background: #006466 !important;
-     }
-     .Status-placeholder.dropdown-placeholder .selected-placeholder {
-        color: #000000 !important;
-     }
-     ::ng-deep.Status .multiselect-dropdown .dropdown-btn .selected-item {
-       background: #000000 !important;
-       font-size: 12px;
-     }
-     
-     ::ng-deep .Status .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
-       background: #000000 !important;
-     }
-     .stts-dropdown {
-        padding-left: 0px;
-        margin-left: 15px;
-     }
+.searchBox:hover>.searchButton {
+    display: block;
+}
+
+.searchBox:hover>.searchButton {
+    /* right: 190px !important; */
+    background: transparent !important;
+}
+
+.searchInput1 {
+    display: none;
+}
+
+.searchInput1 :hover {
+    display: block;
+}
+
+.searchBox1:hover>.searchButton .material-icons {
+    position: relative;
+    right: 282px;
+    color: #000;
+    top: 3px;
+}
+
+.searchBox:hover>.search-btn {
+    display: block;
+    height: 26px;
+    border: none;
+    background: #000000;
+    color: white;
+    border-radius: 5px;
+    position: absolute;
+    right: 10px;
+    top: 84px;
+}
+
+.searchBox1:hover>.search-btn {
+    display: block;
+    height: 26px;
+    border: none;
+    background: #000000;
+    color: white;
+    border-radius: 5px;
+    position: absolute;
+    right: 10px;
+    top: 6px;
+}
+
+.searchBox1:hover>.searchInput1 {
+    display: block;
+    width: 335px;
+    height: 43px;
+    background: #FFFFFF;
+    float: left;
+    padding: 5px 32px 6px;
+    border-radius: 10px;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: 0.08em;
+    color: #263643;
+    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+    /* // transition: 0.2s  ease-in-out; */
+    position: absolute;
+    right: 4px;
+    bottom: -3px;
+}
+
+.dropdown-placeholder {
+    background: white;
+    color: #808080;
+    top: 0;
+    position: absolute;
+    height: 41px;
+    line-height: 41px;
+    left: 1px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    width: 80%;
+    border-radius: 10px 0 0 10px !important;
+    padding-left: 10px;
+    pointer-events: none;
+}
+
+.Dealers-placeholder.dropdown-placeholder .selected-placeholder {
+    color: #D23F00 !important;
+}
+
+::ng-deep.Dealers .multiselect-dropdown .dropdown-btn .selected-item {
+    background: #D23F00 !important;
+    font-size: 12px;
+}
+
+::ng-deep .Dealers .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+    background: #D23F00 !important;
+}
+
+.Geography-placeholder.dropdown-placeholder .selected-placeholder {
+    color: #006466 !important;
+}
+
+::ng-deep.Geography .multiselect-dropdown .dropdown-btn .selected-item {
+    background: #006466 !important;
+    font-size: 12px;
+}
+
+::ng-deep .Geography .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+    background: #006466 !important;
+}
+
+.Status-placeholder.dropdown-placeholder .selected-placeholder {
+    color: #000000 !important;
+}
+
+::ng-deep.Status .multiselect-dropdown .dropdown-btn .selected-item {
+    background: #000000 !important;
+    font-size: 12px;
+}
+
+::ng-deep .Status .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+    background: #000000 !important;
+}
+
+.stts-dropdown {
+    padding-left: 0px;
+    margin-left: 15px;
+}

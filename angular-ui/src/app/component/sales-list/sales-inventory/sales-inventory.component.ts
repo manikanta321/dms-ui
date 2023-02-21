@@ -285,7 +285,9 @@ export class SalesInventoryComponent implements OnInit {
     }
   }
   addSales() {
-    this.dialog.open(AddSalesPopupComponent, {minWidth: '90vw', 
+    this.dialog.open(AddSalesPopupComponent, {
+      minWidth: '90vw', 
+      height:'630px',
     panelClass: 'material-add-edit'
   });
   }

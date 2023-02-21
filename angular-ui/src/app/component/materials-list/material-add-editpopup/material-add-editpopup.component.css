@@ -122,8 +122,8 @@ form[name="myBasicInfo"] {
 }
 
 ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
-  width: 1026px;
-  margin-top: -103px;
+   width: 1020px; 
+   margin-top: -95px;
 }
 
 .mat-horizontal-stepper-wrapper {

@@ -107,9 +107,9 @@
                                 <div class="col-2 qtyalign">
                                     <label>Qty<span class="astr">*</span></label>
 
-                                    <input type="number" placeholder="1" class="qty-box" id=qty name="qty" required [(ngModel)]="addbuyg.MaxVolume" name="qty{{i}}">
+                                    <input type="number" placeholder="1" class="qty-box" id=qty name="qty" required [(ngModel)]="addbuyg.MaxVolume" name="qty{{i}}" disabled="true">
                                     <label>MOQ<span class="astr">*</span></label>
-                                    <input type="number" placeholder="1" class="mty-box" id=moq name="moq" required name="moq{{i}}"   [(ngModel)]="addbuyg.MOQ">
+                                    <input type="number" placeholder="1" class="mty-box" id=moq name="moq" required name="moq{{i}}"   [(ngModel)]="addbuyg.MOQ" disabled="true">
                                 </div>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                             </div>
                             <div class="row">
                                 <div class="productlevel col-12">
-                                    <label>Item Level<span class="astr">*</span></label><br>
+                                    <label>Item Level <span class="astr">*</span></label><br>
                                     <label class="itemsProductOne">Product</label>
                                 </div>
                             </div>
@@ -143,8 +143,7 @@
                                                 <li
                                                 *ngFor="let producttable of addbuyg?.productselectedRows">
                                                 <mat-checkbox class="example-margin font"
-                                                    [checked]="true"
-                                               >
+                                                    [checked]="true"  disabled="true">
                                                <p class="pinside">{{producttable?.productName}}</p></mat-checkbox>
                                             </li>
                                                
@@ -154,7 +153,7 @@
                                 </div>
                                 <div class="col-2 qtyalign">
                                     <label>Qty<span class="astr">*</span></label>
-                                    <input   [(ngModel)]="addbuyg.MaxVolume" name="Getqty{{i}}" type="number" placeholder="1" class="qty-box" id=qty name="qty" required>
+                                    <input   [(ngModel)]="addbuyg.MaxVolume" name="Getqty{{i}}" type="number" placeholder="1" class="qty-box" id=qty name="qty" required disabled="true">
                                 </div>
                             </div>
                         </div>
@@ -169,7 +168,7 @@
 
                             <div class="row" *ngIf="i == 0">
                                 <div class="col-10 buyGrp-h">
-                                    <h5 class="item-header"><b>Buy </b>Sets</h5>
+                                    <h5 class="item-header"><b>Buy</b>Sets</h5>
                                 </div>
                           
                             </div>
@@ -414,7 +413,7 @@
                                 <mat-card-content class="item-in-box-view">
                                     <ul>
                                         <li *ngFor="let producttable of productselectedRows">
-                                            <mat-checkbox class="example-margin font" [checked]="true"
+                                            <mat-checkbox class="example-margin font" [checked]="true"  disabled="true"
                                                 >
 <p class="pinside">                                                {{producttable?.productName}}
 </p>                                            </mat-checkbox>
@@ -447,7 +446,7 @@
                             <div class="row" *ngFor="let packingCharge of packingVolume; let i = index;">
                                 <div class="col-3">
                                     <input class="qtyOfItems" type="text" id="pValue" required placeholder="100"
-                                    [(ngModel)]="packingCharge.MinVolume" name="address_{{i}}"  >
+                                    [(ngModel)]="packingCharge.MinVolume" name="address_{{i}}" disabled="true" >
                                 </div>
                                 <div class="col-3">
                                     <input class="qtyOfItems" type="text" id="pValue" name="" placeholder="999" disabled

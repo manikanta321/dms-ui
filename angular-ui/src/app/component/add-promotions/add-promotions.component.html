@@ -286,7 +286,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-10">
-                                                <b>Set {{i}}</b>
+                                                <b>Set  {{i+1}}</b>
                                                 <!-- <b class="set2 mt-2" *ngIf="i >= 1">Set {{i}}</b> -->
                                             </div>
                                             <div class="col-lg-2" *ngIf="i >= 1" (click)="removeaddbuyAB(i)">
@@ -299,7 +299,7 @@
                                                 [(ngModel)]="addbuyg1.itemss">
                                                 <div class="row">
                                                     <div class="col-10 buyGrp-h">
-                                                        <h5 class="item-header"><b>Buy </b>group {{j}}</h5>
+                                                        <h5 class="item-header"><b>Buy </b>group {{j+1}}</h5>
                                                     </div>
                                                     <div class="col-2 plsImg" (click)="addsubbuy(i,j)" *ngIf="j==0">
                                                         <img src="assets/img/plus.png" class="plus-image"
@@ -379,7 +379,7 @@
 
                                         <div class="row">
                                             <div class="col-lg-10">
-                                                <b>Set {{i}}</b>
+                                                <b>Set {{i+1}}</b>
                                                 <!-- <b class="gset2 mt-2" *ngIf="i >= 1">Set {{i}}</b> -->
                                             </div>
                                             <div class="col-lg-2" *ngIf="i >= 1" (click)="removeaddgetAB(i)">
@@ -391,7 +391,7 @@
                                                 *ngFor="let addget of addgetset[i].GetGroups; let j=index">
                                                 <div class="row">
                                                     <div class="col-10 buyGrp-h">
-                                                        <h5 class="item-header"><b>Get </b>group {{j}}</h5>
+                                                        <h5 class="item-header"><b>Get </b>group {{j+1}}</h5>
                                                     </div>
                                                     <div class="col-2 plsImg" (click)="addsubGetbuy(i,j)" *ngIf="j==0">
                                                         <img src="assets/img/plus.png" class="plus-image"

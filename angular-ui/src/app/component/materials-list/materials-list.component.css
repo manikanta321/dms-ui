@@ -826,7 +826,7 @@ padding-left: 11px;
 }
 .showOnlyCheckbox{
   position: relative;
-    bottom: 33px;
+    /* bottom: 33px; */
 }
 /* ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background{
   background: black !important;
@@ -844,8 +844,9 @@ padding-left: 11px;
   display: flex;
   justify-content: end;
   margin-right: 10px;
-  margin-top: 60px; 
-  
+   margin-top: 100px; 
+   
+   
 }
 
 ::ng-deep .catty .dropdown-btn span .ng-star-inserted {

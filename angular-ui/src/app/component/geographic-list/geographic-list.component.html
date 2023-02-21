@@ -30,13 +30,15 @@
     
               <div class="searchBox1 d-flex">
                 <input class="searchInput1" type="text" name="" placeholder="Type & search for anything"(keyup)="onSearchChange($event)">
-                <button class="search-btn">Search</button>
+                
                 <button class="searchButton" href="#">
                   <i class="material-icons">
                     search
                   </i>
                 </button>
+                <button class="search-btn">Search</button>
               </div>
+             
             </div>
             <div class="col-md-1">
          
@@ -84,5 +86,5 @@
 </div>
 <div class="pagination" *ngIf="!shippingChk">
   <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of
-  <span class="pagination-cls">{{rowData6.length}}</span>
+  <span class="pagination-cls">{{rowData5.length}}</span>
 </div>

@@ -62,17 +62,32 @@
 .searchBox1:hover>.search-btn {
   right: 183px !important;
 }
+.searchBox1:hover>.search-btn {
+  display: block;
+  height: 26px;
+  border: none;
+  background: #000000;
+  color: white;
+  border-radius: 5px;
+  position: absolute;
+  right: 10px;
+  top: 6px;
+}
 
 .srch-hover {
   margin-top: 13px;
   position: relative;
-  left: 32px;
+  left: 86px;
 }
 
 .searchBox1:hover>.searchButton {
-  /* right: 190px !important; */
+  /* right: 183px !important; */
   background: transparent !important;
 }
+.searchBox1:hover>.search-btn {
+  right: 20px !important;
+}
+
 
 .dropdown-placeholder {
   background: white;
@@ -187,6 +202,8 @@
 .searchBox>.searchInput,
 .search-btn {
   display: none;
+  /* position: relative;
+  left: 1%; */
 }
 
 .searchBox {
@@ -328,7 +345,7 @@ left: 84%; */
   height: 37px;
   top: 6px;
   position: absolute;
-  left: 72%;
+  left: 231%;
 }
 
 .download-btn {

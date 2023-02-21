@@ -538,9 +538,9 @@ export class AddTargetGroupsProductsComponent implements OnInit {
   addTypeSelect(item: any) {
     // alert(this.typeI)
     this.typeTosend.push(item.typeId);
-    const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+    const data = { 
+      category: this.catergory,
+      subCategory: this.sub_categorys, 
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -621,8 +621,8 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     this.productID.push(item.productGroupId);
     console.log(item);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,

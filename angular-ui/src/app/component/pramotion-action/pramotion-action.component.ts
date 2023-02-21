@@ -127,8 +127,8 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
     localStorage.setItem('addOrEdit','editpromo');
     
     const config: MatDialogConfig = {
-      width: '1100px',
-      height: '583px',
+      minWidth: '90vw',      
+      height: '610px',
      
     };
     this.isOpen = false;
@@ -139,12 +139,8 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
 
   viewPromo(){
     const config: MatDialogConfig = {
-    
-
-       minWidth: '78vw',
-       height: '87vh',
-    
-     
+      minWidth: '90vw',      
+      height: '610px',
     };
     this.isOpen = false;
     this.dialog.open( ViewPromotionPopupComponent, config);

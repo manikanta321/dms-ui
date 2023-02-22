@@ -561,8 +561,8 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     });
 
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -577,8 +577,8 @@ export class AddTargetGroupsProductsComponent implements OnInit {
 
     this.typeTosend = [];
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -606,8 +606,8 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     })
     this.typeTosend = this.typessArray;
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -665,8 +665,8 @@ export class AddTargetGroupsProductsComponent implements OnInit {
 
     // this.userTypes.pop(item.roleId);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -682,8 +682,8 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     this.productID = this.prodArray;
     console.log("ProdData", this.ProdData);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -718,8 +718,8 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     this.productIDentifire = [];
     this.searchText = '';
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,

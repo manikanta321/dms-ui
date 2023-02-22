@@ -343,16 +343,20 @@ export class DealerTargetComponent implements OnInit {
 
    // this.dataSource.sort = this.sort;
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
-      if (res.matches) {
-        this.sidenav.mode = 'over';
-        this.sidenav.close();
-      } else {
-        this.sidenav.mode = 'side';
-        this.sidenav.open();
+      if(this.sidenav){
+        if (res.matches) {
+          this.sidenav.mode = 'over';
+          this.sidenav.close();
+        } else {
+          this.sidenav.mode = 'side';
+          this.sidenav.open();
+        }
       }
     });
-    this.message = this.child.message
-    console.log('parent is working', this.message)
+    if(this.child){
+      this.message = this.child.message;
+    }
+    // console.log('parent is working', this.message)
   }
 
 
@@ -389,11 +393,11 @@ export class DealerTargetComponent implements OnInit {
   }
 
   onSelectAll(items: any) {
-    console.log('onSelectAll', items);
+    // console.log('onSelectAll', items);
   }
 
   onStatusAll(items: any) {
-    console.log('onSelectAll', items);
+    // console.log('onSelectAll', items);
   }
 
   toogleShowFilter() {
@@ -454,7 +458,7 @@ export class DealerTargetComponent implements OnInit {
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
     // this.TargetTabelData();
@@ -471,7 +475,7 @@ export class DealerTargetComponent implements OnInit {
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -490,7 +494,7 @@ export class DealerTargetComponent implements OnInit {
       this.geographyListData.forEach(element => {
         return this.geographyArray.push(element.geographyId);
       })
-      console.log('geographyArray', this.geographyArray)
+      // console.log('geographyArray', this.geographyArray)
       this.toppings = new FormControl(this.geographyListData);
       this.dropdownSettings = {
         singleSelection: false,
@@ -506,7 +510,7 @@ export class DealerTargetComponent implements OnInit {
   }
   onGeographyItemSelect(item: any) {
     this.geographySelected.push(item.geographyId);
-console.log("SelectedGeo",this.geographySelected)
+// console.log("SelectedGeo",this.geographySelected)
     const data = {
       Targetid:this.targetSelected,
       GeographyId:this.geographySelected,
@@ -518,7 +522,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -535,7 +539,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -552,7 +556,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -572,7 +576,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
 
@@ -608,7 +612,7 @@ console.log("SelectedGeo",this.geographySelected)
     this.targetList.financialYear().subscribe((res: any) => {
       this.toppingList1 = res.response;
       
-      console.log('New Year', this.toppingList1)
+      // console.log('New Year', this.toppingList1)
       this.toppingList1.forEach(element => {
         return this.statusArray.push(element.statusId);
       
@@ -644,7 +648,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -661,7 +665,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {//yet to change
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -678,7 +682,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {//yet to change
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -698,20 +702,20 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
 
   }
   roleFilter(data: any) {
-    console.log('data', data)
+    // console.log('data', data)
     this.roleName = this.toppings.value;
     this.user.UserFilterServices(this.roleName, this.statusname).subscribe((res: any) => {
       this.rowData = res.response;
 
 
     });
-    console.log('rolename', this.rowData)
+    // console.log('rolename', this.rowData)
   }
   onDealerItemSelect(item: any) {
     this.dealerSelected.push(item.customerId);
@@ -727,7 +731,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -744,7 +748,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -761,7 +765,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -781,7 +785,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
 
@@ -840,9 +844,6 @@ console.log("SelectedGeo",this.geographySelected)
 
   onCellValueChanged(event: CellValueChangedEvent) {
     // alert(event.value)
-    console.log(
-      'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
-    );
   }
 
   onSearchChange($event: any, anything?: any) {
@@ -859,7 +860,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
 
@@ -906,10 +907,10 @@ console.log("SelectedGeo",this.geographySelected)
   }
 
   onCellClicked(e): void {
-    console.log('cellClicked', e);
+    // console.log('cellClicked', e);
     this.userId = e.data.targetAssociationId;
     this.employeeName = e.data.userName;
-    console.log('userID', this.userId);
+    // console.log('userID', this.userId);
     localStorage.setItem('editOrAddTarget', this.userId)
     if ( e.event.target.dataset.action == 'toggle' && e.column.getColId() == 'action' ) {
       const cellRendererInstances = e.api.getCellRendererInstances({
@@ -937,7 +938,7 @@ console.log("SelectedGeo",this.geographySelected)
   targetListGroup(){
     this.targetList.getTargetList().subscribe((res) => {
       this.targetListData  = res.response;
-    console.log("check target",this.targetListData );
+    // console.log("check target",this.targetListData );
     let localdata =this.targetListData;
           this.targetListArray = localdata.map((data: { targetGroupId: any; targetGroupName: any; }) => {
             return { targetGroupId: data.targetGroupId, targetGroupName: data.targetGroupName };
@@ -947,7 +948,7 @@ console.log("SelectedGeo",this.geographySelected)
           this.targetListArray.forEach(element => {
             return this.targetAllArray.push(element.targetGroupId);
           })
-          console.log('targetAllArray', this.targetAllArray)
+          // console.log('targetAllArray', this.targetAllArray)
     
     })
     this.targetSettings = {
@@ -974,7 +975,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -991,7 +992,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -1008,7 +1009,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
   }
@@ -1028,7 +1029,7 @@ console.log("SelectedGeo",this.geographySelected)
     }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
-  console.log("TargetTableData",this.rowData5)
+  // console.log("TargetTableData",this.rowData5)
 
     });
 
@@ -1037,7 +1038,7 @@ console.log("SelectedGeo",this.geographySelected)
     this.targetList.getDealers().subscribe((res) => {
       this.dealerListData  = res.response;
       let localdata = this.dealerListData
-    console.log("check Dealer",this.dealerListData );
+    // console.log("check Dealer",this.dealerListData );
           this.dealerList = localdata.map((data: { customerId: any; customerName: any; }) => {
             return { customerId: data.customerId, customerName: data.customerName };
           });
@@ -1046,7 +1047,7 @@ console.log("SelectedGeo",this.geographySelected)
           this.dealerList.forEach(element => {
             return this.dealerArray.push(element.customerId);
           })
-          console.log('dealerArray', this.dealerArray)
+          // console.log('dealerArray', this.dealerArray)
     
     })
     this.dealerDropdownSettings = {

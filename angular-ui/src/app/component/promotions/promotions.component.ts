@@ -1141,11 +1141,12 @@ handleRowDataChanged(event) {
 }
 
 handleScroll(event) {
-  if(this.instancePopup && this.instancePopup.isOpen){
+
+  if (this.instancePopup && this.instancePopup.isOpen) {
     this.instancePopup.togglePopup();
     this.instancePopup = null;
   }
-  
+
   const grid = document.getElementById('gridContainer');
   if (grid) {
     const gridBody = grid.querySelector('.ag-body-viewport') as any;

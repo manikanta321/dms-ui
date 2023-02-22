@@ -53,13 +53,11 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
         
         switch (showCaseMenuList.length) {
           case 4:{
-          
             this.offsetValue = [-100, 200];
             break;
           }
             
           case 3:{
-            console.log(showCaseMenuList.length);
             this.offsetValue = [-72, 200];
             break;
           }
@@ -89,7 +87,11 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
 
 
   configureTippyInstance() {
-    this.tippyInstance.enable();
+    // this.tippyInstance = tippy(this.button.nativeElement);
+    if(this.tippyInstance.enable){
+      this.tippyInstance.enable();
+    }
+        
     this.tippyInstance.show();
     this.tippyInstance.setProps({
       trigger: 'manual',

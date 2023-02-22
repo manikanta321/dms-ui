@@ -930,11 +930,11 @@ console.log('addgetgroup',this.addgetgroup);
 
   }
   handleScroll(event) {
-    var tippyPopups: NodeListOf<Element> | null | undefined = document.querySelectorAll(".tippy-box[data-theme='user-tippy']");
+    // var tippyPopups: NodeListOf<Element> | null | undefined = document.querySelectorAll(".tippy-box[data-theme='user-tippy']");
 
-    tippyPopups.forEach(element => {
-      element.parentNode?.removeChild(element)
-    })
+    // tippyPopups.forEach(element => {
+    //   element.parentNode?.removeChild(element)
+    // })
     const grid = document.getElementById('gridContainer');
     if (grid) {
       const gridBody = grid.querySelector('.ag-body-viewport') as any;

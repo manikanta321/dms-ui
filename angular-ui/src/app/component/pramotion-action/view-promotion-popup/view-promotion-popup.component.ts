@@ -274,21 +274,21 @@ export class ViewPromotionPopupComponent implements OnInit {
       // cellStyle: { color: '#017EFA' },
     },
 
-    {
-      headerName: '',
-      colId: 'action',
-      // cellRenderer: UseractionComponent,
-      editable: false,
-      maxWidth: 75
-      //    headerName: "",
-      // field: '',  filter: false, sortable: false,width:20,
-      // cellRenderer: function clickNextRendererFunc(){
-      //   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
-      // }, 
-      //  cellEditorPopup: true,
-      //  onCellClicked: (event: CellClickedEvent) => this.dialog.open(DeletecomponentComponent, {panelClass: 'editpopup'})
-      // // onCellClicked: (event: CellClickedEvent) => this.iconDisabled = true
-    },
+    // {
+    //   headerName: '',
+    //   colId: 'action',
+    //   // cellRenderer: UseractionComponent,
+    //   editable: false,
+    //   maxWidth: 75
+    //   //    headerName: "",
+    //   // field: '',  filter: false, sortable: false,width:20,
+    //   // cellRenderer: function clickNextRendererFunc(){
+    //   //   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
+    //   // }, 
+    //   //  cellEditorPopup: true,
+    //   //  onCellClicked: (event: CellClickedEvent) => this.dialog.open(DeletecomponentComponent, {panelClass: 'editpopup'})
+    //   // // onCellClicked: (event: CellClickedEvent) => this.iconDisabled = true
+    // },
 
     
 
@@ -769,11 +769,11 @@ export class ViewPromotionPopupComponent implements OnInit {
 
   }
   handleScroll(event) {
-    var tippyPopups: NodeListOf<Element> | null | undefined = document.querySelectorAll(".tippy-box[data-theme='user-tippy']");
+    // var tippyPopups: NodeListOf<Element> | null | undefined = document.querySelectorAll(".tippy-box[data-theme='user-tippy']");
 
-    tippyPopups.forEach(element => {
-      element.parentNode?.removeChild(element)
-    })
+    // tippyPopups.forEach(element => {
+    //   element.parentNode?.removeChild(element)
+    // })
     const grid = document.getElementById('gridContainer');
     if (grid) {
       const gridBody = grid.querySelector('.ag-body-viewport') as any;

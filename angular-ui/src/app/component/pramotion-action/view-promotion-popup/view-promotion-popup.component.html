@@ -65,8 +65,7 @@
                 <!-- <div *ngIf="buyab"> -->
                 <div class="row"  *ngIf="selectedPromo== 1">
                     <div class="col-lg-6 BuyGroup">
-                        <div class="buy1" *ngFor="let addbuyg of buyGroupPlus; let i=index"
-                        [(ngModel)]="addbuyg.itemss">
+                        <div class="buy1" *ngFor="let addbuyg of buyGroupPlus; let i=index">
                             <div class="row">
                                 <div class="col-10 buyGrp-h">
                                     <h5 class="item-header"><b>Buy </b>group {{i+1}}</h5>
@@ -116,8 +115,7 @@
                     </div>
 
                     <div class="col-lg-6 GetGroup">
-                        <div class="get1" [(ngModel)]="addbuyg.getItems"
-                        *ngFor="let addbuyg of addgetgroup; let i=index">
+                        <div class="get1" *ngFor="let addbuyg of addgetgroup; let i=index">
                             <div class="row">
                                 <div class="col-10 buyGrp-h">
                                     <h5 class="item-header"><b>Get </b>group  {{i+1}}</h5>
@@ -183,8 +181,7 @@
                             </div>
                             <div class="buyoneSet">
                                 <div class="buy-set-1"
-                                    *ngFor="let addbuyg1 of addbuyset[i].BuyGroups; let j=index"
-                                    [(ngModel)]="addbuyg1.itemss">
+                                    *ngFor="let addbuyg1 of addbuyset[i].BuyGroups; let j=index" >
                                     <div class="row">
                                         <div class="col-10 buyGrp-h">
                                             <h5 class="item-header"><b>Buy </b>group {{j}}</h5>

@@ -323,7 +323,10 @@ export class DealersComponent implements OnInit {
         this.sidenav.open();
       }
     });
-    this.message = this.child.message
+    
+    if(this.child){
+      this.message = this.child.message;
+    }
     console.log('parent is working', this.message)
   }
 

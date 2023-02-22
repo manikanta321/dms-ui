@@ -260,9 +260,7 @@ console.log(this.selectedDateRanges);
 removeobj(i){
   console.log(this.SalesObj)
 
-  this.SalesObj.forEach((element, index) => {
-   this.SalesObj.splice(index, 1);
-  });
+     this.SalesObj.splice(i, 1);
 
   console.log(this.SalesObj)
 }

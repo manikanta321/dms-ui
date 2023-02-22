@@ -142,7 +142,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <label class="addDealerlabels">Billing Address <span class="Astr">*</span></label>
+                        <label class="addDealerlabels">Product Custom Identifiers </label>
                         <p class="billingAddress">{{dealerAdressToDisplay}}</p>
                     </div>
                 </div>
@@ -179,29 +179,41 @@
             </div>
             <div *ngIf="sales">
                 <div class="content">
-                    <div class="col-12" style="text-align: end; margin-top: 15px;" (click)="addsalesobj()">
-                        <mat-icon class="addAlign">add_circle</mat-icon>
+                  
+                       <div class="row">
+
+                        <div class="col-3">
+                        </div>
+                       <div class="col-2">
+                       </div>
+                   <div class="col-6">
                     </div>
-                    <div *ngFor="let data of SalesObj; let i index">
+               <div class="col-1 ">
+                <div class="col-1 " (click)="addsalesobj()">
+                    <mat-icon class="addAlign">add_circle</mat-icon>
+                </div>
+</div>
+ </div> 
+                    <div *ngFor="let data of SalesObj; let i= index">
                         <div class="row">
                             <div class="col-3 dateleft">
                                 <p>Date</p>
                             </div>
-                            <div class="col-2">
-                                <p>Quantity</p>
+                            <div class="col-2 quantityleft">
+                                <p id="qty">Quantity</p>
                             </div>
-                            <div class="col-6">
+                            <div class="col-6 customerleft">
                                 <p>Customer Reference</p>
                             </div>
                             <div class="col-1" >
-                            </div>
+                                </div>
 
                         </div>
                         <div class="row">
                             <div class="col-3">
                                 <div class="sales-popup-datepicker">
 
-                                    <mat-form-field class="placeh-align">
+                                    <mat-form-field class="placeh-align dateheight">
                                         <mat-label class="selectdate">Select the date</mat-label>
 
                                         <input matInput placeholder="" [matDatepicker]="picker2"
@@ -218,16 +230,31 @@
                                 </div>
                             </div>
                             <div class="col-2 Dquantity">
-                                <input type="text" placeholder="2000" [(ngModel)]="data.Quantity">
+                                <input type="text" placeholder="Enter" [(ngModel)]="data.Quantity">
                             </div>
                             <div class="col-6 custmRef">
-                                <input type="text" placeholder="nandhanal supermarket"
-                                    [(ngModel)]="data.CustomerSpecification" />
+                                <input type="text" placeholder="Enter Customer Reference"
+                                    [(ngModel)]="data.CustomerSpecification"  />
                             </div>
-                            <div class="col-1 rmvicon">
-                                <mat-icon class="removeCircle" (click)="removeobj(i)"
-                                    *ngIf="SalesObj.length>=2">remove_circle</mat-icon>
-                            </div>
+                            
+                             
+
+                                <div class="col-1"> 
+
+
+                                <div class="col-1" >
+                               
+
+                                        <mat-icon (click)="removeobj(i)"
+                                        class="col-2 remove-mat-icon delete-icon remove-address"
+                                        [ngClass]="{ 'removeCircle': SalesObj.length>1 ,'removeCircle1': SalesObj.length==1 }"
+                                        *ngIf="SalesObj.length >= 0 " >remove_circle
+                                    </mat-icon>
+
+                                   
+                            </div> 
+
+                            
                         </div>
                     </div>
 

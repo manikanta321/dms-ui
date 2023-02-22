@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-md-8 check1">
                         <p *ngIf="showdealerName" class="label-cls"><b>Dealer Name:</b> {{selectedCoustmerName}} ;
-                            <b>Dealer Code:</b> 123456789
+                            <b>Dealer Code:</b> {{customerCode}}
                         </p>
                     </div>
                     <div class="col-md-1" (click)="expandOrderItemsDiv()">
@@ -96,7 +96,7 @@
                     </div>
                     <div class="col-md-8 check1">
                         <p class="label-cls" *ngIf="visibleProcuct"><b>Product Name:</b> {{productselectedName}} ;
-                            <b>Product Code:</b> 123456789
+                            <b>Product Code:</b> {{productSKUName}}
                         </p>
                     </div>
                     <div class="col-md-1">
@@ -143,7 +143,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <label class="addDealerlabels">Product Custom Identifiers </label>
-                        <p class="billingAddress">{{dealerAdressToDisplay}}</p>
+                        <p class="billingAddress">{{productCustomIdentifier}}</p>
                     </div>
                 </div>
 
@@ -247,7 +247,7 @@
 
                                         <mat-icon (click)="removeobj(i)"
                                         class="col-2 remove-mat-icon delete-icon remove-address"
-                                        [ngClass]="{ 'removeCircle': SalesObj.length>1 ,'removeCircle1': SalesObj.length==1 }"
+                                        [ngClass]="{ 'removeCircle': i>0 ,'removeCircle1': i==0  }"
                                         *ngIf="SalesObj.length >= 0 " >remove_circle
                                     </mat-icon>
 

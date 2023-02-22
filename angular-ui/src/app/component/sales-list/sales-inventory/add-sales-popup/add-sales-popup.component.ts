@@ -25,7 +25,7 @@ export class AddSalesPopupComponent implements OnInit {
   addsalesGeoDropDown: any = []
   productDetails:any=[]
   AddSales :any =[]
-  productCustomIdentifier= true;
+  productCustomIdentifier:any='';
   image1 = 'assets/img/minimize-tag.png';
   image2 = 'assets/img/minimize-tag.png';
   image3 = 'assets/img/minimize-tag.png';
@@ -180,6 +180,7 @@ SalesObj:any=[{
   dealersShippingAddress: any;
   dealersbillingAddress: any;
   dealerDisabled: boolean = false;
+  customerCode:any;
   clickNextRendererFunc(){
     alert('hlo');
   }
@@ -270,7 +271,6 @@ removeobj(i){
       console.log(res.response)
       this.addSalesdropdown=res.response;
     this.selectedDealersID =this.addSalesdropdown.customerId;
-
     })
   }
 
@@ -331,6 +331,7 @@ getdealersGeography(data){
     console.log(item);
     this.SelectedCoustmerId=item.customerId;
     this.selectedCoustmerName=item.customerName;
+    this.customerCode=item.customerCode;
     this.dealerAdress(this.SelectedCoustmerId);
 
     this.productDetails=[];
@@ -377,6 +378,7 @@ this.salesService.getProductInfo(this.productSelectedId).subscribe((res)=>{
   this.productSKUName=res.response.productSKUName;
   this.productLink=res.response.productLink;
 
+  this.productCustomIdentifier=res.response.productCustomName;
 })
 
   }

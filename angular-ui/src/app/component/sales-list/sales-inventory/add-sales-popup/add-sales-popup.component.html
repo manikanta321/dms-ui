@@ -44,9 +44,9 @@
                         [data]="toppingList3" (onSelect)="onTypeSelect($event)"
                         (onSelectAll)="onTypeAll($event)">
                     </ng-multiselect-dropdown> -->
-                            <ng-select [items]="GeoGrapydropdownListdata" [(ngModel)]="geographyId" class="geographyclass"
-                                bindValue="geographyId" bindLabel="geographyName" placeholder="Select the geography"
-                                #geoghraphy (change)="onGeoSelect($event)" required>
+                            <ng-select [items]="GeoGrapydropdownListdata" [(ngModel)]="geographyId"
+                                class="geographyclass" bindValue="geographyId" bindLabel="geographyName"
+                                placeholder="Select the geography" #geoghraphy (change)="onGeoSelect($event)" required>
                             </ng-select>
                         </div>
                     </div>
@@ -179,21 +179,21 @@
             </div>
             <div *ngIf="sales">
                 <div class="content">
-                  
-                       <div class="row">
+
+                    <div class="row">
 
                         <div class="col-3">
                         </div>
-                       <div class="col-2">
-                       </div>
-                   <div class="col-6">
+                        <div class="col-2">
+                        </div>
+                        <div class="col-6">
+                        </div>
+                        <div class="col-1 ">
+                            <div class="col-1 " (click)="addsalesobj()">
+                                <mat-icon class="addAlign">add_circle</mat-icon>
+                            </div>
+                        </div>
                     </div>
-               <div class="col-1 ">
-                <div class="col-1 " (click)="addsalesobj()">
-                    <mat-icon class="addAlign">add_circle</mat-icon>
-                </div>
-</div>
- </div> 
                     <div *ngFor="let data of SalesObj; let i= index">
                         <div class="row">
                             <div class="col-3 dateleft">
@@ -205,8 +205,8 @@
                             <div class="col-6 customerleft">
                                 <p>Customer Reference</p>
                             </div>
-                            <div class="col-1" >
-                                </div>
+                            <div class="col-1">
+                            </div>
 
                         </div>
                         <div class="row">
@@ -234,41 +234,41 @@
                             </div>
                             <div class="col-6 custmRef">
                                 <input type="text" placeholder="Enter Customer Reference"
-                                    [(ngModel)]="data.CustomerSpecification"  />
+                                    [(ngModel)]="data.CustomerSpecification" />
                             </div>
-                            
-                             
-
-                                <div class="col-1"> 
 
 
-                                <div class="col-1" >
-                               
 
-                                        <mat-icon (click)="removeobj(i)"
+                            <div class="col-1">
+
+
+                                <div class="col-1">
+
+
+                                    <mat-icon (click)="i>0 ? removeobj(i) : null"
                                         class="col-2 remove-mat-icon delete-icon remove-address"
                                         [ngClass]="{ 'removeCircle': i>0 ,'removeCircle1': i==0  }"
-                                        *ngIf="SalesObj.length >= 0 " >remove_circle
+                                        *ngIf="SalesObj.length >= 0 ">remove_circle
                                     </mat-icon>
 
-                                   
-                            </div> 
 
-                            
+                                </div>
+
+
+                            </div>
                         </div>
+
+
                     </div>
-
-
+                </div>
+            </div>
+            <div class="row footer">
+                <div class="col-md-6">
+                    <button type="button" class="saveas-draft" (click)="saveSales()">Save </button>
+                </div>
+                <div class="col-md-6">
+                    <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
                 </div>
             </div>
         </div>
-        <div class="row footer">
-            <div class="col-md-6">
-                <button type="button" class="saveas-draft" (click)="saveSales()">Save </button>
-            </div>
-            <div class="col-md-6">
-                <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
-            </div>
-        </div>
     </div>
-</div>

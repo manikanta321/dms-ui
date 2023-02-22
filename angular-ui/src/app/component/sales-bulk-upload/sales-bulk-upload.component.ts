@@ -14,7 +14,7 @@ export class SalesBulkUploadComponent implements OnInit {
     private salesService:SalesServicesService,
     private dialogRef: MatDialogRef<SalesBulkUploadComponent>,
     private dialog: MatDialog,
-    private orderShipment:OrderShipmentService,
+    private orderShipment:OrderShipmentService,  
   ) { }
   totalRows:any;
   errorFree:any;
@@ -338,6 +338,7 @@ export class SalesBulkUploadComponent implements OnInit {
     
     this.dialogRef.close();
   })
+ 
  } 
 //  getColor(data: any) {
 //   var variable = data.remarks.split(":")[1];
@@ -374,6 +375,10 @@ export class SalesBulkUploadComponent implements OnInit {
   // }
  
   
+  closedialogbox()
+  {
+    this.dialogRef.close();
+  }
 }
 
 

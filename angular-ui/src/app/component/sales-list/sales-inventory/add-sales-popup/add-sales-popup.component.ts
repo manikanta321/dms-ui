@@ -3,9 +3,10 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridApi, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
 import { SalesServicesService } from 'src/app/services/sales-services.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { SharedServiceAddsalesService } from 'src/app/services/shared-service-addsales.service';
+import { AddSalesSuccessComponent } from './add-sales-success/add-sales-success.component';
 
 @Component({
   selector: 'app-add-sales-popup',
@@ -189,6 +190,7 @@ private salesService:SalesServicesService,
 private dialogRef: MatDialogRef<AddSalesPopupComponent>,
 private orders: OrdersApisService,
 private shared :SharedServiceAddsalesService,
+public dialog: MatDialog
   ) { }
   selectedSalesDate:any;
   selectedSalesDateRaw:any;
@@ -464,7 +466,10 @@ this.salesService.AddSales(mainobj).subscribe((res)=>{
     this.dialogRef.close();
     this.shared.filter('Register click')
 
+    this.dialog.open(AddSalesSuccessComponent, {panelClass: 'activeSuccessPop'})
+
   }
+  
 
 })
 

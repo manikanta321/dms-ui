@@ -745,8 +745,17 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
       console.log("Response Data",this.shipmentDatalist)
     });
   }
+  convertedDateFormat() {
+    var x = new Date();
+    var y = x.getFullYear().toString();
+    var m = (x.getMonth() + 1).toString();
+    var d = x.getDate().toString();
+    (d.length == 1) && (d = '0' + d);
+    (m.length == 1) && (m = '0' + m);
+    return d + m + y;
+  }
   bulkDownload() {
-    this.gridApi.exportDataAsCsv();
+    this.gridApi.exportDataAsCsv({ fileName: 'ordersShipment_' + this.convertedDateFormat() });
   }
   emptyDownload(){
 this.emptyDownloadArray = this.shipmentDatalist;

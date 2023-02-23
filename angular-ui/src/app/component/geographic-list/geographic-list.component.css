@@ -4,7 +4,7 @@
 
 .searchBox1:hover>.searchButton .material-icons {
   position: relative;
-  right: 282px;
+  right: 291px;
   color: #000;
   top: 3px;
 }
@@ -39,7 +39,7 @@
   box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
   /* // transition: 0.2s  ease-in-out; */
   position: absolute;
-  right: 4px;
+  right: -20px;
   bottom: -3px;
 }
 
@@ -56,7 +56,7 @@
 }
 
 .searchBox1 {
-  left: 37%
+  margin-left: 34px;
 }
 
 .searchBox1:hover>.search-btn {
@@ -77,15 +77,16 @@
 .srch-hover {
   margin-top: 13px;
   position: relative;
-  left: 86px;
+  
 }
+
 
 .searchBox1:hover>.searchButton {
   /* right: 183px !important; */
   background: transparent !important;
 }
 .searchBox1:hover>.search-btn {
-  right: 20px !important;
+  right: -9px !important;
 }
 
 
@@ -106,11 +107,11 @@
 }
 
 #icons11{
-  margin-bottom: 11px;
+  /* margin-bottom: 11px; */
 }
 
 #allicons {
-  margin-left: 69%;
+  margin-left: 76%;
   margin-bottom: 10px;
 }
 
@@ -345,7 +346,7 @@ left: 84%; */
   height: 37px;
   top: 6px;
   position: absolute;
-  left: 231%;
+  
 }
 
 .download-btn {

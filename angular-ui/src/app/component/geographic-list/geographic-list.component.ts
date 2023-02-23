@@ -49,6 +49,7 @@ export class GeographicListComponent implements OnInit {
   shippingBtn: any;
   shippingChk: boolean = true;
   paginationScrollCount: any;
+  paginationScrollCountNew:any;
   paginationPageSize = 10;
   stayScrolledToEnd = true;
   instancePopup: any = null;
@@ -333,6 +334,8 @@ export class GeographicListComponent implements OnInit {
       //const api =  this.rowData5;
       this.stayScrolledToEnd = (scrollDiff <= this.paginationPageSize);
       this.paginationScrollCount = this.rowData5.length;
+      this.paginationScrollCountNew = this.rowData6.length;
+
     }
   }
   onSearchChange($event: any, anything?: any) {

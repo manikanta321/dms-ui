@@ -21,7 +21,7 @@
 }
 
 ::ng-deep.product .multiselect-dropdown {
-    border: 1px solid black;
+    border: 1px solid black !important;
     border-radius: 6px;
 }
 

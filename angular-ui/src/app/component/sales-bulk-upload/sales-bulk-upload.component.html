@@ -63,7 +63,7 @@
                                 {{dupicateData.productCode}}</td>
                             <td style="width: 150px;" title="">{{dupicateData.productName}}</td>
                               <td title="">{{dupicateData.geography}}</td>
-                            <td>{{dupicateData.saleDate}}</td>
+                            <td>{{dupicateData.saleDate.substring(0,11)}}</td>
                             <td>{{dupicateData.saleQuantity}}</td>
                             <td style="width: 135px;">{{dupicateData.customerReference}}</td>
                             <td></td>
@@ -98,7 +98,7 @@
                                 {{dupicateData.productCode}}</td>
                             <td style="width: 150px;" title="">{{dupicateData.productName}}</td>
                               <td title="">{{dupicateData.geography}}</td>
-                            <td>{{dupicateData.saleDate}}</td>
+                            <td>{{dupicateData.saleDate.substring(0,11)}}</td>
                             <td>{{dupicateData.saleQuantity}}</td>
                             <td style="width: 135px;">{{dupicateData.customerReference}}</td>
                             <td></td>
@@ -133,7 +133,7 @@
                                 {{dupicateData.productCode}}</td>
                             <td style="width: 150px;" title="">{{dupicateData.productName}}</td>
                               <td title="">{{dupicateData.geography}}</td>
-                            <td>{{dupicateData.saleDate}}</td>
+                            <td>{{dupicateData.saleDate.substring(0,11)}}</td>
                             <td>{{dupicateData.saleQuantity}}</td>
                             <td style="width: 135px;">{{dupicateData.customerReference}}</td>
                             <td></td>
@@ -168,7 +168,7 @@
                                 {{dupicateData.productCode}}</td>
                             <td [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'productname'}" style="width: 150px;" title="">{{dupicateData.productName}}</td>
                               <td title=""[ngClass] ="{'errorText': dupicateData.incorrectColumn == 'geography'}">{{dupicateData.geography}}</td>
-                            <td [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'saledate'}">{{dupicateData.saleDate}}</td>
+                            <td [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'saledate'}">{{dupicateData.saleDate.substring(0,11)}}</td>
                             <td [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'salequantity'}">{{dupicateData.saleQuantity}}</td>
                             <td [ngClass] ="{'errorText': dupicateData.incorrectColumn == 'customerreference'}" style="width: 135px;">{{dupicateData.customerReference}}</td>
                             <td></td>

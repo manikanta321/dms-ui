@@ -18,7 +18,7 @@ bottom: 0px;
 top: 50px !important;
  width: 45px;
 border: 1px solid #337ab7;
-background: #0353A4 !important;
+background: #000000 !important;
 
    font-size: 12px;
    box-shadow: 1px 1px #959595;
@@ -96,11 +96,11 @@ padding-left: 10px;
   box-shadow: 0 1px 5px #959595;
 }
 ::ng-deep.stts1 .multiselect-dropdown .dropdown-btn .selected-item {
-  background:  #0353A4 !important;
+  background:  #000000 !important;
   font-size: 12px;
 }
  ::ng-deep .stts1 .multiselect-item-checkbox input[type=checkbox]:checked + div:before {
-background:  #0353A4 !important;
+background:  #000000 !important;
 }
 ::ng-deep.roless .multiselect-dropdown .dropdown-btn .selected-item {
   background: #D23F00 !important;
@@ -846,8 +846,8 @@ mat-sidenav {
 
 }
 .stts1-placeholder.dropdown-placeholder .selected-placeholder {
-  color:  #0353A4 !important;
+  color:  #000000 !important;
 }
 .stts1-placeholder.dropdown-placeholder .selected-placeholder {
-  color:  #0353A4 !important;
+  color:  #000000 !important;
 }

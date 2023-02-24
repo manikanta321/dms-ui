@@ -13,7 +13,7 @@
         <div class="row">
           <div class="search-d col-lg-3">
             <form [formGroup]="myForm">
-              <ng-multiselect-dropdown class="catty" name="city" [placeholder]="'Category'" formControlName="city"
+              <ng-multiselect-dropdown class="catty" name="city" [placeholder]="''" formControlName="city"
                 [disabled]="disabled" [settings]="category" [data]="catgname" (onSelect)="addItemSelect($event)"
                 (onDeSelect)="addItemDeSelect($event)" (onDeSelectAll)="addItemDeSelectOrAll($event)"
                 (onSelectAll)="addItemSelectOrAll($event)">
@@ -71,11 +71,11 @@
               </ng-multiselect-dropdown>
             </form>
             <div class="dropdown-placeholder producty-placeholder">
-              <span *ngIf="product.get('product').value.length == 0"> Product </span>
+              <span *ngIf="product.get('product').value.length == 0"> Product Group </span>
               <span *ngIf="product.get('product').value.length == 1" class="selected-placeholder">
-                {{product.get('product').value.length}} Product  </span>
+                {{product.get('product').value.length}} Product Group  </span>
               <span *ngIf="product.get('product').value.length > 1" class="selected-placeholder">
-                {{product.get('product').value.length}} Product(s)  </span>
+                {{product.get('product').value.length}} Product Group(s)  </span>
             </div>
           </div>
         </div>

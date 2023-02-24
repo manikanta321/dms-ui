@@ -5,7 +5,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddTargetGroupsProductsComponent } from '../target-groups/add-target-groups-products/add-target-groups-products.component';
 import { TargetListService } from 'src/app/services/target-list.service';
 import { AddTargetGroupSuccessPopupComponent } from '../add-target-group-success-popup/add-target-group-success-popup.component';
-import { TargetGroupServiceService } from 'src/app/services/target-group-service.service';
+import { TargetGroupService } from 'src/app/services/target-group.service';
 
 
 @Component({
@@ -42,7 +42,7 @@ export class AddTargetGroupComponent implements OnInit {
   constructor(public dialog: MatDialog,
     private targetList: TargetListService,
     private dialogRef: MatDialogRef<any>,
-    private targetGroupService:TargetGroupServiceService
+    private targetGroupService:TargetGroupService
     ) { }
 
   ngOnInit(): void {
@@ -55,6 +55,10 @@ export class AddTargetGroupComponent implements OnInit {
     this.CreatedById = localStorage.getItem("logInId");
     this.CreatedByIdValue = Number(this.CreatedById);
     this.editTargetData();
+    if(this.addTargetGrp!= '') {
+      alert("Helloo");
+      this.targetItemsArray = [];
+    }
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -137,36 +141,45 @@ console.log("SelectedID1",this.editStockItemId)
     this.rowData5 = JSON.parse(localStorage.getItem("targetselectedRows") ?? '[]');
       // this.stockItemId =JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]');
       this.editStockItemId =JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]');
-      this.selectedProductCount = this.editStockItemId.length+ " products selected";
+      this.selectedProductCount = this.editStockItemId.length+" "+ " products selected";
       console.log("SelectedID3",this.editStockItemId)
       this.selectedProducts = this.rowData5;
     console.log("RowData5",this.rowData5);
     })
 } 
   addTProducts() {
+    if(this.addTargetGrp != '')
+    {
+      this.targetItemsArray= [];
+    }
     sessionStorage.setItem("addTProducts","addTProducts");
+    
+    localStorage.setItem("targetselectedRows","")
     if(this.targetItemsArray.length == 0) {
       this.editStockItemId =JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]')
-      // alert("Helloo");
+      alert("Helloo");
       console.log("Target",this.targetItemsArray.length)
     } 
     else {
       this.editStockItemId =(this.targetItemsArray?this.targetItemsArray:'[]');
 
-      // alert("Helloo");
+      alert("Helloo1");
       console.log("Target",this.targetItemsArray.length)
     }
     // this.editStockItemId = JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]').concat(this.targetItemsArray?this.targetItemsArray:'[]');
-  const dialogRef =  this.dialog.open(AddTargetGroupsProductsComponent) 
+  const dialogRef =  this.dialog.open(AddTargetGroupsProductsComponent,{data: this.editStockItemId }) 
   console.log("SelectedID1",this.editStockItemId)
     dialogRef.afterClosed().subscribe((res) => {
       console.log("SelectedID2",this.editStockItemId)
-      this.rowData5 = JSON.parse(localStorage.getItem("targetselectedRows") ?? '[]');
+    // sessionStorage.setItem('AddtargetselectedRows', JSON.stringify(this.targetselectedRows))
+
+      this.rowData5 = JSON.parse( sessionStorage.getItem('AddtargetselectedRows') ?? '[]');
         this.stockItemId =JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]');
         this.editStockItemId =JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]');
         console.log("SelectedID3",this.editStockItemId)
         this.selectedProducts = this.rowData5;
-       this.selectedProductCounts = this.rowData5.length + " Products selected"
+        sessionStorage.setItem("SelectedProducts",this.selectedProducts)
+       this.selectedProductCounts = this.rowData5.length +" "+ "Products selected"
       console.log("RowData5",this.rowData5);
       })
   } 
@@ -291,7 +304,9 @@ console.log("targetgrpName",this.targetGroupName);
         this.targetGroupService.filter('Register click');
         this.dialogRef.close();
       }
-      this.dialogRef.close();
+      else {
+        alert(this.createTargetData.result)
+      }
       })
   }
   // editTarget() {

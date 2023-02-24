@@ -14,13 +14,13 @@
         <div class="dropdown-placeholder stts1-placeholder">
           <span *ngIf="myForms.get('citys').value.length == 0">Select Target</span>
           <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder">
-            {{myForms.get('citys').value.length}} status selected </span>
+            {{myForms.get('citys').value.length}} target selected </span>
           <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder">
-            {{myForms.get('citys').value.length}} status(s) selected </span>
+            {{myForms.get('citys').value.length}} target(s) selected </span>
         </div>
       </div>
 
-      <div class="icon btnhover1 refreshbtn1" (refresh)="refreshTargetGroup()">
+      <div class="icon btnhover1 refreshbtn1" (click)="refreshTargetGroup()">
         <img class="refreshimg" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;"
           alt="refresh">
       </div>

@@ -39,7 +39,7 @@
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
             </div>
             <div class="sales-head">
-            <h3 class="sales-add font"><span style="color: #686E74;">Preview:</span> Invoice Download</h3>
+            <h3 class="sales-add font"><span style="color: #686E74;">Preview:</span> Sales View</h3>
             </div>
             <!-- Grid Table  -->
             <div class="sales-grid-table mt-3">
@@ -53,8 +53,8 @@
                 (bodyScroll)="handleScroll($event)"></ag-grid-angular>
           </div>
           <div class="pagination">
-            <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{paginationScrollCount}}</span> of 
-            <span class="pagination-cls">{{salesUploadList.length}}</span>
+            <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{viewUploadList.length}}</span> of 
+            <span class="pagination-cls">{{viewUploadList.length}}</span>
           </div>
             <!-- <div class="row footer">
                 <div class="col-md-6" (click)="onBtnExport()">
@@ -73,7 +73,7 @@
                     <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
                 </div>
                 <div class="sales-head">
-                <h3 class="sales-add font"><span style="color: #686E74;">Preview:</span> Invoice Download</h3>
+                <h3 class="sales-add font"><span style="color: #686E74;">Preview:</span> Sales Download</h3>
                 </div>
                 <!-- Grid Table  -->
                 <div class="sales-grid-table mt-3">
@@ -87,8 +87,8 @@
                     (bodyScroll)="handleScroll($event)"></ag-grid-angular>
               </div>
               <div class="pagination">
-                <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{paginationScrollCount}}</span> of 
-                <span class="pagination-cls">{{salesUploadList.length}}</span>
+                <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{viewUploadList.length}}</span> of 
+                <span class="pagination-cls">{{viewUploadList.length}}</span>
               </div>
                 <div class="row footer">
                     <div class="col-md-6" (click)="onBtnExport()">

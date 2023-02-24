@@ -642,8 +642,8 @@ export class AddTargetGroupsProductsComponent implements OnInit {
 
     // this.userTypes.pop(item.roleId);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -733,15 +733,16 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     this.productIDentifire.push(item.productCustomIdentifierId);
     console.log(item);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
-      product: this.productID,
+      productgroup: this.productID,
       productidentifier: this.productIDentifire,
       Search: this.searchText
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
+
     });
   }
   onproductIdentifierDeSelect(item: any) {
@@ -753,8 +754,8 @@ export class AddTargetGroupsProductsComponent implements OnInit {
 
     // this.userTypes.pop(item.roleId);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -762,14 +763,15 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
+
     });
 
   }
   onproductIdentifierDeSelectOrAll(item: any) {
     this.productIDentifire = [];
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -777,6 +779,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
+
     });
 
   }
@@ -784,8 +787,8 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     this.productIDentifire = this.productCustomIdentifierArray;
     // console.log("ProdData", this.ProdData);
     const data = {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
+      category: this.catergory,
+      subCategory: this.sub_categorys,
       type: this.typeTosend,
       productgroup: this.productID,
       productidentifier: this.productIDentifire,
@@ -793,6 +796,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
       this.rowData5 = res.response;
+
     });
   }
   onSearchChange($event: any, anything?: any) {
@@ -840,6 +844,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
     console.log("SelectedRowsss",this.targetselectedRows)
     // localStorage.getItem("targetselectedRows")
     localStorage.setItem('targetselectedRows', JSON.stringify(this.targetselectedRows))
+    sessionStorage.setItem('AddtargetselectedRows', JSON.stringify(this.targetselectedRows))
     let targetData = this.targetselectedRows;
     targetData.forEach(element => {
       return this.targetItemsArray.push(element.stockItemId);
@@ -1008,23 +1013,23 @@ export class AddTargetGroupsProductsComponent implements OnInit {
 
     }
     this.targetList.getTargetListAll(data).subscribe((res) => {
-
-      if(this.selectedData != '') {
       this.rowData5 = res.response;
+      // if(this.selectedData != '') {
+      // this.rowData5 = res.response;
 
-      }
-      else {
-        let rowData = res.response;
-        rowData = rowData.map(x => {
+      // }
+      // else {
+        // let rowData = res.response;
+        this.rowData5 = this.rowData5.map(x => {
           let index = this.data.indexOf(x.stockItemId)
           x.isProductSelected = index == -1 ?  false : true;
           // console.log("XXXX",x)
           return x;
         });
-        this.rowData5 = rowData.sort((a, b) => b.isProductSelected - a.isProductSelected);
+        this.rowData5 = this.rowData5.sort((a, b) => b.isProductSelected - a.isProductSelected);
         console.log('  this.rowData5this.rowData5', this.rowData5)
         console.log("RowwwData5", this.rowData5)
-      }
+      // }
 
     });
   }

@@ -47,7 +47,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import * as moment from 'moment';
 import { AddTargetGroupComponent } from '../add-target-group/add-target-group.component';
 import { TargetGroupsActionComponent } from './target-groups-action/target-groups-action.component';
-import { TargetGroupServiceService } from 'src/app/services/target-group-service.service';
+import { TargetGroupService } from 'src/app/services/target-group.service';
 
 
 
@@ -273,7 +273,7 @@ public pivotPanelShow = 'always';
     private observer: BreakpointObserver,
     private fb: FormBuilder,
     private targetList: TargetListService,
-    private targetGroupService: TargetGroupServiceService,
+    private targetGroupService: TargetGroupService,
    ) {
       sort:[];
      }
@@ -453,9 +453,12 @@ handleScroll(event) {
 }
 refreshTargetGroup() {
   this.tagetGrpId = [];
-  this.myForms = this.fb.group({
-    citys: [this.selectedItems]
-  });
+  this.myForm = this.fb.group({
+    city: [this.selectedItems]
+});
+this.myForms = this.fb.group({
+  citys: [this.selectedItems]
+});
   const data = {
     TargetGroup: this.tagetGrpId,
     Search: this.searchText,

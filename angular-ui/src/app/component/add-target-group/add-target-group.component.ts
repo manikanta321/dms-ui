@@ -56,7 +56,7 @@ export class AddTargetGroupComponent implements OnInit {
     this.CreatedByIdValue = Number(this.CreatedById);
     this.editTargetData();
     if(this.addTargetGrp!= '') {
-      alert("Helloo");
+      // alert("Helloo");
       this.targetItemsArray = [];
     }
   }
@@ -157,13 +157,13 @@ console.log("SelectedID1",this.editStockItemId)
     localStorage.setItem("targetselectedRows","")
     if(this.targetItemsArray.length == 0) {
       this.editStockItemId =JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]')
-      alert("Helloo");
+      // alert("Helloo");
       console.log("Target",this.targetItemsArray.length)
     } 
     else {
       this.editStockItemId =(this.targetItemsArray?this.targetItemsArray:'[]');
 
-      alert("Helloo1");
+      // alert("Helloo1");
       console.log("Target",this.targetItemsArray.length)
     }
     // this.editStockItemId = JSON.parse(sessionStorage.getItem("stockItemId") ?? '[]').concat(this.targetItemsArray?this.targetItemsArray:'[]');

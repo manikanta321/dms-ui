@@ -116,11 +116,11 @@ field: 'targetGroupCode' ,type: ['nonEditableColumn'],minWidth:250
 
 {   headerName: "Group Name",field: 'targetGroupName',type: ['nonEditableColumn']},
 
-{headerName: "No of Products", field: 'noOfProducts', type: ['nonEditableColumn']},
+{headerName: "No of Products", field: 'noOfProducts', type: ['rightAligned'],},
 
 
 {   headerName: " No of Dealers",
-field: 'noOfDealers',type: ['nonEditableColumn'],
+field: 'noOfDealers',type: ['rightAligned'],
 // cellRenderer: function dateFormtter(params) {
 //   if(params.value==null){
 //     return params.value=''
@@ -135,7 +135,7 @@ tooltipValueGetter:(params: ITooltipParams) => moment(params.value).format('DD M
 
 {   headerName: "No of Geographies",
 
-field: 'noOfGeographies',type: ['nonEditableColumn'], maxWidth:200
+field: 'noOfGeographies',type: ['rightAligned'], maxWidth:200
 },
 
 

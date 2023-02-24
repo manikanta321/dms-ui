@@ -92,7 +92,7 @@ height: 35px;
     height: 0px;
     color: #000000;
     position: relative;
-    top: 6%;
+    top: 5%;
     font-weight: bold;
     left: 20px; 
   }
@@ -161,7 +161,7 @@ mat-tab{
     position: relative;
     flex-shrink: 0;
     width: 656px !important;
-
+top:3px;
     border-radius: 25px;
     background: white;
     left: 23%;

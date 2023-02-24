@@ -513,10 +513,11 @@ padding-left: 11px;
 
 .searchBox {
   /* float: right; */
-  /* top: 32px; */
+  top: 6px;
   position: relative;
   /* left: 108%; */
   cursor: pointer;
+
 }
 
 .add-user {
@@ -549,6 +550,8 @@ padding-left: 11px;
   /* margin-top: 32px; */
   margin-left: 17px;
   cursor: pointer;
+  top: 5px;
+  position: relative;
 }
 
 .add-user:hover {
@@ -826,7 +829,11 @@ padding-left: 11px;
 }
 .showOnlyCheckbox{
   position: relative;
-    /* bottom: 33px; */
+    bottom: 26px;
+}
+.gridMaterial{
+  position: relative;
+    bottom: 16px;
 }
 /* ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background{
   background: black !important;

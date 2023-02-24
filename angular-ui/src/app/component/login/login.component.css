@@ -142,7 +142,9 @@ form {
 }
 .d-flex
 {
-  margin-top: -2px;
+  /* margin-top: -2px; */
+  position: relative;
+  bottom: 11px;
 }
 
 .close-iconn
@@ -152,9 +154,9 @@ form {
     color: red;
     cursor: pointer;
     font-size: 19px;
-    top: 35px;
+    top: 10px;
     position: absolute;
-    left: 86%;
+    left: 92%;
     
       
 }
@@ -169,7 +171,7 @@ form {
 }
 .login-head
 {
-  margin-top: 11px;
+  margin-top: -14px;
 }
 
 .login-btn {

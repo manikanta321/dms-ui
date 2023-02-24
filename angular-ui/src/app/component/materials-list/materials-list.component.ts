@@ -1054,7 +1054,7 @@ else
 
     {
       headerName: "Classification",
-      field: 'classification', type: ['nonEditableColumn'], minWidth: 250
+      field: 'classification', type: ['nonEditableColumn'], minWidth: 250, 
     },
 
     {

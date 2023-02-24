@@ -72,7 +72,7 @@ export class AddTargetGroupsProductsComponent implements OnInit {
 
     {
       headerName: "Product Name",
-      field: 'productName', type: ['nonEditableColumn'], pinned: 'left', checkboxSelection: true
+      field: 'productName', type: ['nonEditableColumn'], checkboxSelection: true
     },
 
     { headerName: "Classification", field: 'classification', type: ['nonEditableColumn'] },

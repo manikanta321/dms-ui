@@ -111,7 +111,7 @@ public popupParent: HTMLElement = document.body;
 columnDefs: ColDef[] = [ 
 
   { headerName: "Group Code",
-field: 'targetGroupCode' ,type: ['nonEditableColumn'], pinned: 'left',minWidth:250
+field: 'targetGroupCode' ,type: ['nonEditableColumn'],minWidth:250
 },
 
 {   headerName: "Group Name",field: 'targetGroupName',type: ['nonEditableColumn']},

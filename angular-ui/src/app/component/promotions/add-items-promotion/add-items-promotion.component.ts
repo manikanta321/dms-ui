@@ -126,7 +126,7 @@ export class AddItemsPromotionComponent implements OnInit {
 
     {
       headerName: "Product Shot Code",
-      field: 'productShortCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left', checkboxSelection: true
+      field: 'productShortCode', type: ['nonEditableColumn'], sort: 'desc', checkboxSelection: true
     },
     { headerName: "", field: '', type: ['nonEditableColumn'] },
     { headerName: "", field: '', type: ['nonEditableColumn'] },
@@ -199,7 +199,7 @@ export class AddItemsPromotionComponent implements OnInit {
 
     {
       headerName: "Product Sub-Group",
-      field: 'productSubGroupName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left', checkboxSelection: true
+      field: 'productSubGroupName', type: ['nonEditableColumn'], sort: 'desc',  checkboxSelection: true
     },
 
     { headerName: "", field: '', type: ['nonEditableColumn'] },

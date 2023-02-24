@@ -102,13 +102,13 @@ export class DealersComponent implements OnInit {
 
     {
       headerName: "Code",
-      field: 'customerCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
+      field: 'customerCode', type: ['nonEditableColumn'], sort: 'desc',
     },
 
     {
       headerName: "Name",
       minWidth: 450,
-      field: 'customerName', type: ['nonEditableColumn'], pinned: 'left',
+      field: 'customerName', type: ['nonEditableColumn'], 
     },
     {
       headerName: "Geography",

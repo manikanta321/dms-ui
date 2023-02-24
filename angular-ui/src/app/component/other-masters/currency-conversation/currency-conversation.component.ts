@@ -111,7 +111,7 @@ export class CurrencyConversationComponent implements OnInit {
 
     {
       headerName: "Name",
-      field: 'uoMName', type: ['nonEditableColumn'], pinned: 'left', minWidth: 250
+      field: 'uoMName', type: ['nonEditableColumn'], minWidth: 250
     },
 
     { headerName: "Display Unit", field: 'uoMShortName', type: ['nonEditableColumn'] },
@@ -146,7 +146,7 @@ export class CurrencyConversationComponent implements OnInit {
     {
       headerName: "Standard Currency",
       // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-      field: 'uomSymbol', type: ['nonEditableColumn']
+      field: 'uoMShortName', type: ['nonEditableColumn']
     },
 
     // suppressMovable:true,

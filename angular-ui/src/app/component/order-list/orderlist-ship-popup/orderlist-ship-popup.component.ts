@@ -65,7 +65,7 @@ export class OrderlistShipPopupComponent implements OnInit {
 
     {
       headerName: "Date",
-      field: 'date', type: ['nonEditableColumn'], pinned: 'left', maxWidth: 120
+      field: 'date', type: ['nonEditableColumn'], maxWidth: 120
     },
 
     { headerName: "Created by", field: 'createdBy', type: ['nonEditableColumn'], maxWidth: 140 },

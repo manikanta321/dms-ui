@@ -1,13 +1,16 @@
 .sidenavbar {
   position: fixed;
   width: 5rem;
-  height: 100vh;
+  height: 100%;
   background: #fff;
   border-left: 10px solid var (--blue);
   transition: 0.5s;
   z-index: 1;
   
 
+}
+.mat-accordion .mat-expansion-panel:not(.mat-expanded), .mat-accordion .mat-expansion-panel:not(.mat-expansion-panel-spacing) {
+  border-radius: 50px;
 }
 
 /* mat-list {
@@ -22,9 +25,9 @@
 mat-list-item:hover {
   color: var(--bar);
   background: linear-gradient(270deg, #CED4DA 35.14%, rgba(206, 212, 218, 0) 84.89%);
-  border-radius: 50px 0px 0px 50px;
+  border-radius: 50px 50px 50px 50px;
   color: black;
-  transition: 0.4s;
+  transition: 0.4s; 
 }
 
 .active

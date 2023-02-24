@@ -122,7 +122,7 @@ export class MaterialAddEditpopupComponent {
   // geograhies related variables
 
 
-
+  image:boolean=true;
 
 
 
@@ -1207,7 +1207,8 @@ export class MaterialAddEditpopupComponent {
 
   // image uploader and converter to base64
   public onFileChanged(event) {
-    this.selecetdFile = event.target.files[0];
+     this.image=false;
+    this.selecetdFile = event.target.files[0];   
     if (this.selecetdFile.size <= 1 * 1024 * 1024) {
       this.handleInputChange(this.selecetdFile);
     }
@@ -1215,7 +1216,7 @@ export class MaterialAddEditpopupComponent {
       alert('File size should not be greater than 1MB');
     }
   }
-  handleInputChange(files) {
+  handleInputChange(files) {   
     this.imagePreview = files
     var reader = new FileReader();
     reader.onloadend = this.handleReaderLoaded.bind(this);

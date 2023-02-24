@@ -41,7 +41,7 @@ export class PopupPscGridTableComponent implements OnInit {
 
     {
       headerName: "Product Name",
-      field: 'productName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
+      field: 'productName', type: ['nonEditableColumn'], sort: 'desc',
     },
 
     { headerName: "Classification", field: 'classification', type: ['nonEditableColumn'] },

@@ -104,7 +104,7 @@ export class ViewInvoiceComponentComponent implements OnInit {
 
     {
       headerName: "Batch ID",
-      field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
+      field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc',
       tooltipField:"employeeCode",
     },
 

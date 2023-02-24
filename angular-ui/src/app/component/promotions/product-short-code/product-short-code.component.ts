@@ -48,7 +48,7 @@ export class ProductShortCodeComponent implements OnInit {
 
     {
       headerName: "Product Shot Code",
-      field: 'shortCode', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',  checkboxSelection: true
+      field: 'shortCode', type: ['nonEditableColumn'], sort: 'desc',   checkboxSelection: true
     },
     { headerName: "", field: '', type: ['nonEditableColumn'] },
     { headerName: "", field: '', type: ['nonEditableColumn'] },

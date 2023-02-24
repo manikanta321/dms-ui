@@ -216,7 +216,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
     {
       headerName: "Code",
-      field: 'code', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left', checkboxSelection: true
+      field: 'code', type: ['nonEditableColumn'], sort: 'desc', checkboxSelection: true
     },
     { headerName: "Dealer Name", field: 'dealerName', type: ['nonEditableColumn'] },
     { headerName: "", field: '', type: ['nonEditableColumn'] },

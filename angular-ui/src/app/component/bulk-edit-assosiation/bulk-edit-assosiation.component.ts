@@ -104,7 +104,7 @@ export class BulkEditAssosiationComponent implements OnInit {
     {
       headerName: "GeographName",
       minWidth: 450,
-      field: 'geographyName', type: ['nonEditableColumn'], pinned: 'left',
+      field: 'geographyName', type: ['nonEditableColumn'],
     },
     {
       headerName: "DealerName",

@@ -31,7 +31,7 @@
                 </span>
               </p>
               <div>
-                <p style="position: absolute; bottom:-38px;left:320px;width:158px;
+                <p style="position: absolute; bottom:-38px;left:336px;width:158px;
                  padding: 0px;" *ngIf="displayUnit.invalid && (displayUnit.dirty || displayUnit.touched)"
                 class="alert">
                 <span style="color:red;position: relative;" *ngIf="displayUnit.errors?.['required']">
@@ -40,7 +40,7 @@
               </p>
               </div>
             </div>
-            <div class="col">
+            <div class="col leftunits">
               <label class="dunits">Display Units<span>*</span></label>
               <br>
               <input type="text" id="displayUnit" name="displayUnit" (keyup)="onKeyShortName($event)" required
@@ -100,18 +100,19 @@
           </div>
           <br>
           <!-- </form> -->
-          <div class="row">
+          <div class="row rr">
             <div class="col">
               <button class="btn btn-primary btn-block" *ngIf="editButton"
                 [disabled]="(!EUomName || !EuoMShortName || !EConversionRate || !EConversionShow || !EuomSymbol)"
-                style="background-color: black; border-radius: 10px;" (click)="addcurncy()">Save</button>
-              <button class="btn btn-primary btn-block" *ngIf="!editButton"
+                style="background-color: black; border-radius: 10px;height: 43px;width: 250px;" (click)="addcurncy()">Save</button>
+              <button class="btn btn-primary btn-block " *ngIf="!editButton"
                 [disabled]="(!Name || !uomShortName || !conversionRates || !UOMSymbol || !conversion)"
-                style="background-color: black; border-radius: 10px;" (click)="addcurncy()">Save</button>
+                style="background-color: black; border-radius: 10px; height: 43px;width: 250px;" (click)="addcurncy()">Save</button>
             </div>
-            <div class="col">
+
+            <div class="col leftunits ">
               <button class="btn btn-primary btn-block" (click)="closeDialog()"
-                style="background-color: white;color: black; border: 2px solid black; border-radius: 10px;">Cancel</button>
+                style="background-color: white;color: black; border: 2px solid black; border-radius: 10px;height: 43px;width: 250px;">Cancel</button>
 
             </div>
           </div>

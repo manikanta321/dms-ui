@@ -1,3 +1,12 @@
+.imagesheading
+{
+  
+  margin-top: -40px;
+  position: absolute;
+  margin-left: 90px;
+  
+color: rgba(104, 110, 116, 0.75);
+}
 .mat-form-field-label-wrapper {
   left: 10px;
 }
@@ -894,7 +903,7 @@ textarea {
 .imagePl {
   border: 1px solid !important;
   border-radius: 8px;
-  height: 130px;
+  height: 136px;
   /* width: 126px; */
   background-color: white;
   display: flex;
@@ -1360,8 +1369,8 @@ textarea {
 }
 
 .add-img {
-  width: -webkit-fill-available;
-  height: -webkit-fill-available;
+    width: -webkit-fill-available; 
+   height: -webkit-fill-available;  
 }
 
 .dropdown-file {
@@ -1372,10 +1381,10 @@ textarea {
   border-radius: 10px;
   box-sizing: border-box;
   /* position: absolute; */
-  width: 371.82px;
+  width: 350.82px;
   height: 45px;
 
-  margin-left: 519px;
+  margin-left: 636px;
   top: 492px;
 }
 

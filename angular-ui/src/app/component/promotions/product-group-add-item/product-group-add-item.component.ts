@@ -48,7 +48,7 @@ export class ProductGroupAddItemComponent implements OnInit {
 
     {
       headerName: "Product Group",
-      field: 'productGroup', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left', checkboxSelection: true
+      field: 'productGroup', type: ['nonEditableColumn'], sort: 'desc', checkboxSelection: true
     },
 
     { headerName: "", field: '', type: ['nonEditableColumn'] },

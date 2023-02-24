@@ -252,7 +252,7 @@ export class ViewPromotionPopupComponent implements OnInit {
 
     {
       headerName: "Code",
-      field: 'code', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left',
+      field: 'code', type: ['nonEditableColumn'], sort: 'desc', 
       
         checkboxSelection: (params) => { 
         

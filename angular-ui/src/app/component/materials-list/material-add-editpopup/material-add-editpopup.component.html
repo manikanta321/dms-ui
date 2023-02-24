@@ -146,13 +146,16 @@
                   <label>Image of Material</label>
                 </div>
                 <label class="form-control container imagePl" *ngIf="Imgpreview">
-                  <input type="file" id="file" style="display:none" (change)="onFileChanged($event)">
-                  <img src='data:image/jpeg;base64,{{base64textString}}' class="add-img" alt="add-image=btn">
+                  <input type="file" id="file" style="display:none"   placeholder="Add-Image" (change)="onFileChanged($event) ">
+                  <img src='data:image/jpeg;base64,{{base64textString}}'  class="add-img" alt="add-image=btn">
                 </label>
                 <label class="form-control container imagePl" *ngIf="!Imgpreview">
-                  <input type="file" id="file" style="display:none" (change)="onFileChanged($event)">
-                  <img src="../../../../assets/img/add-image-icon.png" class="add-img" alt="add-image=btn">
+                  <input type="file" id="file" style="display:none"  (change)="onFileChanged($event)">
+                    <img src="../../../../assets/img/add-image-icon.png" style="width:100px;height: 100px;margin-top: -14px;" class="add-img" alt="add-image=btn"> 
+            
                 </label>
+                <p class="imagesheading" *ngIf="image">Add Image</p>    
+                
               </div>
               <div class="col-md-4">
                 <div class="materialci">
@@ -525,7 +528,7 @@
 
                       <input class="inp_field" type="text" placeholder="Enter Value" [(ngModel)]="updateGeographyValue">
                       <button class="Apply_button" (click)="applySelectedValue()">
-                        <p style="color:white">Apply</p>
+                        <p style="color:white;margin: auto;">Apply</p>
                       </button>
                     </div>
                   </div>
@@ -548,7 +551,7 @@
                       <label><b>Min Order Qty</b></label>
                     </div>
                     <div class="col-sm-1">
-                      <label><b>Max Order Qt</b></label>
+                      <label><b>Max Order Qty</b></label>
                     </div>
                     <div class="col-sm-1">
                       <label><b>Margin %</b></label>
@@ -563,7 +566,7 @@
                       <label><b>Registration Number</b></label>
                     </div>
                     <div class="col-sm-1">
-                      <label><b style="padding:0 56px;">Tags</b></label>
+                      <label><b style="margin-left: 84px;">Tags</b></label>
                     </div>
 
                   </div>

@@ -3,7 +3,7 @@
 <div class="container">
     <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
     <div class="actv-user text-center">
-        <h1 class="head-text">{{catsetName}}</h1>
+        <h1 class="head-text" [ngClass]="{'edit-header' : catsetName == 'Edit Category'} ">{{catsetName}}</h1>
         <p style="color: red; text-align: center; font-size: 13px;">{{errorMsg}}</p>
     </div>
     <div class="addCatDiv">

@@ -1,82 +1,92 @@
-
-.head-text{
+.head-text {
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 0;
     margin-top: -20px;
-
     font-family: 'Gilroy-Bold';
-line-height: 40px;
-letter-spacing: 0.2px;
+    line-height: 40px;
+    letter-spacing: 0.2px;
+    color: #000000;
+}
 
-color: #000000;
-    
-    }
-    .addcat
-    {
-        font-weight: 600;
-         font-family: 'Gilroy-SemiBold';
-        font-size: 14px;
-        line-height: 16px;
+.addcat {
+    font-weight: 600;
+    font-family: 'Gilroy-SemiBold';
+    font-size: 14px;
+    line-height: 16px;
 
-        color: #000000;
-    }
-    .addcat1
-    {
-        font-weight: 600;
-        font-weight: 600;
-        font-family: 'Gilroy-SemiBold';
-       font-size: 14px;
-       line-height: 16px;
+    color: #000000;
+}
 
-       color: #000000;
-    }
-    .olpass
-    {
-     font-family: 'Gilroy-Light';
+.addcat1 {
+    font-weight: 600;
+    font-weight: 600;
+    font-family: 'Gilroy-SemiBold';
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #000000;
+}
+
+.olpass {
+    font-family: 'Gilroy-Light';
     font-size: 20px;
     line-height: 100%;
     font-weight: 600;
     margin-top: 15px;
-    }
-    .newspass
-    {
-        font-family: 'Gilroy-Light';
+}
+
+.newspass {
+    font-family: 'Gilroy-Light';
     font-size: 20px;
     line-height: 100%;
     font-weight: 600;
     margin-top: 5px;
-    }
-     .head-text::after{
-        content: "";
-        display: block;
-        width: 94px;
-        height: 0.5px;
-        background: #686E74;
-        right: 20px;
-        top: 50%;
-        position: absolute;
-    }
-    .head-text::before{
-        content: "";
-        display: block;
-        width: 94px;
-        height: 0.5px;
-        background: #686E74;
-        left: 20px;
-        top: 50%;
-        position: absolute;
-    } 
-    input{
-        padding: 5px 12px;
-        margin-bottom: 10px;
-        border: 0.5px solid #000000;
-        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-        border-radius: 10px;
-        width: 404px;
-        height: 43px;
-    }
-    .update-btn{
+}
+
+.head-text::after {
+    content: "";
+    display: block;
+    width: 94px;
+    height: 0.5px;
+    background: #686E74;
+    right: 20px;
+    top: 50%;
+    position: absolute;
+}
+
+.head-text::before {
+    content: "";
+    display: block;
+    width: 94px;
+    height: 0.5px;
+    background: #686E74;
+    left: 20px;
+    top: 50%;
+    position: absolute;
+}
+
+.head-text.edit-header{
+    text-align: left;
+}
+.head-text.edit-header::before {
+    width: 0px;
+}
+.head-text.edit-header::after {
+    width: 60%;
+}
+
+input {
+    padding: 5px 12px;
+    margin-bottom: 10px;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    width: 404px;
+    height: 43px;
+}
+
+.update-btn {
     background: black;
     color: white;
     width: 183px;
@@ -84,51 +94,57 @@ color: #000000;
     border: #000000;
     border-radius: 5px;
     margin-right: 35px;
-    }
+}
 
-    .update-btn:disabled{
-        background: grey;
-        width: 183px;
-        height: 43px;
-        border: #000000;
-        border-radius: 5px;
-        margin-right: 35px;
-        }
+.update-btn:disabled {
+    background: grey;
+    width: 183px;
+    height: 43px;
+    border: #000000;
+    border-radius: 5px;
+    margin-right: 35px;
+}
 
-    .cancel-btn{
-        border: 2px solid #000000;
-        border-radius: 5px;
-        width: 184px;
-        height: 43px;
-        background: white;
-        font-weight: 700;
-    }
-    .close-icon{
-        left: 100%;
-        position: relative;
-        font-size: 15px;
-        font-weight: 600;
-        top: -3px;
-        color: gray;
-    }
-    .actv-user{
+.cancel-btn {
+    border: 2px solid #000000;
+    border-radius: 5px;
+    width: 184px;
+    height: 43px;
+    background: white;
+    font-weight: 700;
+}
+
+.close-icon {
+    left: 100%;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+    top: -3px;
+    color: gray;
+}
+
+.actv-user {
     position: relative;
     top: -10px;
-    }
-    .mat-dialog-container {
-        padding: 16px !important;
-        padding-top: 2px !important;
-    }
-   .buttonDiv{
+}
+
+.mat-dialog-container {
+    padding: 16px !important;
+    padding-top: 2px !important;
+}
+
+.buttonDiv {
     top: 15px;
     position: relative;
-    }
-   .addCatDiv{
-        margin-top: -31px;
-    }
-    .errorMsg{
-        color:red;
-        position: relative;
-        font-size: 13px;
-        bottom: 11px;
-    }
+}
+
+.addCatDiv {
+    margin-top: -31px;
+}
+
+.errorMsg {
+    color: red;
+    position: relative;
+    font-size: 13px;
+    bottom: 11px;
+}

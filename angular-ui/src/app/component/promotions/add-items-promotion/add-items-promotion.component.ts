@@ -70,6 +70,9 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: "Product Name",
       field: 'productName', type: ['nonEditableColumn'], pinned: 'left',
       checkboxSelection: true,
+      headerCheckboxSelection: true,
+      headerCheckboxSelectionFilteredOnly: true,
+
       // (
       //   params: CheckboxSelectionCallbackParams<any>
       // ) => {

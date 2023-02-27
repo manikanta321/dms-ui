@@ -5,7 +5,7 @@
                 [placement]="['bottom','bottom-start','left-top','right-top']" [autoClose]="'outside'"
                 #datepickerBtn="ngbPopover" popoverClass="datepicker-menu">
                 <mat-form-field appearance="fill">
-                    <mat-label *ngIf="!(selectedDate &&selectedDate.startDate)">{{label}}</mat-label>
+                    <mat-label *ngIf="!(selectedDate && selectedDate.startDate)">{{label}}</mat-label>
                     <mat-label *ngIf="selectedDate && selectedDate.startDate">{{selectedDate.startDate}} -
                         {{selectedDate.endDate}}</mat-label>
                     <mat-select>

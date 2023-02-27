@@ -106,6 +106,7 @@ export class CustomdatepickerComponent implements OnInit {
           startDate: dayjs(new Date()),
           endDate: dayjs(new Date())
         }
+        this.selectedMenu = "";
       }
       
     }
@@ -168,7 +169,6 @@ export class CustomdatepickerComponent implements OnInit {
           endDate: dayjs((this.selectedDate.endDate))
         }
       }
-      console.log("ssssssssss");
       this.showMenuDatePicker = !this.showMenuDatePicker;
     } else {
       let selectedMenuDate = this.menuDateValues.find(item => item.title == clickedItem);

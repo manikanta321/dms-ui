@@ -86,7 +86,8 @@ this.typeCode=res.response.typeCode;
     this.sharedService.filter('Register click')
     this.dialogRef.close();
 
-    this.dialog.open(AddTypesSuccessfulDonePopupComponent, {panelClass: 'activeSuccessPop'})
+    this.dialog.open(AddTypesSuccessfulDonePopupComponent, {panelClass: 'Addtypessupop'})
+    // {panelClass: 'activeSuccessPop'}
 
     
     }
@@ -122,7 +123,8 @@ this.typeCode=res.response.typeCode;
     this.dialogRef.close();
     this.sharedService.filter('Register click')
   })
-  this.dialog.open(MaterialclassificationEditSuccessComponent, {panelClass: 'activeSuccessPop'})
+  this.dialog.open(MaterialclassificationEditSuccessComponent, {panelClass: 'MLCSP'})
+  // {panelClass: 'activeSuccessPop'}
 
   }
 

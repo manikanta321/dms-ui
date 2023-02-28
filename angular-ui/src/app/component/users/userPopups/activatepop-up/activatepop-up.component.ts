@@ -63,7 +63,8 @@ export class ActivatepopUpComponent implements OnInit {
    }
    this.user.activeDeavtive(data).subscribe((res) => {     
    });
-   this.dialog.open(ActiveSuccessPopComponent, {panelClass: 'activeSuccessPop'})
+   this.dialog.open(ActiveSuccessPopComponent, {panelClass: 'ActiveSuccess_PopComponent'})
+  //  {panelClass: 'activeSuccessPop'}
    this.sharedService.filter('Register click')
 ;
    this.dialogRef.close();
@@ -75,8 +76,10 @@ export class ActivatepopUpComponent implements OnInit {
     this.activateData = newData;
   });
   this.materialListService.filter('Register click');
-  this.dialog.open(ActiveSuccessPopComponent, {panelClass: 'activeSuccessPop'})
-  this.materialListService.filter('Register click');
+  this.dialog.open(ActiveSuccessPopComponent, {panelClass: 'ASPCMaterial'})
+
+  // {panelClass: 'activeSuccessPop'}
+   this.materialListService.filter('Register click');
 ;
   this.dialogRef.close();
  }

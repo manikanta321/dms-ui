@@ -466,7 +466,8 @@ this.salesService.AddSales(mainobj).subscribe((res)=>{
     this.dialogRef.close();
     this.shared.filter('Register click')
 
-    this.dialog.open(AddSalesSuccessComponent, {panelClass: 'activeSuccessPop'})
+    this.dialog.open(AddSalesSuccessComponent, {panelClass: 'addsalessussesspop'})
+    // {panelClass: 'activeSuccessPop'}
 
   }
   

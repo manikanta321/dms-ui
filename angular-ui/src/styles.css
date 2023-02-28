@@ -138,7 +138,7 @@ body {
   max-width: 100%;
   max-height: 100%;
   bottom: 2%;
-  left: 74%;
+  left: 71%;
 }
 
 .activeSuccessPop {
@@ -150,7 +150,7 @@ body {
   max-width: 100%;
   max-height: 100%;
   bottom: 2%;
-  left: 73%;
+  left: 69%;
 }
 
 .geo-label .mat-tab-labels:nth-child(1) {
@@ -422,3 +422,292 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
 .promotion-datepicker .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,.promotion-datepicker .mat-form-field-appearance-legacy.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label{
   display: none;
 }
+.MLCSP{
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 73%;
+  width: 377px;
+}
+.MLCSP .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+
+.deaeSuPop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+   border-left: 10px solid #FF0000 !important; 
+   
+  padding: 10px 20px;
+  
+} 
+
+
+.deaeSuPop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 75.2%;
+  width: 350px;
+}
+
+
+
+
+
+.Addtypessupop{
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 72%;
+}
+.Addtypessupop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+
+.geoaddedPop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 66%;
+}
+
+
+.geoaddedPop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+
+.edituon {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 73%;
+}
+
+
+
+.edituon .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+
+
+.dearreactpop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 71%;
+}
+
+
+
+.dearreactpop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+.addsalessussesspop
+{
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 71%;
+  width: 377px;
+}
+
+
+
+.addsalessussesspop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+.addorderpromosuccess
+{
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 73%;
+  
+}
+
+
+
+.addorderpromosuccess .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+
+.activeSuccess_Pop {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 73%;
+  width: 377px;
+}
+
+
+.activeSuccess_Pop .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+
+
+.ActiveSuccessPopComponent {
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 73%;
+  width: 377px;
+}
+
+
+.ActiveSuccessPopComponent .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+.ActiveSuccess_PopComponent
+{
+  
+    position: absolute !important;
+    pointer-events: auto;
+    box-sizing: border-box;
+    z-index: 1000;
+    display: flex;
+    max-width: 100%;
+    max-height: 100%;
+    bottom: 2%;
+    left: 73%;
+    width: 377px;
+  
+}
+
+.ActiveSuccess_PopComponent .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 
+
+
+.ASPCMaterial
+{
+  
+  position: absolute !important;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 2%;
+  left: 73%;
+  width: 377px;
+}
+
+
+.ASPCMaterial .mat-dialog-container {
+  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%) !important;
+  border: 0.5px solid #000000;
+  border-radius: 10px !important;
+  border-left: 10px solid green !important;
+  padding: 10px 20px;
+} 

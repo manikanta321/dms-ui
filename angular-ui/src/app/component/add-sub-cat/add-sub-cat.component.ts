@@ -90,7 +90,8 @@ if(this.SubcatsetName=='Edit Sub-Category'){
     this.sharedService.filter('Register click')
     this.dialogRef.close();
     
-    this.dialog.open(MaterialClassificationStatusPopupComponent, {panelClass: 'activeSuccessPop'});
+    this.dialog.open(MaterialClassificationStatusPopupComponent,{panelClass: 'MLCSP'} );
+    // {panelClass: 'activeSuccessPop'}
     }
     else{
       this.errorMsg=res.response.result;
@@ -119,7 +120,8 @@ this.calssification.updateSubCat(data).subscribe((res)=>{
   this.sharedService.filter('Register click')
 
   this.dialogRef.close();
-  this.dialog.open(MaterialclassificationEditSuccessComponent, {panelClass: 'activeSuccessPop'});
+  this.dialog.open(MaterialclassificationEditSuccessComponent, {panelClass: 'MLCSP'});
+  // {panelClass: 'activeSuccessPop'}
 })
 }
 

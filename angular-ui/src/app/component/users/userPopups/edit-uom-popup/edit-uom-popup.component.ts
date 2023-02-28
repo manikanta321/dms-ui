@@ -34,7 +34,9 @@ this.uoMShortName=data.uoMShortName
   editUom(){
        this.otherMasterService.filter('Register click');
        
-       this.dialog.open(EdituomSuccessfulpopupComponent , {panelClass: 'activeSuccessPop'});
+       this.dialog.open(EdituomSuccessfulpopupComponent , {panelClass: 'edituon'});
+
+      //  {panelClass: 'activeSuccessPop'}
           
     let data={
       UoMName:this.uoMName,

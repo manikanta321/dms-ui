@@ -67,7 +67,8 @@ this.calssification.deactivate(data1).subscribe((res)=>{
   this.sharedService.filter('Register click')
   this.dialogRef.close();
 });
-this.dialog.open(ActiveSuccessPopComponent, {panelClass: 'activeSuccessPop'})
+this.dialog.open(ActiveSuccessPopComponent, {panelClass: 'ActiveSuccessPopComponent'})
+// {panelClass: 'activeSuccessPop'}
 this.sharedService.filter('Register click')
 ;
 this.dialogRef.close();
@@ -88,7 +89,8 @@ this.dialogRef.close();
     this.sharedService.filter('Register click');
      
     
-    this.dialog.open(DeactiveSuccessPopComponent, {panelClass: 'deactiveSuccessPop'});
+    this.dialog.open(DeactiveSuccessPopComponent, {panelClass: 'deaeSuPop'});
+    // {panelClass: 'deactiveSuccessPop'}
     this.sharedService.filter('Register click');
     this.dialogRef.close()
         }

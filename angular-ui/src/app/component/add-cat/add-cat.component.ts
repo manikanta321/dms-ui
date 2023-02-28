@@ -65,31 +65,32 @@ export class AddCatComponent implements OnInit {
 
 
   }
+ 
 
-
-  AddCat() {
-    let data = {
-      CategoryName: this.addcat,
-      CategoryCode: this.addcatcode,
-      CreatedById: this.numberValue
-    };
-    this.calssification.addCatagory(data).subscribe((res) => {
-      // this.sharedService.filter('Register click')
-      // this.addcat='';
-      // this.addcatcode='';
-      // this.dialogRef.close();
-      if (res.response.result === 'Success') {
-        sessionStorage.setItem("CategoryName", this.addcat);
-        sessionStorage.setItem("CategoryCode", this.addcatcode);
-        sessionStorage.setItem("subCategoryName", '');
-        sessionStorage.setItem("subCategoryCode", '');
-        sessionStorage.setItem("typeName", '');
-        sessionStorage.setItem("typeCode", '');
-        this.sharedService.filter('Register click')
-        this.addcat = '';
-        this.addcatcode = '';
-        this.dialogRef.close();
-        this.dialog.open(MaterialClassificationStatusPopupComponent, { panelClass: 'activeSuccessPop' });
+  AddCat(){
+    let data={
+      CategoryName:this.addcat,
+      CategoryCode:this.addcatcode,
+      CreatedById:this.numberValue
+  };
+  this.calssification.addCatagory(data).subscribe((res)=>{
+    // this.sharedService.filter('Register click')
+    // this.addcat='';
+    // this.addcatcode='';
+    // this.dialogRef.close();
+    if (res.response.result === 'Success') {
+      sessionStorage.setItem("CategoryName",this.addcat);
+      sessionStorage.setItem("CategoryCode",this.addcatcode);
+      sessionStorage.setItem("subCategoryName",'');
+      sessionStorage.setItem("subCategoryCode",'');
+      sessionStorage.setItem("typeName",'');
+      sessionStorage.setItem("typeCode",'');
+      this.sharedService.filter('Register click')
+      this.addcat='';
+      this.addcatcode='';
+      this.dialogRef.close();
+      this.dialog.open(MaterialClassificationStatusPopupComponent,{panelClass:'MLCSP'});
+      // {panelClass: 'activeSuccessPop'}
 
       }
       else {
@@ -120,7 +121,9 @@ export class AddCatComponent implements OnInit {
       this.addcat = '';
       this.addcatcode = '';
       this.dialogRef.close();
-      this.dialog.open(MaterialclassificationEditSuccessComponent, { panelClass: 'activeSuccessPop' });
+      this.dialog.open(MaterialclassificationEditSuccessComponent, {panelClass: 'MLCSP'});
+
+      //  {panelClass: 'activeSuccessPop'}
     })
   }
 

@@ -67,7 +67,9 @@ this.calssification.deactivateSub(data1).subscribe((res)=>{
   this.sharedService.filter('Register click')
   this.dialogRef.close();
 });
-this.dialog.open(ActiveSuccessPopComponent, {panelClass: 'activeSuccessPop'})
+this.dialog.open(ActiveSuccessPopComponent, {panelClass: 'activeSuccess_Pop'})
+
+// {panelClass: 'activeSuccessPop'}
     }
     else{
       const data1={
@@ -82,7 +84,8 @@ this.dialog.open(ActiveSuccessPopComponent, {panelClass: 'activeSuccessPop'})
   
     
     })
-    this.dialog.open(DeactiveSuccessPopComponent, {panelClass: 'deactiveSuccessPop'});
+    this.dialog.open(DeactiveSuccessPopComponent, {panelClass: 'deaeSuPop'});
+    // {panelClass: 'deactiveSuccessPop'}
         }
 
     }

@@ -1291,7 +1291,9 @@ export class AddorderpromotionsComponent implements OnInit {
         alert(res.response.result)
       } else {
 
-        this.dialog.open(AddorderproSuccessPopupComponent, { panelClass: 'activeSuccessPop' });
+        this.dialog.open(AddorderproSuccessPopupComponent, { panelClass: 'addorderpromosuccess' });
+
+        // panelClass: 'activeSuccessPop'
 
         console.log(data, "data");
 

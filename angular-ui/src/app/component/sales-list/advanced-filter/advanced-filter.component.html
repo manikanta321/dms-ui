@@ -172,7 +172,7 @@
                     <div class="containerElement">
 
                         <div *ngFor="let item of targetLists;let i =index;" class="custom"
-                            [ngStyle]="{'background-color': getBackgroundColor(item.targetGroupId)}">
+                            [ngStyle]="{'background-color': getBackgroundColor(item.targetGroupId, 'target')}">
                             <div class="eleStyle">
                                 <span class="itemSelectedFilter">{{item.targetGroupName}}<mat-icon
                                         mat-button class="close-iconn"
@@ -182,7 +182,7 @@
 
                         <!-- <div *ngIf="this.itemOfgeogrphy.length > 0"  class="targetElement"> -->
                         <div *ngFor="let item of itemOfgeogrphy;let i =index;" class="customgeo"
-                            [ngStyle]="{'background-color': getBackgroundColor(item.geographyIdentiferid)}">
+                            [ngStyle]="{'background-color': getBackgroundColor(item.geographyIdentiferid, 'geo')}">
                             <div class="eleStyle">
                                 <span class="itemSelectedFilter">{{item.geographyIdentifierName}}<mat-icon mat-button
                                         class="close-iconn"
@@ -194,7 +194,7 @@
                         <div *ngIf="this.ProductCustomIdentifierElements.length > 0"  class="targetElement"> -->
                         <div *ngFor="let product of ProductCustomIdentifierElements;let i =index;"
                             class="customIdenti"
-                            [ngStyle]="{'background-color': getBackgroundColor(product.productCustomIdentifierId)}">
+                            [ngStyle]="{'background-color': getBackgroundColor(product.productCustomIdentifierId, 'product')}">
                             <div class="eleStyle">
                                 <span class="itemSelectedFilter">{{product.productCustomName}}<mat-icon mat-button
                                         class="close-iconn"
@@ -205,7 +205,7 @@
 
                         <!-- <div *ngIf="this.categoryItems.length > 0"  class="targetElement"> -->
                         <div *ngFor="let category of categoryItems;let i =index;" class="customCateg"
-                            [ngStyle]="{'background-color': getBackgroundColor(category.catId)}">
+                            [ngStyle]="{'background-color': getBackgroundColor(category.catId, 'category')}">
                             <div class="eleStyle">
                                 <span class="itemSelectedFilter">{{category.catName}}<mat-icon
                                         mat-button class="close-iconn"
@@ -214,7 +214,7 @@
                         <!-- </div> -->
                         <!-- <div *ngIf="this.subcatItems.length > 0"  class="targetElement"> -->
                         <div *ngFor="let subcat of subcatItems;let i =index;" class="customSubcat"
-                            [ngStyle]="{'background-color': getBackgroundColor(subcat.subCatId)}">
+                            [ngStyle]="{'background-color': getBackgroundColor(subcat.subCatId,'subcategory')}">
                             <div class="eleStyle"><span class="itemSelectedFilter">{{subcat.subCatName}}<mat-icon
                                         mat-button class="close-iconn"
                                         (click)="removeItem(subcat.subCatId , 'subcategory')">close</mat-icon></span>
@@ -223,7 +223,7 @@
                         <!-- </div>
                         <div *ngIf="this.typeItems.length > 0"  class="targetElement"> -->
                         <div *ngFor="let type of typeItems;let i =index;" class="customTyp" 
-                            [ngStyle]="{'background-color': getBackgroundColor(type.typeId)}">
+                            [ngStyle]="{'background-color': getBackgroundColor(type.typeId, 'type')}">
                             <div class="eleStyle"><span class="itemSelectedFilter">{{type.typeName}}<mat-icon mat-button
                                         class="close-iconn"
                                         (click)="removeItem(type.typeId , 'type')">close</mat-icon></span></div>

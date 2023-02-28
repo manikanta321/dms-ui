@@ -260,7 +260,7 @@ export class AdvancedFilterComponent implements OnInit {
       this.targetLists.push(item);
     }
     else if (this.isCheckedForProduct(item.targetGroupId, 'target')) {
-      let index = this.targetLists.indexOf(item);
+      let index = this.targetLists.findIndex(x=> x.targetGroupId == item.targetGroupId);
       if (index > -1) {
         this.targetLists.splice(index, 1);
       }
@@ -274,7 +274,7 @@ export class AdvancedFilterComponent implements OnInit {
       this.itemOfgeogrphy.push(item);
     }
     else if (this.isCheckedForProduct(item?.geographyIdentiferid, 'geo')) {
-      let index = this.itemOfgeogrphy.indexOf(item);
+      let index = this.itemOfgeogrphy.findIndex(x=> x.geographyIdentiferid == item.geographyIdentiferid);
       if (index > -1) {
         this.itemOfgeogrphy.splice(index, 1);
       }
@@ -288,7 +288,7 @@ export class AdvancedFilterComponent implements OnInit {
       this.ProductCustomIdentifierElements.push(item);
     }
     else if (this.isCheckedForProduct(item.productCustomIdentifierId, 'product')) {
-      let index = this.ProductCustomIdentifierElements.indexOf(item);
+      let index = this.ProductCustomIdentifierElements.findIndex(x=> x.productCustomIdentifierId == item.productCustomIdentifierId);
       if (index > -1) {
         this.ProductCustomIdentifierElements.splice(index, 1);
       }
@@ -547,7 +547,9 @@ export class AdvancedFilterComponent implements OnInit {
         productIdsList: []
       }
     }
-    if (productIdsList == this.targetLists) {
+
+
+    if (type == 'target') {
       this.groupId = this.targetLists.map(element => element.targetGroupId);
       if (this.targetLists.find(element => element.targetGroupId == item)) {
         return true;
@@ -555,7 +557,7 @@ export class AdvancedFilterComponent implements OnInit {
       else {
         return false
       }
-    } else if (productIdsList == this.itemOfgeogrphy) {
+    } else if (type == 'geo') {
       this.geoIds = this.itemOfgeogrphy.map(element => element.geographyIdentiferid);
       if (this.itemOfgeogrphy.find(element => element.geographyIdentiferid == item)) {
         return true;
@@ -564,7 +566,7 @@ export class AdvancedFilterComponent implements OnInit {
         return false;
       }
     }
-    else if (productIdsList == this.ProductCustomIdentifierElements) {
+    else if (type == 'product') {
       this.pcIElementIds = this.ProductCustomIdentifierElements.map(element => element.productCustomIdentifierId);
       if (this.ProductCustomIdentifierElements.find(element => element.productCustomIdentifierId == item)) {
         return true;
@@ -574,7 +576,7 @@ export class AdvancedFilterComponent implements OnInit {
       }
     }
 
-    else if (productIdsList == this.categoryItems) {
+    else if (type == 'category') {
       this.categoryIds = this.categoryItems.map(element => element.catId);
       if (this.categoryItems.find(element => element.catId == item)) {
         return true;
@@ -583,7 +585,7 @@ export class AdvancedFilterComponent implements OnInit {
         return false;
       }
     }
-    else if (productIdsList == this.subcatItems) {
+    else if (type == 'subcategory') {
       this.subCatIds = this.subcatItems.map(element => element.subCatId);
       if (this.subCatIds.includes(item)) {
         return true;
@@ -592,7 +594,7 @@ export class AdvancedFilterComponent implements OnInit {
         return false;
       }
     }
-    else if (productIdsList == this.typeItems) {
+    else if (type == 'type') {
       this.typeIds = this.typeItems.map(element => element.typeId);
       if (this.typeIds.includes(item)) {
         return true;
@@ -621,7 +623,7 @@ export class AdvancedFilterComponent implements OnInit {
     this.shipmentcheckedCount = 0;
     this.receiptcheckedCount = 0;
     this.searchText = '';
-    
+
   }
   applyAll() {
     let selectedFilters = {
@@ -640,25 +642,54 @@ export class AdvancedFilterComponent implements OnInit {
     this.dialogRef.close(selectedFilters);
 
   }
-  getBackgroundColor(item) {
-    if (this.targetGroupList?.some(target => target['targetGroupId'] === item)) {
-      return '#0353A4';
+  getBackgroundColor(item, type) {
+
+    switch (type) {
+      case 'target':
+        return '#0353A4';
+        break;
+      case 'geo':
+        return '#F72585';
+        break;
+
+      case 'product':
+        return '#017EFA';
+        break;
+
+      case 'category':
+        return '#00187A';
+        break;
+
+      case 'subcategory':
+        return '#0C5A3E';
+        break;
+
+      case 'type':
+        return '#C32F27';
+        break;
+
+      default:
+        break;
     }
-    else if (this.geoGraphyIdentifierList?.some(vendor => vendor['geographyIdentiferid'] === item)) {
-      return '#F72585';
-    }
-    else if (this.ProductCustomIdentifierList?.some(PCI => PCI.productCustomeIdentifiers.some((ele) => ele.productCustomIdentifierId === item))) {
-      return '#017EFA';
-    }
-    else if (this.categoryList?.allOtherCats?.some(category => category['catId'] === item)) {
-      return '#00187A';
-    }
-    else if (this.subcaty?.allOtherSubCAts?.some(subcategory => subcategory['subCatId'] === item)) {
-      return '#0C5A3E';
-    }
-    else if (this.typeList?.some(types => types['typeId'] === item)) {
-      return '#C32F27';
-    }
+
+    //     if (this.targetGroupList?.some(target => target['targetGroupId'] === item)) {
+    //   return '#0353A4';
+    // }
+    // else if (this.geoGraphyIdentifierList?.some(vendor => vendor['geographyIdentiferid'] === item)) {
+    //   return '#F72585';
+    // }
+    // else if (this.ProductCustomIdentifierList?.some(PCI => PCI.productCustomeIdentifiers.some((ele) => ele.productCustomIdentifierId === item))) {
+    //   return '#017EFA';
+    // }
+    // else if (this.categoryList?.allOtherCats?.some(category => category['catId'] === item)) {
+    //   return '#00187A';
+    // }
+    // else if (this.subcaty?.allOtherSubCAts?.some(subcategory => subcategory['subCatId'] === item)) {
+    //   return '#0C5A3E';
+    // }
+    // else if (this.typeList?.some(types => types['typeId'] === item)) {
+    //   return '#C32F27';
+    // }
   }
 
   customDatePickerEvent(eventChange) {

@@ -49,6 +49,8 @@ import { AssosiationActionComponent } from '../component/assosiation-action/asso
 import { BulkEditAssosiationComponent } from '../component/bulk-edit-assosiation/bulk-edit-assosiation.component';
 import { AssosiationServicesService } from '../services/assosiation-services.service';
 import { SharedServicesDealerService } from '../services/shared-services-dealer.service';
+import { OrderReceiptsBulkUploadComponent } from '../orders-receipts/order-receipts-bulk-upload/order-receipts-bulk-upload.component';
+import { AssociationBulkUploadComponent } from '../association-bulk-upload/association-bulk-upload.component';
 // import { UseractionComponent } from '../useraction/useraction.component';
 
 @Component({
@@ -1121,6 +1123,12 @@ console.log(item)
   element.appendChild(document.createTextNode(params.value));
   element.appendChild(imageElement);
   return element;
+  }
+  orderTargetUpload(){
+    localStorage.setItem('UploadTarget','dealertarget')
+    // sessionStorage.setItem("orderTarget",'target');
+      this.dialog.open(AssociationBulkUploadComponent,{maxWidth:'97vw'});
+      // this.isOpen = false;
   }
 
 }

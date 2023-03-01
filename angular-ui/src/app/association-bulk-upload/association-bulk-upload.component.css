@@ -108,7 +108,7 @@
       .addUser-BulkUpload:before {
         content: "";
         display: block;
-        width: 409px;
+        width: 372px;
         height: 1px;
         background: #686E74;
         left: 45px;
@@ -136,8 +136,8 @@
         letter-spacing: 0.2px;
         color: #686E74;
       }
-      .receiptO{
-        left: 41.43%;
+      .receiptA{
+        left: 38.43%;
         right: 38.51%;
         top: -4%;
       }

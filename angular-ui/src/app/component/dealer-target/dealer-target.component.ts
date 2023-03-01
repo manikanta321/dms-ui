@@ -47,6 +47,8 @@ import { AddTargetsComponent } from '../add-targets/add-targets.component';
 import { TargetListService } from 'src/app/services/target-list.service';
 import { DealerTargetActionComponent } from '../dealer-target-action/dealer-target-action.component';
 import { DealerTargetSharedServicesService } from 'src/app/services/dealer-target-shared-services.service';
+import { SalesBulkUploadComponent } from '../sales-bulk-upload/sales-bulk-upload.component';
+import { OrderReceiptsBulkUploadComponent } from 'src/app/orders-receipts/order-receipts-bulk-upload/order-receipts-bulk-upload.component';
 
 // import { UseractionComponent } from '../useraction/useraction.component';
 
@@ -91,6 +93,7 @@ export class DealerTargetComponent implements OnInit {
   targetListArray:any = [];
   targetAllArray:any = [];
   yearSelected:any = [];
+  isitemtarget:any;
   gridOptions: GridOptions = {
     defaultColDef: {
       resizable: true,
@@ -898,7 +901,12 @@ export class DealerTargetComponent implements OnInit {
     this.gridOptions.api!.sizeColumnsToFit();
   }
 
-
+  orderTargetUpload(){
+    localStorage.setItem('UploadTarget','dealertarget')
+    // sessionStorage.setItem("orderTarget",'target');
+      this.dialog.open(OrderReceiptsBulkUploadComponent,{maxWidth:'97vw'});
+      // this.isOpen = false;
+  }
   onFirstDataRendered(params: FirstDataRenderedEvent) {
     params.api.paginationGoToPage(4);
   }

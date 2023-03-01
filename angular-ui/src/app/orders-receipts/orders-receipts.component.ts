@@ -56,6 +56,7 @@ export class OrdersReceiptsComponent implements OnInit {
   geogragphies:any = [];
   dropdownSettings1: IDropdownSettings = {};
   loggedUserId:any;
+  isitemtarget:any;
   columnDefs: (ColDef| ColGroupDef)[] = [
     {  headerName: "Shipment No.",
     field: 'shipmentNumber',      tooltipField:"shipmentNumber",
@@ -190,6 +191,7 @@ export class OrdersReceiptsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loggedUserId = localStorage.getItem('logInId');
+  
 
     this.myForm = this.fb.group({
       city: [this.selectedItems]
@@ -270,6 +272,7 @@ export class OrdersReceiptsComponent implements OnInit {
  bulkDownload(){
   sessionStorage.setItem("bulkShipDownload","");
   sessionStorage.setItem("OrderReceiptDownload","ReceiptDownload");
+
   this.dialog.open(ShipOrderBulkDownloadComponent, {width:'80%'})
   }
   selectdays(){
@@ -334,6 +337,7 @@ export class OrdersReceiptsComponent implements OnInit {
       });
     }
     orderReceiptsBulkUpload(){
+      localStorage.setItem('UploadTarget','');
         this.dialog.open(OrderReceiptsBulkUploadComponent);
     }
     // orderReceiptsBulkUpload(){

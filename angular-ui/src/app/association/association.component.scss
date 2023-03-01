@@ -1133,3 +1133,28 @@
   color: #000;
    top: 8px;
 } 
+.asso-upload{
+  background: #000000;
+  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+  margin-right: 10px;
+  cursor: pointer;
+  position: relative;
+  top: 0px;
+  right:45px
+}
+.asso-upload:hover
+{
+  background-color: grey !important;
+  color: white !important;
+}
+.imgupload{
+  position: relative;
+  top: 8px;
+  left: 10px;
+}
+.bulkEditAss{
+  position: relative;
+    right: -47px;
+}

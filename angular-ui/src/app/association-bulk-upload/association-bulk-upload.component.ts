@@ -3,13 +3,14 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { OtherMasterService } from 'src/app/services/other-master.service';
 import { SalesServicesService } from 'src/app/services/sales-services.service';
 import * as XLSX from 'xlsx';
+import { OrderReceiptsBulkUploadComponent } from '../orders-receipts/order-receipts-bulk-upload/order-receipts-bulk-upload.component';
 
 @Component({
-  selector: 'app-order-receipts-bulk-upload',
-  templateUrl: './order-receipts-bulk-upload.component.html',
-  styleUrls: ['./order-receipts-bulk-upload.component.css']
+  selector: 'app-association-bulk-upload',
+  templateUrl: './association-bulk-upload.component.html',
+  styleUrls: ['./association-bulk-upload.component.css']
 })
-export class OrderReceiptsBulkUploadComponent implements OnInit {
+export class AssociationBulkUploadComponent implements OnInit {
   showTable:boolean = false;
   rowsTotal:boolean = false;
   rowsemptyTotal:boolean=false;
@@ -36,22 +37,14 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
   zeroVal:boolean = false; 
   duplicate:boolean = false;  
   incorrectData:boolean = false;
-  ReceiptOrTargetUpload:boolean=false;
+
   constructor(private salesService:SalesServicesService,
     private otherMasterService:OtherMasterService,
-    private dialogRef: MatDialogRef<OrderReceiptsBulkUploadComponent>,) { }
+    private dialogRef: MatDialogRef<AssociationBulkUploadComponent>) { }
 
   ngOnInit(): void {
     this.CreatedById = localStorage.getItem("logInId");
     this.CreatedById = Number(this.CreatedById);
-    let isitemtarget =localStorage.getItem('UploadTarget')
-
-    if(isitemtarget==''){
-      this.ReceiptOrTargetUpload=false;
-    }else{
-     this.ReceiptOrTargetUpload=true;
-   
-    }
   }
 
   onFileChange(event: any) {
@@ -180,4 +173,5 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
       this.dialogRef.close();
     })
    }
+
 }

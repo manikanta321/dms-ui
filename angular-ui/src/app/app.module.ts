@@ -209,6 +209,7 @@ import { DealerTargetSuccessPopupComponent } from './dealer-target-success-popup
 import { AddGeolistShippingPopupComponent } from './add-geolist-shipping-popup/add-geolist-shipping-popup.component';
 import { EditProfilePopupComponent } from './component/edit-profile-popup/edit-profile-popup.component';
 import { AddSalesSuccessComponent } from './component/sales-list/sales-inventory/add-sales-popup/add-sales-success/add-sales-success.component';
+import { AssociationBulkUploadComponent } from './association-bulk-upload/association-bulk-upload.component';
 
 
 @NgModule({
@@ -510,7 +511,8 @@ import { AddSalesSuccessComponent } from './component/sales-list/sales-inventory
           DealerTargetSuccessPopupComponent,
           AddGeolistShippingPopupComponent,
           EditProfilePopupComponent,
-          AddSalesSuccessComponent
+          AddSalesSuccessComponent,
+          AssociationBulkUploadComponent
           
   ],
   imports: [

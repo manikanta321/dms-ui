@@ -76,11 +76,17 @@
               </div>
             </div>
           
-              <div class="col-md-0" userRoleDirective="BULK_EDIT_ASSOCIATION" [pageName]="currentPageName">
+              <div class="col-md-0" userRoleDirective="BULK_EDIT_ASSOCIATION" [pageName]="currentPageName" class="bulkEditAss">
                 <div class="add-user1" (click)="editBulk()" style=" cursor: pointer">
                   <img src="assets/img/editasso.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
                 </div>
               </div>
+              <div class="col-md-0">
+                <div class="asso-upload" (click)="orderTargetUpload()">
+                    <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
+                        alt="add-user-btn">    
+                </div>
+                </div>
             <div class="col-md-0" >
               <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer">
                 <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;"

@@ -250,7 +250,7 @@
   .searchBox {
     float: right;
     position: absolute;
-    left: 91%;
+    left: 84%;
     top: 8px;
   }
   
@@ -384,7 +384,7 @@
     height: 37px;
     top: 87px;
     position: absolute;
-    left: 62%;
+    left: -7%;
   }
   
   .download-btn {
@@ -395,7 +395,7 @@
     width: 37px;
     height: 37px;
     top: 87px;
-    left: 90%;
+    left: 18%;
   }
   
   ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
@@ -1107,4 +1107,28 @@
     margin-right: -1px;
   
     padding-left: 5px;
+  }
+  .target-upload{
+    background: #000000;
+    border-radius: 50%;
+    width: 37px;
+    height: 37px;
+    margin-right: 10px;
+    cursor: pointer;
+    position: relative;
+    top: 87px;
+    left: 7px;
+  }
+  .target-upload:hover
+  {
+    background-color: grey !important;
+    color: white !important;
+  }
+  .imgupload{
+    position: relative;
+    top: 8px;
+    left: 10px;
+  }
+  ::ng-deep.ag-ltr .ag-cell {
+    cursor: pointer;
   }

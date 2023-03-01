@@ -71,7 +71,7 @@
                                             <label>Website<span>*</span></label>
                                             <br>
                                             <input type="text" formControlName="website"
-                                                class="addDelercols form-control" required
+                                                class="addDelercols form-control" required style="width:95%"
                                                 placeholder="Enter dealer company website"
                                                >
                                                <span class="text-danger"
@@ -105,7 +105,7 @@
                                             <label class="otherId">Other Identifer</label>
                                             <br>
                                             <input type="text" formControlName="OtherIdentifier"
-                                                class="addDelercols form-control"
+                                                class="addDelercols form-control" style="width:98%;"
                                                 placeholder="Enter and select" >
                                             <img src="../assets/img/search.png" class="search">
                                         </div>
@@ -129,50 +129,14 @@
                                 <ng-template matStepLabel>AdminUser</ng-template>
                                 <div class="headefont" style="margin-top:25px;">
                                     <h6
-                                        style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'">
+                                        style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy;'">
                                         <b>Admin user</b>
                                     </h6>
                                 </div>
 
 
-                                <div class="col-12">
+                                <div class="col-12" style="margin-left: -13px;">
                                     <div class="row">
-                                        <div class="col-4 fontcolor">
-                                            <label>User Name<span>*</span></label>
-                                            <br>
-                                            <input type="text" formControlName="UserName"
-                                                class="addDelercols form-control" required placeholder="Enter admin name"
-                                              >
-                                              <span class="text-danger"
-                                              *ngIf="addAddressDetailsFormControl['UserName'].touched  && addAddressDetailsFormControl['UserName'].errors && addAddressDetailsFormControl['UserName'].errors['required']">
-                                              UserName is required
-                                          </span>
-                                        </div>
-                                        <div class="col-4 fontcolor">
-                                            <label>Email ID<span>*</span></label>
-                                            <br>
-                                            <input type="text" formControlName="EmailId"
-                                                class="addDelercols form-control" required
-                                                placeholder="Enter admin email id">
-                                                <span class="text-danger"
-                                                *ngIf="addAddressDetailsFormControl['EmailId'].touched  && addAddressDetailsFormControl['EmailId'].errors && addAddressDetailsFormControl['EmailId'].errors['required']">
-                                                Email ID is required
-                                            </span>
-
-                                        </div>
-                                        <div class="col-4 fontcolor">
-                                            <label>Phone No<span>*</span></label>
-                                            <br>
-                                            <input type="text" formControlName="Mobile"
-                                                class="addDelercols form-control" required
-                                                placeholder="Enter admin phone no" >
-                                                <span class="text-danger"
-                                                *ngIf="addAddressDetailsFormControl['Mobile'].touched  && addAddressDetailsFormControl['Mobile'].errors && addAddressDetailsFormControl['Mobile'].errors['required']">
-                                                Phone No is required
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="row secondDiv">
                                         <div class="col-4 " >
                                             <label>First Name<span>*</span></label>
                                             <br>
@@ -194,6 +158,42 @@
                                                 <span class="text-danger"
                                                 *ngIf="addAddressDetailsFormControl['lastName'].touched  && addAddressDetailsFormControl['lastName'].errors && addAddressDetailsFormControl['lastName'].errors['required']">
                                                 Last Name is required
+                                            </span>
+                                        </div>
+                                        <div class="col-4 fontcolor">
+                                            <label>User Name<span>*</span></label>
+                                            <br>
+                                            <input type="text" formControlName="UserName"
+                                                class="addDelercols form-control" required placeholder="Enter admin name"
+                                              >
+                                              <span class="text-danger"
+                                              *ngIf="addAddressDetailsFormControl['UserName'].touched  && addAddressDetailsFormControl['UserName'].errors && addAddressDetailsFormControl['UserName'].errors['required']">
+                                              UserName is required
+                                          </span>
+                                        </div>
+                                </div>
+                                    <div class="row secondDiv">
+                                        <div class="col-4 fontcolor">
+                                            <label>Email ID<span>*</span></label>
+                                            <br>
+                                            <input type="text" formControlName="EmailId"
+                                                class="addDelercols form-control" required
+                                                placeholder="Enter admin email id">
+                                                <span class="text-danger"
+                                                *ngIf="addAddressDetailsFormControl['EmailId'].touched  && addAddressDetailsFormControl['EmailId'].errors && addAddressDetailsFormControl['EmailId'].errors['required']">
+                                                Email ID is required
+                                            </span>
+
+                                        </div>
+                                        <div class="col-4 fontcolor">
+                                            <label>Phone No<span>*</span></label>
+                                            <br>
+                                            <input type="text" formControlName="Mobile"
+                                                class="addDelercols form-control" required
+                                                placeholder="Enter admin phone no" >
+                                                <span class="text-danger"
+                                                *ngIf="addAddressDetailsFormControl['Mobile'].touched  && addAddressDetailsFormControl['Mobile'].errors && addAddressDetailsFormControl['Mobile'].errors['required']">
+                                                Phone No is required
                                             </span>
                                         </div>
                                         <div class="col-4">
@@ -220,7 +220,7 @@
                                         <div class="col-11">
                                             <div class="headefont">
                                                 <h6
-                                                    style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy'">
+                                                    style="color: #000000 ;font-size:20px; font-weight: lighter;font-family: 'Gilroy';margin-left: -14px;">
                                                     <b>Addresses</b>
                                                 </h6>
                                             </div>
@@ -248,14 +248,15 @@
 
                                             </div>
 
-                                            <div class="col-2">
+                                            <div class="col-2" style="position: relative;
+                                            right: 14px;">
                                                 <label *ngIf="i == 0">Consignee Name<span>*</span></label>
                                                 <br>
                                                 <input type="text" placeholder="Enter" formControlName="ConsigneeName" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].ConsigneeName"
                                                     class="addDelercols addname">
                                             </div>
 
-                                            <div class="col-1">
+                                            <div class="col-1" style="position: relative;right:84px;">
                                                 <label *ngIf="i == 0">Tax<span>*</span></label>
                                                 <br>
                                                 <select #teams  class="addDelercols addtax" aria-label=".form-select-lg example" formControlName="Taxid"   [(ngModel)]="addAddressDetailsForm.value.addresscount[i].Taxid"
@@ -269,7 +270,7 @@
                                                 </select>
                                             </div>
 
-                                            <div class="col-2">
+                                            <div class="col-2"style="position: relative;right:107px;">
                                                 <label *ngIf="i == 0">Address Line<span>*</span></label>
                                                 <br>
                                                 <input type="text" placeholder="Enter" formControlName="AddressLine1"
@@ -278,7 +279,7 @@
                                                     class="addDelercols addadressLine1" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].AddressLine2">
                                             </div>
 
-                                            <div class="col-1">
+                                            <div class="col-1" style="margin-left: -53px;">
                                                 <label *ngIf="i == 0">Country<span>*</span></label>
                                                 <br>
                                                 <input type="text" placeholder="Enter" formControlName="CountryName" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].CountryName"
@@ -301,7 +302,7 @@
                                                     class="addDelercols addzip">
                                             </div>
 
-                                            <div class="col-1">
+                                            <div class="col-1" style="margin-left: 53px;">
                                                 <label *ngIf="i == 0">Phone<span>*</span></label>
                                                 <br>
                                                 <input type="text" placeholder="Enter" formControlName="Telephone" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].Telephone"

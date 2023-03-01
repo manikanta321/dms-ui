@@ -77,7 +77,7 @@ mat-tab{
 
 ::ng-deep .order1-lab .mat-tab-label{
   height: 31px !important;
-  min-width: 165px !important;
+  min-width: 155px !important;
 }
 .order1-lab .mat-tab-labels:nth-child(1) {
   width: 50% !important;

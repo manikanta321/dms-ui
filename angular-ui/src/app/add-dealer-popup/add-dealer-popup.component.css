@@ -4,7 +4,7 @@
 
 .container
 {
-  min-width: 85vw;
+  min-width: 92vw;
   
 
 }
@@ -13,7 +13,7 @@
 .search {
   width: 20px;
   position: relative;
-  left: 94%;
+  left: 92%;
   top: -32px;
 }
 .form-row{
@@ -739,6 +739,7 @@ li {
 .scroll {
   overflow-y: auto;
   overflow-x: auto;
+  
 }
 
 ::-webkit-scrollbar {
@@ -861,6 +862,7 @@ li {
    overflow-x: hidden; 
   height: 500px;
   overflow-y: auto;
+  width: 102%;
 
 }
 
@@ -1332,7 +1334,7 @@ li {
   font-family: 'Gilroy';
   bottom: 68px;
   position: absolute;
-  left: 1px;
+  left: 27px;
 }
 
 ::ng-deep.mat-step-label {
@@ -1629,25 +1631,31 @@ li {
 }
 
 .addadress {
-  width: 135px !important;
-  height: 22px;
+  width: 125px !important;
+  height: 45px;
 }
 
 .addcountry {
-  width: 70px !important;
+  width: 100px !important;
 }
 
 .aastate {
-  width: 70px !important;
+  width: 100px !important;
 }
 
 .addcity {
   width: 135px !important;
-  height: 22px;
+  height: 40px;
+  width: 135px !important;
+    height: 40px;
+    position: relative;
+    left: 0px;
+   
 }
 
 .addphone {
-  width: 70px !important;
+  width: 123px !important;
+  height: 38px;
 }
 
 .remove-address {
@@ -1656,6 +1664,7 @@ li {
   /* color: red; */
   cursor: pointer;
   color: grey;
+  left: 10px;
 }
 
 .remove-addresss {
@@ -1681,7 +1690,7 @@ li {
 
 .status-class {
   box-sizing: border-box;
-  width: 372px;
+  width: 406px;
   height: 43px;
   background: #FFFFFF;
   border: 0.5px solid #000000;
@@ -1725,11 +1734,22 @@ li {
 
 .addzip,
 .addadressLine1 {
-  width: 135px !important;
-  margin-top: 4px;
-  height: 22px;
+  width: 125px !important;
+  /* margin-top: 4px; */
+  height: 45px;
+  position: relative;
+    bottom: 46px;
+    left: 133px;
 }
 
+.addzip,
+.addadressLine11 {
+  position: relative;
+    bottom: 41px;
+    left: 141px;
+    width: 125px !important;
+    height: 40px;
+}
 .backenendcolor {
   background-color: #000;
 }
@@ -1784,10 +1804,19 @@ li {
 }
 
 ::ng-deep.mat-dialog-container {
-  padding: 9px;
+  padding: 5px;
+overflow: hidden;
+width: 97%;
 
 }
 
 ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
   background-color: black !important;
+}
+
+::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-label{
+  padding: 16px 5px 1px 24px;
+}
+::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header, .mat-vertical-stepper-header{
+  padding: 24px 38px;
 }

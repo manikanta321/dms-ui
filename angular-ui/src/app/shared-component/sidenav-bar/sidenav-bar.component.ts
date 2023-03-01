@@ -1,6 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
 
@@ -27,9 +28,10 @@ export class SidenavBarComponent implements OnInit {
   userRoles;
   viewMenuList:any = [];
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService,private router: Router) { }
 
-
+  showSettingsMenuURLS = ['/dashbord/materials','/dashbord/user', '/dashbord/geographies', '/dashbord/other-masters']
+  expandSettingsPannel = false;
   ngOnInit(): void {
     if (localStorage.getItem('userroles')) {
       this.userRoles = JSON.parse(localStorage.getItem('userroles') ?? '[]');
@@ -39,7 +41,14 @@ export class SidenavBarComponent implements OnInit {
       // console.log(res);
       this.userRoles = res;
       this.updateUserRoleMenu();
-    })
+    });
+
+    console.log(this.router);
+
+    if(this.showSettingsMenuURLS.indexOf(this.router.url) != -1){
+      this.expandSettingsPannel = true;
+    }
+    
 
 
   }

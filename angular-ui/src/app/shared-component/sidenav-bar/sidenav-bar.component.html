@@ -42,7 +42,7 @@
 
 
 
-            <mat-expansion-panel (click)="toogleCollapsed()" class="expnsnpanl" [hideToggle]="true" *ngIf="viewMenuList.indexOf('settingusers') != -1 || viewMenuList.indexOf('settingmaterials') != -1 || viewMenuList.indexOf('settinggeographies') != -1 || viewMenuList.indexOf('settingmaterials') != -1 ">
+            <mat-expansion-panel (click)="toogleCollapsed()" [expanded]="expandSettingsPannel" class="expnsnpanl" [hideToggle]="true" *ngIf="viewMenuList.indexOf('settingusers') != -1 || viewMenuList.indexOf('settingmaterials') != -1 || viewMenuList.indexOf('settinggeographies') != -1 || viewMenuList.indexOf('settingmaterials') != -1 ">
 
                 <mat-expansion-panel-header >
 

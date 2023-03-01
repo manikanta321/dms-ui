@@ -20,42 +20,43 @@
                     </div>
                     <!----------------- filter section  ---------------------->
                     <div class="menu-container">
-                        <div class="menu-item tick menu-item-targetG" (click)=addTargetGroupElements()> Target Group
+                        <div class="menu-item tick menu-item-targetG" [ngClass]="{'selected': isTargetGroupSelected}" (click)=addTargetGroupElements()> Target Group
                             <span *ngIf="targetLists.length > 0">({{targetLists.length}})</span>
                             <img *ngIf="isTargetGroupSelected" src="../../../assets/userImages/done-tick.svg" alt=""
                                 class="tickmark">
                         </div>
 
-                        <div class="menu-item tick menu-item-GeoTags" (click)=getGeoGraphyIdentifier()> Geography Tags
+                        <div class="menu-item tick menu-item-GeoTags" [ngClass]="{'selected': isgeoGraphyIdentifierSelected}" (click)=getGeoGraphyIdentifier()> Geography Tags
                             <span *ngIf="itemOfgeogrphy.length > 0">({{itemOfgeogrphy.length}})</span>
                             <img *ngIf="isgeoGraphyIdentifierSelected" src="../../../assets/userImages/done-tick.svg"
                                 class="tickmark">
                         </div>
-                        <div class="menu-item tick menu-item-prodCustomId" (click)=getProductCustomIdentifier()>Product
-                            Custom Identifier <span *ngIf="ProductCustomIdentifierElements.length > 0">({{ProductCustomIdentifierElements.length}})</span>
+                        <div class="menu-item tick menu-item-prodCustomId" [ngClass]="{'selected': isProductCustomIdentifierSelected}" (click)=getProductCustomIdentifier()>Product
+                            Custom Identifier <span
+                                *ngIf="ProductCustomIdentifierElements.length > 0">({{ProductCustomIdentifierElements.length}})</span>
                             <img *ngIf="isProductCustomIdentifierSelected"
                                 src="../../../assets/userImages/done-tick.svg" class="tickmark">
                         </div>
-                        <div class="menu-item tick menu-item-categO" (click)=getCategory()>Category <span
+                        <div class="menu-item tick menu-item-categO" [ngClass]="{'selected': isCategorySelected}" (click)=getCategory()>Category <span
                                 *ngIf="categoryItems.length > 0">({{categoryItems.length}})</span>
                             <img *ngIf="isCategorySelected" src="../../../assets/userImages/done-tick.svg"
                                 class="tickmark">
                         </div>
-                        <div class="menu-item tick menu-item-subCategO" (click)=getSubCategory()>Sub-Category <span
+                        <div class="menu-item tick menu-item-subCategO" [ngClass]="{'selected': isSubCategorySelected}" (click)=getSubCategory()>Sub-Category <span
                                 *ngIf="subcatItems.length > 0">({{subcatItems.length}})</span>
                             <img *ngIf="isSubCategorySelected" src="../../../assets/userImages/done-tick.svg"
                                 class="tickmark">
                         </div>
-                        <div class="menu-item tick menu-item-typeO" (click)=getType()>Type <span
+                        <div class="menu-item tick menu-item-typeO" [ngClass]="{'selected': typeSelected}" (click)=getType()>Type <span
                                 *ngIf="typeItems.length > 0">({{typeItems.length}})</span>
                             <img *ngIf="typeSelected" src="../../../assets/userImages/done-tick.svg" class="tickmark">
                         </div>
-                        <div class="menu-item tick menu-item-shipDate" (click)=getShipmentDate()>Shipment Date <span
+                        <div class="menu-item tick menu-item-shipDate" [ngClass]="{'selected': isShipmentDateSelected}" (click)=getShipmentDate()>Shipment Date <span
                                 *ngIf="shipmentcheckedCount > 0">({{shipmentcheckedCount}})</span>
                             <img *ngIf="isShipmentDateSelected" src="../../../assets/userImages/done-tick.svg"
                                 class="tickmark">
                         </div>
-                        <div class="menu-item tick menu-item-receiptDate" (click)=getReceiptDate()>Receipt Date <span
+                        <div class="menu-item tick menu-item-receiptDate" [ngClass]="{'selected': isReceiptDateSelected}" (click)=getReceiptDate()>Receipt Date <span
                                 *ngIf="receiptcheckedCount > 0">({{receiptcheckedCount}})</span>
                             <img *ngIf="isReceiptDateSelected" src="../../../assets/userImages/done-tick.svg"
                                 class="tickmark">
@@ -65,12 +66,11 @@
                 <div class="col-lg-4">
                     <div class="menu-container1">
                         <!-- input search field display depends on conditions -->
-                        <input
-                            *ngIf="isTargetGroupSelected || isCategorySelected || (this.isSubCategorySelected && this.categoryItems.length > 0 )|| (typeSelected && this.subcatItems.length > 0) "
-                            [(ngModel)]="searchText" class="" style="font-family: 'Gilroy'" type="text"
-                            placeholder="Type & search">
-                        <img *ngIf="isTargetGroupSelected || isCategorySelected" src="assets/img/search.png"
-                            class="search" alt="search">
+                        <div style="position: relative;" *ngIf="isTargetGroupSelected || isCategorySelected || (isSubCategorySelected && categoryItems.length > 0 )|| (typeSelected && subcatItems.length > 0) ">
+                            <input [(ngModel)]="searchText" class="" style="font-family: 'Gilroy'" type="text"
+                                placeholder="Type & search">
+                            <img src="assets/img/search.png" class="search" alt="search">
+                        </div>
                         <!------------     target group   ------------>
 
                         <ul class="heroes" *ngIf="isTargetGroupSelected">
@@ -104,8 +104,7 @@
                         <!-------- category   ---------------------->
                         <div *ngIf="isCategorySelected" class="heroes3">
                             <li *ngFor="let category of categoryList?.allOtherCats | filter:searchText">
-                                <mat-checkbox class="productC"
-                                    (change)="onItemClickOfCategory(category , $event);updateCountForCategory($event)"
+                                <mat-checkbox class="productC" (change)="onItemClickOfCategory(category , $event);"
                                     [checked]="isCheckedForProduct(category.catId, 'category')">{{category.catName}}</mat-checkbox>
 
                             </li>
@@ -115,8 +114,7 @@
                         <div *ngIf="isSubCategorySelected" class="heroes4">
                             <div *ngIf="this.categoryItems.length > 0">
                                 <li *ngFor="let subcat of subcaty?.allOtherSubCAts | filter:searchText">
-                                    <mat-checkbox class="productC"
-                                        (change)="onItemClickOfSubCategory(subcat , $event);updateCountForSubCAT($event)"
+                                    <mat-checkbox class="productC" (change)="onItemClickOfSubCategory(subcat , $event);"
                                         [checked]="isCheckedForProduct(subcat.subCatId, 'subcategory')">{{subcat.subCatName}}</mat-checkbox>
                                 </li>
                             </div>
@@ -149,7 +147,7 @@
                             (click)=updateCountForShipment($event)>
                             <app-customdatepicker class="dateplaceholder" [showDirectMenu]="true"
                                 [selectedMenu]="shipmentselectedMenu" [selectedDate]="shipmentSelectedDateRange"
-                                (customDatePickerEvent)="shipmentCustomDatePickerEvent($event)" ></app-customdatepicker>
+                                (customDatePickerEvent)="shipmentCustomDatePickerEvent($event)"></app-customdatepicker>
                         </div>
                         <!----------------- receipt date   ---------------------->
 
@@ -174,8 +172,8 @@
                         <div *ngFor="let item of targetLists;let i =index;" class="custom"
                             [ngStyle]="{'background-color': getBackgroundColor(item.targetGroupId, 'target')}">
                             <div class="eleStyle">
-                                <span class="itemSelectedFilter">{{item.targetGroupName}}<mat-icon
-                                        mat-button class="close-iconn"
+                                <span class="itemSelectedFilter">{{item.targetGroupName}}<mat-icon mat-button
+                                        class="close-iconn"
                                         (click)="removeItem(item.targetGroupId , 'target')">close</mat-icon></span>
                             </div>
                         </div>
@@ -192,8 +190,7 @@
                         <!-- </div>
 
                         <div *ngIf="this.ProductCustomIdentifierElements.length > 0"  class="targetElement"> -->
-                        <div *ngFor="let product of ProductCustomIdentifierElements;let i =index;"
-                            class="customIdenti"
+                        <div *ngFor="let product of ProductCustomIdentifierElements;let i =index;" class="customIdenti"
                             [ngStyle]="{'background-color': getBackgroundColor(product.productCustomIdentifierId, 'product')}">
                             <div class="eleStyle">
                                 <span class="itemSelectedFilter">{{product.productCustomName}}<mat-icon mat-button
@@ -207,9 +204,10 @@
                         <div *ngFor="let category of categoryItems;let i =index;" class="customCateg"
                             [ngStyle]="{'background-color': getBackgroundColor(category.catId, 'category')}">
                             <div class="eleStyle">
-                                <span class="itemSelectedFilter">{{category.catName}}<mat-icon
-                                        mat-button class="close-iconn"
-                                        (click)="removeItem(category.catId , 'category')">close</mat-icon></span></div>
+                                <span class="itemSelectedFilter">{{category.catName}}<mat-icon mat-button
+                                        class="close-iconn"
+                                        (click)="removeItem(category.catId , 'category')">close</mat-icon></span>
+                            </div>
                         </div>
                         <!-- </div> -->
                         <!-- <div *ngIf="this.subcatItems.length > 0"  class="targetElement"> -->
@@ -222,7 +220,7 @@
                         </div>
                         <!-- </div>
                         <div *ngIf="this.typeItems.length > 0"  class="targetElement"> -->
-                        <div *ngFor="let type of typeItems;let i =index;" class="customTyp" 
+                        <div *ngFor="let type of typeItems;let i =index;" class="customTyp"
                             [ngStyle]="{'background-color': getBackgroundColor(type.typeId, 'type')}">
                             <div class="eleStyle"><span class="itemSelectedFilter">{{type.typeName}}<mat-icon mat-button
                                         class="close-iconn"
@@ -230,21 +228,21 @@
                         </div>
                         <!-- </div> 
                         <div class="targetElement">-->
-                            <div *ngIf="shipmentSelectedDateRange && shipmentSelectedDateRange.startDate"
-                                class="customShipping">
-                                <div class="eleStyles"><span class="itemSelectedFilterShip">{{startDateOfShipment}} -
-                                        {{endDateOfShipment}}<mat-icon mat-button class="close-iconn"
-                                            (click)="close()">close</mat-icon></span>
-                                </div>
+                        <div *ngIf="shipmentSelectedDateRange && shipmentSelectedDateRange.startDate"
+                            class="customShipping">
+                            <div class="eleStyles"><span class="itemSelectedFilterShip">{{startDateOfShipment}} -
+                                    {{endDateOfShipment}}<mat-icon mat-button class="close-iconn"
+                                        (click)="close()">close</mat-icon></span>
                             </div>
+                        </div>
                         <!-- </div>
                         <div class="targetElement"> -->
-                            <div *ngIf="selectedDateRange && selectedDateRange.startDate" class="customShipping">
-                                <div class="eleStyles"><span class="itemSelectedFilterShip">{{startDate}} -
-                                        {{endDate}}<mat-icon mat-button class="close-iconn"
-                                            (click)="closeDate()">close</mat-icon></span>
-                                </div>
+                        <div *ngIf="selectedDateRange && selectedDateRange.startDate" class="customShipping">
+                            <div class="eleStyles"><span class="itemSelectedFilterShip">{{startDate}} -
+                                    {{endDate}}<mat-icon mat-button class="close-iconn"
+                                        (click)="closeDate()">close</mat-icon></span>
                             </div>
+                        </div>
                         <!-- </div> -->
                     </div>
                 </div>

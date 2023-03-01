@@ -53,8 +53,8 @@ export class AdvancedFilterComponent implements OnInit {
   subcatItems: any = [];
   typeItems: any = [];
   PCICheckedCount: number = 0;
-  categorycheckedCount: number = 0;
-  subcategoryCheckedCount: number = 0;
+  // categorycheckedCount: number = 0;
+  // subcategoryCheckedCount: number = 0;
   typeCount: number = 0;
   shipmentcheckedCount: number = 0;
   receiptcheckedCount: number = 0;
@@ -152,8 +152,8 @@ export class AdvancedFilterComponent implements OnInit {
     this.isShipmentDateSelected = false;
     this.isReceiptDateSelected = false;
     this.isSubCategorySelected = true;
-    var subcategory = JSON.parse(localStorage.getItem('category') ?? '[]');
-    this.categoryItemsList = subcategory.map((ele) => ele.catId);
+    // var subcategory = JSON.parse(localStorage.getItem('category') ?? '[]');
+    this.categoryItemsList = this.categoryItems.map((ele) => ele.catId);
     let Subdata = {
       catId: this.categoryItemsList,
       flag: true
@@ -174,10 +174,10 @@ export class AdvancedFilterComponent implements OnInit {
     this.isShipmentDateSelected = false;
     this.isReceiptDateSelected = false;
     this.typeSelected = true;
-    var type = JSON.parse(localStorage.getItem('subcategory') ?? '[]');
+    // var type = JSON.parse(localStorage.getItem('subcategory') ?? '[]');
     // this.typeItems = this.typeList;
     let Type = {
-      subCatId: type.map((ele) => ele.subCatId)
+      subCatId: this.subcatItems.map((ele) => ele.subCatId)
     }
     this.materialList.onclicksubcat(Type).subscribe((res) => {
       this.typeList = res.response;
@@ -260,7 +260,7 @@ export class AdvancedFilterComponent implements OnInit {
       this.targetLists.push(item);
     }
     else if (this.isCheckedForProduct(item.targetGroupId, 'target')) {
-      let index = this.targetLists.findIndex(x=> x.targetGroupId == item.targetGroupId);
+      let index = this.targetLists.findIndex(x => x.targetGroupId == item.targetGroupId);
       if (index > -1) {
         this.targetLists.splice(index, 1);
       }
@@ -274,7 +274,7 @@ export class AdvancedFilterComponent implements OnInit {
       this.itemOfgeogrphy.push(item);
     }
     else if (this.isCheckedForProduct(item?.geographyIdentiferid, 'geo')) {
-      let index = this.itemOfgeogrphy.findIndex(x=> x.geographyIdentiferid == item.geographyIdentiferid);
+      let index = this.itemOfgeogrphy.findIndex(x => x.geographyIdentiferid == item.geographyIdentiferid);
       if (index > -1) {
         this.itemOfgeogrphy.splice(index, 1);
       }
@@ -288,7 +288,7 @@ export class AdvancedFilterComponent implements OnInit {
       this.ProductCustomIdentifierElements.push(item);
     }
     else if (this.isCheckedForProduct(item.productCustomIdentifierId, 'product')) {
-      let index = this.ProductCustomIdentifierElements.findIndex(x=> x.productCustomIdentifierId == item.productCustomIdentifierId);
+      let index = this.ProductCustomIdentifierElements.findIndex(x => x.productCustomIdentifierId == item.productCustomIdentifierId);
       if (index > -1) {
         this.ProductCustomIdentifierElements.splice(index, 1);
       }
@@ -307,24 +307,25 @@ export class AdvancedFilterComponent implements OnInit {
 
       // let index = this.categoryItems.indexOf(category);
       // if (index > -1) {
-      // this.categoryItems.splice(index, 1);
+      let index = this.categoryItems.findIndex(x => x.catId == category.catId);
+      this.categoryItems.splice(index, 1);
       // }
-      this.categoryItems = this.categoryItems.filter(function (el) {
-        return el.catId !== category.catId;
-      });
+      // this.categoryItems = this.categoryItems.filter(function (el) {
+      //   return el.catId !== category.catId;
+      // });
 
-      if (this.categoryItems.length == 0) {
-        this.isSubCategorySelected = false;
-        this.typeSelected = false;
-        this.subcatItems.length = 0;
-        this.typeItems.length = 0;
-        this.subcategoryCheckedCount = 0;
-        this.typeCount = 0;
+      // if (this.categoryItems.length == 0) {
+      //   this.isSubCategorySelected = false;
+      //   this.typeSelected = false;
+      //   this.subcatItems.length = 0;
+      //   this.typeItems.length = 0;
+      //   // this.subcategoryCheckedCount = 0;
+      //   this.typeCount = 0;
 
-      }
-      else {
-        this.isSubCategorySelected = true;
-      }
+      // }
+      // else {
+      //   this.isSubCategorySelected = true;
+      // }
 
     }
 
@@ -339,9 +340,8 @@ export class AdvancedFilterComponent implements OnInit {
     }
     else if (this.isCheckedForProduct(subcat.subCatId, 'subcategory')) {
       //this.values.pop(subcat.subCatName);
-      this.subcatItems = this.subcatItems.filter(function (el) {
-        return el.subCatId !== subcat.subCatId;
-      });
+      let index = this.subcatItems.findIndex(x => x.subCatId == subcat.subCatId);
+      this.subcatItems.splice(index, 1);
     }
   }
   onItemClickOfType(type: any, event: any) {
@@ -389,25 +389,25 @@ export class AdvancedFilterComponent implements OnInit {
 
   }
   updateCountForCategory(event: any) {
-    if (this.isCategorySelected) {
-      if (event.checked) {
-        this.categorycheckedCount++;
-      }
-      else if (this.categorycheckedCount > 0) {
-        this.categorycheckedCount--;
-      }
-    }
+    // if (this.isCategorySelected) {
+    //   if (event.checked) {
+    //     this.categorycheckedCount++;
+    //   }
+    //   else if (this.categorycheckedCount > 0) {
+    //     this.categorycheckedCount--;
+    //   }
+    // }
 
   }
   updateCountForSubCAT(event: any) {
-    if (this.isSubCategorySelected) {
-      if (event.checked) {
-        this.subcategoryCheckedCount++;
-      }
-      else if (this.subcategoryCheckedCount > 0) {
-        this.subcategoryCheckedCount--;
-      }
-    }
+    // if (this.isSubCategorySelected) {
+    //   if (event.checked) {
+    //     this.subcategoryCheckedCount++;
+    //   }
+    //   else if (this.subcategoryCheckedCount > 0) {
+    //     this.subcategoryCheckedCount--;
+    //   }
+    // }
 
   }
   updateCountForType(event: any) {
@@ -473,17 +473,17 @@ export class AdvancedFilterComponent implements OnInit {
       case 'category': {
         const catIndex = this.categoryItems.indexOf(item);
         this.categoryItems.splice(catIndex, 1);
-        if (this.categorycheckedCount > 0) {
-          this.categorycheckedCount--;
-        }
+        // if (this.categorycheckedCount > 0) {
+        //   this.categorycheckedCount--;
+        // }
         break;
       }
       case 'subcategory': {
         const subCatItem = this.subcatItems.indexOf(item);
         this.subcatItems.splice(subCatItem, 1);
-        if (this.subcategoryCheckedCount > 0) {
-          this.subcategoryCheckedCount--;
-        }
+        // if (this.subcategoryCheckedCount > 0) {
+        //   this.subcategoryCheckedCount--;
+        // }
         break;
       }
       case 'type': {
@@ -617,8 +617,8 @@ export class AdvancedFilterComponent implements OnInit {
     this.checkedCount = 0;
     this.GeoCheckedCount = 0;
     this.PCICheckedCount = 0;
-    this.categorycheckedCount = 0;
-    this.subcategoryCheckedCount = 0;
+    // this.categorycheckedCount = 0;
+    // this.subcategoryCheckedCount = 0;
     this.typeCount = 0;
     this.shipmentcheckedCount = 0;
     this.receiptcheckedCount = 0;

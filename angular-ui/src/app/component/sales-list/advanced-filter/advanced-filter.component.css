@@ -68,11 +68,10 @@ input[type=text] {
 }
 
 .search {
-
     width: 18px;
-    position: relative;
-    bottom: 15%;
-    left: 6%;
+    position: absolute;
+    top: 20px;
+    left: 20px;
 }
 
 input[type=text]:focus {
@@ -80,7 +79,7 @@ input[type=text]:focus {
 }
 
 .heroes {
-    margin: -18px -144px 1em 24px;
+    margin: 0 0 1em 24px;
     list-style-type: none;
     padding: 0;
     width: 293px;
@@ -107,7 +106,7 @@ input[type=text]:focus {
 }
 
 .heroes3 {
-    margin: -15px -144px 0em 2px;
+    margin: 0 0 0em 2px;
     list-style-type: none;
     padding: 0;
     width: 330px;
@@ -116,7 +115,7 @@ input[type=text]:focus {
 }
 
 .heroes4 {
-    margin: 4px -144px 0em 2px;
+    margin: 4px 0 0em 2px;
     list-style-type: none;
     padding: 0;
     width: 330px;
@@ -321,10 +320,6 @@ mat-form-field {
     width: 100%;
 }
 
-.menu-item:hover {
-    cursor: pointer;
-    background: rgb(240, 240, 240);
-}
 
 .menu-itemm:hover {
     cursor: pointer;
@@ -405,6 +400,12 @@ mat-form-field {
     border: 0;
     font-size: 14px;
     color: #F72585;
+}
+
+
+.menu-item:hover {
+    cursor: pointer;
+    background: rgb(240, 240, 240);
 }
 
 .menu-item-targetG {
@@ -521,6 +522,10 @@ mat-form-field {
     white-space: nowrap;
     border: 0;
     font-size: 14px;
+}
+
+.menu-item.selected{
+    background: rgb(240, 240, 240);
 }
 
 .searchCheckBoxes {

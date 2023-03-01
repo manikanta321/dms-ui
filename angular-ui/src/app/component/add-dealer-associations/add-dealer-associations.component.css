@@ -300,14 +300,15 @@ input.form-check-input1 {
   }
 
   .refreshbtn2{
-    width: 39px;
+    width: 44px;
     border-radius: 10px;
     background-color: black;
-    height: 41px;
+    height: 44px;
     margin-top: -90px;
     /* margin-left: 88px; */
     position: relative;
-    left: 262px;
+    left: 273px;
+    top: 42px;
 
 
   }
@@ -323,12 +324,12 @@ input.form-check-input1 {
     color: white !important;
   }
   .refreshbtn3{
-    width: 39px;
+    width: 44px;
     border-radius: 10px;
     background-color: black;
-    height: 41px;
+    height: 44px;
     
-    margin-left: 57px;
+    margin-left: 58px;
     position: relative;
     margin-top: 3px;
 
@@ -341,10 +342,10 @@ input.form-check-input1 {
     color: white !important;
   }
   .refreshbtn4{
-    width: 39px;
+    width: 44px;
     border-radius: 10px;
     background-color: black;
-    height: 41px;
+    height: 44px;
     margin-top: 3px;
     margin-left: 57px;
     
@@ -380,15 +381,15 @@ input.form-check-input1 {
 
     
     .searchBox1 {
-    top: -43px;
+    /* top: -43px; */
     background-color: white;
     padding-top: -3px;
     padding-bottom: -3px;
-    width: 295px;
+    width: 348px;
     border: solid 1px;
     border-radius: 10px;
     position: relative;
-    left: -64px;
+    left: -100px;
     }
 
     .searchBox2 {
@@ -396,11 +397,11 @@ input.form-check-input1 {
       background-color: white;
       padding-top: -3px;
       padding-bottom: -3px;
-      width: 295px;
+      width: 343px;
       border: solid 1px;
       border-radius: 10px;
       position: relative;
-      left: 115px;
+      left: 82px;
       }
       .searchBox3 {
         
@@ -408,12 +409,12 @@ input.form-check-input1 {
         background-color: white;
         padding-top: -3px;
         padding-bottom: -3px;
-        width: 295px;
+        width: 348px;
         border: solid 1px;
         border-radius: 10px;
         position: relative;
         
-        left: 117px;
+        left: 73px;
         }
         
       
@@ -471,13 +472,13 @@ input.form-check-input1 {
     right: 0% !important;
     color:white !important;
   }
-  ::ng-deep.promo_1 .multiselect-dropdown .dropdown-btn .selected-item {
+  /* ::ng-deep.promo_1 .multiselect-dropdown .dropdown-btn .selected-item {
     background: #006466 !important;  
    
   
   right: 0% !important;
   color:white !important;
-}
+} */
 .select-asso{
     width: 100%;
      height: 38px; 
@@ -527,7 +528,7 @@ input.form-check-input1 {
     bottom: 10px;
 }
 .searchInput1{
-    width: 124%;
+    width: 130%;
     height: 38px;
     border: solid 0.5px;
     border-radius: 10px;
@@ -757,7 +758,7 @@ input.form-check-input1 {
   }
   
   .close-icon {
-    left: 100%;
+    left: 103%;
     position: relative;
     font-size: 15px;
     font-weight: 600;
@@ -1368,6 +1369,7 @@ input.form-check-input1 {
   .label-cls {
     position: relative;
     top: 6px;
+    left: -67px;
   }
   
   .add-edit-promo {
@@ -1423,6 +1425,12 @@ input.form-check-input1 {
     border-radius: 0px 0px 25px 25px;
     height: 50px;
     margin: auto;
+ 
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    z-index: 0;
+    top: 67%; 
 
   
   }
@@ -1466,8 +1474,9 @@ input.form-check-input1 {
     border-radius: 8px;
     float: right;
     cursor: pointer;
-    width: 68px;
+    width: 75px;
     height: 38px;
+    margin-left: 8px;
   }
   
   .cancel {
@@ -1492,7 +1501,9 @@ input.form-check-input1 {
   .uom-cls {
     border: 0.5px solid #000000;
     border-radius: 10px;
-    width: 67px
+    width: 67px;
+    text-align: center;
+    
   }
   
   .qyt-cls {
@@ -1574,6 +1585,7 @@ input.form-check-input1 {
     font-size: 20px;
     position: relative;
     left: 16px;
+    top: 5px;
   }
   .slctd-row{
     background: #FFFFFF;
@@ -1605,6 +1617,7 @@ input.form-check-input1 {
   height: 28px;
   color: white;
   float: right;
+  margin-right: -26px;
   }
   :disabled.slctd-geo-btn{
     background: grey;
@@ -1613,9 +1626,10 @@ input.form-check-input1 {
   height: 28px;
   color: white;
   float: right;
+  margin-right: -26px;
   }
   #top {
-    top: -41px;
+    top: -18px;
     /* left: 175px; */
     right: 0px;
   }
@@ -1802,12 +1816,12 @@ width: 100%;
   border-radius: 15px;
   text-align: center;
 }
-::ng-deep .promo_1 .dropdown-btn span .ng-star-inserted {
+ ::ng-deep .promo_1 .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
   right: 279px !important;
   bottom: 0px;
   top: 50px !important;
-  /* width: 51px; */
+  
   border: 1px solid #337ab7;
   background: #006466 !important;
   font-size: 12px;
@@ -1818,7 +1832,8 @@ width: 100%;
   padding-left: 7px;
   padding-top: 1px;
   text-align: center;
-}
+  display: none;
+} 
 
 
 ::ng-deep .subCategoryy .multiselect-item-checkbox input[type=checkbox]:checked+div:before {

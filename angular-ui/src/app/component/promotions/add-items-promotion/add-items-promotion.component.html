@@ -147,7 +147,7 @@
               </div>
             </div>
           </div>
-          <div class="row select_bubbles">
+          <!-- <div class="row select_bubbles">
             <div class="col-11">
               <div class="row prod-identifier">
                 <div class="col-lg-3 search-prodId">
@@ -175,7 +175,7 @@
               </div>
             </div>
             <div class="col-lg-1"></div>
-          </div>
+          </div> -->
           <div class="srch mt-3" style="margin-bottom:10px">
             <div class="row">
               <div class="col-md-12">
@@ -200,7 +200,7 @@
               (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
               (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
               (bodyScroll)="handleScroll($event)" [rowSelection]="'multiple'"
-              (rowSelected)="onProductRowSelect($event)"></ag-grid-angular>
+              (rowSelected)="onProductRowSelect($event)" [rowMultiSelectWithClick]="true"></ag-grid-angular>
           </div>
           <div class="pagination">
             <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of

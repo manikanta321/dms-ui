@@ -133,23 +133,23 @@ export class AssociationComponent implements OnInit {
     {
       headerName: "Min.Order.Qty",
       field: "minOrder", 
-      type: ['nonEditableColumn']
+      type: ['nonEditableColumn','rightAligned']
     },
     {
       headerName: "Max.Order.Qty",
       field: "maxOrder", 
-      type: ['nonEditableColumn']
+      type: ['nonEditableColumn','rightAligned']
     },
     {
       headerName: "Margin",
       field: "margin", 
 
-      type: ['nonEditableColumn']
+      type: ['nonEditableColumn','rightAligned']
     },
     {
       headerName: "Discount",
       field: "discount", 
-      type: ['nonEditableColumn']
+      type: ['nonEditableColumn','rightAligned']
     },
     {
       headerName: "Lead Time",

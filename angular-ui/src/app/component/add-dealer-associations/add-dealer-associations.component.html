@@ -89,7 +89,7 @@
                 <label class="DealerInfo-label">Dealer <span class="astr">*</span></label>
                 <ng-select [items]="dealerListArray" id="dealerAllArray" name="dealerAllArray" required
                     [virtualScroll]="true" bindLabel="customerName" bindValue="customerId"
-                    [searchable]="true" [clearable]="false" placeholder=" select dealer"
+                    [searchable]="true" [clearable]="false" placeholder=" select dealer "
                      (change)="selectedDealer($event)">
                 </ng-select>
             </div>
@@ -194,7 +194,7 @@
                 </ng-multiselect-dropdown>
 
                 <div class="dropdown-placeholder promo_1-placeholder">
-                  <span *ngIf="myFormDlr.get('city').value.length == 0" style="color: black">Select Dealers
+                  <span *ngIf="myFormDlr.get('city').value.length == 0" style="color: black">Search & elect Dealers
                   </span>
                   <span *ngIf="myFormDlr.get('city').value.length == 1" class="selected-placeholder">
                     {{ myFormDlr.get("city").value.length }} Dealers selected
@@ -346,7 +346,8 @@
 
 
           </div>
-          <div class="row pr_omo">
+          <!-- Product Identifier  start here -->
+          <!-- <div class="row pr_omo">
             <div class="col-3 promotiont1">
               <form [formGroup]="myForm4" class="dropdown-form-categ">
                 <ng-multiselect-dropdown name="city5" formControlName="city5" class="promo1" [placeholder]="''"
@@ -367,6 +368,9 @@
 
               </form>
             </div>
+ -->
+
+            
             <!-- <div class="col-9">
               <div class="searchBox d-flex" style=" cursor: pointer">
                 <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
@@ -379,7 +383,9 @@
                 <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
               </div>
             </div> -->
-          </div>
+
+
+          <!-- </div> Product identifier -->
 
 
         </div>

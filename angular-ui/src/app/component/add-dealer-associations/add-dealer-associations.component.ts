@@ -311,7 +311,8 @@ export class AddDealerAssociationsComponent implements OnInit {
   getdealerbasedonGeo() {
     this.showselectedgeovalue = true;
     this.storedNames123 = localStorage.getItem("geoAsso");
-    this.aboveDefaultGeoOfName = localStorage.getItem("aboveDefaultGeoOfName");
+    
+    this.aboveDefaultGeoOfName =JSON.parse( localStorage.getItem("aboveDefaultGeoOfName")??"")
     this.selectedcountGeo = localStorage.getItem("selectedcountGeo");
     this.tottalgeoCount = localStorage.getItem("tottalgeoCount");
 

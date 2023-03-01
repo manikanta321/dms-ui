@@ -133,8 +133,7 @@
         (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"
         (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
         (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
-        (bodyScroll)="handleScroll($event)" [rowSelection]="'multiple'"
-        (rowSelected)="onTargetRowSelect($event)"></ag-grid-angular>
+        (bodyScroll)="handleScroll($event)"   [rowMultiSelectWithClick]="true" rowSelection="multiple" (rowSelected)="onTargetRowSelect($event)"></ag-grid-angular>
     </div>
     <div class="pagination">
       <span class="pagination-cls">1</span> to <span class="pagination-cls">{{rowData5.length}}</span> of <span

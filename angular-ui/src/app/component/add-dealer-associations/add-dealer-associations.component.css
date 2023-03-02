@@ -758,11 +758,12 @@ input.form-check-input1 {
   }
   
   .close-icon {
-    left: 103%;
+    left: 101%;
     position: relative;
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
+    top: 2px;
   }
   
   label {
@@ -790,8 +791,9 @@ input.form-check-input1 {
   
   ::ng-deep.mat-dialog-container {
     background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-    height: 80%;
-    /* padding-top: 56px; */
+    height: 90%;
+    margin: auto;
+     /* padding-top: 56px;  */
     
   }
   
@@ -1412,7 +1414,7 @@ input.form-check-input1 {
   
   .main {
     overflow-x: hidden !important;
-    height: 450px;
+    height: 509px;
     overflow-y: auto;
   }
   
@@ -1430,7 +1432,7 @@ input.form-check-input1 {
     left: 0px;
     right: 0px;
     z-index: 0;
-    top: 67%; 
+    top: 80%; 
 
   
   }
@@ -1584,7 +1586,7 @@ input.form-check-input1 {
     font-weight: 300;
     font-size: 20px;
     position: relative;
-    left: 16px;
+    left: 20px;
     top: 5px;
   }
   .slctd-row{

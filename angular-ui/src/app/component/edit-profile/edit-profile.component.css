@@ -215,7 +215,8 @@ top: 13px; */
     background: #FFFFFF;
     border: 0.5px solid #000000;
     border-radius: 10px;
-    font-weight: bold;
+    font-weight: lighter; 
+    font-family: "Gilroy";
 }
 
 .f-roles {
@@ -224,7 +225,8 @@ top: 13px; */
     background: #FFFFFF;
     border: 0.5px solid #000000;
     border-radius: 10px;
-    font-weight: bold;
+    font-weight: lighter; 
+    font-family: "Gilroy";
 }
 
 .input-2 {

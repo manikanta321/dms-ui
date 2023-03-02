@@ -89,7 +89,7 @@
                                     <mat-card class="list-item-view">
 
                                         <mat-card-content class="item-in-box-view">
-                                            <ul>
+                                            <ul style="margin-left: -16%;">
                                                 <ul>
                                                     <li *ngFor="let producttable of addbuyg.productselectedRows"
                                                         aria-placeholder="Items">
@@ -137,7 +137,7 @@
                                     <mat-card class="list-item-view">
 
                                         <mat-card-content class="item-in-box-view">
-                                            <ul>
+                                            <ul style="margin-left: -7%;">
                                                 <li
                                                 *ngFor="let producttable of addbuyg?.productselectedRows">
                                                 <mat-checkbox class="example-margin font"
@@ -207,7 +207,8 @@
                                             <label>Items<span class="astr">*</span></label>
                                             <mat-card class="list-item"  [ngClass]="{ 'input-error': !addbuyset[i].BuyGroups[j].isDataValid}">
                                                 <mat-card-content class="item-in-box" >
-                                                    <ul>
+                                                    <ul style="margin-left: -7%;">
+                                                        
                                                         <li
                                                             *ngFor="let producttable of addbuyset[i].BuyGroups[j].productselectedRows">
                                                             <mat-checkbox class="example-margin font"
@@ -290,7 +291,7 @@
                                             <label>Items<span class="astr">*</span></label>
                                             <mat-card class="list-item"   [ngClass]="{ 'input-error': !addgetset[i].GetGroups[j].isDataValid}">
                                                 <mat-card-content class="item-in-box">
-                                                    <ul>
+                                                    <ul style="margin-left: -7%;">
                                                         <li
                                                             *ngFor="let producttable of addgetset[i].GetGroups[j]?.productselectedRows">
                                                             <mat-checkbox class="example-margin font"
@@ -342,7 +343,7 @@
                             <mat-card class="list-item-view">
                                 <mat-card-content class="item-in-box-view">
 
-                                    <ul>
+                                    <ul style="margin-left: -6%;">
                                         <li *ngFor="let producttable of productselectedRows">
                                             <mat-checkbox class="example-margin font" [checked]="true"
                                               disabled="true">
@@ -408,7 +409,7 @@
                             <label>Items<span class="astr">*</span></label>
                             <mat-card class="list-item-view">
                                 <mat-card-content class="item-in-box-view">
-                                    <ul>
+                                    <ul style="margin-left: -6%;">
                                         <li *ngFor="let producttable of productselectedRows">
                                             <mat-checkbox class="example-margin font" [checked]="true"  disabled="true"
                                                 >

@@ -30,6 +30,7 @@ export class AddDealerAssociationsComponent implements OnInit {
 
   selectedGeoField1: string = "";
   updateGeographyValue1: string = "";
+  refreshbtn:string="";
 
   dealerInfo: boolean = false;
   orderitem = false;
@@ -1593,6 +1594,20 @@ export class AddDealerAssociationsComponent implements OnInit {
   }
   resetAll() {
 
+
+    this.selectedGeoField1 = '';
+    this.updateGeographyValue1 = '';
+   
+  }
+  Refresh()
+  {
+    this.selectedGeoField='';
+    this.updateGeographyValue='';
+  }
+  RefreshAll()
+  {
+    this.selectedGeoField='';
+    this.updateGeographyValue='';
   }
   isIndeterminate() {
     return (this.aarrayToPush.length > 0 && !this.isChecked());

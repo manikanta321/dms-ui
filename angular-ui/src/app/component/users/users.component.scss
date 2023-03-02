@@ -88,6 +88,7 @@ scrollbar-width: none;
 ::ng-deep.roles .multiselect-dropdown .dropdown-btn .selected-item {
   background: #D23F00 !important;
   font-size: 12px;
+  left: -7px;
 }
 
 ::ng-deep .roles .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -129,7 +130,7 @@ scrollbar-width: none;
   // right: 20px !important;
   // bottom: 10px;
   position: absolute !important;
-  right: 15px !important;
+  right: 24px !important;
   bottom: 0px;
   top: 50px !important;
 
@@ -263,7 +264,7 @@ scrollbar-width: none;
 }
 
 ::ng-deep.stts .multiselect-dropdown .dropdown-btn .selected-item {
-  right: 2% !important;
+  right: 4% !important;
 }
 
 .multiselect-dropdown .dropdown-btn .dropdown-multiselect--active .dropdown-multiselect__caret {

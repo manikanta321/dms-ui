@@ -318,6 +318,7 @@ padding-left: 11px;
   background: #00187A !important;
   /* right: 6% !important; */
   display: block;
+  left: -8px;
 }
 
 /* ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {

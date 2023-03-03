@@ -216,7 +216,8 @@
                                 <!-- Address -->
 
                                 <div class="col-12" style="margin-top:25px;">
-                                    <div class="row">
+                                    <div class="row" style="position: relative;
+                                    right: 1px;">
                                         <div class="col-11">
                                             <div class="headefont">
                                                 <h6
@@ -226,24 +227,25 @@
                                             </div>
                                         </div>
                                         <div class="col-1">
-                                            <mat-icon class="addMore-icon"
+                                            <mat-icon class="addMore-iconn"
                                                 (click)=addAddressForm()>add_circle</mat-icon>
                                         </div>
                                     </div>
 
 
-                                    <div formArrayName="addresscount">
+                                    <div formArrayName="addresscount" style="position: relative;
+                                    right: 11px;">
 
                                         <div class="row" *ngFor="let quantity of addresscount().controls; let i=index"
-                                            [formGroupName]="i">
+                                            [formGroupName]="i" >
                                             <div class="col-1">
-                                                <label *ngIf="i == 0">Type<span>*</span></label>
+                                                <label *ngIf="i == 0">Type</label>
                                                 <br>
                                                 <select class="addDelercols addtype" formControlName="AddressTypeId"
                                                     name="status" placeholder="select">
                                                     <option value="" selected hidden>Type</option>
                                                     <option value="7">Billing</option>
-                                                    <option value="6">Shipping</option>
+                                                    <option value="6" >Shipping</option>
                                                 </select>
 
                                             </div>
@@ -256,7 +258,7 @@
                                                     class="addDelercols addname">
                                             </div>
 
-                                            <div class="col-1" style="position: relative;right:84px;">
+                                            <div class="col-1" style="position: relative;right:88px;">
                                                 <label *ngIf="i == 0">Tax<span>*</span></label>
                                                 <br>
                                                 <select #teams  class="addDelercols addtax" aria-label=".form-select-lg example" formControlName="Taxid"   [(ngModel)]="addAddressDetailsForm.value.addresscount[i].Taxid"
@@ -270,16 +272,18 @@
                                                 </select>
                                             </div>
 
-                                            <div class="col-2"style="position: relative;right:107px;">
-                                                <label *ngIf="i == 0">Address Line<span>*</span></label>
+                                            <div class="col-2"style="position: relative;right:116px;">
+                                                <label *ngIf="i == 0">Address Line 1<span>*</span></label>
+                                                <label *ngIf="i == 0" style="position: relative;left: 41px;">Address Line 2<span>*</span></label>
                                                 <br>
                                                 <input type="text" placeholder="Enter" formControlName="AddressLine1"
                                                     class="addDelercols addadress" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].AddressLine1">
-                                                <input type="text" placeholder="Enter" formControlName="AddressLine2"
+                                                   
+                                                    <input type="text" placeholder="Enter" formControlName="AddressLine2"
                                                     class="addDelercols addadressLine1" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].AddressLine2">
                                             </div>
 
-                                            <div class="col-1" style="margin-left: -53px;">
+                                            <div class="col-1" style="margin-left: -66px;">
                                                 <label *ngIf="i == 0">Country<span>*</span></label>
                                                 <br>
                                                 <input type="text" placeholder="Enter" formControlName="CountryName" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].CountryName"
@@ -294,7 +298,8 @@
                                             </div>
 
                                             <div class="col-2">
-                                                <label *ngIf="i == 0">City & Zip<span>*</span></label>
+                                                <label *ngIf="i == 0">City<span>*</span></label>
+                                                <label *ngIf="i == 0" style="position: relative;left: 104px;">Zip<span>*</span></label>
                                                 <br>
                                                 <input type="text" placeholder="Enter City" formControlName="CityName" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].CityName"
                                                     class="addDelercols addcity">

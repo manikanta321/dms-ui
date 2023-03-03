@@ -442,7 +442,7 @@ this.geographyArray=[];
 
 
     data.forEach(element => {
-      debugger
+      // debugger
       let arrayOfGeo: any = []
       element.geos.forEach(element1 => {
         let objgeo: any = {

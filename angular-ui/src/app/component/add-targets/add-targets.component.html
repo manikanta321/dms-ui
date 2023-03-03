@@ -88,14 +88,14 @@
                                </mat-checkbox>
                         
                             </div>
-                        <div  *ngFor="let dealer of mainadd[0].dealers;let i=index">
+                        <div  *ngFor="let dealer of mainadd[0].dealers;let i=index" class="addtargetDiv">
                         <div>
                             <div class="row dealer-cntry">
                                 <div class="col-md-3 dlr-info">
                                     <mat-checkbox class="example-margin font" (click)="$event.stopPropagation()" [color]="color" (change)="$event ? toggle(dealer.CustomerId, $event) : null"
                                     [checked]="exists(dealer.CustomerId)">
                                   
-                                    <span class="dlr-name">{{dealer.CustomerName}}</span>
+                                    <!-- <span class="dlr-name">{{dealer.CustomerName}}</span> -->
                                 </mat-checkbox>
                                 </div>
                                 
@@ -303,8 +303,8 @@
 
                 <!-- Save and Cancel Button -->
 
-                <div class="col-12" style="position: relative;top: 100px;">
-                    <div class="row">
+                <div class="col-12" style="position: relative;top: -10px;" >
+                    <div class="row" >
                         <div class="col-4"></div>
                         <div (click)="saveTargetData()">
                             <button class="btn-save">

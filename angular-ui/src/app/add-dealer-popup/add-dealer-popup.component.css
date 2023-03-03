@@ -2,10 +2,9 @@
   margin-top: 50px;
 }
 
-.container
-{
+.container {
   min-width: 92vw;
-  
+
 
 }
 
@@ -16,8 +15,11 @@
   left: 92%;
   top: -32px;
 }
-.form-row{
+
+.form-row {
   margin-left: 20px;
+  position: relative;
+  bottom: 35px;
 }
 
 .d-flex {
@@ -36,7 +38,7 @@ input[type=checkbox] {
 .horizontal-scroll {
   display: flex;
   gap: 10px;
-   height: 393px; 
+  height: 393px;
   overflow-x: auto;
   /* -ms-scroll-snap-type: x mandatory;
       scroll-snap-type: x mandatory;
@@ -739,7 +741,7 @@ li {
 .scroll {
   overflow-y: auto;
   overflow-x: auto;
-  
+
 }
 
 ::-webkit-scrollbar {
@@ -858,8 +860,8 @@ li {
 }
 
 .scr {
-  
-   overflow-x: hidden; 
+
+  overflow-x: hidden;
   height: 500px;
   overflow-y: auto;
   width: 102%;
@@ -887,10 +889,10 @@ li {
 .addU:after {
   content: "";
   display: block;
-  width: 380px;
+  width: 541px;
   height: 1px;
   background: #686E74;
-  right: 0;
+  right: 52px;
   top: 50%;
   position: absolute;
 }
@@ -898,10 +900,10 @@ li {
 .addU:before {
   content: "";
   display: block;
-  width: 380px;
+  width: 565px;
   height: 1px;
   background: #686E74;
-  left: 0;
+  left: 27px;
   top: 50%;
   position: absolute;
 }
@@ -925,6 +927,7 @@ span {
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
+  top:10px;
 }
 
 label {
@@ -932,6 +935,7 @@ label {
   font-size: 12px;
   margin: 5px;
   font-family: 'Gilroy';
+  font-weight: bold;
 }
 
 mat-form-field {
@@ -1576,7 +1580,8 @@ li {
 .showdatascroll {
   overflow-x: auto;
 }
-.rr{
+
+.rr {
   margin-top: 98px;
 }
 
@@ -1594,10 +1599,10 @@ li {
   border-radius: 10px;
   border-color: black;
   margin-left: 52px;
-  
+
 }
-.errormsg
-{
+
+.errormsg {
   margin-left: 50px;
 }
 
@@ -1615,6 +1620,8 @@ li {
 .add-dealer-scroll {
   /* height:470px; */
   overflow-x: hidden;
+  /* overflow-y: scroll;
+  height: 500px; */
 
 }
 
@@ -1647,10 +1654,10 @@ li {
   width: 135px !important;
   height: 40px;
   width: 135px !important;
-    height: 40px;
-    position: relative;
-    left: 0px;
-   
+  height: 40px;
+  position: relative;
+  left: 0px;
+
 }
 
 .addphone {
@@ -1679,6 +1686,12 @@ li {
   margin-left: 13px;
   /* cursor: not-allowed;
     pointer-events: none !important; */
+}
+.addMore-iconn {
+  cursor: pointer;
+  margin-left: -2px;
+  position: relative;
+  top: 30px;
 }
 
 .addMore-icons {
@@ -1738,18 +1751,19 @@ li {
   /* margin-top: 4px; */
   height: 45px;
   position: relative;
-    bottom: 46px;
-    left: 133px;
+  bottom: 46px;
+  left: 133px;
 }
 
 .addzip,
 .addadressLine11 {
   position: relative;
-    bottom: 41px;
-    left: 141px;
-    width: 125px !important;
-    height: 40px;
+  bottom: 41px;
+  left: 141px;
+  width: 125px !important;
+  height: 40px;
 }
+
 .backenendcolor {
   background-color: #000;
 }
@@ -1805,8 +1819,10 @@ li {
 
 ::ng-deep.mat-dialog-container {
   padding: 5px;
-overflow: hidden;
-width: 97%;
+  overflow: hidden;
+  width: 97%;
+  position: relative;
+  left: 37px;
 
 }
 
@@ -1814,9 +1830,11 @@ width: 97%;
   background-color: black !important;
 }
 
-::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-label{
+::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-label {
   padding: 16px 5px 1px 24px;
 }
-::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header, .mat-vertical-stepper-header{
+
+::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header,
+.mat-vertical-stepper-header {
   padding: 24px 38px;
 }

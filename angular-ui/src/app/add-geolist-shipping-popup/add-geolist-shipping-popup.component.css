@@ -339,3 +339,15 @@ mat-form-field {
 ::ng-deep.dropdown-list .item2{
     max-height: inherit !important;
 }
+
+::ng-deep.custom-flex-dropdown .dropdown-btn{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+
+::ng-deep.custom-flex-dropdown .dropdown-btn span .ng-star-inserted{
+    position: relative !important;
+    top: 38px !important;
+    right: 0 !important;
+}

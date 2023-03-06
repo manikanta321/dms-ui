@@ -314,7 +314,7 @@
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
-    margin-top: 11px;
+    margin-top: -1px;
   
   }
   
@@ -936,6 +936,7 @@
   .label-cls {
     position: relative;
     top: 6px;
+    font-size: 18px;
   }
   
   
@@ -1191,7 +1192,7 @@ padding-left: 20px;
   .expand-arrow {
     width: 24%;
     position: relative;
-    right: -28px;
+    right: -80px;
     top: 4px;
   }
   
@@ -1250,6 +1251,8 @@ padding-left: 20px;
     background: none;
     font-size: 12.5px;
     /* text-align: center; */
+    position: relative;
+    top: 9px;
   }
   
   .itemLeft {
@@ -1290,7 +1293,7 @@ padding-left: 20px;
     border-radius: 21px;
     padding: 5px;
     font-size: 13px;
-    margin-left: 63px;
+    margin-left: 223px;
   }
   
   .subitem {
@@ -1478,7 +1481,7 @@ padding-left: 20px;
   }
   .invoice{
     border-radius: 10px;
-    padding: 3px;
+    padding: 7px;
     background: none !important;
     width: 183px;
     border: 1px black solid;

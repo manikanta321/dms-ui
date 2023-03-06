@@ -1209,7 +1209,7 @@ mat-sidenav {
 .imgdwnl {
     position: relative;
     top: 8px;
-    left: 10px;
+    left: 12px;
 }
 
 .searchButton {
@@ -1366,4 +1366,8 @@ mat-sidenav {
 .stts-dropdown {
     padding-left: 0px;
     margin-left: 15px;
+}
+::ng-deep.material-add-edit .mat-dialog-container {
+    position: relative;
+    left: 14px;
 }

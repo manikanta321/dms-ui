@@ -164,7 +164,7 @@ export class OrdersReceiveShipmentComponent implements OnInit {
     } else {
       this.orderNUmber=localStorage.getItem('OrderNumberToShow')
       this.ViewOrReceive = false;
-      this.headerName='View Order'
+      this.headerName='View: Order No.'
 
     }
 

@@ -1,3 +1,52 @@
+.ORTEXTPROMO {
+  position: relative;
+
+  color: #000000;
+  font-size: 14px;
+  text-align: center;
+    margin-top: 18px;
+    font-family: 'Gilroy-Bold';
+}
+
+
+.ORTEXTPROMO:after {
+  content: "";
+  display: block;
+  width: 205px;
+  height: 0.8px;
+ background: #686E74; 
+  
+  right: 5%;
+   top: 45%; 
+  position: absolute;
+  
+
+}
+
+.ORTEXTPROMO:before {
+  content: "";
+  display: block;
+  
+  height: 0.8px;
+   background: #686E74; 
+  
+  left: 5%;
+   top: 45%; 
+  width: 205px;
+  position: absolute;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* .mat-form-field {
@@ -749,7 +798,7 @@ li {
 } */
 .add-dealer-promotion-cls {
   overflow-x: hidden;
-  height: 530px;
+  height: 561px;
   /* width: 1435px; */
   max-width: 1539px;
 }
@@ -924,7 +973,7 @@ li {
 }
 
 .set1 > .row{
-  margin-bottom: 5px;
+  margin-bottom: 13px;
 }
 
 .imgtick{

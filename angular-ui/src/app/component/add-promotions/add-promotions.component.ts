@@ -28,9 +28,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   showDiv = {
     previous: false,
     current: false,
-    next: false
+    next: false,
+    
   }
   // showdata = false;
+  textShow:boolean=false;
+  GetsetsShowmsg:boolean=false;
   isDataValidToSubmit: boolean = false;
 
   promoName: string = '';
@@ -146,6 +149,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   geographyyId: any = [];
   minumorderqualityPrice: any = '';
   productPromotionsId: any;
+  count: number = 0;
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
     //update the ui
@@ -1021,6 +1025,7 @@ console.log('addgetgroup',this.addgetgroup);
     this.promotionBuyGet2();
   }
   addbuyAB(i) {
+    
     this.addbuyset.push({
       GroupId: this.addbuyset.length + 1,
       BuyGroups: [{
@@ -1033,8 +1038,10 @@ console.log('addgetgroup',this.addgetgroup);
       },
       ]
     })
-
-    console.log('this.addbuyset', this.addbuyset)
+    console.log('this.addbuyset', this.addbuyset);
+    
+this.textShow=true;
+    
   }
 
 
@@ -1062,7 +1069,9 @@ console.log('addgetgroup',this.addgetgroup);
       productselectedRows: [],
       isDataValid: true
     })
-    console.log('this.addbuyset', this.addbuyset)
+    console.log('this.addbuyset', this.addbuyset);
+    
+    
   }
 
 
@@ -1078,12 +1087,15 @@ console.log('addgetgroup',this.addgetgroup);
       },
       ]
     })
+    this.GetsetsShowmsg=true;
+    
   }
 
   removeGetGroup(i: any, u: any) {
     // const index = this.addgetset[u].GetGroups.findIndex((itemss) => itemss.id === u);
     this.addgetset[i].GetGroups.splice(u, 1);
     this.promotionABGetChange();
+   
     // console.log('remv', index)
   }
 
@@ -1097,12 +1109,14 @@ console.log('addgetgroup',this.addgetgroup);
     // const index = this.addbuyset.findIndex((setitem) => setitem.id === u);
     this.addbuyset.splice(u, 1);
     this.promotionABSetChange();
+    // this.textShow=false;
   }
 
   removeaddgetAB(u: any) {
     // const index = this.addgetset.findIndex((gset) => gset.id === u);
     this.addgetset.splice(u, 1);
     this.promotionABGetChange();
+    // this.GetsetsShowmsg=false;
   }
   ngAfterViewInit() {
     this.totalStepsCount = this.myStepper._steps.length;
@@ -1397,6 +1411,7 @@ console.log('addgetgroup',this.addgetgroup);
       //         return { customerId: data.customerId, code: data.code };
       //       });
     })
+    
   }
 
 

@@ -673,6 +673,7 @@ export class AddDealerAssociationsComponent implements OnInit {
         if (res.response.result == 'Successfully Added' ||  res.response.result =='Successfully Updated') {
           this.sharedService.filter('Register click')
           this.dialogRef.close();
+          this.dialog.open(DealerSuccessPopupComponent, { panelClass: 'activeSuccessPop' })
         }
         else {
 
@@ -684,7 +685,7 @@ export class AddDealerAssociationsComponent implements OnInit {
 
       alert('select any dealer')
     }
-    this.dialog.open(DealerSuccessPopupComponent, { panelClass: 'activeSuccessPop' })
+    // this.dialog.open(DealerSuccessPopupComponent, { panelClass: 'activeSuccessPop' })
   }
   saveAssociationdealer() {
     this.geoProperties = [];
@@ -737,6 +738,7 @@ export class AddDealerAssociationsComponent implements OnInit {
         if (res.response.result == 'Successfully Added' || res.response.result =='Successfully Updated') {
           this.sharedService.filter('Register click')
           this.dialogRef.close();
+          this.dialog.open(DealerSuccessPopupComponent, { panelClass: 'activeSuccessPop' })
         }
         else {
 
@@ -748,7 +750,7 @@ export class AddDealerAssociationsComponent implements OnInit {
 
       alert('select any Product')
     }
-    this.dialog.open(DealerSuccessPopupComponent, { panelClass: 'activeSuccessPop' })
+    //  this.dialog.open(DealerSuccessPopupComponent, { panelClass: 'activeSuccessPop' })
 
   }
 

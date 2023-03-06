@@ -278,9 +278,10 @@
                                             <div class="col-10 buyGrp-h">
                                                 <h5 class="item-header"><b>Buy </b>Sets </h5>
                                             </div>
-                                            <div class="col-2 plsImg" (click)="addbuyAB(i)">
-                                                <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
+                                            <div class="col-2 plsImg" (click)="addbuyAB(i)" >
+                                                 <img src="assets/img/plus.png" class="plus-image" alt="plus-btn"> 
                                             </div>
+                                           
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-10">
@@ -308,6 +309,7 @@
                                                             alt="plus-btn">
                                                     </div>
                                                 </div>
+                                               
                                                 <div class="row">
                                                     <div class="productlevel col-12">
                                                         <label>Item Level<span class="astr">*</span></label>
@@ -354,11 +356,23 @@
                                                             [ngClass]="{ 'input-error': !addbuyset[i].BuyGroups[j].isDataValid}"
                                                             [(ngModel)]="addbuyset[i].BuyGroups[j].MOQ">
                                                     </div>
+                                                   
                                                 </div>
+                                               
                                             </div>
+                                   
 
                                         </div>
+
+                                        <div class="ORTEXTPROMO"    *ngIf="textShow">
+                                            <h3  class="ORTEXTPROMO">(OR)</h3>
+                                       </div> 
+                                       
+                                       
                                     </div>
+
+                                   
+                                    
                                     <!-- additional buy-g ends -->
                                 </div>
 
@@ -400,6 +414,7 @@
                                                             alt="plus-btn">
                                                     </div>
                                                 </div>
+                                               
                                                 <div class="row">
                                                     <div class="productlevel col-12">
                                                         <label>Item Level<span class="astr">*</span></label>
@@ -414,6 +429,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                               
                                                 <div class="row">
                                                     <div class="col-10">
                                                         <label>Items<span class="astr">*</span></label>
@@ -442,15 +458,21 @@
                                                             required [(ngModel)]="addgetset[i].GetGroups[j].MaxVolume">
                                                     </div>
                                                 </div>
+                                                
                                             </div>
+                                           
                                         </div>
+
+                                        <div class="ORTEXTPROMO" *ngIf="GetsetsShowmsg">
+                                            <h3 class="ORTEXTPROMO">(OR)</h3>
+                                       </div>
 
 
 
                                     </div>
                                     <!-- additional get-g ends -->
                                 </div>
-
+                               
                             </div>
 
                         </div>

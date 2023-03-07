@@ -332,8 +332,8 @@ mat-form-field {
 }
 
 ::ng-deep.dropdown-list {
-    height: 178px;
-    overflow-y: auto;
+     /* height: 178px;  */
+    overflow-y: auto !important;
 }
 
 ::ng-deep.dropdown-list .item2{

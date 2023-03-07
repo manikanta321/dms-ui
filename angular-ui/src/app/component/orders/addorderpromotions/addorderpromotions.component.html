@@ -668,7 +668,7 @@
                         <div class="row  mt-3  spacedropdown ">
                             <div class="col-lg-10 ">
                                 <div class="row  ">
-                                    <div class="col-md-3  dropdownborder">
+                                    <div class="col-md-3 col-lg-3 col-sm-3   dropdownborder">
                                         <div class="input-icons ">
                                             <form [formGroup]="categoryForm" class="dropDown-field dropdown_list"
                                                 style="width: 100%;">
@@ -694,7 +694,7 @@
                                             </form>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 dropdownborder">
+                                    <div class="col-md-3 col-lg-3 col-sm-3  dropng dropdownborder">
                                         <div class="input-icons ">
                                             <form [formGroup]="subcategoryForm" class="dropDown-field dropdown_list">
                                                 <ng-multiselect-dropdown class="subcatty sub_category"
@@ -722,7 +722,7 @@
                                             </form>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 dropdownborder">
+                                    <div class="col-md-3 col-lg-3 col-sm-3 drop_ng dropdownborder">
                                         <div class="input-icons ">
                                             <form [formGroup]="type" class="dropDown-field dropdown_list">
                                                 <ng-multiselect-dropdown class="stts stts_typeselected" name="type"
@@ -750,7 +750,7 @@
                                             </form>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 dropdownborder">
+                                    <!-- <div class="col-md-3 dropdownborder">
                                         <div class="input-icons ">
                                             <form [formGroup]="myFormsIdentifier" class="dropDown-field dropdown_list">
                                                 <ng-multiselect-dropdown class="identifier identi_fier"
@@ -778,7 +778,7 @@
                                                 </div>
                                             </form>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="col-lg-2">
@@ -807,7 +807,7 @@
                         </div>
 
                         <div class="tabel-div">
-                            <table>
+                            <table class="tableclass">
                                 <thead>
                                     <tr>
                                         <th width="30"></th>
@@ -824,7 +824,7 @@
                                 </thead>
                                 <tbody>
                                     <tr class="table-row" *ngFor="let Item of orderNonPromotionsdata">
-                                        <td width="30"><input type="checkbox" [checked]="Item.isPromotionSelected"
+                                        <td width="30"><input type="checkbox" class="check"[checked]="Item.isPromotionSelected"
                                                 (change)="checkboxChange($event,Item)"></td>
                                         <td>{{Item.stockitemname}}</td>
                                         <!-- <td>{{Item.materialCustomName}}</td>
@@ -850,7 +850,7 @@
                                                 [(ngModel)]="Item.quantity" (keyup)="quantityChange(Item)"></td>
                                         <td>{{(Item.quantity ?? 0) * Item.price }}</td>
                                     </tr>
-                                    <tr class="bottom-table">
+                                    <tr class="bottom-table tt">
                                         <td colspan="5" class="btm-total"><b>Total</b></td>
                                         <td class="txt-right">{{quantityadd ?? 0}}</td>
                                         <td class="txt-right">{{price ?? 0}}</td>

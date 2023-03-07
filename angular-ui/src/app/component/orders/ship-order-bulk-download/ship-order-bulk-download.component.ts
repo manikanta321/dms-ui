@@ -5,6 +5,7 @@ import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRender
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
 import { UserService } from 'src/app/services/user.service';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
+import { SharedService } from 'src/app/services/shared-services.service';
 @Component({
   selector: 'app-ship-order-bulk-download',
   templateUrl: './ship-order-bulk-download.component.html',
@@ -53,6 +54,14 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
       },
   
     {   headerName: "Order Date",
+
+    
+  cellRenderer: (data) => 
+  { return this.sharedService.dateformat(data.value);
+  },
+
+
+
       // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
       field: 'orderDate',      tooltipField:"orderDate",
       type: ['nonEditableColumn']},
@@ -233,6 +242,7 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
   }
   constructor(private user: UserService,
     public orders:OrdersApisService,
+    private sharedService :SharedService,
     private fb: FormBuilder,) { }
 
   ngOnInit(): void {
@@ -334,6 +344,33 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     this.orders.getOrderReceiptList(data).subscribe((res) => {
       this.receiptDatalist = res.response;
       console.log("Response Receipt",this.receiptDatalist)
+
+
+      this.receiptDatalist.forEach(element => {
+
+        element.orderDate=this.sharedService.dateformat
+        (element.orderDate);
+      
+      }) 
+
+
+       this.receiptDatalist.forEach(element=>{
+          
+
+            
+         element.shipmentDate= this.sharedService.dateformat
+        (element.shipmentDate);
+        })
+
+        this.receiptDatalist.forEach(element=>{
+          
+
+            
+          element.invoiceDate= this.sharedService.dateformat
+         (element.invoiceDate);
+         })
+
+     
     });
   }
   customDatePickerEvent(eventChange) {

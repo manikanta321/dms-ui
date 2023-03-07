@@ -7,6 +7,7 @@ import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { OtherMasterService } from 'src/app/services/other-master.service';
 import { SharedServiceMaterialListService } from 'src/app/services/shared-service-material-list.service';
 import { SharedServicesShipmentService } from 'src/app/services/shared-services-shipment.service';
+import { SharedService } from 'src/app/services/shared-services.service';
 import { ShipOrderSuccessPopupComponent } from 'src/app/ship-order-success-popup/ship-order-success-popup.component';
 import { CustomDatePopupComponent } from '../../orders/custom-date-popup/custom-date-popup.component';
 
@@ -17,6 +18,8 @@ import { CustomDatePopupComponent } from '../../orders/custom-date-popup/custom-
   styleUrls: ['./orderlist-ship-popup.component.css']
 })
 export class OrderlistShipPopupComponent implements OnInit {
+
+
   dealerInfo = false;
   orderitem = false;
   shipmentone = false;
@@ -147,6 +150,7 @@ export class OrderlistShipPopupComponent implements OnInit {
   constructor(public dialog: MatDialog,
     public orders: OrdersApisService,
     private otherMasterService:OtherMasterService,
+    private sharedService :SharedService,
     private materialListService:SharedServiceMaterialListService,
     private dialogRef: MatDialogRef<OrderlistShipPopupComponent>,
     private sharedserviceForshipment:SharedServicesShipmentService,
@@ -161,6 +165,9 @@ export class OrderlistShipPopupComponent implements OnInit {
     let data = localStorage.getItem('CustomerPoId')
     this.orders.shipOrder(data).subscribe((res) => {
       console.log(res)
+
+
+
       this.shipmentArray = res.response;
 
       this.shipmentArray.itemcount.forEach(element => {
@@ -369,12 +376,15 @@ export class OrderlistShipPopupComponent implements OnInit {
   invoicedateChange(e) {
     console.log(e)
     this.minDateToFinish.next(e.value.toString());
+    
 
     // this.endDate = new FormControl(null);
     // alert(e.value);
     // console.log("This is the DATE:", e.value);
     this.invoicedateChange1 = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
     console.log(this.Invoicedate);
+
+    
   }
   shippingDatechange(e) {
     console.log(e)

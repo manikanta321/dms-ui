@@ -4,10 +4,20 @@
   background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 } */
 
-.items1{
+/* .items1{
   position: relative;
-  right: 166px;
+  left: -11px;
 }
+.items2
+{
+  position: relative;
+  left: -11px;
+}
+.items3
+{
+  position: relative;
+  
+} */
 
 .total_subitem
 {
@@ -1275,7 +1285,7 @@ height: 5px;
 
 .IteminputBoxes {
   width: 100px;
-  height: 30px;
+  /* height: 30px; */
   background: none;
   font-size: 12.5px;
 }
@@ -1301,10 +1311,11 @@ height: 5px;
 }
 
 .promoItem {
-  width: 30px;
-  height: 30px;
+  /* width: 30px;
+  height: 30px; */
   background: #0091EA;
-  border-radius: 68%;
+  /* border-radius: 68%; */
+  border-radius: 15px;
   color: white;
   padding: 4px 5px;
 }
@@ -1368,22 +1379,29 @@ height: 5px;
 }
 .ShipmentinputBoxes {
   width: 70px;
-  height: 30px;
+  /* height: 30px; */
   background: none;
   border-radius: 10px;
   border: 1px solid black;
   font-size: 12.5px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+.SHIPBOX
+{
+  margin-bottom: 14px;
 }
 
 .ShipmentinputBoxes1 {
   width: 70px;
-  height: 30px;
+  /* height: 30px; */
   background: none;
   border-radius: 10px;
   border: 1px solid black;
   font-size: 12.5px;
   background-color: white;
   color: black;
+  text-align: center;
 }
 
 .subtotalBox {
@@ -1395,6 +1413,7 @@ height: 5px;
   font-size: 12.5px;
   background-color: white;
   color: black;
+  text-align: center;
 }
 
 .dispatchComments {

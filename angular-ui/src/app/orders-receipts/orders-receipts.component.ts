@@ -60,6 +60,7 @@ export class OrdersReceiptsComponent implements OnInit {
   columnDefs: (ColDef| ColGroupDef)[] = [
     {  headerName: "Shipment No.",
     field: 'shipmentNumber',      tooltipField:"shipmentNumber",
+    
    },
    {  headerName: "Shipment Date",
    field: 'shipmentDate',      tooltipField:"shipmentDate",
@@ -104,6 +105,7 @@ export class OrdersReceiptsComponent implements OnInit {
    
   {  headerName: "Total Items ", 
   field:"totalitems",tooltipField:"totalitems", resizable:true,
+  
   
           children:[
         {headerName: "In Order", field: 'poQty',  tooltipField:"poQty",    minWidth:50, resizable:true,type: 'rightAligned'},

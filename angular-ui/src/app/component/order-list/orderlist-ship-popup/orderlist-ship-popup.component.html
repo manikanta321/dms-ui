@@ -87,8 +87,9 @@
                             <div class="section mt-1">
                                 <table class="shipmentOnes">
                                     <tr>
-                                        <th class="items1">Item</th>
-                                        <th>UoM</th>
+                                         <th class="items3" style="text-align: center;">Item </th>
+                                     
+                                        <th>UoM </th>
                                         <th>Order Qty</th>
                                         <th>Stock</th>
                                         <th>Unit Price</th>
@@ -186,7 +187,8 @@
                             <div class="section mt-1">
                                 <table >
                                     <tr>
-                                        <th class="items1">Item</th>
+                                        <th class="items1"  style="text-align: center;">Item</th>
+                                        
                                         <th>UoM</th>
                                         <th>Order Qty</th>
                                         <th>Stock</th>
@@ -326,7 +328,7 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="myDatepicker promotion-datepicker">
-                                        <label>Shipping Date<span class="astr">*</span></label><br>
+                                        <label>Shipping Date <span class="astr">*</span></label><br>
                                         <mat-form-field class="placeh-align">
                                             <!-- <mat-label> Shipping date</mat-label> -->
                                             <input id="shippingDates" name="shippingDates" placeholder="Shipping date"  matInput [matDatepicker]="picker2" [max]="maxDate"
@@ -365,7 +367,8 @@
                             <div class="section mt-1">
                                 <table class="shipmentTwo">
                                     <tr>
-                                        <th class="items1">Item</th>
+                                        <th class="items2" style="text-align: center;">Item</th>
+                                        
                                         <th>UoM</th>
                                         <th>Order Qty</th>
                                         <th>Stock</th>
@@ -423,7 +426,7 @@
                                         </td>
                                         <td>
                                             <input type="number" [(ngModel)]="currentShipment[i].shipingNow"
-                                                placeholder="Enter Quantity" class="ShipmentinputBoxes1"
+                                                placeholder="Enter Quantity" class="ShipmentinputBoxes1 SHIPBOX"
                                                 (keyup)="shipingNow()">
                                         </td>
                                         <!-- <mat-icon class="removeCircle" (click)=removeItem()>

@@ -1369,5 +1369,5 @@ mat-sidenav {
 }
 ::ng-deep.material-add-edit .mat-dialog-container {
     position: relative;
-    left: 14px;
+    left: 2px;
 }

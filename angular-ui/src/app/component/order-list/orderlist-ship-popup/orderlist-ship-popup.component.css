@@ -1417,7 +1417,7 @@ height: 5px;
 }
 
 .dispatchComments {
-  width: 1262px;
+  width: 1332px;
   height: 73px;
   padding-bottom: 45px;
   padding-left: 7px;
@@ -1543,4 +1543,38 @@ th{
   bottom: 4px;
   width: 20px;
   right: 10px;
+}
+.DescInfo-labeltt {
+  margin: 5px;
+  font-size: 13px;
+  align-items: center;
+  font-weight: 500;
+  position: relative;
+  top: 25px;
+  right: 15%;
+}
+.DescInfo-labelss {
+  margin: 5px;
+  font-size: 13px;
+  align-items: center;
+  font-weight: 500;
+  position: relative;
+  top: 25px;
+  right: 18%;
+}
+.shipNow{
+  position: relative;
+  left: 33px;
+}
+.shipText{
+  position: relative;
+  left: 26px;
+}
+.shipTill{
+  position: relative;
+  left: 26px;
+}
+.shiptillText{
+  position: relative;
+  left: 26px;
 }

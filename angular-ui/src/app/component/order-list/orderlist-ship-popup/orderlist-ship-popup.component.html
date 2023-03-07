@@ -42,7 +42,7 @@
                             <div class="col-md-6">
                                 <div class="billingAdrs">
                                     <label class="DealerInfo-label">Billing Address <span class="astr"></span></label>
-                                    <label class="DescInfo-label">{{shipmentArray?.billngAddress}}</label>
+                                    <label class="DescInfo-labeltt">{{shipmentArray?.billngAddress}}</label>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                             <div class="col-md-6">
                                 <div class="shippingAdrs">
                                     <label class="DealerInfo-label">Shipping Address <span class="astr"></span></label>
-                                    <label class="DescInfo-label">{{shipmentArray?.shippingAddress}}</label>
+                                    <label class="DescInfo-labelss">{{shipmentArray?.shippingAddress}}</label>
                                 </div>
                             </div>
                         </div>
@@ -197,8 +197,8 @@
                                         <th>Final Value</th>
                                         <th>Tax</th>
                                         <th>Amount</th>
-                                        <th>Shipped Till</th>
-                                        <th>Shipped Now</th>
+                                        <th class="shipTill">Shipped Till</th>
+                                        <th class="shipNow">Shipped Now</th>
     
                                     </tr>
                                     <tr  *ngFor="let data1 of data?.firstShipmentarray;let j=index">
@@ -377,8 +377,8 @@
                                         <th>Final Value</th>
                                         <th>Tax</th>
                                         <th>Amount</th>
-                                        <th>Shipped Till</th>
-                                        <th>Shipped Now</th>
+                                        <th class="shipTill">Shipped Till</th>
+                                        <th class="shipNow">Shipped Now</th>
                                     </tr>
                                     <tr *ngFor="let data of currentShipment;let i=index">
                                         <td>
@@ -422,11 +422,11 @@
                                         </td>
                                         <td>
                                             <input type="number" [(ngModel)]="currentShipment[i].shipedTill"
-                                                class="ShipmentinputBoxes" disabled>
+                                                class="ShipmentinputBoxes shiptillText" disabled>
                                         </td>
                                         <td>
                                             <input type="number" [(ngModel)]="currentShipment[i].shipingNow"
-                                                placeholder="Enter Quantity" class="ShipmentinputBoxes1 SHIPBOX"
+                                                placeholder="Enter Quantity" class="ShipmentinputBoxes1 SHIPBOX shipText"
                                                 (keyup)="shipingNow()">
                                         </td>
                                         <!-- <mat-icon class="removeCircle" (click)=removeItem()>

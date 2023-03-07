@@ -1291,7 +1291,8 @@ li {
   height: 50px;
   width: 860px !important;
   margin: auto;
-
+  position: relative;
+  bottom: 6px;
 }
 .footers {
   border-radius: 0px 0px 25px 25px;

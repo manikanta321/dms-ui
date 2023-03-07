@@ -20,7 +20,7 @@
         font-size: 15px;
         font-weight: 600;
         cursor: pointer;
-        top: 0px;
+        top: -1px;
         color: #686E74;font-weight: bold;
       }
       .upload-icon {

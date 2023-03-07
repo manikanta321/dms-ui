@@ -331,6 +331,24 @@
     align-items: center;
     font-weight: 500;
   }
+  .DescInfo-labels {
+    margin: 5px;
+    font-size: 13px;
+    align-items: center;
+    font-weight: 500;
+    position: relative;
+    top: 25px;
+    right: 17%;
+  }
+  .DescInfo-labelss {
+    margin: 5px;
+    font-size: 13px;
+    align-items: center;
+    font-weight: 500;
+    position: relative;
+    top: 25px;
+    right: 19%;
+  }
   
   ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
     padding: 0em 0 0.7em 0;

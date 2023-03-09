@@ -1,7 +1,7 @@
 <div class="dealerss mt-3" style="overflow-y: auto;">
    <section>
     <div class="row ml-3  " >
-      <div class="col-md-2 col-lg-2 col-sm-2">
+      <div class="col-md-2 col-lg-2 col-sm-2 dealersgeophybubbles">
         <form [formGroup]="myForm">
           <ng-multiselect-dropdown class="role dealersdropdown" name="city" [placeholder]="''" formControlName="city"
             [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList"
@@ -17,7 +17,7 @@
         </div>
       </div>
 
-      <div class="col-md-2 col-lg-2 col-sm-2">
+      <div class="col-md-2 col-lg-2 col-sm-2 productbubbless">
         <form [formGroup]="myForms1">
           <ng-multiselect-dropdown class="role1 productdropdown" name="city1" [placeholder]="'Product'" formControlName="city1"
             [disabled]="disabled" [settings]="dropdownSettings2" [data]="ProductListArray" (onSelect)="onItemProductSelect($event)" (onDeSelect)="onItemProductDeSelect($event)"
@@ -32,15 +32,15 @@
 
         </div>
       </div>
-      <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;">
+      <div class="col-md-2 col-lg-2 col-sm-2 selectstatusbubbles" style="font-family: 'Gilroy'; color: grey;">
         <form [formGroup]="myForms">
-          <ng-multiselect-dropdown class="stts1 statusdropdown" name="citys" [placeholder]="'Status'" formControlName="citys"
+          <ng-multiselect-dropdown class="stts_1 statusdropdown" name="citys" [placeholder]="'Status'" formControlName="citys"
             [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
             (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
             (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
           </ng-multiselect-dropdown>
         </form>
-        <div class="dropdown-placeholder stts1-placeholder">
+        <div class="dropdown-placeholder stts_1-placeholder">
           <span *ngIf="myForms.get('citys').value.length == 0">  </span>
           <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Status selected </span>
           <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Status(s) selected </span>

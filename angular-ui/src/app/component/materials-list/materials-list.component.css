@@ -319,6 +319,7 @@ padding-left: 11px;
   /* right: 6% !important; */
   display: block;
   left: -8px;
+  height: fit-content;
 }
 
 /* ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
@@ -331,7 +332,8 @@ padding-left: 11px;
     } */
 ::ng-deep.subcatty .multiselect-dropdown .dropdown-btn .selected-item {
   background: #0C5A3E !important;
-  /* right: 71% !important; */
+  right: 8px;
+  height: fit-content;
 }
 
 ::ng-deep .subcatty .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -340,7 +342,8 @@ padding-left: 11px;
 
 ::ng-deep.typy .multiselect-dropdown .dropdown-btn .selected-item {
   background: #C32F27 !important;
-  /* right: 156% !important; */
+  height: fit-content;
+  right: 10px;
 }
 
 ::ng-deep .typy .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -349,7 +352,8 @@ padding-left: 11px;
 
 ::ng-deep.producty .multiselect-dropdown .dropdown-btn .selected-item {
   background: #44026C !important;
-  /* right: 247% !important; */
+  right: 8px;
+  height: fit-content;
 }
 
 ::ng-deep .product .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -358,7 +362,8 @@ padding-left: 11px;
 
 ::ng-deep.sttss .multiselect-dropdown .dropdown-btn .selected-item {
   background: #000000 !important;
-  /* right: 289% !important; */
+  height: fit-content;
+  right: 10px;
 }
 
 ::ng-deep .sttss .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -931,4 +936,72 @@ padding-left: 11px;
   height: 22px;
   border-radius: 15px;
   text-align: center;
+}
+
+
+
+
+::ng-deep.categorybubblesmaterials .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.categorybubblesmaterials .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: -3px !important;
+     height: 5px;
+     display: table-cell;
+
+}
+
+::ng-deep.subcategorybubblesmaterials .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.subcategorybubblesmaterials .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: -3px !important;
+     height: 5px;
+     display: table-cell;
+
+}
+
+
+::ng-deep.typecategorybubblesmaterials .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.typecategorybubblesmaterials .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: -3px !important;
+     height: 5px;
+     display: table-cell;
+
+}
+
+::ng-deep.productcategorybubblesmaterials .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.productcategorybubblesmaterials .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: -3px !important;
+     height: 5px;
+     display: table-cell;
+
 }

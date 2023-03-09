@@ -1,7 +1,7 @@
 <div class="orderlist-section mt-3 scrollbarorderlist ordersss" style="padding:15px;">
 <div class="fiters-sec">
 <div class="row orderlistdropdown">
-    <div class="col-md-2 col-lg-2 col-sm-2 "  style="padding-left: 0px;">
+    <div class="col-md-2 col-lg-2 col-sm-2 custom-bubbles "  style="padding-left: 0px;">
         <form [formGroup]="myForm" class="dropdown-form">
           <ng-multiselect-dropdown class="Dealers dlsr" name="city" [placeholder]="'Dealers'" formControlName="city"
             [disabled]="disabled" [settings]="dropdownSettings" [data]="dealerlist"
@@ -18,7 +18,7 @@
         </form>
       </div>
 
-      <div class="col-md-2 col-lg-2 col-sm-2 border">
+      <div class="col-md-2 col-lg-2 col-sm-2 border  custom-bubbles">
         <form [formGroup]="myForm1" class="dropdown-form">
           <ng-multiselect-dropdown class="Geography geographybubbles" name="city" [placeholder]="'Geography'" formControlName="geo"
             [disabled]="disabled" [settings]="dropdownSettings1" [data]="geogropdownlist" (onSelect)="geographyselect($event)"
@@ -45,7 +45,7 @@
         
         <app-customdatepicker class="dateplaceholder" [showInputField]="true" label="Order Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
       </div>
-    <div class="col-md-2 col-lg-2 col-sm-2 stts-dropdown" >
+    <div class="col-md-2 col-lg-2 col-sm-2 stts-dropdown  custom-bubbles" >
         <form [formGroup]="myForm2" class="dropdown-form">
           <ng-multiselect-dropdown class="Status STATUSS1" name="status" [placeholder]="'Status'" formControlName="status"
             [disabled]="disabled" [settings]="dropdownSettings2" [data]="statusDropList" (onSelect)="statusdropdownselect($event)"

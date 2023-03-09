@@ -1,7 +1,7 @@
 
    <div class="mainclass">
     <div class="row" style="position: relative;top: 5%;bottom: 8px; font-family: 'Gilroy'; color: grey;margin-left: 15px;">
-        <div class="col-md-2 col-lg-2 col-sm-2" style="padding-left: 1px;">
+        <div class="col-md-2 col-lg-2 col-sm-2 targetselectedbubbles" style="padding-left: 1px;">
             <form [formGroup]="targetForm">
               <ng-multiselect-dropdown class="target target-select" name="targetForm" [placeholder]="''" formControlName="targetForm"
                 [disabled]="disabled" [settings]="targetSettings" [data]="targetListData" (onSelect)="onTargetItemSelect($event)" (onDeSelect)="onTargetItemDeSelect($event)"
@@ -19,7 +19,7 @@
        
        
        
-        <div class="col-md-2 col-lg-2 col-sm-2" style="padding-left: 1px;">
+        <div class="col-md-2 col-lg-2 col-sm-2 geographybubblestarget" style="padding-left: 1px;">
           <form [formGroup]="geographyForm">
             <ng-multiselect-dropdown class="geography geograph" name="geographyForm" [placeholder]="''" formControlName="geographyForm"
               [disabled]="disabled" [settings]="dropdownSettings" [data]="geographyList"
@@ -35,7 +35,7 @@
           </div>
         </div>
   
-        <div class="col-md-2 col-lg-2 col-sm-2" style="padding-left: 1px;">
+        <div class="col-md-2 col-lg-2 col-sm-2 selecteddealersbubblestarget" style="padding-left: 1px;">
           <form [formGroup]="dealerForm">
             <ng-multiselect-dropdown class="dealer deal" name="dealerForm" [placeholder]="'Dealer'" formControlName="dealerForm"
               [disabled]="disabled" [settings]="dealerDropdownSettings" [data]="dealerListData"
@@ -51,7 +51,7 @@
           </div>
         </div>
   
-        <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey; padding-left: 1px;">
+        <div class="col-md-2 col-lg-2 col-sm-2 yearsbubbles" style="font-family: 'Gilroy'; color: grey; padding-left: 1px;">
           <form [formGroup]="myForms">
             <ng-multiselect-dropdown class="year fyear" name="citys" [placeholder]="'Financial year'" formControlName="citys"
               [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"

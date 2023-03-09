@@ -154,7 +154,7 @@ export class AddGeolistShippingPopupComponent implements OnInit {
       textField: 'geographyName',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 2,
+      itemsShowLimit: 1,
       allowSearchFilter: true
     };
 

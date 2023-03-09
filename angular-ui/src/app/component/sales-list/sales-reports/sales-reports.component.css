@@ -791,19 +791,21 @@
   }
   
   ::ng-deep.product .dropdown-btn span .ng-star-inserted {
-    position: absolute !important;
+    /* position: absolute !important;
     right: 0px !important;
-    bottom: 0px;
-    top: 50px !important;
+   
+    top: 50px !important; */
     /* width: 51px; */
+    bottom: 0px;
     border: 1px solid #337ab7;
     background: #44026C !important;
     font-size: 12px;
     box-shadow: 1px 1px #959595;
     color: #fff;
-    height: 22px;
+    height: 20px;
     border-radius: 15px;
     text-align: center;
+    width: 47px;
   }
   
   ::ng-deep.dealr .dropdown-btn span .ng-star-inserted {

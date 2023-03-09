@@ -6,16 +6,32 @@
 
 }
 
+
+::ng-deep.targetgroupbubles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.targetgroupbubles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: -3px !important;
+     height: 5px;
+     display: table-cell;
+
+}
 ::ng-deep .tgd .dropdown-btn span .ng-star-inserted {
   
 
 
   
-
+/* 
   position: absolute !important;
-right: 73px !important;
+right: 73px !important; */
 bottom: 0px;
-top: 50px !important;
+/* top: 50px !important; */
  width: 45px;
 border: 1px solid #337ab7;
 background: #000000 !important;
@@ -98,6 +114,8 @@ padding-left: 10px;
 ::ng-deep.stts1 .multiselect-dropdown .dropdown-btn .selected-item {
   background:  #000000 !important;
   font-size: 12px;
+  height: fit-content;
+  right: 7px;
 }
  ::ng-deep .stts1 .multiselect-item-checkbox input[type=checkbox]:checked + div:before {
 background:  #000000 !important;

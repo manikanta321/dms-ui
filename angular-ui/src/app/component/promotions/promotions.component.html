@@ -1,7 +1,7 @@
 <div class="promainclass">
   <div class="dealer-promotion mt-3 ">
       <div class="row" style="margin-left: 4px;">
-        <div class="col-md-2 col-lg-2 col-sm-2">
+        <div class="col-md-2 col-lg-2 col-sm-2 promotionsbubbles">
           <form [formGroup]="myForm" class="dropdown-form">
             <ng-multiselect-dropdown class="promo" formControlName="city1"
               [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList" (onSelect)="onItemSelect($event)"
@@ -20,7 +20,7 @@
             </div>
           </form>
         </div>
-        <div class="col-md-2 col-lg-2 col-sm-2">
+        <div class="col-md-2 col-lg-2 col-sm-2 promotionsproductbubbles">
           <form [formGroup]="myForms" class="dropdown-form">
             <ng-multiselect-dropdown class="product" name="citys" [placeholder]="'Product'" formControlName="city2"
               [disabled]="disabled" [settings]="dropdownSettings1" [data]="productLisst"
@@ -38,7 +38,7 @@
             </div>
           </form>
         </div>
-        <div class="col-md-2 col-lg-2 col-sm-2">
+        <div class="col-md-2 col-lg-2 col-sm-2 geobubbles">
           <form [formGroup]="myForms2" class="dropdown-form">
             <ng-multiselect-dropdown class="geog" name="citys" [placeholder]="'Geography'" formControlName="city3"
               [disabled]="disabled" [settings]="dropdownSettings2" [data]="geoList" (onSelect)="onGeoSelect($event)"
@@ -55,7 +55,7 @@
             </div>
           </form>
         </div>
-        <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;margin-left: 9px;">
+        <div class="col-md-2 col-lg-2 col-sm-2 dealerbubblespro" style="font-family: 'Gilroy'; color: grey;margin-left: 9px;">
           <form [formGroup]="myForms4" class="dropdown-formdealer">
             <ng-multiselect-dropdown class="dealr" name="citys" [placeholder]="'Dealer'" formControlName="city5"
               [disabled]="disabled" [settings]="dropdownSettings4" [data]="dealerListArray"
@@ -72,7 +72,7 @@
 
           </div>
         </div>
-        <div class="col-md-2 col-lg-2 col-sm-2" style="margin-left:-9px">
+        <div class="col-md-2 col-lg-2 col-sm-2 statusprobubbles" style="margin-left:-9px">
           <form [formGroup]="myForms3" class="dropdown-form">
             <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Status'" formControlName="city4"
               [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList1"

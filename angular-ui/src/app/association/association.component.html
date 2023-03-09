@@ -1,7 +1,7 @@
 
 <div class="association mt-3">
     <div class="row ml-3">
-      <div class="col-md-2 col-lg-2 col-sm-2">
+      <div class="col-md-2 col-lg-2 col-sm-2 associationgeobubbles ">
           <form [formGroup]="myForm">
             <ng-multiselect-dropdown class="role11" name="city" [placeholder]="''" formControlName="city"
               [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList"
@@ -17,7 +17,7 @@
           </div>
         </div>
 
-        <div class="col-md-2 col-lg-2 col-sm-2">
+        <div class="col-md-2 col-lg-2 col-sm-2 productassociationgeobubbles">
           <form [formGroup]="myForm1">
             <ng-multiselect-dropdown class="role12-product" name="city" [placeholder]="'Product'" formControlName="city1"
               [disabled]="disabled" [settings]="dropdownSettings2" [data]="ProductListArray"
@@ -33,7 +33,7 @@
           </div>
         </div>
 
-        <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;">
+        <div class="col-md-2 col-lg-2 col-sm-2 dealersassociationgeobubbles " style="font-family: 'Gilroy'; color: grey;">
           <form [formGroup]="myForms">
             <ng-multiselect-dropdown class="Dealerdrp" name="citys" [placeholder]="'Dealer'" formControlName="citys"
               [disabled]="disabled" [settings]="dropdownSettings1" [data]="dealerListArray"

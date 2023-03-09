@@ -5,7 +5,7 @@
 .salesss {
   height: 620px;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 ::ng-deep.Dealerdrp .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret{
@@ -474,6 +474,8 @@
 ::ng-deep.Dealerdrp .multiselect-dropdown .dropdown-btn .selected-item {
   background: #38405F !important;
   font-size: 12px;
+  height: fit-content;
+  right: 20px;
 }
 
 ::ng-deep .Dealerdrp .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -488,6 +490,8 @@
 ::ng-deep.product .multiselect-dropdown .dropdown-btn .selected-item {
   background: #44026C !important;
   font-size: 12px;
+  height: fit-content;
+  right: 24px;
 }
 
 ::ng-deep .product .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -502,6 +506,8 @@
 ::ng-deep.geography .multiselect-dropdown .dropdown-btn .selected-item {
   background: #006466 !important;
   font-size: 12px;
+  height: fit-content;
+  right: 21px;
 }
 
 ::ng-deep .geography .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -530,19 +536,21 @@
 }
 
 ::ng-deep .product .dropdown-btn span .ng-star-inserted {
-  position: absolute !important;
+  /* position: absolute !important;
   right: -18px !important;
-  bottom: 0px;
-  top: 50px !important;
+
+  top: 50px !important; */
   /* width: 51px; */
+  bottom: 0px;
   border: 1px solid #337ab7;
   background: #44026C !important;
   font-size: 12px;
   box-shadow: 1px 1px #959595;
   color: #fff;
-  height: 22px;
+  height: 20px;
   border-radius: 15px;
   text-align: center;
+  width: 47px;
 }
 
 ::ng-deep .geography .dropdown-btn span .ng-star-inserted {
@@ -560,3 +568,57 @@
   border-radius: 15px;
   text-align: center;
 }
+                   
+::ng-deep.inventorydealersbubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.inventorydealersbubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 39px !important;
+     right: 8px !important;
+     height: 20px;
+     width: 43px;
+     padding-left: 4px;
+     display: flex;
+   }
+   
+                    
+::ng-deep.salesIdealersbubbles .dropdown-btn
+{
+  display: flex !important;
+  justify-content: initial;
+  position: relative;
+}
+::ng-deep.salesIdealersbubbles .dropdown-btn span .ng-star-inserted
+{
+  position: relative !important;
+  top: 39px !important;
+  right: 8px !important;
+  height: 20px;
+  width: 43px;
+  padding-left: 4px;
+  display: flex;
+   }
+
+
+                      
+::ng-deep.sales-invertygeophybubbles .dropdown-btn
+{
+  display: flex !important;
+  justify-content: initial;
+  position: relative;
+}
+::ng-deep.sales-invertygeophybubbles .dropdown-btn span .ng-star-inserted
+{
+  position: relative !important;
+  top: 39px !important;
+  right: 8px !important;
+  height: 20px;
+  width: 43px;
+  padding-left: 8px;
+  display: flex;
+   }

@@ -1,3 +1,16 @@
+
+
+::ng-deep.usersbubbles .dropdown-btn{
+  display: flex !important;
+  justify-content: initial;
+  position: relative;
+}
+
+::ng-deep.usersbubbles .dropdown-btn span .ng-star-inserted{
+  position: relative !important;
+  top: 38px !important;
+  right: 0 !important;
+}
 /* .tableclass{
     background-color: white;
     border-radius: 24px;
@@ -89,6 +102,7 @@ scrollbar-width: none;
   background: #D23F00 !important;
   font-size: 12px;
   left: -7px;
+  height: fit-content;
 }
 
 ::ng-deep .roles .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -129,14 +143,15 @@ scrollbar-width: none;
   // position: absolute !important;
   // right: 20px !important;
   // bottom: 10px;
-  position: absolute !important;
-  right: 24px !important;
+  // position: absolute !important;
+  // right: 24px !important;
   bottom: 0px;
-  top: 50px !important;
+  // top: 50px !important;
 
   
 
-   width: 46px;
+   width: 44px;
+   display: inline-block;
  border: 1px solid #337ab7;
    background: #D23F00 !important;
      font-size: 12px;
@@ -145,17 +160,18 @@ scrollbar-width: none;
      height: 20px;
      border-radius: 15px;
   text-align: center;
-  margin-left: 10px;
-  margin-right: -1px;
+  // margin-left: 10px;
+  // margin-right: -1px;
 
   padding-left: 5px;
 }
 ::ng-deep .statuses111 .dropdown-btn span .ng-star-inserted {
-  position: absolute !important;
-  right: 76px !important;
-  bottom: 0px;
-  top: 50px !important;
-  width: 46px;
+  // position: absolute !important;
+  // right: 76px !important;
+  // bottom: 0px;
+  // top: 50px !important;
+  width: 44px;
+  display: inline-block;
   border: 1px solid #337ab7;
   background: black !important;
   font-size: 12px;

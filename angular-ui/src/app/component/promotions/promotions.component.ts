@@ -581,7 +581,7 @@ geoList:any=[];
       textField: 'promotionTypesName',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 2,
+      itemsShowLimit: 1,
       allowSearchFilter: true
     };
     this.selectedItems = [];
@@ -730,7 +730,7 @@ productList(){
     textField: 'productGroupName',
     selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All',
-    itemsShowLimit: 2,
+    itemsShowLimit: 1,
     allowSearchFilter: true
   };
   this.selectedItems = [];
@@ -874,7 +874,7 @@ geogrophylist(){
     textField: 'geographyName',
     selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All',
-    itemsShowLimit: 2,
+    itemsShowLimit: 1,
     allowSearchFilter: true
   };
   this.selectedItems = [];
@@ -1268,7 +1268,7 @@ handleScroll(event) {
         textField: 'customerName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: true
       };
       this.selectedStatus = [];

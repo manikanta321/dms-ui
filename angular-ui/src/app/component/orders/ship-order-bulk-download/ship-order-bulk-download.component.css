@@ -176,6 +176,7 @@ text-align: center;
   ::ng-deep.dealer .multiselect-dropdown .dropdown-btn .selected-item {
     background: #006466 !important;
     font-size: 12px;
+    height: fit-content;
   }
   
   ::ng-deep .dealer .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -349,6 +350,8 @@ height: 43px;
 ::ng-deep.geography .multiselect-dropdown .dropdown-btn .selected-item {
   background: #006466 !important;
   font-size: 12px;
+  left: -20px;
+  height: fit-content;
 }
 
 .geography-placeholder.dropdown-placeholder .selected-placeholder {
@@ -424,10 +427,12 @@ padding-left: 5px;
 ::ng-deep.dealers .multiselect-dropdown .dropdown-btn .selected-item {
   background: #D23F00 !important;
   font-size: 12px;
+  height: fit-content;
 }
 .dealers .multiselect-dropdown .dropdown-btn .selected-item {
   background: #D23F00 !important;
   font-size: 12px;
+  height: fit-content;
 }
 ::ng-deep .dealers .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
   background: #D23F00 !important;
@@ -477,3 +482,41 @@ padding-left: 5px;
   left: 80%;
   top: -2px;
   }
+
+
+
+
+
+
+  
+
+::ng-deep.shipordersbubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.shipordersbubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: 0 !important;
+     height: 5px;
+     display: table-cell;
+   }
+
+   
+::ng-deep.shipordersbulkbubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.shipordersbulkbubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     left: 0 !important;
+     height: 5px;
+     display: table-cell;
+   }

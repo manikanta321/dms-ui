@@ -5,6 +5,43 @@
   
 }
 
+
+::ng-deep.currencyCbubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.currencyCbubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: -3px !important;
+     height: 5px;
+     display: table-cell;
+
+}
+::ng-deep .stts .dropdown-btn span .ng-star-inserted 
+{
+ 
+
+
+  width: 42px;
+    border: 1px solid #337ab7;
+    background: black !important;
+    font-size: 12px;
+    box-shadow: 1px 1px #959595;
+    color: #fff;
+    height: 20px;
+    border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: -1px;
+    padding-left: 5px;
+
+  
+   }
+
 /* .tableclass{
     background-color: white;
     border-radius: 24px;
@@ -70,6 +107,8 @@
 ::ng-deep.stts .multiselect-dropdown .dropdown-btn .selected-item {
   background: #000000 !important;
   font-size: 12px;
+  height: fit-content;
+  right: 9px;
 }
  ::ng-deep .stts .multiselect-item-checkbox input[type=checkbox]:checked + div:before {
 background: #000000 !important;
@@ -856,3 +895,5 @@ mat-sidenav {
 .stts-placeholder.dropdown-placeholder .selected-placeholder {
   color: #000 !important;
 }
+
+

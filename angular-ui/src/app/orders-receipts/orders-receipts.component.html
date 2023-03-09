@@ -3,7 +3,7 @@
 <div class="container-fluid mt-5">
     <div class="section reciepts">
 <div class="row ml-2">
-    <div class="col-md-2 col-lg-2 col-sm-2" style="padding-left: 0px;">
+    <div class="col-md-2 col-lg-2 col-sm-2 ordersreceiptsbubbles" style="padding-left: 0px;">
         <form [formGroup]="myForm" class="dropdown-form">
           <ng-multiselect-dropdown class="dealers dlsr" name="city" [placeholder]="'Dealer'" formControlName="city"
             [disabled]="disabled" [settings]="dealerSettings" [data]="dealerlist"(onSelect)="DealerorderSelect($event)" (onDeSelect)="DealerDeselect($event)"(onDeSelectAll)="DealerDeselectAll($event)"
@@ -18,7 +18,7 @@
         </div>
         
       </div>
-      <div class="col-md-2 col-lg-2 col-sm-2">
+      <div class="col-md-2 col-lg-2 col-sm-2 ordersreceiptsbubblesGeography">
         <form [formGroup]="myForm1" class="dropdown-form">
           <ng-multiselect-dropdown class="Geography geographybubbles" name="city" [placeholder]="'Geography'" formControlName="geo"
             [disabled]="disabled" [settings]="dropdownSettings1" [data]="geogropdownlist" (onSelect)="geographyselect($event)"

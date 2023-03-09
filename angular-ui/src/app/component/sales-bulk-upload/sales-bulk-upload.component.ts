@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { OrderShipmentService } from 'src/app/services/order-shipment.service';
 import { SalesServicesService } from 'src/app/services/sales-services.service';
+import { SharedService } from 'src/app/services/shared-services.service';
 import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-sales-bulk-upload',
@@ -15,6 +16,7 @@ export class SalesBulkUploadComponent implements OnInit {
     private dialogRef: MatDialogRef<SalesBulkUploadComponent>,
     private dialog: MatDialog,
     private orderShipment:OrderShipmentService,  
+    public sharedService:SharedService
   ) { }
   totalRows:any;
   errorFree:any;

@@ -262,10 +262,10 @@
                             <td>{{shipData.orderedQty}}</td>
                             <td>{{shipData.shippedTillQty}}</td>
                             <td>{{shipData.dispatchQty}}</td>
-                            <td>{{shipData.dispatchDate.toString().split('T')[0]}}</td>
-                            <td>{{shipData.invoiceDate.toString().split('T')[0]}}</td>
+                            <td>{{sharedService.dateformat(shipData.dispatchDate)}}</td>
+                            <td>{{sharedService.dateformat(shipData.invoiceDate)}}</td>
                             <td >{{shipData.invoiceNo}}</td>
-                            <td>{{shipData.uploadedDate.toString().split('T')[0]}}</td>
+                            <td>{{sharedService.dateformat(shipData.uploadedDate)}}</td>
             
                         </tr>
                     </table>

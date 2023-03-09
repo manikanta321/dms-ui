@@ -27,7 +27,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-3 ml-3 col-lg-3 col-sm-2">
+    <div class="col-md-3 ml-3 col-lg-3 col-sm-2 shipordersbubbles">
         <form [formGroup]="dealerForm" class="dropdown-form">
           <ng-multiselect-dropdown class="dealer dlsr" name="city" [placeholder]="'Dealer'" formControlName="dealer"
             [disabled]="disabled" [settings]="dealerSettings" [data]="dealerListData"(onSelect)="DealerorderSelect($event)" (onDeSelect)="DealerDeselect($event)"(onDeSelectAll)="DealerDeselectAll($event)"
@@ -36,7 +36,7 @@
           </ng-multiselect-dropdown>
         </form>
         <div class="dropdown-placeholder dealer-placeholder"id="DP">
-          <span *ngIf="dealerForm.get('dealer').value.length == 0" id="GP"> Dealers </span>
+          <span *ngIf="dealerForm.get('dealer').value.length == 0" id="GP"> Dealers   </span>
           <span *ngIf="dealerForm.get('dealer').value.length == 1" class="selected-placeholder"> {{dealerForm.get('dealer').value.length}} Dealer selected </span>
           <span *ngIf="dealerForm.get('dealer').value.length > 1" class="selected-placeholder"> {{dealerForm.get('dealer').value.length}} Dealer(s) selected </span>
 
@@ -52,7 +52,7 @@
         <app-customdatepicker [showInputField]="true" label="Order Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
 
       </div>
-      <div class="col-md-3 col-lg-3 col-sm-2">
+      <div class="col-md-3 col-lg-3 col-sm-2 shipordersbulkbubbles">
         <form [formGroup]="geographyForm" >
           <ng-multiselect-dropdown class="geography geograph" name="city" [placeholder]="'Geography'" formControlName="geography"
             [disabled]="disabled" [settings]="geographySettings" [data]="geographyData" (onSelect)="geographyselect($event)"
@@ -61,7 +61,7 @@
           </ng-multiselect-dropdown>
         </form>
         <div class="dropdown-placeholder geography-placeholder"id="DP">
-          <span *ngIf="geographyForm.get('geography').value.length == 0" id="GP"> Geographies </span>
+          <span *ngIf="geographyForm.get('geography').value.length == 0" id="GP"> Geographies  </span>
           <span *ngIf="geographyForm.get('geography').value.length == 1" class="selected-placeholder"> {{geographyForm.get('geography').value.length}} Geography selected </span>
           <span *ngIf="geographyForm.get('geography').value.length > 1" class="selected-placeholder"> {{geographyForm.get('geography').value.length}} Geography(s) selected </span>
 
@@ -126,7 +126,7 @@
   </div>
 </div>
 <div class="row ml-2">
-  <div class="col-md-3 col-lg-3 col-sm-2" style="padding-left: 0px;">
+  <div class="col-md-3 col-lg-3 col-sm-2 shipordersbubbles" style="padding-left: 0px;">
     <form [formGroup]="dealerForm" class="dropdown-form">
       <ng-multiselect-dropdown class="dealers dlsr" name="city" [placeholder]="'Dealer'" formControlName="city"
       [disabled]="disabled" [settings]="dealerSettings" [data]="dealerlist"(onSelect)="DealerorderReceiptSelect($event)" (onDeSelect)="DealerReceiptDeselect($event)"(onDeSelectAll)="DealerReceiptDeselectAll($event)"
@@ -134,14 +134,14 @@
     </ng-multiselect-dropdown>
     </form>
     <div class="dropdown-placeholder dealers-placeholder">
-      <span *ngIf="dealerForm.get('dealer').value.length == 0">  Dealers </span>
+      <span *ngIf="dealerForm.get('dealer').value.length == 0">  Dealers  </span>
       <span *ngIf="dealerForm.get('dealer').value.length == 1" class="selected-placeholder"> {{dealerForm.get('dealer').value.length}} Dealer selected </span>
       <span *ngIf="dealerForm.get('dealer').value.length > 1" class="selected-placeholder"> {{dealerForm.get('dealer').value.length}} Dealer(s) selected </span>
       <img src="../assets/img/search.png" class="searchReceipts">
     </div>
     
   </div>
-  <div class="col-md-3 col-lg-3 col-sm-2">
+  <div class="col-md-3 col-lg-3 col-sm-2 shipordersbubbles">
     <form [formGroup]="geographyForm" >
       <ng-multiselect-dropdown class="Geography geographybubbles" name="city" [placeholder]="'Geography'" formControlName="geo"
       [disabled]="disabled" [settings]="geographySettings" [data]="geogropdownlist" (onSelect)="geographyReceiptselect($event)"

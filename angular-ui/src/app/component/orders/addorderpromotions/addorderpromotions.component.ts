@@ -326,7 +326,9 @@ export class AddorderpromotionsComponent implements OnInit {
       return;
     }
 
-    const dialogRef = this.dialog.open(AddOrderPromotionlistComponent, { width: '1043px', height: '900px', data: this.AddOrderPromotionData });
+    const dialogRef = this.dialog.open(AddOrderPromotionlistComponent,  {minWidth: '95vw', height: '730px',
+    panelClass: 'orders-add-Promotions',
+     data: this.AddOrderPromotionData });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         this.AddOrderPromotionData = res;
@@ -345,6 +347,8 @@ export class AddorderpromotionsComponent implements OnInit {
       alert("Plz select geography and dealer");
       return;
     }
+
+    
     this.orderNonPromotionsList();
     this.Non_promotions = true;
   }

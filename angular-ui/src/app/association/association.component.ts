@@ -517,7 +517,7 @@ export class AssociationComponent implements OnInit {
         textField: 'geographyName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: true
       };
       this.selectedItems = [];
@@ -548,7 +548,7 @@ export class AssociationComponent implements OnInit {
         textField: 'stockItemName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: true
       };
       this.selectedStatus = [];
@@ -579,7 +579,7 @@ export class AssociationComponent implements OnInit {
         textField: 'customerName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: true
       };
       this.selectedStatus = [];

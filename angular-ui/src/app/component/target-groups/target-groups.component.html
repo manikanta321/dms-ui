@@ -1,10 +1,10 @@
 <div class="mainclass">
-  <div class="UNFAPP-asmnt-rgt-area main" style="padding: 12px; padding-left: 1px;overflow-x: hidden;">
+  <div class="UNFAPP-asmnt-rgt-area main" style="padding: 12px; padding-left: 1px;overflow-x: hidden;overflow-y: hidden;">
 
     <div class="row"
       style="position: relative;top: 3%;bottom: 8px;margin-top: 30px; font-family: 'Gilroy'; color: grey;">
 
-      <div class="col-md-2 col-lg-2 col-sm-2" style="font-family: 'Gilroy'; color: grey;">
+      <div class="col-md-2 col-lg-2 col-sm-2 targetgroupbubles"  style="font-family: 'Gilroy'; color: grey;">
         <form [formGroup]="myForms">
           <ng-multiselect-dropdown class="stts1 tgd" name="citys" [placeholder]="'Target'" formControlName="citys"
             [disabled]="disabled" [settings]="dropdownSettings1" [data]="targetListData"(onSelect)="onTargetGroupSelect($event)" (onDeSelect)="onTargetGroupDeSelect($event)"

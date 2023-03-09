@@ -112,6 +112,8 @@
   ::ng-deep.Dealerdrp .multiselect-dropdown .dropdown-btn .selected-item {
     background: #38405F !important;
     font-size: 12px;
+    height: fit-content;
+    right: 19px;
   }
   
   ::ng-deep .Dealerdrp .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -1028,6 +1030,8 @@
   ::ng-deep.role11 .multiselect-dropdown .dropdown-btn .selected-item {
     background: #006466 !important;
     font-size: 12px;
+    height: fit-content;
+    left: -22px;
   }
 
   .role11-placeholder.dropdown-placeholder .selected-placeholder {
@@ -1045,6 +1049,8 @@
   ::ng-deep.role12-product .multiselect-dropdown .dropdown-btn .selected-item {
     background: #44026C !important;
     font-size: 12px;
+    height: fit-content;
+    right: 21px;
   }
 
 
@@ -1158,3 +1164,57 @@
   position: relative;
     right: -47px;
 }
+
+
+
+
+::ng-deep.associationgeobubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.associationgeobubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: 11px !important;
+     height: 5px;
+     display: table-cell;
+     padding-left: 8px;
+   }
+
+   
+::ng-deep.productassociationgeobubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.productassociationgeobubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: 11px !important;
+     height: 5px;
+     display: table-cell;
+     padding-left: 8px;
+   }
+
+
+     
+::ng-deep.dealersassociationgeobubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.dealersassociationgeobubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: 11px !important;
+     height: 5px;
+     display: table-cell;
+     padding-left: 8px;
+   }

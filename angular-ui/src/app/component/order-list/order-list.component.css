@@ -22,7 +22,7 @@
     overflow: hidden;
 }
 
-::ng-deep.geographybubbles .dropdown-btn span .ng-star-inserted {
+/* ::ng-deep.geographybubbles .dropdown-btn span .ng-star-inserted {
     position: absolute !important;
     right: -28px !important;
     bottom: 0px;
@@ -43,7 +43,7 @@
     margin-right: -1px;
 
     padding-left: 5px;
-}
+} */
 
 
 ::ng-deep.myclass1 {
@@ -96,7 +96,8 @@
 .ordersss {
     height: 600px;
     overflow-x: hidden;
-    overflow-y: auto;
+    /* overflow-y: auto; */
+    overflow-y: hidden;
 }
 
 
@@ -294,14 +295,12 @@ input {
 }
 
 
-::ng-deep.dlsr .dropdown-btn span .ng-star-inserted {
-    /* position: absolute !important;
-    right: 20px !important;
-    bottom: 10px; */
+/* ::ng-deep.dlsr .dropdown-btn span .ng-star-inserted {
+  
 
 
-    position: absolute !important;
-    right: 62px !important;
+     position: absolute !important;
+    right: 62px !important; 
     bottom: 0px;
     top: 50px !important;
 
@@ -320,7 +319,7 @@ input {
     margin-right: -1px;
 
     padding-left: 5px;
-}
+} */
 
 .orderlistdropdown {
     margin-left: 3px;
@@ -1331,6 +1330,8 @@ mat-sidenav {
 ::ng-deep.Dealers .multiselect-dropdown .dropdown-btn .selected-item {
     background: #D23F00 !important;
     font-size: 12px;
+    right: 9px;
+    height: fit-content;
 }
 
 ::ng-deep .Dealers .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -1344,6 +1345,8 @@ mat-sidenav {
 ::ng-deep.Geography .multiselect-dropdown .dropdown-btn .selected-item {
     background: #006466 !important;
     font-size: 12px;
+    height: fit-content;
+    right: 22px;
 }
 
 ::ng-deep .Geography .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -1357,6 +1360,8 @@ mat-sidenav {
 ::ng-deep.Status .multiselect-dropdown .dropdown-btn .selected-item {
     background: #000000 !important;
     font-size: 12px;
+    height: fit-content;
+    right: 8px;
 }
 
 ::ng-deep .Status .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -1371,3 +1376,21 @@ mat-sidenav {
     position: relative;
     left: 2px;
 }
+    /* left: 14px; */
+
+
+
+::ng-deep.custom-bubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.custom-bubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: 0 !important;
+     height: 5px;
+     display: table-cell;
+   }

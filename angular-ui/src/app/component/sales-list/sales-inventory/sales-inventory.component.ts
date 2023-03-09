@@ -312,7 +312,7 @@ export class SalesInventoryComponent implements OnInit {
         textField: 'customerName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: true
       };
   }
@@ -408,7 +408,7 @@ export class SalesInventoryComponent implements OnInit {
         textField: 'stockItemName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: true
       };
   }
@@ -505,7 +505,7 @@ export class SalesInventoryComponent implements OnInit {
         textField: 'geographyName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: true
       };
     });

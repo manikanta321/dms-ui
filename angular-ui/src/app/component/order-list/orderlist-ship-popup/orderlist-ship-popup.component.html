@@ -310,7 +310,7 @@
                                         <label>Invoice Date <span class="astr">*</span></label><br>
                                         <mat-form-field class="placeh-align">
                                             <mat-label> Invoice date</mat-label>
-                                            <input matInput id="invoiceDate" name="invoiceDate"  placeholder="Invoice Date" [matDatepicker]="picker1" [max]="maxDate"  [(ngModel)]="startDate" #invoiceDate="ngModel"
+                                            <input matInput id="invoiceDate" name="invoiceDate"  placeholder="Invoice Date" [matDatepicker]="picker1"   datePickerFormat='DD   MMM   YY' [max]="maxDate"  [(ngModel)]="startDate" #invoiceDate="ngModel"
                                                 (dateChange)="invoicedateChange($event)">
                                                 <!-- <p  style="margin-bottom:-22px;padding: 0px;" *ngIf="invoiceDate.invalid && (invoiceDate.dirty || invoiceDate.touched)"
                                                 class="alert"> -->

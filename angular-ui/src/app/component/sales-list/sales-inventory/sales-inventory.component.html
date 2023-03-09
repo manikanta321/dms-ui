@@ -2,7 +2,7 @@
   <div class="section sales">
     <div class="sales-search-drop">
       <div class="row salesclass">
-        <div class="col-md-2 col-lg-2 col-sm-2">
+        <div class="col-md-2 col-lg-2 col-sm-2 inventorydealersbubbles">
           <form [formGroup]="dealerForm" class="dropdown-form">
             <ng-multiselect-dropdown class="Dealerdrp" name="dealerForm" [placeholder]="'Dealer'" formControlName="dealerForm"
               [disabled]="disabled" [settings]="dropdownSettings" [data]="dealerList"(onSelect)="onItemDealerSelect($event)" (onDeSelect)="onItemDealerDeSelect($event)"
@@ -17,7 +17,7 @@
 
           </div>
         </div>
-        <div class="col-md-2 col-lg-2 col-sm-2">
+        <div class="col-md-2 col-lg-2 col-sm-2 salesIdealersbubbles">
           <form [formGroup]="productForm" class="dropdown-form">
             <ng-multiselect-dropdown class="product" name="city" [placeholder]="'Product'" formControlName="productForm"
               [disabled]="disabled" [settings]="dropdownSettings2" [data]="productList"(onSelect)="onItemProductSelect($event)" (onDeSelect)="onItemProductDeSelect($event)"
@@ -32,7 +32,7 @@
 
           </div>
         </div>
-        <div class="col-md-2 col-lg-2 col-sm-2">
+        <div class="col-md-2 col-lg-2 col-sm-2 sales-invertygeophybubbles">
           <form [formGroup]="geographyForm" class="dropdown-form">
             <ng-multiselect-dropdown class="geography" name="city" [placeholder]="'Geography'" formControlName="geographyForm"
               [disabled]="disabled" [settings]="dropdownSettings3" [data]="geographyList" (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"

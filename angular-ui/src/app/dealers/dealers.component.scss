@@ -1,4 +1,50 @@
 
+::ng-deep.selectstatusbubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.selectstatusbubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: 11px !important;
+     height: 5px;
+     display: table-cell;
+   }
+::ng-deep.productbubbless .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.productbubbless .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: 11px !important;
+     height: 5px;
+     display: table-cell;
+   }
+
+  
+::ng-deep.dealersgeophybubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.dealersgeophybubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: 11px !important;
+     height: 5px;
+     display: table-cell;
+   }
+
+
 .dealerss
 {
   height: 600px;
@@ -110,16 +156,18 @@
   box-shadow: 0 1px 5px #959595;
 }
 
-::ng-deep.stts1 .multiselect-dropdown .dropdown-btn .selected-item {
+::ng-deep.stts_1 .multiselect-dropdown .dropdown-btn .selected-item {
   background: #000000 !important;
   font-size: 12px;
+  height: fit-content;
+  right: 19px;
 }
 
-::ng-deep .stts1 .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
+::ng-deep .stts_1 .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
   background: #000000 !important;
 }
 
-.stts1-placeholder.dropdown-placeholder .selected-placeholder {
+.stts_1-placeholder.dropdown-placeholder .selected-placeholder {
   color: #000000 !important;
 }
 
@@ -128,6 +176,8 @@
 ::ng-deep.role .multiselect-dropdown .dropdown-btn .selected-item {
   background: #006466 !important;
   font-size: 12px;
+  height: fit-content;
+  right: 20px;
 }
 
 .role-placeholder.dropdown-placeholder .selected-placeholder {
@@ -137,6 +187,8 @@
 ::ng-deep.role1 .multiselect-dropdown .dropdown-btn .selected-item {
   background: #44026C !important;
   font-size: 12px;
+  right: 21px;
+  height: fit-content;
 }
 
 .role1-placeholder.dropdown-placeholder .selected-placeholder {
@@ -196,12 +248,12 @@
   
 
 
-  position: absolute !important;
-  right: -28px !important;
-  bottom: 0px;
-  top: 50px !important;
-
+  // position: absolute !important;
+  // right: -28px !important;
   
+  // top: 50px !important;
+
+   bottom: 0px;
 
    width: 46px;
  border: 1px solid #337ab7;
@@ -222,13 +274,13 @@
   
 
 
-  position: absolute !important;
-  right: 11px !important;
-  bottom: 0px;
-  top: 50px !important;
+  // position: absolute !important;
+  // right: 11px !important;
+  // bottom: 0px;
+  // top: 50px !important;
 
   
-
+bottom: 0px;
    width: 46px;
  border: 1px solid #337ab7;
  background: #44026C !important;
@@ -252,13 +304,13 @@
   
 
 
-  position: absolute !important;
-  right: 23px !important;
-  bottom: 0px;
-  top: 50px !important;
+  // position: absolute !important;
+  // right: 23px !important;
+  // bottom: 0px;
+  // top: 50px !important;
 
   
-
+bottom: 0px;
    width: 46px;
  border: 1px solid #337ab7;
  background: black !important;

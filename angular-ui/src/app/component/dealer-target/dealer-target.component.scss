@@ -284,7 +284,7 @@
   }
   
   ::ng-deep.target .multiselect-dropdown .dropdown-btn .selected-item {
-    right: 6% !important;
+    right: 4% !important;
   }
   ::ng-deep.geography .multiselect-dropdown .dropdown-btn .selected-item {
     right: 6% !important;
@@ -293,7 +293,7 @@
     right: 6% !important;
   }
   ::ng-deep.year .multiselect-dropdown .dropdown-btn .selected-item {
-    right: 6% !important;
+    right: 4% !important;
   }
   .multiselect-dropdown .dropdown-btn .dropdown-multiselect--active .dropdown-multiselect__caret {
     transform: rotate(180deg) !important;
@@ -1132,3 +1132,87 @@
   ::ng-deep.ag-ltr .ag-cell {
     cursor: pointer;
   }
+
+
+  .target-placeholder.dropdown-placeholder .selected-placeholder {
+   color: #0353A4 !important;;
+  }
+  
+  .geography-placeholder.dropdown-placeholder .selected-placeholder {
+    color: #006466  !important;;
+   }
+
+   
+  .dealer-placeholder.dropdown-placeholder .selected-placeholder {
+    color: #38405F  !important;;
+   }
+
+    
+  .year-placeholder.dropdown-placeholder .selected-placeholder {
+    color: #B43E8F !important;
+    
+   }          
+::ng-deep.targetselectedbubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.targetselectedbubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: 1px !important;
+     height: 5px;
+     display: table-cell;
+   }
+
+               
+::ng-deep.geographybubblestarget .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.geographybubblestarget .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: 1px !important;
+     height: 5px;
+     display: table-cell;
+   }
+   
+
+                  
+::ng-deep.selecteddealersbubblestarget .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.selecteddealersbubblestarget .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: 1px !important;
+     height: 5px;
+     display: table-cell;
+   }
+
+
+                    
+::ng-deep.yearsbubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.yearsbubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: 1px !important;
+     height: 5px;
+     display: table-cell;
+   }

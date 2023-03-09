@@ -1,3 +1,10 @@
+::ng-deep.orders-add-Promotions .mat-dialog-container {
+  position: relative;
+  /* left: 14px; */
+}
+
+
+
 ::-webkit-scrollbar {
   
   height: 18px;  
@@ -5,7 +12,8 @@
 .tableclass
 {
   
-  height: 316px;
+  /* height: 316px; */
+  height: 378px;
 }
 .dropng
 {
@@ -572,7 +580,7 @@ input[type=number] {
   position: relative;
   /* font-family: 'Gilroy-Bold';  */
   font-weight: bold;
-  font-size: 15px;
+  font-size: 20px;
 }
 .addU:after {
   content: "";
@@ -658,7 +666,8 @@ mat-form-field {
 
 ::ng-deep.mat-dialog-container {
   background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-  overflow: auto;
+   overflow: auto; 
+  
 
 
 }
@@ -1269,7 +1278,8 @@ li {
 
 .main {
   overflow-x: hidden !important;
-  height: 620px;
+   height: 621px; 
+  /* height: 686px; */
 
 }
 
@@ -1421,10 +1431,10 @@ li {
 }
 .tabel-div {
   margin-top: 15px;
-  max-height: 321px;
+  /* max-height: 321px; */
   border: 2px solid black;
   border-radius: 15px;
-  height: 326px;
+  height: 382px;
   /* overflow-x: hidden !important; */
 }
 .buy-grp {
@@ -1648,6 +1658,7 @@ right: -572px;
   border: 1px solid black;
   font-size: 12.5px;
   color: black;
+  border: 0px;
 }
 .IteminputBoxesD {
   width: 100px;
@@ -1657,6 +1668,7 @@ right: -572px;
   border: 1px solid black;
   font-size: 12.5px;
   color: green;
+  border: 0px;
 }
 
 .itemLeft {
@@ -1753,6 +1765,7 @@ margin-top: -5px;
   transition: opacity 500ms;
   visibility: visible;
   opacity: 1;
+  
 }
 
 .cdk-overlay-pane {
@@ -1761,12 +1774,12 @@ margin-top: -5px;
 }
 
 .popup {
-  margin: 41px auto;
+  /* margin: 41px auto; */
   padding: 20px;
   background: #fff;
   border-radius: 5px;
-  width: 90%;
-  height: 650px;
+  width: 95vw;
+  height: 730px;
   /* min-height: 263px; */
   /* height: auto; */
   /* top: 11%; */
@@ -1776,6 +1789,9 @@ margin-top: -5px;
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
   border: 0.5px solid #000000;
   border-radius: 25px;
+  margin-top: 8px;
+  margin-left: 39px;
+  
 }
 .expand-arrow {
   width: 30%;
@@ -1972,17 +1988,15 @@ tr:nth-child(even) {
 .tt
 {
   
-    background: #0879ea !important;
+   
 
     height: 34px;
     color: white;
+    border-radius: 15px;
     
   
 }
-.rr
-{
-  background-color: #0091EA;
-}
+
 .check
 {
   position: relative;
@@ -1998,7 +2012,14 @@ tbody{
 } */
  tbody {
   display: block;
-  max-height: 279px;
+  /* max-height: 279px; */
+  overflow-y: scroll;
+
+}
+.tbodayheight
+{
+  display: block;
+   max-height: 339px; 
   overflow-y: scroll;
 
 }
@@ -2060,7 +2081,11 @@ table thead, table tbody tr {
   font-size: 15px;
   text-align: center;
   color: #FFFFFF;
-  /* margin-top: 50px; */
+  margin-top: 71px; 
+
+  position: absolute;
+    z-index: 10000;
+    left: 45%;
 }
 
 .add-itemBtn {
@@ -2087,7 +2112,8 @@ table thead, table tbody tr {
 
 ::ng-deep.catty .multiselect-dropdown .dropdown-btn .selected-item {
   background: #00187A !important;
-  /* right: 6% !important; */
+   right: 30px !important;
+   height: fit-content;
   display: block;
 }
 
@@ -2101,7 +2127,8 @@ table thead, table tbody tr {
 
 ::ng-deep.subcatty .multiselect-dropdown .dropdown-btn .selected-item {
   background: #0C5A3E !important;
-  /* right: 6% !important; */
+ right: 27px !important;
+ height: fit-content;
   display: block;
 }
 
@@ -2115,7 +2142,8 @@ table thead, table tbody tr {
 
 ::ng-deep.stts .multiselect-dropdown .dropdown-btn .selected-item {
   background: #C32F27 !important;
-  /* right: 6% !important; */
+   left:  -25px !important;
+   height: fit-content;
   display: block;
 }
 
@@ -2159,3 +2187,19 @@ table thead, table tbody tr {
   text-align: right;
   padding-right: 15px;
 }
+
+
+::ng-deep.custon-nonprobubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.custon-nonprobubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: 17px !important;
+     height: 5px;
+     display: table-cell;
+   }

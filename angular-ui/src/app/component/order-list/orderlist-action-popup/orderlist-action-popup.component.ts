@@ -186,8 +186,8 @@ export class OrderlistActionPopupComponent implements OnInit {
     sessionStorage.setItem("Confirm", "");
     localStorage.setItem("Edit", 'Edit')
     let dialogRef = this.dialog.open(AddorderpromotionsComponent, {
-       minWidth: '90vw',
-       height: '93vh',
+       minWidth: '95vw',
+       height: '730px',
       
       panelClass: 'order-add-edit'
     });

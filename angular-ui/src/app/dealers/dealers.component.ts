@@ -495,7 +495,7 @@ export class DealersComponent implements OnInit {
       textField: 'geographyName',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 2,
+      itemsShowLimit: 1,
       allowSearchFilter: true
     };
     this.selectedStatus = [];
@@ -525,7 +525,7 @@ export class DealersComponent implements OnInit {
       textField: 'stockItemName',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 2,
+      itemsShowLimit: 1,
       allowSearchFilter: true
     };
     this.selectedStatus = [];
@@ -650,7 +650,7 @@ export class DealersComponent implements OnInit {
         textField: 'statusName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: false
       };
       this.selectedStatus = [];

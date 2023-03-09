@@ -445,7 +445,7 @@ export class SalesReportsComponent implements OnInit {
     textField: 'customername',
     selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All',
-    itemsShowLimit: 2,
+    itemsShowLimit: 1,
     allowSearchFilter: true
   };
   salesReportData: any = [];
@@ -693,7 +693,7 @@ export class SalesReportsComponent implements OnInit {
         textField: 'promotionTypesName',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: true
       };
       this.selectedItems = [];
@@ -843,7 +843,7 @@ export class SalesReportsComponent implements OnInit {
         textField: 'customername',
         selectAllText: 'Select All',
         unSelectAllText: 'UnSelect All',
-        itemsShowLimit: 2,
+        itemsShowLimit: 1,
         allowSearchFilter: true
       };
       this.selectedItems = [];
@@ -1032,7 +1032,7 @@ export class SalesReportsComponent implements OnInit {
     textField: 'stockItemName',
     selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All',
-    itemsShowLimit: 2,
+    itemsShowLimit: 1,
     allowSearchFilter: true
   };
 
@@ -1427,7 +1427,7 @@ export class SalesReportsComponent implements OnInit {
       textField: 'geographyName',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 2,
+      itemsShowLimit: 1,
       allowSearchFilter: true
     };
     this.selectedStatus = [];

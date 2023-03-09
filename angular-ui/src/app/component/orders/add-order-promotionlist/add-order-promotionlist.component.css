@@ -1,3 +1,14 @@
+/* .Table1
+{
+  background-color: #00187A;
+} */
+.tableborderss
+{
+    border-radius: 5px;
+    border: 2px solid black;
+  }
+
+
 .mat-form-field {
   width: 680px;
   font-family: 'Gilroy';
@@ -193,7 +204,7 @@ input::-webkit-inner-spin-button {
   position: relative;
   /* font-family: 'Gilroy-Bold';  */
   /* font-weight: bold; */
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .addU:after {
@@ -1044,10 +1055,10 @@ input[type="text"] {
 }
 
 .expand-arrow {
-  width: 40%;
+  width: 27%;
   position: relative;
-  right: -28px;
-  top: 4px;
+  right: -58px;
+  top: 8px;
 }
 
 .tax-select {
@@ -1069,7 +1080,7 @@ input[type="text"] {
 table {
   /* padding: 10px; */
   /* border-collapse: collapse; */
-  border-radius: 15px;
+  border-radius: 6px;
   /* border: 1px solid grey; */
   width: 100%;
   background: white;
@@ -1105,10 +1116,19 @@ tr:nth-child(even) {
   background-color: rgb(24, 125, 221);
   border-radius: 50%;
   padding: 7px 9px;
-  margin-top: 10px;
+  margin-top: 18px;
   color: white;
-  height: 33px;
+  height: 32px;
   text-align: center;
+
+
+
+  position: relative;
+  left: 92px;
+  top: 0px;
+  width: 32px;
+  padding-top: 5px;
+  padding-left: 7px;
 }
 
 .warningicon {

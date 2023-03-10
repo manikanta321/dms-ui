@@ -14,10 +14,21 @@
   <!-- <br>
   <br>
   <br> -->
+<!-- <div class="row bulkEditLabel">
+  <div class="col-2">
+    <label>Product <span>*</span></label>
+  </div>
+  <div class="col-2">
+    <label>Geography <span>*</span></label>
+  </div>
+  <div class="col-2">
+    <label>Dealer <span>*</span></label>
+  </div>
+</div> -->
 
-
-  <div class="drpd d-flex DropDownFlex" >
+  <div class="drpd d-flex DropDownFlex " >
     <div class="search-d">
+      <label>Product <span>*</span></label>
       <form [formGroup]="myForm1" class="dropdown-form">
         <ng-multiselect-dropdown class="roless-product" name="city1" [placeholder]="'Product'" formControlName="city1"
           [disabled]="disabled" [settings]="dropdownSettings2" [data]="ProductListArray"
@@ -35,6 +46,7 @@
       </form>
     </div>
     <div class="search-d">
+      <label>Geography <span>*</span></label>
       <form [formGroup]="myForm" class="dropdown-form">
         <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'Geographies'" formControlName="city"
           [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList" (onSelect)="onItemSelect($event)"
@@ -52,6 +64,7 @@
       </form>
     </div>
     <div class="search-d">
+      <label>Dealer <span>*</span></label>
       <form [formGroup]="myForms" class="dropdown-form">
         <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Dealer'" formControlName="citys"
           [disabled]="disabled" [settings]="dropdownSettings1" [data]="dealerListArray"
@@ -75,10 +88,11 @@
     <div class="search-d">
 
 
-      <div class="searchBox1 d-flex">
+      <div class="searchBox1 d-flex" style="position: relative;
+      top: 20px;">
         <div class="promotiont2">
           <select #teams class="form-select select-asso" aria-label=".form-select-lg example"  [(ngModel)]="selectedGeoField">
-            <option value="" disabled selected>Select Feild</option>
+            <option value="" disabled selected>Select Field</option>
             <option value="MRP"> MRP</option>
             <option value="MaxOrder"> Max Order Qty</option>
             <option value="MinOrder"> Min Order Qty</option>

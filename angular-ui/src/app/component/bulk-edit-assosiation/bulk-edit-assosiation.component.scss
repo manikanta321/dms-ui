@@ -33,9 +33,11 @@
 
 .mainclass
 {
-   height: 634px;
+   height: 653px;
   overflow: hidden;
   overflow-y: hidden;
+  width: 97%;
+  margin-left: 2%;
 }
 .savebtnall
 {
@@ -176,8 +178,8 @@
     width: 43px;
     height: 42px;
     margin-right: 23px;
-    right: -200px;
-    top: 4px;
+    right: -196px;
+    top: 24px;
   }
   .btnhover1{
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
@@ -1019,6 +1021,7 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
      /* font-family: 'Gilroy-Bold';  */
      font-weight: bold;
      font-size: 20px;
+     bottom: 27px;
   }
   .addU:after{
     content: "";
@@ -1051,7 +1054,7 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
     width: 168px;
     height: 43px;
     position: relative;
-    bottom: 19px;
+    bottom: 21px;
   }
   .saveas-draft {
     color: #fff;
@@ -1238,4 +1241,8 @@ margin-left: 136px;
     .DropDownFlex{
       position: relative;
       top: 33px;
+    }
+    .bulkEditLabel{
+      margin-bottom: 4%;
+
     }

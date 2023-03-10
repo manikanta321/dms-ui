@@ -26,7 +26,7 @@
                 </div>
 
                 <div *ngFor="let data of griddatapromotions;let i=index">
-                    <div class="row mt-1" style="width: 98vw;margin-left: -139px;">
+                    <div class="row mt-1" style="width: 98vw;position: relative;left: -9%;">
                         <div class="col-lg-1">
                             <p class="p1Tag">p{{i + 1}}</p>
                         </div>
@@ -63,7 +63,7 @@
                                                     <span class="buy-grp"> Buy Group {{promos.groupId}}</span>
                                                 </div>
                                                 <div class="col-md-6" style="text-align: center;">
-                                                    <span class="total-itemss">Total Selected Qty:
+                                                    <span class="total-itemss">Total Selected Qty :
                                                         {{promos.totalQuantity}}
                                                         <span style="color:#000;"
                                                             [ngClass]="{ 'txt-error-span': !(promos.isItemValid) && data.showWarningMsg }">(MOQ:{{promos.moq}})</span>
@@ -146,7 +146,7 @@
                                                     <span class="buy-grp"> Get Group {{promos.groupId}}</span>
                                                 </div>
                                                 <div class="col-md-6" style="text-align: center;">
-                                                    <span class="total-itemss">Total Selected Qty:
+                                                    <span class="total-itemss">Total Selected Qty :
                                                         {{promos.totalQuantity}} <span class="ml-1" style="color:#000;"
                                                             [ngClass]="{ 'txt-error-span': promos.totalQuantity != (promos.foc) && data.showWarningMsg }">(FOC
                                                             {{promos.foc }})</span></span>
@@ -239,7 +239,7 @@
                                                             {{promos.set}}</span>
                                                     </div>
                                                     <div class="col-md-6" style="text-align: center;">
-                                                        <span class="total-itemss">Total Selected Qty:
+                                                        <span class="total-itemss">Total Selected Qty :
                                                             {{promos.totalQuantity}}
                                                             <span style="color:#000;"
                                                                 [ngClass]="{ 'txt-error-span': !(promos.isItemValid) && data.showWarningMsg }">(MOQ:{{promos.moq}})</span>
@@ -354,7 +354,7 @@
                                                             {{promos.set}}</span>
                                                     </div>
                                                     <div class="col-md-6" style="text-align: center;">
-                                                        <span class="total-itemss">Total Selected Qty:
+                                                        <span class="total-itemss">Total Selected Qty :
                                                             ({{promos.totalQuantity}})
                                                             <span class="ml-1" style="color:#000;"
                                                                 [ngClass]="{ 'txt-error-span': promos.totalQuantity != (promos.foc) && data.showWarningMsg && promos.isEnable }">(FOC
@@ -449,8 +449,8 @@
                                 <div *ngIf="data.promotionTypesId==3">
                                     <div>
                                         <div class="buyGrp 1">
-                                            <!-- headingds for 3rd promotions -->
-                                            <div class="row label-div tableborderss">
+                                            <!-- headingds for 3rd promotions  tableborderss -->
+                                            <div class="row label-div ">
                                                 <div class="col-md-3">
                                                     <span class="buy-grp"> Buy Group</span>
                                                 </div>

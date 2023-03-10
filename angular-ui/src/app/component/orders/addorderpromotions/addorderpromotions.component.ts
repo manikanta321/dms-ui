@@ -326,7 +326,7 @@ export class AddorderpromotionsComponent implements OnInit {
       return;
     }
 
-    const dialogRef = this.dialog.open(AddOrderPromotionlistComponent,  {minWidth: '95vw', height: '730px',
+    const dialogRef = this.dialog.open(AddOrderPromotionlistComponent,  {minWidth: '96vw', height: '730px',
     panelClass: 'orders-add-Promotions',
      data: this.AddOrderPromotionData });
     dialogRef.afterClosed().subscribe((res) => {

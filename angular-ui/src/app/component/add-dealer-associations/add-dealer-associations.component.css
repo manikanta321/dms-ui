@@ -30,7 +30,8 @@
   text-align: center;
   right: -43px !important;
   padding-left: 4px;
-  width: 39px;
+  width: 41px;
+  display: inline-block;
   padding-top: 1px;
 }
 
@@ -50,8 +51,9 @@
   text-align: center;
   right: -43px !important;
   padding-left: 4px;
-  width: 39px;
+  width: 41px;
   padding-top: 1px;
+  display: inline-block;
 }
 
 ::ng-deep .selecttypes .dropdown-btn span .ng-star-inserted {
@@ -1713,8 +1715,8 @@ width: 100%;
 }
 ::ng-deep.categoryy .multiselect-dropdown .dropdown-btn .selected-item {
    background: #00187A !important; 
-  
-  right: 0% !important;
+   height: fit-content;
+  right: 3% !important;
 }
 .subCategoryy-placeholder.dropdown-placeholder .selected-placeholder {
   color: #0C5A3E !important;
@@ -1724,7 +1726,8 @@ width: 100%;
 }
 ::ng-deep.subCategoryy .multiselect-dropdown .dropdown-btn .selected-item {
   background: #0C5A3E !important;
-  right: 0% !important;
+  right: 3% !important;
+  height: fit-content;
 }
 .typess-placeholder.dropdown-placeholder .selected-placeholder {
   color: #C32F27 !important;
@@ -1733,7 +1736,8 @@ width: 100%;
 }
 ::ng-deep.typess .multiselect-dropdown .dropdown-btn .selected-item {
   background: #C32F27 !important;
-  right: 0% !important;
+  right: 4% !important;
+  height: fit-content;
 }
 .productt-placeholder.dropdown-placeholder .selected-placeholder {
   color: #44026C !important;
@@ -1742,7 +1746,8 @@ width: 100%;
 }
 ::ng-deep.productt .multiselect-dropdown .dropdown-btn .selected-item {
   background: #44026C !important;
-  right: 0% !important;
+  right: 3% !important;
+  height: fit-content;
 }
 .mainclass {
   margin-left: 5px;
@@ -1802,6 +1807,7 @@ width: 100%;
   height: 22px;
   border-radius: 15px;
   text-align: center;
+  display: inline-block;
 }
 ::ng-deep .productt .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
@@ -1817,6 +1823,7 @@ width: 100%;
   height: 22px;
   border-radius: 15px;
   text-align: center;
+  display: inline-block;
 }
  ::ng-deep .promo_1 .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
@@ -1877,5 +1884,62 @@ width: 100%;
 }
 .contentStyle{
   color: #000000;
+}
+
+
+
+::ng-deep.dynamicbubbles .dropdown-btn{
+  display: flex !important;
+  justify-content: initial;
+  position: relative;
+}
+
+::ng-deep.dynamicbubbles .dropdown-btn span .ng-star-inserted{
+  position: relative !important;
+  top: 38px !important;
+  right: 0 !important;
+  padding-left: 5px;
+}
+
+
+::ng-deep.dynamicsubcats .dropdown-btn{
+  display: flex !important;
+  justify-content: initial;
+  position: relative;
+}
+
+::ng-deep.dynamicsubcats .dropdown-btn span .ng-star-inserted{
+  position: relative !important;
+  top: 38px !important;
+  right: 0 !important;
+  padding-left: 5px;
+}
+
+
+::ng-deep.dynamictypesbubbles .dropdown-btn{
+  display: flex !important;
+  justify-content: initial;
+  position: relative;
+}
+
+::ng-deep.dynamictypesbubbles .dropdown-btn span .ng-star-inserted{
+  position: relative !important;
+  top: 38px !important;
+  right: 0 !important;
+  padding-left: 5px;
+}
+
+
+::ng-deep.dynamicproductbubbles .dropdown-btn{
+  display: flex !important;
+  justify-content: initial;
+  position: relative;
+}
+
+::ng-deep.dynamicproductbubbles .dropdown-btn span .ng-star-inserted{
+  position: relative !important;
+  top: 38px !important;
+  right: 0 !important;
+  padding-left: 5px;
 }
 

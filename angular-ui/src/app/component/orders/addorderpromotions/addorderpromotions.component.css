@@ -1,6 +1,6 @@
 ::ng-deep.orders-add-Promotions .mat-dialog-container {
   position: relative;
-  /* left: 14px; */
+  left: 2px; 
 }
 
 
@@ -1778,7 +1778,7 @@ margin-top: -5px;
   padding: 20px;
   background: #fff;
   border-radius: 5px;
-  width: 95vw;
+  width: 96vw;
   height: 730px;
   /* min-height: 263px; */
   /* height: auto; */
@@ -1790,7 +1790,7 @@ margin-top: -5px;
   border: 0.5px solid #000000;
   border-radius: 25px;
   margin-top: 8px;
-  margin-left: 39px;
+  left: 2%;
   
 }
 .expand-arrow {

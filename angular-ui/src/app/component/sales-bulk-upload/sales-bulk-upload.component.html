@@ -256,16 +256,16 @@
                             <td title="" style="padding-left: 21px;">{{shipData.rownumber}}</td>
                             <td style="width: 90px;" title="" class="elipsis-2line">
                                 {{shipData.orderNo}}</td>
-                            <td style="width: 100px;">{{shipData.orderDate.toString().split('T')[0]}}</td>
+                            <td style="width: 100px;">{{ sharedService.dateformat(shipData.orderDate)}}</td>
                             <td style="width: 120px;" title="">{{shipData.productName}}</td>
                             <td title="">{{shipData.productCode}}</td>
                             <td>{{shipData.orderedQty}}</td>
                             <td>{{shipData.shippedTillQty}}</td>
                             <td>{{shipData.dispatchQty}}</td>
-                            <td>{{shipData.dispatchDate.toString().split('T')[0]}}</td>
-                            <td>{{shipData.invoiceDate.toString().split('T')[0]}}</td>
+                            <td>{{sharedService.dateformat(shipData.dispatchDate)}}</td>
+                            <td>{{sharedService.dateformat (shipData.invoiceDate)}}</td>
                             <td >{{shipData.invoiceNo}}</td>
-                            <td>{{shipData.uploadedDate.toString().split('T')[0]}}</td>
+                            <td>{{ sharedService.dateformat(shipData.uploadedDate)}}</td>
             
                         </tr>
                     </table>
@@ -298,16 +298,16 @@
                             <td title="" style="padding-left: 21px;">{{shipData.rownumber}}</td>
                             <td style="width: 90px;" title="" class="elipsis-2line">
                                 {{shipData.orderNo}}</td>
-                            <td style="width: 100px;">{{shipData.orderDate.toString().split('T')[0]}}</td>
+                            <td style="width: 100px;">{{sharedService.dateformat(shipData.orderDate)}}</td>
                             <td style="width: 120px;" title="">{{shipData.productName}}</td>
                             <td title="">{{shipData.productCode}}</td>
                             <td>{{shipData.orderedQty}}</td>
                             <td>{{shipData.shippedTillQty}}</td>
                             <td>{{shipData.dispatchQty}}</td>
-                            <td>{{shipData.dispatchDate.toString().split('T')[0]}}</td>
-                            <td>{{shipData.invoiceDate.toString().split('T')[0]}}</td>
+                            <td>{{sharedService.dateformat(shipData.dispatchDate)}}</td>
+                            <td>{{sharedService.dateformat(shipData.invoiceDate)}}</td>
                             <td >{{shipData.invoiceNo}}</td>
-                            <td>{{shipData.uploadedDate.toString().split('T')[0]}}</td>
+                            <td>{{sharedService.dateformat(shipData.uploadedDate)}}</td>
             
                         </tr>
                     </table>
@@ -341,16 +341,16 @@
                             <td title="" style="padding-left: 21px;">{{shipData.rownumber}}</td>
                             <td style="width: 90px;"  title="" class="elipsis-2line">
                                 {{shipData.orderNo}}</td>
-                            <td style="width: 100px;" >{{shipData.orderDate.toString().split('T')[0]}}</td>
+                            <td style="width: 100px;" >{{sharedService.dateformat(shipData.orderDate)}}</td>
                             <td style="width: 120px;" title="">{{shipData.productName}}</td>
                             <td title="">{{shipData.productCode}}</td>
                             <td>{{shipData.orderedQty}}</td>
                             <td>{{shipData.shippedTillQty}}</td>
                             <td>{{shipData.dispatchQty}}</td>
-                            <td>{{shipData.dispatchDate.toString().split('T')[0]}}</td>
-                            <td>{{shipData.invoiceDate.toString().split('T')[0]}}</td>
+                            <td>{{sharedService.dateformat(shipData.dispatchDate)}}</td>
+                            <td>{{sharedService.dateformat(shipData.invoiceDate)}}</td>
                             <td >{{shipData.invoiceNo}}</td>
-                            <td>{{shipData.uploadedDate.toString().split('T')[0]}}</td>
+                            <td>{{sharedService.dateformat(shipData.uploadedDate)}}</td>
             
                         </tr>
                     </table>
@@ -382,16 +382,16 @@
                         <tr *ngFor="let shipData of incorrectRows">
                             <td  title="" style="padding-left: 21px;">{{shipData.rownumber}}</td>
                             <td style="width: 90px;" [ngClass] ="{'errorText': shipData.remarks == 'orderno'}">{{shipData.orderNo}}</td>
-                            <td  style="width: 100px;" [ngClass] ="{'errorText': shipData.remarks == 'orderdate'}">{{shipData.orderDate.toString().split('T')[0]}}</td>
+                            <td  style="width: 100px;" [ngClass] ="{'errorText': shipData.remarks == 'orderdate'}">{{sharedService.dateformat(shipData.orderDate)}}</td>
                             <td style="width: 120px;" [ngClass]="{'errorText': shipData.remarks == 'productname'}">{{shipData.productName}}</td>
                             <td  [ngClass]="{'errorText': shipData.remarks == 'productcode'}">{{shipData.productCode}}</td>
                             <td [ngClass]="{'errorText': shipData.remarks == 'orderedqty'}">{{shipData.orderedQty}}</td>
                             <td [ngClass]="{'errorText': shipData.remarks == 'shippedtillqty'}">{{shipData.shippedTillQty}}</td>
                             <td  [ngClass]="{'errorText': shipData.remarks == 'dispatchqty'}">{{shipData.dispatchQty}}</td>
-                            <td  [ngClass]="{'errorText': shipData.remarks == 'dispatchdate'}">{{shipData.dispatchDate.toString().split('T')[0]}}</td>
-                            <td  [ngClass]="{'errorText': shipData.remarks == 'invoicedate'}">{{shipData.invoiceDate.toString().split('T')[0]}}</td>
+                            <td  [ngClass]="{'errorText': shipData.remarks == 'dispatchdate'}">{{sharedService.dateformat(shipData.dispatchDate)}}</td>
+                            <td  [ngClass]="{'errorText': shipData.remarks == 'invoicedate'}">{{sharedService.dateformat(shipData.invoiceDate)}}</td>
                             <td   [ngClass]="{'errorText': shipData.remarks == 'invoiceno'}" >{{shipData.invoiceNo}}</td>
-                            <td  [ngClass]="{'errorText': shipData.remarks == 'uploaddate'}">{{shipData.uploadedDate.toString().split('T')[0]}}</td>
+                            <td  [ngClass]="{'errorText': shipData.remarks == 'uploaddate'}">{{sharedService.dateformat(shipData.uploadedDate)}}</td>
             
                         </tr>
                     </table>

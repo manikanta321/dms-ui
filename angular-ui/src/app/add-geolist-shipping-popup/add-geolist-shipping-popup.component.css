@@ -354,4 +354,5 @@ mat-form-field {
     position: relative !important;
     top: 38px !important;
     right: 0 !important;
+    padding-left: 7px;
 }

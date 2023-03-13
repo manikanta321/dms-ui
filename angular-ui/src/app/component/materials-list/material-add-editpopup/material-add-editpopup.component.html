@@ -56,7 +56,7 @@
                   <div class="subcategorydrp">
                     <ng-select [items]="sub_category" class="searchbtnIcon" id="nameSubCat" name="nameSubCat" required
                       [virtualScroll]="true" bindLabel="subCatName" bindValue="subCatId" [searchable]="true"
-                      [clearable]="false" placeholder="search & select sub-category" [(ngModel)]="subCategoryData"
+                      [clearable]="false" placeholder="Search & select sub-category" [(ngModel)]="subCategoryData"
                       (change)="onSubCategorySelect($event)" #nameSubCat="ngModel">
                     </ng-select>
                     <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;position: absolute"
@@ -97,7 +97,7 @@
                 </div>
                 <input type="text" id="matName" name="matName" (keyup)="onKey($event)"
                   class="form-control container materialname-placeholder" required
-                  placeholder="Enter the name of material" [(ngModel)]="materialName" #matName="ngModel">
+                  placeholder="Enter name of material" [(ngModel)]="materialName" #matName="ngModel">
                 <p style="margin-bottom:-5px;padding: 0px;font-size: 11px;position: absolute"
                   *ngIf="matName.invalid && (matName.dirty || matName.touched)" class="alert">
                   <span class="errormsg" *ngIf="matName.errors?.['required']">
@@ -516,7 +516,7 @@
                   <div class="dropdown-file">
                     <div style="margin:8px">
                       <select class="drpOptions" [(ngModel)]="selectedGeoField">
-                        <option value="" disabled selected>Select Feild</option>
+                        <option value="" disabled selected>Select Field</option>
                         <option value="mrp"> MRP</option>
                         <option value="marginPercent"> Margin Percent</option>
                         <option value="maxOrderQty"> Max Order Qty</option>

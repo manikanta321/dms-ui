@@ -41,7 +41,7 @@ export class DeactivateTaxCoponentComponent implements OnInit {
   });
     this.otherMasterService.filter('Register click');
 
-    this.dialog.open(SuccessDeactivateTaxComponentComponent, {panelClass: 'deactiveSuccessPop'});
+    this.dialog.open(SuccessDeactivateTaxComponentComponent, {panelClass: 'taxdeactivatesussess'});
     this.otherMasterService.filter('Register click');
     this.dialogRef.close()
   }

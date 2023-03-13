@@ -39,7 +39,7 @@ addUom(){
 
 console.log(res)
 this.dialogRef.close();
-this.dialog.open(GeoAddedPopupComponent, {panelClass: 'activeSuccessPop'});
+this.dialog.open(GeoAddedPopupComponent, {panelClass: 'UOMSuccessPop'});
 
 
   })

@@ -142,7 +142,7 @@ this.uomShortName = shortName;
  console.log("editUomData",this.editUomData);
       });
   }
- this.dialog.open(AddcurrencySuccessfullyPopupComponent , {panelClass: 'activeSuccessPop'});
+ this.dialog.open(AddcurrencySuccessfullyPopupComponent , {panelClass: 'currencyactiveSuccessPop'});
 
    this.closeDialog();
   }

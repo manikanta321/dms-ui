@@ -525,7 +525,7 @@ export class MaterialAddEditpopupComponent {
         });
         this.dialog.closeAll()
         this.materialListService.filter('Register click');
-        this.dialog.open(MaterialaddedSuccessPopComponent, { panelClass: 'activeSuccessPop' })
+        this.dialog.open(MaterialaddedSuccessPopComponent, { panelClass: 'materialsSuccessPop' })
       }
     })
 
@@ -576,7 +576,7 @@ export class MaterialAddEditpopupComponent {
 
         this.dialog.closeAll()
 
-        this.dialog.open(MaterialaddedSuccessPopComponent, { panelClass: 'activeSuccessPop' })
+        this.dialog.open(MaterialaddedSuccessPopComponent, { panelClass: 'materialsSuccessPop' })
       }
     })
     // this.dialog.closeAll()

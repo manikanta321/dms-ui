@@ -128,7 +128,7 @@ export class AssociationComponent implements OnInit {
     {
       headerName: "MRP",
       field: "mrp", 
-      type: ['nonEditableColumn']
+      type: ['nonEditableColumn','rightAligned']
     },
     {
       headerName: "Min.Order.Qty",

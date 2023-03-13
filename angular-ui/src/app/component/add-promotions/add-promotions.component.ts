@@ -1923,7 +1923,7 @@ this.textShow=true;
 
         if (res.response.result == 'Added Succesfully') {
           // alert('Added Succesfully')
-          this.dialog.open(AddPromotionSuccessfulPopupComponent, { panelClass: 'activeSuccessPop' })
+          this.dialog.open(AddPromotionSuccessfulPopupComponent, { panelClass: 'promotionsSuccessPop' })
           this.sharedService.filter('Register click')
 
           this.dialogRef.close();
@@ -1934,7 +1934,7 @@ this.textShow=true;
           // alert(res.response.result);
 
           this.sharedService.filter('Register click')
-          this.dialog.open(AddPromotionSuccessfulPopupComponent, { panelClass: 'activeSuccessPop' })
+          this.dialog.open(AddPromotionSuccessfulPopupComponent, { panelClass: 'promotionsSuccessPop' })
           this.dialogRef.close();
         }
       })
@@ -2018,7 +2018,7 @@ this.textShow=true;
         else {
           // alert(res.response.result);
           this.sharedService.filter('Register click')
-          this.dialog.open(AddPromotionSuccessfulPopupComponent, { panelClass: 'activeSuccessPop' })
+          this.dialog.open(AddPromotionSuccessfulPopupComponent, { panelClass: 'promotionsSuccessPop' })
           this.dialogRef.close();
         }
       })
@@ -2056,7 +2056,7 @@ this.textShow=true;
         else {
           // alert(res.response.result);
           this.sharedService.filter('Register click')
-          this.dialog.open(AddPromotionSuccessfulPopupComponent, { panelClass: 'activeSuccessPop' })
+          this.dialog.open(AddPromotionSuccessfulPopupComponent, { panelClass: 'promotionsSuccessPop' })
           this.dialogRef.close();
 
         }
@@ -2094,7 +2094,7 @@ this.textShow=true;
         else {
           // alert(res.response.result);
           this.sharedService.filter('Register click')
-          this.dialog.open(AddPromotionSuccessfulPopupComponent, { panelClass: 'activeSuccessPop' })
+          this.dialog.open(AddPromotionSuccessfulPopupComponent, { panelClass: 'promotionsSuccessPop' })
           this.dialogRef.close();
 
         }
@@ -2208,7 +2208,7 @@ this.textShow=true;
         else {
           // alert(res.response.result);
           this.sharedService.filter('Register click')
-          this.dialog.open(AddPromotionSuccessfulPopupComponent, { panelClass: 'activeSuccessPop' })
+          this.dialog.open(AddPromotionSuccessfulPopupComponent, { panelClass: 'promotionsSuccessPop' })
           this.dialogRef.close();
 
         }
@@ -2291,7 +2291,7 @@ this.textShow=true;
         else {
           // alert(res.response.result);
           this.sharedService.filter('Register click')
-          this.dialog.open(AddPromotionSuccessfulPopupComponent, { panelClass: 'activeSuccessPop' })
+          this.dialog.open(AddPromotionSuccessfulPopupComponent, { panelClass: 'promotionsSuccessPop' })
 
           this.dialogRef.close();
         }
@@ -2329,7 +2329,7 @@ this.textShow=true;
         }
         else {
           // alert(res.response.result);
-          this.dialog.open(AddPromotionSuccessfulPopupComponent, { panelClass: 'activeSuccessPop' })
+          this.dialog.open(AddPromotionSuccessfulPopupComponent, { panelClass: 'promotionsSuccessPop' })
           this.dialogRef.close();
 
         }
@@ -2367,7 +2367,7 @@ this.textShow=true;
         else {
           // alert(res.response.result);
           this.sharedService.filter('Register click');
-          this.dialog.open(AddPromotionSuccessfulPopupComponent, { panelClass: 'activeSuccessPop' })
+          this.dialog.open(AddPromotionSuccessfulPopupComponent, { panelClass: 'promotionsSuccessPop' })
           this.dialogRef.close();
 
         }

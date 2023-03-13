@@ -80,7 +80,7 @@ export class AddUserPopupComponent implements OnInit {
       if (res.response.result === 'Success') {
         this.sharedService.filter('Register click')
         localStorage.setItem('addorEditUser', 'Add');
-        this.dialog.open(AdduserSuccessfulPopupComponent, { panelClass: 'activeSuccessPop' });
+        this.dialog.open(AdduserSuccessfulPopupComponent, { panelClass: 'AddUsersSuccessPop' });
 
 
         this.dialogRef.close();

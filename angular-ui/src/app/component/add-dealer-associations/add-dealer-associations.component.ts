@@ -673,7 +673,7 @@ export class AddDealerAssociationsComponent implements OnInit {
         if (res.response.result == 'Successfully Added' ||  res.response.result =='Successfully Updated') {
           this.sharedService.filter('Register click')
           this.dialogRef.close();
-          this.dialog.open(DealerSuccessPopupComponent, { panelClass: 'activeSuccessPop' })
+          this.dialog.open(DealerSuccessPopupComponent, { panelClass: 'activeSuccessPopassocitions' })
         }
         else {
 

@@ -188,20 +188,20 @@
           <div class="row" *ngIf="screenValue == 1">
             <div class="col-md-6 dlr-promotiont1">
               <form [formGroup]="myForm" class="dropdown-form-dealer">
-                <ng-multiselect-dropdown class="promo_1" [placeholder]="'Dealers'" formControlName="city1"
+                <ng-multiselect-dropdown class="promo_1" [placeholder]="'Dealers'" formControlName="city"
                   [disabled]="disabled" [settings]="dropdownSettings3" [data]="dealersArray"
                   (onSelect)="onDealerSelect($event)" (onDeSelect)="onDealerDeSelect($event)" (onDeSelectAll)="onItemDealerDeSelectOrAll($event)" (onSelectAll)="onItemDealerSelectOrAll($event)">
                 </ng-multiselect-dropdown>
 
-                <div class="dropdown-placeholder promo_1-placeholder">
+                <div class="dropdown-placeholder ">
                   <span *ngIf="myFormDlr.get('city').value.length == 0" style="color: black">Search & select Dealers
                   </span>
-                  <span *ngIf="myFormDlr.get('city').value.length == 1" class="selected-placeholder">
+                  <!-- <span *ngIf="myFormDlr.get('city').value.length == 1" class="selected-placeholder">
                     {{ myFormDlr.get("city").value.length }} Dealers selected
                   </span>
                   <span *ngIf="myFormDlr.get('city').value.length > 1" class="selected-placeholder">
                     {{ myFormDlr.get("city").value.length }} Dealers selected
-                  </span>
+                  </span> -->
                 </div>
               </form>
             </div>

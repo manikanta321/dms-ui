@@ -28,7 +28,7 @@
 
   <div class="drpd d-flex DropDownFlex " >
     <div class="search-d">
-      <label>Product <span>*</span></label>
+      <label>Product <span class="mandatory">*</span></label>
       <form [formGroup]="myForm1" class="dropdown-form">
         <ng-multiselect-dropdown class="roless-product" name="city1" [placeholder]="'Product'" formControlName="city1"
           [disabled]="disabled" [settings]="dropdownSettings2" [data]="ProductListArray"
@@ -46,7 +46,7 @@
       </form>
     </div>
     <div class="search-d">
-      <label>Geography <span>*</span></label>
+      <label>Geography <span class="mandatory">*</span></label>
       <form [formGroup]="myForm" class="dropdown-form">
         <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'Geographies'" formControlName="city"
           [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList" (onSelect)="onItemSelect($event)"
@@ -64,7 +64,7 @@
       </form>
     </div>
     <div class="search-d">
-      <label>Dealer <span>*</span></label>
+      <label>Dealer <span class="mandatory">*</span></label>
       <form [formGroup]="myForms" class="dropdown-form">
         <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Dealer'" formControlName="citys"
           [disabled]="disabled" [settings]="dropdownSettings1" [data]="dealerListArray"

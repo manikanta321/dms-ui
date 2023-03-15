@@ -35,6 +35,10 @@
   padding-top: 1px;
 }
 
+::ng-deep.promo1-placeholder  .dropdown-btn span .ng-star-inserted{
+  display: none;
+}
+
 ::ng-deep .subcatbubbles .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
   
@@ -1717,7 +1721,9 @@ width: 100%;
    background: #00187A !important; 
    height: fit-content;
   right: 3% !important;
+  
 }
+
 .subCategoryy-placeholder.dropdown-placeholder .selected-placeholder {
   color: #0C5A3E !important;
   font-size: 12px;

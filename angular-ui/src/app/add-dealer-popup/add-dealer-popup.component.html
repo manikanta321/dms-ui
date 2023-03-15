@@ -199,7 +199,7 @@
                                         <div class="col-4">
                                             <label>Status<span>*</span></label>
                                             <br>
-                                            <select class="status-class" formControlName="StatusId" name="status"
+                                            <select class="addDelercols form-control " formControlName="StatusId" name="status"
                                                 placeholder="Select Status">
                                                 <option value="" selected hidden>Select status</option>
                                                 <option *ngFor="let option of statusList" [value]="option.statusId">
@@ -234,7 +234,7 @@
 
 
                                     <div formArrayName="addresscount" style="position: relative;
-                                    right: 11px;">
+                                    right: 11px; width:104%">
 
                                         <div class="row" *ngFor="let quantity of addresscount().controls; let i=index"
                                             [formGroupName]="i" >
@@ -273,13 +273,14 @@
                                             </div>
 
                                             <div class="col-2"style="position: relative;right:116px;">
-                                                <label *ngIf="i == 0">Address Line 1<span>*</span></label>
-                                                <label *ngIf="i == 0" style="position: relative;left: 41px;">Address Line 2<span>*</span></label>
-                                                <br>
+                                                <label *ngIf="i == 0">Address Line 1 <span>*</span></label><br>
+                                                
+                                                
                                                 <input type="text" placeholder="Enter" formControlName="AddressLine1"
                                                     class="addDelercols addadress" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].AddressLine1">
-                                                   
-                                                    <input type="text" placeholder="Enter" formControlName="AddressLine2"
+                                                    <br>
+                                                    
+                                                       <input type="text" placeholder="Enter" formControlName="AddressLine2"
                                                     class="addDelercols addadressLine1" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].AddressLine2">
                                             </div>
 

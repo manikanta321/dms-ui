@@ -110,11 +110,11 @@
                 <div class="uomp">
                   <label>UOM <span>*</span></label>
                 </div>
-                <div class="uomdrp">
+                <div class="uomdrp" >
                   <ng-select [items]="rowData5" class="searchbtnIcon" id="nameUOM" name="nameUOM" required
                     [virtualScroll]="true" bindLabel="uoMShortName" bindValue="uoMId" [searchable]="true"
                     [clearable]="false" placeholder="Search & select measuring unit" [(ngModel)]="baseUoMData"
-                    (change)="onUomSelect($event)" #nameUOM="ngModel">
+                    (change)="onUomSelect($event)" #nameUOM="ngModel" >
                   </ng-select>
                   <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;position: absolute;"
                     *ngIf="nameUOM.invalid && (nameUOM.dirty || nameUOM.touched)" class="alert">

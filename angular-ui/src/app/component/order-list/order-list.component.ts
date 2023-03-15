@@ -148,10 +148,12 @@ export class OrderListComponent implements OnInit {
     {
       headerName: "Total Value",
       field: 'totalValue',
+      type:['rightAligned']
     },
     {
       headerName: "Completed Value",
       field: 'compleatedValue',
+      type:['rightAligned']
     },
     {
       headerName: "Status",

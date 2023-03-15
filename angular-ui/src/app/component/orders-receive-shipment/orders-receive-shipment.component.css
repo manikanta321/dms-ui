@@ -955,6 +955,7 @@
     position: relative;
     top: 6px;
     font-size: 18px;
+    margin-left: 1%;
   }
   
   
@@ -1081,7 +1082,7 @@ padding-left: 20px;
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: right;
-    margin-top: 15px;
+    margin-top: 4%;
     cursor: pointer;
     width: 168px;
     height: 43px;
@@ -1091,7 +1092,7 @@ padding-left: 20px;
     font-family: 'Gilroy-SemiBold';
     font-size: 15px;
     line-height: 18px;
-  
+   margin-right: -21%;
     align-items: center;
     text-align: center;
   
@@ -1113,8 +1114,9 @@ padding-left: 20px;
     font-weight: bold;
     text-decoration-line: underline;
     cursor: pointer;
-  
+    margin-top: 4%;
     font-family: 'Gilroy-Bold';
+    margin-left: 20%;
   
   
   
@@ -1301,6 +1303,7 @@ padding-left: 20px;
     border-radius: 68%;
     color: white;
     padding: 3px 5px;
+    margin-left: -8px;
   }
   
   .totall {
@@ -1363,7 +1366,7 @@ padding-left: 20px;
     border-radius: 10px;
     border: 1px solid black;
     font-size: 12.5px;
-    /* text-align: center; */
+     text-align: right;
   }
   
   .ShipmentinputBoxes1 {
@@ -1375,6 +1378,7 @@ padding-left: 20px;
     font-size: 12.5px;
     background-color: white;
     color: black;
+    text-align: right;
   }
   .ShipmentinputBoxes4 {
     width: 70px;
@@ -1421,7 +1425,7 @@ padding-left: 20px;
   }
   
   .dispatchComments {
-    width: 825px;
+    width: 1289px;
     height: 73px;
     padding-bottom: 45px;
     padding-left: 7px;
@@ -1499,11 +1503,13 @@ padding-left: 20px;
   }
   .invoice{
     border-radius: 10px;
-    padding: 7px;
+    padding: 10px;
     background: none !important;
-    width: 183px;
+    width: 223px;
     border: 1px black solid;
     height: 35px;
+    margin-left: 17%;
+
   }
   ::ng-deep.promotion-datepicker .mat-form-field-appearance-legacy .mat-form-field-infix {
     padding: 0.4375em 0;
@@ -1534,4 +1540,24 @@ padding-left: 20px;
     bottom: 4px;
     width: 20px;
     right: 10px;
+  }
+  .paddinginth
+  {
+    padding: 2px 3px 5px 30px;
+  }
+  .fontweight
+  {
+    font-weight: 500;
+  }
+  .label1
+  {
+    margin-left: 15%;
+  }
+  .label2
+  {
+    margin-left: 17%;
+  }
+  .receive_date
+  {
+    margin-left: 16%;
   }

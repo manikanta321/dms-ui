@@ -621,8 +621,10 @@ li {
 
 ::ng-deep.uomdrp .material-add-edit .mat-horizontal-content-container {
   max-height: 58vh;
-  overflow-y: hidden;
+  overflow-y: hidden ;
 }
+
+
 
 .submitbtn {
   margin-top: 12px;

@@ -31,9 +31,9 @@
                     </div>
                     <br><br><br>
                     <div class="row targetstyle" >
-                        <div class="col-lg-6" style="padding-left: 0px;">
+                        <div class="col-lg-6 addtargetsbubbles" style="padding-left: 0px;">
                             <form [formGroup]="dealer" class="dropdown-form">
-                                <ng-multiselect-dropdown class="Dealers searchbtnIcon" name="dealer" [placeholder]="'Dealers'" formControlName="dealer"
+                                <ng-multiselect-dropdown class="Dealers searchbtnIcon " name="dealer" [placeholder]="'Dealers'" formControlName="dealer"
                                   [disabled]="disabled" [settings]="dropdownSettings" [data]="dealerListData" (onSelect)="onDealerItemSelect($event)" (onDeSelect)="onDealerItemDeSelect($event)"
                                   (onDeSelectAll)="onDealerItemDeSelectOrAll($event)" (onSelectAll)="onDealerItemSelectOrAll($event)">
                                 </ng-multiselect-dropdown>
@@ -46,7 +46,7 @@
                       
                               </form>
                         </div>
-                        <div class="col-lg-6" style="padding-left: 0px;">
+                        <div class="col-lg-6 Geoaddtargetsbubbles" style="padding-left: 0px;">
                             <form [formGroup]="geoForm" class="dropdown-form">
                                 <ng-multiselect-dropdown class="Dealers searchbtnIcon" name="geoForm" [placeholder]="'Dealers'" formControlName="geoForm"
                                   [disabled]="disabled" [settings]="dropdownSettings1" [data]="geographyList" (onSelect)="onGeographyItemSelect($event)" (onDeSelect)="onGeographyItemDeSelect($event)"

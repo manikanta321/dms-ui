@@ -150,10 +150,10 @@ columnDefs: ColDef[] = [
 
   },
     {  headerName: "# of orders",
-    field: 'noOfOrders',      tooltipField:"noOfOrders",
+    field: 'noOfOrders',      tooltipField:"noOfOrders",type:['rightAligned'],
   }, 
     {  headerName: "Invoiced Value",
-    field: 'invoicedValue',      tooltipField:"invoicedValue",
+    field: 'invoicedValue',      tooltipField:"invoicedValue",type:['rightAligned'],
   }, 
   { headerName: "Status",
      field: 'statusName', 

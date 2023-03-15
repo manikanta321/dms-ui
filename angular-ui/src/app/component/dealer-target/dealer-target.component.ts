@@ -128,31 +128,31 @@ export class DealerTargetComponent implements OnInit {
     {
       headerName: "Financial year",
       field: 'year',
-      type: ['nonEditableColumn'],
+      type: ['nonEditableColumn','rightAligned'],
     },
 
     {
       headerName: "No of Products",
       field: 'productCount',
-      type: ['nonEditableColumn']
+      type: ['nonEditableColumn','rightAligned']
     },
     {
       headerName: "Target Total",
       field: 'volumeTotal',
-      type: ['nonEditableColumn']
+      type: ['nonEditableColumn','rightAligned']
     },
 
     {
       headerName: "Actual PY",
       field: 'actualPy',
-      type: ['nonEditableColumn']
+      type: ['nonEditableColumn','rightAligned']
     },
 
 
     {
       headerName: "Actual YTD",
       field: 'actualYTD',
-      type: ['nonEditableColumn']
+      type: ['nonEditableColumn','rightAligned']
     },
 
 
@@ -160,7 +160,7 @@ export class DealerTargetComponent implements OnInit {
     {
       headerName: "% of YTD Target",
       field: 'ytdTarget',
-      type: ['nonEditableColumn'],
+      type: ['nonEditableColumn','rightAligned'],
     },
 
     {

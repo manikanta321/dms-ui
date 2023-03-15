@@ -3,6 +3,11 @@
     font-weight: 600;
     margin-bottom: 0;
     margin-top: -20px;
+
+    font-family: 'Gilroy-Bold';
+    line-height: 40px;
+    letter-spacing: 0.2px;
+    color: #000000;
 }
 
 .addsub1 {
@@ -51,6 +56,15 @@
     top: 50%;
     position: absolute;
 }
+.head-text.edit-header{
+    text-align: left;
+}
+.head-text.edit-header::before {
+    width: 0px;
+}
+.head-text.edit-header::after {
+    width: 51%; 
+}
 
 input {
     padding: 5px 12px;
@@ -88,6 +102,7 @@ input {
     font-weight: 600;
     top: -3px;
     color: gray;
+    cursor: pointer;
 }
 
 .actv-user {

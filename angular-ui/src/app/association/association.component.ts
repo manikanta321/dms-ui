@@ -154,7 +154,7 @@ export class AssociationComponent implements OnInit {
     {
       headerName: "Lead Time",
       field: "leadTimeIndays", 
-      type: ['nonEditableColumn']
+      type: ['nonEditableColumn','rightAligned']
     },
 
     // {

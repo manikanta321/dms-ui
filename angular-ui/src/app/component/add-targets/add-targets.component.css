@@ -427,3 +427,107 @@ label {
     position: relative;
     bottom: 150px;
 }
+
+::ng-deep .dealersdropdown .dropdown-btn span .ng-star-inserted {
+  
+
+ 
+     position: absolute !important;
+     right: -28px !important;
+    
+    top: 50px !important;
+   
+     bottom: 0px;
+  
+     width: 46px;
+   border: 1px solid #337ab7;
+   background: #D23F00 !important;
+       font-size: 12px;
+       box-shadow: 1px 1px #959595;
+       color: #fff;
+       height: 20px;
+       border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: -1px;
+  
+    padding-left: 5px;
+  }
+
+  ::ng-deep.addtargetsbubbles .multiselect-dropdown .dropdown-btn .selected-item {
+    background: #D23F00 !important;
+    font-size: 12px;
+    height: fit-content;
+    right: 7px;
+  }
+
+
+  ::ng-deep.addtargetsbubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.addtargetsbubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: -7px !important;
+     height: 5px;
+     display: table-cell;
+     background: #D23F00 !important;
+
+     bottom: 0px;
+    width: 41px;
+    border: 1px solid #337ab7;
+
+    font-size: 12px;
+    box-shadow: 1px 1px #959595;
+    color: #fff;
+    height: 20px;
+    border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: -1px;
+    padding-left: 5px;
+   }
+
+
+   
+  ::ng-deep.Geoaddtargetsbubbles .multiselect-dropdown .dropdown-btn .selected-item {
+    background: #D23F00 !important;
+    font-size: 12px;
+    height: fit-content;
+    right: 7px;
+  }
+
+
+  ::ng-deep.Geoaddtargetsbubbles .dropdown-btn
+{
+    display: flex !important;
+    justify-content: initial;
+    position: relative;
+}
+::ng-deep.Geoaddtargetsbubbles .dropdown-btn span .ng-star-inserted
+{
+     position: relative !important;
+     top: 40px !important;
+     right: -7px !important;
+     height: 5px;
+     display: table-cell;
+     background: #D23F00 !important;
+
+     bottom: 0px;
+    width: 41px;
+    border: 1px solid #337ab7;
+
+    font-size: 12px;
+    box-shadow: 1px 1px #959595;
+    color: #fff;
+    height: 20px;
+    border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: -1px;
+    padding-left: 5px;
+   }

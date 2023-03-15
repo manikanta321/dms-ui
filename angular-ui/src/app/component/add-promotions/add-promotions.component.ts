@@ -32,7 +32,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     
   }
   // showdata = false;
-  textShow:boolean=false;
+  textShow:boolean=false; 
   GetsetsShowmsg:boolean=false;
   isDataValidToSubmit: boolean = false;
 
@@ -1041,6 +1041,8 @@ console.log('addgetgroup',this.addgetgroup);
     console.log('this.addbuyset', this.addbuyset);
     
 this.textShow=true;
+
+
     
   }
 

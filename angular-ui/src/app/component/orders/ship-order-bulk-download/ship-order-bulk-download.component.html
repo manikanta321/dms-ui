@@ -9,7 +9,7 @@
         </div>
 <div class="bulk-Dcontent">
     <p>Bulk download of invoices & shipment data</p>
-    <p><b>Option 1:</b> Download <b>empty</b> template</p>
+    <p><b>Option 1:</b> Download <b>Empty</b> Template</p>
 </div>
 <div class="row">
     <div class="dowload"  (click)="emptyDownload()">
@@ -23,7 +23,7 @@
 </div>
 <div class="row opt2">
     <div class="col-6">
-        <p><b>Option 2:</b> Download template with <b>filtered</b>data</p>
+        <p><b>Option 2:</b> Download template with <b>filtered</b> data</p>
     </div>
 </div>
 <div class="row">
@@ -100,7 +100,7 @@
 <div *ngIf="receiptDownload" class="container">
   <div class="bulk-dwnld ">
       <div class="B-download">
-          <img  class="print-img" src="../../../assets/material/print-img.svg" alt="">
+          <!-- <img  class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
           <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
       </div>
       <div class="bulk-d">
@@ -108,7 +108,7 @@
       </div>
 <div class="bulk-Dcontent">
   <p>Bulk Download of Receipts</p>
-  <p><b>Option 1:</b> Download <b>empty</b> template</p>
+  <p><b>Option 1:</b> Download <b>Empty</b> Template</p>
 </div>
 <div class="row">
   <div class="dowload" (click)="bulkDownload()">

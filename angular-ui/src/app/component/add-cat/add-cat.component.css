@@ -110,7 +110,7 @@ input {
     border-radius: 5px;
     width: 184px;
     height: 43px;
-    background: white;
+    background: white; 
     font-weight: 700;
 }
 
@@ -121,6 +121,7 @@ input {
     font-weight: 600;
     top: -3px;
     color: gray;
+    cursor: pointer;
 }
 
 .actv-user {

@@ -1,14 +1,14 @@
 <!-- <p>geo-added-popup works!</p> -->
 <div class="container font" *ngIf="geoDatas" ngClass="{'active':data?.isActive,'deactive':!data?.isActive} ">
 
-    <div class="rest-pwsd d-flex">
+    <div class="rest-pwsd "style="display: -webkit-box!important;">
 
         <div class="tumbsup"><img class="c" src="assets/userImages/carbon_thumbs-up.svg" alt="">
             <br>
-            <b>Done !</b>
+            <b>Done!</b>
         </div>
         <div class="text-succ mt-3" >
-            <p> Geography <b>{{geographyName}} ({{geographyCode ?? ''}})</b> is  Added<b style="color: rgba(23, 177, 92, 1);">&nbsp; Successfully</b>
+            <p> Geography <b>{{geographyName}} ({{geographyCode ?? ''}})</b> is &nbsp;&nbsp;&nbsp; Added<b style="color: rgba(23, 177, 92, 1);">&nbsp; Successfully</b>
                 
             </p>
         </div>
@@ -28,7 +28,7 @@
 
         <div class="tumbsup"><img class="c" src="assets/userImages/carbon_thumbs-up.svg" alt="">
             <br>
-            <b>Done !</b>
+            <b>Done!</b>
         </div>
         <div class="text-succ mt-3">
             <p> Uom<b>{{" "}}{{uomName}} {{" "}}({{uomCode ?? ''}})</b> is  Added<b style="color: rgba(23, 177, 92, 1);">&nbsp;Successfully</b>

@@ -102,9 +102,11 @@ export class OrdersShipmentComponent implements OnInit {
    
   {  headerName: "Total Items In Order",
       field: 'inorder',      tooltipField:"",
+      type:['rightAligned'],
     },
     {  headerName: "In shipment",
     field: 'shipment',      tooltipField:"",
+    type:['rightAligned'],
   },
     {  headerName: "Status",
       field: 'statusName',      tooltipField:"statusName",

@@ -19,6 +19,7 @@
   
 } */
 
+
 .total_subitem
 {
   width: 129px;
@@ -38,6 +39,12 @@
   .alltotalss
   {
     margin-bottom: 1px;
+  }
+  .alltotal2
+  {
+    text-align: right!important;
+    align-items: end;
+
   }
 
   .totaltotalL
@@ -1217,12 +1224,14 @@ height: 5px;
 
 .addbtns {
   float: right;
+
 }
 
 .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button .mat-datepicker-toggle-default-icon,
 .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button .mat-datepicker-toggle-default-icon {
   margin: auto;
-  margin-top: -27px;
+  margin-top: -2px;
+
 }
 
 
@@ -1230,7 +1239,7 @@ height: 5px;
 .expand-arrow {
   width: 20%;
   position: relative;
-  right: -28px;
+  right: -78px;
   top: 4px;
 }
 
@@ -1413,7 +1422,7 @@ height: 5px;
   font-size: 12.5px;
   background-color: white;
   color: black;
-  text-align: center;
+  text-align: right;
 }
 
 .dispatchComments {
@@ -1577,4 +1586,5 @@ th{
 .shiptillText{
   position: relative;
   left: 26px;
+  text-align: right;
 }

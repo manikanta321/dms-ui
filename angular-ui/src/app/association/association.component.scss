@@ -1,3 +1,13 @@
+::ng-deep .dropdownlistadjust .dropdown-list {
+  left: -6%;
+  width: 106%;
+}
+::ng-deep .droplistuili .dropdown-list {
+  // left: -6%;
+  width: 100%;
+}
+
+
 .association
 {
   height: 600px;
@@ -1056,7 +1066,7 @@
 
   
   .role12-placeholder.dropdown-placeholder .selected-placeholder {
-    color: #44026C  !important;
+    color: #44026C  !important; 
   }
 
   

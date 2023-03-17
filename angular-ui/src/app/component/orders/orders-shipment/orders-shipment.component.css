@@ -1,3 +1,7 @@
+::ng-deep .shipmentdropdown .dropdown-list {
+  left: -6%;
+  width: 106%;
+}
 .container-fluid
 {
   /* overflow-y: auto; */

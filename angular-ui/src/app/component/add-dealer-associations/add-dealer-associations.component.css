@@ -3,6 +3,10 @@
   margin-top: 40px;
   
 }
+.left
+{
+  padding-left: 23px;
+}
 
 .container
 {
@@ -1637,7 +1641,7 @@ input.form-check-input1 {
   margin-right: -26px;
   }
   #top {
-    top: -18px;
+    top: -65px;
     /* left: 175px; */
     right: 0px;
   }
@@ -1685,7 +1689,7 @@ width: 100%;
   }
   th, td{
     padding: 2px;
-    font-size: 12px;
+    font-size: 11px;
     /* width: 3%; */
   }
   td{

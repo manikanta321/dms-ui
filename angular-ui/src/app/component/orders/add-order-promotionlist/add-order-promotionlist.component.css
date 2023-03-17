@@ -1263,6 +1263,7 @@ tr:nth-child(even) {
 }
 
 .txt-right{
-  text-align: right;
+  /* text-align: right; */
+  text-align: center;
   padding-right: 15px;
 }

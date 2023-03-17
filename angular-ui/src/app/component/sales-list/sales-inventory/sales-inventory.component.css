@@ -1,3 +1,7 @@
+::ng-deep .multi_select .dropdown-list {
+  left: -6%;
+  width: 106%;
+}
 .salesclass {
   margin-left: 4px;
 }
@@ -7,7 +11,7 @@
   overflow-x: hidden;
   overflow-y: hidden;
 }
-
+/* 
 ::ng-deep.Dealerdrp .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret{
   width: 0px;
   right: 11px;
@@ -21,7 +25,7 @@
 ::ng-deep.geography .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret{
   width: 0px;
   right: 11px;
-}
+} */
 .sales-example-form {
   min-width: 150px;
   max-width: 500px;

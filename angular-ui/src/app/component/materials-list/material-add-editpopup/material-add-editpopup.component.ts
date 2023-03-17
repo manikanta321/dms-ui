@@ -1289,6 +1289,8 @@ export class MaterialAddEditpopupComponent {
   }
 
   selectMaterialIdentifier(materialIdentifier: any): void {
+    debugger
+    console.log("MaterialCustomIdentifiers", this.MaterialCustomIdentifiers);
     // let index = this.selctedIdentifier.indexOf(materialIdentifier);
     let index = this.selctedIdentifier.findIndex(x => x.materilCustomIdentifierId == materialIdentifier.materilCustomIdentifierId)
     if (index >= 0) {

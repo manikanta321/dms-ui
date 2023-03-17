@@ -54,15 +54,15 @@
                 <div class="tooltip-text" id="top">
                   <table class="tootipTable">
                     <tr>
-                      <th>Product Name</th>
-                      <th>Classification</th>
-                      <th>SKU</th>
-                      <th>Product Identifier</th>
-                      <th>Product Group</th>
-                      <th>Product Code</th>
-                      <th>Product Short Code</th>
+                      <th class="left">Product Name</th>
+                      <th  class="left">Classification</th>
+                      <th  class="left">SKU</th>
+                      <th  class="left">Product Identifier</th>
+                      <th  class="left">Product Group</th>
+                      <th  class="left">Product Code</th>
+                      <th  class="left">Product Short Code</th>
                     </tr>
-                    <tr *ngFor="let prod of tooltipData">
+                    <tr *ngFor="let prod of tooltipData" style="text-align: center;">
                       <td>{{prod.productName}}</td>
                       <td>{{prod.classification}}</td>
                       <td>{{prod.sku}}</td>
@@ -106,14 +106,14 @@
                       <th>Product Code</th>
                       <th>Product Short Code</th>
                     </tr>
-                    <tr *ngFor="let prod of tooltipDataDealer">
+                    <tr *ngFor="let prod of tooltipDataDealer" style="background-color: red;">
                       <td>{{prod.productName}}</td>
                       <td>{{prod.classification}}</td>
                       <td>{{prod.sku}}</td>
                       <td>{{prod.productIdentifier}}</td>
                       <td>{{prod.productGroup}}</td>
                       <td>{{prod.productCode}}</td>
-                      <td>{{prod.productShortCode}}</td>
+                      <td class="pg">{{prod.productShortCode}}</td>
                     </tr>
                   </table>
                 </div>

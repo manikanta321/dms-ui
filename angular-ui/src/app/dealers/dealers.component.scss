@@ -22,7 +22,7 @@
 ::ng-deep.productbubbless .dropdown-btn span .ng-star-inserted
 {
      position: relative !important;
-     top: 40px !important;
+     top: 39px !important;
      right: 11px !important;
      height: 5px;
      display: table-cell;
@@ -160,7 +160,7 @@
   background: #000000 !important;
   font-size: 12px;
   height: fit-content;
-  right: 19px;
+  right: 5%;
 }
 
 ::ng-deep .stts_1 .multiselect-item-checkbox input[type=checkbox]:checked+div:before {
@@ -177,7 +177,7 @@
   background: #006466 !important;
   font-size: 12px;
   height: fit-content;
-  right: 20px;
+  right: 6%;
 }
 
 .role-placeholder.dropdown-placeholder .selected-placeholder {
@@ -187,7 +187,7 @@
 ::ng-deep.role1 .multiselect-dropdown .dropdown-btn .selected-item {
   background: #44026C !important;
   font-size: 12px;
-  right: 21px;
+  right: 4%;
   height: fit-content;
 }
 
@@ -281,7 +281,7 @@
 
   
 bottom: 0px;
-   width: 46px;
+   width: 48px;
  border: 1px solid #337ab7;
  background: #44026C !important;
      font-size: 12px;
@@ -292,8 +292,8 @@ bottom: 0px;
   text-align: center;
   margin-left: 10px;
   margin-right: -1px;
-
-  padding-left: 5px;
+  display: inline-block;
+  padding-left: 2px;
 }
 
 .productdropdown{
@@ -1177,7 +1177,7 @@ display: block;
   position: absolute;
   height: 41px;
   line-height: 41px;
-  left: 2px;
+  // left: 2px;
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
   // /* width: 80%; 

@@ -238,7 +238,7 @@ input.mat-input-element {
   background: #fff;
   margin-top: 0px !important;
   box-shadow: 0 1px 5px #959595;
-  margin-left: -12px;
+  left:-6%;
   
 }
 
@@ -1659,6 +1659,7 @@ right: -572px;
   font-size: 12.5px;
   color: black;
   border: 0px;
+  text-align: center;
 }
 .IteminputBoxesD {
   width: 100px;
@@ -1669,6 +1670,7 @@ right: -572px;
   font-size: 12.5px;
   color: green;
   border: 0px;
+  text-align: center;
 }
 
 .itemLeft {
@@ -2184,7 +2186,7 @@ table thead, table tbody tr {
 
 
 .txt-right{
-  text-align: right;
+  text-align: center;
   padding-right: 15px;
 }
 

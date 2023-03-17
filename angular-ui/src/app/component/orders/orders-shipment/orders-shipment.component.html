@@ -1,7 +1,7 @@
 <div class="container-fluid mt-5">
     <div class="section shipment">
 <div class="row" style="margin-left: 3px;">
-    <div class="col-md-2 col-lg-2 col-sm-2 custom-bubblesorders-shipment">
+    <div class="col-md-2 col-lg-2 col-sm-2 custom-bubblesorders-shipment  shipmentdropdown">
         <form [formGroup]="myForm" class="dropdown-form">
           <ng-multiselect-dropdown class="dealer dlsrr" name="city" [placeholder]="'Dealer'" formControlName="city"
             [disabled]="disabled" [settings]="dealerSettings" [data]="dealerlist"(onSelect)="DealerorderSelect($event)" (onDeSelect)="DealerDeselect($event)"(onDeSelectAll)="DealerDeselectAll($event)"

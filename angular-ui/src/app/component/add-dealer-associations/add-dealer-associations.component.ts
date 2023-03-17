@@ -310,7 +310,7 @@ export class AddDealerAssociationsComponent implements OnInit {
 
 
   getdealerbasedonGeo() {
-    this.showselectedgeovalue = true;
+     this.showselectedgeovalue = true;
     this.storedNames123 = localStorage.getItem("geoAsso");
     
     this.aboveDefaultGeoOfName =JSON.parse( localStorage.getItem("aboveDefaultGeoOfName")??"")
@@ -738,7 +738,7 @@ export class AddDealerAssociationsComponent implements OnInit {
         if (res.response.result == 'Successfully Added' || res.response.result =='Successfully Updated') {
           this.sharedService.filter('Register click')
           this.dialogRef.close();
-          this.dialog.open(DealerSuccessPopupComponent, { panelClass: 'activeSuccessPop' })
+          this.dialog.open(DealerSuccessPopupComponent, { panelClass: 'activeSuccessPopassocitions' })
         }
         else {
 
@@ -901,6 +901,8 @@ export class AddDealerAssociationsComponent implements OnInit {
 
   selectedValue(value: any) {
     this.screenValue = value;
+    this.showselectedgeovalue = false;
+
   }
 
   // addOrderPromotionList() {

@@ -1,3 +1,7 @@
+::ng-deep .multiSelect .dropdown-list {
+    left: -6%;
+    width: 106%;
+  }
 .dateplaceholder {
     color: rgba(104, 110, 116, 0.75);
     color: grey !important;
@@ -250,6 +254,7 @@ input {
     background: #fff;
     margin-top: 0px !important;
     box-shadow: 0 1px 5px #959595;
+   
 }
 
 ::ng-deep.stts .multiselect-dropdown .dropdown-btn .selected-item {
@@ -417,10 +422,12 @@ input {
     right: -2px; */
 }
 
-::ng-deep.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
-    width: 0px;
-    right: 13px;
-}
+ ::ng-deep.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
+    /* top:-13%; */
+    /* position: absolute; */
+    z-index: 1;
+    right: 0%;
+} 
 
 
 .addU:before {

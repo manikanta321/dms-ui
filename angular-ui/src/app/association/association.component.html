@@ -1,7 +1,7 @@
 
 <div class="association mt-3">
     <div class="row ml-3">
-      <div class="col-md-2 col-lg-2 col-sm-2 associationgeobubbles ">
+      <div class="col-md-2 col-lg-2 col-sm-2 associationgeobubbles dropdownlistadjust ">
           <form [formGroup]="myForm">
             <ng-multiselect-dropdown class="role11" name="city" [placeholder]="''" formControlName="city"
               [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList"
@@ -17,7 +17,7 @@
           </div>
         </div>
 
-        <div class="col-md-2 col-lg-2 col-sm-2 productassociationgeobubbles">
+        <div class="col-md-2 col-lg-2 col-sm-2 productassociationgeobubbles droplistuili">
           <form [formGroup]="myForm1">
             <ng-multiselect-dropdown class="role12-product" name="city" [placeholder]="'Product'" formControlName="city1"
               [disabled]="disabled" [settings]="dropdownSettings2" [data]="ProductListArray"
@@ -28,7 +28,7 @@
           <div class="dropdown-placeholder role12-placeholder">
             <span *ngIf="myForm1.get('city1').value.length == 0">  </span>
             <span *ngIf="myForm1.get('city1').value.length == 1" class="selected-placeholder"> {{myForm1.get('city1').value.length}} Products selected </span>
-            <span *ngIf="myForm1.get('city1').value.length > 1" class="selected-placeholder"> {{myForm1.get('city1').value.length}} Product(s) selected </span>
+            <span *ngIf="myForm1.get('city1').value.length > 1" class="selected-placeholder"> {{myForm1.get('city1').value.length}} Product selected </span>
 
           </div>
         </div>

@@ -3,7 +3,7 @@
 <div class="row orderlistdropdown">
     <div class="col-md-2 col-lg-2 col-sm-2 custom-bubbles "  style="padding-left: 0px;">
         <form [formGroup]="myForm" class="dropdown-form">
-          <ng-multiselect-dropdown class="Dealers dlsr" name="city" [placeholder]="'Dealers'" formControlName="city"
+          <ng-multiselect-dropdown class="Dealers dlsr"  name="city" [placeholder]="'Dealers'" formControlName="city"
             [disabled]="disabled" [settings]="dropdownSettings" [data]="dealerlist"
             (onSelect)="DealerorderSelect($event)" (onDeSelect)="DealerDeselect($event)"(onDeSelectAll)="DealerDeselectAll($event)"
             (onSelectAll)="DealerorderSelectAll($event)">
@@ -18,9 +18,9 @@
         </form>
       </div>
 
-      <div class="col-md-2 col-lg-2 col-sm-2 border  custom-bubbles">
+      <div class="col-md-2 col-lg-2 col-sm-2 border  custom-bubbles multiSelect">
         <form [formGroup]="myForm1" class="dropdown-form">
-          <ng-multiselect-dropdown class="Geography geographybubbles" name="city" [placeholder]="'Geography'" formControlName="geo"
+          <ng-multiselect-dropdown  class="  Geography geographybubbles " name="city" [placeholder]="'Geography'" formControlName="geo"
             [disabled]="disabled" [settings]="dropdownSettings1" [data]="geogropdownlist" (onSelect)="geographyselect($event)"
             (onDeSelect)="geographyDeselect($event)" (onDeSelectAll)="geographyDeselectAll($event)"(onSelectAll)="geographyselectAll($event)">
           </ng-multiselect-dropdown>

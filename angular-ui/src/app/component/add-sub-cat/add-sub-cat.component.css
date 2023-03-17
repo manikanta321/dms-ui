@@ -84,6 +84,7 @@ input {
     border: #000000;
     border-radius: 5px;
     margin-right: 35px;
+    cursor: pointer;
 }
 
 .cancel-btn {
@@ -93,6 +94,7 @@ input {
     height: 43px;
     background: white;
     font-weight: 700;
+    cursor: pointer;
 }
 
 .close-icon {

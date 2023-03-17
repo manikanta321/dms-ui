@@ -10,7 +10,7 @@
                 <div>
                     <div class="row">
                         <div class="col-lg-3">
-                            <label>Target Group<span>*</span></label>
+                            <label >Target Group<span class="astr">*</span></label>
                             <div class="targetdrp">
                                 <ng-select [items]="targetListData" class="searchbtnIcon" id="targetName" name="targetName" required [virtualScroll]="true"
                                   bindLabel="targetGroupName" bindValue="targetGroupId" [searchable]="true" [clearable]="false"
@@ -118,8 +118,9 @@
                             <div  *ngFor="let dealer of dealer.targets;let j=index">
                                 <div class="row finacial-target">
                                     <div class="promotiont2">
-                                        <label>Financial Year<span>*</span></label>
-                                        <select (change)="onSelectFinancialYear($event)" class="form-select select-asso" aria-label=".form-select-lg example" [(ngModel)]="mainadd[0].dealers[i].targets[j].year">
+                                        <label>Financial Year<span class="astr">*</span></label>
+                                        <select (change)="onSelectFinancialYear($event)" class="form-select select-asso" aria-label=".form-select-lg example" [(ngModel)]="mainadd[0].dealers[i].targets[j].year" placeholder="Select Year">
+                                            <option value=""   selected hidden>Select Year</option>
                                             <option value="2019">2019</option>
                                             <option value="2020">2020</option>
                                             <option value="2021">2021</option>
@@ -129,10 +130,10 @@
                                         </select>
                                     </div>
                                     <div class="promotiont2">
-                                        <label>Set Target<span>*</span></label>
+                                        <label>Set Target<span class="astr">*</span></label>
                                         <select (change)="onSelectTarget($event,i,j)" class="form-select select-asso"
-                                            style="width: 150px;" aria-label=".form-select-lg example" [(ngModel)]="mainadd[0].dealers[i].targets[j].setTarget">
-                                           
+                                            style="width: 150px;" aria-label=".form-select-lg example" [(ngModel)]="mainadd[0].dealers[i].targets[j].setTarget" placeholder=" Select Target">
+                                            <option value=""   selected hidden>Select Target</option>
                                             <option value="Monthly" selected>Monthly</option>
                                             <option value="Quaterly">Quaterly</option>
                                             <option value="Annualy">Yearly</option>

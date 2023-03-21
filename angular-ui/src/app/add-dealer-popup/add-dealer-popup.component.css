@@ -3,7 +3,7 @@
 }
 
 .container {
-  min-width: 94vw;
+  min-width: 93vw;
 
 
 }
@@ -922,17 +922,17 @@ span {
 }
 
 .close-icon {
-  left: 99%;
+  left: 98%;
   position: relative;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  top:10px;
+  top:6px;
 }
 
 label {
   /* padding: 2px 0; */
-  font-size: 12px;
+  font-size: 14px;
   margin: 5px;
   font-family: 'Gilroy';
   font-weight: bold;
@@ -1822,7 +1822,7 @@ li {
   overflow: hidden;
   width: 97%;
   position: relative;
-  left: 37px;
+  left: 29px;
 
 }
 

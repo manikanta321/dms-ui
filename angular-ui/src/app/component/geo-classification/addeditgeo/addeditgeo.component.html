@@ -3,7 +3,7 @@
 <div class="container font">
     <mat-icon mat-button class="close-icon" [mat-dialog-close]>close</mat-icon>
     <div class="actv-user text-center">
-        <h1 class="head-text"> {{isEditModal ? 'Edit':'Add'}} {{geoType}}</h1>
+        <h1 class="head-text {{isEditModal ? 'edit-mode' : 'add-mode'}} " > {{isEditModal ? 'Edit':'Add'}} {{geoType}}</h1>
     </div>
     <form #loginForm="ngForm">
     <div>

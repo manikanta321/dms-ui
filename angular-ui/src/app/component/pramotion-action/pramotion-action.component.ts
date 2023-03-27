@@ -143,9 +143,10 @@ export class PramotionActionComponent implements OnInit,  AfterViewInit {
     const config: MatDialogConfig = {
       minWidth: '90vw',      
       height: '610px',
+      autoFocus:false
     };
     this.isOpen = false;
-    this.dialog.open( ViewPromotionPopupComponent, config);
+    this.dialog.open( ViewPromotionPopupComponent,config);
   }
 
   togglePopup() {

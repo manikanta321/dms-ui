@@ -185,14 +185,19 @@ export class AddOrderPromotionlistComponent implements OnInit {
     let formatObj: any = {};
     console.log(this.currentSelectedPromos);
     let promotion = this.currentSelectedPromos.find(x => x.promotionId == productPromotions.productPromotionsId);
-    if (promotion) {
-      let exisistItem = promotion.itemDetails.find(y => y.stockitemid == stockItem.stockitemid);
-      if (exisistItem) {
-        stockItem = JSON.parse(JSON.stringify(exisistItem));
-        stockItem.isProductSelected = true;
-        productPromotions.isShowPromos = true;
-      }
-    }
+   
+    if (promotion){
+     
+       let exisistItem = promotion.itemDetails.find(y => y.stockitemid == stockItem.stockitemid);
+      if (exisistItem){
+       
+         var tempStockItem = JSON.parse(JSON.stringify(exisistItem));
+        tempStockItem.isProductSelected = true;
+        productPromotions.isShowPromos = true; 
+        tempStockItem.productSKUName = stockItem.productSKUName;
+        stockItem = tempStockItem;
+       } 
+  }
 
     formatObj.customerPOProductId = stockItem.customerPOProductId ?? 0;
     formatObj.stockitemid = stockItem.stockitemid;

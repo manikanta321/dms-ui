@@ -103,17 +103,34 @@ export class OrdersReceiptsComponent implements OnInit {
 
     }, 
    
-  {  headerName: "Total Items ", 
-  field:"totalitems",tooltipField:"totalitems", resizable:true,
+  { 
+     headerName: "Total Items In Order ", 
+    // field:"totalitems",
+    //   tooltipField:"totalitems", 
+    resizable:true,
+      field: 'poQty', 
+      tooltipField:"poQty",
+    minWidth:50,
+     type: 'rightAligned'
+  },
   
+          
+      
+        {headerName: "In Shipment",
+         field: 'shipQty',     
+          tooltipField:"shipQty",
+          minWidth:50, resizable:true,
+          type: 'rightAligned',},
+
+        {headerName: "Received",
+         field: 'received',    
+           tooltipField:"received",
+           minWidth:50, resizable:true,
+           type: 'rightAligned',
+          },
+      
   
-          children:[
-        {headerName: "In Order", field: 'poQty',  tooltipField:"poQty",    minWidth:50, resizable:true,type: 'rightAligned'},
-        {headerName: "In Shipment", field: 'shipQty',      tooltipField:"shipQty",minWidth:50, resizable:true,type: 'rightAligned',},
-        {headerName: "Received", field: 'received',      tooltipField:"received",minWidth:50, resizable:true,type: 'rightAligned',},
-      ]
-  
-    },
+    
   //   {  headerName: "In Shipment",
   //     field: 'inshipment',      tooltipField:"inshipment",
   //   },

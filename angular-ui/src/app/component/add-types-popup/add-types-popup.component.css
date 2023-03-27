@@ -4,7 +4,7 @@
     font-weight: 600;
     margin-bottom: 0;
     margin-top: -20px;
-    text-align: left;
+    /* text-align: left; */
     }
     .addtypes1
     {
@@ -13,6 +13,8 @@
     .addtypes2
     {
         font-weight: 600;
+        top: 4px;
+    position: relative;
     }
     .olpass
     {
@@ -33,7 +35,7 @@
      .head-text::after{
         content: "";
         display: block;
-        width: 72%;
+        width: 28%;
         height: 0.5px;
         background: #686E74;
         right: 20px;
@@ -43,14 +45,40 @@
     .head-text::before{
         content: "";
         display: block;
-        width: 94px;
+        width: 28%;
         height: 0.5px;
         background: #686E74;
         left: 20px;
         top: 50%;
         position: absolute;
-        display: none;
+        /* display: none; */
     } 
+    .head-textt{
+        /* text-align: left; */
+        margin-top: -18px;
+        font-weight: 600;
+        font-size: 20px;
+    }
+    .head-textt::before {
+        content: "";
+        display: block;
+        width: 28%;
+        height: 0.5px;
+        background: #686E74;
+        left: 20px;
+        top: 50%;
+        position: absolute;
+    }
+    .head-textt::after {
+        content: "";
+        display: block;
+        width: 28%;
+        height: 0.5px;
+        background: #686E74;
+        right: 20px;
+        top: 50%;
+        position: absolute;
+    }
     input{
         padding: 5px 12px;
         margin-bottom: 10px;

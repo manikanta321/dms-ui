@@ -4,6 +4,9 @@
     margin-bottom: 0;
     margin-top: -20px;
     font-family: 'Gilroy';
+    /* text-align: left; */
+}
+.head-text.Edit{
     text-align: left;
 }
 
@@ -26,7 +29,7 @@
 .head-text::after {
     content: "";
     display: block;
-    width: 62%;
+     width: 25%; 
     height: 0.5px;
     background: #686E74;
     right: 20px;
@@ -37,14 +40,45 @@
 .head-text::before {
     content: "";
     display: block;
-    width: 94px;
+     width: 25%; 
     height: 0.5px;
     background: #686E74;
     left: 20px;
     top: 50%;
     position: absolute;
-    display: none;
+     
 }
+.edit-mode
+{
+    text-align: left;
+}
+
+.edit-mode::before{
+
+     content: "";
+     display: none;
+     width: 94px;
+     height: 0.5px;
+    background: #686E74;
+   left: 20px;
+    top: 50%;
+     position: absolute;
+      }
+    
+    .edit-mode::after {
+    
+    content: "";
+     display: block;
+     width: 60%;
+    height: 0.5px;
+     background: #686E74;
+     right: 20px;
+     top: 50%;
+     position: absolute;
+    
+    }
+
+
 
 input {
     padding: 5px 12px;

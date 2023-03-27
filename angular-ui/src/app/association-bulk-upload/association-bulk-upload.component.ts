@@ -12,6 +12,7 @@ import { OrderReceiptsBulkUploadComponent } from '../orders-receipts/order-recei
 })
 export class AssociationBulkUploadComponent implements OnInit {
   showTable:boolean = false;
+  files:any=[];
   rowsTotal:boolean = false;
   rowsemptyTotal:boolean=false;
   totalRows:any;
@@ -37,7 +38,7 @@ export class AssociationBulkUploadComponent implements OnInit {
   zeroVal:boolean = false; 
   duplicate:boolean = false;  
   incorrectData:boolean = false;
-
+  uploadedTextShow: boolean = false;
   constructor(private salesService:SalesServicesService,
     private otherMasterService:OtherMasterService,
     private dialogRef: MatDialogRef<AssociationBulkUploadComponent>) { }
@@ -48,6 +49,16 @@ export class AssociationBulkUploadComponent implements OnInit {
   }
 
   onFileChange(event: any) {
+    // Iterate over selected files
+    for (let file of event.target.files) {
+      // Append to a list
+      this.files.push({
+        name: file.name,
+        type: file.type
+        // Other specs
+      });
+    }
+  this.uploadedTextShow=true;
     /* wire up file reader */
     const target: DataTransfer = <DataTransfer>(event.target);
     if (target.files.length !== 1) {
@@ -98,6 +109,7 @@ export class AssociationBulkUploadComponent implements OnInit {
         this.batchId = SalesUploadData.map(({ batchId }) => batchId);
       })
     };
+    
  }
 
   expandTotalRows(){

@@ -187,22 +187,46 @@
 
           <div class="row" *ngIf="screenValue == 1">
             <div class="col-md-6 dlr-promotiont1">
-              <form [formGroup]="myForm" class="dropdown-form-dealer">
-                <ng-multiselect-dropdown class="promo_1" [placeholder]="'Dealers'" formControlName="city"
+              <!-- <form [formGroup]="myForm" class="dropdown-form-dealer">
+                <ng-multiselect-dropdown class="promo_1" [placeholder]="''" formControlName="city" name="city"
                   [disabled]="disabled" [settings]="dropdownSettings3" [data]="dealersArray"
                   (onSelect)="onDealerSelect($event)" (onDeSelect)="onDealerDeSelect($event)" (onDeSelectAll)="onItemDealerDeSelectOrAll($event)" (onSelectAll)="onItemDealerSelectOrAll($event)">
-                </ng-multiselect-dropdown>
+                </ng-multiselect-dropdown> -->
 
-                <div class="dropdown-placeholder ">
+                <!-- <div class="dropdown-placeholder ">
                   <span *ngIf="myFormDlr.get('city').value.length == 0" style="color: black">Search & select Dealers
                   </span>
-                  <!-- <span *ngIf="myFormDlr.get('city').value.length == 1" class="selected-placeholder">
+                  <span *ngIf="myFormDlr.get('city').value.length == 1" class="selected-placeholder">
                     {{ myFormDlr.get("city").value.length }} Dealers selected
                   </span>
                   <span *ngIf="myFormDlr.get('city').value.length > 1" class="selected-placeholder">
                     {{ myFormDlr.get("city").value.length }} Dealers selected
-                  </span> -->
+                  </span>
+                </div> -->
+                <!-- <div  id="dp" class="dropdown-placeholder role-placeholder">
+                  <span *ngIf="myFormDlr.get('city').value.length == 0" style="color: black"> Search & select Dealers </span>
+                  <span *ngIf="myFormDlr.get('city').value.length == 1" class="selected-placeholder"> {{myFormDlr.get('city').value.length}} Dealers selected </span>
+                  <span *ngIf="myFormDlr.get('city').value.length > 1" class="selected-placeholder"> {{myFormDlr.get('city').value.length}} Dealers selected </span>
+        
                 </div>
+              </form> -->
+              <form [formGroup]="myFormDealer" class="dropdown-form-dealer">
+                <ng-multiselect-dropdown class="promo_1-placeholder promo_1" name="city1" [placeholder]="'Category'" formControlName="dealer"
+                  [disabled]="disabled" [settings]="dropdownSettings3" [data]="dealersArray"
+                  (onSelect)="onDealerSelect($event)" (onDeSelect)="onDealerDeSelect($event)"
+                  (onDeSelectAll)="onItemDealerDeSelectOrAll($event)" (onSelectAll)="onItemDealerSelectOrAll($event)">
+                </ng-multiselect-dropdown>
+
+
+                <div class="dropdown-placeholder ">
+                  <span *ngIf="myFormDealer.get('dealer').value.length == 0" style="color: black;">Search & select Dealers</span>
+                  <span *ngIf="myFormDealer.get('dealer').value.length == 1" class="selected-placeholder">
+                    {{myFormDealer.get('dealer').value.length}} dealers selected </span>
+                  <span *ngIf="myFormDealer.get('dealer').value.length > 1" class="selected-placeholder">
+                    {{myFormDealer.get('dealer').value.length}} dealers selected  </span>
+
+                </div>
+
               </form>
             </div>
             <!-- <div class="col-md-6 promotiont1">
@@ -534,7 +558,7 @@
                         <select class="form-select select-asso" aria-label=".form-select-lg example"
                           [(ngModel)]="selectedGeoField">
                           <option selected hidden>Select</option>
-                          <option value="" disabled selected hidden>Select Feild</option>
+                          <option value="" disabled selected hidden>Select Field</option>
                           <option value="mrp"> MRP</option>
                           <option value="marginPercent"> Margin Percent</option>
                           <option value="maxOrderQty"> Max Order Qty</option>

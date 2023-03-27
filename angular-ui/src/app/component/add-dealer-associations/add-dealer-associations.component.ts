@@ -151,7 +151,7 @@ export class AddDealerAssociationsComponent implements OnInit {
     'Somebody Sales',
   ];
   screenValue: any = 0;
-  myFormDlr: any = FormGroup;
+  myFormDealer: any = FormGroup;
   myForm: any = FormGroup;
   myForm1: any = FormGroup;
   myForm2: any = FormGroup;
@@ -258,8 +258,8 @@ export class AddDealerAssociationsComponent implements OnInit {
       itemsShowLimit: 1,
       allowSearchFilter: true
     }
-    this.myFormDlr = this.fb.group({
-      city: [this.selectedItems],
+    this.myFormDealer = this.fb.group({
+      dealer: [this.selectedItems],
     });
     this.myForm = this.fb.group({
       city1: [this.selectedItems],

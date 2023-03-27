@@ -426,3 +426,18 @@
     .expandDivalign{
         margin-top: -41px;
     }
+    .uploadedText{
+      font-size: 14px;
+     position: relative;
+     top: 82px;
+    left:61px;
+     color: black;
+     /* font-weight: 500; */
+     }
+  .uploadedTexttt{
+     position: relative;
+     top: 69px;
+     left: 95px;
+     font-size: 14px;
+  }
+  

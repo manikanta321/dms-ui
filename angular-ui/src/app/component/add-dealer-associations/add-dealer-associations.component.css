@@ -474,11 +474,12 @@ input.form-check-input1 {
     color: #006466 !important;
     font-size: 12px;
     font-weight: 600;
+    display: none;
   }
-  ::ng-deep.promo1 .multiselect-dropdown .dropdown-btn .selected-item {
+  ::ng-deep.promo_1-placeholder .multiselect-dropdown .dropdown-btn .selected-item {
       background: #006466 !important;  
      
-    
+    display: none;
     right: 0% !important;
     color:white !important;
   }
@@ -536,6 +537,7 @@ input.form-check-input1 {
     position: absolute !important;
     right: 20px !important;
     bottom: 10px;
+    display: none;
 }
 .searchInput1{
     width: 130%;
@@ -1725,8 +1727,10 @@ width: 100%;
    background: #00187A !important; 
    height: fit-content;
   right: 3% !important;
+  /* display: none; */
   
 }
+
 
 .subCategoryy-placeholder.dropdown-placeholder .selected-placeholder {
   color: #0C5A3E !important;
@@ -1851,6 +1855,7 @@ width: 100%;
   padding-left: 7px;
   padding-top: 1px;
   text-align: center;
+  display: none;
   display: none;
 } 
 

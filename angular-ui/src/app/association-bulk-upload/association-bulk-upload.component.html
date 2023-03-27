@@ -14,12 +14,19 @@
             <h4 class="up-doc"> Upload document</h4>
         </div>
         <label class=" row upload-div">
-            <input  type="file"  (change)="onFileChange($event)" style="display: none;">
+            <input  type="file"  (change)="onFileChange($event)" style="display:none">
+            <!-- <span>Document is successfully uploaded</span> -->
             <img src="../../../assets/img/upload-icon.png"  class="upload-icon" alt="Upload icon">
-            <div class="row">
+            <div class="row" *ngIf="uploadedTextShow">
+                <div  *ngFor="let file of files; let i=index">
+                   <h6 class="uploadedText"> Document is <b>{{file.name}} </b><br></h6>
+                   <h6 class="uploadedTexttt"> is successfully Uploaded!</h6>
+                   </div>
+            </div>
+            <div class="row" *ngIf="!uploadedTextShow"> 
                 <h6 class="upload-doc txt-1">Upload the document</h6>
             </div>
-            <div class="row">
+            <div class="row" *ngIf="!uploadedTextShow">
                 <h6 class="upload-doc txt-2">after adding all required information related to association</h6>
             </div>
        

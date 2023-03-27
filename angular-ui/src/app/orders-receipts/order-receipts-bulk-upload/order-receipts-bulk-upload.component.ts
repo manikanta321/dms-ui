@@ -17,6 +17,7 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
   emptyRows:any;
   errorfreeRows:any =[];
   uploadedData:any = [];
+  files:any =[];
   receiptsUploadList:any = [];
   TotalRows:any = [];
   EmptyRows:any=[];
@@ -37,6 +38,7 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
   duplicate:boolean = false;  
   incorrectData:boolean = false;
   ReceiptOrTargetUpload:boolean=false;
+  uploadedTextShow:boolean=false;
   constructor(private salesService:SalesServicesService,
     private otherMasterService:OtherMasterService,
     private dialogRef: MatDialogRef<OrderReceiptsBulkUploadComponent>,) { }
@@ -55,6 +57,16 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
   }
 
   onFileChange(event: any) {
+    // Iterate over selected files
+   for (let file of event.target.files) {
+    // Append to a list
+    this.files.push({
+      name: file.name,
+      type: file.type
+      // Other specs
+    });
+  }
+this.uploadedTextShow=true;
     /* wire up file reader */
     const target: DataTransfer = <DataTransfer>(event.target);
     if (target.files.length !== 1) {

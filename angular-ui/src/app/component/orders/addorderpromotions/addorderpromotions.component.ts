@@ -201,6 +201,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
         }
         this.onItemSelectdealers(obj)
+
         this.dealerDisabled = true
 
       })
@@ -419,6 +420,7 @@ export class AddorderpromotionsComponent implements OnInit {
     localStorage.setItem("dealerid", this.customerId);
     localStorage.removeItem("geographyId");
     this.geographyId = null;
+    this.AddOrderPromotionData=[];
     this.orders.GetGeoGrapydropdownList(this.customerId).subscribe((res) => {
       let GeoGrapydropdownList = res.response;
       console.log(GeoGrapydropdownList, "GeoGrapydropdownList")
@@ -1244,13 +1246,10 @@ export class AddorderpromotionsComponent implements OnInit {
         let tempObj = JSON.parse(JSON.stringify(promoObj));
         let previousObj = copyItemsData.find(x => x.promotionId == tempObj.promotionId);
         if (previousObj) {
-
           tempObj.itemDetails.map(x => {
             let previousValue = previousObj.itemDetails.find(y => y.stockitemid == x.stockitemid);
             if (previousValue) {
               x.customerPOProductId = previousValue.customerPOProductId;
-
-
             }
 
           })

@@ -210,6 +210,7 @@ import { AddGeolistShippingPopupComponent } from './add-geolist-shipping-popup/a
 import { EditProfilePopupComponent } from './component/edit-profile-popup/edit-profile-popup.component';
 import { AddSalesSuccessComponent } from './component/sales-list/sales-inventory/add-sales-popup/add-sales-success/add-sales-success.component';
 import { AssociationBulkUploadComponent } from './association-bulk-upload/association-bulk-upload.component';
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
 
 
 @NgModule({
@@ -539,6 +540,7 @@ import { AssociationBulkUploadComponent } from './association-bulk-upload/associ
     MatPaginatorModule,
     MatTabsModule,
     MatCheckboxModule,
+    MatMomentDateModule,
     NgSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,

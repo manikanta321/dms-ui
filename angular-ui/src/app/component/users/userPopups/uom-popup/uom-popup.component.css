@@ -8,27 +8,27 @@ width: 500px;
 }
 .name
 {
-    font-family: 'Gilroy-Bold';
+    font-family: 'Gilroy-Medium';
 font-size: 17px;
 letter-spacing: 0.2px;
-font-weight: 600;
+/* font-weight: 600; */
 
 color: #000000;
 }
 .dc
 {
     
-    font-family: 'Gilroy-Bold';
+    font-family: 'Gilroy-Medium';
 font-size: 17px;
 letter-spacing: 0.2px;
-font-weight: 600;
+/* font-weight: 600; */
 
 color: #000000;
 }
 
 .adduom{
  position: relative; 
- font-weight: bold;
+ font-family: 'Gilroy-Bold';
  font-size: 20px;
  color: black;
  bottom: 36px;
@@ -99,6 +99,7 @@ span{
    height: 48px;
    margin-left: 16px;
    width: 94%;
+   font-family: 'Gilroy-SemiBold';
 }
 .close-icon{
     left: 102%;
@@ -106,6 +107,7 @@ span{
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
+    
 }
 .requiredFF{
     position: relative;

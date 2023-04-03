@@ -1013,3 +1013,109 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   padding: 10px 20px;
 } 
 
+
+
+/* Font Family */
+
+
+
+@font-face {
+  font-family: 'Gilroy-Black';
+  src: url('../src/assets/fonts/gilroy/Gilroy-Black.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-BlackItalic';
+  src: url('../src/assets/fonts/gilroy/Gilroy-BlackItalic.ttf')  format('truetype');
+}
+@font-face {
+  font-family: 'Gilroy-Bold';
+  src: url('../src/assets/fonts/gilroy/Gilroy-Bold.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Bolditalic';
+  src: url('../src/assets/fonts/gilroy/Gilroy-BoldItalic.ttf')  format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Gilroy-ExtraBold';
+  src: url('../src/assets/fonts/gilroy/Gilroy-ExtraBold.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-ExtraBolditalic';
+  src: url('../src/assets/fonts/gilroy/Gilroy-ExtraBoldItalic.ttf')  format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Gilroy-Heavy';
+  src: url('../src/assets/fonts/gilroy/Gilroy-Heavy.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Heavyitalic';
+  src: url('../src/assets/fonts/gilroy/Gilroy-HeavyItalic.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Light';
+  src: url('../src/assets/fonts/gilroy/Gilroy-Light.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Lightitalic';
+  src: url('../src/assets/fonts/gilroy/Gilroy-LightItalic.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Medium';
+  src: url('../src/assets/fonts/gilroy/Gilroy-Medium.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Mediumitalic';
+  src: url('../src/assets/fonts/gilroy/Gilroy-MediumItalic.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Regular';
+  src: url('../src/assets/fonts/gilroy/Gilroy-Regular.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Regularitalic';
+  src: url('../src/assets/fonts/gilroy/Gilroy-RegularItalic.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-SemiBold';
+  src: url('../src/assets/fonts/gilroy/Gilroy-SemiBold.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-SemiBolditalic';
+  src: url('../src/assets/fonts/gilroy/Gilroy-SemiBoldItalic.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Thin';
+  src: url('../src/assets/fonts/gilroy/Gilroy-Thin.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-Thinitalic';
+  src: url('../src/assets/fonts/gilroy/Gilroy-ThinItalic.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Gilroy-UltraLight';
+  src: url('../src/assets/fonts/gilroy/Gilroy-UltraLight.ttf')  format('truetype');
+}
+
+ @font-face {
+  font-family: 'Gilroy-UltraLightitalic';
+  src:url('../src/assets/fonts/gilroy/Gilroy-UltraLightItalic.ttf')  format('truetype');
+} 

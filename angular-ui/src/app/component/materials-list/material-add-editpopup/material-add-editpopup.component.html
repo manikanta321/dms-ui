@@ -423,7 +423,7 @@
                               <!-- [(ngModel)]="bussinessIdentifiers" -->
                               <mat-chip #businessdata="matChip" [value]="data"
                                 *ngFor="let data of item.productCustomeIdentifiers; let i = index" [selected]="isSelectedBusiness(data)"
-                                (focus)="selectBusinessProduct(data)" class="cold">
+                                (click)="selectBusinessProduct(data)" class="cold">
                                 <!-- <mat-icon *ngIf="businessdata.selected">check</mat-icon> -->
                                 {{data.productCustomName}}
                               </mat-chip>
@@ -664,7 +664,7 @@
                     <mat-chip-list selectable multiple class="mchip">
                       <mat-chip [value]="data" #identifierId="matChip" *ngFor="let data of geoGraphyIdentifierList"
                         [selected]="isSelectedGeographyIdentifer(data.geographyIdentiferid)"
-                        (focus)="selectGeographyIdentifier(data.geographyIdentiferid)" class="cold">
+                        (click)="selectGeographyIdentifier(data.geographyIdentiferid)" class="cold">
                         {{data.geographyIdentifierName}}
                       </mat-chip>
                     </mat-chip-list>

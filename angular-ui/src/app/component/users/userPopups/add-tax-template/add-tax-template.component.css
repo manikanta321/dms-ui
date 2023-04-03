@@ -1,7 +1,6 @@
 .taxitems
 {
-    font-family: 'Gilroy';
-    font-weight: 500;
+    font-family: 'Gilroy-Light';
     position: relative;
     left: 17px;
     
@@ -14,8 +13,7 @@
 .Optionsin
 {
     
-    font-family: 'Gilroy';
-    font-weight: 500; 
+    font-family: 'Gilroy-Light';
     position: relative;
     left: 17px;
     
@@ -23,8 +21,7 @@
 }
 .formula
 {
-    font-family: 'Gilroy';
-    font-weight: 500;
+    font-family: 'Gilroy-Light';
     position: relative;
     left: 17px;
 }
@@ -32,6 +29,12 @@
 {
     
     margin-left: 8px;
+    font-family: 'Gilroy-Medium';
+}
+.fontused
+{
+    font-family: 'Gilroy-Medium';
+
 }
 .scroll{
     overflow-y: scroll;
@@ -69,8 +72,7 @@
 
 .addU {
     position: relative;
-    /* font-family: 'Gilroy-Bold';  */
-    font-weight: bold;
+ font-family: 'Gilroy-Bold';  
     font-size: 20px;
 }
 
@@ -182,7 +184,7 @@ color: white;
  height: 43px;
  border-radius: 10px;
  margin-right: 10px;
- font-family: 'Gilroy';
+ font-family: 'Gilroy-Bold';
 }
 .E-cancelBtn{
     background: #fff;
@@ -210,7 +212,7 @@ color: white;
 }
 .minus-icon{
  background: red;
- padding-left: 3px;
+ padding-left: 6px;
   border-radius: 16px;
   cursor: pointer;
   color:#f5f5f5;
@@ -231,7 +233,4 @@ color: white;
 
 td{
     padding: 10px;
-}
-.font{
-    font-family: 'Gilroy';
 }

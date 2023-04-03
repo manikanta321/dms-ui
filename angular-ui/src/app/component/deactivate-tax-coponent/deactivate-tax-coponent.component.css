@@ -3,7 +3,7 @@
     font-size: 20px;
     font-weight: 600;
     margin-top: -27px;
-    font-family: 'Gilroy';
+    font-family: 'Gilroy-Bold';
     }
     /* .deact
     {
@@ -45,10 +45,12 @@
 
     .auswd1
     {
-        font-family: 'Gilroy-Medium';
+        font-family: 'Gilroy';
 
         color: #36454f;
 
         font-size: 16px;
     
     }
+
+    

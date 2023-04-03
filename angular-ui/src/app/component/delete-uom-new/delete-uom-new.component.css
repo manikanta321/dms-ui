@@ -1,7 +1,7 @@
 .head-text {
     font-size: 20px;
-    font-weight: 600;
-    font-family: 'Gilroy';
+    /* font-weight: 600; */
+    font-family: 'Gilroy-Bold';
 }
 
 .undo {
@@ -47,9 +47,7 @@
 
 .deleted1
 {
-    font-family: 'Gilroy-Medium';
-
-        color: #36454f;
-
-        font-size: 16px;
+       font-family: 'Gilroy-Medium';
+       color: #36454f;
+       font-size: 16px;
 }

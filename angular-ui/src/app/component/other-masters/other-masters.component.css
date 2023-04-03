@@ -65,7 +65,7 @@ mat-tab-group{
     height: 100vh;
 }
 .header-text{
-    font-family:  'Gilroy';
+    font-family:  'Gilroy-Bold';
     font-size: 30px;
     line-height: 41px;
     display: flex;

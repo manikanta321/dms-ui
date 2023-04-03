@@ -9,19 +9,18 @@
 
 .INFOR
 {
-    font-family: 'Gilroy';
+    font-family: 'Gilroy-Light';
 font-size: 21px;
 line-height: 23px;
 color: #000000;
-font-weight: 300;
+
 }
 .conver
 {
-    font-family: 'Gilroy';
 font-size: 21px;
 line-height: 23px;
 align-items: center;
-font-weight: 300;
+font-family: 'Gilroy-Light';
 color: #000000;
 }
 .name1
@@ -30,7 +29,6 @@ color: #000000;
 font-size: 16px;
 line-height: 15px;
 align-items: center;
-font-weight: 400;
 
 color: #000000;
 }
@@ -40,7 +38,7 @@ color: #000000;
     font-size: 16px;
     line-height: 15px;
     align-items: center;
-    font-weight: 400;
+    /* font-weight: 400; */
     
     color: #000000;
 }
@@ -71,9 +69,11 @@ color: #000000;
 
 }
 
-.font {
+   .font {
     font-family: 'Gilroy';
-}
+}   
+
+ 
 
 .head-t h3 {
     color: #000000;
@@ -84,8 +84,8 @@ color: #000000;
 
 .addU {
     position: relative;
-    /* font-family: 'Gilroy-Bold';  */
-    font-weight: bold;
+    font-family: 'Gilroy-Bold'; 
+
     font-size: 20px;
 }
 
@@ -119,8 +119,10 @@ color: #000000;
     width: 250px;
     font-size: 14px;
     outline: none !important;
-    font-weight: lighter;
+    /* font-weight: lighter; */
     color: #000000;
+    font-family: 'Gilroy-Bold';
+    
   
 }
 .divAlign{
@@ -172,9 +174,11 @@ mat-form-field {
 }
 .imputtext{
     height: 43px;
+    
 }
 .defaultCurrLabel{
     position: relative;
     left: 300px;
     bottom: 36px;
+    font-family: 'Gilroy-Medium';
 }

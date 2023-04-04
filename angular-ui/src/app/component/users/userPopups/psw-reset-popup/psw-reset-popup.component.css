@@ -1,9 +1,15 @@
+label
+{
+    font-family: 'Gilroy-Medium';
+}
+
 
 .head-text{
 font-size: 20px;
 font-weight: 600;
 margin-bottom: 0;
 margin-top: -20px;
+font-family: 'Gilroy-Bold';
 }
 .olpass
 {
@@ -107,6 +113,10 @@ mat-icon {
   }
   .repsrd{
     margin-top: 6px;
+  }
+  .new
+  {
+     font-family: 'Gilroy-Light';
   }
 
  

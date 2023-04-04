@@ -13,6 +13,10 @@ align-items: center;
 
 color: #000000;
 }
+.una_me
+{
+    font-family: 'Gilroy-Medium';
+}
 .rs
 {
     font-family: 'Gilroy-Light';
@@ -49,9 +53,9 @@ color: #000000;
 
 }
 
-.font {
+/* .font {
     font-family: 'Gilroy';
-}
+} */
 
 .head-t h3 {
     color: #000000;
@@ -62,8 +66,7 @@ color: #000000;
 
 .addU {
     position: relative;
-    /* font-family: 'Gilroy-Bold';  */
-    font-weight: bold;
+     font-family: 'Gilroy-Bold';
     font-size: 20px;
 }
 
@@ -131,6 +134,7 @@ label {
     /* padding: 2px 0; */
     font-size: 14px;
     margin: 5px;
+    font-family: 'Gilroy-Medium';
 }
 
 mat-form-field {

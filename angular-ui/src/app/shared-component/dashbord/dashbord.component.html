@@ -6,8 +6,139 @@
     </mat-sidenav>
     <mat-sidenav-content>
         <div class="content mat-elevation-z8">
-            dashboard is working
+            <div class="row">
+                <h2 class="dashboardHeading">Dashboard</h2>
+            </div>
+           <div class="row">
+            <div class="col-md-2 col-lg-2 col-sm-2">
+                <form [formGroup]="myForm" class="dropdown-form">
+                    <ng-multiselect-dropdown class="promo" formControlName="city1"
+                      [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList" (onSelect)="onItemSelect($event)"
+                      (onDeSelect)="onItemDeSelect($event)" (onDeSelectAll)="onItemDeSelectOrAll($event)"
+                      (onSelectAll)="onItemSelectOrAll($event)">
+                    </ng-multiselect-dropdown>
+        
+                           <div class="dropdown-placeholder promo-placeholder">
+                      <span *ngIf="myForm.get('city1').value.length == 0"> Geography </span>
+                      <span *ngIf="myForm.get('city1').value.length == 1" class="selected-placeholder">
+                        {{myForm.get('city1').value.length}} Geography selected </span>
+                      <span *ngIf="myForm.get('city1').value.length > 1" class="selected-placeholder">
+                        {{myForm.get('city1').value.length}} Geographies selected </span>
+        
+                    </div>
+                  </form>
+            </div>
+            <div class="col-md-2 col-lg-2 col-sm-2">
+                <form [formGroup]="myForms" class="dropdown-form">
+                    <ng-multiselect-dropdown class="product" name="citys" [placeholder]="'Dealer'" formControlName="city2"
+                      [disabled]="disabled" [settings]="dropdownSettings1" [data]="productLisst"
+                      (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)"
+                      (onDeSelectAll)="onItemDeSelectOrAllProduct($event)" (onSelectAll)="onItemSelectOrAllProduct($event)">
+                    </ng-multiselect-dropdown>
+        
+                    <div class="dropdown-placeholder product-placeholder">
+                      <span *ngIf="myForms.get('city2').value.length == 0">Dealer </span>
+                      <span *ngIf="myForms.get('city2').value.length == 1" class="selected-placeholder">
+                        {{myForms.get('city2').value.length}} Dealers selected </span>
+                      <span *ngIf="myForms.get('city2').value.length > 1" class="selected-placeholder">
+                        {{myForms.get('city2').value.length}} Dealers selected </span>
+        
+                    </div>
+                  </form>
+            </div>
+            <div class="col-md-2 col-lg-2 col-sm-2">
+                <form [formGroup]="myForms2" class="dropdown-form">
+                    <ng-multiselect-dropdown class="geog" name="citys" [placeholder]="'Category'" formControlName="city3"
+                      [disabled]="disabled" [settings]="dropdownSettings2" [data]="geoList" (onSelect)="onGeoSelect($event)"
+                      (onDeSelect)="onGeoDeSelect($event)" (onDeSelectAll)="onItemDeSelectOrAllGeo($event)"
+                      (onSelectAll)="onItemSelectOrAllGeo($event)">
+                    </ng-multiselect-dropdown>
+                    <div class="dropdown-placeholder geog-placeholder">
+                      <span *ngIf="myForms2.get('city3').value.length == 0">Category </span>
+                      <span *ngIf="myForms2.get('city3').value.length == 1" class="selected-placeholder">
+                        {{myForms2.get('city3').value.length}} Categories selected </span>
+                      <span *ngIf="myForms2.get('city3').value.length > 1" class="selected-placeholder">
+                        {{myForms2.get('city3').value.length}} Categories selected </span>
+        
+                    </div>
+                  </form>
+            </div>
+            <div class="col-md-2 col-lg-2 col-sm-2">
+                <form [formGroup]="myForms4" class="dropdown-formdealer">
+                    <ng-multiselect-dropdown class="dealr" name="citys" [placeholder]="'Group'" formControlName="city5"
+                      [disabled]="disabled" [settings]="dropdownSettings4" [data]="dealerListArray"
+                      (onSelect)="onItemDealerSelect($event)" (onDeSelect)="onItemDealerDeSelect($event)"
+                      (onDeSelectAll)="onItemDealerDeSelectOrAll($event)" (onSelectAll)="onItemDealerSelectOrAll($event)">
+                    </ng-multiselect-dropdown>
+                 
+                  <div class="dropdown-placeholder dealr-placeholder">
+                    <span *ngIf="myForms4.get('city5').value.length == 0"> Group </span>
+                    <span *ngIf="myForms4.get('city5').value.length == 1" class="selected-placeholder">
+                      {{myForms4.get('city5').value.length}} Group selected </span>
+                    <span *ngIf="myForms4.get('city5').value.length > 1" class="selected-placeholder">
+                      {{myForms4.get('city5').value.length}} Group(s) selected </span>
+        
+                  </div>
+                </form>
+            </div>
+            <div class="col-md-2 col-lg-2 col-sm-2">
+                <form [formGroup]="myForms3" class="dropdown-form">
+                    <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'# of product'" formControlName="city4"
+                      [disabled]="disabled" [settings]="dropdownSettings3" [data]="toppingList1"
+                      (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
+                      (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
+                    </ng-multiselect-dropdown>
+                    <div class="dropdown-placeholder stts-placeholder">
+                      <span *ngIf="myForms3.get('city4').value.length == 0"># of product </span>
+                      <span *ngIf="myForms3.get('city4').value.length == 1" class="selected-placeholder">
+                        {{myForms3.get('city4').value.length}} # of product selected </span>
+                      <span *ngIf="myForms3.get('city4').value.length > 1" class="selected-placeholder">
+                        {{myForms3.get('city4').value.length}} # of product selected </span>
+        
+                    </div>
+                  </form>
+            </div>
+            <div class="col-md-1 col-lg-2 col-sm-1">
+                <div class="ref"><img class="refresh" src="assets/img/Vector.png" (click)="refresh()" alt="refresh" style="margin-left: 1px;"></div>
+            </div>
+           </div>
+                      <br>
+                      <div class="col-md-4 mt-3 mb-4" style="margin-left: 72%;margin-bottom: 10px">
+                        <div class="row">
+                          <div class="col-md-8">
+                            <div class="searchBox d-flex">
+                              <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+                                (keyup)="onSearchChange($event)" placeholder="Type & search for anything">
+                              <button class="searchButton" href="#">
+                                <i class="material-icons">
+                                  search
+                                </i>
+                              </button>
+                              <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+                            </div>
+                          </div>
+                             </div>
+                      </div>
+           <div class="row"></div>
+           
+            <ag-grid-angular id="gridContainer"
+            style=" height: 390px;border-radius: 20px;background-color: white;font-family: Gilroy;margin-left: 20px;margin-top: -20px;width: 97%;"
+            class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
+            [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
+            [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
+            (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
+            (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+            (bodyScroll)="handleScroll($event)"></ag-grid-angular>
+          
+          <div class="pagination">
+          <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
+            class="pagination-cls">{{rowData5.length}}</span>
+          </div>
+          <br>
+               <!-- <div class="line" [chart]="'linechart">
+
+               </div>  -->
+          
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
-

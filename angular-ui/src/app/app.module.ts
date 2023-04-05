@@ -211,7 +211,8 @@ import { EditProfilePopupComponent } from './component/edit-profile-popup/edit-p
 import { AddSalesSuccessComponent } from './component/sales-list/sales-inventory/add-sales-popup/add-sales-success/add-sales-success.component';
 import { AssociationBulkUploadComponent } from './association-bulk-upload/association-bulk-upload.component';
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
-
+import { ChartscomponentComponent } from './chartscomponent/chartscomponent.component';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 @NgModule({
   declarations: [
@@ -513,12 +514,14 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
           AddGeolistShippingPopupComponent,
           EditProfilePopupComponent,
           AddSalesSuccessComponent,
-          AssociationBulkUploadComponent
+          AssociationBulkUploadComponent,
+          ChartscomponentComponent
           
   ],
   imports: [
     Ng2SearchPipeModule,
     MatTooltipModule,
+    HighchartsChartModule,
     FormsModule,
     BrowserModule,
     AppRoutingModule,

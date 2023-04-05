@@ -20,15 +20,16 @@
 
 }
 
-.font {
-    font-family: 'Gilroy';
-}
+ .font {
+    font-family: 'Gilroy-Medium';
+} 
 
 .head-t h3 {
     color: #000000;
     text-align: center;
     margin-top: -18px;
     margin-bottom: 2px;
+    font-family: 'Gilroy-Bold';
 }
 
 .addU {
@@ -82,12 +83,18 @@ span {
     position: relative;
     font-size: 15px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 label {
     /* padding: 2px 0; */
     font-size: 14px;
     margin: 5px;
+    font-family: 'Gilroy-Medium';
+}
+.fontfamily
+{
+    font-family: 'Gilroy-Medium';  
 }
 
 mat-form-field {

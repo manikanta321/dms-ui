@@ -272,10 +272,10 @@
   .addU:after {
     content: "";
     display: block;
-    width: 300px;
+    width: 40%;
     height: 2px;
     background: #686E74;
-    right: 111px;
+    right: 1%;
     top: 50%;
     position: absolute;
   }
@@ -283,7 +283,7 @@
   .addU:before {
     content: "";
     display: block;
-    width: 300px;
+    width: 40%;
     height: 2px;
     background: #686E74;
     left: 0;

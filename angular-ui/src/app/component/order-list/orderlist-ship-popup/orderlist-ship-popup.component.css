@@ -317,10 +317,10 @@
 .addU:after {
   content: "";
   display: block;
-  width: 300px;
+  width: 40%;
   height: 2px;
   background: #686E74;
-  right: 110px;
+  right: 2%;
   top: 50%;
   position: absolute;
 }
@@ -328,10 +328,10 @@
 .addU:before {
   content: "";
   display: block;
-  width: 300px;
+  width: 40%;
   height: 2px;
   background: #686E74;
-  left: 0;
+  left: 2%;
   top: 50%;
   position: absolute;
 }
@@ -1426,7 +1426,7 @@ height: 5px;
 }
 
 .dispatchComments {
-  width: 1332px;
+  width: 110%;
   height: 73px;
   padding-bottom: 45px;
   padding-left: 7px;
@@ -1524,6 +1524,8 @@ th{
 ::ng-deep.promotion-datepicker .mat-form-field-appearance-legacy .mat-form-field-infix {
   padding: 0.4375em 0;
   margin-top: -4px !important;
+  left: 4%;
+  color: #000000 !important;
 }
 .placeh-align {
   border: 0.5px solid #000000;
@@ -1560,7 +1562,7 @@ th{
   font-weight: 500;
   position: relative;
   top: 25px;
-  right: 15%;
+  right: 100px;
 }
 .DescInfo-labelss {
   margin: 5px;
@@ -1569,7 +1571,7 @@ th{
   font-weight: 500;
   position: relative;
   top: 25px;
-  right: 18%;
+  right: 118px;
 }
 .shipNow{
   position: relative;

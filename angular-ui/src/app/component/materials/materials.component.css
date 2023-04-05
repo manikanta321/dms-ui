@@ -101,6 +101,7 @@ mat-sidenav-container {
     color: white;
     border-radius: 25px;
     opacity: 1;
+    font-family: 'Gilroy-SemiBold';
 }
 ::ng-deep.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
     display: none;
@@ -181,6 +182,7 @@ mat-tab-group{
     color: white;
     border-radius: 25px;
     opacity: 1;
+    font-family: 'Gilroy-Bold';
 }
 ::ng-deep.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
     display: none;

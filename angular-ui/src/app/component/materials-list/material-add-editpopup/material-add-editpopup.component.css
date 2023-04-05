@@ -1,3 +1,15 @@
+.BInformation
+{
+  font-family: 'Gilroy-Medium';
+  
+}
+.fontfamily
+{
+  font-family: 'Gilroy-Bold';
+}
+
+
+
 .imagesheading
 {
   
@@ -194,7 +206,7 @@ form[name="myBasicInfo"] {
 
 .addU {
   position: relative;
-  font-weight: bold;
+  font-family: 'Gilroy-Bold';
   font-size: 20px;
 }
 
@@ -255,7 +267,8 @@ span {
 label {
   font-size: 14px;
   margin: 5px;
-  font-weight: bold;
+  font-family: 'Gilroy-Medium';
+
 }
 
 .mat-align {
@@ -273,13 +286,13 @@ label {
 .brandname {
   /* margin-top: 1px;
   margin-left: -5px; */
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
 }
 
 .globalcode {
   /* margin-top: -35px;
   margin-left: 388px; */
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
 }
 
 .brandpl {
@@ -288,22 +301,22 @@ label {
 
 .sku {
 margin-top: 9px;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
 }
 
 .shortcode {
   margin-top: 9px;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
 }
 
 .productg {
   margin-top: 9px;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
 }
 
 .manualsort {
   margin-top: 9px;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
 }
 
 .productdrp ng-select {
@@ -316,12 +329,12 @@ margin-top: 9px;
 
 .productsg {
   margin-top: 9px;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
 }
 
 .productlink {
   margin-top: 9px;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
 }
 
 .productsdrp ng-select {
@@ -331,7 +344,7 @@ margin-top: 9px;
 .productci {
   margin-top: 10px;
   margin-left: -5px;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
 }
 
 
@@ -347,7 +360,7 @@ margin-top: 9px;
 
 .mat-slide {
   color: black;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
   text-align: right;
 }
 
@@ -878,7 +891,7 @@ align-items: center;
   color: #000000;
   font-size: 20px;
   font-weight: 100;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Light';
 }
 
 .materialDesc {
@@ -931,7 +944,7 @@ textarea {
   color: #000000;
   font-size: 20px;
   font-weight: lighter;
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Light';
 }
 
 .imagePlus {
@@ -1131,6 +1144,7 @@ textarea {
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+  font-family: 'Gilroy-Medium';
 }
 
 .cdk-overlay-pane {
@@ -1146,7 +1160,7 @@ textarea {
 }
 
 .Geo-headerlabel {
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Light';
   font-style: normal;
   font-weight: 300;
   font-size: 20px;
@@ -1186,7 +1200,7 @@ textarea {
 
 .country {
 
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
   font-size: 16px;
   font-weight: 300;
   line-height: 23.06px;
@@ -1196,7 +1210,7 @@ textarea {
 }
 
 .State {
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
   font-size: 16px;
   font-weight: 300;
   line-height: 23.06px;
@@ -1207,7 +1221,7 @@ textarea {
 }
 
 .District {
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
   font-size: 16px;
   font-weight: 300;
   line-height: 23.06px;
@@ -1218,7 +1232,7 @@ textarea {
 }
 
 .City {
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
   font-size: 16px;
   font-weight: 300;
   line-height: 23.06px;
@@ -1228,7 +1242,7 @@ textarea {
 }
 
 .Regions {
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
   font-size: 16px;
   font-weight: 300;
   line-height: 23.06px;
@@ -1238,7 +1252,7 @@ textarea {
 }
 
 .Area {
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
   font-size: 16px;
   font-weight: 300;
   line-height: 23.06px;
@@ -1248,7 +1262,7 @@ textarea {
 }
 
 .Sub Area {
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
   font-size: 16px;
   font-weight: 300;
   line-height: 23.06px;

@@ -19,6 +19,7 @@
 .text-succ {
     padding: 0 10px;
     max-width: 280px;
+    font-family: 'Gilroy-Medium';
 }
 
 .closeImg {
@@ -39,5 +40,5 @@
     background: red;
 }
 .font{
-    font-family: 'Gilroy';
+    font-family: 'Gilroy-Medium';
 }

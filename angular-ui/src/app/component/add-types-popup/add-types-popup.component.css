@@ -1,18 +1,18 @@
 
 .head-text{
     font-size: 20px;
-    font-weight: 600;
+    font-family: 'Gilroy-Bold';
     margin-bottom: 0;
     margin-top: -20px;
     /* text-align: left; */
     }
     .addtypes1
     {
-        font-weight: 600;
+        font-family: 'Gilroy-SemiBold';
     }
     .addtypes2
     {
-        font-weight: 600;
+        font-family: 'Gilroy-SemiBold';
         top: 4px;
     position: relative;
     }

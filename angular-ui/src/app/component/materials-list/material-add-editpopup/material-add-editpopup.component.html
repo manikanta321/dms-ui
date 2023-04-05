@@ -24,7 +24,7 @@
           <!-- basic information -->
           <mat-step [stepControl]="firstFormGroup">
             <div class="geography-popupsize">
-            <ng-template matStepLabel>Basic Information</ng-template>
+            <ng-template matStepLabel class="BInformation">Basic Information</ng-template>
             <div class="heading">
               <h6 class="stepperHeader-b"><b>Basic
                   Information</b></h6>
@@ -254,7 +254,7 @@
               <div class="col-md-6">
                 <div class="mat-slide">
                   <mat-slide-toggle [labelPosition]="labelPosition" [disabled]="disabled" (change)="change($event)"
-                    [checked]="!checked">&nbsp;&nbsp;&nbsp;&nbsp; Is a product?</mat-slide-toggle>
+                    [checked]="!checked" >&nbsp;&nbsp;&nbsp;&nbsp; Is a product?</mat-slide-toggle>
                 </div>
               </div>
               <div class="col-md-6">
@@ -331,7 +331,7 @@
                       *Product Group is required.
                     </span>
                   </p>
-                  <img src="assets/img/plus.png" style="width: 22px;position: absolute;right: 20px;bottom: 5px;"
+                  <img src="assets/img/plus.png" style="width: 22px;position: absolute;right: 20px;bottom: 5px; cursor: pointer;"
                     alt="plus-btn" (click)="addproduct()">
 
                 </div>
@@ -371,7 +371,7 @@
                 </div>
                 <div class="image">
                   <img src="assets/img/plus.png" class="imagePlus"
-                    style="width: 22px;position: absolute;right: 20px;bottom: 5px;" alt="plus-btn"
+                    style="width: 22px;position: absolute;right: 20px;bottom: 5px; cursor: pointer;" alt="plus-btn"
                     (click)="addproductsubgroup()">
                 </div>
 
@@ -541,33 +541,33 @@
                   </div>
                 </div>
                 <table>
-                  <div class="row m-0 mb-2">
+                  <div class="row m-0 mb-2  fontfamily">
                     <div class="col-sm-3">
-                      <label><b>Geography</b></label>
+                      <label ><b class="fontfamily">Geography</b></label>
                     </div>
                     <div class="col-sm-1">
-                      <label><b>MRP(INR)</b></label>
+                      <label><b class="fontfamily" >MRP(INR)</b></label>
                     </div>
                     <div class="col-sm-1">
-                      <label><b>Min Order Qty</b></label>
+                      <label><b class="fontfamily">Min Order Qty</b></label>
                     </div>
                     <div class="col-sm-1">
-                      <label><b>Max Order Qty</b></label>
+                      <label><b class="fontfamily" >Max Order Qty</b></label>
                     </div>
                     <div class="col-sm-1">
-                      <label><b>Margin %</b></label>
+                      <label><b class="fontfamily">Margin %</b></label>
                     </div>
                     <div class="col-sm-1">
                       <label><b>Discount %</b></label>
                     </div>
                     <div class="col-sm-1">
-                      <label><b>Lead time (Days)</b></label>
+                      <label><b class="fontfamily">Lead time (Days)</b></label>
                     </div>
                     <div class="col-sm-1">
-                      <label><b>Registration Number</b></label>
+                      <label><b class="fontfamily">Registration Number</b></label>
                     </div>
                     <div class="col-sm-1">
-                      <label><b style="margin-left: 84px;">Tags</b></label>
+                      <label><b style="margin-left: 84px;" >Tags</b></label>
                     </div>
 
                   </div>

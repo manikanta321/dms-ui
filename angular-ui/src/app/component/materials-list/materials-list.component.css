@@ -290,6 +290,7 @@ padding-left: 11px;
   position: relative;
   width: 43px;
   height: 40px;
+  cursor: pointer;
 }
 
 ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
@@ -831,7 +832,7 @@ padding-left: 11px;
 }
 
 .font {
-  font-family: 'Gilroy';
+  font-family: 'Gilroy-Medium';
 }
 .showOnlyCheckbox{
   position: relative;

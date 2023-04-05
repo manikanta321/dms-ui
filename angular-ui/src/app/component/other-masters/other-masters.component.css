@@ -111,6 +111,6 @@ mat-tab-group{
     font-family: 'Times New Roman';
    }
   ::ng-deep.mat-tab-label .mat-tab-label-content{
-    font-family: 'Gilroy';
+    font-family: 'Gilroy-Bold';
    }
    

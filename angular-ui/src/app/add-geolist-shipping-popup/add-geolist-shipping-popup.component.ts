@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef,MatDialog } from '@angular/material/dialog';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { PromotionListService } from 'src/app/services/promotion-list.service';
 import { GeographySettingSharedService } from '../services/geography-setting-shared.service';
 import { UserService } from '../services/user.service';
+import { AddGeolistSuccessPopupComponent } from './add-geolist-success-popup/add-geolist-success-popup.component';
+
 @Component({
   selector: 'app-add-geolist-shipping-popup',
   templateUrl: './add-geolist-shipping-popup.component.html',
@@ -45,6 +47,7 @@ export class AddGeolistShippingPopupComponent implements OnInit {
   dropdownSettings:any = {};
   constructor(
     private promotin: PromotionListService,
+    private dialog: MatDialog,
     private dialogRef: MatDialogRef<AddGeolistShippingPopupComponent>,
     private sharedService: GeographySettingSharedService,
     private user: UserService,
@@ -262,12 +265,23 @@ export class AddGeolistShippingPopupComponent implements OnInit {
 
       this.user.addStockPrice(data).subscribe((res) => {
         if (res.response.status) {
-          alert(res.response.result);
+          //  alert(res.response.result);
+           if(res.response.result=="Successfully added")
+           {
+                   
+                   localStorage.setItem('ShippingPackingCharges', 'ShippingAdded');
+                  this.dialog.open(AddGeolistSuccessPopupComponent,{ panelClass: 'AddgeoSuccessPopcompoment' });
+           }
+           else
+           {
+            alert(res.response.result);
+           }
           this.sharedService.filter('Register click');
+        
           this.dialogRef.close();
 
         } else {
-          alert(res.response.result);
+           alert(res.response.result);
         }
 
       })
@@ -282,7 +296,12 @@ export class AddGeolistShippingPopupComponent implements OnInit {
 
       this.user.addPackingCharge(data).subscribe((res) => {
         if (res.response.status) {
-          alert(res.response.result);
+            // alert(res.response.result);
+           if(res.response.result=="Successfully added")
+           {
+                   localStorage.setItem('ShippingPackingCharges','PackingAdded');
+                   this.dialog.open(AddGeolistSuccessPopupComponent,{ panelClass: 'AddgeoSuccessPopcompoment' });
+           }
           this.sharedService.filter('Register click');
           this.dialogRef.close();
 
@@ -301,7 +320,6 @@ export class AddGeolistShippingPopupComponent implements OnInit {
 
 
     let item = localStorage.getItem('packingChargeOrShipingCharge')
-
     if (item == 'shippingCharge') {
 
       let data: any = {
@@ -313,7 +331,20 @@ export class AddGeolistShippingPopupComponent implements OnInit {
 
       this.user.UpdateStockPrice(data).subscribe((res) => {
         if (res.response.status) {
-          alert(res.response.result);
+          //  alert(res.response.result);
+
+           if(res.response.result=="succesfully updated")
+           {
+                   
+              localStorage.setItem('ShippingPackingCharges', 'ShippingUpdated');
+              this.dialog.open(AddGeolistSuccessPopupComponent,{ panelClass: 'AddgeoSuccessPopcompoment' });
+           }
+           else
+           {
+            alert(res.response.result);
+           }
+           
+         
           this.sharedService.filter('Register click');
           this.dialogRef.close();
 
@@ -333,8 +364,14 @@ export class AddGeolistShippingPopupComponent implements OnInit {
       }
 
       this.user.UpdatePackingCharge(data).subscribe((res) => {
-        if (res.response.status) {
-          alert(res.response.result);
+        if (res.response.status) { 
+            // alert(res.response.result);
+          if(res.response.result=="succesfully updated")
+           {
+                  
+                  localStorage.setItem('ShippingPackingCharges','PackingUpdated');
+                  this.dialog.open(AddGeolistSuccessPopupComponent,{ panelClass: 'AddgeoSuccessPopcompoment' });
+           }
           this.sharedService.filter('Register click');
           this.dialogRef.close();
 

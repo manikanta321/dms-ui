@@ -121,7 +121,7 @@ export class OrderListComponent implements OnInit {
     //   field: 'employeeCode' , sort: 'desc'},
 
     { headerName: "Order No.", field: 'orderNUmber' ,
-    cellStyle: { color: '#017EFA' },
+    cellStyle: { color: '#017EFA' },  
     cellEditorPopup: true,
     onCellClicked: (event: CellClickedEvent) => this.dialog.open(OrdersReceiveShipmentComponent, {      maxWidth: '95vw'    ,height:"95vh"})
   },

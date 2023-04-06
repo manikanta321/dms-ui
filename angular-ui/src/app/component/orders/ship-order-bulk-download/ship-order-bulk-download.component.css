@@ -26,10 +26,10 @@
   .bulk-head:after {
     content: "";
     display: block;
-    width: 384px;
+    width: 521px;
     height: 0.5px;
     background: #686E74;
-    right: 74px;
+    right: 2%;
     top: 50%;
     position: absolute;
   }
@@ -37,10 +37,10 @@
   .bulk-head:before {
     content: "";
     display: block;
-    width: 390px;
+    width: 562px;
     height: 0.5px;
     background: #686E74;
-    left: 0;
+    left: 1%;
     top: 50%;
     position: absolute;
   }

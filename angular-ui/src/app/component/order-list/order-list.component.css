@@ -113,7 +113,7 @@
 
 
 .searchInput1 {
-    font-family: 'Gilroy';
+    font-family: 'Gilroy-Medium';
 }
 
 .imgorder {
@@ -1401,3 +1401,11 @@ mat-sidenav {
      height: 5px;
      display: table-cell;
    }
+   ::ng-deep.mat-tab-group{
+    font-family: 'Gilroy-Medium';
+    font-size: 14px;
+   }
+::ng-deep.mat-form-field-appearance-fill .mat-form-field-infix{
+    font-family: 'Gilroy-Medium';
+    font-size: 14px;
+}

@@ -368,15 +368,15 @@ input[type=number] {
   bottom: 2px;
 }
 .delivery1 {
-  font-weight: bold; 
-  font-family: 'Gilroy';
+  /* font-weight: bold;  */
+  font-family: 'Gilroy-SemiBold';
   color: #000000;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .boldR {
     font-weight: bold;  
-   font-family: 'Gilroy';
+   font-family: 'Gilroy-SemiBold';
    color: #000000;
    font-size: 14px;
 }
@@ -578,8 +578,8 @@ input[type=number] {
 }
 .addU {
   position: relative;
-  /* font-family: 'Gilroy-Bold';  */
-  font-weight: bold;
+  font-family: 'Gilroy-Bold'; 
+  /* font-weight: bold; */
   font-size: 20px;
 }
 .addU:after {
@@ -650,10 +650,11 @@ label {
 }
 .DealerInfo-label {
   margin: 5px;
-  font-size: 12.5px;
+  font-size: 14px;
   align-items: center;
-  font-weight: bold;
+  font-weight: 400;
   color: #000000;
+  font-family: 'Gilroy-SemiBold';
 }
 mat-form-field {
   width: 246px;
@@ -1242,25 +1243,29 @@ li {
 .label-cls {
   position: relative;
   top: 6px;
+  font-family: 'Gilroy-Light';
+  font-size: 18px;
 }
 .add-edit-promo {
   color: #fff;
   background: #000000;
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
-  font-size: 10px;
+  font-size: 13px;
   text-align: center;
   cursor: pointer;
   margin-right: 10px;
+  font-family: 'Gilroy-SemiBold';
 }
 .add-edit-non-promo {
   background: #FFFFFF;
   border: 2px solid #000000;
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
-  font-size: 10px;
+  font-size: 13px;
   text-align: center;
   cursor: pointer;
+  font-family: 'Gilroy-SemiBold';
 }
 .promotions-label {
   /* margin-left: -12px; */
@@ -1684,12 +1689,15 @@ right: -572px;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 8px;
-  font-size: 12px;
-  font-weight: 'Gilroy';
+  font-size: 13px;
+  font-family: 'Gilroy-Light';
   color:#000000;
   
 
 }
+/* ::ng-deep .textarea{
+ 
+} */
 
 .promoItem {
   width: 30px;
@@ -1723,6 +1731,8 @@ right: -572px;
 
 .alltotals {
   margin-bottom: 1px;
+  font-family: 'Gilroy-Medium';
+  font-size: 13px;
 } 
 .total_total
 {
@@ -1963,7 +1973,8 @@ table {
 th {
   padding: 8.5px;
   text-align: center;
-  
+  font-family: 'Gilroy-Bold';
+  font-size: 14px;
 }
 
 td {
@@ -2204,4 +2215,8 @@ table thead, table tbody tr {
      right: 17px !important;
      height: 5px;
      display: table-cell;
+   }
+   ::ng-deep.ng-select .ng-select-container .ng-value-container .ng-placeholder{
+    font-family: 'Gilroy-Light';
+    font-size: 13px;
    }

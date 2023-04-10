@@ -34,6 +34,7 @@
 {
   margin-left: 4px;
   margin-top: 16px;
+  font-family: 'Gilroy-Bold';
 }
 .quantityleft{
   margin-top: 16px;
@@ -42,9 +43,11 @@
 #qty
 {
   margin-left: -43px;
+  font-family: 'Gilroy-Bold';
 }
 .customerleft{
   margin-top: 16px;
+  font-family: 'Gilroy-Bold';
 }
 .addAlign
 {
@@ -71,8 +74,8 @@
 }
 .sales-add {
     position: relative;
-    /* font-family: 'Gilroy-Bold';  */
-    font-weight: bold;
+    font-family: 'Gilroy-Bold'; 
+    /* font-weight: bold; */
     font-size: 20px;
   }
   
@@ -299,12 +302,14 @@
     border-radius: 10px;
     border: 1px solid black;
     margin-left: -44px;
+    font-family: 'Gilroy-Regular';
   }
   .custmRef input{
     width: 100%;
 height: 44px;
 border-radius: 10px;
 border: 1px solid black;
+font-family: 'Gilroy-Regular';
   }
   .rmvicon mat-icon{
   color: red;
@@ -319,6 +324,7 @@ border: 1px solid black;
     cursor: pointer;
     width: 168px;
 height: 43px;
+font-family: 'Gilroy-SemiBold';
   }
   .cancel{
     color: black;
@@ -330,6 +336,7 @@ height: 43px;
     cursor: pointer;
     width: 168px;
     height: 43px;
+    font-family: 'Gilroy-SemiBold';
   }
   .ag-theme-material .ag-filter-toolpanel-header,
 .ag-theme-material .ag-filter-toolpanel-search,
@@ -460,6 +467,7 @@ height: 43px;
   background: #fff;
   width: 220px;
   height: 44px;
+  font-family: 'Gilroy-Regular';
 }
 
 .sales-popup-datepicker .mat-form-field-appearance-legacy ::ng-deep.mat-form-field-wrapper{
@@ -487,4 +495,13 @@ height: 43px;
 
 .sales-popup-datepicker .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float ::ng-deep.mat-form-field-label,.sales-popup-datepicker .mat-form-field-appearance-legacy.mat-form-field-can-float ::ng-deep.mat-input-server:focus + .mat-form-field-label-wrapper ::ng-deep.mat-form-field-label{
   display: none;
+}
+.label-cls{
+  font-family: 'Gilroy-Light';
+  font-size: 16px;
+  position: relative;
+  top: 6px;
+}
+::ng-deep.ng-select .ng-select-container .ng-value-container .ng-placeholder {
+  font-family: 'Gilroy-Regular';
 }

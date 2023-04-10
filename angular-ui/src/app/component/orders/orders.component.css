@@ -76,6 +76,7 @@ height: 35px;
     color: white;
     border-radius: 25px;
     opacity: 1;
+    font-family: 'Gilroy-SemiBold';
 }
 
 
@@ -174,6 +175,7 @@ top:3px;
     color: white;
     border-radius: 25px;
     opacity: 1;
+  
 }
 ::ng-deep.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
     display: none;
@@ -215,7 +217,10 @@ top:3px;
 ::ng-deep .order-lab .mat-tab-label{
     height: 35px !important;
     min-width: 161px !important;
+    font-family: 'Gilroy-Medium';
   }
-
+ ::ng-deep.classi .mat-tab-label .mat-tab-label-content{
+    font-family: 'Gilroy-SemiBold';
+  }
 
 

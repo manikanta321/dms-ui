@@ -168,7 +168,7 @@ align-items: center;
     position: relative;
     height: 40px;
     top: -31px;
-    font-family: 'Gilroy';
+    font-family: 'Gilroy-Medium';
     font-size: 20px;
     line-height: 40px;
     text-align: center;
@@ -199,7 +199,7 @@ width: 376px;
 height: 38px;
 top: -63px;
 /* left: 47px; */
-font-family: 'Gilroy';
+font-family: 'Gilroy-Light';
 font-size: 20px;
 line-height: 23px;
 display: flex;
@@ -208,7 +208,7 @@ color: #000000;
   }
 
 .step1-txt {
-    font-family: 'Gilroy';
+    font-family: 'Gilroy-SemiBold';
     font-size: 18px;
     line-height: 21px;
     display: flex;
@@ -219,7 +219,7 @@ color: #000000;
     position: relative;
 }
 .up-doc{
-    font-family: 'Gilroy';
+    font-family: 'Gilroy-Light';
     font-size: 18px;
     line-height: 21px;
     display: flex;

@@ -293,14 +293,14 @@
 
 .addU {
   position: relative;
-  /* font-family: 'Gilroy-Bold';  */
-  font-weight: bold;
+  font-family: 'Gilroy-Bold'; 
+  /* font-weight: bold; */
   font-size: 20px;
 }
 .addView{
   position: relative;
-  /* font-family: 'Gilroy-Bold';  */
-  font-weight: bold;
+  font-family: 'Gilroy-Bold'; 
+  /* font-weight: bold; */
   font-size: 20px;
   right: 30%;
 }
@@ -372,7 +372,8 @@
   margin: 3px;
   font-size: 14px;
   align-items: center;
-  font-weight: bold;
+  /* font-weight: bold; */
+  font-family: 'Gilroy-SemiBold';
 }
 
 .DescInfo-label {
@@ -430,7 +431,8 @@ padding-left: 20px;
 
 }
 .dispatchC{
-  font-weight: bold;
+  /* font-weight: bold; */
+font-family: 'Gilroy-SemiBold';
 }
 .categorydrp {
   width: 205px;
@@ -1017,6 +1019,8 @@ height: 5px;
 .label-cls {
   position: relative;
   top: 6px;
+  font-family: 'Gilroy-Light';
+  font-size: 18px;
 }
 
 
@@ -1348,6 +1352,7 @@ height: 5px;
 
 .innerTotal {
   margin-left: 15px;
+  font-family: 'Gilroy-Medium';
 }
 
 .alltotals {
@@ -1432,13 +1437,15 @@ height: 5px;
   padding-left: 7px;
   border-radius: 10px;
   border: 1px solid black;
-  font-size: 12.5px;
+  font-size: 13px;
   background-color: white;
   color: black;
+  font-family: 'Gilroy-Regular';
 }
 
 .label-div {
   margin-top: 15px;
+  /* font-family: 'Gilroy-SemiBold'; */
 }
 
  .orderhistorytable {
@@ -1458,6 +1465,7 @@ tr:nth-child(even) {
 } */
 th {
   padding: 10px;
+  font-family: 'Gilroy-Bold';
 }
 
 td {
@@ -1589,4 +1597,7 @@ th{
   position: relative;
   left: 26px;
   text-align: right;
+}
+::ng-deep.invNo{
+  font-family: 'Gilroy-SemiBold';
 }

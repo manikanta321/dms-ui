@@ -62,7 +62,7 @@ mat-tab-group{
     height: 100vh;
 }
 .sales-header-text{
-    font-family:  'Gilroy';
+    font-family:  'Gilroy-Bold';
     font-size: 30px;
     line-height: 41px;
     display: flex;
@@ -107,4 +107,7 @@ mat-tab-group{
     color: white;
     border-radius: 25px;
     opacity: 1;
+}
+::ng-deep.mat-tab-label .mat-tab-label-content{
+    font-family: 'Gilroy-SemiBold';
 }

@@ -1,4 +1,4 @@
-<div *ngIf="confirmOrder!=''" class="font">
+<div *ngIf="confirmOrder!=''" class="">
     <div class="main" *ngIf="confirm_Order">
         <div class=" promotionpopup-scroll1">
             <div class="addUser">
@@ -299,7 +299,7 @@
         </div>
     </div>
 </div>
-<div *ngIf="confirmOrder==''" class="font">
+<div *ngIf="confirmOrder==''" class="">
     <div class="main">
         <div class=" promotionpopup-scroll2">
             <div class="addUser">
@@ -617,7 +617,7 @@
                                 <div class="promotiont">
                                     <label class="delivery1">Delivery Instructions/Extra Information</label>
                                 </div>
-                                <textarea class="text-area-extrainfo" style="resize: none;"
+                                <textarea class="text-area-extrainfo" style="resize: none; "
                                     placeholder="Please write down if there are any delivery instructions or extra information you want to share"
                                     name="w3review" rows="2" [(ngModel)]="DeliveryInstructions" cols="65"></textarea>
 
@@ -650,6 +650,7 @@
         <span *ngIf=" !customerId || !geographyId || !BillingaddressId || !addressId" style="left: 178px; margin-top: -3px;position: relative;">*please fill required fields</span>
     </div>
 
+</div>
 </div>
 <!-- non promotions -->
 <div class="overlay" *ngIf="Non_promotions && confirmOrder ==''">

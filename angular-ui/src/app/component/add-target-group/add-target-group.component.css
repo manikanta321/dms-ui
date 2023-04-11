@@ -14,6 +14,7 @@
     text-align: center;
     margin-top: -18px;
     margin-bottom: 2px;
+    font-family: 'Gilroy-Bold';
 }
 
 .close-icon {
@@ -53,16 +54,16 @@
     position: absolute;
 }
 
-.font {
+/* .font {
     font-family: 'Gilroy';
-}
+} */
 
 label {
     /* padding: 2px 0; */
     font-size: 14px;
     line-height: 16px;
     margin: 5px;
-    font-family: 'Gilroy';
+    font-family: 'Gilroy-Medium';
 }
 
 .target-heading {
@@ -373,7 +374,8 @@ label {
 
 .targetLabelN {
     font-size: 13px;
-    font-weight: 400;
+    font-family: 'Gilroy-Medium';
+
 }
 
 .errorMark {
@@ -382,6 +384,7 @@ label {
 
 .selectedPL {
     font-size: 20px;
+    font-family: 'Gilroy-Light';
 }
 
 .selectedProduct {

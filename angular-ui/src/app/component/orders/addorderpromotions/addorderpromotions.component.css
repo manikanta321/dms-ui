@@ -585,12 +585,12 @@ input[type=number] {
 .addU:after {
   content: "";
   display: block;
-   width: 41%; 
+   width: 33%; 
   
   height: 2px;
    background: #686E74; 
   
-margin-left: 56%;
+margin-left: 62%;
    
   top: 50%;
   position: absolute;
@@ -600,10 +600,10 @@ margin-left: 56%;
   content: "";
   display: block;
   
-  width: 43%;
+  width: 34%;
   height: 2px;
    background: #686E74; 
-  left: 1%;
+  left: 4%;
   top: 50%;
   position: absolute;
 }

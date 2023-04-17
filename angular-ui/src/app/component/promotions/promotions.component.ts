@@ -347,9 +347,9 @@ geoList:any=[];
     private associationService:AssosiationServicesService,
     private sharedService:PromotionSharedServicesService,
     private route: ActivatedRoute,
-
-
-   ) {
+    
+    
+    ) {
       sort:[];
       this.route.data.subscribe(v => {
         this.currentPageName = v['key'];
@@ -698,13 +698,12 @@ geoList:any=[];
 
 
 productList(){
-  this.promotin.productListApi().subscribe((res)=>{
-    let localdata=res.response;
-
-
-  this.productLisst = localdata.map((data: { productGroupId: any; productGroupName: any; }) => {
-    return { productGroupId: data.productGroupId, productGroupName: data.productGroupName };
-  });
+  this.promotin.getproductlist().subscribe((res)=>{
+       let localdata=res.response;
+   this.productLisst = localdata.map((data: { stockItemId: any; stockItemName: any; }) => {
+       return { stockItemId: data.stockItemId, stockItemName: data.stockItemName };
+     });
+  
 
   // if (!this.toppingList?.length) {
   //   this.toppingList = localdata.map((role: { designationName: any; }) => {
@@ -715,7 +714,10 @@ productList(){
   console.log('array check',this.toppingList)
   this.productLisst.push()
   this.productLisst.forEach(element => {
-    return this.productarray.push(element.productGroupId);
+   
+    return this.productarray.push(element.stockItemId);
+
+
     // console.log('rolecheck',rolecheck)
 
   })
@@ -726,8 +728,8 @@ productList(){
   
   this.dropdownSettings1 = {
     singleSelection: false,
-    idField: 'productGroupId',
-    textField: 'productGroupName',
+    idField: 'stockItemId',
+    textField: 'stockItemName',
     selectAllText: 'Select All',
     unSelectAllText: 'UnSelect All',
     itemsShowLimit: 1,
@@ -742,7 +744,9 @@ productList(){
 onProductSelect(item: any) {
 
   // alert(item.roleName)
-    this.productSelected.push(item.productGroupId);
+
+ this.productSelected.push(item.stockItemId);
+   
   
     const data={
       promotiontype:this.promotionSelected,
@@ -771,7 +775,7 @@ onProductSelect(item: any) {
   onProductDeSelect(item: any) {
   
     this.productSelected.forEach((element,index)=>{
-      if(element==item.productGroupId)  this.productSelected.splice(index,1);
+    if(element==item.stockItemId)  this.productSelected.splice(index,1);
    });
    console.log(' this.userTypes', this.userTypes)
   

@@ -1569,8 +1569,8 @@ th{
   align-items: center;
   font-weight: 500;
   position: relative;
-  top: 25px;
-  right: 100px;
+  /* top: 25px; */
+  /* right: -3%; */
 }
 .DescInfo-labelss {
   margin: 5px;
@@ -1578,8 +1578,8 @@ th{
   align-items: center;
   font-weight: 500;
   position: relative;
-  top: 25px;
-  right: 118px;
+  /* top: 25px; */
+  /* right: 0%; */
 }
 .shipNow{
   position: relative;

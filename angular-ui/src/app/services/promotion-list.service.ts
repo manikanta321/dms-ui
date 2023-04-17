@@ -50,4 +50,7 @@ getstatusDeatils(){
   return this.http.get<any>(`${this.userurl}PromotionsApi/GetPromotionSatusList`);
 
 }
+public getproductlist() {
+  return this.http.get<any>(`${this.userurl}MaterialApi/GetStockList`);
+}
 }

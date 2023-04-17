@@ -704,7 +704,7 @@ export class OrderListComponent implements OnInit {
 
 
   addOrderPromotion() {
-    const dialogRef = this.dialog.open(AddorderpromotionsComponent,{minWidth: '96vw', height: '731px', 
+    const dialogRef = this.dialog.open(AddorderpromotionsComponent,{minWidth: '100vw', height: '731px', 
       panelClass: 'material-add-edit'
     });
     sessionStorage.setItem("Confirm",'')

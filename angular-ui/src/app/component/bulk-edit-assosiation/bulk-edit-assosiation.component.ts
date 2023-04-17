@@ -444,6 +444,8 @@ export class BulkEditAssosiationComponent implements OnInit {
   }
 
   refresh() {  
+     this.selectedGeoField = '';
+     this.updateGeographyValue = '';
     this.addAddressDetailsForm = this._formBuilder.group({
       BulkAssociationsCount: this._formBuilder.array([]),  
 
@@ -520,7 +522,11 @@ export class BulkEditAssosiationComponent implements OnInit {
 
 
 
+
+
     }); 
+   
+    
   }
 
   getusertabeldata() {

@@ -118,23 +118,23 @@ export class GeoClassificationComponent implements OnInit {
     console.log(this.userIdNumber);
     // this.getCountryList();
     this.getGeographyHierarchy();
-    this.sharedService.listen().subscribe((m: any) => {
-      console.log("RefreshData",m)
-      setTimeout (() => {
-        this.getGeographyHierarchy();
-     }, 2000);
+    // this.sharedService.listen().subscribe((m: any) => {
+    //   console.log("RefreshData",m)
+    //   setTimeout (() => {
+    //     this.getGeographyHierarchy();
+    //  }, 2000);
      
-    })
+    // })
   }
-  onFirstDataRendered(params: FirstDataRenderedEvent) {
-    this.sharedService.listen().subscribe((m: any) => {
-      console.log("RefreshData",m)
-      setTimeout (() => {
-        this.getGeographyHierarchy();
-     }, 2000);
+  // onFirstDataRendered(params: FirstDataRenderedEvent) {
+  //   this.sharedService.listen().subscribe((m: any) => {
+  //     console.log("RefreshData",m)
+  //     setTimeout (() => {
+  //       this.getGeographyHierarchy();
+  //    }, 2000);
      
-    })
-  }
+  //   })
+  // }
   getGeographyHierarchy() {
     this.spinner.show();
     this.geoGraphyHirerachyData = null;

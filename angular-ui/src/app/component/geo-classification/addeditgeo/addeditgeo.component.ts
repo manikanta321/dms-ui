@@ -4,6 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ClassificationserviseService } from 'src/app/services/classificationservise.service';
 
 import { GeoAddedPopupComponent } from '../geo-added-popup/geo-added-popup.component';
+import { GeographySettingSharedService } from 'src/app/services/geography-setting-shared.service';
 
 @Component({
   selector: 'app-addeditgeo',
@@ -15,6 +16,7 @@ export class AddeditgeoComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<AddeditgeoComponent>,
     private dialog: MatDialog,
+    private sharedService: GeographySettingSharedService,
     @Inject(MAT_DIALOG_DATA) public data: any, private spinner: NgxSpinnerService,private classification: ClassificationserviseService,) {}
     
     geoType:string = "";
@@ -63,6 +65,7 @@ export class AddeditgeoComponent implements OnInit {
       sessionStorage.setItem("uomCode",'');
       sessionStorage.setItem("GeoName",this.name);
       sessionStorage.setItem("GeoCode",this.code);
+      this.sharedService.filter('Register click');
 
     }else{
       this.showWarning = true;

@@ -9,6 +9,8 @@ import { ClassificationserviseService } from 'src/app/services/classificationser
 import { AddeditgeoComponent } from './addeditgeo/addeditgeo.component';
 import { GeoActivateDeactivateComponent } from './geo-activate-deactivate/geo-activate-deactivate.component';
 import { GeoStatusPopComponent } from './geo-status-pop/geo-status-pop.component';
+import { FirstDataRenderedEvent } from 'ag-grid-community';
+import { GeographySettingSharedService } from 'src/app/services/geography-setting-shared.service';
 
 @Component({
   selector: 'app-geo-classification',
@@ -95,7 +97,9 @@ export class GeoClassificationComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private spinner: NgxSpinnerService,
     private dialog: MatDialog, private route: ActivatedRoute,
-    private classification: ClassificationserviseService, private sanitizer: DomSanitizer) {
+    private classification: ClassificationserviseService, private sanitizer: DomSanitizer,
+    private sharedService: GeographySettingSharedService,
+    ) {
     this.route.data.subscribe(v => {
       this.currentPageName = v['key'];
     });
@@ -114,8 +118,23 @@ export class GeoClassificationComponent implements OnInit {
     console.log(this.userIdNumber);
     // this.getCountryList();
     this.getGeographyHierarchy();
+    this.sharedService.listen().subscribe((m: any) => {
+      console.log("RefreshData",m)
+      setTimeout (() => {
+        this.getGeographyHierarchy();
+     }, 2000);
+     
+    })
   }
-
+  onFirstDataRendered(params: FirstDataRenderedEvent) {
+    this.sharedService.listen().subscribe((m: any) => {
+      console.log("RefreshData",m)
+      setTimeout (() => {
+        this.getGeographyHierarchy();
+     }, 2000);
+     
+    })
+  }
   getGeographyHierarchy() {
     this.spinner.show();
     this.geoGraphyHirerachyData = null;

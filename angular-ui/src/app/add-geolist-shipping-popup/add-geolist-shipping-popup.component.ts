@@ -34,13 +34,14 @@ export class AddGeolistShippingPopupComponent implements OnInit {
   selectedItems: any = [];
   statusArray: any = [];
   userId: any;
+  shippingcost:boolean=false;
   header: any = '';
   heading: any = '';
   uniqe: any;
   addOrAdit: boolean = true;
   dropdownSettings1: IDropdownSettings = {};
   disabled = false;
-
+  subCost:any;
 
   dropdownList:any = [];
   selectedItems11:any = [];
@@ -163,10 +164,12 @@ export class AddGeolistShippingPopupComponent implements OnInit {
 
     if (item == 'shippingCharge') {
       this.header = 'Shipping Charge'
+      this.subCost = 'Shipping Cost'
     } else {
       this.header = 'Packing Charge'
-
+      this.subCost = 'Packing Cost'
     }
+
   }
 
   packingPriceChargeValid:boolean = true;
@@ -193,6 +196,7 @@ export class AddGeolistShippingPopupComponent implements OnInit {
       }
 
     });
+    
   }
 
   getGeo() {

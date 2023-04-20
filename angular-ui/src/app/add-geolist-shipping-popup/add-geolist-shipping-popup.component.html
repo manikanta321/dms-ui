@@ -52,7 +52,8 @@
               [(ngModel)]="packingCharge.endvalue" name="street_{{ i }}" />
           </div>
           <div class="col-3">
-            <label *ngIf="i==0">Shipping Cost</label>
+            <label *ngIf="i==0">{{subCost}}</label>
+            
             <input style="width: 225px" type="text" (keyup)="PackingPriceChange()" id="cost" name="cost" required
               placeholder="Enter" [ngClass]="{ 'input-error': !packingCharge.isDataValid && isDataModified}"
               [(ngModel)]="packingCharge.cost" name="city_{{ i }}" />

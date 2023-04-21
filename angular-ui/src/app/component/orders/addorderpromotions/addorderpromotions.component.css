@@ -3,6 +3,13 @@
   left: 2px; 
 }
 
+.card1.selected {
+  border: 5px solid #187ddd;
+}
+.selected {
+  background-color: #00187A;
+  color: white;
+}
 
 
 ::-webkit-scrollbar {
@@ -104,7 +111,7 @@ margin-top: -5px;
 }
 
 ::ng-deep.my_Datepicker .mat-form-field {
-  width: 415px;
+    width: 415px; 
   height: 43px;
   background: white !important;
   border-radius: 5px;
@@ -142,7 +149,7 @@ margin-top: -5px;
   right: 10px;
 }
 ::ng-deep.my_Datepicker .mat-form-field {
-  width: 415px;
+   width: 415px; 
   height: 43px;
   background: white !important;
   border-radius: 5px;
@@ -344,11 +351,16 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.contentscrobar
+ .contentscrobar
 {
    
-   height: 180px;
- }
+   height: 100px;
+ } 
+  .contentscrobarr
+{
+   
+   height: 100px;
+ } 
 
 
 /* Firefox */
@@ -357,7 +369,8 @@ input[type=number] {
 }
 
 .mat-form-field {
-  width: 229px;
+  /* width: 229px; */
+  width: 100%;
   height: 38px;
   border-radius: 10px;
   font-family: 'Gilroy';
@@ -372,6 +385,7 @@ input[type=number] {
   font-family: 'Gilroy-SemiBold';
   color: #000000;
   font-size: 14px;
+  margin-left: 18px;
 }
 
 .boldR {
@@ -1180,7 +1194,35 @@ li {
   position: relative;
   bottom: 89px;
 }
+.promotion-card {
+  height: 159px;
+  left: 0px;
+  top: 0px;
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow-y: auto;
+}
 
+.promoimgs {
+  display: -webkit-box;
+}
+.card1 {
+  height: 114px;
+  width: 109px;
+  border-radius: 10px;
+  margin-top: 21px;
+  margin-left: 61px;
+  cursor: pointer;
+}
+.card1.selected {
+  border: 5px solid #187ddd;
+}
+.selected {
+  background-color: #00187A;
+  color: white;
+}
 .productdrpdowntwo {
   width: 365px;
   position: relative;
@@ -1218,6 +1260,33 @@ li {
   border: 0.5px solid #000000;
   border-radius: 10px;
 }
+.coll_apsible {
+  cursor: pointer;
+  padding: 5px;
+   width: 99%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-radius: 10px 10px 0px 0px;
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  border-radius: 10px;
+}
+.collapsiblePro {
+  cursor: pointer;
+  padding: 5px;
+   width: 99%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-radius: 10px 10px 0px 0px;
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  border-radius: 10px;
+  margin-top: 2%;
+}
 
 /* .active, .collapsible:hover {
   background-color: #555;
@@ -1236,11 +1305,32 @@ li {
   margin: 0px 18px;
   
 }
+.con_tent {
+  padding: 0 18px 10px;
+  box-sizing: border-box;
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: #686E74;
+  border-radius: 0px 0px 10px 10px;
+   overflow: auto; 
+  
+  margin: 0px 18px;
+  
+}
 .top-bottom {
+  margin-top: 25px;
+}
+.t_op-bottom {
   margin-top: 25px;
 }
 
 .label-cls {
+  position: relative;
+  top: 6px;
+  font-family: 'Gilroy-Light';
+  font-size: 18px;
+}
+.label-class {
   position: relative;
   top: 6px;
   font-family: 'Gilroy-Light';
@@ -1556,6 +1646,7 @@ li {
   border-radius: 10px;
   height: 30px;
 }
+
 ::ng-deep.shipingAddress .ng-select-container {
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
@@ -1570,7 +1661,7 @@ li {
 }
 
  ::ng-deep.orderDatepicker .mat-form-field-appearance-fill .mat-form-field-flex {
-   width: 230px;
+   /* width: 230px; */
   
   height: 40px;
   background: #FFFFFF;
@@ -1603,7 +1694,13 @@ li {
 .expand-arrows {
   width: 30%;
   position: relative;
-right: -572px;
+right: -603px;
+  top: 5px;
+}
+.expand-arrowws {
+  width: 30%;
+  position: relative;
+right: -65px;
   top: 5px;
 }
 /* ::ng-deep.selectgeo .multiselect-dropdown .dropdown-btn {
@@ -1692,6 +1789,8 @@ right: -572px;
   font-size: 13px;
   font-family: 'Gilroy-Light';
   color:#000000;
+  width: 100%;
+  margin-left: 16px;
   
 
 }

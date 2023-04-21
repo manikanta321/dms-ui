@@ -1221,9 +1221,9 @@ tr:nth-child(even) {
   color: #000;
 }
 
-.card1.selected {
+  .card1.selected {
   border: 5px solid #187ddd;
-}
+}  
 
 .txt-error {
   color: red;

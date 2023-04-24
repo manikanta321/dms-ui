@@ -406,7 +406,7 @@ export class MaterialAddEditpopupComponent {
     if (this.typesData != '') {
       this.getAllUom();
     }
-    this.baseUoMData = this.dataGetById.baseUoMId
+    this.uomID = this.dataGetById.baseUoMId
     this.gloabKey = this.dataGetById.globalCode
     this.Sku = this.dataGetById.productSKUName
     this.shortCode = this.dataGetById.shortCode
@@ -550,7 +550,7 @@ export class MaterialAddEditpopupComponent {
       StockItemTypeId: this.typesData,
       StockItemName: this.materialName,
       StockItemDesc: this.stockItemDesc,
-      BaseUoMId: this.baseUoMData,
+      BaseUoMId: this.uomID,
       Imageurl: this.base64textString,
       Materialcustomidentifier: this.MaterialCustomIdentifiersEdit,
       ExpiryPeriod: this.expiryDate ?? '0',
@@ -593,7 +593,7 @@ export class MaterialAddEditpopupComponent {
       StockItemDesc: this.stockItemDesc,
       BaseUoMId: this.uomID,
       Imageurl: this.base64textString,
-      Materialcustomidentifier: this.MaterialCustomIdentifiers,
+      Materialcustomidentifier: this.MaterialCustomIdentifiersEdit,
       ExpiryPeriod: this.expiryDate ?? '0',
       IsProduct: +!this.checked
     }
@@ -622,7 +622,7 @@ export class MaterialAddEditpopupComponent {
       StockItemDesc: this.stockItemDesc,
       BaseUoMId: this.uomID,
       Imageurl: this.base64textString,
-      Materialcustomidentifier: this.MaterialCustomIdentifiers,
+      Materialcustomidentifier: this.MaterialCustomIdentifiersEdit,
       ExpiryPeriod: this.expiryDate ?? '0',
       IsProduct: +!this.checked
     }
@@ -631,7 +631,7 @@ export class MaterialAddEditpopupComponent {
       if (res.response.status == false) {
         alert(res.response.result)
       } else {
-        // this.dialog.closeAll()
+        this.dialog.closeAll()
       }
     })
     console.log(data)

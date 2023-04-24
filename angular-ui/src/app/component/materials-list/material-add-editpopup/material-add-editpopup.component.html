@@ -113,7 +113,7 @@
                 <div class="uomdrp" >
                   <ng-select [items]="rowData5" class="searchbtnIcon" id="nameUOM" name="nameUOM" required
                     [virtualScroll]="true" bindLabel="uoMShortName" bindValue="uoMId" [searchable]="true"
-                    [clearable]="false" placeholder="Search & select measuring unit" [(ngModel)]="baseUoMData"
+                    [clearable]="false" placeholder="Search & select measuring unit" [(ngModel)]="uomID"
                     (change)="onUomSelect($event)" #nameUOM="ngModel" >
                   </ng-select>
                   <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;position: absolute;"
@@ -183,6 +183,7 @@
                         <mat-chip [value]="data" #identifierId="matChip" *ngFor="let data of selectId"
                           [selected]="isSelectedMaterialIdentifier(data)" (click)="selectMaterialIdentifier(data)"
                                     class="cold">
+                                    
                                    
                           <!-- <mat-icon *ngIf="identifierId.selected">check</mat-icon> -->
                           {{data.materialCustomName}}

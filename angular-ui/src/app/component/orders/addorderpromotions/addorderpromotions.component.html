@@ -425,12 +425,42 @@
                         <label><h1>Promotions</h1></label>
                         <div class="promotion-card">
                             <div class="promoimgs">
-                                <div class="col-md-2 img-container" *ngFor="let Item of arrayOfImages;let i=index;">
-                                    <div (click)="getpromotionImages($event,Item);">
-                                        <img class="card1" src="data:image/jpeg;base64,{{Item.imageurl}}"
-                                            [ngClass]="{ 'selected': Item.isSelected }" alt="image does not exit">
+
+                                <div class="row">
+                                    <div class="col-md-3" *ngFor="let Item of arrayOfImages;let i=index;">
+                                        <div class="promotion-container" (click)="selectPrmotionItem(Item)">
+                                            <div class="img-container">
+                                                <!-- <img class="promotion-img" src="https://via.placeholder.com/260x280"  alt="Promotion"/> -->
+                                                <img class="promotion-img" src="data:image/jpeg;base64,{{Item.imageurl}}"  alt="Promotion"/>
+                                                 
+                                            </div>
+                                            <div class="promotion-info">
+                                                <div class="promo-name">
+                                                    Name: <span> {{Item.promotionName}}</span>
+                                                </div>
+                                                
+                                                <div class="promo-type">
+                                                    Type: <span> Ask Back end team</span>
+                                                </div>
+                                                <div class="promo-view-wrapper">
+                                                    <div class="promo-view" (click)="showPromotionInfo($event,Item)">
+                                                            <mat-icon> remove_red_eye </mat-icon>
+                                                    </div> 
+                                                </div>
+                                            </div>
+                                            <div class="cancel-icon" (click)="removePromotion($event,Item)">
+                                                <mat-icon mat-button class="close-icon">close</mat-icon>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
+                                
+                                <!-- <div class="col-md-3 img-container" *ngFor="let Item of arrayOfImages;let i=index;">
+                                    <div (click)="getpromotionImages($event,Item);">
+                                        <img class="card1" src="data:image/jpeg;base64,{{Item.imageurl}}"  [ngClass]="{ 'selected': Item.isSelected }" alt="image does not exit"/>
+                                    </div>
+                                </div> -->
                                </div>
                         </div>
                     </div>

@@ -33,8 +33,8 @@ export class AddorderpromotionsComponent implements OnInit {
   dealerInfo = false;
   orderitem = false;
   otherInfo = false;
-  viewpromotions=false;
-  ConfiromViewPro=false;
+  viewpromotions = false;
+  ConfiromViewPro = false;
   image1 = 'assets/img/minimize-tag.png';
   image2 = 'assets/img/minimize-tag.png';
   image3 = 'assets/img/minimize-tag.png';
@@ -303,14 +303,14 @@ export class AddorderpromotionsComponent implements OnInit {
     }
   }
   expandPromotions() {
-     this.viewpromotions = !this.viewpromotions;
+    this.viewpromotions = !this.viewpromotions;
 
-     if (this.viewpromotions === false) {
-       this.image1 = 'assets/img/maximize-arrow.png';
-     } else {
-       this.image1 = 'assets/img/minimize-tag.png';
+    if (this.viewpromotions === false) {
+      this.image1 = 'assets/img/maximize-arrow.png';
+    } else {
+      this.image1 = 'assets/img/minimize-tag.png';
 
-     }
+    }
   }
   expandConfirmPromotions() {
     this.ConfiromViewPro = !this.ConfiromViewPro;
@@ -321,7 +321,7 @@ export class AddorderpromotionsComponent implements OnInit {
       this.image1 = 'assets/img/minimize-tag.png';
 
     }
- }
+  }
 
   expandOrderItemsDiv() {
     this.orderitem = !this.orderitem;
@@ -354,15 +354,17 @@ export class AddorderpromotionsComponent implements OnInit {
       return;
     }
 
-    const dialogRef = this.dialog.open(AddOrderPromotionlistComponent,  {minWidth: '96vw', height: '730px',
-    panelClass: 'orders-add-Promotions',
-     data: this.AddOrderPromotionData });
+    const dialogRef = this.dialog.open(AddOrderPromotionlistComponent, {
+      minWidth: '96vw', height: '730px',
+      panelClass: 'orders-add-Promotions',
+      data: this.AddOrderPromotionData
+    });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         this.AddOrderPromotionData = res;
         this.getShippingandPackingcharges();
       }
-    })    
+    })
     // localStorage.setItem('buygroupromo', '')
   }
   getPromotionsImages() {
@@ -372,10 +374,11 @@ export class AddorderpromotionsComponent implements OnInit {
     }
     console.log(data, "dealer and ge data");
     this.spinner.show();
+    this.arrayOfImages = [];
     this.orders.orderpromotionimages(data).subscribe((res: any) => {
       this.imagesapis = res.response
-      if(this.imagesapis == '') {
-        this.arrayOfImages =[];
+      if (this.imagesapis == '') {
+        this.arrayOfImages = [];
       }
       this.spinner.hide();
       console.log(this.imagesapis, "imagesres");
@@ -384,7 +387,6 @@ export class AddorderpromotionsComponent implements OnInit {
         let index = this.currentSelectedPromos.findIndex(x => (x.promotionId == item.promotionId || x.promotionId == item.productPromotionsId));
         let obj = {
           "productPromotionsId": item.productPromotionsId,
-          // shd kep is selected as flase
           "isSelected": index !== -1 ? true : false,
           "promotionTypesId": item.promotionTypesId,
           "promotionName": item.promotionName,
@@ -392,14 +394,14 @@ export class AddorderpromotionsComponent implements OnInit {
         }
         this.arrayOfImages.push(obj);
       });
-      console.log("ArrayOfImagessss",this.arrayOfImages)
+      console.log("ArrayOfImagessss", this.arrayOfImages)
       // let previousSelectedPromos = []
       this.arrayOfImages.forEach(x => {
         if (x.isSelected) this.imagesid.push(x.productPromotionsId);
       })
       if (this.imagesid.length > 0)
         this.getProductsOfPromotionForOrder();
-          console.log("ArrayOfImages",this.arrayOfImages)
+      console.log("ArrayOfImages", this.arrayOfImages)
     });
   }
   getProductsOfPromotionForOrder() {
@@ -415,7 +417,7 @@ export class AddorderpromotionsComponent implements OnInit {
       return;
     }
 
-    
+
     this.orderNonPromotionsList();
     this.Non_promotions = true;
   }
@@ -486,7 +488,7 @@ export class AddorderpromotionsComponent implements OnInit {
     localStorage.setItem("dealerid", this.customerId);
     localStorage.removeItem("geographyId");
     this.geographyId = null;
-    this.AddOrderPromotionData=[];
+    this.AddOrderPromotionData = [];
     this.orders.GetGeoGrapydropdownList(this.customerId).subscribe((res) => {
       let GeoGrapydropdownList = res.response;
       console.log(GeoGrapydropdownList, "GeoGrapydropdownList")
@@ -529,17 +531,17 @@ export class AddorderpromotionsComponent implements OnInit {
     });
     console.log(this.customerId, "dealrs id")
     // this.getPromotionsImages();
-    console.log("geoooo",this.geographyId);
-    console.log("customerId",this.customerId)
+    console.log("geoooo", this.geographyId);
+    console.log("customerId", this.customerId)
   }
 
   onItemSelectgeo(item: any) {
     this.geographyId = item.geographyId;
     localStorage.setItem("geographyId", this.geographyId)
     console.log(this.geographyId, "geographyId")
-        this.getPromotionsImages();
-        console.log("CustomerID",this.customerId)
-        console.log("GeographyId",this.geographyId)
+    this.getPromotionsImages();
+    console.log("CustomerID", this.customerId)
+    console.log("GeographyId", this.geographyId)
   }
   onItemSelectshippingAddress(item: any) {
     this.addressId = item.addressId;
@@ -1556,7 +1558,19 @@ export class AddorderpromotionsComponent implements OnInit {
     });
   }
 
-  getpromotionImages(e, item) { 
-    
+  getpromotionImages(e, item) {
+
+  }
+  removePromotion(e, promotionItem) {
+    e.stopPropagation();
+    console.log("Remove Icon Clicked");
+  }
+
+  showPromotionInfo(e, promotionItem) {
+    e.stopPropagation();
+    console.log("Remove Icon Clicked");
+  }
+  selectPrmotionItem(promotionItem) {
+    console.log("selectPrmotionItem")
   }
 }

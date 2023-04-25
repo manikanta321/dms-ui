@@ -2319,3 +2319,78 @@ table thead, table tbody tr {
     font-family: 'Gilroy-Light';
     font-size: 13px;
    }
+
+
+   .promotion-container{
+    position: relative;
+    display: flex;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 5px;
+    margin: 10px 0;
+    cursor: pointer;
+   }
+
+   .promotion-container.selected{
+    border: 2px solid #000000;
+    background: #fff;
+   }
+   .promotion-container .img-container{
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    overflow: hidden;
+    object-fit: cover;
+    /* padding: 1px; */
+    border: 1px dashed #000;
+   }
+   
+
+   .promotion-container .img-container img{
+    width: 100%;
+         /* object-fit: cover; */
+   }
+
+   .promotion-container .promotion-info{
+    color: #000000;
+    font-size: 12px;
+    margin-left: 10px;
+   }
+
+   .promotion-container .promo-view{
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    cursor: pointer;
+   }
+
+   .promotion-container .promo-view .mat-icon{
+    width: 26px;
+    border: 1px solid #ccc;
+   }
+
+   .cancel-icon .mat-icon{
+    background: #000000;
+    color: #FFFFFF;
+    position: absolute;
+    top: -20px;
+    padding-top: 5px;
+    border-radius: 50%;
+    padding-left: 5px;
+    margin-left: -5px;
+    cursor: pointer;
+    display: none;
+   }
+
+   
+   .promotion-container.selected .cancel-icon .mat-icon{
+    display: block;
+   }
+   .promotion-container .promo-name span{
+    color: #000000;
+    font-weight: bold;
+   }
+
+   .promotion-card .row {
+    margin: 0;
+   }

@@ -77,8 +77,13 @@ export class AddOrderPromotionlistComponent implements OnInit {
     console.log(this.geographyId, "this.geographyId")
     this.dealerid = localStorage.getItem("dealerid");
     console.log(this.dealerid, "this.this.dealerid")
-    this.currentSelectedPromos = this.data ?? [];
-    this.getPromotionsImages();
+    this.currentSelectedPromos = this.data.selectedData ?? [];
+    this.imagesid = this.data.imagesid;
+    // this.arrayOfImages.forEach(x => {
+    //   if (x.isSelected) this.imagesid.push(x.productPromotionsId);
+    // })
+    // if (this.imagesid.length > 0)
+      this.getProductsOfPromotionForOrder();
   }
 
 
@@ -103,40 +108,40 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
   // promotion 
 
-  getPromotionsImages() {
-    let data = {
-      "Dealerid": this.dealerid,
-      "GeographyIdid": this.geographyId
-    }
-    console.log(data, "dealer and ge data");
-    this.spinner.show();
-    this.orders.orderpromotionimages(data).subscribe((res: any) => {
-      this.imagesapis = res.response
-      this.spinner.hide();
-      console.log(this.imagesapis, "imagesres");
-      this.imagesapis.forEach(item => {
-        console.log(this.currentSelectedPromos);
-        let index = this.currentSelectedPromos.findIndex(x => (x.promotionId == item.promotionId || x.promotionId == item.productPromotionsId));
-        let obj = {
-          "productPromotionsId": item.productPromotionsId,
-          // shd kep is selected as flase
-          "isSelected": index !== -1 ? true : false,
-          "promotionTypesId": item.promotionTypesId,
-          "promotionName": item.promotionName,
-          "imageurl": item.imageurl
-        }
-        this.arrayOfImages.push(obj);
-      });
+  // getPromotionsImages() {
+  //   let data = {
+  //     "Dealerid": this.dealerid,
+  //     "GeographyIdid": this.geographyId
+  //   }
+  //   console.log(data, "dealer and ge data");
+  //   this.spinner.show();
+  //   this.orders.orderpromotionimages(data).subscribe((res: any) => {
+  //     this.imagesapis = res.response
+  //     this.spinner.hide();
+  //     console.log(this.imagesapis, "imagesres");
+  //     this.imagesapis.forEach(item => {
+  //       console.log(this.currentSelectedPromos);
+  //       let index = this.currentSelectedPromos.findIndex(x => (x.promotionId == item.promotionId || x.promotionId == item.productPromotionsId));
+  //       let obj = {
+  //         "productPromotionsId": item.productPromotionsId,
+  //         // shd kep is selected as flase
+  //         "isSelected": index !== -1 ? true : false,
+  //         "promotionTypesId": item.promotionTypesId,
+  //         "promotionName": item.promotionName,
+  //         "imageurl": item.imageurl
+  //       }
+  //       this.arrayOfImages.push(obj);
+  //     });
 
-      // let previousSelectedPromos = []
-      this.arrayOfImages.forEach(x => {
-        if (x.isSelected) this.imagesid.push(x.productPromotionsId);
-      })
-      if (this.imagesid.length > 0)
-        this.getProductsOfPromotionForOrder();
+  //     // let previousSelectedPromos = []
+  //     this.arrayOfImages.forEach(x => {
+  //       if (x.isSelected) this.imagesid.push(x.productPromotionsId);
+  //     })
+  //     if (this.imagesid.length > 0)
+  //       this.getProductsOfPromotionForOrder();
 
-    });
-  }
+  //   });
+  // }
 
 
   getpromotionlistById(e, item) {

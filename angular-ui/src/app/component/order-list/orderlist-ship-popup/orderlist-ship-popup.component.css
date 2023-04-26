@@ -970,7 +970,7 @@ li {
 
 .collapsible {
   cursor: pointer;
-  padding: 5px;
+  /* padding: 5px; */
   width: 100%;
   border: none;
   text-align: left;
@@ -1012,7 +1012,7 @@ li {
 height: 5px;
 }
 .top-bottom {
-  margin-top: 25px;
+  /* margin-top: 25px; */
   padding-bottom: 15px;
 }
 
@@ -1066,6 +1066,7 @@ height: 5px;
 .promotionpopup-scroll {
   height: 659px !important;
   padding-right: 4px;
+  margin-top: -13px;
   /* width: 3000px !important; */
   /* max-width: 97vw !important; */
 }

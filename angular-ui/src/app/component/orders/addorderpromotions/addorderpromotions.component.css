@@ -2292,7 +2292,14 @@ table thead, table tbody tr {
   right: -2px;
 }
 
-.removeCircle{
+.action-items{
+  display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+.removeCircle, .edit{
   cursor: pointer;
 }
 

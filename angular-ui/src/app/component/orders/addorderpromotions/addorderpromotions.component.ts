@@ -14,6 +14,7 @@ import { ConsoleEventLogger } from '@generic-ui/hermes/core/infrastructure/logge
 import { AssosiationServicesService } from 'src/app/services/assosiation-services.service';
 import { SharedServiceMaterialListService } from 'src/app/services/shared-service-material-list.service';
 import { AddorderproSuccessPopupComponent } from './addorderpro-success-popup/addorderpro-success-popup.component';
+import { ViewPromotionPopupComponent } from '../../pramotion-action/view-promotion-popup/view-promotion-popup.component';
 @Component({
   selector: 'app-addorderpromotions',
   templateUrl: './addorderpromotions.component.html',
@@ -133,6 +134,8 @@ export class AddorderpromotionsComponent implements OnInit {
   imagesid: any = [];
   arrayOfImages: any = [];
   imagesapis: any = [];
+  requestCount = 0;
+  resCount = 0;
   dateChange(e) {
 
     this.selectedStartDate = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
@@ -357,11 +360,13 @@ export class AddorderpromotionsComponent implements OnInit {
     const dialogRef = this.dialog.open(AddOrderPromotionlistComponent, {
       minWidth: '96vw', height: '730px',
       panelClass: 'orders-add-Promotions',
-      data: this.AddOrderPromotionData
+      data: { imagesid: this.imagesid, selectedData: this.AddOrderPromotionData }
+      // data: this.AddOrderPromotionData}
     });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         this.AddOrderPromotionData = res;
+        console.log(this.AddOrderPromotionData);
         this.getShippingandPackingcharges();
       }
     })
@@ -373,40 +378,56 @@ export class AddorderpromotionsComponent implements OnInit {
       "GeographyIdid": this.geographyId
     }
     console.log(data, "dealer and ge data");
-    this.spinner.show();
+    this.showSpinner();
     this.arrayOfImages = [];
-    this.orders.orderpromotionimages(data).subscribe((res: any) => {
-      this.imagesapis = res.response
-      if (this.imagesapis == '') {
-        this.arrayOfImages = [];
-      }
-      this.spinner.hide();
-      console.log(this.imagesapis, "imagesres");
-      this.imagesapis.forEach(item => {
-        console.log(this.currentSelectedPromos);
-        let index = this.currentSelectedPromos.findIndex(x => (x.promotionId == item.promotionId || x.promotionId == item.productPromotionsId));
-        let obj = {
-          "productPromotionsId": item.productPromotionsId,
-          "isSelected": index !== -1 ? true : false,
-          "promotionTypesId": item.promotionTypesId,
-          "promotionName": item.promotionName,
-          "imageurl": item.imageurl
+    this.orders.orderpromotionimages(data).subscribe({
+      next:(res: any) => {
+        this.imagesapis = res.response
+        if (this.imagesapis == '') {
+          this.arrayOfImages = [];
         }
-        this.arrayOfImages.push(obj);
-      });
-      console.log("ArrayOfImagessss", this.arrayOfImages)
-      // let previousSelectedPromos = []
-      this.arrayOfImages.forEach(x => {
-        if (x.isSelected) this.imagesid.push(x.productPromotionsId);
-      })
-      if (this.imagesid.length > 0)
-        this.getProductsOfPromotionForOrder();
-      console.log("ArrayOfImages", this.arrayOfImages)
+        this.hideSpinner();
+        console.log(this.imagesapis, "imagesres");
+        this.imagesapis.forEach(item => {
+          console.log(this.AddOrderPromotionData);
+          let index = this.AddOrderPromotionData.findIndex(x => (x.promotionId == item.promotionId || x.promotionId == item.productPromotionsId));
+          let obj = {
+            "productPromotionsId": item.productPromotionsId,
+            "isSelected": index !== -1 ? true : false,
+            "promotionTypesId": item.promotionTypesId,
+            "promotionName": item.promotionName,
+            "imageurl": item.imageurl
+          }
+          this.arrayOfImages.push(obj);
+        });
+        console.log("ArrayOfImagessss", this.arrayOfImages)
+        // let previousSelectedPromos = []
+        // this.arrayOfImages.forEach(x => {
+        //   if (x.isSelected) this.imagesid.push(x.productPromotionsId);
+        // })
+        // if (this.imagesid.length > 0)
+        //   this.getProductsOfPromotionForOrder();
+        // console.log("ArrayOfImages", this.arrayOfImages)
+      },
+      error:()=>{
+        this.hideSpinner();
+      }
     });
   }
-  getProductsOfPromotionForOrder() {
-    alert("Helloo")
+
+  showSpinner() {
+    this.requestCount++;
+    this.spinner.show();
   }
+  hideSpinner() {
+    this.resCount++;
+    this.resCount == this.requestCount ? this.spinner.hide() : this.spinner.show(); 
+    console.log(this.resCount, this.requestCount);
+      
+  }
+  // getProductsOfPromotionForOrder() {
+  //   alert("Helloo")
+  // }
   addOrderNonPromotionList() {
 
     localStorage.setItem("geographyId", this.geographyId);
@@ -420,6 +441,10 @@ export class AddorderpromotionsComponent implements OnInit {
 
     this.orderNonPromotionsList();
     this.Non_promotions = true;
+  }
+
+  editPromotionItem(promotionId){
+    console.log(promotionId);
   }
   removePromotionItem(clickedItem, promotionId) {
     // let ClickedPromotionObj = this.AddOrderPromotionData.find(x => x.promotionId == promotionId);
@@ -1097,15 +1122,20 @@ export class AddorderpromotionsComponent implements OnInit {
       "GeographyId": this.geographyId,
       "Dealerid": this.customerId,
     }
-    this.spinner.show();
+    this.showSpinner();
 
-    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
-      // this.orderNonPromotionsdata = res.response;
-      let orderNonPromotionsData = res.response;
-      console.log(orderNonPromotionsData, "orderNonPromotionsData tockeck");
-
-      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
-      this.spinner.hide();
+    this.orders.getorderNonPromotionslist(data).subscribe({
+      next:(res) => {
+        // this.orderNonPromotionsdata = res.response;
+        let orderNonPromotionsData = res.response;
+        console.log(orderNonPromotionsData, "orderNonPromotionsData tockeck");
+  
+        this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+        this.hideSpinner();
+      },
+      error:()=>{
+        this.hideSpinner();
+      }
     });
   }
 
@@ -1514,6 +1544,7 @@ export class AddorderpromotionsComponent implements OnInit {
         this.AddorderNonpromotiondata.itemDetails.push(obj);
       });
 
+      this.getPromotionsImages();
     }
 
 
@@ -1551,10 +1582,15 @@ export class AddorderpromotionsComponent implements OnInit {
 
 
 
-    this.spinner.show();
-    this.orders.getShippingandPackingcharges(payload).subscribe((res: any) => {
-      this.spinner.hide();
-      this.shippingPackingchargeDetails = res.response;
+    this.showSpinner();
+    this.orders.getShippingandPackingcharges(payload).subscribe({
+      next:(res: any) => {
+        this.hideSpinner();
+        this.shippingPackingchargeDetails = res.response;
+      },
+      error:(res)=>{
+        this.hideSpinner();
+      }
     });
   }
 
@@ -1564,13 +1600,32 @@ export class AddorderpromotionsComponent implements OnInit {
   removePromotion(e, promotionItem) {
     e.stopPropagation();
     console.log("Remove Icon Clicked");
+    promotionItem.isSelected = false;
   }
 
   showPromotionInfo(e, promotionItem) {
     e.stopPropagation();
-    console.log("Remove Icon Clicked");
+    localStorage.setItem('promoclickId',promotionItem.productPromotionsId)
+   localStorage.setItem('promoclickName',promotionItem.promotionName)
+    const config: MatDialogConfig = {
+      minWidth: '90vw',      
+      height: '610px',
+      autoFocus:false,
+      data:{hideGeoDealer:true}
+    };
+    this.dialog.open( ViewPromotionPopupComponent,config);
   }
   selectPrmotionItem(promotionItem) {
     console.log("selectPrmotionItem")
+    // promotionItem.isSelected = true;
+    this.imagesid = [];
+    this.arrayOfImages.forEach(x => {
+      if (x.isSelected) this.imagesid.push(x.productPromotionsId);
+    })
+    if(promotionItem.isSelected == false){
+      this.imagesid.push(promotionItem.productPromotionsId);
+    }
+    
+    this.addOrderPromotionList();
   }
 }

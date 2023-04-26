@@ -219,7 +219,7 @@
   
   .collapsible {
     cursor: pointer;
-    padding: 5px;
+    padding-left: 8px;
     width: 100%;
     border: none;
     text-align: left;

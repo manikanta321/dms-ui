@@ -451,7 +451,7 @@
                                                 </div>
 
                                                 <div class="promo-type">
-                                                    Type: <span> Ask Back end team</span>
+                                                    Type: <span> {{Item.promotionTypesName}}</span>
                                                 </div>
                                                 <div class="promo-view-wrapper">
                                                     <div class="promo-view" (click)="showPromotionInfo($event,Item)">
@@ -622,8 +622,12 @@
                                     <td>
                                         <input type="text" disabled [(ngModel)]="Item.amount" class="IteminputBoxes">
                                     </td>
-                                    <td><mat-icon class="removeCircle" (click)=removeNonPromotionItem(Item)>
-                                            remove_circle</mat-icon></td>
+
+                                    <td>
+                                        <div class="removeCircle" (click)="removeNonPromotionItem(Item)">
+                                            <i class="fa fa-trash-o"></i>
+                                        </div>
+                                    </td>
                                 </tr>
 
                             </table>

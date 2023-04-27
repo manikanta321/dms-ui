@@ -347,7 +347,7 @@ export class AddorderpromotionsComponent implements OnInit {
     }
   }
 
-  addOrderPromotionList() {
+  addEditOrderPromotionList() {
 
     localStorage.setItem("geographyId", this.geographyId);
     localStorage.setItem("dealerid", this.customerId);
@@ -366,7 +366,9 @@ export class AddorderpromotionsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         this.AddOrderPromotionData = res;
-        console.log(this.AddOrderPromotionData);
+        this.arrayOfImages.forEach(x => {
+          x.isSelected = this.AddOrderPromotionData.findIndex(y => y.promotionId == x.productPromotionsId) !== -1;
+        })
         this.getShippingandPackingcharges();
       }
     })
@@ -396,11 +398,12 @@ export class AddorderpromotionsComponent implements OnInit {
             "isSelected": index !== -1 ? true : false,
             "promotionTypesId": item.promotionTypesId,
             "promotionName": item.promotionName,
-            "imageurl": item.imageurl
+            "imageurl": item.imageurl,
+            "promotionTypesName":item.promotionTypesName
           }
           this.arrayOfImages.push(obj);
         });
-        console.log("ArrayOfImagessss", this.arrayOfImages)
+        // console.log("ArrayOfImagessss", this.arrayOfImages)
         // let previousSelectedPromos = []
         // this.arrayOfImages.forEach(x => {
         //   if (x.isSelected) this.imagesid.push(x.productPromotionsId);
@@ -444,15 +447,20 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   editPromotionItem(promotionId){
-    console.log(promotionId);
+
+    this.arrayOfImages.forEach(x => {
+      if (x.isSelected) this.imagesid.push(x.productPromotionsId);
+    })
+    this.addEditOrderPromotionList();
   }
   removePromotionItem(clickedItem, promotionId) {
     // let ClickedPromotionObj = this.AddOrderPromotionData.find(x => x.promotionId == promotionId);
     let index = this.AddOrderPromotionData.findIndex(x => x.promotionId == promotionId);
     this.AddOrderPromotionData.splice(index, 1);
-    // if (ClickedPromotionObj) {
-    //   let index = ClickedPromotionObj.itemDetails.findIndex(x => x.stockitemid == clickedItem.stockitemid);
-    // }
+        
+    this.arrayOfImages.map(x=>{
+      x.isSelected = this.AddOrderPromotionData.findIndex(y => y.promotionId == x.productPromotionsId) !== -1;
+    })
     this.getShippingandPackingcharges();
   }
   removeNonPromotionItem(clickedItem) {
@@ -1594,13 +1602,11 @@ export class AddorderpromotionsComponent implements OnInit {
     });
   }
 
-  getpromotionImages(e, item) {
-
-  }
   removePromotion(e, promotionItem) {
     e.stopPropagation();
-    console.log("Remove Icon Clicked");
     promotionItem.isSelected = false;
+    this.AddOrderPromotionData = this.AddOrderPromotionData.filter(x=> x.promotionId !== promotionItem.productPromotionsId);
+    this.getShippingandPackingcharges();
   }
 
   showPromotionInfo(e, promotionItem) {
@@ -1615,9 +1621,8 @@ export class AddorderpromotionsComponent implements OnInit {
     };
     this.dialog.open( ViewPromotionPopupComponent,config);
   }
+
   selectPrmotionItem(promotionItem) {
-    console.log("selectPrmotionItem")
-    // promotionItem.isSelected = true;
     this.imagesid = [];
     this.arrayOfImages.forEach(x => {
       if (x.isSelected) this.imagesid.push(x.productPromotionsId);
@@ -1626,6 +1631,6 @@ export class AddorderpromotionsComponent implements OnInit {
       this.imagesid.push(promotionItem.productPromotionsId);
     }
     
-    this.addOrderPromotionList();
+    this.addEditOrderPromotionList();
   }
 }

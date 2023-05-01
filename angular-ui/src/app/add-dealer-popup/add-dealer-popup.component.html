@@ -50,7 +50,7 @@
                                         <div class="col-3 ">
                                             <label>Email-ID<span>*</span></label>
                                             <br>
-                                            <input type="email" formControlName="Email"
+                                            <input type="email" formControlName="Email"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$"
                                                 class="addDelercols form-control" required
                                                 placeholder="Enter dealer email id">
                                             <span class="text-danger"
@@ -89,7 +89,7 @@
                                         <div class="col-3">
                                             <label>Phone No<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="Phoneno" pattern="^((\\+91-?)|0)?[0-9]{10}$"
+                                            <input type="text" formControlName="Phoneno"  pattern="^((\\+91-?)|0)?[0-9]{10}$" 
                                                 class="addDelercols form-control" required
                                                 placeholder="Enter dealer phone no">
                                             <span class="text-danger"
@@ -181,10 +181,10 @@
                                     </div>
                                     <div class="row secondDiv">
                                         <div class="col-4 fontcolor">
-                                            <label>Email ID<span>*</span></label>
+                                            <label>Email ID <span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="EmailId" pattern="( ^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$)"
-                                                class="addDelercols form-control" required
+                                            <input type="text" formControlName="EmailId" 
+                                                class="addDelercols form-control" required  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$"
                                                 placeholder="Enter admin email id">
                                             <span class="text-danger"
                                                 *ngIf="addAddressDetailsFormControl['EmailId'].touched  && addAddressDetailsFormControl['EmailId'].errors && addAddressDetailsFormControl['EmailId'].errors['required']">

@@ -727,14 +727,14 @@ initAddress2(defaultType): FormGroup {
   formReader() {
     this.addAddressDetailsForm = this._formBuilder.group({
       CustomerName: ['', [Validators.required]],
-      Email: ['', [Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+     Email: ['', [Validators.required],Validators.pattern('^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$')],
       Code: ['', [Validators.required]],
       website: ['', [Validators.required]],
       Phoneno: ['', [Validators.required],Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')],
       company_id: [''],
       OtherIdentifier: [''],
       UserName: ['', [Validators.required]],
-      EmailId: ['', [Validators.required],Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')],
+      EmailId: ['', [Validators.required],Validators.pattern('^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$')],
       Mobile: ['', [Validators.required],Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')],
       FirstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],

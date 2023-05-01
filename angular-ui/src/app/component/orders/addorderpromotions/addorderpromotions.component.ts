@@ -447,7 +447,7 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   editPromotionItem(promotionId){
-
+    this.imagesid = [];
     this.arrayOfImages.forEach(x => {
       if (x.isSelected) this.imagesid.push(x.productPromotionsId);
     })

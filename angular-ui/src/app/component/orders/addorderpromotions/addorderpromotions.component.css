@@ -1357,6 +1357,7 @@ li {
   text-align: center;
   cursor: pointer;
   font-family: 'Gilroy-SemiBold';
+  margin-top: 2%;
 }
 .promotions-label {
   /* margin-left: -12px; */
@@ -1688,19 +1689,19 @@ li {
 
 
 .expand-arrow {
-  width: 30%;
+  width: 22%;
   position: relative;
   left: 72px;
   top: 4px;
 }
 .expand-arrows {
-  width: 30%;
+  width: 22%;
   position: relative;
 right: -603px;
   top: 5px;
 }
 .expand-arrowws {
-  width: 30%;
+  width: 22%;
   position: relative;
 right: -65px;
   top: 5px;
@@ -1907,7 +1908,7 @@ margin-top: -5px;
   
 }
 .expand-arrow {
-  width: 30%;
+  width: 22%;
   position: relative;
   right: -28px;
   top: 4px;

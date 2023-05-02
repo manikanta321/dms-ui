@@ -804,7 +804,8 @@ li {
 
 .collapsible {
   cursor: pointer;
-  padding: 5px;
+  /* padding: 5px; */
+  padding-left: 1%;
   width: 100%;
   border: none;
   text-align: left;
@@ -954,7 +955,7 @@ li {
 
 .collapsible {
   cursor: pointer;
-  padding: 5px;
+  /* padding: 5px; */
   width: 100%;
   border: none;
   text-align: left;
@@ -1055,7 +1056,7 @@ input[type="text"] {
 }
 
 .expand-arrow {
-  width: 27%;
+  width: 22%;
   position: relative;
   right: -58px;
   top: 8px;

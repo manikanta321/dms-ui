@@ -1023,33 +1023,6 @@ export class AddorderpromotionsComponent implements OnInit {
     });
   }
 
-  onProductSelect(item: any) {
-    
-    this.GetProductcategory.push(item.productGroupId)
-    console.log(item);
-  
-    const data =
-    {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
-      type: this.typesI,
-      MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
-      Search: this.searchText,
-      // payload
-      productgroup: this.GetProductcategory,
-      GeographyId: this.geographyId,
-      Dealerid: this.customerId
-    }
-    console.log(data)
-    console.log(this.GetProductcategory)
-    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
-      let orderNonPromotionsData = res.response;
-      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
-
-    });
-  }
-
   onTypeDeSelect(item: any) {
 
     this.typesI.forEach((element, index) => {
@@ -1077,38 +1050,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
   }
 
-  onProductDeSelect(item: any) {
-    this.GetProductcategory.forEach((element, index) => {
-      if (element == item.productGroupId) this.GetProductcategory.splice(index, 1);
-
-    });
-
-    const data =
-    {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
-      type: this.typesI,
-      MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
-      Search: this.searchText,
-      // payload
-      productgroup: this.GetProductcategory,
-      GeographyId: this.geographyId,
-      Dealerid: this.customerId
-    }
-
-
-    console.log(data)
-    console.log(this.GetProductcategory)
-    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
-      let orderNonPromotionsData = res.response;
-      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
-
-    });
-
-
-    
-  }
+  
 
   onTypeSelectOrAll() {
 
@@ -1148,48 +1090,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
   productMapData:any=[];
   productArray:any=[];
-  onProductSelectOrAll(item:any) {
-      this.GetProductcategory = this.productArray;
 
-      let Productdata = {
-        ProductcatId: this.GetProductcategory
-      }
-      console.log(" Product Category Array", this.GetProductcategory)
-
-
- this.productsubgroup.GetProductGroupList(Productdata).subscribe((res) => {
-
-       let Prosubcaty = res.response;
-       this.prosubgroupdropdown = res.response;
-      console.log("API calling  ", this.prosubgroupdropdown);   
-
-
- });
-    
-    this.GetProductcategory = this.productArray
-
-    const data =
-    {
-      Cat: this.catergory,
-      Sub_Cat: this.sub_categorys,
-      type: this.typesI,
-      MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
-      Search: this.searchText,
-      // payload
-      productgroup: this.GetProductcategory,
-      GeographyId: this.geographyId,
-      Dealerid: this.customerId
-    }
-
-
-    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
-      // this.orderNonPromotionsdata = res.response;
-      let orderNonPromotionsData = res.response;
-      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
-
-    }); 
-}
   OnTypeDeselectOrAll() {
     this.typesI = [];
     const data =
@@ -1203,27 +1104,6 @@ export class AddorderpromotionsComponent implements OnInit {
       GeographyId: this.geographyId,
       Dealerid: this.customerId
     }
-    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
-      // this.orderNonPromotionsdata = res.response;
-      let orderNonPromotionsData = res.response;
-      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
-
-    });
-  }
-
-
-  onProductDeSelectOrAll(item:any) {
-
-    this.GetProductcategory = [];
-    const data = {
-      category: [],
-      subCategory: [],
-      type: [],
-      productgroup: this.GetProductcategory,
-      productidentifier: [],
-      search: ''
-    }
-    
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
       let orderNonPromotionsData = res.response;
@@ -1913,5 +1793,113 @@ export class AddorderpromotionsComponent implements OnInit {
       console.log(this.orderNonPromotionsdata)
     }
     
+  }
+
+  onProductSelect(item: any) {
+
+    this.GetProductcategory.push(item.productGroupId)
+    console.log(item);
+
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
+      Search: this.searchText,
+      // payload
+      productgroup: this.GetProductcategory,
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
+    }
+    console.log(data)
+    console.log(this.GetProductcategory)
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
+    });
+  }
+  
+  onProductDeSelect(item: any) {
+    const index = this.GetProductcategory.indexOf(item.productGroupId);
+    if (index !== -1) {
+      this.GetProductcategory.splice(index, 1);
+    }
+
+    const data = {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
+      Search: this.searchText,
+      productgroup: this.GetProductcategory,
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
+    };
+
+    console.log(data);
+    console.log(this.GetProductcategory);
+
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+    });
+  }
+
+  onProductSelectOrAll(item: any) {
+    // Assuming `this.productArray` contains the available product group IDs
+    this.GetProductcategory = this.productArray;
+
+    let Productdata = {
+      ProductcatId: this.GetProductcategory
+    };
+    console.log("Product Category Array", this.GetProductcategory);
+
+    this.productsubgroup.GetProductGroupList(Productdata).subscribe((res) => {
+      let Prosubcaty = res.response;
+      this.prosubgroupdropdown = res.response;
+      console.log("API calling", this.prosubgroupdropdown);
+    });
+
+    const data = {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
+      Search: this.searchText,
+      productgroup: this.GetProductcategory,
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
+    };
+
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+    });
+  }
+
+  onProductDeSelectOrAll(item: any) {
+    this.GetProductcategory = [];
+
+    const data = {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
+      Search: this.searchText,
+      productgroup: this.GetProductcategory,
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
+    };
+
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+    });
   }
 }

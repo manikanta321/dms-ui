@@ -1,3 +1,8 @@
+.buyGrp 
+{
+  margin-top: -17px;
+}
+
 /* .Table1
 {
   background-color: #00187A;
@@ -6,6 +11,10 @@
 {
     border-radius: 5px;
     /* border: 2px solid black; */
+  }
+  .orders-add-Promotions .mat-dialog-container {
+    position: relative;
+    left: 2px;
   }
 
 
@@ -153,7 +162,7 @@ input::-webkit-inner-spin-button {
   width: 500px;
 }
 
-::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
+::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-containerrr {
   width: 767px;
   margin-top: -51px;
 }
@@ -196,7 +205,7 @@ input::-webkit-inner-spin-button {
 .head-t h3 {
   color: #000000;
   text-align: center;
-  margin-top: -18px;
+  /* margin-top: -18px; */
   margin-bottom: 2px;
 }
 
@@ -210,10 +219,10 @@ input::-webkit-inner-spin-button {
 .addU:after {
   content: "";
   display: block;
-  width: 317px;
+  width: 30%;
   height: 2px;
   background: #686E74;
-  right: 4px;
+  right: 37px;
   top: 50%;
   position: absolute;
 }
@@ -221,10 +230,10 @@ input::-webkit-inner-spin-button {
 .addU:before {
   content: "";
   display: block;
-  width: 317px;
+  width: 30%;
   height: 2px;
   background: #686E74;
-  left: 0;
+  left: 34px;
   top: 50%;
   position: absolute;
 }
@@ -243,11 +252,14 @@ span {
 }
 
 .close-icon {
-  left: 100%;
+  left: 98%;
   position: relative;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
+  top: 38px;
+  z-index: 1;
+  
 }
 
 label {
@@ -266,7 +278,7 @@ mat-form-field {
   border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 }
 
-::ng-deep.mat-dialog-container {
+::ng-deep.mat-dialog-containerrr {
   background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 }
 
@@ -646,7 +658,7 @@ li {
   width: 300px !important;
 }
 
-::ng-deep.mat-horizontal-content-container {
+::ng-deep.mat-horizontal-content-containerrr {
   overflow: hidden;
   padding: 0px 0px 0px 0px;
 }
@@ -833,12 +845,13 @@ li {
 }
 
 .top-bottom {
-  margin-top: 25px;
+  /* margin-top: 25px; */
+  margin-top: -24px;
 }
 
 .label-cls {
   position: relative;
-  top: 6px;
+  top: 4px;
 }
 
 .add-edit-promo {
@@ -879,6 +892,12 @@ li {
 
 .main {
   overflow-x: hidden !important;
+   height: 680px; 
+   margin-top: -2%;
+   overflow-y: auto;
+   
+   
+   
 }
 
 /* .promotionpopup-scroll {
@@ -902,7 +921,7 @@ li {
   text-align: center;
   margin-top: 49px;
   cursor: pointer;
-  margin-left: 40%;
+  margin-left: 44%;
 
 
 
@@ -950,8 +969,9 @@ li {
 }
 
 .label-div {
-  margin-top: 15px;
+  margin-top: 19px;
 }
+
 
 .collapsible {
   cursor: pointer;
@@ -1059,7 +1079,7 @@ input[type="text"] {
   width: 22%;
   position: relative;
   right: -58px;
-  top: 8px;
+  top: 4px;
 }
 
 .tax-select {
@@ -1112,7 +1132,7 @@ tr:nth-child(even) {
   color: white;
 }
 
-.p1Tag {
+/* .p1Tag {
   padding: 10px;
   background-color: rgb(24, 125, 221);
   border-radius: 50%;
@@ -1121,6 +1141,7 @@ tr:nth-child(even) {
   color: white;
   height: 32px;
   text-align: center;
+  display: none;
 
 
 
@@ -1130,7 +1151,7 @@ tr:nth-child(even) {
   width: 32px;
   padding-top: 5px;
   padding-left: 7px;
-}
+} */
 
 .warningicon {
   color: red;
@@ -1228,8 +1249,12 @@ tr:nth-child(even) {
 
 .txt-error {
   color: red;
-  display: block;
+  /* display: block; */
 }
+.align-center{
+  text-align: left;
+ }
+ 
 
 .double-tick {
   margin-left: 0.25rem;

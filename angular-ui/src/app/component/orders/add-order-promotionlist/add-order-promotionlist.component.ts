@@ -90,7 +90,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
   buysetsGroups(item) {
     // this.buysets = !this.buysets;
     let selectedGrp = this.griddatapromotions.find(x => x.productPromotionsId == item.productPromotionsId);
-    selectedGrp.isShowPromos = !selectedGrp.isShowPromos;
+     selectedGrp.isShowPromos = !selectedGrp.isShowPromos;
   }
 
   taxdropdown() {
@@ -146,10 +146,11 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
   getpromotionlistById(e, item) {
     // console.log(e, item);
-
+    console.log(item)
     if (this.imagesid.indexOf(item.productPromotionsId) == -1) {
       item.isSelected = true;
       this.imagesid.push(item.productPromotionsId);
+      console.log(item.productPromotionsId)
       this.getProductsOfPromotionForOrder();
     } else {
       item.isSelected = false;
@@ -161,30 +162,28 @@ export class AddOrderPromotionlistComponent implements OnInit {
   ProductPromotionOrderList: any[] = [];
   getProductsOfPromotionForOrder() {
     let data = {
-      "ProductPromotionId": this.imagesid,
+      "ProductPromotionId": this.imagesid.filter((id, index) => index === this.imagesid.indexOf(id)), // Only consider the first selected ID
       "Dealerid": this.dealerid,
       "GeographyIdid": this.geographyId
     }
-
+  
     this.spinner.show();
     console.log(this.imagesid, "listdatapromotionsids")
     this.orders.GetProductsOfPromotionForOrder(data).subscribe((res: any) => {
-      // this.griddatapromotions = res.response;
+        // this.griddatapromotions = res.response;
 
       // this.griddatapromotions.map(item => {
       //   item.isShowPromos = false;
       //   item.isProductSelected = false;
       //   return item;
       // });
-
       this.ProductPromotionOrderList = res.response;
       this.orderPromotionFormatter(this.ProductPromotionOrderList);
-      // this.griddata = this.orderNonPromotionFormatter(this.griddatapromotions);
-      // this.griddatapromotions.sort((a, b) => b.isProductSelected - a.isProductSelected   );
+      
       this.spinner.hide();
       console.log(this.griddatapromotions, "griddata");
     });
-  }
+  }  
 
   appendStockItemFields(stockItem, productPromotions) {
     let formatObj: any = {};
@@ -213,6 +212,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
     formatObj.isProductSelected = stockItem.isProductSelected == undefined ? false : stockItem.isProductSelected;
     formatObj.Quantity = stockItem.quantity == undefined ? null : stockItem.quantity;
     formatObj.Taxid = stockItem.taxid;
+    formatObj.registrationNumber = stockItem.registrationNumber;
+    formatObj.materialcustomidentifier = stockItem.materialcustomidentifier;
 
     return formatObj;
   }
@@ -224,7 +225,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
       let exisitPromotion = this.griddatapromotions.find(x => x.productPromotionsId === item.productPromotionsId);
 
       if (!exisitPromotion) {
-        item.isShowPromos = false;
+        // check first
+        item.isShowPromos = true;
         item.isProductSelected = false;
         item.showWarningMsg = false;
 

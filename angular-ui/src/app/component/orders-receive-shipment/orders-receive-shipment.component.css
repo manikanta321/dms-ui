@@ -330,7 +330,7 @@
     margin: 5px;
     font-size: 13px;
     align-items: center;
-    font-weight: 500;
+    font-family: 'Gilroy-SemiBold';
   }
   .DescInfo-labels {
     margin: 5px;
@@ -338,8 +338,9 @@
     align-items: center;
     font-weight: 500;
     position: relative;
-    top: 25px;
-    right: 17%;
+    font-family: 'Gilroy-Medium';
+    /* top: 25px;
+    right: 17%; */
   }
   .DescInfo-labelss {
     margin: 5px;
@@ -347,8 +348,9 @@
     align-items: center;
     font-weight: 500;
     position: relative;
-    top: 25px;
-    right: 19%;
+    font-family: 'Gilroy-Medium';
+    /* top: 25px;
+    right: 19%; */
   }
   
   ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
@@ -1096,7 +1098,6 @@ padding-left: 20px;
     font-family: 'Gilroy-SemiBold';
     font-size: 15px;
     line-height: 18px;
-   margin-right: -21%;
     align-items: center;
     text-align: center;
   
@@ -1120,7 +1121,7 @@ padding-left: 20px;
     cursor: pointer;
     margin-top: 4%;
     font-family: 'Gilroy-Bold';
-    margin-left: 20%;
+    margin-left: 1%;
   
   
   

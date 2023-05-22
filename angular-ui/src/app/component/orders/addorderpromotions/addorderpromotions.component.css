@@ -1,3 +1,38 @@
+
+.producty-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #44026C !important;
+}
+.product-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #44026C !important;
+}
+.head-t
+{
+  margin-top: -24px;
+}
+.TOTAL
+{
+
+  /* margin: auto; */
+  width: 35% !important;
+  background: #FFFFFF;
+  border-radius: 21px;
+  padding: 5px;
+  font-size: 13px;
+   margin-left: 76%; 
+  
+}
+.numbers
+{
+  padding-right: 5%;
+}
+.SUBITEMNAME {
+  font-size: 13.5px;
+  /* font-family: 'Gilroy-Medium'; */
+}
+
+ 
+
+
 ::ng-deep.orders-add-Promotions .mat-dialog-container {
   position: relative;
   left: 2px; 
@@ -26,14 +61,25 @@
 {
  
   position: relative;
-  left: 3%;
+  left: -2%;
 }
 
 .drop_ng
 {
  
   position: relative;
-  left: 6%;
+  left: -4%;
+}
+.Drop_ng
+{
+ 
+  position: relative;
+  left: -6%;
+}
+.dropng_ng
+{
+  position: relative;
+  left: 3%;
 }
 
 #color
@@ -584,7 +630,7 @@ input[type=number] {
 .head-t h3 {
   color: #000000;
   text-align: center;
-  margin-top: -18px;
+  /* margin-top: -18px; */
   /* margin-top: -3%; */
   margin-bottom: 2px;
  cursor: pointer;
@@ -655,7 +701,8 @@ span {
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  margin-top: 11px;
+  /* margin-top: 11px; */
+   /* z-index: 1;  */
 
 }
 label {
@@ -682,7 +729,8 @@ mat-form-field {
 
 ::ng-deep.mat-dialog-container {
   background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-   overflow: auto; 
+   /* overflow: auto;  */
+   overflow: hidden;
   
 
 
@@ -1196,7 +1244,7 @@ li {
   bottom: 89px;
 }
 .promotion-card {
-  height: 159px;
+   height: 111px;
   left: 0px;
   top: 0px;
   background: #FFFFFF;
@@ -1204,6 +1252,7 @@ li {
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   overflow-y: auto;
+  margin-top: -10px;
 }
 
 .promoimgs {
@@ -1319,10 +1368,10 @@ li {
   
 }
 .top-bottom {
-  margin-top: 14px;
+  margin-top: 9px;
 }
 .t_op-bottom {
-  margin-top: 25px;
+  margin-top: 10px;
 }
 
 .label-cls {
@@ -1375,8 +1424,9 @@ li {
 
 .main {
   overflow-x: hidden !important;
-   height: 621px; 
-  /* height: 686px; */
+   /* height: 621px;  */
+   margin-top: -1%;
+  height: 652px
 
 }
 
@@ -1385,7 +1435,7 @@ li {
 }
 .promotionpopup-scroll2 {
   max-height: 532px !important;
-  margin-top: -13px;
+  /* margin-top: -13px; */
 }
 
 .promotionpopup-scroll3 {
@@ -1400,7 +1450,7 @@ li {
   width: 860px !important;
   margin: auto;
   position: relative;
-  bottom: 6px;
+  bottom: 9px;
 }
 .footers {
   border-radius: 0px 0px 25px 25px;
@@ -1678,6 +1728,7 @@ li {
 
 .addbtns {
   float: right;
+  margin-right: -13%;
 }
 
 .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button .mat-datepicker-toggle-default-icon,
@@ -1757,14 +1808,14 @@ right: -65px;
 
 .IteminputBoxes {
   width: 100px;
-  height: 30px;
+  /* height: 30px; */
   background: none;
   border-radius: 10px;
   border: 1px solid black;
   font-size: 12.5px;
   color: black;
   border: 0px;
-  text-align: center;
+  text-align: right;
 }
 .IteminputBoxesD {
   width: 100px;
@@ -1779,8 +1830,10 @@ right: -65px;
 }
 
 .itemLeft {
-  width: 150px;
+  /* width: 150px; */
   font-size: 12.5px;
+  height: 1px;
+  text-align: left;
 }
 
 .text-area-extrainfo {
@@ -1802,8 +1855,8 @@ right: -65px;
 } */
 
 .promoItem {
-  width: 30px;
-  height: 30px;
+  width: 29px;
+  height: 21px;
   background: #0091EA;
   border-radius: 68%;
   color: white;
@@ -1892,7 +1945,8 @@ margin-top: -5px;
   padding: 20px;
   background: #fff;
   border-radius: 5px;
-  width: 96vw;
+  
+  width: 100vw;
   height: 730px;
   /* min-height: 263px; */
   /* height: auto; */
@@ -1904,7 +1958,7 @@ margin-top: -5px;
   border: 0.5px solid #000000;
   border-radius: 25px;
   margin-top: 8px;
-  left: 2%;
+  left: 0%;
   
 }
 .expand-arrow {
@@ -1915,7 +1969,7 @@ margin-top: -5px;
 }
 
 .input-icons {
-  width: 103%;
+  width: 86%;
   margin-bottom: 10px;
   margin: 0 5px;
 
@@ -1941,7 +1995,7 @@ margin-top: -5px;
   margin-top: 1px;
   background: #000000;
   border-radius: 20%;
-  margin-left: 54px;
+  margin-left: -59%;
 }
 
 .refreshbtn .refresh-icon {
@@ -2058,6 +2112,7 @@ top: 6px;
 .nonpromoSearch {
   display: flex;
   justify-content: end;
+  margin-bottom: -6px;
 }
 
 table {
@@ -2094,11 +2149,14 @@ tr:nth-child(even) {
 }
 
 .bottom-table {
-  background: #0879ea !important;
   /* border-radius: 0px 0px 24.5px 24.5px; */
   height: 34px;
   color: white;
   
+}
+.promotionItem
+{
+  background-color:#FFD580;
 }
 .tt
 {
@@ -2346,7 +2404,8 @@ table thead, table tbody tr {
     background: #fff;
    }
    .promotion-container .img-container{
-    height: 100px;
+    /* height: 100px; */
+    height: 66px;
     width: 100px;
     display: inline-block;
     overflow: hidden;
@@ -2358,6 +2417,7 @@ table thead, table tbody tr {
 
    .promotion-container .img-container img{
     width: 100%;
+    height: 56px;
          /* object-fit: cover; */
    }
 
@@ -2383,7 +2443,8 @@ table thead, table tbody tr {
     background: #000000;
     color: #FFFFFF;
     position: absolute;
-    top: -20px;
+    /* top: -20px; */
+    top: -11px;
     padding-top: 5px;
     border-radius: 50%;
     padding-left: 5px;
@@ -2403,4 +2464,35 @@ table thead, table tbody tr {
 
    .promotion-card .row {
     margin: 0;
+    margin-top: 2px;
    }
+   .align-center{
+    /* text-align: center; */
+    text-align: left;
+   }
+   .align-right{
+    /* text-align: right; */
+   }
+
+   ::ng-deep mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color:white !important;
+   
+  }
+  
+  ::ng-deep mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: #000a00e2 !important;
+   }
+  
+   ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: #000a00e2 !important;
+    
+  }
+  ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color:white !important;
+    }
+.togglebutton
+{
+  margin-left: 2%;
+  margin-top: -2%;
+}
+   

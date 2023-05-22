@@ -15,6 +15,9 @@ import { AssosiationServicesService } from 'src/app/services/assosiation-service
 import { SharedServiceMaterialListService } from 'src/app/services/shared-service-material-list.service';
 import { AddorderproSuccessPopupComponent } from './addorderpro-success-popup/addorderpro-success-popup.component';
 import { ViewPromotionPopupComponent } from '../../pramotion-action/view-promotion-popup/view-promotion-popup.component';
+import { PromotionService } from 'src/app/services/promotion.service';
+import { Item } from '@generic-ui/ngx-grid/core/structure/source/src/api/item/item';
+
 @Component({
   selector: 'app-addorderpromotions',
   templateUrl: './addorderpromotions.component.html',
@@ -22,6 +25,21 @@ import { ViewPromotionPopupComponent } from '../../pramotion-action/view-promoti
 })
 export class AddorderpromotionsComponent implements OnInit {
 
+  products: any = FormGroup;
+
+  ProductList: any = [];
+
+  prodArray: any[] = [];
+  showdata: boolean = false;
+  toggleState: boolean = false;
+  tableData: any[] = [];
+  allItemsSelected: boolean = false;
+  selectedOnly = false;
+  allItemsUnselected: boolean = false;
+  selectedData: any[] = [];
+  showSelectedData: boolean = false;
+  isSelected: boolean = false;
+  productID: any = [];
   currentSelectedPromos: any = [];
 
   confirm_Order: boolean = true;
@@ -49,6 +67,7 @@ export class AddorderpromotionsComponent implements OnInit {
   dropdownSettingscat: IDropdownSettings = {};
   dropdownSettingssubcat: IDropdownSettings = {};
   dropdownSettingstypeid: IDropdownSettings = {};
+  dropdownproductgroup: IDropdownSettings = {};
   dropdownSettingsmaterialid: IDropdownSettings = {};
   countCatagory: any;
   catagoryData: any;
@@ -64,6 +83,7 @@ export class AddorderpromotionsComponent implements OnInit {
   myForms!: FormGroup;
   categoryForm: any = FormGroup;
   subcategoryForm: any = FormGroup;
+  getproductForm: any = FormGroup;
   subCategoryFilter = false;
   typeFilter = false;
   type: any = [];
@@ -71,6 +91,8 @@ export class AddorderpromotionsComponent implements OnInit {
   selectedItems: any = [];
   sub_category: any = [];
   sub_categorys: any = [];
+  GetProductcategory: any = [];
+  proSUBGroup: any = [];
   typesData: any = [];
   materialIdentifierData: any = [];
   topping1: any = [];
@@ -83,6 +105,7 @@ export class AddorderpromotionsComponent implements OnInit {
   typesMapData: any = [];
   typesArray: any = [];
   materialIdentifier: any = [];
+  prosubgroupdropdown: any = [];
   materialIdentifierMapData: any = [];
   materialIdentifierArray: any = [];
   datanonpromotions: any = [];
@@ -99,7 +122,7 @@ export class AddorderpromotionsComponent implements OnInit {
   address: any = [];
   GeoGrapydropdownListdata: any;
   geographyId: any;
-  searchText: any = " ";
+  searchText: any = "";
   typesI: any = [];
   dealersbillingAddress: any = [];
   quantityadd: any = 0;
@@ -109,6 +132,8 @@ export class AddorderpromotionsComponent implements OnInit {
   err: any = " ";
   nonpromotionlist: any = [];
   stockitemname: any;
+  productSKUName: any;
+  registrationNumber: any;
   uomid: any;
   uomname: any;
   stock: any;
@@ -136,6 +161,8 @@ export class AddorderpromotionsComponent implements OnInit {
   imagesapis: any = [];
   requestCount = 0;
   resCount = 0;
+  rowDataproductGroup = [];
+  data: any;
   dateChange(e) {
 
     this.selectedStartDate = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
@@ -159,6 +186,9 @@ export class AddorderpromotionsComponent implements OnInit {
   dropdownSettings1: IDropdownSettings = {};
   dropdownSettings2: IDropdownSettings = {};
   dropdownSettings3: IDropdownSettings = {};
+
+  productData: any = [];
+  Productarr: any = [];
   selectgeo: any = ['country', 'state'];
   selectbillAddress: any = ['address1', 'address2'];
   selectShippingAddress: any = ['shippingAddress1', 'shipping2']
@@ -172,6 +202,8 @@ export class AddorderpromotionsComponent implements OnInit {
     pValue: '',
   }];
   constructor(private _formBuilder: FormBuilder, private spinner: NgxSpinnerService,
+    private productsubgroup: PromotionService, private ordersApisService: OrdersApisService,
+
     private http: HttpClient,
     private orders: OrdersApisService,
     private materialList: MaterialListService,
@@ -221,6 +253,9 @@ export class AddorderpromotionsComponent implements OnInit {
     this.taxdropdown();
     this.getclassification();
     this.selectMaterialIdentifier();
+    this.Productgroupset();
+
+
     this.dropdownSettingssubcat = {
       singleSelection: false,
       idField: 'subCatId',
@@ -231,6 +266,7 @@ export class AddorderpromotionsComponent implements OnInit {
       // 1  allowSearchFilter: this.subCategoryFilter,
       allowSearchFilter: true
     };
+    console.log(this.dropdownSettingssubcat ,'Check data')
     this.dropdownSettingstypeid = {
       singleSelection: false,
       idField: 'typeId',
@@ -250,12 +286,29 @@ export class AddorderpromotionsComponent implements OnInit {
       itemsShowLimit: 1,
       allowSearchFilter: this.typeFilter
     };
+    this.dropdownproductgroup = {
+
+      singleSelection: false,
+      idField: 'productGroupId',
+      textField: 'productGroupName',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+      allowSearchFilter: true
+    }
+    console.log(this.dropdownproductgroup,"Check data");
+
     this.categoryForm = this.fb.group({
       categoryy: [this.selectedItems]
     });
     this.subcategoryForm = this.fb.group({
       subCategory: [this.selectedItems]
     });
+    this.getproductForm = this.fb.group({
+      getprocategroy: [this.selectedItems]
+
+    });
+
     this.type = this.fb.group({
       type: [this.selectedItems]
     });
@@ -358,7 +411,7 @@ export class AddorderpromotionsComponent implements OnInit {
     }
 
     const dialogRef = this.dialog.open(AddOrderPromotionlistComponent, {
-      minWidth: '96vw', height: '730px',
+      minWidth: '100vw', height: '730px',
       panelClass: 'orders-add-Promotions',
       data: { imagesid: this.imagesid, selectedData: this.AddOrderPromotionData }
       // data: this.AddOrderPromotionData}
@@ -383,7 +436,7 @@ export class AddorderpromotionsComponent implements OnInit {
     this.showSpinner();
     this.arrayOfImages = [];
     this.orders.orderpromotionimages(data).subscribe({
-      next:(res: any) => {
+      next: (res: any) => {
         this.imagesapis = res.response
         if (this.imagesapis == '') {
           this.arrayOfImages = [];
@@ -399,7 +452,7 @@ export class AddorderpromotionsComponent implements OnInit {
             "promotionTypesId": item.promotionTypesId,
             "promotionName": item.promotionName,
             "imageurl": item.imageurl,
-            "promotionTypesName":item.promotionTypesName
+            "promotionTypesName": item.promotionTypesName
           }
           this.arrayOfImages.push(obj);
         });
@@ -412,7 +465,7 @@ export class AddorderpromotionsComponent implements OnInit {
         //   this.getProductsOfPromotionForOrder();
         // console.log("ArrayOfImages", this.arrayOfImages)
       },
-      error:()=>{
+      error: () => {
         this.hideSpinner();
       }
     });
@@ -424,9 +477,9 @@ export class AddorderpromotionsComponent implements OnInit {
   }
   hideSpinner() {
     this.resCount++;
-    this.resCount == this.requestCount ? this.spinner.hide() : this.spinner.show(); 
+    this.resCount == this.requestCount ? this.spinner.hide() : this.spinner.show();
     console.log(this.resCount, this.requestCount);
-      
+
   }
   // getProductsOfPromotionForOrder() {
   //   alert("Helloo")
@@ -446,7 +499,7 @@ export class AddorderpromotionsComponent implements OnInit {
     this.Non_promotions = true;
   }
 
-  editPromotionItem(promotionId){
+  editPromotionItem(promotionId) {
     this.imagesid = [];
     this.arrayOfImages.forEach(x => {
       if (x.isSelected) this.imagesid.push(x.productPromotionsId);
@@ -457,8 +510,8 @@ export class AddorderpromotionsComponent implements OnInit {
     // let ClickedPromotionObj = this.AddOrderPromotionData.find(x => x.promotionId == promotionId);
     let index = this.AddOrderPromotionData.findIndex(x => x.promotionId == promotionId);
     this.AddOrderPromotionData.splice(index, 1);
-        
-    this.arrayOfImages.map(x=>{
+
+    this.arrayOfImages.map(x => {
       x.isSelected = this.AddOrderPromotionData.findIndex(y => y.promotionId == x.productPromotionsId) !== -1;
     })
     this.getShippingandPackingcharges();
@@ -484,6 +537,11 @@ export class AddorderpromotionsComponent implements OnInit {
     this.subcategoryForm = this.fb.group({
       subCategory: [this.selectedItems]
     });
+    this.getproductForm = this.fb.group({
+      getprocategroy: [this.selectedItems]
+
+    });
+
     this.type = this.fb.group({
       type: [this.selectedItems]
     });
@@ -492,8 +550,10 @@ export class AddorderpromotionsComponent implements OnInit {
     });
     this.catergory = [];
     this.sub_category = [];
+    this.GetProductcategory = [];
     this.sub_categorys = [];
     this.typesI = [];
+
     this.typeI = [];
     this.materialIdentifierData = [];
   }
@@ -669,8 +729,10 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
       Search: this.searchText,
-      GeographyId: this.geographyId
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
     }
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
@@ -689,6 +751,7 @@ export class AddorderpromotionsComponent implements OnInit {
     }
     if (this.catergory.length == 0) {
       this.sub_categorys = [];
+      this.GetProductcategory = [];
       this.sub_category = [];
       this.typeI = [];
       this.typesI = [];
@@ -705,8 +768,10 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
       Search: this.searchText,
-      GeographyId: this.geographyId
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
     }
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
@@ -720,6 +785,9 @@ export class AddorderpromotionsComponent implements OnInit {
     });
     this.type = this.fb.group({
       type: [this.selectedItems]
+    });
+    this.getproductForm = this.fb.group({
+      getprocategroy: [this.selectedItems]
     });
   }
   onItemSelectOrAll(item: any) {
@@ -759,8 +827,10 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
       Search: this.searchText,
-      GeographyId: this.geographyId
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
     }
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
@@ -779,7 +849,8 @@ export class AddorderpromotionsComponent implements OnInit {
     });
     this.catergory = [];
     this.sub_category = [];
-    this.sub_categorys = [];
+    this.GetProductcategory = [],
+      this.sub_categorys = [];
     this.typesI = [];
     this.typeI = [];
     const data =
@@ -788,8 +859,10 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
       Search: this.searchText,
-      GeographyId: this.geographyId
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
     }
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
@@ -819,8 +892,10 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
       Search: this.searchText,
-      GeographyId: this.geographyId
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
     }
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
@@ -829,6 +904,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
     });
   }
+
   onSubCategoryDeSelect(item: any) {
     this.sub_categorys.forEach((element, index) => {
       if (element == item.subCatId) this.sub_categorys.splice(index, 1);
@@ -858,7 +934,9 @@ export class AddorderpromotionsComponent implements OnInit {
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
       Search: this.searchText,
-      GeographyId: this.geographyId
+      GetproductGroup: this.GetProductcategory,
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
     }
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
@@ -886,8 +964,10 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
       Search: this.searchText,
-      GeographyId: this.geographyId
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
     }
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
@@ -909,8 +989,10 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
       Search: this.searchText,
-      GeographyId: this.geographyId
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
     }
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
@@ -928,8 +1010,10 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
       Search: this.searchText,
-      GeographyId: this.geographyId
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
     }
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
@@ -938,6 +1022,34 @@ export class AddorderpromotionsComponent implements OnInit {
 
     });
   }
+
+  onProductSelect(item: any) {
+    
+    this.GetProductcategory.push(item.productGroupId)
+    console.log(item);
+  
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
+      Search: this.searchText,
+      // payload
+      productgroup: this.GetProductcategory,
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
+    }
+    console.log(data)
+    console.log(this.GetProductcategory)
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
+    });
+  }
+
   onTypeDeSelect(item: any) {
 
     this.typesI.forEach((element, index) => {
@@ -950,8 +1062,11 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
+      
       Search: this.searchText,
-      GeographyId: this.geographyId
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
     }
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
@@ -961,6 +1076,40 @@ export class AddorderpromotionsComponent implements OnInit {
     });
 
   }
+
+  onProductDeSelect(item: any) {
+    this.GetProductcategory.forEach((element, index) => {
+      if (element == item.productGroupId) this.GetProductcategory.splice(index, 1);
+
+    });
+
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
+      Search: this.searchText,
+      // payload
+      productgroup: this.GetProductcategory,
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
+    }
+
+
+    console.log(data)
+    console.log(this.GetProductcategory)
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
+    });
+
+
+    
+  }
+
   onTypeSelectOrAll() {
 
     this.typesMapData = this.typeI.map((data: { typeId: any; typeName: any; }) => {
@@ -984,8 +1133,10 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
       Search: this.searchText,
-      GeographyId: this.geographyId
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
     }
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
@@ -994,6 +1145,51 @@ export class AddorderpromotionsComponent implements OnInit {
 
     });
   }
+
+  productMapData:any=[];
+  productArray:any=[];
+  onProductSelectOrAll(item:any) {
+      this.GetProductcategory = this.productArray;
+
+      let Productdata = {
+        ProductcatId: this.GetProductcategory
+      }
+      console.log(" Product Category Array", this.GetProductcategory)
+
+
+ this.productsubgroup.GetProductGroupList(Productdata).subscribe((res) => {
+
+       let Prosubcaty = res.response;
+       this.prosubgroupdropdown = res.response;
+      console.log("API calling  ", this.prosubgroupdropdown);   
+
+
+ });
+    
+    this.GetProductcategory = this.productArray
+
+    const data =
+    {
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
+      Search: this.searchText,
+      // payload
+      productgroup: this.GetProductcategory,
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
+    }
+
+
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
+    }); 
+}
   OnTypeDeselectOrAll() {
     this.typesI = [];
     const data =
@@ -1002,9 +1198,32 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
       Search: this.searchText,
-      GeographyId: this.geographyId
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
     }
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
+    });
+  }
+
+
+  onProductDeSelectOrAll(item:any) {
+
+    this.GetProductcategory = [];
+    const data = {
+      category: [],
+      subCategory: [],
+      type: [],
+      productgroup: this.GetProductcategory,
+      productidentifier: [],
+      search: ''
+    }
+    
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
       let orderNonPromotionsData = res.response;
@@ -1021,6 +1240,34 @@ export class AddorderpromotionsComponent implements OnInit {
     // }
 
   }
+  Productgroupset() {
+    // const  data = {
+    //   Search : ''
+    //   }
+    const data = {
+      category: [],
+      subCategory: [],
+      type: [],
+      productgroup: [],
+      productidentifier: [],
+      search: ''
+    }
+    this.productsubgroup.GetProductGroupList(data).subscribe((res) => {
+
+      this.prosubgroupdropdown = res.response;
+      console.log("check the data is coming or not GetProductGroupList ", this.prosubgroupdropdown)
+    })
+  }
+  onLoad() {
+    const data = {
+      Search: ''
+    }
+    this.prosubgroupdropdown.GetProductGroupList(data).subscribe((res) => {
+      this.rowDataproductGroup = res.response;
+    });
+
+  }
+
   onMaterialIdentifierSelect(item: any) {
     this.materialIdentifierData.push(item.materilCustomIdentifierId);
     console.log("materialIdentifier", this.materialIdentifierData);
@@ -1030,6 +1277,7 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
       Search: this.searchText,
       GeographyId: this.geographyId
     }
@@ -1053,8 +1301,10 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
       Search: this.searchText,
-      GeographyId: this.geographyId
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
     }
     this.orders.getorderNonPromotionslist(data).subscribe((res) => {
       // this.orderNonPromotionsdata = res.response;
@@ -1087,6 +1337,7 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
       Search: this.searchText,
       GeographyId: this.geographyId
     }
@@ -1106,6 +1357,7 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
+      GetproductGroup: this.GetProductcategory,
       Search: this.searchText,
       GeographyId: this.geographyId
     }
@@ -1124,6 +1376,7 @@ export class AddorderpromotionsComponent implements OnInit {
     {
       "Cat": [],
       "Sub_Cat": [],
+      "GetproductGroup": [],
       "type": [],
       "MaterialCustomIdentifier": [],
       "Search": "",
@@ -1133,21 +1386,24 @@ export class AddorderpromotionsComponent implements OnInit {
     this.showSpinner();
 
     this.orders.getorderNonPromotionslist(data).subscribe({
-      next:(res) => {
+      next: (res) => {
         // this.orderNonPromotionsdata = res.response;
         let orderNonPromotionsData = res.response;
         console.log(orderNonPromotionsData, "orderNonPromotionsData tockeck");
-  
+
         this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
         this.hideSpinner();
       },
-      error:()=>{
+      error: () => {
         this.hideSpinner();
       }
     });
   }
 
+
+
   orderNonPromotionFormatter(items) {
+    
     let formattedList: any = [];
     items.forEach(item => {
       let obj: any = {}
@@ -1155,10 +1411,12 @@ export class AddorderpromotionsComponent implements OnInit {
       obj.classification = item.classification;
       obj.materialCustomName = item.materialCustomName;
       obj.price = item.price;
+      obj.isInPromotion = item.isInPromotion;
       obj.stock = selectedNonPromotionItem == undefined ? item.stock : selectedNonPromotionItem.quantity;
       obj.productSKUName = item.productSKUName;
       obj.stockitemid = item.stockitemid;
       obj.stockitemname = item.stockitemname;
+      obj.registrationNumber = item.registrationNumber;
       obj.isPromotionSelected = selectedNonPromotionItem == undefined ? false : true;
       obj.quantity = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.quantity;
       obj.taxid = selectedNonPromotionItem == undefined ? null : selectedNonPromotionItem.taxid;
@@ -1171,7 +1429,7 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   quantityChange(updatedItem) {
-
+  console.log(updatedItem)
 
     if (!updatedItem.isPromotionSelected) {
       updatedItem.isPromotionSelected = true;
@@ -1179,7 +1437,6 @@ export class AddorderpromotionsComponent implements OnInit {
       updatedItem.isPromotionSelected = false;
     }
     this.nonPromotionCalculation(updatedItem);
-
     // let quantityadd = 0;
     // let price = 0;
     // this.orderNonPromotionsdata.forEach(item => {
@@ -1218,9 +1475,10 @@ export class AddorderpromotionsComponent implements OnInit {
 
     if (index == -1) {
       this.nonpromotionlist.push(changedPromotionObj);
-    } else {
-      this.nonpromotionlist.splice(index, 1);
-    }
+    } 
+    // else {
+    //   this.nonpromotionlist.splice(index, 1);
+    // }
   }
 
 
@@ -1228,7 +1486,10 @@ export class AddorderpromotionsComponent implements OnInit {
     console.log(event, changedPromotionObj);
     changedPromotionObj.isPromotionSelected = event.target.checked;
 
+
     this.nonPromotionCalculation(changedPromotionObj);
+
+
     // this.quantityadd = 0;
     // this.price = 0;
     // this.orderNonPromotionsdata.forEach(item => {
@@ -1291,6 +1552,8 @@ export class AddorderpromotionsComponent implements OnInit {
                 "taxvalue": item.taxvalue,
                 "amount": item.amount,
                 "taxid": item.taxid,
+                "registrationNumber": item.registrationNumber,
+                "productSKUName": item.productSKUName
               }
               this.AddorderNonpromotiondata.itemDetails.push(obj);
             });
@@ -1547,7 +1810,9 @@ export class AddorderpromotionsComponent implements OnInit {
           "finalValue": item.finalValue,
           "taxvalue": item.taxvalue,
           "taxid": item.taxid,
-          "amount": item.amount
+          "amount": item.amount,
+          "registrationNumber": item.registrationNumber,
+          "productSKUName": item.productSKUName
         }
         this.AddorderNonpromotiondata.itemDetails.push(obj);
       });
@@ -1592,11 +1857,11 @@ export class AddorderpromotionsComponent implements OnInit {
 
     this.showSpinner();
     this.orders.getShippingandPackingcharges(payload).subscribe({
-      next:(res: any) => {
+      next: (res: any) => {
         this.hideSpinner();
         this.shippingPackingchargeDetails = res.response;
       },
-      error:(res)=>{
+      error: (res) => {
         this.hideSpinner();
       }
     });
@@ -1605,32 +1870,48 @@ export class AddorderpromotionsComponent implements OnInit {
   removePromotion(e, promotionItem) {
     e.stopPropagation();
     promotionItem.isSelected = false;
-    this.AddOrderPromotionData = this.AddOrderPromotionData.filter(x=> x.promotionId !== promotionItem.productPromotionsId);
+    this.AddOrderPromotionData = this.AddOrderPromotionData.filter(x => x.promotionId !== promotionItem.productPromotionsId);
     this.getShippingandPackingcharges();
   }
 
   showPromotionInfo(e, promotionItem) {
     e.stopPropagation();
-    localStorage.setItem('promoclickId',promotionItem.productPromotionsId)
-   localStorage.setItem('promoclickName',promotionItem.promotionName)
+    localStorage.setItem('promoclickId', promotionItem.productPromotionsId)
+    localStorage.setItem('promoclickName', promotionItem.promotionName)
     const config: MatDialogConfig = {
-      minWidth: '90vw',      
+      minWidth: '90vw',
       height: '610px',
-      autoFocus:false,
-      data:{hideGeoDealer:true}
+      autoFocus: false,
+      data: { hideGeoDealer: true }
     };
-    this.dialog.open( ViewPromotionPopupComponent,config);
+    this.dialog.open(ViewPromotionPopupComponent, config);
   }
 
   selectPrmotionItem(promotionItem) {
+    console.log(promotionItem)
     this.imagesid = [];
     this.arrayOfImages.forEach(x => {
       if (x.isSelected) this.imagesid.push(x.productPromotionsId);
     })
-    if(promotionItem.isSelected == false){
+    if (promotionItem.isSelected == false) {
       this.imagesid.push(promotionItem.productPromotionsId);
     }
-    
+
     this.addEditOrderPromotionList();
+  }
+
+  
+
+  toggleData() {
+    this.toggleState = !this.toggleState;
+    if (this.toggleState == true) {
+      this.orderNonPromotionsdata = this.orderNonPromotionsdata.filter(item => item.isPromotionSelected);
+    }
+    else {
+      this.orderNonPromotionsList();
+      this.Non_promotions = true;
+      console.log(this.orderNonPromotionsdata)
+    }
+    
   }
 }

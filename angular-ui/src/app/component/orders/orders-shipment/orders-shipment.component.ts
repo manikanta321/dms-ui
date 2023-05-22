@@ -89,6 +89,9 @@ export class OrdersShipmentComponent implements OnInit {
   
     {   headerName: "Order Date",
       field: 'orderDate',      tooltipField:"orderDate",
+      cellRenderer: (data) => 
+  { return this.sharedService.dateformat(data.value);
+  },
       type: ['nonEditableColumn']},
       {   headerName: "Dealer",
       field: 'dealername',type: ['nonEditableColumn'],      tooltipField:"dealername",
@@ -98,6 +101,9 @@ export class OrdersShipmentComponent implements OnInit {
     }, 
       {  headerName: "Invoice Date",
       field: 'invoiceDate',      tooltipField:"invoiceDate",
+      cellRenderer: (data) => 
+  { return this.sharedService.dateformat(data.value);
+  },
     }, 
    
   {  headerName: "Total Items In Order",
@@ -592,7 +598,7 @@ export class OrdersShipmentComponent implements OnInit {
         DealerId:this.dealerss,
         StartDateship:this.startDateShip,
         EndDateship:this.endDateShip,
-        StartDateinvoice:this.startDateInvoice,
+        StartDateinvoice:this.startDateInvoice,       
         EndDateinvoice:this.endDateInvoice,
         Search:this.searchText,
         CurrentUserId:this.loggedUserId

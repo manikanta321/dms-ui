@@ -1065,7 +1065,8 @@
                                        
                                         <td width="30">  <input type="checkbox" class="check"
                                                 [checked]="Item.isPromotionSelected"
-                                                (change)="checkboxChange($event,Item)" ></td>
+                                                (change)="checkboxChange($event,Item)" onfocus="this.checked=''" ></td>
+                                                
                                         <td>{{Item.productSKUName}}</td>
                                         <td>{{Item.stockitemname}}</td>
                                         <td>{{Item.materialcustomidentifier}}</td>
@@ -1089,7 +1090,8 @@
                                         </td> -->
 
                                         <td><input type="number" placeholder="Enter" class="quatity-inp"
-                                                [(ngModel)]="Item.quantity" (keyup)="quantityChange(Item)"></td>
+                                                [(ngModel)]="Item.quantity" (keyup)="quantityChange(Item)"
+                                                 ></td>
                                         <td>{{(Item.quantity ?? 0) * Item.price }}</td>
                                        
                                     </tr>

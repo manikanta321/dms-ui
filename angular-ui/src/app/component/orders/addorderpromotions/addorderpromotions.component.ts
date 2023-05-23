@@ -1356,9 +1356,10 @@ export class AddorderpromotionsComponent implements OnInit {
     if (index == -1) {
       this.nonpromotionlist.push(changedPromotionObj);
     } 
-    // else {
-    //   this.nonpromotionlist.splice(index, 1);
-    // }
+    else {
+      
+      this.nonpromotionlist.splice(index, 1);
+    }
   }
 
 
@@ -1366,7 +1367,8 @@ export class AddorderpromotionsComponent implements OnInit {
     console.log(event, changedPromotionObj);
     changedPromotionObj.isPromotionSelected = event.target.checked;
 
-
+    this.quantityChange(changedPromotionObj);
+  
     this.nonPromotionCalculation(changedPromotionObj);
 
 
@@ -1768,6 +1770,7 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   selectPrmotionItem(promotionItem) {
+    
     console.log(promotionItem)
     this.imagesid = [];
     this.arrayOfImages.forEach(x => {
@@ -1776,9 +1779,8 @@ export class AddorderpromotionsComponent implements OnInit {
     if (promotionItem.isSelected == false) {
       this.imagesid.push(promotionItem.productPromotionsId);
     }
-
     this.addEditOrderPromotionList();
-  }
+}
 
   
 

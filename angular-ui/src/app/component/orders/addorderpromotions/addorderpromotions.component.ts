@@ -133,6 +133,7 @@ export class AddorderpromotionsComponent implements OnInit {
   nonpromotionlist: any = [];
   stockitemname: any;
   productSKUName: any;
+  materialcustomidentifier:any;
   registrationNumber: any;
   uomid: any;
   uomname: any;
@@ -1291,6 +1292,7 @@ export class AddorderpromotionsComponent implements OnInit {
       obj.classification = item.classification;
       obj.materialCustomName = item.materialCustomName;
       obj.price = item.price;
+      obj.materialcustomidentifier=item.materialcustomidentifier,
       obj.isInPromotion = item.isInPromotion;
       obj.stock = selectedNonPromotionItem == undefined ? item.stock : selectedNonPromotionItem.quantity;
       obj.productSKUName = item.productSKUName;
@@ -1435,7 +1437,8 @@ export class AddorderpromotionsComponent implements OnInit {
                 "amount": item.amount,
                 "taxid": item.taxid,
                 "registrationNumber": item.registrationNumber,
-                "productSKUName": item.productSKUName
+                "productSKUName": item.productSKUName,
+                "materialcustomidentifier":item.materialcustomidentifier,
               }
               this.AddorderNonpromotiondata.itemDetails.push(obj);
             });
@@ -1694,7 +1697,8 @@ export class AddorderpromotionsComponent implements OnInit {
           "taxid": item.taxid,
           "amount": item.amount,
           "registrationNumber": item.registrationNumber,
-          "productSKUName": item.productSKUName
+          "productSKUName": item.productSKUName,
+          "materialcustomidentifier":item.materialcustomidentifier,
         }
         this.AddorderNonpromotiondata.itemDetails.push(obj);
       });

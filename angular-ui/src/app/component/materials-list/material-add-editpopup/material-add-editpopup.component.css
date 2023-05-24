@@ -646,6 +646,17 @@ li {
   position: relative;
   left: 125%;
 }
+.updatebutton
+{
+     background-color: #000000;
+      width: 20rem;
+      height: 35px;
+      border: 1px solid black;
+      border-radius: 6px;
+      color: white;
+      margin-top: 18px;
+      cursor: pointer;
+}
 
 #abc::placeholder {
   bottom: 90px;
@@ -1036,7 +1047,7 @@ textarea {
 ::ng-deep.arrowHide .ng-arrow-wrapper {
   width: 25px;
   padding-right: 5px;
-  display: none;
+  /* display: none; */
 }
 
 .selctn-box {
@@ -1613,6 +1624,16 @@ mat-icon {
   content: url(/assets/img/search-icon.svg);
   display: inline-block;
   margin-left: -15px;
+}
+::ng-deep.searchbtn_Icon.ng-select .ng-arrow-wrapper .ng-arrow {
+  display: none !important;
+}
+
+::ng-deep.searchbtn_Icon.ng-select span.ng-arrow-wrapper:before {
+  content: url(/assets/img/search-icon.svg);
+   display: inline-block;
+   margin-left: -15px; 
+   
 }
 
 .geography-popupsize {

@@ -35,7 +35,7 @@
                 <div class="">
                   <label>Category<span>*</span></label>
                   <div class="categorydrp">
-                    <ng-select [items]="catgname" class="searchbtnIcon" id="nameCategory" name="nameCategory" required
+                    <ng-select [items]="catgname " class="searchbtnIcon" id="nameCategory" name="nameCategory" required
                       [virtualScroll]="true" bindLabel="catName" bindValue="catId" [searchable]="true"
                       [clearable]="false" placeholder="Search & select category" [(ngModel)]="categeoryData"
                       (change)="onItemSelect($event)" #nameCategory="ngModel">
@@ -159,7 +159,7 @@
               </div>
               <div class="col-md-4">
                 <div class="materialci">
-                  <label> Material Custom Identifiers <span>*</span></label>
+                  <label> Material Custom Identifiers  <span>*</span></label>
                 </div>
                 <div class="customidentifier hide" (click)=popup()>
                   <!-- <ng-multiselect-dropdown class="Materialcustomidentifier" name="Materialcustomidentifier"
@@ -211,11 +211,10 @@
                 <!-- <div *ngIf="matExpiry.errors?.['pattern']">
                     <span class="patternValidation">Only Numbers allowed </span>
                   </div> -->
-
+                  
 
               </div>
             </div>
-
 
 
 
@@ -224,12 +223,17 @@
               <div class="row">
                 <div class="col-1"></div>
                 <div class="col-6" *ngIf="!updateOrSave">
-                  <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="checked"
-                    (click)="addMaterialIfNotProduct()">Save</button>
+             <span *ngIf="visible">
+              <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="checked"
+              (click)="addMaterialIfNotProduct()">Save</button>
+             </span>  
                 </div>
                 <div class="col-6" *ngIf="updateOrSave">
-                  <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="checked"
+                  <span *ngIf="visible">
+                    <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="checked"
                     (click)="addMaterialIfNotProductAfterEdit()">update</button>
+                  </span>
+                 
                 </div>
                 <div class="col-3">
                 </div>
@@ -321,7 +325,7 @@
                 </div>
                 <div class="productdrp productg-align arrowHide">
 
-                  <ng-select [items]="productList" id="productGr" name="productGr" required [virtualScroll]="true"
+                  <ng-select class="searchbtn_Icon" [items]="productList" id="productGr" name="productGr" required [virtualScroll]="true"
                     bindLabel="productGroupName" bindValue="productGroupId" [searchable]="true" [clearable]="false"
                     placeholder="Search & select group" [(ngModel)]="productGroupData"
                     (change)="onProductSelect($event)" #productGr="ngModel">
@@ -357,7 +361,7 @@
                   <label>Product Sub-group<span>*</span></label>
                 </div>
                 <div class="productsdrp productg-align arrowHide">
-                  <ng-select [items]="subProduct" id="proSub" name="proSub" required [virtualScroll]="true"
+                  <ng-select class="searchbtn_Icon" [items]="subProduct" id="proSub" name="proSub" required [virtualScroll]="true"
                     bindLabel="productGroupName" bindValue="productGroupId" [searchable]="true" [clearable]="false"
                     placeholder="Search & select sub-group" [(ngModel)]="subproductGroupData"
                     (change)="onSubProductSelect($event)" #proSub="ngModel">

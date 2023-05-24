@@ -1067,12 +1067,12 @@
                                                 [checked]="Item.isPromotionSelected"
                                                 (change)="checkboxChange($event,Item)" onfocus="this.checked=''" ></td>
                                                 
-                                        <td>{{Item.productSKUName}}</td>
+                                        <td style="text-align: left;">{{Item.productSKUName}}</td>
                                         <td style="text-align: left;">{{Item.stockitemname}}</td>
                                         <!-- <td>{{Item.materialcustomidentifier}}66</td> -->
                                         <td>{{Item.materialCustomName}}</td>
                                         <!-- <td>{{Item.classification}}</td> --> 
-                                        <td>{{Item.registrationNumber}}</td>
+                                        <td style="text-align: left;">{{Item.registrationNumber}}</td>
                                        
                                         <td>{{Item.price}}</td>
                                         <!-- <td><input type="text" placeholder="Enter" class="quatity-inp"
@@ -1090,8 +1090,8 @@
                                                 (click)="doubleClick(Item.taxid)" style="margin-left: 5px;">
                                         </td> -->
 
-                                        <td><input type="number" placeholder="Enter" class="quatity-inp"
-                                                [(ngModel)]="Item.quantity" (keyup)="quantityChange(Item)"
+                                        <td><input type="number" placeholder="Enter" class="quatity-inp" 
+                                                [(ngModel)]="Item.quantity" (change)="quantityChange(Item)"
                                                  ></td>
                                         <td>{{(Item.quantity ?? 0) * Item.price }}</td>
                                        

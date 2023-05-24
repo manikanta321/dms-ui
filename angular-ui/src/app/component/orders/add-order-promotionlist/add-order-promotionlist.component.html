@@ -100,11 +100,11 @@
                                                     <tr class="table-row" *ngFor="let Item of promos.stockitemid">
                                                         <td><input type="checkbox" [checked]="Item.isProductSelected"
                                                                 (change)="checkboxChange($event,Item, data)" /></td>
-                                                                 <td style="text-align: right;">{{Item.productSKUName}}</td> 
+                                                                 <td style="text-align: left;">{{Item.productSKUName}}</td> 
                                                         <td style="text-align: left;">{{Item.stockitemname}}
                                                         </td>
                                                         <td >{{Item.materialcustomidentifier}}</td>
-                                                        <td style="text-align: right;">{{Item.registrationNumber}}</td>
+                                                        <td style="text-align: left;">{{Item.registrationNumber}}</td>
                                                         
                                                         <td class="txt-right">{{Item.price}}</td>
                                                         <!-- <td><input type="number" placeholder="Enter" class="quatity-inp"
@@ -205,10 +205,10 @@
                                                     <tr class="table-row" *ngFor="let Item of promos.stockitemid">
                                                         <td><input type="checkbox" [checked]="Item.isProductSelected"
                                                                 (change)="checkboxChange($event,Item, data)"></td>
-                                                                <td style="text-align: right;">{{Item.productSKUName}}</td>
+                                                                <td style="text-align: left;">{{Item.productSKUName}}</td>
                                                             <td style="text-align: left">{{Item.stockitemname}} </td>
                                                             <td>{{Item.materialcustomidentifier}}</td>
-                                                            <td style="text-align: right;">{{Item.registrationNumber}}</td>
+                                                            <td style="text-align: left;">{{Item.registrationNumber}}</td>
                                                         
                                                         
                                                         <td class="txt-right">{{Item.price}}</td>
@@ -319,10 +319,10 @@
                                                                     [checked]="Item.isProductSelected"
                                                                     [disabled]="!promos.isEnable"
                                                                     (change)="checkboxChange($event,Item, data)" /></td>
-                                                            <td style="text-align: right;">{{Item.productSKUName}}</td>
+                                                            <td style="text-align: left;">{{Item.productSKUName}}</td>
                                                             <td style="text-align: left;">{{Item.stockitemname}} </td>
                                                             <td >{{Item.materialcustomidentifier}}</td>
-                                                            <td style="text-align: right;">{{Item.registrationNumber}}</td>
+                                                            <td style="text-align: left;">{{Item.registrationNumber}}</td>
                                                             
                                                             <td class="txt-right">{{Item.price}}</td>
                                                             <!-- <td><input type="number" placeholder="Enter"
@@ -442,10 +442,10 @@
                                                             <td><input type="checkbox" [disabled]="!promos.isEnable"
                                                                     [checked]="Item.isProductSelected"
                                                                     (change)="checkboxChange($event,Item, data)"></td>
-                                                            <td style="text-align: right;">{{Item.productSKUName}}</td>
+                                                            <td style="text-align: left;">{{Item.productSKUName}}</td>
                                                             <td style="text-align: left;">{{Item.stockitemname}} </td>
                                                             <td >{{Item.materialcustomidentifier}}</td>
-                                                            <td style="text-align: right;">{{Item.registrationNumber}}</td>
+                                                            <td style="text-align: left;">{{Item.registrationNumber}}</td>
 
                                                             <td class="txt-right">{{Item.price}}</td>
                                                             <!-- <td><input type="number" placeholder="Enter"
@@ -566,10 +566,10 @@
                                                         *ngFor="let Item of data.promoDetails.stockitems">
                                                         <td><input type="checkbox" [checked]="Item.isProductSelected"
                                                                 (change)="checkboxChange($event,Item, data)"></td>
-                                                                <td style="text-align: right;">{{Item.productSKUName}}</td>
+                                                                <td style="text-align: left;">{{Item.productSKUName}}</td>
                                                            <td style="text-align: left;">{{Item.stockitemname}} </td>
                                                            <td >{{Item.materialcustomidentifier}}</td>
-                                                            <td style="text-align: right;">{{Item.registrationNumber}}</td>
+                                                            <td style="text-align: left;">{{Item.registrationNumber}}</td>
                                                         <td class="txt-right">{{Item.price}}</td>
                                                         <!-- <td><input type="number" placeholder="Enter" class="quatity-inp"
                                                                 [(ngModel)]="Item.stock"></td> -->
@@ -674,11 +674,11 @@
                                                         *ngFor="let Item of data.promoDetails.stockitems">
                                                         <td><input type="checkbox" [checked]="Item.isProductSelected"
                                                                 (change)="checkboxChange($event,Item, data)"></td>
-                                                                <td style="text-align: right;">{{Item.productSKUName}}</td>
+                                                                <td style="text-align: left;">{{Item.productSKUName}}</td>
                                                         <td style="text-align: left;">{{Item.stockitemname}}
                                                         </td>
                                                         <td >{{Item.materialcustomidentifier}}</td>
-                                                        <td style="text-align: right;">{{Item.registrationNumber}}</td>
+                                                        <td style="text-align: left;">{{Item.registrationNumber}}</td>
                                                         
                                                         
                                                         <td class="txt-right">{{Item.price}}</td>

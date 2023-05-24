@@ -148,6 +148,7 @@ export class AddorderpromotionsComponent implements OnInit {
   DeliveryInstructions: any;
   AddorderNonpromotiondata: any = {};
   AddOrderPromotionData: any = [];
+  clickedPromotion:any = null;
   startdate: any;
   minDate = new Date();
   selectedStartDate: any;
@@ -410,16 +411,18 @@ export class AddorderpromotionsComponent implements OnInit {
       alert("Plz select geography and dealer");
       return;
     }
+    let selectedPromotion  = this.AddOrderPromotionData.filter(x => (x.promotionId === this.clickedPromotion))
 
     const dialogRef = this.dialog.open(AddOrderPromotionlistComponent, {
       minWidth: '100vw', height: '730px',
       panelClass: 'orders-add-Promotions',
-      data: { imagesid: this.imagesid, selectedData: this.AddOrderPromotionData }
+      data: { imagesid: [this.clickedPromotion], selectedData: selectedPromotion }
       // data: this.AddOrderPromotionData}
     });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
-        this.AddOrderPromotionData = res;
+        this.AddOrderPromotionData  = [...this.AddOrderPromotionData.filter(x => (x.promotionId !== this.clickedPromotion)), ...res];
+        this.clickedPromotion = null;
         this.arrayOfImages.forEach(x => {
           x.isSelected = this.AddOrderPromotionData.findIndex(y => y.promotionId == x.productPromotionsId) !== -1;
         })
@@ -505,6 +508,7 @@ export class AddorderpromotionsComponent implements OnInit {
     this.arrayOfImages.forEach(x => {
       if (x.isSelected) this.imagesid.push(x.productPromotionsId);
     })
+    this.clickedPromotion = promotionId;
     this.addEditOrderPromotionList();
   }
   removePromotionItem(clickedItem, promotionId) {
@@ -1783,6 +1787,7 @@ export class AddorderpromotionsComponent implements OnInit {
     if (promotionItem.isSelected == false) {
       this.imagesid.push(promotionItem.productPromotionsId);
     }
+    this.clickedPromotion = promotionItem.productPromotionsId;
     this.addEditOrderPromotionList();
 }
 

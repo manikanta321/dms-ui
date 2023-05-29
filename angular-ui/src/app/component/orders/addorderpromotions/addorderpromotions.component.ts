@@ -133,6 +133,7 @@ export class AddorderpromotionsComponent implements OnInit {
   nonpromotionlist: any = [];
   stockitemname: any;
   productSKUName: any;
+  materialCustomName:any;
   materialcustomidentifier:any;
   registrationNumber: any;
   uomid: any;
@@ -504,12 +505,18 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   editPromotionItem(promotionId) {
+    
+    console.log(promotionId,"check the data coming or not")
     this.imagesid = [];
     this.arrayOfImages.forEach(x => {
       if (x.isSelected) this.imagesid.push(x.productPromotionsId);
     })
-    this.clickedPromotion = promotionId;
-    this.addEditOrderPromotionList();
+     this.clickedPromotion = promotionId;
+   this.addEditOrderPromotionList();
+
+
+
+
   }
   removePromotionItem(clickedItem, promotionId) {
     // let ClickedPromotionObj = this.AddOrderPromotionData.find(x => x.promotionId == promotionId);
@@ -1315,6 +1322,7 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   quantityChange(updatedItem) {
+    
   console.log(updatedItem)
 
     if (!updatedItem.isPromotionSelected) {
@@ -1443,6 +1451,7 @@ export class AddorderpromotionsComponent implements OnInit {
                 "registrationNumber": item.registrationNumber,
                 "productSKUName": item.productSKUName,
                 "materialcustomidentifier":item.materialcustomidentifier,
+                "materialCustomName":item.materialCustomName,
               }
               this.AddorderNonpromotiondata.itemDetails.push(obj);
             });
@@ -1703,6 +1712,7 @@ export class AddorderpromotionsComponent implements OnInit {
           "registrationNumber": item.registrationNumber,
           "productSKUName": item.productSKUName,
           "materialcustomidentifier":item.materialcustomidentifier,
+          "materialCustomName":item.materialCustomName,
         }
         this.AddorderNonpromotiondata.itemDetails.push(obj);
       });
@@ -1793,15 +1803,20 @@ export class AddorderpromotionsComponent implements OnInit {
 
   
 
-  toggleData() {
+  toggleData(updatedItem) {
+
     this.toggleState = !this.toggleState;
     if (this.toggleState == true) {
       this.orderNonPromotionsdata = this.orderNonPromotionsdata.filter(item => item.isPromotionSelected);
+      
     }
     else {
+      
       this.orderNonPromotionsList();
       this.Non_promotions = true;
       console.log(this.orderNonPromotionsdata)
+      this.quantityChange(updatedItem);
+    
     }
     
   }

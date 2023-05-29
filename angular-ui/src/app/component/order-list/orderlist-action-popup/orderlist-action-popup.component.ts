@@ -205,24 +205,43 @@ export class OrderlistActionPopupComponent implements OnInit {
 
   viewOrder() {
     sessionStorage.setItem("viewOrder", "View");
-    this.dialog.open(OrderlistShipPopupComponent, { width: "987px", height: "1461px" });
+    this.dialog.open(OrderlistShipPopupComponent,
+       {
+         width: "987px",
+          height: "200px"
+         
+        
+         });
     this.isOpen = false;
   }
   orderShip() {
     sessionStorage.setItem("viewOrder", "")
 
-    this.dialog.open(OrderlistShipPopupComponent, {minWidth: '100vw',height:"95vh" });
+    this.dialog.open(OrderlistShipPopupComponent,
+       {
+       minWidth: '100vw',
+       height: '731px',
+       autoFocus:false,
+       });
     this.isOpen = false;
   }
 
   orderReceive() {
-    this.dialog.open(OrdersReceiveShipmentComponent, {width:"2087px",height:"1661px"});
+    this.dialog.open(OrdersReceiveShipmentComponent,
+       {
+        width:"2087px",
+       height:"1661px"
+      });
     this.isOpen = false;
   }
   ReceiveShipment() {
     localStorage.setItem('ViewOrReceive', 'Receive');
     localStorage.setItem('orderOrShipmentOrRecipt','shipment')
-    this.dialog.open(OrdersReceiveShipmentComponent, {maxWidth: '100vw',height:"95vh"});
+    this.dialog.open(OrdersReceiveShipmentComponent,
+       {
+        maxWidth: '100vw',
+       height:"95vh"
+      });
     this.isOpen = false;
   }
   confirmOrder() {
@@ -231,7 +250,7 @@ export class OrderlistActionPopupComponent implements OnInit {
     let dialogRef = this.dialog.open(AddorderpromotionsComponent, {
       
       minWidth: '100vw',
-      height: '93vh',
+      height: '731px',
       
       panelClass: 'order-add-edit'
     });

@@ -9,6 +9,18 @@
 {
   margin-top: -24px;
 }
+.head-tt
+{
+  margin-top: -37px;
+}
+.head-tt h3 {
+  color: #000000;
+  text-align: center;
+  margin-bottom: 2px;
+ cursor: pointer;
+ font-size: 20px;
+ 
+}
 .TOTAL
 {
 
@@ -705,6 +717,14 @@ span {
    /* z-index: 1;  */
 
 }
+.close-iconn {
+  left: 97%;
+  position: relative;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  top: -2px;
+}
 label {
   /* padding: 2px 0; */
   font-size: 14px;
@@ -1323,6 +1343,19 @@ li {
   border: 0.5px solid #000000;
   border-radius: 10px;
 }
+.coll_apsiblee {
+  cursor: pointer;
+  padding-left: 1%;
+   width: 99%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-radius: 10px 10px 0px 0px;
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  border-radius: 10px;
+}
 .collapsiblePro {
   cursor: pointer;
   padding-left: 1%;
@@ -1367,10 +1400,26 @@ li {
   margin: 0px 18px;
   
 }
+.con_tentConform {
+  padding: 0 18px 10px;
+  box-sizing: border-box;
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: #686E74;
+  border-radius: 0px 0px 10px 10px;
+   overflow: auto; 
+  
+  margin: 0px 18px;
+  
+}
 .top-bottom {
   margin-top: 9px;
 }
 .t_op-bottom {
+  margin-top: 10px;
+}
+.t_op-bottomConform
+{
   margin-top: 10px;
 }
 
@@ -2160,15 +2209,19 @@ tr:nth-child(even) {
 }
 .tt
 {
-  
-   
-
     height: 34px;
     color: white;
     border-radius: 15px;
-    
-  
+ 
 }
+.conform
+{
+    height: 34px;
+    font-weight: bolder;
+  
+ 
+}
+
 
 .check
 {

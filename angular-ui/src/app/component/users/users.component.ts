@@ -130,7 +130,7 @@ export class UsersComponent implements OnInit {
 
     {
       headerName: "Phone No",
-      field: 'mobile', type: ['nonEditableColumn'],
+      field: 'mobile', type: ['nonEditableColumn','rightAligned'],
       tooltipField: "mobile"
     },
 

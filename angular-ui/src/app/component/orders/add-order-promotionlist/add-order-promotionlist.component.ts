@@ -45,6 +45,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
   promotionstype4: any = [];
   promotionstype1: any = [];
   promotionstype2: any = [];
+  materialcustomidentifier:any;
   currentSelectedPromos: any = [];
 
   isOrderPromotionValid: boolean = false;
@@ -214,9 +215,11 @@ export class AddOrderPromotionlistComponent implements OnInit {
     formatObj.Taxid = stockItem.taxid;
     formatObj.registrationNumber = stockItem.registrationNumber;
     formatObj.materialcustomidentifier = stockItem.materialcustomidentifier;
+    formatObj.materialCustomName=stockItem.materialCustomName;
 
     return formatObj;
   }
+  
 
   orderPromotionFormatter(promotionList) {
 

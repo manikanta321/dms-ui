@@ -3,11 +3,11 @@
         <div class=" promotionpopup-scroll1">
             <div class="addUser">
                 <!-- <img class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
-                <mat-icon mat-button class="close-icon tt" [mat-dialog-close]="true" 
+                <mat-icon mat-button class="close-iconn conform " [mat-dialog-close]="true" 
                     (click)="closeconfirmorder()">close</mat-icon>
 
             </div>
-            <div class="head-t">
+            <div class="head-tt">
                 <h3 class="addU font">{{"Confirm Order"}}</h3>
                 <div class="row top-bottom">
                     <div class="row text-center"></div>
@@ -22,6 +22,7 @@
                             <img [src]="image1" class="expand-arrow" alt="add-user-btn">
                         </div>
                     </div>
+
                 </div>
                 <div class="content contentscrobar  " *ngIf="!dealerInfo">
                     <div class="row ">
@@ -76,8 +77,8 @@
 
                 </div>
                 <!-- Confirom order Promotions Start Here -->
-                <div class="t_op-bottom">
-                    <div (click)="expandConfirmPromotions()" class="coll_apsible">
+                <div class="t_op-bottomConform">
+                    <div (click)="expandConfirmPromotions()" class="coll_apsiblee">
                         <div class="row">
                             <div class="col-md-11">
                                 <p class="label-class">Promotions </p>
@@ -85,22 +86,52 @@
                             <div class="col-md-1">
                                 <img [src]="image3" class="expand-arrow" alt="add-user-btn">
                             </div>
-                            <!-- <div class="promoimgs">
-                                <div class="col-md-4 img-container" *ngFor="let Item of arrayOfImages;let i=index;">
-                                    <div>
-                                        <img class="card1" src="data:image/jpeg;base64,{{Item.imageurl}}"
-                                            [ngClass]="{ 'selected': Item.isSelected }" alt="image does not exit">
-                                    </div>
-                                </div>
-        
-                            </div> -->
+                          
                         </div>
                     </div>
-                    <div class="con_tent" *ngIf="!ConfiromViewPro">
-                        <label>
-                            <h1>Promotions</h1>
-                        </label>
+                     <div class="con_tentConform" *ngIf="!ConfiromViewPro">
+                        <br>
+                           <div class="promotion-card">
+                            <div class="promoimgs">
+                                  <div class="row">
+                                    <div class="col-md-3" *ngFor="let Item of arrayOfImages;let i=index;">
+                                        <div class="promotion-container" [ngClass]="{ 'selected': Item.isSelected }"
+                                            (click)="selectPrmotionItem(Item)">
+                                            <div class="img-container">
+                                                <!-- <img class="promotion-img" src="https://via.placeholder.com/260x280"  alt="Promotion"/> -->
+                                                <img class="promotion-img"
+                                                    src="data:image/jpeg;base64,{{Item.imageurl}}" alt="Promotion" />
 
+                                            </div>
+                                            <div class="promotion-info">
+                                                <div class="promo-name">
+                                                    Name: <span> {{Item.promotionName}}</span>
+                                                </div>
+
+                                                <div class="promo-type">
+                                                    Type: <span> {{Item.promotionTypesName}}</span>
+                                                </div>
+                                                <div class="promo-view-wrapper">
+                                                    <div class="promo-view" (click)="showPromotionInfo($event,Item)">
+                                                        <mat-icon> remove_red_eye </mat-icon>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="cancel-icon" (click)="removePromotion($event,Item)">
+                                                <mat-icon mat-button class="close-icon">close</mat-icon>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- <div class="col-md-3 img-container" *ngFor="let Item of arrayOfImages;let i=index;">
+                                    <div (click)="getpromotionImages($event,Item);">
+                                        <img class="card1" src="data:image/jpeg;base64,{{Item.imageurl}}"  [ngClass]="{ 'selected': Item.isSelected }" alt="image does not exit"/>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -131,7 +162,7 @@
                         <div class="section mt-1">
                             <table>
                                 <tr>
-                                    <th>Item </th>
+                                    <!-- <th>Item </th>
                                     <th>UoM</th>
                                     <th>Order Qty</th>
                                     <th>Stock</th>
@@ -139,29 +170,45 @@
                                     <th>Discount</th>
                                     <th>Tax</th>
                                     <th>Final Value</th>
-                                    <th>Amount</th>
+                                    <th>Amount</th> -->
+
+                                    <td style="width:50px !important;"></td>
+                                    <th style="text-align: left; padding-left: 3%;">Product Code</th>
+                                    <th class="align-center">Product Name</th>
+                                    <th class="align-right">Price</th>
+                                    <th class="align-right">Discounted Price </th>
+                                    <th class="align-right"> Qty </th>
+                                    <th class="align-right">Total Value </th>
+                                     <th></th>
                                 </tr>
+                                <!-- Conform Order screens -->
                                 <!-- promotion list view -->
                                 <ng-container *ngFor="let PromotionObj of AddOrderPromotionData; let i=index;">
                                     <tr *ngFor="let Item of PromotionObj.itemDetails; let j=index;">
-                                        <td>{{Item.productSKUName}}</td>
-                                        <td disabled>
-                                            <p class="itemLeft"><span class="promoItem" style="color: #fff;"
+                                       
+                                        <td class="itemLeft"   disabled  style="width:50px !important;">
+                                             <span class="promoItem" style="color: #fff;"
                                                     *ngIf="j==0"> P  {{i + 1}}</span>
-                                                {{Item.stockitemname}}</p>
-                                                
-                                        </td>
-                                        <!-- <td>
-                                            <input type="text" disabled [(ngModel)]="Item.uomname"
-                                                class="IteminputBoxes">
-                                        </td> -->
+                                      </td> 
+                                        <td style="text-align: left;">{{Item.productSKUName}}</td>
+                                        <td style="text-align: left;">{{Item.stockitemname}}</td>
+                                        <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td> -->
+
                                         <td>
                                             <input type="text" disabled [(ngModel)]="Item.price" class="IteminputBoxes">
                                         </td>
+
                                         <td>
                                             <input type="text" disabled [(ngModel)]="Item.discount"
                                             [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'" >
                                         </td>
+                                        
+                                        <!-- <td>
+                                            <input type="text" disabled [(ngModel)]="Item.uomname"
+                                                class="IteminputBoxes">
+                                        </td> -->
+                                       
+                                      
                                         <td>
                                             <input type="text" disabled [(ngModel)]="Item.quantity"
                                             class="IteminputBoxes">
@@ -169,6 +216,8 @@
                                         <!-- <td>
                                             <input type="text" disabled [(ngModel)]="Item.stock" class="IteminputBoxes">
                                         </td> -->
+
+                                        <!-- <td style="text-align: left;">{{Item.materialcustomidentifier}}</td>  -->
                                        
                                        
 
@@ -195,12 +244,19 @@
                                 </ng-container>
                                 <!-- nonpromotions list view -->
                                 <tr *ngFor="let Item of AddorderNonpromotiondata?.itemDetails; let i=index;">
-                                    <td>{{Item.productSKUName}}</td>
-                                    <td>
-                                        <p class="itemLeft" ><span class="promoItem" *ngIf="i == 0" > NP 
-                                            </span>{{Item.stockitemname}}</p>
-                                    </td>
                                    
+                                    <td style="text-align:right">
+                                        <p class="itemLeft" > 
+                                             <span class="promoItem" *ngIf="i == 0"  > NP 
+                                             </span> 
+                                          
+                                          </p>
+                                         
+                                    </td>
+                                    <td style="text-align: left;">{{Item.productSKUName}}</td>
+                                  <td style="text-align: left;">{{Item.stockitemname}}</td>  
+
+                                    <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td> -->
                                    
                                     <td>
                                         <input type="text" disabled [(ngModel)]="Item.price" class="IteminputBoxes">
@@ -231,16 +287,16 @@
                                         <input type="text" disabled [(ngModel)]="Item.amount" class="IteminputBoxes">
                                     </td> -->
                                     <mat-icon class="removeCircle" (click)=removeNonPromotionItem(Item)>
-                                        remove_circle</mat-icon>
+                                        remove_circle </mat-icon>
                                 </tr>
 
                             </table>
                         </div>
                         <div class="row mt-2">
-                            <div class="totall" *ngIf="shippingPackingchargeDetails">
+                            <!-- <div class="totall" *ngIf="shippingPackingchargeDetails">
                                 <div class="innerTotal d-flex">
                                     <div class="subitem">
-                                        <p class="alltotals">Sub Total  </p>
+                                        <p class="alltotals">Sub Total 5555  </p>
                                         <span id="color">{{shippingPackingchargeDetails.subTotal}}</span>
                                     </div>
                                     <div class="subitem">
@@ -260,7 +316,41 @@
                                         <span id="colorr">{{shippingPackingchargeDetails.total}}</span>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
+
+
+
+                            <table class="  TOTAL" *ngIf="shippingPackingchargeDetails">
+                                <tr>
+                                    <td class="text-left SUBITEMNAME">Subtotal</td>
+                                    <td class="text-right numbers ">{{shippingPackingchargeDetails.subTotal}}</td>
+                                   
+                                </tr>
+                                <tr>
+                                    <td class="text-left SUBITEMNAME">Packing Charge</td>
+                                    <td class="text-right numbers ">{{shippingPackingchargeDetails.packingCharges}}</td>
+                                   
+                                </tr>
+                                <tr>
+                                    <td class="text-left SUBITEMNAME">Shipping Charge</td>
+                                    <td class="text-right numbers">{{shippingPackingchargeDetails.shippingCharges}}</td>
+                                   
+                                </tr>
+                                <tr>
+                                    <td class="text-left SUBITEMNAME">Tax</td>
+                                    <td class="text-right numbers">{{shippingPackingchargeDetails.taxElement}}</td>
+                                   
+                                </tr>
+                                <tr>
+                                    <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';">Total</td>
+                                    <td class="text-right numbers">{{shippingPackingchargeDetails.total}}</td>
+                                   
+                                </tr>
+                            </table>
+
+
+
+
                         </div>
                     </div>
                 </div>
@@ -438,9 +528,7 @@
                         </div>
                     </div>
                     <div class="con_tent" *ngIf="!viewpromotions">
-                        <!-- <label>
-                            <h1>Promotions</h1>
-                        </label> -->
+                       
                         <br>
                         <div class="promotion-card">
                             <div class="promoimgs">
@@ -520,7 +608,7 @@
                                     <!-- <th class="align-right">UoM</th> -->
                                     <th class="align-right">Price</th>
                                     <th class="align-right">Discounted Price </th>
-                                    <th class="align-right"> Qty</th>
+                                    <th class="align-right"> Qty </th>
                                     <!-- <th class="align-right">Stock</th> -->
                                    
                                    
@@ -531,7 +619,7 @@
                                     <th class="align-right">Tax</th>
 
                                     <th class="align-right">Amount </th> -->
-                                    <th class="align-right">Total Value</th>
+                                    <th class="align-right">Total Value </th>
                                    
                                     <th></th>
 
@@ -542,13 +630,14 @@
                                     <tr *ngFor="let Item of PromotionObj.itemDetails; let j=index;" class="table-active" >
                                         <td style="width:50px !important;"><span class="promoItem" style="color: #fff;"
                                                 *ngIf="j==0"> P {{i + 1}}</span></td>
-                                        <td>{{Item.productSKUName}}</td>
+                                        <td style="text-align: left;">{{Item.productSKUName}}</td>
                                       
                                         <td class="rk">
                                              <p class="itemLeft">
                                                 {{Item.stockitemname}}</p> 
                                                
                                         </td>
+                                        <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td> -->
                                         <!-- <td>
                                             <input type="text" disabled [(ngModel)]="Item.uomname"
                                                 class="IteminputBoxes">
@@ -614,12 +703,13 @@
                                 <tr *ngFor="let Item of AddorderNonpromotiondata?.itemDetails; let i=index;">
                                     <td style="width:50px !important;"><span class="promoItem" *ngIf="i == 0"> NP
                                         </span></td>
-                                        <td>{{Item.productSKUName}}</td>
+                                        <td style="text-align: left;">{{Item.productSKUName}}</td>
                                         
                                     <td>
-                                         <p class="itemLeft">{{Item.stockitemname}}</p>
+                                         <p style="text-align: left;">{{Item.stockitemname}}</p>
                                        
                                     </td>
+                                    <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td> -->
                                     <!-- <td>
                                         <input type="text" disabled [(ngModel)]="Item.uomname" class="IteminputBoxes">
                                     </td> -->
@@ -1036,7 +1126,7 @@
                                 </div>
                               
                             </div>
-                            <mat-slide-toggle class="togglebutton"  (click)="toggleData() "> Items With Order Qty </mat-slide-toggle>       
+                            <mat-slide-toggle class="togglebutton"  (click)="toggleData($event) "> Items With Order Qty </mat-slide-toggle>       
                         </div>
                        
                             <div class="tabel-div" >
@@ -1070,7 +1160,7 @@
                                         <td style="text-align: left;">{{Item.productSKUName}}</td>
                                         <td style="text-align: left;">{{Item.stockitemname}}</td>
                                         <!-- <td>{{Item.materialcustomidentifier}}66</td> -->
-                                        <td>{{Item.materialCustomName}}</td>
+                                        <td style="text-align: left;">{{Item.materialCustomName}}</td>
                                         <!-- <td>{{Item.classification}}</td> --> 
                                         <td style="text-align: left;">{{Item.registrationNumber}}</td>
                                        

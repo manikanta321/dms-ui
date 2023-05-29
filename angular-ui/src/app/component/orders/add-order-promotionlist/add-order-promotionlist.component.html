@@ -88,7 +88,7 @@
                                                         <th data-sortable="true"></th>
                                                         <th data-sortable="true"class="align-center">Product Code</th>
                                                         <th data-sortable="true"class="align-center">Product Name</th>
-                                                        <th data-sortable="true"class="align-center">Identifiers</th>
+                                                        <th data-sortable="true"class="align-center">   Identifiers</th>
                                                         <th data-sortable="true"class="align-center">Registration No</th>
                                                         
                                                         <th data-sortable="true"class="align-center">Unit Price</th>
@@ -103,7 +103,9 @@
                                                                  <td style="text-align: left;">{{Item.productSKUName}}</td> 
                                                         <td style="text-align: left;">{{Item.stockitemname}}
                                                         </td>
-                                                        <td >{{Item.materialcustomidentifier}}</td>
+                                                             <td style="text-align: left;">{{Item.materialcustomidentifier}}</td>
+                                                          
+                                                      
                                                         <td style="text-align: left;">{{Item.registrationNumber}}</td>
                                                         
                                                         <td class="txt-right">{{Item.price}}</td>
@@ -193,7 +195,7 @@
                                                         <th></th>
                                                         <th data-sortable="true"class="align-center">Product Code</th>
                                                         <th data-sortable="true"class="align-center">Product Name</th>
-                                                        <th data-sortable="true"class="align-center">Identifiers</th>
+                                                        <th data-sortable="true"class="align-center">  Identifiers</th>
                                                         <th data-sortable="true"class="align-center">Registration No</th>
                                                         
                                                         <th data-sortable="true"class="align-center">Unit Price</th>
@@ -207,7 +209,8 @@
                                                                 (change)="checkboxChange($event,Item, data)"></td>
                                                                 <td style="text-align: left;">{{Item.productSKUName}}</td>
                                                             <td style="text-align: left">{{Item.stockitemname}} </td>
-                                                            <td>{{Item.materialcustomidentifier}}</td>
+                                                             <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td>  -->
+                                                              <td style="text-align: left;">{{Item.materialcustomidentifier}}</td> 
                                                             <td style="text-align: left;">{{Item.registrationNumber}}</td>
                                                         
                                                         
@@ -321,7 +324,8 @@
                                                                     (change)="checkboxChange($event,Item, data)" /></td>
                                                             <td style="text-align: left;">{{Item.productSKUName}}</td>
                                                             <td style="text-align: left;">{{Item.stockitemname}} </td>
-                                                            <td >{{Item.materialcustomidentifier}}</td>
+                                                            <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td> -->
+                                                             <td style="text-align: left;" >{{Item.materialcustomidentifier}}</td>
                                                             <td style="text-align: left;">{{Item.registrationNumber}}</td>
                                                             
                                                             <td class="txt-right">{{Item.price}}</td>
@@ -444,7 +448,8 @@
                                                                     (change)="checkboxChange($event,Item, data)"></td>
                                                             <td style="text-align: left;">{{Item.productSKUName}}</td>
                                                             <td style="text-align: left;">{{Item.stockitemname}} </td>
-                                                            <td >{{Item.materialcustomidentifier}}</td>
+                                                             <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td>  -->
+                                                              <td style="text-align: left;" >{{Item.materialcustomidentifier}}</td>  
                                                             <td style="text-align: left;">{{Item.registrationNumber}}</td>
 
                                                             <td class="txt-right">{{Item.price}}</td>
@@ -568,7 +573,8 @@
                                                                 (change)="checkboxChange($event,Item, data)"></td>
                                                                 <td style="text-align: left;">{{Item.productSKUName}}</td>
                                                            <td style="text-align: left;">{{Item.stockitemname}} </td>
-                                                           <td >{{Item.materialcustomidentifier}}</td>
+                                                            <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td>  -->
+                                                             <td style="text-align: left;" >{{Item.materialcustomidentifier}}</td> 
                                                             <td style="text-align: left;">{{Item.registrationNumber}}</td>
                                                         <td class="txt-right">{{Item.price}}</td>
                                                         <!-- <td><input type="number" placeholder="Enter" class="quatity-inp"
@@ -677,7 +683,8 @@
                                                                 <td style="text-align: left;">{{Item.productSKUName}}</td>
                                                         <td style="text-align: left;">{{Item.stockitemname}}
                                                         </td>
-                                                        <td >{{Item.materialcustomidentifier}}</td>
+                                                        <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td> -->
+                                                         <td style="text-align: left;">{{Item.materialcustomidentifier}}</td>
                                                         <td style="text-align: left;">{{Item.registrationNumber}}</td>
                                                         
                                                         

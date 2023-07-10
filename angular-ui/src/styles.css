@@ -11,6 +11,10 @@
 @import '../node_modules/@syncfusion/ej2-angular-popups/styles/material.css';
 
 
+.mat-elevation-z8
+{
+  box-shadow: none !important;
+}
 html,
 body {
   height: 100%;
@@ -23,6 +27,43 @@ body {
 
 ::ng-deep body {
   font-family: Montserrat, sans-serif;
+}
+
+/*  background color apply the in every module  */
+ mat-sidenav-content
+{
+  
+}
+.mat-dialog-container
+{
+   
+  
+}
+.popup
+{
+  
+  
+}
+.main
+{
+  
+  
+   
+}
+.content
+{
+  
+}
+
+/* End */
+/* custom css mat tab */
+
+.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
+
+ background: rgba(1, 139, 117, 1);
+}
+.mat-drawer-container {
+  background-color: white;
 }
 
 
@@ -105,7 +146,7 @@ body {
 }
 
 .mat-dialog-container {
-  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
+  /* background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%); */
   border: 0.5px solid #000000;
   border-radius: 15px !important;
 }
@@ -1037,6 +1078,35 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
 
 
 /* Font Family */
+@font-face {
+  font-family: 'Calibri-Bold';
+  src: url('./assets/fonts/Calibri/Calibri\ Bold.TTF')  format('truetype');
+}
+@font-face {
+  font-family: 'Calibri-Bold-Italic';
+  src: url('./assets/fonts/Calibri/Calibri\ Bold\ Italic.ttf')  format('truetype');
+}
+@font-face {
+  font-family: 'Calibri-Italic';
+  src: url('./assets/fonts/Calibri/Calibri\ Italic.ttf')  format('truetype');
+}
+@font-face {
+  font-family: 'Calibri-Light';
+  src: url('./assets/fonts/Calibri/Calibri\ Light.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Calibri-Light';
+  src: url('./assets/fonts/Calibri/Calibri\ Light.ttf')  format('truetype');
+}
+@font-face {
+  font-family: 'Calibri-Light-Italic';
+  src: url('./assets/fonts/Calibri/Calibri\ Light\ Italic.ttf')  format('truetype');
+}
+@font-face {
+  font-family: 'Calibri-Regular';
+  src: url('./assets/fonts/Calibri/Calibri\ Regular.ttf')  format('truetype');
+}
 
 
 

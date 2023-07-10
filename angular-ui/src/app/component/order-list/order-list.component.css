@@ -1,6 +1,20 @@
+::ng-deep .mat-tab-group[mat-stretch-tabs]>.mat-tab-header .mat-tab-label {
+    flex-basis: 0;
+    flex-grow: 1;
+     border: 1px solid rgba(107, 107, 107, 1);
+     border-top-right-radius: 1px;
+    border-bottom-right-radius: 2px;
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 2px;
+}
+::ng-deep.ag-theme-material {
+    overflow-y: hidden !important;
+  }
+  
+
 ::ng-deep .multiSelect .dropdown-list {
-    left: -6%;
-    width: 106%;
+    /* left: -6%;
+    width: 106%; */
   }
 .dateplaceholder {
     color: rgba(104, 110, 116, 0.75);
@@ -10,6 +24,15 @@
     font-size: 15px;
 }
 
+::ng-deep.ag-theme-material .ag-header-cell {
+    background: rgba(1, 139, 117, 0.8);
+    color: white; 
+} 
+
+::ng-deep.ag-header-viewport
+{
+    background-color: rgba(1, 99, 117, 0.8);
+}
 /* .allicons{    
         margin-bottom:10px;
     margin-left: 68%;
@@ -393,8 +416,8 @@ input {
 .btnhover1 {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
     border: none;
-    background: #000000;
-    border-radius: 35%;
+    background: rgba(104, 110, 116, 0.66);
+    border-radius: 18%;
     position: relative;
     width: 43px;
     height: 41px;
@@ -577,7 +600,7 @@ input {
 }
 
 .main {
-    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+    /* background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
     border-radius: 30px;
 }
 
@@ -651,7 +674,7 @@ mat-sidenav-container {
 }
 
 ::ng-deep.ag-header-cell-text {
-    color: #686E74 !important;
+    color: white !important;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 14px !important;
@@ -1152,8 +1175,8 @@ mat-sidenav {
 }
 
 .sales-add {
-    background: #000000;
-    border-radius: 50%;
+    background: rgba(104, 110, 116, 0.66);
+    border-radius: 13%;
     width: 37px;
     height: 37px;
     margin-right: 10px;
@@ -1173,7 +1196,7 @@ mat-sidenav {
 
 .sales-download {
     background: #000000;
-    border-radius: 50%;
+    border-radius: 13%;
     width: 37px;
     height: 37px;
     margin-right: 10px;
@@ -1200,8 +1223,8 @@ mat-sidenav {
 }
 
 .sales-dwnld {
-    background: #000000;
-    border-radius: 50%;
+    background: rgba(104, 110, 116, 0.66);
+    border-radius: 13%;
     width: 37px;
     height: 37px;
     cursor: pointer;
@@ -1214,8 +1237,6 @@ mat-sidenav {
 
 .imgdwnl {
     position: relative;
-    top: 8px;
-    left: 12px;
 }
 
 .searchButton {
@@ -1223,8 +1244,8 @@ mat-sidenav {
     color: #FFFFFF;
     width: 37px;
     height: 37px;
-    border-radius: 50%;
-    background: #000000;
+    border-radius: 13%;
+    background: rgba(104, 110, 116, 0.66);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1317,6 +1338,7 @@ mat-sidenav {
 .dropdown-placeholder {
     background: white;
     color: #808080;
+   font-family:  Calibri;
     top: 0;
     position: absolute;
     height: 41px;
@@ -1383,7 +1405,7 @@ mat-sidenav {
     position: relative;
     left: 2px;
 }
-    /* left: 14px; */
+    
 
 
 

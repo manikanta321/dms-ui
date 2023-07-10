@@ -1,5 +1,14 @@
 
+.purchaes
+{
+ font-family: 'Calibri-Regular';
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 29px;
+ letter-spacing: 0.04em;
+  text-align: left;
 
+}
 
 .font{
     font-family: 'Gilroy';
@@ -40,7 +49,7 @@ mat-sidenav-content{
     height: 100vh;
     border-radius: 35px;  
     padding: 10px;
-    background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);
+    /* background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%); */
 }
 mat-sidenav-container {
     height: calc(100vh - 65px);
@@ -72,7 +81,6 @@ height: 35px;
     display: none !important;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    background: black;
     color: white;
     border-radius: 25px;
     opacity: 1;
@@ -134,7 +142,6 @@ mat-sidenav-content{
     height: 100vh;
     border-radius: 35px;
     padding: 10px;
-    background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);
 }
 mat-sidenav-container {
     height: calc(100vh - 65px);
@@ -166,12 +173,12 @@ top:3px;
     border-radius: 25px;
     background: white;
     left: 23%;
+    border: 0.5px solid rgba(0, 0, 0, 0.58);
 
 }::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     display: none !important;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    background: black;
     color: white;
     border-radius: 25px;
     opacity: 1;
@@ -208,8 +215,8 @@ top:3px;
     display: none !important;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    background: black;
-    color: white;
+    font-family: 'Calibri-Regular';
+   color: white;
     border-radius: 25px;
     opacity: 1;
 }
@@ -217,10 +224,10 @@ top:3px;
 ::ng-deep .order-lab .mat-tab-label{
     height: 35px !important;
     min-width: 161px !important;
-    font-family: 'Gilroy-Medium';
+    font-family: 'Calibri-Regular';
   }
  ::ng-deep.classi .mat-tab-label .mat-tab-label-content{
-    font-family: 'Gilroy-SemiBold';
+    font-family: 'Calibri-Regular';
   }
 
 

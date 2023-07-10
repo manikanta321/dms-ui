@@ -30,8 +30,9 @@ color: #000000;
 }
 .form1:disabled {
     background: #411a1a !important;
-}.main{
-    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+}
+.main{
+    /* background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
     
 }
  .font{
@@ -120,5 +121,5 @@ border: 1px solid black;
     } */
 
     ::ng-deep.mat-dialog-container {
-        background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;;
+        /* background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
         }

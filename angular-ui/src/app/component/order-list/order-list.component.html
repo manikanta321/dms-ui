@@ -18,7 +18,7 @@
         </form>
       </div>
 
-      <div class="col-md-2 col-lg-2 col-sm-2 border  custom-bubbles multiSelect">
+      <div class="col-md-2 col-lg-2 col-sm-2   custom-bubbles multiSelect" style="padding-left: 0px;">
         <form [formGroup]="myForm1" class="dropdown-form">
           <ng-multiselect-dropdown  class="  Geography geographybubbles " name="city" [placeholder]="'Geography'" formControlName="geo"
             [disabled]="disabled" [settings]="dropdownSettings1" [data]="geogropdownlist" (onSelect)="geographyselect($event)"
@@ -100,7 +100,7 @@
 </div> -->
 <div class="col-md-0">
 <div class="sales-dwnld" (click)="onBtnExport()" userRoleDirective="DOWNLOAD_ORDER" [pageName]="currentPageName" >
-  <img   class="imgdwnl" src="assets/img/download-btn.png"
+  <img   class="imgdwnl" src="../../../assets/img/Group 35891.png"
       alt="add-user-btn">    
 </div>
 </div>
@@ -109,7 +109,8 @@
 
 <div >
     <ag-grid-angular
- id="gridContainer" style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
+ id="gridContainer" style=" height: 400px;border-radius: 20px;background-color: white;font-family: Calibri ;width: 100%;
+ overflow: hidden;"
  class="ag-theme-material mt-3"
  (gridReady)="onGridReady($event)"
  [rowHeight]="25"

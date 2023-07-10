@@ -98,7 +98,7 @@ label
 }
 
 .main {
-    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+    /* background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
 }
 
 .font {
@@ -184,8 +184,8 @@ mat-form-field {
 
 
 ::ng-deep.mat-dialog-container {
-    background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-    ;
+    /* background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
+    
     /* height: 300px; */
     overflow: auto;
 

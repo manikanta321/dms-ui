@@ -1,13 +1,19 @@
 
-
 .mat-toolbar-example{
 
   position: fixed;
+ z-index: 1000;
+ width: 100%;
+background: rgba(243, 243, 243, 1);
+ 
 
-  z-index: 1000;
-
-  width: 100%;
-
+}
+.iconimage
+{
+  width: 150px;
+  height: 25px;
+  margin-left: 10px; 
+  margin-left: -25px;
 }
 
 

@@ -11,7 +11,7 @@ mat-sidenav-content{
     height: 100vh;
     border-radius: 10px;
     padding: 10px;
-    background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);
+     /* background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);  */
     overflow: hidden;
 }
 mat-sidenav-container {
@@ -51,7 +51,7 @@ mat-tab{
     display: none !important;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    background: black;
+    /* background: black; */
     color: white;
     border-radius: 25px;
 }
@@ -87,7 +87,7 @@ mat-tab-group{
     display: none !important;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    background: black;
+    /* background: black; */
     color: white;
     border-radius: 25px;
 }
@@ -103,7 +103,7 @@ mat-tab-group{
    } 
 
    ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    background: black;
+    /* background: black; */
     color: white;
     border-radius: 25px;
     opacity: 1;

@@ -115,7 +115,6 @@ export class OrderListComponent implements OnInit {
   statusArray: any = [];
   stayScrolledToEnd = true;
   paginationScrollCount: any;
-
   columnDefs: ColDef[] = [
     // { headerName: "User Id",
     //   field: 'employeeCode' , sort: 'desc'},
@@ -148,12 +147,12 @@ export class OrderListComponent implements OnInit {
     {
       headerName: "Total Value",
       field: 'totalValue',
-      type:['rightAligned']
+      type:['leftAligned']
     },
     {
       headerName: "Completed Value",
       field: 'compleatedValue',
-      type:['rightAligned']
+      type:['leftAligned']
     },
     {
       headerName: "Status",

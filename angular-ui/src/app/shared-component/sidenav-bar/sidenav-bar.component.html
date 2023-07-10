@@ -15,18 +15,19 @@
 
         <mat-list-item  routerLink="/dashbord/orders" routerLinkActive="active" *ngIf="viewMenuList.indexOf('orderdashboard') != -1">
             <!-- <img src="../../../assets/sidebarImages/sidenav-orders.svg" alt=""> -->
-          <img src="../../../assets//img//down.svg" style="width: 20px;" alt="">
+            <img src="../../.././assets/img/dash.png" alt="" style="width: 20px;">
             <!-- <mat-icon >card_travel</mat-icon>  -->
             <!-- <span style="cursor:pointer ; "class="dasb-menu"   *ngIf="collapsed">Orders</span> -->
-            <span style="cursor:pointer ; "class="dasb-menu"   *ngIf="collapsed">Download Report</span>
+
+            <span style="cursor:pointer ; "class="dasb-menu"   *ngIf="collapsed">Purchase Orders</span>
 
         </mat-list-item>
 
         <mat-list-item routerLink="/dashbord/saleslist" routerLinkActive="active" *ngIf="viewMenuList.indexOf('saleslistdashboard') != -1">
             <!-- <img src="../../../assets/sidebarImages/sidenav-products.svg" alt=""> -->
-            <img src="../../.././assets/img/dash.png" alt="">
+            <img src="../../../assets//img//down.svg"  alt="">
             <!-- <mat-icon>store_mall_directory</mat-icon> -->
-            <span style="cursor:pointer ;"class="dasb-menu" *ngIf="collapsed">Purchase Orders</span>
+             <span style="cursor:pointer ; "class="dasb-menu" *ngIf="collapsed">Download Report</span> 
         </mat-list-item>
 
         <!-- <mat-list-item>

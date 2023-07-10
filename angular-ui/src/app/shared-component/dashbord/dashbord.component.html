@@ -24,6 +24,7 @@
                         {{myForm.get('city1').value.length}} Geography selected </span>
                       <span *ngIf="myForm.get('city1').value.length > 1" class="selected-placeholder">
                         {{myForm.get('city1').value.length}} Geographies selected </span>
+                        <img src="../assets/img/search.png" class="searchReceipts"> 
         
                     </div>
                   </form>
@@ -42,6 +43,7 @@
                         {{myForms.get('city2').value.length}} Dealers selected </span>
                       <span *ngIf="myForms.get('city2').value.length > 1" class="selected-placeholder">
                         {{myForms.get('city2').value.length}} Dealers selected </span>
+                        <img src="../assets/img/search.png" class="searchICON">
         
                     </div>
                   </form>
@@ -59,6 +61,7 @@
                         {{myForms2.get('city3').value.length}} Categories selected </span>
                       <span *ngIf="myForms2.get('city3').value.length > 1" class="selected-placeholder">
                         {{myForms2.get('city3').value.length}} Categories selected </span>
+                        <img src="../assets/img/search.png" class="SEARCHICON">
         
                     </div>
                   </form>
@@ -77,6 +80,7 @@
                       {{myForms4.get('city5').value.length}} Group selected </span>
                     <span *ngIf="myForms4.get('city5').value.length > 1" class="selected-placeholder">
                       {{myForms4.get('city5').value.length}} Group(s) selected </span>
+                      <img src="../assets/img/search.png" class="GROUPICONSEARCH">
         
                   </div>
                 </form>
@@ -94,6 +98,7 @@
                         {{myForms3.get('city4').value.length}} # of product selected </span>
                       <span *ngIf="myForms3.get('city4').value.length > 1" class="selected-placeholder">
                         {{myForms3.get('city4').value.length}} # of product selected </span>
+                        <img src="../assets/img/search.png" class="lastSEARCHICON">
         
                     </div>
                   </form>
@@ -102,8 +107,8 @@
                 <div class="ref"><img class="refresh" src="assets/img/Vector.png" (click)="refresh()" alt="refresh" style="margin-left: 1px;"></div>
             </div>
            </div>
-                      <br>
-                      <div class="col-md-4 mt-3 mb-4" style="margin-left: 72%;margin-bottom: 10px">
+                      
+                      <div class="col-md-4" style="margin-left: 72%;">
                         <div class="row">
                           <div class="col-md-8">
                             <div class="searchBox d-flex">

@@ -5,13 +5,60 @@ mat-sidenav {
     border-radius: 10px;
     text-align: center;
 }
+.searchReceipts{
+  width: 17px;
+  position: relative;
+  left: 62%;
+  top: -2px;
+  }
+  .searchICON{
+    width: 17px;
+    position: relative;
+    left: 79%;
+    top: -2px;
+    }
+    .SEARCHICON{
+      width: 17px;
+      position: relative;
+      left: 69%;
+      top: -2px;
+      }
+      .GROUPICONSEARCH
+      {
+        width: 17px;
+        position: relative;
+        left: 83%;
+        top: -2px;
+      }
+      .lastSEARCHICON
+      {
+        width: 17px;
+        position: relative;
+        left: 58%;
+        top: -2px;
+      }
+  ::ng-deep.promo .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
+     display: none; 
+     }
+  ::ng-deep.product .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
+        display: none; 
+     } 
+     ::ng-deep.geog .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
+      display: none; 
+   }  
+   ::ng-deep.dealr .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
+    display: none; 
+ }
+ ::ng-deep.stts .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
+  display: none; 
+}
 
 .content {
-    /* height: calc(100vh - 98px); */
-    height: 143vh;
     border-radius: 10px;
-    padding: 10px;
-    background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);
+    /* padding: 10px; */
+    height: auto;
+    overflow: hidden;
+    /* background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%); */
 }
 
 mat-sidenav-container {

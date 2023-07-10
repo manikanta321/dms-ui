@@ -1,14 +1,47 @@
 
-<highcharts-chart
-   [Highcharts] = "Highcharts"
-   [options]="chartOptions" 
-   style="height: 500px; 
-   border-radius: 20px;
-   border: 2px solid black; 
-   background-color: white;
-    font-family: Gilroy; 
-    margin-left: 20px; 
-    margin-top: 20px; 
-    width: 97%; 
-    display: block;">
-</highcharts-chart>
+
+<div class="chart-container">
+    
+    <!-- <highcharts-chart
+    [Highcharts] = "Highcharts"
+    [options]="chartOptions" 
+    style="height: 450px; 
+    border-radius: 20px;
+    border: 2px solid black; 
+    
+     font-family: Gilroy; 
+     margin-left: 20px; 
+     margin-top: 20px; 
+     width: 98%; 
+     display: block;">
+ </highcharts-chart> -->
+ <!-- <h2 class="chart-title">Sales Details</h2> -->
+ <div class="sales-detailes">
+  <p class="SD ">Sales Details</p>
+    <div class="mainselectedoptions">
+        
+
+    <select  class="selectoptions" placeholder="Select Chart" >
+        <option  value=""  selected hidden>Select Chart</option>
+
+        <option>Weekly</option>
+        <option>Monthly</option>
+        <option>Yearly</option>
+
+      </select>
+      </div>
+
+      <highcharts-chart
+    [Highcharts] = "Highcharts"
+    [options]="chartOptions" 
+    style="font-family: Gilroy; 
+     margin-left: 20px; 
+      width: 98%; height: 440px;
+     display: block;">
+ </highcharts-chart>
+  
+ </div>
+ 
+      
+ 
+</div>

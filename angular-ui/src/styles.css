@@ -1078,7 +1078,7 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
 
 
 /* Font Family */
-@font-face {
+/* @font-face {
   font-family: 'Calibri-Bold';
   src: url('./assets/fonts/Calibri/Calibri\ Bold.TTF')  format('truetype');
 }
@@ -1106,7 +1106,7 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
 @font-face {
   font-family: 'Calibri-Regular';
   src: url('./assets/fonts/Calibri/Calibri\ Regular.ttf')  format('truetype');
-}
+} */
 
 
 

@@ -56,7 +56,7 @@
 
 ::ng-deep.mat-tab-group .mat-tab-header, .mat-tab-nav-bar .mat-tab-header
 {
-  border-bottom: none;
+  border: 0.5px solid rgba(0, 0, 0, 0.58);
 }
 
 ::ng-deep.mat-tab-group .mat-ink-bar, .mat-tab-nav-bar .mat-ink-bar{

@@ -215,19 +215,24 @@ top:3px;
     display: none !important;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    font-family: 'Calibri-Regular';
+    font-family: 'Calibri';
    color: white;
     border-radius: 25px;
+    font-size: 15px;
     opacity: 1;
 }
 
 ::ng-deep .order-lab .mat-tab-label{
     height: 35px !important;
     min-width: 161px !important;
-    font-family: 'Calibri-Regular';
+    font-family: 'Calibri';
+    color:rgba(1, 139, 117, 1);
+    font-size: 15px;
+
   }
  ::ng-deep.classi .mat-tab-label .mat-tab-label-content{
-    font-family: 'Calibri-Regular';
+    font-family: 'Calibri';
+    font-size: 15px;
   }
 
 

@@ -9,7 +9,7 @@
             (onSelectAll)="DealerorderSelectAll($event)">
           </ng-multiselect-dropdown>
           <div class="dropdown-placeholder Dealers-placeholder">
-            <span *ngIf="myForm.get('city').value.length == 0"> Select Dealers </span>
+            <span *ngIf="myForm.get('city').value.length == 0"><span style="font-family: 'Calibri';">Select Dealers</span>  </span> 
             <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Dealer selected </span>
             <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Dealer(s) selected </span>
 
@@ -43,7 +43,7 @@
         
           
         
-        <app-customdatepicker class="dateplaceholder" [showInputField]="true" label="Order Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
+        <app-customdatepicker class="dateplaceholder" [showInputField]="true" label="Order Date " [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
       </div>
     <div class="col-md-2 col-lg-2 col-sm-2 stts-dropdown  custom-bubbles" >
         <form [formGroup]="myForm2" class="dropdown-form">

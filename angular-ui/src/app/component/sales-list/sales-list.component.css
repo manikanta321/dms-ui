@@ -45,16 +45,18 @@ mat-tab{
     background: white;
     left: 35%;
     font-size: 15px;
+    border: 1px solid rgba(107, 107, 107, 1);
     
 
 }::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     display: none !important;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    /* background: black; */
     color: white;
     border-radius: 25px;
+   
 }
+
 ::ng-deep.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
     display: none;
 }
@@ -87,9 +89,7 @@ mat-tab-group{
     display: none !important;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    /* background: black; */
     color: white;
-    border-radius: 25px;
 }
 
  /* .geo-label .mat-tab-labels:nth-child(1) { */
@@ -98,15 +98,20 @@ mat-tab-group{
 
    ::ng-deep .sales-label .mat-tab-label{ 
       height: 31px !important;  
-     min-width: 187px !important; 
+     width: 189px;
+     border: 1px solid rgba(107, 107, 107, 1);
+   
     /* min-width: 152px; */
    } 
 
    ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    /* background: black; */
     color: white;
     border-radius: 25px;
     opacity: 1;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 2px;
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 2px;
 }
 ::ng-deep.mat-tab-label .mat-tab-label-content{
     font-family: 'Gilroy-SemiBold';

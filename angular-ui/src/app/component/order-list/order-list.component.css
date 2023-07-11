@@ -27,6 +27,9 @@
 ::ng-deep.ag-theme-material .ag-header-cell {
     background: rgba(1, 139, 117, 0.8);
     color: white; 
+}
+::ng-deep :hover.ag-theme-material .ag-header-cell {
+    color:gray; 
 } 
 
 ::ng-deep.ag-header-viewport
@@ -680,6 +683,13 @@ mat-sidenav-container {
     font-size: 14px !important;
 }
 
+::ng-deep :hover.ag-header-cell-text {
+    color:gray!important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px !important;
+}
+
 ::ng-deep.ag-theme-material .ag-root-wrapper,
 .ag-theme-material .ag-sticky-top {
 
@@ -692,7 +702,7 @@ mat-sidenav-container {
 .ag-theme-material {
     height: 350px;
     border-radius: 20px;
-    background-color: white;
+    background-color: white; 
     font-family: Gilroy;
 }
 
@@ -1337,8 +1347,8 @@ mat-sidenav {
 
 .dropdown-placeholder {
     background: white;
-    color: #808080;
-   font-family:  Calibri;
+    color: rgba(104, 110, 116, 0.75);
+   font-family:  'Calibri';
     top: 0;
     position: absolute;
     height: 41px;
@@ -1354,6 +1364,7 @@ mat-sidenav {
 
 .Dealers-placeholder.dropdown-placeholder .selected-placeholder {
     color: #D23F00 !important;
+    font-family: ' Calibri';
 }
 
 ::ng-deep.Dealers .multiselect-dropdown .dropdown-btn .selected-item {
@@ -1369,6 +1380,7 @@ mat-sidenav {
 
 .Geography-placeholder.dropdown-placeholder .selected-placeholder {
     color: #006466 !important;
+    font-family: 'Calibri';
 }
 
 ::ng-deep.Geography .multiselect-dropdown .dropdown-btn .selected-item {
@@ -1384,6 +1396,7 @@ mat-sidenav {
 
 .Status-placeholder.dropdown-placeholder .selected-placeholder {
     color: #000000 !important;
+    font-family: ' Calibri';
 }
 
 ::ng-deep.Status .multiselect-dropdown .dropdown-btn .selected-item {
@@ -1428,6 +1441,10 @@ mat-sidenav {
     font-size: 14px;
    }
 ::ng-deep.mat-form-field-appearance-fill .mat-form-field-infix{
-    font-family: 'Gilroy-Medium';
+    font-family: 'Calibri';
     font-size: 14px;
+    width: 219px;
+    margin-left: 8px;
+    color: rgba(104, 110, 116, 0.75)!important;
+
 }

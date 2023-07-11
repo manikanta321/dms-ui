@@ -54,6 +54,10 @@ body {
 {
   
 }
+.sales-container
+{
+  
+}
 
 /* End */
 /* custom css mat tab */
@@ -1074,40 +1078,6 @@ ngx-daterangepicker-material .md-drppicker .clear svg{
   border-left: 10px solid green !important;
   padding: 10px 20px;
 } 
-
-
-
-/* Font Family */
-/* @font-face {
-  font-family: 'Calibri-Bold';
-  src: url('./assets/fonts/Calibri/Calibri\ Bold.TTF')  format('truetype');
-}
-@font-face {
-  font-family: 'Calibri-Bold-Italic';
-  src: url('./assets/fonts/Calibri/Calibri\ Bold\ Italic.ttf')  format('truetype');
-}
-@font-face {
-  font-family: 'Calibri-Italic';
-  src: url('./assets/fonts/Calibri/Calibri\ Italic.ttf')  format('truetype');
-}
-@font-face {
-  font-family: 'Calibri-Light';
-  src: url('./assets/fonts/Calibri/Calibri\ Light.ttf')  format('truetype');
-}
-
-@font-face {
-  font-family: 'Calibri-Light';
-  src: url('./assets/fonts/Calibri/Calibri\ Light.ttf')  format('truetype');
-}
-@font-face {
-  font-family: 'Calibri-Light-Italic';
-  src: url('./assets/fonts/Calibri/Calibri\ Light\ Italic.ttf')  format('truetype');
-}
-@font-face {
-  font-family: 'Calibri-Regular';
-  src: url('./assets/fonts/Calibri/Calibri\ Regular.ttf')  format('truetype');
-} */
-
 
 
 @font-face {

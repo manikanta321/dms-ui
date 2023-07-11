@@ -9,6 +9,24 @@
   
 
 }
+.sidenavbar:hover .mat-icon
+{
+  color:  rgba(1, 139, 117, 1);
+  
+}
+ .hover-effect:hover .green-icon
+{
+  color: aliceblue;
+}
+
+.sidenavbar:hover .active .mat-icon
+{
+  color: whitesmoke;
+}
+.sidenavbar:hover .active .dasb-menu
+{
+  color: whitesmoke;
+}
 .green-icon {
   color:  rgba(1, 139, 117, 1);
 }

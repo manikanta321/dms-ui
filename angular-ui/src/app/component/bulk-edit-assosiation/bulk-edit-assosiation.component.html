@@ -123,8 +123,7 @@
     </div>
   </div>
   <br>
-  <br>
-
+  <br> 
   <div class="d-flex main-d">
 
 
@@ -160,12 +159,15 @@
           <th style='width: 119px'>
             Lead time(days)
           </th>
-          <th>
-
-          </th>
+          
         </tr>
 
         <tr *ngFor="let quantity of BulkAssociationsCount().controls; let i=index" [formGroupName]="i">
+          <td *ngIf="ProductGEOID">
+            <input type="text" class="uom-cls" formControlName="ProductSKUGeographyId" name="fname" id="fname" [(ngModel)]="addAddressDetailsForm.value.BulkAssociationsCount[i].ProductSKUGeographyId">
+
+          </td>
+         
           <td>
             <input type="text" class="testcalss" id="fname" tabindex="0" data-toggle="tooltip" [title]="addAddressDetailsForm.value.BulkAssociationsCount[i].ProductName" data-placement="top" name="fname" formControlName="ProductName" readonly>
           </td>
@@ -195,11 +197,23 @@
           </td>
 
           <td>
-            <input type="text" class="uom-cls" formControlName="LeadTimeIndays" [(ngModel)]="addAddressDetailsForm.value.BulkAssociationsCount[i].LeadTimeIndays">
+            <input type="text" class="uom-cls" formControlName="LeadTimeIndays"  [(ngModel)]="addAddressDetailsForm.value.BulkAssociationsCount[i].LeadTimeIndays">
 
 
           </td>
+          <td *ngIf="ProductSKUCode">
+            <input type="text" class="uom-cls" formControlName="productSKUId" name="fname" id="fname" [(ngModel)]="addAddressDetailsForm.value.BulkAssociationsCount[i].productSKUId">
+
+          </td>
+
+          <td *ngIf="ProductSKUCode">
+            <input type="text" class="uom-cls" formControlName="GROID" name="fname" id="fname" [(ngModel)]="addAddressDetailsForm.value.BulkAssociationsCount[i].GROID">
+
+          </td>
+
+          
           <td>
+            
             <div class="icon btnhover1 refreshbtn" style=" cursor: pointer;" (click)="change(i)">
               <img class="refresh" src="assets/img/ultrarefresh.svg" style="position: relative;top: 9px;left: 12px;"
                 alt="refresh">
@@ -226,7 +240,6 @@
                 <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>                 
         </div> -->
   </div>
-
 
 
 

@@ -50,6 +50,8 @@ export class AssosiationServicesService {
     return this.http.post<any>(this.userurl + 'DealerApi/GetAllDealerAssociation', data);
   }
 
+ 
+
 
   public editbulkdealer(data) {
     return this.http.post<any>(this.userurl + 'DealerApi/UpdateBulkEditAssociations', data);
@@ -101,7 +103,17 @@ export class AssosiationServicesService {
   }
 
 
+  public AssociationbulkeditList(data)
+  {
+    return this.http.post<any>(this.userurl + 'DealerApi/BulkUploadEditAssociation', data);
+  }
 
+  public SaveBulkUploadAssocition(data){
+    console.log("Data",data)
+    return this.http.post<any>(this.userurl + 'DealerApi/SaveBulkUploadEditAssociation', data);
+  
+  }
+  
 
 }
 // http://13.126.235.145:801/api/DealerApi/GetStockItemDetailList?ProductSKUId=42

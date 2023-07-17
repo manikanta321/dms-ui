@@ -1,3 +1,49 @@
+.numberright
+{
+  text-align: right;
+}
+
+  td.errorText {
+    color: red !important;
+  }
+  
+  .duplicate-tabel-shipment
+  {
+    position: relative;
+    width: 92%;
+     left: 12px;
+    margin-bottom: 30px;
+    top: 7rem;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: #686E74;
+    border-radius: 0px 0px 10px 10px
+  }
+  
+.class_table_shipment {
+  width: 100%;
+  background: #FFFFFF !important;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1) !important;
+  border: none;
+  border-radius: 12px !important;
+}
+.table-header-row {
+  border-top-right-radius: 12px !important;
+  border-top-left-radius: 12px !important;
+}
+.duplicate-tabel-shipments {
+  position: relative;
+  width: 92%;
+  left: 12px;
+  /* height: 183px; */
+  margin-bottom: 30px;
+  top: 79px;
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: #686E74;
+  border-radius: 0px 0px 10px 10px
+    }
+
 ::-webkit-scrollbar {
     color: #000000 !important;
         width: 9px;
@@ -351,6 +397,7 @@
         background: #000000;
         box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
         border-radius: 10px;
+        cursor: pointer;
     }
     .discard{
         width: 280px;
@@ -362,6 +409,7 @@
         box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
         border-radius: 10px;
         text-align: center;
+        cursor: pointer;
     }
     .save-text {
         color: white;
@@ -375,6 +423,7 @@
         align-items: center;
         text-align: center;
         border: none;
+        cursor: pointer;
     }
     .discard-text {
         color: black;
@@ -388,6 +437,7 @@
         align-items: center;
         text-align: center;
         border: none;
+        cursor: pointer;
     }
     .expand-arrow {
         position: relative;
@@ -440,3 +490,10 @@
     left: 95px;
     font-size: 14px;
 }
+
+
+
+
+
+
+

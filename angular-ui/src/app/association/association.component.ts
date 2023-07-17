@@ -106,18 +106,33 @@ export class AssociationComponent implements OnInit {
   columnDefs: ColDef[] = [
 
     {
-      headerName: "Product",
+        headerName: 'ProductSKUGeographyId',
+       field: 'productSKUGeographyId',
+    },
+
+    {
+      headerName: "ProductName",
        field: 'stockItemName', type: ['nonEditableColumn'],
     },
 
-    { headerName: "Dealer",
+    {
+       headerName: 'ProductCode ',
+          //1  field: 'productCode',
+         field: 'productCode',
+    },
+
+    { headerName: "DealerName",
     minWidth:250,
-    field: 'customerName', type: ['nonEditableColumn'], sort: 'desc',
+     field: 'customerName',
+    // field:'DealerName',
+     type: ['nonEditableColumn'], sort: 'desc',
     },
     {
-      headerName: "Geography",
+      headerName: "GeographyName",
       minWidth:250,
-      field: 'geographyName', 
+       field: 'geographyName',
+      // field: 'GeographyName',  
+
       // ellRenderer: this.daysSunshineRenderer,
       // cellRendererParams: {
       // rendererImage: '', // Complementing the Cell Renderer parameters
@@ -127,36 +142,37 @@ export class AssociationComponent implements OnInit {
 
     {
       headerName: "MRP",
-      field: "mrp", 
+       field: "mrp",     
       type: ['nonEditableColumn','rightAligned']
     },
     {
-      headerName: "Min.Order.Qty",
-      field: "minOrder", 
+      headerName: "MinOrderQty",
+       field: "minOrder",      
       type: ['nonEditableColumn','rightAligned']
     },
     {
-      headerName: "Max.Order.Qty",
-      field: "maxOrder", 
+      headerName: "MaxOrderQty",
+         field: "maxOrder",        
       type: ['nonEditableColumn','rightAligned']
     },
     {
       headerName: "Margin",
-      field: "margin", 
-
-      type: ['nonEditableColumn','rightAligned']
+         field: "margin",   
+         type: ['nonEditableColumn','rightAligned']
     },
     {
       headerName: "Discount",
-      field: "discount", 
-      type: ['nonEditableColumn','rightAligned']
+         field: "discount",     
+        type: ['nonEditableColumn','rightAligned']
     },
     {
-      headerName: "Lead Time",
-      field: "leadTimeIndays", 
+      headerName: "LeadTimeDays",
+        field: "leadTimeIndays",       
       type: ['nonEditableColumn','rightAligned']
     },
 
+
+    
     // {
     //   headerName: '',
     //   colId: 'action',
@@ -168,6 +184,7 @@ export class AssociationComponent implements OnInit {
 
    
   ];
+  
 
 
   rowData: any;

@@ -1,11 +1,10 @@
-<!-- <p>association-bulk-upload works!</p> -->
-<div  class="container sales-container">
-    <div class="addUser-BulkUpload">
+ <div  class="container sales-container">
+     <div class="addUser-BulkUpload">
         <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
-    </div>
+    </div> 
     <span class="ship receiptA">Association:</span>
     <h1 class="ship receiptBulk">Bulk Upload</h1>
-    <div class="receipts">
+     <div class="receipts">
         <div class="row">
             <h4 class="bulk-txt">Bulk upload of Association</h4>
         </div>
@@ -15,7 +14,7 @@
         </div>
         <label class=" row upload-div">
             <input  type="file"  (change)="onFileChange($event)" style="display:none">
-            <!-- <span>Document is successfully uploaded</span> -->
+           
             <img src="../../../assets/img/upload-icon.png"  class="upload-icon" alt="Upload icon">
             <div class="row" *ngIf="uploadedTextShow">
                 <div  *ngFor="let file of files; let i=index">
@@ -31,239 +30,244 @@
             </div>
        
         </label>
-        <div class="step-2-filled" >
-            <div class="row step2">
-                <span class="step1-txt">Step 2:</span>
-                <h4 class="up-doc">Analyzing Uploaded document</h4>
-                <div *ngIf="!showTable">
-                    <input type="text"  placeholder="No document uploaded yet" class="selectedProductReceipts" disabled>
+       
+               <div class="step-2-filled" *ngIf="!showTable">
+                <div class="row step2">
+                    <span class="step1-txt">Step 2:</span>
+                    <h4 class="up-doc" >Analyzing Uploaded document</h4>
+                    <div >
+                        <input type="text"  placeholder="No document uploaded  yet" class="selectedProductReceipts" disabled>
+                    </div>
                 </div>
-            </div>
-            <div *ngIf="showTable">
-            <div (click)="expandTotalRows()"> 
-                <div class="row expandDivalign">
+                </div>
+
+                <div class="step-2-filled" *ngIf="showTable">
+                    <div class="row step2">
+                        <span class="step1-txt">Step 2:</span>
+                        <h4 class="up-doc">Analyzing Uploaded document</h4>
+                    </div>
+
+              
+            <div (click)="expandTotalRows()">
+                <div class="row">
                     <input type="text" [(ngModel)]="totalRows" style="margin-bottom:36px ;" class="total-rows duplicate-txt col-md-11" disabled>
                     <div class="col-md-1 expand-style">
                         <img [src]="image4" class="expand-arrow" alt="add-user-btn">
                     </div>
                 </div>
-                <div  *ngIf = "rowsTotal && TotalRows.length>0" class="row">
-                    <table matSort  class="class_table">
+             
+                     <div  *ngIf =" !rowsTotal && TotalRows.length>0 " class="row  duplicate-tabel-shipments"> 
+                    
+                    <table matSort   class="class_table_shipment">
                         <tr class="table-header-row">
-                            <th style="padding-left:20px;">Row No</th>
-                            <th >Order No</th>
+                            <!-- <th style="padding-left:20px;">Row No</th> -->
+                            <th>Product GeographyId</th>
                             <th>Product Name</th>
                             <th>Product Code</th>
-                            <th>Disp. Qty</th>
-                            <th>Disp. Date</th>
-                            <th>Invoice Date</th>
-                            <th>Invoice No.</th>
-                            <th>Receipt Date</th>
-                            <th>Receipt Qty</th>
-                            <th>Uploaded Date</th>
+                            <th>Geograph Name</th>
+                            <th>Dealer Name</th>
+                            <th>MRP</th>
+                            <th>MinOrder</th>
+                            <th>MaxOrder</th>
+                            <th>Margin</th>
+                            <th>Discount</th>
+                            <th>LeadTimeIndays</th>
                         </tr>
                         <tr *ngFor="let dupicateData of TotalRows">
             
-                            <td title="" style="padding-left: 21px;">{{dupicateData.rownumber}}</td>
-                            <td title="" class="elipsis-2line">
-                                {{dupicateData.orderNo}}</td>
-                            <td title="">{{dupicateData.productName}}</td>
-                              <td title="">{{dupicateData.productCode}}</td>
-                            <td>{{dupicateData.dispatchQty}}</td>
-                            <td>{{dupicateData.dispatchDate}}</td>
-                            <td>{{dupicateData.invoiceDate}}</td>
-                            <td >{{dupicateData.invoiceNo}}</td>
-                            <td>{{dupicateData.receiptDate}}</td>
-                            <td>{{dupicateData.receiptQty}}</td>
-                            <td>{{dupicateData.uploadedDate}}</td>
-            
-                        </tr>
+                            
+                             <!-- <td title="" >{{dupicateData.batchid}}</td>  -->
+                            
+
+                            <td class="numberright">{{dupicateData.productSKUGeographyId}}</td>
+                            <td >{{dupicateData.productName}}</td>
+                           <td title="">{{dupicateData.productCode}}</td>
+                           <td title="">{{dupicateData.geographyName}}</td>
+                           <td>{{dupicateData.dealerName}}</td>
+                           
+                             <td class="numberright">{{dupicateData.mrp}}</td>
+                            <td class="numberright">{{dupicateData.minOrderQty}}</td>
+                            <td class="numberright">{{dupicateData.maxOrderQty}}</td>
+                            <td class="numberright">{{dupicateData.margin}}</td>
+                            <td class="numberright">{{dupicateData.discount}}</td>
+                            <td class="numberright">{{dupicateData.leadTimeDays}}</td>
+
+                          </tr>
                     </table>
                 </div>
-        </div>
-        <div (click)="expandEmptyRows()">
-            <div class="row expandrowDiv">
-                <input type="text" [(ngModel)]="emptyRows" style="margin-bottom:36px ;" class="total-rows duplicate-txt col-md-11" disabled>
-                <div class="col-md-1 expand-style">
-                    <img [src]="image4" class="expand-arrow" alt="add-user-btn">
-                </div>
             </div>
-            <div  *ngIf = "rowsemptyTotal && EmptyRows.length>0" class="row">
-                <table matSort  class="class_table">
-                    <tr class="table-header-row">
-                        <th style="padding-left:20px;">Row No</th>
-                        <th >Order No</th>
-                        <th>Product Name</th>
-                        <th>Product Code</th>
-                        <th>Disp. Qty</th>
-                        <th>Disp. Date</th>
-                        <th>Invoice Date</th>
-                        <th>Invoice No.</th>
-                        <th>Receipt Date</th>
-                        <th>Receipt Qty</th>
-                        <th>Uploaded Date</th>
-                    </tr>
-                    <tr *ngFor="let dupicateData of EmptyRows">
-        
-                        <td title="" style="padding-left: 21px;">{{dupicateData.rownumber}}</td>
-                        <td title="" class="elipsis-2line">
-                            {{dupicateData.orderNo}}</td>
-                        <td title="">{{dupicateData.productName}}</td>
-                          <td title="">{{dupicateData.productCode}}</td>
-                        <td>{{dupicateData.dispatchQty}}</td>
-                        <td>{{dupicateData.dispatchDate}}</td>
-                        <td>{{dupicateData.invoiceDate}}</td>
-                        <td >{{dupicateData.invoiceNo}}</td>
-                        <td>{{dupicateData.receiptDate}}</td>
-                        <td>{{dupicateData.receiptQty}}</td>
-                        <td>{{dupicateData.uploadedDate}}</td>
-        
-                    </tr>
-                </table>
-            </div>
-    </div>
-        <div (click)="expandErrorFree()">
-            <div class="row ">
+                <div class="row " (click)="expandErrorFree()">
                 <input type="text" [(ngModel)]="errorFree" class="total-rows error-txt col-md-11" disabled>
                 <div class="col-md-1 error-style">
                     <img [src]="image2" class="expand-arrow" alt="add-user-btn">
                 </div>
-            </div>
-            <div  *ngIf = "ErrorFree && errorfreeRows.length>0" class="row">
-                <table matSort  class="class_table">
-                    <tr class="table-header-row">
-                        <th style="padding-left:20px;">Row No</th>
-                        <th >Order No</th>
-                        <th>Product Name</th>
-                        <th>Product Code</th>
-                        <th>Disp. Qty</th>
-                        <th>Disp. Date</th>
-                        <th>Invoice Date</th>
-                        <th>Invoice No.</th>
-                        <th>Receipt Date</th>
-                        <th>Receipt Qty</th>
-                        <th>Uploaded Date</th>
-                    </tr>
-                    <tr *ngFor="let dupicateData of errorfreeRows">
-        
-                        <td title="" style="padding-left: 21px;">{{dupicateData.rownumber}}</td>
-                        <td title="" class="elipsis-2line">
-                            {{dupicateData.orderNo}}</td>
-                        <td title="">{{dupicateData.productName}}</td>
-                          <td title="">{{dupicateData.productCode}}</td>
-                        <td>{{dupicateData.dispatchQty}}</td>
-                        <td>{{dupicateData.dispatchDate}}</td>
-                        <td>{{dupicateData.invoiceDate}}</td>
-                        <td >{{dupicateData.invoiceNo}}</td>
-                        <td>{{dupicateData.receiptDate}}</td>
-                        <td>{{dupicateData.receiptQty}}</td>
-                        <td>{{dupicateData.uploadedDate}}</td>
-        
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div (click)="expandDuplicateEntry()">
-            <div class="row ">
-                <input type="text" [(ngModel)]="duplicateEntry" class="total-rows duplicate-txt col-md-11" disabled>
-                <div class="col-md-1 expand-style">
-                    <img [src]="image3" class="expand-arrow" alt="add-user-btn">
+
+                <div *ngIf=" ErrorFree && errorfreeRows.length>0" class="row duplicate-tabel-shipment">
+                    <table matSort  class="class_table_shipment">
+                        <tr class="table-header-row">
+                            <th style="padding-left:20px;">Row No</th>
+                            
+                            <th>Product GeographyId</th>
+                            <th>Product Name</th>
+                            <th>Product Code</th>
+                            <th>Geograph Name</th>
+                            <th>Dealer Name</th>
+                            <th>MRP</th>
+                            <th>MinOrder</th>
+                            <th>MaxOrder</th>
+                            <th>Margin</th>
+                            <th>Discount</th>
+                            <th>LeadTimeIndays</th>
+                        </tr>
+                        <tr *ngFor="let dupicateData of errorfreeRows">
+            
+                            <td class="numberright">{{dupicateData.productSKUGeographyId}}</td>
+                            <td >{{dupicateData.productName}}</td>
+                            <td title="">{{dupicateData.productCode}}</td>
+                            <td title="">{{dupicateData.geographyName}}</td>
+                            <td>{{dupicateData.dealerName}}</td>
+                             
+                              <td class="numberright">{{dupicateData.mrp}}</td>
+                             <td class="numberright">{{dupicateData.minOrderQty}}</td>
+                             <td class="numberright">{{dupicateData.maxOrderQty}}</td>
+                             <td class="numberright">{{dupicateData.margin}}</td>
+                             <td class="numberright">{{dupicateData.discount}}</td>
+                             <td class="numberright">{{dupicateData.leadTimeDays}}</td>
+            
+                        </tr>
+                    </table>
                 </div>
             </div>
-            <div  *ngIf = "!duplicate && duplicateEntryy.length>0" class="row duplicate-tabel">
-                <table matSort  class="class_table">
-                    <tr class="table-header-row">
-                        <th style="padding-left:20px;">Row No</th>
-                        <th >Order No</th>
-                        <th>Product Name</th>
-                        <th>Product Code</th>
-                        <th>Disp. Qty</th>
-                        <th>Disp. Date</th>
-                        <th>Invoice Date</th>
-                        <th>Invoice No.</th>
-                        <th>Receipt Date</th>
-                        <th>Receipt Qty</th>
-                        <th>Uploaded Date</th>
-                    </tr>
-                    <tr *ngFor="let dupicateData of duplicateEntryy">
-        
-                        <td title="" style="padding-left: 21px;">{{dupicateData.rownumber}}</td>
-                        <td title="" class="elipsis-2line">
-                            {{dupicateData.orderNo}}</td>
-                        <td title="">{{dupicateData.productName}}</td>
-                          <td title="">{{dupicateData.productCode}}</td>
-                        <td>{{dupicateData.dispatchQty}}</td>
-                        <td>{{dupicateData.dispatchDate}}</td>
-                        <td>{{dupicateData.invoiceDate}}</td>
-                        <td >{{dupicateData.invoiceNo}}</td>
-                        <td>{{dupicateData.receiptDate}}</td>
-                        <td>{{dupicateData.receiptQty}}</td>
-                        <td>{{dupicateData.uploadedDate}}</td>
-        
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div (click)="IncorrectDataValue()" style="margin-top:20px;">
-            <div class="row">
-                <input type="text" [(ngModel)]="Incorrect" class="total-rows duplicate-txt col-md-11" disabled>
-                <div class="col-md-1 expand-style">
-                    <img [src]="image4" class="expand-arrow" alt="add-user-btn">
+
+
+
+
+
+            <div (click)="expandDuplicateEntry()">
+                <div class="row ">
+                    <input type="text" [(ngModel)]="duplicateEntry" class="total-rows duplicate-txt col-md-11" disabled>
+                    <div class="col-md-1 expand-style">
+                        <img [src]="image3" class="expand-arrow" alt="add-user-btn">
+                    </div>
+                </div>
+                <div  *ngIf = "!duplicate && duplicateEntryy.length>0" class="row duplicate-tabel-shipments">
+                    <table matSort  class="class_table_shipment">
+                        <tr class="table-header-row">
+                            <!-- <th style="padding-left:20px;">Row No</th> -->
+                            <th>ProductGeographyId</th>
+                            <th>Product Name</th>
+                            <th>Product Code</th>
+                            <th>Geograph Name</th>
+                            <th>Dealer Name</th>
+                            <th>MRP</th>
+                            <th>MinOrder</th>
+                            <th>MaxOrder</th>
+                            <th>Margin</th>
+                            <th>Discount</th>
+                            <th>LeadTimeIndays</th>
+                        </tr>
+                        <tr *ngFor="let dupicateData of duplicateEntryy">
+            
+                            
+                          
+                            <td class="numberright">{{dupicateData.productSKUGeographyId}}</td>
+                            <td >{{dupicateData.productName}}</td>
+                            <td title="">{{dupicateData.productCode}}</td>
+                            <td title="">{{dupicateData.geographyName}}</td>
+                            <td>{{dupicateData.dealerName}}</td>
+                            
+                              <td class="numberright">{{dupicateData.mrp}}</td>
+                             <td class="numberright">{{dupicateData.minOrderQty}}</td>
+                             <td class="numberright">{{dupicateData.maxOrderQty}}</td>
+                             <td class="numberright">{{dupicateData.margin}}</td>
+                             <td class="numberright">{{dupicateData.discount}}</td>
+                             <td class="numberright">{{dupicateData.leadTimeDays}}</td>
+            
+                        </tr>
+                    </table>
+                </div>
+                </div>
+            
+
+            <div (click)="IncorrectDataValue()" style="margin-top:20px;">
+                <div class="row">
+                    <input type="text" [(ngModel)]="Incorrect" class="total-rows duplicate-txt col-md-11" disabled>
+                    <div class="col-md-1 expand-style">
+                        <img [src]="image4" class="expand-arrow" alt="add-user-btn">
+                    </div>
+                </div>
+                <div  *ngIf = "!incorrectData && incorrectRows.length>0" class="row duplicate-tabel-shipment">
+                    <table matSort  class="class_table_shipment">
+                        <tr class="table-header-row">
+                            <!-- <th style="padding-left:20px;">Row No</th> -->
+                            <th>ProductGeographyId</th>
+                            <th>Product Name</th>
+                            <th>Product Code</th>
+                            <th>Geograph Name</th>
+                            <th>Dealer Name</th>
+                            <th>MRP</th>
+                            <th>MinOrder</th>
+                            <th>MaxOrder</th>
+                            <th>Margin</th>
+                            <th>Discount</th>
+                            <th>LeadTimeIndays</th>
+                        </tr>
+                        <tr *ngFor="let dupicateData of incorrectRows">
+            
+                           <td class="numberright" [ngClass]="{'errorText': dupicateData.incorrectColumn == 'productSKUGeographyId'}">{{dupicateData.productSKUGeographyId}}</td>
+                            <td  [ngClass]="{'errorText': dupicateData.incorrectColumn == 'productname'}">{{dupicateData.productName}}</td>
+                           <td  [ngClass]="{'errorText': dupicateData.incorrectColumn == 'productCode'}">{{dupicateData.productCode}}</td>
+                           <td  [ngClass]="{'errorText': dupicateData.incorrectColumn == 'geographyName'}">{{dupicateData.geographyName}}</td>
+                           <td  [ngClass]="{'errorText': dupicateData.incorrectColumn == 'dealerName'}">{{dupicateData.dealerName}}</td>
+                           
+                           <td class="numberright" [ngClass]="{'errorText': dupicateData.incorrectColumn == 'mrp'}">{{dupicateData.mrp}}</td>
+                          <td class="numberright" [ngClass]="{'errorText': dupicateData.incorrectColumn == 'minOrderQty'}">{{dupicateData.minOrderQty}}</td>
+                         <td class="numberright" [ngClass]="{'errorText': dupicateData.incorrectColumn == 'maxOrderQty'}">{{dupicateData.maxOrderQty}}
+                        <td class="numberright" [ngClass]="{'errorText': dupicateData.incorrectColumn == 'margin'}">{{dupicateData.margin}}
+                        <td class="numberright"  [ngClass]="{'errorText': dupicateData.incorrectColumn == 'discount'}">{{dupicateData.discount}}
+                        <td class="numberright" [ngClass]="{'errorText': dupicateData.incorrectColumn == 'leadTimeDays'}">{{dupicateData.leadTimeDays}}
+            
+            
+            
+                        </tr>
+                    </table>
                 </div>
             </div>
-            <div  *ngIf = "!incorrectData && incorrectRows.length>0" class="row">
-                <table matSort  class="class_table">
-                    <tr class="table-header-row">
-                        <th style="padding-left:20px;">Row No</th>
-                        <th >Order No</th>
-                        <th>Product Name</th>
-                        <th>Product Code</th>
-                        <th>Disp. Qty</th>
-                        <th>Disp. Date</th>
-                        <th>Invoice Date</th>
-                        <th>Invoice No.</th>
-                        <th>Receipt Date</th>
-                        <th>Receipt Qty</th>
-                        <th>Uploaded Date</th>
-                    </tr>
-                    <tr *ngFor="let dupicateData of incorrectRows">
         
-                        <td title="" style="padding-left: 21px;">{{dupicateData.rownumber}}</td>
-                        <td title="" class="elipsis-2line">
-                            {{dupicateData.orderNo}}</td>
-                        <td title="">{{dupicateData.productName}}</td>
-                          <td title="">{{dupicateData.productCode}}</td>
-                        <td>{{dupicateData.dispatchQty}}</td>
-                        <td>{{dupicateData.dispatchDate}}</td>
-                        <td>{{dupicateData.invoiceDate}}</td>
-                        <td >{{dupicateData.invoiceNo}}</td>
-                        <td>{{dupicateData.receiptDate}}</td>
-                        <td>{{dupicateData.receiptQty}}</td>
-                        <td>{{dupicateData.uploadedDate}}</td>
-        
-                    </tr>
-                </table>
+             <div class="button-save-chng-receipts row">
+                <div class="save-chng" (click)="UploadReceipt()">
+                    <button class="save-text">
+                       Upload
+                    </button>
+                </div>
+                <div class="discard"  (click)="closedialogbox()">
+                    <button class="discard-text">
+                        Cancel
+                    </button>
+                </div>
             </div>
-        </div>
-        <div class="button-save-chng-receipts row">
-            <div class="save-chng" (click)="UploadReceipt()">
-                <button class="save-text">
-                   Upload
-                </button>
-            </div>
-            <div class="discard">
-                <button class="discard-text">
-                    Cancel
-                </button>
-            </div>
-        </div>
 
-    </div>
+                
 
 
-    </div>
 
+
+
+
+         
+     
+       
+       
+
+
+
+
+         
+</div>
 
 
 </div>
+
 </div>
+
+

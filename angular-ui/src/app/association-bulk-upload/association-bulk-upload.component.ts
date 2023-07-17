@@ -4,6 +4,7 @@ import { OtherMasterService } from 'src/app/services/other-master.service';
 import { SalesServicesService } from 'src/app/services/sales-services.service';
 import * as XLSX from 'xlsx';
 import { OrderReceiptsBulkUploadComponent } from '../orders-receipts/order-receipts-bulk-upload/order-receipts-bulk-upload.component';
+import { AssosiationServicesService } from '../services/assosiation-services.service';
 
 @Component({
   selector: 'app-association-bulk-upload',
@@ -17,9 +18,12 @@ export class AssociationBulkUploadComponent implements OnInit {
   rowsemptyTotal:boolean=false;
   totalRows:any;
   emptyRows:any;
+  ErrorFree:boolean = false;
   errorfreeRows:any =[];
   uploadedData:any = [];
   receiptsUploadList:any = [];
+  associationList:any=[];
+  CurrentUserId:any;
   TotalRows:any = [];
   EmptyRows:any=[];
   duplicateEntryy:any=[];
@@ -30,7 +34,7 @@ export class AssociationBulkUploadComponent implements OnInit {
   image4 = 'assets/img/maximize-arrow.png';
   image3 = 'assets/img/maximize-arrow.png';
   image5='assets/img/maximize-arrow.png';
-  ErrorFree:boolean = false;
+ 
   incorrectRows:any = [];
   Incorrect:any;
   batchId:any;
@@ -39,7 +43,12 @@ export class AssociationBulkUploadComponent implements OnInit {
   duplicate:boolean = false;  
   incorrectData:boolean = false;
   uploadedTextShow: boolean = false;
+  totalVal:boolean = false;
+  shipment:boolean = false;
+  uploadSales:boolean = false;
+  orderReceipt:boolean = false;
   constructor(private salesService:SalesServicesService,
+    private associationService:AssosiationServicesService,
     private otherMasterService:OtherMasterService,
     private dialogRef: MatDialogRef<AssociationBulkUploadComponent>) { }
 
@@ -57,6 +66,8 @@ export class AssociationBulkUploadComponent implements OnInit {
         type: file.type
         // Other specs
       });
+      
+      
     }
   this.uploadedTextShow=true;
     /* wire up file reader */
@@ -71,7 +82,6 @@ export class AssociationBulkUploadComponent implements OnInit {
       const binarystr: string = e.target.result;
       const wb: XLSX.WorkBook = XLSX.read(binarystr, { type: 'binary',cellDates: true });
       console.log(wb,"wb")
-
       /* selected the first sheet */
       const wsname: string = wb.SheetNames[0];
       console.log(wsname,"wsname")
@@ -81,47 +91,81 @@ export class AssociationBulkUploadComponent implements OnInit {
       /* save data */
       
        this.uploadedData = XLSX.utils.sheet_to_json(ws); // to get 2d array pass 2nd parameter as object {header: 1}
-      console.log("New Dataaaa",this.uploadedData); // Data will be logged in array format containing objects
+      console.log("New Dataaaa checking",this.uploadedData); // Data will be logged in array format containing objects
       const uploadedFile = {
-        CreateById:this.CreatedById,
-        bulkOrderReceipts:this.uploadedData
+         CurrentUserId:this.CreatedById,
+      
+
+        Associations:this.uploadedData
       }
-      alert(this.CreatedById)
+    
       console.log("Daaataaa",uploadedFile); 
-      this.salesService.getReceiptBulkUpload(uploadedFile).subscribe((res)=>{
+        
+       
+          this.associationService.AssociationbulkeditList(uploadedFile).subscribe((res)=>{
+          
+
         if(res.succeded = true) {
           this.showTable =true;
         }
-        this.receiptsUploadList=res.response;
-        this.TotalRows = this.receiptsUploadList.allRows;
-        this.totalRows = "Total Rows = "+ this.TotalRows.length
-        this.EmptyRows = this.receiptsUploadList.emptyRows;
-        this.emptyRows = "Empty Rows = "+ this.EmptyRows.length
-      this.duplicateEntryy =this.receiptsUploadList.duplicateEntries
-      this.duplicateEntry = "Duplicate Entries = "+this.duplicateEntryy.length;
-      this.errorfreeRows = this.receiptsUploadList.errorFreeRows
-      this.errorFree = "Error Free Rows = "+ this.errorfreeRows.length;
-        console.log("this.receiptsUploadList",this.receiptsUploadList);
-        this.incorrectRows = this.receiptsUploadList.incorrectData;
+        this.associationList=res.response;
+        this.BatchId = this.associationList.batchid;
+       console.log("Association List",this.associationList)
+        this.TotalRows = this.associationList.allRows;
+        this.totalRows = "Total Rows = "+ this.TotalRows.length;
+
+        this.errorfreeRows = this.associationList.errorFreeRows
+        this.errorFree = "Error Free Rows = "+ this.errorfreeRows.length;
+
+        this.duplicateEntryy =this.associationList.duplicateEntries
+        this.duplicateEntry = "Duplicate Entries = "+this.duplicateEntryy.length;
+
+        
+        this.incorrectRows = this.associationList.incorrectData;
+        this.incorrectRows.map((ele)=>{
+          ele.incorrectColumn = ele.incorrectColumn?.split(":")[1].toLowerCase().trim();
+          console.log("incorrectColumn check" , ele.incorrectColumn);
+          return ele;
+        });
+        console.log("incorret data checking " , this.incorrectRows);
         this.Incorrect = "Incorrect Data = " + this.incorrectRows.length;
-        const SalesUploadData = res.response.allRows;
-        console.log("SalesUploadData",SalesUploadData)
-        this.batchId = SalesUploadData.map(({ batchId }) => batchId);
+        const associationList = res.response.allRows;
+        console.log("associationList   check",associationList)
+        this.batchId = associationList.map(({ batchId }) => batchId);
+      
+       
+
+       
       })
     };
     
  }
+expandTotalRows(){
+  console.log("cheking re  ",this.rowsTotal);
+  this.rowsTotal = !this.rowsTotal;
 
-  expandTotalRows(){
-    this.rowsTotal = !this.rowsTotal;
-
-    if(this.rowsTotal === false){
-      this.image1 = 'assets/img/minimize-tag.png';
-    } else {
-      this.image1 = 'assets/img/maximize-arrow.png';
-     
-    }
+  if(this.rowsTotal === false){
+    this.image1 = 'assets/img/minimize-tag.png';
+    this.image4 = 'assets/img/maximize-arrow.png';
+  } else {
+    this.image1 = 'assets/img/maximize-arrow.png';
+    this.image4 = 'assets/img/maximize-arrow.png';
+   
   }
+}
+
+expandTotalValue(){
+  this.totalVal = !this.totalVal;
+
+  if(this.totalVal === false){
+    this.image4 = 'assets/img/maximize-arrow.png';
+  } else {
+    this.image4 = 'assets/img/minimize-tag.png';
+   
+  }
+}
+
+
   expandEmptyRows(){
     this.rowsemptyTotal = !this.rowsemptyTotal;
 
@@ -142,6 +186,8 @@ export class AssociationBulkUploadComponent implements OnInit {
      
     }
   }
+
+  
   expandZeroValue(){
     this.zeroVal = !this.zeroVal;
 
@@ -172,18 +218,33 @@ export class AssociationBulkUploadComponent implements OnInit {
      
     }
   }
+  BatchId:any;
   UploadReceipt() {
-    const uploadedFile = {
-      BatchId:this.batchId[0],
-      action:'PROCESS'
+    let uploadedFile = {
+    currentUserId:this.CreatedById,
+    BatchId:this.BatchId
     }
-    console.log("Daaataaa",uploadedFile); 
-    this.salesService.saveBulkUploadReceipt(uploadedFile).subscribe((res)=>{
+    this.associationService.SaveBulkUploadAssocition(uploadedFile).subscribe((res)=>{
       this.otherMasterService.filter('Register click');
       const uploadedData = res.response;
-      console.log("SaveReceipt",uploadedData)
+      console.log("Save bulk assocition",uploadedData)
       this.dialogRef.close();
     })
    }
-
+   uploadFile() {
+    const uploadedFile = {
+      guid:this.batchId[0]
+    }
+    console.log("Daaataaa",uploadedFile); 
+   
+      this.associationService.AssociationbulkeditList(uploadedFile).subscribe((res)=>{
+      const uploadedData = res.response;
+       this.dialogRef.close();
+    })
+   
+   } 
+ closedialogbox()
+ {
+   this.dialogRef.close();
+ }
 }

@@ -116,7 +116,7 @@ export class AssociationComponent implements OnInit {
     },
 
     {
-       headerName: 'ProductCode ',
+       headerName:"ProductCode",
           //1  field: 'productCode',
          field: 'productCode',
     },

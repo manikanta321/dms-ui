@@ -1144,7 +1144,9 @@ console.log(item)
   orderTargetUpload(){
     localStorage.setItem('UploadTarget','dealertarget')
     // sessionStorage.setItem("orderTarget",'target');
-      this.dialog.open(AssociationBulkUploadComponent,{maxWidth:'97vw'});
+      this.dialog.open(AssociationBulkUploadComponent,
+        {minWidth :'91vw',height:'702px'}
+        );
       // this.isOpen = false;
   }
 

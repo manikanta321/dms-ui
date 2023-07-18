@@ -5,6 +5,7 @@ import { SalesServicesService } from 'src/app/services/sales-services.service';
 import * as XLSX from 'xlsx';
 import { OrderReceiptsBulkUploadComponent } from '../orders-receipts/order-receipts-bulk-upload/order-receipts-bulk-upload.component';
 import { AssosiationServicesService } from '../services/assosiation-services.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-association-bulk-upload',
@@ -13,6 +14,8 @@ import { AssosiationServicesService } from '../services/assosiation-services.ser
 })
 export class AssociationBulkUploadComponent implements OnInit {
   showTable:boolean = false;
+  
+  Errorfreeforms!:FormGroup
   files:any=[];
   rowsTotal:boolean = false;
   rowsemptyTotal:boolean=false;
@@ -50,12 +53,20 @@ export class AssociationBulkUploadComponent implements OnInit {
   constructor(private salesService:SalesServicesService,
     private associationService:AssosiationServicesService,
     private otherMasterService:OtherMasterService,
-    private dialogRef: MatDialogRef<AssociationBulkUploadComponent>) { }
+    private dialogRef: MatDialogRef<AssociationBulkUploadComponent>,private formbuilder:FormBuilder) { }
 
   ngOnInit(): void {
+    
     this.CreatedById = localStorage.getItem("logInId");
     this.CreatedById = Number(this.CreatedById);
-  }
+
+
+    this.Errorfreeforms = this.formbuilder.group({
+      age: ['', Validators.required]
+    });
+    
+  
+}
 
   onFileChange(event: any) {
     // Iterate over selected files
@@ -94,10 +105,11 @@ export class AssociationBulkUploadComponent implements OnInit {
       console.log("New Dataaaa checking",this.uploadedData); // Data will be logged in array format containing objects
       const uploadedFile = {
          CurrentUserId:this.CreatedById,
-      
-
+         BatchId : this.associationList.batchid,
+       
         Associations:this.uploadedData
       }
+      console.log("check once Batch id" , this.BatchId);
     
       console.log("Daaataaa",uploadedFile); 
         
@@ -108,8 +120,10 @@ export class AssociationBulkUploadComponent implements OnInit {
         if(res.succeded = true) {
           this.showTable =true;
         }
+        
         this.associationList=res.response;
         this.BatchId = this.associationList.batchid;
+        console.log("Batch data checkinn",this.BatchId);
        console.log("Association List",this.associationList)
         this.TotalRows = this.associationList.allRows;
         this.totalRows = "Total Rows = "+ this.TotalRows.length;
@@ -140,8 +154,11 @@ export class AssociationBulkUploadComponent implements OnInit {
     };
     
  }
+ onSubmit()
+ {
+  
+ }
 expandTotalRows(){
-  console.log("cheking re  ",this.rowsTotal);
   this.rowsTotal = !this.rowsTotal;
 
   if(this.rowsTotal === false){

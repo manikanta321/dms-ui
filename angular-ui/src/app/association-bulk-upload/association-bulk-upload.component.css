@@ -1,4 +1,10 @@
 
+.upload[disabled] {
+  background-color: gray; 
+  cursor: not-allowed;
+  
+}
+
 .upload
 {
    background-color: #000000;

@@ -14,7 +14,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AssociationBulkUploadComponent implements OnInit {
   showTable:boolean = false;
-  
+  isButtonDisabled: boolean = false;
   Errorfreeforms!:FormGroup
   files:any=[];
   rowsTotal:boolean = false;
@@ -69,6 +69,7 @@ export class AssociationBulkUploadComponent implements OnInit {
 }
 
   onFileChange(event: any) {
+    
     // Iterate over selected files
     for (let file of event.target.files) {
       // Append to a list
@@ -259,7 +260,9 @@ expandTotalValue(){
     this.associationService.SaveBulkUploadAssocition(uploadedFile).subscribe((res)=>{
       this.otherMasterService.filter('Register click');
       const uploadedData = res.response;
+      
       console.log("Save bulk assocition",uploadedData)
+      
       this.dialogRef.close();
     })
    }

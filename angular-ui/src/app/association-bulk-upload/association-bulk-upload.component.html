@@ -227,7 +227,10 @@
     <div class="row  mt-4   justify-content-center align-items-center">
       <div class="col-sm-4 d-flex justify-content-center">
         <button class="upload w-75" (click)="UploadReceipt()"
-        [disabled]="!errorfreeRows || errorfreeRows.length === 0 || null">Upload</button>
+        [disabled]="!errorfreeRows || errorfreeRows.length === 0 || null"
+        
+        
+        >Upload</button>
       </div>
       <div class="col-sm-4 d-flex justify-content-center">
         <button class="cancelbtn w-75" (click)="closedialogbox()">Cancel</button>

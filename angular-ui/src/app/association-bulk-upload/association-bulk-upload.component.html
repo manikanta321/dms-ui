@@ -41,7 +41,7 @@
                     <input type="text"  placeholder="No document uploaded  yet" class="selectedProductReceipts" disabled>
                 </div>
                 </div>
-                                <div class="step-2-filled" *ngIf="showTable">
+                 <div class="step-2-filled" *ngIf="showTable">
                     <div class="row step2">
                         <span class="step1-txt">Step 2:</span>
                         <h4 class="up-doc">Analyzing Uploaded document</h4>
@@ -74,23 +74,19 @@
                             <th>LeadTimeIndays</th>
                         </tr>
                         <tr *ngFor="let dupicateData of TotalRows">
-            
-                            
-                             <!-- <td title="" >{{dupicateData.batchid}}</td>  -->
-                            
-
+                              <!-- <td title="" >{{dupicateData.batchid}}</td>  -->
                             <td class="productid">{{dupicateData.productSKUGeographyId}}</td>
-                            <td >{{dupicateData.productName}}</td>
+                            <td class="productname">{{dupicateData.productName}}
                            <td title="">{{dupicateData.productCode}}</td>
                            <td title="">{{dupicateData.geographyName}}</td>
                            <td>{{dupicateData.dealerName}}</td>
-                           
-                             <td class="numberright">{{dupicateData.mrp}}</td>
-                            <td class="numberright">{{dupicateData.minOrderQty}}</td>
-                            <td class="numberright">{{dupicateData.maxOrderQty}}</td>
+                            <td class="numberright">{{dupicateData.mrp}}</td>
+                            <td class="numberright" >{{dupicateData.minOrderQty}}</td>
+                            <td class="numberright" >{{dupicateData.maxOrderQty}}</td>
                             <td class="numberright">{{dupicateData.margin}}</td>
                             <td class="numberright">{{dupicateData.discount}}</td>
-                            <td class="productid">{{dupicateData.leadTimeDays}}</td>
+                            <td class="numberright"></td>{{dupicateData.leadTimeDays}}
+                            
 
                           </tr>
                     </table>
@@ -100,10 +96,7 @@
             <form [formGroup]="Errorfreeforms"> 
                 <form #myForm="ngForm">
                 <div class="row " (click)="expandErrorFree()">
-
-                    
-                     
-                    <input type="text"  [(ngModel)]="errorFree" name="errorFree" class="total-rows expanderrorfree col-md-11" disabled required>
+                 <input type="text"  [(ngModel)]="errorFree" name="errorFree" class="total-rows expanderrorfree col-md-11" disabled required>
                     <div class="col-md-1 imageerror-style">
                         <img [src]="image2" class="expand-arrow" alt="add-user-btn">
                     </div>
@@ -126,35 +119,26 @@
                                 <th>LeadTimeIndays</th>
                             </tr>
                             <tr *ngFor="let dupicateData of errorfreeRows" >
-                
+                              
                                 <td class="productid">{{dupicateData.productSKUGeographyId}}</td>
-                                <td >{{dupicateData.productName}}</td>
+                                <td class="productname" >{{dupicateData.productName}}
                                 <td title="">{{dupicateData.productCode}}</td>
                                 <td title="">{{dupicateData.geographyName}}</td>
                                 <td>{{dupicateData.dealerName}}</td>
-                                 
-                                  <td class="numberright">{{dupicateData.mrp}}</td>
+                                <td class="numberright">{{dupicateData.mrp}}</td>
                                  <td class="numberright">{{dupicateData.minOrderQty}}</td>
                                  <td class="numberright">{{dupicateData.maxOrderQty}}</td>
                                  <td class="numberright">{{dupicateData.margin}}</td>
                                  <td class="numberright">{{dupicateData.discount}}</td>
-                                 <td class="productid">{{dupicateData.leadTimeDays}}</td>
-                
-                            </tr>
+                                 <td class="numberright"></td>{{dupicateData.leadTimeDays}}
+                                  </tr>
                         </table>
                     </div>
                 
                 </div>
             </form>
         </form>
-            
-        
-
-
-
-
-
-            <div (click)="expandDuplicateEntry()">
+               <div (click)="expandDuplicateEntry()">
                 <div class="row ">
                     <input type="text" [(ngModel)]="duplicateEntry" class="total-rows duplicate-txt col-md-11" disabled>
                     <div class="col-md-1 expand-style">
@@ -178,23 +162,19 @@
                             <th>LeadTimeIndays</th>
                         </tr>
                         <tr *ngFor="let dupicateData of duplicateEntryy">
-            
                             
-                          
                             <td class="productid">{{dupicateData.productSKUGeographyId}}</td>
-                            <td >{{dupicateData.productName}}</td>
+                            <td class="productname" >{{dupicateData.productName}}
                             <td title="">{{dupicateData.productCode}}</td>
                             <td title="">{{dupicateData.geographyName}}</td>
                             <td>{{dupicateData.dealerName}}</td>
-                            
-                              <td class="numberright">{{dupicateData.mrp}}</td>
+                           <td class="numberright">{{dupicateData.mrp}}</td>
                              <td class="numberright">{{dupicateData.minOrderQty}}</td>
                              <td class="numberright">{{dupicateData.maxOrderQty}}</td>
                              <td class="numberright">{{dupicateData.margin}}</td>
                              <td class="numberright">{{dupicateData.discount}}</td>
-                             <td class="productid">{{dupicateData.leadTimeDays}}</td>
-            
-                        </tr>
+                             <td class="productid"></td>{{dupicateData.leadTimeDays}}
+                              </tr>
                     </table>
                 </div>
                 </div>
@@ -223,24 +203,21 @@
                             <th>Discount</th>
                             <th>LeadTimeIndays</th>
                         </tr>
+                        <h5>{{incorrectRows.incorrectColumn}}</h5>
                         <tr *ngFor="let dupicateData of incorrectRows">
-            
-                           <td class="productid" [ngClass]="{'errorText': dupicateData.incorrectColumn == 'productSKUGeographyId'}">{{dupicateData.productSKUGeographyId}}</td>
-                            <td  [ngClass]="{'errorText': dupicateData.incorrectColumn == 'productname'}">{{dupicateData.productName}}</td>
-                           <td  [ngClass]="{'errorText': dupicateData.incorrectColumn == 'productCode'}">{{dupicateData.productCode}}</td>
-                           <td  [ngClass]="{'errorText': dupicateData.incorrectColumn == 'geographyName'}">{{dupicateData.geographyName}}</td>
-                           <td  [ngClass]="{'errorText': dupicateData.incorrectColumn == 'dealerName'}">{{dupicateData.dealerName}}</td>
                            
+                           <td class="productid" [ngClass]="{'errorText': dupicateData.incorrectColumn == 'productSKUGeographyId'}">{{dupicateData.productSKUGeographyId}}</td>
+                            <td class="productname" [ngClass]="{'errorText': dupicateData.incorrectColumn  == 'productname'}">{{dupicateData.productName}}</td>
+                           <td  [ngClass]="{'errorText': dupicateData.incorrectColumn == 'productcode'}">{{dupicateData.productCode}}</td>
+                           <td  [ngClass]="{'errorText': dupicateData.incorrectColumn == 'geographyName'}">{{dupicateData.geographyName}}</td>
+                            <td  [ngClass]="{'errorText': dupicateData.incorrectColumn == 'dealerName'}">{{dupicateData.dealerName}}</td>
                            <td class="numberright" [ngClass]="{'errorText': dupicateData.incorrectColumn == 'mrp'}">{{dupicateData.mrp}}</td>
                           <td class="numberright" [ngClass]="{'errorText': dupicateData.incorrectColumn == 'minOrderQty'}">{{dupicateData.minOrderQty}}</td>
-                         <td class="numberright" [ngClass]="{'errorText': dupicateData.incorrectColumn == 'maxOrderQty'}">{{dupicateData.maxOrderQty}}
-                        <td class="numberright" [ngClass]="{'errorText': dupicateData.incorrectColumn == 'margin'}">{{dupicateData.margin}}
+                         <td class="numberright" [ngClass]="{'errorText': dupicateData.incorrectColumn  == 'maxorder'}">{{dupicateData.maxOrderQty}}
+                         <td id="marginnumberright" [ngClass]="{'errorText': dupicateData.incorrectColumn == 'margin'}">{{dupicateData.margin}}
                         <td class="numberright"  [ngClass]="{'errorText': dupicateData.incorrectColumn == 'discount'}">{{dupicateData.discount}}
                         <td class="productid" [ngClass]="{'errorText': dupicateData.incorrectColumn == 'leadTimeDays'}">{{dupicateData.leadTimeDays}}
-            
-            
-            
-                        </tr>
+                      </tr>
                     </table>
                 </div>
             
@@ -257,7 +234,8 @@
       </div>
     </div>
   </div>                 
-</div>        
+</div>   
+     
 </div>      
 </div>
 

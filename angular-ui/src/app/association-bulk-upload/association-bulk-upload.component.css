@@ -1,18 +1,4 @@
-.expandtotalrow
-{
-  /* box-sizing: border-box;
-  position: relative;
-  width: 1079px;
-  height: 43px;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  font-family: 'Gilroy';
-  font-size: 20px;
-  line-height: 23px;
-  display: flex;
-  align-items: center; */
-}
+
 .upload
 {
    background-color: #000000;
@@ -41,6 +27,14 @@
 }
 
 .numberright
+{
+  text-align: right;
+}
+.productname
+{
+  text-align: left;
+}
+#marginnumberright
 {
   text-align: right;
 }

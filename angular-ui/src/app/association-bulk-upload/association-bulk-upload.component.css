@@ -44,6 +44,7 @@
   left: -32px;
   position: relative;
 }
+
   td.errorText {
     color: red !important;
   }

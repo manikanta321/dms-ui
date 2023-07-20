@@ -126,27 +126,27 @@ export class AssociationBulkUploadComponent implements OnInit {
         console.log("Batch data checkinn",this.BatchId);
        console.log("Association List",this.associationList)
         this.TotalRows = this.associationList.allRows;
-        this.TotalRows.map((ele)=>{
-          ele.incorrectColumn = ele.incorrectColumn?.split(":")[1].toLowerCase().trim();
-          console.log("incorrectColumn check" , ele.incorrectColumn);
-          return ele;
-        });
+        // this.TotalRows.map((ele)=>{
+        //   ele.incorrectColumn = ele.incorrectColumn?.split(":")[1].toLowerCase().trim();
+        //   console.log("incorrectColumn check" , ele.incorrectColumn);
+        //   return ele;
+        // });
         this.totalRows = "Total Rows = "+ this.TotalRows.length;
 
         this.errorfreeRows = this.associationList.errorFreeRows
-        this.errorfreeRows.map((ele)=>{
-          ele.incorrectColumn = ele.incorrectColumn?.split(":")[1].toLowerCase().trim();
-          console.log("incorrectColumn check" , ele.incorrectColumn);
-          return ele;
-        });
+        // this.errorfreeRows.map((ele)=>{
+        //   ele.incorrectColumn = ele.incorrectColumn?.split(":")[1].toLowerCase().trim();
+        //   console.log("incorrectColumn check" , ele.incorrectColumn);
+        //   return ele;
+        // });
         this.errorFree = "Error Free Rows = "+ this.errorfreeRows.length;
 
         this.duplicateEntryy =this.associationList.duplicateEntries
-        this.duplicateEntryy.map((ele)=>{
-          ele.incorrectColumn = ele.incorrectColumn?.split(":")[1].toLowerCase().trim();
-          console.log("incorrectColumn check" , ele.incorrectColumn);
-          return ele;
-        });
+        // this.duplicateEntryy.map((ele)=>{
+        //   ele.incorrectColumn = ele.incorrectColumn?.split(":")[1].toLowerCase().trim();
+        //   console.log("incorrectColumn check" , ele.incorrectColumn);
+        //   return ele;
+        // });
         this.duplicateEntry = "Duplicate Entries = "+this.duplicateEntryy.length;
 
         

@@ -49,15 +49,19 @@ export class AddOrderPromotionlistComponent implements OnInit {
   currentSelectedPromos: any = [];
 
   isOrderPromotionValid: boolean = false;
-
+  
+  stockItem:any;
+  promos:any
   constructor(private user: UserService,
     private orders: OrdersApisService,
     private spinner: NgxSpinnerService,
     private dialogRef: MatDialogRef<any>,
     private http: HttpClient,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    
+    @Inject(MAT_DIALOG_DATA) public data: any) {  
+   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.taxdropdown();
 
     let editV = localStorage.getItem('Edit');
@@ -366,8 +370,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
       });
     });
-  }
-
+  } 
   quantityChange(data, updatedItem) {
     if (!updatedItem.isProductSelected) {
       updatedItem.isProductSelected = true;
@@ -375,7 +378,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
       updatedItem.isProductSelected = false;
     }
     data.showWarningMsg = true;
-    this.PromotionQtyCalculation(data);
+    this.PromotionQtyCalculation(data);   
   }
 
   orderPromotionEnableValidate() {
@@ -435,7 +438,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
         });
       }
     });
-  }
+  }  
   PromotionQtyCalculation(item) {
     switch (item.promotionTypesId) {
       case 1:
@@ -452,10 +455,21 @@ export class AddOrderPromotionlistComponent implements OnInit {
               stockItem.stockitemid.forEach(stock => {
                 if (stock.isProductSelected) {
                   stockItem.totalQuantity += stock.Quantity;
-                  stockItem.totalAmount += (stock.price * stock.Quantity);
-                }
-              })
+                  console.log(stockItem.totalQuantity,"dsvdvs")
 
+                   const totalQuantity = stockItem.totalQuantity;
+                    localStorage.setItem('totalQuantity',totalQuantity);
+                  
+
+                  stockItem.totalAmount += (stock.price * stock.Quantity);
+
+                  const totalAmount = stockItem.totalAmount;
+                    localStorage.setItem('totalAmount',totalAmount);
+
+                  console.log(stockItem.totalAmount,"sdvsfsv")
+                }
+               
+              })
               if (stockItem.maxVolume) {
                 item.promoDetails.buyGroupsQty += Math.floor(stockItem.totalQuantity / stockItem.maxVolume);
               }
@@ -656,10 +670,12 @@ export class AddOrderPromotionlistComponent implements OnInit {
       });
     }
   }
-
+  
+  
+  quantity:any
+  totalQuantity:any
   addPromoItems() {
-
-    // payload for 3 and 4th promotions
+   // payload for 3 and 4th promotions
     this.promotionstype1 = [];
     this.promotionstype2 = [];
     this.promotionstype3 = [];
@@ -907,9 +923,11 @@ export class AddOrderPromotionlistComponent implements OnInit {
         error: (err: any) => {
 
         }
-      });
+      });      
   }
 
-
+totatQty(event:any) {
+alert(event);
+}
 
 }

@@ -1,5 +1,5 @@
-<!-- <p>order-receipts-bulk-upload works!</p> -->
-<div *ngIf="!ReceiptOrTargetUpload" class="container sales-container">
+
+ <!-- <div *ngIf="!ReceiptOrTargetUpload" class="container sales-container">
     <div class="addUser-BulkUpload">
         <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
     </div>
@@ -265,7 +265,7 @@
 
 
 </div>
-</div>
+</div> -->
 <div *ngIf="ReceiptOrTargetUpload" class="container sales-container">
     <div class="addUser-BulkUploadT">
         <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
@@ -297,106 +297,79 @@
             </div>
        
         </label>
-        <div class="step-2-filled" >
+        <div class="step-2-filled" *ngIf="!showTable">
             <div class="row step2">
                 <span class="step1-txt">Step 2:</span>
                 <h4 class="up-doc">Analyzing Uploaded document</h4>
-                <div *ngIf="!showTable">
-                    <input type="text"  placeholder="No document uploaded yet" class="selectedProductReceipts" disabled>
-                </div>
+            </div>  
+            
+
+            <div class="row nodicument">
+                <input type="text"  placeholder="No document uploaded  yet" class="selectedProductReceipts" disabled>
             </div>
-            <div *ngIf="showTable">
+           </div>
+
+           <div class="step-2-filled" *ngIf="showTable">
+            <div class="row step2">
+                <span class="step1-txt">Step 2:</span>
+                <h4 class="up-doc">Analyzing Uploaded document</h4>
+            </div>
+
+
+
+            
+
             <div (click)="expandTotalRows()"> 
                 <div class="row expandDivalign">
                     <input type="text" [(ngModel)]="totalRows" style="margin-bottom:36px ;" class="total-rows duplicate-txt col-md-11" disabled>
-                    <div class="col-md-1 expand-style">
+                    <div class="col-md-1 imagestyle">
                         <img [src]="image4" class="expand-arrow" alt="add-user-btn">
                     </div>
                 </div>
-                <div  *ngIf = "rowsTotal && TotalRows.length>0" class="row">
-                    <table matSort  class="class_table">
+                <div  *ngIf="rowsTotal && TotalRows.length>0" class="row totaltablewidth">
+                    <table matSort  class="class_table_shipment">
                         <tr class="table-header-row">
-                            <th style="padding-left:20px;">Row No</th>
-                            <th >Order No</th>
-                            <th>Product Name</th>
-                            <th>Product Code</th>
-                            <th>Disp. Qty</th>
-                            <th>Disp. Date</th>
-                            <th>Invoice Date</th>
-                            <th>Invoice No.</th>
-                            <th>Receipt Date</th>
-                            <th>Receipt Qty</th>
-                            <th>Uploaded Date</th>
+                            <!-- <th style="padding-left:20px;">Row No</th> -->
+                            <th >Target Group</th>
+                            <th>Geography</th>
+                            <th>Dealer</th>
+                            <th>Financial year</th>
+                            <th>% of YTD Target</th>
+                            <th>Actual PY</th>
+                             <th>Actual YTD</th>
+                            <th>No of Products</th>
+                            <th>Target Total</th>
+                            
                         </tr>
                         <tr *ngFor="let dupicateData of TotalRows">
             
-                            <td title="" style="padding-left: 21px;">{{dupicateData.rownumber}}</td>
-                            <td title="" class="elipsis-2line">
-                                {{dupicateData.orderNo}}</td>
-                            <td title="">{{dupicateData.productName}}</td>
-                              <td title="">{{dupicateData.productCode}}</td>
-                            <td>{{dupicateData.dispatchQty}}</td>
-                            <td>{{dupicateData.dispatchDate}}</td>
-                            <td>{{dupicateData.invoiceDate}}</td>
-                            <td >{{dupicateData.invoiceNo}}</td>
-                            <td>{{dupicateData.receiptDate}}</td>
-                            <td>{{dupicateData.receiptQty}}</td>
-                            <td>{{dupicateData.uploadedDate}}</td>
+                            <!-- <td title="" style="padding-left: 21px;">{{dupicateData.rownumber}}</td> -->
+                            <!-- <td title="" class="elipsis-2line">
+                                {{dupicateData.orderNo}}</td> -->
+                            <td title="">{{dupicateData.TargetGroup}}</td>
+                            <td title="">{{dupicateData.Geography}}</td>
+                            <td>{{dupicateData.Dealer}}</td>
+                            <td>{{dupicateData.Financialyear}}</td>
+                            <td>{{dupicateData.ofYTDTarget}}</td>
+                            <td >{{dupicateData.ActualPY}}</td>
+                            <td>{{dupicateData.ActualYTD}}</td>
+                            <td>{{dupicateData.NoofProducts}}</td>
+                            <td>{{dupicateData.TargetTotal}}</td>
             
                         </tr>
                     </table>
                 </div>
         </div>
-        <div (click)="expandEmptyRows()">
-            <div class="row expandrowDiv">
-                <input type="text" [(ngModel)]="emptyRows" style="margin-bottom:36px ;" class="total-rows duplicate-txt col-md-11" disabled>
-                <div class="col-md-1 expand-style">
-                    <img [src]="image4" class="expand-arrow" alt="add-user-btn">
-                </div>
-            </div>
-            <div  *ngIf = "rowsemptyTotal && EmptyRows.length>0" class="row">
-                <table matSort  class="class_table">
-                    <tr class="table-header-row">
-                        <th style="padding-left:20px;">Row No</th>
-                        <th >Order No</th>
-                        <th>Product Name</th>
-                        <th>Product Code</th>
-                        <th>Disp. Qty</th>
-                        <th>Disp. Date</th>
-                        <th>Invoice Date</th>
-                        <th>Invoice No.</th>
-                        <th>Receipt Date</th>
-                        <th>Receipt Qty</th>
-                        <th>Uploaded Date</th>
-                    </tr>
-                    <tr *ngFor="let dupicateData of EmptyRows">
-        
-                        <td title="" style="padding-left: 21px;">{{dupicateData.rownumber}}</td>
-                        <td title="" class="elipsis-2line">
-                            {{dupicateData.orderNo}}</td>
-                        <td title="">{{dupicateData.productName}}</td>
-                          <td title="">{{dupicateData.productCode}}</td>
-                        <td>{{dupicateData.dispatchQty}}</td>
-                        <td>{{dupicateData.dispatchDate}}</td>
-                        <td>{{dupicateData.invoiceDate}}</td>
-                        <td >{{dupicateData.invoiceNo}}</td>
-                        <td>{{dupicateData.receiptDate}}</td>
-                        <td>{{dupicateData.receiptQty}}</td>
-                        <td>{{dupicateData.uploadedDate}}</td>
-        
-                    </tr>
-                </table>
-            </div>
-    </div>
+
         <div (click)="expandErrorFree()">
             <div class="row ">
                 <input type="text" [(ngModel)]="errorFree" class="total-rows error-txt col-md-11" disabled>
-                <div class="col-md-1 error-style">
+                <div class="col-md-1 imageerror-style">
                     <img [src]="image2" class="expand-arrow" alt="add-user-btn">
                 </div>
             </div>
-            <div  *ngIf = "ErrorFree && errorfreeRows.length>0" class="row">
-                <table matSort  class="class_table">
+            <div  *ngIf="ErrorFree && errorfreeRows.length>0" class="row errorfreerows">
+                <table matSort  class="class_table_shipment">
                     <tr class="table-header-row">
                         <th style="padding-left:20px;">Row No</th>
                         <th >Order No</th>
@@ -429,6 +402,9 @@
                 </table>
             </div>
         </div>
+
+       
+      
         <div (click)="expandDuplicateEntry()">
             <div class="row ">
                 <input type="text" [(ngModel)]="duplicateEntry" class="total-rows duplicate-txt col-md-11" disabled>
@@ -436,8 +412,8 @@
                     <img [src]="image3" class="expand-arrow" alt="add-user-btn">
                 </div>
             </div>
-            <div  *ngIf = "!duplicate && duplicateEntryy.length>0" class="row duplicate-tabel">
-                <table matSort  class="class_table">
+            <div  *ngIf ="!duplicate && duplicateEntryy.length>0" class="row duplicate-tabel-shipments">
+                <table matSort  class="class_table_shipment">
                     <tr class="table-header-row">
                         <th style="padding-left:20px;">Row No</th>
                         <th >Order No</th>
@@ -477,8 +453,8 @@
                     <img [src]="image4" class="expand-arrow" alt="add-user-btn">
                 </div>
             </div>
-            <div  *ngIf = "!incorrectData && incorrectRows.length>0" class="row">
-                <table matSort  class="class_table">
+            <div  *ngIf ="!incorrectData && incorrectRows.length>0"  class="row incorrectdatatable">
+                <table matSort  class="class_table_shipment">
                     <tr class="table-header-row">
                         <th style="padding-left:20px;">Row No</th>
                         <th >Order No</th>
@@ -511,25 +487,21 @@
                 </table>
             </div>
         </div>
-        <div class="button-save-chng-receipts row">
-            <div class="save-chng" (click)="UploadReceipt()">
-                <button class="save-text">
-                   Upload
-                </button>
-            </div>
-            <div class="discard">
-                <button class="discard-text">
-                    Cancel
-                </button>
-            </div>
-        </div>
 
+
+        <div class="maincontainer" style="margin-top: 8.5%;">
+    <div class="row  mt-4   justify-content-center align-items-center">
+      <div class="col-sm-4 d-flex justify-content-center">
+        <button class="upload w-75" (click)="UploadReceipt()" >Upload</button>
+       
+      </div>
+      <div class="col-sm-4 d-flex justify-content-center">
+        <button class="cancelbtn w-75" (click)="closedialogbox()">Cancel</button>
+      </div>
     </div>
+  </div>  
 
-
-    </div>
-
-
-
-</div>
+  
+ </div>
+ </div>
 </div>

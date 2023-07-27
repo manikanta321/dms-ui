@@ -25,8 +25,15 @@ import { Item } from '@generic-ui/ngx-grid/core/structure/source/src/api/item/it
 })
 export class AddorderpromotionsComponent implements OnInit {
 
+  hidereset:boolean=false;
   products: any = FormGroup;
-
+  isAdminLoggedIn: boolean = true;
+  inputValue: number | null = null;
+  
+  isLoggedIn: boolean = false;
+  Item: any = { quantity: null };
+  
+  enteredValue!: number;
   ProductList: any = [];
 
   prodArray: any[] = [];
@@ -125,7 +132,9 @@ export class AddorderpromotionsComponent implements OnInit {
   searchText: any = "";
   typesI: any = [];
   dealersbillingAddress: any = [];
-  quantityadd: any = 0;
+   quantityadd: any = 0;
+   promos: any[] = [];
+
   mrp: any = [];
   mrpadd: any = "";
   price: any = 0;
@@ -189,7 +198,6 @@ export class AddorderpromotionsComponent implements OnInit {
   dropdownSettings1: IDropdownSettings = {};
   dropdownSettings2: IDropdownSettings = {};
   dropdownSettings3: IDropdownSettings = {};
-
   productData: any = [];
   Productarr: any = [];
   selectgeo: any = ['country', 'state'];
@@ -225,10 +233,9 @@ export class AddorderpromotionsComponent implements OnInit {
     })
     sort: [];
   }
-
+  
   firstFormGroup: FormGroup = this._formBuilder.group({ firstCtrl: [''] });
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
-
   ngOnInit(): void {
     localStorage.setItem('AddorEditpro', '');
     localStorage.setItem('AddorEditpro1', '');
@@ -371,6 +378,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
     }
   }
+  
   expandConfirmPromotions() {
     this.ConfiromViewPro = !this.ConfiromViewPro;
 
@@ -489,8 +497,9 @@ export class AddorderpromotionsComponent implements OnInit {
   // getProductsOfPromotionForOrder() {
   //   alert("Helloo")
   // }
+  totalQuantity:any;
+  totalAmount:any
   addOrderNonPromotionList() {
-
     localStorage.setItem("geographyId", this.geographyId);
     localStorage.setItem("dealerid", this.customerId);
 
@@ -498,15 +507,29 @@ export class AddorderpromotionsComponent implements OnInit {
       alert("Plz select geography and dealer");
       return;
     }
+    
+    const storedValue = localStorage.getItem('totalQuantity');
+    if (storedValue) {
+      this.totalQuantity = JSON.parse(storedValue);
+    } else {
+      this.totalQuantity = 0;
+    }
+    
 
+    const storedAmount = localStorage.getItem('totalAmount');
+       if (storedAmount) {
+           this.totalAmount = JSON.parse(storedAmount);
+        } else {
+         this.totalAmount = 0;
+           }
+                    
+    
 
     this.orderNonPromotionsList();
     this.Non_promotions = true;
   }
 
   editPromotionItem(promotionId) {
-    
-    console.log(promotionId,"check the data coming or not")
     this.imagesid = [];
     this.arrayOfImages.forEach(x => {
       if (x.isSelected) this.imagesid.push(x.productPromotionsId);
@@ -527,6 +550,8 @@ export class AddorderpromotionsComponent implements OnInit {
       x.isSelected = this.AddOrderPromotionData.findIndex(y => y.promotionId == x.productPromotionsId) !== -1;
     })
     this.getShippingandPackingcharges();
+    localStorage.removeItem('totalQuantity');
+    localStorage.removeItem('totalAmount');
   }
   removeNonPromotionItem(clickedItem) {
     let index = this.nonpromotionlist.findIndex(x => x.stockitemid == clickedItem.stockitemid);
@@ -536,11 +561,20 @@ export class AddorderpromotionsComponent implements OnInit {
       x.promotionName = 'NP' + (i + 1);
       return x;
     });
-
+    
+    
+    
     this.AddorderNonpromotiondata.itemDetails = this.nonpromotionlist;
     this.getShippingandPackingcharges();
+    this.clearQuantity();
+    this.resetQuantity();
+    localStorage.removeItem('totalQuantity');
+    localStorage.removeItem('totalAmount');
   }
+  
   // non-prmotions
+ 
+
 
   refresh() {
     this.categoryForm = this.fb.group({
@@ -1320,9 +1354,7 @@ export class AddorderpromotionsComponent implements OnInit {
     return formattedList;
 
   }
-
   quantityChange(updatedItem) {
-    
   console.log(updatedItem)
 
     if (!updatedItem.isPromotionSelected) {
@@ -1331,6 +1363,8 @@ export class AddorderpromotionsComponent implements OnInit {
       updatedItem.isPromotionSelected = false;
     }
     this.nonPromotionCalculation(updatedItem);
+    // this.value = event.target.value;
+    // console.log('Quantity changed:', item.quantity);
     // let quantityadd = 0;
     // let price = 0;
     // this.orderNonPromotionsdata.forEach(item => {
@@ -1341,7 +1375,8 @@ export class AddorderpromotionsComponent implements OnInit {
     // });
 
     // this.quantityadd = quantityadd;
-    // this.price = price;
+    // this.price = price;  
+    
   }
 
 
@@ -1356,16 +1391,16 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   nonPromotionCalculation(changedPromotionObj) {
+    console.log(changedPromotionObj)
     this.quantityadd = 0;
-    this.price = 0;
+    this.price = 0;   
     this.orderNonPromotionsdata.forEach(item => {
       if (item.isPromotionSelected) {
         this.quantityadd += item.quantity;
         this.price += ((item.quantity ?? 0) * item.price);
       }
     });
-
-    let index = this.nonpromotionlist.findIndex(x => x.stockitemid == changedPromotionObj.stockitemid);
+     let index = this.nonpromotionlist.findIndex(x => x.stockitemid == changedPromotionObj.stockitemid);
 
     if (index == -1) {
       this.nonpromotionlist.push(changedPromotionObj);
@@ -1374,6 +1409,7 @@ export class AddorderpromotionsComponent implements OnInit {
       
       this.nonpromotionlist.splice(index, 1);
     }
+    
   }
 
 
@@ -1479,8 +1515,28 @@ export class AddorderpromotionsComponent implements OnInit {
 
   close() {
     this.Non_promotions = false;
-
   }
+  initialValue: number | null = 0;
+  visibilitybutton:boolean=true;
+  clearQuantity()
+  {
+    this.Item.quantity=null;
+    this.Item.quantity='';
+   this.quantityadd='';
+    this.quantityadd = this.initialValue;
+    
+  }
+  
+  resetQuantity() {
+    this.price= null;
+    this.price='';
+    this.price=this.initialValue;
+  }
+  
+  Uclose() {
+     this.Non_promotions = false;
+    }
+
   closeconfirmorder() {
     this.confirm_Order = false;
   }
@@ -1772,6 +1828,8 @@ export class AddorderpromotionsComponent implements OnInit {
     promotionItem.isSelected = false;
     this.AddOrderPromotionData = this.AddOrderPromotionData.filter(x => x.promotionId !== promotionItem.productPromotionsId);
     this.getShippingandPackingcharges();
+    localStorage.removeItem('totalQuantity');
+    localStorage.removeItem('totalAmount');
   }
 
   showPromotionInfo(e, promotionItem) {

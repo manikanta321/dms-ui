@@ -824,8 +824,8 @@ li {
   outline: none;
   font-size: 15px;
   border-radius: 10px 10px 0px 0px;
-  background: #FFFFFF;
-  border: 0.5px solid #000000;
+  background: linear-gradient(0deg, #018B75, #018B75);
+  border: 1px solid rgba(152, 156, 160, 1);
   border-radius: 10px;
 }
 
@@ -978,12 +978,13 @@ li {
   /* padding: 5px; */
   width: 100%;
   border: none;
+  color: white;
   text-align: left;
   outline: none;
   font-size: 15px;
   border-radius: 10px 10px 0px 0px;
-  background: #FFFFFF;
-  border: 0.5px solid #000000;
+  background: linear-gradient(0deg, #018B75, #018B75);
+  border: 1px solid rgba(152, 156, 160, 1);
   border-radius: 10px;
 }
 
@@ -1126,9 +1127,10 @@ tr:nth-child(even) {
 }
 
 .bottom-table {
-  background: #686E74 !important;
+  background: linear-gradient(0deg, #018B75, #018B75)!important;
   border-radius: 0px 0px 24.5px 24.5px;
   height: 34px;
+  border:rgba(152, 156, 160, 1);
   color: white;
 }
 

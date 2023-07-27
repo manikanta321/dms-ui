@@ -18,6 +18,7 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
   errorfreeRows:any =[];
   uploadedData:any = [];
   files:any =[];
+  TargetUpload:any=[];
   receiptsUploadList:any = [];
   TotalRows:any = [];
   EmptyRows:any=[];
@@ -58,15 +59,15 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
 
   onFileChange(event: any) {
     // Iterate over selected files
-   for (let file of event.target.files) {
-    // Append to a list
-    this.files.push({
-      name: file.name,
-      type: file.type
-      // Other specs
-    });
-  }
-this.uploadedTextShow=true;
+    for (let file of event.target.files) {
+      // Append to a list
+      this.files.push({
+        name: file.name,
+        type: file.type
+        // Other specs
+      });
+    }
+  this.uploadedTextShow=true;
     /* wire up file reader */
     const target: DataTransfer = <DataTransfer>(event.target);
     if (target.files.length !== 1) {
@@ -79,7 +80,6 @@ this.uploadedTextShow=true;
       const binarystr: string = e.target.result;
       const wb: XLSX.WorkBook = XLSX.read(binarystr, { type: 'binary',cellDates: true });
       console.log(wb,"wb")
-
       /* selected the first sheet */
       const wsname: string = wb.SheetNames[0];
       console.log(wsname,"wsname")
@@ -89,34 +89,57 @@ this.uploadedTextShow=true;
       /* save data */
       
        this.uploadedData = XLSX.utils.sheet_to_json(ws); // to get 2d array pass 2nd parameter as object {header: 1}
-      console.log("New Dataaaa",this.uploadedData); // Data will be logged in array format containing objects
+      console.log("New Dataaaa checking coming or not",this.uploadedData);
       const uploadedFile = {
-        CreateById:this.CreatedById,
-        bulkOrderReceipts:this.uploadedData
+         CurrentUserId:this.CreatedById,
+         BulkDealerTgts:this.uploadedData,
+         
       }
-      alert(this.CreatedById)
+      
+      console.log("check once Batch id coming or not" , this.batchId);
+    
       console.log("Daaataaa",uploadedFile); 
-      this.salesService.getReceiptBulkUpload(uploadedFile).subscribe((res)=>{
-        if(res.succeded = true) {
+        
+       this.salesService.getReceiptBulkUploadTarget(uploadedFile).subscribe((res)=>{
+           if(res.succeded = true) {
           this.showTable =true;
         }
-        this.receiptsUploadList=res.response;
-        this.TotalRows = this.receiptsUploadList.allRows;
-        this.totalRows = "Total Rows = "+ this.TotalRows.length
-        this.EmptyRows = this.receiptsUploadList.emptyRows;
-        this.emptyRows = "Empty Rows = "+ this.EmptyRows.length
-      this.duplicateEntryy =this.receiptsUploadList.duplicateEntries
-      this.duplicateEntry = "Duplicate Entries = "+this.duplicateEntryy.length;
-      this.errorfreeRows = this.receiptsUploadList.errorFreeRows
-      this.errorFree = "Error Free Rows = "+ this.errorfreeRows.length;
-        console.log("this.receiptsUploadList",this.receiptsUploadList);
-        this.incorrectRows = this.receiptsUploadList.incorrectData;
+        
+        this.TargetUpload=res.response;
+         
+       this.BatchId = this.TargetUpload.batchid;
+       console.log("TargetUpload checking ",this.BatchId)
+        this.TotalRows = this.TargetUpload.allRows;
+
+        this.totalRows = "Total Rows = "+ this.TotalRows.length ?? 0;
+
+        this.errorfreeRows = this.TargetUpload.errorFreeRows
+
+        this.errorFree = "Error Free Rows = "+ this.errorfreeRows.length;
+
+        this.duplicateEntryy =this.TargetUpload.duplicateEntries
+        
+        this.duplicateEntry = "Duplicate Entries = "+this.duplicateEntryy.length;
+
+        
+        this.incorrectRows = this.TargetUpload.incorrectData;
+        // this.incorrectRows.map((ele)=>{
+        //   ele.incorrectColumn = ele.incorrectColumn?.split(":")[1].toLowerCase().trim();
+        //   console.log("incorrectColumn check" , ele.incorrectColumn);
+        //   return ele;
+        // });
+        console.log("incorret data checking " , this.incorrectRows);
         this.Incorrect = "Incorrect Data = " + this.incorrectRows.length;
-        const SalesUploadData = res.response.allRows;
-        console.log("SalesUploadData",SalesUploadData)
-        this.batchId = SalesUploadData.map(({ batchId }) => batchId);
+        const TargetUpload = res.response.allRows;
+        console.log("associationList   check",TargetUpload)
+        this.batchId = TargetUpload.map(({ batchId }) => batchId);
+      
+       
+
+       
       })
     };
+    
  }
 
   expandTotalRows(){
@@ -179,10 +202,15 @@ this.uploadedTextShow=true;
      
     }
   }
+  closedialogbox()
+  {
+    this.dialogRef.close();
+  }
+  BatchId:any;
   UploadReceipt() {
     const uploadedFile = {
-      BatchId:this.batchId[0],
-      action:'PROCESS'
+      currentUserId:this.CreatedById,
+      BatchId:this.BatchId
     }
     console.log("Daaataaa",uploadedFile); 
     this.salesService.saveBulkUploadReceipt(uploadedFile).subscribe((res)=>{

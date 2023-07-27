@@ -180,7 +180,7 @@ geographyobj.vtotal  =res.response.vtotal
     this.userId = localStorage.getItem("logInId");
   }
   onSelectFinancialYear(event: any) {
-    alert(event.target.value)
+    // alert(event.target.value)
     this.mainadd[0].geography[0].year = event.target.value;
   }
 

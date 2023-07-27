@@ -1,3 +1,118 @@
+.selectedProductReceipts {
+  width: 95%;
+  height: 43px;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding-left: 12px;
+  font-size: 14px;
+  color: black;
+  background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+}
+.expandtotalfull
+{
+  top:15px;
+  background: #FFFFFF;
+  color: #000000;
+}
+.imagestyle
+      {
+        top: 94px;
+        z-index: 1;
+      }
+
+      .totaltablewidth {
+        position: relative;
+        width: 92%;
+        left: 12px;
+        top: 29px;
+        border-width: 0px 1px 1px 1px;
+        border-style: solid;
+        border-color: #686E74;
+        border-radius: 0px 0px 10px 10px
+          }
+
+          .class_table_shipment {
+            width: 100%;
+            background: #FFFFFF !important;
+            box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1) !important;
+            border: none;
+            border-radius: 12px !important;
+          }
+          .imageerror-style {
+            top: 74px;
+            z-index: 1;
+          }
+          .errorfreerows
+  {
+    position: relative;
+    width: 90%;
+     left: 25px;
+    top: 52px;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: #686E74;
+    border-radius: 0px 0px 10px 10px
+  }
+  .duplicate-tabel-shipments {
+    position: relative;
+    width: 92%;
+    left: 12px;
+    /* height: 183px; */
+    margin-bottom: 30px;
+    top: 79px;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: #686E74;
+    border-radius: 0px 0px 10px 10px
+      }
+
+      .incorrectdatatable
+  {
+    position: relative;
+    width: 92%;
+     left: 12px;
+    margin-bottom: 30px;
+    top: 5rem;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: #686E74;
+    border-radius: 0px 0px 10px 10px
+  }
+
+  .upload
+{
+   background-color: #000000;
+   color: white;
+   height: 44px;
+   width: 597px;
+   text-align: center;
+   background: #000000;
+   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+   border-radius: 10px;
+   cursor: pointer;
+   font-family: 'Gilroy-SemiBold';
+}
+.cancelbtn
+{
+  background: #FFFFFF;
+  color: #000;
+  font-family: 'Gilroy-SemiBold';
+   height: 44px;
+   width: 597px;
+   text-align: center;
+   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+   border-radius: 10px;
+   cursor: pointer;
+   margin-left: -41%;
+}
+.nodicument
+{
+  position: relative;
+  margin-top: 3%;
+}
+
+
 ::-webkit-scrollbar {
     color: #000000 !important;
         width: 9px;
@@ -6,10 +121,8 @@
     }
     .sales-container {
     position: relative;
-    width: 1289px;
-    height: 620px;
-    left: 0px;
-    top: 0px;
+    min-width: 100%;
+    height: 653px;
     overflow-x: hidden;
     border-radius: 25px;
     }
@@ -253,7 +366,7 @@
         border: none;
     }
     .step-2-filled{
-        height: 500px;
+        margin-top: -2.5%;
     }
     .class_table {
         width: 91%;
@@ -407,18 +520,7 @@
         z-index: 1;
       }
 
-      .selectedProductReceipts {
-        width: 958px;
-        height: 43px;
-        /* background: #FFFFFF; */
-        border: 0.5px solid #000000;
-        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-        border-radius: 10px;
-        padding-left: 12px;
-        font-size: 14px;
-        color: black;
-        background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-    }
+
     .expandrowDiv{
         margin-top: -19px;
     }

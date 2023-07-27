@@ -904,7 +904,7 @@ export class DealerTargetComponent implements OnInit {
   orderTargetUpload(){
     localStorage.setItem('UploadTarget','dealertarget')
     // sessionStorage.setItem("orderTarget",'target');
-      this.dialog.open(OrderReceiptsBulkUploadComponent,{maxWidth:'97vw'});
+      this.dialog.open(OrderReceiptsBulkUploadComponent,{minWidth :'91vw',height:'702px'});
       // this.isOpen = false;
   }
   onFirstDataRendered(params: FirstDataRenderedEvent) {

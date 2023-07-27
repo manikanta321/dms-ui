@@ -128,4 +128,9 @@ onclickType(data:any){
   return this.http.get<any>(`${this.userurl}MaterialApi/GetTypes?subCatId=${data.subCatId}&flag=${data.flag}`);
 
 }
+
+public getReceiptBulkUploadTarget(data){
+  return this.http.post<any>(this.userurl + 'DealerApi/AddBulkDealerTargets', data);
+
+}
 }

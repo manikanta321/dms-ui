@@ -121,14 +121,17 @@
                                         <label>Financial Year<span class="astr">*</span></label>
                                         <select (change)="onSelectFinancialYear($event)" class="form-select select-asso" aria-label=".form-select-lg example" [(ngModel)]="mainadd[0].dealers[i].targets[j].year" placeholder="Select Year">
                                             <option value=""   selected hidden>Select Year</option>
-                                            <option value="2019">2019</option>
+                                            <!-- <option value="2019">2019</option>
                                             <option value="2020">2020</option>
                                             <option value="2021">2021</option>
                                             <option value="2022">2022</option>
-                                            <option value="2023" selected>2023</option>
+                                            <option value="2023" selected>2023</option> -->
 
+                                            <option  *ngFor="let item of financialYears ;" [value]="item">{{item}}</option>
                                         </select>
+                                       
                                     </div>
+                                   
                                     <div class="promotiont2">
                                         <label>Set Target<span class="astr">*</span></label>
                                         <select (change)="onSelectTarget($event,i,j)" class="form-select select-asso"

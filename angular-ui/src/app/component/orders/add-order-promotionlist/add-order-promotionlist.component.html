@@ -64,7 +64,7 @@
                                                 </div>
                                                 <div class="col-md-6" style="text-align: center;">
                                                     <span class="total-itemss">Total Selected Qty :
-                                                        {{promos.totalQuantity}} 
+                                                        {{promos.totalQuantity}}
                                                         
                                                         <span style="color:#000;" 
                                                             [ngClass]="{ 'txt-error-span': !(promos.isItemValid) && data.showWarningMsg }">(MOQ:{{promos.moq}})
@@ -125,17 +125,31 @@
                                                                 (click)="doubleClick(promos.stockitemid, Item.Taxid)"
                                                                 alt="double-blue-tick">
                                                         </td> -->
+
+
                                                         <td><input type="number" placeholder="Enter Qty"
                                                                 class="quatity-inp" [(ngModel)]="Item.Quantity"
                                                                 (keyup)="quantityChange(data, Item)"></td>
+
+                                       
+                                                            
+
+  
+  
+  
+  
+  
                                                         <td class="txt-right">{{((Item.Quantity ?? 0) * Item.price)|
                                                             number : '1.2-2' }}
                                                         </td>
                                                     </tr>
                                                     <tr class="bottom-table">
-                                                        <td colspan="6" class="btm-total"><b>Total </b></td>
-                                                        <td class="btm-total txt-right">
+                                                        <td colspan="6" class="btm-total"><b>Total  </b></td>
+                                                        <td class="btm-total txt-right" >
+
                                                             {{promos.totalQuantity ?? 0 }}</td>
+                                                             
+                                                            <p (keyup)="totatQty(promos.totalQuantity)"></p>    
                                                         <td class="btm-total txt-right">{{promos.totalAmount ?? 0 | number :
                                                             '1.2-2'}}</td>
                                                     </tr>

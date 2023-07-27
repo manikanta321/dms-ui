@@ -138,6 +138,10 @@ export class OrderListComponent implements OnInit {
       headerName: "Dealer",
       field: 'dealerName'
     },
+    {
+      headerName: "Dealer  Reference no ",
+       field: 'companyReferenceNo'
+    },
 
     {
       headerName: "Geography",
@@ -703,6 +707,7 @@ export class OrderListComponent implements OnInit {
 
 
   addOrderPromotion() {
+     
     const dialogRef = this.dialog.open(AddorderpromotionsComponent,{minWidth: '100vw', height: '731px', 
       panelClass: 'material-add-edit'
     });

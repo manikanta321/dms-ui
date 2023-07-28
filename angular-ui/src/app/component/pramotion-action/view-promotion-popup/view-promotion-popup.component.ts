@@ -27,6 +27,7 @@ export class ViewPromotionPopupComponent implements OnInit {
   buysets: boolean = false;
   productPromotionsId: any;
   LoginId: any;
+  remarks:any;
   gridOptions: GridOptions = {
     defaultColDef: {
       resizable: true,

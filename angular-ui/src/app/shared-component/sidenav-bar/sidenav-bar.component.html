@@ -12,20 +12,28 @@
 
         </mat-list-item>
 
+        <mat-list-item  routerLink="/dashbord/orders" routerLinkActive="active" *ngIf="viewMenuList.indexOf('orderdashboard') != -1" id="sidenavheight" class="hover-effect">
+    
+            <!-- <mat-icon class="green-icon">loyalty</mat-icon> -->
+            <!-- <i class='fas fa-users' style='font-size:36px'></i>  -->
+            <!-- <i class="fa-solid fa-bag-shopping"></i> -->
+               <mat-icon class="green-icon" >card_travel</mat-icon> 
+               <span style="cursor:pointer ;margin-left: 5%; "class="dasb-menu"   *ngIf="collapsed"> Orders</span>
+   
+           </mat-list-item>
+
         <mat-list-item routerLink="/dashbord/saleslist" routerLinkActive="active" *ngIf="viewMenuList.indexOf('saleslistdashboard') != -1" id="sidenavheight" class="hover-effect">
         
            
-            <mat-icon  class="green-icon">save_alt</mat-icon>
+            <!-- <mat-icon  class="green-icon">save_alt</mat-icon> -->
+            <mat-icon  class="green-icon">group</mat-icon>
+            
+            
           
-             <span style="cursor:pointer ;margin-left: 5%; "class="dasb-menu" *ngIf="collapsed">Download Report</span> 
+             <span style="cursor:pointer ;margin-left: 5%; "class="dasb-menu" *ngIf="collapsed">Sales</span> 
         </mat-list-item>
 
-        <mat-list-item  routerLink="/dashbord/orders" routerLinkActive="active" *ngIf="viewMenuList.indexOf('orderdashboard') != -1" id="sidenavheight" class="hover-effect">
-    
-         <mat-icon class="green-icon">loyalty</mat-icon>
-            <span style="cursor:pointer ;margin-left: 5%; "class="dasb-menu"   *ngIf="collapsed">Purchase Orders</span>
-
-        </mat-list-item>
+       
 
        
 
@@ -33,7 +41,7 @@
            
             <mat-icon class="green-icon">description</mat-icon>
             <span class="dash-menu" 
-            style="cursor:pointer ; margin-left: 5%;" class="dasb-menu"     *ngIf="collapsed">Sell Out</span>
+            style="cursor:pointer ; margin-left: 5%;" class="dasb-menu"     *ngIf="collapsed">Delers</span>
         </mat-list-item>
 
         <mat-accordion >

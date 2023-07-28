@@ -136,7 +136,8 @@ export class OrderListComponent implements OnInit {
 
     {
       headerName: "Dealer",
-      field: 'dealerName'
+      field: 'dealerName',
+      minWidth: 300,
     },
     {
       headerName: "Dealer  Reference no ",

@@ -1,10 +1,12 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { HttpClient } from '@angular/common/http';
 import { CellClickedEvent, CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridReadyEvent } from 'ag-grid-community';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
+import { SharedimageService } from 'src/app/sharedimage.service';
+import { ViewPromotionPopupComponent } from '../../pramotion-action/view-promotion-popup/view-promotion-popup.component';
 
 @Component({
   selector: 'app-add-order-promotionlist',
@@ -12,8 +14,15 @@ import { OrdersApisService } from 'src/app/services/orders-apis.service';
   styleUrls: ['./add-order-promotionlist.component.css']
 })
 export class AddOrderPromotionlistComponent implements OnInit {
-  // taxtemplete :any =['hj','hj'];
 
+  @Input() receivedImageData: string | null = null;
+  
+  // taxtemplete :any =['hj','hj'];
+  MOQ:any;
+  Remarks :any;
+  startDate:any;
+  image3 = 'assets/img/minimize-tag.png';
+  imageUrl: any | null = null;
   private gridApi!: GridApi;
   promoList = true;
   priceD = true;
@@ -52,16 +61,26 @@ export class AddOrderPromotionlistComponent implements OnInit {
   
   stockItem:any;
   promos:any
+  
   constructor(private user: UserService,
     private orders: OrdersApisService,
     private spinner: NgxSpinnerService,
+    private dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
     private http: HttpClient,
-    
+    private sharedImageService: SharedimageService,
     @Inject(MAT_DIALOG_DATA) public data: any) {  
    }
 
   ngOnInit(): void { 
+    // this.imageUrl = this.sharedImageService.getSelectedImage();
+    this.receivedImageData = localStorage.getItem('imageData');
+    this.MOQ=localStorage.getItem('MOQ');
+    console.log(this.receivedImageData,"checking re imageData ");
+        this.imageUrl = localStorage.getItem('clickedImageURL');
+        console.log("THis.Image",this.imageUrl)
+        this.imageUrl = JSON.parse(this.imageUrl)
+    console.log(this.imageUrl,"IMAGE")
     this.taxdropdown();
 
     let editV = localStorage.getItem('Edit');
@@ -97,6 +116,18 @@ export class AddOrderPromotionlistComponent implements OnInit {
     let selectedGrp = this.griddatapromotions.find(x => x.productPromotionsId == item.productPromotionsId);
      selectedGrp.isShowPromos = !selectedGrp.isShowPromos;
   }
+  showPromotionInfo(e,promotionItem) {
+    e.stopPropagation();
+    localStorage.setItem('promoclickId', promotionItem.productPromotionsId)
+    localStorage.setItem('promoclickName', promotionItem.promotionName)
+    const config: MatDialogConfig = {
+      minWidth: '90vw',
+      height: '610px',
+      autoFocus: false,
+      data: { hideGeoDealer: true }
+    };
+    this.dialog.open(ViewPromotionPopupComponent, config);
+  }
 
   taxdropdown() {
     this.orders.taxtemplatedropdown().subscribe((res) => {
@@ -109,7 +140,18 @@ export class AddOrderPromotionlistComponent implements OnInit {
   onSearchChange($event) {
 
   }
+  
+  viewpromotions:any;
+  expandPromotions() {
+    // this.viewpromotions = !this.viewpromotions;
 
+    // if (this.viewpromotions === false) {
+    //   this.image3 = 'assets/img/maximize-arrow.png';
+    // } else {
+    //   this.image3 = 'assets/img/minimize-tag.png';
+
+    // }
+  }
 
   // promotion 
 
@@ -182,7 +224,11 @@ export class AddOrderPromotionlistComponent implements OnInit {
       //   item.isProductSelected = false;
       //   return item;
       // });
+      this.Remarks = res.response.remarks;
+      
+     
       this.ProductPromotionOrderList = res.response;
+      
       this.orderPromotionFormatter(this.ProductPromotionOrderList);
       
       this.spinner.hide();
@@ -218,6 +264,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
     formatObj.Quantity = stockItem.quantity == undefined ? null : stockItem.quantity;
     formatObj.Taxid = stockItem.taxid;
     formatObj.registrationNumber = stockItem.registrationNumber;
+    formatObj.remarks = stockItem.remarks;
     formatObj.materialcustomidentifier = stockItem.materialcustomidentifier;
     formatObj.materialCustomName=stockItem.materialCustomName;
 
@@ -454,6 +501,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
             if (stockItem.stockitemid.length != 0) {
               stockItem.stockitemid.forEach(stock => {
                 if (stock.isProductSelected) {
+                  // alert("hhh0")
                   stockItem.totalQuantity += stock.Quantity;
                   console.log(stockItem.totalQuantity,"dsvdvs")
 
@@ -468,7 +516,6 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
                   console.log(stockItem.totalAmount,"sdvsfsv")
                 }
-               
               })
               if (stockItem.maxVolume) {
                 item.promoDetails.buyGroupsQty += Math.floor(stockItem.totalQuantity / stockItem.maxVolume);
@@ -478,7 +525,6 @@ export class AddOrderPromotionlistComponent implements OnInit {
                 item.promoDetails.isBuyItemValid = false;
               }
             }
-
           });
         }
         // getgroups
@@ -930,4 +976,12 @@ totatQty(event:any) {
 alert(event);
 }
 
+clearQuantity()
+{
+//   this.Item.quantity=null;
+//   this.Item.quantity='';
+//  this.quantityadd='';
+//   this.quantityadd = this.initialValue;
+  
+}
 }

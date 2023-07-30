@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
@@ -17,6 +17,7 @@ import { AddorderproSuccessPopupComponent } from './addorderpro-success-popup/ad
 import { ViewPromotionPopupComponent } from '../../pramotion-action/view-promotion-popup/view-promotion-popup.component';
 import { PromotionService } from 'src/app/services/promotion.service';
 import { Item } from '@generic-ui/ngx-grid/core/structure/source/src/api/item/item';
+import { SharedimageService } from 'src/app/sharedimage.service';
 
 @Component({
   selector: 'app-addorderpromotions',
@@ -24,14 +25,15 @@ import { Item } from '@generic-ui/ngx-grid/core/structure/source/src/api/item/it
   styleUrls: ['./addorderpromotions.component.css']
 })
 export class AddorderpromotionsComponent implements OnInit {
-
   hidereset:boolean=false;
+
+  
   products: any = FormGroup;
   isAdminLoggedIn: boolean = true;
   inputValue: number | null = null;
   
   isLoggedIn: boolean = false;
-  Item: any = { quantity: null };
+  //  RK IMP Item: any = { quantity: null };
   
   enteredValue!: number;
   ProductList: any = [];
@@ -214,7 +216,7 @@ export class AddorderpromotionsComponent implements OnInit {
   }];
   constructor(private _formBuilder: FormBuilder, private spinner: NgxSpinnerService,
     private productsubgroup: PromotionService, private ordersApisService: OrdersApisService,
-
+    private sharedImageService: SharedimageService,
     private http: HttpClient,
     private orders: OrdersApisService,
     private materialList: MaterialListService,
@@ -232,6 +234,7 @@ export class AddorderpromotionsComponent implements OnInit {
       this.orderNonPromotionsList();
     })
     sort: [];
+   
   }
   
   firstFormGroup: FormGroup = this._formBuilder.group({ firstCtrl: [''] });
@@ -346,7 +349,6 @@ export class AddorderpromotionsComponent implements OnInit {
 
 
   }
-
 
   onTypeAll(items: any) {
     console.log('onSelectAll', items);
@@ -468,6 +470,18 @@ export class AddorderpromotionsComponent implements OnInit {
             "promotionTypesName": item.promotionTypesName
           }
           this.arrayOfImages.push(obj);
+          // onFileChange(event: any) {
+            // const file = item.imageurl;
+            // if (file) {
+            //   const reader = new FileReader();
+            //   reader.onloadend = () => {
+            //     const imageData = reader.result as string;
+            //     this.sharedImageService.setSelectedImage(imageData);
+            //   };
+            //   reader.readAsDataURL(file);
+            // }
+          // }
+        
         });
         // console.log("ArrayOfImagessss", this.arrayOfImages)
         // let previousSelectedPromos = []
@@ -1844,9 +1858,34 @@ export class AddorderpromotionsComponent implements OnInit {
     };
     this.dialog.open(ViewPromotionPopupComponent, config);
   }
-
-  selectPrmotionItem(promotionItem) {
-    
+  
+  convertImageUrlToBase64(imageUrl: string): void {
+    this.http.get(imageUrl, { responseType: 'blob' }).subscribe((response) => {
+      const fileReader = new FileReader();
+      fileReader.onloadend = () => {
+        const base64data = fileReader.result as string;
+        console.log(base64data); // The base64 representation of the image data
+      };
+      fileReader.readAsDataURL(response);
+    });
+  }
+  Item: any = {
+    // Your Item properties here...
+    imageurl: 'imageurl'
+  };
+   selectPrmotionItem(promotionItem) 
+  {
+    // alert("imageurl")
+console.log("promotionItemUrl",promotionItem.imageurl)
+localStorage.setItem('clickedImageURL', JSON.stringify(promotionItem.imageurl));
+    // localStorage.setItem('clickedImage', promotionItem.imageurl);
+    // const fileInput = promotionItem.imageurl as HTMLInputElement;
+    let fileInput:any;
+    fileInput = this.convertImageUrlToBase64(promotionItem.imageurl);
+    console.log("MethaDalla",fileInput)
+        localStorage.setItem('clickedImage', JSON.stringify(fileInput));
+    console.log("Imageeeee0",fileInput);
+    this.sharedImageService.setSelectedImage(fileInput);
     console.log(promotionItem)
     this.imagesid = [];
     this.arrayOfImages.forEach(x => {
@@ -1856,11 +1895,11 @@ export class AddorderpromotionsComponent implements OnInit {
       this.imagesid.push(promotionItem.productPromotionsId);
     }
     this.clickedPromotion = promotionItem.productPromotionsId;
+    localStorage.setItem('imageData', this.Item.imageurl);
     this.addEditOrderPromotionList();
 }
 
   
-
   toggleData(updatedItem) {
 
     this.toggleState = !this.toggleState;
@@ -1877,6 +1916,12 @@ export class AddorderpromotionsComponent implements OnInit {
     
     }
     
+  }
+  imageurl: string | null = 'base64 image data here';
+  sendImage(): void {
+    if (this.imageurl) {
+      localStorage.setItem('imageData', this.imageurl);
+    }
   }
 
   onProductSelect(item: any) {

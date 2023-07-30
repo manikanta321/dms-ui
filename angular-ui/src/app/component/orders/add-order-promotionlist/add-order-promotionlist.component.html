@@ -5,7 +5,12 @@
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="false">close</mat-icon>
             </div>
             <div class="head-t" >
-                <h3 class="addU font">{{actineLabel}} : <b>Promotions</b></h3>
+                <h3 class="addU font">
+                    <!-- {{actineLabel}} : -->
+                     <b>Promotions Item Details</b>
+                     
+
+                </h3>
                 <div class="row top-bottom">
                     <div class="row text-center"></div>
                 </div>
@@ -21,11 +26,115 @@
 
                     </div>
                 </div> -->
+
                 <div class="label-div" >
-                    <span class="selected-promotion-label">Selected Promotions</span>
+                 <!-- <span class="selected-promotion-label">Selected Promotions</span> -->
+                 <span class="selected-promotion-label"></span>
                 </div>
 
-                <div *ngFor="let data of griddatapromotions;let i=index" style="width:111%">
+                <!-- Promotion Details Start -->
+
+
+                <div class="t_op-bottom mt-4">
+                    <div (click)="expandPromotions()" class="coll_apsible">
+                        <div class="row">
+                            <div class="col-md-11">
+                                <p class="ItemsPro  mt-2 ">Promotions Items  </p>
+                            </div>
+                            <div class="col-md-1">
+                                <img [src]="image3" class="expand-arrowws" alt="add-user-btn">
+                            </div>
+                        </div>
+                        
+               
+                    </div>
+                    <div class="con_tent" *ngIf="!viewpromotions">
+                         
+                         <div class="maindiv">
+                          
+                          <div class="row">
+                           
+                            <div class=" col-md-5" >
+                                <div class="promoimages1" *ngFor="let data of griddatapromotions">
+                                    <img class="displayed-img" src="data:image/jpeg;base64,{{imageUrl}}" alt="Displayed Image" />
+                                    <span id="proname">{{data.promotionName}}</span>
+                                    
+                                    <span id="moq">MOQ{{MOQ}}</span>
+                                    <mat-icon class="showicon" (click)="showPromotionInfo($event,data)"> remove_red_eye </mat-icon>
+                                </div>
+                                
+                                
+                                <div *ngFor="let data of griddatapromotions">
+                                    <p id="validform">Valid form:{{data.startDate | date:'dd/MM/yyyy'}}&nbsp;&nbsp;to&nbsp;&nbsp;{{data.endDate| date:'dd/MM/yyyy'}}</p>
+                                </div>
+                                <div *ngFor="let data of griddatapromotions">
+                                    <p id="Remarks">Remarks*{{data.remarks}}</p>
+                                </div>
+                                
+                            </div>
+                            <div class=" col-md-7">
+
+                                <div class="promoitems-card">
+                           
+                            <div class="promoitemsDetails" >
+                                 
+                                 <div class="row orderqty " style="border-left: 16px solid rgba(225, 226, 227, 1);">  
+                                   
+                                    <div class="col bg-light">
+                                      <input type="text"  id="TotalorderQTY" readonly class="form-control-plaintext" placeholder="Total Order Qty">
+                                    </div>   
+                                      <div class="totalQTY">
+                                    
+                                   </div>
+                                    <div class="totalAmount">
+                                      
+                                      </div>
+                                      <div class="col bg-light ">
+                                         
+                                 <input type="number"  class="form-control-plaintext" placeholder="Total Order Amount"readonly >
+                               </div>
+                                    
+                                    <div class="row">
+                                      <div class="col" style="border-left: 15px solid rgba(225, 226, 227, 1);">
+                                       <input type="number"  id="proorderQTY" readonly  class="form-control-plaintext" placeholder="Promotion Order Qty" >
+                                         </div>
+                                         <div id="thisORDERQTY">
+                                       
+                                             <button *nglf="visibilitybutton" (click)="clearQuantity()" >Reset</button> 
+                                        </div>
+                                         <div class="col" >
+                                        <input type="nnumber" id="thisorderqty" readonly class="form-control-plaintext" placeholder="Promotion Order Amount">
+                                   
+                                   
+                                        </div>
+
+                                        <div class="row bg-light" style="margin-left: 15px;
+                                        overflow: hidden;">
+                                            <div class="col" style="border-left: 1px solid rgba(225, 226, 227, 1);">
+                                                <input type="nnumber" readonly id="freeqty" class="form-control-plaintext" placeholder="Promo Free Oty">
+                                           
+                                           
+                                                </div>
+                                        </div>
+                                       
+                                         </div>
+                                     
+                                     </div>  
+
+
+
+                         </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+                <div *ngFor="let data of griddatapromotions;let i=index" style="width:110%">
                     <div class="row " >
                         <!-- <div class="col-lg-1">
                             <p class="p1Tag">p{{i + 1}}</p>
@@ -39,6 +148,7 @@
                                                 [checked]="data.isProductSelected"></mat-checkbox>
                                             {{data.promotionName}}
                                             <span>{{data.promotionTypesName}} </span>
+                                            
                                         </p>
                                     </div>
                                     <div class="col-md-1">
@@ -127,12 +237,15 @@
                                                         </td> -->
 
 
-                                                        <td><input type="number" placeholder="Enter Qty"
+                                                          <td><input type="number" placeholder="Enter Qty"
                                                                 class="quatity-inp" [(ngModel)]="Item.Quantity"
-                                                                (keyup)="quantityChange(data, Item)"></td>
+                                                                (keyup)="quantityChange(data, Item)" name="Item.quantity"></td>
 
                                        
                                                             
+                                                                <!-- <td><input type="number" placeholder="Enter " class="quatity-inp" 
+                                                                    [(ngModel)]="Item.quantity" (ngModelChange)="quantityChange(data,Item)" name="Item.quantity"> 
+                                                                         </td> -->
 
   
   
@@ -246,7 +359,7 @@
                                                         </td> -->
                                                         <td><input type="number" placeholder="Enter Qty"
                                                                 class="quatity-inp" [(ngModel)]="Item.Quantity"
-                                                                (keyup)="quantityChange(data, Item)"></td>
+                                                                (ngModelChange)="quantityChange(data, Item)"></td>
                                                         <td class="txt-right">{{((Item.price) * (Item.Quantity))| number
                                                             : '1.2-2' }}</td>
                                                     </tr>

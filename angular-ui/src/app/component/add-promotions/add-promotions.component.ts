@@ -2156,6 +2156,7 @@ this.textShow=true;
     // alert('error');
     localStorage.setItem("updatePromotionPopup", 'edit');
     this.loggedUserId = localStorage.getItem('logInId')
+    localStorage.setItem("MOQ",'MOQ');
 
     if (!this.checkValidation(this.selectedPromo)) return;
 

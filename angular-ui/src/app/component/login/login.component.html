@@ -1,17 +1,17 @@
+
+
+
 <div class="bg-img">
-  <div class="logo">
-    <img src="assets/Logo.svg" alt="">
-    <!-- <h1>LOGO</h1> -->
-  </div>
+ 
   <section class="vh-100">
-
-    <div class="container">
-
-      <div class="loginform-page">
+ 
+    <div class="container mx-auto">
+      <span class="logoimagess"><img src="../../../assets/img/logo1.png"></span>
+      <div class="mx-auto loginform-page">
         <!-- <h2 class="welcome">Welcome!</h2>  -->
-        <div class="signIn-page d-flex justify-content-center align-items-center h-100">
+        <div class=" h-100">
 
-          <div class="login-form ">
+          <div class=" mx-auto login-form ">
 
             <form>
               <div class="d-flex wrong" *ngIf="redColor">
@@ -20,7 +20,7 @@
               </div>
 
               <div class="login-head">
-                <h6 class="sign-head">Sign In</h6>
+                <h6 class="sign-head">Log In</h6>
                 <!-- <p>Enter your email and password to sign in</p> -->
               </div>
               <!-- Email input -->
@@ -51,12 +51,12 @@
               <!-- <mat-icon (click)='showHidePassword()'> {{ showPassword ? 'Hide' : 'Show' }} remove_red_eye</mat-icon> -->
               <div class="d-flex justify-content-between align-items-center">
                 <!-- Checkbox -->
-                <div>
+                <div class="REME">
                   <mat-slide-toggle>
                     <!-- color="primary -->
                     Remember me </mat-slide-toggle> <br />
                 </div>
-                <a routerLink="/ForgotPassword" class="forgot-ps">Forgot password</a>
+                <a routerLink="/ForgotPassword" class="forgot-ps">Forgot password?</a>
               </div>
 
               <div class="text-center text-lg-start mt-4 pt-2">
@@ -68,20 +68,16 @@
 
             </form>
           </div>
-          <!-- <div class="signIn-img col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          <div class="signIn-img img-fluid col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          <img src="../../../assets/img/personlogo.png" 
           class="img-fluid" alt="Sample image">
-        </div> -->
+        </div>
         </div>
         <!-- </div> -->
 
       </div>
     </div>
   </section>
-  <div class="highlitepopup">
-     <!-- <img src="assets/dealersnotpopup.svg" alt=""> -->
-    <img src="../../../assets/img/welcomeimage.png" class="wel">
-    <!-- <h1>LOGO</h1> -->
-  </div>
+  
 
 </div>

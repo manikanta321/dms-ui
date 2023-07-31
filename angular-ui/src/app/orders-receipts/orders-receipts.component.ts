@@ -25,6 +25,7 @@ import { OrderReceiptsBulkUploadComponent } from './order-receipts-bulk-upload/o
 export class OrdersReceiptsComponent implements OnInit {
   myForm: any = FormGroup; 
   myForm1: any = FormGroup; 
+  userType:any;
   disabled = false;
   dealerSettings: IDropdownSettings = {};
   dropdownSettings2: IDropdownSettings = {};
@@ -209,6 +210,7 @@ export class OrdersReceiptsComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.userType = localStorage.getItem("userType");
     this.loggedUserId = localStorage.getItem('logInId');
   
 

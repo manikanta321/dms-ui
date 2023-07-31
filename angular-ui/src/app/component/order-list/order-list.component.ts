@@ -73,6 +73,8 @@ export class OrderListComponent implements OnInit {
   // dateRange = new DateRange(new Date(2018, 1, 1), new Date(2018, 1, 31));
   // dateRange1 = DateRange.nextTwoWeeks();
   // maxDate = new Date();
+
+  userType:any;
   disableSelect = new FormControl(false);
   private gridApi!: GridApi;
   paginationPageSize = 10;
@@ -400,7 +402,7 @@ export class OrderListComponent implements OnInit {
 
 
   ngOnInit(): void {
-      
+    this.userType = localStorage.getItem("userType");
     this.loggedUserId = localStorage.getItem('logInId')
     this.uomId = localStorage.getItem('niId');
     // this.roleItems();

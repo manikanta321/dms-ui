@@ -1204,12 +1204,14 @@ mat-sidenav {
     left: 10px;
 }
 
-.sales-download {
-    background: #000000;
-    border-radius: 13%;
+.REFRESHBUTTON {
+    background: rgba(104, 110, 116, 0.66);
+    cursor: pointer;
+    border-radius: 16%;
     width: 37px;
     height: 37px;
     margin-right: 10px;
+    
 }
 
 .dwnld-img {
@@ -1447,4 +1449,12 @@ mat-sidenav {
     margin-left: 8px;
     color: rgba(104, 110, 116, 0.75)!important;
 
+}
+.RefreshIMG
+{
+    position: relative;
+    top: 6px;
+    left: 9px;
+   
+   
 }

@@ -46,9 +46,9 @@
 }
 .addbuttons
 {
-  float: right;
-  margin-top: 9%;
-  margin-right: 17px;
+  margin: auto;
+  text-align: center;
+  
 }
 
 .form-control-plaintext
@@ -1961,8 +1961,21 @@ li {
   margin: auto;
   margin-top: -27px;
 }
-
-
+#protype
+{
+  display: inline-flex;
+    width: 200px;
+    position: relative;
+    left: 91px;
+    bottom: 20px;
+}
+.expand-arrow_W
+{
+  cursor: pointer;
+    /* width: 3%; */
+    position: relative;
+    left: -1%;
+}
 
 .expand-arrow {
   width: 22%;
@@ -2080,14 +2093,29 @@ right: -65px;
 } */
 
 .promoItem {
-  width: 29px;
+  /* width: 29px;
   height: 21px;
   background: #0091EA;
   border-radius: 68%;
   color: white;
   padding: 3px 5px;
-  display: block;
+  display: block; */
+
+  width: 50px !important;
+    position: relative;
+    cursor: pointer;
+    color: rgba(1, 139, 117, 1);
+    top: -44px;
+    left: 67%;
+
 }
+#productname
+{
+    position: relative;
+    right: 201px;
+    color: #000000;
+}
+
 
 .totall {
   width: 662px;
@@ -2220,7 +2248,7 @@ margin-top: -5px;
   margin-top: 1px;
   background: rgba(156, 160, 164, 1);
   border-radius: 18%;
-  margin-left: -59%;
+  margin-left: 83%;
 }
 
 .refreshbtn .refresh-icon {
@@ -2279,7 +2307,7 @@ top: 6px;
 
 .searchBox1:hover>.searchButton .material-icons {
   position: relative;
-  right: 282px;
+  right: 271px;
   color: #000;
   top: 3px;
 }
@@ -2310,8 +2338,8 @@ top: 6px;
 
 .searchBox1:hover>.searchInput1 {
   display: block;
-  width: 335px;
-  height: 43px;
+  width:311px;
+  height:41px;
   background: #FFFFFF;
   float: left;
   padding: 5px 32px 6px;
@@ -2332,6 +2360,9 @@ top: 6px;
 
 .searchBox1 {
   float: right;
+  position: relative;
+  top: -87px;
+  left: -29px;
 }
 
 .nonpromoSearch {

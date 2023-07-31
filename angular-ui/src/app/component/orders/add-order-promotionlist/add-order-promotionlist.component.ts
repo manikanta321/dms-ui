@@ -18,6 +18,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
   @Input() receivedImageData: string | null = null;
   
   // taxtemplete :any =['hj','hj'];
+  otherInputValue: number = 0;
   MOQ:any;
   Remarks :any;
   startDate:any;
@@ -418,14 +419,17 @@ export class AddOrderPromotionlistComponent implements OnInit {
       });
     });
   } 
+  
   quantityChange(data, updatedItem) {
+    
     if (!updatedItem.isProductSelected) {
       updatedItem.isProductSelected = true;
     } else if (!updatedItem.Quantity) {
       updatedItem.isProductSelected = false;
     }
     data.showWarningMsg = true;
-    this.PromotionQtyCalculation(data);   
+    this.PromotionQtyCalculation(data);  
+    
   }
 
   orderPromotionEnableValidate() {
@@ -504,8 +508,12 @@ export class AddOrderPromotionlistComponent implements OnInit {
                   // alert("hhh0")
                   stockItem.totalQuantity += stock.Quantity;
                   console.log(stockItem.totalQuantity,"dsvdvs")
+                  
 
                    const totalQuantity = stockItem.totalQuantity;
+
+                  //  this.totalQuantity = totalQuantity;
+                  
                     localStorage.setItem('totalQuantity',totalQuantity);
                   
 
@@ -962,7 +970,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
         next: (res: any) => {
           if (res) {
             console.log(res.response, "response after adding item in promotions");
-
+     localStorage.setItem('PromotionType',res.response[0].promotionTypeNmae)
             this.dialogRef.close(res.response);
           }
         },
@@ -984,4 +992,10 @@ clearQuantity()
 //   this.quantityadd = this.initialValue;
   
 }
+Item = { Quantity: 0 };
+displayedValue: number = 0;
+updateValue(value: number) {
+  this.displayedValue = value;
+}
+
 }

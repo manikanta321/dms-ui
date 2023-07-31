@@ -24,6 +24,7 @@ import { AddPromotionSuccessfulPopupComponent } from './add-promotion-successful
 })
 export class AddPromotionsComponent implements OnInit, AfterViewInit {
   selectedTeam = '';
+  moq:any;
   selectedDay: string = '';
   showDiv = {
     previous: false,
@@ -1874,7 +1875,7 @@ this.textShow=true;
   }
 
   AddPromosaveAndSubmit(type) {
-    // alert(this.selectedPromo)
+    alert("HElloooo")
     localStorage.setItem("updatePromotionPopup", 'add');
     this.loggedUserId = localStorage.getItem('logInId')
     if (!this.checkValidation(this.selectedPromo)) return;
@@ -2045,8 +2046,8 @@ this.textShow=true;
         Remarks: this.Remarks ?? ''
 
       }
-
-
+alert(obj3.MOQ);
+      localStorage.setItem("MOQ",obj3.MOQ);
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
@@ -2081,10 +2082,9 @@ this.textShow=true;
         EntityInstanceId: this.EntityInstanceId,
         Status: type,
         Remarks: this.Remarks ?? ''
-
-
       }
-
+      alert(obj3.MOQ)
+      localStorage.setItem("MOQ",obj3.MOQ);
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
@@ -2153,10 +2153,10 @@ this.textShow=true;
 
 
   AddPromosaveAndSubmitEdit(type) {
-    // alert('error');
     localStorage.setItem("updatePromotionPopup", 'edit');
     this.loggedUserId = localStorage.getItem('logInId')
-    localStorage.setItem("MOQ",'MOQ');
+    
+   
 
     if (!this.checkValidation(this.selectedPromo)) return;
 
@@ -2321,7 +2321,8 @@ this.textShow=true;
         Remarks: this.Remarks ?? ''
 
       }
-
+      alert(obj3.MOQ)
+      localStorage.setItem("MOQ",obj3.MOQ);
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
@@ -2358,7 +2359,8 @@ this.textShow=true;
         Status: type,
         Remarks: this.Remarks ?? ''
       }
-
+      alert(obj3.MOQ)
+      localStorage.setItem("MOQ",obj3.MOQ);
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {
@@ -2377,7 +2379,6 @@ this.textShow=true;
       })
     }
   }
-
 
   // AddPromosaveAndSubmitDraftEdit() {
   //   alert(this.selectedPromo)

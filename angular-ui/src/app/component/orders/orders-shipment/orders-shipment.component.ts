@@ -30,6 +30,7 @@ export class OrdersShipmentComponent implements OnInit {
   myForm: any = FormGroup; 
 
   date: boolean = true;
+  userType:any;
 
    selectedDate: any;
   statusForm:any = FormGroup;
@@ -228,6 +229,7 @@ export class OrdersShipmentComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.userType = localStorage.getItem("userType");
     this.loggedUserId = localStorage.getItem('logInId');
 
     this.myForm = this.fb.group({

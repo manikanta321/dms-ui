@@ -61,11 +61,13 @@ export class AddorderpromotionsComponent implements OnInit {
   dealerInfo = false;
   orderitem = false;
   otherInfo = false;
+  PromoExpand=true;
   viewpromotions = false;
   ConfiromViewPro = false;
   image1 = 'assets/img/minimize-tag.png';
   image2 = 'assets/img/minimize-tag.png';
   image3 = 'assets/img/minimize-tag.png';
+  Image44='assets/img/expand.png';
   buygroupromo: any;
   actineLabel: any;
   updateOrSave: boolean = false
@@ -209,6 +211,7 @@ export class AddorderpromotionsComponent implements OnInit {
   buygroup: string[] = ["Product Name", "Product Name", "Product Name", "Product Name"];
   CustomerSelect: string[] = ['Valiant Distributors', 'Global Movers', 'Somebody Sales'];
   loginid: any;
+  productType:any;
   public itemremoved: any[] = [{
     sValue: '',
     eValue: '',
@@ -228,7 +231,6 @@ export class AddorderpromotionsComponent implements OnInit {
     this.sharedService.listen().subscribe((m: any) => {
       console.log(m)
       this.orderNonPromotionsList();
-
     })
     this.sharedService.getClickEvent().subscribe(() => {
       this.orderNonPromotionsList();
@@ -242,7 +244,6 @@ export class AddorderpromotionsComponent implements OnInit {
   ngOnInit(): void {
     localStorage.setItem('AddorEditpro', '');
     localStorage.setItem('AddorEditpro1', '');
-
     this.userType = localStorage.getItem("userType");
     let loginid = localStorage.getItem("logInId");
     this.loginid = localStorage.getItem("logInId");
@@ -413,6 +414,16 @@ export class AddorderpromotionsComponent implements OnInit {
     }
   }
 
+  ExpandPromotion() {
+    this.PromoExpand = !this.PromoExpand;
+
+    if (this.PromoExpand === false) {
+      this.Image44 = 'assets/img/expand.png';
+    } else {
+      this.Image44 = 'assets/img/expand.png';
+    }
+  }
+
   addEditOrderPromotionList() {
 
     localStorage.setItem("geographyId", this.geographyId);
@@ -438,6 +449,7 @@ export class AddorderpromotionsComponent implements OnInit {
           x.isSelected = this.AddOrderPromotionData.findIndex(y => y.promotionId == x.productPromotionsId) !== -1;
         })
         this.getShippingandPackingcharges();
+        this.productType = localStorage.getItem('PromotionType')
       }
     })
     // localStorage.setItem('buygroupromo', '')
@@ -637,6 +649,8 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   onItemSelectdealers(item: any) {
+    localStorage.removeItem('totalQuantity');
+    localStorage.removeItem('totalAmount');
     this.customerId = item.customerId;
     localStorage.setItem("dealerid", this.customerId);
     localStorage.removeItem("geographyId");

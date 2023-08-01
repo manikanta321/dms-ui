@@ -72,11 +72,12 @@ export class AddOrderPromotionlistComponent implements OnInit {
     private sharedImageService: SharedimageService,
     @Inject(MAT_DIALOG_DATA) public data: any) {  
    }
-
+   registrationNumber:any;
   ngOnInit(): void { 
     // this.imageUrl = this.sharedImageService.getSelectedImage();
     this.receivedImageData = localStorage.getItem('imageData');
     this.MOQ=localStorage.getItem('MOQ');
+    
     console.log(this.receivedImageData,"checking re imageData ");
         this.imageUrl = localStorage.getItem('clickedImageURL');
         console.log("THis.Image",this.imageUrl)
@@ -225,7 +226,13 @@ export class AddOrderPromotionlistComponent implements OnInit {
       //   item.isProductSelected = false;
       //   return item;
       // });
+      
       this.Remarks = res.response.remarks;
+      this.MOQ=res.response[0]?.promoDetails?.buyGroups[0]?.moq
+      this.GETMOQ=res.response[0]?.promoDetails?.getGroups[0]?.moq
+      console.log(this.MOQ,"check moq");
+      console.log(this.GETMOQ,"check  get groups moq");
+      
       
      
       this.ProductPromotionOrderList = res.response;
@@ -233,9 +240,12 @@ export class AddOrderPromotionlistComponent implements OnInit {
       this.orderPromotionFormatter(this.ProductPromotionOrderList);
       
       this.spinner.hide();
-      console.log(this.griddatapromotions, "griddata");
+      console.log(this.griddatapromotions, "griddata and checking MOQ");
+      
     });
   }  
+  GETMOQ:any;
+  promoDetails:any;
 
   appendStockItemFields(stockItem, productPromotions) {
     let formatObj: any = {};
@@ -265,6 +275,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
     formatObj.Quantity = stockItem.quantity == undefined ? null : stockItem.quantity;
     formatObj.Taxid = stockItem.taxid;
     formatObj.registrationNumber = stockItem.registrationNumber;
+    formatObj.moq = stockItem.moq;
     formatObj.remarks = stockItem.remarks;
     formatObj.materialcustomidentifier = stockItem.materialcustomidentifier;
     formatObj.materialCustomName=stockItem.materialCustomName;

@@ -164,12 +164,12 @@
                                  <table class="tableclass">
                                     <thead class="table-headercolor">
                                         <tr>
-                                             <td style="width: 30px;"></td>
+                                             <!-- <td style="width: 30px;"></td> -->
                                             <th data-sortable="true"class="align-center">Product Code</th>
                                             <th data-sortable="true"class="align-center">Product Name</th>
                                             <th data-sortable="true"class="align-center">   Identifiers</th>
                                             <th data-sortable="true"class="align-center">Registration No</th>
-                                             <th data-sortable="true"class="align-center">MOQ</th>
+                                              <th data-sortable="true"class="align-center">MOQ</th> 
                                             <th data-sortable="true"class="align-center">Unit Price</th> 
                                             <th data-sortable="false"class="align-center">Order Qty</th>
                                             <th data-sortable="false"class="align-center">Order Amount</th>
@@ -179,20 +179,20 @@
                                         
                                         <tr *ngFor="let Item of promos.stockitemid">
                                              
-                                            <td><input type="checkbox" [checked]="Item.isProductSelected"
+                                            <td style="width:24px"><input type="checkbox" [checked]="Item.isProductSelected"
                                                 (change)="checkboxChange($event,Item, data)" />
                                                 
                                             </td>
-                                                 <td style="text-align: left;">{{Item.productSKUName}}</td> 
+                                                 <td style="text-align: left;" id="PSKUNAME">{{Item.productSKUName}}</td> 
                                         <td style="text-align: left;">{{Item.stockitemname}}
                                         </td>
                                              <td style="text-align: left;">{{Item.materialcustomidentifier}}</td>
                                           
                                       
                                         <td style="text-align: left;">{{Item.registrationNumber}}</td>
-                                         <td>MOQ</td>
+                                         <td class="txt-right">{{MOQ}}</td>
                                         <td class="txt-right">{{Item.price}}</td>
-                                          <td><input type="number" placeholder="Enter Qty"
+                                          <td ><input type="number" placeholder="Enter Qty"
                                                 class="quatity-inp" [(ngModel)]="Item.Quantity"
                                                 (keyup)="quantityChange(data, Item)" name="Item.quantity"></td>
 
@@ -207,14 +207,14 @@
 
                                  <div  class="bottom-table tt" id="totalnonprobackcolor" >
                                     <tr>
-                                    <td colspan="6" class="btm-total"><b>Total  </b></td>
+                                    <!-- <td colspan="6" class="btm-total"><b>Total  </b></td>
                                     <td class="btm-total txt-right" >
 
                                         {{promos.totalQuantity ?? 0 }}</td>
                                          
                                        
                                     <td class="btm-total txt-right">{{promos.totalAmount ?? 0 | number :
-                                        '1.2-2'}}</td>
+                                        '1.2-2'}}</td> -->
                                 </tr>
                                 </div>
                                         
@@ -249,7 +249,7 @@
                                          </div>
 
                                               <!-- tabels for 1st promotions -->
-                                         <div class="label-div tableborderss">
+                                         <!-- <div class="label-div tableborderss">
                                                 <table id="Table1">
                                                     
                                                         <tr>
@@ -257,7 +257,8 @@
                                                             <th data-sortable="true"class="align-center">Product Code</th>
                                                             <th data-sortable="true"class="align-center">Product Name</th>
                                                             <th data-sortable="true"class="align-center">  Identifiers</th>
-                                                            <th data-sortable="true"class="align-center">Registration No</th>   
+                                                            <th data-sortable="true"class="align-center">Registration No</th>
+                                                            <th data-sortable="true"class="align-center">MOQ</th>   
                                                             <th data-sortable="true"class="align-center">Unit Price</th>
                                                             <th data-sortable="false"class="align-center">Order Qty</th>
                                                             <th data-sortable="false"class="align-center">Order Amount</th>
@@ -269,6 +270,7 @@
                                                             <td style="text-align: left;">{{Item.stockitemname}} </td>
                                                               <td style="text-align: left; ;">{{Item.materialcustomidentifier}}</td> 
                                                             <td style="text-align: left;">{{Item.registrationNumber}}</td>
+                                                            <td style="text-align: left;">MOQ</td>
                                                         
                                                         
                                                         <td class="txt-right;">{{Item.price}}</td>
@@ -288,10 +290,18 @@
                                                             '1.2-2'}}</td>
                                                     </tr>
                                                 </table>
-                                            </div>
+                                            </div> -->
 
 
-                                            <!-- <div class="tabel-div1">
+                                            <!-- RK start -->
+
+
+
+
+
+
+
+                                             <div class="tabel-div1">
 
                                                 <table class="tableclass1">
                                                  <thead class="table-headercolor1">
@@ -300,7 +310,8 @@
                                                         <th data-sortable="true"class="align-center">Product Code</th>
                                                             <th data-sortable="true"class="align-center">Product Name</th>
                                                             <th data-sortable="true"class="align-center">  Identifiers</th>
-                                                            <th data-sortable="true"class="align-center">Registration No</th>   
+                                                            <th data-sortable="true"class="align-center">Registration No</th> 
+                                                            <th data-sortable="true"class="align-center">MOQ</th>   
                                                             <th data-sortable="true"class="align-center">Unit Price</th>
                                                             <th data-sortable="false"class="align-center">Order Qty</th>
                                                             <th data-sortable="false"class="align-center">Order Amount</th>
@@ -309,12 +320,13 @@
                                                  <tbody class="tbodayheight1">
 
                                                     <tr  *ngFor="let Item of promos.stockitemid">
-                                                        <td><input type="checkbox" [checked]="Item.isProductSelected"
+                                                        <td style="width:24px"><input type="checkbox" [checked]="Item.isProductSelected"
                                                                 (change)="checkboxChange($event,Item, data)"></td>
                                                                 <td style="text-align: left;">{{Item.productSKUName}}</td>
                                                             <td style="text-align: left">{{Item.stockitemname}} </td>
                                                               <td style="text-align: left;">{{Item.materialcustomidentifier}}</td> 
                                                             <td style="text-align: left;">{{Item.registrationNumber}}</td>
+                                                            <td class="txt-right">{{GETMOQ}}</td>
                                                         
                                                         
                                                         <td class="txt-right">{{Item.price}}</td>
@@ -330,19 +342,19 @@
                                                     </table>
 
                                                     <div  class="bottom-table1 tt" id="totalnonprobackcolor1" >
-                                                        <tr>
+                                                        <!-- <tr>
                                                             <td colspan="6" class="btm-total"><b>Total </b></td>
                                                             <td class="btm-total txt-right">
                                                                 {{promos.totalQuantity ?? 0 }}</td>
                                                             <td class="btm-total txt-right">{{promos.totalAmount ?? 0 | number :
                                                                 '1.2-2'}}</td>
-                                                    </tr>
+                                                    </tr> -->
                                                     </div>
 
 
 
 
-                                                    </div> -->
+                                                    </div>
 
                                             
                                            

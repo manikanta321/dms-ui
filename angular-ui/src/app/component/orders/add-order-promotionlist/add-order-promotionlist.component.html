@@ -147,12 +147,10 @@
                                  
                                
 
-<!--                          ================ Start -->
-<!-- <div class="col-md-3"> -->
-    <!-- <span class="buy-grp"> Buy Items Details</span> -->
+
     <div class="row">
     <div class="col">
-        <span class="buy-grp"> Buy Items Details</span> 
+        <span class="buy-grp"> Buy Item Details</span> 
       </div>
       <div class="col-md-auto" >
        <span id="m_oq"> MOQ-{{ MOQ }}</span>
@@ -162,7 +160,7 @@
         <span id="se_lected">Selected {{ Item.Quantity }}</span>
       </div>
     </div>
-<!-- </div> -->
+
 
     
 
@@ -257,29 +255,21 @@
 
                                     <div *ngFor="let promos of data.promoDetails.getGroups">
                                         <div class="buyGrp 1">
-                                            <!-- headingds for 1st promotions -->
-                                            <!-- <div class="row label-div">
-                                                <div class="col-md-3">
-                                                   
-                                                    <span class="buy-grp"> Free Items Details</span>
-                                                </div>
-                                                
-                                            </div>  -->
-
-                                            <div class="row">
-                                                <div class="col">
-                                                    <span class="buy-grp"> Free Items Details</span> 
+                                             <div class="row">
+                                                <div class="col col-lg-9">
+                                                    <span class="buy-grp"> Free Item Details</span> 
                                                   </div>
-                                                  <div class="col-md-auto" >
-                                                   <span id="m_oq"> Entitled</span>
+                                                  <div class="col col-lg-1" >
+                                                    <span id="Entitled"> Entitled</span>
                                                   </div>
+                                                  <div class=" col-lg-1" >
+                                                    <span id="Freeitemselected">Selected </span>
+                                                   </div>
+                                                   <div class="col col-lg-1" >
+                                                    <span id="Remaining">Remaining </span>
+                                                   </div>
                                             
-                                                  <div class="col col-lg-2" >
-                                                    <span id="se_lected">Selected </span>
-                                                  </div>
-                                                  <div class="col col-lg-2" >
-                                                    <span id="se_lected">Remaining </span>
-                                                  </div>
+                                                  
                                                 </div>
 
 

@@ -29,8 +29,38 @@ line-height: 18px;
 font-size: 15px;
 font-weight: 700;
 line-height: 18px;
+}
+#Entitled
+{
+  font-family: 'Calibri';
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.04em;
+  color: rgba(0, 0, 0, 1);
+  
+  
+}
+#Freeitemselected
+{
+  font-family: 'Calibri';
+font-size: 15px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: 0.04em;
+color: rgba(0, 0, 0, 1);
 
+}
+#Remaining
+{
+  font-family: 'Calibri';
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.04em;
+  color: rgba(0, 0, 0, 1);
 
+  
 }
 
 .tabel-div {

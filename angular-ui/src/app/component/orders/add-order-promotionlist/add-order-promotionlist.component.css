@@ -7,6 +7,31 @@
     
 
 }
+#m_oq
+{
+  position: relative;
+   top: 10px;
+   color: rgba(104, 110, 116, 1);
+   font-family: 'Calibri';
+font-size: 15px;
+font-weight: 700;
+line-height: 18px;
+
+
+}
+#se_lected
+{
+  position: relative;
+    left: 28%;
+    top: 10px;
+    color: rgba(104, 110, 116, 1);
+    font-family: 'Calibri';
+font-size: 15px;
+font-weight: 700;
+line-height: 18px;
+
+
+}
 
 .tabel-div {
   margin-top: 15px;

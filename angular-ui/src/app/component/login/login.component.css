@@ -10,6 +10,12 @@
  
   
 }
+.maiUdiv
+{
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.99), rgba(255, 255, 255, 0.99));
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.11);
+border-radius: 26px;
+}
 .img-fluid
 {
   
@@ -42,19 +48,18 @@
 }
 
 .form-label {
-  margin-left: 8px;
+  /* margin-left: 8px; */
+  margin-left: 2%;
 }
 
-.bg-img {
-  /* background-image: url("/assets/img/login-background-img.png"); */
-  
-  /* background:linear-gradient(
+.bg-img { 
+  background:linear-gradient(
 to right,
 #06997E 0%,
 #06997E 50%,
 white 50%,
 white 100%
-  ); */
+  );
   
   height: 100%;
   background-position: center;
@@ -107,9 +112,11 @@ section {
 }
 
 .loginform-page {
-  background-color:linear-gradient(0deg, rgba(255, 255, 255, 0.99), rgba(255, 255, 255, 0.99));
-  height: 444px;
-  width: 460px;
+  background-color:linear-gradient(0deg, rgba(255, 255, 255, 0.99), rgba(255, 255, 255, 0.99)) !important;
+  /* height: 444px; */
+  height: 482px;
+  /* width: 460px; */
+  width: 476px;
   box-shadow: 2px;
   margin: auto;
   border: 0.35px solid rgba(1, 139, 117, 1);
@@ -124,7 +131,8 @@ input {
 
 
 form {
-  margin-left: 34px;
+  /* margin-left: 34px; */
+  margin-left: 52px;
 }
 
 .welcome {
@@ -169,6 +177,7 @@ color: rgba(1, 139, 117, 1);
   width: 368px;
   text-align: center;
   height: 43px;
+  top:21px;
 
 
 
@@ -242,16 +251,17 @@ letter-spacing: 0em;
 .forgot-ps {
   color: rgba(254, 103, 37, 1);
   font-family: 'Calibri';
-font-size: 17px;
+font-size: 19px;
 font-weight: 400;
 line-height: 24px;
 letter-spacing: 0em;
-  margin-right: 38px;
+  /* margin-right: 38px; */
+  margin-right: 66px;
 }
 .REME
 {
  font-family: 'Calibri';
-font-size: 14px;
+font-size: 17px;
 font-weight: 400;
 line-height: 24px;
 letter-spacing: 0em;
@@ -270,13 +280,12 @@ color: rgba(0, 0, 0, 1);
 
 .form-outline label {
   
-color: rgba(0, 0, 0, 1);
-  font-weight: 600;
+color: rgba(0, 0, 0, 1)!important;
   font-family: 'Calibri';
 font-size: 20px;
-font-weight: 400;
 line-height: 31px;
 letter-spacing: 0em;
+font-size: 23px;
 
 
 }

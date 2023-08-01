@@ -148,9 +148,24 @@
                                
 
 <!--                          ================ Start -->
-<div class="col-md-3">
-    <span class="buy-grp"> Buy Items Details</span>
-</div>
+<!-- <div class="col-md-3"> -->
+    <!-- <span class="buy-grp"> Buy Items Details</span> -->
+    <div class="row">
+    <div class="col">
+        <span class="buy-grp"> Buy Items Details</span> 
+      </div>
+      <div class="col-md-auto" >
+       <span id="m_oq"> MOQ-{{ MOQ }}</span>
+      </div>
+
+      <div class="col col-lg-2" >
+        <span id="se_lected">Selected {{ Item.Quantity }}</span>
+      </div>
+    </div>
+<!-- </div> -->
+
+    
+
 
 
                                    
@@ -204,6 +219,7 @@
 
                                     </tbody>
                                  </table>
+                                
 
                                  <div  class="bottom-table tt" id="totalnonprobackcolor" >
                                     <tr>
@@ -217,6 +233,7 @@
                                         '1.2-2'}}</td> -->
                                 </tr>
                                 </div>
+                                
                                         
                                   
                                   
@@ -224,6 +241,7 @@
 
 
                                 </div>
+                                
 
 </div>
 </div>
@@ -240,12 +258,31 @@
                                     <div *ngFor="let promos of data.promoDetails.getGroups">
                                         <div class="buyGrp 1">
                                             <!-- headingds for 1st promotions -->
-                                            <div class="row label-div">
+                                            <!-- <div class="row label-div">
                                                 <div class="col-md-3">
                                                    
                                                     <span class="buy-grp"> Free Items Details</span>
                                                 </div>
-                                            </div> 
+                                                
+                                            </div>  -->
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <span class="buy-grp"> Free Items Details</span> 
+                                                  </div>
+                                                  <div class="col-md-auto" >
+                                                   <span id="m_oq"> Entitled</span>
+                                                  </div>
+                                            
+                                                  <div class="col col-lg-2" >
+                                                    <span id="se_lected">Selected </span>
+                                                  </div>
+                                                  <div class="col col-lg-2" >
+                                                    <span id="se_lected">Remaining </span>
+                                                  </div>
+                                                </div>
+
+
                                          </div>
 
                                               <!-- tabels for 1st promotions -->
@@ -293,7 +330,7 @@
                                             </div> -->
 
 
-                                            <!-- RK start -->
+                                            
 
 
 

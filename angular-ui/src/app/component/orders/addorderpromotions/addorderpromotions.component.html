@@ -736,56 +736,75 @@
                             </ng-container>
 
                                 <!-- nonpromotions list view -->
-                                <tr *ngFor="let Item of AddorderNonpromotiondata?.itemDetails; let i=index;">
-                                    <td style="width:50px !important;"><span class="promoItem" *ngIf="i == 0"> NP
-                                        </span></td>
-                                        <td style="text-align: left;">{{Item.productSKUName}}</td>
-                                        
-                                    <td>
-                                         <p style="text-align: left;">{{Item.stockitemname}}</p>
-                                       
-                                    </td>
-                                    <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td> -->
-                                    <!-- <td>
-                                        <input type="text" disabled [(ngModel)]="Item.uomname" class="IteminputBoxes">
-                                    </td> -->
-                                    <td>
-                                        <input type="text" disabled [(ngModel)]="Item.price" class="IteminputBoxes">
-                                    </td>
-                                    <td>
-                                        <input type="text" disabled [(ngModel)]="Item.discount"
-                                            [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'">
-                                    </td>
-                                    <td>
-                                        <input type="text" disabled [(ngModel)]="Item.quantity" class="IteminputBoxes">
-                                    </td>
-                                    <!-- <td>
-                                        <input type="text" disabled [(ngModel)]="Item.stock" class="IteminputBoxes">
-                                    </td> -->
-                                   
-                                    <!-- <td>
-                                        <input type="text" disabled [(ngModel)]="Item.finalPrice"
-                                            class="IteminputBoxes">
-                                    </td> -->
-                                   
 
-                                    <td>
-                                        <input type="text" disabled [(ngModel)]="Item.finalValue"
-                                            class="IteminputBoxes">
-                                    </td>
-                                    <!-- <td>
-                                        <input type="text" disabled [(ngModel)]="Item.taxvalue" class="IteminputBoxes">
-                                    </td> -->
-                                    <!-- <td>
-                                        <input type="text" disabled [(ngModel)]="Item.amount" class="IteminputBoxes">
-                                    </td> -->
+                                <!-- RK start -->
 
-                                    <td>
-                                        <div class="removeCircle" (click)="removeNonPromotionItem(Item)">
-                                            <i class="fa fa-trash-o"></i>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <div class="ExpandArrow" (click)="ExpandNonPromotion()">
+                                    <img  [src]="Image44" class="expand-arrow_W" alt="add-user-btn">Non Promotions
+                                     <span  id="protype" style="color: rgba(0, 0, 0, 1);
+                                    "> </span>
+                                    
+                        </div>
+                        
+                        <ng-container  *ngIf="NonPromotion"  >
+
+                            <tr *ngFor="let Item of AddorderNonpromotiondata?.itemDetails; let i=index;">
+                                <!-- <td style="width:50px !important;">
+                                    <span class="promoItem" *ngIf="i == 0"> NPyy
+                                    </span>
+                                </td> -->
+                                    <td style="text-align: left;">{{Item.productSKUName}}</td>
+                                    <td style="width:10px;"></td>
+                                <td style="text-align: left;">{{Item.stockitemname}}
+                                   
+                                </td>
+                                <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td> -->
+                                <!-- <td>
+                                    <input type="text" disabled [(ngModel)]="Item.uomname" class="IteminputBoxes">
+                                </td> -->
+                                <td>
+                                    <input type="text" disabled [(ngModel)]="Item.price" class="IteminputBoxes">
+                                </td>
+                                <td>
+                                    <input type="text" disabled [(ngModel)]="Item.discount"
+                                        [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'">
+                                </td>
+                                <td>
+                                    <input type="text" disabled [(ngModel)]="Item.quantity" class="IteminputBoxes">
+                                </td>
+                                <!-- <td>
+                                    <input type="text" disabled [(ngModel)]="Item.stock" class="IteminputBoxes">
+                                </td> -->
+                               
+                                <!-- <td>
+                                    <input type="text" disabled [(ngModel)]="Item.finalPrice"
+                                        class="IteminputBoxes">
+                                </td> -->
+                               
+
+                                <td>
+                                    <input type="text" disabled [(ngModel)]="Item.finalValue"
+                                        class="IteminputBoxes">
+                                </td>
+                                <!-- <td>
+                                    <input type="text" disabled [(ngModel)]="Item.taxvalue" class="IteminputBoxes">
+                                </td> -->
+                                <!-- <td>
+                                    <input type="text" disabled [(ngModel)]="Item.amount" class="IteminputBoxes">
+                                </td> -->
+
+                                <td>
+                                    <div class="removeCircle" (click)="removeNonPromotionItem(Item)">
+                                        <i class="fa fa-trash-o"></i>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-container>
+                        
+
+
+
+                              
 
                             </table>
                         </div>

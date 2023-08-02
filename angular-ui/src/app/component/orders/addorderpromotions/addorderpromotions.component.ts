@@ -62,6 +62,7 @@ export class AddorderpromotionsComponent implements OnInit {
   orderitem = false;
   otherInfo = false;
   PromoExpand=true;
+  NonPromotion=true;
   viewpromotions = false;
   ConfiromViewPro = false;
   image1 = 'assets/img/minimize-tag.png';
@@ -424,6 +425,21 @@ export class AddorderpromotionsComponent implements OnInit {
     }
   }
 
+  ExpandNonPromotion() {
+    this.NonPromotion = !this.NonPromotion;
+
+    if (this.NonPromotion === false) {
+      this.Image44 = 'assets/img/expand.png';
+    } else {
+      this.Image44 = 'assets/img/expand.png';
+    }
+  }
+
+
+
+
+
+
   addEditOrderPromotionList() {
 
     localStorage.setItem("geographyId", this.geographyId);
@@ -568,6 +584,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
   }
   removePromotionItem(clickedItem, promotionId) {
+    this.productType = localStorage.removeItem('PromotionType');
     // let ClickedPromotionObj = this.AddOrderPromotionData.find(x => x.promotionId == promotionId);
     let index = this.AddOrderPromotionData.findIndex(x => x.promotionId == promotionId);
     this.AddOrderPromotionData.splice(index, 1);

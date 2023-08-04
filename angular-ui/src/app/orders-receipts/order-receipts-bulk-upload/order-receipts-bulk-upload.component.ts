@@ -109,27 +109,32 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
          
        this.BatchId = this.TargetUpload.batchid;
        console.log("TargetUpload checking ",this.BatchId)
-        this.TotalRows = this.TargetUpload.allRows;
 
-        this.totalRows = "Total Rows = "+ this.TotalRows.length ?? 0;
+        this.TotalRows = this.TargetUpload.allRows;
+        this.totalRows = "Total Rows = "+ this.TotalRows.length;
+       console.log( this.totalRows,"check total rows");
+       
 
         this.errorfreeRows = this.TargetUpload.errorFreeRows
 
         this.errorFree = "Error Free Rows = "+ this.errorfreeRows.length;
 
-        this.duplicateEntryy =this.TargetUpload.duplicateEntries
+        this.duplicateEntryy =this.TargetUpload.duplicateRows
         
-        this.duplicateEntry = "Duplicate Entries = "+this.duplicateEntryy.length;
+        this.duplicateEntry = "Duplicate Entries = " + this.duplicateEntryy.length;
+         
+        console.log( this.duplicateEntry,"check total duplicateEntry"); 
 
         
         this.incorrectRows = this.TargetUpload.incorrectData;
-        // this.incorrectRows.map((ele)=>{
-        //   ele.incorrectColumn = ele.incorrectColumn?.split(":")[1].toLowerCase().trim();
-        //   console.log("incorrectColumn check" , ele.incorrectColumn);
-        //   return ele;
-        // });
+        console.log("incorrectColumn check" ,this.incorrectRows);
+        this.incorrectRows?.map((ele)=>{
+          ele.incorrectColumn = ele.incorrectColumn?.split(":")[1].toLowerCase().trim();
+          console.log("incorrectColumn check" , ele.incorrectColumn);
+          return ele;
+        });
         console.log("incorret data checking " , this.incorrectRows);
-        this.Incorrect = "Incorrect Data = " + this.incorrectRows.length;
+        this.Incorrect = "Incorrect Data = " + this.incorrectRows?.length;
         const TargetUpload = res.response.allRows;
         console.log("associationList   check",TargetUpload)
         this.batchId = TargetUpload.map(({ batchId }) => batchId);
@@ -147,8 +152,10 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
 
     if(this.rowsTotal === false){
       this.image1 = 'assets/img/minimize-tag.png';
+      this.image4 = 'assets/img/maximize-arrow.png';
     } else {
       this.image1 = 'assets/img/maximize-arrow.png';
+      this.image4 = 'assets/img/maximize-arrow.png';
      
     }
   }

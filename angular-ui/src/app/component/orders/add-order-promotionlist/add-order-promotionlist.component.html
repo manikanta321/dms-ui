@@ -255,6 +255,24 @@
 
                                     <div *ngFor="let promos of data.promoDetails.getGroups">
                                         <div class="buyGrp 1">
+
+                                            <!-- <div class="col-md-6" style="text-align: center;">
+                                                <span class="total-itemss">Total Selected Qty :
+                                                    {{promos.totalQuantity}} <span class="ml-1" style="color:#000;"
+                                                        [ngClass]="{ 'txt-error-span': promos.totalQuantity != (promos.foc) && data.showWarningMsg }">(FOC
+                                                           {{promos.foc  }})</span></span>
+
+                                                           <span class="txt-error"
+                                                           *ngIf="promos.totalQuantity != (promos.foc) && data.showWarningMsg">
+                                                           Please select full required quantity
+                                                           </span>
+                                                       
+                                                     
+                                                       
+                                            </div> -->
+
+
+
                                              <div class="row">
                                                 <div class="col col-lg-9">
                                                     <span class="buy-grp"> Free Item Details</span> 
@@ -792,6 +810,8 @@
                                     </div>
 
                                 </div>
+
+
 
                                 <!-- 4th promotions -->
                                 <div *ngIf="data.promotionTypesId==4">

@@ -1,3 +1,24 @@
+.promotionclass
+{
+  font-family: 'Calibri';
+  font-size: 14px;
+  color: rgba(1, 139, 117, 1);
+  background-color: #018B75;
+  border: none;
+  background: none;
+  
+}
+.nonpromoclassName
+{
+  font-family: 'Calibri';
+  font-size: 14px;
+  border: none;
+  background: none;
+
+  
+}
+
+
 .orderqty
 {
   border: 1px solid rgba(225, 226, 227, 1);
@@ -2051,7 +2072,26 @@ right: -65px;
   border-radius: 10px;
   border: 1px solid black;
   font-size: 12.5px;
-  color: black;
+  border: 0px;
+  text-align: right;
+}
+.IteminputBoxesprice {
+  width: 100px;
+  /* height: 30px; */
+  background: none;
+  border-radius: 10px;
+  border: 1px solid black;
+  font-size: 12.5px;
+  border: 0px;
+  text-align: right;
+}
+.IteminputBoxesPriceBOX {
+  width: 100px;
+  /* height: 30px; */
+  background: none;
+  border-radius: 10px;
+  border: 1px solid black;
+  font-size: 12.5px;
   border: 0px;
   text-align: right;
 }
@@ -2069,7 +2109,7 @@ right: -65px;
 
 .itemLeft {
   /* width: 150px; */
-  font-size: 12.5px;
+  /* font-size: 12.5px; */
   height: 1px;
   text-align: left;
 }
@@ -2113,7 +2153,7 @@ right: -65px;
 {
     position: relative;
     right: 201px;
-    color: #000000;
+    
 }
 
 
@@ -2620,6 +2660,22 @@ table thead, table tbody tr {
 }
 .removeCircle, .edit{
   cursor: pointer;
+  color: rgba(1, 139, 117, 1);
+  font-family: 'Calibri';
+font-size: 13px;
+font-weight: 400;
+line-height: 16px; 
+}
+.edit
+{
+  cursor: pointer;
+  color: rgba(1, 139, 117, 1);
+ font-family: 'Calibri';
+font-size: 15px;
+font-weight: 400;
+line-height: 16px;
+margin-top: -6%;
+margin-left: 25%;
 }
 
 

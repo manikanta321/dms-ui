@@ -27,7 +27,8 @@ import { SharedimageService } from 'src/app/sharedimage.service';
 export class AddorderpromotionsComponent implements OnInit {
   hidereset:boolean=false;
 
-  
+  NotVisibleProArrow:boolean=true;
+  NotVisibleNonProArrow:boolean=true;
   products: any = FormGroup;
   isAdminLoggedIn: boolean = true;
   inputValue: number | null = null;
@@ -351,6 +352,10 @@ export class AddorderpromotionsComponent implements OnInit {
 
 
   }
+  
+  toggleVisibility() {
+    this.NotVisibleProArrow = !this.NotVisibleProArrow;
+  }
 
   onTypeAll(items: any) {
     console.log('onSelectAll', items);
@@ -449,8 +454,8 @@ export class AddorderpromotionsComponent implements OnInit {
       alert("Plz select geography and dealer");
       return;
     }
+    console.log("SelectedPromotion",this.AddOrderPromotionData);
     let selectedPromotion  = this.AddOrderPromotionData.filter(x => (x.promotionId === this.clickedPromotion))
-
     const dialogRef = this.dialog.open(AddOrderPromotionlistComponent, {
       minWidth: '100vw', height: '730px',
       panelClass: 'orders-add-Promotions',
@@ -1384,6 +1389,7 @@ export class AddorderpromotionsComponent implements OnInit {
       obj.price = item.price;
       obj.materialcustomidentifier=item.materialcustomidentifier,
       obj.isInPromotion = item.isInPromotion;
+      obj.isBuyProduct = item.isBuyProduct;
       obj.stock = selectedNonPromotionItem == undefined ? item.stock : selectedNonPromotionItem.quantity;
       obj.productSKUName = item.productSKUName;
       obj.stockitemid = item.stockitemid;
@@ -1869,6 +1875,7 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   removePromotion(e, promotionItem) {
+    this.productType = localStorage.removeItem('PromotionType');
     e.stopPropagation();
     promotionItem.isSelected = false;
     this.AddOrderPromotionData = this.AddOrderPromotionData.filter(x => x.promotionId !== promotionItem.productPromotionsId);
@@ -1890,29 +1897,27 @@ export class AddorderpromotionsComponent implements OnInit {
     this.dialog.open(ViewPromotionPopupComponent, config);
   }
   
-  convertImageUrlToBase64(imageUrl: string): void {
-    this.http.get(imageUrl, { responseType: 'blob' }).subscribe((response) => {
-      const fileReader = new FileReader();
-      fileReader.onloadend = () => {
-        const base64data = fileReader.result as string;
-        console.log(base64data); // The base64 representation of the image data
-      };
-      fileReader.readAsDataURL(response);
-    });
-  }
+  // Important  convertImageUrlToBase64(imageUrl: string): void {
+  //   this.http.get(imageUrl, { responseType: 'blob' }).subscribe((response) => {
+  //     const fileReader = new FileReader();
+  //     fileReader.onloadend = () => {
+  //       const base64data = fileReader.result as string;
+  //       console.log(base64data);
+  //     };
+  //     fileReader.readAsDataURL(response);
+  //   });
+  // }
   Item: any = {
     // Your Item properties here...
     imageurl: 'imageurl'
   };
    selectPrmotionItem(promotionItem) 
   {
-    // alert("imageurl")
+    
 console.log("promotionItemUrl",promotionItem.imageurl)
 localStorage.setItem('clickedImageURL', JSON.stringify(promotionItem.imageurl));
-    // localStorage.setItem('clickedImage', promotionItem.imageurl);
-    // const fileInput = promotionItem.imageurl as HTMLInputElement;
     let fileInput:any;
-    fileInput = this.convertImageUrlToBase64(promotionItem.imageurl);
+    // Important fileInput = this.convertImageUrlToBase64(promotionItem.imageurl);
     console.log("MethaDalla",fileInput)
         localStorage.setItem('clickedImage', JSON.stringify(fileInput));
     console.log("Imageeeee0",fileInput);

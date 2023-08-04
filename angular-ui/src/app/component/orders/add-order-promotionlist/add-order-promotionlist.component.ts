@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { HttpClient } from '@angular/common/http';
 import { CellClickedEvent, CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridReadyEvent } from 'ag-grid-community';
@@ -8,16 +8,17 @@ import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { SharedimageService } from 'src/app/sharedimage.service';
 import { ViewPromotionPopupComponent } from '../../pramotion-action/view-promotion-popup/view-promotion-popup.component';
 
+
 @Component({
   selector: 'app-add-order-promotionlist',
   templateUrl: './add-order-promotionlist.component.html',
   styleUrls: ['./add-order-promotionlist.component.css']
 })
-export class AddOrderPromotionlistComponent implements OnInit {
+export class AddOrderPromotionlistComponent implements OnInit {  
 
-  @Input() receivedImageData: string | null = null;
-  
+ 
   // taxtemplete :any =['hj','hj'];
+
   otherInputValue: number = 0;
   MOQ:any;
   Remarks :any;
@@ -74,11 +75,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
    }
    registrationNumber:any;
   ngOnInit(): void { 
-    // this.imageUrl = this.sharedImageService.getSelectedImage();
-    this.receivedImageData = localStorage.getItem('imageData');
     this.MOQ=localStorage.getItem('MOQ');
-    
-    console.log(this.receivedImageData,"checking re imageData ");
         this.imageUrl = localStorage.getItem('clickedImageURL');
         console.log("THis.Image",this.imageUrl)
         this.imageUrl = JSON.parse(this.imageUrl)
@@ -227,9 +224,10 @@ export class AddOrderPromotionlistComponent implements OnInit {
       //   return item;
       // });
       
-      this.Remarks = res.response.remarks;
-      this.MOQ=res.response[0]?.promoDetails?.buyGroups[0]?.moq
-      this.GETMOQ=res.response[0]?.promoDetails?.getGroups[0]?.moq
+      this.Remarks = res.response?.remarks;
+      console.log("ResponseData",res.response)
+      // this.MOQ=res.response[0]?.promoDetails?.buyGroups[0]?.moq
+      // this.GETMOQ=res.response[0]?.promoDetails?.getGroups[0]?.moq
       console.log(this.MOQ,"check moq");
       console.log(this.GETMOQ,"check  get groups moq");
       
@@ -988,7 +986,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
         error: (err: any) => {
 
         }
-      });      
+      });
   }
 
 totatQty(event:any) {

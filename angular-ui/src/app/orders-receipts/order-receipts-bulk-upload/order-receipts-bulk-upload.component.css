@@ -23,9 +23,9 @@
 
       .totaltablewidth {
         position: relative;
-        width: 92%;
-        left: 12px;
-        top: 29px;
+        width: 91%;
+        left: 17px;
+        top: 49px;
         border-width: 0px 1px 1px 1px;
         border-style: solid;
         border-color: #686E74;
@@ -43,12 +43,12 @@
             top: 74px;
             z-index: 1;
           }
-          .errorfreerows
+   .errorfreerows
   {
     position: relative;
+    top: 66px;
     width: 90%;
-     left: 25px;
-    top: 52px;
+    left: 24px;
     border-width: 0px 1px 1px 1px;
     border-style: solid;
     border-color: #686E74;
@@ -421,7 +421,7 @@
         font-size: 12px !important;
         line-height: 150% !important; */
         align-items: center !important;
-        height: 60px;
+        /* height: 60px; */
         font-family: 'Gilroy';
         font-size: 13px;
         line-height: 15px;
@@ -541,4 +541,16 @@
      left: 95px;
      font-size: 14px;
   }
+  .duplicate-tabel
+  {
+    position: relative;
+    width: 91%;
+    left: 15px;
+    margin-bottom: 30px;
+    top: 85px;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: #686E74;
+    border-radius: 0px 0px 10px 10px;
+}
   

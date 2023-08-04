@@ -326,7 +326,7 @@
                         <img [src]="image4" class="expand-arrow" alt="add-user-btn">
                     </div>
                 </div>
-                <div  *ngIf="rowsTotal && TotalRows.length>0" class="row totaltablewidth">
+                <div  *ngIf="!rowsTotal && TotalRows" class="row totaltablewidth">
                     <table matSort  class="class_table_shipment">
                         <tr class="table-header-row">
                             <!-- <th style="padding-left:20px;">Row No</th> -->
@@ -368,20 +368,19 @@
                     <img [src]="image2" class="expand-arrow" alt="add-user-btn">
                 </div>
             </div>
-            <div  *ngIf="ErrorFree && errorfreeRows.length>0" class="row errorfreerows">
+            <div  *ngIf=" ErrorFree && errorfreeRows" class="row errorfreerows">
                 <table matSort  class="class_table_shipment">
                     <tr class="table-header-row">
                         <th style="padding-left:20px;">Row No</th>
-                        <th >Order No</th>
-                        <th>Product Name</th>
-                        <th>Product Code</th>
-                        <th>Disp. Qty</th>
-                        <th>Disp. Date</th>
-                        <th>Invoice Date</th>
-                        <th>Invoice No.</th>
-                        <th>Receipt Date</th>
-                        <th>Receipt Qty</th>
-                        <th>Uploaded Date</th>
+                        <th >Target Group</th>
+                            <th>Geography</th>
+                            <th>Dealer</th>
+                            <th>Financial year</th>
+                            <th>% of YTD Target</th>
+                            <th>Actual PY</th>
+                             <th>Actual YTD</th>
+                            <th>No of Products</th>
+                            <th>Target Total</th>
                     </tr>
                     <tr *ngFor="let dupicateData of errorfreeRows">
         
@@ -412,20 +411,19 @@
                     <img [src]="image3" class="expand-arrow" alt="add-user-btn">
                 </div>
             </div>
-            <div  *ngIf ="!duplicate && duplicateEntryy.length>0" class="row duplicate-tabel-shipments">
+            <div  *ngIf="!duplicate && duplicateEntryy" class="row duplicate-tabel">
                 <table matSort  class="class_table_shipment">
                     <tr class="table-header-row">
-                        <th style="padding-left:20px;">Row No</th>
-                        <th >Order No</th>
-                        <th>Product Name</th>
-                        <th>Product Code</th>
-                        <th>Disp. Qty</th>
-                        <th>Disp. Date</th>
-                        <th>Invoice Date</th>
-                        <th>Invoice No.</th>
-                        <th>Receipt Date</th>
-                        <th>Receipt Qty</th>
-                        <th>Uploaded Date</th>
+                        <!-- <th style="padding-left:20px;">Row No</th> -->
+                        <th >Target Group</th>
+                            <th>Geography</th>
+                            <th>Dealer</th>
+                            <th>Financial year</th>
+                            <th>% of YTD Target</th>
+                            <th>Actual PY</th>
+                             <th>Actual YTD</th>
+                            <th>No of Products</th>
+                            <th>Target Total</th>
                     </tr>
                     <tr *ngFor="let dupicateData of duplicateEntryy">
         
@@ -453,20 +451,19 @@
                     <img [src]="image4" class="expand-arrow" alt="add-user-btn">
                 </div>
             </div>
-            <div  *ngIf ="!incorrectData && incorrectRows.length>0"  class="row incorrectdatatable">
+            <div  *ngIf="!incorrectData && incorrectRows"  class="row incorrectdatatable">
                 <table matSort  class="class_table_shipment">
                     <tr class="table-header-row">
-                        <th style="padding-left:20px;">Row No</th>
-                        <th >Order No</th>
-                        <th>Product Name</th>
-                        <th>Product Code</th>
-                        <th>Disp. Qty</th>
-                        <th>Disp. Date</th>
-                        <th>Invoice Date</th>
-                        <th>Invoice No.</th>
-                        <th>Receipt Date</th>
-                        <th>Receipt Qty</th>
-                        <th>Uploaded Date</th>
+                        <!-- <th style="padding-left:20px;">Row No</th> -->
+                        <th >Target Group</th>
+                        <th>Geography</th>
+                        <th>Dealer</th>
+                        <th>Financial year</th>
+                        <th>% of YTD Target</th>
+                        <th>Actual PY</th>
+                         <th>Actual YTD</th>
+                        <th>No of Products</th>
+                        <th>Target Total</th>
                     </tr>
                     <tr *ngFor="let dupicateData of incorrectRows">
         

@@ -58,12 +58,12 @@ export class AddOrderPromotionlistComponent implements OnInit {
   promotionstype2: any = [];
   materialcustomidentifier:any;
   currentSelectedPromos: any = [];
-
   isOrderPromotionValid: boolean = false;
   
   stockItem:any;
   promos:any
-  
+  totalSelectedQuantity: number = 0;
+
   constructor(private user: UserService,
     private orders: OrdersApisService,
     private spinner: NgxSpinnerService,
@@ -437,8 +437,22 @@ export class AddOrderPromotionlistComponent implements OnInit {
       updatedItem.isProductSelected = false;
     }
     data.showWarningMsg = true;
-    this.PromotionQtyCalculation(data);  
+    this.PromotionQtyCalculation(data);
+    this.calculateTotalSelectedQuantity();  
     
+  }
+
+  calculateTotalSelectedQuantity() {
+    this.totalSelectedQuantity = this.griddatapromotions.reduce(
+      (total, data) => total + (data.promoDetails.buyGroups || []).reduce(
+        (groupTotal, group) => groupTotal + (group.stockitemid || []).reduce(
+          (itemTotal, item) => itemTotal + (item.isProductSelected ? (item.Quantity || 0) : 0),
+          0
+        ),
+        0
+      ),
+      0
+    );
   }
 
   orderPromotionEnableValidate() {
@@ -499,6 +513,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
       }
     });
   }  
+
+  totalPromotionOrderAmount: number = 0;
+
   PromotionQtyCalculation(item) {
     switch (item.promotionTypesId) {
       case 1:
@@ -581,6 +598,10 @@ export class AddOrderPromotionlistComponent implements OnInit {
             // }
           });
         }
+        item.promoDetails.totalAmount = item.promoDetails.buyGroups.reduce((total, stockItem) => {
+          return total + (stockItem.totalAmount ?? 0);
+        }, 0);
+        this.totalPromotionOrderAmount = item.promoDetails.totalAmount;
         break;
 
       case 2:
@@ -666,6 +687,14 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
           });
         }
+        item.promoDetails.totalAmount = item.promoDetails.getSets.reduce((total, setItem) => {
+          return total + setItem.getGroups.reduce((groupTotal, stockItem) => {
+            return groupTotal + (stockItem.totalAmount ?? 0);
+          }, 0);
+        }, 0);
+  
+        // Calculate and store total promotion order amount for case 2
+        this.totalPromotionOrderAmount = item.promoDetails.totalAmount;
 
         this.updateInputEnableStatus(item);
         break;
@@ -719,9 +748,10 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
     this.quantityadd = 0;
     this.price = 0;
-    console.log(this.griddatapromotions, "data after slection");
+    console.log(this.griddatapromotions, "data after selection");
     promotionItem.showWarningMsg = true;
     this.PromotionQtyCalculation(promotionItem);
+    this.calculateTotalSelectedQuantity();
   }
 
   doubleClick(itemList, taxId) {
@@ -1005,6 +1035,20 @@ Item = { Quantity: 0 };
 displayedValue: number = 0;
 updateValue(value: number) {
   this.displayedValue = value;
+}
+
+
+getTotalSelectedQuantity(promos: any): number {
+  if (!promos || !promos.stockitemid) {
+      return 0;
+  }
+  let totalSelected = 0;
+  for (const Item of promos.stockitemid) {
+      if (Item.isProductSelected) {
+          totalSelected += Item.Quantity;
+      }
+  }
+  return totalSelected;
 }
 
 }

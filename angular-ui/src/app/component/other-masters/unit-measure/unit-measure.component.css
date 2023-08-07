@@ -138,7 +138,7 @@ left: 37%
     background-color: #b81111 !important;
   }
   ::ng-deep.ag-header-cell-text {
-    color: #686E74 !important;
+    /* color: #686E74 !important; */
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 14px !important;

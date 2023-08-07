@@ -66,10 +66,10 @@ export class AddorderpromotionsComponent implements OnInit {
   NonPromotion=true;
   viewpromotions = false;
   ConfiromViewPro = false;
-  image1 = 'assets/img/minimize-tag.png';
-  image2 = 'assets/img/minimize-tag.png';
-  image3 = 'assets/img/minimize-tag.png';
-  Image44='assets/img/expand.png';
+  image1 = 'assets/img/expandarrows.svg';
+  image2 = 'assets/img/expandarrows.svg';
+  image3 = 'assets/img/expandarrows.svg';
+  Image44='assets/img/expandarrows.svg';
   buygroupromo: any;
   actineLabel: any;
   updateOrSave: boolean = false
@@ -371,9 +371,9 @@ export class AddorderpromotionsComponent implements OnInit {
     this.dealerInfo = !this.dealerInfo;
 
     if (this.dealerInfo === false) {
-      this.image1 = 'assets/img/maximize-arrow.png';
+      this.image1 = 'assets/img/expandarrows.svg';
     } else {
-      this.image1 = 'assets/img/minimize-tag.png';
+      this.image1 = 'assets/img/expandarrows.svg';
 
     }
   }
@@ -381,9 +381,9 @@ export class AddorderpromotionsComponent implements OnInit {
     this.viewpromotions = !this.viewpromotions;
 
     if (this.viewpromotions === false) {
-      this.image1 = 'assets/img/maximize-arrow.png';
+      this.image1 = 'assets/img/expandarrows.svg';
     } else {
-      this.image1 = 'assets/img/minimize-tag.png';
+      this.image1 = 'assets/img/expandarrows.svg';
 
     }
   }
@@ -392,9 +392,9 @@ export class AddorderpromotionsComponent implements OnInit {
     this.ConfiromViewPro = !this.ConfiromViewPro;
 
     if (this.ConfiromViewPro === false) {
-      this.image1 = 'assets/img/maximize-arrow.png';
+      this.image1 = 'assets/img/expandarrows.svg';
     } else {
-      this.image1 = 'assets/img/minimize-tag.png';
+      this.image1 = 'assets/img/expandarrows.svg';
 
     }
   }
@@ -403,9 +403,9 @@ export class AddorderpromotionsComponent implements OnInit {
     this.orderitem = !this.orderitem;
 
     if (this.orderitem === false) {
-      this.image2 = 'assets/img/minimize-tag.png';
+      this.image2 = 'assets/img/expandarrows.svg';
     } else {
-      this.image2 = 'assets/img/maximize-arrow.png';
+      this.image2 = 'assets/img/expandarrows.svg';
     }
 
   }
@@ -414,9 +414,9 @@ export class AddorderpromotionsComponent implements OnInit {
     this.otherInfo = !this.otherInfo;
 
     if (this.otherInfo === false) {
-      this.image3 = 'assets/img/minimize-tag.png';
+      this.image3 = 'assets/img/expandarrows.svg';
     } else {
-      this.image3 = 'assets/img/maximize-arrow.png';
+      this.image3 = 'assets/img/expandarrows.svg';
     }
   }
 
@@ -424,9 +424,9 @@ export class AddorderpromotionsComponent implements OnInit {
     this.PromoExpand = !this.PromoExpand;
 
     if (this.PromoExpand === false) {
-      this.Image44 = 'assets/img/expand.png';
+      this.Image44 = 'assets/img/expandarrows.svg';
     } else {
-      this.Image44 = 'assets/img/expand.png';
+      this.Image44 = 'assets/img/expandarrows.svg';
     }
   }
 
@@ -434,9 +434,9 @@ export class AddorderpromotionsComponent implements OnInit {
     this.NonPromotion = !this.NonPromotion;
 
     if (this.NonPromotion === false) {
-      this.Image44 = 'assets/img/expand.png';
+      this.Image44 = 'assets/img/expandarrows.svg';
     } else {
-      this.Image44 = 'assets/img/expand.png';
+      this.Image44 = 'assets/img/expandarrows.svg';
     }
   }
 

@@ -28,9 +28,9 @@
     background: rgba(1, 139, 117, 0.8);
     color: white; 
 }
-::ng-deep :hover.ag-theme-material .ag-header-cell {
+/* ::ng-deep :hover.ag-theme-material .ag-header-cell {
     color:gray; 
-} 
+}  */
 
 ::ng-deep.ag-header-viewport
 {
@@ -683,7 +683,7 @@ mat-sidenav-container {
     font-size: 14px !important;
 }
 
-::ng-deep :hover.ag-header-cell-text {
+::ng-deep .ag-header-cell-text:hover {
     color:gray!important;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -905,7 +905,7 @@ mat-sidenav-container {
 }
 
 .th {
-    background-color: grey;
+ background-color: grey; 
     color: white;
     height: 10px;
 }

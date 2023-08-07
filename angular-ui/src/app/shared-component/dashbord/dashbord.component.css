@@ -319,7 +319,7 @@ mat-sidenav-container {
 }
 
 ::ng-deep.ag-header-cell-text {
-  color: #686E74 !important;
+  color: white!important;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 14px !important;
@@ -763,6 +763,7 @@ mat-sidenav-container {
 
 ::ng-deep.dropdown-list ul {
   overflow-x: hidden !important;
+  
 }
 
 ::ng-deep.geog .dropdown-btn span .ng-star-inserted {

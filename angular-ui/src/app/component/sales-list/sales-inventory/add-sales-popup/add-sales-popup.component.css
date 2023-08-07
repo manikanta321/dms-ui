@@ -229,6 +229,7 @@
     background: #FFFFFF;
     border: 0.5px solid #000000;
     border-radius: 10px;
+    background: rgba(1, 139, 117, 1);
   }
   
   /* .active, .collapsible:hover {
@@ -366,7 +367,7 @@ font-family: 'Gilroy-SemiBold';
 }
 
 ::ng-deep.ag-header-cell-text {
-  color: #686E74 !important;
+  /* color: #686E74 !important; */
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 14px !important;

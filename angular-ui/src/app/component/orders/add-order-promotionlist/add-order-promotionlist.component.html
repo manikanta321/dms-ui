@@ -189,7 +189,6 @@
 
 
 
-                                        [18:40] Sashi Kumar Reddy
 
                                         <div *ngFor="let data of griddatapromotions;let i=index" style="width:104%;margin-left: -25px;" >
                                         
@@ -824,7 +823,7 @@
 
 
                                                 <!-- tabels for 1st promotions -->
-                                                <div class="tabel-di_v4">
+                                                <div class="tabel-di_v2">
                                                     <table class="tabelgetsetItems">
 
                                                         <thead class="table-headercolorGetset">
@@ -1009,7 +1008,7 @@
 
                                             <!-- tabels for 3rd promotions -->
 
-                                            <div class="tabel-div">
+                                            <div class="tabel_div">
 
                                                 <table class="tableclass">
 
@@ -1170,10 +1169,10 @@
                                     <div>
                                         <div class="buyGrp 1">
                                             <!-- headingds for 4th promotions -->
-                                            <div class="row label-div tableborderss">
+                                            <!-- <div class="row label-div tableborderss">
                                                 <div class="col-md-3">
                                                     <span class="buy-grp"> Buy Group</span>
-                                                </div>
+                                                </div> -->
                                                 <div class="col-md-6" style="text-align: center;">
 
                                                     <span class="total-itemss">Total Selected Qty:
@@ -1205,28 +1204,29 @@
                                                     </div>
                                                 </div> -->
 
-                                            </div>
+                                            <!-- </div> -->
                                             <!-- tabels for 4th promotions -->
-                                            <div class="label-div tableborderss">
-                                                <table id="Table1">
-                                                    <tr>
-                                                        <th></th>
-                                                        <th data-sortable="true" class="align-center">Product Code</th>
-                                                        <th data-sortable="true" class="align-center">Product Name</th>
-                                                        <th data-sortable="true" class="align-center">Identifiers</th>
-                                                        <th data-sortable="true" class="align-center">Registration No
-                                                        </th>
-
-                                                        <th data-sortable="true" class="align-center">Unit Price</th>
-                                                        <!-- <th data-sortable="true">Qty. in Stock</th>
-                                                        <th data-sortable="false">Tax Templete</th> -->
-                                                        <th data-sortable="false" class="align-center">Order Qty</th>
-                                                        <th data-sortable="false" class="align-center">Final Price</th>
-                                                        <th data-sortable="false" class="align-center">Order Amount</th>
-                                                    </tr>
-                                                    <tr class="table-row"
+                                            <div class="tabelDIVFORTHPromotion">
+                                                <table class="tableForthpromotion">
+                                                    <thead class="TableheaderbgColor" >
+                                                        <tr>
+                                                            
+                                                            <th data-sortable="true" class="align-center">Product Code</th>
+                                                            <th data-sortable="true" class="align-center">Product Name</th>
+                                                            <th data-sortable="true" class="align-center">Identifiers</th>
+                                                            <th data-sortable="true" class="align-center">Registration No</th>
+                                                             <th data-sortable="true" class="align-center">Unit Price</th>
+                                                            <!-- <th data-sortable="true">Qty. in Stock</th>
+                                                            <th data-sortable="false">Tax Templete</th> -->
+                                                            <th data-sortable="false" class="align-center">Order Qty</th>
+                                                            <th data-sortable="false" class="align-center">Final Price</th>
+                                                            <th data-sortable="false" class="align-center">Order Amount</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="tbodayheightForthPro">
+                                                        <tr class="table-row"
                                                         *ngFor="let Item of data.promoDetails.stockitems">
-                                                        <td><input type="checkbox" [checked]="Item.isProductSelected"
+                                                        <td style="width: 16px;"><input type="checkbox" [checked]="Item.isProductSelected"
                                                                 (change)="checkboxChange($event,Item, data)"></td>
                                                         <td style="text-align: left;">{{Item.productSKUName}}</td>
                                                         <td style="text-align: left;">{{Item.stockitemname}}
@@ -1265,21 +1265,25 @@
                                                         <td class="txt-right">{{(Item.finalPrice) | number : '1.2-2'}}
                                                         </td>
                                                     </tr>
-                                                    <tr class="bottom-table">
-                                                        <td colspan="6" class="btm-total"><b>Total </b></td>
+                                                    </tbody>
+                                                     </table>
 
-                                                        <td class="btm-total txt-right">
-                                                            {{data.promoDetails.totalQuantity ??
-                                                            0 }}
-                                                        </td>
-                                                        <td class="btm-total"></td>
-
-                                                        <td class="txt-right">{{data.promoDetails.DiscountAmount ?? 0 |
-                                                            number : '1.2-2'}}
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
+                                                     <div class="bottomtableFORTHPRo" id="totalForthPROmotionbottomtable">
+                                                        <tr>
+                                                            <!-- <td colspan="6" class="btm-total"><b>Total </b></td>
+    
+                                                            <td class="btm-total txt-right">
+                                                                {{data.promoDetails.totalQuantity ??
+                                                                0 }}
+                                                            </td>
+                                                            <td class="btm-total"></td>
+    
+                                                            <td class="txt-right">{{data.promoDetails.DiscountAmount ?? 0 |
+                                                                number : '1.2-2'}}
+                                                            </td> -->
+    
+                                                        </tr>
+                                                     </div>
                                             </div>
                                         </div>
                                     </div>

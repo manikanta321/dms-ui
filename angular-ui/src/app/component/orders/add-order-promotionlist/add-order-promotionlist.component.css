@@ -70,6 +70,14 @@ color: rgba(0, 0, 0, 1);
   height: 414px;
 
 }
+
+.tabel_div {
+  margin-top: 15px;
+  border: 2px solid rgba(1, 139, 117, 1);
+  border-radius: 15px;
+  height: 414px;
+
+}
 .tabel-div_4pro{
   margin-top: 15px;
   border: 2px solid rgba(1, 139, 117, 1);
@@ -84,14 +92,21 @@ color: rgba(0, 0, 0, 1);
   height: 414px;
 
 }
-.tabel-di_v4 {
+.tabel-di_v2 {
   margin-top: 15px;
   border: 2px solid rgba(1, 139, 117, 1);
   border-radius: 15px;
   height: 414px;
   width: 89%;
  margin-left: 20px;
-
+}
+.tabelDIVFORTHPromotion{
+  margin-top: 15px;
+  border: 2px solid rgba(1, 139, 117, 1);
+  border-radius: 15px;
+  height: 414px;
+  width: 89%;
+ margin-left: 20px;
 }
 .tableclass
 {
@@ -119,6 +134,10 @@ border-top-right-radius: 13px;
   height: 378px;
 }
 .tabelgetsetItems
+{
+  height: 378px;
+}
+.tableForthpromotion
 {
   height: 378px;
 }
@@ -198,6 +217,19 @@ border-top-right-radius: 13px;
     width: 100%;
     position: relative;
 }
+#totalForthPROmotionbottomtable
+{
+  /* border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px; */
+  background: rgba(1, 139, 117, 1);
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 10px;
+    color: white;
+    border-top-left-radius: -13px;
+    border-top-right-radius: -74px;
+    width: 100%;
+    position: relative;
+}
 table thead, table tbody tr {
   display: table;
   width: 100%;
@@ -229,12 +261,14 @@ table thead, table tbody tr {
   display: block;
   height: 90%;
   overflow-y: scroll;
-
 }
-#rk
+.tbodayheightForthPro
 {
-  background-color: tomato;
+  display: block;
+  height: 90%;
+  overflow-y: scroll;
 }
+
 
 
 .showicon
@@ -523,6 +557,13 @@ border-top-right-radius: 13px;
 .table-headercolorGetset
 {
 color: white;
+background: rgba(1, 139, 117, 1);
+border-top-left-radius: 13px;
+border-top-right-radius: 13px;
+}
+.TableheaderbgColor
+{
+  color: white;
 background: rgba(1, 139, 117, 1);
 border-top-left-radius: 13px;
 border-top-right-radius: 13px;
@@ -1689,6 +1730,13 @@ tr:nth-child(even) {
   color: white;
 }
 .bottom-tableGetset4 {
+  background: linear-gradient(0deg, #018B75, #018B75)!important;
+  border-radius: 0px 0px 24.5px 24.5px;
+  height: 34px;
+  border:rgba(152, 156, 160, 1);
+  color: white;
+}
+.bottomtableFORTHPRo {
   background: linear-gradient(0deg, #018B75, #018B75)!important;
   border-radius: 0px 0px 24.5px 24.5px;
   height: 34px;

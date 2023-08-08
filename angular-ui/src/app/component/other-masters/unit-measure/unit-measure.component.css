@@ -67,8 +67,8 @@
 }
 .add-user {
   border: none;
-  background: #000000;
-  border-radius: 50%;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   width: 37px;
   height: 37px;
   top: 6px;
@@ -97,8 +97,8 @@
   float: left;
   width: 37px;
   height: 37px;
-  border-radius: 50%;
-  background: #000000;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   display: flex;
   justify-content: center;
   align-items: center;

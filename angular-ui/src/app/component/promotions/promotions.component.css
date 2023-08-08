@@ -156,8 +156,8 @@
 
 .add-user {
   border: none;
-  background: #000000;
-  border-radius: 50%;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   width: 37px;
   height: 37px;
   top: 6px;
@@ -191,8 +191,8 @@
   float: left;
   width: 37px;
   height: 37px;
-  border-radius: 50%;
-  background: #000000;
+  background: rgb(150, 156, 161);
+  border-radius: 13%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -613,9 +613,8 @@
 }
 
 .ref {
-  border: 1px solid black;
-  border-radius: 10px;
-  background: black;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   margin-left: 15px;
   width: 43px;
   padding: 8px 0px 0px 10px;

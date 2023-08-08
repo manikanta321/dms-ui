@@ -19,9 +19,9 @@
     width: 43px;
     height: 43px;
     border-radius: 10px;
-    border: 1px solid black;
+    border: 1px solid rgba(104, 110, 116, 0.66);
     padding: 8px 0px 0px 8px;
-    background: black;
+    background:rgba(104, 110, 116, 0.66);
     cursor: pointer;
 }
 .cal:hover

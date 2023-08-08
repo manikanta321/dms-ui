@@ -60,9 +60,9 @@
   filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
   width: 43px;
   height: 41px;
-  background: #000000;
-  border-radius: 10px;
-  margin-left: 10px;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
+
   cursor: pointer;
 }
 
@@ -186,8 +186,8 @@
 }
 
 .sales-add {
-  background: #000000;
-  border-radius: 50%;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   width: 37px;
   height: 37px;
   margin-right: 10px;
@@ -246,8 +246,8 @@
 }
 
 .sales-dwnld {
-  background: #000000;
-  border-radius: 50%;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   width: 37px;
   height: 37px;
   cursor: pointer;
@@ -261,7 +261,7 @@
 .imgdwnl {
   position: relative;
   top: 8px;
-  left: 10px;
+  left: 12px;
 }
 
 .searchButton {
@@ -269,8 +269,8 @@
   color: #FFFFFF;
   width: 37px;
   height: 37px;
-  border-radius: 50%;
-  background: #000000;
+  border-radius: 13%;
+  background: rgba(104, 110, 116, 0.66);
   display: flex;
   justify-content: center;
   align-items: center;

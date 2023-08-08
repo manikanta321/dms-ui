@@ -443,17 +443,19 @@ export class AddOrderPromotionlistComponent implements OnInit {
   }
 
   calculateTotalSelectedQuantity() {
-    this.totalSelectedQuantity = this.griddatapromotions.reduce(
-      (total, data) => total + (data.promoDetails.buyGroups || []).reduce(
-        (groupTotal, group) => groupTotal + (group.stockitemid || []).reduce(
-          (itemTotal, item) => itemTotal + (item.isProductSelected ? (item.Quantity || 0) : 0),
-          0
-        ),
-        0
-      ),
-      0
-    );
+    let totalSelectedQuantity = 0;
+    for (const data of this.griddatapromotions) {
+      for (const group of data.promoDetails.buyGroups || []) {
+        for (const item of group.stockitemid || []) {
+          if (item.isProductSelected) {
+            totalSelectedQuantity += item.Quantity || 0;
+          }
+        }
+      }
+    }
+    this.totalSelectedQuantity = totalSelectedQuantity;
   }
+
 
   orderPromotionEnableValidate() {
     console.log(this.griddatapromotions);

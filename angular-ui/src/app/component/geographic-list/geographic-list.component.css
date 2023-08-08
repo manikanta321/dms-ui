@@ -75,6 +75,7 @@
 }
 
 .srch-hover {
+  right: 10px;
   margin-top: 13px;
   position: relative;
   
@@ -187,8 +188,8 @@
   float: left;
   width: 37px;
   height: 37px;
-  border-radius: 50%;
-  background: #000000;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -222,9 +223,7 @@ left: 84%; */
   color:#000;
   top: -8px;
 } */
-.add-user {
-  margin-left: -35px;
-}
+
 
 .searchBox:hover>.searchButton {
   display: bolck;
@@ -244,17 +243,6 @@ left: 84%; */
 
 }
 
-.add-user {
-  border: none;
-  background: #000000;
-  border-radius: 50%;
-  width: 37px;
-  height: 37px;
-  top: 6px;
-  margin-top: 5px;
-  margin-left: 40%;
-  cursor: pointer;
-}
 
 .add-user:hover {
   background-color: grey !important;
@@ -335,19 +323,18 @@ left: 84%; */
 
 }
 
-
-
-
 .add-user {
   border: none;
-  background: #000000;
-  border-radius: 50%;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   width: 37px;
   height: 37px;
   top: 6px;
-  position: absolute;
-  
+  margin-top: 10px;
+  margin-left: 40%;
+  cursor: pointer;
 }
+
 
 .download-btn {
   border: none;

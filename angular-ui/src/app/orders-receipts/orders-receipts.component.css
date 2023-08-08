@@ -43,7 +43,7 @@
     filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
     width: 43px;
     height: 41px;
-    background: #000000;
+    background: rgba(104, 110, 116, 0.66);
     border-radius: 10px;
     margin-left: 10px;
     cursor: pointer;
@@ -184,8 +184,8 @@
     left: 10px;
   }
   .sales-download{
-    background: #000000;
-    border-radius: 50%;
+    background: rgba(104, 110, 116, 0.66);
+    border-radius: 13%;
     width: 37px;
     height: 37px;
     margin-right: 10px;
@@ -202,8 +202,8 @@
     left: 10px;
   }
   .sales-upload{
-    background: #000000;
-    border-radius: 50%;
+    background: rgba(104, 110, 116, 0.66);
+    border-radius: 13%;
     width: 37px;
     height: 37px;
     margin-right: 10px;
@@ -220,8 +220,8 @@
     left: 10px;
   }
   .sales-dwnld{
-    background: #000000;
-    border-radius: 50%;
+    background: rgba(104, 110, 116, 0.66);
+    border-radius: 13%;
     width: 37px;
     height: 37px;
     cursor: pointer;
@@ -241,8 +241,8 @@
           color: #FFFFFF;
           width: 37px;
           height: 37px;
-          border-radius: 50%;
-          background: #000000;
+          border-radius: 13%;
+          background: rgba(104, 110, 116, 0.66);
           display: flex;
           justify-content: center;
           align-items: center;
@@ -279,7 +279,7 @@
           position: relative;    
           right: 282px;
           color:#000;
-          top: 3px;
+          top: 1px;
         }
         .searchBox:hover >.search-btn {
           display:block;

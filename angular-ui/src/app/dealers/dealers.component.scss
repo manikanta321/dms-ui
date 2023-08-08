@@ -369,8 +369,8 @@ bottom: 0px;
 .btnhover {
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
   border: none;
-  background: #000000;
-  border-radius: 28%;
+  background: rgba(104, 110, 116, 0.66);
+    border-radius: 13%;
   position: relative;
   width: 43px;
 }
@@ -393,8 +393,8 @@ bottom: 0px;
   float: left;
   width: 37px;
   height: 37px;
-  border-radius: 50%;
-  background: #000000;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -482,7 +482,7 @@ bottom: 0px;
   box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
   position: absolute;
   right: 0px;
-  bottom: -3px;
+  // bottom: -3px;
 }
 
 .addU:before {
@@ -529,8 +529,8 @@ bottom: 0px;
 
 .add-user {
   border: none;
-  background: #000000;
-  border-radius: 50%;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   width: 37px;
   height: 37px;
   top: 87px;
@@ -541,8 +541,8 @@ bottom: 0px;
 
 .download-btn {
   border: none;
-  background: #000000;
-  border-radius: 50%;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   position: relative;
   width: 37px;
   height: 37px;

@@ -51,13 +51,12 @@
 }
 
 .sales-refreshbtn {
-  filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
-  width: 43px;
-  height: 41px;
-  background: #000000;
-  border-radius: 10px;
-  margin-left: 10px;
+  background: rgba(104, 110, 116, 0.66);
   cursor: pointer;
+  border-radius: 16%;
+  width: 37px;
+  height: 37px;
+  margin-right: 10px;
 }
 .sales-refreshbtn:hover
 {
@@ -65,8 +64,8 @@
   color: white !important;
 }
 .refresh-img {
-  margin-top: 11px;
-  margin-left: 11px;
+  margin-top: 9px;
+  margin-left: 9px;
 }
 
 .ag-theme-material .ag-filter-toolpanel-header,
@@ -189,8 +188,8 @@
   left: 10px;
 }
 .sales-download{
-  background: #000000;
-  border-radius: 50%;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   width: 37px;
   height: 37px;
   margin-right: 10px;
@@ -207,8 +206,8 @@
   left: 10px;
 }
 .sales-upload{
-  background: #000000;
-  border-radius: 50%;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   width: 37px;
   height: 37px;
   margin-right: 10px;
@@ -225,11 +224,11 @@
   left: 10px;
 }
 .sales-dwnld{
-  background: #000000;
-  border-radius: 50%;
-  width: 37px;
-  height: 37px;
-  cursor: pointer;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
+    width: 37px;
+    height: 37px;
+    cursor: pointer;
 }
 .sales-dwnld:hover
 {
@@ -239,15 +238,15 @@
 .imgdwnl{
   position: relative;
   top: 8px;
-  left: 10px;
+  left: 12px;
 }
 .searchButton {
         display:block;
         color: #FFFFFF;
         width: 37px;
         height: 37px;
-        border-radius: 50%;
-        background: #000000;
+        border-radius: 13%;
+        background: rgba(104, 110, 116, 0.66);
         display: flex;
         justify-content: center;
         align-items: center;

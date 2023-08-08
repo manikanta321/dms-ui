@@ -22,6 +22,8 @@ export class UseractionComponent implements OnInit, AfterViewInit {
   private tippyInstance;
   selected: boolean = false;
   offsetValue: number[] = [];
+  DeactiveDealer: any;
+  showAllOptions: any;
 
   ngOnInit() { }
   @ViewChild('content') container;
@@ -128,14 +130,24 @@ export class UseractionComponent implements OnInit, AfterViewInit {
   togglePopup() {
     this.isOpen = !this.isOpen;
     this.changeDetector.detectChanges();
+    
     if (this.isOpen) {
       let data: any = localStorage.setItem('session', '');
       this.configureTippyInstance();
       this.tippyInstance.setContent(this.container.nativeElement);
+      const rowData = this.params.node.data;
+  
+      if (rowData.statusName === 'Active') {
+        this.DeactiveDealer = true;
+      } else if (rowData.statusName === 'Inactive') {
+        this.DeactiveDealer = false;
+      }
+      this.showAllOptions = rowData.statusName === 'Invited';
     } else {
       this.tippyInstance.unmount();
     }
   }
+  
 
 
 

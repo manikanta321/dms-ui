@@ -16,7 +16,7 @@
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 15px;
     right:-183px;
-    top:8px;
+    top: 40px;
   }
   
   .menu-item:hover {
@@ -51,7 +51,7 @@
     border-left: 10px solid #555;
     border-bottom: 5px solid transparent;
     right: -10px;
-    top: 63px;
+    top: 32px;
 }
   img{
     float: right;

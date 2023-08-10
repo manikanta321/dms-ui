@@ -22,11 +22,11 @@ export class OrdersReceiveShipmentComponent implements OnInit {
   shipmenttwo = false;
   orderhistory = false;
   ReceiptComments: any;
-  image1 = 'assets/img/minimize-tag.png';
-  image2 = 'assets/img/minimize-tag.png';
-  image3 = 'assets/img/minimize-tag.png';
-  image4 = 'assets/img/minimize-tag.png';
-  image5 = 'assets/img/minimize-tag.png';
+  image1 = 'assets/img/expandarrows.svg';
+  image2 = 'assets/img/expandarrows.svg';
+  image3 ='assets/img/expandarrows.svg';
+  image4 = 'assets/img/expandarrows.svg';
+  image5 = 'assets/img/expandarrows.svg';
   paginationPageSize = 10;
   stayScrolledToEnd = true;
   paginationScrollCount: any;
@@ -927,9 +927,9 @@ this.boxalert=true
     this.dealerInfo = !this.dealerInfo;
 
     if (this.dealerInfo === false) {
-      this.image1 = 'assets/img/maximize.png';
+      this.image1 = 'assets/img/expandarrows.svg';
     } else {
-      this.image1 = 'assets/img/minimize-tag.png';
+      this.image1 = 'assets/img/expandarrows.svg';
 
     }
   }
@@ -937,9 +937,9 @@ this.boxalert=true
     this.orderitem = !this.orderitem;
 
     if (this.orderitem === false) {
-      this.image2 = 'assets/img/maximize.png';
+      this.image2 = 'assets/img/expandarrows.svg';
     } else {
-      this.image2 = 'assets/img/minimize-tag.png';
+      this.image2 = 'assets/img/expandarrows.svg';
     }
 
   }
@@ -947,9 +947,9 @@ this.boxalert=true
     this.shipmentone = !this.shipmentone;
 
     if (this.shipmentone === false) {
-      this.image3 = 'assets/img/maximize.png';
+      this.image3 = 'assets/img/expandarrows.svg';
     } else {
-      this.image3 = 'assets/img/minimize-tag.png';
+      this.image3 = 'assets/img/expandarrows.svg';
     }
 
   }
@@ -957,9 +957,9 @@ this.boxalert=true
     this.shipmenttwo = !this.shipmenttwo;
 
     if (this.shipmenttwo === false) {
-      this.image4 = 'assets/img/maximize.png';
+      this.image4 ='assets/img/expandarrows.svg';
     } else {
-      this.image4 = 'assets/img/minimize-tag.png';
+      this.image4 = 'assets/img/expandarrows.svg';
     }
 
   }
@@ -967,9 +967,9 @@ this.boxalert=true
     this.orderhistory = !this.orderhistory;
 
     if (this.orderhistory === false) {
-      this.image5 = 'assets/img/maximize.png';
+      this.image5 = 'assets/img/expandarrows.svg';
     } else {
-      this.image5 = 'assets/img/minimize-tag.png';
+      this.image5 = 'assets/img/expandarrows.svg';
     }
 
   }

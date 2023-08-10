@@ -48,10 +48,7 @@ color: #000000;
 
 }
 
-.main {
-    /* background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
 
-}
 
 /* .font {
     font-family: 'Gilroy';
@@ -146,10 +143,7 @@ mat-form-field {
     padding: 0em 0 0.7em 0;
     } */
 
-::ng-deep.mat-dialog-container {
-    /* background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
-    
-}
+
 
 .btn-primary:disabled {
     border-color: black;

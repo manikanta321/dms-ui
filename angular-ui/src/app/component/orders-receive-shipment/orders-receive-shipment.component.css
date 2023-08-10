@@ -206,10 +206,7 @@
     /* background-color: #CED4DA; */
   }
   
-  .main {
-    /* background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
-  
-  }
+
   
   .font {
     font-family: 'Gilroy';
@@ -919,6 +916,7 @@
     background: #FFFFFF;
     border: 0.5px solid #000000;
     border-radius: 10px;
+    background: rgba(1, 139, 117, 1);
   }
   
   /* .active, .collapsible:hover {
@@ -1100,6 +1098,8 @@ padding-left: 20px;
     line-height: 18px;
     align-items: center;
     text-align: center;
+    background: rgba(1, 139, 117, 1);
+    border-color: rgba(1, 139, 117, 1) ;
   
     color: #FFFFFF;
   }

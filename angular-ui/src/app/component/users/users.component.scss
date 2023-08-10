@@ -431,12 +431,7 @@ scrollbar-width: none;
 
 
 
-::ng-deep.ag-theme-material ::-webkit-scrollbar-thumb {
 
-  // background: red !important;
-  // border-radius: 10px;
-
-}
 
 ::ng-deep.ag-sticky-top {
   border-bottom: 0.5px solid #000000;
@@ -570,8 +565,8 @@ mat-sidenav-container {
   --ag-card-radius: 100px;
   --ag-border-radius: 20px;
   --ag-header-height: 30px;
-  /* --ag-header-foreground-color: blue; */
-  --ag-header-background-color: rgba(0, 0, 0, 0);
+   --ag-header-foreground-color: white; 
+  --ag-header-background-color: rgba(1, 139, 117, 1);
   /* --ag-header-cell-hover-background-color: rgb(80, 40, 140);
 --ag-header-cell-moving-background-color: rgb(80, 40, 140); */
 }

@@ -12,10 +12,7 @@
   }
   
 
-::ng-deep .multiSelect .dropdown-list {
-    /* left: -6%;
-    width: 106%; */
-  }
+
 .dateplaceholder {
     color: rgba(104, 110, 116, 0.75);
     color: grey !important;
@@ -591,12 +588,7 @@ input {
 
 
 
-::ng-deep.ag-theme-material ::-webkit-scrollbar-thumb {
 
-    /* background: red !important;
-    border-radius: 10px; */
-
-}
 
 ::ng-deep.ag-sticky-top {
     border-bottom: 0.5px solid #000000;

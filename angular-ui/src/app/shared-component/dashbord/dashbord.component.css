@@ -61,10 +61,7 @@ mat-sidenav {
     /* background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%); */
 }
 
-mat-sidenav-container {
-    /* height: calc(100vh - 65px); */
-    /* height: 108%; */
-}
+
 .dashboardHeading{
     position: relative;
     left: 2%;
@@ -364,8 +361,8 @@ mat-sidenav-container {
   --ag-card-radius: 100px;
   --ag-border-radius: 20px;
   --ag-header-height: 30px;
-  /* --ag-header-foreground-color: blue; */
-  --ag-header-background-color: rgba(0, 0, 0, 0);
+   --ag-header-foreground-color: white; 
+  --ag-header-background-color:rgba(1, 139, 117, 1);
   /* --ag-header-cell-hover-background-color: rgb(80, 40, 140);
   --ag-header-cell-moving-background-color: rgb(80, 40, 140); */
 }
@@ -942,6 +939,4 @@ mat-sidenav-container {
      height: 5px;
      display: table-cell;
    }
-   ::ng-deep .mat-drawer-content{
-    /* height: 103%; */
-   }
+  

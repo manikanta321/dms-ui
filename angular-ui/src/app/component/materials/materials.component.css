@@ -154,6 +154,7 @@ mat-tab-group{
   ::ng-deep .order-lab .mat-tab-label{
     height: 31px !important;
     min-width: 187px !important;
+    border: 1px solid rgba(107, 107, 107, 1);
   }
   .order-lab .mat-tab-labels:nth-child(1) {
     width: 50% !important;

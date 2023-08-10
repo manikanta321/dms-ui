@@ -578,11 +578,7 @@ input::-webkit-inner-spin-button {
    
    height: 100px;
  } 
-  .contentscrobarr
-{
-   
-   /* height: 100px; */
- } 
+
 
 
 /* Firefox */
@@ -2007,7 +2003,7 @@ li {
 .expand-arrows {
   width: 22%;
   position: relative;
-right: -603px;
+right: -675px;
   top: 5px;
 }
 .expand-arrowws {
@@ -2786,9 +2782,7 @@ margin-left: 25%;
     /* text-align: center; */
     text-align: left;
    }
-   .align-right{
-    /* text-align: right; */
-   }
+ 
 
    ::ng-deep mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-bar {
     background: rgba(1, 139, 117, 1);

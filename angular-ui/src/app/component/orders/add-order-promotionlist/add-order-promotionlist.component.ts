@@ -23,7 +23,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
   MOQ:any;
   Remarks :any;
   startDate:any;
-  image3 = 'assets/img/minimize-tag.png';
+  image3 = 'assets/img/expandarrows.svg';
   imageUrl: any | null = null;
   private gridApi!: GridApi;
   promoList = true;
@@ -36,7 +36,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
   actineLabel: any;
   updateOrSave: boolean = false
   editData: boolean = false;
-  image = 'assets/img/maximize-arrow.png';
+  image = 'assets/img/expandarrows.svg';
 
   buygg: any;
   selectedrowList: any = [];

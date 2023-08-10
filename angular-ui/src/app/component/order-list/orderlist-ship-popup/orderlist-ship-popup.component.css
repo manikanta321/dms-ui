@@ -980,6 +980,7 @@ li {
   background: #FFFFFF;
   border: 0.5px solid #000000;
   border-radius: 10px;
+  background: rgba(1, 139, 117, 1);
 }
 
 /* .active, .collapsible:hover {
@@ -1082,8 +1083,9 @@ height: 5px;
 }
 
 .save-submit {
-  background: #000000;
-  border: 2px solid #000000;
+  /* background: #000000;
+  border: 2px solid #000000; */
+  background: rgba(1, 139, 117, 1);
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
 

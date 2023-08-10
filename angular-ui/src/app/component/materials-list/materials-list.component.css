@@ -470,15 +470,12 @@ padding-left: 11px;
   --ag-card-radius: 100px;
   --ag-border-radius: 20px;
   --ag-header-height: 30px;
-  --ag-header-background-color: rgba(0, 0, 0, 0);
+  --ag-header-background-color: rgba(1, 139, 117, 1);
+     --ag-header-foreground-color: white; 
+    
 }
 
-::ng-deep.ag-theme-material ::-webkit-scrollbar-thumb {
 
-  /* background: red !important;
-  border-radius: 10px; */
-
-}
 
 ::ng-deep.ag-sticky-top {
   border-bottom: 0.5px solid #000000;
@@ -685,10 +682,6 @@ padding-left: 11px;
 
   }
 
-  .add-user {
-    /* margin-left: -26px;
-    margin-top: -40px; */
-  }
 
   .printImg {
     left: 106%;

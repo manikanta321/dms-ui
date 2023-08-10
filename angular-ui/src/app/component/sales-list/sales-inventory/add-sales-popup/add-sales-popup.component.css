@@ -317,7 +317,8 @@ font-family: 'Gilroy-Regular';
   }
   .saveas-draft {
     color: #fff;
-    background: #000000;
+    background: rgba(1, 139, 117, 1);
+    border-color:rgba(1, 139, 117, 1) ;
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: right;
@@ -502,6 +503,7 @@ font-family: 'Gilroy-SemiBold';
   font-size: 16px;
   position: relative;
   top: 6px;
+  color:white;
 }
 ::ng-deep.ng-select .ng-select-container .ng-value-container .ng-placeholder {
   font-family: 'Gilroy-Regular';

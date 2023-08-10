@@ -69,7 +69,7 @@ export class AddorderpromotionsComponent implements OnInit {
   image1 = 'assets/img/expandarrows.svg';
   image2 = 'assets/img/expandarrows.svg';
   image3 = 'assets/img/expandarrows.svg';
-  Image44='assets/img/expandarrows.svg';
+  Image44='assets/img/expand.png';
   buygroupromo: any;
   actineLabel: any;
   updateOrSave: boolean = false
@@ -424,9 +424,9 @@ export class AddorderpromotionsComponent implements OnInit {
     this.PromoExpand = !this.PromoExpand;
 
     if (this.PromoExpand === false) {
-      this.Image44 = 'assets/img/expandarrows.svg';
+      this.Image44 = 'assets/img/expand.png';
     } else {
-      this.Image44 = 'assets/img/expandarrows.svg';
+      this.Image44 = 'assets/img/expand.png';
     }
   }
 
@@ -434,9 +434,9 @@ export class AddorderpromotionsComponent implements OnInit {
     this.NonPromotion = !this.NonPromotion;
 
     if (this.NonPromotion === false) {
-      this.Image44 = 'assets/img/expandarrows.svg';
+      this.Image44 = 'assets/img/expand.png';
     } else {
-      this.Image44 = 'assets/img/expandarrows.svg';
+      this.Image44 = 'assets/img/expand.png';
     }
   }
 

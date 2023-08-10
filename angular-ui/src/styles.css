@@ -89,7 +89,7 @@ body {
 
 *::-webkit-scrollbar-thumb,
 *::-webkit-scrollbar-thumb:hover {
-  background-color: #000000;
+  background-color: rgba(1, 139, 117, 1);
   border-radius: 10px;
   border: 0px none #000000;
 }

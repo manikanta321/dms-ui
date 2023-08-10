@@ -72,6 +72,7 @@ mat-tab{
 ::ng-deep.mat-tab-label{
     height: 35px !important;
     min-width: 190px !important;
+    border: 1px solid rgba(107, 107, 107, 1);
     
    
 }

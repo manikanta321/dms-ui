@@ -64,8 +64,8 @@
                 </mat-expansion-panel-header>
                 <mat-list-item class="droplist" style="font-size: 14px; cursor: pointer; " routerLink="/dashbord/user"
                     class="btn-link " routerLinkActive="active" (click)="closePanel()"  *ngIf="viewMenuList.indexOf('settingusers') != -1" class="hover-effect">
-                    <img src="../../../assets/sidebarImages/sidenav-sub-users.svg" alt="">
-                    <!-- <mat-icon>person icon</mat-icon>    -->
+                    <!-- <img src="../../../assets/sidebarImages/sidenav-sub-users.svg" alt=""> -->
+                     <mat-icon class="settings" >person icon</mat-icon>   
                     <span  class="dasb-menu" *ngIf="collapsed">Users</span>
                 </mat-list-item>
 

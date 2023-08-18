@@ -112,7 +112,7 @@ export class DealerTargetComponent implements OnInit {
   columnDefs: ColDef[] = [
 
     {
-      headerName: "Target Group",
+      headerName: "TargetGroup",
        field: 'targetGroupName', type: ['nonEditableColumn']
     },
 
@@ -120,13 +120,13 @@ export class DealerTargetComponent implements OnInit {
     field: 'geographyName', type: ['nonEditableColumn']
     },
     {
-      headerName: "Dealer",
+      headerName: "DealerName",
       field: 'customername', type: ['nonEditableColumn']
     },
    
     // suppressMovable:true,
     {
-      headerName: "Financial year",
+      headerName: "Financialyear",
       field: 'year',
       type: ['nonEditableColumn','rightAligned'],
     },

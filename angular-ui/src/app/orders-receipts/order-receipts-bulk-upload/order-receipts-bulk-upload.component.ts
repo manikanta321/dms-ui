@@ -34,7 +34,7 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
   incorrectRows:any = [];
   Incorrect:any;
   batchId:any;
-  CreatedById:any;
+  CreateById:any;
   zeroVal:boolean = false; 
   duplicate:boolean = false;  
   incorrectData:boolean = false;
@@ -45,8 +45,8 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
     private dialogRef: MatDialogRef<OrderReceiptsBulkUploadComponent>,) { }
 
   ngOnInit(): void {
-    this.CreatedById = localStorage.getItem("logInId");
-    this.CreatedById = Number(this.CreatedById);
+    this.CreateById = localStorage.getItem("logInId");
+    this.CreateById = Number(this.CreateById);
     let isitemtarget =localStorage.getItem('UploadTarget')
 
     if(isitemtarget==''){
@@ -57,6 +57,7 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
     }
   }
 
+  BatchId:any;
   onFileChange(event: any) {
     // Iterate over selected files
     for (let file of event.target.files) {
@@ -91,12 +92,17 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
        this.uploadedData = XLSX.utils.sheet_to_json(ws); // to get 2d array pass 2nd parameter as object {header: 1}
       console.log("New Dataaaa checking coming or not",this.uploadedData);
       const uploadedFile = {
-         CurrentUserId:this.CreatedById,
+        
+        //  CurrentUserId:this.CreatedById,
+        CreateById:this.CreateById,
          BulkDealerTgts:this.uploadedData,
+         BatchId : this.TargetUpload.batchid,
          
       }
-      
+      alert(this.batchId);
       console.log("check once Batch id coming or not" , this.batchId);
+
+      console.log("check once Batch id coming or not" , this.BatchId);
     
       console.log("Daaataaa",uploadedFile); 
         
@@ -106,9 +112,11 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
         }
         
         this.TargetUpload=res.response;
-         
-       this.BatchId = this.TargetUpload.batchid;
-       console.log("TargetUpload checking ",this.BatchId)
+        console.log("Batch data checkinn",this.BatchId);
+        this.BatchId = this.TargetUpload.batchid;
+        alert(this.batchId);
+        console.log("check BATCH ID",this.batchId);
+        console.log("Batch Id Coming or not",this.batchId);
 
         this.TotalRows = this.TargetUpload.allRows;
         this.totalRows = "Total Rows = "+ this.TotalRows.length;
@@ -137,6 +145,7 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
         this.Incorrect = "Incorrect Data = " + this.incorrectRows?.length;
         const TargetUpload = res.response.allRows;
         console.log("associationList   check",TargetUpload)
+        this.batchId = TargetUpload.map(({ batchId }) => batchId);
         this.batchId = TargetUpload.map(({ batchId }) => batchId);
       
        
@@ -213,18 +222,20 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
   {
     this.dialogRef.close();
   }
-  BatchId:any;
+  
   UploadReceipt() {
-    const uploadedFile = {
-      currentUserId:this.CreatedById,
+    let uploadedFile = {
+      currentUserId:this.CreateById,
       BatchId:this.BatchId
     }
     console.log("Daaataaa",uploadedFile); 
-    this.salesService.saveBulkUploadReceipt(uploadedFile).subscribe((res)=>{
+    this.salesService.SaveGetbulkuploadTarget(uploadedFile).subscribe((res)=>{
       this.otherMasterService.filter('Register click');
       const uploadedData = res.response;
-      console.log("SaveReceipt",uploadedData)
-      this.dialogRef.close();
+      console.log("Save Bulk Upload Target",uploadedData)
+      console.log(this.BatchId,"Checking BATCH ID");
+      console.log(this.batchId,"Checking BATCH ID");
+     this.dialogRef.close();
     })
    }
 }

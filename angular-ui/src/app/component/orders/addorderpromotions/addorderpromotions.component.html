@@ -86,20 +86,20 @@
                             <div class="col-md-1">
                                 <img [src]="image3" class="expand-arrow" alt="add-user-btn">
                             </div>
-                          
                         </div>
                     </div>
-                     <div class="con_tentConform" *ngIf="!ConfiromViewPro">
+                    <div class="con_tentConform" *ngIf="!ConfiromViewPro">
                         <br>
-                           <div class="promotion-card">
+                        <div class="promotion-card">
                             <div class="promoimgs">
-                                  <div class="row">
+                                <div class="row">
                                     <div class="col-md-3" *ngFor="let Item of arrayOfImages;let i=index;">
                                         <div class="promotion-container" [ngClass]="{ 'selected': Item.isSelected }"
                                             (click)="selectPrmotionItem(Item)">
                                             <div class="img-container">
                                                 <!-- <img class="promotion-img" src="https://via.placeholder.com/260x280"  alt="Promotion"/> -->
-                                                <img class="promotion-img"src="data:image/jpeg;base64,{{Item.imageurl}}" alt="Promotion" />
+                                                <img class="promotion-img"
+                                                    src="data:image/jpeg;base64,{{Item.imageurl}}" alt="Promotion" />
 
                                             </div>
                                             <div class="promotion-info">
@@ -177,18 +177,18 @@
                                     <th class="align-right">Price</th>
                                     <th class="align-right">Discounted Price </th>
                                     <th class="align-right"> Qty </th>
-                                    <th class="align-right">Total Value  </th>
-                                     <th></th>
+                                    <th class="align-right">Total Value </th>
+                                    <th></th>
                                 </tr>
                                 <!-- Conform Order screens -->
                                 <!-- promotion list view -->
                                 <ng-container *ngFor="let PromotionObj of AddOrderPromotionData; let i=index;">
                                     <tr *ngFor="let Item of PromotionObj.itemDetails; let j=index;">
-                                       
-                                        <td class="itemLeft"   disabled  style="width:50px !important;">
-                                             <span class="promoItem" style="color: #fff;"
-                                                    *ngIf="j==0"> P  {{i + 1}}</span>
-                                      </td> 
+
+                                        <td class="itemLeft" disabled style="width:50px !important;">
+                                            <span class="promoItem" style="color: #fff;" *ngIf="j==0"> P {{i +
+                                                1}}</span>
+                                        </td>
                                         <td style="text-align: left;">{{Item.productSKUName}}</td>
                                         <td style="text-align: left;">{{Item.stockitemname}}</td>
                                         <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td> -->
@@ -199,30 +199,21 @@
 
                                         <td>
                                             <input type="text" disabled [(ngModel)]="Item.discount"
-                                            [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'" >
+                                                [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'">
                                         </td>
-                                        
                                         <!-- <td>
                                             <input type="text" disabled [(ngModel)]="Item.uomname"
                                                 class="IteminputBoxes">
                                         </td> -->
-                                       
-                                      
                                         <td>
                                             <input type="text" disabled [(ngModel)]="Item.quantity"
-                                            class="IteminputBoxes">
+                                                class="IteminputBoxes">
                                         </td>
                                         <!-- <td>
                                             <input type="text" disabled [(ngModel)]="Item.stock" class="IteminputBoxes">
                                         </td> -->
 
-                                        <!-- <td style="text-align: left;">{{Item.materialcustomidentifier}}</td>  -->
-                                       
-                                       
-
-
-
-<!-- 
+                                        <!-- <td style="text-align: left;">{{Item.materialcustomidentifier}}</td>  -->                   <!-- 
                                         <td>
                                             <input type="text" disabled [(ngModel)]="Item.taxvalue"
                                                 class="IteminputBoxes">
@@ -243,38 +234,36 @@
                                 </ng-container>
                                 <!-- nonpromotions list view -->
                                 <tr *ngFor="let Item of AddorderNonpromotiondata?.itemDetails; let i=index;">
-                                   
+
                                     <td style="text-align:right">
-                                        <p class="itemLeft" > 
-                                             <span class="promoItem" *ngIf="i == 0"  > NP 
-                                             </span> 
-                                          
-                                          </p>
-                                         
+                                        <p class="itemLeft">
+                                            <span class="promoItem" *ngIf="i == 0"> NP
+                                            </span>
+
+                                        </p>
+
                                     </td>
                                     <td style="text-align: left;">{{Item.productSKUName}}</td>
-                                  <td style="text-align: left;">{{Item.stockitemname}}</td>  
+                                    <td style="text-align: left;">{{Item.stockitemname}}</td>
 
                                     <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td> -->
-                                   
                                     <td>
                                         <input type="text" disabled [(ngModel)]="Item.price" class="IteminputBoxes">
                                     </td>
                                     <td>
-                                        <input type="text" disabled [(ngModel)]="Item.discount" [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'" >
+                                        <input type="text" disabled [(ngModel)]="Item.discount"
+                                            [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'">
                                     </td>
                                     <!-- <td>
                                         <input type="text" disabled [(ngModel)]="Item.uomname" class="IteminputBoxes">
                                     </td> -->
                                     <td>
-                                        <input type="text" disabled [(ngModel)]="Item.quantity" class="IteminputBoxes" >
+                                        <input type="text" disabled [(ngModel)]="Item.quantity" class="IteminputBoxes">
                                         <!-- class="IteminputBoxes" -->
                                     </td>
                                     <!-- <td>
                                         <input type="text" disabled [(ngModel)]="Item.stock" class="IteminputBoxes">
                                     </td> -->
-                                    
-                                    
                                     <!-- <td>
                                         <input type="text" disabled [(ngModel)]="Item.taxvalue" class="IteminputBoxes">
                                     </td> -->
@@ -323,32 +312,24 @@
                                 <tr>
                                     <td class="text-left SUBITEMNAME">Subtotal</td>
                                     <td class="text-right numbers ">{{shippingPackingchargeDetails.subTotal}}</td>
-                                   
                                 </tr>
                                 <tr>
                                     <td class="text-left SUBITEMNAME">Packing Charge</td>
                                     <td class="text-right numbers ">{{shippingPackingchargeDetails.packingCharges}}</td>
-                                   
                                 </tr>
                                 <tr>
                                     <td class="text-left SUBITEMNAME">Shipping Charge</td>
                                     <td class="text-right numbers">{{shippingPackingchargeDetails.shippingCharges}}</td>
-                                   
                                 </tr>
                                 <tr>
                                     <td class="text-left SUBITEMNAME">Tax</td>
                                     <td class="text-right numbers">{{shippingPackingchargeDetails.taxElement}}</td>
-                                   
                                 </tr>
                                 <tr>
                                     <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';">Total</td>
                                     <td class="text-right numbers">{{shippingPackingchargeDetails.total}}</td>
-                                   
                                 </tr>
                             </table>
-
-
-
 
                         </div>
                     </div>
@@ -388,7 +369,7 @@
 
                             <div class="col-lg-4">
                                 <div class="companyReff">
-                                    <label class="DealerInfo-label">Company Reference No  <span
+                                    <label class="DealerInfo-label">Company Reference No <span
                                             class="astr"></span></label>
                                     <input disabled type="number" placeholder="Enter" id="CompanyReferenceNo"
                                         [(ngModel)]="CompanyReferenceNo" class="form-control container input-box">
@@ -435,18 +416,14 @@
     </div>
 </div>
 <div>
-    
 </div>
-<div *ngIf="confirmOrder==''" >
-    
-    <div class="main"  >
-    
+<div *ngIf="confirmOrder==''">
+
+    <div class="main">
+
         <div class=" promotionpopup-scroll2">
-            
             <div class="addUser">
                 <!-- <img class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
-               
-
             </div>
             <div class="head-t">
                 <h3 class="addU font">{{actineLabel}}</h3>
@@ -454,86 +431,89 @@
                 <div class="row top-bottom">
                     <div class="row text-center"></div>
                 </div>
-                  <div *ngIf="userType !== 'Dealer Admin'"> 
-                    
-                <div (click)="expandDealerInfoDiv()" class="collapsible">
-                    <div class="row">
-                        <div class="col-md-11">
-                            <p class="label-cls">Dealer Information</p>
-                        </div>
-                        <div class="col-md-1">
-                            <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                <div *ngIf="userType !== 'Dealer Admin'">
+
+                    <div (click)="expandDealerInfoDiv()" class="collapsible">
+                        <div class="row">
+                            <div class="col-md-11">
+                                <p class="label-cls">Dealer Information</p>
+                            </div>
+                            <div class="col-md-1">
+                                <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                            </div>
                         </div>
                     </div>
+
+
+                    <div class="content contentscrobarr  " *ngIf="!dealerInfo">
+                        <div class="row ">
+                            <div class="col-lg-3">
+                                <div class="dealerr">
+                                    <label class="DealerInfo-label">Dealer <span class="astr">*</span></label>
+                                    <ng-select [items]="dealerListArray" class="my-ng-select" id="dealerAllArray"
+                                        name="dealerAllArray" required [disabled]="dealerDisabled"
+                                        [virtualScroll]="true" bindLabel="customerName" bindValue="customerId"
+                                        [searchable]="true" [clearable]="false" appendTo="body"
+                                        placeholder=" Search & select dealer" [(ngModel)]="customerId"
+                                        (change)="onItemSelectdealers($event)">
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="geographyy">
+
+                                    <label class="DealerInfo-label">Geography <span class="astr">*</span></label>
+                                    <ng-select class="selectgeo" [items]="GeoGrapydropdownListdata"
+                                        id="GeoGrapydropdown" name="GeoGrapydropdown" required [virtualScroll]="true"
+                                        bindLabel="geographyName" bindValue="geographyId" [searchable]="true"
+                                        [clearable]="false" placeholder="Select geography" [(ngModel)]="geographyId"
+                                        appendTo="body" (change)="onItemSelectgeo($event)">
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="billingAdrs">
+                                    <label class="DealerInfo-label">Billing Address {{BillingaddressId}} <span
+                                            class="astr">*</span></label>
+                                    <!-- <input matInput placeholder=" Select Billing address" #input class="form-control container input-box" > -->
+                                    <ng-select class="BillingAddress" [items]="dealersbillingAddress"
+                                        id="BillingAddress" name="BillingAddress" required [virtualScroll]="true"
+                                        bindLabel="Billingaddress" bindValue="BillingaddressId" [searchable]="true"
+                                        [clearable]="false" placeholder="Select  billing address"
+                                        [(ngModel)]="BillingaddressId" appendTo="body"
+                                        (change)="onItemSelectBillingAddress($event)">
+                                    </ng-select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="shippingAdrs">
+                                    <label class="DealerInfo-label">Shipping Address <span class="astr">*</span></label>
+
+                                    <ng-select class="shipingAddress" [items]="dealersShippingAddress"
+                                        id="shipingAddress" name="shipingAddress" required [virtualScroll]="true"
+                                        bindLabel="address" bindValue="addressId" [searchable]="true"
+                                        [clearable]="false" placeholder="Select shipping address"
+                                        [(ngModel)]="addressId" appendTo="body"
+                                        (change)="onItemSelectshippingAddress($event)">
+                                    </ng-select>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+
+
+                    </div>
+
                 </div>
-                
-
-                <div class="content contentscrobarr  " *ngIf="!dealerInfo" >
-                    <div class="row ">
-                        <div class="col-lg-3">
-                            <div class="dealerr">
-                                <label class="DealerInfo-label">Dealer  <span class="astr">*</span></label>
-                                <ng-select [items]="dealerListArray" class="my-ng-select" id="dealerAllArray"
-                                    name="dealerAllArray" required [disabled]="dealerDisabled" [virtualScroll]="true"
-                                    bindLabel="customerName" bindValue="customerId" [searchable]="true"
-                                    [clearable]="false" appendTo="body" placeholder=" Search & select dealer"
-                                    [(ngModel)]="customerId" (change)="onItemSelectdealers($event)">
-                                </ng-select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="geographyy">
-
-                                <label class="DealerInfo-label">Geography <span class="astr">*</span></label>
-                                <ng-select class="selectgeo" [items]="GeoGrapydropdownListdata" id="GeoGrapydropdown"
-                                    name="GeoGrapydropdown" required [virtualScroll]="true" bindLabel="geographyName"
-                                    bindValue="geographyId" [searchable]="true" [clearable]="false"
-                                    placeholder="Select geography" [(ngModel)]="geographyId" appendTo="body"
-                                    (change)="onItemSelectgeo($event)">
-                                </ng-select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="billingAdrs">
-                                <label class="DealerInfo-label">Billing Address {{BillingaddressId}} <span
-                                        class="astr">*</span></label>
-                                <!-- <input matInput placeholder=" Select Billing address" #input class="form-control container input-box" > -->
-                                <ng-select class="BillingAddress" [items]="dealersbillingAddress" id="BillingAddress"
-                                    name="BillingAddress" required [virtualScroll]="true" bindLabel="Billingaddress"
-                                    bindValue="BillingaddressId" [searchable]="true" [clearable]="false"
-                                    placeholder="Select  billing address" [(ngModel)]="BillingaddressId" appendTo="body"
-                                    (change)="onItemSelectBillingAddress($event)">
-                                </ng-select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="shippingAdrs">
-                                <label class="DealerInfo-label">Shipping Address <span class="astr">*</span></label>
-
-                                <ng-select class="shipingAddress" [items]="dealersShippingAddress" id="shipingAddress"
-                                    name="shipingAddress" required [virtualScroll]="true" bindLabel="address"
-                                    bindValue="addressId" [searchable]="true" [clearable]="false"
-                                    placeholder="Select shipping address" [(ngModel)]="addressId" appendTo="body"
-                                    (change)="onItemSelectshippingAddress($event)">
-                                </ng-select>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-
-               
-
-            </div>
-
-            </div>
                 <!--  ===============================Promotions start ==================================-->
                 <div class="t_op-bottom">
                     <div (click)="expandPromotions()" class="coll_apsible">
                         <div class="row">
                             <div class="col-md-11">
-                                <p class="label-class">Promotions  </p>
+                                <p class="label-class">Promotions </p>
                             </div>
                             <div class="col-md-1">
                                 <img [src]="image1" class="expand-arrowws" alt="add-user-btn">
@@ -541,7 +521,6 @@
                         </div>
                     </div>
                     <div class="con_tent" *ngIf="!viewpromotions">
-                       
                         <br>
                         <div class="promotion-card">
                             <div class="promoimgs">
@@ -553,12 +532,12 @@
                                             <div class="img-container">
                                                 <!-- <img class="promotion-img" src="https://via.placeholder.com/260x280"  alt="Promotion"/> -->
                                                 <img class="promotion-img"
-                                                    src="data:image/jpeg;base64,{{Item.imageurl}}" alt="Promotion"/>
+                                                    src="data:image/jpeg;base64,{{Item.imageurl}}" alt="Promotion" />
 
                                             </div>
                                             <div class="promotion-info">
                                                 <div class="promo-name">
-                                                    Name:  <span> {{Item.promotionName}}</span>
+                                                    Name: <span> {{Item.promotionName}}</span>
                                                 </div>
 
                                                 <div class="promo-type">
@@ -613,215 +592,233 @@
                     <div class="content" *ngIf="!orderitem">
                         <div class="section mt-1">
                             <!-- <table class="table table-striped"> -->
-                                <table >
+                            <table>
                                 <tr>
-                                    <!-- <td style="width:50px !important;position: relative;
-                                    right: 47px;" >
-                                    <b style="font-weight: bold;">Product Code</b></td> -->
-                                    <th style="width:50px !important;position: relative;right: 47px;">
-                                    <b style="font-weight: bold;">Product Code</b></th>
-                                     <th class="align-center" class="PROCODE"></th> 
+                                    <th style="width:107px !important;position: relative;">
+                                        <b style="font-weight: bold;">Product Code</b>
+                                    </th>
+                                    <th class="align-center" class="PROCODE"></th>            
                                     <th class="align-center">Product Name</th>
                                     <!-- <th class="align-right">UoM</th> -->
                                     <th class="align-right">Price</th>
                                     <th class="align-right">Discounted Price </th>
                                     <th class="align-right"> Qty </th>
-                                    <!-- <th class="align-right">Stock</th> -->
-                                   
-                                   
-                                    <!-- <th class="align-right">Final Price</th>
-                                    <th class="align-right">Discount</th>
-
-                                    <th class="align-right">Final Value</th>
-                                    <th class="align-right">Tax</th>
-
-                                    <th class="align-right">Amount </th> -->
-                                    <!-- <th class="align-right">Total Value </th> -->
 
                                     <th class="align-right">Sub Total</th>
-                                   
+
                                     <th></th>
 
                                 </tr>
-                                <!-- promotion list view -->
-                                <div class="ExpandArrow" (click)="ExpandPromotion()" *ngIf="NotVisibleProArrow">
-                                        <img  [src]="Image44" class="expand-arrow_W" alt="add-user-btn"> Promotion
-                                         <span  id="protype" style="color: rgba(0, 0, 0, 1);
-                                        ">{{ productType}} </span>
-                                        
-                            </div>
-                            
-                            <ng-container  *ngIf="PromoExpand" >
-                                <ng-container  *ngFor="let PromotionObj of AddOrderPromotionData; let i=index;" >
-                            
-                                    <tr  *ngFor="let Item of PromotionObj.itemDetails; let j=index;">
-                                        <td>
-                                            <!-- <span class="promoItem" style="color: #fff;"
-                                                *ngIf="j==0"> P {{i + 1}}</span> -->
-                                                <!-- <span class="promoItem" *ngIf="j==0" 
-                                                    (click)="editPromotionItem(PromotionObj.promotionId)">
-                                                    Edit
-                                            </span> -->
-                                            <div class="action-items">
-
-                                                <div class="edit" *ngIf="j==0"
-
-                                                    (click)="editPromotionItem(PromotionObj.promotionId)">
-                                                    Edit
-                                                 </div>
-                                                <!-- <div class="removeCircle" *ngIf="j==0"
-                                                 (click)="removePromotionItem(Item, PromotionObj.promotionId)">
-                                                  <i class="fa fa-trash-o"></i> 
-                                                </div> -->
-                                                </div>
 
 
-                                            </td>
-                                        <td >
-                                            <p id="productname"  [ngClass]="{'promotionclass': Item.isBuyProduct===false }">{{Item.productSKUName}}</p></td>
-                                        
-                                      
-                                        <td >
-                                             <p class="itemLeft" [ngClass]="{'promotionclass': Item.isBuyProduct===false}">
-                                                {{Item.stockitemname}}</p> 
-                                               
-                                        </td>
-                                        <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td> -->
-                                        <!-- <td>
-                                            <input type="text" disabled [(ngModel)]="Item.uomname"
-                                                class="IteminputBoxes">
-                                        </td> -->
-                                        <!-- <td>
-                                            <input type="text" disabled [(ngModel)]="Item.quantity"
-                                                class="IteminputBoxes">
-                                        </td> -->
-                                        <!-- <td>s
-                                            <input type="text" disabled [(ngModel)]="Item.stock" class="IteminputBoxes">
-                                        </td> -->
-                                        <td>
-                                            <input [ngClass]="{'promotionclass': Item.isBuyProduct===false}" type="text" disabled [(ngModel)]="Item.price" class="IteminputBoxesPriceBOX"
-                                            style="margin-right: 17%;">
-                                        </td>
-                                        <!-- <td>
-                                            <input type="text" disabled [(ngModel)]="Item.finalPrice"
-                                                class="IteminputBoxes">
-                                        </td> -->
-                                        <td>
-                                            <input  type="text" disabled [(ngModel)]="Item.discount" style="text-align: right;"
-                                            [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxesprice' && Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName'" >
-                                        </td>
-                                        <td>
-                                            <input [ngClass]="{'promotionclass': Item.isBuyProduct===false}"  style="margin-right: 25%;" type="text" disabled [(ngModel)]="Item.quantity"
-                                                class="IteminputBoxes" >
-                                        </td>
-                                        
+                                <ng-container *ngFor="let PromotionObj of AddOrderPromotionData; let i=index;">
+                                    <!-- 1 Promotion -->
+                                    <ng-container >
 
+                                        <tr *ngIf="PromotionObj.promotionTypeId === 1" >
 
-                                        <!-- <td>
-                                            <input type="text" disabled [(ngModel)]="Item.finalValue"
-                                                class="IteminputBoxes">
-                                        </td> -->
+                                            <div class="ExpandArrow" (click)="ExpandPromotion(i)" >
+                                                <img [src]="image55" class="expand-arrow_W" alt="add-user-btn">
+                                                Promotion
+                                                <span id="protype" style="color: rgba(0, 0, 0, 1);">
+                                                    {{PromotionObj.promotionName}}
+                                                    {{PromotionObj.promotionTypeNmae}}
 
-                                        <td >
-                                            <input [ngClass]="{'promotionclass': Item.isBuyProduct===false}" type="text" disabled [(ngModel)]="Item.finalValue"
-                                                class="IteminputBoxes" >
-                                        </td>
-
-                                        <!-- <td>
-                                            <input type="text" disabled [(ngModel)]="Item.amount"
-                                                class="IteminputBoxes">
-                                        </td> -->
-
-                                        <td>
-                                            <div class="action-items">
-                                                <!-- <div class="edit" *ngIf="j==0"
-                                                    (click)="editPromotionItem(PromotionObj.promotionId)">
-                                                    <i class="fa fa-pencil-square-o"></i>
-                                                </div> -->
-                                                <div class="removeCircle" *ngIf="j==0"
-                                                    (click)="removePromotionItem(Item, PromotionObj.promotionId)">
-                                                    <i class="fa fa-trash-o"></i>
-                                                </div>
+                                                </span>
                                             </div>
-                                        </td>
-                                        <!-- <mat-icon class="removeCircle" *ngIf="j==0"
-                                            (click)="removePromotionItem(Item, PromotionObj.promotionId)">
-                                            remove_circle</mat-icon> -->
-                                    </tr>
+                                        </tr>
+                                    </ng-container>
+                                    <!-- 2  Promotion-->
+                                    <ng-container>
+
+                                        <tr *ngIf="PromotionObj.promotionTypeId === 2">
+
+                                            <div class="ExpandArrow" (click)="ExpandPromotion(i)">
+                                                <img [src]="image55" class="expand-arrow_W" alt="add-user-btn">
+                                                Promotion
+                                                <span id="protype" style="color: rgba(0, 0, 0, 1);">
+                                                    {{PromotionObj.promotionName}}
+                                                    {{PromotionObj.promotionTypeNmae}}
+
+                                                </span>
+                                            </div>
+                                        </tr>
+                                    </ng-container>
+                                    <!-- 3  Promotion-->
+                                    <ng-container>
+
+                                        <tr *ngIf="PromotionObj.promotionTypeId === 3">
+
+                                            <div class="ExpandArrow" (click)="ExpandPromotion(i)">
+                                                <img [src]="image55" class="expand-arrow_W" alt="add-user-btn">
+                                                Promotion
+                                                <span id="protype" style="color: rgba(0, 0, 0, 1);">
+                                                    {{PromotionObj.promotionName}}
+                                                    {{PromotionObj.promotionTypeNmae}}
+
+                                                </span>
+                                            </div>
+                                        </tr>
+                                    </ng-container>
+                                    <!-- 4 Promotion -->
+
+                                    <ng-container>
+
+                                        <tr *ngIf="PromotionObj.promotionTypeId === 4">
+
+                                            <div class="ExpandArrow" (click)="ExpandPromotion(i)">
+                                                <img [src]="image55" class="expand-arrow_W" alt="add-user-btn">
+                                                Promotion
+                                                <span id="protype" style="color: rgba(0, 0, 0, 1);">
+                                                    {{PromotionObj.promotionName}}
+                                                    {{PromotionObj.promotionTypeNmae}}
+
+                                                </span>
+                                            </div>
+                                        </tr>
+                                    </ng-container>
+
+                                    <ng-container>
+                              
+                                        <ng-container *ngIf='PromotionObj.isOpen'>
+
+                                            <tr *ngFor="let Item of PromotionObj.itemDetails; let j=index;">
+                                                <td>
+                                                    <!-- <span class="promoItem" style="color: #fff;" *ngIf="j==0"> P {{i + 1}}</span> -->
+                                                    <!-- <span class="promoItem" *ngIf="j==0"  (click)="editPromotionItem(PromotionObj.promotionId)">
+                                                          Edit </span> -->
+                                                    <div class="action-items">
+                                                         <div class="edit" *ngIf="j==0"
+                                                            (click)="editPromotionItem(PromotionObj.promotionId)">
+                                                            Edit
+                                                        </div>
+                                                        <!-- <div class="removeCircle" *ngIf="j==0"(click)="removePromotionItem(Item, PromotionObj.promotionId)">    <i class="fa fa-trash-o"></i> 
+                                                        </div> -->
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p id="productname"
+                                                        [ngClass]="{'promotionclass': Item.isBuyProduct===false }">
+                                                        {{Item.productSKUName}}</p>
+                                                </td>
+                                                <td>
+                                                    <p class="itemLeft"
+                                                        [ngClass]="{'promotionclass': Item.isBuyProduct===false}">
+                                                        {{Item.stockitemname}}</p>
+                                                      </td>
+                                                <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td> -->
+                                                <!-- <td> <input type="text" disabled [(ngModel)]="Item.uomname" class="IteminputBoxes">  </td> -->
+                                                <!-- <td><input type="text" disabled [(ngModel)]="Item.quantity" class="IteminputBoxes"> </td> -->
+                                                <!-- <td><input type="text" disabled [(ngModel)]="Item.stock" class="IteminputBoxes"> </td> -->
+                                                <td>
+                                                    <input [ngClass]="{'promotionclass': Item.isBuyProduct===false}"
+                                                        type="text" disabled [(ngModel)]="Item.price"
+                                                        class="IteminputBoxesPriceBOX" style="margin-right: 17%;">
+                                                </td>
+                                                <!-- <td> <input type="text" disabled [(ngModel)]="Item.finalPrice"  class="IteminputBoxes"> </td> -->
+                                                <td>
+                                                    <input type="text" disabled [(ngModel)]="Item.discount"
+                                                        style="text-align: right;"
+                                                        [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxesprice' && Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName'">
+                                                </td>
+                                                <td>
+                                                    <input [ngClass]="{'promotionclass': Item.isBuyProduct===false}"
+                                                        style="margin-right: 25%;" type="text" disabled
+                                                        [(ngModel)]="Item.quantity" class="IteminputBoxes">
+                                                </td>
+                                                <!-- <td> <input type="text" disabled [(ngModel)]="Item.finalValue"class="IteminputBoxes">  </td> -->
+                                                <td>
+                                                    <input [ngClass]="{'promotionclass': Item.isBuyProduct===false}"
+                                                        type="text" disabled [(ngModel)]="Item.finalValue"
+                                                        class="IteminputBoxes">
+                                                </td>
+
+                                                <!-- <td> <input type="text" disabled [(ngModel)]="Item.amount"class="IteminputBoxes"> </td> -->
+                                                <td>
+                                                    <div class="action-items">
+                                                        <!-- <div class="edit" *ngIf="j==0" (click)="editPromotionItem(PromotionObj.promotionId)">      <i class="fa fa-pencil-square-o"></i>
+                                                          </div> -->
+                                                        <div class="removeCircle" *ngIf="j==0"
+                                                            (click)="removePromotionItem(Item, PromotionObj.promotionId)">
+                                                            <i class="fa fa-trash-o"></i>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <!-- <mat-icon class="removeCircle" *ngIf="j==0" (click)="removePromotionItem(Item, PromotionObj.promotionId)">    remove_circle</mat-icon> -->
+                                            </tr>
+                                        </ng-container>
+                                    </ng-container>
                                 </ng-container>
-                            </ng-container>
+
 
                                 <!-- nonpromotions list view -->
 
                                 <!-- RK start -->
+                               <ng-container *ngIf="DisplayNonpromotion">
+                                <div class="ExpandArrow" (click)="ExpandNonPromotion()" >
+                                    <img [src]="image55" class="expand-arrow_W" alt="add-user-btn">Non Promotions
+                                    <span id="protype" style="color: rgba(0, 0, 0, 1);
+                                                                "> </span>
 
-                                <div class="ExpandArrow" (click)="ExpandNonPromotion()" *ngIf="NotVisibleNonProArrow">
-                                    <img  [src]="Image44" class="expand-arrow_W" alt="add-user-btn">Non Promotions
-                                     <span  id="protype" style="color: rgba(0, 0, 0, 1);
-                                    "> </span>
-                                    
-                        </div>
-                        
-                        <ng-container  *ngIf="NonPromotion"  >
+                                </div>
+                               </ng-container>
+                                <ng-container *ngIf="NonPromotion">
 
-                            <tr *ngFor="let Item of AddorderNonpromotiondata?.itemDetails; let i=index;">
-                                <!-- <td style="width:50px !important;">
-                                    <span class="promoItem" *ngIf="i == 0"> NPyy
-                                    </span>
-                                </td> -->
-                                    <td style="text-align: left;">{{Item.productSKUName}}</td>
-                                    <td style="width:10px;"></td>
-                                <td style="text-align: left;">{{Item.stockitemname}}
-                                   
-                                </td>
-                                <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td> -->
-                                <!-- <td>
-                                    <input type="text" disabled [(ngModel)]="Item.uomname" class="IteminputBoxes">
-                                </td> -->
-                                <td>
-                                    <input style="margin-right: 17%;"  type="text" disabled [(ngModel)]="Item.price" class="IteminputBoxes">
-                                </td>
-                                <td>
-                                    <input style="margin-right: -12%;" type="text" disabled [(ngModel)]="Item.discount"
-                                        [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'">
-                                </td>
-                                <td>
-                                    <input style="margin-right: 25%;" type="text" disabled [(ngModel)]="Item.quantity" class="IteminputBoxes">
-                                </td>
-                                <!-- <td>
-                                    <input type="text" disabled [(ngModel)]="Item.stock" class="IteminputBoxes">
-                                </td> -->
-                               
-                                <!-- <td>
-                                    <input type="text" disabled [(ngModel)]="Item.finalPrice"
-                                        class="IteminputBoxes">
-                                </td> -->
-                               
+                                    <tr *ngFor="let Item of AddorderNonpromotiondata?.itemDetails; let i=index;">
+                                        <!-- <td style="width:50px !important;">
+                                                                <span class="promoItem" *ngIf="i == 0"> NPyy
+                                                                </span>
+                                                            </td> -->
+                                        <td style="text-align: left;">{{Item.productSKUName}}</td>
+                                        <td style="width:10px;"></td>
+                                        <td style="text-align: left;">{{Item.stockitemname}}
 
-                                <td>
-                                    <input type="text" disabled [(ngModel)]="Item.finalValue"
-                                        class="IteminputBoxes">
-                                </td>
-                                <!-- <td>
-                                    <input type="text" disabled [(ngModel)]="Item.taxvalue" class="IteminputBoxes">
-                                </td> -->
-                                <!-- <td>
-                                    <input type="text" disabled [(ngModel)]="Item.amount" class="IteminputBoxes">
-                                </td> -->
+                                        </td>
+                                        <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td> -->
+                                        <!-- <td>
+                                                                <input type="text" disabled [(ngModel)]="Item.uomname" class="IteminputBoxes">
+                                                            </td> -->
+                                        <td>
+                                            <input style="margin-right: 17%;" type="text" disabled
+                                                [(ngModel)]="Item.price" class="IteminputBoxes">
+                                        </td>
+                                        <td>
+                                            <input style="margin-right: -12%;" type="text" disabled
+                                                [(ngModel)]="Item.discount"
+                                                [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'">
+                                        </td>
+                                        <td>
+                                            <input style="margin-right: 25%;" type="text" disabled
+                                                [(ngModel)]="Item.quantity" class="IteminputBoxes">
+                                        </td>
+                                        <!-- <td>
+                                                                <input type="text" disabled [(ngModel)]="Item.stock" class="IteminputBoxes">
+                                                            </td> -->
 
-                                <td>
-                                    <div class="removeCircle" (click)="removeNonPromotionItem(Item)">
-                                        <i class="fa fa-trash-o"></i>
-                                    </div>
-                                </td>
-                            </tr>
-                        </ng-container>
-                        
+                                        <!-- <td>
+                                                                <input type="text" disabled [(ngModel)]="Item.finalPrice"
+                                                                    class="IteminputBoxes">
+                                                            </td> -->
 
 
+                                        <td>
+                                            <input type="text" disabled [(ngModel)]="Item.finalValue"
+                                                class="IteminputBoxes">
+                                        </td>
+                                        <!-- <td>
+                                                                <input type="text" disabled [(ngModel)]="Item.taxvalue" class="IteminputBoxes">
+                                                            </td> -->
+                                        <!-- <td>
+                                                                <input type="text" disabled [(ngModel)]="Item.amount" class="IteminputBoxes">
+                                                            </td> -->
 
-                              
-
+                                        <td>
+                                            <div class="removeCircle" (click)="removeNonPromotionItem(Item)">
+                                                <i class="fa fa-trash-o"></i>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </ng-container>
                             </table>
                         </div>
                         <div class="row mt-2">
@@ -850,36 +847,32 @@
                                     </div>
                                 </div>
                             </div> -->
-                           <!-- <div  *ngIf="shippingPackingchargeDetails">   -->
+                            <!-- <div  *ngIf="shippingPackingchargeDetails">   -->
                             <table class="TOTAL" *ngIf="shippingPackingchargeDetails">
                                 <tr>
                                     <td class="text-left SUBITEMNAME">Subtotal</td>
                                     <td class="text-right numbers ">{{shippingPackingchargeDetails.subTotal}}</td>
-                                   
                                 </tr>
                                 <tr>
                                     <td class="text-left SUBITEMNAME">Packing Charge</td>
                                     <td class="text-right numbers ">{{shippingPackingchargeDetails.packingCharges}}</td>
-                                   
                                 </tr>
                                 <tr>
                                     <td class="text-left SUBITEMNAME">Shipping Charge</td>
                                     <td class="text-right numbers">{{shippingPackingchargeDetails.shippingCharges}}</td>
-                                   
                                 </tr>
                                 <tr>
                                     <td class="text-left SUBITEMNAME">Tax</td>
                                     <td class="text-right numbers">{{shippingPackingchargeDetails.taxElement}}</td>
-                                   
                                 </tr>
                                 <tr>
-                                    <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';">Total value</td>
+                                    <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';">Total
+                                        value</td>
                                     <td class="text-right numbers">{{shippingPackingchargeDetails.total}}</td>
-                                   
                                 </tr>
                             </table>
 
-                             <!-- </div>  -->
+                            <!-- </div>  -->
                         </div>
                     </div>
                 </div>
@@ -993,191 +986,199 @@
 </div>
 <!-- non promotions -->
 
-    <div class="overlay" *ngIf="Non_promotions && confirmOrder ==''">
-        <div class="popup">
-            
-            <div class="FONT">
-                <mat-icon mat-button class="close_icon " (click)="Uclose()"   >close</mat-icon>
-                <div class="mai_n">
-                    
-                    <div class=" promotionpopup-scroll3">
-                        
-                        <div class="addUser" >
-                            
-                        </div>
-                        <div class="head-t">
-                            <h3 class="labelU font">{{actineLabel}} : Non-Promotions </h3>
-                            
-                        </div>
-                        
-                        <div class="nonproitemsconfiorm">
-                                <div class="headingnonpro">
-                                <span id="itemsnonheading">Non-Promotions Items</span>  
-                                 <div class="headingcontent" >
+<div class="overlay" *ngIf="Non_promotions && confirmOrder ==''">
+    <div class="popup">
 
-                                    <div class="row orderqty ">  
-                                          <div class="col bg-light">
-                                            <input type="text"  class="form-control-plaintext" placeholder="Total Order Qty">
-                                          </div>   
-                                            <div class="totalQTY">
-                                           {{totalQuantity+quantityadd}}
-                                         </div>
-                                          <div class="totalAmount">
-                                             {{totalAmount+price}}
-                                            </div>
-                                            <div class="col bg-light ">
-                                               
-                                       <input type="text"  class="form-control-plaintext" placeholder="Total Order Amount" >
-                                     </div>
-                                          
-                                          <div class="row">
-                                            <div class="col">
-                                             <input type="text" id="ThisorderQTY"   class="form-control-plaintext" placeholder="This Order Qty" >
-                                               </div>
-                                               <div id="thisORDERQTY">
-                                              <input #inputField type="text" [(ngModel)]="quantityadd" class="form-control-plaintext" />
-                                                <button *nglf="visibilitybutton" (click)="clearQuantity()" >Reset</button>
-                                              </div>
-                                               <div class="col">
-                                              <input type="text" id="thisorderqty" class="form-control-plaintext" placeholder="This Order Amount">
-                                          <div id="price">
-                                                {{price?price:'0'}}
-                                              </div>
-                                         <td>
-                                            <button (click)="resetQuantity()" *ngIf="hidereset">Reset Quantity</button>
-                                        </td>
-                                              </div>
-                                               </div>
-                                           
-                                           </div> 
-                                       
-                                     </div>
-                                     </div>
-                                <div>
-                                    <button  type="button"  (click)="clearQuantity()" *ngIf="hidereset">Clear</button>
+        <div class="FONT">
+            <mat-icon mat-button class="close_icon " (click)="Uclose()">close</mat-icon>
+            <div class="mai_n">
+
+                <div class=" promotionpopup-scroll3">
+
+                    <div class="addUser">
+
+                    </div>
+                    <div class="head-t">
+                        <h3 class="labelU font">{{actineLabel}} : Non-Promotions </h3>
+
+                    </div>
+
+                    <div class="nonproitemsconfiorm">
+                        <div class="headingnonpro">
+                            <span id="itemsnonheading">Non-Promotions Items</span>
+                            <div class="headingcontent">
+
+                                <div class="row orderqty ">
+                                    <div class="col bg-light">
+                                        <input type="text" class="form-control-plaintext" placeholder="Total Order Qty">
                                     </div>
-                                  </div>
-                          <div class="nonpromo ">
-                            <div class="row  mt-3  spacedropdown ">
-                                <div class="col-lg-10 ">
-                                    <div class="row  ">
-                                        <div class="col-md-3 col-lg-3 col-sm-3   dropdownborder custon-nonprobubbles">
-                                            <div class="input-icons ">
-                                                <form [formGroup]="categoryForm" class="dropDown-field dropdown_list"
-                                                    style="width: 100%;">
-                                                    <ng-multiselect-dropdown class="catty select_category" name="city"
-                                                        [placeholder]="'Category'" formControlName="categoryy"
-                                                        [disabled]="disabled" [settings]="dropdownSettingscat"
-                                                        [data]="catagoryData" (onSelect)="onItemSelect($event)"
-                                                        (onDeSelect)="onItemDeSelect($event)"
-                                                        (onDeSelectAll)="onItemDeSelectOrAll($event)"
-                                                        (onSelectAll)="onItemSelectOrAll($event)">
-                                                    </ng-multiselect-dropdown>
-                                                    <div class="dropdown-placeholder catty-placeholder">
-                                                        <span *ngIf="categoryForm.get('categoryy').value.length == 0"
-                                                            style="color:grey;"> Select Category </span>
-                                                        <span *ngIf="categoryForm.get('categoryy').value.length == 1"
-                                                            class="selected-placeholder">
-                                                            {{categoryForm.get('categoryy').value.length}} Category </span>
-                                                        <span *ngIf="categoryForm.get('categoryy').value.length > 1"
-                                                            class="selected-placeholder">
-                                                            {{categoryForm.get('categoryy').value.length}} Category(s)
-                                                        </span>
-                                                    </div>
-                                                </form>
-                                            </div>
+                                    <div class="totalQTY">
+                                        {{totalQuantity+quantityadd }}
+
+                                    </div>
+                                    <div class="totalAmount">
+                                        {{totalAmount+price }}
+                                    </div>
+                                    <div class="col bg-light ">
+
+                                        <input type="text" class="form-control-plaintext"
+                                            placeholder="Total Order Amount">
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="text" id="ThisorderQTY" class="form-control-plaintext"
+                                                placeholder="This Order Qty">
                                         </div>
-                                        <div class="col-md-3 col-lg-3 col-sm-3  dropng dropdownborder custon-nonprobubbles">
-                                            <div class="input-icons ">
-                                                <form [formGroup]="subcategoryForm" class="dropDown-field dropdown_list">
-                                                    <ng-multiselect-dropdown class="subcatty sub_category"
-                                                        name="subCategory" [placeholder]="''" formControlName="subCategory"
-                                                        [disabled]="disabled" [settings]="dropdownSettingssubcat"
-                                                        [data]="sub_category" (onSelect)="onSubCategorySelect($event)"
-                                                        (onDeSelect)="onSubCategoryDeSelect($event)"
-                                                        (onDeSelectAll)="onSubCategoryDSelectOrAll($event)"
-                                                        (onSelectAll)="onSubCategorySelectOrAll()">
-                                                    </ng-multiselect-dropdown>
-                                                    <div class="dropdown-placeholder subcatty-placeholder">
-                                                        <span *ngIf="subcategoryForm.get('subCategory').value.length == 0"
-                                                            style="color:grey;"> Select Subcategory </span>
-                                                        <span *ngIf="subcategoryForm.get('subCategory').value.length == 1"
-                                                            class="selected-placeholder">
-                                                            {{subcategoryForm.get('subCategory').value.length}}
-                                                            subcategory</span>
-                                                        <span *ngIf="subcategoryForm.get('subCategory').value.length > 1"
-                                                            class="selected-placeholder">
-                                                            {{subcategoryForm.get('subCategory').value.length}}
-                                                            subcategory(s)
-                                                        </span>
-    
-                                                    </div>
-                                                </form>
-                                            </div>
+                                        <div id="thisORDERQTY">
+                                            <input #inputField type="text" [(ngModel)]="quantityadd"
+                                                class="form-control-plaintext" />
+                                            <button *nglf="visibilitybutton" (click)="clearQuantity()">Reset</button>
                                         </div>
-                                        <div class="col-md-2 col-lg-3 col-sm-3 drop_ng dropdownborder custon-nonprobubbles">
-                                            <div class="input-icons ">
-                                                <form [formGroup]="type" class="dropDown-field dropdown_list">
-                                                    <ng-multiselect-dropdown class="stts stts_typeselected" name="type"
-                                                        [placeholder]="'Type'" formControlName="type" [disabled]="disabled"
-                                                        [settings]="dropdownSettingstypeid" [data]="typeI"
-                                                        (onSelect)="onTypeSelect($event)"
-                                                        (onDeSelect)="onTypeDeSelect($event)"
-                                                        (onSelectAll)="onTypeSelectOrAll()"
-                                                        (onDeSelectAll)="OnTypeDeselectOrAll()">
-                                                    </ng-multiselect-dropdown>
-                                                    <div class="dropdown-placeholder type-placeholder">
-                                                        <span *ngIf="type.get('type').value.length == 0"
-                                                            style="color:grey;"> Select
-                                                            Type </span>
-                                                        <span *ngIf="type.get('type').value.length == 1"
-                                                            class="selected-placeholder"> {{type.get('type').value.length}}
-                                                            Type
-                                                            selected </span>
-                                                        <span *ngIf="type.get('type').value.length > 1"
-                                                            class="selected-placeholder"> {{type.get('type').value.length}}
-                                                            Type(s)
-                                                            selected </span>
-    
-                                                    </div>
-                                                </form>
+                                        <div class="col">
+                                            <input type="text" id="thisorderqty" class="form-control-plaintext"
+                                                placeholder="This Order Amount">
+                                            <div id="price">
+                                                {{price?price:'0'}}
                                             </div>
+                                            <td>
+                                                <button (click)="resetQuantity()" *ngIf="hidereset">Reset
+                                                    Quantity</button>
+                                            </td>
                                         </div>
-                                        <div class="col-md-3 col-lg-3 col-sm-3 Drop_ng dropdownborder custon-nonprobubbles">
-    
-                                            <div class="input-icons ">
-    
-                                                 <form  [formGroup]="getproductForm" class="dropDown-field dropdown_list">
-                                                    <ng-multiselect-dropdown class="stts stts_typeselected" formControlName="getprocategroy"  name="getprocategroy"
-                                                    [placeholder]="'Product Group'"  [disabled]="disabled"
-                                                    [settings]="dropdownproductgroup"  [data]="prosubgroupdropdown"
-                                                    (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)"
-                                                    (onSelectAll)="onProductSelectOrAll($event)"(onDeSelectAll)="onProductDeSelectOrAll($event)"
-                                                    
-                                                     >
-    
-                                                    </ng-multiselect-dropdown>
-                                                   
-                                                       <div class="dropdown-placeholder type-placeholder">
-                                                        <span *ngIf="getproductForm.get('getprocategroy').value.length == 0"
-                                                        style="color:grey;"> Select Product Group
-                                                         </span>
-                                                        
-                                                        <span *ngIf="getproductForm.get('getprocategroy').value.length == 1"
-                                                          class="selected-placeholder"> {{getproductForm.get('getprocategroy').value.length}}
-                                                          Product
-                                                           </span>
-                                                        <span class="selected-placeholder"
-                                                        *ngIf="getproductForm.get('getprocategroy').value.length > 1">
-                                                             {{getproductForm.get('getprocategroy').value.length}}
-                                                             Products</span>
-                                                            </div>
-                                                        </form> 
-                                                    </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" (click)="clearQuantity()" *ngIf="hidereset">Clear</button>
+                        </div>
+                    </div>
+                    <div class="nonpromo ">
+                        <div class="row  mt-3  spacedropdown ">
+                            <div class="col-lg-10 ">
+                                <div class="row  ">
+                                    <div class="col-md-3 col-lg-3 col-sm-3   dropdownborder custon-nonprobubbles">
+                                        <div class="input-icons ">
+                                            <form [formGroup]="categoryForm" class="dropDown-field dropdown_list"
+                                                style="width: 100%;">
+                                                <ng-multiselect-dropdown class="catty select_category" name="city"
+                                                    [placeholder]="'Category'" formControlName="categoryy"
+                                                    [disabled]="disabled" [settings]="dropdownSettingscat"
+                                                    [data]="catagoryData" (onSelect)="onItemSelect($event)"
+                                                    (onDeSelect)="onItemDeSelect($event)"
+                                                    (onDeSelectAll)="onItemDeSelectOrAll($event)"
+                                                    (onSelectAll)="onItemSelectOrAll($event)">
+                                                </ng-multiselect-dropdown>
+                                                <div class="dropdown-placeholder catty-placeholder">
+                                                    <span *ngIf="categoryForm.get('categoryy').value.length == 0"
+                                                        style="color:grey;"> Select Category </span>
+                                                    <span *ngIf="categoryForm.get('categoryy').value.length == 1"
+                                                        class="selected-placeholder">
+                                                        {{categoryForm.get('categoryy').value.length}} Category </span>
+                                                    <span *ngIf="categoryForm.get('categoryy').value.length > 1"
+                                                        class="selected-placeholder">
+                                                        {{categoryForm.get('categoryy').value.length}} Category(s)
+                                                    </span>
                                                 </div>
-                                                    
-                                             
-                                        <!-- <div class="col-md-3 dropdownborder">
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-lg-3 col-sm-3  dropng dropdownborder custon-nonprobubbles">
+                                        <div class="input-icons ">
+                                            <form [formGroup]="subcategoryForm" class="dropDown-field dropdown_list">
+                                                <ng-multiselect-dropdown class="subcatty sub_category"
+                                                    name="subCategory" [placeholder]="''" formControlName="subCategory"
+                                                    [disabled]="disabled" [settings]="dropdownSettingssubcat"
+                                                    [data]="sub_category" (onSelect)="onSubCategorySelect($event)"
+                                                    (onDeSelect)="onSubCategoryDeSelect($event)"
+                                                    (onDeSelectAll)="onSubCategoryDSelectOrAll($event)"
+                                                    (onSelectAll)="onSubCategorySelectOrAll()">
+                                                </ng-multiselect-dropdown>
+                                                <div class="dropdown-placeholder subcatty-placeholder">
+                                                    <span *ngIf="subcategoryForm.get('subCategory').value.length == 0"
+                                                        style="color:grey;"> Select Subcategory </span>
+                                                    <span *ngIf="subcategoryForm.get('subCategory').value.length == 1"
+                                                        class="selected-placeholder">
+                                                        {{subcategoryForm.get('subCategory').value.length}}
+                                                        subcategory</span>
+                                                    <span *ngIf="subcategoryForm.get('subCategory').value.length > 1"
+                                                        class="selected-placeholder">
+                                                        {{subcategoryForm.get('subCategory').value.length}}
+                                                        subcategory(s)
+                                                    </span>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 col-lg-3 col-sm-3 drop_ng dropdownborder custon-nonprobubbles">
+                                        <div class="input-icons ">
+                                            <form [formGroup]="type" class="dropDown-field dropdown_list">
+                                                <ng-multiselect-dropdown class="stts stts_typeselected" name="type"
+                                                    [placeholder]="'Type'" formControlName="type" [disabled]="disabled"
+                                                    [settings]="dropdownSettingstypeid" [data]="typeI"
+                                                    (onSelect)="onTypeSelect($event)"
+                                                    (onDeSelect)="onTypeDeSelect($event)"
+                                                    (onSelectAll)="onTypeSelectOrAll()"
+                                                    (onDeSelectAll)="OnTypeDeselectOrAll()">
+                                                </ng-multiselect-dropdown>
+                                                <div class="dropdown-placeholder type-placeholder">
+                                                    <span *ngIf="type.get('type').value.length == 0"
+                                                        style="color:grey;"> Select
+                                                        Type </span>
+                                                    <span *ngIf="type.get('type').value.length == 1"
+                                                        class="selected-placeholder"> {{type.get('type').value.length}}
+                                                        Type
+                                                        selected </span>
+                                                    <span *ngIf="type.get('type').value.length > 1"
+                                                        class="selected-placeholder"> {{type.get('type').value.length}}
+                                                        Type(s)
+                                                        selected </span>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-lg-3 col-sm-3 Drop_ng dropdownborder custon-nonprobubbles">
+
+                                        <div class="input-icons ">
+
+                                            <form [formGroup]="getproductForm" class="dropDown-field dropdown_list">
+                                                <ng-multiselect-dropdown class="stts stts_typeselected"
+                                                    formControlName="getprocategroy" name="getprocategroy"
+                                                    [placeholder]="'Product Group'" [disabled]="disabled"
+                                                    [settings]="dropdownproductgroup" [data]="prosubgroupdropdown"
+                                                    (onSelect)="onProductSelect($event)"
+                                                    (onDeSelect)="onProductDeSelect($event)"
+                                                    (onSelectAll)="onProductSelectOrAll($event)"
+                                                    (onDeSelectAll)="onProductDeSelectOrAll($event)">
+
+                                                </ng-multiselect-dropdown>
+
+                                                <div class="dropdown-placeholder type-placeholder">
+                                                    <span *ngIf="getproductForm.get('getprocategroy').value.length == 0"
+                                                        style="color:grey;"> Select Product Group
+                                                    </span>
+
+                                                    <span *ngIf="getproductForm.get('getprocategroy').value.length == 1"
+                                                        class="selected-placeholder">
+                                                        {{getproductForm.get('getprocategroy').value.length}}
+                                                        Product
+                                                    </span>
+                                                    <span class="selected-placeholder"
+                                                        *ngIf="getproductForm.get('getprocategroy').value.length > 1">
+                                                        {{getproductForm.get('getprocategroy').value.length}}
+                                                        Products</span>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+
+                                    <!-- <div class="col-md-3 dropdownborder">
                                             <div class="input-icons ">
                                                 <form [formGroup]="myFormsIdentifier" class="dropDown-field dropdown_list">
                                                     <ng-multiselect-dropdown class="identifier identi_fier"
@@ -1206,95 +1207,91 @@
                                                 </form>
                                             </div>
                                         </div> -->
-    
-                                       
-    
-    
-    
-    
-                                    </div>
+
                                 </div>
-                                 <div  class="col-md-2 col-lg-2 col-sm-2">
-                                    <div class="icon btnhover refreshbtn">
-                                        <img src="assets/img/Vector.png" (click)="refresh()" class="refresh-icon"
-                                            alt="refresh">
-                                    </div>
-                                   
-                                </div> 
-                                
                             </div>
-                             
-                            <div class="row mt-5">
-                               
-                        
-                                   
-                                <div class="col-lg-12 nonpromoSearch" style="margin-left: 1%;">
-                                  
-                                    <div class="col-md-4 srch-hover">
-                                     <!-- style="margin-right: -30px;" -->
-                                       
-                                        <div class="searchBox1 d-flex">
-                                            <input class="searchInput1" type="text" name=""
-                                                placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
-    
-                                            <button class="search-btn">Search</button>
-                                            <button class="searchButton" href="#">
-                                                <i class="material-icons">
-                                                    search
-                                                </i>
-                                            </button>
-                                           
-                                        </div>
-                                     
-                                       
-                                    </div>
-                                  
+                            <div class="col-md-2 col-lg-2 col-sm-2">
+                                <div class="icon btnhover refreshbtn">
+                                    <img src="assets/img/Vector.png" (click)="refresh()" class="refresh-icon"
+                                        alt="refresh">
                                 </div>
-                                <mat-slide-toggle class="togglebutton"  (click)="toggleData($event) "> Items With Order Qty </mat-slide-toggle>       
+
                             </div>
-                            
-                           
-                                <div class="tabel-div" >
-                                <table class="tableclass" >
-                                    <thead  class="table-headercolor">
-                                        <tr>
-                                            <th width="30"></th>
-                                            <th data-sortable="true" class="align-center">Product Code</th>
-    
-                                            <th data-sortable="true"class="align-center">Product Name</th>
-                                         <th data-sortable="true" class="align-center"> Identifier</th>
-                                            <!-- <th data-sortable="true">classification</th>  -->
-                                            <!-- <th data-sortable="true">SKU</th> -->
-                                            <th class="align-center">Registration No</th>
-                                            <th data-sortable="true" class="align-center"> UnitPrice</th>
-                                            <!-- <th data-sortable="true">Stock Qty</th> -->
-                                            <!-- <th data-sortable="false">Tax Templete</th> -->
-                                            <th data-sortable="false"class="align-center"> Order Quantity</th>
-                                            <th data-sortable="false"class="align-center"> Order Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="tbodayheight" >
-    
-                                        <tr class="table-row" *ngFor="let Item of orderNonPromotionsdata " [ngClass]="{'promotionItem': Item.isInPromotion===true}">
-                                            
-                                           
-                                            <td width="30">  <input type="checkbox" class="check custom-checkbox"
-                                                    [checked]="Item.isPromotionSelected"
-                                                    (change)="checkboxChange($event,Item)" onfocus="this.checked=''"
-                                                    ></td>
-                                                    
-                                            <td style="text-align: left;">{{Item.productSKUName}}</td>
-                                            <td style="text-align: left;">{{Item.stockitemname}}</td>
-                                            <!-- <td>{{Item.materialcustomidentifier}}66</td> -->
-                                            <td style="text-align: left;">{{Item.materialCustomName}}</td>
-                                            <!-- <td>{{Item.classification}}</td> --> 
-                                            <td style="text-align: left;">{{Item.registrationNumber}}</td>
-                                           
-                                            <td>{{Item.price}}</td>
-                                            <!-- <td><input type="text" placeholder="Enter" class="quatity-inp"
+
+                        </div>
+
+                        <div class="row mt-5">
+
+
+
+                            <div class="col-lg-12 nonpromoSearch" style="margin-left: 1%;">
+
+                                <div class="col-md-4 srch-hover">
+                                    <!-- style="margin-right: -30px;" -->
+
+                                    <div class="searchBox1 d-flex">
+                                        <input class="searchInput1" type="text" name=""
+                                            placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
+
+                                        <button class="search-btn">Search</button>
+                                        <button class="searchButton" href="#">
+                                            <i class="material-icons">
+                                                search
+                                            </i>
+                                        </button>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            <mat-slide-toggle class="togglebutton" (click)="toggleData($event) "> Items With Order Qty
+                            </mat-slide-toggle>
+                        </div>
+
+
+                        <div class="tabel-div">
+                            <table class="tableclass">
+                                <thead class="table-headercolor">
+                                    <tr>
+                                        <th width="30"></th>
+                                        <th data-sortable="true" class="align-center">Product Code</th>
+
+                                        <th data-sortable="true" class="align-center">Product Name</th>
+                                        <th data-sortable="true" class="align-center"> Identifier</th>
+                                        <!-- <th data-sortable="true">classification</th>  -->
+                                        <!-- <th data-sortable="true">SKU</th> -->
+                                        <th class="align-center">Registration No</th>
+                                        <th data-sortable="true" class="align-center"> UnitPrice</th>
+                                        <!-- <th data-sortable="true">Stock Qty</th> -->
+                                        <!-- <th data-sortable="false">Tax Templete</th> -->
+                                        <th data-sortable="false" class="align-center"> Order Quantity</th>
+                                        <th data-sortable="false" class="align-center"> Order Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tbodayheight">
+
+                                    <tr class="table-row" *ngFor="let Item of orderNonPromotionsdata "
+                                        [ngClass]="{'promotionItem': Item.isInPromotion===true}">
+
+
+                                        <td width="30"> <input type="checkbox" class="check custom-checkbox"
+                                                [checked]="Item.isPromotionSelected"
+                                                (change)="checkboxChange($event,Item)" onfocus="this.checked=''"></td>
+
+                                        <td style="text-align: left;">{{Item.productSKUName}}</td>
+                                        <td style="text-align: left;">{{Item.stockitemname}}</td>
+                                        <!-- <td>{{Item.materialcustomidentifier}}66</td> -->
+                                        <td style="text-align: left;">{{Item.materialCustomName}}</td>
+                                        <!-- <td>{{Item.classification}}</td> -->
+                                        <td style="text-align: left;">{{Item.registrationNumber}}</td>
+
+                                        <td>{{Item.price}}</td>
+                                        <!-- <td><input type="text" placeholder="Enter" class="quatity-inp"
                                                     [(ngModel)]="Item.stock"></td> -->
-                                            <!-- <td>{{Item.stockqty}}</td> -->
-                                            <!-- <td>
+                                        <!-- <td>{{Item.stockqty}}</td> -->
+                                        <!-- <td>
                                                 <select class="tax-select" [(ngModel)]="Item.taxid">
                                                     <option value="" selected hidden>Select tax</option>
                                                     <option *ngFor="let option of taxdropdowndata"
@@ -1305,23 +1302,24 @@
                                                 <img src="assets/img/doubleTickes-default.svg" alt="double-blue-tick"
                                                     (click)="doubleClick(Item.taxid)" style="margin-left: 5px;">
                                             </td> -->
-    
-                                            <!-- <td><input type="number" placeholder="Enter " class="quatity-inp" 
+
+                                        <!-- <td><input type="number" placeholder="Enter " class="quatity-inp" 
                                                     [(ngModel)]="Item.quantity" 
                                                      (change)="quantityChange(Item)  "
                                                      ></td> -->
 
-                                                     
-                                            <td><input type="number" placeholder="Enter " class="quatity-inp" 
-                                            [(ngModel)]="Item.quantity" (ngModelChange)="quantityChange(Item)" name="Item.quantity"> 
-                                                 </td>
-                                             <td>{{(Item.quantity ?? 0) * Item.price }}</td>
-                                            </tr>
-                                    </tbody>
-                                </table>
-                                
-                                      <div  class="bottom-table tt" id="totalnonprobackcolor" >
-                                        <!-- <div class="row">
+
+                                        <td><input type="number" placeholder="Enter " class="quatity-inp"
+                                                [(ngModel)]="Item.quantity" (ngModelChange)="quantityChange(Item)"
+                                                name="Item.quantity">
+                                        </td>
+                                        <td>{{(Item.quantity ?? 0) * Item.price }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="bottom-table tt" id="totalnonprobackcolor">
+                                <!-- <div class="row">
                                             <div class="col-1">
                                               <b class="btm-total">Total </b>
                                             </div>
@@ -1336,18 +1334,16 @@
                                             </div>
                                             
                                             </div> -->
-                                            
-                                      
-                                      </div>
-                                      <div class=" addbuttons mt-2">
-                                        <button  type="button "class="btn btn-primary w-25  saveitems " (click)="addnonPromoItems()">Confirm</button>
-                                      </div>
-                                     
-                                     </div>
-                                     
-                     </div>
+                            </div>
+                            <div class=" addbuttons mt-2">
+                                <button type="button " class="btn btn-primary w-25  saveitems "
+                                    (click)="addnonPromoItems()">Confirm</button>
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-

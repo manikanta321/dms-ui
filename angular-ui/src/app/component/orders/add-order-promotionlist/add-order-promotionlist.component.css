@@ -368,7 +368,7 @@ margin-top: 24px;
 {
     color: gray;
     position: relative;
-    left: -22%;
+    left: -15%;
     top: 6px;
 }
 .totalAmount
@@ -448,12 +448,15 @@ letter-spacing: 0.04em;
 }
 #thisPromoFree{
   position: relative;
-  left: 7%;
+    left: 48%;
+    color: grey;
+    top: -37%;
 }
 #freeqty
 {
-  position: relative;
-  left: 30%;
+  position: absolute;
+  left: 32%;
+  z-index: 1;
 }
 #TotalorderQTY
 {

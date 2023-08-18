@@ -15,8 +15,6 @@ import { ViewPromotionPopupComponent } from '../../pramotion-action/view-promoti
   styleUrls: ['./add-order-promotionlist.component.css']
 })
 export class AddOrderPromotionlistComponent implements OnInit {  
-
- 
   // taxtemplete :any =['hj','hj'];
 
   otherInputValue: number = 0;
@@ -62,7 +60,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
   
   stockItem:any;
   promos:any
-  totalSelectedQuantity: number = 0;
+  totalSelectedQuantity: any;
 
   constructor(private user: UserService,
     private orders: OrdersApisService,
@@ -1011,7 +1009,10 @@ export class AddOrderPromotionlistComponent implements OnInit {
         next: (res: any) => {
           if (res) {
             console.log(res.response, "response after adding item in promotions");
-     localStorage.setItem('PromotionType',res.response[0].promotionTypeNmae)
+    //  localStorage.setItem('PromotionType',res.response[0].promotionTypeNmae)
+    localStorage.setItem('PromotionName',res.response[0].promotionName);
+    localStorage.setItem('PromotionTypeName',res.response[0].promotionTypeNmae);
+
             this.dialogRef.close(res.response);
           }
         },

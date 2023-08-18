@@ -28,6 +28,7 @@ export class AddorderpromotionsComponent implements OnInit {
   hidereset:boolean=false;
 
   NotVisibleProArrow:boolean=true;
+  VisibleValumePromotion:boolean=true;
   NotVisibleNonProArrow:boolean=true;
   products: any = FormGroup;
   isAdminLoggedIn: boolean = true;
@@ -35,6 +36,7 @@ export class AddorderpromotionsComponent implements OnInit {
   
   isLoggedIn: boolean = false;
   //  RK IMP Item: any = { quantity: null };
+  selectedPromotionTypeName:any;
   
   enteredValue!: number;
   ProductList: any = [];
@@ -63,13 +65,15 @@ export class AddorderpromotionsComponent implements OnInit {
   orderitem = false;
   otherInfo = false;
   PromoExpand=true;
+  PromoExpandVlaumepro=true;
   NonPromotion=true;
   viewpromotions = false;
   ConfiromViewPro = false;
   image1 = 'assets/img/expandarrows.svg';
   image2 = 'assets/img/expandarrows.svg';
   image3 = 'assets/img/expandarrows.svg';
-  Image44='assets/img/expand.png';
+  Image44='assets/img/expandarrows.svg';
+  image55='assets/img/expand.png';
   buygroupromo: any;
   actineLabel: any;
   updateOrSave: boolean = false
@@ -181,6 +185,8 @@ export class AddorderpromotionsComponent implements OnInit {
   resCount = 0;
   rowDataproductGroup = [];
   data: any;
+  PromoExpand1: any = true;
+  PromoExpand3: any = true;
   dateChange(e) {
 
     this.selectedStartDate = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
@@ -213,7 +219,12 @@ export class AddorderpromotionsComponent implements OnInit {
   buygroup: string[] = ["Product Name", "Product Name", "Product Name", "Product Name"];
   CustomerSelect: string[] = ['Valiant Distributors', 'Global Movers', 'Somebody Sales'];
   loginid: any;
+
   productType:any;
+  promotionName:any;
+  promotionTypeId:boolean=false;
+  promotionTypesName:any;
+
   public itemremoved: any[] = [{
     sValue: '',
     eValue: '',
@@ -377,16 +388,17 @@ export class AddorderpromotionsComponent implements OnInit {
 
     }
   }
-  expandPromotions() {
+  expandPromotions() {  
     this.viewpromotions = !this.viewpromotions;
 
-    if (this.viewpromotions === false) {
+    if (this.viewpromotions === false) {     
       this.image1 = 'assets/img/expandarrows.svg';
-    } else {
+    } else {     
       this.image1 = 'assets/img/expandarrows.svg';
+ }
 
-    }
   }
+  
   
   expandConfirmPromotions() {
     this.ConfiromViewPro = !this.ConfiromViewPro;
@@ -420,14 +432,20 @@ export class AddorderpromotionsComponent implements OnInit {
     }
   }
 
-  ExpandPromotion() {
-    this.PromoExpand = !this.PromoExpand;
+ 
+ 
 
-    if (this.PromoExpand === false) {
-      this.Image44 = 'assets/img/expand.png';
-    } else {
-      this.Image44 = 'assets/img/expand.png';
+  ExpandPromotion(type:any) {
+
+    if(this.AddOrderPromotionData[type].isOpen==false)
+    {
+      this.AddOrderPromotionData[type].isOpen=true
     }
+    else
+    {
+      this.AddOrderPromotionData[type].isOpen=false
+    }
+
   }
 
   ExpandNonPromotion() {
@@ -465,12 +483,27 @@ export class AddorderpromotionsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
         this.AddOrderPromotionData  = [...this.AddOrderPromotionData.filter(x => (x.promotionId !== this.clickedPromotion)), ...res];
+        console.log(this.AddOrderPromotionData,"Checking console 1");
         this.clickedPromotion = null;
         this.arrayOfImages.forEach(x => {
           x.isSelected = this.AddOrderPromotionData.findIndex(y => y.promotionId == x.productPromotionsId) !== -1;
         })
+
+        this.AddOrderPromotionData.forEach((element:any)=>{
+          return element.isOpen=true
+          let obj:any={
+            isOpen:false
+          }
+          element.push(obj)
+        })
+        console.log(this.AddOrderPromotionData,"Checking console 2");
+
+
         this.getShippingandPackingcharges();
-        this.productType = localStorage.getItem('PromotionType')
+        // this.productType = localStorage.getItem('PromotionType')
+        this.promotionName = localStorage.getItem('PromotionName')
+        this.promotionTypesName = localStorage.getItem('PromotionTypeName')
+        
       }
     })
     // localStorage.setItem('buygroupromo', '')
@@ -589,7 +622,9 @@ export class AddorderpromotionsComponent implements OnInit {
 
   }
   removePromotionItem(clickedItem, promotionId) {
-    this.productType = localStorage.removeItem('PromotionType');
+    // this.productType = localStorage.removeItem('PromotionType');
+    this.promotionName = localStorage.getItem('PromotionName')
+        this.promotionTypesName = localStorage.getItem('PromotionTypeName')
     // let ClickedPromotionObj = this.AddOrderPromotionData.find(x => x.promotionId == promotionId);
     let index = this.AddOrderPromotionData.findIndex(x => x.promotionId == promotionId);
     this.AddOrderPromotionData.splice(index, 1);
@@ -599,7 +634,7 @@ export class AddorderpromotionsComponent implements OnInit {
     })
     this.getShippingandPackingcharges();
     localStorage.removeItem('totalQuantity');
-    localStorage.removeItem('totalAmount');
+    localStorage.removeItem('totalAmount');   
   }
   removeNonPromotionItem(clickedItem) {
     let index = this.nonpromotionlist.findIndex(x => x.stockitemid == clickedItem.stockitemid);
@@ -618,6 +653,7 @@ export class AddorderpromotionsComponent implements OnInit {
     this.resetQuantity();
     localStorage.removeItem('totalQuantity');
     localStorage.removeItem('totalAmount');
+    this.DisplayNonpromotion=false;
   }
   
   // non-prmotions
@@ -1492,6 +1528,8 @@ export class AddorderpromotionsComponent implements OnInit {
 
   }
 
+
+  DisplayNonpromotion:boolean=false
   addnonPromoItems() {
     let selectedNonPromotionData: any = [];
     this.orderNonPromotionsdata.forEach(item => {
@@ -1544,6 +1582,7 @@ export class AddorderpromotionsComponent implements OnInit {
             });
             this.Non_promotions = false;
             this.getShippingandPackingcharges();
+            this.DisplayNonpromotion=true;
           }
         },
         error: (err: any) => {
@@ -1552,9 +1591,10 @@ export class AddorderpromotionsComponent implements OnInit {
 
         }
       })
-
+      
     console.log(data, "addnonpromotions");
   }
+  quantityAdd:any;
 
   taxdropdown() {
     this.orders.taxtemplatedropdown().subscribe((res) => {
@@ -1875,7 +1915,9 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   removePromotion(e, promotionItem) {
-    this.productType = localStorage.removeItem('PromotionType');
+    // this.productType = localStorage.removeItem('PromotionType');
+    this.promotionName = localStorage.getItem('PromotionName')
+    this.promotionTypesName = localStorage.getItem('PromotionTypeName')
     e.stopPropagation();
     promotionItem.isSelected = false;
     this.AddOrderPromotionData = this.AddOrderPromotionData.filter(x => x.promotionId !== promotionItem.productPromotionsId);

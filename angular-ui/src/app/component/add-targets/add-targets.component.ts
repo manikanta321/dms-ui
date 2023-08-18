@@ -16,6 +16,7 @@ import { DealerTargetSuccessPopupComponent } from 'src/app/dealer-target-success
   styleUrls: ['./add-targets.component.css']
 })
 export class AddTargetsComponent implements OnInit {
+  selectValueChanged = false;
   image1 = 'assets/img/minimize-tag.png';
   rowsTotal: boolean = false;
   disableColumns: boolean = false;

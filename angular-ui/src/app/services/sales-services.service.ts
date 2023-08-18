@@ -133,4 +133,8 @@ public getReceiptBulkUploadTarget(data){
   return this.http.post<any>(this.userurl + 'DealerApi/AddBulkDealerTargets', data);
 
 }
+public SaveGetbulkuploadTarget(data){
+  return this.http.post<any>(this.userurl + 'DealerApi/SaveBulkDealerTargetsBulk', data);
+
+}
 }

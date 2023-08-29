@@ -58,10 +58,7 @@
   /* background-color: #CED4DA; */
 }
 
-.main {
-  background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 
-}
 
 .font {
   font-family: 'Gilroy';
@@ -139,10 +136,7 @@ mat-form-field {
   border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 }
 
-::ng-deep.mat-dialog-container {
-  background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-  ;
-}
+
 
 .productdrpdown {
   width: 365px;

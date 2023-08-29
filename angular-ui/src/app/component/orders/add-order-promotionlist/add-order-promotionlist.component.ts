@@ -16,8 +16,12 @@ import { ViewPromotionPopupComponent } from '../../pramotion-action/view-promoti
 })
 export class AddOrderPromotionlistComponent implements OnInit {  
   // taxtemplete :any =['hj','hj'];
+  
+  
+  PromotionID: any;
+ 
 
-  otherInputValue: number = 0;
+  otherInputValue:any;
   MOQ:any;
   Remarks :any;
   startDate:any;
@@ -60,7 +64,10 @@ export class AddOrderPromotionlistComponent implements OnInit {
   
   stockItem:any;
   promos:any
-  totalSelectedQuantity: any;
+   totalSelectedQuantity: number=0;
+  
+
+
 
   constructor(private user: UserService,
     private orders: OrdersApisService,
@@ -72,7 +79,25 @@ export class AddOrderPromotionlistComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) {  
    }
    registrationNumber:any;
+   result: any;
+   quantity:number|any
+   storedValue:number=0;
+   storedTotalAmount:number=0;
   ngOnInit(): void { 
+    // RK
+    const storedValuenumber = localStorage.getItem('FirstPromotionCalculation');
+    if (storedValuenumber !== null) {
+      this.storedValue = parseInt(storedValuenumber);
+    }
+
+    // RK Amount
+    const totalAmountnumber = localStorage.getItem('FirstPromotionTotalAmountValue');
+    if (totalAmountnumber !== null) {
+      this.storedTotalAmount = parseInt(totalAmountnumber);
+    }
+   
+
+  
     this.MOQ=localStorage.getItem('MOQ');
         this.imageUrl = localStorage.getItem('clickedImageURL');
         console.log("THis.Image",this.imageUrl)
@@ -186,7 +211,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
   //   });
   // }
-
+  
+  
 
   getpromotionlistById(e, item) {
     // console.log(e, item);
@@ -223,6 +249,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
       // });
       
       this.Remarks = res.response?.remarks;
+      this.PromotionID=res.response.promotionTypesId
       console.log("ResponseData",res.response)
       // this.MOQ=res.response[0]?.promoDetails?.buyGroups[0]?.moq
       // this.GETMOQ=res.response[0]?.promoDetails?.getGroups[0]?.moq
@@ -273,6 +300,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
     formatObj.registrationNumber = stockItem.registrationNumber;
     formatObj.moq = stockItem.moq;
     formatObj.remarks = stockItem.remarks;
+    formatObj.promotionTypesId = stockItem.promotionTypesId;
     formatObj.materialcustomidentifier = stockItem.materialcustomidentifier;
     formatObj.materialCustomName=stockItem.materialCustomName;
 
@@ -454,9 +482,12 @@ export class AddOrderPromotionlistComponent implements OnInit {
     this.totalSelectedQuantity = totalSelectedQuantity;
   }
 
+  
+
 
   orderPromotionEnableValidate() {
-    console.log(this.griddatapromotions);
+    console.log(this.griddatapromotions,"PROMOTION TYPE ID ");
+    
     this.isOrderPromotionValid = true;
     this.griddatapromotions.forEach(x => {
       if (x.promotionTypesId == 3 || x.promotionTypesId == 4) {
@@ -492,6 +523,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
           }
         });
       }
+      console.log(stockItem.Quantity,"SK");
     });
   }
 
@@ -531,7 +563,6 @@ export class AddOrderPromotionlistComponent implements OnInit {
             if (stockItem.stockitemid.length != 0) {
               stockItem.stockitemid.forEach(stock => {
                 if (stock.isProductSelected) {
-                  // alert("hhh0")
                   stockItem.totalQuantity += stock.Quantity;
                   console.log(stockItem.totalQuantity,"dsvdvs")
                   
@@ -764,8 +795,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
     }
   }
   
-  
-  quantity:any
+ 
+
+   
   totalQuantity:any
   addPromoItems() {
    // payload for 3 and 4th promotions

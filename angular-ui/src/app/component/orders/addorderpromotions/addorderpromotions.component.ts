@@ -25,6 +25,8 @@ import { SharedimageService } from 'src/app/sharedimage.service';
   styleUrls: ['./addorderpromotions.component.css']
 })
 export class AddorderpromotionsComponent implements OnInit {
+
+  discountAmount:any;
   hidereset:boolean=false;
 
   NotVisibleProArrow:boolean=true;
@@ -224,6 +226,7 @@ export class AddorderpromotionsComponent implements OnInit {
   promotionName:any;
   promotionTypeId:boolean=false;
   promotionTypesName:any;
+  
 
   public itemremoved: any[] = [{
     sValue: '',
@@ -250,10 +253,13 @@ export class AddorderpromotionsComponent implements OnInit {
     })
     sort: [];
    
+    
+   
   }
   
   firstFormGroup: FormGroup = this._formBuilder.group({ firstCtrl: [''] });
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
+  
   ngOnInit(): void {
     localStorage.setItem('AddorEditpro', '');
     localStorage.setItem('AddorEditpro1', '');
@@ -635,6 +641,7 @@ export class AddorderpromotionsComponent implements OnInit {
     this.getShippingandPackingcharges();
     localStorage.removeItem('totalQuantity');
     localStorage.removeItem('totalAmount');   
+    
   }
   removeNonPromotionItem(clickedItem) {
     let index = this.nonpromotionlist.findIndex(x => x.stockitemid == clickedItem.stockitemid);
@@ -653,6 +660,8 @@ export class AddorderpromotionsComponent implements OnInit {
     this.resetQuantity();
     localStorage.removeItem('totalQuantity');
     localStorage.removeItem('totalAmount');
+    localStorage.removeItem('FirstPromotionCalculation');
+    localStorage.removeItem('FirstPromotionTotalAmountValue');
     this.DisplayNonpromotion=false;
   }
   
@@ -1593,6 +1602,9 @@ export class AddorderpromotionsComponent implements OnInit {
       })
       
     console.log(data, "addnonpromotions");
+    // RK
+    localStorage.setItem('FirstPromotionCalculation', this.quantityadd);
+    localStorage.setItem('FirstPromotionTotalAmountValue', this.price);
   }
   quantityAdd:any;
 

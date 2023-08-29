@@ -1,3 +1,331 @@
+
+#FREEQTYsecondpromotion
+{
+  position: relative;
+  float: right;
+  left: 77px;
+  top: 16px;
+  color: black;
+  font-weight: bold;
+}
+
+#SecondPromotionProOrderquanty
+{
+  position: relative;
+  top: 16%;
+  left: 20%;
+  font-weight: 700;
+  font-weight: bold;
+  color: black;
+}
+#PromoorderAMOUNT
+{
+  position: relative;
+  top: 16%;
+  left: 16%;
+  font-weight: 700;
+  color: black;
+  font-weight: bold;
+}
+
+#FreeOrderQTySecondPromotion{
+  position: relative;
+  top: 18%;
+  left: 10%;
+  font-weight: bold;
+  color: black;
+}
+
+
+
+#FirstproTotalorderqyt{
+  position: relative;
+    top: 18%;
+    left: 24%;
+    color: black;
+    font-weight: bold;
+}
+#SecondPromotiontotalorderqty{
+  position: relative;
+    top: 18%;
+    left: 24%;
+    color: black;
+    font-weight: bold;
+}
+#FirstPromotiontotalselectamount
+{
+  position: relative;
+  top: 18%;
+  left: 20%;
+  font-weight: bold;
+  color: black;
+}
+#secondPromotionTotalorderamount
+{
+  position: relative;
+  top: 18%;
+  left: 20%;
+  font-weight: bold;
+  color: black;
+}
+
+
+
+.FirstPromotioncalcul
+{
+  border-radius: 5px;
+   border: 1px solid rgba(225, 226, 227, 1);
+  margin-top: 16px;
+  position: relative;
+  left: 15px;
+  top: 4px;
+}
+.SecondPromotioncalcution
+{
+  border-radius: 5px;
+   border: 1px solid rgba(225, 226, 227, 1);
+  margin-top: 16px;
+  position: relative;
+  left: 15px;
+  top: 4px;
+}
+#FirstPromotionlabelCal
+{
+  display: inline-block;
+ vertical-align: middle; 
+ font-family: 'Calibri';
+font-size: 16px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: 0.04em;
+margin-top: 17px;
+margin-left: 15px;
+
+}
+#SecondPromotionlabelCal
+{
+  display: inline-block;
+ vertical-align: middle; 
+ font-family: 'Calibri';
+font-size: 16px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: 0.04em;
+margin-top: 17px;
+margin-left: 15px;
+
+}
+#FirstPromotionProOrderQTY
+{
+  display: inline-block;
+  vertical-align: middle; 
+  font-family: 'Calibri';
+ font-size: 16px;
+ font-weight: 400;
+ line-height: 18px;
+ letter-spacing: 0.04em;
+  margin-left: 33px;
+  margin-top: 16px;
+}
+#SecondPromotionProOrderQty
+{
+  display: inline-block;
+  vertical-align: middle; 
+  font-family: 'Calibri';
+ font-size: 16px;
+ font-weight: 400;
+ line-height: 18px;
+ letter-spacing: 0.04em;
+  margin-left: 33px;
+  margin-top: 16px;
+}
+#FirstProFreeOrderQty{
+  display: inline-block;
+  vertical-align: middle; 
+  font-family: 'Calibri';
+ font-size: 16px;
+ font-weight: 400;
+ line-height: 18px;
+ letter-spacing: 0.04em;
+  margin-left: 18px;
+    margin-top: 18px;
+}
+#SecondPromotionFreeorderqty
+{
+  /* display: inline-block;
+  vertical-align: middle;  */
+  display:inline-flex;
+  font-family: 'Calibri';
+ font-size: 16px;
+ font-weight: 400;
+ line-height: 18px;
+ letter-spacing: 0.04em;
+  margin-left: 19px;
+    margin-top: 18px;
+}
+
+
+#totalorderqty
+{
+ display: inline-block;
+vertical-align: middle; 
+ font-family: 'Calibri';
+font-size: 16px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: 0.04em;
+margin-top: 20px;
+}
+#totalorderamount
+{
+display: inline-block;
+vertical-align: middle; 
+ font-family: 'Calibri';
+font-size: 16px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: 0.04em;
+margin-top: 20px;
+}
+#Promoorderqty
+{
+display: inline-block;
+vertical-align: middle; 
+font-family: 'Calibri';
+font-size: 16px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: 0.04em;
+margin-top: 20px;
+}
+
+#Promoorderamount
+{
+display: inline-block;
+ vertical-align: middle; 
+ font-family: 'Calibri';
+font-size: 16px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: 0.04em;
+margin-top: 20px;
+}
+
+
+#calculationspartinput {
+  display: inline-block;
+  width: 200px;
+  vertical-align: middle; 
+}
+.calculation
+{
+ margin-top: 1%;
+ width: 767px;
+height: 167px;
+border-radius: 5px;
+border: 1px solid rgba(225, 226, 227, 1)
+
+}
+#TotalOrderQTY{
+  position: relative;
+    top: 18%;
+    left: 24%;
+    color: black;
+    font-weight: bold;
+}
+#ProOrderqty{
+  position: relative;
+    left: 21%;
+    top: 14%;
+    font-weight: bold;
+    color: black;
+}
+#TotalOrderAmount
+{
+  position: relative;
+    top: 18%;
+    left: 20%;
+    font-weight: bold;
+    color: black;
+}
+#TotalOrderAmountforthPro
+{
+  position: relative;
+    top: 18%;
+    left: 20%;
+    font-weight: bold;
+    color: black;
+}
+#TotalOrderAmountforthPromotion
+{
+  position: relative;
+    top: 18%;
+    left: 17%;
+    font-weight: bold;
+    color: black;
+}
+#PromoOrderAmount
+{
+  position: relative;
+    top: 18%;
+    left: 17%;
+    font-weight: bold;
+    color: black;
+} 
+
+#PromoOrderQtyFirstpromotion
+{
+  position: relative;
+    top: -43%;
+    left: 52%;
+    font-weight: bold;
+    color: black;
+    border: none;
+    width: 130px;
+   
+}
+#Proorderqtysecond
+{
+  position: relative;
+  top: -43%;
+  left: 52%;
+  font-weight: bold;
+  color: black;
+  border: none;
+  width: 130px;
+}
+#PromotionAmountQtyFirstpromotion
+{
+  position: relative;
+  top: -43%;
+  left: 56%;
+  font-weight: bold;
+  color: black;
+  border: none;
+  width: 130px;
+}
+#PromotionAmountQtySecondpromotion
+{
+  position: relative;
+  top: -43%;
+  left: 56%;
+  font-weight: bold;
+  color: black;
+  border: none;
+  width: 130px;
+}
+
+#FREEORDERQTYfirstpromotion
+{
+  position: relative;
+    top: 15%;
+    left: 11%;
+    font-weight: bold;
+    color: black;
+}
+
+
+
 .displayed-img
 {
   height: 80px;
@@ -26,6 +354,16 @@ line-height: 18px;
     top: 10px;
     color: rgba(104, 110, 116, 1);
     font-family: 'Calibri';
+font-size: 15px;
+font-weight: 700;
+line-height: 18px;
+}
+#ForthPromotionse_lected
+{
+ position: relative;
+ top: 10px;
+ color: rgba(104, 110, 116, 1);
+ font-family: 'Calibri';
 font-size: 15px;
 font-weight: 700;
 line-height: 18px;

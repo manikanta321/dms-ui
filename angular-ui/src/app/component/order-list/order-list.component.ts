@@ -710,7 +710,8 @@ export class OrderListComponent implements OnInit {
 
 
   addOrderPromotion() {
-     
+    localStorage.removeItem('FirstPromotionCalculation');
+    localStorage.removeItem('FirstPromotionTotalAmountValue');
     const dialogRef = this.dialog.open(AddorderpromotionsComponent,{minWidth: '100vw', height: '731px', 
       panelClass: 'material-add-edit'
     });

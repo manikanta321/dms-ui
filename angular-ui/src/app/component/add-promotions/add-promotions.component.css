@@ -112,7 +112,7 @@ input::-webkit-inner-spin-button {
 }
 
 .buyoneSet {
-  background: #CED4DA;
+
   border: 1px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
@@ -121,7 +121,7 @@ input::-webkit-inner-spin-button {
 
 .getSet1,
 .additionalGetset-2 {
-  background: #CED4DA;
+ 
   /* border: 1px solid #000000;
 box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
 border-radius: 10px; */
@@ -344,10 +344,6 @@ border-radius: 10px; */
   height: 37px;
 } */
 
-.main {
-  /* background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
-
-}
 
 .font {
   font-family: 'Gilroy';

@@ -144,7 +144,8 @@ export class AddorderpromotionsComponent implements OnInit {
   searchText: any = "";
   typesI: any = [];
   dealersbillingAddress: any = [];
-   quantityadd: any = 0;
+    quantityadd: any = 0;
+ 
    promos: any[] = [];
 
   mrp: any = [];
@@ -584,8 +585,29 @@ export class AddorderpromotionsComponent implements OnInit {
   //   alert("Helloo")
   // }
   totalQuantity:any;
-  totalAmount:any
+  totalAmount:any;
+  ForthPromotionsSelectedQuantity:number|any=0;
+  ForthPromotionTotalAmount:number|any=0;
+  ThreePromotionTotalselectedQTY:number|any=0;
+  ThreePromotionTotalAmount:number|any=0;
   addOrderNonPromotionList() {
+
+    // 4 Promotion Calculations
+    this.ForthPromotionsSelectedQuantity= localStorage.getItem('ForthPromotionSelectedQTy');
+   this.ForthPromotionsSelectedQuantity=JSON.parse(this.ForthPromotionsSelectedQuantity);
+
+   this.ForthPromotionTotalAmount=localStorage.getItem('ForthPromotionTotalAmount');
+   this.ForthPromotionTotalAmount=JSON.parse(this.ForthPromotionTotalAmount);
+
+  //  3 Promotion calculations
+  this.ThreePromotionTotalselectedQTY=localStorage.getItem('ThreePrommotionTotalselectedQuantity');
+  this.ThreePromotionTotalselectedQTY=JSON.parse(this.ThreePromotionTotalselectedQTY);
+
+  this.ThreePromotionTotalAmount=localStorage.getItem('ThreePromotionTotalAmount');
+  this.ThreePromotionTotalAmount=JSON.parse(this.ThreePromotionTotalAmount);
+  
+
+
     localStorage.setItem("geographyId", this.geographyId);
     localStorage.setItem("dealerid", this.customerId);
 
@@ -608,7 +630,9 @@ export class AddorderpromotionsComponent implements OnInit {
         } else {
          this.totalAmount = 0;
            }
-                    
+                  
+       
+
     
 
     this.orderNonPromotionsList();
@@ -640,7 +664,16 @@ export class AddorderpromotionsComponent implements OnInit {
     })
     this.getShippingandPackingcharges();
     localStorage.removeItem('totalQuantity');
-    localStorage.removeItem('totalAmount');   
+    localStorage.removeItem('totalAmount'); 
+    
+    // 4 Promotions
+    localStorage.removeItem('ForthPromotionTotalAmount');
+    localStorage.removeItem('ForthPromotionSelectedQTy');
+
+    // 3 Promotions
+    localStorage.removeItem('ThreePrommotionTotalselectedQuantity');
+    localStorage.removeItem('ThreePromotionTotalAmount');
+
     
   }
   removeNonPromotionItem(clickedItem) {
@@ -660,8 +693,19 @@ export class AddorderpromotionsComponent implements OnInit {
     this.resetQuantity();
     localStorage.removeItem('totalQuantity');
     localStorage.removeItem('totalAmount');
+
+    // 1 Promotions Calculations
     localStorage.removeItem('FirstPromotionCalculation');
     localStorage.removeItem('FirstPromotionTotalAmountValue');
+
+    // 4 Promotions Calculations
+    localStorage.removeItem('ForthPromotionCalculationsTotalQty');
+    localStorage.removeItem('ForthPromotionCalculationsAmount');
+
+    // 3 Promotions calculations
+   localStorage.removeItem('ThreeePromotionCalculationsTotalQty');
+    localStorage.removeItem('ThreePromotionCalculationsAmount');
+
     this.DisplayNonpromotion=false;
   }
   
@@ -1602,11 +1646,24 @@ export class AddorderpromotionsComponent implements OnInit {
       })
       
     console.log(data, "addnonpromotions");
-    // RK
+    // 1 Promotions Calculations
     localStorage.setItem('FirstPromotionCalculation', this.quantityadd);
     localStorage.setItem('FirstPromotionTotalAmountValue', this.price);
+
+    // 4 Promotions Calculations
+    localStorage.setItem('ForthPromotionCalculationsTotalQty',this.quantityadd);
+    localStorage.setItem('ForthPromotionCalculationsAmount',this.price);
+
+    // 3 Promotions Calculations
+    localStorage.setItem('ThreeePromotionCalculationsTotalQty',this.quantityadd);
+    localStorage.setItem('ThreePromotionCalculationsAmount',this.price);
+    
+  
+   
+    
   }
-  quantityAdd:any;
+  // quantityAdd:any|number=0;
+  
 
   taxdropdown() {
     this.orders.taxtemplatedropdown().subscribe((res) => {
@@ -1936,6 +1993,18 @@ export class AddorderpromotionsComponent implements OnInit {
     this.getShippingandPackingcharges();
     localStorage.removeItem('totalQuantity');
     localStorage.removeItem('totalAmount');
+
+    // 4 Promotion calculations
+    localStorage.removeItem('ForthPromotionTotalAmount');
+    localStorage.removeItem('ForthPromotionSelectedQTy');
+
+    // 3 Promotion calculations
+    localStorage.removeItem('ThreePrommotionTotalselectedQuantity');
+    localStorage.removeItem('ThreePromotionTotalAmount');
+  
+
+
+
   }
 
   showPromotionInfo(e, promotionItem) {

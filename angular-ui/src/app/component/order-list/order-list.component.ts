@@ -710,8 +710,23 @@ export class OrderListComponent implements OnInit {
 
 
   addOrderPromotion() {
+    // 1 Promotion calculations
     localStorage.removeItem('FirstPromotionCalculation');
     localStorage.removeItem('FirstPromotionTotalAmountValue');
+
+    // 4 Promotion calculations
+    localStorage.removeItem('ForthPromotionTotalAmount');
+    localStorage.removeItem('ForthPromotionSelectedQTy');
+
+    localStorage.removeItem('ForthPromotionCalculationsTotalQty');
+    localStorage.removeItem('ForthPromotionCalculationsAmount');
+//  3 Promotions 
+    localStorage.removeItem('ThreePrommotionTotalselectedQuantity');
+    localStorage.removeItem('ThreePromotionTotalAmount');
+    // 3 Non Promotions calculations
+    localStorage.removeItem('ThreeePromotionCalculationsTotalQty');
+    localStorage.removeItem('ThreePromotionCalculationsAmount');
+    
     const dialogRef = this.dialog.open(AddorderpromotionsComponent,{minWidth: '100vw', height: '731px', 
       panelClass: 'material-add-edit'
     });

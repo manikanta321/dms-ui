@@ -276,13 +276,10 @@ border: 1px solid rgba(225, 226, 227, 1)
 #PromoOrderQtyFirstpromotion
 {
   position: relative;
-    top: -43%;
-    left: 52%;
+    top: 12%;
+    left: 20%;
     font-weight: bold;
     color: black;
-    border: none;
-    width: 130px;
-   
 }
 #Proorderqtysecond
 {
@@ -294,15 +291,14 @@ border: 1px solid rgba(225, 226, 227, 1)
   border: none;
   width: 130px;
 }
+
 #PromotionAmountQtyFirstpromotion
 {
   position: relative;
-  top: -43%;
-  left: 56%;
-  font-weight: bold;
-  color: black;
-  border: none;
-  width: 130px;
+    top: 12%;
+    left: 16%;
+    font-weight: bold;
+    color: black;
 }
 #PromotionAmountQtySecondpromotion
 {
@@ -319,7 +315,7 @@ border: 1px solid rgba(225, 226, 227, 1)
 {
   position: relative;
     top: 15%;
-    left: 11%;
+    left: 10.2%;
     font-weight: bold;
     color: black;
 }

@@ -82,21 +82,51 @@ export class AddOrderPromotionlistComponent implements OnInit {
    result: any;
    quantity:number|any
    storedValue:number=0;
+   storedForthProvalue:number=0;
    storedTotalAmount:number=0;
+   StoredForhtPromoTotalAmount:number=0;
+   StoreThreePromotionsselectedqty:number=0;
+   StoredThreePromoTotalAmount:number=0;
+  
   ngOnInit(): void { 
-    // RK
+    // 1 Promotions Selected Quantity
     const storedValuenumber = localStorage.getItem('FirstPromotionCalculation');
     if (storedValuenumber !== null) {
       this.storedValue = parseInt(storedValuenumber);
     }
 
-    // RK Amount
+    // 1 Promotions Total Amount
     const totalAmountnumber = localStorage.getItem('FirstPromotionTotalAmountValue');
     if (totalAmountnumber !== null) {
       this.storedTotalAmount = parseInt(totalAmountnumber);
     }
-   
+    
+    // 4th Promotion Quantity
+    const StoredValueNumber = localStorage.getItem('ForthPromotionCalculationsTotalQty');
+    if (StoredValueNumber !== null) {
+      this.storedForthProvalue = parseInt(StoredValueNumber);
+      console.log(this.storedForthProvalue,'Check reee')
+    }
 
+    // 4 Promotion Total Amount
+    const TotalAmountnumber = localStorage.getItem('ForthPromotionCalculationsAmount');
+    if (TotalAmountnumber !== null) {
+      this.StoredForhtPromoTotalAmount = parseInt(TotalAmountnumber);
+    }
+
+  //  3 Promotions Quantity
+  const StoredthreePromotionsQuantityNumber = localStorage.getItem('ThreeePromotionCalculationsTotalQty');
+    if (StoredthreePromotionsQuantityNumber !== null) {
+      this.StoreThreePromotionsselectedqty = parseInt(StoredthreePromotionsQuantityNumber);
+      console.log(this.StoreThreePromotionsselectedqty,' 3 Promotions total quantity Check reee')
+    }
+
+      // 3 Promotion Total Amount
+      const StoreTotalAmountnumberthreePromotions = localStorage.getItem('ThreePromotionCalculationsAmount');
+      if (StoreTotalAmountnumberthreePromotions !== null) {
+        this.StoredThreePromoTotalAmount = parseInt(StoreTotalAmountnumberthreePromotions);
+      }
+ 
   
     this.MOQ=localStorage.getItem('MOQ');
         this.imageUrl = localStorage.getItem('clickedImageURL');
@@ -256,7 +286,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
       console.log(this.MOQ,"check moq");
       console.log(this.GETMOQ,"check  get groups moq");
       
-      
+    
      
       this.ProductPromotionOrderList = res.response;
       
@@ -457,7 +487,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
   
   quantityChange(data, updatedItem) {
     
-    if (!updatedItem.isProductSelected) {
+    if (!updatedItem.isProductSelected) {  
       updatedItem.isProductSelected = true;
     } else if (!updatedItem.Quantity) {
       updatedItem.isProductSelected = false;
@@ -489,6 +519,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
     console.log(this.griddatapromotions,"PROMOTION TYPE ID ");
     
     this.isOrderPromotionValid = true;
+   
     this.griddatapromotions.forEach(x => {
       if (x.promotionTypesId == 3 || x.promotionTypesId == 4) {
         if (!x.promoDetails.isItemValid || !x.promoDetails.isDiscountItemValid) {
@@ -498,12 +529,14 @@ export class AddOrderPromotionlistComponent implements OnInit {
       if (x.promotionTypesId == 2 || x.promotionTypesId == 1) {
         if (!x.promoDetails.isGetItemValid || !x.promoDetails.isBuyItemValid) {
           this.isOrderPromotionValid = false;
+          
+              
         }
       }
 
     })
   }
-
+  TotalthreePromotionAmount:number=0;
   calculateDiscountVolumeAmount(item) {
     item.promoDetails.isDiscountItemValid = false;
     item.promoDetails.DiscountAmount = 0;
@@ -523,11 +556,14 @@ export class AddOrderPromotionlistComponent implements OnInit {
           }
         });
       }
-      console.log(stockItem.Quantity,"SK");
     });
+     // 3 Promotions TotalAmount Calculations
+     this.TotalthreePromotionAmount=item.promoDetails.DiscountAmount;
+     console.log("Checking Total Amount",item.promoDetails.DiscountAmount);
+  
   }
-
-  calculateDiscountAmount(item) {
+ 
+  calculateDiscountAmount(item) {       
     item.promoDetails.isDiscountItemValid = false;
     item.promoDetails.DiscountAmount = 0;
     item.promoDetails.stockitems.forEach(stockItem => {
@@ -540,15 +576,33 @@ export class AddOrderPromotionlistComponent implements OnInit {
             stockItem.DiscountAmount = element.maxPrice;
             item.promoDetails.isDiscountItemValid = true;
             item.promoDetails.DiscountAmount += stockItem.finalPrice;
+
+            // 4 // TotalForthPromotionAmount Calculations
+            this.totalPromotionOrderAmount=item.promoDetails.DiscountAmount;
+          console.log("RK",item.promoDetails.DiscountAmount);
+          localStorage.setItem('ForthPromotionTotalAmount',JSON.stringify(this.totalPromotionOrderAmount));
+
+         
+          
           }
+          
         });
       }
+    
     });
+
+   
+   
   }  
 
   totalPromotionOrderAmount: number = 0;
-
+  selectedProQTY:number=0;
+  TotalselectedQuantitythreePromotion:number=0;
+  
+  TotalForthPromotionAmount:number=0;
   PromotionQtyCalculation(item) {
+   
+  
     switch (item.promotionTypesId) {
       case 1:
         // buygroups
@@ -572,6 +626,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
                   //  this.totalQuantity = totalQuantity;
                   
                     localStorage.setItem('totalQuantity',totalQuantity);
+                    
                   
 
                   stockItem.totalAmount += (stock.price * stock.Quantity);
@@ -580,6 +635,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
                     localStorage.setItem('totalAmount',totalAmount);
 
                   console.log(stockItem.totalAmount,"sdvsfsv")
+                 
+
+                  
                 }
               })
               if (stockItem.maxVolume) {
@@ -636,7 +694,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
         break;
 
       case 2:
-
+      
         if (item.promoDetails && item.promoDetails.buySets && item.promoDetails.buySets && item.promoDetails.buySets.length != 0) {
           item.promoDetails.isBuyItemValid = true;
           item.promoDetails.isBuyItemSelected = false;
@@ -655,6 +713,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
                     stockItem.totalQuantity += stock.Quantity;
                     stockItem.totalAmount += (stock.price * stock.Quantity);
                   }
+                
                 })
 
                 if (stockItem.maxVolume && stockItem.totalQuantity) {
@@ -739,6 +798,12 @@ export class AddOrderPromotionlistComponent implements OnInit {
             if (stockItem.isProductSelected) {
               item.promoDetails.totalQuantity += stockItem.Quantity;
               item.promoDetails.totalAmount += (stockItem.price * stockItem.Quantity);
+
+              
+          //  3 Promotion Calculations Total Selected Quantity
+              console.log(item.promoDetails.totalQuantity,"OMG")
+              this.TotalselectedQuantitythreePromotion=item.promoDetails.totalQuantity;
+              
             }
           });
           if (item.promoDetails.totalQuantity < item.promoDetails.moq) {
@@ -758,6 +823,12 @@ export class AddOrderPromotionlistComponent implements OnInit {
               item.promoDetails.totalQuantity += stockItem.Quantity;
               item.promoDetails.totalAmount += (stockItem.price * stockItem.Quantity);
               // stockItem.DiscountAmount = this.calculateDiscountAmount(item.promoDetails.prices, stockItem)
+
+              // 4 Promotion Calculations
+          this.selectedProQTY=item.promoDetails.totalQuantity;
+         
+        
+             
             }
           });
           if (item.promoDetails.totalQuantity < item.promoDetails.moq) {
@@ -769,6 +840,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
       default:
         break;
+       
+      
+
     }
 
     this.orderPromotionEnableValidate();
@@ -800,6 +874,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
    
   totalQuantity:any
   addPromoItems() {
+    
    // payload for 3 and 4th promotions
     this.promotionstype1 = [];
     this.promotionstype2 = [];
@@ -985,6 +1060,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
                 };
                 selectedPromotionData3.push(obj)
+                // 3 Promotions calculations
+                localStorage.setItem('ThreePrommotionTotalselectedQuantity',JSON.stringify(this.TotalselectedQuantitythreePromotion));
+                localStorage.setItem('ThreePromotionTotalAmount',JSON.stringify(this.TotalthreePromotionAmount));
 
               }
             });
@@ -1001,6 +1079,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
           if (item.promoDetails && item.promoDetails.stockitems && item.promoDetails.stockitems.length != 0) {
             item.promoDetails.stockitems.forEach(stockItem => {
               if (stockItem.isProductSelected) {
+
                 let obj = {
 
                   "Taxid": stockItem.Taxid,
@@ -1010,6 +1089,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
                 };
                 selectedPromotionData4.push(obj)
+                // 4 Promotion Calculations
+                localStorage.setItem('ForthPromotionSelectedQTy',JSON.stringify(this.selectedProQTY));
+               
               }
             });
           }
@@ -1018,6 +1100,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
             "AddItems": selectedPromotionData4
           }
           this.promotionstype4.push(data4);
+        
           break;
         default:
           break;
@@ -1046,13 +1129,21 @@ export class AddOrderPromotionlistComponent implements OnInit {
     localStorage.setItem('PromotionTypeName',res.response[0].promotionTypeNmae);
 
             this.dialogRef.close(res.response);
+          
+
+           
           }
+          
         },
         error: (err: any) => {
 
         }
       });
-  }
+      
+    }
+  
+  
+    
 
 totatQty(event:any) {
 alert(event);
@@ -1074,6 +1165,19 @@ updateValue(value: number) {
 
 
 getTotalSelectedQuantity(promos: any): number {
+  if (!promos || !promos.stockitemid) {
+      return 0;
+  }
+  let totalSelected = 0;
+  for (const Item of promos.stockitemid) {
+      if (Item.isProductSelected) {
+          totalSelected += Item.Quantity;
+      }
+  }
+  return totalSelected;
+}
+
+getTotalEntitledSelectedRemaining(promos: any): number {
   if (!promos || !promos.stockitemid) {
       return 0;
   }

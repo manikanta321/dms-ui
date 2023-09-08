@@ -1026,12 +1026,15 @@
                                 <div class="col"style="height:71px" style="background-color: rgba(222, 226, 230, 0.2);height: 52px;">
                                    
                                         <label id="TotalORDER_qty" for="inputField">Total Order Qty</label>   
-                                           <span id="Total_order_qty" > {{totalQuantity+quantityadd }} </span>       
+                                           <span id="Total_order_qty" > {{totalQuantity+quantityadd+ForthPromotionsSelectedQuantity+ThreePromotionTotalselectedQTY }} </span>   
+                                         
+    
                               </div>
 
                                  <div class="col" style="background-color: rgba(222, 226, 230, 0.2);">
                                         <label id="TotalORDER_qty" for="inputField">Total Order Amount</label>   
-                                         <span id="Total_order_qty" >{{totalAmount+price }}</span> 
+                                         <span id="Total_order_qty" >{{totalAmount+price+ForthPromotionTotalAmount+ThreePromotionTotalAmount}}</span> 
+                                   
                                          
                                 </div>
 

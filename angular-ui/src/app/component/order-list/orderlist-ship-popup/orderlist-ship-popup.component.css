@@ -977,8 +977,8 @@ li {
   outline: none;
   font-size: 15px;
   border-radius: 10px 10px 0px 0px;
-  background: #FFFFFF;
-  border: 0.5px solid #000000;
+  color: white;
+  border: 0.5px solid rgba(1, 139, 117, 1);
   border-radius: 10px;
   background: rgba(1, 139, 117, 1);
 }

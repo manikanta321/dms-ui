@@ -2044,7 +2044,14 @@ li {
     position: relative;
     left: 91px;
     bottom: 20px;
+}#protype_confirm
+{
+  display: inline-flex;
+  width: 78px;
+  position: relative;
+  left: 31px;
 }
+
 .expand-arrow_W
 {
   cursor: pointer;

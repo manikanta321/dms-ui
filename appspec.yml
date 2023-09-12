@@ -2,7 +2,7 @@ version: 0.0
 os: windows
 files:
   - source: \
-    destination:  c:\inetpub
+    destination:  D:\801_DMS\UI
 file_exists_behavior: OVERWRITE
 hooks:
  BeforeInstall:

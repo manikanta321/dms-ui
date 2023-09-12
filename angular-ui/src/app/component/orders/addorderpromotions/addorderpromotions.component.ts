@@ -454,7 +454,16 @@ export class AddorderpromotionsComponent implements OnInit {
     }
 
   }
+  
+  shouldShowRowq = false;
+  public rowVisibility: boolean[] = [];
+  
+  
+  toggleRow(index: number) {
+    this.rowVisibility[index] = !this.rowVisibility[index];
+}
 
+  
   ExpandNonPromotion() {
     this.NonPromotion = !this.NonPromotion;
 
@@ -503,6 +512,8 @@ export class AddorderpromotionsComponent implements OnInit {
           }
           element.push(obj)
         })
+       
+
         console.log(this.AddOrderPromotionData,"Checking console 2");
 
 
@@ -1701,6 +1712,7 @@ export class AddorderpromotionsComponent implements OnInit {
     this.confirm_Order = false;
   }
   ordersubmit(submitType) {
+     this.promotionTypesName = localStorage.removeItem('PromotionTypeName');
     if (localStorage.getItem('AddorEditpro') != 'edit') {
       localStorage.setItem('AddorEditpro1', submitType);
 
@@ -1801,8 +1813,10 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   GetOrdersToEdit() {
+    
+    
     this.CustomerPoId = localStorage.getItem("CustomerPoId");
-    // alert(this.CustomerPoId)
+    //  alert(this.CustomerPoId)
     console.log(this.CustomerPoId, 'this.CustomerPoId')
     this.copyEditOrderById = null;
     this.orders.GetOrdersToEdit(this.CustomerPoId).subscribe((res) => {

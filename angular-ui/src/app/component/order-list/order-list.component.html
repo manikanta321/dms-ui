@@ -59,17 +59,46 @@
           </div>
         </form>
       </div>
+      <!-- Search -->
+      <div class="col-md-2 col-lg-2 col-sm-2" >
+        <div class="searchBox11 d-flex">
+          <input class="searchInput11" type="text" name="" placeholder="Search here anything"(keyup)="onSearchChange($event)">
+           <mat-icon  class="searchicons">search</mat-icon> 
+          <button class="search-bt_n">Search</button>
+           <button class="searchButtonn" href="#">
+          </button>
+        </div>
+      </div>
       <!-- refresh -->
-      <div class="icon btnhover1 refreshbtn1" (click)="refresh()">
+      <div class="col-md-1 col-lg-1 col-sm-1" >
+            <div class="icon btnhover1 refreshbtn1" (click)="refresh()">
         <img class="refresh1" src="assets/img/Vector.png" 
           alt="refresh">
       </div>
+      </div>
+      
+      <!--Add Promotion  -->
+      <div class="col-md-0 col-lg-0 col-sm-0">
+        <div class="sales-add" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName">
+            <img class="imgorder" src="assets/img/add-btn.png"
+                alt="add">
+        </div>
+    </div>
+      <!-- Download -->
+      <div class="col-md-0 col-lg-0 col-sm-0">
+        <div class="sales-dwnld" (click)="onBtnExport()" userRoleDirective="DOWNLOAD_ORDER" [pageName]="currentPageName" >
+          <img   class="imgdwnl" src="../../../assets/img/Group 35891.png"
+              alt="add-user-btn">    
+        </div>
+        </div>
+
+
 </div>
 </div>
 
 <!-- filter ends -->
-<div class="row listicon">
-  <div class="col-md-4 srch-hover" >
+<!-- <div class="row listicon">
+   <div class="col-md-4 srch-hover" >
     
     <div class="searchBox1 d-flex">
       <input class="searchInput1" type="text" name="" placeholder="Type & search for anything"(keyup)="onSearchChange($event)">
@@ -78,18 +107,11 @@
         <i class="material-icons">
           search
         </i>
+        
       </button>
     </div>
    
   </div>
-   <!-- refresh -->
-   <!-- <div class="col-md-0" id="rk">
-    <div class="REFRESHBUTTON" (click)="refresh()">
-      <img class="RefreshIMG" src="assets/img/Vector.png" 
-        alt="refresh">
-    </div>
-   </div> -->
-   
   
   <div class="col-md-0">
     <div class="sales-add" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName">
@@ -97,28 +119,34 @@
             alt="add">
     </div>
 </div>
-<!-- <div class="col-md-0">
+<div class="col-md-0">
   <div class="sales-download">
       <img class="dwnld-img" src="assets/img/orderlist-upload.svg" 
           alt="add-user-btn">
   </div>
-</div> -->
-<!-- <div class="col-md-0">
+</div>
+ <div class="col-md-0">
 <div class="sales-upload" (click)="orderUpload() ">
     <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
         alt="add-user-btn">    
 </div>
-</div> -->
+</div>
+
 <div class="col-md-0">
 <div class="sales-dwnld" (click)="onBtnExport()" userRoleDirective="DOWNLOAD_ORDER" [pageName]="currentPageName" >
   <img   class="imgdwnl" src="../../../assets/img/Group 35891.png"
       alt="add-user-btn">    
 </div>
 </div>
-</div>
-
-
-<div >
+</div> -->
+  <div  class="AllText" *ngIf="userType !== 'Dealer Admin'">
+    <span class="ml-4" >ODV: <span class="ml-1">Order Value</span></span>
+    <span class="ml-4" >ODQ:<span class="ml-2">Order Quantity</span></span>
+    <span class="ml-4" >RDQ:<span class="ml-2">Received Quantity</span></span>
+    <span class="ml-4" >OSQ:<span class="ml-2">Oustanding Qunatiy</span> </span>
+    <span class="ml-4" >OSV:<span class="ml-2">Oustanding Value</span> </span>
+    <span class="ml-4"  >ITQ:<span class="ml-2">In-transit Quantity</span> </span>
+  </div>
     <ag-grid-angular
  id="gridContainer" style=" height: 400px;border-radius: 20px;background-color: white;font-family: Calibri ;width: 100%;
  overflow: hidden;"
@@ -143,7 +171,7 @@
 
  ></ag-grid-angular>
  
- </div>
+ <!-- </div> -->
  <!-- <div class="pagination">
      <span class="pagination-cls">1</span> to <span class="pagination-cls">
        {{paginationScrollCount}} 

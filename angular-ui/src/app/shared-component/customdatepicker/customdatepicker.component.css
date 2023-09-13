@@ -205,7 +205,8 @@ svg {
    border: 1px solid #337ab7;
        font-size: 12px;
        box-shadow: 1px 1px #959595;
-       top:55px;
+       /* top:55px; */
+       top:49px;
        height: 29px;
        padding-right: 18px;
        

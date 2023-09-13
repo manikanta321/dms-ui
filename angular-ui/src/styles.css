@@ -74,8 +74,13 @@ body {
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
 * {
-  scrollbar-width: auto;
-  scrollbar-color: #000000 #dee2e6;
+  /* scrollbar-width: auto; */
+  scrollbar-color:rgba(1, 139, 117, 1);
+
+}
+html
+{
+  scrollbar-color:rgba(1, 139, 117, 1) white;
 }
 
 /* Chrome, Edge, and Safari */

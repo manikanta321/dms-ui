@@ -467,12 +467,24 @@ input {
         padding: 0 28px;
         left: -302% !important;
     }
+    .searchBox11:hover>.searchInput11 {
+        width: 228px !important;
+        padding: 0 28px;
+        left: -302% !important;
+    }
+
 
     .searchBox1 {
         left: 37%
     }
+    .searchBox11 {
+        left: 37%
+    }
 
     .searchBox1:hover>.search-btn {
+        right: 183px !important;
+    }
+    .searchBox11:hover>.search-btn {
         right: 183px !important;
     }
 
@@ -486,6 +498,11 @@ input {
     }
 
     .searchBox1:hover>.searchButton .material-icons {
+        position: relative;
+        right: -47px !important;
+        color: #000;
+    }
+    .searchBox11:hover>.searchButtonn .material-iconss {
         position: relative;
         right: -47px !important;
         color: #000;
@@ -1292,6 +1309,27 @@ mat-sidenav {
     color: #000;
     top: 3px;
 }
+.searchBox11:hover>.searchButtonn .material-iconss {
+    position: relative;
+    right: 282px;
+    color: #000;
+    top: 3px;
+  
+}
+.searchBox11 >.searchButtonn .material-iconss {
+    position: relative;
+    right: 282px;
+    color: #000;
+    top: 3px;
+    
+}
+
+.material-iconss {
+    position: relative;
+    right: 282px;
+    color: #000;
+    top: 3px;
+}
 
 .searchBox:hover>.search-btn {
     display: block;
@@ -1316,6 +1354,29 @@ mat-sidenav {
     right: 10px;
     top: 6px;
 }
+.search-btn {
+    display: block;
+    height: 26px;
+    border: none;
+    background: #000000;
+    color: white;
+    border-radius: 5px;
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    display: none;
+}
+.search-bt_n {
+    display: block;
+    height: 26px;
+    border: none;
+    background: #000000;
+    color: white;
+    border-radius: 5px;
+    position: absolute;
+    right: 10px;
+    top: 8px;
+}
 
 .searchBox1:hover>.searchInput1 {
     display: block;
@@ -1333,11 +1394,62 @@ mat-sidenav {
     letter-spacing: 0.08em;
     color: #263643;
     box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
-    /* // transition: 0.2s  ease-in-out; */
     position: absolute;
     right: 4px;
     bottom: -3px;
 }
+.searchInput11 {
+    display: block;
+    width: 100%;
+    height: 42px;
+    background: #FFFFFF;
+    float: left;
+    /* padding: 5px 32px 6px; */
+    padding-left: 11%;
+    border-radius: 10px;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: 0.08em;
+    color: #263643;
+    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+    position: absolute;
+    right: -2px;
+    /* border: 1px solid #B3B3B3; */
+    border:1px solid black;
+    
+}
+.AllText
+{
+    font-family: 'Calibri';
+font-size: 15px;
+font-weight: 400;
+line-height: 12px;
+letter-spacing: 0em;
+color: #000000;
+margin-top: 18px;
+display: flex;
+justify-content: end;
+
+
+}
+.searchReceipts{
+    width: 17px;
+    position: relative;
+    left: 62%;
+    top: -2px;
+    }
+    .searchicons
+    {
+        color: #9B9FA3;
+        top: 10px;
+    position: relative;
+    left: -7px;
+   
+  
+    }
 
 .dropdown-placeholder {
     background: white;

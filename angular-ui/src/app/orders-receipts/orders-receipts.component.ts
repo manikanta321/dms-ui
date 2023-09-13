@@ -357,9 +357,11 @@ export class OrdersReceiptsComponent implements OnInit {
         console.log("Response",this.receiptDatalist)
       });
     }
-    orderReceiptsBulkUpload(){
+    orderReceiptsBulkUpload()
+    {
+      
       localStorage.setItem('UploadTarget','');
-        this.dialog.open(OrderReceiptsBulkUploadComponent);
+      this.dialog.open(OrderReceiptsBulkUploadComponent);
     }
     // orderReceiptsBulkUpload(){
     //   sessionStorage.setItem("sales",'');

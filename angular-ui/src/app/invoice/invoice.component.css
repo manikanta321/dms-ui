@@ -1,8 +1,8 @@
-.searchBox:hover>.searchButton,
+/* .searchBox:hover>.searchButton,
 .searchBox>.searchInput,
 .search-btn {
   display: none;
-}
+} */
 
 .searchBox {
   float: right;
@@ -11,25 +11,26 @@
   top: 5px;
 }
 
-.searchBox:hover>.searchButton {
-  display: bolck;
+.searchButton {
+  display: block;
   color: #000;
   float: left;
   width: 42px;
   height: 42px;
-  background: #ffff;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: 0.2s;
   background: none;
   position: relative;
-  right: 288px;
-  top: 2px;
+  right: 261px;
+  top: 3px;
 
 }
 
-.searchBox:hover>.search-btn {
+
+
+.search-btn {
   display: block;
   height: 26px;
   border: none;
@@ -41,9 +42,10 @@
   top: 94px;
 }
 
-.searchBox:hover>.searchInput {
+
+.searchInput {
   display: block;
-  width: 335px;
+  width: 300px;
   height: 43px;
   background: #FFFFFF;
   float: left;
@@ -57,7 +59,6 @@
   letter-spacing: 0.08em;
   color: #263643;
   box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
-  /* // transition: 0.2s  ease-in-out; */
   position: absolute;
   right: 0px;
   bottom: -3px;
@@ -94,12 +95,10 @@
 }
 
 .searchButton {
-  display: bolck;
-  color: #FFFFFF;
+  display: block;
+  color: black;
   width: 37px;
-  height: 37px;
   border-radius: 13%;
-  background: rgba(104, 110, 116, 0.66);
   display: flex;
   justify-content: center;
   align-items: center;

@@ -813,6 +813,7 @@ export class OrderListComponent implements OnInit {
     }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
+      console.log(res.response,'..............')
        this.rowDatalist.forEach(element=>{
          element.orderDate= this.sharedService.dateformat
          (element.orderDate);

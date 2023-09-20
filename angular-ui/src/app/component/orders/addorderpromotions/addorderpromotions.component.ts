@@ -251,6 +251,7 @@ export class AddorderpromotionsComponent implements OnInit {
     })
     this.sharedService.getClickEvent().subscribe(() => {
       this.orderNonPromotionsList();
+     
     })
     sort: [];
    
@@ -438,10 +439,24 @@ export class AddorderpromotionsComponent implements OnInit {
       this.image3 = 'assets/img/expandarrows.svg';
     }
   }
-
- 
- 
-
+  searchTextt: any = '';
+  GeographyIdid:any;
+  searchData($event: any) {
+    const { target } = $event;
+    this.searchTextt = target.value;
+  
+    const filteredImages = [...this.imagesapis];
+  
+    this.arrayOfImages = filteredImages.filter((item: any) => {
+      // console.log(this.searchTextt);
+      // console.log(item);
+      return (
+        item.promotionName.toLowerCase().includes(this.searchTextt.toLowerCase()) ||
+        item.promotionTypesName.toLowerCase().includes(this.searchTextt.toLowerCase())
+      );
+    });
+  }
+  
   ExpandPromotion(type:any) {
 
     if(this.AddOrderPromotionData[type].isOpen==false)

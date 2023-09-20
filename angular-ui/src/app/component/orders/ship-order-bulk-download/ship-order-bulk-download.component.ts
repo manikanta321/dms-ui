@@ -135,11 +135,11 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
    
     {  headerName: "Total Items ",
     field:"totalitems",tooltipField:"totalitems", resizable:true,
-            children:[
-          {headerName: "In Order", field: 'poQty',  tooltipField:"poQty",    minWidth:50, resizable:true},
-          {headerName: "In Shipment", field: 'shipQty',      tooltipField:"shipQty",minWidth:50, resizable:true},
-          {headerName: "Received", field: 'received',      tooltipField:"received",minWidth:50, resizable:true},
-        ]
+        //     children:[
+        //   {headerName: "In Order", field: 'poQty',  tooltipField:"poQty",    minWidth:50, resizable:true},
+        //   {headerName: "In Shipment", field: 'shipQty',      tooltipField:"shipQty",minWidth:50, resizable:true},
+        //   {headerName: "Received", field: 'received',      tooltipField:"received",minWidth:50, resizable:true},
+        // ]
     
       },
   

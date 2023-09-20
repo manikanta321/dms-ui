@@ -612,7 +612,6 @@ input {
 }
 
 .main {
-    /* background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
     border-radius: 30px;
 }
 
@@ -692,6 +691,19 @@ mat-sidenav-container {
     font-size: 14px !important;
 }
 
+::ng-deep.ag-header-cell:hover .ag-header-cell-text {
+    color:gray!important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px !important;
+}
+/* ::ng-deep .ag-header-cell-text:hover {
+    color:gray!important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px !important;
+
+}  */
 ::ng-deep .ag-header-cell-text:hover {
     color:gray!important;
     overflow: hidden;
@@ -1404,7 +1416,6 @@ mat-sidenav {
     height: 42px;
     background: #FFFFFF;
     float: left;
-    /* padding: 5px 32px 6px; */
     padding-left: 11%;
     border-radius: 10px;
     font-family: 'Gilroy';
@@ -1417,7 +1428,6 @@ mat-sidenav {
     box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
     position: absolute;
     right: -2px;
-    /* border: 1px solid #B3B3B3; */
     border:1px solid black;
     
 }
@@ -1447,8 +1457,6 @@ justify-content: end;
         top: 10px;
     position: relative;
     left: -7px;
-   
-  
     }
 
 .dropdown-placeholder {

@@ -7,6 +7,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { SharedimageService } from 'src/app/sharedimage.service';
 import { ViewPromotionPopupComponent } from '../../pramotion-action/view-promotion-popup/view-promotion-popup.component';
+import { Item } from '@generic-ui/ngx-grid/core/structure/source/src/api/item/item';
 
 
 @Component({
@@ -289,6 +290,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
     
      
       this.ProductPromotionOrderList = res.response;
+      console.log(this.ProductPromotionOrderList,"======")
       
       this.orderPromotionFormatter(this.ProductPromotionOrderList);
       
@@ -846,6 +848,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
     }
 
     this.orderPromotionEnableValidate();
+    
   }
   checkboxChange(event, changedPromotionObj, promotionItem) {
     console.log(event, changedPromotionObj, "event, changedPromotionObj");
@@ -1176,6 +1179,37 @@ getTotalSelectedQuantity(promos: any): number {
   }
   return totalSelected;
 }
+
+moqselectedreamining(promos: any): number {
+  if (!promos || !promos.stockitemid) {
+      return 0;
+  }
+  let totalSelected = 0;
+  for (const Item of promos.stockitemid) {
+      if (Item.isProductSelected) {
+          totalSelected += Item.Quantity;
+      }
+  }
+  return totalSelected;
+}
+
+// selected
+
+toggleState: boolean = false;
+
+toggleData() {
+  this.toggleState = !this.toggleState;
+
+  if (this.toggleState) {
+    this.ProductPromotionOrderList = this.ProductPromotionOrderList?.filter(
+      (Item) => Item.promoDetails?.stockitemid?.isProductSelected
+    );
+  } else {
+    this.ProductPromotionOrderList
+  }
+}
+
+
 
 getTotalEntitledSelectedRemaining(promos: any): number {
   if (!promos || !promos.stockitemid) {

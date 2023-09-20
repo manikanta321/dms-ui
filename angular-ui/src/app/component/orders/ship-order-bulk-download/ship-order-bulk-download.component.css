@@ -26,7 +26,7 @@
   .bulk-head:after {
     content: "";
     display: block;
-    width: 521px;
+    width: 346px;
     height: 0.5px;
     background: #686E74;
     right: 2%;
@@ -37,7 +37,7 @@
   .bulk-head:before {
     content: "";
     display: block;
-    width: 562px;
+    width: 346px;
     height: 0.5px;
     background: #686E74;
     left: 1%;
@@ -190,7 +190,7 @@ text-align: center;
     filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
     width: 43px;
     height: 41px;
-    background: #000000;
+    background: rgba(104, 110, 116, 0.66);
     border-radius: 10px;
     margin-left: 10px;
 

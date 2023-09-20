@@ -36,42 +36,44 @@
         </div>
       </div>
 
-      <div class="sales-refreshbtn" (click)="refresh()">
-        <img class="refresh-img" src="assets/img/Vector.png" alt="refresh">
+      <!-- Search  new -->
+      
+<div class="col-md-2 col-lg-2 col-sm-2" >
+  <div class="search_Box1 d-flex">
+    <input class="searchInput11" type="text" name="" placeholder="Search here anything" (keyup)="onSearchChange($event)">
+    <mat-icon  class="searchicons">search</mat-icon> 
+    <button class="search-bt_n">Search</button>
+  </div>
+</div>
+      <!-- ref new -->
+      <div class="col-md-0 col-lg-0 col-sm-0">
+        <div class="sales-refreshbtn" (click)="refresh()" style="margin-left: 10px;">
+          <img class="refresh-img" src="assets/img/Vector.png" alt="refresh">
+        </div>
       </div>
-</div>
-<!-- bulk downld upload -->
-<div class="row listicon">
-  <div class="col-md-4 srch-hover" >
-    <div class="searchBox1 d-flex">
-      <input class="searchInput1" type="text" name="" placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
-      <button class="search-btn">Search</button>
-      <button class="searchButton" href="#">
-        <i class="material-icons">
-          search
-        </i>
-      </button>
-    </div>
-  </div>
-<div class="col-md-0">
+
+<div class="col-md-0 col-lg-0 col-sm-0">
   <div class="sales-download" (click)="bulkDownload()" userRoleDirective="UPLOAD_SHIPMENT" [pageName]="currentPageName">
-      <img class="dwnld-img" src="assets/img/orderlist-upload.svg" 
-          alt="add-user-btn">
-  </div>
+    <img class="dwnld-img" src="assets/img/orderlist-upload.svg" 
+        alt="add-user-btn">
 </div>
-<div class="col-md-0">
-<div class="sales-upload" (click)="orderShipmentUpload()">
+</div>
+
+<div class="col-md-0 col-lg-0 col-sm-0">
+  <div class="sales-upload" (click)="orderShipmentUpload()">
     <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
         alt="add-user-btn">    
 </div>
 </div>
-<div class="col-md-0">
-<div class="sales-dwnld" (click)="shipmentDownload()">
-  <img   class="imgdwnl" src="assets/img/download-btn.png"
-      alt="add-user-btn">    
+
+<div class="col-md-0 col-lg-0 col-sm-0">
+  <div class="sales-dwnld" (click)="shipmentDownload()">
+    <img   class="imgdwnl" src="assets/img/download-btn.png"
+        alt="add-user-btn">    
+  </div>
 </div>
 </div>
-</div>
+
 <!-- grid -->
 <div class="sales-grid-table mt-3">
   <ag-grid-angular id="gridContainer"  style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"

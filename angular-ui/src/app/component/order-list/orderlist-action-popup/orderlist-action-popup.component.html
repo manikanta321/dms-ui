@@ -9,8 +9,9 @@
   <div (click)="orderReceive()" class="menu-item tick" *ngIf="currentActionMenu.indexOf('receive_order') !== -1">
     Receive<img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
 
-  <div (click)="orderShip()" class="menu-item tick" *ngIf="currentActionMenu.indexOf('ship_order') !== -1">Ship<img
-      src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
+  <!-- <div (click)="orderShip()" class="menu-item tick" *ngIf="currentActionMenu.indexOf('ship_order') !== -1">Ship<img
+      src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div> -->
+
   <div (click)="viewOrder()" class="menu-item tick" *ngIf="currentActionMenu.indexOf('view') !== -1">View<img
       src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
   <div  (click)="ReceiveShipment()" class="menu-item tick"  *ngIf="currentActionMenu.indexOf('receive_shipment') !== -1">Receive<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>

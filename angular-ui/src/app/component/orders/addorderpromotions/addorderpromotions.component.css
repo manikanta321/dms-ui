@@ -77,6 +77,7 @@ margin-top: 20px;
 }
 
 
+
 .orderqty
 {
   border: 1px solid rgba(225, 226, 227, 1);
@@ -664,6 +665,12 @@ input[type=number] {
   font-size: 14px;
   margin-left: 18px;
 }
+.delivery_1 {
+ 
+  font-family: 'Calibri';
+  color: #000000;
+  font-size: 14px;
+}
 
 .boldR {
     font-weight: bold;  
@@ -711,6 +718,16 @@ input[type=number] {
   margin-top: 3px;
   font-family: 'Gilroy';
   margin-left: 2px;
+}
+.Remarkspromotiont
+{
+  font-family: 'Calibri';
+font-size: 16px;
+font-weight: 700;
+line-height: 20px;
+letter-spacing: 0em;
+
+
 }
 .promotiont {
   margin-top: 3px;
@@ -981,6 +998,17 @@ label {
   font-weight: 400;
   color: #000000;
   font-family: 'Gilroy-SemiBold';
+}
+.Dealereferncenew
+{
+  font-family: 'Calibri';
+font-size: 16px;
+font-weight: 700;
+line-height: 20px;
+letter-spacing: 0em;
+color: #000000;
+
+
 }
 mat-form-field {
   width: 246px;
@@ -1562,7 +1590,7 @@ li {
 }
 
 .collapsible {
-  cursor: pointer;
+ 
  padding-left: 1%;
    width: 99%;
   border: none;
@@ -1574,6 +1602,24 @@ li {
   background: linear-gradient(0deg, #018B75, #018B75);
  border: rgba(152, 156, 160, 1);
   border-radius: 10px;
+  padding-top: 6px;
+  height: 44px;
+}
+.DealerRefcollapsible {
+  
+ padding-left: 1%;
+   width: 99%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-radius: 10px 10px 0px 0px;
+  color: white;
+  background: linear-gradient(0deg, #018B75, #018B75);
+ border: rgba(152, 156, 160, 1);
+  border-radius: 10px;
+  height: 44px;
+  padding-top: 6px;
 }
 .coll_apsible {
   cursor: pointer;
@@ -1589,8 +1635,66 @@ li {
   color: white;
   border-radius: 10px;
 }
+.Removecoll_apsible
+{
+  padding-left: 1%;
+   width: 99%;
+  border: none;
+  height: 44px;
+  padding-top: 5px;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-radius: 10px 10px 0px 0px;
+  background: linear-gradient(0deg, #018B75, #018B75);
+  border: 1px solid rgba(152, 156, 160, 1);
+  color: white;
+  border-radius: 10px;
+}
+.searchInput_11 {
+  display: block;
+  width: 100%;
+  height: 33px;
+  background: linear-gradient(0deg, #018B75, #018B75);
+  float: left;
+  padding-left: 14%;
+  border-radius: 6px;
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 17px;
+  letter-spacing: 0.08em;
+  color: white;
+  box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+  position: absolute;
+  right: 31px;
+  border:1px solid white;
+  
+}
+.searchiconsmat
+{
+    color: white;
+    top: 6px;
+    position: relative;
+    right: 39px;
+}
+.searchbuttonpromotions{
+  display: block;
+  height: 23px;
+  border: none;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  position: absolute;
+  right: 36px;
+  top: 5px;
+  font-size: 13px;
+}
+.searchInput_11::placeholder {
+ color: white;
+}
 .coll_apsiblee {
-  cursor: pointer;
   padding-left: 1%;
    width: 99%;
   border: none;
@@ -1598,9 +1702,11 @@ li {
   outline: none;
   font-size: 15px;
   border-radius: 10px 10px 0px 0px;
-  background: #FFFFFF;
-  border: 0.5px solid #000000;
+  background: linear-gradient(0deg, #018B75, #018B75);
   border-radius: 10px;
+  height: 44px;
+  color: white;
+  padding-top: 6px;
 }
 .collapsiblePro {
   cursor: pointer;
@@ -1661,6 +1767,9 @@ li {
 .top-bottom {
   margin-top: 9px;
 }
+.dealerreftop-bottom {
+  margin-top: -3px;
+}
 .t_op-bottom {
   margin-top: 10px;
 }
@@ -1670,6 +1779,12 @@ li {
 }
 
 .label-cls {
+  position: relative;
+  top: 6px;
+  font-family: 'Gilroy-Light';
+  font-size: 18px;
+}
+.DealerReflabel-cls {
   position: relative;
   top: 6px;
   font-family: 'Gilroy-Light';
@@ -1698,11 +1813,14 @@ li {
   border-radius: 4px;
   font-size: 13px;
   color: white;
-  border: 1px solid rgba(152, 156, 160, 1);
+  border: 1px solid white;
   text-align: center;
   cursor: pointer;
   font-family: 'Gilroy-SemiBold';
   margin-top: 2%;
+    width: 210px;
+    height: 28px;
+  margin-right: -38px;
 }
 .promotions-label {
   /* margin-left: -12px; */
@@ -2514,7 +2632,7 @@ tr:nth-child(even) {
 }
 .promotionItem
 {
-  background-color:#FFD580;
+  background-color: #FFC0CB;
 }
 .tt
 {

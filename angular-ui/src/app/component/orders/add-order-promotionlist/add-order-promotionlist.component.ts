@@ -189,10 +189,18 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
     });
   }
+  
+  
+  
+  ForthPromotionsearch;
+  ThirdPromotion;
+  searchText;
+  searchTextFreeItems;
+  searchTextSecondPromotion;
+  searchTextSecondPromotionfree;
 
-  onSearchChange($event) {
 
-  }
+  
   
   viewpromotions:any;
   expandPromotions() {
@@ -1193,13 +1201,61 @@ moqselectedreamining(promos: any): number {
   return totalSelected;
 }
 
+
+moqselectedreaminingFORTHPromotion(promos: any): number {
+  if (!promos || !promos.stockitemid) {
+      return 0;
+  }
+  let totalSelected = 0;
+  for (const Item of promos.stockitemid) {
+      if (Item.isProductSelected) {
+          totalSelected += Item.Quantity;
+      }
+  }
+  return totalSelected;
+}
+
 // selected
 
+// toggleState: boolean = false;
+
+// toggleData(updatedItem) {
+//   this.toggleState = !this.toggleState;
+
+//   if (this.toggleState) {
+//     this.ProductPromotionOrderList = this.ProductPromotionOrderList?.filter(
+//       (Item) => Item.promoDetails?.stockitemid?.isProductSelected
+//     );
+//   } else {
+//     this.ProductPromotionOrderList
+//   }
+// }
+
+
+// new
+
 toggleState: boolean = false;
+// toggleData(updatedItem,data:any) {
+//   this.toggleState = !this.toggleState;
+//   if (this.toggleState == true) {
+//     debugger
+//     this.ProductPromotionOrderList = this.ProductPromotionOrderList.filter(item => item.isPromotionSelected);
+//     console.log(this.promoDetails.stockitemname);
+    
+//   }
+//   else {
+    
+//     this.ProductPromotionOrderList
+    
+//       this.quantityChange(updatedItem,data);
+  
+//   }
+  
+// }
 
-toggleData() {
+toggleData(data:any,item:any) {
+
   this.toggleState = !this.toggleState;
-
   if (this.toggleState) {
     this.ProductPromotionOrderList = this.ProductPromotionOrderList?.filter(
       (Item) => Item.promoDetails?.stockitemid?.isProductSelected

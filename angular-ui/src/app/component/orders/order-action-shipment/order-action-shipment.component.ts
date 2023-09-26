@@ -1,6 +1,6 @@
 
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { AfterViewInit, ChangeDetectorRef, Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import tippy, { hideAll } from 'tippy.js'; 
 
 import { OrdersReceiveShipmentComponent } from '../../orders-receive-shipment/orders-receive-shipment.component';
@@ -13,8 +13,13 @@ import { OrdersReceiveShipmentComponent } from '../../orders-receive-shipment/or
 export class OrderActionShipmentComponent implements OnInit {
   private params;
   public isOpen = false;
+  Alertpp:boolean=false;
   private tippyInstance;
-  constructor(private changeDetector: ChangeDetectorRef,private dialog: MatDialog) {}
+  constructor(private changeDetector: ChangeDetectorRef,
+    @Inject(MAT_DIALOG_DATA) public dialogData:any,
+    private dialog: MatDialog,
+    private dialogRef: MatDialogRef<any>
+  ) {}
 
   ngAfterViewInit(): void {
     this.tippyInstance = tippy(this.button.nativeElement);
@@ -26,6 +31,7 @@ export class OrderActionShipmentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
   @ViewChild('content') container;
 
@@ -66,5 +72,10 @@ export class OrderActionShipmentComponent implements OnInit {
   {
     this.dialog.open(OrdersReceiveShipmentComponent, {width:"1587px",height:"1661px"});
     this.isOpen=false;
+  }
+  closeAlertPopup()
+  {
+    this.dialogRef.close();
+    
   }
 }

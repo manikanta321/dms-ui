@@ -20,12 +20,160 @@
   top: 6px;
   
 }
+.searchInput12 {
+  display: block;
+  width: 100%;
+  height: 36px;
+  background: #FFFFFF;
+  float: left;
+  padding-left: 11%;
+  border-radius: 10px;
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 17px;
+  letter-spacing: 0.08em;
+  color: #263643;
+  box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+  position: absolute;
+  right: -2px;
+  border:1px solid black;
+  top: 0px;
+  
+}
+.searchInput13 {
+  display: block;
+  width: 100%;
+  height: 36px;
+  background: #FFFFFF;
+  float: left;
+  padding-left: 11%;
+  border-radius: 10px;
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 17px;
+  letter-spacing: 0.08em;
+  color: #263643;
+  box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+  position: absolute;
+  right: -2px;
+  border:1px solid black;
+  top: 7px;
+  
+}
+.searchInput14 {
+  display: block;
+  width: 100%;
+  height: 36px;
+  background: #FFFFFF;
+  float: left;
+  padding-left: 11%;
+  border-radius: 10px;
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 17px;
+  letter-spacing: 0.08em;
+  color: #263643;
+  box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+  position: relative;
+  right: -2px;
+  border:1px solid black;
+}
+.searchInput16 {
+  display: block;
+  width: 100%;
+  height: 36px;
+  background: #FFFFFF;
+  float: left;
+  padding-left: 11%;
+  border-radius: 10px;
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 17px;
+  letter-spacing: 0.08em;
+  color: #263643;
+  box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+  position: relative;
+  right: -2px;
+  border:1px solid black;
+  top:7px;
+}
+.searchInput15{
+  display: block;
+  width: 69%;
+  height: 36px;
+  background: #FFFFFF;
+  float: left;
+  padding-left: 11%;
+  border-radius: 10px;
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 17px;
+  letter-spacing: 0.08em;
+  color: #263643;
+  box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+  position: relative;
+  right: -2px;
+  border:1px solid black;
+  top: 7px;
+}
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar
+{
+  background-color: #018B75;
+}
 .searchicons
 {
     color: #9B9FA3;
     top: 14px;
 position: relative;
 left: -7px;
+}
+.searchiconsFREEITEMS
+{
+ color: #9B9FA3;
+  top: 6px;
+  position: relative;
+ left: -7px;
+}
+.searchiconsFREEITEMSsecondpro
+{
+ color: #9B9FA3;
+  top: 15px;
+  position: relative;
+ left: -7px;
+}
+.searchiconsFREEITEMSsecondpro11
+{
+ color: #9B9FA3;
+  top: 15px;
+  position: absolute;
+ left: 27px;
+ z-index: 1;
+}
+.searchiconsFREEITEMSthree
+{
+ color: #9B9FA3;
+  top:7px;
+  position: absolute;
+ left: 27px;
+ z-index: 1;
+}
+.searchiconsForthPromotions
+{
+ color: #9B9FA3;
+  top:15px;
+  position: absolute;
+ left: 27px;
+ z-index: 1;
 }
 .search-bt_n {
   display: block;
@@ -37,6 +185,62 @@ left: -7px;
   position: absolute;
   right: 10px;
   top: 11px;
+}
+.searchBTNFREEITEMS {
+  display: block;
+  height: 26px;
+  border: none;
+  background: #000000;
+  color: white;
+  border-radius: 5px;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+.searchBTNFREEITEMSsecondpro{
+  display: block;
+  height: 26px;
+  border: none;
+  background: #000000;
+  color: white;
+  border-radius: 5px;
+  position: absolute;
+  right: 10px;
+  top: 12px;
+}
+.searchBTNFREEITEMSsecondproguy{
+  display: block;
+  height: 26px;
+  border: none;
+  background: #000000;
+  color: white;
+  border-radius: 5px;
+  position: relative;
+  right: 68PX;
+  top: 12px;
+}
+.searchBTNthreepro{
+  display: block;
+  height: 26px;
+  border: none;
+  background: #000000;
+  color: white;
+  border-radius: 5px;
+  position: relative;
+  right: 68PX;
+  top: 5px;
+}
+.searchBTNforthpro
+{
+  display: block;
+  height: 26px;
+  border: none;
+  background: #000000;
+  color: white;
+  border-radius: 5px;
+  position: relative;
+  right: 68PX;
+  top: 13px;
 }
 .searchBox11 >.searchButtonn .material-iconss {
   position: relative;
@@ -492,7 +696,8 @@ color: rgba(0, 0, 0, 1);
   border-radius: 15px;
   height: 414px;
   width: 89%;
- margin-left: 20px;
+ margin-left: 39px;
+ /* 20 */
 }
 .tableclass
 {

@@ -1,9 +1,27 @@
-<div #trigger  data-action="toggle" style="cursor: pointer;">
+<div #trigger  data-action="toggle" style="cursor: pointer;" *ngIf="!dialogData.Alertpp" >
     <i class="fa fa-ellipsis-v" data-action="toggle"></i>
   </div>
   
-  <div #content *ngIf="isOpen" class="menu-container">
+  <div #content *ngIf="isOpen || !dialogData.Alertpp" class="menu-container" >
     <div class="menu-item tick"> View <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
     <div  (click)="orderReceive()" class="menu-item tick">Receive<img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
   </div>
-  
+
+
+ <div *ngIf="dialogData.Alertpp" style="min-width: 591px;height: 139px;">
+  <div class="popup" id="alert">
+    <div class="popup-content">
+      <div>
+        <p class="ALERT">Alert </p>
+        <mat-icon mat-button class="CloseAlertPopup" [mat-dialog-close]="true" >close</mat-icon>    
+      </div>
+      <hr style="margin-top: -17px;">
+        <div class="selectedProduct">
+          <p  class="SelectedEnterQTY">Please Enter the Order Quantity for the selected Products</p>
+        </div>
+    </div>
+</div>
+<div class="OKBUtton" >
+  <button type="button" class="btn btn-success w-25" (click)="closeAlertPopup()">OK</button>
+</div>
+ </div>

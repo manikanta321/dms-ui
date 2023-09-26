@@ -18,6 +18,7 @@ import { ViewPromotionPopupComponent } from '../../pramotion-action/view-promoti
 import { PromotionService } from 'src/app/services/promotion.service';
 import { Item } from '@generic-ui/ngx-grid/core/structure/source/src/api/item/item';
 import { SharedimageService } from 'src/app/sharedimage.service';
+import { OrderActionShipmentComponent } from '../order-action-shipment/order-action-shipment.component';
 
 @Component({
   selector: 'app-addorderpromotions',
@@ -618,6 +619,8 @@ export class AddorderpromotionsComponent implements OnInit {
   ThreePromotionTotalAmount:number|any=0;
   addOrderNonPromotionList() {
 
+  
+
     // 4 Promotion Calculations
     this.ForthPromotionsSelectedQuantity= localStorage.getItem('ForthPromotionSelectedQTy');
    this.ForthPromotionsSelectedQuantity=JSON.parse(this.ForthPromotionsSelectedQuantity);
@@ -731,6 +734,9 @@ export class AddorderpromotionsComponent implements OnInit {
     // 3 Promotions calculations
    localStorage.removeItem('ThreeePromotionCalculationsTotalQty');
     localStorage.removeItem('ThreePromotionCalculationsAmount');
+
+   
+  
 
     this.DisplayNonpromotion=false;
   }
@@ -1520,13 +1526,20 @@ export class AddorderpromotionsComponent implements OnInit {
     return formattedList;
 
   }
+  UpdatedQty:any
   quantityChange(updatedItem) {
+    // this.UpdatedQty=updatedItem.quantity
   console.log(updatedItem)
+
+
+  
 
     if (!updatedItem.isPromotionSelected) {
       updatedItem.isPromotionSelected = true;
+     
     } else if (!updatedItem.quantity) {
       updatedItem.isPromotionSelected = false;
+   
     }
     this.nonPromotionCalculation(updatedItem);
     // this.value = event.target.value;
@@ -1606,10 +1619,25 @@ export class AddorderpromotionsComponent implements OnInit {
     // }
 
   }
-
+  
+  
 
   DisplayNonpromotion:boolean=false
   addnonPromoItems() {
+    console.log(this.UpdatedQty,"Balram");
+    
+    // if (this.UpdatedQty==null ) 
+    // {
+    //   const dialogRef = this.dialog.open(OrderActionShipmentComponent, {
+    //     data: {
+    //       Alertpp: true
+    //     }
+    //   });
+
+    // } else {
+      
+     
+
     let selectedNonPromotionData: any = [];
     this.orderNonPromotionsdata.forEach(item => {
       if (item.isPromotionSelected) {
@@ -1654,14 +1682,14 @@ export class AddorderpromotionsComponent implements OnInit {
                 "taxid": item.taxid,
                 "registrationNumber": item.registrationNumber,
                 "productSKUName": item.productSKUName,
-                "materialcustomidentifier":item.materialcustomidentifier,
-                "materialCustomName":item.materialCustomName,
+                "materialcustomidentifier": item.materialcustomidentifier,
+                "materialCustomName": item.materialCustomName,
               }
               this.AddorderNonpromotiondata.itemDetails.push(obj);
             });
             this.Non_promotions = false;
             this.getShippingandPackingcharges();
-            this.DisplayNonpromotion=true;
+            this.DisplayNonpromotion = true;
           }
         },
         error: (err: any) => {
@@ -1670,23 +1698,20 @@ export class AddorderpromotionsComponent implements OnInit {
 
         }
       })
-      
+
     console.log(data, "addnonpromotions");
     // 1 Promotions Calculations
     localStorage.setItem('FirstPromotionCalculation', this.quantityadd);
     localStorage.setItem('FirstPromotionTotalAmountValue', this.price);
 
     // 4 Promotions Calculations
-    localStorage.setItem('ForthPromotionCalculationsTotalQty',this.quantityadd);
-    localStorage.setItem('ForthPromotionCalculationsAmount',this.price);
+    localStorage.setItem('ForthPromotionCalculationsTotalQty', this.quantityadd);
+    localStorage.setItem('ForthPromotionCalculationsAmount', this.price);
 
     // 3 Promotions Calculations
-    localStorage.setItem('ThreeePromotionCalculationsTotalQty',this.quantityadd);
-    localStorage.setItem('ThreePromotionCalculationsAmount',this.price);
-    
-  
-   
-    
+    localStorage.setItem('ThreeePromotionCalculationsTotalQty', this.quantityadd);
+    localStorage.setItem('ThreePromotionCalculationsAmount', this.price);
+  // }
   }
   // quantityAdd:any|number=0;
   

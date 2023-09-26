@@ -1203,6 +1203,8 @@
                                     <th data-sortable="true" class="align-center">Product Code</th>
 
                                     <th data-sortable="true" class="align-center">Product Name</th>
+                                    <th></th>
+                                    
                                     <th data-sortable="true" class="align-center"> Identifier</th>
                                     <!-- <th data-sortable="true">classification</th>  -->
                                     <!-- <th data-sortable="true">SKU</th> -->
@@ -1222,9 +1224,9 @@
                                     <td width="30"> <input type="checkbox" class="check custom-checkbox"
                                             [checked]="Item.isPromotionSelected" (change)="checkboxChange($event,Item)"
                                             onfocus="this.checked=''"></td>
-
+                                     
                                     <td style="text-align: left;">{{Item.productSKUName}}</td>
-                                    <td style="text-align: left;">{{Item.stockitemname}}</td>
+                                    <td style="text-align: left;width: 400px;">{{Item.stockitemname}}</td>
                                     <!-- <td>{{Item.materialcustomidentifier}}66</td> -->
                                     <td style="text-align: left;">{{Item.materialCustomName}}</td>
                                     <!-- <td>{{Item.classification}}</td> -->
@@ -1252,15 +1254,17 @@
                                                      ></td> -->
 
 
-                                    <td><input type="number" placeholder="Enter " class="quatity-inp"
+                                    <td>
+                                        <input type="number" placeholder="Enter " class="quatity-inp" 
                                             [(ngModel)]="Item.quantity" (ngModelChange)="quantityChange(Item)"
-                                            name="Item.quantity">
+                                            name="Item.quantity" >
                                     </td>
                                     <td>{{(Item.quantity ?? 0) * Item.price }}</td>
                                 </tr>
+                               
                             </tbody>
                         </table>
-
+                       
                         <div class="bottom-table tt" id="totalnonprobackcolor">
                             <!-- <div class="row">
                                             <div class="col-1">
@@ -1277,7 +1281,9 @@
                                             </div>
                                             
                                             </div> -->
+                                            
                         </div>
+                      
                         <div class=" addbuttons mt-2">
                             <button type="button " class="btn btn-primary w-25  saveitems "
                                 (click)="addnonPromoItems()">Confirm</button>

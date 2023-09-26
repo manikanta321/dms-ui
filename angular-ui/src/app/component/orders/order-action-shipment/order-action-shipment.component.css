@@ -63,3 +63,40 @@
 display:none;
 }
 .tick:hover .tickmark { display:block;}
+
+.CloseAlertPopup{
+ float: right;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+
+  top: -43px;
+   position: relative;
+  
+}
+.ALERT
+{
+  color: red;
+    position: relative;
+    left: 45%;
+    bottom: 12px;
+    font-size: 18px;
+    position: relative;
+    top: -9px;
+}
+.selectedProduct
+{
+  margin-top: 64px;
+  text-align: center;
+  font-family: 'Calibri';
+  font-size: 17px;
+}
+.OKBUtton
+{
+  text-align: center;
+}
+.SelectedEnterQTY
+{
+  position: relative;
+  top:-30px;
+}

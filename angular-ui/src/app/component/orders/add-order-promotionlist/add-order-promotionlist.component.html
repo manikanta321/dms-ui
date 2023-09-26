@@ -286,8 +286,8 @@
                                                     <div *ngFor="let promos of data.promoDetails.buyGroups ">
                                                         
                                                         <div class="row">
-                                                            <div class="col-md-4 col-lg-4 col-sm-4" style="margin-left: 14px;margin-top: 10px;">
-                                                                <span class="buy-grp"> Buy Item Details</span>
+                                                            <div class="col" style="margin-left: 14px;">
+                                                                <span class="buy-grp"> Paid Items</span>
                                                                 <span class="total-itemss">
                                                                     <span style="color:#000;" 
                                                                         [ngClass]="{ 'txt-error-span': !(promos.isItemValid) && data.showWarningMsg }">  
@@ -394,7 +394,7 @@
                                                      
                                                     <div class="col col-lg-5">
 
-                                                        <span class="buy-grp"> Free Item Details</span>
+                                                        <span class="buy-grp"> Free Items </span>
                                                         <span class="ml-1" style="color:#000;"
                                                         [ngClass]="{ 'txt-error-span': promos.totalQuantity != (promos.foc) && data.showWarningMsg }"></span>
                                                        <span class="txt-error" *ngIf="promos.totalQuantity != (promos.foc) && data.showWarningMsg">
@@ -579,8 +579,8 @@
                                                     </div> -->
 
                                                       <div class="row">
-                                                        <div class="col col-lg-5">
-                                                            <span class="buy-grp" style="margin-left: 15px;"> Buy Item Details</span>
+                                                        <div class="col">
+                                                            <span class="buy-grp" style="margin-left: 15px;"> Paid Items </span>
                                                             <span class="total-itemss">
                                                                 <span style="color:#000;"
                                                                     [ngClass]="{ 'txt-error-span': !(promos.isItemValid) && data.showWarningMsg }">
@@ -792,9 +792,9 @@
 
 
                                                 <div class="row" style="width: 92%;">
-                                                    <div class="col-md-4 col-lg-4 col-sm-4">
-                                                        <span class="buy-grp" style="margin-left: 10%;"> Free Items
-                                                            Details</span>
+                                                    <div class="col col-lg-9">
+                                                        <span class="buy-grp" style="margin-left: 2%;"> Free Items
+                                                            </span>
                                                             <span class="total-itemss">
                                                                 <span class="ml-1" style="color:#000;"
                                                                     [ngClass]="{ 'txt-error-span': promos.totalQuantity != (promos.foc) && data.showWarningMsg && promos.isEnable }">
@@ -947,8 +947,8 @@
                                             <div class="row label-div ">
                                                
                                                 <div class="row">
-                                                    <div class="col-4">
-                                                        <span class="buy-grp"style="margin-left:17px"> Buy Item Details </span>
+                                                    <div class="col">
+                                                        <span class="buy-grp"style="margin-left:17px"> Paid Items  </span>
                                                         <span class="total-itemss">
                                                             <span style="color:#000;"
                                                                 [ngClass]="{ 'txt-error-span': ((!data.promoDetails.isItemValid || !data.promoDetails.isDiscountItemValid))   && data.showWarningMsg }">
@@ -1193,8 +1193,8 @@
                                             <!-- headingds for 4th promotions -->
                                           
                                             <div class="row">
-                                                <div class="col-3" style="margin-top: 10px;">
-                                                    <span class="buy-grp"style="margin-left:40px"> Buy Item Details</span>
+                                                <div class="col">
+                                                    <span class="buy-grp"style="margin-left:40px"> Paid Items </span>
                                                     <span class="total-itemss" style="margin-left: 2px;">         
                                                         <span style="color:#000;"
                                                             [ngClass]="{ 'txt-error-span': ((!data.promoDetails.isItemValid || !data.promoDetails.isDiscountItemValid))   && data.showWarningMsg }"></span>

@@ -310,7 +310,7 @@ border-top-right-radius: 13px;
 {
  
   position: relative;
-  left: -6%;
+  left: 0%;
 }
 .dropng_ng
 {
@@ -2988,7 +2988,7 @@ margin-left: 25%;
     }
 .togglebutton
 {
-  margin-left: 2%;
-  margin-top: -2%;
+  margin-left: 80%;
+  margin-top: -5%;
 }
    

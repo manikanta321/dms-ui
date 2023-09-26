@@ -8,11 +8,16 @@
                 <h3 class="addPromo font">{{header}} Promotions</h3>
                 <br>
                 <img src="assets/img/arrow-left-circle-fill.svg" (click)="prevStepper()" class="addMore-icon"
-                    style="width: 24px;margin-left: 94%;" alt="left-arr-btn">
+                    style="width: 24px;margin-left: 94%;" alt="left-arr-btn" [ngClass]="{'disabled-button': isleftButtonDisabled}">
                 <!-- <img src="assets/img/arrow-left-circle-fill.svg" *ngIf="basicInfo" class="addMore-icons"
                     style="width: 24px;margin-left: 760px;" alt="left-arr-btn"> -->
-                <img src="assets/img/arrow-right-circle-fill.svg" (click)="disableBackbutton()" class="addMore-icon"
-                    style="width: 24px; margin-left: 12px;" alt="right-arr-btn">
+                <!-- <img src="assets/img/arrow-right-circle-fill.svg" (click)="disableBackbutton()" class="addMore-icon"
+                    style="width: 24px; margin-left: 12px;" alt="right-arr-btn"> -->
+                    <img src="assets/img/arrow-right-circle-fill.svg" (click)="disableBackbutton()" class="addMore-icon"
+                    style="width: 24px; margin-left: 12px;" alt="right-arr-btn"
+                    [ngClass]="{'disabled-button': isRightButtonDisabled}">
+
+                    
             </div>
             <mat-stepper labelPosition="bottom" #stepper ngClass="addPromotionsHeader">
                 <mat-step [stepControl]="firstFormGroup">
@@ -21,72 +26,72 @@
                         <div class="heading">
                             <h5 class="promo-head">Promotion Information </h5>
                         </div>
-                        <div class="row ">
-                            <div class="col-lg-12 materialname">
-                                <label>Promotion Name <span class="astr">*</span></label>
-                                <input type="text" id="promoname" name="promoname" required [(ngModel)]="promoName"
-                                    #promoname="ngModel" placeholder="Promotion name"
-                                    class="form-control promoNameInput">
-                                <p style="margin-bottom: -20px;"
-                                    *ngIf="promoname.invalid && (promoname.dirty || promoname.touched)">
-                                    <span style="color:red;position: relative;" *ngIf="promoname.errors?.['required']">
-                                        *Promotion Name is required
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
                         <div class="row">
-                            <div class="col-12 col-lg-6">
-                                <!-- <div class="promotiont"> -->
-                                <!-- <label>Promotion Type <span>*</span></label> -->
-                                <!-- </div> -->
-                                <div class="promotiontypedrp identify promotiondrpalign">
-                                    <label>Promotion Type  <span class="astr">*</span></label>
-                                    <ng-select [clearable]="false" [items]="promotionTypedropdown" placeholder="Select the Promotion type" class="tick menu-item"
-                                        id="promotype" name="promotype" bindLabel="promotionTypesName"
-                                        bindValue="promotionTypesId" [(ngModel)]="selectedPromo"
-                                        (change)="selectedValue($event)" required #promotype="ngModel">
-                                         <img src="../../../assets/userImages/done-tick.svg" class="imgtick tickmark">
-                                         
-                                    </ng-select>
-                                    
-                                    
-                                   
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <!-- promotion name -->
+                                    <div class="col-md-6 materialname" >
+                                        <label>Promotion Name <span class="astr">*</span></label>
+                                            <input type="text" id="promoname" name="promoname" required [(ngModel)]="promoName"
+                                                #promoname="ngModel" placeholder="Promotion name"
+                                                class="form-control promoNameInput border border-success" style="line-height: 1.9 !important">
+                                            <p style="margin-bottom: -20px;"
+                                                *ngIf="promoname.invalid && (promoname.dirty || promoname.touched)">
+                                                <span style="color:red;position: relative;" *ngIf="promoname.errors?.['required']">
+                                                    *Promotion Name is required
+                                                </span>
+                                            </p>
+                                    </div>
+                                    <!-- promotion type -->
+                                    <div class="col-md-6">
+                                        <div class="promotiontypedrp identify promotiondrpalign">
+                                            <label>Promotion Type  <span class="astr">*</span></label>
+                                            <ng-select [clearable]="false" [items]="promotionTypedropdown" placeholder="Select the Promotion type" class="tick menu-item border border-success rounded" style="border-radius: 11px !important;"
+                                                id="promotype" name="promotype" bindLabel="promotionTypesName"
+                                                bindValue="promotionTypesId" [(ngModel)]="selectedPromo"
+                                                (change)="selectedValue($event)" required #promotype="ngModel">
+                                                 <img src="../../../assets/userImages/done-tick.svg" class="imgtick tickmark "> 
+                                            </ng-select>  
+                                        </div>
+                                    </div>
+                                    <!-- startdate -->
+                                    <div class="col-md-6">
+                                        <div class="myDatepicker promotion-datepicker">
+                                            <label>Start Date <span class="astr">*</span></label><br>
+                                            <mat-form-field class="placeh-align border border-success">
+                                                <mat-label>Select the start date</mat-label>
+                                                <input matInput [matDatepicker]="picker1" [formControl]="startDate"
+                                                    (dateChange)="dateChange($event)" [min]="minDate">
+                                                <mat-datepicker-toggle matSuffix [for]="picker1">
+                                                    <mat-icon matDatepickerToggleIcon >
+                                                        <img  src="assets/img/calender2.png" class="calendarToggle ">
+                                                    </mat-icon>
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #picker1></mat-datepicker>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <!-- end date -->
+                                    <div class="col-md-6">
+                                        <div class="myDatepicker  promotion-datepicker">
+                                            <label>End Date <span class="astr">*</span></label><br>
+                                            <mat-form-field class="placeh-align border border-success">
+                                                <mat-label>Select the end date</mat-label>
+        
+                                                <input matInput placeholder="" [matDatepicker]="picker2" [min]="endMinDate"
+                                                    [formControl]="endDate" (dateChange)="enddateChange($event)">
+                                                <mat-datepicker-toggle matSuffix [for]="picker2">
+                                                    <mat-icon matDatepickerToggleIcon>
+                                                        <img src="assets/img/calender2.png" class="calendarToggle">
+                                                    </mat-icon>
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #picker2></mat-datepicker>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
                                 </div>
-                                <form #myform>
-                                    <div class="myDatepicker promotion-datepicker">
-                                        <label>Start Date <span class="astr">*</span></label><br>
-                                        <mat-form-field class="placeh-align">
-                                            <mat-label>Select the start date</mat-label>
-                                            <input matInput [matDatepicker]="picker1" [formControl]="startDate"
-                                                (dateChange)="dateChange($event)" [min]="minDate">
-                                            <mat-datepicker-toggle matSuffix [for]="picker1">
-                                                <mat-icon matDatepickerToggleIcon>
-                                                    <img src="assets/img/calender2.png" class="calendarToggle">
-                                                </mat-icon>
-                                            </mat-datepicker-toggle>
-                                            <mat-datepicker #picker1></mat-datepicker>
-                                        </mat-form-field>
-                                    </div>
-                                    <div class="myDatepicker  promotion-datepicker">
-                                        <label>End Date <span class="astr">*</span></label><br>
-                                        <mat-form-field class="placeh-align">
-                                            <mat-label>Select the end date</mat-label>
-
-                                            <input matInput placeholder="" [matDatepicker]="picker2" [min]="endMinDate"
-                                                [formControl]="endDate" (dateChange)="enddateChange($event)">
-                                            <mat-datepicker-toggle matSuffix [for]="picker2">
-                                                <mat-icon matDatepickerToggleIcon>
-                                                    <img src="assets/img/calender2.png" class="calendarToggle">
-                                                </mat-icon>
-                                            </mat-datepicker-toggle>
-                                            <mat-datepicker #picker2></mat-datepicker>
-                                        </mat-form-field>
-                                    </div>
-                                </form>
                             </div>
-
-                            <div class="col-12 col-lg-6 imagefield">
+                            <div class="col-md-6 imagefield">
                                 <label>Image <span class="astr">*</span></label>
                                 <div class="image text-center">
                                     <div class="fileadded">
@@ -109,7 +114,6 @@
                                 </div>
                             </div>
                         </div>
-
 
                         <!-- items in promotion -->
                         <div class="row mt-3">
@@ -712,9 +716,9 @@
                             <div class="footer-btns">
                                 <button class="btn btn-light saveDraft" (click)="AddPromosaveAndSubmit('Draft')">Save as
                                     draft</button>
-                                <button class="btn btn-light submit" (click)="AddPromosaveAndSubmit('Submit')">Save &
-                                    Submit </button>
-                                <button class="cancelbtn" [mat-dialog-close]="true">Cancel</button>
+                                <button class="btn btn-light submit" (click)="AddPromosaveAndSubmit('Submit')">
+                                    Submit  </button>
+                                <!-- <button class="cancelbtn" [mat-dialog-close]="true">Cancel</button> -->
                             </div>
                         </div>
 

@@ -1209,7 +1209,7 @@ mat-sidenav {
     background: rgba(104, 110, 116, 0.66);
     border-radius: 13%;
     width: 37px;
-    height: 37px;
+    height: 41px;
     margin-right: 10px;
     cursor: pointer;
 }
@@ -1259,7 +1259,7 @@ mat-sidenav {
     background: rgba(104, 110, 116, 0.66);
     border-radius: 13%;
     width: 37px;
-    height: 37px;
+    height: 41px;
     cursor: pointer;
 }
 

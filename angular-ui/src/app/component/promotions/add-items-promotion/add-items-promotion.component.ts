@@ -128,11 +128,11 @@ export class AddItemsPromotionComponent implements OnInit {
   columnDefs1: ColDef[] = [
 
     {
-      headerName: "Product Shot Code",
+      headerName: "Product Shot Code" ,
       field: 'productShortCode', type: ['nonEditableColumn'], sort: 'desc', checkboxSelection: true
     },
-    { headerName: "", field: '', type: ['nonEditableColumn'] },
-    { headerName: "", field: '', type: ['nonEditableColumn'] },
+    // { headerName: "", field: '', type: ['nonEditableColumn'] },
+    // { headerName: "", field: '', type: ['nonEditableColumn'] },
 
     {
       headerName: "# of Products", field: 'noofproducts', type: ['nonEditableColumn'],
@@ -169,17 +169,17 @@ export class AddItemsPromotionComponent implements OnInit {
 
     {
       headerName: "Product Group",
-      field: 'productGroupName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left', checkboxSelection: true
+      field: 'productGroupName', type: ['nonEditableColumn'], sort: 'desc',  checkboxSelection: true
     },
 
-    { headerName: "", field: '', type: ['nonEditableColumn'] },
+    // { headerName: "", field: '', type: ['nonEditableColumn'] },
 
-    { headerName: "", field: '', type: ['nonEditableColumn'] },
+    // { headerName: "", field: '', type: ['nonEditableColumn'] },
 
-    {
-      headerName: "",
-      field: '', type: ['nonEditableColumn']
-    },
+    // {
+    //   headerName: "",
+    //   field: '', type: ['nonEditableColumn']
+    // },
 
     {
       headerName: "# of products",
@@ -201,18 +201,18 @@ export class AddItemsPromotionComponent implements OnInit {
   columnDefs3: ColDef[] = [
 
     {
-      headerName: "Product Sub-Group",
+      headerName: "Product Sub-Group" ,
       field: 'productSubGroupName', type: ['nonEditableColumn'], sort: 'desc',  checkboxSelection: true
     },
 
-    { headerName: "", field: '', type: ['nonEditableColumn'] },
+    // { headerName: "", field: '', type: ['nonEditableColumn'] },
 
     { headerName: "Product Group", field: 'productGroupName', type: ['nonEditableColumn'] },
 
-    {
-      headerName: "",
-      field: '', type: ['nonEditableColumn']
-    },
+    // {
+    //   headerName: "",
+    //   field: '', type: ['nonEditableColumn']
+    // },
 
     {
       headerName: "# of Products",

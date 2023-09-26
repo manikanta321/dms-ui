@@ -656,7 +656,7 @@ li {
 }
 
 ::ng-deep.myDatepicker .mat-form-field {
-  width: 415px;
+  width: 262px;
   height: 43px;
   background: white !important;
   border-radius: 5px;
@@ -827,7 +827,7 @@ li {
 }
 
 ::ng-deep.promotiondrpalign .ng-select-container {
-  border: 0.5px solid #000000;
+  /* border: 0.5px solid #000000; */
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   height: 43px;
@@ -997,6 +997,10 @@ li {
      background-repeat: no-repeat;
     color: #333;
     
-  
-  
   }
+
+.disabled-button {
+  opacity: 0.5;
+  pointer-events: none; 
+
+}

@@ -21,15 +21,28 @@
         </div>
       </div>
       <!-- <button (click)="otherstatus()">bhbh</button> -->
+
+      <div class="searchBox3 ">
+        <input class="searchInput3" type="text" name="" placeholder="Search here anything"(keyup)="onSearchChange($event)">
+         <mat-icon  class="searchicons3">search</mat-icon> 
+        <button class="search-bt_n3">Search</button>
+         <!-- <button class="searchButtonn" href="#">
+        </button> -->
+      </div>
+
       <div class="icon btnhover refreshbtn" (click)="refresh()">
         <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;" alt="refresh">
       </div>
+      <div class="add-user" (click)="addCurrencyButton()">
+        <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+      </div>
+
     </div>
     <div class="row" style="margin-bottom:5px;">
       <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
       <div class="col-md-4" style="margin-left: 73%;margin-bottom:10px;">
         <div class="row">
-          <div class="col-md-8">
+          <!-- <div class="col-md-8">
             <div class="searchBox d-flex">
               <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
                 placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
@@ -40,12 +53,12 @@
               </button>
               <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
             </div>
-          </div>
-          <div class="col-md-2">
+          </div> -->
+          <!-- <div class="col-md-12">
             <div class="add-user" (click)="addCurrencyButton()">
               <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
             </div>
-          </div>
+          </div> -->
           <!-- <div class="col-md-0">
 <div class="download-btn" (click)="onBtnExport()">
 <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;" alt="add-user-btn">

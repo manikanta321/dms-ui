@@ -176,7 +176,7 @@
             </div>
             <div class="col-lg-1"></div>
           </div> -->
-          <div class="srch mt-3" style="margin-bottom:10px">
+          <!-- <div class="srch mt-3" style="margin-bottom:10px">
             <div class="row">
               <div class="col-md-12">
                 <div class="searchBox d-flex">
@@ -191,7 +191,22 @@
                 </div>
               </div>
             </div>
+          </div> -->
+
+          <div class="srch mt-3" style="margin-bottom:10px">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="searchBox1 d-flex">
+                  <input class="searchInput1" type="text" name="" placeholder="Search here anything"(keyup)="onSearchChange($event)">
+                   <mat-icon  class="searchicons1">search</mat-icon> 
+                  <button class="search-bt_n1">Search</button>
+                   <!-- <button class="searchButtonn" href="#">
+                  </button> -->
+                </div>
+              </div>
+            </div>
           </div>
+
           <div>
             <!--- product  --->
             <ag-grid-angular id="gridContainer" class="ag-theme-material" (gridReady)="onGridReady($event)"
@@ -236,6 +251,25 @@
           <div>
             <!--- product short code  --->
 
+
+            <div class="srch mt-3" style="margin-bottom:10px">
+              <div class="row">
+                <div class="col-md-11">
+                  <div class="searchBox1 d-flex">
+                    <input class="searchInput1" type="text" name="" placeholder="Search here anything"(keyup)="onSearchChange($event)">
+                     <mat-icon  class="searchicons1">search</mat-icon> 
+                    <button class="search-bt_n1">Search</button>
+                     <!-- <button class="searchButtonn" href="#">
+                    </button> -->
+                  </div>
+                </div>
+
+                <div class="col-md-1">
+                  <div class="ref"><img class="refresh" src="assets/img/Vector.png"  alt="refresh" style="margin-left: 1px;"></div>
+                </div>
+              </div>
+            </div>
+
             <ag-grid-angular id="gridContainer"
               style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
               class="ag-theme-material" (gridReady)="onGridReady2($event)" [rowHeight]="25" [headerHeight]="48"
@@ -278,6 +312,26 @@
           <div>
             <!--- product Group  --->
 
+            <div class="srch mt-3" style="margin-bottom:10px">
+              <div class="row">
+                <div class="col-md-11">
+                  <div class="searchBox1 d-flex">
+                    <input class="searchInput1" type="text" name="" placeholder="Search here anything"(keyup)="onSearchChange($event)">
+                     <mat-icon  class="searchicons1">search</mat-icon> 
+                    <button class="search-bt_n1">Search</button>
+                     <!-- <button class="searchButtonn" href="#">
+                    </button> -->
+                  </div>
+                </div>
+
+                <div class="col-md-1">
+                <div class="ref"><img class="refresh" src="assets/img/Vector.png"  alt="refresh" style="margin-left: 1px;"></div>
+              </div>
+              </div>
+            </div>
+
+           
+
             <ag-grid-angular id="gridContainer"
               style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
               class="ag-theme-material" (gridReady)="onGridReady3($event)" [rowHeight]="25" [headerHeight]="48"
@@ -318,6 +372,20 @@
       </div> -->
           <div>
             <!--- product subgroup  --->
+
+            <div class="srch mt-3" style="margin-bottom:10px">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="searchBox1 d-flex">
+                    <input class="searchInput1" type="text" name="" placeholder="Search here anything"(keyup)="onSearchChange($event)">
+                     <mat-icon  class="searchicons1">search</mat-icon> 
+                    <button class="search-bt_n1">Search</button>
+                     <!-- <button class="searchButtonn" href="#">
+                    </button> -->
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <ag-grid-angular id="gridContainer"
               style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"

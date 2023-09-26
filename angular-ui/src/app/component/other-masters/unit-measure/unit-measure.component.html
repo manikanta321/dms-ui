@@ -8,7 +8,7 @@
         <div class="col-md-4" style="margin-left: 68%;margin-bottom:10px;margin-top: -26px;">
           <div class="row">
             <div class="col-md-8">
-              <div class="searchBox d-flex">
+              <!-- <div class="searchBox d-flex">
                 <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
                   placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
                 <button class="searchButton" href="#">
@@ -17,7 +17,17 @@
                   </i>
                 </button>
                 <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
-              </div>
+              </div> -->
+<!-- annu -->
+
+<div class="searchBox1 d-flex">
+  <input class="searchInput1" type="text" name="" placeholder="Search here anything"(keyup)="onSearchChange($event)">
+   <mat-icon  class="searchicons1">search</mat-icon> 
+  <button class="search-bt_n1">Search</button>
+   <!-- <button class="searchButtonn" href="#">
+  </button> -->
+</div>
+
             </div>
             <div class="col-md-2">
               <div class="add-user " (click)="adduom()" userRoleDirective="ADD_UOM" pageName="settingothermasters">

@@ -220,11 +220,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   columnDefs: ColDef[] = [
 
     {
-      headerName: "Code",
+      headerName: "Dealer Code",
       field: 'code', type: ['nonEditableColumn'], sort: 'desc', checkboxSelection: true
     },
     { headerName: "Dealer Name", field: 'dealerName', type: ['nonEditableColumn'] },
-    { headerName: "", field: '', type: ['nonEditableColumn'] },
+    // { headerName: "", field: '', type: ['nonEditableColumn'] },
 
     {
       headerName: "Geography", field: 'geography', type: ['nonEditableColumn'],
@@ -1142,15 +1142,27 @@ this.textShow=true;
     })
   }
 
+  // disableBackbutton() {
+  //   this.goForward(this.myStepper);
+  //   this.basicInfo = true;
+
+  //    alert(this.basicInfo);
+  // }
+
+  isRightButtonDisabled:boolean = false;
+  isleftButtonDisabled:boolean = true
   disableBackbutton() {
     this.goForward(this.myStepper);
     this.basicInfo = true;
-
-    // alert(this.basicInfo);
+    this.isRightButtonDisabled = true;
+    this.isleftButtonDisabled = false
   }
+
   prevStepper() {
     this.goBack(this.myStepper);
     this.basicInfo = false;
+    this.isRightButtonDisabled = false;
+    this.isleftButtonDisabled = true
   }
   addCategory() {
     this.addButton = true;

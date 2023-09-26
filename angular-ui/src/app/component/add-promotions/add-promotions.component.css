@@ -164,8 +164,8 @@ border-radius: 10px; */
 } */
 
 .image {
-  width: 443px;
-  height: 217px;
+  width: 390px;
+  height: 170px;
   background: #FFFFFF;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
@@ -656,7 +656,7 @@ li {
 }
 
 ::ng-deep.myDatepicker .mat-form-field {
-  width: 262px;
+  width: 366px;
   height: 43px;
   background: white !important;
   border-radius: 5px;

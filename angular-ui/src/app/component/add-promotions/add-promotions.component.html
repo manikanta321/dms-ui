@@ -27,7 +27,7 @@
                             <h5 class="promo-head">Promotion Information </h5>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <div class="row">
                                     <!-- promotion name -->
                                     <div class="col-md-6 materialname" >
@@ -64,7 +64,12 @@
                                                     (dateChange)="dateChange($event)" [min]="minDate">
                                                 <mat-datepicker-toggle matSuffix [for]="picker1">
                                                     <mat-icon matDatepickerToggleIcon >
-                                                        <img  src="assets/img/calender2.png" class="calendarToggle ">
+                                                        <div class="calendarToggle">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-calendar4" viewBox="0 0 16 16">
+                                                                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1H2zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V5z"/>
+                                                              </svg>
+                                                        </div>
+                                                        <!-- <img  src="assets/img/calender2.png" class="calendarToggle "> -->
                                                     </mat-icon>
                                                 </mat-datepicker-toggle>
                                                 <mat-datepicker #picker1></mat-datepicker>
@@ -82,7 +87,12 @@
                                                     [formControl]="endDate" (dateChange)="enddateChange($event)">
                                                 <mat-datepicker-toggle matSuffix [for]="picker2">
                                                     <mat-icon matDatepickerToggleIcon>
-                                                        <img src="assets/img/calender2.png" class="calendarToggle">
+                                                        <div class="calendarToggle">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-calendar4" viewBox="0 0 16 16">
+                                                                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1H2zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V5z"/>
+                                                              </svg>
+                                                        </div>
+                                                        <!-- <img src="assets/img/calender2.png" class="calendarToggle"> -->
                                                     </mat-icon>
                                                 </mat-datepicker-toggle>
                                                 <mat-datepicker #picker2></mat-datepicker>
@@ -91,7 +101,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 imagefield">
+                            <div class="col-md-4 imagefield">
                                 <label>Image <span class="astr">*</span></label>
                                 <div class="image text-center">
                                     <div class="fileadded">
@@ -116,12 +126,15 @@
                         </div>
 
                         <!-- items in promotion -->
-                        <div class="row mt-3">
+                        <div class="row ">
                             <div class="col-12">
                                 <div class="d-flex">
                                     <h5 class="promoItem"> Items in Promotions </h5>
                                     <div class="hover-text">
-                                        <img src="assets/img/item-info-i.svg" class="indexImg" alt="">
+                                        <!-- <img src="assets/img/item-info-i.svg" class="indexImg" alt=""> -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#12c2e9" class="bi bi-info-circle-fill" viewBox="0 0 16 16" style="position: absolute; margin-left: 10px; top: 5px;">
+                                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                                          </svg>
                                         <span class="tooltip-text" id="top" *ngIf="false">The user needs to add products
                                             in the Buy Product Group.
                                             There should be at least one Product in this group. The Qty for the products
@@ -146,48 +159,51 @@
                                     <div class="buy1" *ngFor="let addbuyg of buyGroupPlus; let i=index">
                                         <div class="row">
                                             <div class="col-10 buyGrp-h">
-                                                <h5 class="item-header"><b>Buy </b>group {{i+1}}</h5>
+                                                <h5 class="item-header">Buy group</h5>
+                                                <!-- <h5 class="item-header"><b>Buy </b>group {{i+1}}</h5> -->
                                             </div>
-                                            <div class="col-2 plsImg" (click)="addbuyGroup(i)" *ngIf="i==0">
+                                            <!-- <div class="col-2 plsImg" (click)="addbuyGroup(i)" *ngIf="i==0">
                                                 <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
                                             </div>
                                             <div class="col-2 plsAdd" (click)="removebuyGroup(i)" *ngIf="i >= 1">
                                                 <img src="assets/img/minus.png" class="plus-image" alt="plus-btn">
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="row">
                                             <div class="productlevel col-12">
-                                                <label>Item Level<span class="astr">*</span></label>
-                                                <div class="collapsible" (click)="addItems(i)">
+                                                <!-- <label>Item Level<span class="astr">*</span></label> -->
+                                                <div class="collapsible border border-success" (click)="addItems(i)" >
                                                     <div class="row">
                                                         <div class="col-10">
-                                                            <p class="expn-t">Select the Items</p>
-                                                        </div>
+                                                            <p class="expn-t">{{ addbuyg.productselectedRows.length ===0  ? 'Select the Items' : addbuyg.productselectedRows.length + ' Items Selected' }}</p>
+                                                        </div>                                                        
                                                         <div class="col-2"> <img class="expsion-img"
                                                                 src="assets/img/maximize.png" alt=""></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-10">
-                                                <label>Items<span class="astr">*</span></label>
-                                                <mat-card class="list-item"  [ngClass]="{ 'input-error': !addbuyg.isDataValid}">
-
+                                        <div class="row mt-2">
+                                            <div class="col-12">
+                                                <!-- <label>Items<span class="astr">*</span></label>
+                                                    [ngClass]="{ 'input-error': !addbuyg.isDataValid}"
+                                                 -->
+                                                <mat-card class="list-item border border-success"  >
                                                     <mat-card-content class="item-in-box">
                                                         <ul>
                                                             <li *ngFor="let producttable of addbuyg.productselectedRows"
                                                                 aria-placeholder="Items">
-                                                                <mat-checkbox class="example-margin font"
+                                                                <p>{{producttable?.productName}}</p>
+                                                                <!-- <mat-checkbox class="example-margin font"
                                                                     [checked]="true"
                                                                     (click)="updateAllComplete(producttable.stockItemId,i)">
-                                                                    {{producttable?.productName}} </mat-checkbox>
+                                                                    {{producttable?.productName}} </mat-checkbox> -->
                                                             </li>
                                                         </ul>
                                                     </mat-card-content>
                                                 </mat-card>
                                             </div>
-                                            <div class="col-2 qtyalign">
+                                            <!-- <div class="col-2 qtyalign">
                                                 <label>Qty<span class="astr">*</span></label>
                                                 {{addbuyg.qtyValue}}
                                                 <input type="number" class="qty-box" id=qty name="qty{{i}}" required
@@ -199,54 +215,54 @@
                                                     (keyup)="promotionBuyGet1()"
                                                     [ngClass]="{ 'input-error': !addbuyg.isDataValid}"
                                                     [(ngModel)]="addbuyg.MOQ">
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
                                 <div class="col-lg-6 GetGroup">
                                     <div class="get1" *ngFor="let addbuyg of addgetgroup; let i=index">
                                         <div class="row">
                                             <div class="col-10 buyGrp-h">
-                                                <h5 class="item-header"><b>Get </b>group {{i+1}}</h5>
+                                                <h5 class="item-header">Get group </h5>
+                                                <!-- <h5 class="item-header"><b>Get </b>group {{i+1}}</h5> -->
                                             </div>
-                                            <div class="col-2 plsImg" (click)="adddgetGroup(i)" *ngIf="i==0">
+                                            <!-- <div class="col-2 plsImg" (click)="adddgetGroup(i)" *ngIf="i==0">
                                                 <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
                                             </div>
                                             <div class="col-2 plsAdd" (click)="removegetGroup(i)" *ngIf="i>=1">
                                                 <img src="assets/img/minus.png" class="plus-image" alt="plus-btn">
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="row">
                                             <div class="productlevel col-12">
-                                                <label>Item Level<span class="astr">*</span></label>
-                                                <div class="collapsible" (click)="addItemsforGetGroup(i)">
-                                                    <div class="row">
+                                                <!-- <label>Item Level<span class="astr">*</span></label> -->
+                                                <div class="collapsible border border-success" (click)="addItemsforGetGroup(i)">
+                                                    <div class="row ">
                                                         <div class="col-10">
-                                                            <p class="expn-t">Select the Items</p>
-                                                        </div>
+                                                            <p class="expn-t">{{ addbuyg.productselectedRows.length === 0 ? 'Select the Items' : addbuyg.productselectedRows.length + ' Items Selected' }}</p>
+                                                        </div>                                                                                                               
                                                         <div class="col-2"> <img class="expsion-img"
                                                                 src="assets/img/maximize.png" alt=""></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-10">
-                                                <label>Items<span class="astr">*</span></label>
-                                                <mat-card class="list-item"   [ngClass]="{ 'input-error': !addbuyg.isDataValid}">
+                                        <div class="row mt-2">
+                                            <div class="col-12">
+                                                <!-- <label>Items<span class="astr">*</span></label> 
+                                                        [ngClass]="{ 'input-error': !addbuyg.isDataValid}"
+                                                -->
+                                                <mat-card class="list-item border border-success">
                                                     <mat-card-content class="item-in-box">
                                                         <ul>
                                                             <ul>
                                                                 <li
                                                                     *ngFor="let producttable of addbuyg?.productselectedRows">
-                                                                    <mat-checkbox class="example-margin font"
+                                                                    <p>{{producttable?.productName}}</p>
+                                                                    <!-- <mat-checkbox class="example-margin font"
                                                                         [checked]="true"
                                                                         (click)="updateAllComplete1(producttable.stockItemId,i)">
-                                                                        {{producttable?.productName}}</mat-checkbox>
+                                                                        {{producttable?.productName}}</mat-checkbox> -->
                                                                 </li>
                                                                 <!-- <li *ngFor="let productGrp of addbuyg?.productScselectedRows">{{productGrp?.productName}}</li>
                                                                 <li *ngFor="let productGrp of addbuyg?.pGselectedRows">{{productGrp?.productName}}</li>
@@ -256,13 +272,13 @@
                                                     </mat-card-content>
                                                 </mat-card>
                                             </div>
-                                            <div class="col-2 qtyalign">
+                                            <!-- <div class="col-2 qtyalign">
                                                 <label>Qty<span class="astr">*</span></label>
                                                 <input type="number" class="qty-box" id=Getqty name="Getqty{{i}}"
                                                     required (keyup)="promotionBuyGet2()"
                                                     [ngClass]="{ 'input-error': !addbuyg.isDataValid}"
                                                     [(ngModel)]="addbuyg.MaxVolume">
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -488,10 +504,10 @@
                             <div class="row">
                                 <div class="col-12">
                                     <label>Item Level<span class="astr">*</span></label>
-                                    <div class="collapsible" (click)="addItemsVolume()">
+                                    <div class="collapsible border border-success" (click)="addItemsVolume()">
                                         <div class="row">
                                             <div class="col-11">
-                                                <p class="expn-t">Select the Items</p>
+                                                <p class="expn-t">{{productselectedRows.length===0 ? "Select Items": productselectedRows.length +' Items Selected'}}</p>
                                             </div>
                                             <div class="col-1"> <img class="expsion-img" src="assets/img/maximize.png"
                                                     alt=""></div>
@@ -503,25 +519,26 @@
                             <div class="row">
                                 <div class="col-lg-6 inlineNav">
                                     <label>Items<span class="astr">*</span></label>
-                                    <mat-card class="list-item"   [ngClass]="{ 'input-error': !isMOQValid}">
+                                    <mat-card class="list-item border border-success" [ngClass]="{ 'input-error': !isMOQValid}">
                                         <mat-card-content class="item-in-box">
 
                                             <ul>
                                                 <li *ngFor="let producttable of productselectedRows">
-                                                    <mat-checkbox class="example-margin font" [checked]="true"
+                                                    <p> {{producttable?.productName}}</p>
+                                                    <!-- <mat-checkbox class="example-margin font" [checked]="true"
                                                         (click)="updateAllCompleteforGetGroupVolume(producttable.stockItemId)">
-                                                        {{producttable?.productName}}
-                                                    </mat-checkbox>
+                                                       
+                                                    </mat-checkbox> -->
                                                 </li>
                                             </ul>
                                         </mat-card-content>
                                     </mat-card>
-                                    <br>
-                                    <label>Minimum Order Quantity<span class="astr">*</span></label>
+                                    <!-- <br> -->
+                                    <!-- <label>Minimum Order Quantity<span class="astr">*</span></label>
                                     <br>
                                     <input class="minimumorderquantity" type="number" id="pValue" name="pValue" required
                                         [ngClass]="{ 'input-error': !isMOQValid}" placeholder=""
-                                        [(ngModel)]="minimumorderquantity" (keyup)="moqChange3()">
+                                        [(ngModel)]="minimumorderquantity" (keyup)="moqChange3()"> -->
                                 </div>
                                 <div class="col-lg-6 navItems">
                                     <div class="row">
@@ -540,20 +557,20 @@
                                     </div>
                                     <div class="row" *ngFor="let packingCharge of packingCharges; let i = index;">
                                         <div class="col-3">
-                                            <input class="qtyOfItems" type="number" required
+                                            <input class="qtyOfItems border border-success" type="number" required
                                                 [ngClass]="{ 'input-error': !packingCharge.isDataValid}" placeholder=""
                                                 [(ngModel)]="packingCharge.MinVolume" name="address_{{i}}"
                                                 (keyup)="packingChargeChange()">
                                         </div>
                                         <div class="col-3">
-                                            <input class="qtyOfItems" type="number" required
+                                            <input class="qtyOfItems border border-success" type="number" required
                                                 [ngClass]="{ 'input-error': !packingCharge.isDataValid}" placeholder=""
                                                 [(ngModel)]="packingCharge.MaxVolume" name="MaxVolume{{i}}"
                                                 (keyup)="packingChargeChange()">
 
                                         </div>
                                         <div class="col-3">
-                                            <input class="qtyOfItems" type="number" required
+                                            <input class="qtyOfItems border border-success" type="number" required
                                                 [ngClass]="{ 'input-error': !packingCharge.isDataValid}" placeholder=""
                                                 [(ngModel)]="packingCharge.DiscountPercentage" name="street_{{i}}"
                                                 (keyup)="packingChargeChange()">
@@ -652,6 +669,42 @@
 
                             </div>
                         </div>
+                        <!-- table -->
+                       <div class="count card m-3" *ngIf="selectedPromo !== 3 && selectedPromo !== 4">
+                        <table class="table" *ngFor="let addbuyg of buyGroupPlus; let i=index">
+                            <thead style="background: rgba(1, 139, 117, 1); color: white;">
+                              <tr>
+                                <th scope="col">QTY From</th>
+                                <th scope="col">QTY To</th>
+                                <th scope="col">Buy</th>
+                                <th scope="col">Get</th>
+                                <th scope="col">Additional</th>
+                                <th scope="col" (click)="addItems(i)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16" style="font-weight: 600;">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                      </svg>
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                              <tr>
+                                <th><input type="text" class="form-control"></th>
+                                <th><input type="text" class="form-control"></th>
+                                <th><input type="text" class="form-control"></th>
+                                <th><input type="text" class="form-control"></th>
+                                <th><input type="text" class="form-control"></th>
+                              </tr>
+                              <tr>
+                                <th><input type="text" class="form-control"></th>
+                                <th><input type="text" class="form-control"></th>
+                                <th><input type="text" class="form-control"></th>
+                                <th><input type="text" class="form-control"></th>
+                                <th><input type="text" class="form-control"></th>
+                              </tr>
+                            </tbody>
+                          </table>
+                       </div>
                     </form>
                 </mat-step>
 

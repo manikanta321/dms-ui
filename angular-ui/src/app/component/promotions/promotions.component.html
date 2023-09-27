@@ -1,6 +1,6 @@
 <div class="promainclass">
   <div class="dealer-promotion mt-3 ">
-      <div class="row d-flex justify-content-around" style="margin-left: 4px;">
+      <div class="row" style="margin-left: 4px;">
         <div class="col-md-2 col-lg-2 col-sm-2 promotionsbubbles">
           <form [formGroup]="myForm" class="dropdown-form">
             <ng-multiselect-dropdown class="promo" formControlName="city1"
@@ -38,7 +38,40 @@
             </div>
           </form>
         </div>
-        
+        <div class="col-md-2 col-lg-2 col-sm-2 geobubbles" *ngIf="userType === 'Admin'">
+          <form [formGroup]="myForms2" class="dropdown-form">
+            <ng-multiselect-dropdown class="geog" name="citys" [placeholder]="'Geography'" formControlName="city3"
+              [disabled]="disabled" [settings]="dropdownSettings2" [data]="geoList" (onSelect)="onGeoSelect($event)"
+              (onDeSelect)="onGeoDeSelect($event)" (onDeSelectAll)="onItemDeSelectOrAllGeo($event)"
+              (onSelectAll)="onItemSelectOrAllGeo($event)">
+            </ng-multiselect-dropdown>
+            <div class="dropdown-placeholder geog-placeholder">
+              <span *ngIf="myForms2.get('city3').value.length == 0">Geography </span>
+              <span *ngIf="myForms2.get('city3').value.length == 1" class="selected-placeholder">
+                {{myForms2.get('city3').value.length}} Geography selected </span>
+              <span *ngIf="myForms2.get('city3').value.length > 1" class="selected-placeholder">
+                {{myForms2.get('city3').value.length}} Geography selected </span>
+
+            </div>
+          </form>
+        </div>
+        <div class="col-md-2 col-lg-2 col-sm-2 dealerbubblespro" style="font-family: 'Gilroy'; color: grey;margin-left: 9px;" *ngIf="userType === 'Admin'">
+          <form [formGroup]="myForms4" class="dropdown-formdealer">
+            <ng-multiselect-dropdown class="dealr" name="citys" [placeholder]="'Dealer'" formControlName="city5"
+              [disabled]="disabled" [settings]="dropdownSettings4" [data]="dealerListArray"
+              (onSelect)="onItemDealerSelect($event)" (onDeSelect)="onItemDealerDeSelect($event)"
+              (onDeSelectAll)="onItemDealerDeSelectOrAll($event)" (onSelectAll)="onItemDealerSelectOrAll($event)">
+            </ng-multiselect-dropdown>
+          </form>
+          <div class="dropdown-placeholder dealr-placeholder">
+            <span *ngIf="myForms4.get('city5').value.length == 0"> Dealer </span>
+            <span *ngIf="myForms4.get('city5').value.length == 1" class="selected-placeholder">
+              {{myForms4.get('city5').value.length}} Dealer selected </span>
+            <span *ngIf="myForms4.get('city5').value.length > 1" class="selected-placeholder">
+              {{myForms4.get('city5').value.length}} Dealer(s) selected </span>
+
+          </div>
+        </div>
         <div class="col-md-2 col-lg-2 col-sm-2 statusprobubbles" style="margin-left:-9px">
           <form [formGroup]="myForms3" class="dropdown-form">
             <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Status'" formControlName="city4"
@@ -56,30 +89,57 @@
             </div>
           </form>
         </div>
-        <div class="searchBox1 ">
-          <input class="searchInput1" type="text" name="" placeholder="Search here anything"(keyup)="onSearchChange($event)">
-           <mat-icon  class="searchicons1">search</mat-icon> 
-          <button class="search-bt_n1">Search</button>
-        </div>
         <!-- calender -->
-        <div class="col-md-2 col-lg-2 col-sm-2 d-flex ">
+        <div class="col-md-2 col-lg-2 col-sm-2 d-flex">
           <app-customdatepicker [selectedDate]="selectedDateRange"
-            (customDatePickerEvent)="customDatePickerEvent($event)">
-          </app-customdatepicker>
+            (customDatePickerEvent)="customDatePickerEvent($event)"></app-customdatepicker>
+          <!-- <div class="cal" (click)="datep()">
+           <img src="assets/img/calenderImage.svg" alt="">
+          </div> -->
+          <!-- <section data-cy="regular-date-range" class="col-12 col-sm-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     col-lg-4">
+            <date-range-picker [(dateRange)]="dateRange1"
+            [maxDate]="maxDate">
+            </date-range-picker>
+            <hr />
+          </section> -->
+
           <div class="ref"><img class="refresh" src="assets/img/Vector.png" (click)="refresh()" alt="refresh" style="margin-left: 1px;"></div>
-          <div class="sales-dwnld ml-2">
-            <img class="imgdwnl" src="assets/img/download-btn.png" alt="add-user-btn">
-          </div>
-          <div class="">
-            <div class="add-user" (click)="addPromotions()" userRoleDirective="ADD_PROMOTION" [pageName]="currentPageName">
-              <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
-            </div>
-          </div>
+          <!-- <div class="col-1"> -->
+          <!-- <div class="icon btnhover refreshbtn" >
+      <img class="refresh" src="assets/img/Vector.png"  alt="refresh" >
+    </div> -->
         </div>
-      </div>      
+        <!-- </div> -->
+      </div>
+      <!-- <button (click)="datep()">date</button>
+  <date-range-picker [(dateRange)]="dateRange1" class="ngb-dp-header">
+            </date-range-picker> -->
+
+      <!-- search -->
+
+      
 </div>
-<div class="col-md-4 mt-3 mb-4" style="margin-left: 69%;margin-bottom: 10px">
-  
+<div class="col-md-4" style="margin-left: 65%;margin-bottom: 10px;margin-top: -25px;">
+  <div class="row">
+    <div class="col-md-7">
+      <div class="searchBox1 ">
+        <input class="searchInput1" type="text" name="" placeholder="Search here anything"(keyup)="onSearchChange($event)">
+         <mat-icon  class="searchicons1">search</mat-icon> 
+        <button class="search-bt_n1">Search</button>
+      </div>
+    </div>
+    <div class="col-md-4 d-flex">
+      <div class="download-btn"  style=" cursor: pointer" >
+        <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;"
+          alt="add-user-btn">
+      </div>
+      <div class="add-user" (click)="addPromotions()" userRoleDirective="ADD_PROMOTION"
+        [pageName]="currentPageName">
+        <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+      </div>
+    </div>
+
+  </div>
 </div>
 <br>
   <ag-grid-angular id="gridContainer"

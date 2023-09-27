@@ -159,7 +159,7 @@
    height: 37px;
    top: -4px;
    margin-top: 5px;
-   margin-left: 32%;
+   margin-left: 18%;
    cursor: pointer;
    position: relative;
    /* left: 35px; */
@@ -171,14 +171,13 @@
  }
 
  .download-btn {
-   border: none;
-   background: #000000;
-   border-radius: 50%;
-   position: relative;
-   width: 37px;
-   height: 37px;
-   top: 6px;
-   left: 21%;
+  border: none;
+  background: rgba(104, 110, 116, 0.66);
+  position: relative;
+  width: 37px;
+  height: 37px;
+  left: 3%;
+  border-radius: 13%;
  }
 
  .searchButton {
@@ -859,7 +858,7 @@
  .searchBox1 {
    position: relative;
    width: 250px;
-   top: 67%;
+   /* top: 67%; */
    border: 1px solid #000;
    border-radius: 11px;
  }

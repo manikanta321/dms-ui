@@ -112,21 +112,21 @@
                                             <img src="data:image/jpeg;base64,{{base64textString}}" class="addproImg"
                                                 for="file-input" alt="left-arr-btn"></label>
                                     </div>
-                                    <div class="fileadd">
+                                    <div class="fileadd d-flex justify-content-center align-middle mt-2">
                                         <label class="uploadlabel" *ngIf="!addImgpreview">
                                             <input matInput placeholder="" #input id="file-input"
                                                 class="form-control imgupload" type="file"
                                                 (change)="onFileChanged($event)">
                                             <img src="../../../assets/img/down13.png " width="70px" height="70px"
                                                 for="file-input" alt="left-arr-btn"></label>
-                                        <p *ngIf="!addImgpreview">Add Image</p>
+                                        <p style="position: relative; top: 50%; transform: translateY(50%);" *ngIf="!addImgpreview">Choose Files here</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- items in promotion -->
-                        <div class="row ">
+                        <div class="row mt-3">
                             <div class="col-12">
                                 <div class="d-flex">
                                     <h5 class="promoItem"> Items in Promotions </h5>
@@ -603,25 +603,26 @@
 
                             <div class="row">
                                 <div class="col-lg-6 inlineNav">
-                                    <label>Items<span class="astr">*</span></label>
-                                    <mat-card class="list-item"  [ngClass]="{ 'input-error': !isMOQValid}">
+                                    <!-- <label>Items<span class="astr">*</span></label> [ngClass]="{ 'input-error': !isMOQValid}" -->
+                                    <mat-card class="list-item"  >
                                         <mat-card-content class="item-in-box" >
                                             <ul>
                                                 <li *ngFor="let producttable of productselectedRows">
-                                                    <mat-checkbox class="example-margin font" [checked]="true"
+                                                    <p>{{producttable?.productName}}</p>
+                                                    <!-- <mat-checkbox class="example-margin font" [checked]="true"
                                                         (click)="updateAllCompleteforGetGroupPrice(producttable.stockItemId)">
                                                         {{producttable?.productName}}
-                                                    </mat-checkbox>
+                                                    </mat-checkbox> -->
                                                 </li>
                                             </ul>
                                         </mat-card-content>
                                     </mat-card>
                                     <br>
-                                    <label>Minimum Order Quantity<span class="astr">*</span></label>
+                                    <!-- <label>Minimum Order Quantity<span class="astr">*</span></label>
                                     <br>
                                     <input class="minimumorderquantity" type="number" required (keyup)="moqChange4()"
                                         [ngClass]="{ 'input-error': !isMOQValid}" placeholder=""
-                                        [(ngModel)]="minumorderqualityPrice">
+                                        [(ngModel)]="minumorderqualityPrice"> -->
                                 </div>
                                 <div class="col-lg-6 navItems">
                                     <div class="row">
@@ -705,6 +706,7 @@
                             </tbody>
                           </table>
                        </div>
+                       <h3 class="mt-3">Minimum Order Quantity: <b>{{ selectedPromo === 3 || selectedPromo === 4 ? '10' : '100' }}</b></h3>
                     </form>
                 </mat-step>
 

@@ -165,7 +165,7 @@ border-radius: 10px; */
 
 .image {
   width: 390px;
-  height: 170px;
+  height: 132px;
   background: #FFFFFF;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
@@ -649,10 +649,10 @@ li {
 }
 
 .addproImg {
-  width: 426px;
-  height: 199px;
-  margin-top: -7px;
-  border-radius: 10px;
+  width: 380px;
+    height: 130px;
+    margin-top: -15px;
+    border-radius: 10px;
 }
 
 ::ng-deep.myDatepicker .mat-form-field {
@@ -666,7 +666,7 @@ li {
 
 .fileadd {
   position: relative;
-  top: 17%;
+  /* top: 17%; */
 }
 
 .imgupload {

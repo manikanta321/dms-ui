@@ -61,7 +61,7 @@ mat-tab{
   flex-shrink: 0;
   width: 650px !important;
   border-radius: 25px;
-  background: white;
+  /* background: white; */
   /* left: 30%; */
   font-size: 15px;
   margin: 11px 0px;
@@ -71,7 +71,7 @@ mat-tab{
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
     color: white;
-    border-radius: 25px;
+    /* border-radius: 25px; */
     opacity: 1;
 }
 

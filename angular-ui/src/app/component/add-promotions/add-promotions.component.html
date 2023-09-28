@@ -312,7 +312,7 @@
                                                 <img src="assets/img/minus.png" class="plus-image" alt="plus-btn">
                                             </div>
                                         </div>
-                                        <div class="buyoneSet">
+                                        <div class="buyoneSet  border border-success">
                                             <div class="buy-set-1"
                                                 *ngFor="let addbuyg1 of addbuyset[i].BuyGroups; let j=index">
                                                 <div class="row">
@@ -333,7 +333,7 @@
                                                 <div class="row">
                                                     <div class="productlevel col-12">
                                                         <label>Item Level<span class="astr">*</span></label>
-                                                        <div class="collapsible" (click)="addItems1(i,j)">
+                                                        <div class="collapsible  border border-success" (click)="addItems1(i,j)">
                                                             <div class="row">
                                                                 <div class="col-10">
                                                                     <p class="expn-t">Select the Items</p>
@@ -347,7 +347,7 @@
                                                 <div class="row">
                                                     <div class="col-10">
                                                         <label>Items<span class="astr">*</span></label>
-                                                        <mat-card class="list-item"  [ngClass]="{ 'input-error': !addbuyset[i].BuyGroups[j].isDataValid}">
+                                                        <mat-card class="list-item  border border-success"  [ngClass]="{ 'input-error': !addbuyset[i].BuyGroups[j].isDataValid}">
                                                             <mat-card-content class="item-in-box" >
                                                                 <ul>
                                                                     <li
@@ -364,13 +364,13 @@
                                                     </div>
                                                     <div class="col-2 qtyalign">
                                                         <label>Qty<span class="astr">*</span></label>
-                                                        <input type="number" class="qty-box" value="{{qtyMaxNum}}"
+                                                        <input type="number" class="qty-box  border border-success" value="{{qtyMaxNum}}"
                                                             id=qty name="qty{{i}}.BuyGroups{{j}}"
                                                             (keyup)="promotionABSetChange()"
                                                             [ngClass]="{ 'input-error': !addbuyset[i].BuyGroups[j].isDataValid}"
                                                             [(ngModel)]="addbuyset[i].BuyGroups[j].MaxVolume">
                                                         <label>moq<span class="astr">*</span></label>
-                                                        <input type="number" class="mty-box" value="{{MoqMaxNum}}"
+                                                        <input type="number" class="mty-box  border border-success" value="{{MoqMaxNum}}"
                                                             id=moq name="moq{{j}}" name="qty1{{i}}.BuyGroups1{{j}}"
                                                             (keyup)="promotionABSetChange()"
                                                             [ngClass]="{ 'input-error': !addbuyset[i].BuyGroups[j].isDataValid}"
@@ -419,7 +419,7 @@
                                                 <img src="assets/img/minus.png" class="plus-image" alt="plus-btn">
                                             </div>
                                         </div>
-                                        <div class="buyoneSet">
+                                        <div class="buyoneSet  border border-success">
                                             <div class="getSet1"
                                                 *ngFor="let addget of addgetset[i].GetGroups; let j=index">
                                                 <div class="row">
@@ -440,8 +440,8 @@
                                                 <div class="row">
                                                     <div class="productlevel col-12">
                                                         <label>Item Level<span class="astr">*</span></label>
-                                                        <div class="collapsible" (click)="addItems1forGetGroup(i,j)">
-                                                            <div class="row">
+                                                        <div class="collapsible  border border-success" (click)="addItems1forGetGroup(i,j)">
+                                                            <div class="row ">
                                                                 <div class="col-10">
                                                                     <p class="expn-t">Select the Items</p>
                                                                 </div>
@@ -455,7 +455,7 @@
                                                 <div class="row">
                                                     <div class="col-10">
                                                         <label>Items<span class="astr">*</span></label>
-                                                        <mat-card class="list-item"   [ngClass]="{ 'input-error': !addgetset[i].GetGroups[j].isDataValid}">
+                                                        <mat-card class="list-item  border border-success"   [ngClass]="{ 'input-error': !addgetset[i].GetGroups[j].isDataValid}">
                                                             <mat-card-content class="item-in-box">
                                                                 <ul>
                                                                     <li
@@ -473,7 +473,7 @@
                                                     </div>
                                                     <div class="col-2 qtyalign">
                                                         <label>Qty<span class="astr">*</span></label>
-                                                        <input type="number" class="qty-box" placeholder="1"
+                                                        <input type="number" class="qty-box  border border-success" placeholder="1"
                                                             value="{{qtyMaxNum}}" id=qty name="qty1{{i}}.q2{{j}}"
                                                             (keyup)="promotionABGetChange()"
                                                             [ngClass]="{ 'input-error': !addgetset[i].GetGroups[j].isDataValid}"
@@ -589,7 +589,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <label>Item Level<span class="astr">*</span></label>
-                                    <div class="collapsible" (click)="addItemsPrice()">
+                                    <div class="collapsible  border border-success" (click)="addItemsPrice()">
                                         <div class="row">
                                             <div class="col-11">
                                                 <p class="expn-t">Select the Items</p>
@@ -603,8 +603,9 @@
 
                             <div class="row">
                                 <div class="col-lg-6 inlineNav">
-                                    <!-- <label>Items<span class="astr">*</span></label> [ngClass]="{ 'input-error': !isMOQValid}" -->
-                                    <mat-card class="list-item"  >
+                                    <label>Items<span class="astr">*</span></label>
+                                     <!-- [ngClass]="{ 'input-error': !isMOQValid}" -->
+                                    <mat-card class="list-item  border border-success"  >
                                         <mat-card-content class="item-in-box" >
                                             <ul>
                                                 <li *ngFor="let producttable of productselectedRows">
@@ -642,20 +643,20 @@
 
                                     <div class="row" *ngFor="let packingCharge of packingVolume; let i = index;">
                                         <div class="col-3">
-                                            <input class="qtyOfItems" type="number" id="pValue" required
+                                            <input class="qtyOfItems  border border-success" type="number" id="pValue" required
                                                 (keyup)="PackingPriceChange()"
                                                 [ngClass]="{ 'input-error': !packingCharge.isDataValid}" placeholder=""
                                                 [(ngModel)]="packingCharge.MinVolume" name="address_{{i}}">
                                         </div>
                                         <div class="col-3">
-                                            <input class="qtyOfItems" type="number" id="pValue"
+                                            <input class="qtyOfItems  border border-success" type="number" id="pValue"
                                                 (keyup)="PackingPriceChange()"
                                                 [ngClass]="{ 'input-error': !packingCharge.isDataValid}"
                                                 name="street_{{i}}" [(ngModel)]="packingCharge.MaxVolume">
 
                                         </div>
                                         <div class="col-3">
-                                            <input class="qtyOfItems" type="number" id="pValue" required
+                                            <input class="qtyOfItems  border border-success" type="number" id="pValue" required
                                                 (keyup)="PackingPriceChange()"
                                                 [ngClass]="{ 'input-error': !packingCharge.isDataValid}" placeholder=""
                                                 [(ngModel)]="packingCharge.MaxPrice" name="city_{{i}}">
@@ -721,8 +722,8 @@
                         <div class="heading">
                             <h5 class="geo-head">Geographies</h5>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12 slctd-row">
+                        <div class="row ">
+                            <div class="col-lg-12 slctd-row border border-success">
                                 <div class="row">
                                     <div class="col-lg-9 sltd-span">
                                         <span class="selectedname" *ngIf="false">Selected Geogrphies</span>
@@ -743,7 +744,7 @@
                             <h5 class="geo-head">Dealers</h5>
                         </div>
                         <div class="row">
-                            <input type="text" placeholder="Search for the Geography/ Dealers here" class="searchGeo"
+                            <input type="text" placeholder="Search for the Geography/ Dealers here" class="searchGeo border border-success"
                                 (keyup)="onSearchChange($event)">
                         </div>
                         <!-- grid table -->
@@ -763,7 +764,7 @@
                             <div class="col-lg-12">
                                 <label> Additional Remarks</label><br>
                                 <input type="text" placeholder="Enter your remarks here..."
-                                class="addtnlRemarks" [(ngModel)]="Remarks">
+                                class="addtnlRemarks border border-success" [(ngModel)]="Remarks">
                             </div>
                         </div>
                         <!-- footer -->

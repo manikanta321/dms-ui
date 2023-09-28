@@ -418,7 +418,7 @@ border-radius: 10px; */
 } */
 .slctd-row {
   background: #FFFFFF;
-  border: 0.5px solid #000000;
+  /* border: 0.5px solid #000000; */
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   height: 43px;
@@ -426,7 +426,8 @@ border-radius: 10px; */
 }
 
 .slctd-geo-btn {
-  background: #000000;
+  /* background: #000000; */
+  background-color: rgba(1, 139, 117, 1) !important;
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   height: 33px;
@@ -465,7 +466,7 @@ border-radius: 10px; */
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   height: 43px;
-  width: 456px;
+  width: 381px;
 }
 
 .addtnlRemarks {
@@ -474,11 +475,12 @@ border-radius: 10px; */
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   height: 43px;
-  width: 873px;
+  width: 364px;
 }
 
 .saveDraft {
-  background: #000000;
+  /* background: #000000; */
+  background-color: rgba(1, 139, 117, 1) !important; 
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   width: 168px;
@@ -488,13 +490,14 @@ border-radius: 10px; */
 }
 
 .submit {
-  background: #FFFFFF;
-  border: 2px solid #000000;
+  /* background: #FFFFFF; */
+  background-color: rgba(1, 139, 117, 1) !important; 
+  /* border: 2px solid #000000; */
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   width: 168px;
   height: 43px;
-  color: #000000;
+  color:white;
   margin-right: 15px;
 }
 
@@ -1003,4 +1006,12 @@ li {
   opacity: 0.5;
   pointer-events: none; 
 
+}
+
+.ag-theme-material {
+  --ag-card-radius: 100px;
+  --ag-border-radius: 20px;
+  --ag-header-height: 30px;
+  --ag-header-foreground-color: white;
+  --ag-header-background-color: rgba(1, 139, 117, 1);
 }

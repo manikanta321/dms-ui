@@ -64,7 +64,7 @@ mat-tab{
   background: white;
   /* left: 30%; */
   font-size: 15px;
-  margin: 15px 0px;
+  margin: 11px 0px;
 }
 ::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     display: none !important;

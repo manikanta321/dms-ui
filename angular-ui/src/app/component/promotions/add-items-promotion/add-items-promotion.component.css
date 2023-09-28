@@ -45,6 +45,10 @@
   margin-left: -6px;
 }
 
+::ng-deep .mat-tab-label{
+  border: 1px solid rgba(107,107,107,1);
+}
+
 /*old css*/
 
 .mat-form-field-flex {

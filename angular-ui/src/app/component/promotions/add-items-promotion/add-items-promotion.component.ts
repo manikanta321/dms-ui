@@ -47,11 +47,6 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class AddItemsPromotionComponent implements OnInit {
 
-  
-
-  
-
-
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
@@ -1317,6 +1312,9 @@ export class AddItemsPromotionComponent implements OnInit {
       this.rowDatashortcode = res.response;
     })
   }
+  refreshData(){
+    this.GetProductShortCodeList()
+  }
 
   goForward(stepper: MatStepper) {
     stepper.next();
@@ -1342,7 +1340,19 @@ export class AddItemsPromotionComponent implements OnInit {
       Search: ''
     }
     this.promotionTypes.GetProductGroupList(data).subscribe((res) => {
-      console.log('check productGlist', res);
+      // console.log('check productGlist', res);
+      this.rowDataproductGroup = res.response;
+    })
+  }
+// add product group search
+  onSearchproductGroup($event: any, anything?: any) {
+    const { target } = $event;
+    this.searchText = target.value;
+    const data = {
+      search: this.searchText,
+    }
+    this.promotionTypes.GetProductGroupList(data).subscribe((res) => {
+      // console.log('shortcodeworks', res);
       this.rowDataproductGroup = res.response;
     })
   }
@@ -1380,26 +1390,15 @@ export class AddItemsPromotionComponent implements OnInit {
       this.pGselectedRows = res.response
       console.log('this.pGselectedRows', this.pGselectedRows)
     })
-
-
-
   }
 
   // product SubGroup
   ProductSubGroupDrpdwn(item: any) {
-
     // this.statusTypes.push(item.statusId);
-
     this.promotionTypes.GetProductGroupList1().subscribe((res) => {
-
       this.Productarr = res.response;
-
       console.log('product lis', this.Productarr)
-
     });
-
-
-
   }
   ProductsubGroupDeselect(item: any) {
     this.statusTypes.forEach((element, index) => {

@@ -2688,7 +2688,7 @@ alert(obj3.MOQ);
     if (event == undefined) return;
     this.promotionTypesId = event;
     console.log(this.buyGroupPlus);
-    if (event.promotionTypesName == 'Buy (A+B..) get (X+Y..)') {
+    if (event.promotionTypesId == 1) {
       // this.goForward(this.myStepper);
       this.noPromotionSelected = false;
       this.buyab = true;
@@ -2696,7 +2696,7 @@ alert(obj3.MOQ);
       this.buysets = false;
       this.pricedc = false;
     }
-    if (event.promotionTypesName == 'Buy (A or B + C or D..) get (X+Y or Y+Z..)') {
+    if (event.promotionTypesId == 2) {
       this.noPromotionSelected = false;
       this.buyab = false;
       this.volumedc = false;
@@ -2705,7 +2705,7 @@ alert(obj3.MOQ);
       // this.goForward(this.myStepper);
 
     }
-    if (event.promotionTypesName == 'Volume Discount') {
+    if (event.promotionTypesId == 3) {
       this.noPromotionSelected = false;
       this.buyab = false;
       this.volumedc = true;
@@ -2714,7 +2714,7 @@ alert(obj3.MOQ);
       // this.goForward(this.myStepper);
 
     }
-    if (event.promotionTypesName == 'Price Discount') {
+    if (event.promotionTypesId == 4) {
       this.noPromotionSelected = false;
       // this.goForward(this.myStepper);
       this.buyab = false;

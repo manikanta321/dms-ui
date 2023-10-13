@@ -711,7 +711,8 @@
                               </table>
                         </form>
                        </div>
-                       <h3 class="mt-3">Minimum Order Quantity: <b>{{ selectedPromo === 3 || selectedPromo === 4 ? '10' : '100' }}</b></h3>
+                       <h3 class="mt-3">Minimum Order Quantity: <b>{{ selectedPromo === 3 ? moqNumber : selectedPromo === 4 ? moqPrice : '0' }}
+                    </b></h3>
                     </form>
                 </mat-step>
 

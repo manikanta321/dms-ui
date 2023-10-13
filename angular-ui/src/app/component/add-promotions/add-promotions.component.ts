@@ -888,6 +888,8 @@ console.log('addgetgroup',this.addgetgroup);
     });
   }
 
+  moqPrice: number = 0;
+  
   PackingPriceChange() {
     this.isPromotionTypeDataValid = true;
 
@@ -910,9 +912,29 @@ console.log('addgetgroup',this.addgetgroup);
       }
 
     });
+    const minVolume = this.findMinVolumePrice();
+
+    if (minVolume !== Infinity) {
+      this.moqPrice = minVolume; 
+    } else {
+      this.moqPrice = 0; 
+    }
     this.moqChange4();
   }
 
+  findMinVolumePrice() {
+    let min = Infinity;
+    this.packingVolume.forEach(volume => {
+      if (volume.MinVolume < min) {
+        min = volume.MinVolume;
+      }
+    });
+  
+    return min;
+  }
+  
+
+  moqNumber:number = 0 ;
   packingChargeChange() {
     this.isPromotionTypeDataValid = true;
 
@@ -935,10 +957,27 @@ console.log('addgetgroup',this.addgetgroup);
       }
 
     });
+    const minVolume = this.findMinVolume();
+
+    if (minVolume !== Infinity) {
+      this.moqNumber = minVolume;
+    } else {
+      this.moqNumber = 0;
+    }
     this.moqChange3();
   }
 
+  findMinVolume() {
+    let min = Infinity;
 
+    this.packingCharges.forEach(charge => {
+      if (charge.MinVolume < min) {
+        min = charge.MinVolume;
+      }
+    });
+
+    return min;
+  }
 
 
   onGridReady(params: GridReadyEvent) {

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
@@ -194,6 +194,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   VolumeSttockItemId: any = [];
   editlist: boolean = false;
   priceStockItemId: any = [];
+  promotionForm!: FormGroup
+
   dateChange(e) {
     console.log(e)
     this.minDateToFinish.next(e.value.toString());
@@ -786,7 +788,33 @@ console.log('addgetgroup',this.addgetgroup);
     // console.log('this.addbuyset', this.addbuyset);
     // this.addpromotionGeoTable();
 
+    this.promotionForm = this._formBuilder.group({
+      addPromotions: this._formBuilder.array([this.promotionRows()])
+    });
+
   }
+
+  get formArr() {
+    return this.promotionForm.get("addPromotions") as FormArray;
+  }
+  promotionRows() {
+    return this._formBuilder.group({
+      qtyFrom: [""],
+      qtyTo:[""],
+      buy:[""],
+      get:[""],
+      additional:[""]
+    });
+  }
+
+  addNewRow() {
+    this.formArr.push(this.promotionRows());
+  }
+
+  deletePromotion(index:number){
+    this.formArr.removeAt(index);
+  }
+
 
   isMOQValid = true;
   isPromotionTypeDataValid = true;
@@ -2755,5 +2783,6 @@ alert(obj3.MOQ);
     // });
 
   }
+
 }
 

@@ -121,13 +121,16 @@ export class OrderListComponent implements OnInit {
     // { headerName: "User Id",
     //   field: 'employeeCode' , sort: 'desc'},
 
-    { headerName: "Order No.", field: 'orderNUmber' ,
+    { headerName: "Order #", field: 'orderNUmber' ,
+    filter:false,
     cellStyle: { color: '#017EFA' },  
+    maxWidth:110,
     cellEditorPopup: true,
     onCellClicked: (event: CellClickedEvent) => this.dialog.open(OrdersReceiveShipmentComponent, {      maxWidth: '95vw'    ,height:"95vh"})
   },
 
-    { headerName: "Order Date", field: 'orderDate',       
+    { headerName: "Order Date", field: 'orderDate',
+    maxWidth: 120,    
 
 
   cellRenderer: (data) => 
@@ -142,35 +145,70 @@ export class OrderListComponent implements OnInit {
       minWidth: 300,
     },
     {
-      headerName: "Dealer  Reference no ",
+      headerName: "ERP Ref # ",
+      maxWidth: 125,
        field: 'companyReferenceNo'
     },
 
     {
       headerName: "Geography",
+      maxWidth: 180,
       field: 'geographyName',
+    },
+    {
+       headerName:"ODV($)",
+       maxWidth: 115,
+       field: '',
     },
 
     {
-      headerName: "Total Value",
-      field: 'totalValue',
-      type:['leftAligned']
-    },
-    {
-      headerName: "Completed Value",
-      field: 'compleatedValue',
-      type:['leftAligned']
-    },
+      headerName:"ODQ ",
+      field: 'orderedQty',
+      maxWidth: 115,
+   },
+   {
+    headerName:"RDQ",
+    field: 'receivedQty',
+    maxWidth: 115,
+   },
+   {
+    headerName:"OSQ",
+    field: 'outstandingQty',
+    maxWidth: 115,
+   },
+   {
+    headerName:"OSV($)",
+    maxWidth: 115,
+    field: 'outstandingValue',
+   },
+  
+   {
+    headerName:"ITQ",
+    maxWidth: 115,
+    field: 'inTransitQty',
+   },
+    // {
+    //   headerName: "Total Value",
+    //   minWidth: 130,
+    //   field: 'totalValue',
+    //   type:['leftAligned']
+    // },
+    // {
+    //   headerName: "Completed Value",
+    //   minWidth: 170,
+    //   field: 'compleatedValue',
+    //   type:['leftAligned']
+    // },
     {
       headerName: "Status",
       field: 'status',
-      maxWidth: 120,
+      minWidth: 140,
       cellEditor: 'agSelectCellEditor',
       cellEditorParams: {
         values: ['Closed', 'Approved',],
       },
       cellClass: params => {
-        return params.value == 'Rejected' ? 'myclass1' : params.value == 'Draft' ? 'myclass2' : params.value == 'Confirmed' ? 'myclass3' : params.value == 'Ordered' ? 'myclassss' : params.value == 'Returned' ? 'myclass5'
+        return params.value == 'Rejected' ? 'myclass1' : params.value == 'Draft' ? 'myclass2' : params.value == 'Processed' ? 'myclass3' : params.value == 'Ordered' ? 'myclassss' : params.value == 'Returned' ? 'myclass5'
           : params.value == 'Cancelled' ? 'myclass6' : params.value == 'Pre-closed' ? 'myclass7' : params.value == 'In-Transit' ? 'myclass8' : params.value == 'Fullfilled' ? 'Mmyclass' : params.value == 'ToShip' ? 'myclass10' : 'myclass11'
       },
 
@@ -208,7 +246,7 @@ export class OrderListComponent implements OnInit {
 
     suppressSizeToFit: true,
     width: 170,
-    filter: 'agTextColumnFilter',
+    filter: false,
     flex: 1,
     minWidth: 100,
     resizable: true,

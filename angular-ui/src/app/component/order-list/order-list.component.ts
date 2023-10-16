@@ -146,7 +146,7 @@ export class OrderListComponent implements OnInit {
     {
       headerName: 'Dealer',
       field: 'dealerName',
-      minWidth: 265,
+      minWidth: 290,
       tooltipField: 'dealerName',
     },
     {
@@ -262,7 +262,7 @@ export class OrderListComponent implements OnInit {
 
       cellRenderer: OrderlistActionPopupComponent,
       editable: false,
-      maxWidth: 70,
+      maxWidth: 35,
     },
     // {
     //   headerName: "Avatar",

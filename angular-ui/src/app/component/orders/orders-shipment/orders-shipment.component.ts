@@ -126,7 +126,6 @@ export class OrdersShipmentComponent implements OnInit {
   
   ngOnInit(): void {
     this.userType = localStorage.getItem('userType');
-    alert(this.userType)
     this.loggedUserId = localStorage.getItem('logInId');
    this.updateColumnDefs()
     this.myForm = this.fb.group({

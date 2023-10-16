@@ -154,7 +154,7 @@ export class OrdersReceiveShipmentComponent implements OnInit {
     private dialogRef: MatDialogRef<OrdersReceiveShipmentComponent>,
     private sharedserviceForshipment:SharedServicesShipmentService,
     ) { }
-
+    info:any=[]
   ngOnInit(): void {
     this.userId = localStorage.getItem("logInId");
     let item = localStorage.getItem("ViewOrReceive");
@@ -180,8 +180,8 @@ export class OrdersReceiveShipmentComponent implements OnInit {
       }
       this.orders.reciveshipmentfororder(obj).subscribe((res) => {
         console.log(res)
+        this.info = res.response
         this.shipmentArray = res.response;
-
         this.shipmentArray.itemcount.forEach(element => {
           element.itemDetails.forEach(element1 => {
             let arraybj: any = []

@@ -4,413 +4,461 @@
         <div class="addUser">
             <!-- <img class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
             <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
-
         </div>
-        <div [ngClass]="ViewOrReceive?'head-t':'head-t1'" >
-            <h3 class="addU " *ngIf="ViewOrReceive">{{headerName}}</h3>
-            <h3 class="addU12 " *ngIf="!ViewOrReceive">{{headerName}}{{orderNUmber}}</h3>
-
-            <div class="row top-bottom">
-                <div class="row text-center"></div>
+        <!-- order info -->
+        <div class="card mb-3" style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px; border-radius: 20px;">
+            <div class="card-body" *ngIf="info" >
+                <!-- {{info|json}} -->
+              <div class="row">
+                <div class="col-md-2">
+                    <b>Status <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-info-circle" viewBox="0 -2 18 18">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                      </svg></b> <br>
+                    <p class="text-secondary">{{info.status}}</p>
+                </div>
+                <div class="col-md-2">
+                    <b>Created On</b> <br>
+                    <p class="text-secondary">{{info.createdOn | date }}</p>
+                </div>
+                <div class="col-md-4">
+                    <b>Created By</b> <br>
+                    <p class="text-secondary">{{info.createdBy}}</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2">
+                    <b>Dealer Reference No</b> <br>
+                    <p class="text-secondary">{{info.dealerrefno}}</p>
+                </div>
+                <div class="col-md-2">
+                    <b>Remarks</b> <br>
+                    <p class="text-secondary">{{info.remarks}}</p>
+                </div>
+                
+              </div>
             </div>
-            <div (click)="expandDealerInfoDiv()" class="collapsible">
-                <div class="row">
-                    <div class="col-md-11">
-                        <p class="label-cls">Dealer Information</p>
-                    </div>
-                    <div class="col-md-1">
-                        <img [src]="image1" class="expand-arrow" alt="add-user-btn">
-                    </div>
-                </div>
-            </div>
-            <div class="content" *ngIf="!dealerInfo">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="dealerr">
-                            <label class="DealerInfo-label">Dealer <span class="astr"></span></label>
-                            <br>
-                            <label class="DescInfo-label">{{shipmentArray.customername}}</label>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="geographyy">
-                            <label class="DealerInfo-label">Geography <span class="astr"></span></label>
-                            <br>
-                            <label class="DescInfo-label">{{shipmentArray.geographyName}}</label>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="billingAdrs">
-                            <label class="DealerInfo-label">Billing Address <span class="astr"></span></label>
-                            <label class="DescInfo-labels">{{shipmentArray.billngAddress}}</label>
-                        </div>
-                    </div>
-                </div>
+        </div>
 
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="dealerReff">
-                            <label class="DealerInfo-label">Dealer Reference No <span class="astr"></span></label>
-                            <br>
-                            <label class="DescInfo-label">{{shipmentArray.dealerrefno}}</label>
+        <mat-tab-group class="orders-tab-group">
+            <mat-tab label="Orders-info">
+              <ng-template matTabContent class="tab-body">
+                <div [ngClass]="ViewOrReceive?'head-t':'head-t1'" >
+                    <!-- <h3 class="addU " *ngIf="ViewOrReceive">{{headerName}}</h3>
+                    <h3 class="addU12 " *ngIf="!ViewOrReceive">{{headerName}}{{orderNUmber}}</h3>
+        
+                    <div class="row top-bottom">
+                        <div class="row text-center"></div>
+                    </div>
+                    <div (click)="expandDealerInfoDiv()" class="collapsible">
+                        <div class="row">
+                            <div class="col-md-11">
+                                <p class="label-cls">Dealer Information</p>
+                            </div>
+                            <div class="col-md-1">
+                                <img [src]="image1" class="expand-arrow" alt="add-user-btn">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-3">
-                        <div class="companyReff">
-                            <label class="DealerInfo-label">Company Reference No <span class="astr"></span></label>
-                            <br>
-                            <label class="DescInfo-label">{{shipmentArray.comrefno}}</label>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="shippingAdrs">
-                            <label class="DealerInfo-label">Shipping Address <span class="astr"></span></label>
-                            <label class="DescInfo-labelss">{{shipmentArray.shippingAddress}}</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="top-bottom  {
-                height: 500px !important;
-              }">
-                <div class="collapsible" (click)="expandOrderItemsDiv()">
-                    <div class="row">
-                        <div class="col-lg-11">
-                            <p class="label-cls">Items</p>
-                        </div>
-                        <div class="col-lg-1">
-                            <img [src]="image2" class="expand-arrow" alt="add-user-btn">
-                        </div>
-                    </div>
-                </div>
-                <div class="content " *ngIf="!orderitem">
-                    <div class="section mt-1">
-                        <table class="shipmentOnes">
-                            <tr class="paddinginth">
-                                <th>Item</th>
-                                <th>UoM</th>
-                                <th>Order Qty</th>
-                                <th>Stock</th>
-                                <th>Unit Price</th>
-                                <th>Discount</th>
-                                <th>Final Value</th>
-                                <th>Tax</th>
-                                <th>Amount</th>
-                            </tr>
-                            <tr  *ngFor="let data of itemsArray;let i=index ">
-                                <td>
-                                    <p class="itemLeft"><span *ngIf=" i>=1? data.promo != itemsArray[i-1].promo:i==0"
-                                            class="promoItem">{{data.promo}}</span><span
-                                            style="color: transparent;">..</span>
-                                        <span style="color: transparent;"
-                                            *ngIf=" i>=1? data.promo == itemsArray[i-1].promo:''">......</span>
-                                        {{data.stockitemname?data.stockitemname:''}}
-                                    </p>
-                                </td>
-                                <td>
-                                    <label class="IteminputBoxes">{{data.uomname}}</label>
-                                </td>
-                                <td>
-                                    <label class="IteminputBoxes">{{data.quantity}}</label>
-                                </td>
-                                <td>
-                                    <label class="IteminputBoxes">{{data.stock}}</label>
-                                </td>
-                                <td>
-                                    <label class="IteminputBoxes">{{data.price}}</label>
-                                </td>
-                                <td>
-                                    <label class="IteminputBoxes">{{data.discount}}</label>
-                                </td>
-                                <td>
-                                    <label class="IteminputBoxes">{{data.finalValue}}</label>
-                                </td>
-                                <td>
-                                    <label class="IteminputBoxes">{{data.taxvalue}}</label>
-                                </td>
-                                <td>
-                                    <label class="IteminputBoxes">{{data.amount}}</label>
-                                </td>
-                                <!-- <mat-icon class="removeCircle" (click)=removeItem()>
-                                remove_circle</mat-icon> -->
-                            </tr>
-
-
-                        </table>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="totall">
-                            <div class="innerTotal d-flex">
-                                <div class="subitem">
-                                    <p class="alltotals">Sub Total</p>
-                                    <span>{{shipmentArray.subTotal}}</span>
+                    <div class="content" *ngIf="!dealerInfo">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="dealerr">
+                                    <label class="DealerInfo-label">Dealer <span class="astr"></span></label>
+                                    <br>
+                                    <label class="DescInfo-label">{{shipmentArray.customername}}</label>
                                 </div>
-                                <div class="subitem">
-                                    <p class="alltotals">Tax Element</p>
-                                    <span>{{shipmentArray.taxElement}}</span>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="geographyy">
+                                    <label class="DealerInfo-label">Geography <span class="astr"></span></label>
+                                    <br>
+                                    <label class="DescInfo-label">{{shipmentArray.geographyName}}</label>
                                 </div>
-                                <div class="subitem">
-                                    <p class="alltotals">Packing Charge</p>
-                                    <span>{{shipmentArray.pakingCharge}}</span>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="billingAdrs">
+                                    <label class="DealerInfo-label">Billing Address <span class="astr"></span></label>
+                                    <label class="DescInfo-labels">{{shipmentArray.billngAddress}}</label>
                                 </div>
-                                <div class="subitem">
-                                    <p class="alltotals">Shipping Charge</p>
-                                    <span id="totallssss1">{{shipmentArray.shipingcharge}}</span>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="dealerReff">
+                                    <label class="DealerInfo-label">Dealer Reference No <span class="astr"></span></label>
+                                    <br>
+                                    <label class="DescInfo-label">{{shipmentArray.dealerrefno}}</label>
                                 </div>
-                                <div class="subitem total_total">
-                                    <p class="alltotals totaltotal">Total</p>
-                                    <span id="totallssss">{{shipmentArray.total}}</span>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="companyReff">
+                                    <label class="DealerInfo-label">Company Reference No <span class="astr"></span></label>
+                                    <br>
+                                    <label class="DescInfo-label">{{shipmentArray.comrefno}}</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="shippingAdrs">
+                                    <label class="DealerInfo-label">Shipping Address <span class="astr"></span></label>
+                                    <label class="DescInfo-labelss">{{shipmentArray.shippingAddress}}</label>
+                                </div>
+                            </div>
+                        </div> -->
+                    <!-- </div> -->
+                    <div class="top-bottom  {
+                        height: 500px !important;
+                      }">
+                        <div class="collapsible" (click)="expandOrderItemsDiv()">
+                            <div class="row">
+                                <div class="col-lg-11">
+                                    <p class="label-cls">Items</p>
+                                </div>
+                                <div class="col-lg-1">
+                                    <img [src]="image2" class="expand-arrow" alt="add-user-btn">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content " *ngIf="!orderitem">
+                            <div class="section mt-1">
+                                <table class="shipmentOnes">
+                                    <tr class="paddinginth">
+                                        <th>Item</th>
+                                        <th>UoM</th>
+                                        <th>Order Qty</th>
+                                        <th>Stock</th>
+                                        <th>Unit Price</th>
+                                        <th>Discount</th>
+                                        <th>Final Value</th>
+                                        <th>Tax</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                    <tr  *ngFor="let data of itemsArray;let i=index ">
+                                        <td>
+                                            <p class="itemLeft"><span *ngIf=" i>=1? data.promo != itemsArray[i-1].promo:i==0"
+                                                    class="promoItem">{{data.promo}}</span><span
+                                                    style="color: transparent;">..</span>
+                                                <span style="color: transparent;"
+                                                    *ngIf=" i>=1? data.promo == itemsArray[i-1].promo:''">......</span>
+                                                {{data.stockitemname?data.stockitemname:''}}
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{data.uomname}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{data.quantity}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{data.stock}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{data.price}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{data.discount}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{data.finalValue}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{data.taxvalue}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{data.amount}}</label>
+                                        </td>
+                                        <!-- <mat-icon class="removeCircle" (click)=removeItem()>
+                                        remove_circle</mat-icon> -->
+                                    </tr>
+        
+        
+                                </table>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="totall">
+                                    <div class="innerTotal d-flex">
+                                        <div class="subitem">
+                                            <p class="alltotals">Sub Total</p>
+                                            <span>{{shipmentArray.subTotal}}</span>
+                                        </div>
+                                        <div class="subitem">
+                                            <p class="alltotals">Tax Element</p>
+                                            <span>{{shipmentArray.taxElement}}</span>
+                                        </div>
+                                        <div class="subitem">
+                                            <p class="alltotals">Packing Charge</p>
+                                            <span>{{shipmentArray.pakingCharge}}</span>
+                                        </div>
+                                        <div class="subitem">
+                                            <p class="alltotals">Shipping Charge</p>
+                                            <span id="totallssss1">{{shipmentArray.shipingcharge}}</span>
+                                        </div>
+                                        <div class="subitem total_total">
+                                            <p class="alltotals totaltotal">Total</p>
+                                            <span id="totallssss">{{shipmentArray.total}}</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-          
-            <div class="top-bottom" *ngFor="let data of currentShipArray;let i =index">
-                <div class="collapsible" (click)="expandShipmentTwoDiv()">
-                    <div class="row">
-                        <div class="col-lg-5">
-                            <p class="label-cls">{{data.shipName}}</p>
-                        </div>
-                        <div class="col-lg-6">
-                            <p class="label-cls">Invoice no:{{data.invoiceno}}</p>
-                        </div>
-                        <div class="col-lg-1">
-                            <img [src]="image4" class="expand-arrow" alt="add-user-btn">
-                        </div>
-                    </div>
-                </div>
-                <div class="content-shp-3" *ngIf="!shipmenttwo">
-                    <br>
-                    <div class="row">
-                        <div class="col-lg-3 fontweight">
-                            <label class="label2">Invoice No<span class="astr">*</span></label>
-                            <div class="input-datepicker mr-3">
-                                <input type="text" [(ngModel)]="data.invoiceno" class="invoice" disabled />
-                            </div>
-                            <!-- <app-customdatepicker [showInputField]="true" class="input-datepicker" label="Enter" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"><span class="astr">*</span></app-customdatepicker> -->
-                            <!-- <input matInput placeholder="Enter" #input class="form-control container input-box" > -->
-                        </div>
-                        <div class="col-lg-3">
-                            <!-- <div class="myDatepicker promotion-datepicker">
-                                <mat-form-field class="placeh-align">
-                                    <mat-label> Invoice date</mat-label>
-                                    <input matInput [matDatepicker]="picker1" [formControl]="data.invoiceDate"
-                                        (dateChange)="invoicedateChange($event)">
-                                    <mat-datepicker-toggle matSuffix [for]="picker1">
-                                        <mat-icon matDatepickerToggleIcon style="margin-left: 0px;">
-                                            <img src="assets/img/calender2.png" class="calendarToggle">
-                                        </mat-icon>
-                                    </mat-datepicker-toggle>
-                                    <mat-datepicker #picker1></mat-datepicker>
-                                </mat-form-field>
-                            </div> -->
-                            <label class="fontweight label1">Invoice Date <span class="astr">*</span></label><br>
-                            <div class="input-datepicker mr-3">
-                                <input type="text" [(ngModel)]="data.invoiceDate" class="invoice" disabled />
+                  
+                    <div class="top-bottom" *ngFor="let data of currentShipArray;let i =index">
+                        <div class="collapsible" (click)="expandShipmentTwoDiv()">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <p class="label-cls">{{data.shipName}}</p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <p class="label-cls">Invoice no:{{data.invoiceno}}</p>
+                                </div>
+                                <div class="col-lg-1">
+                                    <img [src]="image4" class="expand-arrow" alt="add-user-btn">
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
-
-                            <label class="fontweight label1">Shipping Date<span class="astr">*</span></label><br>
-                            <div class="input-datepicker mr-3">
-                                <input type="text" [(ngModel)]="data.shipmentDate" class="invoice" disabled />
+                        <div class="content-shp-3" *ngIf="!shipmenttwo">
+                            <br>
+                            <div class="row">
+                                <div class="col-lg-3 fontweight">
+                                    <label class="label2">Invoice No<span class="astr">*</span></label>
+                                    <div class="input-datepicker mr-3">
+                                        <input type="text" [(ngModel)]="data.invoiceno" class="invoice" disabled />
+                                    </div>
+                                    <!-- <app-customdatepicker [showInputField]="true" class="input-datepicker" label="Enter" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"><span class="astr">*</span></app-customdatepicker> -->
+                                    <!-- <input matInput placeholder="Enter" #input class="form-control container input-box" > -->
+                                </div>
+                                <div class="col-lg-3">
+                                    <!-- <div class="myDatepicker promotion-datepicker">
+                                        <mat-form-field class="placeh-align">
+                                            <mat-label> Invoice date</mat-label>
+                                            <input matInput [matDatepicker]="picker1" [formControl]="data.invoiceDate"
+                                                (dateChange)="invoicedateChange($event)">
+                                            <mat-datepicker-toggle matSuffix [for]="picker1">
+                                                <mat-icon matDatepickerToggleIcon style="margin-left: 0px;">
+                                                    <img src="assets/img/calender2.png" class="calendarToggle">
+                                                </mat-icon>
+                                            </mat-datepicker-toggle>
+                                            <mat-datepicker #picker1></mat-datepicker>
+                                        </mat-form-field>
+                                    </div> -->
+                                    <label class="fontweight label1">Invoice Date <span class="astr">*</span></label><br>
+                                    <div class="input-datepicker mr-3">
+                                        <input type="text" [(ngModel)]="data.invoiceDate" class="invoice" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+        
+                                    <label class="fontweight label1">Shipping Date<span class="astr">*</span></label><br>
+                                    <div class="input-datepicker mr-3">
+                                        <input type="text" [(ngModel)]="data.shipmentDate" class="invoice" disabled />
+                                    </div>
+                                    <!-- <input matInput placeholder="Select" #input class="form-control container input-box" > -->
+                                </div>
+                                <div class="col-lg-3">
+                                    
+                                    <div class="myDatepicker promotion-datepicker"
+                                        *ngIf="data.currentReceiveshipment && ViewOrReceive">
+                                        <label class="fontweight">Receive Date<span class="astr">*</span></label><br>
+                                        <mat-form-field class="placeh-align">
+                                            <mat-label> Received Date</mat-label>
+                                            <input matInput [matDatepicker]="picker3" [formControl]="recivedate" [min]="convertDateFormat(data.shipmentDate)" [max]="minDate"
+                                                (dateChange)="ReciveDateChange($event)" >
+                                            <mat-datepicker-toggle matSuffix [for]="picker3">
+                                                <mat-icon matDatepickerToggleIcon style="margin-left: 0px;">
+                                                    <img src="assets/img/calender2.png" class="calendarToggle">
+                                                </mat-icon>
+                                            </mat-datepicker-toggle>
+                                            <mat-datepicker #picker3></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+        
+                                    <label class="fontweight receive_date" *ngIf="data.currentReceiveshipment==false || ViewOrReceive==false">Receive date<span
+                                            class="astr">*</span></label><br>
+                                    <div class="input-datepicker mr-3"
+                                        *ngIf="data.currentReceiveshipment==false || ViewOrReceive==false">
+                                        <input type="text" [(ngModel)]="data.invoiceReceivedDate" class="invoice" disabled />
+                                    </div>
+        
+                                </div>
                             </div>
-                            <!-- <input matInput placeholder="Select" #input class="form-control container input-box" > -->
-                        </div>
-                        <div class="col-lg-3">
                             
-                            <div class="myDatepicker promotion-datepicker"
-                                *ngIf="data.currentReceiveshipment && ViewOrReceive">
-                                <label class="fontweight">Receive Date<span class="astr">*</span></label><br>
-                                <mat-form-field class="placeh-align">
-                                    <mat-label> Received Date</mat-label>
-                                    <input matInput [matDatepicker]="picker3" [formControl]="recivedate" [min]="convertDateFormat(data.shipmentDate)" [max]="minDate"
-                                        (dateChange)="ReciveDateChange($event)" >
-                                    <mat-datepicker-toggle matSuffix [for]="picker3">
-                                        <mat-icon matDatepickerToggleIcon style="margin-left: 0px;">
-                                            <img src="assets/img/calender2.png" class="calendarToggle">
-                                        </mat-icon>
-                                    </mat-datepicker-toggle>
-                                    <mat-datepicker #picker3></mat-datepicker>
-                                </mat-form-field>
+                            <div class="section mt-1">
+                                <table >
+                                    <tr>
+                                        <th class="paddinginth">Item</th>
+                                        <th class="paddinginth">UoM</th>
+                                        <th class="paddinginth">Order Qty</th>
+                                        <th class="paddinginth">Stock</th>
+                                        <th class="paddinginth">Unit Price</th>
+                                        <th class="paddinginth">Discount</th>
+                                        <th class="paddinginth">Final Value</th>
+                                        <th class="paddinginth">Tax</th>
+                                        <th class="paddinginth">Amount</th>
+                                        <th class="paddinginth">Shipped Qty</th>
+                                        <th class="paddinginth">Received Qty</th>
+                                        <th class="paddinginth">Lost/ Damaged</th>
+                                    </tr>
+                                    <tr  *ngFor="let items of data.arrayIside;let j=index">
+                                        <td>
+                                            <p class="itemLeft"><span
+                                                    *ngIf="j>=1? items?.promocode !=  data?.arrayIside[j-1]?.promocode:j==0"
+                                                    class="promoItem">{{items.promocode}}</span> <span
+                                                    style="color: transparent;">..</span>
+                                                <span style="color: transparent;"
+                                                    *ngIf="j>=1? items?.promocode ==  data?.arrayIside[j-1]?.promocode:''">......</span>{{items.stockitemname}}
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{items.uomname}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{items.quantity}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{items.stock}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{items.price}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{items.discount}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{items.finalValue}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{items.taxvalue}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{items.amount}}</label>
+                                        </td>
+                                        <td>
+                                            <input type="number" [(ngModel)]="currentShipArray[i].arrayIside[j].shipedQty"
+                                                class="ShipmentinputBoxes" disabled>
+                                        </td>
+                                        <td>
+                                            <input type="number" [(ngModel)]="currentShipArray[i].arrayIside[j].ReceivedQty"
+                                                placeholder="Enter Quantity"
+                                                [disabled]="data.currentReceiveshipment==false  ||  ViewOrReceive==false"
+                                                [ngClass]="[currentShipArray[i].arrayIside[j].ReceivedQty>currentShipArray[i].arrayIside[j].shipedQty && data.currentReceiveshipment==true?'ShipmentinputBoxes3':'ShipmentinputBoxes1',data.currentReceiveshipment==false || ViewOrReceive==false?'ShipmentinputBoxes4':'ShipmentinputBoxes1']" 
+                                                (keyup)="shipingNow()">
+                                        </td>
+                                        <td>
+                                            <input type="number" class="ShipmentinputBoxes" [(ngModel)]="currentShipArray[i].arrayIside[j].LostDamaged" disabled>
+                                        </td>
+                                        <!-- <mat-icon class="removeCircle" (click)=removeItem()>
+                                    remove_circle</mat-icon> -->
+                                    </tr>
+        
+                                   
+        
+                                </table>
                             </div>
-
-                            <label class="fontweight receive_date" *ngIf="data.currentReceiveshipment==false || ViewOrReceive==false">Receive date<span
-                                    class="astr">*</span></label><br>
-                            <div class="input-datepicker mr-3"
-                                *ngIf="data.currentReceiveshipment==false || ViewOrReceive==false">
-                                <input type="text" [(ngModel)]="data.invoiceReceivedDate" class="invoice" disabled />
+                            <div class="row mt-2">
+                                <div class="totall">
+                                    <div class="innerTotal d-flex">
+                                        <div class="subitem">
+                                            <p class="alltotals">Sub Total</p>
+                                            <span>{{data.subTotal}}</span>
+                                        </div>
+        
+        
+                                        <div class="subitem">
+                                            <p class="alltotals">Tax Element</p>
+                                            <span>{{data.taxElement}}</span>
+                                        </div>
+                                        <div class="subitem">
+                                            <p class="alltotals">Packing Charge</p>
+                                            <span>{{data.pakingCharge}}</span>
+                                        </div>
+                                        <div class="subitem">
+                                            <p class="alltotals">Shipping Charge</p>
+                                            <span>{{data.shipingcharge}}</span>
+                                        </div>
+                                        <div class="subitem total_total">
+                                            <p class="alltotals totaltotal">Total</p>
+                                            <span id ="totallssss">{{data.total}}</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
+                            <br>
+                            <div class="row">
+                                <!-- <div class="col-lg-1"></div> -->
+                                <div class="col-lg-11">
+                                    <div>
+                                        <label class="dispatchC">Dispatch Comment</label>
+                                        <br>
+                                        <p>{{data.invoiceComments}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- <div class="col-lg-1"></div> -->
+                                <div class="col-lg-11" *ngIf="ViewOrReceive && data.currentReceiveshipment">
+                                    <div>
+                                        <label class="dispatchC">Receipt Comment</label>
+                                        <br>
+                                        <input type="text" placeholder="Enter any comments" class="dispatchComments"
+                                            [(ngModel)]="ReceiptComments">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ship end" *ngIf="data.currentReceiveshipment &&  ViewOrReceive">
+                                <div class="col-lg-6">
+                                    <button type="button" class="saveas-draft" (click)="saveShipment('save')">Save</button>
+                                </div>
+        
+                                <div class="col-lg-6">
+                                    <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="section mt-1">
-                        <table >
-                            <tr>
-                                <th class="paddinginth">Item</th>
-                                <th class="paddinginth">UoM</th>
-                                <th class="paddinginth">Order Qty</th>
-                                <th class="paddinginth">Stock</th>
-                                <th class="paddinginth">Unit Price</th>
-                                <th class="paddinginth">Discount</th>
-                                <th class="paddinginth">Final Value</th>
-                                <th class="paddinginth">Tax</th>
-                                <th class="paddinginth">Amount</th>
-                                <th class="paddinginth">Shipped Qty</th>
-                                <th class="paddinginth">Received Qty</th>
-                                <th class="paddinginth">Lost/ Damaged</th>
-                            </tr>
-                            <tr  *ngFor="let items of data.arrayIside;let j=index">
-                                <td>
-                                    <p class="itemLeft"><span
-                                            *ngIf="j>=1? items?.promocode !=  data?.arrayIside[j-1]?.promocode:j==0"
-                                            class="promoItem">{{items.promocode}}</span> <span
-                                            style="color: transparent;">..</span>
-                                        <span style="color: transparent;"
-                                            *ngIf="j>=1? items?.promocode ==  data?.arrayIside[j-1]?.promocode:''">......</span>{{items.stockitemname}}
-                                    </p>
-                                </td>
-                                <td>
-                                    <label class="IteminputBoxes">{{items.uomname}}</label>
-                                </td>
-                                <td>
-                                    <label class="IteminputBoxes">{{items.quantity}}</label>
-                                </td>
-                                <td>
-                                    <label class="IteminputBoxes">{{items.stock}}</label>
-                                </td>
-                                <td>
-                                    <label class="IteminputBoxes">{{items.price}}</label>
-                                </td>
-                                <td>
-                                    <label class="IteminputBoxes">{{items.discount}}</label>
-                                </td>
-                                <td>
-                                    <label class="IteminputBoxes">{{items.finalValue}}</label>
-                                </td>
-                                <td>
-                                    <label class="IteminputBoxes">{{items.taxvalue}}</label>
-                                </td>
-                                <td>
-                                    <label class="IteminputBoxes">{{items.amount}}</label>
-                                </td>
-                                <td>
-                                    <input type="number" [(ngModel)]="currentShipArray[i].arrayIside[j].shipedQty"
-                                        class="ShipmentinputBoxes" disabled>
-                                </td>
-                                <td>
-                                    <input type="number" [(ngModel)]="currentShipArray[i].arrayIside[j].ReceivedQty"
-                                        placeholder="Enter Quantity"
-                                        [disabled]="data.currentReceiveshipment==false  ||  ViewOrReceive==false"
-                                        [ngClass]="[currentShipArray[i].arrayIside[j].ReceivedQty>currentShipArray[i].arrayIside[j].shipedQty && data.currentReceiveshipment==true?'ShipmentinputBoxes3':'ShipmentinputBoxes1',data.currentReceiveshipment==false || ViewOrReceive==false?'ShipmentinputBoxes4':'ShipmentinputBoxes1']" 
-                                        (keyup)="shipingNow()">
-                                </td>
-                                <td>
-                                    <input type="number" class="ShipmentinputBoxes" [(ngModel)]="currentShipArray[i].arrayIside[j].LostDamaged" disabled>
-                                </td>
-                                <!-- <mat-icon class="removeCircle" (click)=removeItem()>
-                            remove_circle</mat-icon> -->
-                            </tr>
-
-                           
-
-                        </table>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="totall">
-                            <div class="innerTotal d-flex">
-                                <div class="subitem">
-                                    <p class="alltotals">Sub Total</p>
-                                    <span>{{data.subTotal}}</span>
+                    <!-- <div class="top-bottom">
+                        <div class="collapsible" (click)="expandOrderHistoryDiv()">
+                            <div class="row">
+                                <div class="col-lg-11">
+                                    <p class="label-cls">Order History</p>
                                 </div>
-
-
-                                <div class="subitem">
-                                    <p class="alltotals">Tax Element</p>
-                                    <span>{{data.taxElement}}</span>
-                                </div>
-                                <div class="subitem">
-                                    <p class="alltotals">Packing Charge</p>
-                                    <span>{{data.pakingCharge}}</span>
-                                </div>
-                                <div class="subitem">
-                                    <p class="alltotals">Shipping Charge</p>
-                                    <span>{{data.shipingcharge}}</span>
-                                </div>
-                                <div class="subitem total_total">
-                                    <p class="alltotals totaltotal">Total</p>
-                                    <span id ="totallssss">{{data.total}}</span>
+                                <div class="col-lg-1">
+                                    <img [src]="image5" class="expand-arrow" alt="add-user-btn">
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <!-- <div class="col-lg-1"></div> -->
-                        <div class="col-lg-11">
+                        <br>
+                        <div class="content-order" *ngIf="!orderhistory">
                             <div>
-                                <label class="dispatchC">Dispatch Comment</label>
-                                <br>
-                                <p>{{data.invoiceComments}}</p>
+                                <ag-grid-angular id="gridContainer" class="ag-theme-material mt-2"
+                                    (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
+                                    [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
+                                    [rowData]="rowData5" [suppressExcelExport]="true" [popupParent]="popupParent"
+                                    (cellValueChanged)="onCellValueChanged($event)"
+                                    (firstDataRendered)="onFirstDataRendered($event)"
+                                    (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
+                                    (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+                                    (bodyScroll)="handleScroll($event)" [rowSelection]="'multiple'"
+                                    (rowSelected)="onRowSelect($event)"></ag-grid-angular>
                             </div>
+        
                         </div>
-                    </div>
-                    <div class="row">
-                        <!-- <div class="col-lg-1"></div> -->
-                        <div class="col-lg-11" *ngIf="ViewOrReceive && data.currentReceiveshipment">
-                            <div>
-                                <label class="dispatchC">Receipt Comment</label>
-                                <br>
-                                <input type="text" placeholder="Enter any comments" class="dispatchComments"
-                                    [(ngModel)]="ReceiptComments">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row ship end" *ngIf="data.currentReceiveshipment &&  ViewOrReceive">
-                        <div class="col-lg-6">
-                            <button type="button" class="saveas-draft" (click)="saveShipment('save')">Save</button>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
-                        </div>
-                    </div>
+        
+                    </div> -->
+        
                 </div>
-            </div>
-            <!-- <div class="top-bottom">
-                <div class="collapsible" (click)="expandOrderHistoryDiv()">
-                    <div class="row">
-                        <div class="col-lg-11">
-                            <p class="label-cls">Order History</p>
-                        </div>
-                        <div class="col-lg-1">
-                            <img [src]="image5" class="expand-arrow" alt="add-user-btn">
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="content-order" *ngIf="!orderhistory">
-                    <div>
-                        <ag-grid-angular id="gridContainer" class="ag-theme-material mt-2"
-                            (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
-                            [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
-                            [rowData]="rowData5" [suppressExcelExport]="true" [popupParent]="popupParent"
-                            (cellValueChanged)="onCellValueChanged($event)"
-                            (firstDataRendered)="onFirstDataRendered($event)"
-                            (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
-                            (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
-                            (bodyScroll)="handleScroll($event)" [rowSelection]="'multiple'"
-                            (rowSelected)="onRowSelect($event)"></ag-grid-angular>
-                    </div>
-
-                </div>
-
-            </div> -->
-
-        </div>
+               <div class=" d-flex justify-content-center">
+                    <button type="button" class="btn btn-success"> Edit</button>
+               </div>
+              </ng-template>
+            </mat-tab>
+            <mat-tab label="Shipment">
+              <ng-template matTabContent class="tab-body">
+                Content 2 - Loaded:
+              </ng-template>
+            </mat-tab>
+        </mat-tab-group>
 
     </div>
 

@@ -7,6 +7,22 @@
 {
   width: 90vw;
 }
+
+::ng-deep .mat-tab-header {
+  border: 1px solid grey;
+  border-radius: 35px;
+  flex-shrink: 0;
+  width: 320px !important;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+
+::ng-deep .mat-tab-body-wrapper{
+  margin-top: 20px;
+}
+
 .mat-form-field::placeholder {
     bottom: 2px;
   }

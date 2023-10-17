@@ -113,6 +113,9 @@ GetCategories(){
 GetProductGroupList1(){
   return this.http.get<any>(this.userurl + 'MaterialApi/GetProductGroupList')
 }
+GetSubGroupProductGroupList1(subGroupId:any){
+  return this.http.get<any>(this.userurl + 'MaterialApi/GetProductGroupList',subGroupId)
+}
 // http://13.126.235.145:801/api/MaterialApi/GetProductGroupList
 // http://13.126.235.145:801/api/MaterialApi/GetCategories
 Image(data: any){
@@ -137,6 +140,9 @@ getProductGroup(data: any){
 
 getProductSubGroup(data: any){
   return this.http.post<any>(this.userurl + 'PromotionsApi/GetAddProductSubGroup', data)
+}
+getProductSubGroups(subProdId:any){
+  return this.http.get<any>(`${this.userurl}MaterialApi/GetSubProducts?ParentId=${subProdId}`);
 }
 firstPromotion(data: any){
   return this.http.post<any>(this.userurl + 'PromotionsApi/AddEditPromotions', data)

@@ -308,11 +308,12 @@
                                                               
                                                             </div>
                                                             <div class="col-md-0 col-lg-0 col-sm-0" style="margin-top: 10px;" >
-                                                                <mat-slide-toggle  (click)="toggleData($event,data) "> Items With Order Qty
+                                                                <mat-slide-toggle  (click)="toggleDatapromotionm() ">
+                                                                    Items With Order Qty 
                                                                 </mat-slide-toggle>
-                                                                <!-- <mat-slide-toggle (click)="toggleData($event,data)">Items With Order Qty</mat-slide-toggle> -->
-                                                                
-                                                   
+                                                               
+
+
                                                                                                                                 
                                                             </div> &nbsp;&nbsp;  &nbsp;&nbsp; 
                                                            <!-- search -->
@@ -355,8 +356,8 @@
                                                                 </tr>
                                                               </thead>
                                                               <tbody class="tbodayheight">
-                                                                    <tr  *ngFor="let item of promos.stockitemid | filter:searchText">
-                                                                      
+                                                                    <tr  *ngFor="let item of promos.stockitemid | filter:searchText " >
+                                                                        <ng-container *ngIf="toggleState ? item.isProductSelected : true">
                                                                       <td style="width: 24px">
                                                                         <input type="checkbox" [checked]="item.isProductSelected" (change)="checkboxChange($event, item,data)" />
                                                                       </td>
@@ -371,11 +372,12 @@
                                                                           (keyup)="quantityChange($event, item)" name="item.Quantity" />
                                                                       </td>
                                                                       <td class="txt-right">{{ (item.Quantity ?? 0) * item.price | number : '1.2-2' }}</td>
-
+                                                                    </ng-container>
+                                                                    
                                                                     </tr>
                                                                 
                                                               </tbody>
-                                                            </table>
+                                                            </table>                       
                                                           </div>
                                                           
 
@@ -403,7 +405,7 @@
 
                                                     </div>
                                                  <div class="col col-lg-2">
-                                                    <mat-slide-toggle > Items With Order Qty
+                                                    <mat-slide-toggle  (click)="toggleDatapromotionmfreeitems() "> Items With Order Qty
                                                     </mat-slide-toggle>
 
                                                  </div> <div class="col col-lg-2">
@@ -512,6 +514,9 @@
                                                     <tbody class="tbodayheight1">
 
                                                         <tr *ngFor="let Item of promos.stockitemid |filter:searchTextFreeItems">
+                                                            <ng-container  *ngIf="toggleStatefreeitems ? Item.isProductSelected : true"> 
+
+                                                           
                                                             <td style="width:24px"><input type="checkbox"
                                                                     [checked]="Item.isProductSelected"
                                                                     (change)="checkboxChange($event,Item, data)"></td>
@@ -532,6 +537,7 @@
                                                                 </td>
 
                                                             <td class="txt-right">{{((Item.price) * (Item.Quantity))|number : '1.2-2' }}</td>
+                                                        </ng-container>
                                                         </tr>
 
                                                     </tbody>
@@ -602,7 +608,7 @@
                                                           
                                                         </div> -->
                                                         <div class="col-md-2 col-lg-2 col-sm-2" style="margin-top: 10px;" >
-                                                            <mat-slide-toggle  (click)="toggleData($event,data) "> Items With Order Qty
+                                                            <mat-slide-toggle (click)="SecondPromotiontoggle()"> Items With Order Qty
                                                             </mat-slide-toggle>                                                                  
                                                         </div> &nbsp;
 
@@ -660,6 +666,7 @@
                                                         </thead>
                                                         <tbody class="tbodayheight4">
                                                             <tr *ngFor="let Item of promos.stockitemid  |filter:searchTextSecondPromotion">
+                                                                <ng-container  *ngIf="toggleStatescondpro ? Item.isProductSelected : true"> 
                                                                 <td style="width:24px"><input type="checkbox"
                                                                         [checked]="Item.isProductSelected"
                                                                         [disabled]="!promos.isEnable"
@@ -701,6 +708,7 @@
                                                                     Item.price)|
                                                                     number : '1.2-2'
                                                                     }}</td>
+                                                                    </ng-container>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -792,7 +800,7 @@
 
 
                                                 <div class="row" style="width: 92%;">
-                                                    <div class="col col-lg-9">
+                                                    <div class="col col-lg-3">
                                                         <span class="buy-grp" style="margin-left: 2%;"> Free Items
                                                             </span>
                                                             <span class="total-itemss">
@@ -806,7 +814,7 @@
 
                                                     </div>
                                                      <div class="col-md-2 col-lg-2 col-sm-2" style="margin-top: 10px;" >
-                                                        <mat-slide-toggle  (click)="toggleData($event,data) " style="margin-left: 42px;"> Items With Order Qty
+                                                        <mat-slide-toggle  style="margin-left: 42px;" (click)="SecondPromotionbuygrouptoggle()"> Items With Order Qty
                                                         </mat-slide-toggle>                                                                  
                                                     </div> 
                                                     <div class="col col-lg-3">
@@ -862,6 +870,8 @@
                                                         <tbody class="tbodayheightGetset">
                                                             <tr class="table-row"
                                                                 *ngFor="let Item of promos.stockitemid |filter:searchTextSecondPromotionfree">
+                                                                
+                                                                <ng-container  *ngIf="toggleStatescondprofreeitems ? Item.isProductSelected : true"> 
                                                                 <td style="width: 30px;"><input type="checkbox"
                                                                         [disabled]="!promos.isEnable"
                                                                         [checked]="Item.isProductSelected"
@@ -904,6 +914,7 @@
                                                                     Item.price)|
                                                                     number : '1.2-2'
                                                                     }}</td>
+                                                                    </ng-container>
                                                             </tr>
                                                         </tbody>
 
@@ -963,7 +974,7 @@
 
                                                     </div>
                                                     <div class="col-2">
-                                                        <mat-slide-toggle  (click)="toggleData($event,data) " styel="margin-left:26px"> Items With Order Qty
+                                                        <mat-slide-toggle (click)="toggledatathirdpro()"  styel="margin-left:26px"> Items With Order Qty
                                                         </mat-slide-toggle> 
                                                     </div>
                                                     <div class="col-3">
@@ -1083,7 +1094,7 @@
 
                                                         <tr class="table-row"
                                                             *ngFor="let Item of data.promoDetails.stockitems |filter:ThirdPromotion">
-
+                                                            <ng-container  *ngIf="togglethiredpromotion ? Item.isProductSelected : true"> 
                                                             <td style="width: 24px;"><input type="checkbox"
                                                                     [checked]="Item.isProductSelected"
                                                                     (change)="checkboxChange($event,Item, data)"></td>
@@ -1147,7 +1158,7 @@
                                                             <td class="txt-right">{{Item.DiscountAmount ?? 0 |
 
                                                                 currency:'':''}}</td>
-
+                                                      </ng-container>
                                                         </tr>
 
                                                     </tbody>
@@ -1206,7 +1217,7 @@
 
                                                 </div>
                                                 <div class="col-2" style="margin-top:10px">
-                                                    <mat-slide-toggle  styel="margin-left:26px;"> Items With Order Qty
+                                                    <mat-slide-toggle  styel="margin-left:26px;" (click)="toggledataforthpro()"> Items With Order Qty
                                                     </mat-slide-toggle> 
                                                 </div>
                                                 <div class="col-3">
@@ -1286,6 +1297,7 @@
                                                     <tbody class="tbodayheightForthPro">
                                                         <tr class="table-row"
                                                             *ngFor="let Item of data.promoDetails.stockitems | filter:ForthPromotionsearch">
+                                                            <ng-container  *ngIf="togglefrthpromotion ? Item.isProductSelected : true"> 
                                                             <td style="width: 16px;"><input type="checkbox"
                                                                     [checked]="Item.isProductSelected"
                                                                     (change)="checkboxChange($event,Item, data)"></td>
@@ -1328,6 +1340,7 @@
                                                             <td class="txt-right">{{(Item.finalPrice) | number :
                                                                 '1.2-2'}}
                                                             </td>
+                                                            </ng-container>
                                                         </tr>
                                                     </tbody>
                                                 </table>

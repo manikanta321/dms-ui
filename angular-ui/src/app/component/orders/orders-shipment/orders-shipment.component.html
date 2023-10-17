@@ -1,7 +1,7 @@
 <div class="container-fluid mt-5">
     <div class="section shipment">
 <div class="row" style="margin-left: 3px;">
-    <div class="col-md-2 col-lg-2 col-sm-2 custom-bubblesorders-shipment  shipmentdropdown" *ngIf="userType !== 'Dealer Admin'">
+    <!-- <div class="col-md-2 col-lg-2 col-sm-2 custom-bubblesorders-shipment  shipmentdropdown" *ngIf="userType !== 'Dealer Admin'">
         <form [formGroup]="myForm" class="dropdown-form">
           <ng-multiselect-dropdown class="dealer dlsrr" name="city" [placeholder]="'Dealer'" formControlName="city"
             [disabled]="disabled" [settings]="dealerSettings" [data]="dealerlist"(onSelect)="DealerorderSelect($event)" (onDeSelect)="DealerDeselect($event)"(onDeSelectAll)="DealerDeselectAll($event)"
@@ -14,13 +14,13 @@
           <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Dealer(s) selected </span>
 
         </div>
-      </div>
+      </div> -->
         <div class="shipment mr-3">
         <app-customdatepicker [showInputField]="true" label="Shipment Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customShipDatePickerEvent($event)"></app-customdatepicker>       
       </div>
-        <div class="invoice">
+        <!-- <div class="invoice">
           <app-customdatepicker  [showInputField]="true" label="Invoice Date" [selectedDate]="selectedDateRanges" (customDatePickerEvent)="customInvoiceDatePickerEvent($event)"></app-customdatepicker>
-      </div>
+      </div> -->
       <div class="col-md-2 col-lg-2 col-sm-2 custom-bubblesorders-shipment" style="padding-left: 0px !important; margin-left: 16px;">
         <form [formGroup]="statusForm" class="dropdown-form">
           <ng-multiselect-dropdown class="Status stts" name="city" [placeholder]="'Status'" formControlName="status"

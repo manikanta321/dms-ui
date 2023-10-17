@@ -1191,7 +1191,9 @@ export class AddDealerAssociationsComponent implements OnInit {
 
   }
   onTypeSelect(item: any) {
-    this.typeI.push(item.typeId);
+   
+
+     this.typeI.push(item.typeId);
 
     const data = {
       DealerId: this.selectedDealer2,
@@ -1579,15 +1581,12 @@ export class AddDealerAssociationsComponent implements OnInit {
 
 
   tooltiptable() {
-    // const data ={
-    // ProductSKUId : ['49']
-    // }
-    //  let prodctId =  this.selectedProduct1;
-    let prodctId = [this.selectedProduct1];
-    this.associationService.tooltipStockItemDetailList(prodctId).subscribe((res: any) => {
-      console.log(res.response);
-      this.tooltipData = res.response
-    })
+   
+    // let prodctId = [this.selectedProduct1];
+    // this.associationService.tooltipStockItemDetailList(prodctId).subscribe((res: any) => {
+    //   console.log(res.response);
+    //   this.tooltipData = res.response
+    // })
   }
   tooltipDealerTable() {
     let prodctId = [this.selectedDealer2];

@@ -7,6 +7,17 @@
     margin-top: 18px;
     font-family: 'Gilroy-Bold';
 }
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar
+{
+  color: #009B63;
+}
+mat-slide-toggle.mat-checked {
+  
+  color: #009B63;
+}
+mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  color: #009B63;
+}
 
 
 .ORTEXTPROMO:after {

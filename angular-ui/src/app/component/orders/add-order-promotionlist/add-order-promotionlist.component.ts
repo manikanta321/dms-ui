@@ -1215,55 +1215,105 @@ moqselectedreaminingFORTHPromotion(promos: any): number {
   return totalSelected;
 }
 
-// selected
+ toggleState: boolean = false;
 
-// toggleState: boolean = false;
-
-// toggleData(updatedItem) {
-//   this.toggleState = !this.toggleState;
-
-//   if (this.toggleState) {
-//     this.ProductPromotionOrderList = this.ProductPromotionOrderList?.filter(
-//       (Item) => Item.promoDetails?.stockitemid?.isProductSelected
-//     );
-//   } else {
-//     this.ProductPromotionOrderList
-//   }
-// }
-
-
-// new
-
-toggleState: boolean = false;
-// toggleData(updatedItem,data:any) {
-//   this.toggleState = !this.toggleState;
-//   if (this.toggleState == true) {
-//     debugger
-//     this.ProductPromotionOrderList = this.ProductPromotionOrderList.filter(item => item.isPromotionSelected);
-//     console.log(this.promoDetails.stockitemname);
-    
-//   }
-//   else {
-    
-//     this.ProductPromotionOrderList
-    
-//       this.quantityChange(updatedItem,data);
-  
-//   }
-  
-// }
-
-toggleData(data:any,item:any) {
-
+filteredProductList:any
+toggleDatapromotionm() {
   this.toggleState = !this.toggleState;
   if (this.toggleState) {
-    this.ProductPromotionOrderList = this.ProductPromotionOrderList?.filter(
-      (Item) => Item.promoDetails?.stockitemid?.isProductSelected
+    this.filteredProductList = this.ProductPromotionOrderList.filter(
+      (item) => item.isProductSelected == true
     );
   } else {
-    this.ProductPromotionOrderList
+    
+    this.filteredProductList = this.ProductPromotionOrderList;
   }
 }
+toggleStatefreeitems:boolean=false;
+Freeitemsguygroup:any
+toggleDatapromotionmfreeitems()
+{
+  
+  this.toggleStatefreeitems = !this.toggleStatefreeitems;
+  if(this.toggleStatefreeitems)
+  {
+    this.Freeitemsguygroup =this.ProductPromotionOrderList.filter(
+      (Item)=> Item.isProductSelected == true
+    );
+    {
+      this.Freeitemsguygroup=this.ProductPromotionOrderList;
+    }
+  }
+}
+
+toggleStatescondpro:boolean=false;
+SecondPromotionGetgroup:any
+SecondPromotiontoggle()
+{
+  
+  this.toggleStatescondpro = !this.toggleStatescondpro;
+  if(this.toggleStatescondpro)
+  {
+    this.SecondPromotionGetgroup =this.ProductPromotionOrderList.filter(
+      (Item)=> Item.isProductSelected == true
+    );
+    {
+      this.SecondPromotionGetgroup=this.ProductPromotionOrderList;
+    }
+  }
+}
+
+
+toggleStatescondprofreeitems:boolean=false;
+SecondPromotionBetgroup:any
+SecondPromotionbuygrouptoggle()
+{
+  
+  this.toggleStatescondprofreeitems = !this.toggleStatescondprofreeitems;
+  if(this.toggleStatescondprofreeitems)
+  {
+    this.SecondPromotionBetgroup =this.ProductPromotionOrderList.filter(
+      (Item)=> Item.isProductSelected == true
+    );
+    {
+      this.SecondPromotionBetgroup=this.ProductPromotionOrderList;
+    }
+  }
+}
+
+togglethiredpromotion:boolean=false;
+ThiredPromotiongroup:any
+toggledatathirdpro()
+{
+
+  this.togglethiredpromotion = !this.togglethiredpromotion;
+  if(this.togglethiredpromotion)
+  {
+    this.ThiredPromotiongroup =this.ProductPromotionOrderList.filter(
+      (Item)=> Item.isProductSelected == true
+    );
+    {
+      this.ThiredPromotiongroup=this.ProductPromotionOrderList;
+    }
+  }
+}
+
+togglefrthpromotion:boolean=false;
+ForthPromotiongroup:any
+toggledataforthpro()
+{
+
+  this.togglefrthpromotion = !this.togglefrthpromotion;
+  if(this.togglefrthpromotion)
+  {
+    this.ForthPromotiongroup =this.ProductPromotionOrderList.filter(
+      (Item)=> Item.isProductSelected == true
+    );
+    {
+      this.ForthPromotiongroup=this.ProductPromotionOrderList;
+    }
+  }
+} 
 
 
 

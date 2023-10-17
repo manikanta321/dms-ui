@@ -1528,7 +1528,7 @@ export class AddorderpromotionsComponent implements OnInit {
   }
   UpdatedQty:any
   quantityChange(updatedItem) {
-    // this.UpdatedQty=updatedItem.quantity
+   this.UpdatedQty=updatedItem.quantity
   console.log(updatedItem)
 
 
@@ -1624,17 +1624,15 @@ export class AddorderpromotionsComponent implements OnInit {
 
   DisplayNonpromotion:boolean=false
   addnonPromoItems() {
-    console.log(this.UpdatedQty,"Balram");
-    
-    // if (this.UpdatedQty==null ) 
-    // {
-    //   const dialogRef = this.dialog.open(OrderActionShipmentComponent, {
-    //     data: {
-    //       Alertpp: true
-    //     }
-    //   });
+    if (this.UpdatedQty==null )
+    {
+      const dialogRef = this.dialog.open(OrderActionShipmentComponent, {
+        data: {
+          Alertpp: true
+        }
+      });
 
-    // } else {
+    } else {
       
      
 
@@ -1713,6 +1711,7 @@ export class AddorderpromotionsComponent implements OnInit {
     localStorage.setItem('ThreePromotionCalculationsAmount', this.price);
   // }
   }
+}
   // quantityAdd:any|number=0;
   
 

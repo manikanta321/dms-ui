@@ -2530,3 +2530,8 @@ tr:nth-child(even) {
   text-align: center;
   padding-right: 15px;
 }
+
+.red-row {
+  background-color: rgb(249, 15, 147);
+  color: white; 
+}

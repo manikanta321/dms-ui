@@ -7,7 +7,7 @@ import { PromotionService } from 'src/app/services/promotion.service';
 import { AddItemsPromotionComponent } from '../promotions/add-items-promotion/add-items-promotion.component';
 import { RemovePromotionItemComponent } from './remove-promotion-item/remove-promotion-item.component';
 import { elementAt, Subject } from 'rxjs';
-import { CellClassParams, CellClassRules, CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef, GridApi, GridOptions, ModuleRegistry, ColumnResizedEvent, Grid, } from 'ag-grid-community';
+import { CellClassParams, CellClassRules, CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridReadyEvent, RowValueChangedEvent, SideBarDef, GridApi, GridOptions, ModuleRegistry, ColumnResizedEvent, Grid} from 'ag-grid-community';
 import { MatTableDataSource } from '@angular/material/table';
 import { AddPromotionGeographiesComponent } from './add-promotion-geographies/add-promotion-geographies.component';
 import { DateAdapter } from '@angular/material/core';
@@ -998,6 +998,7 @@ console.log('addgetgroup',this.addgetgroup);
     );
   }
   openDialog() {
+    console.log("calling opendialog")
     // alert('mani')
 
   }
@@ -1597,7 +1598,37 @@ this.textShow=true;
 
     })
   }
+  showSelectedRows:boolean=false;
+totalselecteddata() {
+  this.showSelectedRows = !this.showSelectedRows;
+  if (this.showSelectedRows) {
+    const showSelectedRows = this.gridApi.getSelectedRows();
+    console.log(showSelectedRows,"========");
+    this.selectedRows;(this.selectedRows);
+   
+   
+  } else {
 
+      this.gridApi.setRowData(this.rowData5);
+      const showSelectedRows = this.gridApi.getSelectedRows();
+    console.log(showSelectedRows,"========");
+    this.selectedRows;(this.selectedRows);
+  }
+}
+
+selectedRowsR:boolean=true
+toggleSelectedRows() {
+  this.showSelectedRows = !this.showSelectedRows;
+  console.log(this.showSelectedRows);
+  if (this.showSelectedRows) {
+    
+    const selectedRows = this.gridApi.getSelectedRows();
+ 
+    this.gridApi.setRowData(selectedRows);
+  } else {
+    this.gridApi.setRowData(this.rowData5);
+  }
+}
 
 
   addItemsPrice() {
@@ -1706,10 +1737,6 @@ this.textShow=true;
 
     console.log('this.buyGroupPlus', this.addgetgroup)
   }
-
-
-
-
 
 
   updateAllCompleteforBuyGroup(StockItemID, i, j) {
@@ -1897,6 +1924,16 @@ this.textShow=true;
     this.base64textString = reader.result.substr(reader.result.indexOf(',') + 1);
     console.log(this.base64textString, "base64")
   }
+  
+  
+  updateSelectedRows() {
+    this.selectedRows = this.gridApi.getSelectedRows();
+    console.log(this.selectedRows,"AA");
+  }
+  
+  
+ 
+
   onRowSelect(event) {
     const selectedRows = this.gridApi.getSelectedRows();
     console.log(selectedRows);

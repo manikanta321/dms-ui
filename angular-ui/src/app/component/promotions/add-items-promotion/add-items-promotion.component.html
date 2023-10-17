@@ -94,7 +94,7 @@
     
                   </div>
                 </div>
-                <div class="search-d  col-lg-3">
+                <!-- <div class="search-d  col-lg-3">
                   <form [formGroup]="type">
                     <ng-multiselect-dropdown class="typy typecat" name="type" [placeholder]="'Type'" formControlName="type"
                       [disabled]="disabled" [settings]="dropdownSettings2" [data]="typeI" (onSelect)="addTypeSelect($event)"
@@ -110,7 +110,7 @@
                       {{type.get('type').value.length}} Types </span>
     
                   </div>
-                </div>
+                </div> -->
                 <div class="search-d  col-lg-3">
                   <form [formGroup]="products">
                     <ng-multiselect-dropdown class="producty productcat" name="product" [placeholder]="'Product'"
@@ -128,6 +128,26 @@
     
                   </div>
                 </div>
+                <!-- New Drop Down -->
+     
+                <div class="search-d  col-lg-3">
+                  <form [formGroup]="subGroupProducts">
+                    <ng-multiselect-dropdown class="producty productcat" name="product" [placeholder]="'Product'"
+                      formControlName="subgroupproducts" [disabled]="disabled" [settings]="dropdownSettings10" [data]="prodSubGroup"
+                      (onSelect)="onProductSubGroupSelect($event)" (onDeSelect)="onSubGroupDeSelect($event)"
+                      (onDeSelectAll)="onSubGroupDeSelectOrAll($event)" (onSelectAll)="onSubGroupSelectOrAll($event)">
+                    </ng-multiselect-dropdown>
+                  </form>
+                  <div class="dropdown-placeholder producty-placeholder">
+                    <span *ngIf="subGroupProducts.get('subgroupproducts').value.length == 0"> Select SubGroup </span>
+                    <span *ngIf="subGroupProducts.get('subgroupproducts').value.length == 1" class="selected-placeholder">
+                      {{subGroupProducts.get('subgroupproducts').value.length}} SubGroup </span>
+                    <span *ngIf="subGroupProducts.get('subgroupproducts').value.length > 1" class="selected-placeholder">
+                      {{subGroupProducts.get('subgroupproducts').value.length}} SubGroups </span>
+    
+                  </div>
+                </div>
+                <!--  -->
               </div>
             </div>
             <div class="col-lg-1">

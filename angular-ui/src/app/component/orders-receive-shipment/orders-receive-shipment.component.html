@@ -7,37 +7,37 @@
         </div>
         <!-- order info -->
         <div class="card mb-3" style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px; border-radius: 20px;">
-            <div class="card-body" *ngIf="info" >
+            <div class="card-body" >
                 <!-- {{info|json}} -->
               <div class="row">
                 <div class="col-md-2" *ngIf="userType==='Admin'"> 
                     <b>Dealer Name</b> <br>
-                    <p class="text-secondary">{{info.customername}}</p>
+                    <p class="text-secondary">{{shipmentArray.customername}}</p>
                 </div>
                 <div class="col-md-2">
-                    <b>Status <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-info-circle" viewBox="0 -2 18 18">
+                    <b>Status <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="red" class="bi bi-shipmentArray-circle" viewBox="0 -2 18 18">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                         <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                       </svg></b> <br>
-                    <p class="text-secondary">{{info.status}}</p>
+                    <p class="text-secondary">{{shipmentArray.status}}</p>
                 </div>
                 <div class="col-md-2">
                     <b>Created On</b> <br>
-                    <p class="text-secondary">{{info.createdOn | date }}</p>
+                    <p class="text-secondary">{{shipmentArray.createdOn | date }}</p>
                 </div>
                 <div class="col-md-4">
                     <b>Created By</b> <br>
-                    <p class="text-secondary">{{info.createdBy}}</p>
+                    <p class="text-secondary">{{shipmentArray.createdBy}}</p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-2">
                     <b>Dealer Reference No</b> <br>
-                    <p class="text-secondary">{{info.dealerrefno}}</p>
+                    <p class="text-secondary">{{shipmentArray.dealerrefno}}</p>
                 </div>
                 <div class="col-md-2">
                     <b>Remarks</b> <br>
-                    <p class="text-secondary">{{info.remarks}}</p>
+                    <p class="text-secondary">{{shipmentArray.remarks}}</p>
                 </div>
                 
               </div>
@@ -45,7 +45,7 @@
         </div>
 
         <mat-tab-group class="orders-tab-group">
-            <mat-tab label="Orders-info">
+            <mat-tab label="Orders-info" >
               <ng-template matTabContent class="tab-body">
                 <div [ngClass]="ViewOrReceive?'head-t':'head-t1'" >
                     <!-- <h3 class="addU " *ngIf="ViewOrReceive">{{headerName}}</h3>

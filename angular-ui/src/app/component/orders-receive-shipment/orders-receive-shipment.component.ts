@@ -155,8 +155,10 @@ export class OrdersReceiveShipmentComponent implements OnInit {
     private sharedserviceForshipment:SharedServicesShipmentService,
     ) { }
     info:any=[]
+    userType:any;
   ngOnInit(): void {
     this.userId = localStorage.getItem("logInId");
+    this.userType = localStorage.getItem("userType");
     let item = localStorage.getItem("ViewOrReceive");
     if (item == 'Receive') {
       this.ViewOrReceive = true;

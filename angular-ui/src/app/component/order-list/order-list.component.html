@@ -1,7 +1,7 @@
 <div class="orderlist-section mt-3 scrollbarorderlist ordersss" style="padding:15px;">
 <div class="fiters-sec">
 <div class="row orderlistdropdown">
-    <div class="col-md-2 col-lg-2 col-sm-2 custom-bubbles "  style="padding-left: 0px;" *ngIf="userType !== 'Dealer Admin'">
+    <!-- <div class="col-md-2 col-lg-2 col-sm-2 custom-bubbles "  style="padding-left: 0px;" *ngIf="userType !== 'Dealer Admin'">
         <form [formGroup]="myForm" class="dropdown-form">
           <ng-multiselect-dropdown class="Dealers dlsr"  name="city" [placeholder]="'Dealers'" formControlName="city"
             [disabled]="disabled" [settings]="dropdownSettings" [data]="dealerlist"
@@ -16,9 +16,9 @@
           </div>
 
         </form>
-      </div>
+      </div> -->
 
-      <div class="col-md-2 col-lg-2 col-sm-2   custom-bubbles multiSelect" style="padding-left: 0px;" *ngIf="userType !== 'Dealer Admin'">
+      <!-- <div class="col-md-2 col-lg-2 col-sm-2   custom-bubbles multiSelect" style="padding-left: 0px;" *ngIf="userType !== 'Dealer Admin'">
         <form [formGroup]="myForm1" class="dropdown-form">
           <ng-multiselect-dropdown  class="  Geography geographybubbles " name="city" [placeholder]="'Geography'" formControlName="geo"
             [disabled]="disabled" [settings]="dropdownSettings1" [data]="geogropdownlist" (onSelect)="geographyselect($event)"
@@ -32,7 +32,7 @@
           </div>
 
         </form>
-      </div>
+      </div> -->
       <div class="invoice">
         <!-- <mat-form-field appearance="fill">
           <mat-label>Order Date</mat-label>

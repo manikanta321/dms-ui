@@ -45,6 +45,7 @@
         </div>
 
         <mat-tab-group class="orders-tab-group">
+            <!-- orders -->
             <mat-tab label="Orders-info" >
               <ng-template matTabContent class="tab-body">
                 <div [ngClass]="ViewOrReceive?'head-t':'head-t1'" >
@@ -114,73 +115,101 @@
                     <div class="top-bottom  {
                         height: 500px !important;
                       }">
-                        <div class="collapsible" (click)="expandOrderItemsDiv()">
+                      <!-- (click)="expandOrderItemsDiv()" -->
+                        <div class="collapsible" >
                             <div class="row">
                                 <div class="col-lg-11">
                                     <p class="label-cls">Order Items</p>
                                 </div>
-                                <div class="col-lg-1">
+                                <!-- <div class="col-lg-1">
                                     <img [src]="image2" class="expand-arrow" alt="add-user-btn">
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="content " *ngIf="!orderitem">
                             <div class="section mt-1">
                                 <table class="shipmentOnes">
-                                    <tr class="paddinginth">
-                                        <th>Item</th>
-                                        <th>UoM</th>
-                                        <th>Order Qty</th>
-                                        <th>Stock</th>
-                                        <th>Unit Price</th>
-                                        <th>Discount</th>
-                                        <th>Final Value</th>
-                                        <th>Tax</th>
-                                        <th>Amount</th>
+                                    <thead>
+                            
+                                        <tr class="paddinginth">
+                                            <th>Product Code</th>
+                                            <th>Product Name</th>
+                                            <th>Price</th>
+                                            <th>Discount Price </th>
+                                            <th>Qty</th>
+                                            <th>Sub-Total</th>
+                                            <!-- <th>Final Value</th>
+                                                                        <th>Tax</th>
+                                                                        <th>Amount</th> -->
+                                        </tr>
+                                    </thead>
+                            
+                                    <tbody class="shipmentOnes" *ngFor="let data of itemsArray; let i = index">
+                                        <tr [ngClass]="{'expanded': allExpanded}">
+                                            <td [attr.colspan]="12">
+                                              <h5 class="card-header m-0 p-1" (click)="toggleRowVisibility(i)" style="cursor: pointer">
+                                                <span class="collapse-icon" [ngClass]="{ 'collapsed': allExpanded }">
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                                    class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd"
+                                                      d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                                  </svg>
+                                                </span>
+                                                {{data.promo}}
+                                              </h5>
+                                            </td>
+                                          </tr>
+                                          <tr *ngIf="allExpanded">
+                                            <td class="IteminputBoxes">
+                                                <label >{{data.uomname}}</label>
+                                            </td>
+                                            <td class="IteminputBoxes">
+                                                <label >{{data.stockitemname}}</label>
+                                            </td>
+                                            <td class="IteminputBoxes">
+                                                <label > ${{data.price}}</label>
+                                            </td>
+                                            <td class="IteminputBoxes">
+                                                <label > ${{data.finalValue}}</label>
+                                            </td>
+                                            <td class="IteminputBoxes">
+                                                <label >{{data.quantity}}</label>
+                                            </td>
+                                            <td class="IteminputBoxes">
+                                                <label >${{data.amount}}</label>
+                                            </td>  
+                                        </tr>
+                                    </tbody>
+                                    <tr class="card-header ml-2">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><b>Total</b></td>
+                                        <td><b></b></td>
+                                        <td><b> ${{shipmentArray.subTotal}}</b></td>
                                     </tr>
-                                    <tr  *ngFor="let data of itemsArray;let i=index ">
-                                        <td>
-                                            <p class="itemLeft"><span *ngIf=" i>=1? data.promo != itemsArray[i-1].promo:i==0"
-                                                    class="promoItem">{{data.promo}}</span><span
-                                                    style="color: transparent;">..</span>
-                                                <span style="color: transparent;"
-                                                    *ngIf=" i>=1? data.promo == itemsArray[i-1].promo:''">......</span>
-                                                {{data.stockitemname?data.stockitemname:''}}
-                                            </p>
-                                        </td>
-                                        <td>
-                                            <label class="IteminputBoxes">{{data.uomname}}</label>
-                                        </td>
-                                        <td>
-                                            <label class="IteminputBoxes">{{data.quantity}}</label>
-                                        </td>
-                                        <td>
-                                            <label class="IteminputBoxes">{{data.stock}}</label>
-                                        </td>
-                                        <td>
-                                            <label class="IteminputBoxes">{{data.price}}</label>
-                                        </td>
-                                        <td>
-                                            <label class="IteminputBoxes">{{data.discount}}</label>
-                                        </td>
-                                        <td>
-                                            <label class="IteminputBoxes">{{data.finalValue}}</label>
-                                        </td>
-                                        <td>
-                                            <label class="IteminputBoxes">{{data.taxvalue}}</label>
-                                        </td>
-                                        <td>
-                                            <label class="IteminputBoxes">{{data.amount}}</label>
-                                        </td>
-                                        <!-- <mat-icon class="removeCircle" (click)=removeItem()>
-                                        remove_circle</mat-icon> -->
-                                    </tr>
-        
-        
                                 </table>
                             </div>
-                            <div class="row mt-2">
-                                <div class="totall">
+                            <div class="row mt-3 mb-2">
+                                <table class="totall table table-striped p-3">
+                                    <tr class="subitem">
+                                      <td class="text-left SUBITEMNAME">Subtotal</td>
+                                      <td class="text-right numbers">${{shipmentArray.subTotal}}</td>
+                                    </tr>
+                                    <tr class="subitem">
+                                      <td class="text-left SUBITEMNAME">Packing Charge</td>
+                                      <td class="text-right numbers">${{shipmentArray.taxElement}}</td>
+                                    </tr>
+                                    <tr class="subitem">
+                                      <td class="text-left SUBITEMNAME">Shipping Charge</td>
+                                      <td class="text-right numbers">${{shipmentArray.pakingCharge}}</td>
+                                    </tr>
+                                    <tr class="subitem">
+                                      <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';">Total</td>
+                                      <td class="text-right numbers">${{shipmentArray.total}}</td>
+                                    </tr>
+                                  </table>
+                                <!-- <div class="totall">
                                     <div class="innerTotal d-flex">
                                         <div class="subitem">
                                             <p class="alltotals">Sub Total</p>
@@ -203,7 +232,7 @@
                                             <span id="totallssss">{{shipmentArray.total}}</span>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -240,11 +269,12 @@
                     </div> -->
         
                 </div>
-               <div class=" d-flex justify-content-center">
-                    <button type="button" class="btn btn-success"> Edit</button>
+               <div class=" d-flex justify-content-center mt-3">
+                    <button type="button" class="btn ps-5 pe-5 pt-1 pb-1" style="background: rgba(1, 139, 117, 1); width: 171px;height: 44px;"> Edit</button>
                </div>
               </ng-template>
             </mat-tab>
+            <!--shipments  -->
             <mat-tab label="Shipment">
               <ng-template matTabContent class="tab-body">
                 <div class="top-bottom" *ngFor="let data of currentShipArray;let i =index">

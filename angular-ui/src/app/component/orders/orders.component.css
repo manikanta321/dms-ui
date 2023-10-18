@@ -74,7 +74,7 @@ mat-tab{
     width: 547px !important;
     border-radius: 25px;
     background: white;
-    left: 35%;
+    /* left: 35%; */
 height: 35px;
 }
 ::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {

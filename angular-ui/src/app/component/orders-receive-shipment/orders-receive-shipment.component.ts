@@ -195,6 +195,8 @@ export class OrdersReceiveShipmentComponent implements OnInit {
     private sharedserviceForshipment: SharedServicesShipmentService
   ) {}
   userType: any;
+  rowVisible: boolean[] = [];
+  allExpanded = true;
   ngOnInit(): void {
     this.userId = localStorage.getItem('logInId');
     this.userType = localStorage.getItem('userType');
@@ -572,6 +574,10 @@ export class OrdersReceiveShipmentComponent implements OnInit {
     }
 
     this.viewOrderData();
+  }
+  // rowVisible: boolean[] = new Array(this.itemsArray).fill(true);
+  toggleRowVisibility(index: number) {
+    this.allExpanded = !this.allExpanded
   }
   viewOrderData() {
     let viewData = sessionStorage.getItem('viewOrder');

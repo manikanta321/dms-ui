@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {
   MatDialog,
@@ -19,13 +19,16 @@ import { OtherMasterService } from 'src/app/services/other-master.service';
 import { SharedServicesShipmentService } from 'src/app/services/shared-services-shipment.service';
 import { ShipOrderSuccessPopupComponent } from 'src/app/ship-order-success-popup/ship-order-success-popup.component';
 import { CustomDatePopupComponent } from '../orders/custom-date-popup/custom-date-popup.component';
+import { NgChanges } from '@generic-ui/ngx-grid/feature/common/src/cdk/component/lib';
+import { AddorderpromotionsComponent } from '../orders/addorderpromotions/addorderpromotions.component';
 
 @Component({
   selector: 'app-orders-receive-shipment',
   templateUrl: './orders-receive-shipment.component.html',
   styleUrls: ['./orders-receive-shipment.component.css'],
 })
-export class OrdersReceiveShipmentComponent implements OnInit {
+export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
+ 
   dealerInfo = false;
   orderitem = false;
   shipmentone = false;
@@ -66,6 +69,8 @@ export class OrdersReceiveShipmentComponent implements OnInit {
   LostOrDamage: boolean = false;
   orderNUmber: any = '';
   headerName: any;
+  status:string | null | undefined;
+  checkstatus: boolean | undefined;
   public popupParent: HTMLElement = document.body;
   public rowData5: any = [
     {
@@ -196,8 +201,12 @@ export class OrdersReceiveShipmentComponent implements OnInit {
   ) {}
   userType: any;
   rowVisible: boolean[] = [];
-  allExpanded = true;
-  ngOnInit(): void {
+  allExpanded = true; 
+  actineLabel: any; 
+   updateOrSave: boolean = false
+
+
+  ngOnInit(): void { 
     this.userId = localStorage.getItem('logInId');
     this.userType = localStorage.getItem('userType');
     let item = localStorage.getItem('ViewOrReceive');
@@ -571,9 +580,29 @@ export class OrdersReceiveShipmentComponent implements OnInit {
 
         console.log('currentShipArray', this.currentShipArray);
       });
+  
     }
-
+  // Based on status
+    this.status =  sessionStorage.getItem('OrderStatus');
+    console.log("staus", this.status )
+    if (this.status === 'Draft' || this.status === 'Processed' || this.status === 'Ordered') {
+      this.checkstatus = true;
+    }
+    else {
+     this.checkstatus = false;
+    }
     this.viewOrderData();
+  }
+
+  ngOnChanges(): void {
+    this.status = this.shipmentArray.status;
+    console.log("staus", this.status )
+    if (this.status === 'Draft' || this.status === 'Processed' || this.status === 'Ordered') {
+      this.checkstatus = true;
+    }
+    else {
+     this.checkstatus = false;
+    }
   }
   // rowVisible: boolean[] = new Array(this.itemsArray).fill(true);
   toggleRowVisibility(index: number) {
@@ -1014,5 +1043,21 @@ export class OrdersReceiveShipmentComponent implements OnInit {
   }
   removeItem() {
     this.itemremoved.splice(0);
+  }
+  
+
+
+  public isOpen = false;
+  editButton() {
+     localStorage.setItem("Edit", 'Edit')
+    let dialogRef = this.dialog.open(AddorderpromotionsComponent, {
+       minWidth: '100vw',
+       height: '730px',
+      panelClass: 'order-add-edit'
+    });
+    this.isOpen = false;
+    dialogRef.afterClosed().subscribe((res) => {
+      localStorage.setItem('Edit', '');
+    })
   }
 }

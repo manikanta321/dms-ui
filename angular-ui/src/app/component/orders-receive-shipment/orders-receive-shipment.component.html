@@ -294,6 +294,50 @@
             <!--shipments  -->
             <mat-tab label="Shipment">
               <ng-template matTabContent class="tab-body">
+                <div class="card">
+                    <div class="card-header" style="background:rgba(1, 139, 117, 1); color: white;"> Total Details </div>
+                    <div class="card-body p-0">
+                        <table class="table mb-0">
+                            <thead >
+                              <tr>
+                                <th scope="col">Total Ordered Qty</th>
+                                <th scope="col">In-Transit Qty</th>
+                                <th scope="col">Yet to shipment Qty</th>
+                                <th scope="col">Received Qty</th>
+                                <th scope="col">Yet to rececive Qty</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                              </tr>
+                            </tbody>
+                        </table>
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Total Ordered Value</th>
+                                <th scope="col">In-Transit value</th>
+                                <th scope="col">Yet to Shipment Value </th>
+                                <th scope="col">Received Value</th>
+                                <th scope="col">Yet to receive Value</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                  </div>
+
                 <div class="top-bottom" *ngFor="let data of currentShipArray;let i =index">
                     <div class="collapsible" (click)="expandShipmentTwoDiv()">
                         <div class="row">
@@ -309,17 +353,16 @@
                         </div>
                     </div>
                     <div class="content-shp-3" *ngIf="!shipmenttwo">
-                        <br>
-                        <div class="row">
-                            <div class="col-lg-3 fontweight">
+                        <!-- <div class="row"> -->
+                            <!-- <div class="col-lg-3 fontweight">
                                 <label class="label2">Invoice No<span class="astr">*</span></label>
                                 <div class="input-datepicker mr-3">
                                     <input type="text" [(ngModel)]="data.invoiceno" class="invoice" disabled />
                                 </div>
-                                <!-- <app-customdatepicker [showInputField]="true" class="input-datepicker" label="Enter" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"><span class="astr">*</span></app-customdatepicker> -->
-                                <!-- <input matInput placeholder="Enter" #input class="form-control container input-box" > -->
-                            </div>
-                            <div class="col-lg-3">
+                                //<app-customdatepicker [showInputField]="true" class="input-datepicker" label="Enter" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"><span class="astr">*</span></app-customdatepicker>
+                                //<input matInput placeholder="Enter" #input class="form-control container input-box" >
+                            </div> -->
+                            <!-- <div class="col-lg-3"> -->
                                 <!-- <div class="myDatepicker promotion-datepicker">
                                     <mat-form-field class="placeh-align">
                                         <mat-label> Invoice date</mat-label>
@@ -333,20 +376,20 @@
                                         <mat-datepicker #picker1></mat-datepicker>
                                     </mat-form-field>
                                 </div> -->
-                                <label class="fontweight label1">Invoice Date <span class="astr">*</span></label><br>
+                                <!-- <label class="fontweight label1">Invoice Date <span class="astr">*</span></label><br>
                                 <div class="input-datepicker mr-3">
                                     <input type="text" [(ngModel)]="data.invoiceDate" class="invoice" disabled />
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
+                                </div> -->
+                            <!-- </div> -->
+                            <!-- <div class="col-lg-3">
     
                                 <label class="fontweight label1">Shipping Date<span class="astr">*</span></label><br>
                                 <div class="input-datepicker mr-3">
                                     <input type="text" [(ngModel)]="data.shipmentDate" class="invoice" disabled />
                                 </div>
-                                <!-- <input matInput placeholder="Select" #input class="form-control container input-box" > -->
-                            </div>
-                            <div class="col-lg-3">
+                                <input matInput placeholder="Select" #input class="form-control container input-box" >
+                            </div> -->
+                            <!-- <div class="col-lg-3">
                                 
                                 <div class="myDatepicker promotion-datepicker"
                                     *ngIf="data.currentReceiveshipment && ViewOrReceive">
@@ -371,12 +414,20 @@
                                     <input type="text" [(ngModel)]="data.invoiceReceivedDate" class="invoice" disabled />
                                 </div>
     
-                            </div>
-                        </div>
-                        
+                            </div> -->
+                        <!-- </div> -->
                         <div class="section mt-1">
                             <table >
-                                <tr>
+                                <thead>
+                                    <tr>
+                                      <th scope="col">Product Code</th>
+                                      <th scope="col">Product Name</th>
+                                      <th scope="col">Total Ordered Qty</th>
+                                      <th scope="col">Recevied Ordered Qty</th>
+                                      <th scope="col">Balance Ordered Qty</th>
+                                    </tr>
+                                  </thead>
+                                <!-- <tr>
                                     <th class="paddinginth">Item</th>
                                     <th class="paddinginth">UoM</th>
                                     <th class="paddinginth">Order Qty</th>
@@ -389,7 +440,7 @@
                                     <th class="paddinginth">Shipped Qty</th>
                                     <th class="paddinginth">Received Qty</th>
                                     <th class="paddinginth">Lost/ Damaged</th>
-                                </tr>
+                                </tr> -->
                                 <tr  *ngFor="let items of data.arrayIside;let j=index">
                                     <td>
                                         <p class="itemLeft"><span
@@ -443,7 +494,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class="row mt-2">
+                        <!-- <div class="row mt-2">
                             <div class="totall">
                                 <div class="innerTotal d-flex">
                                     <div class="subitem">
@@ -468,10 +519,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <br>
-                        <div class="row">
-                            <!-- <div class="col-lg-1"></div> -->
+                        <!-- <div class="row">
                             <div class="col-lg-11">
                                 <div>
                                     <label class="dispatchC">Dispatch Comment</label>
@@ -479,12 +529,8 @@
                                     <p>{{data.invoiceComments}}</p>
                                 </div>
                             </div>
-
-                        </div> 
-                        
-
+                        </div> -->
                         <div class="row">
-                            <!-- <div class="col-lg-1"></div> -->
                             <div class="col-lg-11" *ngIf="ViewOrReceive && data.currentReceiveshipment">
                                 <div>
                                     <label class="dispatchC">Receipt Comment</label>

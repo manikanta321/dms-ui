@@ -102,7 +102,8 @@ span{
     color: red;
 }
 .uombtnn{
-   background: black;
+   /* background: black; */
+   background-color:#018B75 ;
    color: white;
    padding: 5px;
    margin-top: 3px;
@@ -116,8 +117,10 @@ span{
 }
 
 .uombtnnn{
-    background: white;
-    color: black;
+    /* background: white; */
+    background-color:#018B75 ;
+    /* color: black; */
+    color: white;
     padding: 5px;
     margin-top: 3px;
     border-radius: 3px;

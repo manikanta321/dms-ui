@@ -1612,3 +1612,12 @@ padding-left: 20px;
   {
     margin-left: 16%;
   }
+
+  ::ng-deep .mat-tooltip {
+    color: black !important;
+    /* font-size: 16px !important; */
+    background-color: white !important;
+    border: 1px solid grey !important;
+}
+
+  

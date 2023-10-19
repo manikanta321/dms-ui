@@ -288,6 +288,7 @@ export class OrdersShipmentComponent implements OnInit {
     },    
     {
       headerName: 'System Receive Date',
+      maxWidth: 150,
       field: 'systemReciptDate',
       tooltipField: 'systemReciptDate',
       cellRenderer: (data) => {

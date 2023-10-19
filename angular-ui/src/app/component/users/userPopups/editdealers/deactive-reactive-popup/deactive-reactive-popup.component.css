@@ -18,9 +18,9 @@ font-family: 'Gilroy';
 }
 .undo{
     padding: 5px 40px;
-    background: black;
+    background: rgba(1, 139, 117, 1);
     color: #fff;
-    margin-right: 20px;
+    margin-right: 5px;
     /* border: #000000; */
     border-radius: 10px;
     /* margin-top: 18px; */
@@ -28,12 +28,12 @@ font-family: 'Gilroy';
     width: 150px; 
     }
 .exit{
-background: #fff;
-color: black;
+background:  rgba(1, 139, 117, 1);
+/* color: black; */
+color:white;
 padding: 5px 40px;
 border: 2px solid #000000;
 border-radius: 10px;
-
 height: 41px;
 width: 150px; 
 

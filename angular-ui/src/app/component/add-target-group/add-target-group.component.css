@@ -425,7 +425,8 @@ label {
       border-radius: 8px;
       align-items: center;
       text-align: center;
-      background: #000;
+      /* background: #000; */
+      background-color:#018B75 ;
       color: #FFFFFF;
       margin-left: 21px;
       }
@@ -436,8 +437,10 @@ label {
         border-radius: 8px;
         align-items: center;
         text-align: center;
-        background: white;
-        color: black;
+        /* background: white; */
+        background-color:#018B75 ;
+        /* color: black; */
+        color: white;
         margin-left: 21px;
       }
 

@@ -1,12 +1,15 @@
 
  
 ::ng-deep mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-bar {
-  background-color:white !important;
+  /* background-color:white !important; */
+  background: rgba(1, 139, 117, 1)!important;
  
 }
 
 ::ng-deep mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-thumb {
-  background-color: #000a00e2 !important;
+  /* background-color: #000a00e2 !important; */
+  background: white!important;
+
  
   
 }

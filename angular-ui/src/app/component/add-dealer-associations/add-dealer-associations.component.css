@@ -1461,29 +1461,31 @@ input.form-check-input1 {
   
   .saveas-draft {
     color: #fff;
-    background: #000000;
+    background:  rgba(1, 139, 117, 1);
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: right;
     margin-top: 10px;
     cursor: pointer;
     width: 168px;
-    height: 33.56px;
+    height: 44.56px;
   }
   .saveas-draft2 {
-    color: black;
-    background: white;
+    /* color: black; */
+    color:white;
+    background:  rgba(1, 139, 117, 1);
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: left;
     margin-top: 10px;
     cursor: pointer;
     width: 168px;
-    height: 33.56px;
+    height: 44.56px;
   }
   .saveas-draft1 {
     color: #fff;
-    background: #000000;
+    /* background: #000000; */
+    background:  rgba(1, 139, 117, 1);
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: right;
@@ -1634,7 +1636,8 @@ input.form-check-input1 {
   margin-right: -26px;
   }
   :disabled.slctd-geo-btn{
-    background: grey;
+    /* background: grey; */
+  background:  rgba(1, 139, 117, 1);
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   height: 28px;

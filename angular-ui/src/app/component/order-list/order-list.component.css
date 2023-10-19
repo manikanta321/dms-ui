@@ -1261,6 +1261,7 @@ mat-sidenav {
     width: 37px;
     height: 41px;
     cursor: pointer;
+    margin-left: 460px;
 }
 
 .sales-dwnld:hover {
@@ -1270,6 +1271,8 @@ mat-sidenav {
 
 .imgdwnl {
     position: relative;
+    height: inherit;
+    width: 97%;
 }
 
 .searchButton {
@@ -1382,7 +1385,8 @@ mat-sidenav {
     display: block;
     height: 26px;
     border: none;
-    background: #000000;
+    /* background: #000000; */
+    background: rgba(104, 110, 116, 0.66);
     color: white;
     border-radius: 5px;
     position: absolute;

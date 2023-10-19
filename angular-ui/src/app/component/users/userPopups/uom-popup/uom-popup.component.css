@@ -89,7 +89,8 @@ span{
     color: red;
 }
 .uombtn{
-   background: black;
+   /* background: black; */
+   background: #018B75;
    color: white;
    padding: 5px;
    margin-top: 31px;
@@ -101,6 +102,12 @@ span{
    width: 94%;
    font-family: 'Gilroy-SemiBold';
 }
+
+.uombtn:disabled{
+
+    background-color: black;
+}
+
 .close-icon{
     left: 102%;
     position: relative;

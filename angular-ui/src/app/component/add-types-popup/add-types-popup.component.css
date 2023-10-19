@@ -89,7 +89,8 @@
         height: 43px;
     }
     .update-btn{
-    background: black;
+    /* background: black; */
+    background-color:#018B75 ;
     color: white;
     width: 183px;
     height: 43px;
@@ -103,7 +104,8 @@
         border-radius: 5px;
         width: 184px;
         height: 43px;
-        background: white;
+        /* background: white; */
+        background-color:#018B75 ;
         font-weight: 700;
         cursor: pointer;
     }

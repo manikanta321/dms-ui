@@ -268,7 +268,8 @@ height: 39px;
 border-radius: 8px;
 align-items: center;
 text-align: center;
-background: #000;
+/* background: #000; */
+background-color:#018B75 ;
 color: #FFFFFF;
 }
 mat-radio-group{

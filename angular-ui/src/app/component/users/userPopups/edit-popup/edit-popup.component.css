@@ -107,13 +107,15 @@ mat-form-field{
 .edituser{
 width: 245px;
 margin-right: 35px;
-background-color:#000000 ;
+background-color:rgba(1, 139, 117, 1) ;
 border: 1px solid black;
 }
 .cancl{
     width: 245px;
-    background:white;
-    color: #000000;
+    /* background:white; */
+    background-color: rgba(1, 139, 117, 1);
+    /* color: #000000; */
+    color:white;
     border: 1px solid black;
 }
 /* ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {

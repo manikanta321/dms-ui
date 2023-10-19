@@ -1045,7 +1045,8 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
   }
   .saveas-draft4 {
     color: #fff;
-    background: #000000;
+    // background: #000000;
+    background-color:#018B75;  
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: right;
@@ -1058,7 +1059,8 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
   }
   .saveas-draft {
     color: #fff;
-    background: #000000;
+    // background: #000000;
+    background-color:#018B75;  
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: right;
@@ -1069,6 +1071,8 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
   }
   .saveas-draft2 {
     color: black;
+    // color:white;
+    // background-color:#018B75;
     background: white;
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
@@ -1089,7 +1093,7 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
 
 .saveas-draft {
   color: #fff;
-  background: #000000;
+  // background: #000000;
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   float: right;
@@ -1099,8 +1103,10 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
   height: 43px;
 }
 .saveas-draft2 {
-  color: black;
-  background: white;
+  // color: black;
+  color:white;
+  background-color:#018B75;
+  // background: white;
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   float: left;
@@ -1138,7 +1144,8 @@ margin-left: 136px;
 }
 .saveas-draft1 {
   color: #fff;
-  background: #000000;
+  // background: #000000;
+  background-color:#018B75;  
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   float: right;

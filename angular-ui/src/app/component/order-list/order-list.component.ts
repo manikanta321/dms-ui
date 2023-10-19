@@ -134,7 +134,7 @@ export class OrderListComponent implements OnInit {
     {
       headerName: 'Order Date',
       field: 'orderDate',
-      minWidth: 117,
+      minWidth: 110,
       maxWidth: 150,
 
       cellRenderer: (data) => {
@@ -146,19 +146,19 @@ export class OrderListComponent implements OnInit {
     {
       headerName: 'Dealer',
       field: 'dealerName',
-      minWidth: 290,
+      minWidth: 250,
       tooltipField: 'dealerName',
     },
     {
       headerName: 'ERP Ref # ',
-      minWidth: 114,
+      minWidth: 110,
       maxWidth: 150,
       field: 'companyReferenceNo',
     },
 
     {
       headerName: 'Geography',
-      minWidth: 120,
+      minWidth: 115,
       maxWidth: 150,
       field: 'geographyName',
       tooltipField:'geographyName'

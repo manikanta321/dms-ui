@@ -8,7 +8,8 @@ label
 }
 
 .btn {
-    background-color: #000000;
+    /* background-color: #000000; */
+    background-color:#018B75 ;
     color: whitesmoke;
     border-radius: 10px;
     border: 1px solid black;
@@ -191,6 +192,9 @@ mat-form-field {
 
 }
 
+.btn-primary:enabled{
+    background-color:#018B75 ;
+}
 .btn-primary:disabled {
     border-color: black;
     background-color: black;

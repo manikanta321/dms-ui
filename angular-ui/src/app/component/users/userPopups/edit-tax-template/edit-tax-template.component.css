@@ -152,7 +152,8 @@ label{
     padding: 2px 0;
 }
 .E-saveBtn{
-background:black;
+/* background:black; */
+background-color:#018B75 ;
 color: white;
  padding: 2px 30px;
  width: 175px;
@@ -162,8 +163,10 @@ color: white;
  font-family: 'Gilroy-SemiBold';
 }
 .E-cancelBtn{
-    background: #fff;
-    color: black;
+    /* background: #fff; */
+    background-color:#018B75 ;
+    /* color: black; */
+    color: white;
     padding: 2px 30px;
     border: 1px solid grey;
     width: 175px;

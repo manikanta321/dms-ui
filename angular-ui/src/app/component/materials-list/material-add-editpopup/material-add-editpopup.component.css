@@ -641,7 +641,8 @@ li {
 
 .submitbtn {
   margin-top: 12px;
-  background-color: #000000;
+  /* background-color: #000000; */
+  background-color:#018B75 ;
   width: 20rem;
   position: relative;
   left: 125%;
@@ -1443,7 +1444,8 @@ textarea {
   left: 873.66px;
   top: 498.67px;
   margin-left: 10px;
-  background: #000000;
+  /* background: #000000; */
+  background-color:#018B75 ;
   box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 7px;
   cursor: pointer;

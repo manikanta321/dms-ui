@@ -15,7 +15,7 @@ export class ReportsService {
     next: HttpHandler): Observable<HttpEvent<any>> {
 
     const idToken = localStorage.getItem("token");
-    debugger
+    
     console.log('idtoken', idToken)
     alert(idToken)
 

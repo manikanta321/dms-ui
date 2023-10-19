@@ -169,7 +169,7 @@ form[name="myBasicInfo"] {
 }
 
 .main {
-  /* background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
+  
 
 }
 
@@ -1477,7 +1477,7 @@ textarea {
   top: 26%;
   position: relative;
   transition: all 5s ease-in-out;
-  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
+
   border: 0.5px solid #000000;
   border-radius: 25px;
 }

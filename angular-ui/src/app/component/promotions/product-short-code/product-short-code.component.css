@@ -1,7 +1,6 @@
 .mat-form-field {
     width: 680px;
     font-family: 'Gilroy';
-    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
   }
   
   .mat-form-field::placeholder {
@@ -54,7 +53,7 @@
   }
   
   .main {
-    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+   
   
   }
   

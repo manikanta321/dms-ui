@@ -168,7 +168,7 @@
                                                 one product.</span>
                                         </div>
                                     </div>
-                                    <div class="toggle">
+                                    <div class="toggle" *ngIf="buysets">
                                         <div class="col-md-12 d-flex">
                                             <p [class.disabled]="showConsolidatedMOQ" [style.font-weight]="showConsolidatedMOQ ? 'normal' : 'bold'">Individual MOQ</p>
                                             <mat-slide-toggle class="togglecolor ml-2 mr-2" (change)="onToggleChange($event)"></mat-slide-toggle>
@@ -328,7 +328,7 @@
 
                                     <div class="set1" *ngFor="let addset of addbuyset; let i=index">
 
-                                        <div class="row" *ngIf="i == 0">
+                                        <!-- <div class="row" *ngIf="i == 0">
                                             <div class="col-10 buyGrp-h">
                                                 <h5 class="item-header"><b>Buy </b>Sets </h5>
                                             </div>
@@ -336,12 +336,12 @@
                                                 <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
                                             </div>
 
-                                        </div>
+                                        </div> -->
                                         <div class="row">
-                                            <div class="col-lg-10">
-                                                <b>Set {{i+1}}</b>
+                                            <!-- <div class="col-lg-10">
+                                                <b>Set {{i+1}}</b> -->
                                                 <!-- <b class="set2 mt-2" *ngIf="i >= 1">Set {{i}}</b> -->
-                                            </div>
+                                            <!-- </div> -->
                                             <div class="col-lg-2" *ngIf="i >= 1" (click)="removeaddbuyAB(i)">
                                                 <img src="assets/img/minus.png" class="plus-image" alt="plus-btn">
                                             </div>
@@ -438,20 +438,20 @@
                                 <div class="col-lg-6 GetGroup">
 
                                     <div class="set1" *ngFor="let getset of addgetset; let i=index">
-                                        <div class="row" *ngIf="i == 0">
+                                        <!-- <div class="row" *ngIf="i == 0">
                                             <div class="col-10 buyGrp-h">
                                                 <h5 class="item-header"><b>Get </b>Sets</h5>
                                             </div>
                                             <div class="col-2 plsImg" (click)="addgetAB(i)">
                                                 <img src="assets/img/plus.png" class="plus-image" alt="plus-btn">
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                         <div class="row">
-                                            <div class="col-lg-10">
-                                                <b>Set {{i+1}}</b>
+                                            <!-- <div class="col-lg-10">
+                                                <b>Set {{i+1}}</b> -->
                                                 <!-- <b class="gset2 mt-2" *ngIf="i >= 1">Set {{i}}</b> -->
-                                            </div>
+                                            <!-- </div> -->
                                             <div class="col-lg-2" *ngIf="i >= 1" (click)="removeaddgetAB(i)">
                                                 <img src="assets/img/minus.png" class="plus-image" alt="plus-btn">
                                             </div>
@@ -729,7 +729,7 @@
                             </div>
                         </div>
                         <!-- table -->
-                       <div class="count card m-3" *ngIf="selectedPromo !== 3 && selectedPromo !== 4">
+                       <div class="count card m-3" *ngIf="buyab || buysets">
                         <form [formGroup]="promotionForm">
                             <table class="table" >
                                 <thead style="background: rgba(1, 139, 117, 1); color: white;">
@@ -760,8 +760,8 @@
                               </table>
                         </form>
                        </div>
-                       <h3 class="mt-3">Minimum Order Quantity: <b>{{ selectedPromo === 3 ? moqNumber : selectedPromo === 4 ? moqPrice : '0' }}
-                    </b></h3>
+                       <h3 class="mt-3" *ngIf="buyab || buysets">Minimum Order Quantity: <b>{{getMinimumQtyFromValue()}}</b></h3>
+                       <h3 class="mt-3" *ngIf="volumedc || pricedc">Minimum Order Quantity: <b>{{ selectedPromo === 3 ? moqNumber : selectedPromo === 4 ? moqPrice : '0' }}</b></h3>
                     </form>
                 </mat-step>
 

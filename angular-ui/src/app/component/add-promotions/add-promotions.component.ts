@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
@@ -821,6 +821,12 @@ console.log('addgetgroup',this.addgetgroup);
   }
 
 
+  getMinimumQtyFromValue() {
+    const qtyFromValues = this.formArr.controls.map((control: AbstractControl) => control.get('qtyFrom')?.value);
+    const minQtyFrom = Math.min(...qtyFromValues);
+    return minQtyFrom;
+  }
+  
   isMOQValid = true;
   isPromotionTypeDataValid = true;
   isPromotionTypeDataValid2 = true;
@@ -2787,9 +2793,7 @@ alert(obj3.MOQ);
 
     console.log('EntityInstanceId1', this.EntityInstanceId)
   }
-
-
-
+ 
 
   selectedValue(event: any) {
     console.log(event)
@@ -2804,6 +2808,7 @@ alert(obj3.MOQ);
       this.volumedc = false;
       this.buysets = false;
       this.pricedc = false;
+      this.promotionForm.setControl('addPromotions', this._formBuilder.array([this.promotionRows()]));
     }
     if (event.promotionTypesId == 2) {
       this.noPromotionSelected = false;
@@ -2811,6 +2816,7 @@ alert(obj3.MOQ);
       this.volumedc = false;
       this.buysets = true;
       this.pricedc = false;
+      this.promotionForm.setControl('addPromotions', this._formBuilder.array([this.promotionRows()]));
       // this.goForward(this.myStepper);
 
     }

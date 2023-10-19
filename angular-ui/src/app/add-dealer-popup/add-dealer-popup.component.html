@@ -89,9 +89,9 @@
                                         <div class="col-3">
                                             <label>Phone No<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="Phoneno"  pattern="^((\\+91-?)|0)?[0-9]{10}$" 
+                                            <input type="text" maxlength="10" formControlName="Phoneno"  pattern="^((\\+91-?)|0)?[0-9]{10}$" 
                                                 class="addDelercols form-control" required
-                                                placeholder="Enter dealer phone no">
+                                                placeholder="Enter dealer phone no" (input)="restrictToNumbers($event)">
                                             <span class="text-danger"
                                                 *ngIf="addAddressDetailsFormControl['Phoneno'].touched  && addAddressDetailsFormControl['Phoneno'].errors && addAddressDetailsFormControl['Phoneno'].errors['required']">
                                                 Phone No is required

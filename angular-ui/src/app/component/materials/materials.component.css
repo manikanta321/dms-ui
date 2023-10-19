@@ -58,9 +58,9 @@ left:20px;
     line-height: 150%;
 } */
 
-/* ::ng-deep.mat-tab-label {
-    padding: 0 54px !important;
-} */
+ ::ng-deep.mat-tab-label {
+    padding: 15 24px !important;
+} 
 
 mat-sidenav {
     width: 5rem;
@@ -167,7 +167,7 @@ mat-tab-group{
     flex-shrink: 0;
     width: 764px !important;
     bottom: 20px;
-    height: 33px;
+    height: 31px;
     font-family: 'Gilroy';
     border-radius: 25px;
     background: white;

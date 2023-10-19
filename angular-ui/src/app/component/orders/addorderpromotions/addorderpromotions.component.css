@@ -957,12 +957,12 @@ span {
   margin-top: 27px;
 } */
 .close-icon{
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   float: right;
   /* z-index: 1; */
   cursor: pointer;
-  margin-top: 12px;
+  margin-top: -28px;
   margin-left: 94%;
 }
 .close_icon

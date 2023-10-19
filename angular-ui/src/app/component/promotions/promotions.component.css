@@ -6,6 +6,8 @@
 
  .row {
    margin-top: 35px;
+   margin-left: -8px;
+   width: 109%;
  }
 
  .listicon {
@@ -57,6 +59,7 @@
 
  .dropdown-form {
    position: relative;
+   width: 103%;
 
  }
 
@@ -344,7 +347,7 @@
  ::ng-deep.multiselect-dropdown .dropdown-btn {
    display: inline-block;
    border: 1px solid #000000 !important;
-   width: 100%;
+   width: 237px;
    /* height: 62%; */
    padding: 9px 12px !important;
    margin-bottom: 0px;
@@ -857,7 +860,7 @@
 
  .searchBox1 {
    position: relative;
-   width: 250px;
+   width: 243px;
    /* top: 67%; */
    border: 1px solid #000;
    border-radius: 11px;

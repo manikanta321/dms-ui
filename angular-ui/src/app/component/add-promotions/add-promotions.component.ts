@@ -794,6 +794,11 @@ console.log('addgetgroup',this.addgetgroup);
 
   }
 
+  showConsolidatedMOQ: boolean = false;
+  onToggleChange(event: any) {
+    this.showConsolidatedMOQ = event.checked;
+  }
+
   get formArr() {
     return this.promotionForm.get("addPromotions") as FormArray;
   }

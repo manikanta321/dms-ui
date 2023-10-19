@@ -144,27 +144,36 @@
                         <div class="row mt-3">
                             <div class="col-12">
                                 <div class="d-flex">
-                                    <h5 class="promoItem"> Items in Promotions </h5>
-                                    <div class="hover-text">
-                                        <!-- <img src="assets/img/item-info-i.svg" class="indexImg" alt=""> -->
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#12c2e9"
-                                            class="bi bi-info-circle-fill" viewBox="0 0 16 16"
-                                            style="position: absolute; margin-left: 10px; top: 5px;">
-                                            <path
-                                                d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
-                                        </svg>
-                                        <span class="tooltip-text" id="top" *ngIf="false">The user needs to add products
-                                            in the Buy Product Group.
-                                            There should be at least one Product in this group. The Qty for the products
-                                            in the Buy
-                                            Product Group will be displayed in saleable UOM.
-                                            The user needs to add products in the Get Product Group.</span>
-                                        <span *ngIf="true" class="tooltip-text" id="top">You can add two or more sets of
-                                            products that the dealer can choose from. In each set
-                                            there should be at least one product and there should be at least two sets
-                                            in Buy Group.
-                                            In the Get Group there can be only 1 set and each set should have at least
-                                            one product.</span>
+                                    <div class="Info-section col-md-4 d-flex">
+                                        <h5 class="promoItem"> Items in Promotions </h5>
+                                        <div class="hover-text">
+                                            <!-- <img src="assets/img/item-info-i.svg" class="indexImg" alt=""> -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#12c2e9"
+                                                class="bi bi-info-circle-fill" viewBox="0 0 16 16"
+                                                style="position: absolute; margin-left: 10px; top: 5px;">
+                                                <path
+                                                    d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                                            </svg>
+                                            <span class="tooltip-text" id="top" *ngIf="false">The user needs to add products
+                                                in the Buy Product Group.
+                                                There should be at least one Product in this group. The Qty for the products
+                                                in the Buy
+                                                Product Group will be displayed in saleable UOM.
+                                                The user needs to add products in the Get Product Group.</span>
+                                            <span *ngIf="true" class="tooltip-text" id="top">You can add two or more sets of
+                                                products that the dealer can choose from. In each set
+                                                there should be at least one product and there should be at least two sets
+                                                in Buy Group.
+                                                In the Get Group there can be only 1 set and each set should have at least
+                                                one product.</span>
+                                        </div>
+                                    </div>
+                                    <div class="toggle">
+                                        <div class="col-md-12 d-flex">
+                                            <p [class.disabled]="showConsolidatedMOQ" [style.font-weight]="showConsolidatedMOQ ? 'normal' : 'bold'">Individual MOQ</p>
+                                            <mat-slide-toggle class="togglecolor ml-2 mr-2" (change)="onToggleChange($event)"></mat-slide-toggle>
+                                            <p [class.disabled]="!showConsolidatedMOQ"  [style.font-weight]="showConsolidatedMOQ ? 'bold' : 'normal'">Consolidated MOQ</p>
+                                        </div>
                                     </div>
                                 </div>
                                 <p class="itempromtion" *ngIf="noPromotionSelected">No Promotion Selected Yet</p>
@@ -800,11 +809,6 @@
                                 <mat-slide-toggle class="togglecolor" (click)="toggleSelectedRows()">Selected
                                   Dealers rows</mat-slide-toggle>
                               </div>
-                              
-                              
-                              
-                           
-                          
                         </div>
 
                         <!-- grid table -->
@@ -825,7 +829,7 @@
                            
                             <div *ngIf="selectedRowsR">
                                 <h2>Selected Row Data</h2>
-                                <p>{{ rowData5 | json }}</p>
+                                <!-- <p>{{ rowData5 | json }}</p> -->
                             </div>
 
 

@@ -301,7 +301,7 @@ export class OrdersShipmentComponent implements OnInit {
       field: 'statusName',
       tooltipField: 'statusName',
       cellEditorParams: {
-        values: ['In-Transit', 'Received'],
+        values: ['In-Transit', 'Received','delete'],
       },
       cellClass: (params) => {
         return params.value == 'Received'
@@ -471,6 +471,7 @@ public defaultColDef: ColDef = {
         instance.togglePopup();
       }
     }
+    localStorage.setItem('ShipmentDelete','Delete')
   }
   handleScroll(event) {
     if (this.instancePopup && this.instancePopup.isOpen) {

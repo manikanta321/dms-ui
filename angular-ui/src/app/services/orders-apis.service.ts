@@ -142,6 +142,9 @@ export class OrdersApisService {
 getStatusDrodownData(data){
   return this.http.post<any>(this.userurl + 'OrdersApi/GetAllStatusdrop', data);  
 }
+deleteshipment(data){
+  return this.http.post(this.userurl+'OrdersApi/DeleteShipment',data)
+}
   
 }
  

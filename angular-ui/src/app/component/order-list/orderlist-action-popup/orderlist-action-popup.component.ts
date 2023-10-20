@@ -9,6 +9,7 @@ import { AddorderpromotionsComponent } from '../../orders/addorderpromotions/add
 
 import { OrderCancelPopupComponent } from '../order-cancel-popup/order-cancel-popup.component';
 import { OrderlistShipPopupComponent } from '../orderlist-ship-popup/orderlist-ship-popup.component';
+import { OrdersApisService } from 'src/app/services/orders-apis.service';
 @Component({
   selector: 'app-orderlist-action-popup',
   templateUrl: './orderlist-action-popup.component.html',
@@ -52,10 +53,11 @@ export class OrderlistActionPopupComponent implements OnInit {
     'fulfilled': [], // Spelling check
     'to-ship': ['ship_order', 'close'],
     'received': [], // done
+    
   }
   showCaseMenuList:string[] = [];
   constructor(private changeDetector: ChangeDetectorRef, private dialog: MatDialog,
-    private route: ActivatedRoute,) {
+    private route: ActivatedRoute,private service:OrdersApisService) {
     this.route
       .data
       .subscribe(v => {
@@ -63,6 +65,7 @@ export class OrderlistActionPopupComponent implements OnInit {
         this.showCaseMenuList = [];
         let userRolesData = JSON.parse(localStorage.getItem('userroles') ?? '[]');
         userRolesData.forEach(element => {
+
           if (element.title == v['key']) {
             element.permission.forEach(item => {
               if (menuList.indexOf(item.action.toLowerCase()) !== -1 && item.status) {
@@ -112,8 +115,6 @@ export class OrderlistActionPopupComponent implements OnInit {
 
     // this.currentActionMenu.push('view');
     }
-
-    
 
     // console.log("menu", menu);
     this.currentActionMenu = menu.filter(x => this.showCaseMenuList.indexOf(x) !== -1 || ignoreMenus.indexOf(x) !== -1);
@@ -235,6 +236,7 @@ export class OrderlistActionPopupComponent implements OnInit {
     this.isOpen = false;
   }
   ReceiveShipment() {
+    // alert('ok')
     localStorage.setItem('ViewOrReceive', 'Receive');
     localStorage.setItem('orderOrShipmentOrRecipt','shipment')
     this.dialog.open(OrdersReceiveShipmentComponent,
@@ -248,15 +250,25 @@ export class OrderlistActionPopupComponent implements OnInit {
     localStorage.setItem("Edit", '')
     sessionStorage.setItem("Confirm", "Confirm");
     let dialogRef = this.dialog.open(AddorderpromotionsComponent, {
-      
       minWidth: '100vw',
       height: '731px',
-      
       panelClass: 'order-add-edit'
     });
     this.isOpen = false;
     dialogRef.afterClosed().subscribe((res) => {
       sessionStorage.setItem("Confirm", "");
+    })
+  }
+  deleteshipment(){
+    let userid = localStorage.getItem('logInId')
+    let invoiceId = localStorage.getItem('customerPOIdForShipment')
+
+    let data ={
+      InvoiceId:invoiceId,
+      CurrentUserId:userid
+    }
+    this.service.deleteshipment(data).subscribe((res:any)=> {
+      console.log(res)
     })
   }
 }

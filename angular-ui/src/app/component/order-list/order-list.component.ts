@@ -167,7 +167,7 @@ export class OrderListComponent implements OnInit {
       headerName: 'ODV($)',
       minWidth:100,
       maxWidth: 115,
-      field: '',
+      field: 'totalValue',
     },
 
     {

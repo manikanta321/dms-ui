@@ -170,9 +170,9 @@
                                     </div>
                                     <div class="toggle" *ngIf="buysets">
                                         <div class="col-md-12 d-flex">
-                                            <p [class.disabled]="showConsolidatedMOQ" [style.font-weight]="showConsolidatedMOQ ? 'normal' : 'bold'">Individual MOQ</p>
-                                            <mat-slide-toggle class="togglecolor ml-2 mr-2" (change)="onToggleChange($event)"></mat-slide-toggle>
                                             <p [class.disabled]="!showConsolidatedMOQ"  [style.font-weight]="showConsolidatedMOQ ? 'bold' : 'normal'">Consolidated MOQ</p>
+                                            <mat-slide-toggle class="togglecolor ml-2 mr-2" (change)="onToggleChange($event)"></mat-slide-toggle>
+                                            <p [class.disabled]="showConsolidatedMOQ" [style.font-weight]="showConsolidatedMOQ ? 'normal' : 'bold'">Individual MOQ</p>
                                         </div>
                                     </div>
                                 </div>
@@ -204,7 +204,7 @@
                                                         <div class="col-10">
                                                             <p class="expn-t">{{ addbuyg.productselectedRows?.length ===0
                                                                 ? 'Select the Items' :
-                                                                addbuyg.productselectedRows.length + ' Items Selected'
+                                                                addbuyg.productselectedRows?.length + ' Items Selected'
                                                                 }}</p>
                                                         </div>
                                                         <div class="col-2"> <img class="expsion-img"
@@ -419,13 +419,13 @@
                                                             (keyup)="promotionABSetChange()"
                                                             [ngClass]="{ 'input-error': !addbuyset[i].BuyGroups[j].isDataValid}"
                                                             [(ngModel)]="addbuyset[i].BuyGroups[j].MaxVolume"> <span class="astr">*</span> -->
-                                                        <label *ngIf="!showConsolidatedMOQ">Minimum Order Quantity :</label>
+                                                        <label *ngIf="showConsolidatedMOQ">Minimum Order Quantity :</label>
                                                         <input type="number" class="mty-box  border border-success"
-                                                            value="{{MoqMaxNum}}" id=moq name="moq{{j}}" placeholder="Enter here..."
+                                                            value="{{qtyMaxNum}}" id=qty  placeholder="Enter here..."
                                                             name="qty1{{i}}.BuyGroups1{{j}}"
                                                             (keyup)="promotionABSetChange()"
                                                             [ngClass]="{ 'input-error': !addbuyset[i].BuyGroups[j].isDataValid}"
-                                                            [(ngModel)]="addbuyset[i].BuyGroups[j].MOQ" *ngIf="!showConsolidatedMOQ">
+                                                            [(ngModel)]="addbuyset[i].BuyGroups[j].MaxVolume" *ngIf="showConsolidatedMOQ">
                                                     </div>
 
                                                 </div>
@@ -546,13 +546,13 @@
                                                             [ngClass]="{ 'input-error': !addgetset[i].GetGroups[j].isDataValid}"
                                                             required [(ngModel)]="addgetset[i].GetGroups[j].MaxVolume"> <span class="astr">*</span> -->
                                                             
-                                                            <label *ngIf="!showConsolidatedMOQ">Minimum Get Quantity:</label>
+                                                            <label *ngIf="showConsolidatedMOQ">Minimum Get Quantity:</label>
                                                          <input type="number" class="mty-box  border border-success"
-                                                            value="{{MoqMaxNum}}" id=moq name="moq{{j}}" placeholder=" Enter here..."
-                                                            name="qty1{{i}}.BuyGroups1{{j}}"
+                                                            value="{{qtyMaxNum}}" id=qty placeholder=" Enter here..."
+                                                            name="qty1{{i}}.q2{{j}}"
                                                             (keyup)="promotionABSetChange()"
-                                                            [ngClass]="{ 'input-error': !addbuyset[i].BuyGroups[j].isDataValid}"
-                                                            [(ngModel)]="addbuyset[i].BuyGroups[j].MOQ" *ngIf="!showConsolidatedMOQ">
+                                                            [ngClass]="{ 'input-error': !addgetset[i].GetGroups[j].isDataValid}"
+                                                            [(ngModel)]="addgetset[i].GetGroups[j].MaxVolume" *ngIf="showConsolidatedMOQ">
                                                     </div>
                                                 </div>
 

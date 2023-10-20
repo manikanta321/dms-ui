@@ -39,6 +39,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
   promoName: string = '';
   errorMsg: any;
+
+  // promotion 1
   buyGroupPlus: any = [
     {
       StockItemId: [],
@@ -47,13 +49,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       pGselectedRows: [],
       productSubGselectedRows: [],
       // MaxVolume: '',
-      GroupId: '',
+      GroupId: 1,
       // MOQ: '',
       isDataValid: true
     }
   ];
-
-
   addgetgroup: any = [{
 
     StockItemId: [],
@@ -62,20 +62,18 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     pGselectedRows: [],
     productSubGselectedRows: [],
     // MaxVolume: '',
-    GroupId: '',
+    GroupId: 1,
     isDataValid: true
   }];
 
-
-
-
+// promotons 2
   addbuyset: any = [{
     GroupId: 1,
     BuyGroups: [{
       StockItemId: [],
-      // MaxVolume: '',
+      MaxVolume: 0,
       Set: 1,
-      MOQ: '',
+      MOQ: 0,
       productselectedRows: [],
       isDataValid: true
     },
@@ -85,8 +83,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   ];
 
   packingCharges: any = [{
-    // MinVolume: '',
-    // MaxVolume: '',
+    MinVolume: '',
+    MaxVolume: '',
     DiscountPercentage: '',
     isDataValid: true
   }]
@@ -106,7 +104,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     GroupId: 1,
     GetGroups: [{
       StockItemId: [],
-      MaxVolume: '',
+      MaxVolume: 0,
       Set: 1,
       productselectedRows: [],
       isDataValid: true
@@ -797,6 +795,7 @@ console.log('addgetgroup',this.addgetgroup);
   showConsolidatedMOQ: boolean = false;
   onToggleChange(event: any) {
     this.showConsolidatedMOQ = event.checked;
+    // alert( this.showConsolidatedMOQ)
   }
 
   get formArr() {
@@ -854,7 +853,8 @@ console.log('addgetgroup',this.addgetgroup);
     this.addbuyset.forEach(item => {
       item.BuyGroups.forEach(element => {
         element.isDataValid = true;
-        if (!element.MaxVolume || !element.MOQ  || element.MaxVolume > element.MOQ || !element.StockItemId || element.StockItemId.length == 0) {
+        // !element.MaxVolume || !element.MOQ  || element.MaxVolume > element.MOQ ||
+        if ( !element.StockItemId || element.StockItemId.length == 0) {
           element.isDataValid = false;
           this.isPromotionTypeDataValid = false;
         }
@@ -867,7 +867,8 @@ console.log('addgetgroup',this.addgetgroup);
     this.addgetset.forEach(item => {
       item.GetGroups.forEach(element => {
         element.isDataValid = true;
-        if (!element.MaxVolume || !element.StockItemId || element.StockItemId.length == 0) {
+        // !element.MaxVolume || 
+        if (!element.StockItemId || element.StockItemId.length == 0) {
           element.isDataValid = false;
           this.isPromotionTypeDataValid2 = false;
         }
@@ -880,7 +881,8 @@ console.log('addgetgroup',this.addgetgroup);
     this.buyGroupPlus.forEach(element => {
       element.isDataValid = true;
       console.log(element.MaxVolume, element.MOQ);
-      if (!element.MaxVolume|| !element.MOQ  || element.MaxVolume > element.MOQ || !element.StockItemId || element.StockItemId.length == 0) {
+      // !element.MaxVolume|| !element.MOQ  || element.MaxVolume > element.MOQ ||
+      if ( !element.StockItemId || element.StockItemId.length == 0) {
         element.isDataValid = false;
         this.isPromotionTypeDataValid = false;
       }
@@ -891,8 +893,8 @@ console.log('addgetgroup',this.addgetgroup);
     this.isPromotionTypeDataValid2 = true;
     this.addgetgroup.forEach(element => {
       element.isDataValid = true;
-
-      if (!element.MaxVolume || !element.StockItemId || element.StockItemId.length == 0) {
+      // !element.MaxVolume ||
+      if ( !element.StockItemId || element.StockItemId.length == 0) {
         element.isDataValid = false;
         this.isPromotionTypeDataValid2 = false;
       }
@@ -2001,6 +2003,7 @@ toggleSelectedRows() {
     console.log(this.Remarks);
   }
 
+  
   AddPromosaveAndSubmit(type) {
     // alert("HElloooo")
     localStorage.setItem("updatePromotionPopup", 'add');
@@ -2051,6 +2054,34 @@ toggleSelectedRows() {
           };
         })
       }
+
+      obj.AditionalMoqDetails.forEach((detail, index) => {
+        const error:any = {};
+      
+        if (detail.QtyFrom < 0) {
+          error.QtyFrom = 'QtyFrom must be a non-negative value.';
+        }
+      
+        if (detail.QtyTo < 0) {
+          error.QtyTo = 'QtyTo must be a non-negative value.';
+        }
+      
+        if (detail.BuyValue < 0) {
+          error.BuyValue = 'BuyValue must be a non-negative value.';
+        }
+      
+        if (detail.GetValue < 0) {
+          error.GetValue = 'GetValue must be a non-negative value.';
+        }
+      
+        if (detail.Aditional && detail.Aditional.length > 100) {
+          error.Aditional = 'Aditional should not exceed 100 characters.';
+        }
+      
+        if (Object.keys(error).length > 0) {
+          error[`AditionalMoqDetails[${index}]`] = error;
+        }
+      });
 
 
       this.promotionTypes.firstPromotion(obj).subscribe((res) => {
@@ -2121,6 +2152,7 @@ toggleSelectedRows() {
         EntityInstanceId: this.EntityInstanceId,
         Status: type,
         Remarks: this.Remarks ?? '',
+        IsIndividual:this.showConsolidatedMOQ,
         AditionalMoqDetails: this.formArr.controls.map((control) => {
           return {
             AdditionalDetailsId: 0,
@@ -2254,13 +2286,13 @@ alert(obj3.MOQ);
     }
 
     if (type == 1) {
-      this.isMOQValid = true;
+      // this.isMOQValid = true;
       this.promotionBuyGet1();
       this.promotionBuyGet2();
     }
 
     if (type == 2) {
-      this.isMOQValid = true;
+      // this.isMOQValid = true;
       this.promotionABGetChange();
       this.promotionABSetChange();
     }
@@ -2268,7 +2300,7 @@ alert(obj3.MOQ);
 
 
 
-    if (!(isDataValid) || !(this.base64textString) || !(this.selectedStartDate) || !(this.selectedEndDate) || !(this.promoName) || !type || !this.isMOQValid || !this.isPromotionTypeDataValid || !this.isPromotionTypeDataValid2) {
+    if (!(isDataValid) || !(this.base64textString) || !(this.selectedStartDate) || !(this.selectedEndDate) || !(this.promoName) || !type || !this.isPromotionTypeDataValid || !this.isPromotionTypeDataValid2) {
       alert("Required data is missing");
       return false;
     }
@@ -2771,7 +2803,7 @@ alert(obj3.MOQ);
 
       let rowData: any = res.response;
       console.log('DealerowData', rowData)
-      rowData = rowData.map(x => {
+      rowData = rowData?.map(x => {
         let index = this.selectedDealers.findIndex(y => y.dealerId == x.customerId)
         x.isProductSelected = index == -1 ? false : true;
         return x;

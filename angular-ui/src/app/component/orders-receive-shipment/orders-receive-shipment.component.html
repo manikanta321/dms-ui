@@ -195,9 +195,9 @@
                                   <td></td>
                                   <td></td>
                                   <td></td>
-                                  <td><b>Total</b></td>
-                                  <td class="IteminputBoxes"><b> ${{shipmentArray.orderedQty}}</b></td>
-                                  <td class="IteminputBoxes"><b>$ {{shipmentArray.subTotal}}</b></td>
+                                  <td class="IteminputBoxes"><b>Total</b></td>
+                                  <td class="IteminputBoxes"><b>{{shipmentArray.orderedQty}}</b></td>
+                                  <td class="IteminputBoxes"><b>${{shipmentArray.subTotal}}</b></td>
                                 </tr>
                               </table>
                             </div>
@@ -358,10 +358,10 @@
                                             <label class="IteminputBoxes">{{items.quantity}}</label>
                                         </td>
                                         <td>
-                                            <label class="IteminputBoxes">{{items.receivedQty}}</label>
+                                            <label class="IteminputBoxes">{{items.receivedQty|number}}</label>
                                         </td>
                                         <td>
-                                            <label class="IteminputBoxes">{{items.discount}}</label>
+                                            <label class="IteminputBoxes">{{items.balanceQty|number}}</label>
                                         </td>
                                     </tr>
                                 </tbody>

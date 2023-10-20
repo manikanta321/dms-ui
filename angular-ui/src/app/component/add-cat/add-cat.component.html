@@ -9,7 +9,7 @@
     <div class="addCatDiv">
         <label class="addcat" >Name<span style="color: red;">*</span></label><br>
         <input type="text" placeholder="Enter category name" id="addCategory" name="addCategory"
-          required [(ngModel)]="addcat" #addCategory="ngModel">       
+          required [(ngModel)]="addcat" #addCategory="ngModel"(input)="restrictToAlphabets($event)">       
           <p style="margin-bottom: -29px;
           padding: 0px;
           font-size: 11px;

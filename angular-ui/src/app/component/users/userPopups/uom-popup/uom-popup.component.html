@@ -15,7 +15,7 @@
             <br />
             <!-- <input type="text" placeholder="Enter  name" [(ngModel)]="name" /> -->
             <input type="text" id="uomName" name="uomName" class="f-name" required
-                                        placeholder="Enter your name" [(ngModel)]="name" #uomName="ngModel">
+                                        placeholder="Enter your name" [(ngModel)]="name" #uomName="ngModel" (input)="restrictToAlphabets($event)">
                                     <p style="margin-bottom:-16px; padding: 1px;position: absolute;
                                     top: 69px;"
                                         *ngIf="uomName.invalid && (uomName.dirty || uomName.touched)" class="alert">
@@ -34,7 +34,7 @@
             <br />
             <!-- <input type="text" placeholder="Enter your Display Code"  [(ngModel)]="DisplayCode"/> -->
             <input type="text" id="displayC" name="displayC" required
-            placeholder="Enter your name" [(ngModel)]="DisplayCode" #displayC="ngModel">
+            placeholder="Enter your code" [(ngModel)]="DisplayCode" #displayC="ngModel">
         <p style="margin-bottom:-16px; padding: 1px;position: absolute;
         top: 70px;"
             *ngIf="displayC.invalid && (displayC.dirty || displayC.touched)" class="alert">

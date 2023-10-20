@@ -1212,6 +1212,7 @@ mat-sidenav {
     height: 41px;
     margin-right: 10px;
     cursor: pointer;
+    margin-left: 471px;
 }
 
 .sales-add:hover {
@@ -1261,7 +1262,7 @@ mat-sidenav {
     width: 37px;
     height: 41px;
     cursor: pointer;
-    margin-left: 460px;
+    /* margin-left: 0px; */
 }
 
 .sales-dwnld:hover {

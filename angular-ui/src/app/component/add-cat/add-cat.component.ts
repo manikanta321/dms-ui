@@ -132,5 +132,9 @@ export class AddCatComponent implements OnInit {
     this.dialogRef.close();
 
   }
-
+  restrictToAlphabets(event: any): void {
+    const input = event.target as HTMLInputElement;
+    const value = input.value;
+    input.value = value.replace(/[^a-zA-Z]/g, '');
+  }
 }

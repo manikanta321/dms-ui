@@ -83,7 +83,7 @@
       </div>
       
       <!--Add Promotion  -->
-      <div class="col-md-0 col-lg-0 col-sm-0" style="position: relative; left: 33%;"*ngIf="userType !== 'Dealer Admin'">
+      <div class="col-md-0 col-lg-0 col-sm-0" style="position: relative; left: 0%;"*ngIf="userType !== 'Dealer Admin'">
         <div class="sales-add" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName">
             <img class="imgorder" src="assets/img/add-btn.png"
                 alt="add">
@@ -164,8 +164,8 @@
     <span class="ml-4" >ODV: <span class="ml-1">Order Value</span></span>
     <span class="ml-4" >ODQ:<span class="ml-2">Order Quantity</span></span>
     <span class="ml-4" >RDQ:<span class="ml-2">Received Quantity</span></span>
-    <span class="ml-4" >OSQ:<span class="ml-2">Oustanding Qunatiy</span> </span>
-    <span class="ml-4" >OSV:<span class="ml-2">Oustanding Value</span> </span>
+    <span class="ml-4" >OSQ:<span class="ml-2">Outstanding Quantity</span> </span>
+    <span class="ml-4" >OSV:<span class="ml-2">Outstanding Value</span> </span>
     <span class="ml-4"  >ITQ:<span class="ml-2">In-transit Quantity</span> </span>
   </div>
     <ag-grid-angular

@@ -456,26 +456,26 @@ bottom: 0px;
   transform: rotate(180deg) !important;
 }
 
-.searchBox:hover>.searchInput {
-  display: block;
-  width: 335px;
-  height: 43px;
-  background: #FFFFFF;
-  float: left;
-  padding: 5px 32px 6px;
-  border-radius: 10px;
-  font-family: 'Gilroy';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 17px;
-  letter-spacing: 0.08em;
-  color: #263643;
-  box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
-  position: absolute;
-  right: 0px;
-  // bottom: -3px;
-}
+// .searchBox:hover>.searchInput {
+//   display: block;
+//   width: 335px;
+//   height: 43px;
+//   background: #FFFFFF;
+//   float: left;
+//   padding: 5px 32px 6px;
+//   border-radius: 10px;
+//   font-family: 'Gilroy';
+//   font-style: normal;
+//   font-weight: 500;
+//   font-size: 12px;
+//   line-height: 17px;
+//   letter-spacing: 0.08em;
+//   color: #263643;
+//   box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+//   position: absolute;
+//   right: 0px;
+//   // bottom: -3px;
+// }
 
 .addU:before {
   width: 201px;
@@ -1268,6 +1268,7 @@ display: block;
   position: absolute;
 
   right: 10px;
+  top:7%;
 
  
 

@@ -9,7 +9,7 @@
     <div class="addTypeDiv">
         <label class="addtypes1" >Name<span style="color: red;">*</span></label><br>
         <input type="text"id="typeName" name="typeName" placeholder="Enter Type name" 
-          required [(ngModel)]="type" #typeName="ngModel">   
+          required [(ngModel)]="type" #typeName="ngModel"(input)="restrictToAlphabets($event)">   
           <p style="margin-bottom: -29px;
           padding: 0px;
           font-size: 11px;

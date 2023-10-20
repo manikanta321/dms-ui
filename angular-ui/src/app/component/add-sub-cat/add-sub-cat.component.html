@@ -9,7 +9,7 @@
     <div class="addSubcatDiv">
         <label class="addsub1" >Name<span style="color: red;">*</span></label><br>
         <input type="text"id="password" name="password"    placeholder="Enter sub-category name" 
-          required [(ngModel)]="sucatname" #password="ngModel">     
+          required [(ngModel)]="sucatname" #password="ngModel"(input)="restrictToAlphabets($event)">     
           <p style="margin-bottom: -29px;
           padding: 0px;
           font-size: 11px;

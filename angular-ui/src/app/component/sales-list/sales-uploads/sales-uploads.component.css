@@ -191,7 +191,7 @@
         height: 41px;
         margin-right: 10px;
         cursor: pointer;
-        margin-left: 54%;
+        margin-left: 51%;
       }
       .sales-download:hover
       {
@@ -208,7 +208,7 @@
         border-radius: 13%;
         width: 37px;
         height: 41px;
-        margin-right: 10px;
+        margin-right: 0px;
         cursor: pointer;
       }
       .sales-upload:hover

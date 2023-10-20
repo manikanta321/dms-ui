@@ -233,10 +233,12 @@ border-top-right-radius: 13px;
 .head-tt h3 {
   color: #000000;
   text-align: center;
-  margin-bottom: 2px;
- cursor: pointer;
- font-size: 20px;
- 
+  margin-bottom: 25px;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: ' Calibri';
+  font-weight: bold;
+  top: 13px;
 }
 .TOTAL
 {
@@ -957,12 +959,12 @@ span {
   margin-top: 27px;
 } */
 .close-icon{
-  /* position: fixed; */
+  position: fixed;
   top: 0;
   float: right;
   /* z-index: 1; */
   cursor: pointer;
-  margin-top: -28px;
+  margin-top: 12px;
   margin-left: 94%;
 }
 .close_icon
@@ -1683,7 +1685,7 @@ li {
   display: block;
   height: 23px;
   border: none;
-  background-color: white;
+  background-color:#686E74 ;
   color: black;
   border-radius: 5px;
   position: absolute;
@@ -1996,7 +1998,7 @@ li {
   color: #FFFFFF;
 }
 .tabel-div {
-  margin-top: 15px;
+  margin-top: -38px;
   /* max-height: 321px; */
   border: 2px solid rgba(1, 139, 117, 1);
   border-radius: 15px;
@@ -2415,7 +2417,7 @@ margin-top: -5px;
 
 .popup {
   /* margin: 41px auto; */
-  padding: 20px;
+  padding: 20px 0px 20px 20px;
   background: #fff;
   border-radius: 5px;
   

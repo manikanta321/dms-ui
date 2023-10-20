@@ -938,4 +938,9 @@ let data5={
 
   }
 
+  restrictToAlphabets(event: any): void {
+    const input = event.target as HTMLInputElement;
+    const value = input.value;
+    input.value = value.replace(/[^a-zA-Z]/g, '');
+  }
 }

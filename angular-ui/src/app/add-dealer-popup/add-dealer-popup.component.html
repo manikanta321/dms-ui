@@ -41,7 +41,7 @@
                                             <br>
                                             <input type="text" formControlName="CustomerName"
                                                 class="addDelercols form-control" required
-                                                placeholder="Enter dealer name">
+                                                placeholder="Enter dealer name" (input)="restrictToAlphabets($event)">
                                             <span class="text-danger"
                                                 *ngIf="addAddressDetailsFormControl['CustomerName'].touched  && addAddressDetailsFormControl['CustomerName'].errors && addAddressDetailsFormControl['CustomerName'].errors['required']">
                                                 Name is required
@@ -151,7 +151,7 @@
                                             <br>
                                             <input type="text" formControlName="FirstName"
                                                 class="addDelercols form-control" required
-                                                placeholder="Enter admin First Name">
+                                                placeholder="Enter admin First Name" (input)="restrictToAlphabets($event)">
                                             <span class="text-danger"
                                                 *ngIf="addAddressDetailsFormControl['FirstName'].touched  && addAddressDetailsFormControl['FirstName'].errors && addAddressDetailsFormControl['FirstName'].errors['required']">
                                                 First Name is required
@@ -162,7 +162,7 @@
                                             <br>
                                             <input type="text" formControlName="lastName"
                                                 class="addDelercols form-control" required
-                                                placeholder="Enter admin last name">
+                                                placeholder="Enter admin last name" (input)="restrictToAlphabets($event)">
                                             <span class="text-danger"
                                                 *ngIf="addAddressDetailsFormControl['lastName'].touched  && addAddressDetailsFormControl['lastName'].errors && addAddressDetailsFormControl['lastName'].errors['required']">
                                                 Last Name is required
@@ -172,7 +172,7 @@
                                             <label>User Name<span>*</span></label>
                                             <br>
                                             <input type="text" formControlName="UserName"
-                                                class="addDelercols form-control" required placeholder="Enter admin name">
+                                                class="addDelercols form-control" required placeholder="Enter admin name"(input)="restrictToAlphabets($event)">
                                             <span class="text-danger"
                                                 *ngIf="addAddressDetailsFormControl['UserName'].touched  && addAddressDetailsFormControl['UserName'].errors && addAddressDetailsFormControl['UserName'].errors['required']">
                                                 UserName is required
@@ -301,14 +301,14 @@
                                                 <label *ngIf="i == 0">Country<span>*</span></label>
                                                 <br>
                                                 <input type="text" placeholder="Enter" formControlName="CountryName" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].CountryName"
-                                                    class="addDelercols addcountry">
+                                                    class="addDelercols addcountry"(input)="restrictToAlphabets($event)">
                                             </div>
 
                                             <div class="col-1">
                                                 <label *ngIf="i == 0">State<span>*</span></label>
                                                 <br>
                                                 <input type="text" placeholder="Enter" formControlName="StateName" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].StateName"
-                                                    class="addDelercols aastate">
+                                                    class="addDelercols aastate"(input)="restrictToAlphabets($event)">
                                             </div>
 
                                             <div class="col-2">
@@ -316,9 +316,9 @@
                                                 <label *ngIf="i == 0" style="position: relative;left: 104px;">Zip<span>*</span></label>
                                                 <br>
                                                 <input type="text" placeholder="Enter City" formControlName="CityName" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].CityName"
-                                                    class="addDelercols addcity">
+                                                    class="addDelercols addcity"(input)="restrictToAlphabets($event)">
                                                 <input type="text" placeholder="Enter Zip" formControlName="ZipCode" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].ZipCode"
-                                                    class="addDelercols addzip">
+                                                    class="addDelercols addzip"(input)="restrictToAlphabets($event)">
                                             </div>
 
                                             <div class="col-1" style="margin-left: 53px;">

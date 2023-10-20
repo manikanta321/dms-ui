@@ -687,7 +687,7 @@ mat-sidenav {
 .ref {
   border: 1px solid black;
   border-radius: 10px;
-  background: black;
+  background-color: grey !important;
   margin-left: -13px;
   width: 43px;
   padding: 8px 0px 0px 10px;

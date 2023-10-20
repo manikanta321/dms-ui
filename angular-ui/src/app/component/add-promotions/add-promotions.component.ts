@@ -149,6 +149,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   minumorderqualityPrice: any = '';
   productPromotionsId: any;
   count: number = 0;
+  showSelectedRows:boolean=false;
+  isSelected: any;
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
     //update the ui
@@ -259,6 +261,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     defaultColDef: {
       resizable: true,
     },
+    suppressRowClickSelection: true,
+    
     onCellClicked: (event: CellClickedEvent) => console.log('Cell was clicked'),
     // set background colour on every row, this is probably bad, should be using CSS classes
     rowStyle: { background: 'black' },
@@ -327,7 +331,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   scrolledIndex = 0;
   defaultPageSize = 12;
   paginationScrollCount: any;
-  public rowData5 = [];
+  public rowData5 :any= [];
   public popupParent: HTMLElement = document.body;
   stayScrolledToEnd = true;
   message: boolean = false;
@@ -996,6 +1000,9 @@ console.log('addgetgroup',this.addgetgroup);
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
     params.api.sizeColumnsToFit();
+    params.api.forEachNode((node) =>
+      node.setSelected(true)
+    );
 
   }
   onCellValueChanged(event: CellValueChangedEvent) {
@@ -1611,37 +1618,29 @@ this.textShow=true;
 
     })
   }
-  showSelectedRows:boolean=false;
-totalselecteddata() {
-  this.showSelectedRows = !this.showSelectedRows;
-  if (this.showSelectedRows) {
-    const showSelectedRows = this.gridApi.getSelectedRows();
-    console.log(showSelectedRows,"========");
-    this.selectedRows;(this.selectedRows);
-   
-   
-  } else {
-
-      this.gridApi.setRowData(this.rowData5);
-      const showSelectedRows = this.gridApi.getSelectedRows();
-    console.log(showSelectedRows,"========");
-    this.selectedRows;(this.selectedRows);
-  }
-}
-
-selectedRowsR:boolean=true
-toggleSelectedRows() {
-  this.showSelectedRows = !this.showSelectedRows;
-  console.log(this.showSelectedRows);
-  if (this.showSelectedRows) {
-    
-    const selectedRows = this.gridApi.getSelectedRows();
  
-    this.gridApi.setRowData(selectedRows);
-  } else {
-    this.gridApi.setRowData(this.rowData5);
+
+
+  toggleSelectedRows() {
+    this.showSelectedRows = !this.showSelectedRows;
+    if (this.showSelectedRows) {
+      const selectedRows = this.gridApi.getSelectedRows();   
+      this.selectedRows = selectedRows;
+      this.gridApi.setRowData(this.selectedRows);  
+      this.gridApi.forEachNode((node) => {
+        const isSelected = this.selectedRows.some((row) => row.id === node.data.id);
+        node.setSelected(true);
+      });
+    } else {
+      this.gridApi.setRowData(this.rowData5);
+      this.gridApi.forEachNode((node) => {
+        const isSelected  = this.selectedRows.some((selectedRow) =>
+            selectedRow.customerId === node.data.customerId);
+          node.setSelected(isSelected);
+        });
+    }
   }
-}
+
 
 
   addItemsPrice() {
@@ -1950,7 +1949,12 @@ toggleSelectedRows() {
   onRowSelect(event) {
     const selectedRows = this.gridApi.getSelectedRows();
     console.log(selectedRows);
+    console.log(event.node.selected);
     let customerId = selectedRows.map(x => x.customerId);
+    if(event.node && event.node.setSelected){
+      event.data.isProductSelected = event.node.selected;
+      event.node.setSelected(event.node.selected)
+    }
     this.EntityInstanceId = customerId;
     this.selectedDealers = this.EntityInstanceId.map(x => {
       return { dealerId: x }

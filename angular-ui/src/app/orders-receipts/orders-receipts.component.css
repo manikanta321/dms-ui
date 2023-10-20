@@ -1,4 +1,12 @@
 
+.ordersreceiptsbubblesGeography{
+  height: 41px;
+    border-left: 1px solid #111413db;
+   border-radius: 11px;
+}
+
+
+
 ::ng-deep .multiselectdropwidth .dropdown-list {
   left: -6%;
   width: 106%;
@@ -612,7 +620,10 @@
      right: 11px !important;
      height: 5px;
      display: table-cell;
+   
    }
+
+  
  
 
    .search_Box1 >.searchButtonn .material-iconss {

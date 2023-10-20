@@ -27,6 +27,17 @@ import { OrderActionShipmentComponent } from '../order-action-shipment/order-act
 })
 export class AddorderpromotionsComponent implements OnInit {
 
+  statusTypes:any=[];
+  StatusFilter = false;
+  statusSelection =false;
+  toppingList1:  any= [];
+  toppings1 = new FormControl('');
+  statusData:any =[];
+  statusArray:any=[];
+  selectedStatus: any = [];
+  userTypes:any=[];
+  limitSelection = false;
+  ProductnamecodeForm:any=FormGroup;
   discountAmount:any;
   hidereset:boolean=false;
 
@@ -34,6 +45,7 @@ export class AddorderpromotionsComponent implements OnInit {
   VisibleValumePromotion:boolean=true;
   NotVisibleNonProArrow:boolean=true;
   products: any = FormGroup;
+  ProductCodeName:any=FormGroup;
   isAdminLoggedIn: boolean = true;
   inputValue: number | null = null;
   
@@ -212,6 +224,8 @@ export class AddorderpromotionsComponent implements OnInit {
   selectedItem = null;
   addButton: boolean = false;
   dropdownSettings1: IDropdownSettings = {};
+  dropdownSettings11: IDropdownSettings = {};
+  DropropDownSettings1: IDropdownSettings = {};
   dropdownSettings2: IDropdownSettings = {};
   dropdownSettings3: IDropdownSettings = {};
   productData: any = [];
@@ -290,7 +304,10 @@ export class AddorderpromotionsComponent implements OnInit {
     this.getclassification();
     this.selectMaterialIdentifier();
     this.Productgroupset();
-
+    this.onItemProductNameandcodeSelect();
+    this.statusItems();
+   
+    
 
     this.dropdownSettingssubcat = {
       singleSelection: false,
@@ -331,8 +348,34 @@ export class AddorderpromotionsComponent implements OnInit {
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
       allowSearchFilter: true
-    }
-    console.log(this.dropdownproductgroup,"Check data");
+    };
+
+    this.DropropDownSettings1  = 
+    {
+      singleSelection: false,
+      idField: 'stockItemId',
+      textField: 'produCtCodeValue',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+      allowSearchFilter: true
+    };
+
+    this.dropdownSettings11=
+    {
+      singleSelection: false,
+      idField: 'stockItemId',
+      textField: 'produCtCodeValue',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+      allowSearchFilter: true
+
+    },
+
+    this.ProductnamecodeForm = this.fb.group({
+      citys: [this.selectedItems]
+    });
 
     this.categoryForm = this.fb.group({
       categoryy: [this.selectedItems]
@@ -369,8 +412,6 @@ export class AddorderpromotionsComponent implements OnInit {
       // this.updateOrSave= this.updateOrSave;
       this.editorderbyID = {};
     }
-
-
   }
   
   toggleVisibility() {
@@ -746,8 +787,14 @@ export class AddorderpromotionsComponent implements OnInit {
 
 
   refresh() {
+     this.ProductnamecodeForm = this.fb.group({
+      citys: [this.selectedItems]
+    });
     this.categoryForm = this.fb.group({
       categoryy: [this.selectedItems]
+    });
+    this.ProductnamecodeForm = this.fb.group({
+      citys: [this.selectedItems]
     });
     this.subcategoryForm = this.fb.group({
       subCategory: [this.selectedItems]
@@ -763,14 +810,29 @@ export class AddorderpromotionsComponent implements OnInit {
     this.myFormsIdentifier = this.fb.group({
       identifiers: [this.selectedItems]
     });
+    const data={
+      Statuss:[],
+      //  ProductNameAndCode:[],
+      ProductNameAndCode:this.statusTypes,
+      Search:"",
+  
+    }
+    this.orders.GetProductNameCode().subscribe((res)=>{
+      this. toppingList1=res.response;
+      console.log(this.toppingList1,"RK");
+    })
+   
     this.catergory = [];
     this.sub_category = [];
     this.GetProductcategory = [];
     this.sub_categorys = [];
     this.typesI = [];
-
+    this.statusTypes=[];
     this.typeI = [];
     this.materialIdentifierData = [];
+  
+    this.onItemProductNameandcodeSelect();
+
   }
   closePopup() {
     this.Non_promotions = false
@@ -915,11 +977,190 @@ export class AddorderpromotionsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      // 3 allowSearchFilter: this.ShowFilter
+    //  allowSearchFilter: this.ShowFilter,
       allowSearchFilter: true
     };
   }
-  // cat select
+
+  toogleShowFilter() {
+    this.ShowFilter = !this.ShowFilter;
+    this.dropdownSettings11 = Object.assign({}, this.dropdownSettings11, { allowSearchFilter: this.ShowFilter });
+  }
+  handleLimitSelection() {
+    if (this.limitSelection) {
+      this.dropdownSettings11 = Object.assign({}, this.dropdownSettings11, { limitSelection: 2 });
+    } else {
+      this.dropdownSettings11 = Object.assign({}, this.dropdownSettings11, { limitSelection: null });
+    }
+  }
+  onItemProductNameandcodeSelect() {
+ 
+
+      const data={
+        ProductNameAndCode:this.statusTypes,
+        Search:this.searchText,
+        Cat: this.catergory,
+        Sub_Cat: this.sub_categorys,
+        type: this.typesI,
+        MaterialCustomIdentifier: this.materialIdentifierData,
+        // GetproductGroup: this.GetProductcategory,
+        productGroup: this.GetProductcategory,
+        GeographyId: this.geographyId,
+        Dealerid: this.customerId
+       
+      }
+    
+      this.orders.GetProductNameCode().subscribe((res)=>{
+        this. toppingList1=res.response;
+        console.log(this.toppingList1,"RK");
+      });
+  }
+
+  statusItems(){
+      this.orders.GetProductNameCode().subscribe((res: any) => {
+      this.toppingList1=res.response;
+      let dataCat =  this.toppingList1;
+      this.statusData = dataCat.map((data: { stockItemId: any; produCtCodeValue: any; }) => {
+        return { stockItemId: data.stockItemId, produCtCodeValue: data.produCtCodeValue };
+      });
+      if (!this.statusData?.length) {
+        this.statusData = dataCat.map((product: { designationName: any; }) => {
+          return product.designationName;
+        });
+      }
+      this.statusData.push()
+      console.log("StatusData",this.statusData);
+      this.statusData.forEach(element => {
+        return this.statusArray.push(element.stockItemId);
+      })
+      console.log("statusArray",this.statusArray);
+      this.dropdownSettings11 = {
+        singleSelection: false,
+        idField: 'stockItemId',
+        textField: 'produCtCodeValue',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        itemsShowLimit: 1,
+        allowSearchFilter: true,
+      };
+      this.selectedStatus = [];
+      this.toppings1 = new FormControl(this.toppingList1);
+    });
+
+   
+  }
+
+
+  onProductcodenameSelect(item: any) {
+    console.log(this.statusTypes,"=======")
+    this.statusTypes.push(item.stockItemId);
+    const data={
+     
+      ProductNameAndCode:this.statusTypes,
+      Search:this.searchText,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
+     
+    }
+   
+   
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
+    });
+    
+  }
+  
+  onProductCodeNameDeSelect (item: any) {
+    this.statusTypes.forEach((element,index)=>{
+      if(element==item.stockItemId)  this.statusTypes.splice(index,1);
+   });
+  console.log(' this.statusTypes', this.userTypes)
+  const data={
+   
+    ProductNameAndCode:this.statusTypes,
+    Search:this.searchText,
+    Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
+   
+  }
+ 
+  this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+    // this.orderNonPromotionsdata = res.response;
+    let orderNonPromotionsData = res.response;
+    this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
+  });
+   
+  }
+
+  onItemDeSelectOrAllProductNameCode(item:any){
+    this.statusTypes =[];
+    const data={
+    
+      ProductNameAndCode:this.statusTypes,
+      Search:this.searchText,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
+    
+    }
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
+    });
+ 
+  }
+
+
+  onItemSelectOProductCodeName(item:any){
+    this.statusTypes=this.statusArray;
+    console.log("StatusArray",this.statusArray)
+    console.log('y this is not coming',this.statusTypes)
+    const data={
+    
+      ProductNameAndCode:this.statusTypes,
+      Search:this.searchText,
+      Cat: this.catergory,
+      Sub_Cat: this.sub_categorys,
+      type: this.typesI,
+      MaterialCustomIdentifier: this.materialIdentifierData,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
+      GeographyId: this.geographyId,
+      Dealerid: this.customerId
+   
+    }
+   
+    this.orders.getorderNonPromotionslist(data).subscribe((res) => {
+      // this.orderNonPromotionsdata = res.response;
+      let orderNonPromotionsData = res.response;
+      this.orderNonPromotionsdata = this.orderNonPromotionFormatter(orderNonPromotionsData);
+
+    });
+  }
+  // cat selectorders
   onItemSelect(item: any) {
     // this.selectedItem = item;
     this.catergory.push(item.catId);
@@ -946,7 +1187,8 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
       Search: this.searchText,
       GeographyId: this.geographyId,
       Dealerid: this.customerId
@@ -985,7 +1227,8 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
       Search: this.searchText,
       GeographyId: this.geographyId,
       Dealerid: this.customerId
@@ -1044,7 +1287,8 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
       Search: this.searchText,
       GeographyId: this.geographyId,
       Dealerid: this.customerId
@@ -1076,7 +1320,8 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
       Search: this.searchText,
       GeographyId: this.geographyId,
       Dealerid: this.customerId
@@ -1109,7 +1354,8 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
       Search: this.searchText,
       GeographyId: this.geographyId,
       Dealerid: this.customerId
@@ -1151,7 +1397,8 @@ export class AddorderpromotionsComponent implements OnInit {
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
       Search: this.searchText,
-      GetproductGroup: this.GetProductcategory,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
       GeographyId: this.geographyId,
       Dealerid: this.customerId
     }
@@ -1181,7 +1428,8 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
       Search: this.searchText,
       GeographyId: this.geographyId,
       Dealerid: this.customerId
@@ -1206,7 +1454,8 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
       Search: this.searchText,
       GeographyId: this.geographyId,
       Dealerid: this.customerId
@@ -1227,7 +1476,8 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
       Search: this.searchText,
       GeographyId: this.geographyId,
       Dealerid: this.customerId
@@ -1252,7 +1502,8 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
       
       Search: this.searchText,
       GeographyId: this.geographyId,
@@ -1292,7 +1543,8 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
       Search: this.searchText,
       GeographyId: this.geographyId,
       Dealerid: this.customerId
@@ -1316,7 +1568,8 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
       Search: this.searchText,
       GeographyId: this.geographyId,
       Dealerid: this.customerId
@@ -1374,7 +1627,8 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
       Search: this.searchText,
       GeographyId: this.geographyId
     }
@@ -1398,7 +1652,8 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
       Search: this.searchText,
       GeographyId: this.geographyId,
       Dealerid: this.customerId
@@ -1434,7 +1689,8 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
       Search: this.searchText,
       GeographyId: this.geographyId
     }
@@ -1454,7 +1710,8 @@ export class AddorderpromotionsComponent implements OnInit {
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
       Search: this.searchText,
       GeographyId: this.geographyId
     }
@@ -1473,12 +1730,15 @@ export class AddorderpromotionsComponent implements OnInit {
     {
       "Cat": [],
       "Sub_Cat": [],
-      "GetproductGroup": [],
+      // "GetproductGroup": [],
+      "productGroup": [],
       "type": [],
       "MaterialCustomIdentifier": [],
       "Search": "",
       "GeographyId": this.geographyId,
       "Dealerid": this.customerId,
+      "ProductNameAndCode":[],
+    
     }
     this.showSpinner();
 
@@ -2147,7 +2407,8 @@ localStorage.setItem('clickedImageURL', JSON.stringify(promotionItem.imageurl));
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
       Search: this.searchText,
       // payload
       productgroup: this.GetProductcategory,
@@ -2174,7 +2435,8 @@ localStorage.setItem('clickedImageURL', JSON.stringify(promotionItem.imageurl));
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
       Search: this.searchText,
       productgroup: this.GetProductcategory,
       GeographyId: this.geographyId,
@@ -2210,7 +2472,8 @@ localStorage.setItem('clickedImageURL', JSON.stringify(promotionItem.imageurl));
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
       Search: this.searchText,
       productgroup: this.GetProductcategory,
       GeographyId: this.geographyId,
@@ -2231,7 +2494,8 @@ localStorage.setItem('clickedImageURL', JSON.stringify(promotionItem.imageurl));
       Sub_Cat: this.sub_categorys,
       type: this.typesI,
       MaterialCustomIdentifier: this.materialIdentifierData,
-      GetproductGroup: this.GetProductcategory,
+      // GetproductGroup: this.GetProductcategory,
+      productGroup: this.GetProductcategory,
       Search: this.searchText,
       productgroup: this.GetProductcategory,
       GeographyId: this.geographyId,

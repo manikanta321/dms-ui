@@ -836,10 +836,7 @@
                         <div class="row">
                             <input type="text" placeholder="Search for the Geography/ Dealers here "
                                 class="searchGeo border border-success" (keyup)="onSearchChange($event)">
-                            <div class="col-2">
-                                <mat-slide-toggle class="togglecolor" (click)="totalselecteddata()">Selected
-                                    Dealers</mat-slide-toggle>
-                            </div>
+                           
                            
                             <div class="col-3">
                                 <mat-slide-toggle class="togglecolor" (click)="toggleSelectedRows()">Selected
@@ -863,11 +860,7 @@
                                 
                             </ag-grid-angular>
                            
-                            <div *ngIf="selectedRowsR">
-                                <h2>Selected Row Data</h2>
-                                <!-- <p>{{ rowData5 | json }}</p> -->
-                            </div>
-
+                           
 
                         </div>
                         <!-- additional remarks -->

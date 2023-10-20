@@ -73,6 +73,7 @@ mat-tab{
     color: white;
     /* border-radius: 25px; */
     opacity: 1;
+    background-color: rgba(1, 139, 117, 1)!important;
 }
 
 ::ng-deep .order1-lab .mat-tab-label{

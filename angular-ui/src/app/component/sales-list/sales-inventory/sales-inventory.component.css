@@ -1,3 +1,20 @@
+.inventorydealersbubbles{
+  height: 41px;
+    border-left: 1px solid #111413db;
+   border-radius: 13px;
+}
+.salesIdealersbubbles{
+  height: 41px;
+  border-left: 1px solid #111413db;
+ border-radius: 13px;
+}
+.sales-invertygeophybubbles{
+  height: 41px;
+  border-left: 1px solid #111413db;
+ border-radius: 13px;
+}
+
+
 ::ng-deep .multi_select .dropdown-list {
   left: -6%;
   width: 106%;

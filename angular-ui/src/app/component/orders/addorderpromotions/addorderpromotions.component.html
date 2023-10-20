@@ -1004,8 +1004,44 @@
                 </div>
                 <div class="nonpromo ">
                     <div class="row  mt-3  spacedropdown ">
-                        <div class="col-lg-10 ">
+                        <div class="col-lg-10 "> 
+                            <div>
+                                <label class="productcodename">Product Name/Code</label>
+                                <label class="productcategory">Product Category</label>
+                                <label class="ProductGroup">Product Group</label>
+                            </div>
+                           
                             <div class="row  ">
+                              
+                               
+                                <div class="col-md-3 col-lg-3 col-sm-3 Drop_ng dropdownborder custon-nonprobubbles" >
+                                    <div class="input-icons">
+                                        <form [formGroup]="ProductnamecodeForm" class="dropDown-field dropdown_list"
+                                        style="width: 100%;">
+                                        <ng-multiselect-dropdown class="catty select_category" name="city"
+                                            [placeholder]="'Search by Name/Code'"  formControlName="citys"
+                                            [disabled]="disabled" [settings]="dropdownSettings11"
+                                            [data]=" toppingList1" (onSelect)="onProductcodenameSelect($event)"
+                                            (onDeSelect)="onProductCodeNameDeSelect($event)"
+                                            (onDeSelectAll)="onItemDeSelectOrAllProductNameCode($event)"
+                                            (onSelectAll)="onItemSelectOProductCodeName($event)">
+                                        </ng-multiselect-dropdown>
+                                        <div class="dropdown-placeholder catty-placeholder">
+                                            <span *ngIf="ProductnamecodeForm.get('citys').value.length == 0"
+                                                style="color:grey;"> Product Name/Code </span>
+                                            <span *ngIf="ProductnamecodeForm.get('citys').value.length == 1"
+                                                class="selected-placeholder">
+                                                {{ProductnamecodeForm.get('citys').value.length}} Selected Product  </span>
+                                            <span *ngIf="ProductnamecodeForm.get('citys').value.length > 1"
+                                                class="selected-placeholder">
+                                                {{ProductnamecodeForm.get('citys').value.length}} Selected Products 
+                                            </span>
+                                        </div>
+                                    </form>
+                                  </div>
+                                  </div>
+                            
+                               
                                 <div class="col-md-3 col-lg-3 col-sm-3   dropdownborder custon-nonprobubbles">
                                     <div class="input-icons ">
                                         <form [formGroup]="categoryForm" class="dropDown-field dropdown_list"
@@ -1088,9 +1124,7 @@
                                     </div>
                                 </div> -->
                                 <div class="col-md-3 col-lg-3 col-sm-3 Drop_ng dropdownborder custon-nonprobubbles">
-
                                     <div class="input-icons ">
-
                                         <form [formGroup]="getproductForm" class="dropDown-field dropdown_list">
                                             <ng-multiselect-dropdown class="stts stts_typeselected"
                                                 formControlName="getprocategroy" name="getprocategroy"
@@ -1102,7 +1136,6 @@
                                                 (onDeSelectAll)="onProductDeSelectOrAll($event)">
 
                                             </ng-multiselect-dropdown>
-
                                             <div class="dropdown-placeholder type-placeholder">
                                                 <span *ngIf="getproductForm.get('getprocategroy').value.length == 0"
                                                     style="color:grey;"> Select Product Group
@@ -1152,46 +1185,47 @@
                                                 </form>
                                             </div>
                                         </div> -->
+                                        <mat-slide-toggle  (click)="toggleData($event) " style="position: relative;left: 64px;top:6px"> Items With Order Qty
+                                        </mat-slide-toggle>
+                                       
+                                        <div class="col" style="position: relative;left:150px">
+                                            <div class="icon btnhover refreshbtn">
+                                          <img src="assets/img/Vector.png" (click)="refresh()" class="refresh-icon" alt="refresh">
+                                          </div>
+                                         </div> 
+                                            
+                                    
+                                       
+
+
 
                             </div>
-                        </div>
-                        <div class="col-md-2 col-lg-2 col-sm-2">
-                            <div class="icon btnhover refreshbtn">
-                                <img src="assets/img/Vector.png" (click)="refresh()" class="refresh-icon" alt="refresh">
-                            </div>
+                            
 
                         </div>
+
+                     
 
                     </div>
 
                     <div class="row mt-5">
-
-
-
                         <!-- <div class="col-lg-12 nonpromoSearch" style="margin-left: 1%;">
-
                             <div class="col-md-4 srch-hover">
                                  style="margin-right: -30px;"
-
                                 <div class="searchBox1 d-flex">
                                     <input class="searchInput1" type="text" name=""
                                         placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
-
                                     <button class="search-btn">Search</button>
                                     <button class="searchButton" href="#">
                                         <i class="material-icons">
                                             search
                                         </i>
                                     </button>
-
                                 </div>
-
-
                             </div>
-
                         </div> -->
-                        <mat-slide-toggle class="togglebutton" (click)="toggleData($event) "> Items With Order Qty
-                        </mat-slide-toggle>
+                        <!-- <mat-slide-toggle class="togglebutton" (click)="toggleData($event) "> Items With Order Qty
+                        </mat-slide-toggle> -->
                     </div>
 
 

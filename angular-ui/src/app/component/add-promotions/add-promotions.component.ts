@@ -46,9 +46,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       productScselectedRows: [],
       pGselectedRows: [],
       productSubGselectedRows: [],
-      MaxVolume: '',
+      // MaxVolume: '',
       GroupId: '',
-      MOQ: '',
+      // MOQ: '',
       isDataValid: true
     }
   ];
@@ -61,7 +61,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     productScselectedRows: [],
     pGselectedRows: [],
     productSubGselectedRows: [],
-    MaxVolume: '',
+    // MaxVolume: '',
     GroupId: '',
     isDataValid: true
   }];
@@ -73,7 +73,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     GroupId: 1,
     BuyGroups: [{
       StockItemId: [],
-      MaxVolume: '',
+      // MaxVolume: '',
       Set: 1,
       MOQ: '',
       productselectedRows: [],
@@ -85,8 +85,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   ];
 
   packingCharges: any = [{
-    MinVolume: '',
-    MaxVolume: '',
+    // MinVolume: '',
+    // MaxVolume: '',
     DiscountPercentage: '',
     isDataValid: true
   }]
@@ -2002,7 +2002,7 @@ toggleSelectedRows() {
   }
 
   AddPromosaveAndSubmit(type) {
-    alert("HElloooo")
+    // alert("HElloooo")
     localStorage.setItem("updatePromotionPopup", 'add');
     this.loggedUserId = localStorage.getItem('logInId')
     if (!this.checkValidation(this.selectedPromo)) return;
@@ -2027,10 +2027,6 @@ toggleSelectedRows() {
         delete element.productSubGselectedRows;
       })
 
-
-
-
-
       let obj: any = {
 
         PromotionName: this.promoName,
@@ -2043,8 +2039,17 @@ toggleSelectedRows() {
         GetGroups: this.addgetgroup,
         EntityInstanceId: this.EntityInstanceId,
         Status: type,
-        Remarks: this.Remarks ?? ''
-
+        Remarks: this.Remarks ?? '',
+        AditionalMoqDetails: this.formArr.controls.map((control) => {
+          return {
+            AdditionalDetailsId: 0,
+            QtyFrom: control.get('qtyFrom')?.value,
+            QtyTo: control.get('qtyTo')?.value,
+            BuyValue: control.get('buy')?.value,
+            GetValue: control.get('get')?.value,
+            Aditional: control.get('additional')?.value
+          };
+        })
       }
 
 
@@ -2072,38 +2077,25 @@ toggleSelectedRows() {
     }
 
     if (this.selectedPromo == 2) {
-
       console.log('addbuyset', this.addbuyset)
       console.log('addGetset', this.addgetset)
       let obj: any = [];
       let obj1: any = [];
-
-
 
       for (let i = 0; i < this.addbuyset.length; i++) {
         this.addbuyset[i].BuyGroups.forEach(element => {
           delete element.productselectedRows;
           obj.push(element)
           console.log('finalobject', obj)
-
-
         })
-
       }
-
-
       for (let i = 0; i < this.addgetset.length; i++) {
         this.addgetset[i].GetGroups.forEach(element => {
           delete element.productselectedRows;
           obj1.push(element)
           console.log('finalobject1', obj1)
-
-
         })
-
       }
-
-
       let BuyGroups: any = []
       let GetGroups: any = []
       BuyGroups.push(obj);
@@ -2118,7 +2110,6 @@ toggleSelectedRows() {
       console.log('mainobj', mainobj)
 
       let obj3: any = {
-
         PromotionName: this.promoName,
         PromotionTypesId: this.selectedPromo,
         StartDate: this.selectedStartDate,
@@ -2129,15 +2120,22 @@ toggleSelectedRows() {
         GetSets: this.addgetset,
         EntityInstanceId: this.EntityInstanceId,
         Status: type,
-        Remarks: this.Remarks ?? ''
+        Remarks: this.Remarks ?? '',
+        AditionalMoqDetails: this.formArr.controls.map((control) => {
+          return {
+            AdditionalDetailsId: 0,
+            QtyFrom: control.get('qtyFrom')?.value,
+            QtyTo: control.get('qtyTo')?.value,
+            BuyValue: control.get('buy')?.value,
+            GetValue: control.get('get')?.value,
+            Aditional: control.get('additional')?.value
+          };
+        })
       }
       console.log('object to send opis', obj3)
       // let BuySets=[{
       //   BuyGroups:obj
       // }]
-
-
-
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
         if (res.response.result == 'Added Succesfully') {

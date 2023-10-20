@@ -207,8 +207,8 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
   allExpanded = true; 
   actineLabel: any; 
    updateOrSave: boolean = false
-
-
+   public promoVisibility: { [promo: string]: boolean } = {};
+   public shipmentVisibility: { [shipName: string]: boolean } = {};
   ngOnInit(): void { 
     this.userId = localStorage.getItem('logInId');
     this.userType = localStorage.getItem('userType');
@@ -221,7 +221,12 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
       this.ViewOrReceive = false;
       this.headerName = 'View: Order No.';
     }
-
+    this.itemsArray.forEach((data) => {
+      this.promoVisibility[data.promo] = true;
+    });
+    this.currentShipArray.forEach((data) => {
+      this.shipmentVisibility[data.shipName] = true;
+    });
     let identifier = localStorage.getItem('orderOrShipmentOrRecipt');
     if (identifier == 'order') {
       // alert('order');
@@ -607,10 +612,15 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
      this.checkstatus = false;
     }
   }
-  // rowVisible: boolean[] = new Array(this.itemsArray).fill(true);
-  toggleRowVisibility(index: number) {
-    this.allExpanded = !this.allExpanded
+  
+  toggleRowVisibility(promo: number) {
+    this.promoVisibility[promo] = !this.promoVisibility[promo];
   }
+  
+  expandShipmentTwoDiv(shipName: string): void {
+    this.shipmentVisibility[shipName] = !this.shipmentVisibility[shipName];
+  }
+  
   viewOrderData() {
     let viewData = sessionStorage.getItem('viewOrder');
 
@@ -1014,15 +1024,15 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
       this.image3 = 'assets/img/expandarrows.svg';
     }
   }
-  expandShipmentTwoDiv() {
-    this.shipmenttwo = !this.shipmenttwo;
+  // expandShipmentTwoDiv() {
+  //   this.shipmenttwo = !this.shipmenttwo;
 
-    if (this.shipmenttwo === false) {
-      this.image4 = 'assets/img/expandarrows.svg';
-    } else {
-      this.image4 = 'assets/img/expandarrows.svg';
-    }
-  }
+  //   if (this.shipmenttwo === false) {
+  //     this.image4 = 'assets/img/expandarrows.svg';
+  //   } else {
+  //     this.image4 = 'assets/img/expandarrows.svg';
+  //   }
+  // }
   expandOrderHistoryDiv() {
     this.orderhistory = !this.orderhistory;
 

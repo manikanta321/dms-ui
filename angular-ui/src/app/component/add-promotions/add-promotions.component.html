@@ -202,7 +202,7 @@
                                                 <div class="collapsible border border-success" (click)="addItems(i)">
                                                     <div class="row">
                                                         <div class="col-10">
-                                                            <p class="expn-t">{{ addbuyg.productselectedRows.length ===0
+                                                            <p class="expn-t">{{ addbuyg.productselectedRows?.length ===0
                                                                 ? 'Select the Items' :
                                                                 addbuyg.productselectedRows.length + ' Items Selected'
                                                                 }}</p>
@@ -349,7 +349,7 @@
                                         <div class="buyoneSet  border border-success">
                                             <div class="buy-set-1"
                                                 *ngFor="let addbuyg1 of addbuyset[i].BuyGroups; let j=index">
-                                                <div class="row">
+                                                <!-- <div class="row">
                                                     <div class="col-10 buyGrp-h">
                                                         <h5 class="item-header"><b>Buy </b>group {{j+1}}</h5>
                                                     </div>
@@ -362,11 +362,25 @@
                                                         <img src="assets/img/minus.png" class="plus-image"
                                                             alt="plus-btn">
                                                     </div>
-                                                </div>
+                                                </div> -->
 
                                                 <div class="row">
                                                     <div class="productlevel col-12">
-                                                        <label>Item Level<span class="astr">*</span></label>
+                                                        <div class="row d-flex justify-content-evenly">
+                                                            <div class="col-10 buyGrp-h">
+                                                                <h5 class="item-header">Buy group {{j+1}}</h5>
+                                                            </div>
+                                                            <div class="col-2 plsImg" (click)="addsubbuy(i,j)" *ngIf="j==0">
+                                                                <img src="assets/img/plus.png" class="plus-image"
+                                                                    alt="plus-btn">
+                                                            </div>
+                                                            <div class="col-2 plsAdd" (click)="removebuyGroup1(i,j)"
+                                                                *ngIf="j>=1">
+                                                                <img src="assets/img/minus.png" class="plus-image"
+                                                                    alt="plus-btn">
+                                                            </div>
+                                                        </div>
+                                                        <!-- <label>Item Level<span class="astr">*</span></label> -->
                                                         <div class="collapsible  border border-success"
                                                             (click)="addItems1(i,j)">
                                                             <div class="row">
@@ -380,8 +394,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-10">
-                                                        <label>Items<span class="astr">*</span></label>
+                                                    <div class="col-12 mt-2">
+                                                        <!-- <label>Items<span class="astr">*</span></label> -->
                                                         <mat-card class="list-item  border border-success"
                                                             [ngClass]="{ 'input-error': !addbuyset[i].BuyGroups[j].isDataValid}">
                                                             <mat-card-content class="item-in-box">
@@ -398,20 +412,20 @@
                                                             </mat-card-content>
                                                         </mat-card>
                                                     </div>
-                                                    <div class="col-2 qtyalign">
-                                                        <label>Qty<span class="astr">*</span></label>
+                                                    <div class="col-12 qtyalign mt-1 ml-3">
+                                                        <!-- <label>Qty<span class="astr">*</span></label>
                                                         <input type="number" class="qty-box  border border-success"
                                                             value="{{qtyMaxNum}}" id=qty name="qty{{i}}.BuyGroups{{j}}"
                                                             (keyup)="promotionABSetChange()"
                                                             [ngClass]="{ 'input-error': !addbuyset[i].BuyGroups[j].isDataValid}"
-                                                            [(ngModel)]="addbuyset[i].BuyGroups[j].MaxVolume">
-                                                        <label>moq<span class="astr">*</span></label>
+                                                            [(ngModel)]="addbuyset[i].BuyGroups[j].MaxVolume"> <span class="astr">*</span> -->
+                                                        <label *ngIf="!showConsolidatedMOQ">Minimum Order Quantity :</label>
                                                         <input type="number" class="mty-box  border border-success"
-                                                            value="{{MoqMaxNum}}" id=moq name="moq{{j}}"
+                                                            value="{{MoqMaxNum}}" id=moq name="moq{{j}}" placeholder="Enter here..."
                                                             name="qty1{{i}}.BuyGroups1{{j}}"
                                                             (keyup)="promotionABSetChange()"
                                                             [ngClass]="{ 'input-error': !addbuyset[i].BuyGroups[j].isDataValid}"
-                                                            [(ngModel)]="addbuyset[i].BuyGroups[j].MOQ">
+                                                            [(ngModel)]="addbuyset[i].BuyGroups[j].MOQ" *ngIf="!showConsolidatedMOQ">
                                                     </div>
 
                                                 </div>
@@ -459,7 +473,7 @@
                                         <div class="buyoneSet  border border-success">
                                             <div class="getSet1"
                                                 *ngFor="let addget of addgetset[i].GetGroups; let j=index">
-                                                <div class="row">
+                                                <!-- <div class="row">
                                                     <div class="col-10 buyGrp-h">
                                                         <h5 class="item-header"><b>Get </b>group {{j+1}}</h5>
                                                     </div>
@@ -472,11 +486,25 @@
                                                         <img src="assets/img/minus.png" class="plus-image"
                                                             alt="plus-btn">
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                
                                                 <div class="row">
                                                     <div class="productlevel col-12">
-                                                        <label>Item Level<span class="astr">*</span></label>
+                                                        <div class="row">
+                                                            <div class="col-10 buyGrp-h">
+                                                                <h5 class="item-header">Get group {{j+1}}</h5>
+                                                            </div>
+                                                            <div class="col-2 plsImg" (click)="addsubGetbuy(i,j)" *ngIf="j==0">
+                                                                <img src="assets/img/plus.png" class="plus-image"
+                                                                    alt="plus-btn">
+                                                            </div>
+                                                            <div class="col-2 plsAdd" (click)="removeGetGroup(i,j)"
+                                                                *ngIf="j>=1">
+                                                                <img src="assets/img/minus.png" class="plus-image"
+                                                                    alt="plus-btn">
+                                                            </div>
+                                                        </div>
+                                                        <!-- <label>Item Level<span class="astr">*</span></label> -->
                                                         <div class="collapsible  border border-success"
                                                             (click)="addItems1forGetGroup(i,j)">
                                                             <div class="row ">
@@ -490,9 +518,9 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="row">
-                                                    <div class="col-10">
-                                                        <label>Items<span class="astr">*</span></label>
+                                                <div class="row mt-2">
+                                                    <div class="col-12">
+                                                        <!-- <label>Items<span class="astr">*</span></label> -->
                                                         <mat-card class="list-item  border border-success"
                                                             [ngClass]="{ 'input-error': !addgetset[i].GetGroups[j].isDataValid}">
                                                             <mat-card-content class="item-in-box">
@@ -510,13 +538,21 @@
                                                             </mat-card-content>
                                                         </mat-card>
                                                     </div>
-                                                    <div class="col-2 qtyalign">
-                                                        <label>Qty<span class="astr">*</span></label>
+                                                    <div class="col-12 qtyalign mt-1 ml-3">
+                                                        <!-- <label>Qty<span class="astr">*</span></label>
                                                         <input type="number" class="qty-box  border border-success"
                                                             placeholder="1" value="{{qtyMaxNum}}" id=qty
                                                             name="qty1{{i}}.q2{{j}}" (keyup)="promotionABGetChange()"
                                                             [ngClass]="{ 'input-error': !addgetset[i].GetGroups[j].isDataValid}"
-                                                            required [(ngModel)]="addgetset[i].GetGroups[j].MaxVolume">
+                                                            required [(ngModel)]="addgetset[i].GetGroups[j].MaxVolume"> <span class="astr">*</span> -->
+                                                            
+                                                            <label *ngIf="!showConsolidatedMOQ">Minimum Get Quantity:</label>
+                                                         <input type="number" class="mty-box  border border-success"
+                                                            value="{{MoqMaxNum}}" id=moq name="moq{{j}}" placeholder=" Enter here..."
+                                                            name="qty1{{i}}.BuyGroups1{{j}}"
+                                                            (keyup)="promotionABSetChange()"
+                                                            [ngClass]="{ 'input-error': !addbuyset[i].BuyGroups[j].isDataValid}"
+                                                            [(ngModel)]="addbuyset[i].BuyGroups[j].MOQ" *ngIf="!showConsolidatedMOQ">
                                                     </div>
                                                 </div>
 

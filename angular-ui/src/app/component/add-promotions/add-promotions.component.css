@@ -617,10 +617,10 @@ li {
   background: #FFFFFF;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  width: 48px;
+  border-radius: 8px;
+  /* width: 48px; */
   height: 43px;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .expn-t {

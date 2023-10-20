@@ -17,8 +17,7 @@
                 <div class="col-md-2">
                     <b>Status 
                         <span class="tooltip-content"
-                        matTooltip="Partial Received  
-                        Dealer has recceived partial of all the items in the PO."
+                        matTooltip={{shipmentArray.statusDetals}}
                         matTooltipPosition="above"
                         aria-label="Button that displays a tooltip in various positions"
                         class="custom-tooltip">
@@ -136,29 +135,27 @@
                                 </div> -->
                             </div>
                         </div>
-                        <div class="content " *ngIf="!orderitem">
+                        <div class="content" *ngIf="!orderitem">
                             <div class="section mt-1">
-                                <table class="shipmentOnes">
-                                    <thead>
-                            
-                                        <tr class="paddinginth">
-                                            <th>Product Code</th>
-                                            <th>Product Name</th>
-                                            <th>Price</th>
-                                            <th>Discount Price </th>
-                                            <th>Qty</th>
-                                            <th>Sub-Total</th>
-                                            <!-- <th>Final Value</th>
-                                                                        <th>Tax</th>
-                                                                        <th>Amount</th> -->
-                                        </tr>
-                                    </thead>
-                            
-                                    <tbody class="shipmentOnes" *ngFor="let data of itemsArray; let i = index">
-                                        <tr [ngClass]="{'expanded': allExpanded}">
-                                            <td [attr.colspan]="12">
-                                              <h5 class="card-header m-0 p-1" (click)="toggleRowVisibility(i)" style="cursor: pointer">
-                                                <span class="collapse-icon" [ngClass]="{ 'collapsed': allExpanded }">
+                              <table class="shipmentOnes">
+                                <thead>
+                                  <tr class="paddinginth">
+                                    <th>Product Code</th>
+                                    <th>Product Name</th>
+                                    <th>Price</th>
+                                    <th>Discount Price</th>
+                                    <th>Qty</th>
+                                    <th>Sub-Total</th>
+                                  </tr>
+                                </thead>
+                          
+                                <tbody class="shipmentOnes">
+                                    <ng-container *ngFor="let data of itemsArray; let i = index">
+                                        <ng-container *ngIf="i === 0 || data.promo !== itemsArray[i - 1].promo">
+                                          <tr>
+                                            <td [attr.colspan]="6">
+                                              <h5 class="card-header m-0 p-1" (click)="toggleRowVisibility(data.promo)" style="cursor: pointer">
+                                                <span class="collapse-icon" [ngClass]="{ 'collapsed': !promoVisibility[data.promo] }">
                                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                                     class="bi bi-chevron-down" viewBox="0 0 16 16">
                                                     <path fill-rule="evenodd"
@@ -169,82 +166,64 @@
                                               </h5>
                                             </td>
                                           </tr>
-                                          <tr *ngIf="allExpanded">
-                                            <td class="IteminputBoxes">
-                                                <label >{{data.uomname}}</label>
-                                            </td>
-                                            <td class="IteminputBoxes">
-                                                <label >{{data.stockitemname}}</label>
-                                            </td>
-                                            <td class="IteminputBoxes">
-                                                <label > ${{data.price}}</label>
-                                            </td>
-                                            <td class="IteminputBoxes">
-                                                <label > ${{data.finalValue}}</label>
-                                            </td>
-                                            <td class="IteminputBoxes">
-                                                <label >{{data.quantity}}</label>
-                                            </td>
-                                            <td class="IteminputBoxes">
-                                                <label >${{data.amount}}</label>
-                                            </td>  
+                                        </ng-container>
+                                        <tr *ngIf="!promoVisibility[data.promo]">
+                                          <td class="IteminputBoxes">
+                                            <label>{{data.uomname}}</label>
+                                          </td>
+                                          <td class="IteminputBoxes">
+                                            <label>{{data.stockitemname}}</label>
+                                          </td>
+                                          <td class="IteminputBoxes">
+                                            <label>$ {{data.price}}</label>
+                                          </td>
+                                          <td class="IteminputBoxes">
+                                            <label>$ {{data.finalValue}}</label>
+                                          </td>
+                                          <td class="IteminputBoxes">
+                                            <label>{{data.quantity}}</label>
+                                          </td>
+                                          <td class="IteminputBoxes">
+                                            <label>${{data.amount}}</label>
+                                          </td>
                                         </tr>
-                                    </tbody>
-                                    <tr class="card-header ml-2">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><b>Total</b></td>
-                                        <td><b></b></td>
-                                        <td><b> ${{shipmentArray.subTotal}}</b></td>
-                                    </tr>
-                                </table>
+                                      </ng-container>
+                                      
+                                      
+                                </tbody>
+                                <tr class="card-header ml-2">
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td><b>Total</b></td>
+                                  <td class="IteminputBoxes"><b> ${{shipmentArray.orderedQty}}</b></td>
+                                  <td class="IteminputBoxes"><b>$ {{shipmentArray.subTotal}}</b></td>
+                                </tr>
+                              </table>
                             </div>
                             <div class="row mt-3 mb-2">
-                                <table class="totall table table-striped p-3">
-                                    <tr class="subitem">
-                                      <td class="text-left SUBITEMNAME">Subtotal</td>
-                                      <td class="text-right numbers">${{shipmentArray.subTotal}}</td>
-                                    </tr>
-                                    <tr class="subitem">
-                                      <td class="text-left SUBITEMNAME">Packing Charge</td>
-                                      <td class="text-right numbers">${{shipmentArray.taxElement}}</td>
-                                    </tr>
-                                    <tr class="subitem">
-                                      <td class="text-left SUBITEMNAME">Shipping Charge</td>
-                                      <td class="text-right numbers">${{shipmentArray.pakingCharge}}</td>
-                                    </tr>
-                                    <tr class="subitem">
-                                      <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';">Total</td>
-                                      <td class="text-right numbers">${{shipmentArray.total}}</td>
-                                    </tr>
-                                  </table>
-                                <!-- <div class="totall">
-                                    <div class="innerTotal d-flex">
-                                        <div class="subitem">
-                                            <p class="alltotals">Sub Total</p>
-                                            <span>{{shipmentArray.subTotal}}</span>
-                                        </div>
-                                        <div class="subitem">
-                                            <p class="alltotals">Tax Element</p>
-                                            <span>{{shipmentArray.taxElement}}</span>
-                                        </div>
-                                        <div class="subitem">
-                                            <p class="alltotals">Packing Charge</p>
-                                            <span>{{shipmentArray.pakingCharge}}</span>
-                                        </div>
-                                        <div class="subitem">
-                                            <p class="alltotals">Shipping Charge</p>
-                                            <span id="totallssss1">{{shipmentArray.shipingcharge}}</span>
-                                        </div>
-                                        <div class="subitem total_total">
-                                            <p class="alltotals totaltotal">Total</p>
-                                            <span id="totallssss">{{shipmentArray.total}}</span>
-                                        </div>
-                                    </div>
-                                </div> -->
+                              <table class="totall table table-striped p-3">
+                                <tr class="subitem">
+                                  <td class="text-left SUBITEMNAME">Subtotal</td>
+                                  <td class="text-right numbers">${{shipmentArray.subTotal}}</td>
+                                </tr>
+                                <tr class="subitem">
+                                  <td class="text-left SUBITEMNAME">Packing Charge</td>
+                                  <td class="text-right numbers">${{shipmentArray.taxElement}}</td>
+                                </tr>
+                                <tr class="subitem">
+                                  <td class="text-left SUBITEMNAME">Shipping Charge</td>
+                                  <td class="text-right numbers">${{shipmentArray.pakingCharge}}</td>
+                                </tr>
+                                <tr class="subitem">
+                                  <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';">Total</td>
+                                  <td class="text-right numbers">${{shipmentArray.total}}</td>
+                                </tr>
+                              </table>
                             </div>
-                        </div>
+                          </div>
+                          
+                        
                     </div>
                   
                 
@@ -289,16 +268,6 @@
                  Edit
               </button>
              </div> 
-
-
-                  
-
-
-                  
-                  
-              
-              
-
               </ng-template>
             </mat-tab>
             <!--shipments  -->
@@ -319,10 +288,11 @@
                             </thead>
                             <tbody>
                               <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <td>{{shipmentArray.orderedQty}}</td>
+                                <td>{{shipmentArray.inTransitQty}}</td>
+                                <td>{{shipmentArray.yetToShipQty}}</td>
+                                <td>{{shipmentArray.receivedQty}}</td>
+                                <td>{{shipmentArray.yetToReceiveQty}}</td>
                               </tr>
                             </tbody>
                         </table>
@@ -338,17 +308,87 @@
                             </thead>
                             <tbody>
                               <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <td>{{shipmentArray.totalOrderedValue}}</td>
+                                <td>{{shipmentArray.inTransitValue}}</td>
+                                <td>{{shipmentArray.yetToShipValue}}</td>
+                                <td>{{shipmentArray.receivedOrderValue}}</td>
+                                <td>{{shipmentArray.yetToReceiveValue}}</td>
                               </tr>
                             </tbody>
                         </table>
                     </div>
                   </div>
 
-                <div class="top-bottom" *ngFor="let data of currentShipArray;let i =index">
+                  <div class="card mt-3 mb-2" *ngFor="let data of currentShipArray; let i = index">
+                    <div class="card-header" style="background: rgba(1, 139, 117, 1); color: white;" (click)="expandShipmentTwoDiv(data.shipName)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-chevron-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                        {{data.shipName}}</div>
+                    <div class="card-body p-0">
+                        <div class="" *ngIf="!shipmenttwo && !shipmentVisibility[data.shipName]">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Product Code</th>
+                                        <th scope="col">Product Name</th>
+                                        <th scope="col">Total Ordered Qty</th>
+                                        <th scope="col">Received Ordered Qty</th>
+                                        <th scope="col">Balance Ordered Qty</th>
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let items of data.arrayIside; let j = index">
+                                    <ng-container *ngIf="j >= 1 ? (items?.promocode !== data?.arrayIside[j - 1]?.promocode) : (j === 0)">
+                                        <tr style="background: rgba(0,0,0,.03);">
+                                            <td colspan="5">
+                                                <span class="promoItem">{{items.promocode}}-{{items.promotionTypesNmae}}</span>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                    <tr>
+                                        <td>
+                                            <label class="IteminputBoxes">{{items.productSKUName}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{items.stockitemname}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{items.quantity}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{items.receivedQty}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{items.discount}}</label>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col-lg-11" *ngIf="ViewOrReceive && data.currentReceiveshipment">
+                                    <div>
+                                        <label class="dispatchC">Receipt Comment</label>
+                                        <br>
+                                        <input type="text" placeholder="Enter any comments" class="dispatchComments" [(ngModel)]="ReceiptComments">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row ship end" *ngIf="data.currentReceiveshipment && ViewOrReceive">
+                                <div class="col-lg-6">
+                                    <button type="button" class="saveas-draft" (click)="saveShipment('save')">Save</button>
+                                </div>
+                                <div class="col-lg-6">
+                                    <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <!-- <div class="top-bottom" *ngFor="let data of currentShipArray;let i =index">
                     <div class="collapsible" (click)="expandShipmentTwoDiv()">
                         <div class="row">
                             <div class="col-lg-5">
@@ -362,7 +402,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="content-shp-3" *ngIf="!shipmenttwo">
+                    <div class="content-shp-3" *ngIf="!shipmenttwo"> -->
                         <!-- <div class="row"> -->
                             <!-- <div class="col-lg-3 fontweight">
                                 <label class="label2">Invoice No<span class="astr">*</span></label>
@@ -426,17 +466,70 @@
     
                             </div> -->
                         <!-- </div> -->
-                        <div class="section mt-1">
-                            <table >
+                        <!-- <div class="section mt-1">
+                            <table class="table">
                                 <thead>
                                     <tr>
-                                      <th scope="col">Product Code</th>
-                                      <th scope="col">Product Name</th>
-                                      <th scope="col">Total Ordered Qty</th>
-                                      <th scope="col">Recevied Ordered Qty</th>
-                                      <th scope="col">Balance Ordered Qty</th>
+                                      <th>Product Code</th>
+                                      <th>Product Name</th>
+                                      <th>Total Ordered Qty</th>
+                                      <th>Recevied Ordered Qty</th>
+                                      <th>Balance Ordered Qty</th>
                                     </tr>
                                   </thead>
+                                  <tbody *ngFor="let items of data.arrayIside;let j=index">
+                                    <tr>
+                                        <td>
+                                            <p class="itemLeft"><span *ngIf="j>=1? items?.promocode !=  data?.arrayIside[j-1]?.promocode:j==0"
+                                                    class="promoItem">{{items.promocode}}-{{items.promotionTypesNmae}}</span> <span
+                                                    style="color: transparent;">..</span>
+                                                <span style="color: transparent;" *ngIf="j>=1? items?.promocode ==  data?.arrayIside[j-1]?.promocode:''">......</span>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr >
+                                        <td>
+                                            <label class="IteminputBoxes">{{items.productSKUName}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{items.stockitemname}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{items.quantity}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{items.receivedQty}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{items.discount}}</label>
+                                        </td> -->
+                                        <!-- <td>
+                                            <label class="IteminputBoxes">{{items.finalValue}}</label>
+                                        </td> -->
+                                        <!-- <td>
+                                            <label class="IteminputBoxes">{{items.taxvalue}}</label>
+                                        </td>
+                                        <td>
+                                            <label class="IteminputBoxes">{{items.amount}}</label>
+                                        </td>
+                                        <td>
+                                            <input type="number" [(ngModel)]="currentShipArray[i].arrayIside[j].shipedQty"
+                                                class="ShipmentinputBoxes" disabled>
+                                        </td>
+                                        <td>
+                                            <input type="number" [(ngModel)]="currentShipArray[i].arrayIside[j].ReceivedQty"
+                                                placeholder="Enter Quantity"
+                                                [disabled]="data.currentReceiveshipment==false  ||  ViewOrReceive==false"
+                                                [ngClass]="[currentShipArray[i].arrayIside[j].ReceivedQty>currentShipArray[i].arrayIside[j].shipedQty && data.currentReceiveshipment==true?'ShipmentinputBoxes3':'ShipmentinputBoxes1',data.currentReceiveshipment==false || ViewOrReceive==false?'ShipmentinputBoxes4':'ShipmentinputBoxes1']" 
+                                                (keyup)="shipingNow()">
+                                        </td>
+                                        <td>
+                                            <input type="number" class="ShipmentinputBoxes" [(ngModel)]="currentShipArray[i].arrayIside[j].LostDamaged" disabled>
+                                        </td> -->
+                                        <!-- <mat-icon class="removeCircle" (click)=removeItem()>
+                                    remove_circle</mat-icon> -->
+                                    <!-- </tr>
+                                  </tbody> -->
                                 <!-- <tr>
                                     <th class="paddinginth">Item</th>
                                     <th class="paddinginth">UoM</th>
@@ -451,59 +544,9 @@
                                     <th class="paddinginth">Received Qty</th>
                                     <th class="paddinginth">Lost/ Damaged</th>
                                 </tr> -->
-                                <tr  *ngFor="let items of data.arrayIside;let j=index">
-                                    <td>
-                                        <p class="itemLeft"><span
-                                                *ngIf="j>=1? items?.promocode !=  data?.arrayIside[j-1]?.promocode:j==0"
-                                                class="promoItem">{{items.promocode}}</span> <span
-                                                style="color: transparent;">..</span>
-                                            <span style="color: transparent;"
-                                                *ngIf="j>=1? items?.promocode ==  data?.arrayIside[j-1]?.promocode:''">......</span>{{items.stockitemname}}
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <label class="IteminputBoxes">{{items.uomname}}</label>
-                                    </td>
-                                    <td>
-                                        <label class="IteminputBoxes">{{items.quantity}}</label>
-                                    </td>
-                                    <td>
-                                        <label class="IteminputBoxes">{{items.stock}}</label>
-                                    </td>
-                                    <td>
-                                        <label class="IteminputBoxes">{{items.price}}</label>
-                                    </td>
-                                    <td>
-                                        <label class="IteminputBoxes">{{items.discount}}</label>
-                                    </td>
-                                    <td>
-                                        <label class="IteminputBoxes">{{items.finalValue}}</label>
-                                    </td>
-                                    <td>
-                                        <label class="IteminputBoxes">{{items.taxvalue}}</label>
-                                    </td>
-                                    <td>
-                                        <label class="IteminputBoxes">{{items.amount}}</label>
-                                    </td>
-                                    <td>
-                                        <input type="number" [(ngModel)]="currentShipArray[i].arrayIside[j].shipedQty"
-                                            class="ShipmentinputBoxes" disabled>
-                                    </td>
-                                    <td>
-                                        <input type="number" [(ngModel)]="currentShipArray[i].arrayIside[j].ReceivedQty"
-                                            placeholder="Enter Quantity"
-                                            [disabled]="data.currentReceiveshipment==false  ||  ViewOrReceive==false"
-                                            [ngClass]="[currentShipArray[i].arrayIside[j].ReceivedQty>currentShipArray[i].arrayIside[j].shipedQty && data.currentReceiveshipment==true?'ShipmentinputBoxes3':'ShipmentinputBoxes1',data.currentReceiveshipment==false || ViewOrReceive==false?'ShipmentinputBoxes4':'ShipmentinputBoxes1']" 
-                                            (keyup)="shipingNow()">
-                                    </td>
-                                    <td>
-                                        <input type="number" class="ShipmentinputBoxes" [(ngModel)]="currentShipArray[i].arrayIside[j].LostDamaged" disabled>
-                                    </td>
-                                    <!-- <mat-icon class="removeCircle" (click)=removeItem()>
-                                remove_circle</mat-icon> -->
-                                </tr>
-                            </table>
-                        </div>
+                                
+                            <!-- </table>
+                        </div> -->
                         <!-- <div class="row mt-2">
                             <div class="totall">
                                 <div class="innerTotal d-flex">
@@ -530,7 +573,7 @@
                                 </div>
                             </div>
                         </div> -->
-                        <br>
+                        <!-- <br> -->
                         <!-- <div class="row">
                             <div class="col-lg-11">
                                 <div>
@@ -540,7 +583,7 @@
                                 </div>
                             </div>
                         </div> -->
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-lg-11" *ngIf="ViewOrReceive && data.currentReceiveshipment">
                                 <div>
                                     <label class="dispatchC">Receipt Comment</label>
@@ -559,9 +602,10 @@
                                 <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
-                </div> <div class="d-flex justify-content-center mt-3" >
+                <!-- </div>  -->
+                <div class="d-flex justify-content-center mt-3" >
                     <button class="btn ps-5 pe-5 pt-1 pb-1"
                    style="background: rgba(1, 139, 117, 1); width: 171px; height: 44px;color: white;"
                 [disabled]="!checkstatus"

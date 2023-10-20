@@ -191,18 +191,6 @@
     margin-top: -51px;
   }
   
-
-
-  td {
-    /* text-align: right; */
-    padding: 0px 0 0 15px;
-  }
-  th{
-    /* text-align: right; */
-    /* padding: 0px 0 0 15px; */
-  }
-  
-  
   .mat-horizontal-stepper-wrapper {
     margin-top: -47px;
   
@@ -1297,9 +1285,9 @@ padding-left: 20px;
     /* width: 100px;
     height: 30px; */
     background: none;
-    font-size: 13px;
-    text-align: start;
-    padding-left: 20px;
+    /* font-size: 13px; */
+    text-align: center;
+    /* padding-left: 20px; */
     position: relative;
     top: 2px;
   }
@@ -1594,6 +1582,7 @@ padding-left: 20px;
     padding: 2px 3px 5px 30px;
     font-family: 'Gilroy-Bold';
     font-size: 14px;
+    text-align: center;
   }
   .fontweight
   {

@@ -320,12 +320,9 @@
                   </div>
 
                   <div class="card mt-3 mb-2" *ngFor="let data of currentShipArray; let i = index">
-                    <div class="card-header" style="background: rgba(1, 139, 117, 1); color: white;" (click)="expandShipmentTwoDiv(data.shipName)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-chevron-down" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-                        </svg>
+                    <!-- {{data|json}} -->
+                    <div class="card-header" style="background: rgba(1, 139, 117, 1); color: white;">
+                        
                         {{data.shipName}}</div>
                     <div class="card-body p-0">
                         <div class="" *ngIf="!shipmenttwo && !shipmentVisibility[data.shipName]">
@@ -340,14 +337,21 @@
                                     </tr>
                                 </thead>
                                 <tbody *ngFor="let items of data.arrayIside; let j = index">
+
                                     <ng-container *ngIf="j >= 1 ? (items?.promocode !== data?.arrayIside[j - 1]?.promocode) : (j === 0)">
                                         <tr style="background: rgba(0,0,0,.03);">
-                                            <td colspan="5">
-                                                <span class="promoItem">{{items.promocode}}-{{items.promotionTypesNmae}}</span>
+                                            <td colspan="5" (click)="toggleRow(items.promocode)">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                                    class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd"
+                                                        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                                </svg> &nbsp;
+                                                <span class="">{{items.promocode}}-{{items.promoName}}</span>
                                             </td>
                                         </tr>
                                     </ng-container>
-                                    <tr>
+                                    <!-- {{items|json}} -->
+                                    <tr *ngIf="expandedPromocode !== items.promocode">
                                         <td>
                                             <label class="IteminputBoxes">{{items.productSKUName}}</label>
                                         </td>
@@ -358,10 +362,10 @@
                                             <label class="IteminputBoxes">{{items.quantity}}</label>
                                         </td>
                                         <td>
-                                            <label class="IteminputBoxes">{{items.receivedQty|number}}</label>
+                                            <label class="IteminputBoxes">{{items.ReceivedQty}}</label>
                                         </td>
                                         <td>
-                                            <label class="IteminputBoxes">{{items.balanceQty|number}}</label>
+                                            <label class="IteminputBoxes">{{items.balanceQty}}</label>
                                         </td>
                                     </tr>
                                 </tbody>

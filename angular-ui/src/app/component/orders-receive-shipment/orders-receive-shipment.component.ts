@@ -281,7 +281,9 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
             element1.itemDetailsshipReceive.forEach((element2) => {
               let obj = {
                 promocode: element1.promocode,
+                promoName:element1.promotionTypesNmae,
                 InvoiceCPOProductId: element2.invoiceCPOProductId,
+                balanceQty:element2.balanceQty,
                 ReceivedQty: element2.receivedQty,
                 LostDamaged: element2.lostDamaged,
                 stockitemid: element2.stockitemid,
@@ -401,7 +403,9 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
             element1.itemDetailsshipReceive.forEach((element2) => {
               let obj = {
                 promocode: element1.promocode,
+                promoName:element1.promotionTypesNmae,
                 InvoiceCPOProductId: element2.invoiceCPOProductId,
+                balanceQty:element2.balanceQty,
                 ReceivedQty: element2.receivedQty,
                 LostDamaged: element2.lostDamaged,
                 stockitemid: element2.stockitemid,
@@ -522,7 +526,9 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
             element1.itemDetailsshipReceive.forEach((element2) => {
               let obj = {
                 promocode: element1.promocode,
+                promoName:element1.promotionTypesNmae,
                 InvoiceCPOProductId: element2.invoiceCPOProductId,
+                balanceQty: element2.balanceQty,
                 ReceivedQty: element2.receivedQty,
                 LostDamaged: element2.lostDamaged,
                 stockitemid: element2.stockitemid,
@@ -601,7 +607,20 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
     }
     this.viewOrderData();
   }
+//   expandedRows: { [key: number]: boolean } = {};
+//   toggleRow(index: number): void {
+//     this.expandedRows[index] = !this.expandedRows[index];
+// }
 
+expandedPromocode: string = '';
+
+    toggleRow(promocode: string): void {
+        if (this.expandedPromocode === promocode) {
+            this.expandedPromocode = ''; // Close the currently open rows
+        } else {
+            this.expandedPromocode = promocode; // Open the rows for the selected promocode
+        }
+    }
   ngOnChanges(): void {
     this.status = this.shipmentArray.status;
     console.log("staus", this.status )
@@ -615,10 +634,6 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
   
   toggleRowVisibility(promo: number) {
     this.promoVisibility[promo] = !this.promoVisibility[promo];
-  }
-  
-  expandShipmentTwoDiv(shipName: string): void {
-    this.shipmentVisibility[shipName] = !this.shipmentVisibility[shipName];
   }
   
   viewOrderData() {

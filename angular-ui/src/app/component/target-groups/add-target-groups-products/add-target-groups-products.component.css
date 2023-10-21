@@ -167,7 +167,7 @@ margin-right: 15px;
 .ref{
   border: 1px solid black;
   border-radius: 10px;
-  background: black;
+  background: #686E74;
   margin-left: -5px;
   width: 43px;
   padding: 8px 0px 0px 10px;
@@ -180,7 +180,7 @@ margin-right: 15px;
   cursor: pointer;
   color: white !important;
 }
-.searchButton {
+/* .searchButton {
   display: bolck;
   color: #FFFFFF;
   float: left;
@@ -193,19 +193,19 @@ margin-right: 15px;
   align-items: center;
   transition: 0.2s;
   border: none;
-}
+} */
 
-.searchBox:hover>.searchButton,
+/* .searchBox:hover>.searchButton,
 .searchBox>.searchInput,
 .search-btn {
   display: none;
-}
+} */
 
-.searchBox {
+/* .searchBox {
   float: right;
-  /* position: absolute;
+   position: absolute;
   left: 94%;
-  top: 6px; */
+  top: 6px; 
 }
 .searchBox:hover >.searchButton {
   display:block;
@@ -247,13 +247,13 @@ margin-right: 15px;
   color: #263643;
   box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
   /* // transition: 0.2s  ease-in-out; */
-  position: absolute;
+  /* position: absolute;
   right: 0px;
-  bottom: -3px;
-}
-.searchBox {
+  bottom: -3px; */
+/* } */
+/* .searchBox {
   top: 6px;
-}
+}  */
 .pagination {
   float:right !important;
 }
@@ -485,4 +485,131 @@ padding: 17px;
   margin-right: -1px;
   padding-left: 5px;
   padding-top: 1px;
+}
+
+
+.searchBox {
+
+  float: right;
+
+  position: absolute;
+
+  right: 16px;
+
+  top: -33px;
+
+}
+
+ 
+
+.searchButton {
+
+  display: block;
+
+  color: #000;
+
+  float: left;
+
+  width: 42px;
+
+  height: 42px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  transition: 0.2s;
+
+  background: none;
+
+  position: relative;
+
+  right: 257px;
+
+  top: -4px;
+
+  border: none;
+
+  border-radius: 13%;
+
+  transition: 0.2s;
+
+}
+
+ 
+
+ 
+
+ 
+
+.search-btn {
+
+  display: block;
+
+  height: 26px;
+
+  border: none;
+
+  background: #686E74;
+
+  color: white;
+
+  border-radius: 5px;
+
+  position: absolute;
+
+  right: 10px;
+
+  top: 4px;
+
+ 
+
+}
+
+ 
+
+ 
+
+.searchInput {
+
+  display: block;
+
+  width: 300px;
+
+  height: 43px;
+
+  background: #FFFFFF;
+
+  float: left;
+
+  padding: 5px 32px 6px;
+
+  border-radius: 10px;
+
+  font-family: 'Gilroy-medium';
+
+  font-style: normal;
+
+  font-weight: 500;
+
+  font-size: 12px;
+
+  line-height: 17px;
+
+  letter-spacing: 0.08em;
+
+  color: #263643;
+
+  box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+
+  position: absolute;
+
+  right: 0px;
+
+  bottom: -3px;
+
+  top: -5px;
+
 }

@@ -73,6 +73,9 @@
 ::ng-deep.shipment .mat-select-arrow-wrapper{
  /* background-image: url('/assets/img/calenderImage.svg') !important; */
  content: url(../../../../assets/img/Calendar.svg);
+ height:21px;
+ position: relative;
+ top: 4px;
 }
 .sales-refreshbtn {
     filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));

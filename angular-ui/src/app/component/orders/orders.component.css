@@ -49,6 +49,7 @@ mat-sidenav-content{
     height: 100vh;
     border-radius: 35px;  
     padding: 10px;
+    overflow-x: hidden;
     /* background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%); */
 }
 mat-sidenav-container {
@@ -219,8 +220,7 @@ top:3px;
    color: white;
     border-radius: 25px;
     font-size: 15px;
-     opacity: 1; 
-    background-color: rgba(1, 139, 117, 1) !important;
+    opacity: 1;
 }
 
 ::ng-deep .order-lab .mat-tab-label{

@@ -12,7 +12,7 @@ font-family: 'Gilroy-Bold';
 }
 .undo{
     padding: 5px 40px;
-    background: black;
+    background: #018B75;
     color: #fff;
     margin-right: 20px;
     /* border: #000000; */
@@ -23,8 +23,8 @@ font-family: 'Gilroy-Bold';
     cursor: pointer;
     }
 .exit{
-background: #fff;
-color: black;
+background:#018B75 ;
+color: white;
 padding: 5px 40px;
 border: 2px solid #000000;
 border-radius: 10px;

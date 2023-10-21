@@ -89,6 +89,7 @@ input {
 .update-btn {
      /* background: black;  */
     background-color:#018B75 ;
+    border: 2px solid #000000;
     color: white;
     width: 183px;
     height: 43px;
@@ -140,8 +141,9 @@ input {
 }
 
 .buttonDiv {
-    top: 15px;
+    top: 7px;
     position: relative;
+    left:6px;
 }
 
 .addCatDiv {

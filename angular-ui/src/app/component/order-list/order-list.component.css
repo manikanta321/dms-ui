@@ -1212,7 +1212,6 @@ mat-sidenav {
     height: 41px;
     margin-right: 10px;
     cursor: pointer;
-    margin-left: 471px;
 }
 
 .sales-add:hover {
@@ -1262,7 +1261,6 @@ mat-sidenav {
     width: 37px;
     height: 41px;
     cursor: pointer;
-    /* margin-left: 0px; */
 }
 
 .sales-dwnld:hover {
@@ -1272,8 +1270,10 @@ mat-sidenav {
 
 .imgdwnl {
     position: relative;
-    height: inherit;
-    width: 97%;
+    top: 1px;
+    left: 1px;
+    height: 39px;
+    width: 36px
 }
 
 .searchButton {
@@ -1386,7 +1386,6 @@ mat-sidenav {
     display: block;
     height: 26px;
     border: none;
-    /* background: #000000; */
     background: #686E74;
     color: white;
     border-radius: 5px;

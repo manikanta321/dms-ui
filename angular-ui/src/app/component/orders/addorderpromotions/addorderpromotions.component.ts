@@ -733,8 +733,8 @@ export class AddorderpromotionsComponent implements OnInit {
       x.isSelected = this.AddOrderPromotionData.findIndex(y => y.promotionId == x.productPromotionsId) !== -1;
     })
     this.getShippingandPackingcharges();
-    localStorage.removeItem('totalQuantity');
-    localStorage.removeItem('totalAmount'); 
+    // localStorage.removeItem('totalQuantity');
+    // localStorage.removeItem('totalAmount'); 
     
     // 4 Promotions
     localStorage.removeItem('ForthPromotionTotalAmount');
@@ -761,20 +761,20 @@ export class AddorderpromotionsComponent implements OnInit {
     this.getShippingandPackingcharges();
     this.clearQuantity();
     this.resetQuantity();
-    localStorage.removeItem('totalQuantity');
-    localStorage.removeItem('totalAmount');
+    // localStorage.removeItem('totalQuantity');
+    // localStorage.removeItem('totalAmount');
 
     // 1 Promotions Calculations
-    localStorage.removeItem('FirstPromotionCalculation');
-    localStorage.removeItem('FirstPromotionTotalAmountValue');
+    // localStorage.removeItem('FirstPromotionCalculation');
+    // localStorage.removeItem('FirstPromotionTotalAmountValue');
 
     // 4 Promotions Calculations
-    localStorage.removeItem('ForthPromotionCalculationsTotalQty');
-    localStorage.removeItem('ForthPromotionCalculationsAmount');
+    // localStorage.removeItem('ForthPromotionCalculationsTotalQty');
+    // localStorage.removeItem('ForthPromotionCalculationsAmount');
 
     // 3 Promotions calculations
-   localStorage.removeItem('ThreeePromotionCalculationsTotalQty');
-    localStorage.removeItem('ThreePromotionCalculationsAmount');
+  //  localStorage.removeItem('ThreeePromotionCalculationsTotalQty');
+  //   localStorage.removeItem('ThreePromotionCalculationsAmount');
 
    
   

@@ -310,8 +310,6 @@
                                         <td></td>
                                         <td></td>
                                         <td style="text-align: left;">{{Item.stockitemname}}</td>
-
-
                                         <td>
                                             <input type="text" disabled [(ngModel)]="Item.price" class="IteminputBoxes">
                                         </td>
@@ -319,13 +317,9 @@
                                             <input type="text" disabled [(ngModel)]="Item.discount"
                                                 [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'">
                                         </td>
-
                                         <td>
-                                            <input type="text" disabled [(ngModel)]="Item.quantity"
-                                                class="IteminputBoxes">
-
+                                            <input type="text" disabled [(ngModel)]="Item.quantity" class="IteminputBoxes">
                                         </td>
-
                                         <td>
                                             <input type="text" disabled [(ngModel)]="Item.finalValue"
                                                 class="IteminputBoxes">
@@ -340,7 +334,7 @@
                             </table>
                         </div>
                         <div class="row mt-2">
-                            
+
                             <table class="  TOTAL" *ngIf="shippingPackingchargeDetails">
                                 <tr>
                                     <td class="text-left SUBITEMNAME">Subtotal</td>
@@ -866,9 +860,6 @@
                     </div> 
 
                 </div> -->
-
-
-
             </div>
         </div>
 
@@ -905,15 +896,11 @@
             <div class="mai_n">
 
                 <div class=" promotionpopup-scroll3">
-
                     <div class="addUser">
-
                     </div>
                     <div class="head-t">
                         <h3 class="labelU font">{{actineLabel}} : Non-Promotions </h3>
-
                     </div>
-
                     <div class="nonproitemsconfiorm">
                         <div class="headingnonpro">
                             <span id="itemsnonheading">Non-Promotions Items</span>
@@ -963,23 +950,15 @@
                             <div class="headingcontent">
 
                                 <div class="row" style="margin-left: 0%;">
-                                    <div class="col" style="height:71px"
-                                        style="background-color: rgba(222, 226, 230, 0.2);height: 52px;">
-
+                                    <div class="col" style="height:71px" style="background-color: rgba(222, 226, 230, 0.2);height: 52px;">
                                         <label id="TotalORDER_qty" for="inputField">Total Order Qty</label>
-                                        <span id="Total_order_qty">
-                                            {{totalQuantity+quantityadd+ForthPromotionsSelectedQuantity+ThreePromotionTotalselectedQTY
-                                            }} </span>
-
-
+                                        <span id="Total_order_qty">{{totalQuantity+quantityadd+ForthPromotionsSelectedQuantity+ThreePromotionTotalselectedQTY}} </span>
                                     </div>
 
                                     <div class="col" style="background-color: rgba(222, 226, 230, 0.2);">
                                         <label id="TotalORDER_qty" for="inputField">Total Order Amount</label>
                                         <span
                                             id="Total_order_qty">{{totalAmount+price+ForthPromotionTotalAmount+ThreePromotionTotalAmount}}</span>
-
-
                                     </div>
 
                                     <div class="w-100"></div>
@@ -1004,44 +983,43 @@
                 </div>
                 <div class="nonpromo ">
                     <div class="row  mt-3  spacedropdown ">
-                        <div class="col-lg-10 "> 
+                        <div class="col-lg-10 ">
                             <div>
                                 <label class="productcodename">Product Name/Code</label>
                                 <label class="productcategory">Product Category</label>
                                 <label class="ProductGroup">Product Group</label>
                             </div>
-                           
+
                             <div class="row  ">
-                              
-                               
-                                <div class="col-md-3 col-lg-3 col-sm-3 Drop_ng dropdownborder custon-nonprobubbles" >
+                                <div class="col-md-3 col-lg-3 col-sm-3 Drop_ng dropdownborder custon-nonprobubbles">
                                     <div class="input-icons">
                                         <form [formGroup]="ProductnamecodeForm" class="dropDown-field dropdown_list"
-                                        style="width: 100%;">
-                                        <ng-multiselect-dropdown class="catty select_category" name="city"
-                                            [placeholder]="'Search by Name/Code'"  formControlName="citys"
-                                            [disabled]="disabled" [settings]="dropdownSettings11"
-                                            [data]=" toppingList1" (onSelect)="onProductcodenameSelect($event)"
-                                            (onDeSelect)="onProductCodeNameDeSelect($event)"
-                                            (onDeSelectAll)="onItemDeSelectOrAllProductNameCode($event)"
-                                            (onSelectAll)="onItemSelectOProductCodeName($event)">
-                                        </ng-multiselect-dropdown>
-                                        <div class="dropdown-placeholder catty-placeholder">
-                                            <span *ngIf="ProductnamecodeForm.get('citys').value.length == 0"
-                                                style="color:grey;"> Product Name/Code </span>
-                                            <span *ngIf="ProductnamecodeForm.get('citys').value.length == 1"
-                                                class="selected-placeholder">
-                                                {{ProductnamecodeForm.get('citys').value.length}} Selected Product  </span>
-                                            <span *ngIf="ProductnamecodeForm.get('citys').value.length > 1"
-                                                class="selected-placeholder">
-                                                {{ProductnamecodeForm.get('citys').value.length}} Selected Products 
-                                            </span>
-                                        </div>
-                                    </form>
-                                  </div>
-                                  </div>
-                            
-                               
+                                            style="width: 100%;">
+                                            <ng-multiselect-dropdown class="catty select_category" name="city"
+                                                [placeholder]="'Search by Name/Code'" formControlName="citys"
+                                                [disabled]="disabled" [settings]="dropdownSettings11"
+                                                [data]=" toppingList1" (onSelect)="onProductcodenameSelect($event)"
+                                                (onDeSelect)="onProductCodeNameDeSelect($event)"
+                                                (onDeSelectAll)="onItemDeSelectOrAllProductNameCode($event)"
+                                                (onSelectAll)="onItemSelectOProductCodeName($event)">
+                                            </ng-multiselect-dropdown>
+                                            <div class="dropdown-placeholder catty-placeholder">
+                                                <span *ngIf="ProductnamecodeForm.get('citys').value.length == 0"
+                                                    style="color:grey;"> Product Name/Code </span>
+                                                <span *ngIf="ProductnamecodeForm.get('citys').value.length == 1"
+                                                    class="selected-placeholder">
+                                                    {{ProductnamecodeForm.get('citys').value.length}} Selected Product
+                                                </span>
+                                                <span *ngIf="ProductnamecodeForm.get('citys').value.length > 1"
+                                                    class="selected-placeholder">
+                                                    {{ProductnamecodeForm.get('citys').value.length}} Selected Products
+                                                </span>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+
                                 <div class="col-md-3 col-lg-3 col-sm-3   dropdownborder custon-nonprobubbles">
                                     <div class="input-icons ">
                                         <form [formGroup]="categoryForm" class="dropDown-field dropdown_list"
@@ -1154,8 +1132,6 @@
                                         </form>
                                     </div>
                                 </div>
-
-
                                 <!-- <div class="col-md-3 dropdownborder">
                                             <div class="input-icons ">
                                                 <form [formGroup]="myFormsIdentifier" class="dropDown-field dropdown_list">
@@ -1185,27 +1161,18 @@
                                                 </form>
                                             </div>
                                         </div> -->
-                                        <mat-slide-toggle  (click)="toggleData($event) " style="position: relative;left: 64px;top:6px"> Items With Order Qty
-                                        </mat-slide-toggle>
-                                       
-                                        <div class="col" style="position: relative;left:150px">
-                                            <div class="icon btnhover refreshbtn">
-                                          <img src="assets/img/Vector.png" (click)="refresh()" class="refresh-icon" alt="refresh">
-                                          </div>
-                                         </div> 
-                                            
-                                    
-                                       
+                                <mat-slide-toggle (click)="toggleData($event) "
+                                    style="position: relative;left: 64px;top:6px"> Items With Order Qty
+                                </mat-slide-toggle>
 
-
-
+                                <div class="col" style="position: relative;left:150px">
+                                    <div class="icon btnhover refreshbtn">
+                                        <img src="assets/img/Vector.png" (click)="refresh()" class="refresh-icon"
+                                            alt="refresh">
+                                    </div>
+                                </div>
                             </div>
-                            
-
                         </div>
-
-                     
-
                     </div>
 
                     <div class="row mt-5">
@@ -1238,7 +1205,7 @@
 
                                     <th data-sortable="true" class="align-center">Product Name</th>
                                     <th></th>
-                                    
+
                                     <th data-sortable="true" class="align-center"> Identifier</th>
                                     <!-- <th data-sortable="true">classification</th>  -->
                                     <!-- <th data-sortable="true">SKU</th> -->
@@ -1253,12 +1220,10 @@
                             <tbody class="tbodayheight">
                                 <tr class="table-row" *ngFor="let Item of orderNonPromotionsdata "
                                     [ngClass]="{'promotionItem': Item.isInPromotion===true}">
-
-
                                     <td width="30"> <input type="checkbox" class="check custom-checkbox"
                                             [checked]="Item.isPromotionSelected" (change)="checkboxChange($event,Item)"
                                             onfocus="this.checked=''"></td>
-                                     
+
                                     <td style="text-align: left;">{{Item.productSKUName}}</td>
                                     <td style="text-align: left;width: 400px;">{{Item.stockitemname}}</td>
                                     <!-- <td>{{Item.materialcustomidentifier}}66</td> -->
@@ -1286,19 +1251,17 @@
                                                     [(ngModel)]="Item.quantity" 
                                                      (change)="quantityChange(Item)  "
                                                      ></td> -->
-
-
                                     <td>
-                                        <input type="number" placeholder="Enter " class="quatity-inp" 
+                                        <input type="number" placeholder="Enter " class="quatity-inp"
                                             [(ngModel)]="Item.quantity" (ngModelChange)="quantityChange(Item)"
-                                            name="Item.quantity" >
+                                            name="Item.quantity">
                                     </td>
                                     <td>{{(Item.quantity ?? 0) * Item.price }}</td>
                                 </tr>
-                               
+
                             </tbody>
                         </table>
-                       
+
                         <div class="bottom-table tt" id="totalnonprobackcolor">
                             <!-- <div class="row">
                                             <div class="col-1">
@@ -1315,14 +1278,11 @@
                                             </div>
                                             
                                             </div> -->
-                                            
                         </div>
-                      
                         <div class=" addbuttons mt-2">
                             <button type="button " class="btn btn-primary w-25  saveitems "
                                 (click)="addnonPromoItems()">Confirm</button>
                         </div>
-
                     </div>
 
                 </div>

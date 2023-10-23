@@ -411,6 +411,23 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         this.base64textString = res.response.imageurl;
         this.startDate.setValue(res.response.startDate);
 
+const aditionalMoqDetails = res.response.promoDetails.aditionalMoqDetails;
+while (this.formArr.length !== 0) {
+  this.formArr.removeAt(0);
+}
+aditionalMoqDetails.forEach((detail) => {
+  this.formArr.push(
+    this._formBuilder.group({
+      qtyFrom: [detail.qtyFrom],
+      qtyTo: [detail.qtyTo],
+      buy: [detail.buyValue],
+      get: [detail.getValue],
+      additional: [detail.aditional],
+    })
+  );
+});
+
+
         this.Remarks = res.response.remarks;
         this.EntityInstanceId = [];
         this.selectedDealers = res.response.selectedDealers
@@ -420,6 +437,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         });
 
         console.log('this.addbuyset', this.addbuyset);
+        if (res.response.promotionTypesName == 'Buy X and Get Y'){
+          this.buysets = true;
+        }
 
         if (res.response.promotionTypesName == 'Buy (A+B..) get (X+Y..)') {
           this.productPromotionsId = res.response.productPromotionsId

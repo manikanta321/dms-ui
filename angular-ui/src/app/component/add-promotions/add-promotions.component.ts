@@ -411,21 +411,21 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         this.base64textString = res.response.imageurl;
         this.startDate.setValue(res.response.startDate);
 
-const aditionalMoqDetails = res.response.promoDetails.aditionalMoqDetails;
-while (this.formArr.length !== 0) {
-  this.formArr.removeAt(0);
-}
-aditionalMoqDetails.forEach((detail) => {
-  this.formArr.push(
-    this._formBuilder.group({
-      qtyFrom: [detail.qtyFrom],
-      qtyTo: [detail.qtyTo],
-      buy: [detail.buyValue],
-      get: [detail.getValue],
-      additional: [detail.aditional],
-    })
-  );
-});
+          const aditionalMoqDetails = res.response.promoDetails.aditionalMoqDetails;
+          while (this.formArr.length !== 0) {
+            this.formArr.removeAt(0);
+          }
+          aditionalMoqDetails?.forEach((detail) => {
+            this.formArr.push(
+              this._formBuilder.group({
+                qtyFrom: [detail.qtyFrom],
+                qtyTo: [detail.qtyTo],
+                buy: [detail.buyValue],
+                get: [detail.getValue],
+                additional: [detail.aditional],
+              })
+            );
+          });
 
 
         this.Remarks = res.response.remarks;
@@ -437,15 +437,15 @@ aditionalMoqDetails.forEach((detail) => {
         });
 
         console.log('this.addbuyset', this.addbuyset);
-        if (res.response.promotionTypesName == 'Buy X and Get Y'){
-          this.buysets = true;
-        }
+        // if (res.response.promotionTypesName == 'Buy X and Get Y'){
+        //   this.buysets = false;
+        // }
 
-        if (res.response.promotionTypesName == 'Buy (A+B..) get (X+Y..)') {
-          this.productPromotionsId = res.response.productPromotionsId
+        if (res.response.promotionTypesName == 'Buy X and Get Y' ||res.response.promotionTypesId == 1) {
+          this.productPromotionsId = res.response.productPromotionsId;
           this.buyGroupPlus = [];
           this.addgetgroup = [];
-          this.editlist = true
+          this.editlist = true;
           // this.goForward(this.myStepper);
           this.noPromotionSelected = false;
           this.buyab = true;
@@ -455,105 +455,102 @@ aditionalMoqDetails.forEach((detail) => {
 
           let mainobjbuyGroups = res.response.promoDetails.buyGroups;
 
-
           mainobjbuyGroups.forEach((element) => {
-            let stockItemArraay: any = []
+            let stockItemArraay: any = [];
 
             element.stockItemId.forEach((element1) => {
-              stockItemArraay.push(element1.stockItemId)
-            })
+              stockItemArraay.push(element1.stockItemId);
+            });
 
             let obj1: any = [];
 
             element.stockItemId.forEach((element2) => {
               obj1.push({
                 stockItemId: element2.stockItemId,
-                productName: element2.stockItemName
+                productName: element2.stockItemName,
               });
+            });
 
-
-            })
-
-            let obj: any = {}
-            obj.GroupId = element?.groupId
-            obj.MaxVolume = element?.maxVolume
-            obj.MOQ = element?.moq
-            obj.productPromotionDetailsId = element?.productPromotionDetailsId
+            let obj: any = {};
+            obj.GroupId = element?.groupId;
+            obj.MaxVolume = element?.maxVolume;
+            obj.MOQ = element?.moq;
+            obj.productPromotionDetailsId = element?.productPromotionDetailsId;
             obj.productselectedRows = obj1;
             obj.StockItemId = stockItemArraay;
             obj.isDataValid = true;
-            console.log('modifiedmainobj', obj)
+            console.log('modifiedmainobj', obj);
 
             this.buyGroupPlus.push(obj);
-            console.log('this.buyGroupPlus', this.buyGroupPlus)
-          })
-
+            console.log('this.buyGroupPlus', this.buyGroupPlus);
+          });
 
           let mainobjGetGroups = res.response.promoDetails.getGroups;
 
           mainobjGetGroups.forEach((element) => {
-            let stockItemArraay: any = []
+            let stockItemArraay: any = [];
             element.stockItemId.forEach((element1) => {
-              stockItemArraay.push(element1.stockItemId)
-            })
+              stockItemArraay.push(element1.stockItemId);
+            });
 
-            let obj1: any = []
+            let obj1: any = [];
 
             element.stockItemId.forEach((element2) => {
               obj1.push({
                 stockItemId: element2.stockItemId,
-                productName: element2.stockItemName
+                productName: element2.stockItemName,
               });
+            });
 
-
-
-
-            })
-
-            let obj: any = {}
-            obj.GroupId = element.groupId
-            obj.MaxVolume = element.maxVolume
-            obj.MOQ = element.moq
-            obj.productPromotionDetailsId = element.productPromotionDetailsId
+            let obj: any = {};
+            obj.GroupId = element.groupId;
+            obj.MaxVolume = element.maxVolume;
+            obj.MOQ = element.moq;
+            obj.productPromotionDetailsId = element.productPromotionDetailsId;
             obj.productselectedRows = obj1;
             obj.StockItemId = stockItemArraay;
             obj.isDataValid = true;
 
-
-            console.log('modifiedmainobj', obj)
+            console.log('modifiedmainobj', obj);
 
             this.addgetgroup.push(obj);
 
-console.log('buyGroupPlus',this.buyGroupPlus);
-console.log('addgetgroup',this.addgetgroup);
+            console.log('buyGroupPlus', this.buyGroupPlus);
+            console.log('addgetgroup', this.addgetgroup);
 
-
-
-            this.buyGroupPlus.forEach(element=>{
-              for(let i = 0; i < element.StockItemId.length ; i++){
-                if(this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1) {
+            this.buyGroupPlus.forEach((element) => {
+              for (let i = 0; i < element.StockItemId.length; i++) {
+                if (
+                  this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1
+                ) {
                   this.productIdtoFilters.push(element.StockItemId[i]);
                 } else {
-                  console.log(`${element.StockItemId[i]} is already pushed into array`);
+                  console.log(
+                    `${element.StockItemId[i]} is already pushed into array`
+                  );
                 }
               }
-            })
-            
-            this.addgetgroup.forEach(element=>{
-              for(let i = 0; i < element.StockItemId.length ; i++){
-                if(this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1) {
+            });
+
+            this.addgetgroup.forEach((element) => {
+              for (let i = 0; i < element.StockItemId.length; i++) {
+                if (
+                  this.productIdtoFilters.indexOf(element.StockItemId[i]) === -1
+                ) {
                   this.productIdtoFilters.push(element.StockItemId[i]);
                 } else {
-                  console.log(`${element.StockItemId[i]} is already pushed into array`);
+                  console.log(
+                    `${element.StockItemId[i]} is already pushed into array`
+                  );
                 }
               }
-            })
-  this.addpromotionGeoTable();
+            });
+            this.addpromotionGeoTable();
 
-            console.log('this.mainobjGetGroups', this.addgetgroup)
-          })
+            console.log('this.mainobjGetGroups', this.addgetgroup);
+          });
         }
-        if (res.response.promotionTypesId == 2) {
+        if (res.response.promotionTypesId == 2 || res.response.promotionTypesName == 'Buy AB Get CD') {
           this.addbuyset = [];
           this.noPromotionSelected = false;
           this.buyab = false;
@@ -566,26 +563,26 @@ console.log('addgetgroup',this.addgetgroup);
           //   this.EntityInstanceId.push(element.dealerId)
           // });
 
-          let mainarray = []
+          let mainarray = [];
           let promo = res.response.promoDetails.buySets;
           let promo1 = res.response.promoDetails.getSets;
 
-          this.productPromotionsId = res.response?.productPromotionsId
+          this.productPromotionsId = res.response?.productPromotionsId;
           promo.forEach((element3) => {
             let obj: any = {};
             let bugruparray: any[] = [];
             element3.buyGroups.forEach((element) => {
-              let stockItemArraay: any = []
+              let stockItemArraay: any = [];
               element.stockItemId.forEach((element1) => {
-                stockItemArraay.push(element1.stockItemId)
-              })
-              let obj1: any = []
+                stockItemArraay.push(element1.stockItemId);
+              });
+              let obj1: any = [];
               element.stockItemId.forEach((element2) => {
                 obj1.push({
                   stockItemId: element2.stockItemId,
-                  productName: element2.stockItemName
+                  productName: element2.stockItemName,
                 });
-              })
+              });
               obj.MaxVolume = element.maxVolume;
               obj.MOQ = element.moq;
               obj.Set = element.set;
@@ -593,82 +590,86 @@ console.log('addgetgroup',this.addgetgroup);
               obj.StockItemId = stockItemArraay;
               obj.productPromotionDetailsId = element.productPromotionDetailsId;
               obj.isDataValid = true;
-              bugruparray.push({ ...obj })
-              console.log('final  bugruparray', bugruparray)
-            })
+              bugruparray.push({ ...obj });
+              console.log('final  bugruparray', bugruparray);
+            });
 
-            let apiObj: any = {}
+            let apiObj: any = {};
             apiObj.GroupId = element3.groupId;
             apiObj.BuyGroups = bugruparray;
             this.addbuyset.push(apiObj);
-            console.log('finalfinal', this.addbuyset)
-          })
-          this.addgetset = []
+            console.log('finalfinal', this.addbuyset);
+          });
+          this.addgetset = [];
 
           promo1.forEach((element3) => {
             let obj: any = {};
             let bugruparray: any[] = [];
             element3.getGroups.forEach((element) => {
-              let stockItemArraay: any = []
+              let stockItemArraay: any = [];
               element.stockItemId.forEach((element1) => {
-                stockItemArraay.push(element1.stockItemId)
-              })
-              let obj1: any = []
+                stockItemArraay.push(element1.stockItemId);
+              });
+              let obj1: any = [];
               element.stockItemId.forEach((element2) => {
                 obj1.push({
                   stockItemId: element2.stockItemId,
-                  productName: element2.stockItemName
+                  productName: element2.stockItemName,
                 });
-              })
+              });
               obj.MaxVolume = element.maxVolume;
               obj.Set = element.set;
               obj.productselectedRows = obj1;
               obj.StockItemId = stockItemArraay;
               obj.productPromotionDetailsId = element.productPromotionDetailsId;
               obj.isDataValid = true;
-              bugruparray.push({ ...obj })
-              console.log('final  addgetset', bugruparray)
-            })
+              bugruparray.push({ ...obj });
+              console.log('final  addgetset', bugruparray);
+            });
 
-            let apiObj: any = {}
+            let apiObj: any = {};
             apiObj.GroupId = element3.groupId;
             apiObj.GetGroups = bugruparray;
             this.addgetset.push(apiObj);
-            console.log('addgetset', this.addgetset)
-            this.addbuyset.forEach(element=>{
-              element.BuyGroups.forEach(element1=>{
-                for(let i = 0; i < element1.StockItemId.length ; i++){
-                  if(this.productIdtoFilters.indexOf(element1.StockItemId[i]) === -1) {
+            console.log('addgetset', this.addgetset);
+            this.addbuyset.forEach((element) => {
+              element.BuyGroups.forEach((element1) => {
+                for (let i = 0; i < element1.StockItemId.length; i++) {
+                  if (
+                    this.productIdtoFilters.indexOf(element1.StockItemId[i]) ===
+                    -1
+                  ) {
                     this.productIdtoFilters.push(element1.StockItemId[i]);
                   } else {
-                    console.log(`${element1.StockItemId[i]} is already pushed into array`);
+                    console.log(
+                      `${element1.StockItemId[i]} is already pushed into array`
+                    );
                   }
                 }
-              })
-            })
-  
-          
-            this.addgetset.forEach(element=>{
-              element.GetGroups.forEach(element1=>{
-                for(let i = 0; i < element1.StockItemId.length ; i++){
-                  if(this.productIdtoFilters.indexOf(element1.StockItemId[i]) === -1) {
-                    this.productIdtoFilters.push(element1.StockItemId[i]);
-                  } else {
-                    console.log(`${element1.StockItemId[i]} is already pushed into array`);
-                  }
-                }
-              })
-            })
-  
-  
-  
-            this.addpromotionGeoTable();
-          })
-       
-     
+              });
+            });
 
+            this.addgetset.forEach((element) => {
+              element.GetGroups.forEach((element1) => {
+                for (let i = 0; i < element1.StockItemId.length; i++) {
+                  if (
+                    this.productIdtoFilters.indexOf(element1.StockItemId[i]) ===
+                    -1
+                  ) {
+                    this.productIdtoFilters.push(element1.StockItemId[i]);
+                  } else {
+                    console.log(
+                      `${element1.StockItemId[i]} is already pushed into array`
+                    );
+                  }
+                }
+              });
+            });
+
+            this.addpromotionGeoTable();
+          });
         }
-        if (res.response.promotionTypesName == 'Volume Discount') {
+        if (res.response.promotionTypesName == 'Volume Discount'|| res.response.promotionTypesId == 3) {
           this.productPromotionsId = res.response?.productPromotionsId;
           this.productselectedRows = [];
           this.noPromotionSelected = false;
@@ -682,50 +683,44 @@ console.log('addgetgroup',this.addgetgroup);
           // this.selectedDealers.forEach(element => {
           //   this.EntityInstanceId.push(element.dealerId)
           // });
-          console.log('this.selectedDealers', this.selectedDealers)
+          console.log('this.selectedDealers', this.selectedDealers);
 
           this.minimumorderquantity = res.response.promoDetails.moq;
           let volume: any = res.response.promoDetails.volumes;
           this.packingCharges = [];
-          let obj1: any = {}
+          let obj1: any = {};
           volume.forEach((element) => {
-
-
             this.packingCharges.push({
               MinVolume: element.minVolume,
               MaxVolume: element.maxVolume,
               DiscountPercentage: element.discountPercentage,
               ProductPromotionDetailsId: element.productPromotionDetailsId,
-              isDataValid: true
-            })
-          })
+              isDataValid: true,
+            });
+          });
 
-
-          console.log('this.packingCharges', this.packingCharges)
+          console.log('this.packingCharges', this.packingCharges);
 
           let promoname = res.response.promoDetails.stockItems;
           let extractstockItemId = res.response.promoDetails.stockItems;
 
-          let obj: any = {
-
-          }
+          let obj: any = {};
           promoname.forEach((element) => {
             this.productselectedRows.push({
               productName: element.stockItemName,
-              stockItemId: element.stockItemId
+              stockItemId: element.stockItemId,
             });
-          })
+          });
 
           extractstockItemId.forEach((element) => {
-            this.VolumeSttockItemId.push(element.stockItemId)
-          })
-          this.productIdtoFilters=[];
-          this.productIdtoFilters=this.VolumeSttockItemId;
-        this.addpromotionGeoTable();
-          console.log('VolumeSttockItemId', this.VolumeSttockItemId)
+            this.VolumeSttockItemId.push(element.stockItemId);
+          });
+          this.productIdtoFilters = [];
+          this.productIdtoFilters = this.VolumeSttockItemId;
+          this.addpromotionGeoTable();
+          console.log('VolumeSttockItemId', this.VolumeSttockItemId);
         }
-        if (res.response.promotionTypesName == 'Price Discount') {
-
+        if (res.response.promotionTypesName == 'Special Price' ||res.response.promotionTypesId == 4) {
           this.productPromotionsId = res.response?.productPromotionsId;
           this.productselectedRows = [];
 
@@ -744,41 +739,36 @@ console.log('addgetgroup',this.addgetgroup);
 
           let volume: any = res.response.promoDetails.prices;
           this.packingVolume = [];
-          let obj1: any = {}
+          let obj1: any = {};
           volume.forEach((element) => {
             this.packingVolume.push({
               MinVolume: element.minVolume,
               MaxVolume: element.maxVolume,
               MaxPrice: element.maxPrice,
               productPromotionDetailsId: element.productPromotionDetailsId,
-              isDataValid: true
-            })
-          })
+              isDataValid: true,
+            });
+          });
 
-
-          console.log('this.packingVolume', this.packingVolume)
+          console.log('this.packingVolume', this.packingVolume);
 
           let promoname = res.response.promoDetails.stockItems;
           let extractstockItemId = res.response.promoDetails.stockItems;
           promoname.forEach((element) => {
             this.productselectedRows.push({
               productName: element.stockItemName,
-              stockItemId: element.stockItemId
+              stockItemId: element.stockItemId,
             });
-          })
+          });
 
           extractstockItemId.forEach((element) => {
-            this.priceStockItemId.push(element.stockItemId)
-          })
-          this.productIdtoFilters=[];
-          this.productIdtoFilters=this.priceStockItemId;
-        this.addpromotionGeoTable();
-
+            this.priceStockItemId.push(element.stockItemId);
+          });
+          this.productIdtoFilters = [];
+          this.productIdtoFilters = this.priceStockItemId;
+          this.addpromotionGeoTable();
         }
-
         console.log('priceStockItemId', this.priceStockItemId)
-
-
 
       })
 

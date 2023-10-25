@@ -384,7 +384,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
 
   /* on Select of Dropdown screen change */
-
+  editedDetails:any=[]
   ngOnInit() {
     let headername = localStorage.getItem('addOrEdit');
     if (headername == 'editpromo') {
@@ -393,7 +393,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       let data = localStorage.getItem('promoclickId')
       this.promotionTypes.getPromotionById(data).subscribe((res) => {
         console.log('response EditPromotion', res)
-
+        this.editedDetails = res.response.promoDetails.aditionalMoqDetails
         this.promoName = res.response.promotionName;
         this.selectedPromo = res.response.promotionTypesId;
         this.addImgpreview = true;
@@ -2327,8 +2327,6 @@ alert(obj3.MOQ);
     localStorage.setItem("updatePromotionPopup", 'edit');
     this.loggedUserId = localStorage.getItem('logInId')
     
-   
-
     if (!this.checkValidation(this.selectedPromo)) return;
 
     if (this.selectedPromo == 1) {
@@ -2365,7 +2363,17 @@ alert(obj3.MOQ);
         GetGroups: this.addgetgroup,
         EntityInstanceId: this.EntityInstanceId,
         Status: type,
-        Remarks: this.Remarks ?? ''
+        Remarks: this.Remarks ?? '',
+        AditionalMoqDetails: this.formArr.controls.map((control, index) => {
+          return {
+              AdditionalDetailsId: this.editedDetails.map((x) => x.additionalDetailsId)[index]||0,
+              QtyFrom: control.get('qtyFrom')?.value,
+              QtyTo: control.get('qtyTo')?.value,
+              BuyValue: control.get('buy')?.value,
+              GetValue: control.get('get')?.value,
+              Aditional: control.get('additional')?.value
+          };
+      })
       }
 
       this.promotionTypes.firstPromotion(obj).subscribe((res) => {
@@ -2448,7 +2456,17 @@ alert(obj3.MOQ);
         GetSets: this.addgetset,
         EntityInstanceId: this.EntityInstanceId,
         Status: type,
-        Remarks: this.Remarks ?? ''
+        Remarks: this.Remarks ?? '',
+        AditionalMoqDetails: this.formArr.controls.map((control,index) => {
+          return {
+            AdditionalDetailsId: this.editedDetails.map((x) => x.additionalDetailsId)[index]||0,
+            QtyFrom: control.get('qtyFrom')?.value,
+            QtyTo: control.get('qtyTo')?.value,
+            BuyValue: control.get('buy')?.value,
+            GetValue: control.get('get')?.value,
+            Aditional: control.get('additional')?.value
+          };
+        })
       }
       console.log('object to send opis', obj3)
       // let BuySets=[{

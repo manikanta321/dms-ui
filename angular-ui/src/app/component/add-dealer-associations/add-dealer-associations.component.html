@@ -30,7 +30,7 @@
             <div *ngIf="screenValue== 1 " class="promotiont"> 
               
               <img class="right-arrow" src="../../../assets/img/right-arrow.png" alt="">
-              <!-- <label>Product <span>*</span></label><br />          
+              <label>Product <span>*</span></label><br />  
               <select #teams class="form-select select-asso" aria-label=".form-select-lg example"
                 (change)="selectedProduct(teams.value);">
                 <option selected hidden>Select</option>
@@ -39,16 +39,16 @@
                   <p (click)="selectedProduct(teams.value)">{{product.stockItemName}}</p>
                 </option>
 
-              </select> -->
+              </select>
              
-              <div class="dealerr">
+              <!-- <div class="dealerr">
                 <label class="DealerInfo-label">Product <span class="astr">*</span></label>
                 <ng-select [items]="ProductListArray" id="dealerAllArray" name="dealerAllArray" required
                     [virtualScroll]="true" bindLabel="stockItemName" bindValue="stockItemId"
                     [searchable]="true" [clearable]="false" placeholder=" select dealer"
-                     (change)="selectedProduct($event)">
+                     (change)="selectedProduct($event.value)">
                 </ng-select>
-            </div>
+            </div> -->
               <div class="hover-text">
                 <img class="img1" src="../../../assets/img/i icon.svg" matTooxltip="" />
                 <div class="tooltip-text" id="top">

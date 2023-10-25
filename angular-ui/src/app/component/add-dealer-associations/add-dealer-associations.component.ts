@@ -88,7 +88,6 @@ export class AddDealerAssociationsComponent implements OnInit {
   tottalgeoCount: any;
   productCustomIdentifierArray: any[] = []
   selectedtypeasso1: any;
-  //event handler for the select element's change event
   selectChangeHandler(event: any) {
     //update the ui
     this.selectedDay = event.target.value;
@@ -786,10 +785,11 @@ export class AddDealerAssociationsComponent implements OnInit {
   }
 
   selectedProduct(event: any) {
-    console.log("Event", event)
-    var arry = event.match(/[a-z0-9]+/gi)
+    
+    console.log("Event checking", event)
+    var arry = event?.match(/[a-z0-9]+/gi);
     console.log('value', arry)
-    let ProductId = arry[0];
+    let ProductId = arry[0]
     this.productSkuId = ProductId
     let stockItemId = arry[2];
     this.stockItemsID = stockItemId
@@ -797,7 +797,6 @@ export class AddDealerAssociationsComponent implements OnInit {
     this.selectedProduct1 = ProductId;
     this.slectedgeo = true;
     localStorage.setItem('ProductStockItemId', stockItemId);
-
     this.tooltiptable()
   }
   selectedProduct11(value) {
@@ -918,6 +917,7 @@ export class AddDealerAssociationsComponent implements OnInit {
   //     height: '460px',
   //   });
   // }
+ 
   geography(item) {
     this.selectedtypeasso1 = item
     localStorage.setItem('selectedtypeasso', item);
@@ -926,6 +926,8 @@ export class AddDealerAssociationsComponent implements OnInit {
        height: '650px',
     });
   }
+
+
   getclassification() {
 
     this.materialList.getclassification(this.flag).subscribe((res) => {

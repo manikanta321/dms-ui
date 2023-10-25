@@ -785,11 +785,16 @@
                                 </thead>
                                 <tbody class="table-group-divider" formArrayName="addPromotions">
                                   <tr *ngFor="let item of formArr.controls; let i = index" [formGroupName]="i">
-                                    <th><input type="text" class="form-control" formControlName="qtyFrom"></th>
-                                    <th><input type="text" class="form-control" formControlName="qtyTo"></th>
-                                    <th><input type="text" class="form-control" formControlName="buy"></th>
-                                    <th><input type="text" class="form-control" formControlName="get"></th>
-                                    <th><input type="text" class="form-control" formControlName="additional"></th>
+                                    <th><input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="qtyFrom" [ngClass]="{'error-border': formArr.at(i).get('qtyFrom')?.hasError('invalidRange') }"></th>
+                                    <th><input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="qtyTo" [ngClass]="{'error-border': formArr.at(i).get('qtyTo')?.hasError('invalidRange') }"></th>
+                                    <th>
+                                        <input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="buy">
+                                        <div *ngIf="formArr.controls[i].get('buy')?.hasError('buyNotInRange')" class="error-message">
+                                            Buy value must be in between Quantity From and Quantity To.
+                                          </div>
+                                    </th>
+                                    <th><input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="get"></th>
+                                    <th><input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="additional"></th>
                                     <th><mat-icon (click)="deletePromotion(i)">delete</mat-icon></th>
                                   </tr>
                                 </tbody>
@@ -889,7 +894,7 @@
                                 <button class="btn btn-light saveDraft"
                                     (click)="AddPromosaveAndSubmitEdit('Draft')">Save as
                                     draft</button>
-                                <button class="btn btn-light submit" (click)="AddPromosaveAndSubmitEdit('Submit')">Save
+                                <button class="btn btn-light submit" [disabled]="hasValidationErrors" (click)="AddPromosaveAndSubmitEdit('Submit')">Save
                                     &
                                     Submit </button>
                                 <!-- <button class="cancelbtn" [mat-dialog-close]="true">Cancel</button> -->

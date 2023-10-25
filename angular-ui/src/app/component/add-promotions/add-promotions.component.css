@@ -612,6 +612,12 @@ li {
   height: 43px;
   text-align: center;
 }
+.error-border {
+  border: 1px solid red;
+}
+.error-message {
+  color: red;
+}
 
 .mty-box {
   background: #FFFFFF;

@@ -151,6 +151,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   count: number = 0;
   showSelectedRows:boolean=false;
   isSelected: any;
+  hasValidationErrors: boolean=false;
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
     //update the ui
@@ -803,7 +804,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     this.promotionForm = this._formBuilder.group({
       addPromotions: this._formBuilder.array([this.promotionRows()])
     });
-
+    this.promotionForm.statusChanges.subscribe(() => {
+      this.hasValidationErrors = !this.promotionForm.valid;
+    });
   }
 
   showConsolidatedMOQ: boolean = false;
@@ -817,18 +820,72 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   }
   promotionRows() {
     return this._formBuilder.group({
-      qtyFrom: [""],
-      qtyTo:[""],
-      buy:[""],
-      get:[""],
-      additional:[""]
+      qtyFrom: ['', [Validators.required,Validators.min(0)]],
+      qtyTo: ['', [Validators.required, Validators.min(0)]],
+      buy: ['', [Validators.required, Validators.min(0),this.buyInRangeValidator] ],
+      get: ['', [Validators.required, Validators.min(0)]],
+      additional: ['', [Validators.required, Validators.min(0)]]
     });
   }
 
   addNewRow() {
     this.formArr.push(this.promotionRows());
+    this.updateValidation()
   }
-
+  restrictToAlphabets(event: any): void {
+    const input = event.target as HTMLInputElement;
+    const value = input.value;
+    input.value = value.replace(/[^0-9]/g, '');
+  }
+  buyInRangeValidator(control: AbstractControl) {
+    const qtyFrom = control.parent?.get('qtyFrom')?.value;
+    const qtyTo = control.parent?.get('qtyTo')?.value;
+    const buy = control.value;
+  
+    if (qtyFrom !== null && qtyTo !== null && buy !== null && (buy < qtyFrom || buy > qtyTo)) {
+      return { buyNotInRange: true };
+    }
+  
+    return null;
+  }
+  updateValidation() {
+    const promotionsArray = this.promotionForm.get('addPromotions') as FormArray;
+    for (let i = 0; i < promotionsArray.length - 1; i++) {
+      const currentPromotion = promotionsArray.at(i);
+      const nextPromotion = promotionsArray.at(i + 1);
+      const qtyToControl = currentPromotion.get('qtyTo');
+      const qtyFromControl = nextPromotion.get('qtyFrom');
+  
+      qtyToControl?.valueChanges.subscribe(() => {
+        const qtyToValue = qtyToControl.value;
+        const qtyFromValue = qtyFromControl?.value;
+        if (qtyToValue >= qtyFromValue) {
+          qtyFromControl?.setErrors({ invalidRange: true });
+        } else {
+          if (qtyToValue === qtyFromValue) {
+            qtyFromControl?.setErrors({ sameValues: true });
+          } else {
+            qtyFromControl?.setErrors(null);
+          }
+        }
+      });
+  
+      qtyFromControl?.valueChanges.subscribe(() => {
+        const qtyToValue = qtyToControl?.value;
+        const qtyFromValue = qtyFromControl.value;
+        if (qtyToValue >= qtyFromValue) {
+          qtyFromControl.setErrors({ invalidRange: true });
+        } else {
+          if (qtyToValue === qtyFromValue) {
+            qtyFromControl.setErrors({ sameValues: true });
+          } else {
+            qtyFromControl.setErrors(null);
+          }
+        }
+      });
+    }
+  }
+  
   deletePromotion(index:number){
     this.formArr.removeAt(index);
   }

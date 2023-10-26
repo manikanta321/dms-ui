@@ -82,12 +82,12 @@
 
   .upload
 {
-   background-color: #000000;
+   background-color: #018B75;
    color: white;
    height: 44px;
    width: 597px;
    text-align: center;
-   background: #000000;
+   /* background: #000000; */
    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
    border-radius: 10px;
    cursor: pointer;
@@ -95,8 +95,8 @@
 }
 .cancelbtn
 {
-  background: #FFFFFF;
-  color: #000;
+  background: #018B75;
+  color: white;
   font-family: 'Gilroy-SemiBold';
    height: 44px;
    width: 597px;
@@ -975,7 +975,7 @@ tr {
     width: 280px;
     height: 43px;
     text-align: center;
-    background: #000000;
+    background: #018B75;
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 10px;
 }
@@ -984,7 +984,7 @@ tr {
   height: 43px;
   position: relative;
   left: 43px;
-  background: #FFFFFF;
+  background: #018B75;
   border: 2px solid #000000;
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
@@ -992,7 +992,7 @@ tr {
 }
 .SAVE-text {
   color: white;
-  background: #000000;
+  background: #018B75;
   position: relative;
   top: 11px;
   font-family: 'Gilroy-SemiBold';
@@ -1004,8 +1004,8 @@ tr {
   border: none;
 }
 .DISCARD_TEXT{
-  color: black;
-  background:#FFFFFF;
+  color: white;
+  background:#018B75;
   position: relative;
   top: 11px;
   font-family: 'Gilroy-SemiBold';

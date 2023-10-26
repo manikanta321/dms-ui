@@ -177,7 +177,7 @@ margin-right: 15px;
 .ref {
   border: 1px solid black;
   border-radius: 10px;
-  background: black;
+  background: grey;
   margin-left: -2px;
   width: 43px;
   padding: 8px 0px 0px 10px;
@@ -449,7 +449,7 @@ mat-radio-group {
 .btnhover {
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
   border: none;
-  background: #000000;
+  background: grey;
   border-radius: 35%;
   position: relative;
   width: 43px;

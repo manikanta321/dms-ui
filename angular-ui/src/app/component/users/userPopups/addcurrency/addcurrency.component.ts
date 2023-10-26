@@ -149,4 +149,9 @@ this.uomShortName = shortName;
   currencyConverteredValue(data:any){
     // alert("suceccy key finction")
   }
+  restrictToAlphabets(event: any): void {
+    const input = event.target as HTMLInputElement;
+    const value = input.value;
+    input.value = value.replace(/[^a-zA-Z]/g, '');
+  }
 }

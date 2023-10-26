@@ -132,4 +132,10 @@ export class AddUserPopupComponent implements OnInit {
     input.value = value.replace(/[^0-9]/g, '');
 
   }
+
+  restrictToAlphabets(event: any): void {
+    const input = event.target as HTMLInputElement;
+    const value = input.value;
+    input.value = value.replace(/[^a-zA-Z]/g, '');
+  }
 }

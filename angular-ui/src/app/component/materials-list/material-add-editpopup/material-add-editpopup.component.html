@@ -97,7 +97,9 @@
                 </div>
                 <input type="text" id="matName" name="matName" (keyup)="onKey($event)"
                   class="form-control container materialname-placeholder" required
-                  placeholder="Enter name of material" [(ngModel)]="materialName" #matName="ngModel">
+                  placeholder="Enter name of material" [(ngModel)]="materialName" #matName="ngModel" (input)="restrictToNumbers($event)"
+
+                  (input)="restrictToAlphabets($event)">
                 <p style="margin-bottom:-5px;padding: 0px;font-size: 11px;position: absolute"
                   *ngIf="matName.invalid && (matName.dirty || matName.touched)" class="alert">
                   <span class="errormsg" *ngIf="matName.errors?.['required']">
@@ -143,20 +145,18 @@
               </div>
               <div class="col-md-3">
                 <div class="imageofm">
-                  <label>Image of Material</label>
+                    <label>Image of Material</label>
                 </div>
                 <label class="form-control container imagePl" *ngIf="Imgpreview">
-                  <input type="file" id="file" style="display:none"   placeholder="Add-Image" (change)="onFileChanged($event) ">
-                  <img src='data:image/jpeg;base64,{{base64textString}}'  class="add-img" alt="add-image=btn">
+                    <input type="file" id="file" style="display: none" placeholder="Add Image" (change)="onFileChanged($event)">
+                    <img src='data:image/jpeg;base64,{{base64textString}}' class="add-img" alt="add-image-btn">
                 </label>
                 <label class="form-control container imagePl" *ngIf="!Imgpreview">
-                  <input type="file" id="file" style="display:none"  (change)="onFileChanged($event)">
-                    <img src="../../../../assets/img/add-image-icon.png" style="width:100px;height: 100px;margin-top: -14px;" class="add-img" alt="add-image=btn"> 
-            
+                    <input type="file" id="file" style="display: none" (change)="onFileChanged($event)">
+                    <img src="../../../../assets/img/add-image-icon.png" style="width: 100px; height: 100px; margin-top: -14px;" class="add-img" alt="add-image-btn">
                 </label>
-                <p class="imagesheading" *ngIf="image">Add Image</p>    
-                
-              </div>
+                <p class="imagesheading" *ngIf="image">Add Image</p>
+            </div>
               <div class="col-md-4">
                 <div class="materialci">
                   <label> Material Custom Identifiers  <span>*</span></label>

@@ -23,7 +23,9 @@
               <label class="name1">Name <span>*</span></label>
               <br>
               <input type="text" id="currencyName" name="currencyName" required (keyup)="onKeyName($event)"
-                placeholder="Enter Name" [(ngModel)]="EUomName" class="imputtext" #currencyName="ngModel">
+                placeholder="Enter Name" [(ngModel)]="EUomName" class="imputtext" #currencyName="ngModel"
+
+                (input)="restrictToAlphabets($event)">
               <p style="margin-bottom:-22px;padding: 0px;"
                 *ngIf="currencyName.invalid && (currencyName.dirty || currencyName.touched)" class="alert">
                 <span style="color:red;position: relative;" *ngIf="currencyName.errors?.['required']">

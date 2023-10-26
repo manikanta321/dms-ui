@@ -1231,15 +1231,35 @@ export class MaterialAddEditpopupComponent {
   }
 
   // image uploader and converter to base64
-  public onFileChanged(event) {
-     this.image=false;
-    this.selecetdFile = event.target.files[0];   
+  // public onFileChanged(event) {
+  //    this.image=false;
+  //   this.selecetdFile = event.target.files[0];   
+  //   if (this.selecetdFile.size <= 1 * 1024 * 1024) {
+  //     this.handleInputChange(this.selecetdFile);
+  //   }
+  //   else {
+  //     alert('File size should not be greater than 1MB');
+  //   }
+  // }
+  onFileChanged(event: any) {
+    this.image = false;
+    this.selecetdFile = event.target.files[0];
+   
     if (this.selecetdFile.size <= 1 * 1024 * 1024) {
-      this.handleInputChange(this.selecetdFile);
-    }
-    else {
+      if (this.isImage(this.selecetdFile)) {
+        this.handleInputChange(this.selecetdFile);
+      } else {
+        alert('Only images are allowed.');
+      }
+    } else {
       alert('File size should not be greater than 1MB');
     }
+  }
+ 
+  private isImage(file: File): boolean {
+    // Check if the file type is an allowed image type
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    return allowedTypes.includes(file.type);
   }
   handleInputChange(files) {   
     this.imagePreview = files
@@ -1466,6 +1486,28 @@ export class MaterialAddEditpopupComponent {
   refresh() {
     this.selectedGeoField = '';
     this.updateGeographyValue = '';
+  }
+  restrictToAlphabets(event: any): void {
+    const input = event.target as HTMLInputElement;
+    const value = input.value;
+    input.value = value.replace(/[^a-zA-Z]/g, '');
+  }
+  restrictToNumbers(event: any): void {
+
+ 
+
+    const input = event.target as HTMLInputElement;
+
+ 
+
+    const value = input.value;
+
+ 
+
+    input.value = value.replace(/[^0-9]/g, '');
+
+ 
+
   }
 }
 

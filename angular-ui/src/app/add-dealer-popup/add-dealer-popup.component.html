@@ -200,9 +200,9 @@
                                         <div class="col-4 fontcolor">
                                             <label>Phone No<span>*</span></label>
                                             <br>
-                                            <input type="text" formControlName="Mobile" pattern="^((\\+91-?)|0)?[0-9]{10}$"
+                                            <input type="text" maxlength="10"formControlName="Mobile" pattern="^((\\+91-?)|0)?[0-9]{10}$"
                                                 class="addDelercols form-control" required
-                                                placeholder="Enter admin phone no">
+                                                placeholder="Enter admin phone no" (input)="restrictToNumbers($event)">
                                             <span class="text-danger"
                                                 *ngIf="addAddressDetailsFormControl['Mobile'].touched  && addAddressDetailsFormControl['Mobile'].errors && addAddressDetailsFormControl['Mobile'].errors['required']">
                                                 Phone No is required
@@ -316,16 +316,16 @@
                                                 <label *ngIf="i == 0" style="position: relative;left: 104px;">Zip<span>*</span></label>
                                                 <br>
                                                 <input type="text" placeholder="Enter City" formControlName="CityName" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].CityName"
-                                                    class="addDelercols addcity"(input)="restrictToAlphabets($event)">
+                                                    class="addDelercols addcity"(input)="restrictToNumbers($event)" >
                                                 <input type="text" placeholder="Enter Zip" formControlName="ZipCode" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].ZipCode"
-                                                    class="addDelercols addzip"(input)="restrictToAlphabets($event)">
+                                                    class="addDelercols addzip"(input)="restrictToNumbers($event)">
                                             </div>
 
                                             <div class="col-1" style="margin-left: 53px;">
                                                 <label *ngIf="i == 0">Phone<span>*</span></label>
                                                 <br>
-                                                <input type="text" placeholder="Enter" formControlName="Telephone" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].Telephone"
-                                                    class="addDelercols addphone">
+                                                <input type="text" maxlength="10" placeholder="Enter" formControlName="Telephone" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].Telephone"
+                                                    class="addDelercols addphone" (input)="restrictToNumbers($event)">
                                             </div>
 
 

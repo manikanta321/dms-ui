@@ -627,7 +627,7 @@
  }
 
  ::ng-deep.btnhover:hover {
-   background: #000000 !important;
+   background: grey !important;
  }
 
  .pagination {

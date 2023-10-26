@@ -9,7 +9,7 @@
               </ng-multiselect-dropdown>
             </form>
             <div class="dropdown-placeholder target-placeholder">
-              <span *ngIf="targetForm.get('targetForm').value.length == 0"> Target Group </span>
+              <span *ngIf="targetForm.get('targetForm').value.length == 0" style="margin-left: 7px;"> Target Group </span>
               <span *ngIf="targetForm.get('targetForm').value.length == 1" class="selected-placeholder"> {{targetForm.get('targetForm').value.length}} Target selected </span>
               <span *ngIf="targetForm.get('targetForm').value.length > 1" class="selected-placeholder"> {{targetForm.get('targetForm').value.length}} Target(s) selected </span>
     
@@ -28,7 +28,7 @@
             </ng-multiselect-dropdown>
           </form>
           <div class="dropdown-placeholder geography-placeholder">
-            <span *ngIf="geographyForm.get('geographyForm').value.length == 0"> Geographies </span>
+            <span *ngIf="geographyForm.get('geographyForm').value.length == 0"  style="margin-left: 7px;"> Geographies </span>
             <span *ngIf="geographyForm.get('geographyForm').value.length == 1" class="selected-placeholder"> {{geographyForm.get('geographyForm').value.length}} Geography selected </span>
             <span *ngIf="geographyForm.get('geographyForm').value.length > 1" class="selected-placeholder"> {{geographyForm.get('geographyForm').value.length}} Geography(s) selected </span>
   

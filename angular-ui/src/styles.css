@@ -379,6 +379,7 @@ mat-list-item-content::before {
 ngx-daterangepicker-material .md-drppicker {
   border: 1px solid #ccc;
   background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
+  margin-top: 28px;
 }
 
 .md-drppicker .calendar-table {

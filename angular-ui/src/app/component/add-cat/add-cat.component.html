@@ -37,7 +37,7 @@
           </span>
       </p>
      <br>
-     <div class="buttonDiv">
+     <div class="buttonDiv d-flex ">
         <button  *ngIf="catsetName=='Add Category'"   class="update-btn" (click)="AddCat()" [disabled]="!addcat || !addcatcode">Save</button>
         <button *ngIf="catsetName=='Edit Category'" class="update-btn" (click)="editCat()" [disabled]="!addcat || !addcatcode">Save</button>
 

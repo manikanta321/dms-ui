@@ -7,12 +7,12 @@
 
 .upload
 {
-   background-color: #000000;
+   background-color: #018B75;
    color: white;
    height: 44px;
    width: 597px;
    text-align: center;
-   background: #000000;
+   /* background: #000000; */
    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
    border-radius: 10px;
    cursor: pointer;
@@ -20,8 +20,8 @@
 }
 .cancelbtn
 {
-  background: #FFFFFF;
-  color: #000;
+  background: #018B75;
+  color: white;
   font-family: 'Gilroy-SemiBold';
    height: 44px;
    width: 597px;

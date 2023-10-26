@@ -120,24 +120,21 @@
                                 <div class="image text-center">
                                     <div class="fileadded">
                                         <label class="uploadlabel-Added" *ngIf="addImgpreview">
-                                            <input matInput placeholder="" #input id="file-input"
-                                                class="form-control imgupload" type="file"
-                                                (change)="onFileChanged($event)">
-                                            <img src="data:image/jpeg;base64,{{base64textString}}" class="addproImg"
-                                                for="file-input" alt="left-arr-btn"></label>
+                                            <input matInput placeholder="" #input id="file-input" class="form-control imgupload" type="file" (change)="onFileChanged($event)">
+                                            <img src="data:image/jpeg;base64,{{base64textString}}" class="addproImg" for="file-input" alt="left-arr-btn">
+                                        </label>
                                     </div>
                                     <div class="fileadd d-flex justify-content-center align-middle mt-2">
                                         <label class="uploadlabel" *ngIf="!addImgpreview">
-                                            <input matInput placeholder="" #input id="file-input"
-                                                class="form-control imgupload" type="file"
-                                                (change)="onFileChanged($event)">
-                                            <img src="../../../assets/img/down13.png " width="70px" height="70px"
-                                                for="file-input" alt="left-arr-btn"></label>
-                                        <p style="position: relative; top: 50%; transform: translateY(50%);"
-                                            *ngIf="!addImgpreview">Choose Files here</p>
+                                            <input matInput placeholder="" #input id="file-input" class="form-control imgupload" type="file" (change)="onFileChanged($event)">
+                                            <img src="../../../assets/img/down13.png" width="70px" height="70px" for="file-input" alt="left-arr-btn">
+                                            <p style="position: relative; top: 50%; transform: translateY(50%);" *ngIf="!addImgpreview">Choose Files here</p>
+                                        </label>
                                     </div>
+                                    <p class="error-message" *ngIf="fileTypeErrorMessage">Only images are allowed.</p>
                                 </div>
                             </div>
+                           
                         </div>
 
                         <!-- items in promotion -->

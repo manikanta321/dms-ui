@@ -152,6 +152,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   showSelectedRows:boolean=false;
   isSelected: any;
   hasValidationErrors: boolean=false;
+ 
+fileTypeErrorMessage: string = '';
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
     //update the ui
@@ -1982,15 +1984,33 @@ this.textShow=true;
     })
 
   }
-  public onFileChanged(event) {
+  // public onFileChanged(event) {
+  //   this.selecetdFile = event.target.files[0];
+  //   if (this.selecetdFile.size <= 1 * 1024 * 1024) {
+  //     this.handleInputChange(this.selecetdFile);
+  //     this.addImgpreview = true;
+  //   }
+  //   else {
+  //     alert('File size should not be greater than 1MB');
+  //   }
+  // }
+  onFileChanged(event: any) {
     this.selecetdFile = event.target.files[0];
     if (this.selecetdFile.size <= 1 * 1024 * 1024) {
-      this.handleInputChange(this.selecetdFile);
-      this.addImgpreview = true;
-    }
-    else {
+      if (this.isImage(this.selecetdFile)) {
+        this.handleInputChange(this.selecetdFile);
+        this.addImgpreview = true;
+        this.fileTypeErrorMessage = ''; // Clear any previous error message
+      } else {
+        this.fileTypeErrorMessage = 'Only images are allowed.';
+      }
+    } else {
       alert('File size should not be greater than 1MB');
     }
+  }
+  private isImage(file: File): boolean {
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    return allowedTypes.includes(file.type);
   }
   handleInputChange(files) {
     this.imagePreview = files

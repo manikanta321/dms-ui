@@ -152,8 +152,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   showSelectedRows:boolean=false;
   isSelected: any;
   hasValidationErrors: boolean=false;
- 
-fileTypeErrorMessage: string = '';
+  fileTypeErrorMessage: string = '';
   //event handler for the select element's change event
   selectChangeHandler(event: any) {
     //update the ui

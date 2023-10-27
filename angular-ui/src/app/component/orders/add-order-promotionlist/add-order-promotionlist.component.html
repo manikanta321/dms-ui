@@ -103,21 +103,30 @@
                                                 <!-- promotion 1 -->
                                                 <div *ngIf="data.promotionTypesId ===1">
                                                     <div *ngFor="let promos of data.promoDetails.buyGroups">
+                                                        <!-- {{promos|json}} -->
                                                         <div class="row  FirstPromotioncalcul">
-                                                            <div class="col"
-                                                                style="background: rgba(222, 226, 230, 0.2);height: 60px;">
-                                                                <label id="FirstPromotionlabelCal">Total Order
-                                                                    Qty</label>
-                                                                <span
-                                                                    id="FirstproTotalorderqyt">{{promos.totalQuantity+storedValue}}</span>
-                                                            </div>
-                                                            <div class="col"
-                                                                style="background: rgba(222, 226, 230, 0.2);">
-                                                                <label id="FirstPromotionlabelCal">Total Order
-                                                                    Amount</label>
-                                                                <span
-                                                                    id="FirstPromotiontotalselectamount">{{promos.totalAmount+storedTotalAmount}}</span>
-                                                            </div>
+                                                            <div class="col" style="background: rgba(222, 226, 230, 0.2);height: 60px;">
+                                                                    <label id="FirstPromotionlabelCal">Total Order
+                                                                        Qty</label>
+                                                                        <!-- <span id="FirstproTotalorderqyt">
+                                                                            {{ (promocalculation?.overallQty !== promos.totalQuantity) ? (promocalculation?.overallQty + totalSelectedQuantity+storedValue) : promos.totalQuantity+storedValue }}
+                                                                          </span> -->
+                                                                          <span id="FirstproTotalorderqyt">
+                                                                            {{ promocalculation?.overallQty + totalSelectedQuantity+storedValue}}
+                                                                          </span>
+                                                                           <!-- <span id="FirstproTotalorderqyt">{{promos.totalQuantity+storedValue+promocalculation?.overallQty}}</span> -->
+                                                                    </div>
+                                                                <div class="col" style="background: rgba(222, 226, 230, 0.2);">
+                                                                    <label id="FirstPromotionlabelCal">Total Order
+                                                                        Amount</label>
+                                                                        <!-- <span id="FirstPromotiontotalselectamount">{{(promocalculation?.overallAmount!==promos.totalAmount)?((promocalculation?.overallQty+totalSelectedQuantity)*promos?.stockitemid[0]?.price):promos.totalAmount}}</span> -->
+                                                                    <span id="FirstPromotiontotalselectamount">{{promos.totalAmount+promocalculation?.overallAmount}}</span>
+                                                                    <!-- <span id="FirstPromotiontotalselectamount">{{
+                                                                        promocalculation?.overallAmount !==(promos.totalAmount+promocalculation?.overallAmount)
+                                                                        ?(promos.totalAmount):
+                                                                        promocalculation?.overallAmount+storedTotalAmount+(promos.totalAmount>0?0:0)}}</span> -->
+                                                                        <!-- <span id="FirstPromotiontotalselectamount">{{ promocalculation?.overallAmount + (promos.totalAmount > 0 ? promos.totalAmount : 0) }}</span> -->
+                                                                </div>
                                                             <div class="row" style="height: 60px;">
                                                                 <div class="col">
                                                                     <label id="FirstPromotionProOrderQTY">Promo Order

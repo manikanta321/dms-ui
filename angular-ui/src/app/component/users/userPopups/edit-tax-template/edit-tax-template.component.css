@@ -2,10 +2,11 @@
 .NAME2
 {
     margin-left: 8px;
+    font-family: 'Gilroy-Medium';
 }
 #TaxitemName2
 {
-    font-family: 'Gilroy';
+    font-family: 'Gilroy-Medium';
     font-weight: 500;
      position: relative;
     top: 13px;
@@ -18,7 +19,7 @@
 }
 #Options2
 {
-    font-family: 'Gilroy';
+    font-family: 'Gilroy-Medium';
      font-weight: 500;
      position: relative;
      top: 13px;
@@ -29,7 +30,7 @@
 }
 #Formula2
 {
-    font-family: 'Gilroy';
+    font-family: 'Gilroy-Medium';
      font-weight: 500;
      padding-left: 22px;
      padding-top: 25px;
@@ -74,9 +75,8 @@
 }
 .addU{
     position: relative;
-     /* font-family: 'Gilroy-Bold';  */
-     font-weight: bold;
-     font-size: 20px;
+      font-family: 'Gilroy-Bold'; 
+      font-size: 20px;
 }
 .addU:after{
     content: "";
@@ -137,6 +137,7 @@
     border: 1px solid #D6D6D6;
     padding: 10px 5px;
     width: 250px;
+    font-family: 'Gilroy-Bold';
 }
 .tax-head input{
 border-radius: 5px;
@@ -151,25 +152,29 @@ label{
     padding: 2px 0;
 }
 .E-saveBtn{
-background:black;
+/* background:black; */
+background-color:#018B75 ;
 color: white;
  padding: 2px 30px;
  width: 175px;
  height: 43px;
  border-radius: 10px;
  margin-right: 10px;
- font-family: 'Gilroy';
+ font-family: 'Gilroy-SemiBold';
 }
 .E-cancelBtn{
-    background: #fff;
-    color: black;
+    /* background: #fff; */
+    background-color:#018B75 ;
+    /* color: black; */
+    color: white;
     padding: 2px 30px;
     border: 1px solid grey;
     width: 175px;
     height: 43px;
     border: solid 2px black;
     border-radius: 10px;
-    font-family: 'Gilroy';
+    font-family: 'Gilroy-SemiBold';
+    
 
 }
 .E-saveBtn:hover{
@@ -204,6 +209,6 @@ color: white;
 td{
     padding: 10px;
 }
-.font{
-    font-family: 'Gilroy';
-}
+/* .font{
+    font-family: 'Gilroy-Medium';
+} */

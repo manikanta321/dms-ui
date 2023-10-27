@@ -17,6 +17,8 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
   emptyRows:any;
   errorfreeRows:any =[];
   uploadedData:any = [];
+  files:any =[];
+  TargetUpload:any=[];
   receiptsUploadList:any = [];
   TotalRows:any = [];
   EmptyRows:any=[];
@@ -32,18 +34,19 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
   incorrectRows:any = [];
   Incorrect:any;
   batchId:any;
-  CreatedById:any;
+  CreateById:any;
   zeroVal:boolean = false; 
   duplicate:boolean = false;  
   incorrectData:boolean = false;
   ReceiptOrTargetUpload:boolean=false;
+  uploadedTextShow:boolean=false;
   constructor(private salesService:SalesServicesService,
     private otherMasterService:OtherMasterService,
     private dialogRef: MatDialogRef<OrderReceiptsBulkUploadComponent>,) { }
 
   ngOnInit(): void {
-    this.CreatedById = localStorage.getItem("logInId");
-    this.CreatedById = Number(this.CreatedById);
+    this.CreateById = localStorage.getItem("logInId");
+    this.CreateById = Number(this.CreateById);
     let isitemtarget =localStorage.getItem('UploadTarget')
 
     if(isitemtarget==''){
@@ -54,7 +57,18 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
     }
   }
 
+  BatchId:any;
   onFileChange(event: any) {
+    // Iterate over selected files
+    for (let file of event.target.files) {
+      // Append to a list
+      this.files.push({
+        name: file.name,
+        type: file.type
+        // Other specs
+      });
+    }
+  this.uploadedTextShow=true;
     /* wire up file reader */
     const target: DataTransfer = <DataTransfer>(event.target);
     if (target.files.length !== 1) {
@@ -67,7 +81,6 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
       const binarystr: string = e.target.result;
       const wb: XLSX.WorkBook = XLSX.read(binarystr, { type: 'binary',cellDates: true });
       console.log(wb,"wb")
-
       /* selected the first sheet */
       const wsname: string = wb.SheetNames[0];
       console.log(wsname,"wsname")
@@ -77,34 +90,70 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
       /* save data */
       
        this.uploadedData = XLSX.utils.sheet_to_json(ws); // to get 2d array pass 2nd parameter as object {header: 1}
-      console.log("New Dataaaa",this.uploadedData); // Data will be logged in array format containing objects
+      console.log("New Dataaaa checking coming or not",this.uploadedData);
       const uploadedFile = {
-        CreateById:this.CreatedById,
-        bulkOrderReceipts:this.uploadedData
+        
+        //  CurrentUserId:this.CreatedById,
+        CreateById:this.CreateById,
+         BulkDealerTgts:this.uploadedData,
+         BatchId : this.TargetUpload.batchid,
+         
       }
-      alert(this.CreatedById)
+      alert(this.batchId);
+      console.log("check once Batch id coming or not" , this.batchId);
+
+      console.log("check once Batch id coming or not" , this.BatchId);
+    
       console.log("Daaataaa",uploadedFile); 
-      this.salesService.getReceiptBulkUpload(uploadedFile).subscribe((res)=>{
-        if(res.succeded = true) {
+        
+       this.salesService.getReceiptBulkUploadTarget(uploadedFile).subscribe((res)=>{
+           if(res.succeded = true) {
           this.showTable =true;
         }
-        this.receiptsUploadList=res.response;
-        this.TotalRows = this.receiptsUploadList.allRows;
-        this.totalRows = "Total Rows = "+ this.TotalRows.length
-        this.EmptyRows = this.receiptsUploadList.emptyRows;
-        this.emptyRows = "Empty Rows = "+ this.EmptyRows.length
-      this.duplicateEntryy =this.receiptsUploadList.duplicateEntries
-      this.duplicateEntry = "Duplicate Entries = "+this.duplicateEntryy.length;
-      this.errorfreeRows = this.receiptsUploadList.errorFreeRows
-      this.errorFree = "Error Free Rows = "+ this.errorfreeRows.length;
-        console.log("this.receiptsUploadList",this.receiptsUploadList);
-        this.incorrectRows = this.receiptsUploadList.incorrectData;
-        this.Incorrect = "Incorrect Data = " + this.incorrectRows.length;
-        const SalesUploadData = res.response.allRows;
-        console.log("SalesUploadData",SalesUploadData)
-        this.batchId = SalesUploadData.map(({ batchId }) => batchId);
+        
+        this.TargetUpload=res.response;
+        console.log("Batch data checkinn",this.BatchId);
+        this.BatchId = this.TargetUpload.batchid;
+        alert(this.batchId);
+        console.log("check BATCH ID",this.batchId);
+        console.log("Batch Id Coming or not",this.batchId);
+
+        this.TotalRows = this.TargetUpload.allRows;
+        this.totalRows = "Total Rows = "+ this.TotalRows.length;
+       console.log( this.totalRows,"check total rows");
+       
+
+        this.errorfreeRows = this.TargetUpload.errorFreeRows
+
+        this.errorFree = "Error Free Rows = "+ this.errorfreeRows.length;
+
+        this.duplicateEntryy =this.TargetUpload.duplicateRows
+        
+        this.duplicateEntry = "Duplicate Entries = " + this.duplicateEntryy.length;
+         
+        console.log( this.duplicateEntry,"check total duplicateEntry"); 
+
+        
+        this.incorrectRows = this.TargetUpload.incorrectData;
+        console.log("incorrectColumn check" ,this.incorrectRows);
+        this.incorrectRows?.map((ele)=>{
+          ele.incorrectColumn = ele.incorrectColumn?.split(":")[1].toLowerCase().trim();
+          console.log("incorrectColumn check" , ele.incorrectColumn);
+          return ele;
+        });
+        console.log("incorret data checking " , this.incorrectRows);
+        this.Incorrect = "Incorrect Data = " + this.incorrectRows?.length;
+        const TargetUpload = res.response.allRows;
+        console.log("associationList   check",TargetUpload)
+        this.batchId = TargetUpload.map(({ batchId }) => batchId);
+        this.batchId = TargetUpload.map(({ batchId }) => batchId);
+      
+       
+
+       
       })
     };
+    
  }
 
   expandTotalRows(){
@@ -112,8 +161,10 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
 
     if(this.rowsTotal === false){
       this.image1 = 'assets/img/minimize-tag.png';
+      this.image4 = 'assets/img/maximize-arrow.png';
     } else {
       this.image1 = 'assets/img/maximize-arrow.png';
+      this.image4 = 'assets/img/maximize-arrow.png';
      
     }
   }
@@ -167,17 +218,24 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
      
     }
   }
+  closedialogbox()
+  {
+    this.dialogRef.close();
+  }
+  
   UploadReceipt() {
-    const uploadedFile = {
-      BatchId:this.batchId[0],
-      action:'PROCESS'
+    let uploadedFile = {
+      currentUserId:this.CreateById,
+      BatchId:this.BatchId
     }
     console.log("Daaataaa",uploadedFile); 
-    this.salesService.saveBulkUploadReceipt(uploadedFile).subscribe((res)=>{
+    this.salesService.SaveGetbulkuploadTarget(uploadedFile).subscribe((res)=>{
       this.otherMasterService.filter('Register click');
       const uploadedData = res.response;
-      console.log("SaveReceipt",uploadedData)
-      this.dialogRef.close();
+      console.log("Save Bulk Upload Target",uploadedData)
+      console.log(this.BatchId,"Checking BATCH ID");
+      console.log(this.batchId,"Checking BATCH ID");
+     this.dialogRef.close();
     })
    }
 }

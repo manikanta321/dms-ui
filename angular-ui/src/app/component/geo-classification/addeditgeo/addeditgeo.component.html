@@ -3,7 +3,7 @@
 <div class="container font">
     <mat-icon mat-button class="close-icon" [mat-dialog-close]>close</mat-icon>
     <div class="actv-user text-center">
-        <h1 class="head-text"> {{isEditModal ? 'Edit':'Add'}} {{geoType}}</h1>
+        <h1 class="head-text {{isEditModal ? 'edit-mode' : 'add-mode'}} " > {{isEditModal ? 'Edit':'Add'}} {{geoType}}</h1>
     </div>
     <form #loginForm="ngForm">
     <div>
@@ -26,7 +26,7 @@
       >-->
         
             <label style="margin-top:4px">Code<span style="color: red;margin-top: 2px;">*</span></label><br>
-        <input type="text" name="cName" id="cName" #cName="ngModel" [placeholder]="'Enter ' + geoPlaceholder + ' name'" [(ngModel)]="code"
+        <input type="text" name="cName" id="cName" #cName="ngModel" [placeholder]="'Enter ' + geoPlaceholder + ' code'" [(ngModel)]="code"
           required >      
           <p style=" margin-bottom: -29px; padding: 0px;font-size: 14px;position: relative; bottom: 8px;" 
            *ngIf="cName.invalid && (cName.dirty || cName.touched)"

@@ -1,19 +1,33 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { HttpClient } from '@angular/common/http';
 import { CellClickedEvent, CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridReadyEvent } from 'ag-grid-community';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
+import { SharedimageService } from 'src/app/sharedimage.service';
+import { ViewPromotionPopupComponent } from '../../pramotion-action/view-promotion-popup/view-promotion-popup.component';
+import { Item } from '@generic-ui/ngx-grid/core/structure/source/src/api/item/item';
+
 
 @Component({
   selector: 'app-add-order-promotionlist',
   templateUrl: './add-order-promotionlist.component.html',
   styleUrls: ['./add-order-promotionlist.component.css']
 })
-export class AddOrderPromotionlistComponent implements OnInit {
+export class AddOrderPromotionlistComponent implements OnInit {  
   // taxtemplete :any =['hj','hj'];
+  
+  
+  PromotionID: any;
+ 
 
+  otherInputValue:any;
+  MOQ:any;
+  Remarks :any;
+  startDate:any;
+  image3 = 'assets/img/expandarrows.svg';
+  imageUrl: any | null = null;
   private gridApi!: GridApi;
   promoList = true;
   priceD = true;
@@ -25,7 +39,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
   actineLabel: any;
   updateOrSave: boolean = false
   editData: boolean = false;
-  image = 'assets/img/maximize-arrow.png';
+  image = 'assets/img/expandarrows.svg';
 
   buygg: any;
   selectedrowList: any = [];
@@ -45,18 +59,81 @@ export class AddOrderPromotionlistComponent implements OnInit {
   promotionstype4: any = [];
   promotionstype1: any = [];
   promotionstype2: any = [];
+  materialcustomidentifier:any;
   currentSelectedPromos: any = [];
-
   isOrderPromotionValid: boolean = false;
+  
+  stockItem:any;
+  promos:any
+   totalSelectedQuantity: number=0;
+  
+
+
 
   constructor(private user: UserService,
     private orders: OrdersApisService,
     private spinner: NgxSpinnerService,
+    private dialog: MatDialog,
     private dialogRef: MatDialogRef<any>,
     private http: HttpClient,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    private sharedImageService: SharedimageService,
+    @Inject(MAT_DIALOG_DATA) public data: any) {  
+   }
+   registrationNumber:any;
+   result: any;
+   quantity:number|any
+   storedValue:number=0;
+   storedForthProvalue:number=0;
+   storedTotalAmount:number=0;
+   StoredForhtPromoTotalAmount:number=0;
+   StoreThreePromotionsselectedqty:number=0;
+   StoredThreePromoTotalAmount:number=0;
+  
+  ngOnInit(): void { 
+    // 1 Promotions Selected Quantity
+    const storedValuenumber = localStorage.getItem('FirstPromotionCalculation');
+    if (storedValuenumber !== null) {
+      this.storedValue = parseInt(storedValuenumber);
+    }
 
-  ngOnInit(): void {
+    // 1 Promotions Total Amount
+    const totalAmountnumber = localStorage.getItem('FirstPromotionTotalAmountValue');
+    if (totalAmountnumber !== null) {
+      this.storedTotalAmount = parseInt(totalAmountnumber);
+    }
+    
+    // 4th Promotion Quantity
+    const StoredValueNumber = localStorage.getItem('ForthPromotionCalculationsTotalQty');
+    if (StoredValueNumber !== null) {
+      this.storedForthProvalue = parseInt(StoredValueNumber);
+      console.log(this.storedForthProvalue,'Check reee')
+    }
+
+    // 4 Promotion Total Amount
+    const TotalAmountnumber = localStorage.getItem('ForthPromotionCalculationsAmount');
+    if (TotalAmountnumber !== null) {
+      this.StoredForhtPromoTotalAmount = parseInt(TotalAmountnumber);
+    }
+
+  //  3 Promotions Quantity
+  const StoredthreePromotionsQuantityNumber = localStorage.getItem('ThreeePromotionCalculationsTotalQty');
+    if (StoredthreePromotionsQuantityNumber !== null) {
+      this.StoreThreePromotionsselectedqty = parseInt(StoredthreePromotionsQuantityNumber);
+      console.log(this.StoreThreePromotionsselectedqty,' 3 Promotions total quantity Check reee')
+    }
+
+      // 3 Promotion Total Amount
+      const StoreTotalAmountnumberthreePromotions = localStorage.getItem('ThreePromotionCalculationsAmount');
+      if (StoreTotalAmountnumberthreePromotions !== null) {
+        this.StoredThreePromoTotalAmount = parseInt(StoreTotalAmountnumberthreePromotions);
+      }
+ 
+  
+    this.MOQ=localStorage.getItem('MOQ');
+        this.imageUrl = localStorage.getItem('clickedImageURL');
+        console.log("THis.Image",this.imageUrl)
+        this.imageUrl = JSON.parse(this.imageUrl)
+    console.log(this.imageUrl,"IMAGE")
     this.taxdropdown();
 
     let editV = localStorage.getItem('Edit');
@@ -77,15 +154,32 @@ export class AddOrderPromotionlistComponent implements OnInit {
     console.log(this.geographyId, "this.geographyId")
     this.dealerid = localStorage.getItem("dealerid");
     console.log(this.dealerid, "this.this.dealerid")
-    this.currentSelectedPromos = this.data ?? [];
-    this.getPromotionsImages();
+    this.currentSelectedPromos = this.data.selectedData ?? [];
+    this.imagesid = this.data.imagesid;
+    // this.arrayOfImages.forEach(x => {
+    //   if (x.isSelected) this.imagesid.push(x.productPromotionsId);
+    // })
+    // if (this.imagesid.length > 0)
+      this.getProductsOfPromotionForOrder();
   }
 
 
   buysetsGroups(item) {
     // this.buysets = !this.buysets;
     let selectedGrp = this.griddatapromotions.find(x => x.productPromotionsId == item.productPromotionsId);
-    selectedGrp.isShowPromos = !selectedGrp.isShowPromos;
+     selectedGrp.isShowPromos = !selectedGrp.isShowPromos;
+  }
+  showPromotionInfo(e,promotionItem) {
+    e.stopPropagation();
+    localStorage.setItem('promoclickId', promotionItem.productPromotionsId)
+    localStorage.setItem('promoclickName', promotionItem.promotionName)
+    const config: MatDialogConfig = {
+      minWidth: '90vw',
+      height: '610px',
+      autoFocus: false,
+      data: { hideGeoDealer: true }
+    };
+    this.dialog.open(ViewPromotionPopupComponent, config);
   }
 
   taxdropdown() {
@@ -95,56 +189,77 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
     });
   }
+  
+  
+  
+  ForthPromotionsearch;
+  ThirdPromotion;
+  searchText;
+  searchTextFreeItems;
+  searchTextSecondPromotion;
+  searchTextSecondPromotionfree;
 
-  onSearchChange($event) {
 
+  
+  
+  viewpromotions:any;
+  expandPromotions() {
+    // this.viewpromotions = !this.viewpromotions;
+
+    // if (this.viewpromotions === false) {
+    //   this.image3 = 'assets/img/maximize-arrow.png';
+    // } else {
+    //   this.image3 = 'assets/img/minimize-tag.png';
+
+    // }
   }
-
 
   // promotion 
 
-  getPromotionsImages() {
-    let data = {
-      "Dealerid": this.dealerid,
-      "GeographyIdid": this.geographyId
-    }
-    console.log(data, "dealer and ge data");
-    this.spinner.show();
-    this.orders.orderpromotionimages(data).subscribe((res: any) => {
-      this.imagesapis = res.response
-      this.spinner.hide();
-      console.log(this.imagesapis, "imagesres");
-      this.imagesapis.forEach(item => {
-        console.log(this.currentSelectedPromos);
-        let index = this.currentSelectedPromos.findIndex(x => (x.promotionId == item.promotionId || x.promotionId == item.productPromotionsId));
-        let obj = {
-          "productPromotionsId": item.productPromotionsId,
-          // shd kep is selected as flase
-          "isSelected": index !== -1 ? true : false,
-          "promotionTypesId": item.promotionTypesId,
-          "promotionName": item.promotionName,
-          "imageurl": item.imageurl
-        }
-        this.arrayOfImages.push(obj);
-      });
+  // getPromotionsImages() {
+  //   let data = {
+  //     "Dealerid": this.dealerid,
+  //     "GeographyIdid": this.geographyId
+  //   }
+  //   console.log(data, "dealer and ge data");
+  //   this.spinner.show();
+  //   this.orders.orderpromotionimages(data).subscribe((res: any) => {
+  //     this.imagesapis = res.response
+  //     this.spinner.hide();
+  //     console.log(this.imagesapis, "imagesres");
+  //     this.imagesapis.forEach(item => {
+  //       console.log(this.currentSelectedPromos);
+  //       let index = this.currentSelectedPromos.findIndex(x => (x.promotionId == item.promotionId || x.promotionId == item.productPromotionsId));
+  //       let obj = {
+  //         "productPromotionsId": item.productPromotionsId,
+  //         // shd kep is selected as flase
+  //         "isSelected": index !== -1 ? true : false,
+  //         "promotionTypesId": item.promotionTypesId,
+  //         "promotionName": item.promotionName,
+  //         "imageurl": item.imageurl
+  //       }
+  //       this.arrayOfImages.push(obj);
+  //     });
 
-      // let previousSelectedPromos = []
-      this.arrayOfImages.forEach(x => {
-        if (x.isSelected) this.imagesid.push(x.productPromotionsId);
-      })
-      if (this.imagesid.length > 0)
-        this.getProductsOfPromotionForOrder();
+  //     // let previousSelectedPromos = []
+  //     this.arrayOfImages.forEach(x => {
+  //       if (x.isSelected) this.imagesid.push(x.productPromotionsId);
+  //     })
+  //     if (this.imagesid.length > 0)
+  //       this.getProductsOfPromotionForOrder();
 
-    });
-  }
-
+  //   });
+  // }
+  
+  
 
   getpromotionlistById(e, item) {
     // console.log(e, item);
-
+    console.log(item)
     if (this.imagesid.indexOf(item.productPromotionsId) == -1) {
       item.isSelected = true;
       this.imagesid.push(item.productPromotionsId);
+      console.log(item.productPromotionsId)
       this.getProductsOfPromotionForOrder();
     } else {
       item.isSelected = false;
@@ -156,43 +271,62 @@ export class AddOrderPromotionlistComponent implements OnInit {
   ProductPromotionOrderList: any[] = [];
   getProductsOfPromotionForOrder() {
     let data = {
-      "ProductPromotionId": this.imagesid,
+      "ProductPromotionId": this.imagesid.filter((id, index) => index === this.imagesid.indexOf(id)), // Only consider the first selected ID
       "Dealerid": this.dealerid,
       "GeographyIdid": this.geographyId
     }
-
+  
     this.spinner.show();
     console.log(this.imagesid, "listdatapromotionsids")
     this.orders.GetProductsOfPromotionForOrder(data).subscribe((res: any) => {
-      // this.griddatapromotions = res.response;
+        // this.griddatapromotions = res.response;
 
       // this.griddatapromotions.map(item => {
       //   item.isShowPromos = false;
       //   item.isProductSelected = false;
       //   return item;
       // });
-
+      
+      this.Remarks = res.response?.remarks;
+      this.PromotionID=res.response.promotionTypesId
+      console.log("ResponseData",res.response)
+      // this.MOQ=res.response[0]?.promoDetails?.buyGroups[0]?.moq
+      // this.GETMOQ=res.response[0]?.promoDetails?.getGroups[0]?.moq
+      console.log(this.MOQ,"check moq");
+      console.log(this.GETMOQ,"check  get groups moq");
+      
+    
+     
       this.ProductPromotionOrderList = res.response;
+      console.log(this.ProductPromotionOrderList,"======")
+      
       this.orderPromotionFormatter(this.ProductPromotionOrderList);
-      // this.griddata = this.orderNonPromotionFormatter(this.griddatapromotions);
-      // this.griddatapromotions.sort((a, b) => b.isProductSelected - a.isProductSelected   );
+      
       this.spinner.hide();
-      console.log(this.griddatapromotions, "griddata");
+      console.log(this.griddatapromotions, "griddata and checking MOQ");
+      
     });
-  }
+  }  
+  GETMOQ:any;
+  promoDetails:any;
 
   appendStockItemFields(stockItem, productPromotions) {
     let formatObj: any = {};
     console.log(this.currentSelectedPromos);
     let promotion = this.currentSelectedPromos.find(x => x.promotionId == productPromotions.productPromotionsId);
-    if (promotion) {
-      let exisistItem = promotion.itemDetails.find(y => y.stockitemid == stockItem.stockitemid);
-      if (exisistItem) {
-        stockItem = JSON.parse(JSON.stringify(exisistItem));
-        stockItem.isProductSelected = true;
-        productPromotions.isShowPromos = true;
-      }
-    }
+   
+    if (promotion){
+     
+       let exisistItem = promotion.itemDetails.find(y => y.stockitemid == stockItem.stockitemid);
+      if (exisistItem){
+       
+         var tempStockItem = JSON.parse(JSON.stringify(exisistItem));
+        tempStockItem.isProductSelected = true;
+        productPromotions.isShowPromos = true; 
+        tempStockItem.productSKUName = stockItem.productSKUName;
+        stockItem = tempStockItem;
+       } 
+  }
 
     formatObj.customerPOProductId = stockItem.customerPOProductId ?? 0;
     formatObj.stockitemid = stockItem.stockitemid;
@@ -203,9 +337,16 @@ export class AddOrderPromotionlistComponent implements OnInit {
     formatObj.isProductSelected = stockItem.isProductSelected == undefined ? false : stockItem.isProductSelected;
     formatObj.Quantity = stockItem.quantity == undefined ? null : stockItem.quantity;
     formatObj.Taxid = stockItem.taxid;
+    formatObj.registrationNumber = stockItem.registrationNumber;
+    formatObj.moq = stockItem.moq;
+    formatObj.remarks = stockItem.remarks;
+    formatObj.promotionTypesId = stockItem.promotionTypesId;
+    formatObj.materialcustomidentifier = stockItem.materialcustomidentifier;
+    formatObj.materialCustomName=stockItem.materialCustomName;
 
     return formatObj;
   }
+  
 
   orderPromotionFormatter(promotionList) {
 
@@ -214,7 +355,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
       let exisitPromotion = this.griddatapromotions.find(x => x.productPromotionsId === item.productPromotionsId);
 
       if (!exisitPromotion) {
-        item.isShowPromos = false;
+        // check first
+        item.isShowPromos = true;
         item.isProductSelected = false;
         item.showWarningMsg = false;
 
@@ -351,21 +493,43 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
       });
     });
-  }
-
+  } 
+  
   quantityChange(data, updatedItem) {
-    if (!updatedItem.isProductSelected) {
+    
+    if (!updatedItem.isProductSelected) {  
       updatedItem.isProductSelected = true;
     } else if (!updatedItem.Quantity) {
       updatedItem.isProductSelected = false;
     }
     data.showWarningMsg = true;
     this.PromotionQtyCalculation(data);
+    this.calculateTotalSelectedQuantity();  
+    
   }
 
+  calculateTotalSelectedQuantity() {
+    let totalSelectedQuantity = 0;
+    for (const data of this.griddatapromotions) {
+      for (const group of data.promoDetails.buyGroups || []) {
+        for (const item of group.stockitemid || []) {
+          if (item.isProductSelected) {
+            totalSelectedQuantity += item.Quantity || 0;
+          }
+        }
+      }
+    }
+    this.totalSelectedQuantity = totalSelectedQuantity;
+  }
+
+  
+
+
   orderPromotionEnableValidate() {
-    console.log(this.griddatapromotions);
+    console.log(this.griddatapromotions,"PROMOTION TYPE ID ");
+    
     this.isOrderPromotionValid = true;
+   
     this.griddatapromotions.forEach(x => {
       if (x.promotionTypesId == 3 || x.promotionTypesId == 4) {
         if (!x.promoDetails.isItemValid || !x.promoDetails.isDiscountItemValid) {
@@ -375,12 +539,14 @@ export class AddOrderPromotionlistComponent implements OnInit {
       if (x.promotionTypesId == 2 || x.promotionTypesId == 1) {
         if (!x.promoDetails.isGetItemValid || !x.promoDetails.isBuyItemValid) {
           this.isOrderPromotionValid = false;
+          
+              
         }
       }
 
     })
   }
-
+  TotalthreePromotionAmount:number=0;
   calculateDiscountVolumeAmount(item) {
     item.promoDetails.isDiscountItemValid = false;
     item.promoDetails.DiscountAmount = 0;
@@ -401,9 +567,13 @@ export class AddOrderPromotionlistComponent implements OnInit {
         });
       }
     });
+     // 3 Promotions TotalAmount Calculations
+     this.TotalthreePromotionAmount=item.promoDetails.DiscountAmount;
+     console.log("Checking Total Amount",item.promoDetails.DiscountAmount);
+  
   }
-
-  calculateDiscountAmount(item) {
+ 
+  calculateDiscountAmount(item) {       
     item.promoDetails.isDiscountItemValid = false;
     item.promoDetails.DiscountAmount = 0;
     item.promoDetails.stockitems.forEach(stockItem => {
@@ -416,12 +586,33 @@ export class AddOrderPromotionlistComponent implements OnInit {
             stockItem.DiscountAmount = element.maxPrice;
             item.promoDetails.isDiscountItemValid = true;
             item.promoDetails.DiscountAmount += stockItem.finalPrice;
+
+            // 4 // TotalForthPromotionAmount Calculations
+            this.totalPromotionOrderAmount=item.promoDetails.DiscountAmount;
+          console.log("RK",item.promoDetails.DiscountAmount);
+          localStorage.setItem('ForthPromotionTotalAmount',JSON.stringify(this.totalPromotionOrderAmount));
+
+         
+          
           }
+          
         });
       }
+    
     });
-  }
+
+   
+   
+  }  
+
+  totalPromotionOrderAmount: number = 0;
+  selectedProQTY:number=0;
+  TotalselectedQuantitythreePromotion:number=0;
+  
+  TotalForthPromotionAmount:number=0;
   PromotionQtyCalculation(item) {
+   
+  
     switch (item.promotionTypesId) {
       case 1:
         // buygroups
@@ -437,10 +628,28 @@ export class AddOrderPromotionlistComponent implements OnInit {
               stockItem.stockitemid.forEach(stock => {
                 if (stock.isProductSelected) {
                   stockItem.totalQuantity += stock.Quantity;
+                  console.log(stockItem.totalQuantity,"dsvdvs")
+                  
+
+                   const totalQuantity = stockItem.totalQuantity;
+
+                  //  this.totalQuantity = totalQuantity;
+                  
+                    localStorage.setItem('totalQuantity',totalQuantity);
+                    
+                  
+
                   stockItem.totalAmount += (stock.price * stock.Quantity);
+
+                  const totalAmount = stockItem.totalAmount;
+                    localStorage.setItem('totalAmount',totalAmount);
+
+                  console.log(stockItem.totalAmount,"sdvsfsv")
+                 
+
+                  
                 }
               })
-
               if (stockItem.maxVolume) {
                 item.promoDetails.buyGroupsQty += Math.floor(stockItem.totalQuantity / stockItem.maxVolume);
               }
@@ -449,7 +658,6 @@ export class AddOrderPromotionlistComponent implements OnInit {
                 item.promoDetails.isBuyItemValid = false;
               }
             }
-
           });
         }
         // getgroups
@@ -489,10 +697,14 @@ export class AddOrderPromotionlistComponent implements OnInit {
             // }
           });
         }
+        item.promoDetails.totalAmount = item.promoDetails.buyGroups.reduce((total, stockItem) => {
+          return total + (stockItem.totalAmount ?? 0);
+        }, 0);
+        this.totalPromotionOrderAmount = item.promoDetails.totalAmount;
         break;
 
       case 2:
-
+      
         if (item.promoDetails && item.promoDetails.buySets && item.promoDetails.buySets && item.promoDetails.buySets.length != 0) {
           item.promoDetails.isBuyItemValid = true;
           item.promoDetails.isBuyItemSelected = false;
@@ -511,6 +723,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
                     stockItem.totalQuantity += stock.Quantity;
                     stockItem.totalAmount += (stock.price * stock.Quantity);
                   }
+                
                 })
 
                 if (stockItem.maxVolume && stockItem.totalQuantity) {
@@ -574,6 +787,14 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
           });
         }
+        item.promoDetails.totalAmount = item.promoDetails.getSets.reduce((total, setItem) => {
+          return total + setItem.getGroups.reduce((groupTotal, stockItem) => {
+            return groupTotal + (stockItem.totalAmount ?? 0);
+          }, 0);
+        }, 0);
+  
+        // Calculate and store total promotion order amount for case 2
+        this.totalPromotionOrderAmount = item.promoDetails.totalAmount;
 
         this.updateInputEnableStatus(item);
         break;
@@ -587,6 +808,12 @@ export class AddOrderPromotionlistComponent implements OnInit {
             if (stockItem.isProductSelected) {
               item.promoDetails.totalQuantity += stockItem.Quantity;
               item.promoDetails.totalAmount += (stockItem.price * stockItem.Quantity);
+
+              
+          //  3 Promotion Calculations Total Selected Quantity
+              console.log(item.promoDetails.totalQuantity,"OMG")
+              this.TotalselectedQuantitythreePromotion=item.promoDetails.totalQuantity;
+              
             }
           });
           if (item.promoDetails.totalQuantity < item.promoDetails.moq) {
@@ -606,6 +833,12 @@ export class AddOrderPromotionlistComponent implements OnInit {
               item.promoDetails.totalQuantity += stockItem.Quantity;
               item.promoDetails.totalAmount += (stockItem.price * stockItem.Quantity);
               // stockItem.DiscountAmount = this.calculateDiscountAmount(item.promoDetails.prices, stockItem)
+
+              // 4 Promotion Calculations
+          this.selectedProQTY=item.promoDetails.totalQuantity;
+         
+        
+             
             }
           });
           if (item.promoDetails.totalQuantity < item.promoDetails.moq) {
@@ -617,9 +850,13 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
       default:
         break;
+       
+      
+
     }
 
     this.orderPromotionEnableValidate();
+    
   }
   checkboxChange(event, changedPromotionObj, promotionItem) {
     console.log(event, changedPromotionObj, "event, changedPromotionObj");
@@ -627,9 +864,10 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
     this.quantityadd = 0;
     this.price = 0;
-    console.log(this.griddatapromotions, "data after slection");
+    console.log(this.griddatapromotions, "data after selection");
     promotionItem.showWarningMsg = true;
     this.PromotionQtyCalculation(promotionItem);
+    this.calculateTotalSelectedQuantity();
   }
 
   doubleClick(itemList, taxId) {
@@ -641,10 +879,14 @@ export class AddOrderPromotionlistComponent implements OnInit {
       });
     }
   }
+  
+ 
 
+   
+  totalQuantity:any
   addPromoItems() {
-
-    // payload for 3 and 4th promotions
+    
+   // payload for 3 and 4th promotions
     this.promotionstype1 = [];
     this.promotionstype2 = [];
     this.promotionstype3 = [];
@@ -829,6 +1071,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
                 };
                 selectedPromotionData3.push(obj)
+                // 3 Promotions calculations
+                localStorage.setItem('ThreePrommotionTotalselectedQuantity',JSON.stringify(this.TotalselectedQuantitythreePromotion));
+                localStorage.setItem('ThreePromotionTotalAmount',JSON.stringify(this.TotalthreePromotionAmount));
 
               }
             });
@@ -845,6 +1090,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
           if (item.promoDetails && item.promoDetails.stockitems && item.promoDetails.stockitems.length != 0) {
             item.promoDetails.stockitems.forEach(stockItem => {
               if (stockItem.isProductSelected) {
+
                 let obj = {
 
                   "Taxid": stockItem.Taxid,
@@ -854,6 +1100,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
                 };
                 selectedPromotionData4.push(obj)
+                // 4 Promotion Calculations
+                localStorage.setItem('ForthPromotionSelectedQTy',JSON.stringify(this.selectedProQTY));
+               
               }
             });
           }
@@ -862,6 +1111,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
             "AddItems": selectedPromotionData4
           }
           this.promotionstype4.push(data4);
+        
           break;
         default:
           break;
@@ -885,16 +1135,199 @@ export class AddOrderPromotionlistComponent implements OnInit {
         next: (res: any) => {
           if (res) {
             console.log(res.response, "response after adding item in promotions");
+    //  localStorage.setItem('PromotionType',res.response[0].promotionTypeNmae)
+    localStorage.setItem('PromotionName',res.response[0].promotionName);
+    localStorage.setItem('PromotionTypeName',res.response[0].promotionTypeNmae);
 
             this.dialogRef.close(res.response);
+          
+
+           
           }
+          
         },
         error: (err: any) => {
 
         }
       });
+      
+    }
+  
+  
+    
+
+totatQty(event:any) {
+alert(event);
+}
+
+clearQuantity()
+{
+//   this.Item.quantity=null;
+//   this.Item.quantity='';
+//  this.quantityadd='';
+//   this.quantityadd = this.initialValue;
+  
+}
+Item = { Quantity: 0 };
+displayedValue: number = 0;
+updateValue(value: number) {
+  this.displayedValue = value;
+}
+
+
+getTotalSelectedQuantity(promos: any): number {
+  if (!promos || !promos.stockitemid) {
+      return 0;
   }
+  let totalSelected = 0;
+  for (const Item of promos.stockitemid) {
+      if (Item.isProductSelected) {
+          totalSelected += Item.Quantity;
+      }
+  }
+  return totalSelected;
+}
+
+moqselectedreamining(promos: any): number {
+  if (!promos || !promos.stockitemid) {
+      return 0;
+  }
+  let totalSelected = 0;
+  for (const Item of promos.stockitemid) {
+      if (Item.isProductSelected) {
+          totalSelected += Item.Quantity;
+      }
+  }
+  return totalSelected;
+}
 
 
+moqselectedreaminingFORTHPromotion(promos: any): number {
+  if (!promos || !promos.stockitemid) {
+      return 0;
+  }
+  let totalSelected = 0;
+  for (const Item of promos.stockitemid) {
+      if (Item.isProductSelected) {
+          totalSelected += Item.Quantity;
+      }
+  }
+  return totalSelected;
+}
+
+ toggleState: boolean = false;
+
+filteredProductList:any
+toggleDatapromotionm() {
+  this.toggleState = !this.toggleState;
+  if (this.toggleState) {
+    this.filteredProductList = this.ProductPromotionOrderList.filter(
+      (item) => item.isProductSelected == true
+    );
+  } else {
+    
+    this.filteredProductList = this.ProductPromotionOrderList;
+  }
+}
+toggleStatefreeitems:boolean=false;
+Freeitemsguygroup:any
+toggleDatapromotionmfreeitems()
+{
+  
+  this.toggleStatefreeitems = !this.toggleStatefreeitems;
+  if(this.toggleStatefreeitems)
+  {
+    this.Freeitemsguygroup =this.ProductPromotionOrderList.filter(
+      (Item)=> Item.isProductSelected == true
+    );
+    {
+      this.Freeitemsguygroup=this.ProductPromotionOrderList;
+    }
+  }
+}
+
+toggleStatescondpro:boolean=false;
+SecondPromotionGetgroup:any
+SecondPromotiontoggle()
+{
+  
+  this.toggleStatescondpro = !this.toggleStatescondpro;
+  if(this.toggleStatescondpro)
+  {
+    this.SecondPromotionGetgroup =this.ProductPromotionOrderList.filter(
+      (Item)=> Item.isProductSelected == true
+    );
+    {
+      this.SecondPromotionGetgroup=this.ProductPromotionOrderList;
+    }
+  }
+}
+
+
+toggleStatescondprofreeitems:boolean=false;
+SecondPromotionBetgroup:any
+SecondPromotionbuygrouptoggle()
+{
+  
+  this.toggleStatescondprofreeitems = !this.toggleStatescondprofreeitems;
+  if(this.toggleStatescondprofreeitems)
+  {
+    this.SecondPromotionBetgroup =this.ProductPromotionOrderList.filter(
+      (Item)=> Item.isProductSelected == true
+    );
+    {
+      this.SecondPromotionBetgroup=this.ProductPromotionOrderList;
+    }
+  }
+}
+
+togglethiredpromotion:boolean=false;
+ThiredPromotiongroup:any
+toggledatathirdpro()
+{
+
+  this.togglethiredpromotion = !this.togglethiredpromotion;
+  if(this.togglethiredpromotion)
+  {
+    this.ThiredPromotiongroup =this.ProductPromotionOrderList.filter(
+      (Item)=> Item.isProductSelected == true
+    );
+    {
+      this.ThiredPromotiongroup=this.ProductPromotionOrderList;
+    }
+  }
+}
+
+togglefrthpromotion:boolean=false;
+ForthPromotiongroup:any
+toggledataforthpro()
+{
+
+  this.togglefrthpromotion = !this.togglefrthpromotion;
+  if(this.togglefrthpromotion)
+  {
+    this.ForthPromotiongroup =this.ProductPromotionOrderList.filter(
+      (Item)=> Item.isProductSelected == true
+    );
+    {
+      this.ForthPromotiongroup=this.ProductPromotionOrderList;
+    }
+  }
+} 
+
+
+
+getTotalEntitledSelectedRemaining(promos: any): number {
+  if (!promos || !promos.stockitemid) {
+      return 0;
+  }
+  let totalSelected = 0;
+  for (const Item of promos.stockitemid) {
+      if (Item.isProductSelected) {
+          totalSelected += Item.Quantity;
+      }
+  }
+  return totalSelected;
+}
 
 }

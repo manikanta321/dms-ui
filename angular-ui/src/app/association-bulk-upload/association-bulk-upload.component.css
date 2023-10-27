@@ -1,3 +1,130 @@
+
+.upload[disabled] {
+  background-color: gray; 
+  cursor: not-allowed;
+  
+}
+
+.upload
+{
+   background-color: #018B75;
+   color: white;
+   height: 44px;
+   width: 597px;
+   text-align: center;
+   /* background: #000000; */
+   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+   border-radius: 10px;
+   cursor: pointer;
+   font-family: 'Gilroy-SemiBold';
+}
+.cancelbtn
+{
+  background: #018B75;
+  color: white;
+  font-family: 'Gilroy-SemiBold';
+   height: 44px;
+   width: 597px;
+   text-align: center;
+   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+   border-radius: 10px;
+   cursor: pointer;
+   margin-left: -41%;
+}
+
+.numberright
+{
+  text-align: right;
+}
+.productname
+{
+  text-align: left;
+}
+#marginnumberright
+{
+  text-align: right;
+}
+.productid
+{
+  text-align: right;
+  left: -32px;
+  position: relative;
+}
+
+  td.errorText {
+    color: red !important;
+  }
+  
+  .duplicate-tabel-shipment
+  {
+    position: relative;
+    width: 92%;
+     left: 12px;
+    margin-bottom: 30px;
+    top: 7rem;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: #686E74;
+    border-radius: 0px 0px 10px 10px
+  }
+  .incorrectdatatable
+  {
+    position: relative;
+    width: 92%;
+     left: 12px;
+    margin-bottom: 30px;
+    top: 5rem;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: #686E74;
+    border-radius: 0px 0px 10px 10px
+  }
+  .errorfreerows
+  {
+    position: relative;
+    width: 90%;
+     left: 25px;
+    top: 52px;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: #686E74;
+    border-radius: 0px 0px 10px 10px
+  }
+  
+.class_table_shipment {
+  width: 100%;
+  background: #FFFFFF !important;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1) !important;
+  border: none;
+  border-radius: 12px !important;
+}
+.table-header-row {
+  border-top-right-radius: 12px !important;
+  border-top-left-radius: 12px !important;
+}
+.duplicate-tabel-shipments {
+  position: relative;
+  width: 92%;
+  left: 12px;
+  /* height: 183px; */
+  margin-bottom: 30px;
+  top: 79px;
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: #686E74;
+  border-radius: 0px 0px 10px 10px
+    }
+    .totaltablewidth {
+      position: relative;
+      width: 92%;
+      left: 12px;
+      top: 29px;
+      border-width: 0px 1px 1px 1px;
+      border-style: solid;
+      border-color: #686E74;
+      border-radius: 0px 0px 10px 10px
+        }
+
 ::-webkit-scrollbar {
     color: #000000 !important;
         width: 9px;
@@ -6,14 +133,11 @@
     }
     .sales-container {
     position: relative;
-    width: 1289px;
-    height: 620px;
-    left: 0px;
-    top: 0px;
-    background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
-    overflow-x: hidden;
-    border-radius: 25px;
-    }
+    min-width: 100%;
+    height: 653px;
+     overflow-x: hidden;
+     border-radius: 25px;
+  }
     .close-icon {
         left: 99%;
         position: relative;
@@ -55,8 +179,19 @@
         background: #FFFFFF;
         color: #000000;
       }
+      .expanderrorfree{
+        top:41px;
+        background: #FFFFFF;
+        color: #000000;
+      }
       .duplicate-txt{
-        top:85px;
+        top:64px;
+        background: #FFFFFF;
+        color: #000000;
+      }
+      .expandtotalfull
+      {
+        top:15px;
         background: #FFFFFF;
         color: #000000;
       }
@@ -200,7 +335,7 @@
     }
     .step2{
         position: relative;
-        top: 40px;
+        top: 13px;
     }
     .upload-doc{
     position: relative;
@@ -282,7 +417,7 @@
         height: 60px;
         /* width: 0%; */
         font-family: 'Gilroy';
-        color: #686E74;
+        /* color: #686E74; */
     
     }
     
@@ -351,6 +486,7 @@
         background: #000000;
         box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
         border-radius: 10px;
+        cursor: pointer;
     }
     .discard{
         width: 280px;
@@ -362,6 +498,7 @@
         box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
         border-radius: 10px;
         text-align: center;
+        cursor: pointer;
     }
     .save-text {
         color: white;
@@ -375,6 +512,7 @@
         align-items: center;
         text-align: center;
         border: none;
+        cursor: pointer;
     }
     .discard-text {
         color: black;
@@ -388,6 +526,7 @@
         align-items: center;
         text-align: center;
         border: none;
+        cursor: pointer;
     }
     .expand-arrow {
         position: relative;
@@ -396,11 +535,20 @@
         /* top: 55px; */
       }
       .expand-style {
-        top: 96px;
+        top: 75px;
+        z-index: 1;
+      }
+      .imagestyle
+      {
+        top: 27px;
         z-index: 1;
       }
       .error-style {
         top: 77px;
+        z-index: 1;
+      }
+      .imageerror-style {
+        top: 51px;
         z-index: 1;
       }
       .total-style {
@@ -409,9 +557,8 @@
       }
 
       .selectedProductReceipts {
-        width: 958px;
+        width: 95%;
         height: 43px;
-        /* background: #FFFFFF; */
         border: 0.5px solid #000000;
         box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
         border-radius: 10px;
@@ -426,3 +573,24 @@
     .expandDivalign{
         margin-top: -41px;
     }
+    .uploadedText{
+     font-size: 14px;
+    position: relative;
+    top: 82px;
+   left:61px;
+    color: black;
+    /* font-weight: 500; */
+    }
+.uploadedTexttt{
+    position: relative;
+    top: 69px;
+    left: 95px;
+    font-size: 14px;
+}
+
+
+
+
+
+
+

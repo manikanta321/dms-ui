@@ -20,9 +20,11 @@
           <form #loginForm="ngForm">
             <div class="row">
     <div class="col">
-      <label>Username<span>*</span></label>
+      <label class="una_me">Username<span>*</span></label>
       <br>
-      <input type="text" id="uname" name="uname" required placeholder="Enter your username" [(ngModel)]="username" #uname="ngModel" style="width: 100%;">
+      <input type="text" id="uname" name="uname" required placeholder="Enter your username" [(ngModel)]="username" #uname="ngModel" style="width: 100%;"
+
+      (input)="restrictToAlphabets($event)">
       <p style="margin-bottom:-22px; padding: 0px;" *ngIf="uname.invalid && (uname.dirty || uname.touched)"
       class="alert">
   
@@ -45,7 +47,9 @@
               <div class="col">
                 <label>First Name<span>*</span></label>
                 <br>
-                <input type="text" id="fname" name="fname" required appForbiddenName="bob" placeholder="Enter your first name" [(ngModel)]="fullname" #fname="ngModel">
+                <input type="text" id="fname" name="fname" required appForbiddenName="bob" placeholder="Enter your first name" [(ngModel)]="fullname" #fname="ngModel"
+
+                (input)="restrictToAlphabets($event)">
                 <p style="margin-bottom:-22px;padding: 0px;" *ngIf="fname.invalid && (fname.dirty || fname.touched)"
                 class="alert">
                
@@ -60,7 +64,9 @@
               <div class="col">
                 <label>Last Name<span>*</span></label>
                 <br>
-                <input type="text" id="lname" name="lname" required  appForbiddenName="bob" #lname="ngModel" placeholder="Enter your last name" [(ngModel)]="Lastname">
+                <input type="text" id="lname" name="lname" required  appForbiddenName="bob" #lname="ngModel" placeholder="Enter your last name" [(ngModel)]="Lastname"
+
+                (input)="restrictToAlphabets($event)">
                 <p style="margin-bottom:-22px;padding: 0px;" *ngIf="lname.invalid && (lname.dirty || lname.touched)"
                 class="alert">
             
@@ -91,7 +97,7 @@
 
                 <label>Phone No<span>*</span></label>
                 <br>
-                <input type="text"id="mobile" name="mobile" required placeholder="Enter your phone no" pattern="^((\\+91-?)|0)?[0-9]{10}$" [(ngModel)]="phone"#mobile="ngModel">
+                <input type="text"id="mobile" maxlength="10" name="mobile" required placeholder="Enter your phone no" pattern="^((\\+91-?)|0)?[0-9]{10}$" [(ngModel)]="phone"#mobile="ngModel" (input)="restrictToNumbers($event)">
                 <p  style="margin-bottom:-22px;padding: 0px;" *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)"
                 class="alert">
               <span style="color:red;position: relative;" *ngIf="mobile.errors?.['required']">
@@ -155,7 +161,7 @@
           <br>
    <diV class="row">
      <div class="col d-flex justify-content-center">
-      <button [disabled]="loginForm.form.invalid" class="btn btn-primary btn-block justify-center" style="background-color:#000000;width:66%;" (click)="addUSer()" >Add user</button>
+      <button [disabled]="loginForm.form.invalid" class="btn btn-primary btn-block justify-center" style="background-color:#018B75;width:66%;" (click)="addUSer()" >Add user</button>
      </div>
    </diV>
           <span style="margin-left:17%;position: relative;top: 1px;">Required fields*</span>

@@ -26,10 +26,10 @@
   .bulk-head:after {
     content: "";
     display: block;
-    width: 384px;
+    width: 346px;
     height: 0.5px;
     background: #686E74;
-    right: 74px;
+    right: 2%;
     top: 50%;
     position: absolute;
   }
@@ -37,10 +37,10 @@
   .bulk-head:before {
     content: "";
     display: block;
-    width: 390px;
+    width: 346px;
     height: 0.5px;
     background: #686E74;
-    left: 0;
+    left: 1%;
     top: 50%;
     position: absolute;
   }
@@ -190,7 +190,7 @@ text-align: center;
     filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
     width: 43px;
     height: 41px;
-    background: #000000;
+    background: rgba(104, 110, 116, 0.66);
     border-radius: 10px;
     margin-left: 10px;
 
@@ -227,7 +227,7 @@ text-align: center;
 }
 
 ::ng-deep.ag-header-cell-text {
-  color: #686E74 !important;
+  /* color: #686E74 !important; */
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 14px !important;
@@ -327,7 +327,8 @@ text-align: center;
 }
 .download-csv{
   color: #fff;
-  background: #000000;
+  /* background: #000000; */
+  background-color:#018B75;    
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   float: right;
@@ -337,8 +338,9 @@ text-align: center;
 height: 43px;
 }
 .cancel{
-  color: black;
-  background: white;
+  color: white;
+  /* background: white; */
+  background-color:#018B75;  
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   float: left;

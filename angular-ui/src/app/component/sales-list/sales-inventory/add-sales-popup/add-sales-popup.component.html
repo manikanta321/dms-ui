@@ -1,11 +1,11 @@
-<div>
+<div style="margin-top: -12px;">
     <div class="add-sales ">
         <div class="addSales">
             <!-- <img  class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
             <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
         </div>
         <div class="sales-head">
-            <h3 class="sales-add font">Add Sales</h3>
+            <h3 class="sales-add ">Add Sales</h3>
         </div>
         <!-- expension   -->
         <div class="slaes-expension">
@@ -32,7 +32,7 @@
                         </div>
                         <ng-select [items]="addSalesdropdown" class="addDealerSelection  custom" bindValue="customerId"
                             bindLabel="customerName" placeholder="Select the dealer" [disabled]="dealerDisabled"
-                            [(ngModel)]="customerId" required (change)="onTypeSelect($event)">
+                            [(ngModel)]="customerId" required (change)="onTypeSelect($event)" appendTo="body">
                         </ng-select>
                         <!-- <img src="assets/img/search.png" class="search-img"  alt="search"> -->
                     </div>
@@ -46,7 +46,7 @@
                     </ng-multiselect-dropdown> -->
                             <ng-select [items]="GeoGrapydropdownListdata" [(ngModel)]="geographyId"
                                 class="geographyclass" bindValue="geographyId" bindLabel="geographyName"
-                                placeholder="Select the geography" #geoghraphy (change)="onGeoSelect($event)" required>
+                                placeholder="Select the geography" #geoghraphy (change)="onGeoSelect($event)" appendTo="body" required>
                             </ng-select>
                         </div>
                     </div>

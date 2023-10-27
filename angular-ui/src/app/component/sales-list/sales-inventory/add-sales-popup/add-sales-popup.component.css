@@ -30,10 +30,15 @@
 {
   margin-left: 10px;
 }
+.selectdate{
+  position: relative;
+  top: -3px;
+}
 .dateleft
 {
   margin-left: 4px;
   margin-top: 16px;
+  font-family: 'Gilroy-Bold';
 }
 .quantityleft{
   margin-top: 16px;
@@ -42,9 +47,11 @@
 #qty
 {
   margin-left: -43px;
+  font-family: 'Gilroy-Bold';
 }
 .customerleft{
   margin-top: 16px;
+  font-family: 'Gilroy-Bold';
 }
 .addAlign
 {
@@ -71,8 +78,8 @@
 }
 .sales-add {
     position: relative;
-    /* font-family: 'Gilroy-Bold';  */
-    font-weight: bold;
+    font-family: 'Gilroy-Bold'; 
+    /* font-weight: bold; */
     font-size: 20px;
   }
   
@@ -216,7 +223,7 @@
   
   .collapsible {
     cursor: pointer;
-    padding: 5px;
+    padding-left: 8px;
     width: 100%;
     border: none;
     text-align: left;
@@ -226,6 +233,7 @@
     background: #FFFFFF;
     border: 0.5px solid #000000;
     border-radius: 10px;
+    background: rgba(1, 139, 117, 1);
   }
   
   /* .active, .collapsible:hover {
@@ -293,25 +301,34 @@
     height: 165px;
     overflow-y: scroll;
   }
+
   .Dquantity input {
     width: 210px;
     height: 44px;
     border-radius: 10px;
     border: 1px solid black;
-    margin-left: -44px;
+    margin-left: -43px;
+    font-family: 'Gilroy-Regular';
+    /* padding: 12px; */
+    /* box-sizing: border-box; */
+    text-indent: 10px; 
   }
+  
   .custmRef input{
     width: 100%;
 height: 44px;
 border-radius: 10px;
 border: 1px solid black;
+font-family: 'Gilroy-Regular';
+text-indent: 10px; 
   }
   .rmvicon mat-icon{
   color: red;
   }
   .saveas-draft {
     color: #fff;
-    background: #000000;
+    background: rgba(1, 139, 117, 1);
+    border-color:rgba(1, 139, 117, 1) ;
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: right;
@@ -319,10 +336,12 @@ border: 1px solid black;
     cursor: pointer;
     width: 168px;
 height: 43px;
+font-family: 'Gilroy-SemiBold';
   }
   .cancel{
-    color: black;
-    background: white;
+    /* color: black; */
+    color:white;
+    background: rgba(1, 139, 117, 1);
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: left;
@@ -330,6 +349,7 @@ height: 43px;
     cursor: pointer;
     width: 168px;
     height: 43px;
+    font-family: 'Gilroy-SemiBold';
   }
   .ag-theme-material .ag-filter-toolpanel-header,
 .ag-theme-material .ag-filter-toolpanel-search,
@@ -359,7 +379,7 @@ height: 43px;
 }
 
 ::ng-deep.ag-header-cell-text {
-  color: #686E74 !important;
+  /* color: #686E74 !important; */
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 14px !important;
@@ -460,6 +480,7 @@ height: 43px;
   background: #fff;
   width: 220px;
   height: 44px;
+  font-family: 'Gilroy-Regular';
 }
 
 .sales-popup-datepicker .mat-form-field-appearance-legacy ::ng-deep.mat-form-field-wrapper{
@@ -487,4 +508,14 @@ height: 43px;
 
 .sales-popup-datepicker .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float ::ng-deep.mat-form-field-label,.sales-popup-datepicker .mat-form-field-appearance-legacy.mat-form-field-can-float ::ng-deep.mat-input-server:focus + .mat-form-field-label-wrapper ::ng-deep.mat-form-field-label{
   display: none;
+}
+.label-cls{
+  font-family: 'Gilroy-Light';
+  font-size: 16px;
+  position: relative;
+  top: 6px;
+  color:white;
+}
+::ng-deep.ng-select .ng-select-container .ng-value-container .ng-placeholder {
+  font-family: 'Gilroy-Regular';
 }

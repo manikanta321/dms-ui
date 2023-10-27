@@ -377,18 +377,13 @@
 
 
 
-::ng-deep.ag-theme-material ::-webkit-scrollbar-thumb {
 
-  // background: red !important;
-  // border-radius: 10px;
-
-}
 
 ::ng-deep.ag-sticky-top {
   border-bottom: 0.5px solid #000000;
 }
 .main{
-    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+  
     border-radius: 19px;
 }
 
@@ -462,7 +457,7 @@ mat-sidenav-container {
 }
 
 ::ng-deep.ag-header-cell-text {
-  color: #686E74 !important;
+  // color: #686E74 !important;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 14px !important;
@@ -1011,14 +1006,19 @@ mat-sidenav {
   margin-top: 10px;
   cursor: pointer;
   width: 168px;
+  height: 85%;
+  background: rgba(1, 139, 117, 0.8);
+  border-color:rgba(1, 139, 117, 0.8) ;
 }
 .saveas-draft2 {
-  color: black;
-  background: white;
+  // color: black;
+  color:white;
+  background-color:rgba(1, 139, 117, 0.8) ;
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   float: left;
   margin-top: 10px;
   cursor: pointer;
   width: 168px;
+  height: 85%;
 }

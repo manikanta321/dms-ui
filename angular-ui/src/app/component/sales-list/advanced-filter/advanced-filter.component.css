@@ -160,7 +160,7 @@ input[type=text]:focus {
 }
 
 .main {
-    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+  
 
 }
 
@@ -596,8 +596,9 @@ mat-form-field {
 }
 
 .clearAllBtn {
-    background-color: white;
-    color: black;
+    background-color: rgba(1, 139, 117, 1);
+    /* color: black; */
+    color:white;
     border: 2px solid black;
     border-radius: 10px;
     position: relative;
@@ -608,7 +609,7 @@ mat-form-field {
 }
 
 .applyBtn {
-    background-color: black;
+    background-color: rgba(1, 139, 117, 1);
     color: white;
     border: 2px solid black;
     border-radius: 10px;

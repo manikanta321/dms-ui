@@ -63,6 +63,8 @@ export class SalesBulkUploadComponent implements OnInit {
   image6 = 'assets/img/maximize-arrow.png';
   image7 = 'assets/img/maximize-arrow.png';
   image8 = 'assets/img/maximize-arrow.png';
+  files:any=[];
+  uploadedTextShow: boolean = false;
   ngOnInit(): void {
     this.uploadSaless();
     let Created = localStorage.getItem("logInId");
@@ -205,6 +207,16 @@ export class SalesBulkUploadComponent implements OnInit {
 
   // finctionality to read xlxs sheet and send array of object to api
   onFileChange(event: any) {
+      // Iterate over selected files
+   for (let file of event.target.files) {
+    // Append to a list
+    this.files.push({
+      name: file.name,
+      type: file.type
+      // Other specs
+    });
+  }
+this.uploadedTextShow=true;
     /* wire up file reader */
     const target: DataTransfer = <DataTransfer>(event.target);
     if (target.files.length !== 1) {
@@ -260,6 +272,16 @@ export class SalesBulkUploadComponent implements OnInit {
     };
  }
  onUploadFile(event: any) {
+   // Iterate over selected files
+   for (let file of event.target.files) {
+    // Append to a list
+    this.files.push({
+      name: file.name,
+      type: file.type
+      // Other specs
+    });
+  }
+this.uploadedTextShow=true;
   /* wire up file reader */
   const target: DataTransfer = <DataTransfer>(event.target);
   if (target.files.length !== 1) {

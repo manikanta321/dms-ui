@@ -116,7 +116,7 @@ export class CurrencyConversationComponent implements OnInit {
 
     { headerName: "Display Unit", field: 'uoMShortName', type: ['nonEditableColumn'] },
 
-    { headerName: "Rate", field: 'conversionRate', type: ['nonEditableColumn'] },
+    { headerName: "Rate", field: 'conversionRate', type: ['nonEditableColumn','rightAligned'] },
 
     // {  headerName: "Rate",
     //  field: 'uoMShortName',type: ['nonEditableColumn']},

@@ -3,7 +3,7 @@
 <div class="container-fluid mt-5">
     <div class="section reciepts">
 <div class="row ml-2">
-    <div class="col-md-2 col-lg-2 col-sm-2 ordersreceiptsbubbles" style="padding-left: 0px;">
+     <div class="col-md-2 col-lg-2 col-sm-2 ordersreceiptsbubbles" style="padding-left: 0px;" *ngIf="userType !== 'Dealer Admin'">
         <form [formGroup]="myForm" class="dropdown-form">
           <ng-multiselect-dropdown class="dealers dlsr" name="city" [placeholder]="'Dealer'" formControlName="city"
             [disabled]="disabled" [settings]="dealerSettings" [data]="dealerlist"(onSelect)="DealerorderSelect($event)" (onDeSelect)="DealerDeselect($event)"(onDeSelectAll)="DealerDeselectAll($event)"
@@ -14,11 +14,10 @@
           <span *ngIf="myForm.get('city').value.length == 0">  Dealers </span>
           <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Dealer selected </span>
           <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Dealer(s) selected </span>
-          <img src="../assets/img/search.png" class="searchReceipts">
-        </div>
-        
+           <img src="../assets/img/search.png" class="searchReceipts">
+        </div> 
       </div>
-      <div class="col-md-2 col-lg-2 col-sm-2 ordersreceiptsbubblesGeography">
+      <div class="col-md-2 col-lg-2 col-sm-2 ordersreceiptsbubblesGeography  multiselectdropwidth" *ngIf="userType !== 'Dealer Admin'">
         <form [formGroup]="myForm1" class="dropdown-form">
           <ng-multiselect-dropdown class="Geography geographybubbles" name="city" [placeholder]="'Geography'" formControlName="geo"
             [disabled]="disabled" [settings]="dropdownSettings1" [data]="geogropdownlist" (onSelect)="geographyselect($event)"
@@ -39,44 +38,56 @@
         <div class="invoice">
           <app-customdatepicker [showInputField]="true" label="Invoice Date" [selectedDate]="selectedDateRanges" (customDatePickerEvent)="customInvoiceDatePickerEvent($event)"></app-customdatepicker>
       </div>
-        <div class="sales-refreshbtn" (click)="refresh()">
+
+
+      <!--  new Search -->
+      <div class="col-md-2 col-lg-2 col-sm-2" >
+        <div class="search_Box1 d-flex">
+          <input class="search_Input11" type="text" name="" placeholder="Search here anything" (keyup)="onSearchChange($event)">
+          <mat-icon  class="searchiconshipment">search</mat-icon> 
+          <button class="searchBTN">Search</button>
+        </div>
+      </div>
+
+      <!-- REf -->
+      <div class="col-md-0 col-lg-0 col-sm-0" >
+         <div class="sales-refreshbtn" (click)="refresh()">
         <img class="refresh-img" src="assets/img/Vector.png" alt="refresh">
       </div>
-</div>
-<!-- bulk downld upload -->
-<div class="row listicon">
-    <div class="col-md-4 srch-hover" >
-      <div class="searchBox1 d-flex">
-        <input class="searchInput1" type="text" name="" placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
-        <button class="search-btn">Search</button>
-        <button class="searchButton" href="#">
-          <i class="material-icons">
-            search
-          </i>
-        </button>
       </div>
-    </div>
-  <div class="col-md-0">
-    <div class="sales-download" (click)="bulkDownload()">
-        <img class="dwnld-img" src="assets/img/orderlist-upload.svg" 
-            alt="add-user-btn">
-    </div>
-  </div>
-  <div class="col-md-0">
-  <div class="sales-upload" (click)="orderReceiptsBulkUpload()">
+
+      <!-- bulk Downloaded -->
+
+      <div class="col-md-0 col-lg-0 col-sm-0" style="margin-left: 10px;">
+        <div class="sales-download" (click)="bulkDownload()">
+          <img class="dwnld-img" src="assets/img/orderlist-upload.svg" 
+              alt="add-user-btn">
+      </div>
+      </div>
+
+   <!-- Bulk Uploaded orderReceiptsBulkUpload -->
+
+   <div class="col-md-0 col-lg-0 col-sm-0">
+    <div class="sales-upload" (click)="orderReceiptsBulkUpload()">
       <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
           alt="add-user-btn">    
   </div>
-  </div>
-  <div class="col-md-0">
-  <div class="sales-dwnld" (click)="shipmentDownload()">
-    <img   class="imgdwnl" src="assets/img/download-btn.png"
-        alt="add-user-btn">    
-  </div>
-  </div>
-  </div>
+   </div>
+
+   <!-- receiptsDownload -->
+   <div class="col-md-0 col-lg-0 col-sm-0">
+    <div class="sales-dwnld" (click)="receiptsDownload()">
+      <img   class="imgdwnl" src="assets/img/download-btn.png"
+          alt="add-user-btn">    
+    </div>
+   </div>
+
+</div>
+<!-- bulk downld upload -->
+
+
   <!-- grid -->
-  <div class="sales-grid-table mt-3">
+  <div class="sales-grid-table" style="margin-top: 48px;">
     <ag-grid-angular id="gridContainer"  style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
     class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
       [headerHeight]="48" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"

@@ -106,18 +106,33 @@ export class AssociationComponent implements OnInit {
   columnDefs: ColDef[] = [
 
     {
-      headerName: "Product",
+        headerName: 'ProductSKUGeographyId',
+       field: 'productSKUGeographyId',
+    },
+
+    {
+      headerName: "ProductName",
        field: 'stockItemName', type: ['nonEditableColumn'],
     },
 
-    { headerName: "Dealer",
+    {
+       headerName:"ProductCode",
+          //1  field: 'productCode',
+         field: 'productCode',
+    },
+
+    { headerName: "DealerName",
     minWidth:250,
-    field: 'customerName', type: ['nonEditableColumn'], sort: 'desc',
+     field: 'customerName',
+    // field:'DealerName',
+     type: ['nonEditableColumn'], sort: 'desc',
     },
     {
-      headerName: "Geography",
+      headerName: "GeographyName",
       minWidth:250,
-      field: 'geographyName', 
+       field: 'geographyName',
+      // field: 'GeographyName',  
+
       // ellRenderer: this.daysSunshineRenderer,
       // cellRendererParams: {
       // rendererImage: '', // Complementing the Cell Renderer parameters
@@ -127,36 +142,37 @@ export class AssociationComponent implements OnInit {
 
     {
       headerName: "MRP",
-      field: "mrp", 
-      type: ['nonEditableColumn']
-    },
-    {
-      headerName: "Min.Order.Qty",
-      field: "minOrder", 
+       field: "mrp",     
       type: ['nonEditableColumn','rightAligned']
     },
     {
-      headerName: "Max.Order.Qty",
-      field: "maxOrder", 
+      headerName: "MinOrderQty",
+       field: "minOrder",      
+      type: ['nonEditableColumn','rightAligned']
+    },
+    {
+      headerName: "MaxOrderQty",
+         field: "maxOrder",        
       type: ['nonEditableColumn','rightAligned']
     },
     {
       headerName: "Margin",
-      field: "margin", 
-
-      type: ['nonEditableColumn','rightAligned']
+         field: "margin",   
+         type: ['nonEditableColumn','rightAligned']
     },
     {
       headerName: "Discount",
-      field: "discount", 
-      type: ['nonEditableColumn','rightAligned']
+         field: "discount",     
+        type: ['nonEditableColumn','rightAligned']
     },
     {
-      headerName: "Lead Time",
-      field: "leadTimeIndays", 
-      type: ['nonEditableColumn']
+      headerName: "LeadTimeDays",
+        field: "leadTimeIndays",       
+      type: ['nonEditableColumn','rightAligned']
     },
 
+
+    
     // {
     //   headerName: '',
     //   colId: 'action',
@@ -168,6 +184,7 @@ export class AssociationComponent implements OnInit {
 
    
   ];
+  
 
 
   rowData: any;
@@ -972,7 +989,7 @@ console.log(item)
     this.dialog.open(AddDealerAssociationsComponent,{minWidth :'88vw',height:'700px'});
   }
   editBulk(){
-    this.dialog.open(BulkEditAssosiationComponent,{minWidth :'88vw',height:'684px'});
+    this.dialog.open(BulkEditAssosiationComponent,{minWidth :'88vw',height:'702px'});
 
   }
 
@@ -1127,7 +1144,9 @@ console.log(item)
   orderTargetUpload(){
     localStorage.setItem('UploadTarget','dealertarget')
     // sessionStorage.setItem("orderTarget",'target');
-      this.dialog.open(AssociationBulkUploadComponent,{maxWidth:'97vw'});
+      this.dialog.open(AssociationBulkUploadComponent,
+        {minWidth :'91vw',height:'702px'}
+        );
       // this.isOpen = false;
   }
 

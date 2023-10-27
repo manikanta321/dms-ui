@@ -70,7 +70,7 @@ export class DeactivateUserpopupComponent implements OnInit {
     this.sharedService.filter('Register click');
      
     
-    this.dialog.open(DeactiveSuccessPopComponent, {panelClass: 'deactiveSuccessPop'});
+    this.dialog.open(DeactiveSuccessPopComponent, {panelClass: 'deactive_SuccessPop'});
     this.sharedService.filter('Register click');
     this.dialogRef.close()
   }
@@ -82,7 +82,7 @@ export class DeactivateUserpopupComponent implements OnInit {
     });
       this.materialListService.filter('Register click');
 
-    this.dialog.open(DeactiveSuccessPopComponent,{panelClass: 'deactiveSuccessPop'});
+    this.dialog.open(DeactiveSuccessPopComponent,{panelClass: 'deactive_SuccessPop'});
       this.materialListService.filter('Register click');
     this.dialogRef.close()
   }

@@ -5,8 +5,8 @@
 <div #content *ngIf="isOpen" class="menu-container">
   <div (click)="edit()" class="menu-item tick" userRoleDirective="mat_edit" pageName="settingmaterials"> Edit <img
       src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
-  <div (click)="deactive()" class="menu-item tick" userRoleDirective="mat_act" pageName="settingmaterials">Deactivate
+  <div  *ngIf="DeactiveDealer" (click)="deactive()" class="menu-item tick" userRoleDirective="mat_act" pageName="settingmaterials">Deactivate
     <img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
-  <div (click)="activate()" class="menu-item tick" userRoleDirective="mat_deact" pageName="settingmaterials">
+  <div   *ngIf="!DeactiveDealer" (click)="activate()" class="menu-item tick" userRoleDirective="mat_deact" pageName="settingmaterials">
     Reactivate<img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"> </div>
 </div>

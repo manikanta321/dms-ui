@@ -49,11 +49,15 @@
     margin-top: 10px;
     cursor: pointer;
     width: 280px;
-height: 43px;
+    height: 43px;
+    background: rgba(1, 139, 117, 0.8);
+    border-color:rgba(1, 139, 117, 0.8);
   }
   .cancel{
-    color: black;
-    background: white;
+    /* color: black; */
+    color:white;
+    /* background: white; */
+    background-color:#018B75;
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: left;
@@ -72,3 +76,15 @@ height: 43px;
     font-size: 14px;
     font-weight: 900;
   }
+
+  .ag-theme-material {
+  
+    /* --ag-card-radius: 100px;
+    --ag-border-radius: 20px;
+    --ag-header-height: 30px; */
+     --ag-header-foreground-color: white; 
+    --ag-header-background-color: rgba(1, 139, 117, 1);
+    /* --ag-header-cell-hover-background-color: rgb(80, 40, 140);
+    --ag-header-cell-moving-background-color: rgb(80, 40, 140); */
+  }
+  

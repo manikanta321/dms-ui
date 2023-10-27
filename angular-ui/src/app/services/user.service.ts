@@ -17,7 +17,7 @@ export class UserService {
     next: HttpHandler): Observable<HttpEvent<any>> {
 
     const idToken = localStorage.getItem("token");
-    debugger
+    
     console.log('idtoken', idToken)
     alert(idToken)
 
@@ -94,11 +94,11 @@ export class UserService {
   }
 
   public dealerDropdownOrderlist1() {
-    debugger
+    
     return this.http.get<any>(`${this.userurl}DealerApi/GettargetDealerdropdown`);
   }
   public dealerDropdownOrderlist2(data) {
-    debugger
+    
     return this.http.post<any>(this.userurl + 'DealerApi/GetDealerdropdownByTragetGroupId', data);
   }
   // http://13.126.235.145:801/api/DealerApi/GetAssoDealerdrop

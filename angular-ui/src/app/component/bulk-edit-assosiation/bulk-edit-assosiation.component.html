@@ -14,10 +14,21 @@
   <!-- <br>
   <br>
   <br> -->
+<!-- <div class="row bulkEditLabel">
+  <div class="col-2">
+    <label>Product <span>*</span></label>
+  </div>
+  <div class="col-2">
+    <label>Geography <span>*</span></label>
+  </div>
+  <div class="col-2">
+    <label>Dealer <span>*</span></label>
+  </div>
+</div> -->
 
-
-  <div class="drpd d-flex DropDownFlex" >
+  <div class="drpd d-flex DropDownFlex " >
     <div class="search-d">
+      <label>Product <span class="mandatory">*</span></label>
       <form [formGroup]="myForm1" class="dropdown-form">
         <ng-multiselect-dropdown class="roless-product" name="city1" [placeholder]="'Product'" formControlName="city1"
           [disabled]="disabled" [settings]="dropdownSettings2" [data]="ProductListArray"
@@ -35,6 +46,7 @@
       </form>
     </div>
     <div class="search-d">
+      <label>Geography <span class="mandatory">*</span></label>
       <form [formGroup]="myForm" class="dropdown-form">
         <ng-multiselect-dropdown class="roless" name="city" [placeholder]="'Geographies'" formControlName="city"
           [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList" (onSelect)="onItemSelect($event)"
@@ -52,6 +64,7 @@
       </form>
     </div>
     <div class="search-d">
+      <label>Dealer <span class="mandatory">*</span></label>
       <form [formGroup]="myForms" class="dropdown-form">
         <ng-multiselect-dropdown class="stts" name="citys" [placeholder]="'Dealer'" formControlName="citys"
           [disabled]="disabled" [settings]="dropdownSettings1" [data]="dealerListArray"
@@ -75,10 +88,11 @@
     <div class="search-d">
 
 
-      <div class="searchBox1 d-flex">
+      <div class="searchBox1 d-flex" style="position: relative;
+      top: 20px;">
         <div class="promotiont2">
           <select #teams class="form-select select-asso" aria-label=".form-select-lg example"  [(ngModel)]="selectedGeoField">
-            <option value="" disabled selected>Select Feild</option>
+            <option value="" disabled selected>Select Field</option>
             <option value="MRP"> MRP</option>
             <option value="MaxOrder"> Max Order Qty</option>
             <option value="MinOrder"> Min Order Qty</option>
@@ -109,8 +123,7 @@
     </div>
   </div>
   <br>
-  <br>
-
+  <br> 
   <div class="d-flex main-d">
 
 
@@ -146,12 +159,15 @@
           <th style='width: 119px'>
             Lead time(days)
           </th>
-          <th>
-
-          </th>
+          
         </tr>
 
         <tr *ngFor="let quantity of BulkAssociationsCount().controls; let i=index" [formGroupName]="i">
+          <td *ngIf="ProductGEOID">
+            <input type="text" class="uom-cls" formControlName="ProductSKUGeographyId" name="fname" id="fname" [(ngModel)]="addAddressDetailsForm.value.BulkAssociationsCount[i].ProductSKUGeographyId">
+
+          </td>
+         
           <td>
             <input type="text" class="testcalss" id="fname" tabindex="0" data-toggle="tooltip" [title]="addAddressDetailsForm.value.BulkAssociationsCount[i].ProductName" data-placement="top" name="fname" formControlName="ProductName" readonly>
           </td>
@@ -181,11 +197,23 @@
           </td>
 
           <td>
-            <input type="text" class="uom-cls" formControlName="LeadTimeIndays" [(ngModel)]="addAddressDetailsForm.value.BulkAssociationsCount[i].LeadTimeIndays">
+            <input type="text" class="uom-cls" formControlName="LeadTimeIndays"  [(ngModel)]="addAddressDetailsForm.value.BulkAssociationsCount[i].LeadTimeIndays">
 
 
           </td>
+          <td *ngIf="ProductSKUCode">
+            <input type="text" class="uom-cls" formControlName="productSKUId" name="fname" id="fname" [(ngModel)]="addAddressDetailsForm.value.BulkAssociationsCount[i].productSKUId">
+
+          </td>
+
+          <td *ngIf="ProductSKUCode">
+            <input type="text" class="uom-cls" formControlName="GROID" name="fname" id="fname" [(ngModel)]="addAddressDetailsForm.value.BulkAssociationsCount[i].GROID">
+
+          </td>
+
+          
           <td>
+            
             <div class="icon btnhover1 refreshbtn" style=" cursor: pointer;" (click)="change(i)">
               <img class="refresh" src="assets/img/ultrarefresh.svg" style="position: relative;top: 9px;left: 12px;"
                 alt="refresh">
@@ -212,7 +240,6 @@
                 <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>                 
         </div> -->
   </div>
-
 
 
 

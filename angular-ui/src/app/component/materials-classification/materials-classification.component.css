@@ -75,6 +75,7 @@ color: #000000;
   margin-bottom: 10px;
   color: #00187A;
   padding: 5px;
+  font-family: 'Gilroy-Medium';
 }
 .selectedInactive {
   background-color: #a6a7ad48;
@@ -97,6 +98,7 @@ div.catg[data-selected] {
     font-size: 14px;
     margin-bottom: 10px;
     padding: 5px;
+    font-family: 'Gilroy-Light';
 }
 .type{
     border: 1px solid #C32F27;
@@ -105,6 +107,7 @@ div.catg[data-selected] {
     margin-bottom: 10px;
     padding: 5px;
     text-align: start;
+    font-family: 'Gilroy-Light';
 }
 
 .selectedTypeInactive{
@@ -129,7 +132,7 @@ li{
 .primary
 
 {
-  font-family:  'Gilroy';
+  font-family:  'Gilroy-Light';
 font-size: 14px;
 line-height: 15px;
 color: #686E74;
@@ -180,7 +183,7 @@ color: #686E74;
     display: flex;
     color: rgba(104, 110, 116, 0.75);
     
-    font-family:  'Gilroy';
+    font-family:  'Gilroy-Light';
 font-size: 14px;
 line-height: 15px;
 color: #686E74;
@@ -188,7 +191,7 @@ color: #686E74;
 }
 .span-subhead1{
   display: flex;
-  font-family:  'Gilroy';
+  font-family:  'Gilroy-Light';
   font-size: 14px;
   line-height: 15px;
   color: #686E74;

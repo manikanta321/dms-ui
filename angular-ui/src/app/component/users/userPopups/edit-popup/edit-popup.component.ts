@@ -153,7 +153,7 @@ export class EditPopupComponent implements OnInit {
         localStorage.setItem('addorEditUser','edit');
 
 
-        this.dialog.open(AdduserSuccessfulPopupComponent , {panelClass: 'activeSuccessPop'});
+        this.dialog.open(AdduserSuccessfulPopupComponent , {panelClass: 'UsersSuccessPop'});
         this.sharedService.filter('Register click')
 
         

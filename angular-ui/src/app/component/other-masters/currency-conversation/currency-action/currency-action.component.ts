@@ -18,6 +18,7 @@ export class CurrencyActionComponent implements OnInit {
   public isOpen = false;
   private tippyInstance;
   selected:boolean=false;
+  DeactiveDealer: any;
   constructor(private changeDetector: ChangeDetectorRef,private dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -114,6 +115,12 @@ export class CurrencyActionComponent implements OnInit {
     if (this.isOpen) {
       this.configureTippyInstance();
       this.tippyInstance.setContent(this.container.nativeElement);
+      const rowData = this.params.node.data;
+      if (rowData.statusName === 'Active') {
+        this.DeactiveDealer = true;
+      } else if (rowData.statusName === 'Inactive') {
+        this.DeactiveDealer = false;
+      }
     } else {
       this.tippyInstance.unmount();
     }

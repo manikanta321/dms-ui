@@ -15,6 +15,7 @@
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 15px;
+    top: 30px;
   }
   
   .menu-item:hover {
@@ -43,7 +44,7 @@
     content: '';
     position: absolute;
     /* background: red; */
-    bottom: 27px;
+    bottom: 55px;
     width: 10px;
     height: 10px;
     right: -10px;

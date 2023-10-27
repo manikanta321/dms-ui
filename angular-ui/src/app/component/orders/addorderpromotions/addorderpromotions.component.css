@@ -1,8 +1,321 @@
-::ng-deep.orders-add-Promotions .mat-dialog-container {
+.productcodename
+{
+  font-family: 'Calibri';
+font-size: 16px;
+font-weight: 700;
+line-height: 20px;
+color: #000000;
+font-style: normal;
+}
+.productcategory
+{
+  font-family: 'Calibri';
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  color: #000000;
+  font-style: normal;
   position: relative;
-  /* left: 14px; */
+  left: 13%;
+}
+.ProductGroup
+{
+  font-family: 'Calibri';
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  color: #000000;
+  font-style: normal;
+  position: relative;
+  left: 29%;
 }
 
+
+#TotalORDER_qty
+{
+  display: inline-block;
+vertical-align: middle; 
+ font-family: 'Calibri';
+font-size: 16px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: 0.04em;
+margin-top: 20px;
+}
+#This_qty
+{
+  display: inline-block;
+  vertical-align: middle; 
+   font-family: 'Calibri';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.04em;
+  margin-top: 20px;
+}
+#Total_order_qty
+{
+  position: relative;
+    top: 18%;
+    left: 24%;
+    color: black;
+    font-weight: bold;
+}
+#This_order_qty
+{
+  position: relative;
+    top: 18%;
+    left: 27%;
+    color: black;
+    font-weight: bold;
+}
+#This_order_amount
+{
+  position: relative;
+    top: 18%;
+    left: 26%;
+    color: black;
+    font-weight: bold;
+}
+#THISORDERQTY
+{
+  position: relative;
+  top: -39%;
+  left: 60%;
+  color: black;
+  font-weight: bold;
+}
+
+
+
+
+.promotionclass
+{
+  font-family: 'Calibri';
+  font-size: 14px;
+  color: rgba(1, 139, 117, 1);
+  background-color: #018B75;
+  border: none;
+  background: none;
+  
+}
+.nonpromoclassName
+{
+  font-family: 'Calibri';
+  font-size: 14px;
+  border: none;
+  background: none;
+
+  
+}
+
+
+
+.orderqty
+{
+  border: 1px solid rgba(225, 226, 227, 1);
+}
+.totalQTY
+{
+    color: gray;
+    position: relative;
+    left: -22%;
+    top: 6px;
+}
+.totalAmount
+{
+    color: gray;
+    position: relative;
+    right: -35%;
+    z-index: 1;
+    top: 6px;
+}
+#price
+{
+  position: relative;
+    top: -27px;
+    right: -70%;
+    color: gray;
+}
+#ThisorderQTY
+{
+  position: relative;
+    left: 16px;
+}
+#thisORDERQTY
+{
+  position: relative;
+  right: 2.5rem;
+}
+
+.saveitems
+
+{
+  background: rgba(1, 139, 117, 1);
+  color: white;
+  font-family: 'Calibri';
+  border: 2px solid  rgba(1, 139, 117, 1);
+
+}
+.addbuttons
+{
+  margin: auto;
+  text-align: center;
+  
+}
+
+.form-control-plaintext
+{
+ color: rgba(104, 110, 116, 1);
+ font-family: 'Calibri';
+font-size: 15px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: 0.04em;
+}
+
+.table-headercolor
+{
+color: white;
+background: rgba(1, 139, 117, 1);
+border-top-left-radius: 13px;
+border-top-right-radius: 13px;
+}
+#thisorderqty
+{
+  margin-left: -20%;
+  position: relative;
+
+}
+
+#totalnonprobackcolor
+{
+  background: rgba(1, 139, 117, 1);
+  border-bottom-left-radius: 1px;
+  border-bottom-right-radius: 10px;
+  color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  width: 101%;
+  left: 1px;
+  margin-left: -3px;
+
+}
+.headingcontent
+{
+  width: 52%;
+  float: right;
+  margin-top: 26px;
+  border: 1px solid rgba(225, 226, 227, 1);
+
+  height: 130px;
+  margin-right: 20px;
+}
+.nonproitemsconfiorm
+{
+  border: 1px solid rgba(225, 226, 227, 1);
+  border-radius: 10px;
+  height: 233px;
+  margin-top: 12px;
+}
+#itemsnonheading
+{
+  position: relative;
+  top: 6px;
+  color: white;
+}
+.headingnonpro
+{
+  height: 34px;
+  /* color: white; */
+  margin-left: 3%;
+}
+#actionheading
+{
+  font-family: 'Calibri';
+  color: white;
+}
+/* ::-webkit-scrollbar {
+  width: 10px; 
+} */
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(1, 139, 117, 1);
+  border-radius: 5px; 
+}
+
+
+  
+
+
+
+.producty-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #44026C !important;
+}
+.product-placeholder.dropdown-placeholder .selected-placeholder {
+  color: #44026C !important;
+}
+.head-t
+{
+  margin-top: -24px;
+}
+.head-tt
+{
+  margin-top: -37px;
+}
+.head-tt h3 {
+  color: #000000;
+  text-align: center;
+  margin-bottom: 25px;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: ' Calibri';
+  font-weight: bold;
+  top: 13px;
+}
+.TOTAL
+{
+
+  /* margin: auto; */
+  width: 35% !important;
+  background: #FFFFFF;
+  border-radius: 21px;
+  padding: 5px;
+  font-size: 13px;
+   margin-left: 76%; 
+   border: 1px solid rgba(0, 0, 0, 0.2);
+  
+}
+.numbers
+{
+  padding-right: 5%;
+  color: rgba(1, 139, 117, 1);
+
+}
+.SUBITEMNAME {
+  font-size: 14px;
+  font-family: 'Calibri';
+  font-weight: 400;
+  line-height: 15.87px;
+  color: rgba(1, 139, 117, 1);
+
+}
+
+ 
+
+
+::ng-deep.orders-add-Promotions .mat-dialog-container {
+  position: relative;
+  left: 2px; 
+}
+
+.card1.selected {
+  border: 5px solid #187ddd;
+}
+.selected {
+  background-color: #00187A;
+  color: white;
+}
 
 
 ::-webkit-scrollbar {
@@ -19,14 +332,25 @@
 {
  
   position: relative;
-  left: 3%;
+  left: -2%;
 }
 
 .drop_ng
 {
  
   position: relative;
-  left: 6%;
+  left: -4%;
+}
+.Drop_ng
+{
+ 
+  position: relative;
+  left: 0%;
+}
+.dropng_ng
+{
+  position: relative;
+  left: 3%;
 }
 
 #color
@@ -104,7 +428,7 @@ margin-top: -5px;
 }
 
 ::ng-deep.my_Datepicker .mat-form-field {
-  width: 415px;
+    width: 415px; 
   height: 43px;
   background: white !important;
   border-radius: 5px;
@@ -142,7 +466,7 @@ margin-top: -5px;
   right: 10px;
 }
 ::ng-deep.my_Datepicker .mat-form-field {
-  width: 415px;
+   width: 415px; 
   height: 43px;
   background: white !important;
   border-radius: 5px;
@@ -238,7 +562,7 @@ input.mat-input-element {
   background: #fff;
   margin-top: 0px !important;
   box-shadow: 0 1px 5px #959595;
-  margin-left: -12px;
+  left:-6%;
   
 }
 
@@ -344,11 +668,12 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.contentscrobar
+ .contentscrobar
 {
    
-   height: 180px;
- }
+   height: 100px;
+ } 
+
 
 
 /* Firefox */
@@ -357,7 +682,8 @@ input[type=number] {
 }
 
 .mat-form-field {
-  width: 229px;
+  /* width: 229px; */
+  width: 100%;
   height: 38px;
   border-radius: 10px;
   font-family: 'Gilroy';
@@ -368,15 +694,22 @@ input[type=number] {
   bottom: 2px;
 }
 .delivery1 {
-  font-weight: bold; 
-  font-family: 'Gilroy';
+  /* font-weight: bold;  */
+  font-family: 'Gilroy-SemiBold';
   color: #000000;
-  font-size: 15px;
+  font-size: 14px;
+  margin-left: 18px;
+}
+.delivery_1 {
+ 
+  font-family: 'Calibri';
+  color: #000000;
+  font-size: 14px;
 }
 
 .boldR {
     font-weight: bold;  
-   font-family: 'Gilroy';
+   font-family: 'Gilroy-SemiBold';
    color: #000000;
    font-size: 14px;
 }
@@ -420,6 +753,16 @@ input[type=number] {
   margin-top: 3px;
   font-family: 'Gilroy';
   margin-left: 2px;
+}
+.Remarkspromotiont
+{
+  font-family: 'Calibri';
+font-size: 16px;
+font-weight: 700;
+line-height: 20px;
+letter-spacing: 0em;
+
+
 }
 .promotiont {
   margin-top: 3px;
@@ -558,39 +901,45 @@ input[type=number] {
   /* background-color: #CED4DA; */
 }
 
-.main {
-  background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-
-}
-
 .font {
   font-family: 'Gilroy';
+}
+.FONT {
+  font-family: 'Gilroy';
+  margin-top: 10px;
 }
 
 .head-t h3 {
   color: #000000;
   text-align: center;
-  margin-top: -18px;
   margin-bottom: 2px;
+  margin-top: 33px;
  cursor: pointer;
  font-size: 20px;
+ font-family:' Calibri';
+ font-weight: bold;
  
 }
 .addU {
   position: relative;
-  /* font-family: 'Gilroy-Bold';  */
-  font-weight: bold;
+  font-family: 'Calibri';
+  font-size: 20px;
+}
+.labelU
+{
+  position: relative;
+  font-family: 'Calibri';
   font-size: 20px;
 }
 .addU:after {
   content: "";
   display: block;
-   width: 265px; 
+   width: 33%; 
   
   height: 2px;
    background: #686E74; 
   
-margin-left: 67%;
+margin-left: 62%;
    
   top: 50%;
   position: absolute;
@@ -600,10 +949,10 @@ margin-left: 67%;
   content: "";
   display: block;
   
-  width: 265px;
+  width: 34%;
   height: 2px;
    background: #686E74; 
-  left: 0;
+  left: 4%;
   top: 50%;
   position: absolute;
 }
@@ -634,14 +983,44 @@ margin-left: 67%;
 span {
   color: red;
 }
-.close-icon {
+/* .close-icon {
+  position: sticky;
+  top: 0;
+  float: right;
+  margin-right: 10px;
+  z-index: 1;
+  cursor: pointer;
+  margin-top: 27px;
+} */
+.close-icon{
+  position: fixed;
+  top: 0;
+  float: right;
+  /* z-index: 1; */
+  cursor: pointer;
+  margin-top: 12px;
+  margin-left: 94%;
+}
+.close_icon
+{
+  /* position: fixed;
+  top: 0;
+  float: right;
+ 
+  cursor: pointer;
+  margin-top: 12px;
+  margin-left: 94%; */
+  cursor: pointer;
+  float: right;
+  margin-top: -6px;
+}
+.close-iconn {
   left: 97%;
   position: relative;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  margin-top: 11px;
-
+  top: -2px;
 }
 label {
   /* padding: 2px 0; */
@@ -650,10 +1029,22 @@ label {
 }
 .DealerInfo-label {
   margin: 5px;
-  font-size: 12.5px;
+  font-size: 14px;
   align-items: center;
-  font-weight: bold;
+  font-weight: 400;
   color: #000000;
+  font-family: 'Gilroy-SemiBold';
+}
+.Dealereferncenew
+{
+  font-family: 'Calibri';
+font-size: 16px;
+font-weight: 700;
+line-height: 20px;
+letter-spacing: 0em;
+color: #000000;
+
+
 }
 mat-form-field {
   width: 246px;
@@ -665,8 +1056,9 @@ mat-form-field {
 }
 
 ::ng-deep.mat-dialog-container {
-  background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-   overflow: auto; 
+  /* background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
+   /* overflow: auto;  */
+   overflow: hidden;
   
 
 
@@ -1179,7 +1571,36 @@ li {
   position: relative;
   bottom: 89px;
 }
+.promotion-card {
+   height: 215px;
+  left: 0px;
+  top: 0px;
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow-y: auto;
+  margin-top: -10px;
+}
 
+.promoimgs {
+  display: -webkit-box;
+}
+.card1 {
+  height: 114px;
+  width: 109px;
+  border-radius: 10px;
+  margin-top: 21px;
+  margin-left: 61px;
+  cursor: pointer;
+}
+.card1.selected {
+  border: 5px solid #187ddd;
+}
+.selected {
+  background-color: #00187A;
+  color: white;
+}
 .productdrpdowntwo {
   width: 365px;
   position: relative;
@@ -1205,8 +1626,127 @@ li {
 }
 
 .collapsible {
+ 
+ padding-left: 1%;
+   width: 99%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-radius: 10px 10px 0px 0px;
+  color: white;
+  background: linear-gradient(0deg, #018B75, #018B75);
+ border: rgba(152, 156, 160, 1);
+  border-radius: 10px;
+  padding-top: 6px;
+  height: 44px;
+}
+.DealerRefcollapsible {
+  
+ padding-left: 1%;
+   width: 99%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-radius: 10px 10px 0px 0px;
+  color: white;
+  background: linear-gradient(0deg, #018B75, #018B75);
+ border: rgba(152, 156, 160, 1);
+  border-radius: 10px;
+  height: 44px;
+  padding-top: 6px;
+}
+.coll_apsible {
   cursor: pointer;
-  padding: 5px;
+  padding-left: 1%;
+   width: 99%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-radius: 10px 10px 0px 0px;
+  background: linear-gradient(0deg, #018B75, #018B75);
+  border: 1px solid rgba(152, 156, 160, 1);
+  color: white;
+  border-radius: 10px;
+}
+.Removecoll_apsible
+{
+  padding-left: 1%;
+   width: 99%;
+  border: none;
+  height: 44px;
+  padding-top: 5px;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-radius: 10px 10px 0px 0px;
+  background: linear-gradient(0deg, #018B75, #018B75);
+  border: 1px solid rgba(152, 156, 160, 1);
+  color: white;
+  border-radius: 10px;
+}
+.searchInput_11 {
+  display: block;
+  width: 100%;
+  height: 33px;
+  background: linear-gradient(0deg, #018B75, #018B75);
+  float: left;
+  padding-left: 14%;
+  border-radius: 6px;
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 17px;
+  letter-spacing: 0.08em;
+  color: white;
+  box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+  position: absolute;
+  right: 31px;
+  border:1px solid white;
+  
+}
+.searchiconsmat
+{
+    color: white;
+    top: 6px;
+    position: relative;
+    right: 39px;
+}
+.searchbuttonpromotions{
+  display: block;
+  height: 23px;
+  border: none;
+  background-color:#686E74 ;
+  color: black;
+  border-radius: 5px;
+  position: absolute;
+  right: 36px;
+  top: 5px;
+  font-size: 13px;
+}
+.searchInput_11::placeholder {
+ color: white;
+}
+.coll_apsiblee {
+  padding-left: 1%;
+   width: 99%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-radius: 10px 10px 0px 0px;
+  background: linear-gradient(0deg, #018B75, #018B75);
+  border-radius: 10px;
+  height: 44px;
+  color: white;
+  padding-top: 6px;
+}
+.collapsiblePro {
+  cursor: pointer;
+  padding-left: 1%;
    width: 99%;
   border: none;
   text-align: left;
@@ -1216,6 +1756,7 @@ li {
   background: #FFFFFF;
   border: 0.5px solid #000000;
   border-radius: 10px;
+  margin-top: 2%;
 }
 
 /* .active, .collapsible:hover {
@@ -1235,32 +1776,87 @@ li {
   margin: 0px 18px;
   
 }
+.con_tent {
+  padding: 0 18px 10px;
+  box-sizing: border-box;
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: #686E74;
+  border-radius: 0px 0px 10px 10px;
+   overflow: auto; 
+  
+  margin: 0px 18px;
+  
+}
+.con_tentConform {
+  padding: 0 18px 10px;
+  box-sizing: border-box;
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: #686E74;
+  border-radius: 0px 0px 10px 10px;
+   overflow: auto; 
+  
+  margin: 0px 18px;
+  
+}
 .top-bottom {
-  margin-top: 25px;
+  margin-top: 9px;
+}
+.dealerreftop-bottom {
+  margin-top: -3px;
+}
+.t_op-bottom {
+  margin-top: 10px;
+}
+.t_op-bottomConform
+{
+  margin-top: 10px;
 }
 
 .label-cls {
   position: relative;
   top: 6px;
+  font-family: 'Gilroy-Light';
+  font-size: 18px;
+}
+.DealerReflabel-cls {
+  position: relative;
+  top: 6px;
+  font-family: 'Gilroy-Light';
+  font-size: 18px;
+}
+.label-class {
+  position: relative;
+  top: 6px;
+  font-family: 'Gilroy-Light';
+  font-size: 18px;
 }
 .add-edit-promo {
   color: #fff;
   background: #000000;
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
-  font-size: 10px;
+  font-size: 13px;
   text-align: center;
   cursor: pointer;
   margin-right: 10px;
+  font-family: 'Gilroy-SemiBold';
 }
 .add-edit-non-promo {
-  background: #FFFFFF;
-  border: 2px solid #000000;
+  background: linear-gradient(0deg, #018B75, #018B75);
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
-  border-radius: 10px;
-  font-size: 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  color: white;
+  border: 1px solid white;
   text-align: center;
   cursor: pointer;
+  font-family: 'Gilroy-SemiBold';
+  margin-top: 2%;
+    width: 210px;
+    height: 28px;
+  margin-right: -38px;
 }
 .promotions-label {
   /* margin-left: -12px; */
@@ -1278,9 +1874,14 @@ li {
 
 .main {
   overflow-x: hidden !important;
-   height: 621px; 
-  /* height: 686px; */
-
+   /* height: 621px;  */
+   margin-top: -1%;
+  height: 652px
+}
+.mai_n {
+  overflow-x: hidden !important;
+   margin-top: -1%;
+  height: 700px
 }
 
 .promotionpopup-scroll1 {
@@ -1288,10 +1889,13 @@ li {
 }
 .promotionpopup-scroll2 {
   max-height: 532px !important;
+  margin-top: 23px;
+  /* margin-top: -13px; */
 }
 
 .promotionpopup-scroll3 {
   max-height: 532px !important;
+  margin-top: 17px;
 }
 
 
@@ -1302,7 +1906,7 @@ li {
   width: 860px !important;
   margin: auto;
   position: relative;
-  bottom: 6px;
+  bottom: 9px;
 }
 .footers {
   border-radius: 0px 0px 25px 25px;
@@ -1312,16 +1916,15 @@ li {
 
 }
 .save-submit11 {
-  background: #000000;
-  border: 2px solid #000000;
+  background: linear-gradient(0deg, #018B75, #018B75);
+  border: 1px solid rgba(152, 156, 160, 1);
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
-
+ color: white;
   margin-top: 15px;
   cursor: pointer;
   width: 168px;
   height: 43px;
-
   line-height: 18px;
   letter-spacing: 0em;
   text-align: center;
@@ -1338,10 +1941,10 @@ li {
 }
 .saveas-draft22 {
 
-  background: #000000;
+  background: rgba(1, 139, 117, 1);
+  border: 1px solid rgba(152, 156, 160, 1);
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 8px;
-  
   margin-top: 15px;
   cursor: pointer;
   width: 168px;
@@ -1359,11 +1962,10 @@ li {
   color: #FFFFFF;
 }
 .save-submit {
-   background: #000000;
-  border: 2px solid #000000;
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+   background:  rgba(1, 139, 117, 1);
+   border: 1px solid rgba(152, 156, 160, 1);
+     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
-
   margin-top: 15px;
   cursor: pointer;
   width: 168px;
@@ -1384,8 +1986,8 @@ li {
 }
 .save-submi_t
 {
-  background: #FFFFFF;
-  border: 2px solid #000000;
+  background: rgba(1, 139, 117, 1);
+  border: 1px solid rgba(152, 156, 160, 1);
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
 
@@ -1409,7 +2011,7 @@ li {
 }
 .saveas-draft {
 
-  background: #000000;
+  background: rgba(1, 139, 117, 1);
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   
@@ -1430,11 +2032,11 @@ li {
   color: #FFFFFF;
 }
 .tabel-div {
-  margin-top: 15px;
+  margin-top: -18px;
   /* max-height: 321px; */
-  border: 2px solid black;
+  border: 2px solid rgba(1, 139, 117, 1);
   border-radius: 15px;
-  height: 382px;
+  height: 414px;
   /* overflow-x: hidden !important; */
 }
 .buy-grp {
@@ -1458,7 +2060,7 @@ li {
 }
 .cancel {
   font-size: 15px;
-  width: 106px;
+   width: 106px; 
   height: 39px;
   line-height: 18px;
   display: flex;
@@ -1473,6 +2075,7 @@ li {
   cursor: pointer;
 
   font-family: 'Gilroy-Bold';
+  
 
 
 }
@@ -1551,6 +2154,7 @@ li {
   border-radius: 10px;
   height: 30px;
 }
+
 ::ng-deep.shipingAddress .ng-select-container {
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
@@ -1565,7 +2169,7 @@ li {
 }
 
  ::ng-deep.orderDatepicker .mat-form-field-appearance-fill .mat-form-field-flex {
-   width: 230px;
+   /* width: 230px; */
   
   height: 40px;
   background: #FFFFFF;
@@ -1579,6 +2183,7 @@ li {
 
 .addbtns {
   float: right;
+  margin-right: -13%;
 }
 
 .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button .mat-datepicker-toggle-default-icon,
@@ -1586,19 +2191,45 @@ li {
   margin: auto;
   margin-top: -27px;
 }
+#protype
+{
+  display: inline-flex;
+    width: 200px;
+    position: relative;
+    left: 91px;
+    bottom: 20px;
+}#protype_confirm
+{
+  display: inline-flex;
+  width: 78px;
+  position: relative;
+  left: 31px;
+}
 
-
+.expand-arrow_W
+{
+  cursor: pointer;
+    /* width: 3%; */
+    position: relative;
+    left: -1%;
+}
 
 .expand-arrow {
-  width: 30%;
+  width: 22%;
   position: relative;
   left: 72px;
   top: 4px;
 }
 .expand-arrows {
-  width: 30%;
+  width: 22%;
   position: relative;
-right: -572px;
+right: -675px;
+  top: 5px;
+}
+.expand-arrowws {
+  width: 22%;
+  position: relative;
+right: -65px;
   top: 5px;
 }
 /* ::ng-deep.selectgeo .multiselect-dropdown .dropdown-btn {
@@ -1652,13 +2283,33 @@ right: -572px;
 
 .IteminputBoxes {
   width: 100px;
-  height: 30px;
+  /* height: 30px; */
   background: none;
   border-radius: 10px;
   border: 1px solid black;
   font-size: 12.5px;
-  color: black;
   border: 0px;
+  text-align: right;
+}
+.IteminputBoxesprice {
+  width: 100px;
+  /* height: 30px; */
+  background: none;
+  border-radius: 10px;
+  border: 1px solid black;
+  font-size: 12.5px;
+  border: 0px;
+  text-align: right;
+}
+.IteminputBoxesPriceBOX {
+  width: 100px;
+  /* height: 30px; */
+  background: none;
+  border-radius: 10px;
+  border: 1px solid black;
+  font-size: 12.5px;
+  border: 0px;
+  text-align: right;
 }
 .IteminputBoxesD {
   width: 100px;
@@ -1669,11 +2320,14 @@ right: -572px;
   font-size: 12.5px;
   color: green;
   border: 0px;
+  text-align: center;
 }
 
 .itemLeft {
-  width: 150px;
-  font-size: 12.5px;
+  /* width: 150px; */
+  /* font-size: 12.5px; */
+  height: 1px;
+  text-align: left;
 }
 
 .text-area-extrainfo {
@@ -1682,22 +2336,42 @@ right: -572px;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 8px;
-  font-size: 12px;
-  font-weight: 'Gilroy';
+  font-size: 13px;
+  font-family: 'Gilroy-Light';
   color:#000000;
+  width: 100%;
+  margin-left: 16px;
   
 
 }
+/* ::ng-deep .textarea{
+ 
+} */
 
 .promoItem {
-  width: 30px;
-  height: 30px;
+  /* width: 29px;
+  height: 21px;
   background: #0091EA;
   border-radius: 68%;
   color: white;
   padding: 3px 5px;
-  display: block;
+  display: block; */
+
+  width: 50px !important;
+    position: relative;
+    cursor: pointer;
+    color: rgba(1, 139, 117, 1);
+    top: -44px;
+    left: 67%;
+
 }
+#productname
+{
+    position: relative;
+    right: 173px;
+    
+}
+
 
 .totall {
   width: 662px;
@@ -1721,6 +2395,8 @@ right: -572px;
 
 .alltotals {
   margin-bottom: 1px;
+  font-family: 'Gilroy-Medium';
+  font-size: 13px;
 } 
 .total_total
 {
@@ -1775,10 +2451,11 @@ margin-top: -5px;
 
 .popup {
   /* margin: 41px auto; */
-  padding: 20px;
+  padding: 20px 0px 20px 20px;
   background: #fff;
   border-radius: 5px;
-  width: 95vw;
+  
+  width: 100vw;
   height: 730px;
   /* min-height: 263px; */
   /* height: auto; */
@@ -1786,22 +2463,22 @@ margin-top: -5px;
   /* top: 7%; */
   position: relative;
   transition: all 5s ease-in-out;
-  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
+  /* background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%); */
   border: 0.5px solid #000000;
   border-radius: 25px;
   margin-top: 8px;
-  margin-left: 39px;
+  left: 0%;
   
 }
 .expand-arrow {
-  width: 30%;
+  width: 22%;
   position: relative;
   right: -28px;
   top: 4px;
 }
 
 .input-icons {
-  width: 103%;
+  width: 86%;
   margin-bottom: 10px;
   margin: 0 5px;
 
@@ -1825,9 +2502,9 @@ margin-top: -5px;
   width: 40px;
   height: 39px;
   margin-top: 1px;
-  background: #000000;
-  border-radius: 20%;
-  margin-left: 54px;
+  background: rgba(156, 160, 164, 1);
+  border-radius: 18%;
+  margin-left: 83%;
 }
 
 .refreshbtn .refresh-icon {
@@ -1846,8 +2523,8 @@ margin-top: -5px;
   color: #FFFFFF;
   width: 37px;
   height: 37px;
-  border-radius: 50%;
-  background: #000000;
+  border-radius: 18%;
+  background: rgba(156, 160, 164, 1);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1886,7 +2563,7 @@ top: 6px;
 
 .searchBox1:hover>.searchButton .material-icons {
   position: relative;
-  right: 282px;
+  right: 271px;
   color: #000;
   top: 3px;
 }
@@ -1917,8 +2594,8 @@ top: 6px;
 
 .searchBox1:hover>.searchInput1 {
   display: block;
-  width: 335px;
-  height: 43px;
+  width:311px;
+  height:41px;
   background: #FFFFFF;
   float: left;
   padding: 5px 32px 6px;
@@ -1939,11 +2616,15 @@ top: 6px;
 
 .searchBox1 {
   float: right;
+  position: relative;
+  top: -87px;
+  left: -29px;
 }
 
 .nonpromoSearch {
   display: flex;
   justify-content: end;
+  margin-bottom: -6px;
 }
 
 table {
@@ -1961,7 +2642,8 @@ table {
 th {
   padding: 8.5px;
   text-align: center;
-  
+  font-family: 'Gilroy-Bold';
+  font-size: 14px;
 }
 
 td {
@@ -1979,23 +2661,30 @@ tr:nth-child(even) {
 }
 
 .bottom-table {
-  background: #0879ea !important;
   /* border-radius: 0px 0px 24.5px 24.5px; */
   height: 34px;
   color: white;
   
 }
+.promotionItem
+{
+  background-color: #FFC0CB;
+}
 .tt
 {
-  
-   
-
     height: 34px;
     color: white;
     border-radius: 15px;
-    
-  
+ 
 }
+.conform
+{
+    height: 34px;
+    font-weight: bolder;
+  
+ 
+}
+
 
 .check
 {
@@ -2178,13 +2867,36 @@ table thead, table tbody tr {
   right: -2px;
 }
 
-.removeCircle{
+.action-items{
+  display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+.removeCircle, .edit{
   cursor: pointer;
+  color: rgba(1, 139, 117, 1);
+  font-family: 'Calibri';
+font-size: 13px;
+font-weight: 400;
+line-height: 16px; 
+}
+.edit
+{
+  cursor: pointer;
+  color: rgba(1, 139, 117, 1);
+ font-family: 'Calibri';
+font-size: 15px;
+font-weight: 400;
+line-height: 16px;
+margin-top: -6%;
+margin-left: 25%;
 }
 
 
 .txt-right{
-  text-align: right;
+  text-align: center;
   padding-right: 15px;
 }
 
@@ -2203,3 +2915,116 @@ table thead, table tbody tr {
      height: 5px;
      display: table-cell;
    }
+   ::ng-deep.ng-select .ng-select-container .ng-value-container .ng-placeholder{
+    font-family: 'Gilroy-Light';
+    font-size: 13px;
+   }
+
+
+   .promotion-container{
+    position: relative;
+    display: flex;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 5px;
+    margin: 10px 0;
+    cursor: pointer;
+   }
+
+   .promotion-container.selected{
+    border: 2px solid #000000;
+    background: #fff;
+   }
+   .promotion-container .img-container{
+    /* height: 100px; */
+    height: 66px;
+    width: 100px;
+    display: inline-block;
+    overflow: hidden;
+    object-fit: cover;
+    /* padding: 1px; */
+    border: 1px dashed #000;
+   }
+   
+
+   .promotion-container .img-container img{
+    width: 100%;
+    height: 56px;
+         /* object-fit: cover; */
+   }
+
+   .promotion-container .promotion-info{
+    color: #000000;
+    font-size: 12px;
+    margin-left: 10px;
+   }
+
+   .promotion-container .promo-view{
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    cursor: pointer;
+   }
+
+   .promotion-container .promo-view .mat-icon{
+    width: 26px;
+    border: 1px solid #ccc;
+   }
+
+   .cancel-icon .mat-icon{
+    background: #000000;
+    color: #FFFFFF;
+    position: absolute;
+    /* top: -20px; */
+    top: -8px;
+    padding-top: 1px;
+    border-radius: 50%;
+    padding-left: 1px;
+    margin-left: -5px;
+    cursor: pointer;
+    display: none;
+   }
+
+   
+   .promotion-container.selected .cancel-icon .mat-icon{
+    display: block;
+   }
+   .promotion-container .promo-name span{
+    color: #000000;
+    font-weight: bold;
+   }
+
+   .promotion-card .row {
+    margin: 0;
+    margin-top: 2px;
+   }
+   .align-center{
+    /* text-align: center; */
+    text-align: left;
+   }
+ 
+
+   ::ng-deep mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-bar {
+    background: rgba(1, 139, 117, 1);
+    
+   
+  }
+  
+  ::ng-deep mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-thumb {
+    background: rgba(196, 196, 196, 1);
+   }
+  
+   ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: #000a00e2 !important;
+   
+    
+  }
+  ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color:white !important;
+    }
+.togglebutton
+{
+  margin-left: 80%;
+  margin-top: -5%;
+}
+   

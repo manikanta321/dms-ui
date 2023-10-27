@@ -180,7 +180,7 @@ geographyobj.vtotal  =res.response.vtotal
     this.userId = localStorage.getItem("logInId");
   }
   onSelectFinancialYear(event: any) {
-    alert(event.target.value)
+    // alert(event.target.value)
     this.mainadd[0].geography[0].year = event.target.value;
   }
 
@@ -861,7 +861,7 @@ console.log('obj1obj1obj1',obj1)
           console.log("Added TargetData ", this.addedTargetData);
           if (res.response.result == 'DealerTargets Update Successfully') {
             this.dialogRef.close();
-            this.dialog.open(DealerTargetSuccessPopupComponent, {panelClass: 'activeSuccessPop'})
+            this.dialog.open(DealerTargetSuccessPopupComponent, {panelClass: 'TargetSuccessPop'})
             // alert('Dealer Targets Update Successfully')
             this.sharedService.filter('Register click')
 

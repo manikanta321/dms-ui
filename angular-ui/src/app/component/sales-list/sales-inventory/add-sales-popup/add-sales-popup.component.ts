@@ -27,9 +27,9 @@ export class AddSalesPopupComponent implements OnInit {
   productDetails:any=[]
   AddSales :any =[]
   productCustomIdentifier:any='';
-  image1 = 'assets/img/minimize-tag.png';
-  image2 = 'assets/img/minimize-tag.png';
-  image3 = 'assets/img/minimize-tag.png';
+  image1 = 'assets/img/expandarrows.svg';
+  image2 = 'assets/img/expandarrow.svg';
+  image3 = 'assets/img/expandarrow.svg';
   disabled = false;
   dropdownSettings3: IDropdownSettings = {};
   toppingList3:  any= [];
@@ -287,44 +287,44 @@ getdealersGeography(data){
   expandDealerInfoDiv(){
     this.dealerInfo = !this.dealerInfo;
     if(this.dealerInfo === false){
-      this.image1 = 'assets/img/maximize-arrow.png';
+      this.image1 = 'assets/img/expandarrows.svg';
     } else {
-      this.image1 = 'assets/img/minimize-tag.png';
+      this.image1 = 'assets/img/expandarrows.svg';
      
     }
   }
   expandDealerInfoDiv1(){
     this.productInfo = !this.productInfo;
     if(this.productInfo === false){
-      this.image1 = 'assets/img/maximize-arrow.png';
+      this.image1 = 'assets/img/expandarrows.svg';
     } else {
-      this.image1 = 'assets/img/minimize-tag.png';
+      this.image1 = 'assets/img/expandarrows.svg';
     }
   }
   expandDealerInfoDiv2(){
     this.productCustomIdentifier = !this.productCustomIdentifier;
     if(this.productCustomIdentifier === false){
-      this.image1 = 'assets/img/maximize-arrow.png';
+      this.image1 = 'assets/img/expandarrows.svg';
     } else {
-      this.image1 = 'assets/img/minimize-tag.png';
+      this.image1 = 'assets/img/expandarrows.svg';
      
     }
   }
   expandDealerInfoDiv3(){
     this.receipts = !this.receipts;
     if(this.receipts === false){
-      this.image1 = 'assets/img/maximize-arrow.png';
+      this.image1 = 'assets/img/expandarrows.svg';
     } else {
-      this.image1 = 'assets/img/minimize-tag.png';
+      this.image1 = 'assets/img/expandarrows.svg';
      
     }
   }
   expandDealerInfoDiv4(){
     this.sales = !this.sales;
     if(this.sales === false){
-      this.image1 = 'assets/img/maximize-arrow.png';
+      this.image1 = 'assets/img/expandarrows.svg';
     } else {
-      this.image1 = 'assets/img/minimize-tag.png';
+      this.image1 = 'assets/img/expandarrows.svg';
      
     }
   }

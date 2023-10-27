@@ -15,10 +15,16 @@
         <label class=" row upload-div">
             <input  type="file" (change)="onFileChange($event)" style="display: none;">
             <img src="../../../assets/img/upload-icon.png"  class="upload-icon" alt="Upload icon">
-            <div class="row">
+            <div class="row" *ngIf="uploadedTextShow">
+                <div  *ngFor="let file of files; let i=index">
+                   <h6 class="uploadedText"> Document is <b>{{file.name}} </b><br></h6>
+                   <h6 class="uploadedTexttt"> is successfully Uploaded!</h6>
+                   </div>
+            </div>
+            <div class="row" *ngIf="!uploadedTextShow">
                 <h6 class="upload-doc txt-1">Upload the document</h6>
             </div>
-            <div class="row">
+            <div class="row" *ngIf="!uploadedTextShow"> 
                 <h6 class="upload-doc txt-2">after adding all required information related to sales</h6>
             </div>
        
@@ -209,18 +215,24 @@
         <label class=" row upload-div">
             <input  type="file" (change)="onUploadFile($event)" style="display: none;">
             <img src="../../../assets/img/upload-icon.png"  class="upload-icon" alt="Upload icon">
-            <div class="row">
+            <div class="row" *ngIf="uploadedTextShow">
+                <div  *ngFor="let file of files; let i=index">
+                   <h6 class="uploadedText"> Document is <b>{{file.name}} </b><br></h6>
+                   <h6 class="uploadedTexttt"> is successfully Uploaded!</h6>
+                   </div>
+            </div>
+            <div class="row" *ngIf="!uploadedTextShow">
                 <h6 class="upload-doc txt-1">Upload the document</h6>
             </div>
-            <div class="row">
+            <div class="row" *ngIf="!uploadedTextShow">
                 <h6 class="upload-doc txt-2">after adding all required information related to orders</h6>
             </div>
        
         </label>
         <div class="step-2-filled" *ngIf="!showTable">
             <div class="row step2">
-                <span class="step-txt">Step 2:</span>
-                <h4 class="up-doc" style="bottom: 6px;">Analyzing Uploaded document</h4>
+                <span class="step1-txt">Step 2:</span>
+                <h4 class="up-doc" >Analyzing Uploaded document</h4>
                 <div style="position: relative;top: 45px;right: 300px;">
                     <input type="text"  placeholder="No document uploaded yet" class="selectedProductReceipts" disabled>
                 </div>
@@ -256,16 +268,16 @@
                             <td title="" style="padding-left: 21px;">{{shipData.rownumber}}</td>
                             <td style="width: 90px;" title="" class="elipsis-2line">
                                 {{shipData.orderNo}}</td>
-                            <td style="width: 100px;">{{shipData.orderDate.toString().split('T')[0]}}</td>
+                            <td style="width: 100px;">{{ sharedService.dateformat(shipData.orderDate)}}</td>
                             <td style="width: 120px;" title="">{{shipData.productName}}</td>
                             <td title="">{{shipData.productCode}}</td>
                             <td>{{shipData.orderedQty}}</td>
                             <td>{{shipData.shippedTillQty}}</td>
                             <td>{{shipData.dispatchQty}}</td>
                             <td>{{sharedService.dateformat(shipData.dispatchDate)}}</td>
-                            <td>{{sharedService.dateformat(shipData.invoiceDate)}}</td>
+                            <td>{{sharedService.dateformat (shipData.invoiceDate)}}</td>
                             <td >{{shipData.invoiceNo}}</td>
-                            <td>{{sharedService.dateformat(shipData.uploadedDate)}}</td>
+                            <td>{{ sharedService.dateformat(shipData.uploadedDate)}}</td>
             
                         </tr>
                     </table>
@@ -298,16 +310,16 @@
                             <td title="" style="padding-left: 21px;">{{shipData.rownumber}}</td>
                             <td style="width: 90px;" title="" class="elipsis-2line">
                                 {{shipData.orderNo}}</td>
-                            <td style="width: 100px;">{{shipData.orderDate.toString().split('T')[0]}}</td>
+                            <td style="width: 100px;">{{sharedService.dateformat(shipData.orderDate)}}</td>
                             <td style="width: 120px;" title="">{{shipData.productName}}</td>
                             <td title="">{{shipData.productCode}}</td>
                             <td>{{shipData.orderedQty}}</td>
                             <td>{{shipData.shippedTillQty}}</td>
                             <td>{{shipData.dispatchQty}}</td>
-                            <td>{{shipData.dispatchDate.toString().split('T')[0]}}</td>
-                            <td>{{shipData.invoiceDate.toString().split('T')[0]}}</td>
+                            <td>{{sharedService.dateformat(shipData.dispatchDate)}}</td>
+                            <td>{{sharedService.dateformat(shipData.invoiceDate)}}</td>
                             <td >{{shipData.invoiceNo}}</td>
-                            <td>{{shipData.uploadedDate.toString().split('T')[0]}}</td>
+                            <td>{{sharedService.dateformat(shipData.uploadedDate)}}</td>
             
                         </tr>
                     </table>
@@ -341,16 +353,16 @@
                             <td title="" style="padding-left: 21px;">{{shipData.rownumber}}</td>
                             <td style="width: 90px;"  title="" class="elipsis-2line">
                                 {{shipData.orderNo}}</td>
-                            <td style="width: 100px;" >{{shipData.orderDate.toString().split('T')[0]}}</td>
+                            <td style="width: 100px;" >{{sharedService.dateformat(shipData.orderDate)}}</td>
                             <td style="width: 120px;" title="">{{shipData.productName}}</td>
                             <td title="">{{shipData.productCode}}</td>
                             <td>{{shipData.orderedQty}}</td>
                             <td>{{shipData.shippedTillQty}}</td>
                             <td>{{shipData.dispatchQty}}</td>
-                            <td>{{shipData.dispatchDate.toString().split('T')[0]}}</td>
-                            <td>{{shipData.invoiceDate.toString().split('T')[0]}}</td>
+                            <td>{{sharedService.dateformat(shipData.dispatchDate)}}</td>
+                            <td>{{sharedService.dateformat(shipData.invoiceDate)}}</td>
                             <td >{{shipData.invoiceNo}}</td>
-                            <td>{{shipData.uploadedDate.toString().split('T')[0]}}</td>
+                            <td>{{sharedService.dateformat(shipData.uploadedDate)}}</td>
             
                         </tr>
                     </table>
@@ -382,16 +394,16 @@
                         <tr *ngFor="let shipData of incorrectRows">
                             <td  title="" style="padding-left: 21px;">{{shipData.rownumber}}</td>
                             <td style="width: 90px;" [ngClass] ="{'errorText': shipData.remarks == 'orderno'}">{{shipData.orderNo}}</td>
-                            <td  style="width: 100px;" [ngClass] ="{'errorText': shipData.remarks == 'orderdate'}">{{shipData.orderDate.toString().split('T')[0]}}</td>
+                            <td  style="width: 100px;" [ngClass] ="{'errorText': shipData.remarks == 'orderdate'}">{{sharedService.dateformat(shipData.orderDate)}}</td>
                             <td style="width: 120px;" [ngClass]="{'errorText': shipData.remarks == 'productname'}">{{shipData.productName}}</td>
                             <td  [ngClass]="{'errorText': shipData.remarks == 'productcode'}">{{shipData.productCode}}</td>
                             <td [ngClass]="{'errorText': shipData.remarks == 'orderedqty'}">{{shipData.orderedQty}}</td>
                             <td [ngClass]="{'errorText': shipData.remarks == 'shippedtillqty'}">{{shipData.shippedTillQty}}</td>
                             <td  [ngClass]="{'errorText': shipData.remarks == 'dispatchqty'}">{{shipData.dispatchQty}}</td>
-                            <td  [ngClass]="{'errorText': shipData.remarks == 'dispatchdate'}">{{shipData.dispatchDate.toString().split('T')[0]}}</td>
-                            <td  [ngClass]="{'errorText': shipData.remarks == 'invoicedate'}">{{shipData.invoiceDate.toString().split('T')[0]}}</td>
+                            <td  [ngClass]="{'errorText': shipData.remarks == 'dispatchdate'}">{{sharedService.dateformat(shipData.dispatchDate)}}</td>
+                            <td  [ngClass]="{'errorText': shipData.remarks == 'invoicedate'}">{{sharedService.dateformat(shipData.invoiceDate)}}</td>
                             <td   [ngClass]="{'errorText': shipData.remarks == 'invoiceno'}" >{{shipData.invoiceNo}}</td>
-                            <td  [ngClass]="{'errorText': shipData.remarks == 'uploaddate'}">{{shipData.uploadedDate.toString().split('T')[0]}}</td>
+                            <td  [ngClass]="{'errorText': shipData.remarks == 'uploaddate'}">{{sharedService.dateformat(shipData.uploadedDate)}}</td>
             
                         </tr>
                     </table>

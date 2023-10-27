@@ -1,3 +1,118 @@
+.selectedProductReceipts {
+  width: 95%;
+  height: 43px;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding-left: 12px;
+  font-size: 14px;
+  color: black;
+  background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+}
+.expandtotalfull
+{
+  top:15px;
+  background: #FFFFFF;
+  color: #000000;
+}
+.imagestyle
+      {
+        top: 94px;
+        z-index: 1;
+      }
+
+      .totaltablewidth {
+        position: relative;
+        width: 91%;
+        left: 17px;
+        top: 49px;
+        border-width: 0px 1px 1px 1px;
+        border-style: solid;
+        border-color: #686E74;
+        border-radius: 0px 0px 10px 10px
+          }
+
+          .class_table_shipment {
+            width: 100%;
+            background: #FFFFFF !important;
+            box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1) !important;
+            border: none;
+            border-radius: 12px !important;
+          }
+          .imageerror-style {
+            top: 74px;
+            z-index: 1;
+          }
+   .errorfreerows
+  {
+    position: relative;
+    top: 66px;
+    width: 90%;
+    left: 24px;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: #686E74;
+    border-radius: 0px 0px 10px 10px
+  }
+  .duplicate-tabel-shipments {
+    position: relative;
+    width: 92%;
+    left: 12px;
+    /* height: 183px; */
+    margin-bottom: 30px;
+    top: 79px;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: #686E74;
+    border-radius: 0px 0px 10px 10px
+      }
+
+      .incorrectdatatable
+  {
+    position: relative;
+    width: 92%;
+     left: 12px;
+    margin-bottom: 30px;
+    top: 5rem;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: #686E74;
+    border-radius: 0px 0px 10px 10px
+  }
+
+  .upload
+{
+   background-color: #018B75;
+   color: white;
+   height: 44px;
+   width: 597px;
+   text-align: center;
+   /* background: #000000; */
+   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+   border-radius: 10px;
+   cursor: pointer;
+   font-family: 'Gilroy-SemiBold';
+}
+.cancelbtn
+{
+  background: #018B75;
+  color: white;
+  font-family: 'Gilroy-SemiBold';
+   height: 44px;
+   width: 597px;
+   text-align: center;
+   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+   border-radius: 10px;
+   cursor: pointer;
+   margin-left: -41%;
+}
+.nodicument
+{
+  position: relative;
+  margin-top: 3%;
+}
+
+
 ::-webkit-scrollbar {
     color: #000000 !important;
         width: 9px;
@@ -6,16 +121,13 @@
     }
     .sales-container {
     position: relative;
-    width: 1289px;
-    height: 620px;
-    left: 0px;
-    top: 0px;
-    background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
+    min-width: 100%;
+    height: 653px;
     overflow-x: hidden;
     border-radius: 25px;
     }
     .close-icon {
-        left: 99%;
+        left: 97%;
         position: relative;
         font-size: 15px;
         font-weight: 600;
@@ -254,7 +366,7 @@
         border: none;
     }
     .step-2-filled{
-        height: 500px;
+        margin-top: -2.5%;
     }
     .class_table {
         width: 91%;
@@ -309,7 +421,7 @@
         font-size: 12px !important;
         line-height: 150% !important; */
         align-items: center !important;
-        height: 60px;
+        /* height: 60px; */
         font-family: 'Gilroy';
         font-size: 13px;
         line-height: 15px;
@@ -408,21 +520,499 @@
         z-index: 1;
       }
 
-      .selectedProductReceipts {
-        width: 958px;
-        height: 43px;
-        /* background: #FFFFFF; */
-        border: 0.5px solid #000000;
-        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-        border-radius: 10px;
-        padding-left: 12px;
-        font-size: 14px;
-        color: black;
-        background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-    }
+
     .expandrowDiv{
         margin-top: -19px;
     }
     .expandDivalign{
         margin-top: -41px;
     }
+    .uploadedText{
+      font-size: 14px;
+     position: relative;
+     top: 82px;
+    left:61px;
+     color: black;
+     /* font-weight: 500; */
+     }
+  .uploadedTexttt{
+     position: relative;
+     top: 69px;
+     left: 95px;
+     font-size: 14px;
+  }
+  .duplicate-tabel
+  {
+    position: relative;
+    width: 91%;
+    left: 15px;
+    margin-bottom: 30px;
+    top: 85px;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: #686E74;
+    border-radius: 0px 0px 10px 10px;
+}
+
+/* REceipts builk upload */
+
+.Redeiptsbulkupload {
+  position: relative;
+  width: 1289px;
+  height: 620px;
+  left: 0px;
+  top: 0px;
+  overflow-x: hidden;
+  border-radius: 25px;
+  }
+
+  .addUser_BulkUploadd::before {
+    content: "";
+    display: block;
+    width: 409px;
+    height: 1px;
+    background: #686E74;
+    left: 45px;
+    top: 4%;
+    position: absolute;
+  }
+  .addUser_BulkUploadd::after {
+    content: "";
+    display: block;
+    width: 416px;
+    height: 1px;
+    background: #686E74;
+    right: 33px;
+    top: 4%;
+    position: absolute;
+  }
+  .close_icon {
+    left: 97%;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    top: -1px;
+    color: #686E74;font-weight: bold;
+  }
+
+  .SHIP{
+    position: relative;
+    height: 40px;
+    top: -31px;
+    font-family: 'Gilroy';
+    font-size: 20px;
+    line-height: 40px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: #686E74;
+  }
+  .RECEIPTO{
+    left: 41.43%;
+    right: 38.51%;
+    top: -4%;
+  }
+
+  .REceiptBulk{
+    left: 4.43%;
+    top: -65px;
+    right: 38.51%;
+    font-weight: bold;
+    color: #000000;
+  }
+  .rec_eipts {
+    left: 47px;
+    position: relative;
+  }
+  .bulk_txt {
+    position: absolute;
+    width: 376px;
+    height: 38px;
+    top: -63px;
+    font-family: 'Gilroy';
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+      }
+      .step1_txt {
+        font-family: 'Gilroy';
+        font-size: 18px;
+        line-height: 21px;
+        display: flex;
+        align-items: center;
+        color: #000000;
+        bottom: 10px;
+        font-weight: bold;
+        position: relative;
+    }
+    .up_doc{
+      font-family: 'Gilroy';
+      font-size: 18px;
+      line-height: 21px;
+      display: flex;
+      align-items: center;
+      color: #000000;
+      position: relative;
+      left: 8px;
+  }
+
+  .upload_div{
+    box-sizing: border-box;
+    position: relative;
+    width: 456px;
+    height: 130px;
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    }
+    .upload_icon{
+      position: relative;
+      width: 55px;
+      height: 55px;
+      left: 44%;
+      top: 12%;
+    }
+    .uploaded_Text{
+      font-size: 14px;
+     position: relative;
+     top: 82px;
+    left:61px;
+     color: black;
+     /* font-weight: 500; */
+     }
+  .uploaded_Texttt{
+     position: relative;
+     top: 69px;
+     left: 95px;
+     font-size: 14px;
+  }
+
+  .UPLOAD-doc{
+    position: relative;
+    font-family: 'Gilroy';
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: rgba(104, 110, 116, 0.75);
+    }
+    .txt_1 {
+        top: 38px;
+        left: 127px;
+    }
+    .txt_2 {
+        left: 88px;
+        bottom: 8px;
+        font-weight: 600;
+    }
+
+    .STEP-2-filled{
+      height: 500px;
+  }
+  
+  .step__2{
+    position: relative;
+    top: 40px;
+}
+.STEP1_TXT{
+  font-family: 'Gilroy';
+  font-size: 18px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  bottom: 10px;
+  font-weight: bold;
+  position: relative;
+}
+.OP-DOV{
+  font-family: 'Gilroy';
+  font-size: 18px;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  position: relative;
+  left: 8px;
+}
+
+.selectedProductReceiptsuPLOADED {
+  width: 958px;
+  height: 43px;
+  /* background: #FFFFFF; */
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding-left: 12px;
+  font-size: 14px;
+  color: black;
+ 
+}
+.expand_Divalign{
+  margin-top: -41px;
+}
+
+.TOTALROWS
+{
+  box-sizing: border-box;
+  position: relative;
+  width: 1079px;
+  height: 43px;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  font-family: 'Gilroy';
+  font-size: 20px;
+  line-height: 23px;
+  display: flex;
+  align-items: center;
+}
+.DuPlicate-txt{
+  top:85px;
+  background: #FFFFFF;
+  color: #000000;
+}
+.expand_style {
+  top: 96px;
+  z-index: 1;
+}
+.expand_arrow {
+  position: relative;
+  width: 14px;
+  right: 45px;
+  /* top: 55px; */
+}
+
+.class_TABLE {
+  width: 91%;
+  margin-top: 92px;
+  margin-bottom: -20px;
+  /* margin-left: 9px; */
+  margin-right: 9px;
+  background: #FFFFFF !important;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1) !important;
+  border: none;
+  border-radius: 12px !important;
+}
+
+.class_TABLE th td {
+  width: 12%;
+}
+
+/* rk */
+th {
+    
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  align-items: center;
+  height: 60px;
+
+  font-family: 'Gilroy';
+  color: #686E74;
+
+}
+th:first-child {
+  border-top-left-radius: 12px !important;
+}
+
+th:last-child {
+  border-top-right-radius: 12px !important;
+}
+
+tr {
+ 
+  align-items: center !important;
+  height: 60px;
+  font-family: 'Gilroy';
+  font-size: 13px;
+  line-height: 15px;
+  align-items: center;
+  font-weight: 600 !important;
+  color: #000000;
+}
+
+
+
+.table_header_row{
+  border-top-right-radius: 12px !important;
+  border-top-left-radius: 12px !important;
+}
+
+.EXPANDdrowDiv{
+  margin-top: -19px;
+}
+.TOTALROWS
+      {
+        box-sizing: border-box;
+        position: relative;
+        width: 1079px;
+        height: 43px;
+        border: 0.5px solid #000000;
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        font-family: 'Gilroy';
+        font-size: 20px;
+        line-height: 23px;
+        display: flex;
+        align-items: center;
+      }
+      .duplicate__txt{
+        top:85px;
+        background: #FFFFFF;
+        color: #000000;
+      }
+      .expand-ARROWS {
+        position: relative;
+        width: 14px;
+        right: 45px;
+      }
+      .CLASSTABLE{
+        width: 91%;
+        margin-top: 92px;
+        margin-bottom: -20px;
+        margin-right: 9px;
+        background: #FFFFFF !important;
+        box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1) !important;
+        border: none;
+        border-radius: 12px !important;
+    }
+
+    
+    .table_header_row {
+      border-top-right-radius: 12px !important;
+      border-top-left-radius: 12px !important;
+  }
+  .TOTALLrows
+  {
+    box-sizing: border-box;
+    position: relative;
+    width: 1079px;
+    height: 43px;
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    font-family: 'Gilroy';
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+  }
+  .error-tx__t {
+    top:65px;
+    background: #FFFFFF;
+    color: #000000;
+  }
+  .error-STYLE {
+    top: 77px;
+    z-index: 1;
+  }
+  .EXPANDARROE{
+    position: relative;
+    width: 14px;
+    right: 45px;
+  }
+
+  .class_tab_le {
+    width: 91%;
+    margin-top: 92px;
+    margin-bottom: -20px;
+    /* margin-left: 9px; */
+    margin-right: 9px;
+    background: #FFFFFF !important;
+    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1) !important;
+    border: none;
+    border-radius: 12px !important;
+}
+
+.class_tab_le th td {
+    width: 12%;
+}
+
+.total-rowsS
+{
+  box-sizing: border-box;
+  position: relative;
+  width: 1079px;
+  height: 43px;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  font-family: 'Gilroy';
+  font-size: 20px;
+  line-height: 23px;
+  display: flex;
+  align-items: center;
+}
+.DUPLICATE-txt{
+  top:85px;
+  background: #FFFFFF;
+  color: #000000;
+}
+.UPLICATE_TABLE {
+  position: relative;
+  width: 94%;
+  height: 183px;
+  top: 79px;
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: #686E74;
+  border-radius: 0px 0px 10px 10px
+    }
+    .button_save_chng_receipts{
+      position: relative;
+      width: 597px;
+      height: 43px;
+      left: 24%;
+      top: 110px;
+  }
+  .SAVECHANGE{
+    width: 280px;
+    height: 43px;
+    text-align: center;
+    background: #018B75;
+    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+}
+.DISCARD{
+  width: 280px;
+  height: 43px;
+  position: relative;
+  left: 43px;
+  background: #018B75;
+  border: 2px solid #000000;
+  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  text-align: center;
+}
+.SAVE-text {
+  color: white;
+  background: #018B75;
+  position: relative;
+  top: 11px;
+  font-family: 'Gilroy-SemiBold';
+  font-size: 15px;
+  line-height: 18px;
+  /* display: flex; */
+  align-items: center;
+  text-align: center;
+  border: none;
+}
+.DISCARD_TEXT{
+  color: white;
+  background:#018B75;
+  position: relative;
+  top: 11px;
+  font-family: 'Gilroy-SemiBold';
+  font-size: 15px;
+  line-height: 18px;
+  /* display: flex; */
+  align-items: center;
+  text-align: center;
+  border: none;
+}

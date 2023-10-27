@@ -38,7 +38,7 @@ export class DeactiveCurrencyComponent implements OnInit {
     this.user.activeDeavtiveCurrency(data).subscribe((res) => {     
     });
     this.otherMasterService.filter('Register click');
-    this.dialog.open(CurrencyDonePopupComponent, {panelClass: 'deactiveSuccessPop'});
+    this.dialog.open(CurrencyDonePopupComponent, {panelClass: 'currencydeactiveSuccessPop'});
     this.otherMasterService.filter('Register click');
     this.dialogRef.close();
   }

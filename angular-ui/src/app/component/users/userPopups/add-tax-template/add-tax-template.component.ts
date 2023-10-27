@@ -89,15 +89,15 @@ setUpForm(cars: any[] ) {
      
   newQuantity(data:any): FormGroup {  
 
-    if(data === 1){
-      let item=this.letter
-      item= String.fromCharCode(item.charCodeAt(0));
-      this.letter=item
-    } else {
-      let item=this.letter
-      item= String.fromCharCode(item.charCodeAt(0) + 1);
-      this.letter=item
-    }
+    // if(data === 1){
+    //   let item=this.letter
+    //   item= String.fromCharCode(item.charCodeAt(0));
+    //   this.letter=item
+    // } else {
+    //   let item=this.letter
+    //   item= String.fromCharCode(item.charCodeAt(0) + 1);
+    //   this.letter=item
+    // }
    
 
     return this.fb.group({  
@@ -110,12 +110,19 @@ setUpForm(cars: any[] ) {
      
   addQuantity(data:any) {  
    this.TaxDetails().push(this.newQuantity(data));  
-  }  
+   this.letter = String.fromCharCode(this.letter.charCodeAt(0) + 1);
+
+   if (this.letter === 'Z') {
+     this.letter = 'A';
+   }
+  } 
+
 
   removeQuantity(i:number) {  
     if(i>0){
       this.TaxDetails().removeAt(i);  
     }
+    this.letter = String.fromCharCode(this.letter.charCodeAt(0) - 1)
   }  
      
   onSubmit() { 

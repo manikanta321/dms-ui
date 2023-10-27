@@ -80,7 +80,7 @@ export class AddUserPopupComponent implements OnInit {
       if (res.response.result === 'Success') {
         this.sharedService.filter('Register click')
         localStorage.setItem('addorEditUser', 'Add');
-        this.dialog.open(AdduserSuccessfulPopupComponent, { panelClass: 'activeSuccessPop' });
+        this.dialog.open(AdduserSuccessfulPopupComponent, { panelClass: 'AddUsersSuccessPop' });
 
 
         this.dialogRef.close();
@@ -122,5 +122,20 @@ export class AddUserPopupComponent implements OnInit {
 
 
     });
+  }
+  restrictToNumbers(event: any): void {
+
+    const input = event.target as HTMLInputElement;
+
+    const value = input.value;
+
+    input.value = value.replace(/[^0-9]/g, '');
+
+  }
+
+  restrictToAlphabets(event: any): void {
+    const input = event.target as HTMLInputElement;
+    const value = input.value;
+    input.value = value.replace(/[^a-zA-Z]/g, '');
   }
 }

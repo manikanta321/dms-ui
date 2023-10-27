@@ -1,8 +1,8 @@
-<div class="container-fluid salesss   mt-5">
+<div class="container-fluid salesss   mt-5" style=" height: 595px;top: -5px;position: relative;">
   <div class="section sales">
     <div class="sales-search-drop">
       <div class="row salesclass">
-        <div class="col-md-2 col-lg-2 col-sm-2 inventorydealersbubbles">
+        <div class="col-md-2 col-lg-2 col-sm-2 inventorydealersbubbles multi_select">
           <form [formGroup]="dealerForm" class="dropdown-form">
             <ng-multiselect-dropdown class="Dealerdrp" name="dealerForm" [placeholder]="'Dealer'" formControlName="dealerForm"
               [disabled]="disabled" [settings]="dropdownSettings" [data]="dealerList"(onSelect)="onItemDealerSelect($event)" (onDeSelect)="onItemDealerDeSelect($event)"
@@ -17,7 +17,7 @@
 
           </div>
         </div>
-        <div class="col-md-2 col-lg-2 col-sm-2 salesIdealersbubbles">
+        <div class="col-md-2 col-lg-2 col-sm-2 salesIdealersbubbles multi_select">
           <form [formGroup]="productForm" class="dropdown-form">
             <ng-multiselect-dropdown class="product" name="city" [placeholder]="'Product'" formControlName="productForm"
               [disabled]="disabled" [settings]="dropdownSettings2" [data]="productList"(onSelect)="onItemProductSelect($event)" (onDeSelect)="onItemProductDeSelect($event)"
@@ -32,7 +32,7 @@
 
           </div>
         </div>
-        <div class="col-md-2 col-lg-2 col-sm-2 sales-invertygeophybubbles">
+        <div class="col-md-2 col-lg-2 col-sm-2 sales-invertygeophybubbles multi_select">
           <form [formGroup]="geographyForm" class="dropdown-form">
             <ng-multiselect-dropdown class="geography" name="city" [placeholder]="'Geography'" formControlName="geographyForm"
               [disabled]="disabled" [settings]="dropdownSettings3" [data]="geographyList" (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
@@ -47,18 +47,39 @@
 
           </div>
         </div>
+
+        <div class="searchBox1 ">
+          <input class="searchInput1" type="text" name="" placeholder="Search here anything"(keyup)="onSearchChange($event)">
+           <mat-icon  class="searchicons1">search</mat-icon> 
+          <button class="search-bt_n1">Search</button>
+           <!-- <button class="searchButtonn" href="#">
+          </button> -->
+        </div>
+
         <div class="sales-refreshbtn" (click)="refreshSales()">
           <img class="refresh-img" src="assets/img/Vector.png" alt="refresh">
         </div>
+
+        <div class="sales-add" (click)="addSales()">
+          <img class="imgorder" src="assets/img/add-btn.png"
+              alt="add">
+      </div>
+
+
+      <div class="sales-dwnld" (click)="onBtnExport()">
+        <img   class="imgdwnl" src="assets/img/download-btn.png"
+            alt="add-user-btn">    
+    </div>
+
       </div>
     </div>
     <!-- search dwnld upload -->
     
-    <div class="row listicon">
+    <!-- <div class="row listicon">
       <div class="col-md-4 srch-hover" >
         <div class="searchBox1 d-flex">
           <input class="searchInput1" type="text" name="" placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
-          <!-- (keyup)="onSearchChange($event)" -->
+           (keyup)="onSearchChange($event)" 
           <button class="search-btn">Search</button>
           <button class="searchButton" href="#">
             <i class="material-icons">
@@ -79,10 +100,10 @@
           alt="add-user-btn">    
   </div>
 </div>
-    </div>
+    </div> -->
     <!-- grid -->
     <div class="sales-grid-table mt-3">
-      <ag-grid-angular id="gridContainer" style="height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
+      <ag-grid-angular id="gridContainer" style="height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;margin-top: 3%;"
        class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
         [headerHeight]="48" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
         [rowData]="salesListData" [suppressExcelExport]="true" [popupParent]="popupParent"

@@ -16,6 +16,7 @@ import { DealerTargetSuccessPopupComponent } from 'src/app/dealer-target-success
   styleUrls: ['./add-targets.component.css']
 })
 export class AddTargetsComponent implements OnInit {
+  selectValueChanged = false;
   image1 = 'assets/img/minimize-tag.png';
   rowsTotal: boolean = false;
   disableColumns: boolean = false;
@@ -103,11 +104,19 @@ export class AddTargetsComponent implements OnInit {
       geoForm: [this.selectedItems]
     });
     this.dealerOrder();
-    this.Geography();
+    this.Geography();   
     this.userId = localStorage.getItem("logInId");
+      this.onSelectFinancialYear(event);
   }
-  onSelectFinancialYear(event: any) {
-    this.financialYear = event.target.value;
+  financialYears: any=[];
+  onSelectFinancialYear(event:any) {
+    
+       this.financialYear = event.target.value;
+    this.targetList.financialYear().subscribe(response => {
+      this.financialYears = response.response;
+      console.log(response,"checking coming or not");
+    });
+
   }
   onSelectTarget(event: any,i,j) {
     this.mainadd[0].dealers[i].targets[j].vtotal = this.mainadd[0].dealers[i].targets[j].volume.jan=this.mainadd[0].dealers[i].targets[j].volume.feb=this.mainadd[0].dealers[i].targets[j].volume.mar =this.mainadd[0].dealers[i].targets[j].volume.apr=this.mainadd[0].dealers[i].targets[j].volume.may=this.mainadd[0].dealers[i].targets[j].volume.june=this.mainadd[0].dealers[i].targets[j].volume.july=this.mainadd[0].dealers[i].targets[j].volume.aug=this.mainadd[0].dealers[i].targets[j].volume.sep=this.mainadd[0].dealers[i].targets[j].volume.oct =this.mainadd[0].dealers[i].targets[j].volume.nov=this.mainadd[0].dealers[i].targets[j].volume.dec=''
@@ -244,7 +253,7 @@ export class AddTargetsComponent implements OnInit {
       textField: 'customerName',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 2,
+      itemsShowLimit: 1,
       allowSearchFilter: true
     };
     this.mainadd[0]=[]
@@ -273,7 +282,7 @@ export class AddTargetsComponent implements OnInit {
       textField: 'geographyName',
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
-      itemsShowLimit: 2,
+      itemsShowLimit: 1,
       allowSearchFilter: true
     };
   }

@@ -7,6 +7,17 @@
     margin-top: 18px;
     font-family: 'Gilroy-Bold';
 }
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar
+{
+  color: #009B63;
+}
+mat-slide-toggle.mat-checked {
+  
+  color: #009B63;
+}
+mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  color: #009B63;
+}
 
 
 .ORTEXTPROMO:after {
@@ -112,7 +123,7 @@ input::-webkit-inner-spin-button {
 }
 
 .buyoneSet {
-  background: #CED4DA;
+
   border: 1px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
@@ -121,7 +132,7 @@ input::-webkit-inner-spin-button {
 
 .getSet1,
 .additionalGetset-2 {
-  background: #CED4DA;
+ 
   /* border: 1px solid #000000;
 box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
 border-radius: 10px; */
@@ -164,8 +175,8 @@ border-radius: 10px; */
 } */
 
 .image {
-  width: 443px;
-  height: 217px;
+  width: 390px;
+  height: 132px;
   background: #FFFFFF;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
@@ -344,10 +355,6 @@ border-radius: 10px; */
   height: 37px;
 } */
 
-.main {
-  background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-
-}
 
 .font {
   font-family: 'Gilroy';
@@ -422,7 +429,7 @@ border-radius: 10px; */
 } */
 .slctd-row {
   background: #FFFFFF;
-  border: 0.5px solid #000000;
+  /* border: 0.5px solid #000000; */
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   height: 43px;
@@ -430,7 +437,8 @@ border-radius: 10px; */
 }
 
 .slctd-geo-btn {
-  background: #000000;
+  /* background: #000000; */
+  background-color: rgba(1, 139, 117, 1) !important;
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   height: 33px;
@@ -469,7 +477,7 @@ border-radius: 10px; */
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   height: 43px;
-  width: 456px;
+  width: 381px;
 }
 
 .addtnlRemarks {
@@ -478,11 +486,12 @@ border-radius: 10px; */
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   height: 43px;
-  width: 873px;
+  width: 364px;
 }
 
 .saveDraft {
-  background: #000000;
+  /* background: #000000; */
+  background-color: rgba(1, 139, 117, 1) !important; 
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   width: 168px;
@@ -492,13 +501,14 @@ border-radius: 10px; */
 }
 
 .submit {
-  background: #FFFFFF;
-  border: 2px solid #000000;
+  /* background: #FFFFFF; */
+  background-color: rgba(1, 139, 117, 1) !important; 
+  /* border: 2px solid #000000; */
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   width: 168px;
   height: 43px;
-  color: #000000;
+  color:white;
   margin-right: 15px;
 }
 
@@ -602,15 +612,21 @@ li {
   height: 43px;
   text-align: center;
 }
+.error-border {
+  border: 1px solid red;
+}
+.error-message {
+  color: red;
+}
 
 .mty-box {
   background: #FFFFFF;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  width: 48px;
+  border-radius: 8px;
+  /* width: 48px; */
   height: 43px;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .expn-t {
@@ -653,14 +669,14 @@ li {
 }
 
 .addproImg {
-  width: 426px;
-  height: 199px;
-  margin-top: -7px;
-  border-radius: 10px;
+  width: 380px;
+    height: 130px;
+    margin-top: -15px;
+    border-radius: 10px;
 }
 
 ::ng-deep.myDatepicker .mat-form-field {
-  width: 415px;
+  width: 366px;
   height: 43px;
   background: white !important;
   border-radius: 5px;
@@ -670,7 +686,7 @@ li {
 
 .fileadd {
   position: relative;
-  top: 17%;
+  /* top: 17%; */
 }
 
 .imgupload {
@@ -831,7 +847,7 @@ li {
 }
 
 ::ng-deep.promotiondrpalign .ng-select-container {
-  border: 0.5px solid #000000;
+  /* border: 0.5px solid #000000; */
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   height: 43px;
@@ -1001,6 +1017,18 @@ li {
      background-repeat: no-repeat;
     color: #333;
     
-  
-  
   }
+
+.disabled-button {
+  opacity: 0.5;
+  pointer-events: none; 
+
+}
+
+.ag-theme-material {
+  --ag-card-radius: 100px;
+  --ag-border-radius: 20px;
+  --ag-header-height: 30px;
+  --ag-header-foreground-color: white;
+  --ag-header-background-color: rgba(1, 139, 117, 1);
+}

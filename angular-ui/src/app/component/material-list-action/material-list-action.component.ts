@@ -20,6 +20,7 @@ export class MaterialListActionComponent implements OnInit {
   private tippyInstance;
   unActiveList: any;
   offsetValue: number[] = [];
+  DeactiveDealer: any;
   constructor(private changeDetector: ChangeDetectorRef, private route: ActivatedRoute, private dialog: MatDialog) {
 
     this.route
@@ -104,6 +105,12 @@ export class MaterialListActionComponent implements OnInit {
       localStorage.setItem('session', this.unActiveList);
       this.configureTippyInstance();
       this.tippyInstance.setContent(this.container.nativeElement);
+      const rowData = this.params.node.data;
+      if (rowData.statusName === 'Active') {
+        this.DeactiveDealer = true;
+      } else if (rowData.statusName === 'Inactive') {
+        this.DeactiveDealer = false;
+      }
     } else {
       this.tippyInstance.unmount();
     }

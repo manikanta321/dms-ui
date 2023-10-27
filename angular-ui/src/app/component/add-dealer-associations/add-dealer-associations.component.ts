@@ -88,7 +88,6 @@ export class AddDealerAssociationsComponent implements OnInit {
   tottalgeoCount: any;
   productCustomIdentifierArray: any[] = []
   selectedtypeasso1: any;
-  //event handler for the select element's change event
   selectChangeHandler(event: any) {
     //update the ui
     this.selectedDay = event.target.value;
@@ -151,7 +150,7 @@ export class AddDealerAssociationsComponent implements OnInit {
     'Somebody Sales',
   ];
   screenValue: any = 0;
-  myFormDlr: any = FormGroup;
+  myFormDealer: any = FormGroup;
   myForm: any = FormGroup;
   myForm1: any = FormGroup;
   myForm2: any = FormGroup;
@@ -258,8 +257,8 @@ export class AddDealerAssociationsComponent implements OnInit {
       itemsShowLimit: 1,
       allowSearchFilter: true
     }
-    this.myFormDlr = this.fb.group({
-      city: [this.selectedItems],
+    this.myFormDealer = this.fb.group({
+      dealer: [this.selectedItems],
     });
     this.myForm = this.fb.group({
       city1: [this.selectedItems],
@@ -310,7 +309,7 @@ export class AddDealerAssociationsComponent implements OnInit {
 
 
   getdealerbasedonGeo() {
-    this.showselectedgeovalue = true;
+     this.showselectedgeovalue = true;
     this.storedNames123 = localStorage.getItem("geoAsso");
     
     this.aboveDefaultGeoOfName =JSON.parse( localStorage.getItem("aboveDefaultGeoOfName")??"")
@@ -673,7 +672,7 @@ export class AddDealerAssociationsComponent implements OnInit {
         if (res.response.result == 'Successfully Added' ||  res.response.result =='Successfully Updated') {
           this.sharedService.filter('Register click')
           this.dialogRef.close();
-          this.dialog.open(DealerSuccessPopupComponent, { panelClass: 'activeSuccessPop' })
+          this.dialog.open(DealerSuccessPopupComponent, { panelClass: 'activeSuccessPopassocitions' })
         }
         else {
 
@@ -738,7 +737,7 @@ export class AddDealerAssociationsComponent implements OnInit {
         if (res.response.result == 'Successfully Added' || res.response.result =='Successfully Updated') {
           this.sharedService.filter('Register click')
           this.dialogRef.close();
-          this.dialog.open(DealerSuccessPopupComponent, { panelClass: 'activeSuccessPop' })
+          this.dialog.open(DealerSuccessPopupComponent, { panelClass: 'activeSuccessPopassocitions' })
         }
         else {
 
@@ -786,10 +785,11 @@ export class AddDealerAssociationsComponent implements OnInit {
   }
 
   selectedProduct(event: any) {
-    console.log("Event", event)
-    var arry = event.match(/[a-z0-9]+/gi)
+    
+    console.log("Event checking", event)
+    var arry = event?.match(/[a-z0-9]+/gi);
     console.log('value', arry)
-    let ProductId = arry[0];
+    let ProductId = arry[0]
     this.productSkuId = ProductId
     let stockItemId = arry[2];
     this.stockItemsID = stockItemId
@@ -797,7 +797,6 @@ export class AddDealerAssociationsComponent implements OnInit {
     this.selectedProduct1 = ProductId;
     this.slectedgeo = true;
     localStorage.setItem('ProductStockItemId', stockItemId);
-
     this.tooltiptable()
   }
   selectedProduct11(value) {
@@ -901,6 +900,8 @@ export class AddDealerAssociationsComponent implements OnInit {
 
   selectedValue(value: any) {
     this.screenValue = value;
+    this.showselectedgeovalue = false;
+
   }
 
   // addOrderPromotionList() {
@@ -916,6 +917,7 @@ export class AddDealerAssociationsComponent implements OnInit {
   //     height: '460px',
   //   });
   // }
+ 
   geography(item) {
     this.selectedtypeasso1 = item
     localStorage.setItem('selectedtypeasso', item);
@@ -924,6 +926,8 @@ export class AddDealerAssociationsComponent implements OnInit {
        height: '650px',
     });
   }
+
+
   getclassification() {
 
     this.materialList.getclassification(this.flag).subscribe((res) => {
@@ -1189,7 +1193,9 @@ export class AddDealerAssociationsComponent implements OnInit {
 
   }
   onTypeSelect(item: any) {
-    this.typeI.push(item.typeId);
+   
+
+     this.typeI.push(item.typeId);
 
     const data = {
       DealerId: this.selectedDealer2,
@@ -1577,15 +1583,12 @@ export class AddDealerAssociationsComponent implements OnInit {
 
 
   tooltiptable() {
-    // const data ={
-    // ProductSKUId : ['49']
-    // }
-    //  let prodctId =  this.selectedProduct1;
-    let prodctId = [this.selectedProduct1];
-    this.associationService.tooltipStockItemDetailList(prodctId).subscribe((res: any) => {
-      console.log(res.response);
-      this.tooltipData = res.response
-    })
+   
+    // let prodctId = [this.selectedProduct1];
+    // this.associationService.tooltipStockItemDetailList(prodctId).subscribe((res: any) => {
+    //   console.log(res.response);
+    //   this.tooltipData = res.response
+    // })
   }
   tooltipDealerTable() {
     let prodctId = [this.selectedDealer2];

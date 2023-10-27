@@ -1,8 +1,8 @@
+
 .name
 {
     font-family: 'Gilroy-Medium';
 font-size: 16px;
-font-weight: 600;
 
 color: #000000;
 }
@@ -11,7 +11,6 @@ color: #000000;
 {
     font-family: 'Gilroy-Medium';
 font-size: 16px;
-font-weight: 600;
 
 color: #000000;
 }
@@ -55,9 +54,10 @@ height: 356px;
 
 .edituom{
  position: relative;
- /* font-family: 'Gilroy-Bold';  */
- font-weight: bold;
+  font-family: 'Gilroy-Bold'; 
+ /* font-weight: bold; */
  font-size: 18px;
+bottom: 11px;
  color: black;
 }
 .edituom:after
@@ -102,7 +102,8 @@ span{
     color: red;
 }
 .uombtnn{
-   background: black;
+   /* background: black; */
+   background-color:#018B75 ;
    color: white;
    padding: 5px;
    margin-top: 3px;
@@ -112,11 +113,14 @@ span{
    height: 48px;
    margin-left: 16px;
    width: 94%;
+   font-family: 'Gilroy-SemiBold';
 }
 
 .uombtnnn{
-    background: white;
-    color: black;
+    /* background: white; */
+    background-color:#018B75 ;
+    /* color: black; */
+    color: white;
     padding: 5px;
     margin-top: 3px;
     border-radius: 3px;
@@ -125,6 +129,7 @@ span{
     height: 48px;
     margin-left: -1px;
     width: 94%;
+    font-family: 'Gilroy-SemiBold';
  }
  
 

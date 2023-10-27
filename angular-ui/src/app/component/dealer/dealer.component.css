@@ -38,7 +38,7 @@ mat-sidenav-content{
     height: 100vh;
     border-radius: 33px;
     padding: 10px;
-    background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);
+    /* background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%); */
 }
 mat-sidenav-container {
     height: calc(100vh - 65px);
@@ -59,30 +59,34 @@ mat-tab{
   overflow: hidden;
   position: relative;
   flex-shrink: 0;
-  width: 378px !important;
+  width: 650px !important;
   border-radius: 25px;
-  background: white;
-  left: 30%;
+  /* background: white; */
+  /* left: 30%; */
   font-size: 15px;
+  margin: 11px 0px;
 }
 ::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     display: none !important;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    background: black;
     color: white;
-    border-radius: 25px;
+    /* border-radius: 25px; */
     opacity: 1;
+    background-color: rgba(1, 139, 117, 1)!important;
 }
 
 ::ng-deep .order1-lab .mat-tab-label{
-  height: 31px !important;
+  height: 33px !important;
   min-width: 155px !important;
+  border: 1px solid rgba(107, 107, 107, 1);
 }
 .order1-lab .mat-tab-labels:nth-child(1) {
   width: 50% !important;
 }
-
+.mat-drawer-content{
+  overflow-x: hidden;
+}
 ::ng-deep.order1-lab .mat-tab-header{
   display: flex;
   overflow: hidden;

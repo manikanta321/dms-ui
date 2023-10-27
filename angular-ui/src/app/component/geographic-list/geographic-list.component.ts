@@ -414,7 +414,7 @@ export class GeographicListComponent implements OnInit {
           width: 200
         },
 
-        { headerName: 'Shipping Charge', field: 'charges', type: ['nonEditableColumn'], },
+        { headerName: 'Shipping Charge', field: 'charges', type: ['nonEditableColumn','rightAligned'] },
 
 
         {
@@ -447,7 +447,7 @@ export class GeographicListComponent implements OnInit {
           width: 200
         },
 
-        { headerName: 'Packing Charge', field: 'charges', type: ['nonEditableColumn'], },
+        { headerName: 'Packing Charge', field: 'charges', type: ['nonEditableColumn','rightAligned'], },
 
 
         {

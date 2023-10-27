@@ -1,5 +1,4 @@
 .main {
-    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
     overflow-x: hidden !important;
 }
 
@@ -14,6 +13,7 @@
     text-align: center;
     margin-top: -18px;
     margin-bottom: 2px;
+    font-family: 'Gilroy-Bold';
 }
 
 .close-icon {
@@ -53,16 +53,16 @@
     position: absolute;
 }
 
-.font {
+/* .font {
     font-family: 'Gilroy';
-}
+} */
 
 label {
     /* padding: 2px 0; */
     font-size: 14px;
     line-height: 16px;
     margin: 5px;
-    font-family: 'Gilroy';
+    font-family: 'Gilroy-Medium';
 }
 
 .target-heading {
@@ -373,7 +373,8 @@ label {
 
 .targetLabelN {
     font-size: 13px;
-    font-weight: 400;
+    font-family: 'Gilroy-Medium';
+
 }
 
 .errorMark {
@@ -382,6 +383,7 @@ label {
 
 .selectedPL {
     font-size: 20px;
+    font-family: 'Gilroy-Light';
 }
 
 .selectedProduct {
@@ -422,7 +424,8 @@ label {
       border-radius: 8px;
       align-items: center;
       text-align: center;
-      background: #000;
+      /* background: #000; */
+      background-color:#018B75 ;
       color: #FFFFFF;
       margin-left: 21px;
       }
@@ -433,8 +436,10 @@ label {
         border-radius: 8px;
         align-items: center;
         text-align: center;
-        background: white;
-        color: black;
+        /* background: white; */
+        background-color:#018B75 ;
+        /* color: black; */
+        color: white;
         margin-left: 21px;
       }
 

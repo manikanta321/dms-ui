@@ -11,7 +11,7 @@
     
 <mat-sidenav-content>
     <!--<div class="dash-content" > -->
-             <h2 class="header-text">Orders</h2> 
+             <h2 class="header-text" ><span class="purchaes">Purchase Order details</span> </h2> 
             <!-- <img  class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
      
                 <div class="UNFAPP-asmnt-rgt-area main othersmastermenutab">
@@ -22,7 +22,7 @@
                                    <app-order-list></app-order-list>
         
                             </mat-tab>
-                        <mat-tab c label="Shipments" *ngIf="tabList.indexOf('view_shipment') !== -1">
+                        <mat-tab  label="Shipments" *ngIf="tabList.indexOf('view_shipment') !== -1">
                 <app-orders-shipment></app-orders-shipment>
                     </mat-tab>
         

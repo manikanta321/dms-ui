@@ -1,3 +1,7 @@
+::ng-deep .shipmentdropdown .dropdown-list {
+  left: -6%;
+  width: 106%;
+}
 .container-fluid
 {
   /* overflow-y: auto; */
@@ -47,13 +51,12 @@
 }
 
 .sales-refreshbtn {
-  filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
-  width: 43px;
-  height: 41px;
-  background: #000000;
-  border-radius: 10px;
-  margin-left: 10px;
+  background: rgba(104, 110, 116, 0.66);
   cursor: pointer;
+  border-radius: 16%;
+  width: 37px;
+  height: 37px;
+  margin-right: 10px;
 }
 .sales-refreshbtn:hover
 {
@@ -61,8 +64,8 @@
   color: white !important;
 }
 .refresh-img {
-  margin-top: 11px;
-  margin-left: 11px;
+  margin-top: 9px;
+  margin-left: 9px;
 }
 
 .ag-theme-material .ag-filter-toolpanel-header,
@@ -92,12 +95,12 @@
   background-color: #b81111 !important;
 }
 
-::ng-deep.ag-header-cell-text {
+/* ::ng-deep.ag-header-cell-text {
   color: #686E74 !important;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 14px !important;
-}
+} */
 
 ::ng-deep.ag-theme-material .ag-root-wrapper,
 .ag-theme-material .ag-sticky-top {
@@ -185,8 +188,8 @@
   left: 10px;
 }
 .sales-download{
-  background: #000000;
-  border-radius: 50%;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   width: 37px;
   height: 37px;
   margin-right: 10px;
@@ -203,8 +206,8 @@
   left: 10px;
 }
 .sales-upload{
-  background: #000000;
-  border-radius: 50%;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   width: 37px;
   height: 37px;
   margin-right: 10px;
@@ -221,11 +224,11 @@
   left: 10px;
 }
 .sales-dwnld{
-  background: #000000;
-  border-radius: 50%;
-  width: 37px;
-  height: 37px;
-  cursor: pointer;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
+    width: 37px;
+    height: 37px;
+    cursor: pointer;
 }
 .sales-dwnld:hover
 {
@@ -235,15 +238,15 @@
 .imgdwnl{
   position: relative;
   top: 8px;
-  left: 10px;
+  left: 12px;
 }
 .searchButton {
         display:block;
         color: #FFFFFF;
         width: 37px;
         height: 37px;
-        border-radius: 50%;
-        background: #000000;
+        border-radius: 13%;
+        background: rgba(104, 110, 116, 0.66);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -549,3 +552,126 @@ padding-left: 5px;
      height: 5px;
      display: table-cell;
    }
+   .searchInput11 {
+    display: block;
+    width: 100%;
+    height: 42px;
+    background: #FFFFFF;
+    float: left;
+    padding-left: 11%;
+    border-radius: 10px;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: 0.08em;
+    color: #263643;
+    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+    position: absolute;
+    right: -2px;
+    border:1px solid black;
+    
+}
+.searchBox11:hover>.searchButtonn .material-iconss {
+  position: relative;
+  right: 282px;
+  color: #000;
+  top: 3px;
+
+}
+.searchBox11 >.searchButtonn .material-iconss {
+  position: relative;
+  right: 282px;
+  color: #000;
+  top: 3px;
+  
+}
+
+.searchInput11 {
+  display: block;
+  width: 100%;
+  height: 42px;
+  background: #FFFFFF;
+  float: left;
+  padding-left: 11%;
+  border-radius: 10px;
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 17px;
+  letter-spacing: 0.08em;
+  color: #263643;
+  box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+  position: absolute;
+  right: -2px;
+  border:1px solid black;
+  
+}
+.searchicons
+{
+    color: #9B9FA3;
+    top: 10px;
+position: relative;
+left: -7px;
+}
+.search-bt_n {
+  display: block;
+  height: 26px;
+  border: none;
+  background: #686E74;
+  color: white;
+  border-radius: 5px;
+  position: absolute;
+  right: 10px;
+  top: 8px;
+}
+
+.searchBox11:hover>.searchButtonn .material-iconss {
+  position: relative;
+  right: 282px;
+  color: #000;
+  top: 3px;
+
+}
+.searchBox11 >.searchButtonn .material-iconss {
+  position: relative;
+  right: 282px;
+  color: #000;
+  top: 3px;
+  
+}
+
+.material-iconss {
+  position: relative;
+  right: 282px;
+  color: #000;
+  top: 3px;
+}
+
+.search-bt_n {
+  display: block;
+  height: 26px;
+  border: none;
+  /* background: #000000; */
+  background: rgba(104, 110, 116, 0.66);  
+  color: white;
+  border-radius: 5px;
+  position: absolute;
+  right: 10px;
+  top: 8px;
+}
+.AllText
+{
+    font-family: 'Calibri';
+font-size: 15px;
+font-weight: 400;
+line-height: 12px;
+letter-spacing: 0em;
+color: #000000;
+margin-top: 18px;
+display: flex;
+justify-content: end;
+
+}

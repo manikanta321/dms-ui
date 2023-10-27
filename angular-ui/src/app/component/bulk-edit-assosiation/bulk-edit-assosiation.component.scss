@@ -33,9 +33,11 @@
 
 .mainclass
 {
-   height: 634px;
+   height: 653px;
   overflow: hidden;
   overflow-y: hidden;
+  width: 97%;
+  margin-left: 2%;
 }
 .savebtnall
 {
@@ -176,8 +178,8 @@
     width: 43px;
     height: 42px;
     margin-right: 23px;
-    right: -200px;
-    top: 4px;
+    right: -196px;
+    top: 24px;
   }
   .btnhover1{
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
@@ -477,7 +479,7 @@
   }
   
   ::ng-deep.ag-header-cell-text {
-    color: #686E74 !important;
+    // color: #686E74 !important;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 14px !important;
@@ -1019,6 +1021,7 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
      /* font-family: 'Gilroy-Bold';  */
      font-weight: bold;
      font-size: 20px;
+     bottom: 27px;
   }
   .addU:after{
     content: "";
@@ -1042,7 +1045,8 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
   }
   .saveas-draft4 {
     color: #fff;
-    background: #000000;
+    // background: #000000;
+    background-color:#018B75;  
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: right;
@@ -1051,11 +1055,12 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
     width: 168px;
     height: 43px;
     position: relative;
-    bottom: 19px;
+    bottom: 21px;
   }
   .saveas-draft {
     color: #fff;
-    background: #000000;
+    // background: #000000;
+    background-color:#018B75;  
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: right;
@@ -1066,6 +1071,8 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
   }
   .saveas-draft2 {
     color: black;
+    // color:white;
+    // background-color:#018B75;
     background: white;
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
@@ -1086,7 +1093,7 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
 
 .saveas-draft {
   color: #fff;
-  background: #000000;
+  // background: #000000;
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   float: right;
@@ -1096,8 +1103,10 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
   height: 43px;
 }
 .saveas-draft2 {
-  color: black;
-  background: white;
+  // color: black;
+  color:white;
+  background-color:#018B75;
+  // background: white;
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   float: left;
@@ -1135,7 +1144,8 @@ margin-left: 136px;
 }
 .saveas-draft1 {
   color: #fff;
-  background: #000000;
+  // background: #000000;
+  background-color:#018B75;  
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   float: right;
@@ -1173,7 +1183,7 @@ margin-left: 136px;
      height: 385px;
     overflow-y: scroll;
     position: relative;
-    top: 20px;
+    top: 35px;
 
   }
   .flexcss{
@@ -1207,7 +1217,7 @@ margin-left: 136px;
     }
     ::ng-deep .roless .dropdown-btn span .ng-star-inserted {
       position: absolute !important;
-      right: -18px !important;
+      right: 55px !important;
       bottom: 0px;
       top: 50px !important;
       /* width: 51px; */
@@ -1238,4 +1248,11 @@ margin-left: 136px;
     .DropDownFlex{
       position: relative;
       top: 33px;
+    }
+    .bulkEditLabel{
+      margin-bottom: 4%;
+
+    }
+    .mandatory{
+      color: red;
     }

@@ -7,13 +7,35 @@
                         [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)">
                     </app-customdatepicker>
                 </div>
+
+                <div class="searchBox2 ">
+                  <input class="searchInput2" type="text" name="" placeholder="Search here anything"(keyup)="onSearchChange($event)">
+                   <mat-icon  class="searchicons2">search</mat-icon> 
+                  <button class="search-bt_n2">Search</button>
+                   <!-- <button class="searchButtonn" href="#">
+                  </button> -->
+                </div>
+
                 <div class="sales-refreshbtn" (click)="refresh()">
                     <img class="refresh-img" src="assets/img/Vector.png" alt="refresh">
                   </div>
+
+                  
+                    <div class="sales-download" (click)="addSales()">
+                        <img class="dwnld-img" src="assets/img/orderlist-upload.svg" 
+                            alt="add-user-btn">
+                    </div>
+
+                    <div class="sales-upload" (click)="salesUpload()">
+                      <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
+                          alt="add-user-btn">    
+                  </div>
+                 
+
             </div>
         </div>
         <div class="row listicon">
-            <div class="col-md-4 srch-hover" >
+            <!-- <div class="col-md-4 srch-hover" >
               <div class="searchBox1 d-flex">
                 <input class="searchInput1" type="text" name="" placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
                 <button class="search-btn">Search</button>
@@ -23,7 +45,7 @@
                   </i>
                 </button>
               </div>
-            </div>
+            </div> -->
             <!-- <div class="col-md-8">
                 <div class="searchBox1 d-flex" style=" cursor: pointer">
                   <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name=""
@@ -36,18 +58,18 @@
                   <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
                 </div>
               </div> -->
-          <div class="col-md-0">
+          <!-- <div class="col-md-0">
             <div class="sales-download" (click)="addSales()">
                 <img class="dwnld-img" src="assets/img/orderlist-upload.svg" 
                     alt="add-user-btn">
             </div>
-          </div>
-          <div class="col-md-0">
+          </div> -->
+          <!-- <div class="col-md-0">
           <div class="sales-upload" (click)="salesUpload()">
               <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
                   alt="add-user-btn">    
           </div>
-          </div>
+          </div> -->
           <div class="col-md-0">
           <!-- <div class="sales-dwnld" >
             <img   class="imgdwnl" src="assets/img/download-btn.png"

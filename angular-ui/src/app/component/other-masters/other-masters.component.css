@@ -13,7 +13,7 @@ mat-sidenav-content{
     border-radius: 31px;
     padding: 10px;
     overflow: hidden;
-    background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%);
+    /* background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%); */
 }
 mat-sidenav-container {
     height: calc(100vh - 65px);
@@ -53,7 +53,7 @@ mat-tab{
     display: none !important;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    background: black;
+     /* background: black;   */
     color: white;
     border-radius: 25px;
     opacity: 1;
@@ -65,7 +65,7 @@ mat-tab-group{
     height: 100vh;
 }
 .header-text{
-    font-family:  'Gilroy';
+    font-family:  'Gilroy-Bold';
     font-size: 30px;
     line-height: 41px;
     display: flex;
@@ -89,7 +89,7 @@ mat-tab-group{
     display: none !important;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-    background: black;
+      /* background: black;   */
     color: white;
     border-radius: 25px;
     opacity: 1;
@@ -111,6 +111,6 @@ mat-tab-group{
     font-family: 'Times New Roman';
    }
   ::ng-deep.mat-tab-label .mat-tab-label-content{
-    font-family: 'Gilroy';
+    font-family: 'Gilroy-Bold';
    }
    

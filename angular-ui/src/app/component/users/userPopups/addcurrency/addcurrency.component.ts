@@ -142,11 +142,16 @@ this.uomShortName = shortName;
  console.log("editUomData",this.editUomData);
       });
   }
- this.dialog.open(AddcurrencySuccessfullyPopupComponent , {panelClass: 'activeSuccessPop'});
+ this.dialog.open(AddcurrencySuccessfullyPopupComponent , {panelClass: 'currencyactiveSuccessPop'});
 
    this.closeDialog();
   }
   currencyConverteredValue(data:any){
     // alert("suceccy key finction")
+  }
+  restrictToAlphabets(event: any): void {
+    const input = event.target as HTMLInputElement;
+    const value = input.value;
+    input.value = value.replace(/[^a-zA-Z]/g, '');
   }
 }

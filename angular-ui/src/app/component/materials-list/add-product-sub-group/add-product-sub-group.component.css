@@ -16,8 +16,12 @@
 }
 
 .main {
-    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 
+
+}
+#fontfamily
+{
+    font-family: 'Gilroy-Medium';
 }
 
 .font {
@@ -29,6 +33,7 @@
     text-align: center;
     margin-top: -18px;
     margin-bottom: 2px;
+    font-family: 'Gilroy-Bold';
 }
 
 .addU {
@@ -82,6 +87,7 @@ span {
     position: relative;
     font-size: 15px;
     font-weight: 600;
+    cursor: pointer;
     
 }
 
@@ -104,8 +110,7 @@ mat-form-field {
     } */
 
 ::ng-deep.mat-dialog-container {
-    background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-    ;
+
 }
 
 .btn-primary:disabled {

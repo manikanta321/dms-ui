@@ -10,8 +10,8 @@
         <div class="row">
           <div class="col-md-12 col-lg-12 col-sm-12 custom-flex-dropdown">
             <form [formGroup]="myForms" class="dropdown-form-packing">
-              <ng-multiselect-dropdown class="product" name="citys" [placeholder]="''"
-                formControlName="city2" [disabled]="disabled" [settings]="dropdownSettings1" [data]="productLisst"
+              <ng-multiselect-dropdown class="product" name="citys"
+                formControlName="city2" [settings]="dropdownSettings1" [data]="productLisst"
                 (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)"
                 (onDeSelectAll)="onItemDeSelectOrAllProduct($event)" (onSelectAll)="onItemSelectOrAllProduct($event)">
               </ng-multiselect-dropdown>
@@ -52,7 +52,8 @@
               [(ngModel)]="packingCharge.endvalue" name="street_{{ i }}" />
           </div>
           <div class="col-3">
-            <label *ngIf="i==0">Shipping Cost</label>
+            <label *ngIf="i==0">{{subCost}}</label>
+            
             <input style="width: 225px" type="text" (keyup)="PackingPriceChange()" id="cost" name="cost" required
               placeholder="Enter" [ngClass]="{ 'input-error': !packingCharge.isDataValid && isDataModified}"
               [(ngModel)]="packingCharge.cost" name="city_{{ i }}" />
@@ -60,15 +61,16 @@
             <!-- <p class="minus-icon10" >-</p> -->
           </div>
           <div class="col-2">
-            <mat-icon [ngClass]="{ 'removeCircle': i>0 ,'removeCircle1': i==0 }" *ngIf="i >= 0 "
-              (click)="removesub(i)">remove_circle</mat-icon>
+
+            <mat-icon class="removeCircle" *ngIf="packingCharges.length > 1" (click)="removesub(i)">remove_circle</mat-icon>
+
           </div>
         </div>
         <div class="col-12">
           <div class="row">
             <div class="col-4"></div>
             <div class="col-4" *ngIf="addOrAdit">
-              <button class="btn btn-primary btn-block submitbtn save-btn" (click)="finalAddVAlue()"
+              <button class="btn btn-primary btn-block submitbtn save-btn" style="margin-top: 23px;" (click)="finalAddVAlue()"
                 [disabled]="!packingPriceChargeValid || !isDataModified">
                 Add
               </button>

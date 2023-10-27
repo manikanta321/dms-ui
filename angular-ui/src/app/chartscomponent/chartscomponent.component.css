@@ -1,0 +1,57 @@
+.chart-container {
+    position: relative;
+    height: 540px;
+    width: 1455px;
+  }
+  
+  .chart-title {
+    position: absolute;
+    top: 15px;
+    left: 4%;
+    font-family: 'Gilroy-SemiBold';
+    font-size: 15px;
+    line-height: 23px;
+    color: #686E74;
+  }
+  .sales-detailes
+  {
+    border: 0.5px solid #000000;
+    height: 500px;
+    width: 1400px;
+    font-family: 'Gilroy'; 
+    margin-left: 20px; 
+    margin-top: 20px;
+    background: #FFFFFF;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    box-sizing: border-box;
+  }
+  .SD
+  {
+    font-family: 'Gilroy-SemiBold';
+    font-size: 15px;
+    line-height: 23px;
+    color: #686E74;
+    position: absolute;
+    top: 3%;
+    left: 4%;
+  }
+  .mainselectedoptions
+  {
+    width: 10%;
+    float: right;
+    margin-top: 1%;
+    margin-right: 3%;
+
+  }
+  .selectoptions
+  {
+    height: 40px;
+    border-radius: 10px;
+    width: 100%;
+    background: #FFFFFF;
+    border: 0.5px solid #000000;
+   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+   border-radius: 10px;
+    
+  }

@@ -12,7 +12,7 @@ export class PromotionListService {
     next: HttpHandler): Observable<HttpEvent<any>> {
 
 const idToken = localStorage.getItem("token");
-debugger
+
 console.log('idtoken',idToken)
 alert(idToken)
 
@@ -49,5 +49,8 @@ giographiesList(){
 getstatusDeatils(){
   return this.http.get<any>(`${this.userurl}PromotionsApi/GetPromotionSatusList`);
 
+}
+public getproductlist() {
+  return this.http.get<any>(`${this.userurl}MaterialApi/GetStockList`);
 }
 }

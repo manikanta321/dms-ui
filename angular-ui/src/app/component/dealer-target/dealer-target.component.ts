@@ -112,7 +112,7 @@ export class DealerTargetComponent implements OnInit {
   columnDefs: ColDef[] = [
 
     {
-      headerName: "Target Group",
+      headerName: "TargetGroup",
        field: 'targetGroupName', type: ['nonEditableColumn']
     },
 
@@ -120,39 +120,39 @@ export class DealerTargetComponent implements OnInit {
     field: 'geographyName', type: ['nonEditableColumn']
     },
     {
-      headerName: "Dealer",
+      headerName: "DealerName",
       field: 'customername', type: ['nonEditableColumn']
     },
    
     // suppressMovable:true,
     {
-      headerName: "Financial year",
+      headerName: "Financialyear",
       field: 'year',
-      type: ['nonEditableColumn'],
+      type: ['nonEditableColumn','rightAligned'],
     },
 
     {
       headerName: "No of Products",
       field: 'productCount',
-      type: ['nonEditableColumn']
+      type: ['nonEditableColumn','rightAligned']
     },
     {
       headerName: "Target Total",
       field: 'volumeTotal',
-      type: ['nonEditableColumn']
+      type: ['nonEditableColumn','rightAligned']
     },
 
     {
       headerName: "Actual PY",
       field: 'actualPy',
-      type: ['nonEditableColumn']
+      type: ['nonEditableColumn','rightAligned']
     },
 
 
     {
       headerName: "Actual YTD",
       field: 'actualYTD',
-      type: ['nonEditableColumn']
+      type: ['nonEditableColumn','rightAligned']
     },
 
 
@@ -160,7 +160,7 @@ export class DealerTargetComponent implements OnInit {
     {
       headerName: "% of YTD Target",
       field: 'ytdTarget',
-      type: ['nonEditableColumn'],
+      type: ['nonEditableColumn','rightAligned'],
     },
 
     {
@@ -904,7 +904,7 @@ export class DealerTargetComponent implements OnInit {
   orderTargetUpload(){
     localStorage.setItem('UploadTarget','dealertarget')
     // sessionStorage.setItem("orderTarget",'target');
-      this.dialog.open(OrderReceiptsBulkUploadComponent,{maxWidth:'97vw'});
+      this.dialog.open(OrderReceiptsBulkUploadComponent,{minWidth :'91vw',height:'702px'});
       // this.isOpen = false;
   }
   onFirstDataRendered(params: FirstDataRenderedEvent) {

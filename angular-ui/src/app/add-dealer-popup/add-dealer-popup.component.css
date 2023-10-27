@@ -3,7 +3,7 @@
 }
 
 .container {
-  min-width: 92vw;
+  min-width: 93vw;
 
 
 }
@@ -394,7 +394,7 @@ li {
 ::-webkit-scrollbar-thumb {
   -webkit-border-radius: 10px;
   border-radius: 20px;
-  background: #000000;
+  background: rgba(1, 139, 117, 1);
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
@@ -854,10 +854,7 @@ li {
   /* background-color: #CED4DA; */
 }
 
-.main {
-  background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 
-}
 
 .scr {
 
@@ -922,17 +919,17 @@ span {
 }
 
 .close-icon {
-  left: 99%;
+  left: 98%;
   position: relative;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  top:10px;
+  top:6px;
 }
 
 label {
   /* padding: 2px 0; */
-  font-size: 12px;
+  font-size: 14px;
   margin: 5px;
   font-family: 'Gilroy';
   font-weight: bold;
@@ -948,10 +945,7 @@ mat-form-field {
   border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 }
 
-::ng-deep.mat-dialog-container {
-  background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-  ;
-}
+
 
 .categorydrp {
   width: 205px;
@@ -1594,7 +1588,7 @@ li {
   align-items: center;
   text-align: center;
   color: #FFFFFF;
-  background: #000000;
+  background: rgba(1, 139, 117, 1);
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   border-color: black;
@@ -1609,11 +1603,12 @@ li {
 .cancel-btn {
   width: 168px;
   height: 43px;
-  background: #FFFFFF;
+  background: rgba(1, 139, 117, 1);
   border: 2px solid #000000;
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
-  color: #000000;
+  /* color: #000000; */
+  color:white;
   font-family: 'Gilroy';
 }
 
@@ -1689,7 +1684,7 @@ li {
 }
 .addMore-iconn {
   cursor: pointer;
-  margin-left: -2px;
+  margin-left: 45px;
   position: relative;
   top: 30px;
 }
@@ -1703,7 +1698,7 @@ li {
 
 .status-class {
   box-sizing: border-box;
-  width: 406px;
+  width: 416px;
   height: 43px;
   background: #FFFFFF;
   border: 0.5px solid #000000;
@@ -1822,7 +1817,7 @@ li {
   overflow: hidden;
   width: 97%;
   position: relative;
-  left: 37px;
+  left: 29px;
 
 }
 
@@ -1836,5 +1831,5 @@ li {
 
 ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header,
 .mat-vertical-stepper-header {
-  padding: 24px 38px;
+  padding: 24px 81px;
 }

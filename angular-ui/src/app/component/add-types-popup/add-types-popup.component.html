@@ -1,7 +1,7 @@
 <div class="container">
     <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
     <div class="actv-user text-center">
-        <h1 class="head-text" *ngIf="TypeName=='Edit Types'">Edit Type</h1>
+        <h1 class="head-textt" *ngIf="TypeName=='Edit Types'">Edit Type</h1>
         <h1 class="head-text" *ngIf="TypeName=='Add Types'">Add Type</h1>
         <p class="errormsg">{{errorMsg}}</p>
 
@@ -9,7 +9,7 @@
     <div class="addTypeDiv">
         <label class="addtypes1" >Name<span style="color: red;">*</span></label><br>
         <input type="text"id="typeName" name="typeName" placeholder="Enter Type name" 
-          required [(ngModel)]="type" #typeName="ngModel">   
+          required [(ngModel)]="type" #typeName="ngModel"(input)="restrictToAlphabets($event)">   
           <p style="margin-bottom: -29px;
           padding: 0px;
           font-size: 11px;

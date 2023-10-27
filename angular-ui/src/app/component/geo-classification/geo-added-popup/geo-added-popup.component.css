@@ -15,15 +15,26 @@
     height: 32px; */
     /* padding: 0 10px; */
     /* width: 77px; */
+    margin-top: 10px;
 }
 
 .text-succ {
     /* padding: 0 10px; */
     max-width: 280px;
+    /* margin-left: 5%; */
+    position: relative;
+    left: 17px;
+    font-family: 'Gilroy-Medium';
 }
 
 .closeImg {
-    padding: 15px 0 15px 20px;
+     padding: 15px 0 15px 20px; 
+     margin-top: 8px;
+   
+
+    position: relative;
+    left: 12px;
+    top: -4px;
 }
 
 .closeImg img {
@@ -41,6 +52,7 @@
 }
 .font{
     font-family: 'Gilroy';
+   
 }
 /* .container{
     width: 372px;
@@ -49,5 +61,5 @@
  .container .activeSuccessPop{
         position: absolute !important;
         left: 50%;
-    } 
+    }  
 

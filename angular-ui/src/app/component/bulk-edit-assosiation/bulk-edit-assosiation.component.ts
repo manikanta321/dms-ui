@@ -47,7 +47,12 @@ import { SharedServicesDealerService } from 'src/app/services/shared-services-de
 export class BulkEditAssosiationComponent implements OnInit {
   // clickEventSubscription:Subscription;
 
-
+  SKUId:any;
+  productSKUId:any;
+  GROID:any;
+  ProductSKUGeographyId:any;
+  ProductSKUCode:boolean=false;
+  ProductGEOID:boolean=false;
   private gridApi!: GridApi;
   paginationPageSize = 10;
   myForm: any = FormGroup;
@@ -95,11 +100,27 @@ export class BulkEditAssosiationComponent implements OnInit {
   // Data that gets displayed in the grid
   public rowData5 = [];
   columnDefs: ColDef[] = [
+    {
+      headerName: 'Product GeographyId',
+      field: 'productSKUGeographyId',
+
+    
+    },
+   
    
     {
       headerName: "ProductName",
-      field: 'stockItemName', type: ['nonEditableColumn'], sort: 'desc', pinned: 'left'
+      field: 'stockItemName',
+       type: ['nonEditableColumn'], sort: 'desc', 
     },
+   
+    {
+      headerName: 'Product Code ',
+      field: 'productCode',
+
+    
+    },
+   
 
     {
       headerName: "GeographName",
@@ -152,6 +173,8 @@ export class BulkEditAssosiationComponent implements OnInit {
 
     
     },
+   
+    
 
   ];
   public popupParent: HTMLElement = document.body;
@@ -305,21 +328,22 @@ export class BulkEditAssosiationComponent implements OnInit {
 
 
    // this.dataSource.sort = this.sort;
-    this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
-      if (res.matches) {
-        this.sidenav.mode = 'over';
-        this.sidenav.close();
-      } else {
-        this.sidenav.mode = 'side';
-        this.sidenav.open();
-      }
-    });
+    // this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
+    //   if (res.matches) {
+    //     this.sidenav.mode = 'over';
+    //     this.sidenav.close();
+    //   } else {
+    //     this.sidenav.mode = 'side';
+    //     this.sidenav.open();
+    //   }
+    // });
     console.log('parent is working', this.message)
   }
 
 
 
   ngOnInit(): void {
+   
     this.getusertabeldata();
     this.ProductItems();
     this.dealerItems();
@@ -343,8 +367,6 @@ export class BulkEditAssosiationComponent implements OnInit {
           });
   }
   
-  
-  
   onBtnExport(){
     this.gridApi.exportDataAsCsv();
   }
@@ -361,7 +383,8 @@ export class BulkEditAssosiationComponent implements OnInit {
 
   this.addAddressDetailsForm.value.BulkAssociationsCount[i].LeadTimeIndays = this.arrayToStore.BulkAssociationsCount[i].LeadTimeIndays
 
-
+this.addAddressDetailsForm.value.BulkAssociationsCount[i].productSKUId=this.arrayToStore.BulkAssociationsCount[i].productSKUId
+this.addAddressDetailsForm.value.BulkAssociationsCount[i].GROID=this.arrayToStore.BulkAssociationsCount[i].GROID
     // this.addAddressDetailsForm.value.BulkAssociationsCount[i].LeadTimeIndays=
   }
 
@@ -382,7 +405,7 @@ export class BulkEditAssosiationComponent implements OnInit {
 
   
   BulkAssociationsCount(): FormArray {
-    return this.addAddressDetailsForm.controls["BulkAssociationsCount"] as FormArray
+    return this.addAddressDetailsForm.controls["BulkAssociationsCount"]as FormArray
   }
 
   scrolledIndexChange(i): void {
@@ -444,6 +467,8 @@ export class BulkEditAssosiationComponent implements OnInit {
   }
 
   refresh() {  
+     this.selectedGeoField = '';
+     this.updateGeographyValue = '';
     this.addAddressDetailsForm = this._formBuilder.group({
       BulkAssociationsCount: this._formBuilder.array([]),  
 
@@ -482,6 +507,8 @@ export class BulkEditAssosiationComponent implements OnInit {
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
+        let productSKUId:FormControl=new FormControl('');
+        let GROID:FormControl=new FormControl('');
         let ProductName: FormControl = new FormControl('');
       let GeographName: FormControl = new FormControl('');
       let DealerName: FormControl = new FormControl('');
@@ -495,6 +522,8 @@ export class BulkEditAssosiationComponent implements OnInit {
       Margin.setValue(details?.margin)
       Discount.setValue(details?.discount)
       LeadTimeIndays.setValue(details?.leadTimeIndays)
+      productSKUId.setValue(details?.productSKUId);
+      GROID.setValue(details?.GROID);
       ProductName.setValue(details?.stockItemName)
       DealerName.setValue(details?.customerName)
       GeographName.setValue(details?.geographyName)
@@ -509,6 +538,8 @@ export class BulkEditAssosiationComponent implements OnInit {
           Margin:Margin,
           Discount:Discount,
           LeadTimeIndays:LeadTimeIndays,
+          productSKUId:productSKUId,
+          GROID:GROID,
           ProductName:ProductName,
           GeographName:GeographName,
           DealerName:DealerName,
@@ -520,7 +551,11 @@ export class BulkEditAssosiationComponent implements OnInit {
 
 
 
+
+
     }); 
+   
+    
   }
 
   getusertabeldata() {
@@ -534,6 +569,7 @@ export class BulkEditAssosiationComponent implements OnInit {
  this.associationService.getDealersList(data).subscribe((res) => {   
 this.rowData5 = res.response;
 let data=res.response;
+console.log("Dattaaa ",data)
 let details
 for(details of data){
   let MRP: FormControl = new FormControl('');
@@ -542,6 +578,8 @@ for(details of data){
   let Margin: FormControl = new FormControl('');
   let Discount: FormControl = new FormControl('');
   let LeadTimeIndays: FormControl = new FormControl('');
+  let   productSKUId:FormControl=new FormControl('');
+  let GROID:FormControl=new FormControl('');
   let ProductName: FormControl = new FormControl('');
 let GeographName: FormControl = new FormControl('');
 let DealerName: FormControl = new FormControl('');
@@ -555,10 +593,13 @@ MaxOrder.setValue(details?.maxOrder)
 Margin.setValue(details?.margin)
 Discount.setValue(details?.discount)
 LeadTimeIndays.setValue(details?.leadTimeIndays)
+productSKUId.setValue(details?.productCode)
+ GROID.setValue(details?.ProductSKUGeographyId)
+  ProductSKUGeographyId.setValue(details?.ProductSKUGeographyId)
 ProductName.setValue(details?.stockItemName)
 DealerName.setValue(details?.customerName)
 GeographName.setValue(details?.geographyName)
-ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
+ ProductSKUGeographyId.setValue(details?.productSKUGeographyId)
 LoginId.setValue(this.LoginId)
 
 
@@ -569,6 +610,8 @@ LoginId.setValue(this.LoginId)
     Margin:Margin,
     Discount:Discount,
     LeadTimeIndays:LeadTimeIndays,
+    productSKUId:productSKUId,
+    GROID:GROID,
     ProductName:ProductName,
     GeographName:GeographName,
     DealerName:DealerName,
@@ -599,7 +642,7 @@ LoginId.setValue(this.LoginId)
       this.toppingList.push()
       this.toppingList.forEach(element => {
         return this.roleArray.push(element.geographyId);
-        // console.log('rolecheck',rolecheck)
+        // console.log('raddAddressDetailsFormolecheck',rolecheck)
 
       })
       console.log('bulky', this.toppingList)
@@ -634,7 +677,7 @@ if(res.response.result=='successfully updated'){
 
 
   })
-  console.log(this.addAddressDetailsForm.value);  
+  console.log("BulkEditAss",this.addAddressDetailsForm.value);  
 
 }
 
@@ -795,6 +838,8 @@ if(res.response.result=='successfully updated'){
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
+        let   productSKUId:FormControl=new FormControl('');
+        let GROID:FormControl=new FormControl('');
         let ProductName: FormControl = new FormControl('');
       let GeographName: FormControl = new FormControl('');
       let DealerName: FormControl = new FormControl('');
@@ -808,6 +853,8 @@ if(res.response.result=='successfully updated'){
       Margin.setValue(details?.margin)
       Discount.setValue(details?.discount)
       LeadTimeIndays.setValue(details?.leadTimeIndays)
+      productSKUId.setValue(details?.productSKUId)
+      GROID.setValue(details?.ProductSKUGeographyId)
       ProductName.setValue(details?.stockItemName)
       DealerName.setValue(details?.customerName)
       GeographName.setValue(details?.geographyName)
@@ -822,6 +869,8 @@ if(res.response.result=='successfully updated'){
           Margin:Margin,
           Discount:Discount,
           LeadTimeIndays:LeadTimeIndays,
+          productSKUId:productSKUId,
+          GROID:GROID,
           ProductName:ProductName,
           GeographName:GeographName,
           DealerName:DealerName,
@@ -862,6 +911,8 @@ if(res.response.result=='successfully updated'){
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
+        let productSKUId:FormControl=new FormControl('');
+        let GROID:FormControl=new FormControl('');
         let ProductName: FormControl = new FormControl('');
       let GeographName: FormControl = new FormControl('');
       let DealerName: FormControl = new FormControl('');
@@ -875,6 +926,8 @@ if(res.response.result=='successfully updated'){
       Margin.setValue(details?.margin)
       Discount.setValue(details?.discount)
       LeadTimeIndays.setValue(details?.leadTimeIndays)
+      productSKUId.setValue(details?.productSKUId)
+      GROID.setValue(details?.ProductSKUGeographyId)
       ProductName.setValue(details?.stockItemName)
       DealerName.setValue(details?.customerName)
       GeographName.setValue(details?.geographyName)
@@ -889,6 +942,8 @@ if(res.response.result=='successfully updated'){
           Margin:Margin,
           Discount:Discount,
           LeadTimeIndays:LeadTimeIndays,
+          productSKUId:productSKUId,
+          GROID:GROID,
           ProductName:ProductName,
           GeographName:GeographName,
           DealerName:DealerName,
@@ -924,6 +979,8 @@ if(res.response.result=='successfully updated'){
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
+       let productSKUId:FormControl=new FormControl('');
+       let GROID:FormControl=new FormControl('');
         let ProductName: FormControl = new FormControl('');
       let GeographName: FormControl = new FormControl('');
       let DealerName: FormControl = new FormControl('');
@@ -937,6 +994,8 @@ if(res.response.result=='successfully updated'){
       Margin.setValue(details?.margin)
       Discount.setValue(details?.discount)
       LeadTimeIndays.setValue(details?.leadTimeIndays)
+      productSKUId.setValue(details?.productSKUId)
+      GROID.setValue(details?.ProductSKUGeographyId)
       ProductName.setValue(details?.stockItemName)
       DealerName.setValue(details?.customerName)
       GeographName.setValue(details?.geographyName)
@@ -951,6 +1010,8 @@ if(res.response.result=='successfully updated'){
           Margin:Margin,
           Discount:Discount,
           LeadTimeIndays:LeadTimeIndays,
+          productSKUId:productSKUId,
+          GROID:GROID,
           ProductName:ProductName,
           GeographName:GeographName,
           DealerName:DealerName,
@@ -994,6 +1055,8 @@ if(res.response.result=='successfully updated'){
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
+        let  productSKUId:FormControl=new FormControl('');
+        let GROID:FormControl=new FormControl('');
         let ProductName: FormControl = new FormControl('');
       let GeographName: FormControl = new FormControl('');
       let DealerName: FormControl = new FormControl('');
@@ -1007,6 +1070,8 @@ if(res.response.result=='successfully updated'){
       Margin.setValue(details?.margin)
       Discount.setValue(details?.discount)
       LeadTimeIndays.setValue(details?.leadTimeIndays)
+      productSKUId.setValue(details?.productSKUId)
+      GROID.setValue(details?.ProductSKUGeographyId)
       ProductName.setValue(details?.stockItemName)
       DealerName.setValue(details?.customerName)
       GeographName.setValue(details?.geographyName)
@@ -1021,6 +1086,8 @@ if(res.response.result=='successfully updated'){
           Margin:Margin,
           Discount:Discount,
           LeadTimeIndays:LeadTimeIndays,
+          productSKUId:productSKUId,
+          GROID:GROID,
           ProductName:ProductName,
           GeographName:GeographName,
           DealerName:DealerName,
@@ -1060,6 +1127,8 @@ if(res.response.result=='successfully updated'){
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
+        let productSKUId:FormControl =new FormControl('');
+        let GROID:FormControl=new FormControl('');
         let ProductName: FormControl = new FormControl('');
       let GeographName: FormControl = new FormControl('');
       let DealerName: FormControl = new FormControl('');
@@ -1073,6 +1142,8 @@ if(res.response.result=='successfully updated'){
       Margin.setValue(details?.margin)
       Discount.setValue(details?.discount)
       LeadTimeIndays.setValue(details?.leadTimeIndays)
+      productSKUId.setValue(details?.productSKUId)
+      GROID.setValue(details?.ProductSKUGeographyId)
       ProductName.setValue(details?.stockItemName)
       DealerName.setValue(details?.customerName)
       GeographName.setValue(details?.geographyName)
@@ -1087,6 +1158,8 @@ if(res.response.result=='successfully updated'){
           Margin:Margin,
           Discount:Discount,
           LeadTimeIndays:LeadTimeIndays,
+          productSKUId:productSKUId,
+          GROID:GROID,
           ProductName:ProductName,
           GeographName:GeographName,
           DealerName:DealerName,
@@ -1123,6 +1196,8 @@ if(res.response.result=='successfully updated'){
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
+        let productSKUId:FormControl=new FormControl('');
+        let GROID:FormControl=new FormControl('');
         let ProductName: FormControl = new FormControl('');
       let GeographName: FormControl = new FormControl('');
       let DealerName: FormControl = new FormControl('');
@@ -1136,6 +1211,8 @@ if(res.response.result=='successfully updated'){
       Margin.setValue(details?.margin)
       Discount.setValue(details?.discount)
       LeadTimeIndays.setValue(details?.leadTimeIndays)
+      productSKUId.setValue(details?.productSKUId)
+      GROID.setValue(details?.ProductSKUGeographyId)
       ProductName.setValue(details?.stockItemName)
       DealerName.setValue(details?.customerName)
       GeographName.setValue(details?.geographyName)
@@ -1150,6 +1227,8 @@ if(res.response.result=='successfully updated'){
           Margin:Margin,
           Discount:Discount,
           LeadTimeIndays:LeadTimeIndays,
+          productSKUId:productSKUId,
+          GROID:GROID,
           ProductName:ProductName,
           GeographName:GeographName,
           DealerName:DealerName,
@@ -1185,6 +1264,8 @@ if(res.response.result=='successfully updated'){
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
+        let productSKUId:FormControl=new FormControl('');
+        let GROID:FormControl=new FormControl('');
         let ProductName: FormControl = new FormControl('');
       let GeographName: FormControl = new FormControl('');
       let DealerName: FormControl = new FormControl('');
@@ -1198,6 +1279,8 @@ if(res.response.result=='successfully updated'){
       Margin.setValue(details?.margin)
       Discount.setValue(details?.discount)
       LeadTimeIndays.setValue(details?.leadTimeIndays)
+      productSKUId.setValue(details?.productSKUId)
+      GROID.setValue(details?.ProductSKUGeographyId)
       ProductName.setValue(details?.stockItemName)
       DealerName.setValue(details?.customerName)
       GeographName.setValue(details?.geographyName)
@@ -1212,6 +1295,8 @@ if(res.response.result=='successfully updated'){
           Margin:Margin,
           Discount:Discount,
           LeadTimeIndays:LeadTimeIndays,
+          productSKUId:productSKUId,
+          GROID:GROID,
           ProductName:ProductName,
           GeographName:GeographName,
           DealerName:DealerName,
@@ -1254,6 +1339,8 @@ if(res.response.result=='successfully updated'){
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
+        let productSKUId:FormControl=new FormControl('');
+        let GROID:FormControl=new FormControl('');
         let ProductName: FormControl = new FormControl('');
       let GeographName: FormControl = new FormControl('');
       let DealerName: FormControl = new FormControl('');
@@ -1267,6 +1354,8 @@ if(res.response.result=='successfully updated'){
       Margin.setValue(details?.margin)
       Discount.setValue(details?.discount)
       LeadTimeIndays.setValue(details?.leadTimeIndays)
+      productSKUId.setValue(details?.productSKUId)
+      GROID.setValue(details?.ProductSKUGeographyId)
       ProductName.setValue(details?.stockItemName)
       DealerName.setValue(details?.customerName)
       GeographName.setValue(details?.geographyName)
@@ -1281,6 +1370,8 @@ if(res.response.result=='successfully updated'){
           Margin:Margin,
           Discount:Discount,
           LeadTimeIndays:LeadTimeIndays,
+          productSKUId:productSKUId,
+          GROID:GROID,
           ProductName:ProductName,
           GeographName:GeographName,
           DealerName:DealerName,
@@ -1321,6 +1412,8 @@ if(res.response.result=='successfully updated'){
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
+        let productSKUId:FormControl=new FormControl('');
+        let GROID:FormControl=new FormControl('');
         let ProductName: FormControl = new FormControl('');
       let GeographName: FormControl = new FormControl('');
       let DealerName: FormControl = new FormControl('');
@@ -1334,6 +1427,8 @@ if(res.response.result=='successfully updated'){
       Margin.setValue(details?.margin)
       Discount.setValue(details?.discount)
       LeadTimeIndays.setValue(details?.leadTimeIndays)
+      productSKUId.setValue(details?.productSKUId)
+      GROID.setValue(details?.ProductSKUGeographyId)
       ProductName.setValue(details?.stockItemName)
       DealerName.setValue(details?.customerName)
       GeographName.setValue(details?.geographyName)
@@ -1348,6 +1443,8 @@ if(res.response.result=='successfully updated'){
           Margin:Margin,
           Discount:Discount,
           LeadTimeIndays:LeadTimeIndays,
+          productSKUId:productSKUId,
+          GROID:GROID,
           ProductName:ProductName,
           GeographName:GeographName,
           DealerName:DealerName,
@@ -1384,6 +1481,8 @@ if(res.response.result=='successfully updated'){
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
+        let productSKUId:FormControl=new FormControl('');
+        let GROID:FormControl=new FormControl('');
         let ProductName: FormControl = new FormControl('');
       let GeographName: FormControl = new FormControl('');
       let DealerName: FormControl = new FormControl('');
@@ -1397,6 +1496,8 @@ if(res.response.result=='successfully updated'){
       Margin.setValue(details?.margin)
       Discount.setValue(details?.discount)
       LeadTimeIndays.setValue(details?.leadTimeIndays)
+      productSKUId.setValue(details?.productSKUId)
+      GROID.setValue(details?.ProductSKUGeographyId)
       ProductName.setValue(details?.stockItemName)
       DealerName.setValue(details?.customerName)
       GeographName.setValue(details?.geographyName)
@@ -1411,6 +1512,8 @@ if(res.response.result=='successfully updated'){
           Margin:Margin,
           Discount:Discount,
           LeadTimeIndays:LeadTimeIndays,
+          productSKUId:productSKUId,
+          GROID:GROID,
           ProductName:ProductName,
           GeographName:GeographName,
           DealerName:DealerName,
@@ -1445,6 +1548,8 @@ if(res.response.result=='successfully updated'){
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
+        let productSKUId:FormControl=new FormControl('');
+        let GROID:FormControl=new FormControl('');
         let ProductName: FormControl = new FormControl('');
       let GeographName: FormControl = new FormControl('');
       let DealerName: FormControl = new FormControl('');
@@ -1458,6 +1563,8 @@ if(res.response.result=='successfully updated'){
       Margin.setValue(details?.margin)
       Discount.setValue(details?.discount)
       LeadTimeIndays.setValue(details?.leadTimeIndays)
+      productSKUId.setValue(details?.productSKUId)
+      GROID.setValue(details?.ProductSKUGeographyId)
       ProductName.setValue(details?.stockItemName)
       DealerName.setValue(details?.customerName)
       GeographName.setValue(details?.geographyName)
@@ -1472,6 +1579,8 @@ if(res.response.result=='successfully updated'){
           Margin:Margin,
           Discount:Discount,
           LeadTimeIndays:LeadTimeIndays,
+          productSKUId:productSKUId,
+          GROID:GROID,
           ProductName:ProductName,
           GeographName:GeographName,
           DealerName:DealerName,
@@ -1514,6 +1623,8 @@ console.log(item)
         let Margin: FormControl = new FormControl('');
         let Discount: FormControl = new FormControl('');
         let LeadTimeIndays: FormControl = new FormControl('');
+        let productSKUId:FormControl=new FormControl('');
+        let GROID:FormControl=new FormControl('');
         let ProductName: FormControl = new FormControl('');
       let GeographName: FormControl = new FormControl('');
       let DealerName: FormControl = new FormControl('');
@@ -1527,6 +1638,8 @@ console.log(item)
       Margin.setValue(details?.margin)
       Discount.setValue(details?.discount)
       LeadTimeIndays.setValue(details?.leadTimeIndays)
+      productSKUId.setValue(details?.productSKUId)
+      GROID.setValue(details?.ProductSKUGeographyId)
       ProductName.setValue(details?.stockItemName)
       DealerName.setValue(details?.customerName)
       GeographName.setValue(details?.geographyName)
@@ -1541,6 +1654,8 @@ console.log(item)
           Margin:Margin,
           Discount:Discount,
           LeadTimeIndays:LeadTimeIndays,
+          productSKUId:productSKUId,
+          GROID:GROID,
           ProductName:ProductName,
           GeographName:GeographName,
           DealerName:DealerName,

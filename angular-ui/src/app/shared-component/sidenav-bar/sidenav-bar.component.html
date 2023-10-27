@@ -1,87 +1,96 @@
 <div class="sidenavbar" [ngClass]="collapsed ? 'sidenav-collapsed': ''" (mouseenter)="collapsed=true"
     (mouseleave)="collapsed=false" (click)="toogleCollapsed()">
-    <mat-list>
+    <mat-list >
 
-        <mat-list-item  routerLink="/maindashbord"  routerLinkActive="active" *ngIf="viewMenuList.indexOf('maindashboard') != -1">
-            <img src="../../../assets/sidebarImages/sidenav-dashboard.svg" alt="">
-            <!-- <mat-icon>dashboard</mat-icon>  -->
-            <!-- <mat-icon (click)="close()" class="btnclose">close</mat-icon> -->
-            <span  style="cursor:pointer ;" class="dasb-menu    cursor-pointer"
+        <mat-list-item  routerLink="/maindashbord"  routerLinkActive="active" *ngIf="viewMenuList.indexOf('maindashboard') != -1" class="hover-effect">
+           
+                <mat-icon class="green-icon" >dashboard</mat-icon>
+  
+            
+            <span  style="cursor:pointer;margin-left: 5%;"class="dasb-menu "  
                 *ngIf="collapsed">Dashboard</span>
 
         </mat-list-item>
 
-
-        <mat-list-item  routerLink="/dashbord/orders" routerLinkActive="active" *ngIf="viewMenuList.indexOf('orderdashboard') != -1">
-            <img src="../../../assets/sidebarImages/sidenav-orders.svg" alt="">
-            <!-- <mat-icon >card_travel</mat-icon>  -->
-            <span style="cursor:pointer ;"   *ngIf="collapsed">Orders</span>
-
-        </mat-list-item>
-
-        <mat-list-item routerLink="/dashbord/saleslist" routerLinkActive="active" *ngIf="viewMenuList.indexOf('saleslistdashboard') != -1">
-            <img src="../../../assets/sidebarImages/sidenav-products.svg" alt="">
-            <!-- <mat-icon>store_mall_directory</mat-icon> -->
-            <span style="cursor:pointer ;" *ngIf="collapsed">Sales</span>
-        </mat-list-item>
-
-        <!-- <mat-list-item>
+        <mat-list-item  routerLink="/dashbord/orders" routerLinkActive="active" *ngIf="viewMenuList.indexOf('orderdashboard') != -1" id="sidenavheight" class="hover-effect">
+    
+            <!-- <mat-icon class="green-icon">loyalty</mat-icon> -->
+            <!-- <i class='fas fa-users' style='font-size:36px'></i>  -->
+            <!-- <i class="fa-solid fa-bag-shopping"></i> -->
+               <mat-icon class="green-icon" >card_travel</mat-icon> 
+               <span style="cursor:pointer ;margin-left: 5%; "class="dasb-menu"   *ngIf="collapsed"> Orders</span>
    
-<mat-icon>bar_chart</mat-icon> 
-<span *ngIf="collapsed">Reports</span>
-</mat-list-item> -->
+           </mat-list-item>
 
-        <mat-list-item routerLink="/dashbord/dealer" routerLinkActive="active" *ngIf="viewMenuList.indexOf('dealerdashboard') != -1">
-            <img src="../../../assets/sidebarImages/sidenav-dealer.svg" alt="">
-            <!-- <mat-icon>people</mat-icon> -->
-            <span class="dash-menu" 
-            style="cursor:pointer ;"      *ngIf="collapsed">Dealer</span>
+        <mat-list-item routerLink="/dashbord/saleslist" routerLinkActive="active" *ngIf="viewMenuList.indexOf('saleslistdashboard') != -1" id="sidenavheight" class="hover-effect">
+        
+           
+            <!-- <mat-icon  class="green-icon">save_alt</mat-icon> -->
+            <mat-icon  class="green-icon">group</mat-icon>
+            
+            
+          
+             <span style="cursor:pointer ;margin-left: 5%; "class="dasb-menu" *ngIf="collapsed">Sales</span> 
         </mat-list-item>
 
-        <mat-accordion>
+       
+
+       
+
+        <mat-list-item routerLink="/dashbord/dealer" routerLinkActive="active" *ngIf="viewMenuList.indexOf('dealerdashboard') != -1" id="sidenavheight" class="hover-effect">
+           
+            <mat-icon class="green-icon">description</mat-icon>
+            <span class="dash-menu" 
+            style="cursor:pointer ; margin-left: 5%;" class="dasb-menu"     *ngIf="collapsed">Dealers</span>
+        </mat-list-item>
+
+        <mat-accordion >
 
 
 
-            <mat-expansion-panel (click)="toogleCollapsed()" [expanded]="expandSettingsPannel" class="expnsnpanl" [hideToggle]="true" *ngIf="viewMenuList.indexOf('settingusers') != -1 || viewMenuList.indexOf('settingmaterials') != -1 || viewMenuList.indexOf('settinggeographies') != -1 || viewMenuList.indexOf('settingmaterials') != -1 ">
+            <mat-expansion-panel (click)="toogleCollapsed()" [expanded]="expandSettingsPannel" class="expnsnpanl" [hideToggle]="true" *ngIf="viewMenuList.indexOf('settingusers') != -1 || viewMenuList.indexOf('settingmaterials') != -1 || viewMenuList.indexOf('settinggeographies') != -1 || viewMenuList.indexOf('settingmaterials') != -1 " >
 
-                <mat-expansion-panel-header >
+                <mat-expansion-panel-header  >
 
-                    <mat-panel-title>
-                         <img src="../../../assets/sidebarImages/sidenav-settings.svg" alt="">
-                        <!-- <mat-icon>settings</mat-icon> -->
-                        <span style="cursor:pointer ;"  *ngIf="collapsed">Settings</span>
+                    <mat-panel-title class="hover-effect" >
+                      
+                        <mat-icon class="settings"  >settings</mat-icon>
+                        <span style="cursor:pointer ; margin-left: 5%;"  class="settings"  *ngIf="collapsed">Settings</span>
 
 
 
                     </mat-panel-title>
 
                 </mat-expansion-panel-header>
-                <mat-list-item class="droplist" style="font-size: 14px; cursor: pointer;" routerLink="/dashbord/user"
-                    class="btn-link " routerLinkActive="active" (click)="closePanel()"  *ngIf="viewMenuList.indexOf('settingusers') != -1">
-                    <img src="../../../assets/sidebarImages/sidenav-sub-users.svg" alt="">
-                    <!-- <mat-icon>person icon</mat-icon>    -->
-                    <span *ngIf="collapsed">Users</span>
+                <mat-list-item class="droplist" style="font-size: 14px; cursor: pointer; " routerLink="/dashbord/user"
+                    class="btn-link " routerLinkActive="active" (click)="closePanel()"  *ngIf="viewMenuList.indexOf('settingusers') != -1" class="hover-effect">
+                    <!-- <img src="../../../assets/sidebarImages/sidenav-sub-users.svg" alt=""> -->
+                     <mat-icon class="settings" >person icon</mat-icon>   
+                    <span  class="dasb-menu" *ngIf="collapsed">Users</span>
                 </mat-list-item>
 
-                <mat-list-item class="droplist" style="font-size: 14px; cursor: pointer;"
-                    routerLink="/dashbord/materials" class="btn-link " routerLinkActive="active" (click)="closePanel()"   *ngIf="viewMenuList.indexOf('settingmaterials') != -1">
+                <mat-list-item class="droplist" style="font-size: 14px; cursor: pointer;position: relative;
+                margin-top: 8px;"
+                    routerLink="/dashbord/materials" class="btn-link " routerLinkActive="active" (click)="closePanel()"   *ngIf="viewMenuList.indexOf('settingmaterials') != -1" class="hover-effect">
                     <img src="../../../assets/sidebarImages/sidenav-sub-material.svg" alt="">
                     <!-- <mat-icon>store mall directory icon</mat-icon>    -->
-                    <span *ngIf="collapsed">Materials</span>
+                    <span class="dasb-menu" *ngIf="collapsed">Materials</span>
                 </mat-list-item>
 
-                <mat-list-item class="droplist" style="font-size: 14px; cursor: pointer;" class="btn-link "
-                    routerLink="/dashbord/geographies" routerLinkActive="active" (click)="closePanel()"   *ngIf="viewMenuList.indexOf('settinggeographies') != -1">
+                <mat-list-item class="droplist" style="font-size: 14px; cursor: pointer;position: relative;
+                margin-top: 8px;" class="btn-link "
+                    routerLink="/dashbord/geographies" routerLinkActive="active" (click)="closePanel()"   *ngIf="viewMenuList.indexOf('settinggeographies') != -1" class="hover-effect">
                     <img src="../../../assets/sidebarImages/sidenav-sub-geography.svg" alt="">
                     <!-- <mat-icon> map icon</mat-icon>    -->
-                    <span *ngIf="collapsed">Geographies</span>
+                    <span class="dasb-menu" *ngIf="collapsed">Geographies</span>
                 </mat-list-item>
 
-                <mat-list-item class="droplist" style="font-size: 14px; cursor: pointer;" class="btn-link "
-                    routerLink="/dashbord/other-masters" routerLinkActive="active" (click)="closePanel()"  *ngIf="viewMenuList.indexOf('settingothermasters') != -1">
+                <mat-list-item class="droplist" style="font-size: 14px; cursor: pointer;position: relative;
+                margin-top: 8px;" class="btn-link "
+                    routerLink="/dashbord/other-masters" routerLinkActive="active" (click)="closePanel()"  *ngIf="viewMenuList.indexOf('settingothermasters') != -1" class="hover-effect">
                     <img src="../../../assets/sidebarImages/sidenav-sub-othermaster.svg" alt="">
                     <!-- <mat-icon>person_outline</mat-icon>    -->
-                    <span *ngIf="collapsed">Other Masters</span>
+                    <span class="dasb-menu" *ngIf="collapsed">Other Masters</span>
                 </mat-list-item>
 
 

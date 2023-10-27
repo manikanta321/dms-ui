@@ -84,15 +84,26 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
     }, 
    
   {  headerName: "Dispatch Date",
+  cellRenderer: (data) => 
+  { return this.sharedService.dateformat(data.value);
+  },
+
+
       field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColumn']
     },
     {  headerName: "Invoice Date",
+    cellRenderer: (data) => 
+  { return this.sharedService.dateformat(data.value);
+  },
     field: 'invoiceDate',      tooltipField:"invoiceDate",type: ['nonEditableColumn']
   },
   {  headerName: "Invoice No.",
   field: 'invoiceNo',      tooltipField:"invoiceNo",type: ['nonEditableColumn']
 },
 {  headerName: "Uploaded Date",
+cellRenderer: (data) => 
+  { return this.sharedService.dateformat(data.value);
+  },
 field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColumn']
 },
   
@@ -124,11 +135,11 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
    
     {  headerName: "Total Items ",
     field:"totalitems",tooltipField:"totalitems", resizable:true,
-            children:[
-          {headerName: "In Order", field: 'poQty',  tooltipField:"poQty",    minWidth:50, resizable:true},
-          {headerName: "In Shipment", field: 'shipQty',      tooltipField:"shipQty",minWidth:50, resizable:true},
-          {headerName: "Received", field: 'received',      tooltipField:"received",minWidth:50, resizable:true},
-        ]
+        //     children:[
+        //   {headerName: "In Order", field: 'poQty',  tooltipField:"poQty",    minWidth:50, resizable:true},
+        //   {headerName: "In Shipment", field: 'shipQty',      tooltipField:"shipQty",minWidth:50, resizable:true},
+        //   {headerName: "Received", field: 'received',      tooltipField:"received",minWidth:50, resizable:true},
+        // ]
     
       },
   

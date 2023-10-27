@@ -30,7 +30,7 @@
             <div *ngIf="screenValue== 1 " class="promotiont"> 
               
               <img class="right-arrow" src="../../../assets/img/right-arrow.png" alt="">
-              <label>Product <span>*</span></label><br />          
+              <label>Product <span>*</span></label><br />  
               <select #teams class="form-select select-asso" aria-label=".form-select-lg example"
                 (change)="selectedProduct(teams.value);">
                 <option selected hidden>Select</option>
@@ -46,7 +46,7 @@
                 <ng-select [items]="ProductListArray" id="dealerAllArray" name="dealerAllArray" required
                     [virtualScroll]="true" bindLabel="stockItemName" bindValue="stockItemId"
                     [searchable]="true" [clearable]="false" placeholder=" select dealer"
-                     (change)="selectedProduct($event)">
+                     (change)="selectedProduct($event.value)">
                 </ng-select>
             </div> -->
               <div class="hover-text">
@@ -54,15 +54,15 @@
                 <div class="tooltip-text" id="top">
                   <table class="tootipTable">
                     <tr>
-                      <th>Product Name</th>
-                      <th>Classification</th>
-                      <th>SKU</th>
-                      <th>Product Identifier</th>
-                      <th>Product Group</th>
-                      <th>Product Code</th>
-                      <th>Product Short Code</th>
+                      <th class="left">Product Name</th>
+                      <th  class="left">Classification</th>
+                      <th  class="left">SKU</th>
+                      <th  class="left">Product Identifier</th>
+                      <th  class="left">Product Group</th>
+                      <th  class="left">Product Code</th>
+                      <th  class="left">Product Short Code</th>
                     </tr>
-                    <tr *ngFor="let prod of tooltipData">
+                    <tr *ngFor="let prod of tooltipData" style="text-align: center;">
                       <td>{{prod.productName}}</td>
                       <td>{{prod.classification}}</td>
                       <td>{{prod.sku}}</td>
@@ -106,14 +106,14 @@
                       <th>Product Code</th>
                       <th>Product Short Code</th>
                     </tr>
-                    <tr *ngFor="let prod of tooltipDataDealer">
+                    <tr *ngFor="let prod of tooltipDataDealer" style="background-color: red;">
                       <td>{{prod.productName}}</td>
                       <td>{{prod.classification}}</td>
                       <td>{{prod.sku}}</td>
                       <td>{{prod.productIdentifier}}</td>
                       <td>{{prod.productGroup}}</td>
                       <td>{{prod.productCode}}</td>
-                      <td>{{prod.productShortCode}}</td>
+                      <td class="pg">{{prod.productShortCode}}</td>
                     </tr>
                   </table>
                 </div>
@@ -187,14 +187,14 @@
 
           <div class="row" *ngIf="screenValue == 1">
             <div class="col-md-6 dlr-promotiont1">
-              <form [formGroup]="myForm" class="dropdown-form-dealer">
-                <ng-multiselect-dropdown class="promo_1" [placeholder]="'Dealers'" formControlName="city1"
+              <!-- <form [formGroup]="myForm" class="dropdown-form-dealer">
+                <ng-multiselect-dropdown class="promo_1" [placeholder]="''" formControlName="city" name="city"
                   [disabled]="disabled" [settings]="dropdownSettings3" [data]="dealersArray"
                   (onSelect)="onDealerSelect($event)" (onDeSelect)="onDealerDeSelect($event)" (onDeSelectAll)="onItemDealerDeSelectOrAll($event)" (onSelectAll)="onItemDealerSelectOrAll($event)">
-                </ng-multiselect-dropdown>
+                </ng-multiselect-dropdown> -->
 
-                <div class="dropdown-placeholder promo_1-placeholder">
-                  <span *ngIf="myFormDlr.get('city').value.length == 0" style="color: black">Search & elect Dealers
+                <!-- <div class="dropdown-placeholder ">
+                  <span *ngIf="myFormDlr.get('city').value.length == 0" style="color: black">Search & select Dealers
                   </span>
                   <span *ngIf="myFormDlr.get('city').value.length == 1" class="selected-placeholder">
                     {{ myFormDlr.get("city").value.length }} Dealers selected
@@ -202,7 +202,31 @@
                   <span *ngIf="myFormDlr.get('city').value.length > 1" class="selected-placeholder">
                     {{ myFormDlr.get("city").value.length }} Dealers selected
                   </span>
+                </div> -->
+                <!-- <div  id="dp" class="dropdown-placeholder role-placeholder">
+                  <span *ngIf="myFormDlr.get('city').value.length == 0" style="color: black"> Search & select Dealers </span>
+                  <span *ngIf="myFormDlr.get('city').value.length == 1" class="selected-placeholder"> {{myFormDlr.get('city').value.length}} Dealers selected </span>
+                  <span *ngIf="myFormDlr.get('city').value.length > 1" class="selected-placeholder"> {{myFormDlr.get('city').value.length}} Dealers selected </span>
+        
                 </div>
+              </form> -->
+              <form [formGroup]="myFormDealer" class="dropdown-form-dealer">
+                <ng-multiselect-dropdown class="promo_1-placeholder promo_1" name="city1" [placeholder]="'Category'" formControlName="dealer"
+                  [disabled]="disabled" [settings]="dropdownSettings3" [data]="dealersArray"
+                  (onSelect)="onDealerSelect($event)" (onDeSelect)="onDealerDeSelect($event)"
+                  (onDeSelectAll)="onItemDealerDeSelectOrAll($event)" (onSelectAll)="onItemDealerSelectOrAll($event)">
+                </ng-multiselect-dropdown>
+
+
+                <div class="dropdown-placeholder ">
+                  <span *ngIf="myFormDealer.get('dealer').value.length == 0" style="color: black;">Search & select Dealers</span>
+                  <span *ngIf="myFormDealer.get('dealer').value.length == 1" class="selected-placeholder">
+                    {{myFormDealer.get('dealer').value.length}} dealers selected </span>
+                  <span *ngIf="myFormDealer.get('dealer').value.length > 1" class="selected-placeholder">
+                    {{myFormDealer.get('dealer').value.length}} dealers selected  </span>
+
+                </div>
+
               </form>
             </div>
             <!-- <div class="col-md-6 promotiont1">
@@ -257,7 +281,7 @@
           </div>
           <br>
           <div class="row">
-            <div class="col promotiont1">
+            <div class="col promotiont1 dynamicbubbles">
               <form [formGroup]="myForm" class="dropdown-form-categ">
                 <ng-multiselect-dropdown class="categoryy adddealerbubbles" name="city1" [placeholder]="'Category'" formControlName="city1"
                   [disabled]="disabled" [settings]="dropdownSettings1" [data]="catgname"
@@ -277,7 +301,7 @@
 
               </form>
             </div>
-            <div class="col promotiont1">
+            <div class="col promotiont1 dynamicsubcats">
               <form [formGroup]="myForm1" class="dropdown-form-categ">
                 <ng-multiselect-dropdown class="subCategoryy subcatbubbles" name="city2" [placeholder]="'Geographies'"
                   formControlName="city2" [disabled]="disabled" [settings]="dropdownSettings2" [data]="sub_category"
@@ -299,7 +323,7 @@
             </div>
 
 
-            <div class="col promotiont1">
+            <div class="col promotiont1 dynamictypesbubbles">
               <form [formGroup]="myForm2" class="dropdown-form-categ">
                 <ng-multiselect-dropdown class="typess selecttypes" name="city3" [placeholder]="'Geographies'"
                   formControlName="city3" [disabled]="disabled" [settings]="dropdownSettings6" [data]="typeI"
@@ -318,7 +342,7 @@
 
               </form>
             </div>
-            <div class="col promotiont1">
+            <div class="col promotiont1 dynamicproductbubbles">
               <form [formGroup]="myForm3" class="dropdown-form-categ">
 
                 <ng-multiselect-dropdown class="productt selectprodectss" name="city4" [placeholder]="''" formControlName="city4"
@@ -455,7 +479,7 @@
         <select class="form-select select-asso" aria-label=".form-select-lg example"
           [(ngModel)]="selectedGeoField1">
           <option selected hidden>Select</option>
-          <option value="" disabled selected hidden>Select Feild</option>
+          <option value="" disabled selected hidden>Select Field</option>
           <option value="mrp"> MRP</option>
           <option value="marginPercent"> Margin Percent</option>
           <option value="maxOrderQty"> Max Order Qty</option>
@@ -534,7 +558,7 @@
                         <select class="form-select select-asso" aria-label=".form-select-lg example"
                           [(ngModel)]="selectedGeoField">
                           <option selected hidden>Select</option>
-                          <option value="" disabled selected hidden>Select Feild</option>
+                          <option value="" disabled selected hidden>Select Field</option>
                           <option value="mrp"> MRP</option>
                           <option value="marginPercent"> Margin Percent</option>
                           <option value="maxOrderQty"> Max Order Qty</option>

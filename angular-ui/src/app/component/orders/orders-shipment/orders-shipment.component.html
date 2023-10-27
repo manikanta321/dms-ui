@@ -1,7 +1,7 @@
 <div class="container-fluid mt-5">
     <div class="section shipment">
 <div class="row" style="margin-left: 3px;">
-    <div class="col-md-2 col-lg-2 col-sm-2 custom-bubblesorders-shipment">
+    <!-- <div class="col-md-2 col-lg-2 col-sm-2 custom-bubblesorders-shipment  shipmentdropdown" *ngIf="userType !== 'Dealer Admin'">
         <form [formGroup]="myForm" class="dropdown-form">
           <ng-multiselect-dropdown class="dealer dlsrr" name="city" [placeholder]="'Dealer'" formControlName="city"
             [disabled]="disabled" [settings]="dealerSettings" [data]="dealerlist"(onSelect)="DealerorderSelect($event)" (onDeSelect)="DealerDeselect($event)"(onDeSelectAll)="DealerDeselectAll($event)"
@@ -14,13 +14,13 @@
           <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Dealer(s) selected </span>
 
         </div>
-      </div>
+      </div> -->
         <div class="shipment mr-3">
         <app-customdatepicker [showInputField]="true" label="Shipment Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customShipDatePickerEvent($event)"></app-customdatepicker>       
       </div>
-        <div class="invoice">
+        <!-- <div class="invoice">
           <app-customdatepicker  [showInputField]="true" label="Invoice Date" [selectedDate]="selectedDateRanges" (customDatePickerEvent)="customInvoiceDatePickerEvent($event)"></app-customdatepicker>
-      </div>
+      </div> -->
       <div class="col-md-2 col-lg-2 col-sm-2 custom-bubblesorders-shipment" style="padding-left: 0px !important; margin-left: 16px;">
         <form [formGroup]="statusForm" class="dropdown-form">
           <ng-multiselect-dropdown class="Status stts" name="city" [placeholder]="'Status'" formControlName="status"
@@ -36,42 +36,53 @@
         </div>
       </div>
 
-      <div class="sales-refreshbtn" (click)="refresh()">
-        <img class="refresh-img" src="assets/img/Vector.png" alt="refresh">
+      <!-- Search  new -->
+      
+<div class="col-md-2 col-lg-2 col-sm-2" >
+  <div class="search_Box1 d-flex">
+    <input class="searchInput11" type="text" name="" placeholder="Search here anything" (keyup)="onSearchChange($event)">
+    <mat-icon  class="searchicons">search</mat-icon> 
+    <button class="search-bt_n">Search</button>
+  </div>
+</div>
+      <!-- ref new -->
+      <div class="col-md-0 col-lg-0 col-sm-0">
+        <div class="sales-refreshbtn" (click)="refresh()" style="margin-left: 10px;">
+          <img class="refresh-img" src="assets/img/Vector.png" alt="refresh">
+        </div>
       </div>
-</div>
-<!-- bulk downld upload -->
-<div class="row listicon">
-  <div class="col-md-4 srch-hover" >
-    <div class="searchBox1 d-flex">
-      <input class="searchInput1" type="text" name="" placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
-      <button class="search-btn">Search</button>
-      <button class="searchButton" href="#">
-        <i class="material-icons">
-          search
-        </i>
-      </button>
-    </div>
-  </div>
-<div class="col-md-0">
+
+<div class="col-md-0 col-lg-0 col-sm-0">
   <div class="sales-download" (click)="bulkDownload()" userRoleDirective="UPLOAD_SHIPMENT" [pageName]="currentPageName">
-      <img class="dwnld-img" src="assets/img/orderlist-upload.svg" 
-          alt="add-user-btn">
-  </div>
+    <img class="dwnld-img" src="assets/img/orderlist-upload.svg" 
+        alt="add-user-btn">
 </div>
-<div class="col-md-0">
-<div class="sales-upload" (click)="orderShipmentUpload()">
+</div>
+
+<div class="col-md-0 col-lg-0 col-sm-0">
+  <div class="sales-upload" (click)="orderShipmentUpload()">
     <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
         alt="add-user-btn">    
 </div>
 </div>
-<div class="col-md-0">
-<div class="sales-dwnld" (click)="shipmentDownload()">
-  <img   class="imgdwnl" src="assets/img/download-btn.png"
-      alt="add-user-btn">    
+
+<div class="col-md-0 col-lg-0 col-sm-0">
+  <div class="sales-dwnld" (click)="shipmentDownload()">
+    <img   class="imgdwnl" src="assets/img/download-btn.png"
+        alt="add-user-btn">    
+  </div>
 </div>
 </div>
+<!-- Legend -->
+<div  class="AllText" *ngIf="userType !== 'Dealer Admin'">
+  <span class="ml-4" >INQ: <span class="ml-1">Invoice Quantity</span></span>
+  <span class="ml-4" >INV:<span class="ml-2">Invoice Value</span></span>
+  <span class="ml-4" >TOQ:<span class="ml-2">Total Order Quantity</span></span>
+  <span class="ml-4" >TOV:<span class="ml-2">Total Order Value</span> </span>
+ 
 </div>
+
+
 <!-- grid -->
 <div class="sales-grid-table mt-3">
   <ag-grid-angular id="gridContainer"  style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"

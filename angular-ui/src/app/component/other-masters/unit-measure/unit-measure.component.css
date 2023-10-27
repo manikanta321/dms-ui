@@ -1,4 +1,4 @@
-
+/* 
 .searchBox:hover >.searchButton,
 .searchBox>.searchInput,
 .search-btn {
@@ -54,11 +54,10 @@
   letter-spacing: 0.08em;
   color: #263643;
   box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
-  /* // transition: 0.2s  ease-in-out; */
   position: absolute;
   right: 0px;
   bottom: -3px;
-}
+} */
 .addU:before {
   width: 201px;
 }
@@ -67,8 +66,8 @@
 }
 .add-user {
   border: none;
-  background: #000000;
-  border-radius: 50%;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   width: 37px;
   height: 37px;
   top: 6px;
@@ -91,22 +90,22 @@
   top: 6px;
   left: 21%;
 }
-.searchButton {
+/* .searchButton {
   display:bolck;
   color: #FFFFFF;
   float: left;
   width: 37px;
   height: 37px;
-  border-radius: 50%;
-  background: #000000;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: 0.2s;
   border: none;
   margin-top: 83px;
-}
-@media screen and (max-width: 620px) {
+} */
+/* @media screen and (max-width: 620px) {
   .searchBox:hover>.searchInput {
       width: 150px;
       padding: 0 6px;
@@ -115,7 +114,7 @@
   .searchBox {
 left: 37%
   }
-}
+} */
 .ag-theme-material .ag-filter-toolpanel-header, .ag-theme-material .ag-filter-toolpanel-search, .ag-theme-material .ag-status-bar, .ag-theme-material .ag-header-row, .ag-theme-alpine .ag-panel-title-bar-title, .ag-theme-alpine .ag-multi-filter-group-title-bar {
 
   --ag-background-color: rgba(219, 19, 19, 0.863);
@@ -138,7 +137,7 @@ left: 37%
     background-color: #b81111 !important;
   }
   ::ng-deep.ag-header-cell-text {
-    color: #686E74 !important;
+    /* color: #686E74 !important; */
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 14px !important;
@@ -177,8 +176,8 @@ left: 37%
     --ag-card-radius: 100px;
     --ag-border-radius: 20px;
   --ag-header-height: 30px;
-  /* --ag-header-foreground-color: blue; */
-  --ag-header-background-color: rgba(0, 0, 0, 0);
+   --ag-header-foreground-color: white; 
+  --ag-header-background-color: rgba(1, 139, 117, 1);
   /* --ag-header-cell-hover-background-color: rgb(80, 40, 140);
   --ag-header-cell-moving-background-color: rgb(80, 40, 140); */
   }
@@ -243,5 +242,52 @@ left: 37%
   ::ng-deep.my-class-3 {
     color: #F5B666 !important;
   }
+   .searchBox1 {
+    position: relative;
+    width: 250px; 
+    right: 78%;
+    top: 67%;
+  }
   
+  .searchInput1 {
+    width: 100%;
+    height: 42px;
+    background: #FFFFFF;
+    /* padding: 7px 40px 6px 26px; */
+    padding: 7px 40px 6px 35px;
+    border-radius: 10px;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: 0.08em;
+    color: #263643;
+    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+    border: 1px solid #ccc;
+  }
+  
+  .searchicons1 {
+    position: absolute;
+    top: 55%;
+    left: 6px;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: #9B9FA3;
+  }
+  
+  .search-bt_n1 {
+    display: block;
+    height: 26px;
+    border: none;
+    /* background: #000000; */
+    background: #686E74;
+    color: white;
+    border-radius: 5px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
     

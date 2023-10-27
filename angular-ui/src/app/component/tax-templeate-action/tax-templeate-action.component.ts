@@ -25,6 +25,7 @@ export class TaxTempleateActionComponent implements OnInit,  AfterViewInit {
   public isOpen = false;
   private tippyInstance;
   selected:boolean=false;
+  DeactiveDealer: any;
 
   ngOnInit(){}
   @ViewChild('content') container;
@@ -113,6 +114,12 @@ export class TaxTempleateActionComponent implements OnInit,  AfterViewInit {
     if (this.isOpen) {
       this.configureTippyInstance();
       this.tippyInstance.setContent(this.container.nativeElement);
+      const rowData = this.params.node.data;
+      if (rowData.statusName === 'Active') {
+        this.DeactiveDealer = true;
+      } else if (rowData.statusName === 'Inactive') {
+        this.DeactiveDealer = false;
+      }
     } else {
       this.tippyInstance.unmount();
     }

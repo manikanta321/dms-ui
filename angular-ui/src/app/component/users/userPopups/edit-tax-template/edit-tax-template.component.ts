@@ -63,9 +63,9 @@ export class EditTaxTemplateComponent implements OnInit {
 
          
              this.letter=detail.displayOrder
-             debugger
+             
             TaxCodeName.setValue(detail.taxCodeName);
-             debugger
+             
             PercentageValue.setValue(detail.percentageValue);
             Formula.setValue(detail.formula);
             DisplayOrder.setValue(detail.displayOrder);
@@ -184,7 +184,7 @@ setUpForm(cars: any[] ) {
     this.taxservise.ediTax(this.productForm.value).subscribe((res)=>{
 console.log(res);
 localStorage.setItem('AddOrEditTax','edit');
-this.dialog.open(AddtaxTemplateSuccessfulPopupComponent , {panelClass: 'activeSuccessPop'});
+this.dialog.open(AddtaxTemplateSuccessfulPopupComponent , {panelClass: 'editSuccessPop'});
 this.otherMasterService.filter('Register click');
 
 this.dialogRef.close();

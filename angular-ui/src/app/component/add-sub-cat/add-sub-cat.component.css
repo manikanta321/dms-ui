@@ -3,14 +3,19 @@
     font-weight: 600;
     margin-bottom: 0;
     margin-top: -20px;
+
+    font-family: 'Gilroy-Bold';
+    line-height: 40px;
+    letter-spacing: 0.2px;
+    color: #000000;
 }
 
 .addsub1 {
-    font-weight: 600;
+    font-family: 'Gilroy-SemiBold';
 }
 
 .addsub2 {
-    font-weight: 600;
+    font-family: 'Gilroy-SemiBold';
     margin-top: 15px;
 }
 
@@ -33,7 +38,7 @@
 .head-text::after {
     content: "";
     display: block;
-    width: 94px;
+    width: 86px;
     height: 0.5px;
     background: #686E74;
     right: 20px;
@@ -44,12 +49,21 @@
 .head-text::before {
     content: "";
     display: block;
-    width: 94px;
+    width: 86px;
     height: 0.5px;
     background: #686E74;
     left: 20px;
     top: 50%;
     position: absolute;
+}
+.head-text.edit-header{
+    text-align: left;
+}
+.head-text.edit-header::before {
+    width: 0px;
+}
+.head-text.edit-header::after {
+    width: 51%; 
 }
 
 input {
@@ -63,13 +77,15 @@ input {
 }
 
 .update-btn {
-    background: black;
+    /* background: black; */
+    background-color:#018B75 ;
     color: white;
     width: 183px;
     height: 43px;
     border: #000000;
     border-radius: 5px;
     margin-right: 35px;
+    cursor: pointer;
 }
 
 .cancel-btn {
@@ -77,8 +93,11 @@ input {
     border-radius: 5px;
     width: 184px;
     height: 43px;
-    background: white;
+    /* background: white; */
+    background-color:#018B75 ;
+    color: white;
     font-weight: 700;
+    cursor: pointer;
 }
 
 .close-icon {
@@ -88,6 +107,7 @@ input {
     font-weight: 600;
     top: -3px;
     color: gray;
+    cursor: pointer;
 }
 
 .actv-user {

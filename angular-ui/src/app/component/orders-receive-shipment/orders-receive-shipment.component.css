@@ -7,6 +7,29 @@
 {
   width: 90vw;
 }
+
+::ng-deep .mat-tab-header {
+  border: 1px solid grey;
+  border-radius: 35px;
+  flex-shrink: 0;
+  width: 320px !important;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled){
+  border-radius: 0px;
+}
+
+::ng-deep.mat-ripple.mat-tab-label.mat-focus-indicator.ng-star-inserted{
+  height: 35px !important;
+}
+
+::ng-deep .mat-tab-body-wrapper{
+  margin-top: 20px;
+}
+
 .mat-form-field::placeholder {
     bottom: 2px;
   }
@@ -168,18 +191,6 @@
     margin-top: -51px;
   }
   
-
-
-  td {
-    text-align: right;
-    padding: 3px 0 0 10px;
-  }
-  th{
-    text-align: right;
-    padding: 1px 0 0 18px;
-  }
-  
-  
   .mat-horizontal-stepper-wrapper {
     margin-top: -47px;
   
@@ -206,10 +217,7 @@
     /* background-color: #CED4DA; */
   }
   
-  .main {
-    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-  
-  }
+
   
   .font {
     font-family: 'Gilroy';
@@ -231,14 +239,14 @@
   
   .addU {
     position: relative;
-    /* font-family: 'Gilroy-Bold';  */
-    font-weight: bold;
+    font-family: 'Gilroy-Bold'; 
+    /* font-weight: bold; */
     font-size: 20px;
   }
   .addU12 {
     position: relative;
-    /* font-family: 'Gilroy-Bold';  */
-    font-weight: bold;
+    font-family: 'Gilroy-Bold'; 
+    /* font-weight: bold; */
     font-size: 20px;
   }
 
@@ -272,10 +280,10 @@
   .addU:after {
     content: "";
     display: block;
-    width: 300px;
+    width: 40%;
     height: 2px;
     background: #686E74;
-    right: 111px;
+    right: 1%;
     top: 50%;
     position: absolute;
   }
@@ -283,7 +291,7 @@
   .addU:before {
     content: "";
     display: block;
-    width: 300px;
+    width: 40%;
     height: 2px;
     background: #686E74;
     left: 0;
@@ -322,14 +330,15 @@
     margin: 3px;
     font-size: 14px;
     align-items: center;
-    font-weight: bold;
+    /* font-weight: bold; */
+    font-family: 'Gilroy-SemiBold';
   }
   
   .DescInfo-label {
     margin: 5px;
     font-size: 13px;
     align-items: center;
-    font-weight: 500;
+    font-family: 'Gilroy-SemiBold';
   }
   .DescInfo-labels {
     margin: 5px;
@@ -337,8 +346,9 @@
     align-items: center;
     font-weight: 500;
     position: relative;
-    top: 25px;
-    right: 17%;
+    font-family: 'Gilroy-Medium';
+    /* top: 25px;
+    right: 17%; */
   }
   .DescInfo-labelss {
     margin: 5px;
@@ -346,8 +356,9 @@
     align-items: center;
     font-weight: 500;
     position: relative;
-    top: 25px;
-    right: 19%;
+    font-family: 'Gilroy-Medium';
+    /* top: 25px;
+    right: 19%; */
   }
   
   ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
@@ -356,7 +367,7 @@
   }
   
   ::ng-deep.mat-dialog-container {
-    background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+    /* background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
     overflow-x: hidden;
     overflow-y: hidden;
   max-width: 95vw;
@@ -365,7 +376,7 @@
   }
   
   .shipmentOnes{
-    width: 94%;
+    width: 100%;
   }
   .shipmentTwo{
     width: 98%;
@@ -906,16 +917,17 @@
   
   .collapsible {
     cursor: pointer;
-    padding: 5px;
+    /* padding: 5px; */
     width: 100%;
     border: none;
     text-align: left;
     outline: none;
     font-size: 15px;
     border-radius: 10px 10px 0px 0px;
-    background: #FFFFFF;
-    border: 0.5px solid #000000;
+    color: white;
+    border: 0.5px solid rgba(1, 139, 117, 1);
     border-radius: 10px;
+    background: rgba(1, 139, 117, 1);
   }
   
   /* .active, .collapsible:hover {
@@ -923,7 +935,7 @@
     } */
   
   .content {
-    padding: 0 18px 10px;
+    /* padding: 0 18px 10px; */
     overflow: hidden;
     box-sizing: border-box;
     border-width: 0px 1px 1px 1px;
@@ -931,7 +943,7 @@
     border-color: #686E74;
     border-radius: 0px 0px 10px 10px;
     overflow: auto;
-    margin: 0px 10px;
+    /* margin: 0px 10px; */
   }
   .content-order {
     padding: 0 18px 10px;
@@ -948,13 +960,15 @@
   height: 5px;
   }
   .top-bottom {
-    margin-top: 25px;
+    margin-top: 14px;
   }
   
   .label-cls {
     position: relative;
     top: 6px;
     font-size: 18px;
+    margin-left: 1%;
+    font-family: 'Gilroy-Light';
   }
   
   
@@ -1039,7 +1053,9 @@ padding-left: 20px;
  
 }
 .dispatchC{
-  font-weight: bold;
+  /* font-weight: bold; */
+  font-family: 'Gilroy-SemiBold';
+  font-size: 14px;
 }
   .footer {
     /* position: fixed; */
@@ -1081,7 +1097,7 @@ padding-left: 20px;
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     float: right;
-    margin-top: 15px;
+    margin-top: 4%;
     cursor: pointer;
     width: 168px;
     height: 43px;
@@ -1091,9 +1107,10 @@ padding-left: 20px;
     font-family: 'Gilroy-SemiBold';
     font-size: 15px;
     line-height: 18px;
-  
     align-items: center;
     text-align: center;
+    background: rgba(1, 139, 117, 1);
+    border-color: rgba(1, 139, 117, 1) ;
   
     color: #FFFFFF;
   }
@@ -1113,8 +1130,9 @@ padding-left: 20px;
     font-weight: bold;
     text-decoration-line: underline;
     cursor: pointer;
-  
+    margin-top: 4%;
     font-family: 'Gilroy-Bold';
+    margin-left: 1%;
   
   
   
@@ -1264,25 +1282,28 @@ padding-left: 20px;
   }
   
   .IteminputBoxes {
-    width: 100px;
-    height: 30px;
+    /* width: 100px;
+    height: 30px; */
     background: none;
-    font-size: 12.5px;
-    /* text-align: center; */
+    /* font-size: 13px; */
+    text-align: center;
+    /* padding-left: 20px; */
     position: relative;
-    top: 9px;
+    top: 2px;
   }
   
   .itemLeft {
     font-size: 12.5px;
     text-align: left;
     margin-right: -39px;
+    font-family: 'Gilroy-SemiBold';
   }
   
   .itemLeft1 {
     font-size: 12.5px;
     margin-left: 22px;
     text-align: left;
+    font-family: 'Gilroy-SemiBold';
   }
   
   
@@ -1301,22 +1322,38 @@ padding-left: 20px;
     border-radius: 68%;
     color: white;
     padding: 3px 5px;
+    margin-left: -8px;
   }
   
   .totall {
-    width: 750px;
-    height: 53px;
+    width: 350px;
+    height: 75px;
     background: #FFFFFF;
     border: 0.5px solid #000000;
     border-radius: 21px;
-    padding: 5px;
+    padding: 20px;
     font-size: 13px;
-    margin-left: 223px;
+    margin-left: auto;
   }
   
   .subitem {
     font-size: 13px;
     width: 179px;
+  }
+  .totall td {
+    padding: 10px;
+  }
+
+  .subitem {
+    border-bottom: 1px solid #ccc;
+  }
+
+  .SUBITEMNAME {
+    font-weight: bold;
+  }
+
+  .numbers {
+    text-align: right;
   }
   
   .innerTotal {
@@ -1325,6 +1362,7 @@ padding-left: 20px;
   
   .alltotals {
     margin-bottom: 1px;
+    font-family: 'Gilroy-Medium';
   }
   
   /*---*/
@@ -1363,7 +1401,7 @@ padding-left: 20px;
     border-radius: 10px;
     border: 1px solid black;
     font-size: 12.5px;
-    /* text-align: center; */
+     text-align: right;
   }
   
   .ShipmentinputBoxes1 {
@@ -1375,6 +1413,7 @@ padding-left: 20px;
     font-size: 12.5px;
     background-color: white;
     color: black;
+    text-align: right;
   }
   .ShipmentinputBoxes4 {
     width: 70px;
@@ -1421,15 +1460,16 @@ padding-left: 20px;
   }
   
   .dispatchComments {
-    width: 825px;
+    width: 1289px;
     height: 73px;
     padding-bottom: 45px;
     padding-left: 7px;
     border-radius: 10px;
     border: 1px solid black;
-    font-size: 12.5px;
+    font-size: 13px;
     background-color: white;
     color: black;
+    font-family: 'Gilroy-Regular';
   }
   
   .label-div {
@@ -1499,11 +1539,13 @@ padding-left: 20px;
   }
   .invoice{
     border-radius: 10px;
-    padding: 7px;
+    padding: 10px;
     background: none !important;
-    width: 183px;
+    width: 223px;
     border: 1px black solid;
     height: 35px;
+    margin-left: 17%;
+
   }
   ::ng-deep.promotion-datepicker .mat-form-field-appearance-legacy .mat-form-field-infix {
     padding: 0.4375em 0;
@@ -1535,3 +1577,36 @@ padding-left: 20px;
     width: 20px;
     right: 10px;
   }
+  .paddinginth
+  {
+    padding: 2px 3px 5px 30px;
+    font-family: 'Gilroy-Bold';
+    font-size: 14px;
+    text-align: center;
+  }
+  .fontweight
+  {
+    font-weight: 500;
+  }
+  .label1
+  {
+    margin-left: 15%;
+  }
+  .label2
+  {
+    margin-left: 17%;
+    font-family: 'Gilroy-SemiBold';
+  }
+  .receive_date
+  {
+    margin-left: 16%;
+  }
+
+  ::ng-deep .mat-tooltip {
+    color: black !important;
+    /* font-size: 16px !important; */
+    background-color: white !important;
+    border: 1px solid grey !important;
+}
+
+  

@@ -2,9 +2,14 @@
 
     border-radius: 21px;
 }
+label
+{
+    font-family: 'Gilroy-Bold';
+}
 
 .btn {
-    background-color: #000000;
+    /* background-color: #000000; */
+    background-color:#018B75 ;
     color: whitesmoke;
     border-radius: 10px;
     border: 1px solid black;
@@ -94,7 +99,7 @@
 }
 
 .main {
-    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+    /* background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
 }
 
 .font {
@@ -105,6 +110,7 @@
     color: #000000;
     text-align: center;
     margin-top: -20px;
+    font-family: 'Gilroy-Bold';
 }
 
 .addU {
@@ -179,13 +185,16 @@ mat-form-field {
 
 
 ::ng-deep.mat-dialog-container {
-    background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-    ;
+    /* background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
+    
     /* height: 300px; */
     overflow: auto;
 
 }
 
+.btn-primary:enabled{
+    background-color:#018B75 ;
+}
 .btn-primary:disabled {
     border-color: black;
     background-color: black;
@@ -200,7 +209,7 @@ mat-form-field {
 .packingText {
     color: #000000;
     font-size: 20px;
-    font-weight: lighter;
+    font-family: 'Gilroy-Light';
 }
 
 .bothDown {
@@ -354,4 +363,5 @@ mat-form-field {
     position: relative !important;
     top: 38px !important;
     right: 0 !important;
+    padding-left: 7px;
 }

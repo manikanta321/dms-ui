@@ -3,7 +3,15 @@
     font-weight: 600;
     margin-bottom: 0;
     margin-top: -20px;
-    font-family: 'Gilroy';
+    font-family: 'Gilroy-Bold';
+    /* text-align: left; */
+}
+label
+{
+    font-family: 'Gilroy-SemiBold';
+}
+.head-text.Edit{
+    text-align: left;
 }
 
 .olpass {
@@ -25,7 +33,7 @@
 .head-text::after {
     content: "";
     display: block;
-    width: 94px;
+     width: 25%; 
     height: 0.5px;
     background: #686E74;
     right: 20px;
@@ -36,13 +44,45 @@
 .head-text::before {
     content: "";
     display: block;
-    width: 94px;
+     width: 25%; 
     height: 0.5px;
     background: #686E74;
     left: 20px;
     top: 50%;
     position: absolute;
+     
 }
+.edit-mode
+{
+    text-align: left;
+}
+
+.edit-mode::before{
+
+     content: "";
+     display: none;
+     width: 94px;
+     height: 0.5px;
+    background: #686E74;
+   left: 20px;
+    top: 50%;
+     position: absolute;
+      }
+    
+    .edit-mode::after {
+    
+    content: "";
+     display: block;
+     width: 60%;
+    height: 0.5px;
+     background: #686E74;
+     right: 20px;
+     top: 50%;
+     position: absolute;
+    
+    }
+
+
 
 input {
     padding: 5px 12px;
@@ -55,7 +95,8 @@ input {
 }
 
 .save-btn {
-    background: black;
+    /* background: black; */
+    background-color:#018B75 ;
     color: white;
     width: 183px;
     height: 43px;

@@ -56,7 +56,9 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { PopupCellRendererComponent } from '../popup-cell-renderer/popup-cell-renderer.component';
 import * as moment from 'moment';
 import { UseractionComponent } from '../useraction/useraction.component';
-import { parseMessage } from '@angular/localize/src/utils';
+
+// uncomment this based on need****sainathreddy***
+// import { parseMessage } from '@angular/localize/src/utils';
 
 @Component({
   selector: 'app-users',
@@ -128,7 +130,7 @@ export class UsersComponent implements OnInit {
 
     {
       headerName: "Phone No",
-      field: 'mobile', type: ['nonEditableColumn'],
+      field: 'mobile', type: ['nonEditableColumn','rightAligned'],
       tooltipField: "mobile"
     },
 

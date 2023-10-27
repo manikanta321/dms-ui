@@ -8,27 +8,27 @@ width: 500px;
 }
 .name
 {
-    font-family: 'Gilroy-Bold';
+    font-family: 'Gilroy-Medium';
 font-size: 17px;
 letter-spacing: 0.2px;
-font-weight: 600;
+/* font-weight: 600; */
 
 color: #000000;
 }
 .dc
 {
     
-    font-family: 'Gilroy-Bold';
+    font-family: 'Gilroy-Medium';
 font-size: 17px;
 letter-spacing: 0.2px;
-font-weight: 600;
+/* font-weight: 600; */
 
 color: #000000;
 }
 
 .adduom{
  position: relative; 
- font-weight: bold;
+ font-family: 'Gilroy-Bold';
  font-size: 20px;
  color: black;
  bottom: 36px;
@@ -89,7 +89,8 @@ span{
     color: red;
 }
 .uombtn{
-   background: black;
+   /* background: black; */
+   background: #018B75;
    color: white;
    padding: 5px;
    margin-top: 31px;
@@ -99,13 +100,21 @@ span{
    height: 48px;
    margin-left: 16px;
    width: 94%;
+   font-family: 'Gilroy-SemiBold';
 }
+
+.uombtn:disabled{
+
+    background-color: black;
+}
+
 .close-icon{
     left: 102%;
     position: relative;
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
+    
 }
 .requiredFF{
     position: relative;

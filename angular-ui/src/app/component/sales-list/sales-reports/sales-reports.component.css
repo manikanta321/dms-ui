@@ -223,7 +223,7 @@
   }
   
   ::ng-deep.ag-header-cell-text {
-    color: #686E74 !important;
+    /* color: #686E74 !important; */
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 14px !important;
@@ -582,9 +582,9 @@
   }
   
   .ref {
-    border: 1px solid black;
+    border: 1px solid rgba(104, 110, 116, 0.66);
     border-radius: 10px;
-    background: black;
+    background: rgba(104, 110, 116, 0.66);
     margin-left: 26px;
     width: 43px;
     padding: 8px 0px 0px 10px;

@@ -173,7 +173,7 @@ sessionStorage.setItem("BatchId",batchId );
   
     {   headerName: "Total Items",
       field: 'totalItems',      tooltipField:"totalItems",
-      type: ['nonEditableColumn']},
+      type: ['nonEditableColumn','rightAligned']},
       {
         headerName: '',
         colId: 'action',

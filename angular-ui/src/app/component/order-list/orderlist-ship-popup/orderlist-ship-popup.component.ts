@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { CellValueChangedEvent, ColDef, FirstDataRenderedEvent, GridApi, GridOptions, GridReadyEvent } from 'ag-grid-community';
 import { Subject } from 'rxjs';
+import * as moment from 'moment';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
 import { OtherMasterService } from 'src/app/services/other-master.service';
 import { SharedServiceMaterialListService } from 'src/app/services/shared-service-material-list.service';
@@ -10,12 +11,39 @@ import { SharedServicesShipmentService } from 'src/app/services/shared-services-
 import { SharedService } from 'src/app/services/shared-services.service';
 import { ShipOrderSuccessPopupComponent } from 'src/app/ship-order-success-popup/ship-order-success-popup.component';
 import { CustomDatePopupComponent } from '../../orders/custom-date-popup/custom-date-popup.component';
+import {
+  DateAdapter,
+  MAT_DATE_LOCALE,
+  MAT_DATE_FORMATS,
+} from '@angular/material/core';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DatePipe } from '@angular/common';
 
-
+// custom date format for mat datapicket input
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'DD-MMM-YY',
+  },
+  display: {
+    dateInput: 'DD MMM YY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'YYYY-MM-DD',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 @Component({
   selector: 'app-orderlist-ship-popup',
   templateUrl: './orderlist-ship-popup.component.html',
-  styleUrls: ['./orderlist-ship-popup.component.css']
+  styleUrls: ['./orderlist-ship-popup.component.css'],
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE],
+    },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+    DatePipe,
+  ]
 })
 export class OrderlistShipPopupComponent implements OnInit {
 
@@ -25,11 +53,11 @@ export class OrderlistShipPopupComponent implements OnInit {
   shipmentone = false;
   shipmenttwo = false;
   orderhistory = false;
-  image1 = 'assets/img/minimize-tag.png';
-  image2 = 'assets/img/minimize-tag.png';
-  image3 = 'assets/img/minimize-tag.png';
-  image4 = 'assets/img/minimize-tag.png';
-  image5 = 'assets/img/minimize-tag.png';
+  image1 = 'assets/img/expandarrows.svg';
+  image2 = 'assets/img/expandarrows.svg';
+  image3 = 'assets/img/expandarrows.svg';
+  image4 = 'assets/img/expandarrows.svg';
+  image5 = 'assets/img/expandarrows.svg';
   paginationPageSize = 10;
   stayScrolledToEnd = true;
   paginationScrollCount: any;
@@ -393,8 +421,7 @@ export class OrderlistShipPopupComponent implements OnInit {
     // this.endDate = new FormControl(null);
     // alert(e.value);
     // console.log("This is the DATE:", e.value);
-    this.shippingDateChange = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
-    console.log(this.shippingDateChange);
+    this.shippingDateChange = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth()+ 1).toString() + '/' + new Date(e.value).getDate();
   }
 
   ReciveDateChange(e) {
@@ -405,7 +432,6 @@ export class OrderlistShipPopupComponent implements OnInit {
     // alert(e.value);
     // console.log("This is the DATE:", e.value);
     this.reciveDateChange = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
-    console.log(this.reciveDateChange);
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -591,9 +617,9 @@ let filterArray:any=[]
     this.dealerInfo = !this.dealerInfo;
 
     if (this.dealerInfo === false) {
-      this.image1 = 'assets/img/maximize.png';
+      this.image1 = 'assets/img/expandarrows.svg';
     } else {
-      this.image1 = 'assets/img/minimize-tag.png';
+      this.image1 = 'assets/img/expandarrows.svg';
 
     }
   }
@@ -601,9 +627,9 @@ let filterArray:any=[]
     this.orderitem = !this.orderitem;
 
     if (this.orderitem === false) {
-      this.image2 = 'assets/img/maximize.png';
+      this.image2 = 'assets/img/expandarrows.svg';
     } else {
-      this.image2 = 'assets/img/minimize-tag.png';
+      this.image2 = 'assets/img/expandarrows.svg';
     }
 
   }
@@ -611,9 +637,9 @@ let filterArray:any=[]
     this.shipmentone = !this.shipmentone;
 
     if (this.shipmentone === false) {
-      this.image3 = 'assets/img/maximize.png';
+      this.image3 = 'assets/img/expandarrows.svg';
     } else {
-      this.image3 = 'assets/img/minimize-tag.png';
+      this.image3 = 'assets/img/expandarrows.svg';
     }
 
   }
@@ -621,9 +647,9 @@ let filterArray:any=[]
     this.shipmenttwo = !this.shipmenttwo;
 
     if (this.shipmenttwo === false) {
-      this.image4 = 'assets/img/maximize.png';
+      this.image4 = 'assets/img/expandarrows.svg';
     } else {
-      this.image4 = 'assets/img/minimize-tag.png';
+      this.image4 = 'assets/img/expandarrows.svg';
     }
 
   }
@@ -631,9 +657,9 @@ let filterArray:any=[]
     this.orderhistory = !this.orderhistory;
 
     if (this.orderhistory === false) {
-      this.image5 = 'assets/img/maximize.png';
+      this.image5 = 'assets/img/expandarrows.svg';
     } else {
-      this.image5 = 'assets/img/minimize-tag.png';
+      this.image5 = 'assets/img/expandarrows.svg';
     }
 
   }

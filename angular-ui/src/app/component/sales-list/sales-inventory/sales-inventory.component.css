@@ -1,5 +1,27 @@
+.inventorydealersbubbles{
+  height: 41px;
+    border-left: 1px solid #111413db;
+   border-radius: 13px;
+}
+.salesIdealersbubbles{
+  height: 41px;
+  border-left: 1px solid #111413db;
+ border-radius: 13px;
+}
+.sales-invertygeophybubbles{
+  height: 41px;
+  border-left: 1px solid #111413db;
+ border-radius: 13px;
+}
+
+
+::ng-deep .multi_select .dropdown-list {
+  left: -6%;
+  width: 106%;
+}
 .salesclass {
   margin-left: 4px;
+  font-family: 'Gilroy-Medium';
 }
 
 .salesss {
@@ -7,7 +29,7 @@
   overflow-x: hidden;
   overflow-y: hidden;
 }
-
+/* 
 ::ng-deep.Dealerdrp .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret{
   width: 0px;
   right: 11px;
@@ -21,7 +43,7 @@
 ::ng-deep.geography .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret{
   width: 0px;
   right: 11px;
-}
+} */
 .sales-example-form {
   min-width: 150px;
   max-width: 500px;
@@ -41,6 +63,7 @@
   border-radius: 10px;
   padding: 10px;
   position: relative;
+  padding-left:33px;
 }
 
 .sales .fa-search {
@@ -55,9 +78,9 @@
   filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
   width: 43px;
   height: 41px;
-  background: #000000;
-  border-radius: 10px;
-  margin-left: 10px;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
+margin-left: 1%;
   cursor: pointer;
 }
 
@@ -99,7 +122,7 @@
 }
 
 ::ng-deep.ag-header-cell-text {
-  color: #686E74 !important;
+  /* color: #686E74 !important; */
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 14px !important;
@@ -144,8 +167,8 @@
   --ag-card-radius: 100px;
   --ag-border-radius: 20px;
   --ag-header-height: 30px;
-  /* --ag-header-foreground-color: blue; */
-  --ag-header-background-color: rgba(0, 0, 0, 0);
+   --ag-header-foreground-color: white; 
+  --ag-header-background-color:rgba(1, 139, 117, 1);
   /* --ag-header-cell-hover-background-color: rgb(80, 40, 140);
     --ag-header-cell-moving-background-color: rgb(80, 40, 140); */
 }
@@ -176,17 +199,18 @@
   margin-right: 7px;
 }
 
-.searchBox1 {
+/* .searchBox1 {
   float: right;
-}
+} */
 
 .sales-add {
-  background: #000000;
-  border-radius: 50%;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   width: 37px;
-  height: 37px;
+  height: 41px;
   margin-right: 10px;
   cursor: pointer;
+  margin-left:21%;
 }
 
 .sales-add:hover {
@@ -241,10 +265,10 @@
 }
 
 .sales-dwnld {
-  background: #000000;
-  border-radius: 50%;
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
   width: 37px;
-  height: 37px;
+  height: 41px;
   cursor: pointer;
 }
 
@@ -256,28 +280,28 @@
 .imgdwnl {
   position: relative;
   top: 8px;
-  left: 10px;
+  left: 12px;
 }
 
-.searchButton {
+/* .searchButton {
   display: bolck;
   color: #FFFFFF;
   width: 37px;
   height: 37px;
-  border-radius: 50%;
-  background: #000000;
+  border-radius: 13%;
+  background: rgba(104, 110, 116, 0.66);
   display: flex;
   justify-content: center;
   align-items: center;
   transition: 0.2s;
   border: none;
-}
+} */
 
-.searchBox:hover>.searchButton,
+/* .searchBox:hover>.searchButton,
 .searchBox>.searchInput,
 .search-btn {
   display: none;
-}
+} */
 
 /* .searchBox {
         float:right;
@@ -285,26 +309,26 @@
       left: 94%;
         top: 6px;
       } */
-.searchBox:hover>.searchButton {
+/* .searchBox:hover>.searchButton {
   display: block;
-}
+} */
 
-.searchInput1 {
+/* .searchInput1 {
   display: none;
 }
 
 .searchInput1 :hover {
   display: block;
-}
+} */
 
-.searchBox:hover>.searchButton .material-icons {
+/* .searchBox:hover>.searchButton .material-icons {
   position: relative;
   right: 298px;
   color: #000;
   top: 3px;
-}
+} */
 
-.searchBox:hover>.search-btn {
+/* .searchBox:hover>.search-btn {
   display: block;
   height: 26px;
   border: none;
@@ -314,9 +338,9 @@
   position: absolute;
   right: 10px;
   top: 84px;
-}
+} */
 
-.searchBox1:hover>.search-btn {
+/* .searchBox1:hover>.search-btn {
   display: block;
   height: 26px;
   border: none;
@@ -344,11 +368,11 @@
   letter-spacing: 0.08em;
   color: #263643;
   box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
-  /* // transition: 0.2s  ease-in-out; */
+  / transition: 0.2s  ease-in-out; 
   position: absolute;
   right: 0px;
   bottom: -3px;
-}
+} */
 
 ::ng-deep.dropdown-list {
   position: absolute;
@@ -622,3 +646,54 @@
   padding-left: 8px;
   display: flex;
    }
+
+
+   
+.searchBox1 {
+  position: relative;
+  width: 250px; 
+  right: 0%;
+  top: 67%;
+}
+
+.searchInput1 {
+  width: 100%;
+  height: 42px;
+  background: #FFFFFF;
+  /* padding: 7px 40px 6px 26px; */
+  padding: 7px 40px 6px 35px;
+  border-radius: 10px;
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 17px;
+  letter-spacing: 0.08em;
+  color: #263643;
+  box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+  border: 1px solid #ccc;
+}
+
+.searchicons1 {
+  position: absolute;
+  top: 55%;
+  left: 6px;
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: #9B9FA3;
+}
+
+.search-bt_n1 {
+  display: block;
+  height: 26px;
+  border: none;
+  /* background: #000000; */
+  background: #686E74;
+  color: white;
+  border-radius: 5px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}

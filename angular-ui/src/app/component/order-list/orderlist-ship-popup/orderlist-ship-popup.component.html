@@ -1,6 +1,6 @@
 <!-- <p>orderlist-ship-popup works!</p> -->
 <div class="mainout">
-    <div *ngIf="!viewList" class="font">
+    <div *ngIf="!viewList" class="">
         <div class="main" style="max-width: 95vw;" >
             <div class="promotionpopup-scroll">
                 <div class="addUser">
@@ -9,7 +9,7 @@
     
                 </div>
                 <div class="head-t">
-                    <h3 class="addU font">Ship Order</h3>
+                    <h3 class="addU ">Ship Order</h3>
                     <div class="row top-bottom">
                         <div class="row text-center"></div>
                     </div>
@@ -70,6 +70,7 @@
                             </div>
                         </div>
                     </div>
+                    &nbsp;
                     <div class="top-bottom  {
                         height: 500px !important;
                       }">
@@ -145,23 +146,23 @@
                                     <div class="innerTotal d-flex">
                                         <div class="subitem">
                                             <p class="alltotals">Sub Total</p>
-                                            <span>{{shipmentArray?.subTotal}}</span>
+                                            <span class="alltotal2">{{shipmentArray?.subTotal}}</span>
                                         </div>
                                         <div class="subitem">
                                             <p class="alltotals">Tax Element</p>
-                                            <span>{{shipmentArray?.taxElement}}</span>
+                                            <span class="alltotal2">{{shipmentArray?.taxElement}}</span>
                                         </div>
                                         <div class="subitem">
                                             <p class="alltotals">Packing Charge</p>
-                                            <span>{{shipmentArray?.pakingCharge}}</span>
+                                            <span class="alltotal2">{{shipmentArray?.pakingCharge}}</span>
                                         </div>
                                         <div class="subitem">
                                             <p class="alltotals">Shipping Charge</p>
-                                            <span>{{shipmentArray?.shipingcharge}}</span>
+                                            <span class="alltotal2">{{shipmentArray?.shipingcharge}}</span>
                                         </div>
                                         <div class="subitem total_total">
                                             <p class="alltotals">Total</p>
-                                            <span>{{shipmentArray?.total}}</span>
+                                            <span class="alltotal2">{{shipmentArray?.total}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -295,7 +296,7 @@
                             <br>
                             <div class="row">
                                 <div class="col-lg-3">
-                                    <label>Invoice No.<span class="astr">*</span></label>
+                                    <label class="invNo">Invoice No.<span class="astr">*</span></label>
                                     <div class="input-datepicker mr-3">
                                         <input id="invoiceNo" name="invoiceNo" type="text" [(ngModel)]="invoice" #invoiceNo="ngModel" class="invoice" />
                                         <span style="color:red;position: relative; top: 12px;"*ngIf="invoiceNo.invalid && (invoiceNo.dirty || invoiceNo.touched)">
@@ -307,7 +308,7 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="myDatepicker promotion-datepicker">
-                                        <label>Invoice Date <span class="astr">*</span></label><br>
+                                        <label class="invNo">Invoice Date <span class="astr">*</span></label><br>
                                         <mat-form-field class="placeh-align">
                                             <mat-label> Invoice date</mat-label>
                                             <input matInput id="invoiceDate" name="invoiceDate"  placeholder="Invoice Date" [matDatepicker]="picker1"   datePickerFormat='DD   MMM   YY' [max]="maxDate"  [(ngModel)]="startDate" #invoiceDate="ngModel"
@@ -328,7 +329,7 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="myDatepicker promotion-datepicker">
-                                        <label>Shipping Date <span class="astr">*</span></label><br>
+                                        <label class="invNo">Shipping Date <span class="astr">*</span></label><br>
                                         <mat-form-field class="placeh-align">
                                             <!-- <mat-label> Shipping date</mat-label> -->
                                             <input id="shippingDates" name="shippingDates" placeholder="Shipping date"  matInput [matDatepicker]="picker2" [max]="maxDate"

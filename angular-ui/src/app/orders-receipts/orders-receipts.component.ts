@@ -25,6 +25,7 @@ import { OrderReceiptsBulkUploadComponent } from './order-receipts-bulk-upload/o
 export class OrdersReceiptsComponent implements OnInit {
   myForm: any = FormGroup; 
   myForm1: any = FormGroup; 
+  userType:any;
   disabled = false;
   dealerSettings: IDropdownSettings = {};
   dropdownSettings2: IDropdownSettings = {};
@@ -103,17 +104,34 @@ export class OrdersReceiptsComponent implements OnInit {
 
     }, 
    
-  {  headerName: "Total Items ", 
-  field:"totalitems",tooltipField:"totalitems", resizable:true,
+  { 
+     headerName: "Total Items In Order ", 
+    // field:"totalitems",
+    //   tooltipField:"totalitems", 
+    resizable:true,
+      field: 'poQty', 
+      tooltipField:"poQty",
+    minWidth:50,
+     type: 'rightAligned'
+  },
   
+          
+      
+        {headerName: "In Shipment",
+         field: 'shipQty',     
+          tooltipField:"shipQty",
+          minWidth:50, resizable:true,
+          type: 'rightAligned',},
+
+        {headerName: "Received",
+         field: 'received',    
+           tooltipField:"received",
+           minWidth:50, resizable:true,
+           type: 'rightAligned',
+          },
+      
   
-          children:[
-        {headerName: "In Order", field: 'poQty',  tooltipField:"poQty",    minWidth:50, resizable:true,type: 'rightAligned'},
-        {headerName: "In Shipment", field: 'shipQty',      tooltipField:"shipQty",minWidth:50, resizable:true,type: 'rightAligned',},
-        {headerName: "Received", field: 'received',      tooltipField:"received",minWidth:50, resizable:true,type: 'rightAligned',},
-      ]
-  
-    },
+    
   //   {  headerName: "In Shipment",
   //     field: 'inshipment',      tooltipField:"inshipment",
   //   },
@@ -192,6 +210,7 @@ export class OrdersReceiptsComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.userType = localStorage.getItem("userType");
     this.loggedUserId = localStorage.getItem('logInId');
   
 
@@ -338,9 +357,11 @@ export class OrdersReceiptsComponent implements OnInit {
         console.log("Response",this.receiptDatalist)
       });
     }
-    orderReceiptsBulkUpload(){
+    orderReceiptsBulkUpload()
+    {
+      
       localStorage.setItem('UploadTarget','');
-        this.dialog.open(OrderReceiptsBulkUploadComponent);
+      this.dialog.open(OrderReceiptsBulkUploadComponent);
     }
     // orderReceiptsBulkUpload(){
     //   sessionStorage.setItem("sales",'');
@@ -608,8 +629,18 @@ export class OrdersReceiptsComponent implements OnInit {
         console.log("Response",this.receiptDatalist)
       });
     }
-    shipmentDownload() {
-      this.gridApi.exportDataAsCsv();
+    convertedDateFormat() {
+       var x = new Date();
+       var y = x.getFullYear().toString();
+       var m = (x.getMonth() + 1).toString();
+       var d = x.getDate().toString();
+       (d.length == 1) && (d = '0' + d);
+       (m.length == 1) && (m = '0' + m);
+       return d + m + y;
+      
+   }
+    receiptsDownload() {
+      this.gridApi.exportDataAsCsv({ fileName: 'receipt_order' + this.convertedDateFormat() });
   
     }
     refresh() {

@@ -24,7 +24,7 @@
           <!-- basic information -->
           <mat-step [stepControl]="firstFormGroup">
             <div class="geography-popupsize">
-            <ng-template matStepLabel>Basic Information</ng-template>
+            <ng-template matStepLabel class="BInformation">Basic Information</ng-template>
             <div class="heading">
               <h6 class="stepperHeader-b"><b>Basic
                   Information</b></h6>
@@ -35,7 +35,7 @@
                 <div class="">
                   <label>Category<span>*</span></label>
                   <div class="categorydrp">
-                    <ng-select [items]="catgname" class="searchbtnIcon" id="nameCategory" name="nameCategory" required
+                    <ng-select [items]="catgname " class="searchbtnIcon" id="nameCategory" name="nameCategory" required
                       [virtualScroll]="true" bindLabel="catName" bindValue="catId" [searchable]="true"
                       [clearable]="false" placeholder="Search & select category" [(ngModel)]="categeoryData"
                       (change)="onItemSelect($event)" #nameCategory="ngModel">
@@ -56,7 +56,7 @@
                   <div class="subcategorydrp">
                     <ng-select [items]="sub_category" class="searchbtnIcon" id="nameSubCat" name="nameSubCat" required
                       [virtualScroll]="true" bindLabel="subCatName" bindValue="subCatId" [searchable]="true"
-                      [clearable]="false" placeholder="search & select sub-category" [(ngModel)]="subCategoryData"
+                      [clearable]="false" placeholder="Search & select sub-category" [(ngModel)]="subCategoryData"
                       (change)="onSubCategorySelect($event)" #nameSubCat="ngModel">
                     </ng-select>
                     <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;position: absolute"
@@ -97,7 +97,9 @@
                 </div>
                 <input type="text" id="matName" name="matName" (keyup)="onKey($event)"
                   class="form-control container materialname-placeholder" required
-                  placeholder="Enter the name of material" [(ngModel)]="materialName" #matName="ngModel">
+                  placeholder="Enter name of material" [(ngModel)]="materialName" #matName="ngModel" (input)="restrictToNumbers($event)"
+
+                  (input)="restrictToAlphabets($event)">
                 <p style="margin-bottom:-5px;padding: 0px;font-size: 11px;position: absolute"
                   *ngIf="matName.invalid && (matName.dirty || matName.touched)" class="alert">
                   <span class="errormsg" *ngIf="matName.errors?.['required']">
@@ -110,11 +112,11 @@
                 <div class="uomp">
                   <label>UOM <span>*</span></label>
                 </div>
-                <div class="uomdrp">
+                <div class="uomdrp" >
                   <ng-select [items]="rowData5" class="searchbtnIcon" id="nameUOM" name="nameUOM" required
                     [virtualScroll]="true" bindLabel="uoMShortName" bindValue="uoMId" [searchable]="true"
-                    [clearable]="false" placeholder="Search & select measuring unit" [(ngModel)]="baseUoMData"
-                    (change)="onUomSelect($event)" #nameUOM="ngModel">
+                    [clearable]="false" placeholder="Search & select measuring unit" [(ngModel)]="uomID"
+                    (change)="onUomSelect($event)" #nameUOM="ngModel" >
                   </ng-select>
                   <p style="margin-bottom:-14px;padding: 0px;font-size: 11px;position: absolute;"
                     *ngIf="nameUOM.invalid && (nameUOM.dirty || nameUOM.touched)" class="alert">
@@ -143,23 +145,21 @@
               </div>
               <div class="col-md-3">
                 <div class="imageofm">
-                  <label>Image of Material</label>
+                    <label>Image of Material</label>
                 </div>
                 <label class="form-control container imagePl" *ngIf="Imgpreview">
-                  <input type="file" id="file" style="display:none"   placeholder="Add-Image" (change)="onFileChanged($event) ">
-                  <img src='data:image/jpeg;base64,{{base64textString}}'  class="add-img" alt="add-image=btn">
+                    <input type="file" id="file" style="display: none" placeholder="Add Image" (change)="onFileChanged($event)">
+                    <img src='data:image/jpeg;base64,{{base64textString}}' class="add-img" alt="add-image-btn">
                 </label>
                 <label class="form-control container imagePl" *ngIf="!Imgpreview">
-                  <input type="file" id="file" style="display:none"  (change)="onFileChanged($event)">
-                    <img src="../../../../assets/img/add-image-icon.png" style="width:100px;height: 100px;margin-top: -14px;" class="add-img" alt="add-image=btn"> 
-            
+                    <input type="file" id="file" style="display: none" (change)="onFileChanged($event)">
+                    <img src="../../../../assets/img/add-image-icon.png" style="width: 100px; height: 100px; margin-top: -14px;" class="add-img" alt="add-image-btn">
                 </label>
-                <p class="imagesheading" *ngIf="image">Add Image</p>    
-                
-              </div>
+                <p class="imagesheading" *ngIf="image">Add Image</p>
+            </div>
               <div class="col-md-4">
                 <div class="materialci">
-                  <label> Material Custom Identifiers <span>*</span></label>
+                  <label> Material Custom Identifiers  <span>*</span></label>
                 </div>
                 <div class="customidentifier hide" (click)=popup()>
                   <!-- <ng-multiselect-dropdown class="Materialcustomidentifier" name="Materialcustomidentifier"
@@ -181,8 +181,10 @@
                       <mat-chip-list selectable multiple class="mchip">
                         <!-- [(ngModel)]="selctedIdentifier" -->
                         <mat-chip [value]="data" #identifierId="matChip" *ngFor="let data of selectId"
-                          [selected]="isSelectedMaterialIdentifier(data)" (focus)="selectMaterialIdentifier(data)"
-                          class="cold">
+                          [selected]="isSelectedMaterialIdentifier(data)" (click)="selectMaterialIdentifier(data)"
+                                    class="cold">
+                                    
+                                   
                           <!-- <mat-icon *ngIf="identifierId.selected">check</mat-icon> -->
                           {{data.materialCustomName}}
                         </mat-chip>
@@ -192,7 +194,7 @@
                 </div>
 
                 <div class="expiryperiod">
-                  <label> Expiry Period (in months)</label>
+                  <label>Shelf life</label>
                 </div>
                 <input type="text" id="matExpiry" name="matExpiry" (keyup)="onKeyExpry($event)"
                   class="form-control container na-placeholder" required placeholder="NA" [(ngModel)]="expiryDate"
@@ -209,11 +211,10 @@
                 <!-- <div *ngIf="matExpiry.errors?.['pattern']">
                     <span class="patternValidation">Only Numbers allowed </span>
                   </div> -->
-
+                  
 
               </div>
             </div>
-
 
 
 
@@ -222,12 +223,17 @@
               <div class="row">
                 <div class="col-1"></div>
                 <div class="col-6" *ngIf="!updateOrSave">
-                  <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="checked"
-                    (click)="addMaterialIfNotProduct()">Save</button>
+             <span *ngIf="visible">
+              <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="checked"
+              (click)="addMaterialIfNotProduct()">Save</button>
+             </span>  
                 </div>
                 <div class="col-6" *ngIf="updateOrSave">
-                  <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="checked"
+                  <span *ngIf="visible">
+                    <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="checked"
                     (click)="addMaterialIfNotProductAfterEdit()">update</button>
+                  </span>
+                 
                 </div>
                 <div class="col-3">
                 </div>
@@ -253,7 +259,7 @@
               <div class="col-md-6">
                 <div class="mat-slide">
                   <mat-slide-toggle [labelPosition]="labelPosition" [disabled]="disabled" (change)="change($event)"
-                    [checked]="!checked">&nbsp;&nbsp;&nbsp;&nbsp; Is a product?</mat-slide-toggle>
+                    [checked]="!checked" >&nbsp;&nbsp;&nbsp;&nbsp; Is a product?</mat-slide-toggle>
                 </div>
               </div>
               <div class="col-md-6">
@@ -319,7 +325,7 @@
                 </div>
                 <div class="productdrp productg-align arrowHide">
 
-                  <ng-select [items]="productList" id="productGr" name="productGr" required [virtualScroll]="true"
+                  <ng-select class="searchbtn_Icon" [items]="productList" id="productGr" name="productGr" required [virtualScroll]="true"
                     bindLabel="productGroupName" bindValue="productGroupId" [searchable]="true" [clearable]="false"
                     placeholder="Search & select group" [(ngModel)]="productGroupData"
                     (change)="onProductSelect($event)" #productGr="ngModel">
@@ -330,7 +336,7 @@
                       *Product Group is required.
                     </span>
                   </p>
-                  <img src="assets/img/plus.png" style="width: 22px;position: absolute;right: 20px;bottom: 5px;"
+                  <img src="assets/img/plus.png" style="width: 22px;position: absolute;right: 20px;bottom: 5px; cursor: pointer;"
                     alt="plus-btn" (click)="addproduct()">
 
                 </div>
@@ -355,7 +361,7 @@
                   <label>Product Sub-group<span>*</span></label>
                 </div>
                 <div class="productsdrp productg-align arrowHide">
-                  <ng-select [items]="subProduct" id="proSub" name="proSub" required [virtualScroll]="true"
+                  <ng-select class="searchbtn_Icon" [items]="subProduct" id="proSub" name="proSub" required [virtualScroll]="true"
                     bindLabel="productGroupName" bindValue="productGroupId" [searchable]="true" [clearable]="false"
                     placeholder="Search & select sub-group" [(ngModel)]="subproductGroupData"
                     (change)="onSubProductSelect($event)" #proSub="ngModel">
@@ -370,7 +376,7 @@
                 </div>
                 <div class="image">
                   <img src="assets/img/plus.png" class="imagePlus"
-                    style="width: 22px;position: absolute;right: 20px;bottom: 5px;" alt="plus-btn"
+                    style="width: 22px;position: absolute;right: 20px;bottom: 5px; cursor: pointer;" alt="plus-btn"
                     (click)="addproductsubgroup()">
                 </div>
 
@@ -422,7 +428,7 @@
                               <!-- [(ngModel)]="bussinessIdentifiers" -->
                               <mat-chip #businessdata="matChip" [value]="data"
                                 *ngFor="let data of item.productCustomeIdentifiers; let i = index" [selected]="isSelectedBusiness(data)"
-                                (focus)="selectBusinessProduct(data)" class="cold">
+                                (click)="selectBusinessProduct(data)" class="cold">
                                 <!-- <mat-icon *ngIf="businessdata.selected">check</mat-icon> -->
                                 {{data.productCustomName}}
                               </mat-chip>
@@ -516,7 +522,7 @@
                   <div class="dropdown-file">
                     <div style="margin:8px">
                       <select class="drpOptions" [(ngModel)]="selectedGeoField">
-                        <option value="" disabled selected>Select Feild</option>
+                        <option value="" disabled selected>Select Field</option>
                         <option value="mrp"> MRP</option>
                         <option value="marginPercent"> Margin Percent</option>
                         <option value="maxOrderQty"> Max Order Qty</option>
@@ -540,33 +546,33 @@
                   </div>
                 </div>
                 <table>
-                  <div class="row m-0 mb-2">
+                  <div class="row m-0 mb-2  fontfamily">
                     <div class="col-sm-3">
-                      <label><b>Geography</b></label>
+                      <label ><b class="fontfamily">Geography</b></label>
                     </div>
                     <div class="col-sm-1">
-                      <label><b>MRP(INR)</b></label>
+                      <label><b class="fontfamily" >MRP(INR)</b></label>
                     </div>
                     <div class="col-sm-1">
-                      <label><b>Min Order Qty</b></label>
+                      <label><b class="fontfamily">Min Order Qty</b></label>
                     </div>
                     <div class="col-sm-1">
-                      <label><b>Max Order Qty</b></label>
+                      <label><b class="fontfamily" >Max Order Qty</b></label>
                     </div>
                     <div class="col-sm-1">
-                      <label><b>Margin %</b></label>
+                      <label><b class="fontfamily">Margin %</b></label>
                     </div>
                     <div class="col-sm-1">
                       <label><b>Discount %</b></label>
                     </div>
                     <div class="col-sm-1">
-                      <label><b>Lead time (Days)</b></label>
+                      <label><b class="fontfamily">Lead time (Days)</b></label>
                     </div>
                     <div class="col-sm-1">
-                      <label><b>Registration Number</b></label>
+                      <label><b class="fontfamily">Registration Number</b></label>
                     </div>
                     <div class="col-sm-1">
-                      <label><b style="margin-left: 84px;">Tags</b></label>
+                      <label><b style="margin-left: 84px;" >Tags</b></label>
                     </div>
 
                   </div>
@@ -663,7 +669,7 @@
                     <mat-chip-list selectable multiple class="mchip">
                       <mat-chip [value]="data" #identifierId="matChip" *ngFor="let data of geoGraphyIdentifierList"
                         [selected]="isSelectedGeographyIdentifer(data.geographyIdentiferid)"
-                        (focus)="selectGeographyIdentifier(data.geographyIdentiferid)" class="cold">
+                        (click)="selectGeographyIdentifier(data.geographyIdentiferid)" class="cold">
                         {{data.geographyIdentifierName}}
                       </mat-chip>
                     </mat-chip-list>

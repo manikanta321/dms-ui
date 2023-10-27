@@ -1,9 +1,10 @@
-<div #trigger  data-action="toggle" style="cursor: pointer;">
-    <i class="fa fa-ellipsis-v" data-action="toggle"></i>
-  </div>
-  
-  <div #content *ngIf="isOpen" class="menu-container">
-    <div (click)="editDealer()" class="menu-item tick" userRoleDirective="edit_dealer" pageName="dealerdashboard"> Edit <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
-    <div  (click)="deaActivate()" class="menu-item tick" userRoleDirective="act_dealer" pageName="dealerdashboard">Deactivate <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark" ></div>
-    <div  (click)="reActivate()" class="menu-item tick " userRoleDirective="deact_dealer" pageName="dealerdashboard">Reactivate <img src="../../../assets/userImages/done-tick.svg"  alt="" class="tickmark"></div>
-  </div>
+
+<div #trigger data-action="toggle" style="cursor: pointer;">
+  <i class="fa fa-ellipsis-v" data-action="toggle"></i>
+</div>
+
+<div #content *ngIf="isOpen" class="menu-container">
+  <div (click)="editDealer()" class="menu-item tick" userRoleDirective="edit_dealer" pageName="dealerdashboard"> Edit <img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
+  <div *ngIf="DeactiveDealer" (click)="deaActivate()" class="menu-item tick" userRoleDirective="act_dealer" pageName="dealerdashboard">Deactivate <img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
+  <div *ngIf="!DeactiveDealer" (click)="reActivate()" class="menu-item tick" userRoleDirective="deact_dealer" pageName="dealerdashboard">Reactivate <img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
+</div>

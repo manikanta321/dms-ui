@@ -10,7 +10,6 @@ position: relative;
 height: 620px;
 left: 0px;
 top: 0px;
-background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
 overflow-x: hidden;
 border-radius: 25px;
 }
@@ -20,7 +19,6 @@ border-radius: 25px;
   height: 620px;
   left: 0px;
   top: 0px;
-  background: linear-gradient(90deg, #CED4DA 0%, #F8F9FA 100%);
   overflow-x: hidden;
   border-radius: 25px;
   }
@@ -168,7 +166,7 @@ align-items: center;
     position: relative;
     height: 40px;
     top: -31px;
-    font-family: 'Gilroy';
+    font-family: 'Gilroy-Medium';
     font-size: 20px;
     line-height: 40px;
     text-align: center;
@@ -199,7 +197,7 @@ width: 376px;
 height: 38px;
 top: -63px;
 /* left: 47px; */
-font-family: 'Gilroy';
+font-family: 'Gilroy-Light';
 font-size: 20px;
 line-height: 23px;
 display: flex;
@@ -208,7 +206,7 @@ color: #000000;
   }
 
 .step1-txt {
-    font-family: 'Gilroy';
+    font-family: 'Gilroy-SemiBold';
     font-size: 18px;
     line-height: 21px;
     display: flex;
@@ -219,7 +217,7 @@ color: #000000;
     position: relative;
 }
 .up-doc{
-    font-family: 'Gilroy';
+    font-family: 'Gilroy-Light';
     font-size: 18px;
     line-height: 21px;
     display: flex;
@@ -400,7 +398,7 @@ tr {
     width: 280px;
     height: 43px;
     text-align: center;
-    background: #000000;
+    background: #018B75;
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 10px;
     cursor: pointer;
@@ -410,7 +408,7 @@ tr {
     height: 43px;
     position: relative;
     left: 43px;
-    background: #FFFFFF;
+    background: #018B75;
     border: 2px solid #000000;
     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
     border-radius: 10px;
@@ -419,7 +417,7 @@ tr {
 }
 .save-text {
     color: white;
-    background: #000000;
+    background: #018B75;
     position: relative;
     top: 11px;
     font-family: 'Gilroy-SemiBold';
@@ -431,8 +429,8 @@ tr {
     border: none;
 }
 .discard-text {
-    color: black;
-    background:#FFFFFF;
+    color: white;
+    background:#018B75;
     position: relative;
     top: 11px;
     font-family: 'Gilroy-SemiBold';
@@ -476,4 +474,17 @@ tr {
 .errorText{
   color :red;
   }
-  
+  .uploadedText{
+    font-size: 14px;
+   position: relative;
+   top: 82px;
+  left:61px;
+   color: black;
+   /* font-weight: 500; */
+   }
+.uploadedTexttt{
+   position: relative;
+   top: 69px;
+   left: 95px;
+   font-size: 14px;
+}

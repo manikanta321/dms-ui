@@ -1,20 +1,41 @@
 
  
 ::ng-deep mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-bar {
-  background-color:white !important;
+  /* background-color:white !important; */
+  background: rgba(1, 139, 117, 1)!important;
  
 }
 
 ::ng-deep mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-thumb {
-  background-color: #000a00e2 !important;
+  /* background-color: #000a00e2 !important; */
+  background: white!important;
+
  
   
+}
+.maiUdiv
+{
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.99), rgba(255, 255, 255, 0.99));
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.11);
+border-radius: 26px;
+}
+.img-fluid
+{
+  
+  
+    margin-right: 25%;
+    margin-left: 21%;
+    margin-top: 0%;
+    height: -26%;
+    height: 233px;
+    max-width: 654px;
 }
 
 
 
   ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
-  background-color: #000a00e2 !important;
+  background: rgba(1, 139, 117, 1)!important;
+
   
 }
 ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
@@ -30,16 +51,33 @@
 }
 
 .form-label {
-  margin-left: 8px;
+  /* margin-left: 8px; */
+  margin-left: 2%;
 }
 
-.bg-img {
-  background-image: url("/assets/img/login-background-img.png");
+.bg-img { 
+  background:linear-gradient(
+to right,
+#06997E 0%,
+#06997E 50%,
+white 50%,
+white 100%
+  );
+  
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logoimagess
+{
+  margin-top: -34%;
+    margin-left: 141%;
+    display: flex;
 }
 
 .highlitepopup {
@@ -77,20 +115,17 @@ section {
 }
 
 .loginform-page {
-  background: 6C757D;
-  height: 424px;
-  width: 439px;
+  background-color:linear-gradient(0deg, rgba(255, 255, 255, 0.99), rgba(255, 255, 255, 0.99)) !important;
+  /* height: 444px; */
+  height: 482px;
+  /* width: 460px; */
+  width: 476px;
   box-shadow: 2px;
   margin: auto;
-  border-right: 3px solid #000000;
-  border-left: 3px solid whitesmoke;
-  border-top: 3px solid gray;
-  border-bottom: 3px solid gray;
+  border: 0.35px solid rgba(1, 139, 117, 1);
   box-shadow: 6px 6px 8px rgba(47, 46, 46, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-  border-radius: 40px;
-  position: relative;
-  top: 125px;
-  left: 104px;
+  border-radius: 26px;
+ 
 }
 
 input {
@@ -99,7 +134,8 @@ input {
 
 
 form {
-  margin-left: 34px;
+  /* margin-left: 34px; */
+  margin-left: 52px;
 }
 
 .welcome {
@@ -118,10 +154,19 @@ form {
 }
 
 .sign-head {
-  color: black;
-  font-size: 31px;
-  font-weight: 700;
-  padding: 11px 0;
+  
+   margin-left: 32%; 
+  padding: 18px 0;
+  margin-top: 4%;
+  font-family: 'Calibri';
+font-size: 39px;
+font-weight: 700;
+line-height: 48px;
+letter-spacing: 0em;
+color: rgba(1, 139, 117, 1);
+
+
+
 }
 
 .wrong{
@@ -135,6 +180,7 @@ form {
   width: 368px;
   text-align: center;
   height: 43px;
+  top:21px;
 
 
 
@@ -169,17 +215,26 @@ form {
   font-size: 17px;
   font-family: 'Gilroy-Medium';
 }
-.login-head
+/* .login-head
 {
   margin-top: -14px;
-}
+} */
 
 .login-btn {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
-  background: black;
+  background: rgba(1, 139, 117, 1);
   box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.12), 0px 2px 4px -1px rgba(0, 0, 0, 0.07);
   border-radius: 8px;
+  font-family: 'Calibri';
+font-size: 17px;
+font-weight: 700;
+line-height: 24px;
+letter-spacing: 0em;
+
+
+
+  
 }
 
 .forgot-ps a {
@@ -197,26 +252,50 @@ form {
 }
 
 .forgot-ps {
-  color: black;
-  text-decoration: underline;
-  margin-right: 38px;
+  color: rgba(254, 103, 37, 1);
+  font-family: 'Calibri';
+font-size: 19px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0em;
+  /* margin-right: 38px; */
+  margin-right: 66px;
+}
+.REME
+{
+ font-family: 'Calibri';
+font-size: 17px;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0em;
+color: rgba(0, 0, 0, 1);
+
+
 }
 
 .form-outline input {
-  width: 361px;
-  border: 1.6px solid 6C757D;
-  border-radius: 4px;
+  width: 370px;
+  height: 41px;
+  border: 1px solid rgba(1, 139, 117, 1);
+  border-radius: 6px;
   padding: 5px;
 }
 
 .form-outline label {
-  font-size: 14px;
-  color: #252F40;
-  font-weight: 600;
+  
+color: rgba(0, 0, 0, 1)!important;
+  font-family: 'Calibri';
+font-size: 20px;
+line-height: 31px;
+letter-spacing: 0em;
+font-size: 23px;
+
+
 }
 
 mat-icon {
-  color: grey;
+  color: rgba(1, 139, 117, 1);
+
   position: relative;
   right: 30px;
   top: 8px;

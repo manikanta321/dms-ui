@@ -309,14 +309,13 @@ export class AddorderpromotionsComponent implements OnInit {
 
   firstFormGroup: FormGroup = this._formBuilder.group({ firstCtrl: [''] });
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
-
+  promocalculation:any=[]
   ngOnInit(): void {
     localStorage.setItem('AddorEditpro', '');
     localStorage.setItem('AddorEditpro1', '');
     this.userType = localStorage.getItem('userType');
     let loginid = localStorage.getItem('logInId');
     this.loginid = localStorage.getItem('logInId');
-
     if (this.userType == 'Dealer Admin') {
       this.orders.dealersDetails(loginid).subscribe((res) => {
         console.log(res.response);
@@ -575,30 +574,47 @@ export class AddorderpromotionsComponent implements OnInit {
           ),
           ...res,
         ];
-        console.log(this.AddOrderPromotionData, 'Checking console 1');
         this.clickedPromotion = null;
-        this.arrayOfImages.forEach((x) => {
-          x.isSelected =
-            this.AddOrderPromotionData.findIndex(
-              (y) => y.promotionId == x.productPromotionsId
-            ) !== -1;
-        });
+        console.log(this.AddOrderPromotionData,'AddOrderPromotionData');
+        const allExtractedData: any = [];
+        let overallQty = 0;
+        let overallAmount = 0;
 
-        this.AddOrderPromotionData.forEach((element: any) => {
-          return (element.isOpen = true);
-          let obj: any = {
-            isOpen: false,
+        this.arrayOfImages.forEach((x) => {x.isSelected =this.AddOrderPromotionData.findIndex((y) => y.promotionId === x.productPromotionsId) !== -1;});
+        function extractInformation(item) {
+          const itemDetails = item.itemDetails.filter((subItem) => subItem.isBuyProduct);
+          const totalQuantity = itemDetails.reduce((total, subItem) => total + subItem.quantity,0);
+          const totalPrice = itemDetails.reduce((total, subItem) => total + subItem.price,0);
+          const totalFinalPrice = itemDetails.reduce((total, subItem) => total + subItem.finalPrice,0);
+          overallQty += totalQuantity;
+          overallAmount += totalFinalPrice;
+          const extractedItem = {
+            promotionId: item.promotionId,
+            previousValues: {
+              quantity: totalQuantity,
+              price: totalPrice,
+              finalPrice: totalFinalPrice,
+            },
           };
-          element.push(obj);
+          allExtractedData.push(extractedItem);
+        }
+        this.AddOrderPromotionData.forEach(extractInformation);
+        const overallData = {
+          overallQty: overallQty,
+          overallAmount: overallAmount,
+          extractedData: allExtractedData,
+        };
+        localStorage.setItem('calculation', JSON.stringify(overallData));
+        console.log(overallData);
+        this.AddOrderPromotionData.forEach((element) => {
+          element.isOpen = true;
+          // element.push({ isOpen: false }); // Corrected this part
         });
-
-        console.log(this.AddOrderPromotionData, 'Checking console 2');
-
         this.getShippingandPackingcharges();
-        // this.productType = localStorage.getItem('PromotionType')
         this.promotionName = localStorage.getItem('PromotionName');
         this.promotionTypesName = localStorage.getItem('PromotionTypeName');
       }
+        
     });
     // localStorage.setItem('buygroupromo', '')
   }
@@ -682,6 +698,9 @@ export class AddorderpromotionsComponent implements OnInit {
   ThreePromotionTotalselectedQTY: number | any = 0;
   ThreePromotionTotalAmount: number | any = 0;
   addOrderNonPromotionList() {
+
+    this.promocalculation = JSON.parse(localStorage.getItem('calculation')|| 'null')
+    console.log(this.promocalculation,'calculationpart');
     // 4 Promotion Calculations
     this.ForthPromotionsSelectedQuantity = localStorage.getItem(
       'ForthPromotionSelectedQTy'
@@ -743,6 +762,21 @@ export class AddorderpromotionsComponent implements OnInit {
     this.addEditOrderPromotionList();
   }
   removePromotionItem(clickedItem, promotionId) {
+    console.log(promotionId);
+    alert(promotionId);
+    let calculationRemove = JSON.parse(localStorage.getItem('calculation') || '[]'); 
+    console.log(calculationRemove, 'calculation');
+
+    const indexToRemove = calculationRemove.extractedData.findIndex((x) => x.promotionId === promotionId);
+    if (indexToRemove !== -1) {
+    const removedItem = calculationRemove.extractedData[indexToRemove];
+    calculationRemove.extractedData.splice(indexToRemove, 1);
+    // Subtract the removed item's values from overallQty and overallAmount
+    calculationRemove.overallQty -= removedItem.previousValues.quantity;
+    calculationRemove.overallAmount -= removedItem.previousValues.finalPrice;
+    localStorage.setItem("calculation", JSON.stringify(calculationRemove));
+    }
+    console.log(calculationRemove,'afterremove data');
     // this.productType = localStorage.removeItem('PromotionType');
     this.promotionName = localStorage.getItem('PromotionName');
     this.promotionTypesName = localStorage.getItem('PromotionTypeName');
@@ -1939,7 +1973,7 @@ export class AddorderpromotionsComponent implements OnInit {
       this.orders.addorderNonPromotionsdata(data).subscribe({
         next: (res: any) => {
           if (res) {
-            console.log(data, 'addnonpromotions');
+            // console.log(data, 'addnonpromotions');
             this.nonpromotionlist = res.response;
 
             this.AddorderNonpromotiondata = {
@@ -1968,7 +2002,6 @@ export class AddorderpromotionsComponent implements OnInit {
                 materialcustomidentifier: item.materialcustomidentifier,
                 materialCustomName: item.materialCustomName,
               };
-              this.AddorderNonpromotiondata.itemDetails.push(obj);
             });
             this.Non_promotions = false;
             this.getShippingandPackingcharges();
@@ -2327,26 +2360,42 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   removePromotion(e, promotionItem) {
+    console.log(promotionItem);
+    alert(promotionItem.productPromotionsId);
+    let calculationRemove = JSON.parse(localStorage.getItem('calculation') || '[]'); 
+    console.log(calculationRemove, 'calculation');
+
+    const indexToRemove = calculationRemove.extractedData.findIndex((x) => x.promotionId === promotionItem.productPromotionsId);
+    if (indexToRemove !== -1) {
+    const removedItem = calculationRemove.extractedData[indexToRemove];
+    calculationRemove.extractedData.splice(indexToRemove, 1);
+    // Subtract the removed item's values from overallQty and overallAmount
+    calculationRemove.overallQty -= removedItem.previousValues.quantity;
+    calculationRemove.overallAmount -= removedItem.previousValues.finalPrice;
+    localStorage.setItem("calculation", JSON.stringify(calculationRemove));
+    }
+    console.log(calculationRemove,'afterremove data');
+
     // this.productType = localStorage.removeItem('PromotionType');
     this.promotionName = localStorage.getItem('PromotionName');
     this.promotionTypesName = localStorage.getItem('PromotionTypeName');
+
     e.stopPropagation();
     promotionItem.isSelected = false;
     this.AddOrderPromotionData = this.AddOrderPromotionData.filter(
-      (x) => x.promotionId !== promotionItem.productPromotionsId
+    (x) => x.promotionId !== promotionItem.productPromotionsId
     );
     this.getShippingandPackingcharges();
-    localStorage.removeItem('totalQuantity');
-    localStorage.removeItem('totalAmount');
-
+    // localStorage.removeItem('totalQuantity');
+    // localStorage.removeItem('totalAmount');
     // 4 Promotion calculations
     localStorage.removeItem('ForthPromotionTotalAmount');
     localStorage.removeItem('ForthPromotionSelectedQTy');
-
     // 3 Promotion calculations
     localStorage.removeItem('ThreePrommotionTotalselectedQuantity');
     localStorage.removeItem('ThreePromotionTotalAmount');
-  }
+    }
+    
 
   showPromotionInfo(e, promotionItem) {
     e.stopPropagation();

@@ -88,8 +88,11 @@ export class AddOrderPromotionlistComponent implements OnInit {
    StoredForhtPromoTotalAmount:number=0;
    StoreThreePromotionsselectedqty:number=0;
    StoredThreePromoTotalAmount:number=0;
-  
+   promocalculation:any=[]
+
   ngOnInit(): void { 
+
+   
     // 1 Promotions Selected Quantity
     const storedValuenumber = localStorage.getItem('FirstPromotionCalculation');
     if (storedValuenumber !== null) {
@@ -101,6 +104,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
     if (totalAmountnumber !== null) {
       this.storedTotalAmount = parseInt(totalAmountnumber);
     }
+
+    this.promocalculation = JSON.parse(localStorage.getItem('calculation')|| 'null')
+    console.log(this.promocalculation);
     
     // 4th Promotion Quantity
     const StoredValueNumber = localStorage.getItem('ForthPromotionCalculationsTotalQty');

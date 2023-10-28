@@ -2002,7 +2002,9 @@ export class AddorderpromotionsComponent implements OnInit {
                 materialcustomidentifier: item.materialcustomidentifier,
                 materialCustomName: item.materialCustomName,
               };
+              this.AddorderNonpromotiondata.itemDetails.push(obj);
             });
+
             this.Non_promotions = false;
             this.getShippingandPackingcharges();
             this.DisplayNonpromotion = true;

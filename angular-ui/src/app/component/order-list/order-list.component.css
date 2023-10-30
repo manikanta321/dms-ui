@@ -5,7 +5,7 @@
      border-top-right-radius: 1px;
     border-bottom-right-radius: 2px;
     border-top-left-radius: 1px;
-    border-bottom-left-radius: 2px;
+    border-bottom-left-radius: 1px;
 }
 ::ng-deep.ag-theme-material {
     overflow-y: hidden !important;

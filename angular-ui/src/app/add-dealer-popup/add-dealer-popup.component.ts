@@ -601,13 +601,26 @@ this.addresscount().push(this.initAddress2(defaultType));
 
  console.log('this.addAddressDetailsForm.value.addresscount[1]',this.addAddressDetailsForm.value.addresscount[1])
 
-} else{
+} 
+else if(this.completed){
   this.completed=false;
-
+  let i: number = 0;
+  this.addAddressDetailsForm.value.addresscount[1] = [];
+  this.addresscount().removeAt(1);
+  let defaultType={ 
+    AddressTypeId: '',
+    ConsigneeName:'',
+    Taxid:'',
+    AddressLine1: '',
+    AddressLine2: '',
+    CountryName:'',
+    StateName:'',
+    CityName: '',
+    ZipCode:'',
+    Telephone: '',
+  }
+  this.addresscount().push(this.initAddress2(defaultType));
 }}
-
-
-
 initAddress2(defaultType): FormGroup {
   defaultType = defaultType ?? '';
   console.log(defaultType);

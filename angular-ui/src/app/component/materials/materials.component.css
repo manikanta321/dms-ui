@@ -23,6 +23,15 @@
     text-transform: uppercase;
     font-feature-settings: 'pnum' on, 'lnum' on; 
 } */
+::ng-deep .mat-tab-group[mat-stretch-tabs]>.mat-tab-header .mat-tab-label {
+    flex-basis: 0;
+    flex-grow: 1;
+     border: 1px solid rgba(107, 107, 107, 1);
+     border-top-right-radius: 1px;
+    border-bottom-right-radius: 2px;
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 1px;
+} 
 .materialss {
     position: relative;
     bottom: 20px;
@@ -173,6 +182,7 @@ mat-tab-group{
     background: white;
     left: 21%;
     font-size: 15px;
+    border: 1px solid rgba(107, 107, 107, 1);
 
 }::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     display: none !important;

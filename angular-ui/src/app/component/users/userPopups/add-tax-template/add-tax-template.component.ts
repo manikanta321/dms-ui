@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
  import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
-import { FormGroup, FormArray, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
+import { FormGroup, FormArray, FormControl, Validators, FormBuilder, AbstractControl, ValidatorFn } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
 import { TaxTemplateServiceService } from 'src/app/services/tax-template-service.service';
 import { SharedService } from 'src/app/services/shared-services.service';
@@ -16,6 +16,8 @@ import { OtherMasterService } from 'src/app/services/other-master.service';
   styleUrls: ['./add-tax-template.component.css']
 })
 export class AddTaxTemplateComponent implements OnInit {
+ e;
+ 
   panelOpenState = true;
   taxItem:any;
   option:any;
@@ -36,9 +38,20 @@ export class AddTaxTemplateComponent implements OnInit {
     private taxservise:TaxTemplateServiceService,
     private otherMasterService:OtherMasterService,
     ) { 
+      this.productForm = this.fb.group({
+        DoneBy: this.LoginId,
+        TaxTemplateName: '',
+        TaxDetails: this.fb.array([]),
+        TaxCodeName: '',
+        PercentageValue: '',
+        Formula: '',
+        DisplayOrder: this.letter, 
+      });
       }
 
   ngOnInit(): void {
+   
+    this.resetSpecialCharacter();
     this.LoginId=localStorage.getItem("logInId");
     this.productForm = this.fb.group({  
       DoneBy:this.LoginId,
@@ -68,7 +81,17 @@ setUpForm(cars: any[] ) {
     return (this.carsForm.get('FormArray') as FormArray);
   }
 
-
+   noSpecialCharsValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const value = control.value;
+      const regex = /^[A-Z]/; 
+      if (!regex.test(value)) {
+        return { specialChars: true }; 
+      }
+      return null; 
+    };
+  }
+  
  
 
   createCar(addformarray: any) {
@@ -76,7 +99,7 @@ setUpForm(cars: any[] ) {
       details: new FormGroup({
         taxItem: new FormControl(addformarray.taxItem, Validators.required),
         option: new FormControl(addformarray.option, Validators.required),
-        Formula: new FormControl(addformarray.Formula, Validators.required)
+        Formula: new FormControl(addformarray.Formula, Validators.required), 
       }),
     })
   }
@@ -98,32 +121,83 @@ setUpForm(cars: any[] ) {
     //   item= String.fromCharCode(item.charCodeAt(0) + 1);
     //   this.letter=item
     // }
+      return this.fb.group({
+        TaxCodeName: '',
+        PercentageValue: '',
+        Formula: '',
+        DisplayOrder: this.letter
+      });
+    
+    
+  }  
+  resetSpecialCharacter() {
+     this.letter = this.letter.replace(/[^A-Z]+/gi, '');
+  }
+  alphabetsOnlyValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const value = control.value;
+      const regex = /^[A-Z]+$/;
+  
+      if (!regex.test(value)) {
+        return { alphabetsOnly: true };
+      }
+  
+      return null;
+    };
+  }
+
+  
+  showKeyboardArrowDownIcon:boolean=false;
+  show:boolean=false;
+  Hideddd:boolean=false;
+ Arrowmark()
+ {
+  this.showKeyboardArrowDownIcon=true;
+  this.show=true;
+ 
+ }
+ 
+  
+
+  
+  
+  // addQuantity(data:any) {  
    
+  //  this.TaxDetails().push(this.newQuantity(data)); 
 
-    return this.fb.group({  
-      TaxCodeName: '',  
-      PercentageValue: '',  
-      Formula:'',
-      DisplayOrder:this.letter,
-    })  
-  }  
-     
-  addQuantity(data:any) {  
-   this.TaxDetails().push(this.newQuantity(data));  
-   this.letter = String.fromCharCode(this.letter.charCodeAt(0) + 1);
+  //   this.letter = String.fromCharCode(this.letter.charCodeAt(0) + 1);
+   
+  //  if (this.letter === 'Z') {
+  //    this.letter = 'A'
+  // }
+  
+  // } 
+  
+  addQuantity(data:any) {
+   
+      this.TaxDetails().push(this.newQuantity(data));
+   
+      this.letter = String.fromCharCode(this.letter.charCodeAt(0) + 1);
+      this.letter = this.letter.replace(/[^A-Z]+/gi, '');
+      if (this.letter === 'Z') {
+        this.letter = 'A';
+      }
+      this.resetSpecialCharacter(); 
+  }
 
-   if (this.letter === 'Z') {
-     this.letter = 'A';
-   }
-  } 
-
-
-  removeQuantity(i:number) {  
-    if(i>0){
-      this.TaxDetails().removeAt(i);  
+  removeQuantity(i: number) {
+    this.showKeyboardArrowDownIcon=false;
+    this.show=false;
+    if (i > 0) {
+      this.TaxDetails().removeAt(i);
     }
-    this.letter = String.fromCharCode(this.letter.charCodeAt(0) - 1)
-  }  
+    this.letter = this.letter.replace(/[^A-Z]+/gi, '');
+    this.letter = String.fromCharCode(this.letter.charCodeAt(0) - 1);
+    if (this.letter < 'Z') {
+      this.letter = 'B';
+    }  
+    this.resetSpecialCharacter();
+  }
      
   onSubmit() { 
  
@@ -133,7 +207,7 @@ setUpForm(cars: any[] ) {
     console.log('checkarray',this.productForm.value)
     this.taxservise.addtax(this.productForm.value).subscribe((res)=>{
 console.log(res)
-// this.sharedService.filter('Register click')
+
 localStorage.setItem('AddOrEditTax','add');
 
 this.dialog.open(AddtaxTemplateSuccessfulPopupComponent , {panelClass: 'activeSuccessPop'});

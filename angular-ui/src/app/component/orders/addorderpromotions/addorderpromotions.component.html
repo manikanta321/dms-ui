@@ -1252,9 +1252,9 @@
                                                      (change)="quantityChange(Item)  "
                                                      ></td> -->
                                     <td>
-                                        <input type="number" placeholder="Enter " class="quatity-inp"
+                                        <input type="number" placeholder="Enter " class="quatity-inp" min="0"
                                             [(ngModel)]="Item.quantity" (ngModelChange)="quantityChange(Item)"
-                                            name="Item.quantity">
+                                            name="Item.quantity" oninput="validity.valid||(value='')">
                                     </td>
                                     <td>{{(Item.quantity ?? 0) * Item.price }}</td>
                                 </tr>

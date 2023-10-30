@@ -2362,8 +2362,9 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   removePromotion(e, promotionItem) {
+    alert(promotionItem.isSelected )
     console.log(promotionItem);
-    alert(promotionItem.productPromotionsId);
+    // alert(promotionItem.productPromotionsId);
     let calculationRemove = JSON.parse(localStorage.getItem('calculation') || '[]'); 
     console.log(calculationRemove, 'calculation');
 

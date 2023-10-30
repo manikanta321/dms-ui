@@ -58,7 +58,7 @@ export class AddTaxTemplateComponent implements OnInit {
       TaxTemplateName:'',  
       TaxDetails: this.fb.array([]) ,  
     }); 
-    this.addQuantity(1)
+     this.addQuantity(1)
   }
   modelChanged(newObj) {
   alert(newObj)
@@ -145,22 +145,6 @@ setUpForm(cars: any[] ) {
       return null;
     };
   }
-
-  
-  showKeyboardArrowDownIcon:boolean=false;
-  show:boolean=false;
-  Hideddd:boolean=false;
- Arrowmark()
- {
-  this.showKeyboardArrowDownIcon=true;
-  this.show=true;
- 
- }
- 
-  
-
-  
-  
   // addQuantity(data:any) {  
    
   //  this.TaxDetails().push(this.newQuantity(data)); 
@@ -172,9 +156,7 @@ setUpForm(cars: any[] ) {
   // }
   
   // } 
-  
   addQuantity(data:any) {
-   
       this.TaxDetails().push(this.newQuantity(data));
    
       this.letter = String.fromCharCode(this.letter.charCodeAt(0) + 1);
@@ -183,11 +165,10 @@ setUpForm(cars: any[] ) {
         this.letter = 'A';
       }
       this.resetSpecialCharacter(); 
+     
   }
 
   removeQuantity(i: number) {
-    this.showKeyboardArrowDownIcon=false;
-    this.show=false;
     if (i > 0) {
       this.TaxDetails().removeAt(i);
     }
@@ -220,5 +201,37 @@ this.otherMasterService.filter('Register click');
 
   }  
 
-  
+
+  moveRowUp(index: number) {
+    if (index > 0) {
+        const rows = this.TaxDetails();
+        const temp = rows.at(index);
+        rows.removeAt(index);
+        rows.insert(index - 1, temp);
+    }
+    this.handleArrowVisibility();
+}
+ 
+moveRowDown(index: number) {
+    const rows = this.TaxDetails();
+    if (index < rows.length - 1) {
+        const temp = rows.at(index);
+        rows.removeAt(index);
+        rows.insert(index + 1, temp);
+    }
+    this.handleArrowVisibility();
+}
+ 
+handleArrowVisibility() {
+    const rows = this.TaxDetails();
+    if (rows) {
+        for (let i = 0; i < rows.length; i++) {
+            const currentRow = rows.at(i);
+            if (currentRow) {
+                currentRow.get('showKeyboardArrowDownIcon')?.setValue(i !== 0);
+                currentRow.get('show')?.setValue(i !== rows.length - 1);
+            }
+        }
+    }
+  }
 }

@@ -31,7 +31,7 @@
                         <th class="taxitems">Tax item Name</th>
                         <th class="Optionsin">Options (in %)</th>       
                         <th class="formula">Formula</th>
-                        <td (click)="addQuantity(0)"><mat-icon  style="cursor: pointer;"(click)="Arrowmark()">add_circle</mat-icon>
+                        <td (click)="addQuantity(0)"><mat-icon  style="cursor: pointer;">add_circle</mat-icon>
                          
                         </td>
     
@@ -43,11 +43,11 @@
                         <td><input type="text" placeholder="Enter"  style="width: 190px;height: 43px;border-radius: 10px;border: 0.5px solid #000000;"  formControlName="Formula"  ></td>
                         <td (click)="removeQuantity(i)"><p class="minus-icon">-</p></td>
                         
-                       
+                      
+                         <mat-icon *ngIf="i !== 0" (click)="moveRowUp(i)" class="arrowppp">keyboard_arrow_up</mat-icon>
+                        <mat-icon *ngIf="i !== TaxDetails().length - 1" (click)="moveRowDown(i)" class="arrow">keyboard_arrow_down</mat-icon>
+               
                           
-                          <!-- <mat-icon class="arrow" *ngIf="showKeyboardArrowDownIcon">keyboard_arrow_down</mat-icon> -->
-                          <mat-icon class="arrow"  >keyboard_arrow_down</mat-icon>
-                          <!-- <mat-icon class="arrowppp" *ngIf="show"   >keyboard_arrow_up</mat-icon> -->
                     </tr>
                    
                 </table>
@@ -62,5 +62,6 @@
        
        </div>
        </div>
+      
     </div>
 </div>

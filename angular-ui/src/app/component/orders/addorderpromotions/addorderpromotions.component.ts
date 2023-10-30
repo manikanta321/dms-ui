@@ -2002,7 +2002,9 @@ export class AddorderpromotionsComponent implements OnInit {
                 materialcustomidentifier: item.materialcustomidentifier,
                 materialCustomName: item.materialCustomName,
               };
+              this.AddorderNonpromotiondata.itemDetails.push(obj);
             });
+
             this.Non_promotions = false;
             this.getShippingandPackingcharges();
             this.DisplayNonpromotion = true;
@@ -2360,8 +2362,9 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   removePromotion(e, promotionItem) {
+    alert(promotionItem.isSelected )
     console.log(promotionItem);
-    alert(promotionItem.productPromotionsId);
+    // alert(promotionItem.productPromotionsId);
     let calculationRemove = JSON.parse(localStorage.getItem('calculation') || '[]'); 
     console.log(calculationRemove, 'calculation');
 

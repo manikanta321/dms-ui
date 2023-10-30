@@ -8,16 +8,13 @@ mat-sidenav {
     text-align: center;
 }
 mat-sidenav-content{
-    /* height: calc(100vh - 98px); */
     height: 100vh;
     border-radius: 31px;
     padding: 10px;
     overflow: hidden;
-    /* background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%); */
 }
 mat-sidenav-container {
     height: calc(100vh - 65px);
-    /* height: 100vh; */
     
 }
 mat-tab{
@@ -30,12 +27,19 @@ mat-tab{
     z-index: 2;
 }
 
-/* ::ng-deep.othersmastermenutab .mat-tab-header{ */
-    /* width: 481px !important; */
-    /* left: 28%; */
-/* } */
 
-::ng-deep .other-label .mat-tab-header{
+
+ ::ng-deep .mat-tab-group[mat-stretch-tabs]>.mat-tab-header .mat-tab-label {
+    flex-basis: 0;
+    flex-grow: 1;
+     border: 1px solid rgba(107, 107, 107, 1);
+     border-top-right-radius: 1px;
+    border-bottom-right-radius: 2px;
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 1px;
+} 
+
+::ng-deep .other-labell .mat-tab-header{
     display: flex;
     overflow: hidden;
     position: relative;
@@ -46,7 +50,7 @@ mat-tab{
     background: white;
     left: 35%;
     font-size: 15px;
-    /* font-family: 'Gilroy'; */
+    border: 0.5px solid rgba(0, 0, 0, 0.58);
     
 
 }::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
@@ -89,21 +93,33 @@ mat-tab-group{
     display: none !important;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
-      /* background: black;   */
+    
     color: white;
     border-radius: 25px;
     opacity: 1;
 }
 
- /* .geo-label .mat-tab-labels:nth-child(1) { */
-    /* width: 50% !important; */
-  /* } */
-
-   ::ng-deep .other-label .mat-tab-label{ 
+   ::ng-deep .other-labell .mat-tab-label{ 
       height: 31px !important;  
      min-width: 187px !important; 
-    /* min-width: 152px; */
+     flex-basis: 0;
+    flex-grow: 1;
+    border: 1px solid rgba(107, 107, 107, 1);
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 2px;
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 2px;
    } 
+   .mat-tab-group.mat-tab-header .mat-tab-labell {
+    flex-basis: 0;
+    flex-grow: 1;
+    border: 1px solid rgba(107, 107, 107, 1);
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 2px;
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 2px;
+}
+  
    mat-drawer-content .hideScrollOthermasters{
         overflow: hidden;
    }

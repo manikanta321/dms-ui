@@ -7,16 +7,20 @@
     margin-top: 18px;
     font-family: 'Gilroy-Bold';
 }
-.mat-slide-toggle.mat-checked .mat-slide-toggle-bar
-{
-  color: #009B63;
+
+::ng-deep mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-bar {
+ 
+  background-color: #000000 !important;
+ 
 }
-mat-slide-toggle.mat-checked {
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+   
+ background-color:white !important; 
+    
+}
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background: rgba(1, 139, 117, 1)!important; 
   
-  color: #009B63;
-}
-mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
-  color: #009B63;
 }
 
 
@@ -694,10 +698,11 @@ li {
 }
 
 ::ng-deep.myDatepicker .mat-icon-button {
-  background: transparent;
-  color: black;
+  /* background: transparent;
+  color: black; */
   position: relative;
   right: 8px;
+  border: none !important;
 }
 
 /* .getset-matcard {
@@ -909,13 +914,18 @@ li {
   height: 360px;
   border-radius: 20px;
   background-color: white;
-  font-family: Gilroy;
+  font-family: 'Gilroy';
   width: 100%;
+}
+::ng-deep button:focus {
+  outline: none !important; 
+   outline: none !important; 
 }
 
 ::ng-deep.myDatepicker .mat-icon-button {
-  background: transparent;
-  color: black;
+  /* background: transparent;
+  color: black; */
+  border: none !important;
   position: relative;
   right: 8px;
   /* border: none;

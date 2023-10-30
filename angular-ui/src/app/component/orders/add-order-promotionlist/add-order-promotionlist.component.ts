@@ -59,17 +59,17 @@ export class AddOrderPromotionlistComponent implements OnInit {
   promotionstype4: any = [];
   promotionstype1: any = [];
   promotionstype2: any = [];
-  materialcustomidentifier:any;
+  materialcustomidentifier:any=[];
   currentSelectedPromos: any = [];
   isOrderPromotionValid: boolean = false;
   
   stockItem:any;
   promos:any
    totalSelectedQuantity: number=0;
-  
-
-
-
+   foc:number=0
+  orderAmount: number=0;
+  focvalue: any;
+  Foc_calculation:number=0
   constructor(private user: UserService,
     private orders: OrdersApisService,
     private spinner: NgxSpinnerService,
@@ -92,7 +92,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
   ngOnInit(): void { 
 
-   
+    
     // 1 Promotions Selected Quantity
     const storedValuenumber = localStorage.getItem('FirstPromotionCalculation');
     if (storedValuenumber !== null) {
@@ -136,12 +136,11 @@ export class AddOrderPromotionlistComponent implements OnInit {
  
   
     this.MOQ=localStorage.getItem('MOQ');
-        this.imageUrl = localStorage.getItem('clickedImageURL');
-        console.log("THis.Image",this.imageUrl)
-        this.imageUrl = JSON.parse(this.imageUrl)
+      this.imageUrl = localStorage.getItem('clickedImageURL');
+      console.log("THis.Image",this.imageUrl)
+      this.imageUrl = JSON.parse(this.imageUrl)
     console.log(this.imageUrl,"IMAGE")
     this.taxdropdown();
-
     let editV = localStorage.getItem('Edit');
 
     if (editV == 'Edit') {
@@ -160,6 +159,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
     console.log(this.geographyId, "this.geographyId")
     this.dealerid = localStorage.getItem("dealerid");
     console.log(this.dealerid, "this.this.dealerid")
+    console.log(this.data);
     this.currentSelectedPromos = this.data.selectedData ?? [];
     this.imagesid = this.data.imagesid;
     // this.arrayOfImages.forEach(x => {
@@ -292,7 +292,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
       //   item.isProductSelected = false;
       //   return item;
       // });
-      
+      this.focvalue= res.response
       this.Remarks = res.response?.remarks;
       this.PromotionID=res.response.promotionTypesId
       console.log("ResponseData",res.response)
@@ -502,7 +502,37 @@ export class AddOrderPromotionlistComponent implements OnInit {
   } 
   
   quantityChange(data, updatedItem) {
-    
+    // console.log('updatedItem',updatedItem);
+    // alert("Heeee");
+    let val = data.promoDetails.buyGroups.map(item => item.stockitemid)
+    console.log('data.promoDetails.buyGroups', data.promoDetails);
+    const cal = JSON.parse(localStorage.getItem('calculation')||'null')
+    console.log(cal);
+
+    const allExtractedData:any = [];
+
+    for (const data of val) {
+      const extractedItem = {
+        promotionId: data[0].promotionId,
+        previousValues: {
+          quantity: data.reduce((total, subItem) => subItem.Quantity ? total + subItem.Quantity : total, 0),
+          price: data.reduce((total, subItem) => subItem.price ? total + subItem.price*subItem.Quantity : total, 0),
+          finalPrice: data.reduce((total, subItem) => subItem.price ? total + subItem.price : total, 0),
+        }
+      };
+
+      allExtractedData.push(extractedItem);
+    }
+    const overallData = {
+      overallQty:allExtractedData[0].previousValues.quantity,
+      overallAmount: allExtractedData[0].previousValues.price,
+      extractedData: cal?.extractedData,
+    };
+    localStorage.setItem('calculation', JSON.stringify(overallData));
+    console.log(overallData);
+
+    console.log('allExtractedData', allExtractedData);
+
     if (!updatedItem.isProductSelected) {  
       updatedItem.isProductSelected = true;
     } else if (!updatedItem.Quantity) {
@@ -515,17 +545,60 @@ export class AddOrderPromotionlistComponent implements OnInit {
   }
 
   calculateTotalSelectedQuantity() {
-    let totalSelectedQuantity = 0;
+    let totalSelectedQuantity:number = 0;
+    let orderAmount:number =0
     for (const data of this.griddatapromotions) {
       for (const group of data.promoDetails.buyGroups || []) {
         for (const item of group.stockitemid || []) {
           if (item.isProductSelected) {
             totalSelectedQuantity += item.Quantity || 0;
+            orderAmount += (item.Quantity || 0)*item.price;
           }
         }
       }
     }
     this.totalSelectedQuantity = totalSelectedQuantity;
+    this.orderAmount=orderAmount
+    console.log(this.totalSelectedQuantity);
+    console.log(orderAmount);
+    let aditionalMoqDetailsArrays:any = [];
+      for (const item of this.focvalue) {
+        if (item && item.promoDetails && item.promoDetails.aditionalMoqDetails) {
+          const aditionalMoqDetails = item.promoDetails.aditionalMoqDetails;
+          
+          for (const detail of aditionalMoqDetails) {
+            const aditionalMoqDetail = {
+              additionalDetailsId: detail.additionalDetailsId,
+              qtyFrom: detail.qtyFrom,
+              qtyTo: detail.qtyTo,
+              buyValue: detail.buyValue,
+              getValue: detail.getValue,
+              aditional: detail.aditional
+            };
+            aditionalMoqDetailsArrays.push(aditionalMoqDetail);
+          }
+        }
+      }
+     
+      const selectedvalue = this.totalSelectedQuantity;
+      const matchingDetails = aditionalMoqDetailsArrays.find(details =>
+        selectedvalue >= details.qtyFrom && selectedvalue <= details.qtyTo
+      );
+      
+      if (selectedvalue === 0) {
+        this.Foc_calculation = 0;
+      } else if (matchingDetails) {
+        this.Foc_calculation =
+          Math.floor(selectedvalue / matchingDetails?.buyValue) * matchingDetails?.getValue + matchingDetails?.aditional;
+        console.log(this.Foc_calculation, 'this.Foc_calculation');
+      } else {
+        // If no matching detail was found, use the last detail in the array
+        const lastDetail = aditionalMoqDetailsArrays[aditionalMoqDetailsArrays.length - 1];
+        this.Foc_calculation =
+          Math.floor(selectedvalue / lastDetail?.buyValue) * lastDetail?.getValue + lastDetail?.aditional;
+        console.log(this.Foc_calculation, 'this.Foc_calculation');
+      }
+      // console.log(aditionalMoqDetailsArrays,'aditionalMoqDetailsArrays');
   }
 
   
@@ -533,6 +606,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
   orderPromotionEnableValidate() {
     console.log(this.griddatapromotions,"PROMOTION TYPE ID ");
+  //  console.log(this.griddatapromotions.promoDetails?.buyGroups?.totalAmount,"total amount");
     
     this.isOrderPromotionValid = true;
    
@@ -597,9 +671,6 @@ export class AddOrderPromotionlistComponent implements OnInit {
             this.totalPromotionOrderAmount=item.promoDetails.DiscountAmount;
           console.log("RK",item.promoDetails.DiscountAmount);
           localStorage.setItem('ForthPromotionTotalAmount',JSON.stringify(this.totalPromotionOrderAmount));
-
-         
-          
           }
           
         });
@@ -648,6 +719,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
                   stockItem.totalAmount += (stock.price * stock.Quantity);
 
                   const totalAmount = stockItem.totalAmount;
+                  // this.orderAmount = stockItem.totalAmount
+
                     localStorage.setItem('totalAmount',totalAmount);
 
                   console.log(stockItem.totalAmount,"sdvsfsv")
@@ -674,7 +747,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
             stockItem.totalQuantity = 0;
             stockItem.totalAmount = 0;
             stockItem.isItemValid = true;
-            stockItem.foc = item.promoDetails.buyGroupsQty * stockItem.maxVolume;
+            // stockItem.foc = item.promoDetails.buyGroupsQty * stockItem.maxVolume;
+            stockItem.foc = this.Foc_calculation||0
             if (stockItem.stockitemid.length != 0) {
               stockItem.stockitemid.forEach(stock => {
                 if (stock.isProductSelected) {
@@ -757,7 +831,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
               stockItem.totalAmount = 0;
               stockItem.totalQuantity = 0;
               stockItem.isItemValid = true;
-              stockItem.foc = item.promoDetails.buyGroupsQty * stockItem.maxVolume;
+              // stockItem.foc = item.promoDetails.buyGroupsQty * stockItem.maxVolume;
+              stockItem.foc = this.Foc_calculation||0
               stockItem.isInputEnable = false;
               if (stockItem.stockitemid.length != 0) {
                 stockItem.stockitemid.forEach(stock => {

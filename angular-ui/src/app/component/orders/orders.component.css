@@ -176,7 +176,8 @@ top:3px;
     left: 23%;
     border: 0.5px solid rgba(0, 0, 0, 0.58);
 
-}::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+}
+::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
     display: none !important;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {

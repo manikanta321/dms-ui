@@ -103,29 +103,22 @@
                                                 <!-- promotion 1 -->
                                                 <div *ngIf="data.promotionTypesId ===1">
                                                     <div *ngFor="let promos of data.promoDetails.buyGroups">
-                                                        <!-- {{promos|json}} -->
+                                                         <!-- {{promos|json}}  -->
                                                         <div class="row  FirstPromotioncalcul">
                                                             <div class="col" style="background: rgba(222, 226, 230, 0.2);height: 60px;">
-                                                                    <label id="FirstPromotionlabelCal">Total Order
-                                                                        Qty</label>
-                                                                        <!-- <span id="FirstproTotalorderqyt">
-                                                                            {{ (promocalculation?.overallQty !== promos.totalQuantity) ? (promocalculation?.overallQty + totalSelectedQuantity+storedValue) : promos.totalQuantity+storedValue }}
-                                                                          </span> -->
-                                                                          <span id="FirstproTotalorderqyt">
+                                                                    <label id="FirstPromotionlabelCal">Total Order  Qty</label>
+                                                                    <!-- <span id="FirstproTotalorderqyt">
+                                                                        {{ promocalculation?.overallQty + totalSelectedQuantity+storedValue}}
+                                                                        </span> -->
+                                                                        <span id="FirstproTotalorderqyt">
                                                                             {{ promocalculation?.overallQty + totalSelectedQuantity+storedValue}}
-                                                                          </span>
-                                                                           <!-- <span id="FirstproTotalorderqyt">{{promos.totalQuantity+storedValue+promocalculation?.overallQty}}</span> -->
+                                                                            </span>
                                                                     </div>
                                                                 <div class="col" style="background: rgba(222, 226, 230, 0.2);">
-                                                                    <label id="FirstPromotionlabelCal">Total Order
-                                                                        Amount</label>
-                                                                        <!-- <span id="FirstPromotiontotalselectamount">{{(promocalculation?.overallAmount!==promos.totalAmount)?((promocalculation?.overallQty+totalSelectedQuantity)*promos?.stockitemid[0]?.price):promos.totalAmount}}</span> -->
-                                                                    <span id="FirstPromotiontotalselectamount">{{promos.totalAmount+promocalculation?.overallAmount}}</span>
-                                                                    <!-- <span id="FirstPromotiontotalselectamount">{{
-                                                                        promocalculation?.overallAmount !==(promos.totalAmount+promocalculation?.overallAmount)
-                                                                        ?(promos.totalAmount):
-                                                                        promocalculation?.overallAmount+storedTotalAmount+(promos.totalAmount>0?0:0)}}</span> -->
-                                                                        <!-- <span id="FirstPromotiontotalselectamount">{{ promocalculation?.overallAmount + (promos.totalAmount > 0 ? promos.totalAmount : 0) }}</span> -->
+                                                                    <label id="FirstPromotionlabelCal">Total Order Amount</label>                                                                 
+                                                                    <span id="FirstPromotiontotalselectamount">
+                                                                        {{ promocalculation?.overallAmount + orderAmount +storedTotalAmount}}
+                                                                    </span>
                                                                 </div>
                                                             <div class="row" style="height: 60px;">
                                                                 <div class="col">
@@ -436,17 +429,14 @@
                                         <!--  ============================= Set Group -->
 
                                         <div *ngFor="let promos of data.promoDetails.getGroups">
+                                            <!-- {{promos}} -->
                                             <div class="buyGrp 1">
-
                                                 <div class="row">
-
                                                     <div class="col col-lg-5">
-
                                                         <span class="buy-grp"> Free Items </span>
-                                                        <span class="ml-1" style="color:#000;"
-                                                            [ngClass]="{ 'txt-error-span': promos.totalQuantity != (promos.foc) && data.showWarningMsg }"></span>
-                                                        <span class="txt-error"
-                                                            *ngIf="promos.totalQuantity != (promos.foc) && data.showWarningMsg">
+                                                        <!-- <span class="ml-1" style="color:#000;"
+                                                            [ngClass]="{ 'txt-error-span': promos.totalQuantity != (promos.foc) && data.showWarningMsg }"></span> -->
+                                                        <span class="txt-error"  *ngIf="Foc_calculation != getTotalSelectedQuantity(promos) && data.showWarningMsg">
                                                             Please select full required quantity
                                                         </span>
 
@@ -485,6 +475,7 @@
                                                     </div>
                                                     <div class="col col-lg-1">
                                                         {{promos.foc }}
+                                                        <!-- {{Foc_calculation}} -->
                                                     </div>
                                                     <div class=" col-lg-1">
                                                         {{ getTotalSelectedQuantity(promos) }}
@@ -1203,7 +1194,8 @@
 
                                                 <div class="col-1">
                                                     <span id="ForthPromotionse_lected">Selected <br>
-                                                        {{data.promoDetails.totalQuantity}}</span>
+                                                        {{data.promoDetails.totalQuantity}}
+                                                    </span>
                                                 </div>
                                                 <div class="col-1">
                                                     <span id="se_lected">Remaining

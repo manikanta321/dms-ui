@@ -1,3 +1,11 @@
+.arrowppp
+{
+    cursor: pointer;
+    position: relative;
+    top: 12px;
+    left: -8px;
+}
+
 .taxitems
 {
     font-family: 'Gilroy-Light';
@@ -10,6 +18,12 @@
     position: relative;
     top:-12px;
 }
+.disabled-td {
+    color: #888; /* Change this to your desired disabled text color */
+    background-color: #f5f5f5; /* Change this to your desired disabled background color */
+    pointer-events: none; /* This prevents click events on the element */
+  }
+  
 .Optionsin
 {
     
@@ -43,11 +57,9 @@
   }
   .arrow
   {
-    
-     margin-top: 14px; 
-    
-    width: 404px;
-    margin-left: -9px;
+     margin-top: 12px; 
+     margin-left: -9px;
+     cursor: pointer;
   }
   
   ::-webkit-scrollbar {

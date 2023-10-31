@@ -813,7 +813,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   showConsolidatedMOQ: boolean = false;
   onToggleChange(event: any) {
     this.showConsolidatedMOQ = event.checked;
-    // alert( this.showConsolidatedMOQ)
+  //   if (this.addbuyset && this.addbuyset.BuyGroups) {
+  //     this.addbuyset.BuyGroups.MaxVolume = this.showConsolidatedMOQ ? '' : 0;
+  // }
+    alert( this.showConsolidatedMOQ)
   }
 
   get formArr() {
@@ -1209,9 +1212,9 @@ this.textShow=true;
     this.addbuyset[i].BuyGroups.push({
 
       StockItemId: [],
-      MaxVolume: '',
+      MaxVolume: !this.showConsolidatedMOQ?0:'',
       Set: this.addbuyset[i].BuyGroups.length + 1,
-      MOQ: '',
+      MOQ: 0,
       productselectedRows: [],
       isDataValid: true
     })
@@ -2285,7 +2288,7 @@ this.textShow=true;
         EndDate: this.selectedEndDate,
         DoneById: this.loggedUserId,
         Imageurl: this.base64textString,
-        MOQ: this.minimumorderquantity,
+        MOQ: this.moqNumber,
         StockItemId: this.VolumeSttockItemId,
         Volume: this.packingCharges,
         EntityInstanceId: this.EntityInstanceId,
@@ -2293,7 +2296,7 @@ this.textShow=true;
         Remarks: this.Remarks ?? ''
 
       }
-alert(obj3.MOQ);
+      alert(obj3.MOQ);
       localStorage.setItem("MOQ",obj3.MOQ);
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response)
@@ -2323,7 +2326,7 @@ alert(obj3.MOQ);
         EndDate: this.selectedEndDate,
         DoneById: this.loggedUserId,
         Imageurl: this.base64textString,
-        MOQ: this.minumorderqualityPrice,
+        MOQ: this.moqPrice,
         StockItemId: this.priceStockItemId,
         Price: this.packingVolume,
         EntityInstanceId: this.EntityInstanceId,

@@ -1162,6 +1162,16 @@
   top: 0px;
   right:45px
 }
+.asso-uploaddealer{
+  background: rgba(104, 110, 116, 0.66);
+  border-radius: 13%;
+  width: 37px;
+  height: 37px;
+  margin-right: 10px;
+  cursor: pointer;
+  position: relative;
+  top: 0px;
+}
 .asso-upload:hover
 {
   background-color: grey !important;
@@ -1250,41 +1260,41 @@
  
 
   .searchButton {
-
     display: block;
-
     color: #000;
-
     float: left;
-
     width: 42px;
-
     height: 42px;
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     transition: 0.2s;
-
     background: none;
-
     position: relative;
-
     right: 257px;
-
     top: -4px;
-
     border: none;
-
     border-radius: 13%;
-
     transition: 0.2s;
+  }
 
-   
-
+  .searchButtondealerr {
+    display: block;
+    color: #000;
+    float: left;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s;
+    background: none;
+    position: relative;
+    right: 177px;
+    top: -4px;
+    border: none;
+    border-radius: 13%;
+    transition: 0.2s;
   }
 
  
@@ -1294,27 +1304,27 @@
  
 
   .search-btn {
-
     display: block;
-
     height: 26px;
-
     border: none;
-
     background: #686E74;
-
     color: white;
-
     border-radius: 5px;
-
     position: absolute;
-
     right: 10px;
-
     top:4px;
-
-   
-
+  }
+  .Seearrch-Dealerbtn
+  {
+    display: block;
+    height: 26px;
+    border: none;
+    background: #686E74;
+    color: white;
+    border-radius: 5px;
+    position: absolute;
+    left: 50px;
+    top:4px;
   }
 
  
@@ -1322,43 +1332,46 @@
  
 
   .searchInput {
-
     display: block;
-
     width: 300px;
-
     height: 43px;
-
     background: #FFFFFF;
-
     float: left;
-
     padding: 5px 32px 6px;
-
     border-radius: 10px;
-
     font-family: 'Gilroy-medium';
-
     font-style: normal;
-
     font-weight: 500;
-
     font-size: 12px;
-
     line-height: 17px;
-
     letter-spacing: 0.08em;
-
     color: #263643;
-
     box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
-
     position: absolute;
-
     right: 0px;
-
     bottom: -3px;
-
     top: -5px;
+  }
 
+  .searchInputDealerad
+  {
+    display: block;
+    width: 300px;
+    height: 43px;
+    background: #FFFFFF;
+    float: left;
+    padding: 5px 32px 6px;
+    border-radius: 10px;
+    font-family: 'Gilroy-medium';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+    letter-spacing: 0.08em;
+    color: #263643;
+    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+    position: absolute;
+    right: -80px;
+    bottom: -3px;
+    top: -5px;
   }

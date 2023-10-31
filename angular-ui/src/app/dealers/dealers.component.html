@@ -19,13 +19,13 @@
 
       <div class="col-md-2 col-lg-2 col-sm-2 productbubbless">
         <form [formGroup]="myForms1">
-          <ng-multiselect-dropdown class="role1 productdropdown" name="city1" [placeholder]="'Product'" formControlName="city1"
+          <ng-multiselect-dropdown class="role1 productdropdown" name="city1" [placeholder]="'Product'" formControlName="city1" 
             [disabled]="disabled" [settings]="dropdownSettings2" [data]="ProductListArray" (onSelect)="onItemProductSelect($event)" (onDeSelect)="onItemProductDeSelect($event)"
             (onDeSelectAll)="onItemProductDeSelectOrAll($event)" (onSelectAll)="onItemProductSelectOrAll($event)"
             >
           </ng-multiselect-dropdown>
         </form>
-        <div class="dropdown-placeholder role1-placeholder">
+        <div  class="dropdown-placeholder role1-placeholder">
           <span *ngIf="myForms1.get('city1').value.length == 0">  </span>
           <span *ngIf="myForms1.get('city1').value.length == 1" class="selected-placeholder"> {{myForms1.get('city1').value.length}} Products selected </span>
           <span *ngIf="myForms1.get('city1').value.length > 1" class="selected-placeholder">{{myForms1.get('city1').value.length}} Products selected </span>

@@ -507,6 +507,7 @@ export class PromotionsComponent implements OnInit {
     this.statusSelected = [];
     this.startDate = '';
     this.endDate = '';
+    this.selectedDateRange = null;
     this.searchText = '';
     this.toppings = new FormControl('');
     this.toppings1 = new FormControl(this.toppingList1);

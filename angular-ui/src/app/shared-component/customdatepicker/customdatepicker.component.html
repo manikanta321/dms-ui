@@ -3,7 +3,7 @@
         <div class="calendar-btn-section" #calendarSection>
             <div class="invoice" *ngIf="showInputField" [ngbPopover]="popContent"
                 [placement]="['bottom','bottom-start','left-top','right-top']" [autoClose]="'outside'"
-                #datepickerBtn="ngbPopover" popoverClass="datepicker-menu">
+                #datepickerBtn="ngbPopover" popoverClass="datepicker-menu  ">
                 <mat-form-field appearance="fill">
                     <mat-label *ngIf="!(selectedDate && selectedDate.startDate)">{{label}}</mat-label>
                     <mat-label *ngIf="selectedDate && selectedDate.startDate">{{selectedDate.startDate}} -

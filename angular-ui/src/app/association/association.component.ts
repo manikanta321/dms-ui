@@ -87,6 +87,8 @@ export class AssociationComponent implements OnInit {
   ProductListArray:any=[];
   dealerListArray:any=[];
 
+  userType: any;
+
 
   gridOptions: GridOptions = {
     defaultColDef: {
@@ -379,6 +381,7 @@ export class AssociationComponent implements OnInit {
 
 
   ngOnInit() {
+    this.userType = localStorage.getItem('userType');
     this.loggedUserId = localStorage.getItem('logInId');
     this.getusertabeldata();
     // this.dialog.open(AddDealerAssociationsComponent,{width: '900px',height:'460px'});

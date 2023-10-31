@@ -414,7 +414,7 @@ export class ViewPromotionPopupComponent implements OnInit {
         })
       }
 
-      if (res.response.promotionTypesName == 'Buy (A+B..) get (X+Y..)') {
+      if (res.response.promotionTypesId == 1||res.response.promotionTypesName == "Buy X and Get Y") {
         this.productPromotionsId = res.response.productPromotionsId
         this.buyGroupPlus = [];
         this.addgetgroup = [];
@@ -499,7 +499,7 @@ export class ViewPromotionPopupComponent implements OnInit {
           console.log('this.mainobjGetGroups', this.addgetgroup)
         })
       }
-      if (res.response.promotionTypesId == 2) {
+      if (res.response.promotionTypesId == 2 || res.response.promotionTypesName == "Buy AB Get CD") {
         this.addbuyset = [];
         this.noPromotionSelected = false;
         this.buyab = false;
@@ -584,7 +584,7 @@ export class ViewPromotionPopupComponent implements OnInit {
         })
 
       }
-      if (res.response.promotionTypesName == 'Volume Discount') {
+      if (res.response.promotionTypesId == 3||res.response.promotionTypesName == 'Volume Discount') {
         this.productPromotionsId = res.response?.productPromotionsId;
         this.productselectedRows = [];
         this.noPromotionSelected = false;
@@ -637,7 +637,7 @@ export class ViewPromotionPopupComponent implements OnInit {
         })
         console.log('VolumeSttockItemId', this.VolumeSttockItemId)
       }
-      if (res.response.promotionTypesName == 'Price Discount') {
+      if (res.response.promotionTypesId == 4 || res.response.promotionTypesName == 'Price Discount') {
 
         this.productPromotionsId = res.response?.productPromotionsId;
         this.productselectedRows = [];

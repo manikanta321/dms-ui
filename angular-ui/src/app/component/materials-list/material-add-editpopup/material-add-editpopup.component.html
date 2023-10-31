@@ -97,8 +97,7 @@
                 </div>
                 <input type="text" id="matName" name="matName" (keyup)="onKey($event)"
                   class="form-control container materialname-placeholder" required
-                  placeholder="Enter name of material" [(ngModel)]="materialName" #matName="ngModel" (input)="restrictToNumbers($event)"
-
+                  placeholder="Enter name of material" [(ngModel)]="materialName" #matName="ngModel"
                   (input)="restrictToAlphabets($event)">
                 <p style="margin-bottom:-5px;padding: 0px;font-size: 11px;position: absolute"
                   *ngIf="matName.invalid && (matName.dirty || matName.touched)" class="alert">

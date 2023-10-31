@@ -62,7 +62,7 @@ input{
      /* margin-left: -21px; */
 }
 .update-btn{
-background: black;
+background-color:#018B75;
 color: white;
 width: 183px;
 height: 43px;
@@ -75,7 +75,7 @@ margin-right: 35px;
     border-radius: 5px;
     width: 184px;
     height: 43px;
-    background: white;
+    background-color:#018B75;
     font-weight: 700;
     cursor: pointer;
     color: white;

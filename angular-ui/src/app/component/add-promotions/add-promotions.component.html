@@ -421,11 +421,11 @@
                                                             [(ngModel)]="addbuyset[i].BuyGroups[j].MaxVolume"> <span class="astr">*</span> -->
                                                         <label *ngIf="showConsolidatedMOQ">Minimum Order Quantity :</label>
                                                         <input type="number" class="mty-box  border border-success"
-                                                            value="{{qtyMaxNum}}" id=qty  placeholder="Enter here..."
+                                                            value="{{MoqMaxNum}}" id=moq  placeholder="Enter here..."
                                                             name="qty1{{i}}.BuyGroups1{{j}}"
                                                             (keyup)="promotionABSetChange()"
                                                             [ngClass]="{ 'input-error': !addbuyset[i].BuyGroups[j].isDataValid}"
-                                                            [(ngModel)]="addbuyset[i].BuyGroups[j].MaxVolume" *ngIf="showConsolidatedMOQ">
+                                                            [(ngModel)]="addbuyset[i].BuyGroups[j].MOQ" *ngIf="showConsolidatedMOQ">
                                                     </div>
 
                                                 </div>
@@ -550,8 +550,8 @@
                                                          <input type="number" class="mty-box  border border-success"
                                                             value="{{qtyMaxNum}}" id=qty placeholder=" Enter here..."
                                                             name="qty1{{i}}.q2{{j}}"
-                                                            (keyup)="promotionABSetChange()"
-                                                            [ngClass]="{ 'input-error': !addgetset[i].GetGroups[j].isDataValid}"
+                                                            (keyup)="promotionABGetChange()"
+                                                            [ngClass]="{ 'input-error': !addgetset[i].GetGroups[j].isDataValid}" required
                                                             [(ngModel)]="addgetset[i].GetGroups[j].MaxVolume" *ngIf="showConsolidatedMOQ">
                                                     </div>
                                                 </div>

@@ -128,7 +128,7 @@
 <div class="row ml-2">
   <div class="col-md-3 col-lg-3 col-sm-2 shipordersbubbles" style="padding-left: 0px;">
     <form [formGroup]="dealerForm" class="dropdown-form">
-      <ng-multiselect-dropdown class="dealers dlsr" name="city" [placeholder]="'Dealer'" formControlName="city"
+      <ng-multiselect-dropdown class="dealers dlsr" name="city" [placeholder]="'Dealer'" formControlName="dealer"
       [disabled]="disabled" [settings]="dealerSettings" [data]="dealerlist"(onSelect)="DealerorderReceiptSelect($event)" (onDeSelect)="DealerReceiptDeselect($event)"(onDeSelectAll)="DealerReceiptDeselectAll($event)"
       (onSelectAll)="DealerorderReceiptSelectAll($event)">
     </ng-multiselect-dropdown>
@@ -143,7 +143,7 @@
   </div>
   <div class="col-md-3 col-lg-3 col-sm-2 shipordersbubbles">
     <form [formGroup]="geographyForm" >
-      <ng-multiselect-dropdown class="Geography geographybubbles" name="city" [placeholder]="'Geography'" formControlName="geo"
+      <ng-multiselect-dropdown class="Geography geographybubbles" name="city" [placeholder]="'Geography'" formControlName="geography"
       [disabled]="disabled" [settings]="geographySettings" [data]="geogropdownlist" (onSelect)="geographyReceiptselect($event)"
       (onDeSelect)="geographyReceiptDeselect($event)" (onDeSelectAll)="geographyReceiptDeselectAll($event)"(onSelectAll)="geographyReceiptselectAll($event)">
     </ng-multiselect-dropdown>
@@ -159,7 +159,7 @@
     <app-customdatepicker [showInputField]="true" label="Shipment Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customShipDatePickerEvent($event)"></app-customdatepicker>
   </div>
     <div class="invoice">
-      <app-customdatepicker [showInputField]="true" label="Invoice Date" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customInvoiceDatePickerEvent($event)"></app-customdatepicker>
+      <app-customdatepicker [showInputField]="true" label="Invoice Date" [selectedDate]="selectedDateRanges" (customDatePickerEvent)="customInvoiceDatePickerEvent($event)"></app-customdatepicker>
   </div>
     <!-- refresh -->
     <div class=" refreshbtn" style=" cursor: pointer" (click)="Receiptrefresh()">

@@ -240,9 +240,12 @@ export class OrderListComponent implements OnInit {
           ? 'myclass8'
           : params.value == 'Fullfilled'
           ? 'Mmyclass'
+          : params.value =='Confirmed'
+          ? 'myclass22'
           : params.value == 'ToShip'
           ? 'myclass10'
           : 'myclass11';
+          
       },
 
       tooltipField: 'statusName',

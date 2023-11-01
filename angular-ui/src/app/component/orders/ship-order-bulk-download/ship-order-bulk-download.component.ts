@@ -263,6 +263,14 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     this.geographyForm = this.fb.group({
       geography: [this.selectedItems]
     });
+
+    // this.dealerForm = this.fb.group({
+    //   city: [this.selectedItems]
+    // });
+    // this.geographyForm = this.fb.group({
+    //   geo: [this.selectedItems]
+    // });
+   
     this.dealerOrder();
     this.geogrphyOrder();
     this.getDownloadBulkUpload();
@@ -394,6 +402,10 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
       DealerId:this.dealerss,
       StartDate:this.startDate,
       EndDate:this.endDate,
+      // ShipmentStartDate:this.startDateShip,
+      // ShipmentEndDate:this.endDateShip,
+      // InvoiceStartDate:this.startDateInvoice,
+      // InvoiceEndDate:this.endDateInvoice,
     }
     this.orders.getDownloadShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
@@ -419,11 +431,26 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
       console.log("Response",this.receiptDatalist)
     });
   }
+  selectedDateRanges:any;
   customInvoiceDatePickerEvent(eventChange){
-    this.selectedDateRange = eventChange.selectedDate;
-    this.startDateInvoice = this.selectedDateRange.startDate;
-    this.endDateInvoice = this.selectedDateRange.endDate;
-    console.log(this.selectedDateRange);
+    // this.selectedDateRange = eventChange.selectedDate;
+    // this.startDateInvoice = this.selectedDateRange.startDate;
+    // this.endDateInvoice = this.selectedDateRange.endDate;
+    // console.log(this.selectedDateRange);
+    // let data = {
+    //   DealerId:this.dealerss,
+    //   GeographyId:this.geographySelected,
+    //   ShipmentStartDate:this.startDateShip,
+    //   ShipmentEndDate:this.endDateShip,
+    //   InvoiceStartDate:this.startDateInvoice,
+    //   InvoiceEndDate:this.endDateInvoice,
+    //   search:''
+    // }
+
+    this.selectedDateRanges = eventChange.selectedDate;
+    this.startDateInvoice = this.selectedDateRanges.startDate;
+    this.endDateInvoice = this.selectedDateRanges.endDate;
+    console.log(this.selectedDateRanges);
     let data = {
       DealerId:this.dealerss,
       GeographyId:this.geographySelected,
@@ -435,7 +462,7 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     }
     this.orders.getOrderReceiptList(data).subscribe((res) => {
       this.receiptDatalist = res.response;
-      console.log("Response",this.receiptDatalist)
+      console.log("Response DATE",this.receiptDatalist)
     });
   }
   dealerOrder(){
@@ -751,12 +778,24 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     this.geographyForm = this.fb.group({
       geography: [this.selectedItems]
     });
+    this.dealerForm = this.fb.group({
+      dealer: [this.selectedItems]
+    });
+    this.geographyForm = this.fb.group({
+      geography: [this.selectedItems]
+    });
     this.dealerss = [];
     this.geographySelected = [];
     this.startDateShip = '';
     this.endDateShip = '';
     this.startDateInvoice = '';
     this.endDateInvoice = '';
+    this.startDate = '';
+    this.endDate = '';
+    this.selectedDateRange = null;
+    this.selectedDateRanges=''
+    
+   
     let data = {
       DealerId:this.dealerss,
       GeographyId:this.geographySelected,
@@ -768,7 +807,7 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     }
     this.orders.getOrderReceiptList(data).subscribe((res) => {
       this.receiptDatalist = res.response;
-      console.log("Response",this.receiptDatalist)
+      console.log("Response kkkkkk",this.receiptDatalist)
     });
   }
   refresh() {
@@ -782,6 +821,7 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     this.geographySelected = [];
     this.startDate = '';
     this.endDate = '';
+     this.selectedDateRange = null;
     let data = {
       GeographyId:this.geographySelected,
       DealerId:this.dealerss,

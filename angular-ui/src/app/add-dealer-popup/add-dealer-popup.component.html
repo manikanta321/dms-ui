@@ -290,10 +290,12 @@
                                             </div>
 
                                             <div class="col-2" style="position: relative;right:116px;">
-                                                <label *ngIf="i == 0">Address Line 1 <span>*</span></label><br>
+                                                <label *ngIf="i == 0">Address Line 1 <span>*</span></label>  <span *ngIf="i == 0" class="addressline2">Address Line2 <span>*</span></span><br>
                                                 <input type="text" placeholder="Enter" formControlName="AddressLine1"
                                                     class="addDelercols addadress" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].AddressLine1">
-                                                <br> <input type="text" placeholder="Enter" formControlName="AddressLine2"
+                                                    
+                                                <br>
+                                                 <input type="text" placeholder="Enter" formControlName="AddressLine2"
                                                     class="addDelercols addadressLine1" [(ngModel)]="addAddressDetailsForm.value.addresscount[i].AddressLine2">
                                             </div>
 

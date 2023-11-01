@@ -31,7 +31,11 @@ export class OrderlistActionPopupComponent implements OnInit {
     'ordered': ['confirm_order', 'cancel_order'], // done
     'returned': ['edit_order', 'cancel_order'], // NA
     'rejected': [], // done
-    'confirmed': ['ship_order', 'close'], // done
+    'confirmed': ['ship_order', 'close','edit_order'], // done Confirmed
+
+    'Confirmed': ['edit_order', 'close'],
+    
+
     'cancelled': [], // need to check
     'preclosed': [], // NA
     'in-transit': ['ship_order', 'close'], //done

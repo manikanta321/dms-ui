@@ -77,6 +77,10 @@
 
     color: #0027F4 !important;
 }
+::ng-deep.myclass22 {
+
+    color: greenyellow !important;
+}
 
 ::ng-deep.myclass2 {
     color: #E5009D !important;

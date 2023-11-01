@@ -11,7 +11,7 @@
 
 
             <div class="dropdown-placeholder promo-placeholder">
-              <span *ngIf="myForm.get('city1').value.length == 0"> Promotions </span>
+              <span *ngIf="myForm.get('city1').value.length == 0">Select Promotions </span>
               <span *ngIf="myForm.get('city1').value.length == 1" class="selected-placeholder">
                 {{myForm.get('city1').value.length}} Promotions selected </span>
               <span *ngIf="myForm.get('city1').value.length > 1" class="selected-placeholder">
@@ -29,7 +29,7 @@
             </ng-multiselect-dropdown>
 
             <div class="dropdown-placeholder product-placeholder">
-              <span *ngIf="myForms.get('city2').value.length == 0">Product </span>
+              <span *ngIf="myForms.get('city2').value.length == 0">Select Product </span>
               <span *ngIf="myForms.get('city2').value.length == 1" class="selected-placeholder">
                 {{myForms.get('city2').value.length}} Products selected </span>
               <span *ngIf="myForms.get('city2').value.length > 1" class="selected-placeholder">
@@ -46,7 +46,7 @@
               (onSelectAll)="onItemSelectOrAllGeo($event)">
             </ng-multiselect-dropdown>
             <div class="dropdown-placeholder geog-placeholder">
-              <span *ngIf="myForms2.get('city3').value.length == 0">Geography </span>
+              <span *ngIf="myForms2.get('city3').value.length == 0">Select Geography </span>
               <span *ngIf="myForms2.get('city3').value.length == 1" class="selected-placeholder">
                 {{myForms2.get('city3').value.length}} Geography selected </span>
               <span *ngIf="myForms2.get('city3').value.length > 1" class="selected-placeholder">
@@ -64,7 +64,7 @@
             </ng-multiselect-dropdown>
           </form>
           <div class="dropdown-placeholder dealr-placeholder">
-            <span *ngIf="myForms4.get('city5').value.length == 0"> Dealer </span>
+            <span *ngIf="myForms4.get('city5').value.length == 0">Select Dealer </span>
             <span *ngIf="myForms4.get('city5').value.length == 1" class="selected-placeholder">
               {{myForms4.get('city5').value.length}} Dealer selected </span>
             <span *ngIf="myForms4.get('city5').value.length > 1" class="selected-placeholder">
@@ -80,7 +80,7 @@
               (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
             </ng-multiselect-dropdown>
             <div class="dropdown-placeholder stts-placeholder">
-              <span *ngIf="myForms3.get('city4').value.length == 0">Status </span>
+              <span *ngIf="myForms3.get('city4').value.length == 0">Select Status </span>
               <span *ngIf="myForms3.get('city4').value.length == 1" class="selected-placeholder">
                 {{myForms3.get('city4').value.length}} Status selected </span>
               <span *ngIf="myForms3.get('city4').value.length > 1" class="selected-placeholder">
@@ -91,16 +91,17 @@
         </div>
         <!-- refresh -->
 
-        <div class="col-md-0 col-sm-0 col-lg-0 ref">
-          <img class="refresh" src="assets/img/Vector.png" (click)="refresh()" alt="refresh" style="margin-left: 1px;">
-        </div> 
+        
 
        
         <!-- calender -->
-        <div class="col-md-1 col-lg-1 col-sm-1 d-flex">
+        <div class="col-md-0 col-lg-0 col-sm-0 d-flex">
           <app-customdatepicker [selectedDate]="selectedDateRange" 
             (customDatePickerEvent)="customDatePickerEvent($event)" ></app-customdatepicker>
         </div>
+        <div class="ref">
+          <img class="refresh" src="assets/img/Vector.png" (click)="refresh()" alt="refresh" style="margin-left: 1px;">
+        </div> 
       </div>
    
 

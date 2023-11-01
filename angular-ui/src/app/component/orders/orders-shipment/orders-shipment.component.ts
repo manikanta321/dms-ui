@@ -143,7 +143,7 @@ export class OrdersShipmentComponent implements OnInit {
     if (this.userType === 'Dealer Admin') {
       this.columnDefs = [
         {
-          headerName: 'Order #',
+          headerName: 'Order No',
           field: 'orderNUmber',
           tooltipField: 'orderNUmber',
           cellStyle: { color: '#017EFA' },
@@ -172,27 +172,27 @@ export class OrdersShipmentComponent implements OnInit {
           },
         },
         {
-          headerName:'invoiceQty',
+          headerName:'invoice Qty',
           field: 'invoiceQty',
           tooltipField: 'invoiceQty',
         },
         {
-          headerName: 'invoiceValue',
+          headerName: 'invoice Value',
           field: 'invoiceValue',
           tooltipField: 'invoiceValue',
         },
         {
-          headerName: 'Ordered Quantity',
+          headerName: 'Total ordered Quantity',
           field: 'orderedQty',
           tooltipField: 'orderedQty',
         },
         {
-          headerName:'Ordered Value($)',
+          headerName:'Total ordered Value($)',
           field: 'orderedvalue',
           tooltipField: 'orderedvalue',
         },    
         {
-          headerName: 'System Receive Date',
+          headerName: 'System Receipt Date',
           field: 'systemReciptDate',
           tooltipField: 'systemReciptDate',
           cellRenderer: (data) => {
@@ -227,7 +227,7 @@ export class OrdersShipmentComponent implements OnInit {
     else {
       this.columnDefs = [
     {
-      headerName: 'Order #',
+      headerName: 'Order No',
       field: 'orderNUmber',
       tooltipField: 'orderNUmber',
       cellStyle: { color: '#017EFA' },
@@ -248,7 +248,7 @@ export class OrdersShipmentComponent implements OnInit {
       type: ['nonEditableColumn'],
     },
     {
-      headerName: 'Dealer',
+      headerName: 'Dealer Name',
       field: 'dealername',
       type: ['nonEditableColumn'],
       tooltipField: 'dealername',
@@ -367,7 +367,7 @@ public defaultColDef: ColDef = {
   // make every column editable
   // editable: true,
   // make every column use 'text' filter by default
-  filter: 'agTextColumnFilter',
+  // filter: 'agTextColumnFilter',
   // enable floating filters by default
   // make columns resizable
   flex: 1,

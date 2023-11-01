@@ -904,7 +904,7 @@ tr {
     align-items: center;
   }
   .error-tx__t {
-    top:65px;
+    top:56px;
     background: #FFFFFF;
     color: #000000;
   }
@@ -916,6 +916,7 @@ tr {
     position: relative;
     width: 14px;
     right: 45px;
+    top:-5px;
   }
 
   .class_tab_le {
@@ -950,7 +951,7 @@ tr {
   align-items: center;
 }
 .DUPLICATE-txt{
-  top:85px;
+  top:69px;
   background: #FFFFFF;
   color: #000000;
 }

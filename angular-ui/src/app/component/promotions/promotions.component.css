@@ -1,7 +1,8 @@
  .promainclass {
    height: 630px;
-   overflow-x: hidden;
-   overflow-y: auto;
+   /* overflow-x: hidden;
+   overflow-y: auto; */
+   margin-top: -34px;
  }
 
  .row {
@@ -601,12 +602,13 @@
           position: relative;
           width: 43px;
         } */
- .cal {
+ ::ng-deep.cal {
    width: 43px;
    border-radius: 10px;
    border: 1px solid black;
    padding: 8px 0px 0px 8px;
    background: black;
+   margin-left: 14px !important;
 
  }
 
@@ -864,6 +866,7 @@
    /* top: 67%; */
    border: 1px solid #000;
    border-radius: 11px;
+   
  }
 
  .searchInput1 {

@@ -34,6 +34,7 @@
     height: 41px;
     width: 150px;
     cursor: pointer;
+    margin-top: 15px;
     }
     .close-icon{
         left: 100%;

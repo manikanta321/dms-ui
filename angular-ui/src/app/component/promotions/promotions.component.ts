@@ -119,7 +119,7 @@ export class PromotionsComponent implements OnInit {
     // { headerName: "User Id",
     //   field: 'employeeCode' , sort: 'desc'},
     {
-      headerName: 'Promotion Code',
+      headerName: 'Code',
       field: 'promoCode',
       tooltipField: 'promoCode',
     },
@@ -156,19 +156,19 @@ export class PromotionsComponent implements OnInit {
     },
     
     {
-      headerName: '# of orders',
+      headerName: 'No of orders',
       field: 'noOfOrders',
       tooltipField: 'noOfOrders',
       type: ['rightAligned'],
     },
     {
-      headerName: 'Invoiced Value',
+      headerName: 'Order Value',
       field: 'invoicedValue',
       tooltipField: 'invoicedValue',
       type: ['rightAligned'],
     },
     {
-      headerName: '# of Dealers',
+      headerName: 'No of Dealers',
       field: 'noOfDealers',
       tooltipField: 'noOfDealers',
       type: 'rightAligned',

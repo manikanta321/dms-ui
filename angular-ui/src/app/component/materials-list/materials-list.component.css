@@ -248,6 +248,7 @@ padding-left: 11px;
   border-radius: 10px !important;
   background: white !important;
   height: 41px !important;
+  left: 0px;
 }
 
 ::ng-deep.dropdown-multiselect__caret:before {

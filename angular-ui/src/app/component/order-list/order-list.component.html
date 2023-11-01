@@ -83,35 +83,33 @@
       </div>
       
       <!--Add Promotion  -->
-      <div class="col-md-0 col-lg-0 col-sm-0" style="position: relative; left: 0%;"*ngIf="userType !== 'Dealer Admin'">
+      <div class="col-md-0 col-lg-0 col-sm-0 " style="position: relative; left: 32%; display:flex;" *ngIf="userType !== 'Dealer Admin'">
         <div class="sales-add" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName">
-            <img class="imgorder" src="assets/img/add-btn.png"
-                alt="add">
+          <img class="imgorder" src="assets/img/add-btn.png" alt="add">
         </div>
-    </div>
-    <!--  Add promotion Dealer admin  -->
-    <div class="col-md-0 col-lg-0 col-sm-0" *ngIf="userType == 'Dealer Admin'">
-      <div class="sales-add" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName">
-          <img class="imgorder" src="assets/img/add-btn.png"
-              alt="add">
+        <div class="sales-dwnld" (click)="onBtnExport()" userRoleDirective="DOWNLOAD_ORDER" [pageName]="currentPageName">
+          <img class="imgdwnl" src="../../../assets/img/Group 35891.png" alt="add-user-btn">
+        </div>
       </div>
-  </div>
+    <!--  Add promotion Dealer admin  -->
+    <div class="col-md-0 col-lg-0 col-sm-0" style="display: flex;" *ngIf="userType == 'Dealer Admin'">
+      <div class="sales-add" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName">
+        <img class="imgorder" src="assets/img/add-btn.png" alt="add">
+      </div>
+      <div class="sales-dwnld" (click)="onBtnExport()" userRoleDirective="DOWNLOAD_ORDER" [pageName]="currentPageName">
+        <img class="imgdwnl" src="../../../assets/img/Group 35891.png" alt="add-user-btn">
+      </div>
+    </div>
 
 <!-- down Dealer admin -->
-<div class="col-md-0 col-lg-0 col-sm-0" *ngIf="userType == 'Dealer Admin'" >
-  <div class="sales-dwnld" (click)="onBtnExport()" userRoleDirective="DOWNLOAD_ORDER" [pageName]="currentPageName" >
-    <img   class="imgdwnl" src="../../../assets/img/Group 35891.png"
-        alt="add-user-btn">    
-  </div>
-  </div>
+<!-- <div class="col-md-0 col-lg-0 col-sm-0" *ngIf="userType == 'Dealer Admin'">
+  
+</div> -->
   
       <!-- Download -->
-      <div class="col-md-0 col-lg-0 col-sm-0" *ngIf="userType !== 'Dealer Admin'">
-        <div class="sales-dwnld" (click)="onBtnExport()" userRoleDirective="DOWNLOAD_ORDER" [pageName]="currentPageName" >
-          <img   class="imgdwnl" src="../../../assets/img/Group 35891.png"
-              alt="add-user-btn">    
-        </div>
-        </div>
+      <!-- <div class="col-md-0 col-lg-0 col-sm-0" *ngIf="userType !== 'Dealer Admin'">
+        
+      </div> -->
 
 
 </div>

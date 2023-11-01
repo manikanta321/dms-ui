@@ -952,25 +952,26 @@
                                 <div class="row" style="margin-left: 0%;">
                                     <div class="col" style="height:71px" style="background-color: rgba(222, 226, 230, 0.2);height: 52px;">
                                         <label id="TotalORDER_qty" for="inputField">Total Order Qty</label>
-                                        <span id="Total_order_qty">{{promocalculation.overallQty+quantityadd+ForthPromotionsSelectedQuantity+ThreePromotionTotalselectedQTY}} </span>
+                                        <span id="Total_order_qty">{{promotionQTY + nonPromotionQTY}} </span>
                                     </div>
 
                                     <div class="col" style="background-color: rgba(222, 226, 230, 0.2);">
                                         <label id="TotalORDER_qty" for="inputField">Total Order Amount</label>
                                         <span
-                                            id="Total_order_qty">{{promocalculation.overallAmount+price+ForthPromotionTotalAmount+ThreePromotionTotalAmount}}</span>
+                                            id="Total_order_qty">{{  promotionAmount + nonPromotionAmount}}</span>
                                     </div>
 
                                     <div class="w-100"></div>
                                     <div class="col">
                                         <label id="This_qty" for="inputField">This Order Qty</label>
-                                        <input #inputField type="text" [(ngModel)]="quantityadd" id="THISORDERQTY"
-                                            class="form-control-plaintext" />
+                                        <span id="This_order_amount">{{nonPromotionQTY}} </span>
+                                        <!-- <input #inputField type="text" [(ngModel)]="quantityadd" id="THISORDERQTY"
+                                            class="form-control-plaintext" /> -->
                                     </div>
                                     <div class="col">
                                         <label id="This_qty" for="inputField">This Order Amount</label>
 
-                                        <span id="This_order_amount">{{price?price:'0'}} </span>
+                                        <span id="This_order_amount">{{nonPromotionAmount}} </span>
                                     </div>
                                 </div>
                             </div>
@@ -1256,7 +1257,7 @@
                                             [(ngModel)]="Item.quantity" (ngModelChange)="quantityChange(Item)"
                                             name="Item.quantity" oninput="validity.valid||(value='')">
                                     </td>
-                                    <td>{{(Item.quantity ?? 0) * Item.price }}</td>
+                                    <td>{{(Item.quantity ?? 0) * Item.price }}</td> <!-- update here -->
                                 </tr>
 
                             </tbody>

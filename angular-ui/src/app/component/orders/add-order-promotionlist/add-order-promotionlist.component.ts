@@ -66,6 +66,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
   stockItem: any;
   promos: any
   totalSelectedQuantity: number = 0;
+  totalFreeSelectedQuantity: number = 0;
   foc: number = 0
   orderAmount: number = 0;
   focvalue: any;
@@ -310,7 +311,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
       console.log(this.currentPromotionValue);
       console.log(this.otherPromotionValue);
       console.log(this.promocalculation);
-      if(this.promocalculation){
+      if (this.promocalculation) {
         this.otherPromotionValue.qty = this.promocalculation.overallQty - this.currentPromotionValue.qty;
         this.otherPromotionValue.amount = this.promocalculation.overallAmount - this.currentPromotionValue.amount;
       }
@@ -321,17 +322,19 @@ export class AddOrderPromotionlistComponent implements OnInit {
   }
   GETMOQ: any;
   promoDetails: any;
-  currentPromotionValue:any = {
-    qty:0, 
-    amount:0
+  currentPromotionValue: any = {
+    qty: 0,
+    amount: 0,
+    freePromoQty: 0
   };
-  otherPromotionValue:any = {
-    qty:0, 
-    amount:0
+  otherPromotionValue: any = {
+    qty: 0,
+    amount: 0
   };
 
   appendStockItemFields(stockItem, productPromotions, calculateCurrentPromotionValue) {
     let formatObj: any = {};
+    let copyStockItem =  JSON.parse(JSON.stringify(stockItem));
     console.log(this.currentSelectedPromos);
     let promotion = this.currentSelectedPromos.find(x => x.promotionId == productPromotions.productPromotionsId);
 
@@ -345,11 +348,13 @@ export class AddOrderPromotionlistComponent implements OnInit {
         productPromotions.isShowPromos = true;
         tempStockItem.productSKUName = stockItem.productSKUName;
         stockItem = tempStockItem;
-        if(calculateCurrentPromotionValue){
+        if (calculateCurrentPromotionValue) {
           this.currentPromotionValue.qty += stockItem.quantity;
-          this.currentPromotionValue.amount += (stockItem.price * stockItem.quantity);
+          this.currentPromotionValue.amount += (stockItem.discount * stockItem.quantity);
+        } else {
+          this.currentPromotionValue.freePromoQty += stockItem.quantity;
         }
-        
+
       }
     }
 
@@ -362,11 +367,11 @@ export class AddOrderPromotionlistComponent implements OnInit {
     formatObj.isProductSelected = stockItem.isProductSelected == undefined ? false : stockItem.isProductSelected;
     formatObj.Quantity = stockItem.quantity == undefined ? null : stockItem.quantity;
     formatObj.Taxid = stockItem.taxid;
-    formatObj.registrationNumber = stockItem.registrationNumber;
+    formatObj.registrationNumber = copyStockItem.registrationNumber;
     formatObj.moq = stockItem.moq;
     formatObj.remarks = stockItem.remarks;
     formatObj.promotionTypesId = stockItem.promotionTypesId;
-    formatObj.materialcustomidentifier = stockItem.materialcustomidentifier;
+    formatObj.materialcustomidentifier = copyStockItem.materialcustomidentifier;
     formatObj.materialCustomName = stockItem.materialCustomName;
 
     return formatObj;
@@ -535,25 +540,10 @@ export class AddOrderPromotionlistComponent implements OnInit {
   }
 
   calculateTotalSelectedQuantity() {
-    let totalSelectedQuantity: number = 0;
-    let orderAmount: number = 0
-    for (const data of this.griddatapromotions) {
-      for (const group of data.promoDetails.buyGroups || []) {
-        for (const item of group.stockitemid || []) {
-          if (item.isProductSelected) {
-            totalSelectedQuantity += item.Quantity || 0;
-            orderAmount += (item.Quantity || 0) * item.price;
-          }
-        }
-      }
-    }
-    this.totalSelectedQuantity = totalSelectedQuantity;
-    this.orderAmount = orderAmount
-    console.log(this.totalSelectedQuantity);
-    console.log(orderAmount);
 
-    this.currentPromotionValue.qty = this.totalSelectedQuantity + this.TotalselectedQuantitythreePromotion + this.selectedProQTY;
-    this.currentPromotionValue.amount = this.orderAmount + this.TotalthreePromotionAmount + this.totalPromotionOrderAmount;
+    this.currentPromotionValue.qty = this.totalSelectedQuantity;
+    this.currentPromotionValue.amount = this.totalPromotionOrderAmount;
+    this.currentPromotionValue.freePromoQty = this.totalFreeSelectedQuantity;
     let aditionalMoqDetailsArrays: any = [];
     for (const item of this.focvalue) {
       if (item && item.promoDetails && item.promoDetails.aditionalMoqDetails) {
@@ -642,6 +632,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
     });
     // 3 Promotions TotalAmount Calculations
     this.TotalthreePromotionAmount = item.promoDetails.DiscountAmount;
+    this.totalPromotionOrderAmount = item.promoDetails.DiscountAmount;
     console.log("Checking Total Amount", item.promoDetails.DiscountAmount);
 
   }
@@ -662,7 +653,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
             // 4 // TotalForthPromotionAmount Calculations
             this.totalPromotionOrderAmount = item.promoDetails.DiscountAmount;
-            console.log("RK", item.promoDetails.DiscountAmount);
+            // this.totalPromotionOrderAmount += item.promoDetails.DiscountAmount;
+            // console.log("RK", item.promoDetails.DiscountAmount);
             localStorage.setItem('ForthPromotionTotalAmount', JSON.stringify(this.totalPromotionOrderAmount));
           }
 
@@ -690,6 +682,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
         if (item.promoDetails && item.promoDetails.buyGroups && item.promoDetails.buyGroups && item.promoDetails.buyGroups.length != 0) {
           item.promoDetails.buyGroupsQty = 0;
           item.promoDetails.requiredGetGroupsQty = 0;
+          this.totalSelectedQuantity = 0;
+          this.totalPromotionOrderAmount = 0;
+          this.totalFreeSelectedQuantity = 0;
           item.promoDetails.buyGroups.forEach(stockItem => {
             stockItem.totalQuantity = 0;
             stockItem.totalAmount = 0;
@@ -710,6 +705,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
 
                   stockItem.totalAmount += (stock.price * stock.Quantity);
+                  this.totalSelectedQuantity += stock.Quantity;
+                  this.totalPromotionOrderAmount += stockItem.totalAmount;
 
                   const totalAmount = stockItem.totalAmount;
                   // this.orderAmount = stockItem.totalAmount
@@ -747,6 +744,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
                 if (stock.isProductSelected) {
                   stockItem.totalQuantity += stock.Quantity;
                   stockItem.totalAmount += (stock.price * stock.Quantity);
+                  this.totalFreeSelectedQuantity += stock.Quantity;
                 }
               })
 
@@ -770,10 +768,10 @@ export class AddOrderPromotionlistComponent implements OnInit {
             // }
           });
         }
-        item.promoDetails.totalAmount = item.promoDetails.buyGroups.reduce((total, stockItem) => {
-          return total + (stockItem.totalAmount ?? 0);
-        }, 0);
-        this.totalPromotionOrderAmount = item.promoDetails.totalAmount;
+        // item.promoDetails.totalAmount = item.promoDetails.buyGroups.reduce((total, stockItem) => {
+        //   return total + (stockItem.totalAmount ?? 0);
+        // }, 0);
+        // this.totalPromotionOrderAmount = item.promoDetails.totalAmount;
         break;
 
       case 2:
@@ -782,6 +780,9 @@ export class AddOrderPromotionlistComponent implements OnInit {
           item.promoDetails.isBuyItemValid = true;
           item.promoDetails.isBuyItemSelected = false;
           item.promoDetails.buyGroupsQty = 0;
+          this.totalPromotionOrderAmount = 0;
+          this.totalSelectedQuantity = 0;
+          this.totalFreeSelectedQuantity = 0;
           item.promoDetails.buySets.forEach(setItem => {
             setItem.isInputEnable = false;
             setItem.buyGroups.forEach(stockItem => {
@@ -795,6 +796,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
                     setItem.isInputEnable = true;
                     stockItem.totalQuantity += stock.Quantity;
                     stockItem.totalAmount += (stock.price * stock.Quantity);
+                    this.totalPromotionOrderAmount += stockItem.totalAmount;
+                    this.totalSelectedQuantity += stockItem.totalQuantity;
                   }
 
                 })
@@ -834,6 +837,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
                     setItem.isInputEnable = true;
                     stockItem.totalQuantity += stock.Quantity;
                     stockItem.totalAmount += (stock.price * stock.Quantity);
+                    this.totalFreeSelectedQuantity += stockItem.totalQuantity;
                     // if(setItem.isInputEnable){
                     //   stockItem.isInputEnable = true;
                     // }
@@ -861,14 +865,6 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
           });
         }
-        item.promoDetails.totalAmount = item.promoDetails.getSets.reduce((total, setItem) => {
-          return total + setItem.getGroups.reduce((groupTotal, stockItem) => {
-            return groupTotal + (stockItem.totalAmount ?? 0);
-          }, 0);
-        }, 0);
-
-        // Calculate and store total promotion order amount for case 2
-        this.totalPromotionOrderAmount = item.promoDetails.totalAmount;
 
         this.updateInputEnableStatus(item);
         break;
@@ -877,16 +873,17 @@ export class AddOrderPromotionlistComponent implements OnInit {
         if (item.promoDetails && item.promoDetails.stockitems && item.promoDetails.stockitems.length != 0) {
           item.promoDetails.totalQuantity = 0;
           item.promoDetails.totalAmount = 0;
+          this.totalSelectedQuantity = 0;
+          this.totalPromotionOrderAmount = 0;
           item.promoDetails.isItemValid = true;
           item.promoDetails.stockitems.forEach(stockItem => {
             if (stockItem.isProductSelected) {
               item.promoDetails.totalQuantity += stockItem.Quantity;
               item.promoDetails.totalAmount += (stockItem.price * stockItem.Quantity);
 
-
-              //  3 Promotion Calculations Total Selected Quantity
-              console.log(item.promoDetails.totalQuantity, "OMG")
               this.TotalselectedQuantitythreePromotion = item.promoDetails.totalQuantity;
+              this.totalSelectedQuantity += item.promoDetails.totalQuantity;
+              
 
             }
           });
@@ -902,6 +899,8 @@ export class AddOrderPromotionlistComponent implements OnInit {
           item.promoDetails.totalQuantity = 0;
           item.promoDetails.totalAmount = 0;
           item.promoDetails.isItemValid = true;
+          this.totalSelectedQuantity = 0;
+          this.totalPromotionOrderAmount = 0;
           item.promoDetails.stockitems.forEach(stockItem => {
             if (stockItem.isProductSelected) {
               item.promoDetails.totalQuantity += stockItem.Quantity;
@@ -911,7 +910,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
               // 4 Promotion Calculations
               this.selectedProQTY = item.promoDetails.totalQuantity;
 
-
+              this.totalSelectedQuantity += item.promoDetails.totalQuantity;
 
             }
           });

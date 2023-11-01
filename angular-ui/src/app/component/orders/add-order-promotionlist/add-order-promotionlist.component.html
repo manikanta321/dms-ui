@@ -99,199 +99,47 @@
 
                                     <div class="promoitems-card">
                                         <div class="promoitemsDetails">
-                                            <div *ngFor="let data of griddatapromotions">
-                                                <!-- promotion 1 -->
-                                                <div *ngIf="data.promotionTypesId ===1">
-                                                    <div *ngFor="let promos of data.promoDetails.buyGroups">
-                                                         <!-- {{promos|json}}  -->
-                                                        <div class="row  FirstPromotioncalcul">
-                                                            <div class="col" style="background: rgba(222, 226, 230, 0.2);height: 60px;">
-                                                                    <label id="FirstPromotionlabelCal">Total Order  Qty</label>
-                                                                    <!-- <span id="FirstproTotalorderqyt">
-                                                                        {{ promocalculation?.overallQty + totalSelectedQuantity+storedValue}}
-                                                                        </span> -->
-                                                                        <span id="FirstproTotalorderqyt">
-                                                                            {{ promocalculation?.overallQty + totalSelectedQuantity+storedValue}}
-                                                                            </span>
-                                                                    </div>
-                                                                <div class="col" style="background: rgba(222, 226, 230, 0.2);">
-                                                                    <label id="FirstPromotionlabelCal">Total Order Amount</label>                                                                 
-                                                                    <span id="FirstPromotiontotalselectamount">
-                                                                        {{ promocalculation?.overallAmount + orderAmount +storedTotalAmount}}
+                                            <div>
+                                                <div class="row  FirstPromotioncalcul">
+                                                    <div class="col" style="background: rgba(222, 226, 230, 0.2);height: 60px;">
+                                                            <label id="FirstPromotionlabelCal">Total Order  Qty</label>
+                                                            <!-- <span id="FirstproTotalorderqyt">
+                                                                {{ promocalculation?.overallQty + totalSelectedQuantity+storedValue}}
+                                                                </span> -->
+                                                                <span id="FirstproTotalorderqyt">
+                                                                    {{ otherPromotionValue?.qty + currentPromotionValue.qty}}
+                                                                    <!-- {{ promocalculation?.overallQty + totalSelectedQuantity+storedValue}} -->
                                                                     </span>
-                                                                </div>
-                                                            <div class="row" style="height: 60px;">
-                                                                <div class="col">
-                                                                    <label id="FirstPromotionProOrderQTY">Promo Order
-                                                                        Qty</label>
-                                                                    <span
-                                                                        id="PromoOrderQtyFirstpromotion">{{promos.totalQuantity}}</span>
-                                                                </div>
-                                                                <div class="col">
-                                                                    <label id="FirstPromotionProOrderQTY">Promo Order
-                                                                        Amount</label>
-                                                                    <span
-                                                                        id="PromotionAmountQtyFirstpromotion">{{promos.totalAmount}}</span>
-                                                                </div>
                                                             </div>
-                                                            <div class="col"
-                                                                style="background: rgba(222, 226, 230, 0.2); height: 60px;"
-                                                                *ngFor="let promos of data.promoDetails.getGroups">
-                                                                <label id="FirstProFreeOrderQty">Promo<span
-                                                                        style="margin-left: 7px;">Free</span>
-                                                                    Qty</label>
-                                                                <span
-                                                                    id="FREEORDERQTYfirstpromotion">{{promos.totalQuantity}}</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- 2 Promotion Start  -->
-                                                <div *ngIf="data.promotionTypesId ===2">
-                                                    <div *ngFor="let setItem of data.promoDetails.buySets;let j=index">
-                                                        <div *ngIf="j === 0">
-                                                            <div *ngFor="let promos of setItem.buyGroups">
-                                                                <div class="row SecondPromotioncalcution">
-                                                                    <div class="col"
-                                                                        style="background: rgba(222, 226, 230, 0.2);height: 60px;">
-                                                                        <label id="SecondPromotionlabelCal">Total Order
-                                                                            Qty</label>
-                                                                        <span
-                                                                            id="SecondPromotiontotalorderqty">{{promos.totalQuantity}}
-                                                                        </span>
-                                                                    </div>
-
-                                                                    <div class="col"
-                                                                        style="background: rgba(222, 226, 230, 0.2);">
-                                                                        <label id="SecondPromotionlabelCal">Total Order
-                                                                            Amount</label>
-                                                                        <span
-                                                                            id="secondPromotionTotalorderamount">{{promos.totalAmount
-                                                                            }}</span>
-                                                                    </div>
-
-                                                                    <div class="row" style="height: 57px;">
-                                                                        <div class="col">
-                                                                            <label id="SecondPromotionProOrderQty">Promo
-                                                                                Order Qty</label>
-                                                                            <span
-                                                                                id="SecondPromotionProOrderquanty">{{promos.totalQuantity}}</span>
-                                                                        </div>
-                                                                        <div class="col">
-                                                                            <label id="SecondPromotionProOrderQty">Promo
-                                                                                Order Amount</label>
-                                                                            <span
-                                                                                id="PromoorderAMOUNT">{{promos.totalAmount
-                                                                                }} </span>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="row"
-                                                                        style="background: rgba(222, 226, 230, 0.2); margin-left: 1px;height: 53px;">
-                                                                        <!-- <div class="col" >
-                                                                        <label id="SecondPromotionFreeorderqty">Promo<span style="margin-left: 7px;">Free</span>  Qty</label>
-                                                                        <span id="FreeOrderQTySecondPromotion"> {{promos.totalQuantity}} </span>
-                                                                    </div> -->
-                                                                        <div *ngFor="let setItem of data.promoDetails.getSets; let j=index"
-                                                                            style="margin-left: 1px; height: 53px;">
-                                                                            <div *ngIf="j === 0">
-                                                                                <div
-                                                                                    *ngFor="let promos of setItem.getGroups">
-                                                                                    <div class="row"
-                                                                                        style="display: inline;">
-                                                                                        <div class="col"
-                                                                                            style="margin-top: -20px;">
-                                                                                            <label
-                                                                                                id="SecondPromotionFreeorderqty">
-                                                                                                Promo <span
-                                                                                                    style="margin-left: 6px;">Free</span>
-                                                                                                Qty </label>
-                                                                                            <span
-                                                                                                id="FREEQTYsecondpromotion">{{
-                                                                                                promos.totalQuantity
-                                                                                                }}</span>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!--3 Promotion  -->
-                                                <div *ngIf="data.promotionTypesId ===3" class="calculation">
-                                                    <div class="row mt-4" style="margin-left: 0%;">
-                                                        <div class="col"
-                                                            style="background: rgba(222, 226, 230, 0.2);height: 60px;">
-                                                            <label id="totalorderqty" for="inputField">Total Order
-                                                                Qty</label>
-                                                            <span id="TotalOrderQTY">
-                                                                {{data.promoDetails.totalQuantity+StoreThreePromotionsselectedqty}}</span>
-
-
-                                                        </div>
                                                         <div class="col" style="background: rgba(222, 226, 230, 0.2);">
-                                                            <label id="totalorderamount" for="inputField">Total Order
-                                                                Amount</label>
-                                                            <span
-                                                                id="TotalOrderAmount">{{data.promoDetails.DiscountAmount
-                                                                +StoredThreePromoTotalAmount}}</span>
+                                                            <label id="FirstPromotionlabelCal">Total Order Amount</label>                                                                 
+                                                            <span id="FirstPromotiontotalselectamount">
+                                                                {{ otherPromotionValue?.amount + currentPromotionValue.amount}}
 
+                                                                <!-- {{ promocalculation?.overallAmount + orderAmount +storedTotalAmount}} -->
+                                                            </span>
                                                         </div>
-                                                        <div class="w-100"></div>
-                                                        <div class="col mt-3">
-                                                            <label id="Promoorderqty" for="inputField">Promo Order
+                                                    <div class="row" style="height: 60px;">
+                                                        <div class="col">
+                                                            <label id="FirstPromotionProOrderQTY">Promo Order
                                                                 Qty</label>
-                                                            <span id="ProOrderqty">
-                                                                {{data.promoDetails.totalQuantity}}</span>
+                                                            <span
+                                                                id="PromoOrderQtyFirstpromotion">{{currentPromotionValue.qty}}</span>
                                                         </div>
-                                                        <div class="col mt-3">
-                                                            <label id="Promoorderamount" for="inputField">Promo Order
+                                                        <div class="col">
+                                                            <label id="FirstPromotionProOrderQTY">Promo Order
                                                                 Amount</label>
                                                             <span
-                                                                id="PromoOrderAmount">{{data.promoDetails.DiscountAmount
-                                                                ?? 0 }}</span>
+                                                                id="PromotionAmountQtyFirstpromotion">{{currentPromotionValue.amount}}</span>
                                                         </div>
                                                     </div>
-                                                </div>
-
-                                                <!-- 4 Promotion  -->
-                                                <div *ngIf="data.promotionTypesId === 4" class="calculation">
-                                                    <div class="row mt-4" style="margin-left: 0%;">
-                                                        <div class="col"
-                                                            style="background: rgba(222, 226, 230, 0.2);height: 60px;">
-                                                            <label id="totalorderqty" for="inputField">Total Order
-                                                                Qty</label>
-                                                            <span id="TotalOrderQTY">
-                                                                {{data.promoDetails.totalQuantity+storedForthProvalue}}</span>
-                                                        </div>
-                                                        <div class="col" style="background: rgba(222, 226, 230, 0.2);">
-                                                            <label id="totalorderamount" for="inputField">Total Order
-                                                                Amount</label>
-                                                            <span
-                                                                id="TotalOrderAmountforthPro">{{data.promoDetails.DiscountAmount
-                                                                +StoredForhtPromoTotalAmount}}</span>
-
-                                                        </div>
-                                                        <div class="w-100"></div>
-                                                        <div class="col mt-3">
-                                                            <label id="Promoorderqty" for="inputField">Promo Order
-                                                                Qty</label>
-                                                            <span id="ProOrderqty">
-                                                                {{data.promoDetails.totalQuantity}}</span>
-                                                        </div>
-                                                        <div class="col mt-3">
-                                                            <label id="Promoorderamount" for="inputField">Promo Order
-                                                                Amount</label>
-                                                            <span
-                                                                id="TotalOrderAmountforthPromotion">{{data.promoDetails.DiscountAmount
-                                                                ?? 0 }}</span>
-                                                        </div>
+                                                    <div class="col"
+                                                        style="background: rgba(222, 226, 230, 0.2); height: 60px;" >
+                                                        <label id="FirstProFreeOrderQty">Promo<span
+                                                                style="margin-left: 7px;">Free</span>
+                                                            Qty</label>
+                                                        <span
+                                                            id="FREEORDERQTYfirstpromotion">{{currentPromotionValue.freePromoQty}}</span>
                                                     </div>
                                                 </div>
 
@@ -366,60 +214,37 @@
                                                             <table class="tableclass">
                                                                 <thead class="table-headercolor">
                                                                     <tr>
-                                                                        <th data-sortable="true" class="align-center">
-                                                                            Product Code</th>
-                                                                        <th data-sortable="true" class="align-center">
-                                                                            Product Name</th>
-                                                                        <th data-sortable="true" class="align-center">
-                                                                            Identifiers</th>
-                                                                        <th data-sortable="true" class="align-center">
-                                                                            Registration No</th>
-                                                                        <th data-sortable="true" class="align-center">
-                                                                            MOQ</th>
-                                                                        <th data-sortable="true" class="align-center">
-                                                                            Unit Price</th>
-                                                                        <th data-sortable="false" class="align-center">
-                                                                            Order Qty</th>
-                                                                        <th data-sortable="false" class="align-center">
-                                                                            Order Amount</th>
+                                                                        <th data-sortable="true" class="align-center">Product Code</th>
+                                                                        <th data-sortable="true" class="align-center">Product Name</th>
+                                                                        <th data-sortable="true" class="align-center">Identifiers</th>
+                                                                        <th data-sortable="true" class="align-center">Registration No</th>
+                                                                        <th data-sortable="true" class="align-center">MOQ</th>
+                                                                        <th data-sortable="true" class="align-center">Unit Price</th>
+                                                                        <th data-sortable="false" class="align-center">Order Qty</th>
+                                                                        <th data-sortable="false" class="align-center">Order Amount</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody class="tbodayheight">
-                                                                    <tr
-                                                                        *ngFor="let Item of promos.stockitemid | filter:searchText ">
-                                                                        <ng-container
-                                                                            *ngIf="toggleState ? Item.isProductSelected : true">
+                                                                    <tr *ngFor="let Item of promos.stockitemid | filter:searchText">
+                                                                        <ng-container *ngIf="toggleState ? Item.isProductSelected : true">
                                                                             <td style="width: 24px">
-                                                                                <input type="checkbox"
-                                                                                    [checked]="Item.isProductSelected"
-                                                                                    (change)="checkboxChange($event, Item,data)" />
+                                                                                <input type="checkbox" [checked]="Item.isProductSelected" (change)="checkboxChange($event, Item, data)" />
                                                                             </td>
-                                                                            <td style="text-align: left;">{{
-                                                                                Item.productSKUName }}</td>
-                                                                            <td style="text-align: left;">{{
-                                                                                Item.stockitemname }}</td>
-                                                                            <td style="text-align: left;">{{
-                                                                                Item.materialcustomidentifier }}</td>
-                                                                            <td style="text-align: left;">{{
-                                                                                Item.registrationNumber }}</td>
-                                                                            <td class="txt-right">{{ promos.moq }}</td>
-                                                                            <td class="txt-right">{{ Item.price }}</td>
+                                                                            <td style="text-align: left;">{{ Item.productSKUName }}</td>
+                                                                            <td style="text-align: left;">{{ Item.stockitemname }}</td>
+                                                                            <td style="text-align: left;">{{ Item.materialcustomidentifier }}</td>
+                                                                            <td style="text-align: left;">{{ Item.registrationNumber }}</td>
+                                                                            <td class="">{{ promos.moq }}</td>
+                                                                            <td class="">{{ Item.price }}</td>
                                                                             <td>
-                                                                                <input type="number" min="0"
-                                                                                    placeholder="Enter Qty"
-                                                                                    class="quatity-inp"
-                                                                                    [(ngModel)]="Item.Quantity"
-                                                                                    oninput="validity.valid||(value='');"
-                                                                                    (keyup)="quantityChange(data,Item);"
-                                                                                    name="Item.Quantity" />
+                                                                                <input type="number" min="0" placeholder="Enter Qty" class="quatity-inp" [(ngModel)]="Item.Quantity" oninput="validity.valid||(value='');" (keyup)="quantityChange(data, Item);" name="Item.Quantity" />
                                                                             </td>
-                                                                            <td class="txt-right">{{ (Item.Quantity ??
-                                                                                0) * Item.price | number : '1.2-2' }}
-                                                                            </td>
+                                                                            <td class="txt-right">{{ (Item.Quantity ?? 0) * Item.price | number : '1.2-2' }}</td>
                                                                         </ng-container>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
+                                                            
                                                         </div>
                                                     </div>
 

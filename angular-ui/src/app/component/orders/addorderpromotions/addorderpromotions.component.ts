@@ -309,7 +309,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
   firstFormGroup: FormGroup = this._formBuilder.group({ firstCtrl: [''] });
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
-  promocalculation:any=[]
+  promocalculation: any = []
   ngOnInit(): void {
     localStorage.setItem('AddorEditpro', '');
     localStorage.setItem('AddorEditpro1', '');
@@ -575,37 +575,9 @@ export class AddorderpromotionsComponent implements OnInit {
           ...res,
         ];
         this.clickedPromotion = null;
-        console.log(this.AddOrderPromotionData,'AddOrderPromotionData');
-        const allExtractedData: any = [];
-        let overallQty = 0;
-        let overallAmount = 0;
-
+        console.log(this.AddOrderPromotionData, 'AddOrderPromotionData');
         this.arrayOfImages.forEach((x) => {x.isSelected =this.AddOrderPromotionData.findIndex((y) => y.promotionId === x.productPromotionsId) !== -1;});
-        function extractInformation(item) {
-          const itemDetails = item.itemDetails.filter((subItem) => subItem.isBuyProduct);
-          const totalQuantity = itemDetails.reduce((total, subItem) => total + subItem.quantity,0);
-          const totalPrice = itemDetails.reduce((total, subItem) => total + subItem.price,0);
-          const totalFinalPrice = itemDetails.reduce((total, subItem) => total + subItem.finalPrice,0);
-          overallQty += totalQuantity;
-          overallAmount += totalFinalPrice;
-          const extractedItem = {
-            promotionId: item.promotionId,
-            previousValues: {
-              quantity: totalQuantity,
-              price: totalPrice,
-              finalPrice: totalFinalPrice,
-            },
-          };
-          allExtractedData.push(extractedItem);
-        }
-        this.AddOrderPromotionData.forEach(extractInformation);
-        const overallData = {
-          overallQty: overallQty,
-          overallAmount: overallAmount,
-          extractedData: allExtractedData,
-        };
-        localStorage.setItem('calculation', JSON.stringify(overallData));
-        console.log(overallData);
+        this.caliculateProductAmount();
         this.AddOrderPromotionData.forEach((element) => {
           element.isOpen = true;
           // element.push({ isOpen: false }); // Corrected this part
@@ -614,10 +586,63 @@ export class AddorderpromotionsComponent implements OnInit {
         this.promotionName = localStorage.getItem('PromotionName');
         this.promotionTypesName = localStorage.getItem('PromotionTypeName');
       }
-        
+
     });
     // localStorage.setItem('buygroupromo', '')
   }
+
+  promotionQTY :number = 0;
+  promotionAmount :number = 0;
+  nonPromotionQTY:number = 0;
+  nonPromotionAmount:number = 0;
+  caliculateProductAmount() {
+    const allExtractedData: any = [];
+    let overallQty = 0;
+    let overallAmount = 0;
+
+    
+    function extractInformation(item) {
+      const itemDetails = item.itemDetails.filter((subItem) => subItem.isBuyProduct);
+      const totalQuantity = itemDetails.reduce((total, subItem) => total + subItem.quantity, 0);
+      const totalPrice = itemDetails.reduce((total, subItem) => total + subItem.price, 0);
+      const totalFinalPrice = itemDetails.reduce((total, subItem) => total + subItem.finalValue, 0);
+      overallQty += totalQuantity;
+      overallAmount += totalFinalPrice;
+      
+      const extractedItem = {
+        promotionId: item.promotionId,
+        previousValues: {
+          quantity: totalQuantity,
+          price: totalPrice,
+          finalPrice: totalFinalPrice,
+        },
+      };
+      allExtractedData.push(extractedItem);
+    }
+    this.AddOrderPromotionData.forEach(extractInformation);
+    this.promotionAmount = overallAmount;
+    this.promotionQTY = overallQty;
+    this.nonPromotionQTY = 0;
+    this.nonPromotionAmount = 0; 
+
+    this.orderNonPromotionsdata.forEach((item) => {
+      if (item.isPromotionSelected) {
+        this.nonPromotionQTY += item.quantity; // update here
+        this.nonPromotionAmount += (item.quantity ?? 0) * item.price;// update here
+      }
+    });
+
+    // console.log("******************************************");
+    const overallData = {
+      overallQty: overallQty + this.nonPromotionQTY,
+      overallAmount: overallAmount + this.nonPromotionAmount,
+      extractedData: allExtractedData,
+    };
+    localStorage.setItem('calculation', JSON.stringify(overallData));
+    console.log(overallData);
+  }
+
+  
   getPromotionsImages() {
     let data = {
       Dealerid: this.customerId,
@@ -699,8 +724,8 @@ export class AddorderpromotionsComponent implements OnInit {
   ThreePromotionTotalAmount: number | any = 0;
   addOrderNonPromotionList() {
 
-    this.promocalculation = JSON.parse(localStorage.getItem('calculation')|| 'null')
-    console.log(this.promocalculation,'calculationpart');
+    this.promocalculation = JSON.parse(localStorage.getItem('calculation') || 'null')
+    console.log(this.promocalculation, 'calculationpart');
     // 4 Promotion Calculations
     this.ForthPromotionsSelectedQuantity = localStorage.getItem(
       'ForthPromotionSelectedQTy'
@@ -764,19 +789,19 @@ export class AddorderpromotionsComponent implements OnInit {
   removePromotionItem(clickedItem, promotionId) {
     console.log(promotionId);
     alert(promotionId);
-    let calculationRemove = JSON.parse(localStorage.getItem('calculation') || '[]'); 
+    let calculationRemove = JSON.parse(localStorage.getItem('calculation') || '[]');
     console.log(calculationRemove, 'calculation');
 
     const indexToRemove = calculationRemove.extractedData.findIndex((x) => x.promotionId === promotionId);
     if (indexToRemove !== -1) {
-    const removedItem = calculationRemove.extractedData[indexToRemove];
-    calculationRemove.extractedData.splice(indexToRemove, 1);
-    // Subtract the removed item's values from overallQty and overallAmount
-    calculationRemove.overallQty -= removedItem.previousValues.quantity;
-    calculationRemove.overallAmount -= removedItem.previousValues.finalPrice;
-    localStorage.setItem("calculation", JSON.stringify(calculationRemove));
+      const removedItem = calculationRemove.extractedData[indexToRemove];
+      calculationRemove.extractedData.splice(indexToRemove, 1);
+      // Subtract the removed item's values from overallQty and overallAmount
+      calculationRemove.overallQty -= removedItem.previousValues.quantity;
+      calculationRemove.overallAmount -= removedItem.previousValues.finalPrice;
+      localStorage.setItem("calculation", JSON.stringify(calculationRemove));
     }
-    console.log(calculationRemove,'afterremove data');
+    console.log(calculationRemove, 'afterremove data');
     // this.productType = localStorage.removeItem('PromotionType');
     this.promotionName = localStorage.getItem('PromotionName');
     this.promotionTypesName = localStorage.getItem('PromotionTypeName');
@@ -909,6 +934,11 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   onItemSelectdealers(item: any) {
+    let prev_dealer = JSON.parse(localStorage.getItem('dealerid')||'null')
+    if(prev_dealer !==item.customerId){
+    alert('removing previous dealer items')
+    localStorage.removeItem('calculation')
+    }
     localStorage.removeItem('totalQuantity');
     localStorage.removeItem('totalAmount');
     this.customerId = item.customerId;
@@ -1815,6 +1845,7 @@ export class AddorderpromotionsComponent implements OnInit {
         this.orderNonPromotionsdata = this.orderNonPromotionFormatter(
           orderNonPromotionsData
         );
+        this.caliculateProductAmount();
         this.hideSpinner();
       },
       error: () => {
@@ -1900,12 +1931,7 @@ export class AddorderpromotionsComponent implements OnInit {
     console.log(changedPromotionObj);
     this.quantityadd = 0;
     this.price = 0;
-    this.orderNonPromotionsdata.forEach((item) => {
-      if (item.isPromotionSelected) {
-        this.quantityadd += item.quantity;
-        this.price += (item.quantity ?? 0) * item.price;
-      }
-    });
+    this.caliculateProductAmount();
     let index = this.nonpromotionlist.findIndex(
       (x) => x.stockitemid == changedPromotionObj.stockitemid
     );
@@ -2022,11 +2048,11 @@ export class AddorderpromotionsComponent implements OnInit {
       localStorage.setItem('FirstPromotionTotalAmountValue', this.price);
 
       // 4 Promotions Calculations
-      localStorage.setItem('ForthPromotionCalculationsTotalQty',this.quantityadd);
+      localStorage.setItem('ForthPromotionCalculationsTotalQty', this.quantityadd);
       localStorage.setItem('ForthPromotionCalculationsAmount', this.price);
 
       // 3 Promotions Calculations
-      localStorage.setItem('ThreeePromotionCalculationsTotalQty',this.quantityadd
+      localStorage.setItem('ThreeePromotionCalculationsTotalQty', this.quantityadd
       );
       localStorage.setItem('ThreePromotionCalculationsAmount', this.price);
       // }
@@ -2362,22 +2388,22 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   removePromotion(e, promotionItem) {
-    alert(promotionItem.isSelected )
+    alert("Promotion has been removed");
     console.log(promotionItem);
     // alert(promotionItem.productPromotionsId);
-    let calculationRemove = JSON.parse(localStorage.getItem('calculation') || '[]'); 
+    let calculationRemove = JSON.parse(localStorage.getItem('calculation') || '[]');
     console.log(calculationRemove, 'calculation');
 
     const indexToRemove = calculationRemove.extractedData.findIndex((x) => x.promotionId === promotionItem.productPromotionsId);
     if (indexToRemove !== -1) {
-    const removedItem = calculationRemove.extractedData[indexToRemove];
-    calculationRemove.extractedData.splice(indexToRemove, 1);
-    // Subtract the removed item's values from overallQty and overallAmount
-    calculationRemove.overallQty -= removedItem.previousValues.quantity;
-    calculationRemove.overallAmount -= removedItem.previousValues.finalPrice;
-    localStorage.setItem("calculation", JSON.stringify(calculationRemove));
+      const removedItem = calculationRemove.extractedData[indexToRemove];
+      calculationRemove.extractedData.splice(indexToRemove, 1);
+      // Subtract the removed item's values from overallQty and overallAmount
+      calculationRemove.overallQty -= removedItem.previousValues.quantity;
+      calculationRemove.overallAmount -= removedItem.previousValues.finalPrice;
+      localStorage.setItem("calculation", JSON.stringify(calculationRemove));
     }
-    console.log(calculationRemove,'afterremove data');
+    console.log(calculationRemove, 'afterremove data');
 
     // this.productType = localStorage.removeItem('PromotionType');
     this.promotionName = localStorage.getItem('PromotionName');
@@ -2386,7 +2412,7 @@ export class AddorderpromotionsComponent implements OnInit {
     e.stopPropagation();
     promotionItem.isSelected = false;
     this.AddOrderPromotionData = this.AddOrderPromotionData.filter(
-    (x) => x.promotionId !== promotionItem.productPromotionsId
+      (x) => x.promotionId !== promotionItem.productPromotionsId
     );
     this.getShippingandPackingcharges();
     // localStorage.removeItem('totalQuantity');
@@ -2397,8 +2423,8 @@ export class AddorderpromotionsComponent implements OnInit {
     // 3 Promotion calculations
     localStorage.removeItem('ThreePrommotionTotalselectedQuantity');
     localStorage.removeItem('ThreePromotionTotalAmount');
-    }
-    
+  }
+
 
   showPromotionInfo(e, promotionItem) {
     e.stopPropagation();

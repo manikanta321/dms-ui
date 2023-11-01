@@ -246,6 +246,7 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
             arraybj.push(element1);
             let obj: any = {
               promo: element.promocode,
+              promoName:element.promotionTypesNmae,
               customerPOProductId: element1.customerPOProductId,
               stockitemid: element1.customerPOProductId,
               stockitemname: element1.stockitemname,

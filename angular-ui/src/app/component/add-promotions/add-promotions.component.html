@@ -788,7 +788,7 @@
                                     <th><input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="qtyFrom" [ngClass]="{'error-border': formArr.at(i).get('qtyFrom')?.hasError('invalidRange') }"></th>
                                     <th><input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="qtyTo" [ngClass]="{'error-border': formArr.at(i).get('qtyTo')?.hasError('invalidRange') }"></th>
                                     <th>
-                                        <input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="buy">
+                                        <input type="text" class="form-control" (input)="restrictToAlphabets($event)"(input)="validateBuyInRange(i)" formControlName="buy">
                                         <div *ngIf="formArr.controls[i].get('buy')?.hasError('buyNotInRange')" class="error-message">
                                             Buy value must be in between Quantity From and Quantity To.
                                           </div>

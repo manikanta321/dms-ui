@@ -162,7 +162,7 @@
   <!-- <div style=""></div>  -->
   <div *ngIf="showGridData">
     <ag-grid-angular id="gridContainer"
-    style=" margin-bottom: 100px;height: 406px;border-radius: 20px;background-color: white;font-family: Gilroy;margin-left: 20px; margin-top: 12px;"
+    style=" margin-bottom: 100px;height: 406px;background-color: white;font-family: Gilroy;margin-left: 20px; margin-top: 12px;"
     class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
     [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="reportResData"
     [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"

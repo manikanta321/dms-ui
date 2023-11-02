@@ -1609,7 +1609,7 @@ mat-icon {
 .refreshbtn {
   width: 39px;
   border-radius: 10px;
-  background-color: black;
+  background: #686E74;    
   height: 41px;
   /* margin-top: 6px; */
   /* margin-left: 88px; */

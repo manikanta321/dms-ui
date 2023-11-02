@@ -365,7 +365,7 @@ export class OrderListComponent implements OnInit {
   uomName: any;
   CustomerPoId: any;
   clickNextRendererFunc() {
-    alert('hlo');
+    // alert('hlo');
   }
 
   // sorting: GuiSorting = {

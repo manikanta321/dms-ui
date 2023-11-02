@@ -1,5 +1,5 @@
 <div class="container-fluid mt-5">
-    <div class="section shipment">
+    <div class="section shipment" >
 <div class="row" style="margin-left: 3px;">
     <!-- <div class="col-md-2 col-lg-2 col-sm-2 custom-bubblesorders-shipment  shipmentdropdown" *ngIf="userType !== 'Dealer Admin'">
         <form [formGroup]="myForm" class="dropdown-form">
@@ -85,7 +85,7 @@
 
 <!-- grid -->
 <div class="sales-grid-table mt-3">
-  <ag-grid-angular id="gridContainer"  style=" height: 400px;border-radius: 20px;background-color: white;font-family: Gilroy;width: 100%;"
+  <ag-grid-angular id="gridContainer"  style=" height: 400px;background-color: white;font-family: Gilroy;width: 100%;"
   class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
     [headerHeight]="48" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
     [rowData]="shipmentDatalist" [suppressExcelExport]="true" [popupParent]="popupParent"

@@ -3088,5 +3088,27 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     //   // });
     // });
   }
+
+  validateBuyInRange(index: number) {
+    const buyControl = this.formArr.at(index);
+    const qtyFromControl = buyControl.get('qtyFrom');
+    const qtyToControl = buyControl.get('qtyTo');
+ 
+    if (buyControl && buyControl.get('buy') && qtyFromControl && qtyToControl) {
+      const buyValue = +buyControl.get('buy')!.value; // Convert to a number
+      const qtyFromValue = qtyFromControl.value !== null && qtyFromControl.value !== '' ? +qtyFromControl.value : -Infinity;
+      const qtyToValue = qtyToControl.value !== null && qtyToControl.value !== '' ? +qtyToControl.value : Infinity;
+ 
+      if (buyValue > qtyToValue || buyValue < qtyFromValue) {
+        if (qtyFromValue !== -Infinity && buyValue < qtyFromValue) {
+          buyControl.get('buy')!.setErrors(null);
+        } else {
+          buyControl.get('buy')!.setErrors({ buyNotInRange: true });
+        }
+      } else {
+        buyControl.get('buy')!.setErrors(null);
+      }
+    }
+  }
 }
 

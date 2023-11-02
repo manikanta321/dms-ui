@@ -1,7 +1,8 @@
 ::ng-deep .mat-tab-group[mat-stretch-tabs]>.mat-tab-header .mat-tab-label {
     flex-basis: 0;
     flex-grow: 1;
-     border: 1px solid rgba(107, 107, 107, 1);
+     /* border: 1px solid rgba(107, 107, 107, 1); */
+     border: 1px solid rgba(1, 139, 117, 1);
      border-top-right-radius: 1px;
     border-bottom-right-radius: 2px;
     border-top-left-radius: 1px;
@@ -31,7 +32,7 @@
 
 ::ng-deep.ag-header-viewport
 {
-    background-color: rgba(1, 99, 117, 0.8);
+    background-color: rgba(1, 139, 117, 1);
 }
 /* .allicons{    
         margin-bottom:10px;
@@ -662,7 +663,7 @@ mat-sidenav-container {
 .ag-theme-alpine .ag-multi-filter-group-title-bar {
 
     --ag-background-color: rgba(219, 19, 19, 0.863);
-    --ag-border-radius: 25px;
+    --ag-border-radius: 0px;
 
 
 }
@@ -715,12 +716,12 @@ mat-sidenav-container {
     font-size: 14px !important;
 }
 
-::ng-deep.ag-theme-material .ag-root-wrapper,
+:host ::ng-deep.ag-theme-material .ag-root-wrapper,
 .ag-theme-material .ag-sticky-top {
 
     border: 0.5px solid #000000 !important;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
-    border-radius: 25px !important;
+    border-radius: 0px !important;
 
 }
 

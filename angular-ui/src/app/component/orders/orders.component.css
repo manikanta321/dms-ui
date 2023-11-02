@@ -174,7 +174,8 @@ top:3px;
     border-radius: 25px;
     background: white;
     left: 23%;
-    border: 0.5px solid rgba(0, 0, 0, 0.58);
+    /* border: 0.5px solid rgba(0, 0, 0, 0.58); */
+    border: 1px solid rgba(1, 139, 117, 1);
 
 }
 ::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {

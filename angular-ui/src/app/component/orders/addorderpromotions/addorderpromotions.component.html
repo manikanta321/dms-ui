@@ -576,7 +576,7 @@
                     <div class="collapsible">
                         <div class="row">
                             <div class="col-lg-6" (click)="expandOrderItemsDiv()">
-                                <p class="label-cls">Items</p>
+                                <p class="label-cls"> Order Items</p>
                             </div>
                             <div class="col-lg-5">
                                 <div class="addbtns d-flex">
@@ -867,16 +867,17 @@
     <div>
         <div class="row footer">
             <div class="col-md-6">
+                <button [disabled]=" !customerId || !geographyId || !BillingaddressId || !addressId" type="button"
+                    class="save-submit" (click)="ordersubmit('draft')">Save & Draft </button>
+            </div>
+            <div class="col-md-6">
 
                 <!-- <button type="button" class="saveas-draft" (click)="ordersubmit('draft')">Save as Draft</button> -->
                 <button type="button" class="save-submit11" (click)="ordersubmit('save')" id="submitbt"
                     name="submitbt">Submit</button>
 
             </div>
-            <div class="col-md-6">
-                <button [disabled]=" !customerId || !geographyId || !BillingaddressId || !addressId" type="button"
-                    class="save-submit" (click)="ordersubmit('draft')">Save & Draft </button>
-            </div>
+            
             <!-- <div class="col-md-5">
                 <button type="button" [mat-dialog-close]="false" class="cancel">Cancel</button>
             </div> -->

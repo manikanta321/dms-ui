@@ -1719,7 +1719,7 @@ li {
   display: block;
   height: 23px;
   border: none;
-  background-color:#686E74 ;
+  background-color:white ;
   color: black;
   border-radius: 5px;
   position: absolute;
@@ -1934,7 +1934,7 @@ li {
   line-height: 18px;
   align-items: center;
   text-align: center;
-
+margin-right: 235px;
   color: #FFFFFF;
 
 
@@ -1981,7 +1981,7 @@ li {
   text-align: center;
 
   color: #FFFFFF;
-
+margin-left: 230px;
 
 }
 .save-submi_t

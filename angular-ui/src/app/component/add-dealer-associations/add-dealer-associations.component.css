@@ -296,7 +296,7 @@ input.form-check-input1 {
   .refreshbtn1{
     width: 39px;
     border-radius: 10px;
-    background-color: black;
+    background: #686E74;
     height: 41px;
     /* margin-left: 25px; */
 
@@ -312,7 +312,7 @@ input.form-check-input1 {
   .refreshbtn2{
     width: 44px;
     border-radius: 10px;
-    background-color: black;
+    background: #686E74;  
     height: 44px;
     margin-top: -90px;
     /* margin-left: 88px; */

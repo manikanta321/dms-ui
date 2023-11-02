@@ -1,7 +1,8 @@
 ::ng-deep .mat-tab-group[mat-stretch-tabs]>.mat-tab-header .mat-tab-label {
     flex-basis: 0;
     flex-grow: 1;
-     border: 1px solid rgba(107, 107, 107, 1);
+     /* border: 1px solid rgba(107, 107, 107, 1); */
+     border: 1px solid rgba(1, 139, 117, 1);
      border-top-right-radius: 1px;
     border-bottom-right-radius: 2px;
     border-top-left-radius: 1px;
@@ -74,7 +75,8 @@ mat-tab{
      background: white; 
     left: 35%;
     height: 35px;
-    border: 1px solid rgba(107, 107, 107, 1);
+    /* border: 1px solid rgba(107, 107, 107, 1); */
+    border: 1px solid rgba(1, 139, 117, 1);
     
 
 }

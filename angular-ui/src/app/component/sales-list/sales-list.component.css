@@ -45,7 +45,8 @@ mat-tab{
     background: white;
     left: 35%;
     font-size: 15px;
-    border: 1px solid rgba(107, 107, 107, 1);
+    /* border: 1px solid rgba(107, 107, 107, 1); */
+    border: 1px solid rgba(1, 139, 117, 1);
     
 
 }::ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
@@ -99,7 +100,8 @@ mat-tab-group{
    ::ng-deep .sales-label .mat-tab-label{ 
       height: 31px !important;  
      width: 189px;
-     border: 1px solid rgba(107, 107, 107, 1);
+     /* border: 1px solid rgba(107, 107, 107, 1); */
+     border: 1px solid rgba(1, 139, 117, 1);
    
     /* min-width: 152px; */
    } 

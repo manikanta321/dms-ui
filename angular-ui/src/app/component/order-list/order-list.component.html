@@ -1,6 +1,6 @@
 <div class="orderlist-section mt-3 scrollbarorderlist ordersss" style="padding:15px;">
 <div class="fiters-sec">
-<div class="row orderlistdropdown">
+<div class="row orderlistdropdown" style="top: -25px;">
     <!-- <div class="col-md-2 col-lg-2 col-sm-2 custom-bubbles "  style="padding-left: 0px;" *ngIf="userType !== 'Dealer Admin'">
         <form [formGroup]="myForm" class="dropdown-form">
           <ng-multiselect-dropdown class="Dealers dlsr"  name="city" [placeholder]="'Dealers'" formControlName="city"
@@ -171,7 +171,7 @@
     <span class="ml-4"  >ITQ:<span class="ml-2">In-transit Quantity</span> </span>
   </div>
     <ag-grid-angular
- id="gridContainer" style=" height: 400px;border-radius: 20px;background-color: white;font-family: Calibri ;width: 100%;
+ id="gridContainer" style=" height: 400px;background-color: white;font-family: Calibri ;width: 100%;
  overflow: hidden;"
  class="ag-theme-material mt-3"
  (gridReady)="onGridReady($event)"

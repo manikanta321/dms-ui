@@ -87,7 +87,7 @@
       </div>
       
       <!--Add Promotion  -->
-      <div class="col-md-0 col-lg-0 col-sm-0 " style="position: relative; left: 32%; display:flex;" *ngIf="userType !== 'Dealer Admin'">
+      <div class="col-md-0 col-lg-0 col-sm-0 " style="position: relative; display:flex;" *ngIf="userType !== 'Dealer Admin'">
         <div class="sales-add" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName">
           <img class="imgorder" src="assets/img/add-btn.png" alt="add">
         </div>

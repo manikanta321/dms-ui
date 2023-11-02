@@ -392,8 +392,9 @@ export class MaterialAddEditpopupComponent {
     });
     console.log("MaterialIdentifier", this.MaterialCustomIdentifiersEdit)
     this.categeoryData = this.dataGetById.categoryId
+    let flag = true
     if (this.categeoryData != '') {
-      this.addMaterials.onclickcat(this.categeoryData).subscribe((res) => {
+      this.addMaterials.onclickcat(this.categeoryData,flag).subscribe((res) => {
         let subcaty = res.response;
         console.log("response1", res)
         console.log("catId", this.catId);
@@ -404,7 +405,7 @@ export class MaterialAddEditpopupComponent {
     }
 
     if (this.subCategoryData != '') {
-      this.addMaterials.onclicksubcat(this.subCategoryData).subscribe((res) => {
+      this.addMaterials.onclicksubcat(this.subCategoryData,flag).subscribe((res) => {
         let typs = res.response;
         console.log("subCatId", this.subCatId);
         this.typeI = typs;
@@ -666,7 +667,8 @@ export class MaterialAddEditpopupComponent {
   }
   onItemSelect(item: any) {
     this.catId = item.catId;
-    this.addMaterials.onclickcat(item.catId).subscribe((res) => {
+    let flag = true
+    this.addMaterials.onclickcat(item.catId,flag).subscribe((res) => {
       let subcaty = res.response;
       console.log("response1", res)
       console.log("catId", this.catId);
@@ -677,7 +679,8 @@ export class MaterialAddEditpopupComponent {
 
   onSubCategorySelect(item: any) {
     this.subCatId = item.subCatId;
-    this.addMaterials.onclicksubcat(item.subCatId).subscribe((res) => {
+    let flag = true
+    this.addMaterials.onclicksubcat(item.subCatId,flag).subscribe((res) => {
       let typs = res.response;
       console.log("subCatId", this.subCatId);
       this.typeI = typs;

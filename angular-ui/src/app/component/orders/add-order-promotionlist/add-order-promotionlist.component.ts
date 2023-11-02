@@ -704,7 +704,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
 
 
-                  stockItem.totalAmount += (stock.price * stock.Quantity);
+                  stockItem.totalAmount = (stock.price * stock.Quantity);
                   this.totalSelectedQuantity += stock.Quantity;
                   this.totalPromotionOrderAmount += stockItem.totalAmount;
 
@@ -794,7 +794,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
                   if (stock.isProductSelected) {
                     item.promoDetails.isBuyItemSelected = true;
                     setItem.isInputEnable = true;
-                    stockItem.totalQuantity += stock.Quantity;
+                    stockItem.totalQuantity = stock.Quantity;
                     stockItem.totalAmount += (stock.price * stock.Quantity);
                     this.totalPromotionOrderAmount += stockItem.totalAmount;
                     this.totalSelectedQuantity += stockItem.totalQuantity;
@@ -878,7 +878,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
           item.promoDetails.isItemValid = true;
           item.promoDetails.stockitems.forEach(stockItem => {
             if (stockItem.isProductSelected) {
-              item.promoDetails.totalQuantity += stockItem.Quantity;
+              item.promoDetails.totalQuantity = stockItem.Quantity;
               item.promoDetails.totalAmount += (stockItem.price * stockItem.Quantity);
 
               this.TotalselectedQuantitythreePromotion = item.promoDetails.totalQuantity;
@@ -903,7 +903,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
           this.totalPromotionOrderAmount = 0;
           item.promoDetails.stockitems.forEach(stockItem => {
             if (stockItem.isProductSelected) {
-              item.promoDetails.totalQuantity += stockItem.Quantity;
+              item.promoDetails.totalQuantity = stockItem.Quantity;
               item.promoDetails.totalAmount += (stockItem.price * stockItem.Quantity);
               // stockItem.DiscountAmount = this.calculateDiscountAmount(item.promoDetails.prices, stockItem)
 

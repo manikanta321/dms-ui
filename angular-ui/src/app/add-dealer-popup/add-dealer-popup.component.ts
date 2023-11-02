@@ -207,7 +207,7 @@ console.log('selectedItemsselectedItems',this.selectedItems)
           CityName.setValue(detail?.cityName);
           ZipCode.setValue(detail?.zipCode);
           Telephone.setValue(detail?.telephone);
-          addressAssociationId.setValue(detail?.addressAssociationId);
+          addressAssociationId.setValue(detail?.addressId);
           
 
           this.getFormArray().push(new FormGroup({
@@ -725,7 +725,7 @@ initAddress2(defaultType): FormGroup {
 
   @HostListener('click')
   getFormControl(): void {
-      this.emitFormControl.emit(this.formControl.control as FormControl);
+      this.emitFormControl.emit(this.formControl?.control as FormControl);
   }
 
   saveDealerData() {
@@ -896,9 +896,6 @@ initAddress2(defaultType): FormGroup {
     sessionStorage.setItem("Response",'')
     let selectedGeographies = this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geographySelected;
     selectedGeographies.forEach(element => {
-
-  
-
       return this.selectedItems.push(element.geographyId);
 
     })   
@@ -928,7 +925,7 @@ let data5={
 }
     let data = Object.assign(this.addAddressDetailsForm.value, data2,  data3, data4,data5)
 
-    console.log(data);
+    console.log(data,'data');
 
     this.calssification.addDealerData(data).subscribe((res) => {
 

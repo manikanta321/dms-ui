@@ -59,8 +59,8 @@ getCountryList(){
 getAllListByCountry(id:any){
   return this.http.get<any>(this.addmaterialsurl + 'OtherMasterApi/GetGeographies?id='+id);
 }
-onclickcat(catId:any){
-  return this.http.get<any>(`${this.addmaterialsurl}MaterialApi/GetSUbCAts?catid=${catId}`);
+onclickcat(catId:any,flag:any){
+  return this.http.get<any>(`${this.addmaterialsurl}MaterialApi/GetSUbCAts?catid=${catId}&flag=${flag}`);
 
 }
 onEditList(listId:any){
@@ -81,8 +81,8 @@ addMaterialIfProduct(data){
 MaterialIfNotProduct(data){
   return this.http.post<any>(this.addmaterialsurl + 'MaterialApi/AddMaterial',data);
 }
-onclicksubcat(catId:any){
-  return this.http.get<any>(`${this.addmaterialsurl}MaterialApi/GetTypes?subCatId=${catId}`);
+onclicksubcat(catId:any,flag:any){
+  return this.http.get<any>(`${this.addmaterialsurl}MaterialApi/GetTypes?subCatId=${catId}&flag=true`);
 
 }
 getMaterialIdentifier(){

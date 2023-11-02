@@ -10,6 +10,7 @@ import { AddorderpromotionsComponent } from '../../orders/addorderpromotions/add
 import { OrderCancelPopupComponent } from '../order-cancel-popup/order-cancel-popup.component';
 import { OrderlistShipPopupComponent } from '../orderlist-ship-popup/orderlist-ship-popup.component';
 import { OrdersApisService } from 'src/app/services/orders-apis.service';
+import { SharedService } from 'src/app/services/shared-services.service';
 @Component({
   selector: 'app-orderlist-action-popup',
   templateUrl: './orderlist-action-popup.component.html',
@@ -61,9 +62,8 @@ export class OrderlistActionPopupComponent implements OnInit {
   }
   showCaseMenuList:string[] = [];
   constructor(private changeDetector: ChangeDetectorRef, private dialog: MatDialog,
-    private route: ActivatedRoute,private service:OrdersApisService) {
-    this.route
-      .data
+    private route: ActivatedRoute,private service:OrdersApisService,private SS:SharedService) {
+    this.route.data
       .subscribe(v => {
         let menuList = v['orderList'];
         this.showCaseMenuList = [];
@@ -272,7 +272,14 @@ export class OrderlistActionPopupComponent implements OnInit {
       CurrentUserId:userid
     }
     this.service.deleteshipment(data).subscribe((res:any)=> {
-      console.log(res)
+      if(res.response.status){
+        console.log(res)
+        alert(res.response.result)
+        this.SS.deletepromo()
+      }else{
+        alert(res.response.result)
+        this.SS.deletepromo()
+      }
     })
   }
 }

@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridApi, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
 import { GuiColumn, GuiColumnMenu, GuiPaging, GuiPagingDisplay, GuiSearching, GuiSorting } from '@generic-ui/ngx-grid';
-import { Subject } from 'rxjs';
+import { Subject, take } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ShipOrderBulkDownloadComponent } from '../ship-order-bulk-download/ship-order-bulk-download.component';
 import { CustomDatePopupComponent } from '../custom-date-popup/custom-date-popup.component';
@@ -90,12 +90,18 @@ export class OrdersShipmentComponent implements OnInit {
 
     private otherMasterService: OtherMasterService,
     private sharedServiceCalendar: SharedServiceCalendarService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private SS:SharedService
   ) {
     this.sharedserviceForshipment.listen().subscribe((m: any) => {
       console.log(m);
       this.shipmentList();
     });
+
+    this.SS.ReloadaddOrg.pipe(take(1)).subscribe(()=>{
+      alert('refresh')
+      this.ngOnInit()
+    })
 
     this.route.data.subscribe((v) => {
       this.currentPageName = v['key'];

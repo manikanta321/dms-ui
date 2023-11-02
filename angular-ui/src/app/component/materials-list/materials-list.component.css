@@ -397,7 +397,7 @@ padding-left: 11px;
 .ag-theme-alpine .ag-multi-filter-group-title-bar {
 
   --ag-background-color: rgba(219, 19, 19, 0.863);
-  --ag-border-radius: 25px;
+  --ag-border-radius: 0px !important;
 }
 
 .ag-header-row ag-header-row-column {
@@ -469,7 +469,7 @@ padding-left: 11px;
 .ag-theme-material {
 
   --ag-card-radius: 100px;
-  --ag-border-radius: 20px;
+  /* --ag-border-radius: 20px; */
   --ag-header-height: 30px;
   --ag-header-background-color: rgba(1, 139, 117, 1);
      --ag-header-foreground-color: white; 

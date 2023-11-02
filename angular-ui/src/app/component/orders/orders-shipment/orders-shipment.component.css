@@ -162,7 +162,7 @@
 
 .ag-theme-material {
   height: 350px;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   background-color: white;
   font-family: Gilroy;
 }

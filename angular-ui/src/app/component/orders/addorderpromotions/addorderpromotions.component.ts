@@ -2478,17 +2478,45 @@ export class AddorderpromotionsComponent implements OnInit {
     this.addEditOrderPromotionList();
   }
 
+  toggleStatefreeitems:boolean=false;
+Freeitemsguygroup:any
+toggleDatapromotionmfreeitems()
+{
+  this.toggleStatefreeitems = !this.toggleStatefreeitems;
+  if(this.toggleStatefreeitems==true)
+  {
+    this.Freeitemsguygroup =this.orderNonPromotionsdata.filter(
+      (Item)=> Item.isPromotionSelected == true
+    );
+    // {
+    //   this.Freeitemsguygroup=this.orderNonPromotionsdata;
+    // }
+  }
+  else
+  {
+    this.Freeitemsguygroup=this.orderNonPromotionsdata;
+  }
+}
+
+
+
+
+ 
   toggleData(updatedItem) {
     this.toggleState = !this.toggleState;
     if (this.toggleState == true) {
       this.orderNonPromotionsdata = this.orderNonPromotionsdata.filter(
-        (item) => item.isPromotionSelected
+        (item) => item.isPromotionSelected==true
       );
+     
     } else {
       this.orderNonPromotionsList();
-      this.Non_promotions = true;
-      console.log(this.orderNonPromotionsdata);
-      this.quantityChange(updatedItem);
+       this.Non_promotions = true;
+      console.log(this.orderNonPromotionsdata, 'tockeck');
+      console.log(this.Non_promotions,"RK")
+      this.orderNonPromotionsdata.isPromotionSelected=true;
+      console.log(this.orderNonPromotionsdata.isPromotionSelected,"==========");
+        this.quantityChange(updatedItem);
     }
   }
   imageurl: string | null = 'base64 image data here';

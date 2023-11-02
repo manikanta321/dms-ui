@@ -1163,8 +1163,14 @@
                                             </div>
                                         </div> -->
                                 <mat-slide-toggle (click)="toggleData($event) "
-                                    style="position: relative;left: 64px;top:6px"> Items With Order Qty
+                                    style="position: relative;left: 64px;top:6px"> Items With Order Qty 
                                 </mat-slide-toggle>
+
+                                <mat-slide-toggle (click)="toggleDatapromotionmfreeitems() "
+                                style="position: relative;left: 64px;top:6px"> Items With Order Qty 
+                            </mat-slide-toggle>
+
+                               
 
                                 <div class="col" style="position: relative;left:150px">
                                     <div class="icon btnhover refreshbtn">
@@ -1219,8 +1225,11 @@
                                 </tr>
                             </thead>
                             <tbody class="tbodayheight">
-                                <tr class="table-row" *ngFor="let Item of orderNonPromotionsdata "
+                              
+                                    <tr class="table-row" *ngFor="let Item of orderNonPromotionsdata " 
                                     [ngClass]="{'promotionItem': Item.isInPromotion===true}">
+                                    <ng-container *ngIf="toggleStatefreeitems ? Item.isPromotionSelected : true">
+                                    
                                     <td width="30"> <input type="checkbox" class="check custom-checkbox"
                                             [checked]="Item.isPromotionSelected" (change)="checkboxChange($event,Item)"
                                             onfocus="this.checked=''"></td>
@@ -1253,11 +1262,13 @@
                                                      (change)="quantityChange(Item)  "
                                                      ></td> -->
                                     <td>
-                                        <input type="number" placeholder="Enter " class="quatity-inp" min="0"
-                                            [(ngModel)]="Item.quantity" (ngModelChange)="quantityChange(Item)"
+
+                                            <input type="number" placeholder="Enter " class="quatity-inp" min="0"
+                                            [(ngModel)]="Item.quantity"   (ngModelChange)="quantityChange(Item)"
                                             name="Item.quantity" oninput="validity.valid||(value='')">
                                     </td>
-                                    <td>{{(Item.quantity ?? 0) * Item.price }}</td> <!-- update here -->
+                                    <td>{{(Item.quantity ?? 0) * Item.price }}</td>
+                                </ng-container>
                                 </tr>
 
                             </tbody>

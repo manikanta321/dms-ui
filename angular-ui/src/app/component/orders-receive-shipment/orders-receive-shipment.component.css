@@ -20,10 +20,12 @@
 
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled){
   border-radius: 0px;
+   background: rgba(1, 139, 117, 1) !important; 
 }
 
 ::ng-deep.mat-ripple.mat-tab-label.mat-focus-indicator.ng-star-inserted{
   height: 35px !important;
+  /* background-color:  rgba(1, 139, 117, 1) !important; */
 }
 
 ::ng-deep .mat-tab-body-wrapper{

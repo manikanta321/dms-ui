@@ -2270,11 +2270,207 @@ letter-spacing: 0.04em;
 }
 
 .quatity-inp {
-  width: 83px;
+  width: 91%;
   height: 25px;
   background: #FFFFFF;
   border: 0.5px solid #000000;
-  border-radius: 8px;
+  border-radius: 5px;
+}
+.Product_namefirstpromo
+{
+  position: relative;
+  right: 2%;
+}
+.identifiresfirst
+{
+  position: relative;
+  left:14.5%;
+}
+.RegisNO
+{
+  position: relative;
+  left: 9%;
+}
+.MOQFirst
+{
+  position: relative;
+  left: 8%;
+}
+.UNITprice
+{
+  position: relative;
+  left: 4%;
+}
+.QUantityFirst
+{
+  position: relative;
+  right: 66px;
+}
+.ordderQTY
+{
+  position: relative;
+  left: 1%;
+}
+.GetgroupProductname
+{
+  position: relative;
+  right: 2%;
+
+}
+.GetGroupIdentifiers
+{
+  position: relative;
+  left: 15%;
+}
+.Getgroupregistion
+{
+  position: relative;
+  left: 8%;
+}
+.moqGetGroup
+{
+  position: relative;
+  left: 8%;
+}
+.GetgriuoUNITprice
+{
+  position: relative;
+  left: 4%;
+}
+.OrderQtyGetgroup
+{
+  position: relative;
+  left: 1%;
+}
+.secondpromoProductname
+{
+  position: relative;
+  right: 23px;
+}
+.secondPromoidentifiers
+{
+  position: relative;
+  left: 15%;
+}
+.secondprmoregistration
+{
+  position: relative;
+  left: 11%;
+}
+.secondpromoMOQ
+{
+  position: relative;
+  left: 10%;
+}
+.secondPromoUnitPrice
+{
+  position: relative;
+  left: 6%;
+}
+.quantitySecondPromo
+{
+  position: relative;
+  left: 5%;
+}
+.SecondPromoFreeitemsProduct
+{
+  position: relative;
+  right: 19px;
+}
+.SecondPromofreeIdettifiers
+{
+  position: relative;
+  left: 16%;
+}
+.SecondPromoFreeREgi
+{
+  position: relative;
+  left: 12%;
+}
+.SecondPromotionsFreeMOQ
+{
+  position: relative;
+  left: 12%;
+}
+.MOQSecondPromoUnitPrice
+{
+  position: relative;
+  left: 4%;
+}
+.OrderQtySeconsPrmotions
+{
+  position: relative;
+  left: 1%;
+}
+.ThirPrmoProductname
+{
+  position: relative;
+  right: 15px;
+}
+.ThirPromoIdentifiers
+{
+  position: relative;
+  left: 17%;
+}
+.ThirdPromoRegistration
+{
+  position: relative;
+  left: 13%;
+}
+.ThirdPromotionsMOQ
+{
+  position: relative;
+  left: 13%;
+}
+.ThirdPrmotionsUnitPrice
+{
+  position: relative;
+  left: 9%;
+}
+.thirdPromotionOrdderqty
+{
+  position: relative;
+  left: 8%;
+}
+.ThirdPromotionsFinalPrice
+{
+  position: relative;
+  left: 6%;
+}
+.ForthPromotionProductname
+{
+  position: relative;
+  right: 2%;
+}
+.forthPromotionIdentifiers
+{
+  position: relative;
+  left: 17%;
+}
+.ForthPrommotionREgisno
+{
+  position: relative;
+  left: 13%;
+}
+.ForthPromotionsMOQ
+{
+  position: relative;
+  left: 13%;
+}
+.ForthPromoUnitPrice
+{
+  position: relative;
+  left: 9%;
+}
+.ForthPromotionsOrderQty
+{
+  position: relative;
+  left: 7%;
+}
+.ForthPromotionsFinalPrice
+{
+  position: relative;
+  left: 5%;
 }
 
 table {

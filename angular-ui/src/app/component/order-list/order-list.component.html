@@ -81,6 +81,10 @@
       </div>
       <div class="col-md-1 col-lg-1 col-sm-1" *ngIf="userType == 'Dealer Admin'" >
       </div>
+      <div class="col-md-3 col-lg-3 col-sm-3" *ngIf="userType !== 'Dealer Admin'" >
+      </div>
+      <div class="col-md-1 col-lg-1 col-sm-1" *ngIf="userType !== 'Dealer Admin'" >
+      </div>
       
       <!--Add Promotion  -->
       <div class="col-md-0 col-lg-0 col-sm-0 " style="position: relative; left: 32%; display:flex;" *ngIf="userType !== 'Dealer Admin'">

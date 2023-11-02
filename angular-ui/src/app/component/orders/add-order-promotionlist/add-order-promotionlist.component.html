@@ -214,21 +214,33 @@
                                                             <table class="tableclass">
                                                                 <thead class="table-headercolor">
                                                                     <tr>
-                                                                        <th data-sortable="true" class="align-center">Product Code</th>
-                                                                        <th data-sortable="true" class="align-center">Product Name</th>
-                                                                        <th data-sortable="true" class="align-center">Identifiers</th>
-                                                                        <th data-sortable="true" class="align-center">Registration No</th>
-                                                                        <th data-sortable="true" class="align-center">MOQ</th>
-                                                                        <th data-sortable="true" class="align-center">Unit Price</th>
-                                                                        <th data-sortable="false" class="align-center">Order Qty</th>
-                                                                        <th data-sortable="false" class="align-center">Order Amount</th>
+                                                                        <th data-sortable="true">
+                                                                            Product Code</th>
+                                                                        <th data-sortable="true" class="Product_namefirstpromo">
+                                                                            Product Name</th>
+                                                                        <th data-sortable="true" class="identifiresfirst">
+                                                                            Identifiers</th>
+                                                                        <th data-sortable="true"  class="RegisNO" >
+                                                                            Registration No</th>
+                                                                        <th data-sortable="true" class="MOQFirst" >
+                                                                            MOQ</th>
+                                                                        <th data-sortable="true" class="UNITprice" >
+                                                                            Unit Price</th>
+                                                                        <th data-sortable="false" class="ordderQTY">
+                                                                            Order Qty</th>
+                                                                        <th data-sortable="false">
+                                                                            Order Amount</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody class="tbodayheight">
-                                                                    <tr *ngFor="let Item of promos.stockitemid | filter:searchText">
-                                                                        <ng-container *ngIf="toggleState ? Item.isProductSelected : true">
-                                                                            <td style="width: 24px">
-                                                                                <input type="checkbox" [checked]="Item.isProductSelected" (change)="checkboxChange($event, Item, data)" />
+                                                                    <tr
+                                                                        *ngFor="let Item of promos.stockitemid | filter:searchText ">
+                                                                        <ng-container
+                                                                            *ngIf="toggleState ? Item.isProductSelected : true">
+                                                                            <!-- <td style="width: 24px">
+                                                                                <input type="checkbox"
+                                                                                    [checked]="Item.isProductSelected"
+                                                                                    (change)="checkboxChange($event, Item,data)" />
                                                                             </td>
                                                                             <td style="text-align: left;">{{ Item.productSKUName }}</td>
                                                                             <td style="text-align: left;">{{ Item.stockitemname }}</td>
@@ -237,14 +249,54 @@
                                                                             <td class="">{{ promos.moq }}</td>
                                                                             <td class="">{{ Item.price }}</td>
                                                                             <td>
-                                                                                <input type="number" min="0" placeholder="Enter Qty" class="quatity-inp" [(ngModel)]="Item.Quantity" oninput="validity.valid||(value='');" (keyup)="quantityChange(data, Item);" name="Item.Quantity" />
+                                                                                <input type="number" min="0"
+                                                                                    placeholder="Enter Qty"
+                                                                                    class="quatity-inp"
+                                                                                    [(ngModel)]="Item.Quantity"
+                                                                                    oninput="validity.valid||(value='');"
+                                                                                    (keyup)="quantityChange(data,Item);"
+                                                                                    name="Item.Quantity" />
                                                                             </td>
-                                                                            <td class="txt-right">{{ (Item.Quantity ?? 0) * Item.price | number : '1.2-2' }}</td>
+                                                                            <td class="txt-right">{{ (Item.Quantity ??
+                                                                                0) * Item.price | number : '1.2-2' }}
+                                                                            </td> -->
+
+
+                                                                            <td style="width: 24px">
+                                                                                <input type="checkbox"
+                                                                                    [checked]="Item.isProductSelected"
+                                                                                    (change)="checkboxChange($event, Item,data)" />
+                                                                            </td>
+                                                                            <td>{{ Item.productSKUName }}</td>
+                                                                            <td style="width: 30%;">{{ Item.stockitemname }}</td>
+                                                                               
+                                                                            <td >{{  Item.materialcustomidentifier }}</td>
+                                                                              
+                                                                            <td >{{ Item.registrationNumber }}</td>   
+                                                                            <td >{{ promos.moq }}</td>
+                                                                            <td >{{ Item.price }}</td>
+                                                                            <td  class="QUantityFirst">
+                                                                                <input type="number" min="0"
+                                                                                    placeholder="Enter Qty"
+                                                                                    class="quatity-inp"
+                                                                                    [(ngModel)]="Item.Quantity"
+                                                                                    oninput="validity.valid||(value='');"
+                                                                                    (keyup)="quantityChange(data,Item);"
+                                                                                    name="Item.Quantity" />
+                                                                            </td>
+                                                                            <td class="txt-right">{{ (Item.Quantity ??
+                                                                                0) * Item.price | number : '1.2-2' }}
+                                                                            </td>
+
+
+
+
                                                                         </ng-container>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
-                                                            
+                                                            <div class="bottom-table1 tt" id="totalnonprobackcolor1">
+                                                            </div>
                                                         </div>
                                                     </div>
 
@@ -316,21 +368,21 @@
                                                 <table class="tableclass1">
                                                     <thead class="table-headercolor1">
                                                         <tr>
-                                                            <th width="30"></th>
-                                                            <th data-sortable="true" class="align-center">Product Code
+                                                            <!-- <th width="30"></th> -->
+                                                            <th data-sortable="true" >Product Code
                                                             </th>
-                                                            <th data-sortable="true" class="align-center">Product Name
+                                                            <th data-sortable="true" class="GetgroupProductname" >Product Name
                                                             </th>
-                                                            <th data-sortable="true" class="align-center"> Identifiers
+                                                            <th data-sortable="true" class="GetGroupIdentifiers"> Identifiers
                                                             </th>
-                                                            <th data-sortable="true" class="align-center">Registration
+                                                            <th data-sortable="true"  class="Getgroupregistion">Registration
                                                                 No</th>
-                                                            <th data-sortable="true" class="align-center">MOQ</th>
-                                                            <th data-sortable="true" class="align-center">Unit Price
+                                                            <th data-sortable="true" class="moqGetGroup">MOQ</th>
+                                                            <th data-sortable="true" class="GetgriuoUNITprice" >Unit Price
                                                             </th>
-                                                            <th data-sortable="false" class="align-center">Order Qty
+                                                            <th data-sortable="false"  class="OrderQtyGetgroup">Order Qty
                                                             </th>
-                                                            <th data-sortable="false" class="align-center">Order Amount
+                                                            <th data-sortable="false" >Order Amount
                                                             </th>
                                                         </tr>
                                                     </thead>
@@ -343,18 +395,18 @@
                                                                         [checked]="Item.isProductSelected"
                                                                         (change)="checkboxChange($event,Item, data)">
                                                                 </td>
-                                                                <td style="text-align: left;">{{Item.productSKUName}}
+                                                                <td >{{Item.productSKUName}}
                                                                 </td>
-                                                                <td style="text-align: left">{{Item.stockitemname}}
+                                                                <td style="width: 30%;">{{Item.stockitemname}}
                                                                 </td>
-                                                                <td style="text-align: left;">
+                                                                <td >
                                                                     {{Item.materialcustomidentifier}}</td>
-                                                                <td style="text-align: left;">
+                                                                <td>
                                                                     {{Item.registrationNumber}}
                                                                 </td>
-                                                                <td class="txt-right">{{promos.moq}}</td>
-                                                                <td class="txt-right">{{Item.price}}</td>
-                                                                <td><input type="number" placeholder="Enter Qty" min="0"
+                                                                <td >{{promos.moq}}</td>
+                                                                <td >{{Item.price}}</td>
+                                                                <td class="QUantityFirst"><input type="number" placeholder="Enter Qty" min="0"
                                                                         class="quatity-inp" [(ngModel)]="Item.Quantity"
                                                                         (keyup)="quantityChange(data, Item)"
                                                                         oninput="validity.valid||(value='');">
@@ -459,21 +511,21 @@
                                                         <thead class="table-headercolor4">
 
                                                             <tr>
-                                                                <th data-sortable="true" class="align-center">Product
+                                                                <th data-sortable="true" >Product
                                                                     Code</th>
-                                                                <th data-sortable="true" class="align-center">Product
+                                                                <th data-sortable="true" class="secondpromoProductname">Product
                                                                     Name</th>
-                                                                <th data-sortable="true" class="align-center">
+                                                                <th data-sortable="true"  class="secondPromoidentifiers">
                                                                     Identifiers</th>
-                                                                <th data-sortable="true" class="align-center">
+                                                                <th data-sortable="true" class="secondprmoregistration">
                                                                     Registration No</th>
-                                                                <th data-sortable="true" class="align-center">
+                                                                <th data-sortable="true" class="secondpromoMOQ">
                                                                     MOQ</th>
-                                                                <th data-sortable="true" class="align-center">Unit Price
+                                                                <th data-sortable="true" class="secondPromoUnitPrice" >Unit Price
                                                                 </th>
-                                                                <th data-sortable="false" class="align-center">Quantity
+                                                                <th data-sortable="false" class="quantitySecondPromo">Quantity
                                                                 </th>
-                                                                <th data-sortable="false" class="align-center">Order
+                                                                <th data-sortable="false" >Order
                                                                     Amount</th>
                                                             </tr>
                                                         </thead>
@@ -485,16 +537,16 @@
                                                                         [disabled]="!promos.isEnable"
                                                                         (change)="checkboxChange($event,Item, data)" />
                                                                 </td>
-                                                                <td style="text-align: left;">{{Item.productSKUName}}
+                                                                <td >{{Item.productSKUName}}
                                                                 </td>
-                                                                <td style="text-align: left;">{{Item.stockitemname}}
+                                                                <td style="width: 30%;">{{Item.stockitemname}}
                                                                 </td>
-                                                                <td style="text-align: left;">
+                                                                <td >
                                                                     {{Item.materialcustomidentifier}}</td>
-                                                                <td style="text-align: left;">
+                                                                <td style="position: relative;left: 3%;">
                                                                     {{Item.registrationNumber}}</td>
-                                                                <td class="txt-right">{{promos.moq}}</td>
-                                                                <td class="txt-right">{{Item.price}}</td>
+                                                                <td style="position: relative;left: 2%;">{{promos.moq}}</td>
+                                                                <td style="position: relative;left: 2%;">{{Item.price}}</td>
                                                                 <!-- <td><input type="number" placeholder="Enter"
                                                                         [disabled]="!promos.isEnable" class="quatity-inp"
                                                                         [(ngModel)]="Item.stock"></td> -->
@@ -649,22 +701,22 @@
                                                         <thead class="table-headercolorGetset">
                                                             <tr>
                                                                 <!-- <th width="30"></th> -->
-                                                                <th data-sortable="true" class="align-center">Product
+                                                                <th data-sortable="true" >Product
                                                                     Code</th>
-                                                                <th data-sortable="true" class="align-center">Product
+                                                                <th data-sortable="true" class="SecondPromoFreeitemsProduct">Product
                                                                     Name</th>
-                                                                <th data-sortable="true" class="align-center">
+                                                                <th data-sortable="true" class="SecondPromofreeIdettifiers">
                                                                     Identifiers</th>
-                                                                <th data-sortable="true" class="align-center">
+                                                                <th data-sortable="true" class="SecondPromoFreeREgi" >
                                                                     Registraion No</th>
-                                                                <th data-sortable="true" class="align-center">
+                                                                <th data-sortable="true" class="SecondPromotionsFreeMOQ">
                                                                     MOQ</th>
 
-                                                                <th data-sortable="true" class="align-center">Unit Price
+                                                                <th data-sortable="true" class="MOQSecondPromoUnitPrice" >Unit Price
                                                                 </th>
-                                                                <th data-sortable="false" class="align-center"> Order
+                                                                <th data-sortable="false" class="OrderQtySeconsPrmotions" > Order
                                                                     Qty</th>
-                                                                <th data-sortable="false" class="align-center">Order
+                                                                <th data-sortable="false" >Order
                                                                     Amount</th>
                                                             </tr>
                                                         </thead>
@@ -678,14 +730,14 @@
                                                                 </td>
                                                                 <td style="text-align: left;">{{Item.productSKUName}}
                                                                 </td>
-                                                                <td style="text-align: left;">{{Item.stockitemname}}
+                                                                <td style="width: 30%;">{{Item.stockitemname}}
                                                                 </td>
-                                                                <td style="text-align: left;">
+                                                                <td >
                                                                     {{Item.materialcustomidentifier}}</td>
-                                                                <td style="text-align: left;">
+                                                                <td style="position: relative;left: 4%;">
                                                                     {{Item.registrationNumber}}</td>
-                                                                <td class="txt-right">{{promos.moq}}</td>
-                                                                <td class="txt-right">{{Item.price}}</td>
+                                                                <td style="position: relative;left: 4%;">{{promos.moq}}</td>
+                                                                <td >{{Item.price}}</td>
                                                                 <!-- <td><input type="number" placeholder="Enter"
                                                                         [disabled]="!promos.isEnable" class="quatity-inp"
                                                                         [(ngModel)]="Item.stock"></td> -->
@@ -704,7 +756,7 @@
                                                                         (click)="doubleClick(promos.stockitemid, Item.Taxid)"
                                                                         alt="double-blue-tick">
                                                                 </td> -->
-                                                                <td><input type="number" placeholder="Enter Qty"
+                                                                <td style="position: relative;right: 4%;"><input type="number" placeholder="Enter Qty"
                                                                         class="quatity-inp"
                                                                         [disabled]="!promos.isEnable"
                                                                         [(ngModel)]="Item.Quantity"
@@ -838,20 +890,20 @@
                                                             <th data-sortable="true" class="align-center">Product Code
                                                             </th>
 
-                                                            <th data-sortable="true" class="align-center">Product Name
+                                                            <th data-sortable="true" class="ThirPrmoProductname">Product Name
                                                             </th>
 
-                                                            <th data-sortable="true" class="align-center">Identifiers
+                                                            <th data-sortable="true" class="ThirPromoIdentifiers">Identifiers
                                                             </th>
 
-                                                            <th data-sortable="true" class="align-center">Registraion No
+                                                            <th data-sortable="true" class="ThirdPromoRegistration">Registraion No
                                                             </th>
-                                                            <th data-sortable="true" class="align-center">
+                                                            <th data-sortable="true" class="ThirdPromotionsMOQ">
                                                                 MOQ</th>
 
 
 
-                                                            <th data-sortable="true" class="align-center">Unit Price
+                                                            <th data-sortable="true" class="ThirdPrmotionsUnitPrice">Unit Price
                                                             </th>
 
                                                             <!-- <th data-sortable="true">SKU</th> -->
@@ -864,10 +916,10 @@
 
 
 
-                                                            <th data-sortable="false" class="align-center"> Order Qty
+                                                            <th data-sortable="false" class="thirdPromotionOrdderqty"> Order Qty
                                                             </th>
 
-                                                            <th data-sortable="false" class="align-center">Final Price
+                                                            <th data-sortable="false" class="ThirdPromotionsFinalPrice">Final Price
                                                             </th>
 
                                                             <th data-sortable="false" class="align-center">Order Amount
@@ -891,7 +943,7 @@
                                                                 <td style="text-align: left;">{{Item.productSKUName}}
                                                                 </td>
 
-                                                                <td style="text-align: left;">{{Item.stockitemname}}
+                                                                <td style="width: 30%;border-color: bisque;">{{Item.stockitemname}}
                                                                 </td>
 
                                                                 <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td>  -->
@@ -899,7 +951,7 @@
                                                                 <td style="text-align: left;">
                                                                     {{Item.materialcustomidentifier}}</td>
 
-                                                                <td style="text-align: left;">
+                                                                <td style="position: relative;left: 4%;">
                                                                     {{Item.registrationNumber}}
                                                                 </td>
                                                                 <td class="txt-right">{{data.promoDetails.moq}}</td>
@@ -1053,24 +1105,24 @@
                                                                 <th data-sortable="true" class="align-center">Product
                                                                     Code
                                                                 </th>
-                                                                <th data-sortable="true" class="align-center">Product
+                                                                <th data-sortable="true" class="ForthPromotionProductname">Product
                                                                     Name
                                                                 </th>
-                                                                <th data-sortable="true" class="align-center">
+                                                                <th data-sortable="true" class="forthPromotionIdentifiers">
                                                                     Identifiers
                                                                 </th>
-                                                                <th data-sortable="true" class="align-center">
+                                                                <th data-sortable="true" class="ForthPrommotionREgisno">
                                                                     Registration
                                                                     No</th>
-                                                                <th data-sortable="true" class="align-center">
+                                                                <th data-sortable="true" class="ForthPromotionsMOQ">
                                                                     MOQ</th>
-                                                                <th data-sortable="true" class="align-center">Unit Price
+                                                                <th data-sortable="true" class="ForthPromoUnitPrice">Unit Price
                                                                 </th>
                                                                 <!-- <th data-sortable="true">Qty. in Stock</th>
                                                             <th data-sortable="false">Tax Templete</th> -->
-                                                                <th data-sortable="false" class="align-center">Order Qty
+                                                                <th data-sortable="false" class="ForthPromotionsOrderQty">Order Qty
                                                                 </th>
-                                                                <th data-sortable="false" class="align-center">Final
+                                                                <th data-sortable="false" class="ForthPromotionsFinalPrice">Final
                                                                     Price
                                                                 </th>
                                                                 <th data-sortable="false" class="align-center">Order
@@ -1089,13 +1141,13 @@
                                                                     </td>
                                                                     <td style="text-align: left;">
                                                                         {{Item.productSKUName}}</td>
-                                                                    <td style="text-align: left;">{{Item.stockitemname}}
+                                                                    <td style="width: 30%;">{{Item.stockitemname}}
                                                                     </td>
                                                                     <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td> -->
-                                                                    <td style="text-align: left;">
+                                                                    <td style="position: relative;left: 8px;">
                                                                         {{Item.materialcustomidentifier}}
                                                                     </td>
-                                                                    <td style="text-align: left;">
+                                                                    <td style="position: relative;left: 4%;">
                                                                         {{Item.registrationNumber}}
                                                                     </td>
                                                                     <td class="txt-right">{{data.promoDetails.moq}}</td>

@@ -390,7 +390,7 @@ export class ViewPromotionPopupComponent implements OnInit {
       this.base64textString = res.response.imageurl;
       this.startDate.setValue(res.response.startDate);
 
-      this.selectedEndDate = this.sharedServices.dateformat(res.response.startDate);
+      this.selectedEndDate = this.sharedServices.dateformat(res.response.endDate);
       this.promotionTypesName = res.response.promotionTypesName
       this.Remarks = res.response.remarks;
       this.EntityInstanceId = [];

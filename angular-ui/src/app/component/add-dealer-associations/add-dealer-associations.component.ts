@@ -861,6 +861,7 @@ export class AddDealerAssociationsComponent implements OnInit {
     localStorage.setItem('dealerSelectedcoustmerId', dealerId);
     this.tooltiptable();
     this.showselectedgeovalue = false;
+    this.aarrayToPush1.length = 0; // reset the selected products
     this.refresh() 
   }
   // onTypeSelect(item: any) {
@@ -917,10 +918,10 @@ export class AddDealerAssociationsComponent implements OnInit {
 
   selectedValue(value: any) {
     this.screenValue = value;
+    this.showselectedgeovalue = false;
     this.onItemDealerDeSelectOrAll(null)
     this.onDealerDeSelect(0)
     this.myFormDealer.get('dealer').setValue([])
-    this.showselectedgeovalue = false;
   }
 
   // addOrderPromotionList() {

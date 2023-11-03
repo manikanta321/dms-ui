@@ -1815,8 +1815,6 @@ li {
 }
 
 .label-cls {
-  position: relative;
-  top: 6px;
   font-family: 'Gilroy-Light';
   font-size: 18px;
 }

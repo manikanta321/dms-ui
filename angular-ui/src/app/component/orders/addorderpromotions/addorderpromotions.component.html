@@ -385,44 +385,35 @@
             <div class="addUser">
                 <!-- <img class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
             </div>
-            <div class="head-t">
+            <div class="head-t p-2">
                 <h3 class="addU font">{{actineLabel}}</h3>
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
                 <div class="row top-bottom">
                     <div class="row text-center"></div>
                 </div>
-                <!-- New Changes Remarks Sections -->
-
-                <div class="dealerreftop-bottom">
-                    <div (click)="expandOtherInfoDiv()" class="DealerRefcollapsible">
-                        <div class="row">
-                            <div class="col-md-11">
-                                <p class="DealerReflabel-cls">Dealer Reference </p>
-                            </div>
-                            <div class="col-md-1">
-
-                            </div>
-
-                        </div>
+                <!-- Dealer Reference -->
+                <div class="card">
+                    <div class="card-header label-cls" style="  color: white;background: linear-gradient(0deg, #018B75, #018B75);">
+                        Dealer Reference No
                     </div>
-                    <div class="content">
+                    <div class="card-body">
                         <div class="row">
                             <!-- <div class="col-lg-4" *ngIf="userType !== 'Dealer Admin'">
-                                <div class="companyReff">
-                                    <label class="DealerInfo-label">Company Reference No </label>
-                                    <input type="number" placeholder="Enter" id="CompanyReferenceNo"
-                                        [(ngModel)]="CompanyReferenceNo" class="form-control container input-box">
-                                </div>
-                            </div> -->
-
+                                                                <div class="companyReff">
+                                                                    <label class="DealerInfo-label">Company Reference No </label>
+                                                                    <input type="number" placeholder="Enter" id="CompanyReferenceNo"
+                                                                        [(ngModel)]="CompanyReferenceNo" class="form-control container input-box">
+                                                                </div>
+                                                            </div> -->
+                
                             <div class="col-lg-4">
                                 <div class="dealer_Reff">
                                     <label class="DealerInfo-label">Dealer Reference No</label>
-                                    <input type="text" placeholder="Enter Number" id="DealerReferenceNo"
-                                        [(ngModel)]="DealerReferenceNo" class="form-control container input-box">
+                                    <input type="text" placeholder="Enter Number" id="DealerReferenceNo" [(ngModel)]="DealerReferenceNo"
+                                        class="form-control container input-box">
                                 </div>
                             </div>
-
+                
                             <div class="col-lg-8">
                                 <div class="Remarkspromotiont">
                                     <label class="delivery_1">Remarks</label>
@@ -433,30 +424,20 @@
                         </div>
                     </div>
                 </div>
-
-                <div *ngIf="userType !== 'Dealer Admin'">
-
-                    <div (click)="expandDealerInfoDiv()" class="collapsible" style="margin-top:17px">
-                        <div class="row">
-                            <div class="col-md-11">
-                                <p class="label-cls">Dealer Information </p>
-                            </div>
-                            <div class="col-md-1">
-                                <!-- <img [src]="image1" class="expand-arrow" alt="add-user-btn"> -->
-                            </div>
-                        </div>
+                <!-- Dealer Information -->
+                <div class="card mt-3" *ngIf="userType !== 'Dealer Admin'">
+                    <div (click)="expandDealerInfoDiv()" class="card-header label-cls"
+                        style="  color: white;background: linear-gradient(0deg, #018B75, #018B75);">
+                        Dealer Information
                     </div>
-
-
-                    <div class="content contentscrobarr">
+                    <div class="card-body">
                         <div class="row ">
                             <div class="col-lg-3">
                                 <div class="dealerr">
                                     <label class="DealerInfo-label">Dealer <span class="astr">*</span></label>
-                                    <ng-select [items]="dealerListArray" class="my-ng-select" id="dealerAllArray"
-                                        name="dealerAllArray" required [disabled]="dealerDisabled"
-                                        [virtualScroll]="true" bindLabel="customerName" bindValue="customerId"
-                                        [searchable]="true" [clearable]="false" appendTo="body"
+                                    <ng-select [items]="dealerListArray" class="my-ng-select" id="dealerAllArray" name="dealerAllArray"
+                                        required [disabled]="dealerDisabled" [virtualScroll]="true" bindLabel="customerName"
+                                        bindValue="customerId" [searchable]="true" [clearable]="false" appendTo="body"
                                         placeholder=" Search & select dealer" [(ngModel)]="customerId"
                                         (change)="onItemSelectdealers($event)">
                                     </ng-select>
@@ -464,13 +445,12 @@
                             </div>
                             <div class="col-lg-3">
                                 <div class="geographyy">
-
+                
                                     <label class="DealerInfo-label">Geography <span class="astr">*</span></label>
-                                    <ng-select class="selectgeo" [items]="GeoGrapydropdownListdata"
-                                        id="GeoGrapydropdown" name="GeoGrapydropdown" required [virtualScroll]="true"
-                                        bindLabel="geographyName" bindValue="geographyId" [searchable]="true"
-                                        [clearable]="false" placeholder="Select geography" [(ngModel)]="geographyId"
-                                        appendTo="body" (change)="onItemSelectgeo($event)">
+                                    <ng-select class="selectgeo" [items]="GeoGrapydropdownListdata" id="GeoGrapydropdown"
+                                        name="GeoGrapydropdown" required [virtualScroll]="true" bindLabel="geographyName"
+                                        bindValue="geographyId" [searchable]="true" [clearable]="false" placeholder="Select geography"
+                                        [(ngModel)]="geographyId" appendTo="body" (change)="onItemSelectgeo($event)">
                                     </ng-select>
                                 </div>
                             </div>
@@ -479,11 +459,10 @@
                                     <label class="DealerInfo-label">Billing Address {{BillingaddressId}} <span
                                             class="astr">*</span></label>
                                     <!-- <input matInput placeholder=" Select Billing address" #input class="form-control container input-box" > -->
-                                    <ng-select class="BillingAddress" [items]="dealersbillingAddress"
-                                        id="BillingAddress" name="BillingAddress" required [virtualScroll]="true"
-                                        bindLabel="Billingaddress" bindValue="BillingaddressId" [searchable]="true"
-                                        [clearable]="false" placeholder="Select  billing address"
-                                        [(ngModel)]="BillingaddressId" appendTo="body"
+                                    <ng-select class="BillingAddress" [items]="dealersbillingAddress" id="BillingAddress"
+                                        name="BillingAddress" required [virtualScroll]="true" bindLabel="Billingaddress"
+                                        bindValue="BillingaddressId" [searchable]="true" [clearable]="false"
+                                        placeholder="Select  billing address" [(ngModel)]="BillingaddressId" appendTo="body"
                                         (change)="onItemSelectBillingAddress($event)">
                                     </ng-select>
                                 </div>
@@ -491,25 +470,64 @@
                             <div class="col-md-3">
                                 <div class="shippingAdrs">
                                     <label class="DealerInfo-label">Shipping Address <span class="astr">*</span></label>
-
-                                    <ng-select class="shipingAddress" [items]="dealersShippingAddress"
-                                        id="shipingAddress" name="shipingAddress" required [virtualScroll]="true"
-                                        bindLabel="address" bindValue="addressId" [searchable]="true"
-                                        [clearable]="false" placeholder="Select shipping address"
-                                        [(ngModel)]="addressId" appendTo="body"
-                                        (change)="onItemSelectshippingAddress($event)">
+                
+                                    <ng-select class="shipingAddress" [items]="dealersShippingAddress" id="shipingAddress"
+                                        name="shipingAddress" required [virtualScroll]="true" bindLabel="address" bindValue="addressId"
+                                        [searchable]="true" [clearable]="false" placeholder="Select shipping address"
+                                        [(ngModel)]="addressId" appendTo="body" (change)="onItemSelectshippingAddress($event)">
                                     </ng-select>
                                 </div>
                             </div>
-
-
                         </div>
-
-
-
-
                     </div>
-
+                </div>
+              <!-- Promotions -->
+                <div class="card mt-3">
+                    <div class="card-header p-1 label-cls" style="color: white;background: linear-gradient(0deg, #018B75, #018B75);">
+                        <div class="row ">
+                            <div class="col-md-10">
+                                <p class="label-class">Promotions </p>
+                            </div>
+                            <div class="col-md-2">
+                                <input class="searchInput_11" type="text" name="" placeholder="Search here anything"
+                                    (keyup)="searchData($event)">
+                                <mat-icon class="searchiconsmat">search</mat-icon>
+                                <button class="searchbuttonpromotions">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3" *ngFor="let Item of arrayOfImages;let i=index;">
+                                <div class="promotion-container" [ngClass]="{ 'selected': Item.isSelected }"
+                                    (click)="selectPrmotionItem(Item)">
+                                    <div class="img-container">
+                                        <!-- <img class="promotion-img" src="https://via.placeholder.com/260x280"  alt="Promotion"/> -->
+                                        <img class="promotion-img" src="data:image/jpeg;base64,{{Item.imageurl}}" alt="Promotion" />
+                
+                                    </div>
+                                    <div class="promotion-info">
+                                        <div class="promo-name">
+                                            Name: <span> {{Item.promotionName}}</span>
+                                        </div>
+                
+                                        <div class="promo-type">
+                                            Type: <span> {{Item.promotionTypesName}}</span>
+                                        </div>
+                                        <div class="promo-view-wrapper">
+                                            <div class="promo-view" (click)="showPromotionInfo($event,Item)">
+                                                <mat-icon> remove_red_eye </mat-icon>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="cancel-icon" (click)="removePromotion($event,Item)">
+                                        <mat-icon mat-button class="close-icon">close</mat-icon>
+                                    </div>
+                                </div>
+                            </div>
+                
+                        </div>
+                    </div>
                 </div>
                 <!--  ===============================Promotions start ==================================-->
                 <div class="t_op-bottom">

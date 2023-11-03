@@ -126,13 +126,13 @@ input::-webkit-inner-spin-button {
   display: inline-block;
 }
 
-.buyoneSet {
+/* .buyoneSet {
 
   border: 1px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   padding: 10px;
-}
+} */
 
 .getSet1,
 .additionalGetset-2 {
@@ -225,6 +225,16 @@ border-radius: 10px; */
 
 .qtyOfItems {
   width: 100px;
+  height: 43px;
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.qtyOfdiscount{
+   width: 120px;
   height: 43px;
   background: #FFFFFF;
   border: 0.5px solid #000000;
@@ -326,8 +336,8 @@ border-radius: 10px; */
 
 ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
    /* width: 767px;  */
-   width: 90%;
-  margin-top: -51px;
+   width: 100%;
+  margin-top: -15px;
 }
 
 .mat-horizontal-stepper-wrapper {
@@ -381,7 +391,7 @@ border-radius: 10px; */
 .addPromo:after {
   content: "";
   display: block;
-  width: 330px;
+  width:42%;
   height: 1px;
   background: #686E74;
   right: 0;
@@ -392,7 +402,7 @@ border-radius: 10px; */
 .addPromo:before {
   content: "";
   display: block;
-  width: 330px;
+  width:42%;
   height: 1px;
   background: #686E74;
   left: 0;
@@ -468,9 +478,10 @@ border-radius: 10px; */
 }
 
 .close-icon {
+  bottom: 24px;
   left: 99%;
   position: relative;
-  font-size: 15px;
+  font-size: 25px;
   font-weight: 600; 
   cursor: pointer;
 }
@@ -768,7 +779,7 @@ li {
 .plus-image {
   width: 22px;
   position: relative;
-  left: 14px;
+  left: 46px;
 }
 
 .plus-imageone {
@@ -852,7 +863,7 @@ li {
 }
 
 ::ng-deep.promotiondrpalign .ng-select-container {
-  /* border: 0.5px solid #000000; */
+  border: 0.5px solid rgba(1, 139, 117, 1);
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   height: 43px;

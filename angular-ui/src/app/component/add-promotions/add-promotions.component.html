@@ -2,28 +2,28 @@
     <div class=" main">
         <div class="container add-dealer-promotion-cls">
             <div class="addPromotion">
-                <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+                <div>
+                    <img src="assets/img/arrow-left-circle-fill.svg" (click)="prevStepper()" class="addMore-icon"
+                    style="width: 24px;margin-left: 93%;" alt="left-arr-btn"
+                    [ngClass]="{'disabled-button': isleftButtonDisabled}">
+                                <!-- <img src="assets/img/arrow-left-circle-fill.svg" *ngIf="basicInfo" class="addMore-icons"
+                    style="width: 24px;margin-left: 760px;" alt="left-arr-btn"> -->
+                                <!-- <img src="assets/img/arrow-right-circle-fill.svg" (click)="disableBackbutton()" class="addMore-icon"
+                    style="width: 24px; margin-left: 12px;" alt="right-arr-btn"> -->
+                                <img src="assets/img/arrow-right-circle-fill.svg" (click)="disableBackbutton()" class="addMore-icon"
+                    style="width: 24px; margin-left: 12px;" alt="right-arr-btn"
+                    [ngClass]="{'disabled-button': isRightButtonDisabled}">
+                    <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+                </div>
             </div>
             <div class="head-t">
                 <h3 class="addPromo font">{{header}} Promotions</h3>
                 <br>
-                <img src="assets/img/arrow-left-circle-fill.svg" (click)="prevStepper()" class="addMore-icon"
-                    style="width: 24px;margin-left: 94%;" alt="left-arr-btn"
-                    [ngClass]="{'disabled-button': isleftButtonDisabled}">
-                <!-- <img src="assets/img/arrow-left-circle-fill.svg" *ngIf="basicInfo" class="addMore-icons"
-                    style="width: 24px;margin-left: 760px;" alt="left-arr-btn"> -->
-                <!-- <img src="assets/img/arrow-right-circle-fill.svg" (click)="disableBackbutton()" class="addMore-icon"
-                    style="width: 24px; margin-left: 12px;" alt="right-arr-btn"> -->
-                <img src="assets/img/arrow-right-circle-fill.svg" (click)="disableBackbutton()" class="addMore-icon"
-                    style="width: 24px; margin-left: 12px;" alt="right-arr-btn"
-                    [ngClass]="{'disabled-button': isRightButtonDisabled}">
-
-                    
             </div>
             <mat-stepper labelPosition="bottom" #stepper ngClass="addPromotionsHeader">
                 <mat-step [stepControl]="firstFormGroup">
+                    <ng-template matStepLabel>Promotion Information</ng-template>
                     <form #form=ngForm>
-                        <ng-template matStepLabel>Promotion Information</ng-template>
                         <div class="heading">
                             <h5 class="promo-head">Promotion Information </h5>
                         </div>
@@ -346,7 +346,7 @@
                                                 <img src="assets/img/minus.png" class="plus-image" alt="plus-btn">
                                             </div>
                                         </div>
-                                        <div class="buyoneSet  border border-success">
+                                        <div class="buyoneSet">
                                             <div class="buy-set-1"
                                                 *ngFor="let addbuyg1 of addbuyset[i].BuyGroups; let j=index">
                                                 <!-- <div class="row">
@@ -371,12 +371,12 @@
                                                                 <h5 class="item-header">Buy group {{j+1}}</h5>
                                                             </div>
                                                             <div class="col-2 plsImg" (click)="addsubbuy(i,j)" *ngIf="j==0">
-                                                                <img src="assets/img/plus.png" class="plus-image"
+                                                                <img src="../../../assets/img/green plus.png" class="plus-image"
                                                                     alt="plus-btn">
                                                             </div>
                                                             <div class="col-2 plsAdd" (click)="removebuyGroup1(i,j)"
                                                                 *ngIf="j>=1">
-                                                                <img src="assets/img/minus.png" class="plus-image"
+                                                                <img src="../../../assets/img/green minus.png" class="plus-image"
                                                                     alt="plus-btn">
                                                             </div>
                                                         </div>
@@ -470,7 +470,7 @@
                                                 <img src="assets/img/minus.png" class="plus-image" alt="plus-btn">
                                             </div>
                                         </div>
-                                        <div class="buyoneSet  border border-success">
+                                        <div class="buyoneSet" style="position: relative; bottom: 10px;">
                                             <div class="getSet1"
                                                 *ngFor="let addget of addgetset[i].GetGroups; let j=index">
                                                 <!-- <div class="row">
@@ -495,12 +495,12 @@
                                                                 <h5 class="item-header">Get group {{j+1}}</h5>
                                                             </div>
                                                             <div class="col-2 plsImg" (click)="addsubGetbuy(i,j)" *ngIf="j==0">
-                                                                <img src="assets/img/plus.png" class="plus-image"
+                                                                <img src="../../../assets/img/green plus.png" class="plus-image"
                                                                     alt="plus-btn">
                                                             </div>
                                                             <div class="col-2 plsAdd" (click)="removeGetGroup(i,j)"
                                                                 *ngIf="j>=1">
-                                                                <img src="assets/img/minus.png" class="plus-image"
+                                                                <img src="../../../assets/img/green minus.png" class="plus-image"
                                                                     alt="plus-btn">
                                                             </div>
                                                         </div>
@@ -628,7 +628,7 @@
                                         <div class="col-3">
                                             <h5 class="labelname">Discount(%)</h5>
                                         </div>
-                                        <div class="col-3 mt-3">
+                                        <div class="col-3 mt-3" style="right: 55px; position: relative;">
                                             <!-- <mat-icon class="" (click)=addFields()>add_circle</mat-icon> -->
                                             <svg (click)=addFields() xmlns="http://www.w3.org/2000/svg" width="24"
                                                 height="20" fill="currentColor" class="bi bi-plus-circle"
@@ -655,7 +655,7 @@
 
                                         </div>
                                         <div class="col-3">
-                                            <input class="qtyOfItems border border-success" type="number" required
+                                            <input class="qtyOfdiscount border border-success" type="number" required
                                                 [ngClass]="{ 'input-error': !packingCharge.isDataValid}" placeholder=""
                                                 [(ngModel)]="packingCharge.DiscountPercentage" name="street_{{i}}"
                                                 (keyup)="packingChargeChange()">
@@ -719,9 +719,9 @@
                                             <h5 class="labelname">Qty To</h5>
                                         </div>
                                         <div class="col-3">
-                                            <h5 class="labelname">Price</h5>
+                                            <h5 class="labelname">Price ($)</h5>
                                         </div>
-                                        <div class="col-3 mt-3">
+                                        <div class="col-3 mt-3" style="position: relative; right: 55px;">
                                             <!-- <mat-icon class="" (click)=addFieldsPrice()>add_circle</mat-icon> -->
                                             <svg (click)=addFieldsPrice() xmlns="http://www.w3.org/2000/svg" width="24"
                                                 height="20" fill="currentColor" class="bi bi-plus-circle"
@@ -749,7 +749,7 @@
 
                                         </div>
                                         <div class="col-3">
-                                            <input class="qtyOfItems  border border-success" type="number" id="pValue"
+                                            <input class="qtyOfdiscount border border-success" type="number" id="pValue"
                                                 required (keyup)="PackingPriceChange()"
                                                 [ngClass]="{ 'input-error': !packingCharge.isDataValid}" placeholder=""
                                                 [(ngModel)]="packingCharge.MaxPrice" name="city_{{i}}">

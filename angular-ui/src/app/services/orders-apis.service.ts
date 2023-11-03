@@ -19,7 +19,7 @@ export class OrdersApisService {
     const idToken = localStorage.getItem("token");
     debugger
     console.log('idtoken', idToken)
-    alert(idToken)
+    // alert(idToken)
 
     if (idToken) {
       const cloned = req.clone({

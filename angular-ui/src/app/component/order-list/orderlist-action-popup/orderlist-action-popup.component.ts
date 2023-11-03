@@ -274,10 +274,10 @@ export class OrderlistActionPopupComponent implements OnInit {
     this.service.deleteshipment(data).subscribe((res:any)=> {
       if(res.response.status){
         console.log(res)
-        alert(res.response.result)
+        // alert(res.response.result)
         this.SS.deletepromo()
       }else{
-        alert(res.response.result)
+        // alert(res.response.result)
         this.SS.deletepromo()
       }
     })

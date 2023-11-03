@@ -510,7 +510,7 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
 
   }
   onCellValueChanged(event: CellValueChangedEvent) {
-    alert(event.value)
+    // alert(event.value)
     console.log(
       'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );
@@ -521,7 +521,7 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
 
   onRowValueChanged(event: RowValueChangedEvent) {
     var data = event.data;
-    alert(data.status)
+    // alert(data.status)
     // console.log(
     //   'onRowValueChanged: (' +
     //     data.make +
@@ -542,7 +542,7 @@ this.user.UserFilterServices(this.roleName,this.statusname).subscribe((res:any)=
     this.dialog.open( UomPopupComponent);
   }
   clickNextRendererFunc(){
-    alert('hlo');
+    // alert('hlo');
   }
 
 }

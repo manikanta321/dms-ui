@@ -605,7 +605,7 @@ export class OrderListComponent implements OnInit {
   }
 
   onCellValueChanged(event: CellValueChangedEvent) {
-    alert(event.value);
+    // alert(event.value);
     console.log(
       'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );

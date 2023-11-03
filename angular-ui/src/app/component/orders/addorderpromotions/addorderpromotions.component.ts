@@ -549,7 +549,7 @@ export class AddorderpromotionsComponent implements OnInit {
     localStorage.setItem('dealerid', this.customerId);
 
     if (this.geographyId == null || this.customerId == null) {
-      alert('Plz select geography and dealer');
+      // alert('Plz select geography and dealer');
       return;
     }
     console.log('SelectedPromotion', this.AddOrderPromotionData);
@@ -756,7 +756,7 @@ export class AddorderpromotionsComponent implements OnInit {
     localStorage.setItem('dealerid', this.customerId);
 
     if (this.geographyId == null || this.customerId == null) {
-      alert('Plz select geography and dealer');
+      // alert('Plz select geography and dealer');
       return;
     }
 
@@ -788,7 +788,7 @@ export class AddorderpromotionsComponent implements OnInit {
   }
   removePromotionItem(clickedItem, promotionId) {
     console.log(promotionId);
-    alert(promotionId);
+    // alert(promotionId);
     let calculationRemove = JSON.parse(localStorage.getItem('calculation') || '[]');
     console.log(calculationRemove, 'calculation');
 
@@ -957,7 +957,7 @@ export class AddorderpromotionsComponent implements OnInit {
   onItemSelectdealers(item: any) {
     let prev_dealer = JSON.parse(localStorage.getItem('dealerid')||'null')
     if(prev_dealer !==item.customerId){
-    alert('removing previous dealer items')
+    // alert('removing previous dealer items')
     localStorage.removeItem('calculation')
     }
     localStorage.removeItem('totalQuantity');
@@ -1995,7 +1995,7 @@ export class AddorderpromotionsComponent implements OnInit {
     if (this.UpdatedQty == null) {
       const dialogRef = this.dialog.open(OrderActionShipmentComponent, {
         data: {
-          Alertpp: true,
+          // Alertpp: true,
         },
       });
     } else {
@@ -2198,7 +2198,7 @@ export class AddorderpromotionsComponent implements OnInit {
     this.orders.addorderNonPromotions(data).subscribe((res) => {
       if (res.response.result.toLowerCase().indexOf('succesfully') == -1) {
         // if (res.response.status == false) {
-        alert(res.response.result);
+        // alert(res.response.result);
       } else {
         this.dialog.open(AddorderproSuccessPopupComponent, {
           panelClass: 'addorderpromosuccess',
@@ -2409,7 +2409,7 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   removePromotion(e, promotionItem) {
-    alert("Promotion has been removed");
+    // alert("Promotion has been removed");
     console.log(promotionItem);
     // alert(promotionItem.productPromotionsId);
     let calculationRemove = JSON.parse(localStorage.getItem('calculation') || '[]');

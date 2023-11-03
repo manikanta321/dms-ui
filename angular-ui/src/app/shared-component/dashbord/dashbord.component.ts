@@ -247,7 +247,7 @@ export class DashbordComponent implements OnInit {
     };
     AddpromotionData: any;
     clickNextRendererFunc(){
-      alert('hlo');
+      // alert('hlo');
     }
   // sidebar = true;
   // sidenav : boolean = true;
@@ -954,7 +954,7 @@ export class DashbordComponent implements OnInit {
           params.api.paginationGoToPage(4);
         }
         onCellValueChanged(event: CellValueChangedEvent) {
-          alert(event.value)
+          // alert(event.value)
           console.log(
             'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
           );

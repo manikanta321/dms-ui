@@ -1,6 +1,7 @@
 .inventorydealersbubbles{
   height: 41px;
-    border-left: 1px solid #111413db;
+    /* border-left: 1px solid #111413db; */
+    border-left: 1px solid rgba(0, 0, 0, 0.3);
    border-radius: 13px;
 }
 .salesIdealersbubbles{
@@ -188,7 +189,7 @@ margin-left: 1%;
 
 .ag-theme-material {
   height: 350px;
-  /* border-radius: 20px; */
+  border-radius: 20px;
   background-color: white;
   font-family: Gilroy;
 }
@@ -210,7 +211,7 @@ margin-left: 1%;
   height: 41px;
   margin-right: 10px;
   cursor: pointer;
-  margin-left:21%;
+  margin-left:12px;
 }
 
 .sales-add:hover {
@@ -270,6 +271,7 @@ margin-left: 1%;
   width: 37px;
   height: 41px;
   cursor: pointer;
+  margin-left: 297px;
 }
 
 .sales-dwnld:hover {
@@ -687,8 +689,8 @@ margin-left: 1%;
   display: block;
   height: 26px;
   border: none;
-  /* background: #000000; */
-  background: #686E74;
+  background: #000000;
+  background: rgba(104, 110, 116, 0.66);
   color: white;
   border-radius: 5px;
   position: absolute;

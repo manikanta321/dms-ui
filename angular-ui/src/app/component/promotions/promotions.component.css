@@ -248,13 +248,17 @@
    text-overflow: ellipsis;
    font-size: 14px !important;
  }
+ ::ng-deep.ag-root-wrapper.ag-layout-normal {
+  height: 100%;
+  width: 99%;
+}
 
  :host ::ng-deep.ag-theme-material .ag-root-wrapper,
  .ag-theme-material .ag-sticky-top {
 
    border: 0.5px solid #000000 !important;
    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
-   border-radius: 0px !important;
+   border-radius: 10px !important;
 
  }
 
@@ -347,7 +351,7 @@
 
  ::ng-deep.multiselect-dropdown .dropdown-btn {
    display: inline-block;
-   border: 1px solid #000000 !important;
+   border: 1px solid rgba(0, 0, 0, 0.3) !important;
    width: 237px;
    /* height: 62%; */
    padding: 9px 12px !important;

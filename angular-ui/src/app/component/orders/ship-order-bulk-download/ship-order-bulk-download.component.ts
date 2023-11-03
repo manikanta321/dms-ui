@@ -249,7 +249,7 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
 
   };
   clickNextRendererFunc(){
-    alert('hlo');
+    // alert('hlo');
   }
   constructor(private user: UserService,
     public orders:OrdersApisService,
@@ -286,7 +286,7 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
     params.api.paginationGoToPage(4);
   }
   onCellValueChanged(event: CellValueChangedEvent) {
-    alert(event.value)
+    // alert(event.value)
     console.log(
       'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );

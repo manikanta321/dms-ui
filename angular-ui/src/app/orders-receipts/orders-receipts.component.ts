@@ -190,7 +190,7 @@ export class OrdersReceiptsComponent implements OnInit {
   };
 
   clickNextRendererFunc(){
-    alert('hlo');
+    // alert('hlo');
   }
   constructor(public dialog: MatDialog,
     private sharedService :SharedService,
@@ -241,7 +241,7 @@ export class OrdersReceiptsComponent implements OnInit {
     })
   }
   onCellValueChanged(event: CellValueChangedEvent) {
-    alert(event.value)
+    // alert(event.value)
     console.log(
       'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );

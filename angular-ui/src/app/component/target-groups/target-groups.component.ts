@@ -353,7 +353,7 @@ otherstatus(){
   console.log('data', data )
 }
 editfn(){
-  alert('guru')
+  // alert('guru')
 }
 addTarget() {
   sessionStorage.setItem("AddTarget","AddTarget");

@@ -833,7 +833,7 @@ expandedPromocode: string = '';
           this.dialogRef.close();
         }
         if (this.reciveDateChange == null) {
-          alert('Please enter Received Date');
+          // alert('Please enter Received Date');
         }
       });
       console.log('objshipment', obj);
@@ -849,14 +849,14 @@ expandedPromocode: string = '';
       this.orders.saveReciveShipment(obj).subscribe((res) => {
         console.log(res.response);
         if (res.response.result == 'Succesfully Receiveship order added') {
-          alert('Succesfully added');
+          // alert('Succesfully added');
           this.otherMasterService.filter('Register click');
           this.dialog.open(ShipOrderSuccessPopupComponent, {
             panelClass: 'activeSuccessPop',
           });
           this.dialogRef.close();
         } else {
-          alert(res.response.result);
+          // alert(res.response.result);
           this.boxalert = true;
         }
       });

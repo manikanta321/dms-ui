@@ -79,7 +79,7 @@ export class AddTargetGroupComponent implements OnInit {
     params.api.paginationGoToPage(4);
   }
   onCellValueChanged(event: CellValueChangedEvent) {
-    alert(event.value)
+    // alert(event.value)
     console.log(
       'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );
@@ -305,7 +305,7 @@ console.log("targetgrpName",this.targetGroupName);
         this.dialogRef.close();
       }
       else {
-        alert(this.createTargetData.result)
+        // alert(this.createTargetData.result)
       }
       })
   }
@@ -355,7 +355,7 @@ console.log("targetgrpName",this.targetGroupName);
         this.dialogRef.close();
       }
       else {
-        alert(res.response.result);
+        // alert(res.response.result);
       }
       })
   }

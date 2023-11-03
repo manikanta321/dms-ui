@@ -392,7 +392,7 @@ export class DealerTargetComponent implements OnInit {
   }
 
   editfn() {
-    alert('guru')
+    // alert('guru')
   }
 
   onSelectAll(items: any) {

@@ -114,6 +114,10 @@ export class AssosiationServicesService {
   
   }
   
+  // dealer add associations
+public addassociations(){
+  return this.http.get<any>(`${this.userurl}OtherMasterApi/GetGeographyHierarchy`)
+}
 
 }
 // http://13.126.235.145:801/api/DealerApi/GetStockItemDetailList?ProductSKUId=42

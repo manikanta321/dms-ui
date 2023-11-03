@@ -1,5 +1,5 @@
 <div class="font">
-  <div class="main" width="900%" >
+  <div class="main" width="900%">
     <div class="container promotionpopup-scroll">
       <div class="addUser">
         <!-- <img class="print-img" src="../../../assets/material/print-img.svg" alt="" /> -->
@@ -24,13 +24,13 @@
               </select>
             </div>
           </div>
-          
+
           <div class="col-md-6">
-            
-            <div *ngIf="screenValue== 1 " class="promotiont"> 
-              
+
+            <div *ngIf="screenValue== 1 " class="promotiont">
+
               <img class="right-arrow" src="../../../assets/img/right-arrow.png" alt="">
-              <label>Product <span>*</span></label><br />  
+              <label>Product <span>*</span></label><br />
               <select #teams class="form-select select-asso" aria-label=".form-select-lg example"
                 (change)="selectedProduct(teams.value);">
                 <option selected hidden>Select</option>
@@ -40,7 +40,7 @@
                 </option>
 
               </select>
-             
+
               <!-- <div class="dealerr">
                 <label class="DealerInfo-label">Product <span class="astr">*</span></label>
                 <ng-select [items]="ProductListArray" id="dealerAllArray" name="dealerAllArray" required
@@ -55,12 +55,12 @@
                   <table class="tootipTable">
                     <tr>
                       <th class="left">Product Name</th>
-                      <th  class="left">Classification</th>
-                      <th  class="left">SKU</th>
-                      <th  class="left">Product Identifier</th>
-                      <th  class="left">Product Group</th>
-                      <th  class="left">Product Code</th>
-                      <th  class="left">Product Short Code</th>
+                      <th class="left">Classification</th>
+                      <th class="left">SKU</th>
+                      <th class="left">Product Identifier</th>
+                      <th class="left">Product Group</th>
+                      <th class="left">Product Code</th>
+                      <th class="left">Product Short Code</th>
                     </tr>
                     <tr *ngFor="let prod of tooltipData" style="text-align: center;">
                       <td>{{prod.productName}}</td>
@@ -88,11 +88,10 @@
               <div class="dealerr">
                 <label class="DealerInfo-label">Dealer <span class="astr">*</span></label>
                 <ng-select [items]="dealerListArray" id="dealerAllArray" name="dealerAllArray" required
-                    [virtualScroll]="true" bindLabel="customerName" bindValue="customerId"
-                    [searchable]="true" [clearable]="false" placeholder=" select dealer "
-                     (change)="selectedDealer($event)">
+                  [virtualScroll]="true" bindLabel="customerName" bindValue="customerId" [searchable]="true"
+                  [clearable]="false" placeholder=" select dealer " (change)="selectedDealer($event)">
                 </ng-select>
-            </div>
+              </div>
               <div class="hover-text">
                 <!-- <img class="img1" src="../../../assets/img/i icon.svg" matTooxltip="" /> -->
                 <div class="tooltip-text" id="top">
@@ -127,7 +126,7 @@
           <div class="row heading">
             <h5 class="geo-head">Geographies</h5>
           </div>
-          <div class="row" *ngIf="screenValue== 1" >
+          <div class="row" *ngIf="screenValue== 1">
             <div class="col-md-12 slctd-row">
               <div class="row">
                 <div class="col-md-9 sltd-span">
@@ -193,7 +192,7 @@
                   (onSelect)="onDealerSelect($event)" (onDeSelect)="onDealerDeSelect($event)" (onDeSelectAll)="onItemDealerDeSelectOrAll($event)" (onSelectAll)="onItemDealerSelectOrAll($event)">
                 </ng-multiselect-dropdown> -->
 
-                <!-- <div class="dropdown-placeholder ">
+              <!-- <div class="dropdown-placeholder ">
                   <span *ngIf="myFormDlr.get('city').value.length == 0" style="color: black">Search & select Dealers
                   </span>
                   <span *ngIf="myFormDlr.get('city').value.length == 1" class="selected-placeholder">
@@ -203,7 +202,7 @@
                     {{ myFormDlr.get("city").value.length }} Dealers selected
                   </span>
                 </div> -->
-                <!-- <div  id="dp" class="dropdown-placeholder role-placeholder">
+              <!-- <div  id="dp" class="dropdown-placeholder role-placeholder">
                   <span *ngIf="myFormDlr.get('city').value.length == 0" style="color: black"> Search & select Dealers </span>
                   <span *ngIf="myFormDlr.get('city').value.length == 1" class="selected-placeholder"> {{myFormDlr.get('city').value.length}} Dealers selected </span>
                   <span *ngIf="myFormDlr.get('city').value.length > 1" class="selected-placeholder"> {{myFormDlr.get('city').value.length}} Dealers selected </span>
@@ -211,22 +210,19 @@
                 </div>
               </form> -->
               <form [formGroup]="myFormDealer" class="dropdown-form-dealer">
-                <ng-multiselect-dropdown class="promo_1-placeholder promo_1" name="city1" [placeholder]="'Category'" formControlName="dealer"
-                  [disabled]="disabled" [settings]="dropdownSettings3" [data]="dealersArray"
-                  (onSelect)="onDealerSelect($event)" (onDeSelect)="onDealerDeSelect($event)"
+                <ng-multiselect-dropdown class="promo_1-placeholder promo_1"  name="city1" [placeholder]="'Category'"
+                  formControlName="dealer" [disabled]="disabled" [settings]="dropdownSettings3" [data]="dealersArray"
+                  (onSelect)="onDealerSelect($event)" (onDeSelect)="onDealerDeSelect($event)" 
                   (onDeSelectAll)="onItemDealerDeSelectOrAll($event)" (onSelectAll)="onItemDealerSelectOrAll($event)">
                 </ng-multiselect-dropdown>
-
-
                 <div class="dropdown-placeholder ">
-                  <span *ngIf="myFormDealer.get('dealer').value.length == 0" style="color: black;">Search & select Dealers</span>
+                  <span *ngIf="myFormDealer.get('dealer').value.length == 0" style="color: black;">Search & select
+                    Dealers</span>
                   <span *ngIf="myFormDealer.get('dealer').value.length == 1" class="selected-placeholder">
                     {{myFormDealer.get('dealer').value.length}} dealers selected </span>
                   <span *ngIf="myFormDealer.get('dealer').value.length > 1" class="selected-placeholder">
-                    {{myFormDealer.get('dealer').value.length}} dealers selected  </span>
-
+                    {{myFormDealer.get('dealer').value.length}} dealers selected </span>
                 </div>
-
               </form>
             </div>
             <!-- <div class="col-md-6 promotiont1">
@@ -283,8 +279,8 @@
           <div class="row">
             <div class="col promotiont1 dynamicbubbles">
               <form [formGroup]="myForm" class="dropdown-form-categ">
-                <ng-multiselect-dropdown class="categoryy adddealerbubbles" name="city1" [placeholder]="'Category'" formControlName="city1"
-                  [disabled]="disabled" [settings]="dropdownSettings1" [data]="catgname"
+                <ng-multiselect-dropdown class="categoryy adddealerbubbles" name="city1" [placeholder]="'Category'"
+                  formControlName="city1" [disabled]="disabled" [settings]="dropdownSettings1" [data]="catgname"
                   (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
                   (onDeSelectAll)="onItemDeSelectOrAll($event)" (onSelectAll)="onItemSelectOrAll($event)">
                 </ng-multiselect-dropdown>
@@ -345,8 +341,8 @@
             <div class="col promotiont1 dynamicproductbubbles">
               <form [formGroup]="myForm3" class="dropdown-form-categ">
 
-                <ng-multiselect-dropdown class="productt selectprodectss" name="city4" [placeholder]="''" formControlName="city4"
-                  [disabled]="disabled" [settings]="dropdownSettings4" [data]="Product"
+                <ng-multiselect-dropdown class="productt selectprodectss" name="city4" [placeholder]="''"
+                  formControlName="city4" [disabled]="disabled" [settings]="dropdownSettings4" [data]="Product"
                   (onSelect)="onProductSelect($event)" (onDeSelect)="onProductDeSelect($event)"
                   (onDeSelectAll)="onProductDeSelectOrAll($event)" (onSelectAll)="onProductSelectOrAll($event)">
                 </ng-multiselect-dropdown>
@@ -394,8 +390,8 @@
             </div>
  -->
 
-            
-            <!-- <div class="col-9">
+
+          <!-- <div class="col-9">
               <div class="searchBox d-flex" style=" cursor: pointer">
                 <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
                   placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
@@ -416,23 +412,27 @@
 
 
         <div class="row mainclass" *ngIf="screenValue == 1 || screenValue ==2 ">
-          <div class="col-md-7 bubbless" *ngIf="screenValue == 1 && dealerList.length > 0 " >
-            <mat-checkbox class="checkboxStyle" aria-label="Select All" 
-            [checked]="isChecked()" [indeterminate]="isIndeterminate()" (change)="$event ? toggleAll($event) : null">
-             <span *ngIf="aarrayToPush.length == 0" class="contentStyle">No Dealers Selected </span>
-             <span  *ngIf="aarrayToPush.length == selectedDealerInDropDown.length" class="contentStyle">All Dealers Selected </span>
-             <span *ngIf="aarrayToPush.length > 0 && selectedDealerInDropDown.length != aarrayToPush.length && screenValue == 1" class="contentStyle"> Some Dealers Selected</span>
-           </mat-checkbox>
+          <div class="col-md-7 bubbless" *ngIf="screenValue == 1 && dealerList.length > 0 ">
+            <mat-checkbox class="checkboxStyle" aria-label="Select All" [checked]="isChecked()"
+              [indeterminate]="isIndeterminate()" (change)="$event ? toggleAll($event) : null">
+              <span *ngIf="aarrayToPush.length == 0" class="contentStyle">No Dealers Selected </span>
+              <span *ngIf="aarrayToPush.length == selectedDealerInDropDown.length" class="contentStyle">All Dealers
+                Selected </span>
+              <span
+                *ngIf="aarrayToPush.length > 0 && selectedDealerInDropDown.length != aarrayToPush.length && screenValue == 1"
+                class="contentStyle"> Some Dealers Selected</span>
+            </mat-checkbox>
           </div>
           <!-- products to dealer -->
 
-          <div class="col-md-7" *ngIf="screenValue == 2 && dealerList.length > 0 " >
-            <mat-checkbox class="checkboxStyle" aria-label="Select All" 
-            [checked]="isCheckedForProduct()" [indeterminate]="isIndeterminateForProduct()" (change)="$event ? toggleProductAll($event) : null">
-             <span *ngIf="aarrayToPush1.length == 0" class="contentStyle">No Products Selected </span>
-             <span  *ngIf="dealerList.length == aarrayToPush1.length" class="contentStyle">All Products Selected </span>
-             <span  *ngIf="aarrayToPush1.length > 0 && dealerList.length != aarrayToPush1.length && screenValue == 2 " class="contentStyle"> Some Products Selected</span>
-           </mat-checkbox>
+          <div class="col-md-7" *ngIf="screenValue == 2 && dealerList.length > 0 ">
+            <mat-checkbox class="checkboxStyle" aria-label="Select All" [checked]="isCheckedForProduct()"
+              [indeterminate]="isIndeterminateForProduct()" (change)="$event ? toggleProductAll($event) : null">
+              <span *ngIf="aarrayToPush1.length == 0" class="contentStyle">No Products Selected </span>
+              <span *ngIf="dealerList.length == aarrayToPush1.length" class="contentStyle">All Products Selected </span>
+              <span *ngIf="aarrayToPush1.length > 0 && dealerList.length != aarrayToPush1.length && screenValue == 2 "
+                class="contentStyle"> Some Products Selected</span>
+            </mat-checkbox>
           </div>
           <!-- <div class="col-md-7"
             *ngIf="selectedDealerInDropDown.length == aarrayToPush.length && aarrayToPush.length != 0  && screenValue == 1 ">
@@ -466,64 +466,56 @@
             Product Selected</p>
         </div> -->
 
-        <div class="row">
-          <div class="col-9">
-            
+          <div class="row">
+            <div class="col-9">
+            </div>
+            <div class="col-md-3">
+              <div class="searchBox1 d-flex">
+                <div class="promotiont2">
+                  <select class="form-select select-asso" aria-label=".form-select-lg example"
+                    [(ngModel)]="selectedGeoField1">
+                    <option selected hidden>Select</option>
+                    <option value="" disabled selected hidden>Select Field</option>
+                    <option value="mrp"> MRP</option>
+                    <option value="marginPercent"> Margin Percent</option>
+                    <option value="maxOrderQty"> Max Order Qty</option>
+                    <option value="minOrderQty"> Min Order Qty</option>
+                    <option value="discountPercent"> Discount Percent</option>
+                    <option value="leadTime"> Lead Time</option>
+                    <!-- <option value="registrationNumber"> Registration Number</option> -->
+                  </select>
+                </div>
+                <div class="promotiont3">
+                  <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name=""
+                    [(ngModel)]="updateGeographyValue1" placeholder="Enter value" />
+                </div>
+                <div class="promotiont3" *ngIf="screenValue != 2" (click)="applySelectedValue1()">
+                  <button type="button" class="saveas-draft1">Apply</button>
+                </div>
+                <div class="promotiont3" *ngIf="screenValue == 2" (click)="applySelectedValueforDealer()">
+                  <button type="button" class="saveas-draft1">Apply</button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-9"></div>
+              <div class="col-3">
+                <div class="icon btnhover refreshbtn2" (click)="resetAll()">
+                  <img class="refresh" src="assets/img/ultrarefresh.svg"
+                    style="position: relative; top: 9px; left: 12px" alt="refresh" />
+                </div>
+              </div>
+            </div>
           </div>
-
-        
-
-   <div class="col-md-3">
-    <div class="searchBox1 d-flex">
-      <div class="promotiont2">
-        <select class="form-select select-asso" aria-label=".form-select-lg example"
-          [(ngModel)]="selectedGeoField1">
-          <option selected hidden>Select</option>
-          <option value="" disabled selected hidden>Select Field</option>
-          <option value="mrp"> MRP</option>
-          <option value="marginPercent"> Margin Percent</option>
-          <option value="maxOrderQty"> Max Order Qty</option>
-          <option value="minOrderQty"> Min Order Qty</option>
-          <option value="discountPercent"> Discount Percent</option>
-          <option value="leadTime"> Lead Time</option>
-          <!-- <option value="registrationNumber"> Registration Number</option> -->
-        </select>
-      </div>
-      <div class="promotiont3">
-        <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name=""
-          [(ngModel)]="updateGeographyValue1" placeholder="Enter value" />
-      </div>
-      <div class="promotiont3" *ngIf="screenValue != 2" (click)="applySelectedValue1()">
-        <button type="button" class="saveas-draft1">Apply</button>
-      </div>
-      <div class="promotiont3" *ngIf="screenValue == 2" (click)="applySelectedValueforDealer()">
-        <button type="button" class="saveas-draft1">Apply</button>
-      </div>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="col-9"></div>
-    <div class="col-3">
-      <div class="icon btnhover refreshbtn2"   (click)="resetAll()">
-        <img class="refresh" src="assets/img/ultrarefresh.svg" style="position: relative; top: 9px; left: 12px"
-          alt="refresh" />
-      
-    </div>
-    </div>
-    
-
-  </div>
-</div>
           <br />
 
-          <div *ngIf="screenValue != 2" style="width: 100%;">
+          <div *ngIf="screenValue != 2 && dealerList.length > 0" style="width: 100%;">
             <div *ngFor=" let data of dealerList;let i=index" style="width: 100%;">
               <div class="collapsible">
                 <div class="row">
                   <div class="col-md-1">
-                    <mat-checkbox class="example-margin font" (click)="$event.stopPropagation()" [color]="color" (change)="$event ? toggle(data.dealerId, $event) : null"
-                    [checked]="exists(data.dealerId)">
+                    <mat-checkbox class="example-margin font" (click)="$event.stopPropagation()" [color]="color"
+                      (change)="$event ? toggle(data.dealerId, $event) : null" [checked]="exists(data.dealerId)">
                     </mat-checkbox>
                   </div>
                   <div class="col-md-10 check1">
@@ -540,8 +532,10 @@
               <p class="label-cls">Singapore (0/145)</p>
             </div> -->
                   <div class="col-md-1" (click)="expandDealerInfoDiv(i)">
-                    <img *ngIf="this.dealerList[i].flagforopen" [src]="image2" class="expand-arrow" alt="add-user-btn" />
-              <img *ngIf="!this.dealerList[i].flagforopen" [src]="image1" class="expand-arrow" alt="add-user-btn" />
+                    <img *ngIf="this.dealerList[i].flagforopen" [src]="image2" class="expand-arrow"
+                      alt="add-user-btn" />
+                    <img *ngIf="!this.dealerList[i].flagforopen" [src]="image1" class="expand-arrow"
+                      alt="add-user-btn" />
 
                   </div>
                 </div>
@@ -710,24 +704,20 @@
             </div>
 
           </div>
-
-
-
-
-
-     <div  style="width: 100%;" *ngIf="screenValue == 2">
-      <div *ngFor=" let data of dealerList;let i=index">
-        <div class="collapsible">
-          <div class="row">
-            <div class="col-md-1">
-              <mat-checkbox  class="example-margin font"  (click)="$event.stopPropagation()" [color]="color" (change)="$event ? toggleForProduct(data.productIdId, $event) : null"
-              [checked]="existsProduct(data.productIdId)">
-              </mat-checkbox>
-            </div>
-            <div class="col-md-10 check1">
-              <p class="label-cls">{{data?.productName}}</p>
-            </div>
-            <!-- <div class="col-md-2 check1">
+          <div style="width: 100%;" *ngIf="screenValue == 2 && dealerList.length > 0">
+            <div *ngFor=" let data of dealerList;let i=index">
+              <div class="collapsible">
+                <div class="row">
+                  <div class="col-md-1">
+                    <mat-checkbox class="example-margin font" (click)="$event.stopPropagation()" [color]="color"
+                      (change)="$event ? toggleForProduct(data.productIdId, $event) : null"
+                      [checked]="existsProduct(data.productIdId)">
+                    </mat-checkbox>
+                  </div>
+                  <div class="col-md-10 check1">
+                    <p class="label-cls">{{data?.productName}}</p>
+                  </div>
+                  <!-- <div class="col-md-2 check1">
           <p class="label-cls">India (0/136)</p>
         </div>
         <div class="col-md-2 check1">
@@ -737,160 +727,144 @@
         <div class="col-md-3 check1">
           <p class="label-cls">Singapore (0/145)</p>
         </div> -->
-            <div class="col-md-1" (click)="expandDealerInfoDiv(i)">
-              <img *ngIf="this.dealerList[i].flagforopen" [src]="image2" class="expand-arrow" alt="add-user-btn" />
-              <img *ngIf="!this.dealerList[i].flagforopen" [src]="image1" class="expand-arrow" alt="add-user-btn" />
+                  <div class="col-md-1" (click)="expandDealerInfoDiv(i)">
+                    <img *ngIf="this.dealerList[i].flagforopen" [src]="image2" class="expand-arrow"
+                      alt="add-user-btn" />
+                    <img *ngIf="!this.dealerList[i].flagforopen" [src]="image1" class="expand-arrow"
+                      alt="add-user-btn" />
 
-            </div>
-          </div>
-        </div>
-
-        <div class="content" *ngIf="this.dealerList[i].flagforopen">
-          <br />
-
-          <div class="row mainclass">
-            <div class="col-md-7"></div>
-            <div class="col-md-3">
-              <div class="searchBox3 d-flex">
-                <div class="promotiont2">
-                  <select class="form-select select-asso" aria-label=".form-select-lg example"
-                    [(ngModel)]="selectedGeoField">
-                    <option selected hidden>Select</option>
-                    <option value="" disabled selected hidden>Select Feild</option>
-                    <option value="mrp"> MRP</option>
-                    <option value="marginPercent"> Margin Percent</option>
-                    <option value="maxOrderQty"> Max Order Qty</option>
-                    <option value="minOrderQty"> Min Order Qty</option>
-                    <option value="discountPercent"> Discount Percent</option>
-                    <option value="leadTime"> Lead Time</option>
-                    <!-- <option value="registrationNumber"> Registration Number</option> -->
-                  </select>
-                </div>
-                <div class="promotiont3">
-                  <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name=""
-                    [(ngModel)]="updateGeographyValue" placeholder="Enter value" />
-                </div>
-                <div class="promotiont3" (click)="applySelectedValue(i)">
-                  <button type="button" class="saveas-draft1">Apply</button>
+                  </div>
                 </div>
               </div>
-            </div>
-             <div class="">
-              <div class="icon btnhover refreshbtn4" style="cursor: pointer; left: 97px;"  (click)="RefreshAll()" >
-                <img class="refresh" src="assets/img/ultrarefresh.svg"
-                  style="position: relative; top: 9px; left: 12px" alt="refresh" />
+
+              <div class="content" *ngIf="this.dealerList[i].flagforopen">
+                <br />
+
+                <div class="row mainclass">
+                  <div class="col-md-7"></div>
+                  <div class="col-md-3">
+                    <div class="searchBox3 d-flex">
+                      <div class="promotiont2">
+                        <select class="form-select select-asso" aria-label=".form-select-lg example"
+                          [(ngModel)]="selectedGeoField">
+                          <option selected hidden>Select</option>
+                          <option value="" disabled selected hidden>Select Feild</option>
+                          <option value="mrp"> MRP</option>
+                          <option value="marginPercent"> Margin Percent</option>
+                          <option value="maxOrderQty"> Max Order Qty</option>
+                          <option value="minOrderQty"> Min Order Qty</option>
+                          <option value="discountPercent"> Discount Percent</option>
+                          <option value="leadTime"> Lead Time</option>
+                          <!-- <option value="registrationNumber"> Registration Number</option> -->
+                        </select>
+                      </div>
+                      <div class="promotiont3">
+                        <input class="searchInput1" style="font-family: 'Gilroy'" type="text" name=""
+                          [(ngModel)]="updateGeographyValue" placeholder="Enter value" />
+                      </div>
+                      <div class="promotiont3" (click)="applySelectedValue(i)">
+                        <button type="button" class="saveas-draft1">Apply</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="">
+                    <div class="icon btnhover refreshbtn4" style="cursor: pointer; left: 97px;" (click)="RefreshAll()">
+                      <img class="refresh" src="assets/img/ultrarefresh.svg"
+                        style="position: relative; top: 9px; left: 12px" alt="refresh" />
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <table>
+                  <tr>
+                    <th style="width: 168px">Geography</th>
+                    <th style="width: 168px">MrP(INR)</th>
+                    <th style="width: 168px">Min order Qty</th>
+                    <th style="width: 168px">Max order Qty</th>
+                    <th style="width: 168px">Margin %</th>
+                    <th style="width: 168px">Discount %</th>
+                    <th style="width: 168px">Lead time (Days)</th>
+                  </tr>
+                  <tr *ngFor=" let item of data.formatedGeoGraphy;   let j=index ">
+                    <td>
+                      <img [src]="image1" class="expand-arrow1" alt="add-user-btn" (click)="expandOrderItemsDiv1()" />
+                      {{item.geographyName}}
+                    </td>
+                    <td>
+                      <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
+                        [(ngModel)]="item.mrp" class="uom-cls" id="fname" name="fname" />
+                    </td>
+                    <td>
+                      <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
+                        [(ngModel)]="item.minOrderQty" class="uom-cls" id="fname" name="fname" />
+                    </td>
+
+                    <td>
+                      <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
+                        [(ngModel)]="item.maxOrderQty" class="uom-cls" id="fname" name="fname" />
+                    </td>
+
+                    <td>
+                      <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
+                        [(ngModel)]="item.marginPercent" class="uom-cls" id="fname" name="fname" />
+                    </td>
+
+                    <td>
+                      <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
+                        [(ngModel)]="item.discountPercent" class="uom-cls" id="fname" name="fname" />
+                    </td>
+
+                    <td>
+                      <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
+                        [(ngModel)]="item.leadTime" class="uom-cls" id="fname" name="fname" />
+                    </td>
+                  </tr>
+
+
+                </table>
               </div>
-            </div> 
-          </div>
-          <br />
-          <table>
-            <tr>
-              <th style="width: 168px">Geography</th>
-              <th style="width: 168px">MrP(INR)</th>
-              <th style="width: 168px">Min order Qty</th>
-              <th style="width: 168px">Max order Qty</th>
-              <th style="width: 168px">Margin %</th>
-              <th style="width: 168px">Discount %</th>
-              <th style="width: 168px">Lead time (Days)</th>
-            </tr>
-            <tr *ngFor=" let item of data.formatedGeoGraphy;   let j=index ">
-              <td>
-                <img [src]="image1" class="expand-arrow1" alt="add-user-btn" (click)="expandOrderItemsDiv1()" />
-                {{item.geographyName}}
-              </td>
-              <td>
-                <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
-                  [(ngModel)]="item.mrp" class="uom-cls" id="fname" name="fname" />
-              </td>
-              <td>
-                <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
-                  [(ngModel)]="item.minOrderQty" class="uom-cls" id="fname" name="fname" />
-              </td>
-
-              <td>
-                <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
-                  [(ngModel)]="item.maxOrderQty" class="uom-cls" id="fname" name="fname" />
-              </td>
-
-              <td>
-                <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
-                  [(ngModel)]="item.marginPercent" class="uom-cls" id="fname" name="fname" />
-              </td>
-
-              <td>
-                <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
-                  [(ngModel)]="item.discountPercent" class="uom-cls" id="fname" name="fname" />
-              </td>
-
-              <td>
-                <input type="text" [disabled]="data.defaultHeirarchyLevelId > item.geographyHierarchyId"
-                  [(ngModel)]="item.leadTime" class="uom-cls" id="fname" name="fname" />
-              </td>
-            </tr>
-
-
-          </table>
-        </div>
-      </div>
-
-     </div>
-
-     <div *ngIf="screenValue == 2">
-       <p *ngIf="dealerList.length==0" class="">No Products Available</p>
-     </div>
-          <br>
-          <br>
-          <br>
-
-
-        <div *ngIf="screenValue == 1" style="margin: auto;" class="save-submit">
-           
-         
-           <div class="row footer">
-            
-
-           
-            <div class="col">
-              <button type="button" class="saveas-draft" (click)="saveAssociation()">Save</button>
             </div>
-            <div class="col">
-              <button type="button" [mat-dialog-close]="true" class="saveas-draft2">
-                Cancel 
-              </button>
-            </div> 
 
-
-          
-            <!-- <div class="col-md-5">
-              <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
-      </div> -->
-       
           </div>
-        </div> 
 
-<div *ngIf="screenValue == 2" style="margin: auto;"class="save-submit" >
-  
-  <div class="row footer">
-    <div class="col">
-      <button type="button" class="saveas-draft" (click)="saveAssociationdealer()">Save</button>
-    </div>
-    <div class="col">
-      <button type="button" [mat-dialog-close]="true" class="saveas-draft2">
-        Cancel 
-      </button>
-    </div>
-    <!-- <div class="col-md-5">
-      <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
-</div> -->
-  </div>
-</div>
+          <div *ngIf="screenValue == 2">
+            <p *ngIf="dealerList.length==0" class="">No Products Available</p>
+          </div>
+          <br>
+          <br>
+          <br>
+          <div *ngIf="screenValue == 1" style="margin: auto;" class="save-submit">
+            <div class="row footer">
+              <div class="col">
+                <button type="button" class="saveas-draft" (click)="saveAssociation()">Save</button>
+              </div>
+              <div class="col">
+                <button type="button" [mat-dialog-close]="true" class="saveas-draft2">
+                  Cancel
+                </button>
+              </div>
+              <!-- <div class="col-md-5">
+                                      <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
+                              </div> -->
+            </div>
+          </div>
 
-
-
+          <div *ngIf="screenValue == 2" style="margin: auto;" class="save-submit">
+            <div class="row footer">
+              <div class="col">
+                <button type="button" class="saveas-draft" (click)="saveAssociationdealer()">Save</button>
+              </div>
+              <div class="col">
+                <button type="button" [mat-dialog-close]="true" class="saveas-draft2">
+                  Cancel
+                </button>
+              </div>
+              <!-- <div class="col-md-5">
+                    <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
+              </div> -->
+            </div>
+          </div>
         </div>
-
-
-
       </div>
     </div>
   </div>

@@ -25,12 +25,12 @@ export class AddDealerAssociationsComponent implements OnInit {
   selectedTeam = '';
 
   selectedDay: string = '';
-  selectedGeoField: string = "";
-  updateGeographyValue: string = "";
+  selectedGeoField: string = '';
+  updateGeographyValue: string = '';
 
-  selectedGeoField1: string = "";
-  updateGeographyValue1: string = "";
-  refreshbtn:string="";
+  selectedGeoField1: string = '';
+  updateGeographyValue1: string = '';
+  refreshbtn: string = '';
 
   dealerInfo: boolean = false;
   orderitem = false;
@@ -80,13 +80,13 @@ export class AddDealerAssociationsComponent implements OnInit {
   image3 = 'assets/img/minimize-tag.png';
   selectedProduct1: any;
   selectedDealer2: any;
-  ProductListArray: any = []
+  ProductListArray: any = [];
   storedNames123: any;
   productSkuId: any;
   stockItemsID: any;
   aboveDefaultGeoOfName: any;
   tottalgeoCount: any;
-  productCustomIdentifierArray: any[] = []
+  productCustomIdentifierArray: any[] = [];
   selectedtypeasso1: any;
   selectChangeHandler(event: any) {
     //update the ui
@@ -167,7 +167,7 @@ export class AddDealerAssociationsComponent implements OnInit {
   numberValue: any;
   color: any = 'primary';
   productIDentifire: any = [];
-  typeTosend: any[] = []
+  typeTosend: any[] = [];
   statusTypes = [];
   searchText: any = '';
   dealerListArr: any = [];
@@ -183,14 +183,12 @@ export class AddDealerAssociationsComponent implements OnInit {
     private materialList: MaterialListService,
     private addMaterials: AddMaterialsService,
     private sharedService: SharedServicesDealerService,
-    private dialogRef: MatDialogRef<AddDealerAssociationsComponent>,
-
-
+    private dialogRef: MatDialogRef<AddDealerAssociationsComponent>
   ) {
     this.sharedService.listen().subscribe((m: any) => {
       console.log(m);
-      this.getdealerbasedonGeo()
-    })
+      this.getdealerbasedonGeo();
+    });
   }
 
   firstFormGroup: FormGroup = this._formBuilder.group({ firstCtrl: [''] });
@@ -200,15 +198,14 @@ export class AddDealerAssociationsComponent implements OnInit {
   aarrayToPush: any = [];
   aarrayToPush1: any = [];
 
-
   ngOnInit(): void {
-    this.LoginId = localStorage.getItem("logInId");
+    this.LoginId = localStorage.getItem('logInId');
     this.numberValue = Number(this.LoginId);
     this.productidentify();
     this.ProductItems();
     this.dealerItems();
     this.tooltiptable();
-    this.customIdentifier()
+    this.customIdentifier();
     this.copyDealersEntriesList = [];
     this.dealerList = [];
     this.dropdownSettings1 = {
@@ -218,7 +215,7 @@ export class AddDealerAssociationsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: true
+      allowSearchFilter: true,
     };
     this.dropdownSettings2 = {
       singleSelection: false,
@@ -227,7 +224,7 @@ export class AddDealerAssociationsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: true
+      allowSearchFilter: true,
     };
     this.dropdownSettings6 = {
       singleSelection: false,
@@ -236,7 +233,7 @@ export class AddDealerAssociationsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: true
+      allowSearchFilter: true,
     };
 
     this.dropdownSettings4 = {
@@ -246,7 +243,7 @@ export class AddDealerAssociationsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: true
+      allowSearchFilter: true,
     };
     this.dropdownSettings5 = {
       singleSelection: false,
@@ -255,8 +252,8 @@ export class AddDealerAssociationsComponent implements OnInit {
       selectAllText: 'Select All',
       unSelectAllText: 'UnSelect All',
       itemsShowLimit: 1,
-      allowSearchFilter: true
-    }
+      allowSearchFilter: true,
+    };
     this.myFormDealer = this.fb.group({
       dealer: [this.selectedItems],
     });
@@ -280,66 +277,77 @@ export class AddDealerAssociationsComponent implements OnInit {
     this.customIdentifier();
   }
 
-
   applySelectedValue(i) {
-    console.log(this.updateGeographyValue, this.selectedGeoField);
-
-    this.dealerList[i].formatedGeoGraphy.map(x => x[this.selectedGeoField] = this.updateGeographyValue);
-    this.selectedGeoField = "";
-    this.updateGeographyValue = "";
+    this.associationService.addassociations().subscribe((res: any) => {
+      let cityId = res.response.filter((x) => x.primaryGeographyAssociation == 'Y').map((y) => y.geographyHierarchyId);
+      // console.log(res.response.filter(x=>x.primaryGeographyAssociation =='Y'));
+      // console.log('geographyHierarchyId',cityId);
+      // console.log(this.updateGeographyValue, this.selectedGeoField);
+      // console.log(this.dealerList[i]);
+      this.dealerList[i].formatedGeoGraphy.filter((id) => id.geographyHierarchyId == cityId).map((x) => (x[this.selectedGeoField] = this.updateGeographyValue));
+      this.selectedGeoField = '';
+      this.updateGeographyValue = '';
+    });
   }
 
   applySelectedValue1() {
-
-    for (let i = 0; i < this.selectedDealerInDropDown.length; i++) {
-      this.dealerList[i].formatedGeoGraphy.map(x => x[this.selectedGeoField1] = this.updateGeographyValue1);
-    }
-
-    this.selectedGeoField1 = "";
-    this.updateGeographyValue1 = "";
+    this.associationService.addassociations().subscribe((res: any) => {
+      let cityId = res.response .filter((x) => x.primaryGeographyAssociation == 'Y').map((y) => y.geographyHierarchyId);
+      for (let i = 0; i < this.selectedDealerInDropDown.length; i++) {
+        this.dealerList[i].formatedGeoGraphy.filter((id) => id.geographyHierarchyId == cityId).map((x) => (x[this.selectedGeoField1] = this.updateGeographyValue1));
+      }
+      this.selectedGeoField1 = '';
+      this.updateGeographyValue1 = '';
+    });
   }
   applySelectedValueforDealer() {
-    for (let i = 0; i < this.dealerList.length; i++) {
-      this.dealerList[i].formatedGeoGraphy.map(x => x[this.selectedGeoField1] = this.updateGeographyValue1);
-    }
-
-    this.selectedGeoField1 = "";
-    this.updateGeographyValue1 = "";
+    this.associationService.addassociations().subscribe((res: any) => {
+      let cityId = res.response.filter((x) => x.primaryGeographyAssociation == 'Y').map((y) => y.geographyHierarchyId);
+      for (let i = 0; i < this.dealerList.length; i++) {
+        this.dealerList[i].formatedGeoGraphy.filter((id) => id.geographyHierarchyId == cityId).map((x) => (x[this.selectedGeoField1] = this.updateGeographyValue1));
+      }
+      this.selectedGeoField1 = '';
+      this.updateGeographyValue1 = '';
+    });
   }
 
-
   getdealerbasedonGeo() {
-     this.showselectedgeovalue = true;
-    this.storedNames123 = localStorage.getItem("geoAsso");
-    
-    this.aboveDefaultGeoOfName =JSON.parse( localStorage.getItem("aboveDefaultGeoOfName")??"")
-    this.selectedcountGeo = localStorage.getItem("selectedcountGeo");
-    this.tottalgeoCount = localStorage.getItem("tottalgeoCount");
+    this.showselectedgeovalue = true;
+    this.storedNames123 = localStorage.getItem('geoAsso');
 
-    var objectsFromStorage = JSON.parse(this.storedNames123)
+    this.aboveDefaultGeoOfName = JSON.parse(
+      localStorage.getItem('aboveDefaultGeoOfName') ?? ''
+    );
+    this.selectedcountGeo = localStorage.getItem('selectedcountGeo');
+    this.tottalgeoCount = localStorage.getItem('tottalgeoCount');
+
+    var objectsFromStorage = JSON.parse(this.storedNames123);
     this.storedName124 = objectsFromStorage;
     this.copyDealersEntriesList = [];
     this.dealerList = [];
     let data = {
       geoId: objectsFromStorage,
-      search: "",
-    }
+      search: '',
+    };
 
     if (this.selectedtypeasso1 == 'product') {
-
       this.associationService.dealerdrop(data).subscribe((res) => {
         console.log(res.response);
 
-        let localdata = res.response
-        this.dealersArray = localdata.map((data: { customerId: any; customerName: any; }) => {
-          return { customerId: data.customerId, customerName: data.customerName, };
-        });
-        this.dealersArray.push()
-        this.dealersArray.forEach(element => {
+        let localdata = res.response;
+        this.dealersArray = localdata.map(
+          (data: { customerId: any; customerName: any }) => {
+            return {
+              customerId: data.customerId,
+              customerName: data.customerName,
+            };
+          }
+        );
+        this.dealersArray.push();
+        this.dealersArray.forEach((element) => {
           return this.dealerListArr.push(element.customerId);
           // console.log('rolecheck',rolecheck)
-
-        })
+        });
         this.dropdownSettings3 = {
           singleSelection: false,
           idField: 'customerId',
@@ -347,26 +355,26 @@ export class AddDealerAssociationsComponent implements OnInit {
           // selectAllText: 'Select All',
           // unSelectAllText: 'UnSelect All',
           itemsShowLimit: 1,
-          allowSearchFilter: true
+          allowSearchFilter: true,
         };
 
-        this.dealersArray.push()
-        this.dealersArray
-      })
-
-
-    }
-
-    else {
+        this.dealersArray.push();
+        this.dealersArray;
+      });
+    } else {
       this.productListTable();
     }
-
   }
 
-
   onDealerDeSelect(item: any) {
-    this.selectedDealerInDropDown.splice(this.selectedDealerInDropDown.indexOf(item.customerId), 1);
-    this.dealerList.splice(this.dealerList.findIndex(x => x.dealerId == item.customerId), 1);
+    this.selectedDealerInDropDown.splice(
+      this.selectedDealerInDropDown.indexOf(item?.customerId),
+      1
+    );
+    this.dealerList.splice(
+      this.dealerList.findIndex((x) => x.dealerId == item.customerId),
+      1
+    );
 
     // this.catagoryName = item.catName;
     // let dealerdata = {
@@ -378,7 +386,6 @@ export class AddDealerAssociationsComponent implements OnInit {
   }
 
   productListTable() {
-
     const data = {
       DealerId: this.selectedDealer2,
       SelectedGeoIds: this.storedName124,
@@ -387,85 +394,88 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
   }
 
-
   getproductDetails(dealerdata) {
     this.dealerList = [];
-    this.associationService.getProductEntireList(dealerdata).subscribe((res) => {
-      let data = res.response;
-      this.loopingdata = data;
-      console.log(' this.loopingdata', this.loopingdata)
+    this.associationService
+      .getProductEntireList(dealerdata)
+      .subscribe((res) => {
+        let data = res.response;
+        this.loopingdata = data;
+        console.log(' this.loopingdata', this.loopingdata);
 
-
-      this.ourGeoFormt1(res.response)
-
-
-    });
+        this.ourGeoFormt1(res.response);
+      });
   }
 
   ourGeoFormt1(reqObj) {
     console.log('req', reqObj);
     for (let item of reqObj) {
       console.log(item);
-      item.flagforopen=false;
-      let isDelaerDataAvailable = this.dealerList.some(x => x.productIdId == item.productIdId);
+      item.flagforopen = false;
+      let isDelaerDataAvailable = this.dealerList.some(
+        (x) => x.productIdId == item.productIdId
+      );
       if (!isDelaerDataAvailable && item.geoDetails) {
-
-        let formatedGeoObj = this.formatGeoDetailsProductObj(item.geoDetails, item.defaultHeirarchyLevelId);
+        let formatedGeoObj = this.formatGeoDetailsProductObj(
+          item.geoDetails,
+          item.defaultHeirarchyLevelId
+        );
         item.formatedGeoGraphy = formatedGeoObj;
         this.dealerList.push(item);
       }
 
       console.log('this.productlist', this.dealerList);
-
-
     }
   }
 
   onDealerSelect(item: any) {
     this.selectedDealerInDropDown.push(item.customerId);
-    console.log("Catttyyyyy", item)
-    console.log('item Subcatty', item)
+    console.log('Catttyyyyy', item);
+    console.log('item Subcatty', item);
     this.catagoryName = item.catName;
     let dealerdata = {
       ProductId: this.stockItemsID,
       DealerId: this.selectedDealerInDropDown,
       SelectedGeoIds: this.storedName124,
-    }
+    };
     this.GetDealearsData(dealerdata);
   }
-
 
   GetDealearsData(dealerdata) {
     this.associationService.getdealerEntireList(dealerdata).subscribe((res) => {
       let data = res.response;
       this.loopingdata = data;
-      console.log(' this.loopingdata', this.loopingdata)
+      console.log(' this.loopingdata', this.loopingdata);
 
-
-      this.ourGeoFormt(res.response)
-
-
+      this.ourGeoFormt(res.response);
     });
   }
-
-
 
   formatGeoDetailsObj(geographyData, heirarchyValue) {
     let formatedGeography: any = [];
 
-    geographyData.forEach(element => {
+    geographyData.forEach((element) => {
       let copyObject = JSON.parse(JSON.stringify(element));
       let childObj = JSON.parse(JSON.stringify(element));
       for (var i = 0; i < heirarchyValue - 1; i++) {
         let tempObj = JSON.parse(JSON.stringify(childObj));
         if (tempObj.child) {
           delete tempObj.child;
-          tempObj = { ...tempObj, ... this.CreateGeoPropertiesObject({ geographyName: tempObj.geoGraphyName, geographyId: tempObj.geographyId }, true) };
+          tempObj = {
+            ...tempObj,
+            ...this.CreateGeoPropertiesObject(
+              {
+                geographyName: tempObj.geoGraphyName,
+                geographyId: tempObj.geographyId,
+              },
+              true
+            ),
+          };
           formatedGeography.push(tempObj);
         } else {
           delete tempObj.defaultLevels;
@@ -474,9 +484,18 @@ export class AddDealerAssociationsComponent implements OnInit {
         if (childObj.child) {
           childObj = JSON.parse(JSON.stringify(childObj.child[0]));
         } else {
-          tempObj = { ...tempObj, ... this.CreateGeoPropertiesObject({ geographyName: tempObj.geoGraphyName, geographyId: tempObj.geographyId }, true) };
+          tempObj = {
+            ...tempObj,
+            ...this.CreateGeoPropertiesObject(
+              {
+                geographyName: tempObj.geoGraphyName,
+                geographyId: tempObj.geographyId,
+              },
+              true
+            ),
+          };
           formatedGeography.push(tempObj);
-          formatedGeography = [...formatedGeography, ...childObj.defaultLevels]
+          formatedGeography = [...formatedGeography, ...childObj.defaultLevels];
           // .push(childObj.defaultLevels);
         }
       }
@@ -484,22 +503,26 @@ export class AddDealerAssociationsComponent implements OnInit {
     return formatedGeography;
   }
 
-
-
-
-
   formatGeoDetailsProductObj(geographyData, heirarchyValue) {
     let formatedGeography: any = [];
     if (geographyData[0].geographyId) {
-      
-      geographyData.forEach(element => {
+      geographyData.forEach((element) => {
         let copyObject = JSON.parse(JSON.stringify(element));
         let childObj = JSON.parse(JSON.stringify(element));
         for (var i = 0; i < heirarchyValue - 1; i++) {
           let tempObj = JSON.parse(JSON.stringify(childObj));
           if (tempObj.child) {
             delete tempObj.child;
-            tempObj = { ...tempObj, ... this.CreateGeoPropertiesObject({ geographyName: tempObj.geoGraphyName, geographyId: tempObj.geographyId }, true) };
+            tempObj = {
+              ...tempObj,
+              ...this.CreateGeoPropertiesObject(
+                {
+                  geographyName: tempObj.geoGraphyName,
+                  geographyId: tempObj.geographyId,
+                },
+                true
+              ),
+            };
             formatedGeography.push(tempObj);
           } else {
             delete tempObj.defaultLevels;
@@ -508,117 +531,117 @@ export class AddDealerAssociationsComponent implements OnInit {
           if (childObj.child) {
             childObj = JSON.parse(JSON.stringify(childObj.child[0]));
           } else {
-            tempObj = { ...tempObj, ... this.CreateGeoPropertiesObject({ geographyName: tempObj.geoGraphyName, geographyId: tempObj.geographyId }, true) };
+            tempObj = {
+              ...tempObj,
+              ...this.CreateGeoPropertiesObject(
+                {
+                  geographyName: tempObj.geoGraphyName,
+                  geographyId: tempObj.geographyId,
+                },
+                true
+              ),
+            };
             formatedGeography.push(tempObj);
-            formatedGeography = [...formatedGeography, ...childObj.defaultLevels]
+            formatedGeography = [
+              ...formatedGeography,
+              ...childObj.defaultLevels,
+            ];
             // .push(childObj.defaultLevels);
           }
         }
       });
       return formatedGeography;
     }
-
   }
 
   ourGeoFormt(reqObj) {
     console.log('req', reqObj);
 
     for (let item of reqObj) {
-      item.flagforopen=false;
+      item.flagforopen = false;
       console.log(item);
-      let isDelaerDataAvailable = this.dealerList.some(x => x.dealerId == item.dealerId);
+      let isDelaerDataAvailable = this.dealerList.some(
+        (x) => x.dealerId == item.dealerId
+      );
       if (!isDelaerDataAvailable && item.geoDetails) {
-
-        let formatedGeoObj = this.formatGeoDetailsObj(item.geoDetails, item.defaultHeirarchyLevelId);
+        let formatedGeoObj = this.formatGeoDetailsObj(
+          item.geoDetails,
+          item.defaultHeirarchyLevelId
+        );
         item.formatedGeoGraphy = formatedGeoObj;
         this.dealerList.push(item);
       }
 
       console.log('this.dealerList', this.dealerList);
-
-
     }
   }
 
   CreateGeoPropertiesObject(propertyObj, isInputValueDisable = false) {
     let obj: any = {};
-    obj.productSKUGeographyId = propertyObj.productSKUGeographyId ?? "";
-    obj.minOrderQty = propertyObj.minOrderQty ?? "";
-    obj.discountPercent = propertyObj.discountPercent ?? "";
-    obj.maxOrderQty = propertyObj.maxOrderQty ?? "";
-    obj.marginPercent = propertyObj.marginPercent ?? "";
-    obj.mrp = propertyObj.mrp ?? "";
-    obj.leadTime = propertyObj.leadTime ?? "";
-    obj.geographyId = propertyObj.geographyId ?? "";
-    obj.geographyName = propertyObj.geographyName ?? "";
-    obj.registrationNumber = propertyObj.registrationNumber ?? "";
+    obj.productSKUGeographyId = propertyObj.productSKUGeographyId ?? '';
+    obj.minOrderQty = propertyObj.minOrderQty ?? '';
+    obj.discountPercent = propertyObj.discountPercent ?? '';
+    obj.maxOrderQty = propertyObj.maxOrderQty ?? '';
+    obj.marginPercent = propertyObj.marginPercent ?? '';
+    obj.mrp = propertyObj.mrp ?? '';
+    obj.leadTime = propertyObj.leadTime ?? '';
+    obj.geographyId = propertyObj.geographyId ?? '';
+    obj.geographyName = propertyObj.geographyName ?? '';
+    obj.registrationNumber = propertyObj.registrationNumber ?? '';
     obj.formDisable = isInputValueDisable;
     return obj;
   }
 
   setAll(completed: boolean, selected: any) {
-    console
+    console;
     this.allComplete = completed;
     if (this.allComplete == true) {
-
-    }
-    else {
-
+    } else {
     }
   }
   updateAllComplete(event) {
-
     let dealerId = event;
     const index = this.aarrayToPush.indexOf(dealerId);
 
     if (index !== -1) {
       this.aarrayToPush.splice(index, 1);
-      this.selectedcount = this.aarrayToPush.length
-
-
-    }
-    else {
+      this.selectedcount = this.aarrayToPush.length;
+    } else {
       this.aarrayToPush.push(dealerId);
-      this.selectedcount = this.aarrayToPush.length
-
+      this.selectedcount = this.aarrayToPush.length;
     }
 
-    console.log('aarrayToPush', this.aarrayToPush)
+    console.log('aarrayToPush', this.aarrayToPush);
   }
-
-
 
   updateAllCompleteDealer(event) {
     let productIdId = event;
     const index = this.aarrayToPush1.indexOf(productIdId);
     if (index !== -1) {
       this.aarrayToPush1.splice(index, 1);
-      this.selectedcount = this.aarrayToPush.length
-    }
-    else {
+      this.selectedcount = this.aarrayToPush.length;
+    } else {
       this.aarrayToPush1.push(productIdId);
-      this.selectedcount = this.aarrayToPush.length
-
+      this.selectedcount = this.aarrayToPush.length;
     }
 
-    console.log('aarrayToPush', this.aarrayToPush1)
+    console.log('aarrayToPush', this.aarrayToPush1);
   }
   toggleProductAll(event: any) {
     if (event.checked) {
-      this.dealerList.forEach(row => {
+      this.dealerList.forEach((row) => {
         this.aarrayToPush1.push(row.productIdId);
       });
     } else {
       this.aarrayToPush1.length = 0;
     }
-
   }
 
   DealerSelected() {
-    this.aarrayToPush.length = this.selectedDealerInDropDown.length
+    this.aarrayToPush.length = this.selectedDealerInDropDown.length;
     this.selectedData = !this.selectedData;
     // this.selectedDealerInDropDown = this.dealerList.length;
-    console.log("SelectedDealer", this.selectedData)
+    console.log('SelectedDealer', this.selectedData);
   }
 
   saveAssociation() {
@@ -627,62 +650,56 @@ export class AddDealerAssociationsComponent implements OnInit {
     console.log('savedealerlist', this.dealerList);
 
     if (this.aarrayToPush.length > 0) {
-
-
-      this.dealerList.forEach(element => {
-
+      this.dealerList.forEach((element) => {
         for (let i = 0; i < this.aarrayToPush.length; i++) {
           if (this.aarrayToPush[i] === element.dealerId) {
-
-
             let maingeo = JSON.parse(JSON.stringify(element.formatedGeoGraphy));
             // ✅ only runs if value not in array
-            let obj: any = {}
+            let obj: any = {};
             obj.DealerId = element.dealerId;
-            let item: any = []
+            let item: any = [];
 
-            element.formatedGeoGraphy.forEach(element1 => {
-
-
-              if (element.defaultHeirarchyLevelId == element1.geographyHierarchyId) {
+            element.formatedGeoGraphy.forEach((element1) => {
+              if (
+                element.defaultHeirarchyLevelId == element1.geographyHierarchyId
+              ) {
                 delete element1.registrationNumber;
                 delete element1.geographyName;
-                item.push(JSON.parse(JSON.stringify(element1)))
+                item.push(JSON.parse(JSON.stringify(element1)));
               }
-            })
-            console.log('item', item)
-            obj.GeoDetails = item
+            });
+            console.log('item', item);
+            obj.GeoDetails = item;
             if (!this.geoProperties.includes(obj.DealerId)) {
               // ✅ only runs if value not in array
               this.geoProperties.push(obj);
             }
-
           }
         }
+      });
 
-      })
-
-      console.log('console of geoproperties', this.geoProperties)
+      console.log('console of geoproperties', this.geoProperties);
       let data = {
         productId: this.stockItemsID,
         LoggedUserId: this.numberValue,
         DealerDetails: this.geoProperties,
-      }
+      };
       this.associationService.addassosiation(data).subscribe((res) => {
-        if (res.response.result == 'Successfully Added' ||  res.response.result =='Successfully Updated') {
-          this.sharedService.filter('Register click')
+        if (
+          res.response.result == 'Successfully Added' ||
+          res.response.result == 'Successfully Updated'
+        ) {
+          this.sharedService.filter('Register click');
           this.dialogRef.close();
-          this.dialog.open(DealerSuccessPopupComponent, { panelClass: 'activeSuccessPopassocitions' })
+          this.dialog.open(DealerSuccessPopupComponent, {
+            panelClass: 'activeSuccessPopassocitions',
+          });
+        } else {
         }
-        else {
-
-        }
-        console.log(res.response)
-      })
-    }
-    else {
-
-      alert('select any dealer')
+        console.log(res.response);
+      });
+    } else {
+      alert('select any dealer');
     }
     // this.dialog.open(DealerSuccessPopupComponent, { panelClass: 'activeSuccessPop' })
   }
@@ -692,115 +709,113 @@ export class AddDealerAssociationsComponent implements OnInit {
     console.log('savedealerlist', this.dealerList);
 
     if (this.aarrayToPush1.length > 0) {
-
-
-      this.dealerList.forEach(element => {
-
+      this.dealerList.forEach((element) => {
         for (let i = 0; i < this.aarrayToPush1.length; i++) {
           if (this.aarrayToPush1[i] === element.productIdId) {
-
-
             let maingeo = JSON.parse(JSON.stringify(element.formatedGeoGraphy));
             // ✅ only runs if value not in array
-            let obj: any = {}
+            let obj: any = {};
             obj.productId = element.productIdId;
-            let item: any = []
+            let item: any = [];
 
-            element.formatedGeoGraphy.forEach(element1 => {
-
-
-              if (element.defaultHeirarchyLevelId == element1.geographyHierarchyId) {
+            element.formatedGeoGraphy.forEach((element1) => {
+              if (
+                element.defaultHeirarchyLevelId == element1.geographyHierarchyId
+              ) {
                 delete element1.registrationNumber;
                 delete element1.geographyName;
-                item.push(JSON.parse(JSON.stringify(element1)))
+                item.push(JSON.parse(JSON.stringify(element1)));
               }
-            })
-            console.log('item', item)
-            obj.GeoDetails = item
+            });
+            console.log('item', item);
+            obj.GeoDetails = item;
             if (!this.geoProperties.includes(obj.productIdId)) {
               // ✅ only runs if value not in array
               this.geoProperties.push(obj);
             }
-
           }
         }
+      });
 
-      })
-
-      console.log('console of geoproperties', this.geoProperties)
+      console.log('console of geoproperties', this.geoProperties);
       let data = {
         DealerId: this.selectedDealer2,
         LoggedUserId: this.numberValue,
         ProductDetails: this.geoProperties,
-      }
+      };
       this.associationService.addassosiationofproduct(data).subscribe((res) => {
-        if (res.response.result == 'Successfully Added' || res.response.result =='Successfully Updated') {
-          this.sharedService.filter('Register click')
+        if (
+          res.response.result == 'Successfully Added' ||
+          res.response.result == 'Successfully Updated'
+        ) {
+          this.sharedService.filter('Register click');
           this.dialogRef.close();
-          this.dialog.open(DealerSuccessPopupComponent, { panelClass: 'activeSuccessPopassocitions' })
+          this.dialog.open(DealerSuccessPopupComponent, {
+            panelClass: 'activeSuccessPopassocitions',
+          });
+        } else {
         }
-        else {
-
-        }
-        console.log(res.response)
-      })
-    }
-    else {
-
-      alert('select any Product')
+        console.log(res.response);
+      });
+    } else {
+      alert('select any Product');
     }
     //  this.dialog.open(DealerSuccessPopupComponent, { panelClass: 'activeSuccessPop' })
-
   }
 
   ProductItems() {
     this.user.getproductlist().subscribe((res: any) => {
       let localdata = res.response;
-      console.log('checkdata', localdata)
+      console.log('checkdata', localdata);
 
-      this.ProductListArray = localdata.map((data: { productSKUId: any; stockItemName: any; stockItemId: any; }) => {
-        return { productSKUId: data.productSKUId, stockItemName: data.stockItemName, stockItemId: data.stockItemId, };
-      });
+      this.ProductListArray = localdata.map(
+        (data: { productSKUId: any; stockItemName: any; stockItemId: any }) => {
+          return {
+            productSKUId: data.productSKUId,
+            stockItemName: data.stockItemName,
+            stockItemId: data.stockItemId,
+          };
+        }
+      );
 
-      this.ProductListArray.push()
-      console.log('this.ProductListArray', this.ProductListArray)
-
+      this.ProductListArray.push();
+      console.log('this.ProductListArray', this.ProductListArray);
     });
   }
-
-
 
   dealerItems() {
     this.associationService.getDealers().subscribe((res: any) => {
       let localdata = res.response;
       // console.log('checkdata', localdata)
-      this.dealerListArray = localdata.map((data: { customerId: any; customerName: any; }) => {
-        return { customerId: data.customerId, customerName: data.customerName };
-      });
-      this.dealerListArray.push()
-      console.log('dealerListArray', this.dealerListArray)
-
+      this.dealerListArray = localdata.map(
+        (data: { customerId: any; customerName: any }) => {
+          return {
+            customerId: data.customerId,
+            customerName: data.customerName,
+          };
+        }
+      );
+      this.dealerListArray.push();
+      console.log('dealerListArray', this.dealerListArray);
     });
-
   }
 
   selectedProduct(event: any) {
-    
-    console.log("Event checking", event)
+    console.log('Event checking', event);
     var arry = event?.match(/[a-z0-9]+/gi);
-    console.log('value', arry)
-    let ProductId = arry[0]
-    this.productSkuId = ProductId
+    console.log('value', arry);
+    let ProductId = arry[0];
+    this.productSkuId = ProductId;
     let stockItemId = arry[2];
-    this.stockItemsID = stockItemId
-    console.log('value', ProductId)
+    this.stockItemsID = stockItemId;
+    console.log('value', ProductId);
     this.selectedProduct1 = ProductId;
     this.slectedgeo = true;
     localStorage.setItem('ProductStockItemId', stockItemId);
-    this.tooltiptable()
+    this.tooltiptable();
   }
   selectedProduct11(value) {
-    let mani
+    let mani;
   }
 
   // selectedDealer(value) {
@@ -819,9 +834,8 @@ export class AddDealerAssociationsComponent implements OnInit {
       ProductId: this.stockItemsID,
       DealerId: this.selectedDealerInDropDown,
       SelectedGeoIds: this.storedName124,
-    }
+    };
     this.GetDealearsData(dealerdata);
-
   }
   onItemDealerDeSelectOrAll(item: any) {
     this.selectedDealerInDropDown = [];
@@ -830,19 +844,18 @@ export class AddDealerAssociationsComponent implements OnInit {
       ProductId: this.stockItemsID,
       DealerId: this.selectedDealerInDropDown,
       SelectedGeoIds: this.storedName124,
-    }
+    };
     this.GetDealearsData(dealerdata);
   }
   selectedDealer(event: any) {
-    console.log("EVENT", event)
+    console.log('EVENT', event);
     this.slectedgeo1 = true;
     let dealerId = event.customerId;
-    console.log("DealereId", dealerId)
-    let numberDealerId = Number(dealerId)
+    console.log('DealereId', dealerId);
+    let numberDealerId = Number(dealerId);
     this.selectedDealer2 = event.customerId;
     localStorage.setItem('dealerSelectedcoustmerId', dealerId);
-    this.tooltiptable()
-
+    this.tooltiptable();
   }
   // onTypeSelect(item: any) {
   //   console.log(item);
@@ -858,12 +871,10 @@ export class AddDealerAssociationsComponent implements OnInit {
   }
 
   expandDealerInfoDiv(i) {
-
-    this.inumber = i
+    this.inumber = i;
 
     if (this.dealerList[i].flagforopen === false) {
       this.dealerList[i].flagforopen = true;
-
     } else {
       this.dealerList[i].flagforopen = false;
     }
@@ -901,7 +912,9 @@ export class AddDealerAssociationsComponent implements OnInit {
   selectedValue(value: any) {
     this.screenValue = value;
     this.showselectedgeovalue = false;
-
+    this.onItemDealerDeSelectOrAll(null)
+    this.onDealerDeSelect(0)
+    this.myFormDealer.get('dealer').setValue([])
   }
 
   // addOrderPromotionList() {
@@ -917,64 +930,57 @@ export class AddDealerAssociationsComponent implements OnInit {
   //     height: '460px',
   //   });
   // }
- 
+
   geography(item) {
-    this.selectedtypeasso1 = item
+    this.selectedtypeasso1 = item;
     localStorage.setItem('selectedtypeasso', item);
     this.dialog.open(AddPromotionGeographiesComponent, {
-       width: '654px',
-       height: '650px',
+      width: '654px',
+      height: '650px',
     });
   }
 
-
   getclassification() {
-
     this.materialList.getclassification(this.flag).subscribe((res) => {
       let data = res.response;
       this.coutCatagory = res.totalRecords;
       this.catgname = data.allOtherCats;
       let dataCat = data.allOtherCats;
       this.toppings = new FormControl(this.catgname);
-      console.log("coutCategory", this.coutCatagory);
-      console.log("this.catgname", this.catgname);
-      this.catagData = dataCat.map((data: { catId: any; catName: any; }) => {
+      console.log('coutCategory', this.coutCatagory);
+      console.log('this.catgname', this.catgname);
+      this.catagData = dataCat.map((data: { catId: any; catName: any }) => {
         return { catId: data.catId, roleName: data.catName };
       });
 
       if (!this.catagData?.length) {
-        this.catagData = dataCat.map((product: { designationName: any; }) => {
+        this.catagData = dataCat.map((product: { designationName: any }) => {
           return product.designationName;
         });
       }
-      this.catagData.push()
-      this.catagData.forEach(element => {
+      this.catagData.push();
+      this.catagData.forEach((element) => {
         return this.catArray.push(element.catId);
-
-      })
-    })
-
-
-
+      });
+    });
   }
   onItemSelect(item: any) {
     this.catergory.push(item.catId);
-    console.log("Catttyyyyy", this.catergory)
-    console.log('item Subcatty', item)
+    console.log('Catttyyyyy', this.catergory);
+    console.log('item Subcatty', item);
     this.catagoryName = item.catName;
     let Subdata = {
       catId: this.catergory,
-      flag: this.flag
-    }
+      flag: this.flag,
+    };
     this.materialList.onclickcat(Subdata).subscribe((res) => {
       let subcaty = res.response;
-      console.log("response1", res)
-      console.log("responseeee", subcaty);
+      console.log('response1', res);
+      console.log('responseeee', subcaty);
       this.sub_category = subcaty.allOtherSubCAts;
-      console.log("SubCategory", this.sub_category);
+      console.log('SubCategory', this.sub_category);
       this.topping1 = new FormControl(this.sub_category);
     });
-
 
     const data = {
       DealerId: this.selectedDealer2,
@@ -984,22 +990,21 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
   }
   onItemDeSelect(item: any) {
     this.catergory.forEach((element, index) => {
       if (element == item.catId) this.catergory.splice(index, 1);
-
     });
     let SubdataD = {
-      catId: this.catergory
-    }
+      catId: this.catergory,
+    };
     this.materialList.onclickcat(SubdataD).subscribe((res) => {
       let subcaty = res.response;
-      console.log("response1", res)
-      console.log("responseeee", subcaty);
+      console.log('response1', res);
+      console.log('responseeee', subcaty);
       this.sub_category = subcaty.allOtherSubCAts;
     });
     console.log('this.catergory', this.catergory);
@@ -1011,42 +1016,44 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
-
   }
   onItemSelectOrAll(item: any) {
     this.catergory = this.catArray;
     let Subdataall = {
-      catId: this.catergory
-    }
-    console.log("Category Array", this.catergory)
+      catId: this.catergory,
+    };
+    console.log('Category Array', this.catergory);
     // this.itemId = item.catId;
     this.catagoryName = item.catName;
     this.materialList.onclickcat(Subdataall).subscribe((res) => {
       let subcaty = res.response;
-      console.log("responseeee", subcaty);
+      console.log('responseeee', subcaty);
       this.sub_category = subcaty.allOtherSubCAts;
       let allSub_cats = subcaty.allOtherSubCAts;
-      console.log("SubCategory", this.sub_category);
-      this.subcatagData = allSub_cats.map((data: { subCatId: any; subCatName: any; }) => {
-        return { subCatId: data.subCatId, subCatName: data.subCatName };
-      });
+      console.log('SubCategory', this.sub_category);
+      this.subcatagData = allSub_cats.map(
+        (data: { subCatId: any; subCatName: any }) => {
+          return { subCatId: data.subCatId, subCatName: data.subCatName };
+        }
+      );
 
       if (!this.subcatagData?.length) {
-        this.subcatagData = allSub_cats.map((subCatData: { designationName: any; }) => {
-          return subCatData.designationName;
-        });
+        this.subcatagData = allSub_cats.map(
+          (subCatData: { designationName: any }) => {
+            return subCatData.designationName;
+          }
+        );
       }
-      this.subcatagData.push()
-      this.subcatagData.forEach(element => {
+      this.subcatagData.push();
+      this.subcatagData.forEach((element) => {
         return this.subcatArray.push(element.subCatId);
-
-      })
+      });
       this.topping1 = new FormControl(this.sub_category);
     });
-    console.log("catArray", this.catergory)
+    console.log('catArray', this.catergory);
 
     const data = {
       DealerId: this.selectedDealer2,
@@ -1056,8 +1063,8 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
   }
   onItemDeSelectOrAll(item: any) {
@@ -1080,23 +1087,22 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
-
   }
   onSubCategorySelect(item: any) {
-    console.log(" item Types", item);
+    console.log(' item Types', item);
     this.sub_categorys.push(item.subCatId);
     let Type = {
       subCatId: this.sub_categorys,
-      flag: this.flag
-    }
+      flag: this.flag,
+    };
     this.materialList.onclicksubcat(Type).subscribe((res) => {
       let typs = res.response;
-      console.log("types..res", typs);
+      console.log('types..res', typs);
       this.typeI = typs;
-      console.log("Typess", this.typeI);
+      console.log('Typess', this.typeI);
       this.topping2 = new FormControl(this.typeI);
     });
 
@@ -1108,31 +1114,25 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
-
   }
   onSubCategoryDeSelect(item: any) {
     this.sub_categorys.forEach((element, index) => {
       if (element == item.subCatId) this.sub_categorys.splice(index, 1);
-
     });
     let subCat = {
-      subCatId: this.sub_categorys
-    }
-
-
+      subCatId: this.sub_categorys,
+    };
 
     this.materialList.onclicksubcat(subCat).subscribe((res) => {
       let typs = res.response;
-      console.log("types..res", typs);
+      console.log('types..res', typs);
       this.typeI = typs;
       this.topping2 = new FormControl(this.typeI);
     });
-    console.log(' this.sub_categorys', this.sub_categorys)
-
-
+    console.log(' this.sub_categorys', this.sub_categorys);
 
     const data = {
       DealerId: this.selectedDealer2,
@@ -1142,25 +1142,22 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
-
   }
   onSubCategorySelectOrAll() {
     this.sub_categorys = this.subcatArray;
     let Type = {
-      subCatId: this.sub_categorys
-    }
+      subCatId: this.sub_categorys,
+    };
 
     this.materialList.onclicksubcat(Type).subscribe((res) => {
       let typs = res.response;
-      console.log("types..res", typs);
+      console.log('types..res', typs);
       this.typeI = typs;
       this.topping2 = new FormControl(this.typeI);
     });
-
-
 
     const data = {
       DealerId: this.selectedDealer2,
@@ -1170,13 +1167,13 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
   }
   onSubCategoryDSelectOrAll(item: any) {
     this.sub_categorys = [];
-    this.typeI = []
+    this.typeI = [];
     this.typeI = [];
 
     const data = {
@@ -1187,15 +1184,12 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
-
   }
   onTypeSelect(item: any) {
-   
-
-     this.typeI.push(item.typeId);
+    this.typeI.push(item.typeId);
 
     const data = {
       DealerId: this.selectedDealer2,
@@ -1205,16 +1199,13 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
-
   }
   onTypeDeSelect(item: any) {
-
     this.typeI.forEach((element, index) => {
       if (element == item.typeId) this.typeI.splice(index, 1);
-
     });
 
     const data = {
@@ -1225,29 +1216,25 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
-
   }
   onTypeSelectOrAll() {
-
-    this.typessData = this.typeI.map((data: { typeId: any; typeName: any; }) => {
+    this.typessData = this.typeI.map((data: { typeId: any; typeName: any }) => {
       return { typeId: data.typeId, typeName: data.typeName };
     });
 
     if (!this.typessData?.length) {
-      this.typessData = this.typeI.map((type: { designationName: any; }) => {
+      this.typessData = this.typeI.map((type: { designationName: any }) => {
         return type.designationName;
       });
     }
-    this.typessData.push()
-    this.typessData.forEach(element => {
+    this.typessData.push();
+    this.typessData.forEach((element) => {
       return this.typessArray.push(element.typeId);
-
-    })
+    });
     this.typeI = this.typessArray;
-
 
     const data = {
       DealerId: this.selectedDealer2,
@@ -1257,8 +1244,8 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
   }
   OnTypeDeselectOrAll() {
@@ -1271,32 +1258,36 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
   }
   getProduct() {
     this.materialList.getProduct().subscribe((res) => {
       let data = res.response;
-      let dataProd = res.response
-      console.log("Product Data", data);
+      let dataProd = res.response;
+      console.log('Product Data', data);
       this.Product = data;
       this.ProductList = new FormControl(this.Product);
-      this.prodData = dataProd.map((data: { productGroupId: any; productGroupName: any; }) => {
-        return { productGroupId: data.productGroupId, productGroupName: data.productGroupName };
-      });
+      this.prodData = dataProd.map(
+        (data: { productGroupId: any; productGroupName: any }) => {
+          return {
+            productGroupId: data.productGroupId,
+            productGroupName: data.productGroupName,
+          };
+        }
+      );
 
       if (!this.prodData?.length) {
-        this.prodData = dataProd.map((category: { designationName: any; }) => {
+        this.prodData = dataProd.map((category: { designationName: any }) => {
           return category.designationName;
         });
       }
-      this.prodData.push()
-      this.prodData.forEach(element => {
+      this.prodData.push();
+      this.prodData.forEach((element) => {
         return this.prodArray.push(element.productGroupId);
-
-      })
-    })
+      });
+    });
   }
   onProductSelect(item: any) {
     this.productID.push(item.productGroupId);
@@ -1309,8 +1300,8 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
   }
   onProductDeSelect(item: any) {
@@ -1324,8 +1315,8 @@ export class AddDealerAssociationsComponent implements OnInit {
         type: this.typeI,
         productGroup: this.productID,
         productIdentifier: this.productIDentifire,
-        search: this.searchText
-      }
+        search: this.searchText,
+      };
       this.getproductDetails(data);
     });
     const data = {
@@ -1336,10 +1327,9 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
-
   }
   onProductSelectOrAll(item: any) {
     this.productID = this.prodArray;
@@ -1352,10 +1342,9 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
-
   }
   onProductDeSelectOrAll(item: any) {
     this.productID = [];
@@ -1367,14 +1356,14 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
   }
   customIdentifier() {
     this.addMaterials.getProductCustomIdentifier().subscribe((res: any) => {
       this.ProductIdentifier = res.response;
-      console.log("ProductIdentifier", this.ProductIdentifier);
+      console.log('ProductIdentifier', this.ProductIdentifier);
     });
   }
   productidentify() {
@@ -1383,13 +1372,14 @@ export class AddDealerAssociationsComponent implements OnInit {
 
       this.toppingList = res.response;
 
-      this.toppingList.forEach(element => {
-        return this.productCustomIdentifierArray.push(element.productCustomIdentifierId);
-
-      })
+      this.toppingList.forEach((element) => {
+        return this.productCustomIdentifierArray.push(
+          element.productCustomIdentifierId
+        );
+      });
 
       // this.categorydrp = res.response
-    })
+    });
   }
 
   onproductIdentifierSelect(item: any) {
@@ -1403,18 +1393,17 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
   }
 
-
   onproductIdentifierDeSelect(item: any) {
     this.productIDentifire.forEach((element, index) => {
-      if (element == item.productCustomIdentifierId) this.productIDentifire.splice(index, 1);
-
+      if (element == item.productCustomIdentifierId)
+        this.productIDentifire.splice(index, 1);
     });
-    console.log(' this.catergory', this.catergory)
+    console.log(' this.catergory', this.catergory);
 
     // this.userTypes.pop(item.roleId);
     const data = {
@@ -1425,10 +1414,9 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
-
   }
   onproductIdentifierDeSelectOrAll(item: any) {
     this.productIDentifire = [];
@@ -1440,8 +1428,8 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
   }
   onproductIdentifierSelectOrAll(item: any) {
@@ -1455,73 +1443,51 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   onSelectIdentifierProduct(item: any) {
-    this.selectedProductId.push(item.productCustomIdentifierId)
-    console.log("Selecteed Identifier", this.selectedProductId);
+    this.selectedProductId.push(item.productCustomIdentifierId);
+    console.log('Selecteed Identifier', this.selectedProductId);
   }
   onDeSelectIdentifierProduct(item: any) {
     this.selectedProductId.forEach((element, index) => {
-      if (element == item.productCustomIdentifierId) this.selectedProductId.splice(index, 1);
+      if (element == item.productCustomIdentifierId)
+        this.selectedProductId.splice(index, 1);
     });
-    console.log("DeSelecteed Identifier", this.selectedProductId);
+    console.log('DeSelecteed Identifier', this.selectedProductId);
   }
   onDSelectOrAllIdentifierProduct(event) {
     this.selectedProductId = [];
-    console.log("Deselected DAta", this.selectedProductId);
+    console.log('Deselected DAta', this.selectedProductId);
   }
   onSelectOrAllIdentifierProduct() {
-    this.selectAllIdentifierProduct = this.ProductIdentifier.map((data: { productCustomIdentifierId: any; productCustomName: any; }) => {
-      return { productCustomIdentifierId: data.productCustomIdentifierId, materilCustomName: data.productCustomName };
-    });
+    this.selectAllIdentifierProduct = this.ProductIdentifier.map(
+      (data: { productCustomIdentifierId: any; productCustomName: any }) => {
+        return {
+          productCustomIdentifierId: data.productCustomIdentifierId,
+          materilCustomName: data.productCustomName,
+        };
+      }
+    );
 
     if (!this.selectAllIdentifierProduct?.length) {
-      this.selectAllIdentifierProduct = this.ProductIdentifier.map((product: { designationName: any; }) => {
-        return product.designationName;
-      });
+      this.selectAllIdentifierProduct = this.ProductIdentifier.map(
+        (product: { designationName: any }) => {
+          return product.designationName;
+        }
+      );
     }
-    this.selectAllIdentifierProduct.push()
-    this.selectAllIdentifierProduct.forEach(element => {
-      return this.selectedIdentifierProductArray.push(element.productCustomIdentifierId);
-
-    })
+    this.selectAllIdentifierProduct.push();
+    this.selectAllIdentifierProduct.forEach((element) => {
+      return this.selectedIdentifierProductArray.push(
+        element.productCustomIdentifierId
+      );
+    });
     this.selectedProductId = this.selectedIdentifierProductArray;
-    console.log("All Selected", this.selectedProductId);
+    console.log('All Selected', this.selectedProductId);
   }
   refresh() {
     this.myForm = this.fb.group({
@@ -1545,8 +1511,7 @@ export class AddDealerAssociationsComponent implements OnInit {
     this.typeI = [];
     this.productID = [];
 
-
-    this.dealerList = []
+    this.dealerList = [];
     const data = {
       DealerId: this.selectedDealer2,
       SelectedGeoIds: this.storedName124,
@@ -1555,11 +1520,10 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
   }
-
 
   onSearchChange($event) {
     const { target } = $event;
@@ -1572,18 +1536,12 @@ export class AddDealerAssociationsComponent implements OnInit {
       type: this.typeI,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
-      search: this.searchText
-    }
+      search: this.searchText,
+    };
     this.getproductDetails(data);
   }
 
-
-
-
-
-
   tooltiptable() {
-   
     // let prodctId = [this.selectedProduct1];
     // this.associationService.tooltipStockItemDetailList(prodctId).subscribe((res: any) => {
     //   console.log(res.response);
@@ -1592,46 +1550,43 @@ export class AddDealerAssociationsComponent implements OnInit {
   }
   tooltipDealerTable() {
     let prodctId = [this.selectedDealer2];
-    this.associationService.tooltipStockItemDetailList(prodctId).subscribe((res: any) => {
-      console.log(res.response);
-      this.tooltipDataDealer = res.response;
-    })
+    this.associationService
+      .tooltipStockItemDetailList(prodctId)
+      .subscribe((res: any) => {
+        console.log(res.response);
+        this.tooltipDataDealer = res.response;
+      });
   }
   resetAll() {
-
-
     this.selectedGeoField1 = '';
     this.updateGeographyValue1 = '';
-   
   }
-  Refresh()
-  {
-    this.selectedGeoField='';
-    this.updateGeographyValue='';
+  Refresh() {
+    this.selectedGeoField = '';
+    this.updateGeographyValue = '';
   }
-  RefreshAll()
-  {
-    this.selectedGeoField='';
-    this.updateGeographyValue='';
+  RefreshAll() {
+    this.selectedGeoField = '';
+    this.updateGeographyValue = '';
   }
   isIndeterminate() {
-    return (this.aarrayToPush.length > 0 && !this.isChecked());
-  };
+    return this.aarrayToPush.length > 0 && !this.isChecked();
+  }
 
   isChecked() {
     return this.aarrayToPush.length === this.dealerList.length;
-  };
+  }
   isIndeterminateForProduct() {
-    return (this.aarrayToPush1.length > 0 && !this.isCheckedForProduct());
-  };
+    return this.aarrayToPush1.length > 0 && !this.isCheckedForProduct();
+  }
 
   isCheckedForProduct() {
     return this.aarrayToPush1.length === this.dealerList.length;
-  };
+  }
 
   toggleAll(event: MatCheckboxChange) {
     if (event.checked) {
-      this.dealerList.forEach(row => {
+      this.dealerList.forEach((row) => {
         this.aarrayToPush.push(row.dealerId);
       });
     } else {
@@ -1643,11 +1598,9 @@ export class AddDealerAssociationsComponent implements OnInit {
     const index = this.aarrayToPush.indexOf(dealerId);
     if (index !== -1) {
       this.aarrayToPush.splice(index, 1);
-    }
-    else {
+    } else {
       this.aarrayToPush.push(dealerId);
     }
-
   }
   toggleForProduct(data: any, event: MatCheckboxChange) {
     let productIdId = data;
@@ -1655,23 +1608,17 @@ export class AddDealerAssociationsComponent implements OnInit {
 
     if (index !== -1) {
       this.aarrayToPush1.splice(index, 1);
-      this.selectedcount = this.aarrayToPush.length
-    }
-    else {
+      this.selectedcount = this.aarrayToPush.length;
+    } else {
       this.aarrayToPush1.push(productIdId);
-      this.selectedcount = this.aarrayToPush.length
-
+      this.selectedcount = this.aarrayToPush.length;
     }
-
   }
   exists(item) {
     return this.aarrayToPush.indexOf(item) > -1;
-  };
+  }
   existsProduct(item) {
     return this.aarrayToPush1.indexOf(item) > -1;
-  };
-
-
-
+  }
 }
 

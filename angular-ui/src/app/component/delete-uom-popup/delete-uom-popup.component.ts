@@ -26,10 +26,10 @@ export class DeleteUomPopupComponent implements OnInit {
    
     this.uomId = localStorage.getItem('niId');
     this.LoginId = localStorage.getItem('uomName');
-alert(this.LoginId)
+// alert(this.LoginId)
     // this.LoginId=localStorage.getItem("logInId");
 
-    alert( this.LoginId)
+    // alert( this.LoginId)
   }
   close(){
     this.dialogRef.close()

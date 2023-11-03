@@ -49,8 +49,8 @@
   
   ::ng-deep.multiselect-dropdown .dropdown-btn {
     display: inline-block;
-    border: 1px solid #000000 !important;
-    border: 1px solid gray !important;
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
+    
    
     width: 100%;
     /* height: 62%; */
@@ -214,6 +214,7 @@
     position: relative;
     width: 42px;
     cursor: pointer;
+    left: 236px;
 
   }
  
@@ -385,9 +386,9 @@
     border-radius: 13%;
     width: 37px;
     height: 37px;
-    top: 87px;
+    top: -3px;
     position: absolute;
-    left: -7%;
+    left: -48%;
   }
   
   .download-btn {
@@ -397,8 +398,8 @@
     position: relative;
     width: 37px;
     height: 37px;
-    top: 87px;
-    left: 18%;
+    top: -3px;
+    left: 6%;
   }
   
   ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
@@ -538,7 +539,7 @@
   
     border: 1px solid #989CA04D !important;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
-    border-radius: 0px !important;
+    border-radius: 10px !important;
   
   }
   
@@ -1113,8 +1114,8 @@
     margin-right: 10px;
     cursor: pointer;
     position: relative;
-    top: 87px;
-    left: 10px;
+    top: -3px;
+    left: -5px;
   }
   .target-upload:hover
   {
@@ -1219,12 +1220,12 @@
 .searchBox {
 
     float: right;
+   position: relative;
+    // position: absolute;
 
-    position: absolute;
+    right: -227px;
 
-    right: 16px;
-
-    top: 91px;
+    top: 6px;
 
   }
 
@@ -1240,7 +1241,7 @@
 
     width: 42px;
 
-    height: 42px;
+    height: 41px;
 
     display: flex;
 
@@ -1254,7 +1255,7 @@
 
     position: relative;
 
-    right: 257px;
+    right: 184px;
 
     top: -4px;
 
@@ -1304,9 +1305,9 @@
 
     display: block;
 
-    width: 300px;
+    width: 223px;
 
-    height: 43px;
+    height: 41px;
 
     background: #FFFFFF;
 
@@ -1339,5 +1340,14 @@
     bottom: -3px;
 
     top: -5px;
+    border: 1px solid rgba(0, 0, 0, 0.3)
 
+  }
+  .searchicons1 {
+    position: absolute;
+    top: 42%;
+    left: -214px;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: #9B9FA3;
   }

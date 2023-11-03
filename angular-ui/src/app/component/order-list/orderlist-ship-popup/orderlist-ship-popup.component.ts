@@ -512,7 +512,7 @@ let filterArray:any=[]
       }
       else{
         
-      alert(res.response.result)
+      // alert(res.response.result)
       }
       })
 
@@ -547,7 +547,7 @@ let filterArray:any=[]
         this.materialListService.filter('Register click')
 
         if (res.response.result == 'Succesfully added') {
-          alert('Succesfully added');
+          // alert('Succesfully added');
 
           this.dialogRef.close();
 

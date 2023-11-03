@@ -903,7 +903,7 @@ initAddress2(defaultType): FormGroup {
       DefalultgeoId: this.selectedItems,
     }
     if (selectedGeographies.length == 0) {
-      alert("Please select default geography grid");
+      // alert("Please select default geography grid");
       return;
     }
     console.log(selectedGeographies);

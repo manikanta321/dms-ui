@@ -141,7 +141,7 @@ export class EditProfileComponent implements OnInit {
       }
       else {
         this.errorMsg = res.response.result;
-        alert(this.errorMsg);
+        // alert(this.errorMsg);
       }
 
     }, (err) => {
@@ -175,7 +175,7 @@ export class EditProfileComponent implements OnInit {
       this.handleInputChange(this.selecetdFile);
     }
     else {
-      alert('File size should not be greater than 1MB');
+      // alert('File size should not be greater than 1MB');
     }
   }
   handleInputChange(files) {

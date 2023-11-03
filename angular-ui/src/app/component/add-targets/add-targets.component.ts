@@ -854,7 +854,7 @@ this.geographyArray=[];
       })
     }
     else{
-      alert('select any dealer')
+      // alert('select any dealer')
     }
   }
 

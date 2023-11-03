@@ -99,7 +99,7 @@ export class OrdersShipmentComponent implements OnInit {
     });
 
     this.SS.ReloadaddOrg.pipe(take(1)).subscribe(()=>{
-      alert('refresh')
+      // alert('refresh')
       this.ngOnInit()
     })
 
@@ -427,7 +427,7 @@ public defaultColDef: ColDef = {
   statusDropDown: any;
 
   clickNextRendererFunc() {
-    alert('hlo');
+    // alert('hlo');
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;
@@ -457,7 +457,7 @@ public defaultColDef: ColDef = {
     params.api.paginationGoToPage(4);
   }
   onCellValueChanged(event: CellValueChangedEvent) {
-    alert(event.value);
+    // alert(event.value);
     console.log(
       'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );

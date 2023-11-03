@@ -871,7 +871,7 @@ console.log('obj1obj1obj1',obj1)
       });
     }
     else {
-      alert('select any dealer')
+      // alert('select any dealer')
     }
   }
 

@@ -99,7 +99,7 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
          BatchId : this.TargetUpload.batchid,
          
       }
-      alert(this.batchId);
+      // alert(this.batchId);
       console.log("check once Batch id coming or not" , this.batchId);
 
       console.log("check once Batch id coming or not" , this.BatchId);
@@ -114,7 +114,7 @@ export class OrderReceiptsBulkUploadComponent implements OnInit {
         this.TargetUpload=res.response;
         console.log("Batch data checkinn",this.BatchId);
         this.BatchId = this.TargetUpload.batchid;
-        alert(this.batchId);
+        // alert(this.batchId);
         console.log("check BATCH ID",this.batchId);
         console.log("Batch Id Coming or not",this.batchId);
 

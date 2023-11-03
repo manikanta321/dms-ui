@@ -312,7 +312,7 @@ export class DownloadInvoiceComponentComponent implements OnInit {
   }
 
   editfn() {
-    alert('guru')
+    // alert('guru')
   }
   
   onSelectAll(items: any) {

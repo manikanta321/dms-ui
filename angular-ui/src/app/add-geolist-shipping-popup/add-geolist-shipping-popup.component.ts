@@ -278,14 +278,14 @@ export class AddGeolistShippingPopupComponent implements OnInit {
            }
            else
            {
-            alert(res.response.result);
+            // alert(res.response.result);
            }
           this.sharedService.filter('Register click');
         
           this.dialogRef.close();
 
         } else {
-           alert(res.response.result);
+          //  alert(res.response.result);
         }
 
       })
@@ -310,7 +310,7 @@ export class AddGeolistShippingPopupComponent implements OnInit {
           this.dialogRef.close();
 
         } else {
-          alert(res.response.result);
+          // alert(res.response.result);
         }
 
       })
@@ -345,7 +345,7 @@ export class AddGeolistShippingPopupComponent implements OnInit {
            }
            else
            {
-            alert(res.response.result);
+            // alert(res.response.result);
            }
            
          
@@ -353,7 +353,7 @@ export class AddGeolistShippingPopupComponent implements OnInit {
           this.dialogRef.close();
 
         } else {
-          alert(res.response.result);
+          // alert(res.response.result);
         }
 
       })
@@ -380,7 +380,7 @@ export class AddGeolistShippingPopupComponent implements OnInit {
           this.dialogRef.close();
 
         } else {
-          alert(res.response.result);
+          // alert(res.response.result);
         }
 
       })

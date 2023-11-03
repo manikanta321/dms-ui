@@ -183,7 +183,7 @@ SalesObj:any=[{
   dealerDisabled: boolean = false;
   customerCode:any;
   clickNextRendererFunc(){
-    alert('hlo');
+    // alert('hlo');
   }
   constructor(
 private salesService:SalesServicesService,
@@ -421,7 +421,7 @@ this.productDetails=res.response
     params.api.paginationGoToPage(4);
   }
   onCellValueChanged(event: CellValueChangedEvent) {
-    alert(event.value)
+    // alert(event.value)
     console.log(
       'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );

@@ -408,7 +408,7 @@ export class AssociationComponent implements OnInit {
   }
 
   editfn() {
-    alert('guru')
+    // alert('guru')
   }
 
   onSelectAll(items: any) {

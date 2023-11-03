@@ -355,7 +355,7 @@ export class DealersComponent implements OnInit {
   }
 
   editfn() {
-    alert('guru')
+    // alert('guru')
   }
 
   onSelectAll(items: any) {

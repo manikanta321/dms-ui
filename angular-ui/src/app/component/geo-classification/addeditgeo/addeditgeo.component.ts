@@ -101,7 +101,7 @@ export class AddeditgeoComponent implements OnInit {
         }else{   
           // Show warning message
           // this.dialogRef.close({res, result});
-          alert(res.response.resultDetails);
+          // alert(res.response.resultDetails);
         }
         this.spinner.hide();
       },

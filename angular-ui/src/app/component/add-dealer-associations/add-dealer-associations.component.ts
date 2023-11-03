@@ -758,7 +758,7 @@ export class AddDealerAssociationsComponent implements OnInit {
         console.log(res.response);
       });
     } else {
-      alert('select any Product');
+      // alert('select any Product');
     }
     //  this.dialog.open(DealerSuccessPopupComponent, { panelClass: 'activeSuccessPop' })
   }

@@ -265,7 +265,7 @@ export class SalesReportsComponent implements OnInit {
   };
   AddpromotionData: any;
   clickNextRendererFunc() {
-    alert('hlo');
+    // alert('hlo');
   }
 
 
@@ -1336,7 +1336,7 @@ export class SalesReportsComponent implements OnInit {
 
 
   onCellValueChanged(event: CellValueChangedEvent) {
-    alert(event.value)
+    // alert(event.value)
     console.log(
       'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );

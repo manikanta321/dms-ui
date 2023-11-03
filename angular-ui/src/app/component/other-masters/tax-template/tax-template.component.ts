@@ -521,7 +521,7 @@ openDialog(){
 }
 
 onCellValueChanged(event: CellValueChangedEvent) {
-  alert(event.value)
+  // alert(event.value)
   console.log(
     'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
   );
@@ -530,7 +530,7 @@ onCellValueChanged(event: CellValueChangedEvent) {
 
 onRowValueChanged(event: RowValueChangedEvent) {
   var data = event.data;
-  alert(data.status)
+  // alert(data.status)
   // console.log(
   //   'onRowValueChanged: (' +
   //     data.make +
@@ -544,9 +544,9 @@ onRowValueChanged(event: RowValueChangedEvent) {
   // );
 }
 clickNextRendererFunc(){
-  alert('hlo');
+  // alert('hlo');
 }
 editfn(){
-  alert('revs')
+  // alert('revs')
 }
 }

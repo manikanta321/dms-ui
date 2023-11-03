@@ -3,7 +3,8 @@
 ::ng-deep mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-bar {
   /* background-color:white !important; */
   background: rgba(1, 139, 117, 1)!important;
-  /* width: 51px; */
+  width: 51px;
+  height:15px;
  
 }
 
@@ -36,10 +37,12 @@ border-radius: 26px;
 
   ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
   background: black!important; 
-  /* width: 51px; */
+  width: 51px;
+  height: 15px;
 }
 ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
-  background-color:white !important;
+  background-color:rgba(196, 196, 196, 1) !important;
+  transform: translateX(100%);
   
 }
 

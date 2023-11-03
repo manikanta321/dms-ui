@@ -18,7 +18,7 @@ export class TaxTemplateServiceService {
 
 const idToken = localStorage.getItem("token");
 console.log('idtoken',idToken)
-alert(idToken)
+// alert(idToken)
 
 if (idToken) {
   const cloned = req.clone({

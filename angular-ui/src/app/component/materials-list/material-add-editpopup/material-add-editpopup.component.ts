@@ -493,7 +493,7 @@ export class MaterialAddEditpopupComponent {
       DefalultgeoId: selectedGeographies,
     }
     if (this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geoProperties.length == 0) {
-      alert("Plz select the last geography grid");
+      // alert("Plz select the last geography grid");
       return;
     }
 
@@ -533,7 +533,7 @@ export class MaterialAddEditpopupComponent {
     this.addMaterials.addMaterialIfProduct(data).subscribe((res) => {
       console.log(res, "addmaterialProduct")
       if (res.response.status == false) {
-        alert(res.response.result)
+        // alert(res.response.result)
       } else {
         this.addMaterials.defaultGeoIdProduct(data2).subscribe((res) => {
           console.log(res, "defaultGeoID")
@@ -548,7 +548,7 @@ export class MaterialAddEditpopupComponent {
   addMaterialProductAfterEdit() {
     localStorage.setItem("updateAddEdit", 'edit');
     if (this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geoProperties.length == 0) {
-      alert("Plz select atleast one city");
+      // alert("Plz select atleast one city");
       return;
     }
     this.geoProperties = JSON.parse(JSON.stringify(this.geoGraphyFullData[this.geoGraphyFullData.length - 1].geoProperties));
@@ -588,7 +588,7 @@ export class MaterialAddEditpopupComponent {
     this.addMaterials.addMaterialIfProduct(data).subscribe((res) => {
       console.log(res, "addmaterialProduct")
       if (res.response.status == false) {
-         alert(res.response.result)
+        //  alert(res.response.result)
       } else {
 
         this.dialog.closeAll()
@@ -621,7 +621,7 @@ export class MaterialAddEditpopupComponent {
     this.addMaterials.MaterialIfNotProduct(data).subscribe((res) => {
       console.log(res, "addmaterialProduct")
       if (res.response.status == false) {
-         alert(res.response.result)
+        //  alert(res.response.result)
       } else {
 
         this.dialog.closeAll()
@@ -655,7 +655,7 @@ export class MaterialAddEditpopupComponent {
     this.addMaterials.MaterialIfNotProduct(data).subscribe((res) => {
       console.log(res, "addmaterialProduct")
       if (res.response.status == false) {
-        alert(res.response.result)
+        // alert(res.response.result)
       } else {
         this.dialog.closeAll()
       }
@@ -1252,10 +1252,10 @@ export class MaterialAddEditpopupComponent {
       if (this.isImage(this.selecetdFile)) {
         this.handleInputChange(this.selecetdFile);
       } else {
-        alert('Only images are allowed.');
+        // alert('Only images are allowed.');
       }
     } else {
-      alert('File size should not be greater than 1MB');
+      // alert('File size should not be greater than 1MB');
     }
   }
  

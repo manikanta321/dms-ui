@@ -312,7 +312,7 @@ export class ViewInvoiceComponentComponent implements OnInit {
   }
 
   editfn() {
-    alert('guru')
+    // alert('guru')
   }
   
   onSelectAll(items: any) {

@@ -187,7 +187,7 @@ export class SalesBulkDownloadComponent implements OnInit {
 
   };
   clickNextRendererFunc(){
-    alert('hlo');
+    // alert('hlo');
   }
 
   constructor() { }
@@ -203,7 +203,7 @@ export class SalesBulkDownloadComponent implements OnInit {
     params.api.paginationGoToPage(4);
   }
   onCellValueChanged(event: CellValueChangedEvent) {
-    alert(event.value)
+    // alert(event.value)
     console.log(
       'onCellValueChanged: ' + event.colDef.field + ' = ' + event.newValue
     );

@@ -408,7 +408,7 @@ export class CurrencyConversationComponent implements OnInit {
   // }
 
   editfn() {
-    alert('guru')
+    // alert('guru')
   }
   // onCellClicked($event){}
 

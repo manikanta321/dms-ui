@@ -1232,7 +1232,7 @@ export class AddOrderPromotionlistComponent implements OnInit {
 
 
   totatQty(event: any) {
-    alert(event);
+    // alert(event);
   }
 
   clearQuantity() {

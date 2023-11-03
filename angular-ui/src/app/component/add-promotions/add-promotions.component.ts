@@ -881,7 +881,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     //   if (this.addbuyset && this.addbuyset.BuyGroups) {
     //     this.addbuyset.BuyGroups.MaxVolume = this.showConsolidatedMOQ ? '' : 0;
     // }
-    alert(this.showConsolidatedMOQ);
+    // alert(this.showConsolidatedMOQ);
   }
 
   get formArr() {
@@ -2125,7 +2125,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         this.fileTypeErrorMessage = 'Only images are allowed.';
       }
     } else {
-      alert('File size should not be greater than 1MB');
+      // alert('File size should not be greater than 1MB');
     }
   }
   private isImage(file: File): boolean {
@@ -2384,7 +2384,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response);
         if (res.response.result == 'Added Succesfully') {
-          alert('Added Succesfully');
+          // alert('Added Succesfully');
           this.sharedService.filter('Register click');
           this.dialogRef.close();
         } else {
@@ -2414,12 +2414,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         Status: type,
         Remarks: this.Remarks ?? '',
       };
-      alert(obj3.MOQ);
+      // alert(obj3.MOQ);
       localStorage.setItem('MOQ', obj3.MOQ);
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response);
         if (res.response.result == 'Added Succesfully') {
-          alert('Added Succesfully');
+          // alert('Added Succesfully');
           this.sharedService.filter('Register click');
 
           this.dialogRef.close();
@@ -2449,12 +2449,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         Status: type,
         Remarks: this.Remarks ?? '',
       };
-      alert(obj3.MOQ);
+      // alert(obj3.MOQ);
       localStorage.setItem('MOQ', obj3.MOQ);
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response);
         if (res.response.result == 'Added Succesfully') {
-          alert('Added Succesfully');
+          // alert('Added Succesfully');
           this.sharedService.filter('Register click');
 
           this.dialogRef.close();
@@ -2509,7 +2509,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       !this.isPromotionTypeDataValid ||
       !this.isPromotionTypeDataValid2
     ) {
-      alert('Required data is missing');
+      // alert('Required data is missing');
       return false;
     }
 
@@ -2572,7 +2572,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         console.log(res.response);
 
         if (res.response.result == 'Added Succesfully') {
-          alert('Added Succesfully');
+          // alert('Added Succesfully');
           this.sharedService.filter('Register click');
 
           this.dialogRef.close();
@@ -2654,7 +2654,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response);
         if (res.response.result == 'Added Succesfully') {
-          alert('Added Succesfully');
+          // alert('Added Succesfully');
           this.sharedService.filter('Register click');
 
           this.dialogRef.close();
@@ -2687,12 +2687,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         Status: type,
         Remarks: this.Remarks ?? '',
       };
-      alert(obj3.MOQ);
+      // alert(obj3.MOQ);
       localStorage.setItem('MOQ', obj3.MOQ);
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response);
         if (res.response.result == 'Added Succesfully') {
-          alert('Added Succesfully');
+          // alert('Added Succesfully');
           this.sharedService.filter('Register click');
 
           this.dialogRef.close();
@@ -2723,12 +2723,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         Status: type,
         Remarks: this.Remarks ?? '',
       };
-      alert(obj3.MOQ);
+      // alert(obj3.MOQ);
       localStorage.setItem('MOQ', obj3.MOQ);
       this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
         console.log(res.response);
         if (res.response.result == 'Added Succesfully') {
-          alert('Added Succesfully');
+          // alert('Added Succesfully');
           this.sharedService.filter('Register click');
 
           this.dialogRef.close();

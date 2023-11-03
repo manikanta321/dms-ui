@@ -813,6 +813,10 @@ export class AddDealerAssociationsComponent implements OnInit {
     this.slectedgeo = true;
     localStorage.setItem('ProductStockItemId', stockItemId);
     this.tooltiptable();
+    this.onItemDealerDeSelectOrAll(null)
+    this.onDealerDeSelect(0)
+    this.myFormDealer.get('dealer').setValue([])
+    this.showselectedgeovalue = false;
   }
   selectedProduct11(value) {
     let mani;
@@ -856,6 +860,8 @@ export class AddDealerAssociationsComponent implements OnInit {
     this.selectedDealer2 = event.customerId;
     localStorage.setItem('dealerSelectedcoustmerId', dealerId);
     this.tooltiptable();
+    this.showselectedgeovalue = false;
+    this.refresh() 
   }
   // onTypeSelect(item: any) {
   //   console.log(item);
@@ -911,10 +917,10 @@ export class AddDealerAssociationsComponent implements OnInit {
 
   selectedValue(value: any) {
     this.screenValue = value;
-    this.showselectedgeovalue = false;
     this.onItemDealerDeSelectOrAll(null)
     this.onDealerDeSelect(0)
     this.myFormDealer.get('dealer').setValue([])
+    this.showselectedgeovalue = false;
   }
 
   // addOrderPromotionList() {
@@ -1111,7 +1117,7 @@ export class AddDealerAssociationsComponent implements OnInit {
       SelectedGeoIds: this.storedName124,
       Cat: this.catergory,
       Sub_Cat: this.sub_categorys,
-      type: this.typeI,
+      type: this.selectedtypeIds,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
       search: this.searchText,
@@ -1139,7 +1145,7 @@ export class AddDealerAssociationsComponent implements OnInit {
       SelectedGeoIds: this.storedName124,
       Cat: this.catergory,
       Sub_Cat: this.sub_categorys,
-      type: this.typeI,
+      type: this.selectedtypeIds,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
       search: this.searchText,
@@ -1164,7 +1170,7 @@ export class AddDealerAssociationsComponent implements OnInit {
       SelectedGeoIds: this.storedName124,
       Cat: this.catergory,
       Sub_Cat: this.sub_categorys,
-      type: this.typeI,
+      type: this.selectedtypeIds,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
       search: this.searchText,
@@ -1174,29 +1180,28 @@ export class AddDealerAssociationsComponent implements OnInit {
   onSubCategoryDSelectOrAll(item: any) {
     this.sub_categorys = [];
     this.typeI = [];
-    this.typeI = [];
 
     const data = {
       DealerId: this.selectedDealer2,
       SelectedGeoIds: this.storedName124,
       Cat: this.catergory,
       Sub_Cat: this.sub_categorys,
-      type: this.typeI,
+      type: this.selectedtypeIds,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
       search: this.searchText,
     };
     this.getproductDetails(data);
   }
+  selectedtypeIds:any = [];
   onTypeSelect(item: any) {
-    this.typeI.push(item.typeId);
-
+    this.selectedtypeIds.push(item.typeId);
     const data = {
       DealerId: this.selectedDealer2,
       SelectedGeoIds: this.storedName124,
       Cat: this.catergory,
       Sub_Cat: this.sub_categorys,
-      type: this.typeI,
+      type: this.selectedtypeIds,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
       search: this.searchText,
@@ -1204,7 +1209,7 @@ export class AddDealerAssociationsComponent implements OnInit {
     this.getproductDetails(data);
   }
   onTypeDeSelect(item: any) {
-    this.typeI.forEach((element, index) => {
+    this.selectedtypeIds.forEach((element, index) => {
       if (element == item.typeId) this.typeI.splice(index, 1);
     });
 
@@ -1213,7 +1218,7 @@ export class AddDealerAssociationsComponent implements OnInit {
       SelectedGeoIds: this.storedName124,
       Cat: this.catergory,
       Sub_Cat: this.sub_categorys,
-      type: this.typeI,
+      type: this.selectedtypeIds,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
       search: this.searchText,
@@ -1241,7 +1246,7 @@ export class AddDealerAssociationsComponent implements OnInit {
       SelectedGeoIds: this.storedName124,
       Cat: this.catergory,
       Sub_Cat: this.sub_categorys,
-      type: this.typeI,
+      type: this.selectedtypeIds,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
       search: this.searchText,
@@ -1297,7 +1302,7 @@ export class AddDealerAssociationsComponent implements OnInit {
       SelectedGeoIds: this.storedName124,
       Cat: this.catergory,
       Sub_Cat: this.sub_categorys,
-      type: this.typeI,
+      type: this.selectedtypeIds,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
       search: this.searchText,
@@ -1312,7 +1317,7 @@ export class AddDealerAssociationsComponent implements OnInit {
         SelectedGeoIds: this.storedName124,
         Cat: this.catergory,
         Sub_Cat: this.sub_categorys,
-        type: this.typeI,
+        type: this.selectedtypeIds,
         productGroup: this.productID,
         productIdentifier: this.productIDentifire,
         search: this.searchText,
@@ -1324,7 +1329,7 @@ export class AddDealerAssociationsComponent implements OnInit {
       SelectedGeoIds: this.storedName124,
       Cat: this.catergory,
       Sub_Cat: this.sub_categorys,
-      type: this.typeI,
+      type: this.selectedtypeIds,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
       search: this.searchText,
@@ -1339,7 +1344,7 @@ export class AddDealerAssociationsComponent implements OnInit {
       SelectedGeoIds: this.storedName124,
       Cat: this.catergory,
       Sub_Cat: this.sub_categorys,
-      type: this.typeI,
+      type: this.selectedtypeIds,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
       search: this.searchText,
@@ -1353,7 +1358,7 @@ export class AddDealerAssociationsComponent implements OnInit {
       SelectedGeoIds: this.storedName124,
       Cat: this.catergory,
       Sub_Cat: this.sub_categorys,
-      type: this.typeI,
+      type: this.selectedtypeIds,
       productGroup: this.productID,
       productIdentifier: this.productIDentifire,
       search: this.searchText,

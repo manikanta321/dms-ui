@@ -1,12 +1,12 @@
 <app-head (ToggleSideNav)="ToggleSideNav($event)"></app-head>
-
+ 
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
     <app-sidenav-bar></app-sidenav-bar>
   </mat-sidenav>
   <mat-sidenav-content>
     <!-- content -->
-
+ 
     <div class="dash-content" style="overflow-y: hidden; height: 600px;">
       <div class="UNFAPP-asmnt-rgt-area m " style="padding: 15px;padding-left: 35px;overflow-x: hidden;">
         <div class="row d-flex">
@@ -26,9 +26,9 @@
                 <span  *ngIf="myForm.get('city').value.length == 0"> Select Roles </span>
                 <span  *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Role selected </span>
                 <span  *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Role(s) selected </span>
-
+ 
               </div>
-
+ 
             </form>
           </div>
           <div class="col-md-2 col-lg-2 col-sm-2 usersbubbles" style="font-family: 'Gilroy'; color: grey;">
@@ -45,9 +45,26 @@
               </div>
             </form>
           </div>
+          <div class="searchBox d-flex" style=" cursor: pointer" userRoleDirective="SEARCH_USER" [pageName]="currentPageName">
+            <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+              placeholder="Search Here Anything" (keyup)="onSearchChange($event)">
+              <mat-icon  class="searchButton">search</mat-icon>
+            <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+          </div>
           <div class="icon btnhover refreshbtn" (click)="refresh()" style=" cursor: pointer">
             <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;"
               alt="refresh">
+          </div>
+          <div class="col-md-1" userRoleDirective="ADD" [pageName]="currentPageName">
+            <div class="add-user"   (click)="addUser()" style=" cursor: pointer">
+              <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+            </div>
+          </div>
+          <div class="col-md-0">
+            <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer">
+              <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;"
+                alt="add-user-btn">
+            </div>
           </div>
         </div>
         <div class="row" style="margin-bottom:5px;">
@@ -55,37 +72,18 @@
           <div class="col-md-4" style="margin-left: 68%;margin-bottom:10px">
             <div class="row">
               <div class="col-md-8" >
-                <div class="searchBox d-flex" style=" cursor: pointer" userRoleDirective="SEARCH_USER" [pageName]="currentPageName">
-                  <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
-                    placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
-                  <button class="searchButton" href="#">
-                    <i class="material-icons">
-                      search
-                    </i>
-                  </button>
-                  <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
-                </div>
+             
               </div>
-              <div class="col-md-1" userRoleDirective="ADD" [pageName]="currentPageName">
-                <div class="add-user"   (click)="addUser()" style=" cursor: pointer">
-                  <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
-                </div>
-              </div>
-              <div class="col-md-0">
-                <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer">
-                  <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;"
-                    alt="add-user-btn">
-                </div>
-              </div>
+             
             </div>
           </div>
         </div>
-
-
+ 
+ 
         <div>
           <div class="ag-grid-dummy" id="ag-grid-dummy"></div>  
           <ag-grid-angular id="gridContainer" [tooltipMouseTrack]="true"
-            style=" height: 400px;background-color: white;font-family: Gilroy;width: 100%; margin-left:-4px;"
+            style=" height: 400px;background-color: white;font-family: Gilroy;width: 99%; margin-left:-4px;"
             class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
             [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
             [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
@@ -97,7 +95,7 @@
           <span class="pagination-cls">1&nbsp;  </span> to&nbsp;  <span class="pagination-cls">{{paginationScrollCount}}&nbsp;</span>of&nbsp;
           <span class="pagination-cls">{{rowData5.length}}</span>
         </div>
-
+ 
       </div>
     </div>
   </mat-sidenav-content>

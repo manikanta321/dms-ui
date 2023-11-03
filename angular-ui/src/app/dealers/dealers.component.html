@@ -1,113 +1,109 @@
 <div class="dealerss mt-3" style="overflow-y: auto;">
-   <section>
-    <div class="row ml-3  " >
-      <div class="col-md-2 col-lg-2 col-sm-2 dealersgeophybubbles">
-        <form [formGroup]="myForm">
-          <ng-multiselect-dropdown class="role dealersdropdown" name="city" [placeholder]="''" formControlName="city"
-            [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList"
-            (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
-            (onDeSelectAll)="onItemDeSelectOrAll($event)" (onSelectAll)="onItemSelectOrAll($event)">
-          </ng-multiselect-dropdown>
-        </form>
-        <div  id="dp" class="dropdown-placeholder role-placeholder">
-          <span *ngIf="myForm.get('city').value.length == 0" id="gp"> Geographies </span>
-          <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Geography selected </span>
-          <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Geography(s) selected </span>
+  <section>
+   <div class="row ml-3  " >
+     <div class="col-md-2 col-lg-2 col-sm-2 dealersgeophybubbles">
+       <form [formGroup]="myForm">
+         <ng-multiselect-dropdown class="role dealersdropdown" name="city" [placeholder]="''" formControlName="city"
+           [disabled]="disabled" [settings]="dropdownSettings" [data]="toppingList"
+           (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
+           (onDeSelectAll)="onItemDeSelectOrAll($event)" (onSelectAll)="onItemSelectOrAll($event)">
+         </ng-multiselect-dropdown>
+       </form>
+       <div  id="dp" class="dropdown-placeholder role-placeholder">
+         <span *ngIf="myForm.get('city').value.length == 0" id="gp"> Geographies </span>
+         <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Geography selected </span>
+         <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Geography(s) selected </span>
 
-        </div>
-      </div>
+       </div>
+     </div>
 
-      <div class="col-md-2 col-lg-2 col-sm-2 productbubbless">
-        <form [formGroup]="myForms1">
-          <ng-multiselect-dropdown class="role1 productdropdown" name="city1" [placeholder]="'Product'" formControlName="city1" 
-            [disabled]="disabled" [settings]="dropdownSettings2" [data]="ProductListArray" (onSelect)="onItemProductSelect($event)" (onDeSelect)="onItemProductDeSelect($event)"
-            (onDeSelectAll)="onItemProductDeSelectOrAll($event)" (onSelectAll)="onItemProductSelectOrAll($event)"
-            >
-          </ng-multiselect-dropdown>
-        </form>
-        <div  class="dropdown-placeholder role1-placeholder">
-          <span *ngIf="myForms1.get('city1').value.length == 0">  </span>
-          <span *ngIf="myForms1.get('city1').value.length == 1" class="selected-placeholder"> {{myForms1.get('city1').value.length}} Products selected </span>
-          <span *ngIf="myForms1.get('city1').value.length > 1" class="selected-placeholder">{{myForms1.get('city1').value.length}} Products selected </span>
+     <div class="col-md-2 col-lg-2 col-sm-2 productbubbless">
+       <form [formGroup]="myForms1">
+         <ng-multiselect-dropdown class="role1 productdropdown" name="city1" [placeholder]="'Product'" formControlName="city1"
+           [disabled]="disabled" [settings]="dropdownSettings2" [data]="ProductListArray" (onSelect)="onItemProductSelect($event)" (onDeSelect)="onItemProductDeSelect($event)"
+           (onDeSelectAll)="onItemProductDeSelectOrAll($event)" (onSelectAll)="onItemProductSelectOrAll($event)"
+           >
+         </ng-multiselect-dropdown>
+       </form>
+       <div  class="dropdown-placeholder role1-placeholder">
+         <span *ngIf="myForms1.get('city1').value.length == 0">  </span>
+         <span *ngIf="myForms1.get('city1').value.length == 1" class="selected-placeholder"> {{myForms1.get('city1').value.length}} Products selected </span>
+         <span *ngIf="myForms1.get('city1').value.length > 1" class="selected-placeholder">{{myForms1.get('city1').value.length}} Products selected </span>
 
-        </div>
-      </div>
-      <div class="col-md-2 col-lg-2 col-sm-2 selectstatusbubbles" style="font-family: 'Gilroy'; color: grey;">
-        <form [formGroup]="myForms">
-          <ng-multiselect-dropdown class="stts_1 statusdropdown" name="citys" [placeholder]="'Status'" formControlName="citys"
-            [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
-            (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
-            (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
-          </ng-multiselect-dropdown>
-        </form>
-        <div class="dropdown-placeholder stts_1-placeholder">
-          <span *ngIf="myForms.get('citys').value.length == 0">  </span>
-          <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Status selected </span>
-          <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Status(s) selected </span>
+       </div>
+     </div>
+     <div class="col-md-2 col-lg-2 col-sm-2 selectstatusbubbles" style="font-family: 'Gilroy'; color: grey;">
+       <form [formGroup]="myForms">
+         <ng-multiselect-dropdown class="stts_1 statusdropdown" name="citys" [placeholder]="'Status'" formControlName="citys"
+           [disabled]="disabled" [settings]="dropdownSettings1" [data]="toppingList1"
+           (onSelect)="onStatusSelect($event)" (onDeSelect)="onStatusDeSelect($event)"
+           (onDeSelectAll)="onItemDeSelectOrAllStatus($event)" (onSelectAll)="onItemSelectOrAllStatus($event)">
+         </ng-multiselect-dropdown>
+       </form>
+       <div class="dropdown-placeholder stts_1-placeholder">
+         <span *ngIf="myForms.get('citys').value.length == 0">  </span>
+         <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Status selected </span>
+         <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Status(s) selected </span>
 
-        </div>
-      </div>
-
-        <div class="icon btnhover refreshbtn" (click)="refresh()" style=" cursor: pointer;">
-          <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;"
-            alt="refresh">
+       </div>
+     </div>
+     <div class="searchBox d-flex">
+       <input class="searchInput font" type="text" name="" placeholder=" search here anything"
+       (keyup)="onSearchChange($event)">
+       <mat-icon  class="searchButton">search</mat-icon>
+       <button class="search-btn searchAlign">Search</button>
+     </div>
+     <div class="icon btnhover refreshbtn" (click)="refresh()" style=" cursor: pointer;">
+       <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;"
+         alt="refresh">
+    
+   </div>
+     <div class="col-md-0">
+       <div class="add-user" (click)="addUser()" style=" cursor: pointer" userRoleDirective="ADD_DEALER" [pageName]="currentPageName">
+         <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+       </div>
+     </div>
+     <div class="col-md-0" userRoleDirective="DOWNLOAD_DEALER" [pageName]="currentPageName">
+       <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer" >
+         <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;"
+           alt="add-user-btn">
+       </div>
+     </div>
+  
+     <!-- <div class="icon btnhover refreshbtn" (click)="refresh()" style=" cursor: pointer;">
+       <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;"
+         alt="refresh">
+     </div> -->
+   </div>
+   <!-- <div class="row"> -->
+     <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
+     <!-- <div class="col-md-4"> -->
+       <div class="row rowdropdown">
+         <div class="col-lg-12 listicon">
+          
         
-      </div>
-      <!-- <div class="icon btnhover refreshbtn" (click)="refresh()" style=" cursor: pointer;">
-        <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;"
-          alt="refresh">
-      </div> -->
-    </div>
-    <!-- <div class="row"> -->
-      <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
-      <!-- <div class="col-md-4"> -->
-        <div class="row rowdropdown">
-          <div class="col-lg-12 listicon">
-            <div class="searchBox d-flex">
-              <input class="searchInput font" type="text" name="" placeholder="Type & search for anything"
-              (keyup)="onSearchChange($event)">
-              <button class="searchButton" href="#">
-                <i class="material-icons">
-                  search
-                </i>
-              </button>
-              <button class="search-btn searchAlign">Search</button>
-            </div>
-         
-          <div class="col-md-0">
-            <div class="add-user" (click)="addUser()" style=" cursor: pointer" userRoleDirective="ADD_DEALER" [pageName]="currentPageName">
-              <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
-            </div>
-          </div>
-          <div class="col-md-0" userRoleDirective="DOWNLOAD_DEALER" [pageName]="currentPageName">
-            <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer" >
-              <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;"
-                alt="add-user-btn">
-            </div>
-          </div>
-        </div>
-        </div>
-      <!-- </div> -->
-    <!-- </div> -->
+        
+       </div>
+       </div>
+     <!-- </div> -->
+   <!-- </div> -->
 
 
-    <div>
-      <div class="ag-grid-dummy mt-2" id="ag-grid-dummy"></div>  
-      <ag-grid-angular id="gridContainer"
-        style=" height: 400px;background-color: white;font-family: Gilroy; margin-left: 20px;"
-        class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
-        [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
-        [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
-        (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
-        (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
-        (bodyScroll)="handleScroll($event)"></ag-grid-angular>
+   <div>
+     <div class="ag-grid-dummy mt-2" id="ag-grid-dummy"></div>  
+     <ag-grid-angular id="gridContainer"
+       style=" height: 400px;background-color: white;font-family: Gilroy; margin-left: 20px;"
+       class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
+       [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
+       [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
+       (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
+       (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
+       (bodyScroll)="handleScroll($event)"></ag-grid-angular>
 
-    </div>
-    <div class="pagination">
-      <span class="pagination-cls">1        </span> to  <span class="pagination-cls">{{paginationScrollCount}}</span> of 
-      <span class="pagination-cls">{{rowData5.length}}</span>
-    </div>
-  </section>
-  </div>
-
- 
+   </div>
+   <div class="pagination">
+     <span class="pagination-cls">1        </span> to  <span class="pagination-cls">{{paginationScrollCount}}</span> of
+     <span class="pagination-cls">{{rowData5.length}}</span>
+   </div>
+ </section>
+ </div>

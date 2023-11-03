@@ -147,7 +147,7 @@ left: 37%
   
     border: 0.5px solid #000000 !important;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
-    border-radius: 0px !important;
+    border-radius: 10px !important;
   
   }
   .ag-root-wrapper {
@@ -264,7 +264,7 @@ left: 37%
     letter-spacing: 0.08em;
     color: #263643;
     box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.3)!important;
   }
   
   .searchicons1 {
@@ -281,7 +281,8 @@ left: 37%
     height: 26px;
     border: none;
     /* background: #000000; */
-    background: #686E74;
+    background: rgba(104, 110, 116, 0.66);
+
     color: white;
     border-radius: 5px;
     position: absolute;

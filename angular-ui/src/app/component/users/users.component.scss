@@ -60,7 +60,7 @@ scrollbar-width: none;
 
 ::ng-deep.multiselect-dropdown .dropdown-btn {
   display: inline-block;
-  border: 1px solid #000000 !important;
+  border: 1px solid rgba(0, 0, 0, 0.3)!important;
   width: 100%;
   /* height: 62%; */
   padding: 9px 12px !important;
@@ -227,6 +227,8 @@ scrollbar-width: none;
   border-radius: 13%;
   position: relative;
   width: 43px;
+  margin-left: 250px;
+  height: 40px;
 }
 
 // ::ng-deep.btnhover:hover,
@@ -371,7 +373,7 @@ scrollbar-width: none;
   height: 37px;
   top: 6px;
   position: absolute;
-  left: 72%;
+  left: 494%;
 }
 
 .download-btn {
@@ -382,7 +384,7 @@ scrollbar-width: none;
   width: 37px;
   height: 37px;
   top: 6px;
-  left: 90%;
+  left: 1155%;
 }
 
 ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
@@ -526,7 +528,7 @@ mat-sidenav-container {
 
   border: 0.5px solid #000000 !important;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
-  border-radius: 0px !important;
+  border-radius: 10px !important;
 
 }
 
@@ -1006,8 +1008,8 @@ mat-sidenav {
   height: 41px;
   line-height: 41px;
   left: 1px;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-top: 1px solid rgba(104, 110, 116, 0.75);
+    border-bottom: 1px solid rgba(104, 110, 116, 0.75);
   width: 80%;
   border-radius: 10px 0 0 10px !important;
   padding-left: 10px;
@@ -1031,7 +1033,7 @@ mat-sidenav {
 
   position: absolute;
 
-  right: -23px;
+  right: 715px;
 
   top: 7px;
 
@@ -1043,7 +1045,7 @@ mat-sidenav {
 
   display: block;
 
-  color: #000;
+  color: #9B9FA3;
 
   float: left;
 
@@ -1063,7 +1065,7 @@ mat-sidenav {
 
   position: relative;
 
-  right: 257px;
+  right: 185px;
 
   top: -4px;
 
@@ -1089,7 +1091,8 @@ mat-sidenav {
 
   border: none;
 
-  background: #686E74;
+  background: rgba(104, 110, 116, 0.66);
+
 
   color: white;
 
@@ -1097,9 +1100,9 @@ mat-sidenav {
 
   position: absolute;
 
-  right: 10px;
+  right: 4px;
 
-  top: 4px;
+  top: 3px;
 
  
 
@@ -1113,9 +1116,9 @@ mat-sidenav {
 
   display: block;
 
-  width: 300px;
+  width: 223px;
 
-  height: 43px;
+  height: 40px;
 
   background: #FFFFFF;
 
@@ -1131,7 +1134,7 @@ mat-sidenav {
 
   font-weight: 500;
 
-  font-size: 12px;
+  font-size: 11px;
 
   line-height: 17px;
 
@@ -1148,5 +1151,5 @@ mat-sidenav {
   bottom: -3px;
 
   top: -5px;
-
+  border: 1px solid rgba(0, 0, 0, 0.3)!important;
 }

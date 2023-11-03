@@ -1019,8 +1019,8 @@
     height: 41px;
     line-height: 41px;
     left: 2px;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
+    border-top: 1px solid rgba(104, 110, 116, 0.75);
+    border-bottom: 1px solid rgba(104, 110, 116, 0.75);
     /* width: 80%; */
     border-radius: 10px 0 0 10px !important;
     // padding-left: 10px;
@@ -1281,7 +1281,8 @@
 
     border: none;
 
-    background: #686E74;
+    background: rgba(104, 110, 116, 0.66);
+
 
     color: white;
 
@@ -1313,7 +1314,7 @@
 
     float: left;
 
-    padding: 5px 32px 6px;
+    padding: 5px 25px 6px;
 
     border-radius: 10px;
 
@@ -1323,7 +1324,7 @@
 
     font-weight: 500;
 
-    font-size: 12px;
+    font-size: 11px;
 
     line-height: 17px;
 

@@ -6,8 +6,9 @@
   .ag-theme-material .ag-sticky-top {
     border: 1px solid #989CA04D !important;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
-    border-bottom-left-radius: 10px 10px !important;
-    border-bottom-right-radius: 10px 10px !important;
+    /* border-bottom-left-radius: 10px 10px !important;
+    border-bottom-right-radius: 10px 10px !important; */
+    border-radius: 10px !important;
   }
 .container-fluid
 {
@@ -163,6 +164,7 @@
 
 .ag-theme-material {
   height: 350px;
+  border-radius: 10px !important;
   /* border-radius: 20px; */
   background-color: white;
   font-family: Gilroy;

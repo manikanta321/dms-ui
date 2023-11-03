@@ -30,8 +30,8 @@
    height: 41px;
    line-height: 41px;
    left: 1px;
-   border-top: 1px solid #000;
-   border-bottom: 1px solid #000;
+   border-top: 1px solid rgba(104, 110, 116, 0.75);
+   border-bottom: 1px solid rgba(104, 110, 116, 0.75);
    width: 80%;
    border-radius: 10px 0 0 10px !important;
    padding-left: 10px;
@@ -868,7 +868,7 @@
    position: relative;
    width: 243px;
    /* top: 67%; */
-   border: 1px solid #000;
+   border: 1px solid rgba(0, 0, 0, 0.3)!important;
    border-radius: 11px;
    
  }
@@ -883,12 +883,12 @@
    font-family: 'Gilroy';
    font-style: normal;
    font-weight: 500;
-   font-size: 12px;
+   font-size: 11px;
    line-height: 17px;
    letter-spacing: 0.08em;
    color: #263643;
    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
-   border: 1px solid #ccc;
+   border: 1px solid rgba(0, 0, 0, 0.3)!important;
  }
 
  .searchicons1 {
@@ -904,8 +904,7 @@
    display: block;
    height: 26px;
    border: none;
-   /* background: #000000; */
-   background: #686E74;
+   background: rgba(104, 110, 116, 0.66);
    color: white;
    border-radius: 5px;
    position: absolute;

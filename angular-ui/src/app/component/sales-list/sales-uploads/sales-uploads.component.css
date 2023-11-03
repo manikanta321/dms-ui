@@ -44,7 +44,7 @@
   }
   ::ng-deep.multiselect-dropdown .dropdown-btn {
     display: inline-block;
-    border: 1px solid #000000 !important;
+    border: 1px solid rgba(0, 0, 0, 0.3)!important;
     width: 100%;
     /* height: 62%; */
     padding: 9px 12px !important;
@@ -68,7 +68,8 @@
    /* padding: .75em .75em 0 .75em;  */
    padding: 5px;
    background: white !important;
-   border: 1px black solid;
+   border-top: 1px solid rgba(104, 110, 116, 0.75);
+   border-bottom: 1px solid rgba(104, 110, 116, 0.75);
 }
 ::ng-deep.shipment .mat-select-arrow-wrapper{
  /* background-image: url('/assets/img/calenderImage.svg') !important; */
@@ -264,8 +265,16 @@
   letter-spacing: 0.08em;
   color: #263643;
   box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
-  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.3)!important;
 }
+:host ::ng-deep.ag-theme-material .ag-root-wrapper,
+  .ag-theme-material .ag-sticky-top {
+ 
+    border: 1px solid #989CA04D !important;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
+    border-radius: 10px !important;
+ 
+  }
 
 .searchicons2 {
   position: absolute;

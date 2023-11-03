@@ -135,8 +135,8 @@ text-align: center;
     height: 41px;
     line-height: 41px;
     left: 1px;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
+    border-top: 1px solid rgba(104, 110, 116, 0.75);
+    border-bottom: 1px solid rgba(104, 110, 116, 0.75);
     width: 80%;
     border-radius: 10px 0 0 10px !important;
     padding-left: 10px;
@@ -144,7 +144,7 @@ text-align: center;
   }
   ::ng-deep.multiselect-dropdown .dropdown-btn {
     display: inline-block;
-    border: 1px solid #000000 !important;
+    border: 1px solid rgba(0, 0, 0, 0.3)!important;
     width: 100%;
     /* height: 62%; */
     padding: 9px 12px !important;

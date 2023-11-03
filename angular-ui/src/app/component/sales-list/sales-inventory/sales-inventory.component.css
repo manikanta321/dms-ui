@@ -134,7 +134,7 @@ margin-left: 1%;
 
   border: 0.5px solid #000000 !important;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
-  border-radius: 0px !important;
+  border-radius: 10px !important;
 
 }
 
@@ -444,8 +444,8 @@ margin-left: 1%;
   height: 41px;
   line-height: 41px;
   left: 1px;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-top: 1px solid rgba(104, 110, 116, 0.75);
+  border-bottom: 1px solid rgba(104, 110, 116, 0.75);
   width: 80%;
   border-radius: 10px 0 0 10px !important;
   padding-left: 10px;
@@ -454,7 +454,7 @@ margin-left: 1%;
 
 ::ng-deep.multiselect-dropdown .dropdown-btn {
   display: inline-block;
-  border: 1px solid #000000 !important;
+  border: 1px solid rgba(0, 0, 0, 0.3)!important;
   width: 100%;
   /* height: 62%; */
   padding: 9px 12px !important;
@@ -673,7 +673,7 @@ margin-left: 1%;
   letter-spacing: 0.08em;
   color: #263643;
   box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
-  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.3)!important;
 }
 
 .searchicons1 {

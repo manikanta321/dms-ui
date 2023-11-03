@@ -234,7 +234,7 @@ padding-left: 11px;
 
 ::ng-deep.multiselect-dropdown .dropdown-btn {
   display: inline-block;
-  border: 1px solid #000000 !important;
+  border: 1px solid rgba(0, 0, 0, 0.3)!important;
   width: 100%;
   /* height: 62%; */
   padding: 9px 12px !important;
@@ -284,7 +284,7 @@ padding-left: 11px;
 }
 
 .btnhover {
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
+  filter: drop-shadow(0px 4px 4px rgba(104, 110, 116, 0.66)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
   border: none;
   background: rgba(104, 110, 116, 0.66);
   border-radius: 13%;
@@ -292,6 +292,7 @@ padding-left: 11px;
   width: 43px;
   height: 40px;
   cursor: pointer;
+  margin-left: -22px;
 }
 
 ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
@@ -437,7 +438,7 @@ padding-left: 11px;
 
   border: 0.5px solid #000000 !important;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
-  border-radius: 0px !important;
+  border-radius: 10px !important;
 
 }
 
@@ -635,8 +636,8 @@ padding-left: 11px;
   height: 41px;
   line-height: 41px;
   left: 16px;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-top: 1px solid rgba(104, 110, 116, 0.75);
+    border-bottom: 1px solid rgba(104, 110, 116, 0.75);
   /* width: 80%; */
   border-radius: 10px 0 0 10px !important;
   padding-left: 6px;
@@ -724,7 +725,7 @@ padding-left: 11px;
 }
 
 .gridAlign {
-  width: 100%;
+  width: 101%;
   height: 440px;
   border-radius: 20px;
   background-color: white;
@@ -935,7 +936,7 @@ padding-left: 11px;
 
   display: block;
 
-  color: #000;
+  color: #9B9FA3;
 
   float: left;
 
@@ -981,7 +982,7 @@ padding-left: 11px;
 
   border: none;
 
-  background: #686E74;
+  background: rgba(104, 110, 116, 0.66);
 
   color: white;
 
@@ -1040,5 +1041,6 @@ padding-left: 11px;
   bottom: -3px;
 
   top: -5px;
+  border: 1px solid rgba(0, 0, 0, 0.3)!important;
 
 }

@@ -1030,8 +1030,8 @@
     height: 41px;
     line-height: 41px;
     left: 2px;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
+    border-top: 1px solid rgba(104, 110, 116, 0.75);
+    border-bottom: 1px solid rgba(104, 110, 116, 0.75);
     /* width: 80%; */
     border-radius: 10px 0 0 10px !important;
     // padding-left: 10px;
@@ -1267,7 +1267,7 @@
 
   .searchButton {
     display: block;
-    color: #000;
+    color: #9B9FA3;
     float: left;
     width: 42px;
     height: 42px;
@@ -1313,11 +1313,11 @@
     display: block;
     height: 26px;
     border: none;
-    background: #686E74;
+    background: rgba(104, 110, 116, 0.66);
     color: white;
     border-radius: 5px;
     position: absolute;
-    right: 10px;
+    right: 6px;
     top:4px;
   }
   .Seearrch-Dealerbtn
@@ -1348,7 +1348,7 @@
     font-family: 'Gilroy-medium';
     font-style: normal;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 17px;
     letter-spacing: 0.08em;
     color: #263643;

@@ -99,8 +99,8 @@ mat-sidenav {
   height: 41px;
   line-height: 41px;
   left: 1px;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-top: 1px solid rgba(104, 110, 116, 0.75);
+  border-bottom: 1px solid rgba(104, 110, 116, 0.75);
   width: 80%;
   border-radius: 10px 0 0 10px !important;
   padding-left: 10px;
@@ -420,7 +420,7 @@ mat-sidenav {
 
 ::ng-deep.multiselect-dropdown .dropdown-btn {
   display: inline-block;
-  border: 1px solid gray !important;
+  border: 1px solid rgba(0, 0, 0, 0.3)!important;
   width: 100%;
   /* height: 62%; */
   padding: 9px 12px !important;
@@ -685,7 +685,7 @@ mat-sidenav {
 }
 
 .ref {
-  border: 1px solid black;
+  
   border-radius: 10px;
   background-color: grey !important;
   margin-left: -13px;
@@ -702,7 +702,7 @@ mat-sidenav {
 }
 
 ::ng-deep.btnhover:hover {
-  background: #000000 !important;
+  
 }
 
 .pagination {
@@ -958,7 +958,7 @@ mat-sidenav {
 
     display: block;
 
-    color: #000;
+    color: #9B9FA3;
 
     float: left;
 
@@ -1004,7 +1004,9 @@ mat-sidenav {
 
     border: none;
 
-    background: #686E74;
+    background: rgba(104, 110, 116, 0.66);
+
+
 
     color: white;
 
@@ -1063,6 +1065,7 @@ mat-sidenav {
     bottom: -3px;
 
     top: -5px;
+    border: 1px solid rgba(0, 0, 0, 0.3)!important;
 
   }
   

@@ -108,11 +108,7 @@
             <div class="searchBox d-flex">
               <input class="searchInput font" type="text" name="" placeholder="Type & search for anything"
                 (keyup)="onSearchChange($event)">
-              <button class="searchButton" href="#">
-                <i class="material-icons">
-                  search
-                </i>
-              </button>
+                <mat-icon  class="searchButton">search</mat-icon>
               <button class="search-btn searchAlign">Search</button>
             </div>
             <div class="add-user" (click)="addMaterials()"  userRoleDirective="MAT_ADD" pageName="settingmaterials">

@@ -373,7 +373,9 @@ bottom: 0px;
   background: rgba(104, 110, 116, 0.66);
     border-radius: 13%;
   position: relative;
-  width: 43px;
+  width: 40px;
+  margin-left: 246px;
+  height: 40px;
 }
 
 // ::ng-deep.btnhover:hover,
@@ -528,6 +530,7 @@ bottom: 0px;
   height: 37px;
   top: 87px;
   margin-right: 10px;
+  margin-left: 745%;
   // position: absolute;
   // left: 169%;
 }
@@ -539,6 +542,7 @@ bottom: 0px;
   position: relative;
   width: 37px;
   height: 37px;
+  margin-left: 700%;
   // top: 87px;
   // left: 192%;
 }
@@ -681,7 +685,7 @@ mat-sidenav-container {
 
   border: 0.5px solid #000000 !important;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
-  border-radius: 0px !important;
+  border-radius: 10px !important;
 
 }
 
@@ -1166,8 +1170,8 @@ display: block;
   height: 41px;
   line-height: 41px;
   // left: 2px;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-top: 1px solid rgba(104, 110, 116, 0.75);
+    border-bottom: 1px solid rgba(104, 110, 116, 0.75);
   // /* width: 80%; 
   border-radius: 10px 0 0 10px !important;
   pointer-events: none;
@@ -1200,9 +1204,9 @@ display: block;
 
   position: absolute;
 
-  right: 108px;
+  right: 465px;
 
-  top: 5px;
+  top: 20px;
 
 }
 
@@ -1211,8 +1215,7 @@ display: block;
 .searchButton {
 
   display: block;
-
-  color: #000;
+  color: #9B9FA3;
 
   float: left;
 
@@ -1232,7 +1235,7 @@ display: block;
 
   position: relative;
 
-  right: 257px;
+  right: 182px;
 
   top: -4px;
 
@@ -1258,7 +1261,7 @@ display: block;
 
   border: none;
 
-  background:#686E74;
+  background: rgba(104, 110, 116, 0.66);
 
   color: white;
 
@@ -1281,15 +1284,15 @@ display: block;
 
   display: block;
 
-  width: 300px;
+  width: 223px;
 
-  height: 43px;
+  height: 40px;
 
   background: #FFFFFF;
 
   float: left;
 
-  padding: 5px 32px 6px;
+  padding: 5px 23px 6px;
 
   border-radius: 10px;
 
@@ -1299,7 +1302,7 @@ display: block;
 
   font-weight: 500;
 
-  font-size: 12px;
+  font-size: 11px;
 
   line-height: 17px;
 
@@ -1316,5 +1319,5 @@ display: block;
   bottom: -3px;
 
   top: -5px;
-
+  border: 1px solid rgba(0, 0, 0, 0.3)!important;
 }

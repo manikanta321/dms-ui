@@ -32,7 +32,7 @@
                   <br>
                   <p *ngIf="usernameReqired" style="color: red;">Username required</p>
   
-                  <input type="text" style="border-radius:10px" placeholder=" Enter your username" name="username"
+                  <input type="text" style="border-radius:10px" placeholder=" Enter Your Username" name="username"
                     required [(ngModel)]="usernameofuser" pInputText required />
                 </div>
           
@@ -40,7 +40,7 @@
                   <label class="form-label" for="form3Example4">Password </label>
                   <p *ngIf="passwordrequired" style="color: red;">Password required</p>
   
-                  <input placeholder=" Enter password" style="border-radius:10px" type="password"
+                  <input placeholder=" Enter Your Password" style="border-radius:10px" type="password"
                     [type]="showPassword ? 'text' : 'password'" name="password" required [(ngModel)]="passwordofuser"
                     pInputText required />
                   <mat-icon matSuffix (click)="togglePasswordVisibility()">
@@ -55,7 +55,7 @@
                   <div class="REME">
                     <mat-slide-toggle>
                   
-                      Remember me </mat-slide-toggle> <br />
+                      Remember Me </mat-slide-toggle> <br />
                   </div>
                   <a routerLink="/ForgotPassword" class="forgot-ps">Forgot password?</a>
                 </div>

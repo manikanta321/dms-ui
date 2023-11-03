@@ -13,7 +13,7 @@
 
 .searchButton {
   display: block;
-  color: #000;
+  color: #9B9FA3;
   float: left;
   width: 42px;
   height: 42px;
@@ -34,7 +34,7 @@
   display: block;
   height: 26px;
   border: none;
-  background: #686E74;
+  background: rgba(104, 110, 116, 0.66);
   color: white;
   border-radius: 5px;
   position: absolute;
@@ -62,6 +62,7 @@
   position: absolute;
   right: 0px;
   bottom: -3px;
+  border: 1px solid gray !important;
 }
 
 .addU:before {
@@ -96,7 +97,7 @@
 
 .searchButton {
   display: block;
-  color: black;
+  color: #9B9FA3;
   width: 37px;
   border-radius: 13%;
   display: flex;
@@ -243,7 +244,8 @@
 
 .pagination-cls {
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 600;
+  color: #686E74;
 }
 
 .invoiceee {

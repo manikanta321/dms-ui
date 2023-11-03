@@ -1,4 +1,4 @@
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-4">
     <div class="section shipment" >
 <div class="row" style="margin-left: 3px;">
     <!-- <div class="col-md-2 col-lg-2 col-sm-2 custom-bubblesorders-shipment  shipmentdropdown" *ngIf="userType !== 'Dealer Admin'">
@@ -52,21 +52,33 @@
         </div>
       </div>
 
-<div class="col-md-0 col-lg-0 col-sm-0">
-  <div class="sales-download" (click)="bulkDownload()" userRoleDirective="UPLOAD_SHIPMENT" [pageName]="currentPageName">
+      <!-- [pageName]="currentPageName" -->
+<div class="col-md-0 col-lg-0 col-sm-0" *ngIf="userType !== 'Dealer Admin'" >
+  <div class="sales-download" (click)="bulkDownload()" userRoleDirective="UPLOAD_SHIPMENT" >
     <img class="dwnld-img" src="assets/img/orderlist-upload.svg" 
         alt="add-user-btn">
 </div>
 </div>
 
+
 <div class="col-md-0 col-lg-0 col-sm-0">
-  <div class="sales-upload" (click)="orderShipmentUpload()">
+  <div class="sales-upload" (click)="orderShipmentUpload()" *ngIf="userType !== 'Dealer Admin'" >
     <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
         alt="add-user-btn">    
 </div>
 </div>
+<div class="col-md-1 col-lg-1 col-sm-1" *ngIf="userType == 'Dealer Admin'">
+  
+</div>
 
-<div class="col-md-0 col-lg-0 col-sm-0">
+<div class="col-md-0 col-lg-0 col-sm-0" *ngIf="userType == 'Dealer Admin'" >
+  <div class="sales-dwnld" (click)="shipmentDownload()">
+    <img   class="imgdwnl" src="assets/img/download-btn.png"
+        alt="add-user-btn">    
+  </div>
+</div>
+
+<div class="col-md-0 col-lg-0 col-sm-0" *ngIf="userType !== 'Dealer Admin'" >
   <div class="sales-dwnld" (click)="shipmentDownload()">
     <img   class="imgdwnl" src="assets/img/download-btn.png"
         alt="add-user-btn">    
@@ -75,10 +87,10 @@
 </div>
 <!-- Legend -->
 <div  class="AllText" *ngIf="userType !== 'Dealer Admin'">
-  <span class="ml-4" >INQ: <span class="ml-1">Invoice Quantity</span></span>
-  <span class="ml-4" >INV:<span class="ml-2">Invoice Value</span></span>
-  <span class="ml-4" >TOQ:<span class="ml-2">Total Order Quantity</span></span>
-  <span class="ml-4" >TOV:<span class="ml-2">Total Order Value</span> </span>
+  <span class="Legened ml-4" >INQ: <span class="ml-1">Invoice Quantity</span></span>
+  <span class="Legened ml-4" >INV:<span class="ml-2">Invoice Value</span></span>
+  <span class=" Legened ml-4" >TOQ:<span class="ml-2">Total Order Quantity</span></span>
+  <span class=" Legened ml-4" >TOV:<span class="ml-2">Total Order Value</span> </span>
  
 </div>
 
@@ -94,8 +106,8 @@
     (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
     (bodyScroll)="handleScroll($event)"></ag-grid-angular>
   <div class="pagination">
-    <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
-      class="pagination-cls">{{shipmentDatalist.length}}</span>
+    <span class="pagination-cls">1</span> - <span class="pagination-cls">{{paginationScrollCount}}</span><span class="pagination-cls"> &nbsp; of</span> <span
+      class="pagination-cls">&nbsp; {{shipmentDatalist.length}}</span>
   </div>
 </div>
     </div>

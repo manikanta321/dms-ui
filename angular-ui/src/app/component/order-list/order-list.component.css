@@ -11,16 +11,26 @@
 ::ng-deep.ag-theme-material {
     overflow-y: hidden !important;
   }
-  
+
+  #OrderValue
+  {
+    color: #000000;
+    font-family: 'Calibri';
+    font-weight: 400;
+   line-height: 12px;
+
+
+
+  }
 
 
 .dateplaceholder {
-    color: rgba(104, 110, 116, 0.75);
     color: grey !important;
 
 
     font-size: 15px;
 }
+
 
 ::ng-deep.ag-theme-material .ag-header-cell {
     background: rgba(1, 139, 117, 0.8);
@@ -256,7 +266,7 @@ input {
 
 ::ng-deep.multiselect-dropdown .dropdown-btn {
     display: inline-block;
-    border: 1px solid #000000 !important;
+    border: 1px solid gray !important;
     width: 100%;
     /* height: 62%; */
     padding: 9px 12px !important;
@@ -716,20 +726,13 @@ mat-sidenav-container {
     font-size: 14px !important;
 }
 
-:host ::ng-deep.ag-theme-material .ag-root-wrapper,
-.ag-theme-material .ag-sticky-top {
 
-    border: 0.5px solid #000000 !important;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
-    border-radius: 0px !important;
-
-}
 
 .ag-theme-material {
     height: 350px;
     /* border-radius: 20px; */
     background-color: white; 
-    font-family: Gilroy;
+    font-family: 'Gilroy';
 }
 
 /* ::ng-deep.ag-root-wrapper {
@@ -1197,7 +1200,9 @@ mat-sidenav {
 
 .pagination-cls {
     font-size: 14px;
-    font-weight: 900;
+    font-weight: 600;
+    color: #686E74;
+
 }
 
 .listicon {
@@ -1261,7 +1266,6 @@ mat-sidenav {
 }
 
 .sales-dwnld {
-    background: rgba(104, 110, 116, 0.66);
     border-radius: 13%;
     width: 37px;
     height: 41px;
@@ -1391,7 +1395,7 @@ mat-sidenav {
     display: block;
     height: 26px;
     border: none;
-    background: #686E74;
+    background: rgba(104, 110, 116, 0.66);
     color: white;
     border-radius: 5px;
     position: absolute;
@@ -1422,11 +1426,11 @@ mat-sidenav {
 .searchInput11 {
     display: block;
     width: 100%;
-    height: 42px;
+    height: 40px;
     background: #FFFFFF;
     float: left;
     padding-left: 11%;
-    border-radius: 10px;
+    border-radius: 11px;
     font-family: 'Gilroy';
     font-style: normal;
     font-weight: 500;
@@ -1437,7 +1441,7 @@ mat-sidenav {
     box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
     position: absolute;
     right: -2px;
-    border:1px solid black;
+    border: 1px solid gray !important;
     
 }
 .AllText
@@ -1476,8 +1480,8 @@ justify-content: end;
     height: 41px;
     line-height: 41px;
     left: 1px;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
+    border-top: 1px solid rgba(104, 110, 116, 0.75);
+    border-bottom: 1px solid rgba(104, 110, 116, 0.75);
     width: 80%;
     border-radius: 10px 0 0 10px !important;
     padding-left: 10px;
@@ -1565,7 +1569,7 @@ justify-content: end;
 ::ng-deep.mat-form-field-appearance-fill .mat-form-field-infix{
     font-family: 'Calibri';
     font-size: 14px;
-    width: 219px;
+    width: 205px;
     margin-left: 8px;
     color: rgba(104, 110, 116, 0.75)!important;
 

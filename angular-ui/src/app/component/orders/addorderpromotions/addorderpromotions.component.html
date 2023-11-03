@@ -1163,15 +1163,15 @@
                                                 </form>
                                             </div>
                                         </div> -->
-                                <mat-slide-toggle (click)="toggleData($event) "
+                                <!-- <mat-slide-toggle (click)="toggleData($event) "
                                     style="position: relative;left: 64px;top:6px"> Items With Order Qty 
-                                </mat-slide-toggle>
+                                </mat-slide-toggle> -->
 
-                                <mat-slide-toggle (click)="toggleDatapromotionmfreeitems() "
+                                <mat-slide-toggle (click)="toggleDATA() "
                                 style="position: relative;left: 64px;top:6px"> Items With Order Qty 
                             </mat-slide-toggle>
 
-                               
+                           
 
                                 <div class="col" style="position: relative;left:150px">
                                     <div class="icon btnhover refreshbtn">
@@ -1229,7 +1229,7 @@
                               
                                     <tr class="table-row" *ngFor="let Item of orderNonPromotionsdata " 
                                     [ngClass]="{'promotionItem': Item.isInPromotion===true}">
-                                    <ng-container *ngIf="toggleStatefreeitems ? Item.isPromotionSelected : true">
+                                    <ng-container *ngIf="toggleStateNonPromodata ? Item.isPromotionSelected : true">
                                     
                                     <td width="30"> <input type="checkbox" class="check custom-checkbox"
                                             [checked]="Item.isPromotionSelected" (change)="checkboxChange($event,Item)"

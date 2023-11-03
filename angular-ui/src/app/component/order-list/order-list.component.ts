@@ -154,6 +154,8 @@ export class OrderListComponent implements OnInit {
       minWidth: 110,
       maxWidth: 150,
       field: 'companyReferenceNo',
+      type: ['rightAligned']
+      
     },
 
     {
@@ -168,6 +170,7 @@ export class OrderListComponent implements OnInit {
       minWidth:100,
       maxWidth: 115,
       field: 'totalValue',
+      type: ['rightAligned']
     },
 
     {
@@ -175,24 +178,28 @@ export class OrderListComponent implements OnInit {
       field: 'orderedQty',
       minWidth:90,
       maxWidth: 115,
+      type: ['rightAligned']
     },
     {
       headerName: 'RDQ',
       field: 'receivedQty',
       minWidth:90,
       maxWidth: 115,
+      type: ['rightAligned']
     },
     {
       headerName: 'OSQ',
       field: 'outstandingQty',
       minWidth:90,
       maxWidth: 115,
+      type: ['rightAligned']
     },
     {
       headerName: 'OSV($)',
       minWidth:100,
       maxWidth: 115,
       field: 'outstandingValue',
+      type: ['rightAligned']
     },
 
     {
@@ -200,6 +207,7 @@ export class OrderListComponent implements OnInit {
       minWidth:90,
       maxWidth: 115,
       field: 'inTransitQty',
+      type: ['rightAligned']
     },
     // {
     //   headerName: "Total Value",

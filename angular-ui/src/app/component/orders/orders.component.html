@@ -11,14 +11,25 @@
     
 <mat-sidenav-content>
     <!--<div class="dash-content" > -->
-             <h2 class="header-text" ><span class="purchaes">Purchase Order details</span> </h2> 
-            <!-- <img  class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
+              <!-- <h2 class="header-text" ><span class="purchaes">Order </span> </h2>  -->
+              <h2 class="header-text" *ngIf="userType !== 'Dealer Admin'" >
+                <span class="purchaes">
+                    {{ selectedTabIndex === 0 ? 'Orders' : selectedTabIndex === 1 ? 'Shipments' : selectedTabIndex === 2 ? 'Invoice' : 'Receipts' }}
+              </span>
+                </h2>
+
+                <h2 class="header-text" *ngIf="userType == 'Dealer Admin'" >
+                    <span class="purchaes">
+                        {{ selectedTabIndex === 0 ? 'Orders' : selectedTabIndex === 1 ? 'Shipments' : selectedTabIndex === 2 ? 'Receipts' : 'Receipts' }}
+                  </span>
+                    </h2>
      
                 <div class="UNFAPP-asmnt-rgt-area main othersmastermenutab">
                     <!-- <div class="col-lg-12"> -->
-                        <mat-tab-group class="order-lab" mat-stretch-tabs="false">
+                        <mat-tab-group class="order-lab" mat-stretch-tabs="false" [(selectedIndex)]="selectedTabIndex">
                             <mat-tab class="classi" *ngIf="tabList.indexOf('view') !== -1"
-                                label="Order list">                         
+                                label="Orders"> 
+                                                    
                                    <app-order-list></app-order-list>
         
                             </mat-tab>

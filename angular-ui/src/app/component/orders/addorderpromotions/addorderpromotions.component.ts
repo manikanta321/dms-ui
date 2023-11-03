@@ -829,11 +829,30 @@ export class AddorderpromotionsComponent implements OnInit {
     localStorage.removeItem('ThreePrommotionTotalselectedQuantity');
     localStorage.removeItem('ThreePromotionTotalAmount');
   }
+  
+  toggledata:any
+  toggleStateNonPromodata:boolean=false;
+  toggleDATA() {
+    this.toggleStateNonPromodata = !this.toggleStateNonPromodata;
+  
+    if (this.toggleStateNonPromodata) {
+      this.toggledata = this.orderNonPromotionsdata.filter(
+        (Item) => Item.isPromotionSelected === true
+      );
+    } else {
+      this.toggledata = this.orderNonPromotionsdata;
+    }
+  }
+
+
+
   removeNonPromotionItem(clickedItem) {
     let index = this.nonpromotionlist.findIndex(
       (x) => x.stockitemid == clickedItem.stockitemid
     );
     this.nonpromotionlist.splice(index, 1);
+
+  //  this.UpdatedQty=this.stockitemid.splice(index,1);
 
     this.nonpromotionlist = this.nonpromotionlist.map((x, i) => {
       x.promotionName = 'NP' + (i + 1);
@@ -860,6 +879,8 @@ export class AddorderpromotionsComponent implements OnInit {
     //   localStorage.removeItem('ThreePromotionCalculationsAmount');
 
     this.DisplayNonpromotion = false;
+   
+    
   }
 
   // non-prmotions
@@ -2480,23 +2501,23 @@ export class AddorderpromotionsComponent implements OnInit {
 
   toggleStatefreeitems:boolean=false;
 Freeitemsguygroup:any
-toggleDatapromotionmfreeitems()
-{
-  this.toggleStatefreeitems = !this.toggleStatefreeitems;
-  if(this.toggleStatefreeitems==true)
-  {
-    this.Freeitemsguygroup =this.orderNonPromotionsdata.filter(
-      (Item)=> Item.isPromotionSelected == true
-    );
-    // {
-    //   this.Freeitemsguygroup=this.orderNonPromotionsdata;
-    // }
-  }
-  else
-  {
-    this.Freeitemsguygroup=this.orderNonPromotionsdata;
-  }
-}
+// toggleDatapromotionmfreeitems()
+// {
+//   this.toggleStatefreeitems = !this.toggleStatefreeitems;
+//   if(this.toggleStatefreeitems==true)
+//   {
+//     this.Freeitemsguygroup =this.orderNonPromotionsdata.filter(
+//       (Item)=> Item.isPromotionSelected == true
+//     );
+    
+//   }
+//   else
+//   {
+//     this.Freeitemsguygroup=this.orderNonPromotionsdata;
+//   }
+// }
+
+
 
 
 
@@ -2513,7 +2534,7 @@ toggleDatapromotionmfreeitems()
       this.orderNonPromotionsList();
        this.Non_promotions = true;
       console.log(this.orderNonPromotionsdata, 'tockeck');
-      console.log(this.Non_promotions,"RK")
+      console.log(this.Non_promotions,"Checking")
       this.orderNonPromotionsdata.isPromotionSelected=true;
       console.log(this.orderNonPromotionsdata.isPromotionSelected,"==========");
         this.quantityChange(updatedItem);

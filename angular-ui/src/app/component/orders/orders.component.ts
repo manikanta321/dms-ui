@@ -19,6 +19,8 @@ export class OrdersComponent implements OnInit {
   sidenav!: MatSidenav;
   currentPageName:string="";
   tabList:string[] = [];
+  selectedTabIndex = 0;
+  userType:any;
 
   constructor(private observer: BreakpointObserver,
     private route: ActivatedRoute,) { this.route.data.subscribe(v => {
@@ -70,6 +72,7 @@ export class OrdersComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.userType = localStorage.getItem('userType');
   }
 
 

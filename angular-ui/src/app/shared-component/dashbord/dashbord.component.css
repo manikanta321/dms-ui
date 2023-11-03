@@ -420,7 +420,7 @@ mat-sidenav {
 
 ::ng-deep.multiselect-dropdown .dropdown-btn {
   display: inline-block;
-  border: 1px solid #000000 !important;
+  border: 1px solid gray !important;
   width: 100%;
   /* height: 62%; */
   padding: 9px 12px !important;

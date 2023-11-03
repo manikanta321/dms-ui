@@ -181,21 +181,25 @@ export class OrdersShipmentComponent implements OnInit {
           headerName:'invoice Qty',
           field: 'invoiceQty',
           tooltipField: 'invoiceQty',
+          type: ['rightAligned']
         },
         {
           headerName: 'invoice Value',
           field: 'invoiceValue',
           tooltipField: 'invoiceValue',
+          type: ['rightAligned']
         },
         {
           headerName: 'Total ordered Quantity',
           field: 'orderedQty',
           tooltipField: 'orderedQty',
+          type: ['rightAligned']
         },
         {
           headerName:'Total ordered Value($)',
           field: 'orderedvalue',
           tooltipField: 'orderedvalue',
+          type: ['rightAligned']
         },    
         {
           headerName: 'System Receipt Date',
@@ -263,6 +267,7 @@ export class OrdersShipmentComponent implements OnInit {
       headerName: 'Invoice No.',
       field: 'invoiceNumber',
       tooltipField: 'invoiceNumber',
+      type: ['rightAligned']
     },
     {
       headerName: 'Invoice Date',
@@ -276,21 +281,25 @@ export class OrdersShipmentComponent implements OnInit {
       headerName: this.userType == 'Admin' ? 'INQ' : 'invoiceQty',
       field: 'invoiceQty',
       tooltipField: 'invoiceQty',
+      type: ['rightAligned'],
     },
     {
       headerName: this.userType == 'Admin' ? 'INV($)' : 'invoiceValue',
       field: 'invoiceValue',
       tooltipField: 'invoiceValue',
+      type: ['rightAligned']
     },
     {
       headerName: this.userType == 'Admin' ? 'TOQ' : 'Ordered Quantity',
       field: 'orderedQty',
       tooltipField: 'orderedQty',
+      type: ['rightAligned']
     },
     {
       headerName: this.userType == 'Admin' ? 'TOV' : 'Ordered Value($)',
       field: 'orderedvalue',
       tooltipField: 'orderedvalue',
+      type: ['rightAligned']
     },    
     {
       headerName: 'System Receive Date',

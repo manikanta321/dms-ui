@@ -1,7 +1,7 @@
 <!-- <p>orders-receipts works!</p> -->
 
-<div class="container-fluid mt-5">
-    <div class="section reciepts">
+<div class="container-fluid mt-4">
+    <div class="section reciepts mt-2">
 <div class="row ml-2">
      <div class="col-md-2 col-lg-2 col-sm-2 ordersreceiptsbubbles" style="padding-left: 0px;" *ngIf="userType !== 'Dealer Admin'">
         <form [formGroup]="myForm" class="dropdown-form">
@@ -56,6 +56,12 @@
       </div>
       </div>
 
+      <div class="col-md-2 col-lg-2 col-sm-2" *ngIf="userType == 'Dealer Admin'">
+         
+      </div>
+      <div class="col-md-2 col-lg-2 col-sm-2"*ngIf="userType == 'Dealer Admin'">
+         
+      </div>
       <!-- bulk Downloaded -->
 
       <div class="col-md-0 col-lg-0 col-sm-0" style="margin-left: 10px;">
@@ -97,8 +103,8 @@
       (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
       (bodyScroll)="handleScroll($event)"></ag-grid-angular>
     <div class="pagination">
-      <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
-        class="pagination-cls">{{receiptDatalist.length}}</span>
+      <span class="pagination-cls">1</span> - <span class="pagination-cls">{{paginationScrollCount}}</span>  <span class="pagination-cls">  &nbsp;of </span>  <span
+        class="pagination-cls">&nbsp;{{receiptDatalist.length}}</span>
     </div>
   </div>
 

@@ -1,4 +1,4 @@
-<div class="orderlist-section mt-3 scrollbarorderlist ordersss" style="padding:15px;">
+<div class="orderlist-section mt-2 scrollbarorderlist ordersss" style="padding:15px;">
 <div class="fiters-sec">
 <div class="row orderlistdropdown" style="top: -25px;">
     <!-- <div class="col-md-2 col-lg-2 col-sm-2 custom-bubbles "  style="padding-left: 0px;" *ngIf="userType !== 'Dealer Admin'">
@@ -88,20 +88,23 @@
       
       <!--Add Promotion  -->
       <div class="col-md-0 col-lg-0 col-sm-0 " style="position: relative; display:flex;" *ngIf="userType !== 'Dealer Admin'">
+       
+        <div class="sales-dwnld" (click)="onBtnExport()" userRoleDirective="DOWNLOAD_ORDER" [pageName]="currentPageName">
+          <img class="imgdwnl" src="../../../assets/img/Group 35891.png" alt="add-user-btn">
+        </div>&nbsp; &nbsp;&nbsp;
         <div class="sales-add" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName">
           <img class="imgorder" src="assets/img/add-btn.png" alt="add">
         </div>
-        <div class="sales-dwnld" (click)="onBtnExport()" userRoleDirective="DOWNLOAD_ORDER" [pageName]="currentPageName">
-          <img class="imgdwnl" src="../../../assets/img/Group 35891.png" alt="add-user-btn">
-        </div>
+        
       </div>
     <!--  Add promotion Dealer admin  -->
     <div class="col-md-0 col-lg-0 col-sm-0" style="display: flex;" *ngIf="userType == 'Dealer Admin'">
-      <div class="sales-add" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName">
-        <img class="imgorder" src="assets/img/add-btn.png" alt="add">
-      </div>
+      
       <div class="sales-dwnld" (click)="onBtnExport()" userRoleDirective="DOWNLOAD_ORDER" [pageName]="currentPageName">
         <img class="imgdwnl" src="../../../assets/img/Group 35891.png" alt="add-user-btn">
+      </div>&nbsp; &nbsp;&nbsp;
+      <div class="sales-add" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName">
+        <img class="imgorder" src="assets/img/add-btn.png" alt="add">
       </div>
     </div>
 
@@ -163,12 +166,12 @@
 </div>
 </div> -->
   <div  class="AllText" *ngIf="userType !== 'Dealer Admin'">
-    <span class="ml-4" >ODV: <span class="ml-1">Order Value</span></span>
-    <span class="ml-4" >ODQ:<span class="ml-2">Order Quantity</span></span>
-    <span class="ml-4" >RDQ:<span class="ml-2">Received Quantity</span></span>
-    <span class="ml-4" >OSQ:<span class="ml-2">Outstanding Quantity</span> </span>
-    <span class="ml-4" >OSV:<span class="ml-2">Outstanding Value</span> </span>
-    <span class="ml-4"  >ITQ:<span class="ml-2">In-transit Quantity</span> </span>
+    <span class="ml-4" id="OrderValue">ODV: <span class="ml-1" id="OrderValue">Order Value</span></span>
+    <span class="ml-4" id="OrderValue">ODQ:<span class="ml-2" id="OrderValue">Order Quantity</span></span>
+    <span class="ml-4" id="OrderValue">RDQ:<span class="ml-2"id="OrderValue"> Received Quantity</span></span>
+    <span class="ml-4" id="OrderValue">OSQ:<span class="ml-2" id="OrderValue">Outstanding Quantity</span> </span>
+    <span class="ml-4" id="OrderValue">OSV:<span class="ml-2" id="OrderValue">Outstanding Value</span> </span>
+    <span class="ml-4" id="OrderValue" >ITQ:<span class="ml-2" id="OrderValue">In-transit Quantity</span> </span>
   </div>
     <ag-grid-angular
  id="gridContainer" style=" height: 400px;background-color: white;font-family: Calibri ;width: 100%;
@@ -204,7 +207,7 @@
      </span>
  </div> -->
  <div class="pagination">
-  <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of
-  <span class="pagination-cls">{{rowDatalist.length}}</span>
+  <span class="pagination-cls">1</span> - <span class="pagination-cls">{{paginationScrollCount}}</span> <span class="pagination-cls"> &nbsp; of</span>
+  <span class="pagination-cls">&nbsp;{{rowDatalist.length}}</span>
 </div>
 </div>

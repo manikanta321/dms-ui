@@ -180,15 +180,15 @@ svg {
 
 ::ng-deep .mat-focused .mat-form-field-label {
     /*change color of label*/
-     color: #655356!important;
+    color: gray !important;
    }
   ::ng-deep .mat-form-field-label {
     /*change color of label*/
-     color: #655356!important; 
+     color: gray !important;
     
    }
   mat-datepicker-toggle {
-    color: #655356!important;
+    color: gray !important;
   }
   
    .datepicker

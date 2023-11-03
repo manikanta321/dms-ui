@@ -1,12 +1,24 @@
 
 .purchaes
 {
- font-family: 'Calibri-Regular';
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 29px;
- letter-spacing: 0.04em;
-  text-align: left;
+    font-family: 'Calibri';
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: 0.04em;
+    color: #000000;
+
+}
+.Orders_Text
+{
+font-family: 'Calibri';
+font-size: 24px;
+font-weight: 700;
+line-height: 29px;
+letter-spacing: 0.04em;
+color: #000000;
+margin-left: 17px;
+
 
 }
 

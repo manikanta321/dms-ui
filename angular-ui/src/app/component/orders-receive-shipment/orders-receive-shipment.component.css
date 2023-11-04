@@ -19,7 +19,6 @@
   font-family: 'Calibri';
 font-size: 15px;
 font-weight: 400;
-line-height: 22px;
 letter-spacing: 0em;
 color: #686E74;
 }
@@ -28,12 +27,22 @@ color: #686E74;
   font-family: 'Calibri';
   font-size: 15px;
  font-weight: 700;
-line-height: 18px;
-letter-spacing: 0em;
 color: #000000;
-
-
 }
+
+.Order-SHIP  td {
+  padding: 2px !important;
+  
+}
+.Order-Information td
+{
+  padding: 0px;
+}
+.FreePromoitems
+{
+  color: #018B75 !important;
+}
+
 .DEalername
 {
   font-family: 'Calibri';
@@ -448,6 +457,11 @@ border-radius: 10px;
   
   .shipmentOnes{
     width: 100%;
+  }
+  .tabell
+  {
+    width: 100%;
+    
   }
   .shipmentTwo{
     width: 98%;

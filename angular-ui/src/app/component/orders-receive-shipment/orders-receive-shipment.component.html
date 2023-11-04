@@ -74,72 +74,72 @@
                         </div>
                         <div class="content" *ngIf="!orderitem">
                             <div class="section mt-1">
-                              <table class="shipmentOnes">
+
+                              <!-- Order INFO  -->
+                              <table class="table Order-Information p-0">
                                 <thead>
-                                  <tr class="paddinginth">
-                                    <th>Product Code</th>
-                                    <th style="position: relative;left: 127px;">Product Name</th>
-                                    <th style="position: relative;left: 2px;">Price</th>
-                                    <th style="position: relative;right: -2px;">Discount Price</th>
-                                    <th style="position: relative;right: 68px;">QTY</th>
-                                    <th style="position: relative;right: 28px;">Sub-Total</th>
+                                  <tr>
+                                    <th scope="col" class="pl-0 TOtalorderQTY "style="position: relative;left: 49px;">Product Code</th>
+                                    <th scope="col" style="position: relative;right: 18px;">Product Name</th>
+                                    <th scope="col" class=" TOtalorderQTY  text-align: end ;"  style="text-align: end;">Price</th>
+                                    <th scope="col" class="  TOtalorderQTY text-align: end;" style="text-align: end;">Discount Price</th>
+                                    <th scope="col" class=" TOtalorderQTY text-align: end;" style="text-align: end;">QTY</th>
+                                    <th scope="col" class=" TOtalorderQTY text-align: center;" style="text-align: center;">Sub-Total</th>
                                   </tr>
                                 </thead>
-                          
-                                <tbody class="shipmentOnes">
-                                    <ng-container *ngFor="let data of itemsArray; let i = index">
-                                        <ng-container *ngIf="i === 0 || data.promo !== itemsArray[i - 1].promo">
-                                          <tr>
-                                            <td [attr.colspan]="6">
-                                              <h5 class="card-header m-0 p-1" (click)="toggleRowVisibility(data.promo)" style="cursor: pointer">
-                                                <span class="collapse-icon" [ngClass]="{ 'collapsed': !promoVisibility[data.promo] }">
-                                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                                    class="bi bi-chevron-down" viewBox="0 0 16 16">
-                                                    <path fill-rule="evenodd"
-                                                      d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
-                                                  </svg>
-                                                </span>
-                                                <span class="datapromoname" >{{data.promo}} - {{data.promoName}}</span>
-                                              </h5>
-                                            </td>
-                                          </tr>
-                                        </ng-container>
-                                        <tr *ngIf="!promoVisibility[data.promo]">
-                                          <td class="IteminputBoxes1">
-                                            <label>{{data.uomname}}</label>
-                                          </td>
-                                          <td class="IteminputBoxes2">
-                                            <label>{{data.stockitemname}}</label>
-                                          </td>
-                                          <td class="IteminputBoxes3">
-                                            <label>$ {{data.price}}</label>
-                                          </td>
-                                          <td class="IteminputBoxes4">
-                                            <label>$ {{data.finalValue}}</label>
-                                          </td>
-                                          <td class="IteminputBoxes5">
-                                            <label>{{data.quantity}}</label>
-                                          </td>
-                                          <td class="IteminputBoxes6">
-                                            <label>${{data.amount}}</label>
-                                          </td>
-                                        </tr>
-                                      </ng-container>
-                                      
-                                      
+                              
+                                <tbody >
+                                  <ng-container *ngFor="let data of itemsArray; let i = index">
+                                    <ng-container *ngIf="i === 0 || data.promo !== itemsArray[i - 1].promo">
+                                      <tr>
+                                        <td [attr.colspan]="6">
+                                          <h5 class="card-header m-0 p-1" (click)="toggleRowVisibility(data.promo)" style="cursor: pointer">
+                                            <span class="collapse-icon" [ngClass]="{ 'collapsed': !promoVisibility[data.promo] }">
+                                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                                class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                              </svg>
+                                            </span>
+                                            <span  class="text-right" style="padding-left:  29px;" >{{data.promo}} - {{data.promoName}}</span>
+                                          </h5>
+                                        </td>
+                                      </tr>
+                                    </ng-container>
+                                    <tr *ngIf="!promoVisibility[data.promo]">
+                                      <td class="text_left text-secondary pl-5">
+                                        <label style="position: relative;left: 3px;" [ngClass]="{'FreePromoitems': data.finalValue=== 0.00 }">{{data.uomname}}</label>
+                                      </td>
+                                      <td class="text-secondary">
+                                        <label [ngClass]="{'FreePromoitems': data.finalValue=== 0.00 }">{{data.stockitemname}}</label>
+                                      </td>
+                                      <td style="text-align: right;" class="text-secondary" >
+                                        <label   [ngClass]="{'FreePromoitems': data.finalValue=== 0.00 }">$ {{data.price}}</label>
+                                      </td>
+                                      <td style="text-align: right;" class="text-secondary" >
+                                        <label [ngClass]="{'FreePromoitems': data.finalValue=== 0.00 }">$ {{data.finalValue}}</label>
+                                      </td>
+                                      <td style="text-align: right;" class="text-secondary">
+                                        <label [ngClass]="{'FreePromoitems': data.finalValue===0.00 }">{{data.quantity}}</label>
+                                      </td>
+                                      <td style="text-align: right;position: relative;right: 49px; " class="text-secondary">
+                                        <label [ngClass]="{'FreePromoitems': data.finalValue===0.00 }">${{data.amount}}</label>
+                                      </td>
+                                    </tr>
+                                  </ng-container>
                                 </tbody>
+                              
                                 <tr class="card-header ml-2">
                                   <td></td>
                                   <td></td>
-                                 <td></td>
-                                 
-                                 
-                                  <td  ><b class="IteminputBoxes7">Total</b></td>
-                                  <td ><b class="IteminputBoxes8">{{shipmentArray.orderedQty}}</b></td>
-                                  <td ><b class="IteminputBoxes9">${{shipmentArray.subTotal}}</b></td>
+                                  <td></td>
+                                  <td style="text-align: end;"><b >Total</b></td>
+                                  <td style="text-align: end;"><b >{{shipmentArray.orderedQty}}</b></td>
+                                  <td  style="position: relative;text-align: right;right: 48px;"><b >${{shipmentArray.subTotal}}</b></td>
                                 </tr>
                               </table>
                             </div>
+
                             <div class="row mt-3 mb-2">
                               <table class="totall">
                                 <tr class="subitem" >
@@ -246,7 +246,7 @@
                         {{data.shipName}}</div>
                     <div class="card-body p-0">
                         <div class="" *ngIf="!shipmenttwo && !shipmentVisibility[data.shipName]">
-                            <table class="table">
+                            <table class="table Order-SHIP p-0">
                                 <thead>
                                     <tr>
                                         <th scope="col" class="pl-0 TOtalorderQTY "style="position: relative;left: 49px;">Product Code</th>
@@ -261,40 +261,44 @@
 
                                     <ng-container *ngIf="j >= 1 ? (items?.promocode !== data?.arrayIside[j - 1]?.promocode) : (j === 0)">
                                         <tr style="background: rgba(0,0,0,.03);">
-                                            <td colspan="5" (click)="toggleRow(items.promocode)">
+                                            <td colspan="5" (click)="toggleRow(items.promocode)" >
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                                     class="bi bi-chevron-down" viewBox="0 0 16 16">
                                                     <path fill-rule="evenodd"
                                                         d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
                                                 </svg> &nbsp;
-                                                <span class="text-right" style="padding: 10px;">{{items.promocode}}-{{items.promoName}}</span>
+                                                <span class="text-right" style="padding: 10px;" >{{items.promocode}}-{{items.promoName}}</span>
                                             </td>
                                         </tr>
                                     </ng-container>
                                    
                                     <tr *ngIf="expandedPromocode !== items.promocode">
-                                        <td class="text_left TOtalorderQTY pl-5 ">
-                                            <label >{{items.productSKUName}}</label>
+                                        <td class="text_left text-secondary  pl-5 ">
+                                            <label style="position: relative;left: 42px;" [ngClass]="{'FreePromoitems': data.finalValue=== 0.00 }">
+                                              {{items.productSKUName}}
+                                            </label>
                                         </td>
-                                       
-                                        <td class=" text-secondary">
-                                            <label >{{items.stockitemname}}</label>
+                                        <td class=" text-secondary" >
+                                            <label [ngClass]="{'FreePromoitems': data.finalValue=== 0.00 }" >
+                                              {{items.stockitemname}}
+                                            </label>
                                         </td>
-                                        <td class="numeric text-secondary">
-                                            <label >{{items.quantity}}</label>
+                                        <td class="numeric text-secondary" >
+                                            <label [ngClass]="{'FreePromoitems': data.finalValue=== 0.00 }" >
+                                              {{items.quantity}}
+                                            </label>
                                         </td>
-                                        <td class="numeric text-secondary">
-                                            <label >{{items.ReceivedQty}}</label>
+                                        <td class="numeric text-secondary" >
+                                            <label [ngClass]="{'FreePromoitems': data.finalValue===0.00 }">
+                                              {{items.ReceivedQty}}
+                                            </label>
                                         </td>
-                                        <td class="numeric text-secondary">
-                                            <label >{{items.balanceQty}}</label>
+                                        <td class="numeric text-secondary " style="position: relative;right: 18px;">
+                                            <label [ngClass]="{'FreePromoitems': data.finalValue===0.00 }">
+                                              {{items.balanceQty}}
+
+                                            </label>
                                         </td>
-                                        <!-- <td class="numeric text-secondary">
-                                            <label ></label>
-                                        </td>
-                                        <td class="numeric text-secondary">
-                                            <label ></label>
-                                        </td> -->
                                     </tr>
                                 </tbody>
                             </table>

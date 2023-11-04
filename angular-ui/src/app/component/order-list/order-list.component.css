@@ -156,8 +156,8 @@
 
 .imgorder {
     position: relative;
-    top: 8px;
-    left: 10px;
+    top: 10px;
+    left: 13px;
 }
 
 .IMGorder {
@@ -1227,7 +1227,7 @@ mat-sidenav {
 .sales-add {
     background: rgba(104, 110, 116, 0.66);
     border-radius: 13%;
-    width: 37px;
+    width: 43px;
     height: 41px;
     margin-right: 10px;
     cursor: pointer;
@@ -1290,8 +1290,8 @@ mat-sidenav {
     position: relative;
     top: 1px;
     left: 1px;
-    height: 39px;
-    width: 36px
+    height: 43px;
+    width: 41px
 }
 
 .searchButton {

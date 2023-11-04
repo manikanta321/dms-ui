@@ -159,8 +159,8 @@
    border: none;
    background: rgba(104, 110, 116, 0.66);
    border-radius: 13%;
-   width: 37px;
-   height: 37px;
+   width: 40px;
+   height: 40px;
    top: -4px;
    margin-top: 5px;
    margin-left: 18%;
@@ -178,8 +178,8 @@
   border: none;
   background: rgba(104, 110, 116, 0.66);
   position: relative;
-  width: 37px;
-  height: 37px;
+  width: 40px;
+  height: 40px;
   left: 3%;
   border-radius: 13%;
  }
@@ -607,7 +607,8 @@
           width: 43px;
         } */
  ::ng-deep.cal {
-   width: 43px;
+   width: 40px;
+   height: 40px;
    border-radius: 10px;
    border: 1px solid black;
    padding: 8px 0px 0px 8px;

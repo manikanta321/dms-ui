@@ -294,8 +294,8 @@ left: 37%
   border: none;
   background: rgba(104, 110, 116, 0.66);
   border-radius: 13%;
-  width: 37px;
-  height: 37px; 
+  width: 40px;
+  height: 40px; 
   top: 6px;
   margin-top: 5px;
   margin-left: 9%;
@@ -305,8 +305,8 @@ left: 37%
   background: #000000;
   border-radius: 50%;
   position: relative;
-  width: 37px;
-  height: 37px;
+  width: 40px;
+  height: 40px;
   top: 6px;
   left: 21%;
 }

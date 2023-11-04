@@ -71,7 +71,7 @@ scrollbar-width: none;
   vertical-align: middle;
   cursor: pointer;
   background-image: none;
-  border-radius: 10px !important;
+  border-radius: 12px !important;
   background: white !important;
   height: 41px;
 }
@@ -369,8 +369,8 @@ scrollbar-width: none;
   border: none;
   background: rgba(104, 110, 116, 0.66);
   border-radius: 13%;
-  width: 37px;
-  height: 37px;
+  width: 40px;
+  height: 40px;
   top: 6px;
   position: absolute;
   left: 494%;
@@ -381,10 +381,10 @@ scrollbar-width: none;
   background: rgba(104, 110, 116, 0.66);
   border-radius: 13%;
   position: relative;
-  width: 37px;
-  height: 37px;
+  width: 40px;
+  height: 40px;
   top: 6px;
-  left: 1155%;
+  left: 1015%;
 }
 
 ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
@@ -1091,7 +1091,7 @@ mat-sidenav {
 
   border: none;
 
-  background: rgba(104, 110, 116, 0.66);
+  background:#686E74;
 
 
   color: white;
@@ -1100,7 +1100,7 @@ mat-sidenav {
 
   position: absolute;
 
-  right: 4px;
+  right: 15px;
 
   top: 3px;
 
@@ -1146,9 +1146,9 @@ mat-sidenav {
 
   position: absolute;
 
-  right: 0px;
+  right: 10px;
 
-  bottom: -3px;
+  bottom: 4px;
 
   top: -5px;
   border: 1px solid rgba(0, 0, 0, 0.3)!important;

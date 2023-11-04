@@ -1,17 +1,16 @@
 .inventorydealersbubbles{
   height: 41px;
-    /* border-left: 1px solid #111413db; */
     border-left: 1px solid rgba(0, 0, 0, 0.3);
    border-radius: 13px;
 }
 .salesIdealersbubbles{
   height: 41px;
-  border-left: 1px solid #111413db;
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
  border-radius: 13px;
 }
 .sales-invertygeophybubbles{
   height: 41px;
-  border-left: 1px solid #111413db;
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
  border-radius: 13px;
 }
 
@@ -77,8 +76,8 @@
 
 .sales-refreshbtn {
   filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
-  width: 43px;
-  height: 41px;
+  width: 40px;
+  height: 40px;
   background: rgba(104, 110, 116, 0.66);
   border-radius: 13%;
 margin-left: 1%;
@@ -207,8 +206,8 @@ margin-left: 1%;
 .sales-add {
   background: rgba(104, 110, 116, 0.66);
   border-radius: 13%;
-  width: 37px;
-  height: 41px;
+  width: 40px;
+  height: 40px;
   margin-right: 10px;
   cursor: pointer;
   margin-left:12px;
@@ -228,8 +227,8 @@ margin-left: 1%;
 .sales-download {
   background: #000000;
   border-radius: 50%;
-  width: 37px;
-  height: 37px;
+  width: 40px;
+  height: 40px;
   margin-right: 10px;
   cursor: pointer;
 }
@@ -248,8 +247,8 @@ margin-left: 1%;
 .sales-upload {
   background: #000000;
   border-radius: 50%;
-  width: 37px;
-  height: 37px;
+  width: 40px;
+  height: 40px;
   margin-right: 10px;
   cursor: pointer;
 }
@@ -268,8 +267,8 @@ margin-left: 1%;
 .sales-dwnld {
   background: rgba(104, 110, 116, 0.66);
   border-radius: 13%;
-  width: 37px;
-  height: 41px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   margin-left: 297px;
 }
@@ -443,11 +442,11 @@ margin-left: 1%;
   position: absolute;
   height: 41px;
   line-height: 41px;
-  left: 1px;
+  left: 0px;
   border-top: 1px solid rgba(104, 110, 116, 0.75);
   border-bottom: 1px solid rgba(104, 110, 116, 0.75);
   width: 80%;
-  border-radius: 10px 0 0 10px !important;
+  border-radius: 12px 0 0 12px !important;
   padding-left: 10px;
   pointer-events: none;
 }

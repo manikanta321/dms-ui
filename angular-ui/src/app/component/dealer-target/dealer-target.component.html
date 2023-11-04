@@ -1,6 +1,6 @@
 <div class="mainclass">
   <div class="row" style="position: relative;top:1%;bottom: 8px; font-family: 'Gilroy'; color: grey;margin-left: 15px;">
-      <div class="col-md-2 col-lg-2 col-sm-2 targetselectedbubbles" style="padding-left: 1px;">
+      <div class="col-md-2 col-lg-2 col-sm-2 targetselectedbubbles" style="padding-left: 2px;">
           <form [formGroup]="targetForm">
             <ng-multiselect-dropdown class="target target-select" name="targetForm" [placeholder]="''" formControlName="targetForm"
               [disabled]="disabled" [settings]="targetSettings" [data]="targetListData" (onSelect)="onTargetItemSelect($event)" (onDeSelect)="onTargetItemDeSelect($event)"
@@ -18,7 +18,7 @@
      
      
      
-      <div class="col-md-2 col-lg-2 col-sm-2 geographybubblestarget" style="padding-left: 1px;">
+      <div class="col-md-2 col-lg-2 col-sm-2 geographybubblestarget" style="padding-left: 2px;">
         <form [formGroup]="geographyForm">
           <ng-multiselect-dropdown class="geography geograph" name="geographyForm" [placeholder]="''" formControlName="geographyForm"
             [disabled]="disabled" [settings]="dropdownSettings" [data]="geographyList"

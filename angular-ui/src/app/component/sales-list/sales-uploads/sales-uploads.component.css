@@ -70,6 +70,8 @@
    background: white !important;
    border-top: 1px solid rgba(104, 110, 116, 0.75);
    border-bottom: 1px solid rgba(104, 110, 116, 0.75);
+   border-left: 1px solid rgba(104, 110, 116, 0.75);
+   border-right: 1px solid rgba(104, 110, 116, 0.75);
 }
 ::ng-deep.shipment .mat-select-arrow-wrapper{
  /* background-image: url('/assets/img/calenderImage.svg') !important; */
@@ -80,8 +82,8 @@
 }
 .sales-refreshbtn {
     filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
-    width: 43px;
-    height: 41px;
+    width: 40px;
+    height: 40px;
     background: rgba(104, 110, 116, 0.66);
     border-radius: 13%;
     margin-left: 27px;
@@ -191,11 +193,11 @@
       .sales-download{
         background: rgba(104, 110, 116, 0.66);
         border-radius: 13%;
-        width: 37px;
-        height: 41px;
-        margin-right: 10px;
+        width: 40px;
+        height: 40px;
+        margin-right: 27px;
         cursor: pointer;
-        margin-left: 51%;
+        margin-left: 53%;
       }
       .sales-download:hover
       {
@@ -210,8 +212,8 @@
       .sales-upload{
         background: rgba(104, 110, 116, 0.66);
         border-radius: 13%;
-        width: 37px;
-        height: 41px;
+        width: 40px;
+        height: 40px;
         margin-right: 0px;
         cursor: pointer;
       }

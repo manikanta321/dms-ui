@@ -6,7 +6,7 @@
  }
 
  .row {
-   margin-top: 35px;
+   margin-top: 56px;
    margin-left: -8px;
    width: 109%;
  }
@@ -29,11 +29,11 @@
    position: absolute;
    height: 41px;
    line-height: 41px;
-   left: 1px;
+   left: 0px;
    border-top: 1px solid rgba(104, 110, 116, 0.75);
    border-bottom: 1px solid rgba(104, 110, 116, 0.75);
    width: 80%;
-   border-radius: 10px 0 0 10px !important;
+   border-radius: 9px 0 0 9px !important;
    padding-left: 10px;
    pointer-events: none;
  }
@@ -188,8 +188,8 @@
    display: bolck;
    color: #FFFFFF;
    float: left;
-   width: 37px;
-   height: 37px;
+   width: 40px;
+   height: 40px;
    background: rgb(150, 156, 161);
    border-radius: 13%;
    display: flex;
@@ -365,6 +365,8 @@
    border-radius: 10px !important;
    background: white !important;
    height: 41px;
+   left: -1px !important;
+  
  }
 
  ::ng-deep.dropdown-list {

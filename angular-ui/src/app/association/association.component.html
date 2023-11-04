@@ -12,10 +12,10 @@
           <span *ngIf="myForm.get('city').value.length == 0" id="GP"> Geographies </span>
           <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Geography selected </span>
           <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Geography(s) selected </span>
-
+ 
         </div>
       </div>
-
+ 
       <div class="col-md-2 col-lg-2 col-sm-2 productassociationgeobubbles droplistuili">
         <form [formGroup]="myForm1">
           <ng-multiselect-dropdown class="role12-product" name="city" [placeholder]="'Product'" formControlName="city1"
@@ -28,10 +28,10 @@
           <span *ngIf="myForm1.get('city1').value.length == 0">  </span>
           <span *ngIf="myForm1.get('city1').value.length == 1" class="selected-placeholder"> {{myForm1.get('city1').value.length}} Products selected </span>
           <span *ngIf="myForm1.get('city1').value.length > 1" class="selected-placeholder"> {{myForm1.get('city1').value.length}} Product selected </span>
-
+ 
         </div>
       </div>
-
+ 
       <div class="col-md-2 col-lg-2 col-sm-2 dealersassociationgeobubbles " style="font-family: 'Gilroy'; color: grey;">
         <form [formGroup]="myForms">
           <ng-multiselect-dropdown class="Dealerdrp" name="citys" [placeholder]="'Dealer'" formControlName="citys"
@@ -44,7 +44,7 @@
           <span *ngIf="myForms.get('citys').value.length == 0">  </span>
           <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Dealer selected </span>
           <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder"> {{myForms.get('citys').value.length}} Dealer(s) selected </span>
-
+ 
         </div>
       </div>
       <div class="searchBox d-flex" style=" cursor: pointer" *ngIf="userType !== 'Dealer Admin'">
@@ -82,14 +82,14 @@
           </div>
          
     </div>
-
+ 
      <!-- <div class="row " style="margin-bottom:90px;" > -->
      
       <!-- <div class="col-md-4" style="margin-left: 68%;margin-bottom:-17px;top:-21px"> -->
         <div class="row">
           <div class="col-lg-12 listicon">
            
-
+ 
             <!-- dealer admin -->
             <div class="searchBox d-flex" style=" cursor: pointer" *ngIf="userType == 'Dealer Admin'">
               <input class="searchInputDealerad" style="font-family: 'Gilroy'" type="text" name=""
@@ -101,14 +101,14 @@
               </button>
               <button class="Seearrch-Dealerbtn searchAlign" style="font-family: 'Gilroy'">Search</button>
             </div>
-
-
+ 
+ 
           <!-- </div> -->
          
-
+ 
            
          
-
+ 
               <!-- Dealer Admin -->
                <div class="col-md-0"  *ngIf="userType == 'Dealer Admin'">
                 <div class="asso-uploaddealer" (click)="orderTargetUpload()">
@@ -116,13 +116,13 @@
                         alt="add-user-btn">    
                 </div>
                 </div>
-
+ 
                
-
+ 
                
          
-
-
+ 
+ 
           <!-- Dealer Admin -->
           <div class="col-md-0" *ngIf="userType == 'Dealer Admin'" >
             <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer">
@@ -134,14 +134,14 @@
       </div>
       <!-- </div> -->
     <!-- </div>   -->
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
    
-
-
+ 
+ 
     <div>
       <div class="ag-grid-dummy" id="ag-grid-dummy"></div>
       <ag-grid-angular id="gridContainer"
@@ -152,11 +152,11 @@
         (firstDataRendered)="onFirstDataRendered($event)" (firstDataRendered)="onFirstDataRendered($event)"
         (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
         (bodyScroll)="handleScroll($event)"></ag-grid-angular>
-
+ 
     </div>
     <div class="pagination">
       <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of
       <span class="pagination-cls">{{rowData5.length}}</span>
     </div>
-
+ 
   </div>

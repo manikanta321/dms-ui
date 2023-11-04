@@ -110,7 +110,7 @@
 
 
 #allicons {
-  margin-left: 76%;
+  margin-left: 81%;
   margin-bottom: 10px;
 }
 
@@ -322,8 +322,8 @@
   border: none;
   background: rgba(104, 110, 116, 0.66);
   border-radius: 13%;
-  width: 37px;
-  height: 37px;
+  width: 40px;
+  height: 40px;
   top: 6px;
   margin-top: 10px;
   margin-left: 40%;
@@ -336,8 +336,8 @@
   background: #000000;
   border-radius: 50%;
   position: relative;
-  width: 37px;
-  height: 37px;
+  width: 40px;
+  height: 40px;
   top: 11px;
   left: 129%;
   cursor: pointer;

@@ -82,9 +82,9 @@
   margin-left: 10px;
 }
 #DP
-{
-  border-left: 1px solid black;
-}
+// {
+//   border-left: 1px solid black;
+// }
 .user-text {
     font-size: 22px;
     line-height: 29px;
@@ -225,8 +225,8 @@
     background: rgba(104, 110, 116, 0.66);
     border-radius: 13%;
     position: relative;
-    width: 43px;
-    margin-left: 17%;
+    width: 40px;
+    margin-left: 19%;
     height: 40px;
   }
   
@@ -391,7 +391,7 @@
     width: 40px;
     height: 40px;
     margin-right: 10px;
-    margin-left: 210px;
+    margin-left: 175px;
     // top: 87px;
     // position: absolute;
     // left: -54%;
@@ -1164,7 +1164,8 @@
   cursor: pointer;
   position: relative;
   top: 0px;
-  right:45px
+  // left: 30%;
+  // right:45px
 }
 .asso-uploaddealer{
   background: rgba(104, 110, 116, 0.66);
@@ -1188,7 +1189,7 @@
 }
 .bulkEditAss{
   position: relative;
-    right: -47px;
+    // right: -47px;
 }
 
 

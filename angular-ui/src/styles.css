@@ -388,7 +388,7 @@ ngx-daterangepicker-material .md-drppicker {
 }
 
 .md-drppicker td.in-range {
-  background-color: #F2F7FE !important;
+  background-color:white !important;
   opacity: 1;
 }
 
@@ -397,7 +397,7 @@ ngx-daterangepicker-material .md-drppicker {
 .md-drppicker td.off.start-date,
 .md-drppicker td.off.end-date {
   background-color: transparent !important;
-  color: #bbb !important;
+  color:white !important;
 }
 
 .md-drppicker td.active,
@@ -410,7 +410,7 @@ ngx-daterangepicker-material .md-drppicker {
 .md-drppicker th.month>div {
   border: 1px solid;
   padding: 2px;
-  background: #fff;
+  background: white;
   color: #000;
   width: 70px;
   margin-left: 5px;
@@ -438,14 +438,14 @@ ngx-daterangepicker-material .md-drppicker .btn{
     padding: 0px 25px;
     text-transform: capitalize;
     font-weight: 500;
-    background: #000;
+    background: rgba(1, 139, 117, 1);
 }
 ngx-daterangepicker-material  .md-drppicker .btn:hover,ngx-daterangepicker-material  .md-drppicker .btn:focus{
-  background: #000;
+  background: rgba(1, 139, 117, 1);
 }
 ngx-daterangepicker-material .md-drppicker .btn.btn-default{
   border: 2px solid #000;
-   background: #fff;
+   background:white;
 }
 ngx-daterangepicker-material .md-drppicker .clear svg{
   display: none;

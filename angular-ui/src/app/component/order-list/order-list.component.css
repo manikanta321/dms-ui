@@ -280,6 +280,7 @@ input {
     border-radius: 10px !important;
     background: white !important;
     height: 41px;
+  
 }
 
 ::ng-deep.dropdown-list {
@@ -434,8 +435,8 @@ input {
     background: rgba(104, 110, 116, 0.66);
     border-radius: 13%;
     position: relative;
-    width: 43px;
-    height: 41px;
+    width: 40px;
+    height: 40px;
     margin-top: 1px;
     margin-left: 5px;
 
@@ -530,8 +531,8 @@ input {
     border: none;
     background: #000000;
     border-radius: 50%;
-    width: 37px;
-    height: 37px;
+    width: 40px;
+    height: 40px;
     top: 45px;
     position: absolute;
     left: 139%;
@@ -543,8 +544,8 @@ input {
     background: #000000;
     border-radius: 50%;
     position: relative;
-    width: 37px;
-    height: 37px;
+    width: 40px;
+    height: 40px;
     top: 45px;
     left: 210%;
     cursor: pointer;
@@ -555,8 +556,8 @@ input {
     background: #000000;
     border-radius: 50%;
     position: relative;
-    width: 37px;
-    height: 37px;
+    width: 40px;
+    height: 40px;
     top: 120%;
     left: 135%;
     cursor: pointer;
@@ -567,8 +568,8 @@ input {
     background: #000000;
     border-radius: 50%;
     position: relative;
-    width: 37px;
-    height: 37px;
+    width: 40px;
+    height: 40px;
     top: 7px;
     margin-left: 415px;
     cursor: pointer;
@@ -1227,8 +1228,8 @@ mat-sidenav {
 .sales-add {
     background: rgba(104, 110, 116, 0.66);
     border-radius: 13%;
-    width: 43px;
-    height: 41px;
+    width: 40px;
+    height: 40px;
     margin-right: 10px;
     cursor: pointer;
 }
@@ -1248,8 +1249,8 @@ mat-sidenav {
     background: rgba(104, 110, 116, 0.66);
     cursor: pointer;
     border-radius: 16%;
-    width: 37px;
-    height: 37px;
+    width: 40px;
+    height: 40px;
     margin-right: 10px;
     
 }
@@ -1263,8 +1264,8 @@ mat-sidenav {
 .sales-upload {
     background: #000000;
     border-radius: 50%;
-    width: 37px;
-    height: 37px;
+    width: 40px;
+    height: 40px;
     margin-right: 10px;
 }
 
@@ -1276,8 +1277,8 @@ mat-sidenav {
 
 .sales-dwnld {
     border-radius: 13%;
-    width: 37px;
-    height: 41px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
 }
 
@@ -1290,15 +1291,15 @@ mat-sidenav {
     position: relative;
     top: 1px;
     left: 1px;
-    height: 43px;
-    width: 41px
+    height: 40px;
+    width: 40px
 }
 
 .searchButton {
     display: block;
     color: #FFFFFF;
-    width: 37px;
-    height: 37px;
+    width: 40px;
+    height: 40px;
     border-radius: 13%;
     background: rgba(104, 110, 116, 0.66);
     display: flex;
@@ -1495,6 +1496,7 @@ justify-content: end;
     border-radius: 10px 0 0 10px !important;
     padding-left: 10px;
     pointer-events: none;
+    left: 0px;
 }
 
 .Dealers-placeholder.dropdown-placeholder .selected-placeholder {

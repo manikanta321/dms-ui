@@ -62,8 +62,8 @@
   background: rgba(104, 110, 116, 0.66);
   cursor: pointer;
   border-radius: 16%;
-  width: 37px;
-  height: 37px;
+  width: 40px;
+  height: 40px;
   margin-right: 460px;
 }
 .sales-refreshbtn:hover
@@ -193,8 +193,8 @@
 .sales-download{
   background: rgba(104, 110, 116, 0.66);
   border-radius: 13%;
-  width: 37px;
-  height: 37px;
+  width: 40px;
+  height: 40px;
   margin-right: 10px;
   cursor: pointer;
 }
@@ -211,8 +211,8 @@
 .sales-upload{
   background: rgba(104, 110, 116, 0.66);
   border-radius: 13%;
-  width: 37px;
-  height: 37px;
+  width: 40px;
+  height: 40px;
   margin-right: 10px;
   cursor: pointer;
 }
@@ -229,8 +229,8 @@
 .sales-dwnld{
   background: rgba(104, 110, 116, 0.66);
   border-radius: 13%;
-    width: 37px;
-    height: 37px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
 }
 .sales-dwnld:hover
@@ -404,10 +404,10 @@
       padding-left: 10px;
       pointer-events: none;
     }
-    ::ng-deep.multiselect-dropdown .dropdown-btn {
+    :host::ng-deep.multiselect-dropdown .dropdown-btn {
       display: inline-block;
       border: 1px solid gray !important;
-      border-left: 2px solid gray !important;
+      /* border-left: 2px solid gray !important; */
       width: 100%;
       /* height: 62%; */
       padding: 9px 12px !important;
@@ -418,9 +418,10 @@
       vertical-align: middle;
       cursor: pointer;
       background-image: none;
-      border-radius: 10px !important;
+      border-radius: 14px !important;
       background: white !important;
       height: 41px;
+      left: 0px;
     }
     ::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
       color: #17c017 !important;

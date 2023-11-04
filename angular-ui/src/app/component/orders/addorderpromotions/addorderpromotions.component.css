@@ -2204,7 +2204,7 @@ margin-left: 230px;
   display: inline-flex;
     width: 200px;
     position: relative;
-    left: 91px;
+    left: 25px;
     bottom: 20px;
 }#protype_confirm
 {
@@ -2320,13 +2320,13 @@ right: -65px;
   text-align: right;
 }
 .IteminputBoxesD {
-  width: 100px;
+  width: 150px;
   height: 30px;
   background: none;
   border-radius: 10px;
   border: 1px solid black;
   font-size: 12.5px;
-  color: green;
+  /* color: green; */
   border: 0px;
   text-align: center;
 }
@@ -2657,7 +2657,7 @@ th {
 td {
   text-align: left;
   padding: 3px 0 0 8.5px;
-  text-align: center;
+  /* text-align: center; */
 }
 
 ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
@@ -2890,16 +2890,14 @@ font-size: 13px;
 font-weight: 400;
 line-height: 16px; 
 }
-.edit
-{
+.edit {
   cursor: pointer;
   color: rgba(1, 139, 117, 1);
- font-family: 'Calibri';
-font-size: 15px;
-font-weight: 400;
-line-height: 16px;
-margin-top: -6%;
-margin-left: 25%;
+  font-family: 'Calibri';
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 16px;
+  margin-top: 1%;
 }
 
 
@@ -2978,7 +2976,7 @@ margin-left: 25%;
     width: 26px;
     /* border: 1px solid #ccc; */
     left:-166px;
-    position:relaitve;
+    position:relative;
    }
 
    .cancel-icon .mat-icon{

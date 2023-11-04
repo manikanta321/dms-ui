@@ -1041,94 +1041,51 @@
 
         <div class="FONT">
             <mat-icon mat-button class="close_icon " (click)="Uclose()">close</mat-icon>
-            <div class="mai_n">
+            <div class="mai_n p-2">
 
                 <div class=" promotionpopup-scroll3">
-                    <div class="addUser">
+                    <div class="head-t text-center">
+                        <h3 class="labelU font">Non-Promotions Items </h3>
                     </div>
-                    <div class="head-t">
-                        <h3 class="labelU font">{{actineLabel}} : Non-Promotions </h3>
-                    </div>
-                    <div class="nonproitemsconfiorm">
-                        <div class="headingnonpro">
-                            <span id="itemsnonheading">Non-Promotions Items</span>
-                            <!-- <div class="headingcontent">
-
-                                <div class="row orderqty ">
-                                    <div class="col bg-light">
-                                        <input type="text" class="form-control-plaintext" placeholder="Total Order Qty">
-                                    </div>
-                                    <div class="totalQTY">
-                                        {{totalQuantity+quantityadd }}
-                                    </div>
-                                    <div class="totalAmount">
-                                        {{totalAmount+price }}
-                                    </div>
-                                    <div class="col bg-light ">
-                                        <input type="text" class="form-control-plaintext"
-                                            placeholder="Total Order Amount">
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <input type="text" id="ThisorderQTY" class="form-control-plaintext"
-                                                placeholder="This Order Qty">
+                    <div class="card">
+                        <div class="card-header" style="color: white;background: linear-gradient(0deg, #018B75, #018B75);">
+                            <b>Non-Promotions items</b>
+                        </div>
+                        <div class="card-body">
+                            <div class="headingnonpro">
+                                <!-- mine 1 -->
+                                <div class="headingcontent">
+                                    <div class="row" style="margin-left: 0%;">
+                                        <div class="col" style="height:71px"
+                                            style="background-color: rgba(222, 226, 230, 0.2);height: 52px;">
+                                            <label id="TotalORDER_qty" for="inputField">Total Order Qty</label>
+                                            <span id="Total_order_qty">{{promotionQTY + nonPromotionQTY}} </span>
                                         </div>
-                                        <div id="thisORDERQTY">
-                                            <input #inputField type="text" [(ngModel)]="quantityadd"
-                                                class="form-control-plaintext" />
-                                            <button *nglf="visibilitybutton" (click)="clearQuantity()">Reset</button>
+                    
+                                        <div class="col" style="background-color: rgba(222, 226, 230, 0.2);">
+                                            <label id="TotalORDER_qty" for="inputField">Total Order Amount</label>
+                                            <span id="Total_order_qty">{{ promotionAmount + nonPromotionAmount}}</span>
+                                        </div>
+                    
+                                        <div class="w-100"></div>
+                                        <div class="col">
+                                            <label id="This_qty" for="inputField">This Order Qty</label>
+                                            <span id="This_order_amount">{{nonPromotionQTY}} </span>
                                         </div>
                                         <div class="col">
-                                            <input type="text" id="thisorderqty" class="form-control-plaintext"
-                                                placeholder="This Order Amount">
-                                            <div id="price">
-                                                {{price?price:'0'}}
-                                            </div>
-                                            <td>
-                                                <button (click)="resetQuantity()" *ngIf="hidereset">Reset
-                                                    Quantity</button>
-                                            </td>
+                                            <label id="This_qty" for="inputField">This Order Amount</label>
+                    
+                                            <span id="This_order_amount">{{nonPromotionAmount}} </span>
                                         </div>
                                     </div>
-
                                 </div>
-                            </div> -->
-
-                            <!-- mine 1 -->
-                            <div class="headingcontent">
-
-                                <div class="row" style="margin-left: 0%;">
-                                    <div class="col" style="height:71px" style="background-color: rgba(222, 226, 230, 0.2);height: 52px;">
-                                        <label id="TotalORDER_qty" for="inputField">Total Order Qty</label>
-                                        <span id="Total_order_qty">{{promotionQTY + nonPromotionQTY}} </span>
-                                    </div>
-
-                                    <div class="col" style="background-color: rgba(222, 226, 230, 0.2);">
-                                        <label id="TotalORDER_qty" for="inputField">Total Order Amount</label>
-                                        <span
-                                            id="Total_order_qty">{{  promotionAmount + nonPromotionAmount}}</span>
-                                    </div>
-
-                                    <div class="w-100"></div>
-                                    <div class="col">
-                                        <label id="This_qty" for="inputField">This Order Qty</label>
-                                        <span id="This_order_amount">{{nonPromotionQTY}} </span>
-                                        <!-- <input #inputField type="text" [(ngModel)]="quantityadd" id="THISORDERQTY"
-                                            class="form-control-plaintext" /> -->
-                                    </div>
-                                    <div class="col">
-                                        <label id="This_qty" for="inputField">This Order Amount</label>
-
-                                        <span id="This_order_amount">{{nonPromotionAmount}} </span>
-                                    </div>
-                                </div>
+                    
                             </div>
-
                         </div>
                     </div>
-                    <div>
+                    <!-- <div>
                         <button type="button" (click)="clearQuantity()" *ngIf="hidereset">Clear</button>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="nonpromo ">
                     <div class="row  mt-3  spacedropdown ">
@@ -1440,7 +1397,7 @@
                                             </div> -->
                         </div>
                         <div class=" addbuttons mt-2">
-                            <button type="button " class="btn btn-primary w-25  saveitems "
+                            <button type="button " class="btn btn-primary saveitems " style="width: 150px;"
                                 (click)="addnonPromoItems()">Confirm</button>
                         </div>
                     </div>

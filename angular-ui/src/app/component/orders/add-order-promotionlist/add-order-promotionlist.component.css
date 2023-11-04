@@ -685,19 +685,20 @@ color: rgba(0, 0, 0, 1);
 
 }
 .tabel-di_v2 {
-  margin-top: 15px;
+  margin: 15px 25px 15px 25px;
   border: 2px solid rgba(1, 139, 117, 1);
   border-radius: 15px;
   height: 414px;
-  width: 89%;
- margin-left: 20px;
+  /* width: 89%; */
+ margin-left: 25px;
+ margin-right: 25px;
 }
 .tabelDIVFORTHPromotion{
   margin-top: 15px;
   border: 2px solid rgba(1, 139, 117, 1);
   border-radius: 15px;
   height: 414px;
-  width: 89%;
+  /* width: 89%; */
  margin-left: 39px;
  /* 20 */
 }

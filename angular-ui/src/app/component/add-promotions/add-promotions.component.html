@@ -171,7 +171,7 @@
                                     <div class="toggle" *ngIf="buysets">
                                         <div class="col-md-12 d-flex">
                                             <p [class.disabled]="!showConsolidatedMOQ"  [style.font-weight]="showConsolidatedMOQ ? 'bold' : 'normal'">Consolidated MOQ</p>
-                                            <mat-slide-toggle class="togglecolor ml-2 mr-2" (change)="onToggleChange($event)"></mat-slide-toggle>
+                                            <mat-slide-toggle class="togglecolor ml-2 mr-2" [checked]="showConsolidatedMOQ" (change)="onToggleChange($event)"></mat-slide-toggle>
                                             <p [class.disabled]="showConsolidatedMOQ" [style.font-weight]="showConsolidatedMOQ ? 'normal' : 'bold'">Individual MOQ</p>
                                         </div>
                                     </div>

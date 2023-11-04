@@ -434,6 +434,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
   /* on Select of Dropdown screen change */
   editedDetails: any = [];
+  istoggleOn:any
   ngOnInit() {
     let headername = localStorage.getItem('addOrEdit');
     if (headername == 'editpromo') {
@@ -500,10 +501,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         //   this.buysets = false;
         // }
 
-        if (
-          res.response.promotionTypesName == 'Buy X and Get Y' ||
-          res.response.promotionTypesId == 1
-        ) {
+        if (res.response.promotionTypesName == 'Buy X and Get Y' ||res.response.promotionTypesId == 1) {
           this.productPromotionsId = res.response.productPromotionsId;
           this.buyGroupPlus = [];
           this.addgetgroup = [];
@@ -612,10 +610,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             console.log('this.mainobjGetGroups', this.addgetgroup);
           });
         }
-        if (
-          res.response.promotionTypesId == 2 ||
-          res.response.promotionTypesName == 'Buy AB Get CD'
-        ) {
+        if (res.response.promotionTypesId == 2 ||res.response.promotionTypesName == 'Buy AB Get CD') {
+          this.showConsolidatedMOQ = res.response.isActive;
           this.addbuyset = [];
           this.noPromotionSelected = false;
           this.buyab = false;
@@ -734,10 +730,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             this.addpromotionGeoTable();
           });
         }
-        if (
-          res.response.promotionTypesName == 'Volume Discount' ||
-          res.response.promotionTypesId == 3
-        ) {
+        if (res.response.promotionTypesName == 'Volume Discount' ||res.response.promotionTypesId == 3) {
           this.productPromotionsId = res.response?.productPromotionsId;
           this.productselectedRows = [];
           this.noPromotionSelected = false;
@@ -788,10 +781,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           this.addpromotionGeoTable();
           console.log('VolumeSttockItemId', this.VolumeSttockItemId);
         }
-        if (
-          res.response.promotionTypesName == 'Special Price' ||
-          res.response.promotionTypesId == 4
-        ) {
+        if (res.response.promotionTypesName == 'Special Price' ||res.response.promotionTypesId == 4) {
           this.productPromotionsId = res.response?.productPromotionsId;
           this.productselectedRows = [];
 
@@ -874,8 +864,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       this.hasValidationErrors = !this.promotionForm.valid;
     });
   }
+  showConsolidatedMOQ:boolean= false ;
 
-  showConsolidatedMOQ: boolean = false;
   onToggleChange(event: any) {
     this.showConsolidatedMOQ = event.checked;
     //   if (this.addbuyset && this.addbuyset.BuyGroups) {
@@ -1028,6 +1018,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
   promotionABGetChange() {
     this.isPromotionTypeDataValid2 = true;
+    console.log(this.addgetset);
     this.addgetset.forEach((item) => {
       item.GetGroups.forEach((element) => {
         element.isDataValid = true;
@@ -1624,6 +1615,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     });
   }
 
+  jointarray:any=[]
   addItems1forGetGroup(index: any = null, j: any = null) {
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
     const dialogRef = this.dialog.open(AddItemsPromotionComponent, {
@@ -1642,24 +1634,20 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         console.log(this.productselectedRows);
 
         if (index != null) {
-          this.addgetset[index].GetGroups[j].productselectedRows =
-            this.productselectedRows;
-          let productselectedRows = this.productselectedRows.map(
-            (x) => x.stockItemId
-          );
+          let productselectedRows = this.productselectedRows.map((x) => x.stockItemId);
+          this.addgetset[index].GetGroups[j].productselectedRows =this.productselectedRows;
 
-          let jointarray = productselectedRows;
+          this.jointarray = productselectedRows;
 
-          this.addgetset[index].GetGroups[j].StockItemId = jointarray;
+          this.addgetset[index].GetGroups[j].StockItemId = this.jointarray;
           // this.addgetset[index].GetGroups[j].Set = this.addgetset[index].GetGroups.length;
-          console.log('this.addgetset', this.addgetset);
+          console.log('this.addgetset', this.jointarray);
 
           this.addbuyset.forEach((element) => {
             element.BuyGroups.forEach((element1) => {
               for (let i = 0; i < element1.StockItemId.length; i++) {
                 if (
-                  this.productIdtoFilters.indexOf(element1.StockItemId[i]) ===
-                  -1
+                  this.productIdtoFilters.indexOf(element1.StockItemId[i]) ===-1
                 ) {
                   this.productIdtoFilters.push(element1.StockItemId[i]);
                 } else {
@@ -1675,8 +1663,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             element.GetGroups.forEach((element1) => {
               for (let i = 0; i < element1.StockItemId.length; i++) {
                 if (
-                  this.productIdtoFilters.indexOf(element1.StockItemId[i]) ===
-                  -1
+                  this.productIdtoFilters.indexOf(element1.StockItemId[i]) ===-1
                 ) {
                   this.productIdtoFilters.push(element1.StockItemId[i]);
                 } else {
@@ -2983,7 +2970,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     const data = {
       Geography: this.geographyyId,
       Search: this.searchText,
-      StockItemIds: this.productIdtoFilters,
+      StockItemIds: this.jointarray,
     };
     this.promotionTypes.GetPromotionDealerList(data).subscribe((res) => {
       let rowData: any = res.response;
@@ -3012,12 +2999,72 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     console.log('EntityInstanceId1', this.EntityInstanceId);
   }
 
-  selectedValue(event: any) {
+  resetSelectedItems(collection: any[], index: any = null) {
+    if (index !== null) {
+      collection[index].productselectedRows = [];
+    } else {
+      for (const item of collection) {
+        item.productselectedRows = [];
+      }
+    }
+  }
+  resetSelectedItemsForBuySet(collection: any[], index: any = null, j: any = null) {
+    if (index !== null && j !== null) {
+      collection[index].BuyGroups[j].productselectedRows = [];
+    } else if (index !== null) {
+      for (const item of collection[index].BuyGroups) {
+        item.productselectedRows = [];
+      }
+    } else {
+      for (const buySet of collection) {
+        for (const item of buySet.BuyGroups) {
+          item.productselectedRows = [];
+        }
+      }
+    }
+  }
+  resetSelectedItemsForGetSet(collection: any[], index: any = null, j: any = null) {
+    if (index !== null && j !== null) {
+      collection[index].GetGroups[j].productselectedRows = [];
+    } else if (index !== null) {
+      for (const item of collection[index].GetGroups) {
+        item.productselectedRows = [];
+      }
+    } else {
+      for (const getSet of collection) {
+        for (const item of getSet.GetGroups) {
+          item.productselectedRows = [];
+        }
+      }
+    }
+  }
+  resetSelectedItemsForVolume() {
+    this.productselectedRows = [];
+    this.productIdtoFilters = [];
+  }
+  resetSelectedItemsForPrice() {
+    this.productselectedRows = [];
+    this.priceStockItemId = [];
+    this.productIdtoFilters = [];
+  }
+
+  selectedValue(event: any,index:any = null,j: any = null) {
     console.log(event);
     this.selectedPromo = event.promotionTypesId;
+    //first promotion
+    this.resetSelectedItems(this.addgetgroup, index);
+    this.resetSelectedItems(this.buyGroupPlus, index);
+    //2nd promotion
+    this.resetSelectedItemsForBuySet(this.addbuyset, index, j);
+    this.resetSelectedItemsForGetSet(this.addgetset, index, j);
+    //3rd promotons
+    this.resetSelectedItemsForVolume();
+    // 4th promotion reset
+    this.resetSelectedItemsForPrice()
     if (event == undefined) return;
     this.promotionTypesId = event;
     console.log(this.buyGroupPlus);
+    
     if (event.promotionTypesId == 1) {
       // this.goForward(this.myStepper);
       this.noPromotionSelected = false;
@@ -3025,10 +3072,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       this.volumedc = false;
       this.buysets = false;
       this.pricedc = false;
-      this.promotionForm.setControl(
-        'addPromotions',
-        this._formBuilder.array([this.promotionRows()])
-      );
+      this.promotionForm.setControl('addPromotions',this._formBuilder.array([this.promotionRows()]));
     }
     if (event.promotionTypesId == 2) {
       this.noPromotionSelected = false;

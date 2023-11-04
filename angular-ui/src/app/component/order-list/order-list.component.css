@@ -182,6 +182,7 @@
     position: relative;
     top: -8px;
     left: -4px;
+    transform: rotate(90deg);
 }
 
 .refreshbtn1 {
@@ -623,9 +624,9 @@ input {
 
 
 
-::ng-deep.ag-sticky-top {
+/* ::ng-deep.ag-sticky-top {
     border-bottom: 0.5px solid #000000;
-}
+} */
 
 .main {
     border-radius: 30px;
@@ -1206,6 +1207,7 @@ mat-sidenav {
 
 .pagination {
     float: right !important;
+    margin-top: 11px;
 }
 
 .pagination-cls {
@@ -1424,7 +1426,7 @@ mat-sidenav {
     font-family: 'Gilroy';
     font-style: normal;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 17px;
     letter-spacing: 0.08em;
     color: #263643;
@@ -1444,7 +1446,7 @@ mat-sidenav {
     font-family: 'Gilroy';
     font-style: normal;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 17px;
     letter-spacing: 0.08em;
     color: #263643;

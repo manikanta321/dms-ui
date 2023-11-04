@@ -215,7 +215,7 @@
 :host ::ng-deep.ag-theme-material .ag-root-wrapper,
 .ag-theme-material .ag-sticky-top {
 
-  border: 0.5px solid #000000 !important;
+  border: 1px solid rgba(152, 156, 160, 0.30) !important;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
   border-radius: 10px !important;
 

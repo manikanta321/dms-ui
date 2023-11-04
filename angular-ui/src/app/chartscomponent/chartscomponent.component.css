@@ -15,7 +15,7 @@
   }
   .sales-detailes
   {
-    border: 0.5px solid #000000;
+    border: 1px solid rgba(152, 156, 160, 0.30) !important;
     height: 500px;
     width: 1400px;
     font-family: 'Gilroy'; 

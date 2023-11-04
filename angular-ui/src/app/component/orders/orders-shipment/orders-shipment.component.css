@@ -74,6 +74,7 @@
 .refresh-img {
   margin-top: 9px;
   margin-left: 9px;
+  transform: rotate(90deg);
 }
 
 .ag-theme-material .ag-filter-toolpanel-header,
@@ -153,6 +154,7 @@
 
 .pagination {
   float: right !important;
+  margin-top: 11px;
 }
 
 .pagination-cls {
@@ -616,7 +618,7 @@ color: #000000;
   font-family: 'Gilroy';
   font-style: normal;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 17px;
   letter-spacing: 0.08em;
   color: #263643;

@@ -1,8 +1,76 @@
-/* .mat-form-field {
-  width: 680px;
-  font-family: 'Gilroy';
-  background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-} */
+.datapromoname
+{
+  position: relative;
+  left: 20px;
+  font-family: 'Calibri';
+  font-size: 15px;
+ line-height: 18px;
+ letter-spacing: 0em;
+ color: black!important;
+ font-weight: 500;
+}
+.collapse-icon
+{
+  position: relative;
+  left: 8px;
+}
+.text-secondary
+{
+  font-family: 'Calibri';
+font-size: 15px;
+font-weight: 400;
+line-height: 22px;
+letter-spacing: 0em;
+color: #686E74;
+}
+.TOtalorderQTY
+{
+  font-family: 'Calibri';
+  font-size: 15px;
+ font-weight: 700;
+line-height: 18px;
+letter-spacing: 0em;
+color: #000000;
+
+
+}
+.DEalername
+{
+  font-family: 'Calibri';
+font-size: 16px;
+font-weight: 700;
+line-height: 24px;
+letter-spacing: 0em;
+color: #000000;
+}
+.tooltip-content
+{
+  font-family: 'Calibri';
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  color: #000000;
+}
+.card_orderinfo
+{
+background-color: white !important;
+border: 1px solid #989CA04D;
+border-radius: 10px;
+}
+.OrderInformation
+{
+  font-family: 'Calibri';
+  font-size: 17px;
+  line-height: 28px;
+  letter-spacing: 0.04em;
+  color: #000000 !important;
+  font-weight: bold;
+  position: relative;
+  left: 1px;
+  top: -12px;
+
+}
 .proheight
 {
   width: 90vw;
@@ -318,13 +386,14 @@
     color: red;
   }
   
-  .close-icon {
-    left: 100%;
+  .close_icon {
+    left: 98%;
     position: relative;
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
     margin-top: -1px;
+    font-weight: bold;
   
   }
   
@@ -918,8 +987,6 @@
   }
   
   .collapsible {
-    cursor: pointer;
-    /* padding: 5px; */
     width: 100%;
     border: none;
     text-align: left;
@@ -928,8 +995,8 @@
     border-radius: 10px 10px 0px 0px;
     color: white;
     border: 0.5px solid rgba(1, 139, 117, 1);
-    border-radius: 10px;
     background: rgba(1, 139, 117, 1);
+    height: 52px;
   }
   
   /* .active, .collapsible:hover {
@@ -941,11 +1008,10 @@
     overflow: hidden;
     box-sizing: border-box;
     border-width: 0px 1px 1px 1px;
-    border-style: solid;
-    border-color: #686E74;
+    /* border-style: solid;
+    border-color: #686E74; */
     border-radius: 0px 0px 10px 10px;
-    overflow: auto;
-    /* margin: 0px 10px; */
+    border: 1px solid #989CA04D;
   }
   .content-order {
     padding: 0 18px 10px;
@@ -967,10 +1033,14 @@
   
   .label-cls {
     position: relative;
-    top: 6px;
-    font-size: 18px;
+    top: 14px;
+    font-size: 17px;
     margin-left: 1%;
     font-family: 'Gilroy-Light';
+    left: 33px;
+    color: #FFFFFF !important;
+
+
   }
   
   
@@ -1283,16 +1353,124 @@ padding-left: 20px;
     top: 0px !important;
   }
   
-  .IteminputBoxes {
-    /* width: 100px;
-    height: 30px; */
-    background: none;
-    /* font-size: 13px; */
-    text-align: center;
-    /* padding-left: 20px; */
+  .IteminputBoxes1 {
+    left: 32px;
     position: relative;
     top: 2px;
+    font-family: 'Calibri';
+    font-size: 15px;
+   line-height: 18px;
+
   }
+  .IteminputBoxes2 {
+    left: 165px;
+    position: relative;
+    top: 2px;
+    font-family: 'Calibri';
+    font-size: 15px;
+   line-height: 18px;
+  }
+  .IteminputBoxes3
+  {
+    position: relative;
+    left: 63px;
+    font-family: 'Calibri';
+    font-size: 15px;
+   line-height: 18px;
+  }
+  .IteminputBoxes4
+  {
+    position: relative;
+    left: 120px;
+    font-family: 'Calibri';
+    font-size: 15px;
+   line-height: 18px;
+  }
+  .IteminputBoxes5
+  {
+    position: relative;
+    right: 3px;
+    font-family: 'Calibri';
+    font-size: 15px;
+   line-height: 18px;
+  }
+  .IteminputBoxes6
+  {
+    position: relative;
+    left: 49px;
+    font-family: 'Calibri';
+    font-size: 15px;
+   line-height: 18px;
+  }
+  .IteminputBoxes7
+  {
+    position: relative;
+    left: 121px;
+    font-family: 'Calibri';
+    font-size: 15px;
+   line-height: 18px;
+  }
+ 
+  .IteminputBoxes8
+  {
+    position: relative;
+    right: 4px;
+    font-family: 'Calibri';
+    font-size: 15px;
+   line-height: 18px;
+  }
+  .IteminputBoxes9
+  {
+    position: relative;
+    left: 47px;
+    font-family: 'Calibri';
+    font-size: 15px;
+   line-height: 18px;
+  }
+
+  .Shipmentorders
+  {
+    background: rgba(1, 139, 117, 1);
+    color: white;
+    height: 52px;
+    padding-top: 15px;
+    font-size: 17px;
+    font-family: 'Calibri';
+   font-weight: 700;
+   line-height: 22px;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+  }
+  .numeric {
+    text-align: right;
+  }
+  .Charactersleft
+  {
+    text-align: right;
+  }
+ .text-right{
+  width: 100px;
+ }
+ .text_right
+ {
+  text-align: right;
+ }
+ .OrdersItems
+ {
+  font-family: 'Calibri';
+font-size: 17px;
+font-weight: 700;
+line-height: 22px;
+letter-spacing: 0em;
+color: white;
+background: rgba(1, 139, 117, 1);
+height: 52px;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+
+ }
+  
+  
   
   .itemLeft {
     font-size: 12.5px;
@@ -1328,40 +1506,69 @@ padding-left: 20px;
   }
   
   .totall {
-    width: 350px;
-    height: 75px;
+    width: 44%;
+    height: 51%;
     background: #FFFFFF;
-    border: 0.5px solid #000000;
+    border-top:1px  solid  #989CA04D;
+    border-bottom: 1px solid #989CA04D;
+    border-left: 1px solid #989CA04D;
     border-radius: 21px;
-    padding: 20px;
     font-size: 13px;
-    margin-left: auto;
+    position: relative;
+    left: 61.2%;
+   
   }
   
   .subitem {
     font-size: 13px;
     width: 179px;
   }
+  .tr .subitem
+  {
+    background-color: #0091EA !important;
+  }
   .totall td {
-    padding: 10px;
+    padding: 6px;
+  }
+  .SUBTOTALORDERS
+  {
+    position: relative;
+    right: 100px;
   }
 
-  .subitem {
-    border-bottom: 1px solid #ccc;
-  }
+
 
   .SUBITEMNAME {
-    font-weight: bold;
+    font-family: 'Calibri';
+  font-size: 16px;
+  font-weight: 400;
+ line-height: 16px;
+ letter-spacing: 0em;
+ position: absolute;
+ left: 53px;
+
+
   }
 
   .numbers {
-    text-align: right;
+   /* right: 70px; */
+   /* position: relative; */
+   font-family: 'Calibri';
+ font-size: 15px;
+ font-weight: 400;
+ line-height: 15px;
+ letter-spacing: 0em;
+ color:  #686E74;
+
   }
   
   .innerTotal {
     margin-left: 15px;
   }
-  
+
+  .subitem:nth-child(odd){
+    background: #DEE2E633;
+  }
   .alltotals {
     margin-bottom: 1px;
     font-family: 'Gilroy-Medium';
@@ -1584,7 +1791,8 @@ padding-left: 20px;
     padding: 2px 3px 5px 30px;
     font-family: 'Gilroy-Bold';
     font-size: 14px;
-    text-align: center;
+    position: relative;
+    left: 3%;
   }
   .fontweight
   {

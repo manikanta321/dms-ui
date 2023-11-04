@@ -1,17 +1,18 @@
 <!-- <p>orders-receive-shipment works!</p> -->
 <div class="main ">
+    <mat-icon mat-button class="close_icon" [mat-dialog-close]="true">close</mat-icon>
+    <span class="OrderInformation" style="color: #000000;">Order Information</span>
     <div class="container promotionpopup-scroll proheight" style="max-width: 95vw;">
+
         <div class="addUser">
-            <!-- <img class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
-            <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
         </div>
         <!-- order info -->
-        <div class="card mb-3" style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px; border-radius: 12px;">
+        <div class="card card_orderinfo mb-3" >
             <div class="card-body" >
                
               <div class="row">
                 <div class="col-md-2" *ngIf="userType==='Admin'"> 
-                    <b>Dealer Name</b> <br>
+                    <b class="DEalername">Dealer Name</b> <br>
                     <p class="text-secondary">{{shipmentArray.customername}}</p>
                 </div>
                 <div class="col-md-2">
@@ -31,21 +32,21 @@
                     <p class="text-secondary">{{shipmentArray.status}}</p>
                 </div>
                 <div class="col-md-2">
-                    <b>Created On</b> <br>
+                    <b class="DEalername">Created On</b> <br>
                     <p class="text-secondary">{{shipmentArray.createdOn | date }}</p>
                 </div>
                 <div class="col-md-4">
-                    <b>Created By</b> <br>
+                    <b class="DEalername">Created By</b> <br>
                     <p class="text-secondary">{{shipmentArray.createdBy}}</p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-2">
-                    <b>Dealer Reference No</b> <br>
+                    <b class="DEalername">Dealer Reference No</b> <br>
                     <p class="text-secondary">{{shipmentArray.dealerrefno}}</p>
                 </div>
                 <div class="col-md-2">
-                    <b>Remarks</b> <br>
+                    <b class="DEalername">Remarks</b> <br>
                     <p class="text-secondary">{{shipmentArray.remarks}}</p>
                 </div>
                 
@@ -55,72 +56,10 @@
 
         <mat-tab-group class="orders-tab-group">
             <!-- orders -->
-            <mat-tab label="Orders-info" >
+            <mat-tab label="Order Info" >
               <ng-template matTabContent class="tab-body">
                 <div [ngClass]="ViewOrReceive?'head-t':'head-t1'" >
-                    <!-- <h3 class="addU " *ngIf="ViewOrReceive">{{headerName}}</h3>
-                    <h3 class="addU12 " *ngIf="!ViewOrReceive">{{headerName}}{{orderNUmber}}</h3>
-        
-                    <div class="row top-bottom">
-                        <div class="row text-center"></div>
-                    </div>
-                    <div (click)="expandDealerInfoDiv()" class="collapsible">
-                        <div class="row">
-                            <div class="col-md-11">
-                                <p class="label-cls">Dealer Information</p>
-                            </div>
-                            <div class="col-md-1">
-                                <img [src]="image1" class="expand-arrow" alt="add-user-btn">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="content" *ngIf="!dealerInfo">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="dealerr">
-                                    <label class="DealerInfo-label">Dealer <span class="astr"></span></label>
-                                    <br>
-                                    <label class="DescInfo-label">{{shipmentArray.customername}}</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="geographyy">
-                                    <label class="DealerInfo-label">Geography <span class="astr"></span></label>
-                                    <br>
-                                    <label class="DescInfo-label">{{shipmentArray.geographyName}}</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="billingAdrs">
-                                    <label class="DealerInfo-label">Billing Address <span class="astr"></span></label>
-                                    <label class="DescInfo-labels">{{shipmentArray.billngAddress}}</label>
-                                </div>
-                            </div>
-                        </div>
-        
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="dealerReff">
-                                    <label class="DealerInfo-label">Dealer Reference No <span class="astr"></span></label>
-                                    <br>
-                                    <label class="DescInfo-label">{{shipmentArray.dealerrefno}}</label>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="companyReff">
-                                    <label class="DealerInfo-label">Company Reference No <span class="astr"></span></label>
-                                    <br>
-                                    <label class="DescInfo-label">{{shipmentArray.comrefno}}</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="shippingAdrs">
-                                    <label class="DealerInfo-label">Shipping Address <span class="astr"></span></label>
-                                    <label class="DescInfo-labelss">{{shipmentArray.shippingAddress}}</label>
-                                </div>
-                            </div>
-                        </div> -->
-                    <!-- </div> -->
+                 
                     <div class="top-bottom  {
                         height: 500px !important;
                       }">
@@ -130,9 +69,7 @@
                                 <div class="col-lg-11">
                                     <p class="label-cls">Order Items</p>
                                 </div>
-                                <!-- <div class="col-lg-1">
-                                    <img [src]="image2" class="expand-arrow" alt="add-user-btn">
-                                </div> -->
+                              
                             </div>
                         </div>
                         <div class="content" *ngIf="!orderitem">
@@ -141,11 +78,11 @@
                                 <thead>
                                   <tr class="paddinginth">
                                     <th>Product Code</th>
-                                    <th>Product Name</th>
-                                    <th>Price</th>
-                                    <th>Discount Price</th>
-                                    <th>Qty</th>
-                                    <th>Sub-Total</th>
+                                    <th style="position: relative;left: 127px;">Product Name</th>
+                                    <th style="position: relative;left: 2px;">Price</th>
+                                    <th style="position: relative;right: -2px;">Discount Price</th>
+                                    <th style="position: relative;right: 68px;">QTY</th>
+                                    <th style="position: relative;right: 28px;">Sub-Total</th>
                                   </tr>
                                 </thead>
                           
@@ -162,28 +99,28 @@
                                                       d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
                                                   </svg>
                                                 </span>
-                                                {{data.promo}} - {{data.promoName}}
+                                                <span class="datapromoname" >{{data.promo}} - {{data.promoName}}</span>
                                               </h5>
                                             </td>
                                           </tr>
                                         </ng-container>
                                         <tr *ngIf="!promoVisibility[data.promo]">
-                                          <td class="IteminputBoxes">
+                                          <td class="IteminputBoxes1">
                                             <label>{{data.uomname}}</label>
                                           </td>
-                                          <td class="IteminputBoxes">
+                                          <td class="IteminputBoxes2">
                                             <label>{{data.stockitemname}}</label>
                                           </td>
-                                          <td class="IteminputBoxes">
+                                          <td class="IteminputBoxes3">
                                             <label>$ {{data.price}}</label>
                                           </td>
-                                          <td class="IteminputBoxes">
+                                          <td class="IteminputBoxes4">
                                             <label>$ {{data.finalValue}}</label>
                                           </td>
-                                          <td class="IteminputBoxes">
+                                          <td class="IteminputBoxes5">
                                             <label>{{data.quantity}}</label>
                                           </td>
-                                          <td class="IteminputBoxes">
+                                          <td class="IteminputBoxes6">
                                             <label>${{data.amount}}</label>
                                           </td>
                                         </tr>
@@ -194,30 +131,32 @@
                                 <tr class="card-header ml-2">
                                   <td></td>
                                   <td></td>
-                                  <td></td>
-                                  <td class="IteminputBoxes"><b>Total</b></td>
-                                  <td class="IteminputBoxes"><b>{{shipmentArray.orderedQty}}</b></td>
-                                  <td class="IteminputBoxes"><b>${{shipmentArray.subTotal}}</b></td>
+                                 <td></td>
+                                 
+                                 
+                                  <td  ><b class="IteminputBoxes7">Total</b></td>
+                                  <td ><b class="IteminputBoxes8">{{shipmentArray.orderedQty}}</b></td>
+                                  <td ><b class="IteminputBoxes9">${{shipmentArray.subTotal}}</b></td>
                                 </tr>
                               </table>
                             </div>
                             <div class="row mt-3 mb-2">
-                              <table class="totall table table-striped p-3">
-                                <tr class="subitem">
-                                  <td class="text-left SUBITEMNAME">Subtotal</td>
-                                  <td class="text-right numbers">${{shipmentArray.subTotal}}</td>
+                              <table class="totall">
+                                <tr class="subitem" >
+                                  <td class="text-left SUBITEMNAME">Sub-total</td>
+                                  <td class="text-right numbers"><span class="SUBTOTALORDERS"> ${{shipmentArray.subTotal}}</span></td>
                                 </tr>
                                 <tr class="subitem">
-                                  <td class="text-left SUBITEMNAME">Packing Charge</td>
-                                  <td class="text-right numbers">${{shipmentArray.taxElement}}</td>
+                                  <td class="text-left SUBITEMNAME">  Packing Charge</td>
+                                  <td class="text-right numbers"><span class="SUBTOTALORDERS"> ${{shipmentArray.taxElement}}</span> </td>
                                 </tr>
                                 <tr class="subitem">
-                                  <td class="text-left SUBITEMNAME">Shipping Charge</td>
-                                  <td class="text-right numbers">${{shipmentArray.pakingCharge}}</td>
+                                  <td class="text-left SUBITEMNAME">Shipping </td>
+                                  <td class="text-right numbers"><span class="SUBTOTALORDERS">${{shipmentArray.pakingCharge}}</span></td>
                                 </tr>
                                 <tr class="subitem">
                                   <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';">Total</td>
-                                  <td class="text-right numbers">${{shipmentArray.total}}</td>
+                                  <td class="text-right numbers"><span class="SUBTOTALORDERS">${{shipmentArray.total}}</span></td>
                                 </tr>
                               </table>
                             </div>
@@ -226,37 +165,7 @@
                         
                     </div>
                   
-                
-                    <!-- <div class="top-bottom">
-                        <div class="collapsible" (click)="expandOrderHistoryDiv()">
-                            <div class="row">
-                                <div class="col-lg-11">
-                                    <p class="label-cls">Order History</p>
-                                </div>
-                                <div class="col-lg-1">
-                                    <img [src]="image5" class="expand-arrow" alt="add-user-btn">
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="content-order" *ngIf="!orderhistory">
-                            <div>
-                                <ag-grid-angular id="gridContainer" class="ag-theme-material mt-2"
-                                    (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
-                                    [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
-                                    [rowData]="rowData5" [suppressExcelExport]="true" [popupParent]="popupParent"
-                                    (cellValueChanged)="onCellValueChanged($event)"
-                                    (firstDataRendered)="onFirstDataRendered($event)"
-                                    (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
-                                    (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
-                                    (bodyScroll)="handleScroll($event)" [rowSelection]="'multiple'"
-                                    (rowSelected)="onRowSelect($event)"></ag-grid-angular>
-                            </div>
-        
-                        </div>
-        
-                    </div> -->
-        
+               
                 </div>
 
   
@@ -270,58 +179,69 @@
              </div> 
               </ng-template>
             </mat-tab>
-            <!--shipments  -->
-            <mat-tab label="Shipment">
+            <!--shipments   Starts Here -->
+            <mat-tab label="Shipments">
               <ng-template matTabContent class="tab-body">
-                <div class="card">
-                    <div class="card-header" style="background:rgba(1, 139, 117, 1); color: white;"> Total Details </div>
+               
+                  <div class="card">
+                    <div class="card-header Shipmentorders">Total Details</div>
                     <div class="card-body p-0">
-                        <table class="table mb-0">
-                            <thead >
-                              <tr>
-                                <th scope="col">Total Ordered Qty</th>
-                                <th scope="col">In-Transit Qty</th>
-                                <th scope="col">Yet to shipment Qty</th>
-                                <th scope="col">Received Qty</th>
-                                <th scope="col">Yet to rececive Qty</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>{{shipmentArray.orderedQty}}</td>
-                                <td>{{shipmentArray.inTransitQty}}</td>
-                                <td>{{shipmentArray.yetToShipQty}}</td>
-                                <td>{{shipmentArray.receivedQty}}</td>
-                                <td>{{shipmentArray.yetToReceiveQty}}</td>
-                              </tr>
-                            </tbody>
-                        </table>
-                        <table class="table">
-                            <thead>
-                              <tr>
-                                <th scope="col">Total Ordered Value</th>
-                                <th scope="col">In-Transit value</th>
-                                <th scope="col">Yet to Shipment Value </th>
-                                <th scope="col">Received Value</th>
-                                <th scope="col">Yet to receive Value</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>{{shipmentArray.totalOrderedValue}}</td>
-                                <td>{{shipmentArray.inTransitValue}}</td>
-                                <td>{{shipmentArray.yetToShipValue}}</td>
-                                <td>{{shipmentArray.receivedOrderValue}}</td>
-                                <td>{{shipmentArray.yetToReceiveValue}}</td>
-                              </tr>
-                            </tbody>
-                        </table>
+                      <table class="table mb-0">
+                        <thead>
+                          <tr>
+                            <th scope="col" class="text-right TOtalorderQTY">Total Ordered Qty</th>
+                            <th scope="col" class="text-right TOtalorderQTY">In-Transit Qty</th>
+                            <th scope="col" class="text-right TOtalorderQTY">Yet to shipment Qty</th>
+                            <th scope="col" class="text-right TOtalorderQTY">Received Qty</th>
+                            <th scope="col" class="text-right TOtalorderQTY">Yet to receive Qty</th>
+                            <th scope="col" class="text-right TOtalorderQTY"></th>
+                            <th scope="col" class="text-right"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="numeric text-secondary">{{shipmentArray.orderedQty}}</td>
+                            <td class="numeric text-secondary">{{shipmentArray.inTransitQty}}</td>
+                            <td class="numeric text-secondary">{{shipmentArray.yetToShipQty}}</td>
+                            <td class="numeric text-secondary">{{shipmentArray.receivedQty}}</td>
+                            <td class="numeric text-secondary">{{shipmentArray.yetToReceiveQty}}</td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col" class="text-right TOtalorderQTY">Total Ordered Value</th>
+                            <th scope="col" class="text-right TOtalorderQTY">In-Transit value</th>
+                            <th scope="col" class="text-right TOtalorderQTY">Yet to Shipment Value</th>
+                            <th scope="col" class="text-right TOtalorderQTY">Received Value</th>
+                            <th scope="col" class="text-right TOtalorderQTY">Yet to receive Value</th>
+                            <th scope="col" class="text-right TOtalorderQTY"></th>
+                            <th scope="col" class="text-right TOtalorderQTY"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="numeric text-secondary">${{shipmentArray.totalOrderedValue}}</td>
+                            <td class="numeric text-secondary">${{shipmentArray.inTransitValue}}</td>
+                            <td class="numeric text-secondary">${{shipmentArray.yetToShipValue}}</td>
+                            <td class="numeric text-secondary">${{shipmentArray.receivedOrderValue}}</td>
+                            <td class="numeric text-secondary">${{shipmentArray.yetToReceiveValue}}</td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
+                  
+                  
 
                   <div class="card mt-3 mb-2" *ngFor="let data of currentShipArray; let i = index">
-                    <!-- {{data|json}} -->
-                    <div class="card-header" style="background: rgba(1, 139, 117, 1); color: white;">
+                 
+                    <div class="card-header OrdersItems" >
                         
                         {{data.shipName}}</div>
                     <div class="card-body p-0">
@@ -329,11 +249,12 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Product Code</th>
-                                        <th scope="col">Product Name</th>
-                                        <th scope="col">Total Ordered Qty</th>
-                                        <th scope="col">Received Ordered Qty</th>
-                                        <th scope="col">Balance Ordered Qty</th>
+                                        <th scope="col" class="pl-0 TOtalorderQTY "style="position: relative;left: 49px;">Product Code</th>
+                                        <th scope="col" class=" TOtalorderQTY">Product Name</th>
+                                        <th scope="col" class="text_right TOtalorderQTY">Total Ordered Qty</th>
+                                        <th scope="col" class="text_right TOtalorderQTY">Received Ordered Qty</th>
+                                        <th scope="col" class="text_right TOtalorderQTY">Balance Ordered Qty</th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody *ngFor="let items of data.arrayIside; let j = index">
@@ -346,27 +267,34 @@
                                                     <path fill-rule="evenodd"
                                                         d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
                                                 </svg> &nbsp;
-                                                <span class="">{{items.promocode}}-{{items.promoName}}</span>
+                                                <span class="text-right" style="padding: 10px;">{{items.promocode}}-{{items.promoName}}</span>
                                             </td>
                                         </tr>
                                     </ng-container>
-                                    <!-- {{items|json}} -->
+                                   
                                     <tr *ngIf="expandedPromocode !== items.promocode">
-                                        <td>
-                                            <label class="IteminputBoxes">{{items.productSKUName}}</label>
+                                        <td class="text_left TOtalorderQTY pl-5 ">
+                                            <label >{{items.productSKUName}}</label>
                                         </td>
-                                        <td>
-                                            <label class="IteminputBoxes">{{items.stockitemname}}</label>
+                                       
+                                        <td class=" text-secondary">
+                                            <label >{{items.stockitemname}}</label>
                                         </td>
-                                        <td>
-                                            <label class="IteminputBoxes">{{items.quantity}}</label>
+                                        <td class="numeric text-secondary">
+                                            <label >{{items.quantity}}</label>
                                         </td>
-                                        <td>
-                                            <label class="IteminputBoxes">{{items.ReceivedQty}}</label>
+                                        <td class="numeric text-secondary">
+                                            <label >{{items.ReceivedQty}}</label>
                                         </td>
-                                        <td>
-                                            <label class="IteminputBoxes">{{items.balanceQty}}</label>
+                                        <td class="numeric text-secondary">
+                                            <label >{{items.balanceQty}}</label>
                                         </td>
+                                        <!-- <td class="numeric text-secondary">
+                                            <label ></label>
+                                        </td>
+                                        <td class="numeric text-secondary">
+                                            <label ></label>
+                                        </td> -->
                                     </tr>
                                 </tbody>
                             </table>
@@ -392,223 +320,7 @@
                 </div>
                 
 
-                <!-- <div class="top-bottom" *ngFor="let data of currentShipArray;let i =index">
-                    <div class="collapsible" (click)="expandShipmentTwoDiv()">
-                        <div class="row">
-                            <div class="col-lg-5">
-                                <p class="label-cls">{{data.shipName}}</p>
-                            </div>
-                            <div class="col-lg-6">
-                                <p class="label-cls">Invoice no:{{data.invoiceno}}</p>
-                            </div>
-                            <div class="col-lg-1">
-                                <img [src]="image4" class="expand-arrow" alt="add-user-btn">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="content-shp-3" *ngIf="!shipmenttwo"> -->
-                        <!-- <div class="row"> -->
-                            <!-- <div class="col-lg-3 fontweight">
-                                <label class="label2">Invoice No<span class="astr">*</span></label>
-                                <div class="input-datepicker mr-3">
-                                    <input type="text" [(ngModel)]="data.invoiceno" class="invoice" disabled />
-                                </div>
-                                //<app-customdatepicker [showInputField]="true" class="input-datepicker" label="Enter" [selectedDate]="selectedDateRange" (customDatePickerEvent)="customDatePickerEvent($event)"><span class="astr">*</span></app-customdatepicker>
-                                //<input matInput placeholder="Enter" #input class="form-control container input-box" >
-                            </div> -->
-                            <!-- <div class="col-lg-3"> -->
-                                <!-- <div class="myDatepicker promotion-datepicker">
-                                    <mat-form-field class="placeh-align">
-                                        <mat-label> Invoice date</mat-label>
-                                        <input matInput [matDatepicker]="picker1" [formControl]="data.invoiceDate"
-                                            (dateChange)="invoicedateChange($event)">
-                                        <mat-datepicker-toggle matSuffix [for]="picker1">
-                                            <mat-icon matDatepickerToggleIcon style="margin-left: 0px;">
-                                                <img src="assets/img/calender2.png" class="calendarToggle">
-                                            </mat-icon>
-                                        </mat-datepicker-toggle>
-                                        <mat-datepicker #picker1></mat-datepicker>
-                                    </mat-form-field>
-                                </div> -->
-                                <!-- <label class="fontweight label1">Invoice Date <span class="astr">*</span></label><br>
-                                <div class="input-datepicker mr-3">
-                                    <input type="text" [(ngModel)]="data.invoiceDate" class="invoice" disabled />
-                                </div> -->
-                            <!-- </div> -->
-                            <!-- <div class="col-lg-3">
-    
-                                <label class="fontweight label1">Shipping Date<span class="astr">*</span></label><br>
-                                <div class="input-datepicker mr-3">
-                                    <input type="text" [(ngModel)]="data.shipmentDate" class="invoice" disabled />
-                                </div>
-                                <input matInput placeholder="Select" #input class="form-control container input-box" >
-                            </div> -->
-                            <!-- <div class="col-lg-3">
-                                
-                                <div class="myDatepicker promotion-datepicker"
-                                    *ngIf="data.currentReceiveshipment && ViewOrReceive">
-                                    <label class="fontweight">Receive Date<span class="astr">*</span></label><br>
-                                    <mat-form-field class="placeh-align">
-                                        <mat-label> Received Date</mat-label>
-                                        <input matInput [matDatepicker]="picker3" [formControl]="recivedate" [min]="convertDateFormat(data.shipmentDate)" [max]="minDate"
-                                            (dateChange)="ReciveDateChange($event)" >
-                                        <mat-datepicker-toggle matSuffix [for]="picker3">
-                                            <mat-icon matDatepickerToggleIcon style="margin-left: 0px;">
-                                                <img src="assets/img/calender2.png" class="calendarToggle">
-                                            </mat-icon>
-                                        </mat-datepicker-toggle>
-                                        <mat-datepicker #picker3></mat-datepicker>
-                                    </mat-form-field>
-                                </div>
-    
-                                <label class="fontweight receive_date" *ngIf="data.currentReceiveshipment==false || ViewOrReceive==false">Receive date<span
-                                        class="astr">*</span></label><br>
-                                <div class="input-datepicker mr-3"
-                                    *ngIf="data.currentReceiveshipment==false || ViewOrReceive==false">
-                                    <input type="text" [(ngModel)]="data.invoiceReceivedDate" class="invoice" disabled />
-                                </div>
-    
-                            </div> -->
-                        <!-- </div> -->
-                        <!-- <div class="section mt-1">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                      <th>Product Code</th>
-                                      <th>Product Name</th>
-                                      <th>Total Ordered Qty</th>
-                                      <th>Recevied Ordered Qty</th>
-                                      <th>Balance Ordered Qty</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody *ngFor="let items of data.arrayIside;let j=index">
-                                    <tr>
-                                        <td>
-                                            <p class="itemLeft"><span *ngIf="j>=1? items?.promocode !=  data?.arrayIside[j-1]?.promocode:j==0"
-                                                    class="promoItem">{{items.promocode}}-{{items.promotionTypesNmae}}</span> <span
-                                                    style="color: transparent;">..</span>
-                                                <span style="color: transparent;" *ngIf="j>=1? items?.promocode ==  data?.arrayIside[j-1]?.promocode:''">......</span>
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr >
-                                        <td>
-                                            <label class="IteminputBoxes">{{items.productSKUName}}</label>
-                                        </td>
-                                        <td>
-                                            <label class="IteminputBoxes">{{items.stockitemname}}</label>
-                                        </td>
-                                        <td>
-                                            <label class="IteminputBoxes">{{items.quantity}}</label>
-                                        </td>
-                                        <td>
-                                            <label class="IteminputBoxes">{{items.receivedQty}}</label>
-                                        </td>
-                                        <td>
-                                            <label class="IteminputBoxes">{{items.discount}}</label>
-                                        </td> -->
-                                        <!-- <td>
-                                            <label class="IteminputBoxes">{{items.finalValue}}</label>
-                                        </td> -->
-                                        <!-- <td>
-                                            <label class="IteminputBoxes">{{items.taxvalue}}</label>
-                                        </td>
-                                        <td>
-                                            <label class="IteminputBoxes">{{items.amount}}</label>
-                                        </td>
-                                        <td>
-                                            <input type="number" [(ngModel)]="currentShipArray[i].arrayIside[j].shipedQty"
-                                                class="ShipmentinputBoxes" disabled>
-                                        </td>
-                                        <td>
-                                            <input type="number" [(ngModel)]="currentShipArray[i].arrayIside[j].ReceivedQty"
-                                                placeholder="Enter Quantity"
-                                                [disabled]="data.currentReceiveshipment==false  ||  ViewOrReceive==false"
-                                                [ngClass]="[currentShipArray[i].arrayIside[j].ReceivedQty>currentShipArray[i].arrayIside[j].shipedQty && data.currentReceiveshipment==true?'ShipmentinputBoxes3':'ShipmentinputBoxes1',data.currentReceiveshipment==false || ViewOrReceive==false?'ShipmentinputBoxes4':'ShipmentinputBoxes1']" 
-                                                (keyup)="shipingNow()">
-                                        </td>
-                                        <td>
-                                            <input type="number" class="ShipmentinputBoxes" [(ngModel)]="currentShipArray[i].arrayIside[j].LostDamaged" disabled>
-                                        </td> -->
-                                        <!-- <mat-icon class="removeCircle" (click)=removeItem()>
-                                    remove_circle</mat-icon> -->
-                                    <!-- </tr>
-                                  </tbody> -->
-                                <!-- <tr>
-                                    <th class="paddinginth">Item</th>
-                                    <th class="paddinginth">UoM</th>
-                                    <th class="paddinginth">Order Qty</th>
-                                    <th class="paddinginth">Stock</th>
-                                    <th class="paddinginth">Unit Price</th>
-                                    <th class="paddinginth">Discount</th>
-                                    <th class="paddinginth">Final Value</th>
-                                    <th class="paddinginth">Tax</th>
-                                    <th class="paddinginth">Amount</th>
-                                    <th class="paddinginth">Shipped Qty</th>
-                                    <th class="paddinginth">Received Qty</th>
-                                    <th class="paddinginth">Lost/ Damaged</th>
-                                </tr> -->
-                                
-                            <!-- </table>
-                        </div> -->
-                        <!-- <div class="row mt-2">
-                            <div class="totall">
-                                <div class="innerTotal d-flex">
-                                    <div class="subitem">
-                                        <p class="alltotals">Sub Total</p>
-                                        <span>{{data.subTotal}}</span>
-                                    </div>
-                                    <div class="subitem">
-                                        <p class="alltotals">Tax Element</p>
-                                        <span>{{data.taxElement}}</span>
-                                    </div>
-                                    <div class="subitem">
-                                        <p class="alltotals">Packing Charge</p>
-                                        <span>{{data.pakingCharge}}</span>
-                                    </div>
-                                    <div class="subitem">
-                                        <p class="alltotals">Shipping Charge</p>
-                                        <span>{{data.shipingcharge}}</span>
-                                    </div>
-                                    <div class="subitem total_total">
-                                        <p class="alltotals totaltotal">Total</p>
-                                        <span id ="totallssss">{{data.total}}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- <br> -->
-                        <!-- <div class="row">
-                            <div class="col-lg-11">
-                                <div>
-                                    <label class="dispatchC">Dispatch Comment</label>
-                                    <br>
-                                    <p>{{data.invoiceComments}}</p>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- <div class="row">
-                            <div class="col-lg-11" *ngIf="ViewOrReceive && data.currentReceiveshipment">
-                                <div>
-                                    <label class="dispatchC">Receipt Comment</label>
-                                    <br>
-                                    <input type="text" placeholder="Enter any comments" class="dispatchComments"
-                                        [(ngModel)]="ReceiptComments">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row ship end" *ngIf="data.currentReceiveshipment &&  ViewOrReceive">
-                            <div class="col-lg-6">
-                                <button type="button" class="saveas-draft" (click)="saveShipment('save')">Save</button>
-                            </div>
-    
-                            <div class="col-lg-6">
-                                <button type="button" [mat-dialog-close]="true" class="cancel">Cancel</button>
-                            </div>
-                        </div>
-                    </div> -->
-
-                <!-- </div>  -->
+             
                 <div class="d-flex justify-content-center mt-3" >
                     <button class="btn ps-5 pe-5 pt-1 pb-1"
                    style="background: rgba(1, 139, 117, 1); width: 171px; height: 44px;color: white;"
@@ -627,10 +339,3 @@
 
 
 </div>
-<!-- <div class="row">
-    <div class="col-lg-5"></div>
-    <div class="col-lg-4">
-        <button type="button" class="cancelButton">Cancel</button>
-    </div>
-    <div class="col-lg-3"></div>
-</div> -->

@@ -428,7 +428,7 @@ export class AddorderpromotionsComponent implements OnInit {
       this.updateOrSave = !this.updateOrSave;
       this.GetOrdersToEdit();
     } else {
-      this.actineLabel = 'Add order';
+      this.actineLabel = 'Add Order';
       this.editData = false;
       // this.updateOrSave= this.updateOrSave;
       this.editorderbyID = {};

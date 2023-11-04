@@ -277,18 +277,18 @@ border-top-right-radius: 13px;
 {
 
   /* margin: auto; */
-  width: 35% !important;
+  width: 60% !important;
   background: #FFFFFF;
   border-radius: 21px;
   padding: 5px;
   font-size: 13px;
-   margin-left: 76%; 
+   margin-left: 50%; 
    border: 1px solid rgba(0, 0, 0, 0.2);
   
 }
 .numbers
 {
-  padding-right: 5%;
+  padding-right: 14%;
   color: rgba(1, 139, 117, 1);
 
 }
@@ -297,7 +297,7 @@ border-top-right-radius: 13px;
   font-family: 'Calibri';
   font-weight: 400;
   line-height: 15.87px;
-  color: rgba(1, 139, 117, 1);
+  color:#000;
 
 }
 
@@ -909,19 +909,29 @@ letter-spacing: 0em;
   margin-top: 10px;
 }
 
-.head-t h3 {
-  color: #000000;
-  text-align: center;
-  margin-bottom: 2px;
-  margin-top: 33px;
- cursor: pointer;
- font-size: 20px;
- font-family:' Calibri';
- font-weight: bold;
+
+.head-t span.headd {
+  color: #018B75;
+font-family: Calibri;
+font-size: 23px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 0.92px;
  
 }
+.purchaseOrdersHead{
+  color: #000;
+font-family: Calibri;
+font-size: 23px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+/* letter-spacing: 0.92px; */
+}
+
 .addU {
-  position: relative;
+ /* position: relative; */
   font-family: 'Calibri';
   font-size: 20px;
 }
@@ -931,7 +941,7 @@ letter-spacing: 0em;
   font-family: 'Calibri';
   font-size: 20px;
 }
-.addU:after {
+/* .addU:after {
   content: "";
   display: block;
    width: 33%; 
@@ -943,8 +953,8 @@ margin-left: 62%;
    
   top: 50%;
   position: absolute;
-}
-
+} */
+/* 
 .addU:before {
   content: "";
   display: block;
@@ -955,7 +965,7 @@ margin-left: 62%;
   left: 4%;
   top: 50%;
   position: absolute;
-}
+} */
 .addUser1Form input {
   border-radius: 5px;
   border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
@@ -1301,9 +1311,9 @@ li {
   color: white;
 }
 
-.row {
+/* .row {
   width: 100%;
-}
+} */
 
 .bar {
   height: 400px;
@@ -2966,7 +2976,9 @@ margin-left: 25%;
 
    .promotion-container .promo-view .mat-icon{
     width: 26px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
+    left:-166px;
+    position:relaitve;
    }
 
    .cancel-icon .mat-icon{

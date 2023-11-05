@@ -5,6 +5,6 @@
 <div #content *ngIf="isOpen" class="menu-container">
   <div (click)="editUser()" class="menu-item tick" userRoleDirective="edit" pageName="settingusers"> Edit <img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
   <div (click)="resetpws()" class="menu-item tick" userRoleDirective="reset_password" pageName="settingusers">Reset Password <img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
-  <div *ngIf="showAllOptions || DeactiveDealer" (click)="deactive()" class="menu-item tick" userRoleDirective="deactivate" pageName="settingusers">Deactivate <img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
-  <div *ngIf="showAllOptions || !DeactiveDealer" (click)="activate()" class="menu-item tick" userRoleDirective="activate" pageName="settingusers">Reactivate<img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
+  <!-- <div *ngIf="showAllOptions || DeactiveDealer" (click)="deactive()" class="menu-item tick" userRoleDirective="deactivate" pageName="settingusers">Deactivate <img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div> -->
+  <!-- <div *ngIf="showAllOptions || !DeactiveDealer" (click)="activate()" class="menu-item tick" userRoleDirective="activate" pageName="settingusers">Reactivate<img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div> -->
 </div>

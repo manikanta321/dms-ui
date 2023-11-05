@@ -489,7 +489,7 @@ li {
 
 .addDelercolss {
   box-sizing: border-box;
-  width: 281px;
+  /* width: 281px; */
   height: 43px;
   font-family: 'Gilroy';
   background: #FFFFFF;
@@ -539,7 +539,7 @@ li {
 
 .headefont {
 
-  width: 195px;
+  /* width: 195px; */
   height: 38px;
   left: 0px;
   top: 0px;
@@ -1678,7 +1678,22 @@ li {
   /* color: red; */
   cursor: pointer;
   color: grey;
-  left: 10px;
+  left: 15px;
+}
+
+.remove-admin{
+  position: relative;
+  top: 25px;
+  /* color: red; */
+  cursor: pointer;
+  color: grey;
+  left: 70px;
+}
+.remove-admins{
+  position: relative;
+  top: 25px;
+  color: red;
+  cursor: pointer;
 }
 
 .remove-addresss {
@@ -1697,9 +1712,16 @@ li {
 }
 .addMore-iconn {
   cursor: pointer;
-  margin-left: 45px;
+  margin-left: 55px;
   position: relative;
   top: 30px;
+  color: rgba(1, 139, 117, 1);
+}
+
+.adminicon {
+  cursor: pointer;
+  margin-left: 45px;
+  position: relative;
   color: rgba(1, 139, 117, 1);
 }
 

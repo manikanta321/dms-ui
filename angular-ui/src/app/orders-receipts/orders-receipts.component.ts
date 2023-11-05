@@ -61,12 +61,20 @@ export class OrdersReceiptsComponent implements OnInit {
   columnDefs: (ColDef| ColGroupDef)[] = [
     {  headerName: "Shipment No.",
     field: 'shipmentNumber',      tooltipField:"shipmentNumber",
+    cellStyle: {
+      'color': '#686E74' 
+    },
     
    },
    {  headerName: "Shipment Date",
    field: 'shipmentDate',      tooltipField:"shipmentDate",
-  cellRenderer: (data) => 
-  { return this.sharedService.dateformat(data.value);
+  // cellRenderer: (data) => 
+  // { return this.sharedService.dateformat(data.value);
+  // },
+  cellRenderer: (data) => {
+    const formattedDate = this.sharedService.dateformat(data.value);
+    const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+    return coloredDate;
   },
 
   },
@@ -80,26 +88,43 @@ export class OrdersReceiptsComponent implements OnInit {
     {   headerName: "Order Date",
    
     
-  cellRenderer: (data) => 
-  { return this.sharedService.dateformat(data.value);
+  // cellRenderer: (data) => 
+  // { return this.sharedService.dateformat(data.value);
+  // },
+  cellRenderer: (data) => {
+    const formattedDate = this.sharedService.dateformat(data.value);
+    const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+    return coloredDate;
   },
   
       type: ['nonEditableColumn'],
     },
   
       {   headerName: "Dealer",
-      field: 'dealer',type: ['nonEditableColumn'],      tooltipField:"dealer",
+      field: 'dealer',type: ['nonEditableColumn'],
+      cellStyle: {
+        'color': '#686E74' 
+      },      
+      tooltipField:"dealer",
     },
       {  headerName: "Invoice No.",
       field: 'invoiceNumber',      tooltipField:"invoiceNumber",
+      cellStyle: {
+        'color': '#686E74' 
+      },
     }, 
       {  headerName: "Invoice Date",
       field: 'invoiceDate',      tooltipField:"invoiceDate",
 
 
       
-  cellRenderer: (data) => 
-  { return this.sharedService.dateformat(data.value);
+  // cellRenderer: (data) => 
+  // { return this.sharedService.dateformat(data.value);
+  // },
+  cellRenderer: (data) => {
+    const formattedDate = this.sharedService.dateformat(data.value);
+    const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+    return coloredDate;
   },
 
     }, 
@@ -111,6 +136,9 @@ export class OrdersReceiptsComponent implements OnInit {
     resizable:true,
       field: 'poQty', 
       tooltipField:"poQty",
+      cellStyle: {
+        'color': '#686E74' 
+      },
     minWidth:50,
      type: 'rightAligned'
   },
@@ -121,12 +149,18 @@ export class OrdersReceiptsComponent implements OnInit {
          field: 'shipQty',     
           tooltipField:"shipQty",
           minWidth:50, resizable:true,
+          cellStyle: {
+            'color': '#686E74' 
+          },
           type: 'rightAligned',},
 
         {headerName: "Received",
          field: 'received',    
            tooltipField:"received",
            minWidth:50, resizable:true,
+           cellStyle: {
+            'color': '#686E74' 
+          },
            type: 'rightAligned',
           },
       

@@ -163,7 +163,8 @@
   </div>
     <!-- refresh -->
     <div class=" refreshbtn" style=" cursor: pointer" (click)="Receiptrefresh()">
-      <img class="refresh-img" src="assets/img/Vector.png" alt="refresh">
+      <!-- <img class="refresh-img" src="assets/img/Vector.png" alt="refresh"> -->
+      <img src="assets/img/Refreshbutton.svg" class="refresh-img">
     </div>
 </div>
 <!-- grid -->
@@ -176,7 +177,7 @@
     (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
     (bodyScroll)="handleScrollReceipt($event)"></ag-grid-angular>
   <div class="pagination">
-    <span class="pagination-cls">1</span>-<span class="pagination-cls">{{paginationScrollCount}}</span> &nbsp;<span class="pagination-cls"> of &nbsp;</span><span
+    <span class="pagination-cls">1 &nbsp;</span><span class="pagination-cls">-</span><span class="pagination-cls">&nbsp;{{paginationScrollCount}}</span> &nbsp;<span class="pagination-cls"> of &nbsp;</span><span
       class="pagination-cls">{{receiptDatalist.length}}</span>
   </div>
 </div>

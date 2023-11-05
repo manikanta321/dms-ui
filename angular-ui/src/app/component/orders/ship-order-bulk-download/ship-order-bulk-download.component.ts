@@ -50,14 +50,20 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
   emptyDownloadArray:any = [];
   columnDefs: ColDef[] = [
     {  headerName: "Order No.",
-       field: 'orderNo',      tooltipField:"orderNo",type: ['nonEditableColumn']
+       field: 'orderNo',      tooltipField:"orderNo",type: ['nonEditableColumn'],
+       cellStyle: {
+        'color': '#686E74' 
+      }
       },
   
     {   headerName: "Order Date",
-
-    
-  cellRenderer: (data) => 
-  { return this.sharedService.dateformat(data.value);
+  // cellRenderer: (data) => 
+  // { return this.sharedService.dateformat(data.value);
+  // },
+  cellRenderer: (data) => {
+    const formattedDate = this.sharedService.dateformat(data.value);
+    const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+    return coloredDate;
   },
 
 
@@ -66,44 +72,75 @@ export class ShipOrderBulkDownloadComponent implements OnInit {
       field: 'orderDate',      tooltipField:"orderDate",
       type: ['nonEditableColumn']},
       {  headerName: "Product Name",
-      field: 'productName',      tooltipField:"productName",type: ['nonEditableColumn']
+      field: 'productName',      tooltipField:"productName",type: ['nonEditableColumn'],
+      cellStyle: {
+        'color': '#686E74' 
+      },
      },
      {  headerName: "Product Code",
-     field: 'productCode',      tooltipField:"productCode",type: ['nonEditableColumn']
+     field: 'productCode',      tooltipField:"productCode",type: ['nonEditableColumn'],
+     cellStyle: {
+      'color': '#686E74' 
+    },
     },
   
       {   headerName: "Order Qty",
       // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
       field: 'orderQty',type: ['nonEditableColumn'],tooltipField:"orderQty",
+      cellStyle: {
+        'color': '#686E74' 
+      },
     },
       {  headerName: "Shipped Till Qty",
-      field: 'shippedTillQty',      tooltipField:"shippedTillQty",type: ['nonEditableColumn']
+      field: 'shippedTillQty',      tooltipField:"shippedTillQty",type: ['nonEditableColumn'],
+      cellStyle: {
+        'color': '#686E74' 
+      },
   },
       {  headerName: "Dispatch Qty",
-      field: 'dispatchQty',      tooltipField:"dispatchQty",type: ['nonEditableColumn']
+      field: 'dispatchQty',      tooltipField:"dispatchQty",type: ['nonEditableColumn'],
+      cellStyle: {
+        'color': '#686E74' 
+      },
     }, 
    
   {  headerName: "Dispatch Date",
-  cellRenderer: (data) => 
-  { return this.sharedService.dateformat(data.value);
+  // cellRenderer: (data) => 
+  // { return this.sharedService.dateformat(data.value);
+  // },
+  cellRenderer: (data) => {
+    const formattedDate = this.sharedService.dateformat(data.value);
+    const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+    return coloredDate;
   },
-
-
-      field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColumn']
+     field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColumn']
     },
     {  headerName: "Invoice Date",
-    cellRenderer: (data) => 
-  { return this.sharedService.dateformat(data.value);
+  //   cellRenderer: (data) => 
+  // { return this.sharedService.dateformat(data.value);
+  // },
+  cellRenderer: (data) => {
+    const formattedDate = this.sharedService.dateformat(data.value);
+    const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+    return coloredDate;
   },
     field: 'invoiceDate',      tooltipField:"invoiceDate",type: ['nonEditableColumn']
   },
   {  headerName: "Invoice No.",
-  field: 'invoiceNo',      tooltipField:"invoiceNo",type: ['nonEditableColumn']
+  field: 'invoiceNo',      tooltipField:"invoiceNo",type: ['nonEditableColumn'],
+  cellStyle: {
+    'color': '#686E74' 
+  }
 },
 {  headerName: "Uploaded Date",
-cellRenderer: (data) => 
-  { return this.sharedService.dateformat(data.value);
-  },
+// cellRenderer: (data) => 
+//   { return this.sharedService.dateformat(data.value);
+//   },
+cellRenderer: (data) => {
+  const formattedDate = this.sharedService.dateformat(data.value);
+  const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+  return coloredDate;
+},
 field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColumn']
 },
   
@@ -111,30 +148,54 @@ field: 'dispatchDate',      tooltipField:"dispatchDate",type: ['nonEditableColum
   columnReceiptDefs: (ColDef| ColGroupDef)[] = [
     {  headerName: "Shipment No.",minWidth:160,
     field: 'shipmentNumber',      tooltipField:"shipmentNumber",
+    cellStyle: {
+      'color': '#686E74' 
+    },
    },
    {  headerName: "Shipment Date",minWidth:160,
    field: 'shipmentDate',      tooltipField:"shipmentDate",
+   cellStyle: {
+    'color': '#686E74' 
+  },
   },
     {  headerName: "Order No.",minWidth:160,
        field: 'customerPONumber',      tooltipField:"customerPONumber",
+       cellStyle: {
+        'color': '#686E74' 
+      }
       },
   
     {   headerName: "Order Date",minWidth:160,
       field: 'orderDate',      tooltipField:"orderDate",
+      cellStyle: {
+        'color': '#686E74' 
+      },
       type: ['nonEditableColumn']},
   
       {   headerName: "Dealer",minWidth:160,
       field: 'dealer',type: ['nonEditableColumn'],      tooltipField:"dealer",
+      cellStyle: {
+        'color': '#686E74' 
+      }
     },
       {  headerName: "Invoice No.",minWidth:160,
       field: 'invoiceNumber',      tooltipField:"invoiceNumber",
+      cellStyle: {
+        'color': '#686E74' 
+      },
     }, 
       {  headerName: "Invoice Date",minWidth:160,
       field: 'invoiceDate',      tooltipField:"invoiceDate",
+      cellStyle: {
+        'color': '#686E74' 
+      },
     }, 
    
     {  headerName: "Total Items ",
     field:"totalitems",tooltipField:"totalitems", resizable:true,
+    cellStyle: {
+      'color': '#686E74' 
+    },
         //     children:[
         //   {headerName: "In Order", field: 'poQty',  tooltipField:"poQty",    minWidth:50, resizable:true},
         //   {headerName: "In Shipment", field: 'shipQty',      tooltipField:"shipQty",minWidth:50, resizable:true},

@@ -48,7 +48,8 @@
       <!-- ref new -->
       <div class="col-md-0 col-lg-0 col-sm-0">
         <div class="sales-refreshbtn" (click)="refresh()" style="margin-left: 10px;">
-          <img class="refresh-img" src="assets/img/Vector.png" alt="refresh">
+          <!-- <img class="refresh-img" src="assets/img/Vector.png" alt="refresh"> -->
+          <img src="assets/img/Refreshbutton.svg" class="refresh-img" alt="refresh">
         </div>
       </div>
 
@@ -106,8 +107,8 @@
     (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
     (bodyScroll)="handleScroll($event)"></ag-grid-angular>
   <div class="pagination">
-    <span class="pagination-cls">1</span> - <span class="pagination-cls">{{paginationScrollCount}}</span><span class="pagination-cls"> &nbsp; of</span> <span
-      class="pagination-cls">&nbsp; {{shipmentDatalist.length}}</span>
+    <span class="pagination-cls">1 </span> <span style=" color: #686E74;">-</span>&nbsp; <span class="pagination-cls">{{paginationScrollCount}}</span><span class="pagination-cls"> &nbsp; of &nbsp; </span> <span
+      class="pagination-cls"> {{shipmentDatalist.length}}</span>
   </div>
 </div>
     </div>

@@ -137,10 +137,17 @@ export class OrderListComponent implements OnInit {
       minWidth: 110,
       maxWidth: 150,
 
+      // cellRenderer: (data) => {
+      //   return this.sharedService.dateformat(data.value);
+      // },
       cellRenderer: (data) => {
-        return this.sharedService.dateformat(data.value);
+        const formattedDate = this.sharedService.dateformat(data.value);
+        const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+        return coloredDate;
       },
       tooltipField: 'orderDate',
+      
+      
     },
 
     {
@@ -148,13 +155,19 @@ export class OrderListComponent implements OnInit {
       field: 'dealerName',
       minWidth: 250,
       tooltipField: 'dealerName',
+      cellStyle: {
+        'color': '#686E74' 
+      }
     },
     {
       headerName: 'ERP Ref # ',
       minWidth: 110,
       maxWidth: 150,
       field: 'companyReferenceNo',
-      type: ['rightAligned']
+      type: ['rightAligned'],
+      cellStyle: {
+        'color': '#686E74' 
+      }
       
     },
 
@@ -163,14 +176,20 @@ export class OrderListComponent implements OnInit {
       minWidth: 115,
       maxWidth: 150,
       field: 'geographyName',
-      tooltipField:'geographyName'
+      tooltipField:'geographyName',
+      cellStyle: {
+        'color': '#686E74' 
+      }
     },
     {
       headerName: 'ODV($)',
       minWidth:100,
       maxWidth: 115,
       field: 'totalValue',
-      type: ['rightAligned']
+      type: ['rightAligned'],
+      cellStyle: {
+        'color': '#686E74' 
+      }
     },
 
     {
@@ -178,28 +197,40 @@ export class OrderListComponent implements OnInit {
       field: 'orderedQty',
       minWidth:90,
       maxWidth: 115,
-      type: ['rightAligned']
+      type: ['rightAligned'],
+      cellStyle: {
+        'color': '#686E74' 
+      }
     },
     {
       headerName: 'RDQ',
       field: 'receivedQty',
       minWidth:90,
       maxWidth: 115,
-      type: ['rightAligned']
+      type: ['rightAligned'],
+      cellStyle: {
+        'color': '#686E74' 
+      }
     },
     {
       headerName: 'OSQ',
       field: 'outstandingQty',
       minWidth:90,
       maxWidth: 115,
-      type: ['rightAligned']
+      type: ['rightAligned'],
+      cellStyle: {
+        'color': '#686E74' 
+      }
     },
     {
       headerName: 'OSV($)',
       minWidth:100,
       maxWidth: 115,
       field: 'outstandingValue',
-      type: ['rightAligned']
+      type: ['rightAligned'],
+      cellStyle: {
+        'color': '#686E74' 
+      }
     },
 
     {
@@ -207,7 +238,10 @@ export class OrderListComponent implements OnInit {
       minWidth:90,
       maxWidth: 115,
       field: 'inTransitQty',
-      type: ['rightAligned']
+      type: ['rightAligned'],
+      cellStyle: {
+        'color': '#686E74' 
+      }
     },
     // {
     //   headerName: "Total Value",

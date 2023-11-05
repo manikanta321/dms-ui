@@ -10,7 +10,7 @@
             (onSelectAll)="DealerorderSelectAll($event)">
           </ng-multiselect-dropdown>
         </form>
-        <div class="dropdown-placeholder dealers-placeholder">
+        <div class="dropdown-placeholder dealers-placeholder" id="DEALERBORDER">
           <span *ngIf="myForm.get('city').value.length == 0">  Dealers </span>
           <span *ngIf="myForm.get('city').value.length == 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Dealer selected </span>
           <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder"> {{myForm.get('city').value.length}} Dealer(s) selected </span>
@@ -23,7 +23,7 @@
             [disabled]="disabled" [settings]="dropdownSettings1" [data]="geogropdownlist" (onSelect)="geographyselect($event)"
             (onDeSelect)="geographyDeselect($event)" (onDeSelectAll)="geographyDeselectAll($event)"(onSelectAll)="geographyselectAll($event)">
           </ng-multiselect-dropdown>
-          <div class="dropdown-placeholder Geography-placeholder">
+          <div class="dropdown-placeholder Geography-placeholder" id="SeleectGEPBORDER">
             <span *ngIf="myForm1.get('geo').value.length == 0"> Select Geography </span>
             <span *ngIf="myForm1.get('geo').value.length == 1" class="selected-placeholder"> {{myForm1.get('geo').value.length}} Geography selected </span>
             <span *ngIf="myForm1.get('geo').value.length > 1" class="selected-placeholder"> {{myForm1.get('geo').value.length}} Geography(s) selected </span>
@@ -53,8 +53,9 @@
       <div class="col-md-0 col-lg-0 col-sm-0" >
          <div class="sales-refreshbtn" (click)="refresh()">
         <!-- <img class="refresh-img" src="assets/img/Vector.png" alt="refresh"> -->
-        <img class="refresh-img" src="assets/img/Vector.png" 
-        alt="refresh">
+        <!-- <img class="refresh-img" src="assets/img/Vector.png"  -->
+        <img src="assets/img/Refreshbutton.svg" class="refresh-img"  alt="refresh">
+       
       </div>
       </div>
 
@@ -105,7 +106,7 @@
       (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
       (bodyScroll)="handleScroll($event)"></ag-grid-angular>
     <div class="pagination">
-      <span class="pagination-cls">1</span> - <span class="pagination-cls">{{paginationScrollCount}}</span>  <span class="pagination-cls">  &nbsp;of </span>  <span
+      <span class="pagination-cls">1 &nbsp;</span> - <span class="pagination-cls">&nbsp;{{paginationScrollCount}}</span>  <span class="pagination-cls">  &nbsp;of </span>  <span
         class="pagination-cls">&nbsp;{{receiptDatalist.length}}</span>
     </div>
   </div>

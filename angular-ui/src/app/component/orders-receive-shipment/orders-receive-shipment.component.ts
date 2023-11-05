@@ -262,6 +262,7 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
               taxvalue: element1.taxvalue,
               amount: element1.amount,
               taxid: element1.taxid,
+              isFreeItem:element1.isFreeItem,
             };
             this.itemsArray.push(obj);
           });
@@ -303,6 +304,7 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
                 taxid: element2.taxid,
                 shipedTill: element2.shipedTill,
                 shipedQty: element2.shipedQty,
+                isFreeItem:element2.isFreeItem,
               };
               internalArray.push(obj);
             });
@@ -384,6 +386,7 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
               taxvalue: element1.taxvalue,
               amount: element1.amount,
               taxid: element1.taxid,
+              isFreeItem:element1.isFreeItem,
             };
             this.itemsArray.push(obj);
           });
@@ -425,6 +428,7 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
                 taxid: element2.taxid,
                 shipedTill: element2.shipedTill,
                 shipedQty: element2.shipedQty,
+                isFreeItem:element2.isFreeItem,
               };
               internalArray.push(obj);
             });
@@ -507,6 +511,7 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
               taxvalue: element1.taxvalue,
               amount: element1.amount,
               taxid: element1.taxid,
+              isFreeItem:element1.isFreeItem,
             };
             this.itemsArray.push(obj);
           });
@@ -548,6 +553,7 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
                 taxid: element2.taxid,
                 shipedTill: element2.shipedTill,
                 shipedQty: element2.shipedQty,
+                isFreeItem:element2.isFreeItem,
               };
               internalArray.push(obj);
             });

@@ -260,11 +260,11 @@
                                 <thead>
                                     <tr>
                                         <th scope="col" class="pl-0 TOtalorderQTY "style="position: relative;left: 49px;">Product Code</th>
-                                        <th scope="col" class=" TOtalorderQTY">Product Name</th>
+                                        <th scope="col" class=" TOtalorderQTY">Product Name </th>
                                         <th scope="col" class="text_right TOtalorderQTY">Total Ordered Qty</th>
                                         <th scope="col" class="text_right TOtalorderQTY">Received Ordered Qty</th>
                                         <th scope="col" class="text_right TOtalorderQTY">Balance Ordered Qty</th>
-                                       
+                                     
                                     </tr>
                                 </thead>
                                 <tbody *ngFor="let items of data.arrayIside; let j = index">
@@ -284,34 +284,36 @@
                                    
                                     <tr *ngIf="expandedPromocode !== items.promocode">
                                         <td class="text_left text-secondary  pl-5 ">
-                                            <label style="position: relative;left: 42px;" [ngClass]="{'FreePromoitems': data.finalValue=== 0.00 }">
+                                            <label style="position: relative;left: 42px;" [ngClass]="{'FreePromoitems': items.isFreeItem===00 }">
                                               {{items.productSKUName}}
                                             </label>
                                         </td>
                                         <td class=" text-secondary" >
-                                            <label [ngClass]="{'FreePromoitems': data.finalValue=== 0.00 }" >
+                                            <label [ngClass]="{'FreePromoitems': items.isFreeItem===0 }" >
                                               {{items.stockitemname}}
                                             </label>
                                         </td>
                                         <td class="numeric text-secondary" >
-                                            <label [ngClass]="{'FreePromoitems': data.finalValue=== 0.00 }" >
+                                            <label [ngClass]="{'FreePromoitems': items.isFreeItem===0 }" >
                                               {{items.quantity}}
                                             </label>
                                         </td>
                                         <td class="numeric text-secondary" >
-                                            <label [ngClass]="{'FreePromoitems': data.finalValue===0.00 }">
+                                            <label [ngClass]="{'FreePromoitems': items.isFreeItem===0 }">
                                               {{items.ReceivedQty}}
                                             </label>
                                         </td>
                                         <td class="numeric text-secondary " style="position: relative;right: 18px;">
-                                            <label [ngClass]="{'FreePromoitems': data.finalValue===0.00 }">
+                                            <label [ngClass]="{'FreePromoitems': items.isFreeItem===0 }">
                                               {{items.balanceQty}}
 
                                             </label>
                                         </td>
+                                        
                                     </tr>
                                 </tbody>
                             </table>
+                          
                             <div class="row">
                                 <div class="col-lg-11" *ngIf="ViewOrReceive && data.currentReceiveshipment">
                                     <div>

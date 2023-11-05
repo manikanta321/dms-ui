@@ -72,8 +72,8 @@
       <!-- refresh -->
       <div class="col-md-1 col-lg-1 col-sm-1" >
             <div class="icon btnhover1 refreshbtn1" (click)="refresh()">
-        <img class="refresh1" src="assets/img/Vector.png" 
-          alt="refresh">
+    
+        <img src="assets/img/Refreshbutton.svg" class="refresh1">
       </div>
       </div>
       
@@ -89,22 +89,27 @@
       <!--Add Promotion  -->
       <div class="col-md-0 col-lg-0 col-sm-0 " style="position: relative; display:flex;" *ngIf="userType !== 'Dealer Admin'">
        
-        <div class="sales-dwnld" (click)="onBtnExport()" userRoleDirective="DOWNLOAD_ORDER" [pageName]="currentPageName">
-          <img class="imgdwnl" src="../../../assets/img/Group 35891.png" alt="add-user-btn">
-        </div>&nbsp; &nbsp;&nbsp;
-        <div class="sales-add" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName">
-          <img class="imgorder" src="assets/img/add-btn.png" alt="add">
+        <div class="OrderDataDownloadeddiv" (click)="onBtnExport()" userRoleDirective="DOWNLOAD_ORDER" [pageName]="currentPageName">
+          <img class="OrderlistDownloaded" src="../../../assets/img/ll.svg">
+        </div> 
+          
+        
+        &nbsp; &nbsp;&nbsp;
+        <div class="AddorderButton" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName">
+          <img class="AddorderImage" src="../../../assets/img/ADD.svg" alt="add">
         </div>
+
         
       </div>
     <!--  Add promotion Dealer admin  -->
     <div class="col-md-0 col-lg-0 col-sm-0" style="display: flex;" *ngIf="userType == 'Dealer Admin'">
       
-      <div class="sales-dwnld" (click)="onBtnExport()" userRoleDirective="DOWNLOAD_ORDER" [pageName]="currentPageName">
-        <img class="imgdwnl" src="../../../assets/img/Group 35891.png" alt="add-user-btn">
-      </div>&nbsp; &nbsp;&nbsp;
-      <div class="sales-add" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName">
-        <img class="imgorder" src="assets/img/add-btn.png" alt="add">
+      <div class="OrderDataDownloadeddiv" (click)="onBtnExport()" userRoleDirective="DOWNLOAD_ORDER" [pageName]="currentPageName">
+        <img class="OrderlistDownloaded" src="../../../assets/img/ll.svg">
+      </div> 
+      &nbsp; &nbsp;&nbsp;
+      <div class="AddorderButton" (click)="addOrderPromotion()" userRoleDirective="ADD_ORDER" [pageName]="currentPageName">
+        <img class="AddorderImage" src="../../../assets/img/ADD.svg" alt="add">
       </div>
     </div>
 
@@ -207,7 +212,7 @@
      </span>
  </div> -->
  <div class="pagination">
-  <span class="pagination-cls">1</span> - <span class="pagination-cls">{{paginationScrollCount}}</span> <span class="pagination-cls"> &nbsp; of</span>
-  <span class="pagination-cls">&nbsp;{{rowDatalist.length}}</span>
+  <span class="pagination-cls">1 &nbsp;</span><span style=" color: #686E74;">-</span>&nbsp; <span class="pagination-cls">{{paginationScrollCount}}</span> <span class="pagination-cls"> &nbsp; of &nbsp;</span>
+  <span class="pagination-length">{{rowDatalist.length}}</span>
 </div>
 </div>

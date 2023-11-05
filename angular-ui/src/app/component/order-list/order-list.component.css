@@ -33,7 +33,7 @@
 
 
 ::ng-deep.ag-theme-material .ag-header-cell {
-    background: rgba(1, 139, 117, 0.8);
+    /* background: rgba(1, 139, 117, 0.8); */
     color: white; 
 }
 /* ::ng-deep :hover.ag-theme-material .ag-header-cell {
@@ -42,7 +42,9 @@
 
 ::ng-deep.ag-header-viewport
 {
-    background-color: rgba(1, 139, 117, 1);
+    /* background-color: rgba(1, 139, 117, 1); */
+    background-color:  #018B75CC !important;
+
 }
 /* .allicons{    
         margin-bottom:10px;
@@ -181,8 +183,8 @@
 .refresh1 {
     position: relative;
     top: -8px;
-    left: -4px;
-    transform: rotate(90deg);
+    left: -6px;
+    /* transform: rotate(90deg); */
 }
 
 .refreshbtn1 {
@@ -195,7 +197,7 @@
 }
 
 .refreshbtn1 {
-    background-color: grey !important;
+    background: rgba(104, 110, 116, 0.66) !important;
     color: white !important;
 }
 
@@ -1214,7 +1216,16 @@ mat-sidenav {
     font-size: 14px;
     font-weight: 600;
     color: #686E74;
-
+}
+.pagination-length
+{
+    font-size: 14px;
+    font-weight: 700;
+    color: #686E74;
+}
+.date-colored
+{
+    color:red !important;
 }
 
 .listicon {
@@ -1241,11 +1252,31 @@ mat-sidenav {
     color: white !important;
 }
 
+
 .imgorder {
     position: relative;
     top: 8px;
     left: 10px;
 }
+.AddorderImage
+{
+    position: relative;
+    top: 8px;
+    left: 9px; 
+}
+.AddorderButton{
+    background: rgba(104, 110, 116, 0.66);
+    border-radius: 13%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.AddorderButton:hover {
+    background-color: grey !important;
+    color: white !important;
+}
+
 
 .REFRESHBUTTON {
     background: rgba(104, 110, 116, 0.66);
@@ -1284,16 +1315,39 @@ mat-sidenav {
     cursor: pointer;
 }
 
-.sales-dwnld {
+.sales-dwnld:hover{
     color: white !important;
+    /* background-color: grey !important; */
 }
+.OrderlistDownloaded
+{
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+     padding-top: 11px;
+    padding-bottom: 12px;
+    background: rgba(104, 110, 116, 0.66);
+    cursor: pointer;
+}
+.OrderDataDownloadeddiv:hover
+{
+    color: white !important;
+    background-color: grey !important; 
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 
 .imgdwnl {
     position: relative;
     top: 1px;
     left: 1px;
     height: 40px;
-    width: 40px
+    width: 40px;
+    /* color: white !important;
+    background-color: grey !important; */
 }
 
 .searchButton {

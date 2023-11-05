@@ -164,8 +164,13 @@ export class OrdersShipmentComponent implements OnInit {
           headerName: 'Order Date',
           field: 'orderDate',
           tooltipField: 'orderDate',
+          // cellRenderer: (data) => {
+          //   return this.sharedService.dateformat(data.value);
+          // },
           cellRenderer: (data) => {
-            return this.sharedService.dateformat(data.value);
+            const formattedDate = this.sharedService.dateformat(data.value);
+            const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+            return coloredDate;
           },
           type: ['nonEditableColumn'],
         },
@@ -173,40 +178,63 @@ export class OrdersShipmentComponent implements OnInit {
           headerName: 'Invoice Date',
           field: 'invoiceDate',
           tooltipField: 'invoiceDate',
+          // cellRenderer: (data) => {
+          //   return this.sharedService.dateformat(data.value);
+          // },
           cellRenderer: (data) => {
-            return this.sharedService.dateformat(data.value);
+            const formattedDate = this.sharedService.dateformat(data.value);
+            const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+            return coloredDate;
           },
+
         },
         {
           headerName:'invoice Qty',
           field: 'invoiceQty',
           tooltipField: 'invoiceQty',
+          cellStyle: {
+            'color': '#686E74' 
+          },
           type: ['rightAligned']
         },
         {
           headerName: 'invoice Value',
           field: 'invoiceValue',
           tooltipField: 'invoiceValue',
-          type: ['rightAligned']
+          type: ['rightAligned'],
+          cellStyle: {
+            'color': '#686E74' 
+          },
         },
         {
           headerName: 'Total ordered Quantity',
           field: 'orderedQty',
           tooltipField: 'orderedQty',
-          type: ['rightAligned']
+          type: ['rightAligned'],
+          cellStyle: {
+            'color': '#686E74' 
+          },
         },
         {
           headerName:'Total ordered Value($)',
           field: 'orderedvalue',
           tooltipField: 'orderedvalue',
-          type: ['rightAligned']
+          type: ['rightAligned'],
+          cellStyle: {
+            'color': '#686E74' 
+          },
         },    
         {
           headerName: 'System Receipt Date',
           field: 'systemReciptDate',
           tooltipField: 'systemReciptDate',
+          // cellRenderer: (data) => {
+          //   return this.sharedService.dateformat(data.value);
+          // },
           cellRenderer: (data) => {
-            return this.sharedService.dateformat(data.value);
+            const formattedDate = this.sharedService.dateformat(data.value);
+            const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+            return coloredDate;
           },
         },
         
@@ -252,8 +280,13 @@ export class OrdersShipmentComponent implements OnInit {
       headerName: 'Order Date',
       field: 'orderDate',
       tooltipField: 'orderDate',
+      // cellRenderer: (data) => {
+      //   return this.sharedService.dateformat(data.value);
+      // },
       cellRenderer: (data) => {
-        return this.sharedService.dateformat(data.value);
+        const formattedDate = this.sharedService.dateformat(data.value);
+        const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+        return coloredDate;
       },
       type: ['nonEditableColumn'],
     },
@@ -262,19 +295,30 @@ export class OrdersShipmentComponent implements OnInit {
       field: 'dealername',
       type: ['nonEditableColumn'],
       tooltipField: 'dealername',
+      cellStyle: {
+        'color': '#686E74' 
+      },
     },
     {
       headerName: 'Invoice No.',
       field: 'invoiceNumber',
       tooltipField: 'invoiceNumber',
-      type: ['rightAligned']
+      type: ['rightAligned'],
+      cellStyle: {
+        'color': '#686E74' 
+      },
     },
     {
       headerName: 'Invoice Date',
       field: 'invoiceDate',
       tooltipField: 'invoiceDate',
+      // cellRenderer: (data) => {
+      //   return this.sharedService.dateformat(data.value);
+      // },
       cellRenderer: (data) => {
-        return this.sharedService.dateformat(data.value);
+        const formattedDate = this.sharedService.dateformat(data.value);
+        const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+        return coloredDate;
       },
     },
     {
@@ -282,32 +326,49 @@ export class OrdersShipmentComponent implements OnInit {
       field: 'invoiceQty',
       tooltipField: 'invoiceQty',
       type: ['rightAligned'],
+      cellStyle: {
+        'color': '#686E74' 
+      },
     },
     {
       headerName: this.userType == 'Admin' ? 'INV($)' : 'invoiceValue',
       field: 'invoiceValue',
       tooltipField: 'invoiceValue',
-      type: ['rightAligned']
+      type: ['rightAligned'],
+      cellStyle: {
+        'color': '#686E74' 
+      },
     },
     {
       headerName: this.userType == 'Admin' ? 'TOQ' : 'Ordered Quantity',
       field: 'orderedQty',
       tooltipField: 'orderedQty',
-      type: ['rightAligned']
+      type: ['rightAligned'],
+      cellStyle: {
+        'color': '#686E74' 
+      },
     },
     {
       headerName: this.userType == 'Admin' ? 'TOV' : 'Ordered Value($)',
       field: 'orderedvalue',
       tooltipField: 'orderedvalue',
-      type: ['rightAligned']
+      type: ['rightAligned'],
+      cellStyle: {
+        'color': '#686E74' 
+      },
     },    
     {
       headerName: 'System Receive Date',
       maxWidth: 150,
       field: 'systemReciptDate',
       tooltipField: 'systemReciptDate',
+      // cellRenderer: (data) => {
+      //   return this.sharedService.dateformat(data.value);
+      // },
       cellRenderer: (data) => {
-        return this.sharedService.dateformat(data.value);
+        const formattedDate = this.sharedService.dateformat(data.value);
+        const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+        return coloredDate;
       },
     },
     

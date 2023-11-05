@@ -75,17 +75,32 @@ public popupParent: HTMLElement = document.body;
 columnDefs: ColDef[] = [ 
 
   { headerName: "ID", 
-field: 'uoMName' ,type: ['nonEditableColumn'], minWidth:400
+field: 'uoMName' ,type: ['nonEditableColumn'],
+cellStyle: {
+  'color': '#686E74' 
+},
+ minWidth:400
 },
 
-{   headerName: "Uploaded By",field: 'uoMShortName',type: ['nonEditableColumn']},
-{   headerName: "Upload On",field: 'uoMShortName',type: ['nonEditableColumn']},
+{   headerName: "Uploaded By",field: 'uoMShortName',type: ['nonEditableColumn'],
+cellStyle: {
+  'color': '#686E74' 
+}
+},
+{   headerName: "Upload On",field: 'uoMShortName',type: ['nonEditableColumn'],
+cellStyle: {
+  'color': '#686E74' 
+}
+},
 
 
 // suppressMovable:true,
 { headerName: "Total items",
  field: 'statusName', 
  type: ['nonEditableColumn'],
+ cellStyle: {
+  'color': '#686E74' 
+},
 cellEditor: 'agSelectCellEditor',
 cellEditorParams: {
 values: ['Active', 'Inactive', 'Invited', 'Locked',],

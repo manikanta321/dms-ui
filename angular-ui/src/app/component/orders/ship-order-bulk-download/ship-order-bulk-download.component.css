@@ -193,12 +193,12 @@ text-align: center;
     background: rgba(104, 110, 116, 0.66);
     border-radius: 7px;
     margin-left: 10px;
-    transform: rotate(90deg);
+    /* transform: rotate(90deg); */
 
   }
   .refresh-img {
-    margin-top: 11px;
-    margin-left: 11px;
+    margin-top: 9px;
+    margin-left: 10px;
   }
   .ag-theme-material .ag-filter-toolpanel-header,
 .ag-theme-material .ag-filter-toolpanel-search,

@@ -307,7 +307,7 @@ export class OrderListComponent implements OnInit {
 
       cellRenderer: OrderlistActionPopupComponent,
       editable: false,
-      maxWidth: 35,
+      maxWidth: 65,
     },
     // {
     //   headerName: "Avatar",

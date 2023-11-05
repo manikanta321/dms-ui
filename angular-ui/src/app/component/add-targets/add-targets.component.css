@@ -194,9 +194,9 @@ label {
     border: 2px solid  rgba(1, 139, 117, 1); 
 
 }
-.changed-border {
-    /* border: 2px solid  rgba(1, 139, 117, 1); */
-}
+/* .changed-border {
+    border: 2px solid  rgba(1, 139, 117, 1);
+} */
 .IteminputBoxesDisable {
     width: 62px;
     height: 30px;
@@ -374,7 +374,7 @@ label {
     position: absolute;
     height: 41px;
     line-height: 41px;
-    left: 1px;
+    left: 0px;
     border-top: 1px solid rgba(104, 110, 116, 0.75);
     border-bottom: 1px solid rgba(104, 110, 116, 0.75);
     width: 80%;

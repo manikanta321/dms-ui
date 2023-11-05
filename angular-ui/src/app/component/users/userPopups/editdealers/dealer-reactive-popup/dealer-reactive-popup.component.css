@@ -18,7 +18,8 @@ font-family: 'Gilroy';
 }
 .undo{
     padding: 5px 40px;
-    background: black;
+    background: rgba(1, 139, 117, 1);
+
     color: #fff;
     margin-right: 20px;
     /* border: #000000; */
@@ -43,7 +44,7 @@ width: 150px;
     position: relative;
     font-size: 15px;
     font-weight: 600;
-    top:-11px;
+    top:0px;
     cursor: pointer;
     
 }

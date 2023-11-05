@@ -451,8 +451,12 @@
 
   
   ::ng-deep.ag-sticky-top {
-    border-bottom: 0.5px solid #000000;
+    border-bottom: 0.5px solid white;
+    
   }
+
+  
+  
   
   .main {
     border-radius: 30px;
@@ -1349,7 +1353,7 @@
   .searchicons1 {
     position: absolute;
     top: 42%;
-    left: -214px;
+    left: -222px;
     transform: translateY(-50%);
     font-size: 24px;
     color: #9B9FA3;

@@ -31,7 +31,7 @@ label
   }
 
 ::ng-deep.product .multiselect-dropdown {
-    border: 1px solid black !important;
+    /* border: 1px solid black !important; */
     border-radius: 6px;
 }
 
@@ -223,6 +223,7 @@ mat-form-field {
 .addAlign {
     margin-left: 99%;
     cursor: pointer;
+    color: green;
 }
 
 .addUserForm input {

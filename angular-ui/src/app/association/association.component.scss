@@ -114,6 +114,7 @@
     background: white !important;
     height: 41px;
     //  margin-left: 26px;
+    color: grey;
   }
   
   ::ng-deep.dropdown-list {
@@ -459,9 +460,9 @@
   
   
   
-  ::ng-deep.ag-sticky-top {
-    border-bottom: 0.5px solid #000000;
-  }
+  // ::ng-deep.ag-sticky-top {
+  //   border-bottom: 0.5px solid #000000;
+  // }
   
   .main {
    

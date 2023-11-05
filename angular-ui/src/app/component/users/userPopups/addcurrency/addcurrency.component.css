@@ -64,10 +64,10 @@ color: #000000;
     /* background-color: #CED4DA; */
 }
 
-.main {
+/* .main {
  
 
-}
+} */
 
    .font {
     font-family: 'Gilroy';
@@ -114,14 +114,16 @@ color: #000000;
 .addUserForm input {
     border-radius: 10px;
     /* border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
-    border: black 1px solid;
+    /* border: black 1px solid; */
+    border: 1px solid rgba(0, 0, 0, 0.3);
     padding: 5px 5px;
     width: 250px;
     font-size: 14px;
     outline: none !important;
     /* font-weight: lighter; */
-    color: #000000;
+    /* color: #000000; */
     font-family: 'Gilroy-Bold';
+    color: rgba(104, 110, 116, 0.75);
     
   
 }
@@ -160,10 +162,10 @@ mat-form-field {
     padding: 0em 0 0.7em 0;
     } */
 
-::ng-deep.mat-dialog-container {
-    /* background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
+/* ::ng-deep.mat-dialog-container {
+    background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
     
-}
+} */
 
 .btn-primary:disabled {
     border-color: black;

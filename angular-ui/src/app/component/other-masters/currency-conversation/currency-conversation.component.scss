@@ -311,7 +311,7 @@ left: 37%
   // top: 6px;
   // margin-top: 5px;
   // margin-left: 69%;
-  margin-left:59%;
+  margin-left:834px;
 }
 .download-btn {
   border: none;
@@ -367,7 +367,7 @@ left: 37%
 
 
   ::ng-deep.ag-sticky-top{
-    border-bottom:  0.5px solid #000000;
+    border-bottom:  0.5px solid white;
 }
 // .main{
 //     border-radius: 30px;
@@ -439,7 +439,7 @@ height: calc(100vh - 65px);
 
 :host ::ng-deep.ag-theme-material .ag-root-wrapper, .ag-theme-material .ag-sticky-top {
 
-  border: 0.5px solid #000000 !important;
+  border: 1px solid rgba(152, 156, 160, 0.3);
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
   border-radius: 10px !important;
 
@@ -872,14 +872,14 @@ mat-sidenav {
 .dropdown-placeholder {
   background: white;
   color: #808080;
-  top: 0;
+  top: 0px;
   position: absolute;
   height: 41px;
   line-height: 41px;
-  left: 16px;
+  left: 15px;
   border-top: 1px solid rgba(104, 110, 116, 0.75);
   border-bottom: 1px solid rgba(104, 110, 116, 0.75);
-  /* width: 80%; */
+  border-left: 1px solid rgba(104,110,116,0.75);
   border-radius: 10px 0 0 10px !important;
   padding-left: 10px;
   pointer-events: none;

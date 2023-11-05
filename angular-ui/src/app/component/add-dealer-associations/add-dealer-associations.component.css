@@ -1606,7 +1606,7 @@ input.form-check-input1 {
   }
   .slctd-row{
     background: #FFFFFF;
-    border: 0.5px solid #000000;
+    border: 1px solid rgba(0, 0, 0, 0.3);
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     height: 43px;

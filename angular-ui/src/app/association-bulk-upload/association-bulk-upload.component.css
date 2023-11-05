@@ -349,10 +349,10 @@
     }
     .txt-1 {
         top: 38px;
-        left: 127px;
+        left: 111px;
     }
     .txt-2 {
-        left: 88px;
+        left: 53px;
         bottom: 8px;
         font-weight: 600;
     }
@@ -565,7 +565,7 @@
         padding-left: 12px;
         font-size: 14px;
         color: black;
-        background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+        /* background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
     }
     .expandrowDiv{
         margin-top: -19px;

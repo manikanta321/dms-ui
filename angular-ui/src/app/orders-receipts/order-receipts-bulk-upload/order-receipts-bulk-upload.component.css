@@ -7,15 +7,14 @@
   padding-left: 12px;
   font-size: 14px;
   color: black;
-  background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+  /* background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
 }
 .expandtotalfull
 {
   top:15px;
   background: #FFFFFF;
   color: #000000;
-}
-.imagestyle
+}.imagestyle
       {
         top: 94px;
         z-index: 1;

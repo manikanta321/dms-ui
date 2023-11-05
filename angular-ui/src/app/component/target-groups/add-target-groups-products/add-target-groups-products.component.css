@@ -52,7 +52,13 @@
   
     /* background-color: #CED4DA; */
   }
-  
+  ag-theme-material[_ngcontent-uwd-c440] {
+    /* --ag-card-radius: 100px;
+    --ag-border-radius: 20px;
+    --ag-header-height: 30px; */
+    --ag-header-foreground-color: white;
+    --ag-header-background-color: rgba(1, 139, 117, 1);
+}
   .main {
   
   
@@ -334,9 +340,9 @@ mat-radio-group{
 padding: 0 16px;
 }
 .btnhover{
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
+ 
   border: none;
-  background: #000000;
+ background:  grey;
   border-radius: 35%;
   position: relative;
   width: 43px;
@@ -361,8 +367,8 @@ padding: 17px;
   height: 41px;
   line-height: 41px;
   left: 16px;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-top: 1px solid rgba(104, 110, 116, 0.75);
+  border-bottom: 1px solid rgba(104, 110, 116, 0.75);
   /* width: 80%; */
   border-radius: 10px 0 0 10px !important;
   padding-left: 10px;
@@ -611,5 +617,23 @@ padding: 17px;
   bottom: -3px;
 
   top: -5px;
+
+}
+.ag-theme-material {
+
+  --ag-card-radius: 100px;
+  --ag-border-radius: 20px;
+  --ag-header-height: 30px;
+  --ag-header-foreground-color: white;
+  --ag-header-background-color: rgba(1, 139, 117, 1);
+  /* --ag-header-cell-hover-background-color: rgb(80, 40, 140);
+ --ag-header-cell-moving-background-color: rgb(80, 40, 140); */
+}
+:host ::ng-deep.ag-theme-material .ag-root-wrapper,
+.ag-theme-material .ag-sticky-top {
+
+ border: 1px solid rgba(152, 156, 160, 0.30) !important;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
+  border-radius: 10px !important;
 
 }

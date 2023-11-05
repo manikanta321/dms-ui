@@ -1,7 +1,9 @@
 .hidden-header {
   display: none;
 }
-
+.refresh{
+  transform: rotate(90deg);
+}
 
 
 
@@ -162,6 +164,7 @@
   .refreshbtn:hover {
     background-color: grey !important;
     color: white !important;
+
   }
   
   // ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
@@ -226,7 +229,7 @@
     border-radius: 13%;
     position: relative;
     width: 40px;
-    margin-left: 19%;
+    margin-left: 17%;
     height: 40px;
   }
   
@@ -391,7 +394,7 @@
     width: 40px;
     height: 40px;
     margin-right: 10px;
-    margin-left: 175px;
+    margin-left: 204px;
     // top: 87px;
     // position: absolute;
     // left: -54%;

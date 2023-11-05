@@ -375,8 +375,8 @@ label {
     height: 41px;
     line-height: 41px;
     left: 1px;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
+    border-top: 1px solid rgba(104, 110, 116, 0.75);
+    border-bottom: 1px solid rgba(104, 110, 116, 0.75);
     width: 80%;
     border-radius: 10px 0 0 10px !important;
     padding-left: 10px;

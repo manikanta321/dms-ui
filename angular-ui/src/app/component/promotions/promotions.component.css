@@ -875,7 +875,9 @@
    border-radius: 11px;
    
  }
-
+.refresh{
+  transform: rotate(90deg);
+}
  .searchInput1 {
    width: 100%;
    height: 42px;

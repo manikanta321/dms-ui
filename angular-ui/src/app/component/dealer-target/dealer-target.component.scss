@@ -900,7 +900,9 @@
     min-width: calc(75% + 64px);
   
   }
-  
+  .refresh{
+    transform: rotate(90deg);
+  }
   ::ng-deep.mat-select-panel {
     background: red;
   }

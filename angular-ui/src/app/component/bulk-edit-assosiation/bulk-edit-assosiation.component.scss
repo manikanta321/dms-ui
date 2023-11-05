@@ -988,8 +988,8 @@ ng-deep .roless.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret 
   height: 41px;
   line-height: 41px;
   left: 1px;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-top: 1px solid rgba(104, 110, 116, 0.75);
+  border-bottom: 1px solid rgba(104, 110, 116, 0.75);
   width: 80%;
   border-radius: 10px 0 0 10px !important;
   padding-left: 10px;
@@ -1179,11 +1179,11 @@ margin-left: 136px;
     background-color: white;
     padding: 10px;
     border: solid 1px black;
-    border-radius: 10px;
+    border-radius: 15px;
      height: 385px;
     overflow-y: scroll;
     position: relative;
-    top: 35px;
+    top: 20px;
 
   }
   .flexcss{

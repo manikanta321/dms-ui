@@ -1,25 +1,30 @@
 <div class="font dealerPopup">
     <div class=" main" width="900%">
         <div class="container add-dealer-scroll">
-            <div class="addUser">
-                <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+            
+            <div class=" d-flex addUser">
+                <div class="d-flex">
+                    <img src="assets/img/arrow-left-circle-fill.svg" (click)="prevStepper()"
+                    class="addMore-icon" style="width: 24px;margin-left: 760px;" alt="left-arr-btn">
+    
+    
+    
+                    <!-- <img src="assets/img/arrow-left-circle-fill.svg" *ngIf="basicInfo" class="addMore-icons"
+                        style="width: 24px;margin-left: 760px;" alt="left-arr-btn" (click)="goBack(stepper)"> -->
+    
+                    <img src="assets/img/arrow-right-circle-fill.svg" (click)="disableBackbutton()" class="addMore-icon"
+                        style="width: 24px; margin-left: 12px;" alt="right-arr-btn">
+    
+                </div>
+                <div>
+                    <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
+                </div>
+           
             </div>
             <div class="head-t">
                 <h3 class="addU font">{{dealerAction}} Dealer </h3>
                 <br>
-                <div class="d-flex">
-                    <img src="assets/img/arrow-left-circle-fill.svg" (click)="prevStepper()"
-                    class="addMore-icon" style="width: 24px;margin-left: 760px;" alt="left-arr-btn">
-
-
-
-                    <!-- <img src="assets/img/arrow-left-circle-fill.svg" *ngIf="basicInfo" class="addMore-icons"
-                        style="width: 24px;margin-left: 760px;" alt="left-arr-btn" (click)="goBack(stepper)"> -->
-
-                    <img src="assets/img/arrow-right-circle-fill.svg" (click)="disableBackbutton()" class="addMore-icon"
-                        style="width: 24px; margin-left: 12px;" alt="right-arr-btn">
-
-                </div>
+               
 
                 <mat-stepper labelPosition="bottom" #stepper>
                     <mat-step [stepControl]="firstFormGroup">
@@ -116,7 +121,7 @@
                                             <input type="text" formControlName="OtherIdentifier"
                                                 class="addDelercols form-control" style="width:98%;"
                                                 placeholder="Enter and select">
-                                            <img src="../assets/img/search.png" class="search">
+                                            <!-- <img src="../assets/img/search.png" class="search"> -->
                                         </div>
                                     </div>
                                     <!-- <div class="row">

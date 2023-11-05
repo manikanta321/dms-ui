@@ -63,7 +63,7 @@ input[type=checkbox] {
 } */
 .horizontal-scroll__item {
   /* border: 1px solid black; */
-  flex: 0 0 249px;
+  flex: 0.2 0 249px;
   scroll-snap-align: start;
 }
 
@@ -834,7 +834,7 @@ li {
 
 ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
   width: 1197px;
-  margin-top: -51px;
+  margin-top: -10px;
 
 }
 
@@ -884,7 +884,7 @@ li {
 .head-t h3 {
   color: #000000;
   text-align: center;
-  margin-top: -18px;
+  /* margin-top: -18px; */
   margin-bottom: 2px;
 }
 
@@ -1604,12 +1604,12 @@ li {
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   border-color: black;
-  margin-left: 52px;
+  margin-left: 100px;
 
 }
 
 .errormsg {
-  margin-left: 50px;
+  margin-left: 100px;
 }
 
 .cancel-btn {
@@ -1691,6 +1691,7 @@ li {
 .addMore-icon {
   cursor: pointer;
   margin-left: 13px;
+
   /* cursor: not-allowed;
     pointer-events: none !important; */
 }
@@ -1699,6 +1700,7 @@ li {
   margin-left: 45px;
   position: relative;
   top: 30px;
+  color: rgba(1, 139, 117, 1);
 }
 
 .addMore-icons {
@@ -1827,7 +1829,7 @@ li {
 ::ng-deep.mat-dialog-container {
   padding: 5px;
   overflow: hidden;
-  width: 97%;
+  width: 100%;
   position: relative;
   left: 29px;
 

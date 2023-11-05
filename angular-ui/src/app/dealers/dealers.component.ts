@@ -330,9 +330,10 @@ export class DealersComponent implements OnInit {
     console.log('parent is working', this.message)
   }
 
-
+  userType:any
 
   ngOnInit(): void {
+    this.userType = localStorage.getItem('userType');
     this.getusertabeldata();
     this.roleItems();
     this.statusItems();

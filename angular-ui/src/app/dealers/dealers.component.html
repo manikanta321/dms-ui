@@ -47,28 +47,31 @@
 
        </div>
      </div>
-     <div class="searchBox d-flex">
-       <input class="searchInput font" type="text" name="" placeholder=" Search Here Anything"
-       (keyup)="onSearchChange($event)">
-       <mat-icon  class="searchButton">search</mat-icon>
-       <button class="search-btn searchAlign">Search</button>
-     </div>
-     <div class="icon btnhover refreshbtn" (click)="refresh()" style=" cursor: pointer;">
-       <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;"
-         alt="refresh">
-    
-   </div>
-     <div class="col-md-0">
-       <div class="add-user" (click)="addUser()" style=" cursor: pointer" userRoleDirective="ADD_DEALER" [pageName]="currentPageName">
-         <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
-       </div>
-     </div>
-     <div class="col-md-0" userRoleDirective="DOWNLOAD_DEALER" [pageName]="currentPageName">
-       <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer" >
-         <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;"
-           alt="add-user-btn">
-       </div>
-     </div>
+     <!-- search -->
+    <div class="searchBox d-flex">
+      <input class="searchInput font" type="text" name="" placeholder=" Search Here Anything"
+        (keyup)="onSearchChange($event)">
+      <mat-icon class="searchButton">search</mat-icon>
+      <button class="search-btn searchAlign">Search</button>
+    </div>
+<!-- refesh -->
+    <div class="icon btnhover" (click)="refresh()"  style=" cursor: pointer;">
+      <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;" alt="refresh">
+    </div>
+   
+    <!-- add user -->
+    <div class="col-md-0">
+      <div class="add-user" (click)="addUser()" style=" cursor: pointer" userRoleDirective="ADD_DEALER"
+        [pageName]="currentPageName">
+        <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+      </div>
+    </div>
+    <!-- download -->
+    <div class="col-md-0" userRoleDirective="DOWNLOAD_DEALER" [pageName]="currentPageName">
+      <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer">
+        <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;" alt="add-user-btn">
+      </div>
+    </div>
   
      <!-- <div class="icon btnhover refreshbtn" (click)="refresh()" style=" cursor: pointer;">
        <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;"

@@ -47,40 +47,52 @@
  
         </div>
       </div>
-      <div class="searchBox d-flex" style=" cursor: pointer" *ngIf="userType !== 'Dealer Admin'">
+      <!-- search -->
+      <div class="searchBox d-flex" style=" cursor: pointer">
         <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
           placeholder="Search Here Anything" (keyup)="onSearchChange($event)">
           <mat-icon  class="searchButton">search</mat-icon>
         <button class="search-btn searchAlign" style="font-family: 'Gilroy'">Search</button>
       </div>
+      <!-- refresh -->
       <div class="icon btnhover refreshbtn" (click)="refresh()" style=" cursor: pointer;">
         <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;"
           alt="refresh">
       </div>
+      <!-- add user -->
       <div class="col-md-0" userRoleDirective="ADD_ASSOCIATION" [pageName]="currentPageName">
         <div class="add-user" (click)="addUser()" style=" cursor: pointer">
           <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
         </div>
       </div>
-   
+   <!-- bulk uplod -->
         <div class="col-md-0" userRoleDirective="BULK_EDIT_ASSOCIATION" [pageName]="currentPageName" class="bulkEditAss">
           <div class="add-user1" (click)="editBulk()" style=" cursor: pointer">
             <img src="assets/img/editasso.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
           </div>
         </div>
+        <!-- upload -->
         <div class="col-md-0">
-          <div class="asso-upload" (click)="orderTargetUpload()"  *ngIf="userType !== 'Dealer Admin'" >
-              <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
-                  alt="add-user-btn">    
+          <div class="asso-upload" (click)="orderTargetUpload()" *ngIf="userType !== 'Dealer Admin'">
+            <img class="imgupload" src="assets/img/orderlist-downloD.svg" alt="add-user-btn">
           </div>
+        </div>
+        <!-- export -->
+        <div class="col-md-0">
+          <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer" *ngIf="userType !== 'Dealer Admin'">
+            <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;" alt="add-user-btn">
           </div>
-          <div class="col-md-0" >
-            <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer" *ngIf="userType !== 'Dealer Admin'">
-              <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;"
-                alt="add-user-btn">
-            </div>
+        </div>
+        <!-- Dealer Admin -->
+        <div class="col-md-0" *ngIf="userType == 'Dealer Admin'" style="display: flex; margin-left: 250px;" >
+          <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer; margin-left: 20px ;">
+            <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;"
+              alt="add-user-btn">
           </div>
-         
+          <div class="asso-uploaddealer" (click)="orderTargetUpload()" style=" cursor: pointer; margin-left: 20px ;">
+            <img class="imgupload" src="assets/img/orderlist-downloD.svg" alt="add-user-btn">
+          </div>
+        </div>
     </div>
  
      <!-- <div class="row " style="margin-bottom:90px;" > -->
@@ -91,7 +103,7 @@
            
  
             <!-- dealer admin -->
-            <div class="searchBox d-flex" style=" cursor: pointer" *ngIf="userType == 'Dealer Admin'">
+            <!-- <div class="searchBox d-flex" style=" cursor: pointer" *ngIf="userType == 'Dealer Admin'">
               <input class="searchInputDealerad" style="font-family: 'Gilroy'" type="text" name=""
                 placeholder="Type & search for anything" (keyup)="onSearchChange($event)">
               <button class="searchButtondealerr" href="#">
@@ -100,36 +112,11 @@
                 </i>
               </button>
               <button class="Seearrch-Dealerbtn searchAlign" style="font-family: 'Gilroy'">Search</button>
-            </div>
+            </div> -->
  
  
           <!-- </div> -->
-         
- 
-           
-         
- 
-              <!-- Dealer Admin -->
-               <div class="col-md-0"  *ngIf="userType == 'Dealer Admin'">
-                <div class="asso-uploaddealer" (click)="orderTargetUpload()">
-                    <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
-                        alt="add-user-btn">    
-                </div>
-                </div>
- 
-               
- 
-               
-         
- 
- 
-          <!-- Dealer Admin -->
-          <div class="col-md-0" *ngIf="userType == 'Dealer Admin'" >
-            <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer">
-              <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;"
-                alt="add-user-btn">
-            </div>
-          </div>
+
         </div>
       </div>
       <!-- </div> -->

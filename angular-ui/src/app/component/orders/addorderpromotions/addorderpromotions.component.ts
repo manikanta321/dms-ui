@@ -1992,10 +1992,10 @@ export class AddorderpromotionsComponent implements OnInit {
 
   DisplayNonpromotion: boolean = false;
   addnonPromoItems() {
-    if (this.UpdatedQty == null) {
+    if (this.UpdatedQty == null|| this.UpdatedQty==0 ||this.UpdatedQty=='') {
       const dialogRef = this.dialog.open(OrderActionShipmentComponent, {
         data: {
-          // Alertpp: true,
+          Alertpp: true,
         },
       });
     } else {

@@ -529,7 +529,7 @@ input.mat-input-element {
 
 .dropdownborder
 {
-  border-left:  1px  solid #000000 !important;
+  border-left: 1px solid #0000004D !important;
   border-radius: 13px;
 }
 ::ng-deep.dropdown-list ul {
@@ -2512,7 +2512,7 @@ margin-top: -5px;
   margin-top: 1px;
   background: rgba(156, 160, 164, 1);
   border-radius: 18%;
-  margin-left: 83%;
+  margin-left: -335%;
 }
 
 .refreshbtn .refresh-icon {
@@ -2799,8 +2799,8 @@ table thead, table tbody tr {
   height: 41px;
   line-height: 41px;
   left: 1px;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-top: 1px solid #0000004D;
+  border-bottom: 1px solid #0000004D;
   width: 80%;
   border-radius: 10px 0 0 10px !important;
   padding-left: 10px;

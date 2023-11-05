@@ -54,7 +54,7 @@ padding: 15px;
 margin-left: 17px;
   }
   .bulk-download{
-    background: #000000;
+    background:  #808080;
     border-radius: 50%;
     width: 37px;
     height: 37px;
@@ -136,8 +136,8 @@ text-align: center;
     height: 41px;
     line-height: 41px;
     left: 1px;
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid #808080;
     width: 80%;
     border-radius: 10px 0 0 10px !important;
     padding-left: 10px;
@@ -145,7 +145,7 @@ text-align: center;
   }
   ::ng-deep.multiselect-dropdown .dropdown-btn {
     display: inline-block;
-    border: 1px solid rgba(0, 0, 0, 0.3)!important;
+    border: 1px solid #808080!important;
     width: 100%;
     /* height: 62%; */
     padding: 9px 12px !important;
@@ -156,7 +156,7 @@ text-align: center;
     vertical-align: middle;
     cursor: pointer;
     background-image: none;
-    border-radius: 10px !important;
+    border-radius: 12px !important;
     background: white !important;
     height: 41px;
   }
@@ -191,8 +191,9 @@ text-align: center;
     width: 43px;
     height: 41px;
     background: rgba(104, 110, 116, 0.66);
-    border-radius: 10px;
+    border-radius: 7px;
     margin-left: 10px;
+    transform: rotate(90deg);
 
   }
   .refresh-img {
@@ -234,13 +235,11 @@ text-align: center;
 }
 
 :host ::ng-deep.ag-theme-material .ag-root-wrapper,
-.ag-theme-material .ag-sticky-top {
-
-  border: 0.5px solid #000000 !important;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
-  border-radius: 0px !important;
-
-}
+  .ag-theme-material .ag-sticky-top {
+    border: 1px solid #989CA04D !important;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
+    border-radius: 10px !important;
+  }
 
 .ag-root-wrapper {
   border: solid 10px;
@@ -288,7 +287,8 @@ text-align: center;
 
 .pagination-cls {
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 600;
+  color: #686E74;
 }
 
 .ag-theme-material {
@@ -377,7 +377,7 @@ height: 43px;
 }
 #DP
 {
-  border-left: 1px solid black;
+  border-left: 1px solid  #808080;
 }
 ::ng-deep.dlsr  .dropdown-btn span .ng-star-inserted {
   position: absolute !important;
@@ -424,7 +424,7 @@ margin-right: -1px;
 padding-left: 5px;
 }
 ::ng-deep.dealers .multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
-  display: none;
+  /* display: none; */
     }
 ::ng-deep.dealers .multiselect-dropdown .dropdown-btn .selected-item {
   background: #D23F00 !important;

@@ -137,7 +137,7 @@
       <span *ngIf="dealerForm.get('dealer').value.length == 0">  Dealers  </span>
       <span *ngIf="dealerForm.get('dealer').value.length == 1" class="selected-placeholder"> {{dealerForm.get('dealer').value.length}} Dealer selected </span>
       <span *ngIf="dealerForm.get('dealer').value.length > 1" class="selected-placeholder"> {{dealerForm.get('dealer').value.length}} Dealer(s) selected </span>
-      <img src="../assets/img/search.png" class="searchReceipts">
+      
     </div>
     
   </div>
@@ -176,7 +176,7 @@
     (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
     (bodyScroll)="handleScrollReceipt($event)"></ag-grid-angular>
   <div class="pagination">
-    <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
+    <span class="pagination-cls">1</span>-<span class="pagination-cls">{{paginationScrollCount}}</span> &nbsp;<span class="pagination-cls"> of &nbsp;</span><span
       class="pagination-cls">{{receiptDatalist.length}}</span>
   </div>
 </div>

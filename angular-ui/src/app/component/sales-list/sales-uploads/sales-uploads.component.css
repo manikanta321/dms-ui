@@ -66,7 +66,7 @@
   ::ng-deep.shipment .mat-form-field-appearance-fill .mat-form-field-flex{
     border-radius: 10px;
    /* padding: .75em .75em 0 .75em;  */
-   padding: 5px;
+   padding-left: 10px;
    background: white !important;
    border-top: 1px solid rgba(104, 110, 116, 0.75);
    border-bottom: 1px solid rgba(104, 110, 116, 0.75);
@@ -197,7 +197,7 @@
         height: 40px;
         margin-right: 27px;
         cursor: pointer;
-        margin-left: 53%;
+        margin-left: 48%;
       }
       .sales-download:hover
       {
@@ -214,7 +214,8 @@
         border-radius: 13%;
         width: 40px;
         height: 40px;
-        margin-right: 0px;
+        position: relative;
+        left: -14px;
         cursor: pointer;
       }
       .sales-upload:hover

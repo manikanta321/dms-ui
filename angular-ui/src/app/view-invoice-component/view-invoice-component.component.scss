@@ -30,6 +30,12 @@
 /* ::ng-deep.mat-row{
     height: 10px;
 } */
+:host ::ng-deep.ag-theme-material .ag-root-wrapper,
+  .ag-theme-material .ag-sticky-top {
+    border: 1px solid #989CA04D !important;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
+    border-radius: 10px !important;
+  }
 .user-text {
     font-size: 30px;
     line-height: 41px;
@@ -384,9 +390,9 @@
   
   }
   
-  ::ng-deep.ag-sticky-top {
-    border-bottom: 0.5px solid #000000;
-  }
+  // ::ng-deep.ag-sticky-top {
+  //   border-bottom: 0.5px solid #000000;
+  // }
   .main{
     
       border-radius: 19px;
@@ -468,14 +474,6 @@
     font-size: 14px !important;
   }
   
-  :host ::ng-deep.ag-theme-material .ag-root-wrapper,
-  .ag-theme-material .ag-sticky-top {
-  
-    border: 0.5px solid #000000 !important;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
-    border-radius: 0px !important;
-  
-  }
   
   /* ::ng-deep.ag-root-wrapper {
     --ag-border: solid;
@@ -927,10 +925,11 @@
   .pagination {
     float: right !important;
   }
-  
-  .pagination-cls {
-    font-size: 14px;
-    font-weight: 900;
+
+    .pagination-cls {
+      font-size: 14px;
+      font-weight: 600;
+      color: #686E74;
   }
   
   .dropdown-form {

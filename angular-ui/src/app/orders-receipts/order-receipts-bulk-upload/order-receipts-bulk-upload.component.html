@@ -15,7 +15,11 @@
         </div>
         <label class=" row upload-div">
             <input  type="file"  (change)="onFileChange($event)" style="display: none;">
-            <img src="../../../assets/img/upload-icon.png"  class="upload-icon" alt="Upload icon">
+           
+
+                <img src="../../../assets/img/Group 35735.svg"  class="upload-icon" alt="Upload icon">
+               
+            
             <div class="row" *ngIf="uploadedTextShow">
                 <div  *ngFor="let file of files; let i=index">
                    <h6 class="uploadedText"> Document is <b>{{file.name}} </b><br></h6>
@@ -425,7 +429,8 @@
         <label class=" row upload_div">
 
             <input  type="file"  (change)="onFileChange($event)" style="display: none;">
-            <img src="../../../assets/img/upload-icon.png"  class="upload_icon" alt="Upload icon">
+            <!-- <img src="../../../assets/img/upload-icon.png"  class="upload_icon" alt="Upload icon"> -->
+            <img src="../../../assets/img/Group 35735.svg"  class="upload-icon" alt="Upload icon">
             <div class="row" *ngIf="uploadedTextShow">
                 <div  *ngFor="let file of files; let i=index">
                     

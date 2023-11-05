@@ -1,3 +1,13 @@
+
+::ng-deep .orders-tab-group .mat-tab-label{
+  height: 35px !important;
+  min-width: 161px !important;
+  font-family: 'Calibri';
+  color:rgba(1, 139, 117, 1);
+  font-size: 15px;
+
+}
+
 .datapromoname
 {
   position: relative;
@@ -1526,10 +1536,11 @@ border-top-right-radius: 5px;
     border-top:1px  solid  #989CA04D;
     border-bottom: 1px solid #989CA04D;
     border-left: 1px solid #989CA04D;
+    border-right: 1px solid #989CA04D;
     border-radius: 21px;
     font-size: 13px;
     position: relative;
-    left: 61.2%;
+    left: 60.2%;
    
   }
   

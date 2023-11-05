@@ -11,10 +11,10 @@
             <div class="card-body" >
                
               <div class="row">
-                <div class="col-md-2" *ngIf="userType==='Admin'"> 
-                    <b class="DEalername">Dealer Name</b> <br>
-                    <p class="text-secondary">{{shipmentArray.customername}}</p>
-                </div>
+
+
+                
+               
                 <div class="col-md-2">
                     <b>Status 
                         <span class="tooltip-content"
@@ -31,9 +31,19 @@
                        <br>
                     <p class="text-secondary">{{shipmentArray.status}}</p>
                 </div>
+
+                <div class="col-md-2" *ngIf="userType==='Admin'"> 
+                  <b class="DEalername">Dealer Name</b> <br>
+                  <p class="text-secondary">{{shipmentArray.customername}}</p>
+              </div>
+
+
+
                 <div class="col-md-2">
                     <b class="DEalername">Created On</b> <br>
-                    <p class="text-secondary">{{shipmentArray.createdOn | date }}</p>
+                    
+                    <p class="text-secondary">{{ shipmentArray.createdOn | date:'dd-MMM-YYYY' }}</p>
+
                 </div>
                 <div class="col-md-4">
                     <b class="DEalername">Created By</b> <br>

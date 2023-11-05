@@ -674,6 +674,7 @@
       height: 55px;
       left: 44%;
       top: 12%;
+      color:#808080 !important;
     }
     .uploaded_Text{
       font-size: 14px;
@@ -750,6 +751,7 @@
   padding-left: 12px;
   font-size: 14px;
   color: black;
+  background-color: white;
  
 }
 .expand_Divalign{

@@ -194,7 +194,7 @@
 
 }
 
-.refreshbtn1:hover {
+.refreshbtn1 {
     background-color: grey !important;
     color: white !important;
 }
@@ -1284,8 +1284,7 @@ mat-sidenav {
     cursor: pointer;
 }
 
-.sales-dwnld:hover {
-    background-color: grey !important;
+.sales-dwnld {
     color: white !important;
 }
 
@@ -1498,7 +1497,7 @@ justify-content: end;
     border-radius: 10px 0 0 10px !important;
     padding-left: 10px;
     pointer-events: none;
-    left: 0px;
+   
 }
 
 .Dealers-placeholder.dropdown-placeholder .selected-placeholder {

@@ -113,6 +113,7 @@ export class SalesInventoryComponent implements OnInit {
       minWidth: 100,
     resizable: true,
     sortable: true,
+    lockVisible : true
   };
   
   public columnTypes: {
@@ -632,6 +633,7 @@ console.log("SalesList",this.salesListData)
 
 
     }
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
     this.salesService.getDealeList(data).subscribe((res)=>{
       console.log(res.response)
       this.salesListData=res.response;

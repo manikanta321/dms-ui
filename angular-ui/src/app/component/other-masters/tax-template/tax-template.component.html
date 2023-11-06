@@ -34,7 +34,7 @@
 </div>
 
   <div class="icon btnhover refreshbtn" (click)="refresh()" >
-    <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px;" alt="refresh" >
+    <img class="refresh" src="assets/img/Refreshbutton.svg"style="position: relative;top: 9px;left: 9px;" alt="refresh" >
   </div>
 
   <div class="add-user" (click)="addtaxTempl()">
@@ -97,9 +97,9 @@
   [paginationPageSize]="paginationPageSize"
   (bodyScroll)="handleScroll($event)"
 
-  ></ag-grid-angular>
-  <div class="pagination">
-    <span class="pagination-cls">1&nbsp;</span> to&nbsp; <span class="pagination-cls">{{rowData5.length}}&nbsp;</span> of&nbsp; <span class="pagination-cls">{{rowData5.length}}</span>
+  ></ag-grid-angular> 
+    <div class="pagination">
+      <span class="pagination-cls">1</span>&nbsp; -&nbsp; <span  class="pagination-cls">{{rowData5.length}}</span> <span class="pagination-cls"> &nbsp; of&nbsp;</span>
+      <span class="pagination-cls">&nbsp;{{rowData5.length}}</span>
     </div>
-     
 </div>

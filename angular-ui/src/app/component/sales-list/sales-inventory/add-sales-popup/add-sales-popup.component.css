@@ -249,7 +249,9 @@
     border-style: solid;
     border-color: #686E74;
     border-radius: 0px 0px 10px 10px;
-    margin: 0 10px 10px;
+    margin: -6px 10px 10px;
+    width: 100%;
+    margin-left: 0px;
   }
   .search-img {
     width: 17px;

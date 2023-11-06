@@ -248,7 +248,7 @@ padding-left: 11px;
   border-radius: 12px !important;
   background: white !important;
   height: 41px !important;
-  left: 0px;
+  
 }
 
 ::ng-deep.dropdown-multiselect__caret:before {
@@ -692,8 +692,8 @@ padding-left: 11px;
 .imageRefresh {
   position: relative;
   top: 9px;
-  left: 12px;
-  transform: rotate(90deg);
+  left: 9px;
+  /* transform: rotate(90deg); */
 }
 
 /* .searchRow {
@@ -729,7 +729,7 @@ padding-left: 11px;
 .gridAlign {
   width: 101%;
   height: 440px;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   background-color: white;
   font-family: Gilroy;
   position: relative;
@@ -743,6 +743,7 @@ padding-left: 11px;
 .pagination-cls {
   font-size: 14px;
   font-weight: 900;
+  color: #686E74;
 }
 
 .font {

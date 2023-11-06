@@ -89,6 +89,7 @@ export class DealersComponent implements OnInit {
     defaultColDef: {
       resizable: true,
     },
+    suppressDragLeaveHidesColumns : true,
     onCellClicked: (event: CellClickedEvent) => console.log('Cell was clicked'),
     // set background colour on every row, this is probably bad, should be using CSS classes
     rowStyle: { background: 'black' },
@@ -158,6 +159,7 @@ export class DealersComponent implements OnInit {
     minWidth: 100,
     resizable: true,
     sortable: true,
+    lockVisible : true
   };
 
 
@@ -434,6 +436,7 @@ export class DealersComponent implements OnInit {
       statuss: this.statusTytpes,
       Search: this.searchText,
     }
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
     this.user.getAllDealerList(data).subscribe((res) => {
 
       this.rowData5 = res.response;

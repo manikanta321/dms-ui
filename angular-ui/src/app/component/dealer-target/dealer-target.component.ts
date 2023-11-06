@@ -186,6 +186,7 @@ export class DealerTargetComponent implements OnInit {
     minWidth: 100,
     resizable: true,
     sortable: true,
+    lockVisible : true
   };
 
 
@@ -459,6 +460,7 @@ export class DealerTargetComponent implements OnInit {
       Search:this.searchText,
       CurrentUserId:this.loggedUserId
     }
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
     this.user.getAllDealerTarget(data).subscribe((res) => {
       this.rowData5 = res.response;
   // console.log("TargetTableData",this.rowData5)

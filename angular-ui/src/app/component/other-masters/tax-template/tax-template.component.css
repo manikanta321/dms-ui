@@ -533,13 +533,14 @@
 
 .pagination {
   float: right !important;
+  margin-top: 11px;
 }
 
 .pagination-cls {
   font-size: 14px;
   font-weight: 900;
  font-weight: bold;
- 
+ color: #686E74;
   font:'Gilroy-Bold';
 
 }

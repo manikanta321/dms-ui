@@ -90,8 +90,9 @@ margin-left: 1%;
 }
 
 .refresh-img {
-  margin-top: 11px;
-  margin-left: 11px;
+  position: relative;
+  top: 7px;
+  left: 8px;
 }
 
 .ag-theme-material .ag-filter-toolpanel-header,
@@ -179,11 +180,14 @@ margin-left: 1%;
 
 .pagination {
   float: right !important;
+  margin-top: 11px;
 }
 
 .pagination-cls {
   font-size: 14px;
   font-weight: 900;
+  color : #686E74;
+
 }
 
 .ag-theme-material {

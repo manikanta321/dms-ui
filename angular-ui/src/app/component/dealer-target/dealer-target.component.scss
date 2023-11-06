@@ -214,7 +214,6 @@
     position: relative;
     width: 42px;
     cursor: pointer;
-    left: 236px;
 
   }
  
@@ -386,9 +385,8 @@
     border-radius: 13%;
     width: 40px;
     height: 40px;
-    top: -3px;
-    position: absolute;
-    left: -48%;
+    position: relative;
+    left: 15px;
   }
   
   .download-btn {
@@ -398,8 +396,7 @@
     position: relative;
     width: 40px;
     height: 40px;
-    top: -3px;
-    left: 6%;
+    left: 45px;
   }
   
   ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
@@ -904,9 +901,9 @@
     min-width: calc(75% + 64px);
   
   }
-  .refresh{
-    transform: rotate(90deg);
-  }
+  // .refresh{
+  //   transform: rotate(90deg);
+  // }
   ::ng-deep.mat-select-panel {
     background: red;
   }
@@ -1006,11 +1003,13 @@
   
   .pagination {
     float: right !important;
+    margin-top: 11px;
   }
   
   .pagination-cls {
     font-size: 14px;
     font-weight: 900;
+    color: #686E74;
   }
   
   .country-info {
@@ -1117,11 +1116,9 @@
     border-radius: 13%;
     width: 40px;
     height: 40px;
-    margin-right: 10px;
     cursor: pointer;
     position: relative;
-    top: -3px;
-    left: -5px;
+    left: 30px;
   }
   .target-upload:hover
   {
@@ -1225,12 +1222,8 @@
 
 .searchBox {
 
-    float: right;
    position: relative;
-    // position: absolute;
-
-    right: -227px;
-
+    right: 15px;
     top: 6px;
 
   }
@@ -1353,7 +1346,7 @@
   .searchicons1 {
     position: absolute;
     top: 42%;
-    left: -222px;
+    left: 20px;
     transform: translateY(-50%);
     font-size: 24px;
     color: #9B9FA3;

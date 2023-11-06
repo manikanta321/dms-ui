@@ -96,8 +96,9 @@
   }
   
   .refresh-img {
-    margin-top: 11px;
-    margin-left: 11px;
+    position: relative;
+    top: 9px;
+    left: 10px;
   }
 /* .sales-container {
     height: 500px;
@@ -197,7 +198,7 @@
         height: 40px;
         margin-right: 27px;
         cursor: pointer;
-        margin-left: 50%;
+        margin-left: 53%;
       }
       .sales-download:hover
       {
@@ -231,11 +232,14 @@
       }
       .pagination {
         float: right !important;
+        margin-top: 11px;
       }
       
       .pagination-cls {
         font-size: 14px;
         font-weight: 900;
+        color: #686E74;
+
       }
 
       .ag-theme-material {

@@ -221,6 +221,7 @@ export class PromotionsComponent implements OnInit {
     minWidth: 100,
     resizable: true,
     sortable: true,
+    lockVisible : true
   };
 
   public columnTypes: {
@@ -482,6 +483,7 @@ export class PromotionsComponent implements OnInit {
     this.productList();
     this.geogrophylist();
     this.dealerItems();
+    this.searchText = '';
     // this.maxDate.setDate(this.maxDate.getDate() + 20);
   }
   refresh() {
@@ -500,6 +502,7 @@ export class PromotionsComponent implements OnInit {
     this.myForms4 = this.fb.group({
       city5: [this.selectedItems],
     });
+    
     this.promotionSelected = [];
     this.productSelected = [];
     this.geographySelected = [];
@@ -514,7 +517,7 @@ export class PromotionsComponent implements OnInit {
     this.product = new FormControl(this.productLisst);
     this.geo = new FormControl(this.geoList);
     this.getusertabeldata();
-
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
     // this.getusertabeldata();
   }
 

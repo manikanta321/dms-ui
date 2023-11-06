@@ -90,7 +90,7 @@
         </form>
       </div>
       <div class="searchBox1" *ngIf="userType !== 'Admin'">
-        <input class="searchInput1" type="text" name="" placeholder="Search here anything"
+        <input id="searchInput" class="searchInput1" type="text" name="" placeholder="Search here anything"
           (keyup)="onSearchChange($event)">
         <mat-icon class="searchicons1">search</mat-icon>
         <button class="search-bt_n1">Search</button>
@@ -102,7 +102,7 @@
       </div>
       <!-- refresh -->
       <div class="ref">
-        <img class="refresh" src="assets/img/Vector.png" (click)="refresh()" alt="refresh" style="margin-left: 1px;">
+        <img class="refresh" src="assets/img/Refreshbutton.svg" (click)="refresh()" alt="refresh" style="margin-left: 0px;">
       </div>
       <!-- downloAD -->
       <div class="download-btn mr-2" style=" cursor: pointer;left:16%" *ngIf="userType !== 'Admin'">
@@ -143,8 +143,9 @@
     (rowClicked)="openDialog()" (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
     (bodyScroll)="handleScroll($event)"></ag-grid-angular>
  
+ 
   <div class="pagination">
-    <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
-      class="pagination-cls">{{rowData5.length}}</span>
+    <span class="pagination-cls">1</span>&nbsp; -&nbsp; <span  class="pagination-cls">{{paginationScrollCount}}</span> <span class="pagination-cls"> &nbsp; of&nbsp;</span>
+    <span class="pagination-cls">&nbsp;{{rowData5.length}}</span>
   </div>
 </div>

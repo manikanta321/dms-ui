@@ -215,6 +215,7 @@ left: 37%
     }
     .pagination {
       float:right !important;
+      margin-top: 11px;
     }
     
     .pagination-cls {
@@ -222,6 +223,7 @@ left: 37%
        font-weight: 900;
      font-weight: ' Gilroy-Bold'; 
       font-weight: bold;
+      color: #686E74;
 
     }
     .m{

@@ -46,7 +46,7 @@
 }
 
 ::ng-deep .mat-tab-label{
-  border: 1px solid rgba(107,107,107,1);
+  border: 1px solid rgba(1,139,117,1)
 }
 
 /*old css*/
@@ -662,7 +662,7 @@ margin-bottom: -53px; */
   left:76%;
   /* right:9%; */
   /* top: 67%; */
-  border: 1px solid #000;
+  border: 1px solid #0000004D;
   border-radius: 11px;
 }
 

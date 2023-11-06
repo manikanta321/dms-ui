@@ -226,9 +226,9 @@
   background-color: grey !important;
   color: white !important;
 }
-.refresh{
-  transform: rotate(90deg);
-}
+// .refresh{
+//   transform: rotate(90deg);
+// }
 .refreshbtn:hover {
    background-color: grey !important;
    color: white !important;
@@ -1154,6 +1154,7 @@ margin-right: 13px;
 .pagination-cls {
   font-size: 14px;
   font-weight: 900;
+  color: #686E74;
 }
 
 ::ng-deep .country-info {

@@ -642,11 +642,13 @@
 
  .pagination {
    float: right !important;
+   margin-top: 11px;
  }
 
  .pagination-cls {
    font-size: 14px;
    font-weight: 900;
+   color: #686E74;
  }
 
  ::ng-deep.custom-day.weekend {
@@ -876,9 +878,9 @@
    border-radius: 11px;
    
  }
-.refresh{
+/* .refresh{
   transform: rotate(90deg);
-}
+} */
  .searchInput1 {
    width: 100%;
    height: 42px;

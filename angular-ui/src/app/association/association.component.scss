@@ -1,9 +1,9 @@
 .hidden-header {
   display: none;
 }
-.refresh{
-  transform: rotate(90deg);
-}
+// .refresh{
+//   transform: rotate(90deg);
+// }
 
 
 
@@ -1015,11 +1015,13 @@
   
   .pagination {
     float: right !important;
+    margin-top: 11px;
   }
   
   .pagination-cls {
     font-size: 14px;
     font-weight: 900;
+    color: #686E74;
   }
   
   .country-info {

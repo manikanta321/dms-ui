@@ -65,48 +65,41 @@
 
         </div>
       </div>
-      <div class="searchBox" style=" cursor: pointer">
-        <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+      <div class="searchBox col-md-2 col-lg-2 col-sm-2" style=" cursor: pointer">
+        <input  id="searchInput" class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
           placeholder="Search Here Anything" (keyup)="onSearchChange($event)">
         <mat-icon  class="searchicons1">search</mat-icon>
         <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
       </div>
-      <div class="icon btnhover refreshbtn"  (click)="refresh()" style="cursor: pointer;">
-        <img class="refresh" src="assets/img/Vector.png" style="position: relative;top: 9px;left: 12px; "
-          alt="refresh" >
-      </div>
-     
-    </div>
-    <div class="row" style="margin-bottom: 20px;">
-      <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
-      <div class="col-md-4" style="margin-left: 67%;margin-bottom:13px;margin-top: -29px;">
-        <div class="row">
-          <div class="col-md-8">
-           
-          </div>
-          <div class="col-md-1"userRoleDirective="ADD_TARGETS" [pageName]="currentPageName">
-            <div class="add-user" (click)="addTarget()" style=" cursor: pointer" >
-              <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
-            </div>
-          </div>
-          <div class="col-md-0">
-            <div class="target-upload" (click)="orderTargetUpload()">
-                <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
-                    alt="add-user-btn">    
-            </div>
-            </div>
-          <div class="col-md-0">
-            <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer">
-              <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;"
-                alt="add-user-btn">
-            </div>
-          </div>
+    
+      
+        <div class="icon btnhover refreshbtn"  (click)="refresh()" style="cursor: pointer;">
+          <img class="refresh" src="assets/img/Refreshbutton.svg"style="position: relative;top: 9px;left: 9px; "
+            alt="refresh" >
         </div>
-      </div>
+            <div userRoleDirective="ADD_TARGETS" [pageName]="currentPageName">
+              <div class="add-user" (click)="addTarget()" style=" cursor: pointer" >
+                <img src="assets/img/add-btn.png" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+              </div>
+            </div>
+            <div>
+              <div class="target-upload" (click)="orderTargetUpload()">
+                  <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
+                      alt="add-user-btn">
+              </div>
+              </div>
+            <div>
+              <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer">
+                <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;"
+                  alt="add-user-btn">
+              </div>
+            </div>
+ 
     </div>
 
 
-    <div>
+
+    <div class="mt-5">
       <div class="ag-grid-dummy" id="ag-grid-dummy"></div>  
       <ag-grid-angular id="gridContainer"
         style=" height: 400px;background-color: white;font-family: Gilroy; margin-left: 20px; cursor: pointer;"
@@ -119,8 +112,8 @@
 
     </div>
     <div class="pagination">
-      <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of
-      <span class="pagination-cls">{{rowData5.length}}</span>
+      <span class="pagination-cls">1</span>&nbsp; -&nbsp; <span  class="pagination-cls">{{paginationScrollCount}}</span> <span class="pagination-cls"> &nbsp; of&nbsp;</span>
+      <span class="pagination-cls">&nbsp;{{rowData5.length}}</span>
     </div>
 
   </div>

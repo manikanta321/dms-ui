@@ -1214,8 +1214,8 @@ mat-sidenav {
 
 .pagination-cls {
     font-size: 14px;
-    /* font-weight: 600; */
-    color: #686E74;
+    font-weight: 600;
+
 }
 .pagination-length
 {

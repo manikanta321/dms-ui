@@ -199,6 +199,7 @@ export class AssociationComponent implements OnInit {
     minWidth: 100,
     resizable: true,
     sortable: true,
+    lockVisible : true
   };
 
 
@@ -485,6 +486,7 @@ export class AssociationComponent implements OnInit {
     Search:this.searchText,
     CurrentUserId:this.loggedUserId
     }
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
     this.associationService.getDealersList(data).subscribe((res) => {
       this.rowData5 = res.response;
   

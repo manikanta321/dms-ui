@@ -617,7 +617,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           res.response.promotionTypesId == 2 ||
           res.response.promotionTypesName == 'Buy AB Get CD'
         ) {
-          this.showConsolidatedMOQ = res.response.isActive;
+          this.showConsolidatedMOQ = res.response.IsIndividual;
           this.addbuyset = [];
           this.noPromotionSelected = false;
           this.buyab = false;
@@ -2653,6 +2653,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         EntityInstanceId: this.EntityInstanceId,
         Status: type,
         Remarks: this.Remarks ?? '',
+        IsIndividual: this.showConsolidatedMOQ,
         AditionalMoqDetails: this.formArr.controls.map((control, index) => {
           return {
             AdditionalDetailsId:
@@ -3175,7 +3176,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     // });
   }
 
-  validateBuyInRange(index: number) {
+  validateBuyInRange(index: any) {
     const buyControl = this.formArr.at(index);
     const qtyFromControl = buyControl.get('qtyFrom');
     const qtyToControl = buyControl.get('qtyTo');

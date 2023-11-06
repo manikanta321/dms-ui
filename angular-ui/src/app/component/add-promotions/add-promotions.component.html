@@ -791,9 +791,9 @@
                                     <th><input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="qtyFrom" [ngClass]="{'error-border': formArr.at(i).get('qtyFrom')?.hasError('invalidRange') }"></th>
                                     <th><input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="qtyTo" [ngClass]="{'error-border': formArr.at(i).get('qtyTo')?.hasError('invalidRange') }"></th>
                                     <th>
-                                        <input type="text" class="form-control" (input)="restrictToAlphabets($event)"(input)="validateBuyInRange(i)" formControlName="buy">
+                                        <input type="text" class="form-control" (input)="restrictToAlphabets($event)" (input)="validateBuyInRange(i)" formControlName="buy">
                                         <div *ngIf="formArr.controls[i].get('buy')?.hasError('buyNotInRange')" class="error-message">
-                                            Buy value must be in between Quantity From and Quantity To.
+                                            Buy value should be less than QuantityTo.
                                           </div>
                                     </th>
                                     <th><input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="get"></th>
@@ -881,10 +881,10 @@
                         </div>
                         <!-- footer -->
                         <div class="row" *ngIf="SaveOrEdit">
-                            <div class="footer-btns">
-                                <button class="btn btn-light saveDraft" (click)="AddPromosaveAndSubmit('Draft')">Save as
+                            <div class="footer-btns" *ngFor="let item of formArr.controls; let i = index">
+                                <button class="btn btn-light saveDraft" (click)="AddPromosaveAndSubmit('Draft')" [disabled]=" formArr.controls[i].get('buy')?.hasError('buyNotInRange')">Save as
                                     draft</button>
-                                <button class="btn btn-light submit" (click)="AddPromosaveAndSubmit('Submit')">
+                                <button class="btn btn-light submit" (click)="AddPromosaveAndSubmit('Submit')"  [disabled]=" formArr.controls[i].get('buy')?.hasError('buyNotInRange')" (click)="AddPromosaveAndSubmitEdit('Submit')">
                                     Submit </button>
                                 <!-- <button class="cancelbtn" [mat-dialog-close]="true">Cancel</button> -->
                             </div>
@@ -897,7 +897,7 @@
                                 <button class="btn btn-light saveDraft"
                                     (click)="AddPromosaveAndSubmitEdit('Draft')">Save as
                                     draft</button>
-                                <button class="btn btn-light submit" [disabled]="hasValidationErrors" (click)="AddPromosaveAndSubmitEdit('Submit')">Save
+                                <button class="btn btn-light submit" [disabled]="hasValidationErrors ">Save
                                     &
                                     Submit </button>
                                 <!-- <button class="cancelbtn" [mat-dialog-close]="true">Cancel</button> -->

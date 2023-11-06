@@ -507,7 +507,7 @@
                                                             </thead>
                                                             <tbody class="tbodayheight4">
                                                                 <tr
-                                                                    *ngFor="let Item of promos.stockitemid  |filter:searchTextSecondPromotion">
+                                                                    *ngFor="let Item of promos.stockitemid  |filter:searchTextSecondPromotion;" >
                                                                     <td style="width:24px"><input type="checkbox"
                                                                             [checked]="Item.isProductSelected"
                                                                             [disabled]="!promos.isEnable"
@@ -541,15 +541,15 @@
                                                                             (click)="doubleClick(promos.stockitemid, Item.Taxid)"
                                                                             alt="double-blue-tick">
                                                                     </td> -->
-                                                                    <td><input type="number" placeholder="Enter Qty" min="0"
-                                                                            class="quatity-inp" [(ngModel)]="Item.Quantity"
-                                                                            [disabled]="!promos.isEnable"
-                                                                            oninput="validity.valid||(value='')"
-                                                                            (keyup)="quantityChange(data, Item)"></td>
+                                                                    <td>
+                                                                        <input type="number" placeholder="Enter Qty" min="0" class="quatity-inp" [(ngModel)]="Item.Quantity"
+                                                                            [disabled]="!promos.isEnable || !Item.isProductSelected" oninput="validity.valid||(value='')" (keyup)="quantityChange(data, Item)">
+                                                                    </td>
                                                                     <td class="txt-right">{{((Item.Quantity ?? 0) *
                                                                         Item.price)|
                                                                         number : '1.2-2'
-                                                                        }}</td>
+                                                                        }}
+                                                                    </td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>

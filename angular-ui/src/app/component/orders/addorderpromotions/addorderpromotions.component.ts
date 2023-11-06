@@ -956,10 +956,14 @@ export class AddorderpromotionsComponent implements OnInit {
 
   onItemSelectdealers(item: any) {
     let prev_dealer = JSON.parse(localStorage.getItem('dealerid')||'null')
+    this.DisplayNonpromotion = false
+    this.NonPromotion=false
     if(prev_dealer !==item.customerId){
     // alert('removing previous dealer items')
     localStorage.removeItem('calculation')
     }
+    // // to make non-promotion list empty
+    // this.nonpromotionlist.splice(0,this.nonpromotionlist.length);
     localStorage.removeItem('totalQuantity');
     localStorage.removeItem('totalAmount');
     this.customerId = item.customerId;

@@ -744,14 +744,20 @@ export class AddDealerPopupComponent implements OnInit {
   goForward(stepper: MatStepper) {
     stepper.next();
   }
+  isRightButtonDisabled: boolean = false;
+  isleftButtonDisabled: boolean = true;
   disableBackbutton() {
     this.goForward(this.myStepper);
     this.basicInfo = true;
-    // alert(this.basicInfo);
+    this.isRightButtonDisabled = true;
+    this.isleftButtonDisabled = false;
   }
+
   prevStepper() {
     this.goBack(this.myStepper);
     this.basicInfo = false;
+    this.isRightButtonDisabled = false;
+    this.isleftButtonDisabled = true;
   }
   getCategory(event: any) {
     if (event.CategoryName == 'Buy(A+B..) get(X+Y..)') {
@@ -967,14 +973,14 @@ export class AddDealerPopupComponent implements OnInit {
     console.log(data);
 
     this.calssification.addDealerData(data).subscribe((res) => {
-      if (res.response.result != 'Succesfully added') {
+      if (res.response?.result != 'Succesfully added') {
         localStorage.setItem('employeeNameOfDealer', '');
-        sessionStorage.setItem('Response', res.response.result);
+        sessionStorage.setItem('Response', res.response?.result);
         this.dialog.open(DealerDeactiveComponent, {
           panelClass: 'deactiveSuccessPop',
         });
       }
-      if (res.response.result == 'Succesfully added') {
+      if (res.response?.result == 'Succesfully added') {
         sessionStorage.setItem('Response', '');
         this.dialogRef.close();
         this.dialog.open(AddDealerSuccessfulPopupComponent, {

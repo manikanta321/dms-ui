@@ -968,7 +968,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   }
 
   deletePromotion(index: number) {
-    this.formArr.removeAt(index);
+    if (index>=1) {
+      this.formArr.removeAt(index);
+    }
   }
 
   getMinimumQtyFromValue() {
@@ -978,7 +980,19 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     const minQtyFrom = Math.min(...qtyFromValues);
     return minQtyFrom;
   }
-
+  validateMOQ(i: number, j: number) {
+    const moq = this.addbuyset[i].BuyGroups[j].MOQ;
+    const minQtyFrom = this.getMinimumQtyFromValue();
+  
+    if (moq < minQtyFrom) {
+      this.addbuyset[i].BuyGroups[j].moqError = true;
+    } else {
+      this.addbuyset[i].BuyGroups[j].moqError = false;
+    }
+  }
+  
+  
+  
   isMOQValid = true;
   isPromotionTypeDataValid = true;
   isPromotionTypeDataValid2 = true;

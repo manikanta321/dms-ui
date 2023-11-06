@@ -690,11 +690,11 @@ li {
     border-radius: 10px;
 }
 
-::ng-deep.myDatepicker .mat-form-field {
-  width: 366px;
+ :host::ng-deep.myDatepicker .mat-form-field {
+  width: 366px !important;
   height: 43px;
   background: white !important;
-  border-radius: 5px;
+  border-radius: 10px !important;
   padding-left: 10px;
 
 }

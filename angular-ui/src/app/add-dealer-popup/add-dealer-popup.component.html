@@ -5,11 +5,13 @@
             <div class=" d-flex addUser">
                 <div class="d-flex">
                     <img src="assets/img/arrow-left-circle-fill.svg" (click)="prevStepper()"
-                    class="addMore-icon" style="width: 24px;margin-left: 760px;" alt="left-arr-btn">
+                    class="addMore-icon" style="width: 24px;margin-left: 760px;" alt="left-arr-btn"
+                    [ngClass]="{'disabled-button': isleftButtonDisabled}">
                     <!-- <img src="assets/img/arrow-left-circle-fill.svg" *ngIf="basicInfo" class="addMore-icons"
                         style="width: 24px;margin-left: 760px;" alt="left-arr-btn" (click)="goBack(stepper)"> -->
                     <img src="assets/img/arrow-right-circle-fill.svg" (click)="disableBackbutton()" class="addMore-icon"
-                        style="width: 24px; margin-left: 12px;" alt="right-arr-btn">
+                        style="width: 24px; margin-left: 12px;" alt="right-arr-btn"
+                        [ngClass]="{'disabled-button': isRightButtonDisabled}">
                 </div>
                 <div>
                     <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
@@ -446,10 +448,11 @@
                                     <div class="row">
                                         <div class="col-1"></div>
                                         <div class="col-5">
-                                            <!-- [disabled]="!addAddressDetailsForm.valid" -->
+                                            
                                             <button 
                                                 class="btn btn-primary btn-block submitbtn save-btn"
                                                 *ngIf="dealerAction!=='Edit'"
+                                                [disabled]="!addAddressDetailsForm.valid"
                                                 (click)="saveGeographiesList()">Save</button>
                                             <button *ngIf="dealerAction == 'Edit'"
                                                 class="btn btn-primary btn-block submitbtn save-btn"

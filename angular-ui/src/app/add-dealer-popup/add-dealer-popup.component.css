@@ -1869,3 +1869,9 @@ li {
 .mat-vertical-stepper-header {
   padding: 24px 81px;
 }
+
+.disabled-button {
+  opacity: 0.5;
+  pointer-events: none; 
+
+}

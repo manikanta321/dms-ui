@@ -376,6 +376,9 @@ export class OrdersShipmentComponent implements OnInit {
       headerName: 'Status',
       field: 'statusName',
       tooltipField: 'statusName',
+      cellStyle: {
+        'color': '#686E74' 
+      },
       cellEditorParams: {
         values: ['In-Transit', 'Received','delete'],
       },

@@ -244,7 +244,13 @@
 
 .pagination-cls {
   font-size: 14px;
-  font-weight: 600;
+
+  color: #686E74;
+}
+.pagination-clASS
+{
+  font-size: 14px;
+  font-weight: 600; 
   color: #686E74;
 }
 

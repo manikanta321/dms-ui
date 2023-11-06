@@ -287,6 +287,11 @@ text-align: center;
 
 .pagination-cls {
   font-size: 14px;
+  color: #686E74;
+}
+.paginationclass
+{
+  font-size: 14px;
   font-weight: 600;
   color: #686E74;
 }

@@ -88,53 +88,53 @@
 
 ::ng-deep.myclass1 {
 
-    color: #0027F4 !important;
+    color:  gray !important;
 }
 ::ng-deep.myclass22 {
 
-    color: greenyellow !important;
+    color:  gray  !important;
 }
 
 ::ng-deep.myclass2 {
-    color: #E5009D !important;
+    color:  gray  !important;
 }
 
 
 ::ng-deep.myclass3 {
-    color: #A5DF00 !important;
+    color:  gray !important;
 }
 
 
 ::ng-deep .myclassss {
-    color: #B6440F !important;
+    color:  gray  !important;
 }
 
 
 ::ng-deep.myclass5 {
-    color: #FF5C00 !important;
+    color:  gray  !important;
 }
 
 
 ::ng-deep.myclass6 {
 
-    color: #FF0000 !important;
+    color:  gray !important;
 }
 
 
 ::ng-deep.myclass7 {
 
-    color: #FFC24B !important;
+    color:  gray !important;
 }
 
 ::ng-deep.myclass8 {
 
-    color: #0D4C86 !important;
+    color:  gray !important;
 }
 
 
 ::ng-deep.Mmyclass {
 
-    color: green !important;
+    color:  gray !important;
 }
 
 .ordersss {
@@ -147,7 +147,7 @@
 
 ::ng-deep.myclass10 {
 
-    color: #9819FF !important;
+    color:  gray !important;
 }
 
 
@@ -1214,7 +1214,7 @@ mat-sidenav {
 
 .pagination-cls {
     font-size: 14px;
-    font-weight: 600;
+    /* font-weight: 600; */
     color: #686E74;
 }
 .pagination-length

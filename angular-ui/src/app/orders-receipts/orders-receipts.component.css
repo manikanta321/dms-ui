@@ -162,6 +162,11 @@
   
   .pagination-cls {
     font-size: 14px;
+    color: #686E74;
+  }
+
+  .pagination-cLASSS{
+    font-size: 14px;
     font-weight: 600;
     color: #686E74;
   }
@@ -400,7 +405,7 @@
       }
       #SeleectGEPBORDER
       {
-        margin-left: -2;
+        margin-left: -2px;
         border-left: 1px solid #808080;
       }
       .dropdown-placeholder {

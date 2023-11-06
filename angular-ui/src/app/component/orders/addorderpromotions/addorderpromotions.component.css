@@ -3023,7 +3023,8 @@ line-height: 16px;
    }
   
    ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
-    background-color: #000a00e2 !important;
+    /* background-color: #000a00e2 !important; */
+    background: rgba(1, 139, 117, 1) !important;
    
     
   }

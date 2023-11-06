@@ -20,12 +20,12 @@
 ::ng-deep.received {
     
   
-  color: #09BC8A!important;
+  color: #686E74!important;
 }
 
 
 ::ng-deep.Transit{
-  color: #0D4C86 !important;
+  color: #686E74!important;
   
        }
 
@@ -159,7 +159,12 @@
 
 .pagination-cls {
   font-size: 14px;
-  font-weight: 900;
+  font-family: 'Calibri';
+  color: #686E74;
+}
+.pagination-classa {
+  font-size: 14px;
+   font-weight: 900;
   font-family: 'Calibri';
   color: #686E74;
 }

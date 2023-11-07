@@ -100,8 +100,8 @@ mat-tab-group{
    ::ng-deep .sales-label .mat-tab-label{ 
       height: 31px !important;  
      width: 189px;
-     /* border: 1px solid rgba(107, 107, 107, 1); */
      border: 1px solid rgba(1, 139, 117, 1);
+     /* border: 0.5px solid rgba(1, 139, 117, 1); */
    
     /* min-width: 152px; */
     color: rgba(1, 139, 117, 1);
@@ -111,10 +111,10 @@ mat-tab-group{
     color: white;
     border-radius: 25px;
     opacity: 1;
-    border-top-right-radius: 1px;
-    border-bottom-right-radius: 2px;
-    border-top-left-radius: 1px;
-    border-bottom-left-radius: 2px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
 }
 ::ng-deep.mat-tab-label .mat-tab-label-content{
     font-family: 'Gilroy-SemiBold';

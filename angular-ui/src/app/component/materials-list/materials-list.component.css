@@ -746,6 +746,12 @@ padding-left: 11px;
   color: #686E74;
 }
 
+.pagination-cl {
+  font-size: 14px;
+  font-weight: 900;
+  color: black;
+}
+
 .font {
   font-family: 'Gilroy-Medium';
 }

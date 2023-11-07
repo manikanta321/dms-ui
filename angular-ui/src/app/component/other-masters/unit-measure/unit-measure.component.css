@@ -226,6 +226,15 @@ left: 37%
       color: #686E74;
 
     }
+
+    .pagination-cl {
+      font-size: 14px;
+       font-weight: 900;
+     font-weight: ' Gilroy-Bold'; 
+      font-weight: bold;
+      color: black;
+
+    }
     .m{
       background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
       border-radius: 19px;

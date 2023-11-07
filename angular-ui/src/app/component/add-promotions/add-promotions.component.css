@@ -209,7 +209,9 @@ border-radius: 10px; */
 
 .removeCircle {
   color: red;
-  margin-top: 7px;
+  /* margin-top: 7px; */
+  position: relative;
+    bottom: 26px;
 }
 
 .listStyleOfItems {

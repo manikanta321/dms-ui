@@ -544,6 +544,14 @@
   font:'Gilroy-Bold';
 
 }
+.pagination-cl {
+  font-size: 14px;
+  font-weight: 900;
+ font-weight: bold;
+ color: black;
+  font:'Gilroy-Bold';
+
+}
 
 .dropdown-placeholder {
   background: white;

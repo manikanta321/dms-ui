@@ -22,11 +22,15 @@ font-style: normal;
     margin-top: 15px;
     width: 150px;
     height: 41px;
+   
+    /* border: 2px solid #000000; */
+    /* border:1px #B3B3B3; */
+}
 
 
 
 
-    }
+    
     .are
     {
         font-family: 'Gilroy-Medium';
@@ -45,6 +49,7 @@ height: 41px;
 width: 150px;
 font-weight: 600;
 font-family: 'Gilroy';
+border:#B3B3B3;
 }
 .close-icon{
     left: 100%;

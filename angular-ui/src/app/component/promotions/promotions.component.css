@@ -651,6 +651,12 @@
    color: #686E74;
  }
 
+ .pagination-cl {
+  font-size: 14px;
+  font-weight: 900;
+  color: black;
+}
+
  ::ng-deep.custom-day.weekend {
    color: black !important;
  }

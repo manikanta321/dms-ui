@@ -23,7 +23,7 @@ font-style: normal;
 }
 .undo{
     padding: 5px 40px;
-    background: black;
+    background: rgba(1, 139, 117, 1) ;
     color: #fff;
     margin-right: 20px;
     /* border: #000000; */
@@ -31,12 +31,13 @@ font-style: normal;
     /* margin-top: 18px; */
      height:41px ;
     width: 150px; 
+    border:1px white;
     }
 .exit{
-background: #fff;
-color: black;
+    background: rgba(1, 139, 117, 1) ;
+color: white;
 padding: 5px 40px;
-border: 2px solid #000000;
+border:1px white;
 border-radius: 10px;
 
 height: 41px;

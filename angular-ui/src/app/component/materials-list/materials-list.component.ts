@@ -125,6 +125,7 @@ export class MaterialsListComponent implements OnInit {
     minWidth: 100,
     resizable: true,
     sortable: true,
+    lockVisible : true
   };
   currentPageName:string = "";
 
@@ -1032,6 +1033,7 @@ else
     this.typesI = [];
     this.productID = [];
     this.statusTypes = [];
+    this.searchText= '';
     const data = {
       Cat: this.catergory,
       Sub_Cat: this.sub_category,
@@ -1039,9 +1041,13 @@ else
       product: this.productID,
       status: this.statusTypes,
       Search: this.searchText,
-      isProduct:this.isproduct
+      isProduct:this.isproduct,
+     
 
     }
+    
+  const searchInput = document.getElementById('searchInput') as HTMLInputElement;   
+  if (searchInput) { searchInput.value = this.searchText;}
     this.materialList.getMaterialList(data).subscribe((res) => {
       this.rowData5 = res.response;
     });

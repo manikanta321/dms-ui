@@ -74,12 +74,14 @@ mat-tab{
     /* border-radius: 25px; */
     opacity: 1;
     background-color: rgba(1, 139, 117, 1)!important;
+    
 }
 
 ::ng-deep .order1-lab .mat-tab-label{
   height: 33px !important;
   min-width: 155px !important;
   border: 1px solid rgba( 1, 139, 117, 1);
+  color: rgba(1, 139, 117, 1) ;
 }
 .order1-lab .mat-tab-labels:nth-child(1) {
   width: 50% !important;

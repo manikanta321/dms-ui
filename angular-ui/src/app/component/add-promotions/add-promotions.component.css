@@ -1061,3 +1061,6 @@ li {
   border-radius: 10px !important;
 
 }
+:host ::ng-deep .ng-select .ng-arrow-wrapper .ng-arrow {
+  border-top-color:#000000;
+}

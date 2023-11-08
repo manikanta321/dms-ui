@@ -280,6 +280,7 @@ instancePopup:any = null;
     refresh(){
       this.toppings = new FormControl(this.toppingList);
       this.toppings1 = new FormControl(this.toppingList1);
+      this.searchText = '';
       this.myForm = this.fb.group({
         city: [this.selectedItems]
     });
@@ -294,6 +295,7 @@ instancePopup:any = null;
         Search:"",
     
       }
+      const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
       this.tax.gettaxlist(data).subscribe((res: any) => {
         this.rowData5 = res.response;
       });

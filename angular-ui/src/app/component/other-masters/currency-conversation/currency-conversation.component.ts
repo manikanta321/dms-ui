@@ -449,6 +449,7 @@ export class CurrencyConversationComponent implements OnInit {
   refresh() {
     this.toppings = new FormControl(this.toppingList);
     this.toppings1 = new FormControl(this.toppingList1);
+    this.searchText = '';
     this.myForm = this.fb.group({
       city: [this.selectedItems]
     });
@@ -464,6 +465,7 @@ export class CurrencyConversationComponent implements OnInit {
       search: '',
 
     }
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
     this.user.getcurrencylist(data).subscribe((res) => {
       this.rowData5 = res.response;
     });

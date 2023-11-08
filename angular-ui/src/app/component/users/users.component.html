@@ -46,7 +46,7 @@
             </form>
           </div>
           <div class="searchBox d-flex" style=" cursor: pointer" userRoleDirective="SEARCH_USER" [pageName]="currentPageName">
-            <input class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+            <input id="searchInput" class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
               placeholder="Search Here Anything" (keyup)="onSearchChange($event)">
               <mat-icon  class="searchButton">search</mat-icon>
             <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
@@ -62,12 +62,12 @@
           </div>
           <div class="col-md-0">
             <div class="download-btn" (click)="onBtnExport()" style=" cursor: pointer">
-              <img src="assets/img/download-btn.png" style="position: relative;top: 8px;left: 12px;"
+              <img src="assets/img/ll.svg" style="position: relative;top: 9px;left: 9px;width: 23px;height: 19px;"
                 alt="add-user-btn">
             </div>
           </div>
         </div>
-        <div class="row" style="margin-bottom:5px;">
+        <div class="row" style="margin-bottom:13px;">
           <!-- <div class="col-lg-offset-6 col-md-offset-6"></div> -->
           <div class="col-md-4" style="margin-left: 68%;margin-bottom:10px">
             <div class="row">

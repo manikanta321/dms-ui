@@ -435,9 +435,9 @@ scrollbar-width: none;
 
 
 
-::ng-deep.ag-sticky-top {
-  border-bottom: 0.5px solid #000000;
-}
+// ::ng-deep.ag-sticky-top {
+//   border-bottom: 0.5px solid #000000;
+// }
 .m{
     // background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
     border-radius: 44px;
@@ -1017,8 +1017,8 @@ mat-sidenav {
   height: 41px;
   line-height: 41px;
   left: 1px;
-  border-top: 1px solid rgba(104, 110, 116, 0.75);
-    border-bottom: 1px solid rgba(104, 110, 116, 0.75);
+  border-top: 1px solid rgba(179, 179, 179, 1);
+    border-bottom: 1px solid rgba(179, 179, 179, 1);
   width: 80%;
   border-radius: 10px 0 0 10px !important;
   padding-left: 10px;

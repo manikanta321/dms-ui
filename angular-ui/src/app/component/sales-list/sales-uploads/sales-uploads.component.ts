@@ -21,6 +21,7 @@ export class SalesUploadsComponent implements OnInit {
   paginationScrollCount: any;
   selectedDateRange:any;
   StartDate:any = '';
+  searchText:any = '';
   salesUploadList:any = [];
   public popupParent: HTMLElement = document.body;
   private gridApi!: GridApi;
@@ -196,6 +197,7 @@ sessionStorage.setItem("BatchId",batchId );
       minWidth: 100,
     resizable: true,
     sortable: true,
+    lockVisible : true
   };
   public columnTypes: {
     [key: string]: ColDef;
@@ -243,10 +245,12 @@ sessionStorage.setItem("BatchId",batchId );
   }
   refresh() {
     this.StartDate = '';
+    this.searchText = '';
     const data = {
-      InvoiceDate:this.StartDate
+      InvoiceDate:this.StartDate,
 
     }
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
     this.salesService.getSalesUploadList(data).subscribe((res)=>{
       console.log(res.response)
       this.salesUploadList=res.response;
@@ -256,18 +260,18 @@ sessionStorage.setItem("BatchId",batchId );
     this.sharedServiceCalendar.filter('Register click')
   }
   onSearchChange($event: any, anything?: any) {
-    // const { target } = $event;
-    // this.searchText = target.value;
-    // const data = {
-    //   InvoiceDate:this.StartDate
+    const { target } = $event;
+    this.searchText = target.value;
+    const data = {
+      InvoiceDate:this.StartDate,
 
-    // }
-    // this.salesService.getSalesUploadList(data).subscribe((res)=>{
-    //   console.log(res.response)
-    //   this.salesUploadList=res.response;
-    //   console.log("SalesUploadList",this.salesUploadList);
+    }
+    this.salesService.getSalesUploadList(data).subscribe((res)=>{
+      console.log(res.response)
+      this.salesUploadList=res.response;
+      console.log("SalesUploadList",this.salesUploadList);
 
-    // })
+    })
 
   }
 }

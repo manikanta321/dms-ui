@@ -404,9 +404,9 @@
 
 
 
-::ng-deep.ag-sticky-top {
+/* ::ng-deep.ag-sticky-top {
   border-bottom: 0.5px solid #000000;
-}
+} */
 
 .main {
   border-radius: 30px;

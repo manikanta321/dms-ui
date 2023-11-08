@@ -1677,7 +1677,7 @@ li {
   top: 25px;
   /* color: red; */
   cursor: pointer;
-  color: grey;
+  color: red;
   left: 15px;
 }
 
@@ -1686,7 +1686,7 @@ li {
   top: 25px;
   /* color: red; */
   cursor: pointer;
-  color: grey;
+  color: red;
   left: 70px;
 }
 .remove-admins{
@@ -1853,7 +1853,7 @@ li {
   overflow: hidden;
   width: 100%;
   position: relative;
-  left: 29px;
+  left: 0px;
 
 }
 

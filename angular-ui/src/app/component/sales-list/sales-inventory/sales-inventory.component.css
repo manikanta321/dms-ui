@@ -284,8 +284,10 @@ margin-left: 1%;
 
 .imgdwnl {
   position: relative;
-  top: 8px;
-  left: 12px;
+  top: 9px;
+  left: 8px;
+  width: 23px;
+  height: 19px;
 }
 
 /* .searchButton {

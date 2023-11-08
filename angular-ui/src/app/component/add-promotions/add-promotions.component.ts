@@ -435,6 +435,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   /* on Select of Dropdown screen change */
   editedDetails: any = [];
   istoggleOn: any;
+  specalmoq:any
   ngOnInit() {
     let headername = localStorage.getItem('addOrEdit');
     if (headername == 'editpromo') {
@@ -447,6 +448,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         this.promoName = res.response.promotionName;
         this.selectedPromo = res.response.promotionTypesId;
         this.addImgpreview = true;
+        this.specalmoq = res.response.promoDetails.moq
         this.base64textString = res.response.imageurl;
         this.startDate.setValue(res.response.startDate);
         this.selectedStartDate =
@@ -964,6 +966,27 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           }
         }
       });
+
+      if (i > 0) {
+        const previousPromotion = promotionsArray.at(i - 1);
+        const previousQtyToControl = previousPromotion.get('qtyTo');
+        if (qtyToControl?.value >= previousQtyToControl?.value) {
+          qtyToControl?.setErrors({ invalidRange: true });
+        } else {
+          qtyToControl?.setErrors(null);
+        }
+      }
+
+      const nextQtyFromControl = nextPromotion.get('qtyFrom');
+      const nextQtyToControl = nextPromotion.get('qtyTo');
+      nextQtyToControl?.valueChanges.subscribe(() => {
+        if (nextQtyToControl.value <= nextQtyFromControl?.value) {
+          nextQtyToControl.setErrors({ invalidRange: true });
+        } else {
+          nextQtyToControl.setErrors(null);
+        }
+      });
+      
     }
   }
 
@@ -2242,249 +2265,222 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     localStorage.setItem('updatePromotionPopup', 'add');
     this.loggedUserId = localStorage.getItem('logInId');
     if (!this.checkValidation(this.selectedPromo)) return;
-
-    if (this.selectedPromo == 1) {
-      console.log('added items', this.buyGroupPlus);
-      console.log('addgetgroup', this.addgetgroup);
-
-      this.buyGroupPlus.forEach((element, index) => {
-        element.GroupId = index + 1;
-        delete element.productselectedRows;
-        delete element.productScselectedRows;
-        delete element.pGselectedRows;
-        delete element.productSubGselectedRows;
-      });
-
-      this.addgetgroup.forEach((element, index) => {
-        element.GroupId = index + 1;
-        delete element.productselectedRows;
-        delete element.productScselectedRows;
-        delete element.pGselectedRows;
-        delete element.productSubGselectedRows;
-      });
-
-      let obj: any = {
-        PromotionName: this.promoName,
-        PromotionTypesId: this.selectedPromo,
-        StartDate: this.selectedStartDate,
-        EndDate: this.selectedEndDate,
-        DoneById: this.loggedUserId,
-        Imageurl: this.base64textString,
-        BuyGroups: this.buyGroupPlus,
-        GetGroups: this.addgetgroup,
-        EntityInstanceId: this.EntityInstanceId,
-        Status: type,
-        Remarks: this.Remarks ?? '',
-        AditionalMoqDetails: this.formArr.controls.map((control) => {
-          return {
-            AdditionalDetailsId: 0,
-            QtyFrom: control.get('qtyFrom')?.value,
-            QtyTo: control.get('qtyTo')?.value,
-            BuyValue: control.get('buy')?.value,
-            GetValue: control.get('get')?.value,
-            Aditional: control.get('additional')?.value,
-          };
-        }),
-      };
-
-      obj.AditionalMoqDetails.forEach((detail, index) => {
-        const error: any = {};
-
-        if (detail.QtyFrom < 0) {
-          error.QtyFrom = 'QtyFrom must be a non-negative value.';
-        }
-
-        if (detail.QtyTo < 0) {
-          error.QtyTo = 'QtyTo must be a non-negative value.';
-        }
-
-        if (detail.BuyValue < 0) {
-          error.BuyValue = 'BuyValue must be a non-negative value.';
-        }
-
-        if (detail.GetValue < 0) {
-          error.GetValue = 'GetValue must be a non-negative value.';
-        }
-
-        if (detail.Aditional && detail.Aditional.length > 100) {
-          error.Aditional = 'Aditional should not exceed 100 characters.';
-        }
-
-        if (Object.keys(error).length > 0) {
-          error[`AditionalMoqDetails[${index}]`] = error;
-        }
-      });
-
-      this.promotionTypes.firstPromotion(obj).subscribe((res) => {
-        console.log(res.response);
-
-        if (res.response.result == 'Added Succesfully') {
-          // alert('Added Succesfully')
-          this.dialog.open(AddPromotionSuccessfulPopupComponent, {
-            panelClass: 'promotionsSuccessPop',
-          });
-          this.sharedService.filter('Register click');
-
-          this.dialogRef.close();
-        } else {
-          // alert(res.response.result);
-
-          this.sharedService.filter('Register click');
-          this.dialog.open(AddPromotionSuccessfulPopupComponent, {
-            panelClass: 'promotionsSuccessPop',
-          });
-          this.dialogRef.close();
-        }
-      });
-    }
-
-    if (this.selectedPromo == 2) {
-      console.log('addbuyset', this.addbuyset);
-      console.log('addGetset', this.addgetset);
-      let obj: any = [];
-      let obj1: any = [];
-
-      for (let i = 0; i < this.addbuyset.length; i++) {
-        this.addbuyset[i].BuyGroups.forEach((element) => {
+    if(type =='Submit'){
+      if (this.selectedPromo == 1) {
+        console.log('added items', this.buyGroupPlus);
+        console.log('addgetgroup', this.addgetgroup);
+  
+        this.buyGroupPlus.forEach((element, index) => {
+          element.GroupId = index + 1;
           delete element.productselectedRows;
-          obj.push(element);
-          console.log('finalobject', obj);
+          delete element.productScselectedRows;
+          delete element.pGselectedRows;
+          delete element.productSubGselectedRows;
+        });
+  
+        this.addgetgroup.forEach((element, index) => {
+          element.GroupId = index + 1;
+          delete element.productselectedRows;
+          delete element.productScselectedRows;
+          delete element.pGselectedRows;
+          delete element.productSubGselectedRows;
+        });
+  
+        let obj: any = {
+          PromotionName: this.promoName,
+          PromotionTypesId: this.selectedPromo,
+          StartDate: this.selectedStartDate,
+          EndDate: this.selectedEndDate,
+          DoneById: this.loggedUserId,
+          Imageurl: this.base64textString,
+          BuyGroups: this.buyGroupPlus,
+          GetGroups: this.addgetgroup,
+          EntityInstanceId: this.EntityInstanceId,
+          Status: type,
+          Remarks: this.Remarks ?? '',
+          AditionalMoqDetails: this.formArr.controls.map((control) => {
+            return {
+              AdditionalDetailsId: 0,
+              QtyFrom: control.get('qtyFrom')?.value,
+              QtyTo: control.get('qtyTo')?.value,
+              BuyValue: control.get('buy')?.value,
+              GetValue: control.get('get')?.value,
+              Aditional: control.get('additional')?.value,
+            };
+          }),
+        };
+  
+        this.promotionTypes.firstPromotion(obj).subscribe((res) => {
+          console.log(res.response);
+  
+          if (res.response.result == 'Added Succesfully') {
+            // alert('Added Succesfully')
+            this.dialog.open(AddPromotionSuccessfulPopupComponent, {
+              panelClass: 'promotionsSuccessPop',
+            });
+            this.sharedService.filter('Register click');
+  
+            this.dialogRef.close();
+          } else {
+            // alert(res.response.result);
+  
+            this.sharedService.filter('Register click');
+            this.dialog.open(AddPromotionSuccessfulPopupComponent, {
+              panelClass: 'promotionsSuccessPop',
+            });
+            this.dialogRef.close();
+          }
         });
       }
-      for (let i = 0; i < this.addgetset.length; i++) {
-        this.addgetset[i].GetGroups.forEach((element) => {
-          delete element.productselectedRows;
-          obj1.push(element);
-          console.log('finalobject1', obj1);
+  
+      if (this.selectedPromo == 2) {
+        console.log('addbuyset', this.addbuyset);
+        console.log('addGetset', this.addgetset);
+        let obj: any = [];
+        let obj1: any = [];
+  
+        for (let i = 0; i < this.addbuyset.length; i++) {
+          this.addbuyset[i].BuyGroups.forEach((element) => {
+            delete element.productselectedRows;
+            obj.push(element);
+            console.log('finalobject', obj);
+          });
+        }
+        for (let i = 0; i < this.addgetset.length; i++) {
+          this.addgetset[i].GetGroups.forEach((element) => {
+            delete element.productselectedRows;
+            obj1.push(element);
+            console.log('finalobject1', obj1);
+          });
+        }
+        let BuyGroups: any = [];
+        let GetGroups: any = [];
+        BuyGroups.push(obj);
+        GetGroups.push(obj1);
+  
+        let mainobj: any = {
+          BuyGroups: obj,
+        };
+        let GetSets: any = {
+          GetGroups: obj1,
+        };
+        console.log('mainobj', mainobj);
+  
+        let obj3: any = {
+          PromotionName: this.promoName,
+          PromotionTypesId: this.selectedPromo,
+          StartDate: this.selectedStartDate,
+          EndDate: this.selectedEndDate,
+          DoneById: this.loggedUserId,
+          Imageurl: this.base64textString,
+          BuySets: this.addbuyset,
+          GetSets: this.addgetset,
+          EntityInstanceId: this.EntityInstanceId,
+          Status: type,
+          Remarks: this.Remarks ?? '',
+          IsIndividual: this.showConsolidatedMOQ,
+          AditionalMoqDetails: this.formArr.controls.map((control) => {
+            return {
+              AdditionalDetailsId: 0,
+              QtyFrom: control.get('qtyFrom')?.value,
+              QtyTo: control.get('qtyTo')?.value,
+              BuyValue: control.get('buy')?.value,
+              GetValue: control.get('get')?.value,
+              Aditional: control.get('additional')?.value,
+            };
+          }),
+        };
+        console.log('object to send opis', obj3);
+        // let BuySets=[{
+        //   BuyGroups:obj
+        // }]
+        this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
+          console.log(res.response);
+          if (res.response.result == 'Added Succesfully') {
+            // alert('Added Succesfully');
+            this.sharedService.filter('Register click');
+            this.dialogRef.close();
+          } else {
+            // alert(res.response.result);
+            this.sharedService.filter('Register click');
+            this.dialog.open(AddPromotionSuccessfulPopupComponent, {
+              panelClass: 'promotionsSuccessPop',
+            });
+            this.dialogRef.close();
+          }
         });
       }
-      let BuyGroups: any = [];
-      let GetGroups: any = [];
-      BuyGroups.push(obj);
-      GetGroups.push(obj1);
-
-      let mainobj: any = {
-        BuyGroups: obj,
-      };
-      let GetSets: any = {
-        GetGroups: obj1,
-      };
-      console.log('mainobj', mainobj);
-
-      let obj3: any = {
-        PromotionName: this.promoName,
-        PromotionTypesId: this.selectedPromo,
-        StartDate: this.selectedStartDate,
-        EndDate: this.selectedEndDate,
-        DoneById: this.loggedUserId,
-        Imageurl: this.base64textString,
-        BuySets: this.addbuyset,
-        GetSets: this.addgetset,
-        EntityInstanceId: this.EntityInstanceId,
-        Status: type,
-        Remarks: this.Remarks ?? '',
-        IsIndividual: this.showConsolidatedMOQ,
-        AditionalMoqDetails: this.formArr.controls.map((control) => {
-          return {
-            AdditionalDetailsId: 0,
-            QtyFrom: control.get('qtyFrom')?.value,
-            QtyTo: control.get('qtyTo')?.value,
-            BuyValue: control.get('buy')?.value,
-            GetValue: control.get('get')?.value,
-            Aditional: control.get('additional')?.value,
-          };
-        }),
-      };
-      console.log('object to send opis', obj3);
-      // let BuySets=[{
-      //   BuyGroups:obj
-      // }]
-      this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
-        console.log(res.response);
-        if (res.response.result == 'Added Succesfully') {
-          // alert('Added Succesfully');
-          this.sharedService.filter('Register click');
-          this.dialogRef.close();
-        } else {
-          // alert(res.response.result);
-          this.sharedService.filter('Register click');
-          this.dialog.open(AddPromotionSuccessfulPopupComponent, {
-            panelClass: 'promotionsSuccessPop',
-          });
-          this.dialogRef.close();
-        }
-      });
-    }
-
-    if (this.selectedPromo == 3) {
-      console.log('VolumeSttockItemId', this.VolumeSttockItemId);
-      let obj3: any = {
-        PromotionName: this.promoName,
-        PromotionTypesId: this.selectedPromo,
-        StartDate: this.selectedStartDate,
-        EndDate: this.selectedEndDate,
-        DoneById: this.loggedUserId,
-        Imageurl: this.base64textString,
-        MOQ: this.moqNumber,
-        StockItemId: this.VolumeSttockItemId,
-        Volume: this.packingCharges,
-        EntityInstanceId: this.EntityInstanceId,
-        Status: type,
-        Remarks: this.Remarks ?? '',
-      };
-      // alert(obj3.MOQ);
-      localStorage.setItem('MOQ', obj3.MOQ);
-      this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
-        console.log(res.response);
-        if (res.response.result == 'Added Succesfully') {
-          // alert('Added Succesfully');
-          this.sharedService.filter('Register click');
-
-          this.dialogRef.close();
-        } else {
-          // alert(res.response.result);
-          this.sharedService.filter('Register click');
-          this.dialog.open(AddPromotionSuccessfulPopupComponent, {
-            panelClass: 'promotionsSuccessPop',
-          });
-          this.dialogRef.close();
-        }
-      });
-    }
-
-    if (this.selectedPromo == 4) {
-      let obj3: any = {
-        PromotionName: this.promoName,
-        PromotionTypesId: this.selectedPromo,
-        StartDate: this.selectedStartDate,
-        EndDate: this.selectedEndDate,
-        DoneById: this.loggedUserId,
-        Imageurl: this.base64textString,
-        MOQ: this.moqPrice,
-        StockItemId: this.priceStockItemId,
-        Price: this.packingVolume,
-        EntityInstanceId: this.EntityInstanceId,
-        Status: type,
-        Remarks: this.Remarks ?? '',
-      };
-      // alert(obj3.MOQ);
-      localStorage.setItem('MOQ', obj3.MOQ);
-      this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
-        console.log(res.response);
-        if (res.response.result == 'Added Succesfully') {
-          // alert('Added Succesfully');
-          this.sharedService.filter('Register click');
-
-          this.dialogRef.close();
-        } else {
-          // alert(res.response.result);
-          this.sharedService.filter('Register click');
-          this.dialog.open(AddPromotionSuccessfulPopupComponent, {
-            panelClass: 'promotionsSuccessPop',
-          });
-          this.dialogRef.close();
-        }
-      });
+  
+      if (this.selectedPromo == 3) {
+        console.log('VolumeSttockItemId', this.VolumeSttockItemId);
+        let obj3: any = {
+          PromotionName: this.promoName,
+          PromotionTypesId: this.selectedPromo,
+          StartDate: this.selectedStartDate,
+          EndDate: this.selectedEndDate,
+          DoneById: this.loggedUserId,
+          Imageurl: this.base64textString,
+          MOQ: this.moqNumber,
+          StockItemId: this.VolumeSttockItemId,
+          Volume: this.packingCharges,
+          EntityInstanceId: this.EntityInstanceId,
+          Status: type,
+          Remarks: this.Remarks ?? '',
+        };
+        // alert(obj3.MOQ);
+        localStorage.setItem('MOQ', obj3.MOQ);
+        this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
+          console.log(res.response);
+          if (res.response.result == 'Added Succesfully') {
+            // alert('Added Succesfully');
+            this.sharedService.filter('Register click');
+  
+            this.dialogRef.close();
+          } else {
+            // alert(res.response.result);
+            this.sharedService.filter('Register click');
+            this.dialog.open(AddPromotionSuccessfulPopupComponent, {
+              panelClass: 'promotionsSuccessPop',
+            });
+            this.dialogRef.close();
+          }
+        });
+      }
+  
+      if (this.selectedPromo == 4) {
+        let obj3: any = {
+          PromotionName: this.promoName,
+          PromotionTypesId: this.selectedPromo,
+          StartDate: this.selectedStartDate,
+          EndDate: this.selectedEndDate,
+          DoneById: this.loggedUserId,
+          Imageurl: this.base64textString,
+          MOQ: this.moqPrice,
+          StockItemId: this.priceStockItemId,
+          Price: this.packingVolume,
+          EntityInstanceId: this.EntityInstanceId,
+          Status: type,
+          Remarks: this.Remarks ?? '',
+        };
+        // alert(obj3.MOQ);
+        localStorage.setItem('MOQ', obj3.MOQ);
+        this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
+          console.log(res.response);
+          if (res.response.result == 'Added Succesfully') {
+            // alert('Added Succesfully');
+            this.sharedService.filter('Register click');
+  
+            this.dialogRef.close();
+          } else {
+            // alert(res.response.result);
+            this.sharedService.filter('Register click');
+            this.dialog.open(AddPromotionSuccessfulPopupComponent, {
+              panelClass: 'promotionsSuccessPop',
+            });
+            this.dialogRef.close();
+          }
+        });
+      }
     }
   }
 
@@ -2540,226 +2536,228 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
     if (!this.checkValidation(this.selectedPromo)) return;
 
-    if (this.selectedPromo == 1) {
-      console.log('added items', this.buyGroupPlus);
-      console.log('addgetgroup', this.addgetgroup);
+    if(type='edit'){
+      if (this.selectedPromo == 1) {
+        console.log('added items', this.buyGroupPlus);
+        console.log('addgetgroup', this.addgetgroup);
 
-      this.buyGroupPlus.forEach((element, index) => {
-        element.GroupId = index + 1;
-        delete element.productselectedRows;
-        delete element.productScselectedRows;
-        delete element.pGselectedRows;
-        delete element.productSubGselectedRows;
-      });
-
-      this.addgetgroup.forEach((element, index) => {
-        element.GroupId = index + 1;
-        delete element.productselectedRows;
-        delete element.productScselectedRows;
-        delete element.pGselectedRows;
-        delete element.productSubGselectedRows;
-      });
-
-      let obj: any = {
-        ProductPromotionsId: this.productPromotionsId,
-        PromotionName: this.promoName,
-        PromotionTypesId: this.selectedPromo,
-        StartDate: this.selectedStartDate,
-        EndDate: this.selectedEndDate,
-        DoneById: this.loggedUserId,
-        Imageurl: this.base64textString,
-        BuyGroups: this.buyGroupPlus,
-        GetGroups: this.addgetgroup,
-        EntityInstanceId: this.EntityInstanceId,
-        Status: type,
-        Remarks: this.Remarks ?? '',
-        AditionalMoqDetails: this.formArr.controls.map((control, index) => {
-          return {
-            AdditionalDetailsId:
-              this.editedDetails.map((x) => x.additionalDetailsId)[index] || 0,
-            QtyFrom: control.get('qtyFrom')?.value,
-            QtyTo: control.get('qtyTo')?.value,
-            BuyValue: control.get('buy')?.value,
-            GetValue: control.get('get')?.value,
-            Aditional: control.get('additional')?.value,
-          };
-        }),
-      };
-
-      this.promotionTypes.firstPromotion(obj).subscribe((res) => {
-        console.log(res.response);
-
-        if (res.response.result == 'Added Succesfully') {
-          // alert('Added Succesfully');
-          this.sharedService.filter('Register click');
-
-          this.dialogRef.close();
-        } else {
-          // alert(res.response.result);
-          this.sharedService.filter('Register click');
-          this.dialog.open(AddPromotionSuccessfulPopupComponent, {
-            panelClass: 'promotionsSuccessPop',
-          });
-          this.dialogRef.close();
-        }
-      });
-    }
-
-    if (this.selectedPromo == 2) {
-      console.log('addbuyset', this.addbuyset);
-      console.log('addGetset', this.addgetset);
-      let obj: any = [];
-      let obj1: any = [];
-
-      for (let i = 0; i < this.addbuyset.length; i++) {
-        this.addbuyset[i].BuyGroups.forEach((element) => {
+        this.buyGroupPlus.forEach((element, index) => {
+          element.GroupId = index + 1;
           delete element.productselectedRows;
-          obj.push(element);
-          console.log('finalobject', obj);
+          delete element.productScselectedRows;
+          delete element.pGselectedRows;
+          delete element.productSubGselectedRows;
+        });
+
+        this.addgetgroup.forEach((element, index) => {
+          element.GroupId = index + 1;
+          delete element.productselectedRows;
+          delete element.productScselectedRows;
+          delete element.pGselectedRows;
+          delete element.productSubGselectedRows;
+        });
+
+        let obj: any = {
+          ProductPromotionsId: this.productPromotionsId,
+          PromotionName: this.promoName,
+          PromotionTypesId: this.selectedPromo,
+          StartDate: this.selectedStartDate,
+          EndDate: this.selectedEndDate,
+          DoneById: this.loggedUserId,
+          Imageurl: this.base64textString,
+          BuyGroups: this.buyGroupPlus,
+          GetGroups: this.addgetgroup,
+          EntityInstanceId: this.EntityInstanceId,
+          Status: type,
+          Remarks: this.Remarks ?? '',
+          AditionalMoqDetails: this.formArr.controls.map((control, index) => {
+            return {
+              AdditionalDetailsId:
+                this.editedDetails.map((x) => x.additionalDetailsId)[index] || 0,
+              QtyFrom: control.get('qtyFrom')?.value,
+              QtyTo: control.get('qtyTo')?.value,
+              BuyValue: control.get('buy')?.value,
+              GetValue: control.get('get')?.value,
+              Aditional: control.get('additional')?.value,
+            };
+          }),
+        };
+
+        this.promotionTypes.firstPromotion(obj).subscribe((res) => {
+          console.log(res.response);
+
+          if (res.response.result == 'Added Succesfully') {
+            // alert('Added Succesfully');
+            this.sharedService.filter('Register click');
+
+            this.dialogRef.close();
+          } else {
+            // alert(res.response.result);
+            this.sharedService.filter('Register click');
+            this.dialog.open(AddPromotionSuccessfulPopupComponent, {
+              panelClass: 'promotionsSuccessPop',
+            });
+            this.dialogRef.close();
+          }
         });
       }
 
-      for (let i = 0; i < this.addgetset.length; i++) {
-        this.addgetset[i].GetGroups.forEach((element) => {
-          delete element.productselectedRows;
-          obj1.push(element);
-          console.log('finalobject1', obj1);
+      if (this.selectedPromo == 2) {
+        console.log('addbuyset', this.addbuyset);
+        console.log('addGetset', this.addgetset);
+        let obj: any = [];
+        let obj1: any = [];
+
+        for (let i = 0; i < this.addbuyset.length; i++) {
+          this.addbuyset[i].BuyGroups.forEach((element) => {
+            delete element.productselectedRows;
+            obj.push(element);
+            console.log('finalobject', obj);
+          });
+        }
+
+        for (let i = 0; i < this.addgetset.length; i++) {
+          this.addgetset[i].GetGroups.forEach((element) => {
+            delete element.productselectedRows;
+            obj1.push(element);
+            console.log('finalobject1', obj1);
+          });
+        }
+
+        let BuyGroups: any = [];
+        let GetGroups: any = [];
+        BuyGroups.push(obj);
+        GetGroups.push(obj1);
+
+        let mainobj: any = {
+          BuyGroups: obj,
+        };
+        let GetSets: any = {
+          GetGroups: obj1,
+        };
+        console.log('mainobj', mainobj);
+
+        let obj3: any = {
+          ProductPromotionsId: this.productPromotionsId,
+          PromotionName: this.promoName,
+          PromotionTypesId: this.selectedPromo,
+          StartDate: this.selectedStartDate,
+          EndDate: this.selectedEndDate,
+          DoneById: this.loggedUserId,
+          Imageurl: this.base64textString,
+          BuySets: this.addbuyset,
+          GetSets: this.addgetset,
+          EntityInstanceId: this.EntityInstanceId,
+          Status: type,
+          Remarks: this.Remarks ?? '',
+          IsIndividual: this.showConsolidatedMOQ,
+          AditionalMoqDetails: this.formArr.controls.map((control, index) => {
+            return {
+              AdditionalDetailsId:
+                this.editedDetails.map((x) => x.additionalDetailsId)[index] || 0,
+              QtyFrom: control.get('qtyFrom')?.value,
+              QtyTo: control.get('qtyTo')?.value,
+              BuyValue: control.get('buy')?.value,
+              GetValue: control.get('get')?.value,
+              Aditional: control.get('additional')?.value,
+            };
+          }),
+        };
+        console.log('object to send opis', obj3);
+        // let BuySets=[{
+        //   BuyGroups:obj
+        // }]
+        this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
+          console.log(res.response);
+          if (res.response.result == 'Added Succesfully') {
+            // alert('Added Succesfully');
+            this.sharedService.filter('Register click');
+
+            this.dialogRef.close();
+          } else {
+            // alert(res.response.result);
+            this.sharedService.filter('Register click');
+            this.dialog.open(AddPromotionSuccessfulPopupComponent, {
+              panelClass: 'promotionsSuccessPop',
+            });
+
+            this.dialogRef.close();
+          }
         });
       }
 
-      let BuyGroups: any = [];
-      let GetGroups: any = [];
-      BuyGroups.push(obj);
-      GetGroups.push(obj1);
+      if (this.selectedPromo == 3) {
+        console.log('VolumeSttockItemId', this.VolumeSttockItemId);
+        let obj3: any = {
+          ProductPromotionsId: this.productPromotionsId,
+          PromotionName: this.promoName,
+          PromotionTypesId: this.selectedPromo,
+          StartDate: this.selectedStartDate,
+          EndDate: this.selectedEndDate,
+          DoneById: this.loggedUserId,
+          Imageurl: this.base64textString,
+          MOQ: this.minimumorderquantity,
+          StockItemId: this.VolumeSttockItemId,
+          Volume: this.packingCharges,
+          EntityInstanceId: this.EntityInstanceId,
+          Status: type,
+          Remarks: this.Remarks ?? '',
+        };
+        // alert(obj3.MOQ);
+        localStorage.setItem('MOQ', obj3.MOQ);
+        this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
+          console.log(res.response);
+          if (res.response.result == 'Added Succesfully') {
+            // alert('Added Succesfully');
+            this.sharedService.filter('Register click');
 
-      let mainobj: any = {
-        BuyGroups: obj,
-      };
-      let GetSets: any = {
-        GetGroups: obj1,
-      };
-      console.log('mainobj', mainobj);
+            this.dialogRef.close();
+          } else {
+            // alert(res.response.result);
+            this.dialog.open(AddPromotionSuccessfulPopupComponent, {
+              panelClass: 'promotionsSuccessPop',
+            });
+            this.dialogRef.close();
+          }
+        });
+      }
 
-      let obj3: any = {
-        ProductPromotionsId: this.productPromotionsId,
-        PromotionName: this.promoName,
-        PromotionTypesId: this.selectedPromo,
-        StartDate: this.selectedStartDate,
-        EndDate: this.selectedEndDate,
-        DoneById: this.loggedUserId,
-        Imageurl: this.base64textString,
-        BuySets: this.addbuyset,
-        GetSets: this.addgetset,
-        EntityInstanceId: this.EntityInstanceId,
-        Status: type,
-        Remarks: this.Remarks ?? '',
-        IsIndividual: this.showConsolidatedMOQ,
-        AditionalMoqDetails: this.formArr.controls.map((control, index) => {
-          return {
-            AdditionalDetailsId:
-              this.editedDetails.map((x) => x.additionalDetailsId)[index] || 0,
-            QtyFrom: control.get('qtyFrom')?.value,
-            QtyTo: control.get('qtyTo')?.value,
-            BuyValue: control.get('buy')?.value,
-            GetValue: control.get('get')?.value,
-            Aditional: control.get('additional')?.value,
-          };
-        }),
-      };
-      console.log('object to send opis', obj3);
-      // let BuySets=[{
-      //   BuyGroups:obj
-      // }]
-      this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
-        console.log(res.response);
-        if (res.response.result == 'Added Succesfully') {
-          // alert('Added Succesfully');
-          this.sharedService.filter('Register click');
+      if (this.selectedPromo == 4) {
+        // alert(this.productPromotionsId,)
+        let obj3: any = {
+          ProductPromotionsId: this.productPromotionsId,
+          PromotionName: this.promoName,
+          PromotionTypesId: this.selectedPromo,
+          StartDate: this.selectedStartDate,
+          EndDate: this.selectedEndDate,
+          DoneById: this.loggedUserId,
+          Imageurl: this.base64textString,
+          MOQ: this.minumorderqualityPrice,
+          StockItemId: this.priceStockItemId,
+          Price: this.packingVolume,
+          EntityInstanceId: this.EntityInstanceId,
+          Status: type,
+          Remarks: this.Remarks ?? '',
+        };
+        // alert(obj3.MOQ);
+        localStorage.setItem('MOQ', obj3.MOQ);
+        this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
+          console.log(res.response);
+          if (res.response.result == 'Added Succesfully') {
+            // alert('Added Succesfully');
+            this.sharedService.filter('Register click');
 
-          this.dialogRef.close();
-        } else {
-          // alert(res.response.result);
-          this.sharedService.filter('Register click');
-          this.dialog.open(AddPromotionSuccessfulPopupComponent, {
-            panelClass: 'promotionsSuccessPop',
-          });
-
-          this.dialogRef.close();
-        }
-      });
-    }
-
-    if (this.selectedPromo == 3) {
-      console.log('VolumeSttockItemId', this.VolumeSttockItemId);
-      let obj3: any = {
-        ProductPromotionsId: this.productPromotionsId,
-        PromotionName: this.promoName,
-        PromotionTypesId: this.selectedPromo,
-        StartDate: this.selectedStartDate,
-        EndDate: this.selectedEndDate,
-        DoneById: this.loggedUserId,
-        Imageurl: this.base64textString,
-        MOQ: this.minimumorderquantity,
-        StockItemId: this.VolumeSttockItemId,
-        Volume: this.packingCharges,
-        EntityInstanceId: this.EntityInstanceId,
-        Status: type,
-        Remarks: this.Remarks ?? '',
-      };
-      // alert(obj3.MOQ);
-      localStorage.setItem('MOQ', obj3.MOQ);
-      this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
-        console.log(res.response);
-        if (res.response.result == 'Added Succesfully') {
-          // alert('Added Succesfully');
-          this.sharedService.filter('Register click');
-
-          this.dialogRef.close();
-        } else {
-          // alert(res.response.result);
-          this.dialog.open(AddPromotionSuccessfulPopupComponent, {
-            panelClass: 'promotionsSuccessPop',
-          });
-          this.dialogRef.close();
-        }
-      });
-    }
-
-    if (this.selectedPromo == 4) {
-      // alert(this.productPromotionsId,)
-      let obj3: any = {
-        ProductPromotionsId: this.productPromotionsId,
-        PromotionName: this.promoName,
-        PromotionTypesId: this.selectedPromo,
-        StartDate: this.selectedStartDate,
-        EndDate: this.selectedEndDate,
-        DoneById: this.loggedUserId,
-        Imageurl: this.base64textString,
-        MOQ: this.minumorderqualityPrice,
-        StockItemId: this.priceStockItemId,
-        Price: this.packingVolume,
-        EntityInstanceId: this.EntityInstanceId,
-        Status: type,
-        Remarks: this.Remarks ?? '',
-      };
-      // alert(obj3.MOQ);
-      localStorage.setItem('MOQ', obj3.MOQ);
-      this.promotionTypes.firstPromotion(obj3).subscribe((res) => {
-        console.log(res.response);
-        if (res.response.result == 'Added Succesfully') {
-          // alert('Added Succesfully');
-          this.sharedService.filter('Register click');
-
-          this.dialogRef.close();
-        } else {
-          // alert(res.response.result);
-          this.sharedService.filter('Register click');
-          this.dialog.open(AddPromotionSuccessfulPopupComponent, {
-            panelClass: 'promotionsSuccessPop',
-          });
-          this.dialogRef.close();
-        }
-      });
+            this.dialogRef.close();
+          } else {
+            // alert(res.response.result);
+            this.sharedService.filter('Register click');
+            this.dialog.open(AddPromotionSuccessfulPopupComponent, {
+              panelClass: 'promotionsSuccessPop',
+            });
+            this.dialogRef.close();
+          }
+        });
+      }
     }
   }
 
@@ -3014,7 +3012,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         x.isProductSelected = index == -1 ? false : true;
         return x;
       });
-      this.rowData5 = rowData.sort(
+      this.rowData5 = rowData?.sort(
         (a, b) => b.isProductSelected - a.isProductSelected
       );
       console.log('this.rowData5', this.rowData5);

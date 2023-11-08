@@ -44,9 +44,9 @@
                         [data]="toppingList3" (onSelect)="onTypeSelect($event)"
                         (onSelectAll)="onTypeAll($event)">
                     </ng-multiselect-dropdown> -->
-                            <ng-select [items]="GeoGrapydropdownListdata" [(ngModel)]="geographyId"
-                                class="geographyclass" bindValue="geographyId" bindLabel="geographyName"
-                                placeholder="Select the geography" #geoghraphy (change)="onGeoSelect($event)" appendTo="body" required>
+                            <ng-select [items]="GeoGrapydropdownListdata" [(ngModel)]="geographyId" class="geographyclass" bindValue="geographyId"
+                                bindLabel="geographyName" placeholder="Select the geography" #geographySelect (change)="onGeoSelect($event)"
+                                appendTo="body" required>
                             </ng-select>
                         </div>
                     </div>

@@ -1853,8 +1853,7 @@ li {
   overflow: hidden;
   width: 100%;
   position: relative;
-  left: 0px;
-
+  /* left: 29px; */
 }
 
 ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {

@@ -805,7 +805,7 @@
                         </form>
                        </div>
                        <h3 class="mt-3" *ngIf="buyab || buysets">Minimum Order Quantity: <b>{{getMinimumQtyFromValue()}}</b></h3>
-                       <h3 class="mt-3" *ngIf="volumedc || pricedc">Minimum Order Quantity: <b>{{ selectedPromo === 3 ? moqNumber : selectedPromo === 4 ? moqPrice : '0' }}</b></h3>
+                       <h3 class="mt-3" *ngIf="volumedc || pricedc">Minimum Order Quantity: <b>{{ (selectedPromo === 3 ? (moqNumber || specalmoq) : selectedPromo === 4 ? (moqPrice || specalmoq) : '0') }}</b></h3>
                     </form>
                 </mat-step>
 
@@ -890,14 +890,12 @@
                             </div>
                         </div>
 
-
-
                         <div class="row" *ngIf="!SaveOrEdit">
                             <div class="footer-btns">
                                 <button class="btn btn-light saveDraft"
                                     (click)="AddPromosaveAndSubmitEdit('Draft')">Save as
                                     draft</button>
-                                <button class="btn btn-light submit" [disabled]="hasValidationErrors ">Save
+                                <button class="btn btn-light submit" [disabled]="hasValidationErrors" (click)="AddPromosaveAndSubmitEdit('edit')">Save
                                     &
                                     Submit </button>
                                 <!-- <button class="cancelbtn" [mat-dialog-close]="true">Cancel</button> -->

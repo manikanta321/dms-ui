@@ -122,8 +122,8 @@
         </div>
       </div>
  
-      <div class="col-md-4 d-flex" (click)="onBtnExport()" style="    position: relative;left: 15%;">
-        <div class="download-btn" style=" cursor: pointer">
+      <div class="col-md-4 d-flex" style="    position: relative;left: 15%;">
+        <div class="download-btn" style=" cursor: pointer" (click)="onBtnExport()">
           <img src="assets/img/ll.svg" style="position: relative;top: 9px;left: 9px;width: 23px;height: 19px;" alt="add-user-btn">
         </div>
         <div class="add-user" (click)="addPromotions()" userRoleDirective="ADD_PROMOTION" [pageName]="currentPageName">

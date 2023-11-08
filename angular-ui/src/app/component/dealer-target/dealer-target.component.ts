@@ -113,15 +113,15 @@ export class DealerTargetComponent implements OnInit {
 
     {
       headerName: "TargetGroup",
-       field: 'targetGroupName', type: ['nonEditableColumn']
+       field: 'targetGroupName',cellStyle: { color: '#686E74' },  type: ['nonEditableColumn']
     },
 
     { headerName: "Geography",
-    field: 'geographyName', type: ['nonEditableColumn']
+    field: 'geographyName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn']
     },
     {
       headerName: "DealerName",
-      field: 'customername', type: ['nonEditableColumn']
+      field: 'customername',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn']
     },
    
     // suppressMovable:true,
@@ -129,30 +129,35 @@ export class DealerTargetComponent implements OnInit {
       headerName: "Financialyear",
       field: 'year',
       type: ['nonEditableColumn','rightAligned'],
+      cellStyle: { color: '#686E74' },
     },
 
     {
       headerName: "No of Products",
       field: 'productCount',
-      type: ['nonEditableColumn','rightAligned']
+      type: ['nonEditableColumn','rightAligned'],
+      cellStyle: { color: '#686E74' },
     },
     {
       headerName: "Target Total",
       field: 'volumeTotal',
-      type: ['nonEditableColumn','rightAligned']
+      type: ['nonEditableColumn','rightAligned'],
+      cellStyle: { color: '#686E74' },
     },
 
     {
       headerName: "Actual PY",
       field: 'actualPy',
-      type: ['nonEditableColumn','rightAligned']
+      type: ['nonEditableColumn','rightAligned'],
+      cellStyle: { color: '#686E74' },
     },
 
 
     {
       headerName: "Actual YTD",
       field: 'actualYTD',
-      type: ['nonEditableColumn','rightAligned']
+      type: ['nonEditableColumn','rightAligned'],
+      cellStyle: { color: '#686E74' },
     },
 
 
@@ -161,6 +166,7 @@ export class DealerTargetComponent implements OnInit {
       headerName: "% of YTD Target",
       field: 'ytdTarget',
       type: ['nonEditableColumn','rightAligned'],
+      cellStyle: { color: '#686E74' },
     },
 
     {

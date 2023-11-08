@@ -410,11 +410,11 @@ export class GeographicListComponent implements OnInit {
       this.shippingChk = true;
       this.columnDefs = [
         {
-          headerName: 'Destination', field: 'geographyName', type: ['nonEditableColumn'],
+          headerName: 'Destination', field: 'geographyName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'],
           width: 200
         },
 
-        { headerName: 'Shipping Charge', field: 'charges', type: ['nonEditableColumn','rightAligned'] },
+        { headerName: 'Shipping Charge', field: 'charges',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn','rightAligned'] },
 
 
         {

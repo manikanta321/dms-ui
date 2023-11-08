@@ -74,11 +74,11 @@ columnDefs: ColDef[] = [
 
   { headerName: "Name", 
 
-field: 'uoMName' ,type: ['nonEditableColumn'], maxWidth:600
+field: 'uoMName' ,cellStyle: { color: '#686E74' },type: ['nonEditableColumn'], maxWidth:600
 },
 
 {   headerName: "Display Code",
-field: 'uoMShortName',type: ['nonEditableColumn']},
+field: 'uoMShortName',cellStyle: { color: '#686E74' },type: ['nonEditableColumn']},
 
 // suppressMovable:true,
 { headerName: "Status",

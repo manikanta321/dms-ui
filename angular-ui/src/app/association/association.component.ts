@@ -110,24 +110,25 @@ export class AssociationComponent implements OnInit {
     {
         headerName: 'ProductSKUGeographyId',
        field: 'productSKUGeographyId',
+       cellStyle: { color: '#686E74' }, 
     },
 
     {
       headerName: "ProductName",
-       field: 'stockItemName', type: ['nonEditableColumn'],
+       field: 'stockItemName',cellStyle: { color: '#686E74' },  type: ['nonEditableColumn'],
     },
 
     {
        headerName:"ProductCode",
           //1  field: 'productCode',
-         field: 'productCode',
+         field: 'productCode',cellStyle: { color: '#686E74' }, 
     },
 
     { headerName: "DealerName",
     minWidth:250,
      field: 'customerName',
     // field:'DealerName',
-     type: ['nonEditableColumn'], sort: 'desc',
+     type: ['nonEditableColumn'], sort: 'desc',cellStyle: { color: '#686E74' }, 
     },
     {
       headerName: "GeographyName",
@@ -139,37 +140,37 @@ export class AssociationComponent implements OnInit {
       // cellRendererParams: {
       // rendererImage: '', // Complementing the Cell Renderer parameters
       // },
-      type: ['nonEditableColumn']
+      cellStyle: { color: '#686E74' }, type: ['nonEditableColumn']
     },
 
     {
       headerName: "MRP",
-       field: "mrp",     
+       field: "mrp", cellStyle: { color: '#686E74' },     
       type: ['nonEditableColumn','rightAligned']
     },
     {
       headerName: "MinOrderQty",
-       field: "minOrder",      
+       field: "minOrder",  cellStyle: { color: '#686E74' },     
       type: ['nonEditableColumn','rightAligned']
     },
     {
       headerName: "MaxOrderQty",
-         field: "maxOrder",        
+         field: "maxOrder", cellStyle: { color: '#686E74' },        
       type: ['nonEditableColumn','rightAligned']
     },
     {
       headerName: "Margin",
-         field: "margin",   
+         field: "margin", cellStyle: { color: '#686E74' },   
          type: ['nonEditableColumn','rightAligned']
     },
     {
       headerName: "Discount",
-         field: "discount",     
+         field: "discount", cellStyle: { color: '#686E74' },     
         type: ['nonEditableColumn','rightAligned']
     },
     {
       headerName: "LeadTimeDays",
-        field: "leadTimeIndays",       
+        field: "leadTimeIndays",cellStyle: { color: '#686E74' },        
       type: ['nonEditableColumn','rightAligned']
     },
 

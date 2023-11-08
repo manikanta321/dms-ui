@@ -122,23 +122,27 @@ export class PromotionsComponent implements OnInit {
       headerName: 'Code',
       field: 'promoCode',
       tooltipField: 'promoCode',
+      cellStyle: { color: '#686E74' }, 
     },
 
     {
       headerName: 'Name',
       field: 'promotionName',
       tooltipField: 'promotionName',
+      cellStyle: { color: '#686E74' }, 
     },
 
     {
       headerName: 'Type',
       field: 'promotionTypesName',
       tooltipField: 'promotionTypesName',
+      cellStyle: { color: '#686E74' }, 
     },
     {
       headerName: 'Start Date',
       field: 'startDate',
       tooltipField: 'startDate',
+      cellStyle: { color: '#686E74' }, 
       cellRenderer: (data) => {
         return this.sharedServices.dateformat(data.value);
       },
@@ -150,6 +154,7 @@ export class PromotionsComponent implements OnInit {
       field: 'endDate',
       type: ['nonEditableColumn'],
       tooltipField: 'endDate',
+      cellStyle: { color: '#686E74' }, 
       cellRenderer: (data) => {
         return this.sharedServices.dateformat(data.value);
       },
@@ -160,18 +165,21 @@ export class PromotionsComponent implements OnInit {
       field: 'noOfOrders',
       tooltipField: 'noOfOrders',
       type: ['rightAligned'],
+      cellStyle: { color: '#686E74' }, 
     },
     {
       headerName: 'Order Value',
       field: 'invoicedValue',
       tooltipField: 'invoicedValue',
       type: ['rightAligned'],
+      cellStyle: { color: '#686E74' }, 
     },
     {
       headerName: 'No of Dealers',
       field: 'noOfDealers',
       tooltipField: 'noOfDealers',
       type: 'rightAligned',
+      cellStyle: { color: '#686E74' }, 
     },
     {
       headerName: 'Status',

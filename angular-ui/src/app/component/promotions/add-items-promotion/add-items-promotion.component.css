@@ -175,7 +175,7 @@ width: 207.5px;
 margin-right: 15px;
 } */
 .ref {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 10px;
   background: grey;
   margin-left: -2px;
@@ -352,8 +352,8 @@ mat-radio-group {
   height: 41px;
   line-height: 41px;
   left: 16px;
-  border-top: 1px solid rgba(104, 110, 116, 0.75);
-  border-bottom: 1px solid rgba(104, 110, 116, 0.75);
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   /* width: 80%; */
   border-radius: 10px 0 0 10px !important;
   padding-left: 10px;
@@ -662,7 +662,7 @@ margin-bottom: -53px; */
   left:76%;
   /* right:9%; */
   /* top: 67%; */
-  border: 1px solid #0000004D;
+  /* border: 1px solid #0000004D; */
   border-radius: 11px;
 }
 
@@ -713,5 +713,5 @@ margin-bottom: -53px; */
   --ag-border-radius: 20px;
   --ag-header-height: 30px;
   --ag-header-foreground-color: white;
-  --ag-header-background-color: rgba(1, 139, 117, 1);
+  --ag-header-background-color:  #018B75CC  !important ;
 }

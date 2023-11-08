@@ -72,21 +72,21 @@ export class AddTargetGroupsProductsComponent implements OnInit {
 
     {
       headerName: "Product Name",
-      field: 'productName', type: ['nonEditableColumn'], checkboxSelection: true
+      field: 'productName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], checkboxSelection: true
     },
 
-    { headerName: "Classification", field: 'classification', type: ['nonEditableColumn'] },
+    { headerName: "Classification", field: 'classification',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'] },
 
-    { headerName: "SKU", field: 'classification', type: ['nonEditableColumn'], maxWidth: 100 },
+    { headerName: "SKU", field: 'classification',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], maxWidth: 100 },
 
     {
       headerName: "Product Identifier",
-      field: 'productIdentifier', type: ['nonEditableColumn']
+      field: 'productIdentifier',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn']
     },
 
     {
       headerName: "Product Group",
-      field: 'productGroup', type: ['nonEditableColumn'], maxWidth: 170
+      field: 'productGroup',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], maxWidth: 170
     },
     // {
     //   headerName: "Product Code",

@@ -111,16 +111,16 @@ public popupParent: HTMLElement = document.body;
 columnDefs: ColDef[] = [ 
 
   { headerName: "Group Code",
-field: 'targetGroupCode' ,type: ['nonEditableColumn'],minWidth:250
+field: 'targetGroupCode' ,cellStyle: { color: '#686E74' },type: ['nonEditableColumn'],minWidth:250
 },
 
-{   headerName: "Group Name",field: 'targetGroupName',type: ['nonEditableColumn']},
+{   headerName: "Group Name",cellStyle: { color: '#686E74' },field: 'targetGroupName',type: ['nonEditableColumn']},
 
-{headerName: "No of Products", field: 'noOfProducts', type: ['rightAligned'],},
+{headerName: "No of Products",cellStyle: { color: '#686E74' }, field: 'noOfProducts', type: ['rightAligned'],},
 
 
 {   headerName: " No of Dealers",
-field: 'noOfDealers',type: ['rightAligned'],
+field: 'noOfDealers',cellStyle: { color: '#686E74' },type: ['rightAligned'],
 // cellRenderer: function dateFormtter(params) {
 //   if(params.value==null){
 //     return params.value=''
@@ -135,7 +135,7 @@ tooltipValueGetter:(params: ITooltipParams) => moment(params.value).format('DD M
 
 {   headerName: "No of Geographies",
 
-field: 'noOfGeographies',type: ['rightAligned'], maxWidth:200
+field: 'noOfGeographies',cellStyle: { color: '#686E74' },type: ['rightAligned'], maxWidth:200
 },
 
 

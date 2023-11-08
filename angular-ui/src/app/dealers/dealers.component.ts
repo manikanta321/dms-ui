@@ -103,13 +103,13 @@ export class DealersComponent implements OnInit {
 
     {
       headerName: "Code",
-      field: 'customerCode', type: ['nonEditableColumn'], sort: 'desc',
+      field: 'customerCode', cellStyle: { color: '#686E74' },  type: ['nonEditableColumn'], sort: 'desc',
     },
 
     {
       headerName: "Name",
       minWidth: 450,
-      field: 'customerName', type: ['nonEditableColumn'], 
+      field: 'customerName', cellStyle: { color: '#686E74' },  type: ['nonEditableColumn'], 
     },
     {
       headerName: "Geography",
@@ -119,7 +119,7 @@ export class DealersComponent implements OnInit {
       // rendererImage: '', // Complementing the Cell Renderer parameters
       // },
       cellRenderer: IconHoverComponent,
-      type: ['nonEditableColumn']
+      cellStyle: { color: '#686E74' }, type: ['nonEditableColumn']
     },
 
     // suppressMovable:true,

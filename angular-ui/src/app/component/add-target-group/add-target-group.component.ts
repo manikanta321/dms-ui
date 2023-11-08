@@ -211,22 +211,22 @@ console.log("targetgrpName",this.targetGroupName);
   columnDefs: ColDef[] = [
     // { headerName:"",checkboxSelection:true , maxWidth:40, },
    
-    {   headerName: "Product Name",field: 'productName' ,      tooltipField:"productName",type: ['nonEditableColumn']
+    {   headerName: "Product Name",field: 'productName' ,cellStyle: { color: '#686E74' },      tooltipField:"productName",type: ['nonEditableColumn']
   },
   
-    {  headerName: "Classification",field: 'classification',      tooltipField:"classification   ",type: ['nonEditableColumn']
+    {  headerName: "Classification",field: 'classification', cellStyle: { color: '#686E74' },     tooltipField:"classification   ",type: ['nonEditableColumn']
   },     
   
     {  headerName: "SKU",
-       field: 'sku', maxWidth:160,     tooltipField:"sku",type: ['nonEditableColumn']
+       field: 'sku', maxWidth:160, cellStyle: { color: '#686E74' },    tooltipField:"sku",type: ['nonEditableColumn']
       },
   
     {   headerName: "Product Identifier",
-      field: 'productIdentifier',      tooltipField:"productIdentifier",
+      field: 'productIdentifier', cellStyle: { color: '#686E74' },     tooltipField:"productIdentifier",
       type: ['nonEditableColumn']},
 
       {   headerName: "Product group",
-      field: 'productGroup',      tooltipField:"productGroup",
+      field: 'productGroup',cellStyle: { color: '#686E74' },      tooltipField:"productGroup",
       type: ['nonEditableColumn']},
   ];
   public defaultColDef: ColDef = {

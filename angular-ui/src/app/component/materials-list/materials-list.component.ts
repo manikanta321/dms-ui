@@ -1055,25 +1055,25 @@ else
   columnDefs: ColDef[] = [
     {
       headerName: "Name",
-      field: 'stockItemName', type: ['nonEditableColumn'], sort: 'desc', minWidth: 270
+      field: 'stockItemName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], sort: 'desc', minWidth: 270
     },
 
     {
       headerName: "Classification",
-      field: 'classification', type: ['nonEditableColumn'], minWidth: 250, 
+      field: 'classification',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], minWidth: 250, 
     },
 
     {
       headerName: "UoM",
-      field: 'uoMName', type: ['nonEditableColumn'], minWidth: 40
+      field: 'uoMName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], minWidth: 40
     },
     {
       headerName: "Product Group",
-      field: 'productGroupName', type: ['nonEditableColumn'], minWidth: 250
+      field: 'productGroupName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], minWidth: 250
     },
     {
       headerName: "SKU",
-      field: 'productSKUName', type: ['nonEditableColumn'], minWidth: 146
+      field: 'productSKUName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], minWidth: 146
     },
     {
       headerName: "Status",

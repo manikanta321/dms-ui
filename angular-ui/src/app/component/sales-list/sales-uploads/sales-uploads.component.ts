@@ -153,14 +153,14 @@ sessionStorage.setItem("BatchId",batchId );
     }
   }
   columnDefs: ColDef[] = [
-    {   headerName: "BatchId",field: 'batchId' ,      tooltipField:"batchId",type: ['nonEditableColumn']
+    {   headerName: "BatchId",field: 'batchId' , cellStyle: { color: '#686E74' },     tooltipField:"batchId",type: ['nonEditableColumn']
   },
   
-    {  headerName: "Uploaded By",field: 'createBy',      tooltipField:"createBy   ",type: ['nonEditableColumn']
+    {  headerName: "Uploaded By",field: 'createBy',   cellStyle: { color: '#686E74' },    tooltipField:"createBy   ",type: ['nonEditableColumn']
   },     
   
     {  headerName: "Upload On",
-       field: 'uploadedOn',      tooltipField:"uploadedOn",
+       field: 'uploadedOn',  cellStyle: { color: '#686E74' },     tooltipField:"uploadedOn",
 
      
 
@@ -173,14 +173,14 @@ sessionStorage.setItem("BatchId",batchId );
       },
   
     {   headerName: "Total Items",
-      field: 'totalItems',      tooltipField:"totalItems",
+      field: 'totalItems',  cellStyle: { color: '#686E74' },     tooltipField:"totalItems",
       type: ['nonEditableColumn','rightAligned']},
       {
         headerName: '',
         colId: 'action',
         cellRenderer: UploadSalesActionComponent,
         editable: false,
-        maxWidth: 50
+        maxWidth: 50,
       },
   ];
   public defaultColDef: ColDef = {

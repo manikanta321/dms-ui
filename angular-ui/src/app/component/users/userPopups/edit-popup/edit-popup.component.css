@@ -122,6 +122,6 @@ border: 1px solid black;
     padding: 0em 0 0.7em 0;
     } */
 
-    ::ng-deep.mat-dialog-container {
-        /* background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
-        }
+    /* ::ng-deep.mat-dialog-container {
+        background: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+        } */

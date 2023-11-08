@@ -94,6 +94,10 @@ position: relative;
 top: -10px;
 }
 .mat-dialog-container {
+    overflow-x: hidden;
+}
+
+.mat-dialog-container {
     padding: 16px !important;
     padding-top: 2px !important;
 }

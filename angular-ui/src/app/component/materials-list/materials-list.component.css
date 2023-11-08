@@ -472,7 +472,7 @@ padding-left: 11px;
   --ag-card-radius: 100px;
   /* --ag-border-radius: 20px; */
   --ag-header-height: 30px;
-  --ag-header-background-color: rgba(1, 139, 117, 1);
+  --ag-header-background-color:  #018B75CC  !important ;
      --ag-header-foreground-color: white; 
     
 }

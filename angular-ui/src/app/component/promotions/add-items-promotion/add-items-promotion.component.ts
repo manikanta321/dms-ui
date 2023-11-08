@@ -63,6 +63,7 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: 'Product Code',
       field: 'productCode',
       type: ['nonEditableColumn'],
+      cellStyle: { color: '#686E74' }, 
       checkboxSelection: true,
       headerCheckboxSelectionFilteredOnly: true,
     },
@@ -70,6 +71,7 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: 'Product Name',
       field: 'productName',
       type: ['nonEditableColumn'],
+      cellStyle: { color: '#686E74' }, 
       // pinned: 'left',
       // (
       //   params: CheckboxSelectionCallbackParams<any>
@@ -81,16 +83,19 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: 'Product Identifier',
       field: 'productIdentifier',
       type: ['nonEditableColumn'],
+      cellStyle: { color: '#686E74' }, 
     },
     {
       headerName: 'Product Group',
       field: 'productGroup',
       type: ['nonEditableColumn'],
+      cellStyle: { color: '#686E74' }, 
     },
     {
       headerName: 'Product Sub-Group',
       field: 'productSubGroup',
       type: ['nonEditableColumn'],
+      cellStyle: { color: '#686E74' }, 
     },
     // {
     //   headerName: 'Classification',
@@ -101,10 +106,12 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: 'Product Shot Code',
       field: 'productShortCode',
       type: ['nonEditableColumn'],
+      cellStyle: { color: '#686E74' }, 
     },
     {
       headerName:'Registration No',
-      field:'registrationNo'
+      field:'registrationNo',
+      cellStyle: { color: '#686E74' }, 
     }
 
     // { headerName: 'SKU', field: 'sku', type: ['nonEditableColumn'] },
@@ -142,6 +149,7 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: 'Product Shot Code',
       field: 'productShortCode',
       type: ['nonEditableColumn'],
+      cellStyle: { color: '#686E74' }, 
       sort: 'desc',
       checkboxSelection: true,
     },
@@ -189,6 +197,7 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: 'Product Group',
       field: 'productGroupName',
       type: ['nonEditableColumn'],
+      cellStyle: { color: '#686E74' }, 
       sort: 'desc',
       checkboxSelection: true,
     },
@@ -225,6 +234,7 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: 'Product Sub-Group',
       field: 'productSubGroupName',
       type: ['nonEditableColumn'],
+      cellStyle: { color: '#686E74' }, 
       sort: 'desc',
       checkboxSelection: true,
     },
@@ -235,6 +245,7 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: 'Product Group',
       field: 'productGroupName',
       type: ['nonEditableColumn'],
+      cellStyle: { color: '#686E74' }, 
     },
 
     // {

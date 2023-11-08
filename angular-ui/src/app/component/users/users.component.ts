@@ -113,30 +113,30 @@ export class UsersComponent implements OnInit {
     {
       headerName: "User ID",
       field: 'employeeCode', type: ['nonEditableColumn'], sort: 'desc',
-      tooltipField: "employeeCode", maxWidth: 200,
+      tooltipField: "employeeCode",cellStyle: { color: '#686E74' }, maxWidth: 200,
 
     },
 
-    { headerName: "Username", field: 'userName', type: ['nonEditableColumn'], tooltipField: "userName", },
+    { headerName: "Username", field: 'userName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], tooltipField: "userName", },
 
-    { headerName: "Role", field: 'roleName', type: ['nonEditableColumn'], tooltipField: "roleName", },
+    { headerName: "Role", field: 'roleName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'], tooltipField: "roleName", },
 
     {
       headerName: "Email ",
-      field: 'email', type: ['nonEditableColumn'],
+      field: 'email', type: ['nonEditableColumn'],cellStyle: { color: '#686E74' },
       tooltipField: "email",
       // flex: 1,
     },
 
     {
       headerName: "Phone No",
-      field: 'mobile', type: ['nonEditableColumn','rightAligned'],
+      field: 'mobile', type: ['nonEditableColumn','rightAligned'],cellStyle: { color: '#686E74' },
       tooltipField: "mobile"
     },
 
     {
       headerName: "Last Login",
-      field: 'lastLoginDate', type: ['nonEditableColumn'],
+      field: 'lastLoginDate',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'],
       cellRenderer: function dateFormtter(params) {
         if (params.value == null) {
           return params.value = ''

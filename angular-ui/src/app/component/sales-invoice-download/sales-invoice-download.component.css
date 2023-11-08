@@ -83,7 +83,7 @@
     --ag-border-radius: 20px;
     --ag-header-height: 30px; */
      --ag-header-foreground-color: white; 
-    --ag-header-background-color: rgba(1, 139, 117, 1);
+     --ag-header-background-color:  #018B75CC  !important ;
     /* border: 1px solid #989CA04D !important; */
     /* --ag-header-cell-hover-background-color: rgb(80, 40, 140);
     --ag-header-cell-moving-background-color: rgb(80, 40, 140); */

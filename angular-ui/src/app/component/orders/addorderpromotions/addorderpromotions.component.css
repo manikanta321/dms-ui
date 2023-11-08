@@ -61,6 +61,14 @@ margin-top: 20px;
     color: black;
     font-weight: bold;
 }
+.DealerRefrenceno
+{
+  font-family: 'Calibri';
+ font-size: 20px;
+font-weight: 700;
+color: #FFFFFF;
+}
+
 #This_order_qty
 {
   position: relative;
@@ -261,12 +269,13 @@ border-top-right-radius: 13px;
 }
 .head-tt
 {
-  margin-top: -37px;
+  /* margin-top: -37px; */
+  margin-top: -45px;
 }
 .head-tt h3 {
   color: #000000;
   text-align: center;
-  margin-bottom: 25px;
+  /* margin-bottom: 25px; */
   cursor: pointer;
   font-size: 20px;
   font-family: ' Calibri';
@@ -284,7 +293,17 @@ border-top-right-radius: 13px;
   font-size: 13px;
    margin-left: 50%; 
    border: 1px solid rgba(0, 0, 0, 0.2);
-  
+}
+.TOtalCalculations
+{
+  width: 35% !important;
+  background: #FFFFFF;
+  border-radius: 21px;
+  padding: 5px;
+  font-size: 13px;
+  margin-left: 64%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-top: 15px;
 }
 .numbers
 {
@@ -293,12 +312,12 @@ border-top-right-radius: 13px;
 
 }
 .SUBITEMNAME {
-  font-size: 14px;
+  font-size: 15px;
   font-family: 'Calibri';
   font-weight: 400;
   line-height: 15.87px;
   color:#000;
-
+  height: 30px;
 }
 
  
@@ -702,11 +721,15 @@ input[type=number] {
 }
 .delivery_1 {
  
-  font-family: 'Calibri';
   color: #000000;
   font-size: 14px;
+  font-family: 'Calibri';
+  font-weight: 700;
 }
-
+.DealerReferenceNo
+{
+  border: 1px solid #989CA04D;
+}
 .boldR {
     font-weight: bold;  
    font-family: 'Gilroy-SemiBold';
@@ -1039,11 +1062,13 @@ label {
 }
 .DealerInfo-label {
   margin: 5px;
-  font-size: 14px;
+  font-size: 15px;
   align-items: center;
-  font-weight: 400;
   color: #000000;
-  font-family: 'Gilroy-SemiBold';
+  font-family: 'Calibri';
+ font-weight: 700;
+
+
 }
 .Dealereferncenew
 {
@@ -1626,10 +1651,8 @@ li {
 
 .input-box {
   background: #FFFFFF;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+   border: 2px solid #989CA04D;
   border-radius: 8px;
-  /* width: 260px; */
   height: 36px;
   font-size: 13px;
   padding: 0 7px;
@@ -1813,6 +1836,10 @@ li {
 .top-bottom {
   margin-top: 9px;
 }
+.Confiramordermaindiv
+{
+  margin-top: -15px;
+}
 .dealerreftop-bottom {
   margin-top: -3px;
 }
@@ -1828,6 +1855,22 @@ li {
   font-family: 'Gilroy-Light';
   font-size: 18px;
 }
+.ConfiramordrInformation
+{
+  font-family: 'Calibri';
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+.DealerInformationLabel
+{
+   font-family: 'Calibri';
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+
 .DealerReflabel-cls {
   position: relative;
   top: 6px;
@@ -2151,27 +2194,30 @@ margin-left: 230px;
   height: 35px;
 }
 ::ng-deep.dealerr .ng-select-container {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 1px solid #989CA04D !important;
   border-radius: 10px;
   height: 30px;
 }
 ::ng-deep.selectgeo .ng-select-container {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 1px solid #989CA04D !important;
+
+  border-radius: 10px;
+  height: 30px;
+}
+::ng-deep.my-ng-select .ng-select-container {
+  border: 1px solid #989CA04D !important;
   border-radius: 10px;
   height: 30px;
 }
 
+
 ::ng-deep.shipingAddress .ng-select-container {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 1px solid #989CA04D !important;
   border-radius: 10px;
   height: 30px;
 }
 ::ng-deep.BillingAddress  .ng-select-container {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 1px solid #989CA04D !important;
   border-radius: 10px;
   height: 30px;
 }
@@ -2187,6 +2233,20 @@ margin-left: 230px;
   padding: 0 5px;
   
 
+}
+.Promotion-Name
+{
+  font-family: 'Calibri';
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+.ORDER-ITEMS
+{
+  font-family: 'Calibri';
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
 }
 
 .addbtns {
@@ -2291,7 +2351,6 @@ right: -65px;
 
 .IteminputBoxes {
   width: 100px;
-  /* height: 30px; */
   background: none;
   border-radius: 10px;
   border: 1px solid black;
@@ -2299,6 +2358,78 @@ right: -65px;
   border: 0px;
   text-align: right;
 }
+.PromotionsDataPrice
+{
+  text-align: right;
+  border: none;
+  background: none;
+}
+.PromotionsDiscount
+{
+  text-align: right;
+  border: none;
+  background: none;
+}
+.PromotiondataQuantity
+{
+  text-align: right;
+  border: none;
+  background: none;
+}
+.PromotionFinalvalue
+{
+  text-align: right
+  ;border: none;
+  position: relative;
+  left: 11px;
+  background: none;
+}
+.NonPromoinputboxPrice {
+  background: none;
+  border: none;
+  font-size: 12.5px;
+  border: 0px;
+  text-align: right;
+}
+.NONPromotionsPrice
+{
+  background: none;
+  border: none;
+  font-size: 12.5px;
+  border: 0px;
+  text-align: right;
+}
+.NonPromodataquantity
+{
+  background: none;
+  font-size: 12.5px;
+  border: 0px;
+  text-align: right;
+}
+.NON_promotionsQTY
+{
+  background: none;
+  font-size: 12.5px;
+  border: 0px;
+  text-align: right;
+}
+.FInalvaluenonpromo
+{
+  text-align: right;
+  border: none;
+  position: relative;
+  left: 11px;
+  background: none;
+}
+.FINALValueNONPromotions
+{
+  text-align: right;
+  border: none;
+  position: relative;
+  left: 18px;
+  background: none;
+}
+
 .IteminputBoxesprice {
   width: 100px;
   /* height: 30px; */
@@ -2326,9 +2457,9 @@ right: -65px;
   border-radius: 10px;
   border: 1px solid black;
   font-size: 12.5px;
-  /* color: green; */
   border: 0px;
   text-align: center;
+ 
 }
 
 .itemLeft {
@@ -2647,7 +2778,7 @@ table {
 }
 
 
-th {
+/* th {
   padding: 8.5px;
   text-align: center;
   font-family: 'Gilroy-Bold';
@@ -2657,8 +2788,114 @@ th {
 td {
   text-align: left;
   padding: 3px 0 0 8.5px;
-  /* text-align: center; */
+
+} */
+.tr-with-background {
+  background-color:  #DEE2E633 !important;
 }
+.PRODUCTCODE
+{
+font-family: 'Calibri';
+font-size: 16px;
+font-weight: 700;
+color: #000000;
+position: relative;
+left: 39px;
+text-align: start;
+}
+.ConfiramorderProductcode
+{
+  font-family: 'Calibri';
+font-size: 16px;
+font-weight: 700;
+color: #000000;
+position: relative;
+left: 39px;
+text-align: start;
+}
+.ConfiramorderProductname
+{
+  font-family: 'Calibri';
+font-size: 16px;
+font-weight: 700;
+color: #000000;
+}
+.ConfiramPrice
+{
+  text-align: right;
+  font-family: 'Calibri';
+font-size: 16px;
+font-weight: 700;
+color: #000000;
+}
+.ConfiramOrderDiscount
+{
+  text-align: right;
+  font-family: 'Calibri';
+font-size: 16px;
+font-weight: 700;
+color: #000000;
+}
+.ConfiramorderQTY
+{
+text-align: right;
+font-family: 'Calibri';
+font-size: 16px;
+font-weight: 700;
+color: #000000;
+}
+.COnfiramordrSubtotal
+{
+  text-align: center;
+  font-family: 'Calibri';
+font-size: 16px;
+font-weight: 700;
+color: #000000;
+}
+.PRODUCTNAME
+{
+ font-family: 'Calibri';
+font-size: 16px;
+font-weight: 700;
+color: #000000;
+}
+.PRICE
+{
+  text-align: right;
+  font-family: 'Calibri';
+font-size: 16px;
+font-weight: 700;
+color: #000000;
+}
+.DISCOUNTPRICE
+{
+  text-align: right;
+  font-family: 'Calibri';
+font-size: 16px;
+font-weight: 700;
+color: #000000;
+}
+.QTY
+{
+  text-align: right;
+  font-family: 'Calibri';
+font-size: 16px;
+font-weight: 700;
+color: #000000;
+}
+.SUBTOTAL
+{
+  text-align: center;
+  font-family: 'Calibri';
+font-size: 16px;
+font-weight: 700;
+color: #000000;
+
+/* padding-right: 30px; */
+}
+
+
+
 
 ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
   background: black !important;
@@ -2890,6 +3127,54 @@ font-size: 13px;
 font-weight: 400;
 line-height: 16px; 
 }
+.removeCircleNONPromotiondata
+{
+  cursor: pointer;
+  color: rgba(1, 139, 117, 1);
+  font-family: 'Calibri';
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 16px;
+   position: relative;
+   right: 67px;
+
+
+}
+.removeCircleNONPromodata
+{
+  cursor: pointer;
+  color: rgba(1, 139, 117, 1);
+  font-family: 'Calibri';
+font-size: 13px;
+font-weight: 400;
+line-height: 16px; 
+position: relative;
+right: 31px;
+}
+.remove-dataCircle
+{
+  cursor: pointer;
+  color: rgba(1, 139, 117, 1);
+  font-family: 'Calibri';
+font-size: 13px;
+font-weight: 400;
+line-height: 16px; 
+position: relative;
+right: 31px;
+}
+.EDIT-data
+{
+  font-family: 'Calibri';
+font-size: 15px;
+font-weight: 400;
+line-height: 16px;
+cursor: pointer;
+ color: rgba(1, 139, 117, 1);
+ position: relative;
+ right: 67px;
+
+
+}
 .edit {
   cursor: pointer;
   color: rgba(1, 139, 117, 1);
@@ -3012,25 +3297,37 @@ line-height: 16px;
    }
  
 
-   ::ng-deep mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-bar {
+   /* ::ng-deep mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-bar {
     background: rgba(1, 139, 117, 1);
-    
-   
   }
-  
   ::ng-deep mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-thumb {
     background: rgba(196, 196, 196, 1);
    }
-  
    ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
-    /* background-color: #000a00e2 !important; */
     background: rgba(1, 139, 117, 1) !important;
-   
-    
   }
   ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
     background-color:white !important;
-    }
+    } */
+
+   ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+      background: rgba(1, 139, 117, 1)!important;
+  }
+  ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background: rgba(196, 196, 196, 1) !important;
+  }
+  ::ng-deep mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-thumb {
+    background: rgba(196, 196, 196, 1) !important;
+   }
+  ::ng-deep mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-bar {
+   
+    background: rgba(1, 139, 117, 1)!important;
+  }
+  
+
+
+
+
 .togglebutton
 {
   margin-left: 80%;

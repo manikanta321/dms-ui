@@ -1,7 +1,7 @@
 
 ::ng-deep .orders-tab-group .mat-tab-label{
   height: 35px !important;
-  min-width: 161px !important;
+  min-width: 166px !important;
   font-family: 'Calibri';
   color:rgba(1, 139, 117, 1);
   font-size: 15px;
@@ -99,7 +99,7 @@ border-radius: 10px;
   border: 1px solid grey;
   border-radius: 35px;
   flex-shrink: 0;
-  width: 320px !important;
+  width: 322px !important;
   display: flex;
   overflow: hidden;
   position: relative;

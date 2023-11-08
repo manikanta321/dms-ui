@@ -212,7 +212,7 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
   ngOnInit(): void { 
     this.userId = localStorage.getItem('logInId');
     this.userType = localStorage.getItem('userType');
-    let item = localStorage.getItem('ViewOrReceive');
+    let item = localStorage.getItem("ViewOrReceive");
     if (item == 'Receive') {
       this.ViewOrReceive = true;
       this.headerName = 'Receive Shipment';

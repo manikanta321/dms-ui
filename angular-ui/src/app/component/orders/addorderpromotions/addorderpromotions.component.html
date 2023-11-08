@@ -1,29 +1,19 @@
 <div *ngIf="confirmOrder!=''" class="">
     <div class="main" *ngIf="confirm_Order">
         <div class=" promotionpopup-scroll1">
+
+            <!-- Confiram order Other Information  -->
             <div class="addUser">
-                <!-- <img class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
                 <mat-icon mat-button class="close-iconn conform " [mat-dialog-close]="true"
                     (click)="closeconfirmorder()">close</mat-icon>
             </div>
             <div class="head-tt">
                 <h3 class="addU font">{{"Confirm Order"}}</h3>
-                <div class="row top-bottom">
-                    <div class="row text-center"></div>
-                </div>
-                <!-- new remarks  -->
-                <div class="top-bottom">
-                    <div (click)="expandOtherInfoDiv()" class="collapsible">
-                        <div class="row">
-                            <div class="col-md-11">
-                                <p class="label-cls">Other Information </p>
-                            </div>
-                            <div class="col-md-1">
-
-                            </div>
-                        </div>
+                <div class="card mr-2">
+                    <div class="card-header label-cls" style="  color: white;background: linear-gradient(0deg, #018B75, #018B75);">
+                        <strong class="ConfiramordrInformation">Other Information </strong>
                     </div>
-                    <div class="content">
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="companyReff">
@@ -33,7 +23,6 @@
                                         [(ngModel)]="CompanyReferenceNo" class="form-control container input-box">
                                 </div>
                             </div>
-
                             <div class="col-lg-4">
                                 <div class="dealerReff">
                                     <label class="DealerInfo-label">Dealer Reference <span class="astr">*</span></label>
@@ -41,326 +30,271 @@
                                         [(ngModel)]="DealerReferenceNo" class="form-control container input-box">
                                 </div>
                             </div>
-
-
                             <div class="col-lg-4">
                                 <div class="Remarkspromotiont">
                                     <label class="delivery_1">Remarks</label>
                                 </div>
                                 <input type="text" placeholder="Type here If any Remarks" name="w3review"
                                     [(ngModel)]="DeliveryInstructions" class="form-control container input-box">
-
-
-
                             </div>
-
                         </div>
                     </div>
                 </div>
+               
+                <!-- Confiram order Dealer Information  -->
 
-                <div (click)="expandDealerInfoDiv()" class="collapsible" style="margin-top: 15px;">
-                    <div class="row">
-                        <div class="col-md-11">
-                            <p class="label-cls">Dealer Information</p>
-                        </div>
-                        <div class="col-md-1">
-                            <!-- <img [src]="image1" class="expand-arrow" alt="add-user-btn"> -->
-                        </div>
+                <div class="card  mr-2 mt-3">
+                    <div class="card-header label-cls"
+                        style="  color: white;background: linear-gradient(0deg, #018B75, #018B75);">
+                        <span class="DealerInformationLabel">Dealer Information</span>
                     </div>
-
-                </div>
-                <div class="content contentscrobar  ">
-                    <div class="row ">
-                        <div class="col-lg-3">
-                            <div class="dealerr">
-                                <label class="DealerInfo-label">Dealer<span class="astr">*</span></label>
-                                <ng-select disabled [items]="dealerListArray" id="dealerAllArray" name="dealerAllArray"
-                                    required [virtualScroll]="true" bindLabel="customerName" bindValue="customerId"
-                                    [searchable]="true" [clearable]="false" placeholder=" Search & select dealer"
-                                    [(ngModel)]="customerId" (change)="onItemSelectdealers($event)">
-                                </ng-select>
+                    <div class="card-body">
+                        <div class="row "> 
+                            <div class="col-lg-3">
+                                <div class="dealerr">
+                                    <label class="DealerInfo-label">Dealer<span class="astr">*</span></label>
+                                    <ng-select disabled [items]="dealerListArray" id="dealerAllArray" name="dealerAllArray"
+                                        required [virtualScroll]="true" bindLabel="customerName" bindValue="customerId"
+                                        [searchable]="true" [clearable]="false" placeholder=" Search & select dealer"
+                                        [(ngModel)]="customerId" (change)="onItemSelectdealers($event)">
+                                    </ng-select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="geographyy">
-                                <label class="DealerInfo-label">Geography <span class="astr">*</span></label>
-                                <ng-select disabled class="selectgeo" [items]="GeoGrapydropdownListdata"
-                                    id="GeoGrapydropdown" name="GeoGrapydropdown" required [virtualScroll]="true"
-                                    bindLabel="geographyName" bindValue="geographyId" [searchable]="true"
-                                    [clearable]="false" placeholder="Select geography" [(ngModel)]="geographyId"
-                                    (change)="onItemSelectgeo($event)">
-                                </ng-select>
+                            <div class="col-lg-3">
+                                <div class="geographyy">
+                                    <label class="DealerInfo-label">Geography <span class="astr">*</span></label>
+                                    <ng-select disabled class="selectgeo" [items]="GeoGrapydropdownListdata"
+                                        id="GeoGrapydropdown" name="GeoGrapydropdown" required [virtualScroll]="true"
+                                        bindLabel="geographyName" bindValue="geographyId" [searchable]="true"
+                                        [clearable]="false" placeholder="Select geography" [(ngModel)]="geographyId"
+                                        (change)="onItemSelectgeo($event)">
+                                    </ng-select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="billingAdrs">
-                                <label class="DealerInfo-label">Billing Address {{BillingaddressId}} <span
-                                        class="astr">*</span></label>
-                                <!-- <input matInput placeholder=" Select Billing address" #input class="form-control container input-box" > -->
-                                <ng-select disabled class="BillingAddress" [items]="dealersbillingAddress"
-                                    id="BillingAddress" name="BillingAddress" required [virtualScroll]="true"
-                                    bindLabel="Billingaddress" bindValue="BillingaddressId" [searchable]="true"
-                                    [clearable]="false" placeholder="Select  billing address"
-                                    [(ngModel)]="BillingaddressId" (change)="onItemSelectBillingAddress($event)">
-                                </ng-select>
+                            <div class="col-md-3">
+                                <div class="billingAdrs">
+                                    <label class="DealerInfo-label">Billing Address {{BillingaddressId}} <span
+                                            class="astr">*</span></label>
+                                    <ng-select disabled class="BillingAddress" [items]="dealersbillingAddress"
+                                        id="BillingAddress" name="BillingAddress" required [virtualScroll]="true"
+                                        bindLabel="Billingaddress" bindValue="BillingaddressId" [searchable]="true"
+                                        [clearable]="false" placeholder="Select  billing address"
+                                        [(ngModel)]="BillingaddressId" (change)="onItemSelectBillingAddress($event)">
+                                    </ng-select>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="shippingAdrs">
-                                <label class="DealerInfo-label">Shipping Address <span class="astr"></span></label>
-
-                                <ng-select disabled class="shipingAddress" placeholder=" Select shiping address"
-                                    [items]="dealersShippingAddress" id="shipingAddress" name="shipingAddress" required
-                                    [virtualScroll]="true" bindLabel="address" bindValue="addressId" [searchable]="true"
-                                    [clearable]="false" placeholder="Select  shipping address" [(ngModel)]="addressId"
-                                    (change)="onItemSelectshippingAddress($event)">
-                                </ng-select>
+                            <div class="col-md-3">
+                                <div class="shippingAdrs">
+                                    <label class="DealerInfo-label">Shipping Address <span class="astr"></span></label>
+                                    <ng-select disabled class="shipingAddress" placeholder=" Select shiping address"
+                                        [items]="dealersShippingAddress" id="shipingAddress" name="shipingAddress" required
+                                        [virtualScroll]="true" bindLabel="address" bindValue="addressId" [searchable]="true"
+                                        [clearable]="false" placeholder="Select  shipping address" [(ngModel)]="addressId"
+                                        (change)="onItemSelectshippingAddress($event)">
+                                    </ng-select>
+                                </div>
                             </div>
-                        </div>
+                     </div>
+                     </div>
+                     </div>
 
-                    </div>
-
-                </div>
                 <!-- Confirom order Promotions Start Here -->
-                <div class="t_op-bottomConform">
-                    <div (click)="expandConfirmPromotions()" class="coll_apsiblee">
-                        <div class="row">
-                            <div class="col-md-11">
-                                <p class="label-class">Promotions </p>
+
+                <div class="card mr-2 mt-3">
+                    <div class="card-header p-2 label-cls" style="color: white;background: linear-gradient(0deg, #018B75, #018B75);">
+                        <div class="row ">
+                            <div class="col-md-10">
+                                <p class="label-class pl-3">
+                                    <span class="Promotion-Name">Promotions</span> </p>
                             </div>
-                            <div class="col-md-1">
-                                <!-- <img [src]="image3" class="expand-arrow" alt="add-user-btn"> -->
-                            </div>
+                            
                         </div>
                     </div>
-                    <div class="con_tentConform">
-                        <br>
-                        <div class="promotion-card">
-                            <div class="promoimgs">
-                                <div class="row">
-                                    <div class="col-md-3" *ngFor="let Item of arrayOfImages;let i=index;">
-                                        <div class="promotion-container" [ngClass]="{ 'selected': Item.isSelected }"
-                                            (click)="selectPrmotionItem(Item)">
-                                            <div class="img-container">
-                                                <!-- <img class="promotion-img" src="https://via.placeholder.com/260x280"  alt="Promotion"/> -->
-                                                <img class="promotion-img"
-                                                    src="data:image/jpeg;base64,{{Item.imageurl}}" alt="Promotion" />
-
-                                            </div>
-                                            <div class="promotion-info">
-                                                <div class="promo-name">
-                                                    Name: <span> {{Item.promotionName}}</span>
-                                                </div>
-
-                                                <div class="promo-type">
-                                                    Type: <span> {{Item.promotionTypesName}}</span>
-                                                </div>
-                                                <div class="promo-view-wrapper">
-                                                    <div class="promo-view" (click)="showPromotionInfo($event,Item)">
-                                                        <mat-icon> remove_red_eye </mat-icon>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="cancel-icon" (click)="removePromotion($event,Item)">
-                                                <mat-icon mat-button class="close-icon">close</mat-icon>
+                    <div class="card-body" style="height: 235px; overflow-y: auto;">
+                        <div class="row">
+                            <div class="col-md-3" *ngFor="let Item of arrayOfImages;let i=index;">
+                                <div class="promotion-container" [ngClass]="{ 'selected': Item.isSelected }"
+                                    (click)="selectPrmotionItem(Item)">
+                                    <div class="img-container">
+                                        <img class="promotion-img"
+                                            src="data:image/jpeg;base64,{{Item.imageurl}}" alt="Promotion" />
+                                    </div>
+                                    <div class="promotion-info">
+                                        <div class="promo-name">
+                                            Name: <span> {{Item.promotionName}}</span>
+                                        </div>
+                                        <div class="promo-type">
+                                            Type: <span> {{Item.promotionTypesName}}</span>
+                                        </div>
+                                        <div class="promo-view-wrapper">
+                                            <div class="promo-view" (click)="showPromotionInfo($event,Item)">
+                                                <mat-icon> remove_red_eye </mat-icon>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-
-                                <!-- <div class="col-md-3 img-container" *ngFor="let Item of arrayOfImages;let i=index;">
-                                    <div (click)="getpromotionImages($event,Item);">
-                                        <img class="card1" src="data:image/jpeg;base64,{{Item.imageurl}}"  [ngClass]="{ 'selected': Item.isSelected }" alt="image does not exit"/>
+                                    <div class="cancel-icon" (click)="removePromotion($event,Item)">
+                                        <mat-icon mat-button class="close-icon">close</mat-icon>
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    </div>  
+        
+                <!-- Confiram Order Start  Order Items-->
 
-                <div class="top-bottom">
-                    <div class="collapsible">
-                        <div class="row">
-                            <div class="col-lg-6" (click)="expandOrderItemsDiv()">
-                                <p class="label-cls">Items</p>
+                <div class="card mr-2 mt-2">
+                    <div class="card-header p-2" style="color: white;background: linear-gradient(0deg, #018B75, #018B75);">
+                        <div class="row ">
+                            <div class="col-md-10">
+                                <p class="label-class" style="padding-left: 15px;">
+                                    <span class="ORDER-ITEMS">Order Items</span> </p>
                             </div>
-                            <!-- <div class="col-lg-5">
-                                <div class="addbtns d-flex">
-                                    <div class="addEditPromotion">
-                                        <button (click)="addOrderPromotionList()" class="add-edit-promo">Add/Edit Promo
-                                            Items</button>
-                                    </div>
-                                    <div class="addEditNonPromotion">
-                                        <button (click)="addOrderNonPromotionList()" class="add-edit-non-promo">Add/Edit
-                                            Non Promo Items</button>
-                                    </div>
-                                </div>
-                            </div> -->
-                            <div class="col-lg-1" (click)="expandOrderItemsDiv()">
-                                <!-- <img [src]="image2" class="expand-arrows" alt="add-user-btn"> -->
-                            </div>
+                           
                         </div>
-                    </div>
-                    <div class="content" *ngIf="!orderitem">
-                        <div class="section mt-1">
-                            <table>
+                    </div> 
+                    <div class="card-body p-0" *ngIf="!orderitem">
+                        <div class="" style="padding-top: 10px;">
+                         
+                             <table>
                                 <tr>
-                                    <!-- <th>Item </th>
-                                    <th>UoM</th>
-                                    <th>Order Qty</th>
-                                    <th>Stock</th>
-                                    <th>Unit Price</th>
-                                    <th>Discount</th>
-                                    <th>Tax</th>
-                                    <th>Final Value</th>
-                                    <th>Amount</th> -->
-
-                                    <th></th>
-                                    <th style="width:107px !important;position: relative;">
-                                        <b style="font-weight: bold;">Product Code</b>
-                                    </th>
-                                    <th class="align-center" class="PROCODE"></th>
-
-                                    <th style="width:50px !important;"></th>
-                                    <!-- <th style="text-align: left; ">Product Code</th> -->
-                                    <th class="align-center">Product Name</th>
-                                    <th class="align-right">Price</th>
-                                    <th class="align-right">Discounted Price </th>
-                                    <th class="align-right"> Qty </th>
-                                    <!-- <th class="align-right">Total Value </th> -->
-                                    <th>Sub Total</th>
-                                    <th></th>
+                                    <th scope="col"  class="ConfiramorderProductcode">Product Code </th>
+                                    <th scope="col" class="ConfiramorderProductname">Product Name</th>
+                                    <th scope="col"  class="ConfiramPrice">Price</th>
+                                    <th scope="col"  class="ConfiramOrderDiscount">Discounted Price </th>
+                                    <th scope="col"   class="ConfiramorderQTY">QTY</th>
+                                    <th scope="col" class="COnfiramordrSubtotal">Sub Total</th>
+                                    <th  scope="col"></th>
                                 </tr>
-                                <!-- Conform Order screens -->
-                                <!-- promotion list view -->
-
+                               
                                 <ng-container *ngFor="let PromotionObj of AddOrderPromotionData; let i=index;">
-                                    <div class="ExpandArrow" (click)="ExpandPromotion(i)">
-                                        <img [src]="image55" class="expand-arrow_W" alt="add-user-btn">
-                                        Promotion
-                                        <span id="protype_confirm" style="color: rgba(0, 0, 0, 1);">
-                                            {{PromotionObj.promotionName}}
-                                            {{PromotionObj.promotionTypeNmae}}
-                                            {{PromotionObj.promotionTypesName}}
-                                        </span>
-                                    </div>
+                                    <tr>
+                                        <td class="" style="padding: 4px;">
+                                                 <mat-icon (click)="ExpandPromotion(i)"
+                                                 style="cursor: pointer;   position: relative;   left: 3%;  top: 1px;">keyboard_arrow_down </mat-icon>
+                                                <span  style="position: relative;left: 13px;right: 6px;color: black;top: -6px;" >Promotion &nbsp;{{PromotionObj.promotionTypeNmae}}
+                                                    {{PromotionObj.promotionName}}
+                                                    {{PromotionObj.promotionTypesName}}</span>   
+                                        </td>
+                                        <td></td>
+                                         <td></td>
+                                         <td></td>
+                                         <td></td> 
+                                         <td></td>
+                                          <td></td>
+                                          <td><td>
+                                    </tr>
                                     <ng-container *ngIf='PromotionObj.isOpen'>
                                         <tr *ngFor="let Item of PromotionObj.itemDetails; let j=index;">
-                                            <td></td>
-                                            <td style="text-align: left;">{{Item.productSKUName}}</td>
-                                            <td style="width:50px !important;"></td>
-                                            <td></td>
-
-                                            <td style="text-align: left;">{{Item.stockitemname}}</td>
-                                            <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td> -->
-
-                                            <td>
+                                            
+                                            <td style="padding-left: 35px;">{{Item.productSKUName}}</td>
+                                            <td>{{Item.stockitemname}}</td>
+                                            <td style="text-align: right;">
                                                 <input type="text" disabled [(ngModel)]="Item.price"
-                                                    class="IteminputBoxes">
+                                                      style="text-align: right;border: none;background: none;">
                                             </td>
-
-                                            <td>
+                                          
+                                            <td style="text-align: right;">
                                                 <input type="text" disabled [(ngModel)]="Item.discount"
-                                                    [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'">
+                                                    [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'"
+                                                    style="text-align: right;border: none;background: none;">
                                             </td>
-                                            <!-- <td>
-                                            <input type="text" disabled [(ngModel)]="Item.uomname"
-                                                class="IteminputBoxes">
-                                        </td> -->
-                                            <td>
+                                      
+                                            <td style="text-align: right;">
                                                 <input type="text" disabled [(ngModel)]="Item.quantity"
-                                                    class="IteminputBoxes">
+                                                style="text-align: right;border: none;background: none;">
                                             </td>
-                                            <!-- <td>
-                                            <input type="text" disabled [(ngModel)]="Item.stock" class="IteminputBoxes">
-                                        </td> -->
-
-                                            <!-- <td style="text-align: left;">{{Item.materialcustomidentifier}}</td>  --> <!-- 
-                                        <td>
-                                            <input type="text" disabled [(ngModel)]="Item.taxvalue"
-                                                class="IteminputBoxes">
-                                        </td> -->
-
                                             <td>
                                                 <input type="text" disabled [(ngModel)]="Item.finalValue"
-                                                    class="IteminputBoxes">
+                                                style="text-align: right;border: none;position: relative;left: 20px;background: none;">
                                             </td>
-                                            <!-- <td>
-                                            <input type="text" disabled [(ngModel)]="Item.amount"
-                                                class="IteminputBoxes">
-                                        </td> -->
-
-                                            <!-- <mat-icon class="removeCircle" *ngIf="j==0">
-                                            remove_circle</mat-icon>  -->
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
                                         </tr>
                                     </ng-container>
                                 </ng-container>
-                                <!-- nonpromotions list view -->
+
+                                <!-- Start non promotions Confiram -->
                                 <tr *ngFor="let Item of AddorderNonpromotiondata?.itemDetails; let i=index;">
-
-                                    <div class="ExpandArrow" (click)="toggleRow(i)">
-                                        <img [src]="image55" class="expand-arrow_W" alt="add-user-btn">
-                                        Non Promotion
-
-                                    </div>
+                                    <td>
+                                        <mat-icon (click)="toggleRow(i)"
+                                        style="cursor: pointer;   position: relative;   left: 3%;  top: 1px;">keyboard_arrow_down </mat-icon>
+                                        <span  style="position: relative;left: 13px;color: black;top: -6px;" >Non Promotions</span>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <ng-container  *ngFor="let Item of AddorderNonpromotiondata?.itemDetails; let i=index;" >
                                     <ng-container *ngIf="rowVisibility[i]">
+                                        <tr *ngFor="let Item of AddorderNonpromotiondata?.itemDetails; let i=index;">
+                                            <td style="padding-left: 35px;">{{Item.productSKUName}}</td>
+                                            <td>{{Item.stockitemname}}</td>
+                                            <td style="text-align: right;">
+                                                <input type="text" disabled [(ngModel)]="Item.price"
+                                                 class="NONPromotionsPrice">
+                                            </td>
+                                            <td style="text-align: right;">
+                                                <input type="text" disabled [(ngModel)]="Item.discount"
+                                                    [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'"
+                                                    style="text-align: right;background: none;border: none;">
+                                            </td>
+                                            <td style="text-align: right;">
+                                                <input type="text" disabled [(ngModel)]="Item.quantity" class="NON_promotionsQTY">
+                                            </td>
+                                            <td>
+                                                <input type="text" disabled [(ngModel)]="Item.finalValue"
+                                                    class="FINALValueNONPromotions">
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        </ng-container>
+                                </ng-container>
+                             </table>
+                            </div>
 
-                                        <td style="text-align: left;">{{Item.productSKUName}}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td style="text-align: left;">{{Item.stockitemname}}</td>
-                                        <td>
-                                            <input type="text" disabled [(ngModel)]="Item.price" class="IteminputBoxes">
-                                        </td>
-                                        <td>
-                                            <input type="text" disabled [(ngModel)]="Item.discount"
-                                                [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'">
-                                        </td>
-                                        <td>
-                                            <input type="text" disabled [(ngModel)]="Item.quantity" class="IteminputBoxes">
-                                        </td>
-                                        <td>
-                                            <input type="text" disabled [(ngModel)]="Item.finalValue"
-                                                class="IteminputBoxes">
-                                        </td>
+                            <!-- Packing charges and shipping charges  my code -->
+                            <div class="row mt-3">
+                                <table class="TOtalCalculations" *ngIf="shippingPackingchargeDetails">
+                                    <tr>
+                                        <td class="text-left SUBITEMNAME ml-5"><p style="margin-left: 20%;">Subtotal</p></td>
+                                        <td class="text-right numbers ">{{shippingPackingchargeDetails.subTotal}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;">Packing Charge</p></td>
+                                        <td class="text-right numbers ">{{shippingPackingchargeDetails.packingCharges}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;" >Shipping Charge</p></td>
+                                        <td class="text-right numbers">{{shippingPackingchargeDetails.shippingCharges}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;" > Tax</p> </td>
+                                        <td class="text-right numbers">{{shippingPackingchargeDetails.taxElement}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';"><p style="margin-left: 20%;">Total value</p></td>
+                                        <td class="text-right numbers">{{shippingPackingchargeDetails.total}}</td>
+    
+                                    </tr>
+                                </table>
+                            </div>
 
-                                        <!-- <mat-icon class="removeCircle" (click)=removeNonPromotionItem(Item)>
-                                        remove_circle </mat-icon> -->
-                                    </ng-container>
-
-                                </tr>
-
-                            </table>
-                        </div>
-                        <div class="row mt-2">
-
-                            <table class="  TOTAL" *ngIf="shippingPackingchargeDetails">
-                                <tr>
-                                    <td class="text-left SUBITEMNAME">Subtotal</td>
-                                    <td class="text-right numbers ">{{shippingPackingchargeDetails.subTotal}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-left SUBITEMNAME">Packing Charge</td>
-                                    <td class="text-right numbers ">{{shippingPackingchargeDetails.packingCharges}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-left SUBITEMNAME">Shipping Charge</td>
-                                    <td class="text-right numbers">{{shippingPackingchargeDetails.shippingCharges}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-left SUBITEMNAME">Tax</td>
-                                    <td class="text-right numbers">{{shippingPackingchargeDetails.taxElement}}</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';">Total</td>
-                                    <td class="text-right numbers">{{shippingPackingchargeDetails.total}}</td>
-                                </tr>
-                            </table>
-
-                        </div>
+                       
                     </div>
                 </div>
+
+
+
+
+
+
+
 
             </div>
         </div>
@@ -395,7 +329,7 @@
                 <!-- Dealer Reference -->
                 <div class="card">
                     <div class="card-header label-cls" style="  color: white;background: linear-gradient(0deg, #018B75, #018B75);">
-                        <strong class="bold">Dealer Reference No</strong>
+                        <strong class="DealerRefrenceno">Dealer Reference</strong>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -429,7 +363,7 @@
                 <div class="card mt-3" *ngIf="userType !== 'Dealer Admin'">
                     <div (click)="expandDealerInfoDiv()" class="card-header label-cls"
                         style="  color: white;background: linear-gradient(0deg, #018B75, #018B75);">
-                        <strong>Dealer Information</strong>
+                        <span class="DealerInformationLabel">Dealer Information</span>
                     </div>
                     <div class="card-body">
                         <div class="row ">
@@ -487,10 +421,11 @@
                     <div class="card-header p-2 label-cls" style="color: white;background: linear-gradient(0deg, #018B75, #018B75);">
                         <div class="row ">
                             <div class="col-md-10">
-                                <p class="label-class pl-3"><b>Promotions</b> </p>
+                                <p class="label-class pl-3">
+                                    <span class="Promotion-Name">Promotions</span> </p>
                             </div>
                             <div class="col-md-2">
-                                <input class="searchInput_11" type="text" name="" placeholder="Search here anything"
+                                <input class="searchInput_11" type="text" name="" placeholder="Search Here Anything"
                                     (keyup)="searchData($event)">
                                 <mat-icon class="searchiconsmat">search</mat-icon>
                                 <button class="searchbuttonpromotions">Search</button>
@@ -535,7 +470,8 @@
                     <div class="card-header p-2" style="color: white;background: linear-gradient(0deg, #018B75, #018B75);">
                         <div class="row ">
                             <div class="col-md-10">
-                                <p class="label-class" style="padding-left: 15px;"><b>Order Items</b> </p>
+                                <p class="label-class" style="padding-left: 15px;">
+                                    <span class="ORDER-ITEMS">Order Items</span> </p>
                             </div>
                             <div class="col-md-2">
                                 <!-- this.geographyId == null || this.customerId == null -->
@@ -545,117 +481,114 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="section">
+                    <div class="card-body p-0">
+                        <div class="" style="padding-top: 10px;">
                             <table>
+                               
                                 <tr>
-                                    <th class="text-left" style="width:107px !important;position: relative; padding-left: 25px;">
-                                        <b style="font-weight: bold;">Product Code</b>
-                                    </th>
-                                    <th class="align-center" class="PROCODE"></th>
-                                    <th class="align-center">Product Name</th>
-                                    <!-- <th class="align-right">UoM</th> -->
-                                    <th class="align-right">Price</th>
-                                    <th class="align-right">Discounted Price </th>
-                                    <th class="align-right"> Qty </th>
-                                    <th class="align-right">Sub Total</th>
-                                    <th></th>
+                                    <th scope="col"  class="PRODUCTCODE">Product Code </th>
+                                    <th scope="col" class="PRODUCTNAME">Product Name</th>
+                                    <th scope="col"  class="PRICE">Price</th>
+                                    <th scope="col"  class="DISCOUNTPRICE">Discounted Price </th>
+                                    <th scope="col"   class="QTY">QTY</th>
+                                    <th scope="col" class="SUBTOTAL">Sub Total</th>
+                                    <th  scope="col"></th>
                                 </tr>
-
-
+                                
                                 <ng-container *ngFor="let PromotionObj of AddOrderPromotionData; let i=index;">
-                                    <div class="ExpandArrow">
-                                        <img [src]="image55" (click)="ExpandPromotion(i)" class="expand-arrow_W" alt="add-user-btn">
-                                        <span id="protype" style="color: rgba(0, 0, 0, 1);" class="justify-content-between">
-                                            <!-- {{PromotionObj.promotionName}} -->
-                                            {{PromotionObj.promotionTypeNmae}}
-                                            {{PromotionObj.promotionTypesName}}
-                                            <span class="edit" (click)="editPromotionItem(PromotionObj.promotionId)">Edit</span>
-                                            <span class="edit" (click)="removePromotionItem(Item, PromotionObj.promotionId)"> <i class="fa fa-trash-o"></i></span>
-                                        </span>
-                                    </div>
-                                    <ng-container *ngIf='PromotionObj.isOpen'>
-                                        <tr *ngFor="let Item of PromotionObj.itemDetails; let j=index;">
-                                            <td>
-                                                <div class="action-items">
-                                                    <div class="edit" *ngIf="j==0" (click)="editPromotionItem(PromotionObj.promotionId)">
-                                                       
-                                                    </div>
-                                                </div>
+                                        <tr>
+                                            <td class="" style="padding: 4px;">
+                                                  
+                                                     <mat-icon (click)="ExpandPromotion(i)"
+                                                     style="cursor: pointer;   position: relative;   left: 3%;  top: 1px;">keyboard_arrow_down </mat-icon>
+                                                    <span  style="position: relative;left: 13px;right: 6px;color: black;top: -6px;" >Promotion &nbsp;{{PromotionObj.promotionTypeNmae}}</span>
+                                                   
                                             </td>
-                                            <td>
-                                                <p id="productname" [ngClass]="{'promotionclass': Item.isBuyProduct === false}">
-                                                    {{Item.productSKUName}}
-                                                </p>
-                                            </td>
-                                            <td>
-                                                <p class="itemLeft" [ngClass]="{'promotionclass': Item.isBuyProduct === false}">
-                                                    {{Item.stockitemname}}
-                                                </p>
-                                            </td>
-                                            <td>
-                                                <input [ngClass]="{'promotionclass': Item.isBuyProduct === false}" type="text" disabled [(ngModel)]="Item.price" class="IteminputBoxesPriceBOX" style="margin-right: 17%;">
-                                            </td>
-                                            <td>
-                                                <input type="text" disabled [(ngModel)]="Item.discount" style="text-align: right;"
-                                                    [ngClass]="Item.discount === 100 ? 'IteminputBoxesD' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')">
-                                            </td>
-                                            <td>
-                                                <input [ngClass]="{'promotionclass': Item.isBuyProduct === false}" style="margin-right: 25%;" type="text" disabled
-                                                    [(ngModel)]="Item.quantity" class="IteminputBoxes">
-                                            </td>
-                                            <td>
-                                                <input [ngClass]="{'promotionclass': Item.isBuyProduct === false}" type="text" disabled [(ngModel)]="Item.finalValue" class="IteminputBoxes">
-                                            </td>
+                                            <td> <span class="EDIT-data" (click)="editPromotionItem(PromotionObj.promotionId)">Edit</span></td> <td></td><td></td>
+                                             <td></td> 
+                                             <td></td>
+                                              <td><span class="remove-dataCircle" (click)="removePromotionItem(Item, PromotionObj.promotionId)"> <i class="fa fa-trash-o"></i></span></td>
+                                              <td><td>
                                         </tr>
+
+                                    <ng-container *ngIf='PromotionObj.isOpen'>
+                                     
+                                        <tr *ngFor="let Item of PromotionObj.itemDetails; let j=index;"> 
+                                           
+                                            <td [ngClass]="{'promotionclass': Item.isBuyProduct === false}" style="padding-left: 35px;">
+                                                    {{Item.productSKUName}}  
+                                            </td>
+                                            <td [ngClass]="{'promotionclass': Item.isBuyProduct === false}">
+                                                    {{Item.stockitemname}}
+                                            </td>
+                                            <td style="text-align: right;">
+                                                <input [ngClass]="{'promotionclass': Item.isBuyProduct === false}" type="text" disabled [(ngModel)]="Item.price"
+                                                style="text-align: right;border: none;background: none;">
+                                            </td>
+                                            <td style="text-align: right;">
+                                                <input type="text" disabled [(ngModel)]="Item.discount" 
+                                                    [ngClass]="Item.discount === 100 ? 'IteminputBoxesD' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')"
+                                                    style="text-align: right;border: none;background: none;">
+                                                   
+                                            </td>
+                                            <td style="text-align: right;">
+                                                <input [ngClass]="{'promotionclass': Item.isBuyProduct === false}"  type="text" disabled
+                                                    [(ngModel)]="Item.quantity" style="text-align: right;border: none;background: none;">
+                                            </td>
+                                           
+                                            <td >
+                                               <input [ngClass]="{'promotionclass': Item.isBuyProduct === false}" type="text" disabled [(ngModel)]="Item.finalValue"
+                                                style="text-align: right;border: none;position: relative;left: 11px;background: none;">
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        
                                     </ng-container>
                                 </ng-container>
                                 
 
                                 <!-- nonpromotions list view -->
+                                
+                                <tr *ngIf="DisplayNonpromotion">
+                                    <td>
+                                        <mat-icon (click)="ExpandNonPromotion()"
+                                        style="cursor: pointer;   position: relative;   left: 3%;  top: 1px;">keyboard_arrow_down </mat-icon>
+                                        <span  style="position: relative;left: 13px;color: black;top: -6px;" >Non Promotions</span>
+                                    </td>
+                                    <td><span class="removeCircleNONPromotiondata"(click)="removeNonPromotionItem(Item)">Edit</span></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
 
-                                <ng-container *ngIf="DisplayNonpromotion">
-                                    <div class="ExpandArrow" (click)="ExpandNonPromotion()">
-                                        <img [src]="image55" class="expand-arrow_W" alt="add-user-btn">Non Promotions
-                                        <span id="protype" style="color: rgba(0, 0, 0, 1);"> </span>
-
-                                    </div>
-                                </ng-container>
+                               
                                 <ng-container *ngIf="NonPromotion">
-
                                     <tr *ngFor="let Item of AddorderNonpromotiondata?.itemDetails; let i=index;">
-
-                                        <!-- <td style="width:50px !important;">
-                                                                <span  *ngIf="i == 0"> NP
-                                                                </span>
-                                                            </td> -->
-
-                                        <td style="text-align: left;">{{Item.productSKUName}}</td>
-                                        <td style="width:10px;"></td>
-                                        <td style="text-align: left;">{{Item.stockitemname}}</td>
-                                        <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td> -->
-                                        <!-- <td><input type="text" disabled [(ngModel)]="Item.uomname" class="IteminputBoxes"></td> -->
-                                        <td><input style="margin-right: 17%;" type="text" disabled
-                                                [(ngModel)]="Item.price" class="IteminputBoxes"></td>
-
-                                        <td><input style="margin-right: -12%;" type="text" disabled
+                                        <td style="padding-left: 35px;">{{Item.productSKUName}}</td>
+                                        <td >{{Item.stockitemname}}</td>
+                                        <td style="text-align: right;">
+                                            <input  type="text" disabled
+                                                [(ngModel)]="Item.price" class="NonPromoinputboxPrice">
+                                            </td>
+                                        <td style="text-align: right;">
+                                            <input  type="text" disabled
                                                 [(ngModel)]="Item.discount"
-                                                [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'">
+                                                [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'"
+                                                style="text-align: right;background: none;border: none;">
                                         </td>
-
-                                        <td> <input style="margin-right: 25%;" type="text" disabled
-                                                [(ngModel)]="Item.quantity" class="IteminputBoxes"> </td>
-
-                                        <!-- <td><input type="text" disabled [(ngModel)]="Item.stock" class="IteminputBoxes"> </td> -->
-                                        <!-- <td><input type="text" disabled [(ngModel)]="Item.finalPrice" class="IteminputBoxes"> </td> -->
-
-                                        <td> <input type="text" disabled [(ngModel)]="Item.finalValue"
-                                                class="IteminputBoxes"> </td>
-
-                                        <!-- <td><input type="text" disabled [(ngModel)]="Item.taxvalue" class="IteminputBoxes"> </td> -->
-                                        <!-- <td> <input type="text" disabled [(ngModel)]="Item.amount" class="IteminputBoxes"></td> -->
+                                        <td style="text-align: right;"> <input  type="text" disabled
+                                                [(ngModel)]="Item.quantity" class="NonPromodataquantity"> </td>
+                                        <td> 
+                                            <input type="text" disabled [(ngModel)]="Item.finalValue"
+                                                class="FInalvaluenonpromo">
+                                             </td>
                                         <td>
-                                            <div class="removeCircle" (click)="removeNonPromotionItem(Item)">
+                                            <div class="removeCircleNONPromodata" (click)="removeNonPromotionItem(Item)">
                                                 <i class="fa fa-trash-o"></i>
                                             </div>
                                         </td>
@@ -664,53 +597,27 @@
                             </table>
                         </div>
                         <div class="row mt-3">
-
-                            <!-- <div class="   totall" *ngIf="shippingPackingchargeDetails">
-                                <div class="innerTotal d-flex">
-                                    <div class="subitem">
-                                        <p class="alltotals sub_totallss">Sub Total </p>
-                                        <span id="totallsss">{{shippingPackingchargeDetails.subTotal}}</span>
-                                    </div>
-                                    <div class="subitem">
-                                        <p class="alltotals tax_element">Tax Element</p>
-                                        <span id="tax_color">{{shippingPackingchargeDetails.taxElement}}</span>
-                                    </div>
-                                    <div class="subitem">
-                                        <p class="alltotals packing_Charges">Packing Charge</p>
-                                        <span id="pkcharger">{{shippingPackingchargeDetails.packingCharges}}</span>
-                                    </div>
-                                    <div class="subitem">
-                                        <p class="alltotals shipping_charges">Shipping Charge</p>
-                                        <span id="Shippinggg">{{shippingPackingchargeDetails.shippingCharges}}</span>
-                                    </div>
-                                    <div class="subitem total_total">
-                                        <p class="alltotals totaltotal ">Total</p>
-                                        <span id="totallssss">{{shippingPackingchargeDetails.total}}</span>
-                                    </div>
-                                </div>
-                            </div> -->
-                            <!-- <div  *ngIf="shippingPackingchargeDetails">   -->
-                            <table class="TOTAL" *ngIf="shippingPackingchargeDetails">
+                            <table class="TOtalCalculations" *ngIf="shippingPackingchargeDetails">
                                 <tr>
-                                    <td class="text-left SUBITEMNAME">Subtotal</td>
+                                    <td class="text-left SUBITEMNAME ml-5"><p style="margin-left: 20%;">Subtotal</p></td>
                                     <td class="text-right numbers ">{{shippingPackingchargeDetails.subTotal}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-left SUBITEMNAME">Packing Charge</td>
+                                    <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;">Packing Charge</p></td>
                                     <td class="text-right numbers ">{{shippingPackingchargeDetails.packingCharges}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-left SUBITEMNAME">Shipping Charge</td>
+                                    <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;" >Shipping Charge</p></td>
                                     <td class="text-right numbers">{{shippingPackingchargeDetails.shippingCharges}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-left SUBITEMNAME">Tax</td>
+                                    <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;" > Tax</p> </td>
                                     <td class="text-right numbers">{{shippingPackingchargeDetails.taxElement}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';">Total
-                                        value</td>
+                                    <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';"><p style="margin-left: 20%;">Total value</p></td>
                                     <td class="text-right numbers">{{shippingPackingchargeDetails.total}}</td>
+
                                 </tr>
                             </table>
 

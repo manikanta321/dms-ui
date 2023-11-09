@@ -141,8 +141,10 @@ export class UseractionComponent implements OnInit, AfterViewInit {
         this.DeactiveDealer = true;
       } else if (rowData.statusName === 'Inactive') {
         this.DeactiveDealer = false;
+      }else if(rowData.statusName === 'Invited'){
+        this.DeactiveDealer = true;
       }
-      this.showAllOptions = rowData.statusName === 'Invited';
+       
     } else {
       this.tippyInstance.unmount();
     }

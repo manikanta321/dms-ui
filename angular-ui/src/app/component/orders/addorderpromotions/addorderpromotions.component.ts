@@ -956,16 +956,24 @@ export class AddorderpromotionsComponent implements OnInit {
 
   onItemSelectdealers(item: any) {
     let prev_dealer = JSON.parse(localStorage.getItem('dealerid')||'null')
-    this.DisplayNonpromotion = false
-    this.NonPromotion=false
-    if(prev_dealer !==item.customerId){
-    // alert('removing previous dealer items')
-    localStorage.removeItem('calculation')
+    if (prev_dealer !== item.customerId) {
+      localStorage.removeItem('calculation');
+      this.clearQuantity();
+      this.resetQuantity();
+      this.AddorderNonpromotiondata.itemDetails=[]
+      this.nonpromotionlist=[]
+      this.UpdatedQty = 0;
+      const updatedItem = {};
+      this.quantityChange(updatedItem);
+      this.shippingPackingchargeDetails.subTotal =0
+      this.shippingPackingchargeDetails.packingCharges =0
+      this.shippingPackingchargeDetails.shippingCharges =0
+      this.shippingPackingchargeDetails.taxElement =0
+      this.shippingPackingchargeDetails.total =0;
+
     }
-    // // to make non-promotion list empty
-    // this.nonpromotionlist.splice(0,this.nonpromotionlist.length);
-    localStorage.removeItem('totalQuantity');
-    localStorage.removeItem('totalAmount');
+    // localStorage.removeItem('totalQuantity');
+    // localStorage.removeItem('totalAmount');
     this.customerId = item.customerId;
     localStorage.setItem('dealerid', this.customerId);
     localStorage.removeItem('geographyId');
@@ -1952,7 +1960,7 @@ export class AddorderpromotionsComponent implements OnInit {
     }
   }
 
-  nonPromotionCalculation(changedPromotionObj) {
+  nonPromotionCalculation(changedPromotionObj:any) {
     console.log(changedPromotionObj);
     this.quantityadd = 0;
     this.price = 0;
@@ -1996,7 +2004,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
   DisplayNonpromotion: boolean = false;
   addnonPromoItems() {
-    if (this.UpdatedQty == null|| this.UpdatedQty==0 ||this.UpdatedQty=='') {
+    if (this.UpdatedQty == null) {
       const dialogRef = this.dialog.open(OrderActionShipmentComponent, {
         data: {
           Alertpp: true,
@@ -2068,19 +2076,7 @@ export class AddorderpromotionsComponent implements OnInit {
       });
 
       console.log(data, 'addnonpromotions');
-      // 1 Promotions Calculations
-      localStorage.setItem('FirstPromotionCalculation', this.quantityadd);
-      localStorage.setItem('FirstPromotionTotalAmountValue', this.price);
-
-      // 4 Promotions Calculations
-      localStorage.setItem('ForthPromotionCalculationsTotalQty', this.quantityadd);
-      localStorage.setItem('ForthPromotionCalculationsAmount', this.price);
-
-      // 3 Promotions Calculations
-      localStorage.setItem('ThreeePromotionCalculationsTotalQty', this.quantityadd
-      );
-      localStorage.setItem('ThreePromotionCalculationsAmount', this.price);
-      // }
+      
     }
   }
   // quantityAdd:any|number=0;

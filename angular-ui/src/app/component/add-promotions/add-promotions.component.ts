@@ -262,7 +262,6 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       headerName: 'Dealer Code',
       field: 'code',
       type: ['nonEditableColumn'],
-      cellStyle: { color: '#686E74' }, 
       sort: 'desc',
       checkboxSelection: true,
     },
@@ -270,7 +269,6 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       headerName: 'Dealer Name',
       field: 'dealerName',
       type: ['nonEditableColumn'],
-      cellStyle: { color: '#686E74' }, 
     },
     // { headerName: "", field: '', type: ['nonEditableColumn'] },
 
@@ -278,7 +276,6 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       headerName: 'Geography',
       field: 'geography',
       type: ['nonEditableColumn'],
-      cellStyle: { color: '#686E74' }, 
       // cellStyle: { color: '#017EFA' },
     },
 
@@ -1882,6 +1879,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   }
 
   addItemsPrice() {
+    // localStorage.removeItem('productselectedRows')
     this.productIdtoFilters = [];
     // this.dialog.open(AddItemsPromotionComponent, {width:'1043px'});
     const dialogRef = this.dialog.open(AddItemsPromotionComponent, {
@@ -1890,9 +1888,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe((res) => {
       if (res) {
-        this.productselectedRows = JSON.parse(
-          localStorage.getItem('productselectedRows') ?? '[]'
-        );
+        this.productselectedRows = JSON.parse(localStorage.getItem('productselectedRows') ?? '[]');
         // this.productScselectedRows = JSON.parse(localStorage.getItem("productScselectedRows") ?? '[]');
         // this.pGselectedRows = JSON.parse(localStorage.getItem("pGselectedRows") ?? '[]');
         // this.productSubGselectedRows = JSON.parse(localStorage.getItem("productSubGselectedRows") ?? '[]');
@@ -1907,7 +1903,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         this.priceStockItemId = jointarray;
         this.productIdtoFilters = this.priceStockItemId;
         this.addpromotionGeoTable();
-        // console.log('productselectedRows', this.productselectedRows)
+        console.log('productselectedRows', this.productselectedRows)
         this.moqChange4();
       }
     });
@@ -3131,6 +3127,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       // this.goForward(this.myStepper);
     }
     if (event.promotionTypesId == 3) {
+      localStorage.removeItem('productselectedRows')
       this.noPromotionSelected = false;
       this.buyab = false;
       this.volumedc = true;
@@ -3139,6 +3136,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       // this.goForward(this.myStepper);
     }
     if (event.promotionTypesId == 4) {
+      localStorage.removeItem('productselectedRows')
       this.noPromotionSelected = false;
       // this.goForward(this.myStepper);
       this.buyab = false;

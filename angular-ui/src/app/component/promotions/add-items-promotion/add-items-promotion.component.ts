@@ -63,7 +63,6 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: 'Product Code',
       field: 'productCode',
       type: ['nonEditableColumn'],
-      cellStyle: { color: '#686E74' }, 
       checkboxSelection: true,
       headerCheckboxSelectionFilteredOnly: true,
     },
@@ -71,7 +70,6 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: 'Product Name',
       field: 'productName',
       type: ['nonEditableColumn'],
-      cellStyle: { color: '#686E74' }, 
       // pinned: 'left',
       // (
       //   params: CheckboxSelectionCallbackParams<any>
@@ -83,19 +81,16 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: 'Product Identifier',
       field: 'productIdentifier',
       type: ['nonEditableColumn'],
-      cellStyle: { color: '#686E74' }, 
     },
     {
       headerName: 'Product Group',
       field: 'productGroup',
       type: ['nonEditableColumn'],
-      cellStyle: { color: '#686E74' }, 
     },
     {
       headerName: 'Product Sub-Group',
       field: 'productSubGroup',
       type: ['nonEditableColumn'],
-      cellStyle: { color: '#686E74' }, 
     },
     // {
     //   headerName: 'Classification',
@@ -106,12 +101,10 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: 'Product Shot Code',
       field: 'productShortCode',
       type: ['nonEditableColumn'],
-      cellStyle: { color: '#686E74' }, 
     },
     {
       headerName:'Registration No',
-      field:'registrationNo',
-      cellStyle: { color: '#686E74' }, 
+      field:'registrationNo'
     }
 
     // { headerName: 'SKU', field: 'sku', type: ['nonEditableColumn'] },
@@ -149,7 +142,6 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: 'Product Shot Code',
       field: 'productShortCode',
       type: ['nonEditableColumn'],
-      cellStyle: { color: '#686E74' }, 
       sort: 'desc',
       checkboxSelection: true,
     },
@@ -197,7 +189,6 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: 'Product Group',
       field: 'productGroupName',
       type: ['nonEditableColumn'],
-      cellStyle: { color: '#686E74' }, 
       sort: 'desc',
       checkboxSelection: true,
     },
@@ -234,7 +225,6 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: 'Product Sub-Group',
       field: 'productSubGroupName',
       type: ['nonEditableColumn'],
-      cellStyle: { color: '#686E74' }, 
       sort: 'desc',
       checkboxSelection: true,
     },
@@ -245,7 +235,6 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: 'Product Group',
       field: 'productGroupName',
       type: ['nonEditableColumn'],
-      cellStyle: { color: '#686E74' }, 
     },
 
     // {
@@ -658,18 +647,30 @@ export class AddItemsPromotionComponent implements OnInit {
       this.rowData5 = res.response;
     });
   }
+  selectedRows: any[] = [];
+  deselectedRows: any[] = [];
+
   onProductRowSelect(event) {
-    const productselectedRows = this.gridApi.getSelectedRows();
-    console.log(productselectedRows);
-    return productselectedRows;
+    const rowData = event.node.data;
+    if (event.node.isSelected()) {
+      this.selectedRows.push(event.node.data);
+      // console.log(this.selectedRows,'this.selectedRows');
+      this.deselectedRows = this.deselectedRows.filter(item => item !== rowData);
+    } else {
+      this.deselectedRows.push(event.node.data);
+      // console.log(this.deselectedRows,'this.deselectedRows');
+      this.selectedRows = this.selectedRows.filter(item => item !== rowData);
+    }
+    // const productselectedRows = this.gridApi.getSelectedRows();
+    // console.log(productselectedRows);
+    // return productselectedRows;
   }
+ 
+  
   addproductitems() {
-    this.productselectedRows = this.gridApi.getSelectedRows();
-    console.log(this.productselectedRows);
-    localStorage.setItem(
-      'productselectedRows',
-      JSON.stringify(this.productselectedRows)
-    );
+   
+    localStorage.setItem('productselectedRows',JSON.stringify(this.selectedRows));
+    localStorage.setItem('productdeselectedRows', JSON.stringify(this.deselectedRows));
     this.dialogRef.close(true);
 
     // this.productScselectedRows.map((data:{stockItemId: any;}) => {

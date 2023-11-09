@@ -47,7 +47,7 @@
                                     <div class="col-md-6">
                                         <div class="promotiontypedrp identify promotiondrpalign">
                                             <label>Promotion Type <span class="astr">*</span></label>
-                                            <ng-select [clearable]="false" [items]="promotionTypedropdown"
+                                            <ng-select [clearable]="false" [items]="promotionTypedropdown" [disabled]="header === 'Edit'"
                                                 placeholder="Select the Promotion type"
                                                 class="tick menu-item border border-success rounded"
                                                 style="border-radius: 11px !important;" id="promotype" name="promotype"
@@ -169,7 +169,8 @@
                                     <div class="toggle" *ngIf="buysets">
                                         <div class="col-md-12 d-flex">
                                             <p [class.disabled]="!showConsolidatedMOQ"  [style.font-weight]="showConsolidatedMOQ ? 'bold' : 'normal'">Consolidated MOQ</p>
-                                            <mat-slide-toggle class="togglecolor ml-2 mr-2" [checked]="showConsolidatedMOQ" (change)="onToggleChange($event)"></mat-slide-toggle>
+                                            <mat-slide-toggle class="togglecolor ml-2 mr-2" *ngIf="header !=='Edit'" (change)="onToggleChange($event)"></mat-slide-toggle>
+                                            <mat-slide-toggle class="togglecolor ml-2 mr-2" *ngIf="header==='Edit'" [checked]="Moqstatus" (change)="onToggleChange($event)"></mat-slide-toggle>
                                             <p [class.disabled]="showConsolidatedMOQ" [style.font-weight]="showConsolidatedMOQ ? 'normal' : 'bold'">Individual MOQ</p>
                                         </div>
                                     </div>
@@ -786,8 +787,20 @@
                                 </thead>
                                 <tbody class="table-group-divider" formArrayName="addPromotions">
                                   <tr *ngFor="let item of formArr.controls; let i = index" [formGroupName]="i">
-                                    <th><input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="qtyFrom" [ngClass]="{'error-border': formArr.at(i).get('qtyFrom')?.hasError('invalidRange') }"></th>
-                                    <th><input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="qtyTo" [ngClass]="{'error-border': formArr.at(i).get('qtyTo')?.hasError('invalidRange') }"></th>
+                                    <th>
+                                        <input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="qtyFrom"
+                                            [ngClass]="{'error-border': formArr.at(i).get('qtyFrom')?.hasError('invalidRange') }">
+                                        <div *ngIf="formArr.at(i).get('qtyFrom')?.hasError('invalidRange')" class="error-message">
+                                            QTY From should be less than QTY To.
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="qtyTo"
+                                            [ngClass]="{'error-border': formArr.at(i).get('qtyTo')?.hasError('invalidRange') }">
+                                        <div *ngIf="formArr.at(i).get('qtyTo')?.hasError('invalidRange')" class="error-message">
+                                            QTY To should be greater than QTY From.
+                                        </div>
+                                    </th>
                                     <th>
                                         <input type="text" class="form-control" (input)="restrictToAlphabets($event)" (input)="validateBuyInRange(i)" formControlName="buy">
                                         <div *ngIf="formArr.controls[i].get('buy')?.hasError('buyNotInRange')" class="error-message">
@@ -803,7 +816,8 @@
                         </form>
                        </div>
                        <h3 class="mt-3" *ngIf="buyab || buysets">Minimum Order Quantity: <b>{{getMinimumQtyFromValue()}}</b></h3>
-                       <h3 class="mt-3" *ngIf="volumedc || pricedc">Minimum Order Quantity: <b>{{ (selectedPromo === 3 ? (moqNumber || specalmoq) : selectedPromo === 4 ? (moqPrice || specalmoq) : '0') }}</b></h3>
+                       <h3 class="mt-3" *ngIf=" header !== 'Edit' && (volumedc || pricedc)">Minimum Order Quantity: <b>{{ (selectedPromo === 3 ? moqNumber  : selectedPromo === 4 ? moqPrice: '0') }}</b></h3>
+                       <h3 class="mt-3" *ngIf="header === 'Edit' && (volumedc || pricedc)">Minimum Order Quantity: <b>{{ (selectedPromo === 3 ? specalmoq : selectedPromo === 4 ? specalmoq : '0') }}</b></h3>
                     </form>
                 </mat-step>
 
@@ -882,7 +896,7 @@
                             <div class="footer-btns" *ngFor="let item of formArr.controls; let i = index">
                                 <button class="btn btn-light saveDraft" (click)="AddPromosaveAndSubmit('Draft')" [disabled]=" formArr.controls[i].get('buy')?.hasError('buyNotInRange')">Save as
                                     draft</button>
-                                <button class="btn btn-light submit" (click)="AddPromosaveAndSubmit('Submit')"  [disabled]=" formArr.controls[i].get('buy')?.hasError('buyNotInRange')" (click)="AddPromosaveAndSubmitEdit('Submit')">
+                                <button class="btn btn-light submit" (click)="AddPromosaveAndSubmit('Submit')"  [disabled]=" formArr.controls[i].get('buy')?.hasError('buyNotInRange')" >
                                     Submit </button>
                                 <!-- <button class="cancelbtn" [mat-dialog-close]="true">Cancel</button> -->
                             </div>

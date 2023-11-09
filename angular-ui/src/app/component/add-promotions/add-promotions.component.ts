@@ -435,7 +435,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   /* on Select of Dropdown screen change */
   editedDetails: any = [];
   istoggleOn: any;
-  specalmoq:any
+  specalmoq:any;
+  Moqstatus:boolean=false
   ngOnInit() {
     let headername = localStorage.getItem('addOrEdit');
     if (headername == 'editpromo') {
@@ -447,6 +448,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         this.editedDetails = res.response.promoDetails.aditionalMoqDetails;
         this.promoName = res.response.promotionName;
         this.selectedPromo = res.response.promotionTypesId;
+        this.Moqstatus = res.response.IsIndividual;
         this.addImgpreview = true;
         this.specalmoq = res.response.promoDetails.moq
         this.base64textString = res.response.imageurl;
@@ -619,7 +621,6 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           res.response.promotionTypesId == 2 ||
           res.response.promotionTypesName == 'Buy AB Get CD'
         ) {
-          this.showConsolidatedMOQ = res.response.IsIndividual;
           this.addbuyset = [];
           this.noPromotionSelected = false;
           this.buyab = false;
@@ -942,7 +943,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       qtyToControl?.valueChanges.subscribe(() => {
         const qtyToValue = qtyToControl.value;
         const qtyFromValue = qtyFromControl?.value;
-        if (qtyToValue >= qtyFromValue) {
+        if (qtyToValue >= qtyFromValue || qtyToValue <= qtyFromValue) {
           qtyFromControl?.setErrors({ invalidRange: true });
         } else {
           if (qtyToValue === qtyFromValue) {
@@ -967,7 +968,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         }
       });
 
-      if (i > 0) {
+      if (i === 0) {
         const previousPromotion = promotionsArray.at(i - 1);
         const previousQtyToControl = previousPromotion.get('qtyTo');
         if (qtyToControl?.value >= previousQtyToControl?.value) {

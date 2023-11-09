@@ -14,6 +14,7 @@ export class OtherMastersComponent implements OnInit {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   print :boolean= false;
+  selectedTabIndex = 0;
 
   @ViewChild(MatSort)
   sort: MatSort = new MatSort;

@@ -70,14 +70,14 @@
           <div class="row">
             <div class="col-4"></div>
             <div class="col-4" *ngIf="addOrAdit">
-              <button class="btn btn-primary btn-block submitbtn save-btn" style="margin-top: 23px;" (click)="finalAddVAlue()"
+              <button class="btn  btn-block submitbtn save-btn" style="margin-top: 23px;" (click)="finalAddVAlue()"
                 [disabled]="!packingPriceChargeValid || !isDataModified">
                 Add
               </button>
             </div>
             <p class="text-danger" *ngIf="showMessage">{{msg}}</p>
             <div class="col-4" *ngIf="!addOrAdit">
-              <button class="btn btn-primary btn-block submitbtn save-btn" (click)="finalAddVAlue1()"
+              <button class="btn  btn-block submitbtn save-btn" (click)="finalAddVAlue1()"
                 [disabled]="!packingPriceChargeValid || !isDataModified">
                 Update
               </button>

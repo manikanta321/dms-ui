@@ -22,7 +22,7 @@
     /* font-family: 'Gilroy-Bold';  */
     font-weight: bold;
     font-size: 20px;
-    right: 37%;
+    right: 0%;
     font-family: 'Gilroy';
     font-size: 20px;
     letter-spacing: 0.2px;
@@ -43,7 +43,7 @@
   .saveas-draft {
     color: #fff;
     background: #000000;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
     border-radius: 8px;
     float: right;
     margin-top: 10px;
@@ -58,7 +58,7 @@
     color:white;
     /* background: white; */
     background-color:#018B75;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
     border-radius: 8px;
     float: left;
     margin-top: 10px;

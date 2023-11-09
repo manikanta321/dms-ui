@@ -82,14 +82,12 @@ input {
     color: white;
     width: 183px;
     height: 43px;
-    border: #000000;
     border-radius: 5px;
     margin-right: 35px;
     cursor: pointer;
 }
 
 .cancel-btn {
-    border: 2px solid #000000;
     border-radius: 5px;
     width: 184px;
     height: 43px;

@@ -41,7 +41,7 @@ color: #000000;
 
 .head-t h3{
     color: #000000;
-    text-align: left;
+    text-align: center;
     margin-top: -18px;
     margin-bottom: 2px;
 }
@@ -56,10 +56,10 @@ color: #000000;
 .addU:after{
     content: "";
   display: block;
-  width: 402px;
+  width: 216px;
   height: 2px;
   background: #686E74;
-  right: 0;
+  right: -6%;
   top: 50%;
   position: absolute;
   margin-right: 20px;
@@ -69,13 +69,15 @@ color: #000000;
     display: block;
     /* width: 60px; */
     height: 2px;
-    background: #E5EAF4;
+    background:  #686E74;
+    left: 4px;
     left: 0;
     top: 50%;
     position: absolute;
+    width: 208px;
 }
 .addUserForm input{
-border-radius: 5px;
+border-radius: 7px;
 border:  linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 padding: 5px 5px;
 width: 250px;
@@ -108,7 +110,7 @@ mat-form-field{
 width: 245px;
 margin-right: 35px;
 background-color:rgba(1, 139, 117, 1) ;
-border: 1px solid black;
+border: 1px solid rgba(1, 139, 117, 1) ;
 }
 .cancl{
     width: 245px;
@@ -116,7 +118,7 @@ border: 1px solid black;
     background-color: rgba(1, 139, 117, 1);
     /* color: #000000; */
     color:white;
-    border: 1px solid black;
+    border: 1px solid  rgba(1, 139, 117, 1);
 }
 /* ::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
     padding: 0em 0 0.7em 0;

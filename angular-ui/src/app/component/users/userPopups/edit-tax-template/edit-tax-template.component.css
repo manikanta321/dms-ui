@@ -69,7 +69,7 @@
 
 .head-t h3{
     color: #000000;
-    text-align: left;
+    text-align: center;
     margin-top: -18px;
     margin-bottom: 2px;
 }
@@ -81,7 +81,7 @@
 .addU:after{
     content: "";
     display: block;
-    width: 494px;
+    width: 232px;
     height: 2px;
     background: #686E74;
     right: 0;
@@ -94,11 +94,12 @@
     content: "";
     display: block;
     /* width: 60px; */
-    height: 2px;
-    background: #E5EAF4;
-    left: 0;
+    height: 0.5px;
+    background:  #686E74;
+    left: -8px;
     top: 50%;
     position: absolute;
+    width: 257px;
 }
 .close-icon {
     left: 100%;

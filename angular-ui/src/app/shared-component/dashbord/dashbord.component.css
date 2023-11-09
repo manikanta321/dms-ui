@@ -326,7 +326,7 @@ mat-sidenav {
 .ag-theme-material .ag-sticky-top {
 
   border: 1px solid rgba(152, 156, 160, 0.30) !important;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important; */
   border-radius: 10px !important;
 
 }
@@ -711,7 +711,14 @@ mat-sidenav {
 
 .pagination-cls {
   font-size: 14px;
+  font-weight: 500;
+  color: #686E74;
+}
+ 
+.pagination-cl {
+  font-size: 14px;
   font-weight: 900;
+  color: #686E74;
 }
 
 ::ng-deep.custom-day.weekend {

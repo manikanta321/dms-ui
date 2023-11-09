@@ -8,13 +8,16 @@
 
     <mat-sidenav-content>
         <!--<div class="dash-content" > -->
-                <h2 class="header-text">Dealers</h2>
+                <h2 class="header-text" *ngIf="userType !== 'Dealer Admin'">
+                    {{ selectedTabIndex === 0 ? 'Dealers' : selectedTabIndex === 1 ? 'Association' : selectedTabIndex === 2 ? 'Promotions' : selectedTabIndex === 3 ? 'Targets' :'Reports' }}</h2>
+                <h2 class="header-text" *ngIf="userType == 'Dealer Admin'">
+                    {{ selectedTabIndex === 0 ? 'Association' : selectedTabIndex === 1 ? 'Promotions' : 'Targets' }}</h2>
                 <!-- <img  class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
          
                     <div class="UNFAPP-asmnt-rgt-area main ">
                         <!-- <div class="col-lg-12"> -->
                             <br>
-                            <mat-tab-group class="order1-lab" mat-stretch-tabs="false">
+                            <mat-tab-group class="order1-lab" mat-stretch-tabs="false" [(selectedIndex)]="selectedTabIndex">
                                 <mat-tab label="Dealers "  *ngIf="tabList.indexOf('view_dealer') !== -1">
                                     <app-dealers></app-dealers>
                                 </mat-tab>

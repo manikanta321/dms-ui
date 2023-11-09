@@ -95,8 +95,8 @@ label {
     height: 30px;
     font-family: 'Gilroy';
     background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 8px;
 }
 
@@ -107,8 +107,8 @@ label {
     height: 35.03px;
     font-family: 'Gilroy';
     background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 8px;
 }
 
@@ -119,8 +119,8 @@ label {
     height: 30px;
     font-family: 'Gilroy';
     background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 8px;
 }
 
@@ -147,8 +147,8 @@ label {
     position: relative;
     width: 1168px;
     height: 35.03px;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     font-family: 'Gilroy';
     font-size: 20px;
@@ -266,8 +266,8 @@ label {
     width: 130px;
     height: 30px;
     background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 8px;
     font-family: 'Gilroy';
 }
@@ -304,7 +304,7 @@ label {
     background: rgba(1, 139, 117, 1);
     border: 2px solid rgba(1, 139, 117, 1);
     box-sizing: border-box;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
     border-radius: 10px;
     font-family: 'Gilroy';
     font-size: 15px;
@@ -324,7 +324,7 @@ label {
     color:white;
     background:  rgba(1, 139, 117, 1);
     border: 2px solid rgba(1, 139, 117, 1);
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
     border-radius: 10px;
     font-family: 'Gilroy';
     font-size: 15px;
@@ -384,8 +384,8 @@ label {
 }
 
 ::ng-deep.targetdrp .ng-select.ng-select-single .ng-select-container {
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%); */
     border-radius: 10px;
 }
 

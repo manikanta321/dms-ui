@@ -1601,9 +1601,9 @@ li {
   text-align: center;
   color: #FFFFFF;
   background: rgba(1, 139, 117, 1);
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 10px;
-  border:white ;
+  border:rgba(1, 139, 117, 1) ;
   margin-left: 100px;
 
 }
@@ -1617,12 +1617,12 @@ li {
   height: 43px;
   background: rgba(1, 139, 117, 1);
   /* border: 2px solid #000000; */
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 10px;
   /* color: #000000; */
   color:white;
   font-family: 'Gilroy';
-  border: white;
+  border: rgba(1, 139, 117, 1);
 }
 
 .add-dealer-scroll {
@@ -1635,14 +1635,17 @@ li {
 
 .addtype {
   width: 82px !important;
+  color: #686E74;
 }
 
 .addname {
   width: 135px !important;
+  
 }
 
 .addtax {
   width: 70px !important;
+  color: #686E74;
 }
 
 .addadress {
@@ -1679,7 +1682,7 @@ li {
   /* color: red; */
   cursor: pointer;
   color: red;
-  left: 15px;
+  left: 23px;
 }
 
 .remove-admin{

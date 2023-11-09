@@ -106,7 +106,7 @@
             <div class="col">
               <button class="btn btn-primary btn-block" *ngIf="editButton"
                 [disabled]="(!EUomName || !EuoMShortName || !EConversionRate || !EConversionShow || !EuomSymbol)"
-                style="background-color: #018B75; border-radius: 10px;height: 43px;width: 250px;" (click)="addcurncy()">Save</button>
+                style="background-color: #018B75; border-radius: 10px;border:rgba(1,139,117,1);height: 43px;width: 250px;" (click)="addcurncy()">Save</button>
               <button class="btn btn-primary btn-block " *ngIf="!editButton"
                 [disabled]="(!Name || !uomShortName || !conversionRates || !UOMSymbol || !conversion)"
                 style="background-color: black; border-radius: 10px; height: 43px;width: 250px;" (click)="addcurncy()">Save</button>
@@ -114,7 +114,7 @@
 
             <div class="col leftunits ">
               <button class="btn btn-primary btn-block" (click)="closeDialog()"
-                style="background-color: #018B75;color: white;border-radius: 10px;height: 43px;width: 250px;">Cancel</button>
+                style="background-color: #018B75;color: white;border:rgba(1,139,117,1);border-radius: 10px;height: 43px;width: 250px;">Cancel</button>
 
             </div>
           </div>

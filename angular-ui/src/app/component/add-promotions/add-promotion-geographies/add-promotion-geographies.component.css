@@ -78,8 +78,8 @@ color: white;
 margin: auto;
   }
 ::ng-deep.add-geopgraphy .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background{
-  background-color: black !important;
+  background-color: rgba(1, 139, 117, 1) !important;
 }
 ::ng-deep.add-geopgraphy .mat-checkbox-checked.mat-accent .mat-checkbox-background{
-  background-color: black !important;
+  background-color: rgba(1, 139, 117, 1) !important;
 }

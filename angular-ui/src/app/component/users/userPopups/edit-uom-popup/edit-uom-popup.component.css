@@ -59,6 +59,7 @@ height: 356px;
  font-size: 18px;
 bottom: 11px;
  color: black;
+ text-align: center;
 }
 .edituom:after
 {
@@ -68,13 +69,24 @@ bottom: 11px;
 
     content: "";
     display: block;
-    width: 369px;
+    width: 220px;
     height: 1px;
     background: #686E74;
-     right: 44px; 
+     right: -14px; 
      top: 50%; 
     position: absolute;
     
+}
+.edituom:after
+{
+    content: "";
+    display: block;
+    width: 212px;
+    height: 1px;
+    background: #686E74;
+     right: 293px;
+     top: 50%;
+    position: absolute;
 }
 
 
@@ -89,7 +101,7 @@ bottom: 11px;
 padding: 5px 12px;
     margin-bottom: 10px;
     /* border: 0.5px solid #000000; */
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     width: 500px;
     height: 43px;

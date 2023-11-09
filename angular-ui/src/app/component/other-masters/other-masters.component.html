@@ -8,12 +8,13 @@
 
     <mat-sidenav-content class="mat-drawer-content hideScrollOthermasters font">
         <!--<div class="dash-content" > -->
-                <h2 class="header-text">Other Masters </h2>
+                <h2 class="header-text">
+                    {{ selectedTabIndex === 0 ? 'Unit of Measure' : selectedTabIndex === 1 ? 'Tax Templates' : 'Currency Conversion' }} </h2>
                 <!-- <div *ngIf="print"><img  class="print-img" src="../../../assets/material/print-img.svg" alt="" ></div> -->
          
                     <div class="UNFAPP-asmnt-rgt-area main othersmastermenutab ">
                         <!-- <div class="col-lg-12"> -->
-                            <mat-tab-group class="other-labell"  mat-stretch-tabs="false" (selectedTabChange)="tabClick($event)">
+                            <mat-tab-group class="other-labell"  mat-stretch-tabs="false" (selectedTabChange)="tabClick($event)" [(selectedIndex)]="selectedTabIndex">
                                 <mat-tab label="Unit of Measure"  *ngIf="tabList.indexOf('view_uom') !== -1">
                                    <app-unit-measure></app-unit-measure>
                                 </mat-tab>

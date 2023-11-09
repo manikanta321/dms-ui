@@ -54,8 +54,8 @@ margin-top: 5px;
 input{
     padding: 5px 12px;
     margin-bottom: 10px;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     width: 404px;
     height: 43px;
@@ -66,12 +66,12 @@ background-color:#018B75;
 color: white;
 width: 183px;
 height: 43px;
-border: #000000;
+border:  #686E74;
 border-radius: 5px;
 margin-right: 35px;
 }
 .cancel-btn{
-    border: 2px solid #000000;
+    border: 2px solid  #686E74;
     border-radius: 5px;
     width: 184px;
     height: 43px;

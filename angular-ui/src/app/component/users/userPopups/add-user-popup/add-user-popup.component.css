@@ -100,14 +100,14 @@ color: #000000;
 .addUserForm input {
     height: 43px;
 
-    border-radius: 10px;
-    /* border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
+    border-radius: 7px;
+    border: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
     border: 0.5px solid #000000;
     padding: 5px 5px;
     width: 250px;
     font-size: 14px;
     outline: none !important;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
 }
 ::ng-deep.btn-primary[_ngcontent-uke-c437]:disabled {
     margin-bottom: 0px !important;
@@ -125,6 +125,7 @@ span {
     color: #686E74;
     font-weight:  #686E74;
     cursor: pointer;
+    bottom: 17px;
 }
 
 label {

@@ -192,10 +192,10 @@ mat-form-field {
 
 }
 
-.btn-primary:enabled{
+.save-btn:enabled{
     background-color:#018B75 ;
 }
-.btn-primary:disabled {
+.save-btn:disabled {
     border-color: black;
     background-color: black;
     width: 100%;
@@ -210,6 +210,7 @@ mat-form-field {
     color: #000000;
     font-size: 20px;
     font-family: 'Gilroy-Light';
+    font-weight: 900;
 }
 
 .bothDown {
@@ -335,7 +336,7 @@ mat-form-field {
     text-align: center;
     color: #FFFFFF;
     background: #000000;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
     border-radius: 10px;
     margin-left: -15px;
 }

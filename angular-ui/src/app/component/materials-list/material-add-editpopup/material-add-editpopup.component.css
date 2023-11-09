@@ -6,6 +6,11 @@
 .fontfamily
 {
   font-family: 'Gilroy-Bold';
+  border-radius: 10px;
+  background-color: rgba(1, 139, 117, 1);
+  color: white;
+  position: relative;
+  right: 1px;
 }
 
 
@@ -379,7 +384,7 @@ margin-top: 9px;
 }
 
 ::ng-deep.mat-slide .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
-  background-color: green;
+  background-color: rgba(1, 139, 117, 1);
   position: fixed;
 
 }
@@ -412,8 +417,8 @@ margin-top: 9px;
 
 mat-card {
   background: #FFFFFF;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 25px;
   height: 212px;
   width: 15rem;
@@ -421,7 +426,7 @@ mat-card {
 
 .catg {
   background: #EAEEFF;
-  border: 1px solid #00187A;
+  border: 1px solid  #686E74;
   border-radius: 10px;
   margin-bottom: 10px;
   color: #00187A;
@@ -646,13 +651,15 @@ li {
   width: 20rem;
   position: relative;
   left: 125%;
+  border:  rgba(1, 139, 117, 1);
+  border-radius: 10px;
 }
 .updatebutton
 {
      background-color: #000000;
       width: 20rem;
       height: 35px;
-      border: 1px solid black;
+      border: 1px solid  #686E74;
       border-radius: 6px;
       color: white;
       margin-top: 18px;
@@ -664,32 +671,32 @@ li {
 }
 
 ::ng-deep.categorydrp .ng-select.ng-select-single .ng-select-container {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%); */
   border-radius: 10px;
 }
 
 ::ng-deep.subcategorydrp .ng-select.ng-select-single .ng-select-container {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%); */
   border-radius: 10px;
 }
 
 ::ng-deep.typedrp .ng-select.ng-select-single .ng-select-container {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%); */
   border-radius: 10px;
 }
 
 ::ng-deep.uomdrp .ng-select.ng-select-single .ng-select-container {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%); */
   border-radius: 10px;
 }
 
 ::ng-deep.customidentifier .ng-select.ng-select-single .ng-select-container {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%); */
   border-radius: 10px;
 }
 
@@ -750,8 +757,8 @@ align-items: center;
 }
 
 .materialname-placeholder {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 
   height: 35px;
@@ -766,8 +773,8 @@ align-items: center;
   line-height: 16px;
   display: flex;
   align-items: center;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   height: 35px;
   background-color: white;
@@ -784,8 +791,8 @@ align-items: center;
 }
 
 .addmaterial-align {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 }
 
@@ -794,15 +801,15 @@ align-items: center;
   height: 31px;
   background-color: white;
   /* margin-top: 7px; */
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   padding-left: 8px;
 }
 
 .global-codeplaceholder {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   /* width: 324px; */
   height: 31px;
@@ -812,8 +819,8 @@ align-items: center;
 }
 
 .sku-placeholder {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 
   height: 31px;
@@ -823,8 +830,8 @@ align-items: center;
 }
 
 .shortcode-placeholder {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 
   padding-left: 8px;
@@ -833,8 +840,8 @@ align-items: center;
 }
 
 .sort-placeh {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 
   height: 31px;
@@ -845,8 +852,8 @@ align-items: center;
 }
 
 .link-placeh {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 
   height: 31px;
@@ -856,14 +863,14 @@ align-items: center;
 }
 
 ::ng-deep.productg-align .ng-select-container {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 }
 
 .geo-align {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 }
 
@@ -974,14 +981,14 @@ textarea {
   background-color: white;
   margin-top: -22px;
   margin-left: 216px;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 }
 
 .min-qP {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   width: 83px;
   height: 30px;
@@ -996,14 +1003,14 @@ textarea {
   background-color: white;
   margin-top: -33px;
   margin-left: 413px;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 }
 
 .marginP {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   width: 83px;
   height: 30px;
@@ -1013,8 +1020,8 @@ textarea {
 }
 
 .discountP {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   width: 83px;
   height: 30px;
@@ -1029,14 +1036,14 @@ textarea {
   background-color: white;
   margin-top: -33px;
   margin-left: 709px;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 }
 
 .regP {
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   width: 141px;
   height: 30px;
@@ -1053,8 +1060,8 @@ textarea {
 
 .selctn-box {
   background: #FFFFFF;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   width: 343px;
   height: 43px;
@@ -1073,8 +1080,8 @@ textarea {
 }
 
 .applybtn {
-  background: #000000;
-  box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  background:  #686E74;
+  /* box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 7px;
   width: 69.34px;
   height: 30px;
@@ -1092,8 +1099,8 @@ textarea {
 .countryinput {
   width: 83px;
   height: 34px;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   margin-right: 10px;
 }
@@ -1101,8 +1108,8 @@ textarea {
 .regNuminput {
   width: 173px;
   height: 34px;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   margin-right: 10px;
 }
@@ -1113,8 +1120,8 @@ textarea {
 }
 
 .addedNum {
-  background: #000000;
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  background:  #686E74;
+  /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 18.5px;
   width: 34px;
   height: 34px;
@@ -1330,7 +1337,7 @@ textarea {
 }
 
 .uom-cls {
-  border: 0.5px solid #000000;
+  border: 0.5px solid  #686E74;
   border-radius: 7px;
   width: 60px
 }
@@ -1404,8 +1411,8 @@ textarea {
 .dropdown-file {
 
   background: #FFFFFF;
-  border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  border: 0.5px solid  #686E74;
+  /* box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%); */
   border-radius: 10px;
   box-sizing: border-box;
   /* position: absolute; */
@@ -1446,7 +1453,7 @@ textarea {
   margin-left: 10px;
   /* background: #000000; */
   background-color:#018B75 ;
-  box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  /* box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 7px;
   cursor: pointer;
 }

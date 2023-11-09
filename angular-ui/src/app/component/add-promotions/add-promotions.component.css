@@ -446,7 +446,7 @@ border-radius: 10px; */
 .slctd-row {
   background: #FFFFFF;
   /* border: 0.5px solid #000000; */
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   height: 43px;
   padding: 4px;
@@ -455,12 +455,13 @@ border-radius: 10px; */
 .slctd-geo-btn {
   /* background: #000000; */
   background-color: rgba(1, 139, 117, 1) !important;
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 10px;
   height: 33px;
   color: white;
   float: right;
   cursor: pointer;
+  border: #686E74;
 }
 
 .sltd-span {
@@ -491,7 +492,7 @@ border-radius: 10px; */
 .searchGeo {
   background: #FFFFFF;
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   height: 43px;
   width: 381px;
@@ -840,6 +841,7 @@ li {
   height: 561px;
   /* width: 1435px; */
   max-width: 1539px;
+  /* overflow-y: hidden; */
 }
 
 .qtyalign {
@@ -865,7 +867,7 @@ li {
 
 .placeh-align {
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 }
 
@@ -974,7 +976,7 @@ li {
 .promoNameInput {
   background: #FFFFFF;
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 }
 

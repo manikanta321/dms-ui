@@ -12,6 +12,7 @@ export class MaterialsComponent implements OnInit{
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   currentPageName:string ="";
+  selectedTabIndex = 0;
   tabList:string[] = [];
   constructor(private observer: BreakpointObserver, private route: ActivatedRoute,) {
     this.route.data.subscribe(v => {

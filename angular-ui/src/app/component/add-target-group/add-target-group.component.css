@@ -76,8 +76,8 @@ label {
     height: 30px;
     font-family: 'Gilroy';
     background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 8px;
 }
 
@@ -88,8 +88,8 @@ label {
     height: 35.03px;
     font-family: 'Gilroy';
     background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 8px;
 }
 
@@ -100,8 +100,8 @@ label {
     height: 30px;
     font-family: 'Gilroy';
     background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 8px;
 }
 
@@ -128,8 +128,8 @@ label {
     position: relative;
     width: 1035px;
     height: 35.03px;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     font-family: 'Gilroy';
     font-size: 20px;
@@ -244,8 +244,8 @@ label {
     width: 130px;
     height: 30px;
     background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 8px;
     font-family: 'Gilroy';
 }
@@ -281,7 +281,7 @@ label {
     height: 43px;
     background: #000000;
     box-sizing: border-box;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
     border-radius: 10px;
     font-family: 'Gilroy';
     font-size: 15px;
@@ -298,7 +298,7 @@ label {
     box-sizing: border-box;
     background: #FFFFFF;
     border: 2px solid #000000;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
     border-radius: 10px;
     font-family: 'Gilroy';
     font-size: 15px;
@@ -352,8 +352,8 @@ label {
     left: 17px;
     top: 31px;
     background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     padding-left: 12px;
 }
@@ -365,8 +365,8 @@ label {
     left: 17px;
     top: 31px;
     background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     padding-left: 12px;
 }
@@ -384,14 +384,16 @@ label {
 .selectedPL {
     font-size: 20px;
     font-family: 'Gilroy-Light';
+    color: #000000;
+    font-weight: 900;
 }
 
 .selectedProduct {
     width: 958px;
     height: 43px;
     /* background: #FFFFFF; */
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid  #686E74;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     padding-left: 12px;
     font-size: 14px;
@@ -422,8 +424,15 @@ label {
 
 .pagination-cls {
     font-size: 14px;
+    font-weight: 500;
+    color: #686E74;
+  }
+   
+  .pagination-cl {
+    font-size: 14px;
     font-weight: 900;
-}
+    color: #686E74;
+  }
 
 .newWindowA {
     position: absolute;
@@ -438,7 +447,7 @@ label {
     .addItem-btn{
         width: 168px;
       height: 43px;
-      border-radius: 8px;
+      /* border-radius: 8px; */
       align-items: center;
       text-align: center;
       /* background: #000; */

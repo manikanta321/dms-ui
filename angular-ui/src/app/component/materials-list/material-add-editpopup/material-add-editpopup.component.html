@@ -223,13 +223,13 @@
                 <div class="col-1"></div>
                 <div class="col-6" *ngIf="!updateOrSave">
              <span *ngIf="visible">
-              <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="checked"
+              <button class=" btn-block submitbtn save-btn" *ngIf="checked"
               (click)="addMaterialIfNotProduct()">Save</button>
              </span>  
                 </div>
                 <div class="col-6" *ngIf="updateOrSave">
                   <span *ngIf="visible">
-                    <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="checked"
+                    <button class=" btn-block submitbtn save-btn" *ngIf="checked"
                     (click)="addMaterialIfNotProductAfterEdit()">update</button>
                   </span>
                  
@@ -335,7 +335,7 @@
                       *Product Group is required.
                     </span>
                   </p>
-                  <img src="assets/img/plus.png" style="width: 22px;position: absolute;right: 20px;bottom: 5px; cursor: pointer;"
+                  <img src="assets/img/ADD.svg" style="width: 22px;position: absolute;right: 20px;bottom: 5px; cursor: pointer;background-color: rgba(1,137,117,1);border-radius: 50%;"
                     alt="plus-btn" (click)="addproduct()">
 
                 </div>
@@ -374,8 +374,8 @@
 
                 </div>
                 <div class="image">
-                  <img src="assets/img/plus.png" class="imagePlus"
-                    style="width: 22px;position: absolute;right: 20px;bottom: 5px; cursor: pointer;" alt="plus-btn"
+                  <img src="assets/img/ADD.svg" class="imagePlus"
+                    style="width: 22px;position: absolute;right: 20px;bottom: 5px; cursor: pointer;background-color: rgba(1,137,117,1);border-radius: 50%;" alt="plus-btn"
                     (click)="addproductsubgroup()">
                 </div>
 
@@ -645,11 +645,11 @@
                 <div class="row">
                   <div class="col-1"></div>
                   <div class="col-6" *ngIf="!updateOrSave">
-                    <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="!checked"
+                    <button class="btn  btn-block submitbtn save-btn" *ngIf="!checked"
                       (click)="addMaterialProduct();">Save</button>
                   </div>
                   <div class="col-6" *ngIf="updateOrSave">
-                    <button class="btn btn-primary btn-block submitbtn save-btn" *ngIf="!checked"
+                    <button class="btn  btn-block submitbtn save-btn" *ngIf="!checked"
                       (click)="addMaterialProductAfterEdit();">update</button>
                   </div>
                   <div class="col-3">

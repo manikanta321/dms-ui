@@ -744,14 +744,14 @@ padding-left: 11px;
 
 .pagination-cls {
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 500;
   color: #686E74;
 }
 
 .pagination-cl {
   font-size: 14px;
   font-weight: 900;
-  color: black;
+  color:  #686E74;
 }
 
 .font {
@@ -769,7 +769,7 @@ padding-left: 11px;
   background: black !important;
 } */
 ::ng-deep.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background {
-  background-color: black !important;
+  background-color: rgba(1, 139, 117, 1) !important;
 }
 
 .example-margin .mat-checkbox-layout {

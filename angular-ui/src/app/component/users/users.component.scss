@@ -989,20 +989,19 @@ mat-sidenav {
 .pagination {
   float: right !important;
   margin-top: 11px;
+  margin-right: 16px;
 }
 
 .pagination-cls {
   font-size: 14px;
-   font-weight: bold;
-  font-weight:'Gilroy-Bold' ;
+  font-weight: 500;
   color: #686E74;
 }
-
+ 
 .pagination-cl {
   font-size: 14px;
-   font-weight: bold;
-  font-weight:'Gilroy-Bold' ;
-  color: black;
+  font-weight: 900;
+  color: #686E74;
 }
 
 .dropdown-form {

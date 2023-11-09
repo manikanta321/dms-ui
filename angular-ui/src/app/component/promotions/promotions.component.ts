@@ -128,6 +128,7 @@ export class PromotionsComponent implements OnInit {
     {
       headerName: 'Name',
       field: 'promotionName',
+      minWidth: 250,
       tooltipField: 'promotionName',
       cellStyle: { color: '#686E74' }, 
     },

@@ -13,6 +13,8 @@ export class DealerComponent implements OnInit {
   sidenav!: MatSidenav;
   currentPageName:string ="";
   tabList:string[] = [];
+  selectedTabIndex = 0;
+  userType:any;
 
   constructor(private observer: BreakpointObserver,
     private route: ActivatedRoute,) { 
@@ -61,6 +63,7 @@ export class DealerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userType = localStorage.getItem('userType');
   }
   ToggleSideNav(value:any){
     this.sidenav.toggle()

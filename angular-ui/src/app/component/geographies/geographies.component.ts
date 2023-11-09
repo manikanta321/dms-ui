@@ -12,6 +12,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 export class GeographiesComponent implements OnInit {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
+  selectedTabIndex = 0;
 
   countryname: string[] = ['India (71/126)', 'Malaysia  (178/178)', 'philippines (0/135)','Singapore (0/135)'];
   Sname: string[] = ['Andhra Pradesh (0/42)', 'Gujarat (36/36)','Telangana (21/22)', 'Tamil Nadu (36/36)'];

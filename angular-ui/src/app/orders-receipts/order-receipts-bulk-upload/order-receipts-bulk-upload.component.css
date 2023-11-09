@@ -2,12 +2,12 @@
   width: 95%;
   height: 43px;
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   padding-left: 12px;
   font-size: 14px;
   color: black;
-  /* background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important; */
+  background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
 }
 .expandtotalfull
 {
@@ -87,7 +87,7 @@
    width: 597px;
    text-align: center;
    /* background: #000000; */
-   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+   /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
    border-radius: 10px;
    cursor: pointer;
    font-family: 'Gilroy-SemiBold';
@@ -100,7 +100,7 @@
    height: 44px;
    width: 597px;
    text-align: center;
-   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+   /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
    border-radius: 10px;
    cursor: pointer;
    margin-left: -41%;
@@ -306,7 +306,7 @@
     height: 130px;
     background: #FFFFFF;
     border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     }
     .step2{
@@ -745,7 +745,7 @@
   height: 43px;
   /* background: #FFFFFF; */
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   padding-left: 12px;
   font-size: 14px;

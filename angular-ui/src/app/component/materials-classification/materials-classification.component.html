@@ -11,7 +11,7 @@
       <div class="row">
         <p class="col-10 cate">Category ({{coutCatagory}})</p>
         <p class="col-2">
-          <mat-icon (click)=addCategory() style="cursor: pointer;"  userRoleDirective="CLS_ADD" [pageName]="currentPageName">add_circle</mat-icon>
+          <mat-icon (click)=addCategory() style="cursor: pointer;color:  rgba(1, 139, 117, 1);"  userRoleDirective="CLS_ADD" [pageName]="currentPageName">add_circle</mat-icon>
         </p>
       </div>
       <mat-card    [ngClass]="{ 'scroll': coutCatagory > 6 }">
@@ -50,7 +50,7 @@
 
       
         <p class="col-2"  userRoleDirective="CLS_ADD" [pageName]="currentPageName">
-          <mat-icon (click)=addSubCategory() style="cursor: pointer;">add_circle</mat-icon>
+          <mat-icon (click)=addSubCategory() style="cursor: pointer;color:  rgba(1, 139, 117, 1);">add_circle</mat-icon>
         </p>
       </div>
       <!-- sub category -->
@@ -87,7 +87,7 @@
       <div class="row">
         <p class="col-10 type1">Type ({{typecount}})</p>
         <p class="col-2">
-          <mat-icon (click)=addTypeCategory() style="cursor: pointer;"  userRoleDirective="CLS_ADD" [pageName]="currentPageName">add_circle</mat-icon>
+          <mat-icon (click)=addTypeCategory() style="cursor: pointer;color:  rgba(1, 139, 117, 1);"  userRoleDirective="CLS_ADD" [pageName]="currentPageName">add_circle</mat-icon>
         </p>
       </div>
       <!-- type -->

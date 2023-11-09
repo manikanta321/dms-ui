@@ -8,12 +8,13 @@
 
     <mat-sidenav-content>
         <!--<div class="dash-content" > -->
-                <h2 class="sales-header-text">Sales </h2>
+                <h2 class="sales-header-text">
+                    {{ selectedTabIndex === 0 ? 'Inventory' : selectedTabIndex === 1 ? 'Sales Uploads' : 'Reports' }}</h2>
                 
          
                     <div class="UNFAPP-asmnt-rgt-area main othersmastermenutab">
                         <!-- <div class="col-lg-12"> -->
-                            <mat-tab-group class="sales-label" (selectedTabChange)="tabClick($event)">
+                            <mat-tab-group class="sales-label" (selectedTabChange)="tabClick($event)" [(selectedIndex)]="selectedTabIndex">
                                 <mat-tab label="Inventory" >
                                    <app-sales-inventory></app-sales-inventory>
                                    <!-- <div *ngIf="print"><img  class="print-img" src="../../../assets/material/print-img.svg" alt="" ></div> -->

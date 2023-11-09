@@ -59,8 +59,8 @@
                                 <span class="pagination-cls">{{rowData5.length}}</span>
                               </div>
                               <div class="addbtn mt-3 text-center">
-                                <button class="addItem-btn btn-btn-primary" [disabled]="rowData5.length==0 || targetGroupName.length==0" (click)="createTarget()">Create</button>
-                                <button class="cancelItem-btn btn-btn-primary" (click)="closeDialog()">Cancel</button>
+                                <button class="addItem-btn " [disabled]="rowData5.length==0 || targetGroupName.length==0" (click)="createTarget()">Create</button>
+                                <button class="cancelItem-btn " (click)="closeDialog()">Cancel</button>
                               </div>
                       </div>
                         </div>
@@ -191,7 +191,7 @@
                             (bodyScroll)="handleScroll($event)" ></ag-grid-angular>
                             <div class="pagination">
                                 <span class="pagination-cls">1</span> to  <span class="pagination-cls">{{paginationScrollCount}}</span> of 
-                                <span class="pagination-cls">{{selectedProducts.length}}</span>
+                                <span class="pagination-cl">{{selectedProducts.length}}</span>
                               </div>
                               <div class="addbtn mt-3 text-center">
                                 <!-- <button class="addItem-btn btn-btn-primary" [disabled]="true" (click)="editTarget()">Create</button> -->

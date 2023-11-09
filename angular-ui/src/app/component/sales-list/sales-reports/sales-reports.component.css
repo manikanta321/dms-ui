@@ -118,7 +118,7 @@
     line-height: 17px;
     letter-spacing: 0.08em;
     color: #263643;
-    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+    /* box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05); */
     /* // transition: 0.2s  ease-in-out; */
     position: absolute;
     right: 0px;
@@ -233,7 +233,7 @@
   .ag-theme-material .ag-sticky-top {
   
     border: 0.5px solid #000000 !important;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important; */
     border-radius: 0px !important;
   
   }
@@ -529,7 +529,7 @@
   
   ::ng-deep.mat-select-panel {
     background: #FFFFFF !important;
-    box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05) !important;
+    /* box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05) !important; */
     border-radius: 8px !important;
     position: relative !important;
     transform: translate(29px, 50px) !important;
@@ -633,7 +633,7 @@
     text-align: center;
     color: #FFFFFF;
     background: #000000;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
     border-radius: 10px;
     border-color: black;
     margin-left: 1154px;
@@ -651,7 +651,7 @@
     text-align: center;
     color: black;
     background: white;
-    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
     border-radius: 10px;
     border-color:  rgba(0, 0, 0, 0.3);
     margin-left: 4px;
@@ -661,7 +661,7 @@
   ::ng-deep.dealerr .ng-select-container {
     /* border: 0.5px solid #000000; */
     border: 1px solid rgba(0, 0, 0, 0.3);
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     height: 40px;
   }
@@ -674,26 +674,26 @@
   }
   ::ng-deep.selectgeo .ng-select-container {
     border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     height: 30px;
   }
   ::ng-deep.BillingAddress  .ng-select-container {
     border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     height: 30px;
   }
   
 ::ng-deep.dealerr .ng-select-container {
     border: 1px solid rgba(0, 0, 0, 0.3);
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     
   }
   ::ng-deep.selectgeo .ng-select-container {
     border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     height: 30px;
     width: 99%;
@@ -706,13 +706,13 @@
 }
   ::ng-deep.shipingAddress .ng-select-container {
     border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     height: 30px;
   }
   ::ng-deep.BillingAddress  .ng-select-container {
     border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     height: 30px;
   }

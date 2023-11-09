@@ -136,6 +136,7 @@
     min-width: 100%;
     height: 653px;
      overflow-x: hidden;
+     overflow-y: hidden;
      border-radius: 25px;
   }
     .close-icon {
@@ -329,8 +330,8 @@
     width: 456px;
     height: 130px;
     background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 0.5px solid #989CA0;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
     border-radius: 10px;
     }
     .step2{
@@ -559,7 +560,7 @@
       .selectedProductReceipts {
         width: 95%;
         height: 43px;
-        border: 0.5px solid #000000;
+        border: 0.5px solid #989CA0;
         /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
         border-radius: 10px;
         padding-left: 12px;

@@ -11,6 +11,7 @@ export class SalesListComponent implements OnInit {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   print: boolean = true;
+  selectedTabIndex = 0;
 
   // @ViewChild(MatSort)
   // sort: MatSort = new MatSort;

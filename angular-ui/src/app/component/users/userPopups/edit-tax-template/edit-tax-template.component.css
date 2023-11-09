@@ -171,19 +171,19 @@ color: white;
     border: 1px solid grey;
     width: 175px;
     height: 43px;
-    border: solid 2px black;
+    border: 2px solid rgba(1, 139, 117, 1);
     border-radius: 10px;
     font-family: 'Gilroy-SemiBold';
     
 
 }
-.E-saveBtn:hover{
+/* .E-saveBtn:hover{
     border: 2px solid black;
     
    }
 .E-cancelBtn:hover{
     border: 2px solid black;
-   }
+   } */
    .close-icon{
     left: 100%;
     position: relative;

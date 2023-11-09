@@ -152,7 +152,7 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: '# of Products',
       field: 'noofproducts',
       type: ['nonEditableColumn'],
-      cellStyle: { color: '#017EFA' },
+      cellStyle: { color: '#686E74' },
       cellEditorPopup: true,
       onCellClicked: (event: CellClickedEvent) =>
         this.dialog.open(PopupGridTableComponent, {
@@ -206,19 +206,19 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: '# of products',
       field: 'noofproducts',
       type: ['nonEditableColumn'],
-      cellStyle: { color: '#017EFA' },
+      cellStyle: { color: '#686E74' },
       cellEditorPopup: true,
       onCellClicked: (event: CellClickedEvent) =>
         this.dialog.open(PopupGridTableComponent, { panelClass: 'grid-popup' }),
     },
 
-    {
-      headerName: '',
-      colId: 'action',
-      // cellRenderer: UseractionComponent,
-      editable: false,
-      maxWidth: 75,
-    },
+    // {
+    //   headerName: '',
+    //   colId: 'action',
+    //   // cellRenderer: UseractionComponent,
+    //   editable: false,
+    //   maxWidth: 75,
+    // },
   ];
   columnDefs3: ColDef[] = [
     {
@@ -246,7 +246,7 @@ export class AddItemsPromotionComponent implements OnInit {
       headerName: '# of Products',
       field: 'noofproducts',
       type: ['nonEditableColumn'],
-      cellStyle: { color: '#017EFA' },
+      cellStyle: { color: '#686E74' },
       cellEditorPopup: true,
       onCellClicked: (event: CellClickedEvent) =>
         this.dialog.open(PopupGridTableComponent, {

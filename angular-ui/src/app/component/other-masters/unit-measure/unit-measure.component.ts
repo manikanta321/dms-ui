@@ -128,6 +128,7 @@ public defaultColDef: ColDef = {
     width: 400,
     resizable: true,
     sortable: true,
+    lockVisible:true,
 
 };
 

@@ -109,7 +109,7 @@ span{
    margin-top: 3px;
    border-radius: 3px;
    border-radius: 15px;
-   border: 1px solid black;
+   border: 2px solid rgba(1, 139, 117, 1);
    height: 48px;
    margin-left: 16px;
    width: 94%;
@@ -125,7 +125,7 @@ span{
     margin-top: 3px;
     border-radius: 3px;
      border-radius: 15px; 
-    border: 1px solid black;
+     border: 2px solid rgba(1, 139, 117, 1);
     height: 48px;
     margin-left: -1px;
     width: 94%;

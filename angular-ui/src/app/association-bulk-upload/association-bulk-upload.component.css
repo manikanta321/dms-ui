@@ -560,7 +560,7 @@
         width: 95%;
         height: 43px;
         border: 0.5px solid #000000;
-        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+        /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
         border-radius: 10px;
         padding-left: 12px;
         font-size: 14px;

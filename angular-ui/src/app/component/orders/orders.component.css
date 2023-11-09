@@ -95,7 +95,7 @@ height: 35px;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
     color: white; 
-    border-radius: 25px;
+    border-radius: 0px;
      opacity: 1; 
     font-family: 'Gilroy-SemiBold';
 }
@@ -195,7 +195,7 @@ top:3px;
 }
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
     color: white;
-    border-radius: 25px;
+    border-radius: 0px;
     opacity: 1;
 
 }
@@ -232,7 +232,7 @@ top:3px;
 ::ng-deep.mat-tab-label.mat-tab-label-active:not(.mat-tab-disabled), .mat-tab-label.mat-tab-label-active.cdk-keyboard-focused:not(.mat-tab-disabled) {
     font-family: 'Calibri';
    color: white;
-    border-radius: 25px;
+    border-radius: 0px;
     font-size: 15px;
     opacity: 1;
 }

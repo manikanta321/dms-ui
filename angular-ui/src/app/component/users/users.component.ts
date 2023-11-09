@@ -187,6 +187,7 @@ export class UsersComponent implements OnInit {
     flex: 1,
     resizable: true,
     sortable: true,
+    lockVisible:true,
   };
 
 

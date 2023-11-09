@@ -172,6 +172,7 @@ export class GeographicListComponent implements OnInit {
     flex: 1,
     resizable: true,
     sortable: true,
+    lockVisible:true
   };
 
 

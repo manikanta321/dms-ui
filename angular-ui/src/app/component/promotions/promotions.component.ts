@@ -139,6 +139,13 @@ export class PromotionsComponent implements OnInit {
       cellStyle: { color: '#686E74' }, 
     },
     {
+      headerName: '# of Dealers',
+      field: 'noOfDealers',
+      tooltipField: 'noOfDealers',
+      type: 'rightAligned',
+      cellStyle: { color: '#686E74' }, 
+    },
+    {
       headerName: 'Start Date',
       field: 'startDate',
       tooltipField: 'startDate',
@@ -161,7 +168,7 @@ export class PromotionsComponent implements OnInit {
     },
     
     {
-      headerName: 'No of orders',
+      headerName: '# of orders',
       field: 'noOfOrders',
       tooltipField: 'noOfOrders',
       type: ['rightAligned'],
@@ -174,13 +181,7 @@ export class PromotionsComponent implements OnInit {
       type: ['rightAligned'],
       cellStyle: { color: '#686E74' }, 
     },
-    {
-      headerName: 'No of Dealers',
-      field: 'noOfDealers',
-      tooltipField: 'noOfDealers',
-      type: 'rightAligned',
-      cellStyle: { color: '#686E74' }, 
-    },
+   
     {
       headerName: 'Status',
       field: 'statusName',

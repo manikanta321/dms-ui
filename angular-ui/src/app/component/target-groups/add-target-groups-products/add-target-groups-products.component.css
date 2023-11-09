@@ -290,7 +290,7 @@ mat-radio-group{
   border-color: black;
 }
 ::ng-deep.ag-theme-material .ag-checkbox-input-wrapper.ag-checked::after {
-  color: black!important;
+  color: rgba(1, 139, 117, 1)!important;
 }
 ::ng-deep.category-add .multiselect-dropdown .dropdown-btn .selected-item {
   background: #479E00!important;

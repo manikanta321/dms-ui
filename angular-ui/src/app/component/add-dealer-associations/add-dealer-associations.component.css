@@ -1191,7 +1191,7 @@ input.form-check-input1 {
   
   ::ng-deep.mat-horizontal-content-container {
     overflow: hidden;
-    padding: 0px 0px 0px 0px;
+    padding: -1px 0px 0px 0px;
   }
   
   .submitbtn {

@@ -46,7 +46,7 @@
 }
 
 ::ng-deep .mat-tab-label{
-  border: 1px solid rgba(1,139,117,1)
+  border: 1px solid rgba(1,139,117,1)!important;
 }
 
 /*old css*/
@@ -450,9 +450,10 @@ mat-radio-group {
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
   border: none;
   background: grey;
-  border-radius: 35%;
+  border-radius: 20%;
   position: relative;
   width: 43px;
+  left: 10px;
 }
 
 .productdrprow {
@@ -464,9 +465,9 @@ margin-bottom: -53px; */
   margin-right: 20px;
 }
 
-.prodSubGDropdwn {
+/* .prodSubGDropdwn {
   margin-bottom: -53px;
-}
+} */
 
 ::ng-deep .pscgrid-popup {
   width: 999px !important;
@@ -714,4 +715,60 @@ margin-bottom: -53px; */
   --ag-header-height: 30px;
   --ag-header-foreground-color: white;
   --ag-header-background-color:  #018B75CC  !important ;
+}
+
+:host ::ng-deep.ag-theme-material .ag-root-wrapper,
+.ag-theme-material .ag-sticky-top {
+ 
+  border: 1px solid rgba(152, 156, 160, 0.30) !important;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
+  border-radius: 10px !important;
+ 
+}
+
+.search-bt_n2 {
+  top: 38px;
+  left: 40.5%;
+  position: absolute;
+  display: block;
+  height: 26px;
+  border: none;
+  background: rgba(104, 110, 116, 0.66);
+  color: white;
+  border-radius: 5px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.searchicons2 {
+  transform: translateY(-50%);
+  font-size: 24px;
+  color: #9B9FA3;
+  left: 25%;
+    top: 38px;
+    position: absolute;
+    width: 20px;
+}
+.searchInput2 {
+  width: 240px;
+  height: 42px;
+  background: #FFFFFF;
+  /* padding: 7px 40px 6px 26px; */
+  padding: 7px 40px 6px 35px;
+  border-radius: 10px;
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 17px;
+  letter-spacing: 0.08em;
+  color: #263643;
+  box-shadow: 0px 4px 77px rgba(0, 0, 0, 0.05);
+  border: 1px solid #ccc;
+}
+
+.searchBox1 {
+  width: 250px;
+  border-radius: 11px;
+  position: relative;
 }

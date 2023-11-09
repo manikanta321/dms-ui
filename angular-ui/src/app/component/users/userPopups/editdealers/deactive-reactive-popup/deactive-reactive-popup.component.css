@@ -26,16 +26,18 @@ font-family: 'Gilroy';
     /* margin-top: 18px; */
      height:41px ;
     width: 150px; 
+    border: 1px rgba(1, 139, 117, 1);
     }
 .exit{
 background:  rgba(1, 139, 117, 1);
 /* color: black; */
 color:white;
 padding: 5px 40px;
-border: 2px solid #000000;
+/* border: 2px solid #000000; */
 border-radius: 10px;
 height: 41px;
 width: 150px; 
+border: white;
 
 }
 .close-icon{

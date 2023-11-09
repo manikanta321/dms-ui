@@ -535,22 +535,21 @@
   float: right !important;
   margin-top: 11px;
 }
-
 .pagination-cls {
   font-size: 14px;
-  font-weight: 900;
- font-weight: bold;
- color: #686E74;
-  font:'Gilroy-Bold';
-
+  font-weight: 500;
+  font-weight: bold;
+  font-weight:'Gilroy-Bold' ;
+  color: #686E74;
 }
+
 .pagination-cl {
   font-size: 14px;
   font-weight: 900;
- font-weight: bold;
- color: black;
-  font:'Gilroy-Bold';
-
+  font-weight: bold;
+  font-weight:'Gilroy-Bold' ;
+  color:   #686E74
+  ;
 }
 
 .dropdown-placeholder {

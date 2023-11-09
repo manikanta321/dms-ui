@@ -5,13 +5,11 @@
             <div class=" d-flex addUser">
                 <div class="d-flex">
                     <img src="assets/img/arrow-left-circle-fill.svg" (click)="prevStepper()"
-                    class="addMore-icon" style="width: 24px;margin-left: 760px;" alt="left-arr-btn"
-                    [ngClass]="{'disabled-button': isleftButtonDisabled}">
+                    class="addMore-icon" style="width: 24px;margin-left: 760px;" alt="left-arr-btn">
                     <!-- <img src="assets/img/arrow-left-circle-fill.svg" *ngIf="basicInfo" class="addMore-icons"
                         style="width: 24px;margin-left: 760px;" alt="left-arr-btn" (click)="goBack(stepper)"> -->
                     <img src="assets/img/arrow-right-circle-fill.svg" (click)="disableBackbutton()" class="addMore-icon"
-                        style="width: 24px; margin-left: 12px;" alt="right-arr-btn"
-                        [ngClass]="{'disabled-button': isRightButtonDisabled}">
+                        style="width: 24px; margin-left: 12px;" alt="right-arr-btn">
                 </div>
                 <div>
                     <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
@@ -128,7 +126,7 @@
                                             <label class="otherId">Other Identifer</label>
                                             <br>
                                             <input type="text" formControlName="OtherIdentifier"
-                                                class="addDelercols form-control" style="width:98%;"
+                                                class="addDelercols form-control" style="width:93%;"
                                                 placeholder="Enter and select">
                                             <!-- <img src="../assets/img/search.png" class="search"> -->
                                         </div>

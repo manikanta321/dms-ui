@@ -111,6 +111,7 @@ export class TaxTemplateComponent implements OnInit {
     // make columns resizable
     resizable: true,
     sortable: true,
+    lockVisible:true,
     flex: 1,
     width:100
   };

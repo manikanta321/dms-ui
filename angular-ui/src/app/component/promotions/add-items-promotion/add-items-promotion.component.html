@@ -24,32 +24,6 @@
       </div>
     </div>
     <!-- prod subG dropdwn -->
-    <div class="prodSubGDropdwn mt-3" *ngIf="myStepper?.selectedIndex == 3">
-      <div class="row productdrprow">
-        <div class="col-lg-3" style="font-family: 'Gilroy'; color: grey;">
-          <form [formGroup]="myForms">
-            <ng-multiselect-dropdown class="productdrp productdrpbubble " name="citys" [placeholder]="'Product'" formControlName="citys"
-              [disabled]="disabled" [settings]="dropdownSettings6" [data]="Productarr"
-              (onSelect)="ProductSubGroupDrpdwn($event)" (onDeSelect)="ProductsubGroupDeselect($event)"
-              (onDeSelectAll)="ProductsubGroupDeSelectAll($event)" (onSelectAll)="ProductsubGroupSelectAll($event)">
-            </ng-multiselect-dropdown>
-          </form>
-          <div class="dropdown-placeholder catag-placeholder">
-            <span *ngIf="myForms.get('citys').value.length == 0"> Select Products </span>
-            <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder">
-              {{myForms.get('citys').value.length}} Category </span>
-            <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder">
-              {{myForms.get('citys').value.length}} product groups selected </span>
-
-          </div>
-        </div>
-       
-        <div class="icon btnhover refreshbtn">
-          <img class="refresh" src="assets/img/Refreshbutton.svg" style="position: relative;top: 9px;left: 11px;"
-            alt="refresh">
-        </div>
-      </div>
-    </div>
     <div class="scrollone">
     <mat-tab-group  #stepper (click)="matsteptabClick($event)" [selectedIndex]="0"
       ngClass="addItemsHeader">
@@ -73,7 +47,7 @@
                       {{myForm.get('city').value.length}} Category </span>
                     <span *ngIf="myForm.get('city').value.length > 1" class="selected-placeholder">
                       {{myForm.get('city').value.length}} Categories </span>
-    
+   
                   </div>
                 </div>
                 <div class="search-d  col-lg-3">
@@ -91,7 +65,7 @@
                       {{subCategory.get('subcatty').value.length}} SubCategory </span>
                     <span *ngIf="subCategory.get('subcatty').value.length > 1" class="selected-placeholder">
                       {{subCategory.get('subcatty').value.length}} SubCategorys </span>
-    
+   
                   </div>
                 </div>
                 <!-- <div class="search-d  col-lg-3">
@@ -108,7 +82,7 @@
                       {{type.get('type').value.length}} Type </span>
                     <span *ngIf="type.get('type').value.length > 1" class="selected-placeholder">
                       {{type.get('type').value.length}} Types </span>
-    
+   
                   </div>
                 </div> -->
                 <div class="search-d  col-lg-3">
@@ -125,7 +99,7 @@
                       {{products.get('products').value.length}} Product </span>
                     <span *ngIf="products.get('products').value.length > 1" class="selected-placeholder">
                       {{products.get('products').value.length}} Products </span>
-    
+   
                   </div>
                 </div>
                 <!-- New Drop Down -->
@@ -144,7 +118,7 @@
                       {{subGroupProducts.get('subgroupproducts').value.length}} SubGroup </span>
                     <span *ngIf="subGroupProducts.get('subgroupproducts').value.length > 1" class="selected-placeholder">
                       {{subGroupProducts.get('subgroupproducts').value.length}} SubGroups </span>
-    
+   
                   </div>
                 </div>
                 <!--  -->
@@ -171,7 +145,7 @@
               </div>
             </div>
           </div>
-    
+   
           <div>
             <!--- product  --->
             <ag-grid-angular id="gridContainer" class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
@@ -225,14 +199,14 @@
                         </button> -->
                   </div>
                 </div>
-    
+   
                 <div class="col-md-1" (click)="refreshData()">
                   <div class="ref"><img class="refresh" src="assets/img/Refreshbutton.svg" alt="refresh" style="margin-left: 1px;">
                   </div>
                 </div>
               </div>
             </div>
-    
+   
             <ag-grid-angular id="gridContainer"
               style=" height: 400px;background-color: white;font-family: Gilroy;width: 100%;"
               class="ag-theme-material" (gridReady)="onGridReady2($event)" [rowHeight]="25" [headerHeight]="48"
@@ -274,7 +248,7 @@
           </div> -->
           <div>
             <!--- product Group  --->
-    
+   
             <div class="srch mt-3" style="margin-bottom:10px">
               <div class="row">
                 <div class="col-md-11">
@@ -287,16 +261,16 @@
                         </button> -->
                   </div>
                 </div>
-    
+   
                 <div class="col-md-1">
                   <div class="ref"><img class="refresh" src="assets/img/Refreshbutton.svg" alt="refresh" style="margin-left: 1px;">
                   </div>
                 </div>
               </div>
             </div>
-    
-    
-    
+   
+   
+   
             <ag-grid-angular id="gridContainer"
               style=" height: 400px;background-color: white;font-family: Gilroy;width: 100%;"
               class="ag-theme-material" (gridReady)="onGridReady3($event)" [rowHeight]="25" [headerHeight]="48"
@@ -337,22 +311,43 @@
           </div> -->
           <div>
             <!--- product subgroup  --->
-    
+   
             <div class="srch mt-3" style="margin-bottom:10px">
+             
               <div class="row">
-                <div class="col-md-12">
-                  <div class="searchBox1 d-flex">
-                    <input class="searchInput1" type="text" name="" placeholder="Search here anything"
-                      (keyup)="onSearchChange($event)">
-                    <mat-icon class="searchicons1">search</mat-icon>
-                    <button class="search-bt_n1">Search</button>
-                    <!-- <button class="searchButtonn" href="#">
-                        </button> -->
-                  </div>
+                <div class="col-3" *ngIf="myStepper?.selectedIndex == 3">
+                      <div style="font-family: 'Gilroy'; color: grey; width: 250px;">
+                        <form [formGroup]="myForms">
+                          <ng-multiselect-dropdown class="productdrp productdrpbubble " name="citys" [placeholder]="'Product'" formControlName="citys"
+                            [disabled]="disabled" [settings]="dropdownSettings6" [data]="Productarr"
+                            (onSelect)="ProductSubGroupDrpdwn($event)" (onDeSelect)="ProductsubGroupDeselect($event)"
+                            (onDeSelectAll)="ProductsubGroupDeSelectAll($event)" (onSelectAll)="ProductsubGroupSelectAll($event)">
+                          </ng-multiselect-dropdown>
+                        </form>
+                        <div class="dropdown-placeholder catag-placeholder">
+                          <span *ngIf="myForms.get('citys').value.length == 0"> Select Products </span>
+                          <span *ngIf="myForms.get('citys').value.length == 1" class="selected-placeholder">
+                            {{myForms.get('citys').value.length}} Category </span>
+                          <span *ngIf="myForms.get('citys').value.length > 1" class="selected-placeholder">
+                            {{myForms.get('citys').value.length}} product groups selected </span>
+                        </div>
+                      </div>
                 </div>
+                  <div class="searchBox2 d-flex">
+                    <input id="searchInput" class="searchInput2" type="text" name="" placeholder="Search here anything"
+                      (keyup)="onSearchChangeProductGroup($event)">
+                    <mat-icon class="searchicons2">search</mat-icon>
+                    <button class="search-bt_n2">Search</button>
+                   
+                  </div>
+           
+                  <div class="icon btnhover refreshbtn">
+                    <img class="refresh" src="assets/img/Refreshbutton.svg" style="position: relative;top: 9px;left: 9px;"
+                      alt="refresh" (click)="addItemRefresh()">
+                  </div>
               </div>
             </div>
-    
+   
             <ag-grid-angular id="gridContainer"
               style=" height: 400px;background-color: white;font-family: Gilroy;width: 100%;"
               class="ag-theme-material" (gridReady)="onGridReady4($event)" [rowHeight]="25" [headerHeight]="48"

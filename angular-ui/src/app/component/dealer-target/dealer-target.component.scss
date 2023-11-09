@@ -188,7 +188,7 @@
   ::ng-deep.multiselect-item-checkbox input[type=checkbox]+div:before {
     box-sizing: content-box;
     content: "";
-    color: #000000;
+    color: rgba(1, 139, 117, 1)!important;;
     position: absolute;
     top: 50%;
     left: 0;
@@ -427,19 +427,23 @@
   }
   
   ::ng-deep.my-class-1 {
-    color: #F5B666 !important;
+    color:   #686E74
+    !important;
   }
   
   ::ng-deep.my-class-2 {
-    color: #17B15C !important;
+    color:  #686E74
+    !important;
   }
   
   ::ng-deep.my-class-3 {
-    color: #F5B666 !important;
+    color:   #686E74
+    !important;
   }
   
   ::ng-deep.my-class-4 {
-    color: #017EFA !important;
+    color:   #686E74
+    !important;
   }
   
   

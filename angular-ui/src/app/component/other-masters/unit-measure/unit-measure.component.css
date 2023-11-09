@@ -220,20 +220,19 @@ left: 37%
     
     .pagination-cls {
       font-size: 14px;
-       font-weight: 900;
-     font-weight: ' Gilroy-Bold'; 
+      font-weight: 500;
       font-weight: bold;
+      font-weight:'Gilroy-Bold' ;
       color: #686E74;
-
     }
-
+    
     .pagination-cl {
       font-size: 14px;
-       font-weight: 900;
-     font-weight: ' Gilroy-Bold'; 
+      font-weight: 900;
       font-weight: bold;
-      color: black;
-
+      font-weight:'Gilroy-Bold' ;
+      color:   #686E74
+      ;
     }
     .m{
       background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;

@@ -21,12 +21,13 @@ font-family: 'Gilroy-Bold';
      height:41px ;
     width: 150px; 
     cursor: pointer;
+    border: 2px solid rgba(1, 139, 117, 1);
     }
 .exit{
 background:#018B75 ;
 color: white;
 padding: 5px 40px;
-border: 2px solid #000000;
+border: 2px solid rgba(1, 139, 117, 1);
 border-radius: 10px;
 
 height: 41px;

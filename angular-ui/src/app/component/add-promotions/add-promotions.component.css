@@ -10,7 +10,7 @@
 
 ::ng-deep mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-bar {
  
-  background-color: #000000 !important;
+  background-color: rgba(1, 139, 117, 1) !important;
  
 }
 ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
@@ -504,6 +504,11 @@ border-radius: 10px; */
   border-radius: 10px;
   height: 43px;
   width: 364px;
+  padding-right: 188px;
+}
+
+.addtnlRemarks::placeholder {
+  text-align: right; 
 }
 
 .saveDraft {
@@ -693,7 +698,7 @@ li {
 }
 
  :host::ng-deep.myDatepicker .mat-form-field {
-  width: 366px !important;
+  width: 372px !important;
   height: 43px;
   background: white !important;
   border-radius: 10px !important;
@@ -914,6 +919,9 @@ li {
   padding: 8px;
   border-radius: 10px;
   /* margin-top: 10px; */
+  width: 99%;
+  position: relative;
+  left: 13px;
 }
 
 .cancelbtn {
@@ -956,11 +964,11 @@ li {
 
 ::ng-deep.mat-checkbox-checked.mat-accent .mat-checkbox-background,
 .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
-  background-color: #000000 !important;
+  background-color:rgba(1, 139, 117, 1) !important;
 }
 
 ::ng-deep.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background {
-  background-color: #000000 !important;
+  background-color: rgba(1, 139, 117, 1)!important;
 }
 
 .promoNameInput {
@@ -975,7 +983,7 @@ li {
 }
 
 .ag-theme-material .ag-checkbox-input-wrapper.ag-checked::after {
-  color: black !important;
+  color: rgba(1, 139, 117, 1)!important;
 }
 
 .row {
@@ -989,7 +997,7 @@ li {
 }
 
 ::ng-deep.ag-theme-material .ag-checkbox-input-wrapper.ag-checked::after {
-  color: black !important;
+  color:  rgba(1, 139, 117, 1);
 }
 
 .item-header {

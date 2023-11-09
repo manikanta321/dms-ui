@@ -96,3 +96,70 @@
    border-radius: 10px !important;
 
  }
+
+ 
+.sales-head{
+
+    color: #000000;
+
+    text-align: center;
+
+    margin-top: -18px;
+
+    margin-bottom: 2px;
+
+    cursor: pointer;
+
+}
+
+.sales-add {
+
+    position: relative;
+
+    font-family: 'Gilroy-Bold'; 
+
+    /* font-weight: bold; */
+
+    font-size: 20px;
+
+  }
+
+  .sales-add:after {
+
+    content: "";
+
+    display: block;
+
+    width: 272px;
+
+    height: 0.5px;
+
+    background: #686E74;
+
+    right: 59px;
+
+    top: 50%;
+
+    position: absolute;
+
+  }
+
+  .sales-add:before {
+
+    content: "";
+
+    display: block;
+
+    width: 272px;
+
+    height: 0.5px;
+
+    background: #686E74;
+
+    left: 0;
+
+    top: 50%;
+
+    position: absolute;
+
+  }

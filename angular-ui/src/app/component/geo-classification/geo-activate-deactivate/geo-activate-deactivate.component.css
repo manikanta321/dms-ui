@@ -15,22 +15,28 @@
         background:  rgba(1, 139, 117, 0.8);
         color: white;
         margin-right: 20px;
-        /* border: #000000; */
         border-radius: 10px;
         margin-top: 15px;
         width: 150px;
         height: 41px;
         cursor: pointer;
+        border: 2px solid rgba(1, 139, 117, 1);
+        outline: none !important;
+        box-shadow: none !important;
         }
     .exit{
     background:  rgba(1, 139, 117, 0.8);
     color: white;
     padding: 5px 52px;
-    border: 0px solid  rgba(1, 139, 117, 0.8);
+    border: 2px solid  rgba(1, 139, 117, 1);
     border-radius: 10px;
     height: 41px;
     width: 150px;
     cursor: pointer;
+    outline: none !important;
+    box-shadow: none !important;
+    position: relative;
+    top: 8px;
     }
     .close-icon{
         left: 100%;

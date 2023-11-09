@@ -44,7 +44,7 @@
 
 
 input[type=checkbox] {
-  accent-color: black;
+  accent-color: green;
 }
 
 .horizontal-scroll {
@@ -150,7 +150,7 @@ mat-card {
   background: #FFFFFF;
   border: 0.5px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-  border-radius: 25px;
+  border-radius: 15px;
   height: 400px;
   height: 235px;
 }
@@ -494,7 +494,7 @@ li {
   font-family: 'Gilroy';
   background: #FFFFFF;
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   font-size: 15px;
 }
@@ -533,7 +533,7 @@ li {
   font-family: 'Gilroy';
   background: #FFFFFF;
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
 }
 
@@ -1603,7 +1603,7 @@ li {
   background: rgba(1, 139, 117, 1);
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
-  border-color: black;
+  border:white ;
   margin-left: 100px;
 
 }
@@ -1616,12 +1616,13 @@ li {
   width: 168px;
   height: 43px;
   background: rgba(1, 139, 117, 1);
-  border: 2px solid #000000;
+  /* border: 2px solid #000000; */
   box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   /* color: #000000; */
   color:white;
   font-family: 'Gilroy';
+  border: white;
 }
 
 .add-dealer-scroll {
@@ -1712,7 +1713,7 @@ li {
 }
 .addMore-iconn {
   cursor: pointer;
-  margin-left: 55px;
+  margin-left: 58px;
   position: relative;
   top: 30px;
   color: rgba(1, 139, 117, 1);
@@ -1857,7 +1858,7 @@ li {
 }
 
 ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-  background-color: black !important;
+  background-color: rgba(1, 139, 117, 1) !important;
 }
 
 ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-label {

@@ -27,6 +27,7 @@ font-family: 'Gilroy';
     /* margin-top: 18px; */
      height:41px ;
     width: 150px; 
+    border: 1px solid rgba(1, 139, 117, 1);
     }
 .exit{
 background:  rgba(1, 139, 117, 1);

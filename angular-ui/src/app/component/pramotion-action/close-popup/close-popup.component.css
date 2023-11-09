@@ -20,6 +20,7 @@
         margin-top: 15px;
         width: 150px;
         height: 41px;
+        border: 2px solid rgba(1, 139, 117, 1);
         }
     .exit{
     /* background: #fff; */
@@ -27,7 +28,7 @@
     /* color: black; */
     color:white;
     padding: 5px 52px;
-    border: 2px solid #000000;
+    border: 2px solid rgba(1, 139, 117, 1);
     border-radius: 10px;
     height: 41px;
     width: 150px;

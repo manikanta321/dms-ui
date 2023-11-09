@@ -9,8 +9,8 @@
                 <b style="color: rgba(23, 177, 92, 1);" *ngIf="!geographyItem?.isActive">Activate </b><br>
                 <b> {{data.geographyName}} ({{data.geographyCode ?? ''}})?</b>
             </p>
-            <button class="undo" (click)="updateGeoClick()">Yes</button>
-            <button class="exit" (click)='close()'>Cancel</button>
+            <button class="btn undo" (click)="updateGeoClick()">Yes</button>
+            <button class="btn exit" (click)='close()'>Cancel</button>
         </div>
     </div>
 </div>

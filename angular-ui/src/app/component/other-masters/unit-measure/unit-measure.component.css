@@ -238,15 +238,15 @@ left: 37%
   
   }
   ::ng-deep.my-class-1 {
-    color: #F5B666 !important;
+    color: #686E74 !important;
   }
   
   ::ng-deep.my-class-2 {
-    color: #17B15C !important;
+    color: #686E74 !important;
   }
   
   ::ng-deep.my-class-3 {
-    color: #F5B666 !important;
+    color: #686E74 !important;
   }
    .searchBox1 {
     position: relative;

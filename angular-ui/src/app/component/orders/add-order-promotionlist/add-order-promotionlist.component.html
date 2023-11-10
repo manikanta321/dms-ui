@@ -321,7 +321,7 @@
                                                         </div>
                                                         <div class="col col-lg-1">
                                                             <!-- {{promos.foc }} -->
-                                                            {{Foc_calculation}}
+                                                            {{Foc_calculation || getTotalSelectedQuantity(promos)}}
                                                         </div>
                                                         <div class=" col-lg-1">
                                                             {{ getTotalSelectedQuantity(promos) }}

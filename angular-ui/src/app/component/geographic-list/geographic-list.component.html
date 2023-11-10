@@ -54,7 +54,7 @@
     </div>
   </section>
   <ag-grid-angular id="gridContainer" *ngIf="shippingChk"
-    style=" height: 400px;background-color: white;font-family: Gilroy;width: 100%;"
+    style=" height: 440px;background-color: white;font-family: Gilroy;width: 100%;"
     class="ag-theme-material" [rowHeight]="25" [headerHeight]="48" [columnDefs]="columnDefs"
     [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5" [suppressExcelExport]="true"
     [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"
@@ -64,7 +64,7 @@
 
 
     <ag-grid-angular id="gridContainer" *ngIf="!shippingChk"
-    style=" height: 400px;margin-left:17px;  overflow: hidden;    border-radius: 20px;background-color: white;font-family: Gilroy"
+    style=" height: 440px;margin-left:17px;  overflow: hidden;    border-radius: 20px;background-color: white;font-family: Gilroy"
     class="ag-theme-material" [rowHeight]="25" [headerHeight]="48" [columnDefs]="columnDefs1"
     [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData6" [suppressExcelExport]="true"
     [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"

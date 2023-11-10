@@ -57,6 +57,7 @@ export class AddSalesPopupComponent implements OnInit {
     {
       SalesDate: '',
       Quantity: '',
+      SalesPrice:'',
       CustomerSpecification: '',
     },
   ];
@@ -232,11 +233,16 @@ export class AddSalesPopupComponent implements OnInit {
     this.getDealersDropDown();
     this.CreatedById = localStorage.getItem('logInId');
   }
-
+  restrictToAlphabets(event: any): void {
+    const input = event.target as HTMLInputElement;
+    const value = input.value;
+    input.value = value.replace(/[^0-9]/g, '');
+  }
   addsalesobj() {
     this.SalesObj.push({
       SalesDate: '',
       Quantity: '',
+      SalesPrice:'',
       CustomerSpecification: '',
     });
   }
@@ -349,6 +355,7 @@ export class AddSalesPopupComponent implements OnInit {
     this.SalesObj =[{
       SalesDate: '',
       Quantity: '',
+      SalesPrice:'',
       CustomerSpecification: '',
     }]
     this.geographySelect.clearModel();

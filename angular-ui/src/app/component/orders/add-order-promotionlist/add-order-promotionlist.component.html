@@ -33,7 +33,7 @@
                 <!-- Promotion Details Start -->
                 <div class="t_op-bottom m-3">
                     <div class="card top-section">
-                        <div class="card-header" style="  color: white;background: linear-gradient(0deg, #018B75, #018B75);"> Promotions Items</div>
+                        <div class="card-header" style="  color: white;background: linear-gradient(0deg, #018B75, #018B75);font-family: 'Calibri';font-weight: 700;font-size: 19px;"> Promotions Items</div>
                         <div class="card-body p-3">
                             <div class="row">
                                 <div class=" col-md-5">
@@ -157,7 +157,7 @@
                                                                 <div class="col-md-2 col-lg-2 col-sm-2">
                                                                     <div class="searchBox11 d-flex">
                                                                         <input class="searchInput11" type="text" name=""
-                                                                            placeholder="Search..."
+                                                                            placeholder="Search Here Anything"
                                                                             [(ngModel)]="searchText">
                                                                         <mat-icon class="searchicons">search</mat-icon>
                                                                         <button class="search-bt_n">Search</button>
@@ -243,7 +243,7 @@
                                                                                   
                                                                                 <td >{{ Item.registrationNumber }}</td>   
                                                                                 <td >{{ promos.moq }}</td>
-                                                                                <td >{{ Item.price }}</td>
+                                                                                <td >${{ Item.price }}</td>
                                                                                 <td  class="QUantityFirst">
                                                                                     <input type="number" min="0"
                                                                                         placeholder="Enter Qty"
@@ -296,7 +296,7 @@
                                                         <div class="col col-lg-2">
                                                             <div class="searchBox11 d-flex">
                                                                 <input class="searchInput12" type="text" name=""
-                                                                    placeholder="Search..."
+                                                                    placeholder="Search Here Anything"
                                                                     [(ngModel)]="searchTextFreeItems">
                                                                 <mat-icon class="searchiconsFREEITEMS">search</mat-icon>
                                                                 <button class="searchBTNFREEITEMS">Search</button>
@@ -374,7 +374,7 @@
                                                                         {{Item.registrationNumber}}
                                                                     </td>
                                                                     <td >{{promos.moq}}</td>
-                                                                    <td >{{Item.price}}</td>
+                                                                    <td >${{Item.price}}</td>
                                                                     <td class="QUantityFirst"><input type="number" placeholder="Enter Qty" min="0"
                                                                             class="quatity-inp" [(ngModel)]="Item.Quantity"
                                                                             (keyup)="quantityChange(data, Item)"
@@ -447,7 +447,7 @@
                                                         <div class="col-md-2 col-lg-2 col-sm-2">
                                                             <div class="searchBox11 d-flex">
                                                                 <input class="searchInput13" type="text" name=""
-                                                                    placeholder="Search..."
+                                                                    placeholder="Search Here Anything"
                                                                     [(ngModel)]="searchTextSecondPromotion">
                                                                 <mat-icon
                                                                     class="searchiconsFREEITEMSsecondpro">search</mat-icon>
@@ -522,7 +522,7 @@
                                                                     <td style="position: relative;left: 3%;">
                                                                         {{Item.registrationNumber}}</td>
                                                                     <td style="position: relative;left: 2%;">{{promos.moq}}</td>
-                                                                    <td style="position: relative;left: 2%;">{{Item.price}}</td>
+                                                                    <td style="position: relative;left: 2%;">${{Item.price}}</td>
                                                                     <!-- <td><input type="number" placeholder="Enter"
                                                                             [disabled]="!promos.isEnable" class="quatity-inp"
                                                                             [(ngModel)]="Item.stock"></td> -->
@@ -642,12 +642,12 @@
                                                                 Qty
                                                             </mat-slide-toggle>
                                                         </div>
-                                                        <div class="col col-lg-3">
+                                                        <div class="col col-lg-3" style="position: relative;left: 43px;">
                                                             <div class="searchBox11 d-flex">
                                                                 <mat-icon
                                                                     class="searchiconsFREEITEMSsecondpro11">search</mat-icon>
                                                                 <input class="searchInput14" type="text" name=""
-                                                                    placeholder="Search..."
+                                                                    placeholder=" Search Here Anything"
                                                                     [(ngModel)]="searchTextSecondPromotionfree">
                                                                 <button
                                                                     class="searchBTNFREEITEMSsecondproguy">Search</button>
@@ -718,7 +718,7 @@
                                                                     <td style="position: relative;left: 4%;">
                                                                         {{Item.registrationNumber}}</td>
                                                                     <td style="position: relative;left: 4%;">{{promos.moq}}</td>
-                                                                    <td >{{Item.price}}</td>
+                                                                    <td >${{Item.price}}</td>
                                                                     <!-- <td><input type="number" placeholder="Enter"
                                                                             [disabled]="!promos.isEnable" class="quatity-inp"
                                                                             [(ngModel)]="Item.stock"></td> -->
@@ -809,7 +809,7 @@
                                                                 <mat-icon
                                                                     class="searchiconsFREEITEMSthree">search</mat-icon>
                                                                 <input class="searchInput14" type="text" name=""
-                                                                    placeholder="Search..." [(ngModel)]="ThirdPromotion">
+                                                                    placeholder="Search Here Anything" [(ngModel)]="ThirdPromotion">
                                                                 <button class="searchBTNthreepro">Search</button>
     
                                                             </div>
@@ -938,7 +938,7 @@
                                                                     </td>
                                                                     <td class="txt-right">{{data.promoDetails.moq}}</td>
     
-                                                                    <td class="txt-right">{{Item.price}}</td>
+                                                                    <td class="txt-right">${{Item.price}}</td>
     
                                                                     <!-- <td><input type="number" placeholder="Enter" class="quatity-inp"
     
@@ -1135,7 +1135,7 @@
                                                                         </td>
                                                                         <td class="txt-right">{{data.promoDetails.moq}}</td>
     
-                                                                        <td class="txt-right">{{Item.price}}</td>
+                                                                        <td class="txt-right">${{Item.price}}</td>
                                                                         <!-- <td><input type="number" placeholder="Enter" class="quatity-inp"
                                                                     [(ngModel)]="Item.stock"></td> -->
                                                                         <!-- <td>

@@ -606,7 +606,7 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
   // Based on status
     this.status =  sessionStorage.getItem('OrderStatus');
     console.log("staus", this.status )
-    if (this.status === 'Draft' || this.status === 'Processed' || this.status === 'Ordered') {
+    if (this.status === 'Draft' || this.status === 'Processed' || this.status === 'Ordered'|| this.status==='Confirmed') {
       this.checkstatus = true;
     }
     else {

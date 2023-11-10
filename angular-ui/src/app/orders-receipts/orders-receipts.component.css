@@ -158,16 +158,18 @@
   
   .pagination {
     float: right !important;
+    margin-top: 12px;
   }
   
   .pagination-cls {
     font-size: 14px;
     color: #686E74;
+    font-weight: 500;
   }
 
   .pagination-cLASSS{
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 900;
     color: #686E74;
   }
   

@@ -74,16 +74,16 @@
 </div>
  <!-- grid -->
  <div class="grid-table mt-5">
-    <ag-grid-angular id="gridContainer" class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
+    <ag-grid-angular id="gridContainer" style="height: 435px;background-color: white;font-family: calibri;" class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
       [headerHeight]="48" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
       [rowData]="shipmentDatalist" [suppressExcelExport]="true" [popupParent]="popupParent"
       (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"
       (firstDataRendered)="onFirstDataRendered($event)" (rowClicked)="openDialog()"
       (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
       (bodyScroll)="handleScroll($event)"></ag-grid-angular>
-    <div class="pagination">
-      <span class="pagination-cls">1</span> to <span class="pagination-cls">{{paginationScrollCount}}</span> of <span
-        class="pagination-cls">{{shipmentDatalist.length}}</span>
+    <div class="pag-ination">
+      <span class="pagination-cls">1&nbsp;</span><span style=" color: #686E74;">-</span>&nbsp; <span class="pagination-cls">{{paginationScrollCount}}</span><span class="pagination-cls">&nbsp; of &nbsp;</span>
+      <span class="pagination-length">{{shipmentDatalist.length}}</span>
     </div>
   </div>
   <!-- footer -->
@@ -169,7 +169,7 @@
 </div>
 <!-- grid -->
 <div class="grid-table mt-5">
-  <ag-grid-angular id="gridContainer" class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
+  <ag-grid-angular id="gridContainer" style="height: 435px;background-color: white;font-family: calibri;" class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
     [headerHeight]="48" [columnDefs]="columnReceiptDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
     [rowData]="receiptDatalist" [suppressExcelExport]="true" [popupParent]="popupParent"
     (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"
@@ -177,8 +177,8 @@
     (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
     (bodyScroll)="handleScrollReceipt($event)"></ag-grid-angular>
   <div class="pagination">
-    <span class="pagination-cls">1 &nbsp;</span><span class="pagination-cls">-</span><span class="pagination-cls">&nbsp;{{paginationScrollCount}}</span> &nbsp;<span class="pagination-cls"> of &nbsp;</span><span
-      class="paginationclass">{{receiptDatalist.length}}</span>
+    <span class="pagination-cls">1 &nbsp;</span><span style=" color: #686E74;">-</span>&nbsp; <span class="pagination-cls">{{paginationScrollCount}}</span> <span class="pagination-cls"> &nbsp; of &nbsp;</span>
+    <span class="pagination-length">{{receiptDatalist.length}}</span>
   </div>
 </div>
 <!-- footer -->

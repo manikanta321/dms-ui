@@ -21,6 +21,7 @@ border-radius: 25px;
   top: 0px;
   overflow-x: hidden;
   border-radius: 25px;
+  background-color: white;
   }
 .close-icon {
     left: 97.3%;
@@ -233,7 +234,7 @@ position: relative;
 width: 456px;
 height: 130px;
 background: #FFFFFF;
-border: 0.5px solid #000000;
+border: 1px solid #989CA04D;
 
 border-radius: 10px;
 }
@@ -463,13 +464,12 @@ tr {
     width: 958px;
     height: 43px;
     /* background: #FFFFFF; */
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 1px solid #989CA04D;
     border-radius: 10px;
     padding-left: 12px;
     font-size: 14px;
     color: black;
-    background-image: linear-gradient(90.06deg, #CED4DA 0.05%, #F8F9FA 96.47%) !important;
+    background-color: white;
 }
 .errorText{
   color :red;

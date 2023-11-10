@@ -7,6 +7,15 @@ line-height: 20px;
 color: #000000;
 font-style: normal;
 }
+.card
+{
+  border-top-right-radius: 19px !important;
+  border-top-left-radius: 19px !important;
+}
+.card-header{
+  border-top-right-radius: 18px !important;
+    border-top-left-radius: 18px !important;
+}
 .productcategory
 {
   font-family: 'Calibri';
@@ -1886,7 +1895,7 @@ li {
 .add-edit-promo {
   color: #fff;
   background: #000000;
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 10px;
   font-size: 13px;
   text-align: center;

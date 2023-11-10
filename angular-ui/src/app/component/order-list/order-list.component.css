@@ -742,7 +742,7 @@ mat-sidenav-container {
 :host ::ng-deep.ag-theme-material .ag-root-wrapper,
   .ag-theme-material .ag-sticky-top {
     border: 1px solid #989CA04D !important;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important;
+    /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2) !important; */
     /* border-bottom-left-radius: 10px 10px !important;
     border-bottom-right-radius: 10px 10px !important; */
     border-radius: 10px !important;
@@ -1214,13 +1214,14 @@ mat-sidenav {
 
 .pagination-cls {
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
+    color:  #686E74;
 
 }
 .pagination-length
 {
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 900;
     color: #686E74;
 }
 .date-colored
@@ -1512,7 +1513,7 @@ mat-sidenav {
 .AllText
 {
     font-family: 'Calibri';
-font-size: 15px;
+font-size: 16px;
 font-weight: 400;
 line-height: 12px;
 letter-spacing: 0em;

@@ -262,7 +262,7 @@
                             <div class="row mt-3">
                                 <table class="TOtalCalculations" *ngIf="shippingPackingchargeDetails">
                                     <tr>
-                                        <td class="text-left SUBITEMNAME ml-5"><p style="margin-left: 20%;">Subtotal</p></td>
+                                        <td class="text-left SUBITEMNAME ml-5"><p style="margin-left: 20%;margin-top: 7px;">Subtotal</p></td>
                                         <td class="text-right numbers ">{{shippingPackingchargeDetails.subTotal}}</td>
                                     </tr>
                                     <tr>
@@ -273,10 +273,10 @@
                                         <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;" >Shipping Charge</p></td>
                                         <td class="text-right numbers">{{shippingPackingchargeDetails.shippingCharges}}</td>
                                     </tr>
-                                    <tr>
+                                    <!-- <tr>
                                         <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;" > Tax</p> </td>
                                         <td class="text-right numbers">{{shippingPackingchargeDetails.taxElement}}</td>
-                                    </tr>
+                                    </tr> -->
                                     <tr>
                                         <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';"><p style="margin-left: 20%;">Total value</p></td>
                                         <td class="text-right numbers">{{shippingPackingchargeDetails.total}}</td>
@@ -599,21 +599,21 @@
                         <div class="row mt-3">
                             <table class="TOtalCalculations" *ngIf="shippingPackingchargeDetails">
                                 <tr>
-                                    <td class="text-left SUBITEMNAME ml-5"><p style="margin-left: 20%;">Subtotal</p></td>
+                                    <td class="text-left SUBITEMNAME ml-5"><p style="margin-left: 20%;margin-top: 7px;">Subtotal</p></td>
                                     <td class="text-right numbers ">{{shippingPackingchargeDetails.subTotal}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;">Packing Charge</p></td>
+                                    <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;margin-top: 7px;">Packing Charge</p></td>
                                     <td class="text-right numbers ">{{shippingPackingchargeDetails.packingCharges}}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;" >Shipping Charge</p></td>
                                     <td class="text-right numbers">{{shippingPackingchargeDetails.shippingCharges}}</td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;" > Tax</p> </td>
                                     <td class="text-right numbers">{{shippingPackingchargeDetails.taxElement}}</td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';"><p style="margin-left: 20%;">Total value</p></td>
                                     <td class="text-right numbers">{{shippingPackingchargeDetails.total}}</td>
@@ -1217,7 +1217,7 @@
 
                     <div class="tabel-div">
                         <table class="tableclass">
-                            <thead class="table-headercolor">
+                            <thead class="table-headercolor" style="height: 44px;">
                                 <tr>
                                     <th width="30"></th>
                                     <th data-sortable="true" class="align-center">Product Code</th>
@@ -1253,7 +1253,7 @@
                                     <!-- <td>{{Item.classification}}</td> -->
                                     <td style="text-align: left;">{{Item.registrationNumber}}</td>
 
-                                    <td>{{Item.price}}</td>
+                                    <td>${{Item.price}}</td>
                                     <!-- <td><input type="text" placeholder="Enter" class="quatity-inp"
                                                     [(ngModel)]="Item.stock"></td> -->
                                     <!-- <td>{{Item.stockqty}}</td> -->

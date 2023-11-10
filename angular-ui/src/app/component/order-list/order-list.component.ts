@@ -153,7 +153,7 @@ export class OrderListComponent implements OnInit {
     {
       headerName: 'Dealer',
       field: 'dealerName',
-      minWidth: 250,
+      minWidth: 255,
       tooltipField: 'dealerName',
       cellStyle: {
         'color': '#686E74' 
@@ -164,7 +164,7 @@ export class OrderListComponent implements OnInit {
       minWidth: 110,
       maxWidth: 150,
       field: 'companyReferenceNo',
-      type: ['rightAligned'],
+      type: ['leftAligned'],
       cellStyle: {
         'color': '#686E74' 
       }

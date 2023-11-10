@@ -1060,11 +1060,21 @@ border-radius: 10px;
     top: 14px;
     font-size: 17px;
     margin-left: 1%;
-    font-family: 'Gilroy-Light';
+    font-family: 'Calibri';
     left: 33px;
     color: #FFFFFF !important;
 
 
+  }
+  .Total-Orderinfo
+  {
+    font-family: 'Calibri';
+font-size: 15px;
+font-weight: 700;
+line-height: 18px;
+color: #000000;
+;
+ 
   }
   
   
@@ -1122,13 +1132,25 @@ border-radius: 10px;
   
   width: 129px;
   height: 52px;
-  margin-right: -6px;
-  background: #686E74;
+  margin-right: -1px;
+  background: #018B75CC;
+  font-family: "Calibri";
   border-radius: 0px 21.2px 21.2px 0px;
   margin-top: -5px;
   color: white;
   text-align:left;
 padding-left: 20px;
+}
+.SUBTotaldatacolor
+{
+  position: relative;
+  right: 100px;
+  font-family: 'Calibri';
+  font-size: 15px;
+  font-weight: 700;
+  color: #000000;
+
+
 }
 .totaltotal
 {
@@ -1844,5 +1866,311 @@ border-top-right-radius: 5px;
     border: 1px solid grey !important;
     zoom: 1.2;
 }
+
+
+.Receiveshipmentheader
+{
+  font-family: 'Calibri';
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+.DealerInfo-label
+{
+  margin: 5px;
+  font-size: 17px;
+  align-items: center;
+  color: #000000;
+  font-family: 'Calibri';
+ font-weight: 700;
+}
+.Dealerdata
+{
+  font-family: 'Calibri';
+    font-size: 14px;
+    font-weight: 400;
+    margin-left: 6px;
+}
+.Receiveshipmentheaderitems
+{
+  font-family: 'Calibri';
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+.itemLeft {
+  font-size: 12.5px;
+  text-align: left;
+  margin-right: -39px;
+  font-family: 'Gilroy-SemiBold';
+}
+.Iteminput__Boxes {
+  width: 100px;
+  height: 30px;
+  background: none;
+  font-size: 13px;
+  position: relative;
+  top: 9px;
+  font-family: 'Calibri';
+}
+.promoItem {
+  width: 30px;
+  height: 30px;
+  background: #0091EA;
+  border-radius: 68%;
+  color: white;
+  padding: 3px 5px;
+  margin-left: -8px;
+}
+.totall_shipment{
+  width: 44%;
+  height: 51%;
+  background: #FFFFFF;
+  border-top:1px  solid  #018B75;
+  border-bottom: 1px solid #018B75;
+  border-left: 1px solid #018B75;
+  border-right: 1px solid #018B75;
+  border-radius: 21px;
+  font-size: 13px;
+  position: relative;
+  left: 60.2%;
+  /* background: #018B75; */
+ 
+ 
+}
+.innerTotalshipment{
+  margin-left: 15px;
+}
+  .subitemshipments {
+  font-size: 13px;
+  width: 179px;
+}
+.alltotals__shipments
+{
+   margin-bottom: 1px;
+font-family: 'Calibri';
+}
+.TOTALDATAshipmenst
+{
+  margin-top: 1px;
+    margin-left: 12px;
+    color: white;
+    font-size: 16px;
+}
+#Totaldatashihp
+{
+  margin-left: 12px;
+ 
+}
+#shipmentschargs
+{
+  margin-left: 12px;
+  color: black;
+}
+ 
+.InviceData {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  border-radius: 10px 10px 0px 0px;
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  border-radius: 10px;
+}
+.invicedatalabel {
+  position: relative;
+  top: 6px;
+  font-size: 18px;
+  margin-left: 1%;
+  font-family: 'Calibri'
+}
+.shipmentstwodata{
+  padding: 0 18px 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+  /* border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: #686E74;
+  border-radius: 0px 0px 10px 10px; */
+  overflow: auto;
+  margin: 0px 10px;
+}
+ 
+ 
+.shipmentstwodata::-webkit-scrollbar{
+  height: 5px;
+}
+.fontweightshipmenst
+  {
+    font-weight: 500;
+  }
+  .inviceno
+  {
+    margin-left: 17%;
+    font-family: 'Calibri';
+    font-weight: 800;
+    font-size: 15px;
+  }
+   
+  .STARTMESSAGE {
+    color: red;
+  }
+  ::ng-deep.inputDATEpicker .mat-form-field-appearance-fill .mat-form-field-flex {
+    border-radius: 10px;
+    padding: 3px;
+    background: white !important;
+    border: 1px black solid;
+  }
+ 
+  ::ng-deep.inputDATEpicker .mat-form-field-flex {
+    cursor: pointer;
+    height: 37px;
+  }
+  .INVICE{
+    border-radius: 10px;
+    padding: 10px;
+    background: none !important;
+    width: 223px;
+    border: 1px black solid;
+    height: 35px;
+    margin-left: 17%;
+  }
+  .label111
+  {
+    margin-left: 15%;
+  }
+  ::ng-deep.Shipmentdatepicker .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 0.4375em 0;
+    margin-top: -4px !important;
+  }
+  .PLACEALIGN{
+    border: 0.5px solid #000000;
+    box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+    border-radius: 10px;
+    height: 41px;
+    background-color: white;
+  }
+  .calendaToggleSHIPMENTS {
+    position: absolute;
+    bottom: 4px;
+    width: 20px;
+    right: 10px;
+  }
+  .receive_DATE
+  {
+    margin-left: 16%;
+  }
+  .Paddingshipments
+  {
+    padding: 2px 3px 5px 30px;
+    font-family: 'Gilroy-Bold';
+    font-size: 14px;
+    text-align: right;
+  }
+  .IteminputBoxesSecondShipments {
+    width: 100px;
+    height: 30px;
+    background: none;
+    font-size: 12.5px;
+      position: relative;
+    top: 9px;
+  }
+  .ShipinputBoxes {
+    width: 70px;
+    height: 30px;
+    background: none;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 12.5px;
+     text-align: right;
+  }
+  .DiscountC{
+    /* font-weight: bold; */
+    font-family: 'Gilroy-SemiBold';
+    font-size: 14px;
+  }
+  .DispatchComments {
+    width: 1289px;
+    height: 73px;
+    padding-bottom: 45px;
+    padding-left: 7px;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 13px;
+    background-color: white;
+    color: black;
+    font-family: 'Gilroy-Regular';
+  }
+ 
+  .SAVE-Draft{
+    background: #000000;
+    box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    float: right;
+    margin-top: 4%;
+    cursor: pointer;
+    width: 168px;
+    height: 43px;
+    border-radius: 10px;
+    font-family: 'Gilroy-SemiBold';
+    font-size: 15px;
+    line-height: 18px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+  }
+  .Orders_Items
+  {
+    width: 102%;
+  }
+  .close-iconreceive {
+    left: 100%;
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: -1px;
+ 
+  }
+  .addshipments {
+    position: relative;
+    font-family: 'Gilroy-Bold';
+    font-size: 20px;
+  }
+  .addshipments:after {
+    content: "";
+    display: block;
+    width: 40%;
+    height: 2px;
+    background: #686E74;
+    right: 1%;
+    top: 50%;
+    position: absolute;
+  }
+ 
+  .addshipments:before {
+    content: "";
+    display: block;
+    width: 40%;
+    height: 2px;
+    background: #686E74;
+    left: 0;
+    top: 50%;
+    position: absolute;
+  }
+  .SUBTotaldatacolor
+  {
+    position: relative;
+    right: 100px;
+    font-family: 'Calibri';
+    font-size: 15px;
+    font-weight: 700;
+    color: #000000;
+ 
+ 
+  }
 
   

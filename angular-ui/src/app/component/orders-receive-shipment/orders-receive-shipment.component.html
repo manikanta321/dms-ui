@@ -118,7 +118,7 @@
                                     </ng-container>
                                     <tr *ngIf="!promoVisibility[data.promo]">
                                       <td class="text_left text-secondary pl-5">
-                                        <label style="position: relative;left: 3px;" [ngClass]="{'FreePromoitems': data.finalValue=== 0.00 }">{{data.uomname}}</label>
+                                        <label style="position: relative;left: 3px;" [ngClass]="{'FreePromoitems': data.finalValue=== 0.00 }">{{data.productSKUName}}</label>
                                       </td>
                                       <td class="text-secondary">
                                         <label [ngClass]="{'FreePromoitems': data.finalValue=== 0.00 }">{{data.stockitemname}}</label>

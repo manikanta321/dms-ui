@@ -1,19 +1,20 @@
 
- 
-::ng-deep mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-bar {
-  /* background-color:white !important; */
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
   background: rgba(1, 139, 117, 1)!important;
-  /* width: 51px; */
- 
+}
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+background: rgba(196, 196, 196, 1) !important;
+}
+::ng-deep mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-thumb {
+background: rgba(196, 196, 196, 1) !important;
+}
+::ng-deep mat-slide-toggle:not(.mat-checked):not(.mat-disabled) .mat-slide-toggle-bar {
+
+background: rgba(1, 139, 117, 1)!important;
 }
 
-:host ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
-  background-color: #49c5b6 ;
-}
 
-:host ::ng-deep  .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
-  background-color: #49c5b6 ;
-}
+
 .maiUdiv
 {
   background: linear-gradient(0deg, rgba(255, 255, 255, 0.99), rgba(255, 255, 255, 0.99));
@@ -38,13 +39,13 @@ border-radius: 26px;
   background: black!important; 
   /* width: 51px; */
 }
-::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
-  background-color:white !important;
-  
+.loginpage_sub_box_div{
+  height: fit-content;
+  background-color: red;
+  height: 2vw;
+  position: absolute;
+  top: 10%;
 }
-
-
-
 
 * {
   box-sizing: border-box;

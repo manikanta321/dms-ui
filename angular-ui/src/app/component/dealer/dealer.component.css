@@ -81,6 +81,7 @@ mat-tab{
   height: 33px !important;
   min-width: 155px !important;
   border: 1px solid rgba( 1, 139, 117, 1);
+  border-right: 1px solid rgba(1, 139, 117, 1);
   color: rgba(1, 139, 117, 1) ;
 }
 .order1-lab .mat-tab-labels:nth-child(1) {
@@ -102,7 +103,7 @@ mat-tab{
   background: white;
   left: 23%;
   font-size: 15px;
-
+  border-bottom: 1px solid rgba(1,139,117,1);
 }
 
 :ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {

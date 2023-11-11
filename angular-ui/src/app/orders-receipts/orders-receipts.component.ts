@@ -701,6 +701,7 @@ export class OrdersReceiptsComponent implements OnInit {
         search:this.searchText,
         currentuserId:this.loggedUserId
       }
+      const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
       this.orders.getOrderReceiptList(data).subscribe((res) => {
         this.receiptDatalist = res.response;
         console.log("Response",this.receiptDatalist)

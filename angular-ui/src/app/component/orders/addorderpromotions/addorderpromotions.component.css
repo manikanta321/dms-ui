@@ -1905,7 +1905,7 @@ li {
 }
 .add-edit-non-promo {
   background: linear-gradient(0deg, #018B75, #018B75);
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 4px;
   font-size: 13px;
   color: white;
@@ -1978,7 +1978,7 @@ li {
 .save-submit11 {
   background: linear-gradient(0deg, #018B75, #018B75);
   border: 1px solid rgba(152, 156, 160, 1);
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 10px;
  color: white;
   margin-top: 15px;
@@ -2024,7 +2024,7 @@ margin-right: 235px;
 .save-submit {
    background:  rgba(1, 139, 117, 1);
    border: 1px solid rgba(152, 156, 160, 1);
-     box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+     /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 10px;
   margin-top: 15px;
   cursor: pointer;

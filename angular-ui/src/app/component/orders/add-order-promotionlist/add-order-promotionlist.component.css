@@ -2297,6 +2297,7 @@ letter-spacing: 0.04em;
   background: #FFFFFF;
   border: 0.5px solid #000000;
   border-radius: 5px;
+  text-align: right; 
 }
 .Product_namefirstpromo
 {

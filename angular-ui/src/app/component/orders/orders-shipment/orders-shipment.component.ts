@@ -924,6 +924,7 @@ public defaultColDef: ColDef = {
       Search: this.searchText,
       CurrentUserId: this.loggedUserId,
     };
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
     this.orders.getShipmentList(data).subscribe((res) => {
       this.shipmentDatalist = res.response;
       console.log('Response', this.shipmentDatalist);

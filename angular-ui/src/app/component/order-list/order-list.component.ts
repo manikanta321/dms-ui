@@ -153,7 +153,7 @@ export class OrderListComponent implements OnInit {
     {
       headerName: 'Dealer',
       field: 'dealerName',
-      minWidth: 255,
+      minWidth: 245,
       tooltipField: 'dealerName',
       cellStyle: {
         'color': '#686E74' 
@@ -575,6 +575,7 @@ export class OrderListComponent implements OnInit {
       //   "OrderDate":"",
       //   "Search":""
     };
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
     this.orders.getorderDeatilslist(data).subscribe((res) => {
       this.rowDatalist = res.response;
       console.log('RefreshData', this.rowDatalist);

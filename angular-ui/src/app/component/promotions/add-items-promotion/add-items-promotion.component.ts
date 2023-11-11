@@ -46,6 +46,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./add-items-promotion.component.css'],
 })
 export class AddItemsPromotionComponent implements OnInit {
+  selectedTabIndex = 0
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });

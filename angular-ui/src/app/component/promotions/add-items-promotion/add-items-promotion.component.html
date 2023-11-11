@@ -5,7 +5,9 @@
       <mat-icon mat-button class="close-icon" mat-dialog-close>close</mat-icon>
     </div>
     <div class="head-t">
-      <h3 class="additems-h font">Add Items: <b style="color: black;">Product</b></h3>
+      <h3 class="additems-h font">Add Items: <b style="color: black;">
+        {{ selectedTabIndex === 0 ? 'Product' : selectedTabIndex === 1 ? 'product Short code' : selectedTabIndex === 2 ? 'Product Group' : 'Product Sub-Group' }}
+      </b></h3>
     </div>
     <div class="srch mt-3" style="margin-bottom:-58px" *ngIf="searchfeild">
       <div class="row">
@@ -25,7 +27,7 @@
     </div>
     <!-- prod subG dropdwn -->
     <div class="scrollone">
-    <mat-tab-group  #stepper (click)="matsteptabClick($event)" [selectedIndex]="0"
+    <mat-tab-group  #stepper (click)="matsteptabClick($event)" [(selectedIndex)]="selectedTabIndex"
       ngClass="addItemsHeader">
       <mat-tab label="Product ">
         <form [formGroup]="firstFormGroup">

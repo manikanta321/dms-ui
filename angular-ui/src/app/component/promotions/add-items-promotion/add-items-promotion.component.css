@@ -45,7 +45,7 @@
   margin-left: -6px;
 }
 
-::ng-deep .mat-tab-label{
+:host ::ng-deep .mat-tab-label{
   border: 1px solid rgba(1,139,117,1)!important;
 }
 
@@ -85,9 +85,9 @@
 .additems-h:after {
   content: "";
   display: block;
-  width: 417px;
+  width: 389px;
   height: 0px;
-  right: 45px;
+  right: 10px;
   top: 50%;
   position: absolute;
   border: 0.5px solid rgba(104, 110, 116, 0.75);
@@ -98,7 +98,7 @@
   display: block;
   width: 417px;
   height: 0px;
-  left: 45px;
+  left: -8px;
   top: 50%;
   position: absolute;
   border: 0.5px solid rgba(104, 110, 116, 0.75);
@@ -298,7 +298,7 @@ margin-right: 15px;
   border: 1px solid rgba(1, 139, 117, 1);
 }
 
-mat-radio-group {
+.at-radio-group {
   display: flex;
   justify-content: center;
 }

@@ -170,7 +170,7 @@
     border: none;
   } */
   .btnhover {
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
+    // filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
     border: none;
     background: #686E74;  
     border-radius: 35%;
@@ -182,7 +182,7 @@
     top: 24px;
   }
   .btnhover1{
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
+    // filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
     border: none;
     background: #686E74;  
     border-radius: 35%;
@@ -1200,7 +1200,7 @@ margin-left: 136px;
     background-color: white;
     padding: 10px;
     border: solid 1px black;
-    border-radius: 3px;
+    border-radius: 7px;
      height: 385px;
     overflow-y: scroll;
     position: relative;

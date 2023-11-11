@@ -59,12 +59,6 @@
         <img class="refresh" src="assets/img/Refreshbutton.svg" style="position: relative;top: 9px;left: 9px;"
           alt="refresh">
       </div>
-      <!-- add user -->
-      <div class="col-md-0" userRoleDirective="ADD_ASSOCIATION" [pageName]="currentPageName">
-        <div class="add-user" (click)="addUser()" style=" cursor: pointer">
-          <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
-        </div>
-      </div>
    <!-- bulk uplod -->
         <div class="col-md-0" userRoleDirective="BULK_EDIT_ASSOCIATION" [pageName]="currentPageName" class="bulkEditAss">
           <div class="add-user1" (click)="editBulk()" style=" cursor: pointer">
@@ -93,6 +87,12 @@
             <img class="imgupload" src="assets/img/orderlist-downloD.svg" alt="add-user-btn">
           </div>
         </div>
+               <!-- add user -->
+      <div class="col-md-0" userRoleDirective="ADD_ASSOCIATION" [pageName]="currentPageName">
+        <div class="add-user" (click)="addUser()" style=" cursor: pointer">
+          <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+        </div>
+      </div>
     </div>
  
      <!-- <div class="row " style="margin-bottom:90px;" > -->

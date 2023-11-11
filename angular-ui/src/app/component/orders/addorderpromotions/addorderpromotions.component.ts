@@ -281,6 +281,7 @@ export class AddorderpromotionsComponent implements OnInit {
       pValue: '',
     },
   ];
+  expandedPromotions: boolean[] =[]
   constructor(
     private _formBuilder: FormBuilder,
     private spinner: NgxSpinnerService,
@@ -305,12 +306,15 @@ export class AddorderpromotionsComponent implements OnInit {
       this.orderNonPromotionsList();
     });
     sort: [];
+    this.expandedPromotions = [];
   }
 
   firstFormGroup: FormGroup = this._formBuilder.group({ firstCtrl: [''] });
   secondFormGroup: FormGroup = this._formBuilder.group({ secondCtrl: [''] });
   promocalculation: any = []
+ 
   ngOnInit(): void {
+    this.expandedPromotions = new Array(this.AddOrderPromotionData.length).fill(false);
     localStorage.setItem('AddorEditpro', '');
     localStorage.setItem('AddorEditpro1', '');
     this.userType = localStorage.getItem('userType');
@@ -518,13 +522,14 @@ export class AddorderpromotionsComponent implements OnInit {
       );
     });
   }
-
-  ExpandPromotion(type: any) {
-    if (this.AddOrderPromotionData[type].isOpen == false) {
-      this.AddOrderPromotionData[type].isOpen = true;
-    } else {
-      this.AddOrderPromotionData[type].isOpen = false;
-    }
+  // expandedPromotions: boolean[] = new Array(this.AddOrderPromotionData.length).fill(true);
+  ExpandPromotion(index: any) {
+    this.expandedPromotions[index] = !this.expandedPromotions[index];
+    // if (this.AddOrderPromotionData[type]) {
+    //   this.AddOrderPromotionData[type].isOpen = false;
+    // } else {
+    //   this.AddOrderPromotionData[type].isOpen = true;
+    // }
   }
 
   shouldShowRowq = false;
@@ -536,7 +541,6 @@ export class AddorderpromotionsComponent implements OnInit {
 
   ExpandNonPromotion() {
     this.NonPromotion = !this.NonPromotion;
-
     if (this.NonPromotion === false) {
       this.Image44 = 'assets/img/expand.png';
     } else {
@@ -579,8 +583,8 @@ export class AddorderpromotionsComponent implements OnInit {
         this.arrayOfImages.forEach((x) => {x.isSelected =this.AddOrderPromotionData.findIndex((y) => y.promotionId === x.productPromotionsId) !== -1;});
         this.caliculateProductAmount();
         this.AddOrderPromotionData.forEach((element) => {
-          element.isOpen = true;
-          // element.push({ isOpen: false }); // Corrected this part
+          // element.isOpen = true;
+          element.push({ isOpen: false }); // Corrected this part
         });
         this.getShippingandPackingcharges();
         this.promotionName = localStorage.getItem('PromotionName');
@@ -639,7 +643,7 @@ export class AddorderpromotionsComponent implements OnInit {
       extractedData: allExtractedData,
     };
     localStorage.setItem('calculation', JSON.stringify(overallData));
-    console.log(overallData);
+    console.log('overallData',);
   }
 
   
@@ -723,7 +727,6 @@ export class AddorderpromotionsComponent implements OnInit {
   ThreePromotionTotalselectedQTY: number | any = 0;
   ThreePromotionTotalAmount: number | any = 0;
   addOrderNonPromotionList() {
-
     this.promocalculation = JSON.parse(localStorage.getItem('calculation') || 'null')
     console.log(this.promocalculation, 'calculationpart');
     // 4 Promotion Calculations

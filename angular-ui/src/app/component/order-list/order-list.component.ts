@@ -13,7 +13,7 @@ import { DeletecomponentComponent } from '../deletecomponent/deletecomponent.com
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { CellClickedEvent, CellValueChangedEvent, ColDef, Color, FirstDataRenderedEvent, GridApi, GridReadyEvent, RowValueChangedEvent, SideBarDef } from 'ag-grid-community';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, take } from 'rxjs';
 import { AgGridAngular } from 'ag-grid-angular';
 import { UserService } from 'src/app/services/user.service';
 import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
@@ -467,13 +467,17 @@ export class OrderListComponent implements OnInit {
     private route: ActivatedRoute,
     private sharedserviceForshipment: SharedServicesShipmentService,
     private sharedServiceCalendar: SharedServiceCalendarService,
-
+    private SS:SharedService,
     private materialListService: SharedServiceMaterialListService
   ) {
     this.sharedserviceForshipment.listen().subscribe((m: any) => {
       console.log(m);
       this.orderlistGrid();
     });
+    this.SS.ReloadaddOrg.subscribe(()=>{
+      // alert('refresh')
+     this.refresh()
+    })
     sort: [];
     this.route.data.subscribe((v) => {
       this.currentPageName = v['key'];

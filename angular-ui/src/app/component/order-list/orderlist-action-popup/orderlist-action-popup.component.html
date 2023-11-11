@@ -26,9 +26,9 @@
     <div (click)="deleteshipment()" class="menu-item tick" *ngIf="currentActionMenu.indexOf('receive_shipment') !== -1">
     Delete<img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
 
-  <div (click)="orderCancel()" class="menu-item tick" *ngIf="currentActionMenu.indexOf('cancel_order') !== -1">
+  <div (click)="orderCancel('Cancel')" class="menu-item tick" *ngIf="currentActionMenu.indexOf('cancel_order') !== -1">
     Cancel<img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
     
-  <div class="menu-item tick" *ngIf="currentActionMenu.indexOf('close') !== -1" >Close<img
+  <div class="menu-item tick" *ngIf="currentActionMenu.indexOf('close') !== -1"  (click)="orderCancel('Close')">Close<img
       src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>
 </div>

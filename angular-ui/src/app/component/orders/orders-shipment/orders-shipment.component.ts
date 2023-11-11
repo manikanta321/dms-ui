@@ -97,10 +97,10 @@ export class OrdersShipmentComponent implements OnInit {
       console.log(m);
       this.shipmentList();
     });
-
-    this.SS.ReloadaddOrg.pipe(take(1)).subscribe(()=>{
+    // .pipe(take(1))
+    this.SS.ReloadaddOrg.subscribe(()=>{
       // alert('refresh')
-      this.ngOnInit()
+      this.shipmentList()
     })
 
     this.route.data.subscribe((v) => {

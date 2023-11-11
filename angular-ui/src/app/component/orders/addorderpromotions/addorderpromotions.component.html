@@ -496,49 +496,53 @@
                                 </tr>
                                 
                                 <ng-container *ngFor="let PromotionObj of AddOrderPromotionData; let i=index;">
+                                    <!-- {{AddOrderPromotionData|json}} -->
                                         <tr>
                                             <td class="" style="padding: 4px;">
-                                                  
-                                                     <mat-icon (click)="ExpandPromotion(i)"
-                                                     style="cursor: pointer;   position: relative;   left: 3%;  top: 1px;">keyboard_arrow_down </mat-icon>
-                                                    <span  style="position: relative;left: 13px;right: 6px;color: black;top: -6px;" >Promotion &nbsp;{{PromotionObj.promotionTypeNmae}}</span>
-                                                   
+                                                <mat-icon (click)="ExpandPromotion(i)"
+                                                    style="cursor: pointer;   position: relative;   left: 3%;  top: 1px;">{{ expandedPromotions[i] ?'keyboard_arrow_down': 'keyboard_arrow_up'}} </mat-icon>
+                                                <span style="position: relative;left: 13px;right: 6px;color: black;top: -6px;">Promotion
+                                                    &nbsp;{{PromotionObj.promotionTypesNmae}}</span>
                                             </td>
-                                            <td> <span class="EDIT-data" (click)="editPromotionItem(PromotionObj.promotionId)">Edit</span></td> <td></td><td></td>
-                                             <td></td> 
-                                             <td></td>
-                                              <td><span class="remove-dataCircle" (click)="removePromotionItem(Item, PromotionObj.promotionId)"> <i class="fa fa-trash-o"></i></span></td>
-                                              <td><td>
+                                            <td> <span class="EDIT-data" (click)="editPromotionItem(PromotionObj.promotionId)">Edit</span></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><span class="remove-dataCircle" (click)="removePromotionItem(Item, PromotionObj.promotionId)"> <i
+                                                        class="fa fa-trash-o"></i></span></td>
+                                            <td>
+                                            <td>
                                         </tr>
 
-                                    <ng-container *ngIf='PromotionObj.isOpen'>
+                                    <ng-container *ngIf="!expandedPromotions[i]">
                                      
                                         <tr *ngFor="let Item of PromotionObj.itemDetails; let j=index;"> 
                                            
-                                            <td [ngClass]="{'promotionclass': Item.isBuyProduct === false}" style="padding-left: 35px;">
+                                            <td [ngClass]="{'promotionclass': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBox' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')" style="padding-left: 35px;">
                                                     {{Item.productSKUName}}  
                                             </td>
-                                            <td [ngClass]="{'promotionclass': Item.isBuyProduct === false}">
+                                            <td [ngClass]="{'promotionclass': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBoxesD' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')">
                                                     {{Item.stockitemname}}
                                             </td>
                                             <td style="text-align: right;">
-                                                <input [ngClass]="{'promotionclass': Item.isBuyProduct === false}" type="text" disabled [(ngModel)]="Item.price"
+                                                <input [ngClass]="{'promotionclass': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBoxesD' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')" type="text" disabled [(ngModel)]="'$'+Item.price"
                                                 style="text-align: right;border: none;background: none;">
                                             </td>
                                             <td style="text-align: right;">
-                                                <input type="text" disabled [(ngModel)]="Item.discount" 
+                                                <input type="text" disabled [(ngModel)]="'$'+Item.discount" 
                                                     [ngClass]="Item.discount === 100 ? 'IteminputBoxesD' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')"
                                                     style="text-align: right;border: none;background: none;">
                                                    
                                             </td>
                                             <td style="text-align: right;">
-                                                <input [ngClass]="{'promotionclass': Item.isBuyProduct === false}"  type="text" disabled
+                                                <input [ngClass]="{'promotionclass': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBoxesD' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')"  type="text" disabled
                                                     [(ngModel)]="Item.quantity" style="text-align: right;border: none;background: none;">
                                             </td>
                                            
                                             <td >
-                                               <input [ngClass]="{'promotionclass': Item.isBuyProduct === false}" type="text" disabled [(ngModel)]="Item.finalValue"
-                                                style="text-align: right;border: none;position: relative;left: 11px;background: none;">
+                                               <input [ngClass]="{'promotionclass': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBoxesD' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')" type="text" disabled [(ngModel)]="'$'+Item.finalValue"
+                                                style="text-align: right;border: none;position: relative;left: 50px;background: none;">
                                             </td>
                                             <td></td>
                                             <td></td>
@@ -549,15 +553,15 @@
                                 </ng-container>
                                 
 
-                                <!-- nonpromotions list view -->
+                                <!-- nonpromotions list view *ngIf="DisplayNonpromotion"-->
                                 
-                                <tr *ngIf="DisplayNonpromotion">
+                                <tr >
                                     <td>
                                         <mat-icon (click)="ExpandNonPromotion()"
-                                        style="cursor: pointer;   position: relative;   left: 3%;  top: 1px;">keyboard_arrow_down </mat-icon>
+                                        style="cursor: pointer;   position: relative;   left: 3%;  top: 1px;">{{ NonPromotion ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }} </mat-icon>
                                         <span  style="position: relative;left: 13px;color: black;top: -6px;" >Non Promotions</span>
                                     </td>
-                                    <td><span class="removeCircleNONPromotiondata"(click)="removeNonPromotionItem(Item)">Edit</span></td>
+                                    <td><span class="removeCircleNONPromotiondata" (click)="addOrderNonPromotionList()"  >Edit</span></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -573,25 +577,34 @@
                                         <td >{{Item.stockitemname}}</td>
                                         <td style="text-align: right;">
                                             <input  type="text" disabled
-                                                [(ngModel)]="Item.price" class="NonPromoinputboxPrice">
+                                                [(ngModel)]="'$'+Item.price" class="NonPromoinputboxPrice">
                                             </td>
                                         <td style="text-align: right;">
                                             <input  type="text" disabled
-                                                [(ngModel)]="Item.discount"
+                                                [(ngModel)]="'$'+Item.discount"
                                                 [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'"
                                                 style="text-align: right;background: none;border: none;">
                                         </td>
                                         <td style="text-align: right;"> <input  type="text" disabled
                                                 [(ngModel)]="Item.quantity" class="NonPromodataquantity"> </td>
                                         <td> 
-                                            <input type="text" disabled [(ngModel)]="Item.finalValue"
-                                                class="FInalvaluenonpromo">
+                                            <input type="text" disabled [(ngModel)]="'$'+Item.finalValue"
+                                                class="FInalvaluenonpromo" >
                                              </td>
                                         <td>
                                             <div class="removeCircleNONPromodata" (click)="removeNonPromotionItem(Item)">
                                                 <i class="fa fa-trash-o"></i>
                                             </div>
                                         </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <!-- <td></td> -->
+                                        <td style="text-align: end;"><b>Total</b></td>
+                                        <td style="text-align: end;"><b>{{promotionQTY + nonPromotionQTY}}</b></td>
+                                        <td style="text-align: center;padding-left: 115px;"><b>${{ promotionAmount + nonPromotionAmount}}</b></td>
                                     </tr>
                                 </ng-container>
                             </table>
@@ -600,15 +613,17 @@
                             <table class="TOtalCalculations" *ngIf="shippingPackingchargeDetails">
                                 <tr>
                                     <td class="text-left SUBITEMNAME ml-5"><p style="margin-left: 20%;margin-top: 7px;">Subtotal</p></td>
-                                    <td class="text-right numbers ">{{shippingPackingchargeDetails.subTotal}}</td>
+                                    <td class="text-right numbers">
+                                        {{ '$' + (shippingPackingchargeDetails.subTotal ? shippingPackingchargeDetails.subTotal : '0') }}
+                                    </td>                                
                                 </tr>
                                 <tr>
                                     <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;margin-top: 7px;">Packing Charge</p></td>
-                                    <td class="text-right numbers ">{{shippingPackingchargeDetails.packingCharges}}</td>
+                                    <td class="text-right numbers ">{{'$'+(shippingPackingchargeDetails.packingCharges ? shippingPackingchargeDetails.packingCharges : '0')}}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;" >Shipping Charge</p></td>
-                                    <td class="text-right numbers">{{shippingPackingchargeDetails.shippingCharges}}</td>
+                                    <td class="text-right numbers">{{'$'+(shippingPackingchargeDetails.shippingCharges ? shippingPackingchargeDetails.shippingCharges: '0' )}}</td>
                                 </tr>
                                 <!-- <tr>
                                     <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;" > Tax</p> </td>
@@ -616,7 +631,8 @@
                                 </tr> -->
                                 <tr>
                                     <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';"><p style="margin-left: 20%;">Total value</p></td>
-                                    <td class="text-right numbers">{{shippingPackingchargeDetails.total}}</td>
+                                    <td class="text-right numbers">{{ '$' + (shippingPackingchargeDetails.total ? shippingPackingchargeDetails.total : '0') }}
+                                    </td>
 
                                 </tr>
                             </table>
@@ -971,7 +987,7 @@
                     
                                         <div class="col" style="background-color: rgba(222, 226, 230, 0.2);">
                                             <label id="TotalORDER_qty" for="inputField">Total Order Amount</label>
-                                            <span id="Total_order_qty">{{ promotionAmount + nonPromotionAmount}}</span>
+                                            <span id="Total_order_qty">${{ promotionAmount + nonPromotionAmount}}</span>
                                         </div>
                     
                                         <div class="w-100"></div>
@@ -982,7 +998,7 @@
                                         <div class="col">
                                             <label id="This_qty" for="inputField">This Order Amount</label>
                     
-                                            <span id="This_order_amount">{{nonPromotionAmount}} </span>
+                                            <span id="This_order_amount">${{nonPromotionAmount}} </span>
                                         </div>
                                     </div>
                                 </div>

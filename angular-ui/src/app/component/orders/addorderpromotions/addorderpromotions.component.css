@@ -114,6 +114,7 @@ color: #FFFFFF;
   background-color: #018B75;
   border: none;
   background: none;
+  /* text-align: left; */
   
 }
 .nonpromoclassName
@@ -122,8 +123,7 @@ color: #FFFFFF;
   font-size: 14px;
   border: none;
   background: none;
-
-  
+  /* text-align: left; */
 }
 
 
@@ -305,18 +305,18 @@ border-top-right-radius: 13px;
 }
 .TOtalCalculations
 {
-  width: 35% !important;
+  width: 50% !important;
   background: #FFFFFF;
   border-radius: 21px;
   padding: 5px;
   font-size: 13px;
-  margin-left: 64%;
+  margin-left: 49%;
   border: 1px solid rgba(0, 0, 0, 0.2);
   margin-top: 15px;
 }
 .numbers
 {
-  padding-right: 14%;
+  padding-right: 11%;
   color: rgba(1, 139, 117, 1);
 
 }
@@ -2427,7 +2427,8 @@ right: -65px;
   text-align: right;
   border: none;
   position: relative;
-  left: 11px;
+  left: 58px;
+  /* left: 19px; */
   background: none;
 }
 .FINALValueNONPromotions
@@ -2467,8 +2468,18 @@ right: -65px;
   border: 1px solid black;
   font-size: 12.5px;
   border: 0px;
-  text-align: center;
+  /* text-align: center; */
  
+}
+.IteminputBox{
+  width: 300px;
+  height: 30px;
+  background: none;
+  border-radius: 10px;
+  border: 1px solid black;
+  font-size: 12.5px;
+  border: 0px;
+  /* text-align: center; */
 }
 
 .itemLeft {
@@ -2892,15 +2903,14 @@ font-size: 16px;
 font-weight: 700;
 color: #000000;
 }
-.SUBTOTAL
-{
+.SUBTOTAL {
   text-align: center;
   font-family: 'Calibri';
-font-size: 16px;
-font-weight: 700;
-color: #000000;
-
-/* padding-right: 30px; */
+  font-size: 16px;
+  font-weight: 700;
+  color: #000000;
+  padding-left: 70px;
+  /* padding-right: 30px; */
 }
 
 

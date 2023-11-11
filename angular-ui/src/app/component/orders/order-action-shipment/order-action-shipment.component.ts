@@ -14,7 +14,7 @@ export class OrderActionShipmentComponent implements OnInit {
   private params;
   public isOpen = false;
   Alertpp:boolean=false;
-  private tippyInstance;
+  private tippyInstance:any;
   constructor(private changeDetector: ChangeDetectorRef,
     @Inject(MAT_DIALOG_DATA) public dialogData:any,
     private dialog: MatDialog,

@@ -98,8 +98,11 @@ export class OrderlistActionPopupComponent implements OnInit {
         // }
       });
   }
-
+  CustomerPoId:any;
+  LoginId:any;
   ngOnInit(): void {
+    this.CustomerPoId =localStorage.getItem('CustomerPoId')
+    this.LoginId = localStorage.getItem("logInId");
   }
   ngAfterViewInit(): void {
     this.tippyInstance = tippy(this.button.nativeElement);
@@ -188,6 +191,7 @@ export class OrderlistActionPopupComponent implements OnInit {
     // localStorage.setItem('edit-dealer','Edit')
     // this.dialog.open(OrderlistEditPopupComponent,{height:"570px"});
     // this.isOpen = false;
+    localStorage.removeItem('calculation')
     sessionStorage.setItem("Confirm", "");
     localStorage.setItem("Edit", 'Edit')
     let dialogRef = this.dialog.open(AddorderpromotionsComponent, {
@@ -202,10 +206,25 @@ export class OrderlistActionPopupComponent implements OnInit {
       localStorage.setItem('Edit', '');
 
     })
+
   }
-  orderCancel() {
+  orderCancel(type:any) {
+    this.SS.deletepromo()
     this.dialog.open(OrderCancelPopupComponent);
     this.isOpen = false;
+    const data={
+      CustomerPoId:this.CustomerPoId,
+      CurrentUserId:this.LoginId,
+      StatusToBeUpdated:type
+    }
+    this.service.closeOrder(data).subscribe((res:any)=>{
+      console.log(res.response.result);
+      if(res.response.status=='Success'){
+        this.SS.deletepromo()
+      }else{
+        // this.SS.deletepromo()
+      }
+    })
   }
 
   viewOrder() {

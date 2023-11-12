@@ -692,10 +692,11 @@ li {
 }
 
 .addproImg {
-  width: 380px;
+  width: 386px;
     height: 130px;
     margin-top: -15px;
     border-radius: 10px;
+    margin-left: -4px;
 }
 
  :host::ng-deep.myDatepicker .mat-form-field {

@@ -132,7 +132,7 @@ export class AssociationComponent implements OnInit {
     },
     {
       headerName: "GeographyName",
-      minWidth:250,
+      // minWidth:220,
        field: 'geographyName',
       // field: 'GeographyName',  
 

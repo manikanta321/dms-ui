@@ -271,7 +271,7 @@ margin-right: 15px;
 .pagination {
   float: right !important;
   margin-right: 10px;
-  margin-top: 10px;
+  margin-top: 39px;
 }
 
 .pagination-cls {
@@ -781,4 +781,9 @@ margin-bottom: -53px; */
   width: 250px;
   border-radius: 11px;
   position: relative;
+}
+
+.addItem-btn {
+  margin-top: 20px; 
+  
 }

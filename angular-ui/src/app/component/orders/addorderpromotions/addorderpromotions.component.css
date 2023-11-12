@@ -208,7 +208,7 @@ border-top-right-radius: 13px;
 #totalnonprobackcolor
 {
   background: rgba(1, 139, 117, 1);
-  border-bottom-left-radius: 1px;
+  border-bottom-left-radius: 11px;
   border-bottom-right-radius: 10px;
   color: white;
   border-top-left-radius: 5px;
@@ -574,6 +574,7 @@ input.mat-input-element {
 .spacedropdown
 {
      margin-left: 1px;
+     margin-bottom: 60px;
 }
 
 .catty
@@ -1054,7 +1055,7 @@ span {
   margin-left: 94%; */
   cursor: pointer;
   float: right;
-  margin-top: -6px;
+  margin-top: 7px;
 }
 .close-iconn {
   left: 97%;
@@ -1940,7 +1941,7 @@ li {
 }
 .mai_n {
   overflow-x: hidden !important;
-   margin-top: -1%;
+   margin-top: -2%;
   height: 700px
 }
 

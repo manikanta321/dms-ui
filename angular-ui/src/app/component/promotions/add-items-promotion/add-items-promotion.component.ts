@@ -1514,6 +1514,7 @@ console.log("ProductSubGroup",this.prodSubGroup);
     });
   }
   refreshData() {
+    this.searchText=""
     this.GetProductShortCodeList();
   }
 

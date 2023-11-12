@@ -937,13 +937,12 @@
     <div>
         <div class="row footer">
             <div class="col-md-6">
-                <button [disabled]=" !customerId || !geographyId || !BillingaddressId || !addressId" type="button"
+                <button [disabled]=" !customerId || !geographyId || !BillingaddressId || !addressId ||isButtonDisabled" type="button"
                     class="save-submit" (click)="ordersubmit('draft')">Save & Draft </button>
             </div>
             <div class="col-md-6">
-
                 <!-- <button type="button" class="saveas-draft" (click)="ordersubmit('draft')">Save as Draft</button> -->
-                <button type="button" class="save-submit11" (click)="ordersubmit('save')" id="submitbt"
+                <button type="button" class="save-submit11" [disabled]="isButtonDisabled" (click)="ordersubmit('save')" id="submitbt"
                     name="submitbt">Submit</button>
 
             </div>

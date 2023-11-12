@@ -2116,7 +2116,12 @@ export class AddorderpromotionsComponent implements OnInit {
   closeconfirmorder() {
     this.confirm_Order = false;
   }
+  isButtonDisabled = false;
   ordersubmit(submitType) {
+    if (this.isButtonDisabled) {       
+      return;     
+      }     
+      this.isButtonDisabled = true;     
     this.promotionTypesName = localStorage.removeItem('PromotionTypeName');
     if (localStorage.getItem('AddorEditpro') != 'edit') {
       localStorage.setItem('AddorEditpro1', submitType);
@@ -2217,6 +2222,7 @@ export class AddorderpromotionsComponent implements OnInit {
         localStorage.removeItem('dealerid');
         // localStorage.removeItem('buygroupromo');
       }
+      this.isButtonDisabled = false;   
     });
   }
 

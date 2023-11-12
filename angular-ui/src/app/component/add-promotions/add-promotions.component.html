@@ -168,10 +168,10 @@
                                     </div>
                                     <div class="toggle" *ngIf="buysets">
                                         <div class="col-md-12 d-flex">
-                                            <p [class.disabled]="!showConsolidatedMOQ"  [style.font-weight]="showConsolidatedMOQ ? 'bold' : 'normal'">Consolidated MOQ</p>
-                                            <mat-slide-toggle class="togglecolor ml-2 mr-2" *ngIf="header !=='Edit'" (change)="onToggleChange($event)"></mat-slide-toggle>
-                                            <mat-slide-toggle class="togglecolor ml-2 mr-2" *ngIf="header==='Edit'" [checked]="Moqstatus" (change)="onToggleChange($event)"></mat-slide-toggle>
-                                            <p [class.disabled]="showConsolidatedMOQ" [style.font-weight]="showConsolidatedMOQ ? 'normal' : 'bold'">Individual MOQ</p>
+                                            <p [class.disabled]="!showConsolidatedMOQ"  [style.font-weight]="showConsolidatedMOQ ? 'normal': 'bold'">Consolidated MOQ</p>
+                                            <mat-slide-toggle class="togglecolor ml-2 mr-2" *ngIf="headername !=='editpromo'" (change)="onToggleChange($event)"></mat-slide-toggle>
+                                            <mat-slide-toggle class="togglecolor ml-2 mr-2" *ngIf="headername ==='editpromo'" [checked]="Moqstatus" (change)="onToggleChange($event)"></mat-slide-toggle>
+                                            <p [class.disabled]="showConsolidatedMOQ" [style.font-weight]="showConsolidatedMOQ ? 'bold' : 'normal'">Individual MOQ</p>
                                         </div>
                                     </div>
                                 </div>
@@ -894,9 +894,9 @@
                         <!-- footer -->
                         <div class="row" *ngIf="SaveOrEdit">
                             <div class="footer-btns" *ngFor="let item of formArr.controls; let i = index">
-                                <button class="btn btn-light saveDraft" (click)="AddPromosaveAndSubmit('Draft')" [disabled]=" formArr.controls[i].get('buy')?.hasError('buyNotInRange')">Save as
+                                <button class="btn btn-light saveDraft" (click)="AddPromosaveAndSubmit('Draft')" [disabled]=" formArr.controls[i].get('buy')?.hasError('buyNotInRange') || processingSubmit">Save as
                                     draft</button>
-                                <button class="btn btn-light submit" (click)="AddPromosaveAndSubmit('Submit')"  [disabled]=" formArr.controls[i].get('buy')?.hasError('buyNotInRange')" >
+                                <button class="btn btn-light submit" (click)="AddPromosaveAndSubmit('Submit')"  [disabled]=" formArr.controls[i].get('buy')?.hasError('buyNotInRange')|| processingSubmit" >
                                     Submit </button>
                                 <!-- <button class="cancelbtn" [mat-dialog-close]="true">Cancel</button> -->
                             </div>
@@ -904,12 +904,8 @@
 
                         <div class="row" *ngIf="!SaveOrEdit">
                             <div class="footer-btns">
-                                <button class="btn btn-light saveDraft"
-                                    (click)="AddPromosaveAndSubmitEdit('Draft')">Save as
-                                    draft</button>
-                                <button class="btn btn-light submit" [disabled]="hasValidationErrors" (click)="AddPromosaveAndSubmitEdit('edit')">Save
-                                    &
-                                    Submit </button>
+                                <button class="btn btn-light saveDraft" (click)="AddPromosaveAndSubmitEdit('Draft')" [disabled]="processingSubmit">Save as draft</button>
+                                <button class="btn btn-light submit" [disabled]="hasValidationErrors || processingSubmit" (click)="AddPromosaveAndSubmitEdit('edit')">Save & Submit </button>
                                 <!-- <button class="cancelbtn" [mat-dialog-close]="true">Cancel</button> -->
                             </div>
                         </div>

@@ -437,9 +437,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   istoggleOn: any;
   specalmoq:any;
   Moqstatus:boolean=false
+  headername:any
   ngOnInit() {
-    let headername = localStorage.getItem('addOrEdit');
-    if (headername == 'editpromo') {
+     this.headername = localStorage.getItem('addOrEdit');
+    if (this.headername == 'editpromo') {
       this.SaveOrEdit = false;
       this.header = 'Edit';
       let data = localStorage.getItem('promoclickId');
@@ -2259,9 +2260,13 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   remarksChange() {
     console.log(this.Remarks);
   }
-
+  processingSubmit = false;
   AddPromosaveAndSubmit(type) {
     // alert("HElloooo")
+    if (this.processingSubmit) {
+      return; 
+    }
+    this.processingSubmit = true;
     localStorage.setItem('updatePromotionPopup', 'add');
     this.loggedUserId = localStorage.getItem('logInId');
     if (!this.checkValidation(this.selectedPromo)) return;
@@ -2330,6 +2335,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             });
             this.dialogRef.close();
           }
+          this.processingSubmit = false;
         });
       }
   
@@ -2408,7 +2414,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             });
             this.dialogRef.close();
           }
+          this.processingSubmit = false;
         });
+        
       }
   
       if (this.selectedPromo == 3) {
@@ -2444,6 +2452,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             });
             this.dialogRef.close();
           }
+          this.processingSubmit = false;
         });
       }
   
@@ -2479,6 +2488,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             });
             this.dialogRef.close();
           }
+          this.processingSubmit = false;
         });
       }
     }
@@ -2531,6 +2541,10 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   }
 
   AddPromosaveAndSubmitEdit(type) {
+    if (this.processingSubmit) {
+      return; 
+    }
+    this.processingSubmit = true;
     localStorage.setItem('updatePromotionPopup', 'edit');
     this.loggedUserId = localStorage.getItem('logInId');
 
@@ -2599,6 +2613,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             });
             this.dialogRef.close();
           }
+          this.processingSubmit = false;
         });
       }
 
@@ -2683,6 +2698,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
             this.dialogRef.close();
           }
+          this.processingSubmit = false;
         });
       }
 
@@ -2719,6 +2735,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             });
             this.dialogRef.close();
           }
+          this.processingSubmit = false;
         });
       }
 
@@ -2756,6 +2773,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
             });
             this.dialogRef.close();
           }
+          this.processingSubmit = false;
         });
       }
     }

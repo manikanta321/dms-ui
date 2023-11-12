@@ -713,7 +713,7 @@ border-radius: 10px;
   }
   
   .row {
-    width: 96%;
+    width: 101%;
   }
   
   .bar {
@@ -1072,7 +1072,7 @@ border-radius: 10px;
 font-size: 15px;
 font-weight: 700;
 line-height: 18px;
-color: #000000;
+/* color: #000000; */
 ;
  
   }
@@ -1484,8 +1484,8 @@ padding-left: 20px;
     font-family: 'Calibri';
    font-weight: 700;
    line-height: 22px;
-   border-top-left-radius: 5px;
-   border-top-right-radius: 5px;
+   border-top-left-radius: 3px;
+   border-top-right-radius: 3px;
   }
   .numeric {
     text-align: right;
@@ -1511,8 +1511,8 @@ letter-spacing: 0em;
 color: white;
 background: rgba(1, 139, 117, 1);
 height: 52px;
-border-top-left-radius: 5px;
-border-top-right-radius: 5px;
+border-top-left-radius: 3px;
+border-top-right-radius: 3px;
 
  }
   

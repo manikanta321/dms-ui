@@ -216,6 +216,9 @@ border-top-right-radius: 13px;
   width: 100%;
   left: 1px;
   /* margin-left: -3px; */
+  position: relative;
+    bottom: 6px;
+    left: 0px;
 
 }
 .headingcontent
@@ -1905,7 +1908,8 @@ li {
   font-family: 'Gilroy-SemiBold';
 }
 .add-edit-non-promo {
-  background: linear-gradient(0deg, #018B75, #018B75);
+  /* background: linear-gradient(0deg, #018B75, #018B75); */
+  background: rgba(1, 139, 117, 1);
   /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 4px;
   font-size: 13px;
@@ -1977,7 +1981,8 @@ li {
 
 }
 .save-submit11 {
-  background: linear-gradient(0deg, #018B75, #018B75);
+  /* background: linear-gradient(0deg, #018B75, #018B75); */
+  background: rgba(1, 139, 117, 1);
   border: 1px solid rgba(152, 156, 160, 1);
   /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 10px;

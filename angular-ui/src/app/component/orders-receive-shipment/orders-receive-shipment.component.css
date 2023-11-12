@@ -426,9 +426,9 @@ border-radius: 10px;
   
   .DescInfo-label {
     margin: 5px;
-    font-size: 13px;
-    align-items: center;
-    font-family: 'Gilroy-SemiBold';
+    font-size: 14px;
+    font-family: 'calibri';
+    font-weight: normal;
   }
   .DescInfo-labels {
     margin: 5px;
@@ -712,9 +712,9 @@ border-radius: 10px;
     color: white;
   }
   
-  .row {
-    width: 101%;
-  }
+  /* .row {
+    width: 96%;
+  } */
   
   .bar {
     height: 400px;
@@ -1127,20 +1127,18 @@ line-height: 18px;
     min-height: 601px !important;
   }
   
-  .total_total
-{
-  
-  width: 129px;
-  height: 52px;
-  margin-right: -1px;
-  background: #018B75CC;
-  font-family: "Calibri";
-  border-radius: 0px 21.2px 21.2px 0px;
-  margin-top: -5px;
-  color: white;
-  text-align:left;
-padding-left: 20px;
-}
+    .total_total {
+      width: 129px;
+      /* height: 52px; */
+      margin-right: -1px;
+      background: #018B75CC;
+      font-family: "Calibri";
+      border-radius: 0px 21.2px 21.2px 0px;
+      /* margin-top: -5px; */
+      color: white;
+      text-align: left;
+      padding-left: 20px;
+    }
 .SUBTotaldatacolor
 {
   position: relative;
@@ -1552,7 +1550,7 @@ border-top-right-radius: 3px;
   }
   
   .totall {
-    width: 44%;
+    width: 50%;
     height: 51%;
     background: #FFFFFF;
     border-top:1px  solid  #989CA04D;
@@ -1562,13 +1560,15 @@ border-top-right-radius: 3px;
     border-radius: 21px;
     font-size: 13px;
     position: relative;
-    left: 60.2%;
+    /* left: 60.2%; */
    
   }
   
   .subitem {
     font-size: 13px;
     width: 179px;
+    text-align: right;
+    padding: 5px;
   }
   .tr .subitem
   {
@@ -1587,14 +1587,12 @@ border-top-right-radius: 3px;
 
   .SUBITEMNAME {
     font-family: 'Calibri';
-  font-size: 16px;
-  font-weight: 400;
- line-height: 16px;
- letter-spacing: 0em;
- position: absolute;
- left: 53px;
-
-
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    position: absolute;
+    left: 53px;
   }
 
   .numbers {
@@ -1839,7 +1837,14 @@ border-top-right-radius: 3px;
     font-family: 'Gilroy-Bold';
     font-size: 14px;
     position: relative;
-    left: 3%;
+    /* left: 3%; */
+  }
+  /* table */
+  .number{
+    text-align: right;
+  }
+  .IteminputBoxes{
+    text-align: right;
   }
   .fontweight
   {
@@ -1878,11 +1883,11 @@ border-top-right-radius: 3px;
 .DealerInfo-label
 {
   margin: 5px;
-  font-size: 17px;
+  font-size: 15px;
   align-items: center;
-  color: #000000;
+  /* color: #000000; */
   font-family: 'Calibri';
- font-weight: 700;
+ font-weight: 600;
 }
 .Dealerdata
 {

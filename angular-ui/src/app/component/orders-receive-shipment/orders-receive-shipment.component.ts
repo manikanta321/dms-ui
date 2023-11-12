@@ -98,51 +98,50 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
       headerName: 'Date',
       field: 'date',
       type: ['nonEditableColumn'],
-      pinned: 'left',
-      maxWidth: 120,
+      // maxWidth: 120,
     },
 
     {
       headerName: 'Created by',
       field: 'createdBy',
       type: ['nonEditableColumn'],
-      maxWidth: 140,
+      // maxWidth: 140,
     },
 
     {
       headerName: 'Action',
       field: 'action',
       type: ['nonEditableColumn'],
-      maxWidth: 120,
+      // maxWidth: 120,
     },
 
     {
       headerName: 'Sub Action',
       field: 'subAction',
       type: ['nonEditableColumn'],
-      maxWidth: 140,
+      // maxWidth: 140,
     },
 
     {
       headerName: 'Invoice No.',
       field: 'invoiceNo',
       type: ['nonEditableColumn'],
-      maxWidth: 140,
+      // maxWidth: 140,
     },
     {
       headerName: 'Comments',
       field: 'comments',
       type: ['nonEditableColumn'],
-      maxWidth: 150,
+      // maxWidth: 150,
     },
     // {
     //   headerName:"",  cellRenderer: this.daysSunshineRenderer
     // }
 
-    {
-      headerName: '',
-      cellRenderer: this.daysSunshineRenderer,
-    },
+    // {
+    //   headerName: '',
+    //   cellRenderer: this.daysSunshineRenderer,
+    // },
   ];
   InvoiceId: any;
   currentshipmentname: any = '';
@@ -160,18 +159,13 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
     resizable: true,
     sortable: true,
   };
-  public columnTypes: {
-    [key: string]: ColDef;
-  } = {
+  public columnTypes: {[key: string]: ColDef} = {
     numberColumn: { width: 130, filter: 'agNumberColumnFilter' },
     medalColumn: { width: 100, columnGroupShow: 'open', filter: false },
     nonEditableColumn: { editable: false },
     dateColumn: {
-      // specify we want to use the date filter
       filter: 'agDateColumnFilter',
-      // add extra parameters for the date filter
       filterParams: {
-        // provide comparator function
         comparator: (filterLocalDateAtMidnight: Date, cellValue: string) => {
           // In the example application, dates are stored as dd/mm/yyyy
           // We create a Date object for comparison against the filter date

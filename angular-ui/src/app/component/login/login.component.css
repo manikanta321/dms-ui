@@ -36,7 +36,7 @@ border-radius: 26px;
 
 
   ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
-  background: black!important; 
+    background: rgba(1, 139, 117, 1)!important;
   /* width: 51px; */
 }
 .loginpage_sub_box_div{

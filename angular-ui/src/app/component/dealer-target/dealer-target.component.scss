@@ -207,13 +207,14 @@
   
   
   .btnhover {
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
+    // filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.2)) drop-shadow(-4px -4px 8px rgba(255, 255, 255, 0.2));
     border: none;
     background: rgba(104, 110, 116, 0.66);
     border-radius: 13%;
     position: relative;
     width: 42px;
     cursor: pointer;
+    height: 41px;
 
   }
  
@@ -224,6 +225,8 @@
     color: white !important;
 
     cursor: pointer;
+
+    height: 41px;
 
     
   }
@@ -386,7 +389,8 @@
     width: 40px;
     height: 40px;
     position: relative;
-    left: 15px;
+    left: 92px;
+    bottom: 40px;
   }
   
   .download-btn {
@@ -396,7 +400,7 @@
     position: relative;
     width: 40px;
     height: 40px;
-    left: 45px;
+    left: 41px;
   }
   
   ::ng-deep.multiselect-dropdown .dropdown-btn .selected-item {
@@ -1006,7 +1010,7 @@
   
   .pagination {
     float: right !important;
-    margin-top: 11px;
+    margin-top: 1px;
   }
   
   .pagination-cls {
@@ -1353,9 +1357,18 @@
 
   }
   .searchicons1 {
-    position: absolute;
-    top: 42%;
-    left: 20px;
+    position: relative;
+    top: 23%;
+    // left: 9px;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: #9B9FA3;
+  }
+  .searchicons2 {
+    display: flex;
+    position: relative;
+    top: 37%;
+    left: 2px;
     transform: translateY(-50%);
     font-size: 24px;
     color: #9B9FA3;

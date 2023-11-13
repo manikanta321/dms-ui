@@ -87,12 +87,12 @@ mat-tab{
 .order1-lab .mat-tab-labels:nth-child(1) {
   width: 50% !important;
 }
-.mat-drawer-content{
-  /* overflow-x: hidden; */
+/* .mat-drawer-content{
+  overflow-x: hidden;
   overflow: hidden;
 
 
-}
+} */
 ::ng-deep.order1-lab .mat-tab-header{
   display: flex;
   overflow: hidden;
@@ -107,6 +107,7 @@ mat-tab{
   left: 23%;
   font-size: 15px;
   border-bottom: 1px solid rgba(1,139,117,1);
+  border-top: 1px solid rgba(1, 139, 117, 1);
 }
 
 :ng-deep.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {

@@ -746,24 +746,24 @@ mat-sidenav {
   top: 5px;
 } */
 
-::ng-deep.myclass1 {
+/* ::ng-deep.myclass1 {
 
   color: #17B15C !important;
-}
+} */
 
-::ng-deep.myclass3 {
+/* ::ng-deep.myclass3 {
   color: #E5009D !important;
-}
+} */
 
 
-::ng-deep.myclass2 {
+/* ::ng-deep.myclass2 {
   color: #017EFA !important;
-}
+} */
 
 
-::ng-deep.myclass4 {
+/* ::ng-deep.myclass4 {
   color: #000000 !important;
-}
+} */
 
 ::ng-deep.dropdown-list ul {
   overflow-x: hidden !important;

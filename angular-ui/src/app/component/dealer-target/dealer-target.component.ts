@@ -370,8 +370,9 @@ export class DealerTargetComponent implements OnInit {
   }
 
 
-
+  usertype:any
   ngOnInit(): void {
+    this.usertype = localStorage.getItem('userType')
     this.loggedUserId = localStorage.getItem('logInId');
     this.TargetTabelData();
     this.Geography();

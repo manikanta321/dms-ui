@@ -197,8 +197,8 @@ text-align: center;
 
   }
   .refresh-img {
-    margin-top: 9px;
-    margin-left: 10px;
+    margin-top: 11px;
+    margin-left: 11px;
   }
   .ag-theme-material .ag-filter-toolpanel-header,
 .ag-theme-material .ag-filter-toolpanel-search,
@@ -339,8 +339,9 @@ text-align: center;
 .download-csv{
   color: #fff;
   /* background: #000000; */
-  background-color:#018B75;    
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  background-color:#018B75;   
+  border: none; 
+  /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 8px;
   float: right;
   margin-top: 10px;
@@ -352,13 +353,14 @@ height: 43px;
   color: white;
   /* background: white; */
   background-color:#018B75;  
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 8px;
   float: left;
   margin-top: 10px;
   cursor: pointer;
   width: 280px;
   height: 43px;
+  border: none;
 }
 ::ng-deep.geography .multiselect-dropdown .dropdown-btn .selected-item {
   background: #006466 !important;

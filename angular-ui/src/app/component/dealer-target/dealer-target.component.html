@@ -65,23 +65,30 @@
 
         </div>
       </div>
-      <div class="searchBox col-md-2 col-lg-2 col-sm-2" style=" cursor: pointer">
+      <div class="searchBox col-md-2 col-lg-2 col-sm-2" style=" cursor: pointer" *ngIf="usertype ==='Admin' ">
         <input  id="searchInput" class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
           placeholder="Search Here Anything" (keyup)="onSearchChange($event)">
         <mat-icon  class="searchicons1">search</mat-icon>
         <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
       </div>
+      <div class="searchBox col-md-2 col-lg-2 col-sm-2" style=" cursor: pointer" *ngIf="usertype !=='Admin' ">
+        <input  id="searchInput" class="searchInput" style="font-family: 'Gilroy'" type="text" name=""
+          placeholder="Search Here Anything" (keyup)="onSearchChange($event)">
+        <mat-icon  class="searchicons2">search</mat-icon>
+        <button class="search-btn" style="font-family: 'Gilroy'">Search</button>
+      </div>
+      
     
       
         <div class="icon btnhover refreshbtn"  (click)="refresh()" style="cursor: pointer;">
           <img class="refresh" src="assets/img/Refreshbutton.svg"style="position: relative;top: 9px;left: 9px; "
             alt="refresh" >
         </div>
-            <div userRoleDirective="ADD_TARGETS" [pageName]="currentPageName">
+            <!-- <div userRoleDirective="ADD_TARGETS" [pageName]="currentPageName">
               <div class="add-user" (click)="addTarget()" style=" cursor: pointer" >
                 <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
               </div>
-            </div>
+            </div> -->
             <div>
               <div class="target-upload" (click)="orderTargetUpload()">
                   <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
@@ -93,6 +100,12 @@
                 <img src="assets/img/ll.svg" style="position: relative;top: 9px;left: 9px;width: 23px;height: 19px;"
                   alt="add-user-btn">
               </div>
+
+              <div userRoleDirective="ADD_TARGETS" [pageName]="currentPageName">
+                <div class="add-user" (click)="addTarget()" style=" cursor: pointer" >
+                  <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
+                </div>
+              </div>
             </div>
  
     </div>
@@ -102,7 +115,7 @@
     <div class="mt-5">
       <div class="ag-grid-dummy" id="ag-grid-dummy"></div>  
       <ag-grid-angular id="gridContainer"
-        style=" height: 400px;background-color: white;font-family: Gilroy; margin-left: 20px; cursor: pointer;"
+        style=" height: 390px;background-color: white;font-family: Gilroy; margin-left: 20px; cursor: pointer;"
         class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
         [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes" [rowData]="rowData5"
         [suppressExcelExport]="true" [popupParent]="popupParent" (cellValueChanged)="onCellValueChanged($event)"

@@ -113,7 +113,347 @@ export class OrderListComponent implements OnInit {
   statusArray: any = [];
   stayScrolledToEnd = true;
   paginationScrollCount: any;
-  columnDefs: ColDef[] = []
+  columnDefs: ColDef[] = [
+    // { headerName: "User Id",
+    //   field: 'employeeCode' , sort: 'desc'},
+
+    {
+      headerName: 'Order #',
+      field: 'orderNUmber',
+      filter: false,
+      cellStyle: { color: '#017EFA' },
+      maxWidth: 110,
+      cellEditorPopup: true,
+      onCellClicked: (event: CellClickedEvent) =>
+        this.dialog.open(OrdersReceiveShipmentComponent, {
+          maxWidth: '95vw',
+          height: '95vh',
+        }),
+    },
+
+    {
+      headerName: 'Order Date',
+      field: 'orderDate',
+      minWidth: 110,
+      maxWidth: 150,
+
+      // cellRenderer: (data) => {
+      //   return this.sharedService.dateformat(data.value);
+      // },
+      cellRenderer: (data) => {
+        const formattedDate = this.sharedService.dateformat(data.value);
+        const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+        return coloredDate;
+      },
+      tooltipField: 'orderDate',
+      
+      
+    },
+
+    {
+      headerName: 'Dealer',
+      field: 'dealerName',
+      minWidth: 255,
+      tooltipField: 'dealerName',
+      cellStyle: {
+        'color': '#686E74' 
+      }
+    },
+    {
+      headerName: 'ERP Ref # ',
+      minWidth: 110,
+      maxWidth: 150,
+      field: 'companyReferenceNo',
+      type: ['leftAligned'],
+      cellStyle: {
+        'color': '#686E74' 
+      }
+      
+    },
+
+    {
+      headerName: 'Geography',
+      minWidth: 115,
+      maxWidth: 150,
+      field: 'geographyName',
+      tooltipField:'geographyName',
+      cellStyle: {
+        'color': '#686E74' 
+      }
+    },
+    {
+      headerName: 'ODV($)',
+      minWidth:100,
+      maxWidth: 115,
+      field: 'totalValue',
+      type: ['rightAligned'],
+      cellStyle: {
+        'color': '#686E74' 
+      }
+    },
+
+    {
+      headerName: 'ODQ ',
+      field: 'orderedQty',
+      minWidth:90,
+      maxWidth: 115,
+      type: ['rightAligned'],
+      cellStyle: {
+        'color': '#686E74' 
+      }
+    },
+    {
+      headerName: 'RDQ',
+      field: 'receivedQty',
+      minWidth:90,
+      maxWidth: 115,
+      type: ['rightAligned'],
+      cellStyle: {
+        'color': '#686E74' 
+      }
+    },
+    {
+      headerName: 'OSQ',
+      field: 'outstandingQty',
+      minWidth:90,
+      maxWidth: 115,
+      type: ['rightAligned'],
+      cellStyle: {
+        'color': '#686E74' 
+      }
+    },
+    {
+      headerName: 'OSV($)',
+      minWidth:100,
+      maxWidth: 115,
+      field: 'outstandingValue',
+      type: ['rightAligned'],
+      cellStyle: {
+        'color': '#686E74' 
+      }
+    },
+
+    {
+      headerName: 'ITQ',
+      minWidth:70,
+      // maxWidth: 115,
+      field: 'inTransitQty',
+      type: ['rightAligned'],
+      cellStyle: {
+        'color': '#686E74' 
+      }
+    },
+    // {
+    //   headerName: "Total Value",
+    //   minWidth: 130,
+    //   field: 'totalValue',
+    //   type:['leftAligned']
+    // },
+    // {
+    //   headerName: "Completed Value",
+    //   minWidth: 170,
+    //   field: 'compleatedValue',
+    //   type:['leftAligned']
+    // },
+    {
+      headerName: 'Status',
+      field: 'status',
+      minWidth: 100,
+      cellEditor: 'agSelectCellEditor',
+      cellEditorParams: {
+        values: ['Closed', 'Approved'],
+      },
+      cellClass: (params) => {
+        return params.value == 'Rejected'
+          ? 'myclass1'
+          : params.value == 'Draft'
+          ? 'myclass2'
+          : params.value == 'Processed'
+          ? 'myclass3'
+          : params.value == 'Ordered'
+          ? 'myclassss'
+          : params.value == 'Returned'
+          ? 'myclass5'
+          : params.value == 'Cancelled'
+          ? 'myclass6'
+          : params.value == 'Pre-closed'
+          ? 'myclass7'
+          : params.value == 'In-Transit'
+          ? 'myclass8'
+          : params.value == 'Fullfilled'
+          ? 'Mmyclass'
+          : params.value =='Confirmed'
+          ? 'myclass22'
+          : params.value == 'ToShip'
+          ? 'myclass10'
+          : 'myclass11';
+          
+      },
+
+      tooltipField: 'statusName',
+    },
+    {
+      headerName: '',
+
+      colId: 'action',
+
+      cellRenderer: OrderlistActionPopupComponent,
+      editable: false,
+      maxWidth: 65,
+    },
+  ];
+
+  updateColumnDefs()
+  {
+    if (this.userType === 'Dealer Admin')
+    {
+      this.columnDefs = [
+        {
+          headerName: 'Order # ',
+          field: 'orderNUmber',
+          filter: false,
+          // maxWidth: 80,
+          maxWidth:100,
+          cellStyle: { color: '#017EFA' },
+          cellEditorPopup: true,
+          onCellClicked: (event: CellClickedEvent) =>
+            this.dialog.open(OrdersReceiveShipmentComponent, {
+              maxWidth: '95vw',
+              height: '95vh',
+            }),
+        },
+    
+        {
+          headerName: 'Order Date',
+          field: 'orderDate',
+            minWidth: 120,
+      
+    
+          cellRenderer: (data) => {
+            const formattedDate = this.sharedService.dateformat(data.value);
+            const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+            return coloredDate;
+          },
+          tooltipField: 'orderDate',
+          
+          
+        },
+        {
+           headerName: 'Dealer Ref No# ',
+          field: 'dealerReferenceNo',
+           minWidth: 140,
+          type: ['leftAligned'],
+          cellStyle: {
+            'color': '#686E74'  
+          }
+          
+        },
+    
+        {
+          headerName: 'Order Value($)',
+          field: 'totalValue',
+          type: ['rightAligned'],
+          minWidth: 140,
+          cellStyle: {
+            'color': '#686E74' 
+          }
+        },
+    
+        {
+          headerName: 'Ordered Quantity ',
+          field: 'orderedQty',
+          type: ['rightAligned'],
+           minWidth: 155,
+          cellStyle: {
+            'color': '#686E74' 
+          }
+        },
+        {
+          headerName: 'Received Quantity',
+          field: 'receivedQty',
+          type: ['rightAligned'],
+           minWidth: 155,
+          cellStyle: {
+            'color': '#686E74' 
+          }
+        },
+        {
+          headerName: 'Outstanding Quantity ',
+          field: 'outstandingQty',
+          type: ['rightAligned'],
+           minWidth: 180,
+          cellStyle: {
+            'color': '#686E74' 
+          }
+        },
+        {
+          headerName: 'Outstanding Value($)',
+          field: 'outstandingValue',
+           minWidth: 160,
+          type: ['rightAligned'],
+          cellStyle: {
+            'color': '#686E74' 
+          }
+        },
+    
+        {
+          headerName: 'In-Transit Quantity',
+          field: 'inTransitQty',
+            minWidth: 100,
+          type: ['rightAligned'],
+          cellStyle: {
+            'color': '#686E74' 
+          }
+        },
+        {
+          headerName: 'Status',
+          field: 'status',
+          cellEditor: 'agSelectCellEditor',
+          cellEditorParams: {
+            values: ['Closed', 'Approved'],
+          },
+          cellClass: (params) => {
+            return params.value == 'Rejected'
+              ? 'myclass1'
+              : params.value == 'Draft'
+              ? 'myclass2'
+              : params.value == 'Processed'
+              ? 'myclass3'
+              : params.value == 'Ordered'
+              ? 'myclassss'
+              : params.value == 'Returned'
+              ? 'myclass5'
+              : params.value == 'Cancelled'
+              ? 'myclass6'
+              : params.value == 'Pre-closed'
+              ? 'myclass7'
+              : params.value == 'In-Transit'
+              ? 'myclass8'
+              : params.value == 'Fullfilled'
+              ? 'Mmyclass'
+              : params.value =='Confirmed'
+              ? 'myclass22'
+              : params.value == 'ToShip'
+              ? 'myclass10'
+              : 'myclass11';
+              
+          },
+    
+          tooltipField: 'statusName',
+        },
+        {
+          headerName: '',
+    
+          colId: 'action',
+    
+          cellRenderer: OrderlistActionPopupComponent,
+          editable: false,
+          maxWidth: 60,
+        },
+      ];
+      
+    }
+  }
 
   rowData: any;
   rowData1 = [];
@@ -326,11 +666,12 @@ export class OrderListComponent implements OnInit {
     this.userType = localStorage.getItem('userType');
     this.loggedUserId = localStorage.getItem('logInId');
     this.uomId = localStorage.getItem('niId');
+     this.updateColumnDefs();
     // this.roleItems();
     this.statusItems();
     // this.maxDate.setDate(this.maxDate.getDate() + 20);
     this.orderlistGrid();
-    this.updateColumnDefs()
+    // this.updateColumnDefs()
     this.dealerOrder();
     this.geogrphyOrder();
     this.myForm = this.fb.group({
@@ -343,412 +684,412 @@ export class OrderListComponent implements OnInit {
       status: [this.selectedItems],
     });
   }
-  updateColumnDefs(){
-    if(this.userType === 'Admin'){
-      this.columnDefs=[
+  // updateColumnDefs(){
+  //   if(this.userType === 'Admin'){
+  //     this.columnDefs=[
         
-      {
-        headerName: 'Order #',
-        field: 'orderNUmber',
-        filter: false,
-        cellStyle: { color: '#017EFA' },
-        maxWidth: 110,
-        cellEditorPopup: true,
-        onCellClicked: (event: CellClickedEvent) =>
-          this.dialog.open(OrdersReceiveShipmentComponent, {
-            maxWidth: '95vw',
-            height: '95vh',
-          }),
-      },
+  //     {
+  //       headerName: 'Order #',
+  //       field: 'orderNUmber',
+  //       filter: false,
+  //       cellStyle: { color: '#017EFA' },
+  //       maxWidth: 110,
+  //       cellEditorPopup: true,
+  //       onCellClicked: (event: CellClickedEvent) =>
+  //         this.dialog.open(OrdersReceiveShipmentComponent, {
+  //           maxWidth: '95vw',
+  //           height: '95vh',
+  //         }),
+  //     },
   
-      {
-        headerName: 'Order Date',
-        field: 'orderDate',
-        minWidth: 110,
-        maxWidth: 150,
+  //     {
+  //       headerName: 'Order Date',
+  //       field: 'orderDate',
+  //       minWidth: 110,
+  //       maxWidth: 150,
   
-        // cellRenderer: (data) => {
-        //   return this.sharedService.dateformat(data.value);
-        // },
-        cellRenderer: (data) => {
-          const formattedDate = this.sharedService.dateformat(data.value);
-          const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
-          return coloredDate;
-        },
-        tooltipField: 'orderDate',
+  //       // cellRenderer: (data) => {
+  //       //   return this.sharedService.dateformat(data.value);
+  //       // },
+  //       cellRenderer: (data) => {
+  //         const formattedDate = this.sharedService.dateformat(data.value);
+  //         const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+  //         return coloredDate;
+  //       },
+  //       tooltipField: 'orderDate',
         
         
-      },
+  //     },
   
-      {
-        headerName: 'Dealer Ref No#',
-        field: 'dealerName',
-        minWidth: 245,
-        tooltipField: 'dealerName',
-        cellStyle: {
-          'color': '#686E74' 
-        }
-      },
-      {
-        headerName: 'ERP Ref # ',
-        minWidth: 110,
-        maxWidth: 150,
-        field: 'companyReferenceNo',
-        type: ['leftAligned'],
-        cellStyle: {
-          'color': '#686E74' 
-        }
+  //     {
+  //       headerName: 'Dealer Ref No#',
+  //       field: 'dealerName',
+  //       minWidth: 245,
+  //       tooltipField: 'dealerName',
+  //       cellStyle: {
+  //         'color': '#686E74' 
+  //       }
+  //     },
+  //     {
+  //       headerName: 'ERP Ref # ',
+  //       minWidth: 110,
+  //       maxWidth: 150,
+  //       field: 'companyReferenceNo',
+  //       type: ['leftAligned'],
+  //       cellStyle: {
+  //         'color': '#686E74' 
+  //       }
         
-      },
+  //     },
   
-      {
-        headerName: 'Geography',
-        minWidth: 115,
-        maxWidth: 150,
-        field: 'geographyName',
-        tooltipField:'geographyName',
-        cellStyle: {
-          'color': '#686E74' 
-        }
-      },
-      {
-        headerName: 'ODV($)',
-        minWidth:100,
-        maxWidth: 115,
-        field: 'totalValue',
-        type: ['rightAligned'],
-        cellStyle: {
-          'color': '#686E74' 
-        }
-      },
+  //     {
+  //       headerName: 'Geography',
+  //       minWidth: 115,
+  //       maxWidth: 150,
+  //       field: 'geographyName',
+  //       tooltipField:'geographyName',
+  //       cellStyle: {
+  //         'color': '#686E74' 
+  //       }
+  //     },
+  //     {
+  //       headerName: 'ODV($)',
+  //       minWidth:100,
+  //       maxWidth: 115,
+  //       field: 'totalValue',
+  //       type: ['rightAligned'],
+  //       cellStyle: {
+  //         'color': '#686E74' 
+  //       }
+  //     },
   
-      {
-        headerName: 'ODQ ',
-        field: 'orderedQty',
-        minWidth:90,
-        maxWidth: 115,
-        type: ['rightAligned'],
-        cellStyle: {
-          'color': '#686E74' 
-        }
-      },
-      {
-        headerName: 'RDQ',
-        field: 'receivedQty',
-        minWidth:90,
-        maxWidth: 115,
-        type: ['rightAligned'],
-        cellStyle: {
-          'color': '#686E74' 
-        }
-      },
-      {
-        headerName: 'OSQ',
-        field: 'outstandingQty',
-        minWidth:90,
-        maxWidth: 115,
-        type: ['rightAligned'],
-        cellStyle: {
-          'color': '#686E74' 
-        }
-      },
-      {
-        headerName: 'OSV($)',
-        minWidth:100,
-        maxWidth: 115,
-        field: 'outstandingValue',
-        type: ['rightAligned'],
-        cellStyle: {
-          'color': '#686E74' 
-        }
-      },
+  //     {
+  //       headerName: 'ODQ ',
+  //       field: 'orderedQty',
+  //       minWidth:90,
+  //       maxWidth: 115,
+  //       type: ['rightAligned'],
+  //       cellStyle: {
+  //         'color': '#686E74' 
+  //       }
+  //     },
+  //     {
+  //       headerName: 'RDQ',
+  //       field: 'receivedQty',
+  //       minWidth:90,
+  //       maxWidth: 115,
+  //       type: ['rightAligned'],
+  //       cellStyle: {
+  //         'color': '#686E74' 
+  //       }
+  //     },
+  //     {
+  //       headerName: 'OSQ',
+  //       field: 'outstandingQty',
+  //       minWidth:90,
+  //       maxWidth: 115,
+  //       type: ['rightAligned'],
+  //       cellStyle: {
+  //         'color': '#686E74' 
+  //       }
+  //     },
+  //     {
+  //       headerName: 'OSV($)',
+  //       minWidth:100,
+  //       maxWidth: 115,
+  //       field: 'outstandingValue',
+  //       type: ['rightAligned'],
+  //       cellStyle: {
+  //         'color': '#686E74' 
+  //       }
+  //     },
   
-      {
-        headerName: 'ITQ',
-        minWidth:90,
-        maxWidth: 115,
-        field: 'inTransitQty',
-        type: ['rightAligned'],
-        cellStyle: {
-          'color': '#686E74' 
-        }
-      },
-      // {
-      //   headerName: "Total Value",
-      //   minWidth: 130,
-      //   field: 'totalValue',
-      //   type:['leftAligned']
-      // },
-      // {
-      //   headerName: "Completed Value",
-      //   minWidth: 170,
-      //   field: 'compleatedValue',
-      //   type:['leftAligned']
-      // },
-      {
-        headerName: 'Status',
-        field: 'status',
-        minWidth: 100,
-        cellEditor: 'agSelectCellEditor',
-        cellEditorParams: {
-          values: ['Closed', 'Approved'],
-        },
-        cellClass: (params) => {
-          return params.value == 'Rejected'
-            ? 'myclass1'
-            : params.value == 'Draft'
-            ? 'myclass2'
-            : params.value == 'Processed'
-            ? 'myclass3'
-            : params.value == 'Submitted'
-            ? 'myclassss'
-            : params.value == 'Returned'
-            ? 'myclass5'
-            : params.value == 'Cancelled'
-            ? 'myclass6'
-            : params.value == 'Pre-closed'
-            ? 'myclass7'
-            : params.value == 'In-Transit'
-            ? 'myclass8'
-            : params.value == 'complete'
-            ? 'Mmyclass'
-            : params.value =='Processing'
-            ? 'myclass22'
-            : params.value == 'ToShip'
-            ? 'myclass10'
-            : params.value == 'Closed'
-            ? 'myclass10'
-            : 'myclass11';
+  //     {
+  //       headerName: 'ITQ',
+  //       minWidth:90,
+  //       maxWidth: 115,
+  //       field: 'inTransitQty',
+  //       type: ['rightAligned'],
+  //       cellStyle: {
+  //         'color': '#686E74' 
+  //       }
+  //     },
+  //     // {
+  //     //   headerName: "Total Value",
+  //     //   minWidth: 130,
+  //     //   field: 'totalValue',
+  //     //   type:['leftAligned']
+  //     // },
+  //     // {
+  //     //   headerName: "Completed Value",
+  //     //   minWidth: 170,
+  //     //   field: 'compleatedValue',
+  //     //   type:['leftAligned']
+  //     // },
+  //     {
+  //       headerName: 'Status',
+  //       field: 'status',
+  //       minWidth: 100,
+  //       cellEditor: 'agSelectCellEditor',
+  //       cellEditorParams: {
+  //         values: ['Closed', 'Approved'],
+  //       },
+  //       cellClass: (params) => {
+  //         return params.value == 'Rejected'
+  //           ? 'myclass1'
+  //           : params.value == 'Draft'
+  //           ? 'myclass2'
+  //           : params.value == 'Processed'
+  //           ? 'myclass3'
+  //           : params.value == 'Submitted'
+  //           ? 'myclassss'
+  //           : params.value == 'Returned'
+  //           ? 'myclass5'
+  //           : params.value == 'Cancelled'
+  //           ? 'myclass6'
+  //           : params.value == 'Pre-closed'
+  //           ? 'myclass7'
+  //           : params.value == 'In-Transit'
+  //           ? 'myclass8'
+  //           : params.value == 'complete'
+  //           ? 'Mmyclass'
+  //           : params.value =='Processing'
+  //           ? 'myclass22'
+  //           : params.value == 'ToShip'
+  //           ? 'myclass10'
+  //           : params.value == 'Closed'
+  //           ? 'myclass10'
+  //           : 'myclass11';
             
-        },
+  //       },
   
-        tooltipField: 'statusName',
-      },
+  //       tooltipField: 'statusName',
+  //     },
   
-      // {
-      //   headerName: "",
-      //   field: '', filter: false, sortable: false,
-      //   cellRenderer: function clickNextRendererFunc() {
-      //     return '<i class="fa fa-ellipsis-v" aria-hidden="true" (click)="editfn()"></i>';
-      //   }
-      // },
-      {
-        headerName: '',
+  //     // {
+  //     //   headerName: "",
+  //     //   field: '', filter: false, sortable: false,
+  //     //   cellRenderer: function clickNextRendererFunc() {
+  //     //     return '<i class="fa fa-ellipsis-v" aria-hidden="true" (click)="editfn()"></i>';
+  //     //   }
+  //     // },
+  //     {
+  //       headerName: '',
   
-        colId: 'action',
+  //       colId: 'action',
   
-        cellRenderer: OrderlistActionPopupComponent,
-        editable: false,
-        maxWidth: 65,
-      },
-      // {
-      //   headerName: "Avatar",
-      //   field: "avatar",
-      //   width: 100,
-      //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
-      //  },
-      ]
-    }else{
-      this.columnDefs = [
-        {
-          headerName: 'Order #',
-          field: 'orderNUmber',
-          filter: false,
-          cellStyle: { color: '#017EFA' },
-          maxWidth: 110,
-          cellEditorPopup: true,
-          onCellClicked: (event: CellClickedEvent) =>
-            this.dialog.open(OrdersReceiveShipmentComponent, {
-              maxWidth: '95vw',
-              height: '95vh',
-            }),
-        },
+  //       cellRenderer: OrderlistActionPopupComponent,
+  //       editable: false,
+  //       maxWidth: 65,
+  //     },
+  //     // {
+  //     //   headerName: "Avatar",
+  //     //   field: "avatar",
+  //     //   width: 100,
+  //     //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
+  //     //  },
+  //     ]
+  //   }else{
+  //     this.columnDefs = [
+  //       {
+  //         headerName: 'Order #',
+  //         field: 'orderNUmber',
+  //         filter: false,
+  //         cellStyle: { color: '#017EFA' },
+  //         maxWidth: 110,
+  //         cellEditorPopup: true,
+  //         onCellClicked: (event: CellClickedEvent) =>
+  //           this.dialog.open(OrdersReceiveShipmentComponent, {
+  //             maxWidth: '95vw',
+  //             height: '95vh',
+  //           }),
+  //       },
 
-        {
-          headerName: 'Order Date',
-          field: 'orderDate',
-          minWidth: 110,
-          maxWidth: 150,
+  //       {
+  //         headerName: 'Order Date',
+  //         field: 'orderDate',
+  //         minWidth: 110,
+  //         maxWidth: 150,
 
-          // cellRenderer: (data) => {
-          //   return this.sharedService.dateformat(data.value);
-          // },
-          cellRenderer: (data) => {
-            const formattedDate = this.sharedService.dateformat(data.value);
-            const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
-            return coloredDate;
-          },
-          tooltipField: 'orderDate',
-        },
+  //         // cellRenderer: (data) => {
+  //         //   return this.sharedService.dateformat(data.value);
+  //         // },
+  //         cellRenderer: (data) => {
+  //           const formattedDate = this.sharedService.dateformat(data.value);
+  //           const coloredDate = `<span style="color: #686E74;">${formattedDate}</span>`;
+  //           return coloredDate;
+  //         },
+  //         tooltipField: 'orderDate',
+  //       },
 
-        {
-          headerName: 'Dealer Ref No#',
-          field: 'dealerName',
-          minWidth: 245,
-          tooltipField: 'dealerName',
-          cellStyle: {
-            color: '#686E74',
-          },
-        },
-        // {
-        //   headerName: 'ERP Ref # ',
-        //   minWidth: 110,
-        //   maxWidth: 150,
-        //   field: 'companyReferenceNo',
-        //   type: ['leftAligned'],
-        //   cellStyle: {
-        //     color: '#686E74',
-        //   },
-        // },
+  //       {
+  //         headerName: 'Dealer Ref No#',
+  //         field: 'dealerName',
+  //         minWidth: 245,
+  //         tooltipField: 'dealerName',
+  //         cellStyle: {
+  //           color: '#686E74',
+  //         },
+  //       },
+  //       // {
+  //       //   headerName: 'ERP Ref # ',
+  //       //   minWidth: 110,
+  //       //   maxWidth: 150,
+  //       //   field: 'companyReferenceNo',
+  //       //   type: ['leftAligned'],
+  //       //   cellStyle: {
+  //       //     color: '#686E74',
+  //       //   },
+  //       // },
 
-        // {
-        //   headerName: 'Geography',
-        //   minWidth: 115,
-        //   maxWidth: 150,
-        //   field: 'geographyName',
-        //   tooltipField: 'geographyName',
-        //   cellStyle: {
-        //     color: '#686E74',
-        //   },
-        // },
-        {
-          headerName: 'ODV($)',
-          minWidth: 100,
-          maxWidth: 115,
-          field: 'totalValue',
-          type: ['rightAligned'],
-          cellStyle: {
-            color: '#686E74',
-          },
-        },
+  //       // {
+  //       //   headerName: 'Geography',
+  //       //   minWidth: 115,
+  //       //   maxWidth: 150,
+  //       //   field: 'geographyName',
+  //       //   tooltipField: 'geographyName',
+  //       //   cellStyle: {
+  //       //     color: '#686E74',
+  //       //   },
+  //       // },
+  //       {
+  //         headerName: 'ODV($)',
+  //         minWidth: 100,
+  //         maxWidth: 115,
+  //         field: 'totalValue',
+  //         type: ['rightAligned'],
+  //         cellStyle: {
+  //           color: '#686E74',
+  //         },
+  //       },
 
-        {
-          headerName: 'ODQ ',
-          field: 'orderedQty',
-          minWidth: 90,
-          maxWidth: 115,
-          type: ['rightAligned'],
-          cellStyle: {
-            color: '#686E74',
-          },
-        },
-        {
-          headerName: 'RDQ',
-          field: 'receivedQty',
-          minWidth: 90,
-          maxWidth: 115,
-          type: ['rightAligned'],
-          cellStyle: {
-            color: '#686E74',
-          },
-        },
-        {
-          headerName: 'OSQ',
-          field: 'outstandingQty',
-          minWidth: 90,
-          maxWidth: 115,
-          type: ['rightAligned'],
-          cellStyle: {
-            color: '#686E74',
-          },
-        },
-        {
-          headerName: 'OSV($)',
-          minWidth: 100,
-          maxWidth: 115,
-          field: 'outstandingValue',
-          type: ['rightAligned'],
-          cellStyle: {
-            color: '#686E74',
-          },
-        },
+  //       {
+  //         headerName: 'ODQ ',
+  //         field: 'orderedQty',
+  //         minWidth: 90,
+  //         maxWidth: 115,
+  //         type: ['rightAligned'],
+  //         cellStyle: {
+  //           color: '#686E74',
+  //         },
+  //       },
+  //       {
+  //         headerName: 'RDQ',
+  //         field: 'receivedQty',
+  //         minWidth: 90,
+  //         maxWidth: 115,
+  //         type: ['rightAligned'],
+  //         cellStyle: {
+  //           color: '#686E74',
+  //         },
+  //       },
+  //       {
+  //         headerName: 'OSQ',
+  //         field: 'outstandingQty',
+  //         minWidth: 90,
+  //         maxWidth: 115,
+  //         type: ['rightAligned'],
+  //         cellStyle: {
+  //           color: '#686E74',
+  //         },
+  //       },
+  //       {
+  //         headerName: 'OSV($)',
+  //         minWidth: 100,
+  //         maxWidth: 115,
+  //         field: 'outstandingValue',
+  //         type: ['rightAligned'],
+  //         cellStyle: {
+  //           color: '#686E74',
+  //         },
+  //       },
 
-        {
-          headerName: 'ITQ',
-          minWidth: 90,
-          maxWidth: 115,
-          field: 'inTransitQty',
-          type: ['rightAligned'],
-          cellStyle: {
-            color: '#686E74',
-          },
-        },
-        // {
-        //   headerName: "Total Value",
-        //   minWidth: 130,
-        //   field: 'totalValue',
-        //   type:['leftAligned']
-        // },
-        // {
-        //   headerName: "Completed Value",
-        //   minWidth: 170,
-        //   field: 'compleatedValue',
-        //   type:['leftAligned']
-        // },
-        {
-          headerName: 'Status',
-          field: 'status',
-          minWidth: 100,
-          cellEditor: 'agSelectCellEditor',
-          cellEditorParams: {
-            values: ['Closed', 'Approved'],
-          },
-          cellClass: (params) => {
-            return params.value == 'Rejected'
-              ? 'myclass1'
-              : params.value == 'Draft'
-              ? 'myclass2'
-              : params.value == 'Processed'
-              ? 'myclass3'
-              : params.value == 'Submitted'
-              ? 'myclassss'
-              : params.value == 'Returned'
-              ? 'myclass5'
-              : params.value == 'Cancelled'
-              ? 'myclass6'
-              : params.value == 'Pre-closed'
-              ? 'myclass7'
-              : params.value == 'In-Transit'
-              ? 'myclass8'
-              : params.value == 'complete'
-              ? 'Mmyclass'
-              : params.value == 'Processing'
-              ? 'myclass22'
-              : params.value == 'ToShip'
-              ? 'myclass10'
-              : params.value == 'Closed'
-              ? 'myclass10'
-              : 'myclass11';
-          },
+  //       {
+  //         headerName: 'ITQ',
+  //         minWidth: 90,
+  //         maxWidth: 115,
+  //         field: 'inTransitQty',
+  //         type: ['rightAligned'],
+  //         cellStyle: {
+  //           color: '#686E74',
+  //         },
+  //       },
+  //       // {
+  //       //   headerName: "Total Value",
+  //       //   minWidth: 130,
+  //       //   field: 'totalValue',
+  //       //   type:['leftAligned']
+  //       // },
+  //       // {
+  //       //   headerName: "Completed Value",
+  //       //   minWidth: 170,
+  //       //   field: 'compleatedValue',
+  //       //   type:['leftAligned']
+  //       // },
+  //       {
+  //         headerName: 'Status',
+  //         field: 'status',
+  //         minWidth: 100,
+  //         cellEditor: 'agSelectCellEditor',
+  //         cellEditorParams: {
+  //           values: ['Closed', 'Approved'],
+  //         },
+  //         cellClass: (params) => {
+  //           return params.value == 'Rejected'
+  //             ? 'myclass1'
+  //             : params.value == 'Draft'
+  //             ? 'myclass2'
+  //             : params.value == 'Processed'
+  //             ? 'myclass3'
+  //             : params.value == 'Submitted'
+  //             ? 'myclassss'
+  //             : params.value == 'Returned'
+  //             ? 'myclass5'
+  //             : params.value == 'Cancelled'
+  //             ? 'myclass6'
+  //             : params.value == 'Pre-closed'
+  //             ? 'myclass7'
+  //             : params.value == 'In-Transit'
+  //             ? 'myclass8'
+  //             : params.value == 'complete'
+  //             ? 'Mmyclass'
+  //             : params.value == 'Processing'
+  //             ? 'myclass22'
+  //             : params.value == 'ToShip'
+  //             ? 'myclass10'
+  //             : params.value == 'Closed'
+  //             ? 'myclass10'
+  //             : 'myclass11';
+  //         },
 
-          tooltipField: 'statusName',
-        },
+  //         tooltipField: 'statusName',
+  //       },
 
-        // {
-        //   headerName: "",
-        //   field: '', filter: false, sortable: false,
-        //   cellRenderer: function clickNextRendererFunc() {
-        //     return '<i class="fa fa-ellipsis-v" aria-hidden="true" (click)="editfn()"></i>';
-        //   }
-        // },
-        {
-          headerName: '',
+  //       // {
+  //       //   headerName: "",
+  //       //   field: '', filter: false, sortable: false,
+  //       //   cellRenderer: function clickNextRendererFunc() {
+  //       //     return '<i class="fa fa-ellipsis-v" aria-hidden="true" (click)="editfn()"></i>';
+  //       //   }
+  //       // },
+  //       {
+  //         headerName: '',
 
-          colId: 'action',
+  //         colId: 'action',
 
-          cellRenderer: OrderlistActionPopupComponent,
-          editable: false,
-          maxWidth: 65,
-        },
-        // {
-        //   headerName: "Avatar",
-        //   field: "avatar",
-        //   width: 100,
-        //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
-        //  },
-      ];
-    }
-  }
+  //         cellRenderer: OrderlistActionPopupComponent,
+  //         editable: false,
+  //         maxWidth: 65,
+  //       },
+  //       // {
+  //       //   headerName: "Avatar",
+  //       //   field: "avatar",
+  //       //   width: 100,
+  //       //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
+  //       //  },
+  //     ];
+  //   }
+  // }
   refresh() {
     this.myForm = this.fb.group({
       city: [this.selectedItems],

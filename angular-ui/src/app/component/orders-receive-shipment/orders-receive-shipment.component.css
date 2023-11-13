@@ -1126,19 +1126,28 @@ line-height: 18px;
   .promotionpopup-scroll {
     min-height: 601px !important;
   }
+  .receivementscroball
+  {
+    height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
   
-    .total_total {
-      width: 129px;
-      /* height: 52px; */
-      margin-right: -1px;
-      background: #018B75CC;
-      font-family: "Calibri";
-      border-radius: 0px 21.2px 21.2px 0px;
-      /* margin-top: -5px; */
-      color: white;
-      text-align: left;
-      padding-left: 20px;
-    }
+  .total_total
+{
+  
+  width: 129px;
+  height: 52px;
+  margin-right: -1px;
+  background: #018B75CC;
+  font-family: "Calibri";
+  border-radius: 0px 21.2px 21.2px 0px;
+  margin-top: -5px;
+  color: white;
+  text-align:left;
+padding-left: 20px;
+margin-top: 0px;
+}
 .SUBTotaldatacolor
 {
   position: relative;
@@ -2132,12 +2141,13 @@ font-family: 'Calibri';
     width: 102%;
   }
   .close-iconreceive {
-    left: 100%;
+    left: 99%;
     position: relative;
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
-    margin-top: -1px;
+    margin-top: 14px;
+    font-weight: bolder;
  
   }
   .addshipments {

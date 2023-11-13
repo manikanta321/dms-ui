@@ -1,3 +1,12 @@
+
+.ag-theme-material{
+  --ag-checkbox-background-color: white !important;
+  --ag-checkbox-checked-color: #018B75 !important;
+  --ag-checkbox-unchecked-color: #018B75 !important;
+}
+
+
+
 .mat-form-field {
   width: 680px;
   font-family: 'Gilroy';

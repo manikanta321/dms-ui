@@ -74,7 +74,7 @@
 </div>
  <!-- grid -->
  <div class="grid-table mt-5">
-    <ag-grid-angular id="gridContainer" style="height: 435px;background-color: white;font-family: calibri;" class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
+    <ag-grid-angular id="gridContainer" style="height: 435px;background-color: white;font-family: calibri;width: 100%;" class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
       [headerHeight]="48" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
       [rowData]="shipmentDatalist" [suppressExcelExport]="true" [popupParent]="popupParent"
       (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"
@@ -169,7 +169,7 @@
 </div>
 <!-- grid -->
 <div class="grid-table mt-5">
-  <ag-grid-angular id="gridContainer" style="height: 435px;background-color: white;font-family: calibri;" class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
+  <ag-grid-angular id="gridContainer" style="height: 435px;background-color: white;font-family: calibri;width: 100%;" class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
     [headerHeight]="48" [columnDefs]="columnReceiptDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"
     [rowData]="receiptDatalist" [suppressExcelExport]="true" [popupParent]="popupParent"
     (cellValueChanged)="onCellValueChanged($event)" (firstDataRendered)="onFirstDataRendered($event)"

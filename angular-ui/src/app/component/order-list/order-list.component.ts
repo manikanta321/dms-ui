@@ -1017,6 +1017,7 @@ export class OrderListComponent implements OnInit {
 
   addOrderPromotion() {
     localStorage.removeItem('calculation')
+    localStorage.removeItem('productdata')
     // 1 Promotion calculations
     localStorage.removeItem('FirstPromotionCalculation');
     localStorage.removeItem('FirstPromotionTotalAmountValue');

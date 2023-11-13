@@ -887,9 +887,9 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   onToggleChange(event: any) {
     this.showConsolidatedMOQ = event.checked;
     if (this.showConsolidatedMOQ) {
-      this.Moqstatus = true; 
+    this.Moqstatus = true; 
     } else {
-      this.Moqstatus = false; 
+    this.Moqstatus = false; 
     }
     this.cdr.detectChanges();
     //   if (this.addbuyset && this.addbuyset.BuyGroups) {

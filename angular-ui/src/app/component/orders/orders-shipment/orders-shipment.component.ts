@@ -149,7 +149,7 @@ export class OrdersShipmentComponent implements OnInit {
     if (this.userType === 'Dealer Admin') {
       this.columnDefs = [
         {
-          headerName: 'Order No',
+          headerName: 'Order #',
           field: 'orderNUmber',
           tooltipField: 'orderNUmber',
           cellStyle: { color: '#017EFA' },
@@ -189,7 +189,7 @@ export class OrdersShipmentComponent implements OnInit {
 
         },
         {
-          headerName:'invoice Qty',
+          headerName:'Invoice Qty',
           field: 'invoiceQty',
           tooltipField: 'invoiceQty',
           cellStyle: {
@@ -198,7 +198,7 @@ export class OrdersShipmentComponent implements OnInit {
           type: ['rightAligned']
         },
         {
-          headerName: 'invoice Value',
+          headerName: 'invoice Value($)',
           field: 'invoiceValue',
           tooltipField: 'invoiceValue',
           type: ['rightAligned'],
@@ -207,7 +207,7 @@ export class OrdersShipmentComponent implements OnInit {
           },
         },
         {
-          headerName: 'Total ordered Quantity',
+          headerName: 'ordered Quantity',
           field: 'orderedQty',
           tooltipField: 'orderedQty',
           type: ['rightAligned'],
@@ -216,7 +216,7 @@ export class OrdersShipmentComponent implements OnInit {
           },
         },
         {
-          headerName:'Total ordered Value($)',
+          headerName:'ordered Value($)',
           field: 'orderedvalue',
           tooltipField: 'orderedvalue',
           type: ['rightAligned'],
@@ -225,7 +225,7 @@ export class OrdersShipmentComponent implements OnInit {
           },
         },    
         {
-          headerName: 'System Receipt Date',
+          headerName: 'System Receive Date',
           field: 'systemReciptDate',
           tooltipField: 'systemReciptDate',
           // cellRenderer: (data) => {

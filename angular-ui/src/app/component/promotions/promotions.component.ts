@@ -176,7 +176,7 @@ export class PromotionsComponent implements OnInit {
       cellStyle: { color: '#686E74' }, 
     },
     {
-      headerName: 'Order Value',
+      headerName: 'Order Values ($)',
       field: 'invoicedValue',
       tooltipField: 'invoicedValue',
       type: ['rightAligned'],

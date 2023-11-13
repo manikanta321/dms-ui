@@ -1464,6 +1464,7 @@ console.log("ProductSubGroup",this.prodSubGroup);
       //  status: this.statusTypes,
       search: this.searchText,
     };
+    const searchInput = document.getElementById('searchInput') as HTMLInputElement;   if (searchInput) {     searchInput.value = this.searchText;   }
     this.promotionTypes.GetProductList(data).subscribe((res) => {
       console.log('productlist is works', res);
       this.rowData5 = res.response;

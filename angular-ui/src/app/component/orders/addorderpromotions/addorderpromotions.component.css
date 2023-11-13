@@ -218,7 +218,7 @@ border-top-right-radius: 13px;
   left: 1px;
   /* margin-left: -3px; */
   position: relative;
-    bottom: 6px;
+    bottom: 1px;
     left: 0px;
 
 }
@@ -2916,7 +2916,7 @@ color: #000000;
   font-size: 16px;
   font-weight: 700;
   color: #000000;
-  padding-left: 70px;
+  padding-left: 1px;
   /* padding-right: 30px; */
 }
 
@@ -3028,6 +3028,7 @@ table thead, table tbody tr {
   background: #FFFFFF;
   border: 0.5px solid #000000;
   border-radius: 8px;
+  text-align: end;
 }
 
 .saveas-draft1 {
@@ -3266,7 +3267,7 @@ cursor: pointer;
 
    .promotion-container .img-container img{
     width: 100%;
-    height: 56px;
+    height: 64px;
          /* object-fit: cover; */
    }
 

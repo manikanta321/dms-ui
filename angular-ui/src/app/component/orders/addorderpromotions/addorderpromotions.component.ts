@@ -583,8 +583,8 @@ export class AddorderpromotionsComponent implements OnInit {
         this.arrayOfImages.forEach((x) => {x.isSelected =this.AddOrderPromotionData.findIndex((y) => y.promotionId === x.productPromotionsId) !== -1;});
         this.caliculateProductAmount();
         this.AddOrderPromotionData.forEach((element) => {
-          // element.isOpen = true;
-          element.push({ isOpen: false }); // Corrected this part
+          element.isOpen = true;
+          // element.push({ isOpen: false }); // Corrected this part
         });
         this.getShippingandPackingcharges();
         this.promotionName = localStorage.getItem('PromotionName');
@@ -2226,6 +2226,7 @@ export class AddorderpromotionsComponent implements OnInit {
     });
   }
 
+  editTotalqty:any
   GetOrdersToEdit() {
     this.CustomerPoId = localStorage.getItem('CustomerPoId');
     //  alert(this.CustomerPoId)
@@ -2235,6 +2236,15 @@ export class AddorderpromotionsComponent implements OnInit {
       this.editorderbyID = res.response;
       this.copyEditOrderById = res.response;
       console.log(res.response, 'GetOrdersToEdit');
+      
+      const sumQuantity = (promotion) => {
+        return promotion.itemDetails.reduce(
+          (total, item) => total + item.quantity,
+          0
+        );
+      };
+    this.editTotalqty = res.response.itemcount.reduce((total, promotion) => total + sumQuantity(promotion), 0);
+    console.log("Total Quantity:", this.editTotalqty);
 
       this.datapreloadbyID();
       this.getShippingandPackingcharges();

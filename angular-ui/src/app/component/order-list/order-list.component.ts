@@ -270,7 +270,7 @@ export class OrderListComponent implements OnInit {
           ? 'myclass2'
           : params.value == 'Processed'
           ? 'myclass3'
-          : params.value == 'Ordered'
+          : params.value == 'Submitted'
           ? 'myclassss'
           : params.value == 'Returned'
           ? 'myclass5'
@@ -280,11 +280,13 @@ export class OrderListComponent implements OnInit {
           ? 'myclass7'
           : params.value == 'In-Transit'
           ? 'myclass8'
-          : params.value == 'Fullfilled'
+          : params.value == 'complete'
           ? 'Mmyclass'
-          : params.value =='Confirmed'
+          : params.value =='Processing'
           ? 'myclass22'
           : params.value == 'ToShip'
+          ? 'myclass10'
+          : params.value == 'Closed'
           ? 'myclass10'
           : 'myclass11';
           
@@ -476,7 +478,8 @@ export class OrderListComponent implements OnInit {
     });
     this.SS.ReloadaddOrg.subscribe(()=>{
       // alert('refresh')
-     this.refresh()
+    //  this.refresh()
+      this.orderlistGrid();
     })
     sort: [];
     this.route.data.subscribe((v) => {

@@ -54,7 +54,7 @@
             <b class="DEalername">Dealer Reference No</b> <br>
             <p class="text-secondary">{{shipmentArray.dealerrefno}}</p>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-10">
             <b class="DEalername">Remarks</b> <br>
             <p class="text-secondary">{{shipmentArray.remarks}}</p>
           </div>
@@ -158,7 +158,7 @@
                   </table>
                 </div>
 
-                <div class="row mt-3 mb-2">
+                <div class="row mt-3 mb-2" style="display: flex; justify-content: end;">
                   <table class="totall">
                     <tr class="subitem">
                       <td class="text-left SUBITEMNAME">Sub-total</td>
@@ -718,7 +718,7 @@
           </div>
           <!-- order history -->
           <div class="card mt-2">
-            <div class="card-header collapsible">Order Historyß</div>
+            <div class="card-header collapsible">Order History</div>
             <div class="card-body p-0">
               <ag-grid-angular id="gridContainer" class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25"
                 [headerHeight]="48" [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [columnTypes]="columnTypes"

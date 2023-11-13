@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
@@ -416,7 +416,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     private dialogRefModal: MatDialogRef<any>,
     private dialogRef: MatDialogRef<AddPromotionsComponent>,
     private dateAdapter: DateAdapter<Date>,
-    public promotionTypes: PromotionService
+    public promotionTypes: PromotionService,
+    private cdr: ChangeDetectorRef
   ) {
     this.sharedService.listen().subscribe((m: any) => {
       console.log(m);
@@ -449,7 +450,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         this.editedDetails = res.response.promoDetails.aditionalMoqDetails;
         this.promoName = res.response.promotionName;
         this.selectedPromo = res.response.promotionTypesId;
-        this.Moqstatus = res.response.IsIndividual;
+        this.Moqstatus = !res.response.IsIndividual;
+        this.cdr.detectChanges();
         this.addImgpreview = true;
         this.specalmoq = res.response.promoDetails.moq
         this.base64textString = res.response.imageurl;
@@ -884,6 +886,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
   onToggleChange(event: any) {
     this.showConsolidatedMOQ = event.checked;
+    if (this.showConsolidatedMOQ) {
+      this.Moqstatus = true; 
+    } else {
+      this.Moqstatus = false; 
+    }
+    this.cdr.detectChanges();
     //   if (this.addbuyset && this.addbuyset.BuyGroups) {
     //     this.addbuyset.BuyGroups.MaxVolume = this.showConsolidatedMOQ ? '' : 0;
     // }

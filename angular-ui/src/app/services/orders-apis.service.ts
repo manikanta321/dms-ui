@@ -186,6 +186,6 @@ export class OrdersApisService {
     );
   }
   closeOrder(data){
-    return this.http.post(this.userurl+'api/OrdersApi/UpdateOrderStatus',data)
+    return this.http.post(this.userurl+'OrdersApi/UpdateOrderStatus',data)
   }
 }

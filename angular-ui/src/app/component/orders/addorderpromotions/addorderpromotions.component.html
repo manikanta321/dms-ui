@@ -542,7 +542,7 @@
                                            
                                             <td >
                                                <input [ngClass]="{'promotionclass': Item.isBuyProduct === false} && Item.discount === 100 ? 'IteminputBoxesD' : (Item.discount === 0 ? 'promotionclass' : 'nonpromoclassName')" type="text" disabled [(ngModel)]="'$'+Item.finalValue"
-                                                style="text-align: right;border: none;position: relative;left: 29px;background: none;">
+                                                style="text-align: right;border: none;position: relative;left: 48px;background: none;">
                                             </td>
                                             <td></td>
                                             <td></td>
@@ -555,7 +555,7 @@
 
                                 <!-- nonpromotions list view *ngIf="DisplayNonpromotion"-->
                                 
-                                <tr >
+                                <tr *ngIf="DisplayNonpromotion">
                                     <td>
                                         <mat-icon (click)="ExpandNonPromotion()"
                                         style="cursor: pointer;   position: relative;   left: 3%;  top: 1px;">{{ NonPromotion ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }} </mat-icon>
@@ -597,14 +597,14 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr *ngIf="(editTotalqty||shippingPackingchargeDetails.subTotal)>0">
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <!-- <td></td> -->
                                         <td style="text-align: end;"><b>Total</b></td>
-                                        <td style="text-align: end;"><b>{{promotionQTY + nonPromotionQTY}}</b></td>
-                                        <td style="text-align: center;padding-left: 115px;"><b>${{ promotionAmount + nonPromotionAmount}}</b></td>
+                                        <td style="text-align: end;"><b>{{(editTotalqty||0)+(promotionQTY + nonPromotionQTY)}}</b></td>
+                                        <td style="text-align: center;padding-left: 100px;"><b>${{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)}}</b></td>
                                     </tr>
                                 </ng-container>
                             </table>

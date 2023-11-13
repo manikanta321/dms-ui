@@ -29,19 +29,19 @@ export class OrderlistActionPopupComponent implements OnInit {
   @ViewChild('trigger') button;
 
   orderStatusAction = {
-    'ordered': ['confirm_order', 'cancel_order'], // done
+    'submitted': ['confirm_order', 'cancel_order'], // done
     'returned': ['edit_order', 'cancel_order'], // NA
     'rejected': [], // done
     'confirmed': ['ship_order', 'close','edit_order'], // done Confirmed
 
-    'Confirmed': ['edit_order', 'close'],
+    'processing': ['edit_order', 'close'],
     
 
     'cancelled': [], // need to check
     'preclosed': [], // NA
     'in-transit': ['ship_order', 'close'], //done
     'draft': ['edit_order', 'cancel_order'], //done
-    'fulfilled': [], // Spelling check
+    'complete': [], // Spelling check
     'to-ship': ['ship_order', 'close'],
     'received': [], // done
   }
@@ -209,22 +209,21 @@ export class OrderlistActionPopupComponent implements OnInit {
 
   }
   orderCancel(type:any) {
-    this.SS.deletepromo()
     this.dialog.open(OrderCancelPopupComponent);
     this.isOpen = false;
-    const data={
-      CustomerPoId:this.CustomerPoId,
-      CurrentUserId:this.LoginId,
-      StatusToBeUpdated:type
-    }
-    this.service.closeOrder(data).subscribe((res:any)=>{
-      console.log(res.response.result);
-      if(res.response.status=='Success'){
-        this.SS.deletepromo()
-      }else{
-        // this.SS.deletepromo()
-      }
-    })
+    localStorage.setItem('statustype',type)
+    // const data={
+    //   CustomerPoId:this.CustomerPoId,
+    //   CurrentUserId:this.LoginId,
+    //   StatusToBeUpdated:type
+    // }
+    //   this.service.closeOrder(data).subscribe((res:any)=>{
+    //     console.log(res.response.result);
+    //       if(res.response.result=='Success'){
+    //         this.SS.deletepromo()
+    //       }
+    //   })
+    // }
   }
 
   viewOrder() {

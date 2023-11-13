@@ -231,11 +231,14 @@
                                                                                 </td> -->
     
     
-                                                                                <td style="width: 24px">
+                                                                              <td style="width: 24px">
                                                                                     <input type="checkbox"
                                                                                         [checked]="Item.isProductSelected"
-                                                                                        (change)="checkboxChange($event, Item,data)" />
-                                                                                </td>
+                                                                                        (change)="checkboxChange($event, Item,data)"/>
+                                                                                </td>  
+                                                                              
+                                                                               
+                                                                                  
                                                                                 <td>{{ Item.productSKUName }}</td>
                                                                                 <td style="width: 30%;">{{ Item.stockitemname }}</td>
                                                                                    
@@ -253,7 +256,7 @@
                                                                                         (keyup)="quantityChange(data,Item);"
                                                                                         name="Item.Quantity" />
                                                                                 </td>
-                                                                                <td class="txt-right">{{ (Item.Quantity ??
+                                                                                <td style="text-align: center;padding: 5px;">{{ (Item.Quantity ??
                                                                                     0) * Item.price | number : '1.2-2' }}
                                                                                 </td>
     

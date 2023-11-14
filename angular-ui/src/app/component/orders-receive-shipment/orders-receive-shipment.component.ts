@@ -365,6 +365,7 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
             arraybj.push(element1);
             let obj: any = {
               promo: element.promocode,
+              promoName:element.promotionTypesNmae,
               customerPOProductId: element1.customerPOProductId,
               stockitemid: element1.customerPOProductId,
               stockitemname: element1.stockitemname,
@@ -489,7 +490,8 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
             let arraybj: any = [];
             arraybj.push(element1);
             let obj: any = {
-              promo: element.promocode,
+              promo: element1.promocode,
+              promoName:element1.promotionTypesNmae,
               customerPOProductId: element1.customerPOProductId,
               stockitemid: element1.customerPOProductId,
               stockitemname: element1.stockitemname,
@@ -525,8 +527,8 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
           element.promodetails.forEach((element1) => {
             element1.itemDetailsshipReceive.forEach((element2) => {
               let obj = {
-                promocode: element1.promocode,
-                promoName:element1.promotionTypesNmae,
+                promocode: element2.promocode,
+                promoName:element2.promotionTypesNmae,
                 InvoiceCPOProductId: element2.invoiceCPOProductId,
                 balanceQty: element2.balanceQty,
                 ReceivedQty: element2.receivedQty,
@@ -600,7 +602,7 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
   // Based on status
     this.status =  sessionStorage.getItem('OrderStatus');
     console.log("staus", this.status )
-    if (this.status === 'Draft' || this.status === 'Processed' || this.status === 'Ordered'|| this.status==='Confirmed') {
+    if (this.status === 'Draft' || this.status === 'Processing' || this.status === 'Submitted' || this.status==='Confirmed') {
       this.checkstatus = true;
     }
     else {
@@ -613,19 +615,25 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
 //     this.expandedRows[index] = !this.expandedRows[index];
 // }
 
-expandedPromocode: string = '';
+expandedPromocodes: string[] = [];
 
-    toggleRow(promocode: string): void {
-        if (this.expandedPromocode === promocode) {
-            this.expandedPromocode = ''; // Close the currently open rows
-        } else {
-            this.expandedPromocode = promocode; // Open the rows for the selected promocode
-        }
-    }
+toggleRow(promocode: string): void {
+  const index = this.expandedPromocodes.indexOf(promocode);
+
+  if (index !== -1) {
+    this.expandedPromocodes.splice(index, 1); // Collapse the row
+  } else {
+    this.expandedPromocodes.push(promocode); // Expand the row
+  }
+}
+
+isRowExpanded(promocode: string): boolean {
+  return !this.expandedPromocodes.includes(promocode);
+}
   ngOnChanges(): void {
     this.status = this.shipmentArray.status;
     console.log("staus", this.status )
-    if (this.status === 'Draft' || this.status === 'Processed' || this.status === 'Ordered') {
+    if (this.status === 'Draft' || this.status === 'Processing' || this.status === 'Submitted') {
       this.checkstatus = true;
     }
     else {

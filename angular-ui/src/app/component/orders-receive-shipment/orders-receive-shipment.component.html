@@ -262,9 +262,8 @@
 
 
           <div class="card mt-3 mb-2" *ngFor="let data of currentShipArray; let i = index">
-
+            <!-- {{data|json}} -->
             <div class="card-header OrdersItems">
-
               {{data.shipName}}</div>
             <div class="card-body p-0">
               <div class="" *ngIf="!shipmenttwo && !shipmentVisibility[data.shipName]">
@@ -281,11 +280,9 @@
                     </tr>
                   </thead>
                   <tbody *ngFor="let items of data.arrayIside; let j = index">
-
-                    <ng-container
-                      *ngIf="j >= 1 ? (items?.promocode !== data?.arrayIside[j - 1]?.promocode) : (j === 0)">
+                    <ng-container *ngIf="j === 0 || items.promoName !== data.arrayIside[j - 1]?.promoName">
                       <tr style="background: rgba(0,0,0,.03);">
-                        <td colspan="5" (click)="toggleRow(items.promocode)">
+                        <td colspan="5" (click)="toggleRow(items.promoName)">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-chevron-down" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
@@ -296,7 +293,7 @@
                       </tr>
                     </ng-container>
 
-                    <tr *ngIf="expandedPromocode !== items.promocode">
+                    <tr *ngIf="isRowExpanded(items.promoName)">
                       <td class="text_left text-secondary  pl-5 ">
                         <label style="position: relative;left: 42px;"
                           [ngClass]="{'FreePromoitems': items.isFreeItem===00 }">

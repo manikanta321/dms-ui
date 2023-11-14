@@ -498,7 +498,7 @@
                                     <th scope="col"  class="PRICE">Price</th>
                                     <th scope="col"  class="DISCOUNTPRICE">Discounted Price </th>
                                     <th scope="col"   class="QTY">QTY</th>
-                                    <th scope="col" class="SUBTOTAL">Sub Total</th>
+                                    <th scope="col" class="SUBTOTAL">Sub-Total</th>
                                     <th  scope="col"></th>
                                 </tr>
                                 
@@ -611,8 +611,8 @@
                                         <!-- <td></td> -->
                                         <td style="text-align: end;"><b>Total</b></td>
                                         <!-- <td style="text-align: end;"><b>{{(editTotalqty||0)+(productqty?.overallQty+nonPromoQTY)}}</b></td> -->
-                                        <td style="text-align: end;"><b>{{(shippingPackingchargeDetails.totalQty||0)}}</b></td>
-                                        <td style="text-align: center;"><b>${{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)}}</b></td>
+                                        <td style="text-align: end;"><b>{{(shippingPackingchargeDetails.totalQty||0)| currency:'USD':'symbol':'1.2-2'}}</b></td>
+                                        <td style="text-align: center;"><b>${{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)| currency:'USD':'symbol':'1.2-2'}}</b></td>
                                     </tr>
                                 </ng-container>
                             </table>
@@ -639,7 +639,7 @@
                                 </tr> -->
                                 <tr>
                                     <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';"><p style="margin-left: 20%;">Total value</p></td>
-                                    <td class="text-right numberss">{{ '$' + (shippingPackingchargeDetails.total ? shippingPackingchargeDetails.total : '0') }}
+                                    <td class="text-right numberss">{{ '$' + (shippingPackingchargeDetails.total ? shippingPackingchargeDetails.total : '0')}}
                                     </td>
 
                                 </tr>
@@ -1271,15 +1271,15 @@
                                             onfocus="this.checked=''"></td>
 
                                     <td style="text-align: left;">{{Item.productSKUName}}</td>
-                                    <td style="text-align: left;width: 321px;">{{Item.stockitemname}}</td>
+                                    <td style="text-align: left;width: 298px;">{{Item.stockitemname}}</td>
                                     <!-- <td>{{Item.materialcustomidentifier}}66</td> -->
-                                    <td style="text-align: left;">{{Item.materialCustomName}}</td>
+                                    <td style="text-align: left;padding-left: 20px;">{{Item.materialCustomName}}</td>
                                     <!-- <td>{{Item.classification}}</td> -->
                                     
-                                    <td style="position: relative;left: 37px;">{{Item.registrationNumber}}</td>
+                                    <td style="position: relative;left: 51px;">{{Item.registrationNumber}}</td>
                                     <td style="position: relative;left: 35px;">{{Item.moq}}</td>
 
-                                    <td style="display: flex;padding-left: 28px;"> ${{Item.price}}</td>
+                                    <td style="display: flex;padding-left: 44px;"> ${{Item.price}}</td>
                                     <!-- <td><input type="text" placeholder="Enter" class="quatity-inp"
                                                     [(ngModel)]="Item.stock"></td> -->
                                     <!-- <td>{{Item.stockqty}}</td> -->
@@ -1299,13 +1299,19 @@
                                                     [(ngModel)]="Item.quantity" 
                                                      (change)="quantityChange(Item)  "
                                                      ></td> -->
-                                    <td>
+                                    <td style="    position: relative;
+                                    left: 13px;">
 
                                             <input type="number" placeholder="Enter " class="quatity-inp" min="0"
                                             [(ngModel)]="Item.quantity"   (ngModelChange)="quantityChange(Item)"
                                             name="Item.quantity" oninput="validity.valid||(value='')">
                                     </td>
-                                    <td style="display: flex;padding-left: 82px;">{{(Item.quantity ?? 0) * Item.price }}</td>
+                                    <td style="display: flex; ">
+                                        <input disabled type="number" name="" [(ngModel)]="Item.quantity* Item.price"
+                                            [value]="(Item.quantity || 0) * Item.price"
+                                            [ngClass]="{'IteminputBoxesD': Item.discount == 100, 'IteminputBoxes': Item.discount != 100 } ||0"
+                                            style="text-align: right; border: none; background: none;">
+                                    </td>
                                 </ng-container>
                                 </tr>
 

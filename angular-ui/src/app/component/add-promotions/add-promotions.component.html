@@ -816,9 +816,9 @@
                               </table>
                         </form>
                        </div>
-                       <h3 class="mt-3" *ngIf="buyab || buysets">Minimum Order Quantity: <b>{{getMinimumQtyFromValue()}}</b></h3>
-                       <h3 class="mt-3" *ngIf=" header !== 'Edit' && (volumedc || pricedc)">Minimum Order Quantity: <b>{{ (selectedPromo === 3 ? moqNumber  : selectedPromo === 4 ? moqPrice: '0') }}</b></h3>
-                       <h3 class="mt-3" *ngIf="header === 'Edit' && (volumedc || pricedc)">Minimum Order Quantity: <b>{{ (selectedPromo === 3 ? specalmoq : selectedPromo === 4 ? specalmoq : '0') }}</b></h3>
+                       <h3 class="mt-3" style="margin-left: 18px;" *ngIf="buyab || buysets">Minimum Order Quantity: <b>{{getMinimumQtyFromValue()}}</b></h3>
+                       <h3 class="mt-3" style="margin-left: 18px;" *ngIf=" header !== 'Edit' && (volumedc || pricedc)">Minimum Order Quantity: <b>{{ (selectedPromo === 3 ? moqNumber  : selectedPromo === 4 ? moqPrice: '0') }}</b></h3>
+                       <h3 class="mt-3" style="margin-left: 18px;" *ngIf="header === 'Edit' && (volumedc || pricedc)">Minimum Order Quantity: <b>{{ (selectedPromo === 3 ? specalmoq : selectedPromo === 4 ? specalmoq : '0') }}</b></h3>
                     </form>
                 </mat-step>
 

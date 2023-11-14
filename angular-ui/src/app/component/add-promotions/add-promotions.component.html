@@ -287,7 +287,7 @@
                                                 -->
                                                 <mat-card class="list-item border border-success">
                                                     <mat-card-content class="item-in-box">
-                                                        <ul>
+                                                        <ul style="margin-left: -40px;">
                                                             <ul>
                                                                 <li
                                                                     *ngFor="let producttable of addbuyg?.productselectedRows">
@@ -770,13 +770,13 @@
                        <div class="count card m-3" *ngIf="buyab || buysets">
                         <form [formGroup]="promotionForm">
                             <table class="table" >
-                                <thead style="background: rgba(1, 139, 117, 1); color: white;">
+                                <thead style="background: rgba(1, 139, 117, 1); color: white; font-weight: 400;">
                                   <tr>
-                                    <th scope="col">QTY From</th>
-                                    <th scope="col">QTY To</th>
-                                    <th scope="col">Buy</th>
-                                    <th scope="col">Get</th>
-                                    <th scope="col">Additional</th>
+                                    <th style="font-weight: 500px;" scope="col">QTY From</th>
+                                    <th style="font-weight: 500px;"scope="col">QTY To</th>
+                                    <th style="font-weight: 500px;"scope="col">Buy</th>
+                                    <th style="font-weight: 500px;"scope="col">Get</th>
+                                    <th style="font-weight: 500px;"scope="col">Additional</th>
                                     <th scope="col" (click)="addNewRow()">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16" style="font-weight: 600;">
                                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>

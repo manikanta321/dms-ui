@@ -270,7 +270,7 @@
                                 <table class="TOtalCalculations" *ngIf="shippingPackingchargeDetails">
                                     <tr>
                                         <td class="text-left SUBITEMNAME ml-5"><p style="margin-left: 20%;margin-top: 7px;">Subtotal</p></td>
-                                        <td class="text-right numbers ">{{shippingPackingchargeDetails.subTotal}}</td>
+                                        <td class="text-right numbers ">{{shippingPackingchargeDetails.subTotal| currency:'USD':'symbol':'1.2-2'}}</td>
                                     </tr>
                                     <tr>
                                         <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;">Packing Charge</p></td>
@@ -611,8 +611,8 @@
                                         <!-- <td></td> -->
                                         <td style="text-align: end;"><b>Total</b></td>
                                         <!-- <td style="text-align: end;"><b>{{(editTotalqty||0)+(productqty?.overallQty+nonPromoQTY)}}</b></td> -->
-                                        <td style="text-align: end;"><b>{{(shippingPackingchargeDetails.totalQty||0)| currency:'USD':'symbol':'1.2-2'}}</b></td>
-                                        <td style="text-align: center;"><b>${{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)| currency:'USD':'symbol':'1.2-2'}}</b></td>
+                                        <td style="text-align: end;"><b>{{(shippingPackingchargeDetails.totalQty||0)}}</b></td>
+                                        <td style="text-align: center;"><b>{{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)| currency:'USD':'symbol':'1.2-2'}}</b></td>
                                     </tr>
                                 </ng-container>
                             </table>
@@ -622,7 +622,7 @@
                                 <tr>
                                     <td class="text-left SUBITEMNAME ml-5"><p style="margin-left: 20%;margin-top: 7px;">Subtotal</p></td>
                                     <td class="text-right numbers">
-                                        {{ '$' + (shippingPackingchargeDetails.subTotal ? shippingPackingchargeDetails.subTotal : '0') }}
+                                        {{  (shippingPackingchargeDetails.subTotal ? shippingPackingchargeDetails.subTotal : '0')| currency:'USD':'symbol':'1.2-2'}}
                                     </td>                                
                                 </tr>
                                 <tr>
@@ -639,7 +639,7 @@
                                 </tr> -->
                                 <tr>
                                     <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';"><p style="margin-left: 20%;">Total value</p></td>
-                                    <td class="text-right numberss">{{ '$' + (shippingPackingchargeDetails.total ? shippingPackingchargeDetails.total : '0')}}
+                                    <td class="text-right numberss">{{  (shippingPackingchargeDetails.total ? shippingPackingchargeDetails.total : '0')| currency:'USD':'symbol':'1.2-2'}}
                                     </td>
 
                                 </tr>
@@ -1276,8 +1276,11 @@
                                     <td style="text-align: left;padding-left: 20px;">{{Item.materialCustomName}}</td>
                                     <!-- <td>{{Item.classification}}</td> -->
                                     
-                                    <td style="position: relative;left: 51px;">{{Item.registrationNumber}}</td>
-                                    <td style="position: relative;left: 35px;">{{Item.moq}}</td>
+                                    <td style="position: relative; left:-41px">
+                                        <input style="text-align: right;border: none; background: none;" disabled type="" name="" [(ngModel)]="Item.registrationNumber"
+                                            [value]="(Item.registrationNumber)">
+                                    </td>
+                                    <td style="position: relative;left: 32px;">{{Item.moq}}</td>
 
                                     <td style="display: flex;padding-left: 44px;"> ${{Item.price}}</td>
                                     <!-- <td><input type="text" placeholder="Enter" class="quatity-inp"

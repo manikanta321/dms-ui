@@ -572,6 +572,7 @@ div.catg[data-selected] {
 
 li {
   list-style: none;
+  margin-left: -38px;
 }
 
 /* ::ng-deep.mat-horizontal-content-container {
@@ -692,11 +693,11 @@ li {
 }
 
 .addproImg {
-  width: 386px;
+  width: 389px;
     height: 130px;
     margin-top: -15px;
     border-radius: 10px;
-    margin-left: -4px;
+    margin-left: -5px;
 }
 
  :host::ng-deep.myDatepicker .mat-form-field {

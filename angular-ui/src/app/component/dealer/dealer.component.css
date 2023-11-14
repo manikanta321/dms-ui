@@ -38,7 +38,7 @@ mat-sidenav-content{
     height: 100vh;
     border-radius: 33px;
     padding: 10px;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
     /* background: linear-gradient(90deg, rgba(206, 212, 218, 0.75) 2.01%, rgba(248, 249, 250, 0) 92.01%); */
 }
 mat-sidenav-container {

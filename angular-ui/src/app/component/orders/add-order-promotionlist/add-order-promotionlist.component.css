@@ -2292,54 +2292,61 @@ letter-spacing: 0.04em;
 }
 
 .quatity-inp1 {
-  width: 80%;
+  width: 100%;
   height: 25px;
   background: #FFFFFF;
-  border: 0.5px solid #000000;
-  border-radius: 10px;
+  border: 1px solid #E1E2E3;
+  border-radius: 5px;
   text-align: right;
   margin-left: -54px;
+  margin-top: 4px;
 }
 .quatity-inp2{
-  width: 50%;
+  width: 70%;
   height: 25px;
   background: #FFFFFF;
-  border: 0.5px solid #000000;
+  border: 1px solid #E1E2E3;
   border-radius: 5px;
   text-align: right;
+  margin-top: 4px;
 }
 .quatity-inp3 {
-  width: 50%;
+  width: 70%;
   height: 25px;
   background: #FFFFFF;
-  border: 0.5px solid #000000;
+  border: 1px solid #E1E2E3;
   border-radius: 5px;
   text-align: right;
+  margin-top: 4px;
 }
 .quatity-inp4 {
-  width: 50%;
+  width: 70%;
   height: 25px;
   background: #FFFFFF;
-  border: 0.5px solid #000000;
+  border: 1px solid #E1E2E3;
   border-radius: 5px;
   text-align: right;
+  margin-top: 4px;
 }
 .quatity-inp5 {
-  width: 50%;
+  width: 70%;
   height: 25px;
   background: #FFFFFF;
-  border: 0.5px solid #000000;
+  border: 1px solid #E1E2E3;
   border-radius: 5px;
   text-align: right;
+  margin-top: 4px;
 }
 .quatity-inp6 {
-  width: 50%;
+  width: 70%;
   height: 25px;
   background: #FFFFFF;
-  border: 0.5px solid #000000;
+  border: 1px solid #E1E2E3;
   border-radius: 5px;
   text-align: right;
+  margin-top: 4px;
 }
+ 
  
  
 .Product_namefirstpromo

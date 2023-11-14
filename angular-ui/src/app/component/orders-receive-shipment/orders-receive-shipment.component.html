@@ -91,10 +91,10 @@
                         </th>
                         <th scope="col" style="position: relative;right: 18px;">Product Name</th>
                         <th scope="col" class=" TOtalorderQTY  text-align: end ;" style="position: relative;left: 99px;;">Price</th>
-                        <th scope="col" class="  TOtalorderQTY text-align: end;" style="    position: relative;left: 197px;;">Discount Price
+                        <th scope="col" class="  TOtalorderQTY text-align: end;" style="    position: relative;left: 197px;;">Discounted Price
                         </th>
                         <th scope="col" class=" TOtalorderQTY text-align: end;" style="position: relative;left: 90px;">QTY</th>
-                        <th scope="col" class=" TOtalorderQTY text-align: center;" style="position: relative;left: 96px;;">Sub-Total
+                        <th scope="col" class=" TOtalorderQTY text-align: center;" style="position: relative;left: 90px;;">Sub-Total
                         </th>
                       </tr>
                     </thead>
@@ -153,7 +153,7 @@
                       <td style="text-align: end;"><span class="Total-Orderinfo">{{shipmentArray.orderedQty}}</span>
                       </td>
                       <td style="position: relative;text-align: right;right: 48px;"><span
-                          class="Total-Orderinfo">${{shipmentArray.subTotal}}</span></td>
+                          class="Total-Orderinfo">{{shipmentArray.subTotal| currency:'USD':'symbol':'1.2-2'}}</span></td>
                     </tr>
                   </table>
                 </div>
@@ -162,11 +162,11 @@
                   <table class="totall">
                     <tr class="subitem">
                       <td class="text-left SUBITEMNAME">Sub-total</td>
-                      <td class="text-right numbers"><span class="SUBTOTALORDERS"> ${{shipmentArray.subTotal}}</span>
+                      <td class="text-right numbers"><span class="SUBTOTALORDERS"> {{shipmentArray.subTotal| currency:'USD':'symbol':'1.2-2'}}</span>
                       </td>
                     </tr>
                     <tr class="subitem">
-                      <td class="text-left SUBITEMNAME"> Packing Charge</td>
+                      <td class="text-left SUBITEMNAME"> Packing Charges</td>
                       <td class="text-right numbers"><span class="SUBTOTALORDERS"> ${{shipmentArray.pakingCharge}}</span>
                       </td>
                     </tr>
@@ -246,11 +246,11 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="numeric text-secondary">${{shipmentArray.totalOrderedValue}}</td>
-                    <td class="numeric text-secondary">${{shipmentArray.inTransitValue}}</td>
-                    <td class="numeric text-secondary">${{shipmentArray.yetToShipValue}}</td>
-                    <td class="numeric text-secondary">${{shipmentArray.receivedOrderValue}}</td>
-                    <td class="numeric text-secondary">${{shipmentArray.yetToReceiveValue}}</td>
+                    <td class="numeric text-secondary">{{shipmentArray.totalOrderedValue | currency:'USD':'symbol':'1.2-2'}}</td>
+                    <td class="numeric text-secondary">{{shipmentArray.inTransitValue | currency:'USD':'symbol':'1.2-2'}}</td>
+                    <td class="numeric text-secondary">{{shipmentArray.yetToShipValue | currency:'USD':'symbol':'1.2-2'}}</td>
+                    <td class="numeric text-secondary">{{shipmentArray.receivedOrderValue | currency:'USD':'symbol':'1.2-2'}}</td>
+                    <td class="numeric text-secondary">{{shipmentArray.yetToReceiveValue | currency:'USD':'symbol':'1.2-2'}}</td>
                     <td></td>
                     <td></td>
                   </tr>
@@ -506,7 +506,7 @@
                     </div>
                     <div class="total_total">
                       <p class="alltotals totaltotal">Total</p>
-                      <span id="totallssss">{{shipmentArray.total}}</span>
+                      <span id="totallssss">{{shipmentArray.total| currency:'USD':'symbol':'1.2-2'}}</span>
                     </div>
                   </div>
                 </div>

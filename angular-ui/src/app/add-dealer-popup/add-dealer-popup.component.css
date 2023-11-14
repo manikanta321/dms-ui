@@ -213,7 +213,7 @@ li {
 .input-country-cls {
   background: #FFFFFF;
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   margin-right: 10px;
   font-size: 11px;
@@ -230,7 +230,7 @@ li {
 .input-district-cls {
   background: #FFFFFF;
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   margin-right: 10px;
   font-size: 11px;
@@ -246,7 +246,7 @@ li {
 .input-region-cls {
   background: #FFFFFF;
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   margin-right: 10px;
   font-size: 11px;
@@ -263,7 +263,7 @@ li {
 .input-countrycode-cls {
   background: #FFFFFF;
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   margin-right: 10px;
   font-size: 11px;
@@ -279,7 +279,7 @@ li {
 .input-district-cls {
   background: #FFFFFF;
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+  /* box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   margin-right: 10px;
   font-size: 11px;
@@ -297,7 +297,7 @@ li {
 .addcode {
   background: #000;
   border: 0.5px solid #000000;
-  box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%);
+  /* box-shadow: 4px 4px 8px rgb(0 0 0 / 20%), -4px -4px 8px rgb(255 255 255 / 20%); */
   border-radius: 5px;
   font-size: 11px;
   color: rgba(104, 110, 116, 0.75);
@@ -1682,7 +1682,7 @@ li {
   /* color: red; */
   cursor: pointer;
   color: red;
-  left: 23px;
+  left: 22px;
 }
 
 .remove-admin{
@@ -1716,7 +1716,7 @@ li {
 }
 .addMore-iconn {
   cursor: pointer;
-  margin-left: 58px;
+  margin-left: 59px;
   position: relative;
   top: 30px;
   color: rgba(1, 139, 117, 1);

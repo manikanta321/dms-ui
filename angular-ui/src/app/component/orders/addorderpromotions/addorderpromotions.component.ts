@@ -1976,6 +1976,7 @@ export class AddorderpromotionsComponent implements OnInit {
         selectedNonPromotionItem == undefined
           ? null
           : selectedNonPromotionItem.taxid;
+      obj.moq= item.moq;
       formattedList.push(obj);
     });
 

@@ -2291,79 +2291,118 @@ letter-spacing: 0.04em;
   border-radius: 8px;
 }
 
-.quatity-inp {
-  width: 91%;
+.quatity-inp1 {
+  width: 80%;
+  height: 25px;
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  border-radius: 10px;
+  text-align: right;
+  margin-left: -54px;
+}
+.quatity-inp2{
+  width: 50%;
   height: 25px;
   background: #FFFFFF;
   border: 0.5px solid #000000;
   border-radius: 5px;
-  text-align: right; 
+  text-align: right;
 }
+.quatity-inp3 {
+  width: 50%;
+  height: 25px;
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  border-radius: 5px;
+  text-align: right;
+}
+.quatity-inp4 {
+  width: 50%;
+  height: 25px;
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  border-radius: 5px;
+  text-align: right;
+}
+.quatity-inp5 {
+  width: 50%;
+  height: 25px;
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  border-radius: 5px;
+  text-align: right;
+}
+.quatity-inp6 {
+  width: 50%;
+  height: 25px;
+  background: #FFFFFF;
+  border: 0.5px solid #000000;
+  border-radius: 5px;
+  text-align: right;
+}
+ 
+ 
 .Product_namefirstpromo
 {
   position: relative;
-  right: 2%;
+  /* right: 2%; */
 }
 .identifiresfirst
 {
   position: relative;
-  left:14.5%;
+  /* left:14.5%; */
 }
 .RegisNO
 {
   position: relative;
-  left: 9%;
+  /* left: 9%; */
 }
 .MOQFirst
 {
   position: relative;
-  left: 8%;
+  /* left: 8%; */
 }
 .UNITprice
 {
   position: relative;
-  left: 4%;
+  /* left: 4%; */
 }
-.QUantityFirst
-{
-  position: relative;
-  right: 66px;
-}
+ 
 .ordderQTY
 {
   position: relative;
-  left: 1%;
+  /* left: 1%; */
 }
 .GetgroupProductname
 {
   position: relative;
-  right: 2%;
-
+  /* right: 2%; */
+ 
 }
 .GetGroupIdentifiers
 {
   position: relative;
-  left: 15%;
+  /* left: 15%; */
 }
 .Getgroupregistion
 {
   position: relative;
-  left: 8%;
+  /* left: 8%; */
 }
 .moqGetGroup
 {
   position: relative;
-  left: 8%;
+  /* left: 8%; */
 }
 .GetgriuoUNITprice
 {
   position: relative;
-  left: 4%;
+  /* left: 4%; */
 }
 .OrderQtyGetgroup
 {
   position: relative;
-  left: 1%;
+  /* left: 1%; */
 }
 .secondpromoProductname
 {
@@ -2373,57 +2412,57 @@ letter-spacing: 0.04em;
 .secondPromoidentifiers
 {
   position: relative;
-  left: 15%;
+  /* left: 15%; */
 }
 .secondprmoregistration
 {
   position: relative;
-  left: 11%;
+  /* left: 11%; */
 }
 .secondpromoMOQ
 {
   position: relative;
-  left: 10%;
+  /* left: 10%; */
 }
 .secondPromoUnitPrice
 {
   position: relative;
-  left: 6%;
+  /* left: 6%; */
 }
 .quantitySecondPromo
 {
   position: relative;
-  left: 5%;
+  /* left: 5%; */
 }
 .SecondPromoFreeitemsProduct
 {
   position: relative;
-  right: 19px;
+  /* right: 19px; */
 }
 .SecondPromofreeIdettifiers
 {
   position: relative;
-  left: 16%;
+  /* left: 16%; */
 }
 .SecondPromoFreeREgi
 {
   position: relative;
-  left: 12%;
+  /* left: 12%; */
 }
 .SecondPromotionsFreeMOQ
 {
   position: relative;
-  left: 12%;
+  /* left: 12%; */
 }
 .MOQSecondPromoUnitPrice
 {
   position: relative;
-  left: 4%;
+  /* left: 4%; */
 }
 .OrderQtySeconsPrmotions
 {
   position: relative;
-  left: 1%;
+  /* left: 1%; */
 }
 .ThirPrmoProductname
 {
@@ -2433,69 +2472,69 @@ letter-spacing: 0.04em;
 .ThirPromoIdentifiers
 {
   position: relative;
-  left: 17%;
+  /* left: 17%; */
 }
 .ThirdPromoRegistration
 {
   position: relative;
-  left: 13%;
+  /* left: 13%; */
 }
 .ThirdPromotionsMOQ
 {
   position: relative;
-  left: 13%;
+  /* left: 13%; */
 }
 .ThirdPrmotionsUnitPrice
 {
   position: relative;
-  left: 9%;
+  /* left: 9%; */
 }
 .thirdPromotionOrdderqty
 {
   position: relative;
-  left: 8%;
+  /* left: 8%; */
 }
 .ThirdPromotionsFinalPrice
 {
   position: relative;
-  left: 6%;
+  /* left: 6%; */
 }
 .ForthPromotionProductname
 {
   position: relative;
-  right: 2%;
+  /* right: 2%; */
 }
 .forthPromotionIdentifiers
 {
   position: relative;
-  left: 17%;
+  /* left: 17%; */
 }
 .ForthPrommotionREgisno
 {
   position: relative;
-  left: 13%;
+  /* left: 13%; */
 }
 .ForthPromotionsMOQ
 {
   position: relative;
-  left: 13%;
+  /* left: 13%; */
 }
 .ForthPromoUnitPrice
 {
   position: relative;
-  left: 9%;
+  /* left: 9%; */
 }
 .ForthPromotionsOrderQty
 {
   position: relative;
-  left: 7%;
+  /* left: 7%; */
 }
 .ForthPromotionsFinalPrice
 {
   position: relative;
-  left: 5%;
+  /* left: 5%; */
 }
-
+ 
 table {
   /* padding: 10px; */
   /* border-collapse: collapse; */
@@ -2505,24 +2544,24 @@ table {
   /* background: white; */
   font-size: 13px;
 }
-
+ 
 th {
   padding: 10px;
 }
-
+ 
 /* td {
   text-align: left;
   padding: 3px 0 0 10px;
 } */
-
+ 
 ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
   background: black !important;
 }
-
+ 
 tr:nth-child(even) {
   background: rgba(222, 226, 230, 0.2);
 }
-
+ 
 .bottom-table {
   background: linear-gradient(0deg, #018B75, #018B75)!important;
   border-radius: 0px 0px 24.5px 24.5px;
@@ -2558,7 +2597,7 @@ tr:nth-child(even) {
   border:rgba(152, 156, 160, 1);
   color: white;
 }
-
+ 
 /* .p1Tag {
   padding: 10px;
   background-color: rgb(24, 125, 221);
@@ -2569,9 +2608,9 @@ tr:nth-child(even) {
   height: 32px;
   text-align: center;
   display: none;
-
-
-
+ 
+ 
+ 
   position: relative;
   left: 92px;
   top: 0px;
@@ -2579,25 +2618,25 @@ tr:nth-child(even) {
   padding-top: 5px;
   padding-left: 7px;
 } */
-
+ 
 .warningicon {
   color: red;
 }
-
+ 
 .btm-total {
   padding: 7px;
 }
-
+ 
 .buysetHead {
   font-size: 15px;
   text-decoration: underline;
 }
-
+ 
 .getsetHead {
   font-size: 15px;
   text-decoration: underline;
 }
-
+ 
 .buysetOR:after {
   content: "";
   display: block;
@@ -2608,7 +2647,7 @@ tr:nth-child(even) {
   top: 42%;
   position: absolute;
 }
-
+ 
 .buysetOR:before {
   content: "";
   display: block;
@@ -2619,7 +2658,7 @@ tr:nth-child(even) {
   top: 42%;
   position: absolute;
 }
-
+ 
 .getsetOR:after {
   content: "";
   display: block;
@@ -2630,7 +2669,7 @@ tr:nth-child(even) {
   top: 81%;
   position: absolute;
 }
-
+ 
 .getsetOR:before {
   content: "";
   display: block;
@@ -2641,9 +2680,9 @@ tr:nth-child(even) {
   top: 81%;
   position: absolute;
 }
-
-
-
+ 
+ 
+ 
 .line-txt {
   text-align: center;
   padding: 10px;
@@ -2656,7 +2695,7 @@ tr:nth-child(even) {
   position: relative;
   margin-bottom: 30px;
 }
-
+ 
 .line-txt::before {
   position: absolute;
   /* width: 100%; */
@@ -2668,7 +2707,7 @@ tr:nth-child(even) {
   content: '';
   background: black;
 }
-
+ 
 .line-txtt::before {
   position: absolute;
   width: 87%;
@@ -2686,8 +2725,8 @@ tr:nth-child(even) {
   font-weight: 500;
   /* color: rgba(1, 139, 117, 0.8)!important; */
   color: #000;
-
-  
+ 
+ 
 }
 .line-txt span {
   display: inline-block;
@@ -2697,14 +2736,14 @@ tr:nth-child(even) {
   font-weight: 500;
   /* color: rgba(1, 139, 117, 0.8)!important; */
   color: #000;
-
-  
+ 
+ 
 }
-
+ 
   .card1.selected {
   border: 5px solid #187ddd;
 }  
-
+ 
 .txt-error {
   color: red;
   /* display: block; */
@@ -2713,46 +2752,47 @@ tr:nth-child(even) {
   text-align: left;
  }
  
-
+ 
 .double-tick {
   margin-left: 0.25rem;
   cursor: pointer;
 }
-
+ 
 .quatity-inp[disabled],
 .tax-select[disabled] {
   background: #ddd;
   cursor: not-allowed;
 }
-
+ 
 .saveas-draft1[disabled] {
   background: #52a799;
   color:  #FFFFFF;
   cursor: not-allowed;
 }
-
+ 
 .text-error-qty {
   text-decoration: dotted !important;
   position: absolute;
   top: 5px;
   right: 0;
 }
-
+ 
 .sub-heading{
   position: relative;
 }
-
+ 
 .txt-error-span{
   color: red !important;
 }
-
+ 
 .txt-right{
   /* text-align: right; */
-  text-align: center;
-  padding-right: 15px;
+  /* text-align: center;
+  padding-right: 15px; */
 }
-
+ 
 .red-row {
   background-color: rgb(249, 15, 147);
-  color: white; 
+  color: white;
 }
+ 

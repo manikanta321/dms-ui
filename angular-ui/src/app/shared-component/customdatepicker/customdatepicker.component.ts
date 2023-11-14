@@ -42,7 +42,7 @@ export class CustomdatepickerComponent implements OnInit {
       range: [dayjs().startOf('month'), dayjs().endOf('month')],
     },
     {
-      title: 'This Quater',
+      title: 'This Quarter',
       range: [dayjs(moment().startOf('quarter').format('DD MMM YY')), dayjs(moment().endOf('quarter').format('DD MMM YY'))],
     },
     {
@@ -54,7 +54,7 @@ export class CustomdatepickerComponent implements OnInit {
       range: [dayjs().subtract(1, 'month').startOf('month'), dayjs().subtract(1, 'month').endOf('month')]
     },
     {
-      title: 'Last Quater',
+      title: 'Last Quarter',
       range: [dayjs(moment().subtract(1, 'quarter').startOf('quarter').format('DD MMM YY')), dayjs(moment().subtract(1, 'quarter').endOf('quarter').format('DD MMM YY'))],
     },
     {

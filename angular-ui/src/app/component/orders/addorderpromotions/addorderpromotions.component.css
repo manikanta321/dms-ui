@@ -320,8 +320,14 @@ border-top-right-radius: 13px;
 }
 .numbers
 {
-  padding-right: 11%;
+  padding-right: 17%;
   color: rgba(1, 139, 117, 1);
+
+}
+.numberss
+{
+  padding-right: 17%;
+  color:black;
 
 }
 .SUBITEMNAME {
@@ -2072,7 +2078,7 @@ margin-left: 230px;
   align-items: center;
   text-align: center;
 
-  color: #000000;
+  color:white;
 
 
 }
@@ -2434,7 +2440,7 @@ right: -65px;
   text-align: right;
   border: none;
   position: relative;
-  left: 58px;
+  left: 20px;
   /* left: 19px; */
   background: none;
 }

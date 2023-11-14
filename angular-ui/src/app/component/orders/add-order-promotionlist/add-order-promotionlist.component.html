@@ -231,7 +231,7 @@
                                                                                 </td> -->
     
     
-                                                                              <td style="width: 24px">
+                                                                              <td style="width: 0px">
                                                                                     <input type="checkbox"
                                                                                         [checked]="Item.isProductSelected"
                                                                                         (change)="checkboxChange($event, Item,data)"/>
@@ -239,24 +239,24 @@
                                                                               
                                                                                
                                                                                   
-                                                                                <td>{{ Item.productSKUName }}</td>
-                                                                                <td style="width: 30%;">{{ Item.stockitemname }}</td>
+                                                                                <td style="padding-left: 61px;"style="padding-left: 61px;">{{ Item.productSKUName }}</td>
+                                                                                <td style="padding-left: 8px;">{{ Item.stockitemname }}</td>
                                                                                    
-                                                                                <td >{{  Item.materialcustomidentifier }}</td>
+                                                                                <td  style="padding-left: 8px;">{{  Item.materialcustomidentifier }}</td>
                                                                                   
-                                                                                <td >{{ Item.registrationNumber }}</td>   
-                                                                                <td >{{ promos.moq }}</td>
-                                                                                <td >${{ Item.price }}</td>
-                                                                                <td  class="QUantityFirst">
+                                                                                <td style="padding-left: 8px;">{{ Item.registrationNumber }}</td>   
+                                                                                <td style="padding-left: 30px;">{{ promos.moq }}</td>
+                                                                                <td style="padding-left: 42px;">${{ Item.price }}</td>
+                                                                                <td style="padding-left: 61px;" class="QUantityFirst">
                                                                                     <input type="number" min="0"
                                                                                         placeholder="Enter Qty"
-                                                                                        class="quatity-inp"
+                                                                                        class="quatity-inp1"
                                                                                         [(ngModel)]="Item.Quantity"
                                                                                         oninput="validity.valid||(value='');"
                                                                                         (keyup)="quantityChange(data,Item);"
                                                                                         name="Item.Quantity" />
                                                                                 </td>
-                                                                                <td style="text-align: center;padding: 5px;">{{ (Item.Quantity ??
+                                                                                <td style="text-align: center">{{ (Item.Quantity ??
                                                                                     0) * Item.price | number : '1.2-2' }}
                                                                                 </td>
     
@@ -367,23 +367,23 @@
                                                                             [checked]="Item.isProductSelected"
                                                                             (change)="checkboxChange($event,Item, data)">
                                                                     </td>
-                                                                    <td >{{Item.productSKUName}}
+                                                                    <td style="padding-left: 40px;" >{{Item.productSKUName}}
                                                                     </td>
-                                                                    <td style="width: 30%;">{{Item.stockitemname}}
+                                                                    <td >{{Item.stockitemname}}
                                                                     </td>
                                                                     <td >
                                                                         {{Item.materialcustomidentifier}}</td>
-                                                                    <td>
+                                                                    <td style="padding-left: 40px;" >
                                                                         {{Item.registrationNumber}}
                                                                     </td>
-                                                                    <td >{{promos.moq}}</td>
-                                                                    <td >${{Item.price}}</td>
-                                                                    <td class="QUantityFirst"><input type="number" placeholder="Enter Qty" min="0"
-                                                                            class="quatity-inp" [(ngModel)]="Item.Quantity"
+                                                                    <td style="padding-left: 25px;" >{{promos.moq}}</td>
+                                                                    <td style="padding-left: 33px;" >${{Item.price}}</td>
+                                                                    <td style="margin-left: 65px" class="QUantityFirst"><input type="number" placeholder="Enter Qty" min="0"
+                                                                            class="quatity-inp2" [(ngModel)]="Item.Quantity"
                                                                             (keyup)="quantityChange(data, Item)"
                                                                             oninput="validity.valid||(value='');">
                                                                     </td>
-                                                                    <td class="txt-right">{{((Item.price) *
+                                                                    <td   class="txt-right" style="text-align: center;">{{((Item.price) *
                                                                         (Item.Quantity))|number : '1.2-2' }}</td>
                                                                 </ng-container>
                                                             </tr>
@@ -518,14 +518,14 @@
                                                                     </td>
                                                                     <td >{{Item.productSKUName}}
                                                                     </td>
-                                                                    <td style="width: 30%;">{{Item.stockitemname}}
+                                                                    <td >{{Item.stockitemname}}
                                                                     </td>
                                                                     <td >
                                                                         {{Item.materialcustomidentifier}}</td>
-                                                                    <td style="position: relative;left: 0%;">
+                                                                    <td style="position: relative;padding-left: 28px;">
                                                                         {{Item.registrationNumber}}</td>
-                                                                    <td style="position: relative;left: 1%;">{{promos.moq}}</td>
-                                                                    <td style="position: relative;left: 1%;">${{Item.price}}</td>
+                                                                    <td style="position: relative;padding-left: 12px;">{{promos.moq}}</td>
+                                                                    <td style="position: relative;padding-left: 28px;">${{Item.price}}</td>
                                                                     <!-- <td><input type="number" placeholder="Enter"
                                                                             [disabled]="!promos.isEnable" class="quatity-inp"
                                                                             [(ngModel)]="Item.stock"></td> -->
@@ -545,10 +545,10 @@
                                                                             alt="double-blue-tick">
                                                                     </td> -->
                                                                     <td>
-                                                                        <input type="number" placeholder="Enter Qty" min="0" class="quatity-inp" [(ngModel)]="Item.Quantity"
+                                                                        <input type="number" placeholder="Enter Qty" min="0" class="quatity-inp3" [(ngModel)]="Item.Quantity"
                                                                             [disabled]="!promos.isEnable" oninput="validity.valid||(value='')" (keyup)="quantityChange(data, Item)">
                                                                     </td>
-                                                                    <td class="txt-right">{{((Item.Quantity ?? 0) *
+                                                                    <td class="txt-right" style="text-align: center;">{{((Item.Quantity ?? 0) *
                                                                         Item.price)|
                                                                         number : '1.2-2'
                                                                         }}
@@ -712,16 +712,16 @@
                                                                             [checked]="Item.isProductSelected"
                                                                             (change)="checkboxChange($event,Item, data)">
                                                                     </td>
-                                                                    <td style="text-align: left;">{{Item.productSKUName}}
+                                                                    <td >{{Item.productSKUName}}
                                                                     </td>
-                                                                    <td style="width: 30%;">{{Item.stockitemname}}
+                                                                    <td >{{Item.stockitemname}}
                                                                     </td>
                                                                     <td >
                                                                         {{Item.materialcustomidentifier}}</td>
-                                                                    <td style="position: relative;left: 1%;">
+                                                                    <td style="position: relative; padding-left: 20px;">
                                                                         {{Item.registrationNumber}}</td>
-                                                                    <td style="position: relative;left: 3%;">{{promos.moq}}</td>
-                                                                    <td style="position: relative;left: -2%;" >${{Item.price}}</td>
+                                                                    <td style="position: relative;padding-left: 21px;">{{promos.moq}}</td>
+                                                                    <td style="position: relative;padding-left: 28px;" >${{Item.price}}</td>
                                                                     <!-- <td><input type="number" placeholder="Enter"
                                                                             [disabled]="!promos.isEnable" class="quatity-inp"
                                                                             [(ngModel)]="Item.stock"></td> -->
@@ -740,13 +740,13 @@
                                                                             (click)="doubleClick(promos.stockitemid, Item.Taxid)"
                                                                             alt="double-blue-tick">
                                                                     </td> -->
-                                                                    <td style="position: relative;right: 4%;"><input type="number" placeholder="Enter Qty"
-                                                                            class="quatity-inp" min="0"
+                                                                    <td style="position: relative; margin-left: 53px; "><input type="number" placeholder="Enter Qty"
+                                                                            class="quatity-inp4" min="0"
                                                                             [disabled]="!promos.isEnable"
                                                                             [(ngModel)]="Item.Quantity"
                                                                             oninput="validity.valid||(value='')"
                                                                             (keyup)="quantityChange(data, Item)"></td>
-                                                                    <td class="txt-right">{{((Item.Quantity ?? 0) *
+                                                                    <td class="txt-right" style="text-align: center;">{{((Item.Quantity ?? 0) *
                                                                         Item.price)|
                                                                         number : '1.2-2'
                                                                         }}</td>
@@ -928,7 +928,7 @@
                                                                     <td style="text-align: left;">{{Item.productSKUName}}
                                                                     </td>
     
-                                                                    <td style="width: 30%;border-color: bisque;">{{Item.stockitemname}}
+                                                                    <td style="border-color: bisque;">{{Item.stockitemname}}
                                                                     </td>
     
                                                                     <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td>  -->
@@ -936,12 +936,12 @@
                                                                     <td style="text-align: left;">
                                                                         {{Item.materialcustomidentifier}}</td>
     
-                                                                    <td style="position: relative;left: 4%;">
+                                                                    <td style="position: relative;    padding-left: 22px">
                                                                         {{Item.registrationNumber}}
                                                                     </td>
-                                                                    <td class="txt-right">{{data.promoDetails.moq}}</td>
+                                                                    <td class="txt-right" style="padding-left: 8px;">{{data.promoDetails.moq}}</td>
     
-                                                                    <td class="txt-right">${{Item.price}}</td>
+                                                                    <td class="txt-right" style="    padding-left: 30px;">${{Item.price}}</td>
     
                                                                     <!-- <td><input type="number" placeholder="Enter" class="quatity-inp"
     
@@ -976,16 +976,16 @@
                                                                 </td> -->
     
                                                                     <td><input type="number" placeholder="Enter Qty" min="0"
-                                                                            class="quatity-inp" [(ngModel)]="Item.Quantity"
+                                                                            class="quatity-inp5" [(ngModel)]="Item.Quantity"
                                                                             oninput="validity.valid||(value='')"
                                                                             (keyup)="quantityChange(data, Item)"></td>
     
-                                                                    <td class="txt-right"> {{(Item.finalPrice) | number :
+                                                                    <td class="txt-right" style="    padding-left: 42px;"> {{(Item.finalPrice) | number :
                                                                         '1.2-2'}}
     
                                                                     </td>
     
-                                                                    <td class="txt-right">{{Item.DiscountAmount ?? 0 |
+                                                                    <td class="txt-right" style="text-align: center;">{{Item.DiscountAmount ?? 0 |
     
                                                                         currency:'':''}}</td>
                                                                 </ng-container>
@@ -1127,18 +1127,18 @@
                                                                         </td>
                                                                         <td style="text-align: left;">
                                                                             {{Item.productSKUName}}</td>
-                                                                        <td style="width: 30%;">{{Item.stockitemname}}
+                                                                        <td >{{Item.stockitemname}}
                                                                         </td>
                                                                         <!-- <td style="text-align: left;">{{Item.materialCustomName}}</td> -->
-                                                                        <td style="position: relative;left: 8px;">
+                                                                        <td style="position: relative;">
                                                                             {{Item.materialcustomidentifier}}
                                                                         </td>
-                                                                        <td style="position: relative;left: 4%;">
+                                                                        <td style="position: relative;padding-left: 22px">
                                                                             {{Item.registrationNumber}}
                                                                         </td>
-                                                                        <td class="txt-right">{{data.promoDetails.moq}}</td>
+                                                                        <td class="txt-right" style="padding-left: 8px;" >{{data.promoDetails.moq}}</td>
     
-                                                                        <td class="txt-right">${{Item.price}}</td>
+                                                                        <td class="txt-right" style="    padding-left: 30px;">${{Item.price}}</td>
                                                                         <!-- <td><input type="number" placeholder="Enter" class="quatity-inp"
                                                                     [(ngModel)]="Item.stock"></td> -->
                                                                         <!-- <td>
@@ -1158,15 +1158,15 @@
     
                                                             </td> -->
                                                                         <td><input type="number" placeholder="Enter Qty"
-                                                                                class="quatity-inp" min="0"
+                                                                                class="quatity-inp6" min="0"
                                                                                 [(ngModel)]="Item.Quantity"
                                                                                 oninput="validity.valid||(value='')"
                                                                                 (keyup)="quantityChange(data, Item)"></td>
     
-                                                                        <td class="txt-right">{{Item.DiscountAmount ?? 0 |
+                                                                        <td class="txt-right" style="    padding-left: 42px;">{{Item.DiscountAmount ?? 0 |
                                                                             number :
                                                                             '1.2-2'}}</td>
-                                                                        <td class="txt-right">{{(Item.finalPrice) | number :
+                                                                        <td class="txt-right" style="text-align: center;">{{(Item.finalPrice) | number :
                                                                             '1.2-2'}}
                                                                         </td>
                                                                     </ng-container>

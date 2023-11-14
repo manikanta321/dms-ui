@@ -533,10 +533,10 @@ export class AddorderpromotionsComponent implements OnInit {
   }
 
   shouldShowRowq = false;
-  public rowVisibility: boolean[] = [];
+  public rowVisibility: boolean = false;
 
-  toggleRow(index: number) {
-    this.rowVisibility[index] = !this.rowVisibility[index];
+  toggleRow() {
+    this.rowVisibility = !this.rowVisibility;
   }
 
   ExpandNonPromotion() {
@@ -578,7 +578,6 @@ export class AddorderpromotionsComponent implements OnInit {
         
         this.arrayOfImages.forEach((x) => {x.isSelected =this.AddOrderPromotionData.findIndex((y) => y.promotionId === x.productPromotionsId) !== -1;});
         this.caliculateProductAmount();
-        this.calculateProductDetails()
         this.AddOrderPromotionData.forEach((element) => {
           element.isOpen = true;
           // element.push({ isOpen: false }); // Corrected this part
@@ -641,54 +640,8 @@ export class AddorderpromotionsComponent implements OnInit {
     };
     localStorage.setItem('calculation', JSON.stringify(overallData));
     console.log('overallData',overallData);
-    this.productqty = overallData
+    // this.productqty = overallData
   }
-
-  productQTY:number =0
-  productAmount:number =0
-  nonPromoQTY:number=0
-  calculateProductDetails() {
-    const productDetails:any = [];
-    let overallQty = 0;
-    let overallAmount = 0;
-
-    function extractInformation(item) {
-        const itemDetails = item.itemDetails
-        const totalQuantity = itemDetails.reduce((total, subItem) => total + subItem.quantity, 0);
-        const totalFinalPrice = itemDetails.reduce((total, subItem) => total + subItem.finalValue, 0);
-        overallQty += totalQuantity;
-        overallAmount += totalFinalPrice;
-
-        const extractedItem = {
-            promotionId: item.promotionId,
-            previousValues: {
-                quantity: totalQuantity,
-                finalPrice: totalFinalPrice,
-            },
-        };
-        productDetails.push(extractedItem);
-    }
-
-    this.AddOrderPromotionData.forEach(extractInformation);
-
-    this.productAmount = overallAmount;
-    this.productQTY = overallQty;
-    this.nonPromoQTY = 0;
-    this.orderNonPromotionsdata.forEach((item) => {
-      if (item.isPromotionSelected) {
-        this.nonPromoQTY += item.quantity; // update here
-        // this.nonPromotionAmount += (item.quantity ?? 0) * item.price;// update here
-      }
-    });
-    const productdata = {
-        overallQty: overallQty,
-        overallAmount: overallAmount + this.nonPromotionAmount,
-        extractedData: productDetails,
-    };
-    localStorage.setItem('productdata',JSON.stringify(productdata))
-    this.productqty = productdata
-    console.log('productdata', productdata);
-}
   
   getPromotionsImages() {
     let data = {
@@ -850,19 +803,19 @@ export class AddorderpromotionsComponent implements OnInit {
     }
     console.log(calculationRemove, 'afterremove data');
   
-    let reduceqty = JSON.parse(localStorage.getItem('productdata') || '[]');
-    console.log(reduceqty);
-    const QTYRemove = reduceqty.extractedData.findIndex((x) => x.promotionId === promotionId);
-    if (QTYRemove !== -1) {
-      const removedItem = reduceqty.extractedData[QTYRemove];
-      reduceqty.extractedData.splice(QTYRemove, 1);
-      // Subtract the removed item's values from overallQty and overallAmount
-      reduceqty.overallQty -= removedItem.previousValues.quantity;
-      reduceqty.overallAmount -= removedItem.previousValues.finalPrice;
-      localStorage.setItem("calculation", JSON.stringify(reduceqty));
-    }
-    console.log(reduceqty, 'afterremove data');
-    this.productqty = reduceqty;
+    // let reduceqty = JSON.parse(localStorage.getItem('productdata') || '[]');
+    // console.log(reduceqty);
+    // const QTYRemove = reduceqty.extractedData.findIndex((x) => x.promotionId === promotionId);
+    // if (QTYRemove !== -1) {
+    //   const removedItem = reduceqty.extractedData[QTYRemove];
+    //   reduceqty.extractedData.splice(QTYRemove, 1);
+    //   // Subtract the removed item's values from overallQty and overallAmount
+    //   reduceqty.overallQty -= removedItem.previousValues.quantity;
+    //   reduceqty.overallAmount -= removedItem.previousValues.finalPrice;
+    //   localStorage.setItem("calculation", JSON.stringify(reduceqty));
+    // }
+    // console.log(reduceqty, 'afterremove data');
+    // this.productqty = reduceqty;
 
     // this.productType = localStorage.removeItem('PromotionType');
     this.promotionName = localStorage.getItem('PromotionName');
@@ -937,7 +890,7 @@ export class AddorderpromotionsComponent implements OnInit {
       localStorage.setItem("calculation", JSON.stringify(reduceqty));
     }
     console.log(reduceqty, 'afterremove data');
-    this.productqty = reduceqty;
+    // this.productqty = reduceqty;
     // this.DisplayNonpromotion = false;
   }
 
@@ -2447,12 +2400,13 @@ export class AddorderpromotionsComponent implements OnInit {
     payload.GeographyId = this.geographyId;
     payload.EachModel = [];
 
-    console.log(this.AddOrderPromotionData);
-    console.log(this.AddorderNonpromotiondata);
+    console.log(this.AddOrderPromotionData,'this.AddOrderPromotionData');
+    console.log(this.AddorderNonpromotiondata,'this.AddorderNonpromotiondata');
     if (this.AddOrderPromotionData && this.AddOrderPromotionData.length != 0) {
       this.AddOrderPromotionData.forEach((element) => {
         element.itemDetails.forEach((prod) => {
           let obj: any = {};
+          obj.Qty =prod.quantity
           obj.TaxTemplateId = prod.taxid;
           obj.finalValue = prod.finalValue;
           payload.EachModel.push(obj);
@@ -2466,6 +2420,7 @@ export class AddorderpromotionsComponent implements OnInit {
     ) {
       this.AddorderNonpromotiondata.itemDetails.forEach((element) => {
         let obj: any = {};
+        obj.Qty =element.quantity
         obj.TaxTemplateId = element.taxid;
         obj.finalValue = element.finalValue;
         payload.EachModel.push(obj);

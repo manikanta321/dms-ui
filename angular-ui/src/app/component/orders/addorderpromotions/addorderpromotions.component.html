@@ -19,14 +19,14 @@
                                 <div class="companyReff">
                                     <label class="DealerInfo-label">Company Reference No <span
                                             class="astr"></span></label>
-                                    <input disabled type="number" placeholder="Enter" id="CompanyReferenceNo"
+                                    <input type="number" placeholder="Enter" id="CompanyReferenceNo"
                                         [(ngModel)]="CompanyReferenceNo" class="form-control container input-box">
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="dealerReff">
                                     <label class="DealerInfo-label">Dealer Reference <span class="astr">*</span></label>
-                                    <input disabled type="number" placeholder="Enter" id="DealerReferenceNo"
+                                    <input type="number" placeholder="Enter" id="DealerReferenceNo"
                                         [(ngModel)]="DealerReferenceNo" class="form-control container input-box">
                                 </div>
                             </div>
@@ -171,20 +171,20 @@
                                     <tr>
                                         <td class="" style="padding: 4px;">
                                                  <mat-icon (click)="ExpandPromotion(i)"
-                                                 style="cursor: pointer;   position: relative;   left: 3%;  top: 1px;">keyboard_arrow_down </mat-icon>
-                                                <span  style="position: relative;left: 13px;right: 6px;color: black;top: -6px;" >Promotion &nbsp;{{PromotionObj.promotionTypeNmae}}
-                                                    {{PromotionObj.promotionName}}
-                                                    {{PromotionObj.promotionTypesName}}</span>   
+                                                 style="cursor: pointer;   position: relative;   left: 3%;  top: 1px;">{{ expandedPromotions[i] ?'keyboard_arrow_down': 'keyboard_arrow_up'}}</mat-icon>
+                                                <span  style="position: relative;left: 13px;right: 6px;color: black;top: -6px;" >Promotion &nbsp;{{PromotionObj.promotionTypesNmae}}</span>
+                                                    <!-- {{PromotionObj.promotionName}} -->
+                                                    <!-- {{PromotionObj.promotionTypesNmae}}</span>    -->
                                         </td>
                                         <td></td>
-                                         <td></td>
-                                         <td></td>
-                                         <td></td> 
-                                         <td></td>
-                                          <td></td>
-                                          <td><td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
-                                    <ng-container *ngIf='PromotionObj.isOpen'>
+                                    <ng-container *ngIf='!expandedPromotions[i]'>
                                         <tr *ngFor="let Item of PromotionObj.itemDetails; let j=index;">
                                             
                                             <td style="padding-left: 35px;">{{Item.productSKUName}}</td>
@@ -213,48 +213,55 @@
                                             <td></td>
                                         </tr>
                                     </ng-container>
-                                </ng-container>
-
-                                <!-- Start non promotions Confiram -->
-                                <tr *ngFor="let Item of AddorderNonpromotiondata?.itemDetails; let i=index;">
-                                    <td>
-                                        <mat-icon (click)="toggleRow(i)"
-                                        style="cursor: pointer;   position: relative;   left: 3%;  top: 1px;">keyboard_arrow_down </mat-icon>
-                                        <span  style="position: relative;left: 13px;color: black;top: -6px;" >Non Promotions</span>
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <ng-container  *ngFor="let Item of AddorderNonpromotiondata?.itemDetails; let i=index;" >
-                                    <ng-container *ngIf="rowVisibility[i]">
-                                        <tr *ngFor="let Item of AddorderNonpromotiondata?.itemDetails; let i=index;">
-                                            <td style="padding-left: 35px;">{{Item.productSKUName}}</td>
-                                            <td>{{Item.stockitemname}}</td>
+                                    <tr>
+                                        <td>
+                                            <mat-icon (click)="toggleRow()" style="cursor: pointer; position: relative; left: 3%; top: 1px;">
+                                                {{ rowVisibility[i] ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}
+                                            </mat-icon>
+                                            <span style="position: relative; left: 13px; color: black; top: -6px;">Non Promotions</span>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                
+                                    <ng-container *ngFor="let item of AddorderNonpromotiondata?.itemDetails; let i=index;">
+                                        <tr *ngIf="!rowVisibility">
+                                            <td style="padding-left: 35px;">{{ item.productSKUName }}</td>
+                                            <td>{{ item.stockitemname }}</td>
                                             <td style="text-align: right;">
-                                                <input type="text" disabled [(ngModel)]="Item.price"
-                                                 class="NONPromotionsPrice">
+                                                <input type="text" disabled [(ngModel)]="item.price" class="NONPromotionsPrice">
                                             </td>
                                             <td style="text-align: right;">
-                                                <input type="text" disabled [(ngModel)]="Item.discount"
-                                                    [ngClass]="Item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'"
+                                                <input type="text" disabled [(ngModel)]="item.discount"
+                                                    [ngClass]="item.discount == 100 ? 'IteminputBoxesD' : 'IteminputBoxes'"
                                                     style="text-align: right;background: none;border: none;">
                                             </td>
                                             <td style="text-align: right;">
-                                                <input type="text" disabled [(ngModel)]="Item.quantity" class="NON_promotionsQTY">
+                                                <input type="text" disabled [(ngModel)]="item.quantity" class="NON_promotionsQTY">
                                             </td>
                                             <td>
-                                                <input type="text" disabled [(ngModel)]="Item.finalValue"
-                                                    class="FINALValueNONPromotions">
+                                                <input type="text" disabled [(ngModel)]="item.finalValue" class="FINALValueNONPromotions">
                                             </td>
                                             <td></td>
                                         </tr>
-                                        </ng-container>
-                                </ng-container>
+                                    </ng-container>
+                                    <tr *ngIf="(editTotalqty||shippingPackingchargeDetails.subTotal)>0">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <!-- <td></td> -->
+                                        <td style="text-align: end;"><b>Total</b></td>
+                                        <!-- <td style="text-align: end;"><b>{{(editTotalqty||0)+(productqty?.overallQty+nonPromoQTY)}}</b></td> -->
+                                        <td style="text-align: end;"><b>{{(shippingPackingchargeDetails.totalQty||0)}}</b></td>
+                                        <td style="text-align: center;"><b>${{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)}}</b></td>
+                                    </tr>
+                                </ng-container> 
+                                
                              </table>
                             </div>
 
@@ -603,7 +610,8 @@
                                         <td></td>
                                         <!-- <td></td> -->
                                         <td style="text-align: end;"><b>Total</b></td>
-                                        <td style="text-align: end;"><b>{{(editTotalqty||0)+(productqty?.overallQty+nonPromoQTY)}}</b></td>
+                                        <!-- <td style="text-align: end;"><b>{{(editTotalqty||0)+(productqty?.overallQty+nonPromoQTY)}}</b></td> -->
+                                        <td style="text-align: end;"><b>{{(shippingPackingchargeDetails.totalQty||0)}}</b></td>
                                         <td style="text-align: center;"><b>${{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)}}</b></td>
                                     </tr>
                                 </ng-container>

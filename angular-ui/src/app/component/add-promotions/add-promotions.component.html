@@ -786,32 +786,33 @@
                                   </tr>
                                 </thead>
                                 <tbody class="table-group-divider" formArrayName="addPromotions">
-                                  <tr *ngFor="let item of formArr.controls; let i = index" [formGroupName]="i">
-                                    <th>
-                                        <input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="qtyFrom"
-                                            [ngClass]="{'error-border': formArr.at(i).get('qtyFrom')?.hasError('invalidRange') }">
-                                        <div *ngIf="formArr.at(i).get('qtyFrom')?.hasError('invalidRange')" class="error-message">
-                                            QTY From should be less than QTY To.
-                                        </div>
-                                    </th>
-                                    <th>
+                                    <tr *ngFor="let item of formArr.controls; let i = index" [formGroupName]="i">
+                                        <th>
+                                            <input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="qtyFrom"
+                                              [ngClass]="{'error-border': formArr.at(i).get('qtyFrom')?.hasError('invalidRange') }"
+                                              (blur)="markControlAsTouched(formArr.at(i).get('qtyFrom'))">
+                                            <div *ngIf="formArr.at(i).get('qtyFrom')?.hasError('invalidRange') && formArr.at(i).get('qtyFrom')?.touched" class="error-message">
+                                              QTY From should be less than QTY To.
+                                            </div>
+                                      <th>
                                         <input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="qtyTo"
-                                            [ngClass]="{'error-border': formArr.at(i).get('qtyTo')?.hasError('invalidRange') }">
-                                        <div *ngIf="formArr.at(i).get('qtyTo')?.hasError('invalidRange')" class="error-message">
-                                            QTY To should be greater than QTY From.
+                                          [ngClass]="{'error-border': formArr.at(i).get('qtyTo')?.hasError('invalidRange') }">
+                                        <!-- <div *ngIf="formArr.at(i).get('qtyTo')?.hasError('invalidRange')" class="error-message">
+                                          QTY To should be greater than QTY From.
+                                        </div> -->
+                                      </th>
+                                      <th>
+                                        <input type="text" class="form-control" (input)="restrictToAlphabets($event); validateBuyInRange(i)" formControlName="buy">
+                                        <div *ngIf="formArr.at(i).get('buy')?.hasError('buyNotInRange')" class="error-message">
+                                          Buy value should be within the specified range.
                                         </div>
-                                    </th>
-                                    <th>
-                                        <input type="text" class="form-control" (input)="restrictToAlphabets($event)" (input)="validateBuyInRange(i)" formControlName="buy">
-                                        <div *ngIf="formArr.controls[i].get('buy')?.hasError('buyNotInRange')" class="error-message">
-                                            Buy value should be less than QuantityTo.
-                                          </div>
-                                    </th>
-                                    <th><input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="get"></th>
-                                    <th><input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="additional"></th>
-                                    <th><mat-icon (click)="deletePromotion(i)" *ngIf="i>=1">delete</mat-icon></th>
-                                  </tr>
-                                </tbody>
+                                      </th>
+                                      <th><input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="get"></th>
+                                      <th><input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="additional"></th>
+                                      <th><mat-icon (click)="deletePromotion(i)" *ngIf="i >= 1">delete</mat-icon></th>
+                                    </tr>
+                                  </tbody>
+                                  
                               </table>
                         </form>
                        </div>

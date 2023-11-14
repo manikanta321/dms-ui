@@ -603,7 +603,7 @@
                                         <td></td>
                                         <!-- <td></td> -->
                                         <td style="text-align: end;"><b>Total</b></td>
-                                        <td style="text-align: end;"><b>{{  (productqty?.overallQty +nonPromotionQTY )|| 0 }}</b></td>
+                                        <td style="text-align: end;"><b>{{(editTotalqty||0)+(productqty?.overallQty+nonPromoQTY)}}</b></td>
                                         <td style="text-align: center;padding-left: 100px;"><b>${{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)}}</b></td>
                                     </tr>
                                 </ng-container>
@@ -1254,8 +1254,7 @@
                             <tbody class="tbodayheight">
                               
                                     <tr class="table-row" *ngFor="let Item of orderNonPromotionsdata " 
-                                    [ngClass]="{'promotionItem': Item.isInPromotion===true}"> 
-                                    <!-- {{Item|json}} -->
+                                    [ngClass]="{'promotionItem': Item.isInPromotion===true}">
                                     <ng-container *ngIf="toggleStateNonPromodata ? Item.isPromotionSelected : true">
                                     
                                     <td width="30"> <input type="checkbox" class="check custom-checkbox"
@@ -1267,11 +1266,9 @@
                                     <!-- <td>{{Item.materialcustomidentifier}}66</td> -->
                                     <td style="text-align: left;">{{Item.materialCustomName}}</td>
                                     <!-- <td>{{Item.classification}}</td> -->
-                                    
-                                    <td style="position: relative;right: 24px;">{{Item.registrationNumber}}</td>
-                                    <!-- <td>{{Item.moq}}</td> -->
+                                    <td style="text-align: left;">{{Item.registrationNumber}}</td>
 
-                                    <td style="display: flex;padding-left: 17px;"> ${{Item.price}}</td>
+                                    <td>${{Item.price}}</td>
                                     <!-- <td><input type="text" placeholder="Enter" class="quatity-inp"
                                                     [(ngModel)]="Item.stock"></td> -->
                                     <!-- <td>{{Item.stockqty}}</td> -->
@@ -1297,7 +1294,7 @@
                                             [(ngModel)]="Item.quantity"   (ngModelChange)="quantityChange(Item)"
                                             name="Item.quantity" oninput="validity.valid||(value='')">
                                     </td>
-                                    <td style="display: flex;padding-left: 69px;">{{(Item.quantity ?? 0) * Item.price }}</td>
+                                    <td>{{(Item.quantity ?? 0) * Item.price }}</td>
                                 </ng-container>
                                 </tr>
 

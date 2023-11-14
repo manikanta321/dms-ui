@@ -641,10 +641,12 @@ export class AddorderpromotionsComponent implements OnInit {
     };
     localStorage.setItem('calculation', JSON.stringify(overallData));
     console.log('overallData',overallData);
+    this.productqty = overallData
   }
 
   productQTY:number =0
   productAmount:number =0
+  nonPromoQTY:number=0
   calculateProductDetails() {
     const productDetails:any = [];
     let overallQty = 0;
@@ -671,13 +673,20 @@ export class AddorderpromotionsComponent implements OnInit {
 
     this.productAmount = overallAmount;
     this.productQTY = overallQty;
+    this.nonPromoQTY = 0;
+    this.orderNonPromotionsdata.forEach((item) => {
+      if (item.isPromotionSelected) {
+        this.nonPromoQTY += item.quantity; // update here
+        // this.nonPromotionAmount += (item.quantity ?? 0) * item.price;// update here
+      }
+    });
     const productdata = {
-        overallQty: overallQty + this.nonPromotionQTY,
+        overallQty: overallQty,
         overallAmount: overallAmount + this.nonPromotionAmount,
         extractedData: productDetails,
     };
-    this.productqty = productdata
     localStorage.setItem('productdata',JSON.stringify(productdata))
+    this.productqty = productdata
     console.log('productdata', productdata);
 }
   
@@ -916,7 +925,20 @@ export class AddorderpromotionsComponent implements OnInit {
     this.getShippingandPackingcharges();
     this.clearQuantity();
     this.resetQuantity();
-    this.DisplayNonpromotion = false;
+    let reduceqty = JSON.parse(localStorage.getItem('productdata') || '[]');
+    console.log(reduceqty);
+    const QTYRemove = reduceqty.extractedData.findIndex((x) => x.promotionId === clickedItem);
+    if (QTYRemove !== -1) {
+      const removedItem = reduceqty.extractedData[QTYRemove];
+      reduceqty.extractedData.splice(QTYRemove, 1);
+      // Subtract the removed item's values from overallQty and overallAmount
+      reduceqty.overallQty -= removedItem.previousValues.quantity;
+      reduceqty.overallAmount -= removedItem.previousValues.finalPrice;
+      localStorage.setItem("calculation", JSON.stringify(reduceqty));
+    }
+    console.log(reduceqty, 'afterremove data');
+    this.productqty = reduceqty;
+    // this.DisplayNonpromotion = false;
   }
 
   // non-prmotions
@@ -2270,20 +2292,21 @@ export class AddorderpromotionsComponent implements OnInit {
       this.copyEditOrderById = res.response;
       console.log(res.response, 'GetOrdersToEdit');
       
-    //   const sumQuantity = (promotion) => {
-    //     return promotion.itemDetails.reduce(
-    //       (total, item) => total + item.quantity,
-    //       0
-    //     );
-    //   };
-    // this.editTotalqty = res.response.itemcount.reduce((total, promotion) => total + sumQuantity(promotion), 0);
-    // console.log("Total Quantity:", this.editTotalqty);
+      const sumQuantity = (promotion) => {
+        return promotion.itemDetails.reduce(
+          (total, item) => total + item.quantity,
+          0
+        );
+      };
+    this.editTotalqty = res.response.itemcount.reduce((total, promotion) => total + sumQuantity(promotion), 0);
+    console.log("Total Quantity:", this.editTotalqty);
 
       this.datapreloadbyID();
       this.getShippingandPackingcharges();
     });
     localStorage.setItem('AddorEditpro', 'edit');
     this.sharedService.filter('Register click');
+    this.DisplayNonpromotion = true;
   }
   GetConfirmOrders() {
     this.CustomerPoId = localStorage.getItem('CustomerPoId');

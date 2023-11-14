@@ -913,7 +913,11 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       additional: ['', [Validators.required, Validators.min(0)]],
     });
   }
-
+  markControlAsTouched(control: AbstractControl | null): void {
+    if (control) {
+      control.markAsTouched();
+    }
+  }
   addNewRow() {
     this.formArr.push(this.promotionRows());
     this.updateValidation();
@@ -3202,11 +3206,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     // });
   }
 
+  
   validateBuyInRange(index: any) {
     const buyControl = this.formArr.at(index);
     const qtyFromControl = buyControl.get('qtyFrom');
     const qtyToControl = buyControl.get('qtyTo');
-
+  
     if (buyControl && buyControl.get('buy') && qtyFromControl && qtyToControl) {
       const buyValue = +buyControl.get('buy')!.value; // Convert to a number
       const qtyFromValue =
@@ -3217,17 +3222,21 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         qtyToControl.value !== null && qtyToControl.value !== ''
           ? +qtyToControl.value
           : Infinity;
-
-      if (buyValue > qtyToValue || buyValue < qtyFromValue) {
-        if (qtyFromValue !== -Infinity && buyValue < qtyFromValue) {
-          buyControl.get('buy')!.setErrors(null);
-        } else {
-          buyControl.get('buy')!.setErrors({ buyNotInRange: true });
-        }
+  
+      if (buyValue < qtyFromValue || buyValue > qtyToValue) {
+        buyControl.get('buy')!.setErrors({ buyNotInRange: true });
       } else {
         buyControl.get('buy')!.setErrors(null);
       }
+  
+      // Check if index is 0 and qtyTo > qtyFrom
+      if (index === 0 && qtyToValue > qtyFromValue) {
+        qtyToControl.setErrors({ qtyToNotGreaterThanQtyFrom: true });
+      } else {
+        qtyToControl.setErrors(null);
+      }
     }
   }
-}
+  
+}  
 

@@ -914,10 +914,10 @@ letter-spacing: 0em;
   width: 500px;
 }
 
-::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
+/* ::ng-deep.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container {
   width: 767px;
   margin-top: -51px;
-}
+} */
 
 .mat-horizontal-stepper-wrapper {
   margin-top: -47px;
@@ -2970,6 +2970,10 @@ tr:nth-child(even) {
   position: relative;
   top: 4px;
   left: 5px;
+}
+
+input[type=checkbox] {
+  accent-color:#018B75!important;
 }
 
 /* thead tfoot{

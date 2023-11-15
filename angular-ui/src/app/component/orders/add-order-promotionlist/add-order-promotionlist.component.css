@@ -2561,6 +2561,9 @@ th {
   padding: 3px 0 0 10px;
 } */
  
+input[type=checkbox] {
+  accent-color:#018B75!important;
+}
 ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
   background: black !important;
 }

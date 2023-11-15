@@ -450,7 +450,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         this.editedDetails = res.response.promoDetails.aditionalMoqDetails;
         this.promoName = res.response.promotionName;
         this.selectedPromo = res.response.promotionTypesId;
-        this.Moqstatus = !res.response.IsIndividual;
+        this.Moqstatus = res.response.isIndividual;
+        // alert(res.response.isIndividual)
         this.cdr.detectChanges();
         this.addImgpreview = true;
         this.specalmoq = res.response.promoDetails.moq
@@ -910,7 +911,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         [Validators.required, Validators.min(0)],
       ],
       get: ['', [Validators.required, Validators.min(0)]],
-      additional: ['', [Validators.required, Validators.min(0)]],
+      additional: ['', ],
+      // [Validators.required, Validators.min(0)]
     });
   }
   
@@ -927,6 +929,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     const input = event.target as HTMLInputElement;
     const value = input.value;
     input.value = value.replace(/[^0-9]/g, '');
+    this.updateValidation()
   }
   
   updateValidation() {
@@ -971,7 +974,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         const previousPromotion = promotionsArray.at(i - 1);
         const previousQtyToControl = previousPromotion.get('qtyTo');
         if (qtyToControl?.value >= previousQtyToControl?.value) {
-          qtyToControl?.setErrors({ invalidRange: true });
+          qtyToControl?.setErrors({ invalidRange: false });
         } else {
           qtyToControl?.setErrors(null);
         }
@@ -2382,7 +2385,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
           EntityInstanceId: this.EntityInstanceId,
           Status: type,
           Remarks: this.Remarks ?? '',
-          IsIndividual: this.showConsolidatedMOQ,
+          // IsIndividual: this.showConsolidatedMOQ,
           AditionalMoqDetails: this.formArr.controls.map((control) => {
             return {
               AdditionalDetailsId: 0,
@@ -2523,7 +2526,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
 
     if (
       !isDataValid ||
-      !this.base64textString ||
+      // !this.base64textString ||
       !this.selectedStartDate ||
       !this.selectedEndDate ||
       !this.promoName ||

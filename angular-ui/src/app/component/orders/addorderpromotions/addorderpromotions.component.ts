@@ -595,6 +595,7 @@ export class AddorderpromotionsComponent implements OnInit {
   promotionAmount :number = 0;
   nonPromotionQTY:number = 0;
   nonPromotionAmount:number = 0;
+  nonPromoQty:any
   caliculateProductAmount() {
     const allExtractedData: any = [];
     let overallQty = 0;
@@ -640,6 +641,7 @@ export class AddorderpromotionsComponent implements OnInit {
     };
     localStorage.setItem('calculation', JSON.stringify(overallData));
     console.log('overallData',overallData);
+    this.nonPromoQty = overallData.overallQty
     // this.productqty = overallData
   }
   
@@ -1988,9 +1990,11 @@ export class AddorderpromotionsComponent implements OnInit {
     }
   }
 
+  isNonPromoCheck:any
   checkboxChange(event, changedPromotionObj) {
     console.log(event, changedPromotionObj);
     changedPromotionObj.isPromotionSelected = event.target.checked;
+    this.isNonPromoCheck=event.target.checked;
 
     this.quantityChange(changedPromotionObj);
 
@@ -2016,7 +2020,7 @@ export class AddorderpromotionsComponent implements OnInit {
 
   DisplayNonpromotion: boolean = false;
   addnonPromoItems() {
-    if (this.UpdatedQty == null) {
+    if (this.nonPromoQty == null || this.isNonPromoCheck) {
       const dialogRef = this.dialog.open(OrderActionShipmentComponent, {
         data: {
           Alertpp: true,
@@ -2025,7 +2029,8 @@ export class AddorderpromotionsComponent implements OnInit {
     } else {
       let selectedNonPromotionData: any = [];
       this.orderNonPromotionsdata.forEach((item) => {
-        if (item.isPromotionSelected) {
+
+        if (item.isPromotionSelected && item.quantity != null) {
           let obj = {
             Taxid: item.taxid,
             stockitemid: item.stockitemid,

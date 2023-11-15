@@ -383,7 +383,7 @@ export class OrderListComponent implements OnInit {
       },
   
       {
-        headerName: 'Dealer Ref No#',
+        headerName: 'Dealer',
         field: 'dealerName',
         minWidth: 245,
         tooltipField: 'dealerName',
@@ -569,7 +569,7 @@ export class OrderListComponent implements OnInit {
         {
           headerName: 'Order Date',
           field: 'orderDate',
-          minWidth: 110,
+          minWidth: 100,
           maxWidth: 150,
 
           // cellRenderer: (data) => {
@@ -585,9 +585,9 @@ export class OrderListComponent implements OnInit {
 
         {
           headerName: 'Dealer Ref No#',
-          field: 'dealerName',
-          minWidth: 245,
-          tooltipField: 'dealerName',
+          field: 'dealerReferenceNo',
+          minWidth: 235,
+          tooltipField: 'dealerReferenceNo',
           cellStyle: {
             color: '#686E74',
           },
@@ -615,7 +615,7 @@ export class OrderListComponent implements OnInit {
         // },
         {
           headerName: 'Order Value($)',
-          minWidth: 140,
+          minWidth: 100,
           // maxWidth: 115,
           field: 'totalValue',
           type: ['rightAligned'],
@@ -627,7 +627,7 @@ export class OrderListComponent implements OnInit {
         {
           headerName: 'Ordered Quantity ',
           field: 'orderedQty',
-          minWidth: 155,
+          minWidth: 145,
           // maxWidth: 115,
           type: ['rightAligned'],
           cellStyle: {
@@ -637,7 +637,7 @@ export class OrderListComponent implements OnInit {
         {
           headerName: 'Received Quantity',
           field: 'receivedQty',
-          minWidth: 155,
+          minWidth: 150,
           // maxWidth: 115,
           type: ['rightAligned'],
           cellStyle: {
@@ -647,7 +647,7 @@ export class OrderListComponent implements OnInit {
         {
           headerName: 'Outstanding Quantity',
           field: 'outstandingQty',
-          minWidth: 180,
+          minWidth: 150,
           // maxWidth: 115,
           type: ['rightAligned'],
           cellStyle: {
@@ -656,7 +656,7 @@ export class OrderListComponent implements OnInit {
         },
         {
           headerName: 'Outstanding Value($)',
-          minWidth: 160,
+          minWidth: 140,
           // maxWidth: 115,
           field: 'outstandingValue',
           type: ['rightAligned'],
@@ -667,7 +667,7 @@ export class OrderListComponent implements OnInit {
 
         {
           headerName: 'In-Transit Quantity',
-          minWidth: 100,
+          minWidth: 80,
           // maxWidth: 115,
           field: 'inTransitQty',
           type: ['rightAligned'],

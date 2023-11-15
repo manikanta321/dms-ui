@@ -647,6 +647,7 @@
  .pagination {
    float: right !important;
    margin-top: 11px;
+   margin-right: 15px;
  }
 
  .pagination-cls {

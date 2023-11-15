@@ -1270,19 +1270,19 @@
                                             [checked]="Item.isPromotionSelected" (change)="checkboxChange($event,Item)"
                                             onfocus="this.checked=''"></td>
 
-                                    <td style="text-align: left;">{{Item.productSKUName}}</td>
-                                    <td style="text-align: left;width: 298px;">{{Item.stockitemname}}</td>
+                                    <td style="text-align: left;color: grey;">{{Item.productSKUName}}</td>
+                                    <td style="text-align: left;width: 298px;color: grey;">{{Item.stockitemname}}</td>
                                     <!-- <td>{{Item.materialcustomidentifier}}66</td> -->
-                                    <td style="text-align: left;padding-left: 20px;">{{Item.materialCustomName}}</td>
+                                    <td style="text-align: left;padding-left: 20px;color: grey;">{{Item.materialCustomName}}</td>
                                     <!-- <td>{{Item.classification}}</td> -->
                                     
                                     <td style="position: relative; left:-41px">
-                                        <input style="text-align: right;border: none; background: none;" disabled type="" name="" [(ngModel)]="Item.registrationNumber"
+                                        <input style="text-align: right;border: none; background: none;color: grey;" disabled type="" name="" [(ngModel)]="Item.registrationNumber"
                                             [value]="(Item.registrationNumber)">
                                     </td>
-                                    <td style="position: relative;left: 32px;">{{Item.moq}}</td>
+                                    <td style="position: relative;left: 32px;color: grey;">{{Item.moq}}</td>
 
-                                    <td style="display: flex;padding-left: 44px;"> ${{Item.price}}</td>
+                                    <td style="display: flex;padding-left: 44px;color: grey;"> ${{Item.price}}</td>
                                     <!-- <td><input type="text" placeholder="Enter" class="quatity-inp"
                                                     [(ngModel)]="Item.stock"></td> -->
                                     <!-- <td>{{Item.stockqty}}</td> -->
@@ -1309,7 +1309,7 @@
                                             [(ngModel)]="Item.quantity"   (ngModelChange)="quantityChange(Item)"
                                             name="Item.quantity" oninput="validity.valid||(value='')">
                                     </td>
-                                    <td style="display: flex; ">
+                                    <td style="display: flex;color: grey; ">
                                         <input disabled type="number" name="" [(ngModel)]="Item.quantity* Item.price"
                                             [value]="(Item.quantity || 0) * Item.price"
                                             [ngClass]="{'IteminputBoxesD': Item.discount == 100, 'IteminputBoxes': Item.discount != 100 } ||0"

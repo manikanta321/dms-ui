@@ -241,7 +241,9 @@
 
 .pagination {
   float: right !important;
-  margin-top: 12px;
+  /* margin-top: 12px; */
+  margin-top: 1px;
+  margin-right: 7px;
 }
 
 .pagination-cls {

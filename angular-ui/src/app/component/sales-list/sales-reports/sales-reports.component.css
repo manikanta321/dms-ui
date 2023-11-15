@@ -738,21 +738,21 @@
   
   ::ng-deep.myclass1 {
   
-    color: #17B15C !important;
+    color: #686E74  !important;
   }
   
   ::ng-deep.myclass3 {
-    color: #E5009D !important;
+    color: #686E74  !important;
   }
   
   
   ::ng-deep.myclass2 {
-    color: #017EFA !important;
+    color:#686E74 !important;
   }
   
   
   ::ng-deep.myclass4 {
-    color: #000000 !important;
+    color: #686E74 !important;
   }
   
   ::ng-deep.dropdown-list ul {

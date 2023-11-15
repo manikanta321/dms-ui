@@ -203,6 +203,7 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
    updateOrSave: boolean = false
    public promoVisibility: { [promo: string]: boolean } = {};
    public shipmentVisibility: { [shipName: string]: boolean } = {};
+   isEnable:boolean = false
   ngOnInit(): void { 
     this.userId = localStorage.getItem('logInId');
     this.userType = localStorage.getItem('userType');
@@ -233,6 +234,8 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
       };
       this.orders.reciveshipmentfororder(obj).subscribe((res) => {
         console.log(res);
+        this.isEnable = res.response.isEnableEdit;
+        // alert(this.isEnable);
         this.shipmentArray = res.response;
         this.shipmentArray.itemcount.forEach((element) => {
           element.itemDetails.forEach((element1) => {
@@ -358,7 +361,7 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
       this.orders.reciveshipment(obj).subscribe((res) => {
         console.log(res);
         this.shipmentArray = res.response;
-
+        this.isEnable = res.response.isEnableEdit;
         this.shipmentArray.itemcount.forEach((element) => {
           element.itemDetails.forEach((element1) => {
             let arraybj: any = [];
@@ -600,14 +603,14 @@ export class OrdersReceiveShipmentComponent implements OnInit ,OnChanges{
   
     }
   // Based on status
-    this.status =  sessionStorage.getItem('OrderStatus');
-    console.log("staus", this.status )
-    if (this.status === 'Draft' || this.status === 'Processing' || this.status === 'Submitted' || this.status==='Confirmed') {
-      this.checkstatus = true;
-    }
-    else {
-     this.checkstatus = false;
-    }
+    // this.status =  sessionStorage.getItem('OrderStatus');
+    // console.log("staus", this.status )
+    // if (this.status === 'Draft' || this.status === 'Processing' || this.status === 'Submitted' || this.status==='Confirmed') {
+    //   this.checkstatus = true;
+    // }
+    // else {
+    //  this.checkstatus = false;
+    // }
     this.viewOrderData();
   }
 //   expandedRows: { [key: number]: boolean } = {};

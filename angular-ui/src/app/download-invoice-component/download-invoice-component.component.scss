@@ -998,7 +998,7 @@ mat-sidenav {
 .saveas-draft {
   color: #fff;
   background: #000000;
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  // box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   float: right;
   margin-top: 10px;
@@ -1006,13 +1006,14 @@ mat-sidenav {
   width: 168px;
   height: 85%;
   background: rgba(1, 139, 117, 0.8);
-  border-color:rgba(1, 139, 117, 0.8) ;
+  // border-color:rgba(1, 139, 117, 0.8) ;
+  border: none;
 }
 .saveas-draft2 {
   // color: black;
   color:white;
   background-color:rgba(1, 139, 117, 0.8) ;
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  // box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   float: left;
   margin-top: 10px;

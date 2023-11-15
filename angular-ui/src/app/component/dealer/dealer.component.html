@@ -9,7 +9,7 @@
     <mat-sidenav-content>
         <!--<div class="dash-content" > -->
                 <h2 class="header-text" *ngIf="userType !== 'Dealer Admin'">
-                    {{ selectedTabIndex === 0 ? 'Dealers' : selectedTabIndex === 1 ? 'Association' : selectedTabIndex === 2 ? 'Promotions' : selectedTabIndex === 3 ? 'Targets' :'Reports' }}</h2>
+                    {{ selectedTabIndex === 0 ? 'Promotions' : selectedTabIndex === 1 ? 'Dealers' : selectedTabIndex === 2 ? 'Targets' : selectedTabIndex === 3 ? 'Association' :'Reports' }}</h2>
                 <h2 class="header-text" *ngIf="userType == 'Dealer Admin'">
                     {{ selectedTabIndex === 0 ? 'Promotions' : selectedTabIndex === 1 ? 'Targets' : 'Targets' }}</h2>
                 <!-- <img  class="print-img" src="../../../assets/material/print-img.svg" alt=""> -->
@@ -18,18 +18,21 @@
                         <!-- <div class="col-lg-12"> -->
                             <br>
                             <mat-tab-group class="order1-lab" mat-stretch-tabs="false" [(selectedIndex)]="selectedTabIndex">
-                                <mat-tab label="Dealers " *ngIf="tabList.indexOf('view_dealer') !== -1">
-                                    <app-dealers></app-dealers>
-                                </mat-tab>
-                                <mat-tab label="Association" *ngIf="tabList.indexOf('view_association') !== -1 && userType !== 'Dealer Admin'">
-                                    <app-association></app-association>
-                                </mat-tab>
                                 <mat-tab label="Promotions" *ngIf="tabList.indexOf('view_promotion') !== -1">
                                     <app-promotions></app-promotions>
+                                </mat-tab>
+
+                                <mat-tab label="Dealers " *ngIf="tabList.indexOf('view_dealer') !== -1">
+                                    <app-dealers></app-dealers>
                                 </mat-tab>
                                 <mat-tab label="Targets" *ngIf="tabList.indexOf('view_targets') !== -1">
                                     <app-dealer-target></app-dealer-target>
                                 </mat-tab>
+                                <mat-tab label="Association" *ngIf="tabList.indexOf('view_association') !== -1 && userType !== 'Dealer Admin'">
+                                    <app-association></app-association>
+                                </mat-tab>
+                              
+                             
                                 <mat-tab label="Reports" *ngIf="tabList.indexOf('view_reports') !== -1">
                                     <app-reports></app-reports>
                                 </mat-tab>

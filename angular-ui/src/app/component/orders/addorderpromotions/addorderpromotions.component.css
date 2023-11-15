@@ -1074,7 +1074,7 @@ span {
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  top: -2px;
+  /* top: -2px; */
 }
 label {
   /* padding: 2px 0; */
@@ -2062,7 +2062,7 @@ margin-left: 230px;
 {
   background: rgba(1, 139, 117, 1);
   border: 1px solid rgba(152, 156, 160, 1);
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 10px;
 
   margin-top: 15px;
@@ -2086,9 +2086,9 @@ margin-left: 230px;
 .saveas-draft {
 
   background: rgba(1, 139, 117, 1);
-  box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15);
+  /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 8px;
-  
+  border: 0px solid rgba(152, 156, 160, 1);
   margin-top: 15px;
   cursor: pointer;
   width: 168px;
@@ -2925,6 +2925,7 @@ color: #000000;
   font-weight: 700;
   color: #000000;
   padding-left: 1px;
+  padding-right: 8px;
   /* padding-right: 30px; */
 }
 
@@ -3043,7 +3044,7 @@ table thead, table tbody tr {
   width: 83px;
   height: 25px;
   background: #FFFFFF;
-  border: 0.5px solid #000000;
+  border: 0.5px solid #686E74;
   border-radius: 8px;
   text-align: end;
 }
@@ -3316,7 +3317,7 @@ cursor: pointer;
     top: -8px;
     padding-top: 1px;
     border-radius: 50%;
-    padding-left: 1px;
+    padding-left: 0px;
     margin-left: -5px;
     cursor: pointer;
     display: none;

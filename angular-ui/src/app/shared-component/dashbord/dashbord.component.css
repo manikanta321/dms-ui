@@ -701,12 +701,13 @@ mat-sidenav {
   color: white !important;
 }
 
-::ng-deep.btnhover:hover {
+/* ::ng-deep.btnhover:hover {
   
-}
+} */
 
 .pagination {
   float: right !important;
+  margin-right: 37px;
 }
 
 .pagination-cls {

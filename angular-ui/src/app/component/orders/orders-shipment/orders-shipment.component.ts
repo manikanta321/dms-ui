@@ -265,11 +265,13 @@ export class OrdersShipmentComponent implements OnInit {
     else {
       this.columnDefs = [
     {
-      headerName: 'Order No',
+      headerName: 'Order #',
       field: 'orderNUmber',
       tooltipField: 'orderNUmber',
       cellStyle: { color: '#017EFA' },
       cellEditorPopup: true,
+      maxWidth:100,
+      minWidth:100,
       onCellClicked: (event: CellClickedEvent) =>
         this.dialog.open(OrdersReceiveShipmentComponent, {
           maxWidth: '95vw',
@@ -280,6 +282,8 @@ export class OrdersShipmentComponent implements OnInit {
       headerName: 'Order Date',
       field: 'orderDate',
       tooltipField: 'orderDate',
+      maxWidth:130,
+      minWidth:130,
       // cellRenderer: (data) => {
       //   return this.sharedService.dateformat(data.value);
       // },
@@ -291,18 +295,22 @@ export class OrdersShipmentComponent implements OnInit {
       type: ['nonEditableColumn'],
     },
     {
-      headerName: 'Dealer Name',
+      headerName: 'Dealer',
       field: 'dealername',
       type: ['nonEditableColumn'],
       tooltipField: 'dealername',
+      maxWidth:200,
+      minWidth:200,
       cellStyle: {
         'color': '#686E74' 
       },
     },
     {
-      headerName: 'Invoice No.',
+      headerName: 'Invoice #',
       field: 'invoiceNumber',
       tooltipField: 'invoiceNumber',
+      maxWidth:120,
+      minWidth:120,
       type: ['rightAligned'],
       cellStyle: {
         'color': '#686E74' 
@@ -312,6 +320,8 @@ export class OrdersShipmentComponent implements OnInit {
       headerName: 'Invoice Date',
       field: 'invoiceDate',
       tooltipField: 'invoiceDate',
+      maxWidth:130,
+      minWidth:130,
       // cellRenderer: (data) => {
       //   return this.sharedService.dateformat(data.value);
       // },
@@ -325,6 +335,8 @@ export class OrdersShipmentComponent implements OnInit {
       headerName: this.userType == 'Admin' ? 'INQ' : 'invoiceQty',
       field: 'invoiceQty',
       tooltipField: 'invoiceQty',
+      maxWidth:80,
+      minWidth:80,
       type: ['rightAligned'],
       cellStyle: {
         'color': '#686E74' 
@@ -334,6 +346,8 @@ export class OrdersShipmentComponent implements OnInit {
       headerName: this.userType == 'Admin' ? 'INV($)' : 'invoiceValue',
       field: 'invoiceValue',
       tooltipField: 'invoiceValue',
+      maxWidth:90,
+      minWidth:90,
       type: ['rightAligned'],
       cellStyle: {
         'color': '#686E74' 
@@ -343,6 +357,8 @@ export class OrdersShipmentComponent implements OnInit {
       headerName: this.userType == 'Admin' ? 'TOQ' : 'Ordered Quantity',
       field: 'orderedQty',
       tooltipField: 'orderedQty',
+      maxWidth:80,
+      minWidth:80,
       type: ['rightAligned'],
       cellStyle: {
         'color': '#686E74' 
@@ -359,7 +375,8 @@ export class OrdersShipmentComponent implements OnInit {
     },    
     {
       headerName: 'System Receive Date',
-      maxWidth: 150,
+      maxWidth:190,
+      minWidth:190,
       field: 'systemReciptDate',
       tooltipField: 'systemReciptDate',
       // cellRenderer: (data) => {
@@ -376,6 +393,8 @@ export class OrdersShipmentComponent implements OnInit {
       headerName: 'Status',
       field: 'statusName',
       tooltipField: 'statusName',
+      maxWidth:130,
+      minWidth:130,
       cellStyle: {
         'color': '#686E74' 
       },
@@ -395,7 +414,8 @@ export class OrdersShipmentComponent implements OnInit {
       colId: 'action',
       cellRenderer: OrderlistActionPopupComponent,
       editable: false,
-      maxWidth: 70,
+      maxWidth:20,
+      minWidth:20,
     },
 
     // {

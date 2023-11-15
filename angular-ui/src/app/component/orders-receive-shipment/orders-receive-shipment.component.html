@@ -113,8 +113,7 @@
                                       d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
                                   </svg>
                                 </span>
-                                <span class="text-right" style="padding-left:  29px;">{{data.promo}} -
-                                  {{data.promoName}}</span>
+                                <span class="text-right" style="padding-left:  29px;">{{data.promo}}{{data.promoName}}</span>
                               </h5>
                             </td>
                           </tr>
@@ -161,23 +160,23 @@
                 <div class="row mt-3 mb-2" style="display: flex; justify-content: end;">
                   <table class="totall">
                     <tr class="subitem">
-                      <td class="text-left SUBITEMNAME">Sub-total</td>
+                      <td class="text-left SUBITEMNAME">Sub-Total</td>
                       <td class="text-right numbers"><span class="SUBTOTALORDERS"> {{shipmentArray.subTotal| currency:'USD':'symbol':'1.2-2'}}</span>
                       </td>
                     </tr>
                     <tr class="subitem">
                       <td class="text-left SUBITEMNAME"> Packing Charges</td>
-                      <td class="text-right numbers"><span class="SUBTOTALORDERS"> ${{shipmentArray.pakingCharge}}</span>
+                      <td class="text-right numbers"><span class="SUBTOTALORDERS"> ${{shipmentArray.pakingCharge+'.00'}}</span>
                       </td>
                     </tr>
                     <tr class="subitem">
                       <td class="text-left SUBITEMNAME">Shipping </td>
-                      <td class="text-right numbers"><span class="SUBTOTALORDERS">${{shipmentArray.shipingcharge}}</span>
+                      <td class="text-right numbers"><span class="SUBTOTALORDERS">${{shipmentArray.shipingcharge+'.00'}}</span>
                       </td>
                     </tr>
                     <tr class="subitem">
                       <td class="text-left SUBITEMNAME"
-                        style="font-family: 'Gilroy-SemiBold';color: #000000;  font-weight: 700;">Total</td>
+                        style="font-family: 'Gilroy-SemiBold';color: #000000;  font-weight: 700;">Total Value</td>
                       <td class="text-right numbers"><span class="SUBTotaldatacolor">${{shipmentArray.total}}</span>
                       </td>
                     </tr>

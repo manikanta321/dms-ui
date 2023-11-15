@@ -829,8 +829,9 @@
     
                                                         <div class="col-1">
                                                             <span id="se_lected">Remaining <br>
-    
-    
+                                                               {{data.promoDetails.moq >= data.promoDetails.totalQuantity ?
+                                                                (data.promoDetails.moq - data.promoDetails.totalQuantity) :0
+                                                                }}
                                                             </span>
                                                         </div>
                                                     </div>
@@ -1061,8 +1062,10 @@
                                                         </span>
                                                     </div>
                                                     <div class="col-1">
-                                                        <span id="se_lected">Remaining
-    
+                                                        <span id="se_lected">Remaining <br>
+                                                            {{data.promoDetails.moq >= data.promoDetails.totalQuantity ?
+                                                                (data.promoDetails.moq - data.promoDetails.totalQuantity) :0
+                                                                }}
                                                         </span>
                                                     </div>
                                                     <!-- <div class="col-md-6">

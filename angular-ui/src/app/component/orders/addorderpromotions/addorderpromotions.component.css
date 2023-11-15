@@ -2949,6 +2949,9 @@ tr:nth-child(even) {
 {
   background-color: #FFC0CB;
 }
+.table-row.promotionItem:nth-child(even) {
+  background-color: #FFC0CB; /* Or set it to the original background */
+}
 .tt
 {
     height: 34px;
@@ -2956,6 +2959,7 @@ tr:nth-child(even) {
     border-radius: 15px;
  
 }
+
 .conform
 {
     height: 34px;

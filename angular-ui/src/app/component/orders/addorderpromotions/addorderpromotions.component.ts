@@ -2694,4 +2694,15 @@ Freeitemsguygroup:any
       );
     });
   }
+
+
+  onKeyPress(event: KeyboardEvent): any {
+    const key = event.key;
+    const regex = new RegExp("^[a-zA-Z0-9]+$");
+
+    if (!regex.test(key)) {
+      event.preventDefault();
+      return false;
+    }
+  }
 }

@@ -29,7 +29,7 @@ export class OrderlistActionPopupComponent implements OnInit {
   @ViewChild('trigger') button;
 
   orderStatusAction = {
-    'submitted': ['confirm_order', 'cancel_order'], // done
+    'submitted': ['confirm_order', 'cancel_order','edit_order'], // done
     'returned': ['edit_order', 'cancel_order'], // NA
     'rejected': [], // done
     'confirmed': ['ship_order', 'close','edit_order'], // done Confirmed

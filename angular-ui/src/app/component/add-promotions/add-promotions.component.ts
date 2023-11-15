@@ -907,12 +907,13 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
       qtyTo: ['', [Validators.required, Validators.min(0)]],
       buy: [
         '',
-        [Validators.required, Validators.min(0), this.buyInRangeValidator],
+        [Validators.required, Validators.min(0)],
       ],
       get: ['', [Validators.required, Validators.min(0)]],
       additional: ['', [Validators.required, Validators.min(0)]],
     });
   }
+  
   markControlAsTouched(control: AbstractControl | null): void {
     if (control) {
       control.markAsTouched();
@@ -927,22 +928,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
     const value = input.value;
     input.value = value.replace(/[^0-9]/g, '');
   }
-  buyInRangeValidator(control: AbstractControl) {
-    const qtyFrom = control.parent?.get('qtyFrom')?.value;
-    const qtyTo = control.parent?.get('qtyTo')?.value;
-    const buy = control.value;
-
-    if (
-      qtyFrom !== null &&
-      qtyTo !== null &&
-      buy !== null &&
-      (buy < qtyFrom || buy > qtyTo)
-    ) {
-      return { buyNotInRange: true };
-    }
-
-    return null;
-  }
+  
   updateValidation() {
     const promotionsArray = this.promotionForm.get(
       'addPromotions'
@@ -3218,11 +3204,12 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         qtyFromControl.value !== null && qtyFromControl.value !== ''
           ? +qtyFromControl.value
           : -Infinity;
+          // console.log(qtyFromValue);
       const qtyToValue =
         qtyToControl.value !== null && qtyToControl.value !== ''
           ? +qtyToControl.value
           : Infinity;
-  
+      // console.log(qtyToValue)
       if (buyValue < qtyFromValue || buyValue > qtyToValue) {
         buyControl.get('buy')!.setErrors({ buyNotInRange: true });
       } else {

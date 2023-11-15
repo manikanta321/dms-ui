@@ -17,16 +17,17 @@
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="companyReff">
-                                    <label class="DealerInfo-label">Company Reference No <span
+                                    <label class="DealerInfo-label"> ERP Reference No <span
                                             class="astr"></span></label>
-                                    <input type="number" placeholder="Enter" id="CompanyReferenceNo"
-                                        [(ngModel)]="CompanyReferenceNo" class="form-control container input-box">
+                                    <input type="text" placeholder="Enter" id="CompanyReferenceNo"
+                                        [(ngModel)]="CompanyReferenceNo" class="form-control container input-box"
+                                        (keypress)="onKeyPress($event)">
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="dealerReff">
                                     <label class="DealerInfo-label">Dealer Reference <span class="astr">*</span></label>
-                                    <input type="number" placeholder="Enter" id="DealerReferenceNo"
+                                    <input type="text" placeholder="Enter" id="DealerReferenceNo" (keypress)="onKeyPress($event)"
                                         [(ngModel)]="DealerReferenceNo" class="form-control container input-box">
                                 </div>
                             </div>
@@ -291,18 +292,8 @@
                                     </tr>
                                 </table>
                             </div>
-
-                       
                     </div>
                 </div>
-
-
-
-
-
-
-
-
             </div>
         </div>
 
@@ -332,6 +323,25 @@
                 <mat-icon mat-button class="close-icon" [mat-dialog-close]="true">close</mat-icon>
                 <div class="row top-bottom">
                     <div class="row text-center"></div>
+                </div>
+                
+                <div class="card mb-3"  *ngIf="userType ==='Admin' && actineLabel=='Edit order'">
+                    <div class="card-header label-cls" style="  color: white;background: linear-gradient(0deg, #018B75, #018B75);">
+                        <strong class="ConfiramordrInformation">Other Information </strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="companyReff">
+                                    <label class="DealerInfo-label"> ERP Reference No <span
+                                            class="astr"></span></label>
+                                    <input type="text" placeholder="Enter" id="CompanyReferenceNo"
+                                        [(ngModel)]="CompanyReferenceNo" class="form-control container input-box"
+                                        (keypress)="onKeyPress($event)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- Dealer Reference -->
                 <div class="card">

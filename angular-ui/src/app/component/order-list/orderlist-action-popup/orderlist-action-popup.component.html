@@ -2,11 +2,11 @@
   [ngClass]="{'no-display' : currentActionMenu.length == 0}"></i>
 <div #content *ngIf="isOpen" class="menu-container" [ngClass]="{'single' : currentActionMenu.length == 1 }">
   
-      <div (click)="orderedit()" class="menu-item tick" *ngIf="currentActionMenu.indexOf('edit_order') !== -1 || currentActionMenu.indexOf('confirm_order') !== -1">
-         Edit 
-         <img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark">
-        </div>
-
+    <div (click)="orderedit()" class="menu-item tick"
+      *ngIf="!isShowEdit ? currentActionMenu.indexOf('confirm_order') !== -1 : (currentActionMenu.indexOf('edit_order') !== -1 || currentActionMenu.indexOf('confirm_order') !== -1)">
+      Edit
+      <img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark">
+  </div>
 
   <div (click)="confirmOrder()" class="menu-item tick" *ngIf="currentActionMenu.indexOf('confirm_order') !== -1">
     Process order<img src="../../../assets/userImages/done-tick.svg" alt="" class="tickmark"></div>

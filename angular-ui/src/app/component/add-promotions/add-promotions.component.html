@@ -802,7 +802,7 @@
                                       <th>
                                         <input type="text" class="form-control" (input)="restrictToAlphabets($event); validateBuyInRange(i)" formControlName="buy">
                                         <div *ngIf="formArr.at(i).get('buy')?.hasError('buyNotInRange')" class="error-message">
-                                          Buy value should be within the specified range.
+                                          Buy value should be lessthan QtyTo value.
                                         </div>
                                       </th>
                                       <th><input type="text" class="form-control" (input)="restrictToAlphabets($event)" formControlName="get"></th>
@@ -810,7 +810,6 @@
                                       <th><mat-icon (click)="deletePromotion(i)" *ngIf="i >= 1">delete</mat-icon></th>
                                     </tr>
                                   </tbody>
-                                  
                               </table>
                         </form>
                        </div>

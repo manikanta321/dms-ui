@@ -60,6 +60,7 @@ export class OrderlistActionPopupComponent implements OnInit {
     'received': [], // done
     
   }
+  isShowEdit:any
   showCaseMenuList:string[] = [];
   constructor(private changeDetector: ChangeDetectorRef, private dialog: MatDialog,
     private route: ActivatedRoute,private service:OrdersApisService,private SS:SharedService) {
@@ -154,6 +155,7 @@ export class OrderlistActionPopupComponent implements OnInit {
   }
 
   configureTippyInstance() {
+    this.isShowEdit = JSON.parse(localStorage.getItem('isShowEdit')||'null')
     this.tippyInstance.enable();
     this.tippyInstance.show();
 

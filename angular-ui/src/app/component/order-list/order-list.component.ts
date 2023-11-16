@@ -818,6 +818,9 @@ export class OrderListComponent implements OnInit {
 
   onCellClicked(e): void {
     console.log('cellClicked', e);
+    // this.SS.isShowEdit()
+    // console.log(e.data.isShowEdit);
+    localStorage.setItem('isShowEdit',JSON.stringify(e.data.isShowEdit))
     this.UomId = e.data.uoMId;
     this.uomName = e.data.uoMName;
     let ordernumber = e.data.orderNUmber;

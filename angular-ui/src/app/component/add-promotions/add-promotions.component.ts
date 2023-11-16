@@ -933,9 +933,7 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
   }
   
   updateValidation() {
-    const promotionsArray = this.promotionForm.get(
-      'addPromotions'
-    ) as FormArray;
+    const promotionsArray = this.promotionForm.get('addPromotions') as FormArray;
     for (let i = 0; i < promotionsArray.length - 1; i++) {
       const currentPromotion = promotionsArray.at(i);
       const nextPromotion = promotionsArray.at(i + 1);
@@ -3212,8 +3210,8 @@ export class AddPromotionsComponent implements OnInit, AfterViewInit {
         qtyToControl.value !== null && qtyToControl.value !== ''
           ? +qtyToControl.value
           : Infinity;
-      // console.log(qtyToValue)
-      if (buyValue < qtyFromValue || buyValue > qtyToValue) {
+      // console.log(qtyToValue) buyValue < qtyFromValue ||
+      if ( buyValue > qtyToValue) {
         buyControl.get('buy')!.setErrors({ buyNotInRange: true });
       } else {
         buyControl.get('buy')!.setErrors(null);

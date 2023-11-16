@@ -1004,7 +1004,7 @@
                     
                                         <div class="col" style="background-color: rgba(222, 226, 230, 0.2);">
                                             <label id="TotalORDER_qty" for="inputField">Total Order Amount</label>
-                                            <span id="Total_order_qty">${{ promotionAmount + nonPromotionAmount}}</span>
+                                            <span id="Total_order_qty">${{ (promotionAmount + nonPromotionAmount)| number:'1.2-2'}}</span>
                                         </div>
                     
                                         <div class="w-100"></div>
@@ -1015,7 +1015,7 @@
                                         <div class="col">
                                             <label id="This_qty" for="inputField">This Order Amount</label>
                     
-                                            <span id="This_order_amount">${{nonPromotionAmount}} </span>
+                                            <span id="This_order_amount">${{nonPromotionAmount| number:'1.2-2'}} </span>
                                         </div>
                                     </div>
                                 </div>
@@ -1292,7 +1292,7 @@
                                     </td>
                                     <td style="position: relative;left: 32px;color: grey;">{{Item.moq}}</td>
 
-                                    <td style="display: flex;padding-left: 44px;color: grey;"> ${{Item.price}}</td>
+                                    <td style="display: flex;padding-left: 44px;color: grey;"> ${{Item.price | number:'1.2-2'}}</td>
                                     <!-- <td><input type="text" placeholder="Enter" class="quatity-inp"
                                                     [(ngModel)]="Item.stock"></td> -->
                                     <!-- <td>{{Item.stockqty}}</td> -->

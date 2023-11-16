@@ -350,7 +350,8 @@ export class ViewPromotionPopupComponent implements OnInit {
   constructor(public promotionTypes: PromotionService,
     private sharedServices: SharedService,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
-
+    
+    statusName:any
   ngOnInit(): void {
     let data = localStorage.getItem('promoclickId');
     this.LoginId = localStorage.getItem("logInId");
@@ -373,11 +374,11 @@ export class ViewPromotionPopupComponent implements OnInit {
       this.promoName = res.response.promotionName;
       this.selectedPromo = res.response.promotionTypesId;
       this.addImgpreview = true;
+      this.statusName= res.response.statusName;
       this.base64textString = res.response.imageurl;
       this.geoGraphiesList = res.response.geographySection;
       this.startDate.setValue(res.response.startDate);
       this.selectedStartDate = this.sharedServices.dateformat(res.response.startDate);
-
       this.endDate.setValue(res.response.endDate)
 
       this.selectedEndDate = new Date(res.response.endDate).getFullYear() + '/' + (new Date(res.response.endDate).getMonth() + 1) + '/' + new Date(res.response.endDate).getDate();

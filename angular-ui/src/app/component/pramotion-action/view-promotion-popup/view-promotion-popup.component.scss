@@ -5,6 +5,9 @@
     right: -66px;
     top: 10px;
 }
+.promoinfo{
+  padding: 0px !important;
+}
 
 .view-dealer-promotion-cls {
     overflow-x: hidden;
@@ -22,7 +25,7 @@
 
 .head-t h3 {
     /* color: #000000; */
-    text-align: left;
+    text-align: center;
     margin-top: -18px;
     margin-bottom: 2px;
     font-family: 'Gilroy';
@@ -35,15 +38,25 @@
     color: #686E74;
 }
 
+.viewPromo:before {
+  content: "";
+  display: block;
+  width: 42%;
+  height: 1px;
+  background: #686E74;
+  left: 0;
+  top: 50%;
+  position: absolute;
+}
 .viewPromo:after {
-    content: "";
-    display: block;
-    width: 651px;
-    height: 1px;
-    background: #686E74;
-    right: 93px;
-    top: 50%;
-    position: absolute;
+  content: "";
+  display: block;
+  width: 42%;
+  height: 1px;
+  background: #686E74;
+  right: 0;
+  top: 50%;
+  position: absolute;
 }
 
 .viewPromohead {
@@ -324,12 +337,12 @@ margin-left: -34px;
   }
   
   .minimumorderquantity {
-    width: 461px;
+    // width: 461px;
     height: 43px;
     border: 0.5px solid #000000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    text-align: right;
+    // text-align: right;
   }
   
   .scroll {
@@ -538,7 +551,7 @@ margin-left: -34px;
     // box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     height: 43px;
-    width: 941px;
+    // width: 941px;
   
   }
   
@@ -571,7 +584,7 @@ margin-left: -34px;
   label {
     /* padding: 2px 0; */
     font-size: 14px;
-    margin: 15px 5px 5px;
+    margin: 0px 5px 5px;
   }
   
   /* mat-form-field {
@@ -711,9 +724,9 @@ margin-left: -34px;
   }
   
   .addproImg {
-    width: 207px;
-    height: 108px;
-    margin-top: -7px;
+    width:373px;
+    height: 137px;
+    // margin-top: -7px;
     border-radius: 10px;
   }
   

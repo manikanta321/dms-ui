@@ -646,3 +646,9 @@ padding: 17px;
   border-radius: 10px !important;
 
 }
+
+.ag-theme-material{
+  --ag-checkbox-background-color: white !important;
+  --ag-checkbox-checked-color: #018B75 !important;
+  --ag-checkbox-unchecked-color: #018B75 !important;
+}

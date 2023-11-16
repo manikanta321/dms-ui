@@ -96,6 +96,7 @@ input {
     color: white;
     font-weight: 700;
     cursor: pointer;
+    border: #686E74;
 }
 
 .close-icon {

@@ -305,7 +305,7 @@ console.log("targetgrpName",this.targetGroupName);
         this.dialogRef.close();
       }
       else {
-        // alert(this.createTargetData.result)
+        alert(this.createTargetData.result)
       }
       })
   }

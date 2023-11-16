@@ -420,6 +420,7 @@ label {
   }
 .pagination {
     float: right !important;
+    margin-right: 15px;
 }
 
 .pagination-cls {
@@ -447,18 +448,19 @@ label {
     .addItem-btn{
         width: 168px;
       height: 43px;
-      /* border-radius: 8px; */
+      border-radius: 8px;
       align-items: center;
       text-align: center;
       /* background: #000; */
       background-color:#018B75 ;
       color: #FFFFFF;
       margin-left: 21px;
+      border: #686E74;
       }
       .cancelItem-btn{
         width: 168px;
         height: 43px;
-        border: 2px solid black;
+        border: #686E74;
         border-radius: 8px;
         align-items: center;
         text-align: center;

@@ -6,7 +6,7 @@
             <br>
             <b>Done!</b>
         </div>
-        <div class="text-succ mt-3"  *ngIf="!responseResult"><p>Dealer &nbsp;<b style="color: red;">{{customerName}} </b> is <b style="color: red;">Deactivated</b></p></div>
+        <div class="text-succ mt-3"  *ngIf="!responseResult"><p>Dealer &nbsp;<b style="color: red;">{{customerName}} </b> <span style="color: black;">and the associated users have been</span>&nbsp; <b style="color: red;">Deactivated</b></p></div>
         <div class="text-success mt-3" *ngIf="responseResult"><p><b style="color: red;">{{responseData}} </b></p></div>
         <!-- <div class="text-succ mt-3" ><p>Dealer<b>D23334</b> is <b style="color: rgba(23, 177, 92, 1);">Deactivated</b></p></div> -->
     <div class="closeImg"  [mat-dialog-close]="true"><img src="../../../../../assets/userImages/user-closeImg.svg" alt=""></div>

@@ -353,7 +353,7 @@ div.catg[data-selected] {
 .saveas-draft {
   color: #fff;
   background: rgba(1, 139, 117, 1);
-  border-color: rgba(1, 139, 117, 1);
+  /* border-color: rgba(1, 139, 117, 1); */
   /* box-shadow: -4px -4px 8px rgba(255, 255, 255, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2), inset -2px -2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.15); */
   border-radius: 8px;
   float: right;
@@ -362,6 +362,7 @@ div.catg[data-selected] {
   width: 168px;
   height: 43px;
   font-family: 'Gilroy-SemiBold';
+  border: none;
 }
 
 .cancel {
@@ -376,6 +377,7 @@ div.catg[data-selected] {
   width: 168px;
   height: 43px;
   font-family: 'Gilroy-SemiBold';
+  border: none;
 }
 
 .ag-theme-material .ag-filter-toolpanel-header,
